@@ -1222,6 +1222,17 @@ const GUIDED_TODAY_PATH_POLISH_SEVEN_METADATA: GuidedPathMetadata = {
   targetLanguage: 'Polish',
   estimatedMinutes: 5,
 }
+
+const GUIDED_TODAY_PATH_POLISH_EIGHT_METADATA: GuidedPathMetadata = {
+  id: 'polish-a1-practical-8',
+  title: 'Polnisch A1 Praxis 8',
+  shortTitle: 'A1 Praxis 8',
+  subtitle: { de: 'Hotel, Zimmer und Übernachtung auf Polnisch' },
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Polish',
+  estimatedMinutes: 5,
+}
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -49301,6 +49312,519 @@ const polishA1Practical7Lessons = makePolishPracticalLessons(
   'Du hast Polnisch A1 Praxis 7 abgeschlossen.',
 )
 
+const polishA1Practical8Inputs: PolishP1LessonInput[] = [
+  {
+    slug: 'hotel-checkin',
+    title: { de: 'Reservierung für ein Zimmer' },
+    situation: {
+      en: 'At a hotel front desk, announce that you have a room reservation.',
+      de: 'An der Hotel-Rezeption meldest du dich mit einer Zimmerreservierung an.',
+    },
+    pedagogicalGoal: 'Mit Mam rezerwację na pokój die A1-Hotel-Anmeldung mit pokój einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Dzień dobry, mam rezerwację na pokój.',
+        baseText: { de: 'Guten Tag, ich habe eine Zimmerreservierung.' },
+      },
+      meaning: { de: 'Die A1-Standardanmeldung an der Hotel-Rezeption mit Zimmer-Spezifikation.' },
+      chunks: [
+        { id: 'dzien-dobry', targetText: 'Dzień dobry,', baseText: { de: 'Guten Tag,' } },
+        { id: 'mam-rezerwacje', targetText: 'mam rezerwację', baseText: { de: 'ich habe eine Reservierung' } },
+        { id: 'na-pokoj', targetText: 'na pokój.', baseText: { de: 'für ein Zimmer.' } },
+      ],
+      lessonItems: [
+        { id: 'pokoj', targetText: 'pokój', baseText: { de: 'Zimmer (Grundform)' }, acceptedAnswers: polishAnswers('pokój', 'Pokój', 'pokoj', 'Pokoj') },
+        { id: 'pokoju', targetText: 'pokoju', baseText: { de: 'Zimmer (Genitiv / Lokativ Sg.)' }, acceptedAnswers: polishAnswers('pokoju', 'Pokoju') },
+        { id: 'hotel', targetText: 'hotel', baseText: { de: 'Hotel' }, acceptedAnswers: polishAnswers('hotel', 'Hotel') },
+        { id: 'recepcja', targetText: 'recepcja', baseText: { de: 'Rezeption' }, acceptedAnswers: polishAnswers('recepcja', 'Recepcja') },
+      ],
+      buildChips: ['Dzień dobry,', 'mam rezerwację', 'na pokój.', 'na nazwisko', 'na dziś'],
+      typeRecall: {
+        before: 'Dzień dobry, mam rezerwację na ',
+        answer: 'pokój',
+        after: '.',
+        acceptedAnswers: polishAnswers('pokój', 'Pokój', 'pokoj', 'Pokoj'),
+        fallbackChoices: ['pokój', 'stolik', 'bilet', 'taksówkę'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Guten Tag, ich habe eine Zimmerreservierung.' },
+        targetPhrase: 'Dzień dobry, mam rezerwację na pokój.',
+        requiredTokens: ['dzień', 'dobry', 'mam', 'rezerwację', 'na', 'pokój'],
+        optionalTokens: ['nazwisko'],
+      },
+      sceneCaption: { de: 'Hotel-Rezeption am Tag, ruhige Anmeldung mit Reservierung.' },
+      trophyWord: {
+        word: 'pokój',
+        meaning: { de: 'Zimmer (Hotel-/Wohnzimmer)' },
+        example: 'Mam rezerwację na pokój.',
+        whyThisWord: { de: 'Pokój ist maskulin unbelebt. Nominativ Singular: pokój (mit ó!). Akkusativ gleich Nominativ. Genitiv und Lokativ Singular: pokoju (do pokoju — zum Zimmer; w pokoju — im Zimmer). Plural Nominativ: pokoje. Vorsicht: pokój hat zusätzlich die Bedeutung "Frieden" (Friedensvertrag) — der Kontext entscheidet. Im Hotelkontext immer "Zimmer".' },
+      },
+      placeholderCaption: { de: 'Hotel-Lobby, ruhige Anmeldung an der Rezeption.' },
+      songMood: 'hotel arrival',
+      visualNotes: 'Reception desk, key card behind, pokój as masc inanim with ó.',
+    }),
+  },
+  {
+    slug: 'need-free-room',
+    title: { de: 'Haben Sie ein freies Zimmer?' },
+    situation: {
+      en: 'Without a booking, ask whether a free room is available.',
+      de: 'Ohne Buchung fragst du, ob ein freies Zimmer verfügbar ist.',
+    },
+    pedagogicalGoal: 'Mit Czy macie wolny pokój? eine A1-Walk-in-Anfrage an der Rezeption stellen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Czy macie wolny pokój?',
+        baseText: { de: 'Haben Sie ein freies Zimmer?' },
+      },
+      meaning: { de: 'Die A1-Standardanfrage nach einem freien Zimmer ohne Reservierung.' },
+      chunks: [
+        { id: 'czy-macie', targetText: 'Czy macie', baseText: { de: 'Haben Sie' } },
+        { id: 'wolny-pokoj', targetText: 'wolny pokój?', baseText: { de: 'ein freies Zimmer?' } },
+      ],
+      lessonItems: [
+        { id: 'wolny', targetText: 'wolny', baseText: { de: 'frei / verfügbar (maskulin)' }, acceptedAnswers: polishAnswers('wolny', 'Wolny') },
+        { id: 'wolna', targetText: 'wolna', baseText: { de: 'frei (feminin)' }, acceptedAnswers: polishAnswers('wolna', 'Wolna') },
+        { id: 'macie', targetText: 'macie', baseText: { de: 'ihr habt / Sie haben (Pl.)' }, acceptedAnswers: polishAnswers('macie', 'Macie') },
+        { id: 'jednoosobowy', targetText: 'jednoosobowy', baseText: { de: 'Einzelzimmer-Adj. (maskulin)' }, acceptedAnswers: polishAnswers('jednoosobowy', 'Jednoosobowy') },
+      ],
+      buildChips: ['Czy macie', 'wolny pokój?', 'jednoosobowy', 'dwuosobowy'],
+      typeRecall: {
+        before: 'Czy macie ',
+        answer: 'wolny',
+        after: ' pokój?',
+        acceptedAnswers: polishAnswers('wolny', 'Wolny'),
+        fallbackChoices: ['wolny', 'wolna', 'duży', 'mały'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Haben Sie ein freies Zimmer?' },
+        targetPhrase: 'Czy macie wolny pokój?',
+        requiredTokens: ['czy', 'macie', 'wolny', 'pokój'],
+        optionalTokens: ['jednoosobowy'],
+      },
+      sceneCaption: { de: 'Hotel-Rezeption ohne Buchung, ruhige Walk-in-Anfrage.' },
+      trophyWord: {
+        word: 'wolny',
+        meaning: { de: 'frei / verfügbar (Adjektiv, maskulin)' },
+        example: 'Czy macie wolny pokój?',
+        whyThisWord: { de: 'Wolny ist die maskuline Grundform des Adjektivs. Flexion: maskulin wolny (wolny pokój — freies Zimmer), feminin wolna (wolna chwila — freier Moment), neutrum wolne (wolne miejsce — freier Platz). Zusätzliche A1-Bedeutung: "langsam" (Adverb wolno). Im Hotel- und Verkehrskontext immer "frei verfügbar". Pendant: zajęty (besetzt).' },
+      },
+      placeholderCaption: { de: 'Rezeption, ruhige Verfügbarkeitsanfrage.' },
+      songMood: 'walk-in inquiry',
+      visualNotes: 'Reception with availability board, wolny with adj agreement.',
+    }),
+  },
+  {
+    slug: 'room-number',
+    title: { de: 'Welche Zimmernummer?' },
+    situation: {
+      en: 'At the front desk, ask for the room number.',
+      de: 'An der Rezeption fragst du nach der Zimmernummer.',
+    },
+    pedagogicalGoal: 'Mit Który to numer pokoju? die A1-Frage nach der Zimmernummer mit Genitiv-Spezifikation stellen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Który to numer pokoju?',
+        baseText: { de: 'Welche Zimmernummer ist das?' },
+      },
+      meaning: { de: 'Die A1-Frage nach der Zimmernummer nach dem Check-in.' },
+      chunks: [
+        { id: 'ktory-to', targetText: 'Który to', baseText: { de: 'Welche' } },
+        { id: 'numer-pokoju', targetText: 'numer pokoju?', baseText: { de: 'Zimmernummer?' } },
+      ],
+      lessonItems: [
+        { id: 'numer', targetText: 'numer', baseText: { de: 'Nummer (maskulin unbelebt)' }, acceptedAnswers: polishAnswers('numer', 'Numer') },
+        { id: 'pokoju', targetText: 'pokoju', baseText: { de: 'Zimmer (Genitiv Sg.)' }, acceptedAnswers: polishAnswers('pokoju', 'Pokoju') },
+        { id: 'pietro', targetText: 'piętro', baseText: { de: 'Stockwerk / Etage (neutrum)' }, acceptedAnswers: polishAnswers('piętro', 'Piętro', 'pietro', 'Pietro') },
+        { id: 'parter', targetText: 'parter', baseText: { de: 'Erdgeschoss' }, acceptedAnswers: polishAnswers('parter', 'Parter') },
+      ],
+      buildChips: ['Który to', 'numer pokoju?', 'piętro?', 'parter'],
+      typeRecall: {
+        before: 'Który to ',
+        answer: 'numer',
+        after: ' pokoju?',
+        acceptedAnswers: polishAnswers('numer', 'Numer'),
+        fallbackChoices: ['numer', 'piętro', 'klucz', 'kod'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Welche Zimmernummer ist das?' },
+        targetPhrase: 'Który to numer pokoju?',
+        requiredTokens: ['który', 'to', 'numer', 'pokoju'],
+        optionalTokens: ['piętro'],
+      },
+      sceneCaption: { de: 'Hotel-Lobby nach dem Einchecken, ruhige Orientierungsfrage.' },
+      trophyWord: {
+        word: 'numer',
+        meaning: { de: 'Nummer' },
+        example: 'Który to numer pokoju?',
+        whyThisWord: { de: 'Numer ist maskulin unbelebt; Plural numery. Akkusativ gleich Nominativ. In der Verbindung numer pokoju (Zimmernummer) steht das spezifizierende Wort pokój im Genitiv (pokoju) — typisches Polnisches Komposit-Muster: Possesiv-Genitiv statt zusammengesetztem Wort. Gleiches Muster: numer telefonu (Telefonnummer), numer biletu (Ticketnummer).' },
+      },
+      placeholderCaption: { de: 'Schlüsselkarte oder Notiz in der Hand, ruhige Orientierungsfrage.' },
+      songMood: 'orientation check',
+      visualNotes: 'Hand with key card, numer pokoju shown with Gen specification.',
+    }),
+  },
+  {
+    slug: 'room-key',
+    title: { de: 'Den Zimmerschlüssel, bitte' },
+    situation: {
+      en: 'At the front desk, ask for the room key.',
+      de: 'An der Rezeption bittest du um den Zimmerschlüssel.',
+    },
+    pedagogicalGoal: 'Mit Poproszę klucz die A1-Bitte um den Zimmerschlüssel formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę klucz do pokoju.',
+        baseText: { de: 'Den Zimmerschlüssel, bitte.' },
+      },
+      meaning: { de: 'Eine A1-Bitte um den Zimmerschlüssel mit Genitiv-Spezifikation.' },
+      chunks: [
+        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'Bitte' } },
+        { id: 'klucz', targetText: 'klucz', baseText: { de: 'den Schlüssel' } },
+        { id: 'do-pokoju', targetText: 'do pokoju.', baseText: { de: 'zum Zimmer.' } },
+      ],
+      lessonItems: [
+        { id: 'klucz', targetText: 'klucz', baseText: { de: 'Schlüssel (maskulin unbelebt)' }, acceptedAnswers: polishAnswers('klucz', 'Klucz') },
+        { id: 'karta-magnetyczna', targetText: 'karta magnetyczna', baseText: { de: 'Magnetkarte' }, acceptedAnswers: polishAnswers('karta magnetyczna', 'Karta magnetyczna') },
+        { id: 'pokoju', targetText: 'pokoju', baseText: { de: 'Zimmer (Genitiv Sg.)' }, acceptedAnswers: polishAnswers('pokoju', 'Pokoju') },
+        { id: 'kod', targetText: 'kod', baseText: { de: 'Code' }, acceptedAnswers: polishAnswers('kod', 'Kod') },
+      ],
+      buildChips: ['Poproszę', 'klucz', 'do pokoju.', 'kartę', 'kod'],
+      typeRecall: {
+        before: 'Poproszę ',
+        answer: 'klucz',
+        after: ' do pokoju.',
+        acceptedAnswers: polishAnswers('klucz', 'Klucz'),
+        fallbackChoices: ['klucz', 'kartę', 'kod', 'numer'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Den Zimmerschlüssel, bitte.' },
+        targetPhrase: 'Poproszę klucz do pokoju.',
+        requiredTokens: ['poproszę', 'klucz', 'do', 'pokoju'],
+        optionalTokens: ['kartę'],
+      },
+      sceneCaption: { de: 'Hotel-Rezeption, Schlüsselbrett im Hintergrund.' },
+      trophyWord: {
+        word: 'klucz',
+        meaning: { de: 'Schlüssel' },
+        example: 'Poproszę klucz do pokoju.',
+        whyThisWord: { de: 'Klucz ist maskulin unbelebt; Plural klucze. Akkusativ gleich Nominativ. Die Spezifikation "Schlüssel ZU dem Zimmer" wird mit do + Genitiv ausgedrückt: klucz do pokoju (Schlüssel zum Zimmer), klucz do auta (Autoschlüssel). In modernen Hotels oft karta magnetyczna (Magnetkarte) statt klucz — beide A1-akzeptiert.' },
+      },
+      placeholderCaption: { de: 'Schlüssel oder Magnetkarte auf der Theke.' },
+      songMood: 'key handover',
+      visualNotes: 'Key on counter, klucz with do + Gen specification.',
+    }),
+  },
+  {
+    slug: 'wifi-available',
+    title: { de: 'Habt ihr hier Internet?' },
+    situation: {
+      en: 'At the front desk or in the lobby, ask whether Wi-Fi/Internet is available.',
+      de: 'An der Rezeption oder in der Lobby fragst du, ob es hier Internet gibt.',
+    },
+    pedagogicalGoal: 'Mit Czy macie tu Internet? eine A1-Wi-Fi-Verfügbarkeitsfrage stellen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Czy macie tu Internet?',
+        baseText: { de: 'Habt ihr hier Internet?' },
+      },
+      meaning: { de: 'Eine A1-Frage nach Wi-Fi-Verfügbarkeit im Hotel.' },
+      chunks: [
+        { id: 'czy-macie', targetText: 'Czy macie', baseText: { de: 'Habt ihr' } },
+        { id: 'tu', targetText: 'tu', baseText: { de: 'hier' } },
+        { id: 'internet', targetText: 'Internet?', baseText: { de: 'Internet?' } },
+      ],
+      lessonItems: [
+        { id: 'internet', targetText: 'Internet', baseText: { de: 'Internet (Lehnwort, maskulin)' }, acceptedAnswers: polishAnswers('Internet', 'internet') },
+        { id: 'wifi', targetText: 'Wi-Fi', baseText: { de: 'WLAN (Lehnwort)' }, acceptedAnswers: polishAnswers('Wi-Fi', 'wi-fi', 'wifi', 'Wifi') },
+        { id: 'haslo', targetText: 'hasło', baseText: { de: 'Passwort' }, acceptedAnswers: polishAnswers('hasło', 'Hasło', 'haslo', 'Haslo') },
+        { id: 'sygnal', targetText: 'sygnał', baseText: { de: 'Signal' }, acceptedAnswers: polishAnswers('sygnał', 'Sygnał', 'sygnal', 'Sygnal') },
+      ],
+      buildChips: ['Czy macie', 'tu', 'Internet?', 'Wi-Fi?', 'hasło?'],
+      typeRecall: {
+        before: 'Czy macie tu ',
+        answer: 'Internet',
+        after: '?',
+        acceptedAnswers: polishAnswers('Internet', 'internet'),
+        fallbackChoices: ['Internet', 'Wi-Fi', 'hasło', 'sygnał'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Habt ihr hier Internet?' },
+        targetPhrase: 'Czy macie tu Internet?',
+        requiredTokens: ['czy', 'macie', 'tu', 'internet'],
+        optionalTokens: ['wi-fi'],
+      },
+      sceneCaption: { de: 'Hotel-Lobby, Telefon in der Hand, ruhige Wi-Fi-Frage.' },
+      trophyWord: {
+        word: 'Internet',
+        meaning: { de: 'Internet' },
+        example: 'Czy macie tu Internet?',
+        whyThisWord: { de: 'Internet ist ein englisches Lehnwort, im Polnischen maskulin (wie alle englischen technischen Lehnwörter ohne klares Geschlecht). Wird oft groß geschrieben. Synonym im A1-Polnischen: Wi-Fi (mit Bindestrich), seltener WLAN. Für das Passwort: hasło (neutrum). Polnische Verbformen rund um Internet: surfować po Internecie (im Internet surfen — Lokativ), korzystać z Internetu (Internet nutzen — Genitiv).' },
+      },
+      placeholderCaption: { de: 'Hotel-Lobby, Smartphone-Display sichtbar.' },
+      songMood: 'wifi check',
+      visualNotes: 'Phone with Wi-Fi icon, Internet as loanword.',
+    }),
+  },
+  {
+    slug: 'where-bathroom',
+    title: { de: 'Wo ist das Bad?' },
+    situation: {
+      en: 'In a hotel hallway or restaurant, ask where the bathroom is.',
+      de: 'Im Hotelflur oder Restaurant fragst du, wo das Bad ist.',
+    },
+    pedagogicalGoal: 'Mit Gdzie jest łazienka? eine A1-Bad-Frage mit feminine Lokationsfrage stellen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Gdzie jest łazienka?',
+        baseText: { de: 'Wo ist das Bad?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach dem Bad / der Toilette.' },
+      chunks: [
+        { id: 'gdzie-jest', targetText: 'Gdzie jest', baseText: { de: 'Wo ist' } },
+        { id: 'lazienka', targetText: 'łazienka?', baseText: { de: 'das Bad?' } },
+      ],
+      lessonItems: [
+        { id: 'lazienka', targetText: 'łazienka', baseText: { de: 'Bad / Badezimmer (feminin)' }, acceptedAnswers: polishAnswers('łazienka', 'Łazienka', 'lazienka', 'Lazienka') },
+        { id: 'toaleta', targetText: 'toaleta', baseText: { de: 'Toilette' }, acceptedAnswers: polishAnswers('toaleta', 'Toaleta') },
+        { id: 'prysznic', targetText: 'prysznic', baseText: { de: 'Dusche' }, acceptedAnswers: polishAnswers('prysznic', 'Prysznic') },
+        { id: 'piętrze', targetText: 'piętrze', baseText: { de: 'Etage (Lokativ Sg.)' }, acceptedAnswers: polishAnswers('piętrze', 'Piętrze', 'pietrze', 'Pietrze') },
+      ],
+      buildChips: ['Gdzie jest', 'łazienka?', 'toaleta?', 'prysznic?'],
+      typeRecall: {
+        before: 'Gdzie jest ',
+        answer: 'łazienka',
+        after: '?',
+        acceptedAnswers: polishAnswers('łazienka', 'Łazienka', 'lazienka', 'Lazienka'),
+        fallbackChoices: ['łazienka', 'toaleta', 'prysznic', 'kuchnia'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Wo ist das Bad?' },
+        targetPhrase: 'Gdzie jest łazienka?',
+        requiredTokens: ['gdzie', 'jest', 'łazienka'],
+        optionalTokens: ['toaleta'],
+      },
+      sceneCaption: { de: 'Hotelflur, prüfender Blick zur Seite, ruhige Lokationsfrage.' },
+      trophyWord: {
+        word: 'łazienka',
+        meaning: { de: 'Bad / Badezimmer' },
+        example: 'Gdzie jest łazienka?',
+        whyThisWord: { de: 'Łazienka ist feminin (Polish anatomy/spaces tend to be feminine). Nominativ Singular: łazienka (mit ł!). Plural: łazienki. Lokativ Singular: łazience (w łazience — im Bad). Im A1-Kontext bezeichnet łazienka das Badezimmer (mit Dusche/Wanne). Für reine Toilette außerhalb verwendet man toaleta. In manchen Restaurants sieht man auch WC (gleich gelesen wie Englisch).' },
+      },
+      placeholderCaption: { de: 'Hotelflur, Wegweiser zur Seite, ruhige Frage.' },
+      songMood: 'practical orientation',
+      visualNotes: 'Hallway sign, łazienka with fem. gender flag.',
+    }),
+  },
+  {
+    slug: 'towel-please',
+    title: { de: 'Ein Handtuch, bitte' },
+    situation: {
+      en: 'At the front desk or in your room, ask for a towel.',
+      de: 'An der Rezeption oder im Zimmer bittest du um ein Handtuch.',
+    },
+    pedagogicalGoal: 'Mit Poproszę ręcznik die A1-Bitte um ein Handtuch formulieren und masc. inanim. einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę ręcznik.',
+        baseText: { de: 'Ein Handtuch, bitte.' },
+      },
+      meaning: { de: 'Eine A1-Standardbitte um ein Handtuch im Hotel.' },
+      chunks: [
+        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'Bitte' } },
+        { id: 'recznik', targetText: 'ręcznik.', baseText: { de: 'ein Handtuch.' } },
+      ],
+      lessonItems: [
+        { id: 'recznik', targetText: 'ręcznik', baseText: { de: 'Handtuch (maskulin unbelebt)' }, acceptedAnswers: polishAnswers('ręcznik', 'Ręcznik', 'recznik', 'Recznik') },
+        { id: 'myslo', targetText: 'mydło', baseText: { de: 'Seife (neutrum)' }, acceptedAnswers: polishAnswers('mydło', 'Mydło', 'myslo', 'Myslo', 'mydlo', 'Mydlo') },
+        { id: 'szampon', targetText: 'szampon', baseText: { de: 'Shampoo' }, acceptedAnswers: polishAnswers('szampon', 'Szampon') },
+        { id: 'papier', targetText: 'papier', baseText: { de: 'Papier (z. B. Toilettenpapier)' }, acceptedAnswers: polishAnswers('papier', 'Papier') },
+      ],
+      buildChips: ['Poproszę', 'ręcznik.', 'mydło.', 'szampon.'],
+      typeRecall: {
+        before: 'Poproszę ',
+        answer: 'ręcznik',
+        after: '.',
+        acceptedAnswers: polishAnswers('ręcznik', 'Ręcznik', 'recznik', 'Recznik'),
+        fallbackChoices: ['ręcznik', 'mydło', 'szampon', 'papier'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ein Handtuch, bitte.' },
+        targetPhrase: 'Poproszę ręcznik.',
+        requiredTokens: ['poproszę', 'ręcznik'],
+        optionalTokens: ['mydło', 'szampon'],
+      },
+      sceneCaption: { de: 'Hotelzimmer-Tür oder Rezeption, ruhige Bitte um ein Handtuch.' },
+      trophyWord: {
+        word: 'ręcznik',
+        meaning: { de: 'Handtuch' },
+        example: 'Poproszę ręcznik.',
+        whyThisWord: { de: 'Ręcznik ist maskulin unbelebt (vom Wort ręka — Hand). Akkusativ gleich Nominativ. Plural Nominativ: ręczniki. Verwandte Hotel-Items: mydło (Seife, neutrum), szampon (Shampoo, maskulin), papier toaletowy (Toilettenpapier). Im A1-Hotelpolnisch ist Poproszę + Akkusativ die universelle Bitten-Formel.' },
+      },
+      placeholderCaption: { de: 'Hotelzimmer mit Handtuch, ruhige Bitte.' },
+      songMood: 'hotel amenity request',
+      visualNotes: 'Folded towel on bed, ręcznik as masc inanim.',
+    }),
+  },
+  {
+    slug: 'time-to-sleep',
+    title: { de: 'Ich gehe schlafen' },
+    situation: {
+      en: 'At the end of the day, announce that you are going to sleep.',
+      de: 'Am Tagesende sagst du an, dass du schlafen gehst.',
+    },
+    pedagogicalGoal: 'Mit Idę spać die A1-Schlafenszeit-Phrase mit Bewegungsverb plus Infinitiv üben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Idę spać, dobranoc.',
+        baseText: { de: 'Ich gehe schlafen, gute Nacht.' },
+      },
+      meaning: { de: 'Eine A1-Standardphrase am Tagesende mit Schlafens-Signal.' },
+      chunks: [
+        { id: 'ide-spac', targetText: 'Idę spać,', baseText: { de: 'Ich gehe schlafen,' } },
+        { id: 'dobranoc', targetText: 'dobranoc.', baseText: { de: 'gute Nacht.' } },
+      ],
+      lessonItems: [
+        { id: 'spac', targetText: 'spać', baseText: { de: 'schlafen (Infinitiv, imperfektiv)' }, acceptedAnswers: polishAnswers('spać', 'Spać', 'spac', 'Spac') },
+        { id: 'spie', targetText: 'śpię', baseText: { de: 'ich schlafe (1. Person Sg.)' }, acceptedAnswers: polishAnswers('śpię', 'Śpię', 'spie', 'Spie') },
+        { id: 'dobranoc', targetText: 'dobranoc', baseText: { de: 'gute Nacht' }, acceptedAnswers: polishAnswers('dobranoc', 'Dobranoc') },
+        { id: 'zmeczony', targetText: 'zmęczony', baseText: { de: 'müde (maskulin)' }, acceptedAnswers: polishAnswers('zmęczony', 'Zmęczony', 'zmeczony', 'Zmeczony') },
+      ],
+      buildChips: ['Idę spać,', 'dobranoc.', 'zmęczony', 'śpię'],
+      typeRecall: {
+        before: 'Idę ',
+        answer: 'spać',
+        after: ', dobranoc.',
+        acceptedAnswers: polishAnswers('spać', 'Spać', 'spac', 'Spac'),
+        fallbackChoices: ['spać', 'jeść', 'pić', 'pisać'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ich gehe schlafen, gute Nacht.' },
+        targetPhrase: 'Idę spać, dobranoc.',
+        requiredTokens: ['idę', 'spać', 'dobranoc'],
+        optionalTokens: ['zmęczony'],
+      },
+      sceneCaption: { de: 'Hotelzimmer am Abend, ruhiges Schlafens-Signal.' },
+      trophyWord: {
+        word: 'spać',
+        meaning: { de: 'schlafen (Infinitiv, imperfektiv)' },
+        example: 'Idę spać.',
+        whyThisWord: { de: 'Spać ist die imperfektive Form von "schlafen" — es gibt im A1-Polnischen keine direkte perfektive Form (das Verb beschreibt einen anhaltenden Zustand). 1. Person Sg. Präsens: śpię. Die Konstruktion idę + Infinitiv (ich gehe Y) drückt eine unmittelbar bevorstehende Handlung aus — wie deutsches "ich gehe schlafen". Genauso: idę jeść (ich gehe essen), idę pić (ich gehe trinken).' },
+      },
+      placeholderCaption: { de: 'Bett im Hotelzimmer, sanftes Abendlicht.' },
+      songMood: 'gentle bedtime',
+      visualNotes: 'Bed, warm side-lamp, spać with imperfective infinitive.',
+    }),
+  },
+  {
+    slug: 'breakfast-time',
+    title: { de: 'Um wie viel Uhr ist Frühstück?' },
+    situation: {
+      en: 'At the front desk, ask the breakfast time.',
+      de: 'An der Rezeption fragst du nach der Frühstückszeit.',
+    },
+    pedagogicalGoal: 'Mit O której jest śniadanie? eine A1-Frühstücksfrage formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'O której jest śniadanie?',
+        baseText: { de: 'Um wie viel Uhr ist Frühstück?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach der Frühstückszeit im Hotel.' },
+      chunks: [
+        { id: 'o-ktorej', targetText: 'O której', baseText: { de: 'Um wie viel Uhr' } },
+        { id: 'jest-sniadanie', targetText: 'jest śniadanie?', baseText: { de: 'ist Frühstück?' } },
+      ],
+      lessonItems: [
+        { id: 'sniadanie', targetText: 'śniadanie', baseText: { de: 'Frühstück (neutrum)' }, acceptedAnswers: polishAnswers('śniadanie', 'Śniadanie', 'sniadanie', 'Sniadanie') },
+        { id: 'obiad', targetText: 'obiad', baseText: { de: 'Mittagessen' }, acceptedAnswers: polishAnswers('obiad', 'Obiad') },
+        { id: 'kolacja', targetText: 'kolacja', baseText: { de: 'Abendessen' }, acceptedAnswers: polishAnswers('kolacja', 'Kolacja') },
+        { id: 'osma', targetText: 'ósma', baseText: { de: 'achte (Stunde, feminin)' }, acceptedAnswers: polishAnswers('ósma', 'Ósma', 'osma', 'Osma') },
+      ],
+      buildChips: ['O której', 'jest śniadanie?', 'obiad?', 'kolacja?'],
+      typeRecall: {
+        before: 'O której jest ',
+        answer: 'śniadanie',
+        after: '?',
+        acceptedAnswers: polishAnswers('śniadanie', 'Śniadanie', 'sniadanie', 'Sniadanie'),
+        fallbackChoices: ['śniadanie', 'obiad', 'kolacja', 'pokój'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Um wie viel Uhr ist Frühstück?' },
+        targetPhrase: 'O której jest śniadanie?',
+        requiredTokens: ['o', 'której', 'jest', 'śniadanie'],
+        optionalTokens: ['obiad'],
+      },
+      sceneCaption: { de: 'Hotel-Rezeption am Abend vor dem Schlafen, ruhige Zeitfrage.' },
+      trophyWord: {
+        word: 'śniadanie',
+        meaning: { de: 'Frühstück' },
+        example: 'O której jest śniadanie?',
+        whyThisWord: { de: 'Śniadanie ist neutrum. Akkusativ und Nominativ Singular identisch. Plural Nominativ: śniadania. Das polnische Mahlzeit-Trio: śniadanie (Frühstück), obiad (Mittagessen — neutrum-anders maskulin), kolacja (Abendessen — feminin). Polnisches obiad ist meist die größere Mahlzeit am Tag (oft 13-17 Uhr) — anders als das deutsche "Mittagessen" als reine Mittagspause-Mahlzeit.' },
+      },
+      placeholderCaption: { de: 'Rezeption mit Frühstücks-Hinweis, sanftes Abendlicht.' },
+      songMood: 'breakfast inquiry',
+      visualNotes: 'Breakfast sign at reception, śniadanie as neut. meal.',
+    }),
+  },
+  {
+    slug: 'check-out',
+    title: { de: 'Bitte auschecken' },
+    situation: {
+      en: 'At the front desk on departure day, announce that you are checking out.',
+      de: 'Am Abreisetag an der Rezeption sagst du, dass du auscheckst.',
+    },
+    pedagogicalGoal: 'Mit Proszę wymeldować die A1-Checkout-Bitte mit Perfektiv-Infinitiv formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Proszę wymeldować, dziękuję.',
+        baseText: { de: 'Bitte auschecken, danke.' },
+      },
+      meaning: { de: 'Die A1-Standardbitte beim Auschecken aus dem Hotel.' },
+      chunks: [
+        { id: 'prosze', targetText: 'Proszę', baseText: { de: 'Bitte' } },
+        { id: 'wymeldowac', targetText: 'wymeldować,', baseText: { de: 'auschecken,' } },
+        { id: 'dziekuje', targetText: 'dziękuję.', baseText: { de: 'danke.' } },
+      ],
+      lessonItems: [
+        { id: 'wymeldowac', targetText: 'wymeldować', baseText: { de: 'auschecken (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('wymeldować', 'Wymeldować', 'wymeldowac', 'Wymeldowac') },
+        { id: 'zameldowac', targetText: 'zameldować', baseText: { de: 'einchecken (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('zameldować', 'Zameldować', 'zameldowac', 'Zameldowac') },
+        { id: 'rachunek', targetText: 'rachunek', baseText: { de: 'Rechnung' }, acceptedAnswers: polishAnswers('rachunek', 'Rachunek') },
+        { id: 'paragon', targetText: 'paragon', baseText: { de: 'Quittung' }, acceptedAnswers: polishAnswers('paragon', 'Paragon') },
+      ],
+      buildChips: ['Proszę', 'wymeldować,', 'dziękuję.', 'zameldować', 'rachunek'],
+      typeRecall: {
+        before: 'Proszę ',
+        answer: 'wymeldować',
+        after: ', dziękuję.',
+        acceptedAnswers: polishAnswers('wymeldować', 'Wymeldować', 'wymeldowac', 'Wymeldowac'),
+        fallbackChoices: ['wymeldować', 'zameldować', 'zadzwonić', 'zapłacić'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Bitte auschecken, danke.' },
+        targetPhrase: 'Proszę wymeldować, dziękuję.',
+        requiredTokens: ['proszę', 'wymeldować', 'dziękuję'],
+        optionalTokens: ['rachunek'],
+      },
+      sceneCaption: { de: 'Hotel-Rezeption am Morgen der Abreise, ruhige Schlussbitte.' },
+      trophyWord: {
+        word: 'wymeldować',
+        meaning: { de: 'auschecken (perfektiv, Infinitiv)' },
+        example: 'Proszę wymeldować.',
+        whyThisWord: { de: 'Wymeldować ist die perfektive Form (Aktion abgeschlossen). Pendant: zameldować (einchecken). Beide Verben sind reflexivisch möglich — wymeldować się / zameldować się (formell als Selbstaktion). Mit Proszę + Infinitiv wird die Service-Bitte gebildet. Im Polnischen sind diese Verben administrativer (auch im Sinne von "anmelden / abmelden" beim Amt) — im Hotelkontext aber A1-Standard.' },
+      },
+      placeholderCaption: { de: 'Koffer neben der Rezeption, ruhiger Abreiseschluss.' },
+      songMood: 'checkout closing',
+      visualNotes: 'Suitcase at desk, wymeldować as perf. inf.',
+    }),
+  },
+]
+
+const polishA1Practical8Lessons = makePolishPracticalLessons(
+  GUIDED_TODAY_PATH_POLISH_EIGHT_METADATA,
+  polishA1Practical8Inputs,
+  'Du hast Polnisch A1 Praxis 8 abgeschlossen.',
+)
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -63668,6 +64192,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...polishA1Practical5Lessons,
   ...polishA1Practical6Lessons,
   ...polishA1Practical7Lessons,
+  ...polishA1Practical8Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -63767,6 +64292,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_POLISH_FIVE_METADATA,
     GUIDED_TODAY_PATH_POLISH_SIX_METADATA,
     GUIDED_TODAY_PATH_POLISH_SEVEN_METADATA,
+    GUIDED_TODAY_PATH_POLISH_EIGHT_METADATA,
   ]
 }
 
