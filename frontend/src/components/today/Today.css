@@ -877,108 +877,159 @@
 
   .today-path-desktopFlow {
     display: grid;
-    gap: 1.2rem;
+    gap: clamp(0.65rem, 1.3vw, 1rem);
+    margin-inline: auto;
+    width: min(100%, 76rem);
   }
 
   .today-path-desktopSegment {
+    position: relative;
+  }
+
+  .today-path-desktopRouteRow {
+    --today-node-size: clamp(3.65rem, 4.45vw, 4.85rem);
+    --today-desktop-route-width: clamp(24rem, 50vw, 43rem);
+    align-items: center;
+    column-gap: clamp(0.75rem, 1.5vw, 1.2rem);
     display: grid;
-    gap: 0.55rem;
+    grid-template-columns:
+      minmax(0, var(--today-desktop-route-width))
+      clamp(6.8rem, 10vw, 9.25rem)
+      clamp(3.4rem, 5vw, 4.55rem);
+    min-height: clamp(4.7rem, 6.6vw, 5.7rem);
+  }
+
+  .today-path-desktopLessonRail {
+    min-width: 0;
     position: relative;
   }
 
   .today-path-segmentGrid {
-    --today-node-size: clamp(4.05rem, 5.6vw, 5.15rem);
     align-items: center;
     display: grid;
     gap: 0;
-    grid-template-columns:
-      var(--today-node-size) minmax(1.8rem, 1fr)
-      var(--today-node-size) minmax(1.8rem, 1fr)
-      var(--today-node-size) minmax(1.8rem, 1fr)
-      var(--today-node-size) minmax(1.8rem, 1fr)
-      var(--today-node-size);
+    grid-template-columns: repeat(5, var(--today-node-size));
+    justify-content: space-between;
     justify-items: center;
-    padding-block: clamp(0.55rem, 1.6vw, 0.9rem);
+    min-width: 0;
+    padding-block: clamp(0.35rem, 0.9vw, 0.62rem);
     position: relative;
     z-index: 1;
   }
 
-  .today-path-desktopConnectorSegment {
-    align-self: center;
+  .today-path-desktopWave {
     display: block;
-    height: clamp(0.82rem, 1.2vw, 1.05rem);
-    justify-self: stretch;
-    min-width: 1.6rem;
+    height: clamp(0.78rem, 1.05vw, 1rem);
+    left: calc(var(--today-node-size) / 2);
+    overflow: visible;
     pointer-events: none;
-    position: relative;
+    position: absolute;
+    right: calc(var(--today-node-size) / 2);
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(100% - var(--today-node-size));
     z-index: 0;
   }
 
-  .today-path-desktopConnectorSegment::before,
-  .today-path-desktopConnectorSegment::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    top: 50%;
+  .today-path-desktopWaveGlow,
+  .today-path-desktopWaveLine {
+    animation: today-path-wave-drift 5.8s ease-in-out infinite;
+    fill: none;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
   }
 
-  .today-path-desktopConnectorSegment::before {
-    background: linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--today-accent-strong) 58%, transparent),
-      color-mix(in srgb, var(--today-glow) 96%, transparent) 50%,
-      color-mix(in srgb, var(--today-accent-strong) 58%, transparent)
-    );
-    border-radius: 999px;
-    box-shadow:
-      0 0 12px color-mix(in srgb, var(--today-glow) 48%, transparent),
-      0 0 26px color-mix(in srgb, var(--today-accent) 20%, transparent);
-    height: 2px;
-    left: -0.05rem;
-    right: -0.05rem;
-    transform: translateY(-50%);
+  .today-path-desktopWaveGlow {
+    opacity: 0.26;
+    stroke: var(--today-glow);
+    stroke-width: 5;
   }
 
-  .today-path-desktopConnectorSegment::after {
-    background: radial-gradient(circle, #fff9c7 0%, var(--today-accent-strong) 36%, transparent 72%);
-    border-radius: 999px;
-    box-shadow: 0 0 14px color-mix(in srgb, var(--today-glow) 68%, transparent);
-    height: 0.36rem;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0.36rem;
+  .today-path-desktopWaveLine {
+    opacity: 0.9;
+    stroke-width: 1.75;
   }
 
-  .today-path-desktopRewards {
-    margin-top: 0;
+  .today-path-desktopWaveNodes circle {
+    animation: today-path-wave-node-pulse 3.2s ease-in-out infinite;
+    fill: #fff6ad;
+    filter: drop-shadow(0 0 0.34rem color-mix(in srgb, var(--today-glow) 92%, transparent));
+    stroke: color-mix(in srgb, var(--today-accent-strong) 70%, transparent);
+    stroke-width: 0.26;
   }
 
-  .today-path-desktopRewards .today-path-segmentNode {
-    min-height: 4.2rem;
-    padding-inline: 0.8rem 1rem;
-  }
-
-  .today-path-desktopRewards .today-path-nodeMedia {
-    min-width: 5.2rem;
-  }
-
-  .today-path-desktopRewards .today-segment-reviewTile {
-    min-height: 4.2rem;
-    padding: 0;
-  }
-
-  .today-path-desktopRewards .today-segment-reviewTile .today-path-nodeMedia {
-    min-width: 0;
-  }
-
-  .today-path-desktopRewards .today-segment-trophyTile {
+  .today-path-desktopRewardSlot {
+    align-items: center;
+    display: flex;
     justify-content: center;
-    min-height: 4.2rem;
+    min-width: 0;
+  }
+
+  .today-path-desktopRewardSlot .today-path-segmentNode {
+    min-height: var(--today-node-size);
+    width: 100%;
+  }
+
+  .today-path-desktopReviewSlot .today-segment-reviewTile {
     padding: 0;
   }
 
-  .today-path-desktopRewards .today-segment-trophyTile .today-path-nodeMedia {
+  .today-path-desktopReviewSlot .today-segment-reviewTile .today-path-nodeMedia {
     min-width: 0;
+  }
+
+  .today-path-desktopReviewSlot .today-segment-reviewImage {
+    max-height: clamp(2.25rem, 3.4vw, 3.05rem);
+    max-width: 100%;
+    width: min(100%, 8.8rem);
+  }
+
+  .today-path-desktopTrophySlot .today-segment-trophyTile {
+    justify-content: center;
+    margin-inline: auto;
+    padding: 0;
+    width: var(--today-node-size);
+  }
+
+  .today-path-desktopTrophySlot .today-segment-trophyTile .today-path-nodeMedia {
+    min-width: 0;
+  }
+
+  .today-path-desktopTrophySlot .today-segment-trophyImage {
+    height: clamp(2.15rem, 3.2vw, 2.75rem);
+    width: clamp(2.15rem, 3.2vw, 2.75rem);
+  }
+}
+
+@keyframes today-path-wave-drift {
+  0%,
+  100% {
+    opacity: 0.84;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-0.03rem);
+  }
+}
+
+@keyframes today-path-wave-node-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .today-path-desktopWaveGlow,
+  .today-path-desktopWaveLine,
+  .today-path-desktopWaveNodes circle {
+    animation: none;
   }
 }
 
