@@ -1211,6 +1211,17 @@ const GUIDED_TODAY_PATH_POLISH_SIX_METADATA: GuidedPathMetadata = {
   targetLanguage: 'Polish',
   estimatedMinutes: 5,
 }
+
+const GUIDED_TODAY_PATH_POLISH_SEVEN_METADATA: GuidedPathMetadata = {
+  id: 'polish-a1-practical-7',
+  title: 'Polnisch A1 Praxis 7',
+  shortTitle: 'A1 Praxis 7',
+  subtitle: { de: 'Reise, Tickets und einfache Bewegung auf Polnisch' },
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Polish',
+  estimatedMinutes: 5,
+}
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -48776,6 +48787,520 @@ const polishA1Practical6Lessons = makePolishPracticalLessons(
   'Du hast Polnisch A1 Praxis 6 abgeschlossen.',
 )
 
+const polishA1Practical7Inputs: PolishP1LessonInput[] = [
+  {
+    slug: 'ticket-counter',
+    title: { de: 'Wo ist der Schalter?' },
+    situation: {
+      en: 'At a train station, ask where the ticket counter is.',
+      de: 'Am Bahnhof fragst du, wo der Fahrkartenschalter ist.',
+    },
+    pedagogicalGoal: 'Mit Gdzie jest kasa? eine A1-Bahnhofs-Lokationsfrage stellen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, gdzie jest kasa?',
+        baseText: { de: 'Entschuldigung, wo ist der Schalter?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach dem Fahrkartenschalter im Bahnhof.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'gdzie-jest', targetText: 'gdzie jest', baseText: { de: 'wo ist' } },
+        { id: 'kasa', targetText: 'kasa?', baseText: { de: 'der Schalter?' } },
+      ],
+      lessonItems: [
+        { id: 'kasa', targetText: 'kasa', baseText: { de: 'Schalter / Kasse (Grundform)' }, acceptedAnswers: polishAnswers('kasa', 'Kasa') },
+        { id: 'kasie', targetText: 'kasie', baseText: { de: 'Schalter (Lokativ Sg.)' }, acceptedAnswers: polishAnswers('kasie', 'Kasie') },
+        { id: 'okienko', targetText: 'okienko', baseText: { de: 'Schalter-Fenster (Diminutiv von okno)' }, acceptedAnswers: polishAnswers('okienko', 'Okienko') },
+        { id: 'biuro', targetText: 'biuro', baseText: { de: 'Büro' }, acceptedAnswers: polishAnswers('biuro', 'Biuro') },
+      ],
+      buildChips: ['Przepraszam,', 'gdzie jest', 'kasa?', 'okienko?', 'biuro?'],
+      typeRecall: {
+        before: 'Przepraszam, gdzie jest ',
+        answer: 'kasa',
+        after: '?',
+        acceptedAnswers: polishAnswers('kasa', 'Kasa'),
+        fallbackChoices: ['kasa', 'okienko', 'biuro', 'sklep'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, wo ist der Schalter?' },
+        targetPhrase: 'Przepraszam, gdzie jest kasa?',
+        requiredTokens: ['przepraszam', 'gdzie', 'jest', 'kasa'],
+        optionalTokens: ['okienko'],
+      },
+      sceneCaption: { de: 'Bahnhofshalle, prüfender Blick durch die Reihen, ruhige Lokationsfrage.' },
+      trophyWord: {
+        word: 'kasa',
+        meaning: { de: 'Schalter / Kasse' },
+        example: 'Gdzie jest kasa?',
+        whyThisWord: { de: 'Kasa ist feminin und bezeichnet im Polnischen sowohl Fahrkartenschalter als auch Supermarkt-Kasse. Nominativ Singular: kasa. Lokativ Singular: kasie. Akkusativ Singular: kasę. Für "am Schalter" verwendet man w kasie (w + Lokativ). Synonym im Bahnhofskontext: okienko (kleines Schalter-Fenster, Diminutiv von okno — Fenster).' },
+      },
+      placeholderCaption: { de: 'Bahnhofshalle, kasa-Schild im Hintergrund, ruhige Suchfrage.' },
+      songMood: 'station ticket search',
+      visualNotes: 'Station hall, ticket window in background, kasa as fem. noun.',
+    }),
+  },
+  {
+    slug: 'is-it-there',
+    title: { de: 'Ist es dort?' },
+    situation: {
+      en: 'At a station, ask whether the bus or train is over there.',
+      de: 'Am Bahnhof fragst du, ob der Bus oder Zug dort drüben ist.',
+    },
+    pedagogicalGoal: 'Mit Czy mój autobus jest tam? den deiktischen Kontrast tu/tam einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Czy mój autobus jest tam?',
+        baseText: { de: 'Ist mein Bus dort drüben?' },
+      },
+      meaning: { de: 'Eine A1-Lokationsfrage zur Position des eigenen Verkehrsmittels.' },
+      chunks: [
+        { id: 'czy-moj-autobus', targetText: 'Czy mój autobus', baseText: { de: 'Ist mein Bus' } },
+        { id: 'jest-tam', targetText: 'jest tam?', baseText: { de: 'dort drüben?' } },
+      ],
+      lessonItems: [
+        { id: 'moj', targetText: 'mój', baseText: { de: 'mein (maskulin)' }, acceptedAnswers: polishAnswers('mój', 'Mój', 'moj', 'Moj') },
+        { id: 'tam', targetText: 'tam', baseText: { de: 'dort' }, acceptedAnswers: polishAnswers('tam', 'Tam') },
+        { id: 'tu', targetText: 'tu', baseText: { de: 'hier' }, acceptedAnswers: polishAnswers('tu', 'Tu') },
+        { id: 'jeszcze-nie', targetText: 'jeszcze nie', baseText: { de: 'noch nicht' }, acceptedAnswers: polishAnswers('jeszcze nie', 'Jeszcze nie') },
+      ],
+      buildChips: ['Czy mój autobus', 'jest tam?', 'tu?', 'jeszcze nie'],
+      typeRecall: {
+        before: 'Czy mój autobus jest ',
+        answer: 'tam',
+        after: '?',
+        acceptedAnswers: polishAnswers('tam', 'Tam'),
+        fallbackChoices: ['tam', 'tu', 'tutaj', 'stąd'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ist mein Bus dort drüben?' },
+        targetPhrase: 'Czy mój autobus jest tam?',
+        requiredTokens: ['czy', 'mój', 'autobus', 'jest', 'tam'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Bussteig, prüfender Blick in die Ferne, ruhige Lokationsfrage.' },
+      trophyWord: {
+        word: 'tam',
+        meaning: { de: 'dort (entfernt)' },
+        example: 'Czy mój autobus jest tam?',
+        whyThisWord: { de: 'Tam ist das deiktische Adverb für "dort drüben" — entfernt vom Sprecher. Pendant: tu / tutaj (hier, am Sprechort). Beides invariant. Bewegungsrichtungen: stąd (von hier — siehe P5), stamtąd (von dort), tam (nach dort), tu (hierhin). Im Verkehrskontext signalisiert tam einen Punkt außerhalb des unmittelbaren Aktionsradius.' },
+      },
+      placeholderCaption: { de: 'Bussteig, Bus in der Ferne, prüfende Geste.' },
+      songMood: 'distant landmark',
+      visualNotes: 'Pointing far, bus in distance, tam vs tu contrast.',
+    }),
+  },
+  {
+    slug: 'when-departure',
+    title: { de: 'Wann ist die Abfahrt?' },
+    situation: {
+      en: 'At a ticket counter, ask the departure time.',
+      de: 'Am Fahrkartenschalter fragst du nach der Abfahrtszeit.',
+    },
+    pedagogicalGoal: 'Mit O której jest odjazd? eine A1-Abfahrtsfrage formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'O której jest odjazd?',
+        baseText: { de: 'Um wie viel Uhr ist die Abfahrt?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach der Abfahrtszeit im Reisekontext.' },
+      chunks: [
+        { id: 'o-ktorej', targetText: 'O której', baseText: { de: 'Um wie viel Uhr' } },
+        { id: 'jest-odjazd', targetText: 'jest odjazd?', baseText: { de: 'ist die Abfahrt?' } },
+      ],
+      lessonItems: [
+        { id: 'odjazd', targetText: 'odjazd', baseText: { de: 'Abfahrt (maskulin unbelebt)' }, acceptedAnswers: polishAnswers('odjazd', 'Odjazd') },
+        { id: 'przyjazd', targetText: 'przyjazd', baseText: { de: 'Ankunft' }, acceptedAnswers: polishAnswers('przyjazd', 'Przyjazd') },
+        { id: 'godzina', targetText: 'godzina', baseText: { de: 'Stunde / Uhr' }, acceptedAnswers: polishAnswers('godzina', 'Godzina') },
+        { id: 'minuta', targetText: 'minuta', baseText: { de: 'Minute' }, acceptedAnswers: polishAnswers('minuta', 'Minuta') },
+      ],
+      buildChips: ['O której', 'jest odjazd?', 'przyjazd?', 'godzinie'],
+      typeRecall: {
+        before: 'O której jest ',
+        answer: 'odjazd',
+        after: '?',
+        acceptedAnswers: polishAnswers('odjazd', 'Odjazd'),
+        fallbackChoices: ['odjazd', 'przyjazd', 'godzina', 'minuta'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Um wie viel Uhr ist die Abfahrt?' },
+        targetPhrase: 'O której jest odjazd?',
+        requiredTokens: ['o', 'której', 'jest', 'odjazd'],
+        optionalTokens: ['przyjazd'],
+      },
+      sceneCaption: { de: 'Fahrkartenschalter, Fahrplan im Hintergrund, ruhige Zeitfrage.' },
+      trophyWord: {
+        word: 'odjazd',
+        meaning: { de: 'Abfahrt' },
+        example: 'O której jest odjazd?',
+        whyThisWord: { de: 'Odjazd ist maskulin unbelebt; Akkusativ gleich Nominativ. Plural: odjazdy. Pendant: przyjazd (Ankunft). Die Frageform O której jest...? funktioniert für jede Zeitangabe (siehe P1 L6). Verwandtes Verb: odjeżdżać/odjechać (abfahren — siehe P1 L6 trophy `pociąg`).' },
+      },
+      placeholderCaption: { de: 'Fahrkartenschalter, Anzeigetafel im Hintergrund.' },
+      songMood: 'departure schedule',
+      visualNotes: 'Departure board, odjazd as masc inanim noun.',
+    }),
+  },
+  {
+    slug: 'right-train',
+    title: { de: 'Ist das der richtige Zug?' },
+    situation: {
+      en: 'On the platform before boarding, confirm this is the right train.',
+      de: 'Auf dem Bahnsteig vor dem Einsteigen prüfst du, ob es der richtige Zug ist.',
+    },
+    pedagogicalGoal: 'Mit Czy to dobry pociąg? die A1-Bestätigung vor dem Einsteigen formulieren und das Adjektiv dobry einführen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, czy to dobry pociąg?',
+        baseText: { de: 'Entschuldigung, ist das der richtige Zug?' },
+      },
+      meaning: { de: 'Eine A1-Bestätigung des richtigen Zuges vor dem Einsteigen.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'czy-to', targetText: 'czy to', baseText: { de: 'ist das' } },
+        { id: 'dobry-pociag', targetText: 'dobry pociąg?', baseText: { de: 'der richtige Zug?' } },
+      ],
+      lessonItems: [
+        { id: 'dobry', targetText: 'dobry', baseText: { de: 'gut / richtig (maskulin)' }, acceptedAnswers: polishAnswers('dobry', 'Dobry') },
+        { id: 'dobra', targetText: 'dobra', baseText: { de: 'gut / richtig (feminin)' }, acceptedAnswers: polishAnswers('dobra', 'Dobra') },
+        { id: 'dobre', targetText: 'dobre', baseText: { de: 'gut / richtig (neutrum)' }, acceptedAnswers: polishAnswers('dobre', 'Dobre') },
+        { id: 'wlasciwy', targetText: 'właściwy', baseText: { de: 'eigentlich richtig (maskulin)' }, acceptedAnswers: polishAnswers('właściwy', 'Właściwy', 'wlasciwy', 'Wlasciwy') },
+      ],
+      buildChips: ['Przepraszam,', 'czy to', 'dobry pociąg?', 'dobry autobus?', 'właściwy'],
+      typeRecall: {
+        before: 'Przepraszam, czy to ',
+        answer: 'dobry',
+        after: ' pociąg?',
+        acceptedAnswers: polishAnswers('dobry', 'Dobry'),
+        fallbackChoices: ['dobry', 'dobra', 'dobre', 'właściwy'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, ist das der richtige Zug?' },
+        targetPhrase: 'Przepraszam, czy to dobry pociąg?',
+        requiredTokens: ['przepraszam', 'czy', 'to', 'dobry', 'pociąg'],
+        optionalTokens: ['właściwy'],
+      },
+      sceneCaption: { de: 'Bahnsteig vor dem Einsteigen, prüfender Blick auf die Anzeige.' },
+      trophyWord: {
+        word: 'dobry',
+        meaning: { de: 'gut / richtig (Adjektiv, maskulin)' },
+        example: 'Czy to dobry pociąg?',
+        whyThisWord: { de: 'Dobry ist die maskuline Grundform des Adjektivs (Lemma). Flexion nach Geschlecht: maskulin dobry (dobry pociąg — richtiger Zug), feminin dobra (dobra kawa — guter Kaffee), neutrum dobre (dobre piwo — gutes Bier). In der Bestätigung Czy to dobry pociąg? richtet sich dobry nach pociąg (maskulin). Verwandtes Adverb: dobrze (siehe P2 L9). Synonym: właściwy (eigentlich/zutreffend richtig — etwas formeller).' },
+      },
+      placeholderCaption: { de: 'Bahnsteig, Zug an der Tür, prüfender Blick.' },
+      songMood: 'pre-boarding check',
+      visualNotes: 'Train at platform, ticket in hand, dobry with adj. agreement.',
+    }),
+  },
+  {
+    slug: 'order-taxi',
+    title: { de: 'Bitte ein Taxi bestellen' },
+    situation: {
+      en: 'At a hotel desk or by phone, ask someone to order a taxi.',
+      de: 'An der Hotel-Rezeption oder am Telefon bittest du, ein Taxi zu bestellen.',
+    },
+    pedagogicalGoal: 'Mit Proszę zamówić taksówkę die A1-Taxi-Bestell-Bitte mit Perfektiv-Infinitiv formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Proszę zamówić taksówkę.',
+        baseText: { de: 'Bitte ein Taxi bestellen.' },
+      },
+      meaning: { de: 'Die A1-Standardphrase, um an der Rezeption ein Taxi zu bestellen.' },
+      chunks: [
+        { id: 'prosze', targetText: 'Proszę', baseText: { de: 'Bitte' } },
+        { id: 'zamowic', targetText: 'zamówić', baseText: { de: 'bestellen' } },
+        { id: 'taksowke', targetText: 'taksówkę.', baseText: { de: 'ein Taxi.' } },
+      ],
+      lessonItems: [
+        { id: 'zamowic', targetText: 'zamówić', baseText: { de: 'bestellen (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('zamówić', 'Zamówić', 'zamowic', 'Zamowic') },
+        { id: 'zamawiac', targetText: 'zamawiać', baseText: { de: 'bestellen (Infinitiv, imperfektiv)' }, acceptedAnswers: polishAnswers('zamawiać', 'Zamawiać', 'zamawiac', 'Zamawiac') },
+        { id: 'taksowke', targetText: 'taksówkę', baseText: { de: 'Taxi (Akkusativ Sg.)' }, acceptedAnswers: polishAnswers('taksówkę', 'Taksówkę', 'taksowke', 'Taksowke') },
+        { id: 'autobus-akk', targetText: 'autobus', baseText: { de: 'Bus' }, acceptedAnswers: polishAnswers('autobus', 'Autobus') },
+      ],
+      buildChips: ['Proszę', 'zamówić', 'taksówkę.', 'na za godzinę.', 'na teraz'],
+      typeRecall: {
+        before: 'Proszę ',
+        answer: 'zamówić',
+        after: ' taksówkę.',
+        acceptedAnswers: polishAnswers('zamówić', 'Zamówić', 'zamowic', 'Zamowic'),
+        fallbackChoices: ['zamówić', 'zamawiać', 'zadzwonić', 'pokazać'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Bitte ein Taxi bestellen.' },
+        targetPhrase: 'Proszę zamówić taksówkę.',
+        requiredTokens: ['proszę', 'zamówić', 'taksówkę'],
+        optionalTokens: ['godzinę'],
+      },
+      sceneCaption: { de: 'Hotel-Rezeption am Abend, ruhige Bitte um ein Taxi.' },
+      trophyWord: {
+        word: 'zamówić',
+        meaning: { de: 'bestellen (perfektiv, Infinitiv)' },
+        example: 'Proszę zamówić taksówkę.',
+        whyThisWord: { de: 'Zamówić ist die perfektive Form des Verbpaars zamawiać/zamówić (bestellen). Im Service-Polnischen ist perfektiv die natürliche Wahl, weil eine einzelne, abgeschlossene Bestellung gemeint ist. Mit Proszę + Perfektiv-Infinitiv wird die höfliche Service-Bitte gebildet. Verwendet auch im Restaurant: Proszę zamówić wino (Bitte einen Wein bestellen) — oft sagt aber direkt der Gast Poproszę wino (siehe P1 L4 und P4).' },
+      },
+      placeholderCaption: { de: 'Telefon-Anruf-Geste an der Hotel-Rezeption.' },
+      songMood: 'taxi order request',
+      visualNotes: 'Phone gesture, taxi icon outside, zamówić as perf. inf.',
+    }),
+  },
+  {
+    slug: 'we-go-to-hotel',
+    title: { de: 'Wir fahren ins Hotel' },
+    situation: {
+      en: 'Inside a taxi, confirm the destination using 1pl present tense.',
+      de: 'Im Taxi bestätigst du das Ziel mit der 1. Person Plural Präsens.',
+    },
+    pedagogicalGoal: 'Mit Jedziemy do hotelu die A1-Plural-Form jedziemy und die do-Genitiv-Konstruktion festigen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Jedziemy do hotelu.',
+        baseText: { de: 'Wir fahren zum Hotel.' },
+      },
+      meaning: { de: 'Eine A1-Zielangabe im Taxi mit 1. Person Plural Präsens.' },
+      chunks: [
+        { id: 'jedziemy', targetText: 'Jedziemy', baseText: { de: 'Wir fahren' } },
+        { id: 'do-hotelu', targetText: 'do hotelu.', baseText: { de: 'zum Hotel.' } },
+      ],
+      lessonItems: [
+        { id: 'jedziemy', targetText: 'jedziemy', baseText: { de: 'wir fahren (1. Person Pl., Fahrzeug)' }, acceptedAnswers: polishAnswers('jedziemy', 'Jedziemy') },
+        { id: 'idziemy', targetText: 'idziemy', baseText: { de: 'wir gehen (1. Person Pl., zu Fuß)' }, acceptedAnswers: polishAnswers('idziemy', 'Idziemy') },
+        { id: 'hotel', targetText: 'hotel', baseText: { de: 'Hotel (Grundform)' }, acceptedAnswers: polishAnswers('hotel', 'Hotel') },
+        { id: 'hotelu', targetText: 'hotelu', baseText: { de: 'Hotel (Genitiv Sg.)' }, acceptedAnswers: polishAnswers('hotelu', 'Hotelu') },
+      ],
+      buildChips: ['Jedziemy', 'do hotelu.', 'idziemy', 'do centrum'],
+      typeRecall: {
+        before: '',
+        answer: 'Jedziemy',
+        after: ' do hotelu.',
+        acceptedAnswers: polishAnswers('Jedziemy', 'jedziemy'),
+        fallbackChoices: ['Jedziemy', 'Idziemy', 'Mamy', 'Jesteśmy'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Wir fahren zum Hotel.' },
+        targetPhrase: 'Jedziemy do hotelu.',
+        requiredTokens: ['jedziemy', 'do', 'hotelu'],
+        optionalTokens: ['centrum'],
+      },
+      sceneCaption: { de: 'Im Taxi auf dem Rücksitz, ruhige Zielbestätigung.' },
+      trophyWord: {
+        word: 'jedziemy',
+        meaning: { de: 'wir fahren (1. Person Pl., Fahrzeug)' },
+        example: 'Jedziemy do hotelu.',
+        whyThisWord: { de: 'Jedziemy ist die 1. Person Plural Präsens von jechać (mit einem Fahrzeug fahren — imperfektiv). Wichtig: Polnisch unterscheidet streng zwischen iść (zu Fuß gehen — idziemy) und jechać (mit Verkehrsmittel — jedziemy). Mit do + Genitiv: do hotelu (Gen. Sg. von hotel — Vokal-Schwund), do centrum (unflektiert, siehe P3), do parku (Gen. von park).' },
+      },
+      placeholderCaption: { de: 'Im Taxi unterwegs, ruhige Plural-Zielbestätigung.' },
+      songMood: 'taxi ride',
+      visualNotes: 'In-taxi view, streetlights, jedziemy with 1pl vehicle motion.',
+    }),
+  },
+  {
+    slug: 'stop-here',
+    title: { de: 'Halten Sie bitte hier' },
+    situation: {
+      en: 'Inside a taxi, ask the driver to stop at the current spot.',
+      de: 'Im Taxi bittest du den Fahrer, an der aktuellen Stelle zu halten.',
+    },
+    pedagogicalGoal: 'Mit Proszę zatrzymać tutaj die A1-Halte-Bitte mit Perfektiv-Infinitiv formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Proszę zatrzymać tutaj.',
+        baseText: { de: 'Halten Sie bitte hier.' },
+      },
+      meaning: { de: 'Die A1-Standardbitte an einen Fahrer, an der aktuellen Stelle zu halten.' },
+      chunks: [
+        { id: 'prosze', targetText: 'Proszę', baseText: { de: 'Bitte' } },
+        { id: 'zatrzymac', targetText: 'zatrzymać', baseText: { de: 'halten' } },
+        { id: 'tutaj', targetText: 'tutaj.', baseText: { de: 'hier.' } },
+      ],
+      lessonItems: [
+        { id: 'zatrzymac', targetText: 'zatrzymać', baseText: { de: 'halten (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('zatrzymać', 'Zatrzymać', 'zatrzymac', 'Zatrzymac') },
+        { id: 'tutaj', targetText: 'tutaj', baseText: { de: 'hier (betont)' }, acceptedAnswers: polishAnswers('tutaj', 'Tutaj') },
+        { id: 'zaraz', targetText: 'zaraz', baseText: { de: 'sofort' }, acceptedAnswers: polishAnswers('zaraz', 'Zaraz') },
+        { id: 'tu', targetText: 'tu', baseText: { de: 'hier (kurz)' }, acceptedAnswers: polishAnswers('tu', 'Tu') },
+      ],
+      buildChips: ['Proszę', 'zatrzymać', 'tutaj.', 'tu.', 'zaraz'],
+      typeRecall: {
+        before: 'Proszę ',
+        answer: 'zatrzymać',
+        after: ' tutaj.',
+        acceptedAnswers: polishAnswers('zatrzymać', 'Zatrzymać', 'zatrzymac', 'Zatrzymac'),
+        fallbackChoices: ['zatrzymać', 'pokazać', 'zadzwonić', 'napisać'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Halten Sie bitte hier.' },
+        targetPhrase: 'Proszę zatrzymać tutaj.',
+        requiredTokens: ['proszę', 'zatrzymać', 'tutaj'],
+        optionalTokens: ['zaraz'],
+      },
+      sceneCaption: { de: 'Im Taxi, Hand zeigt nach vorn auf die gewünschte Stelle.' },
+      trophyWord: {
+        word: 'zatrzymać',
+        meaning: { de: 'halten / anhalten (perfektiv, Infinitiv)' },
+        example: 'Proszę zatrzymać tutaj.',
+        whyThisWord: { de: 'Zatrzymać ist die perfektive Form des Verbpaars zatrzymywać/zatrzymać (anhalten — einmaliges Stoppen). Mit dem Reflexivpartikel się: zatrzymać się (zum Stehen kommen, intransitiv). Hier ohne się, weil der Fahrer das Fahrzeug bewusst stoppt. Pendant tutaj/tu — beide bedeuten "hier", tutaj ist betonter (wie "genau hier"). Die Bitte ohne się funktioniert; korrekt ist auch Proszę się zatrzymać tutaj.' },
+      },
+      placeholderCaption: { de: 'Im Taxi, ruhige Halte-Bitte an den Fahrer.' },
+      songMood: 'precise stop',
+      visualNotes: 'Hand pointing to spot, taxi context, zatrzymać as perf. inf.',
+    }),
+  },
+  {
+    slug: 'going-to-park',
+    title: { de: 'Ich gehe in den Park' },
+    situation: {
+      en: 'Mid-conversation, state that you are heading to a particular destination.',
+      de: 'Im Gespräch nennst du dein aktuelles Ziel.',
+    },
+    pedagogicalGoal: 'Mit Idę do parku die A1-Form idę (zu Fuß) und do + Genitiv mit park üben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Idę do parku.',
+        baseText: { de: 'Ich gehe in den Park.' },
+      },
+      meaning: { de: 'Eine A1-Zielangabe zu Fuß mit 1. Person Singular.' },
+      chunks: [
+        { id: 'ide', targetText: 'Idę', baseText: { de: 'Ich gehe' } },
+        { id: 'do-parku', targetText: 'do parku.', baseText: { de: 'in den Park.' } },
+      ],
+      lessonItems: [
+        { id: 'ide', targetText: 'idę', baseText: { de: 'ich gehe (zu Fuß)' }, acceptedAnswers: polishAnswers('idę', 'Idę', 'ide', 'Ide') },
+        { id: 'jade', targetText: 'jadę', baseText: { de: 'ich fahre (mit Fahrzeug)' }, acceptedAnswers: polishAnswers('jadę', 'Jadę', 'jade', 'Jade') },
+        { id: 'park', targetText: 'park', baseText: { de: 'Park (Grundform)' }, acceptedAnswers: polishAnswers('park', 'Park') },
+        { id: 'parku', targetText: 'parku', baseText: { de: 'Park (Genitiv Sg.)' }, acceptedAnswers: polishAnswers('parku', 'Parku') },
+      ],
+      buildChips: ['Idę', 'do parku.', 'jadę', 'do hotelu'],
+      typeRecall: {
+        before: 'Idę do ',
+        answer: 'parku',
+        after: '.',
+        acceptedAnswers: polishAnswers('parku', 'Parku'),
+        fallbackChoices: ['parku', 'hotelu', 'sklepu', 'centrum'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ich gehe in den Park.' },
+        targetPhrase: 'Idę do parku.',
+        requiredTokens: ['idę', 'do', 'parku'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Sonniger Bürgersteig, kurze Zielansage im Gespräch.' },
+      trophyWord: {
+        word: 'park',
+        meaning: { de: 'Park' },
+        example: 'Idę do parku.',
+        whyThisWord: { de: 'Park ist maskulin unbelebt (Lehnwort aus Englisch/Französisch). Nominativ und Akkusativ Singular: park. Genitiv Singular: parku — nach der Präposition do (zu / nach). Plural Nominativ: parki. Wichtig: Polnisch unterscheidet streng iść / jechać (siehe P7 L6): zu Fuß idę do parku, mit Fahrzeug jadę do parku. Im Stadtkontext meist zu Fuß.' },
+      },
+      placeholderCaption: { de: 'Bürgersteig, Park-Schild in der Ferne, sonniger Spaziergang.' },
+      songMood: 'casual destination',
+      visualNotes: 'Walking with city park in view, park as masc inanim noun.',
+    }),
+  },
+  {
+    slug: 'how-long-ride',
+    title: { de: 'Wie lange dauert es?' },
+    situation: {
+      en: 'In or before a taxi ride, ask how long the trip will take.',
+      de: 'Im Taxi oder davor fragst du, wie lange die Fahrt dauert.',
+    },
+    pedagogicalGoal: 'Mit Jak długo jedziemy? eine A1-Dauerfrage stellen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Jak długo jedziemy?',
+        baseText: { de: 'Wie lange fahren wir?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach der Fahrtdauer.' },
+      chunks: [
+        { id: 'jak-dlugo', targetText: 'Jak długo', baseText: { de: 'Wie lange' } },
+        { id: 'jedziemy', targetText: 'jedziemy?', baseText: { de: 'fahren wir?' } },
+      ],
+      lessonItems: [
+        { id: 'dlugo', targetText: 'długo', baseText: { de: 'lange (Adverb)' }, acceptedAnswers: polishAnswers('długo', 'Długo', 'dlugo', 'Dlugo') },
+        { id: 'krotko', targetText: 'krótko', baseText: { de: 'kurz (Adverb)' }, acceptedAnswers: polishAnswers('krótko', 'Krótko', 'krotko', 'Krotko') },
+        { id: 'minut', targetText: 'minut', baseText: { de: 'Minuten (Genitiv Pl.)' }, acceptedAnswers: polishAnswers('minut', 'Minut') },
+        { id: 'jak', targetText: 'jak', baseText: { de: 'wie' }, acceptedAnswers: polishAnswers('jak', 'Jak') },
+      ],
+      buildChips: ['Jak długo', 'jedziemy?', 'krótko?', 'piętnaście minut'],
+      typeRecall: {
+        before: 'Jak ',
+        answer: 'długo',
+        after: ' jedziemy?',
+        acceptedAnswers: polishAnswers('długo', 'Długo', 'dlugo', 'Dlugo'),
+        fallbackChoices: ['długo', 'krótko', 'daleko', 'blisko'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Wie lange fahren wir?' },
+        targetPhrase: 'Jak długo jedziemy?',
+        requiredTokens: ['jak', 'długo', 'jedziemy'],
+        optionalTokens: ['krótko'],
+      },
+      sceneCaption: { de: 'Im Taxi, Blick aufs Display oder die Uhr, ruhige Dauerfrage.' },
+      trophyWord: {
+        word: 'długo',
+        meaning: { de: 'lange (Adverb der Dauer)' },
+        example: 'Jak długo jedziemy?',
+        whyThisWord: { de: 'Długo ist das Adverb der Zeitdauer (lange). Pendant: krótko (kurz). Klar abgegrenzt von daleko / blisko (siehe P3 L2) — daleko = räumliche Distanz, długo = zeitliche Dauer. Polnisches Adjektiv: długi (m), długa (f), długie (n). Aber das Adverb długo ist invariant. Im Verkehr fragt man nach Dauer mit Jak długo...? — nach Distanz mit Czy to daleko?.' },
+      },
+      placeholderCaption: { de: 'Im Taxi mit Blick auf die Uhr, ruhige Dauerfrage.' },
+      songMood: 'duration question',
+      visualNotes: 'Watch close-up, taxi interior, długo as duration adverb.',
+    }),
+  },
+  {
+    slug: 'we-are-there',
+    title: { de: 'Wir sind schon da' },
+    situation: {
+      en: 'Arriving at the destination, announce that you have arrived.',
+      de: 'Bei der Ankunft sagst du, dass ihr schon da seid.',
+    },
+    pedagogicalGoal: 'Mit Już jesteśmy na miejscu die A1-Ankunftsansage mit Lokativ formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Już jesteśmy na miejscu.',
+        baseText: { de: 'Wir sind schon am Ziel.' },
+      },
+      meaning: { de: 'Eine A1-Ankunftsansage am Ende einer Fahrt.' },
+      chunks: [
+        { id: 'juz', targetText: 'Już', baseText: { de: 'Schon' } },
+        { id: 'jestesmy', targetText: 'jesteśmy', baseText: { de: 'sind wir' } },
+        { id: 'na-miejscu', targetText: 'na miejscu.', baseText: { de: 'am Ziel.' } },
+      ],
+      lessonItems: [
+        { id: 'juz', targetText: 'już', baseText: { de: 'schon (Adverb)' }, acceptedAnswers: polishAnswers('już', 'Już', 'juz', 'Juz') },
+        { id: 'jestesmy', targetText: 'jesteśmy', baseText: { de: 'wir sind (1. Person Pl.)' }, acceptedAnswers: polishAnswers('jesteśmy', 'Jesteśmy', 'jestesmy', 'Jestesmy') },
+        { id: 'miejsce', targetText: 'miejsce', baseText: { de: 'Platz / Ort (Grundform)' }, acceptedAnswers: polishAnswers('miejsce', 'Miejsce') },
+        { id: 'miejscu', targetText: 'miejscu', baseText: { de: 'Platz (Lokativ Sg.)' }, acceptedAnswers: polishAnswers('miejscu', 'Miejscu') },
+      ],
+      buildChips: ['Już', 'jesteśmy', 'na miejscu.', 'w hotelu.', 'w domu.'],
+      typeRecall: {
+        before: '',
+        answer: 'Już',
+        after: ' jesteśmy na miejscu.',
+        acceptedAnswers: polishAnswers('Już', 'już', 'Juz', 'juz'),
+        fallbackChoices: ['Już', 'Jeszcze', 'Wkrótce', 'Zaraz'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Wir sind schon am Ziel.' },
+        targetPhrase: 'Już jesteśmy na miejscu.',
+        requiredTokens: ['już', 'jesteśmy', 'na', 'miejscu'],
+        optionalTokens: ['hotelu'],
+      },
+      sceneCaption: { de: 'Ankunft am Ziel, Tür öffnet sich, ruhige Bestätigung.' },
+      trophyWord: {
+        word: 'już',
+        meaning: { de: 'schon' },
+        example: 'Już jesteśmy na miejscu.',
+        whyThisWord: { de: 'Już ist ein zentrales A1-Aspekt-Adverb: "schon" / "bereits", betont die abgeschlossene Aktion oder einen früher-als-erwartet Zeitpunkt. Gegenstücke: jeszcze (noch, siehe P2 L5), już nie (nicht mehr), jeszcze nie (noch nicht). Mit Verben der Bewegung markiert już die Ankunft: już jesteśmy (wir sind schon da), już idę (ich komme schon). Vorsicht: Czech `už` und Polish `już` sind verwandt aber orthografisch verschieden — die polnische Form hat `ż`.' },
+      },
+      placeholderCaption: { de: 'Ankunftsmoment, Tür offen, ruhige Bestätigung.' },
+      songMood: 'arrival announcement',
+      visualNotes: 'Door opening at destination, już as aspect adverb.',
+    }),
+  },
+]
+
+const polishA1Practical7Lessons = makePolishPracticalLessons(
+  GUIDED_TODAY_PATH_POLISH_SEVEN_METADATA,
+  polishA1Practical7Inputs,
+  'Du hast Polnisch A1 Praxis 7 abgeschlossen.',
+)
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -63142,6 +63667,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...polishA1Practical4Lessons,
   ...polishA1Practical5Lessons,
   ...polishA1Practical6Lessons,
+  ...polishA1Practical7Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -63240,6 +63766,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_POLISH_FOUR_METADATA,
     GUIDED_TODAY_PATH_POLISH_FIVE_METADATA,
     GUIDED_TODAY_PATH_POLISH_SIX_METADATA,
+    GUIDED_TODAY_PATH_POLISH_SEVEN_METADATA,
   ]
 }
 
