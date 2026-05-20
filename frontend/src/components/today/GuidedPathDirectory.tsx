@@ -110,10 +110,10 @@ export function GuidedPathDirectory({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-[var(--text-primary)]">
-                  {formatGuidedPathLabel(selectedPath, t)}
+                  {formatGuidedPathLabel(selectedPath, t, { includeLanguage: false })}
                 </p>
                 <p className="mt-1 text-xs text-[var(--text-secondary)]">
-                  {t('today.path.compactProgress', getPathProgress(progress, selectedPath.id))}
+                  {formatPathProgressFraction(getPathProgress(progress, selectedPath.id))}
                 </p>
               </div>
               <Button asChild type="button" size="sm" variant="outline">
@@ -217,13 +217,13 @@ export function GuidedPathDirectory({
                     <span className="flex items-start justify-between gap-2">
                       <span className="min-w-0">
                         <span className="block text-base font-semibold text-[var(--text-primary)]">
-                          {formatGuidedPathLabel(path, t)}
+                          {formatGuidedPathLabel(path, t, { includeLanguage: false })}
                         </span>
                       </span>
                       {isSelected && <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--accent)]" />}
                     </span>
                     <span className="mt-3 block text-xs text-[var(--text-muted)]">
-                      {t('today.path.compactProgress', pathProgress)}
+                      {formatPathProgressFraction(pathProgress)}
                     </span>
                   </button>
                 )
@@ -241,6 +241,10 @@ function getPathProgress(progress: TodayProgressState, pathId: string) {
     completed: progress.courses[pathId]?.completedLessonIds.length ?? 0,
     total: getGuidedPathLessons(pathId).length,
   }
+}
+
+function formatPathProgressFraction(pathProgress: ReturnType<typeof getPathProgress>) {
+  return `${pathProgress.completed}/${pathProgress.total}`
 }
 
 function collectLanguages(pathOptions: GuidedPathMetadata[]): GuidedTargetLanguage[] {

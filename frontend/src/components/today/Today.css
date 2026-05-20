@@ -301,6 +301,7 @@
 .today-path-segmentGrid {
   --today-node-size: clamp(3.6rem, 7vw, 5.2rem);
   align-items: stretch;
+  grid-template-columns: repeat(5, var(--today-node-size));
 }
 
 .today-segment-reviewTile {
@@ -518,24 +519,58 @@
   position: relative;
 }
 
-.today-path-mobileRailAsset {
-  bottom: 0.55rem;
-  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--today-glow) 44%, transparent));
-  height: calc(100% - 1.1rem);
-  left: calc((3.35rem - 4.2rem) / 2);
-  object-fit: fill;
+.today-path-mobileSegment {
+  display: grid;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.today-path-mobileConnectorSegment {
+  display: block;
+  grid-column: 1;
+  height: 0.48rem;
+  justify-self: start;
+  margin-left: calc((3.35rem - 0.14rem) / 2);
   pointer-events: none;
-  position: absolute;
-  top: 0.55rem;
-  width: 4.2rem;
+  position: relative;
+  width: 0.14rem;
   z-index: 0;
 }
 
-.today-path-mobileSegment {
-  display: grid;
-  gap: 0.36rem;
-  position: relative;
-  z-index: 1;
+.today-path-mobileConnectorSegment::before,
+.today-path-mobileConnectorSegment::after {
+  content: "";
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.today-path-mobileConnectorSegment::before {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--today-accent-strong) 72%, transparent),
+    color-mix(in srgb, var(--today-glow) 92%, transparent),
+    color-mix(in srgb, var(--today-accent-strong) 62%, transparent)
+  );
+  border-radius: 999px;
+  bottom: -0.05rem;
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--today-glow) 54%, transparent),
+    0 0 18px color-mix(in srgb, var(--today-accent) 28%, transparent);
+  top: -0.05rem;
+  width: 2px;
+}
+
+.today-path-mobileConnectorSegment::after {
+  background: radial-gradient(circle, #fff9b7 0%, var(--today-accent-strong) 42%, transparent 70%);
+  border-radius: 999px;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--today-glow) 76%, transparent);
+  height: 0.34rem;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.34rem;
 }
 
 .today-path-mobileRewards {
@@ -564,7 +599,7 @@
   justify-self: center;
   overflow: hidden;
   width: var(--today-node-size);
-  z-index: 1;
+  z-index: 2;
 }
 
 .today-path-railLesson {
@@ -807,6 +842,13 @@
     padding: 0;
   }
 
+  .today-path-mobileRewards .today-segment-trophyTile {
+    background: transparent;
+    border-width: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
   .today-path-mobileRewards .today-path-nodeMedia {
     min-width: 0;
   }
@@ -819,6 +861,11 @@
   .today-path-mobileRewards .today-segment-trophyImage {
     height: 2.8rem;
     width: 2.8rem;
+  }
+
+  .today-path-mobileRewards .today-segment-trophyTile .today-path-nodeCopy,
+  .today-path-mobileRewards .today-segment-trophyTile .today-segment-trophyComplete {
+    display: none;
   }
 }
 
@@ -838,26 +885,67 @@
     position: relative;
   }
 
-  .today-path-desktopRailAsset {
-    filter: drop-shadow(0 0 16px color-mix(in srgb, var(--today-glow) 36%, transparent));
-    height: clamp(3.35rem, 5vw, 4.55rem);
-    left: 0;
-    object-fit: fill;
-    pointer-events: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    z-index: 0;
-  }
-
   .today-path-segmentGrid {
+    --today-node-size: clamp(4.05rem, 5.6vw, 5.15rem);
     align-items: center;
-    gap: clamp(1rem, 5vw, 5.6rem);
+    display: grid;
+    gap: 0;
+    grid-template-columns:
+      var(--today-node-size) minmax(1.8rem, 1fr)
+      var(--today-node-size) minmax(1.8rem, 1fr)
+      var(--today-node-size) minmax(1.8rem, 1fr)
+      var(--today-node-size) minmax(1.8rem, 1fr)
+      var(--today-node-size);
     justify-items: center;
     padding-block: clamp(0.55rem, 1.6vw, 0.9rem);
     position: relative;
     z-index: 1;
+  }
+
+  .today-path-desktopConnectorSegment {
+    align-self: center;
+    display: block;
+    height: clamp(0.82rem, 1.2vw, 1.05rem);
+    justify-self: stretch;
+    min-width: 1.6rem;
+    pointer-events: none;
+    position: relative;
+    z-index: 0;
+  }
+
+  .today-path-desktopConnectorSegment::before,
+  .today-path-desktopConnectorSegment::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+  }
+
+  .today-path-desktopConnectorSegment::before {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--today-accent-strong) 58%, transparent),
+      color-mix(in srgb, var(--today-glow) 96%, transparent) 50%,
+      color-mix(in srgb, var(--today-accent-strong) 58%, transparent)
+    );
+    border-radius: 999px;
+    box-shadow:
+      0 0 12px color-mix(in srgb, var(--today-glow) 48%, transparent),
+      0 0 26px color-mix(in srgb, var(--today-accent) 20%, transparent);
+    height: 2px;
+    left: -0.05rem;
+    right: -0.05rem;
+    transform: translateY(-50%);
+  }
+
+  .today-path-desktopConnectorSegment::after {
+    background: radial-gradient(circle, #fff9c7 0%, var(--today-accent-strong) 36%, transparent 72%);
+    border-radius: 999px;
+    box-shadow: 0 0 14px color-mix(in srgb, var(--today-glow) 68%, transparent);
+    height: 0.36rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.36rem;
   }
 
   .today-path-desktopRewards {

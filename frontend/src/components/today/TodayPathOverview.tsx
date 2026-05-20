@@ -1,5 +1,5 @@
 import { CheckCircle2, ChevronDown, ChevronRight, Play, Settings } from 'lucide-react'
-import { type ReactNode, useState } from 'react'
+import { Fragment, type ReactNode, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   resolveGuidedBaseContent,
@@ -23,8 +23,6 @@ import { cn } from '@/lib/utils'
 
 const TODAY_PATH_HERO_ASSET = '/guided/today/today-orb-hero.png'
 const TODAY_PATH_LESSON_ORB_ASSET = '/guided/today/today-lesson-orb.png'
-const TODAY_PATH_MOBILE_RAIL_ASSET = '/guided/today/today-path-rail-mobile.png'
-const TODAY_PATH_DESKTOP_RAIL_ASSET = '/guided/today/today-path-rail-desktop.png'
 
 const GUIDED_SEGMENT_REVIEWS = [
   {
@@ -198,30 +196,27 @@ export function TodayPathOverview({
         </h2>
 
         <div className="today-path-mobileFlow">
-          <img
-            src={TODAY_PATH_MOBILE_RAIL_ASSET}
-            alt=""
-            className="today-path-mobileRailAsset"
-            draggable={false}
-            aria-hidden="true"
-          />
           {segmentStates.map((segment) => (
             <div key={segment.segment} className="today-path-mobileSegment">
-              {segment.lessons.map((entry) => (
-                <LessonPathCard
-                  key={entry.lesson.id}
-                  lesson={entry.lesson}
-                  preferredBaseLanguage={preferredBaseLanguage}
-                  status={entry.status}
-                  isRecommended={entry.isRecommended}
-                  isSelected={entry.isSelected}
-                  isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
-                  completedVibeIds={entry.completedVibeIds}
-                  selectedVibeId={selectedVibeId}
-                  showRailLabel
-                  onSelectLesson={onSelectLesson}
-                  onStartLesson={onStartLesson}
-                />
+              {segment.lessons.map((entry, index) => (
+                <Fragment key={entry.lesson.id}>
+                  <LessonPathCard
+                    lesson={entry.lesson}
+                    preferredBaseLanguage={preferredBaseLanguage}
+                    status={entry.status}
+                    isRecommended={entry.isRecommended}
+                    isSelected={entry.isSelected}
+                    isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
+                    completedVibeIds={entry.completedVibeIds}
+                    selectedVibeId={selectedVibeId}
+                    showRailLabel
+                    onSelectLesson={onSelectLesson}
+                    onStartLesson={onStartLesson}
+                  />
+                  {index < segment.lessons.length - 1 && (
+                    <span className="today-path-mobileConnectorSegment" aria-hidden="true" />
+                  )}
+                </Fragment>
               ))}
               <div className="today-path-mobileRewards">
                 <SegmentReviewTile
@@ -247,27 +242,24 @@ export function TodayPathOverview({
           {segmentStates.map((segment) => (
             <div key={segment.segment} className="today-path-desktopSegment">
               <div className="today-path-segmentGrid grid grid-cols-5 gap-2">
-                <img
-                  src={TODAY_PATH_DESKTOP_RAIL_ASSET}
-                  alt=""
-                  className="today-path-desktopRailAsset"
-                  draggable={false}
-                  aria-hidden="true"
-                />
-                {segment.lessons.map((entry) => (
-                  <LessonPathCard
-                    key={entry.lesson.id}
-                    lesson={entry.lesson}
-                    preferredBaseLanguage={preferredBaseLanguage}
-                    status={entry.status}
-                    isRecommended={entry.isRecommended}
-                    isSelected={entry.isSelected}
-                    isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
-                    completedVibeIds={entry.completedVibeIds}
-                    selectedVibeId={selectedVibeId}
-                    onSelectLesson={onSelectLesson}
-                    onStartLesson={onStartLesson}
-                  />
+                {segment.lessons.map((entry, index) => (
+                  <Fragment key={entry.lesson.id}>
+                    <LessonPathCard
+                      lesson={entry.lesson}
+                      preferredBaseLanguage={preferredBaseLanguage}
+                      status={entry.status}
+                      isRecommended={entry.isRecommended}
+                      isSelected={entry.isSelected}
+                      isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
+                      completedVibeIds={entry.completedVibeIds}
+                      selectedVibeId={selectedVibeId}
+                      onSelectLesson={onSelectLesson}
+                      onStartLesson={onStartLesson}
+                    />
+                    {index < segment.lessons.length - 1 && (
+                      <span className="today-path-desktopConnectorSegment" aria-hidden="true" />
+                    )}
+                  </Fragment>
                 ))}
               </div>
               <div className="today-path-desktopRewards grid grid-cols-2 gap-3">
