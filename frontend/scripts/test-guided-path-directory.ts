@@ -80,9 +80,24 @@ for (const path of englishPathOptions) {
     formatGuidedPathLabel(path, createT('fr')) === `anglais A1 P${numberSuffix}`,
     { observed: formatGuidedPathLabel(path, createT('fr')), expected: `anglais A1 P${numberSuffix}` },
   )
+  assert(
+    `formatGuidedPathLabel can omit selected language in directory label A1 P${numberSuffix}`,
+    formatGuidedPathLabel(path, createT('en'), { includeLanguage: false }) === `A1 P${numberSuffix}`,
+    {
+      observed: formatGuidedPathLabel(path, createT('en'), { includeLanguage: false }),
+      expected: `A1 P${numberSuffix}`,
+    },
+  )
 }
 assert('directory intentionally hides path subtitles', !directorySource.includes('path.subtitle'))
-assert('directory shows compact progress instead of language or subtitle copy', directorySource.includes("t('today.path.compactProgress'") && !directorySource.includes('baseLanguage'))
+assert(
+  'directory shows path-only labels with fraction progress instead of language or subtitle copy',
+  directorySource.includes('includeLanguage: false')
+    && directorySource.includes('formatPathProgressFraction')
+    && !directorySource.includes("t('today.path.compactProgress'")
+    && !directorySource.includes('baseLanguage'),
+  directorySource,
+)
 assert('directory includes lightweight category group structure', containsAny(directorySource, ['categoryLabel', 'directoryGroup', 'today.path.directoryGroupPractical']))
 assert('directory is rendered as an accessible dialog', directorySource.includes('role="dialog"') && directorySource.includes('aria-modal="true"'))
 assert('directory closes when a path is selected', directorySource.includes('onSelectPath(path.id)') && directorySource.includes('onClose()'))
