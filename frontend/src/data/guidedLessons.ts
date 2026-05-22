@@ -1161,7 +1161,7 @@ const GUIDED_TODAY_PATH_POLISH_TWO_METADATA: GuidedPathMetadata = {
   id: 'polish-a1-practical-2',
   title: 'Polnisch A1 Praxis 2',
   shortTitle: 'A1 Praxis 2',
-  subtitle: { de: 'Kleine Hilfe und einfache Entscheidungen auf Polnisch' },
+  subtitle: { de: 'Kleine Hilfe und einfache Entscheidungen auf Polnisch', en: 'Small help and easy choices in Polish' },
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'Polish',
@@ -46240,7 +46240,7 @@ const polishA1Practical1Lessons: GuidedLessonDefinition[] = polishA1Practical1In
 function makePolishPracticalLessons(
   metadata: GuidedPathMetadata,
   inputs: PolishP1LessonInput[],
-  completionSituation: string,
+  completionSituation: { de: string; en: string },
 ): GuidedLessonDefinition[] {
   return inputs.map((lessonInput, index) => {
     const lessonNumber = index + 1
@@ -46271,8 +46271,11 @@ function makePolishPracticalLessons(
       fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
       status: 'active',
       nextLessonTeaser: {
-        title: nextInput?.title ?? { de: 'Pfad abgeschlossen' },
-        situation: { de: nextInput?.situation.de ?? completionSituation },
+        title: nextInput?.title ?? { de: 'Pfad abgeschlossen', en: 'Path complete' },
+        situation: {
+          de: nextInput?.situation.de ?? completionSituation.de,
+          en: nextInput?.situation.en ?? completionSituation.en,
+        },
       },
       vibeVariants: {
         bright: lessonInput.variant,
@@ -46284,7 +46287,7 @@ function makePolishPracticalLessons(
 const polishA1Practical2Inputs: PolishP1LessonInput[] = [
   {
     slug: 'have-question',
-    title: { de: 'Ich habe eine Frage' },
+    title: { de: 'Ich habe eine Frage', en: 'I have a question' },
     situation: {
       en: 'At a small counter, politely open a help-ask by stating you have a question.',
       de: 'An einem kleinen Tresen eröffnest du höflich eine Hilfsanfrage mit einer Frage.',
@@ -46293,19 +46296,19 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
     variant: makeBrightPolishP1Variant({
       corePhrase: {
         targetText: 'Przepraszam, mam pytanie. Czy może mi pan pomóc?',
-        baseText: { de: 'Entschuldigung, ich habe eine Frage. Können Sie mir helfen?' },
+        baseText: { de: 'Entschuldigung, ich habe eine Frage. Können Sie mir helfen?', en: 'Excuse me, I have a question. Can you help me?' },
       },
-      meaning: { de: 'Eine offene, höfliche A1-Bitte um Hilfe ohne sofort konkrete Details zu nennen.' },
+      meaning: { de: 'Eine offene, höfliche A1-Bitte um Hilfe ohne sofort konkrete Details zu nennen.', en: 'An open, polite A1 help-ask that doesn’t name the question yet.' },
       chunks: [
-        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
-        { id: 'mam-pytanie', targetText: 'mam pytanie.', baseText: { de: 'ich habe eine Frage.' } },
-        { id: 'czy-moze-mi-pan-pomoc', targetText: 'Czy może mi pan pomóc?', baseText: { de: 'Können Sie mir helfen?' } },
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,', en: 'Excuse me,' } },
+        { id: 'mam-pytanie', targetText: 'mam pytanie.', baseText: { de: 'ich habe eine Frage.', en: 'I have a question.' } },
+        { id: 'czy-moze-mi-pan-pomoc', targetText: 'Czy może mi pan pomóc?', baseText: { de: 'Können Sie mir helfen?', en: 'Can you help me?' } },
       ],
       lessonItems: [
-        { id: 'mam', targetText: 'mam', baseText: { de: 'ich habe' }, acceptedAnswers: polishAnswers('mam', 'Mam') },
-        { id: 'pytanie', targetText: 'pytanie', baseText: { de: 'Frage' }, acceptedAnswers: polishAnswers('pytanie', 'Pytanie') },
-        { id: 'moze', targetText: 'może', baseText: { de: 'kann (3. Person Sg.)' }, acceptedAnswers: polishAnswers('może', 'Może', 'moze', 'Moze') },
-        { id: 'pomoc-verb', targetText: 'pomóc', baseText: { de: 'helfen (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('pomóc', 'Pomóc', 'pomoc', 'Pomoc') },
+        { id: 'mam', targetText: 'mam', baseText: { de: 'ich habe', en: 'I have' }, acceptedAnswers: polishAnswers('mam', 'Mam') },
+        { id: 'pytanie', targetText: 'pytanie', baseText: { de: 'Frage', en: 'question' }, acceptedAnswers: polishAnswers('pytanie', 'Pytanie') },
+        { id: 'moze', targetText: 'może', baseText: { de: 'kann (3. Person Sg.)', en: 'can / could (3rd-person sg.)' }, acceptedAnswers: polishAnswers('może', 'Może', 'moze', 'Moze') },
+        { id: 'pomoc-verb', targetText: 'pomóc', baseText: { de: 'helfen (Infinitiv, perfektiv)', en: 'to help (infinitive, perfective)' }, acceptedAnswers: polishAnswers('pomóc', 'Pomóc', 'pomoc', 'Pomoc') },
       ],
       buildChips: ['Przepraszam,', 'mam pytanie.', 'Czy może mi pan pomóc?', 'cześć', 'tak'],
       typeRecall: {
@@ -46316,26 +46319,26 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         fallbackChoices: ['pytanie', 'problem', 'sprawę', 'czas'],
       },
       speakTarget: {
-        baseCue: { de: 'Entschuldigung, ich habe eine Frage. Können Sie mir helfen?' },
+        baseCue: { de: 'Entschuldigung, ich habe eine Frage. Können Sie mir helfen?', en: 'Excuse me, I have a question. Can you help me?' },
         targetPhrase: 'Przepraszam, mam pytanie. Czy może mi pan pomóc?',
         requiredTokens: ['przepraszam', 'mam', 'pytanie', 'czy', 'może', 'mi', 'pan', 'pomóc'],
         optionalTokens: ['pani'],
       },
-      sceneCaption: { de: 'Kleiner Servicetresen, ruhige Eröffnung einer Hilfsanfrage.' },
+      sceneCaption: { de: 'Kleiner Servicetresen, ruhige Eröffnung einer Hilfsanfrage.', en: 'Small service counter, a calm opening to a help-ask.' },
       trophyWord: {
         word: 'pytanie',
-        meaning: { de: 'Frage' },
+        meaning: { de: 'Frage', en: 'question' },
         example: 'Mam pytanie.',
-        whyThisWord: { de: 'Pytanie ist neutrum (Nominativ und Akkusativ identisch: pytanie). Plural pytania. Im Satz Mam pytanie steht es im Akkusativ als direktes Objekt von mam (mieć — haben). Eine offene A1-Hilfsanfrage öffnet im Polnischen mit mam pytanie, bevor das Detail kommt.' },
+        whyThisWord: { de: 'Pytanie ist neutrum (Nominativ und Akkusativ identisch: pytanie). Plural pytania. Im Satz Mam pytanie steht es im Akkusativ als direktes Objekt von mam (mieć — haben). Eine offene A1-Hilfsanfrage öffnet im Polnischen mit mam pytanie, bevor das Detail kommt.', en: 'Pytanie is neuter (nominative and accusative are identical: pytanie). Plural: pytania. In Mam pytanie it stands in the accusative as the direct object of mam (from mieć — to have). An open A1 help-ask in Polish typically opens with mam pytanie before the actual question comes.' },
       },
-      placeholderCaption: { de: 'Tresen, ruhige offene Hilfsanfrage am Anfang.' },
+      placeholderCaption: { de: 'Tresen, ruhige offene Hilfsanfrage am Anfang.', en: 'Counter, a calm open help-ask at the start.' },
       songMood: 'open question opener',
       visualNotes: 'Counter, calm questioning glance, mam pytanie highlighted as opener.',
     }),
   },
   {
     slug: 'write-it-down',
-    title: { de: 'Bitte aufschreiben' },
+    title: { de: 'Bitte aufschreiben', en: 'Please write it down' },
     situation: {
       en: 'Ask politely that something be written down for accuracy.',
       de: 'Du bittest höflich darum, etwas zur Sicherheit aufzuschreiben.',
@@ -46344,19 +46347,19 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
     variant: makeBrightPolishP1Variant({
       corePhrase: {
         targetText: 'Przepraszam, proszę to napisać.',
-        baseText: { de: 'Entschuldigung, bitte schreiben Sie das auf.' },
+        baseText: { de: 'Entschuldigung, bitte schreiben Sie das auf.', en: 'Sorry, please write it down.' },
       },
-      meaning: { de: 'Eine höfliche A1-Bitte, etwas zur Sicherheit aufzuschreiben.' },
+      meaning: { de: 'Eine höfliche A1-Bitte, etwas zur Sicherheit aufzuschreiben.', en: 'A polite A1 request to write something down so the details are accurate.' },
       chunks: [
-        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
-        { id: 'prosze-to', targetText: 'proszę to', baseText: { de: 'bitte das' } },
-        { id: 'napisac', targetText: 'napisać.', baseText: { de: 'aufschreiben.' } },
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,', en: 'Sorry,' } },
+        { id: 'prosze-to', targetText: 'proszę to', baseText: { de: 'bitte das', en: 'please... this' } },
+        { id: 'napisac', targetText: 'napisać.', baseText: { de: 'aufschreiben.', en: 'write down.' } },
       ],
       lessonItems: [
-        { id: 'pisac', targetText: 'pisać', baseText: { de: 'schreiben (Infinitiv, imperfektiv)' }, acceptedAnswers: polishAnswers('pisać', 'Pisać', 'pisac', 'Pisac') },
-        { id: 'napisac', targetText: 'napisać', baseText: { de: 'aufschreiben (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('napisać', 'Napisać', 'napisac', 'Napisac') },
-        { id: 'to', targetText: 'to', baseText: { de: 'das / dies' }, acceptedAnswers: polishAnswers('to', 'To') },
-        { id: 'kartka', targetText: 'kartka', baseText: { de: 'Zettel' }, acceptedAnswers: polishAnswers('kartka', 'Kartka') },
+        { id: 'pisac', targetText: 'pisać', baseText: { de: 'schreiben (Infinitiv, imperfektiv)', en: 'to write (infinitive, imperfective)' }, acceptedAnswers: polishAnswers('pisać', 'Pisać', 'pisac', 'Pisac') },
+        { id: 'napisac', targetText: 'napisać', baseText: { de: 'aufschreiben (Infinitiv, perfektiv)', en: 'to write down (infinitive, perfective)' }, acceptedAnswers: polishAnswers('napisać', 'Napisać', 'napisac', 'Napisac') },
+        { id: 'to', targetText: 'to', baseText: { de: 'das / dies', en: 'this / that' }, acceptedAnswers: polishAnswers('to', 'To') },
+        { id: 'kartka', targetText: 'kartka', baseText: { de: 'Zettel', en: 'slip / piece of paper' }, acceptedAnswers: polishAnswers('kartka', 'Kartka') },
       ],
       buildChips: ['Przepraszam,', 'proszę to', 'napisać.', 'pokazać', 'powtórzyć'],
       typeRecall: {
@@ -46367,26 +46370,26 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         fallbackChoices: ['napisać', 'pokazać', 'powtórzyć', 'wziąć'],
       },
       speakTarget: {
-        baseCue: { de: 'Entschuldigung, bitte schreiben Sie das auf.' },
+        baseCue: { de: 'Entschuldigung, bitte schreiben Sie das auf.', en: 'Sorry, please write it down.' },
         targetPhrase: 'Przepraszam, proszę to napisać.',
         requiredTokens: ['przepraszam', 'proszę', 'to', 'napisać'],
         optionalTokens: [],
       },
-      sceneCaption: { de: 'Tresen, Notizblock zwischen den Personen, ruhige Bitte um schriftliche Notiz.' },
+      sceneCaption: { de: 'Tresen, Notizblock zwischen den Personen, ruhige Bitte um schriftliche Notiz.', en: 'Counter, a notepad between the two of you, a calm request to write something down.' },
       trophyWord: {
         word: 'napisać',
-        meaning: { de: 'aufschreiben / niederschreiben (perfektiv)' },
+        meaning: { de: 'aufschreiben / niederschreiben (perfektiv)', en: 'to write down / to write out (perfective)' },
         example: 'Proszę to napisać.',
-        whyThisWord: { de: 'Napisać ist die perfektive Form des Verbs pisać/napisać (schreiben). Perfektiv heißt: einmalig, abgeschlossen — ideal für eine konkrete Bitte. Mit Proszę + Perfektiv-Infinitiv wird die Bitte um eine einzelne, klar abgeschlossene Handlung gebildet. Für eine Gewohnheit oder den Prozess würde imperfektiv pisać verwendet, z. B. lubię pisać (ich schreibe gern).' },
+        whyThisWord: { de: 'Napisać ist die perfektive Form des Verbs pisać/napisać (schreiben). Perfektiv heißt: einmalig, abgeschlossen — ideal für eine konkrete Bitte. Mit Proszę + Perfektiv-Infinitiv wird die Bitte um eine einzelne, klar abgeschlossene Handlung gebildet. Für eine Gewohnheit oder den Prozess würde imperfektiv pisać verwendet, z. B. lubię pisać (ich schreibe gern).', en: 'Napisać is the perfective form of the verb pair pisać/napisać (to write). Perfective means one-time, completed — perfect for a single concrete request. With Proszę + perfective infinitive you build a polite request for one specific, finished action. For a habit or process you’d use the imperfective pisać instead (e.g., lubię pisać — I like writing).' },
       },
-      placeholderCaption: { de: 'Tresen, Notizblock, ruhige Schreibbitte.' },
+      placeholderCaption: { de: 'Tresen, Notizblock, ruhige Schreibbitte.', en: 'Counter, a notepad, a calm write-it-down request.' },
       songMood: 'careful note-taking',
       visualNotes: 'Pen and notepad on counter, napisać paired with the perfective/imperfective contrast.',
     }),
   },
   {
     slug: 'show-on-map',
-    title: { de: 'Auf der Karte zeigen' },
+    title: { de: 'Auf der Karte zeigen', en: 'Show on the map' },
     situation: {
       en: 'Ask someone to show you a location on a visible map.',
       de: 'Du bittest jemanden, dir einen Ort auf einer Karte zu zeigen.',
@@ -46395,18 +46398,18 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
     variant: makeBrightPolishP1Variant({
       corePhrase: {
         targetText: 'Proszę pokazać na mapie.',
-        baseText: { de: 'Bitte zeigen Sie es auf der Karte.' },
+        baseText: { de: 'Bitte zeigen Sie es auf der Karte.', en: 'Please show me on the map.' },
       },
-      meaning: { de: 'Eine kurze A1-Bitte um eine visuelle Erklärung auf einer Karte.' },
+      meaning: { de: 'Eine kurze A1-Bitte um eine visuelle Erklärung auf einer Karte.', en: 'A short A1 request for a visual pointer on a map.' },
       chunks: [
-        { id: 'prosze-pokazac', targetText: 'Proszę pokazać', baseText: { de: 'Bitte zeigen' } },
-        { id: 'na-mapie', targetText: 'na mapie.', baseText: { de: 'auf der Karte.' } },
+        { id: 'prosze-pokazac', targetText: 'Proszę pokazać', baseText: { de: 'Bitte zeigen', en: 'Please show me' } },
+        { id: 'na-mapie', targetText: 'na mapie.', baseText: { de: 'auf der Karte.', en: 'on the map.' } },
       ],
       lessonItems: [
-        { id: 'pokazac', targetText: 'pokazać', baseText: { de: 'zeigen (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('pokazać', 'Pokazać', 'pokazac', 'Pokazac') },
-        { id: 'mapa', targetText: 'mapa', baseText: { de: 'Karte (Grundform / Nominativ)' }, acceptedAnswers: polishAnswers('mapa', 'Mapa') },
-        { id: 'mapie', targetText: 'mapie', baseText: { de: 'Karte (Lokativ Sg.)' }, acceptedAnswers: polishAnswers('mapie', 'Mapie') },
-        { id: 'tu', targetText: 'tu', baseText: { de: 'hier' }, acceptedAnswers: polishAnswers('tu', 'Tu') },
+        { id: 'pokazac', targetText: 'pokazać', baseText: { de: 'zeigen (Infinitiv, perfektiv)', en: 'to show (infinitive, perfective)' }, acceptedAnswers: polishAnswers('pokazać', 'Pokazać', 'pokazac', 'Pokazac') },
+        { id: 'mapa', targetText: 'mapa', baseText: { de: 'Karte (Grundform / Nominativ)', en: 'map (base form / nominative)' }, acceptedAnswers: polishAnswers('mapa', 'Mapa') },
+        { id: 'mapie', targetText: 'mapie', baseText: { de: 'Karte (Lokativ Sg.)', en: 'map (locative sg.)' }, acceptedAnswers: polishAnswers('mapie', 'Mapie') },
+        { id: 'tu', targetText: 'tu', baseText: { de: 'hier', en: 'here' }, acceptedAnswers: polishAnswers('tu', 'Tu') },
       ],
       buildChips: ['Proszę pokazać', 'na mapie.', 'na ekranie', 'w telefonie'],
       typeRecall: {
@@ -46417,26 +46420,26 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         fallbackChoices: ['mapie', 'ulicy', 'placu', 'mieście'],
       },
       speakTarget: {
-        baseCue: { de: 'Bitte zeigen Sie es auf der Karte.' },
+        baseCue: { de: 'Bitte zeigen Sie es auf der Karte.', en: 'Please show me on the map.' },
         targetPhrase: 'Proszę pokazać na mapie.',
         requiredTokens: ['proszę', 'pokazać', 'na', 'mapie'],
         optionalTokens: [],
       },
-      sceneCaption: { de: 'Karte auf dem Tresen ausgebreitet, ruhige Bitte um Hinweis auf die Stelle.' },
+      sceneCaption: { de: 'Karte auf dem Tresen ausgebreitet, ruhige Bitte um Hinweis auf die Stelle.', en: 'Map spread out on the counter, a calm request to point to the spot.' },
       trophyWord: {
         word: 'mapa',
-        meaning: { de: 'Karte (Stadtplan / Landkarte)' },
+        meaning: { de: 'Karte (Stadtplan / Landkarte)', en: 'map (city map / road map)' },
         example: 'Proszę pokazać na mapie.',
-        whyThisWord: { de: 'Mapa ist feminin. Nominativ Singular: mapa. Lokativ Singular: mapie. Nach der Präposition na für eine flache Oberfläche steht das Nomen im Lokativ — daher na mapie (auf der Karte). Genauso na ulicy (auf der Straße), na stole (auf dem Tisch). Plural Nominativ: mapy.' },
+        whyThisWord: { de: 'Mapa ist feminin. Nominativ Singular: mapa. Lokativ Singular: mapie. Nach der Präposition na für eine flache Oberfläche steht das Nomen im Lokativ — daher na mapie (auf der Karte). Genauso na ulicy (auf der Straße), na stole (auf dem Tisch). Plural Nominativ: mapy.', en: 'Mapa is feminine. Nominative singular: mapa. Locative singular: mapie. After the preposition na (for a flat surface), the noun goes into the locative — hence na mapie (on the map). Same pattern: na ulicy (on the street), na stole (on the table). Plural nominative: mapy.' },
       },
-      placeholderCaption: { de: 'Stadtplan auf dem Tresen, Hand zeigt auf einen Punkt.' },
+      placeholderCaption: { de: 'Stadtplan auf dem Tresen, Hand zeigt auf einen Punkt.', en: 'City map on the counter, a hand pointing at a spot.' },
       songMood: 'visual help',
       visualNotes: 'Open map on counter, pointing finger, mapie highlighted as locative after na.',
     }),
   },
   {
     slug: 'which-is-better',
-    title: { de: 'Was ist besser, dies oder jenes?' },
+    title: { de: 'Was ist besser, dies oder jenes?', en: 'Which is better, this or that?' },
     situation: {
       en: 'At a small shop, ask which of two visible options is better.',
       de: 'In einem kleinen Laden fragst du, was von zwei sichtbaren Optionen besser ist.',
@@ -46445,18 +46448,18 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
     variant: makeBrightPolishP1Variant({
       corePhrase: {
         targetText: 'Co jest lepsze, to czy tamto?',
-        baseText: { de: 'Was ist besser, dies oder jenes?' },
+        baseText: { de: 'Was ist besser, dies oder jenes?', en: 'Which is better, this one or that one?' },
       },
-      meaning: { de: 'Eine A1-Auswahlfrage zwischen zwei sichtbaren Optionen mit Neutrum-Demonstrativa.' },
+      meaning: { de: 'Eine A1-Auswahlfrage zwischen zwei sichtbaren Optionen mit Neutrum-Demonstrativa.', en: 'An A1 binary-choice question between two visible options using neuter demonstratives.' },
       chunks: [
-        { id: 'co-jest-lepsze', targetText: 'Co jest lepsze,', baseText: { de: 'Was ist besser,' } },
-        { id: 'to-czy-tamto', targetText: 'to czy tamto?', baseText: { de: 'dies oder jenes?' } },
+        { id: 'co-jest-lepsze', targetText: 'Co jest lepsze,', baseText: { de: 'Was ist besser,', en: 'Which is better,' } },
+        { id: 'to-czy-tamto', targetText: 'to czy tamto?', baseText: { de: 'dies oder jenes?', en: 'this one or that one?' } },
       ],
       lessonItems: [
-        { id: 'co', targetText: 'co', baseText: { de: 'was' }, acceptedAnswers: polishAnswers('co', 'Co') },
-        { id: 'lepsze', targetText: 'lepsze', baseText: { de: 'besser (neutrum, Komparativ)' }, acceptedAnswers: polishAnswers('lepsze', 'Lepsze') },
-        { id: 'to', targetText: 'to', baseText: { de: 'dies (neutrum, nah)' }, acceptedAnswers: polishAnswers('to', 'To') },
-        { id: 'tamto', targetText: 'tamto', baseText: { de: 'jenes (neutrum, fern)' }, acceptedAnswers: polishAnswers('tamto', 'Tamto') },
+        { id: 'co', targetText: 'co', baseText: { de: 'was', en: 'what / which' }, acceptedAnswers: polishAnswers('co', 'Co') },
+        { id: 'lepsze', targetText: 'lepsze', baseText: { de: 'besser (neutrum, Komparativ)', en: 'better (neuter, comparative)' }, acceptedAnswers: polishAnswers('lepsze', 'Lepsze') },
+        { id: 'to', targetText: 'to', baseText: { de: 'dies (neutrum, nah)', en: 'this (neuter, near)' }, acceptedAnswers: polishAnswers('to', 'To') },
+        { id: 'tamto', targetText: 'tamto', baseText: { de: 'jenes (neutrum, fern)', en: 'that (neuter, far)' }, acceptedAnswers: polishAnswers('tamto', 'Tamto') },
       ],
       buildChips: ['Co jest lepsze,', 'to czy tamto?', 'tu', 'tam'],
       typeRecall: {
@@ -46467,26 +46470,26 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         fallbackChoices: ['tamto', 'tamten', 'tamta', 'inne'],
       },
       speakTarget: {
-        baseCue: { de: 'Was ist besser, dies oder jenes?' },
+        baseCue: { de: 'Was ist besser, dies oder jenes?', en: 'Which is better, this one or that one?' },
         targetPhrase: 'Co jest lepsze, to czy tamto?',
         requiredTokens: ['co', 'jest', 'lepsze', 'to', 'czy', 'tamto'],
         optionalTokens: [],
       },
-      sceneCaption: { de: 'Zwei Waren nebeneinander auf dem Tresen, kurze Vergleichsfrage.' },
+      sceneCaption: { de: 'Zwei Waren nebeneinander auf dem Tresen, kurze Vergleichsfrage.', en: 'Two items side by side on the counter, a short comparison question.' },
       trophyWord: {
         word: 'tamto',
-        meaning: { de: 'jenes (neutrum, fern-deiktisch)' },
+        meaning: { de: 'jenes (neutrum, fern-deiktisch)', en: 'that (neuter, far-deictic)' },
         example: 'Co jest lepsze, to czy tamto?',
-        whyThisWord: { de: 'Tamto ist das Neutrum-Demonstrativum für ein entferntes Objekt — "jenes dort". Es passt zum Geschlecht des gemeinten Wortes: maskulin tamten, feminin tamta, neutrum tamto. Das nahe Pendant ist to (dies). Im Polnischen ist die deiktische Gegenüberstellung to / tamto frei wählbar, anders als im Deutschen, wo dies / jenes oft fehlt.' },
+        whyThisWord: { de: 'Tamto ist das Neutrum-Demonstrativum für ein entferntes Objekt — "jenes dort". Es passt zum Geschlecht des gemeinten Wortes: maskulin tamten, feminin tamta, neutrum tamto. Das nahe Pendant ist to (dies). Im Polnischen ist die deiktische Gegenüberstellung to / tamto frei wählbar, anders als im Deutschen, wo dies / jenes oft fehlt.', en: 'Tamto is the neuter demonstrative for a distant object — "that one over there". It matches the gender of the noun it refers to: masculine tamten, feminine tamta, neuter tamto. The near counterpart is to (this). Polish makes the to / tamto contrast available much more cleanly than English, which often blurs "this one" and "that one" in casual speech.' },
       },
-      placeholderCaption: { de: 'Zwei Waren auf dem Tresen, Vergleichsblick.' },
+      placeholderCaption: { de: 'Zwei Waren auf dem Tresen, Vergleichsblick.', en: 'Two items side by side on the counter, a comparing glance.' },
       songMood: 'binary choice',
       visualNotes: 'Two items side by side, deictic gesture, tamto contrasted with to.',
     }),
   },
   {
     slug: 'still-available',
-    title: { de: 'Gibt es noch Brot?' },
+    title: { de: 'Gibt es noch Brot?', en: 'Is there still bread?' },
     situation: {
       en: 'At a small shop, ask whether an item is still available.',
       de: 'In einem kleinen Laden fragst du, ob noch etwas verfügbar ist.',
@@ -46495,19 +46498,19 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
     variant: makeBrightPolishP1Variant({
       corePhrase: {
         targetText: 'Czy jest jeszcze chleb?',
-        baseText: { de: 'Gibt es noch Brot?' },
+        baseText: { de: 'Gibt es noch Brot?', en: 'Is there still any bread?' },
       },
-      meaning: { de: 'Die A1-Standardfrage nach Restbestand im kleinen Laden.' },
+      meaning: { de: 'Die A1-Standardfrage nach Restbestand im kleinen Laden.', en: 'The A1 standard question for what’s left in a small shop.' },
       chunks: [
-        { id: 'czy-jest', targetText: 'Czy jest', baseText: { de: 'Gibt es' } },
-        { id: 'jeszcze', targetText: 'jeszcze', baseText: { de: 'noch' } },
-        { id: 'chleb', targetText: 'chleb?', baseText: { de: 'Brot?' } },
+        { id: 'czy-jest', targetText: 'Czy jest', baseText: { de: 'Gibt es', en: 'Is there' } },
+        { id: 'jeszcze', targetText: 'jeszcze', baseText: { de: 'noch', en: 'still' } },
+        { id: 'chleb', targetText: 'chleb?', baseText: { de: 'Brot?', en: 'bread?' } },
       ],
       lessonItems: [
-        { id: 'czy', targetText: 'czy', baseText: { de: 'Ja-/Nein-Fragepartikel' }, acceptedAnswers: polishAnswers('czy', 'Czy') },
-        { id: 'jeszcze', targetText: 'jeszcze', baseText: { de: 'noch / immer noch' }, acceptedAnswers: polishAnswers('jeszcze', 'Jeszcze') },
-        { id: 'chleb', targetText: 'chleb', baseText: { de: 'Brot (maskulin unbelebt)' }, acceptedAnswers: polishAnswers('chleb', 'Chleb') },
-        { id: 'mleko', targetText: 'mleko', baseText: { de: 'Milch (neutrum)' }, acceptedAnswers: polishAnswers('mleko', 'Mleko') },
+        { id: 'czy', targetText: 'czy', baseText: { de: 'Ja-/Nein-Fragepartikel', en: 'yes/no question particle' }, acceptedAnswers: polishAnswers('czy', 'Czy') },
+        { id: 'jeszcze', targetText: 'jeszcze', baseText: { de: 'noch / immer noch', en: 'still / yet' }, acceptedAnswers: polishAnswers('jeszcze', 'Jeszcze') },
+        { id: 'chleb', targetText: 'chleb', baseText: { de: 'Brot (maskulin unbelebt)', en: 'bread (masculine inanimate)' }, acceptedAnswers: polishAnswers('chleb', 'Chleb') },
+        { id: 'mleko', targetText: 'mleko', baseText: { de: 'Milch (neutrum)', en: 'milk (neuter)' }, acceptedAnswers: polishAnswers('mleko', 'Mleko') },
       ],
       buildChips: ['Czy jest', 'jeszcze', 'chleb?', 'mleko?', 'cukier?'],
       typeRecall: {
@@ -46518,26 +46521,26 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         fallbackChoices: ['jeszcze', 'tylko', 'zawsze', 'wcale'],
       },
       speakTarget: {
-        baseCue: { de: 'Gibt es noch Brot?' },
+        baseCue: { de: 'Gibt es noch Brot?', en: 'Is there still any bread?' },
         targetPhrase: 'Czy jest jeszcze chleb?',
         requiredTokens: ['czy', 'jest', 'jeszcze', 'chleb'],
         optionalTokens: [],
       },
-      sceneCaption: { de: 'Kleiner Laden am Nachmittag, Regal halb voll, knappe Verfügbarkeitsfrage.' },
+      sceneCaption: { de: 'Kleiner Laden am Nachmittag, Regal halb voll, knappe Verfügbarkeitsfrage.', en: 'Small shop in the afternoon, a half-empty shelf, a quick availability question.' },
       trophyWord: {
         word: 'jeszcze',
-        meaning: { de: 'noch / immer noch' },
+        meaning: { de: 'noch / immer noch', en: 'still / yet' },
         example: 'Czy jest jeszcze chleb?',
-        whyThisWord: { de: 'Jeszcze ist ein zentrales A1-Adverb mit zwei Hauptbedeutungen: "noch" (Restbestand: czy jest jeszcze chleb?) und "immer noch" (anhaltend: jeszcze tu jestem — ich bin immer noch hier). In Verfügbarkeitsfragen ist es der Standard-Marker und ersetzt elegant das deutsche "noch übrig".' },
+        whyThisWord: { de: 'Jeszcze ist ein zentrales A1-Adverb mit zwei Hauptbedeutungen: "noch" (Restbestand: czy jest jeszcze chleb?) und "immer noch" (anhaltend: jeszcze tu jestem — ich bin immer noch hier). In Verfügbarkeitsfragen ist es der Standard-Marker und ersetzt elegant das deutsche "noch übrig".', en: 'Jeszcze is a core A1 adverb with two main meanings: "still" for remaining stock (czy jest jeszcze chleb? — is there still bread?) and "still / yet" for an ongoing state (jeszcze tu jestem — I’m still here). In availability questions it’s the standard marker — neater than the English "any X left?" pattern.' },
       },
-      placeholderCaption: { de: 'Verkaufstheke, eines der letzten Brote, ruhige Restbestandsfrage.' },
+      placeholderCaption: { de: 'Verkaufstheke, eines der letzten Brote, ruhige Restbestandsfrage.', en: 'Shop counter, one of the last loaves of bread, a calm question about what’s left.' },
       songMood: 'simple availability check',
       visualNotes: 'Shelf with limited stock, jeszcze highlighted as availability marker.',
     }),
   },
   {
     slug: 'pay-by-card',
-    title: { de: 'Mit Karte bezahlen' },
+    title: { de: 'Mit Karte bezahlen', en: 'Pay by card' },
     situation: {
       en: 'At a café or shop counter, ask whether you can pay by card.',
       de: 'An einer Café- oder Ladentheke fragst du, ob du mit Karte zahlen kannst.',
@@ -46546,19 +46549,19 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
     variant: makeBrightPolishP1Variant({
       corePhrase: {
         targetText: 'Czy mogę zapłacić kartą?',
-        baseText: { de: 'Kann ich mit Karte zahlen?' },
+        baseText: { de: 'Kann ich mit Karte zahlen?', en: 'Can I pay by card?' },
       },
-      meaning: { de: 'Die A1-Frage nach Kartenzahlung an der Kasse.' },
+      meaning: { de: 'Die A1-Frage nach Kartenzahlung an der Kasse.', en: 'The A1 question about paying by card at the register.' },
       chunks: [
-        { id: 'czy-moge', targetText: 'Czy mogę', baseText: { de: 'Kann ich' } },
-        { id: 'zaplacic', targetText: 'zapłacić', baseText: { de: 'zahlen (perfektiv)' } },
-        { id: 'karta', targetText: 'kartą?', baseText: { de: 'mit Karte?' } },
+        { id: 'czy-moge', targetText: 'Czy mogę', baseText: { de: 'Kann ich', en: 'Can I' } },
+        { id: 'zaplacic', targetText: 'zapłacić', baseText: { de: 'zahlen (perfektiv)', en: 'pay (perfective)' } },
+        { id: 'karta', targetText: 'kartą?', baseText: { de: 'mit Karte?', en: 'by card?' } },
       ],
       lessonItems: [
-        { id: 'moge', targetText: 'mogę', baseText: { de: 'ich kann' }, acceptedAnswers: polishAnswers('mogę', 'Mogę', 'moge', 'Moge') },
-        { id: 'zaplacic', targetText: 'zapłacić', baseText: { de: 'zahlen (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('zapłacić', 'Zapłacić', 'zaplacic', 'Zaplacic') },
-        { id: 'karta', targetText: 'karta', baseText: { de: 'Karte (Grundform / Nominativ)' }, acceptedAnswers: polishAnswers('karta', 'Karta') },
-        { id: 'gotowka', targetText: 'gotówka', baseText: { de: 'Bargeld' }, acceptedAnswers: polishAnswers('gotówka', 'Gotówka', 'gotowka', 'Gotowka') },
+        { id: 'moge', targetText: 'mogę', baseText: { de: 'ich kann', en: 'I can' }, acceptedAnswers: polishAnswers('mogę', 'Mogę', 'moge', 'Moge') },
+        { id: 'zaplacic', targetText: 'zapłacić', baseText: { de: 'zahlen (Infinitiv, perfektiv)', en: 'to pay (infinitive, perfective)' }, acceptedAnswers: polishAnswers('zapłacić', 'Zapłacić', 'zaplacic', 'Zaplacic') },
+        { id: 'karta', targetText: 'karta', baseText: { de: 'Karte (Grundform / Nominativ)', en: 'card (base form / nominative)' }, acceptedAnswers: polishAnswers('karta', 'Karta') },
+        { id: 'gotowka', targetText: 'gotówka', baseText: { de: 'Bargeld', en: 'cash' }, acceptedAnswers: polishAnswers('gotówka', 'Gotówka', 'gotowka', 'Gotowka') },
       ],
       buildChips: ['Czy mogę', 'zapłacić', 'kartą?', 'gotówką?', 'tutaj'],
       typeRecall: {
@@ -46569,26 +46572,26 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         fallbackChoices: ['kartą', 'gotówką', 'tutaj', 'później'],
       },
       speakTarget: {
-        baseCue: { de: 'Kann ich mit Karte zahlen?' },
+        baseCue: { de: 'Kann ich mit Karte zahlen?', en: 'Can I pay by card?' },
         targetPhrase: 'Czy mogę zapłacić kartą?',
         requiredTokens: ['czy', 'mogę', 'zapłacić', 'kartą'],
         optionalTokens: [],
       },
-      sceneCaption: { de: 'Kassentisch, Karte in der Hand, ruhige Zahlungsfrage.' },
+      sceneCaption: { de: 'Kassentisch, Karte in der Hand, ruhige Zahlungsfrage.', en: 'Register, card in hand, a calm payment question.' },
       trophyWord: {
         word: 'karta',
-        meaning: { de: 'Karte (Bank- oder Kreditkarte)' },
+        meaning: { de: 'Karte (Bank- oder Kreditkarte)', en: 'card (bank or credit card)' },
         example: 'Czy mogę zapłacić kartą?',
-        whyThisWord: { de: 'Karta ist feminin. Nominativ Singular: karta. Akkusativ Singular: kartę. Im Satz Czy mogę zapłacić kartą? steht das Nomen jedoch im INSTRUMENTAL Singular (kartą), weil płacić / zapłacić das Mittel-Instrumental regiert — "wie / womit zahle ich". Genauso gotówką (mit Bargeld), kartą kredytową (mit Kreditkarte). Plural: karty.' },
+        whyThisWord: { de: 'Karta ist feminin. Nominativ Singular: karta. Akkusativ Singular: kartę. Im Satz Czy mogę zapłacić kartą? steht das Nomen jedoch im INSTRUMENTAL Singular (kartą), weil płacić / zapłacić das Mittel-Instrumental regiert — "wie / womit zahle ich". Genauso gotówką (mit Bargeld), kartą kredytową (mit Kreditkarte). Plural: karty.', en: 'Karta is feminine. Nominative singular: karta. Accusative singular: kartę. But in Czy mogę zapłacić kartą? the noun is in the INSTRUMENTAL singular (kartą), because płacić / zapłacić takes the instrumental for the means — "with what / how do I pay". Same pattern: gotówką (with cash), kartą kredytową (with a credit card). Plural: karty.' },
       },
-      placeholderCaption: { de: 'Kartenterminal an der Kasse, ruhige Zahlfrage.' },
+      placeholderCaption: { de: 'Kartenterminal an der Kasse, ruhige Zahlfrage.', en: 'Card terminal at the register, a calm pay-by-card question.' },
       songMood: 'quick payment check',
       visualNotes: 'Card terminal on counter, kartą paired with instrumental case.',
     }),
   },
   {
     slug: 'receipt-and-bag',
-    title: { de: 'Quittung und Tüte, bitte' },
+    title: { de: 'Quittung und Tüte, bitte', en: 'A receipt and a bag, please' },
     situation: {
       en: 'At a small shop after paying, ask politely for a receipt and a bag.',
       de: 'Im kleinen Laden nach dem Zahlen bittest du höflich um Quittung und Tüte.',
@@ -46597,19 +46600,19 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
     variant: makeBrightPolishP1Variant({
       corePhrase: {
         targetText: 'Poproszę paragon i torbę.',
-        baseText: { de: 'Quittung und Tüte, bitte.' },
+        baseText: { de: 'Quittung und Tüte, bitte.', en: 'A receipt and a bag, please.' },
       },
-      meaning: { de: 'Eine kombinierte A1-Bitte um zwei Service-Items am Ende der Bezahlung.' },
+      meaning: { de: 'Eine kombinierte A1-Bitte um zwei Service-Items am Ende der Bezahlung.', en: 'A combined A1 request for two service items at the end of paying.' },
       chunks: [
-        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'Ich hätte gern' } },
-        { id: 'paragon', targetText: 'paragon', baseText: { de: 'Quittung' } },
-        { id: 'i-torbe', targetText: 'i torbę.', baseText: { de: 'und Tüte.' } },
+        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'Ich hätte gern', en: 'I’d like' } },
+        { id: 'paragon', targetText: 'paragon', baseText: { de: 'Quittung', en: 'a receipt' } },
+        { id: 'i-torbe', targetText: 'i torbę.', baseText: { de: 'und Tüte.', en: 'and a bag.' } },
       ],
       lessonItems: [
-        { id: 'paragon', targetText: 'paragon', baseText: { de: 'Quittung (maskulin unbelebt)' }, acceptedAnswers: polishAnswers('paragon', 'Paragon') },
-        { id: 'torba', targetText: 'torba', baseText: { de: 'Tüte / Tasche (Grundform)' }, acceptedAnswers: polishAnswers('torba', 'Torba') },
-        { id: 'torbe', targetText: 'torbę', baseText: { de: 'Tüte / Tasche (Akkusativ Sg.)' }, acceptedAnswers: polishAnswers('torbę', 'Torbę', 'torbe', 'Torbe') },
-        { id: 'i', targetText: 'i', baseText: { de: 'und' }, acceptedAnswers: polishAnswers('i', 'I') },
+        { id: 'paragon', targetText: 'paragon', baseText: { de: 'Quittung (maskulin unbelebt)', en: 'receipt (masculine inanimate)' }, acceptedAnswers: polishAnswers('paragon', 'Paragon') },
+        { id: 'torba', targetText: 'torba', baseText: { de: 'Tüte / Tasche (Grundform)', en: 'bag (base form)' }, acceptedAnswers: polishAnswers('torba', 'Torba') },
+        { id: 'torbe', targetText: 'torbę', baseText: { de: 'Tüte / Tasche (Akkusativ Sg.)', en: 'bag (accusative sg.)' }, acceptedAnswers: polishAnswers('torbę', 'Torbę', 'torbe', 'Torbe') },
+        { id: 'i', targetText: 'i', baseText: { de: 'und', en: 'and' }, acceptedAnswers: polishAnswers('i', 'I') },
       ],
       buildChips: ['Poproszę', 'paragon', 'i torbę.', 'fakturę', 'reklamówkę'],
       typeRecall: {
@@ -46620,26 +46623,26 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         fallbackChoices: ['paragon', 'fakturę', 'reklamówkę', 'rachunek'],
       },
       speakTarget: {
-        baseCue: { de: 'Quittung und Tüte, bitte.' },
+        baseCue: { de: 'Quittung und Tüte, bitte.', en: 'A receipt and a bag, please.' },
         targetPhrase: 'Poproszę paragon i torbę.',
         requiredTokens: ['poproszę', 'paragon', 'i', 'torbę'],
         optionalTokens: [],
       },
-      sceneCaption: { de: 'Kasse, Bezahlvorgang fast vorbei, kurze Schlussbitte um Quittung und Tüte.' },
+      sceneCaption: { de: 'Kasse, Bezahlvorgang fast vorbei, kurze Schlussbitte um Quittung und Tüte.', en: 'Register, payment almost done, a short final ask for the receipt and bag.' },
       trophyWord: {
         word: 'paragon',
-        meaning: { de: 'Quittung (Kassenbon)' },
+        meaning: { de: 'Quittung (Kassenbon)', en: 'receipt (cash receipt)' },
         example: 'Poproszę paragon i torbę.',
-        whyThisWord: { de: 'Paragon ist maskulin unbelebt. Nominativ und Akkusativ Singular identisch: paragon — daher Poproszę paragon ohne Endungsänderung. Plural: paragony. Vorsicht: paragon meint hier den Kassenbon (steuerlich relevant); ein offizieller Geschäftsbeleg ist faktura (Rechnung). Rachunek ist eher die Rechnung im Restaurant.' },
+        whyThisWord: { de: 'Paragon ist maskulin unbelebt. Nominativ und Akkusativ Singular identisch: paragon — daher Poproszę paragon ohne Endungsänderung. Plural: paragony. Vorsicht: paragon meint hier den Kassenbon (steuerlich relevant); ein offizieller Geschäftsbeleg ist faktura (Rechnung). Rachunek ist eher die Rechnung im Restaurant.', en: 'Paragon is masculine inanimate. Nominative and accusative singular are identical: paragon — so Poproszę paragon takes no ending change. Plural: paragony. Note: paragon here means the printed cash receipt (relevant for tax purposes); an official business invoice is faktura, and rachunek is more typically the bill in a restaurant.' },
       },
-      placeholderCaption: { de: 'Kassenbon und Tüte auf der Theke, ruhige Schlussbitte.' },
+      placeholderCaption: { de: 'Kassenbon und Tüte auf der Theke, ruhige Schlussbitte.', en: 'Receipt and bag on the counter, a calm closing request.' },
       songMood: 'final small request',
       visualNotes: 'Receipt and bag on counter, paragon paired with torbę in matching accusative.',
     }),
   },
   {
     slug: 'reservation-arrival',
-    title: { de: 'Reservierung auf den Namen' },
+    title: { de: 'Reservierung auf den Namen', en: 'Reservation under the name' },
     situation: {
       en: 'At a restaurant or hotel front desk, announce that you have a reservation under a name.',
       de: 'Am Restaurant- oder Hotelempfang meldest du eine Reservierung auf einen Namen an.',
@@ -46648,19 +46651,19 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
     variant: makeBrightPolishP1Variant({
       corePhrase: {
         targetText: 'Mam rezerwację na nazwisko Kowalski.',
-        baseText: { de: 'Ich habe eine Reservierung auf den Namen Kowalski.' },
+        baseText: { de: 'Ich habe eine Reservierung auf den Namen Kowalski.', en: 'I have a reservation under the name Kowalski.' },
       },
-      meaning: { de: 'Die A1-Standardphrase, um eine Reservierung am Empfang anzumelden.' },
+      meaning: { de: 'Die A1-Standardphrase, um eine Reservierung am Empfang anzumelden.', en: 'The A1 standard phrase for announcing a reservation at the front desk.' },
       chunks: [
-        { id: 'mam-rezerwacje', targetText: 'Mam rezerwację', baseText: { de: 'Ich habe eine Reservierung' } },
-        { id: 'na-nazwisko', targetText: 'na nazwisko', baseText: { de: 'auf den Namen' } },
-        { id: 'kowalski', targetText: 'Kowalski.', baseText: { de: 'Kowalski.' } },
+        { id: 'mam-rezerwacje', targetText: 'Mam rezerwację', baseText: { de: 'Ich habe eine Reservierung', en: 'I have a reservation' } },
+        { id: 'na-nazwisko', targetText: 'na nazwisko', baseText: { de: 'auf den Namen', en: 'under the name' } },
+        { id: 'kowalski', targetText: 'Kowalski.', baseText: { de: 'Kowalski.', en: 'Kowalski.' } },
       ],
       lessonItems: [
-        { id: 'rezerwacja', targetText: 'rezerwacja', baseText: { de: 'Reservierung (Grundform)' }, acceptedAnswers: polishAnswers('rezerwacja', 'Rezerwacja') },
-        { id: 'rezerwacje', targetText: 'rezerwację', baseText: { de: 'Reservierung (Akkusativ Sg.)' }, acceptedAnswers: polishAnswers('rezerwację', 'Rezerwację', 'rezerwacje', 'Rezerwacje') },
-        { id: 'nazwisko', targetText: 'nazwisko', baseText: { de: 'Nachname (neutrum)' }, acceptedAnswers: polishAnswers('nazwisko', 'Nazwisko') },
-        { id: 'imie', targetText: 'imię', baseText: { de: 'Vorname (neutrum)' }, acceptedAnswers: polishAnswers('imię', 'Imię', 'imie', 'Imie') },
+        { id: 'rezerwacja', targetText: 'rezerwacja', baseText: { de: 'Reservierung (Grundform)', en: 'reservation (base form)' }, acceptedAnswers: polishAnswers('rezerwacja', 'Rezerwacja') },
+        { id: 'rezerwacje', targetText: 'rezerwację', baseText: { de: 'Reservierung (Akkusativ Sg.)', en: 'reservation (accusative sg.)' }, acceptedAnswers: polishAnswers('rezerwację', 'Rezerwację', 'rezerwacje', 'Rezerwacje') },
+        { id: 'nazwisko', targetText: 'nazwisko', baseText: { de: 'Nachname (neutrum)', en: 'last name (neuter)' }, acceptedAnswers: polishAnswers('nazwisko', 'Nazwisko') },
+        { id: 'imie', targetText: 'imię', baseText: { de: 'Vorname (neutrum)', en: 'first name (neuter)' }, acceptedAnswers: polishAnswers('imię', 'Imię', 'imie', 'Imie') },
       ],
       buildChips: ['Mam rezerwację', 'na nazwisko', 'Kowalski.', 'Nowak', 'imię'],
       typeRecall: {
@@ -46671,26 +46674,26 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         fallbackChoices: ['rezerwację', 'pytanie', 'pokój', 'bilet'],
       },
       speakTarget: {
-        baseCue: { de: 'Ich habe eine Reservierung auf den Namen Kowalski.' },
+        baseCue: { de: 'Ich habe eine Reservierung auf den Namen Kowalski.', en: 'I have a reservation under the name Kowalski.' },
         targetPhrase: 'Mam rezerwację na nazwisko Kowalski.',
         requiredTokens: ['mam', 'rezerwację', 'na', 'nazwisko', 'kowalski'],
         optionalTokens: [],
       },
-      sceneCaption: { de: 'Heller Empfang, Reservierungsbuch sichtbar, ruhige Anmeldung.' },
+      sceneCaption: { de: 'Heller Empfang, Reservierungsbuch sichtbar, ruhige Anmeldung.', en: 'Bright front desk, a reservation book in view, a calm check-in.' },
       trophyWord: {
         word: 'rezerwacja',
-        meaning: { de: 'Reservierung' },
+        meaning: { de: 'Reservierung', en: 'reservation' },
         example: 'Mam rezerwację na nazwisko Kowalski.',
-        whyThisWord: { de: 'Rezerwacja ist feminin. Nominativ Singular: rezerwacja. Akkusativ Singular: rezerwację (-a → -ę). Im Satz Mam rezerwację steht das Nomen im Akkusativ als direktes Objekt von mam. Die feste Empfangsphrase na nazwisko (auf den Namen) verwendet na + Akkusativ; nazwisko ist neutrum (Akkusativ und Nominativ identisch). Plural Nominativ: rezerwacje.' },
+        whyThisWord: { de: 'Rezerwacja ist feminin. Nominativ Singular: rezerwacja. Akkusativ Singular: rezerwację (-a → -ę). Im Satz Mam rezerwację steht das Nomen im Akkusativ als direktes Objekt von mam. Die feste Empfangsphrase na nazwisko (auf den Namen) verwendet na + Akkusativ; nazwisko ist neutrum (Akkusativ und Nominativ identisch). Plural Nominativ: rezerwacje.', en: 'Rezerwacja is feminine. Nominative singular: rezerwacja. Accusative singular: rezerwację (-a → -ę). In Mam rezerwację the noun stands in the accusative as the direct object of mam. The set front-desk phrase na nazwisko (under the name) uses na + accusative; nazwisko is neuter (accusative and nominative are the same). Plural nominative: rezerwacje.' },
       },
-      placeholderCaption: { de: 'Empfangstresen, Reservierungsliste, höfliche Anmeldung.' },
+      placeholderCaption: { de: 'Empfangstresen, Reservierungsliste, höfliche Anmeldung.', en: 'Front desk, a reservation list, a polite check-in.' },
       songMood: 'check-in opener',
       visualNotes: 'Hotel/restaurant desk, name list, rezerwację highlighted in accusative.',
     }),
   },
   {
     slug: 'is-it-right',
-    title: { de: 'Ist das richtig?' },
+    title: { de: 'Ist das richtig?', en: 'Is that right?' },
     situation: {
       en: 'Confirm that an item or piece of information is the correct one before committing.',
       de: 'Du bestätigst, dass etwas das Richtige ist, bevor du dich festlegst.',
@@ -46699,19 +46702,19 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
     variant: makeBrightPolishP1Variant({
       corePhrase: {
         targetText: 'Przepraszam, czy to dobrze?',
-        baseText: { de: 'Entschuldigung, ist das richtig?' },
+        baseText: { de: 'Entschuldigung, ist das richtig?', en: 'Excuse me, is that right?' },
       },
-      meaning: { de: 'Eine knappe A1-Vergewisserung vor einer Entscheidung.' },
+      meaning: { de: 'Eine knappe A1-Vergewisserung vor einer Entscheidung.', en: 'A short A1 double-check before a decision.' },
       chunks: [
-        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
-        { id: 'czy-to', targetText: 'czy to', baseText: { de: 'ist das' } },
-        { id: 'dobrze', targetText: 'dobrze?', baseText: { de: 'richtig?' } },
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,', en: 'Excuse me,' } },
+        { id: 'czy-to', targetText: 'czy to', baseText: { de: 'ist das', en: 'is that' } },
+        { id: 'dobrze', targetText: 'dobrze?', baseText: { de: 'richtig?', en: 'right?' } },
       ],
       lessonItems: [
-        { id: 'czy', targetText: 'czy', baseText: { de: 'Ja-/Nein-Fragepartikel' }, acceptedAnswers: polishAnswers('czy', 'Czy') },
-        { id: 'to', targetText: 'to', baseText: { de: 'das / dies' }, acceptedAnswers: polishAnswers('to', 'To') },
-        { id: 'dobrze', targetText: 'dobrze', baseText: { de: 'richtig / gut (Adverb)' }, acceptedAnswers: polishAnswers('dobrze', 'Dobrze') },
-        { id: 'zle', targetText: 'źle', baseText: { de: 'schlecht / falsch (Adverb)' }, acceptedAnswers: polishAnswers('źle', 'Źle', 'zle', 'Zle') },
+        { id: 'czy', targetText: 'czy', baseText: { de: 'Ja-/Nein-Fragepartikel', en: 'yes/no question particle' }, acceptedAnswers: polishAnswers('czy', 'Czy') },
+        { id: 'to', targetText: 'to', baseText: { de: 'das / dies', en: 'this / that' }, acceptedAnswers: polishAnswers('to', 'To') },
+        { id: 'dobrze', targetText: 'dobrze', baseText: { de: 'richtig / gut (Adverb)', en: 'right / well (adverb)' }, acceptedAnswers: polishAnswers('dobrze', 'Dobrze') },
+        { id: 'zle', targetText: 'źle', baseText: { de: 'schlecht / falsch (Adverb)', en: 'badly / wrong (adverb)' }, acceptedAnswers: polishAnswers('źle', 'Źle', 'zle', 'Zle') },
       ],
       buildChips: ['Przepraszam,', 'czy to', 'dobrze?', 'źle?', 'tak'],
       typeRecall: {
@@ -46722,26 +46725,26 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         fallbackChoices: ['dobrze', 'źle', 'tutaj', 'jeszcze'],
       },
       speakTarget: {
-        baseCue: { de: 'Entschuldigung, ist das richtig?' },
+        baseCue: { de: 'Entschuldigung, ist das richtig?', en: 'Excuse me, is that right?' },
         targetPhrase: 'Przepraszam, czy to dobrze?',
         requiredTokens: ['przepraszam', 'czy', 'to', 'dobrze'],
         optionalTokens: [],
       },
-      sceneCaption: { de: 'Ware vor dem Kauf, kurze Vergewisserung beim Personal.' },
+      sceneCaption: { de: 'Ware vor dem Kauf, kurze Vergewisserung beim Personal.', en: 'An item picked up before the purchase, a quick check with the staff.' },
       trophyWord: {
         word: 'dobrze',
-        meaning: { de: 'richtig / gut (Adverb)' },
+        meaning: { de: 'richtig / gut (Adverb)', en: 'right / well (adverb)' },
         example: 'Czy to dobrze?',
-        whyThisWord: { de: 'Dobrze ist das Adverb zu dobry (gut). Adverbien sind im Polnischen unveränderlich. In Bestätigungsfragen heißt Czy to dobrze? "ist das richtig?". Als Antwort signalisiert tak, dobrze (ja, ok) Zustimmung. Das Gegenteil ist źle (falsch / schlecht). Vorsicht: das Adjektiv dobry verändert sich nach Geschlecht (dobry / dobra / dobre); das Adverb dobrze bleibt immer gleich.' },
+        whyThisWord: { de: 'Dobrze ist das Adverb zu dobry (gut). Adverbien sind im Polnischen unveränderlich. In Bestätigungsfragen heißt Czy to dobrze? "ist das richtig?". Als Antwort signalisiert tak, dobrze (ja, ok) Zustimmung. Das Gegenteil ist źle (falsch / schlecht). Vorsicht: das Adjektiv dobry verändert sich nach Geschlecht (dobry / dobra / dobre); das Adverb dobrze bleibt immer gleich.', en: 'Dobrze is the adverb of dobry (good). Polish adverbs are invariant — they never change form. In check questions, Czy to dobrze? means "is that right?". As a reply, tak, dobrze (yes, ok) signals agreement. The opposite is źle (wrong / badly). Note: the adjective dobry changes by gender (dobry / dobra / dobre); the adverb dobrze always stays the same.' },
       },
-      placeholderCaption: { de: 'Ware vor dem Kauf, ruhige Vergewisserung.' },
+      placeholderCaption: { de: 'Ware vor dem Kauf, ruhige Vergewisserung.', en: 'Item in hand before the purchase, a calm double-check.' },
       songMood: 'gentle check',
       visualNotes: 'Object in hand, questioning glance, dobrze highlighted as adverb.',
     }),
   },
   {
     slug: 'one-moment',
-    title: { de: 'Einen Moment, bitte' },
+    title: { de: 'Einen Moment, bitte', en: 'One moment, please' },
     situation: {
       en: 'Politely ask someone to wait briefly while you handle a small task.',
       de: 'Du bittest jemanden höflich, kurz zu warten, während du etwas erledigst.',
@@ -46750,18 +46753,18 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
     variant: makeBrightPolishP1Variant({
       corePhrase: {
         targetText: 'Chwileczkę, proszę.',
-        baseText: { de: 'Einen Moment, bitte.' },
+        baseText: { de: 'Einen Moment, bitte.', en: 'One moment, please.' },
       },
-      meaning: { de: 'Die höfliche A1-Bitte um einen kurzen Moment Geduld.' },
+      meaning: { de: 'Die höfliche A1-Bitte um einen kurzen Moment Geduld.', en: 'The polite A1 request for a brief moment of patience.' },
       chunks: [
-        { id: 'chwileczke', targetText: 'Chwileczkę,', baseText: { de: 'Einen Moment,' } },
-        { id: 'prosze', targetText: 'proszę.', baseText: { de: 'bitte.' } },
+        { id: 'chwileczke', targetText: 'Chwileczkę,', baseText: { de: 'Einen Moment,', en: 'One moment,' } },
+        { id: 'prosze', targetText: 'proszę.', baseText: { de: 'bitte.', en: 'please.' } },
       ],
       lessonItems: [
-        { id: 'chwila', targetText: 'chwila', baseText: { de: 'Moment (Grundform)' }, acceptedAnswers: polishAnswers('chwila', 'Chwila') },
-        { id: 'chwileczke', targetText: 'chwileczkę', baseText: { de: 'Moment (Diminutiv, Akkusativ)' }, acceptedAnswers: polishAnswers('chwileczkę', 'Chwileczkę', 'chwileczke', 'Chwileczke') },
-        { id: 'prosze', targetText: 'proszę', baseText: { de: 'bitte' }, acceptedAnswers: polishAnswers('proszę', 'Proszę', 'prosze', 'Prosze') },
-        { id: 'moment', targetText: 'moment', baseText: { de: 'Moment (Lehnwort)' }, acceptedAnswers: polishAnswers('moment', 'Moment') },
+        { id: 'chwila', targetText: 'chwila', baseText: { de: 'Moment (Grundform)', en: 'moment (base form)' }, acceptedAnswers: polishAnswers('chwila', 'Chwila') },
+        { id: 'chwileczke', targetText: 'chwileczkę', baseText: { de: 'Moment (Diminutiv, Akkusativ)', en: '(little) moment (diminutive, accusative)' }, acceptedAnswers: polishAnswers('chwileczkę', 'Chwileczkę', 'chwileczke', 'Chwileczke') },
+        { id: 'prosze', targetText: 'proszę', baseText: { de: 'bitte', en: 'please' }, acceptedAnswers: polishAnswers('proszę', 'Proszę', 'prosze', 'Prosze') },
+        { id: 'moment', targetText: 'moment', baseText: { de: 'Moment (Lehnwort)', en: 'moment (loanword)' }, acceptedAnswers: polishAnswers('moment', 'Moment') },
       ],
       buildChips: ['Chwileczkę,', 'proszę.', 'Moment,', 'sekundę'],
       typeRecall: {
@@ -46772,19 +46775,19 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         fallbackChoices: ['Chwileczkę', 'Sekundę', 'Moment', 'Później'],
       },
       speakTarget: {
-        baseCue: { de: 'Einen Moment, bitte.' },
+        baseCue: { de: 'Einen Moment, bitte.', en: 'One moment, please.' },
         targetPhrase: 'Chwileczkę, proszę.',
         requiredTokens: ['chwileczkę', 'proszę'],
         optionalTokens: ['moment', 'sekundę'],
       },
-      sceneCaption: { de: 'Tresen, kurze Pause während du etwas suchst, freundliche Bitte um Geduld.' },
+      sceneCaption: { de: 'Tresen, kurze Pause während du etwas suchst, freundliche Bitte um Geduld.', en: 'Counter, a short pause while you look for something, a friendly request for patience.' },
       trophyWord: {
         word: 'chwila',
-        meaning: { de: 'Moment / kurzer Augenblick' },
+        meaning: { de: 'Moment / kurzer Augenblick', en: 'moment / brief instant' },
         example: 'Chwileczkę, proszę.',
-        whyThisWord: { de: 'Chwila ist feminin. Nominativ Singular: chwila. Im Service-Polnisch wird das Diminutiv chwilka / chwileczka deutlich häufiger verwendet — es klingt weicher und höflicher als das schmucklose chwila. Im Satz Chwileczkę, proszę steht es im Akkusativ (chwileczkę), weil dahinter ein verkürztes "warte / gib mir einen Moment" mitschwingt. Synonyme: moment (Lehnwort), sekunda (Sekunde). Plural: chwile.' },
+        whyThisWord: { de: 'Chwila ist feminin. Nominativ Singular: chwila. Im Service-Polnisch wird das Diminutiv chwilka / chwileczka deutlich häufiger verwendet — es klingt weicher und höflicher als das schmucklose chwila. Im Satz Chwileczkę, proszę steht es im Akkusativ (chwileczkę), weil dahinter ein verkürztes "warte / gib mir einen Moment" mitschwingt. Synonyme: moment (Lehnwort), sekunda (Sekunde). Plural: chwile.', en: 'Chwila is feminine. Nominative singular: chwila. In service Polish, the diminutive chwilka / chwileczka is used far more often — it sounds softer and more polite than the plain chwila. In Chwileczkę, proszę it stands in the accusative (chwileczkę), because an implied "wait / give me a moment" hangs in the air behind the noun. Synonyms: moment (a loanword), sekunda (second). Plural: chwile.' },
       },
-      placeholderCaption: { de: 'Tresen, freundliche kurze Pause, sanfte Wartebitte.' },
+      placeholderCaption: { de: 'Tresen, freundliche kurze Pause, sanfte Wartebitte.', en: 'Counter, a friendly brief pause, a soft wait request.' },
       songMood: 'gentle pause',
       visualNotes: 'Hand raised gently, calm pause, chwileczkę highlighted in diminutive accusative.',
     }),
@@ -46794,7 +46797,7 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
 const polishA1Practical2Lessons = makePolishPracticalLessons(
   GUIDED_TODAY_PATH_POLISH_TWO_METADATA,
   polishA1Practical2Inputs,
-  'Du hast Polnisch A1 Praxis 2 abgeschlossen.',
+  { de: 'Du hast Polnisch A1 Praxis 2 abgeschlossen.', en: 'You have completed Polish A1 Practical 2.' },
 )
 
 const polishA1Practical3Inputs: PolishP1LessonInput[] = [
@@ -47306,7 +47309,7 @@ const polishA1Practical3Inputs: PolishP1LessonInput[] = [
 const polishA1Practical3Lessons = makePolishPracticalLessons(
   GUIDED_TODAY_PATH_POLISH_THREE_METADATA,
   polishA1Practical3Inputs,
-  'Du hast Polnisch A1 Praxis 3 abgeschlossen.',
+  { de: 'Du hast Polnisch A1 Praxis 3 abgeschlossen.', en: 'You have completed Polish A1 Practical 3.' },
 )
 
 const polishA1Practical4Inputs: PolishP1LessonInput[] = [
@@ -47817,7 +47820,7 @@ const polishA1Practical4Inputs: PolishP1LessonInput[] = [
 const polishA1Practical4Lessons = makePolishPracticalLessons(
   GUIDED_TODAY_PATH_POLISH_FOUR_METADATA,
   polishA1Practical4Inputs,
-  'Du hast Polnisch A1 Praxis 4 abgeschlossen.',
+  { de: 'Du hast Polnisch A1 Praxis 4 abgeschlossen.', en: 'You have completed Polish A1 Practical 4.' },
 )
 
 const polishA1Practical5Inputs: PolishP1LessonInput[] = [
@@ -48329,7 +48332,7 @@ const polishA1Practical5Inputs: PolishP1LessonInput[] = [
 const polishA1Practical5Lessons = makePolishPracticalLessons(
   GUIDED_TODAY_PATH_POLISH_FIVE_METADATA,
   polishA1Practical5Inputs,
-  'Du hast Polnisch A1 Praxis 5 abgeschlossen.',
+  { de: 'Du hast Polnisch A1 Praxis 5 abgeschlossen.', en: 'You have completed Polish A1 Practical 5.' },
 )
 
 const polishA1Practical6Inputs: PolishP1LessonInput[] = [
@@ -48843,7 +48846,7 @@ const polishA1Practical6Inputs: PolishP1LessonInput[] = [
 const polishA1Practical6Lessons = makePolishPracticalLessons(
   GUIDED_TODAY_PATH_POLISH_SIX_METADATA,
   polishA1Practical6Inputs,
-  'Du hast Polnisch A1 Praxis 6 abgeschlossen.',
+  { de: 'Du hast Polnisch A1 Praxis 6 abgeschlossen.', en: 'You have completed Polish A1 Practical 6.' },
 )
 
 const polishA1Practical7Inputs: PolishP1LessonInput[] = [
@@ -49357,7 +49360,7 @@ const polishA1Practical7Inputs: PolishP1LessonInput[] = [
 const polishA1Practical7Lessons = makePolishPracticalLessons(
   GUIDED_TODAY_PATH_POLISH_SEVEN_METADATA,
   polishA1Practical7Inputs,
-  'Du hast Polnisch A1 Praxis 7 abgeschlossen.',
+  { de: 'Du hast Polnisch A1 Praxis 7 abgeschlossen.', en: 'You have completed Polish A1 Practical 7.' },
 )
 
 const polishA1Practical8Inputs: PolishP1LessonInput[] = [
@@ -49870,7 +49873,7 @@ const polishA1Practical8Inputs: PolishP1LessonInput[] = [
 const polishA1Practical8Lessons = makePolishPracticalLessons(
   GUIDED_TODAY_PATH_POLISH_EIGHT_METADATA,
   polishA1Practical8Inputs,
-  'Du hast Polnisch A1 Praxis 8 abgeschlossen.',
+  { de: 'Du hast Polnisch A1 Praxis 8 abgeschlossen.', en: 'You have completed Polish A1 Practical 8.' },
 )
 
 const polishA1Practical9Inputs: PolishP1LessonInput[] = [
@@ -50380,7 +50383,7 @@ const polishA1Practical9Inputs: PolishP1LessonInput[] = [
 const polishA1Practical9Lessons = makePolishPracticalLessons(
   GUIDED_TODAY_PATH_POLISH_NINE_METADATA,
   polishA1Practical9Inputs,
-  'Du hast Polnisch A1 Praxis 9 abgeschlossen.',
+  { de: 'Du hast Polnisch A1 Praxis 9 abgeschlossen.', en: 'You have completed Polish A1 Practical 9.' },
 )
 
 const polishA1Practical10Inputs: PolishP1LessonInput[] = [
@@ -50891,7 +50894,7 @@ const polishA1Practical10Inputs: PolishP1LessonInput[] = [
 const polishA1Practical10Lessons = makePolishPracticalLessons(
   GUIDED_TODAY_PATH_POLISH_TEN_METADATA,
   polishA1Practical10Inputs,
-  'Du hast Polnisch A1 Praxis 10 abgeschlossen — und damit den gesamten A1-Praxis-Bogen.',
+  { de: 'Du hast Polnisch A1 Praxis 10 abgeschlossen — und damit den gesamten A1-Praxis-Bogen.', en: 'You have completed Polish A1 Practical 10 — and the entire A1 Practical arc.' },
 )
 
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
