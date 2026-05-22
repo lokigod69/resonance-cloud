@@ -1718,45 +1718,45 @@ const brightLesson008: GuidedLessonVibeVariant = {
 const brightLesson009: GuidedLessonVibeVariant = {
   contentStatus: "draft",
   corePhrase: {
-    targetText: "Tomorrow at seven? Wonderful!",
-    baseText: { de: "Morgen um sieben? Wunderbar!" },
+    targetText: "Tomorrow at seven? Great!",
+    baseText: { de: "Morgen um sieben? Großartig!" },
   },
   meaning: { de: "Eine warme Zusage für einen Plan am nächsten Tag." },
   chunks: [
     { id: "tomorrow", targetText: "Tomorrow", baseText: { de: "morgen" } },
     { id: "at-seven", targetText: "at seven", baseText: { de: "um sieben" } },
-    { id: "wonderful", targetText: "Wonderful", baseText: { de: "wunderbar" } },
+    { id: "great", targetText: "Great", baseText: { de: "großartig" } },
   ],
   lessonItems: [
     { id: "tomorrow", targetText: "tomorrow", baseText: { de: "morgen" }, acceptedAnswers: ["tomorrow"] },
     { id: "seven", targetText: "seven", baseText: { de: "sieben" }, acceptedAnswers: ["seven", "7"] },
-    { id: "wonderful", targetText: "wonderful", baseText: { de: "wunderbar" }, acceptedAnswers: ["wonderful"] },
+    { id: "great", targetText: "great", baseText: { de: "großartig" }, acceptedAnswers: ["great"] },
     { id: "brilliant", targetText: "brilliant", baseText: { de: "brillant" }, acceptedAnswers: ["brilliant"] },
     { id: "ready", targetText: "ready", baseText: { de: "bereit" }, acceptedAnswers: ["ready"] },
   ],
   build: {
-    targetText: "Tomorrow at seven? Wonderful!",
-    chips: ["Tomorrow", "at seven?", "Wonderful!", "ready", "glad"],
+    targetText: "Tomorrow at seven? Great!",
+    chips: ["Tomorrow", "at seven?", "Great!", "ready", "glad"],
   },
   typeRecall: {
     before: "Tomorrow at seven? ",
-    answer: "Wonderful",
+    answer: "Great",
     after: "!",
-    acceptedAnswers: ["Wonderful", "wonderful"],
-    fallbackChoices: ["Wonderful", "Ready", "Glad", "Now"],
+    acceptedAnswers: ["Great", "great"],
+    fallbackChoices: ["Great", "Ready", "Glad", "Now"],
   },
   speakTarget: {
-    baseCue: { de: "Morgen um sieben? Wunderbar!" },
-    targetPhrase: "Tomorrow at seven? Wonderful!",
+    baseCue: { de: "Morgen um sieben? Großartig!" },
+    targetPhrase: "Tomorrow at seven? Great!",
     language: "en-US",
     passingThreshold: 0.8,
   },
   sceneCaption: { de: "Beim Planen nimmt Bright die Uhrzeit und macht daraus Vorfreude." },
   trophyWord: {
-    word: "wonderful",
-    meaning: { de: "wunderbar" },
-    example: "Tomorrow at seven? Wonderful!",
-    whyThisWord: { de: "Wonderful ist Brights warme Zusage für einen einfachen Plan." },
+    word: "great",
+    meaning: { de: "großartig" },
+    example: "Tomorrow at seven? Great!",
+    whyThisWord: { de: "Great ist Brights kurze, natürliche Zusage für einen einfachen Plan." },
   },
   placeholderMedia: {
     type: "video",
@@ -1766,7 +1766,7 @@ const brightLesson009: GuidedLessonVibeVariant = {
     genre: "sunny indie pop",
     mood: "forward and delighted",
   },
-  visualNotes: "Golden calendar highlight, light bloom on Wonderful, buoyant confirmation state.",
+  visualNotes: "Golden calendar highlight, light bloom on Great, buoyant confirmation state.",
 }
 
 const brightLesson010: GuidedLessonVibeVariant = {
