@@ -72,6 +72,16 @@ export function useStudyUI({ videoRef, studyMode = 'video' }: UseStudyUIOptions)
   const current = words[currentIndex] ?? null
   const { activeVideoUrl, activeThumbnailUrl } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
 
+  const findNextUnvisitedIndex = useCallback((startIndex: number, excludeIndex?: number) => {
+    if (words.length === 0) return -1
+    for (let step = 1; step <= words.length; step += 1) {
+      const idx = (startIndex + step) % words.length
+      if (idx === excludeIndex) continue
+      if (!visitedIdsRef.current.has(words[idx].id)) return idx
+    }
+    return -1
+  }, [words])
+
   const advanceToNext = useCallback(() => {
     wasPlayingRef.current = !(videoRef.current?.paused ?? false)
     setReviewed((r) => r + 1)
@@ -88,24 +98,24 @@ export function useStudyUI({ videoRef, studyMode = 'video' }: UseStudyUIOptions)
       }
     }
 
-    // Linear advance, skipping visited
-    let next = currentIndex + 1
-    while (next < words.length && visitedIdsRef.current.has(words[next].id)) next++
-    if (next >= words.length) {
-      // Before ending session, drain any pending retries even if gap not fully met
-      const forcedRetryId = consumeRetry(true)
-      if (forcedRetryId) {
-        const idx = words.findIndex((w) => w.id === forcedRetryId)
-        if (idx !== -1) {
-          setCurrentIndex(idx)
-          return
-        }
-      }
-      setSessionComplete(true)
-    } else {
+    const next = findNextUnvisitedIndex(currentIndex)
+    if (next !== -1) {
       setCurrentIndex(next)
+      return
     }
-  }, [current, currentIndex, words, consumeRetry, videoRef])
+
+    // Before ending session, drain any pending retries even if gap not fully met
+    const forcedRetryId = consumeRetry(true)
+    if (forcedRetryId) {
+      const idx = words.findIndex((w) => w.id === forcedRetryId)
+      if (idx !== -1) {
+        setCurrentIndex(idx)
+        return
+      }
+    }
+
+    setSessionComplete(true)
+  }, [current, currentIndex, words, consumeRetry, findNextUnvisitedIndex, videoRef])
 
   // Preserve video pause state across card transitions
   useEffect(() => {
@@ -149,11 +159,11 @@ export function useStudyUI({ videoRef, studyMode = 'video' }: UseStudyUIOptions)
   }, [currentIndex])
 
   const skipNext = useCallback(() => {
-    if (currentIndex < words.length - 1) {
-      setCurrentIndex((i) => i + 1)
-      setRevealed(false)
-    }
-  }, [currentIndex, words.length])
+    if (words.length <= 1) return
+    const next = findNextUnvisitedIndex(currentIndex, currentIndex)
+    setCurrentIndex(next !== -1 ? next : (currentIndex + 1) % words.length)
+    setRevealed(false)
+  }, [currentIndex, findNextUnvisitedIndex, words.length])
 
   // Keyboard shortcuts
   useEffect(() => {

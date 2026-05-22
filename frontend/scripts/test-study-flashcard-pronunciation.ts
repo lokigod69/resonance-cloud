@@ -31,9 +31,39 @@ assert.match(
 )
 
 assert.match(
+  source,
+  /import\s+\{[\s\S]*ChevronLeft[\s\S]*ChevronRight[\s\S]*\}\s+from\s+['"]lucide-react['"]/,
+  'StudyFlashcard should import neutral previous/skip icons',
+)
+
+assert.match(
+  source,
+  /handleRemembered,\s*handleReviewLater,\s*restart,\s*skipPrev,\s*skipNext,/,
+  'StudyFlashcard should expose neutral session navigation actions',
+)
+
+assert.match(
+  source,
+  /aria-label="Previous card"[\s\S]*?onClick=\{skipPrev\}/,
+  'StudyFlashcard should render a previous-card button that does not grade the card',
+)
+
+assert.match(
+  source,
+  /aria-label="Skip card"[\s\S]*?onClick=\{skipNext\}/,
+  'StudyFlashcard should render a skip-card button that does not grade the card',
+)
+
+assert.match(
   studyUiSource,
   /tag === 'BUTTON'/,
   'global study keyboard shortcuts should ignore focused buttons so pronunciation controls do not reveal or grade cards',
+)
+
+assert.match(
+  studyUiSource,
+  /findNextUnvisitedIndex[\s\S]*?visitedIdsRef\.current\.has\(words\[idx\]\.id\)/,
+  'neutral skips should let ungraded cards return later in the session before completion',
 )
 
 assert.doesNotMatch(

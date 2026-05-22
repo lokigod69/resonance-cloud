@@ -9,7 +9,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Check, X, RotateCcw, Sparkles, BookOpen, Volume2 } from 'lucide-react'
+import {
+  Check,
+  X,
+  RotateCcw,
+  Sparkles,
+  BookOpen,
+  Volume2,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -24,7 +33,7 @@ export default function StudyFlashcard() {
   const {
     words, current, currentIndex, loading, sessionComplete, sessionStats, reviewed,
     revealed, setRevealed, decks, deckFilter, setDeckFilter,
-    handleRemembered, handleReviewLater, restart,
+    handleRemembered, handleReviewLater, restart, skipPrev, skipNext,
   } = useStudyUI({ videoRef, studyMode: 'flashcard' })
 
   // Flashcard-specific keyboard shortcuts (1/2 for review/remember)
@@ -197,9 +206,20 @@ export default function StudyFlashcard() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="flex justify-center gap-4 w-full max-w-xs mx-auto"
+                className="flex justify-center gap-3 w-full max-w-sm mx-auto"
               >
                 <button
+                  type="button"
+                  aria-label="Previous card"
+                  onClick={skipPrev}
+                  disabled={currentIndex === 0}
+                  className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-border bg-card/70 text-muted-foreground transition-all hover:bg-accent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  <ChevronLeft className="h-6 w-6" aria-hidden="true" />
+                </button>
+
+                <button
+                  type="button"
                   onClick={handleReviewLater}
                   aria-label="Review Later"
                   className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-red-500/40 bg-red-500/15 text-red-400 transition-all hover:border-red-500/60 hover:bg-red-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
@@ -208,11 +228,22 @@ export default function StudyFlashcard() {
                 </button>
 
                 <button
+                  type="button"
                   onClick={handleRemembered}
                   aria-label="Remembered"
                   className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-green-500/40 bg-green-500/15 text-green-400 transition-all hover:border-green-500/60 hover:bg-green-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <Check className="h-7 w-7" aria-hidden="true" />
+                </button>
+
+                <button
+                  type="button"
+                  aria-label="Skip card"
+                  onClick={skipNext}
+                  disabled={words.length <= 1}
+                  className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-border bg-card/70 text-muted-foreground transition-all hover:bg-accent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  <ChevronRight className="h-6 w-6" aria-hidden="true" />
                 </button>
               </motion.div>
             </motion.div>
