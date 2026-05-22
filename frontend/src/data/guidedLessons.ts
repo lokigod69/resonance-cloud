@@ -666,7 +666,7 @@ const GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA: GuidedPathMetadata = {
   id: 'french-a1-practical-7',
   title: 'French A1 Practical 7',
   shortTitle: 'A1 Practical 7',
-  subtitle: { de: 'Bahnhof und Weiterfahrt auf Französisch' },
+  subtitle: { de: 'Bahnhof und Weiterfahrt auf Französisch', en: 'Station and onward travel in French' },
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'French',
@@ -34191,19 +34191,19 @@ const brightFrenchP7Lesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "Je voudrais un ticket, s'il vous plaît.",
-    baseText: { de: 'Ich hätte gern ein Ticket, bitte.' },
+    baseText: { de: 'Ich hätte gern ein Ticket, bitte.', en: "I'd like a ticket, please." },
   },
-  meaning: { de: 'Eine höfliche Bitte am Bahnhofsschalter oder Busbahnhofsschalter.' },
+  meaning: { de: 'Eine höfliche Bitte am Bahnhofsschalter oder Busbahnhofsschalter.', en: 'A polite request at a train or bus station counter.' },
   chunks: [
-    { id: 'je-voudrais', targetText: 'Je voudrais', baseText: { de: 'Ich hätte gern' } },
-    { id: 'un-ticket', targetText: 'un ticket,', baseText: { de: 'ein Ticket,' } },
-    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: { de: 'bitte.' } },
+    { id: 'je-voudrais', targetText: 'Je voudrais', baseText: { de: 'Ich hätte gern', en: "I'd like" } },
+    { id: 'un-ticket', targetText: 'un ticket,', baseText: { de: 'ein Ticket,', en: 'a ticket,' } },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'ticket', targetText: 'ticket', baseText: { de: 'Ticket' }, acceptedAnswers: ['ticket', 'Ticket'] },
-    { id: 'un-ticket', targetText: 'un ticket', baseText: { de: 'ein Ticket' }, acceptedAnswers: ['un ticket', 'Un ticket'] },
-    { id: 'je-voudrais', targetText: 'je voudrais', baseText: { de: 'ich hätte gern' }, acceptedAnswers: ['je voudrais', 'Je voudrais'] },
-    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: { de: 'bitte' }, acceptedAnswers: ["s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 's’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', 'sil vous plait'] },
+    { id: 'ticket', targetText: 'ticket', baseText: { de: 'Ticket', en: 'ticket' }, acceptedAnswers: ['ticket', 'Ticket'] },
+    { id: 'un-ticket', targetText: 'un ticket', baseText: { de: 'ein Ticket', en: 'a ticket' }, acceptedAnswers: ['un ticket', 'Un ticket'] },
+    { id: 'je-voudrais', targetText: 'je voudrais', baseText: { de: 'ich hätte gern', en: "I'd like" }, acceptedAnswers: ['je voudrais', 'Je voudrais'] },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: { de: 'bitte', en: 'please (formal)' }, acceptedAnswers: ["s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 's’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', 'sil vous plait'] },
   ],
   build: {
     targetText: "Je voudrais un ticket, s'il vous plaît.",
@@ -34217,23 +34217,23 @@ const brightFrenchP7Lesson001: GuidedLessonVibeVariant = {
     fallbackChoices: ['ticket', 'billet', 'carte', 'reçu'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich hätte gern ein Ticket, bitte.' },
+    baseCue: { de: 'Ich hätte gern ein Ticket, bitte.', en: "I'd like a ticket, please." },
     targetPhrase: "Je voudrais un ticket, s'il vous plaît.",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['voudrais', 'ticket', 'plaît'],
     optionalTokens: ['je', 'un', 'sil', 's', 'il', 'vous', 'plait'],
   },
-  sceneCaption: { de: 'Am Schalter bittest du höflich um ein Ticket.' },
+  sceneCaption: { de: 'Am Schalter bittest du höflich um ein Ticket.', en: 'At the counter you politely ask for a ticket.' },
   trophyWord: {
     word: 'ticket',
-    meaning: { de: 'Ticket' },
+    meaning: { de: 'Ticket', en: 'ticket' },
     example: "Je voudrais un ticket, s'il vous plaît.",
-    whyThisWord: { de: 'Ticket ist im Bus- und Nahverkehr natürlich. Für Züge steht oft billet, aber das hattest du schon; hier bleibt der Schalterkontext klar.' },
+    whyThisWord: { de: 'Ticket ist im Bus- und Nahverkehr natürlich. Für Züge steht oft billet, aber das hattest du schon; hier bleibt der Schalterkontext klar.', en: 'Ticket is natural for buses and local transit — masculine (un ticket). For trains, French often uses "billet" (see P3L6); context tells you which. Same English word, two French sources.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Bahnhofsschalter, eine kurze höfliche Ticketbitte.' },
+    caption: { de: 'Bahnhofsschalter, eine kurze höfliche Ticketbitte.', en: 'A station counter, a brief polite ticket request.' },
   },
   songSeed: {
     genre: 'bright travel acoustic',
@@ -34246,19 +34246,19 @@ const brightFrenchP7Lesson002: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "Le bus est à quel quai, s'il vous plaît ?",
-    baseText: { de: 'An welchem Bussteig ist der Bus, bitte?' },
+    baseText: { de: 'An welchem Bussteig ist der Bus, bitte?', en: 'Which platform is the bus at, please?' },
   },
-  meaning: { de: 'Eine höfliche Standortfrage am Busbahnhof, nicht die Frage nach der richtigen Linie.' },
+  meaning: { de: 'Eine höfliche Standortfrage am Busbahnhof, nicht die Frage nach der richtigen Linie.', en: 'A polite location question at a bus station — not which line to take.' },
   chunks: [
-    { id: 'le-bus-est', targetText: 'Le bus est', baseText: { de: 'Der Bus ist' } },
-    { id: 'a-quel-quai', targetText: 'à quel quai,', baseText: { de: 'an welchem Bussteig,' } },
-    { id: 'sil-vous-plait', targetText: "s'il vous plaît ?", baseText: { de: 'bitte?' } },
+    { id: 'le-bus-est', targetText: 'Le bus est', baseText: { de: 'Der Bus ist', en: 'The bus is' } },
+    { id: 'a-quel-quai', targetText: 'à quel quai,', baseText: { de: 'an welchem Bussteig,', en: 'at which platform,' } },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît ?", baseText: { de: 'bitte?', en: 'please?' } },
   ],
   lessonItems: [
-    { id: 'quai', targetText: 'quai', baseText: { de: 'Bahnsteig / Bussteig' }, acceptedAnswers: ['quai', 'Quai'] },
-    { id: 'a-quel-quai', targetText: 'à quel quai', baseText: { de: 'an welchem Steig' }, acceptedAnswers: ['à quel quai', 'a quel quai', 'À quel quai', 'A quel quai'] },
-    { id: 'le-bus', targetText: 'le bus', baseText: { de: 'der Bus' }, acceptedAnswers: ['le bus', 'Le bus'] },
-    { id: 'est', targetText: 'est', baseText: { de: 'ist' }, acceptedAnswers: ['est', 'Est'] },
+    { id: 'quai', targetText: 'quai', baseText: { de: 'Bahnsteig / Bussteig', en: 'platform / bay' }, acceptedAnswers: ['quai', 'Quai'] },
+    { id: 'a-quel-quai', targetText: 'à quel quai', baseText: { de: 'an welchem Steig', en: 'at which platform' }, acceptedAnswers: ['à quel quai', 'a quel quai', 'À quel quai', 'A quel quai'] },
+    { id: 'le-bus', targetText: 'le bus', baseText: { de: 'der Bus', en: 'the bus' }, acceptedAnswers: ['le bus', 'Le bus'] },
+    { id: 'est', targetText: 'est', baseText: { de: 'ist', en: 'is' }, acceptedAnswers: ['est', 'Est'] },
   ],
   build: {
     targetText: "Le bus est à quel quai, s'il vous plaît ?",
@@ -34272,23 +34272,23 @@ const brightFrenchP7Lesson002: GuidedLessonVibeVariant = {
     fallbackChoices: ['quai', 'arrêt', 'voie', 'porte'],
   },
   speakTarget: {
-    baseCue: { de: 'An welchem Bussteig ist der Bus, bitte?' },
+    baseCue: { de: 'An welchem Bussteig ist der Bus, bitte?', en: 'Which platform is the bus at, please?' },
     targetPhrase: "Le bus est à quel quai, s'il vous plaît ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['bus', 'quel', 'quai'],
     optionalTokens: ['le', 'est', 'à', 'a', 'sil', 's', 'il', 'vous', 'plaît', 'plait'],
   },
-  sceneCaption: { de: 'Am Busbahnhof fragst du nach dem Steig, nicht nach der Linie.' },
+  sceneCaption: { de: 'Am Busbahnhof fragst du nach dem Steig, nicht nach der Linie.', en: 'At the bus station, you ask which platform — not which line.' },
   trophyWord: {
     word: 'quai',
-    meaning: { de: 'Bahnsteig / Bussteig' },
+    meaning: { de: 'Bahnsteig / Bussteig', en: 'platform / bay' },
     example: 'Le bus est à quel quai ?',
-    whyThisWord: { de: 'Quai ist am Bahnhof der Bahnsteig und am Busbahnhof der Steig. Die Frage sucht den Ort, nicht die Route.' },
+    whyThisWord: { de: 'Quai ist am Bahnhof der Bahnsteig und am Busbahnhof der Steig. Die Frage sucht den Ort, nicht die Route.', en: 'Quai is the platform at a train station and the bay at a bus station — masculine (un quai). The question targets the spot, not the route (use "quelle ligne?" for the line).' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Busbahnhof mit nummerierten Steigen.' },
+    caption: { de: 'Busbahnhof mit nummerierten Steigen.', en: 'A bus station with numbered bays.' },
   },
   songSeed: {
     genre: 'station acoustic',
@@ -34301,19 +34301,19 @@ const brightFrenchP7Lesson003: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "Ça part à quelle heure, s'il vous plaît ?",
-    baseText: { de: 'Um wie viel Uhr fährt es ab, bitte?' },
+    baseText: { de: 'Um wie viel Uhr fährt es ab, bitte?', en: 'What time does it leave, please?' },
   },
-  meaning: { de: 'Eine einfache Frage nach der Abfahrtszeit von Bus oder Zug.' },
+  meaning: { de: 'Eine einfache Frage nach der Abfahrtszeit von Bus oder Zug.', en: 'A simple question about the departure time of a bus or train.' },
   chunks: [
-    { id: 'ca-part', targetText: 'Ça part', baseText: { de: 'Es fährt ab' } },
-    { id: 'a-quelle-heure', targetText: 'à quelle heure,', baseText: { de: 'um wie viel Uhr,' } },
-    { id: 'sil-vous-plait', targetText: "s'il vous plaît ?", baseText: { de: 'bitte?' } },
+    { id: 'ca-part', targetText: 'Ça part', baseText: { de: 'Es fährt ab', en: 'It leaves' } },
+    { id: 'a-quelle-heure', targetText: 'à quelle heure,', baseText: { de: 'um wie viel Uhr,', en: 'at what time,' } },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît ?", baseText: { de: 'bitte?', en: 'please?' } },
   ],
   lessonItems: [
-    { id: 'part', targetText: 'part', baseText: { de: 'fährt ab' }, acceptedAnswers: ['part', 'Part'] },
-    { id: 'ca-part', targetText: 'ça part', baseText: { de: 'es fährt ab' }, acceptedAnswers: ['ça part', 'ca part', 'Ça part', 'Ca part'] },
-    { id: 'quelle-heure', targetText: 'quelle heure', baseText: { de: 'welche Uhrzeit' }, acceptedAnswers: ['quelle heure', 'Quelle heure'] },
-    { id: 'a-quelle-heure', targetText: 'à quelle heure', baseText: { de: 'um wie viel Uhr' }, acceptedAnswers: ['à quelle heure', 'a quelle heure', 'À quelle heure', 'A quelle heure'] },
+    { id: 'part', targetText: 'part', baseText: { de: 'fährt ab', en: 'leaves / departs' }, acceptedAnswers: ['part', 'Part'] },
+    { id: 'ca-part', targetText: 'ça part', baseText: { de: 'es fährt ab', en: 'it leaves' }, acceptedAnswers: ['ça part', 'ca part', 'Ça part', 'Ca part'] },
+    { id: 'quelle-heure', targetText: 'quelle heure', baseText: { de: 'welche Uhrzeit', en: 'what time' }, acceptedAnswers: ['quelle heure', 'Quelle heure'] },
+    { id: 'a-quelle-heure', targetText: 'à quelle heure', baseText: { de: 'um wie viel Uhr', en: 'at what time' }, acceptedAnswers: ['à quelle heure', 'a quelle heure', 'À quelle heure', 'A quelle heure'] },
   ],
   build: {
     targetText: "Ça part à quelle heure, s'il vous plaît ?",
@@ -34327,23 +34327,23 @@ const brightFrenchP7Lesson003: GuidedLessonVibeVariant = {
     fallbackChoices: ['part', 'vais', 'peux', 'viens'],
   },
   speakTarget: {
-    baseCue: { de: 'Um wie viel Uhr fährt es ab, bitte?' },
+    baseCue: { de: 'Um wie viel Uhr fährt es ab, bitte?', en: 'What time does it leave, please?' },
     targetPhrase: "Ça part à quelle heure, s'il vous plaît ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['part', 'quelle', 'heure'],
     optionalTokens: ['ça', 'ca', 'à', 'a', 'sil', 's', 'il', 'vous', 'plaît', 'plait'],
   },
-  sceneCaption: { de: 'Am Schalter oder Bahnsteig fragst du nach der Abfahrtszeit.' },
+  sceneCaption: { de: 'Am Schalter oder Bahnsteig fragst du nach der Abfahrtszeit.', en: 'At the counter or platform, you ask the departure time.' },
   trophyWord: {
     word: 'part',
-    meaning: { de: 'fährt ab' },
+    meaning: { de: 'fährt ab', en: 'leaves / departs' },
     example: 'Ça part à quelle heure ?',
-    whyThisWord: { de: 'Part kommt von partir. In Reiseplänen fragt ça part à quelle heure? natürlich nach der Abfahrt.' },
+    whyThisWord: { de: 'Part kommt von partir. In Reiseplänen fragt ça part à quelle heure? natürlich nach der Abfahrt.', en: 'Part comes from "partir" (to leave). "Ça part à quelle heure?" is the natural travel question — note "part" here doesn’t mean "a part of something" (different word entirely in French).' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Abfahrtstafel und kurze Frage nach der Uhrzeit.' },
+    caption: { de: 'Abfahrtstafel und kurze Frage nach der Uhrzeit.', en: 'A departure board and a brief question about the time.' },
   },
   songSeed: {
     genre: 'light station rhythm',
@@ -34356,18 +34356,18 @@ const brightFrenchP7Lesson004: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "C'est bien ce train ?",
-    baseText: { de: 'Ist das wirklich dieser Zug?' },
+    baseText: { de: 'Ist das wirklich dieser Zug?', en: 'Is this really the train?' },
   },
-  meaning: { de: 'Eine kurze Kontrolle vor dem Einsteigen in genau diesen Zug.' },
+  meaning: { de: 'Eine kurze Kontrolle vor dem Einsteigen in genau diesen Zug.', en: 'A quick check just before boarding to confirm this is the right train.' },
   chunks: [
-    { id: 'cest-bien', targetText: "C'est bien", baseText: { de: 'Es ist wirklich' } },
-    { id: 'ce-train', targetText: 'ce train ?', baseText: { de: 'dieser Zug?' } },
+    { id: 'cest-bien', targetText: "C'est bien", baseText: { de: 'Es ist wirklich', en: 'Is this really' } },
+    { id: 'ce-train', targetText: 'ce train ?', baseText: { de: 'dieser Zug?', en: 'the train?' } },
   ],
   lessonItems: [
-    { id: 'ce', targetText: 'ce', baseText: { de: 'dieser' }, acceptedAnswers: ['ce', 'Ce'] },
-    { id: 'ce-train', targetText: 'ce train', baseText: { de: 'dieser Zug' }, acceptedAnswers: ['ce train', 'Ce train'] },
-    { id: 'cest', targetText: "c'est", baseText: { de: 'das ist' }, acceptedAnswers: ["c'est", "C'est", 'c’est', 'C’est', 'c est', 'C est'] },
-    { id: 'bien', targetText: 'bien', baseText: { de: 'wirklich / doch' }, acceptedAnswers: ['bien', 'Bien'] },
+    { id: 'ce', targetText: 'ce', baseText: { de: 'dieser', en: 'this' }, acceptedAnswers: ['ce', 'Ce'] },
+    { id: 'ce-train', targetText: 'ce train', baseText: { de: 'dieser Zug', en: 'this train' }, acceptedAnswers: ['ce train', 'Ce train'] },
+    { id: 'cest', targetText: "c'est", baseText: { de: 'das ist', en: "it's" }, acceptedAnswers: ["c'est", "C'est", 'c’est', 'C’est', 'c est', 'C est'] },
+    { id: 'bien', targetText: 'bien', baseText: { de: 'wirklich / doch', en: 'really / indeed' }, acceptedAnswers: ['bien', 'Bien'] },
   ],
   build: {
     targetText: "C'est bien ce train ?",
@@ -34381,23 +34381,23 @@ const brightFrenchP7Lesson004: GuidedLessonVibeVariant = {
     fallbackChoices: ['ce', 'ça', 'où', 'bon'],
   },
   speakTarget: {
-    baseCue: { de: 'Ist das wirklich dieser Zug?' },
+    baseCue: { de: 'Ist das wirklich dieser Zug?', en: 'Is this really the train?' },
     targetPhrase: "C'est bien ce train ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['bien', 'ce', 'train'],
     optionalTokens: ['cest', 'c', 'est'],
   },
-  sceneCaption: { de: 'Am Bahnsteig prüfst du direkt vor dem Einsteigen den konkreten Zug.' },
+  sceneCaption: { de: 'Am Bahnsteig prüfst du direkt vor dem Einsteigen den konkreten Zug.', en: 'At the platform, you check the specific train just before boarding.' },
   trophyWord: {
     word: 'ce',
-    meaning: { de: 'dieser' },
+    meaning: { de: 'dieser', en: 'this' },
     example: "C'est bien ce train ?",
-    whyThisWord: { de: 'Ce steht vor maskulinen Nomen wie train. C’est zeigt die Pflichtelision: nicht ce est.' },
+    whyThisWord: { de: 'Ce steht vor maskulinen Nomen wie train. C’est zeigt die Pflichtelision: nicht ce est.', en: 'Ce sits before masculine nouns like "train" (ce train = this train). Note "bien" here acts as a confirming particle ("really") — not the adjective "good" — and the mandatory elision in "c’est" applies as always.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Zug am Bahnsteig, kurze Kontrolle vor dem Einsteigen.' },
+    caption: { de: 'Zug am Bahnsteig, kurze Kontrolle vor dem Einsteigen.', en: 'A train at the platform, a brief check before boarding.' },
   },
   songSeed: {
     genre: 'bright platform acoustic',
@@ -34410,19 +34410,19 @@ const brightFrenchP7Lesson005: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "J'ai besoin d'un taxi, s'il vous plaît.",
-    baseText: { de: 'Ich brauche ein Taxi, bitte.' },
+    baseText: { de: 'Ich brauche ein Taxi, bitte.', en: 'I need a taxi, please.' },
   },
-  meaning: { de: 'Eine höfliche Bitte nach einem Taxi am Hotel, Bahnhof oder Straßenrand.' },
+  meaning: { de: 'Eine höfliche Bitte nach einem Taxi am Hotel, Bahnhof oder Straßenrand.', en: 'A polite request for a taxi at a hotel, station, or street corner.' },
   chunks: [
-    { id: 'jai-besoin', targetText: "J'ai besoin", baseText: { de: 'Ich brauche' } },
-    { id: 'dun-taxi', targetText: "d'un taxi,", baseText: { de: 'ein Taxi,' } },
-    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: { de: 'bitte.' } },
+    { id: 'jai-besoin', targetText: "J'ai besoin", baseText: { de: 'Ich brauche', en: 'I need' } },
+    { id: 'dun-taxi', targetText: "d'un taxi,", baseText: { de: 'ein Taxi,', en: 'a taxi,' } },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'besoin', targetText: 'besoin', baseText: { de: 'Bedarf / brauche' }, acceptedAnswers: ['besoin', 'Besoin'] },
-    { id: 'jai-besoin', targetText: "j'ai besoin", baseText: { de: 'ich brauche' }, acceptedAnswers: ["j'ai besoin", "J'ai besoin", 'j’ai besoin', 'J’ai besoin', 'jai besoin', 'Jai besoin'] },
-    { id: 'dun-taxi', targetText: "d'un taxi", baseText: { de: 'ein Taxi' }, acceptedAnswers: ["d'un taxi", "D'un taxi", 'd’un taxi', 'D’un taxi', 'd un taxi', 'D un taxi'] },
-    { id: 'taxi', targetText: 'taxi', baseText: { de: 'Taxi' }, acceptedAnswers: ['taxi', 'Taxi'] },
+    { id: 'besoin', targetText: 'besoin', baseText: { de: 'Bedarf / brauche', en: 'need' }, acceptedAnswers: ['besoin', 'Besoin'] },
+    { id: 'jai-besoin', targetText: "j'ai besoin", baseText: { de: 'ich brauche', en: 'I need' }, acceptedAnswers: ["j'ai besoin", "J'ai besoin", 'j’ai besoin', 'J’ai besoin', 'jai besoin', 'Jai besoin'] },
+    { id: 'dun-taxi', targetText: "d'un taxi", baseText: { de: 'ein Taxi', en: 'a taxi' }, acceptedAnswers: ["d'un taxi", "D'un taxi", 'd’un taxi', 'D’un taxi', 'd un taxi', 'D un taxi'] },
+    { id: 'taxi', targetText: 'taxi', baseText: { de: 'Taxi', en: 'taxi' }, acceptedAnswers: ['taxi', 'Taxi'] },
   ],
   build: {
     targetText: "J'ai besoin d'un taxi, s'il vous plaît.",
@@ -34436,23 +34436,23 @@ const brightFrenchP7Lesson005: GuidedLessonVibeVariant = {
     fallbackChoices: ['besoin', 'mal', 'retard', 'mieux'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich brauche ein Taxi, bitte.' },
+    baseCue: { de: 'Ich brauche ein Taxi, bitte.', en: 'I need a taxi, please.' },
     targetPhrase: "J'ai besoin d'un taxi, s'il vous plaît.",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['besoin', 'taxi', 'plaît'],
     optionalTokens: ['jai', 'j', 'ai', 'dun', 'd', 'un', 'sil', 's', 'il', 'vous', 'plait'],
   },
-  sceneCaption: { de: 'Vor dem Hotel oder Bahnhof bittest du höflich um ein Taxi.' },
+  sceneCaption: { de: 'Vor dem Hotel oder Bahnhof bittest du höflich um ein Taxi.', en: 'In front of the hotel or station, you politely ask for a taxi.' },
   trophyWord: {
     word: 'besoin',
-    meaning: { de: 'Bedarf / ich brauche' },
+    meaning: { de: 'Bedarf / ich brauche', en: 'need' },
     example: "J'ai besoin d'un taxi.",
-    whyThisWord: { de: 'Besoin steht in der A1-Struktur avoir besoin de. Vor un wird de zu d’un elidiert.' },
+    whyThisWord: { de: 'Besoin steht in der A1-Struktur avoir besoin de. Vor un wird de zu d’un elidiert.', en: 'Besoin is used in the fixed A1 pattern "avoir besoin de" (literally "to have need of"). The "de" elides before "un" → "d’un"; French never says "de un".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Hotel- oder Bahnhofsvorplatz, Taxi-Anfrage.' },
+    caption: { de: 'Hotel- oder Bahnhofsvorplatz, Taxi-Anfrage.', en: 'A hotel or station forecourt, asking for a taxi.' },
   },
   songSeed: {
     genre: 'city travel acoustic',
@@ -34465,18 +34465,18 @@ const brightFrenchP7Lesson006: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'On va à la gare ?',
-    baseText: { de: 'Gehen/fahren wir zum Bahnhof?' },
+    baseText: { de: 'Gehen/fahren wir zum Bahnhof?', en: 'Are we headed to the station?' },
   },
-  meaning: { de: 'Eine lockere Rückfrage unter Mitreisenden mit on als gesprochenem wir.' },
+  meaning: { de: 'Eine lockere Rückfrage unter Mitreisenden mit on als gesprochenem wir.', en: 'A casual check-in among travel companions using "on" for spoken "we".' },
   chunks: [
-    { id: 'on-va', targetText: 'On va', baseText: { de: 'Wir gehen / fahren' } },
-    { id: 'a-la-gare', targetText: 'à la gare ?', baseText: { de: 'zum Bahnhof?' } },
+    { id: 'on-va', targetText: 'On va', baseText: { de: 'Wir gehen / fahren', en: "We're headed" } },
+    { id: 'a-la-gare', targetText: 'à la gare ?', baseText: { de: 'zum Bahnhof?', en: 'to the station?' } },
   ],
   lessonItems: [
-    { id: 'gare', targetText: 'gare', baseText: { de: 'Bahnhof' }, acceptedAnswers: ['gare', 'Gare'] },
-    { id: 'a-la-gare', targetText: 'à la gare', baseText: { de: 'zum Bahnhof' }, acceptedAnswers: ['à la gare', 'a la gare', 'À la gare', 'A la gare'] },
-    { id: 'on-va', targetText: 'on va', baseText: { de: 'wir gehen / fahren' }, acceptedAnswers: ['on va', 'On va'] },
-    { id: 'va', targetText: 'va', baseText: { de: 'geht / fährt' }, acceptedAnswers: ['va', 'Va'] },
+    { id: 'gare', targetText: 'gare', baseText: { de: 'Bahnhof', en: 'train station' }, acceptedAnswers: ['gare', 'Gare'] },
+    { id: 'a-la-gare', targetText: 'à la gare', baseText: { de: 'zum Bahnhof', en: 'to the station' }, acceptedAnswers: ['à la gare', 'a la gare', 'À la gare', 'A la gare'] },
+    { id: 'on-va', targetText: 'on va', baseText: { de: 'wir gehen / fahren', en: "we're going" }, acceptedAnswers: ['on va', 'On va'] },
+    { id: 'va', targetText: 'va', baseText: { de: 'geht / fährt', en: 'goes' }, acceptedAnswers: ['va', 'Va'] },
   ],
   build: {
     targetText: 'On va à la gare ?',
@@ -34490,23 +34490,23 @@ const brightFrenchP7Lesson006: GuidedLessonVibeVariant = {
     fallbackChoices: ['gare', 'station', 'centre', 'hôtel'],
   },
   speakTarget: {
-    baseCue: { de: 'Gehen/fahren wir zum Bahnhof?' },
+    baseCue: { de: 'Gehen/fahren wir zum Bahnhof?', en: 'Are we headed to the station?' },
     targetPhrase: 'On va à la gare ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['on', 'va', 'gare'],
     optionalTokens: ['à', 'a', 'la'],
   },
-  sceneCaption: { de: 'Mit einer Begleitperson klärst du locker, ob ihr zum Bahnhof geht oder fahrt.' },
+  sceneCaption: { de: 'Mit einer Begleitperson klärst du locker, ob ihr zum Bahnhof geht oder fahrt.', en: "With a companion, you casually check whether you're heading to the station." },
   trophyWord: {
     word: 'gare',
-    meaning: { de: 'Bahnhof' },
+    meaning: { de: 'Bahnhof', en: 'train station' },
     example: 'On va à la gare ?',
-    whyThisWord: { de: 'Gare ist der Bahnhof. In gesprochener Alltagssprache bedeutet on hier wir; das ist keine formelle vous-Situation.' },
+    whyThisWord: { de: 'Gare ist der Bahnhof. In gesprochener Alltagssprache bedeutet on hier wir; das ist keine formelle vous-Situation.', en: 'Gare is the train station — feminine (la gare). In everyday spoken French, "on" replaces "nous" for "we" — it’s neutral in register and very common at A1. This is a casual check among companions, not a service ask.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Zwei Reisende mit Gepäck auf dem Weg zum Bahnhof.' },
+    caption: { de: 'Zwei Reisende mit Gepäck auf dem Weg zum Bahnhof.', en: 'Two travelers with luggage on the way to the station.' },
   },
   songSeed: {
     genre: 'warm travel acoustic',
@@ -34519,19 +34519,19 @@ const brightFrenchP7Lesson007: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Arrêtez-vous ici, s’il vous plaît.',
-    baseText: { de: 'Halten Sie bitte hier an.' },
+    baseText: { de: 'Halten Sie bitte hier an.', en: 'Please stop here.' },
   },
-  meaning: { de: 'Eine höfliche Bitte an Fahrer oder Fahrerin, an der aktuellen Stelle zu halten.' },
+  meaning: { de: 'Eine höfliche Bitte an Fahrer oder Fahrerin, an der aktuellen Stelle zu halten.', en: 'A polite request to the driver to stop at the current spot.' },
   chunks: [
-    { id: 'arretez-vous', targetText: 'Arrêtez-vous', baseText: { de: 'Halten Sie an' } },
-    { id: 'ici', targetText: 'ici,', baseText: { de: 'hier,' } },
-    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: { de: 'bitte.' } },
+    { id: 'arretez-vous', targetText: 'Arrêtez-vous', baseText: { de: 'Halten Sie an', en: 'Please stop' } },
+    { id: 'ici', targetText: 'ici,', baseText: { de: 'hier,', en: 'here,' } },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'arretez', targetText: 'arrêtez', baseText: { de: 'halten Sie an' }, acceptedAnswers: ['arrêtez', 'arretez', 'Arrêtez', 'Arretez'] },
-    { id: 'arretez-vous', targetText: 'arrêtez-vous', baseText: { de: 'halten Sie an' }, acceptedAnswers: ['arrêtez-vous', 'arretez-vous', 'Arrêtez-vous', 'Arretez-vous', 'arrêtez vous', 'arretez vous'] },
-    { id: 'ici', targetText: 'ici', baseText: { de: 'hier' }, acceptedAnswers: ['ici', 'Ici'] },
-    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: { de: 'bitte' }, acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+    { id: 'arretez', targetText: 'arrêtez', baseText: { de: 'halten Sie an', en: 'stop (formal command)' }, acceptedAnswers: ['arrêtez', 'arretez', 'Arrêtez', 'Arretez'] },
+    { id: 'arretez-vous', targetText: 'arrêtez-vous', baseText: { de: 'halten Sie an', en: 'stop (reflexive command)' }, acceptedAnswers: ['arrêtez-vous', 'arretez-vous', 'Arrêtez-vous', 'Arretez-vous', 'arrêtez vous', 'arretez vous'] },
+    { id: 'ici', targetText: 'ici', baseText: { de: 'hier', en: 'here' }, acceptedAnswers: ['ici', 'Ici'] },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: { de: 'bitte', en: 'please (formal)' }, acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
   ],
   build: {
     targetText: 'Arrêtez-vous ici, s’il vous plaît.',
@@ -34545,23 +34545,23 @@ const brightFrenchP7Lesson007: GuidedLessonVibeVariant = {
     fallbackChoices: ['Arrêtez-vous', 'Allez-vous', 'Écrivez-vous', 'Appelez-vous'],
   },
   speakTarget: {
-    baseCue: { de: 'Halten Sie bitte hier an.' },
+    baseCue: { de: 'Halten Sie bitte hier an.', en: 'Please stop here.' },
     targetPhrase: 'Arrêtez-vous ici, s’il vous plaît.',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['arrêtez', 'ici', 'plaît'],
     optionalTokens: ['arretez', 'vous', 'sil', 's', 'il', 'plait'],
   },
-  sceneCaption: { de: 'Im Taxi oder Bus bittest du mit vous darum, hier anzuhalten.' },
+  sceneCaption: { de: 'Im Taxi oder Bus bittest du mit vous darum, hier anzuhalten.', en: 'In a taxi or bus, you use vous to ask the driver to stop here.' },
   trophyWord: {
     word: 'arrêtez',
-    meaning: { de: 'halten Sie an' },
+    meaning: { de: 'halten Sie an', en: 'stop (formal command)' },
     example: 'Arrêtez-vous ici, s’il vous plaît.',
-    whyThisWord: { de: 'Arrêtez-vous ist die höfliche vous-Form. Bei Fahrerinnen und Fahrern ist vous die richtige A1-Registerwahl.' },
+    whyThisWord: { de: 'Arrêtez-vous ist die höfliche vous-Form. Bei Fahrerinnen und Fahrern ist vous die richtige A1-Registerwahl.', en: 'Arrêtez-vous is the formal vous command form — a reflexive imperative ("stop yourself"). With taxi or bus drivers, vous is the correct A1 register choice — never use the tu form ("arrête-toi") with service staff.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Innenraum eines Taxis, höfliche Bitte zum Anhalten.' },
+    caption: { de: 'Innenraum eines Taxis, höfliche Bitte zum Anhalten.', en: 'Inside a taxi, a polite request to stop.' },
   },
   songSeed: {
     genre: 'soft city acoustic',
@@ -34574,18 +34574,18 @@ const brightFrenchP7Lesson008: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Je vais à la gare.',
-    baseText: { de: 'Ich gehe/fahre zum Bahnhof.' },
+    baseText: { de: 'Ich gehe/fahre zum Bahnhof.', en: "I'm going to the station." },
   },
-  meaning: { de: 'Eine einfache Aussage über dein aktuelles Ziel.' },
+  meaning: { de: 'Eine einfache Aussage über dein aktuelles Ziel.', en: "A simple statement of where you're headed." },
   chunks: [
-    { id: 'je-vais', targetText: 'Je vais', baseText: { de: 'Ich gehe / fahre' } },
-    { id: 'a-la-gare', targetText: 'à la gare.', baseText: { de: 'zum Bahnhof.' } },
+    { id: 'je-vais', targetText: 'Je vais', baseText: { de: 'Ich gehe / fahre', en: "I'm going" } },
+    { id: 'a-la-gare', targetText: 'à la gare.', baseText: { de: 'zum Bahnhof.', en: 'to the station.' } },
   ],
   lessonItems: [
-    { id: 'vais', targetText: 'vais', baseText: { de: 'gehe / fahre' }, acceptedAnswers: ['vais', 'Vais'] },
-    { id: 'je-vais', targetText: 'je vais', baseText: { de: 'ich gehe / fahre' }, acceptedAnswers: ['je vais', 'Je vais'] },
-    { id: 'a-la-gare', targetText: 'à la gare', baseText: { de: 'zum Bahnhof' }, acceptedAnswers: ['à la gare', 'a la gare', 'À la gare', 'A la gare'] },
-    { id: 'gare', targetText: 'gare', baseText: { de: 'Bahnhof' }, acceptedAnswers: ['gare', 'Gare'] },
+    { id: 'vais', targetText: 'vais', baseText: { de: 'gehe / fahre', en: 'go' }, acceptedAnswers: ['vais', 'Vais'] },
+    { id: 'je-vais', targetText: 'je vais', baseText: { de: 'ich gehe / fahre', en: "I'm going" }, acceptedAnswers: ['je vais', 'Je vais'] },
+    { id: 'a-la-gare', targetText: 'à la gare', baseText: { de: 'zum Bahnhof', en: 'to the station' }, acceptedAnswers: ['à la gare', 'a la gare', 'À la gare', 'A la gare'] },
+    { id: 'gare', targetText: 'gare', baseText: { de: 'Bahnhof', en: 'train station' }, acceptedAnswers: ['gare', 'Gare'] },
   ],
   build: {
     targetText: 'Je vais à la gare.',
@@ -34599,23 +34599,23 @@ const brightFrenchP7Lesson008: GuidedLessonVibeVariant = {
     fallbackChoices: ['vais', 'viens', 'peux', 'sens'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich gehe/fahre zum Bahnhof.' },
+    baseCue: { de: 'Ich gehe/fahre zum Bahnhof.', en: "I'm going to the station." },
     targetPhrase: 'Je vais à la gare.',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['vais', 'gare'],
     optionalTokens: ['je', 'à', 'a', 'la'],
   },
-  sceneCaption: { de: 'Du sagst knapp, wohin du gerade unterwegs bist.' },
+  sceneCaption: { de: 'Du sagst knapp, wohin du gerade unterwegs bist.', en: "You briefly say where you're headed." },
   trophyWord: {
     word: 'vais',
-    meaning: { de: 'gehe / fahre' },
+    meaning: { de: 'gehe / fahre', en: 'go' },
     example: 'Je vais à la gare.',
-    whyThisWord: { de: 'Vais ist die je-Form von aller. Im Französischen deckt aller hier gehen und fahren zum Ziel ab.' },
+    whyThisWord: { de: 'Vais ist die je-Form von aller. Im Französischen deckt aller hier gehen und fahren zum Ziel ab.', en: 'Vais is the "je" form of "aller" (to go). French "aller" covers both English "to walk" and "to take transit" to a destination — the means of travel is implicit; specify it with "à pied" / "en bus" / "en taxi" if needed.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Reisende Person auf dem Weg zum Bahnhof.' },
+    caption: { de: 'Reisende Person auf dem Weg zum Bahnhof.', en: 'A traveler on the way to the station.' },
   },
   songSeed: {
     genre: 'moving acoustic',
@@ -34628,18 +34628,18 @@ const brightFrenchP7Lesson009: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Ça prend combien de temps ?',
-    baseText: { de: 'Wie lange dauert das?' },
+    baseText: { de: 'Wie lange dauert das?', en: 'How long does it take?' },
   },
-  meaning: { de: 'Eine einfache Frage nach der Dauer einer Fahrt.' },
+  meaning: { de: 'Eine einfache Frage nach der Dauer einer Fahrt.', en: 'A simple question about the duration of a trip.' },
   chunks: [
-    { id: 'ca-prend', targetText: 'Ça prend', baseText: { de: 'Das nimmt / dauert' } },
-    { id: 'combien-de-temps', targetText: 'combien de temps ?', baseText: { de: 'wie viel Zeit?' } },
+    { id: 'ca-prend', targetText: 'Ça prend', baseText: { de: 'Das nimmt / dauert', en: 'It takes' } },
+    { id: 'combien-de-temps', targetText: 'combien de temps ?', baseText: { de: 'wie viel Zeit?', en: 'how long?' } },
   ],
   lessonItems: [
-    { id: 'temps', targetText: 'temps', baseText: { de: 'Zeit' }, acceptedAnswers: ['temps', 'Temps'] },
-    { id: 'combien-de-temps', targetText: 'combien de temps', baseText: { de: 'wie lange' }, acceptedAnswers: ['combien de temps', 'Combien de temps'] },
-    { id: 'ca-prend', targetText: 'ça prend', baseText: { de: 'es dauert' }, acceptedAnswers: ['ça prend', 'ca prend', 'Ça prend', 'Ca prend'] },
-    { id: 'prend', targetText: 'prend', baseText: { de: 'nimmt / dauert' }, acceptedAnswers: ['prend', 'Prend'] },
+    { id: 'temps', targetText: 'temps', baseText: { de: 'Zeit', en: 'time' }, acceptedAnswers: ['temps', 'Temps'] },
+    { id: 'combien-de-temps', targetText: 'combien de temps', baseText: { de: 'wie lange', en: 'how long' }, acceptedAnswers: ['combien de temps', 'Combien de temps'] },
+    { id: 'ca-prend', targetText: 'ça prend', baseText: { de: 'es dauert', en: 'it takes' }, acceptedAnswers: ['ça prend', 'ca prend', 'Ça prend', 'Ca prend'] },
+    { id: 'prend', targetText: 'prend', baseText: { de: 'nimmt / dauert', en: 'takes' }, acceptedAnswers: ['prend', 'Prend'] },
   ],
   build: {
     targetText: 'Ça prend combien de temps ?',
@@ -34653,23 +34653,23 @@ const brightFrenchP7Lesson009: GuidedLessonVibeVariant = {
     fallbackChoices: ['temps', 'minute', 'heure', 'trajet'],
   },
   speakTarget: {
-    baseCue: { de: 'Wie lange dauert das?' },
+    baseCue: { de: 'Wie lange dauert das?', en: 'How long does it take?' },
     targetPhrase: 'Ça prend combien de temps ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['prend', 'combien', 'temps'],
     optionalTokens: ['ça', 'ca', 'de'],
   },
-  sceneCaption: { de: 'Vor oder während der Fahrt fragst du nach der ungefähren Dauer.' },
+  sceneCaption: { de: 'Vor oder während der Fahrt fragst du nach der ungefähren Dauer.', en: 'Before or during the trip, you ask roughly how long it will take.' },
   trophyWord: {
     word: 'temps',
-    meaning: { de: 'Zeit' },
+    meaning: { de: 'Zeit', en: 'time' },
     example: 'Ça prend combien de temps ?',
-    whyThisWord: { de: 'Temps bedeutet Zeit. In combien de temps? bildet es die natürliche A1-Frage nach der Dauer.' },
+    whyThisWord: { de: 'Temps bedeutet Zeit. In combien de temps? bildet es die natürliche A1-Frage nach der Dauer.', en: 'Temps means "time" (duration). Note: French "temps" also means "weather" — context separates them (here it’s clearly duration). "Combien de temps?" is the natural A1 way to ask "how long?".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Taxi, Bus oder Zug; kurze Frage nach der Fahrtzeit.' },
+    caption: { de: 'Taxi, Bus oder Zug; kurze Frage nach der Fahrtzeit.', en: 'A taxi, bus, or train, with a quick question about travel time.' },
   },
   songSeed: {
     genre: 'steady travel acoustic',
@@ -34682,18 +34682,18 @@ const brightFrenchP7Lesson010: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Je suis arrivé, merci.',
-    baseText: { de: 'Ich bin angekommen, danke.' },
+    baseText: { de: 'Ich bin angekommen, danke.', en: "I've arrived, thanks." },
   },
-  meaning: { de: 'Ein höflicher Abschluss beim Aussteigen oder nach der Ankunft.' },
+  meaning: { de: 'Ein höflicher Abschluss beim Aussteigen oder nach der Ankunft.', en: 'A polite close when getting out or after arriving.' },
   chunks: [
-    { id: 'je-suis-arrive', targetText: 'Je suis arrivé,', baseText: { de: 'Ich bin angekommen,' } },
-    { id: 'merci', targetText: 'merci.', baseText: { de: 'danke.' } },
+    { id: 'je-suis-arrive', targetText: 'Je suis arrivé,', baseText: { de: 'Ich bin angekommen,', en: "I've arrived," } },
+    { id: 'merci', targetText: 'merci.', baseText: { de: 'danke.', en: 'thanks.' } },
   ],
   lessonItems: [
-    { id: 'arrive', targetText: 'arrivé', baseText: { de: 'angekommen' }, acceptedAnswers: ['arrivé', 'arrive', 'Arrivé', 'Arrive', 'arrivée', 'Arrivée'] },
-    { id: 'je-suis-arrive', targetText: 'je suis arrivé', baseText: { de: 'ich bin angekommen' }, acceptedAnswers: ['je suis arrivé', 'Je suis arrivé', 'je suis arrive', 'Je suis arrive', 'je suis arrivée', 'Je suis arrivée'] },
-    { id: 'je-suis', targetText: 'je suis', baseText: { de: 'ich bin' }, acceptedAnswers: ['je suis', 'Je suis'] },
-    { id: 'merci', targetText: 'merci', baseText: { de: 'danke' }, acceptedAnswers: ['merci', 'Merci'] },
+    { id: 'arrive', targetText: 'arrivé', baseText: { de: 'angekommen', en: 'arrived' }, acceptedAnswers: ['arrivé', 'arrive', 'Arrivé', 'Arrive', 'arrivée', 'Arrivée'] },
+    { id: 'je-suis-arrive', targetText: 'je suis arrivé', baseText: { de: 'ich bin angekommen', en: "I've arrived" }, acceptedAnswers: ['je suis arrivé', 'Je suis arrivé', 'je suis arrive', 'Je suis arrive', 'je suis arrivée', 'Je suis arrivée'] },
+    { id: 'je-suis', targetText: 'je suis', baseText: { de: 'ich bin', en: 'I am' }, acceptedAnswers: ['je suis', 'Je suis'] },
+    { id: 'merci', targetText: 'merci', baseText: { de: 'danke', en: 'thanks' }, acceptedAnswers: ['merci', 'Merci'] },
   ],
   build: {
     targetText: 'Je suis arrivé, merci.',
@@ -34707,23 +34707,23 @@ const brightFrenchP7Lesson010: GuidedLessonVibeVariant = {
     fallbackChoices: ['arrivé', 'allergique', 'ouvert', 'désolé'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich bin angekommen, danke.' },
+    baseCue: { de: 'Ich bin angekommen, danke.', en: "I've arrived, thanks." },
     targetPhrase: 'Je suis arrivé, merci.',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['suis', 'arrivé', 'merci'],
     optionalTokens: ['je', 'arrive', 'arrivée'],
   },
-  sceneCaption: { de: 'Beim Aussteigen oder am Ziel sagst du, dass du angekommen bist, und bedankst dich.' },
+  sceneCaption: { de: 'Beim Aussteigen oder am Ziel sagst du, dass du angekommen bist, und bedankst dich.', en: 'Getting out or at the destination, you say you’ve arrived and say thanks.' },
   trophyWord: {
     word: 'arrivé',
-    meaning: { de: 'angekommen' },
+    meaning: { de: 'angekommen', en: 'arrived' },
     example: 'Je suis arrivé, merci.',
-    whyThisWord: { de: 'Arrivé ist die maskuline Schreibform. Eine Sprecherin schreibt arrivée; beide klingen gleich, deshalb akzeptiert die Übung beide Formen.' },
+    whyThisWord: { de: 'Arrivé ist die maskuline Schreibform. Eine Sprecherin schreibt arrivée; beide klingen gleich, deshalb akzeptiert die Übung beide Formen.', en: 'Arrivé is the masculine past participle. A female speaker writes "arrivée" with an extra "e"; both sound the same, so the exercise accepts both forms. French uses "être" (not "avoir") with arriver: "je suis arrivé", never "j’ai arrivé".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Ankunft am Ziel, kurzer Dank beim Aussteigen.' },
+    caption: { de: 'Ankunft am Ziel, kurzer Dank beim Aussteigen.', en: 'Arrival at the destination, a brief thanks on getting out.' },
   },
   songSeed: {
     genre: 'arrival acoustic',
@@ -61829,9 +61829,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-7-lesson-1-un-ticket',
       sequence: 1,
-      title: { de: 'Ein Ticket' },
+      title: { de: 'Ein Ticket', en: 'A ticket' },
     },
-    title: { de: 'Ein Ticket' },
+    title: { de: 'Ein Ticket', en: 'A ticket' },
     situation: {
       en: 'At a station counter, ask for one ticket politely.',
       de: 'Am Bahnhofsschalter bittest du höflich um ein Ticket.',
@@ -61843,8 +61843,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Welcher Steig?' },
-      situation: { de: 'Du fragst, an welchem Steig der Bus ist.' },
+      title: { de: 'Welcher Steig?', en: 'Which platform?' },
+      situation: { de: 'Du fragst, an welchem Steig der Bus ist.', en: 'You ask which platform the bus is at.' },
     },
     vibeVariants: {
       bright: brightFrenchP7Lesson001,
@@ -61862,9 +61862,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-7-lesson-2-a-quel-quai',
       sequence: 2,
-      title: { de: 'Welcher Steig?' },
+      title: { de: 'Welcher Steig?', en: 'Which platform?' },
     },
-    title: { de: 'Welcher Steig?' },
+    title: { de: 'Welcher Steig?', en: 'Which platform?' },
     situation: {
       en: 'At a bus station, ask where the bus is located without asking which route to take.',
       de: 'Am Busbahnhof fragst du nach dem Standort des Busses, nicht nach der Linie.',
@@ -61876,8 +61876,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Abfahrtszeit' },
-      situation: { de: 'Du fragst, wann Bus oder Zug abfährt.' },
+      title: { de: 'Abfahrtszeit', en: 'Departure time' },
+      situation: { de: 'Du fragst, wann Bus oder Zug abfährt.', en: 'You ask when the bus or train leaves.' },
     },
     vibeVariants: {
       bright: brightFrenchP7Lesson002,
@@ -61895,9 +61895,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-7-lesson-3-ca-part',
       sequence: 3,
-      title: { de: 'Abfahrtszeit' },
+      title: { de: 'Abfahrtszeit', en: 'Departure time' },
     },
-    title: { de: 'Abfahrtszeit' },
+    title: { de: 'Abfahrtszeit', en: 'Departure time' },
     situation: {
       en: 'At a station counter or platform, ask what time the bus or train departs.',
       de: 'Am Schalter oder Bahnsteig fragst du, um wie viel Uhr Bus oder Zug abfährt.',
@@ -61909,8 +61909,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Dieser Zug?' },
-      situation: { de: 'Du prüfst vor dem Einsteigen den konkreten Zug.' },
+      title: { de: 'Dieser Zug?', en: 'Is this the train?' },
+      situation: { de: 'Du prüfst vor dem Einsteigen den konkreten Zug.', en: 'You check the specific train before boarding.' },
     },
     vibeVariants: {
       bright: brightFrenchP7Lesson003,
@@ -61928,9 +61928,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-7-lesson-4-ce-train',
       sequence: 4,
-      title: { de: 'Dieser Zug?' },
+      title: { de: 'Dieser Zug?', en: 'Is this the train?' },
     },
-    title: { de: 'Dieser Zug?' },
+    title: { de: 'Dieser Zug?', en: 'Is this the train?' },
     situation: {
       en: 'On the platform, confirm that this specific train is the one you should board.',
       de: 'Am Bahnsteig prüfst du, ob genau dieser Zug der richtige ist.',
@@ -61942,8 +61942,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ein Taxi brauchen' },
-      situation: { de: 'Du bittest höflich um ein Taxi.' },
+      title: { de: 'Ein Taxi brauchen', en: 'Need a taxi' },
+      situation: { de: 'Du bittest höflich um ein Taxi.', en: 'You politely ask for a taxi.' },
     },
     vibeVariants: {
       bright: brightFrenchP7Lesson004,
@@ -61961,9 +61961,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-7-lesson-5-besoin-dun-taxi',
       sequence: 5,
-      title: { de: 'Ein Taxi brauchen' },
+      title: { de: 'Ein Taxi brauchen', en: 'Need a taxi' },
     },
-    title: { de: 'Ein Taxi brauchen' },
+    title: { de: 'Ein Taxi brauchen', en: 'Need a taxi' },
     situation: {
       en: 'Outside a station or hotel, ask politely for a taxi.',
       de: 'Vor Bahnhof oder Hotel bittest du höflich um ein Taxi.',
@@ -61975,8 +61975,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Zum Bahnhof?' },
-      situation: { de: 'Du klärst locker, ob ihr zum Bahnhof geht oder fahrt.' },
+      title: { de: 'Zum Bahnhof?', en: 'To the station?' },
+      situation: { de: 'Du klärst locker, ob ihr zum Bahnhof geht oder fahrt.', en: 'You casually check whether you’re both heading to the station.' },
     },
     vibeVariants: {
       bright: brightFrenchP7Lesson005,
@@ -61994,9 +61994,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-7-lesson-6-on-va-a-la-gare',
       sequence: 6,
-      title: { de: 'Zum Bahnhof?' },
+      title: { de: 'Zum Bahnhof?', en: 'To the station?' },
     },
-    title: { de: 'Zum Bahnhof?' },
+    title: { de: 'Zum Bahnhof?', en: 'To the station?' },
     situation: {
       en: 'With another traveler, confirm that you are going to the station together.',
       de: 'Mit einer Begleitperson klärst du, ob ihr zusammen zum Bahnhof geht oder fahrt.',
@@ -62008,8 +62008,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Hier anhalten' },
-      situation: { de: 'Du bittest Fahrer oder Fahrerin, hier anzuhalten.' },
+      title: { de: 'Hier anhalten', en: 'Stop here' },
+      situation: { de: 'Du bittest Fahrer oder Fahrerin, hier anzuhalten.', en: 'You ask the driver to stop here.' },
     },
     vibeVariants: {
       bright: brightFrenchP7Lesson006,
@@ -62027,9 +62027,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-7-lesson-7-arretez-vous-ici',
       sequence: 7,
-      title: { de: 'Hier anhalten' },
+      title: { de: 'Hier anhalten', en: 'Stop here' },
     },
-    title: { de: 'Hier anhalten' },
+    title: { de: 'Hier anhalten', en: 'Stop here' },
     situation: {
       en: 'Inside a taxi or bus, ask the driver politely to stop here.',
       de: 'Im Taxi oder Bus bittest du den Fahrer oder die Fahrerin höflich, hier anzuhalten.',
@@ -62041,8 +62041,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ich fahre zum Bahnhof' },
-      situation: { de: 'Du sagst, wohin du unterwegs bist.' },
+      title: { de: 'Ich fahre zum Bahnhof', en: 'Going to the station' },
+      situation: { de: 'Du sagst, wohin du unterwegs bist.', en: 'You say where you’re headed.' },
     },
     vibeVariants: {
       bright: brightFrenchP7Lesson007,
@@ -62060,9 +62060,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-7-lesson-8-je-vais-a-la-gare',
       sequence: 8,
-      title: { de: 'Ich fahre zum Bahnhof' },
+      title: { de: 'Ich fahre zum Bahnhof', en: 'Going to the station' },
     },
-    title: { de: 'Ich fahre zum Bahnhof' },
+    title: { de: 'Ich fahre zum Bahnhof', en: 'Going to the station' },
     situation: {
       en: 'In casual travel talk or to a driver, state that you are heading to the station.',
       de: 'Im Reisegespräch oder gegenüber einem Fahrer sagst du, dass du zum Bahnhof unterwegs bist.',
@@ -62074,8 +62074,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wie lange?' },
-      situation: { de: 'Du fragst nach der Dauer der Fahrt.' },
+      title: { de: 'Wie lange?', en: 'How long?' },
+      situation: { de: 'Du fragst nach der Dauer der Fahrt.', en: 'You ask how long the trip will take.' },
     },
     vibeVariants: {
       bright: brightFrenchP7Lesson008,
@@ -62093,9 +62093,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-7-lesson-9-combien-de-temps',
       sequence: 9,
-      title: { de: 'Wie lange?' },
+      title: { de: 'Wie lange?', en: 'How long?' },
     },
-    title: { de: 'Wie lange?' },
+    title: { de: 'Wie lange?', en: 'How long?' },
     situation: {
       en: 'Before or during a ride, ask how long it takes.',
       de: 'Vor oder während der Fahrt fragst du, wie lange es dauert.',
@@ -62107,8 +62107,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Angekommen' },
-      situation: { de: 'Du meldest die Ankunft und bedankst dich.' },
+      title: { de: 'Angekommen', en: 'Arrived' },
+      situation: { de: 'Du meldest die Ankunft und bedankst dich.', en: 'You note that you’ve arrived and say thanks.' },
     },
     vibeVariants: {
       bright: brightFrenchP7Lesson009,
@@ -62126,9 +62126,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-7-lesson-10-je-suis-arrive',
       sequence: 10,
-      title: { de: 'Angekommen' },
+      title: { de: 'Angekommen', en: 'Arrived' },
     },
-    title: { de: 'Angekommen' },
+    title: { de: 'Angekommen', en: 'Arrived' },
     situation: {
       en: 'Arriving or stepping out of a ride, say that you have arrived and thank the other person.',
       de: 'Beim Ankommen oder Aussteigen sagst du, dass du angekommen bist, und bedankst dich.',
@@ -62140,8 +62140,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Pfad abgeschlossen' },
-      situation: { de: 'Du hast French A1 Practical 7 abgeschlossen.' },
+      title: { de: 'Pfad abgeschlossen', en: 'Path complete' },
+      situation: { de: 'Du hast French A1 Practical 7 abgeschlossen.', en: "You've finished French A1 Practical 7." },
     },
     vibeVariants: {
       bright: brightFrenchP7Lesson010,
