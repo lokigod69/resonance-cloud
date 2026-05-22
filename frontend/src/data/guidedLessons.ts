@@ -655,7 +655,7 @@ const GUIDED_TODAY_PATH_FRENCH_SIX_METADATA: GuidedPathMetadata = {
   id: 'french-a1-practical-6',
   title: 'French A1 Practical 6',
   shortTitle: 'A1 Practical 6',
-  subtitle: { de: 'Gesundheit und Hilfe auf Französisch' },
+  subtitle: { de: 'Gesundheit und Hilfe auf Französisch', en: 'Health and help in French' },
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'French',
@@ -33649,18 +33649,18 @@ const brightFrenchP6Lesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "Je ne me sens pas bien. Vous pouvez m'aider ?",
-    baseText: { de: 'Mir geht es nicht gut. Können Sie mir helfen?' },
+    baseText: { de: 'Mir geht es nicht gut. Können Sie mir helfen?', en: "I don't feel well. Could you help me?" },
   },
-  meaning: { de: 'Eine einfache höfliche Aussage, dass es dir nicht gut geht, ohne medizinische Details.' },
+  meaning: { de: 'Eine einfache höfliche Aussage, dass es dir nicht gut geht, ohne medizinische Details.', en: "A simple polite statement that you don't feel well, without medical detail." },
   chunks: [
-    { id: 'je-ne-me-sens-pas-bien', targetText: 'Je ne me sens pas bien.', baseText: { de: 'Mir geht es nicht gut.' } },
-    { id: 'vous-pouvez-maider', targetText: "Vous pouvez m'aider ?", baseText: { de: 'Können Sie mir helfen?' } },
+    { id: 'je-ne-me-sens-pas-bien', targetText: 'Je ne me sens pas bien.', baseText: { de: 'Mir geht es nicht gut.', en: "I don't feel well." } },
+    { id: 'vous-pouvez-maider', targetText: "Vous pouvez m'aider ?", baseText: { de: 'Können Sie mir helfen?', en: 'Could you help me?' } },
   ],
   lessonItems: [
-    { id: 'sens', targetText: 'sens', baseText: { de: 'fühle' }, acceptedAnswers: ['sens', 'Sens'] },
-    { id: 'pas-bien', targetText: 'pas bien', baseText: { de: 'nicht gut' }, acceptedAnswers: ['pas bien', 'Pas bien'] },
-    { id: 'me-sens', targetText: 'me sens', baseText: { de: 'fühle mich' }, acceptedAnswers: ['me sens', 'Me sens'] },
-    { id: 'maider', targetText: "m'aider", baseText: { de: 'mir helfen' }, acceptedAnswers: ["m'aider", "M'aider", 'm’aider', 'M’aider', 'm aider', 'M aider'] },
+    { id: 'sens', targetText: 'sens', baseText: { de: 'fühle', en: 'feel' }, acceptedAnswers: ['sens', 'Sens'] },
+    { id: 'pas-bien', targetText: 'pas bien', baseText: { de: 'nicht gut', en: 'not well' }, acceptedAnswers: ['pas bien', 'Pas bien'] },
+    { id: 'me-sens', targetText: 'me sens', baseText: { de: 'fühle mich', en: 'feel (reflexive)' }, acceptedAnswers: ['me sens', 'Me sens'] },
+    { id: 'maider', targetText: "m'aider", baseText: { de: 'mir helfen', en: 'help me' }, acceptedAnswers: ["m'aider", "M'aider", 'm’aider', 'M’aider', 'm aider', 'M aider'] },
   ],
   build: {
     targetText: "Je ne me sens pas bien. Vous pouvez m'aider ?",
@@ -33674,23 +33674,23 @@ const brightFrenchP6Lesson001: GuidedLessonVibeVariant = {
     fallbackChoices: ['sens', 'suis', 'vais', 'peux'],
   },
   speakTarget: {
-    baseCue: { de: 'Mir geht es nicht gut. Können Sie mir helfen?' },
+    baseCue: { de: 'Mir geht es nicht gut. Können Sie mir helfen?', en: "I don't feel well. Could you help me?" },
     targetPhrase: "Je ne me sens pas bien. Vous pouvez m'aider ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['sens', 'pas', 'bien', 'aider'],
     optionalTokens: ['je', 'ne', 'me', 'vous', 'pouvez', 'm'],
   },
-  sceneCaption: { de: 'An der Rezeption oder in einer Apotheke sagst du ruhig, dass es dir nicht gut geht.' },
+  sceneCaption: { de: 'An der Rezeption oder in einer Apotheke sagst du ruhig, dass es dir nicht gut geht.', en: "At reception or in a pharmacy, you calmly say you don't feel well." },
   trophyWord: {
     word: 'sens',
-    meaning: { de: 'fühle' },
+    meaning: { de: 'fühle', en: 'feel' },
     example: 'Je ne me sens pas bien.',
-    whyThisWord: { de: 'Sens ist hier Teil von "je me sens". Die A1-Standardform nutzt die volle Negation: "je ne me sens pas bien".' },
+    whyThisWord: { de: 'Sens ist hier Teil von "je me sens". Die A1-Standardform nutzt die volle Negation: "je ne me sens pas bien".', en: 'Sens is part of "je me sens" (I feel) — a reflexive verb in French (note the "me"). The A1 standard form keeps the full "ne...pas" negation: "je ne me sens pas bien". Spoken French often drops the "ne", but the written A1 form keeps it.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Hotel- oder Apothekentresen, ruhige Bitte um einfache Hilfe.' },
+    caption: { de: 'Hotel- oder Apothekentresen, ruhige Bitte um einfache Hilfe.', en: 'A hotel or pharmacy counter, a calm request for simple help.' },
   },
   songSeed: {
     genre: 'soft acoustic',
@@ -33703,18 +33703,18 @@ const brightFrenchP6Lesson002: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "Il y a une pharmacie près d'ici ?",
-    baseText: { de: 'Gibt es eine Apotheke in der Nähe?' },
+    baseText: { de: 'Gibt es eine Apotheke in der Nähe?', en: 'Is there a pharmacy near here?' },
   },
-  meaning: { de: 'Eine höfliche Ortsfrage nach einer nahen Apotheke.' },
+  meaning: { de: 'Eine höfliche Ortsfrage nach einer nahen Apotheke.', en: 'A polite location question about a nearby pharmacy.' },
   chunks: [
-    { id: 'il-y-a-une-pharmacie', targetText: 'Il y a une pharmacie', baseText: { de: 'Gibt es eine Apotheke' } },
-    { id: 'pres-dici', targetText: "près d'ici ?", baseText: { de: 'in der Nähe?' } },
+    { id: 'il-y-a-une-pharmacie', targetText: 'Il y a une pharmacie', baseText: { de: 'Gibt es eine Apotheke', en: 'Is there a pharmacy' } },
+    { id: 'pres-dici', targetText: "près d'ici ?", baseText: { de: 'in der Nähe?', en: 'near here?' } },
   ],
   lessonItems: [
-    { id: 'pharmacie', targetText: 'pharmacie', baseText: { de: 'Apotheke' }, acceptedAnswers: ['pharmacie', 'Pharmacie'] },
-    { id: 'pres', targetText: 'près', baseText: { de: 'nah / in der Nähe' }, acceptedAnswers: ['près', 'pres', 'Près', 'Pres'] },
-    { id: 'dici', targetText: "d'ici", baseText: { de: 'von hier' }, acceptedAnswers: ["d'ici", "D'ici", 'd’ici', 'D’ici', 'd ici', 'D ici'] },
-    { id: 'il-y-a', targetText: 'il y a', baseText: { de: 'es gibt' }, acceptedAnswers: ['il y a', 'Il y a'] },
+    { id: 'pharmacie', targetText: 'pharmacie', baseText: { de: 'Apotheke', en: 'pharmacy' }, acceptedAnswers: ['pharmacie', 'Pharmacie'] },
+    { id: 'pres', targetText: 'près', baseText: { de: 'nah / in der Nähe', en: 'near / close by' }, acceptedAnswers: ['près', 'pres', 'Près', 'Pres'] },
+    { id: 'dici', targetText: "d'ici", baseText: { de: 'von hier', en: 'from here' }, acceptedAnswers: ["d'ici", "D'ici", 'd’ici', 'D’ici', 'd ici', 'D ici'] },
+    { id: 'il-y-a', targetText: 'il y a', baseText: { de: 'es gibt', en: 'there is / there are' }, acceptedAnswers: ['il y a', 'Il y a'] },
   ],
   build: {
     targetText: "Il y a une pharmacie près d'ici ?",
@@ -33728,23 +33728,23 @@ const brightFrenchP6Lesson002: GuidedLessonVibeVariant = {
     fallbackChoices: ['pharmacie', 'hôpital', 'cabinet', 'adresse'],
   },
   speakTarget: {
-    baseCue: { de: 'Gibt es eine Apotheke in der Nähe?' },
+    baseCue: { de: 'Gibt es eine Apotheke in der Nähe?', en: 'Is there a pharmacy near here?' },
     targetPhrase: "Il y a une pharmacie près d'ici ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['pharmacie', 'près'],
     optionalTokens: ['il', 'y', 'a', 'une', 'pres', 'dici', 'ici'],
   },
-  sceneCaption: { de: 'Auf dem Bürgersteig fragst du nach einer Apotheke in der Nähe.' },
+  sceneCaption: { de: 'Auf dem Bürgersteig fragst du nach einer Apotheke in der Nähe.', en: 'On the sidewalk, you ask for a pharmacy close by.' },
   trophyWord: {
     word: 'pharmacie',
-    meaning: { de: 'Apotheke' },
+    meaning: { de: 'Apotheke', en: 'pharmacy' },
     example: "Il y a une pharmacie près d'ici ?",
-    whyThisWord: { de: 'Pharmacie ist die französische Apotheke. Die Frage bleibt eine Ortsfrage, keine medizinische Diagnose.' },
+    whyThisWord: { de: 'Pharmacie ist die französische Apotheke. Die Frage bleibt eine Ortsfrage, keine medizinische Diagnose.', en: 'Pharmacie is the French word for a pharmacy — feminine (une pharmacie). The phrase "il y a" is the standard French way to say "there is/are" — useful for any "is there a...?" question.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Straßenszene mit Apothekenschild in der Ferne.' },
+    caption: { de: 'Straßenszene mit Apothekenschild in der Ferne.', en: 'A street scene with a pharmacy cross in the distance.' },
   },
   songSeed: {
     genre: 'light street acoustic',
@@ -33757,19 +33757,19 @@ const brightFrenchP6Lesson003: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Je voudrais un médicament, s’il vous plaît.',
-    baseText: { de: 'Ich hätte gern ein Medikament, bitte.' },
+    baseText: { de: 'Ich hätte gern ein Medikament, bitte.', en: "I'd like some medicine, please." },
   },
-  meaning: { de: 'Eine allgemeine Bitte in der Apotheke, ohne Dosierung oder Anwendung zu nennen.' },
+  meaning: { de: 'Eine allgemeine Bitte in der Apotheke, ohne Dosierung oder Anwendung zu nennen.', en: "A general pharmacy request, without naming a dose or treatment." },
   chunks: [
-    { id: 'je-voudrais', targetText: 'Je voudrais', baseText: { de: 'Ich hätte gern' } },
-    { id: 'un-medicament', targetText: 'un médicament,', baseText: { de: 'ein Medikament,' } },
-    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: { de: 'bitte.' } },
+    { id: 'je-voudrais', targetText: 'Je voudrais', baseText: { de: 'Ich hätte gern', en: "I'd like" } },
+    { id: 'un-medicament', targetText: 'un médicament,', baseText: { de: 'ein Medikament,', en: 'some medicine,' } },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'voudrais', targetText: 'je voudrais', baseText: { de: 'ich hätte gern' }, acceptedAnswers: ['je voudrais', 'Je voudrais'] },
-    { id: 'medicament', targetText: 'médicament', baseText: { de: 'Medikament' }, acceptedAnswers: ['médicament', 'medicament', 'Médicament', 'Medicament'] },
-    { id: 'un-medicament', targetText: 'un médicament', baseText: { de: 'ein Medikament' }, acceptedAnswers: ['un médicament', 'un medicament', 'Un médicament', 'Un medicament'] },
-    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: { de: 'bitte' }, acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+    { id: 'voudrais', targetText: 'je voudrais', baseText: { de: 'ich hätte gern', en: "I'd like" }, acceptedAnswers: ['je voudrais', 'Je voudrais'] },
+    { id: 'medicament', targetText: 'médicament', baseText: { de: 'Medikament', en: 'medicine / medication' }, acceptedAnswers: ['médicament', 'medicament', 'Médicament', 'Medicament'] },
+    { id: 'un-medicament', targetText: 'un médicament', baseText: { de: 'ein Medikament', en: 'some medicine' }, acceptedAnswers: ['un médicament', 'un medicament', 'Un médicament', 'Un medicament'] },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: { de: 'bitte', en: 'please (formal)' }, acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
   ],
   build: {
     targetText: 'Je voudrais un médicament, s’il vous plaît.',
@@ -33783,23 +33783,23 @@ const brightFrenchP6Lesson003: GuidedLessonVibeVariant = {
     fallbackChoices: ['médicament', 'médecin', 'sirop', 'comprimé'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich hätte gern ein Medikament, bitte.' },
+    baseCue: { de: 'Ich hätte gern ein Medikament, bitte.', en: "I'd like some medicine, please." },
     targetPhrase: 'Je voudrais un médicament, s’il vous plaît.',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['voudrais', 'médicament', 'plaît'],
     optionalTokens: ['je', 'un', 'medicament', 'sil', 's', 'il', 'vous', 'plait'],
   },
-  sceneCaption: { de: 'Am Apothekentresen formulierst du eine allgemeine Bitte ohne medizinische Details.' },
+  sceneCaption: { de: 'Am Apothekentresen formulierst du eine allgemeine Bitte ohne medizinische Details.', en: 'At the pharmacy counter, you make a general request without medical detail.' },
   trophyWord: {
     word: 'médicament',
-    meaning: { de: 'Medikament' },
+    meaning: { de: 'Medikament', en: 'medicine / medication' },
     example: 'Je voudrais un médicament.',
-    whyThisWord: { de: 'Médicament ist ein allgemeines A1-Apothekenwort. Die Phrase bleibt absichtlich allgemein und nennt keine Dosierung oder Behandlung.' },
+    whyThisWord: { de: 'Médicament ist ein allgemeines A1-Apothekenwort. Die Phrase bleibt absichtlich allgemein und nennt keine Dosierung oder Behandlung.', en: 'Médicament is the general A1 pharmacy word — masculine (un médicament). The phrase stays intentionally general; the pharmacist will follow up with details. At A1, this is safer than naming a specific drug.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Apothekentresen, schlichte allgemeine Bitte.' },
+    caption: { de: 'Apothekentresen, schlichte allgemeine Bitte.', en: 'A pharmacy counter, a simple general request.' },
   },
   songSeed: {
     genre: 'calm acoustic',
@@ -33812,18 +33812,18 @@ const brightFrenchP6Lesson004: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "J'ai mal ici.",
-    baseText: { de: 'Ich habe hier Schmerzen.' },
+    baseText: { de: 'Ich habe hier Schmerzen.', en: 'It hurts here.' },
   },
-  meaning: { de: 'Du zeigst auf eine Stelle und sagst ohne Diagnose, dass es dort weh tut.' },
+  meaning: { de: 'Du zeigst auf eine Stelle und sagst ohne Diagnose, dass es dort weh tut.', en: "You point to a spot and say it hurts there, without a diagnosis." },
   chunks: [
-    { id: 'jai-mal', targetText: "J'ai mal", baseText: { de: 'Ich habe Schmerzen' } },
-    { id: 'ici', targetText: 'ici.', baseText: { de: 'hier.' } },
+    { id: 'jai-mal', targetText: "J'ai mal", baseText: { de: 'Ich habe Schmerzen', en: 'It hurts' } },
+    { id: 'ici', targetText: 'ici.', baseText: { de: 'hier.', en: 'here.' } },
   ],
   lessonItems: [
-    { id: 'jai', targetText: "j'ai", baseText: { de: 'ich habe' }, acceptedAnswers: ["j'ai", "J'ai", 'j’ai', 'J’ai', 'jai', 'Jai'] },
-    { id: 'mal', targetText: 'mal', baseText: { de: 'Schmerz / weh' }, acceptedAnswers: ['mal', 'Mal'] },
-    { id: 'jai-mal', targetText: "j'ai mal", baseText: { de: 'ich habe Schmerzen' }, acceptedAnswers: ["j'ai mal", "J'ai mal", 'j’ai mal', 'J’ai mal', 'jai mal', 'Jai mal'] },
-    { id: 'ici', targetText: 'ici', baseText: { de: 'hier' }, acceptedAnswers: ['ici', 'Ici'] },
+    { id: 'jai', targetText: "j'ai", baseText: { de: 'ich habe', en: 'I have' }, acceptedAnswers: ["j'ai", "J'ai", 'j’ai', 'J’ai', 'jai', 'Jai'] },
+    { id: 'mal', targetText: 'mal', baseText: { de: 'Schmerz / weh', en: 'pain / hurt' }, acceptedAnswers: ['mal', 'Mal'] },
+    { id: 'jai-mal', targetText: "j'ai mal", baseText: { de: 'ich habe Schmerzen', en: 'it hurts (literally "I have pain")' }, acceptedAnswers: ["j'ai mal", "J'ai mal", 'j’ai mal', 'J’ai mal', 'jai mal', 'Jai mal'] },
+    { id: 'ici', targetText: 'ici', baseText: { de: 'hier', en: 'here' }, acceptedAnswers: ['ici', 'Ici'] },
   ],
   build: {
     targetText: "J'ai mal ici.",
@@ -33837,23 +33837,23 @@ const brightFrenchP6Lesson004: GuidedLessonVibeVariant = {
     fallbackChoices: ['mal', 'mieux', 'douleur', 'sens'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich habe hier Schmerzen.' },
+    baseCue: { de: 'Ich habe hier Schmerzen.', en: 'It hurts here.' },
     targetPhrase: "J'ai mal ici.",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['mal', 'ici'],
     optionalTokens: ['jai', 'j', 'ai'],
   },
-  sceneCaption: { de: 'Du zeigst auf die Stelle und bleibst bei der einfachen Aussage: hier tut es weh.' },
+  sceneCaption: { de: 'Du zeigst auf die Stelle und bleibst bei der einfachen Aussage: hier tut es weh.', en: 'You point to the spot and stick with the simple statement: it hurts here.' },
   trophyWord: {
     word: 'mal',
-    meaning: { de: 'Schmerz / weh' },
+    meaning: { de: 'Schmerz / weh', en: 'pain / hurt' },
     example: "J'ai mal ici.",
-    whyThisWord: { de: 'Mal trägt in "j’ai mal" die Schmerzaussage. Die Struktur ist anders als im Deutschen: Französisch sagt wörtlich "ich habe Schmerz".' },
+    whyThisWord: { de: 'Mal trägt in "j’ai mal" die Schmerzaussage. Die Struktur ist anders als im Deutschen: Französisch sagt wörtlich "ich habe Schmerz".', en: 'Mal carries the "it hurts" idea in "j’ai mal" — literally "I have pain". This is structurally different from English: French uses "avoir mal" (to have pain), not a verb like "to hurt". Pair with body parts to get specific: "j’ai mal à la tête" = headache.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Apotheke oder Empfang, Hand zeigt auf eine Stelle, einfache Schmerzaussage.' },
+    caption: { de: 'Apotheke oder Empfang, Hand zeigt auf eine Stelle, einfache Schmerzaussage.', en: 'A pharmacy or reception, a hand pointing at a spot, a simple "it hurts here".' },
   },
   songSeed: {
     genre: 'minimal acoustic',
@@ -33866,18 +33866,18 @@ const brightFrenchP6Lesson005: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "J'ai mal à la tête.",
-    baseText: { de: 'Ich habe Kopfschmerzen.' },
+    baseText: { de: 'Ich habe Kopfschmerzen.', en: 'I have a headache.' },
   },
-  meaning: { de: 'Eine einfache Symptomaussage: Kopfschmerzen, ohne eine Behandlung zu verlangen.' },
+  meaning: { de: 'Eine einfache Symptomaussage: Kopfschmerzen, ohne eine Behandlung zu verlangen.', en: "A simple symptom statement: a headache, without asking for treatment." },
   chunks: [
-    { id: 'jai-mal', targetText: "J'ai mal", baseText: { de: 'Ich habe Schmerzen' } },
-    { id: 'a-la-tete', targetText: 'à la tête.', baseText: { de: 'am Kopf.' } },
+    { id: 'jai-mal', targetText: "J'ai mal", baseText: { de: 'Ich habe Schmerzen', en: 'I have a pain' } },
+    { id: 'a-la-tete', targetText: 'à la tête.', baseText: { de: 'am Kopf.', en: 'in my head.' } },
   ],
   lessonItems: [
-    { id: 'tete', targetText: 'tête', baseText: { de: 'Kopf' }, acceptedAnswers: ['tête', 'tete', 'Tête', 'Tete'] },
-    { id: 'a-la-tete', targetText: 'à la tête', baseText: { de: 'am Kopf' }, acceptedAnswers: ['à la tête', 'a la tête', 'à la tete', 'a la tete', 'À la tête', 'A la tete'] },
-    { id: 'jai-mal', targetText: "j'ai mal", baseText: { de: 'ich habe Schmerzen' }, acceptedAnswers: ["j'ai mal", "J'ai mal", 'j’ai mal', 'J’ai mal', 'jai mal', 'Jai mal'] },
-    { id: 'mal-a-la-tete', targetText: 'mal à la tête', baseText: { de: 'Kopfschmerzen' }, acceptedAnswers: ['mal à la tête', 'mal a la tête', 'mal à la tete', 'mal a la tete'] },
+    { id: 'tete', targetText: 'tête', baseText: { de: 'Kopf', en: 'head' }, acceptedAnswers: ['tête', 'tete', 'Tête', 'Tete'] },
+    { id: 'a-la-tete', targetText: 'à la tête', baseText: { de: 'am Kopf', en: 'in the head' }, acceptedAnswers: ['à la tête', 'a la tête', 'à la tete', 'a la tete', 'À la tête', 'A la tete'] },
+    { id: 'jai-mal', targetText: "j'ai mal", baseText: { de: 'ich habe Schmerzen', en: 'I have a pain' }, acceptedAnswers: ["j'ai mal", "J'ai mal", 'j’ai mal', 'J’ai mal', 'jai mal', 'Jai mal'] },
+    { id: 'mal-a-la-tete', targetText: 'mal à la tête', baseText: { de: 'Kopfschmerzen', en: 'a headache' }, acceptedAnswers: ['mal à la tête', 'mal a la tête', 'mal à la tete', 'mal a la tete'] },
   ],
   build: {
     targetText: "J'ai mal à la tête.",
@@ -33891,23 +33891,23 @@ const brightFrenchP6Lesson005: GuidedLessonVibeVariant = {
     fallbackChoices: ['tête', 'bras', 'dos', 'ventre'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich habe Kopfschmerzen.' },
+    baseCue: { de: 'Ich habe Kopfschmerzen.', en: 'I have a headache.' },
     targetPhrase: "J'ai mal à la tête.",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['mal', 'tête'],
     optionalTokens: ['jai', 'j', 'ai', 'a', 'à', 'la', 'tete'],
   },
-  sceneCaption: { de: 'In der Apotheke sagst du nur das häufige Symptom: Kopfschmerzen.' },
+  sceneCaption: { de: 'In der Apotheke sagst du nur das häufige Symptom: Kopfschmerzen.', en: 'At the pharmacy, you just name the common symptom: a headache.' },
   trophyWord: {
     word: 'tête',
-    meaning: { de: 'Kopf' },
+    meaning: { de: 'Kopf', en: 'head' },
     example: "J'ai mal à la tête.",
-    whyThisWord: { de: 'Tête ist das A1-Körperwort für Kopf. Die natürliche Symptomform heißt "j’ai mal à la tête".' },
+    whyThisWord: { de: 'Tête ist das A1-Körperwort für Kopf. Die natürliche Symptomform heißt "j’ai mal à la tête".', en: 'Tête is the A1 body word for head — feminine (la tête). The natural symptom pattern is "j’ai mal à la tête" (literally "I have pain in the head"); same template works for "ventre" (stomach), "dos" (back), etc.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Apothekentresen, Hand an der Stirn, einfache Symptomaussage.' },
+    caption: { de: 'Apothekentresen, Hand an der Stirn, einfache Symptomaussage.', en: 'A pharmacy counter, a hand on the forehead, a simple symptom statement.' },
   },
   songSeed: {
     genre: 'soft pharmacy acoustic',
@@ -33920,18 +33920,18 @@ const brightFrenchP6Lesson006: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "De l'eau, s'il vous plaît.",
-    baseText: { de: 'Wasser, bitte.' },
+    baseText: { de: 'Wasser, bitte.', en: 'Some water, please.' },
   },
-  meaning: { de: 'Eine höfliche Bitte um Wasser in Apotheke, Café oder bei Hilfe.' },
+  meaning: { de: 'Eine höfliche Bitte um Wasser in Apotheke, Café oder bei Hilfe.', en: "A polite request for water at a pharmacy, cafe, or in any moment of need." },
   chunks: [
-    { id: 'de-leau', targetText: "De l'eau,", baseText: { de: 'Wasser,' } },
-    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: { de: 'bitte.' } },
+    { id: 'de-leau', targetText: "De l'eau,", baseText: { de: 'Wasser,', en: 'Some water,' } },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'eau', targetText: 'eau', baseText: { de: 'Wasser' }, acceptedAnswers: ['eau', 'Eau'] },
-    { id: 'de-leau', targetText: "de l'eau", baseText: { de: 'Wasser / etwas Wasser' }, acceptedAnswers: ["de l'eau", "De l'eau", 'de l’eau', 'De l’eau', 'de l eau', 'De l eau'] },
-    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: { de: 'bitte' }, acceptedAnswers: ["s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 's’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', 'sil vous plait'] },
-    { id: 'verre', targetText: 'verre', baseText: { de: 'Glas' }, acceptedAnswers: ['verre', 'Verre'] },
+    { id: 'eau', targetText: 'eau', baseText: { de: 'Wasser', en: 'water' }, acceptedAnswers: ['eau', 'Eau'] },
+    { id: 'de-leau', targetText: "de l'eau", baseText: { de: 'Wasser / etwas Wasser', en: 'some water' }, acceptedAnswers: ["de l'eau", "De l'eau", 'de l’eau', 'De l’eau', 'de l eau', 'De l eau'] },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: { de: 'bitte', en: 'please (formal)' }, acceptedAnswers: ["s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 's’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', 'sil vous plait'] },
+    { id: 'verre', targetText: 'verre', baseText: { de: 'Glas', en: 'glass' }, acceptedAnswers: ['verre', 'Verre'] },
   ],
   build: {
     targetText: "De l'eau, s'il vous plaît.",
@@ -33945,23 +33945,23 @@ const brightFrenchP6Lesson006: GuidedLessonVibeVariant = {
     fallbackChoices: ['eau', 'verre', 'jus', 'lait'],
   },
   speakTarget: {
-    baseCue: { de: 'Wasser, bitte.' },
+    baseCue: { de: 'Wasser, bitte.', en: 'Some water, please.' },
     targetPhrase: "De l'eau, s'il vous plaît.",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['eau', 'plaît'],
     optionalTokens: ['de', 'l', 'sil', 's', 'il', 'vous', 'plait'],
   },
-  sceneCaption: { de: 'Du bittest ruhig um Wasser, ohne die Situation größer zu machen.' },
+  sceneCaption: { de: 'Du bittest ruhig um Wasser, ohne die Situation größer zu machen.', en: 'You calmly ask for water without making a bigger scene of it.' },
   trophyWord: {
     word: 'eau',
-    meaning: { de: 'Wasser' },
+    meaning: { de: 'Wasser', en: 'water' },
     example: "De l'eau, s'il vous plaît.",
-    whyThisWord: { de: 'Eau ist Wasser. Wegen des Vokals heißt es korrekt "l’eau", nicht "la eau".' },
+    whyThisWord: { de: 'Eau ist Wasser. Wegen des Vokals heißt es korrekt "l’eau", nicht "la eau".', en: 'Eau means water — feminine (l’eau). Because it starts with a vowel, the article elides: "l’eau", never "la eau". "De l’eau" uses the partitive article ("some water") — French marks "some" of a substance explicitly.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Glas Wasser am Tresen, ruhige höfliche Bitte.' },
+    caption: { de: 'Glas Wasser am Tresen, ruhige höfliche Bitte.', en: 'A glass of water on the counter, a calm polite request.' },
   },
   songSeed: {
     genre: 'clear acoustic',
@@ -33974,18 +33974,18 @@ const brightFrenchP6Lesson007: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "Il y a un médecin près d'ici ?",
-    baseText: { de: 'Gibt es einen Arzt in der Nähe?' },
+    baseText: { de: 'Gibt es einen Arzt in der Nähe?', en: 'Is there a doctor near here?' },
   },
-  meaning: { de: 'Eine Ortsfrage nach einem Arzt in der Nähe, nicht nach einem Notruf.' },
+  meaning: { de: 'Eine Ortsfrage nach einem Arzt in der Nähe, nicht nach einem Notruf.', en: "A location question about a doctor nearby — not an emergency call." },
   chunks: [
-    { id: 'il-y-a-un-medecin', targetText: 'Il y a un médecin', baseText: { de: 'Gibt es einen Arzt' } },
-    { id: 'pres-dici', targetText: "près d'ici ?", baseText: { de: 'in der Nähe?' } },
+    { id: 'il-y-a-un-medecin', targetText: 'Il y a un médecin', baseText: { de: 'Gibt es einen Arzt', en: 'Is there a doctor' } },
+    { id: 'pres-dici', targetText: "près d'ici ?", baseText: { de: 'in der Nähe?', en: 'near here?' } },
   ],
   lessonItems: [
-    { id: 'medecin', targetText: 'médecin', baseText: { de: 'Arzt / Ärztin' }, acceptedAnswers: ['médecin', 'medecin', 'Médecin', 'Medecin'] },
-    { id: 'un-medecin', targetText: 'un médecin', baseText: { de: 'ein Arzt / eine Ärztin' }, acceptedAnswers: ['un médecin', 'un medecin', 'Un médecin', 'Un medecin'] },
-    { id: 'pres-dici', targetText: "près d'ici", baseText: { de: 'in der Nähe' }, acceptedAnswers: ["près d'ici", "Près d'ici", 'pres dici', 'près d’ici', 'Près d’ici'] },
-    { id: 'il-y-a', targetText: 'il y a', baseText: { de: 'es gibt' }, acceptedAnswers: ['il y a', 'Il y a'] },
+    { id: 'medecin', targetText: 'médecin', baseText: { de: 'Arzt / Ärztin', en: 'doctor' }, acceptedAnswers: ['médecin', 'medecin', 'Médecin', 'Medecin'] },
+    { id: 'un-medecin', targetText: 'un médecin', baseText: { de: 'ein Arzt / eine Ärztin', en: 'a doctor' }, acceptedAnswers: ['un médecin', 'un medecin', 'Un médecin', 'Un medecin'] },
+    { id: 'pres-dici', targetText: "près d'ici", baseText: { de: 'in der Nähe', en: 'near here' }, acceptedAnswers: ["près d'ici", "Près d'ici", 'pres dici', 'près d’ici', 'Près d’ici'] },
+    { id: 'il-y-a', targetText: 'il y a', baseText: { de: 'es gibt', en: 'there is / there are' }, acceptedAnswers: ['il y a', 'Il y a'] },
   ],
   build: {
     targetText: "Il y a un médecin près d'ici ?",
@@ -33999,23 +33999,23 @@ const brightFrenchP6Lesson007: GuidedLessonVibeVariant = {
     fallbackChoices: ['médecin', 'médicament', 'pharmacie', 'tête'],
   },
   speakTarget: {
-    baseCue: { de: 'Gibt es einen Arzt in der Nähe?' },
+    baseCue: { de: 'Gibt es einen Arzt in der Nähe?', en: 'Is there a doctor near here?' },
     targetPhrase: "Il y a un médecin près d'ici ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['médecin', 'près'],
     optionalTokens: ['medecin', 'il', 'y', 'a', 'un', 'pres', 'dici', 'ici'],
   },
-  sceneCaption: { de: 'Am Empfang fragst du nach einem Arzt in der Nähe, ohne die Lage zu dramatisieren.' },
+  sceneCaption: { de: 'Am Empfang fragst du nach einem Arzt in der Nähe, ohne die Lage zu dramatisieren.', en: "At reception, you ask for a doctor nearby without dramatizing the situation." },
   trophyWord: {
     word: 'médecin',
-    meaning: { de: 'Arzt / Ärztin' },
+    meaning: { de: 'Arzt / Ärztin', en: 'doctor' },
     example: "Il y a un médecin près d'ici ?",
-    whyThisWord: { de: 'Médecin ist die neutrale Standardbezeichnung für Arzt oder Ärztin. Die Frage bleibt eine Standortfrage, kein Notruf.' },
+    whyThisWord: { de: 'Médecin ist die neutrale Standardbezeichnung für Arzt oder Ärztin. Die Frage bleibt eine Standortfrage, kein Notruf.', en: 'Médecin is the neutral standard word for "doctor" (both male and female) — masculine grammatically (un médecin) even for a female doctor. The phrase stays a location question, not an emergency call.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Hotelrezeption, ruhige Frage nach einem Arzt in der Nähe.' },
+    caption: { de: 'Hotelrezeption, ruhige Frage nach einem Arzt in der Nähe.', en: 'A hotel reception, a calm question about a doctor nearby.' },
   },
   songSeed: {
     genre: 'calm acoustic',
@@ -34028,18 +34028,18 @@ const brightFrenchP6Lesson008: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Je suis allergique.',
-    baseText: { de: 'Ich bin allergisch.' },
+    baseText: { de: 'Ich bin allergisch.', en: "I'm allergic." },
   },
-  meaning: { de: 'Eine einfache Offenlegung einer Allergie, ohne Details zu erzwingen.' },
+  meaning: { de: 'Eine einfache Offenlegung einer Allergie, ohne Details zu erzwingen.', en: "A simple disclosure of an allergy, without forcing details." },
   chunks: [
-    { id: 'je-suis', targetText: 'Je suis', baseText: { de: 'Ich bin' } },
-    { id: 'allergique', targetText: 'allergique.', baseText: { de: 'allergisch.' } },
+    { id: 'je-suis', targetText: 'Je suis', baseText: { de: 'Ich bin', en: "I'm" } },
+    { id: 'allergique', targetText: 'allergique.', baseText: { de: 'allergisch.', en: 'allergic.' } },
   ],
   lessonItems: [
-    { id: 'allergique', targetText: 'allergique', baseText: { de: 'allergisch' }, acceptedAnswers: ['allergique', 'Allergique'] },
-    { id: 'je-suis', targetText: 'je suis', baseText: { de: 'ich bin' }, acceptedAnswers: ['je suis', 'Je suis'] },
-    { id: 'allergie', targetText: 'allergie', baseText: { de: 'Allergie' }, acceptedAnswers: ['allergie', 'Allergie'] },
-    { id: 'attention', targetText: 'attention', baseText: { de: 'Achtung / Vorsicht' }, acceptedAnswers: ['attention', 'Attention'] },
+    { id: 'allergique', targetText: 'allergique', baseText: { de: 'allergisch', en: 'allergic' }, acceptedAnswers: ['allergique', 'Allergique'] },
+    { id: 'je-suis', targetText: 'je suis', baseText: { de: 'ich bin', en: 'I am' }, acceptedAnswers: ['je suis', 'Je suis'] },
+    { id: 'allergie', targetText: 'allergie', baseText: { de: 'Allergie', en: 'allergy' }, acceptedAnswers: ['allergie', 'Allergie'] },
+    { id: 'attention', targetText: 'attention', baseText: { de: 'Achtung / Vorsicht', en: 'careful / watch out' }, acceptedAnswers: ['attention', 'Attention'] },
   ],
   build: {
     targetText: 'Je suis allergique.',
@@ -34053,23 +34053,23 @@ const brightFrenchP6Lesson008: GuidedLessonVibeVariant = {
     fallbackChoices: ['allergique', 'mal', 'mieux', 'ouvert'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich bin allergisch.' },
+    baseCue: { de: 'Ich bin allergisch.', en: "I'm allergic." },
     targetPhrase: 'Je suis allergique.',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['suis', 'allergique'],
     optionalTokens: ['je'],
   },
-  sceneCaption: { de: 'In Apotheke, Restaurant oder Hotel sagst du schlicht, dass du allergisch bist.' },
+  sceneCaption: { de: 'In Apotheke, Restaurant oder Hotel sagst du schlicht, dass du allergisch bist.', en: 'At a pharmacy, restaurant, or hotel, you simply say you have an allergy.' },
   trophyWord: {
     word: 'allergique',
-    meaning: { de: 'allergisch' },
+    meaning: { de: 'allergisch', en: 'allergic' },
     example: 'Je suis allergique.',
-    whyThisWord: { de: 'Allergique ist für männliche und weibliche Personen gleich geschrieben. Die Aussage bleibt allgemein und verlangt keine medizinische Erklärung.' },
+    whyThisWord: { de: 'Allergique ist für männliche und weibliche Personen gleich geschrieben. Die Aussage bleibt allgemein und verlangt keine medizinische Erklärung.', en: 'Allergique stays spelled the same for men and women — many French adjectives in -ique don’t change form. The statement stays general; you can add what you’re allergic to later ("aux noix" = "to nuts").' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Tresenmoment, klare kurze Allergie-Aussage.' },
+    caption: { de: 'Tresenmoment, klare kurze Allergie-Aussage.', en: 'A counter moment, a short clear allergy disclosure.' },
   },
   songSeed: {
     genre: 'soft acoustic',
@@ -34082,19 +34082,19 @@ const brightFrenchP6Lesson009: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "Vous pouvez appeler quelqu'un pour m'aider ?",
-    baseText: { de: 'Können Sie jemanden rufen, der mir hilft?' },
+    baseText: { de: 'Können Sie jemanden rufen, der mir hilft?', en: 'Could you call someone to help me?' },
   },
-  meaning: { de: 'Eine höfliche Bitte, jemanden zur Hilfe zu rufen, ohne Notrufsprache.' },
+  meaning: { de: 'Eine höfliche Bitte, jemanden zur Hilfe zu rufen, ohne Notrufsprache.', en: "A polite request to call someone for help, without emergency language." },
   chunks: [
-    { id: 'vous-pouvez-appeler', targetText: 'Vous pouvez appeler', baseText: { de: 'Können Sie rufen' } },
-    { id: 'quelquun', targetText: "quelqu'un", baseText: { de: 'jemanden' } },
-    { id: 'pour-maider', targetText: "pour m'aider ?", baseText: { de: 'um mir zu helfen?' } },
+    { id: 'vous-pouvez-appeler', targetText: 'Vous pouvez appeler', baseText: { de: 'Können Sie rufen', en: 'Could you call' } },
+    { id: 'quelquun', targetText: "quelqu'un", baseText: { de: 'jemanden', en: 'someone' } },
+    { id: 'pour-maider', targetText: "pour m'aider ?", baseText: { de: 'um mir zu helfen?', en: 'to help me?' } },
   ],
   lessonItems: [
-    { id: 'appeler', targetText: 'appeler', baseText: { de: 'rufen / anrufen' }, acceptedAnswers: ['appeler', 'Appeler'] },
-    { id: 'quelquun', targetText: "quelqu'un", baseText: { de: 'jemand' }, acceptedAnswers: ["quelqu'un", "Quelqu'un", 'quelqu’un', 'Quelqu’un', 'quelqu un'] },
-    { id: 'pour-maider', targetText: "pour m'aider", baseText: { de: 'um mir zu helfen' }, acceptedAnswers: ["pour m'aider", "Pour m'aider", 'pour m’aider', 'Pour m’aider', 'pour m aider'] },
-    { id: 'vous-pouvez', targetText: 'vous pouvez', baseText: { de: 'können Sie' }, acceptedAnswers: ['vous pouvez', 'Vous pouvez'] },
+    { id: 'appeler', targetText: 'appeler', baseText: { de: 'rufen / anrufen', en: 'to call' }, acceptedAnswers: ['appeler', 'Appeler'] },
+    { id: 'quelquun', targetText: "quelqu'un", baseText: { de: 'jemand', en: 'someone' }, acceptedAnswers: ["quelqu'un", "Quelqu'un", 'quelqu’un', 'Quelqu’un', 'quelqu un'] },
+    { id: 'pour-maider', targetText: "pour m'aider", baseText: { de: 'um mir zu helfen', en: 'to help me' }, acceptedAnswers: ["pour m'aider", "Pour m'aider", 'pour m’aider', 'Pour m’aider', 'pour m aider'] },
+    { id: 'vous-pouvez', targetText: 'vous pouvez', baseText: { de: 'können Sie', en: 'could you' }, acceptedAnswers: ['vous pouvez', 'Vous pouvez'] },
   ],
   build: {
     targetText: "Vous pouvez appeler quelqu'un pour m'aider ?",
@@ -34108,23 +34108,23 @@ const brightFrenchP6Lesson009: GuidedLessonVibeVariant = {
     fallbackChoices: ['appeler', 'écrire', 'payer', 'habiter'],
   },
   speakTarget: {
-    baseCue: { de: 'Können Sie jemanden rufen, der mir hilft?' },
+    baseCue: { de: 'Können Sie jemanden rufen, der mir hilft?', en: 'Could you call someone to help me?' },
     targetPhrase: "Vous pouvez appeler quelqu'un pour m'aider ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['pouvez', 'appeler', 'aider'],
     optionalTokens: ['vous', 'quelquun', 'quelqu', 'un', 'pour', 'm'],
   },
-  sceneCaption: { de: 'Im öffentlichen Raum bittest du höflich darum, jemanden zur Hilfe zu rufen.' },
+  sceneCaption: { de: 'Im öffentlichen Raum bittest du höflich darum, jemanden zur Hilfe zu rufen.', en: 'In a public space, you politely ask the other person to call someone for help.' },
   trophyWord: {
     word: 'appeler',
-    meaning: { de: 'rufen / anrufen' },
+    meaning: { de: 'rufen / anrufen', en: 'to call' },
     example: "Vous pouvez appeler quelqu'un ?",
-    whyThisWord: { de: 'Appeler ist der einfache A1-Anker für jemanden rufen oder anrufen. Die Phrase bleibt bewusst unterhalb von Notruf- oder Diagnose-Sprache.' },
+    whyThisWord: { de: 'Appeler ist der einfache A1-Anker für jemanden rufen oder anrufen. Die Phrase bleibt bewusst unterhalb von Notruf- oder Diagnose-Sprache.', en: 'Appeler is the A1 verb for both "to call out to" and "to phone". The phrase stays deliberately below emergency-call language. "Quelqu’un" (someone) elides with "qu" + "un" — a fixed indefinite pronoun.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Ruhige öffentliche Szene, Bitte an eine fremde Person, jemanden zu rufen.' },
+    caption: { de: 'Ruhige öffentliche Szene, Bitte an eine fremde Person, jemanden zu rufen.', en: 'A calm public scene, asking a stranger to call someone.' },
   },
   songSeed: {
     genre: 'steady acoustic',
@@ -34137,18 +34137,18 @@ const brightFrenchP6Lesson010: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Ça va mieux, merci.',
-    baseText: { de: 'Es geht besser, danke.' },
+    baseText: { de: 'Es geht besser, danke.', en: "I'm feeling better, thanks." },
   },
-  meaning: { de: 'Ein kurzer Abschluss, wenn es dir besser geht und du dich bedankst.' },
+  meaning: { de: 'Ein kurzer Abschluss, wenn es dir besser geht und du dich bedankst.', en: "A short close when you're feeling better and want to say thanks." },
   chunks: [
-    { id: 'ca-va-mieux', targetText: 'Ça va mieux,', baseText: { de: 'Es geht besser,' } },
-    { id: 'merci', targetText: 'merci.', baseText: { de: 'danke.' } },
+    { id: 'ca-va-mieux', targetText: 'Ça va mieux,', baseText: { de: 'Es geht besser,', en: "I'm feeling better," } },
+    { id: 'merci', targetText: 'merci.', baseText: { de: 'danke.', en: 'thanks.' } },
   ],
   lessonItems: [
-    { id: 'ca-va', targetText: 'ça va', baseText: { de: 'es geht' }, acceptedAnswers: ['ça va', 'ca va', 'Ça va', 'Ca va'] },
-    { id: 'mieux', targetText: 'mieux', baseText: { de: 'besser' }, acceptedAnswers: ['mieux', 'Mieux'] },
-    { id: 'merci', targetText: 'merci', baseText: { de: 'danke' }, acceptedAnswers: ['merci', 'Merci'] },
-    { id: 'ca-va-mieux', targetText: 'ça va mieux', baseText: { de: 'es geht besser' }, acceptedAnswers: ['ça va mieux', 'ca va mieux', 'Ça va mieux', 'Ca va mieux'] },
+    { id: 'ca-va', targetText: 'ça va', baseText: { de: 'es geht', en: "I'm okay / it's going" }, acceptedAnswers: ['ça va', 'ca va', 'Ça va', 'Ca va'] },
+    { id: 'mieux', targetText: 'mieux', baseText: { de: 'besser', en: 'better' }, acceptedAnswers: ['mieux', 'Mieux'] },
+    { id: 'merci', targetText: 'merci', baseText: { de: 'danke', en: 'thanks' }, acceptedAnswers: ['merci', 'Merci'] },
+    { id: 'ca-va-mieux', targetText: 'ça va mieux', baseText: { de: 'es geht besser', en: 'feeling better' }, acceptedAnswers: ['ça va mieux', 'ca va mieux', 'Ça va mieux', 'Ca va mieux'] },
   ],
   build: {
     targetText: 'Ça va mieux, merci.',
@@ -34162,23 +34162,23 @@ const brightFrenchP6Lesson010: GuidedLessonVibeVariant = {
     fallbackChoices: ['mieux', 'mal', 'fatigué', 'calme'],
   },
   speakTarget: {
-    baseCue: { de: 'Es geht besser, danke.' },
+    baseCue: { de: 'Es geht besser, danke.', en: "I'm feeling better, thanks." },
     targetPhrase: 'Ça va mieux, merci.',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['va', 'mieux', 'merci'],
     optionalTokens: ['ça', 'ca'],
   },
-  sceneCaption: { de: 'Am Ende der Hilfe sagst du ruhig, dass es besser geht, und bedankst dich.' },
+  sceneCaption: { de: 'Am Ende der Hilfe sagst du ruhig, dass es besser geht, und bedankst dich.', en: "At the end of the help moment, you calmly say you're feeling better and say thanks." },
   trophyWord: {
     word: 'mieux',
-    meaning: { de: 'besser' },
+    meaning: { de: 'besser', en: 'better' },
     example: 'Ça va mieux, merci.',
-    whyThisWord: { de: 'Mieux ist der einfache Vergleich für "besser". In "ça va mieux" beendet es die Hilfsszene ruhig und positiv.' },
+    whyThisWord: { de: 'Mieux ist der einfache Vergleich für "besser". In "ça va mieux" beendet es die Hilfsszene ruhig und positiv.', en: 'Mieux is the comparative "better" in French (the opposite of "moins bien" or "pire"). In "ça va mieux" it closes the help moment on a calm, positive note.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Ruhiger Abschluss an der Theke, kurzer Dank nach der Hilfe.' },
+    caption: { de: 'Ruhiger Abschluss an der Theke, kurzer Dank nach der Hilfe.', en: 'A calm wrap at the counter, a short thanks after the help.' },
   },
   songSeed: {
     genre: 'warm recovery acoustic',
@@ -61499,9 +61499,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-6-lesson-1-je-ne-me-sens-pas-bien',
       sequence: 1,
-      title: { de: 'Mir geht es nicht gut' },
+      title: { de: 'Mir geht es nicht gut', en: "I don't feel well" },
     },
-    title: { de: 'Mir geht es nicht gut' },
+    title: { de: 'Mir geht es nicht gut', en: "I don't feel well" },
     situation: {
       en: 'At a pharmacy, hotel desk, or to a passerby, say you feel unwell and ask for basic help.',
       de: 'In Apotheke, Hotel oder auf der Straße sagst du, dass es dir nicht gut geht, und bittest um einfache Hilfe.',
@@ -61513,8 +61513,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Apotheke in der Nähe' },
-      situation: { de: 'Du fragst nach einer Apotheke in der Nähe.' },
+      title: { de: 'Apotheke in der Nähe', en: 'Pharmacy nearby' },
+      situation: { de: 'Du fragst nach einer Apotheke in der Nähe.', en: 'You ask for a pharmacy nearby.' },
     },
     vibeVariants: {
       bright: brightFrenchP6Lesson001,
@@ -61532,9 +61532,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-6-lesson-2-pharmacie-pres-dici',
       sequence: 2,
-      title: { de: 'Apotheke in der Nähe' },
+      title: { de: 'Apotheke in der Nähe', en: 'Pharmacy nearby' },
     },
-    title: { de: 'Apotheke in der Nähe' },
+    title: { de: 'Apotheke in der Nähe', en: 'Pharmacy nearby' },
     situation: {
       en: 'On the street, ask if there is a pharmacy nearby.',
       de: 'Auf der Straße fragst du, ob es eine Apotheke in der Nähe gibt.',
@@ -61546,8 +61546,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ein Medikament' },
-      situation: { de: 'Du formulierst am Apothekentresen eine allgemeine Bitte.' },
+      title: { de: 'Ein Medikament', en: 'Some medicine' },
+      situation: { de: 'Du formulierst am Apothekentresen eine allgemeine Bitte.', en: 'You make a general request at the pharmacy counter.' },
     },
     vibeVariants: {
       bright: brightFrenchP6Lesson002,
@@ -61565,9 +61565,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-6-lesson-3-un-medicament',
       sequence: 3,
-      title: { de: 'Ein Medikament' },
+      title: { de: 'Ein Medikament', en: 'Some medicine' },
     },
-    title: { de: 'Ein Medikament' },
+    title: { de: 'Ein Medikament', en: 'Some medicine' },
     situation: {
       en: 'At a pharmacy counter, ask for medicine in a general, non-medical way.',
       de: 'Am Apothekentresen fragst du allgemein nach einem Medikament, ohne medizinische Details.',
@@ -61579,8 +61579,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Es tut hier weh' },
-      situation: { de: 'Du zeigst auf eine Stelle und sagst, dass es weh tut.' },
+      title: { de: 'Es tut hier weh', en: 'It hurts here' },
+      situation: { de: 'Du zeigst auf eine Stelle und sagst, dass es weh tut.', en: 'You point to a spot and say it hurts.' },
     },
     vibeVariants: {
       bright: brightFrenchP6Lesson003,
@@ -61598,9 +61598,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-6-lesson-4-jai-mal-ici',
       sequence: 4,
-      title: { de: 'Es tut hier weh' },
+      title: { de: 'Es tut hier weh', en: 'It hurts here' },
     },
-    title: { de: 'Es tut hier weh' },
+    title: { de: 'Es tut hier weh', en: 'It hurts here' },
     situation: {
       en: 'Point to a body location and say it hurts here, without diagnosing the problem.',
       de: 'Du zeigst auf eine Stelle und sagst, dass es hier weh tut, ohne eine Diagnose zu nennen.',
@@ -61612,8 +61612,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Kopfschmerzen' },
-      situation: { de: 'Du sagst, dass du Kopfschmerzen hast.' },
+      title: { de: 'Kopfschmerzen', en: 'A headache' },
+      situation: { de: 'Du sagst, dass du Kopfschmerzen hast.', en: 'You say you have a headache.' },
     },
     vibeVariants: {
       bright: brightFrenchP6Lesson004,
@@ -61631,9 +61631,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-6-lesson-5-mal-a-la-tete',
       sequence: 5,
-      title: { de: 'Kopfschmerzen' },
+      title: { de: 'Kopfschmerzen', en: 'A headache' },
     },
-    title: { de: 'Kopfschmerzen' },
+    title: { de: 'Kopfschmerzen', en: 'A headache' },
     situation: {
       en: 'In a pharmacy or at a hotel desk, say you have a headache.',
       de: 'In einer Apotheke oder an der Hotelrezeption sagst du, dass du Kopfschmerzen hast.',
@@ -61645,8 +61645,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wasser, bitte' },
-      situation: { de: 'Du bittest höflich um Wasser.' },
+      title: { de: 'Wasser, bitte', en: 'Water, please' },
+      situation: { de: 'Du bittest höflich um Wasser.', en: 'You politely ask for water.' },
     },
     vibeVariants: {
       bright: brightFrenchP6Lesson005,
@@ -61664,9 +61664,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-6-lesson-6-de-leau',
       sequence: 6,
-      title: { de: 'Wasser, bitte' },
+      title: { de: 'Wasser, bitte', en: 'Water, please' },
     },
-    title: { de: 'Wasser, bitte' },
+    title: { de: 'Wasser, bitte', en: 'Water, please' },
     situation: {
       en: 'Ask politely for water while keeping the help request simple.',
       de: 'Du bittest höflich um Wasser und hältst die Hilfssituation einfach.',
@@ -61678,8 +61678,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ein Arzt in der Nähe' },
-      situation: { de: 'Du fragst nach einem Arzt in der Nähe.' },
+      title: { de: 'Ein Arzt in der Nähe', en: 'A doctor nearby' },
+      situation: { de: 'Du fragst nach einem Arzt in der Nähe.', en: 'You ask for a doctor nearby.' },
     },
     vibeVariants: {
       bright: brightFrenchP6Lesson006,
@@ -61697,9 +61697,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-6-lesson-7-un-medecin',
       sequence: 7,
-      title: { de: 'Ein Arzt in der Nähe' },
+      title: { de: 'Ein Arzt in der Nähe', en: 'A doctor nearby' },
     },
-    title: { de: 'Ein Arzt in der Nähe' },
+    title: { de: 'Ein Arzt in der Nähe', en: 'A doctor nearby' },
     situation: {
       en: 'At a reception desk, ask if there is a doctor nearby.',
       de: 'An einer Rezeption fragst du, ob es einen Arzt in der Nähe gibt.',
@@ -61711,8 +61711,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ich bin allergisch' },
-      situation: { de: 'Du sagst knapp, dass du allergisch bist.' },
+      title: { de: 'Ich bin allergisch', en: "I'm allergic" },
+      situation: { de: 'Du sagst knapp, dass du allergisch bist.', en: 'You briefly say you have an allergy.' },
     },
     vibeVariants: {
       bright: brightFrenchP6Lesson007,
@@ -61730,9 +61730,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-6-lesson-8-allergique',
       sequence: 8,
-      title: { de: 'Ich bin allergisch' },
+      title: { de: 'Ich bin allergisch', en: "I'm allergic" },
     },
-    title: { de: 'Ich bin allergisch' },
+    title: { de: 'Ich bin allergisch', en: "I'm allergic" },
     situation: {
       en: 'In a pharmacy, restaurant, or hotel, disclose an allergy in one simple sentence.',
       de: 'In Apotheke, Restaurant oder Hotel sagst du in einem einfachen Satz, dass du allergisch bist.',
@@ -61744,8 +61744,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Jemanden rufen' },
-      situation: { de: 'Du bittest jemanden, Hilfe zu rufen.' },
+      title: { de: 'Jemanden rufen', en: 'Call someone' },
+      situation: { de: 'Du bittest jemanden, Hilfe zu rufen.', en: 'You ask someone to call for help.' },
     },
     vibeVariants: {
       bright: brightFrenchP6Lesson008,
@@ -61763,9 +61763,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-6-lesson-9-appeler-quelquun',
       sequence: 9,
-      title: { de: 'Jemanden rufen' },
+      title: { de: 'Jemanden rufen', en: 'Call someone' },
     },
-    title: { de: 'Jemanden rufen' },
+    title: { de: 'Jemanden rufen', en: 'Call someone' },
     situation: {
       en: 'Ask a stranger politely to call someone who can help you.',
       de: 'Du bittest eine fremde Person höflich, jemanden zu rufen, der dir helfen kann.',
@@ -61777,8 +61777,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Es geht besser' },
-      situation: { de: 'Du beendest die Hilfsszene mit einem kurzen Dank.' },
+      title: { de: 'Es geht besser', en: 'Feeling better' },
+      situation: { de: 'Du beendest die Hilfsszene mit einem kurzen Dank.', en: 'You close the help moment with a short thank-you.' },
     },
     vibeVariants: {
       bright: brightFrenchP6Lesson009,
@@ -61796,9 +61796,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-6-lesson-10-ca-va-mieux',
       sequence: 10,
-      title: { de: 'Es geht besser' },
+      title: { de: 'Es geht besser', en: 'Feeling better' },
     },
-    title: { de: 'Es geht besser' },
+    title: { de: 'Es geht besser', en: 'Feeling better' },
     situation: {
       en: 'Close the help interaction by saying you feel better and thanking the other person.',
       de: 'Du beendest die Hilfssituation, indem du sagst, dass es besser geht, und dich bedankst.',
@@ -61810,8 +61810,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Pfad abgeschlossen' },
-      situation: { de: 'Du hast French A1 Practical 6 abgeschlossen.' },
+      title: { de: 'Pfad abgeschlossen', en: 'Path complete' },
+      situation: { de: 'Du hast French A1 Practical 6 abgeschlossen.', en: "You've finished French A1 Practical 6." },
     },
     vibeVariants: {
       bright: brightFrenchP6Lesson010,
