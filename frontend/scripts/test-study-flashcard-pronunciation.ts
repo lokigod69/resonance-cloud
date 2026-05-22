@@ -36,4 +36,28 @@ assert.match(
   'global study keyboard shortcuts should ignore focused buttons so pronunciation controls do not reveal or grade cards',
 )
 
+assert.doesNotMatch(
+  source,
+  /sessionComplete\s*\|\|\s*!revealed/,
+  'flashcard keyboard grading should work before the answer is revealed',
+)
+
+assert.doesNotMatch(
+  source,
+  /\{revealed && \(\s*<motion\.div[\s\S]*?aria-label="Review Later"/,
+  'flashcard review-later control should not be gated by the reveal state',
+)
+
+assert.doesNotMatch(
+  source,
+  /\{revealed && \(\s*<motion\.div[\s\S]*?aria-label="Remembered"/,
+  'flashcard remembered control should not be gated by the reveal state',
+)
+
+assert.doesNotMatch(
+  source,
+  /<span[^>]*>\{t\('study\.(reviewLater|rememberedAction)'\)\}<\/span>/,
+  'flashcard grading controls should stay icon-only on mobile and desktop',
+)
+
 console.log('study flashcard pronunciation wiring checks passed')

@@ -30,13 +30,13 @@ export default function StudyFlashcard() {
   // Flashcard-specific keyboard shortcuts (1/2 for review/remember)
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (sessionComplete || !revealed) return
+      if (sessionComplete) return
       if (e.key === '1') { e.preventDefault(); handleReviewLater() }
       if (e.key === '2') { e.preventDefault(); handleRemembered() }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [sessionComplete, revealed, handleReviewLater, handleRemembered])
+  }, [sessionComplete, handleReviewLater, handleRemembered])
 
   if (loading) {
     return (
@@ -192,33 +192,29 @@ export default function StudyFlashcard() {
                 )}
               </div>
 
-              {/* Actions — only visible after reveal */}
-              {revealed && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className="flex justify-center gap-3 w-full max-w-md mx-auto"
+              {/* Actions */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="flex justify-center gap-4 w-full max-w-xs mx-auto"
+              >
+                <button
+                  onClick={handleReviewLater}
+                  aria-label="Review Later"
+                  className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-red-500/40 bg-red-500/15 text-red-400 transition-all hover:border-red-500/60 hover:bg-red-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
-                  <button
-                    onClick={handleReviewLater}
-                    aria-label="Review Later"
-                    className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:flex-1 sm:rounded-2xl sm:py-4 bg-red-500/15 border-2 border-red-500/40 text-red-400 flex items-center justify-center gap-2 hover:bg-red-500/25 hover:border-red-500/60 transition-all"
-                  >
-                    <X className="h-7 w-7 sm:h-5 sm:w-5" />
-                    <span className="hidden sm:inline text-sm font-medium">{t('study.reviewLater')}</span>
-                  </button>
+                  <X className="h-7 w-7" aria-hidden="true" />
+                </button>
 
-                  <button
-                    onClick={handleRemembered}
-                    aria-label="Remembered"
-                    className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:flex-1 sm:rounded-2xl sm:py-4 bg-green-500/15 border-2 border-green-500/40 text-green-400 flex items-center justify-center gap-2 hover:bg-green-500/25 hover:border-green-500/60 transition-all"
-                  >
-                    <Check className="h-7 w-7 sm:h-5 sm:w-5" />
-                    <span className="hidden sm:inline text-sm font-medium">{t('study.rememberedAction')}</span>
-                  </button>
-                </motion.div>
-              )}
+                <button
+                  onClick={handleRemembered}
+                  aria-label="Remembered"
+                  className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-green-500/40 bg-green-500/15 text-green-400 transition-all hover:border-green-500/60 hover:bg-green-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  <Check className="h-7 w-7" aria-hidden="true" />
+                </button>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
