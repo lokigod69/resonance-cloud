@@ -534,7 +534,7 @@ const GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA: GuidedPathMetadata = {
   id: 'italian-a1-practical-5',
   title: 'Italian A1 Practical 5',
   shortTitle: 'A1 Practical 5',
-  subtitle: { de: 'Kennenlernen und Verabredungen auf Italienisch' },
+  subtitle: { de: 'Kennenlernen und Verabredungen auf Italienisch', en: 'Meeting people and making plans in Italian' },
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'Italian',
@@ -17966,19 +17966,19 @@ const brightItalianP5Lesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Scusa, sono in ritardo.',
-    baseText: { de: 'Entschuldige, ich bin spät dran.' },
+    baseText: { de: 'Entschuldige, ich bin spät dran.', en: "Sorry, I'm running late." },
   },
-  meaning: { de: 'Eine kurze, lockere Entschuldigung bei einem Freund oder einer Freundin, wenn du zu spät kommst.' },
+  meaning: { de: 'Eine kurze, lockere Entschuldigung bei einem Freund oder einer Freundin, wenn du zu spät kommst.', en: "A short, casual apology to a friend when you're late." },
   chunks: [
-    { id: 'scusa', targetText: 'Scusa,', baseText: { de: 'Entschuldige,' } },
-    { id: 'sono', targetText: 'sono', baseText: { de: 'ich bin' } },
-    { id: 'in-ritardo', targetText: 'in ritardo.', baseText: { de: 'spät dran.' } },
+    { id: 'scusa', targetText: 'Scusa,', baseText: { de: 'Entschuldige,', en: 'Sorry,' } },
+    { id: 'sono', targetText: 'sono', baseText: { de: 'ich bin', en: "I'm" } },
+    { id: 'in-ritardo', targetText: 'in ritardo.', baseText: { de: 'spät dran.', en: 'running late.' } },
   ],
   lessonItems: [
-    { id: 'tardi', targetText: 'tardi', baseText: { de: 'spät' }, acceptedAnswers: ['tardi', 'Tardi'] },
-    { id: 'scusa', targetText: 'scusa', baseText: { de: 'entschuldige (du)' }, acceptedAnswers: ['scusa', 'Scusa'] },
-    { id: 'in-ritardo', targetText: 'in ritardo', baseText: { de: 'spät / verspätet' }, acceptedAnswers: ['in ritardo', 'In ritardo'] },
-    { id: 'davvero', targetText: 'davvero', baseText: { de: 'wirklich' }, acceptedAnswers: ['davvero', 'Davvero'] },
+    { id: 'tardi', targetText: 'tardi', baseText: { de: 'spät', en: 'late (adverb)' }, acceptedAnswers: ['tardi', 'Tardi'] },
+    { id: 'scusa', targetText: 'scusa', baseText: { de: 'entschuldige (du)', en: 'sorry / excuse me (casual tu)' }, acceptedAnswers: ['scusa', 'Scusa'] },
+    { id: 'in-ritardo', targetText: 'in ritardo', baseText: { de: 'spät / verspätet', en: 'late / running late' }, acceptedAnswers: ['in ritardo', 'In ritardo'] },
+    { id: 'davvero', targetText: 'davvero', baseText: { de: 'wirklich', en: 'really' }, acceptedAnswers: ['davvero', 'Davvero'] },
   ],
   build: {
     targetText: 'Scusa, sono in ritardo.',
@@ -17992,23 +17992,23 @@ const brightItalianP5Lesson001: GuidedLessonVibeVariant = {
     fallbackChoices: ['tardi', 'presto', 'scusa', 'ritardo'],
   },
   speakTarget: {
-    baseCue: { de: 'Entschuldige, ich bin spät dran.' },
+    baseCue: { de: 'Entschuldige, ich bin spät dran.', en: "Sorry, I'm running late." },
     targetPhrase: 'Scusa, sono in ritardo.',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['scusa', 'sono', 'ritardo'],
     optionalTokens: ['in', 'tardi', 'scusa'],
   },
-  sceneCaption: { de: 'Du trittst etwas später ein und entschuldigst dich locker bei einem Freund.' },
+  sceneCaption: { de: 'Du trittst etwas später ein und entschuldigst dich locker bei einem Freund.', en: 'You walk in a bit late and casually apologize to a friend.' },
   trophyWord: {
     word: 'tardi',
-    meaning: { de: 'spät' },
+    meaning: { de: 'spät', en: 'late (adverb)' },
     example: 'Sono arrivato tardi, scusa.',
-    whyThisWord: { de: 'Tardi ist auf A1 das Adverb für "spät" und steht im Paar mit "presto" (früh). Vorsicht: das Substantiv "ritardo" ist verwandt, aber eigenständig — "in ritardo" = "spät dran". Die du-Form "scusa" ist hier die natürliche Wahl unter Freunden.' },
+    whyThisWord: { de: 'Tardi ist auf A1 das Adverb für "spät" und steht im Paar mit "presto" (früh). Vorsicht: das Substantiv "ritardo" ist verwandt, aber eigenständig — "in ritardo" = "spät dran". Die du-Form "scusa" ist hier die natürliche Wahl unter Freunden.', en: "Tardi is the A1 adverb for 'late' (paired with 'presto' = early). Related noun 'ritardo' is separate: 'in ritardo' = running late. Note: 'scusa' (casual tu) is what friends use; 'scusi' (formal Lei) is for strangers and service staff." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Tür im Vordergrund, Freund am Tisch wartend, kurze Entschuldigungsgeste.' },
+    caption: { de: 'Tür im Vordergrund, Freund am Tisch wartend, kurze Entschuldigungsgeste.', en: 'A doorway in the foreground, a friend waiting at the table, a brief apology gesture.' },
   },
   songSeed: {
     genre: 'soft acoustic',
@@ -18021,18 +18021,18 @@ const brightItalianP5Lesson002: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Ho dimenticato il nome.',
-    baseText: { de: 'Ich habe den Namen vergessen.' },
+    baseText: { de: 'Ich habe den Namen vergessen.', en: "I forgot the name." },
   },
-  meaning: { de: 'Eine ehrliche, lockere Zugabe, dass eine Information entfallen ist.' },
+  meaning: { de: 'Eine ehrliche, lockere Zugabe, dass eine Information entfallen ist.', en: 'An honest, casual admission that you lost track of a detail.' },
   chunks: [
-    { id: 'ho-dimenticato', targetText: 'Ho dimenticato', baseText: { de: 'Ich habe vergessen' } },
-    { id: 'il-nome', targetText: 'il nome.', baseText: { de: 'den Namen.' } },
+    { id: 'ho-dimenticato', targetText: 'Ho dimenticato', baseText: { de: 'Ich habe vergessen', en: 'I forgot' } },
+    { id: 'il-nome', targetText: 'il nome.', baseText: { de: 'den Namen.', en: 'the name.' } },
   ],
   lessonItems: [
-    { id: 'dimenticato', targetText: 'dimenticato', baseText: { de: 'vergessen (Partizip)' }, acceptedAnswers: ['dimenticato', 'Dimenticato'] },
-    { id: 'ho', targetText: 'ho', baseText: { de: 'ich habe' }, acceptedAnswers: ['ho', 'Ho'] },
-    { id: 'ricordare', targetText: 'ricordare', baseText: { de: 'sich erinnern' }, acceptedAnswers: ['ricordare', 'Ricordare'] },
-    { id: 'davvero', targetText: 'davvero', baseText: { de: 'wirklich' }, acceptedAnswers: ['davvero', 'Davvero'] },
+    { id: 'dimenticato', targetText: 'dimenticato', baseText: { de: 'vergessen (Partizip)', en: 'forgotten (past participle)' }, acceptedAnswers: ['dimenticato', 'Dimenticato'] },
+    { id: 'ho', targetText: 'ho', baseText: { de: 'ich habe', en: 'I have' }, acceptedAnswers: ['ho', 'Ho'] },
+    { id: 'ricordare', targetText: 'ricordare', baseText: { de: 'sich erinnern', en: 'to remember' }, acceptedAnswers: ['ricordare', 'Ricordare'] },
+    { id: 'davvero', targetText: 'davvero', baseText: { de: 'wirklich', en: 'really' }, acceptedAnswers: ['davvero', 'Davvero'] },
   ],
   build: {
     targetText: 'Ho dimenticato il nome.',
@@ -18046,23 +18046,23 @@ const brightItalianP5Lesson002: GuidedLessonVibeVariant = {
     fallbackChoices: ['dimenticato', 'ricordato', 'visto', 'sentito'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich habe den Namen vergessen.' },
+    baseCue: { de: 'Ich habe den Namen vergessen.', en: 'I forgot the name.' },
     targetPhrase: 'Ho dimenticato il nome.',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['ho', 'dimenticato', 'nome'],
     optionalTokens: ['il', 'documento', 'scusa'],
   },
-  sceneCaption: { de: 'Mitten im Gespräch gibst du ruhig zu, dass dir der Name entfallen ist.' },
+  sceneCaption: { de: 'Mitten im Gespräch gibst du ruhig zu, dass dir der Name entfallen ist.', en: "Mid-conversation, you calmly admit the name has slipped your mind." },
   trophyWord: {
     word: 'dimenticato',
-    meaning: { de: 'vergessen (Partizip von "dimenticare")' },
+    meaning: { de: 'vergessen (Partizip von "dimenticare")', en: 'forgotten (past participle of "dimenticare")' },
     example: 'Ho dimenticato la chiave, scusa.',
-    whyThisWord: { de: 'Dimenticato ist auf A1 das regelmäßige Partizip von "dimenticare" und bildet mit "ho" das Standard-Perfekt "ich habe vergessen". Bei weiblichem Subjekt als Adjektiv kongruiert es: "Mi sono dimenticata" — Vorsicht bei Reflexivkonstruktionen.' },
+    whyThisWord: { de: 'Dimenticato ist auf A1 das regelmäßige Partizip von "dimenticare" und bildet mit "ho" das Standard-Perfekt "ich habe vergessen". Bei weiblichem Subjekt als Adjektiv kongruiert es: "Mi sono dimenticata" — Vorsicht bei Reflexivkonstruktionen.', en: "Dimenticato is the regular past participle of 'dimenticare' (to forget) and pairs with 'ho' for the standard past: ho dimenticato = 'I forgot'. The Italian past acts like English present perfect ('I have forgotten'). For 'remember' you use the related but separate verb 'ricordare'." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kurze nachdenkliche Pause, Hand am Kopf, ehrlicher Blick.' },
+    caption: { de: 'Kurze nachdenkliche Pause, Hand am Kopf, ehrlicher Blick.', en: 'A brief thoughtful pause, a hand at the head, an honest glance.' },
   },
   songSeed: {
     genre: 'soft acoustic',
@@ -18075,18 +18075,18 @@ const brightItalianP5Lesson003: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Come ti chiami?',
-    baseText: { de: 'Wie heißt du?' },
+    baseText: { de: 'Wie heißt du?', en: "What's your name?" },
   },
-  meaning: { de: 'Die klassische italienische Frage nach dem Namen unter Gleichaltrigen.' },
+  meaning: { de: 'Die klassische italienische Frage nach dem Namen unter Gleichaltrigen.', en: "The classic Italian name question among peers." },
   chunks: [
-    { id: 'come', targetText: 'Come', baseText: { de: 'Wie' } },
-    { id: 'ti-chiami', targetText: 'ti chiami?', baseText: { de: 'heißt du?' } },
+    { id: 'come', targetText: 'Come', baseText: { de: 'Wie', en: 'What' } },
+    { id: 'ti-chiami', targetText: 'ti chiami?', baseText: { de: 'heißt du?', en: 'do you call yourself?' } },
   ],
   lessonItems: [
-    { id: 'nome', targetText: 'nome', baseText: { de: 'Name' }, acceptedAnswers: ['nome', 'Nome'] },
-    { id: 'ti-chiami', targetText: 'ti chiami', baseText: { de: 'du heißt (reflexiv)' }, acceptedAnswers: ['ti chiami', 'Ti chiami'] },
-    { id: 'mi-chiamo', targetText: 'mi chiamo', baseText: { de: 'ich heiße (reflexiv)' }, acceptedAnswers: ['mi chiamo', 'Mi chiamo'] },
-    { id: 'piacere', targetText: 'piacere', baseText: { de: 'freut mich (kennenzulernen)' }, acceptedAnswers: ['piacere', 'Piacere'] },
+    { id: 'nome', targetText: 'nome', baseText: { de: 'Name', en: 'name (first name)' }, acceptedAnswers: ['nome', 'Nome'] },
+    { id: 'ti-chiami', targetText: 'ti chiami', baseText: { de: 'du heißt (reflexiv)', en: 'you are called (reflexive)' }, acceptedAnswers: ['ti chiami', 'Ti chiami'] },
+    { id: 'mi-chiamo', targetText: 'mi chiamo', baseText: { de: 'ich heiße (reflexiv)', en: 'I am called (reflexive)' }, acceptedAnswers: ['mi chiamo', 'Mi chiamo'] },
+    { id: 'piacere', targetText: 'piacere', baseText: { de: 'freut mich (kennenzulernen)', en: 'nice (to meet you)' }, acceptedAnswers: ['piacere', 'Piacere'] },
   ],
   build: {
     targetText: 'Come ti chiami?',
@@ -18100,23 +18100,23 @@ const brightItalianP5Lesson003: GuidedLessonVibeVariant = {
     fallbackChoices: ['nome', 'cognome', 'lavoro', 'numero'],
   },
   speakTarget: {
-    baseCue: { de: 'Wie heißt du?' },
+    baseCue: { de: 'Wie heißt du?', en: "What's your name?" },
     targetPhrase: 'Come ti chiami?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['come', 'chiami'],
     optionalTokens: ['ti', 'nome', 'piacere'],
   },
-  sceneCaption: { de: 'Locker im Gespräch wendest du dich an die andere Person und fragst nach dem Namen.' },
+  sceneCaption: { de: 'Locker im Gespräch wendest du dich an die andere Person und fragst nach dem Namen.', en: 'Casually in conversation, you turn to the other person and ask for their name.' },
   trophyWord: {
     word: 'nome',
-    meaning: { de: 'Name (Vorname)' },
+    meaning: { de: 'Name (Vorname)', en: 'name (first name)' },
     example: 'Il tuo nome è bello.',
-    whyThisWord: { de: 'Nome ist auf A1 der Vorname; der Nachname heißt "cognome". Vorsicht beim deutschen "Name" — im Italienischen klar unterschieden. Die du-Frage "Come ti chiami?" ist reflexiv ("Wie nennst du dich?") und im Italienischen die universale Eröffnung.' },
+    whyThisWord: { de: 'Nome ist auf A1 der Vorname; der Nachname heißt "cognome". Vorsicht beim deutschen "Name" — im Italienischen klar unterschieden. Die du-Frage "Come ti chiami?" ist reflexiv ("Wie nennst du dich?") und im Italienischen die universale Eröffnung.', en: "Nome is the first name; surname is 'cognome'. Italian uses a reflexive: 'Come ti chiami?' literally means 'How do you call yourself?' — answer with 'Mi chiamo...' (I'm called...). This is the universal Italian opener with peers." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Lockerer Treffpunkt, offener Blickkontakt, kurze Vorstellungsgeste.' },
+    caption: { de: 'Lockerer Treffpunkt, offener Blickkontakt, kurze Vorstellungsgeste.', en: 'A casual meeting, open eye contact, a brief introduction gesture.' },
   },
   songSeed: {
     genre: 'sunny indie pop',
@@ -18129,18 +18129,18 @@ const brightItalianP5Lesson004: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Piacere di conoscerti.',
-    baseText: { de: 'Freut mich, dich kennenzulernen.' },
+    baseText: { de: 'Freut mich, dich kennenzulernen.', en: 'Nice to meet you.' },
   },
-  meaning: { de: 'Die warme, klassische Antwort nach der ersten Vorstellung.' },
+  meaning: { de: 'Die warme, klassische Antwort nach der ersten Vorstellung.', en: 'The warm, classic reply after a first introduction.' },
   chunks: [
-    { id: 'piacere', targetText: 'Piacere', baseText: { de: 'Freut mich' } },
-    { id: 'di-conoscerti', targetText: 'di conoscerti.', baseText: { de: 'dich kennenzulernen.' } },
+    { id: 'piacere', targetText: 'Piacere', baseText: { de: 'Freut mich', en: 'A pleasure' } },
+    { id: 'di-conoscerti', targetText: 'di conoscerti.', baseText: { de: 'dich kennenzulernen.', en: 'to meet you.' } },
   ],
   lessonItems: [
-    { id: 'piacere', targetText: 'piacere', baseText: { de: 'Vergnügen / freut mich' }, acceptedAnswers: ['piacere', 'Piacere'] },
-    { id: 'conoscere', targetText: 'conoscere', baseText: { de: 'kennenlernen' }, acceptedAnswers: ['conoscere', 'Conoscere'] },
-    { id: 'conoscerti', targetText: 'conoscerti', baseText: { de: 'dich kennenzulernen' }, acceptedAnswers: ['conoscerti', 'Conoscerti'] },
-    { id: 'anche', targetText: 'anche', baseText: { de: 'auch' }, acceptedAnswers: ['anche', 'Anche'] },
+    { id: 'piacere', targetText: 'piacere', baseText: { de: 'Vergnügen / freut mich', en: 'pleasure / nice (to meet you)' }, acceptedAnswers: ['piacere', 'Piacere'] },
+    { id: 'conoscere', targetText: 'conoscere', baseText: { de: 'kennenlernen', en: 'to meet / get to know' }, acceptedAnswers: ['conoscere', 'Conoscere'] },
+    { id: 'conoscerti', targetText: 'conoscerti', baseText: { de: 'dich kennenzulernen', en: 'to meet you (tu enclitic)' }, acceptedAnswers: ['conoscerti', 'Conoscerti'] },
+    { id: 'anche', targetText: 'anche', baseText: { de: 'auch', en: 'also / too' }, acceptedAnswers: ['anche', 'Anche'] },
   ],
   build: {
     targetText: 'Piacere di conoscerti.',
@@ -18154,23 +18154,23 @@ const brightItalianP5Lesson004: GuidedLessonVibeVariant = {
     fallbackChoices: ['Piacere', 'Grazie', 'Ciao', 'Salve'],
   },
   speakTarget: {
-    baseCue: { de: 'Freut mich, dich kennenzulernen.' },
+    baseCue: { de: 'Freut mich, dich kennenzulernen.', en: 'Nice to meet you.' },
     targetPhrase: 'Piacere di conoscerti.',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['piacere', 'conoscerti'],
     optionalTokens: ['di', 'ugualmente', 'piacere'],
   },
-  sceneCaption: { de: 'Nach der ersten Vorstellung gibst du ein warmes, kurzes Echo zurück.' },
+  sceneCaption: { de: 'Nach der ersten Vorstellung gibst du ein warmes, kurzes Echo zurück.', en: 'After the first introduction, you give a warm, brief reply.' },
   trophyWord: {
     word: 'piacere',
-    meaning: { de: 'Vergnügen / freut mich (Begrüßungsformel)' },
+    meaning: { de: 'Vergnügen / freut mich (Begrüßungsformel)', en: 'pleasure / nice (introduction formula)' },
     example: 'Piacere mio.',
-    whyThisWord: { de: 'Piacere als Substantiv heißt "Vergnügen" und wird in der ersten Begegnung als Kurzform für "Es freut mich" benutzt — komplette Antwort allein, oft mit "mio" verstärkt ("Das Vergnügen ist auf meiner Seite"). Achtung: gleiches Wort ist auch ein Verb ("gefallen") — der Kontext disambiguiert klar.' },
+    whyThisWord: { de: 'Piacere als Substantiv heißt "Vergnügen" und wird in der ersten Begegnung als Kurzform für "Es freut mich" benutzt — komplette Antwort allein, oft mit "mio" verstärkt ("Das Vergnügen ist auf meiner Seite"). Achtung: gleiches Wort ist auch ein Verb ("gefallen") — der Kontext disambiguiert klar.', en: "Piacere as a noun means 'pleasure' and is used as a short reply at first meetings — a complete answer on its own. Often strengthened with 'mio' ('the pleasure is mine'). Same word also exists as a verb (to please, like 'mi piace') — context disambiguates clearly." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kurzer Handschlag oder Wangenkuss, ruhiger Begrüßungsmoment.' },
+    caption: { de: 'Kurzer Handschlag oder Wangenkuss, ruhiger Begrüßungsmoment.', en: 'A brief handshake or cheek kiss, a calm greeting moment.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -18183,18 +18183,18 @@ const brightItalianP5Lesson005: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Da dove vieni?',
-    baseText: { de: 'Woher kommst du?' },
+    baseText: { de: 'Woher kommst du?', en: 'Where are you from?' },
   },
-  meaning: { de: 'Die lockere Frage nach der Herkunft beim Kennenlernen.' },
+  meaning: { de: 'Die lockere Frage nach der Herkunft beim Kennenlernen.', en: 'The casual where-are-you-from question when meeting someone.' },
   chunks: [
-    { id: 'da-dove', targetText: 'Da dove', baseText: { de: 'Woher' } },
-    { id: 'vieni', targetText: 'vieni?', baseText: { de: 'kommst du?' } },
+    { id: 'da-dove', targetText: 'Da dove', baseText: { de: 'Woher', en: 'Where from' } },
+    { id: 'vieni', targetText: 'vieni?', baseText: { de: 'kommst du?', en: 'do you come?' } },
   ],
   lessonItems: [
-    { id: 'vieni', targetText: 'vieni', baseText: { de: 'du kommst' }, acceptedAnswers: ['vieni', 'Vieni'] },
-    { id: 'vengo', targetText: 'vengo', baseText: { de: 'ich komme' }, acceptedAnswers: ['vengo', 'Vengo'] },
-    { id: 'paese', targetText: 'paese', baseText: { de: 'Land / Dorf' }, acceptedAnswers: ['paese', 'Paese'] },
-    { id: 'citta', targetText: 'città', baseText: { de: 'Stadt' }, acceptedAnswers: ['città', 'citta', 'Città', 'Citta'] },
+    { id: 'vieni', targetText: 'vieni', baseText: { de: 'du kommst', en: 'you come (2nd person sg.)' }, acceptedAnswers: ['vieni', 'Vieni'] },
+    { id: 'vengo', targetText: 'vengo', baseText: { de: 'ich komme', en: 'I come (1st person sg.)' }, acceptedAnswers: ['vengo', 'Vengo'] },
+    { id: 'paese', targetText: 'paese', baseText: { de: 'Land / Dorf', en: 'country / village' }, acceptedAnswers: ['paese', 'Paese'] },
+    { id: 'citta', targetText: 'città', baseText: { de: 'Stadt', en: 'city' }, acceptedAnswers: ['città', 'citta', 'Città', 'Citta'] },
   ],
   build: {
     targetText: 'Da dove vieni?',
@@ -18208,23 +18208,23 @@ const brightItalianP5Lesson005: GuidedLessonVibeVariant = {
     fallbackChoices: ['vieni', 'vai', 'sei', 'stai'],
   },
   speakTarget: {
-    baseCue: { de: 'Woher kommst du?' },
+    baseCue: { de: 'Woher kommst du?', en: 'Where are you from?' },
     targetPhrase: 'Da dove vieni?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['dove', 'vieni'],
     optionalTokens: ['da', 'allora'],
   },
-  sceneCaption: { de: 'Im Gespräch fragst du locker nach der Heimat der anderen Person.' },
+  sceneCaption: { de: 'Im Gespräch fragst du locker nach der Heimat der anderen Person.', en: "In conversation, you casually ask where the other person is from." },
   trophyWord: {
     word: 'vieni',
-    meaning: { de: 'du kommst (2. Person Singular von venire)' },
+    meaning: { de: 'du kommst (2. Person Singular von venire)', en: 'you come (2nd person sg. of venire)' },
     example: 'Da dove vieni? — Vengo da Berlino.',
-    whyThisWord: { de: 'Vieni ist die 2.-Person-Singular von "venire" (kommen) — eine der ersten unregelmäßigen Verbformen auf A1. Die du-Frage "Da dove vieni?" mit der Antwort "Vengo da..." ist das italienische Standardpaar.' },
+    whyThisWord: { de: 'Vieni ist die 2.-Person-Singular von "venire" (kommen) — eine der ersten unregelmäßigen Verbformen auf A1. Die du-Frage "Da dove vieni?" mit der Antwort "Vengo da..." ist das italienische Standardpaar.', en: "Vieni is the 2nd-person singular of 'venire' (to come) — one of the first irregular verbs at A1. The standard pair: 'Da dove vieni?' (Where are you from?) → 'Vengo da...' (I come from...). Italian drops the pronoun — 'tu' is hidden in the ending." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Gespräch am Tisch, Karte oder Globus im Hintergrund, kurze offene Frage.' },
+    caption: { de: 'Gespräch am Tisch, Karte oder Globus im Hintergrund, kurze offene Frage.', en: 'A conversation at a table, a map or globe in the background, a brief open question.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -18237,18 +18237,18 @@ const brightItalianP5Lesson006: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Sei di qui?',
-    baseText: { de: 'Bist du von hier?' },
+    baseText: { de: 'Bist du von hier?', en: 'Are you from around here?' },
   },
-  meaning: { de: 'Eine kurze Frage, ob die andere Person aus der Gegend stammt.' },
+  meaning: { de: 'Eine kurze Frage, ob die andere Person aus der Gegend stammt.', en: 'A short question about whether the other is local.' },
   chunks: [
-    { id: 'sei', targetText: 'Sei', baseText: { de: 'Bist du' } },
-    { id: 'di-qui', targetText: 'di qui?', baseText: { de: 'von hier?' } },
+    { id: 'sei', targetText: 'Sei', baseText: { de: 'Bist du', en: 'Are you' } },
+    { id: 'di-qui', targetText: 'di qui?', baseText: { de: 'von hier?', en: 'from around here?' } },
   ],
   lessonItems: [
-    { id: 'qui', targetText: 'qui', baseText: { de: 'hier' }, acceptedAnswers: ['qui', 'Qui'] },
-    { id: 'sei', targetText: 'sei', baseText: { de: 'du bist' }, acceptedAnswers: ['sei', 'Sei'] },
-    { id: 'sono', targetText: 'sono', baseText: { de: 'ich bin' }, acceptedAnswers: ['sono', 'Sono'] },
-    { id: 'in-vacanza', targetText: 'in vacanza', baseText: { de: 'im Urlaub' }, acceptedAnswers: ['in vacanza', 'In vacanza'] },
+    { id: 'qui', targetText: 'qui', baseText: { de: 'hier', en: 'here' }, acceptedAnswers: ['qui', 'Qui'] },
+    { id: 'sei', targetText: 'sei', baseText: { de: 'du bist', en: 'you are' }, acceptedAnswers: ['sei', 'Sei'] },
+    { id: 'sono', targetText: 'sono', baseText: { de: 'ich bin', en: 'I am' }, acceptedAnswers: ['sono', 'Sono'] },
+    { id: 'in-vacanza', targetText: 'in vacanza', baseText: { de: 'im Urlaub', en: 'on vacation' }, acceptedAnswers: ['in vacanza', 'In vacanza'] },
   ],
   build: {
     targetText: 'Sei di qui?',
@@ -18262,23 +18262,23 @@ const brightItalianP5Lesson006: GuidedLessonVibeVariant = {
     fallbackChoices: ['qui', 'là', 'lì', 'qua'],
   },
   speakTarget: {
-    baseCue: { de: 'Bist du von hier?' },
+    baseCue: { de: 'Bist du von hier?', en: 'Are you from around here?' },
     targetPhrase: 'Sei di qui?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['sei', 'qui'],
     optionalTokens: ['di', 'allora'],
   },
-  sceneCaption: { de: 'Im lockeren Gespräch klärst du, ob die andere Person aus der Stadt stammt.' },
+  sceneCaption: { de: 'Im lockeren Gespräch klärst du, ob die andere Person aus der Stadt stammt.', en: 'In casual conversation, you check if the other person is from the city.' },
   trophyWord: {
     word: 'qui',
-    meaning: { de: 'hier' },
+    meaning: { de: 'hier', en: 'here' },
     example: 'Vivo qui da due anni.',
-    whyThisWord: { de: 'Qui ist auf A1 das räumliche "hier" und steht im Paar mit "lì" / "là" (dort). Sehr kurz, sehr italienisch — in jeder Ortsfrage einsetzbar. Synonym "qua" funktioniert ebenfalls; beide sind A1.' },
+    whyThisWord: { de: 'Qui ist auf A1 das räumliche "hier" und steht im Paar mit "lì" / "là" (dort). Sehr kurz, sehr italienisch — in jeder Ortsfrage einsetzbar. Synonym "qua" funktioniert ebenfalls; beide sind A1.', en: "Qui is the A1 spatial 'here' and pairs with 'lì' / 'là' (there). Short and very Italian — works in any location question. The synonym 'qua' is also A1 and interchangeable in most contexts." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Caféecke, lockere Schultern, kurzer Blick durchs Fenster nach draußen.' },
+    caption: { de: 'Caféecke, lockere Schultern, kurzer Blick durchs Fenster nach draußen.', en: 'A cafe corner, relaxed shoulders, a brief glance out the window.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -18291,18 +18291,18 @@ const brightItalianP5Lesson007: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Sei libero stasera?',
-    baseText: { de: 'Hast du heute Abend Zeit?' },
+    baseText: { de: 'Hast du heute Abend Zeit?', en: 'Are you free tonight?' },
   },
-  meaning: { de: 'Die direkte, lockere Frage, ob jemand abends frei ist.' },
+  meaning: { de: 'Die direkte, lockere Frage, ob jemand abends frei ist.', en: 'The direct, casual question about whether someone is free for the evening.' },
   chunks: [
-    { id: 'sei-libero', targetText: 'Sei libero', baseText: { de: 'Bist du frei' } },
-    { id: 'stasera', targetText: 'stasera?', baseText: { de: 'heute Abend?' } },
+    { id: 'sei-libero', targetText: 'Sei libero', baseText: { de: 'Bist du frei', en: 'Are you free' } },
+    { id: 'stasera', targetText: 'stasera?', baseText: { de: 'heute Abend?', en: 'tonight?' } },
   ],
   lessonItems: [
-    { id: 'stasera', targetText: 'stasera', baseText: { de: 'heute Abend' }, acceptedAnswers: ['stasera', 'Stasera'] },
-    { id: 'libero', targetText: 'libero', baseText: { de: 'frei (m.)' }, acceptedAnswers: ['libero', 'Libero'] },
-    { id: 'libera', targetText: 'libera', baseText: { de: 'frei (f.)' }, acceptedAnswers: ['libera', 'Libera'] },
-    { id: 'tempo', targetText: 'tempo', baseText: { de: 'Zeit' }, acceptedAnswers: ['tempo', 'Tempo'] },
+    { id: 'stasera', targetText: 'stasera', baseText: { de: 'heute Abend', en: 'tonight / this evening' }, acceptedAnswers: ['stasera', 'Stasera'] },
+    { id: 'libero', targetText: 'libero', baseText: { de: 'frei (m.)', en: 'free (masculine)' }, acceptedAnswers: ['libero', 'Libero'] },
+    { id: 'libera', targetText: 'libera', baseText: { de: 'frei (f.)', en: 'free (feminine)' }, acceptedAnswers: ['libera', 'Libera'] },
+    { id: 'tempo', targetText: 'tempo', baseText: { de: 'Zeit', en: 'time' }, acceptedAnswers: ['tempo', 'Tempo'] },
   ],
   build: {
     targetText: 'Sei libero stasera?',
@@ -18316,23 +18316,23 @@ const brightItalianP5Lesson007: GuidedLessonVibeVariant = {
     fallbackChoices: ['stasera', 'oggi', 'domani', 'dopo'],
   },
   speakTarget: {
-    baseCue: { de: 'Hast du heute Abend Zeit?' },
+    baseCue: { de: 'Hast du heute Abend Zeit?', en: 'Are you free tonight?' },
     targetPhrase: 'Sei libero stasera?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['sei', 'libero', 'stasera'],
     optionalTokens: ['libera', 'tempo'],
   },
-  sceneCaption: { de: 'Am Ende des Gesprächs fragst du locker nach freier Zeit für den Abend.' },
+  sceneCaption: { de: 'Am Ende des Gesprächs fragst du locker nach freier Zeit für den Abend.', en: 'Near the end of the chat, you casually ask about free time for the evening.' },
   trophyWord: {
     word: 'stasera',
-    meaning: { de: 'heute Abend' },
+    meaning: { de: 'heute Abend', en: 'tonight / this evening' },
     example: 'Stasera ci vediamo al bar.',
-    whyThisWord: { de: 'Stasera ist eine A1-Verschmelzung von "questa sera" (dieser Abend) und unterscheidet sich klar von "ieri sera" (gestern Abend) und "domani sera" (morgen Abend). Sehr italienisch — eine der ersten zusammengewachsenen Zeitformen.' },
+    whyThisWord: { de: 'Stasera ist eine A1-Verschmelzung von "questa sera" (dieser Abend) und unterscheidet sich klar von "ieri sera" (gestern Abend) und "domani sera" (morgen Abend). Sehr italienisch — eine der ersten zusammengewachsenen Zeitformen.', en: "Stasera is an A1 fusion of 'questa sera' (this evening), distinct from 'ieri sera' (last night) and 'domani sera' (tomorrow night). Note also: 'libero' agrees with the listener's gender — libero for a man, libera for a woman." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Spätnachmittag-Licht im Café, lockere Schulterneigung, offene Verabredungs-Geste.' },
+    caption: { de: 'Spätnachmittag-Licht im Café, lockere Schulterneigung, offene Verabredungs-Geste.', en: 'Late afternoon light in the cafe, a casual lean, an open invitation gesture.' },
   },
   songSeed: {
     genre: 'upbeat acoustic',
@@ -18345,18 +18345,18 @@ const brightItalianP5Lesson008: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Ci vediamo al bar?',
-    baseText: { de: 'Sehen wir uns im Café?' },
+    baseText: { de: 'Sehen wir uns im Café?', en: 'Shall we meet at the café?' },
   },
-  meaning: { de: 'Ein lockerer Treffpunkt-Vorschlag — Café als italienischer Standardort.' },
+  meaning: { de: 'Ein lockerer Treffpunkt-Vorschlag — Café als italienischer Standardort.', en: "A casual meet-up suggestion — the cafe as Italy's default meeting spot." },
   chunks: [
-    { id: 'ci-vediamo', targetText: 'Ci vediamo', baseText: { de: 'Wir sehen uns' } },
-    { id: 'al-bar', targetText: 'al bar?', baseText: { de: 'im Café?' } },
+    { id: 'ci-vediamo', targetText: 'Ci vediamo', baseText: { de: 'Wir sehen uns', en: "We'll see each other" } },
+    { id: 'al-bar', targetText: 'al bar?', baseText: { de: 'im Café?', en: 'at the café?' } },
   ],
   lessonItems: [
-    { id: 'bar', targetText: 'bar', baseText: { de: 'Café / Bar' }, acceptedAnswers: ['bar', 'Bar'] },
-    { id: 'ci-vediamo', targetText: 'ci vediamo', baseText: { de: 'wir sehen uns' }, acceptedAnswers: ['ci vediamo', 'Ci vediamo'] },
-    { id: 'al', targetText: 'al', baseText: { de: 'im (a + il)' }, acceptedAnswers: ['al', 'Al'] },
-    { id: 'piazza', targetText: 'piazza', baseText: { de: 'Platz' }, acceptedAnswers: ['piazza', 'Piazza'] },
+    { id: 'bar', targetText: 'bar', baseText: { de: 'Café / Bar', en: 'café / coffee bar (Italian sense)' }, acceptedAnswers: ['bar', 'Bar'] },
+    { id: 'ci-vediamo', targetText: 'ci vediamo', baseText: { de: 'wir sehen uns', en: 'we see each other (reflexive)' }, acceptedAnswers: ['ci vediamo', 'Ci vediamo'] },
+    { id: 'al', targetText: 'al', baseText: { de: 'im (a + il)', en: 'at the (a + il)' }, acceptedAnswers: ['al', 'Al'] },
+    { id: 'piazza', targetText: 'piazza', baseText: { de: 'Platz', en: 'square (town square)' }, acceptedAnswers: ['piazza', 'Piazza'] },
   ],
   build: {
     targetText: 'Ci vediamo al bar?',
@@ -18370,23 +18370,23 @@ const brightItalianP5Lesson008: GuidedLessonVibeVariant = {
     fallbackChoices: ['bar', 'parco', 'cinema', 'museo'],
   },
   speakTarget: {
-    baseCue: { de: 'Sehen wir uns im Café?' },
+    baseCue: { de: 'Sehen wir uns im Café?', en: 'Shall we meet at the café?' },
     targetPhrase: 'Ci vediamo al bar?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['vediamo', 'bar'],
     optionalTokens: ['ci', 'al', 'piazza'],
   },
-  sceneCaption: { de: 'Du machst einen lockeren Treffpunkt-Vorschlag am Caféfenster.' },
+  sceneCaption: { de: 'Du machst einen lockeren Treffpunkt-Vorschlag am Caféfenster.', en: 'You make a casual meet-up suggestion by the cafe window.' },
   trophyWord: {
     word: 'bar',
-    meaning: { de: 'Café / Bar (italienisch alltäglich)' },
+    meaning: { de: 'Café / Bar (italienisch alltäglich)', en: 'café / coffee bar (Italian daytime sense)' },
     example: 'Andiamo al bar.',
-    whyThisWord: { de: 'Bar im italienischen Alltag heißt das normale Tagescafé — Espresso, Croissants, Smalltalk —, nicht die abendliche englische Cocktail-Bar. Achtung: das ist genau der Punkt, wo deutsche Sprecher stolpern: "Bar" auf Deutsch hat eine andere Stimmung.' },
+    whyThisWord: { de: 'Bar im italienischen Alltag heißt das normale Tagescafé — Espresso, Croissants, Smalltalk —, nicht die abendliche englische Cocktail-Bar. Achtung: das ist genau der Punkt, wo deutsche Sprecher stolpern: "Bar" auf Deutsch hat eine andere Stimmung.', en: "False-friend trap for English speakers: in Italy, 'il bar' is the everyday daytime coffee place — espresso, pastries, small talk — NOT an evening cocktail bar. For drinks at night, Italians say 'pub' or 'bar' with context. 'Ci vediamo' = 'we'll see each other' (reflexive)." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Fensterblick auf eine italienische Caféfassade, kurzer Vorschlagsmoment.' },
+    caption: { de: 'Fensterblick auf eine italienische Caféfassade, kurzer Vorschlagsmoment.', en: 'A view of an Italian cafe facade through the window, a brief moment of suggestion.' },
   },
   songSeed: {
     genre: 'upbeat acoustic',
@@ -18399,18 +18399,18 @@ const brightItalianP5Lesson009: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Magari domani?',
-    baseText: { de: 'Vielleicht morgen?' },
+    baseText: { de: 'Vielleicht morgen?', en: 'Maybe tomorrow?' },
   },
-  meaning: { de: 'Eine sanfte Verschiebung des Plans auf den nächsten Tag.' },
+  meaning: { de: 'Eine sanfte Verschiebung des Plans auf den nächsten Tag.', en: 'A gentle postponement of the plan to the next day.' },
   chunks: [
-    { id: 'magari', targetText: 'Magari', baseText: { de: 'Vielleicht' } },
-    { id: 'domani', targetText: 'domani?', baseText: { de: 'morgen?' } },
+    { id: 'magari', targetText: 'Magari', baseText: { de: 'Vielleicht', en: 'Maybe' } },
+    { id: 'domani', targetText: 'domani?', baseText: { de: 'morgen?', en: 'tomorrow?' } },
   ],
   lessonItems: [
-    { id: 'magari', targetText: 'magari', baseText: { de: 'vielleicht / am liebsten' }, acceptedAnswers: ['magari', 'Magari'] },
-    { id: 'domani', targetText: 'domani', baseText: { de: 'morgen (am nächsten Tag)' }, acceptedAnswers: ['domani', 'Domani'] },
-    { id: 'allora', targetText: 'allora', baseText: { de: 'also / dann' }, acceptedAnswers: ['allora', 'Allora'] },
-    { id: 'va-bene-cosi', targetText: 'va bene così', baseText: { de: 'so passt es' }, acceptedAnswers: ['va bene così', 'va bene cosi'] },
+    { id: 'magari', targetText: 'magari', baseText: { de: 'vielleicht / am liebsten', en: 'maybe / if only' }, acceptedAnswers: ['magari', 'Magari'] },
+    { id: 'domani', targetText: 'domani', baseText: { de: 'morgen (am nächsten Tag)', en: 'tomorrow (the next day)' }, acceptedAnswers: ['domani', 'Domani'] },
+    { id: 'allora', targetText: 'allora', baseText: { de: 'also / dann', en: 'so / then' }, acceptedAnswers: ['allora', 'Allora'] },
+    { id: 'va-bene-cosi', targetText: 'va bene così', baseText: { de: 'so passt es', en: 'sounds good like that' }, acceptedAnswers: ['va bene così', 'va bene cosi'] },
   ],
   build: {
     targetText: 'Magari domani?',
@@ -18424,23 +18424,23 @@ const brightItalianP5Lesson009: GuidedLessonVibeVariant = {
     fallbackChoices: ['Magari', 'Forse', 'Allora', 'Sempre'],
   },
   speakTarget: {
-    baseCue: { de: 'Vielleicht morgen?' },
+    baseCue: { de: 'Vielleicht morgen?', en: 'Maybe tomorrow?' },
     targetPhrase: 'Magari domani?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['magari', 'domani'],
     optionalTokens: ['allora', 'va', "d'accordo"],
   },
-  sceneCaption: { de: 'Du verschiebst den Plan höflich-locker auf einen anderen Tag.' },
+  sceneCaption: { de: 'Du verschiebst den Plan höflich-locker auf einen anderen Tag.', en: 'You politely shift the plan to another day.' },
   trophyWord: {
     word: 'magari',
-    meaning: { de: 'vielleicht / am liebsten (mit Wunschton)' },
+    meaning: { de: 'vielleicht / am liebsten (mit Wunschton)', en: "maybe / I wish (with a wishful tone)" },
     example: 'Magari ci vediamo domani.',
-    whyThisWord: { de: 'Magari ist ein A1-Italienisch-Schlüsselwort mit doppeltem Sinn: höflich-relativ ("vielleicht, eher unwahrscheinlich") und enthusiastisch-wünschend ("am liebsten ja!"). Der Tonfall entscheidet. Sehr italienisch — kein direktes deutsches Pendant.' },
+    whyThisWord: { de: 'Magari ist ein A1-Italienisch-Schlüsselwort mit doppeltem Sinn: höflich-relativ ("vielleicht, eher unwahrscheinlich") und enthusiastisch-wünschend ("am liebsten ja!"). Der Tonfall entscheidet. Sehr italienisch — kein direktes deutsches Pendant.', en: "Magari is a key A1 Italian word with two senses: politely tentative ('maybe, probably not') and enthusiastically wishful ('I wish!' / 'if only!'). Tone decides which. Very Italian — no direct English equivalent; closest is 'maybe' for soft-decline, 'I wish' for the enthusiastic sense." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kurzer offener Blick zur Seite, lockere Schulterbewegung, ruhige Verschiebungsgeste.' },
+    caption: { de: 'Kurzer offener Blick zur Seite, lockere Schulterbewegung, ruhige Verschiebungsgeste.', en: 'A brief open glance aside, a casual shrug, a calm shift gesture.' },
   },
   songSeed: {
     genre: 'soft acoustic',
@@ -18453,17 +18453,17 @@ const brightItalianP5Lesson010: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'A domani!',
-    baseText: { de: 'Bis morgen!' },
+    baseText: { de: 'Bis morgen!', en: 'See you tomorrow!' },
   },
-  meaning: { de: 'Der kurze italienische Standard-Abschied, wenn man sich am nächsten Tag wieder sieht.' },
+  meaning: { de: 'Der kurze italienische Standard-Abschied, wenn man sich am nächsten Tag wieder sieht.', en: "Italy's short standard goodbye when you'll see each other again the next day." },
   chunks: [
-    { id: 'a-domani', targetText: 'A domani!', baseText: { de: 'Bis morgen!' } },
+    { id: 'a-domani', targetText: 'A domani!', baseText: { de: 'Bis morgen!', en: 'See you tomorrow!' } },
   ],
   lessonItems: [
-    { id: 'domani', targetText: 'domani', baseText: { de: 'morgen (am nächsten Tag)' }, acceptedAnswers: ['domani', 'Domani'] },
-    { id: 'a-presto', targetText: 'a presto', baseText: { de: 'bis bald' }, acceptedAnswers: ['a presto', 'A presto'] },
-    { id: 'a-dopo', targetText: 'a dopo', baseText: { de: 'bis später' }, acceptedAnswers: ['a dopo', 'A dopo'] },
-    { id: 'ciao', targetText: 'ciao', baseText: { de: 'tschüss (informell)' }, acceptedAnswers: ['ciao', 'Ciao'] },
+    { id: 'domani', targetText: 'domani', baseText: { de: 'morgen (am nächsten Tag)', en: 'tomorrow (the next day)' }, acceptedAnswers: ['domani', 'Domani'] },
+    { id: 'a-presto', targetText: 'a presto', baseText: { de: 'bis bald', en: 'see you soon' }, acceptedAnswers: ['a presto', 'A presto'] },
+    { id: 'a-dopo', targetText: 'a dopo', baseText: { de: 'bis später', en: 'see you later' }, acceptedAnswers: ['a dopo', 'A dopo'] },
+    { id: 'ciao', targetText: 'ciao', baseText: { de: 'tschüss (informell)', en: 'bye / hi (casual)' }, acceptedAnswers: ['ciao', 'Ciao'] },
   ],
   build: {
     targetText: 'A domani!',
@@ -18477,23 +18477,23 @@ const brightItalianP5Lesson010: GuidedLessonVibeVariant = {
     fallbackChoices: ['domani', 'dopo', 'presto', 'tardi'],
   },
   speakTarget: {
-    baseCue: { de: 'Bis morgen!' },
+    baseCue: { de: 'Bis morgen!', en: 'See you tomorrow!' },
     targetPhrase: 'A domani!',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['domani'],
     optionalTokens: ['a', 'ciao', 'allora'],
   },
-  sceneCaption: { de: 'Am Ende des Treffens schließt du die Begegnung mit einem kurzen, freundlichen Wiedersehens-Abschied.' },
+  sceneCaption: { de: 'Am Ende des Treffens schließt du die Begegnung mit einem kurzen, freundlichen Wiedersehens-Abschied.', en: 'At the end of the meet-up, you close with a quick, warm see-you-tomorrow.' },
   trophyWord: {
     word: 'domani',
-    meaning: { de: 'morgen (am nächsten Tag)' },
+    meaning: { de: 'morgen (am nächsten Tag)', en: 'tomorrow (the next day)' },
     example: 'A domani, ciao!',
-    whyThisWord: { de: 'Domani ist auf A1 das Standardwort für "morgen" als Tag — Vorsicht: für "morgen früh" (Tageszeit) sagt das Italienische "domani mattina". Die Wendung "A domani!" ist die kurze Abschiedsform unter Freunden.' },
+    whyThisWord: { de: 'Domani ist auf A1 das Standardwort für "morgen" als Tag — Vorsicht: für "morgen früh" (Tageszeit) sagt das Italienische "domani mattina". Die Wendung "A domani!" ist die kurze Abschiedsform unter Freunden.', en: "Domani is the A1 standard for 'tomorrow' as a day. For 'tomorrow morning' (time of day) Italian uses 'domani mattina'. 'A domani!' (literally 'to tomorrow!') is the short casual goodbye among friends — 'ciao' is the matching informal bye." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Café-Ausgang am Abend, kurzer Winker, warmer Lichtspur beim Weggehen.' },
+    caption: { de: 'Café-Ausgang am Abend, kurzer Winker, warmer Lichtspur beim Weggehen.', en: 'A cafe exit in the evening, a brief wave, warm light trailing on the way out.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -55889,9 +55889,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-5-lesson-1-scusa-ritardo',
       sequence: 1,
-      title: { de: 'Entschuldige die Verspätung' },
+      title: { de: 'Entschuldige die Verspätung', en: "Sorry I'm late" },
     },
-    title: { de: 'Entschuldige die Verspätung' },
+    title: { de: 'Entschuldige die Verspätung', en: "Sorry I'm late" },
     situation: {
       en: 'Casually apologize to a friend for being late.',
       de: 'Du entschuldigst dich locker bei einem Freund für die Verspätung.',
@@ -55903,8 +55903,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Den Namen vergessen' },
-      situation: { de: 'Du gibst zu, dass dir der Name entfallen ist.' },
+      title: { de: 'Den Namen vergessen', en: 'Forgot the name' },
+      situation: { de: 'Du gibst zu, dass dir der Name entfallen ist.', en: 'You admit the name has slipped your mind.' },
     },
     vibeVariants: {
       bright: brightItalianP5Lesson001,
@@ -55922,9 +55922,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-5-lesson-2-ho-dimenticato',
       sequence: 2,
-      title: { de: 'Den Namen vergessen' },
+      title: { de: 'Den Namen vergessen', en: 'Forgot the name' },
     },
-    title: { de: 'Den Namen vergessen' },
+    title: { de: 'Den Namen vergessen', en: 'Forgot the name' },
     situation: {
       en: 'Admit you forgot a name or detail.',
       de: 'Du gibst ruhig zu, dass dir der Name entfallen ist.',
@@ -55936,8 +55936,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wie heißt du?' },
-      situation: { de: 'Du fragst nach dem Namen.' },
+      title: { de: 'Wie heißt du?', en: "What's your name?" },
+      situation: { de: 'Du fragst nach dem Namen.', en: "You ask the other person's name." },
     },
     vibeVariants: {
       bright: brightItalianP5Lesson002,
@@ -55955,9 +55955,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-5-lesson-3-come-ti-chiami',
       sequence: 3,
-      title: { de: 'Wie heißt du?' },
+      title: { de: 'Wie heißt du?', en: "What's your name?" },
     },
-    title: { de: 'Wie heißt du?' },
+    title: { de: 'Wie heißt du?', en: "What's your name?" },
     situation: {
       en: 'In a casual setting, ask the other for their name.',
       de: 'Locker im Gespräch fragst du nach dem Namen.',
@@ -55969,8 +55969,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Freut mich' },
-      situation: { de: 'Du antwortest warm nach der Vorstellung.' },
+      title: { de: 'Freut mich', en: 'Nice to meet you' },
+      situation: { de: 'Du antwortest warm nach der Vorstellung.', en: 'You reply warmly after the introduction.' },
     },
     vibeVariants: {
       bright: brightItalianP5Lesson003,
@@ -55988,9 +55988,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-5-lesson-4-piacere',
       sequence: 4,
-      title: { de: 'Freut mich' },
+      title: { de: 'Freut mich', en: 'Nice to meet you' },
     },
-    title: { de: 'Freut mich' },
+    title: { de: 'Freut mich', en: 'Nice to meet you' },
     situation: {
       en: 'Reply warmly after a casual introduction.',
       de: 'Nach der Vorstellung antwortest du locker und herzlich.',
@@ -56002,8 +56002,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Woher kommst du?' },
-      situation: { de: 'Du fragst nach der Herkunft.' },
+      title: { de: 'Woher kommst du?', en: 'Where are you from?' },
+      situation: { de: 'Du fragst nach der Herkunft.', en: 'You ask where the other is from.' },
     },
     vibeVariants: {
       bright: brightItalianP5Lesson004,
@@ -56021,9 +56021,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-5-lesson-5-da-dove-vieni',
       sequence: 5,
-      title: { de: 'Woher kommst du?' },
+      title: { de: 'Woher kommst du?', en: 'Where are you from?' },
     },
-    title: { de: 'Woher kommst du?' },
+    title: { de: 'Woher kommst du?', en: 'Where are you from?' },
     situation: {
       en: 'Casually ask where the other is from.',
       de: 'Locker fragst du nach der Herkunft.',
@@ -56035,8 +56035,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Bist du von hier?' },
-      situation: { de: 'Du klärst, ob die Person aus der Gegend ist.' },
+      title: { de: 'Bist du von hier?', en: 'Are you local?' },
+      situation: { de: 'Du klärst, ob die Person aus der Gegend ist.', en: 'You check if the other is from around here.' },
     },
     vibeVariants: {
       bright: brightItalianP5Lesson005,
@@ -56054,9 +56054,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-5-lesson-6-sei-di-qui',
       sequence: 6,
-      title: { de: 'Bist du von hier?' },
+      title: { de: 'Bist du von hier?', en: 'Are you local?' },
     },
-    title: { de: 'Bist du von hier?' },
+    title: { de: 'Bist du von hier?', en: 'Are you local?' },
     situation: {
       en: 'Check whether the other is local.',
       de: 'Du klärst, ob die Person hier wohnt.',
@@ -56068,8 +56068,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Heute Abend Zeit?' },
-      situation: { de: 'Du fragst nach Zeit für den Abend.' },
+      title: { de: 'Heute Abend Zeit?', en: 'Free tonight?' },
+      situation: { de: 'Du fragst nach Zeit für den Abend.', en: 'You ask if the other is free tonight.' },
     },
     vibeVariants: {
       bright: brightItalianP5Lesson006,
@@ -56087,9 +56087,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-5-lesson-7-stasera-libero',
       sequence: 7,
-      title: { de: 'Heute Abend Zeit?' },
+      title: { de: 'Heute Abend Zeit?', en: 'Free tonight?' },
     },
-    title: { de: 'Heute Abend Zeit?' },
+    title: { de: 'Heute Abend Zeit?', en: 'Free tonight?' },
     situation: {
       en: 'Ask whether the other has time tonight.',
       de: 'Du fragst, ob die Person heute Abend frei ist.',
@@ -56101,8 +56101,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Im Café?' },
-      situation: { de: 'Du schlägst einen Treffpunkt vor.' },
+      title: { de: 'Im Café?', en: 'Meet at the café?' },
+      situation: { de: 'Du schlägst einen Treffpunkt vor.', en: 'You suggest a meeting spot.' },
     },
     vibeVariants: {
       bright: brightItalianP5Lesson007,
@@ -56120,9 +56120,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-5-lesson-8-al-bar',
       sequence: 8,
-      title: { de: 'Im Café?' },
+      title: { de: 'Im Café?', en: 'Meet at the café?' },
     },
-    title: { de: 'Im Café?' },
+    title: { de: 'Im Café?', en: 'Meet at the café?' },
     situation: {
       en: 'Suggest meeting at the café.',
       de: 'Du schlägst das Café als Treffpunkt vor.',
@@ -56134,8 +56134,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Vielleicht morgen' },
-      situation: { de: 'Du verschiebst den Plan auf morgen.' },
+      title: { de: 'Vielleicht morgen', en: 'Maybe tomorrow' },
+      situation: { de: 'Du verschiebst den Plan auf morgen.', en: 'You move the plan to tomorrow.' },
     },
     vibeVariants: {
       bright: brightItalianP5Lesson008,
@@ -56153,9 +56153,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-5-lesson-9-magari-domani',
       sequence: 9,
-      title: { de: 'Vielleicht morgen' },
+      title: { de: 'Vielleicht morgen', en: 'Maybe tomorrow' },
     },
-    title: { de: 'Vielleicht morgen' },
+    title: { de: 'Vielleicht morgen', en: 'Maybe tomorrow' },
     situation: {
       en: 'Postpone the plan to tomorrow.',
       de: 'Du verschiebst den Plan locker auf morgen.',
@@ -56167,8 +56167,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Bis morgen' },
-      situation: { de: 'Du verabschiedest dich locker bis zum nächsten Tag.' },
+      title: { de: 'Bis morgen', en: 'See you tomorrow' },
+      situation: { de: 'Du verabschiedest dich locker bis zum nächsten Tag.', en: 'You say a casual goodbye until tomorrow.' },
     },
     vibeVariants: {
       bright: brightItalianP5Lesson009,
@@ -56186,9 +56186,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-5-lesson-10-a-domani',
       sequence: 10,
-      title: { de: 'Bis morgen' },
+      title: { de: 'Bis morgen', en: 'See you tomorrow' },
     },
-    title: { de: 'Bis morgen' },
+    title: { de: 'Bis morgen', en: 'See you tomorrow' },
     situation: {
       en: 'Close the casual encounter with "see you tomorrow".',
       de: 'Du schließt das lockere Treffen mit "bis morgen" ab.',
@@ -56200,8 +56200,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Pfad abgeschlossen' },
-      situation: { de: 'Du hast Italian A1 Practical 5 abgeschlossen.' },
+      title: { de: 'Pfad abgeschlossen', en: 'Path complete' },
+      situation: { de: 'Du hast Italian A1 Practical 5 abgeschlossen.', en: "You've completed Italian A1 Practical 5." },
     },
     vibeVariants: {
       bright: brightItalianP5Lesson010,
