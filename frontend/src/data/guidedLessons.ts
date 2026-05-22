@@ -622,7 +622,7 @@ const GUIDED_TODAY_PATH_FRENCH_THREE_METADATA: GuidedPathMetadata = {
   id: 'french-a1-practical-3',
   title: 'French A1 Practical 3',
   shortTitle: 'A1 Practical 3',
-  subtitle: { de: 'Wegweisung und Verkehr auf Französisch' },
+  subtitle: { de: 'Wegweisung und Verkehr auf Französisch', en: 'Directions and transit in French' },
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'French',
@@ -32023,19 +32023,19 @@ const brightFrenchP3Lesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Je tourne à droite ou à gauche ?',
-    baseText: { de: 'Biege ich rechts oder links ab?' },
+    baseText: { de: 'Biege ich rechts oder links ab?', en: 'Do I turn right or left?' },
   },
-  meaning: { de: 'Eine höfliche Orientierungsfrage an eine fremde Person: Welche Richtung ist richtig?' },
+  meaning: { de: 'Eine höfliche Orientierungsfrage an eine fremde Person: Welche Richtung ist richtig?', en: 'A polite wayfinding question to a stranger: which way is right?' },
   chunks: [
-    { id: 'je-tourne', targetText: 'Je tourne', baseText: { de: 'Ich biege ab' } },
-    { id: 'a-droite', targetText: 'à droite', baseText: { de: 'nach rechts' } },
-    { id: 'ou-a-gauche', targetText: 'ou à gauche ?', baseText: { de: 'oder nach links?' } },
+    { id: 'je-tourne', targetText: 'Je tourne', baseText: { de: 'Ich biege ab', en: 'Do I turn' } },
+    { id: 'a-droite', targetText: 'à droite', baseText: { de: 'nach rechts', en: 'right' } },
+    { id: 'ou-a-gauche', targetText: 'ou à gauche ?', baseText: { de: 'oder nach links?', en: 'or left?' } },
   ],
   lessonItems: [
-    { id: 'tourne', targetText: 'tourne', baseText: { de: 'biege ab / drehe' }, acceptedAnswers: ['tourne', 'Tourne'] },
-    { id: 'droite', targetText: 'droite', baseText: { de: 'rechts' }, acceptedAnswers: ['droite', 'Droite'] },
-    { id: 'gauche', targetText: 'gauche', baseText: { de: 'links' }, acceptedAnswers: ['gauche', 'Gauche'] },
-    { id: 'a-droite', targetText: 'à droite', baseText: { de: 'nach rechts' }, acceptedAnswers: ['à droite', 'a droite', 'À droite', 'A droite'] },
+    { id: 'tourne', targetText: 'tourne', baseText: { de: 'biege ab / drehe', en: 'turn' }, acceptedAnswers: ['tourne', 'Tourne'] },
+    { id: 'droite', targetText: 'droite', baseText: { de: 'rechts', en: 'right (direction)' }, acceptedAnswers: ['droite', 'Droite'] },
+    { id: 'gauche', targetText: 'gauche', baseText: { de: 'links', en: 'left' }, acceptedAnswers: ['gauche', 'Gauche'] },
+    { id: 'a-droite', targetText: 'à droite', baseText: { de: 'nach rechts', en: 'to the right' }, acceptedAnswers: ['à droite', 'a droite', 'À droite', 'A droite'] },
   ],
   build: {
     targetText: 'Je tourne à droite ou à gauche ?',
@@ -32049,23 +32049,23 @@ const brightFrenchP3Lesson001: GuidedLessonVibeVariant = {
     fallbackChoices: ['droite', 'gauche', 'tout droit', 'rue'],
   },
   speakTarget: {
-    baseCue: { de: 'Biege ich rechts oder links ab?' },
+    baseCue: { de: 'Biege ich rechts oder links ab?', en: 'Do I turn right or left?' },
     targetPhrase: 'Je tourne à droite ou à gauche ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['tourne', 'droite', 'gauche'],
     optionalTokens: ['je', 'a', 'à', 'ou'],
   },
-  sceneCaption: { de: 'An der Kreuzung fragst du eine fremde Person, ob die richtige Richtung rechts oder links ist.' },
+  sceneCaption: { de: 'An der Kreuzung fragst du eine fremde Person, ob die richtige Richtung rechts oder links ist.', en: 'At the intersection, you ask a stranger whether the right way is to the right or left.' },
   trophyWord: {
     word: 'droite',
-    meaning: { de: 'rechts' },
+    meaning: { de: 'rechts', en: 'right (direction)' },
     example: 'Je tourne à droite.',
-    whyThisWord: { de: 'Droite ist ein A1-Richtungswort. In Wegfragen steht es fast immer in der festen Gruppe "à droite"; der Akzent auf à markiert die Richtung.' },
+    whyThisWord: { de: 'Droite ist ein A1-Richtungswort. In Wegfragen steht es fast immer in der festen Gruppe "à droite"; der Akzent auf à markiert die Richtung.', en: 'Droite is an A1 direction word — note French uses one word for direction "right" ("droite") and a different word for "right" meaning "correct" ("bon/juste"). In wayfinding it almost always sits in the fixed group "à droite".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Helle Straßenecke mit zwei möglichen Richtungen und kurzer Nachfrage.' },
+    caption: { de: 'Helle Straßenecke mit zwei möglichen Richtungen und kurzer Nachfrage.', en: 'A bright street corner with two possible directions and a brief check question.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -32078,18 +32078,18 @@ const brightFrenchP3Lesson002: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "C'est loin à pied ?",
-    baseText: { de: 'Ist es zu Fuß weit?' },
+    baseText: { de: 'Ist es zu Fuß weit?', en: 'Is it far on foot?' },
   },
-  meaning: { de: 'Eine kurze Frage, ob ein Ziel zu Fuß gut erreichbar ist.' },
+  meaning: { de: 'Eine kurze Frage, ob ein Ziel zu Fuß gut erreichbar ist.', en: 'A short question to check whether a destination is walkable.' },
   chunks: [
-    { id: 'cest-loin', targetText: "C'est loin", baseText: { de: 'Ist es weit' } },
-    { id: 'a-pied', targetText: 'à pied ?', baseText: { de: 'zu Fuß?' } },
+    { id: 'cest-loin', targetText: "C'est loin", baseText: { de: 'Ist es weit', en: 'Is it far' } },
+    { id: 'a-pied', targetText: 'à pied ?', baseText: { de: 'zu Fuß?', en: 'on foot?' } },
   ],
   lessonItems: [
-    { id: 'cest', targetText: "c'est", baseText: { de: 'das ist / ist es' }, acceptedAnswers: ["c'est", "C'est", 'c est', 'C est'] },
-    { id: 'loin', targetText: 'loin', baseText: { de: 'weit' }, acceptedAnswers: ['loin', 'Loin'] },
-    { id: 'a-pied', targetText: 'à pied', baseText: { de: 'zu Fuß' }, acceptedAnswers: ['à pied', 'a pied', 'À pied', 'A pied'] },
-    { id: 'pres', targetText: 'près', baseText: { de: 'nah' }, acceptedAnswers: ['près', 'pres', 'Près', 'Pres'] },
+    { id: 'cest', targetText: "c'est", baseText: { de: 'das ist / ist es', en: "it's / is it" }, acceptedAnswers: ["c'est", "C'est", 'c est', 'C est'] },
+    { id: 'loin', targetText: 'loin', baseText: { de: 'weit', en: 'far' }, acceptedAnswers: ['loin', 'Loin'] },
+    { id: 'a-pied', targetText: 'à pied', baseText: { de: 'zu Fuß', en: 'on foot' }, acceptedAnswers: ['à pied', 'a pied', 'À pied', 'A pied'] },
+    { id: 'pres', targetText: 'près', baseText: { de: 'nah', en: 'near / close' }, acceptedAnswers: ['près', 'pres', 'Près', 'Pres'] },
   ],
   build: {
     targetText: "C'est loin à pied ?",
@@ -32103,23 +32103,23 @@ const brightFrenchP3Lesson002: GuidedLessonVibeVariant = {
     fallbackChoices: ['loin', 'près', 'rapide', 'court'],
   },
   speakTarget: {
-    baseCue: { de: 'Ist es zu Fuß weit?' },
+    baseCue: { de: 'Ist es zu Fuß weit?', en: 'Is it far on foot?' },
     targetPhrase: "C'est loin à pied ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['loin', 'pied'],
     optionalTokens: ['cest', 'c', 'est', 'a', 'à'],
   },
-  sceneCaption: { de: 'Mitten auf dem Weg fragst du, ob der Rest zu Fuß noch gut machbar ist.' },
+  sceneCaption: { de: 'Mitten auf dem Weg fragst du, ob der Rest zu Fuß noch gut machbar ist.', en: 'Mid-route, you check whether the rest is still doable on foot.' },
   trophyWord: {
     word: 'loin',
-    meaning: { de: 'weit' },
+    meaning: { de: 'weit', en: 'far' },
     example: "C'est loin ?",
-    whyThisWord: { de: 'Loin ist der natürliche A1-Anker für Entfernung. Die französische Frage ist kurz: "C’est loin ?" statt einer wörtlichen deutschen Konstruktion.' },
+    whyThisWord: { de: 'Loin ist der natürliche A1-Anker für Entfernung. Die französische Frage ist kurz: "C’est loin ?" statt einer wörtlichen deutschen Konstruktion.', en: 'Loin is the natural A1 anchor for distance. The French question is short — "C’est loin ?" ("Is it far?") — rather than English\'s longer "How far is it?". This short form is more common at A1.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Bürgersteig mit Zielrichtung, kurzer Check zur Entfernung zu Fuß.' },
+    caption: { de: 'Bürgersteig mit Zielrichtung, kurzer Check zur Entfernung zu Fuß.', en: 'A sidewalk pointing toward the destination, a quick walking-distance check.' },
   },
   songSeed: {
     genre: 'light acoustic pop',
@@ -32132,18 +32132,18 @@ const brightFrenchP3Lesson003: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "C'est ouvert maintenant ?",
-    baseText: { de: 'Ist jetzt geöffnet?' },
+    baseText: { de: 'Ist jetzt geöffnet?', en: "Is it open now?" },
   },
-  meaning: { de: 'Vor dem Eingang prüfst du, ob ein Geschäft, Café oder Büro gerade offen ist.' },
+  meaning: { de: 'Vor dem Eingang prüfst du, ob ein Geschäft, Café oder Büro gerade offen ist.', en: "At the door, you check whether a shop, cafe, or office is open right now." },
   chunks: [
-    { id: 'cest-ouvert', targetText: "C'est ouvert", baseText: { de: 'Es ist geöffnet' } },
-    { id: 'maintenant', targetText: 'maintenant ?', baseText: { de: 'jetzt?' } },
+    { id: 'cest-ouvert', targetText: "C'est ouvert", baseText: { de: 'Es ist geöffnet', en: "It's open" } },
+    { id: 'maintenant', targetText: 'maintenant ?', baseText: { de: 'jetzt?', en: 'now?' } },
   ],
   lessonItems: [
-    { id: 'ouvert', targetText: 'ouvert', baseText: { de: 'geöffnet / offen' }, acceptedAnswers: ['ouvert', 'Ouvert'] },
-    { id: 'maintenant', targetText: 'maintenant', baseText: { de: 'jetzt' }, acceptedAnswers: ['maintenant', 'Maintenant'] },
-    { id: 'ferme-adj', targetText: 'fermé', baseText: { de: 'geschlossen' }, acceptedAnswers: ['fermé', 'Fermé'] },
-    { id: 'cest-ouvert', targetText: "c'est ouvert", baseText: { de: 'es ist offen' }, acceptedAnswers: ["c'est ouvert", "C'est ouvert", 'c est ouvert', 'C est ouvert'] },
+    { id: 'ouvert', targetText: 'ouvert', baseText: { de: 'geöffnet / offen', en: 'open' }, acceptedAnswers: ['ouvert', 'Ouvert'] },
+    { id: 'maintenant', targetText: 'maintenant', baseText: { de: 'jetzt', en: 'now' }, acceptedAnswers: ['maintenant', 'Maintenant'] },
+    { id: 'ferme-adj', targetText: 'fermé', baseText: { de: 'geschlossen', en: 'closed' }, acceptedAnswers: ['fermé', 'Fermé'] },
+    { id: 'cest-ouvert', targetText: "c'est ouvert", baseText: { de: 'es ist offen', en: "it's open" }, acceptedAnswers: ["c'est ouvert", "C'est ouvert", 'c est ouvert', 'C est ouvert'] },
   ],
   build: {
     targetText: "C'est ouvert maintenant ?",
@@ -32157,23 +32157,23 @@ const brightFrenchP3Lesson003: GuidedLessonVibeVariant = {
     fallbackChoices: ['ouvert', 'fermé', 'vide', 'plein'],
   },
   speakTarget: {
-    baseCue: { de: 'Ist jetzt geöffnet?' },
+    baseCue: { de: 'Ist jetzt geöffnet?', en: 'Is it open now?' },
     targetPhrase: "C'est ouvert maintenant ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['ouvert', 'maintenant'],
     optionalTokens: ['cest', 'c', 'est'],
   },
-  sceneCaption: { de: 'Vor einer Tür mit Schild fragst du schlicht, ob der Ort gerade geöffnet ist.' },
+  sceneCaption: { de: 'Vor einer Tür mit Schild fragst du schlicht, ob der Ort gerade geöffnet ist.', en: 'In front of a door with a sign, you ask plainly whether the place is currently open.' },
   trophyWord: {
     word: 'ouvert',
-    meaning: { de: 'geöffnet / offen' },
+    meaning: { de: 'geöffnet / offen', en: 'open' },
     example: "C'est ouvert maintenant ?",
-    whyThisWord: { de: 'Ouvert beschreibt den Zustand eines Ortes. Die Elision in "c’est" ist obligatorisch; "ce est" ist keine korrekte französische Form.' },
+    whyThisWord: { de: 'Ouvert beschreibt den Zustand eines Ortes. Die Elision in "c’est" ist obligatorisch; "ce est" ist keine korrekte französische Form.', en: 'Ouvert (open) describes the state of a place. The elision in "c’est" is mandatory — French drops the "e" of "ce" before "est"; "ce est" is never correct. Pair with "fermé" (closed) — the matching opposite.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Café- oder Ladenfront mit Öffnungsschild und kurzer Nachfrage.' },
+    caption: { de: 'Café- oder Ladenfront mit Öffnungsschild und kurzer Nachfrage.', en: 'A cafe or shop front with an opening-hours sign and a brief follow-up question.' },
   },
   songSeed: {
     genre: 'bright cafe acoustic',
@@ -32186,19 +32186,19 @@ const brightFrenchP3Lesson004: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Quel bus va au musée, s’il vous plaît ?',
-    baseText: { de: 'Welcher Bus fährt zum Museum, bitte?' },
+    baseText: { de: 'Welcher Bus fährt zum Museum, bitte?', en: 'Which bus goes to the museum, please?' },
   },
-  meaning: { de: 'An der Haltestelle fragst du höflich nach der passenden Buslinie zu einem Ziel.' },
+  meaning: { de: 'An der Haltestelle fragst du höflich nach der passenden Buslinie zu einem Ziel.', en: 'At the bus stop, you politely ask which line goes to a destination.' },
   chunks: [
-    { id: 'quel-bus', targetText: 'Quel bus', baseText: { de: 'Welcher Bus' } },
-    { id: 'va-au-musee', targetText: 'va au musée,', baseText: { de: 'fährt zum Museum,' } },
-    { id: 'sil-vous-plait', targetText: 's’il vous plaît ?', baseText: { de: 'bitte?' } },
+    { id: 'quel-bus', targetText: 'Quel bus', baseText: { de: 'Welcher Bus', en: 'Which bus' } },
+    { id: 'va-au-musee', targetText: 'va au musée,', baseText: { de: 'fährt zum Museum,', en: 'goes to the museum,' } },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît ?', baseText: { de: 'bitte?', en: 'please?' } },
   ],
   lessonItems: [
-    { id: 'quel', targetText: 'quel', baseText: { de: 'welcher' }, acceptedAnswers: ['quel', 'Quel'] },
-    { id: 'bus', targetText: 'bus', baseText: { de: 'Bus' }, acceptedAnswers: ['bus', 'Bus'] },
-    { id: 'musee', targetText: 'musée', baseText: { de: 'Museum' }, acceptedAnswers: ['musée', 'musee', 'Musée', 'Musee'] },
-    { id: 'au-musee', targetText: 'au musée', baseText: { de: 'zum Museum' }, acceptedAnswers: ['au musée', 'au musee', 'Au musée', 'Au musee'] },
+    { id: 'quel', targetText: 'quel', baseText: { de: 'welcher', en: 'which (masculine)' }, acceptedAnswers: ['quel', 'Quel'] },
+    { id: 'bus', targetText: 'bus', baseText: { de: 'Bus', en: 'bus' }, acceptedAnswers: ['bus', 'Bus'] },
+    { id: 'musee', targetText: 'musée', baseText: { de: 'Museum', en: 'museum' }, acceptedAnswers: ['musée', 'musee', 'Musée', 'Musee'] },
+    { id: 'au-musee', targetText: 'au musée', baseText: { de: 'zum Museum', en: 'to the museum' }, acceptedAnswers: ['au musée', 'au musee', 'Au musée', 'Au musee'] },
   ],
   build: {
     targetText: 'Quel bus va au musée, s’il vous plaît ?',
@@ -32212,23 +32212,23 @@ const brightFrenchP3Lesson004: GuidedLessonVibeVariant = {
     fallbackChoices: ['musée', 'café', 'taxi', 'arrêt'],
   },
   speakTarget: {
-    baseCue: { de: 'Welcher Bus fährt zum Museum, bitte?' },
+    baseCue: { de: 'Welcher Bus fährt zum Museum, bitte?', en: 'Which bus goes to the museum, please?' },
     targetPhrase: 'Quel bus va au musée, s’il vous plaît ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['quel', 'bus', 'musée'],
     optionalTokens: ['va', 'au', 'sil', 's', 'il', 'vous', 'plait', 'plaît'],
   },
-  sceneCaption: { de: 'An der Haltestelle fragst du Fahrer oder Passantin nach der richtigen Linie zum Museum.' },
+  sceneCaption: { de: 'An der Haltestelle fragst du Fahrer oder Passantin nach der richtigen Linie zum Museum.', en: 'At the stop, you ask the driver or a passerby for the right line to the museum.' },
   trophyWord: {
     word: 'musée',
-    meaning: { de: 'Museum' },
+    meaning: { de: 'Museum', en: 'museum' },
     example: 'Je vais au musée.',
-    whyThisWord: { de: 'Musée ist ein A1-Ort in Stadt- und Reiselektionen. "Au musée" zeigt die Pflichtform à + le = au; "à le musée" wäre falsch.' },
+    whyThisWord: { de: 'Musée ist ein A1-Ort in Stadt- und Reiselektionen. "Au musée" zeigt die Pflichtform à + le = au; "à le musée" wäre falsch.', en: 'Musée is an A1 city/travel location — masculine (le musée). "Au musée" shows a mandatory contraction: à + le = au; French never says "à le musée".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Haltestelle mit Stadtplan und Museum als Ziel.' },
+    caption: { de: 'Haltestelle mit Stadtplan und Museum als Ziel.', en: 'A bus stop with a city map and the museum marked as the destination.' },
   },
   songSeed: {
     genre: 'sunny street acoustic',
@@ -32241,18 +32241,18 @@ const brightFrenchP3Lesson005: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "C'est le prochain arrêt ?",
-    baseText: { de: 'Ist das die nächste Haltestelle?' },
+    baseText: { de: 'Ist das die nächste Haltestelle?', en: 'Is this the next stop?' },
   },
-  meaning: { de: 'Im Bus oder in der Straßenbahn prüfst du, ob die nächste Haltestelle deine ist.' },
+  meaning: { de: 'Im Bus oder in der Straßenbahn prüfst du, ob die nächste Haltestelle deine ist.', en: 'On the bus or tram, you check whether the next stop is yours.' },
   chunks: [
-    { id: 'cest-le-prochain', targetText: "C'est le prochain", baseText: { de: 'Ist das der nächste' } },
-    { id: 'arret', targetText: 'arrêt ?', baseText: { de: 'Halt?' } },
+    { id: 'cest-le-prochain', targetText: "C'est le prochain", baseText: { de: 'Ist das der nächste', en: 'Is this the next' } },
+    { id: 'arret', targetText: 'arrêt ?', baseText: { de: 'Halt?', en: 'stop?' } },
   ],
   lessonItems: [
-    { id: 'prochain', targetText: 'prochain', baseText: { de: 'nächster' }, acceptedAnswers: ['prochain', 'Prochain'] },
-    { id: 'arret', targetText: 'arrêt', baseText: { de: 'Haltestelle / Halt' }, acceptedAnswers: ['arrêt', 'arret', 'Arrêt', 'Arret'] },
-    { id: 'prochain-arret', targetText: 'prochain arrêt', baseText: { de: 'nächste Haltestelle' }, acceptedAnswers: ['prochain arrêt', 'prochain arret', 'Prochain arrêt', 'Prochain arret'] },
-    { id: 'cest', targetText: "c'est", baseText: { de: 'das ist / ist das' }, acceptedAnswers: ["c'est", "C'est", 'c est', 'C est'] },
+    { id: 'prochain', targetText: 'prochain', baseText: { de: 'nächster', en: 'next (masculine)' }, acceptedAnswers: ['prochain', 'Prochain'] },
+    { id: 'arret', targetText: 'arrêt', baseText: { de: 'Haltestelle / Halt', en: 'stop' }, acceptedAnswers: ['arrêt', 'arret', 'Arrêt', 'Arret'] },
+    { id: 'prochain-arret', targetText: 'prochain arrêt', baseText: { de: 'nächste Haltestelle', en: 'next stop' }, acceptedAnswers: ['prochain arrêt', 'prochain arret', 'Prochain arrêt', 'Prochain arret'] },
+    { id: 'cest', targetText: "c'est", baseText: { de: 'das ist / ist das', en: "it's / is it" }, acceptedAnswers: ["c'est", "C'est", 'c est', 'C est'] },
   ],
   build: {
     targetText: "C'est le prochain arrêt ?",
@@ -32266,23 +32266,23 @@ const brightFrenchP3Lesson005: GuidedLessonVibeVariant = {
     fallbackChoices: ['prochain', 'dernier', 'premier', 'suivant'],
   },
   speakTarget: {
-    baseCue: { de: 'Ist das die nächste Haltestelle?' },
+    baseCue: { de: 'Ist das die nächste Haltestelle?', en: 'Is this the next stop?' },
     targetPhrase: "C'est le prochain arrêt ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['prochain', 'arrêt'],
     optionalTokens: ['cest', 'c', 'est', 'le', 'arret'],
   },
-  sceneCaption: { de: 'Kurz vor dem Halt prüfst du bei einer Person neben dir, ob du jetzt aussteigen musst.' },
+  sceneCaption: { de: 'Kurz vor dem Halt prüfst du bei einer Person neben dir, ob du jetzt aussteigen musst.', en: 'Just before the stop, you check with a person beside you whether you should get off now.' },
   trophyWord: {
     word: 'prochain',
-    meaning: { de: 'nächster' },
+    meaning: { de: 'nächster', en: 'next' },
     example: "C'est le prochain arrêt ?",
-    whyThisWord: { de: 'Prochain ist A1-nützlich für Zeit und Reihenfolge: nächster Halt, nächster Tag, nächster Termin. Die Liaison vor "arrêt" kann hörbar werden; schriftlich bleibt "prochain arrêt" getrennt.' },
+    whyThisWord: { de: 'Prochain ist A1-nützlich für Zeit und Reihenfolge: nächster Halt, nächster Tag, nächster Termin. Die Liaison vor "arrêt" kann hörbar werden; schriftlich bleibt "prochain arrêt" getrennt.', en: 'Prochain is useful at A1 for time and order — next stop, next day, next appointment. Liaison can sound the silent "n" before "arrêt" (you may hear "prochain-n-arrêt"), but in writing it stays as two separate words.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Innenraum einer Straßenbahn, Haltestellenanzeige kurz vor dem Halt.' },
+    caption: { de: 'Innenraum einer Straßenbahn, Haltestellenanzeige kurz vor dem Halt.', en: 'Inside a tram, the stop display lit just before the next stop.' },
   },
   songSeed: {
     genre: 'light transit beat',
@@ -32295,20 +32295,20 @@ const brightFrenchP3Lesson006: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Je voudrais un billet, s’il vous plaît.',
-    baseText: { de: 'Ich hätte gern eine Fahrkarte, bitte.' },
+    baseText: { de: 'Ich hätte gern eine Fahrkarte, bitte.', en: "I'd like a ticket, please." },
   },
-  meaning: { de: 'Eine höfliche Service-Bitte für eine einzelne Fahrkarte am Schalter oder Automaten.' },
+  meaning: { de: 'Eine höfliche Service-Bitte für eine einzelne Fahrkarte am Schalter oder Automaten.', en: 'A polite service request for a single travel ticket at the counter or machine.' },
   chunks: [
-    { id: 'je-voudrais', targetText: 'Je voudrais', baseText: { de: 'Ich hätte gern' } },
-    { id: 'un-billet', targetText: 'Un billet,', baseText: { de: 'Eine Fahrkarte,' } },
-    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: { de: 'bitte.' } },
+    { id: 'je-voudrais', targetText: 'Je voudrais', baseText: { de: 'Ich hätte gern', en: "I'd like" } },
+    { id: 'un-billet', targetText: 'Un billet,', baseText: { de: 'Eine Fahrkarte,', en: 'A ticket,' } },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'je-voudrais', targetText: 'je voudrais', baseText: { de: 'ich hätte gern' }, acceptedAnswers: ['je voudrais', 'Je voudrais'] },
-    { id: 'billet', targetText: 'billet', baseText: { de: 'Fahrkarte / Ticket' }, acceptedAnswers: ['billet', 'Billet'] },
-    { id: 'un-billet', targetText: 'un billet', baseText: { de: 'eine Fahrkarte' }, acceptedAnswers: ['un billet', 'Un billet'] },
-    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: { de: 'bitte' }, acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 's il vous plait', 'sil vous plait'] },
-    { id: 'aller-simple', targetText: 'aller simple', baseText: { de: 'einfache Fahrt' }, acceptedAnswers: ['aller simple', 'Aller simple'] },
+    { id: 'je-voudrais', targetText: 'je voudrais', baseText: { de: 'ich hätte gern', en: "I'd like" }, acceptedAnswers: ['je voudrais', 'Je voudrais'] },
+    { id: 'billet', targetText: 'billet', baseText: { de: 'Fahrkarte / Ticket', en: 'ticket (travel)' }, acceptedAnswers: ['billet', 'Billet'] },
+    { id: 'un-billet', targetText: 'un billet', baseText: { de: 'eine Fahrkarte', en: 'a ticket' }, acceptedAnswers: ['un billet', 'Un billet'] },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: { de: 'bitte', en: 'please (formal)' }, acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 's il vous plait', 'sil vous plait'] },
+    { id: 'aller-simple', targetText: 'aller simple', baseText: { de: 'einfache Fahrt', en: 'one way' }, acceptedAnswers: ['aller simple', 'Aller simple'] },
   ],
   build: {
     targetText: 'Je voudrais un billet, s’il vous plaît.',
@@ -32322,23 +32322,23 @@ const brightFrenchP3Lesson006: GuidedLessonVibeVariant = {
     fallbackChoices: ['billet', 'bus', 'sac', 'coin'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich hätte gern eine Fahrkarte, bitte.' },
+    baseCue: { de: 'Ich hätte gern eine Fahrkarte, bitte.', en: "I'd like a ticket, please." },
     targetPhrase: 'Je voudrais un billet, s’il vous plaît.',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['voudrais', 'billet', 'plaît'],
     optionalTokens: ['je', 'un', 'sil', 's', 'il', 'vous', 'plait'],
   },
-  sceneCaption: { de: 'Am Verkehrsschalter hältst du die Bitte höflich und klar: du hättest gern eine Fahrkarte.' },
+  sceneCaption: { de: 'Am Verkehrsschalter hältst du die Bitte höflich und klar: du hättest gern eine Fahrkarte.', en: 'At the transport counter, you keep the request polite and clear: you’d like a ticket.' },
   trophyWord: {
     word: 'billet',
-    meaning: { de: 'Fahrkarte / Ticket' },
+    meaning: { de: 'Fahrkarte / Ticket', en: 'ticket (travel)' },
     example: 'Je voudrais un billet, s’il vous plaît.',
-    whyThisWord: { de: 'Billet ist der klare A1-Anker für Fahrkarten. Im Französischen ist es maskulin: "un billet", nicht "une billet"; in Service-Szenen macht "je voudrais" die Bitte höflich.' },
+    whyThisWord: { de: 'Billet ist der klare A1-Anker für Fahrkarten. Im Französischen ist es maskulin: "un billet", nicht "une billet"; in Service-Szenen macht "je voudrais" die Bitte höflich.', en: 'Billet is the A1 word for a travel ticket — masculine (un billet). Note: French distinguishes "billet" (train/bus/plane ticket) from "ticket" (till receipt — see P2L7); use "billet" for transport. "Je voudrais" keeps the request polite.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Fahrkartenschalter, kleine Schlange, klare Bitte für ein Ticket.' },
+    caption: { de: 'Fahrkartenschalter, kleine Schlange, klare Bitte für ein Ticket.', en: 'A ticket counter with a short queue and a clear request for a ticket.' },
   },
   songSeed: {
     genre: 'bright acoustic',
@@ -32351,18 +32351,18 @@ const brightFrenchP3Lesson007: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'À quelle heure ça ferme ?',
-    baseText: { de: 'Um wie viel Uhr schließt es?' },
+    baseText: { de: 'Um wie viel Uhr schließt es?', en: 'What time does it close?' },
   },
-  meaning: { de: 'Eine Planungsfrage nach der Schließzeit eines Ortes.' },
+  meaning: { de: 'Eine Planungsfrage nach der Schließzeit eines Ortes.', en: 'A planning question about the closing time of a place.' },
   chunks: [
-    { id: 'a-quelle-heure', targetText: 'À quelle heure', baseText: { de: 'Um wie viel Uhr' } },
-    { id: 'ca-ferme', targetText: 'ça ferme ?', baseText: { de: 'schließt es?' } },
+    { id: 'a-quelle-heure', targetText: 'À quelle heure', baseText: { de: 'Um wie viel Uhr', en: 'What time' } },
+    { id: 'ca-ferme', targetText: 'ça ferme ?', baseText: { de: 'schließt es?', en: 'does it close?' } },
   ],
   lessonItems: [
-    { id: 'heure', targetText: 'heure', baseText: { de: 'Uhr / Stunde' }, acceptedAnswers: ['heure', 'Heure'] },
-    { id: 'quelle-heure', targetText: 'quelle heure', baseText: { de: 'welche Uhrzeit' }, acceptedAnswers: ['quelle heure', 'Quelle heure'] },
-    { id: 'ferme', targetText: 'ferme', baseText: { de: 'schließt' }, acceptedAnswers: ['ferme', 'Ferme'] },
-    { id: 'ca', targetText: 'ça', baseText: { de: 'es / das' }, acceptedAnswers: ['ça', 'ca', 'Ça', 'Ca'] },
+    { id: 'heure', targetText: 'heure', baseText: { de: 'Uhr / Stunde', en: 'hour / time' }, acceptedAnswers: ['heure', 'Heure'] },
+    { id: 'quelle-heure', targetText: 'quelle heure', baseText: { de: 'welche Uhrzeit', en: 'what time' }, acceptedAnswers: ['quelle heure', 'Quelle heure'] },
+    { id: 'ferme', targetText: 'ferme', baseText: { de: 'schließt', en: 'closes' }, acceptedAnswers: ['ferme', 'Ferme'] },
+    { id: 'ca', targetText: 'ça', baseText: { de: 'es / das', en: 'it / this' }, acceptedAnswers: ['ça', 'ca', 'Ça', 'Ca'] },
   ],
   build: {
     targetText: 'À quelle heure ça ferme ?',
@@ -32376,23 +32376,23 @@ const brightFrenchP3Lesson007: GuidedLessonVibeVariant = {
     fallbackChoices: ['heure', 'billet', 'coin', 'taxi'],
   },
   speakTarget: {
-    baseCue: { de: 'Um wie viel Uhr schließt es?' },
+    baseCue: { de: 'Um wie viel Uhr schließt es?', en: 'What time does it close?' },
     targetPhrase: 'À quelle heure ça ferme ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['quelle', 'heure', 'ferme'],
     optionalTokens: ['a', 'à', 'ça', 'ca'],
   },
-  sceneCaption: { de: 'Vor Laden oder Museum fragst du nach der Uhrzeit, damit du den Besuch planen kannst.' },
+  sceneCaption: { de: 'Vor Laden oder Museum fragst du nach der Uhrzeit, damit du den Besuch planen kannst.', en: 'At a shop or museum, you ask the closing time so you can plan the visit.' },
   trophyWord: {
     word: 'heure',
-    meaning: { de: 'Uhr / Stunde' },
+    meaning: { de: 'Uhr / Stunde', en: 'hour / time' },
     example: 'À quelle heure ça ferme ?',
-    whyThisWord: { de: 'Heure ist der A1-Zeitanker für Uhrzeiten. "À quelle heure... ?" ist die feste Frageform für "um wie viel Uhr".' },
+    whyThisWord: { de: 'Heure ist der A1-Zeitanker für Uhrzeiten. "À quelle heure... ?" ist die feste Frageform für "um wie viel Uhr".', en: 'Heure (feminine: une heure) is the A1 anchor for clock times. "À quelle heure...?" is the fixed question form for "what time" — note the silent "h" in heure, so the elision and liaison both apply naturally.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Museumseingang mit Öffnungszeiten und kurzer Planungsfrage.' },
+    caption: { de: 'Museumseingang mit Öffnungszeiten und kurzer Planungsfrage.', en: 'A museum entrance with opening hours and a brief planning question.' },
   },
   songSeed: {
     genre: 'light museum acoustic',
@@ -32405,18 +32405,18 @@ const brightFrenchP3Lesson008: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "C'est au coin de la rue ?",
-    baseText: { de: 'Ist es an der Straßenecke?' },
+    baseText: { de: 'Ist es an der Straßenecke?', en: 'Is it on the street corner?' },
   },
-  meaning: { de: 'Eine konkrete Wegfrage mit einer Straßenecke als Orientierungspunkt.' },
+  meaning: { de: 'Eine konkrete Wegfrage mit einer Straßenecke als Orientierungspunkt.', en: 'A concrete wayfinding question using a street corner as the landmark.' },
   chunks: [
-    { id: 'cest-au-coin', targetText: "C'est au coin", baseText: { de: 'Ist es an der Ecke' } },
-    { id: 'de-la-rue', targetText: 'de la rue ?', baseText: { de: 'der Straße?' } },
+    { id: 'cest-au-coin', targetText: "C'est au coin", baseText: { de: 'Ist es an der Ecke', en: 'Is it on the corner' } },
+    { id: 'de-la-rue', targetText: 'de la rue ?', baseText: { de: 'der Straße?', en: 'of the street?' } },
   ],
   lessonItems: [
-    { id: 'coin', targetText: 'coin', baseText: { de: 'Ecke' }, acceptedAnswers: ['coin', 'Coin'] },
-    { id: 'au-coin', targetText: 'au coin', baseText: { de: 'an der Ecke' }, acceptedAnswers: ['au coin', 'Au coin'] },
-    { id: 'rue', targetText: 'rue', baseText: { de: 'Straße' }, acceptedAnswers: ['rue', 'Rue'] },
-    { id: 'de-la-rue', targetText: 'de la rue', baseText: { de: 'der Straße' }, acceptedAnswers: ['de la rue', 'De la rue'] },
+    { id: 'coin', targetText: 'coin', baseText: { de: 'Ecke', en: 'corner' }, acceptedAnswers: ['coin', 'Coin'] },
+    { id: 'au-coin', targetText: 'au coin', baseText: { de: 'an der Ecke', en: 'on the corner' }, acceptedAnswers: ['au coin', 'Au coin'] },
+    { id: 'rue', targetText: 'rue', baseText: { de: 'Straße', en: 'street' }, acceptedAnswers: ['rue', 'Rue'] },
+    { id: 'de-la-rue', targetText: 'de la rue', baseText: { de: 'der Straße', en: 'of the street' }, acceptedAnswers: ['de la rue', 'De la rue'] },
   ],
   build: {
     targetText: "C'est au coin de la rue ?",
@@ -32430,23 +32430,23 @@ const brightFrenchP3Lesson008: GuidedLessonVibeVariant = {
     fallbackChoices: ['coin', 'musée', 'billet', 'heure'],
   },
   speakTarget: {
-    baseCue: { de: 'Ist es an der Straßenecke?' },
+    baseCue: { de: 'Ist es an der Straßenecke?', en: 'Is it on the street corner?' },
     targetPhrase: "C'est au coin de la rue ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['coin', 'rue'],
     optionalTokens: ['cest', 'c', 'est', 'au', 'de', 'la'],
   },
-  sceneCaption: { de: 'An einer Kreuzung prüfst du, ob der gesuchte Ort wirklich an der Ecke liegt.' },
+  sceneCaption: { de: 'An einer Kreuzung prüfst du, ob der gesuchte Ort wirklich an der Ecke liegt.', en: 'At an intersection, you check whether the place you want is really on the corner.' },
   trophyWord: {
     word: 'coin',
-    meaning: { de: 'Ecke' },
+    meaning: { de: 'Ecke', en: 'corner' },
     example: "C'est au coin de la rue.",
-    whyThisWord: { de: 'Coin heißt hier "Ecke", nicht englisch "Münze". In Wegbeschreibungen ist "au coin de la rue" eine sehr brauchbare A1-Gruppe.' },
+    whyThisWord: { de: 'Coin heißt hier "Ecke", nicht englisch "Münze". In Wegbeschreibungen ist "au coin de la rue" eine sehr brauchbare A1-Gruppe.', en: 'False-friend warning: French "coin" means "corner", not the English "coin" (the metal money — that\'s "pièce" or "pièce de monnaie" in French). In wayfinding, "au coin de la rue" is a very useful A1 phrase.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Straßenecke mit Ladenfront und kurzer Bestätigung.' },
+    caption: { de: 'Straßenecke mit Ladenfront und kurzer Bestätigung.', en: 'A street corner with a shop front and a brief check.' },
   },
   songSeed: {
     genre: 'sunny city acoustic',
@@ -32459,18 +32459,18 @@ const brightFrenchP3Lesson009: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'À pied ou en taxi ?',
-    baseText: { de: 'Zu Fuß oder mit dem Taxi?' },
+    baseText: { de: 'Zu Fuß oder mit dem Taxi?', en: 'On foot or by taxi?' },
   },
-  meaning: { de: 'Eine neutrale Entscheidung zwischen zwei einfachen Transportoptionen.' },
+  meaning: { de: 'Eine neutrale Entscheidung zwischen zwei einfachen Transportoptionen.', en: 'A neutral pick between two simple transport options.' },
   chunks: [
-    { id: 'a-pied', targetText: 'À pied', baseText: { de: 'Zu Fuß' } },
-    { id: 'ou-en-taxi', targetText: 'ou en taxi ?', baseText: { de: 'oder mit dem Taxi?' } },
+    { id: 'a-pied', targetText: 'À pied', baseText: { de: 'Zu Fuß', en: 'On foot' } },
+    { id: 'ou-en-taxi', targetText: 'ou en taxi ?', baseText: { de: 'oder mit dem Taxi?', en: 'or by taxi?' } },
   ],
   lessonItems: [
-    { id: 'a-pied', targetText: 'à pied', baseText: { de: 'zu Fuß' }, acceptedAnswers: ['à pied', 'a pied', 'À pied', 'A pied'] },
-    { id: 'taxi', targetText: 'taxi', baseText: { de: 'Taxi' }, acceptedAnswers: ['taxi', 'Taxi'] },
-    { id: 'en-taxi', targetText: 'en taxi', baseText: { de: 'mit dem Taxi' }, acceptedAnswers: ['en taxi', 'En taxi'] },
-    { id: 'ou', targetText: 'ou', baseText: { de: 'oder' }, acceptedAnswers: ['ou', 'Ou'] },
+    { id: 'a-pied', targetText: 'à pied', baseText: { de: 'zu Fuß', en: 'on foot' }, acceptedAnswers: ['à pied', 'a pied', 'À pied', 'A pied'] },
+    { id: 'taxi', targetText: 'taxi', baseText: { de: 'Taxi', en: 'taxi' }, acceptedAnswers: ['taxi', 'Taxi'] },
+    { id: 'en-taxi', targetText: 'en taxi', baseText: { de: 'mit dem Taxi', en: 'by taxi' }, acceptedAnswers: ['en taxi', 'En taxi'] },
+    { id: 'ou', targetText: 'ou', baseText: { de: 'oder', en: 'or' }, acceptedAnswers: ['ou', 'Ou'] },
   ],
   build: {
     targetText: 'À pied ou en taxi ?',
@@ -32484,23 +32484,23 @@ const brightFrenchP3Lesson009: GuidedLessonVibeVariant = {
     fallbackChoices: ['taxi', 'bus', 'train', 'café'],
   },
   speakTarget: {
-    baseCue: { de: 'Zu Fuß oder mit dem Taxi?' },
+    baseCue: { de: 'Zu Fuß oder mit dem Taxi?', en: 'On foot or by taxi?' },
     targetPhrase: 'À pied ou en taxi ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['pied', 'taxi'],
     optionalTokens: ['a', 'à', 'ou', 'en'],
   },
-  sceneCaption: { de: 'Am Ende eines Wegstücks entscheidest du schlicht, ob ihr lauft oder ein Taxi nehmt.' },
+  sceneCaption: { de: 'Am Ende eines Wegstücks entscheidest du schlicht, ob ihr lauft oder ein Taxi nehmt.', en: 'At the end of a stretch, you simply pick whether you walk or take a taxi.' },
   trophyWord: {
     word: 'taxi',
-    meaning: { de: 'Taxi' },
+    meaning: { de: 'Taxi', en: 'taxi' },
     example: 'On prend un taxi ?',
-    whyThisWord: { de: 'Taxi ist international verständlich und im Französischen maskulin: "un taxi". Die Transportgruppe lautet natürlich "en taxi".' },
+    whyThisWord: { de: 'Taxi ist international verständlich und im Französischen maskulin: "un taxi". Die Transportgruppe lautet natürlich "en taxi".', en: 'Taxi is recognisable across languages and masculine in French (un taxi). For transport modes, French uses "en" — "en taxi" / "en bus" / "en train" — but "à pied" for walking (no "en" before "pied").' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Straßenrand mit Fußweg und wartendem Taxi als einfache Wahl.' },
+    caption: { de: 'Straßenrand mit Fußweg und wartendem Taxi als einfache Wahl.', en: 'A street with a walking path and a waiting taxi — a simple two-way choice.' },
   },
   songSeed: {
     genre: 'bright evening acoustic',
@@ -32513,19 +32513,19 @@ const brightFrenchP3Lesson010: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "J'ai raté mon arrêt. Vous pouvez m'aider ?",
-    baseText: { de: 'Ich habe meine Haltestelle verpasst. Können Sie mir helfen?' },
+    baseText: { de: 'Ich habe meine Haltestelle verpasst. Können Sie mir helfen?', en: 'I missed my stop. Could you help me?' },
   },
-  meaning: { de: 'Nach einer kleinen Verkehrspanne erklärst du das Problem und bittest höflich um Hilfe.' },
+  meaning: { de: 'Nach einer kleinen Verkehrspanne erklärst du das Problem und bittest höflich um Hilfe.', en: 'After a small transit mishap, you explain the problem and politely ask for help.' },
   chunks: [
-    { id: 'jai-rate', targetText: "J'ai raté", baseText: { de: 'Ich habe verpasst' } },
-    { id: 'mon-arret', targetText: 'mon arrêt.', baseText: { de: 'meine Haltestelle.' } },
-    { id: 'vous-pouvez-maider', targetText: "Vous pouvez m'aider ?", baseText: { de: 'Können Sie mir helfen?' } },
+    { id: 'jai-rate', targetText: "J'ai raté", baseText: { de: 'Ich habe verpasst', en: 'I missed' } },
+    { id: 'mon-arret', targetText: 'mon arrêt.', baseText: { de: 'meine Haltestelle.', en: 'my stop.' } },
+    { id: 'vous-pouvez-maider', targetText: "Vous pouvez m'aider ?", baseText: { de: 'Können Sie mir helfen?', en: 'Could you help me?' } },
   ],
   lessonItems: [
-    { id: 'jai-rate', targetText: "j'ai raté", baseText: { de: 'ich habe verpasst' }, acceptedAnswers: ["j'ai raté", "J'ai raté", "j'ai rate", "J'ai rate", 'jai raté', 'jai rate'] },
-    { id: 'arret', targetText: 'arrêt', baseText: { de: 'Haltestelle / Halt' }, acceptedAnswers: ['arrêt', 'arret', 'Arrêt', 'Arret'] },
-    { id: 'mon-arret', targetText: 'mon arrêt', baseText: { de: 'meine Haltestelle' }, acceptedAnswers: ['mon arrêt', 'mon arret', 'Mon arrêt', 'Mon arret'] },
-    { id: 'maider', targetText: "m'aider", baseText: { de: 'mir helfen' }, acceptedAnswers: ["m'aider", "M'aider", 'm aider', 'M aider'] },
+    { id: 'jai-rate', targetText: "j'ai raté", baseText: { de: 'ich habe verpasst', en: 'I missed' }, acceptedAnswers: ["j'ai raté", "J'ai raté", "j'ai rate", "J'ai rate", 'jai raté', 'jai rate'] },
+    { id: 'arret', targetText: 'arrêt', baseText: { de: 'Haltestelle / Halt', en: 'stop' }, acceptedAnswers: ['arrêt', 'arret', 'Arrêt', 'Arret'] },
+    { id: 'mon-arret', targetText: 'mon arrêt', baseText: { de: 'meine Haltestelle', en: 'my stop' }, acceptedAnswers: ['mon arrêt', 'mon arret', 'Mon arrêt', 'Mon arret'] },
+    { id: 'maider', targetText: "m'aider", baseText: { de: 'mir helfen', en: 'help me' }, acceptedAnswers: ["m'aider", "M'aider", 'm aider', 'M aider'] },
   ],
   build: {
     targetText: "J'ai raté mon arrêt. Vous pouvez m'aider ?",
@@ -32539,23 +32539,23 @@ const brightFrenchP3Lesson010: GuidedLessonVibeVariant = {
     fallbackChoices: ['arrêt', 'billet', 'coin', 'musée'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich habe meine Haltestelle verpasst. Können Sie mir helfen?' },
+    baseCue: { de: 'Ich habe meine Haltestelle verpasst. Können Sie mir helfen?', en: 'I missed my stop. Could you help me?' },
     targetPhrase: "J'ai raté mon arrêt. Vous pouvez m'aider ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['raté', 'arrêt', 'aider'],
     optionalTokens: ['jai', 'j', 'ai', 'rate', 'mon', 'vous', 'pouvez', 'm'],
   },
-  sceneCaption: { de: 'Im Bus oder direkt nach dem Aussteigen erklärst du ruhig, dass du den Halt verpasst hast.' },
+  sceneCaption: { de: 'Im Bus oder direkt nach dem Aussteigen erklärst du ruhig, dass du den Halt verpasst hast.', en: 'On the bus or just after getting off, you calmly explain that you missed your stop.' },
   trophyWord: {
     word: 'arrêt',
-    meaning: { de: 'Haltestelle / Halt' },
+    meaning: { de: 'Haltestelle / Halt', en: 'stop' },
     example: "J'ai raté mon arrêt.",
-    whyThisWord: { de: 'Arrêt ist der zentrale A1-Verkehrsanker für Bus und Tram. Der Akzent ist Teil der Standardschreibung; ohne Akzent bleibt es als Tippvariante erkennbar.' },
+    whyThisWord: { de: 'Arrêt ist der zentrale A1-Verkehrsanker für Bus und Tram. Der Akzent ist Teil der Standardschreibung; ohne Akzent bleibt es als Tippvariante erkennbar.', en: 'Arrêt is the core A1 word for a bus or tram stop — masculine (un arrêt). The accent is part of the standard spelling; without it the typed form stays recognisable. Note "raté" here means "missed", not "rated".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Businnenraum kurz nach der Haltestelle, ruhige Bitte um Hilfe.' },
+    caption: { de: 'Businnenraum kurz nach der Haltestelle, ruhige Bitte um Hilfe.', en: 'Inside the bus just past the stop, a calm ask for help.' },
   },
   songSeed: {
     genre: 'soft transit acoustic',
@@ -60503,9 +60503,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-3-lesson-1-droite-ou-gauche',
       sequence: 1,
-      title: { de: 'Rechts oder links?' },
+      title: { de: 'Rechts oder links?', en: 'Right or left?' },
     },
-    title: { de: 'Rechts oder links?' },
+    title: { de: 'Rechts oder links?', en: 'Right or left?' },
     situation: {
       en: 'At a sidewalk intersection, ask politely whether to turn right or left.',
       de: 'An einer Kreuzung fragst du höflich, ob du rechts oder links abbiegen sollst.',
@@ -60517,8 +60517,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ist es weit?' },
-      situation: { de: 'Du fragst, ob ein Ziel zu Fuß weit ist.' },
+      title: { de: 'Ist es weit?', en: 'Is it far?' },
+      situation: { de: 'Du fragst, ob ein Ziel zu Fuß weit ist.', en: 'You ask whether the destination is far on foot.' },
     },
     vibeVariants: {
       bright: brightFrenchP3Lesson001,
@@ -60536,9 +60536,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-3-lesson-2-loin-a-pied',
       sequence: 2,
-      title: { de: 'Ist es weit?' },
+      title: { de: 'Ist es weit?', en: 'Is it far?' },
     },
-    title: { de: 'Ist es weit?' },
+    title: { de: 'Ist es weit?', en: 'Is it far?' },
     situation: {
       en: 'Mid-navigation, ask whether the destination is far on foot.',
       de: 'Unterwegs fragst du, ob das Ziel zu Fuß weit ist.',
@@ -60550,8 +60550,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Jetzt geöffnet?' },
-      situation: { de: 'Du prüfst vor dem Eingang, ob ein Ort offen ist.' },
+      title: { de: 'Jetzt geöffnet?', en: 'Open now?' },
+      situation: { de: 'Du prüfst vor dem Eingang, ob ein Ort offen ist.', en: 'You check at the door whether a place is open.' },
     },
     vibeVariants: {
       bright: brightFrenchP3Lesson002,
@@ -60569,9 +60569,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-3-lesson-3-ouvert-maintenant',
       sequence: 3,
-      title: { de: 'Jetzt geöffnet?' },
+      title: { de: 'Jetzt geöffnet?', en: 'Open now?' },
     },
-    title: { de: 'Jetzt geöffnet?' },
+    title: { de: 'Jetzt geöffnet?', en: 'Open now?' },
     situation: {
       en: 'In front of a shop, cafe, or office, ask whether it is open now.',
       de: 'Vor Laden, Café oder Büro fragst du, ob jetzt geöffnet ist.',
@@ -60583,8 +60583,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Welcher Bus?' },
-      situation: { de: 'Du fragst nach der passenden Buslinie zu einem Ziel.' },
+      title: { de: 'Welcher Bus?', en: 'Which bus?' },
+      situation: { de: 'Du fragst nach der passenden Buslinie zu einem Ziel.', en: 'You ask which bus line goes to a destination.' },
     },
     vibeVariants: {
       bright: brightFrenchP3Lesson003,
@@ -60602,9 +60602,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-3-lesson-4-bus-au-musee',
       sequence: 4,
-      title: { de: 'Welcher Bus?' },
+      title: { de: 'Welcher Bus?', en: 'Which bus?' },
     },
-    title: { de: 'Welcher Bus?' },
+    title: { de: 'Welcher Bus?', en: 'Which bus?' },
     situation: {
       en: 'At a bus stop, ask which bus goes to a specific destination.',
       de: 'An der Haltestelle fragst du, welcher Bus zum Ziel fährt.',
@@ -60616,8 +60616,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Nächste Haltestelle?' },
-      situation: { de: 'Du prüfst im Bus, ob dein Halt als Nächstes kommt.' },
+      title: { de: 'Nächste Haltestelle?', en: 'Next stop?' },
+      situation: { de: 'Du prüfst im Bus, ob dein Halt als Nächstes kommt.', en: 'You check on the bus whether your stop is next.' },
     },
     vibeVariants: {
       bright: brightFrenchP3Lesson004,
@@ -60635,9 +60635,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-3-lesson-5-prochain-arret',
       sequence: 5,
-      title: { de: 'Nächste Haltestelle?' },
+      title: { de: 'Nächste Haltestelle?', en: 'Next stop?' },
     },
-    title: { de: 'Nächste Haltestelle?' },
+    title: { de: 'Nächste Haltestelle?', en: 'Next stop?' },
     situation: {
       en: 'On a moving bus or tram, confirm whether the next stop is yours.',
       de: 'Im Bus oder in der Tram prüfst du, ob die nächste Haltestelle deine ist.',
@@ -60649,8 +60649,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Eine Fahrkarte' },
-      situation: { de: 'Du kaufst eine einfache Fahrkarte.' },
+      title: { de: 'Eine Fahrkarte', en: 'A ticket' },
+      situation: { de: 'Du kaufst eine einfache Fahrkarte.', en: 'You buy a simple single ticket.' },
     },
     vibeVariants: {
       bright: brightFrenchP3Lesson005,
@@ -60668,9 +60668,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-3-lesson-6-un-billet',
       sequence: 6,
-      title: { de: 'Eine Fahrkarte' },
+      title: { de: 'Eine Fahrkarte', en: 'A ticket' },
     },
-    title: { de: 'Eine Fahrkarte' },
+    title: { de: 'Eine Fahrkarte', en: 'A ticket' },
     situation: {
       en: 'At a transit counter or kiosk, buy a simple single ticket.',
       de: 'Am Verkehrsschalter oder Automaten kaufst du eine einfache Fahrkarte.',
@@ -60682,8 +60682,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wann schließt es?' },
-      situation: { de: 'Du fragst nach der Schließzeit eines Ortes.' },
+      title: { de: 'Wann schließt es?', en: 'What time does it close?' },
+      situation: { de: 'Du fragst nach der Schließzeit eines Ortes.', en: 'You ask the closing time of a place.' },
     },
     vibeVariants: {
       bright: brightFrenchP3Lesson006,
@@ -60701,9 +60701,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-3-lesson-7-quelle-heure-ferme',
       sequence: 7,
-      title: { de: 'Wann schließt es?' },
+      title: { de: 'Wann schließt es?', en: 'What time does it close?' },
     },
-    title: { de: 'Wann schließt es?' },
+    title: { de: 'Wann schließt es?', en: 'What time does it close?' },
     situation: {
       en: 'Outside a shop or museum, ask the closing time to plan a visit.',
       de: 'Vor Laden oder Museum fragst du nach der Schließzeit.',
@@ -60715,8 +60715,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'An der Ecke' },
-      situation: { de: 'Du nutzt eine Straßenecke als Orientierungspunkt.' },
+      title: { de: 'An der Ecke', en: 'On the corner' },
+      situation: { de: 'Du nutzt eine Straßenecke als Orientierungspunkt.', en: 'You use a street corner as your landmark.' },
     },
     vibeVariants: {
       bright: brightFrenchP3Lesson007,
@@ -60734,9 +60734,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-3-lesson-8-au-coin',
       sequence: 8,
-      title: { de: 'An der Ecke' },
+      title: { de: 'An der Ecke', en: 'On the corner' },
     },
-    title: { de: 'An der Ecke' },
+    title: { de: 'An der Ecke', en: 'On the corner' },
     situation: {
       en: 'At an intersection, use a street corner as a navigation landmark.',
       de: 'An einer Kreuzung nutzt du die Straßenecke als Orientierungspunkt.',
@@ -60748,8 +60748,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Zu Fuß oder Taxi?' },
-      situation: { de: 'Du wählst zwischen Gehen und Taxi.' },
+      title: { de: 'Zu Fuß oder Taxi?', en: 'On foot or by taxi?' },
+      situation: { de: 'Du wählst zwischen Gehen und Taxi.', en: 'You pick between walking and taking a taxi.' },
     },
     vibeVariants: {
       bright: brightFrenchP3Lesson008,
@@ -60767,9 +60767,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-3-lesson-9-pied-ou-taxi',
       sequence: 9,
-      title: { de: 'Zu Fuß oder Taxi?' },
+      title: { de: 'Zu Fuß oder Taxi?', en: 'On foot or by taxi?' },
     },
-    title: { de: 'Zu Fuß oder Taxi?' },
+    title: { de: 'Zu Fuß oder Taxi?', en: 'On foot or by taxi?' },
     situation: {
       en: 'Choose between walking and taking a taxi as transport options.',
       de: 'Du entscheidest neutral zwischen zu Fuß gehen und Taxi fahren.',
@@ -60781,8 +60781,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Haltestelle verpasst' },
-      situation: { de: 'Du sagst, dass du deinen Halt verpasst hast.' },
+      title: { de: 'Haltestelle verpasst', en: 'Missed my stop' },
+      situation: { de: 'Du sagst, dass du deinen Halt verpasst hast.', en: 'You say you missed your stop.' },
     },
     vibeVariants: {
       bright: brightFrenchP3Lesson009,
@@ -60800,9 +60800,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-3-lesson-10-rate-mon-arret',
       sequence: 10,
-      title: { de: 'Haltestelle verpasst' },
+      title: { de: 'Haltestelle verpasst', en: 'Missed my stop' },
     },
-    title: { de: 'Haltestelle verpasst' },
+    title: { de: 'Haltestelle verpasst', en: 'Missed my stop' },
     situation: {
       en: 'On a bus or tram, say you missed your stop and ask for help recovering.',
       de: 'Im Bus oder in der Tram sagst du, dass du deine Haltestelle verpasst hast, und bittest um Hilfe.',
@@ -60814,8 +60814,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Pfad abgeschlossen' },
-      situation: { de: 'Du hast French A1 Practical 3 abgeschlossen.' },
+      title: { de: 'Pfad abgeschlossen', en: 'Path complete' },
+      situation: { de: 'Du hast French A1 Practical 3 abgeschlossen.', en: "You've finished French A1 Practical 3." },
     },
     vibeVariants: {
       bright: brightFrenchP3Lesson010,
