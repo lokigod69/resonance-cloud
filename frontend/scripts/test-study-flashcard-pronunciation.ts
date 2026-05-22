@@ -55,6 +55,42 @@ assert.match(
 )
 
 assert.match(
+  source,
+  /type\s+FeedbackPulse\s*=\s*'remembered'\s*\|\s*'reviewLater'/,
+  'StudyFlashcard should model red/green grading feedback explicitly',
+)
+
+assert.match(
+  source,
+  /const\s+\[feedbackPulse,\s*setFeedbackPulse\]\s*=\s*useState<FeedbackPulse\s*\|\s*null>\(null\)/,
+  'StudyFlashcard should keep transient grading feedback in local state',
+)
+
+assert.match(
+  source,
+  /handleFeedbackReviewLater[\s\S]*?playFeedbackAndAdvance\('reviewLater',\s*handleReviewLater\)/,
+  'review-later grading should trigger the red feedback pulse before advancing',
+)
+
+assert.match(
+  source,
+  /handleFeedbackRemembered[\s\S]*?playFeedbackAndAdvance\('remembered',\s*handleRemembered\)/,
+  'remembered grading should trigger the green feedback pulse before advancing',
+)
+
+assert.match(
+  source,
+  /<AnimatePresence>\s*\{feedbackPulse && \(/,
+  'StudyFlashcard should render an animated feedback overlay when grading',
+)
+
+assert.match(
+  source,
+  /boxShadow:[\s\S]*?feedbackPulse === 'remembered'[\s\S]*?rgba\(34, 197, 94, 0\.35\)[\s\S]*?rgba\(239, 68, 68, 0\.35\)/,
+  'StudyFlashcard should render distinct subtle green and red glow outlines',
+)
+
+assert.match(
   studyUiSource,
   /tag === 'BUTTON'/,
   'global study keyboard shortcuts should ignore focused buttons so pronunciation controls do not reveal or grade cards',
