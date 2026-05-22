@@ -512,7 +512,7 @@ const GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA: GuidedPathMetadata = {
   id: 'italian-a1-practical-3',
   title: 'Italian A1 Practical 3',
   shortTitle: 'A1 Practical 3',
-  subtitle: { de: 'Wegweisung und Fortbewegung auf Italienisch' },
+  subtitle: { de: 'Wegweisung und Fortbewegung auf Italienisch', en: 'Directions and getting around in Italian' },
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'Italian',
@@ -1718,45 +1718,45 @@ const brightLesson008: GuidedLessonVibeVariant = {
 const brightLesson009: GuidedLessonVibeVariant = {
   contentStatus: "draft",
   corePhrase: {
-    targetText: "Tomorrow at seven? Wonderful!",
-    baseText: { de: "Morgen um sieben? Wunderbar!" },
+    targetText: "Tomorrow at seven? Great!",
+    baseText: { de: "Morgen um sieben? Großartig!" },
   },
   meaning: { de: "Eine warme Zusage für einen Plan am nächsten Tag." },
   chunks: [
     { id: "tomorrow", targetText: "Tomorrow", baseText: { de: "morgen" } },
     { id: "at-seven", targetText: "at seven", baseText: { de: "um sieben" } },
-    { id: "wonderful", targetText: "Wonderful", baseText: { de: "wunderbar" } },
+    { id: "great", targetText: "Great", baseText: { de: "großartig" } },
   ],
   lessonItems: [
     { id: "tomorrow", targetText: "tomorrow", baseText: { de: "morgen" }, acceptedAnswers: ["tomorrow"] },
     { id: "seven", targetText: "seven", baseText: { de: "sieben" }, acceptedAnswers: ["seven", "7"] },
-    { id: "wonderful", targetText: "wonderful", baseText: { de: "wunderbar" }, acceptedAnswers: ["wonderful"] },
+    { id: "great", targetText: "great", baseText: { de: "großartig" }, acceptedAnswers: ["great"] },
     { id: "brilliant", targetText: "brilliant", baseText: { de: "brillant" }, acceptedAnswers: ["brilliant"] },
     { id: "ready", targetText: "ready", baseText: { de: "bereit" }, acceptedAnswers: ["ready"] },
   ],
   build: {
-    targetText: "Tomorrow at seven? Wonderful!",
-    chips: ["Tomorrow", "at seven?", "Wonderful!", "ready", "glad"],
+    targetText: "Tomorrow at seven? Great!",
+    chips: ["Tomorrow", "at seven?", "Great!", "ready", "glad"],
   },
   typeRecall: {
     before: "Tomorrow at seven? ",
-    answer: "Wonderful",
+    answer: "Great",
     after: "!",
-    acceptedAnswers: ["Wonderful", "wonderful"],
-    fallbackChoices: ["Wonderful", "Ready", "Glad", "Now"],
+    acceptedAnswers: ["Great", "great"],
+    fallbackChoices: ["Great", "Ready", "Glad", "Now"],
   },
   speakTarget: {
-    baseCue: { de: "Morgen um sieben? Wunderbar!" },
-    targetPhrase: "Tomorrow at seven? Wonderful!",
+    baseCue: { de: "Morgen um sieben? Großartig!" },
+    targetPhrase: "Tomorrow at seven? Great!",
     language: "en-US",
     passingThreshold: 0.8,
   },
   sceneCaption: { de: "Beim Planen nimmt Bright die Uhrzeit und macht daraus Vorfreude." },
   trophyWord: {
-    word: "wonderful",
-    meaning: { de: "wunderbar" },
-    example: "Tomorrow at seven? Wonderful!",
-    whyThisWord: { de: "Wonderful ist Brights warme Zusage für einen einfachen Plan." },
+    word: "great",
+    meaning: { de: "großartig" },
+    example: "Tomorrow at seven? Great!",
+    whyThisWord: { de: "Great ist Brights kurze, natürliche Zusage für einen einfachen Plan." },
   },
   placeholderMedia: {
     type: "video",
@@ -1766,7 +1766,7 @@ const brightLesson009: GuidedLessonVibeVariant = {
     genre: "sunny indie pop",
     mood: "forward and delighted",
   },
-  visualNotes: "Golden calendar highlight, light bloom on Wonderful, buoyant confirmation state.",
+  visualNotes: "Golden calendar highlight, light bloom on Great, buoyant confirmation state.",
 }
 
 const brightLesson010: GuidedLessonVibeVariant = {
@@ -16878,19 +16878,19 @@ const brightItalianP3Lesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Scusi, a destra o a sinistra?',
-    baseText: { de: 'Entschuldigung, nach rechts oder nach links?' },
+    baseText: { de: 'Entschuldigung, nach rechts oder nach links?', en: 'Excuse me, right or left?' },
   },
-  meaning: { de: 'Eine kurze Richtungsfrage an einen Passanten beim Navigieren.' },
+  meaning: { de: 'Eine kurze Richtungsfrage an einen Passanten beim Navigieren.', en: 'A short direction question to a passerby while navigating.' },
   chunks: [
-    { id: 'scusi', targetText: 'Scusi,', baseText: { de: 'Entschuldigung,' } },
-    { id: 'a-destra', targetText: 'a destra', baseText: { de: 'nach rechts' } },
-    { id: 'o-a-sinistra', targetText: 'o a sinistra?', baseText: { de: 'oder nach links?' } },
+    { id: 'scusi', targetText: 'Scusi,', baseText: { de: 'Entschuldigung,', en: 'Excuse me,' } },
+    { id: 'a-destra', targetText: 'a destra', baseText: { de: 'nach rechts', en: 'to the right' } },
+    { id: 'o-a-sinistra', targetText: 'o a sinistra?', baseText: { de: 'oder nach links?', en: 'or to the left?' } },
   ],
   lessonItems: [
-    { id: 'destra', targetText: 'destra', baseText: { de: 'rechts' }, acceptedAnswers: ['destra', 'Destra'] },
-    { id: 'sinistra', targetText: 'sinistra', baseText: { de: 'links' }, acceptedAnswers: ['sinistra', 'Sinistra'] },
-    { id: 'a', targetText: 'a', baseText: { de: 'nach (Richtung)' }, acceptedAnswers: ['a', 'A'] },
-    { id: 'dritto', targetText: 'dritto', baseText: { de: 'geradeaus' }, acceptedAnswers: ['dritto', 'Dritto'] },
+    { id: 'destra', targetText: 'destra', baseText: { de: 'rechts', en: 'right' }, acceptedAnswers: ['destra', 'Destra'] },
+    { id: 'sinistra', targetText: 'sinistra', baseText: { de: 'links', en: 'left' }, acceptedAnswers: ['sinistra', 'Sinistra'] },
+    { id: 'a', targetText: 'a', baseText: { de: 'nach (Richtung)', en: 'to (direction)' }, acceptedAnswers: ['a', 'A'] },
+    { id: 'dritto', targetText: 'dritto', baseText: { de: 'geradeaus', en: 'straight ahead' }, acceptedAnswers: ['dritto', 'Dritto'] },
   ],
   build: {
     targetText: 'Scusi, a destra o a sinistra?',
@@ -16904,23 +16904,23 @@ const brightItalianP3Lesson001: GuidedLessonVibeVariant = {
     fallbackChoices: ['destra', 'sinistra', 'dritto', 'indietro'],
   },
   speakTarget: {
-    baseCue: { de: 'Entschuldigung, nach rechts oder nach links?' },
+    baseCue: { de: 'Entschuldigung, nach rechts oder nach links?', en: 'Excuse me, right or left?' },
     targetPhrase: 'Scusi, a destra o a sinistra?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['scusi', 'destra', 'sinistra'],
     optionalTokens: ['a', 'o', 'per', 'favore'],
   },
-  sceneCaption: { de: 'An einer Kreuzung sprichst du jemanden kurz an und prüfst, ob es rechts oder links weitergeht.' },
+  sceneCaption: { de: 'An einer Kreuzung sprichst du jemanden kurz an und prüfst, ob es rechts oder links weitergeht.', en: 'At an intersection, you briefly stop someone and check whether you go right or left.' },
   trophyWord: {
     word: 'destra',
-    meaning: { de: 'rechts' },
+    meaning: { de: 'rechts', en: 'right' },
     example: 'A destra al semaforo.',
-    whyThisWord: { de: 'Destra ist auf A1 das Richtungswort für "rechts" und tritt als Paar mit "sinistra" auf — die zwei Wörter prägen jede italienische Wegbeschreibung.' },
+    whyThisWord: { de: 'Destra ist auf A1 das Richtungswort für "rechts" und tritt als Paar mit "sinistra" auf — die zwei Wörter prägen jede italienische Wegbeschreibung.', en: "Destra is the A1 word for 'right' and always pairs with 'sinistra' (left) — the two words anchor every Italian direction-giving exchange. Italian uses 'a destra / a sinistra' (with preposition 'a'), where English just says 'right / left'." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kreuzung am Vormittag, kurze Geste in beide Richtungen, ruhige Klärung.' },
+    caption: { de: 'Kreuzung am Vormittag, kurze Geste in beide Richtungen, ruhige Klärung.', en: 'An intersection in the morning, a quick gesture in both directions, a calm check.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -16933,19 +16933,19 @@ const brightItalianP3Lesson002: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Scusi, è lontano?',
-    baseText: { de: 'Entschuldigung, ist es weit?' },
+    baseText: { de: 'Entschuldigung, ist es weit?', en: 'Excuse me, is it far?' },
   },
-  meaning: { de: 'Eine knappe Frage, wie weit das Ziel von hier entfernt ist.' },
+  meaning: { de: 'Eine knappe Frage, wie weit das Ziel von hier entfernt ist.', en: 'A short question about how far the destination is from here.' },
   chunks: [
-    { id: 'scusi', targetText: 'Scusi,', baseText: { de: 'Entschuldigung,' } },
-    { id: 'e', targetText: 'è', baseText: { de: 'ist es' } },
-    { id: 'lontano', targetText: 'lontano?', baseText: { de: 'weit?' } },
+    { id: 'scusi', targetText: 'Scusi,', baseText: { de: 'Entschuldigung,', en: 'Excuse me,' } },
+    { id: 'e', targetText: 'è', baseText: { de: 'ist es', en: 'is it' } },
+    { id: 'lontano', targetText: 'lontano?', baseText: { de: 'weit?', en: 'far?' } },
   ],
   lessonItems: [
-    { id: 'lontano', targetText: 'lontano', baseText: { de: 'weit' }, acceptedAnswers: ['lontano', 'Lontano'] },
-    { id: 'vicino', targetText: 'vicino', baseText: { de: 'nah' }, acceptedAnswers: ['vicino', 'Vicino'] },
-    { id: 'minuti', targetText: 'minuti', baseText: { de: 'Minuten' }, acceptedAnswers: ['minuti', 'Minuti'] },
-    { id: 'piedi-noun', targetText: 'piedi', baseText: { de: 'Füße (in "a piedi")' }, acceptedAnswers: ['piedi', 'Piedi'] },
+    { id: 'lontano', targetText: 'lontano', baseText: { de: 'weit', en: 'far' }, acceptedAnswers: ['lontano', 'Lontano'] },
+    { id: 'vicino', targetText: 'vicino', baseText: { de: 'nah', en: 'near' }, acceptedAnswers: ['vicino', 'Vicino'] },
+    { id: 'minuti', targetText: 'minuti', baseText: { de: 'Minuten', en: 'minutes' }, acceptedAnswers: ['minuti', 'Minuti'] },
+    { id: 'piedi-noun', targetText: 'piedi', baseText: { de: 'Füße (in "a piedi")', en: 'feet (in "a piedi" = on foot)' }, acceptedAnswers: ['piedi', 'Piedi'] },
   ],
   build: {
     targetText: 'Scusi, è lontano?',
@@ -16959,23 +16959,23 @@ const brightItalianP3Lesson002: GuidedLessonVibeVariant = {
     fallbackChoices: ['lontano', 'vicino', 'aperto', 'dietro'],
   },
   speakTarget: {
-    baseCue: { de: 'Entschuldigung, ist es weit?' },
+    baseCue: { de: 'Entschuldigung, ist es weit?', en: 'Excuse me, is it far?' },
     targetPhrase: 'Scusi, è lontano?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['scusi', 'lontano'],
     optionalTokens: ['è', 'molto', 'da', 'qui'],
   },
-  sceneCaption: { de: 'Mitten auf dem Gehweg klärst du kurz, wie weit das Ziel noch entfernt ist.' },
+  sceneCaption: { de: 'Mitten auf dem Gehweg klärst du kurz, wie weit das Ziel noch entfernt ist.', en: 'Mid-sidewalk, you check briefly how far the destination still is.' },
   trophyWord: {
     word: 'lontano',
-    meaning: { de: 'weit / weit entfernt' },
+    meaning: { de: 'weit / weit entfernt', en: 'far / far away' },
     example: 'È lontano da qui?',
-    whyThisWord: { de: 'Lontano ist auf A1 das kurze Wort für jede Entfernungsfrage und steht im Paar mit "vicino" — die zwei Adjektive ordnen jede italienische Wegfrage.' },
+    whyThisWord: { de: 'Lontano ist auf A1 das kurze Wort für jede Entfernungsfrage und steht im Paar mit "vicino" — die zwei Adjektive ordnen jede italienische Wegfrage.', en: "Lontano is the short A1 word for any distance question and pairs with 'vicino' (near). Italian asks 'È lontano?' directly — shorter and simpler than English 'How far is it?'. The adjective agrees: lontano, lontana, lontani, lontane." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Gehweg am Vormittag, Blick in die Ferne, ruhige Verständigungsgeste.' },
+    caption: { de: 'Gehweg am Vormittag, Blick in die Ferne, ruhige Verständigungsgeste.', en: 'A morning sidewalk, a glance into the distance, a calm clarifying gesture.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -16988,18 +16988,18 @@ const brightItalianP3Lesson003: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'È aperto?',
-    baseText: { de: 'Ist es geöffnet?' },
+    baseText: { de: 'Ist es geöffnet?', en: 'Is it open?' },
   },
-  meaning: { de: 'Eine knappe Frage vor dem Hineingehen, ob das Lokal gerade offen ist.' },
+  meaning: { de: 'Eine knappe Frage vor dem Hineingehen, ob das Lokal gerade offen ist.', en: 'A short question before stepping in: is the place open right now?' },
   chunks: [
-    { id: 'e', targetText: 'È', baseText: { de: 'Ist es' } },
-    { id: 'aperto', targetText: 'aperto?', baseText: { de: 'geöffnet?' } },
+    { id: 'e', targetText: 'È', baseText: { de: 'Ist es', en: 'Is it' } },
+    { id: 'aperto', targetText: 'aperto?', baseText: { de: 'geöffnet?', en: 'open?' } },
   ],
   lessonItems: [
-    { id: 'aperto', targetText: 'aperto', baseText: { de: 'geöffnet / offen' }, acceptedAnswers: ['aperto', 'Aperto'] },
-    { id: 'chiuso', targetText: 'chiuso', baseText: { de: 'geschlossen / zu' }, acceptedAnswers: ['chiuso', 'Chiuso'] },
-    { id: 'oggi', targetText: 'oggi', baseText: { de: 'heute' }, acceptedAnswers: ['oggi', 'Oggi'] },
-    { id: 'ancora', targetText: 'ancora', baseText: { de: 'noch' }, acceptedAnswers: ['ancora', 'Ancora'] },
+    { id: 'aperto', targetText: 'aperto', baseText: { de: 'geöffnet / offen', en: 'open' }, acceptedAnswers: ['aperto', 'Aperto'] },
+    { id: 'chiuso', targetText: 'chiuso', baseText: { de: 'geschlossen / zu', en: 'closed' }, acceptedAnswers: ['chiuso', 'Chiuso'] },
+    { id: 'oggi', targetText: 'oggi', baseText: { de: 'heute', en: 'today' }, acceptedAnswers: ['oggi', 'Oggi'] },
+    { id: 'ancora', targetText: 'ancora', baseText: { de: 'noch', en: 'still' }, acceptedAnswers: ['ancora', 'Ancora'] },
   ],
   build: {
     targetText: 'È aperto?',
@@ -17013,23 +17013,23 @@ const brightItalianP3Lesson003: GuidedLessonVibeVariant = {
     fallbackChoices: ['aperto', 'chiuso', 'tardi', 'presto'],
   },
   speakTarget: {
-    baseCue: { de: 'Ist es geöffnet?' },
+    baseCue: { de: 'Ist es geöffnet?', en: 'Is it open?' },
     targetPhrase: 'È aperto?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['aperto'],
     optionalTokens: ['è', 'orario', 'ancora', 'scusi'],
   },
-  sceneCaption: { de: 'Vor einem kleinen Laden hebst du kurz den Blick zur Tür und prüfst, ob jetzt geöffnet ist.' },
+  sceneCaption: { de: 'Vor einem kleinen Laden hebst du kurz den Blick zur Tür und prüfst, ob jetzt geöffnet ist.', en: 'In front of a small shop, you glance briefly at the door and check whether it is open.' },
   trophyWord: {
     word: 'aperto',
-    meaning: { de: 'geöffnet / offen' },
+    meaning: { de: 'geöffnet / offen', en: 'open' },
     example: 'Il bar è aperto.',
-    whyThisWord: { de: 'Aperto ist auf A1 das Zustandswort vor jedem Ladenbesuch und steht im Paar mit "chiuso". Im Italienischen wird der Zustand mit "è aperto" beschrieben — kürzer als die deutsche Konstruktion mit "haben".' },
+    whyThisWord: { de: 'Aperto ist auf A1 das Zustandswort vor jedem Ladenbesuch und steht im Paar mit "chiuso". Im Italienischen wird der Zustand mit "è aperto" beschrieben — kürzer als die deutsche Konstruktion mit "haben".', en: "Aperto is the A1 state-word before any shop visit and pairs with 'chiuso' (closed). Italian uses 'è aperto' (it is open) where English also uses 'is open' — adjective with the copula, not a verb. Agrees: aperto, aperta, aperti, aperte." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Ladentür mit offenem Schild, sanftes Vormittagslicht, ruhiger Blick darauf.' },
+    caption: { de: 'Ladentür mit offenem Schild, sanftes Vormittagslicht, ruhiger Blick darauf.', en: 'A shop door with an open sign, soft morning light, a calm glance at it.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -17042,19 +17042,19 @@ const brightItalianP3Lesson004: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Quale autobus va in centro?',
-    baseText: { de: 'Welcher Bus fährt ins Zentrum?' },
+    baseText: { de: 'Welcher Bus fährt ins Zentrum?', en: 'Which bus goes downtown?' },
   },
-  meaning: { de: 'Eine klare Routenfrage an der Haltestelle: welcher Bus passt zum Ziel?' },
+  meaning: { de: 'Eine klare Routenfrage an der Haltestelle: welcher Bus passt zum Ziel?', en: 'A clear route question at the stop: which bus fits the destination?' },
   chunks: [
-    { id: 'quale-autobus', targetText: 'Quale autobus', baseText: { de: 'Welcher Bus' } },
-    { id: 'va', targetText: 'va', baseText: { de: 'fährt' } },
-    { id: 'in-centro', targetText: 'in centro?', baseText: { de: 'ins Zentrum?' } },
+    { id: 'quale-autobus', targetText: 'Quale autobus', baseText: { de: 'Welcher Bus', en: 'Which bus' } },
+    { id: 'va', targetText: 'va', baseText: { de: 'fährt', en: 'goes' } },
+    { id: 'in-centro', targetText: 'in centro?', baseText: { de: 'ins Zentrum?', en: 'downtown?' } },
   ],
   lessonItems: [
-    { id: 'autobus', targetText: 'autobus', baseText: { de: 'Bus' }, acceptedAnswers: ['autobus', 'Autobus'] },
-    { id: 'quale', targetText: 'quale', baseText: { de: 'welcher / welche' }, acceptedAnswers: ['quale', 'Quale'] },
-    { id: 'va', targetText: 'va', baseText: { de: 'fährt / geht' }, acceptedAnswers: ['va', 'Va'] },
-    { id: 'centro', targetText: 'centro', baseText: { de: 'Zentrum' }, acceptedAnswers: ['centro', 'Centro'] },
+    { id: 'autobus', targetText: 'autobus', baseText: { de: 'Bus', en: 'bus (city bus)' }, acceptedAnswers: ['autobus', 'Autobus'] },
+    { id: 'quale', targetText: 'quale', baseText: { de: 'welcher / welche', en: 'which' }, acceptedAnswers: ['quale', 'Quale'] },
+    { id: 'va', targetText: 'va', baseText: { de: 'fährt / geht', en: 'goes' }, acceptedAnswers: ['va', 'Va'] },
+    { id: 'centro', targetText: 'centro', baseText: { de: 'Zentrum', en: 'downtown / city center' }, acceptedAnswers: ['centro', 'Centro'] },
   ],
   build: {
     targetText: 'Quale autobus va in centro?',
@@ -17068,23 +17068,23 @@ const brightItalianP3Lesson004: GuidedLessonVibeVariant = {
     fallbackChoices: ['autobus', 'treno', 'tram', 'taxi'],
   },
   speakTarget: {
-    baseCue: { de: 'Welcher Bus fährt ins Zentrum?' },
+    baseCue: { de: 'Welcher Bus fährt ins Zentrum?', en: 'Which bus goes downtown?' },
     targetPhrase: 'Quale autobus va in centro?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['quale', 'autobus', 'centro'],
     optionalTokens: ['va', 'in', 'per', 'favore'],
   },
-  sceneCaption: { de: 'An der Haltestelle fragst du jemanden ruhig nach dem richtigen Bus zur Stadtmitte.' },
+  sceneCaption: { de: 'An der Haltestelle fragst du jemanden ruhig nach dem richtigen Bus zur Stadtmitte.', en: 'At the bus stop, you calmly ask someone for the right bus into town.' },
   trophyWord: {
     word: 'autobus',
-    meaning: { de: 'Bus (Stadtbus)' },
+    meaning: { de: 'Bus (Stadtbus)', en: 'bus (city bus)' },
     example: 'Quale autobus va al museo?',
-    whyThisWord: { de: 'Autobus ist im Italienischen das Standardwort für "Bus" und kongruiert im Plural nicht (gli autobus). Vorsicht: das deutsche "Autobus" ist im Italienischen wirklich "autobus", aber im Alltag oft kürzer "bus".' },
+    whyThisWord: { de: 'Autobus ist im Italienischen das Standardwort für "Bus" und kongruiert im Plural nicht (gli autobus). Vorsicht: das deutsche "Autobus" ist im Italienischen wirklich "autobus", aber im Alltag oft kürzer "bus".', en: "Autobus is the standard Italian word for 'bus'. Masculine, but unusually it does not change in the plural: l'autobus / gli autobus. Spoken Italian often shortens it to just 'bus'. Note: 'in centro' = 'downtown / in the city center' uses 'in' without an article." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Bushaltestelle mit Linien-Schild, kurze Frage Richtung wartender Passant.' },
+    caption: { de: 'Bushaltestelle mit Linien-Schild, kurze Frage Richtung wartender Passant.', en: 'A bus stop with a route sign, a quick question toward a waiting passenger.' },
   },
   songSeed: {
     genre: 'upbeat acoustic',
@@ -17097,19 +17097,19 @@ const brightItalianP3Lesson005: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Scusi, è la prossima fermata?',
-    baseText: { de: 'Entschuldigung, ist das die nächste Haltestelle?' },
+    baseText: { de: 'Entschuldigung, ist das die nächste Haltestelle?', en: 'Excuse me, is this the next stop?' },
   },
-  meaning: { de: 'Eine kurze Vergewisserung im fahrenden Bus oder Tram vor dem Aussteigen.' },
+  meaning: { de: 'Eine kurze Vergewisserung im fahrenden Bus oder Tram vor dem Aussteigen.', en: 'A short check on a moving bus or tram before getting off.' },
   chunks: [
-    { id: 'scusi', targetText: 'Scusi,', baseText: { de: 'Entschuldigung,' } },
-    { id: 'e-la-prossima', targetText: 'è la prossima', baseText: { de: 'ist das die nächste' } },
-    { id: 'fermata', targetText: 'fermata?', baseText: { de: 'Haltestelle?' } },
+    { id: 'scusi', targetText: 'Scusi,', baseText: { de: 'Entschuldigung,', en: 'Excuse me,' } },
+    { id: 'e-la-prossima', targetText: 'è la prossima', baseText: { de: 'ist das die nächste', en: 'is this the next' } },
+    { id: 'fermata', targetText: 'fermata?', baseText: { de: 'Haltestelle?', en: 'stop?' } },
   ],
   lessonItems: [
-    { id: 'fermata', targetText: 'fermata', baseText: { de: 'Haltestelle' }, acceptedAnswers: ['fermata', 'Fermata'] },
-    { id: 'prossima', targetText: 'prossima', baseText: { de: 'nächste' }, acceptedAnswers: ['prossima', 'Prossima'] },
-    { id: 'qui', targetText: 'qui', baseText: { de: 'hier' }, acceptedAnswers: ['qui', 'Qui'] },
-    { id: 'scendo', targetText: 'scendo', baseText: { de: 'ich steige aus' }, acceptedAnswers: ['scendo', 'Scendo'] },
+    { id: 'fermata', targetText: 'fermata', baseText: { de: 'Haltestelle', en: 'stop (bus/tram)' }, acceptedAnswers: ['fermata', 'Fermata'] },
+    { id: 'prossima', targetText: 'prossima', baseText: { de: 'nächste', en: 'next (feminine)' }, acceptedAnswers: ['prossima', 'Prossima'] },
+    { id: 'qui', targetText: 'qui', baseText: { de: 'hier', en: 'here' }, acceptedAnswers: ['qui', 'Qui'] },
+    { id: 'scendo', targetText: 'scendo', baseText: { de: 'ich steige aus', en: 'I get off' }, acceptedAnswers: ['scendo', 'Scendo'] },
   ],
   build: {
     targetText: 'Scusi, è la prossima fermata?',
@@ -17123,23 +17123,23 @@ const brightItalianP3Lesson005: GuidedLessonVibeVariant = {
     fallbackChoices: ['fermata', 'stazione', 'uscita', 'strada'],
   },
   speakTarget: {
-    baseCue: { de: 'Entschuldigung, ist das die nächste Haltestelle?' },
+    baseCue: { de: 'Entschuldigung, ist das die nächste Haltestelle?', en: 'Excuse me, is this the next stop?' },
     targetPhrase: 'Scusi, è la prossima fermata?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['scusi', 'prossima', 'fermata'],
     optionalTokens: ['è', 'la', 'per', 'favore'],
   },
-  sceneCaption: { de: 'Im fahrenden Bus drehst du dich kurz zum Nachbarn und vergewisserst dich, dass die nächste Haltestelle die richtige ist.' },
+  sceneCaption: { de: 'Im fahrenden Bus drehst du dich kurz zum Nachbarn und vergewisserst dich, dass die nächste Haltestelle die richtige ist.', en: 'On the moving bus, you turn briefly to the person next to you and check that the next stop is yours.' },
   trophyWord: {
     word: 'fermata',
-    meaning: { de: 'Haltestelle' },
+    meaning: { de: 'Haltestelle', en: 'stop (bus/tram)' },
     example: 'La prossima fermata è la mia.',
-    whyThisWord: { de: 'Fermata ist auf A1 das Wort für jede Bus- oder Tramhaltestelle. Plural ist regelmäßig "fermate". Verwandt mit "fermare" (anhalten) — leicht zu merken über die Bewegung.' },
+    whyThisWord: { de: 'Fermata ist auf A1 das Wort für jede Bus- oder Tramhaltestelle. Plural ist regelmäßig "fermate". Verwandt mit "fermare" (anhalten) — leicht zu merken über die Bewegung.', en: "Fermata is the A1 word for any bus or tram stop. Feminine: la fermata, plural le fermate. It comes from 'fermare' (to stop) — the connection to stopping makes it easy to remember. Different from 'stazione' (train station)." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Fenster im fahrenden Bus, Haltestellen-Anzeige leuchtet auf, ruhige Vergewisserung.' },
+    caption: { de: 'Fenster im fahrenden Bus, Haltestellen-Anzeige leuchtet auf, ruhige Vergewisserung.', en: 'A window on a moving bus, the next-stop display lighting up, a calm double-check.' },
   },
   songSeed: {
     genre: 'soft acoustic',
@@ -17152,18 +17152,18 @@ const brightItalianP3Lesson006: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Un biglietto, per favore.',
-    baseText: { de: 'Eine Fahrkarte, bitte.' },
+    baseText: { de: 'Eine Fahrkarte, bitte.', en: 'A ticket, please.' },
   },
-  meaning: { de: 'Die knappe Standard-Bestellung am Fahrkartenschalter oder Automaten.' },
+  meaning: { de: 'Die knappe Standard-Bestellung am Fahrkartenschalter oder Automaten.', en: 'The short standard request at the ticket window or machine.' },
   chunks: [
-    { id: 'un-biglietto', targetText: 'Un biglietto,', baseText: { de: 'Eine Fahrkarte,' } },
-    { id: 'per-favore', targetText: 'per favore.', baseText: { de: 'bitte.' } },
+    { id: 'un-biglietto', targetText: 'Un biglietto,', baseText: { de: 'Eine Fahrkarte,', en: 'A ticket,' } },
+    { id: 'per-favore', targetText: 'per favore.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'biglietto', targetText: 'biglietto', baseText: { de: 'Fahrkarte / Ticket' }, acceptedAnswers: ['biglietto', 'Biglietto'] },
-    { id: 'un', targetText: 'un', baseText: { de: 'eine / ein' }, acceptedAnswers: ['un', 'Un'] },
-    { id: 'andata', targetText: 'andata', baseText: { de: 'Hinfahrt' }, acceptedAnswers: ['andata', 'Andata'] },
-    { id: 'ritorno', targetText: 'ritorno', baseText: { de: 'Rückfahrt' }, acceptedAnswers: ['ritorno', 'Ritorno'] },
+    { id: 'biglietto', targetText: 'biglietto', baseText: { de: 'Fahrkarte / Ticket', en: 'ticket' }, acceptedAnswers: ['biglietto', 'Biglietto'] },
+    { id: 'un', targetText: 'un', baseText: { de: 'eine / ein', en: 'a / one (masculine)' }, acceptedAnswers: ['un', 'Un'] },
+    { id: 'andata', targetText: 'andata', baseText: { de: 'Hinfahrt', en: 'one-way / outbound' }, acceptedAnswers: ['andata', 'Andata'] },
+    { id: 'ritorno', targetText: 'ritorno', baseText: { de: 'Rückfahrt', en: 'return' }, acceptedAnswers: ['ritorno', 'Ritorno'] },
   ],
   build: {
     targetText: 'Un biglietto, per favore.',
@@ -17177,23 +17177,23 @@ const brightItalianP3Lesson006: GuidedLessonVibeVariant = {
     fallbackChoices: ['biglietto', 'tessera', 'modulo', 'orario'],
   },
   speakTarget: {
-    baseCue: { de: 'Eine Fahrkarte, bitte.' },
+    baseCue: { de: 'Eine Fahrkarte, bitte.', en: 'A ticket, please.' },
     targetPhrase: 'Un biglietto, per favore.',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['biglietto', 'per', 'favore'],
     optionalTokens: ['un', 'andata', 'ritorno', 'grazie'],
   },
-  sceneCaption: { de: 'Am Fahrkartenschalter klingt die Bestellung kurz, ruhig und klar.' },
+  sceneCaption: { de: 'Am Fahrkartenschalter klingt die Bestellung kurz, ruhig und klar.', en: 'At the ticket window, the order sounds short, calm, and clear.' },
   trophyWord: {
     word: 'biglietto',
-    meaning: { de: 'Fahrkarte / Ticket' },
+    meaning: { de: 'Fahrkarte / Ticket', en: 'ticket' },
     example: 'Un biglietto di andata e ritorno.',
-    whyThisWord: { de: 'Biglietto ist auf A1 das Wort für jede Fahrkarte — Zug, Bus, Tram, Museum. Plural "biglietti" am Automaten und Schalter sehr häufig.' },
+    whyThisWord: { de: 'Biglietto ist auf A1 das Wort für jede Fahrkarte — Zug, Bus, Tram, Museum. Plural "biglietti" am Automaten und Schalter sehr häufig.', en: "Biglietto is the A1 word for any ticket — train, bus, tram, museum. Masculine: il biglietto. 'Andata' = one-way, 'andata e ritorno' = round-trip. Note: Italian 'biglietto' looks like English 'billet' (a small note) but always means a transit/admission ticket here." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Schalter-Detail, Fahrkarte gleitet über den Tresen, ruhige Zahlung.' },
+    caption: { de: 'Schalter-Detail, Fahrkarte gleitet über den Tresen, ruhige Zahlung.', en: 'A ticket-window close-up, a ticket sliding across the counter, a calm payment.' },
   },
   songSeed: {
     genre: 'upbeat acoustic',
@@ -17206,18 +17206,18 @@ const brightItalianP3Lesson007: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'A che ora chiude?',
-    baseText: { de: 'Um wie viel Uhr schließt es?' },
+    baseText: { de: 'Um wie viel Uhr schließt es?', en: 'What time does it close?' },
   },
-  meaning: { de: 'Eine Frage nach der Schließzeit, um den Besuch noch zu schaffen.' },
+  meaning: { de: 'Eine Frage nach der Schließzeit, um den Besuch noch zu schaffen.', en: 'A question about closing time, to fit the visit in.' },
   chunks: [
-    { id: 'a-che-ora', targetText: 'A che ora', baseText: { de: 'Um wie viel Uhr' } },
-    { id: 'chiude', targetText: 'chiude?', baseText: { de: 'schließt es?' } },
+    { id: 'a-che-ora', targetText: 'A che ora', baseText: { de: 'Um wie viel Uhr', en: 'What time' } },
+    { id: 'chiude', targetText: 'chiude?', baseText: { de: 'schließt es?', en: 'does it close?' } },
   ],
   lessonItems: [
-    { id: 'chiude', targetText: 'chiude', baseText: { de: 'schließt (3. Pers. Sg.)' }, acceptedAnswers: ['chiude', 'Chiude'] },
-    { id: 'oggi', targetText: 'oggi', baseText: { de: 'heute' }, acceptedAnswers: ['oggi', 'Oggi'] },
-    { id: 'stasera', targetText: 'stasera', baseText: { de: 'heute Abend' }, acceptedAnswers: ['stasera', 'Stasera'] },
-    { id: 'orario', targetText: 'orario', baseText: { de: 'Öffnungszeit' }, acceptedAnswers: ['orario', 'Orario'] },
+    { id: 'chiude', targetText: 'chiude', baseText: { de: 'schließt (3. Pers. Sg.)', en: 'closes (3rd person sg.)' }, acceptedAnswers: ['chiude', 'Chiude'] },
+    { id: 'oggi', targetText: 'oggi', baseText: { de: 'heute', en: 'today' }, acceptedAnswers: ['oggi', 'Oggi'] },
+    { id: 'stasera', targetText: 'stasera', baseText: { de: 'heute Abend', en: 'this evening / tonight' }, acceptedAnswers: ['stasera', 'Stasera'] },
+    { id: 'orario', targetText: 'orario', baseText: { de: 'Öffnungszeit', en: 'opening hours / schedule' }, acceptedAnswers: ['orario', 'Orario'] },
   ],
   build: {
     targetText: 'A che ora chiude?',
@@ -17231,23 +17231,23 @@ const brightItalianP3Lesson007: GuidedLessonVibeVariant = {
     fallbackChoices: ['chiude', 'apre', 'parte', 'arriva'],
   },
   speakTarget: {
-    baseCue: { de: 'Um wie viel Uhr schließt es?' },
+    baseCue: { de: 'Um wie viel Uhr schließt es?', en: 'What time does it close?' },
     targetPhrase: 'A che ora chiude?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['ora', 'chiude'],
     optionalTokens: ['a', 'che', 'orario', 'stasera'],
   },
-  sceneCaption: { de: 'Vor dem Museum prüfst du kurz, wann zugemacht wird, bevor du eintrittst.' },
+  sceneCaption: { de: 'Vor dem Museum prüfst du kurz, wann zugemacht wird, bevor du eintrittst.', en: 'Outside the museum, you briefly check when it closes before going in.' },
   trophyWord: {
     word: 'chiude',
-    meaning: { de: 'schließt (3. Person Singular)' },
+    meaning: { de: 'schließt (3. Person Singular)', en: 'closes (3rd person sg.)' },
     example: 'Il museo chiude alle sei.',
-    whyThisWord: { de: 'Chiude ist die 3.-Person-Form von "chiudere" (schließen) und steht im Paar mit "apre". Vor jedem späten Besuch das zentrale Wort.' },
+    whyThisWord: { de: 'Chiude ist die 3.-Person-Form von "chiudere" (schließen) und steht im Paar mit "apre". Vor jedem späten Besuch das zentrale Wort.', en: "Chiude is the 3rd-person form of 'chiudere' (to close) and pairs with 'apre' (opens). Italian asks 'A che ora chiude?' ('at what hour does it close?') — structurally simpler than English's 'What time does it close?'" },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Museums-Tafel mit Öffnungszeiten, später Nachmittag, ruhiger Blick auf die Uhr.' },
+    caption: { de: 'Museums-Tafel mit Öffnungszeiten, später Nachmittag, ruhiger Blick auf die Uhr.', en: 'A museum sign with opening hours, late afternoon, a calm glance at the clock.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -17260,18 +17260,18 @@ const brightItalianP3Lesson008: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "Devo girare all'angolo?",
-    baseText: { de: 'Muss ich an der Ecke abbiegen?' },
+    baseText: { de: 'Muss ich an der Ecke abbiegen?', en: 'Do I turn at the corner?' },
   },
-  meaning: { de: 'Eine konkrete Frage am Gehweg, ob die Ecke der Abbiegepunkt ist.' },
+  meaning: { de: 'Eine konkrete Frage am Gehweg, ob die Ecke der Abbiegepunkt ist.', en: 'A concrete sidewalk question about whether the corner is the turning point.' },
   chunks: [
-    { id: 'devo-girare', targetText: 'Devo girare', baseText: { de: 'Muss ich abbiegen' } },
-    { id: 'all-angolo', targetText: "all'angolo?", baseText: { de: 'an der Ecke?' } },
+    { id: 'devo-girare', targetText: 'Devo girare', baseText: { de: 'Muss ich abbiegen', en: 'Do I turn' } },
+    { id: 'all-angolo', targetText: "all'angolo?", baseText: { de: 'an der Ecke?', en: 'at the corner?' } },
   ],
   lessonItems: [
-    { id: 'angolo', targetText: 'angolo', baseText: { de: 'Ecke' }, acceptedAnswers: ['angolo', 'Angolo'] },
-    { id: 'devo', targetText: 'devo', baseText: { de: 'ich muss' }, acceptedAnswers: ['devo', 'Devo'] },
-    { id: 'girare', targetText: 'girare', baseText: { de: 'abbiegen / drehen' }, acceptedAnswers: ['girare', 'Girare'] },
-    { id: 'dopo', targetText: 'dopo', baseText: { de: 'nach' }, acceptedAnswers: ['dopo', 'Dopo'] },
+    { id: 'angolo', targetText: 'angolo', baseText: { de: 'Ecke', en: 'corner' }, acceptedAnswers: ['angolo', 'Angolo'] },
+    { id: 'devo', targetText: 'devo', baseText: { de: 'ich muss', en: 'I have to / I must' }, acceptedAnswers: ['devo', 'Devo'] },
+    { id: 'girare', targetText: 'girare', baseText: { de: 'abbiegen / drehen', en: 'to turn' }, acceptedAnswers: ['girare', 'Girare'] },
+    { id: 'dopo', targetText: 'dopo', baseText: { de: 'nach', en: 'after' }, acceptedAnswers: ['dopo', 'Dopo'] },
   ],
   build: {
     targetText: "Devo girare all'angolo?",
@@ -17285,23 +17285,23 @@ const brightItalianP3Lesson008: GuidedLessonVibeVariant = {
     fallbackChoices: ['angolo', 'incrocio', 'semaforo', 'ponte'],
   },
   speakTarget: {
-    baseCue: { de: 'Muss ich an der Ecke abbiegen?' },
+    baseCue: { de: 'Muss ich an der Ecke abbiegen?', en: 'Do I turn at the corner?' },
     targetPhrase: "Devo girare all'angolo?",
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['devo', 'girare', 'angolo'],
     optionalTokens: ['incrocio', 'semaforo', 'scusi'],
   },
-  sceneCaption: { de: 'Am Gehweg-Eck zeigst du kurz und fragst, ob hier der Abbiegepunkt ist.' },
+  sceneCaption: { de: 'Am Gehweg-Eck zeigst du kurz und fragst, ob hier der Abbiegepunkt ist.', en: 'At a street corner, you point briefly and ask whether this is the turning point.' },
   trophyWord: {
     word: 'angolo',
-    meaning: { de: 'Ecke' },
+    meaning: { de: 'Ecke', en: 'corner' },
     example: "Subito dopo l'angolo, a destra.",
-    whyThisWord: { de: 'Angolo ist auf A1 das geometrische und straßenmäßige Wort für jede Ecke. Vor Vokalen verschmilzt der Artikel: "all\'angolo" (an der Ecke), "l\'angolo" (die Ecke).' },
+    whyThisWord: { de: 'Angolo ist auf A1 das geometrische und straßenmäßige Wort für jede Ecke. Vor Vokalen verschmilzt der Artikel: "all\'angolo" (an der Ecke), "l\'angolo" (die Ecke).', en: "Angolo is the A1 word for any corner — street, room, geometric. Masculine: l'angolo. The article elides before the vowel: l'angolo (the corner), all'angolo (at the corner, from a + l'angolo). Italian uses elision wherever the article meets a vowel." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Häuser-Ecke mit Pflastersteinen, sanftes Vormittagslicht, Fingerzeig zur Biegung.' },
+    caption: { de: 'Häuser-Ecke mit Pflastersteinen, sanftes Vormittagslicht, Fingerzeig zur Biegung.', en: 'A street corner with cobblestones, soft morning light, a finger pointing to the turn.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -17314,18 +17314,18 @@ const brightItalianP3Lesson009: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'A piedi o in taxi?',
-    baseText: { de: 'Zu Fuß oder mit dem Taxi?' },
+    baseText: { de: 'Zu Fuß oder mit dem Taxi?', en: 'On foot or by taxi?' },
   },
-  meaning: { de: 'Eine lockere Wahlfrage am Gehweg-Ende oder vor langem Weg.' },
+  meaning: { de: 'Eine lockere Wahlfrage am Gehweg-Ende oder vor langem Weg.', en: 'A casual choice question at the end of the sidewalk or before a long walk.' },
   chunks: [
-    { id: 'a-piedi', targetText: 'A piedi', baseText: { de: 'Zu Fuß' } },
-    { id: 'o-in-taxi', targetText: 'o in taxi?', baseText: { de: 'oder mit dem Taxi?' } },
+    { id: 'a-piedi', targetText: 'A piedi', baseText: { de: 'Zu Fuß', en: 'On foot' } },
+    { id: 'o-in-taxi', targetText: 'o in taxi?', baseText: { de: 'oder mit dem Taxi?', en: 'or by taxi?' } },
   ],
   lessonItems: [
-    { id: 'piedi', targetText: 'piedi', baseText: { de: 'Füße (in "a piedi")' }, acceptedAnswers: ['piedi', 'Piedi'] },
-    { id: 'taxi', targetText: 'taxi', baseText: { de: 'Taxi' }, acceptedAnswers: ['taxi', 'Taxi'] },
-    { id: 'a', targetText: 'a', baseText: { de: 'zu (in "a piedi")' }, acceptedAnswers: ['a', 'A'] },
-    { id: 'in', targetText: 'in', baseText: { de: 'mit (in "in taxi")' }, acceptedAnswers: ['in', 'In'] },
+    { id: 'piedi', targetText: 'piedi', baseText: { de: 'Füße (in "a piedi")', en: 'feet (in "a piedi" = on foot)' }, acceptedAnswers: ['piedi', 'Piedi'] },
+    { id: 'taxi', targetText: 'taxi', baseText: { de: 'Taxi', en: 'taxi' }, acceptedAnswers: ['taxi', 'Taxi'] },
+    { id: 'a', targetText: 'a', baseText: { de: 'zu (in "a piedi")', en: 'on (in "a piedi" = on foot)' }, acceptedAnswers: ['a', 'A'] },
+    { id: 'in', targetText: 'in', baseText: { de: 'mit (in "in taxi")', en: 'by (in "in taxi" = by taxi)' }, acceptedAnswers: ['in', 'In'] },
   ],
   build: {
     targetText: 'A piedi o in taxi?',
@@ -17339,23 +17339,23 @@ const brightItalianP3Lesson009: GuidedLessonVibeVariant = {
     fallbackChoices: ['piedi', 'casa', 'mano', 'volo'],
   },
   speakTarget: {
-    baseCue: { de: 'Zu Fuß oder mit dem Taxi?' },
+    baseCue: { de: 'Zu Fuß oder mit dem Taxi?', en: 'On foot or by taxi?' },
     targetPhrase: 'A piedi o in taxi?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['piedi', 'taxi'],
     optionalTokens: ['a', 'o', 'in', 'allora'],
   },
-  sceneCaption: { de: 'Am Gehsteig-Ende drehst du dich kurz zur Begleitung und entscheidet, wie es weitergeht.' },
+  sceneCaption: { de: 'Am Gehsteig-Ende drehst du dich kurz zur Begleitung und entscheidet, wie es weitergeht.', en: 'At the end of the sidewalk, you turn briefly to your companion and decide how to go on.' },
   trophyWord: {
     word: 'piedi',
-    meaning: { de: 'Füße (in der Wendung "a piedi" = zu Fuß)' },
+    meaning: { de: 'Füße (in der Wendung "a piedi" = zu Fuß)', en: 'feet (in the phrase "a piedi" = on foot)' },
     example: 'Vado a piedi.',
-    whyThisWord: { de: 'Piedi ist der Plural von "piede" (Fuß) und bildet die feste Wendung "a piedi" (zu Fuß) — eine der häufigsten italienischen Präpositionalphrasen für Fortbewegung. "In taxi" als Gegenstück ist ebenfalls A1.' },
+    whyThisWord: { de: 'Piedi ist der Plural von "piede" (Fuß) und bildet die feste Wendung "a piedi" (zu Fuß) — eine der häufigsten italienischen Präpositionalphrasen für Fortbewegung. "In taxi" als Gegenstück ist ebenfalls A1.', en: "Piedi is the plural of 'piede' (foot) and forms the set phrase 'a piedi' (on foot) — one of the most common Italian transport phrases. Italian uses 'a piedi' (on foot) but 'in taxi / in autobus' (by taxi / by bus) — different prepositions for human-powered vs. vehicle transport." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Gehsteig-Ende am Abend, Taxi am Bordstein bereit, ruhige Entscheidungsgeste.' },
+    caption: { de: 'Gehsteig-Ende am Abend, Taxi am Bordstein bereit, ruhige Entscheidungsgeste.', en: 'The end of the sidewalk in the evening, a taxi waiting at the curb, a calm decision gesture.' },
   },
   songSeed: {
     genre: 'upbeat acoustic',
@@ -17368,19 +17368,19 @@ const brightItalianP3Lesson010: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Ho perso la fermata. Mi può aiutare?',
-    baseText: { de: 'Ich habe die Haltestelle verpasst. Können Sie mir helfen?' },
+    baseText: { de: 'Ich habe die Haltestelle verpasst. Können Sie mir helfen?', en: 'I missed the stop. Could you help me?' },
   },
-  meaning: { de: 'Eine ruhige Bitte um Hilfe, nachdem die Haltestelle vorbei ist.' },
+  meaning: { de: 'Eine ruhige Bitte um Hilfe, nachdem die Haltestelle vorbei ist.', en: 'A calm request for help after the stop has gone past.' },
   chunks: [
-    { id: 'ho-perso', targetText: 'Ho perso', baseText: { de: 'Ich habe verpasst' } },
-    { id: 'la-fermata', targetText: 'la fermata.', baseText: { de: 'die Haltestelle.' } },
-    { id: 'mi-puo-aiutare', targetText: 'Mi può aiutare?', baseText: { de: 'Können Sie mir helfen?' } },
+    { id: 'ho-perso', targetText: 'Ho perso', baseText: { de: 'Ich habe verpasst', en: 'I missed' } },
+    { id: 'la-fermata', targetText: 'la fermata.', baseText: { de: 'die Haltestelle.', en: 'the stop.' } },
+    { id: 'mi-puo-aiutare', targetText: 'Mi può aiutare?', baseText: { de: 'Können Sie mir helfen?', en: 'Could you help me?' } },
   ],
   lessonItems: [
-    { id: 'perso', targetText: 'perso', baseText: { de: 'verpasst / verloren (Partizip)' }, acceptedAnswers: ['perso', 'Perso'] },
-    { id: 'ho', targetText: 'ho', baseText: { de: 'ich habe' }, acceptedAnswers: ['ho', 'Ho'] },
-    { id: 'mi-puo', targetText: 'mi può', baseText: { de: 'können Sie mir' }, acceptedAnswers: ['mi può', 'mi puo', 'Mi può', 'Mi puo'] },
-    { id: 'fermata-noun', targetText: 'la fermata', baseText: { de: 'die Haltestelle' }, acceptedAnswers: ['la fermata', 'La fermata'] },
+    { id: 'perso', targetText: 'perso', baseText: { de: 'verpasst / verloren (Partizip)', en: 'missed / lost (past participle)' }, acceptedAnswers: ['perso', 'Perso'] },
+    { id: 'ho', targetText: 'ho', baseText: { de: 'ich habe', en: 'I have' }, acceptedAnswers: ['ho', 'Ho'] },
+    { id: 'mi-puo', targetText: 'mi può', baseText: { de: 'können Sie mir', en: 'could you (for me)' }, acceptedAnswers: ['mi può', 'mi puo', 'Mi può', 'Mi puo'] },
+    { id: 'fermata-noun', targetText: 'la fermata', baseText: { de: 'die Haltestelle', en: 'the stop' }, acceptedAnswers: ['la fermata', 'La fermata'] },
   ],
   build: {
     targetText: 'Ho perso la fermata. Mi può aiutare?',
@@ -17394,23 +17394,23 @@ const brightItalianP3Lesson010: GuidedLessonVibeVariant = {
     fallbackChoices: ['perso', 'persa', 'preso', 'visto'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich habe die Haltestelle verpasst. Können Sie mir helfen?' },
+    baseCue: { de: 'Ich habe die Haltestelle verpasst. Können Sie mir helfen?', en: 'I missed the stop. Could you help me?' },
     targetPhrase: 'Ho perso la fermata. Mi può aiutare?',
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['ho', 'perso', 'fermata', 'aiutare'],
     optionalTokens: ['mi', 'può', 'la', 'scusi'],
   },
-  sceneCaption: { de: 'Du steigst zu spät aus, drehst dich ruhig um und bittest jemanden auf dem Bürgersteig um Hilfe.' },
+  sceneCaption: { de: 'Du steigst zu spät aus, drehst dich ruhig um und bittest jemanden auf dem Bürgersteig um Hilfe.', en: 'You get off late, turn calmly, and ask someone on the sidewalk for help.' },
   trophyWord: {
     word: 'perso',
-    meaning: { de: 'verpasst / verloren (Partizip von "perdere")' },
+    meaning: { de: 'verpasst / verloren (Partizip von "perdere")', en: 'missed / lost (past participle of "perdere")' },
     example: 'Ho perso la fermata, scusi.',
-    whyThisWord: { de: 'Perso ist das unregelmäßige Partizip von "perdere" und bildet mit "ho perso" das Standard-Perfekt für "ich habe verloren / verpasst". Achtung: bei weiblichen Subjekten als Adjektiv-Partizip in "Mi sono persa" — geschlechtskongruent.' },
+    whyThisWord: { de: 'Perso ist das unregelmäßige Partizip von "perdere" und bildet mit "ho perso" das Standard-Perfekt für "ich habe verloren / verpasst". Achtung: bei weiblichen Subjekten als Adjektiv-Partizip in "Mi sono persa" — geschlechtskongruent.', en: "Perso is the irregular past participle of 'perdere' (to lose / miss) and pairs with 'ho' to form the standard past tense: ho perso = 'I missed / I lost'. The Italian past is built like English present perfect: 'ho perso' = literally 'I have lost'." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Bürgersteig nach einer Haltestelle, Bus fährt im Hintergrund weiter, ruhige Hilfegeste.' },
+    caption: { de: 'Bürgersteig nach einer Haltestelle, Bus fährt im Hintergrund weiter, ruhige Hilfegeste.', en: 'A sidewalk past a bus stop, the bus moving on in the background, a calm gesture for help.' },
   },
   songSeed: {
     genre: 'soft acoustic',
@@ -55229,9 +55229,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-3-lesson-1-destra-sinistra',
       sequence: 1,
-      title: { de: 'Rechts oder links?' },
+      title: { de: 'Rechts oder links?', en: 'Right or left?' },
     },
-    title: { de: 'Rechts oder links?' },
+    title: { de: 'Rechts oder links?', en: 'Right or left?' },
     situation: {
       en: 'On the sidewalk, ask whether to turn right or left.',
       de: 'Auf dem Gehweg fragst du, ob es rechts oder links weitergeht.',
@@ -55243,8 +55243,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ist es weit?' },
-      situation: { de: 'Auf dem Gehweg fragst du, wie weit das Ziel ist.' },
+      title: { de: 'Ist es weit?', en: 'Is it far?' },
+      situation: { de: 'Auf dem Gehweg fragst du, wie weit das Ziel ist.', en: 'On the sidewalk, you ask how far the destination is.' },
     },
     vibeVariants: {
       bright: brightItalianP3Lesson001,
@@ -55262,9 +55262,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-3-lesson-2-lontano',
       sequence: 2,
-      title: { de: 'Ist es weit?' },
+      title: { de: 'Ist es weit?', en: 'Is it far?' },
     },
-    title: { de: 'Ist es weit?' },
+    title: { de: 'Ist es weit?', en: 'Is it far?' },
     situation: {
       en: 'On the sidewalk, ask how far the destination is.',
       de: 'Du fragst, wie weit das Ziel von hier ist.',
@@ -55276,8 +55276,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ist es geöffnet?' },
-      situation: { de: 'Vor dem Laden fragst du, ob jetzt geöffnet ist.' },
+      title: { de: 'Ist es geöffnet?', en: 'Is it open?' },
+      situation: { de: 'Vor dem Laden fragst du, ob jetzt geöffnet ist.', en: 'In front of the shop, you ask if it is open now.' },
     },
     vibeVariants: {
       bright: brightItalianP3Lesson002,
@@ -55295,9 +55295,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-3-lesson-3-aperto',
       sequence: 3,
-      title: { de: 'Ist es geöffnet?' },
+      title: { de: 'Ist es geöffnet?', en: 'Is it open?' },
     },
-    title: { de: 'Ist es geöffnet?' },
+    title: { de: 'Ist es geöffnet?', en: 'Is it open?' },
     situation: {
       en: 'In front of a shop, ask whether it is open.',
       de: 'Vor dem Laden fragst du, ob jetzt geöffnet ist.',
@@ -55309,8 +55309,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Welcher Bus?' },
-      situation: { de: 'An der Haltestelle fragst du nach der richtigen Linie.' },
+      title: { de: 'Welcher Bus?', en: 'Which bus?' },
+      situation: { de: 'An der Haltestelle fragst du nach der richtigen Linie.', en: 'At the bus stop, you ask for the right line.' },
     },
     vibeVariants: {
       bright: brightItalianP3Lesson003,
@@ -55328,9 +55328,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-3-lesson-4-autobus',
       sequence: 4,
-      title: { de: 'Welcher Bus?' },
+      title: { de: 'Welcher Bus?', en: 'Which bus?' },
     },
-    title: { de: 'Welcher Bus?' },
+    title: { de: 'Welcher Bus?', en: 'Which bus?' },
     situation: {
       en: 'At a bus stop, ask which bus goes downtown.',
       de: 'An der Haltestelle fragst du, welcher Bus ins Zentrum fährt.',
@@ -55342,8 +55342,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Die nächste Haltestelle' },
-      situation: { de: 'Im fahrenden Bus vergewisserst du dich über die nächste Haltestelle.' },
+      title: { de: 'Die nächste Haltestelle', en: 'The next stop' },
+      situation: { de: 'Im fahrenden Bus vergewisserst du dich über die nächste Haltestelle.', en: 'On the moving bus, you double-check about the next stop.' },
     },
     vibeVariants: {
       bright: brightItalianP3Lesson004,
@@ -55361,9 +55361,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-3-lesson-5-prossima-fermata',
       sequence: 5,
-      title: { de: 'Die nächste Haltestelle' },
+      title: { de: 'Die nächste Haltestelle', en: 'The next stop' },
     },
-    title: { de: 'Die nächste Haltestelle' },
+    title: { de: 'Die nächste Haltestelle', en: 'The next stop' },
     situation: {
       en: 'On a moving bus, confirm whether the next stop is yours.',
       de: 'Im fahrenden Bus vergewisserst du dich über die nächste Haltestelle.',
@@ -55375,8 +55375,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Eine Fahrkarte, bitte' },
-      situation: { de: 'Am Schalter kaufst du eine Fahrkarte.' },
+      title: { de: 'Eine Fahrkarte, bitte', en: 'A ticket, please' },
+      situation: { de: 'Am Schalter kaufst du eine Fahrkarte.', en: 'At the ticket window, you buy a ticket.' },
     },
     vibeVariants: {
       bright: brightItalianP3Lesson005,
@@ -55394,9 +55394,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-3-lesson-6-biglietto',
       sequence: 6,
-      title: { de: 'Eine Fahrkarte, bitte' },
+      title: { de: 'Eine Fahrkarte, bitte', en: 'A ticket, please' },
     },
-    title: { de: 'Eine Fahrkarte, bitte' },
+    title: { de: 'Eine Fahrkarte, bitte', en: 'A ticket, please' },
     situation: {
       en: 'At a ticket window, buy a simple ticket.',
       de: 'Am Schalter kaufst du eine einfache Fahrkarte.',
@@ -55408,8 +55408,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wann schließt es?' },
-      situation: { de: 'Vor dem Museum fragst du nach der Schließzeit.' },
+      title: { de: 'Wann schließt es?', en: 'What time does it close?' },
+      situation: { de: 'Vor dem Museum fragst du nach der Schließzeit.', en: 'Outside the museum, you ask about the closing time.' },
     },
     vibeVariants: {
       bright: brightItalianP3Lesson006,
@@ -55427,9 +55427,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-3-lesson-7-chiude',
       sequence: 7,
-      title: { de: 'Wann schließt es?' },
+      title: { de: 'Wann schließt es?', en: 'What time does it close?' },
     },
-    title: { de: 'Wann schließt es?' },
+    title: { de: 'Wann schließt es?', en: 'What time does it close?' },
     situation: {
       en: 'Outside a museum, ask the closing time.',
       de: 'Vor dem Museum fragst du nach der Schließzeit.',
@@ -55441,8 +55441,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'An der Ecke' },
-      situation: { de: 'Du fragst, ob die Ecke der Abbiegepunkt ist.' },
+      title: { de: 'An der Ecke', en: 'At the corner' },
+      situation: { de: 'Du fragst, ob die Ecke der Abbiegepunkt ist.', en: 'You ask whether the corner is the turning point.' },
     },
     vibeVariants: {
       bright: brightItalianP3Lesson007,
@@ -55460,9 +55460,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-3-lesson-8-angolo',
       sequence: 8,
-      title: { de: 'An der Ecke' },
+      title: { de: 'An der Ecke', en: 'At the corner' },
     },
-    title: { de: 'An der Ecke' },
+    title: { de: 'An der Ecke', en: 'At the corner' },
     situation: {
       en: 'On the sidewalk, ask whether to turn at the corner.',
       de: 'Du fragst, ob du an der Ecke abbiegen musst.',
@@ -55474,8 +55474,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Zu Fuß oder mit dem Taxi?' },
-      situation: { de: 'Du wählst zwischen Gehen und Taxi.' },
+      title: { de: 'Zu Fuß oder mit dem Taxi?', en: 'On foot or by taxi?' },
+      situation: { de: 'Du wählst zwischen Gehen und Taxi.', en: 'You choose between walking and taking a taxi.' },
     },
     vibeVariants: {
       bright: brightItalianP3Lesson008,
@@ -55493,9 +55493,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-3-lesson-9-piedi-o-taxi',
       sequence: 9,
-      title: { de: 'Zu Fuß oder mit dem Taxi?' },
+      title: { de: 'Zu Fuß oder mit dem Taxi?', en: 'On foot or by taxi?' },
     },
-    title: { de: 'Zu Fuß oder mit dem Taxi?' },
+    title: { de: 'Zu Fuß oder mit dem Taxi?', en: 'On foot or by taxi?' },
     situation: {
       en: 'On the sidewalk, choose between walking and a taxi.',
       de: 'Auf dem Gehsteig wählst du locker zwischen Gehen und Taxi.',
@@ -55507,8 +55507,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ich habe die Haltestelle verpasst' },
-      situation: { de: 'Du bittest jemanden auf der Straße um Hilfe.' },
+      title: { de: 'Ich habe die Haltestelle verpasst', en: 'I missed the stop' },
+      situation: { de: 'Du bittest jemanden auf der Straße um Hilfe.', en: 'You ask someone on the street for help.' },
     },
     vibeVariants: {
       bright: brightItalianP3Lesson009,
@@ -55526,9 +55526,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'italian-a1-practical-3-lesson-10-ho-perso',
       sequence: 10,
-      title: { de: 'Ich habe die Haltestelle verpasst' },
+      title: { de: 'Ich habe die Haltestelle verpasst', en: 'I missed the stop' },
     },
-    title: { de: 'Ich habe die Haltestelle verpasst' },
+    title: { de: 'Ich habe die Haltestelle verpasst', en: 'I missed the stop' },
     situation: {
       en: 'You got off late and ask for help recovering.',
       de: 'Du steigst zu spät aus und bittest um Hilfe.',
@@ -55540,8 +55540,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Pfad abgeschlossen' },
-      situation: { de: 'Du hast Italian A1 Practical 3 abgeschlossen.' },
+      title: { de: 'Pfad abgeschlossen', en: 'Path complete' },
+      situation: { de: 'Du hast Italian A1 Practical 3 abgeschlossen.', en: "You've completed Italian A1 Practical 3." },
     },
     vibeVariants: {
       bright: brightItalianP3Lesson010,
