@@ -207,7 +207,7 @@ const expectedBrightPathOnePhrases = [
   'Where is the train station?',
   'What time is the train, please?',
   'I love it here.',
-  'Tomorrow at seven? Wonderful!',
+  'Tomorrow at seven? Great!',
 ]
 const expectedPathTwoTitles = [
   "I don't understand",

@@ -67,8 +67,8 @@ const expectedLessons: ExpectedLesson[] = [
   },
   {
     title: 'Tomorrow at seven',
-    phrase: 'Tomorrow at seven? Wonderful!',
-    baseText: 'Morgen um sieben? Wunderbar!',
+    phrase: 'Tomorrow at seven? Great!',
+    baseText: 'Morgen um sieben? Großartig!',
   },
 ]
 
