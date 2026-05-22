@@ -169,7 +169,7 @@ assert(
   overviewSource.includes('<SegmentReviewTile') &&
     overviewSource.includes('<SegmentTrophyTile') &&
     overviewSource.includes('today-path-mobileRewards') &&
-    overviewSource.includes('today-path-desktopRewards'),
+    overviewSource.includes('today-path-desktopRewardSlot'),
 )
 assert('trophy tile uses trophy-cloze checkpoint route mode', trophyTileSource.includes('mode=trophy-cloze') && trophyTileSource.includes('segment=${segment}') && trophyTileSource.includes('vibe=${vibeId}'))
 assert('checkpoint route detects trophy-cloze mode without removing existing modes', checkpointSource.includes("checkpointMode === 'trophy-cloze'") && checkpointSource.includes("checkpointMode === 'segment-review'") && checkpointSource.includes("checkpointMode === 'path-check'"))

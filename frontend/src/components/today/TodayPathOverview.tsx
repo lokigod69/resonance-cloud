@@ -239,28 +239,28 @@ export function TodayPathOverview({
 
         <div className="today-path-desktopFlow">
           {segmentStates.map((segment) => (
-            <div key={segment.segment} className="today-path-desktopSegment">
-              <div className="today-path-segmentGrid grid grid-cols-5 gap-2">
-                {segment.lessons.map((entry, index) => (
-                  <Fragment key={entry.lesson.id}>
-                    <LessonPathCard
-                      lesson={entry.lesson}
-                      preferredBaseLanguage={preferredBaseLanguage}
-                      status={entry.status}
-                      isRecommended={entry.isRecommended}
-                      isSelected={entry.isSelected}
-                      isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
-                      completedVibeIds={entry.completedVibeIds}
-                      selectedVibeId={selectedVibeId}
-                      onSelectLesson={onSelectLesson}
-                    />
-                    {index < segment.lessons.length - 1 && (
-                      <span className="today-path-desktopConnectorSegment" aria-hidden="true" />
-                    )}
-                  </Fragment>
-                ))}
+            <div key={segment.segment} className="today-path-desktopSegment today-path-desktopRouteRow">
+              <div className="today-path-desktopLessonRail">
+                <DesktopRouteWave segment={segment.segment} />
+                <div className="today-path-segmentGrid grid grid-cols-5 gap-2">
+                  {segment.lessons.map((entry) => (
+                    <Fragment key={entry.lesson.id}>
+                      <LessonPathCard
+                        lesson={entry.lesson}
+                        preferredBaseLanguage={preferredBaseLanguage}
+                        status={entry.status}
+                        isRecommended={entry.isRecommended}
+                        isSelected={entry.isSelected}
+                        isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
+                        completedVibeIds={entry.completedVibeIds}
+                        selectedVibeId={selectedVibeId}
+                        onSelectLesson={onSelectLesson}
+                      />
+                    </Fragment>
+                  ))}
+                </div>
               </div>
-              <div className="today-path-desktopRewards grid grid-cols-2 gap-3">
+              <div className="today-path-desktopRewardSlot today-path-desktopReviewSlot">
                 <SegmentReviewTile
                   href={segment.reviewHref}
                   segment={segment.segment}
@@ -270,6 +270,8 @@ export function TodayPathOverview({
                   selectedVibeId={selectedVibeId}
                   isReviewComplete={segment.isReviewComplete}
                 />
+              </div>
+              <div className="today-path-desktopRewardSlot today-path-desktopTrophySlot">
                 <SegmentTrophyTile
                   pathId={selectedPathId}
                   segment={segment.segment}
@@ -288,6 +290,64 @@ export function TodayPathOverview({
         )}
       </section>
     </div>
+  )
+}
+
+function DesktopRouteWave({ segment }: { segment: GuidedSegmentReviewNumber }) {
+  const gradientId = `today-desktop-route-wave-${segment}`
+  const glowId = `today-desktop-route-wave-glow-${segment}`
+
+  return (
+    <svg
+      className="today-path-desktopWave"
+      viewBox="0 0 100 16"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <defs>
+        <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="var(--today-accent)" stopOpacity="0.26" />
+          <stop offset="18%" stopColor="var(--today-glow)" stopOpacity="0.95" />
+          <stop offset="50%" stopColor="var(--today-accent-strong)" stopOpacity="0.72" />
+          <stop offset="82%" stopColor="var(--today-glow)" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="var(--today-accent)" stopOpacity="0.26" />
+        </linearGradient>
+        <filter id={glowId} x="-8%" y="-110%" width="116%" height="320%">
+          <feGaussianBlur stdDeviation="1.45" result="routeBlur" />
+          <feMerge>
+            <feMergeNode in="routeBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        className="today-path-desktopWaveGlow"
+        d="M0 8 C6 5 12 5 18 8 S30 11 36 8 S48 5 54 8 S66 11 72 8 S88 5 100 8"
+        filter={`url(#${glowId})`}
+      />
+      <path
+        className="today-path-desktopWaveLine"
+        d="M0 8 C6 5 12 5 18 8 S30 11 36 8 S48 5 54 8 S66 11 72 8 S88 5 100 8"
+        stroke={`url(#${gradientId})`}
+      >
+        <animate
+          attributeName="d"
+          dur="5.8s"
+          repeatCount="indefinite"
+          values="
+            M0 8 C6 5 12 5 18 8 S30 11 36 8 S48 5 54 8 S66 11 72 8 S88 5 100 8;
+            M0 8 C6 11 12 11 18 8 S30 5 36 8 S48 11 54 8 S66 5 72 8 S88 11 100 8;
+            M0 8 C6 5 12 5 18 8 S30 11 36 8 S48 5 54 8 S66 11 72 8 S88 5 100 8
+          "
+        />
+      </path>
+      <g className="today-path-desktopWaveNodes">
+        {[0, 25, 50, 75, 100].map((x) => (
+          <circle key={x} cx={x} cy="8" r="1.05" />
+        ))}
+      </g>
+    </svg>
   )
 }
 
