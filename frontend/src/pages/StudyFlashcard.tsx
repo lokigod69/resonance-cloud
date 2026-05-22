@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
@@ -9,34 +9,75 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Check, X, RotateCcw, Sparkles, BookOpen, Volume2 } from 'lucide-react'
+import {
+  Check,
+  X,
+  RotateCcw,
+  Sparkles,
+  BookOpen,
+  Volume2,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
 import { usePronunciation } from '@/hooks/usePronunciation'
+
+type FeedbackPulse = 'remembered' | 'reviewLater'
+
+const FEEDBACK_ADVANCE_DELAY_MS = 280
 
 export default function StudyFlashcard() {
   const navigate = useNavigate()
   const { t, tp } = useTranslation()
   const { playWord } = usePronunciation()
   const videoRef = useRef<HTMLVideoElement>(null)
+  const feedbackTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null)
+  const [feedbackPulse, setFeedbackPulse] = useState<FeedbackPulse | null>(null)
 
   const {
     words, current, currentIndex, loading, sessionComplete, sessionStats, reviewed,
     revealed, setRevealed, decks, deckFilter, setDeckFilter,
-    handleRemembered, handleReviewLater, restart,
+    handleRemembered, handleReviewLater, restart, skipPrev, skipNext,
   } = useStudyUI({ videoRef, studyMode: 'flashcard' })
+
+  const isFeedbackActive = feedbackPulse !== null
+
+  useEffect(() => {
+    return () => {
+      if (feedbackTimerRef.current) window.clearTimeout(feedbackTimerRef.current)
+    }
+  }, [])
+
+  const playFeedbackAndAdvance = useCallback((pulse: FeedbackPulse, advance: () => void) => {
+    if (feedbackTimerRef.current) window.clearTimeout(feedbackTimerRef.current)
+    setFeedbackPulse(pulse)
+    feedbackTimerRef.current = window.setTimeout(() => {
+      setFeedbackPulse(null)
+      feedbackTimerRef.current = null
+      advance()
+    }, FEEDBACK_ADVANCE_DELAY_MS)
+  }, [])
+
+  const handleFeedbackReviewLater = useCallback(() => {
+    playFeedbackAndAdvance('reviewLater', handleReviewLater)
+  }, [handleReviewLater, playFeedbackAndAdvance])
+
+  const handleFeedbackRemembered = useCallback(() => {
+    playFeedbackAndAdvance('remembered', handleRemembered)
+  }, [handleRemembered, playFeedbackAndAdvance])
 
   // Flashcard-specific keyboard shortcuts (1/2 for review/remember)
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (sessionComplete) return
-      if (e.key === '1') { e.preventDefault(); handleReviewLater() }
-      if (e.key === '2') { e.preventDefault(); handleRemembered() }
+      if (sessionComplete || isFeedbackActive) return
+      if (e.key === '1') { e.preventDefault(); handleFeedbackReviewLater() }
+      if (e.key === '2') { e.preventDefault(); handleFeedbackRemembered() }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [sessionComplete, handleReviewLater, handleRemembered])
+  }, [sessionComplete, isFeedbackActive, handleFeedbackReviewLater, handleFeedbackRemembered])
 
   if (loading) {
     return (
@@ -107,8 +148,35 @@ export default function StudyFlashcard() {
   }
 
   return (
-    <div className="flex min-h-[calc(100dvh-5rem)] flex-col items-center justify-start px-4 pt-4 pb-10 sm:pt-6">
-      <div className="w-full max-w-xl">
+    <div className="relative flex min-h-[calc(100dvh-5rem)] flex-col items-center justify-start overflow-hidden px-4 pt-4 pb-10 sm:pt-6">
+      <AnimatePresence>
+        {feedbackPulse && (
+          <motion.div
+            key={feedbackPulse}
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.28, ease: 'easeOut' }}
+          >
+            <motion.div
+              className="absolute inset-x-[-20%] top-20 h-[460px] rounded-full blur-3xl"
+              initial={{ opacity: 0, scale: 0.68, y: 70 }}
+              animate={{ opacity: [0, 0.32, 0], scale: [0.68, 1.08, 1.18], y: [70, 18, 0] }}
+              transition={{ duration: 0.64, ease: 'easeOut' }}
+              style={{
+                background:
+                  feedbackPulse === 'remembered'
+                    ? 'radial-gradient(circle, rgba(34, 197, 94, 0.34) 0%, rgba(34, 197, 94, 0.13) 32%, transparent 70%)'
+                    : 'radial-gradient(circle, rgba(239, 68, 68, 0.34) 0%, rgba(239, 68, 68, 0.13) 32%, transparent 70%)',
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="relative z-10 w-full max-w-xl">
         {/* Deck filter */}
         {decks.length > 1 && (
           <div className="flex justify-center mb-4">
@@ -149,7 +217,26 @@ export default function StudyFlashcard() {
               className="w-full"
             >
               {/* Flashcard */}
-              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 backdrop-blur-sm min-h-[280px] sm:min-h-[340px] flex flex-col items-center justify-center px-6 py-10 mb-6">
+              <div className="relative rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 backdrop-blur-sm min-h-[280px] sm:min-h-[340px] flex flex-col items-center justify-center px-6 py-10 mb-6">
+                <AnimatePresence>
+                  {feedbackPulse && (
+                    <motion.div
+                      key={`${feedbackPulse}-${current.id}`}
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 rounded-2xl"
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: [0, 1, 0], scale: [0.98, 1.018, 1.04] }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.55, ease: 'easeOut' }}
+                      style={{
+                        boxShadow:
+                          feedbackPulse === 'remembered'
+                            ? '0 0 0 1px rgba(34, 197, 94, 0.35), 0 0 42px rgba(34, 197, 94, 0.24)'
+                            : '0 0 0 1px rgba(239, 68, 68, 0.35), 0 0 42px rgba(239, 68, 68, 0.24)',
+                      }}
+                    />
+                  )}
+                </AnimatePresence>
                 <button
                   type="button"
                   aria-label={`Play pronunciation for ${current.word}`}
@@ -197,22 +284,46 @@ export default function StudyFlashcard() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="flex justify-center gap-4 w-full max-w-xs mx-auto"
+                className="flex justify-center gap-3 w-full max-w-sm mx-auto"
               >
                 <button
-                  onClick={handleReviewLater}
+                  type="button"
+                  aria-label="Previous card"
+                  onClick={skipPrev}
+                  disabled={currentIndex === 0 || isFeedbackActive}
+                  className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-border bg-card/70 text-muted-foreground transition-all hover:bg-accent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  <ChevronLeft className="h-6 w-6" aria-hidden="true" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleFeedbackReviewLater}
+                  disabled={isFeedbackActive}
                   aria-label="Review Later"
-                  className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-red-500/40 bg-red-500/15 text-red-400 transition-all hover:border-red-500/60 hover:bg-red-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-red-500/40 bg-red-500/15 text-red-400 transition-all hover:border-red-500/60 hover:bg-red-500/25 disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <X className="h-7 w-7" aria-hidden="true" />
                 </button>
 
                 <button
-                  onClick={handleRemembered}
+                  type="button"
+                  onClick={handleFeedbackRemembered}
+                  disabled={isFeedbackActive}
                   aria-label="Remembered"
-                  className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-green-500/40 bg-green-500/15 text-green-400 transition-all hover:border-green-500/60 hover:bg-green-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-green-500/40 bg-green-500/15 text-green-400 transition-all hover:border-green-500/60 hover:bg-green-500/25 disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <Check className="h-7 w-7" aria-hidden="true" />
+                </button>
+
+                <button
+                  type="button"
+                  aria-label="Skip card"
+                  onClick={skipNext}
+                  disabled={words.length <= 1 || isFeedbackActive}
+                  className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-border bg-card/70 text-muted-foreground transition-all hover:bg-accent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  <ChevronRight className="h-6 w-6" aria-hidden="true" />
                 </button>
               </motion.div>
             </motion.div>
