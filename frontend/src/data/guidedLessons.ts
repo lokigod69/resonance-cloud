@@ -644,7 +644,7 @@ const GUIDED_TODAY_PATH_FRENCH_FIVE_METADATA: GuidedPathMetadata = {
   id: 'french-a1-practical-5',
   title: 'French A1 Practical 5',
   shortTitle: 'A1 Practical 5',
-  subtitle: { de: 'Kennenlernen und Pläne auf Französisch' },
+  subtitle: { de: 'Kennenlernen und Pläne auf Französisch', en: 'Meeting people and making plans in French' },
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'French',
@@ -33110,18 +33110,18 @@ const brightFrenchP5Lesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Désolé pour le retard.',
-    baseText: { de: 'Entschuldigung für die Verspätung.' },
+    baseText: { de: 'Entschuldigung für die Verspätung.', en: "Sorry I'm late." },
   },
-  meaning: { de: 'Eine kurze Entschuldigung, wenn du zu spät zu einem Treffen kommst.' },
+  meaning: { de: 'Eine kurze Entschuldigung, wenn du zu spät zu einem Treffen kommst.', en: "A short apology when you arrive late to a meet-up." },
   chunks: [
-    { id: 'desole', targetText: 'Désolé', baseText: { de: 'Entschuldigung / tut mir leid' } },
-    { id: 'pour-le-retard', targetText: 'pour le retard.', baseText: { de: 'für die Verspätung.' } },
+    { id: 'desole', targetText: 'Désolé', baseText: { de: 'Entschuldigung / tut mir leid', en: 'Sorry' } },
+    { id: 'pour-le-retard', targetText: 'pour le retard.', baseText: { de: 'für die Verspätung.', en: 'for being late.' } },
   ],
   lessonItems: [
-    { id: 'desole', targetText: 'désolé', baseText: { de: 'entschuldigung / tut mir leid' }, acceptedAnswers: ['désolé', 'desole', 'Désolé', 'Desole', 'désolée', 'desolee', 'Désolée', 'Desolee'] },
-    { id: 'retard', targetText: 'retard', baseText: { de: 'Verspätung' }, acceptedAnswers: ['retard', 'Retard'] },
-    { id: 'pour-le-retard', targetText: 'pour le retard', baseText: { de: 'für die Verspätung' }, acceptedAnswers: ['pour le retard', 'Pour le retard'] },
-    { id: 'arrive', targetText: 'arrivé', baseText: { de: 'angekommen' }, acceptedAnswers: ['arrivé', 'arrive', 'Arrivé', 'Arrive'] },
+    { id: 'desole', targetText: 'désolé', baseText: { de: 'entschuldigung / tut mir leid', en: 'sorry' }, acceptedAnswers: ['désolé', 'desole', 'Désolé', 'Desole', 'désolée', 'desolee', 'Désolée', 'Desolee'] },
+    { id: 'retard', targetText: 'retard', baseText: { de: 'Verspätung', en: 'lateness / delay' }, acceptedAnswers: ['retard', 'Retard'] },
+    { id: 'pour-le-retard', targetText: 'pour le retard', baseText: { de: 'für die Verspätung', en: 'for being late' }, acceptedAnswers: ['pour le retard', 'Pour le retard'] },
+    { id: 'arrive', targetText: 'arrivé', baseText: { de: 'angekommen', en: 'arrived' }, acceptedAnswers: ['arrivé', 'arrive', 'Arrivé', 'Arrive'] },
   ],
   build: {
     targetText: 'Désolé pour le retard.',
@@ -33135,23 +33135,23 @@ const brightFrenchP5Lesson001: GuidedLessonVibeVariant = {
     fallbackChoices: ['retard', 'minute', 'heure', 'excuse'],
   },
   speakTarget: {
-    baseCue: { de: 'Entschuldigung für die Verspätung.' },
+    baseCue: { de: 'Entschuldigung für die Verspätung.', en: "Sorry I'm late." },
     targetPhrase: 'Désolé pour le retard.',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['désolé', 'retard'],
     optionalTokens: ['desole', 'pour', 'le'],
   },
-  sceneCaption: { de: 'Du kommst zu spät an und entschuldigst dich knapp, bevor das Treffen weitergeht.' },
+  sceneCaption: { de: 'Du kommst zu spät an und entschuldigst dich knapp, bevor das Treffen weitergeht.', en: 'You arrive late and apologize briefly before the meet-up continues.' },
   trophyWord: {
     word: 'retard',
-    meaning: { de: 'Verspätung' },
+    meaning: { de: 'Verspätung', en: 'lateness / delay' },
     example: 'Désolé pour le retard.',
-    whyThisWord: { de: 'Retard ist hier die Verspätung, nicht ein Personenwort. Die feste Entschuldigung lautet natürlich "désolé pour le retard".' },
+    whyThisWord: { de: 'Retard ist hier die Verspätung, nicht ein Personenwort. Die feste Entschuldigung lautet natürlich "désolé pour le retard".', en: 'False-friend warning: French "retard" means "delay" or "lateness" (a noun) — it’s never the offensive English noun and has no overlap. The fixed apology is "désolé pour le retard"; women often write "désolée" with an extra "e".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Ankunft vor einem Café, kurzer entschuldigender Gruß.' },
+    caption: { de: 'Ankunft vor einem Café, kurzer entschuldigender Gruß.', en: 'Arriving at a cafe, a brief apologetic greeting.' },
   },
   songSeed: {
     genre: 'soft acoustic',
@@ -33164,18 +33164,18 @@ const brightFrenchP5Lesson002: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "J'ai oublié mon téléphone.",
-    baseText: { de: 'Ich habe mein Telefon vergessen.' },
+    baseText: { de: 'Ich habe mein Telefon vergessen.', en: "I forgot my phone." },
   },
-  meaning: { de: 'Du sagst ruhig, dass du einen Gegenstand vergessen hast.' },
+  meaning: { de: 'Du sagst ruhig, dass du einen Gegenstand vergessen hast.', en: 'You calmly mention that you forgot something.' },
   chunks: [
-    { id: 'jai-oublie', targetText: "J'ai oublié", baseText: { de: 'Ich habe vergessen' } },
-    { id: 'mon-telephone', targetText: 'mon téléphone.', baseText: { de: 'mein Telefon.' } },
+    { id: 'jai-oublie', targetText: "J'ai oublié", baseText: { de: 'Ich habe vergessen', en: 'I forgot' } },
+    { id: 'mon-telephone', targetText: 'mon téléphone.', baseText: { de: 'mein Telefon.', en: 'my phone.' } },
   ],
   lessonItems: [
-    { id: 'jai', targetText: "j'ai", baseText: { de: 'ich habe' }, acceptedAnswers: ["j'ai", "J'ai", 'j’ai', 'J’ai', 'jai', 'Jai'] },
-    { id: 'oublie', targetText: 'oublié', baseText: { de: 'vergessen' }, acceptedAnswers: ['oublié', 'oublie', 'Oublié', 'Oublie'] },
-    { id: 'telephone', targetText: 'téléphone', baseText: { de: 'Telefon' }, acceptedAnswers: ['téléphone', 'telephone', 'Téléphone', 'Telephone'] },
-    { id: 'mon-telephone', targetText: 'mon téléphone', baseText: { de: 'mein Telefon' }, acceptedAnswers: ['mon téléphone', 'mon telephone', 'Mon téléphone', 'Mon telephone'] },
+    { id: 'jai', targetText: "j'ai", baseText: { de: 'ich habe', en: 'I have' }, acceptedAnswers: ["j'ai", "J'ai", 'j’ai', 'J’ai', 'jai', 'Jai'] },
+    { id: 'oublie', targetText: 'oublié', baseText: { de: 'vergessen', en: 'forgot / forgotten' }, acceptedAnswers: ['oublié', 'oublie', 'Oublié', 'Oublie'] },
+    { id: 'telephone', targetText: 'téléphone', baseText: { de: 'Telefon', en: 'phone' }, acceptedAnswers: ['téléphone', 'telephone', 'Téléphone', 'Telephone'] },
+    { id: 'mon-telephone', targetText: 'mon téléphone', baseText: { de: 'mein Telefon', en: 'my phone' }, acceptedAnswers: ['mon téléphone', 'mon telephone', 'Mon téléphone', 'Mon telephone'] },
   ],
   build: {
     targetText: "J'ai oublié mon téléphone.",
@@ -33189,23 +33189,23 @@ const brightFrenchP5Lesson002: GuidedLessonVibeVariant = {
     fallbackChoices: ['oublié', 'habites', 'viens', 'retard'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich habe mein Telefon vergessen.' },
+    baseCue: { de: 'Ich habe mein Telefon vergessen.', en: 'I forgot my phone.' },
     targetPhrase: "J'ai oublié mon téléphone.",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['oublié', 'téléphone'],
     optionalTokens: ['jai', 'j', 'ai', 'oublie', 'telephone', 'mon'],
   },
-  sceneCaption: { de: 'Mitten im Gespräch merkst du, dass dein Telefon fehlt, und sagst es einfach.' },
+  sceneCaption: { de: 'Mitten im Gespräch merkst du, dass dein Telefon fehlt, und sagst es einfach.', en: 'Mid-conversation, you notice your phone is missing and say so plainly.' },
   trophyWord: {
     word: 'oublié',
-    meaning: { de: 'vergessen' },
+    meaning: { de: 'vergessen', en: 'forgot / forgotten' },
     example: "J'ai oublié mon téléphone.",
-    whyThisWord: { de: 'Oublié steht in der A1-natürlichen Form mit "j’ai". Die Elision ist Pflicht: "je ai" wäre falsch.' },
+    whyThisWord: { de: 'Oublié steht in der A1-natürlichen Form mit "j’ai". Die Elision ist Pflicht: "je ai" wäre falsch.', en: 'Oublié is the past participle of "oublier" (to forget) and pairs naturally with "j’ai" to mean "I forgot". The elision in "j’ai" is mandatory — French never writes "je ai".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Tisch, suchende Hand in der Tasche, kurzer Satz über das vergessene Telefon.' },
+    caption: { de: 'Tisch, suchende Hand in der Tasche, kurzer Satz über das vergessene Telefon.', en: 'A table, a hand searching a pocket, a short line about the forgotten phone.' },
   },
   songSeed: {
     genre: 'light acoustic',
@@ -33218,18 +33218,18 @@ const brightFrenchP5Lesson003: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Quel est ton prénom ?',
-    baseText: { de: 'Wie ist dein Vorname?' },
+    baseText: { de: 'Wie ist dein Vorname?', en: "What's your first name?" },
   },
-  meaning: { de: 'Eine einfache informelle Frage nach dem Vornamen in einer lockeren Begegnung.' },
+  meaning: { de: 'Eine einfache informelle Frage nach dem Vornamen in einer lockeren Begegnung.', en: 'A simple informal question about a first name in a casual meet-up.' },
   chunks: [
-    { id: 'quel-est', targetText: 'Quel est', baseText: { de: 'Wie ist' } },
-    { id: 'ton-prenom', targetText: 'ton prénom ?', baseText: { de: 'dein Vorname?' } },
+    { id: 'quel-est', targetText: 'Quel est', baseText: { de: 'Wie ist', en: "What's" } },
+    { id: 'ton-prenom', targetText: 'ton prénom ?', baseText: { de: 'dein Vorname?', en: 'your first name?' } },
   ],
   lessonItems: [
-    { id: 'quel', targetText: 'quel', baseText: { de: 'welcher / wie' }, acceptedAnswers: ['quel', 'Quel'] },
-    { id: 'ton', targetText: 'ton', baseText: { de: 'dein' }, acceptedAnswers: ['ton', 'Ton'] },
-    { id: 'prenom', targetText: 'prénom', baseText: { de: 'Vorname' }, acceptedAnswers: ['prénom', 'prenom', 'Prénom', 'Prenom'] },
-    { id: 'ton-prenom', targetText: 'ton prénom', baseText: { de: 'dein Vorname' }, acceptedAnswers: ['ton prénom', 'ton prenom', 'Ton prénom', 'Ton prenom'] },
+    { id: 'quel', targetText: 'quel', baseText: { de: 'welcher / wie', en: 'which / what' }, acceptedAnswers: ['quel', 'Quel'] },
+    { id: 'ton', targetText: 'ton', baseText: { de: 'dein', en: 'your (casual)' }, acceptedAnswers: ['ton', 'Ton'] },
+    { id: 'prenom', targetText: 'prénom', baseText: { de: 'Vorname', en: 'first name' }, acceptedAnswers: ['prénom', 'prenom', 'Prénom', 'Prenom'] },
+    { id: 'ton-prenom', targetText: 'ton prénom', baseText: { de: 'dein Vorname', en: 'your first name' }, acceptedAnswers: ['ton prénom', 'ton prenom', 'Ton prénom', 'Ton prenom'] },
   ],
   build: {
     targetText: 'Quel est ton prénom ?',
@@ -33243,23 +33243,23 @@ const brightFrenchP5Lesson003: GuidedLessonVibeVariant = {
     fallbackChoices: ['prénom', 'nom', 'âge', 'adresse'],
   },
   speakTarget: {
-    baseCue: { de: 'Wie ist dein Vorname?' },
+    baseCue: { de: 'Wie ist dein Vorname?', en: "What's your first name?" },
     targetPhrase: 'Quel est ton prénom ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['quel', 'prénom'],
     optionalTokens: ['est', 'ton', 'prenom'],
   },
-  sceneCaption: { de: 'In einer lockeren Vorstellung fragst du mit tu nach dem Vornamen.' },
+  sceneCaption: { de: 'In einer lockeren Vorstellung fragst du mit tu nach dem Vornamen.', en: 'In a casual introduction, you use tu and ask for the first name.' },
   trophyWord: {
     word: 'prénom',
-    meaning: { de: 'Vorname' },
+    meaning: { de: 'Vorname', en: 'first name' },
     example: 'Quel est ton prénom ?',
-    whyThisWord: { de: 'Prénom ist der Vorname. Das "ton" zeigt bewusst die informelle tu-Schiene; bei Personal oder Fremden im Service wäre "votre prénom" höflicher.' },
+    whyThisWord: { de: 'Prénom ist der Vorname. Das "ton" zeigt bewusst die informelle tu-Schiene; bei Personal oder Fremden im Service wäre "votre prénom" höflicher.', en: 'Prénom is specifically the first name (not the surname). "Ton" marks the casual tu register; with staff or strangers, switch to the formal "votre prénom".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Lockeres erstes Gespräch, Namensfrage ohne Service-Distanz.' },
+    caption: { de: 'Lockeres erstes Gespräch, Namensfrage ohne Service-Distanz.', en: 'A casual first chat, asking the name without service distance.' },
   },
   songSeed: {
     genre: 'bright acoustic',
@@ -33272,17 +33272,17 @@ const brightFrenchP5Lesson004: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Enchanté.',
-    baseText: { de: 'Freut mich.' },
+    baseText: { de: 'Freut mich.', en: 'Nice to meet you.' },
   },
-  meaning: { de: 'Eine feste freundliche Antwort nach einer Vorstellung.' },
+  meaning: { de: 'Eine feste freundliche Antwort nach einer Vorstellung.', en: 'A fixed, friendly reply after an introduction.' },
   chunks: [
-    { id: 'enchante', targetText: 'Enchanté.', baseText: { de: 'Freut mich.' } },
+    { id: 'enchante', targetText: 'Enchanté.', baseText: { de: 'Freut mich.', en: 'Nice to meet you.' } },
   ],
   lessonItems: [
-    { id: 'enchante', targetText: 'enchanté', baseText: { de: 'erfreut / freut mich' }, acceptedAnswers: ['enchanté', 'enchante', 'Enchanté', 'Enchante', 'enchantée', 'enchantee', 'Enchantée', 'Enchantee'] },
-    { id: 'moi-aussi', targetText: 'moi aussi', baseText: { de: 'ich auch' }, acceptedAnswers: ['moi aussi', 'Moi aussi'] },
-    { id: 'bonjour', targetText: 'bonjour', baseText: { de: 'guten Tag' }, acceptedAnswers: ['bonjour', 'Bonjour'] },
-    { id: 'salut', targetText: 'salut', baseText: { de: 'hallo / tschüss' }, acceptedAnswers: ['salut', 'Salut'] },
+    { id: 'enchante', targetText: 'enchanté', baseText: { de: 'erfreut / freut mich', en: 'nice to meet you' }, acceptedAnswers: ['enchanté', 'enchante', 'Enchanté', 'Enchante', 'enchantée', 'enchantee', 'Enchantée', 'Enchantee'] },
+    { id: 'moi-aussi', targetText: 'moi aussi', baseText: { de: 'ich auch', en: 'me too' }, acceptedAnswers: ['moi aussi', 'Moi aussi'] },
+    { id: 'bonjour', targetText: 'bonjour', baseText: { de: 'guten Tag', en: 'hello / good day' }, acceptedAnswers: ['bonjour', 'Bonjour'] },
+    { id: 'salut', targetText: 'salut', baseText: { de: 'hallo / tschüss', en: 'hi / bye' }, acceptedAnswers: ['salut', 'Salut'] },
   ],
   build: {
     targetText: 'Enchanté.',
@@ -33296,23 +33296,23 @@ const brightFrenchP5Lesson004: GuidedLessonVibeVariant = {
     fallbackChoices: ['Enchanté', 'Désolé', 'Oublié', 'Bonsoir'],
   },
   speakTarget: {
-    baseCue: { de: 'Freut mich.' },
+    baseCue: { de: 'Freut mich.', en: 'Nice to meet you.' },
     targetPhrase: 'Enchanté.',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['enchanté'],
     optionalTokens: ['enchante', 'moi', 'aussi'],
   },
-  sceneCaption: { de: 'Nach dem Namen antwortest du freundlich mit der festen Formel.' },
+  sceneCaption: { de: 'Nach dem Namen antwortest du freundlich mit der festen Formel.', en: 'After the name exchange, you reply with the fixed friendly phrase.' },
   trophyWord: {
     word: 'enchanté',
-    meaning: { de: 'freut mich' },
+    meaning: { de: 'freut mich', en: 'nice to meet you' },
     example: 'Enchanté.',
-    whyThisWord: { de: 'Enchanté ist die feste A1-Formel nach einer Vorstellung. Eine Sprecherin schreibt oft "enchantée"; die Aussprache bleibt gleich.' },
+    whyThisWord: { de: 'Enchanté ist die feste A1-Formel nach einer Vorstellung. Eine Sprecherin schreibt oft "enchantée"; die Aussprache bleibt gleich.', en: 'Enchanté is the fixed A1 phrase after an introduction — literally "delighted", but the natural English is "nice to meet you". A female speaker writes "enchantée" with an extra "e"; the pronunciation is the same.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kurzes Lächeln nach der Vorstellung, freundliche feste Antwort.' },
+    caption: { de: 'Kurzes Lächeln nach der Vorstellung, freundliche feste Antwort.', en: 'A brief smile after the introduction, a friendly fixed reply.' },
   },
   songSeed: {
     genre: 'warm acoustic',
@@ -33325,18 +33325,18 @@ const brightFrenchP5Lesson005: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: "Tu viens d'où ?",
-    baseText: { de: 'Woher kommst du?' },
+    baseText: { de: 'Woher kommst du?', en: 'Where are you from?' },
   },
-  meaning: { de: 'Eine informelle Frage nach Herkunft in einem lockeren Gespräch.' },
+  meaning: { de: 'Eine informelle Frage nach Herkunft in einem lockeren Gespräch.', en: 'An informal question about where someone is from in a casual chat.' },
   chunks: [
-    { id: 'tu-viens', targetText: 'Tu viens', baseText: { de: 'Du kommst' } },
-    { id: 'dou', targetText: "d'où ?", baseText: { de: 'woher?' } },
+    { id: 'tu-viens', targetText: 'Tu viens', baseText: { de: 'Du kommst', en: 'You come' } },
+    { id: 'dou', targetText: "d'où ?", baseText: { de: 'woher?', en: 'from where?' } },
   ],
   lessonItems: [
-    { id: 'tu', targetText: 'tu', baseText: { de: 'du' }, acceptedAnswers: ['tu', 'Tu'] },
-    { id: 'viens', targetText: 'viens', baseText: { de: 'kommst' }, acceptedAnswers: ['viens', 'Viens'] },
-    { id: 'dou', targetText: "d'où", baseText: { de: 'woher' }, acceptedAnswers: ["d'où", "D'où", 'd’ou', 'D’ou', 'd ou', 'D ou'] },
-    { id: 'tu-viens', targetText: 'tu viens', baseText: { de: 'du kommst' }, acceptedAnswers: ['tu viens', 'Tu viens'] },
+    { id: 'tu', targetText: 'tu', baseText: { de: 'du', en: 'you (casual)' }, acceptedAnswers: ['tu', 'Tu'] },
+    { id: 'viens', targetText: 'viens', baseText: { de: 'kommst', en: 'come (casual)' }, acceptedAnswers: ['viens', 'Viens'] },
+    { id: 'dou', targetText: "d'où", baseText: { de: 'woher', en: 'from where' }, acceptedAnswers: ["d'où", "D'où", 'd’ou', 'D’ou', 'd ou', 'D ou'] },
+    { id: 'tu-viens', targetText: 'tu viens', baseText: { de: 'du kommst', en: 'you come' }, acceptedAnswers: ['tu viens', 'Tu viens'] },
   ],
   build: {
     targetText: "Tu viens d'où ?",
@@ -33350,23 +33350,23 @@ const brightFrenchP5Lesson005: GuidedLessonVibeVariant = {
     fallbackChoices: ['viens', 'habites', 'voir', 'retard'],
   },
   speakTarget: {
-    baseCue: { de: 'Woher kommst du?' },
+    baseCue: { de: 'Woher kommst du?', en: 'Where are you from?' },
     targetPhrase: "Tu viens d'où ?",
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['viens', 'où'],
     optionalTokens: ['tu', 'd', 'ou'],
   },
-  sceneCaption: { de: 'Im lockeren Gespräch fragst du nach Herkunft und bleibst bei tu.' },
+  sceneCaption: { de: 'Im lockeren Gespräch fragst du nach Herkunft und bleibst bei tu.', en: 'In a casual chat, you ask where the other person is from and stay with tu.' },
   trophyWord: {
     word: 'viens',
-    meaning: { de: 'du kommst' },
+    meaning: { de: 'du kommst', en: 'you come (casual)' },
     example: "Tu viens d'où ?",
-    whyThisWord: { de: 'Viens ist die tu-Form von venir. Die Frage ist informell; in höflicher Distanz wäre "vous venez d’où ?" passender.' },
+    whyThisWord: { de: 'Viens ist die tu-Form von venir. Die Frage ist informell; in höflicher Distanz wäre "vous venez d’où ?" passender.', en: 'Viens is the casual "tu" form of "venir" (to come). The whole question is informal — with a stranger or service person, switch to "vous venez d’où?" for polite distance.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Locker stehendes Gespräch, kurze Frage nach Herkunft.' },
+    caption: { de: 'Locker stehendes Gespräch, kurze Frage nach Herkunft.', en: 'A casual standing conversation, a short question about where they’re from.' },
   },
   songSeed: {
     genre: 'light social acoustic',
@@ -33379,18 +33379,18 @@ const brightFrenchP5Lesson006: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Tu habites à Paris ?',
-    baseText: { de: 'Wohnst du in Paris?' },
+    baseText: { de: 'Wohnst du in Paris?', en: 'Do you live in Paris?' },
   },
-  meaning: { de: 'Eine informelle Frage, ob die Person an einem Ort wohnt.' },
+  meaning: { de: 'Eine informelle Frage, ob die Person an einem Ort wohnt.', en: 'An informal question asking whether the other person lives in a place.' },
   chunks: [
-    { id: 'tu-habites', targetText: 'Tu habites', baseText: { de: 'Du wohnst' } },
-    { id: 'a-paris', targetText: 'à Paris ?', baseText: { de: 'in Paris?' } },
+    { id: 'tu-habites', targetText: 'Tu habites', baseText: { de: 'Du wohnst', en: 'Do you live' } },
+    { id: 'a-paris', targetText: 'à Paris ?', baseText: { de: 'in Paris?', en: 'in Paris?' } },
   ],
   lessonItems: [
-    { id: 'habites', targetText: 'habites', baseText: { de: 'wohnst' }, acceptedAnswers: ['habites', 'Habites', 'habite', 'Habite'] },
-    { id: 'paris', targetText: 'Paris', baseText: { de: 'Paris' }, acceptedAnswers: ['Paris', 'paris'] },
-    { id: 'a-paris', targetText: 'à Paris', baseText: { de: 'in Paris' }, acceptedAnswers: ['à Paris', 'a Paris', 'À Paris', 'A Paris'] },
-    { id: 'tu-habites', targetText: 'tu habites', baseText: { de: 'du wohnst' }, acceptedAnswers: ['tu habites', 'Tu habites', 'tu habite', 'Tu habite'] },
+    { id: 'habites', targetText: 'habites', baseText: { de: 'wohnst', en: 'live (casual)' }, acceptedAnswers: ['habites', 'Habites', 'habite', 'Habite'] },
+    { id: 'paris', targetText: 'Paris', baseText: { de: 'Paris', en: 'Paris' }, acceptedAnswers: ['Paris', 'paris'] },
+    { id: 'a-paris', targetText: 'à Paris', baseText: { de: 'in Paris', en: 'in Paris' }, acceptedAnswers: ['à Paris', 'a Paris', 'À Paris', 'A Paris'] },
+    { id: 'tu-habites', targetText: 'tu habites', baseText: { de: 'du wohnst', en: 'you live' }, acceptedAnswers: ['tu habites', 'Tu habites', 'tu habite', 'Tu habite'] },
   ],
   build: {
     targetText: 'Tu habites à Paris ?',
@@ -33404,23 +33404,23 @@ const brightFrenchP5Lesson006: GuidedLessonVibeVariant = {
     fallbackChoices: ['habites', 'viens', 'oublié', 'revoir'],
   },
   speakTarget: {
-    baseCue: { de: 'Wohnst du in Paris?' },
+    baseCue: { de: 'Wohnst du in Paris?', en: 'Do you live in Paris?' },
     targetPhrase: 'Tu habites à Paris ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['habites', 'paris'],
     optionalTokens: ['habite', 'tu', 'a', 'à'],
   },
-  sceneCaption: { de: 'Nach der Herkunft fragst du locker, ob die Person in Paris wohnt.' },
+  sceneCaption: { de: 'Nach der Herkunft fragst du locker, ob die Person in Paris wohnt.', en: 'After asking where they’re from, you casually ask if they live in Paris.' },
   trophyWord: {
     word: 'habites',
-    meaning: { de: 'du wohnst' },
+    meaning: { de: 'du wohnst', en: 'you live (casual)' },
     example: 'Tu habites à Paris ?',
-    whyThisWord: { de: 'Habites ist die tu-Form von habiter. Das End-s ist schriftlich wichtig, auch wenn es in der Aussprache meist nicht hörbar ist.' },
+    whyThisWord: { de: 'Habites ist die tu-Form von habiter. Das End-s ist schriftlich wichtig, auch wenn es in der Aussprache meist nicht hörbar ist.', en: 'Habites is the casual "tu" form of "habiter" (to live somewhere). The final "s" matters in writing even though it’s usually silent in speech — this is a regular -er verb pattern at A1.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Locker sitzendes Gespräch, Ortsfrage über Paris.' },
+    caption: { de: 'Locker sitzendes Gespräch, Ortsfrage über Paris.', en: 'A relaxed seated chat, a location question about Paris.' },
   },
   songSeed: {
     genre: 'warm acoustic',
@@ -33433,18 +33433,18 @@ const brightFrenchP5Lesson007: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Tu es libre ce soir ?',
-    baseText: { de: 'Hast du heute Abend Zeit?' },
+    baseText: { de: 'Hast du heute Abend Zeit?', en: 'Are you free tonight?' },
   },
-  meaning: { de: 'Eine informelle Frage nach Zeit oder Verfügbarkeit am Abend.' },
+  meaning: { de: 'Eine informelle Frage nach Zeit oder Verfügbarkeit am Abend.', en: 'A casual check on whether someone is free in the evening.' },
   chunks: [
-    { id: 'tu-es-libre', targetText: 'Tu es libre', baseText: { de: 'Du bist frei / hast Zeit' } },
-    { id: 'ce-soir', targetText: 'ce soir ?', baseText: { de: 'heute Abend?' } },
+    { id: 'tu-es-libre', targetText: 'Tu es libre', baseText: { de: 'Du bist frei / hast Zeit', en: 'Are you free' } },
+    { id: 'ce-soir', targetText: 'ce soir ?', baseText: { de: 'heute Abend?', en: 'tonight?' } },
   ],
   lessonItems: [
-    { id: 'libre', targetText: 'libre', baseText: { de: 'frei' }, acceptedAnswers: ['libre', 'Libre'] },
-    { id: 'soir', targetText: 'soir', baseText: { de: 'Abend' }, acceptedAnswers: ['soir', 'Soir'] },
-    { id: 'ce-soir', targetText: 'ce soir', baseText: { de: 'heute Abend' }, acceptedAnswers: ['ce soir', 'Ce soir'] },
-    { id: 'tu-es', targetText: 'tu es', baseText: { de: 'du bist' }, acceptedAnswers: ['tu es', 'Tu es'] },
+    { id: 'libre', targetText: 'libre', baseText: { de: 'frei', en: 'free / available' }, acceptedAnswers: ['libre', 'Libre'] },
+    { id: 'soir', targetText: 'soir', baseText: { de: 'Abend', en: 'evening' }, acceptedAnswers: ['soir', 'Soir'] },
+    { id: 'ce-soir', targetText: 'ce soir', baseText: { de: 'heute Abend', en: 'tonight / this evening' }, acceptedAnswers: ['ce soir', 'Ce soir'] },
+    { id: 'tu-es', targetText: 'tu es', baseText: { de: 'du bist', en: 'you are (casual)' }, acceptedAnswers: ['tu es', 'Tu es'] },
   ],
   build: {
     targetText: 'Tu es libre ce soir ?',
@@ -33458,23 +33458,23 @@ const brightFrenchP5Lesson007: GuidedLessonVibeVariant = {
     fallbackChoices: ['soir', 'matin', 'midi', 'nuit'],
   },
   speakTarget: {
-    baseCue: { de: 'Hast du heute Abend Zeit?' },
+    baseCue: { de: 'Hast du heute Abend Zeit?', en: 'Are you free tonight?' },
     targetPhrase: 'Tu es libre ce soir ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['libre', 'soir'],
     optionalTokens: ['tu', 'es', 'ce'],
   },
-  sceneCaption: { de: 'Am Ende des Tages fragst du locker, ob die andere Person heute Abend Zeit hat.' },
+  sceneCaption: { de: 'Am Ende des Tages fragst du locker, ob die andere Person heute Abend Zeit hat.', en: 'Late in the day, you casually check whether the other person is free tonight.' },
   trophyWord: {
     word: 'soir',
-    meaning: { de: 'Abend' },
+    meaning: { de: 'Abend', en: 'evening' },
     example: 'Tu es libre ce soir ?',
-    whyThisWord: { de: 'Soir ist der Abend. "Ce soir" ist die feste A1-Gruppe für "heute Abend".' },
+    whyThisWord: { de: 'Soir ist der Abend. "Ce soir" ist die feste A1-Gruppe für "heute Abend".', en: 'Soir means "evening" — masculine (le soir). "Ce soir" is the fixed A1 phrase for "tonight" / "this evening" (literally "this evening"); pair similarly with "ce matin" (this morning), "ce midi" (lunchtime).' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Abendliches Gespräch vor einem Café, lockere Verfügbarkeitsfrage.' },
+    caption: { de: 'Abendliches Gespräch vor einem Café, lockere Verfügbarkeitsfrage.', en: 'An evening chat outside a cafe, a casual check on availability.' },
   },
   songSeed: {
     genre: 'evening acoustic',
@@ -33487,18 +33487,18 @@ const brightFrenchP5Lesson008: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'On se voit au parc ?',
-    baseText: { de: 'Treffen wir uns im Park?' },
+    baseText: { de: 'Treffen wir uns im Park?', en: 'See you at the park?' },
   },
-  meaning: { de: 'Ein einfacher informeller Vorschlag für einen konkreten Treffpunkt.' },
+  meaning: { de: 'Ein einfacher informeller Vorschlag für einen konkreten Treffpunkt.', en: 'A simple casual suggestion for a concrete meeting spot.' },
   chunks: [
-    { id: 'on-se-voit', targetText: 'On se voit', baseText: { de: 'Wir sehen uns / treffen uns' } },
-    { id: 'au-parc', targetText: 'au parc ?', baseText: { de: 'im Park?' } },
+    { id: 'on-se-voit', targetText: 'On se voit', baseText: { de: 'Wir sehen uns / treffen uns', en: "We'll see each other" } },
+    { id: 'au-parc', targetText: 'au parc ?', baseText: { de: 'im Park?', en: 'at the park?' } },
   ],
   lessonItems: [
-    { id: 'on-se-voit', targetText: 'on se voit', baseText: { de: 'wir treffen uns' }, acceptedAnswers: ['on se voit', 'On se voit'] },
-    { id: 'parc', targetText: 'parc', baseText: { de: 'Park' }, acceptedAnswers: ['parc', 'Parc'] },
-    { id: 'au-parc', targetText: 'au parc', baseText: { de: 'im Park' }, acceptedAnswers: ['au parc', 'Au parc'] },
-    { id: 'voir', targetText: 'voir', baseText: { de: 'sehen' }, acceptedAnswers: ['voir', 'Voir'] },
+    { id: 'on-se-voit', targetText: 'on se voit', baseText: { de: 'wir treffen uns', en: "we'll see each other / let's meet" }, acceptedAnswers: ['on se voit', 'On se voit'] },
+    { id: 'parc', targetText: 'parc', baseText: { de: 'Park', en: 'park' }, acceptedAnswers: ['parc', 'Parc'] },
+    { id: 'au-parc', targetText: 'au parc', baseText: { de: 'im Park', en: 'at the park' }, acceptedAnswers: ['au parc', 'Au parc'] },
+    { id: 'voir', targetText: 'voir', baseText: { de: 'sehen', en: 'to see' }, acceptedAnswers: ['voir', 'Voir'] },
   ],
   build: {
     targetText: 'On se voit au parc ?',
@@ -33512,23 +33512,23 @@ const brightFrenchP5Lesson008: GuidedLessonVibeVariant = {
     fallbackChoices: ['parc', 'café', 'musée', 'gare'],
   },
   speakTarget: {
-    baseCue: { de: 'Treffen wir uns im Park?' },
+    baseCue: { de: 'Treffen wir uns im Park?', en: 'See you at the park?' },
     targetPhrase: 'On se voit au parc ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['voit', 'parc'],
     optionalTokens: ['on', 'se', 'au', 'voir'],
   },
-  sceneCaption: { de: 'Du schlägst locker einen Treffpunkt vor: im Park.' },
+  sceneCaption: { de: 'Du schlägst locker einen Treffpunkt vor: im Park.', en: 'You casually suggest a meeting spot: the park.' },
   trophyWord: {
     word: 'parc',
-    meaning: { de: 'Park' },
+    meaning: { de: 'Park', en: 'park' },
     example: 'On se voit au parc ?',
-    whyThisWord: { de: 'Parc ist ein einfacher A1-Ort für Treffen. "Au parc" zeigt die Pflichtform à + le = au.' },
+    whyThisWord: { de: 'Parc ist ein einfacher A1-Ort für Treffen. "Au parc" zeigt die Pflichtform à + le = au.', en: 'Parc is a simple A1 meeting place — masculine (le parc). "Au parc" shows the mandatory contraction à + le = au; French never says "à le parc".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Parkeingang als Treffpunkt, lockerer Vorschlag im Gespräch.' },
+    caption: { de: 'Parkeingang als Treffpunkt, lockerer Vorschlag im Gespräch.', en: 'A park entrance as a meeting spot, a casual suggestion mid-chat.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -33541,18 +33541,18 @@ const brightFrenchP5Lesson009: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Peut-être demain ?',
-    baseText: { de: 'Vielleicht morgen?' },
+    baseText: { de: 'Vielleicht morgen?', en: 'Maybe tomorrow?' },
   },
-  meaning: { de: 'Eine weiche informelle Verschiebung, wenn der Plan heute nicht passt.' },
+  meaning: { de: 'Eine weiche informelle Verschiebung, wenn der Plan heute nicht passt.', en: 'A soft, casual postponement when the plan doesn’t fit today.' },
   chunks: [
-    { id: 'peut-etre', targetText: 'Peut-être', baseText: { de: 'Vielleicht' } },
-    { id: 'demain', targetText: 'demain ?', baseText: { de: 'morgen?' } },
+    { id: 'peut-etre', targetText: 'Peut-être', baseText: { de: 'Vielleicht', en: 'Maybe' } },
+    { id: 'demain', targetText: 'demain ?', baseText: { de: 'morgen?', en: 'tomorrow?' } },
   ],
   lessonItems: [
-    { id: 'peut-etre', targetText: 'peut-être', baseText: { de: 'vielleicht' }, acceptedAnswers: ['peut-être', 'Peut-être', 'peut etre', 'Peut etre'] },
-    { id: 'demain', targetText: 'demain', baseText: { de: 'morgen' }, acceptedAnswers: ['demain', 'Demain'] },
-    { id: 'pas-ce-soir', targetText: 'pas ce soir', baseText: { de: 'nicht heute Abend' }, acceptedAnswers: ['pas ce soir', 'Pas ce soir'] },
-    { id: 'daccord', targetText: "d'accord", baseText: { de: 'einverstanden' }, acceptedAnswers: ["d'accord", "D'accord", 'd’accord', 'D’accord', 'd accord', 'D accord'] },
+    { id: 'peut-etre', targetText: 'peut-être', baseText: { de: 'vielleicht', en: 'maybe / perhaps' }, acceptedAnswers: ['peut-être', 'Peut-être', 'peut etre', 'Peut etre'] },
+    { id: 'demain', targetText: 'demain', baseText: { de: 'morgen', en: 'tomorrow' }, acceptedAnswers: ['demain', 'Demain'] },
+    { id: 'pas-ce-soir', targetText: 'pas ce soir', baseText: { de: 'nicht heute Abend', en: 'not tonight' }, acceptedAnswers: ['pas ce soir', 'Pas ce soir'] },
+    { id: 'daccord', targetText: "d'accord", baseText: { de: 'einverstanden', en: 'okay / agreed' }, acceptedAnswers: ["d'accord", "D'accord", 'd’accord', 'D’accord', 'd accord', 'D accord'] },
   ],
   build: {
     targetText: 'Peut-être demain ?',
@@ -33566,23 +33566,23 @@ const brightFrenchP5Lesson009: GuidedLessonVibeVariant = {
     fallbackChoices: ['Peut-être', 'Enchanté', 'Désolé', 'Bonjour'],
   },
   speakTarget: {
-    baseCue: { de: 'Vielleicht morgen?' },
+    baseCue: { de: 'Vielleicht morgen?', en: 'Maybe tomorrow?' },
     targetPhrase: 'Peut-être demain ?',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['peut', 'être', 'demain'],
     optionalTokens: ['etre'],
   },
-  sceneCaption: { de: 'Du kannst jetzt nicht fest zusagen und schlägst weich morgen vor.' },
+  sceneCaption: { de: 'Du kannst jetzt nicht fest zusagen und schlägst weich morgen vor.', en: 'You can’t commit firmly now and softly suggest tomorrow instead.' },
   trophyWord: {
     word: 'peut-être',
-    meaning: { de: 'vielleicht' },
+    meaning: { de: 'vielleicht', en: 'maybe / perhaps' },
     example: 'Peut-être demain ?',
-    whyThisWord: { de: 'Peut-être macht eine Verschiebung weich. Es ist eine feste Schreibung mit Bindestrich; ohne Akzent und Bindestrich bleibt es als Tippvariante erkennbar.' },
+    whyThisWord: { de: 'Peut-être macht eine Verschiebung weich. Es ist eine feste Schreibung mit Bindestrich; ohne Akzent und Bindestrich bleibt es als Tippvariante erkennbar.', en: 'Peut-être softens a postponement. The standard spelling has a hyphen and accent; typed answers without them are accepted here. Literally "can be" — a two-word fixed adverb meaning "maybe".' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Locker verschobener Plan, freundlicher Blick auf den nächsten Tag.' },
+    caption: { de: 'Locker verschobener Plan, freundlicher Blick auf den nächsten Tag.', en: 'A plan softly pushed back, a friendly nod toward the next day.' },
   },
   songSeed: {
     genre: 'soft evening acoustic',
@@ -33595,18 +33595,18 @@ const brightFrenchP5Lesson010: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'À demain, au revoir.',
-    baseText: { de: 'Bis morgen, auf Wiedersehen.' },
+    baseText: { de: 'Bis morgen, auf Wiedersehen.', en: 'See you tomorrow, bye.' },
   },
-  meaning: { de: 'Ein klarer Abschied nach einem lockeren Treffen mit Blick auf morgen.' },
+  meaning: { de: 'Ein klarer Abschied nach einem lockeren Treffen mit Blick auf morgen.', en: 'A clear goodbye after a casual meet-up with a follow-up planned for tomorrow.' },
   chunks: [
-    { id: 'a-demain', targetText: 'À demain,', baseText: { de: 'Bis morgen,' } },
-    { id: 'au-revoir', targetText: 'au revoir.', baseText: { de: 'auf Wiedersehen.' } },
+    { id: 'a-demain', targetText: 'À demain,', baseText: { de: 'Bis morgen,', en: 'See you tomorrow,' } },
+    { id: 'au-revoir', targetText: 'au revoir.', baseText: { de: 'auf Wiedersehen.', en: 'goodbye.' } },
   ],
   lessonItems: [
-    { id: 'a-demain', targetText: 'à demain', baseText: { de: 'bis morgen' }, acceptedAnswers: ['à demain', 'a demain', 'À demain', 'A demain'] },
-    { id: 'revoir', targetText: 'revoir', baseText: { de: 'wiedersehen' }, acceptedAnswers: ['revoir', 'Revoir'] },
-    { id: 'au-revoir', targetText: 'au revoir', baseText: { de: 'auf Wiedersehen' }, acceptedAnswers: ['au revoir', 'Au revoir'] },
-    { id: 'salut', targetText: 'salut', baseText: { de: 'tschüss / hallo' }, acceptedAnswers: ['salut', 'Salut'] },
+    { id: 'a-demain', targetText: 'à demain', baseText: { de: 'bis morgen', en: 'see you tomorrow' }, acceptedAnswers: ['à demain', 'a demain', 'À demain', 'A demain'] },
+    { id: 'revoir', targetText: 'revoir', baseText: { de: 'wiedersehen', en: 'to see again' }, acceptedAnswers: ['revoir', 'Revoir'] },
+    { id: 'au-revoir', targetText: 'au revoir', baseText: { de: 'auf Wiedersehen', en: 'goodbye' }, acceptedAnswers: ['au revoir', 'Au revoir'] },
+    { id: 'salut', targetText: 'salut', baseText: { de: 'tschüss / hallo', en: 'hi / bye (casual)' }, acceptedAnswers: ['salut', 'Salut'] },
   ],
   build: {
     targetText: 'À demain, au revoir.',
@@ -33620,23 +33620,23 @@ const brightFrenchP5Lesson010: GuidedLessonVibeVariant = {
     fallbackChoices: ['revoir', 'demain', 'bientôt', 'salut'],
   },
   speakTarget: {
-    baseCue: { de: 'Bis morgen, auf Wiedersehen.' },
+    baseCue: { de: 'Bis morgen, auf Wiedersehen.', en: 'See you tomorrow, bye.' },
     targetPhrase: 'À demain, au revoir.',
     language: 'fr-FR',
     passingThreshold: 0.8,
     requiredTokens: ['demain', 'revoir'],
     optionalTokens: ['a', 'à', 'au'],
   },
-  sceneCaption: { de: 'Am Ende des Treffens verabschiedest du dich mit einem klaren Bis-morgen.' },
+  sceneCaption: { de: 'Am Ende des Treffens verabschiedest du dich mit einem klaren Bis-morgen.', en: 'At the end of the meet-up, you say goodbye with a clear "see you tomorrow".' },
   trophyWord: {
     word: 'revoir',
-    meaning: { de: 'wiedersehen' },
+    meaning: { de: 'wiedersehen', en: 'to see again' },
     example: 'Au revoir.',
-    whyThisWord: { de: 'Revoir steckt in "au revoir", dem Standardabschied. Das Wort trägt die Idee des Wiedersehens; die Phrase bleibt auch in lockeren Situationen höflich.' },
+    whyThisWord: { de: 'Revoir steckt in "au revoir", dem Standardabschied. Das Wort trägt die Idee des Wiedersehens; die Phrase bleibt auch in lockeren Situationen höflich.', en: 'Revoir (to see again) sits inside "au revoir", the standard goodbye — literally "to the next seeing". The whole phrase stays polite in casual situations; "salut" is the more casual alternative for friends.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Abschied vor dem Café, kurzer Plan für morgen bleibt stehen.' },
+    caption: { de: 'Abschied vor dem Café, kurzer Plan für morgen bleibt stehen.', en: 'Goodbye outside a cafe, the plan for tomorrow stays on.' },
   },
   songSeed: {
     genre: 'warm farewell acoustic',
@@ -61169,9 +61169,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-5-lesson-1-pour-le-retard',
       sequence: 1,
-      title: { de: 'Zu spät angekommen' },
+      title: { de: 'Zu spät angekommen', en: 'Running late' },
     },
-    title: { de: 'Zu spät angekommen' },
+    title: { de: 'Zu spät angekommen', en: 'Running late' },
     situation: {
       en: 'Arrive late to a casual meeting or appointment and apologize briefly.',
       de: 'Du kommst zu spät zu einem Treffen oder Termin und entschuldigst dich kurz.',
@@ -61183,8 +61183,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ich habe es vergessen' },
-      situation: { de: 'Du sagst, dass du etwas vergessen hast.' },
+      title: { de: 'Ich habe es vergessen', en: 'I forgot something' },
+      situation: { de: 'Du sagst, dass du etwas vergessen hast.', en: 'You say you forgot something.' },
     },
     vibeVariants: {
       bright: brightFrenchP5Lesson001,
@@ -61202,9 +61202,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-5-lesson-2-oublie-telephone',
       sequence: 2,
-      title: { de: 'Ich habe es vergessen' },
+      title: { de: 'Ich habe es vergessen', en: 'I forgot something' },
     },
-    title: { de: 'Ich habe es vergessen' },
+    title: { de: 'Ich habe es vergessen', en: 'I forgot something' },
     situation: {
       en: 'Mid-conversation, admit that you forgot an item.',
       de: 'Mitten im Gespräch sagst du, dass du einen Gegenstand vergessen hast.',
@@ -61216,8 +61216,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Dein Vorname' },
-      situation: { de: 'Du fragst in einer lockeren Vorstellung nach dem Vornamen.' },
+      title: { de: 'Dein Vorname', en: 'Your first name' },
+      situation: { de: 'Du fragst in einer lockeren Vorstellung nach dem Vornamen.', en: 'You ask for the first name in a casual introduction.' },
     },
     vibeVariants: {
       bright: brightFrenchP5Lesson002,
@@ -61235,9 +61235,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-5-lesson-3-ton-prenom',
       sequence: 3,
-      title: { de: 'Dein Vorname' },
+      title: { de: 'Dein Vorname', en: 'Your first name' },
     },
-    title: { de: 'Dein Vorname' },
+    title: { de: 'Dein Vorname', en: 'Your first name' },
     situation: {
       en: 'In a casual introduction, ask for the other person’s first name.',
       de: 'In einer lockeren Vorstellung fragst du nach dem Vornamen.',
@@ -61249,8 +61249,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Freut mich' },
-      situation: { de: 'Du antwortest freundlich nach der Vorstellung.' },
+      title: { de: 'Freut mich', en: 'Nice to meet you' },
+      situation: { de: 'Du antwortest freundlich nach der Vorstellung.', en: 'You reply warmly after the introduction.' },
     },
     vibeVariants: {
       bright: brightFrenchP5Lesson003,
@@ -61268,9 +61268,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-5-lesson-4-enchante',
       sequence: 4,
-      title: { de: 'Freut mich' },
+      title: { de: 'Freut mich', en: 'Nice to meet you' },
     },
-    title: { de: 'Freut mich' },
+    title: { de: 'Freut mich', en: 'Nice to meet you' },
     situation: {
       en: 'After being introduced, reply warmly with a fixed expression.',
       de: 'Nach der Vorstellung antwortest du freundlich mit einer festen Formel.',
@@ -61282,8 +61282,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Woher kommst du?' },
-      situation: { de: 'Du fragst in einem lockeren Gespräch nach Herkunft.' },
+      title: { de: 'Woher kommst du?', en: 'Where are you from?' },
+      situation: { de: 'Du fragst in einem lockeren Gespräch nach Herkunft.', en: 'You ask where the other person is from in a casual chat.' },
     },
     vibeVariants: {
       bright: brightFrenchP5Lesson004,
@@ -61301,9 +61301,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-5-lesson-5-tu-viens-dou',
       sequence: 5,
-      title: { de: 'Woher kommst du?' },
+      title: { de: 'Woher kommst du?', en: 'Where are you from?' },
     },
-    title: { de: 'Woher kommst du?' },
+    title: { de: 'Woher kommst du?', en: 'Where are you from?' },
     situation: {
       en: 'In casual conversation, ask where the other person is from.',
       de: 'In einem lockeren Gespräch fragst du, woher die andere Person kommt.',
@@ -61315,8 +61315,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wohnst du hier?' },
-      situation: { de: 'Du fragst nach dem Wohnort.' },
+      title: { de: 'Wohnst du hier?', en: 'Do you live here?' },
+      situation: { de: 'Du fragst nach dem Wohnort.', en: 'You ask where they live.' },
     },
     vibeVariants: {
       bright: brightFrenchP5Lesson005,
@@ -61334,9 +61334,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-5-lesson-6-tu-habites',
       sequence: 6,
-      title: { de: 'Wohnst du hier?' },
+      title: { de: 'Wohnst du hier?', en: 'Do you live here?' },
     },
-    title: { de: 'Wohnst du hier?' },
+    title: { de: 'Wohnst du hier?', en: 'Do you live here?' },
     situation: {
       en: 'In casual conversation, ask whether the person lives in a place.',
       de: 'In einem lockeren Gespräch fragst du, ob die Person an einem Ort wohnt.',
@@ -61348,8 +61348,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Heute Abend Zeit?' },
-      situation: { de: 'Du fragst nach Verfügbarkeit heute Abend.' },
+      title: { de: 'Heute Abend Zeit?', en: 'Free tonight?' },
+      situation: { de: 'Du fragst nach Verfügbarkeit heute Abend.', en: 'You check whether they’re free tonight.' },
     },
     vibeVariants: {
       bright: brightFrenchP5Lesson006,
@@ -61367,9 +61367,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-5-lesson-7-ce-soir',
       sequence: 7,
-      title: { de: 'Heute Abend Zeit?' },
+      title: { de: 'Heute Abend Zeit?', en: 'Free tonight?' },
     },
-    title: { de: 'Heute Abend Zeit?' },
+    title: { de: 'Heute Abend Zeit?', en: 'Free tonight?' },
     situation: {
       en: 'In casual social planning, ask whether someone is free tonight.',
       de: 'In lockerer Planung fragst du, ob jemand heute Abend Zeit hat.',
@@ -61381,8 +61381,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Treffen im Park' },
-      situation: { de: 'Du schlägst einen konkreten Treffpunkt vor.' },
+      title: { de: 'Treffen im Park', en: 'Meet at the park' },
+      situation: { de: 'Du schlägst einen konkreten Treffpunkt vor.', en: 'You suggest a specific meeting spot.' },
     },
     vibeVariants: {
       bright: brightFrenchP5Lesson007,
@@ -61400,9 +61400,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-5-lesson-8-au-parc',
       sequence: 8,
-      title: { de: 'Treffen im Park' },
+      title: { de: 'Treffen im Park', en: 'Meet at the park' },
     },
-    title: { de: 'Treffen im Park' },
+    title: { de: 'Treffen im Park', en: 'Meet at the park' },
     situation: {
       en: 'Suggest meeting at a specific casual place.',
       de: 'Du schlägst einen konkreten lockeren Treffpunkt vor.',
@@ -61414,8 +61414,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Vielleicht morgen' },
-      situation: { de: 'Du verschiebst einen Plan weich auf morgen.' },
+      title: { de: 'Vielleicht morgen', en: 'Maybe tomorrow' },
+      situation: { de: 'Du verschiebst einen Plan weich auf morgen.', en: 'You softly push a plan to tomorrow.' },
     },
     vibeVariants: {
       bright: brightFrenchP5Lesson008,
@@ -61433,9 +61433,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-5-lesson-9-peut-etre-demain',
       sequence: 9,
-      title: { de: 'Vielleicht morgen' },
+      title: { de: 'Vielleicht morgen', en: 'Maybe tomorrow' },
     },
-    title: { de: 'Vielleicht morgen' },
+    title: { de: 'Vielleicht morgen', en: 'Maybe tomorrow' },
     situation: {
       en: 'In casual planning, softly postpone a plan to the next day.',
       de: 'In lockerer Planung verschiebst du einen Plan weich auf morgen.',
@@ -61447,8 +61447,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Bis morgen' },
-      situation: { de: 'Du verabschiedest dich mit Blick auf morgen.' },
+      title: { de: 'Bis morgen', en: 'See you tomorrow' },
+      situation: { de: 'Du verabschiedest dich mit Blick auf morgen.', en: 'You say goodbye with tomorrow in mind.' },
     },
     vibeVariants: {
       bright: brightFrenchP5Lesson009,
@@ -61466,9 +61466,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'french-a1-practical-5-lesson-10-au-revoir',
       sequence: 10,
-      title: { de: 'Bis morgen' },
+      title: { de: 'Bis morgen', en: 'See you tomorrow' },
     },
-    title: { de: 'Bis morgen' },
+    title: { de: 'Bis morgen', en: 'See you tomorrow' },
     situation: {
       en: 'At the end of a casual meeting, close with a see-you-tomorrow goodbye.',
       de: 'Am Ende eines lockeren Treffens verabschiedest du dich mit einem Bis-morgen.',
@@ -61480,8 +61480,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Pfad abgeschlossen' },
-      situation: { de: 'Du hast French A1 Practical 5 abgeschlossen.' },
+      title: { de: 'Pfad abgeschlossen', en: 'Path complete' },
+      situation: { de: 'Du hast French A1 Practical 5 abgeschlossen.', en: "You've finished French A1 Practical 5." },
     },
     vibeVariants: {
       bright: brightFrenchP5Lesson010,
