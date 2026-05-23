@@ -9,8 +9,9 @@ import {
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Coins, Check, Gift } from 'lucide-react'
+import { Coins, Check, Gift, CreditCard } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
+import { isBillingTester } from '@/lib/billingFlags'
 
 export function RedeemCodeDialog({
   open,
@@ -24,9 +25,12 @@ export function RedeemCodeDialog({
 
   const [inviteCode, setInviteCode] = useState('')
   const [redeeming, setRedeeming] = useState(false)
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
   const [redeemError, setRedeemError] = useState<string | null>(null)
+  const [checkoutError, setCheckoutError] = useState<string | null>(null)
   const [redeemSuccess, setRedeemSuccess] = useState<{ credits: number } | null>(null)
   const creditCount = typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0
+  const billingAvailable = isBillingTester(user, profile)
 
   async function handleRedeem() {
     if (!inviteCode.trim() || !user) return
@@ -59,11 +63,49 @@ export function RedeemCodeDialog({
     }
   }
 
+  async function handleSubscribe() {
+    if (!user) return
+    setCheckoutLoading(true)
+    setCheckoutError(null)
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession()
+      const token = sessionData.session?.access_token
+      if (!token) {
+        setCheckoutError('Please sign in again before starting checkout.')
+        return
+      }
+
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      })
+      const payload = await response.json().catch(() => null) as { url?: string; error?: string } | null
+
+      if (!response.ok || !payload?.url) {
+        setCheckoutError(payload?.error || 'Checkout is not available right now.')
+        return
+      }
+
+      window.location.href = payload.url
+    } catch (error) {
+      console.error('Stripe checkout failed:', error)
+      setCheckoutError('Checkout is not available right now.')
+    } finally {
+      setCheckoutLoading(false)
+    }
+  }
+
   function handleClose(open: boolean) {
     if (!open) {
       // Reset state when closing
       setInviteCode('')
       setRedeemError(null)
+      setCheckoutError(null)
       setRedeemSuccess(null)
     }
     onOpenChange(open)
@@ -83,6 +125,38 @@ export function RedeemCodeDialog({
           <div className="text-xl font-semibold text-foreground">
             {creditCount} {t('credits.available')}
           </div>
+        </div>
+
+        {/* Subscription sandbox */}
+        <div className="space-y-3 border-t border-border pt-4">
+          <div className="flex items-center justify-center gap-2 text-sm font-medium">
+            <CreditCard className="h-4 w-4" />
+            Subscription
+          </div>
+
+          {billingAvailable ? (
+            <div className="space-y-2">
+              <Button
+                className="w-full"
+                onClick={handleSubscribe}
+                disabled={checkoutLoading}
+              >
+                {checkoutLoading ? 'Opening checkout...' : 'Subscribe with Stripe Sandbox'}
+              </Button>
+              {checkoutError && (
+                <p className="text-sm text-destructive text-center">{checkoutError}</p>
+              )}
+            </div>
+          ) : (
+            <div className="overflow-hidden rounded-md border border-destructive/40 bg-muted/50 text-center">
+              <div className="bg-destructive px-3 py-1 text-xs font-semibold text-destructive-foreground">
+                Today is being built — explore freely, but the experience here will change.
+              </div>
+              <div className="px-4 py-3 text-sm text-muted-foreground">
+                Subscription checkout is in private testing.
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Redeem section */}

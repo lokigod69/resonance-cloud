@@ -15,6 +15,7 @@
     "typecheck:api": "tsc -p tsconfig.api.json --noEmit",
     "storage:cleanup": "tsx scripts/process-storage-cleanup.ts",
     "test:api:paid": "tsx scripts/test-paid-api-protection.ts",
+    "test:stripe-billing": "tsx scripts/test-stripe-billing-shell.ts",
     "test:phase1e:rls": "tsx scripts/test-phase1e-rpc-rls.ts",
     "test:phase1f0:credits": "tsx scripts/test-phase1f0-credit-pricing.ts",
     "test:lane-payload": "tsx scripts/test-product-lane-payload.ts",
@@ -49,6 +50,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.1",
+    "stripe": "^22.1.0",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2",
     "webfontloader": "^1.6.28"
