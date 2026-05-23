@@ -41,6 +41,8 @@ const requiredKeys: string[] = [
   'generate.words.fetchSuggestionsFailed',
   'generate.words.maxCount',
   'generate.words.sessionExpired',
+  'generate.words.categoryLevelLabel',
+  'generate.words.targetVocabularyLanguageLabel',
 ]
 
 for (const group of CATEGORY_GROUPS) {
@@ -74,15 +76,15 @@ for (const [key, expected] of Object.entries(expectedDe)) {
   assert.equal(translations.de[key], expected, `de translation for ${key}`)
 }
 
-// 4. CategoryPicker passes the original category .name (English) to fetchSuggestions.
-//    Verify the source still references cat.name in the API call body.
+// 4. CategoryPicker passes the original category .name (English) to /api/suggest-words.
+//    Verify the source still sends category.name in the API request body.
 const pickerSource = readFileSync(
   resolve(repoRoot, 'src/components/generate/steps/CategoryPicker.tsx'),
   'utf8',
 )
 assert.ok(
-  pickerSource.includes('fetchSuggestions(cat.name)'),
-  'CategoryPicker must invoke fetchSuggestions with the stable English cat.name (API contract).',
+  pickerSource.includes('category: category.name'),
+  'CategoryPicker must send the stable English category.name API contract.',
 )
 assert.ok(
   pickerSource.includes('// category is the API contract value'),

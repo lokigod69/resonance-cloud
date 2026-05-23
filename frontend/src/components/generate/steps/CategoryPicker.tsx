@@ -2,7 +2,13 @@ import { useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Loader2, Sparkles } from 'lucide-react'
 import PillButton from '../shared/PillButton'
-import { CATEGORY_GROUPS, PINNED_BOTTOM_CATEGORIES, type Category } from '@/data/categories'
+import {
+  PINNED_BOTTOM_CATEGORIES,
+  STATIC_CATEGORY_TARGET_LANGUAGES,
+  getPublicCategoryGroups,
+  getStaticCategoryWords,
+  type Category,
+} from '@/data/categories'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
@@ -18,6 +24,7 @@ type ExpansionStatus = 'idle' | 'loading' | 'error'
 interface CategoryPickerProps {
   state: WizardState
   onMergeWords: (words: string[]) => void
+  onTargetLanguageChange?: (language: string) => void
 }
 
 type SuggestWordsResponse = {
@@ -35,13 +42,17 @@ function extractSuggestedWords(data: SuggestWordsResponse, requestedCount: numbe
     .slice(0, requestedCount)
 }
 
-export default function CategoryPicker({ state, onMergeWords }: CategoryPickerProps) {
+export default function CategoryPicker({ state, onMergeWords, onTargetLanguageChange }: CategoryPickerProps) {
   const { profile } = useAuth()
   const { activeLanguage } = useLanguage()
   const { t } = useTranslation()
 
   const [isOpen, setIsOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState<Category | null>(null)
+  const [selectedStaticLevel, setSelectedStaticLevel] = useState<number | null>(null)
+  const [selectedTargetLanguage, setSelectedTargetLanguage] = useState<string>(
+    state.language || activeLanguage || 'English',
+  )
   const [suggestCount, setSuggestCount] = useState<number>(DEFAULT_CATEGORY_WORD_COUNT)
   const [status, setStatus] = useState<ExpansionStatus>('idle')
   const [error, setError] = useState<string | null>(null)
@@ -50,13 +61,14 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
   // user already switched away from) cannot overwrite the active expansion.
   const fetchSeq = useRef(0)
 
-  const targetLanguage = state.language || activeLanguage
+  const targetLanguage = selectedTargetLanguage || state.language || activeLanguage || 'English'
   const baseLanguage = profile?.base_language || 'English'
 
   function resetExpansion() {
     fetchSeq.current += 1
     setIsOpen(false)
     setActiveCategory(null)
+    setSelectedStaticLevel(null)
     setSuggestCount(DEFAULT_CATEGORY_WORD_COUNT)
     setStatus('idle')
     setError(null)
@@ -67,6 +79,7 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
       if (current) {
         fetchSeq.current += 1
         setActiveCategory(null)
+        setSelectedStaticLevel(null)
         setSuggestCount(DEFAULT_CATEGORY_WORD_COUNT)
         setStatus('idle')
         setError(null)
@@ -78,9 +91,15 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
   function handleTileClick(category: Category) {
     fetchSeq.current += 1
     setActiveCategory(category)
+    setSelectedStaticLevel(category.staticWordLevels?.[0]?.level ?? null)
     setSuggestCount(DEFAULT_CATEGORY_WORD_COUNT)
     setStatus('idle')
     setError(null)
+  }
+
+  function handleTargetLanguageChange(language: string) {
+    setSelectedTargetLanguage(language)
+    onTargetLanguageChange?.(language)
   }
 
   async function fetchSuggestions(category: Category, count: number) {
@@ -90,6 +109,14 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
       setStatus('error')
       return
     }
+
+    const staticWords = getStaticCategoryWords(category, requestedCount, selectedStaticLevel ?? undefined, targetLanguage)
+    if (staticWords.length > 0) {
+      onMergeWords(staticWords)
+      resetExpansion()
+      return
+    }
+
     const seq = ++fetchSeq.current
     setError(null)
     setStatus('loading')
@@ -106,6 +133,7 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
           Authorization: `Bearer ${sessionData.session.access_token}`,
         },
         body: JSON.stringify({
+          // category is the API contract value
           category: category.name,
           target_language: targetLanguage,
           base_language: baseLanguage,
@@ -150,6 +178,7 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
   }
 
   const selectedLabel = activeCategory ? t(activeCategory.labelKey) : null
+  const publicCategoryGroups = getPublicCategoryGroups()
 
   return (
     <motion.div
@@ -215,6 +244,51 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
                   </div>
 
                   <div className="word-count-slider-wrap mt-5">
+                    <div className="mb-5">
+                      <label htmlFor="static-category-target-language" className="mb-2 block text-sm font-semibold text-foreground">
+                        {t('generate.words.targetVocabularyLanguageLabel')}
+                      </label>
+                      <select
+                        id="static-category-target-language"
+                        value={targetLanguage}
+                        disabled={status === 'loading'}
+                        onChange={(event) => handleTargetLanguageChange(event.target.value)}
+                        className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
+                      >
+                        {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+                          <option key={language.code} value={language.value}>
+                            {language.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {activeCategory.staticWordLevels && activeCategory.staticWordLevels.length > 1 && (
+                      <div className="mb-5">
+                        <p className="mb-2 text-sm font-semibold text-foreground">
+                          {t('generate.words.categoryLevelLabel')}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {activeCategory.staticWordLevels.map((level) => (
+                            <button
+                              key={level.level}
+                              type="button"
+                              onClick={() => setSelectedStaticLevel(level.level)}
+                              aria-pressed={selectedStaticLevel === level.level}
+                              disabled={status === 'loading'}
+                              className={`min-h-[36px] rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+                                selectedStaticLevel === level.level
+                                  ? 'border-accent bg-accent text-foreground'
+                                  : 'border-border bg-card text-foreground/75 hover:border-accent hover:bg-accent/60'
+                              }`}
+                            >
+                              {t('categories.levelLabel', { number: level.level })}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     <label htmlFor="suggest-count-slider" className="text-sm font-semibold text-foreground">
                       {t('generate.words.categoryAmountLabel', { count: suggestCount })}
                     </label>
@@ -245,7 +319,7 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
                 </div>
               )}
 
-              {CATEGORY_GROUPS.map((group) => (
+              {publicCategoryGroups.map((group) => (
                 <div key={group.label}>
                   <h3 className="mb-3 text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                     <span aria-hidden="true">{group.emoji}</span> {t(group.groupKey)}

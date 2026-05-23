@@ -106,7 +106,11 @@ export default function WordsStep({
 
       <div className={`w-full min-w-0 space-y-5 ${state.productLane === 'card_premium' ? 'max-w-xl' : 'max-w-md'}`}>
         {/* Categories section - collapsed until the user wants generated suggestions */}
-        <CategoryPicker state={state} onMergeWords={handleMergeWords} />
+        <CategoryPicker
+          state={state}
+          onMergeWords={handleMergeWords}
+          onTargetLanguageChange={(language) => dispatch({ type: 'PRESELECT_LANGUAGE', language })}
+        />
 
         {/* Always-visible input */}
         {!isFull && (
