@@ -721,7 +721,7 @@ const GUIDED_TODAY_PATH_PORTUGUESE_TWO_METADATA: GuidedPathMetadata = {
   id: 'portuguese-a1-practical-2',
   title: 'Portuguese A1 Practical 2',
   shortTitle: 'A1 Practical 2',
-  subtitle: { de: 'Kleine Bitten am Tresen auf Portugiesisch' },
+  subtitle: { de: 'Kleine Bitten am Tresen auf Portugiesisch', en: 'Small counter requests in Portuguese' },
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'Portuguese',
@@ -21818,19 +21818,19 @@ const brightPortugueseP2Lesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Eu não entendo. Você pode me ajudar?',
-    baseText: { de: 'Ich verstehe nicht. Können Sie mir helfen?' },
+    baseText: { de: 'Ich verstehe nicht. Können Sie mir helfen?', en: "I don't understand. Can you help me?" },
   },
-  meaning: { de: 'Eine breitere Hilfebitte, wenn du nicht nur Wiederholung brauchst, sondern Unterstützung.' },
+  meaning: { de: 'Eine breitere Hilfebitte, wenn du nicht nur Wiederholung brauchst, sondern Unterstützung.', en: 'A broader request for help when you need more than just a repeat — you need someone to step in.' },
   chunks: [
-    { id: 'eu-nao-entendo', targetText: 'Eu não entendo.', baseText: { de: 'Ich verstehe nicht.' } },
-    { id: 'voce-pode', targetText: 'Você pode', baseText: { de: 'Können Sie / kannst du' } },
-    { id: 'me-ajudar', targetText: 'me ajudar?', baseText: { de: 'mir helfen?' } },
+    { id: 'eu-nao-entendo', targetText: 'Eu não entendo.', baseText: { de: 'Ich verstehe nicht.', en: "I don't understand." } },
+    { id: 'voce-pode', targetText: 'Você pode', baseText: { de: 'Können Sie / kannst du', en: 'Can you' } },
+    { id: 'me-ajudar', targetText: 'me ajudar?', baseText: { de: 'mir helfen?', en: 'help me?' } },
   ],
   lessonItems: [
-    { id: 'eu', targetText: 'eu', baseText: { de: 'ich' }, acceptedAnswers: ['eu', 'Eu'] },
-    { id: 'nao', targetText: 'não', baseText: { de: 'nicht / nein' }, acceptedAnswers: ['não', 'nao', 'Não', 'Nao'] },
-    { id: 'entendo', targetText: 'entendo', baseText: { de: 'ich verstehe' }, acceptedAnswers: ['entendo', 'Entendo'] },
-    { id: 'ajudar', targetText: 'ajudar', baseText: { de: 'helfen' }, acceptedAnswers: ['ajudar', 'Ajudar'] },
+    { id: 'eu', targetText: 'eu', baseText: { de: 'ich', en: 'I' }, acceptedAnswers: ['eu', 'Eu'] },
+    { id: 'nao', targetText: 'não', baseText: { de: 'nicht / nein', en: 'not / no' }, acceptedAnswers: ['não', 'nao', 'Não', 'Nao'] },
+    { id: 'entendo', targetText: 'entendo', baseText: { de: 'ich verstehe', en: 'I understand' }, acceptedAnswers: ['entendo', 'Entendo'] },
+    { id: 'ajudar', targetText: 'ajudar', baseText: { de: 'helfen', en: 'to help' }, acceptedAnswers: ['ajudar', 'Ajudar'] },
   ],
   build: {
     targetText: 'Eu não entendo. Você pode me ajudar?',
@@ -21844,23 +21844,23 @@ const brightPortugueseP2Lesson001: GuidedLessonVibeVariant = {
     fallbackChoices: ['entendo', 'entende', 'falo', 'preciso'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich verstehe nicht. Können Sie mir helfen?' },
+    baseCue: { de: 'Ich verstehe nicht. Können Sie mir helfen?', en: "I don't understand. Can you help me?" },
     targetPhrase: 'Eu não entendo. Você pode me ajudar?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['eu', 'nao', 'entendo', 'ajudar'],
     optionalTokens: ['não', 'voce', 'você', 'pode', 'me'],
   },
-  sceneCaption: { de: 'Am Ladentresen sagst du offen, dass du etwas nicht verstehst und Hilfe brauchst.' },
+  sceneCaption: { de: 'Am Ladentresen sagst du offen, dass du etwas nicht verstehst und Hilfe brauchst.', en: "At the shop counter, you openly say you don't understand and you need a hand." },
   trophyWord: {
     word: 'entendo',
-    meaning: { de: 'ich verstehe' },
+    meaning: { de: 'ich verstehe', en: 'I understand' },
     example: 'Eu não entendo.',
-    whyThisWord: { de: 'Entendo ist die A1-Ich-Form von entender. Das Beispiel zeigt die einfache portugiesische Negation mit não vor dem Verb, ohne doppelte Verneinung.' },
+    whyThisWord: { de: 'Entendo ist die A1-Ich-Form von entender. Das Beispiel zeigt die einfache portugiesische Negation mit não vor dem Verb, ohne doppelte Verneinung.', en: 'Entendo is the A1 "I" form of entender. Portuguese negates simply with não placed before the verb — no double negative needed.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Heller Tresen, kurze Pause, ruhige Bitte um Hilfe.' },
+    caption: { de: 'Heller Tresen, kurze Pause, ruhige Bitte um Hilfe.', en: 'Bright counter, a short pause, a calm request for help.' },
   },
   songSeed: {
     genre: 'bright acoustic bossa-pop',
@@ -21873,19 +21873,19 @@ const brightPortugueseP2Lesson002: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Você pode escrever isso, por favor?',
-    baseText: { de: 'Können Sie das bitte aufschreiben?' },
+    baseText: { de: 'Können Sie das bitte aufschreiben?', en: 'Could you write that down, please?' },
   },
-  meaning: { de: 'Eine höfliche Bitte, genaue Informationen schriftlich zu bekommen.' },
+  meaning: { de: 'Eine höfliche Bitte, genaue Informationen schriftlich zu bekommen.', en: 'A polite request to get exact information in writing.' },
   chunks: [
-    { id: 'voce-pode', targetText: 'Você pode', baseText: { de: 'Können Sie / kannst du' } },
-    { id: 'escrever-isso', targetText: 'escrever isso,', baseText: { de: 'das schreiben,' } },
-    { id: 'por-favor', targetText: 'por favor?', baseText: { de: 'bitte?' } },
+    { id: 'voce-pode', targetText: 'Você pode', baseText: { de: 'Können Sie / kannst du', en: 'Can you' } },
+    { id: 'escrever-isso', targetText: 'escrever isso,', baseText: { de: 'das schreiben,', en: 'write that down,' } },
+    { id: 'por-favor', targetText: 'por favor?', baseText: { de: 'bitte?', en: 'please?' } },
   ],
   lessonItems: [
-    { id: 'voce', targetText: 'você', baseText: { de: 'Sie / du' }, acceptedAnswers: ['você', 'voce', 'Você', 'Voce'] },
-    { id: 'escrever', targetText: 'escrever', baseText: { de: 'schreiben' }, acceptedAnswers: ['escrever', 'Escrever'] },
-    { id: 'isso', targetText: 'isso', baseText: { de: 'das' }, acceptedAnswers: ['isso', 'Isso'] },
-    { id: 'numero', targetText: 'número', baseText: { de: 'Nummer' }, acceptedAnswers: ['número', 'numero', 'Número', 'Numero'] },
+    { id: 'voce', targetText: 'você', baseText: { de: 'Sie / du', en: 'you' }, acceptedAnswers: ['você', 'voce', 'Você', 'Voce'] },
+    { id: 'escrever', targetText: 'escrever', baseText: { de: 'schreiben', en: 'to write' }, acceptedAnswers: ['escrever', 'Escrever'] },
+    { id: 'isso', targetText: 'isso', baseText: { de: 'das', en: 'that' }, acceptedAnswers: ['isso', 'Isso'] },
+    { id: 'numero', targetText: 'número', baseText: { de: 'Nummer', en: 'number' }, acceptedAnswers: ['número', 'numero', 'Número', 'Numero'] },
   ],
   build: {
     targetText: 'Você pode escrever isso, por favor?',
@@ -21899,23 +21899,23 @@ const brightPortugueseP2Lesson002: GuidedLessonVibeVariant = {
     fallbackChoices: ['escrever', 'mostrar', 'pagar', 'esperar'],
   },
   speakTarget: {
-    baseCue: { de: 'Können Sie das bitte aufschreiben?' },
+    baseCue: { de: 'Können Sie das bitte aufschreiben?', en: 'Could you write that down, please?' },
     targetPhrase: 'Você pode escrever isso, por favor?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['voce', 'pode', 'escrever', 'isso'],
     optionalTokens: ['você', 'por', 'favor', 'numero', 'número'],
   },
-  sceneCaption: { de: 'Am Schalter bittest du darum, eine Nummer oder Adresse aufzuschreiben.' },
+  sceneCaption: { de: 'Am Schalter bittest du darum, eine Nummer oder Adresse aufzuschreiben.', en: 'At the counter, you ask someone to write down a number or address.' },
   trophyWord: {
     word: 'escrever',
-    meaning: { de: 'schreiben' },
+    meaning: { de: 'schreiben', en: 'to write' },
     example: 'Você pode escrever isso?',
-    whyThisWord: { de: 'Escrever ist das A1-Verb für schriftliche Genauigkeit. Mit você bleibt die Bitte neutral und das Modal pode steht korrekt in der 3. Person Singular.' },
+    whyThisWord: { de: 'Escrever ist das A1-Verb für schriftliche Genauigkeit. Mit você bleibt die Bitte neutral und das Modal pode steht korrekt in der 3. Person Singular.', en: 'Escrever is the A1 verb for getting things in writing. With você, the modal pode stays in the third-person singular form — same shape you would use with ele or ela.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Notizzettel am Schalter, eine genaue Information wird aufgeschrieben.' },
+    caption: { de: 'Notizzettel am Schalter, eine genaue Information wird aufgeschrieben.', en: 'A notepad on the counter as an exact detail is written down.' },
   },
   songSeed: {
     genre: 'light acoustic bossa-pop',
@@ -21928,19 +21928,19 @@ const brightPortugueseP2Lesson003: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Você pode me mostrar no mapa?',
-    baseText: { de: 'Können Sie es mir auf der Karte zeigen?' },
+    baseText: { de: 'Können Sie es mir auf der Karte zeigen?', en: 'Can you show me on the map?' },
   },
-  meaning: { de: 'Eine Bitte, einen Ort auf einer Karte oder einem Handy sichtbar zu zeigen.' },
+  meaning: { de: 'Eine Bitte, einen Ort auf einer Karte oder einem Handy sichtbar zu zeigen.', en: 'A request to point out a place visibly on a map or phone screen.' },
   chunks: [
-    { id: 'voce-pode', targetText: 'Você pode', baseText: { de: 'Können Sie / kannst du' } },
-    { id: 'me-mostrar', targetText: 'me mostrar', baseText: { de: 'mir zeigen' } },
-    { id: 'no-mapa', targetText: 'no mapa?', baseText: { de: 'auf der Karte?' } },
+    { id: 'voce-pode', targetText: 'Você pode', baseText: { de: 'Können Sie / kannst du', en: 'Can you' } },
+    { id: 'me-mostrar', targetText: 'me mostrar', baseText: { de: 'mir zeigen', en: 'show me' } },
+    { id: 'no-mapa', targetText: 'no mapa?', baseText: { de: 'auf der Karte?', en: 'on the map?' } },
   ],
   lessonItems: [
-    { id: 'mostrar', targetText: 'mostrar', baseText: { de: 'zeigen' }, acceptedAnswers: ['mostrar', 'Mostrar'] },
-    { id: 'mapa', targetText: 'mapa', baseText: { de: 'Karte / Stadtplan' }, acceptedAnswers: ['mapa', 'Mapa'] },
-    { id: 'no-mapa', targetText: 'no mapa', baseText: { de: 'auf der Karte' }, acceptedAnswers: ['no mapa', 'No mapa'] },
-    { id: 'me', targetText: 'me', baseText: { de: 'mir / mich' }, acceptedAnswers: ['me', 'Me'] },
+    { id: 'mostrar', targetText: 'mostrar', baseText: { de: 'zeigen', en: 'to show' }, acceptedAnswers: ['mostrar', 'Mostrar'] },
+    { id: 'mapa', targetText: 'mapa', baseText: { de: 'Karte / Stadtplan', en: 'map' }, acceptedAnswers: ['mapa', 'Mapa'] },
+    { id: 'no-mapa', targetText: 'no mapa', baseText: { de: 'auf der Karte', en: 'on the map' }, acceptedAnswers: ['no mapa', 'No mapa'] },
+    { id: 'me', targetText: 'me', baseText: { de: 'mir / mich', en: 'me / to me' }, acceptedAnswers: ['me', 'Me'] },
   ],
   build: {
     targetText: 'Você pode me mostrar no mapa?',
@@ -21954,23 +21954,23 @@ const brightPortugueseP2Lesson003: GuidedLessonVibeVariant = {
     fallbackChoices: ['mapa', 'rua', 'cartão', 'recibo'],
   },
   speakTarget: {
-    baseCue: { de: 'Können Sie es mir auf der Karte zeigen?' },
+    baseCue: { de: 'Können Sie es mir auf der Karte zeigen?', en: 'Can you show me on the map?' },
     targetPhrase: 'Você pode me mostrar no mapa?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['voce', 'pode', 'mostrar', 'mapa'],
     optionalTokens: ['você', 'me', 'no'],
   },
-  sceneCaption: { de: 'Auf dem Gehweg hältst du dein Handy hin und bittest um einen sichtbaren Hinweis.' },
+  sceneCaption: { de: 'Auf dem Gehweg hältst du dein Handy hin und bittest um einen sichtbaren Hinweis.', en: 'On the sidewalk, you hold out your phone and ask for a visible pointer.' },
   trophyWord: {
     word: 'mapa',
-    meaning: { de: 'Karte / Stadtplan' },
+    meaning: { de: 'Karte / Stadtplan', en: 'map' },
     example: 'Você pode me mostrar no mapa?',
-    whyThisWord: { de: 'Mapa ist im Portugiesischen maskulin: o mapa. No mapa ist die korrekte Kontraktion aus em + o mapa; die Trophäe steht direkt in der produktiven Bitte.' },
+    whyThisWord: { de: 'Mapa ist im Portugiesischen maskulin: o mapa. No mapa ist die korrekte Kontraktion aus em + o mapa; die Trophäe steht direkt in der produktiven Bitte.', en: 'Mapa is masculine in Portuguese — o mapa, despite ending in -a. No mapa is the standard contraction of em + o, a pattern you will use constantly.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Handykarte zwischen zwei Personen, ein Finger zeigt den Weg.' },
+    caption: { de: 'Handykarte zwischen zwei Personen, ein Finger zeigt den Weg.', en: 'A phone map between two people, a finger tracing the route.' },
   },
   songSeed: {
     genre: 'sunny acoustic travel pop',
@@ -21983,18 +21983,18 @@ const brightPortugueseP2Lesson004: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Qual é melhor, este ou esse?',
-    baseText: { de: 'Welches ist besser, dieses hier oder das da?' },
+    baseText: { de: 'Welches ist besser, dieses hier oder das da?', en: 'Which is better, this one or that one?' },
   },
-  meaning: { de: 'Eine einfache Auswahlfrage zwischen zwei sichtbaren Optionen.' },
+  meaning: { de: 'Eine einfache Auswahlfrage zwischen zwei sichtbaren Optionen.', en: 'A simple choice question between two visible options.' },
   chunks: [
-    { id: 'qual-e-melhor', targetText: 'Qual é melhor,', baseText: { de: 'Welches ist besser,' } },
-    { id: 'este-ou-esse', targetText: 'este ou esse?', baseText: { de: 'dieses hier oder das da?' } },
+    { id: 'qual-e-melhor', targetText: 'Qual é melhor,', baseText: { de: 'Welches ist besser,', en: 'Which is better,' } },
+    { id: 'este-ou-esse', targetText: 'este ou esse?', baseText: { de: 'dieses hier oder das da?', en: 'this one or that one?' } },
   ],
   lessonItems: [
-    { id: 'qual', targetText: 'qual', baseText: { de: 'welches' }, acceptedAnswers: ['qual', 'Qual'] },
-    { id: 'melhor', targetText: 'melhor', baseText: { de: 'besser' }, acceptedAnswers: ['melhor', 'Melhor'] },
-    { id: 'este', targetText: 'este', baseText: { de: 'dieses hier' }, acceptedAnswers: ['este', 'Este'] },
-    { id: 'esse', targetText: 'esse', baseText: { de: 'das da' }, acceptedAnswers: ['esse', 'Esse'] },
+    { id: 'qual', targetText: 'qual', baseText: { de: 'welches', en: 'which' }, acceptedAnswers: ['qual', 'Qual'] },
+    { id: 'melhor', targetText: 'melhor', baseText: { de: 'besser', en: 'better' }, acceptedAnswers: ['melhor', 'Melhor'] },
+    { id: 'este', targetText: 'este', baseText: { de: 'dieses hier', en: 'this one' }, acceptedAnswers: ['este', 'Este'] },
+    { id: 'esse', targetText: 'esse', baseText: { de: 'das da', en: 'that one' }, acceptedAnswers: ['esse', 'Esse'] },
   ],
   build: {
     targetText: 'Qual é melhor, este ou esse?',
@@ -22008,23 +22008,23 @@ const brightPortugueseP2Lesson004: GuidedLessonVibeVariant = {
     fallbackChoices: ['melhor', 'bonito', 'caro', 'novo'],
   },
   speakTarget: {
-    baseCue: { de: 'Welches ist besser, dieses hier oder das da?' },
+    baseCue: { de: 'Welches ist besser, dieses hier oder das da?', en: 'Which is better, this one or that one?' },
     targetPhrase: 'Qual é melhor, este ou esse?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['qual', 'melhor', 'este', 'esse'],
     optionalTokens: ['é', 'e', 'ou'],
   },
-  sceneCaption: { de: 'In der Bäckerei vergleichst du zwei sichtbare Optionen am Tresen.' },
+  sceneCaption: { de: 'In der Bäckerei vergleichst du zwei sichtbare Optionen am Tresen.', en: 'At the bakery, you compare two visible options on the counter.' },
   trophyWord: {
     word: 'melhor',
-    meaning: { de: 'besser' },
+    meaning: { de: 'besser', en: 'better' },
     example: 'Qual é melhor, este ou esse?',
-    whyThisWord: { de: 'Melhor ist ein sehr häufiges A1-Vergleichswort. Este und esse markieren zwei sichtbare Optionen; im Portugiesischen gibt es keine spanischen umgedrehten Fragezeichen.' },
+    whyThisWord: { de: 'Melhor ist ein sehr häufiges A1-Vergleichswort. Este und esse markieren zwei sichtbare Optionen; im Portugiesischen gibt es keine spanischen umgedrehten Fragezeichen.', en: 'Melhor is a super-common A1 comparison word. Brazilian Portuguese leans on este (this one, near me) versus esse (that one, near you) — handy when both items are on the counter.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Zwei sichtbare Backwaren, kurze Auswahlfrage.' },
+    caption: { de: 'Zwei sichtbare Backwaren, kurze Auswahlfrage.', en: 'Two visible pastries, a quick choice question.' },
   },
   songSeed: {
     genre: 'bright cafe acoustic',
@@ -22037,18 +22037,18 @@ const brightPortugueseP2Lesson005: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Você tem isso disponível?',
-    baseText: { de: 'Haben Sie das verfügbar?' },
+    baseText: { de: 'Haben Sie das verfügbar?', en: 'Do you have this available?' },
   },
-  meaning: { de: 'Eine kurze Frage, ob ein Artikel gerade verfügbar ist.' },
+  meaning: { de: 'Eine kurze Frage, ob ein Artikel gerade verfügbar ist.', en: 'A quick question to check whether an item is currently in stock.' },
   chunks: [
-    { id: 'voce-tem', targetText: 'Você tem', baseText: { de: 'Haben Sie / hast du' } },
-    { id: 'isso-disponivel', targetText: 'isso disponível?', baseText: { de: 'das verfügbar?' } },
+    { id: 'voce-tem', targetText: 'Você tem', baseText: { de: 'Haben Sie / hast du', en: 'Do you have' } },
+    { id: 'isso-disponivel', targetText: 'isso disponível?', baseText: { de: 'das verfügbar?', en: 'this available?' } },
   ],
   lessonItems: [
-    { id: 'tem', targetText: 'tem', baseText: { de: 'hat / haben Sie' }, acceptedAnswers: ['tem', 'Tem'] },
-    { id: 'disponivel', targetText: 'disponível', baseText: { de: 'verfügbar' }, acceptedAnswers: ['disponível', 'disponivel', 'Disponível', 'Disponivel'] },
-    { id: 'isso', targetText: 'isso', baseText: { de: 'das' }, acceptedAnswers: ['isso', 'Isso'] },
-    { id: 'loja', targetText: 'loja', baseText: { de: 'Laden' }, acceptedAnswers: ['loja', 'Loja'] },
+    { id: 'tem', targetText: 'tem', baseText: { de: 'hat / haben Sie', en: 'has / you have' }, acceptedAnswers: ['tem', 'Tem'] },
+    { id: 'disponivel', targetText: 'disponível', baseText: { de: 'verfügbar', en: 'available' }, acceptedAnswers: ['disponível', 'disponivel', 'Disponível', 'Disponivel'] },
+    { id: 'isso', targetText: 'isso', baseText: { de: 'das', en: 'this / that' }, acceptedAnswers: ['isso', 'Isso'] },
+    { id: 'loja', targetText: 'loja', baseText: { de: 'Laden', en: 'shop / store' }, acceptedAnswers: ['loja', 'Loja'] },
   ],
   build: {
     targetText: 'Você tem isso disponível?',
@@ -22062,23 +22062,23 @@ const brightPortugueseP2Lesson005: GuidedLessonVibeVariant = {
     fallbackChoices: ['disponível', 'novo', 'melhor', 'caro'],
   },
   speakTarget: {
-    baseCue: { de: 'Haben Sie das verfügbar?' },
+    baseCue: { de: 'Haben Sie das verfügbar?', en: 'Do you have this available?' },
     targetPhrase: 'Você tem isso disponível?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['voce', 'tem', 'isso', 'disponivel'],
     optionalTokens: ['você', 'disponível', 'na', 'loja'],
   },
-  sceneCaption: { de: 'Im kleinen Laden fragst du, ob ein gewünschter Artikel gerade verfügbar ist.' },
+  sceneCaption: { de: 'Im kleinen Laden fragst du, ob ein gewünschter Artikel gerade verfügbar ist.', en: "In a small shop, you ask whether the item you want is in stock right now." },
   trophyWord: {
     word: 'disponível',
-    meaning: { de: 'verfügbar' },
+    meaning: { de: 'verfügbar', en: 'available' },
     example: 'Você tem isso disponível?',
-    whyThisWord: { de: 'Disponível ist die natürliche brasilianische Service-Frage für verfügbar. Sie vermeidet englisches Retail-Jargon wie Stock und bleibt mit você tem im A1-Präsens.' },
+    whyThisWord: { de: 'Disponível ist die natürliche brasilianische Service-Frage für verfügbar. Sie vermeidet englisches Retail-Jargon wie Stock und bleibt mit você tem im A1-Präsens.', en: 'Disponível is the natural Brazilian word for available. It pairs perfectly with você tem in the present tense, the simplest shape an A1 learner needs at a shop counter.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kleiner Laden, Regal und Tresen, Frage nach Verfügbarkeit.' },
+    caption: { de: 'Kleiner Laden, Regal und Tresen, Frage nach Verfügbarkeit.', en: 'A small shop, shelves and counter, a question about availability.' },
   },
   songSeed: {
     genre: 'light shop acoustic',
@@ -22091,18 +22091,18 @@ const brightPortugueseP2Lesson006: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Posso pagar com cartão?',
-    baseText: { de: 'Kann ich mit Karte bezahlen?' },
+    baseText: { de: 'Kann ich mit Karte bezahlen?', en: 'Can I pay by card?' },
   },
-  meaning: { de: 'Eine natürliche Frage an der Kasse, ob Kartenzahlung geht.' },
+  meaning: { de: 'Eine natürliche Frage an der Kasse, ob Kartenzahlung geht.', en: 'A natural question at the till to check if card payment is accepted.' },
   chunks: [
-    { id: 'posso-pagar', targetText: 'Posso pagar', baseText: { de: 'Kann ich bezahlen' } },
-    { id: 'com-cartao', targetText: 'com cartão?', baseText: { de: 'mit Karte?' } },
+    { id: 'posso-pagar', targetText: 'Posso pagar', baseText: { de: 'Kann ich bezahlen', en: 'Can I pay' } },
+    { id: 'com-cartao', targetText: 'com cartão?', baseText: { de: 'mit Karte?', en: 'by card?' } },
   ],
   lessonItems: [
-    { id: 'posso', targetText: 'posso', baseText: { de: 'ich kann / darf ich' }, acceptedAnswers: ['posso', 'Posso'] },
-    { id: 'pagar', targetText: 'pagar', baseText: { de: 'bezahlen' }, acceptedAnswers: ['pagar', 'Pagar'] },
-    { id: 'cartao', targetText: 'cartão', baseText: { de: 'Karte' }, acceptedAnswers: ['cartão', 'cartao', 'Cartão', 'Cartao'] },
-    { id: 'com-cartao', targetText: 'com cartão', baseText: { de: 'mit Karte' }, acceptedAnswers: ['com cartão', 'com cartao', 'Com cartão', 'Com cartao'] },
+    { id: 'posso', targetText: 'posso', baseText: { de: 'ich kann / darf ich', en: 'I can / may I' }, acceptedAnswers: ['posso', 'Posso'] },
+    { id: 'pagar', targetText: 'pagar', baseText: { de: 'bezahlen', en: 'to pay' }, acceptedAnswers: ['pagar', 'Pagar'] },
+    { id: 'cartao', targetText: 'cartão', baseText: { de: 'Karte', en: 'card' }, acceptedAnswers: ['cartão', 'cartao', 'Cartão', 'Cartao'] },
+    { id: 'com-cartao', targetText: 'com cartão', baseText: { de: 'mit Karte', en: 'by card' }, acceptedAnswers: ['com cartão', 'com cartao', 'Com cartão', 'Com cartao'] },
   ],
   build: {
     targetText: 'Posso pagar com cartão?',
@@ -22116,23 +22116,23 @@ const brightPortugueseP2Lesson006: GuidedLessonVibeVariant = {
     fallbackChoices: ['cartão', 'mapa', 'sacola', 'recibo'],
   },
   speakTarget: {
-    baseCue: { de: 'Kann ich mit Karte bezahlen?' },
+    baseCue: { de: 'Kann ich mit Karte bezahlen?', en: 'Can I pay by card?' },
     targetPhrase: 'Posso pagar com cartão?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['posso', 'pagar', 'cartao'],
     optionalTokens: ['cartão', 'com'],
   },
-  sceneCaption: { de: 'An der Kasse fragst du kurz, ob Kartenzahlung möglich ist.' },
+  sceneCaption: { de: 'An der Kasse fragst du kurz, ob Kartenzahlung möglich ist.', en: 'At the till, you quickly ask whether you can pay by card.' },
   trophyWord: {
     word: 'cartão',
-    meaning: { de: 'Karte' },
+    meaning: { de: 'Karte', en: 'card' },
     example: 'Posso pagar com cartão?',
-    whyThisWord: { de: 'Cartão trägt die typische Nasalendung ão und ist das brasilianische A1-Wort für Karte. Die kanonische Schreibweise behält die Tilde; Tippfehler ohne Akzent werden akzeptiert.' },
+    whyThisWord: { de: 'Cartão trägt die typische Nasalendung ão und ist das brasilianische A1-Wort für Karte. Die kanonische Schreibweise behält die Tilde; Tippfehler ohne Akzent werden akzeptiert.', en: 'Cartão ends in the classic Portuguese nasal -ão, pronounced through the nose. Keep the tilde when you can, but the app accepts cartao without it.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kartenterminal an heller Kasse, kurze Zahlungsfrage.' },
+    caption: { de: 'Kartenterminal an heller Kasse, kurze Zahlungsfrage.', en: 'A card reader at a bright till, a quick payment question.' },
   },
   songSeed: {
     genre: 'bright acoustic checkout pop',
@@ -22145,19 +22145,19 @@ const brightPortugueseP2Lesson007: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'A nota fiscal e uma sacola, por favor.',
-    baseText: { de: 'Die Quittung und eine Tüte, bitte.' },
+    baseText: { de: 'Die Quittung und eine Tüte, bitte.', en: 'The receipt and a bag, please.' },
   },
-  meaning: { de: 'Eine kurze Abschlussbitte nach dem Bezahlen.' },
+  meaning: { de: 'Eine kurze Abschlussbitte nach dem Bezahlen.', en: 'A short closing request after paying.' },
   chunks: [
-    { id: 'a-nota-fiscal', targetText: 'A nota fiscal', baseText: { de: 'Die Quittung' } },
-    { id: 'e-uma-sacola', targetText: 'e uma sacola,', baseText: { de: 'und eine Tüte,' } },
-    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.' } },
+    { id: 'a-nota-fiscal', targetText: 'A nota fiscal', baseText: { de: 'Die Quittung', en: 'The receipt' } },
+    { id: 'e-uma-sacola', targetText: 'e uma sacola,', baseText: { de: 'und eine Tüte,', en: 'and a bag,' } },
+    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'nota-fiscal', targetText: 'nota fiscal', baseText: { de: 'Quittung / Steuerbeleg' }, acceptedAnswers: ['nota fiscal', 'Nota fiscal'] },
-    { id: 'sacola', targetText: 'sacola', baseText: { de: 'Tüte' }, acceptedAnswers: ['sacola', 'Sacola'] },
-    { id: 'uma-sacola', targetText: 'uma sacola', baseText: { de: 'eine Tüte' }, acceptedAnswers: ['uma sacola', 'Uma sacola'] },
-    { id: 'e', targetText: 'e', baseText: { de: 'und' }, acceptedAnswers: ['e', 'E'] },
+    { id: 'nota-fiscal', targetText: 'nota fiscal', baseText: { de: 'Quittung / Steuerbeleg', en: 'receipt' }, acceptedAnswers: ['nota fiscal', 'Nota fiscal'] },
+    { id: 'sacola', targetText: 'sacola', baseText: { de: 'Tüte', en: 'bag' }, acceptedAnswers: ['sacola', 'Sacola'] },
+    { id: 'uma-sacola', targetText: 'uma sacola', baseText: { de: 'eine Tüte', en: 'a bag' }, acceptedAnswers: ['uma sacola', 'Uma sacola'] },
+    { id: 'e', targetText: 'e', baseText: { de: 'und', en: 'and' }, acceptedAnswers: ['e', 'E'] },
   ],
   build: {
     targetText: 'A nota fiscal e uma sacola, por favor.',
@@ -22171,23 +22171,23 @@ const brightPortugueseP2Lesson007: GuidedLessonVibeVariant = {
     fallbackChoices: ['sacola', 'reserva', 'loja', 'conta'],
   },
   speakTarget: {
-    baseCue: { de: 'Die Quittung und eine Tüte, bitte.' },
+    baseCue: { de: 'Die Quittung und eine Tüte, bitte.', en: 'The receipt and a bag, please.' },
     targetPhrase: 'A nota fiscal e uma sacola, por favor.',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['nota', 'fiscal', 'sacola'],
     optionalTokens: ['a', 'e', 'uma', 'por', 'favor'],
   },
-  sceneCaption: { de: 'Nach dem Bezahlen bittest du um den Beleg und eine Tüte.' },
+  sceneCaption: { de: 'Nach dem Bezahlen bittest du um den Beleg und eine Tüte.', en: 'After paying, you ask for the receipt and a bag.' },
   trophyWord: {
     word: 'sacola',
-    meaning: { de: 'Tüte' },
+    meaning: { de: 'Tüte', en: 'bag' },
     example: 'Uma sacola, por favor.',
-    whyThisWord: { de: 'Sacola ist in Brasilien die natürliche Alltagstüte im Laden. Uma zeigt die feminine Form; das Beispiel hält die Trophäe in einer produktiven Kassenbitte.' },
+    whyThisWord: { de: 'Sacola ist in Brasilien die natürliche Alltagstüte im Laden. Uma zeigt die feminine Form; das Beispiel hält die Trophäe in einer produktiven Kassenbitte.', en: 'Sacola is the everyday Brazilian word for a shop bag — in Portugal you would more often hear saco. The feminine uma signals its gender: a sacola.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kasse, Beleg und kleine Einkaufstüte.' },
+    caption: { de: 'Kasse, Beleg und kleine Einkaufstüte.', en: 'A till, a receipt, and a small shopping bag.' },
   },
   songSeed: {
     genre: 'soft acoustic checkout',
@@ -22200,19 +22200,19 @@ const brightPortugueseP2Lesson008: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Eu tenho uma reserva em nome de Ana.',
-    baseText: { de: 'Ich habe eine Reservierung auf den Namen Ana.' },
+    baseText: { de: 'Ich habe eine Reservierung auf den Namen Ana.', en: 'I have a reservation under the name Ana.' },
   },
-  meaning: { de: 'Eine einfache Ankunftsformel an einem Service- oder Restauranttresen.' },
+  meaning: { de: 'Eine einfache Ankunftsformel an einem Service- oder Restauranttresen.', en: 'A simple arrival line at a restaurant or service desk.' },
   chunks: [
-    { id: 'eu-tenho', targetText: 'Eu tenho', baseText: { de: 'Ich habe' } },
-    { id: 'uma-reserva', targetText: 'uma reserva', baseText: { de: 'eine Reservierung' } },
-    { id: 'em-nome-de-ana', targetText: 'em nome de Ana.', baseText: { de: 'auf den Namen Ana.' } },
+    { id: 'eu-tenho', targetText: 'Eu tenho', baseText: { de: 'Ich habe', en: 'I have' } },
+    { id: 'uma-reserva', targetText: 'uma reserva', baseText: { de: 'eine Reservierung', en: 'a reservation' } },
+    { id: 'em-nome-de-ana', targetText: 'em nome de Ana.', baseText: { de: 'auf den Namen Ana.', en: 'under the name Ana.' } },
   ],
   lessonItems: [
-    { id: 'tenho', targetText: 'tenho', baseText: { de: 'ich habe' }, acceptedAnswers: ['tenho', 'Tenho'] },
-    { id: 'reserva', targetText: 'reserva', baseText: { de: 'Reservierung' }, acceptedAnswers: ['reserva', 'Reserva'] },
-    { id: 'nome', targetText: 'nome', baseText: { de: 'Name' }, acceptedAnswers: ['nome', 'Nome'] },
-    { id: 'em-nome', targetText: 'em nome', baseText: { de: 'auf den Namen' }, acceptedAnswers: ['em nome', 'Em nome'] },
+    { id: 'tenho', targetText: 'tenho', baseText: { de: 'ich habe', en: 'I have' }, acceptedAnswers: ['tenho', 'Tenho'] },
+    { id: 'reserva', targetText: 'reserva', baseText: { de: 'Reservierung', en: 'reservation' }, acceptedAnswers: ['reserva', 'Reserva'] },
+    { id: 'nome', targetText: 'nome', baseText: { de: 'Name', en: 'name' }, acceptedAnswers: ['nome', 'Nome'] },
+    { id: 'em-nome', targetText: 'em nome', baseText: { de: 'auf den Namen', en: 'under the name' }, acceptedAnswers: ['em nome', 'Em nome'] },
   ],
   build: {
     targetText: 'Eu tenho uma reserva em nome de Ana.',
@@ -22226,23 +22226,23 @@ const brightPortugueseP2Lesson008: GuidedLessonVibeVariant = {
     fallbackChoices: ['reserva', 'sacola', 'nota', 'loja'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich habe eine Reservierung auf den Namen Ana.' },
+    baseCue: { de: 'Ich habe eine Reservierung auf den Namen Ana.', en: 'I have a reservation under the name Ana.' },
     targetPhrase: 'Eu tenho uma reserva em nome de Ana.',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['eu', 'tenho', 'reserva', 'nome'],
     optionalTokens: ['uma', 'em', 'de', 'ana'],
   },
-  sceneCaption: { de: 'Am Restaurant-Empfang nennst du ruhig deine vorhandene Reservierung.' },
+  sceneCaption: { de: 'Am Restaurant-Empfang nennst du ruhig deine vorhandene Reservierung.', en: 'At the restaurant host stand, you calmly mention the reservation you already have.' },
   trophyWord: {
     word: 'reserva',
-    meaning: { de: 'Reservierung' },
+    meaning: { de: 'Reservierung', en: 'reservation' },
     example: 'Eu tenho uma reserva.',
-    whyThisWord: { de: 'Reserva ist ein A1-Servicewort für Restaurant und Schalter. Uma reserva zeigt feminine Übereinstimmung; em nome de ist die natürliche brasilianische Formel für den Namen in der Liste.' },
+    whyThisWord: { de: 'Reserva ist ein A1-Servicewort für Restaurant und Schalter. Uma reserva zeigt feminine Übereinstimmung; em nome de ist die natürliche brasilianische Formel für den Namen in der Liste.', en: 'Reserva is feminine, so it takes uma. Em nome de is the standard Brazilian phrase for naming who the booking is under — you will hear it at restaurants, hotels, and clinics.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Reservierungsliste am Empfang, ruhige Ankunft.' },
+    caption: { de: 'Reservierungsliste am Empfang, ruhige Ankunft.', en: 'A reservation list at the host stand, a calm arrival.' },
   },
   songSeed: {
     genre: 'warm acoustic bossa-pop',
@@ -22255,18 +22255,18 @@ const brightPortugueseP2Lesson009: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'É este, certo?',
-    baseText: { de: 'Das ist dieses hier, richtig?' },
+    baseText: { de: 'Das ist dieses hier, richtig?', en: 'It is this one, right?' },
   },
-  meaning: { de: 'Eine kurze Bestätigung, bevor du dich für einen Gegenstand oder Ort entscheidest.' },
+  meaning: { de: 'Eine kurze Bestätigung, bevor du dich für einen Gegenstand oder Ort entscheidest.', en: 'A quick confirmation before you commit to an item or a place.' },
   chunks: [
-    { id: 'e-este', targetText: 'É este,', baseText: { de: 'Es ist dieses hier,' } },
-    { id: 'certo', targetText: 'certo?', baseText: { de: 'richtig?' } },
+    { id: 'e-este', targetText: 'É este,', baseText: { de: 'Es ist dieses hier,', en: 'It is this one,' } },
+    { id: 'certo', targetText: 'certo?', baseText: { de: 'richtig?', en: 'right?' } },
   ],
   lessonItems: [
-    { id: 'e', targetText: 'é', baseText: { de: 'ist' }, acceptedAnswers: ['é', 'e', 'É', 'E'] },
-    { id: 'este', targetText: 'este', baseText: { de: 'dieses hier' }, acceptedAnswers: ['este', 'Este'] },
-    { id: 'certo', targetText: 'certo', baseText: { de: 'richtig' }, acceptedAnswers: ['certo', 'Certo'] },
-    { id: 'errado', targetText: 'errado', baseText: { de: 'falsch' }, acceptedAnswers: ['errado', 'Errado'] },
+    { id: 'e', targetText: 'é', baseText: { de: 'ist', en: 'is' }, acceptedAnswers: ['é', 'e', 'É', 'E'] },
+    { id: 'este', targetText: 'este', baseText: { de: 'dieses hier', en: 'this one' }, acceptedAnswers: ['este', 'Este'] },
+    { id: 'certo', targetText: 'certo', baseText: { de: 'richtig', en: 'right / correct' }, acceptedAnswers: ['certo', 'Certo'] },
+    { id: 'errado', targetText: 'errado', baseText: { de: 'falsch', en: 'wrong' }, acceptedAnswers: ['errado', 'Errado'] },
   ],
   build: {
     targetText: 'É este, certo?',
@@ -22280,23 +22280,23 @@ const brightPortugueseP2Lesson009: GuidedLessonVibeVariant = {
     fallbackChoices: ['certo', 'melhor', 'caro', 'novo'],
   },
   speakTarget: {
-    baseCue: { de: 'Das ist dieses hier, richtig?' },
+    baseCue: { de: 'Das ist dieses hier, richtig?', en: 'It is this one, right?' },
     targetPhrase: 'É este, certo?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['este', 'certo'],
     optionalTokens: ['é', 'e', 'esse'],
   },
-  sceneCaption: { de: 'Vor dem Einsteigen oder Kaufen prüfst du kurz, ob es das richtige ist.' },
+  sceneCaption: { de: 'Vor dem Einsteigen oder Kaufen prüfst du kurz, ob es das richtige ist.', en: 'Before getting on or buying, you do a quick check that this is the right one.' },
   trophyWord: {
     word: 'certo',
-    meaning: { de: 'richtig' },
+    meaning: { de: 'richtig', en: 'right / correct' },
     example: 'É este, certo?',
-    whyThisWord: { de: 'Certo ist eine sehr natürliche brasilianische Rückfrage für richtig. Die Phrase bleibt allgemein, damit sie an Busstopp, Schalter oder Laden funktioniert.' },
+    whyThisWord: { de: 'Certo ist eine sehr natürliche brasilianische Rückfrage für richtig. Die Phrase bleibt allgemein, damit sie an Busstopp, Schalter oder Laden funktioniert.', en: 'Certo is the most natural Brazilian tag for right? It works at a bus stop, a ticket window, or a shop counter — anywhere you want a quick yes-or-no check.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Zeigegeste vor einer Entscheidung, kurze Bestätigung.' },
+    caption: { de: 'Zeigegeste vor einer Entscheidung, kurze Bestätigung.', en: 'A pointing gesture before a decision, a quick confirmation.' },
   },
   songSeed: {
     genre: 'bright acoustic pulse',
@@ -22309,18 +22309,18 @@ const brightPortugueseP2Lesson010: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Um momento, por favor.',
-    baseText: { de: 'Einen Moment, bitte.' },
+    baseText: { de: 'Einen Moment, bitte.', en: 'One moment, please.' },
   },
-  meaning: { de: 'Eine kurze Bitte um Zeit, während du Karte, Wort oder Antwort suchst.' },
+  meaning: { de: 'Eine kurze Bitte um Zeit, während du Karte, Wort oder Antwort suchst.', en: 'A short request for time while you look for a card, a word, or an answer.' },
   chunks: [
-    { id: 'um-momento', targetText: 'Um momento,', baseText: { de: 'Einen Moment,' } },
-    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.' } },
+    { id: 'um-momento', targetText: 'Um momento,', baseText: { de: 'Einen Moment,', en: 'One moment,' } },
+    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'um', targetText: 'um', baseText: { de: 'ein / einen' }, acceptedAnswers: ['um', 'Um'] },
-    { id: 'momento', targetText: 'momento', baseText: { de: 'Moment' }, acceptedAnswers: ['momento', 'Momento'] },
-    { id: 'esperar', targetText: 'esperar', baseText: { de: 'warten' }, acceptedAnswers: ['esperar', 'Esperar'] },
-    { id: 'por-favor', targetText: 'por favor', baseText: { de: 'bitte' }, acceptedAnswers: ['por favor', 'Por favor'] },
+    { id: 'um', targetText: 'um', baseText: { de: 'ein / einen', en: 'a / one' }, acceptedAnswers: ['um', 'Um'] },
+    { id: 'momento', targetText: 'momento', baseText: { de: 'Moment', en: 'moment' }, acceptedAnswers: ['momento', 'Momento'] },
+    { id: 'esperar', targetText: 'esperar', baseText: { de: 'warten', en: 'to wait' }, acceptedAnswers: ['esperar', 'Esperar'] },
+    { id: 'por-favor', targetText: 'por favor', baseText: { de: 'bitte', en: 'please' }, acceptedAnswers: ['por favor', 'Por favor'] },
   ],
   build: {
     targetText: 'Um momento, por favor.',
@@ -22334,23 +22334,23 @@ const brightPortugueseP2Lesson010: GuidedLessonVibeVariant = {
     fallbackChoices: ['momento', 'mapa', 'cartão', 'recibo'],
   },
   speakTarget: {
-    baseCue: { de: 'Einen Moment, bitte.' },
+    baseCue: { de: 'Einen Moment, bitte.', en: 'One moment, please.' },
     targetPhrase: 'Um momento, por favor.',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['um', 'momento'],
     optionalTokens: ['por', 'favor', 'esperar'],
   },
-  sceneCaption: { de: 'An der Kasse brauchst du kurz Zeit und bittest ruhig um einen Moment.' },
+  sceneCaption: { de: 'An der Kasse brauchst du kurz Zeit und bittest ruhig um einen Moment.', en: 'At the till, you need a moment and calmly ask for one.' },
   trophyWord: {
     word: 'momento',
-    meaning: { de: 'Moment' },
+    meaning: { de: 'Moment', en: 'moment' },
     example: 'Um momento, por favor.',
-    whyThisWord: { de: 'Um momento, por favor ist die natürliche A1-Formel für eine kurze Pause. Momento ist maskulin, daher um momento.' },
+    whyThisWord: { de: 'Um momento, por favor ist die natürliche A1-Formel für eine kurze Pause. Momento ist maskulin, daher um momento.', en: 'Um momento, por favor is the go-to A1 phrase for buying yourself a few seconds. Momento is masculine, which is why it takes um (not uma).' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kurze Pause am Tresen, Karte oder Wort wird gesucht.' },
+    caption: { de: 'Kurze Pause am Tresen, Karte oder Wort wird gesucht.', en: 'A brief pause at the counter while looking for a card or a word.' },
   },
   songSeed: {
     genre: 'gentle acoustic bossa-pop',
@@ -58169,9 +58169,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-2-lesson-1-nao-entendo',
       sequence: 1,
-      title: { de: 'Ich verstehe nicht' },
+      title: { de: 'Ich verstehe nicht', en: "I don't understand" },
     },
-    title: { de: 'Ich verstehe nicht' },
+    title: { de: 'Ich verstehe nicht', en: "I don't understand" },
     situation: {
       en: 'At a shop counter, admit you do not understand and ask for help.',
       de: 'Am Tresen sagst du, dass du nicht verstehst, und bittest um Hilfe.',
@@ -58183,8 +58183,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Bitte aufschreiben' },
-      situation: { de: 'Du bittest darum, genaue Informationen aufzuschreiben.' },
+      title: { de: 'Bitte aufschreiben', en: 'Please write it down' },
+      situation: { de: 'Du bittest darum, genaue Informationen aufzuschreiben.', en: 'You ask someone to write exact information down for you.' },
     },
     vibeVariants: {
       bright: brightPortugueseP2Lesson001,
@@ -58202,9 +58202,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-2-lesson-2-escrever-isso',
       sequence: 2,
-      title: { de: 'Bitte aufschreiben' },
+      title: { de: 'Bitte aufschreiben', en: 'Please write it down' },
     },
-    title: { de: 'Bitte aufschreiben' },
+    title: { de: 'Bitte aufschreiben', en: 'Please write it down' },
     situation: {
       en: 'At a counter, ask someone to write the exact information down.',
       de: 'Am Schalter bittest du darum, eine genaue Information aufzuschreiben.',
@@ -58216,8 +58216,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Auf der Karte zeigen' },
-      situation: { de: 'Du bittest, einen Ort auf der Karte zu zeigen.' },
+      title: { de: 'Auf der Karte zeigen', en: 'Show me on the map' },
+      situation: { de: 'Du bittest, einen Ort auf der Karte zu zeigen.', en: 'You ask someone to point out a place on the map.' },
     },
     vibeVariants: {
       bright: brightPortugueseP2Lesson002,
@@ -58235,9 +58235,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-2-lesson-3-no-mapa',
       sequence: 3,
-      title: { de: 'Auf der Karte zeigen' },
+      title: { de: 'Auf der Karte zeigen', en: 'Show me on the map' },
     },
-    title: { de: 'Auf der Karte zeigen' },
+    title: { de: 'Auf der Karte zeigen', en: 'Show me on the map' },
     situation: {
       en: 'Ask someone to show a place on a map or phone.',
       de: 'Du bittest jemanden, einen Ort auf einer Karte oder einem Handy zu zeigen.',
@@ -58249,8 +58249,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Welche Option ist besser?' },
-      situation: { de: 'Du vergleichst zwei sichtbare Optionen.' },
+      title: { de: 'Welche Option ist besser?', en: 'Which one is better?' },
+      situation: { de: 'Du vergleichst zwei sichtbare Optionen.', en: 'You compare two visible options.' },
     },
     vibeVariants: {
       bright: brightPortugueseP2Lesson003,
@@ -58268,9 +58268,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-2-lesson-4-qual-e-melhor',
       sequence: 4,
-      title: { de: 'Welche Option ist besser?' },
+      title: { de: 'Welche Option ist besser?', en: 'Which one is better?' },
     },
-    title: { de: 'Welche Option ist besser?' },
+    title: { de: 'Welche Option ist besser?', en: 'Which one is better?' },
     situation: {
       en: 'At a bakery or shop counter, ask which of two visible options is better.',
       de: 'An der Theke fragst du, welche von zwei sichtbaren Optionen besser ist.',
@@ -58282,8 +58282,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ist das verfügbar?' },
-      situation: { de: 'Du fragst, ob ein Artikel gerade verfügbar ist.' },
+      title: { de: 'Ist das verfügbar?', en: 'Is this available?' },
+      situation: { de: 'Du fragst, ob ein Artikel gerade verfügbar ist.', en: 'You ask whether an item is currently available.' },
     },
     vibeVariants: {
       bright: brightPortugueseP2Lesson004,
@@ -58301,9 +58301,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-2-lesson-5-disponivel',
       sequence: 5,
-      title: { de: 'Ist das verfügbar?' },
+      title: { de: 'Ist das verfügbar?', en: 'Is this available?' },
     },
-    title: { de: 'Ist das verfügbar?' },
+    title: { de: 'Ist das verfügbar?', en: 'Is this available?' },
     situation: {
       en: 'In a small shop, ask whether an item is currently available.',
       de: 'Im kleinen Laden fragst du, ob ein Artikel gerade verfügbar ist.',
@@ -58315,8 +58315,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Mit Karte zahlen' },
-      situation: { de: 'Du fragst an der Kasse nach Kartenzahlung.' },
+      title: { de: 'Mit Karte zahlen', en: 'Paying by card' },
+      situation: { de: 'Du fragst an der Kasse nach Kartenzahlung.', en: 'You ask at the till about paying by card.' },
     },
     vibeVariants: {
       bright: brightPortugueseP2Lesson005,
@@ -58334,9 +58334,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-2-lesson-6-cartao',
       sequence: 6,
-      title: { de: 'Mit Karte zahlen' },
+      title: { de: 'Mit Karte zahlen', en: 'Paying by card' },
     },
-    title: { de: 'Mit Karte zahlen' },
+    title: { de: 'Mit Karte zahlen', en: 'Paying by card' },
     situation: {
       en: 'At the till, ask whether you can pay by card.',
       de: 'An der Kasse fragst du, ob du mit Karte zahlen kannst.',
@@ -58348,8 +58348,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Beleg und Tüte' },
-      situation: { de: 'Du bittest um Beleg und Tüte.' },
+      title: { de: 'Beleg und Tüte', en: 'Receipt and a bag' },
+      situation: { de: 'Du bittest um Beleg und Tüte.', en: 'You ask for the receipt and a bag.' },
     },
     vibeVariants: {
       bright: brightPortugueseP2Lesson006,
@@ -58367,9 +58367,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-2-lesson-7-sacola',
       sequence: 7,
-      title: { de: 'Beleg und Tüte' },
+      title: { de: 'Beleg und Tüte', en: 'Receipt and a bag' },
     },
-    title: { de: 'Beleg und Tüte' },
+    title: { de: 'Beleg und Tüte', en: 'Receipt and a bag' },
     situation: {
       en: 'At the end of a purchase, ask for the receipt and a bag.',
       de: 'Am Ende des Einkaufs bittest du um den Beleg und eine Tüte.',
@@ -58381,8 +58381,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ich habe eine Reservierung' },
-      situation: { de: 'Du kommst mit einer Reservierung an.' },
+      title: { de: 'Ich habe eine Reservierung', en: 'I have a reservation' },
+      situation: { de: 'Du kommst mit einer Reservierung an.', en: 'You arrive with a reservation.' },
     },
     vibeVariants: {
       bright: brightPortugueseP2Lesson007,
@@ -58400,9 +58400,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-2-lesson-8-reserva',
       sequence: 8,
-      title: { de: 'Ich habe eine Reservierung' },
+      title: { de: 'Ich habe eine Reservierung', en: 'I have a reservation' },
     },
-    title: { de: 'Ich habe eine Reservierung' },
+    title: { de: 'Ich habe eine Reservierung', en: 'I have a reservation' },
     situation: {
       en: 'At a restaurant or service desk, say you have a reservation under a name.',
       de: 'Am Empfang sagst du, dass du eine Reservierung auf einen Namen hast.',
@@ -58414,8 +58414,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ist das richtig?' },
-      situation: { de: 'Du prüfst kurz, ob es die richtige Option ist.' },
+      title: { de: 'Ist das richtig?', en: 'Is this the right one?' },
+      situation: { de: 'Du prüfst kurz, ob es die richtige Option ist.', en: 'You do a quick check that this is the right option.' },
     },
     vibeVariants: {
       bright: brightPortugueseP2Lesson008,
@@ -58433,9 +58433,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-2-lesson-9-certo',
       sequence: 9,
-      title: { de: 'Ist das richtig?' },
+      title: { de: 'Ist das richtig?', en: 'Is this the right one?' },
     },
-    title: { de: 'Ist das richtig?' },
+    title: { de: 'Ist das richtig?', en: 'Is this the right one?' },
     situation: {
       en: 'Before choosing, boarding, or buying, confirm that this is the correct one.',
       de: 'Vor dem Kaufen oder Einsteigen prüfst du, ob es das Richtige ist.',
@@ -58447,8 +58447,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Einen Moment bitte' },
-      situation: { de: 'Du brauchst kurz Zeit.' },
+      title: { de: 'Einen Moment bitte', en: 'One moment, please' },
+      situation: { de: 'Du brauchst kurz Zeit.', en: 'You need a quick moment.' },
     },
     vibeVariants: {
       bright: brightPortugueseP2Lesson009,
@@ -58466,9 +58466,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-2-lesson-10-momento',
       sequence: 10,
-      title: { de: 'Einen Moment bitte' },
+      title: { de: 'Einen Moment bitte', en: 'One moment, please' },
     },
-    title: { de: 'Einen Moment bitte' },
+    title: { de: 'Einen Moment bitte', en: 'One moment, please' },
     situation: {
       en: 'At a counter or in a social moment, ask for a brief pause.',
       de: 'Am Tresen oder im Gespräch bittest du um einen kurzen Moment.',
@@ -58480,8 +58480,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Pfad abgeschlossen' },
-      situation: { de: 'Du hast Portuguese A1 Practical 2 abgeschlossen.' },
+      title: { de: 'Pfad abgeschlossen', en: 'Path complete' },
+      situation: { de: 'Du hast Portuguese A1 Practical 2 abgeschlossen.', en: 'You finished Portuguese A1 Practical 2.' },
     },
     vibeVariants: {
       bright: brightPortugueseP2Lesson010,
