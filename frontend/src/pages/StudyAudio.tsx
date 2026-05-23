@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import {
@@ -37,8 +37,10 @@ function formatTime(s: number): string {
 
 export default function StudyAudio() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const { t, tp } = useTranslation()
   const audioRef = useRef<HTMLAudioElement>(null)
+  const queue = searchParams.get('queue')
 
   // useStudyUI expects HTMLVideoElement ref, but all hooks only use HTMLMediaElement APIs
   const {
@@ -46,7 +48,7 @@ export default function StudyAudio() {
     revealed, setRevealed, decks, deckFilter, setDeckFilter,
     isMuted, toggleMute,
     handleRemembered, handleReviewLater, restart,
-  } = useStudyUI({ videoRef: audioRef as unknown as React.RefObject<HTMLVideoElement | null>, studyMode: 'audio' })
+  } = useStudyUI({ videoRef: audioRef as unknown as React.RefObject<HTMLVideoElement | null>, studyMode: 'audio', queue })
 
   // Audio-specific state
   const [showThumbnail, setShowThumbnail] = useState(() =>

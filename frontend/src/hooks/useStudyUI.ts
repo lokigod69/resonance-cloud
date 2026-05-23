@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { useStudySession, type StudyMode } from './useStudySession'
+import { isStudyQueue, useStudySession, type StudyMode } from './useStudySession'
 import { useVideoVersion } from './useVideoVersion'
 import { useVideoVolume } from './useVideoVolume'
 import { useVideoPlayback } from './useVideoPlayback'
@@ -15,11 +15,14 @@ type DeckOption = { id: string; name: string | null; target_language: string | n
 interface UseStudyUIOptions {
   videoRef: React.RefObject<HTMLVideoElement | null>
   studyMode?: StudyMode
+  queue?: string | null
 }
 
-export function useStudyUI({ videoRef, studyMode = 'video' }: UseStudyUIOptions) {
+export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIOptions) {
   const [searchParams] = useSearchParams()
   const deckParam = searchParams.get('deck')
+  const queueParam = queue ?? searchParams.get('queue')
+  const queueFilter = isStudyQueue(queueParam) ? queueParam : null
   const { user } = useAuth()
   const { activeLanguage } = useLanguage()
 
@@ -47,7 +50,7 @@ export function useStudyUI({ videoRef, studyMode = 'video' }: UseStudyUIOptions)
     setDeckFilter('all')
   }, [activeLanguage, deckParam])
 
-  const { words, loading, sessionStats, recordAttempt, scheduleRetry, consumeRetry, restart: restartSession } = useStudySession(deckFilter === 'all' ? null : deckFilter, studyMode, activeLanguage)
+  const { words, loading, sessionStats, recordAttempt, scheduleRetry, consumeRetry, restart: restartSession } = useStudySession(deckFilter === 'all' ? null : deckFilter, studyMode, activeLanguage, queueFilter)
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
@@ -64,7 +67,7 @@ export function useStudyUI({ videoRef, studyMode = 'video' }: UseStudyUIOptions)
     setSessionComplete(false)
     setReviewed(0)
     visitedIdsRef.current = new Set()
-  }, [deckFilter, activeLanguage])
+  }, [deckFilter, activeLanguage, queueFilter])
 
   const { isMuted, toggleMute } = useVideoVolume(videoRef, false)
   const { togglePlay, replay, onPlay, onPause } = useVideoPlayback(videoRef)

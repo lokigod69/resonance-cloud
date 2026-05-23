@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { useStudySession } from '@/hooks/useStudySession'
+import { isStudyQueue, useStudySession } from '@/hooks/useStudySession'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import EmberCanvas from '@/components/study/canvas/EmberCanvas'
@@ -45,8 +45,12 @@ function createShuffleNonce() {
   return Date.now()
 }
 
-function getCanvasSessionStorageKey(deckId: string | null, language: string | null | undefined) {
-  return `${SESSION_STORAGE_PREFIX}:${deckId ?? 'all'}:${language ?? 'all'}`
+function getCanvasSessionStorageKey(
+  deckId: string | null,
+  language: string | null | undefined,
+  queue: string | null,
+) {
+  return `${SESSION_STORAGE_PREFIX}:${deckId ?? 'all'}:${language ?? 'all'}:${queue ?? 'all'}`
 }
 
 function loadStoredSession(key: string): CanvasSessionSnapshot | null {
@@ -146,11 +150,13 @@ export default function StudyCanvas() {
   const { activeLanguage } = useLanguage()
 
   const deckId = searchParams.get('deck')
+  const queueParam = searchParams.get('queue')
+  const queue = isStudyQueue(queueParam) ? queueParam : null
   const rawReturnTo = searchParams.get('returnTo')
   const returnTo = rawReturnTo?.startsWith('/') ? rawReturnTo : null
   const sessionStorageKey = useMemo(
-    () => getCanvasSessionStorageKey(deckId, activeLanguage),
-    [activeLanguage, deckId],
+    () => getCanvasSessionStorageKey(deckId, activeLanguage, queue),
+    [activeLanguage, deckId, queue],
   )
   const initialSession = useMemo(() => loadStoredSession(sessionStorageKey), [sessionStorageKey])
 
@@ -171,7 +177,7 @@ export default function StudyCanvas() {
   const [sessionComplete, setSessionComplete] = useState(() => initialSession?.sessionComplete ?? false)
 
   // Data
-  const { words, loading, recordAttempt } = useStudySession(deckId, 'canvas', activeLanguage)
+  const { words, loading, recordAttempt } = useStudySession(deckId, 'canvas', activeLanguage, queue)
 
   useEffect(() => {
     saveLocalPreference(DIRECTION_STORAGE_KEY, direction)

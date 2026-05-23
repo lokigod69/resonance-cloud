@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import {
@@ -30,9 +30,11 @@ const FEEDBACK_ADVANCE_DELAY_MS = 280
 
 export default function StudyFlashcard() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const { t, tp } = useTranslation()
   const { playWord } = usePronunciation()
   const videoRef = useRef<HTMLVideoElement>(null)
+  const queue = searchParams.get('queue')
   const feedbackTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null)
   const [feedbackPulse, setFeedbackPulse] = useState<FeedbackPulse | null>(null)
 
@@ -40,7 +42,7 @@ export default function StudyFlashcard() {
     words, current, currentIndex, loading, sessionComplete, sessionStats, reviewed,
     revealed, setRevealed, decks, deckFilter, setDeckFilter,
     handleRemembered, handleReviewLater, restart, skipPrev, skipNext,
-  } = useStudyUI({ videoRef, studyMode: 'flashcard' })
+  } = useStudyUI({ videoRef, studyMode: 'flashcard', queue })
 
   const isFeedbackActive = feedbackPulse !== null
 
