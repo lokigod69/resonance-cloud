@@ -228,6 +228,8 @@ Local `main` and `origin/main` both pointed to `3d859a0d734f72d4eccf27ad013e06e0
 
 Production `https://resonanz.pro` is served by Vercel and was Ready when checked. `vercel inspect https://resonanz.pro` returned deployment `frontend-h6h8dgh04-lokigod69s-projects.vercel.app`, created May 24, 2026 06:57 PST. The deployed asset already contained the previous multilingual Generate selector strings and static concept ids, but it did not contain this follow-up's new Categories-page Generate CTA or Korean Home & Objects terms before this commit was pushed.
 
+Post-push deployment verification: Vercel built `frontend-3tm6qjoqp-lokigod69s-projects.vercel.app` and marked it Ready. The live `https://resonanz.pro` asset changed to `assets/index-C47-geU_.js` and contains the Korean Home & Objects term `의자`, the Categories-page CTA text `Generate from thematic categories`, and the selector label `Bisaya / Cebuano (review)`.
+
 ### User-Visible Wiring
 
 The multilingual category picker remains wired into the Generate flow:

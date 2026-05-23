@@ -57,6 +57,27 @@ for (const page of ['DeckView.tsx', 'DeckViewPG.tsx']) {
   })()
 }
 
+for (const page of ['DeckView.tsx', 'DeckViewPG.tsx']) {
+  await (async function curriculumDeckDeleteContract() {
+    const source = read(join('src', 'pages', page))
+    assertIncludes(source, 'source_kind?: string | null', `${page} deck type`)
+    assertIncludes(source, "if (deck.source_kind === 'curriculum')", `${page} curriculum branch`)
+    assertIncludes(source, "window.confirm(t('deckview.confirmCurriculumDelete'))", `${page} curriculum confirmation`)
+    assertIncludes(source, "supabase.rpc('delete_curriculum_deck'", `${page} curriculum RPC`)
+    assertIncludes(source, "supabase.rpc('archive_deck'", `${page} archive RPC`)
+    assertIncludes(source, "words.length === 0 || deck.source_kind === 'curriculum'", `${page} delete button visibility`)
+  })()
+}
+
+await (async function glassyStudyButtonRoutesThroughModeSelector() {
+  const source = read(join('src', 'pages', 'DeckViewPG.tsx'))
+  assertIncludes(source, 'onClick={() => navigate(`/study?deck=${deck.id}`)}', 'DeckViewPG study button')
+  assert.ok(
+    !source.includes('navigate(isCardDeck ? `/study/flashcard?deck=${deck.id}` : `/study?deck=${deck.id}`)'),
+    'DeckViewPG study button must not bypass StudyModeSelector for card decks',
+  )
+})()
+
 await (async function deckViewTranslationsExistForSupportedLocales() {
   const translations = read('src/lib/translations.ts')
   for (const key of [
@@ -64,6 +85,7 @@ await (async function deckViewTranslationsExistForSupportedLocales() {
     'deckview.confirmDeleteSelected',
     'deckview.wordsDeleted',
     'deckview.deleteSelectedFailed',
+    'deckview.confirmCurriculumDelete',
   ]) {
     const count = [...translations.matchAll(new RegExp(`'${key}'`, 'g'))].length
     assert.equal(count, 3, `${key} should be present in en, de, and fr`)

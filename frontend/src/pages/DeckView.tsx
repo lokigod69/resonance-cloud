@@ -39,6 +39,7 @@ type Deck = {
   art_style: string | null
   created_at: string
   deck_type?: 'video' | 'card'
+  source_kind?: string | null
 }
 
 type Word = {
@@ -208,29 +209,36 @@ export default function DeckView() {
   }
 
   const handleDeleteDeck = async () => {
-    if (!deck || !confirm(t('deckview.confirmDeleteDeck'))) return
+    if (!deck) return
     setDeletingDeck(true)
     try {
-      // Safety guard: verify deck is actually empty
-      const { count, error: countError } = await supabase
-        .from('words')
-        .select('id', { count: 'exact', head: true })
-        .eq('deck_id', deck.id)
-      if (countError) {
-        toast(t('deckview.deleteError'), 'error')
-        return
+      if (deck.source_kind === 'curriculum') {
+        // Curriculum decks cascade-delete the Learner's personal words for this import.
+        const confirmed = window.confirm(t('deckview.confirmCurriculumDelete'))
+        if (!confirmed) return
+
+        const { error } = await supabase.rpc('delete_curriculum_deck', {
+          p_deck_id: deck.id,
+        })
+        if (error) throw error
+      } else {
+        // Non-curriculum decks still have to be empty before archive.
+        const { count, error: countError } = await supabase
+          .from('words')
+          .select('*', { count: 'exact', head: true })
+          .eq('deck_id', deck.id)
+        if (countError) throw countError
+        if ((count ?? 0) > 0) {
+          toast(t('deckview.deckNotEmpty'), 'error')
+          return
+        }
+
+        const { error } = await supabase.rpc('archive_deck', {
+          p_deck_id: deck.id,
+        })
+        if (error) throw error
       }
-      if (count && count > 0) {
-        toast(t('deckview.deckNotEmpty'), 'error')
-        return
-      }
-      const { error } = await supabase.rpc('archive_deck', {
-        p_deck_id: deck.id,
-      })
-      if (error) {
-        toast(t('deckview.deleteError'), 'error')
-        return
-      }
+
       toast(t('deckview.deckDeleted'), 'success')
       navigate('/dashboard')
     } catch {
@@ -664,7 +672,7 @@ export default function DeckView() {
             </Button>
           </>
         )}
-        {words.length === 0 ? (
+        {words.length === 0 || deck.source_kind === 'curriculum' ? (
           <Button
             variant="outline"
             className="border-destructive/40 text-destructive hover:bg-destructive/10"

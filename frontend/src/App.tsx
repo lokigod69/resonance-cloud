@@ -40,6 +40,7 @@ import StudyAudio from '@/pages/StudyAudio'
 import StudyCanvas from '@/pages/StudyCanvas'
 import CanvasDeckPicker from '@/pages/CanvasDeckPicker'
 import GamesHub from '@/pages/GamesHub'
+import { ComingSoonPlaceholder } from '@/components/games/ComingSoonPlaceholder'
 import GenerateGO from '@/pages/GenerateGO'
 import Users from '@/pages/admin/Users'
 import Content from '@/pages/admin/Content'
@@ -64,6 +65,7 @@ import LandingExperimentIndex from '@/landing-experiments/hybrid-a/LandingExperi
 
 const SlicerGame = lazyWithRetry(() => import('@/games/slicer/SlicerGame'), 'slicer-game')
 const RunnerGame = lazyWithRetry(() => import('@/games/runner/RunnerGame'), 'runner-game')
+const RUNNER_GAME_ROUTE_ENABLED = false
 
 function ProtectedRoute() {
   const { session, loading: authLoading } = useAuth()
@@ -166,11 +168,11 @@ function AppRoutes() {
         />
         <Route
           path="/games/runner"
-          element={(
+          element={RUNNER_GAME_ROUTE_ENABLED ? (
             <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><ParticleSpinner preset="spirograph" size={160} /></div>}>
               <RunnerGame />
             </Suspense>
-          )}
+          ) : <ComingSoonPlaceholder />}
         />
         {/* Canvas is a headerless immersion mode (like the games above) — lifted out of the skin layouts so no global header overlaps its toolbar */}
         <Route path="/study/canvas" element={<StudyCanvas />} />

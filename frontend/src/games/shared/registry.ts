@@ -7,6 +7,7 @@ export type GameEntry = {
   iconSrc: string
   route: string
   enabled: boolean
+  comingSoon?: boolean
   component: () => Promise<{ default: ComponentType }>
 }
 
@@ -42,6 +43,7 @@ export const GAMES: GameEntry[] = [
     iconSrc: '/games/runner/branding/runner-tile-icon.png',
     route: '/games/runner',
     enabled: true,
+    comingSoon: true,
     component: loadGameComponent('../runner/RunnerGame.tsx'),
   },
 ]
