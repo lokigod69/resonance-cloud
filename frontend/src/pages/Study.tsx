@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import {
@@ -24,15 +24,17 @@ import { useTranslation } from '@/hooks/useTranslation'
 
 export default function Study() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const { t, tp } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
+  const queue = searchParams.get('queue')
 
   const {
     words, current, currentIndex, loading, sessionComplete, sessionStats, reviewed,
     revealed, setRevealed, decks, deckFilter, setDeckFilter,
     activeVideoUrl, activeThumbnailUrl, isMuted, togglePlay, onPlay, onPause,
     handleRemembered, handleReviewLater, restart, skipPrev, skipNext,
-  } = useStudyUI({ videoRef, studyMode: 'video' })
+  } = useStudyUI({ videoRef, studyMode: 'video', queue })
 
   if (loading) {
     return (

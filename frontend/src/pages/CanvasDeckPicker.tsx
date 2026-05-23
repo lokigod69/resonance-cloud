@@ -43,6 +43,8 @@ export default function CanvasDeckPicker() {
   const { activeLanguage, setActiveLanguage } = useLanguage()
   const [searchParams] = useSearchParams()
   const forwardedDeck = searchParams.get('deck')
+  const forwardedQueue = searchParams.get('queue')
+  const forwardedLanguage = searchParams.get('lang')
 
   const [decks, setDecks] = useState<DeckRow[]>([])
   const [loading, setLoading] = useState(true)
@@ -90,10 +92,14 @@ export default function CanvasDeckPicker() {
   // If activeLanguage isn't in the user's decks, fall back to the first available.
   useEffect(() => {
     if (loading || availableLanguages.length === 0) return
+    if (forwardedLanguage && availableLanguages.includes(forwardedLanguage)) {
+      setActiveLanguage(forwardedLanguage)
+      return
+    }
     if (!activeLanguage || !availableLanguages.includes(activeLanguage)) {
       setActiveLanguage(availableLanguages[0])
     }
-  }, [availableLanguages, loading, activeLanguage, setActiveLanguage])
+  }, [availableLanguages, forwardedLanguage, loading, activeLanguage, setActiveLanguage])
 
   const filteredDecks = useMemo(() => {
     if (!activeLanguage) return []
@@ -121,7 +127,10 @@ export default function CanvasDeckPicker() {
   function goToCanvas(deckId: string | null) {
     saveLastDeckKey(activeLanguage, deckId ?? ALL_WORDS_KEY)
     const params = new URLSearchParams()
+    const language = forwardedLanguage ?? activeLanguage
     if (deckId) params.set('deck', deckId)
+    if (forwardedQueue) params.set('queue', forwardedQueue)
+    if (language) params.set('lang', language)
     params.set('returnTo', '/study/canvas/select')
     navigate(`/study/canvas?${params.toString()}`)
   }
