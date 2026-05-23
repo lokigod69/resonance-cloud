@@ -29,6 +29,7 @@ export type StudyWord = {
 }
 
 export type StudyMode = 'video' | 'audio' | 'flashcard' | 'canvas'
+export type StudyQueue = 'review' | 'learn' | 'strengthen' | 'mastered'
 
 type RetryItem = { wordId: string; cardsSeen: number }
 
@@ -52,12 +53,40 @@ type Heat = 'hot' | 'unseen' | 'cool' | 'warm'
 const MAX_RETRIES = 3
 const RETRY_GAP = 5
 
+export function isStudyQueue(value: string | null | undefined): value is StudyQueue {
+  return value === 'review' || value === 'learn' || value === 'strengthen' || value === 'mastered'
+}
+
+export function filterLemmaStatesForQueue(
+  lemmaStates: LemmaState[],
+  queue?: StudyQueue | null,
+): LemmaState[] {
+  if (!queue) return lemmaStates
+
+  return lemmaStates.filter((lemma) => {
+    switch (queue) {
+      case 'review':
+        return (lemma.state === 'reviewing' || lemma.state === 'mastered') && lemma.due
+      case 'learn':
+        return lemma.state === 'new' && lemma.due
+      case 'strengthen':
+        return lemma.state === 'learning'
+      case 'mastered':
+        return lemma.state === 'mastered'
+      default:
+        return false
+    }
+  })
+}
+
 function sortByHeat(
   words: StudyWord[],
   lemmaStates: LemmaState[],
+  queue?: StudyQueue | null,
 ): StudyWord[] {
+  const filteredLemmaStates = filterLemmaStatesForQueue(lemmaStates, queue)
   const stateByWordId = new Map<string, LemmaState>()
-  for (const lemma of lemmaStates) {
+  for (const lemma of filteredLemmaStates) {
     for (const wordId of lemma.wordIds) {
       stateByWordId.set(wordId, lemma)
     }
@@ -72,6 +101,8 @@ function sortByHeat(
       buckets.hot.push(w)
     } else if (lemma.state === 'new' && lemma.due) {
       buckets.unseen.push(w)
+    } else if (queue === 'mastered' && lemma.state === 'mastered') {
+      buckets.cool.push(w)
     } else if ((lemma.state === 'reviewing' || lemma.state === 'mastered') && lemma.due) {
       buckets.cool.push(w)
     } else if (lemma.state === 'learning' && lemma.lastKnewIt === true) {
@@ -87,7 +118,12 @@ function sortByHeat(
   ]
 }
 
-export function useStudySession(deckId?: string | null, studyMode: StudyMode = 'video', language?: string | null) {
+export function useStudySession(
+  deckId?: string | null,
+  studyMode: StudyMode = 'video',
+  language?: string | null,
+  queue?: StudyQueue | null,
+) {
   const { user, profile } = useAuth()
   const userId = user?.id ?? null
   const [words, setWords] = useState<StudyWord[]>([])
@@ -151,9 +187,9 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
       rawWords = rawWords.filter(w => w.suno_storage_url || w.suno_audio_url)
     }
 
-    setWords(sortByHeat(rawWords, wordStates))
+    setWords(sortByHeat(rawWords, wordStates, queue))
     setLoading(false)
-  }, [userId, profile?.base_language, deckId, studyMode, language, wordStates])
+  }, [userId, profile?.base_language, deckId, studyMode, language, wordStates, queue])
 
   useEffect(() => {
     let stale = false
@@ -167,7 +203,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
     retryCountRef.current = new Map()
     // eslint-disable-next-line react-hooks/set-state-in-effect -- resets session stats when deckId/studyMode/language change; canonical reset-on-key pattern
     setSessionStats({ remembered: 0, reviewLater: 0 })
-  }, [deckId, studyMode, language])
+  }, [deckId, studyMode, language, queue])
 
   const recordAttempt = useCallback(
     (wordId: string, knewIt: boolean) => {
