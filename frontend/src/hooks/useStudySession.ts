@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect, useRef } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import type { CardFaces } from '@/lib/cardFaces'
+import { useWordStates, type LemmaState } from '@/hooks/useWordStates'
 
 export type StudyWord = {
   id: string
@@ -48,31 +49,36 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 type Heat = 'hot' | 'unseen' | 'cool' | 'warm'
-const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000
 const MAX_RETRIES = 3
 const RETRY_GAP = 5
 
-function getHeat(
-  wordId: string,
-  latestAttempt: Map<string, { knewIt: boolean; createdAt: string }>,
-): Heat {
-  const attempt = latestAttempt.get(wordId)
-  if (!attempt) return 'unseen'
-  if (!attempt.knewIt) return 'hot'
-  const daysSince = Date.now() - new Date(attempt.createdAt).getTime()
-  return daysSince >= THREE_DAYS_MS ? 'cool' : 'warm'
-}
-
 function sortByHeat(
   words: StudyWord[],
-  latestAttempt: Map<string, { knewIt: boolean; createdAt: string }>,
+  lemmaStates: LemmaState[],
 ): StudyWord[] {
-  // Group into heat buckets
+  const stateByWordId = new Map<string, LemmaState>()
+  for (const lemma of lemmaStates) {
+    for (const wordId of lemma.wordIds) {
+      stateByWordId.set(wordId, lemma)
+    }
+  }
+
   const buckets: Record<Heat, StudyWord[]> = { hot: [], unseen: [], cool: [], warm: [] }
   for (const w of words) {
-    buckets[getHeat(w.id, latestAttempt)].push(w)
+    const lemma = stateByWordId.get(w.id)
+    if (!lemma) continue
+
+    if (lemma.state === 'learning' && lemma.lastKnewIt === false) {
+      buckets.hot.push(w)
+    } else if (lemma.state === 'new' && lemma.due) {
+      buckets.unseen.push(w)
+    } else if ((lemma.state === 'reviewing' || lemma.state === 'mastered') && lemma.due) {
+      buckets.cool.push(w)
+    } else if (lemma.state === 'learning' && lemma.lastKnewIt === true) {
+      buckets.warm.push(w)
+    }
   }
-  // Shuffle within each bucket, then concatenate in priority order
+
   return [
     ...shuffle(buckets.hot),
     ...shuffle(buckets.unseen),
@@ -90,6 +96,11 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
   const retryQueueRef = useRef<RetryItem[]>([])
   // Track total retries per word across consume/re-schedule cycles (fixes infinite retry bug)
   const retryCountRef = useRef<Map<string, number>>(new Map())
+  const {
+    data: wordStates,
+    loading: wordStatesLoading,
+    refetch: refetchWordStates,
+  } = useWordStates(language ?? '', { deckId: deckId ?? null })
 
   const fetchAndSort = useCallback(async (isStale?: () => boolean) => {
     if (!userId) return
@@ -123,15 +134,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
       wordsQuery = wordsQuery.in('deck_id', langDeckIds)
     }
 
-    const [wordsRes, attemptsRes] = await Promise.all([
-      wordsQuery.order('created_at', { ascending: true }),
-      supabase
-        .from('recall_attempts')
-        .select('word_id, knew_it, created_at')
-        .eq('user_id', userId)
-        .eq('study_mode', studyMode)
-        .order('created_at', { ascending: false }),
-    ])
+    const wordsRes = await wordsQuery.order('created_at', { ascending: true })
 
     if (isStale?.()) return
 
@@ -147,19 +150,10 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
     if (studyMode === 'audio') {
       rawWords = rawWords.filter(w => w.suno_storage_url || w.suno_audio_url)
     }
-    const rawAttempts = attemptsRes.data ?? []
 
-    // Build map: word_id → most recent attempt (first occurrence since sorted desc)
-    const latestAttempt = new Map<string, { knewIt: boolean; createdAt: string }>()
-    for (const a of rawAttempts) {
-      if (!latestAttempt.has(a.word_id)) {
-        latestAttempt.set(a.word_id, { knewIt: a.knew_it, createdAt: a.created_at })
-      }
-    }
-
-    setWords(sortByHeat(rawWords, latestAttempt))
+    setWords(sortByHeat(rawWords, wordStates))
     setLoading(false)
-  }, [userId, profile?.base_language, deckId, studyMode, language])
+  }, [userId, profile?.base_language, deckId, studyMode, language, wordStates])
 
   useEffect(() => {
     let stale = false
@@ -185,6 +179,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
         .insert({ user_id: userId, word_id: wordId, knew_it: knewIt, study_mode: studyMode })
         .then(({ error }) => {
           if (error) console.error('[study] recall insert failed:', error)
+          else refetchWordStates()
         })
 
       // Update local stats
@@ -205,7 +200,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
         retryQueueRef.current = retryQueueRef.current.filter((item) => item.wordId !== wordId)
       }
     },
-    [userId, studyMode],
+    [userId, studyMode, refetchWordStates],
   )
 
   const scheduleRetry = useCallback((wordId: string) => {
@@ -241,12 +236,13 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
     retryQueueRef.current = []
     retryCountRef.current = new Map()
     setSessionStats({ remembered: 0, reviewLater: 0 })
+    refetchWordStates()
     fetchAndSort()
-  }, [fetchAndSort])
+  }, [fetchAndSort, refetchWordStates])
 
   return {
     words,
-    loading,
+    loading: loading || wordStatesLoading,
     sessionStats,
     recordAttempt,
     scheduleRetry,
