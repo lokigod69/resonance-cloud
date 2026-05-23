@@ -710,7 +710,7 @@ const GUIDED_TODAY_PATH_PORTUGUESE_ONE_METADATA: GuidedPathMetadata = {
   id: 'portuguese-a1-practical-1',
   title: 'Portuguese A1 Practical 1',
   shortTitle: 'A1 Practical 1',
-  subtitle: { de: 'Erste Hilfsphrasen auf Portugiesisch' },
+  subtitle: { de: 'Erste Hilfsphrasen auf Portugiesisch', en: 'First helpful phrases in Portuguese' },
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'Portuguese',
@@ -21270,19 +21270,19 @@ const brightPortugueseLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Olá, você fala português?',
-    baseText: { de: 'Hallo, sprechen Sie Portugiesisch?' },
+    baseText: { de: 'Hallo, sprechen Sie Portugiesisch?', en: 'Hello, do you speak Portuguese?' },
   },
-  meaning: { de: 'Eine neutrale brasilianische Eröffnungsfrage, bevor das Gespräch auf Portugiesisch weitergeht.' },
+  meaning: { de: 'Eine neutrale brasilianische Eröffnungsfrage, bevor das Gespräch auf Portugiesisch weitergeht.', en: 'A neutral Brazilian opener before the conversation continues in Portuguese.' },
   chunks: [
-    { id: 'ola', targetText: 'Olá,', baseText: { de: 'Hallo,' } },
-    { id: 'voce-fala', targetText: 'você fala', baseText: { de: 'sprechen Sie / sprichst du' } },
-    { id: 'portugues', targetText: 'português?', baseText: { de: 'Portugiesisch?' } },
+    { id: 'ola', targetText: 'Olá,', baseText: { de: 'Hallo,', en: 'Hello,' } },
+    { id: 'voce-fala', targetText: 'você fala', baseText: { de: 'sprechen Sie / sprichst du', en: 'do you speak' } },
+    { id: 'portugues', targetText: 'português?', baseText: { de: 'Portugiesisch?', en: 'Portuguese?' } },
   ],
   lessonItems: [
-    { id: 'ola', targetText: 'olá', baseText: { de: 'hallo' }, acceptedAnswers: ['olá', 'ola', 'Olá', 'Ola'] },
-    { id: 'voce', targetText: 'você', baseText: { de: 'Sie / du' }, acceptedAnswers: ['você', 'voce', 'Você', 'Voce'] },
-    { id: 'fala', targetText: 'fala', baseText: { de: 'spricht / sprechen Sie' }, acceptedAnswers: ['fala', 'Fala'] },
-    { id: 'portugues', targetText: 'português', baseText: { de: 'Portugiesisch' }, acceptedAnswers: ['português', 'portugues', 'Português', 'Portugues'] },
+    { id: 'ola', targetText: 'olá', baseText: { de: 'hallo', en: 'hello' }, acceptedAnswers: ['olá', 'ola', 'Olá', 'Ola'] },
+    { id: 'voce', targetText: 'você', baseText: { de: 'Sie / du', en: 'you' }, acceptedAnswers: ['você', 'voce', 'Você', 'Voce'] },
+    { id: 'fala', targetText: 'fala', baseText: { de: 'spricht / sprechen Sie', en: 'speak (you)' }, acceptedAnswers: ['fala', 'Fala'] },
+    { id: 'portugues', targetText: 'português', baseText: { de: 'Portugiesisch', en: 'Portuguese' }, acceptedAnswers: ['português', 'portugues', 'Português', 'Portugues'] },
   ],
   build: {
     targetText: 'Olá, você fala português?',
@@ -21296,23 +21296,23 @@ const brightPortugueseLesson001: GuidedLessonVibeVariant = {
     fallbackChoices: ['fala', 'falo', 'falamos', 'português'],
   },
   speakTarget: {
-    baseCue: { de: 'Hallo, sprechen Sie Portugiesisch?' },
+    baseCue: { de: 'Hallo, sprechen Sie Portugiesisch?', en: 'Hello, do you speak Portuguese?' },
     targetPhrase: 'Olá, você fala português?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['ola', 'voce', 'fala'],
     optionalTokens: ['portugues', 'português', 'brasil'],
   },
-  sceneCaption: { de: 'Am Café-Tresen fragst du freundlich, ob die andere Person Portugiesisch spricht.' },
+  sceneCaption: { de: 'Am Café-Tresen fragst du freundlich, ob die andere Person Portugiesisch spricht.', en: 'At a cafe counter, you ask politely whether the other person speaks Portuguese.' },
   trophyWord: {
     word: 'olá',
-    meaning: { de: 'hallo' },
+    meaning: { de: 'hallo', en: 'hello' },
     example: 'Olá, você fala português?',
-    whyThisWord: { de: 'Olá ist die neutrale A1-Begrüßung. In Brasilien ist você die normale Anrede für fremde und bekannte Personen; das Verb steht dazu in der 3. Person Singular: você fala.' },
+    whyThisWord: { de: 'Olá ist die neutrale A1-Begrüßung. In Brasilien ist você die normale Anrede für fremde und bekannte Personen; das Verb steht dazu in der 3. Person Singular: você fala.', en: "Olá is the neutral A1 greeting. In Brazil, você is the default way to address both strangers and acquaintances, and the verb takes the third-person form: você fala." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Helles Café, erste freundliche Frage auf brasilianischem Portugiesisch.' },
+    caption: { de: 'Helles Café, erste freundliche Frage auf brasilianischem Portugiesisch.', en: 'A bright cafe, a first friendly question in Brazilian Portuguese.' },
   },
   songSeed: {
     genre: 'bright acoustic bossa-pop',
@@ -21325,19 +21325,19 @@ const brightPortugueseLesson002: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Desculpe, você pode repetir, por favor?',
-    baseText: { de: 'Entschuldigung, können Sie das bitte wiederholen?' },
+    baseText: { de: 'Entschuldigung, können Sie das bitte wiederholen?', en: 'Sorry, could you repeat that, please?' },
   },
-  meaning: { de: 'Eine höfliche Reparaturbitte, wenn du etwas nicht verstanden hast.' },
+  meaning: { de: 'Eine höfliche Reparaturbitte, wenn du etwas nicht verstanden hast.', en: "A polite repair request when you didn't catch what was said." },
   chunks: [
-    { id: 'desculpe', targetText: 'Desculpe,', baseText: { de: 'Entschuldigung,' } },
-    { id: 'voce-pode-repetir', targetText: 'você pode repetir,', baseText: { de: 'können Sie wiederholen,' } },
-    { id: 'por-favor', targetText: 'por favor?', baseText: { de: 'bitte?' } },
+    { id: 'desculpe', targetText: 'Desculpe,', baseText: { de: 'Entschuldigung,', en: 'Sorry,' } },
+    { id: 'voce-pode-repetir', targetText: 'você pode repetir,', baseText: { de: 'können Sie wiederholen,', en: 'could you repeat,' } },
+    { id: 'por-favor', targetText: 'por favor?', baseText: { de: 'bitte?', en: 'please?' } },
   ],
   lessonItems: [
-    { id: 'desculpe', targetText: 'desculpe', baseText: { de: 'Entschuldigung' }, acceptedAnswers: ['desculpe', 'Desculpe'] },
-    { id: 'pode', targetText: 'pode', baseText: { de: 'können Sie / kannst du' }, acceptedAnswers: ['pode', 'Pode'] },
-    { id: 'repetir', targetText: 'repetir', baseText: { de: 'wiederholen' }, acceptedAnswers: ['repetir', 'Repetir'] },
-    { id: 'por-favor', targetText: 'por favor', baseText: { de: 'bitte' }, acceptedAnswers: ['por favor', 'Por favor'] },
+    { id: 'desculpe', targetText: 'desculpe', baseText: { de: 'Entschuldigung', en: 'sorry' }, acceptedAnswers: ['desculpe', 'Desculpe'] },
+    { id: 'pode', targetText: 'pode', baseText: { de: 'können Sie / kannst du', en: 'can you' }, acceptedAnswers: ['pode', 'Pode'] },
+    { id: 'repetir', targetText: 'repetir', baseText: { de: 'wiederholen', en: 'to repeat' }, acceptedAnswers: ['repetir', 'Repetir'] },
+    { id: 'por-favor', targetText: 'por favor', baseText: { de: 'bitte', en: 'please' }, acceptedAnswers: ['por favor', 'Por favor'] },
   ],
   build: {
     targetText: 'Desculpe, você pode repetir, por favor?',
@@ -21351,23 +21351,23 @@ const brightPortugueseLesson002: GuidedLessonVibeVariant = {
     fallbackChoices: ['repetir', 'falar', 'ouvir', 'beber'],
   },
   speakTarget: {
-    baseCue: { de: 'Entschuldigung, können Sie das bitte wiederholen?' },
+    baseCue: { de: 'Entschuldigung, können Sie das bitte wiederholen?', en: 'Sorry, could you repeat that, please?' },
     targetPhrase: 'Desculpe, você pode repetir, por favor?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['desculpe', 'voce', 'pode', 'repetir'],
     optionalTokens: ['você', 'por', 'favor', 'devagar'],
   },
-  sceneCaption: { de: 'Mitten im Gespräch bittest du ruhig darum, den Satz noch einmal zu hören.' },
+  sceneCaption: { de: 'Mitten im Gespräch bittest du ruhig darum, den Satz noch einmal zu hören.', en: 'Mid-conversation, you calmly ask to hear the sentence one more time.' },
   trophyWord: {
     word: 'desculpe',
-    meaning: { de: 'Entschuldigung' },
+    meaning: { de: 'Entschuldigung', en: 'sorry' },
     example: 'Desculpe, você pode repetir?',
-    whyThisWord: { de: 'Desculpe ist in Brasilien die sichere A1-Form für eine kurze Entschuldigung oder Reparaturbitte. Você bleibt neutral; pode ist die 3.-Person-Form dazu.' },
+    whyThisWord: { de: 'Desculpe ist in Brasilien die sichere A1-Form für eine kurze Entschuldigung oder Reparaturbitte. Você bleibt neutral; pode ist die 3.-Person-Form dazu.', en: 'Desculpe is the safe Brazilian A1 form for a quick apology or repair request. Você stays neutral, and pode is the matching third-person form of the verb.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kurze Pause am Tresen, freundliche Bitte um Wiederholung.' },
+    caption: { de: 'Kurze Pause am Tresen, freundliche Bitte um Wiederholung.', en: 'A brief pause at the counter, a friendly request to repeat.' },
   },
   songSeed: {
     genre: 'soft acoustic bossa-pop',
@@ -21380,19 +21380,19 @@ const brightPortugueseLesson003: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Com licença, onde fica a estação?',
-    baseText: { de: 'Entschuldigung, wo ist der Bahnhof?' },
+    baseText: { de: 'Entschuldigung, wo ist der Bahnhof?', en: 'Excuse me, where is the station?' },
   },
-  meaning: { de: 'Eine höfliche Ortsfrage nach einem öffentlichen Ziel in der Stadt.' },
+  meaning: { de: 'Eine höfliche Ortsfrage nach einem öffentlichen Ziel in der Stadt.', en: 'A polite location question about a public destination in town.' },
   chunks: [
-    { id: 'com-licenca', targetText: 'Com licença,', baseText: { de: 'Entschuldigung,' } },
-    { id: 'onde-fica', targetText: 'onde fica', baseText: { de: 'wo liegt / wo ist' } },
-    { id: 'a-estacao', targetText: 'a estação?', baseText: { de: 'der Bahnhof?' } },
+    { id: 'com-licenca', targetText: 'Com licença,', baseText: { de: 'Entschuldigung,', en: 'Excuse me,' } },
+    { id: 'onde-fica', targetText: 'onde fica', baseText: { de: 'wo liegt / wo ist', en: 'where is' } },
+    { id: 'a-estacao', targetText: 'a estação?', baseText: { de: 'der Bahnhof?', en: 'the station?' } },
   ],
   lessonItems: [
-    { id: 'com-licenca', targetText: 'com licença', baseText: { de: 'Entschuldigung / mit Erlaubnis' }, acceptedAnswers: ['com licença', 'com licenca', 'Com licença', 'Com licenca'] },
-    { id: 'onde', targetText: 'onde', baseText: { de: 'wo' }, acceptedAnswers: ['onde', 'Onde'] },
-    { id: 'fica', targetText: 'fica', baseText: { de: 'liegt / befindet sich' }, acceptedAnswers: ['fica', 'Fica'] },
-    { id: 'estacao', targetText: 'estação', baseText: { de: 'Bahnhof / Station' }, acceptedAnswers: ['estação', 'estacao', 'Estação', 'Estacao'] },
+    { id: 'com-licenca', targetText: 'com licença', baseText: { de: 'Entschuldigung / mit Erlaubnis', en: 'excuse me' }, acceptedAnswers: ['com licença', 'com licenca', 'Com licença', 'Com licenca'] },
+    { id: 'onde', targetText: 'onde', baseText: { de: 'wo', en: 'where' }, acceptedAnswers: ['onde', 'Onde'] },
+    { id: 'fica', targetText: 'fica', baseText: { de: 'liegt / befindet sich', en: 'is (located)' }, acceptedAnswers: ['fica', 'Fica'] },
+    { id: 'estacao', targetText: 'estação', baseText: { de: 'Bahnhof / Station', en: 'station' }, acceptedAnswers: ['estação', 'estacao', 'Estação', 'Estacao'] },
   ],
   build: {
     targetText: 'Com licença, onde fica a estação?',
@@ -21406,23 +21406,23 @@ const brightPortugueseLesson003: GuidedLessonVibeVariant = {
     fallbackChoices: ['onde', 'quando', 'quanto', 'como'],
   },
   speakTarget: {
-    baseCue: { de: 'Entschuldigung, wo ist der Bahnhof?' },
+    baseCue: { de: 'Entschuldigung, wo ist der Bahnhof?', en: 'Excuse me, where is the station?' },
     targetPhrase: 'Com licença, onde fica a estação?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['com', 'licenca', 'onde', 'fica'],
     optionalTokens: ['licença', 'estacao', 'estação', 'a'],
   },
-  sceneCaption: { de: 'Auf dem Gehweg sprichst du jemanden höflich an und fragst nach der estação.' },
+  sceneCaption: { de: 'Auf dem Gehweg sprichst du jemanden höflich an und fragst nach der estação.', en: 'On the sidewalk, you politely approach someone and ask for the estação.' },
   trophyWord: {
     word: 'onde',
-    meaning: { de: 'wo' },
+    meaning: { de: 'wo', en: 'where' },
     example: 'Onde fica a estação?',
-    whyThisWord: { de: 'Onde ist das A1-Schlüsselwort für Ortsfragen. A estação zeigt den femininen Artikel a; im brasilianischen Portugiesisch ist estação/trem die natürliche Bahn-Wortfamilie, nicht die europäische Zug-Wortwahl.' },
+    whyThisWord: { de: 'Onde ist das A1-Schlüsselwort für Ortsfragen. A estação zeigt den femininen Artikel a; im brasilianischen Portugiesisch ist estação/trem die natürliche Bahn-Wortfamilie, nicht die europäische Zug-Wortwahl.', en: 'Onde is the A1 keyword for location questions. Estação is feminine, so it takes the article a. In Brazil, the natural train vocabulary is estação and trem, not the European comboio.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Helle Straße, Bahnhofsschild, offene höfliche Geste.' },
+    caption: { de: 'Helle Straße, Bahnhofsschild, offene höfliche Geste.', en: 'A bright street, a station sign, an open polite gesture.' },
   },
   songSeed: {
     genre: 'sunny acoustic bossa-pop',
@@ -21435,18 +21435,18 @@ const brightPortugueseLesson004: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Um café, por favor.',
-    baseText: { de: 'Einen Kaffee, bitte.' },
+    baseText: { de: 'Einen Kaffee, bitte.', en: 'A coffee, please.' },
   },
-  meaning: { de: 'Eine kurze, natürliche Bestellung am Café-Tresen.' },
+  meaning: { de: 'Eine kurze, natürliche Bestellung am Café-Tresen.', en: 'A short, natural order at the cafe counter.' },
   chunks: [
-    { id: 'um-cafe', targetText: 'Um café,', baseText: { de: 'Einen Kaffee,' } },
-    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.' } },
+    { id: 'um-cafe', targetText: 'Um café,', baseText: { de: 'Einen Kaffee,', en: 'A coffee,' } },
+    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'um', targetText: 'um', baseText: { de: 'ein / einen' }, acceptedAnswers: ['um', 'Um'] },
-    { id: 'cafe', targetText: 'café', baseText: { de: 'Kaffee / Café' }, acceptedAnswers: ['café', 'cafe', 'Café', 'Cafe'] },
-    { id: 'por-favor', targetText: 'por favor', baseText: { de: 'bitte' }, acceptedAnswers: ['por favor', 'Por favor'] },
-    { id: 'agua', targetText: 'água', baseText: { de: 'Wasser' }, acceptedAnswers: ['água', 'agua', 'Água', 'Agua'] },
+    { id: 'um', targetText: 'um', baseText: { de: 'ein / einen', en: 'a / an (masc.)' }, acceptedAnswers: ['um', 'Um'] },
+    { id: 'cafe', targetText: 'café', baseText: { de: 'Kaffee / Café', en: 'coffee / cafe' }, acceptedAnswers: ['café', 'cafe', 'Café', 'Cafe'] },
+    { id: 'por-favor', targetText: 'por favor', baseText: { de: 'bitte', en: 'please' }, acceptedAnswers: ['por favor', 'Por favor'] },
+    { id: 'agua', targetText: 'água', baseText: { de: 'Wasser', en: 'water' }, acceptedAnswers: ['água', 'agua', 'Água', 'Agua'] },
   ],
   build: {
     targetText: 'Um café, por favor.',
@@ -21460,23 +21460,23 @@ const brightPortugueseLesson004: GuidedLessonVibeVariant = {
     fallbackChoices: ['café', 'água', 'vinho', 'trem'],
   },
   speakTarget: {
-    baseCue: { de: 'Einen Kaffee, bitte.' },
+    baseCue: { de: 'Einen Kaffee, bitte.', en: 'A coffee, please.' },
     targetPhrase: 'Um café, por favor.',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['um', 'cafe', 'por', 'favor'],
     optionalTokens: ['café', 'agua', 'água'],
   },
-  sceneCaption: { de: 'Am Tresen bestellst du knapp und freundlich einen Kaffee.' },
+  sceneCaption: { de: 'Am Tresen bestellst du knapp und freundlich einen Kaffee.', en: 'At the counter, you order a coffee briefly and warmly.' },
   trophyWord: {
     word: 'café',
-    meaning: { de: 'Kaffee / Café' },
+    meaning: { de: 'Kaffee / Café', en: 'coffee / cafe' },
     example: 'Um café, por favor.',
-    whyThisWord: { de: 'Café ist A1-Alltag im brasilianischen Portugiesisch. Um muss zum maskulinen café passen; die höfliche Kurzbestellung klingt natürlicher als ein überformelles eu gostaria de pedir.' },
+    whyThisWord: { de: 'Café ist A1-Alltag im brasilianischen Portugiesisch. Um muss zum maskulinen café passen; die höfliche Kurzbestellung klingt natürlicher als ein überformelles eu gostaria de pedir.', en: 'Café is everyday A1 vocabulary in Brazilian Portuguese. It is masculine, so it pairs with um, and this short polite order sounds more natural than an overly formal eu gostaria de pedir.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kaffeetasse auf heller Theke, kurze freundliche Bestellung.' },
+    caption: { de: 'Kaffeetasse auf heller Theke, kurze freundliche Bestellung.', en: 'A coffee cup on a bright counter, a short friendly order.' },
   },
   songSeed: {
     genre: 'bright bossa nova acoustic',
@@ -21489,19 +21489,19 @@ const brightPortugueseLesson005: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Quanto custa isso, por favor?',
-    baseText: { de: 'Wie viel kostet das bitte?' },
+    baseText: { de: 'Wie viel kostet das bitte?', en: 'How much is this, please?' },
   },
-  meaning: { de: 'Eine direkte Preisfrage zu einem sichtbaren Gegenstand.' },
+  meaning: { de: 'Eine direkte Preisfrage zu einem sichtbaren Gegenstand.', en: 'A direct price question about an item you can see.' },
   chunks: [
-    { id: 'quanto', targetText: 'Quanto', baseText: { de: 'Wie viel' } },
-    { id: 'custa-isso', targetText: 'custa isso,', baseText: { de: 'kostet das,' } },
-    { id: 'por-favor', targetText: 'por favor?', baseText: { de: 'bitte?' } },
+    { id: 'quanto', targetText: 'Quanto', baseText: { de: 'Wie viel', en: 'How much' } },
+    { id: 'custa-isso', targetText: 'custa isso,', baseText: { de: 'kostet das,', en: 'does this cost,' } },
+    { id: 'por-favor', targetText: 'por favor?', baseText: { de: 'bitte?', en: 'please?' } },
   ],
   lessonItems: [
-    { id: 'quanto', targetText: 'quanto', baseText: { de: 'wie viel' }, acceptedAnswers: ['quanto', 'Quanto'] },
-    { id: 'custa', targetText: 'custa', baseText: { de: 'kostet' }, acceptedAnswers: ['custa', 'Custa'] },
-    { id: 'isso', targetText: 'isso', baseText: { de: 'das' }, acceptedAnswers: ['isso', 'Isso'] },
-    { id: 'caro', targetText: 'caro', baseText: { de: 'teuer' }, acceptedAnswers: ['caro', 'Caro'] },
+    { id: 'quanto', targetText: 'quanto', baseText: { de: 'wie viel', en: 'how much' }, acceptedAnswers: ['quanto', 'Quanto'] },
+    { id: 'custa', targetText: 'custa', baseText: { de: 'kostet', en: 'costs' }, acceptedAnswers: ['custa', 'Custa'] },
+    { id: 'isso', targetText: 'isso', baseText: { de: 'das', en: 'this / that' }, acceptedAnswers: ['isso', 'Isso'] },
+    { id: 'caro', targetText: 'caro', baseText: { de: 'teuer', en: 'expensive' }, acceptedAnswers: ['caro', 'Caro'] },
   ],
   build: {
     targetText: 'Quanto custa isso, por favor?',
@@ -21515,23 +21515,23 @@ const brightPortugueseLesson005: GuidedLessonVibeVariant = {
     fallbackChoices: ['Quanto', 'Quando', 'Onde', 'Como'],
   },
   speakTarget: {
-    baseCue: { de: 'Wie viel kostet das bitte?' },
+    baseCue: { de: 'Wie viel kostet das bitte?', en: 'How much is this, please?' },
     targetPhrase: 'Quanto custa isso, por favor?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['quanto', 'custa', 'isso'],
     optionalTokens: ['por', 'favor', 'caro'],
   },
-  sceneCaption: { de: 'Im kleinen Laden zeigst du auf einen Gegenstand und fragst nach dem Preis.' },
+  sceneCaption: { de: 'Im kleinen Laden zeigst du auf einen Gegenstand und fragst nach dem Preis.', en: 'In a small shop, you point at an item and ask the price.' },
   trophyWord: {
     word: 'quanto',
-    meaning: { de: 'wie viel' },
+    meaning: { de: 'wie viel', en: 'how much' },
     example: 'Quanto custa isso?',
-    whyThisWord: { de: 'Quanto ist die portugiesische Form für wie viel. Es ist nicht das spanische cuánto; portugiesische Fragen benutzen auch keine umgedrehten Fragezeichen.' },
+    whyThisWord: { de: 'Quanto ist die portugiesische Form für wie viel. Es ist nicht das spanische cuánto; portugiesische Fragen benutzen auch keine umgedrehten Fragezeichen.', en: "Quanto is the Portuguese form for how much. It isn't the Spanish cuánto, and Portuguese questions don't use upside-down question marks either." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Kleiner Laden, Gegenstand auf dem Tresen, ruhige Preisfrage.' },
+    caption: { de: 'Kleiner Laden, Gegenstand auf dem Tresen, ruhige Preisfrage.', en: 'A small shop, an item on the counter, a calm price question.' },
   },
   songSeed: {
     genre: 'sunny acoustic pop',
@@ -21544,19 +21544,19 @@ const brightPortugueseLesson006: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'A que horas sai o trem?',
-    baseText: { de: 'Um wie viel Uhr fährt der Zug?' },
+    baseText: { de: 'Um wie viel Uhr fährt der Zug?', en: 'What time does the train leave?' },
   },
-  meaning: { de: 'Eine einfache Frage nach der Abfahrtszeit am Bahnhof.' },
+  meaning: { de: 'Eine einfache Frage nach der Abfahrtszeit am Bahnhof.', en: 'A simple question about the departure time at the station.' },
   chunks: [
-    { id: 'a-que-horas', targetText: 'A que horas', baseText: { de: 'Um wie viel Uhr' } },
-    { id: 'sai', targetText: 'sai', baseText: { de: 'fährt ab' } },
-    { id: 'o-trem', targetText: 'o trem?', baseText: { de: 'der Zug?' } },
+    { id: 'a-que-horas', targetText: 'A que horas', baseText: { de: 'Um wie viel Uhr', en: 'What time' } },
+    { id: 'sai', targetText: 'sai', baseText: { de: 'fährt ab', en: 'does it leave' } },
+    { id: 'o-trem', targetText: 'o trem?', baseText: { de: 'der Zug?', en: 'the train?' } },
   ],
   lessonItems: [
-    { id: 'a-que-horas', targetText: 'a que horas', baseText: { de: 'um wie viel Uhr' }, acceptedAnswers: ['a que horas', 'A que horas'] },
-    { id: 'sai', targetText: 'sai', baseText: { de: 'fährt ab / geht raus' }, acceptedAnswers: ['sai', 'Sai'] },
-    { id: 'trem', targetText: 'trem', baseText: { de: 'Zug' }, acceptedAnswers: ['trem', 'Trem'] },
-    { id: 'horas', targetText: 'horas', baseText: { de: 'Uhr / Stunden' }, acceptedAnswers: ['horas', 'Horas'] },
+    { id: 'a-que-horas', targetText: 'a que horas', baseText: { de: 'um wie viel Uhr', en: 'what time' }, acceptedAnswers: ['a que horas', 'A que horas'] },
+    { id: 'sai', targetText: 'sai', baseText: { de: 'fährt ab / geht raus', en: 'leaves / goes out' }, acceptedAnswers: ['sai', 'Sai'] },
+    { id: 'trem', targetText: 'trem', baseText: { de: 'Zug', en: 'train' }, acceptedAnswers: ['trem', 'Trem'] },
+    { id: 'horas', targetText: 'horas', baseText: { de: 'Uhr / Stunden', en: 'hours / o’clock' }, acceptedAnswers: ['horas', 'Horas'] },
   ],
   build: {
     targetText: 'A que horas sai o trem?',
@@ -21570,23 +21570,23 @@ const brightPortugueseLesson006: GuidedLessonVibeVariant = {
     fallbackChoices: ['trem', 'café', 'cardápio', 'bilhete'],
   },
   speakTarget: {
-    baseCue: { de: 'Um wie viel Uhr fährt der Zug?' },
+    baseCue: { de: 'Um wie viel Uhr fährt der Zug?', en: 'What time does the train leave?' },
     targetPhrase: 'A que horas sai o trem?',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['que', 'horas', 'sai', 'trem'],
     optionalTokens: ['a', 'o', 'agora'],
   },
-  sceneCaption: { de: 'Im Bahnhof fragst du am Schalter nach der Abfahrtszeit des Zuges.' },
+  sceneCaption: { de: 'Im Bahnhof fragst du am Schalter nach der Abfahrtszeit des Zuges.', en: 'At the station, you ask at the counter what time the train leaves.' },
   trophyWord: {
     word: 'trem',
-    meaning: { de: 'Zug' },
+    meaning: { de: 'Zug', en: 'train' },
     example: 'A que horas sai o trem?',
-    whyThisWord: { de: 'Trem ist die brasilianische A1-Form für Zug. Die europäische Zug-Wortwahl gehört nicht in diesen pt-BR-Pfad; o trem zeigt den maskulinen Artikel.' },
+    whyThisWord: { de: 'Trem ist die brasilianische A1-Form für Zug. Die europäische Zug-Wortwahl gehört nicht in diesen pt-BR-Pfad; o trem zeigt den maskulinen Artikel.', en: "Trem is the Brazilian A1 word for train. In Portugal people say comboio, but that doesn't belong in this pt-BR path. Trem is masculine, so it takes o." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Helle Bahnhofshalle, Abfahrtstafel, kurze Frage zum trem.' },
+    caption: { de: 'Helle Bahnhofshalle, Abfahrtstafel, kurze Frage zum trem.', en: 'A bright station hall, a departure board, a short question about the trem.' },
   },
   songSeed: {
     genre: 'light travel acoustic',
@@ -21599,19 +21599,19 @@ const brightPortugueseLesson007: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Eu preciso de ajuda, por favor.',
-    baseText: { de: 'Ich brauche Hilfe, bitte.' },
+    baseText: { de: 'Ich brauche Hilfe, bitte.', en: 'I need some help, please.' },
   },
-  meaning: { de: 'Eine knappe Bitte um Hilfe, ohne das Problem schon genau zu erklären.' },
+  meaning: { de: 'Eine knappe Bitte um Hilfe, ohne das Problem schon genau zu erklären.', en: 'A brief request for help, without explaining the problem in detail yet.' },
   chunks: [
-    { id: 'eu-preciso', targetText: 'Eu preciso', baseText: { de: 'Ich brauche' } },
-    { id: 'de-ajuda', targetText: 'de ajuda,', baseText: { de: 'Hilfe,' } },
-    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.' } },
+    { id: 'eu-preciso', targetText: 'Eu preciso', baseText: { de: 'Ich brauche', en: 'I need' } },
+    { id: 'de-ajuda', targetText: 'de ajuda,', baseText: { de: 'Hilfe,', en: 'some help,' } },
+    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'eu', targetText: 'eu', baseText: { de: 'ich' }, acceptedAnswers: ['eu', 'Eu'] },
-    { id: 'preciso', targetText: 'preciso', baseText: { de: 'ich brauche' }, acceptedAnswers: ['preciso', 'Preciso'] },
-    { id: 'ajuda', targetText: 'ajuda', baseText: { de: 'Hilfe' }, acceptedAnswers: ['ajuda', 'Ajuda'] },
-    { id: 'de-ajuda', targetText: 'de ajuda', baseText: { de: 'Hilfe / von Hilfe' }, acceptedAnswers: ['de ajuda', 'De ajuda'] },
+    { id: 'eu', targetText: 'eu', baseText: { de: 'ich', en: 'I' }, acceptedAnswers: ['eu', 'Eu'] },
+    { id: 'preciso', targetText: 'preciso', baseText: { de: 'ich brauche', en: 'I need' }, acceptedAnswers: ['preciso', 'Preciso'] },
+    { id: 'ajuda', targetText: 'ajuda', baseText: { de: 'Hilfe', en: 'help' }, acceptedAnswers: ['ajuda', 'Ajuda'] },
+    { id: 'de-ajuda', targetText: 'de ajuda', baseText: { de: 'Hilfe / von Hilfe', en: 'some help' }, acceptedAnswers: ['de ajuda', 'De ajuda'] },
   ],
   build: {
     targetText: 'Eu preciso de ajuda, por favor.',
@@ -21625,23 +21625,23 @@ const brightPortugueseLesson007: GuidedLessonVibeVariant = {
     fallbackChoices: ['ajuda', 'mapa', 'táxi', 'estação'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich brauche Hilfe, bitte.' },
+    baseCue: { de: 'Ich brauche Hilfe, bitte.', en: 'I need some help, please.' },
     targetPhrase: 'Eu preciso de ajuda, por favor.',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['eu', 'preciso', 'ajuda'],
     optionalTokens: ['de', 'por', 'favor', 'socorro'],
   },
-  sceneCaption: { de: 'An einem Schalter sagst du ruhig, dass du Hilfe brauchst.' },
+  sceneCaption: { de: 'An einem Schalter sagst du ruhig, dass du Hilfe brauchst.', en: 'At a service counter, you calmly say that you need some help.' },
   trophyWord: {
     word: 'ajuda',
-    meaning: { de: 'Hilfe' },
+    meaning: { de: 'Hilfe', en: 'help' },
     example: 'Eu preciso de ajuda.',
-    whyThisWord: { de: 'Ajuda ist das neutrale A1-Hilfe-Wort für Service, Bahnhof und Apotheke. Socorro klingt dringender; diese Lektion bleibt bewusst bei einer ruhigen Bitte.' },
+    whyThisWord: { de: 'Ajuda ist das neutrale A1-Hilfe-Wort für Service, Bahnhof und Apotheke. Socorro klingt dringender; diese Lektion bleibt bewusst bei einer ruhigen Bitte.', en: "Ajuda is the neutral A1 word for help at a counter, a station, or a pharmacy. Socorro sounds more urgent, like an emergency, so this lesson sticks with a calm request." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Ruhiger Schalter, klare Bitte um Hilfe.' },
+    caption: { de: 'Ruhiger Schalter, klare Bitte um Hilfe.', en: 'A quiet service counter, a clear request for help.' },
   },
   songSeed: {
     genre: 'soft acoustic pop',
@@ -21654,18 +21654,18 @@ const brightPortugueseLesson008: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Aqui no café é muito bonito.',
-    baseText: { de: 'Hier im Café ist es sehr schön.' },
+    baseText: { de: 'Hier im Café ist es sehr schön.', en: "It's really lovely here in the cafe." },
   },
-  meaning: { de: 'Ein kurzer positiver Small-Talk-Satz über den aktuellen Ort.' },
+  meaning: { de: 'Ein kurzer positiver Small-Talk-Satz über den aktuellen Ort.', en: 'A short, friendly small-talk line about where you are.' },
   chunks: [
-    { id: 'aqui-no-cafe', targetText: 'Aqui no café', baseText: { de: 'Hier im Café' } },
-    { id: 'e-muito-bonito', targetText: 'é muito bonito.', baseText: { de: 'ist es sehr schön.' } },
+    { id: 'aqui-no-cafe', targetText: 'Aqui no café', baseText: { de: 'Hier im Café', en: 'Here in the cafe' } },
+    { id: 'e-muito-bonito', targetText: 'é muito bonito.', baseText: { de: 'ist es sehr schön.', en: "it's really lovely." } },
   ],
   lessonItems: [
-    { id: 'aqui', targetText: 'aqui', baseText: { de: 'hier' }, acceptedAnswers: ['aqui', 'Aqui'] },
-    { id: 'no-cafe', targetText: 'no café', baseText: { de: 'im Café' }, acceptedAnswers: ['no café', 'no cafe', 'No café', 'No cafe'] },
-    { id: 'muito', targetText: 'muito', baseText: { de: 'sehr / viel' }, acceptedAnswers: ['muito', 'Muito'] },
-    { id: 'bonito', targetText: 'bonito', baseText: { de: 'schön' }, acceptedAnswers: ['bonito', 'Bonito'] },
+    { id: 'aqui', targetText: 'aqui', baseText: { de: 'hier', en: 'here' }, acceptedAnswers: ['aqui', 'Aqui'] },
+    { id: 'no-cafe', targetText: 'no café', baseText: { de: 'im Café', en: 'in the cafe' }, acceptedAnswers: ['no café', 'no cafe', 'No café', 'No cafe'] },
+    { id: 'muito', targetText: 'muito', baseText: { de: 'sehr / viel', en: 'very / a lot' }, acceptedAnswers: ['muito', 'Muito'] },
+    { id: 'bonito', targetText: 'bonito', baseText: { de: 'schön', en: 'lovely / pretty' }, acceptedAnswers: ['bonito', 'Bonito'] },
   ],
   build: {
     targetText: 'Aqui no café é muito bonito.',
@@ -21679,23 +21679,23 @@ const brightPortugueseLesson008: GuidedLessonVibeVariant = {
     fallbackChoices: ['Aqui', 'Ali', 'Lá', 'Onde'],
   },
   speakTarget: {
-    baseCue: { de: 'Hier im Café ist es sehr schön.' },
+    baseCue: { de: 'Hier im Café ist es sehr schön.', en: "It's really lovely here in the cafe." },
     targetPhrase: 'Aqui no café é muito bonito.',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['aqui', 'cafe', 'muito', 'bonito'],
     optionalTokens: ['café', 'no', 'é', 'e'],
   },
-  sceneCaption: { de: 'Im Café machst du einen kurzen, freundlichen Kommentar über den Ort.' },
+  sceneCaption: { de: 'Im Café machst du einen kurzen, freundlichen Kommentar über den Ort.', en: 'Inside the cafe, you make a short, friendly comment about the place.' },
   trophyWord: {
     word: 'aqui',
-    meaning: { de: 'hier' },
+    meaning: { de: 'hier', en: 'here' },
     example: 'Aqui no café é muito bonito.',
-    whyThisWord: { de: 'Aqui ist ein A1-Ortsanker. No café ist die richtige Kontraktion aus em + o café; brasilianisches Portugiesisch schreibt und spricht hier nicht em o café.' },
+    whyThisWord: { de: 'Aqui ist ein A1-Ortsanker. No café ist die richtige Kontraktion aus em + o café; brasilianisches Portugiesisch schreibt und spricht hier nicht em o café.', en: "Aqui is an A1 anchor for location. No café is the required contraction of em + o café — Brazilian Portuguese never writes or says em o café in this position." },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Innenraum eines hellen Cafés, kurzer positiver Kommentar.' },
+    caption: { de: 'Innenraum eines hellen Cafés, kurzer positiver Kommentar.', en: 'Inside a bright cafe, a short upbeat comment.' },
   },
   songSeed: {
     genre: 'sunny bossa-pop',
@@ -21708,19 +21708,19 @@ const brightPortugueseLesson009: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Amanhã às sete. Perfeito!',
-    baseText: { de: 'Morgen um sieben. Perfekt!' },
+    baseText: { de: 'Morgen um sieben. Perfekt!', en: 'Tomorrow at seven. Perfect!' },
   },
-  meaning: { de: 'Eine kurze Bestätigung eines Plans mit Zeitanker und Zustimmung.' },
+  meaning: { de: 'Eine kurze Bestätigung eines Plans mit Zeitanker und Zustimmung.', en: 'A short confirmation of a plan with a time anchor and a friendly yes.' },
   chunks: [
-    { id: 'amanha', targetText: 'Amanhã', baseText: { de: 'Morgen' } },
-    { id: 'as-sete', targetText: 'às sete.', baseText: { de: 'um sieben.' } },
-    { id: 'perfeito', targetText: 'Perfeito!', baseText: { de: 'Perfekt!' } },
+    { id: 'amanha', targetText: 'Amanhã', baseText: { de: 'Morgen', en: 'Tomorrow' } },
+    { id: 'as-sete', targetText: 'às sete.', baseText: { de: 'um sieben.', en: 'at seven.' } },
+    { id: 'perfeito', targetText: 'Perfeito!', baseText: { de: 'Perfekt!', en: 'Perfect!' } },
   ],
   lessonItems: [
-    { id: 'amanha', targetText: 'amanhã', baseText: { de: 'morgen' }, acceptedAnswers: ['amanhã', 'amanha', 'Amanhã', 'Amanha'] },
-    { id: 'as-sete', targetText: 'às sete', baseText: { de: 'um sieben' }, acceptedAnswers: ['às sete', 'as sete', 'Às sete', 'As sete'] },
-    { id: 'sete', targetText: 'sete', baseText: { de: 'sieben' }, acceptedAnswers: ['sete', 'Sete'] },
-    { id: 'perfeito', targetText: 'perfeito', baseText: { de: 'perfekt' }, acceptedAnswers: ['perfeito', 'Perfeito'] },
+    { id: 'amanha', targetText: 'amanhã', baseText: { de: 'morgen', en: 'tomorrow' }, acceptedAnswers: ['amanhã', 'amanha', 'Amanhã', 'Amanha'] },
+    { id: 'as-sete', targetText: 'às sete', baseText: { de: 'um sieben', en: 'at seven' }, acceptedAnswers: ['às sete', 'as sete', 'Às sete', 'As sete'] },
+    { id: 'sete', targetText: 'sete', baseText: { de: 'sieben', en: 'seven' }, acceptedAnswers: ['sete', 'Sete'] },
+    { id: 'perfeito', targetText: 'perfeito', baseText: { de: 'perfekt', en: 'perfect' }, acceptedAnswers: ['perfeito', 'Perfeito'] },
   ],
   build: {
     targetText: 'Amanhã às sete. Perfeito!',
@@ -21734,23 +21734,23 @@ const brightPortugueseLesson009: GuidedLessonVibeVariant = {
     fallbackChoices: ['Amanhã', 'Hoje', 'Ontem', 'Depois'],
   },
   speakTarget: {
-    baseCue: { de: 'Morgen um sieben. Perfekt!' },
+    baseCue: { de: 'Morgen um sieben. Perfekt!', en: 'Tomorrow at seven. Perfect!' },
     targetPhrase: 'Amanhã às sete. Perfeito!',
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['amanha', 'sete', 'perfeito'],
     optionalTokens: ['amanhã', 'às', 'as'],
   },
-  sceneCaption: { de: 'Am Ende einer Begegnung bestätigst du locker den Termin für morgen um sieben.' },
+  sceneCaption: { de: 'Am Ende einer Begegnung bestätigst du locker den Termin für morgen um sieben.', en: 'As you wrap up, you casually confirm the plan for tomorrow at seven.' },
   trophyWord: {
     word: 'amanhã',
-    meaning: { de: 'morgen' },
+    meaning: { de: 'morgen', en: 'tomorrow' },
     example: 'Amanhã às sete.',
-    whyThisWord: { de: 'Amanhã ist der A1-Zeitanker für einfache Planung. Às zeigt den Grave-Akzent der Kontraktion a + as; ohne Akzent ist as nur der Artikel.' },
+    whyThisWord: { de: 'Amanhã ist der A1-Zeitanker für einfache Planung. Às zeigt den Grave-Akzent der Kontraktion a + as; ohne Akzent ist as nur der Artikel.', en: 'Amanhã is the A1 time anchor for simple planning. The grave accent on às marks the contraction of a + as for clock times; without the accent, as is just the plural article.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Spätnachmittag, kurze Terminbestätigung für morgen.' },
+    caption: { de: 'Spätnachmittag, kurze Terminbestätigung für morgen.', en: 'Late afternoon, a quick confirmation of tomorrow’s plan.' },
   },
   songSeed: {
     genre: 'bright acoustic pop',
@@ -21763,18 +21763,18 @@ const brightPortugueseLesson010: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Obrigado. Tchau.',
-    baseText: { de: 'Danke. Tschüss.' },
+    baseText: { de: 'Danke. Tschüss.', en: 'Thank you. Bye.' },
   },
-  meaning: { de: 'Ein einfacher Abschluss mit Dank und informellem, in Brasilien sehr häufigem Abschied.' },
+  meaning: { de: 'Ein einfacher Abschluss mit Dank und informellem, in Brasilien sehr häufigem Abschied.', en: 'A simple closer with thanks and the casual goodbye that Brazilians use all the time.' },
   chunks: [
-    { id: 'obrigado', targetText: 'Obrigado.', baseText: { de: 'Danke.' } },
-    { id: 'tchau', targetText: 'Tchau.', baseText: { de: 'Tschüss.' } },
+    { id: 'obrigado', targetText: 'Obrigado.', baseText: { de: 'Danke.', en: 'Thank you.' } },
+    { id: 'tchau', targetText: 'Tchau.', baseText: { de: 'Tschüss.', en: 'Bye.' } },
   ],
   lessonItems: [
-    { id: 'obrigado', targetText: 'obrigado', baseText: { de: 'danke (männlicher Sprecher)' }, acceptedAnswers: ['obrigado', 'Obrigado'] },
-    { id: 'obrigada', targetText: 'obrigada', baseText: { de: 'danke (weibliche Sprecherin)' }, acceptedAnswers: ['obrigada', 'Obrigada'] },
-    { id: 'tchau', targetText: 'tchau', baseText: { de: 'tschüss' }, acceptedAnswers: ['tchau', 'Tchau'] },
-    { id: 'de-nada', targetText: 'de nada', baseText: { de: 'gern geschehen' }, acceptedAnswers: ['de nada', 'De nada'] },
+    { id: 'obrigado', targetText: 'obrigado', baseText: { de: 'danke (männlicher Sprecher)', en: 'thank you (male speaker)' }, acceptedAnswers: ['obrigado', 'Obrigado'] },
+    { id: 'obrigada', targetText: 'obrigada', baseText: { de: 'danke (weibliche Sprecherin)', en: 'thank you (female speaker)' }, acceptedAnswers: ['obrigada', 'Obrigada'] },
+    { id: 'tchau', targetText: 'tchau', baseText: { de: 'tschüss', en: 'bye' }, acceptedAnswers: ['tchau', 'Tchau'] },
+    { id: 'de-nada', targetText: 'de nada', baseText: { de: 'gern geschehen', en: "you're welcome" }, acceptedAnswers: ['de nada', 'De nada'] },
   ],
   build: {
     targetText: 'Obrigado. Tchau.',
@@ -21788,7 +21788,7 @@ const brightPortugueseLesson010: GuidedLessonVibeVariant = {
     fallbackChoices: ['Obrigado', 'Olá', 'Desculpe', 'Amanhã'],
   },
   speakTarget: {
-    baseCue: { de: 'Danke. Tschüss.' },
+    baseCue: { de: 'Danke. Tschüss.', en: 'Thank you. Bye.' },
     targetPhrase: 'Obrigado. Tchau.',
     displayAnswer: 'Obrigado/obrigada. Tchau.',
     language: 'pt-BR',
@@ -21796,16 +21796,16 @@ const brightPortugueseLesson010: GuidedLessonVibeVariant = {
     requiredTokens: ['obrigado', 'tchau'],
     optionalTokens: ['obrigada', 'muito'],
   },
-  sceneCaption: { de: 'Beim Gehen bedankst du dich kurz und verabschiedest dich locker.' },
+  sceneCaption: { de: 'Beim Gehen bedankst du dich kurz und verabschiedest dich locker.', en: 'On your way out, you give a quick thanks and a casual goodbye.' },
   trophyWord: {
     word: 'obrigado',
-    meaning: { de: 'danke' },
+    meaning: { de: 'danke', en: 'thank you' },
     example: 'Obrigado. Tchau.',
-    whyThisWord: { de: 'Obrigado/obrigada ist im Portugiesischen nach dem Sprecher markiert: ein Mann sagt obrigado, eine Frau obrigada. Die Übung akzeptiert beide, auch wenn die kanonische Anzeige obrigado nutzt.' },
+    whyThisWord: { de: 'Obrigado/obrigada ist im Portugiesischen nach dem Sprecher markiert: ein Mann sagt obrigado, eine Frau obrigada. Die Übung akzeptiert beide, auch wenn die kanonische Anzeige obrigado nutzt.', en: 'In Portuguese, obrigado/obrigada is marked by the speaker, not the listener: a man says obrigado, a woman says obrigada. The exercise accepts both, even though the canonical display uses obrigado.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Ausgang eines Cafés, kurzer Dank und lockerer Abschied.' },
+    caption: { de: 'Ausgang eines Cafés, kurzer Dank und lockerer Abschied.', en: 'The exit of a cafe, a quick thank-you and a casual goodbye.' },
   },
   songSeed: {
     genre: 'sunny acoustic bossa-pop',
@@ -57839,9 +57839,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-1-lesson-1-ola-portugues',
       sequence: 1,
-      title: { de: 'Sprechen Sie Portugiesisch?' },
+      title: { de: 'Sprechen Sie Portugiesisch?', en: 'Do you speak Portuguese?' },
     },
-    title: { de: 'Sprechen Sie Portugiesisch?' },
+    title: { de: 'Sprechen Sie Portugiesisch?', en: 'Do you speak Portuguese?' },
     situation: {
       en: 'At a cafe counter, ask whether someone speaks Portuguese.',
       de: 'Im Café fragst du freundlich, ob jemand Portugiesisch spricht.',
@@ -57853,8 +57853,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Bitte wiederholen' },
-      situation: { de: 'Du bittest höflich darum, etwas zu wiederholen.' },
+      title: { de: 'Bitte wiederholen', en: 'Please repeat that' },
+      situation: { de: 'Du bittest höflich darum, etwas zu wiederholen.', en: 'You politely ask for something to be repeated.' },
     },
     vibeVariants: {
       bright: brightPortugueseLesson001,
@@ -57872,9 +57872,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-1-lesson-2-repetir',
       sequence: 2,
-      title: { de: 'Bitte wiederholen' },
+      title: { de: 'Bitte wiederholen', en: 'Please repeat that' },
     },
-    title: { de: 'Bitte wiederholen' },
+    title: { de: 'Bitte wiederholen', en: 'Please repeat that' },
     situation: {
       en: 'Mid-exchange, ask politely for repetition.',
       de: 'Mitten im Gespräch bittest du höflich um eine Wiederholung.',
@@ -57886,8 +57886,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wo ist der Bahnhof?' },
-      situation: { de: 'Du fragst auf der Straße nach dem Bahnhof.' },
+      title: { de: 'Wo ist der Bahnhof?', en: 'Where is the station?' },
+      situation: { de: 'Du fragst auf der Straße nach dem Bahnhof.', en: 'You ask someone on the street where the station is.' },
     },
     vibeVariants: {
       bright: brightPortugueseLesson002,
@@ -57905,9 +57905,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-1-lesson-3-onde-fica-a-estacao',
       sequence: 3,
-      title: { de: 'Wo ist der Bahnhof?' },
+      title: { de: 'Wo ist der Bahnhof?', en: 'Where is the station?' },
     },
-    title: { de: 'Wo ist der Bahnhof?' },
+    title: { de: 'Wo ist der Bahnhof?', en: 'Where is the station?' },
     situation: {
       en: 'On the sidewalk, ask a passerby where the station is.',
       de: 'Auf dem Gehweg fragst du eine fremde Person nach dem Bahnhof.',
@@ -57919,8 +57919,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Einen Kaffee bestellen' },
-      situation: { de: 'Du bestellst höflich einen Kaffee.' },
+      title: { de: 'Einen Kaffee bestellen', en: 'Ordering a coffee' },
+      situation: { de: 'Du bestellst höflich einen Kaffee.', en: 'You politely order a coffee.' },
     },
     vibeVariants: {
       bright: brightPortugueseLesson003,
@@ -57938,9 +57938,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-1-lesson-4-cafe',
       sequence: 4,
-      title: { de: 'Einen Kaffee bestellen' },
+      title: { de: 'Einen Kaffee bestellen', en: 'Ordering a coffee' },
     },
-    title: { de: 'Einen Kaffee bestellen' },
+    title: { de: 'Einen Kaffee bestellen', en: 'Ordering a coffee' },
     situation: {
       en: 'At a cafe counter, order a coffee politely.',
       de: 'Am Café-Tresen bestellst du höflich einen Kaffee.',
@@ -57952,8 +57952,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Nach dem Preis fragen' },
-      situation: { de: 'Du fragst, wie viel etwas kostet.' },
+      title: { de: 'Nach dem Preis fragen', en: 'Asking the price' },
+      situation: { de: 'Du fragst, wie viel etwas kostet.', en: 'You ask how much something costs.' },
     },
     vibeVariants: {
       bright: brightPortugueseLesson004,
@@ -57971,9 +57971,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-1-lesson-5-quanto-custa',
       sequence: 5,
-      title: { de: 'Nach dem Preis fragen' },
+      title: { de: 'Nach dem Preis fragen', en: 'Asking the price' },
     },
-    title: { de: 'Nach dem Preis fragen' },
+    title: { de: 'Nach dem Preis fragen', en: 'Asking the price' },
     situation: {
       en: 'In a small shop, ask how much a visible item costs.',
       de: 'Im kleinen Laden fragst du nach dem Preis eines sichtbaren Gegenstands.',
@@ -57985,8 +57985,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wann fährt der Zug?' },
-      situation: { de: 'Du fragst im Bahnhof nach der Abfahrtszeit.' },
+      title: { de: 'Wann fährt der Zug?', en: 'What time does the train leave?' },
+      situation: { de: 'Du fragst im Bahnhof nach der Abfahrtszeit.', en: 'At the station, you ask what time the train leaves.' },
     },
     vibeVariants: {
       bright: brightPortugueseLesson005,
@@ -58004,9 +58004,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-1-lesson-6-trem',
       sequence: 6,
-      title: { de: 'Wann fährt der Zug?' },
+      title: { de: 'Wann fährt der Zug?', en: 'What time does the train leave?' },
     },
-    title: { de: 'Wann fährt der Zug?' },
+    title: { de: 'Wann fährt der Zug?', en: 'What time does the train leave?' },
     situation: {
       en: 'At a train station, ask what time the train leaves.',
       de: 'Im Bahnhof fragst du, um wie viel Uhr der Zug fährt.',
@@ -58018,8 +58018,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ich brauche Hilfe' },
-      situation: { de: 'Du sagst höflich, dass du Hilfe brauchst.' },
+      title: { de: 'Ich brauche Hilfe', en: 'I need some help' },
+      situation: { de: 'Du sagst höflich, dass du Hilfe brauchst.', en: 'You politely say that you need some help.' },
     },
     vibeVariants: {
       bright: brightPortugueseLesson006,
@@ -58037,9 +58037,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-1-lesson-7-ajuda',
       sequence: 7,
-      title: { de: 'Ich brauche Hilfe' },
+      title: { de: 'Ich brauche Hilfe', en: 'I need some help' },
     },
-    title: { de: 'Ich brauche Hilfe' },
+    title: { de: 'Ich brauche Hilfe', en: 'I need some help' },
     situation: {
       en: 'At a counter, state that you need help.',
       de: 'Am Schalter sagst du höflich, dass du Hilfe brauchst.',
@@ -58051,8 +58051,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Es ist schön hier' },
-      situation: { de: 'Du machst einen kurzen positiven Kommentar über den Ort.' },
+      title: { de: 'Es ist schön hier', en: "It's lovely here" },
+      situation: { de: 'Du machst einen kurzen positiven Kommentar über den Ort.', en: 'You make a short upbeat comment about where you are.' },
     },
     vibeVariants: {
       bright: brightPortugueseLesson007,
@@ -58070,9 +58070,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-1-lesson-8-aqui-no-cafe',
       sequence: 8,
-      title: { de: 'Es ist schön hier' },
+      title: { de: 'Es ist schön hier', en: "It's lovely here" },
     },
-    title: { de: 'Es ist schön hier' },
+    title: { de: 'Es ist schön hier', en: "It's lovely here" },
     situation: {
       en: 'Inside a cafe or shop, make a short positive comment about the place.',
       de: 'In einem Café oder Laden sagst du etwas Nettes über den Ort.',
@@ -58084,8 +58084,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Morgen um sieben' },
-      situation: { de: 'Du bestätigst einen Plan für morgen.' },
+      title: { de: 'Morgen um sieben', en: 'Tomorrow at seven' },
+      situation: { de: 'Du bestätigst einen Plan für morgen.', en: 'You confirm a plan for tomorrow.' },
     },
     vibeVariants: {
       bright: brightPortugueseLesson008,
@@ -58103,9 +58103,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-1-lesson-9-amanha-as-sete',
       sequence: 9,
-      title: { de: 'Morgen um sieben' },
+      title: { de: 'Morgen um sieben', en: 'Tomorrow at seven' },
     },
-    title: { de: 'Morgen um sieben' },
+    title: { de: 'Morgen um sieben', en: 'Tomorrow at seven' },
     situation: {
       en: 'Confirm a plan for tomorrow at seven.',
       de: 'Du bestätigst locker einen Termin für morgen um sieben.',
@@ -58117,8 +58117,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Danke und Tschüss' },
-      situation: { de: 'Du schließt die Szene mit Dank und Abschied ab.' },
+      title: { de: 'Danke und Tschüss', en: 'Thanks and bye' },
+      situation: { de: 'Du schließt die Szene mit Dank und Abschied ab.', en: 'You wrap up the scene with thanks and a goodbye.' },
     },
     vibeVariants: {
       bright: brightPortugueseLesson009,
@@ -58136,9 +58136,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'portuguese-a1-practical-1-lesson-10-obrigado-tchau',
       sequence: 10,
-      title: { de: 'Danke und Tschüss' },
+      title: { de: 'Danke und Tschüss', en: 'Thanks and bye' },
     },
-    title: { de: 'Danke und Tschüss' },
+    title: { de: 'Danke und Tschüss', en: 'Thanks and bye' },
     situation: {
       en: 'Close the scene with thanks and a casual Brazilian goodbye.',
       de: 'Du schließt die Szene mit Dank und einem lockeren brasilianischen Abschied ab.',
@@ -58150,8 +58150,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Pfad abgeschlossen' },
-      situation: { de: 'Du hast Portuguese A1 Practical 1 abgeschlossen.' },
+      title: { de: 'Pfad abgeschlossen', en: 'Path complete' },
+      situation: { de: 'Du hast Portuguese A1 Practical 1 abgeschlossen.', en: "You've finished Portuguese A1 Practical 1." },
     },
     vibeVariants: {
       bright: brightPortugueseLesson010,
