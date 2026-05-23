@@ -43,8 +43,10 @@ begin
       w.created_at,
       lower(btrim(w.word)) as lemma_key
     from public.words w
+    join public.decks d on d.id = w.deck_id
+      and d.user_id = p_user_id
     where w.user_id = p_user_id
-      and w.target_language = p_target_language
+      and d.target_language = p_target_language
       and w.status = 'complete'
       and nullif(lower(btrim(w.word)), '') is not null
   ),
@@ -98,7 +100,7 @@ begin
       count(*)::int as total_attempts,
       count(*) filter (
         where ar.knew_it = true
-          and ar.prior_misses = 0
+          and coalesce(ar.prior_misses, 0) = 0
       )::int as consecutive_correct
     from attempt_runs ar
     group by ar.lemma_key
