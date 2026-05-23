@@ -3,12 +3,15 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { filterLemmaStatesForQueue, isStudyQueue, type StudyQueue } from '@/hooks/useStudySession'
+import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
 import videoIcon from '@/assets/study-mode-icons/video.webp'
 import cardsIcon from '@/assets/study-mode-icons/cards.webp'
 import audioIcon from '@/assets/study-mode-icons/audio.webp'
 import canvasIcon from '@/assets/study-mode-icons/canvas.webp'
 import { GAMES } from '@/games/shared/registry'
+import { ComingSoonOverlay } from '@/components/games/ComingSoonOverlay'
 
 type ModeConfig = {
   key: string
@@ -25,10 +28,20 @@ const MODES: ModeConfig[] = [
   { key: 'canvas', iconSrc: canvasIcon, titleKey: 'study.mode.canvas', route: '/study/canvas/select', enabled: true },
 ]
 
+const QUEUE_LABELS: Record<StudyQueue, string> = {
+  review: 'Review due',
+  learn: 'Learn new',
+  strengthen: 'Strengthen',
+  mastered: 'Mastered',
+}
+
 export default function StudyModeSelector() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const deckParam = searchParams.get('deck')
+  const queueParam = searchParams.get('queue')
+  const langParam = searchParams.get('lang')
+  const queue = isStudyQueue(queueParam) ? queueParam : null
   const { t } = useTranslation()
   const { user } = useAuth()
   const { activeLanguage, setActiveLanguage } = useLanguage()
@@ -55,12 +68,19 @@ export default function StudyModeSelector() {
   )
 
   const deckName = selectedDeck?.name ?? null
+  const { data: wordStates } = useWordStates(activeLanguage ?? '', { deckId: deckParam })
+  const queueCount = queue ? filterLemmaStatesForQueue(wordStates, queue).length : 0
 
   useEffect(() => {
     if (selectedDeck?.target_language) {
       setActiveLanguage(selectedDeck.target_language)
     }
   }, [selectedDeck?.target_language, setActiveLanguage])
+
+  useEffect(() => {
+    if (!langParam || !availableLanguages.includes(langParam)) return
+    setActiveLanguage(langParam)
+  }, [availableLanguages, langParam, setActiveLanguage])
 
   useEffect(() => {
     if (availableLanguages.length === 0) return
@@ -71,13 +91,19 @@ export default function StudyModeSelector() {
 
   function selectMode(mode: ModeConfig) {
     if (!mode.enabled) return
-    const params = deckParam ? `?deck=${deckParam}` : ''
-    navigate(`${mode.route}${params}`)
+    const params = new URLSearchParams()
+    if (deckParam) params.set('deck', deckParam)
+    if (queue) params.set('queue', queue)
+    if ((queue || langParam) && activeLanguage) params.set('lang', activeLanguage)
+    const query = params.toString()
+    navigate(`${mode.route}${query ? `?${query}` : ''}`)
   }
 
   function selectGame(route: string) {
     const params = new URLSearchParams()
     params.set('returnTo', '/study')
+    if (deckParam) params.set('deck', deckParam)
+    if (queue) params.set('queue', queue)
     if (activeLanguage) params.set('lang', activeLanguage)
     navigate(`${route}?${params.toString()}`)
   }
@@ -93,6 +119,11 @@ export default function StudyModeSelector() {
           {deckParam && deckName && (
             <p className="mt-1 text-xs text-muted-foreground/80">
               {t('study.studyingDeck', { name: deckName })}
+            </p>
+          )}
+          {queue && (
+            <p className="mt-3 inline-flex rounded-full border border-border/70 bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+              Queue: {QUEUE_LABELS[queue]} ({queueCount} words)
             </p>
           )}
         </div>
@@ -143,27 +174,42 @@ export default function StudyModeSelector() {
             {t('study.games.section')}
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {GAMES.filter((game) => game.enabled).map((game) => (
-              <button
-                key={game.id}
-                type="button"
-                onClick={() => selectGame(game.route)}
-                className="study-mode-card relative flex min-h-[180px] flex-col items-center justify-center gap-4 rounded-2xl border border-border bg-card p-6 text-center backdrop-blur transition-all duration-200 hover:scale-[1.03] hover:border-accent hover:bg-accent active:scale-[0.98]"
-              >
-                <img
-                  src={game.iconSrc}
-                  alt={t(game.titleKey)}
-                  width={88}
-                  height={88}
-                  loading="eager"
-                  decoding="sync"
-                  className="h-[88px] w-[88px] rounded-2xl object-contain shadow-[0_0_24px_rgba(255,107,53,0.18)]"
-                />
-                <div>
-                  <h3 className="text-lg font-semibold">{t(game.titleKey)}</h3>
-                </div>
-              </button>
-            ))}
+            {GAMES.filter((game) => game.enabled).map((game) => {
+              const isComingSoon = game.comingSoon === true
+
+              return (
+                <button
+                  key={game.id}
+                  type="button"
+                  onClick={() => {
+                    if (isComingSoon) return
+                    selectGame(game.route)
+                  }}
+                  aria-disabled={isComingSoon}
+                  className={`
+                    study-mode-card relative flex min-h-[180px] flex-col items-center justify-center gap-4 rounded-2xl border border-border bg-card p-6 text-center backdrop-blur transition-all duration-200
+                    ${isComingSoon
+                      ? 'cursor-not-allowed opacity-75'
+                      : 'hover:scale-[1.03] hover:border-accent hover:bg-accent active:scale-[0.98]'
+                    }
+                  `}
+                >
+                  {isComingSoon && <ComingSoonOverlay />}
+                  <img
+                    src={game.iconSrc}
+                    alt={t(game.titleKey)}
+                    width={88}
+                    height={88}
+                    loading="eager"
+                    decoding="sync"
+                    className="h-[88px] w-[88px] rounded-2xl object-contain shadow-[0_0_24px_rgba(255,107,53,0.18)]"
+                  />
+                  <div>
+                    <h3 className="text-lg font-semibold">{t(game.titleKey)}</h3>
+                  </div>
+                </button>
+              )
+            })}
           </div>
         </div>
       </div>
