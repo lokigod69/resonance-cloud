@@ -216,3 +216,112 @@ The error surface is missing/renamed guided trophy exports and a stale `lessonId
 ## Scope Confirmation
 
 No Supabase schema, backend provider, paid API, credits, image generation, storage/media, card rendering, video generation, generated user decks, or user content was changed.
+
+## Frontend Visibility, Korean Extension, And QA Follow-Up
+
+### Main And Deployment State
+
+Local `main` and `origin/main` both pointed to `3d859a0d734f72d4eccf27ad013e06e0b371d64d` before this follow-up. That history contains both expected multilingual category commits:
+
+- `2710df9` / `feat: add multilingual static vocabulary category packs`
+- `2c3f21b5ba48573326683590089f1119cbeae6a1` / `feat: add bilingual category vocabulary selection`
+
+Production `https://resonanz.pro` is served by Vercel and was Ready when checked. `vercel inspect https://resonanz.pro` returned deployment `frontend-h6h8dgh04-lokigod69s-projects.vercel.app`, created May 24, 2026 06:57 PST. The deployed asset already contained the previous multilingual Generate selector strings and static concept ids, but it did not contain this follow-up's new Categories-page Generate CTA or Korean Home & Objects terms before this commit was pushed.
+
+### User-Visible Wiring
+
+The multilingual category picker remains wired into the Generate flow:
+
+- `/generate` renders `GenerateGO` for the glassy skin and `Generate` / `GeneratePG` for the classic skin.
+- Both Generate skins render `WordsStep`.
+- `WordsStep` renders `CategoryPicker`.
+- `CategoryPicker` reads the public static thematic packs from `frontend/src/data/categories.ts`.
+
+The target vocabulary language selector and helper translation language selector now appear immediately when the category drawer opens, before a category tile is selected. Previously they were visible only after selecting a category, which made the feature easy to miss.
+
+The separate `/categories` page still uses `frontend/src/data/curriculumCategories.ts`, not the Generate static category packs. This is intentionally a curriculum browser today. To make the new thematic Generate picker discoverable from that page without rewriting the curriculum browser, `/categories` now includes a visible "Generate from thematic categories" link to `/generate`.
+
+The Generate route and Categories route are protected routes, so unauthenticated local Chrome smoke testing redirects to `/login`. Source-level wiring tests and payload tests verify the actual Generate picker behavior. A local Vite server at `http://127.0.0.1:5178/generate` returned HTTP 200 before auth routing redirected the headless browser.
+
+### Korean Extension
+
+Korean was added as a target vocabulary language:
+
+- code: `ko`
+- value: `Korean`
+- selector label: `한국어`
+
+Korean terms attach to the existing stable concept ids inside the same multilingual concept pack model. No separate Korean category packs were created. Korean primary terms use Hangul, not romanization.
+
+The Korean entries were generated in a local unpaid translation pass and every Korean translation is marked `needsReview: true`. Romanization was not added in this pass to keep the schema change minimal; the existing translation object remains `term` plus optional `needsReview`.
+
+Verified Home & Objects examples:
+
+- target Korean + helper English: `의자 / chair`, `테이블 / table`, `침대 / bed`
+- target English + helper Korean: `chair / 의자`, `table / 테이블`, `bed / 침대`
+
+### Language Exposure And Review Flags
+
+The selector exposes:
+
+- English (`en`)
+- German (`de`)
+- French (`fr`)
+- Spanish (`es`)
+- Portuguese (`pt`)
+- Italian (`it`)
+- Polish (`pl`)
+- Indonesian (`id`)
+- Bisaya / Cebuano (`ceb`)
+- Korean (`ko`)
+
+Cebuano remains exposed but its selector label now reads `Bisaya / Cebuano (review)` because the current data still has many review-needed entries. Korean is also exposed because coverage is complete and validation enforces non-empty terms, but all Korean terms are marked review-needed pending human review.
+
+Current translation coverage and review counts:
+
+- Total public static categories: 19
+- Total concept items: 1,850
+- Missing exposed-language terms: 0 for every exposed language
+- `needsReview`: Cebuano 627, Korean 1,850, all other exposed languages 0
+
+Current duplicate scan:
+
+- Within-category/language duplicate groups: 425
+- Duplicate item memberships across those groups: 880
+- These duplicates are review findings, not blocker errors, because some are natural sense/translation collapses.
+
+Top duplicate examples from the current scan:
+
+- `animals` / Portuguese: `rato` for `animals.mouse`, `animals.rat`
+- `animals` / Indonesian: `tikus` for `animals.mouse`, `animals.rat`
+- `animals` / Indonesian: `buaya` for `animals.crocodile`, `animals.alligator`
+- `animals` / Indonesian: `berang-berang` for `animals.otter`, `animals.beaver`
+- `animals` / Indonesian: `musang` for `animals.weasel`, `animals.ferret`
+- `animals` / Indonesian: `trenggiling` for `animals.anteater`, `animals.pangolin`
+- `animals` / Cebuano: `ilaga` for `animals.mouse`, `animals.rat`
+- `animals` / Cebuano: `alibangbang` for `animals.butterfly`, `animals.dragonfly`
+- `animals` / Cebuano: `buaya` for `animals.crocodile`, `animals.alligator`
+- `animals` / Korean: `쥐` for `animals.mouse`, `animals.rat`
+
+Canonical thematic entries are still not removed because of legacy/generic category overlap. Dedupe remains at final displayed/output chip level by normalized term.
+
+### Checks Run In Follow-Up
+
+Passed:
+
+- `npm run test:generate-category-picker-flow`
+- `npm run test:lane-payload`
+- `npm exec -- tsx scripts/test-generate-i18n-ui-cleanup.ts`
+- `npm run test:static-category-translations`
+- `npm run typecheck`
+- targeted ESLint on changed category/frontend/test files
+
+Attempted:
+
+- `npm run build`
+
+Build was blocked by a pre-existing untracked local file: `frontend/src/components/today/trophy/TrophyStudyModal.tsx`. The file imports stale guided trophy exports (`createGuidedTrophyStudyRecord`, `GuidedTrophyStudyItem`) and writes a stale `lessonId` property into `GuidedTrophyClozeItem`. This file was not staged or changed for this category task. A clean tracked tree is expected to avoid this local untracked-file build blocker; `npm run typecheck` passed in this workspace.
+
+### Scope Confirmation
+
+This follow-up changed frontend category data, frontend category visibility, tests, and this report only. No Supabase schema, backend provider, paid API, credits, image generation, storage/media, card rendering, video generation, generated user decks, or user content was changed.

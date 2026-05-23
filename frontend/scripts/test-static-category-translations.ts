@@ -8,7 +8,7 @@ import {
   type StaticCategoryTargetLanguageCode,
 } from '../src/data/categories.ts'
 
-const expectedLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ceb']
+const expectedLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ceb', 'ko']
 
 assert.deepEqual(
   STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => language.code),
@@ -48,11 +48,13 @@ const fruits = publicCategories.find((category) => category.id === 'fruits')
 const money = publicCategories.find((category) => category.id === 'money_shopping_services')
 const feelings = publicCategories.find((category) => category.id === 'feelings_states')
 const education = publicCategories.find((category) => category.id === 'education_learning')
+const homeObjects = publicCategories.find((category) => category.id === 'home_objects')
 assert.ok(animals)
 assert.ok(fruits)
 assert.ok(money)
 assert.ok(feelings)
 assert.ok(education)
+assert.ok(homeObjects)
 
 assert.deepEqual(getStaticCategoryWords(animals, 4, 1, 'German'), ['Hund', 'Katze', 'Vogel', 'Fisch'])
 assert.deepEqual(getStaticCategoryWords(animals, 3, 1, 'ceb'), ['iro', 'iring', 'langgam'])
@@ -60,6 +62,8 @@ assert.deepEqual(getStaticCategoryWords(fruits, 3, 1, 'Spanish'), ['manzana', 'p
 assert.deepEqual(getStaticCategoryWords(money, 3, 5, 'Portuguese'), ['conta bancária', 'conta poupança', 'conta corrente'])
 assert.deepEqual(getStaticCategoryWords(feelings, 3, 1, 'Polish'), ['szczęśliwy', 'smutny', 'zły'])
 assert.deepEqual(getStaticCategoryWords(education, 3, 4, 'Italian'), ['imparare', 'studiare', 'leggere'])
+
+assert.deepEqual(getStaticCategoryWords(homeObjects, 3, 1, 'Korean'), ['의자', '테이블', '침대'])
 
 const englishAnimalItems = getStaticCategoryVocabularyItems(animals)
 assert.deepEqual(

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Check } from 'lucide-react'
+import { Check, Sparkles } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { supabase } from '@/lib/supabase'
@@ -76,6 +76,10 @@ export default function CategoryListPage() {
           <h1 className={styles.title}>{t('categories.title')}</h1>
           <p className={styles.subtitle}>{t('categories.subtitle')}</p>
         </div>
+        <Link to="/generate" className={styles.generateAction}>
+          <Sparkles className="h-4 w-4" aria-hidden="true" />
+          {t('categories.generateFromCategories')}
+        </Link>
       </header>
 
       <div className={styles.grid}>

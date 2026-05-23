@@ -4,7 +4,7 @@ import { STATIC_CATEGORY_TRANSLATIONS } from './staticCategoryTranslations'
 // (and used in backend prompts). They must remain in stable English. The
 // `labelKey` / `groupKey` fields are i18n lookups for display only — the
 // English `name` / `label` fields stay as English fallbacks via t().
-export type StaticCategoryTargetLanguageCode = 'en' | 'de' | 'fr' | 'es' | 'pt' | 'it' | 'pl' | 'id' | 'ceb'
+export type StaticCategoryTargetLanguageCode = 'en' | 'de' | 'fr' | 'es' | 'pt' | 'it' | 'pl' | 'id' | 'ceb' | 'ko'
 
 export interface StaticCategoryTranslation {
   term: string
@@ -26,7 +26,8 @@ export const STATIC_CATEGORY_TARGET_LANGUAGES: Array<{
   { code: 'it', value: 'Italian', label: 'Italiano' },
   { code: 'pl', value: 'Polish', label: 'Polski' },
   { code: 'id', value: 'Indonesian', label: 'Bahasa Indonesia' },
-  { code: 'ceb', value: 'Bisaya', label: 'Bisaya / Cebuano' },
+  { code: 'ceb', value: 'Bisaya', label: 'Bisaya / Cebuano (review)' },
+  { code: 'ko', value: 'Korean', label: '한국어' },
 ]
 
 export interface Category {

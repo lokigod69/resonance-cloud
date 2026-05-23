@@ -135,6 +135,50 @@ export default function CategoryPicker({
     setSelectedHelperLanguage(language)
   }
 
+  function renderLanguagePairControls() {
+    return (
+      <div className="grid gap-3 sm:grid-cols-2">
+        <div>
+          <label htmlFor="static-category-target-language" className="mb-2 block text-sm font-semibold text-foreground">
+            {t('generate.words.targetVocabularyLanguageLabel')}
+          </label>
+          <select
+            id="static-category-target-language"
+            value={targetLanguage}
+            disabled={status === 'loading'}
+            onChange={(event) => handleTargetLanguageChange(event.target.value)}
+            className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
+          >
+            {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+              <option key={language.code} value={language.value}>
+                {language.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="static-category-helper-language" className="mb-2 block text-sm font-semibold text-foreground">
+            {t('generate.words.helperVocabularyLanguageLabel')}
+          </label>
+          <select
+            id="static-category-helper-language"
+            value={helperLanguage}
+            disabled={status === 'loading'}
+            onChange={(event) => handleHelperLanguageChange(event.target.value)}
+            className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
+          >
+            {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+              <option key={language.code} value={language.value}>
+                {language.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+    )
+  }
+
   async function fetchSuggestions(category: Category, count: number) {
     const requestedCount = count
     if (!targetLanguage) {
@@ -251,6 +295,8 @@ export default function CategoryPicker({
             className="overflow-hidden"
           >
             <div className="w-full space-y-5 rounded-xl border border-border bg-card/40 p-4">
+              {renderLanguagePairControls()}
+
               {activeCategory && selectedLabel && (
                 <div className="rounded-2xl border border-accent/50 bg-accent/10 p-4 shadow-[0_0_28px_rgba(138,167,199,0.14)]">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -278,46 +324,6 @@ export default function CategoryPicker({
                   </div>
 
                   <div className="word-count-slider-wrap mt-5">
-                    <div className="mb-5 grid gap-3 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="static-category-target-language" className="mb-2 block text-sm font-semibold text-foreground">
-                          {t('generate.words.targetVocabularyLanguageLabel')}
-                        </label>
-                        <select
-                          id="static-category-target-language"
-                          value={targetLanguage}
-                          disabled={status === 'loading'}
-                          onChange={(event) => handleTargetLanguageChange(event.target.value)}
-                          className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
-                        >
-                          {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
-                            <option key={language.code} value={language.value}>
-                              {language.label}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label htmlFor="static-category-helper-language" className="mb-2 block text-sm font-semibold text-foreground">
-                          {t('generate.words.helperVocabularyLanguageLabel')}
-                        </label>
-                        <select
-                          id="static-category-helper-language"
-                          value={helperLanguage}
-                          disabled={status === 'loading'}
-                          onChange={(event) => handleHelperLanguageChange(event.target.value)}
-                          className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
-                        >
-                          {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
-                            <option key={language.code} value={language.value}>
-                              {language.label}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
                     {activeCategory.staticWordLevels && activeCategory.staticWordLevels.length > 1 && (
                       <div className="mb-5">
                         <p className="mb-2 text-sm font-semibold text-foreground">

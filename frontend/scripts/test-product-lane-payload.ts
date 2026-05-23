@@ -122,6 +122,28 @@ console.log('\n[static category vocabulary metadata payload]')
       p.wordList.join('|') === 'chair|table|bed',
       p.wordList,
     )
+
+    const koreanSelectedVocabularyItems = getStaticCategorySelectedItems(homeObjects, 3, 1, 'Korean', 'English')
+    const koreanPayload = buildGeneratePayload({
+      state: makeState({
+        language: 'Korean',
+        productLane: 'card_standard',
+        words: koreanSelectedVocabularyItems.map((item) => item.targetTerm),
+        selectedVocabularyItems: koreanSelectedVocabularyItems,
+      }),
+      userId: USER,
+    })
+    const koreanPayloadItems = koreanPayload.jobPayload.settings_override.category_vocabulary_items
+    assert(
+      'Korean category vocabulary metadata reaches settings_override',
+      Array.isArray(koreanPayloadItems)
+        && koreanPayloadItems[0]?.conceptId === 'home_objects.chair'
+        && koreanPayloadItems[0]?.targetTerm === '의자'
+        && koreanPayloadItems[0]?.targetLanguage === 'ko'
+        && koreanPayloadItems[0]?.helperTerm === 'chair'
+        && koreanPayloadItems[0]?.helperLanguage === 'en',
+      koreanPayloadItems,
+    )
   }
 }
 

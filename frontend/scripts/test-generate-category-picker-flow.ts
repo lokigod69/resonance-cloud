@@ -14,6 +14,7 @@ import {
 const categoryPicker = readFileSync(resolve(process.cwd(), 'src/components/generate/steps/CategoryPicker.tsx'), 'utf8')
 const wordsStep = readFileSync(resolve(process.cwd(), 'src/components/generate/steps/WordsStep.tsx'), 'utf8')
 const wizardState = readFileSync(resolve(process.cwd(), 'src/components/generate/useWizardState.ts'), 'utf8')
+const categoryListPage = readFileSync(resolve(process.cwd(), 'src/pages/categories/CategoryListPage.tsx'), 'utf8')
 
 assert.match(
   categoryPicker,
@@ -102,6 +103,10 @@ assert.ok(
   'CategoryPicker should expose the static vocabulary target language selector',
 )
 assert.ok(
+  categoryPicker.indexOf('id="static-category-target-language"') < categoryPicker.indexOf('{activeCategory && selectedLabel && ('),
+  'CategoryPicker should show the language-pair selectors as soon as the drawer opens, before a category is selected',
+)
+assert.ok(
   categoryPicker.includes('handleHelperLanguageChange'),
   'CategoryPicker should expose a helper/base translation language selector separate from target vocabulary language',
 )
@@ -112,6 +117,10 @@ assert.ok(
 assert.ok(
   categoryPicker.includes('onMergeVocabularyItems?.(staticItems)'),
   'CategoryPicker should merge static category selections as concept metadata, not only raw strings',
+)
+assert.ok(
+  categoryListPage.includes('to="/generate"') && categoryListPage.includes("categories.generateFromCategories"),
+  'Categories page should expose a visible entry point to the multilingual Generate category picker',
 )
 
 const publicCategories = getPublicCategoryGroups().flatMap((group) => group.categories)
@@ -436,6 +445,18 @@ assert.deepEqual(
     .map(formatSelectedCategoryVocabularyLabel),
   ['chair', 'table', 'bed'],
   'Same-language target/helper display should collapse to a single term',
+)
+assert.deepEqual(
+  getStaticCategorySelectedItems(homeObjectsCategory, 3, 1, 'Korean', 'English')
+    .map(formatSelectedCategoryVocabularyLabel),
+  ['의자 / chair', '테이블 / table', '침대 / bed'],
+  'Home & Objects should display Korean primary chips with English helper translations',
+)
+assert.deepEqual(
+  getStaticCategorySelectedItems(homeObjectsCategory, 3, 1, 'English', 'Korean')
+    .map(formatSelectedCategoryVocabularyLabel),
+  ['chair / 의자', 'table / 테이블', 'bed / 침대'],
+  'Home & Objects should display English primary chips with Korean helper translations',
 )
 for (const level of homeObjectsCategory.staticWordLevels ?? []) {
   for (const entry of level.words) {
