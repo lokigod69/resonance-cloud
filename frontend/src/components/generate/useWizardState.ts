@@ -1,6 +1,7 @@
 import { useReducer, useCallback } from 'react'
 import { MAX_WORDS } from './wizardData'
 import { wordsEqual } from '@/lib/wordEquality'
+import type { SelectedCategoryVocabularyItem } from '@/data/categories'
 
 export type ProductLane = 'video' | 'card_standard' | 'card_premium'
 
@@ -464,6 +465,7 @@ export interface WizardState {
   path: 'undecided' | 'quick' | 'custom'
   language: string | null
   words: string[]
+  selectedVocabularyItems: SelectedCategoryVocabularyItem[]
   vibe: string | null
   movieTitle: string | null
   artStyle: string | null
@@ -482,6 +484,7 @@ export type WizardAction =
   | { type: 'PRESELECT_LANGUAGE'; language: string }
   | { type: 'ADD_WORD'; word: string }
   | { type: 'ADD_WORDS'; words: string[] }
+  | { type: 'ADD_VOCABULARY_ITEMS'; items: SelectedCategoryVocabularyItem[] }
   | { type: 'REMOVE_WORD'; index: number }
   | { type: 'SET_WORDS'; words: string[] }
   | { type: 'SET_VIBE'; vibe: string }
@@ -505,6 +508,7 @@ const initialState: WizardState = {
   path: 'undecided',
   language: null,
   words: [],
+  selectedVocabularyItems: [],
   vibe: null,
   movieTitle: null,
   artStyle: null,
@@ -602,11 +606,48 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
       return next.length === state.words.length ? state : { ...state, words: next }
     }
 
-    case 'REMOVE_WORD':
-      return { ...state, words: state.words.filter((_, i) => i !== action.index) }
+    case 'ADD_VOCABULARY_ITEMS': {
+      const nextWords = [...state.words]
+      const nextItems = [...state.selectedVocabularyItems]
+      for (const item of action.items) {
+        const targetTerm = item.targetTerm.trim()
+        if (!targetTerm) continue
+        if (nextWords.some((existing) => wordsEqual(existing, item.targetTerm))) continue
+        if (nextWords.length >= MAX_WORDS) break
+        nextWords.push(targetTerm)
+        nextItems.push({ ...item, targetTerm })
+      }
+      return nextWords.length === state.words.length
+        ? state
+        : { ...state, words: nextWords, selectedVocabularyItems: nextItems }
+    }
 
-    case 'SET_WORDS':
-      return { ...state, words: action.words.slice(0, MAX_WORDS) }
+    case 'REMOVE_WORD': {
+      const removedWord = state.words[action.index]
+      let removedMetadata = false
+      return {
+        ...state,
+        words: state.words.filter((_, i) => i !== action.index),
+        selectedVocabularyItems: state.selectedVocabularyItems.filter((item) => {
+          if (!removedMetadata && removedWord && wordsEqual(item.targetTerm, removedWord)) {
+            removedMetadata = true
+            return false
+          }
+          return true
+        }),
+      }
+    }
+
+    case 'SET_WORDS': {
+      const words = action.words.slice(0, MAX_WORDS)
+      return {
+        ...state,
+        words,
+        selectedVocabularyItems: state.selectedVocabularyItems.filter((item) =>
+          words.some((word) => wordsEqual(word, item.targetTerm)),
+        ),
+      }
+    }
 
     case 'SET_VIBE':
       return {
@@ -715,7 +756,12 @@ export interface GeneratePayload {
     words_total: number
     settings_override: Record<
       string,
-      string | CardLayer2Payload | Layer2EvalPayload | PremiumGenerationModeMetadata | undefined
+      | string
+      | CardLayer2Payload
+      | Layer2EvalPayload
+      | PremiumGenerationModeMetadata
+      | SelectedCategoryVocabularyItem[]
+      | undefined
     >
   }
 }
@@ -767,6 +813,9 @@ export function buildGeneratePayload({
   const deckType = laneToDeckType(lane) ?? 'video'
   const language = existingDeck?.target_language ?? state.language ?? ''
   const words = wordsOverride ?? state.words
+  const selectedVocabularyItems = state.selectedVocabularyItems.filter((item) =>
+    words.some((word) => wordsEqual(word, item.targetTerm)),
+  )
 
   // For card lanes, video-only fields are always null. For video lanes, only
   // include them when the user actually customised (i.e. not Quick Generate).
@@ -900,6 +949,9 @@ export function buildGeneratePayload({
               premium_quick_mode: premiumGenerationMode.premium_quick_mode,
               premium_generation_mode: premiumGenerationMode,
             }
+          : {}),
+        ...(selectedVocabularyItems.length > 0
+          ? { category_vocabulary_items: selectedVocabularyItems }
           : {}),
       },
     },

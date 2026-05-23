@@ -67,6 +67,23 @@ export interface StaticCategoryVocabularyItem extends CategoryWordEntry {
   translations: StaticCategoryTranslations
 }
 
+export interface SelectedCategoryVocabularyItem {
+  conceptId: string
+  itemId: string
+  categoryId: string
+  level: number
+  order: number
+  part_of_speech: string
+  sense: string
+  targetLanguage: StaticCategoryTargetLanguageCode
+  targetLanguageName: string
+  targetTerm: string
+  helperLanguage: StaticCategoryTargetLanguageCode
+  helperLanguageName: string
+  helperTerm: string
+  translations: StaticCategoryTranslations
+}
+
 export interface CategoryWordLevel {
   level: number
   label: string
@@ -909,22 +926,62 @@ export function getStaticCategoryWords(
   levelNumber?: number,
   targetLanguage?: string | null,
 ): string[] {
-  const words: string[] = []
+  return getStaticCategorySelectedItems(
+    category,
+    requestedCount,
+    levelNumber,
+    targetLanguage,
+    targetLanguage,
+  ).map((item) => item.targetTerm)
+}
+
+export function getStaticCategorySelectedItems(
+  category: Category,
+  requestedCount: number,
+  levelNumber?: number,
+  targetLanguage?: string | null,
+  helperLanguage?: string | null,
+): SelectedCategoryVocabularyItem[] {
+  const selectedItems: SelectedCategoryVocabularyItem[] = []
   const seen = new Set<string>()
   const limit = Math.max(0, requestedCount)
   const languageCode = resolveStaticCategoryTargetLanguageCode(targetLanguage)
+  const helperLanguageCode = resolveStaticCategoryTargetLanguageCode(helperLanguage)
+  const targetLanguageName = STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => language.code === languageCode)?.value ?? 'English'
+  const helperLanguageName = STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => language.code === helperLanguageCode)?.value ?? 'English'
 
   for (const item of getStaticCategoryVocabularyItems(category, levelNumber)) {
-    const trimmed = (item.translations[languageCode]?.term ?? item.translations.en.term).trim()
+    const trimmed = resolveTranslatedTerm(item, languageCode)
     const normalized = normalizeStaticWord(trimmed)
     if (seen.has(normalized)) continue
 
-    words.push(trimmed)
+    selectedItems.push({
+      conceptId: item.id,
+      itemId: item.id,
+      categoryId: item.categoryId,
+      level: item.level,
+      order: item.order,
+      part_of_speech: item.part_of_speech,
+      sense: item.sense,
+      targetLanguage: languageCode,
+      targetLanguageName,
+      targetTerm: trimmed,
+      helperLanguage: helperLanguageCode,
+      helperLanguageName,
+      helperTerm: resolveTranslatedTerm(item, helperLanguageCode),
+      translations: item.translations,
+    })
     seen.add(normalized)
-    if (words.length >= limit) return words
+    if (selectedItems.length >= limit) return selectedItems
   }
 
-  return words
+  return selectedItems
+}
+
+export function formatSelectedCategoryVocabularyLabel(item: SelectedCategoryVocabularyItem): string {
+  return item.helperTerm && normalizeStaticWord(item.helperTerm) !== normalizeStaticWord(item.targetTerm)
+    ? `${item.targetTerm} / ${item.helperTerm}`
+    : item.targetTerm
 }
 
 export function resolveStaticCategoryTargetLanguageCode(language?: string | null): StaticCategoryTargetLanguageCode {
@@ -943,6 +1000,13 @@ function getCategoryEntryWord(entry: string | CategoryWordEntry): string {
 
 function normalizeStaticWord(word: string): string {
   return word.trim().normalize('NFC').toLowerCase()
+}
+
+function resolveTranslatedTerm(
+  item: StaticCategoryVocabularyItem,
+  languageCode: StaticCategoryTargetLanguageCode,
+): string {
+  return (item.translations[languageCode]?.term ?? item.translations.en.term).trim()
 }
 
 function resolveStaticCategoryTranslations(id: string, fallbackEnglishTerm: string): StaticCategoryTranslations {

@@ -5,8 +5,10 @@ import { resolve } from 'node:path'
 import {
   CATEGORY_GROUPS,
   getPublicCategoryGroups,
+  getStaticCategorySelectedItems,
   getStaticCategoryWords,
   getThematicDuplicateReport,
+  formatSelectedCategoryVocabularyLabel,
 } from '../src/data/categories.ts'
 
 const categoryPicker = readFileSync(resolve(process.cwd(), 'src/components/generate/steps/CategoryPicker.tsx'), 'utf8')
@@ -92,16 +94,24 @@ assert.deepEqual(
   'Animals should preserve 10 levels with 10 entries each',
 )
 assert.ok(
-  categoryPicker.includes('getStaticCategoryWords(category, requestedCount, selectedStaticLevel ?? undefined, targetLanguage)'),
-  'CategoryPicker should use target-language-aware local static words for leveled static categories instead of the suggestion API',
+  categoryPicker.includes('getStaticCategorySelectedItems(category, requestedCount, selectedStaticLevel ?? undefined, targetLanguage, helperLanguage)'),
+  'CategoryPicker should use target/helper-language-aware local static vocabulary items for leveled static categories instead of the suggestion API',
 )
 assert.ok(
   categoryPicker.includes('STATIC_CATEGORY_TARGET_LANGUAGES.map'),
   'CategoryPicker should expose the static vocabulary target language selector',
 )
 assert.ok(
+  categoryPicker.includes('handleHelperLanguageChange'),
+  'CategoryPicker should expose a helper/base translation language selector separate from target vocabulary language',
+)
+assert.ok(
   categoryPicker.includes("onTargetLanguageChange?.(language)"),
   'CategoryPicker should notify the wizard when the target vocabulary language changes',
+)
+assert.ok(
+  categoryPicker.includes('onMergeVocabularyItems?.(staticItems)'),
+  'CategoryPicker should merge static category selections as concept metadata, not only raw strings',
 )
 
 const publicCategories = getPublicCategoryGroups().flatMap((group) => group.categories)
@@ -363,6 +373,69 @@ assert.deepEqual(
   getStaticCategoryWords(homeObjectsCategory, 10, 10),
   ['curtain', 'blinds', 'cushion', 'vase', 'candle', 'picture frame', 'doormat', 'coat rack', 'remote control', 'clock'],
   'Home & Objects level 10 should supply the decor and household extras list',
+)
+const homeObjectsEnglishGerman = getStaticCategorySelectedItems(homeObjectsCategory, 3, 1, 'English', 'German')
+assert.deepEqual(
+  homeObjectsEnglishGerman.map(formatSelectedCategoryVocabularyLabel),
+  ['chair / Stuhl', 'table / Tisch', 'bed / Bett'],
+  'Home & Objects should display English primary chips with German helper translations',
+)
+assert.deepEqual(
+  homeObjectsEnglishGerman.map((item) => ({
+    conceptId: item.conceptId,
+    categoryId: item.categoryId,
+    targetLanguage: item.targetLanguage,
+    targetTerm: item.targetTerm,
+    helperLanguage: item.helperLanguage,
+    helperTerm: item.helperTerm,
+    part_of_speech: item.part_of_speech,
+    sense: item.sense,
+  })),
+  [
+    {
+      conceptId: 'home_objects.chair',
+      categoryId: 'home_objects',
+      targetLanguage: 'en',
+      targetTerm: 'chair',
+      helperLanguage: 'de',
+      helperTerm: 'Stuhl',
+      part_of_speech: 'noun',
+      sense: 'home_object',
+    },
+    {
+      conceptId: 'home_objects.table',
+      categoryId: 'home_objects',
+      targetLanguage: 'en',
+      targetTerm: 'table',
+      helperLanguage: 'de',
+      helperTerm: 'Tisch',
+      part_of_speech: 'noun',
+      sense: 'home_object',
+    },
+    {
+      conceptId: 'home_objects.bed',
+      categoryId: 'home_objects',
+      targetLanguage: 'en',
+      targetTerm: 'bed',
+      helperLanguage: 'de',
+      helperTerm: 'Bett',
+      part_of_speech: 'noun',
+      sense: 'home_object',
+    },
+  ],
+  'Selected static items should preserve stable concept metadata for later enrichment and generation',
+)
+assert.deepEqual(
+  getStaticCategorySelectedItems(homeObjectsCategory, 3, 1, 'German', 'English')
+    .map(formatSelectedCategoryVocabularyLabel),
+  ['Stuhl / chair', 'Tisch / table', 'Bett / bed'],
+  'Home & Objects should display German primary chips with English helper translations',
+)
+assert.deepEqual(
+  getStaticCategorySelectedItems(homeObjectsCategory, 3, 1, 'English', 'English')
+    .map(formatSelectedCategoryVocabularyLabel),
+  ['chair', 'table', 'bed'],
+  'Same-language target/helper display should collapse to a single term',
 )
 for (const level of homeObjectsCategory.staticWordLevels ?? []) {
   for (const entry of level.words) {
@@ -1162,6 +1235,14 @@ assert.deepEqual(
 assert.ok(
   categoryPicker.includes('selectedStaticLevel'),
   'CategoryPicker should expose level selection state for static leveled categories',
+)
+assert.ok(
+  wizardState.includes("case 'ADD_VOCABULARY_ITEMS'") && wizardState.includes('wordsEqual(existing, item.targetTerm)'),
+  'Static category metadata should dedupe at final merged chip/output level by target term',
+)
+assert.ok(
+  wizardState.includes('selectedVocabularyItems') && wizardState.includes('category_vocabulary_items'),
+  'Generation payload should keep selected category concept metadata alongside final word strings',
 )
 assert.ok(
   wizardState.includes("case 'ADD_WORDS'") && wizardState.includes('wordsEqual(existing, word)'),

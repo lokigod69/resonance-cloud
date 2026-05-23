@@ -97,6 +97,8 @@ Stable concept ids are generated from category id plus an English concept slug, 
 
 Future images, prompts, enrichment, audio, and review metadata should attach to these concept ids, not to raw English strings.
 
+English is the canonical internal base language for this pass. Existing English category words are the source terms for stable slugs and concept ids; translated terms never become concept ids.
+
 ## Target Vocabulary Language Selection
 
 The generate category picker now includes a target vocabulary language selector for the static vocabulary language set. It defaults to:
@@ -108,6 +110,36 @@ The generate category picker now includes a target vocabulary language selector 
 Changing this selector updates the wizard target language through `PRESELECT_LANGUAGE`. Category labels still use UI i18n; only vocabulary chips are translated by the selected target vocabulary language.
 
 Static category words are resolved locally and do not call `/api/suggest-words`. API-backed legacy/generic categories still call `/api/suggest-words` with the selected target language.
+
+## Helper Translation Language Selection
+
+The generate category picker now separates three concepts:
+
+- UI locale: still controls interface text and category labels through the existing translation system.
+- Target vocabulary language: controls the primary vocabulary term added to chips and sent as the deck/job target language.
+- Helper translation language: controls the secondary support term shown beside the chip term.
+
+The selector appears in `frontend/src/components/generate/steps/CategoryPicker.tsx`, inside the expanded category drawer directly above level selection. It exposes the same complete vocabulary language set as the target selector: English, German, French, Spanish, Portuguese, Italian, Polish, Indonesian, and Bisaya / Cebuano.
+
+Target vocabulary language defaults to the wizard/stored target language when available, then active language context, then English. Helper translation language defaults to the user's stored `profile.base_language` when it is one of the static vocabulary languages; otherwise it falls back to German for the required English/German verification path.
+
+If target and helper resolve to the same term, chips render one term. Otherwise chips render bilingual text in the form `target / helper`, for example `table / Tisch` or `Tisch / table`.
+
+Selected static category entries now carry concept metadata through the frontend state and payload:
+
+- `conceptId` / `itemId`
+- `categoryId`
+- `level`
+- `order`
+- `part_of_speech`
+- `sense`
+- `targetLanguage`
+- `targetTerm`
+- `helperLanguage`
+- `helperTerm`
+- `translations`
+
+The existing generation API boundary still receives `wordList` as target-language strings for compatibility. The concept metadata is added to `generation_jobs.settings_override.category_vocabulary_items` by the frontend payload builder and by the glassy generate page's local submit path. No backend schema or provider code was changed.
 
 ## Translation Coverage
 
@@ -144,10 +176,14 @@ No canonical thematic words were removed because of these duplicates. Final chip
 
 - `frontend/src/data/categories.ts`
 - `frontend/src/data/staticCategoryTranslations.ts`
+- `frontend/src/components/generate/shared/GlassInput.tsx`
 - `frontend/src/components/generate/steps/CategoryPicker.tsx`
 - `frontend/src/components/generate/steps/WordsStep.tsx`
+- `frontend/src/components/generate/useWizardState.ts`
 - `frontend/src/lib/translations.ts`
+- `frontend/src/pages/GenerateGO.tsx`
 - `frontend/scripts/test-generate-category-picker-flow.ts`
+- `frontend/scripts/test-product-lane-payload.ts`
 - `frontend/scripts/test-generate-i18n-ui-cleanup.ts`
 - `frontend/scripts/test-static-category-translations.ts`
 - `frontend/package.json`
@@ -158,10 +194,18 @@ No canonical thematic words were removed because of these duplicates. Final chip
 Checks run during implementation:
 
 - `npm run test:generate-category-picker-flow`
+- `npm run test:lane-payload`
 - `npm exec -- tsx scripts/test-generate-i18n-ui-cleanup.ts`
 - `npm run test:static-category-translations`
 - targeted ESLint for changed frontend/data/test files
 - `git diff --check -- <changed files>`
+- Vite dev server smoke on `http://127.0.0.1:5178/` returned HTTP 200
+
+English/German bilingual behavior was verified by static flow tests:
+
+- Home & Objects, Level 1, target English + helper German: `chair / Stuhl`, `table / Tisch`, `bed / Bett`
+- Home & Objects, Level 1, target German + helper English: `Stuhl / chair`, `Tisch / table`, `Bett / bed`
+- Home & Objects, Level 1, target English + helper English: `chair`, `table`, `bed`
 
 Full typecheck was attempted with `npm run typecheck` and is blocked by unrelated existing errors in:
 

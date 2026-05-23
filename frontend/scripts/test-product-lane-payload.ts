@@ -34,6 +34,10 @@ import {
   type ProductLane,
   type WizardState,
 } from '../src/components/generate/useWizardState.ts'
+import {
+  getPublicCategoryGroups,
+  getStaticCategorySelectedItems,
+} from '../src/data/categories.ts'
 import { buildLayer2LabPayload } from '../src/lib/adminLayer2Lab.ts'
 
 let failures = 0
@@ -62,6 +66,7 @@ function makeState(partial: Partial<WizardState>): WizardState {
     path: 'undecided',
     language: 'German',
     words: ['heimweh'],
+    selectedVocabularyItems: [],
     vibe: null,
     movieTitle: null,
     artStyle: null,
@@ -78,6 +83,47 @@ function makeState(partial: Partial<WizardState>): WizardState {
 }
 
 const USER = '00000000-0000-0000-0000-000000000001'
+
+console.log('\n[static category vocabulary metadata payload]')
+{
+  const homeObjects = getPublicCategoryGroups()
+    .flatMap((group) => group.categories)
+    .find((category) => category.id === 'home_objects')
+  assert('Home & Objects category exists', Boolean(homeObjects), homeObjects)
+  if (homeObjects) {
+    const selectedVocabularyItems = getStaticCategorySelectedItems(homeObjects, 3, 1, 'English', 'German')
+    const p = buildGeneratePayload({
+      state: makeState({
+        language: 'English',
+        productLane: 'card_standard',
+        words: selectedVocabularyItems.map((item) => item.targetTerm),
+        selectedVocabularyItems,
+      }),
+      userId: USER,
+    })
+    const payloadItems = p.jobPayload.settings_override.category_vocabulary_items
+    assert(
+      'category vocabulary metadata reaches settings_override',
+      Array.isArray(payloadItems) && payloadItems.length === 3,
+      payloadItems,
+    )
+    assert(
+      'payload preserves concept id and bilingual terms',
+      Array.isArray(payloadItems)
+        && payloadItems[0]?.conceptId === 'home_objects.chair'
+        && payloadItems[0]?.targetTerm === 'chair'
+        && payloadItems[0]?.targetLanguage === 'en'
+        && payloadItems[0]?.helperTerm === 'Stuhl'
+        && payloadItems[0]?.helperLanguage === 'de',
+      payloadItems,
+    )
+    assert(
+      'wordList remains the target-language strings for the existing API boundary',
+      p.wordList.join('|') === 'chair|table|bed',
+      p.wordList,
+    )
+  }
+}
 
 console.log('\n[lane-helpers]')
 assert('laneToDeckType(video) = video', laneToDeckType('video') === 'video')

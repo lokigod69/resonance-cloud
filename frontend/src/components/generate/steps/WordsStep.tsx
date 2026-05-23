@@ -13,6 +13,7 @@ import {
 import CategoryPicker from './CategoryPicker'
 import { useTranslation } from '@/hooks/useTranslation'
 import { wordsEqual } from '@/lib/wordEquality'
+import type { SelectedCategoryVocabularyItem } from '@/data/categories'
 
 interface WordsStepProps {
   state: WizardState
@@ -67,6 +68,12 @@ export default function WordsStep({
     dispatch({ type: 'ADD_WORDS', words: incoming })
   }
 
+  function handleMergeVocabularyItems(items: SelectedCategoryVocabularyItem[]) {
+    const flushed = glassInputRef.current?.flush() ?? null
+    if (flushed) dispatch({ type: 'ADD_WORD', word: flushed })
+    dispatch({ type: 'ADD_VOCABULARY_ITEMS', items })
+  }
+
   function handleQuickGenerate() {
     const allWords = collectWords()
     dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
@@ -109,6 +116,7 @@ export default function WordsStep({
         <CategoryPicker
           state={state}
           onMergeWords={handleMergeWords}
+          onMergeVocabularyItems={handleMergeVocabularyItems}
           onTargetLanguageChange={(language) => dispatch({ type: 'PRESELECT_LANGUAGE', language })}
         />
 
@@ -126,6 +134,7 @@ export default function WordsStep({
         {wordCount > 0 && (
           <WordChips
             words={state.words}
+            vocabularyItems={state.selectedVocabularyItems}
             onRemove={(i) => dispatch({ type: 'REMOVE_WORD', index: i })}
           />
         )}

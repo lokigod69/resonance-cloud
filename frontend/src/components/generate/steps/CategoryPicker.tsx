@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Loader2, Sparkles } from 'lucide-react'
 import PillButton from '../shared/PillButton'
@@ -6,8 +6,9 @@ import {
   PINNED_BOTTOM_CATEGORIES,
   STATIC_CATEGORY_TARGET_LANGUAGES,
   getPublicCategoryGroups,
-  getStaticCategoryWords,
+  getStaticCategorySelectedItems,
   type Category,
+  type SelectedCategoryVocabularyItem,
 } from '@/data/categories'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -24,6 +25,7 @@ type ExpansionStatus = 'idle' | 'loading' | 'error'
 interface CategoryPickerProps {
   state: WizardState
   onMergeWords: (words: string[]) => void
+  onMergeVocabularyItems?: (items: SelectedCategoryVocabularyItem[]) => void
   onTargetLanguageChange?: (language: string) => void
 }
 
@@ -42,7 +44,24 @@ function extractSuggestedWords(data: SuggestWordsResponse, requestedCount: numbe
     .slice(0, requestedCount)
 }
 
-export default function CategoryPicker({ state, onMergeWords, onTargetLanguageChange }: CategoryPickerProps) {
+function resolveVisibleLanguage(value: string | null | undefined, fallback: string): string {
+  if (!value) return fallback
+  const normalized = value.trim().toLowerCase()
+  const matched = STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => (
+    language.value.toLowerCase() === normalized
+    || language.code === normalized
+    || language.label.toLowerCase() === normalized
+    || (language.code === 'ceb' && normalized === 'cebuano')
+  ))
+  return matched?.value ?? fallback
+}
+
+export default function CategoryPicker({
+  state,
+  onMergeWords,
+  onMergeVocabularyItems,
+  onTargetLanguageChange,
+}: CategoryPickerProps) {
   const { profile } = useAuth()
   const { activeLanguage } = useLanguage()
   const { t } = useTranslation()
@@ -51,8 +70,12 @@ export default function CategoryPicker({ state, onMergeWords, onTargetLanguageCh
   const [activeCategory, setActiveCategory] = useState<Category | null>(null)
   const [selectedStaticLevel, setSelectedStaticLevel] = useState<number | null>(null)
   const [selectedTargetLanguage, setSelectedTargetLanguage] = useState<string>(
-    state.language || activeLanguage || 'English',
+    resolveVisibleLanguage(state.language || activeLanguage, 'English'),
   )
+  const [selectedHelperLanguage, setSelectedHelperLanguage] = useState<string>(
+    resolveVisibleLanguage(profile?.base_language, 'German'),
+  )
+  const [helperLanguageTouched, setHelperLanguageTouched] = useState(false)
   const [suggestCount, setSuggestCount] = useState<number>(DEFAULT_CATEGORY_WORD_COUNT)
   const [status, setStatus] = useState<ExpansionStatus>('idle')
   const [error, setError] = useState<string | null>(null)
@@ -62,7 +85,12 @@ export default function CategoryPicker({ state, onMergeWords, onTargetLanguageCh
   const fetchSeq = useRef(0)
 
   const targetLanguage = selectedTargetLanguage || state.language || activeLanguage || 'English'
-  const baseLanguage = profile?.base_language || 'English'
+  const helperLanguage = selectedHelperLanguage || profile?.base_language || 'German'
+
+  useEffect(() => {
+    if (helperLanguageTouched) return
+    setSelectedHelperLanguage(resolveVisibleLanguage(profile?.base_language, 'German'))
+  }, [helperLanguageTouched, profile?.base_language])
 
   function resetExpansion() {
     fetchSeq.current += 1
@@ -102,6 +130,11 @@ export default function CategoryPicker({ state, onMergeWords, onTargetLanguageCh
     onTargetLanguageChange?.(language)
   }
 
+  function handleHelperLanguageChange(language: string) {
+    setHelperLanguageTouched(true)
+    setSelectedHelperLanguage(language)
+  }
+
   async function fetchSuggestions(category: Category, count: number) {
     const requestedCount = count
     if (!targetLanguage) {
@@ -110,9 +143,10 @@ export default function CategoryPicker({ state, onMergeWords, onTargetLanguageCh
       return
     }
 
-    const staticWords = getStaticCategoryWords(category, requestedCount, selectedStaticLevel ?? undefined, targetLanguage)
-    if (staticWords.length > 0) {
-      onMergeWords(staticWords)
+    const staticItems = getStaticCategorySelectedItems(category, requestedCount, selectedStaticLevel ?? undefined, targetLanguage, helperLanguage)
+    if (staticItems.length > 0) {
+      onMergeVocabularyItems?.(staticItems)
+      if (!onMergeVocabularyItems) onMergeWords(staticItems.map((item) => item.targetTerm))
       resetExpansion()
       return
     }
@@ -136,7 +170,7 @@ export default function CategoryPicker({ state, onMergeWords, onTargetLanguageCh
           // category is the API contract value
           category: category.name,
           target_language: targetLanguage,
-          base_language: baseLanguage,
+          base_language: helperLanguage,
           count: requestedCount,
         }),
       })
@@ -244,23 +278,44 @@ export default function CategoryPicker({ state, onMergeWords, onTargetLanguageCh
                   </div>
 
                   <div className="word-count-slider-wrap mt-5">
-                    <div className="mb-5">
-                      <label htmlFor="static-category-target-language" className="mb-2 block text-sm font-semibold text-foreground">
-                        {t('generate.words.targetVocabularyLanguageLabel')}
-                      </label>
-                      <select
-                        id="static-category-target-language"
-                        value={targetLanguage}
-                        disabled={status === 'loading'}
-                        onChange={(event) => handleTargetLanguageChange(event.target.value)}
-                        className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
-                      >
-                        {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
-                          <option key={language.code} value={language.value}>
-                            {language.label}
-                          </option>
-                        ))}
-                      </select>
+                    <div className="mb-5 grid gap-3 sm:grid-cols-2">
+                      <div>
+                        <label htmlFor="static-category-target-language" className="mb-2 block text-sm font-semibold text-foreground">
+                          {t('generate.words.targetVocabularyLanguageLabel')}
+                        </label>
+                        <select
+                          id="static-category-target-language"
+                          value={targetLanguage}
+                          disabled={status === 'loading'}
+                          onChange={(event) => handleTargetLanguageChange(event.target.value)}
+                          className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
+                        >
+                          {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+                            <option key={language.code} value={language.value}>
+                              {language.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div>
+                        <label htmlFor="static-category-helper-language" className="mb-2 block text-sm font-semibold text-foreground">
+                          {t('generate.words.helperVocabularyLanguageLabel')}
+                        </label>
+                        <select
+                          id="static-category-helper-language"
+                          value={helperLanguage}
+                          disabled={status === 'loading'}
+                          onChange={(event) => handleHelperLanguageChange(event.target.value)}
+                          className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
+                        >
+                          {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+                            <option key={language.code} value={language.value}>
+                              {language.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
 
                     {activeCategory.staticWordLevels && activeCategory.staticWordLevels.length > 1 && (

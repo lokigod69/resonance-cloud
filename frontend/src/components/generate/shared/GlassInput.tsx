@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Check, X, Plus } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useTranslation } from '@/hooks/useTranslation'
+import { wordsEqual } from '@/lib/wordEquality'
+import type { SelectedCategoryVocabularyItem } from '@/data/categories'
 
 interface GlassInputProps {
   onLock: (word: string) => void
@@ -96,10 +98,13 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
 
 interface LockedWordProps {
   word: string
+  helperTerm?: string
   onRemove: () => void
 }
 
-export function LockedWord({ word, onRemove }: LockedWordProps) {
+export function LockedWord({ word, helperTerm, onRemove }: LockedWordProps) {
+  const showHelper = helperTerm && !wordsEqual(helperTerm, word)
+
   return (
     <motion.div
       layout
@@ -114,9 +119,18 @@ export function LockedWord({ word, onRemove }: LockedWordProps) {
         'border border-[#4ade80]/30',
         'shadow-[0_0_12px_oklch(0.7_0.18_145_/_0.1)]'
       )}
+      aria-label={showHelper ? `${word} / ${helperTerm}` : word}
     >
       <Check className="h-3.5 w-3.5 text-[#4ade80]" />
-      <span className="min-w-0 break-words [hyphens:auto] text-sm text-foreground/90">{word}</span>
+      <span className="min-w-0 break-words [hyphens:auto] text-sm text-foreground/90">
+        {word}
+        {showHelper && (
+          <span className="text-muted-foreground/85">
+            {' / '}
+            {helperTerm}
+          </span>
+        )}
+      </span>
       <button
         type="button"
         onClick={onRemove}
@@ -130,16 +144,25 @@ export function LockedWord({ word, onRemove }: LockedWordProps) {
 
 interface WordChipsProps {
   words: string[]
+  vocabularyItems?: SelectedCategoryVocabularyItem[]
   onRemove: (index: number) => void
 }
 
-export function WordChips({ words, onRemove }: WordChipsProps) {
+export function WordChips({ words, vocabularyItems = [], onRemove }: WordChipsProps) {
   return (
     <div className="flex w-full min-w-0 flex-wrap justify-center gap-2">
       <AnimatePresence mode="popLayout">
-        {words.map((word, i) => (
-          <LockedWord key={word} word={word} onRemove={() => onRemove(i)} />
-        ))}
+        {words.map((word, i) => {
+          const vocabularyItem = vocabularyItems.find((item) => wordsEqual(item.targetTerm, word))
+          return (
+            <LockedWord
+              key={word}
+              word={word}
+              helperTerm={vocabularyItem?.helperTerm}
+              onRemove={() => onRemove(i)}
+            />
+          )
+        })}
       </AnimatePresence>
     </div>
   )

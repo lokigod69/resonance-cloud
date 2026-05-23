@@ -55,6 +55,7 @@ import {
   type PremiumSummaryItem,
 } from '@/components/generate/shared/PremiumVisualSelectors'
 import { wordsEqual } from '@/lib/wordEquality'
+import type { SelectedCategoryVocabularyItem } from '@/data/categories'
 
 const GO_GENRES = [
   { value: 'auto', label: 'Auto' },
@@ -97,6 +98,7 @@ export default function GenerateGO() {
   // Selections
   const [language, setLanguage] = useState<string | null>(null)
   const [words, setWords] = useState<string[]>([])
+  const [selectedVocabularyItems, setSelectedVocabularyItems] = useState<SelectedCategoryVocabularyItem[]>([])
   const [vibe, setVibe] = useState<string | null>(null)
   const [movieTitle, setMovieTitle] = useState('')
   const [showMovieInput, setShowMovieInput] = useState(false)
@@ -277,6 +279,7 @@ export default function GenerateGO() {
   // can drive GenerateGO's local useState-based flow.
   const wordsStepState = {
     words,
+    selectedVocabularyItems,
     language,
     vibe: null,
     artStyle: null,
@@ -293,6 +296,10 @@ export default function GenerateGO() {
 
   const wordsStepDispatch: React.Dispatch<WizardAction> = (action) => {
     switch (action.type) {
+      case 'SET_LANGUAGE':
+      case 'PRESELECT_LANGUAGE':
+        setLanguage(action.language)
+        break
       case 'ADD_WORD':
         setWords(prev =>
           prev.some(w => wordsEqual(w, action.word))
@@ -315,11 +322,51 @@ export default function GenerateGO() {
         })
         break
       }
+      case 'ADD_VOCABULARY_ITEMS': {
+        setWords(prev => {
+          const next = [...prev]
+          const addedItems: SelectedCategoryVocabularyItem[] = []
+          for (const item of action.items) {
+            const targetTerm = item.targetTerm.trim()
+            if (!targetTerm) continue
+            if (next.some(existing => wordsEqual(existing, item.targetTerm))) continue
+            if (next.length >= MAX_WORDS) break
+            next.push(targetTerm)
+            addedItems.push({ ...item, targetTerm })
+          }
+          if (addedItems.length > 0) {
+            setSelectedVocabularyItems(prevItems => [...prevItems, ...addedItems])
+          }
+          return next
+        })
+        break
+      }
       case 'REMOVE_WORD':
-        setWords(prev => prev.filter((_, i) => i !== action.index))
+        setWords(prev => {
+          const removedWord = prev[action.index]
+          if (removedWord) {
+            setSelectedVocabularyItems(prevItems => {
+              let removedMetadata = false
+              return prevItems.filter((item) => {
+                if (!removedMetadata && wordsEqual(item.targetTerm, removedWord)) {
+                  removedMetadata = true
+                  return false
+                }
+                return true
+              })
+            })
+          }
+          return prev.filter((_, i) => i !== action.index)
+        })
         break
       case 'SET_WORDS':
-        setWords(action.words.slice(0, MAX_WORDS))
+        {
+          const nextWords = action.words.slice(0, MAX_WORDS)
+          setWords(nextWords)
+          setSelectedVocabularyItems(prevItems =>
+            prevItems.filter((item) => nextWords.some((word) => wordsEqual(word, item.targetTerm))),
+          )
+        }
         break
       case 'CHOOSE_PATH':
         if (action.path === 'custom') setStep(4)
@@ -432,6 +479,9 @@ export default function GenerateGO() {
   ) {
     const isQuickGenerate = wordsOverride !== undefined && !options?.premiumQuickMode
     const effectiveWords = wordsOverride ?? words
+    const effectiveVocabularyItems = selectedVocabularyItems.filter((item) =>
+      effectiveWords.some((word) => wordsEqual(word, item.targetTerm)),
+    )
     if (!user) return
     if (!productLane) return
     if (!language) return
@@ -552,6 +602,9 @@ export default function GenerateGO() {
                   premium_quick_mode: premiumGenerationMode.premium_quick_mode,
                   premium_generation_mode: premiumGenerationMode,
                 }
+              : {}),
+            ...(effectiveVocabularyItems.length > 0
+              ? { category_vocabulary_items: effectiveVocabularyItems }
               : {}),
           },
         },
