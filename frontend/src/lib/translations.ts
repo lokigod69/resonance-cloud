@@ -1108,7 +1108,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'deckview.deleteSelectedFailed': 'Could not delete selected cards',
     'deckview.deleteDeck': 'Delete Deck',
     'deckview.confirmDeleteDeck': 'Delete this empty deck?',
-    'deckview.confirmCurriculumDelete': 'Remove this curriculum deck from your library? You can re-import it from Kategorien later.',
+    'deckview.confirmCurriculumDelete': 'Remove this curriculum deck from your library? You can re-import it from Categories later.',
     'deckview.deckDeleted': 'Deck deleted',
     'deckview.deleteError': 'Could not delete deck',
     'deckview.deckNotEmpty': 'Deck is not empty',
