@@ -113,11 +113,9 @@ export default function Dashboard() {
           <p className="text-sm font-medium text-muted-foreground">
             {t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })}
           </p>
-          <h1 className="mt-2 text-3xl font-semibold text-foreground">SRS Today</h1>
         </section>
 
         <section className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="text-xl font-semibold text-foreground">Mastery</h2>
           <MasteryDonut mastered={counts.mastered} total={totalWords} loading={dashboardLoading || wordStates.loading} />
         </section>
 

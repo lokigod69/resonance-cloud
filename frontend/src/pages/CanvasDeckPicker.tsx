@@ -4,6 +4,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { filterLemmaStatesForQueue, isStudyQueue } from '@/hooks/useStudySession'
+import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import canvasIcon from '@/assets/study-mode-icons/canvas.webp'
@@ -17,6 +19,18 @@ type DeckRow = {
   target_language: string
   word_count: number | null
 }
+
+type CanvasModeOption = {
+  id: 'ember' | 'frost' | 'syndicate' | 'zen'
+  label: string
+}
+
+const CANVAS_MODE_OPTIONS: CanvasModeOption[] = [
+  { id: 'ember', label: 'Ember' },
+  { id: 'frost', label: 'Frost' },
+  { id: 'syndicate', label: 'Syndicate' },
+  { id: 'zen', label: 'Zen' },
+]
 
 function loadLastDeckKey(language: string | null): string | null {
   if (!language) return null
@@ -44,6 +58,7 @@ export default function CanvasDeckPicker() {
   const [searchParams] = useSearchParams()
   const forwardedDeck = searchParams.get('deck')
   const forwardedQueue = searchParams.get('queue')
+  const queue = isStudyQueue(forwardedQueue) ? forwardedQueue : null
   const forwardedLanguage = searchParams.get('lang')
 
   const [decks, setDecks] = useState<DeckRow[]>([])
@@ -84,6 +99,11 @@ export default function CanvasDeckPicker() {
     }
   }, [user])
 
+  useEffect(() => {
+    if (!queue || !forwardedLanguage || activeLanguage === forwardedLanguage) return
+    setActiveLanguage(forwardedLanguage)
+  }, [activeLanguage, forwardedLanguage, queue, setActiveLanguage])
+
   const availableLanguages = useMemo(
     () => Array.from(new Set(decks.map((deck) => deck.target_language).filter(Boolean))),
     [decks],
@@ -107,7 +127,9 @@ export default function CanvasDeckPicker() {
   }, [decks, activeLanguage])
 
   const languageLabel = activeLanguage ? t(`langName.${activeLanguage}`) : null
-  const heading = languageLabel
+  const heading = queue
+    ? t('study.mode.canvas')
+    : languageLabel
     ? t('study.canvas.deckPicker.heading', { language: languageLabel })
     : t('study.canvas.deckPicker.chooseDeck')
 
@@ -115,6 +137,11 @@ export default function CanvasDeckPicker() {
     () => filteredDecks.reduce((total, deck) => total + (deck.word_count ?? 0), 0),
     [filteredDecks],
   )
+  const { data: wordStates, loading: wordStatesLoading } = useWordStates(queue ? activeLanguage ?? '' : '', {
+    deckId: queue ? forwardedDeck : null,
+  })
+  const queueCount = queue ? filterLemmaStatesForQueue(wordStates, queue).length : 0
+  const queueLabel = queue ? t(`study.queue.${queue}`) : null
 
   // Last-picked highlight: forwarded ?deck= takes precedence; otherwise localStorage.
   const lastDeckKey = useMemo(() => {
@@ -124,13 +151,14 @@ export default function CanvasDeckPicker() {
     return loadLastDeckKey(activeLanguage)
   }, [activeLanguage, forwardedDeck, filteredDecks])
 
-  function goToCanvas(deckId: string | null) {
-    saveLastDeckKey(activeLanguage, deckId ?? ALL_WORDS_KEY)
+  function goToCanvas(deckId: string | null, mode?: CanvasModeOption['id']) {
+    if (!queue) saveLastDeckKey(activeLanguage, deckId ?? ALL_WORDS_KEY)
     const params = new URLSearchParams()
     const language = forwardedLanguage ?? activeLanguage
     if (deckId) params.set('deck', deckId)
-    if (forwardedQueue) params.set('queue', forwardedQueue)
+    if (queue) params.set('queue', queue)
     if (language) params.set('lang', language)
+    if (mode) params.set('mode', mode)
     params.set('returnTo', '/study/canvas/select')
     navigate(`/study/canvas?${params.toString()}`)
   }
@@ -158,6 +186,30 @@ export default function CanvasDeckPicker() {
           />
           <h1 className="text-2xl font-bold">{heading}</h1>
         </div>
+
+        {queue ? (
+          <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
+            <div className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground">
+              {queueLabel
+                ? t('study.queue.header', { label: queueLabel, count: wordStatesLoading ? '...' : queueCount })
+                : null}
+            </div>
+            <h2 className="text-lg font-semibold">{t('study.queue.canvasChooseAesthetic')}</h2>
+            <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
+              {CANVAS_MODE_OPTIONS.map((mode) => (
+                <button
+                  key={mode.id}
+                  type="button"
+                  onClick={() => goToCanvas(forwardedDeck, mode.id)}
+                  className="study-mode-card min-h-[112px] rounded-2xl border border-border bg-card p-5 text-center text-lg font-semibold transition-all duration-200 hover:scale-[1.02] hover:border-accent hover:bg-accent active:scale-[0.98]"
+                >
+                  {mode.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <>
 
         {availableLanguages.length > 1 && (
           <div className="mb-6 flex flex-wrap justify-center gap-2">
@@ -262,6 +314,8 @@ export default function CanvasDeckPicker() {
                 )
               })}
             </div>
+          </>
+        )}
           </>
         )}
       </div>

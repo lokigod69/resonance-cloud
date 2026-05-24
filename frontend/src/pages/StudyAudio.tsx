@@ -20,6 +20,8 @@ import {
   EyeOff,
 } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { QueueIndicator } from '@/components/study/QueueIndicator'
+import { isStudyQueue } from '@/hooks/useStudySession'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
 import { SimulatedWaveform } from '@/components/music/SimulatedWaveform'
@@ -40,7 +42,8 @@ export default function StudyAudio() {
   const [searchParams] = useSearchParams()
   const { t, tp } = useTranslation()
   const audioRef = useRef<HTMLAudioElement>(null)
-  const queue = searchParams.get('queue')
+  const queueParam = searchParams.get('queue')
+  const queue = isStudyQueue(queueParam) ? queueParam : null
 
   // useStudyUI expects HTMLVideoElement ref, but all hooks only use HTMLMediaElement APIs
   const {
@@ -194,6 +197,10 @@ export default function StudyAudio() {
   return (
     <div className="flex min-h-[calc(100dvh-5rem)] flex-col items-center justify-start px-4 pt-4 pb-10 sm:pt-6">
       <div className="w-full max-w-xl">
+        {queue && (
+          <QueueIndicator queue={queue} count={words.length} language={current?.target_language ?? searchParams.get('lang') ?? ''} />
+        )}
+
         {/* Deck filter */}
         {decks.length > 1 && (
           <div className="flex justify-center mb-4">

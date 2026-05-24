@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { isStudyQueue, useStudySession } from '@/hooks/useStudySession'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { QueueIndicator } from '@/components/study/QueueIndicator'
 import EmberCanvas from '@/components/study/canvas/EmberCanvas'
 import FrostCanvas from '@/components/study/canvas/FrostCanvas'
 import SyndicateCanvas from '@/components/study/canvas/SyndicateCanvas'
@@ -147,23 +148,27 @@ function getLanguageCode(language: string | null | undefined) {
 export default function StudyCanvas() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const { activeLanguage } = useLanguage()
+  const { activeLanguage, setActiveLanguage } = useLanguage()
 
   const deckId = searchParams.get('deck')
+  const langParam = searchParams.get('lang')
   const queueParam = searchParams.get('queue')
   const queue = isStudyQueue(queueParam) ? queueParam : null
+  const modeParam = searchParams.get('mode')
+  const requestedMode = isCanvasMode(modeParam) ? modeParam : null
   const rawReturnTo = searchParams.get('returnTo')
   const returnTo = rawReturnTo?.startsWith('/') ? rawReturnTo : null
+  const studyLanguage = langParam ?? activeLanguage
   const sessionStorageKey = useMemo(
-    () => getCanvasSessionStorageKey(deckId, activeLanguage, queue),
-    [activeLanguage, deckId, queue],
+    () => getCanvasSessionStorageKey(deckId, studyLanguage, queue),
+    [deckId, queue, studyLanguage],
   )
   const initialSession = useMemo(() => loadStoredSession(sessionStorageKey), [sessionStorageKey])
 
   // Per-tab UI/session state. This is intentionally sessionStorage-backed,
   // because canvas progress is a study session snapshot, not a user preference.
   const [hydratedSessionKey, setHydratedSessionKey] = useState(sessionStorageKey)
-  const [activeMode, setActiveMode] = useState<CanvasMode>(() => initialSession?.activeMode ?? DEFAULT_MODE)
+  const [activeMode, setActiveMode] = useState<CanvasMode>(() => requestedMode ?? initialSession?.activeMode ?? DEFAULT_MODE)
   const [showImages, setShowImages] = useState<boolean>(() => initialSession?.showImages ?? false)
   const [direction, setDirection] = useState<CanvasDirection>(loadStoredDirection)
   const [autoReveal, setAutoReveal] = useState<CanvasAutoReveal>(loadStoredAutoReveal)
@@ -177,7 +182,12 @@ export default function StudyCanvas() {
   const [sessionComplete, setSessionComplete] = useState(() => initialSession?.sessionComplete ?? false)
 
   // Data
-  const { words, loading, recordAttempt } = useStudySession(deckId, 'canvas', activeLanguage, queue)
+  const { words, loading, recordAttempt } = useStudySession(deckId, 'canvas', studyLanguage, queue)
+
+  useEffect(() => {
+    if (!langParam || activeLanguage === langParam) return
+    setActiveLanguage(langParam)
+  }, [activeLanguage, langParam, setActiveLanguage])
 
   useEffect(() => {
     saveLocalPreference(DIRECTION_STORAGE_KEY, direction)
@@ -194,7 +204,7 @@ export default function StudyCanvas() {
     let cancelled = false
     queueMicrotask(() => {
       if (cancelled) return
-      setActiveMode(stored?.activeMode ?? DEFAULT_MODE)
+      setActiveMode(requestedMode ?? stored?.activeMode ?? DEFAULT_MODE)
       setShowImages(stored?.showImages ?? false)
       setCurrentPage(stored?.currentPage ?? 0)
       setShuffleNonce(stored?.shuffleNonce ?? createShuffleNonce())
@@ -206,7 +216,7 @@ export default function StudyCanvas() {
     return () => {
       cancelled = true
     }
-  }, [hydratedSessionKey, sessionStorageKey])
+  }, [hydratedSessionKey, requestedMode, sessionStorageKey])
 
   useEffect(() => {
     if (hydratedSessionKey !== sessionStorageKey) return
@@ -265,7 +275,7 @@ export default function StudyCanvas() {
     const languageWord = words.find((word) => word.target_language || word.base_language)
     const deckTarget = languageWord?.target_language ?? null
     const deckBase = languageWord?.base_language ?? null
-    const target = deckTarget ?? activeLanguage ?? null
+    const target = deckTarget ?? studyLanguage ?? null
     const base = deckBase
 
     return {
@@ -275,7 +285,7 @@ export default function StudyCanvas() {
       baseCode: getLanguageCode(base),
       isSameLanguage: !!target && !!base && normalizeLanguage(target) === normalizeLanguage(base),
     }
-  }, [activeLanguage, words])
+  }, [studyLanguage, words])
 
   const hasCompleteDeckLanguagePair = useMemo(() => {
     const languageWord = words.find((word) => word.target_language || word.base_language)
@@ -401,6 +411,11 @@ export default function StudyCanvas() {
 
   return (
     <CanvasShell>
+      {queue && (
+        <div className="fixed left-1/2 top-3 z-[70] w-[min(92vw,28rem)] -translate-x-1/2">
+          <QueueIndicator queue={queue} count={words.length} language={studyLanguage ?? ''} />
+        </div>
+      )}
       <ActiveModeComponent
         key={`${activeMode}-${shuffleNonce}-${currentPage}-${direction}`}
         words={currentPageWords}
