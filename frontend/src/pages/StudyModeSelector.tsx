@@ -3,6 +3,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { filterLemmaStatesForQueue, isStudyQueue, type StudyQueue } from '@/hooks/useStudySession'
+import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
 import videoIcon from '@/assets/study-mode-icons/video.webp'
 import cardsIcon from '@/assets/study-mode-icons/cards.webp'
@@ -26,10 +28,20 @@ const MODES: ModeConfig[] = [
   { key: 'canvas', iconSrc: canvasIcon, titleKey: 'study.mode.canvas', route: '/study/canvas/select', enabled: true },
 ]
 
+const QUEUE_LABEL_KEYS: Record<StudyQueue, string> = {
+  review: 'study.queue.review',
+  learn: 'study.queue.learn',
+  strengthen: 'study.queue.strengthen',
+  mastered: 'study.queue.mastered',
+}
+
 export default function StudyModeSelector() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const deckParam = searchParams.get('deck')
+  const queueParam = searchParams.get('queue')
+  const langParam = searchParams.get('lang')
+  const queue = isStudyQueue(queueParam) ? queueParam : null
   const { t } = useTranslation()
   const { user } = useAuth()
   const { activeLanguage, setActiveLanguage } = useLanguage()
@@ -56,6 +68,9 @@ export default function StudyModeSelector() {
   )
 
   const deckName = selectedDeck?.name ?? null
+  const { data: wordStates } = useWordStates(activeLanguage ?? '', { deckId: deckParam })
+  const queueLabel = queue ? t(QUEUE_LABEL_KEYS[queue]) : null
+  const queueCount = queue ? filterLemmaStatesForQueue(wordStates, queue).length : 0
 
   useEffect(() => {
     if (selectedDeck?.target_language) {
@@ -64,21 +79,33 @@ export default function StudyModeSelector() {
   }, [selectedDeck?.target_language, setActiveLanguage])
 
   useEffect(() => {
+    if (!langParam || activeLanguage === langParam) return
+    setActiveLanguage(langParam)
+  }, [activeLanguage, langParam, setActiveLanguage])
+
+  useEffect(() => {
     if (availableLanguages.length === 0) return
+    if (langParam) return
     if (!activeLanguage || !availableLanguages.includes(activeLanguage)) {
       setActiveLanguage(availableLanguages[0])
     }
-  }, [availableLanguages, activeLanguage, setActiveLanguage])
+  }, [availableLanguages, activeLanguage, langParam, setActiveLanguage])
 
   function selectMode(mode: ModeConfig) {
     if (!mode.enabled) return
-    const params = deckParam ? `?deck=${deckParam}` : ''
-    navigate(`${mode.route}${params}`)
+    const params = new URLSearchParams()
+    if (deckParam) params.set('deck', deckParam)
+    if (queue) params.set('queue', queue)
+    if ((queue || langParam) && activeLanguage) params.set('lang', activeLanguage)
+    const query = params.toString()
+    navigate(`${mode.route}${query ? `?${query}` : ''}`)
   }
 
   function selectGame(route: string) {
     const params = new URLSearchParams()
     params.set('returnTo', '/study')
+    if (deckParam) params.set('deck', deckParam)
+    if (queue) params.set('queue', queue)
     if (activeLanguage) params.set('lang', activeLanguage)
     navigate(`${route}?${params.toString()}`)
   }
@@ -94,6 +121,11 @@ export default function StudyModeSelector() {
           {deckParam && deckName && (
             <p className="mt-1 text-xs text-muted-foreground/80">
               {t('study.studyingDeck', { name: deckName })}
+            </p>
+          )}
+          {queue && queueLabel && (
+            <p className="mt-3 inline-flex rounded-full border border-border/70 bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+              {t('study.queue.header', { label: queueLabel, count: queueCount })}
             </p>
           )}
         </div>

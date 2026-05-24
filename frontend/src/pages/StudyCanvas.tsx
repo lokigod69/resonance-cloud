@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { isStudyQueue, useStudySession } from '@/hooks/useStudySession'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { QueueIndicator } from '@/components/study/QueueIndicator'
 import EmberCanvas from '@/components/study/canvas/EmberCanvas'
 import FrostCanvas from '@/components/study/canvas/FrostCanvas'
 import SyndicateCanvas from '@/components/study/canvas/SyndicateCanvas'
@@ -152,6 +153,8 @@ export default function StudyCanvas() {
   const deckId = searchParams.get('deck')
   const queueParam = searchParams.get('queue')
   const queue = isStudyQueue(queueParam) ? queueParam : null
+  const modeParam = searchParams.get('mode')
+  const requestedMode = isCanvasMode(modeParam) ? modeParam : null
   const rawReturnTo = searchParams.get('returnTo')
   const returnTo = rawReturnTo?.startsWith('/') ? rawReturnTo : null
   const sessionStorageKey = useMemo(
@@ -163,7 +166,7 @@ export default function StudyCanvas() {
   // Per-tab UI/session state. This is intentionally sessionStorage-backed,
   // because canvas progress is a study session snapshot, not a user preference.
   const [hydratedSessionKey, setHydratedSessionKey] = useState(sessionStorageKey)
-  const [activeMode, setActiveMode] = useState<CanvasMode>(() => initialSession?.activeMode ?? DEFAULT_MODE)
+  const [activeMode, setActiveMode] = useState<CanvasMode>(() => requestedMode ?? initialSession?.activeMode ?? DEFAULT_MODE)
   const [showImages, setShowImages] = useState<boolean>(() => initialSession?.showImages ?? false)
   const [direction, setDirection] = useState<CanvasDirection>(loadStoredDirection)
   const [autoReveal, setAutoReveal] = useState<CanvasAutoReveal>(loadStoredAutoReveal)
@@ -194,7 +197,7 @@ export default function StudyCanvas() {
     let cancelled = false
     queueMicrotask(() => {
       if (cancelled) return
-      setActiveMode(stored?.activeMode ?? DEFAULT_MODE)
+      setActiveMode(requestedMode ?? stored?.activeMode ?? DEFAULT_MODE)
       setShowImages(stored?.showImages ?? false)
       setCurrentPage(stored?.currentPage ?? 0)
       setShuffleNonce(stored?.shuffleNonce ?? createShuffleNonce())
@@ -206,7 +209,7 @@ export default function StudyCanvas() {
     return () => {
       cancelled = true
     }
-  }, [hydratedSessionKey, sessionStorageKey])
+  }, [hydratedSessionKey, requestedMode, sessionStorageKey])
 
   useEffect(() => {
     if (hydratedSessionKey !== sessionStorageKey) return
@@ -401,6 +404,11 @@ export default function StudyCanvas() {
 
   return (
     <CanvasShell>
+      {queue && (
+        <div className="fixed left-1/2 top-3 z-[70] w-[min(92vw,28rem)] -translate-x-1/2">
+          <QueueIndicator queue={queue} count={words.length} language={activeLanguage ?? ''} />
+        </div>
+      )}
       <ActiveModeComponent
         key={`${activeMode}-${shuffleNonce}-${currentPage}-${direction}`}
         words={currentPageWords}

@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, X, RotateCcw, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { QueueIndicator } from '@/components/study/QueueIndicator'
 import OrbDock from '@/components/OrbDock'
 import {
   Select,
@@ -12,6 +13,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { useStudyUI } from '@/hooks/useStudyUI'
+import { isStudyQueue } from '@/hooks/useStudySession'
 import { useTranslation } from '@/hooks/useTranslation'
 
 export default function StudyPG() {
@@ -19,7 +21,8 @@ export default function StudyPG() {
   const [searchParams] = useSearchParams()
   const { t, tp } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
-  const queue = searchParams.get('queue')
+  const queueParam = searchParams.get('queue')
+  const queue = isStudyQueue(queueParam) ? queueParam : null
 
   const {
     words, current, currentIndex, loading, sessionComplete, sessionStats, reviewed,
@@ -111,6 +114,10 @@ export default function StudyPG() {
     <div className="px-0 sm:px-4 md:px-6 max-w-5xl mx-auto flex min-h-[calc(100dvh-5rem)] flex-col items-center justify-start pt-4 pb-10 sm:pt-6">
       {/* Card + content */}
       <div className="w-full max-w-4xl">
+        {queue && (
+          <QueueIndicator queue={queue} count={words.length} language={current?.target_language ?? searchParams.get('lang') ?? ''} />
+        )}
+
         {/* Deck filter */}
         {decks.length > 1 && (
           <div className="flex justify-center mb-4">

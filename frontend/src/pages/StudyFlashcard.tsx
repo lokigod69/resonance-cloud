@@ -20,6 +20,8 @@ import {
   ChevronRight,
 } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { QueueIndicator } from '@/components/study/QueueIndicator'
+import { isStudyQueue } from '@/hooks/useStudySession'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
 import { usePronunciation } from '@/hooks/usePronunciation'
@@ -34,7 +36,8 @@ export default function StudyFlashcard() {
   const { t, tp } = useTranslation()
   const { playWord } = usePronunciation()
   const videoRef = useRef<HTMLVideoElement>(null)
-  const queue = searchParams.get('queue')
+  const queueParam = searchParams.get('queue')
+  const queue = isStudyQueue(queueParam) ? queueParam : null
   const feedbackTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null)
   const [feedbackPulse, setFeedbackPulse] = useState<FeedbackPulse | null>(null)
 
@@ -179,6 +182,10 @@ export default function StudyFlashcard() {
       </AnimatePresence>
 
       <div className="relative z-10 w-full max-w-xl">
+        {queue && (
+          <QueueIndicator queue={queue} count={words.length} language={current?.target_language ?? searchParams.get('lang') ?? ''} />
+        )}
+
         {/* Deck filter */}
         {decks.length > 1 && (
           <div className="flex justify-center mb-4">

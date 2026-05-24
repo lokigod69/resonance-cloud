@@ -121,11 +121,9 @@ export default function DashboardPG() {
           <p className="text-sm font-medium text-[var(--pg-text-dim)]">
             {t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })}
           </p>
-          <h1 className="mt-2 font-display text-3xl font-semibold text-[var(--pg-text)]">SRS Today</h1>
         </section>
 
         <section className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="font-display text-xl font-semibold text-[var(--pg-text)]">Mastery</h2>
           <MasteryDonut mastered={counts.mastered} total={totalWords} loading={dashboardLoading || wordStates.loading} />
         </section>
 
