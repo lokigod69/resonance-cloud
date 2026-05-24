@@ -884,35 +884,40 @@ body::before {
 
 /* ============================================================
    Dashboard cosmic surface — applied on .dashboard-cosmic root
+   Pseudo-elements use position:fixed so the cosmos image covers
+   the FULL viewport (the container itself sits inside main's
+   padding, which would otherwise leave gray bars on the sides).
+   isolation:isolate scopes negative z-index to this stacking
+   context so the bg stays under the dashboard content but above
+   the body's --shell-bg.
    ============================================================ */
 
 .dashboard-cosmic {
   position: relative;
   isolation: isolate;
-  min-height: calc(100vh - var(--glassy-header-offset, 4rem));
+  min-height: 100vh;
 }
 
 .dashboard-cosmic::before {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: -2;
-  background-image: url('/brand/cosmos/cosmos-calm.webp');
+  background-image: url('/brand/cosmos/cosmos-auth.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.72;
   pointer-events: none;
 }
 
 .dashboard-cosmic::after {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(ellipse at 50% 0%, transparent 0%, color-mix(in srgb, var(--app-bg) 22%, transparent) 38%, color-mix(in srgb, var(--app-bg) 70%, transparent) 100%),
-    linear-gradient(180deg, color-mix(in srgb, var(--app-bg) 14%, transparent) 0%, transparent 22%, transparent 64%, color-mix(in srgb, var(--app-bg) 38%, transparent) 100%);
+    radial-gradient(ellipse at 50% 32%, transparent 0%, transparent 48%, color-mix(in srgb, var(--app-bg) 42%, transparent) 100%),
+    linear-gradient(180deg, color-mix(in srgb, var(--app-bg) 12%, transparent) 0%, transparent 22%, transparent 70%, color-mix(in srgb, var(--app-bg) 30%, transparent) 100%);
   pointer-events: none;
 }
 
@@ -987,13 +992,19 @@ body::before {
   --tile-accent-glow: var(--accent-glow, rgba(242, 79, 19, 0.34));
 }
 
+.stat-tile-accent-gold {
+  --tile-accent: #f7c843;
+  --tile-accent-glow: rgba(247, 200, 67, 0.34);
+}
+
 .stat-tile-accent-neutral {
   --tile-accent: var(--text-secondary);
   --tile-accent-glow: transparent;
 }
 
 .stat-tile-accent-cool:not(:disabled):hover,
-.stat-tile-accent-warm:not(:disabled):hover {
+.stat-tile-accent-warm:not(:disabled):hover,
+.stat-tile-accent-gold:not(:disabled):hover {
   border-color: color-mix(in srgb, var(--tile-accent) 44%, var(--border-subtle));
   box-shadow:
     var(--shadow-elevated),
@@ -1006,17 +1017,42 @@ body::before {
   text-shadow: 0 0 24px var(--tile-accent-glow, transparent);
 }
 
-/* Language pill cluster — centered anchor that the active pill never
-   leaves. Inactive pills are absolute-positioned children that fan out
-   on parent hover (Framer Motion drives positions; this class just sets
-   the cursor + spacing reservation). */
-.lang-cluster {
-  position: relative;
+/* Mastered empty-state badge — small golden circle when count is 0.
+   Quieter signal than a full tile; the donut already conveys progress. */
+.mastered-empty {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.78;
+}
+
+.mastered-empty-ring {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 0 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: 2px solid color-mix(in srgb, #f7c843 38%, transparent);
+  color: color-mix(in srgb, #f7c843 60%, transparent);
+  font-weight: 600;
+  font-size: 1rem;
+  background: radial-gradient(circle at center, color-mix(in srgb, #f7c843 6%, transparent), transparent 70%);
+}
+
+/* Language pill cluster — full-width row so the entire horizontal band
+   is a hover target. Inactive pills are absolute-positioned around the
+   centred active pill; they fan out on parent hover via Framer Motion.
+   Full-width hover area prevents the cluster from collapsing when the
+   cursor moves toward an inactive pill (the bug Sir Robert flagged). */
+.lang-cluster {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 56px;
 }
 
 .lang-pill {
@@ -1025,7 +1061,7 @@ body::before {
   -webkit-backdrop-filter: blur(18px) saturate(1.1);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  transition: filter 180ms ease, box-shadow 180ms ease;
+  transition: filter 180ms ease, box-shadow 180ms ease, color 180ms ease;
 }
 
 .lang-pill-active {
@@ -1034,10 +1070,10 @@ body::before {
 }
 
 .lang-pill-inactive {
-  color: color-mix(in srgb, var(--text-primary) 70%, transparent);
+  color: color-mix(in srgb, var(--text-primary) 72%, transparent);
 }
 
 .lang-pill-inactive:hover {
   color: var(--text-primary);
-  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 22%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 26%, transparent);
 }

@@ -117,9 +117,9 @@ export default function DashboardPG() {
   const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
 
   return (
-    <div className="theme-cosmos dashboard-cosmic px-4 pb-28 pt-6 md:px-6 md:pt-10">
-      <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center gap-10 text-center">
-        <h1 className="welcome-hero font-display text-4xl font-bold sm:text-5xl md:text-6xl">
+    <div className="theme-cosmos dashboard-cosmic px-4 pb-10 pt-4 md:px-6 md:pt-6">
+      <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center">
+        <h1 className="welcome-hero font-display text-3xl font-bold sm:text-4xl md:text-5xl">
           {greeting}
         </h1>
 
@@ -135,7 +135,7 @@ export default function DashboardPG() {
           onSelect={setActiveLanguage}
         />
 
-        <section className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+        <section className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
           <SrsActionTile
             label={t('study.queue.review')}
             count={reviewDue}
@@ -156,9 +156,7 @@ export default function DashboardPG() {
           />
         </section>
 
-        <section
-          className={`grid w-full gap-3 ${counts.mastered > 0 ? 'grid-cols-2 sm:max-w-md' : 'grid-cols-1 sm:max-w-xs'} mx-auto`}
-        >
+        <div className="w-full sm:max-w-xs mx-auto">
           <SrsActionTile
             label={t('study.queue.strengthen')}
             count={counts.learning}
@@ -168,18 +166,28 @@ export default function DashboardPG() {
             accent="neutral"
             disabled={tilesDisabled}
           />
-          {counts.mastered > 0 && (
+        </div>
+
+        <div className="w-full sm:max-w-xs mx-auto">
+          {counts.mastered > 0 ? (
             <SrsActionTile
               label={t('study.queue.mastered')}
               count={counts.mastered}
               queue="mastered"
               language={activeLanguage ?? ''}
               tier="bottom"
-              accent="neutral"
+              accent="gold"
               disabled={tilesDisabled}
             />
+          ) : (
+            <div className="mastered-empty">
+              <span className="mastered-empty-ring">0</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[color-mix(in_srgb,var(--text-primary)_52%,transparent)]">
+                {t('study.queue.mastered')}
+              </span>
+            </div>
           )}
-        </section>
+        </div>
       </div>
     </div>
   )
