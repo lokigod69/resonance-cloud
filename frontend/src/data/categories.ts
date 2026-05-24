@@ -5,30 +5,61 @@ import { STATIC_CATEGORY_TRANSLATIONS } from './staticCategoryTranslations'
 // `labelKey` / `groupKey` fields are i18n lookups for display only — the
 // English `name` / `label` fields stay as English fallbacks via t().
 export type StaticCategoryTargetLanguageCode = 'en' | 'de' | 'fr' | 'es' | 'pt' | 'it' | 'pl' | 'id' | 'ceb' | 'ko'
+export type StaticCategoryLanguageStatus = 'stable' | 'experimental' | 'hidden'
 
 export interface StaticCategoryTranslation {
   term: string
   needsReview?: boolean
+  reviewNote?: string
 }
 
 export type StaticCategoryTranslations = Record<StaticCategoryTargetLanguageCode, StaticCategoryTranslation>
 
-export const STATIC_CATEGORY_TARGET_LANGUAGES: Array<{
+export interface StaticCategoryLanguageMetadata {
   code: StaticCategoryTargetLanguageCode
   value: string
   label: string
-}> = [
-  { code: 'en', value: 'English', label: 'English' },
-  { code: 'de', value: 'German', label: 'Deutsch' },
-  { code: 'fr', value: 'French', label: 'Français' },
-  { code: 'es', value: 'Spanish', label: 'Español' },
-  { code: 'pt', value: 'Portuguese', label: 'Português' },
-  { code: 'it', value: 'Italian', label: 'Italiano' },
-  { code: 'pl', value: 'Polish', label: 'Polski' },
-  { code: 'id', value: 'Indonesian', label: 'Bahasa Indonesia' },
-  { code: 'ceb', value: 'Bisaya', label: 'Bisaya / Cebuano (review)' },
-  { code: 'ko', value: 'Korean', label: '한국어' },
+  name: string
+  nativeName: string
+  status: StaticCategoryLanguageStatus
+  reviewLabel?: string
+  script: string
+}
+
+export const STATIC_CATEGORY_TRANSLATION_LANGUAGES: StaticCategoryLanguageMetadata[] = [
+  { code: 'en', value: 'English', name: 'English', nativeName: 'English', label: 'English', status: 'stable', script: 'Latin' },
+  { code: 'de', value: 'German', name: 'German', nativeName: 'Deutsch', label: 'Deutsch', status: 'stable', script: 'Latin' },
+  { code: 'fr', value: 'French', name: 'French', nativeName: 'Français', label: 'Français', status: 'stable', script: 'Latin' },
+  { code: 'es', value: 'Spanish', name: 'Spanish', nativeName: 'Español', label: 'Español', status: 'stable', script: 'Latin' },
+  { code: 'pt', value: 'Portuguese', name: 'Portuguese', nativeName: 'Português', label: 'Português', status: 'stable', script: 'Latin' },
+  { code: 'it', value: 'Italian', name: 'Italian', nativeName: 'Italiano', label: 'Italiano', status: 'stable', script: 'Latin' },
+  { code: 'pl', value: 'Polish', name: 'Polish', nativeName: 'Polski', label: 'Polski', status: 'stable', script: 'Latin' },
+  { code: 'id', value: 'Indonesian', name: 'Indonesian', nativeName: 'Bahasa Indonesia', label: 'Bahasa Indonesia', status: 'stable', script: 'Latin' },
+  {
+    code: 'ceb',
+    value: 'Bisaya',
+    name: 'Bisaya / Cebuano',
+    nativeName: 'Bisaya / Cebuano',
+    label: 'Bisaya / Cebuano (hidden: review)',
+    status: 'hidden',
+    reviewLabel: 'review',
+    script: 'Latin',
+  },
+  {
+    code: 'ko',
+    value: 'Korean',
+    name: 'Korean',
+    nativeName: '한국어',
+    label: '한국어 (experimental)',
+    status: 'experimental',
+    reviewLabel: 'experimental',
+    script: 'Hangul',
+  },
 ]
+
+export const STATIC_CATEGORY_TARGET_LANGUAGES = STATIC_CATEGORY_TRANSLATION_LANGUAGES.filter(
+  (language) => language.status !== 'hidden',
+)
 
 export interface Category {
   id?: string
@@ -948,8 +979,8 @@ export function getStaticCategorySelectedItems(
   const limit = Math.max(0, requestedCount)
   const languageCode = resolveStaticCategoryTargetLanguageCode(targetLanguage)
   const helperLanguageCode = resolveStaticCategoryTargetLanguageCode(helperLanguage)
-  const targetLanguageName = STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => language.code === languageCode)?.value ?? 'English'
-  const helperLanguageName = STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => language.code === helperLanguageCode)?.value ?? 'English'
+  const targetLanguageName = STATIC_CATEGORY_TRANSLATION_LANGUAGES.find((language) => language.code === languageCode)?.value ?? 'English'
+  const helperLanguageName = STATIC_CATEGORY_TRANSLATION_LANGUAGES.find((language) => language.code === helperLanguageCode)?.value ?? 'English'
 
   for (const item of getStaticCategoryVocabularyItems(category, levelNumber)) {
     const trimmed = resolveTranslatedTerm(item, languageCode)
@@ -987,10 +1018,12 @@ export function formatSelectedCategoryVocabularyLabel(item: SelectedCategoryVoca
 
 export function resolveStaticCategoryTargetLanguageCode(language?: string | null): StaticCategoryTargetLanguageCode {
   const normalized = (language ?? '').trim().toLowerCase()
-  return STATIC_CATEGORY_TARGET_LANGUAGES.find((entry) => (
+  return STATIC_CATEGORY_TRANSLATION_LANGUAGES.find((entry) => (
     entry.code === normalized
     || entry.value.toLowerCase() === normalized
     || entry.label.toLowerCase() === normalized
+    || entry.name.toLowerCase() === normalized
+    || entry.nativeName.toLowerCase() === normalized
     || (entry.code === 'ceb' && normalized === 'cebuano')
   ))?.code ?? 'en'
 }
@@ -1016,13 +1049,17 @@ function resolveStaticCategoryTranslations(id: string, fallbackEnglishTerm: stri
     | undefined
 
   return Object.fromEntries(
-    STATIC_CATEGORY_TARGET_LANGUAGES.map(({ code }) => [
-      code,
-      {
-        term: translated?.[code]?.term ?? fallbackEnglishTerm,
-        ...(translated?.[code]?.needsReview ? { needsReview: true } : {}),
-      },
-    ]),
+    STATIC_CATEGORY_TRANSLATION_LANGUAGES.map(({ code }) => {
+      const translation = translated?.[code]
+      return [
+        code,
+        {
+          term: translation?.term ?? fallbackEnglishTerm,
+          ...(translation?.needsReview ? { needsReview: true } : {}),
+          ...(translation?.reviewNote ? { reviewNote: translation.reviewNote } : {}),
+        },
+      ]
+    }),
   ) as StaticCategoryTranslations
 }
 

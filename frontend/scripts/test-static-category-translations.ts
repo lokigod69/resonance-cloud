@@ -1,19 +1,56 @@
 import assert from 'node:assert/strict'
+import { existsSync, readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 
 import {
   getPublicCategoryGroups,
   getStaticCategoryWords,
   getStaticCategoryVocabularyItems,
+  STATIC_CATEGORY_TRANSLATION_LANGUAGES,
   STATIC_CATEGORY_TARGET_LANGUAGES,
   type StaticCategoryTargetLanguageCode,
 } from '../src/data/categories.ts'
 
+const packageJson = JSON.parse(readFileSync(resolve(process.cwd(), 'package.json'), 'utf8')) as {
+  scripts?: Record<string, string>
+}
+assert.equal(
+  packageJson.scripts?.['export:translation-review'],
+  'tsx scripts/export-static-translation-review.ts',
+  'package.json should expose a static translation review export command',
+)
+assert.ok(
+  existsSync(resolve(process.cwd(), 'scripts/export-static-translation-review.ts')),
+  'translation review export script should exist',
+)
+
 const expectedLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ceb', 'ko']
+const expectedVisibleLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ko']
 
 assert.deepEqual(
-  STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => language.code),
+  STATIC_CATEGORY_TRANSLATION_LANGUAGES.map((language) => language.code),
   expectedLanguageCodes,
-  'static category vocabulary should expose the initial Latin-script target language set',
+  'static category vocabulary should validate every stored translation language, including hidden review languages',
+)
+assert.deepEqual(
+  STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => language.code),
+  expectedVisibleLanguageCodes,
+  'static category vocabulary selector should hide languages that are not ready for public selection',
+)
+assert.equal(
+  STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => language.code === 'ko')?.status,
+  'experimental',
+  'Korean should be visible but marked experimental',
+)
+assert.equal(
+  STATIC_CATEGORY_TRANSLATION_LANGUAGES.find((language) => language.code === 'ceb')?.status,
+  'hidden',
+  'Cebuano should remain stored for review but hidden from the normal selector',
+)
+assert.match(
+  STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => language.code === 'ko')?.label ?? '',
+  /experimental|review/i,
+  'Korean selector label should visibly communicate review status',
 )
 
 const publicCategories = getPublicCategoryGroups().flatMap((group) => group.categories)

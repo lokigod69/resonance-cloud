@@ -103,6 +103,10 @@ assert.ok(
   'CategoryPicker should expose the static vocabulary target language selector',
 )
 assert.ok(
+  categoryPicker.includes('language.status') || categoryPicker.includes('language.reviewLabel'),
+  'CategoryPicker language options should have access to language review status metadata',
+)
+assert.ok(
   categoryPicker.indexOf('id="static-category-target-language"') < categoryPicker.indexOf('{activeCategory && selectedLabel && ('),
   'CategoryPicker should show the language-pair selectors as soon as the drawer opens, before a category is selected',
 )
@@ -457,6 +461,30 @@ assert.deepEqual(
     .map(formatSelectedCategoryVocabularyLabel),
   ['chair / 의자', 'table / 테이블', 'bed / 침대'],
   'Home & Objects should display English primary chips with Korean helper translations',
+)
+const natureWeatherCategoryForKorean = publicCategories.find((category) => category.id === 'nature_weather')
+assert.ok(natureWeatherCategoryForKorean, 'Nature & Weather category should be selectable in the public category picker')
+const educationLearningCategoryForKorean = publicCategories.find((category) => category.id === 'education_learning')
+const feelingsStatesCategoryForKorean = publicCategories.find((category) => category.id === 'feelings_states')
+assert.ok(educationLearningCategoryForKorean, 'Education & Learning category should be selectable in the public category picker')
+assert.ok(feelingsStatesCategoryForKorean, 'Feelings & States category should be selectable in the public category picker')
+assert.deepEqual(
+  getStaticCategorySelectedItems(natureWeatherCategoryForKorean, 3, 1, 'Korean', 'English')
+    .map(formatSelectedCategoryVocabularyLabel),
+  ['해 / sun', '달 / moon', '하늘 / sky'],
+  'Nature & Weather reviewed Korean level 1 should preserve intended natural-world senses',
+)
+assert.deepEqual(
+  getStaticCategorySelectedItems(educationLearningCategoryForKorean, 4, 4, 'Korean', 'English')
+    .map(formatSelectedCategoryVocabularyLabel),
+  ['배우다 / learn', '공부하다 / study', '읽다 / read', '쓰다 / write'],
+  'Education & Learning reviewed Korean level 4 should preserve verb dictionary forms',
+)
+assert.deepEqual(
+  getStaticCategorySelectedItems(feelingsStatesCategoryForKorean, 4, 1, 'Korean', 'English')
+    .map(formatSelectedCategoryVocabularyLabel),
+  ['행복하다 / happy', '슬프다 / sad', '화나다 / angry', '두렵다 / afraid'],
+  'Feelings & States reviewed Korean level 1 should preserve adjective/descriptive verb forms',
 )
 for (const level of homeObjectsCategory.staticWordLevels ?? []) {
   for (const entry of level.words) {

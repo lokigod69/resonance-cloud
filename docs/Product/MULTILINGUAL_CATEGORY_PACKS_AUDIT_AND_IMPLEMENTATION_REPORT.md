@@ -327,3 +327,141 @@ Build was blocked by a pre-existing untracked local file: `frontend/src/componen
 ### Scope Confirmation
 
 This follow-up changed frontend category data, frontend category visibility, tests, and this report only. No Supabase schema, backend provider, paid API, credits, image generation, storage/media, card rendering, video generation, generated user decks, or user content was changed.
+
+## Translation QA, Language Status, And Korean Review Pass
+
+### Scope And Status Model
+
+This pass adds an explicit review workflow for static vocabulary translations. English remains the canonical internal base language, and stable concept ids continue to be derived from English slugs such as `home_objects.table`, `nature_weather.sun`, and `education_learning.learn`.
+
+Language exposure is now centralized in `frontend/src/data/categories.ts`:
+
+| Language | Code | Status | Selector behavior |
+| --- | --- | --- | --- |
+| English | `en` | stable | visible normally |
+| German | `de` | stable | visible normally |
+| French | `fr` | stable | visible normally |
+| Spanish | `es` | stable | visible normally |
+| Portuguese | `pt` | stable | visible normally |
+| Italian | `it` | stable | visible normally |
+| Polish | `pl` | stable | visible normally |
+| Indonesian | `id` | stable | visible normally |
+| Bisaya / Cebuano | `ceb` | hidden | stored and validated, hidden from normal selector pending review |
+| Korean | `ko` | experimental | visible as `한국어 (experimental)` |
+
+Stable languages are exposed without extra review labeling. Experimental languages remain selectable but visibly marked. Hidden languages stay in the translation data and validation surface, but are not shown in the normal target/helper selector.
+
+### Translation QA Workflow
+
+Added a translation QA helper and export command:
+
+- `frontend/scripts/static-translation-quality.ts` computes missing, empty, needs-review, and duplicate translated-term findings.
+- `frontend/scripts/export-static-translation-review.ts` exports Markdown and CSV review queues.
+- `npm run export:translation-review -- --lang ko` exports all Korean rows.
+- `npm run export:translation-review -- --lang ko --category home_objects` narrows by category.
+- `npm run export:translation-review -- --lang ko --levels 1-3` narrows by level range.
+- `npm run export:translation-review -- --lang ceb --needs-review-only` exports only Cebuano rows still needing review.
+
+Smoke-test output was written to:
+
+- `docs/Product/translation-review/ko_home_objects_levels_1_review_queue.md`
+- `docs/Product/translation-review/ko_home_objects_levels_1_review_queue.csv`
+- `docs/Product/translation-review/translation_quality_summary.md`
+
+Each queue row includes concept id, category id, category label, level, order, part of speech, sense, English canonical term, target term, `needsReview`, review note, and duplicate warning where applicable.
+
+### Korean Review Pass
+
+Korean started this pass with all 1,850 entries marked `needsReview: true`.
+
+Reviewed scope:
+
+- All Level 1 entries across every static thematic category.
+- All Level 2 entries across every static thematic category.
+- All Level 3 entries across every static thematic category.
+- Education & Learning Level 4 verbs.
+
+That reviewed 580 Korean entries. Korean `needsReview` changed from 1,850 to 1,270. The remaining 1,270 entries intentionally stay marked for review.
+
+The reviewed Korean entries use Hangul as the primary term. Romanization was deferred to avoid widening the schema in this QA pass; the translation object remains `term`, optional `needsReview`, and optional `reviewNote`.
+
+Verified learner-visible examples:
+
+- Home & Objects Level 1: `의자 / chair`, `테이블 / table`, `침대 / bed`
+- Nature & Weather Level 1: `해 / sun`, `달 / moon`, `하늘 / sky`
+- Education & Learning Level 4: `배우다 / learn`, `공부하다 / study`, `읽다 / read`, `쓰다 / write`
+- Feelings & States Level 1: `행복하다 / happy`, `슬프다 / sad`, `화나다 / angry`, `두렵다 / afraid`
+
+### Cebuano / Bisaya Policy
+
+Cebuano still has 627 entries marked `needsReview`. Because that is a large editorial surface, Cebuano is now `hidden` instead of appearing as a normal public selector choice. The data is preserved, validation still checks for missing and empty Cebuano terms, and review queues can still be exported. This avoids presenting Cebuano as finished learner-facing copy while keeping the work available for a dedicated review pass.
+
+### Current Translation QA Counts
+
+Current static translation summary:
+
+- Concept items: 1,850
+- Missing translations: 0 for every stored language
+- Empty translations: 0 for every stored language
+- Needs review: `ceb` 627, `ko` 1,270, all stable languages 0
+- Within-category translated-term duplicate clusters: 417
+
+Duplicate cluster counts by language:
+
+| Language | Duplicate clusters |
+| --- | ---: |
+| Portuguese | 53 |
+| Indonesian | 74 |
+| Cebuano | 51 |
+| Korean | 22 |
+| German | 40 |
+| French | 41 |
+| Spanish | 53 |
+| Italian | 36 |
+| Polish | 47 |
+
+Duplicate triage:
+
+- Harmless or expected examples include target-language synonym collapse where beginner vocabulary commonly uses one term for close English distinctions.
+- Needs-disambiguation examples include animal pairs and sense-specific terms where the target language has a common distinct term.
+- Needs-category/item-adjustment findings are documented by the review queue rather than changing category ownership in this pass.
+
+High-confidence Korean duplicate fixes made in the reviewed slice include `animals.mouse` -> `생쥐` while `animals.rat` stays `쥐`, and `home_objects.glass` -> `유리잔` for the drinking-glass sense.
+
+Remaining duplicate examples to review later:
+
+- `animals.crocodile` / `animals.alligator` both currently use Korean `악어`.
+- `fruits.melon` / `fruits.cantaloupe` both currently use Korean `멜론`.
+- `home_objects.bathroom` / `home_objects.toilet` both currently use Korean `화장실`.
+- `body_health.kidney` / `body_health.height` both currently use Korean `신장`.
+- `nature_weather.fog` / `nature_weather.mist` both currently use Korean `안개`.
+
+### Frontend Behavior
+
+The Generate category picker still separates UI locale from vocabulary language. The target vocabulary language and helper translation language selectors use the centralized language status metadata:
+
+- Korean is visible and marked experimental.
+- Cebuano is hidden from the normal selector.
+- English/German behavior remains unchanged.
+- Same-language target/helper display still collapses to one visible term.
+- Selected static words continue to preserve concept metadata through `settings_override.category_vocabulary_items`.
+
+The user-visible route to test remains `/generate`, then open the category picker in the Words step.
+
+### Checks
+
+Passed in this QA pass:
+
+- `npm run test:generate-category-picker-flow`
+- `npm run test:lane-payload`
+- `npm exec -- tsx scripts/test-generate-i18n-ui-cleanup.ts`
+- `npm run test:static-category-translations`
+- `npm run export:translation-review -- --lang ko --category home_objects --levels 1-1`
+- targeted ESLint on changed category/data/script files
+- `git diff --check -- <changed files>`
+
+Blocked:
+
+- `npm run typecheck` is blocked by the existing untracked local file `frontend/src/components/today/trophy/TrophyStudyModal.tsx`. The errors are stale guided trophy imports (`createGuidedTrophyStudyRecord`, `GuidedTrophyStudyItem`) and a stale `lessonId` property on `GuidedTrophyClozeItem`. That file was not changed or staged for this task.
+
+No Supabase schema, backend provider, paid API, credits, image generation, storage/media, card rendering, video generation, generated user decks, or user content was changed.

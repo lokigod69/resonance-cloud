@@ -30,8 +30,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "iro"
     },
     "ko": {
-      "term": "개",
-      "needsReview": true
+      "term": "개"
     }
   },
   "animals.cat": {
@@ -63,8 +62,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "iring"
     },
     "ko": {
-      "term": "고양이",
-      "needsReview": true
+      "term": "고양이"
     }
   },
   "animals.bird": {
@@ -96,8 +94,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "langgam"
     },
     "ko": {
-      "term": "새",
-      "needsReview": true
+      "term": "새"
     }
   },
   "animals.fish": {
@@ -129,8 +126,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "isda"
     },
     "ko": {
-      "term": "물고기",
-      "needsReview": true
+      "term": "물고기"
     }
   },
   "animals.horse": {
@@ -162,8 +158,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kabayo"
     },
     "ko": {
-      "term": "말",
-      "needsReview": true
+      "term": "말"
     }
   },
   "animals.cow": {
@@ -195,8 +190,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baka"
     },
     "ko": {
-      "term": "소",
-      "needsReview": true
+      "term": "소"
     }
   },
   "animals.pig": {
@@ -228,8 +222,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baboy"
     },
     "ko": {
-      "term": "돼지",
-      "needsReview": true
+      "term": "돼지"
     }
   },
   "animals.sheep": {
@@ -261,8 +254,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "karnero"
     },
     "ko": {
-      "term": "양",
-      "needsReview": true
+      "term": "양"
     }
   },
   "animals.goat": {
@@ -294,8 +286,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kanding"
     },
     "ko": {
-      "term": "염소",
-      "needsReview": true
+      "term": "염소"
     }
   },
   "animals.chicken": {
@@ -327,8 +318,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "manok"
     },
     "ko": {
-      "term": "닭고기",
-      "needsReview": true
+      "term": "닭"
     }
   },
   "animals.duck": {
@@ -360,8 +350,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "itik"
     },
     "ko": {
-      "term": "오리",
-      "needsReview": true
+      "term": "오리"
     }
   },
   "animals.rabbit": {
@@ -393,8 +382,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "koneho"
     },
     "ko": {
-      "term": "토끼",
-      "needsReview": true
+      "term": "토끼"
     }
   },
   "animals.mouse": {
@@ -426,8 +414,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ilaga"
     },
     "ko": {
-      "term": "쥐",
-      "needsReview": true
+      "term": "생쥐"
     }
   },
   "animals.rat": {
@@ -459,8 +446,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ilaga"
     },
     "ko": {
-      "term": "쥐",
-      "needsReview": true
+      "term": "쥐"
     }
   },
   "animals.frog": {
@@ -492,8 +478,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baki"
     },
     "ko": {
-      "term": "개구리",
-      "needsReview": true
+      "term": "개구리"
     }
   },
   "animals.turtle": {
@@ -525,8 +510,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pawikan"
     },
     "ko": {
-      "term": "거북이",
-      "needsReview": true
+      "term": "거북이"
     }
   },
   "animals.snake": {
@@ -558,8 +542,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bitin"
     },
     "ko": {
-      "term": "뱀",
-      "needsReview": true
+      "term": "뱀"
     }
   },
   "animals.lizard": {
@@ -591,8 +574,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tuko"
     },
     "ko": {
-      "term": "도마뱀",
-      "needsReview": true
+      "term": "도마뱀"
     }
   },
   "animals.bee": {
@@ -624,8 +606,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "buyog"
     },
     "ko": {
-      "term": "벌",
-      "needsReview": true
+      "term": "벌"
     }
   },
   "animals.butterfly": {
@@ -657,8 +638,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "alibangbang"
     },
     "ko": {
-      "term": "나비",
-      "needsReview": true
+      "term": "나비"
     }
   },
   "animals.lion": {
@@ -690,8 +670,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "leon"
     },
     "ko": {
-      "term": "사자",
-      "needsReview": true
+      "term": "사자"
     }
   },
   "animals.tiger": {
@@ -723,8 +702,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tigre"
     },
     "ko": {
-      "term": "호랑이",
-      "needsReview": true
+      "term": "호랑이"
     }
   },
   "animals.elephant": {
@@ -756,8 +734,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "elepante"
     },
     "ko": {
-      "term": "코끼리",
-      "needsReview": true
+      "term": "코끼리"
     }
   },
   "animals.giraffe": {
@@ -790,8 +767,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "기린",
-      "needsReview": true
+      "term": "기린"
     }
   },
   "animals.zebra": {
@@ -824,8 +800,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "얼룩말",
-      "needsReview": true
+      "term": "얼룩말"
     }
   },
   "animals.bear": {
@@ -857,8 +832,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "oso"
     },
     "ko": {
-      "term": "곰",
-      "needsReview": true
+      "term": "곰"
     }
   },
   "animals.wolf": {
@@ -890,8 +864,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lobo"
     },
     "ko": {
-      "term": "늑대",
-      "needsReview": true
+      "term": "늑대"
     }
   },
   "animals.fox": {
@@ -924,8 +897,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "여우",
-      "needsReview": true
+      "term": "여우"
     }
   },
   "animals.deer": {
@@ -957,8 +929,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "usa"
     },
     "ko": {
-      "term": "사슴",
-      "needsReview": true
+      "term": "사슴"
     }
   },
   "animals.monkey": {
@@ -990,8 +961,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "unggoy"
     },
     "ko": {
-      "term": "원숭이",
-      "needsReview": true
+      "term": "원숭이"
     }
   },
   "animals.dolphin": {
@@ -3373,8 +3343,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mansanas"
     },
     "ko": {
-      "term": "사과",
-      "needsReview": true
+      "term": "사과"
     }
   },
   "fruits.banana": {
@@ -3406,8 +3375,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "saging"
     },
     "ko": {
-      "term": "바나나",
-      "needsReview": true
+      "term": "바나나"
     }
   },
   "fruits.orange": {
@@ -3439,8 +3407,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kahel"
     },
     "ko": {
-      "term": "오렌지",
-      "needsReview": true
+      "term": "오렌지"
     }
   },
   "fruits.grape": {
@@ -3472,8 +3439,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ubas"
     },
     "ko": {
-      "term": "포도",
-      "needsReview": true
+      "term": "포도"
     }
   },
   "fruits.strawberry": {
@@ -3506,8 +3472,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "딸기",
-      "needsReview": true
+      "term": "딸기"
     }
   },
   "fruits.lemon": {
@@ -3540,8 +3505,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "레몬",
-      "needsReview": true
+      "term": "레몬"
     }
   },
   "fruits.peach": {
@@ -3574,8 +3538,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "복숭아",
-      "needsReview": true
+      "term": "복숭아"
     }
   },
   "fruits.pear": {
@@ -3608,8 +3571,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "배",
-      "needsReview": true
+      "term": "배"
     }
   },
   "fruits.cherry": {
@@ -3642,8 +3604,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "체리",
-      "needsReview": true
+      "term": "체리"
     }
   },
   "fruits.watermelon": {
@@ -3675,8 +3636,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pakwan"
     },
     "ko": {
-      "term": "수박",
-      "needsReview": true
+      "term": "수박"
     }
   },
   "fruits.pineapple": {
@@ -3708,8 +3668,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pinya"
     },
     "ko": {
-      "term": "파인애플",
-      "needsReview": true
+      "term": "파인애플"
     }
   },
   "fruits.mango": {
@@ -3741,8 +3700,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mangga"
     },
     "ko": {
-      "term": "망고",
-      "needsReview": true
+      "term": "망고"
     }
   },
   "fruits.blueberry": {
@@ -3775,8 +3733,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "블루베리",
-      "needsReview": true
+      "term": "블루베리"
     }
   },
   "fruits.raspberry": {
@@ -3809,8 +3766,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "라즈베리",
-      "needsReview": true
+      "term": "라즈베리"
     }
   },
   "fruits.blackberry": {
@@ -3843,8 +3799,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "블랙베리",
-      "needsReview": true
+      "term": "블랙베리"
     }
   },
   "fruits.plum": {
@@ -3877,8 +3832,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "자두",
-      "needsReview": true
+      "term": "자두"
     }
   },
   "fruits.kiwi": {
@@ -3911,8 +3865,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "키위",
-      "needsReview": true
+      "term": "키위"
     }
   },
   "fruits.melon": {
@@ -3945,8 +3898,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "멜론",
-      "needsReview": true
+      "term": "멜론"
     }
   },
   "fruits.lime": {
@@ -3978,8 +3930,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "apog"
     },
     "ko": {
-      "term": "라임",
-      "needsReview": true
+      "term": "라임"
     }
   },
   "fruits.grapefruit": {
@@ -4012,8 +3963,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "자몽",
-      "needsReview": true
+      "term": "자몽"
     }
   },
   "fruits.coconut": {
@@ -4045,8 +3995,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lubi"
     },
     "ko": {
-      "term": "코코넛",
-      "needsReview": true
+      "term": "코코넛"
     }
   },
   "fruits.avocado": {
@@ -4078,8 +4027,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "abokado"
     },
     "ko": {
-      "term": "아보카도",
-      "needsReview": true
+      "term": "아보카도"
     }
   },
   "fruits.apricot": {
@@ -4112,8 +4060,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "살구",
-      "needsReview": true
+      "term": "살구"
     }
   },
   "fruits.nectarine": {
@@ -4146,8 +4093,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "천도 복숭아",
-      "needsReview": true
+      "term": "천도복숭아"
     }
   },
   "fruits.tangerine": {
@@ -4180,8 +4126,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "귤",
-      "needsReview": true
+      "term": "귤"
     }
   },
   "fruits.mandarin": {
@@ -4214,8 +4159,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "만다린 오렌지",
-      "needsReview": true
+      "term": "만다린 오렌지"
     }
   },
   "fruits.pomegranate": {
@@ -4247,8 +4191,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "granada"
     },
     "ko": {
-      "term": "석류",
-      "needsReview": true
+      "term": "석류"
     }
   },
   "fruits.fig": {
@@ -4281,8 +4224,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "무화과",
-      "needsReview": true
+      "term": "무화과"
     }
   },
   "fruits.date": {
@@ -4314,8 +4256,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "petsa"
     },
     "ko": {
-      "term": "날짜",
-      "needsReview": true
+      "term": "대추야자"
     }
   },
   "fruits.cranberry": {
@@ -4348,8 +4289,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "크랜베리",
-      "needsReview": true
+      "term": "크랜베리"
     }
   },
   "fruits.papaya": {
@@ -6740,8 +6680,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "karot"
     },
     "ko": {
-      "term": "당근",
-      "needsReview": true
+      "term": "당근"
     }
   },
   "vegetables.potato": {
@@ -6773,8 +6712,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "patatas"
     },
     "ko": {
-      "term": "감자",
-      "needsReview": true
+      "term": "감자"
     }
   },
   "vegetables.onion": {
@@ -6806,8 +6744,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sibuyas"
     },
     "ko": {
-      "term": "양파",
-      "needsReview": true
+      "term": "양파"
     }
   },
   "vegetables.tomato": {
@@ -6839,8 +6776,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kamatis"
     },
     "ko": {
-      "term": "토마토",
-      "needsReview": true
+      "term": "토마토"
     }
   },
   "vegetables.cucumber": {
@@ -6872,8 +6808,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pipino"
     },
     "ko": {
-      "term": "오이",
-      "needsReview": true
+      "term": "오이"
     }
   },
   "vegetables.lettuce": {
@@ -6906,8 +6841,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "상추",
-      "needsReview": true
+      "term": "상추"
     }
   },
   "vegetables.garlic": {
@@ -6939,8 +6873,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ahos"
     },
     "ko": {
-      "term": "마늘",
-      "needsReview": true
+      "term": "마늘"
     }
   },
   "vegetables.corn": {
@@ -6972,8 +6905,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mais"
     },
     "ko": {
-      "term": "옥수수",
-      "needsReview": true
+      "term": "옥수수"
     }
   },
   "vegetables.mushroom": {
@@ -7005,8 +6937,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "uhong"
     },
     "ko": {
-      "term": "버섯",
-      "needsReview": true
+      "term": "버섯"
     }
   },
   "vegetables.broccoli": {
@@ -7039,8 +6970,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "브로콜리",
-      "needsReview": true
+      "term": "브로콜리"
     }
   },
   "vegetables.cabbage": {
@@ -7072,8 +7002,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "repolyo"
     },
     "ko": {
-      "term": "양배추",
-      "needsReview": true
+      "term": "양배추"
     }
   },
   "vegetables.cauliflower": {
@@ -7106,8 +7035,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "콜리플라워",
-      "needsReview": true
+      "term": "콜리플라워"
     }
   },
   "vegetables.spinach": {
@@ -7140,8 +7068,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "시금치",
-      "needsReview": true
+      "term": "시금치"
     }
   },
   "vegetables.pea": {
@@ -7174,8 +7101,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "완두콩",
-      "needsReview": true
+      "term": "완두콩"
     }
   },
   "vegetables.green_bean": {
@@ -7207,8 +7133,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "berde nga liso"
     },
     "ko": {
-      "term": "녹두",
-      "needsReview": true
+      "term": "껍질콩"
     }
   },
   "vegetables.bell_pepper": {
@@ -7240,8 +7165,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kampanilya nga sili"
     },
     "ko": {
-      "term": "피망",
-      "needsReview": true
+      "term": "피망"
     }
   },
   "vegetables.chili_pepper": {
@@ -7273,8 +7197,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sili nga sili"
     },
     "ko": {
-      "term": "칠리 고추",
-      "needsReview": true
+      "term": "칠리 고추"
     }
   },
   "vegetables.zucchini": {
@@ -7307,8 +7230,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "호박",
-      "needsReview": true
+      "term": "주키니"
     }
   },
   "vegetables.eggplant": {
@@ -7340,8 +7262,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "talong"
     },
     "ko": {
-      "term": "가지",
-      "needsReview": true
+      "term": "가지"
     }
   },
   "vegetables.pumpkin": {
@@ -7373,8 +7294,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kalabasa"
     },
     "ko": {
-      "term": "호박",
-      "needsReview": true
+      "term": "호박"
     }
   },
   "vegetables.sweet_potato": {
@@ -7406,8 +7326,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kamote"
     },
     "ko": {
-      "term": "고구마",
-      "needsReview": true
+      "term": "고구마"
     }
   },
   "vegetables.yam": {
@@ -7440,8 +7359,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "얌",
-      "needsReview": true
+      "term": "마"
     }
   },
   "vegetables.beetroot": {
@@ -7474,8 +7392,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "비트뿌리",
-      "needsReview": true
+      "term": "비트뿌리"
     }
   },
   "vegetables.radish": {
@@ -7507,8 +7424,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "labanos"
     },
     "ko": {
-      "term": "무",
-      "needsReview": true
+      "term": "무"
     }
   },
   "vegetables.turnip": {
@@ -7540,8 +7456,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "singkamas"
     },
     "ko": {
-      "term": "순무",
-      "needsReview": true
+      "term": "순무"
     }
   },
   "vegetables.parsnip": {
@@ -7574,8 +7489,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "파스닙",
-      "needsReview": true
+      "term": "파스닙"
     }
   },
   "vegetables.rutabaga": {
@@ -7608,8 +7522,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "루타바가",
-      "needsReview": true
+      "term": "루타바가"
     }
   },
   "vegetables.celeriac": {
@@ -7642,8 +7555,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "셀러리악",
-      "needsReview": true
+      "term": "셀러리악"
     }
   },
   "vegetables.taro": {
@@ -7676,8 +7588,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "타로",
-      "needsReview": true
+      "term": "타로"
     }
   },
   "vegetables.cassava": {
@@ -7709,8 +7620,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "balanghoy"
     },
     "ko": {
-      "term": "카사바",
-      "needsReview": true
+      "term": "카사바"
     }
   },
   "vegetables.kale": {
@@ -10092,8 +10002,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pan"
     },
     "ko": {
-      "term": "빵",
-      "needsReview": true
+      "term": "빵"
     }
   },
   "food_drinks.rice": {
@@ -10125,8 +10034,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bugas"
     },
     "ko": {
-      "term": "쌀",
-      "needsReview": true
+      "term": "쌀"
     }
   },
   "food_drinks.pasta": {
@@ -10159,8 +10067,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "파스타",
-      "needsReview": true
+      "term": "파스타"
     }
   },
   "food_drinks.soup": {
@@ -10192,8 +10099,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sabaw"
     },
     "ko": {
-      "term": "수프",
-      "needsReview": true
+      "term": "수프"
     }
   },
   "food_drinks.sandwich": {
@@ -10226,8 +10132,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "샌드위치",
-      "needsReview": true
+      "term": "샌드위치"
     }
   },
   "food_drinks.pizza": {
@@ -10260,8 +10165,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "피자",
-      "needsReview": true
+      "term": "피자"
     }
   },
   "food_drinks.egg": {
@@ -10293,8 +10197,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "itlog"
     },
     "ko": {
-      "term": "계란",
-      "needsReview": true
+      "term": "계란"
     }
   },
   "food_drinks.cheese": {
@@ -10326,8 +10229,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "keso"
     },
     "ko": {
-      "term": "치즈",
-      "needsReview": true
+      "term": "치즈"
     }
   },
   "food_drinks.meat": {
@@ -10359,8 +10261,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "karne"
     },
     "ko": {
-      "term": "고기",
-      "needsReview": true
+      "term": "고기"
     }
   },
   "food_drinks.salad": {
@@ -10393,8 +10294,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "샐러드",
-      "needsReview": true
+      "term": "샐러드"
     }
   },
   "food_drinks.noodles": {
@@ -10426,8 +10326,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pansit"
     },
     "ko": {
-      "term": "국수",
-      "needsReview": true
+      "term": "국수"
     }
   },
   "food_drinks.cereal": {
@@ -10460,8 +10359,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "시리얼",
-      "needsReview": true
+      "term": "시리얼"
     }
   },
   "food_drinks.oatmeal": {
@@ -10494,8 +10392,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "오트밀",
-      "needsReview": true
+      "term": "오트밀"
     }
   },
   "food_drinks.pancake": {
@@ -10528,8 +10425,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "팬케이크",
-      "needsReview": true
+      "term": "팬케이크"
     }
   },
   "food_drinks.toast": {
@@ -10562,8 +10458,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "토스트",
-      "needsReview": true
+      "term": "토스트"
     }
   },
   "food_drinks.burger": {
@@ -10596,8 +10491,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "버거",
-      "needsReview": true
+      "term": "버거"
     }
   },
   "food_drinks.fries": {
@@ -10630,8 +10524,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "감자튀김",
-      "needsReview": true
+      "term": "감자튀김"
     }
   },
   "food_drinks.hot_dog": {
@@ -10663,8 +10556,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "init nga iro"
     },
     "ko": {
-      "term": "핫도그",
-      "needsReview": true
+      "term": "핫도그"
     }
   },
   "food_drinks.steak": {
@@ -10697,8 +10589,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "스테이크",
-      "needsReview": true
+      "term": "스테이크"
     }
   },
   "food_drinks.sausage": {
@@ -10731,8 +10622,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "소시지",
-      "needsReview": true
+      "term": "소시지"
     }
   },
   "food_drinks.yogurt": {
@@ -10765,8 +10655,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "요구르트",
-      "needsReview": true
+      "term": "요구르트"
     }
   },
   "food_drinks.butter": {
@@ -10798,8 +10687,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mantekilya"
     },
     "ko": {
-      "term": "버터",
-      "needsReview": true
+      "term": "버터"
     }
   },
   "food_drinks.cream": {
@@ -10831,8 +10719,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "krema"
     },
     "ko": {
-      "term": "크림",
-      "needsReview": true
+      "term": "크림"
     }
   },
   "food_drinks.ice_cream": {
@@ -10865,8 +10752,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "아이스크림",
-      "needsReview": true
+      "term": "아이스크림"
     }
   },
   "food_drinks.beef": {
@@ -10898,8 +10784,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "karne sa baka"
     },
     "ko": {
-      "term": "쇠고기",
-      "needsReview": true
+      "term": "쇠고기"
     }
   },
   "food_drinks.pork": {
@@ -10931,8 +10816,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baboy"
     },
     "ko": {
-      "term": "돼지고기",
-      "needsReview": true
+      "term": "돼지고기"
     }
   },
   "food_drinks.lamb": {
@@ -10964,8 +10848,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "nating karnero"
     },
     "ko": {
-      "term": "양고기",
-      "needsReview": true
+      "term": "양고기"
     }
   },
   "food_drinks.bacon": {
@@ -10998,8 +10881,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "베이컨",
-      "needsReview": true
+      "term": "베이컨"
     }
   },
   "food_drinks.ham": {
@@ -11032,8 +10914,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "햄",
-      "needsReview": true
+      "term": "햄"
     }
   },
   "food_drinks.meatball": {
@@ -11066,8 +10947,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "미트볼",
-      "needsReview": true
+      "term": "미트볼"
     }
   },
   "food_drinks.water": {
@@ -13449,8 +13329,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "almendras"
     },
     "ko": {
-      "term": "아몬드",
-      "needsReview": true
+      "term": "아몬드"
     }
   },
   "nuts_seeds.peanut": {
@@ -13482,8 +13361,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mani"
     },
     "ko": {
-      "term": "땅콩",
-      "needsReview": true
+      "term": "땅콩"
     }
   },
   "nuts_seeds.walnut": {
@@ -13516,8 +13394,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "호두",
-      "needsReview": true
+      "term": "호두"
     }
   },
   "nuts_seeds.cashew": {
@@ -13549,8 +13426,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kasoy"
     },
     "ko": {
-      "term": "캐슈",
-      "needsReview": true
+      "term": "캐슈"
     }
   },
   "nuts_seeds.pistachio": {
@@ -13583,8 +13459,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "피스타치오",
-      "needsReview": true
+      "term": "피스타치오"
     }
   },
   "nuts_seeds.hazelnut": {
@@ -13617,8 +13492,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "헤이즐넛",
-      "needsReview": true
+      "term": "헤이즐넛"
     }
   },
   "nuts_seeds.pecan": {
@@ -13651,8 +13525,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "피칸",
-      "needsReview": true
+      "term": "피칸"
     }
   },
   "nuts_seeds.chestnut": {
@@ -13684,8 +13557,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kastanyas"
     },
     "ko": {
-      "term": "밤나무",
-      "needsReview": true
+      "term": "밤"
     }
   },
   "nuts_seeds.sunflower_seed": {
@@ -13717,8 +13589,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "liso sa sunflower"
     },
     "ko": {
-      "term": "해바라기 씨",
-      "needsReview": true
+      "term": "해바라기 씨"
     }
   },
   "nuts_seeds.pumpkin_seed": {
@@ -13750,8 +13621,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "liso sa kalabasa"
     },
     "ko": {
-      "term": "호박씨",
-      "needsReview": true
+      "term": "호박씨"
     }
   },
   "nuts_seeds.sesame_seed": {
@@ -13783,8 +13653,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "liso sa sesame"
     },
     "ko": {
-      "term": "참깨",
-      "needsReview": true
+      "term": "참깨"
     }
   },
   "nuts_seeds.chia_seed": {
@@ -13816,8 +13685,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "liso sa chia"
     },
     "ko": {
-      "term": "치아씨드",
-      "needsReview": true
+      "term": "치아씨드"
     }
   },
   "nuts_seeds.flaxseed": {
@@ -13849,8 +13717,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "liso sa flax"
     },
     "ko": {
-      "term": "아마씨",
-      "needsReview": true
+      "term": "아마씨"
     }
   },
   "nuts_seeds.poppy_seed": {
@@ -13882,8 +13749,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "liso sa poppy"
     },
     "ko": {
-      "term": "양귀비 씨앗",
-      "needsReview": true
+      "term": "양귀비 씨앗"
     }
   },
   "nuts_seeds.hemp_seed": {
@@ -13915,8 +13781,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "liso sa abaka"
     },
     "ko": {
-      "term": "대마씨",
-      "needsReview": true
+      "term": "대마씨"
     }
   },
   "nuts_seeds.pine_nut": {
@@ -13949,8 +13814,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "잣",
-      "needsReview": true
+      "term": "잣"
     }
   },
   "nuts_seeds.brazil_nut": {
@@ -13983,8 +13847,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "브라질 너트",
-      "needsReview": true
+      "term": "브라질 너트"
     }
   },
   "nuts_seeds.macadamia_nut": {
@@ -14017,8 +13880,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "마카다미아 너트",
-      "needsReview": true
+      "term": "마카다미아 너트"
     }
   },
   "nuts_seeds.mixed_nuts": {
@@ -14050,8 +13912,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sinagol nga nut"
     },
     "ko": {
-      "term": "혼합 견과류",
-      "needsReview": true
+      "term": "혼합 견과류"
     }
   },
   "nuts_seeds.trail_mix": {
@@ -14084,8 +13945,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "트레일 믹스",
-      "needsReview": true
+      "term": "트레일 믹스"
     }
   },
   "nuts_seeds.almond_milk": {
@@ -14117,8 +13977,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "gatas nga almendras"
     },
     "ko": {
-      "term": "아몬드 우유",
-      "needsReview": true
+      "term": "아몬드 우유"
     }
   },
   "nuts_seeds.almond_flour": {
@@ -14150,8 +14009,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "harina nga almendras"
     },
     "ko": {
-      "term": "아몬드 가루",
-      "needsReview": true
+      "term": "아몬드 가루"
     }
   },
   "nuts_seeds.tahini": {
@@ -14184,8 +14042,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "타히니",
-      "needsReview": true
+      "term": "타히니"
     }
   },
   "nuts_seeds.sesame_oil": {
@@ -14217,8 +14074,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lana sa sesame"
     },
     "ko": {
-      "term": "참기름",
-      "needsReview": true
+      "term": "참기름"
     }
   },
   "nuts_seeds.sunflower_oil": {
@@ -14250,8 +14106,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lana sa sunflower"
     },
     "ko": {
-      "term": "해바라기 기름",
-      "needsReview": true
+      "term": "해바라기 기름"
     }
   },
   "nuts_seeds.pumpkin_seed_oil": {
@@ -14283,8 +14138,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lana sa pumpkin seed"
     },
     "ko": {
-      "term": "호박씨 기름",
-      "needsReview": true
+      "term": "호박씨 기름"
     }
   },
   "nuts_seeds.nut_butter": {
@@ -14317,8 +14171,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "너트 버터",
-      "needsReview": true
+      "term": "너트 버터"
     }
   },
   "nuts_seeds.seed_butter": {
@@ -14350,8 +14203,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mantikilya sa liso"
     },
     "ko": {
-      "term": "씨드 버터",
-      "needsReview": true
+      "term": "씨드 버터"
     }
   },
   "nuts_seeds.granola": {
@@ -14384,8 +14236,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "그래놀라",
-      "needsReview": true
+      "term": "그래놀라"
     }
   },
   "nuts_seeds.praline": {
@@ -14418,8 +14269,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "프랄린",
-      "needsReview": true
+      "term": "프랄린"
     }
   },
   "nuts_seeds.mustard_seed": {
@@ -15118,8 +14968,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lingkuranan"
     },
     "ko": {
-      "term": "의자",
-      "needsReview": true
+      "term": "의자"
     }
   },
   "home_objects.table": {
@@ -15151,8 +15000,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lamesa"
     },
     "ko": {
-      "term": "테이블",
-      "needsReview": true
+      "term": "테이블"
     }
   },
   "home_objects.bed": {
@@ -15184,8 +15032,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "higdaanan"
     },
     "ko": {
-      "term": "침대",
-      "needsReview": true
+      "term": "침대"
     }
   },
   "home_objects.sofa": {
@@ -15218,8 +15065,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "소파",
-      "needsReview": true
+      "term": "소파"
     }
   },
   "home_objects.door": {
@@ -15251,8 +15097,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pultahan"
     },
     "ko": {
-      "term": "문",
-      "needsReview": true
+      "term": "문"
     }
   },
   "home_objects.window": {
@@ -15284,8 +15129,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bintana"
     },
     "ko": {
-      "term": "창문",
-      "needsReview": true
+      "term": "창문"
     }
   },
   "home_objects.key": {
@@ -15317,8 +15161,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "yawe"
     },
     "ko": {
-      "term": "열쇠",
-      "needsReview": true
+      "term": "열쇠"
     }
   },
   "home_objects.lamp": {
@@ -15350,8 +15193,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lampara"
     },
     "ko": {
-      "term": "램프",
-      "needsReview": true
+      "term": "램프"
     }
   },
   "home_objects.mirror": {
@@ -15383,8 +15225,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "salamin"
     },
     "ko": {
-      "term": "거울",
-      "needsReview": true
+      "term": "거울"
     }
   },
   "home_objects.shelf": {
@@ -15416,8 +15257,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "estante"
     },
     "ko": {
-      "term": "선반",
-      "needsReview": true
+      "term": "선반"
     }
   },
   "home_objects.house": {
@@ -15449,8 +15289,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "balay"
     },
     "ko": {
-      "term": "집",
-      "needsReview": true
+      "term": "집"
     }
   },
   "home_objects.apartment": {
@@ -15483,8 +15322,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "아파트",
-      "needsReview": true
+      "term": "아파트"
     }
   },
   "home_objects.room": {
@@ -15516,8 +15354,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lawak"
     },
     "ko": {
-      "term": "방",
-      "needsReview": true
+      "term": "방"
     }
   },
   "home_objects.kitchen": {
@@ -15549,8 +15386,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kusina"
     },
     "ko": {
-      "term": "부엌",
-      "needsReview": true
+      "term": "부엌"
     }
   },
   "home_objects.bathroom": {
@@ -15582,8 +15418,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "banyo"
     },
     "ko": {
-      "term": "화장실",
-      "needsReview": true
+      "term": "화장실"
     }
   },
   "home_objects.bedroom": {
@@ -15615,8 +15450,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kwarto"
     },
     "ko": {
-      "term": "침실",
-      "needsReview": true
+      "term": "침실"
     }
   },
   "home_objects.living_room": {
@@ -15648,8 +15482,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sala"
     },
     "ko": {
-      "term": "거실",
-      "needsReview": true
+      "term": "거실"
     }
   },
   "home_objects.hallway": {
@@ -15681,8 +15514,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pasilyo"
     },
     "ko": {
-      "term": "복도",
-      "needsReview": true
+      "term": "복도"
     }
   },
   "home_objects.balcony": {
@@ -15714,8 +15546,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "balkonahe"
     },
     "ko": {
-      "term": "발코니",
-      "needsReview": true
+      "term": "발코니"
     }
   },
   "home_objects.garage": {
@@ -15747,8 +15578,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "garahe"
     },
     "ko": {
-      "term": "차고",
-      "needsReview": true
+      "term": "차고"
     }
   },
   "home_objects.plate": {
@@ -15780,8 +15610,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "plato"
     },
     "ko": {
-      "term": "접시",
-      "needsReview": true
+      "term": "접시"
     }
   },
   "home_objects.bowl": {
@@ -15813,8 +15642,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "panaksan"
     },
     "ko": {
-      "term": "그릇",
-      "needsReview": true
+      "term": "그릇"
     }
   },
   "home_objects.cup": {
@@ -15846,8 +15674,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tasa"
     },
     "ko": {
-      "term": "컵",
-      "needsReview": true
+      "term": "컵"
     }
   },
   "home_objects.glass": {
@@ -15879,8 +15706,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bildo"
     },
     "ko": {
-      "term": "유리",
-      "needsReview": true
+      "term": "유리잔"
     }
   },
   "home_objects.bottle": {
@@ -15912,8 +15738,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "botelya"
     },
     "ko": {
-      "term": "병",
-      "needsReview": true
+      "term": "병"
     }
   },
   "home_objects.spoon": {
@@ -15945,8 +15770,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kutsara"
     },
     "ko": {
-      "term": "숟가락",
-      "needsReview": true
+      "term": "숟가락"
     }
   },
   "home_objects.fork": {
@@ -15978,8 +15802,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tinidor"
     },
     "ko": {
-      "term": "포크",
-      "needsReview": true
+      "term": "포크"
     }
   },
   "home_objects.knife": {
@@ -16011,8 +15834,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kutsilyo"
     },
     "ko": {
-      "term": "칼",
-      "needsReview": true
+      "term": "칼"
     }
   },
   "home_objects.pan": {
@@ -16045,8 +15867,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "팬",
-      "needsReview": true
+      "term": "팬"
     }
   },
   "home_objects.pot": {
@@ -16078,8 +15899,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kaldero"
     },
     "ko": {
-      "term": "냄비",
-      "needsReview": true
+      "term": "냄비"
     }
   },
   "home_objects.pillow": {
@@ -18444,8 +18264,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ulo"
     },
     "ko": {
-      "term": "머리",
-      "needsReview": true
+      "term": "머리"
     }
   },
   "body_health.face": {
@@ -18477,8 +18296,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "nawong"
     },
     "ko": {
-      "term": "얼굴",
-      "needsReview": true
+      "term": "얼굴"
     }
   },
   "body_health.eye": {
@@ -18510,8 +18328,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mata"
     },
     "ko": {
-      "term": "눈",
-      "needsReview": true
+      "term": "눈"
     }
   },
   "body_health.ear": {
@@ -18543,8 +18360,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "dalunggan"
     },
     "ko": {
-      "term": "귀",
-      "needsReview": true
+      "term": "귀"
     }
   },
   "body_health.nose": {
@@ -18576,8 +18392,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ilong"
     },
     "ko": {
-      "term": "코",
-      "needsReview": true
+      "term": "코"
     }
   },
   "body_health.mouth": {
@@ -18609,8 +18424,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baba"
     },
     "ko": {
-      "term": "입",
-      "needsReview": true
+      "term": "입"
     }
   },
   "body_health.hand": {
@@ -18642,8 +18456,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kamot"
     },
     "ko": {
-      "term": "손",
-      "needsReview": true
+      "term": "손"
     }
   },
   "body_health.arm": {
@@ -18675,8 +18488,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bukton"
     },
     "ko": {
-      "term": "팔",
-      "needsReview": true
+      "term": "팔"
     }
   },
   "body_health.leg": {
@@ -18708,8 +18520,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bitiis"
     },
     "ko": {
-      "term": "다리",
-      "needsReview": true
+      "term": "다리"
     }
   },
   "body_health.foot": {
@@ -18741,8 +18552,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tiil"
     },
     "ko": {
-      "term": "발",
-      "needsReview": true
+      "term": "발"
     }
   },
   "body_health.hair": {
@@ -18774,8 +18584,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "buhok"
     },
     "ko": {
-      "term": "머리카락",
-      "needsReview": true
+      "term": "머리카락"
     }
   },
   "body_health.tooth": {
@@ -18807,8 +18616,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ngipon"
     },
     "ko": {
-      "term": "치아",
-      "needsReview": true
+      "term": "치아"
     }
   },
   "body_health.tongue": {
@@ -18840,8 +18648,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "dila"
     },
     "ko": {
-      "term": "혀",
-      "needsReview": true
+      "term": "혀"
     }
   },
   "body_health.neck": {
@@ -18873,8 +18680,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "liog"
     },
     "ko": {
-      "term": "목",
-      "needsReview": true
+      "term": "목"
     }
   },
   "body_health.shoulder": {
@@ -18906,8 +18712,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "abaga"
     },
     "ko": {
-      "term": "어깨",
-      "needsReview": true
+      "term": "어깨"
     }
   },
   "body_health.elbow": {
@@ -18939,8 +18744,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "siko"
     },
     "ko": {
-      "term": "팔꿈치",
-      "needsReview": true
+      "term": "팔꿈치"
     }
   },
   "body_health.wrist": {
@@ -18972,8 +18776,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pulso"
     },
     "ko": {
-      "term": "손목",
-      "needsReview": true
+      "term": "손목"
     }
   },
   "body_health.finger": {
@@ -19005,8 +18808,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tudlo"
     },
     "ko": {
-      "term": "손가락",
-      "needsReview": true
+      "term": "손가락"
     }
   },
   "body_health.knee": {
@@ -19038,8 +18840,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tuhod"
     },
     "ko": {
-      "term": "무릎",
-      "needsReview": true
+      "term": "무릎"
     }
   },
   "body_health.toe": {
@@ -19071,8 +18872,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tudlo sa tiil"
     },
     "ko": {
-      "term": "발가락",
-      "needsReview": true
+      "term": "발가락"
     }
   },
   "body_health.back": {
@@ -19104,8 +18904,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "balik"
     },
     "ko": {
-      "term": "뒤로",
-      "needsReview": true
+      "term": "등"
     }
   },
   "body_health.chest": {
@@ -19137,8 +18936,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "dughan"
     },
     "ko": {
-      "term": "가슴",
-      "needsReview": true
+      "term": "가슴"
     }
   },
   "body_health.stomach": {
@@ -19170,8 +18968,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tiyan"
     },
     "ko": {
-      "term": "위",
-      "needsReview": true
+      "term": "배"
     }
   },
   "body_health.waist": {
@@ -19203,8 +19000,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "hawak"
     },
     "ko": {
-      "term": "허리",
-      "needsReview": true
+      "term": "허리"
     }
   },
   "body_health.hip": {
@@ -19236,8 +19032,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bat-ang"
     },
     "ko": {
-      "term": "잘 알고 있기",
-      "needsReview": true
+      "term": "엉덩이"
     }
   },
   "body_health.skin": {
@@ -19269,8 +19064,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "panit"
     },
     "ko": {
-      "term": "피부",
-      "needsReview": true
+      "term": "피부"
     }
   },
   "body_health.bone": {
@@ -19302,8 +19096,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bukog"
     },
     "ko": {
-      "term": "뼈",
-      "needsReview": true
+      "term": "뼈"
     }
   },
   "body_health.muscle": {
@@ -19335,8 +19128,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kaunoran"
     },
     "ko": {
-      "term": "근육",
-      "needsReview": true
+      "term": "근육"
     }
   },
   "body_health.blood": {
@@ -19368,8 +19160,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "dugo"
     },
     "ko": {
-      "term": "피",
-      "needsReview": true
+      "term": "피"
     }
   },
   "body_health.heart": {
@@ -19401,8 +19192,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kasingkasing"
     },
     "ko": {
-      "term": "심장",
-      "needsReview": true
+      "term": "심장"
     }
   },
   "body_health.brain": {
@@ -21753,8 +21543,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kamiseta"
     },
     "ko": {
-      "term": "셔츠",
-      "needsReview": true
+      "term": "셔츠"
     }
   },
   "clothing_appearance.pants": {
@@ -21786,8 +21575,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "karsones"
     },
     "ko": {
-      "term": "바지",
-      "needsReview": true
+      "term": "바지"
     }
   },
   "clothing_appearance.dress": {
@@ -21819,8 +21607,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sinina"
     },
     "ko": {
-      "term": "드레스",
-      "needsReview": true
+      "term": "드레스"
     }
   },
   "clothing_appearance.skirt": {
@@ -21852,8 +21639,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sayal"
     },
     "ko": {
-      "term": "스커트",
-      "needsReview": true
+      "term": "스커트"
     }
   },
   "clothing_appearance.jacket": {
@@ -21885,8 +21671,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "dyaket"
     },
     "ko": {
-      "term": "재킷",
-      "needsReview": true
+      "term": "재킷"
     }
   },
   "clothing_appearance.coat": {
@@ -21918,8 +21703,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sinina"
     },
     "ko": {
-      "term": "코트",
-      "needsReview": true
+      "term": "코트"
     }
   },
   "clothing_appearance.sweater": {
@@ -21952,8 +21736,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "스웨터",
-      "needsReview": true
+      "term": "스웨터"
     }
   },
   "clothing_appearance.shoes": {
@@ -21985,8 +21768,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sapatos"
     },
     "ko": {
-      "term": "신발",
-      "needsReview": true
+      "term": "신발"
     }
   },
   "clothing_appearance.socks": {
@@ -22018,8 +21800,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "medyas"
     },
     "ko": {
-      "term": "양말",
-      "needsReview": true
+      "term": "양말"
     }
   },
   "clothing_appearance.hat": {
@@ -22051,8 +21832,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kalo"
     },
     "ko": {
-      "term": "모자",
-      "needsReview": true
+      "term": "모자"
     }
   },
   "clothing_appearance.t_shirt": {
@@ -22085,8 +21865,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "티셔츠",
-      "needsReview": true
+      "term": "티셔츠"
     }
   },
   "clothing_appearance.jeans": {
@@ -22118,8 +21897,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "maong"
     },
     "ko": {
-      "term": "청바지",
-      "needsReview": true
+      "term": "청바지"
     }
   },
   "clothing_appearance.shorts": {
@@ -22152,8 +21930,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "반바지",
-      "needsReview": true
+      "term": "반바지"
     }
   },
   "clothing_appearance.suit": {
@@ -22186,8 +21963,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "정장",
-      "needsReview": true
+      "term": "정장"
     }
   },
   "clothing_appearance.uniform": {
@@ -22219,8 +21995,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "uniporme"
     },
     "ko": {
-      "term": "유니폼",
-      "needsReview": true
+      "term": "유니폼"
     }
   },
   "clothing_appearance.hoodie": {
@@ -22253,8 +22028,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "까마귀",
-      "needsReview": true
+      "term": "후드티"
     }
   },
   "clothing_appearance.scarf": {
@@ -22286,8 +22060,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bandana"
     },
     "ko": {
-      "term": "스카프",
-      "needsReview": true
+      "term": "스카프"
     }
   },
   "clothing_appearance.gloves": {
@@ -22319,8 +22092,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "gwantis"
     },
     "ko": {
-      "term": "장갑",
-      "needsReview": true
+      "term": "장갑"
     }
   },
   "clothing_appearance.belt": {
@@ -22352,8 +22124,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bakos"
     },
     "ko": {
-      "term": "벨트",
-      "needsReview": true
+      "term": "벨트"
     }
   },
   "clothing_appearance.underwear": {
@@ -22386,8 +22157,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "속옷",
-      "needsReview": true
+      "term": "속옷"
     }
   },
   "clothing_appearance.boots": {
@@ -22419,8 +22189,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "botas"
     },
     "ko": {
-      "term": "부츠",
-      "needsReview": true
+      "term": "부츠"
     }
   },
   "clothing_appearance.sandals": {
@@ -22452,8 +22221,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mga sandal"
     },
     "ko": {
-      "term": "샌들",
-      "needsReview": true
+      "term": "샌들"
     }
   },
   "clothing_appearance.sneakers": {
@@ -22485,8 +22253,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mga sneaker"
     },
     "ko": {
-      "term": "운동화",
-      "needsReview": true
+      "term": "운동화"
     }
   },
   "clothing_appearance.slippers": {
@@ -22518,8 +22285,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tsinelas"
     },
     "ko": {
-      "term": "슬리퍼",
-      "needsReview": true
+      "term": "슬리퍼"
     }
   },
   "clothing_appearance.high_heels": {
@@ -22551,8 +22317,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "taas nga tikod"
     },
     "ko": {
-      "term": "하이힐",
-      "needsReview": true
+      "term": "하이힐"
     }
   },
   "clothing_appearance.tie": {
@@ -22584,8 +22349,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "higot"
     },
     "ko": {
-      "term": "넥타이",
-      "needsReview": true
+      "term": "넥타이"
     }
   },
   "clothing_appearance.necklace": {
@@ -22617,8 +22381,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kwintas"
     },
     "ko": {
-      "term": "목걸이",
-      "needsReview": true
+      "term": "목걸이"
     }
   },
   "clothing_appearance.bracelet": {
@@ -22650,8 +22413,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pulseras"
     },
     "ko": {
-      "term": "팔찌",
-      "needsReview": true
+      "term": "팔찌"
     }
   },
   "clothing_appearance.ring": {
@@ -22683,8 +22445,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "singsing"
     },
     "ko": {
-      "term": "반지",
-      "needsReview": true
+      "term": "반지"
     }
   },
   "clothing_appearance.watch": {
@@ -22716,8 +22477,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tan-awa"
     },
     "ko": {
-      "term": "시계",
-      "needsReview": true
+      "term": "손목시계"
     }
   },
   "clothing_appearance.raincoat": {
@@ -25080,8 +24840,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "adlaw"
     },
     "ko": {
-      "term": "태양",
-      "needsReview": true
+      "term": "해"
     }
   },
   "nature_weather.moon": {
@@ -25113,8 +24872,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bulan"
     },
     "ko": {
-      "term": "달",
-      "needsReview": true
+      "term": "달"
     }
   },
   "nature_weather.sky": {
@@ -25146,8 +24904,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "langit"
     },
     "ko": {
-      "term": "하늘",
-      "needsReview": true
+      "term": "하늘"
     }
   },
   "nature_weather.cloud": {
@@ -25179,8 +24936,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "panganod"
     },
     "ko": {
-      "term": "구름",
-      "needsReview": true
+      "term": "구름"
     }
   },
   "nature_weather.rain": {
@@ -25212,8 +24968,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ulan"
     },
     "ko": {
-      "term": "비",
-      "needsReview": true
+      "term": "비"
     }
   },
   "nature_weather.snow": {
@@ -25245,8 +25000,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "niyebe"
     },
     "ko": {
-      "term": "눈",
-      "needsReview": true
+      "term": "눈"
     }
   },
   "nature_weather.wind": {
@@ -25278,8 +25032,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "hangin"
     },
     "ko": {
-      "term": "바람",
-      "needsReview": true
+      "term": "바람"
     }
   },
   "nature_weather.weather": {
@@ -25311,8 +25064,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "panahon"
     },
     "ko": {
-      "term": "날씨",
-      "needsReview": true
+      "term": "날씨"
     }
   },
   "nature_weather.tree": {
@@ -25344,8 +25096,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kahoy"
     },
     "ko": {
-      "term": "나무",
-      "needsReview": true
+      "term": "나무"
     }
   },
   "nature_weather.flower": {
@@ -25377,8 +25128,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bulak"
     },
     "ko": {
-      "term": "꽃",
-      "needsReview": true
+      "term": "꽃"
     }
   },
   "nature_weather.grass": {
@@ -25410,8 +25160,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "balili"
     },
     "ko": {
-      "term": "잔디",
-      "needsReview": true
+      "term": "잔디"
     }
   },
   "nature_weather.river": {
@@ -25443,8 +25192,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "suba"
     },
     "ko": {
-      "term": "강",
-      "needsReview": true
+      "term": "강"
     }
   },
   "nature_weather.lake": {
@@ -25476,8 +25224,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "linaw"
     },
     "ko": {
-      "term": "호수",
-      "needsReview": true
+      "term": "호수"
     }
   },
   "nature_weather.sea": {
@@ -25509,8 +25256,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "dagat"
     },
     "ko": {
-      "term": "바다",
-      "needsReview": true
+      "term": "바다"
     }
   },
   "nature_weather.ocean": {
@@ -25542,8 +25288,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kadagatan"
     },
     "ko": {
-      "term": "바다",
-      "needsReview": true
+      "term": "대양"
     }
   },
   "nature_weather.beach": {
@@ -25575,8 +25320,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baybayon"
     },
     "ko": {
-      "term": "해변",
-      "needsReview": true
+      "term": "해변"
     }
   },
   "nature_weather.forest": {
@@ -25608,8 +25352,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kalasangan"
     },
     "ko": {
-      "term": "숲",
-      "needsReview": true
+      "term": "숲"
     }
   },
   "nature_weather.mountain": {
@@ -25641,8 +25384,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bukid"
     },
     "ko": {
-      "term": "산",
-      "needsReview": true
+      "term": "산"
     }
   },
   "nature_weather.hill": {
@@ -25674,8 +25416,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bungtod"
     },
     "ko": {
-      "term": "언덕",
-      "needsReview": true
+      "term": "언덕"
     }
   },
   "nature_weather.field": {
@@ -25707,8 +25448,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kapatagan"
     },
     "ko": {
-      "term": "필드",
-      "needsReview": true
+      "term": "들판"
     }
   },
   "nature_weather.island": {
@@ -25740,8 +25480,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "isla"
     },
     "ko": {
-      "term": "섬",
-      "needsReview": true
+      "term": "섬"
     }
   },
   "nature_weather.desert": {
@@ -25773,8 +25512,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "desyerto"
     },
     "ko": {
-      "term": "사막",
-      "needsReview": true
+      "term": "사막"
     }
   },
   "nature_weather.valley": {
@@ -25806,8 +25544,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "walog"
     },
     "ko": {
-      "term": "계곡",
-      "needsReview": true
+      "term": "계곡"
     }
   },
   "nature_weather.cave": {
@@ -25839,8 +25576,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "langob"
     },
     "ko": {
-      "term": "동굴",
-      "needsReview": true
+      "term": "동굴"
     }
   },
   "nature_weather.waterfall": {
@@ -25872,8 +25608,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "busay"
     },
     "ko": {
-      "term": "폭포",
-      "needsReview": true
+      "term": "폭포"
     }
   },
   "nature_weather.stream": {
@@ -25905,8 +25640,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sapa"
     },
     "ko": {
-      "term": "스트림",
-      "needsReview": true
+      "term": "시내"
     }
   },
   "nature_weather.pond": {
@@ -25938,8 +25672,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lim-aw"
     },
     "ko": {
-      "term": "연못",
-      "needsReview": true
+      "term": "연못"
     }
   },
   "nature_weather.coast": {
@@ -25971,8 +25704,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baybayon"
     },
     "ko": {
-      "term": "해안",
-      "needsReview": true
+      "term": "해안"
     }
   },
   "nature_weather.shore": {
@@ -26004,8 +25736,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baybayon"
     },
     "ko": {
-      "term": "해안",
-      "needsReview": true
+      "term": "물가"
     }
   },
   "nature_weather.cliff": {
@@ -26037,8 +25768,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pangpang"
     },
     "ko": {
-      "term": "절벽",
-      "needsReview": true
+      "term": "절벽"
     }
   },
   "nature_weather.storm": {
@@ -28388,8 +28118,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "eskwelahan"
     },
     "ko": {
-      "term": "학교",
-      "needsReview": true
+      "term": "학교"
     }
   },
   "places_buildings.hospital": {
@@ -28421,8 +28150,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ospital"
     },
     "ko": {
-      "term": "병원",
-      "needsReview": true
+      "term": "병원"
     }
   },
   "places_buildings.park": {
@@ -28454,8 +28182,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "parke"
     },
     "ko": {
-      "term": "공원",
-      "needsReview": true
+      "term": "공원"
     }
   },
   "places_buildings.store": {
@@ -28487,8 +28214,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tindahan"
     },
     "ko": {
-      "term": "저장",
-      "needsReview": true
+      "term": "상점"
     }
   },
   "places_buildings.restaurant": {
@@ -28520,8 +28246,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "restawran"
     },
     "ko": {
-      "term": "레스토랑",
-      "needsReview": true
+      "term": "레스토랑"
     }
   },
   "places_buildings.cafe": {
@@ -28554,8 +28279,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "카페",
-      "needsReview": true
+      "term": "카페"
     }
   },
   "places_buildings.hotel": {
@@ -28588,8 +28312,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "호텔",
-      "needsReview": true
+      "term": "호텔"
     }
   },
   "places_buildings.bank": {
@@ -28621,8 +28344,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bangko"
     },
     "ko": {
-      "term": "은행",
-      "needsReview": true
+      "term": "은행"
     }
   },
   "places_buildings.library": {
@@ -28654,8 +28376,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "librarya"
     },
     "ko": {
-      "term": "도서관",
-      "needsReview": true
+      "term": "도서관"
     }
   },
   "places_buildings.market": {
@@ -28687,8 +28408,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "merkado"
     },
     "ko": {
-      "term": "시장",
-      "needsReview": true
+      "term": "시장"
     }
   },
   "places_buildings.post_office": {
@@ -28721,8 +28441,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "우체국",
-      "needsReview": true
+      "term": "우체국"
     }
   },
   "places_buildings.police_station": {
@@ -28754,8 +28473,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "estasyon sa pulis"
     },
     "ko": {
-      "term": "경찰서",
-      "needsReview": true
+      "term": "경찰서"
     }
   },
   "places_buildings.fire_station": {
@@ -28787,8 +28505,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "estasyon sa bombero"
     },
     "ko": {
-      "term": "소방서",
-      "needsReview": true
+      "term": "소방서"
     }
   },
   "places_buildings.pharmacy": {
@@ -28820,8 +28537,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "botika"
     },
     "ko": {
-      "term": "약국",
-      "needsReview": true
+      "term": "약국"
     }
   },
   "places_buildings.supermarket": {
@@ -28854,8 +28570,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "슈퍼마켓",
-      "needsReview": true
+      "term": "슈퍼마켓"
     }
   },
   "places_buildings.mall": {
@@ -28888,8 +28603,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "쇼핑몰",
-      "needsReview": true
+      "term": "쇼핑몰"
     }
   },
   "places_buildings.cinema": {
@@ -28921,8 +28635,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sinehan"
     },
     "ko": {
-      "term": "영화관",
-      "needsReview": true
+      "term": "영화관"
     }
   },
   "places_buildings.theater": {
@@ -28954,8 +28667,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "teatro"
     },
     "ko": {
-      "term": "극장",
-      "needsReview": true
+      "term": "극장"
     }
   },
   "places_buildings.museum": {
@@ -28987,8 +28699,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "museyo"
     },
     "ko": {
-      "term": "박물관",
-      "needsReview": true
+      "term": "박물관"
     }
   },
   "places_buildings.church": {
@@ -29020,8 +28731,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "simbahan"
     },
     "ko": {
-      "term": "교회",
-      "needsReview": true
+      "term": "교회"
     }
   },
   "places_buildings.airport": {
@@ -29054,8 +28764,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "공항",
-      "needsReview": true
+      "term": "공항"
     }
   },
   "places_buildings.train_station": {
@@ -29087,8 +28796,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "estasyon sa tren"
     },
     "ko": {
-      "term": "기차역",
-      "needsReview": true
+      "term": "기차역"
     }
   },
   "places_buildings.bus_station": {
@@ -29120,8 +28828,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "estasyon sa bus"
     },
     "ko": {
-      "term": "버스 정류장",
-      "needsReview": true
+      "term": "버스 터미널"
     }
   },
   "places_buildings.subway_station": {
@@ -29153,8 +28860,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "estasyon sa subway"
     },
     "ko": {
-      "term": "지하철역",
-      "needsReview": true
+      "term": "지하철역"
     }
   },
   "places_buildings.port": {
@@ -29186,8 +28892,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pantalan"
     },
     "ko": {
-      "term": "항구",
-      "needsReview": true
+      "term": "항구"
     }
   },
   "places_buildings.harbor": {
@@ -29219,8 +28924,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "dunggoanan"
     },
     "ko": {
-      "term": "항구",
-      "needsReview": true
+      "term": "항만"
     }
   },
   "places_buildings.parking_lot": {
@@ -29252,8 +28956,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "parkinganan"
     },
     "ko": {
-      "term": "주차장",
-      "needsReview": true
+      "term": "주차장"
     }
   },
   "places_buildings.gas_station": {
@@ -29285,8 +28988,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "gasolinahan"
     },
     "ko": {
-      "term": "주유소",
-      "needsReview": true
+      "term": "주유소"
     }
   },
   "places_buildings.bridge": {
@@ -29318,8 +29020,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tulay"
     },
     "ko": {
-      "term": "다리",
-      "needsReview": true
+      "term": "다리"
     }
   },
   "places_buildings.tunnel": {
@@ -29351,8 +29052,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tunel"
     },
     "ko": {
-      "term": "터널",
-      "needsReview": true
+      "term": "터널"
     }
   },
   "places_buildings.office": {
@@ -31719,8 +31419,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sakyanan"
     },
     "ko": {
-      "term": "자동차",
-      "needsReview": true
+      "term": "자동차"
     }
   },
   "transport_travel.bus": {
@@ -31753,8 +31452,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "버스",
-      "needsReview": true
+      "term": "버스"
     }
   },
   "transport_travel.train": {
@@ -31786,8 +31484,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tren"
     },
     "ko": {
-      "term": "기차",
-      "needsReview": true
+      "term": "기차"
     }
   },
   "transport_travel.bicycle": {
@@ -31819,8 +31516,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bisikleta"
     },
     "ko": {
-      "term": "자전거",
-      "needsReview": true
+      "term": "자전거"
     }
   },
   "transport_travel.motorcycle": {
@@ -31852,8 +31548,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "motorsiklo"
     },
     "ko": {
-      "term": "오토바이",
-      "needsReview": true
+      "term": "오토바이"
     }
   },
   "transport_travel.plane": {
@@ -31885,8 +31580,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "eroplano"
     },
     "ko": {
-      "term": "비행기",
-      "needsReview": true
+      "term": "비행기"
     }
   },
   "transport_travel.boat": {
@@ -31918,8 +31612,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sakayan"
     },
     "ko": {
-      "term": "보트",
-      "needsReview": true
+      "term": "보트"
     }
   },
   "transport_travel.ship": {
@@ -31951,8 +31644,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "barko"
     },
     "ko": {
-      "term": "배",
-      "needsReview": true
+      "term": "배"
     }
   },
   "transport_travel.taxi": {
@@ -31985,8 +31677,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "택시",
-      "needsReview": true
+      "term": "택시"
     }
   },
   "transport_travel.truck": {
@@ -32018,8 +31709,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "trak"
     },
     "ko": {
-      "term": "트럭",
-      "needsReview": true
+      "term": "트럭"
     }
   },
   "transport_travel.van": {
@@ -32052,8 +31742,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "밴",
-      "needsReview": true
+      "term": "밴"
     }
   },
   "transport_travel.scooter": {
@@ -32086,8 +31775,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "스쿠터",
-      "needsReview": true
+      "term": "스쿠터"
     }
   },
   "transport_travel.tram": {
@@ -32120,8 +31808,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "트램",
-      "needsReview": true
+      "term": "트램"
     }
   },
   "transport_travel.subway": {
@@ -32154,8 +31841,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "지하철",
-      "needsReview": true
+      "term": "지하철"
     }
   },
   "transport_travel.ferry": {
@@ -32187,8 +31873,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lantsa"
     },
     "ko": {
-      "term": "페리",
-      "needsReview": true
+      "term": "페리"
     }
   },
   "transport_travel.minibus": {
@@ -32221,8 +31906,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "미니버스",
-      "needsReview": true
+      "term": "미니버스"
     }
   },
   "transport_travel.pickup_truck": {
@@ -32254,8 +31938,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pickup nga trak"
     },
     "ko": {
-      "term": "픽업트럭",
-      "needsReview": true
+      "term": "픽업트럭"
     }
   },
   "transport_travel.ambulance": {
@@ -32287,8 +31970,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ambulansya"
     },
     "ko": {
-      "term": "구급차",
-      "needsReview": true
+      "term": "구급차"
     }
   },
   "transport_travel.fire_truck": {
@@ -32320,8 +32002,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "trak sa bombero"
     },
     "ko": {
-      "term": "소방차",
-      "needsReview": true
+      "term": "소방차"
     }
   },
   "transport_travel.police_car": {
@@ -32353,8 +32034,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sakyanan sa pulis"
     },
     "ko": {
-      "term": "경찰차",
-      "needsReview": true
+      "term": "경찰차"
     }
   },
   "transport_travel.ticket": {
@@ -32386,8 +32066,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tiket"
     },
     "ko": {
-      "term": "티켓",
-      "needsReview": true
+      "term": "티켓"
     }
   },
   "transport_travel.passport": {
@@ -32419,8 +32098,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pasaporte"
     },
     "ko": {
-      "term": "여권",
-      "needsReview": true
+      "term": "여권"
     }
   },
   "transport_travel.luggage": {
@@ -32452,8 +32130,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bagahe"
     },
     "ko": {
-      "term": "수하물",
-      "needsReview": true
+      "term": "수하물"
     }
   },
   "transport_travel.suitcase": {
@@ -32485,8 +32162,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "maleta"
     },
     "ko": {
-      "term": "여행 가방",
-      "needsReview": true
+      "term": "여행 가방"
     }
   },
   "transport_travel.backpack": {
@@ -32519,8 +32195,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "배낭",
-      "needsReview": true
+      "term": "배낭"
     }
   },
   "transport_travel.map": {
@@ -32552,8 +32227,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mapa"
     },
     "ko": {
-      "term": "지도",
-      "needsReview": true
+      "term": "지도"
     }
   },
   "transport_travel.route": {
@@ -32585,8 +32259,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "rota"
     },
     "ko": {
-      "term": "경로",
-      "needsReview": true
+      "term": "경로"
     }
   },
   "transport_travel.trip": {
@@ -32618,8 +32291,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "biyahe"
     },
     "ko": {
-      "term": "여행",
-      "needsReview": true
+      "term": "여행"
     }
   },
   "transport_travel.journey": {
@@ -32651,8 +32323,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "panaw"
     },
     "ko": {
-      "term": "여행",
-      "needsReview": true
+      "term": "여정"
     }
   },
   "transport_travel.destination": {
@@ -32684,8 +32355,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "destinasyon"
     },
     "ko": {
-      "term": "목적지",
-      "needsReview": true
+      "term": "목적지"
     }
   },
   "transport_travel.road": {
@@ -35049,8 +34719,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tawo"
     },
     "ko": {
-      "term": "사람",
-      "needsReview": true
+      "term": "사람"
     }
   },
   "jobs_people.man": {
@@ -35082,8 +34751,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tawo"
     },
     "ko": {
-      "term": "남자",
-      "needsReview": true
+      "term": "남자"
     }
   },
   "jobs_people.woman": {
@@ -35115,8 +34783,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "babaye"
     },
     "ko": {
-      "term": "여자",
-      "needsReview": true
+      "term": "여자"
     }
   },
   "jobs_people.child": {
@@ -35148,8 +34815,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bata"
     },
     "ko": {
-      "term": "아이",
-      "needsReview": true
+      "term": "아이"
     }
   },
   "jobs_people.baby": {
@@ -35181,8 +34847,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bata"
     },
     "ko": {
-      "term": "아기",
-      "needsReview": true
+      "term": "아기"
     }
   },
   "jobs_people.adult": {
@@ -35214,8 +34879,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "hamtong"
     },
     "ko": {
-      "term": "성인",
-      "needsReview": true
+      "term": "성인"
     }
   },
   "jobs_people.teenager": {
@@ -35247,8 +34911,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tin-edyer"
     },
     "ko": {
-      "term": "십대",
-      "needsReview": true
+      "term": "십대"
     }
   },
   "jobs_people.stranger": {
@@ -35280,8 +34943,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "estranghero"
     },
     "ko": {
-      "term": "낯선 사람",
-      "needsReview": true
+      "term": "낯선 사람"
     }
   },
   "jobs_people.neighbor": {
@@ -35313,8 +34975,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "silingan"
     },
     "ko": {
-      "term": "이웃",
-      "needsReview": true
+      "term": "이웃"
     }
   },
   "jobs_people.customer": {
@@ -35346,8 +35007,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kustomer"
     },
     "ko": {
-      "term": "고객",
-      "needsReview": true
+      "term": "고객"
     }
   },
   "jobs_people.worker": {
@@ -35379,8 +35039,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "trabahante"
     },
     "ko": {
-      "term": "노동자",
-      "needsReview": true
+      "term": "근로자"
     }
   },
   "jobs_people.employee": {
@@ -35412,8 +35071,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "empleyado"
     },
     "ko": {
-      "term": "직원",
-      "needsReview": true
+      "term": "직원"
     }
   },
   "jobs_people.employer": {
@@ -35445,8 +35103,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "amo"
     },
     "ko": {
-      "term": "고용주",
-      "needsReview": true
+      "term": "고용주"
     }
   },
   "jobs_people.boss": {
@@ -35479,8 +35136,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "보스",
-      "needsReview": true
+      "term": "상사"
     }
   },
   "jobs_people.manager": {
@@ -35512,8 +35168,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "manedyer"
     },
     "ko": {
-      "term": "매니저",
-      "needsReview": true
+      "term": "매니저"
     }
   },
   "jobs_people.assistant": {
@@ -35545,8 +35200,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "katabang"
     },
     "ko": {
-      "term": "조수",
-      "needsReview": true
+      "term": "보조원"
     }
   },
   "jobs_people.secretary": {
@@ -35578,8 +35232,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sekretaryo"
     },
     "ko": {
-      "term": "비서",
-      "needsReview": true
+      "term": "비서"
     }
   },
   "jobs_people.receptionist": {
@@ -35612,8 +35265,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "접수원",
-      "needsReview": true
+      "term": "접수원"
     }
   },
   "jobs_people.colleague": {
@@ -35645,8 +35297,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kauban"
     },
     "ko": {
-      "term": "동료",
-      "needsReview": true
+      "term": "동료"
     }
   },
   "jobs_people.volunteer": {
@@ -35678,8 +35329,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "boluntaryo"
     },
     "ko": {
-      "term": "자원 봉사",
-      "needsReview": true
+      "term": "자원봉사자"
     }
   },
   "jobs_people.teacher": {
@@ -35711,8 +35361,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "magtutudlo"
     },
     "ko": {
-      "term": "선생님",
-      "needsReview": true
+      "term": "선생님"
     }
   },
   "jobs_people.professor": {
@@ -35744,8 +35393,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "propesor"
     },
     "ko": {
-      "term": "교수",
-      "needsReview": true
+      "term": "교수"
     }
   },
   "jobs_people.tutor": {
@@ -35777,8 +35425,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "magtutudlo"
     },
     "ko": {
-      "term": "가정교사",
-      "needsReview": true
+      "term": "가정교사"
     }
   },
   "jobs_people.principal": {
@@ -35810,8 +35457,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "prinsipal"
     },
     "ko": {
-      "term": "교장",
-      "needsReview": true
+      "term": "교장"
     }
   },
   "jobs_people.librarian": {
@@ -35844,8 +35490,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "사서",
-      "needsReview": true
+      "term": "사서"
     }
   },
   "jobs_people.researcher": {
@@ -35877,8 +35522,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tigdukiduki"
     },
     "ko": {
-      "term": "연구원",
-      "needsReview": true
+      "term": "연구원"
     }
   },
   "jobs_people.scientist": {
@@ -35910,8 +35554,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "siyentista"
     },
     "ko": {
-      "term": "과학자",
-      "needsReview": true
+      "term": "과학자"
     }
   },
   "jobs_people.coach": {
@@ -35944,8 +35587,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "코치",
-      "needsReview": true
+      "term": "코치"
     }
   },
   "jobs_people.instructor": {
@@ -35977,8 +35619,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "magtutudlo"
     },
     "ko": {
-      "term": "강사",
-      "needsReview": true
+      "term": "강사"
     }
   },
   "jobs_people.trainee": {
@@ -36011,8 +35652,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "연습생",
-      "needsReview": true
+      "term": "훈련생"
     }
   },
   "jobs_people.doctor": {
@@ -38373,8 +38013,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "malipayon"
     },
     "ko": {
-      "term": "행복하다",
-      "needsReview": true
+      "term": "행복하다"
     }
   },
   "feelings_states.sad": {
@@ -38406,8 +38045,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "makaguol"
     },
     "ko": {
-      "term": "슬프다",
-      "needsReview": true
+      "term": "슬프다"
     }
   },
   "feelings_states.angry": {
@@ -38439,8 +38077,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "nasuko"
     },
     "ko": {
-      "term": "화나다",
-      "needsReview": true
+      "term": "화나다"
     }
   },
   "feelings_states.afraid": {
@@ -38472,8 +38109,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kahadlok"
     },
     "ko": {
-      "term": "두렵다",
-      "needsReview": true
+      "term": "두렵다"
     }
   },
   "feelings_states.scared": {
@@ -38505,8 +38141,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "nahadlok"
     },
     "ko": {
-      "term": "무섭다",
-      "needsReview": true
+      "term": "무섭다"
     }
   },
   "feelings_states.calm": {
@@ -38538,8 +38173,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kalmado"
     },
     "ko": {
-      "term": "차분하다",
-      "needsReview": true
+      "term": "차분하다"
     }
   },
   "feelings_states.excited": {
@@ -38571,8 +38205,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "naghinam-hinam"
     },
     "ko": {
-      "term": "신나다",
-      "needsReview": true
+      "term": "신나다"
     }
   },
   "feelings_states.nervous": {
@@ -38604,8 +38237,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "gikulbaan"
     },
     "ko": {
-      "term": "긴장하다",
-      "needsReview": true
+      "term": "긴장하다"
     }
   },
   "feelings_states.surprised": {
@@ -38637,8 +38269,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "natingala"
     },
     "ko": {
-      "term": "놀라다",
-      "needsReview": true
+      "term": "놀라다"
     }
   },
   "feelings_states.bored": {
@@ -38670,8 +38301,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "laay"
     },
     "ko": {
-      "term": "지루하다",
-      "needsReview": true
+      "term": "지루하다"
     }
   },
   "feelings_states.lonely": {
@@ -38703,8 +38333,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kamingaw"
     },
     "ko": {
-      "term": "외로운",
-      "needsReview": true
+      "term": "외롭다"
     }
   },
   "feelings_states.proud": {
@@ -38736,8 +38365,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mapahitas-on"
     },
     "ko": {
-      "term": "자랑스럽다",
-      "needsReview": true
+      "term": "자랑스럽다"
     }
   },
   "feelings_states.shy": {
@@ -38769,8 +38397,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "maulawon"
     },
     "ko": {
-      "term": "수줍음",
-      "needsReview": true
+      "term": "수줍다"
     }
   },
   "feelings_states.embarrassed": {
@@ -38802,8 +38429,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "naulaw"
     },
     "ko": {
-      "term": "당황하다",
-      "needsReview": true
+      "term": "창피하다"
     }
   },
   "feelings_states.jealous": {
@@ -38835,8 +38461,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "selos"
     },
     "ko": {
-      "term": "질투하다",
-      "needsReview": true
+      "term": "질투하다"
     }
   },
   "feelings_states.grateful": {
@@ -38868,8 +38493,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mapasalamaton"
     },
     "ko": {
-      "term": "감사하다",
-      "needsReview": true
+      "term": "감사하다"
     }
   },
   "feelings_states.hopeful": {
@@ -38901,8 +38525,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "malaumon"
     },
     "ko": {
-      "term": "희망적인",
-      "needsReview": true
+      "term": "희망적이다"
     }
   },
   "feelings_states.disappointed": {
@@ -38934,8 +38557,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "nahigawad"
     },
     "ko": {
-      "term": "실망하다",
-      "needsReview": true
+      "term": "실망하다"
     }
   },
   "feelings_states.confused": {
@@ -38967,8 +38589,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "naglibog"
     },
     "ko": {
-      "term": "혼란스러운",
-      "needsReview": true
+      "term": "혼란스럽다"
     }
   },
   "feelings_states.worried": {
@@ -39000,8 +38621,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "nabalaka"
     },
     "ko": {
-      "term": "걱정하다",
-      "needsReview": true
+      "term": "걱정되다"
     }
   },
   "feelings_states.cheerful": {
@@ -39033,8 +38653,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "malipayon"
     },
     "ko": {
-      "term": "쾌활한",
-      "needsReview": true
+      "term": "쾌활하다"
     }
   },
   "feelings_states.relaxed": {
@@ -39066,8 +38685,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "nagpahayahay"
     },
     "ko": {
-      "term": "편안한",
-      "needsReview": true
+      "term": "느긋하다"
     }
   },
   "feelings_states.peaceful": {
@@ -39099,8 +38717,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "malinawon"
     },
     "ko": {
-      "term": "평화로운",
-      "needsReview": true
+      "term": "평화롭다"
     }
   },
   "feelings_states.confident": {
@@ -39132,8 +38749,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "masaligon"
     },
     "ko": {
-      "term": "자신감",
-      "needsReview": true
+      "term": "자신감 있다"
     }
   },
   "feelings_states.comfortable": {
@@ -39165,8 +38781,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "komportable"
     },
     "ko": {
-      "term": "편안하다",
-      "needsReview": true
+      "term": "편안하다"
     }
   },
   "feelings_states.curious": {
@@ -39198,8 +38813,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kahibaw"
     },
     "ko": {
-      "term": "호기심",
-      "needsReview": true
+      "term": "호기심이 많다"
     }
   },
   "feelings_states.interested": {
@@ -39231,8 +38845,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "interesado"
     },
     "ko": {
-      "term": "관심이 있다",
-      "needsReview": true
+      "term": "관심이 있다"
     }
   },
   "feelings_states.amused": {
@@ -39264,8 +38877,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "nalingaw"
     },
     "ko": {
-      "term": "재미있다",
-      "needsReview": true
+      "term": "재미있다"
     }
   },
   "feelings_states.satisfied": {
@@ -39297,8 +38909,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "natagbaw"
     },
     "ko": {
-      "term": "만족하다",
-      "needsReview": true
+      "term": "만족하다"
     }
   },
   "feelings_states.relieved": {
@@ -39330,8 +38941,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "nahuwasan"
     },
     "ko": {
-      "term": "안심",
-      "needsReview": true
+      "term": "안심하다"
     }
   },
   "feelings_states.upset": {
@@ -41676,8 +41286,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "estudyante"
     },
     "ko": {
-      "term": "학생",
-      "needsReview": true
+      "term": "학생"
     }
   },
   "education_learning.pupil": {
@@ -41709,8 +41318,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "estudyante"
     },
     "ko": {
-      "term": "학생",
-      "needsReview": true
+      "term": "학생"
     }
   },
   "education_learning.learner": {
@@ -41742,8 +41350,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tigkat-on"
     },
     "ko": {
-      "term": "학습자",
-      "needsReview": true
+      "term": "학습자"
     }
   },
   "education_learning.lesson": {
@@ -41775,8 +41382,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "leksyon"
     },
     "ko": {
-      "term": "수업",
-      "needsReview": true
+      "term": "수업"
     }
   },
   "education_learning.class": {
@@ -41808,8 +41414,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "klase"
     },
     "ko": {
-      "term": "수업",
-      "needsReview": true
+      "term": "수업"
     }
   },
   "education_learning.homework": {
@@ -41841,8 +41446,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "buluhaton sa balay"
     },
     "ko": {
-      "term": "숙제",
-      "needsReview": true
+      "term": "숙제"
     }
   },
   "education_learning.question": {
@@ -41874,8 +41478,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pangutana"
     },
     "ko": {
-      "term": "질문",
-      "needsReview": true
+      "term": "질문"
     }
   },
   "education_learning.answer": {
@@ -41907,8 +41510,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tubag"
     },
     "ko": {
-      "term": "대답하다",
-      "needsReview": true
+      "term": "답"
     }
   },
   "education_learning.word": {
@@ -41940,8 +41542,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pulong"
     },
     "ko": {
-      "term": "단어",
-      "needsReview": true
+      "term": "단어"
     }
   },
   "education_learning.sentence": {
@@ -41973,8 +41574,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sentensiya"
     },
     "ko": {
-      "term": "문장",
-      "needsReview": true
+      "term": "문장"
     }
   },
   "education_learning.textbook": {
@@ -42006,8 +41606,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "libro sa libro"
     },
     "ko": {
-      "term": "교과서",
-      "needsReview": true
+      "term": "교과서"
     }
   },
   "education_learning.workbook": {
@@ -42040,8 +41639,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "통합 문서",
-      "needsReview": true
+      "term": "워크북"
     }
   },
   "education_learning.worksheet": {
@@ -42074,8 +41672,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "워크시트",
-      "needsReview": true
+      "term": "워크시트"
     }
   },
   "education_learning.flashcard": {
@@ -42108,8 +41705,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "플래시카드",
-      "needsReview": true
+      "term": "플래시카드"
     }
   },
   "education_learning.pencil_case": {
@@ -42141,8 +41737,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "lapis nga kahon"
     },
     "ko": {
-      "term": "필통",
-      "needsReview": true
+      "term": "필통"
     }
   },
   "education_learning.highlighter": {
@@ -42175,8 +41770,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "형광펜",
-      "needsReview": true
+      "term": "형광펜"
     }
   },
   "education_learning.marker": {
@@ -42208,8 +41802,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "timaan"
     },
     "ko": {
-      "term": "마커",
-      "needsReview": true
+      "term": "마커"
     }
   },
   "education_learning.glue_stick": {
@@ -42242,8 +41835,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "접착제 스틱",
-      "needsReview": true
+      "term": "딱풀"
     }
   },
   "education_learning.calculator": {
@@ -42276,8 +41868,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "계산기",
-      "needsReview": true
+      "term": "계산기"
     }
   },
   "education_learning.whiteboard": {
@@ -42310,8 +41901,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "화이트보드",
-      "needsReview": true
+      "term": "화이트보드"
     }
   },
   "education_learning.subject": {
@@ -42343,8 +41933,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "hilisgutan"
     },
     "ko": {
-      "term": "주제",
-      "needsReview": true
+      "term": "과목"
     }
   },
   "education_learning.course": {
@@ -42376,8 +41965,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kurso"
     },
     "ko": {
-      "term": "코스",
-      "needsReview": true
+      "term": "강좌"
     }
   },
   "education_learning.school_day": {
@@ -42409,8 +41997,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "adlaw sa eskwelahan"
     },
     "ko": {
-      "term": "수업일",
-      "needsReview": true
+      "term": "수업일"
     }
   },
   "education_learning.school_year": {
@@ -42443,8 +42030,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "학년",
-      "needsReview": true
+      "term": "학년"
     }
   },
   "education_learning.term": {
@@ -42476,8 +42062,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "termino"
     },
     "ko": {
-      "term": "용어",
-      "needsReview": true
+      "term": "학기 기간"
     }
   },
   "education_learning.semester": {
@@ -42510,8 +42095,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "학기",
-      "needsReview": true
+      "term": "학기"
     }
   },
   "education_learning.attendance": {
@@ -42543,8 +42127,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagtambong"
     },
     "ko": {
-      "term": "출석",
-      "needsReview": true
+      "term": "출석"
     }
   },
   "education_learning.recess": {
@@ -42577,8 +42160,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "쉬는 시간",
-      "needsReview": true
+      "term": "쉬는 시간"
     }
   },
   "education_learning.break_time": {
@@ -42610,8 +42192,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "oras sa pahulay"
     },
     "ko": {
-      "term": "휴식 시간",
-      "needsReview": true
+      "term": "휴식 시간"
     }
   },
   "education_learning.classmate": {
@@ -42644,8 +42225,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "동급생",
-      "needsReview": true
+      "term": "동급생"
     }
   },
   "education_learning.learn": {
@@ -42677,8 +42257,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagkat-on"
     },
     "ko": {
-      "term": "배우다",
-      "needsReview": true
+      "term": "배우다"
     }
   },
   "education_learning.study": {
@@ -42710,8 +42289,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagtuon"
     },
     "ko": {
-      "term": "공부하다",
-      "needsReview": true
+      "term": "공부하다"
     }
   },
   "education_learning.read": {
@@ -42743,8 +42321,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "basaha"
     },
     "ko": {
-      "term": "읽다",
-      "needsReview": true
+      "term": "읽다"
     }
   },
   "education_learning.write": {
@@ -42776,8 +42353,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagsulat"
     },
     "ko": {
-      "term": "쓰다",
-      "needsReview": true
+      "term": "쓰다"
     }
   },
   "education_learning.listen": {
@@ -42809,8 +42385,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "paminaw"
     },
     "ko": {
-      "term": "듣다",
-      "needsReview": true
+      "term": "듣다"
     }
   },
   "education_learning.repeat": {
@@ -42842,8 +42417,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "subli"
     },
     "ko": {
-      "term": "반복하다",
-      "needsReview": true
+      "term": "반복하다"
     }
   },
   "education_learning.practice": {
@@ -42875,8 +42449,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "praktis"
     },
     "ko": {
-      "term": "연습하다",
-      "needsReview": true
+      "term": "연습하다"
     }
   },
   "education_learning.memorize": {
@@ -42908,8 +42481,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagsag-ulo"
     },
     "ko": {
-      "term": "암기하다",
-      "needsReview": true
+      "term": "암기하다"
     }
   },
   "education_learning.understand": {
@@ -42941,8 +42513,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "masabtan"
     },
     "ko": {
-      "term": "이해하다",
-      "needsReview": true
+      "term": "이해하다"
     }
   },
   "education_learning.explain": {
@@ -42974,8 +42545,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ipasabot"
     },
     "ko": {
-      "term": "설명하다",
-      "needsReview": true
+      "term": "설명하다"
     }
   },
   "education_learning.alphabet": {
@@ -45003,8 +44573,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "축구",
-      "needsReview": true
+      "term": "축구"
     }
   },
   "sports_hobbies.basketball": {
@@ -45037,8 +44606,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "농구",
-      "needsReview": true
+      "term": "농구"
     }
   },
   "sports_hobbies.tennis": {
@@ -45071,8 +44639,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "테니스",
-      "needsReview": true
+      "term": "테니스"
     }
   },
   "sports_hobbies.swimming": {
@@ -45104,8 +44671,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "langoy"
     },
     "ko": {
-      "term": "수영",
-      "needsReview": true
+      "term": "수영"
     }
   },
   "sports_hobbies.running": {
@@ -45137,8 +44703,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "nagdagan"
     },
     "ko": {
-      "term": "달리기",
-      "needsReview": true
+      "term": "달리기"
     }
   },
   "sports_hobbies.cycling": {
@@ -45170,8 +44735,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagbisikleta"
     },
     "ko": {
-      "term": "사이클링",
-      "needsReview": true
+      "term": "사이클링"
     }
   },
   "sports_hobbies.baseball": {
@@ -45204,8 +44768,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "야구",
-      "needsReview": true
+      "term": "야구"
     }
   },
   "sports_hobbies.volleyball": {
@@ -45238,8 +44801,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "배구",
-      "needsReview": true
+      "term": "배구"
     }
   },
   "sports_hobbies.golf": {
@@ -45272,8 +44834,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "골프",
-      "needsReview": true
+      "term": "골프"
     }
   },
   "sports_hobbies.boxing": {
@@ -45305,8 +44866,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "boksing"
     },
     "ko": {
-      "term": "권투",
-      "needsReview": true
+      "term": "권투"
     }
   },
   "sports_hobbies.walking": {
@@ -45338,8 +44898,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "paglakaw"
     },
     "ko": {
-      "term": "걷기",
-      "needsReview": true
+      "term": "걷기"
     }
   },
   "sports_hobbies.hiking": {
@@ -45371,8 +44930,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagbaktas"
     },
     "ko": {
-      "term": "하이킹",
-      "needsReview": true
+      "term": "하이킹"
     }
   },
   "sports_hobbies.jogging": {
@@ -45404,8 +44962,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pag-jogging"
     },
     "ko": {
-      "term": "조깅",
-      "needsReview": true
+      "term": "조깅"
     }
   },
   "sports_hobbies.dancing": {
@@ -45437,8 +44994,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagsayaw"
     },
     "ko": {
-      "term": "댄스",
-      "needsReview": true
+      "term": "댄스"
     }
   },
   "sports_hobbies.yoga": {
@@ -45471,8 +45027,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "요가",
-      "needsReview": true
+      "term": "요가"
     }
   },
   "sports_hobbies.pilates": {
@@ -45505,8 +45060,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "필라테스",
-      "needsReview": true
+      "term": "필라테스"
     }
   },
   "sports_hobbies.gymnastics": {
@@ -45539,8 +45093,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "체조",
-      "needsReview": true
+      "term": "체조"
     }
   },
   "sports_hobbies.skating": {
@@ -45573,8 +45126,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "스케이팅",
-      "needsReview": true
+      "term": "스케이팅"
     }
   },
   "sports_hobbies.skiing": {
@@ -45606,8 +45158,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pag-ski"
     },
     "ko": {
-      "term": "스키",
-      "needsReview": true
+      "term": "스키"
     }
   },
   "sports_hobbies.snowboarding": {
@@ -45640,8 +45191,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "스노보드",
-      "needsReview": true
+      "term": "스노보드"
     }
   },
   "sports_hobbies.rugby": {
@@ -45674,8 +45224,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "럭비",
-      "needsReview": true
+      "term": "럭비"
     }
   },
   "sports_hobbies.cricket": {
@@ -45707,8 +45256,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kuliglig"
     },
     "ko": {
-      "term": "크리켓",
-      "needsReview": true
+      "term": "크리켓"
     }
   },
   "sports_hobbies.hockey": {
@@ -45741,8 +45289,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "하키",
-      "needsReview": true
+      "term": "하키"
     }
   },
   "sports_hobbies.american_football": {
@@ -45775,8 +45322,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "미식축구",
-      "needsReview": true
+      "term": "미식축구"
     }
   },
   "sports_hobbies.badminton": {
@@ -45809,8 +45355,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "배드민턴",
-      "needsReview": true
+      "term": "배드민턴"
     }
   },
   "sports_hobbies.table_tennis": {
@@ -45843,8 +45388,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "탁구",
-      "needsReview": true
+      "term": "탁구"
     }
   },
   "sports_hobbies.handball": {
@@ -45877,8 +45421,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "핸드볼",
-      "needsReview": true
+      "term": "핸드볼"
     }
   },
   "sports_hobbies.dodgeball": {
@@ -45911,8 +45454,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "피구",
-      "needsReview": true
+      "term": "피구"
     }
   },
   "sports_hobbies.lacrosse": {
@@ -45945,8 +45487,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "라크로스",
-      "needsReview": true
+      "term": "라크로스"
     }
   },
   "sports_hobbies.water_polo": {
@@ -45978,8 +45519,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "polo sa tubig"
     },
     "ko": {
-      "term": "수구",
-      "needsReview": true
+      "term": "수구"
     }
   },
   "sports_hobbies.wrestling": {
@@ -48351,8 +47891,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "musika"
     },
     "ko": {
-      "term": "음악",
-      "needsReview": true
+      "term": "음악"
     }
   },
   "music_instruments.song": {
@@ -48384,8 +47923,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kanta"
     },
     "ko": {
-      "term": "노래",
-      "needsReview": true
+      "term": "노래"
     }
   },
   "music_instruments.guitar": {
@@ -48417,8 +47955,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "gitara"
     },
     "ko": {
-      "term": "기타",
-      "needsReview": true
+      "term": "기타"
     }
   },
   "music_instruments.piano": {
@@ -48451,8 +47988,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "피아노",
-      "needsReview": true
+      "term": "피아노"
     }
   },
   "music_instruments.drums": {
@@ -48484,8 +48020,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mga tambol"
     },
     "ko": {
-      "term": "드럼",
-      "needsReview": true
+      "term": "드럼"
     }
   },
   "music_instruments.violin": {
@@ -48517,8 +48052,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "biyolin"
     },
     "ko": {
-      "term": "바이올린",
-      "needsReview": true
+      "term": "바이올린"
     }
   },
   "music_instruments.flute": {
@@ -48550,8 +48084,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "plawta"
     },
     "ko": {
-      "term": "플루트",
-      "needsReview": true
+      "term": "플루트"
     }
   },
   "music_instruments.trumpet": {
@@ -48583,8 +48116,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "trumpeta"
     },
     "ko": {
-      "term": "트럼펫",
-      "needsReview": true
+      "term": "트럼펫"
     }
   },
   "music_instruments.microphone": {
@@ -48616,8 +48148,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mikropono"
     },
     "ko": {
-      "term": "마이크",
-      "needsReview": true
+      "term": "마이크"
     }
   },
   "music_instruments.headphones": {
@@ -48649,8 +48180,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mga headphone"
     },
     "ko": {
-      "term": "헤드폰",
-      "needsReview": true
+      "term": "헤드폰"
     }
   },
   "music_instruments.keyboard": {
@@ -48683,8 +48213,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "키보드",
-      "needsReview": true
+      "term": "키보드"
     }
   },
   "music_instruments.bass_guitar": {
@@ -48716,8 +48245,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bass nga gitara"
     },
     "ko": {
-      "term": "베이스 기타",
-      "needsReview": true
+      "term": "베이스 기타"
     }
   },
   "music_instruments.electric_guitar": {
@@ -48749,8 +48277,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "electric nga gitara"
     },
     "ko": {
-      "term": "일렉트릭 기타",
-      "needsReview": true
+      "term": "일렉트릭 기타"
     }
   },
   "music_instruments.acoustic_guitar": {
@@ -48782,8 +48309,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "acoustic nga gitara"
     },
     "ko": {
-      "term": "어쿠스틱 기타",
-      "needsReview": true
+      "term": "어쿠스틱 기타"
     }
   },
   "music_instruments.saxophone": {
@@ -48816,8 +48342,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "색소폰",
-      "needsReview": true
+      "term": "색소폰"
     }
   },
   "music_instruments.clarinet": {
@@ -48850,8 +48375,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "클라리넷",
-      "needsReview": true
+      "term": "클라리넷"
     }
   },
   "music_instruments.cello": {
@@ -48884,8 +48408,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "첼로",
-      "needsReview": true
+      "term": "첼로"
     }
   },
   "music_instruments.harp": {
@@ -48917,8 +48440,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "alpa"
     },
     "ko": {
-      "term": "하프",
-      "needsReview": true
+      "term": "하프"
     }
   },
   "music_instruments.accordion": {
@@ -48950,8 +48472,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "akordyon"
     },
     "ko": {
-      "term": "아코디언",
-      "needsReview": true
+      "term": "아코디언"
     }
   },
   "music_instruments.harmonica": {
@@ -48984,8 +48505,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "하모니카",
-      "needsReview": true
+      "term": "하모니카"
     }
   },
   "music_instruments.voice": {
@@ -49017,8 +48537,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tingog"
     },
     "ko": {
-      "term": "목소리",
-      "needsReview": true
+      "term": "목소리"
     }
   },
   "music_instruments.singing": {
@@ -49050,8 +48569,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagkanta"
     },
     "ko": {
-      "term": "노래하는",
-      "needsReview": true
+      "term": "노래하기"
     }
   },
   "music_instruments.melody": {
@@ -49083,8 +48601,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "melodiya"
     },
     "ko": {
-      "term": "멜로디",
-      "needsReview": true
+      "term": "멜로디"
     }
   },
   "music_instruments.rhythm": {
@@ -49116,8 +48633,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ritmo"
     },
     "ko": {
-      "term": "리듬",
-      "needsReview": true
+      "term": "리듬"
     }
   },
   "music_instruments.beat": {
@@ -49149,8 +48665,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "gibunalan"
     },
     "ko": {
-      "term": "이길",
-      "needsReview": true
+      "term": "박자"
     }
   },
   "music_instruments.lyrics": {
@@ -49182,8 +48697,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "liriko"
     },
     "ko": {
-      "term": "가사",
-      "needsReview": true
+      "term": "가사"
     }
   },
   "music_instruments.chorus": {
@@ -49215,8 +48729,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "koro"
     },
     "ko": {
-      "term": "합창",
-      "needsReview": true
+      "term": "후렴"
     }
   },
   "music_instruments.verse": {
@@ -49248,8 +48761,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bersikulo"
     },
     "ko": {
-      "term": "운문",
-      "needsReview": true
+      "term": "절"
     }
   },
   "music_instruments.concert": {
@@ -49281,8 +48793,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "konsyerto"
     },
     "ko": {
-      "term": "콘서트",
-      "needsReview": true
+      "term": "콘서트"
     }
   },
   "music_instruments.performance": {
@@ -49314,8 +48825,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pasundayag"
     },
     "ko": {
-      "term": "성능",
-      "needsReview": true
+      "term": "공연"
     }
   },
   "music_instruments.snare_drum": {
@@ -51698,8 +51208,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "arte"
     },
     "ko": {
-      "term": "예술",
-      "needsReview": true
+      "term": "예술"
     }
   },
   "arts_entertainment.drawing": {
@@ -51731,8 +51240,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "drowing"
     },
     "ko": {
-      "term": "그림",
-      "needsReview": true
+      "term": "그림 그리기"
     }
   },
   "arts_entertainment.painting": {
@@ -51764,8 +51272,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagpintal"
     },
     "ko": {
-      "term": "그림",
-      "needsReview": true
+      "term": "그림"
     }
   },
   "arts_entertainment.paint": {
@@ -51797,8 +51304,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pintal"
     },
     "ko": {
-      "term": "페인트",
-      "needsReview": true
+      "term": "물감"
     }
   },
   "arts_entertainment.paintbrush": {
@@ -51830,8 +51336,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pintal"
     },
     "ko": {
-      "term": "붓",
-      "needsReview": true
+      "term": "붓"
     }
   },
   "arts_entertainment.canvas": {
@@ -51864,8 +51369,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "캔버스",
-      "needsReview": true
+      "term": "캔버스"
     }
   },
   "arts_entertainment.sketch": {
@@ -51898,8 +51402,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "스케치",
-      "needsReview": true
+      "term": "스케치"
     }
   },
   "arts_entertainment.sculpture": {
@@ -51931,8 +51434,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagkulit"
     },
     "ko": {
-      "term": "조각품",
-      "needsReview": true
+      "term": "조각품"
     }
   },
   "arts_entertainment.clay": {
@@ -51964,8 +51466,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "yutang kulonon"
     },
     "ko": {
-      "term": "점토",
-      "needsReview": true
+      "term": "점토"
     }
   },
   "arts_entertainment.easel": {
@@ -51998,8 +51499,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "이젤",
-      "needsReview": true
+      "term": "이젤"
     }
   },
   "arts_entertainment.crafts": {
@@ -52032,8 +51532,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "공예",
-      "needsReview": true
+      "term": "공예"
     }
   },
   "arts_entertainment.knitting": {
@@ -52065,8 +51564,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pag-knitting"
     },
     "ko": {
-      "term": "뜨개질",
-      "needsReview": true
+      "term": "뜨개질"
     }
   },
   "arts_entertainment.sewing": {
@@ -52098,8 +51596,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagpanahi"
     },
     "ko": {
-      "term": "바느질",
-      "needsReview": true
+      "term": "바느질"
     }
   },
   "arts_entertainment.embroidery": {
@@ -52131,8 +51628,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagborda"
     },
     "ko": {
-      "term": "자수",
-      "needsReview": true
+      "term": "자수"
     }
   },
   "arts_entertainment.crochet": {
@@ -52164,8 +51660,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "paggansilyo"
     },
     "ko": {
-      "term": "크로셰 뜨개질",
-      "needsReview": true
+      "term": "크로셰 뜨개질"
     }
   },
   "arts_entertainment.weaving": {
@@ -52197,8 +51692,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "paghabol"
     },
     "ko": {
-      "term": "직조",
-      "needsReview": true
+      "term": "직조"
     }
   },
   "arts_entertainment.pottery": {
@@ -52231,8 +51725,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "도자기",
-      "needsReview": true
+      "term": "도자기"
     }
   },
   "arts_entertainment.origami": {
@@ -52265,8 +51758,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "종이접기",
-      "needsReview": true
+      "term": "종이접기"
     }
   },
   "arts_entertainment.collage": {
@@ -52299,8 +51791,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "콜라주",
-      "needsReview": true
+      "term": "콜라주"
     }
   },
   "arts_entertainment.scrapbooking": {
@@ -52333,8 +51824,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "스크랩북",
-      "needsReview": true
+      "term": "스크랩북"
     }
   },
   "arts_entertainment.illustration": {
@@ -52366,8 +51856,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ilustrasyon"
     },
     "ko": {
-      "term": "일러스트레이션",
-      "needsReview": true
+      "term": "일러스트레이션"
     }
   },
   "arts_entertainment.portrait": {
@@ -52399,8 +51888,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "hulagway"
     },
     "ko": {
-      "term": "초상화",
-      "needsReview": true
+      "term": "초상화"
     }
   },
   "arts_entertainment.landscape_painting": {
@@ -52432,8 +51920,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagpintal sa talan-awon"
     },
     "ko": {
-      "term": "풍경화",
-      "needsReview": true
+      "term": "풍경화"
     }
   },
   "arts_entertainment.still_life": {
@@ -52465,8 +51952,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "buhi pa"
     },
     "ko": {
-      "term": "정물",
-      "needsReview": true
+      "term": "정물"
     }
   },
   "arts_entertainment.mural": {
@@ -52499,8 +51985,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "벽화",
-      "needsReview": true
+      "term": "벽화"
     }
   },
   "arts_entertainment.graffiti_art": {
@@ -52532,8 +52017,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "arte sa graffiti"
     },
     "ko": {
-      "term": "낙서 예술",
-      "needsReview": true
+      "term": "그래피티 아트"
     }
   },
   "arts_entertainment.calligraphy": {
@@ -52565,8 +52049,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kaligrapya"
     },
     "ko": {
-      "term": "서예",
-      "needsReview": true
+      "term": "서예"
     }
   },
   "arts_entertainment.printmaking": {
@@ -52598,8 +52081,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pag-imprenta"
     },
     "ko": {
-      "term": "판화",
-      "needsReview": true
+      "term": "판화"
     }
   },
   "arts_entertainment.photography": {
@@ -52631,8 +52113,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "litrato"
     },
     "ko": {
-      "term": "사진",
-      "needsReview": true
+      "term": "사진"
     }
   },
   "arts_entertainment.digital_art": {
@@ -52664,8 +52145,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "digital nga arte"
     },
     "ko": {
-      "term": "디지털 아트",
-      "needsReview": true
+      "term": "디지털 아트"
     }
   },
   "arts_entertainment.stage": {
@@ -55028,8 +54508,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kompyuter"
     },
     "ko": {
-      "term": "컴퓨터",
-      "needsReview": true
+      "term": "컴퓨터"
     }
   },
   "technology_media.laptop": {
@@ -55062,8 +54541,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "노트북",
-      "needsReview": true
+      "term": "노트북"
     }
   },
   "technology_media.smartphone": {
@@ -55096,8 +54574,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "스마트폰",
-      "needsReview": true
+      "term": "스마트폰"
     }
   },
   "technology_media.tablet_computer": {
@@ -55129,8 +54606,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tablet nga kompyuter"
     },
     "ko": {
-      "term": "태블릿 컴퓨터",
-      "needsReview": true
+      "term": "태블릿 컴퓨터"
     }
   },
   "technology_media.camera": {
@@ -55162,8 +54638,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kamera"
     },
     "ko": {
-      "term": "카메라",
-      "needsReview": true
+      "term": "카메라"
     }
   },
   "technology_media.television": {
@@ -55195,8 +54670,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "telebisyon"
     },
     "ko": {
-      "term": "텔레비전",
-      "needsReview": true
+      "term": "텔레비전"
     }
   },
   "technology_media.radio": {
@@ -55228,8 +54702,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "radyo"
     },
     "ko": {
-      "term": "라디오",
-      "needsReview": true
+      "term": "라디오"
     }
   },
   "technology_media.screen": {
@@ -55262,8 +54735,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "스크린",
-      "needsReview": true
+      "term": "스크린"
     }
   },
   "technology_media.charger": {
@@ -55296,8 +54768,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "충전기",
-      "needsReview": true
+      "term": "충전기"
     }
   },
   "technology_media.battery": {
@@ -55329,8 +54800,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baterya"
     },
     "ko": {
-      "term": "배터리",
-      "needsReview": true
+      "term": "배터리"
     }
   },
   "technology_media.computer_keyboard": {
@@ -55362,8 +54832,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "keyboard sa kompyuter"
     },
     "ko": {
-      "term": "컴퓨터 키보드",
-      "needsReview": true
+      "term": "컴퓨터 키보드"
     }
   },
   "technology_media.computer_mouse": {
@@ -55395,8 +54864,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mouse sa kompyuter"
     },
     "ko": {
-      "term": "컴퓨터 마우스",
-      "needsReview": true
+      "term": "컴퓨터 마우스"
     }
   },
   "technology_media.monitor": {
@@ -55429,8 +54897,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "모니터",
-      "needsReview": true
+      "term": "모니터"
     }
   },
   "technology_media.printer": {
@@ -55462,8 +54929,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tig-imprinta"
     },
     "ko": {
-      "term": "프린터",
-      "needsReview": true
+      "term": "프린터"
     }
   },
   "technology_media.scanner": {
@@ -55496,8 +54962,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "스캐너",
-      "needsReview": true
+      "term": "스캐너"
     }
   },
   "technology_media.webcam": {
@@ -55530,8 +54995,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "웹캠",
-      "needsReview": true
+      "term": "웹캠"
     }
   },
   "technology_media.speaker": {
@@ -55563,8 +55027,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mamumulong"
     },
     "ko": {
-      "term": "스피커",
-      "needsReview": true
+      "term": "스피커"
     }
   },
   "technology_media.cable": {
@@ -55596,8 +55059,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kable"
     },
     "ko": {
-      "term": "케이블",
-      "needsReview": true
+      "term": "케이블"
     }
   },
   "technology_media.adapter": {
@@ -55629,8 +55091,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "adaptor"
     },
     "ko": {
-      "term": "어댑터",
-      "needsReview": true
+      "term": "어댑터"
     }
   },
   "technology_media.projector": {
@@ -55663,8 +55124,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "프로젝터",
-      "needsReview": true
+      "term": "프로젝터"
     }
   },
   "technology_media.internet": {
@@ -55697,8 +55157,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "인터넷",
-      "needsReview": true
+      "term": "인터넷"
     }
   },
   "technology_media.website": {
@@ -55731,8 +55190,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "웹사이트",
-      "needsReview": true
+      "term": "웹사이트"
     }
   },
   "technology_media.browser": {
@@ -55765,8 +55223,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "브라우저",
-      "needsReview": true
+      "term": "브라우저"
     }
   },
   "technology_media.search_engine": {
@@ -55799,8 +55256,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "검색 엔진",
-      "needsReview": true
+      "term": "검색 엔진"
     }
   },
   "technology_media.wi_fi": {
@@ -55833,8 +55289,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "Wi-Fi",
-      "needsReview": true
+      "term": "Wi-Fi"
     }
   },
   "technology_media.network": {
@@ -55867,8 +55322,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "네트워크",
-      "needsReview": true
+      "term": "네트워크"
     }
   },
   "technology_media.router": {
@@ -55901,8 +55355,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "라우터",
-      "needsReview": true
+      "term": "라우터"
     }
   },
   "technology_media.modem": {
@@ -55935,8 +55388,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "모뎀",
-      "needsReview": true
+      "term": "모뎀"
     }
   },
   "technology_media.hotspot": {
@@ -55969,8 +55421,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "핫스팟",
-      "needsReview": true
+      "term": "핫스팟"
     }
   },
   "technology_media.connection": {
@@ -56002,8 +55453,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "koneksyon"
     },
     "ko": {
-      "term": "연결",
-      "needsReview": true
+      "term": "연결"
     }
   },
   "technology_media.app": {
@@ -58387,8 +57837,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kwarta"
     },
     "ko": {
-      "term": "돈",
-      "needsReview": true
+      "term": "돈"
     }
   },
   "money_shopping_services.cash": {
@@ -58420,8 +57869,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kwarta"
     },
     "ko": {
-      "term": "현금",
-      "needsReview": true
+      "term": "현금"
     }
   },
   "money_shopping_services.coin": {
@@ -58453,8 +57901,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "sensilyo"
     },
     "ko": {
-      "term": "동전",
-      "needsReview": true
+      "term": "동전"
     }
   },
   "money_shopping_services.banknote": {
@@ -58486,8 +57933,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "papel de bangko"
     },
     "ko": {
-      "term": "지폐",
-      "needsReview": true
+      "term": "지폐"
     }
   },
   "money_shopping_services.wallet": {
@@ -58519,8 +57965,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pitaka"
     },
     "ko": {
-      "term": "지갑",
-      "needsReview": true
+      "term": "지갑"
     }
   },
   "money_shopping_services.price": {
@@ -58552,8 +57997,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "presyo"
     },
     "ko": {
-      "term": "가격",
-      "needsReview": true
+      "term": "가격"
     }
   },
   "money_shopping_services.receipt": {
@@ -58585,8 +58029,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "resibo"
     },
     "ko": {
-      "term": "영수증",
-      "needsReview": true
+      "term": "영수증"
     }
   },
   "money_shopping_services.payment": {
@@ -58618,8 +58061,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagbayad"
     },
     "ko": {
-      "term": "결제",
-      "needsReview": true
+      "term": "결제"
     }
   },
   "money_shopping_services.shop": {
@@ -58651,8 +58093,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "tindahan"
     },
     "ko": {
-      "term": "가게",
-      "needsReview": true
+      "term": "가게"
     }
   },
   "money_shopping_services.shopping_bag": {
@@ -58685,8 +58126,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "쇼핑백",
-      "needsReview": true
+      "term": "쇼핑백"
     }
   },
   "money_shopping_services.buy": {
@@ -58718,8 +58158,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagpalit"
     },
     "ko": {
-      "term": "사다",
-      "needsReview": true
+      "term": "사다"
     }
   },
   "money_shopping_services.sell": {
@@ -58751,8 +58190,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "ibaligya"
     },
     "ko": {
-      "term": "팔다",
-      "needsReview": true
+      "term": "팔다"
     }
   },
   "money_shopping_services.pay": {
@@ -58784,8 +58222,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagbayad"
     },
     "ko": {
-      "term": "지불하다",
-      "needsReview": true
+      "term": "지불하다"
     }
   },
   "money_shopping_services.spend": {
@@ -58817,8 +58254,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "paggasto"
     },
     "ko": {
-      "term": "쓰다",
-      "needsReview": true
+      "term": "쓰다"
     }
   },
   "money_shopping_services.save": {
@@ -58850,8 +58286,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "pagluwas"
     },
     "ko": {
-      "term": "저축하다",
-      "needsReview": true
+      "term": "저축하다"
     }
   },
   "money_shopping_services.cost": {
@@ -58883,8 +58318,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "gasto"
     },
     "ko": {
-      "term": "비용이 들다",
-      "needsReview": true
+      "term": "비용이 들다"
     }
   },
   "money_shopping_services.charge": {
@@ -58916,8 +58350,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "bayad"
     },
     "ko": {
-      "term": "청구하다",
-      "needsReview": true
+      "term": "청구하다"
     }
   },
   "money_shopping_services.borrow": {
@@ -58949,8 +58382,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "manghulam"
     },
     "ko": {
-      "term": "빌리다",
-      "needsReview": true
+      "term": "빌리다"
     }
   },
   "money_shopping_services.lend": {
@@ -58982,8 +58414,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "magpahulam"
     },
     "ko": {
-      "term": "빌려주다",
-      "needsReview": true
+      "term": "빌려주다"
     }
   },
   "money_shopping_services.rent": {
@@ -59015,8 +58446,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "abang"
     },
     "ko": {
-      "term": "임대하다",
-      "needsReview": true
+      "term": "임대하다"
     }
   },
   "money_shopping_services.cheap": {
@@ -59048,8 +58478,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "barato"
     },
     "ko": {
-      "term": "싼",
-      "needsReview": true
+      "term": "싸다"
     }
   },
   "money_shopping_services.expensive": {
@@ -59081,8 +58510,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "mahal"
     },
     "ko": {
-      "term": "비싸다",
-      "needsReview": true
+      "term": "비싸다"
     }
   },
   "money_shopping_services.free": {
@@ -59114,8 +58542,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "libre"
     },
     "ko": {
-      "term": "무료",
-      "needsReview": true
+      "term": "무료인"
     }
   },
   "money_shopping_services.discount": {
@@ -59147,8 +58574,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "diskwento"
     },
     "ko": {
-      "term": "할인",
-      "needsReview": true
+      "term": "할인"
     }
   },
   "money_shopping_services.sale": {
@@ -59180,8 +58606,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baligya"
     },
     "ko": {
-      "term": "판매",
-      "needsReview": true
+      "term": "세일"
     }
   },
   "money_shopping_services.coupon": {
@@ -59213,8 +58638,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kupon"
     },
     "ko": {
-      "term": "쿠폰",
-      "needsReview": true
+      "term": "쿠폰"
     }
   },
   "money_shopping_services.bargain": {
@@ -59246,8 +58670,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "baratilyo"
     },
     "ko": {
-      "term": "흥정하다",
-      "needsReview": true
+      "term": "특가"
     }
   },
   "money_shopping_services.tax": {
@@ -59279,8 +58702,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "buhis"
     },
     "ko": {
-      "term": "세금",
-      "needsReview": true
+      "term": "세금"
     }
   },
   "money_shopping_services.tip": {
@@ -59313,8 +58735,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "needsReview": true
     },
     "ko": {
-      "term": "팁",
-      "needsReview": true
+      "term": "팁"
     }
   },
   "money_shopping_services.total": {
@@ -59346,8 +58767,7 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
       "term": "kinatibuk-an"
     },
     "ko": {
-      "term": "합계",
-      "needsReview": true
+      "term": "합계"
     }
   },
   "money_shopping_services.shopping_cart": {

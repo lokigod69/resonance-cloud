@@ -150,7 +150,7 @@ export default function CategoryPicker({
             className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
           >
             {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
-              <option key={language.code} value={language.value}>
+              <option key={language.code} value={language.value} data-status={language.status}>
                 {language.label}
               </option>
             ))}
@@ -169,7 +169,7 @@ export default function CategoryPicker({
             className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
           >
             {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
-              <option key={language.code} value={language.value}>
+              <option key={language.code} value={language.value} data-status={language.status}>
                 {language.label}
               </option>
             ))}

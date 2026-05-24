@@ -1,0 +1,11 @@
+conceptId,categoryId,categoryLabel,level,order,part_of_speech,sense,englishTerm,language,targetTerm,romanization,needsReview,reviewNote,duplicateWarning
+home_objects.chair,home_objects,Home & Objects,1,1,noun,home_object,chair,ko,의자,,false,,
+home_objects.table,home_objects,Home & Objects,1,2,noun,home_object,table,ko,테이블,,false,,
+home_objects.bed,home_objects,Home & Objects,1,3,noun,home_object,bed,ko,침대,,false,,
+home_objects.sofa,home_objects,Home & Objects,1,4,noun,home_object,sofa,ko,소파,,false,,
+home_objects.door,home_objects,Home & Objects,1,5,noun,home_object,door,ko,문,,false,,
+home_objects.window,home_objects,Home & Objects,1,6,noun,home_object,window,ko,창문,,false,,
+home_objects.key,home_objects,Home & Objects,1,7,noun,home_object,key,ko,열쇠,,false,,
+home_objects.lamp,home_objects,Home & Objects,1,8,noun,home_object,lamp,ko,램프,,false,,
+home_objects.mirror,home_objects,Home & Objects,1,9,noun,home_object,mirror,ko,거울,,false,,
+home_objects.shelf,home_objects,Home & Objects,1,10,noun,home_object,shelf,ko,선반,,false,,
