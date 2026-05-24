@@ -85,17 +85,46 @@ Existing curriculum image fallback behavior remains unchanged for the legacy car
 
 ## Card Action
 
-Each thematic card links to:
+Originally, each thematic card linked to:
 
 `/generate?category=<category_id>`
 
 `WordsStep` now reads the `category` and optional `level` query params and passes them to `CategoryPicker`. `CategoryPicker` opens the drawer with the requested thematic category selected once the Words step is reached. This is the minimum useful integration; a full category detail/preview page for thematic packs is deferred.
 
+Correction: that default card behavior was wrong for the Curriculum / Categories page. Thematic cards now link to category detail routes such as:
+
+- `/categories/animals`
+- `/categories/fruits`
+- `/categories/home_objects`
+
+The primary thematic card CTA now says `Open category` / `Kategorie öffnen` / `Ouvrir la catégorie`, not `Generate from this category`.
+
+Generation remains available only as an explicit secondary action inside the static category detail and level pages.
+
+## Category Detail Routing Correction
+
+The bad route was removed from `frontend/src/pages/categories/CategoryListPage.tsx`. It affected thematic static cards only; legacy curriculum cards were already using the correct `/categories/:slug` browsing routes.
+
+New route structure:
+
+- `/categories/:categorySlug` opens either a legacy curriculum detail page or a static thematic category detail page.
+- `/categories/:categorySlug/level/:levelNumber` opens static thematic level previews.
+- `/categories/:categorySlug/:levelNumber` remains available for legacy curriculum levels.
+
+`App.tsx` registers the static level route in both glassy and classic layouts.
+
+Static category details now show localized category title, localized group label, description, deterministic placeholder visual, word count, level count, target/helper language controls, and a level list with bilingual word previews.
+
+Static level pages show all words for the selected level, target term, helper term when different, part of speech, and sense. There is no image requirement and no enrichment requirement.
+
+Study for static thematic packs is deferred because there is no static study deck to launch directly yet. The level page says no study deck has been created and offers an explicit secondary generation action:
+
+- category detail: `Generate deck from category`
+- level detail: `Generate deck from level`
+
 ## Language Handling
 
-The Categories page uses UI locale translations for section labels, group labels, and category labels. Vocabulary target/helper language selection remains in the Generate picker, where it already separates UI locale from target vocabulary language and helper translation language.
-
-No word preview was added on the Categories page in this pass, so no additional vocabulary language state was introduced there.
+The Categories list page uses UI locale translations for section labels, group labels, and category labels. Static thematic detail and level pages add target/helper vocabulary language selectors using the same public static language metadata as Generate. Hidden Cebuano is not exposed. Korean remains visible as experimental through the shared language label.
 
 ## Tests And Checks
 
@@ -112,6 +141,7 @@ Passed:
 Local route smoke:
 
 - `http://127.0.0.1:5181/categories` returned HTTP 200 from the local Vite dev server.
+- `http://127.0.0.1:5181/categories/animals` and static level routes are covered by source-level route tests.
 
 Blocked:
 

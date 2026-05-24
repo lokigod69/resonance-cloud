@@ -185,6 +185,7 @@ function AppRoutes() {
             <Route path="/today/checkpoint" element={<GuidedCheckpoint />} />
             <Route path="/categories" element={<CategoryListPage />} />
             <Route path="/categories/:categorySlug" element={<CategoryDetailPage />} />
+            <Route path="/categories/:categorySlug/level/:levelNumber" element={<LevelDetailPage />} />
             <Route path="/categories/:categorySlug/:levelNumber" element={<LevelDetailPage />} />
             <Route path="/games" element={<GamesHub />} />
             <Route path="/decks" element={<DecksPG />} />
@@ -205,6 +206,7 @@ function AppRoutes() {
             <Route path="/today/checkpoint" element={<GuidedCheckpoint />} />
             <Route path="/categories" element={<CategoryListPage />} />
             <Route path="/categories/:categorySlug" element={<CategoryDetailPage />} />
+            <Route path="/categories/:categorySlug/level/:levelNumber" element={<LevelDetailPage />} />
             <Route path="/categories/:categorySlug/:levelNumber" element={<LevelDetailPage />} />
             <Route path="/games" element={<GamesHub />} />
             <Route path="/decks" element={<Decks />} />

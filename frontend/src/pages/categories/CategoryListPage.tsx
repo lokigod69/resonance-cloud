@@ -64,8 +64,8 @@ function ThematicCategoryHero({ category }: { category: StaticCategory }) {
   )
 }
 
-function thematicGenerateHref(category: StaticCategory) {
-  return `/generate?category=${encodeURIComponent(category.id ?? category.name)}`
+function thematicCategoryHref(category: StaticCategory) {
+  return `/categories/${encodeURIComponent(category.id ?? category.name)}`
 }
 
 export default function CategoryListPage() {
@@ -192,9 +192,9 @@ export default function CategoryListPage() {
                   return (
                     <Link
                       key={category.id ?? category.name}
-                      to={thematicGenerateHref(category)}
+                      to={thematicCategoryHref(category)}
                       className={`${styles.tile} ${styles.thematicTile}`}
-                      aria-label={t('categories.generateFromThematicCategory', { title: t(category.labelKey) })}
+                      aria-label={t('categories.openCategory', { title: t(category.labelKey) })}
                     >
                       <div className={styles.hero}>
                         <ThematicCategoryHero category={category} />
@@ -210,7 +210,7 @@ export default function CategoryListPage() {
                           <span className={styles.chip}>{tp('categories.levelCount', levelCount)}</span>
                         </div>
                         <span className={styles.tileAction}>
-                          {t('categories.generateFromThisCategory')}
+                          {t('categories.openCategoryAction')}
                           <ArrowRight className="h-4 w-4" aria-hidden="true" />
                         </span>
                       </div>

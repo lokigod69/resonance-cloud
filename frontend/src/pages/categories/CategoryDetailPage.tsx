@@ -1,22 +1,63 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Check, ChevronRight } from 'lucide-react'
+import { ArrowLeft, Check, ChevronRight, Sparkles } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import {
   getCurriculumCategoryBySlug,
   getLevelDescription,
   getLevelTitle,
 } from '@/data/curriculumCategories'
+import {
+  STATIC_CATEGORY_TARGET_LANGUAGES,
+  formatSelectedCategoryVocabularyLabel,
+  getPublicCategoryGroups,
+  getStaticCategorySelectedItems,
+  getStaticCategoryVocabularyItems,
+  type Category as StaticCategory,
+  type CategoryGroup,
+} from '@/data/categories'
 import { listImportedCurriculumDecks } from '@/lib/curriculumDeckBridge'
 import styles from './Categories.module.css'
 
+function getStaticCategoryById(categoryId: string | undefined): { category: StaticCategory; group: CategoryGroup } | null {
+  if (!categoryId) return null
+  const normalized = categoryId.trim().toLowerCase()
+  for (const group of getPublicCategoryGroups()) {
+    for (const category of group.categories) {
+      if (!category.staticWordLevels?.length) continue
+      if (category.id?.toLowerCase() === normalized || category.name.toLowerCase() === normalized) {
+        return { category, group }
+      }
+    }
+  }
+  return null
+}
+
+function resolveVisibleLanguage(value: string | null | undefined, fallback: string): string {
+  if (!value) return fallback
+  const normalized = value.trim().toLowerCase()
+  const matched = STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => (
+    language.value.toLowerCase() === normalized
+    || language.code === normalized
+    || language.label.toLowerCase() === normalized
+    || language.name.toLowerCase() === normalized
+    || language.nativeName.toLowerCase() === normalized
+  ))
+  return matched?.value ?? fallback
+}
+
 export default function CategoryDetailPage() {
   const { categorySlug } = useParams<{ categorySlug: string }>()
-  const { user } = useAuth()
+  const { profile, user } = useAuth()
+  const { activeLanguage } = useLanguage()
   const { t, tp } = useTranslation()
   const category = getCurriculumCategoryBySlug(categorySlug)
+  const staticCategory = category ? null : getStaticCategoryById(categorySlug)
+  const [targetLanguage, setTargetLanguage] = useState(resolveVisibleLanguage(activeLanguage, 'English'))
+  const [helperLanguage, setHelperLanguage] = useState(resolveVisibleLanguage(profile?.base_language, 'German'))
   const [importedLevels, setImportedLevels] = useState<Set<number>>(new Set())
 
   useEffect(() => {
@@ -54,6 +95,19 @@ export default function CategoryDetailPage() {
   }, [user?.id, category])
 
   const importedTickLabel = useMemo(() => t('categories.imported'), [t])
+
+  if (staticCategory) {
+    return renderStaticCategoryDetail({
+      category: staticCategory.category,
+      group: staticCategory.group,
+      targetLanguage,
+      helperLanguage,
+      setTargetLanguage,
+      setHelperLanguage,
+      t,
+      tp,
+    })
+  }
 
   if (!category) {
     return (
@@ -114,6 +168,108 @@ export default function CategoryDetailPage() {
                 {description && <p className={styles.rowDescription}>{description}</p>}
               </div>
               <span className={styles.rowAction}>
+                <ChevronRight className="h-4 w-4" aria-hidden="true" />
+              </span>
+            </Link>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
+function renderStaticCategoryDetail({
+  category,
+  group,
+  targetLanguage,
+  helperLanguage,
+  setTargetLanguage,
+  setHelperLanguage,
+  t,
+  tp,
+}: {
+  category: StaticCategory
+  group: CategoryGroup
+  targetLanguage: string
+  helperLanguage: string
+  setTargetLanguage: (language: string) => void
+  setHelperLanguage: (language: string) => void
+  t: ReturnType<typeof useTranslation>['t']
+  tp: ReturnType<typeof useTranslation>['tp']
+}) {
+  const vocabularyItems = getStaticCategoryVocabularyItems(category)
+  const levelCount = category.staticWordLevels?.length ?? 0
+  const generateHref = `/generate?category=${encodeURIComponent(category.id ?? category.name)}`
+
+  return (
+    <section className={styles.page}>
+      <Link to="/categories" className={styles.backLink}>
+        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+        {t('categories.backToCategories')}
+      </Link>
+
+      <header className={styles.detailHero}>
+        <div className={`${styles.detailEmoji} ${styles.staticDetailEmoji}`} aria-hidden="true">{category.emoji}</div>
+        <div>
+          <p className={styles.eyebrow}>{t(group.groupKey)}</p>
+          <h1 className={styles.title}>{t(category.labelKey)}</h1>
+          <p className={styles.subtitle}>{category.description}</p>
+          <div className={styles.tileMeta}>
+            <span className={styles.chip}>{tp('categories.entryCount', vocabularyItems.length)}</span>
+            <span className={styles.chip}>{tp('categories.levelCount', levelCount)}</span>
+          </div>
+        </div>
+        <div className={styles.heroAction}>
+          <Link to={generateHref} className={styles.studyAction}>
+            <Sparkles className="h-4 w-4" aria-hidden="true" />
+            {t('categories.generateDeckFromCategory')}
+          </Link>
+        </div>
+      </header>
+
+      <div className={styles.languagePairPanel}>
+        <label>
+          <span>{t('generate.words.targetVocabularyLanguageLabel')}</span>
+          <select value={targetLanguage} onChange={(event) => setTargetLanguage(event.target.value)}>
+            {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+              <option key={language.code} value={language.value}>{language.label}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span>{t('generate.words.helperVocabularyLanguageLabel')}</span>
+          <select value={helperLanguage} onChange={(event) => setHelperLanguage(event.target.value)}>
+            {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+              <option key={language.code} value={language.value}>{language.label}</option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <div className={styles.levelList}>
+        {(category.staticWordLevels ?? []).map((level) => {
+          const previewItems = getStaticCategorySelectedItems(category, 8, level.level, targetLanguage, helperLanguage)
+          return (
+            <Link
+              key={level.level}
+              to={`/categories/${category.id ?? category.name}/level/${level.level}`}
+              className={styles.levelRow}
+            >
+              <span className={styles.levelBadge}>{level.level}</span>
+              <div>
+                <h2 className={styles.rowTitle}>{t('categories.levelLabel', { number: level.level })}</h2>
+                <p className={styles.rowDescription}>{level.label}</p>
+                <p className={styles.rowMeta}>{tp('categories.entryCount', level.words.length)}</p>
+                <div className={styles.staticWordPreview}>
+                  {previewItems.map((item) => (
+                    <span key={item.conceptId} className={styles.staticWordChip}>
+                      {formatSelectedCategoryVocabularyLabel(item)}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <span className={styles.rowAction}>
+                {t('categories.openLevelAction')}
                 <ChevronRight className="h-4 w-4" aria-hidden="true" />
               </span>
             </Link>
