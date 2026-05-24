@@ -43,8 +43,8 @@ export function SrsActionTile({
 
   const sizing =
     tier === 'top'
-      ? 'min-h-[96px] rounded-2xl px-7 py-4 gap-5'
-      : 'min-h-[72px] rounded-xl px-6 py-3.5 gap-4'
+      ? 'min-h-[112px] rounded-2xl px-8 py-5 gap-6'
+      : 'min-h-[84px] rounded-xl px-7 py-4 gap-5'
 
   // Top tier: colored label (accent). Bottom tier: muted neutral label.
   const labelClass =

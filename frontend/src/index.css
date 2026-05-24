@@ -895,7 +895,15 @@ body::before {
 .dashboard-cosmic {
   position: relative;
   isolation: isolate;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Fit exactly within the viewport on desktop so the page does not scroll.
+     Subtract the topnav offset plus main's vertical padding (p-6 = 1.5rem
+     on both top and bottom; main's pt is overridden to the header offset,
+     so only the pb-1.5rem remains to subtract). 100dvh accounts for
+     mobile browser UI. min-height (not height) so taller content on small
+     viewports can still grow + scroll naturally. */
+  min-height: calc(100dvh - var(--glassy-header-offset, 4rem) - 1.5rem);
 }
 
 .dashboard-cosmic::before {
@@ -1054,8 +1062,8 @@ body::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 88px;
-  height: 88px;
+  width: 104px;
+  height: 104px;
   border-radius: 9999px;
   border: 2px solid color-mix(in srgb, #f7c843 56%, transparent);
   background:
@@ -1067,10 +1075,10 @@ body::before {
   backdrop-filter: blur(28px) saturate(1.45);
   -webkit-backdrop-filter: blur(28px) saturate(1.45);
   color: #f7c843;
-  font-size: 1.875rem;
+  font-size: 2.25rem;
   font-weight: 600;
   line-height: 1;
-  text-shadow: 0 0 22px rgba(247, 200, 67, 0.46);
+  text-shadow: 0 0 24px rgba(247, 200, 67, 0.48);
   transition: transform 200ms ease, box-shadow 200ms ease, filter 200ms ease;
   cursor: pointer;
 }

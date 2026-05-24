@@ -6,8 +6,8 @@ type MasteryDonutProps = {
 }
 
 export function MasteryDonut({ mastered, total, loading = false, caption = 'mastered' }: MasteryDonutProps) {
-  const size = 132
-  const strokeWidth = 8
+  const size = 156
+  const strokeWidth = 9
   const radius = (size - strokeWidth) / 2
   const circumference = 2 * Math.PI * radius
   const safeTotal = Math.max(total, 0)
@@ -18,15 +18,15 @@ export function MasteryDonut({ mastered, total, loading = false, caption = 'mast
 
   if (loading) {
     return (
-      <div className="mastery-ring-shell flex h-[132px] w-[132px] items-center justify-center">
-        <div className="h-20 w-20 animate-pulse rounded-full bg-[color-mix(in_srgb,var(--text-primary)_8%,transparent)]" />
+      <div className="mastery-ring-shell flex h-[156px] w-[156px] items-center justify-center">
+        <div className="h-24 w-24 animate-pulse rounded-full bg-[color-mix(in_srgb,var(--text-primary)_8%,transparent)]" />
       </div>
     )
   }
 
   if (safeTotal === 0) {
     return (
-      <div className="mastery-ring-shell flex h-[132px] w-[132px] items-center justify-center p-4 text-center">
+      <div className="mastery-ring-shell flex h-[156px] w-[156px] items-center justify-center p-4 text-center">
         <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--text-primary)_64%,transparent)]">
           Start studying to track mastery
         </p>
@@ -36,7 +36,7 @@ export function MasteryDonut({ mastered, total, loading = false, caption = 'mast
 
   return (
     <div
-      className="mastery-ring-shell relative h-[132px] w-[132px]"
+      className="mastery-ring-shell relative h-[156px] w-[156px]"
       aria-label={`${safeMastered} of ${safeTotal} ${caption}`}
     >
       <svg className="h-full w-full -rotate-90" viewBox={`0 0 ${size} ${size}`} role="img">
@@ -67,9 +67,9 @@ export function MasteryDonut({ mastered, total, loading = false, caption = 'mast
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-        <div className="text-3xl font-semibold leading-none text-[var(--text-primary)]">{safeMastered}</div>
-        <div className="mt-0.5 text-xs text-[color-mix(in_srgb,var(--text-primary)_64%,transparent)]">/ {safeTotal}</div>
-        <div className="mt-1.5 text-[9px] font-medium uppercase tracking-[0.22em] text-[color-mix(in_srgb,var(--text-primary)_58%,transparent)]">
+        <div className="text-4xl font-semibold leading-none text-[var(--text-primary)]">{safeMastered}</div>
+        <div className="mt-1 text-sm text-[color-mix(in_srgb,var(--text-primary)_64%,transparent)]">/ {safeTotal}</div>
+        <div className="mt-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-[color-mix(in_srgb,var(--text-primary)_58%,transparent)]">
           {caption}
         </div>
       </div>

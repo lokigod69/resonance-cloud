@@ -118,9 +118,9 @@ export default function DashboardPG() {
   const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
 
   return (
-    <div className="theme-cosmos dashboard-cosmic px-4 pb-10 pt-4 md:px-6 md:pt-6">
-      <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center">
-        <h1 className="welcome-hero font-display text-3xl font-bold sm:text-4xl md:text-5xl">
+    <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
+      <div className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-6 py-6 text-center">
+        <h1 className="welcome-hero font-display text-3xl font-bold sm:text-5xl md:text-6xl">
           {greeting}
         </h1>
 
