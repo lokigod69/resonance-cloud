@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { listCurriculumCategories } from '../src/data/curriculumCategories'
+import { getPublicCategoryGroups, getStaticCategoryVocabularyItems } from '../src/data/categories'
 
 const titlesBySlug = new Map(listCurriculumCategories().map((category) => [category.slug, category.title]))
 
@@ -16,16 +17,51 @@ for (const title of titlesBySlug.values()) {
 }
 
 const categoryListSource = readFileSync('src/pages/categories/CategoryListPage.tsx', 'utf8')
-assert.equal(
+const staticThematicCategories = getPublicCategoryGroups()
+  .flatMap((group) => group.categories)
+  .filter((category) => category.staticWordLevels?.length)
+
+assert.equal(staticThematicCategories.length, 19, 'Curriculum page should have the 19 thematic static packs available')
+for (const id of ['animals', 'fruits', 'home_objects', 'technology_media', 'feelings_states', 'education_learning']) {
+  assert.ok(staticThematicCategories.some((category) => category.id === id), `${id} thematic category should be available`)
+}
+
+assert.ok(
+  categoryListSource.includes('getPublicCategoryGroups'),
+  'CategoryListPage should read the same public thematic static category groups used by Generate',
+)
+assert.ok(
+  categoryListSource.includes('categories.legacySectionTitle'),
+  'CategoryListPage should label the legacy curriculum section instead of replacing it',
+)
+assert.ok(
+  categoryListSource.includes('categories.thematicSectionTitle'),
+  'CategoryListPage should render a dedicated thematic category section',
+)
+assert.ok(
   categoryListSource.includes("tp('categories.levelCount'"),
-  false,
-  'category list cards should not render level-count chips',
+  'thematic category cards should show level count metadata',
 )
-assert.equal(
+assert.ok(
   categoryListSource.includes("tp('categories.entryCount'"),
-  false,
-  'category list cards should not render word-count chips',
+  'thematic category cards should show word count metadata',
 )
+assert.ok(
+  categoryListSource.includes('ThematicCategoryHero'),
+  'thematic categories should use a deterministic fallback visual instead of requiring cover images',
+)
+assert.ok(
+  categoryListSource.includes('/generate?category='),
+  'thematic category cards should route to Generate with a selected category',
+)
+
+const animals = staticThematicCategories.find((category) => category.id === 'animals')
+assert.ok(animals)
+assert.equal(getStaticCategoryVocabularyItems(animals).length, 100)
+
+const nutsSeeds = staticThematicCategories.find((category) => category.id === 'nuts_seeds')
+assert.ok(nutsSeeds)
+assert.equal(nutsSeeds.staticWordLevels?.length, 5, 'variable-level thematic packs should remain supported on the page')
 
 const categoryDetailSource = readFileSync('src/pages/categories/CategoryDetailPage.tsx', 'utf8')
 assert.equal(

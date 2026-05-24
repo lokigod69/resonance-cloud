@@ -100,6 +100,66 @@
   gap: clamp(1rem, 2vw, 1.35rem);
 }
 
+.categorySection {
+  margin-top: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.categorySection:first-of-type {
+  margin-top: 0;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(1.25rem, 2.8vw, 1.85rem);
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
+.sectionDescription {
+  max-width: 48rem;
+  margin: 0.4rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.thematicGroups {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.thematicGroup {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.thematicGroupTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.thematicGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr));
+  gap: clamp(0.85rem, 1.8vw, 1.15rem);
+}
+
 .tile {
   overflow: hidden;
   min-height: 100%;
@@ -116,6 +176,16 @@
 .tile:hover {
   transform: translateY(-2px);
   border-color: var(--border-strong);
+}
+
+.thematicTile .hero {
+  aspect-ratio: 16 / 10;
+}
+
+.thematicTile .tileBody {
+  display: flex;
+  min-height: 13rem;
+  flex-direction: column;
 }
 
 .hero {
@@ -149,8 +219,32 @@
   filter: drop-shadow(0 0 1.4rem var(--accent-glow));
 }
 
+.thematicHeroPlaceholder {
+  position: relative;
+  isolation: isolate;
+}
+
+.thematicHeroPlaceholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.22), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 45%);
+}
+
 .tileBody {
   padding: 1.15rem 1rem 1.25rem;
+}
+
+.thematicGroupLabel {
+  margin: 0 0 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .tileTitle {
@@ -176,6 +270,17 @@
   color: var(--text-muted);
   font-size: 0.86rem;
   font-weight: 650;
+}
+
+.tileAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--accent);
+  font-size: 0.86rem;
+  font-weight: 850;
 }
 
 .chip {

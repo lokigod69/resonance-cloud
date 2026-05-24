@@ -103,6 +103,14 @@ assert.ok(
   'CategoryPicker should expose the static vocabulary target language selector',
 )
 assert.ok(
+  wordsStep.includes('useSearchParams') && wordsStep.includes('initialCategoryId'),
+  'WordsStep should pass Generate category query preselection into CategoryPicker',
+)
+assert.ok(
+  categoryPicker.includes('initialCategoryId') && categoryPicker.includes('setIsOpen(true)'),
+  'CategoryPicker should open with a category selected when linked from the Curriculum page',
+)
+assert.ok(
   categoryPicker.includes('language.status') || categoryPicker.includes('language.reviewLabel'),
   'CategoryPicker language options should have access to language review status metadata',
 )

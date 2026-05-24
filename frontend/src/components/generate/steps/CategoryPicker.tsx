@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Loader2, Sparkles } from 'lucide-react'
 import PillButton from '../shared/PillButton'
@@ -24,6 +24,8 @@ type ExpansionStatus = 'idle' | 'loading' | 'error'
 
 interface CategoryPickerProps {
   state: WizardState
+  initialCategoryId?: string | null
+  initialCategoryLevel?: number | null
   onMergeWords: (words: string[]) => void
   onMergeVocabularyItems?: (items: SelectedCategoryVocabularyItem[]) => void
   onTargetLanguageChange?: (language: string) => void
@@ -58,6 +60,8 @@ function resolveVisibleLanguage(value: string | null | undefined, fallback: stri
 
 export default function CategoryPicker({
   state,
+  initialCategoryId,
+  initialCategoryLevel,
   onMergeWords,
   onMergeVocabularyItems,
   onTargetLanguageChange,
@@ -256,7 +260,31 @@ export default function CategoryPicker({
   }
 
   const selectedLabel = activeCategory ? t(activeCategory.labelKey) : null
-  const publicCategoryGroups = getPublicCategoryGroups()
+  const publicCategoryGroups = useMemo(() => getPublicCategoryGroups(), [])
+
+  useEffect(() => {
+    if (!initialCategoryId) return
+    const requestedCategoryId = initialCategoryId.trim().toLowerCase()
+    const matchedCategory = publicCategoryGroups
+      .flatMap((group) => group.categories)
+      .find((category) => (
+        category.id?.toLowerCase() === requestedCategoryId
+        || category.name.toLowerCase() === requestedCategoryId
+      ))
+    if (!matchedCategory) return
+
+    const requestedLevel = initialCategoryLevel && matchedCategory.staticWordLevels?.some((level) => level.level === initialCategoryLevel)
+      ? initialCategoryLevel
+      : matchedCategory.staticWordLevels?.[0]?.level ?? null
+
+    fetchSeq.current += 1
+    setIsOpen(true)
+    setActiveCategory(matchedCategory)
+    setSelectedStaticLevel(requestedLevel)
+    setSuggestCount(DEFAULT_CATEGORY_WORD_COUNT)
+    setStatus('idle')
+    setError(null)
+  }, [initialCategoryId, initialCategoryLevel, publicCategoryGroups])
 
   return (
     <motion.div

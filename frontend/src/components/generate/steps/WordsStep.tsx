@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Sparkles, Wand2 } from 'lucide-react'
 import { GlassInput, WordChips, type GlassInputHandle } from '../shared/GlassInput'
@@ -31,6 +32,7 @@ export default function WordsStep({
   onCustomize,
 }: WordsStepProps) {
   const { t, tp } = useTranslation()
+  const [searchParams] = useSearchParams()
   const [error, setError] = useState<string | null>(null)
   const glassInputRef = useRef<GlassInputHandle>(null)
   const wordCount = state.words.length
@@ -115,6 +117,8 @@ export default function WordsStep({
         {/* Categories section - collapsed until the user wants generated suggestions */}
         <CategoryPicker
           state={state}
+          initialCategoryId={searchParams.get('category')}
+          initialCategoryLevel={Number(searchParams.get('level')) || null}
           onMergeWords={handleMergeWords}
           onMergeVocabularyItems={handleMergeVocabularyItems}
           onTargetLanguageChange={(language) => dispatch({ type: 'PRESELECT_LANGUAGE', language })}
