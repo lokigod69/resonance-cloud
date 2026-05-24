@@ -43,8 +43,19 @@ export function SrsActionTile({
 
   const sizing =
     tier === 'top'
-      ? 'min-h-[104px] gap-2 rounded-2xl px-5 py-4'
-      : 'min-h-[78px] gap-1.5 rounded-xl px-5 py-3.5'
+      ? 'min-h-[96px] rounded-2xl px-7 py-4 gap-5'
+      : 'min-h-[72px] rounded-xl px-6 py-3.5 gap-4'
+
+  // Top tier: colored label (accent). Bottom tier: muted neutral label.
+  const labelClass =
+    tier === 'top'
+      ? 'stat-label-accent text-lg font-semibold uppercase tracking-[0.16em]'
+      : 'text-xs font-semibold uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--text-primary)_64%,transparent)]'
+
+  const countClass =
+    tier === 'top'
+      ? 'stat-count text-5xl font-semibold leading-none'
+      : 'stat-count text-3xl font-semibold leading-none'
 
   return (
     <button
@@ -54,30 +65,15 @@ export function SrsActionTile({
         'stat-tile',
         ACCENT_CLASS[accent],
         sizing,
-        'flex w-full flex-col items-start justify-between text-left',
+        'flex w-full items-center justify-between text-left',
         isDisabled ? 'cursor-not-allowed opacity-55' : 'cursor-pointer',
       ].join(' ')}
       disabled={isDisabled}
       onClick={handleClick}
     >
-      <span
-        className={
-          tier === 'top'
-            ? 'text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--text-primary)_70%,transparent)]'
-            : 'text-[10px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--text-primary)_60%,transparent)]'
-        }
-      >
-        {label}
-      </span>
-      <div
-        className={
-          tier === 'top'
-            ? 'stat-count text-4xl font-semibold leading-none'
-            : 'stat-count text-2xl font-semibold leading-none'
-        }
-      >
-        {count}
-      </div>
+      <span className={labelClass}>{label}</span>
+      <span className="stat-tile-divider" aria-hidden="true" />
+      <span className={countClass}>{count}</span>
     </button>
   )
 }

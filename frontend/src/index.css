@@ -958,15 +958,17 @@ body::before {
   border-radius: 9999px;
 }
 
-/* Stat tile — glass chrome shared by both tiers. */
+/* Stat tile — glass chrome shared by both tiers. Strong glass + heavy
+   blur matches the topnav's frosted look so the cosmos bg is blurred,
+   not just tinted. */
 .stat-tile {
-  background: var(--surface-glass);
-  backdrop-filter: blur(22px) saturate(1.1);
-  -webkit-backdrop-filter: blur(22px) saturate(1.1);
+  background: var(--surface-glass-strong);
+  backdrop-filter: blur(36px) saturate(1.5);
+  -webkit-backdrop-filter: blur(36px) saturate(1.5);
   border: 1px solid var(--border-subtle);
-  border-top-color: color-mix(in srgb, var(--text-primary) 14%, transparent);
-  border-left-color: color-mix(in srgb, var(--text-primary) 10%, transparent);
-  box-shadow: var(--shadow-soft), inset 0 1px 0 color-mix(in srgb, var(--text-primary) 10%, transparent);
+  border-top-color: color-mix(in srgb, var(--text-primary) 16%, transparent);
+  border-left-color: color-mix(in srgb, var(--text-primary) 12%, transparent);
+  box-shadow: var(--shadow-soft), inset 0 1px 0 color-mix(in srgb, var(--text-primary) 12%, transparent);
   color: var(--text-primary);
   transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, filter 200ms ease;
 }
@@ -1017,8 +1019,93 @@ body::before {
   text-shadow: 0 0 24px var(--tile-accent-glow, transparent);
 }
 
-/* Mastered empty-state badge — small golden circle when count is 0.
-   Quieter signal than a full tile; the donut already conveys progress. */
+.stat-tile .stat-label-accent {
+  color: var(--tile-accent, var(--text-primary));
+  text-shadow: 0 0 18px var(--tile-accent-glow, transparent);
+}
+
+/* Vertical glow divider between label and count. Picks up --tile-accent
+   so it carries the same hue as the colored label/number. */
+.stat-tile-divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 0.5rem 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--tile-accent, var(--text-primary)) 48%, transparent) 50%,
+    transparent
+  );
+  box-shadow: 0 0 10px var(--tile-accent-glow, transparent);
+}
+
+/* Mastered — golden disc that complements the mastery donut.
+   When count > 0 use .mastered-circle-disc; when 0 fall back to the
+   small .mastered-empty-ring (quieter signal, donut already conveys
+   progress). Both shapes are round, matching the donut visually. */
+.mastered-circle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mastered-circle-disc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 9999px;
+  border: 2px solid color-mix(in srgb, #f7c843 56%, transparent);
+  background:
+    radial-gradient(circle at 32% 26%, color-mix(in srgb, #f7c843 22%, transparent), transparent 58%),
+    radial-gradient(circle at center, var(--surface-glass-strong), color-mix(in srgb, var(--surface-glass-strong) 60%, transparent) 100%);
+  box-shadow:
+    0 0 32px rgba(247, 200, 67, 0.34),
+    inset 0 1px 0 color-mix(in srgb, #f7c843 26%, transparent);
+  backdrop-filter: blur(28px) saturate(1.45);
+  -webkit-backdrop-filter: blur(28px) saturate(1.45);
+  color: #f7c843;
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1;
+  text-shadow: 0 0 22px rgba(247, 200, 67, 0.46);
+  transition: transform 200ms ease, box-shadow 200ms ease, filter 200ms ease;
+  cursor: pointer;
+}
+
+.mastered-circle-disc:not(:disabled):hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow:
+    0 0 46px rgba(247, 200, 67, 0.52),
+    inset 0 1px 0 color-mix(in srgb, #f7c843 34%, transparent);
+}
+
+.mastered-circle-disc:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px #f7c843,
+    0 0 46px rgba(247, 200, 67, 0.52),
+    inset 0 1px 0 color-mix(in srgb, #f7c843 34%, transparent);
+}
+
+.mastered-circle-disc:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.mastered-circle-caption {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: color-mix(in srgb, var(--text-primary) 56%, transparent);
+}
+
+/* Mastered empty-state — same shape rules as the disc but smaller and
+   dimmer (no count to celebrate). */
 .mastered-empty {
   display: inline-flex;
   flex-direction: column;

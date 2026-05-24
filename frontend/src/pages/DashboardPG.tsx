@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { AlertCircle, LogIn, RefreshCw } from 'lucide-react'
 import { MasteryDonut } from '@/components/dashboard/MasteryDonut'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
@@ -21,6 +21,7 @@ export default function DashboardPG() {
   const { user, profile } = useAuth()
   const { t } = useTranslation()
   const { activeLanguage, setActiveLanguage } = useLanguage()
+  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const queryLang = searchParams.get('lang')
 
@@ -168,17 +169,24 @@ export default function DashboardPG() {
           />
         </div>
 
-        <div className="w-full sm:max-w-xs mx-auto">
+        <div className="mastered-circle">
           {counts.mastered > 0 ? (
-            <SrsActionTile
-              label={t('study.queue.mastered')}
-              count={counts.mastered}
-              queue="mastered"
-              language={activeLanguage ?? ''}
-              tier="bottom"
-              accent="gold"
-              disabled={tilesDisabled}
-            />
+            <>
+              <button
+                type="button"
+                className="mastered-circle-disc"
+                disabled={tilesDisabled}
+                onClick={() => {
+                  if (tilesDisabled || !activeLanguage) return
+                  const params = new URLSearchParams({ queue: 'mastered', lang: activeLanguage })
+                  navigate(`/study?${params.toString()}`)
+                }}
+                aria-label={`${counts.mastered} ${t('study.queue.mastered')}`}
+              >
+                {counts.mastered}
+              </button>
+              <span className="mastered-circle-caption">{t('study.queue.mastered')}</span>
+            </>
           ) : (
             <div className="mastered-empty">
               <span className="mastered-empty-ring">0</span>
