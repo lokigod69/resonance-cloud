@@ -148,18 +148,20 @@ function getLanguageCode(language: string | null | undefined) {
 export default function StudyCanvas() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const { activeLanguage } = useLanguage()
+  const { activeLanguage, setActiveLanguage } = useLanguage()
 
   const deckId = searchParams.get('deck')
+  const langParam = searchParams.get('lang')
   const queueParam = searchParams.get('queue')
   const queue = isStudyQueue(queueParam) ? queueParam : null
   const modeParam = searchParams.get('mode')
   const requestedMode = isCanvasMode(modeParam) ? modeParam : null
   const rawReturnTo = searchParams.get('returnTo')
   const returnTo = rawReturnTo?.startsWith('/') ? rawReturnTo : null
+  const studyLanguage = langParam ?? activeLanguage
   const sessionStorageKey = useMemo(
-    () => getCanvasSessionStorageKey(deckId, activeLanguage, queue),
-    [activeLanguage, deckId, queue],
+    () => getCanvasSessionStorageKey(deckId, studyLanguage, queue),
+    [deckId, queue, studyLanguage],
   )
   const initialSession = useMemo(() => loadStoredSession(sessionStorageKey), [sessionStorageKey])
 
@@ -180,7 +182,12 @@ export default function StudyCanvas() {
   const [sessionComplete, setSessionComplete] = useState(() => initialSession?.sessionComplete ?? false)
 
   // Data
-  const { words, loading, recordAttempt } = useStudySession(deckId, 'canvas', activeLanguage, queue)
+  const { words, loading, recordAttempt } = useStudySession(deckId, 'canvas', studyLanguage, queue)
+
+  useEffect(() => {
+    if (!langParam || activeLanguage === langParam) return
+    setActiveLanguage(langParam)
+  }, [activeLanguage, langParam, setActiveLanguage])
 
   useEffect(() => {
     saveLocalPreference(DIRECTION_STORAGE_KEY, direction)
@@ -268,7 +275,7 @@ export default function StudyCanvas() {
     const languageWord = words.find((word) => word.target_language || word.base_language)
     const deckTarget = languageWord?.target_language ?? null
     const deckBase = languageWord?.base_language ?? null
-    const target = deckTarget ?? activeLanguage ?? null
+    const target = deckTarget ?? studyLanguage ?? null
     const base = deckBase
 
     return {
@@ -278,7 +285,7 @@ export default function StudyCanvas() {
       baseCode: getLanguageCode(base),
       isSameLanguage: !!target && !!base && normalizeLanguage(target) === normalizeLanguage(base),
     }
-  }, [activeLanguage, words])
+  }, [studyLanguage, words])
 
   const hasCompleteDeckLanguagePair = useMemo(() => {
     const languageWord = words.find((word) => word.target_language || word.base_language)
@@ -406,7 +413,7 @@ export default function StudyCanvas() {
     <CanvasShell>
       {queue && (
         <div className="fixed left-1/2 top-3 z-[70] w-[min(92vw,28rem)] -translate-x-1/2">
-          <QueueIndicator queue={queue} count={words.length} language={activeLanguage ?? ''} />
+          <QueueIndicator queue={queue} count={words.length} language={studyLanguage ?? ''} />
         </div>
       )}
       <ActiveModeComponent

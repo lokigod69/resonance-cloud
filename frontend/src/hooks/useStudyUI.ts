@@ -21,10 +21,12 @@ interface UseStudyUIOptions {
 export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIOptions) {
   const [searchParams] = useSearchParams()
   const deckParam = searchParams.get('deck')
+  const langParam = searchParams.get('lang')
   const queueParam = queue ?? searchParams.get('queue')
   const queueFilter = isStudyQueue(queueParam) ? queueParam : null
   const { user } = useAuth()
-  const { activeLanguage } = useLanguage()
+  const { activeLanguage, setActiveLanguage } = useLanguage()
+  const studyLanguage = langParam ?? activeLanguage
 
   const [deckFilter, setDeckFilter] = useState<string>(deckParam ?? 'all')
   const [allDecks, setAllDecks] = useState<DeckOption[]>([])
@@ -38,9 +40,14 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
       .then(({ data }) => { if (data) setAllDecks(data) })
   }, [user])
 
+  useEffect(() => {
+    if (!langParam || activeLanguage === langParam) return
+    setActiveLanguage(langParam)
+  }, [activeLanguage, langParam, setActiveLanguage])
+
   // Filter decks to active language
-  const decks = activeLanguage
-    ? allDecks.filter(d => d.target_language === activeLanguage)
+  const decks = studyLanguage
+    ? allDecks.filter(d => d.target_language === studyLanguage)
     : allDecks
 
   // Reset deck filter when language changes (selected deck may not be in new language)
@@ -48,9 +55,9 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
     if (deckParam) return // don't override explicit deck param
     // eslint-disable-next-line react-hooks/set-state-in-effect -- resets user-controlled filter when activeLanguage changes; canonical reset-on-key pattern
     setDeckFilter('all')
-  }, [activeLanguage, deckParam])
+  }, [studyLanguage, deckParam])
 
-  const { words, loading, sessionStats, recordAttempt, scheduleRetry, consumeRetry, restart: restartSession } = useStudySession(deckFilter === 'all' ? null : deckFilter, studyMode, activeLanguage, queueFilter)
+  const { words, loading, sessionStats, recordAttempt, scheduleRetry, consumeRetry, restart: restartSession } = useStudySession(deckFilter === 'all' ? null : deckFilter, studyMode, studyLanguage, queueFilter)
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
@@ -67,7 +74,7 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
     setSessionComplete(false)
     setReviewed(0)
     visitedIdsRef.current = new Set()
-  }, [deckFilter, activeLanguage, queueFilter])
+  }, [deckFilter, studyLanguage, queueFilter])
 
   const { isMuted, toggleMute } = useVideoVolume(videoRef, false)
   const { togglePlay, replay, onPlay, onPause } = useVideoPlayback(videoRef)

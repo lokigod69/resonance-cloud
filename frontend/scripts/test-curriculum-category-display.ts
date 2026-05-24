@@ -50,9 +50,23 @@ assert.ok(
   categoryListSource.includes('ThematicCategoryHero'),
   'thematic categories should use a deterministic fallback visual instead of requiring cover images',
 )
-assert.ok(
+assert.equal(
   categoryListSource.includes('/generate?category='),
-  'thematic category cards should route to Generate with a selected category',
+  false,
+  'thematic category cards should not route directly to Generate',
+)
+assert.ok(
+  categoryListSource.includes('thematicCategoryHref') && categoryListSource.includes('/categories/'),
+  'thematic category cards should open category detail routes',
+)
+assert.ok(
+  categoryListSource.includes('categories.openCategoryAction'),
+  'thematic category cards should use an open-category CTA instead of generation copy',
+)
+assert.equal(
+  categoryListSource.includes('categories.generateFromThisCategory'),
+  false,
+  'thematic category cards should not label the primary action as generation',
 )
 
 const animals = staticThematicCategories.find((category) => category.id === 'animals')
@@ -64,10 +78,39 @@ assert.ok(nutsSeeds)
 assert.equal(nutsSeeds.staticWordLevels?.length, 5, 'variable-level thematic packs should remain supported on the page')
 
 const categoryDetailSource = readFileSync('src/pages/categories/CategoryDetailPage.tsx', 'utf8')
-assert.equal(
-  categoryDetailSource.includes("tp('categories.entryCount'"),
-  false,
-  'category detail level rows should not render word-count text',
+assert.ok(
+  categoryDetailSource.includes('getStaticCategoryById') && categoryDetailSource.includes('renderStaticCategoryDetail'),
+  'CategoryDetailPage should support thematic static category detail pages',
+)
+assert.ok(
+  categoryDetailSource.includes('getStaticCategorySelectedItems'),
+  'thematic category detail should render target/helper-language word previews',
+)
+assert.ok(
+  categoryDetailSource.includes('categories.generateDeckFromCategory'),
+  'thematic category detail may expose generation only as a secondary explicit action',
+)
+assert.ok(
+  categoryDetailSource.includes('/level/'),
+  'thematic category levels should open level preview routes',
+)
+
+const levelDetailSource = readFileSync('src/pages/categories/LevelDetailPage.tsx', 'utf8')
+assert.ok(
+  levelDetailSource.includes('getStaticCategoryById') && levelDetailSource.includes('renderStaticLevelDetail'),
+  'LevelDetailPage should support thematic static level preview pages',
+)
+assert.ok(
+  levelDetailSource.includes('chair') === false,
+  'level detail implementation should be data-driven, not hardcode Home & Objects sample words',
+)
+assert.ok(
+  levelDetailSource.includes('categories.noStaticStudyDeck'),
+  'static thematic levels should not fake study availability before a deck exists',
+)
+assert.ok(
+  levelDetailSource.includes('categories.generateDeckFromLevel'),
+  'static thematic levels should expose generation only as a secondary explicit action',
 )
 
 process.stdout.write('curriculum category display ok\n')
