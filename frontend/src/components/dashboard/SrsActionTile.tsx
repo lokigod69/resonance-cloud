@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export type SrsQueue = 'review' | 'learn' | 'strengthen' | 'mastered'
@@ -8,10 +7,9 @@ type SrsActionTileProps = {
   count: number
   queue: SrsQueue
   language: string
-  variant?: 'primary' | 'muted'
-  icon?: ReactNode
+  tier?: 'top' | 'bottom'
+  accent?: 'cool' | 'warm' | 'neutral'
   disabled?: boolean
-  caption?: string
 }
 
 export function SrsActionTile({
@@ -19,10 +17,9 @@ export function SrsActionTile({
   count,
   queue,
   language,
-  variant = 'primary',
-  icon,
+  tier = 'top',
+  accent = 'neutral',
   disabled = false,
-  caption,
 }: SrsActionTileProps) {
   const navigate = useNavigate()
   const isDisabled = disabled || count === 0 || !language
@@ -37,26 +34,49 @@ export function SrsActionTile({
     navigate(`/study?${params.toString()}`)
   }
 
+  const sizing =
+    tier === 'top'
+      ? 'min-h-[148px] gap-3 rounded-2xl p-6'
+      : 'min-h-[112px] gap-2 rounded-xl p-5'
+
+  const accentClass =
+    accent === 'cool'
+      ? 'stat-tile-accent-cool'
+      : accent === 'warm'
+        ? 'stat-tile-accent-warm'
+        : 'stat-tile-accent-neutral'
+
   return (
     <button
       type="button"
       aria-disabled={isDisabled}
       className={[
-        'theme-card flex min-h-[132px] w-full flex-col items-start justify-between rounded-xl border p-5 text-left transition',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
-        isDisabled ? 'cursor-not-allowed opacity-55' : 'hover:-translate-y-0.5 hover:border-primary/40',
-        variant === 'muted' ? 'bg-muted/20' : 'bg-card',
+        'stat-tile',
+        accentClass,
+        sizing,
+        'flex w-full flex-col items-start justify-between text-left',
+        isDisabled ? 'cursor-not-allowed opacity-55' : 'cursor-pointer',
       ].join(' ')}
       disabled={isDisabled}
       onClick={handleClick}
     >
-      <div className="flex w-full items-start justify-between gap-3">
-        <span className="text-sm font-medium text-muted-foreground">{label}</span>
-        {icon ? <span className="text-muted-foreground">{icon}</span> : null}
-      </div>
-      <div>
-        <div className="text-4xl font-semibold leading-none text-foreground">{count}</div>
-        {caption ? <p className="mt-2 text-xs font-medium text-muted-foreground">{caption}</p> : null}
+      <span
+        className={
+          tier === 'top'
+            ? 'text-xs font-semibold uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--text-primary)_70%,transparent)]'
+            : 'text-[11px] font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--text-primary)_60%,transparent)]'
+        }
+      >
+        {label}
+      </span>
+      <div
+        className={
+          tier === 'top'
+            ? 'stat-count text-5xl font-semibold leading-none'
+            : 'stat-count text-3xl font-semibold leading-none'
+        }
+      >
+        {count}
       </div>
     </button>
   )

@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { Flame, RotateCcw, Sparkles, Trophy } from 'lucide-react'
 import { MasteryDonut } from '@/components/dashboard/MasteryDonut'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
+import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -78,7 +78,6 @@ export default function Dashboard() {
   const counts = wordStates.counts
   const totalWords = wordStates.data.length
   const reviewDue = counts.reviewingDue + counts.masteredDue
-  const learnCaption = counts.newDue < counts.new ? `${counts.newDue} of ${counts.new} new available today` : undefined
   const tilesDisabled = !activeLanguage || wordStates.loading
 
   if (!user) {
@@ -105,77 +104,71 @@ export default function Dashboard() {
     )
   }
 
+  const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
+
   return (
-    <div className="classic-dashboard-wrapper px-4 pb-28 pt-4 md:px-6">
-      <div className="classic-aurora" aria-hidden="true" />
-      <div className="relative mx-auto flex w-full max-w-5xl flex-col gap-8">
-        <section className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-          <p className="text-sm font-medium text-muted-foreground">
-            {t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })}
-          </p>
-        </section>
+    <div className="theme-cosmos dashboard-cosmic px-4 pb-28 pt-6 md:px-6 md:pt-10">
+      <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center gap-10 text-center">
+        <h1 className="welcome-hero font-display text-4xl font-bold sm:text-5xl md:text-6xl">
+          {greeting}
+        </h1>
 
-        <section className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <MasteryDonut mastered={counts.mastered} total={totalWords} loading={dashboardLoading || wordStates.loading} />
-        </section>
+        <MasteryDonut
+          mastered={counts.mastered}
+          total={totalWords}
+          loading={dashboardLoading || wordStates.loading}
+        />
 
-        {availableLanguages.length > 1 && (
-          <div className="flex flex-wrap gap-2">
-            {availableLanguages.map((lang) => {
-              const isActive = lang === activeLanguage
-              return (
-                <button
-                  key={lang}
-                  type="button"
-                  onClick={() => setActiveLanguage(lang)}
-                  className={`min-h-[40px] rounded-full border px-4 py-2 text-sm font-medium transition ${
-                    isActive
-                      ? 'border-primary bg-primary text-primary-foreground'
-                      : 'border-border bg-card text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  {t(`langName.${lang}`)}
-                </button>
-              )
-            })}
-          </div>
-        )}
+        <LanguageCluster
+          languages={availableLanguages}
+          activeLanguage={activeLanguage}
+          onSelect={setActiveLanguage}
+        />
 
-        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <section className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
           <SrsActionTile
-            label="Review due"
+            label={t('study.queue.review')}
             count={reviewDue}
             queue="review"
             language={activeLanguage ?? ''}
-            icon={<RotateCcw className="h-5 w-5" />}
+            tier="top"
+            accent="cool"
             disabled={tilesDisabled}
           />
           <SrsActionTile
-            label="Learn new"
+            label={t('study.queue.learn')}
             count={counts.newDue}
             queue="learn"
             language={activeLanguage ?? ''}
-            icon={<Sparkles className="h-5 w-5" />}
+            tier="top"
+            accent="warm"
             disabled={tilesDisabled}
-            caption={learnCaption}
           />
+        </section>
+
+        <section
+          className={`grid w-full gap-3 ${counts.mastered > 0 ? 'grid-cols-2 sm:max-w-md' : 'grid-cols-1 sm:max-w-xs'} mx-auto`}
+        >
           <SrsActionTile
-            label="Strengthen"
+            label={t('study.queue.strengthen')}
             count={counts.learning}
             queue="strengthen"
             language={activeLanguage ?? ''}
-            icon={<Flame className="h-5 w-5" />}
+            tier="bottom"
+            accent="neutral"
             disabled={tilesDisabled}
           />
-          <SrsActionTile
-            label="Mastered"
-            count={counts.mastered}
-            queue="mastered"
-            language={activeLanguage ?? ''}
-            variant="muted"
-            icon={<Trophy className="h-5 w-5" />}
-            disabled={tilesDisabled}
-          />
+          {counts.mastered > 0 && (
+            <SrsActionTile
+              label={t('study.queue.mastered')}
+              count={counts.mastered}
+              queue="mastered"
+              language={activeLanguage ?? ''}
+              tier="bottom"
+              accent="neutral"
+              disabled={tilesDisabled}
+            />
+          )}
         </section>
       </div>
     </div>
