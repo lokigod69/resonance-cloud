@@ -22,7 +22,12 @@ function userMetadataAllowsBilling(userMetadata: Record<string, unknown> | null 
   return userMetadata?.is_test_user === true || userMetadata?.stripe_tester === true
 }
 
+function serverSandboxBillingEnabled(): boolean {
+  return process.env.STRIPE_BILLING_SANDBOX_ENABLED === 'true'
+}
+
 async function isBillingAllowed(userId: string, userMetadata: Record<string, unknown>): Promise<boolean> {
+  if (serverSandboxBillingEnabled()) return true
   if (userMetadataAllowsBilling(userMetadata)) return true
   if (!supabaseUrl || !supabaseServiceKey) return false
 
