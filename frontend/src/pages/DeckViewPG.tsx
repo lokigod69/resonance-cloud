@@ -1103,7 +1103,7 @@ export default function DeckViewPG() {
             </button>
           </>
         )}
-        {words.length === 0 || deck.source_kind === 'curriculum' ? (
+        {words.length === 0 ? (
           <button
             onClick={handleDeleteDeck}
             disabled={deletingDeck}

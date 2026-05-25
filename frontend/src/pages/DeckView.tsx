@@ -433,6 +433,70 @@ export default function DeckView() {
         </div>
       </div>
 
+      {/* Top actions — layout adapts to button count:
+          editMode=true  → 1 button (Done)              → centered at natural width
+          editMode=false → 3 buttons (Study/Add/Edit|Delete) → 3-col grid */}
+      <div className={editMode
+        ? 'flex justify-center'
+        : 'grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto'
+      }>
+        {!editMode && (
+          <>
+            <Button
+              variant="outline"
+              className="border-primary/30 text-primary hover:bg-primary/10"
+              onClick={() => navigate(`/study?deck=${deck.id}`)}
+            >
+              <BookOpen className="h-4 w-4 mr-2" />
+              {t('deckview.study')}
+            </Button>
+            <Button
+              variant="outline"
+              className="border-primary/30 text-primary hover:bg-primary/10"
+              onClick={() => navigate(`/generate?deckId=${deck.id}`)}
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              {t('deckview.addCards')}
+            </Button>
+          </>
+        )}
+        {words.length === 0 ? (
+          <Button
+            variant="outline"
+            className="border-destructive/40 text-destructive hover:bg-destructive/10"
+            onClick={handleDeleteDeck}
+            disabled={deletingDeck}
+          >
+            {deletingDeck ? (
+              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+            ) : (
+              <Trash2 className="h-4 w-4 mr-2" />
+            )}
+            {t('deckview.deleteDeck')}
+          </Button>
+        ) : (
+          <Button
+            variant="outline"
+            className="border-primary/30 text-primary hover:bg-primary/10"
+            onClick={() => {
+              if (editMode) {
+                setEditMode(false)
+                setSelectedWords(new Set())
+              } else {
+                setEditMode(true)
+                setSelectedWords(new Set())
+              }
+            }}
+          >
+            {editMode ? (
+              <><X className="h-4 w-4 mr-2" />{t('deckview.done')}</>
+            ) : (
+              <><PencilLine className="h-4 w-4 mr-2" />{t('deckview.editDeck')}</>
+            )}
+          </Button>
+        )}
+      </div>
+
       {/* Quick-select bar (edit mode) */}
       {editMode && (
         <div className="w-full max-w-5xl mx-auto px-4 pt-4 flex flex-wrap gap-2 justify-center">
@@ -643,70 +707,6 @@ export default function DeckView() {
           )
         })}
       </div>
-      </div>
-
-      {/* Footer actions — layout adapts to button count:
-          editMode=true  → 1 button (Done)              → centered at natural width
-          editMode=false → 3 buttons (Study/Add/Edit|Delete) → 3-col grid */}
-      <div className={editMode
-        ? 'flex justify-center pt-4'
-        : 'grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 max-w-xl mx-auto'
-      }>
-        {!editMode && (
-          <>
-            <Button
-              variant="outline"
-              className="border-primary/30 text-primary hover:bg-primary/10"
-              onClick={() => navigate(`/study?deck=${deck.id}`)}
-            >
-              <BookOpen className="h-4 w-4 mr-2" />
-              {t('deckview.study')}
-            </Button>
-            <Button
-              variant="outline"
-              className="border-primary/30 text-primary hover:bg-primary/10"
-              onClick={() => navigate(`/generate?deckId=${deck.id}`)}
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              {t('deckview.addCards')}
-            </Button>
-          </>
-        )}
-        {words.length === 0 || deck.source_kind === 'curriculum' ? (
-          <Button
-            variant="outline"
-            className="border-destructive/40 text-destructive hover:bg-destructive/10"
-            onClick={handleDeleteDeck}
-            disabled={deletingDeck}
-          >
-            {deletingDeck ? (
-              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-            ) : (
-              <Trash2 className="h-4 w-4 mr-2" />
-            )}
-            {t('deckview.deleteDeck')}
-          </Button>
-        ) : (
-          <Button
-            variant="outline"
-            className="border-primary/30 text-primary hover:bg-primary/10"
-            onClick={() => {
-              if (editMode) {
-                setEditMode(false)
-                setSelectedWords(new Set())
-              } else {
-                setEditMode(true)
-                setSelectedWords(new Set())
-              }
-            }}
-          >
-            {editMode ? (
-              <><X className="h-4 w-4 mr-2" />{t('deckview.done')}</>
-            ) : (
-              <><PencilLine className="h-4 w-4 mr-2" />{t('deckview.editDeck')}</>
-            )}
-          </Button>
-        )}
       </div>
 
       {/* Edit mode action bar */}
