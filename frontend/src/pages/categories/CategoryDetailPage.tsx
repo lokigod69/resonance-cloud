@@ -20,6 +20,7 @@ import {
   type CategoryGroup,
 } from '@/data/categories'
 import { listImportedCurriculumDecks } from '@/lib/curriculumDeckBridge'
+import { generatedCategoryHeroImagePath } from '@/lib/generatedCategoryImages'
 import styles from './Categories.module.css'
 
 function getStaticCategoryById(categoryId: string | undefined): { category: StaticCategory; group: CategoryGroup } | null {
@@ -47,6 +48,28 @@ function resolveVisibleLanguage(value: string | null | undefined, fallback: stri
     || language.nativeName.toLowerCase() === normalized
   ))
   return matched?.value ?? fallback
+}
+
+function StaticCategoryDetailVisual({ category }: { category: StaticCategory }) {
+  const [imageFailed, setImageFailed] = useState(false)
+  const imageSrc = category.id ? generatedCategoryHeroImagePath('en', category.id) : null
+
+  if (imageSrc && !imageFailed) {
+    return (
+      <img
+        src={imageSrc}
+        alt=""
+        className={`${styles.detailEmoji} ${styles.staticDetailImage}`}
+        onError={() => setImageFailed(true)}
+      />
+    )
+  }
+
+  return (
+    <div className={`${styles.detailEmoji} ${styles.staticDetailEmoji}`} aria-hidden="true">
+      {category.emoji}
+    </div>
+  )
 }
 
 export default function CategoryDetailPage() {
@@ -209,7 +232,7 @@ function renderStaticCategoryDetail({
       </Link>
 
       <header className={styles.detailHero}>
-        <div className={`${styles.detailEmoji} ${styles.staticDetailEmoji}`} aria-hidden="true">{category.emoji}</div>
+        <StaticCategoryDetailVisual category={category} />
         <div>
           <p className={styles.eyebrow}>{t(group.groupKey)}</p>
           <h1 className={styles.title}>{t(category.labelKey)}</h1>

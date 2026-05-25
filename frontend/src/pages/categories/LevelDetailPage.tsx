@@ -379,6 +379,14 @@ function renderStaticLevelDetail({
       <div className={styles.staticWordGrid}>
         {selectedItems.map((item) => (
           <article key={item.conceptId} className={styles.staticWordCard}>
+            <CurriculumEntryImage
+              languageIso="en"
+              categorySlug={category.id ?? category.name}
+              term={item.translations.en.term}
+              fallbackEmoji={category.emoji}
+              alt=""
+              className={styles.entryImage}
+            />
             <div>
               <h2 className={styles.term}>{item.targetTerm}</h2>
               {item.helperTerm && item.helperTerm !== item.targetTerm ? (

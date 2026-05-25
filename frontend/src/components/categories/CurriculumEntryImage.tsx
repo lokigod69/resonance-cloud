@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
 import { curriculumEntryImagePath } from '@/lib/curriculumImagePath'
 import {
   resolveCurriculumImageSetAsset,
@@ -32,7 +33,9 @@ export default function CurriculumEntryImage({
   const resolved = activeImageSet
     ? resolveCurriculumImageSetAsset(term, { activeSetKey: activeImageSet, languageIso })
     : null
-  const src = resolved?.publicPath ?? curriculumEntryImagePath(languageIso, categorySlug, term)
+  const src = resolved?.publicPath
+    ?? generatedCategoryEntryImagePath(languageIso, categorySlug, term)
+    ?? curriculumEntryImagePath(languageIso, categorySlug, term)
   const [failedSrc, setFailedSrc] = useState<string | null>(null)
   const failed = failedSrc === src
 

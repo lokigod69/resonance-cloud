@@ -5,6 +5,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { supabase } from '@/lib/supabase'
 import { listCurriculumCategories, type CurriculumCategory } from '@/data/curriculumCategories'
+import { generatedCategoryHeroImagePath } from '@/lib/generatedCategoryImages'
 import {
   getPublicCategoryGroups,
   getStaticCategoryVocabularyItems,
@@ -53,7 +54,22 @@ function stableColorPair(category: StaticCategory) {
 }
 
 function ThematicCategoryHero({ category }: { category: StaticCategory }) {
+  const [imageFailed, setImageFailed] = useState(false)
+  const imageSrc = category.id ? generatedCategoryHeroImagePath('en', category.id) : null
   const [from, to] = stableColorPair(category)
+
+  if (imageSrc && !imageFailed) {
+    return (
+      <img
+        src={imageSrc}
+        alt=""
+        loading="lazy"
+        className={styles.heroImage}
+        onError={() => setImageFailed(true)}
+      />
+    )
+  }
+
   return (
     <div
       className={`${styles.heroPlaceholder} ${styles.thematicHeroPlaceholder}`}
