@@ -127,14 +127,13 @@ export function RedeemCodeDialog({
           </div>
         </div>
 
-        {/* Subscription sandbox */}
-        <div className="space-y-3 border-t border-border pt-4">
-          <div className="flex items-center justify-center gap-2 text-sm font-medium">
-            <CreditCard className="h-4 w-4" />
-            Subscription
-          </div>
-
-          {billingAvailable ? (
+        {/* Subscription sandbox - only shown to billing testers */}
+        {billingAvailable && (
+          <div className="space-y-3 border-t border-border pt-4">
+            <div className="flex items-center justify-center gap-2 text-sm font-medium">
+              <CreditCard className="h-4 w-4" />
+              Subscription
+            </div>
             <div className="space-y-2">
               <Button
                 className="w-full"
@@ -147,17 +146,8 @@ export function RedeemCodeDialog({
                 <p className="text-sm text-destructive text-center">{checkoutError}</p>
               )}
             </div>
-          ) : (
-            <div className="overflow-hidden rounded-md border border-destructive/40 bg-muted/50 text-center">
-              <div className="bg-destructive px-3 py-1 text-xs font-semibold text-destructive-foreground">
-                Today is being built — explore freely, but the experience here will change.
-              </div>
-              <div className="px-4 py-3 text-sm text-muted-foreground">
-                Subscription checkout is in private testing.
-              </div>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Redeem section */}
         <div className="space-y-3 border-t border-border pt-4">

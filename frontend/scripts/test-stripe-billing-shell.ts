@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import stripeBilling from '../api/_shared/stripeBilling.ts'
-import { isBillingTester } from '../src/lib/billingFlags'
+import { isBillingSandboxEnabled, isBillingTester } from '../src/lib/billingFlags'
 
 const {
   buildInvoiceCreditIdempotencyKey,
@@ -92,6 +92,9 @@ try {
     ),
     false,
   )
+  assert.equal(isBillingSandboxEnabled('true'), true)
+  assert.equal(isBillingSandboxEnabled('false'), false)
+  assert.equal(isBillingSandboxEnabled(undefined), false)
 
   console.log('Stripe billing shell tests passed')
 } finally {
