@@ -33,3 +33,22 @@ export function formatGuidedPathFullTitle(path: GuidedPathMetadata | undefined, 
   const language = t(`today.language.${path?.targetLanguage ?? 'English'}`)
   return `${language} A1 ${t('today.path.directoryGroupPractical')}`
 }
+
+export function splitGuidedPathLabel(
+  path: GuidedPathMetadata | undefined,
+  t: TranslationFn = createT('en'),
+): { language: string; level: string } {
+  if (!path) {
+    return { language: t('today.language.English'), level: 'A1' }
+  }
+
+  const numberMatch = path.id.match(LESSON_NUMBER_PATTERN)
+  const language = t(`today.language.${path.targetLanguage}`)
+
+  if (numberMatch?.[1]) {
+    return { language, level: `A1 P${numberMatch[1]}` }
+  }
+
+  const fallback = path.shortTitle.replace(new RegExp(`^${path.targetLanguage}\\s*`, 'i'), '').trim()
+  return { language, level: fallback || 'A1' }
+}

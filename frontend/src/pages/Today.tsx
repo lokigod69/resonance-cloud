@@ -210,6 +210,20 @@ export default function Today() {
 
       <div className="grid gap-6">
         {!sessionActive && (
+          <div
+            className="today-betaBanner overflow-hidden rounded-md border border-destructive/40 bg-muted/50 text-center"
+            role="status"
+          >
+            <div className="bg-destructive px-3 py-1 text-xs font-semibold text-destructive-foreground sm:text-sm">
+              Today is being built — explore freely, but the experience here will change.
+            </div>
+            <div className="px-4 py-2 text-xs text-muted-foreground sm:text-sm">
+              Subscription checkout is in private testing.
+            </div>
+          </div>
+        )}
+
+        {!sessionActive && (
           <TodayPathOverview
             overview={overview}
             pathOptions={pathOptions}

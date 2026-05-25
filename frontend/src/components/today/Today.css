@@ -190,6 +190,18 @@
   max-width: 100%;
 }
 
+.today-path-heroTitle {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.55rem;
+  row-gap: 0.05rem;
+}
+
+.today-path-heroTitleLanguage,
+.today-path-heroTitleLevel {
+  display: inline-block;
+}
+
 .today-path-directoryOverlay {
   animation: today-directory-fade 140ms ease-out;
 }
@@ -301,7 +313,6 @@
 .today-path-segmentGrid {
   --today-node-size: clamp(3.6rem, 7vw, 5.2rem);
   align-items: stretch;
-  grid-template-columns: repeat(5, var(--today-node-size));
 }
 
 .today-segment-reviewTile {
@@ -482,6 +493,9 @@
     radial-gradient(ellipse at 88% 40%, color-mix(in srgb, var(--today-glow) 34%, transparent), transparent 56%),
     linear-gradient(145deg, color-mix(in srgb, var(--today-panel) 88%, transparent), color-mix(in srgb, var(--surface-1) 32%, transparent));
   padding-right: clamp(4.5rem, 17vw, 11rem);
+  display: flex;
+  align-items: center;
+  min-height: clamp(9rem, 16vw, 11.5rem);
 }
 
 .today-featuredLessonOrb {
@@ -497,8 +511,8 @@
 }
 
 .today-featuredLessonContent {
-  grid-template-columns: minmax(0, 1fr);
   position: relative;
+  width: 100%;
   z-index: 1;
 }
 
@@ -532,50 +546,28 @@
 }
 
 .today-path-mobileConnectorSegment {
-  display: block;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
   grid-column: 1;
-  height: 0.48rem;
+  justify-content: center;
   justify-self: start;
-  margin-left: calc((3.35rem - 0.14rem) / 2);
+  margin-left: calc((3.35rem - 0.34rem) / 2);
+  padding-block: 0.3rem;
   pointer-events: none;
   position: relative;
-  width: 0.14rem;
+  width: 0.34rem;
   z-index: 0;
 }
 
-.today-path-mobileConnectorSegment::before,
-.today-path-mobileConnectorSegment::after {
-  content: "";
-  left: 50%;
-  pointer-events: none;
-  position: absolute;
-  transform: translateX(-50%);
-}
-
-.today-path-mobileConnectorSegment::before {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--today-accent-strong) 72%, transparent),
-    color-mix(in srgb, var(--today-glow) 92%, transparent),
-    color-mix(in srgb, var(--today-accent-strong) 62%, transparent)
-  );
+.today-path-mobileDot {
+  background: radial-gradient(circle, #fff9b7 0%, var(--today-accent-strong) 50%, transparent 78%);
   border-radius: 999px;
-  bottom: -0.05rem;
-  box-shadow:
-    0 0 10px color-mix(in srgb, var(--today-glow) 54%, transparent),
-    0 0 18px color-mix(in srgb, var(--today-accent) 28%, transparent);
-  top: -0.05rem;
-  width: 2px;
-}
-
-.today-path-mobileConnectorSegment::after {
-  background: radial-gradient(circle, #fff9b7 0%, var(--today-accent-strong) 42%, transparent 70%);
-  border-radius: 999px;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--today-glow) 76%, transparent);
-  height: 0.34rem;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 0.34rem;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--today-glow) 62%, transparent);
+  display: block;
+  height: 0.3rem;
+  width: 0.3rem;
 }
 
 .today-path-mobileRewards {
@@ -801,6 +793,18 @@
     word-break: normal;
   }
 
+  .today-path-heroTitle {
+    flex-direction: column;
+    column-gap: 0;
+    row-gap: 0.15rem;
+  }
+
+  .today-path-heroTitleLevel {
+    color: color-mix(in srgb, var(--today-accent-strong) 78%, var(--text-primary));
+    font-size: 0.78em;
+    font-weight: 600;
+  }
+
   .today-path-heroOrb {
     opacity: 0.66;
     right: -8.2rem;
@@ -908,54 +912,39 @@
     align-items: center;
     display: grid;
     gap: 0;
-    grid-template-columns: repeat(5, var(--today-node-size));
-    justify-content: space-between;
-    justify-items: center;
+    grid-template-columns:
+      var(--today-node-size) 1fr
+      var(--today-node-size) 1fr
+      var(--today-node-size) 1fr
+      var(--today-node-size) 1fr
+      var(--today-node-size);
     min-width: 0;
     padding-block: clamp(0.35rem, 0.9vw, 0.62rem);
     position: relative;
     z-index: 1;
   }
 
-  .today-path-desktopWave {
-    display: block;
-    height: clamp(0.78rem, 1.05vw, 1rem);
-    left: calc(var(--today-node-size) / 2);
-    overflow: visible;
+  .today-path-lessonSlot {
+    align-items: center;
+    display: contents;
+  }
+
+  .today-path-desktopDots {
+    align-items: center;
+    display: inline-flex;
+    gap: clamp(0.3rem, 0.55vw, 0.45rem);
+    justify-content: center;
+    min-width: 1.5rem;
     pointer-events: none;
-    position: absolute;
-    right: calc(var(--today-node-size) / 2);
-    top: 50%;
-    transform: translateY(-50%);
-    width: calc(100% - var(--today-node-size));
-    z-index: 0;
   }
 
-  .today-path-desktopWaveGlow,
-  .today-path-desktopWaveLine {
-    animation: today-path-wave-drift 5.8s ease-in-out infinite;
-    fill: none;
-    stroke-linecap: round;
-    vector-effect: non-scaling-stroke;
-  }
-
-  .today-path-desktopWaveGlow {
-    opacity: 0.26;
-    stroke: var(--today-glow);
-    stroke-width: 5;
-  }
-
-  .today-path-desktopWaveLine {
-    opacity: 0.9;
-    stroke-width: 1.75;
-  }
-
-  .today-path-desktopWaveNodes circle {
-    animation: today-path-wave-node-pulse 3.2s ease-in-out infinite;
-    fill: #fff6ad;
-    filter: drop-shadow(0 0 0.34rem color-mix(in srgb, var(--today-glow) 92%, transparent));
-    stroke: color-mix(in srgb, var(--today-accent-strong) 70%, transparent);
-    stroke-width: 0.26;
+  .today-path-desktopDot {
+    background: radial-gradient(circle, #fff9b7 0%, var(--today-accent-strong) 50%, transparent 80%);
+    border-radius: 999px;
+    box-shadow: 0 0 8px color-mix(in srgb, var(--today-glow) 56%, transparent);
+    display: inline-block;
+    height: clamp(0.32rem, 0.5vw, 0.42rem);
+    width: clamp(0.32rem, 0.5vw, 0.42rem);
   }
 
   .today-path-desktopRewardSlot {
@@ -998,38 +987,6 @@
   .today-path-desktopTrophySlot .today-segment-trophyImage {
     height: clamp(2.15rem, 3.2vw, 2.75rem);
     width: clamp(2.15rem, 3.2vw, 2.75rem);
-  }
-}
-
-@keyframes today-path-wave-drift {
-  0%,
-  100% {
-    opacity: 0.84;
-    transform: translateY(0);
-  }
-
-  50% {
-    opacity: 1;
-    transform: translateY(-0.03rem);
-  }
-}
-
-@keyframes today-path-wave-node-pulse {
-  0%,
-  100% {
-    opacity: 0.72;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .today-path-desktopWaveGlow,
-  .today-path-desktopWaveLine,
-  .today-path-desktopWaveNodes circle {
-    animation: none;
   }
 }
 
