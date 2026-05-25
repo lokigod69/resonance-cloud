@@ -968,18 +968,23 @@ body::before {
   border-radius: 9999px;
 }
 
-/* Stat tile — frosted glass that matches the topnav's recipe:
-   ~40% alpha bg + 64px blur. Anything more opaque than ~0.5 alpha
-   buries the blur effect; the header uses bg-black/40 backdrop-blur-3xl
-   so we mirror that exactly. */
+/* Stat tile — frosted glass. Uses a light translucent white-tint instead
+   of a pure-black overlay so the cosmos backdrop reads through as
+   frosted glass (matching the topnav vibe) rather than just "darker". */
 .stat-tile {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(64px) saturate(1.5);
-  -webkit-backdrop-filter: blur(64px) saturate(1.5);
-  border: 1px solid var(--border-subtle);
-  border-top-color: color-mix(in srgb, var(--text-primary) 16%, transparent);
-  border-left-color: color-mix(in srgb, var(--text-primary) 12%, transparent);
-  box-shadow: var(--shadow-soft), inset 0 1px 0 color-mix(in srgb, var(--text-primary) 12%, transparent);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--text-primary) 10%, transparent) 0%,
+    color-mix(in srgb, var(--text-primary) 4%, transparent) 100%
+  );
+  backdrop-filter: blur(48px) saturate(1.6);
+  -webkit-backdrop-filter: blur(48px) saturate(1.6);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 14%, transparent);
+  border-top-color: color-mix(in srgb, var(--text-primary) 24%, transparent);
+  border-left-color: color-mix(in srgb, var(--text-primary) 18%, transparent);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 18%, transparent);
   color: var(--text-primary);
   transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, filter 200ms ease;
 }
