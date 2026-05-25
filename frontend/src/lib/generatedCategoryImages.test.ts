@@ -11,7 +11,8 @@ function assertEqual(actual: unknown, expected: unknown, label: string) {
 }
 
 assertEqual(hasGeneratedCategoryImages('vegetables'), true, 'vegetables generated image set is available')
-assertEqual(hasGeneratedCategoryImages('food_drinks'), false, 'food and drinks is not marked available without a full medium set')
+assertEqual(hasGeneratedCategoryImages('food_drinks'), true, 'food and drinks generated image set is available')
+assertEqual(hasGeneratedCategoryImages('nature_weather'), true, 'nature and weather generated image set is available')
 
 assertEqual(
   generatedCategoryEntryImagePath('en', 'vegetables', 'green bean'),
@@ -23,4 +24,16 @@ assertEqual(
   generatedCategoryHeroImagePath('en', 'fruits'),
   '/curriculum/generated-categories/en/fruits/entries/apple.webp',
   'builds generated category hero path',
+)
+
+assertEqual(
+  generatedCategoryHeroImagePath('en', 'food_drinks'),
+  '/curriculum/generated-categories/en/food_drinks/entries/bread.webp',
+  'builds food and drinks generated category hero path',
+)
+
+assertEqual(
+  generatedCategoryHeroImagePath('en', 'nature_weather'),
+  '/curriculum/generated-categories/en/nature_weather/entries/sun.webp',
+  'builds nature and weather generated category hero path',
 )

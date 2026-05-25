@@ -1,5 +1,6 @@
 import CardDetailModal, { type CardDetailField, type CardDetailModel } from '@/components/common/CardDetailModal'
 import { curriculumEntryImagePath } from '@/lib/curriculumImagePath'
+import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
 import {
   resolveCurriculumImageSetAsset,
   type CurriculumImageSetKey,
@@ -182,7 +183,9 @@ export default function CurriculumEntryDetailModal({
     ? resolveCurriculumImageSetAsset(entry.term, { activeSetKey: activeImageSet, languageIso })
     : null
   const imageSrc =
-    setResolution?.publicPath ?? curriculumEntryImagePath(languageIso, categorySlug, entry.term)
+    setResolution?.publicPath
+    ?? generatedCategoryEntryImagePath(languageIso, categorySlug, entry.term)
+    ?? curriculumEntryImagePath(languageIso, categorySlug, entry.term)
 
   const model: CardDetailModel = {
     title: entry.term,

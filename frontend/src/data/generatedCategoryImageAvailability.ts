@@ -5,6 +5,8 @@ export const GENERATED_CATEGORY_IMAGE_HERO_TERMS = {
   fruits: 'apple',
   vegetables: 'carrot',
   nuts_seeds: 'almond',
+  food_drinks: 'bread',
+  nature_weather: 'sun',
   home_objects: 'chair',
   body_health: 'head',
   clothing_appearance: 'shirt',
