@@ -897,13 +897,15 @@ body::before {
   isolation: isolate;
   display: flex;
   flex-direction: column;
-  /* Fit exactly within the viewport on desktop so the page does not scroll.
-     Subtract the topnav offset plus main's vertical padding (p-6 = 1.5rem
-     on both top and bottom; main's pt is overridden to the header offset,
-     so only the pb-1.5rem remains to subtract). 100dvh accounts for
+  /* Fit exactly within the viewport on desktop so the page does not scroll
+     under either skin's main padding. AppLayout main has pb-1.5rem, while
+     PolishGlassLayout main has pb-5rem (room for the voice player widget).
+     Use the larger value so glassy doesn't overflow. Classic gets ~3.5rem
+     of unused bg area below the dashboard — invisible because the cosmic
+     bg is position:fixed and fills the viewport regardless. 100dvh handles
      mobile browser UI. min-height (not height) so taller content on small
      viewports can still grow + scroll naturally. */
-  min-height: calc(100dvh - var(--glassy-header-offset, 4rem) - 1.5rem);
+  min-height: calc(100dvh - var(--glassy-header-offset, 4rem) - 5rem);
 }
 
 .dashboard-cosmic::before {
@@ -966,13 +968,14 @@ body::before {
   border-radius: 9999px;
 }
 
-/* Stat tile — glass chrome shared by both tiers. Strong glass + heavy
-   blur matches the topnav's frosted look so the cosmos bg is blurred,
-   not just tinted. */
+/* Stat tile — frosted glass that matches the topnav's recipe:
+   ~40% alpha bg + 64px blur. Anything more opaque than ~0.5 alpha
+   buries the blur effect; the header uses bg-black/40 backdrop-blur-3xl
+   so we mirror that exactly. */
 .stat-tile {
-  background: var(--surface-glass-strong);
-  backdrop-filter: blur(36px) saturate(1.5);
-  -webkit-backdrop-filter: blur(36px) saturate(1.5);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(64px) saturate(1.5);
+  -webkit-backdrop-filter: blur(64px) saturate(1.5);
   border: 1px solid var(--border-subtle);
   border-top-color: color-mix(in srgb, var(--text-primary) 16%, transparent);
   border-left-color: color-mix(in srgb, var(--text-primary) 12%, transparent);
@@ -1066,14 +1069,15 @@ body::before {
   height: 104px;
   border-radius: 9999px;
   border: 2px solid color-mix(in srgb, #f7c843 56%, transparent);
+  /* Same frosted recipe as the tiles + a warm gold radial glow on top. */
   background:
     radial-gradient(circle at 32% 26%, color-mix(in srgb, #f7c843 22%, transparent), transparent 58%),
-    radial-gradient(circle at center, var(--surface-glass-strong), color-mix(in srgb, var(--surface-glass-strong) 60%, transparent) 100%);
+    rgba(0, 0, 0, 0.4);
   box-shadow:
     0 0 32px rgba(247, 200, 67, 0.34),
     inset 0 1px 0 color-mix(in srgb, #f7c843 26%, transparent);
-  backdrop-filter: blur(28px) saturate(1.45);
-  -webkit-backdrop-filter: blur(28px) saturate(1.45);
+  backdrop-filter: blur(64px) saturate(1.5);
+  -webkit-backdrop-filter: blur(64px) saturate(1.5);
   color: #f7c843;
   font-size: 2.25rem;
   font-weight: 600;
@@ -1151,9 +1155,9 @@ body::before {
 }
 
 .lang-pill {
-  background: var(--surface-glass);
-  backdrop-filter: blur(18px) saturate(1.1);
-  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(64px) saturate(1.5);
+  -webkit-backdrop-filter: blur(64px) saturate(1.5);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   transition: filter 180ms ease, box-shadow 180ms ease, color 180ms ease;
