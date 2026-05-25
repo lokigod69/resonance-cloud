@@ -13,6 +13,7 @@ function assertEqual(actual: unknown, expected: unknown, label: string) {
 assertEqual(hasGeneratedCategoryImages('vegetables'), true, 'vegetables generated image set is available')
 assertEqual(hasGeneratedCategoryImages('food_drinks'), true, 'food and drinks generated image set is available')
 assertEqual(hasGeneratedCategoryImages('nature_weather'), true, 'nature and weather generated image set is available')
+assertEqual(hasGeneratedCategoryImages('jobs_people'), true, 'jobs and people generated image set is available')
 
 assertEqual(
   generatedCategoryEntryImagePath('en', 'vegetables', 'green bean'),
@@ -36,4 +37,10 @@ assertEqual(
   generatedCategoryHeroImagePath('en', 'nature_weather'),
   '/curriculum/generated-categories/en/nature_weather/entries/sun.webp',
   'builds nature and weather generated category hero path',
+)
+
+assertEqual(
+  generatedCategoryHeroImagePath('en', 'jobs_people'),
+  '/curriculum/generated-categories/en/jobs_people/entries/person.webp',
+  'builds jobs and people generated category hero path',
 )
