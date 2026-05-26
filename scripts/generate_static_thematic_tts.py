@@ -370,8 +370,7 @@ def postprocess_audio(audio_bytes: bytes, *, allow_raw_audio: bool) -> tuple[byt
             "-af",
             "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.04:"
             "stop_periods=1:stop_threshold=-45dB:stop_silence=0.08,"
-            "afade=t=in:st=0:d=0.008,"
-            "afade=t=out:st=0:d=0.016",
+            "afade=t=in:st=0:d=0.008",
             "-ar",
             "44100",
             "-b:a",
@@ -379,6 +378,8 @@ def postprocess_audio(audio_bytes: bytes, *, allow_raw_audio: bool) -> tuple[byt
             str(trimmed),
         ]
         subprocess.run(trim_command, capture_output=True, check=True)
+        trimmed_duration_ms = _probe_duration_ms(trimmed)
+        fade_out_start = max(0.0, (trimmed_duration_ms / 1000.0) - 0.016)
         peak_before = _detect_peak_db(trimmed)
         gain = 0.0 if peak_before is None else max(-12.0, min(12.0, -1.0 - peak_before))
         normalize_command = [
@@ -388,7 +389,7 @@ def postprocess_audio(audio_bytes: bytes, *, allow_raw_audio: bool) -> tuple[byt
             "-i",
             str(trimmed),
             "-af",
-            f"volume={gain:.2f}dB",
+            f"afade=t=out:st={fade_out_start:.3f}:d=0.016,volume={gain:.2f}dB",
             "-ar",
             "44100",
             "-b:a",
@@ -411,6 +412,8 @@ def postprocess_audio(audio_bytes: bytes, *, allow_raw_audio: bool) -> tuple[byt
             "status": "processed",
             "duration_ms": duration_ms,
             "size_bytes": size,
+            "trimmed_duration_ms": trimmed_duration_ms,
+            "fade_out_start": fade_out_start,
             "peak_before_db": peak_before,
             "applied_gain_db": gain,
             "peak_db": peak_db,
