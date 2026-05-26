@@ -578,6 +578,56 @@
   background: var(--surface-glass);
 }
 
+.staticWordMedia {
+  position: relative;
+}
+
+.staticAudioButton {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 1.5rem;
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-1) 82%, transparent);
+  color: var(--text-primary);
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 20%);
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.staticAudioButton:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.staticAudioButton:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.staticAudioMissing {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 1.5rem;
+  border: 1px dashed var(--border-subtle);
+  border-radius: 999px;
+  padding: 0.25rem 0.45rem;
+  background: var(--surface-1);
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
 .entryCard {
   display: block;
   width: 100%;

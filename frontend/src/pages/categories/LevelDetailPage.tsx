@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, BookOpen, Check, Sparkles } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, Sparkles, Volume2 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useToast } from '@/components/Toast'
@@ -23,13 +23,16 @@ import {
   importCurriculumLevel,
 } from '@/lib/curriculumDeckBridge'
 import { useActiveCurriculumImageSet } from '@/lib/curriculumImageSetConfig'
+import { useStaticThematicAudio } from '@/hooks/useStaticThematicAudio'
 import {
   STATIC_CATEGORY_TARGET_LANGUAGES,
   formatSelectedCategoryVocabularyLabel,
   getPublicCategoryGroups,
   getStaticCategorySelectedItems,
+  resolveStaticCategoryTargetLanguageCode,
   type Category as StaticCategory,
   type CategoryGroup,
+  type SelectedCategoryVocabularyItem,
 } from '@/data/categories'
 import styles from './Categories.module.css'
 
@@ -164,17 +167,19 @@ export default function LevelDetailPage() {
   }, [baseLanguageIso, category, importedDeckId, launchCanvas, level, returnTo, t, toast])
 
   if (staticCategory) {
-    return renderStaticLevelDetail({
-      category: staticCategory.category,
-      group: staticCategory.group,
-      levelNumber,
-      targetLanguage,
-      helperLanguage,
-      setTargetLanguage,
-      setHelperLanguage,
-      t,
-      tp,
-    })
+    return (
+      <StaticLevelDetail
+        category={staticCategory.category}
+        group={staticCategory.group}
+        levelNumber={levelNumber}
+        targetLanguage={targetLanguage}
+        helperLanguage={helperLanguage}
+        setTargetLanguage={setTargetLanguage}
+        setHelperLanguage={setHelperLanguage}
+        t={t}
+        tp={tp}
+      />
+    )
   }
 
   if (!category || !level) {
@@ -288,7 +293,7 @@ export default function LevelDetailPage() {
   )
 }
 
-function renderStaticLevelDetail({
+function StaticLevelDetail({
   category,
   group,
   levelNumber,
@@ -313,6 +318,21 @@ function renderStaticLevelDetail({
   const level = Number.isInteger(parsedLevel)
     ? category.staticWordLevels?.find((item) => item.level === parsedLevel)
     : null
+  const targetLanguageCode = resolveStaticCategoryTargetLanguageCode(targetLanguage)
+  const selectedItems = useMemo(
+    () => level
+      ? getStaticCategorySelectedItems(category, level.words.length, level.level, targetLanguage, helperLanguage)
+      : [],
+    [category, helperLanguage, level, targetLanguage],
+  )
+  const conceptIds = useMemo(() => selectedItems.map((item) => item.conceptId), [selectedItems])
+  const staticAudio = useStaticThematicAudio({
+    enabled: Boolean(level) && targetLanguageCode === 'en' && (category.id ?? category.name) === 'animals',
+    targetLanguageCode,
+    categorySlug: category.id ?? category.name,
+    levelNumber: level?.level ?? 0,
+    conceptIds,
+  })
 
   if (!level) {
     return (
@@ -329,7 +349,6 @@ function renderStaticLevelDetail({
     )
   }
 
-  const selectedItems = getStaticCategorySelectedItems(category, level.words.length, level.level, targetLanguage, helperLanguage)
   const generateHref = `/generate?category=${encodeURIComponent(category.id ?? category.name)}&level=${level.level}`
 
   return (
@@ -378,7 +397,39 @@ function renderStaticLevelDetail({
 
       <div className={styles.staticWordGrid}>
         {selectedItems.map((item) => (
-          <article key={item.conceptId} className={styles.staticWordCard}>
+          <StaticWordCard
+            key={item.conceptId}
+            item={item}
+            category={category}
+            t={t}
+            hasAudio={staticAudio.hasAudio(item.conceptId)}
+            showMissingAudioMarker={import.meta.env.DEV && targetLanguageCode === 'en' && (category.id ?? category.name) === 'animals'}
+            onPlay={() => void staticAudio.play(item.conceptId)}
+          />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function StaticWordCard({
+  item,
+  category,
+  t,
+  hasAudio,
+  showMissingAudioMarker,
+  onPlay,
+}: {
+  item: SelectedCategoryVocabularyItem
+  category: StaticCategory
+  t: ReturnType<typeof useTranslation>['t']
+  hasAudio: boolean
+  showMissingAudioMarker: boolean
+  onPlay: () => void
+}) {
+  return (
+    <article className={styles.staticWordCard}>
+      <div className={styles.staticWordMedia}>
             <CurriculumEntryImage
               languageIso="en"
               categorySlug={category.id ?? category.name}
@@ -387,20 +438,31 @@ function renderStaticLevelDetail({
               alt=""
               className={styles.entryImage}
             />
-            <div>
-              <h2 className={styles.term}>{item.targetTerm}</h2>
-              {item.helperTerm && item.helperTerm !== item.targetTerm ? (
-                <p className={styles.gloss}>{item.helperTerm}</p>
-              ) : null}
-            </div>
-            <div className={styles.enrichment}>
-              <span><strong>{t('categories.modal.partOfSpeech')}:</strong> {item.part_of_speech}</span>
-              <span><strong>{t('categories.staticSense')}:</strong> {item.sense}</span>
-              <span>{formatSelectedCategoryVocabularyLabel(item)}</span>
-            </div>
-          </article>
-        ))}
+        {hasAudio ? (
+          <button
+            type="button"
+            className={styles.staticAudioButton}
+            onClick={onPlay}
+            aria-label={`Play pronunciation for ${item.targetTerm}`}
+            title={`Play ${item.targetTerm}`}
+          >
+            <Volume2 className="h-4 w-4" aria-hidden="true" />
+          </button>
+        ) : showMissingAudioMarker ? (
+          <span className={styles.staticAudioMissing} title="Missing static audio">TTS</span>
+        ) : null}
       </div>
-    </section>
+      <div>
+        <h2 className={styles.term}>{item.targetTerm}</h2>
+        {item.helperTerm && item.helperTerm !== item.targetTerm ? (
+          <p className={styles.gloss}>{item.helperTerm}</p>
+        ) : null}
+      </div>
+      <div className={styles.enrichment}>
+        <span><strong>{t('categories.modal.partOfSpeech')}:</strong> {item.part_of_speech}</span>
+        <span><strong>{t('categories.staticSense')}:</strong> {item.sense}</span>
+        <span>{formatSelectedCategoryVocabularyLabel(item)}</span>
+      </div>
+    </article>
   )
 }
