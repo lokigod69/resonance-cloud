@@ -21,6 +21,7 @@ export type StaticThematicPlaybackQuery = {
     level_number: number
   }
   conceptIds: string[]
+  voiceProfileKeys?: string[]
 }
 
 export function buildStaticThematicPlaybackQuery({
@@ -28,11 +29,13 @@ export function buildStaticThematicPlaybackQuery({
   categorySlug,
   levelNumber,
   conceptIds,
+  voiceProfileKeys,
 }: {
   targetLanguageCode: string
   categorySlug: string
   levelNumber: number
   conceptIds: string[]
+  voiceProfileKeys?: string[]
 }): StaticThematicPlaybackQuery {
   return {
     table: 'static_tts_playback',
@@ -42,27 +45,41 @@ export function buildStaticThematicPlaybackQuery({
       level_number: levelNumber,
     },
     conceptIds: [...new Set(conceptIds.filter(Boolean))],
+    voiceProfileKeys: voiceProfileKeys ? [...new Set(voiceProfileKeys.filter(Boolean))] : undefined,
   }
 }
 
 export function buildStaticThematicAudioLookup(
   rows: StaticThematicPlaybackRow[],
-): Map<string, StaticThematicPlaybackRow> {
-  const lookup = new Map<string, StaticThematicPlaybackRow>()
+): Map<string, Map<string, StaticThematicPlaybackRow>> {
+  const lookup = new Map<string, Map<string, StaticThematicPlaybackRow>>()
   for (const row of rows) {
     if (!row.concept_id || !row.public_url) continue
-    lookup.set(row.concept_id, row)
+    const byVoice = lookup.get(row.concept_id) ?? new Map<string, StaticThematicPlaybackRow>()
+    byVoice.set(row.voice_profile_key, row)
+    lookup.set(row.concept_id, byVoice)
   }
   return lookup
+}
+
+export function getStaticThematicAudio(
+  lookup: Map<string, Map<string, StaticThematicPlaybackRow>>,
+  conceptId: string,
+  voiceProfileKey?: string,
+): StaticThematicPlaybackRow | undefined {
+  const byVoice = lookup.get(conceptId)
+  if (!byVoice) return undefined
+  if (voiceProfileKey) return byVoice.get(voiceProfileKey)
+  return byVoice.values().next().value
 }
 
 export async function fetchStaticThematicPlayback(
   supabase: SupabaseClient,
   query: StaticThematicPlaybackQuery,
-): Promise<Map<string, StaticThematicPlaybackRow>> {
+): Promise<Map<string, Map<string, StaticThematicPlaybackRow>>> {
   if (query.conceptIds.length === 0) return new Map()
 
-  const { data, error } = await supabase
+  let request = supabase
     .from(query.table)
     .select(
       'target_language_code,category_slug,level_number,concept_id,spoken_text,public_url,duration_ms,audio_version,voice_profile_key,qa_status',
@@ -71,6 +88,12 @@ export async function fetchStaticThematicPlayback(
     .eq('category_slug', query.filters.category_slug)
     .eq('level_number', query.filters.level_number)
     .in('concept_id', query.conceptIds)
+
+  if (query.voiceProfileKeys?.length) {
+    request = request.in('voice_profile_key', query.voiceProfileKeys)
+  }
+
+  const { data, error } = await request
 
   if (error) throw error
   return buildStaticThematicAudioLookup((data ?? []) as StaticThematicPlaybackRow[])

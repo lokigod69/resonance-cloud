@@ -52,6 +52,9 @@ class StaticTtsConfig:
     force_regenerate: bool
     limit: int | None
     allow_raw_audio: bool
+    postprocess_mode: str
+    qa_status: str
+    activate_assignment: bool
     report_out: str | None = None
 
 
@@ -113,6 +116,10 @@ def _validate_scope(config: StaticTtsConfig) -> None:
         raise RuntimeError("Use either --skip-existing or --force-regenerate, not both.")
     if config.commit_db and not config.allow_provider_calls and config.force_regenerate:
         raise RuntimeError("--force-regenerate with --commit-db requires --allow-provider-calls.")
+    if config.postprocess_mode not in {"raw", "safe"}:
+        raise RuntimeError("--postprocess-mode must be raw or safe.")
+    if config.qa_status not in {"pending", "ready", "approved", "rejected", "failed"}:
+        raise RuntimeError("--qa-status must be pending, ready, approved, rejected, or failed.")
 
 
 def _validate_inventory(items: list[dict[str, Any]], config: StaticTtsConfig) -> list[dict[str, Any]]:
@@ -351,9 +358,25 @@ def _detect_peak_db(path: Path) -> float | None:
     return float(match.group(1)) if match else None
 
 
-def postprocess_audio(audio_bytes: bytes, *, allow_raw_audio: bool) -> tuple[bytes, int | None, dict[str, Any]]:
-    if allow_raw_audio:
-        return audio_bytes, None, {"status": "raw_audio_bypass"}
+def postprocess_audio(audio_bytes: bytes, *, postprocess_mode: str) -> tuple[bytes, int | None, dict[str, Any]]:
+    if postprocess_mode == "raw":
+        if len(audio_bytes) < 512:
+            raise RuntimeError(f"Raw audio is too small: {len(audio_bytes)} bytes")
+        with tempfile.TemporaryDirectory() as tmp:
+            raw = Path(tmp) / "raw.mp3"
+            raw.write_bytes(audio_bytes)
+            duration_ms = _probe_duration_ms(raw)
+        if duration_ms <= 150:
+            raise RuntimeError(f"Raw audio is too short: {duration_ms}ms")
+        return audio_bytes, duration_ms, {
+            "status": "raw",
+            "postprocess_mode": "raw",
+            "duration_ms": duration_ms,
+            "raw_duration_ms": duration_ms,
+            "final_duration_ms": duration_ms,
+            "raw_file_size_bytes": len(audio_bytes),
+            "final_file_size_bytes": len(audio_bytes),
+        }
 
     _require_audio_tools()
     with tempfile.TemporaryDirectory() as tmp:
@@ -410,8 +433,11 @@ def postprocess_audio(audio_bytes: bytes, *, allow_raw_audio: bool) -> tuple[byt
             raise RuntimeError(f"Processed audio may be clipped: max_volume={peak_db}dB")
         return out.read_bytes(), duration_ms, {
             "status": "processed",
+            "postprocess_mode": "safe",
             "duration_ms": duration_ms,
+            "final_duration_ms": duration_ms,
             "size_bytes": size,
+            "final_file_size_bytes": size,
             "trimmed_duration_ms": trimmed_duration_ms,
             "fade_out_start": fade_out_start,
             "peak_before_db": peak_before,
@@ -439,7 +465,7 @@ def run_inventory(
     items = _validate_inventory(inventory, config)
     profile = resolve_or_upsert_voice_profile(sb, config)
 
-    if config.commit_db:
+    if config.commit_db and config.activate_assignment:
         _upsert_assignment(sb, config)
 
     report_items: list[dict[str, Any]] = []
@@ -511,7 +537,7 @@ def run_inventory(
                 asset_id=existing_asset["id"],
                 item=item,
                 voice_profile_key=config.voice_profile_key,
-                qa_status="ready",
+                qa_status=config.qa_status,
             )
             totals["skipped_existing"] += 1
             report_items.append({**base_report, "status": "linked_existing_asset", "usage_id": usage["id"]})
@@ -534,7 +560,7 @@ def run_inventory(
                     asset_id=generated_cache[cache_key],
                     item=item,
                     voice_profile_key=config.voice_profile_key,
-                    qa_status="ready",
+                    qa_status=config.qa_status,
                 )
                 totals["skipped_existing"] += 1
                 report_items.append({**base_report, "status": "linked_generated_duplicate", "usage_id": usage["id"]})
@@ -551,7 +577,7 @@ def run_inventory(
                     request_id=cache_key[:32],
                 )
             )
-            processed_audio, duration_ms, qa = postprocess_audio(raw_audio, allow_raw_audio=config.allow_raw_audio)
+            processed_audio, duration_ms, qa = postprocess_audio(raw_audio, postprocess_mode=config.postprocess_mode)
             public_url = guided_db.upload_asset_bytes(
                 sb,
                 storage_path=storage_path,
@@ -583,7 +609,7 @@ def run_inventory(
                 asset_id=asset["id"],
                 item=item,
                 voice_profile_key=config.voice_profile_key,
-                qa_status="ready",
+                qa_status=config.qa_status,
             )
             generated_cache[cache_key] = asset["id"]
             totals["generated"] += 1
@@ -594,6 +620,7 @@ def run_inventory(
                     "asset_id": asset["id"],
                     "usage_id": usage["id"],
                     "public_url": public_url,
+                    "qa_status": config.qa_status,
                     "postprocess": qa,
                 }
             )
@@ -612,6 +639,9 @@ def run_inventory(
             "provider_model_id": profile.get("provider_model_id") or DEFAULT_MODEL_ID,
             "output_format": profile.get("output_format") or DEFAULT_OUTPUT_FORMAT,
             "resolved_from_existing_profile": not profile.get("planned", False),
+            "postprocess_mode": config.postprocess_mode,
+            "qa_status": config.qa_status,
+            "activate_assignment": config.activate_assignment,
         },
         "totals": totals,
         "items": report_items,
@@ -656,7 +686,10 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--no-skip-existing", dest="skip_existing", action="store_false")
     parser.add_argument("--force-regenerate", action="store_true", default=False)
     parser.add_argument("--limit", type=int, default=None)
-    parser.add_argument("--allow-raw-audio", action="store_true", default=False)
+    parser.add_argument("--allow-raw-audio", action="store_true", default=False, help="Deprecated alias for --postprocess-mode raw.")
+    parser.add_argument("--postprocess-mode", choices=["raw", "safe"], default="raw")
+    parser.add_argument("--qa-status", choices=["pending", "ready", "approved", "rejected", "failed"], default="ready")
+    parser.add_argument("--activate-assignment", action="store_true", default=False)
     parser.add_argument("--report-out", default="tmp/static-tts-en-animals-report.json")
     return parser
 
@@ -679,6 +712,9 @@ def main(argv: list[str] | None = None) -> int:
         force_regenerate=bool(args.force_regenerate),
         limit=args.limit,
         allow_raw_audio=bool(args.allow_raw_audio),
+        postprocess_mode="raw" if args.allow_raw_audio else args.postprocess_mode,
+        qa_status=args.qa_status,
+        activate_assignment=bool(args.activate_assignment),
         report_out=args.report_out,
     )
     inventory = _load_inventory(args.inventory)

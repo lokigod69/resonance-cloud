@@ -10,6 +10,7 @@ from scripts.generate_static_thematic_tts import (
     StaticTtsConfig,
     build_cache_key,
     build_storage_path,
+    postprocess_audio,
     resolve_or_upsert_voice_profile,
     run_inventory,
 )
@@ -64,6 +65,9 @@ def make_config(**overrides) -> StaticTtsConfig:
         "force_regenerate": False,
         "limit": None,
         "allow_raw_audio": True,
+        "postprocess_mode": "raw",
+        "qa_status": "ready",
+        "activate_assignment": False,
     }
     base.update(overrides)
     return StaticTtsConfig(**base)
@@ -77,6 +81,26 @@ def test_storage_path_is_stable_static_layout():
         level_number=1,
         concept_id="animals.dog",
     ) == "static/v1/en/static_thematic_en_animals_v1/animals/level-1/animals.dog.mp3"
+
+
+def test_storage_path_differs_by_voice_profile_key():
+    elisa = build_storage_path(
+        target_language_code="en",
+        voice_profile_key="static_thematic_en_animals_elisa_raw_v1",
+        category_slug="animals",
+        level_number=1,
+        concept_id="animals.dog",
+    )
+    serafina = build_storage_path(
+        target_language_code="en",
+        voice_profile_key="static_thematic_en_animals_serafina_raw_v1",
+        category_slug="animals",
+        level_number=1,
+        concept_id="animals.dog",
+    )
+    assert elisa != serafina
+    assert elisa.endswith("/static_thematic_en_animals_elisa_raw_v1/animals/level-1/animals.dog.mp3")
+    assert serafina.endswith("/static_thematic_en_animals_serafina_raw_v1/animals/level-1/animals.dog.mp3")
 
 
 def test_cache_key_is_deterministic_and_changes_by_voice():
@@ -142,6 +166,29 @@ def test_dry_run_never_calls_provider_or_writes():
     assert report["totals"]["would_generate"] == 1
     assert sb._tables.get("static_tts_asset_usages", []) == []
     assert sb.storage.uploads == []
+
+
+def test_raw_mode_preserves_provider_bytes_without_ffmpeg_filters(monkeypatch):
+    calls: list[list[str]] = []
+
+    def fake_run(command, **_kwargs):
+        calls.append(command)
+        raise AssertionError("raw mode must not invoke subprocess audio tools")
+
+    monkeypatch.setattr("scripts.generate_static_thematic_tts.subprocess.run", fake_run)
+    monkeypatch.setattr("scripts.generate_static_thematic_tts._probe_duration_ms", lambda _path: 720)
+
+    raw = b"provider-original-audio" * 32
+    processed, duration_ms, qa = postprocess_audio(raw, postprocess_mode="raw")
+
+    assert processed == raw
+    assert duration_ms == 720
+    assert qa["status"] == "raw"
+    assert qa["postprocess_mode"] == "raw"
+    assert qa["raw_duration_ms"] == 720
+    assert qa["final_duration_ms"] == 720
+    assert qa["raw_file_size_bytes"] == len(raw)
+    assert calls == []
 
 
 def test_commit_without_allow_provider_calls_refuses_generation():
@@ -226,6 +273,45 @@ def test_skips_existing_ready_asset_and_usage():
     assert calls == 0
     assert report["items"][0]["status"] == "skipped_existing"
     assert report["totals"]["skipped_existing"] == 1
+
+
+def test_commit_uses_configured_qa_status_and_does_not_activate_assignment_by_default(monkeypatch):
+    sb = FakeSupabase()
+    sb.storage = RecordingStorage()
+    sb.table("voices")
+    sb.table("guided_voice_profiles")
+    sb.table("guided_tts_assets")
+    sb.table("static_tts_asset_usages")
+    sb.table("static_tts_voice_assignments")
+    sb._tables["voices"] = [{"voice_id": "voice-elisa", "name": "Elisa", "language_code": "en"}]
+
+    raw_audio = b"raw-audio" * 128
+
+    async def provider(**_kwargs):
+        return raw_audio
+
+    monkeypatch.setattr("scripts.generate_static_thematic_tts._probe_duration_ms", lambda _path: 740)
+
+    report = run_inventory(
+        sb=sb,
+        inventory=make_inventory(),
+        config=make_config(
+            voice_profile_key="static_thematic_en_animals_elisa_raw_v1",
+            voice_name="Elisa",
+            commit_db=True,
+            allow_provider_calls=True,
+            postprocess_mode="raw",
+            qa_status="ready",
+            activate_assignment=False,
+        ),
+        provider_synthesize=provider,
+    )
+
+    assert report["totals"]["generated"] == 1
+    assert sb.storage.uploads[0]["data"] == raw_audio
+    assert sb._tables["static_tts_asset_usages"][0]["qa_status"] == "ready"
+    assert sb._tables["static_tts_voice_assignments"] == []
+    assert report["items"][0]["postprocess"]["postprocess_mode"] == "raw"
 
 
 def test_voice_profile_resolution_fails_without_name_or_provider_id():

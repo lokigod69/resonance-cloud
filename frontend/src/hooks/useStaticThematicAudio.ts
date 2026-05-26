@@ -3,10 +3,13 @@ import { supabase } from '@/lib/supabase'
 import {
   buildStaticThematicPlaybackQuery,
   fetchStaticThematicPlayback,
+  getStaticThematicAudio,
   type StaticThematicPlaybackRow,
 } from '@/lib/staticThematicAudio'
 
-const pageCache = new Map<string, Map<string, StaticThematicPlaybackRow>>()
+type StaticThematicAudioLookup = Map<string, Map<string, StaticThematicPlaybackRow>>
+
+const pageCache = new Map<string, StaticThematicAudioLookup>()
 let activeStaticAudio: HTMLAudioElement | null = null
 
 function stopStaticAudio() {
@@ -21,17 +24,20 @@ function cacheKey({
   categorySlug,
   levelNumber,
   conceptIds,
+  voiceProfileKeys,
 }: {
   targetLanguageCode: string
   categorySlug: string
   levelNumber: number
   conceptIds: string[]
+  voiceProfileKeys?: string[]
 }) {
   return [
     targetLanguageCode,
     categorySlug,
     levelNumber,
     [...new Set(conceptIds)].sort().join(','),
+    [...new Set(voiceProfileKeys ?? [])].sort().join(','),
   ].join('|')
 }
 
@@ -41,25 +47,29 @@ export function useStaticThematicAudio({
   categorySlug,
   levelNumber,
   conceptIds,
+  voiceProfileKeys,
 }: {
   enabled: boolean
   targetLanguageCode: string
   categorySlug: string
   levelNumber: number
   conceptIds: string[]
+  voiceProfileKeys?: string[]
 }) {
-  const [audioByConceptId, setAudioByConceptId] = useState<Map<string, StaticThematicPlaybackRow>>(new Map())
+  const [audioByConceptId, setAudioByConceptId] = useState<StaticThematicAudioLookup>(new Map())
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<unknown>(null)
   const latestKey = useRef('')
 
   const stableConceptIds = useMemo(() => [...new Set(conceptIds.filter(Boolean))], [conceptIds])
+  const stableVoiceProfileKeys = useMemo(() => [...new Set((voiceProfileKeys ?? []).filter(Boolean))], [voiceProfileKeys])
   const currentKey = useMemo(() => cacheKey({
     targetLanguageCode,
     categorySlug,
     levelNumber,
     conceptIds: stableConceptIds,
-  }), [categorySlug, levelNumber, stableConceptIds, targetLanguageCode])
+    voiceProfileKeys: stableVoiceProfileKeys,
+  }), [categorySlug, levelNumber, stableConceptIds, stableVoiceProfileKeys, targetLanguageCode])
 
   useEffect(() => {
     let cancelled = false
@@ -92,6 +102,7 @@ export function useStaticThematicAudio({
       categorySlug,
       levelNumber,
       conceptIds: stableConceptIds,
+      voiceProfileKeys: stableVoiceProfileKeys,
     })
 
     void fetchStaticThematicPlayback(supabase, query)
@@ -114,10 +125,13 @@ export function useStaticThematicAudio({
     return () => {
       cancelled = true
     }
-  }, [categorySlug, currentKey, enabled, levelNumber, stableConceptIds, targetLanguageCode])
+  }, [categorySlug, currentKey, enabled, levelNumber, stableConceptIds, stableVoiceProfileKeys, targetLanguageCode])
 
-  const play = useCallback(async (conceptId: string): Promise<'audio' | 'none'> => {
-    const row = audioByConceptId.get(conceptId)
+  const play = useCallback(async (
+    conceptId: string,
+    voiceProfileKey?: string,
+  ): Promise<'audio' | 'none'> => {
+    const row = getStaticThematicAudio(audioByConceptId, conceptId, voiceProfileKey)
     if (!row?.public_url || !('Audio' in globalThis)) return 'none'
 
     stopStaticAudio()
@@ -137,7 +151,14 @@ export function useStaticThematicAudio({
     audioByConceptId,
     loading,
     error,
-    hasAudio: useCallback((conceptId: string) => audioByConceptId.has(conceptId), [audioByConceptId]),
+    hasAudio: useCallback(
+      (conceptId: string, voiceProfileKey?: string) => Boolean(getStaticThematicAudio(
+        audioByConceptId,
+        conceptId,
+        voiceProfileKey,
+      )),
+      [audioByConceptId],
+    ),
     play,
   }
 }

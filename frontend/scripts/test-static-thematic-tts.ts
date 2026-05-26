@@ -4,6 +4,7 @@ import { resolve } from 'node:path'
 
 import {
   buildStaticThematicAudioLookup,
+  getStaticThematicAudio,
   buildStaticThematicPlaybackQuery,
 } from '../src/lib/staticThematicAudio'
 import {
@@ -78,6 +79,7 @@ const query = buildStaticThematicPlaybackQuery({
   categorySlug: 'animals',
   levelNumber: 1,
   conceptIds: ['animals.dog', 'animals.cat'],
+  voiceProfileKeys: ['static_thematic_en_animals_elisa_raw_v1', 'static_thematic_en_animals_serafina_raw_v1'],
 })
 assert.equal(query.table, 'static_tts_playback')
 assert.deepEqual(query.filters, {
@@ -86,6 +88,7 @@ assert.deepEqual(query.filters, {
   level_number: 1,
 })
 assert.deepEqual(query.conceptIds, ['animals.dog', 'animals.cat'])
+assert.deepEqual(query.voiceProfileKeys, ['static_thematic_en_animals_elisa_raw_v1', 'static_thematic_en_animals_serafina_raw_v1'])
 
 const lookup = buildStaticThematicAudioLookup([
   {
@@ -100,8 +103,24 @@ const lookup = buildStaticThematicAudioLookup([
     voice_profile_key: 'static_thematic_en_animals_v1',
     qa_status: 'ready',
   },
+  {
+    target_language_code: 'en',
+    category_slug: 'animals',
+    level_number: 1,
+    concept_id: 'animals.dog',
+    spoken_text: 'dog',
+    public_url: 'https://cdn.example/animals.dog.serafina.mp3',
+    duration_ms: 812,
+    audio_version: 1,
+    voice_profile_key: 'static_thematic_en_animals_serafina_raw_v1',
+    qa_status: 'ready',
+  },
 ])
-assert.equal(lookup.get('animals.dog')?.public_url, 'https://cdn.example/animals.dog.mp3')
-assert.equal(lookup.get('animals.cat'), undefined, 'missing audio should stay absent from lookup')
+assert.equal(getStaticThematicAudio(lookup, 'animals.dog')?.public_url, 'https://cdn.example/animals.dog.mp3')
+assert.equal(
+  getStaticThematicAudio(lookup, 'animals.dog', 'static_thematic_en_animals_serafina_raw_v1')?.public_url,
+  'https://cdn.example/animals.dog.serafina.mp3',
+)
+assert.equal(getStaticThematicAudio(lookup, 'animals.cat'), undefined, 'missing audio should stay absent from lookup')
 
 process.stdout.write('test-static-thematic-tts: OK\n')

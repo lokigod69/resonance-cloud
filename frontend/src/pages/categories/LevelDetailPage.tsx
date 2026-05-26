@@ -36,6 +36,13 @@ import {
 } from '@/data/categories'
 import styles from './Categories.module.css'
 
+const STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY = 'static_thematic_en_animals_elisa_raw_v1'
+const STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY = 'static_thematic_en_animals_serafina_raw_v1'
+const STATIC_ANIMALS_RAW_PROFILE_KEYS = [
+  STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY,
+  STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY,
+]
+
 function getStaticCategoryById(categoryId: string | undefined): { category: StaticCategory; group: CategoryGroup } | null {
   if (!categoryId) return null
   const normalized = categoryId.trim().toLowerCase()
@@ -332,6 +339,7 @@ function StaticLevelDetail({
     categorySlug: category.id ?? category.name,
     levelNumber: level?.level ?? 0,
     conceptIds,
+    voiceProfileKeys: STATIC_ANIMALS_RAW_PROFILE_KEYS,
   })
 
   if (!level) {
@@ -402,9 +410,15 @@ function StaticLevelDetail({
             item={item}
             category={category}
             t={t}
-            hasAudio={staticAudio.hasAudio(item.conceptId)}
-            showMissingAudioMarker={import.meta.env.DEV && targetLanguageCode === 'en' && (category.id ?? category.name) === 'animals'}
-            onPlay={() => void staticAudio.play(item.conceptId)}
+            hasElisaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
+            hasSerafinaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
+            showMissingAudioMarker={
+              import.meta.env.DEV
+              && targetLanguageCode === 'en'
+              && (category.id ?? category.name) === 'animals'
+            }
+            onPlayElisa={() => void staticAudio.play(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
+            onPlaySerafina={() => void staticAudio.play(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
           />
         ))}
       </div>
@@ -416,16 +430,20 @@ function StaticWordCard({
   item,
   category,
   t,
-  hasAudio,
+  hasElisaAudio,
+  hasSerafinaAudio,
   showMissingAudioMarker,
-  onPlay,
+  onPlayElisa,
+  onPlaySerafina,
 }: {
   item: SelectedCategoryVocabularyItem
   category: StaticCategory
   t: ReturnType<typeof useTranslation>['t']
-  hasAudio: boolean
+  hasElisaAudio: boolean
+  hasSerafinaAudio: boolean
   showMissingAudioMarker: boolean
-  onPlay: () => void
+  onPlayElisa: () => void
+  onPlaySerafina: () => void
 }) {
   return (
     <article className={styles.staticWordCard}>
@@ -438,17 +456,31 @@ function StaticWordCard({
               alt=""
               className={styles.entryImage}
             />
-        {hasAudio ? (
+        {hasSerafinaAudio ? (
           <button
             type="button"
-            className={styles.staticAudioButton}
-            onClick={onPlay}
-            aria-label={`Play pronunciation for ${item.targetTerm}`}
-            title={`Play ${item.targetTerm}`}
+            className={`${styles.staticAudioButton} ${styles.staticAudioButtonLeft}`}
+            onClick={onPlaySerafina}
+            aria-label={`Play Serafina pronunciation for ${item.targetTerm}`}
+            title={`Play Serafina ${item.targetTerm}`}
           >
             <Volume2 className="h-4 w-4" aria-hidden="true" />
+            <span className={styles.staticAudioButtonBadge}>S</span>
           </button>
-        ) : showMissingAudioMarker ? (
+        ) : null}
+        {hasElisaAudio ? (
+          <button
+            type="button"
+            className={`${styles.staticAudioButton} ${styles.staticAudioButtonRight}`}
+            onClick={onPlayElisa}
+            aria-label={`Play Elisa pronunciation for ${item.targetTerm}`}
+            title={`Play Elisa ${item.targetTerm}`}
+          >
+            <Volume2 className="h-4 w-4" aria-hidden="true" />
+            <span className={styles.staticAudioButtonBadge}>E</span>
+          </button>
+        ) : null}
+        {!hasElisaAudio && !hasSerafinaAudio && showMissingAudioMarker ? (
           <span className={styles.staticAudioMissing} title="Missing static audio">TTS</span>
         ) : null}
       </div>
