@@ -12,7 +12,7 @@
       "label": "Symbolic",
       "folder": "/curriculum/en/set-c/",
       "manifest": "/curriculum/en/manifests/set-c.json",
-      "availableCount": 365,
+      "availableCount": 1909,
       "fallbackSet": "A"
     }
   },
@@ -36,7 +36,6 @@
     "mean",
     "mother",
     "mother-in-law",
-    "museum",
     "nephew",
     "niece",
     "partner",
@@ -56,6 +55,7 @@
     "setA": "D:\\CODING\\ResonanceTEST\\curriculum\\production_renders\\en\\SET_A_MINIMAL_PHOTOREAL_REVIEW_2026_05_17_062736",
     "setAExistingFrontend": "frontend/public/curriculum/categories/en/*/entries",
     "setC": "D:\\CODING\\ResonanceTEST\\curriculum\\production_renders\\en\\setC_symbolic_cinematic_high_2026_05_17_065223",
-    "setCReview": "D:\\CODING\\ResonanceTEST\\curriculum\\production_renders\\en\\SET_C_SYMBOLIC_CINEMATIC_HIGH_REVIEW_2026_05_17_065223"
+    "setCReview": "D:\\CODING\\ResonanceTEST\\curriculum\\production_renders\\en\\SET_C_SYMBOLIC_CINEMATIC_HIGH_REVIEW_2026_05_17_065223",
+    "setCCategoryBatchImports": "D:\\CODING\\ResonanceTEST\\curriculum\\test_renders\\en and production_renders\\en category-specific Set C medium materializations"
   }
 }
