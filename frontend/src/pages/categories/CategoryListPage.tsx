@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ArrowRight, Check, Sparkles } from 'lucide-react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { ArrowRight, Check } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import { listCurriculumCategories, type CurriculumCategory } from '@/data/curriculumCategories'
 import { generatedCategoryHeroImagePath } from '@/lib/generatedCategoryImages'
 import {
+  STATIC_CATEGORY_TARGET_LANGUAGES,
   getPublicCategoryGroups,
   getStaticCategoryVocabularyItems,
   type Category as StaticCategory,
 } from '@/data/categories'
 import { listImportedCurriculumDecks } from '@/lib/curriculumDeckBridge'
+import {
+  persistStaticLibraryTargetLanguage,
+  readStaticLibraryTargetLanguage,
+  staticLibraryRouteSuffix,
+} from '@/lib/staticLibraryLanguage'
 import styles from './Categories.module.css'
 
 function CategoryHero({ category }: { category: CurriculumCategory }) {
@@ -87,7 +94,10 @@ function thematicCategoryHref(category: StaticCategory) {
 export default function CategoryListPage() {
   const { t, tp } = useTranslation()
   const { user } = useAuth()
+  const { activeLanguage } = useLanguage()
+  const [searchParams] = useSearchParams()
   const categories = listCurriculumCategories()
+  const [targetLanguage, setTargetLanguage] = useState(() => readStaticLibraryTargetLanguage(searchParams.get('targetLanguage'), activeLanguage))
   const thematicCategoryGroups = getPublicCategoryGroups()
     .map((group) => ({
       ...group,
@@ -95,6 +105,10 @@ export default function CategoryListPage() {
     }))
     .filter((group) => group.categories.length > 0)
   const [importedCategorySlugs, setImportedCategorySlugs] = useState<Set<string>>(new Set())
+
+  useEffect(() => {
+    persistStaticLibraryTargetLanguage(targetLanguage)
+  }, [targetLanguage])
 
   useEffect(() => {
     let cancelled = false
@@ -131,58 +145,18 @@ export default function CategoryListPage() {
     <section className={styles.page}>
       <header className={styles.header}>
         <div>
-          <p className={styles.eyebrow}>{t('categories.eyebrow')}</p>
           <h1 className={styles.title}>{t('categories.title')}</h1>
           <p className={styles.subtitle}>{t('categories.subtitle')}</p>
         </div>
-        <Link to="/generate" className={styles.generateAction}>
-          <Sparkles className="h-4 w-4" aria-hidden="true" />
-          {t('categories.generateFromCategories')}
-        </Link>
+        <label className={styles.libraryLanguageSelect}>
+          <span>{t('categories.targetLanguageLabel')}</span>
+          <select value={targetLanguage} onChange={(event) => setTargetLanguage(event.target.value)}>
+            {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+              <option key={language.code} value={language.value}>{language.label}</option>
+            ))}
+          </select>
+        </label>
       </header>
-
-      <section className={styles.categorySection} aria-labelledby="legacy-curriculum-categories">
-        <div className={styles.sectionHeader}>
-          <div>
-            <h2 id="legacy-curriculum-categories" className={styles.sectionTitle}>
-              {t('categories.legacySectionTitle')}
-            </h2>
-            <p className={styles.sectionDescription}>{t('categories.legacySectionDescription')}</p>
-          </div>
-        </div>
-
-        <div className={styles.grid}>
-          {categories.map((category) => {
-            const isImported = importedCategorySlugs.has(category.slug)
-            return (
-              <Link
-                key={category.slug}
-                to={`/categories/${category.slug}`}
-                className={styles.tile}
-                aria-label={t('categories.openCategory', { title: category.title })}
-              >
-                <div className={styles.hero}>
-                  <CategoryHero category={category} />
-                </div>
-                <div className={styles.tileBody}>
-                  <h2 className={styles.tileTitle}>
-                    <span className={styles.tileEmoji} aria-hidden="true">{category.icon}</span>
-                    <span>{category.title}</span>
-                  </h2>
-                  {isImported ? (
-                    <div className={styles.tileMeta}>
-                      <span className={styles.tileImportedBadge}>
-                        <Check className="h-3 w-3" aria-hidden="true" />
-                        {t('categories.imported')}
-                      </span>
-                    </div>
-                  ) : null}
-                </div>
-              </Link>
-            )
-          })}
-        </div>
-      </section>
 
       <section className={styles.categorySection} aria-labelledby="thematic-static-categories">
         <div className={styles.sectionHeader}>
@@ -208,7 +182,7 @@ export default function CategoryListPage() {
                   return (
                     <Link
                       key={category.id ?? category.name}
-                      to={thematicCategoryHref(category)}
+                      to={`${thematicCategoryHref(category)}${staticLibraryRouteSuffix(targetLanguage)}`}
                       className={`${styles.tile} ${styles.thematicTile}`}
                       aria-label={t('categories.openCategory', { title: t(category.labelKey) })}
                     >
@@ -236,6 +210,48 @@ export default function CategoryListPage() {
               </div>
             </section>
           ))}
+        </div>
+      </section>
+
+      <section className={`${styles.categorySection} ${styles.basicVocabularySection}`} aria-labelledby="legacy-curriculum-categories">
+        <div className={styles.sectionHeader}>
+          <div>
+            <h2 id="legacy-curriculum-categories" className={styles.sectionTitle}>
+              {t('categories.legacySectionTitle')}
+            </h2>
+          </div>
+        </div>
+
+        <div className={styles.basicGrid}>
+          {categories.map((category) => {
+            const isImported = importedCategorySlugs.has(category.slug)
+            return (
+              <Link
+                key={category.slug}
+                to={`/categories/${category.slug}`}
+                className={`${styles.tile} ${styles.basicTile}`}
+                aria-label={t('categories.openCategory', { title: category.title })}
+              >
+                <div className={styles.hero}>
+                  <CategoryHero category={category} />
+                </div>
+                <div className={styles.tileBody}>
+                  <h2 className={styles.tileTitle}>
+                    <span className={styles.tileEmoji} aria-hidden="true">{category.icon}</span>
+                    <span>{category.title}</span>
+                  </h2>
+                  {isImported ? (
+                    <div className={styles.tileMeta}>
+                      <span className={styles.tileImportedBadge}>
+                        <Check className="h-3 w-3" aria-hidden="true" />
+                        {t('categories.imported')}
+                      </span>
+                    </div>
+                  ) : null}
+                </div>
+              </Link>
+            )
+          })}
         </div>
       </section>
     </section>

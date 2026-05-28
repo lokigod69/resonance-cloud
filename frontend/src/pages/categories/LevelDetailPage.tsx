@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, BookOpen, Check, Sparkles, Volume2 } from 'lucide-react'
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { ArrowLeft, BookOpen, Check, Volume2 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useToast } from '@/components/Toast'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
+import CardDetailModal, { type CardDetailModel } from '@/components/common/CardDetailModal'
 import CurriculumEntryDetailModal from '@/components/categories/CurriculumEntryDetailModal'
 import CurriculumEntryImage from '@/components/categories/CurriculumEntryImage'
 import {
@@ -20,12 +21,13 @@ import {
 } from '@/data/curriculumCategories'
 import {
   getImportedCurriculumDeck,
+  buildStaticCategoryLevelDeckName,
   importCurriculumLevel,
+  importStaticCategoryLevel,
 } from '@/lib/curriculumDeckBridge'
 import { useActiveCurriculumImageSet } from '@/lib/curriculumImageSetConfig'
 import { useStaticThematicAudio } from '@/hooks/useStaticThematicAudio'
 import {
-  STATIC_CATEGORY_TARGET_LANGUAGES,
   formatSelectedCategoryVocabularyLabel,
   getPublicCategoryGroups,
   getStaticCategorySelectedItems,
@@ -34,6 +36,13 @@ import {
   type CategoryGroup,
   type SelectedCategoryVocabularyItem,
 } from '@/data/categories'
+import {
+  readStaticLibraryTargetLanguage,
+  resolveVisibleStaticLanguage,
+  staticLibraryRouteSuffix,
+} from '@/lib/staticLibraryLanguage'
+import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
+import { curriculumEntryImagePath } from '@/lib/curriculumImagePath'
 import styles from './Categories.module.css'
 
 const STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY = 'static_thematic_en_animals_elisa_raw_v1'
@@ -57,21 +66,9 @@ function getStaticCategoryById(categoryId: string | undefined): { category: Stat
   return null
 }
 
-function resolveVisibleLanguage(value: string | null | undefined, fallback: string): string {
-  if (!value) return fallback
-  const normalized = value.trim().toLowerCase()
-  const matched = STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => (
-    language.value.toLowerCase() === normalized
-    || language.code === normalized
-    || language.label.toLowerCase() === normalized
-    || language.name.toLowerCase() === normalized
-    || language.nativeName.toLowerCase() === normalized
-  ))
-  return matched?.value ?? fallback
-}
-
 export default function LevelDetailPage() {
   const { categorySlug, levelNumber } = useParams<{ categorySlug: string; levelNumber: string }>()
+  const [searchParams] = useSearchParams()
   const { profile, user } = useAuth()
   const { activeLanguage } = useLanguage()
   const { t, tp } = useTranslation()
@@ -84,8 +81,8 @@ export default function LevelDetailPage() {
   const category = getCurriculumCategoryBySlug(categorySlug)
   const level = getCurriculumLevel(categorySlug, levelNumber)
   const staticCategory = category ? null : getStaticCategoryById(categorySlug)
-  const [targetLanguage, setTargetLanguage] = useState(resolveVisibleLanguage(activeLanguage, 'English'))
-  const [helperLanguage, setHelperLanguage] = useState(resolveVisibleLanguage(profile?.base_language, 'German'))
+  const targetLanguage = readStaticLibraryTargetLanguage(searchParams.get('targetLanguage'), activeLanguage)
+  const helperLanguage = resolveVisibleStaticLanguage(profile?.base_language, 'German')
   const baseLanguageIso = profileBaseLanguageToIso(profile?.base_language)
   const { activeSetKey } = useActiveCurriculumImageSet(
     category?.data.target_language ?? 'en',
@@ -181,8 +178,6 @@ export default function LevelDetailPage() {
         levelNumber={levelNumber}
         targetLanguage={targetLanguage}
         helperLanguage={helperLanguage}
-        setTargetLanguage={setTargetLanguage}
-        setHelperLanguage={setHelperLanguage}
         t={t}
         tp={tp}
       />
@@ -306,8 +301,6 @@ function StaticLevelDetail({
   levelNumber,
   targetLanguage,
   helperLanguage,
-  setTargetLanguage,
-  setHelperLanguage,
   t,
   tp,
 }: {
@@ -316,11 +309,16 @@ function StaticLevelDetail({
   levelNumber?: string
   targetLanguage: string
   helperLanguage: string
-  setTargetLanguage: (language: string) => void
-  setHelperLanguage: (language: string) => void
   t: ReturnType<typeof useTranslation>['t']
   tp: ReturnType<typeof useTranslation>['tp']
 }) {
+  const { user } = useAuth()
+  const { toast } = useToast()
+  const navigate = useNavigate()
+  const [selectedItem, setSelectedItem] = useState<SelectedCategoryVocabularyItem | null>(null)
+  const [importedDeckId, setImportedDeckId] = useState<string | null>(null)
+  const [deckLookupLoading, setDeckLookupLoading] = useState(true)
+  const [importing, setImporting] = useState(false)
   const parsedLevel = Number(levelNumber)
   const level = Number.isInteger(parsedLevel)
     ? category.staticWordLevels?.find((item) => item.level === parsedLevel)
@@ -333,14 +331,74 @@ function StaticLevelDetail({
     [category, helperLanguage, level, targetLanguage],
   )
   const conceptIds = useMemo(() => selectedItems.map((item) => item.conceptId), [selectedItems])
+  const categorySlug = category.id ?? category.name
   const staticAudio = useStaticThematicAudio({
-    enabled: Boolean(level) && targetLanguageCode === 'en' && (category.id ?? category.name) === 'animals',
+    enabled: Boolean(level) && targetLanguageCode === 'en' && categorySlug === 'animals',
     targetLanguageCode,
-    categorySlug: category.id ?? category.name,
+    categorySlug,
     levelNumber: level?.level ?? 0,
     conceptIds,
     voiceProfileKeys: STATIC_ANIMALS_RAW_PROFILE_KEYS,
   })
+
+  useEffect(() => {
+    let cancelled = false
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets imported static deck state when route/user keys change before async lookup
+    setDeckLookupLoading(true)
+    setImportedDeckId(null)
+
+    if (!user?.id || !level) {
+      setDeckLookupLoading(false)
+      return () => {
+        cancelled = true
+      }
+    }
+
+    void getImportedCurriculumDeck(supabase, user.id, categorySlug, level.level, targetLanguage)
+      .then((row) => {
+        if (cancelled) return
+        setImportedDeckId(row?.id ?? null)
+      })
+      .catch((error) => {
+        if (cancelled) return
+        console.error('[categories] static imported-deck lookup failed', error)
+      })
+      .finally(() => {
+        if (cancelled) return
+        setDeckLookupLoading(false)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [categorySlug, level, targetLanguage, user?.id])
+
+  const handleStaticImport = useCallback(async () => {
+    if (!level) return
+    if (importedDeckId) {
+      navigate(`/deck/${importedDeckId}`)
+      return
+    }
+
+    setImporting(true)
+    try {
+      const deckName = buildStaticCategoryLevelDeckName(t(category.labelKey), level.level)
+      const deckId = await importStaticCategoryLevel(
+        supabase,
+        category,
+        level.level,
+        targetLanguage,
+        helperLanguage,
+        deckName,
+      )
+      setImportedDeckId(deckId)
+      navigate(`/deck/${deckId}`)
+    } catch (error) {
+      console.error('[categories] static import failed', error)
+      toast(t('categories.importFailed'), 'error')
+      setImporting(false)
+    }
+  }, [category, helperLanguage, importedDeckId, level, navigate, t, targetLanguage, toast])
 
   if (!level) {
     return (
@@ -348,7 +406,7 @@ function StaticLevelDetail({
         <div className={styles.notFound}>
           <h1 className={styles.title}>{t('categories.levelNotFound.title')}</h1>
           <p className={styles.subtitle}>{t('categories.levelNotFound.body')}</p>
-          <Link to={`/categories/${category.id ?? category.name}`} className={styles.backLink}>
+          <Link to={`/categories/${categorySlug}${staticLibraryRouteSuffix(targetLanguage)}`} className={styles.backLink}>
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             {t('categories.backToCategory')}
           </Link>
@@ -357,11 +415,16 @@ function StaticLevelDetail({
     )
   }
 
-  const generateHref = `/generate?category=${encodeURIComponent(category.id ?? category.name)}&level=${level.level}`
+  const importDisabled = importing || deckLookupLoading
+  const importLabel = importing
+    ? t('categories.importing')
+    : importedDeckId
+      ? t('categories.openDeck')
+      : t('categories.importLevel')
 
   return (
     <section className={styles.page}>
-      <Link to={`/categories/${category.id ?? category.name}`} className={styles.backLink}>
+      <Link to={`/categories/${categorySlug}${staticLibraryRouteSuffix(targetLanguage)}`} className={styles.backLink}>
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
         {t('categories.backToCategory')}
       </Link>
@@ -374,54 +437,63 @@ function StaticLevelDetail({
           </p>
           <h1 className={styles.title}>{t(category.labelKey)}</h1>
           <p className={styles.subtitle}>{level.label}</p>
-          <p className={styles.rowDescription}>{t('categories.noStaticStudyDeck')}</p>
         </div>
         <div className={styles.heroAction}>
-          <Link to={generateHref} className={styles.studyAction}>
-            <Sparkles className="h-4 w-4" aria-hidden="true" />
-            {t('categories.generateDeckFromLevel')}
-          </Link>
+          <button
+            type="button"
+            className={styles.studyAction}
+            onClick={handleStaticImport}
+            disabled={importDisabled}
+            aria-busy={importing || undefined}
+          >
+            {importing ? (
+              <span className={styles.studyActionSpinner} aria-hidden="true" />
+            ) : (
+              <BookOpen className="h-4 w-4" aria-hidden="true" />
+            )}
+            <span>{importLabel}</span>
+          </button>
         </div>
       </header>
 
-      <div className={styles.languagePairPanel}>
-        <label>
-          <span>{t('generate.words.targetVocabularyLanguageLabel')}</span>
-          <select value={targetLanguage} onChange={(event) => setTargetLanguage(event.target.value)}>
-            {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
-              <option key={language.code} value={language.value}>{language.label}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          <span>{t('generate.words.helperVocabularyLanguageLabel')}</span>
-          <select value={helperLanguage} onChange={(event) => setHelperLanguage(event.target.value)}>
-            {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
-              <option key={language.code} value={language.value}>{language.label}</option>
-            ))}
-          </select>
-        </label>
-      </div>
-
       <div className={styles.staticWordGrid}>
         {selectedItems.map((item) => (
-          <StaticWordCard
+          <article
             key={item.conceptId}
-            item={item}
-            category={category}
-            t={t}
-            hasElisaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
-            hasSerafinaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
-            showMissingAudioMarker={
-              import.meta.env.DEV
-              && targetLanguageCode === 'en'
-              && (category.id ?? category.name) === 'animals'
-            }
-            onPlayElisa={() => void staticAudio.play(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
-            onPlaySerafina={() => void staticAudio.play(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
-          />
+            className={styles.staticWordCard}
+            role="button"
+            tabIndex={0}
+            onClick={() => setSelectedItem(item)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                setSelectedItem(item)
+              }
+            }}
+          >
+            <StaticWordCard
+              item={item}
+              category={category}
+              t={t}
+              hasElisaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
+              hasSerafinaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
+              showMissingAudioMarker={
+                import.meta.env.DEV
+                && targetLanguageCode === 'en'
+                && categorySlug === 'animals'
+              }
+              onPlayElisa={() => void staticAudio.play(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
+              onPlaySerafina={() => void staticAudio.play(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
+            />
+          </article>
         ))}
       </div>
+      <StaticCategoryEntryDetailModal
+        item={selectedItem}
+        category={category}
+        onClose={() => setSelectedItem(null)}
+        t={t}
+      />
     </section>
   )
 }
@@ -446,7 +518,7 @@ function StaticWordCard({
   onPlaySerafina: () => void
 }) {
   return (
-    <article className={styles.staticWordCard}>
+    <>
       <div className={styles.staticWordMedia}>
             <CurriculumEntryImage
               languageIso="en"
@@ -460,7 +532,10 @@ function StaticWordCard({
           <button
             type="button"
             className={`${styles.staticAudioButton} ${styles.staticAudioButtonLeft}`}
-            onClick={onPlaySerafina}
+            onClick={(event) => {
+              event.stopPropagation()
+              onPlaySerafina()
+            }}
             aria-label={`Play Serafina pronunciation for ${item.targetTerm}`}
             title={`Play Serafina ${item.targetTerm}`}
           >
@@ -472,7 +547,10 @@ function StaticWordCard({
           <button
             type="button"
             className={`${styles.staticAudioButton} ${styles.staticAudioButtonRight}`}
-            onClick={onPlayElisa}
+            onClick={(event) => {
+              event.stopPropagation()
+              onPlayElisa()
+            }}
             aria-label={`Play Elisa pronunciation for ${item.targetTerm}`}
             title={`Play Elisa ${item.targetTerm}`}
           >
@@ -495,6 +573,46 @@ function StaticWordCard({
         <span><strong>{t('categories.staticSense')}:</strong> {item.sense}</span>
         <span>{formatSelectedCategoryVocabularyLabel(item)}</span>
       </div>
-    </article>
+    </>
   )
+}
+
+function StaticCategoryEntryDetailModal({
+  item,
+  category,
+  onClose,
+  t,
+}: {
+  item: SelectedCategoryVocabularyItem | null
+  category: StaticCategory
+  onClose: () => void
+  t: ReturnType<typeof useTranslation>['t']
+}) {
+  if (!item) return <CardDetailModal model={null} onClose={onClose} />
+
+  const categorySlug = category.id ?? category.name
+  const englishTerm = item.translations.en.term
+  const imageSrc = generatedCategoryEntryImagePath('en', categorySlug, englishTerm)
+    ?? curriculumEntryImagePath('en', categorySlug, englishTerm)
+
+  const model: CardDetailModel = {
+    title: item.targetTerm,
+    posChip: { label: item.part_of_speech },
+    image: {
+      src: imageSrc,
+      alt: t('categories.modal.imageAlt', { term: item.targetTerm }),
+      fallbackEmoji: category.emoji,
+      aspect: '16:9',
+    },
+    primaryText: item.helperTerm && item.helperTerm !== item.targetTerm ? item.helperTerm : undefined,
+    sections: [
+      {
+        key: 'sense',
+        label: t('categories.staticSense'),
+        value: item.sense,
+      },
+    ],
+  }
+
+  return <CardDetailModal model={model} onClose={onClose} />
 }

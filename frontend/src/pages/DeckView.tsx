@@ -460,7 +460,7 @@ export default function DeckView() {
             </Button>
           </>
         )}
-        {words.length === 0 ? (
+        {words.length === 0 || deck.source_kind === 'curriculum' ? (
           <Button
             variant="outline"
             className="border-destructive/40 text-destructive hover:bg-destructive/10"

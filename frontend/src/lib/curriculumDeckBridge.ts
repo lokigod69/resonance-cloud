@@ -8,8 +8,14 @@ import {
   type CurriculumLevel,
   type CurriculumPerSourceEnrichment,
 } from '@/data/curriculumCategories'
+import {
+  getStaticCategorySelectedItems,
+  resolveStaticCategoryTargetLanguageCode,
+  type Category as StaticCategory,
+} from '@/data/categories'
 import { KNOWN_CURRICULUM_ENTRY_IMAGES } from '@/data/curriculumEntryImageManifest'
 import { curriculumEntryImagePath, normalizeCurriculumTerm } from '@/lib/curriculumImagePath'
+import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
 import { isoToWizardValue } from '@/lib/languages'
 
 export interface ImportedCurriculumDeckRow {
@@ -32,6 +38,10 @@ export interface CurriculumImportEntryPayload {
   tags?: string
   thumbnail_url?: string | null
   metadata?: Record<string, unknown>
+}
+
+export function buildStaticCategoryLevelDeckName(categoryLabel: string, levelNumber: number): string {
+  return `${categoryLabel} · Level ${levelNumber}`
 }
 
 function pickGloss(entry: CurriculumEntry, baseLanguageIso: string): string {
@@ -205,19 +215,73 @@ export function buildCurriculumImportPayload(
   })
 }
 
+export function buildStaticCategoryImportPayload(
+  category: StaticCategory,
+  levelNumber: number,
+  targetLanguage: string,
+  helperLanguage: string,
+): CurriculumImportEntryPayload[] {
+  const level = category.staticWordLevels?.find((item) => item.level === levelNumber)
+  if (!level) return []
+
+  const categorySlug = category.id ?? category.name
+  const targetLanguageCode = resolveStaticCategoryTargetLanguageCode(targetLanguage)
+  const helperLanguageCode = resolveStaticCategoryTargetLanguageCode(helperLanguage)
+  const selectedItems = getStaticCategorySelectedItems(
+    category,
+    level.words.length,
+    level.level,
+    targetLanguage,
+    helperLanguage,
+  )
+
+  return selectedItems.map((item) => {
+    const englishTerm = item.translations.en.term
+    const thumbnailUrl = generatedCategoryEntryImagePath('en', categorySlug, englishTerm)
+      ?? curriculumEntryImagePath('en', categorySlug, englishTerm)
+
+    return {
+      term: item.targetTerm,
+      translation: item.helperTerm,
+      pos: item.part_of_speech,
+      thumbnail_url: thumbnailUrl,
+      metadata: {
+        source: 'static_thematic_library',
+        category_slug: categorySlug,
+        level: level.level,
+        entry_id: item.itemId,
+        concept_id: item.conceptId,
+        english_term: englishTerm,
+        sense: item.sense,
+        target_language: item.targetLanguageName,
+        target_language_code: targetLanguageCode,
+        helper_language: item.helperLanguageName,
+        helper_language_code: helperLanguageCode,
+      },
+    }
+  })
+}
+
 export async function getImportedCurriculumDeck(
   supabase: SupabaseClient,
   userId: string,
   categorySlug: string,
   levelNumber: number,
+  targetLanguage?: string,
 ): Promise<ImportedCurriculumDeckRow | null> {
-  const { data, error } = await supabase
+  let query = supabase
     .from('decks')
     .select('id, curriculum_category_slug, curriculum_level')
     .eq('user_id', userId)
     .eq('source_kind', 'curriculum')
     .eq('curriculum_category_slug', categorySlug)
     .eq('curriculum_level', levelNumber)
+
+  if (targetLanguage) {
+    query = query.eq('target_language', targetLanguage)
+  }
+
+  const { data, error } = await query
     .order('created_at', { ascending: false })
     .limit(1)
     .maybeSingle()
@@ -254,6 +318,33 @@ export async function importCurriculumLevel(
     p_level_name: levelName,
     p_entries: entries,
     p_target_language: isoToWizardValue(category.data.target_language),
+  })
+  if (error) throw error
+  if (typeof data !== 'string') {
+    throw new Error('submit_curriculum_import did not return a deck id')
+  }
+  return data
+}
+
+export async function importStaticCategoryLevel(
+  supabase: SupabaseClient,
+  category: StaticCategory,
+  levelNumber: number,
+  targetLanguage: string,
+  helperLanguage: string,
+  deckName: string,
+): Promise<string> {
+  const entries = buildStaticCategoryImportPayload(category, levelNumber, targetLanguage, helperLanguage)
+  if (entries.length === 0) {
+    throw new Error('Static category level has no importable entries')
+  }
+
+  const { data, error } = await supabase.rpc('submit_curriculum_import', {
+    p_category_slug: category.id ?? category.name,
+    p_level_number: levelNumber,
+    p_level_name: deckName,
+    p_entries: entries,
+    p_target_language: targetLanguage,
   })
   if (error) throw error
   if (typeof data !== 'string') {

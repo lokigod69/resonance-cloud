@@ -28,6 +28,7 @@
     "test:study-flashcard-pronunciation": "tsx scripts/test-study-flashcard-pronunciation.ts",
     "test:generate-category-picker-flow": "tsx scripts/test-generate-category-picker-flow.ts",
     "test:static-category-translations": "tsx scripts/test-static-category-translations.ts",
+    "test:vocabulary-library": "tsx scripts/test-vocabulary-library-contract.ts && tsx scripts/test-static-library-import.ts",
     "test:static-thematic-tts": "tsx scripts/test-static-thematic-tts.ts",
     "tts:static:inventory": "tsx scripts/export-static-thematic-tts-inventory.ts",
     "export:translation-review": "tsx scripts/export-static-translation-review.ts",
