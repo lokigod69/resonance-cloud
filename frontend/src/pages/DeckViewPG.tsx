@@ -1197,6 +1197,7 @@ export default function DeckViewPG() {
             }
           }}
           sourceDeckId={id!}
+          sourceDeckType={deck.deck_type ?? null}
           targetLanguage={deck.target_language}
           selectedCount={selectedWords.size}
         />

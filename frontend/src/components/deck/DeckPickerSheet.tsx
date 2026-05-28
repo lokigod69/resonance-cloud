@@ -16,6 +16,7 @@ interface TargetDeck {
   name: string | null
   word_count: number
   target_language: string
+  deck_type: 'video' | 'card' | 'card_text' | null
 }
 
 interface DeckPickerSheetProps {
@@ -23,6 +24,7 @@ interface DeckPickerSheetProps {
   onClose: () => void
   onSelectDeck: (deckId: string) => void
   sourceDeckId: string
+  sourceDeckType?: 'video' | 'card' | 'card_text' | null
   targetLanguage: string
   selectedCount: number
 }
@@ -32,6 +34,7 @@ export default function DeckPickerSheet({
   onClose,
   onSelectDeck,
   sourceDeckId,
+  sourceDeckType,
   targetLanguage,
   selectedCount,
 }: DeckPickerSheetProps) {
@@ -52,15 +55,22 @@ export default function DeckPickerSheet({
     setSelecting(false)
     supabase
       .from('decks')
-      .select('id, name, word_count, target_language')
+      .select('id, name, word_count, target_language, deck_type')
       .eq('target_language', targetLanguage)
       .neq('id', sourceDeckId)
       .order('updated_at', { ascending: false })
       .then(({ data }) => {
-        setDecks(data ?? [])
+        // Keep moves within the same card class: image-less (card_text) cards
+        // carry no thumbnail and would render as orphans inside an image deck,
+        // and image cards would leak their thumbnail into an image-less deck.
+        const isTextSource = sourceDeckType === 'card_text'
+        const eligible = (data ?? []).filter((d) =>
+          isTextSource ? d.deck_type === 'card_text' : d.deck_type !== 'card_text',
+        )
+        setDecks(eligible)
         setLoading(false)
       })
-  }, [open, user, targetLanguage, sourceDeckId])
+  }, [open, user, targetLanguage, sourceDeckId, sourceDeckType])
 
   async function handleCreateDeck() {
     if (!user || !newDeckName.trim()) return

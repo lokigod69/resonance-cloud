@@ -801,6 +801,7 @@ export default function DeckView() {
             }
           }}
           sourceDeckId={id!}
+          sourceDeckType={deck.deck_type ?? null}
           targetLanguage={deck.target_language}
           selectedCount={selectedWords.size}
         />
