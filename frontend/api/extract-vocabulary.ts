@@ -8,7 +8,7 @@ import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLi
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
 
-const GROQ_MODEL = 'llama-3.3-70b-versatile'
+const OPENROUTER_MODEL = 'deepseek/deepseek-v4-flash'
 const EXTRACT_BODY_MAX_BYTES = 512 * 1024
 const MAX_LANGUAGE_LENGTH = 50
 const MAX_MESSAGE_LENGTH = 4_000
@@ -218,15 +218,15 @@ For each item, return:
 Return only valid JSON of the form {"items":[{"word":"...","translation":"...","ipa":"...","is_phrase":false}]}. If the transcript contains no suitable items, return {"items":[]}.`
 }
 
-async function callGroq(apiKey: string, systemPrompt: string, transcript: TranscriptMessage[]): Promise<Response> {
-  return fetch('https://api.groq.com/openai/v1/chat/completions', {
+async function callOpenRouter(apiKey: string, systemPrompt: string, transcript: TranscriptMessage[]): Promise<Response> {
+  return fetch('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: GROQ_MODEL,
+      model: OPENROUTER_MODEL,
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: JSON.stringify({ transcript }) },
@@ -312,13 +312,13 @@ export async function POST(req: Request): Promise<Response> {
     return jsonResponse(req, { items: [], ...(body.conversation_id ? { conversation_id: body.conversation_id } : {}) }, 200)
   }
 
-  const groqKey = process.env.GROQ_API_KEY
-  if (!groqKey) {
+  const apiKey = process.env.OPENROUTER_API_KEY
+  if (!apiKey) {
     return errorResponse(req, 500, 'Vocabulary extraction service is not configured')
   }
 
   try {
-    const llmRes = await callGroq(groqKey, buildSystemPrompt(body), cleanTranscript)
+    const llmRes = await callOpenRouter(apiKey, buildSystemPrompt(body), cleanTranscript)
     if (!llmRes.ok) {
       return jsonResponse(req, { detail: 'Vocabulary extraction service unavailable' }, 502)
     }
@@ -332,7 +332,7 @@ export async function POST(req: Request): Promise<Response> {
       ...(body.conversation_id ? { conversation_id: body.conversation_id } : {}),
     }, 200)
   } catch (err) {
-    console.error('[extract-vocabulary] Groq call failed:', err instanceof Error ? err.message : err)
+    console.error('[extract-vocabulary] OpenRouter call failed:', err instanceof Error ? err.message : err)
     return jsonResponse(req, { detail: 'Vocabulary extraction service unavailable' }, 502)
   }
 }

@@ -7,7 +7,7 @@ import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLi
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
 
-const TRANSLATE_MODEL = 'deepseek/deepseek-chat-v3-0324'
+const TRANSLATE_MODEL = 'deepseek/deepseek-v4-flash'
 const MAX_TOKENS = 3000
 const MAX_ITEMS = 50
 const MAX_ATTEMPTS = 2
