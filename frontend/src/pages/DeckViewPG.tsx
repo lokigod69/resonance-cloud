@@ -1100,13 +1100,15 @@ export default function DeckViewPG() {
               <BookOpen className="h-4 w-4 inline mr-1.5" />
               {t('deckview.study')}
             </button>
-            <button
-              onClick={() => navigate(`/generate?deckId=${deck.id}`)}
-              className="rounded-xl border border-[var(--pg-accent-teal)]/30 bg-black/35 px-2 py-2.5 text-xs font-display font-medium text-[var(--pg-accent-teal)] backdrop-blur-md transition-all hover:bg-[var(--pg-accent-teal)]/10 sm:px-5 sm:text-sm"
-            >
-              <Plus className="h-4 w-4 inline mr-1.5" />
-              {t('deckview.addCards')}
-            </button>
+            {deck.deck_type !== 'card_text' && (
+              <button
+                onClick={() => navigate(`/generate?deckId=${deck.id}`)}
+                className="rounded-xl border border-[var(--pg-accent-teal)]/30 bg-black/35 px-2 py-2.5 text-xs font-display font-medium text-[var(--pg-accent-teal)] backdrop-blur-md transition-all hover:bg-[var(--pg-accent-teal)]/10 sm:px-5 sm:text-sm"
+              >
+                <Plus className="h-4 w-4 inline mr-1.5" />
+                {t('deckview.addCards')}
+              </button>
+            )}
           </>
         )}
         {words.length === 0 || deck.source_kind === 'curriculum' || deck.deck_type === 'card_text' ? (

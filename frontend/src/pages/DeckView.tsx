@@ -456,14 +456,16 @@ export default function DeckView() {
               <BookOpen className="h-4 w-4 mr-2" />
               {t('deckview.study')}
             </Button>
-            <Button
-              variant="outline"
-              className="border-primary/30 text-primary hover:bg-primary/10"
-              onClick={() => navigate(`/generate?deckId=${deck.id}`)}
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              {t('deckview.addCards')}
-            </Button>
+            {deck.deck_type !== 'card_text' && (
+              <Button
+                variant="outline"
+                className="border-primary/30 text-primary hover:bg-primary/10"
+                onClick={() => navigate(`/generate?deckId=${deck.id}`)}
+              >
+                <Plus className="h-4 w-4 mr-2" />
+                {t('deckview.addCards')}
+              </Button>
+            )}
           </>
         )}
         {words.length === 0 || deck.source_kind === 'curriculum' || deck.deck_type === 'card_text' ? (
