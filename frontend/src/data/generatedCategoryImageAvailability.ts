@@ -16,6 +16,7 @@ export const GENERATED_CATEGORY_IMAGE_HERO_TERMS = {
   music_instruments: 'piano',
   arts_entertainment: 'painting',
   technology_media: 'computer',
+  money_shopping_services: 'money',
   home_objects: 'chair',
   body_health: 'head',
   clothing_appearance: 'shirt',

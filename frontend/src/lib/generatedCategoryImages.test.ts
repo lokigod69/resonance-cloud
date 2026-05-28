@@ -22,6 +22,7 @@ assertEqual(hasGeneratedCategoryImages('sports_hobbies'), true, 'sports and hobb
 assertEqual(hasGeneratedCategoryImages('music_instruments'), true, 'music and instruments generated image set is available')
 assertEqual(hasGeneratedCategoryImages('arts_entertainment'), true, 'arts and entertainment generated image set is available')
 assertEqual(hasGeneratedCategoryImages('technology_media'), true, 'technology and media generated image set is available')
+assertEqual(hasGeneratedCategoryImages('money_shopping_services'), true, 'money shopping and services generated image set is available')
 
 assertEqual(
   generatedCategoryEntryImagePath('en', 'vegetables', 'green bean'),
@@ -99,4 +100,10 @@ assertEqual(
   generatedCategoryHeroImagePath('en', 'technology_media'),
   '/curriculum/generated-categories/en/technology_media/entries/computer.webp',
   'builds technology and media generated category hero path',
+)
+
+assertEqual(
+  generatedCategoryHeroImagePath('en', 'money_shopping_services'),
+  '/curriculum/generated-categories/en/money_shopping_services/entries/money.webp',
+  'builds money shopping and services generated category hero path',
 )
