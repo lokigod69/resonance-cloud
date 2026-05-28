@@ -460,18 +460,33 @@
 
 .levelPreviewBody {
   display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   flex: 1;
   align-content: start;
-  gap: 0.35rem;
+  align-items: start;
+  gap: 0.75rem;
   padding: 1rem;
 }
 
 .levelPreviewBody .levelBadge {
-  margin-bottom: 0.2rem;
+  width: 2.35rem;
 }
 
-.levelPreviewBody .rowAction {
-  margin-top: 0.7rem;
+.levelPreviewCopy {
+  min-width: 0;
+}
+
+.levelPreviewTitle {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 850;
+  line-height: 1.22;
+  overflow-wrap: anywhere;
+}
+
+.levelPreviewCopy .rowMeta {
+  margin-top: 0.5rem;
 }
 
 .levelRow {
@@ -684,7 +699,6 @@
   display: flex;
   min-height: 100%;
   flex-direction: column;
-  justify-content: space-between;
   border: 1px solid var(--border-subtle);
   border-radius: 0.5rem;
   padding: 1rem;
@@ -712,6 +726,24 @@
 
 .staticWordMedia {
   position: relative;
+}
+
+.staticWordCopy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.staticWordCopy .term {
+  font-size: clamp(1.28rem, 1.9vw, 1.65rem);
+}
+
+.staticWordTranslation {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .staticAudioButton {

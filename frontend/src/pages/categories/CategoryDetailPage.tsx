@@ -253,13 +253,10 @@ function renderStaticCategoryDetail({
               </div>
               <div className={styles.levelPreviewBody}>
                 <span className={styles.levelBadge}>{level.level}</span>
-                <h2 className={styles.rowTitle}>{t('categories.levelLabel', { number: level.level })}</h2>
-                <p className={styles.rowDescription}>{level.label}</p>
-                <p className={styles.rowMeta}>{tp('categories.entryCount', level.words.length)}</p>
-                <span className={styles.rowAction}>
-                  {t('categories.openLevelAction')}
-                  <ChevronRight className="h-4 w-4" aria-hidden="true" />
-                </span>
+                <div className={styles.levelPreviewCopy}>
+                  <h2 className={styles.levelPreviewTitle}>{level.label}</h2>
+                  <p className={styles.rowMeta}>{tp('categories.entryCount', level.words.length)}</p>
+                </div>
               </div>
             </Link>
           )

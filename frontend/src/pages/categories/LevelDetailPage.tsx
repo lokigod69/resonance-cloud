@@ -28,7 +28,6 @@ import {
 import { useActiveCurriculumImageSet } from '@/lib/curriculumImageSetConfig'
 import { useStaticThematicAudio } from '@/hooks/useStaticThematicAudio'
 import {
-  formatSelectedCategoryVocabularyLabel,
   getPublicCategoryGroups,
   getStaticCategorySelectedItems,
   resolveStaticCategoryTargetLanguageCode,
@@ -474,7 +473,6 @@ function StaticLevelDetail({
             <StaticWordCard
               item={item}
               category={category}
-              t={t}
               hasElisaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
               hasSerafinaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
               showMissingAudioMarker={
@@ -501,7 +499,6 @@ function StaticLevelDetail({
 function StaticWordCard({
   item,
   category,
-  t,
   hasElisaAudio,
   hasSerafinaAudio,
   showMissingAudioMarker,
@@ -510,7 +507,6 @@ function StaticWordCard({
 }: {
   item: SelectedCategoryVocabularyItem
   category: StaticCategory
-  t: ReturnType<typeof useTranslation>['t']
   hasElisaAudio: boolean
   hasSerafinaAudio: boolean
   showMissingAudioMarker: boolean
@@ -562,16 +558,11 @@ function StaticWordCard({
           <span className={styles.staticAudioMissing} title="Missing static audio">TTS</span>
         ) : null}
       </div>
-      <div>
+      <div className={styles.staticWordCopy}>
         <h2 className={styles.term}>{item.targetTerm}</h2>
         {item.helperTerm && item.helperTerm !== item.targetTerm ? (
-          <p className={styles.gloss}>{item.helperTerm}</p>
+          <p className={styles.staticWordTranslation}>{item.helperTerm}</p>
         ) : null}
-      </div>
-      <div className={styles.enrichment}>
-        <span><strong>{t('categories.modal.partOfSpeech')}:</strong> {item.part_of_speech}</span>
-        <span><strong>{t('categories.staticSense')}:</strong> {item.sense}</span>
-        <span>{formatSelectedCategoryVocabularyLabel(item)}</span>
       </div>
     </>
   )
@@ -597,7 +588,6 @@ function StaticCategoryEntryDetailModal({
 
   const model: CardDetailModel = {
     title: item.targetTerm,
-    posChip: { label: item.part_of_speech },
     image: {
       src: imageSrc,
       alt: t('categories.modal.imageAlt', { term: item.targetTerm }),
@@ -605,13 +595,7 @@ function StaticCategoryEntryDetailModal({
       aspect: '16:9',
     },
     primaryText: item.helperTerm && item.helperTerm !== item.targetTerm ? item.helperTerm : undefined,
-    sections: [
-      {
-        key: 'sense',
-        label: t('categories.staticSense'),
-        value: item.sense,
-      },
-    ],
+    sections: [],
   }
 
   return <CardDetailModal model={model} onClose={onClose} />
