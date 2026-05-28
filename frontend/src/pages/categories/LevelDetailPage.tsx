@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, BookOpen, Check, Volume2 } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, ChevronLeft, ChevronRight, Volume2 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useToast } from '@/components/Toast'
@@ -36,6 +36,7 @@ import {
   type SelectedCategoryVocabularyItem,
 } from '@/data/categories'
 import {
+  getAdjacentStaticLevelNumbers,
   getLocalizedStaticLevelLabel,
   readStaticLibraryTargetLanguage,
   resolveVisibleStaticLanguage,
@@ -52,6 +53,35 @@ const STATIC_ANIMALS_RAW_PROFILE_KEYS = [
   STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY,
   STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY,
 ]
+
+function LevelNavigation({
+  previousLevelHref,
+  nextLevelHref,
+  t,
+}: {
+  previousLevelHref?: string | null
+  nextLevelHref?: string | null
+  t: ReturnType<typeof useTranslation>['t']
+}) {
+  if (!previousLevelHref && !nextLevelHref) return null
+
+  return (
+    <nav className={styles.levelNavBar} aria-label="Level navigation">
+      {previousLevelHref ? (
+        <Link to={previousLevelHref} className={styles.levelNavPill}>
+          <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+          <span>{t('categories.previousLevel')}</span>
+        </Link>
+      ) : null}
+      {nextLevelHref ? (
+        <Link to={nextLevelHref} className={styles.levelNavPill}>
+          <span>{t('categories.nextLevel')}</span>
+          <ChevronRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+      ) : null}
+    </nav>
+  )
+}
 
 function getStaticCategoryById(categoryId: string | undefined): { category: StaticCategory; group: CategoryGroup } | null {
   if (!categoryId) return null
@@ -211,13 +241,23 @@ export default function LevelDetailPage() {
     : importedDeckId
       ? t('categories.continueLearning')
       : t('categories.startLearning')
+  const currentLevelIndex = category.levels.findIndex((item) => item.level === level.level)
+  const previousLevel = currentLevelIndex > 0 ? category.levels[currentLevelIndex - 1] : null
+  const nextLevel = currentLevelIndex >= 0 && currentLevelIndex < category.levels.length - 1
+    ? category.levels[currentLevelIndex + 1]
+    : null
+  const previousLevelHref = previousLevel ? `/categories/${category.slug}/level/${previousLevel.level}` : null
+  const nextLevelHref = nextLevel ? `/categories/${category.slug}/level/${nextLevel.level}` : null
 
   return (
     <section className={styles.page}>
-      <Link to={`/categories/${category.slug}`} className={styles.backLink}>
-        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-        {t('categories.backToCategory')}
-      </Link>
+      <div className={styles.levelTopBar}>
+        <Link to={`/categories/${category.slug}`} className={styles.backLink}>
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          {t('categories.backToCategory')}
+        </Link>
+        <LevelNavigation previousLevelHref={previousLevelHref} nextLevelHref={nextLevelHref} t={t} />
+      </div>
 
       <header className={styles.detailHero}>
         <div className={styles.detailEmoji} aria-hidden="true">{category.icon}</div>
@@ -426,13 +466,24 @@ function StaticLevelDetail({
       ? t('categories.openDeck')
       : t('categories.importLevel')
   const localizedLevelLabel = getLocalizedStaticLevelLabel(level, locale)
+  const staticLevels = category.staticWordLevels ?? []
+  const { previousLevelNumber, nextLevelNumber } = getAdjacentStaticLevelNumbers(staticLevels, level.level)
+  const previousLevelHref = previousLevelNumber
+    ? `/categories/${categorySlug}/level/${previousLevelNumber}${staticLibraryRouteSuffix(targetLanguage)}`
+    : null
+  const nextLevelHref = nextLevelNumber
+    ? `/categories/${categorySlug}/level/${nextLevelNumber}${staticLibraryRouteSuffix(targetLanguage)}`
+    : null
 
   return (
     <section className={styles.page}>
-      <Link to={`/categories/${categorySlug}${staticLibraryRouteSuffix(targetLanguage)}`} className={styles.backLink}>
-        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-        {t('categories.backToCategory')}
-      </Link>
+      <div className={styles.levelTopBar}>
+        <Link to={`/categories/${categorySlug}${staticLibraryRouteSuffix(targetLanguage)}`} className={styles.backLink}>
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          {t('categories.backToCategory')}
+        </Link>
+        <LevelNavigation previousLevelHref={previousLevelHref} nextLevelHref={nextLevelHref} t={t} />
+      </div>
 
       <header className={styles.detailHero}>
         <div className={`${styles.detailEmoji} ${styles.staticDetailEmoji}`} aria-hidden="true">{category.emoji}</div>

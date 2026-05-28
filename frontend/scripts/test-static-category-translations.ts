@@ -12,6 +12,7 @@ import {
   type StaticCategoryTargetLanguageCode,
 } from '../src/data/categories.ts'
 import {
+  getAdjacentStaticLevelNumbers,
   getLocalizedStaticLevelLabel,
   shouldShowStaticHelperTerm,
 } from '../src/lib/staticLibraryLanguage.ts'
@@ -161,5 +162,21 @@ assert.equal(shouldShowStaticHelperTerm(englishWithGermanHelper), true, 'differe
 assert.equal(shouldShowStaticHelperTerm(englishWithEnglishHelper), false, 'same target/helper language should hide duplicate helper translation')
 assert.equal(shouldShowStaticHelperTerm(frenchWithFrenchHelper), false, 'same non-English target/helper language should hide duplicate helper translation')
 assert.equal(shouldShowStaticHelperTerm(englishWithFrenchHelper), true, 'French UI with English target should show French helper translation')
+
+assert.deepEqual(
+  getAdjacentStaticLevelNumbers(animals.staticWordLevels ?? [], 1),
+  { previousLevelNumber: null, nextLevelNumber: 2 },
+  'Level 1 should expose next navigation and no previous navigation',
+)
+assert.deepEqual(
+  getAdjacentStaticLevelNumbers(animals.staticWordLevels ?? [], 3),
+  { previousLevelNumber: 2, nextLevelNumber: 4 },
+  'Middle levels should expose both previous and next navigation',
+)
+assert.deepEqual(
+  getAdjacentStaticLevelNumbers(animals.staticWordLevels ?? [], 10),
+  { previousLevelNumber: 9, nextLevelNumber: null },
+  'Last level should expose previous navigation and no next navigation',
+)
 
 console.log('test-static-category-translations: OK')

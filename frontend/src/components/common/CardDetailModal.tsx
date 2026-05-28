@@ -205,20 +205,17 @@ export default function CardDetailModal({ model, onClose }: CardDetailModalProps
             transition={{ type: 'spring', stiffness: 340, damping: 28 }}
             onClick={(event) => event.stopPropagation()}
           >
-            <button
-              ref={closeButtonRef}
-              type="button"
-              onClick={onClose}
-              className="sticky top-0 z-20 ml-auto flex h-11 w-11 items-center justify-center rounded-full transition-colors"
-              style={{
-                background: 'var(--surface-glass)',
-                border: '1px solid var(--border-subtle)',
-                color: 'var(--text-secondary)',
-              }}
-              aria-label={t('categories.modal.close')}
-            >
-              <X size={20} aria-hidden="true" />
-            </button>
+            <div className="card-detail-close-row mb-4 flex justify-end">
+              <button
+                ref={closeButtonRef}
+                type="button"
+                onClick={onClose}
+                className="card-detail-close-button flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--surface-glass)] text-[var(--text-secondary)] transition-[background,border-color,box-shadow,color] hover:cursor-pointer hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] hover:shadow-[0_0_20px_var(--accent-glow)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                aria-label={t('categories.modal.close')}
+              >
+                <X size={18} aria-hidden="true" />
+              </button>
+            </div>
 
             {model.image && <ModalImage image={model.image} title={model.title} noImageLabel={t('categories.modal.noImage')} />}
 

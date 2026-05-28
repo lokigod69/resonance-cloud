@@ -98,6 +98,19 @@ export function getLocalizedStaticLevelLabel(level: CategoryWordLevel, locale: L
   return STATIC_LEVEL_LABELS[locale]?.[level.label] ?? level.label
 }
 
+export function getAdjacentStaticLevelNumbers(
+  levels: CategoryWordLevel[],
+  currentLevelNumber: number,
+): { previousLevelNumber: number | null; nextLevelNumber: number | null } {
+  const currentLevelIndex = levels.findIndex((level) => level.level === currentLevelNumber)
+  return {
+    previousLevelNumber: currentLevelIndex > 0 ? levels[currentLevelIndex - 1].level : null,
+    nextLevelNumber: currentLevelIndex >= 0 && currentLevelIndex < levels.length - 1
+      ? levels[currentLevelIndex + 1].level
+      : null,
+  }
+}
+
 function normalizeStaticHelperValue(value: string): string {
   return value.trim().normalize('NFC').toLowerCase()
 }
