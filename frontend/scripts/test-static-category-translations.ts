@@ -4,12 +4,17 @@ import { resolve } from 'node:path'
 
 import {
   getPublicCategoryGroups,
+  getStaticCategorySelectedItems,
   getStaticCategoryWords,
   getStaticCategoryVocabularyItems,
   STATIC_CATEGORY_TRANSLATION_LANGUAGES,
   STATIC_CATEGORY_TARGET_LANGUAGES,
   type StaticCategoryTargetLanguageCode,
 } from '../src/data/categories.ts'
+import {
+  getLocalizedStaticLevelLabel,
+  shouldShowStaticHelperTerm,
+} from '../src/lib/staticLibraryLanguage.ts'
 
 const packageJson = JSON.parse(readFileSync(resolve(process.cwd(), 'package.json'), 'utf8')) as {
   scripts?: Record<string, string>
@@ -86,12 +91,16 @@ const money = publicCategories.find((category) => category.id === 'money_shoppin
 const feelings = publicCategories.find((category) => category.id === 'feelings_states')
 const education = publicCategories.find((category) => category.id === 'education_learning')
 const homeObjects = publicCategories.find((category) => category.id === 'home_objects')
+const vegetables = publicCategories.find((category) => category.id === 'vegetables')
+const foodDrinks = publicCategories.find((category) => category.id === 'food_drinks')
 assert.ok(animals)
 assert.ok(fruits)
 assert.ok(money)
 assert.ok(feelings)
 assert.ok(education)
 assert.ok(homeObjects)
+assert.ok(vegetables)
+assert.ok(foodDrinks)
 
 assert.deepEqual(getStaticCategoryWords(animals, 4, 1, 'German'), ['Hund', 'Katze', 'Vogel', 'Fisch'])
 assert.deepEqual(getStaticCategoryWords(animals, 3, 1, 'ceb'), ['iro', 'iring', 'langgam'])
@@ -108,5 +117,49 @@ assert.deepEqual(
   ['animals.dog', 'animals.cat', 'animals.bird', 'animals.fish'],
   'concept ids should be stable and derived from category plus English concept slug',
 )
+
+const vegetableLevel2 = vegetables.staticWordLevels?.find((level) => level.level === 2)
+const foodDrinksLevel4 = foodDrinks.staticWordLevels?.find((level) => level.level === 4)
+assert.ok(vegetableLevel2)
+assert.ok(foodDrinksLevel4)
+assert.equal(
+  getLocalizedStaticLevelLabel(vegetableLevel2, 'de'),
+  'H\u00e4ufiges Kochgem\u00fcse',
+  'German UI should localize visible static vegetable level titles',
+)
+assert.equal(
+  getLocalizedStaticLevelLabel(vegetableLevel2, 'fr'),
+  'L\u00e9gumes courants pour cuisiner',
+  'French UI should localize visible static vegetable level titles',
+)
+assert.equal(
+  getLocalizedStaticLevelLabel(foodDrinksLevel4, 'de'),
+  'H\u00e4ufige Getr\u00e4nke',
+  'German UI should localize visible static food/drink level titles',
+)
+assert.equal(
+  getLocalizedStaticLevelLabel(foodDrinksLevel4, 'fr'),
+  'Boissons courantes',
+  'French UI should localize visible static food/drink level titles',
+)
+assert.notEqual(
+  getLocalizedStaticLevelLabel(vegetableLevel2, 'de'),
+  'Common cooking vegetables',
+  'German UI should not fall back to English when a taxonomy translation exists',
+)
+assert.notEqual(
+  getLocalizedStaticLevelLabel(vegetableLevel2, 'fr'),
+  'Common cooking vegetables',
+  'French UI should not fall back to English when a taxonomy translation exists',
+)
+
+const englishWithGermanHelper = getStaticCategorySelectedItems(animals, 1, 1, 'English', 'German')[0]
+const englishWithEnglishHelper = getStaticCategorySelectedItems(animals, 1, 1, 'English', 'English')[0]
+const frenchWithFrenchHelper = getStaticCategorySelectedItems(animals, 1, 1, 'French', 'French')[0]
+const englishWithFrenchHelper = getStaticCategorySelectedItems(animals, 1, 1, 'English', 'French')[0]
+assert.equal(shouldShowStaticHelperTerm(englishWithGermanHelper), true, 'different target/helper language should show helper translation')
+assert.equal(shouldShowStaticHelperTerm(englishWithEnglishHelper), false, 'same target/helper language should hide duplicate helper translation')
+assert.equal(shouldShowStaticHelperTerm(frenchWithFrenchHelper), false, 'same non-English target/helper language should hide duplicate helper translation')
+assert.equal(shouldShowStaticHelperTerm(englishWithFrenchHelper), true, 'French UI with English target should show French helper translation')
 
 console.log('test-static-category-translations: OK')

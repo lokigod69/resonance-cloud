@@ -2575,7 +2575,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ── Navigation ──
     'nav.dashboard': 'Dashboard',
     'nav.today': 'Aujourd\'hui',
-    'nav.categories': 'Catégories',
+    'nav.categories': 'Bibliothèque',
     'nav.decks': 'Decks',
     'nav.generate': 'Créer',
     'nav.study': 'Étudier',

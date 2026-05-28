@@ -199,13 +199,13 @@
   color: var(--text-primary);
   text-decoration: none;
   transition:
-    transform 180ms ease,
+    background 180ms ease,
     border-color 180ms ease;
 }
 
 .tile:hover {
-  transform: translateY(-2px);
   border-color: var(--border-strong);
+  background: var(--surface-glass-strong);
 }
 
 .thematicTile .hero {
@@ -421,12 +421,10 @@
   text-decoration: none;
   transition:
     background 160ms ease,
-    border-color 160ms ease,
-    transform 160ms ease;
+    border-color 160ms ease;
 }
 
 .levelPreviewCard:hover {
-  transform: translateY(-1px);
   border-color: var(--border-strong);
   background: var(--surface-glass-strong);
 }
@@ -625,6 +623,20 @@
   box-shadow: 0 0 24px var(--accent-glow);
 }
 
+.staticImportAction {
+  min-height: 3rem;
+  border-color: var(--accent);
+  padding: 0.6rem 1.25rem;
+  background: color-mix(in srgb, var(--accent-soft) 72%, var(--surface-glass-strong));
+  color: var(--text-primary);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+
+.staticImportAction:hover {
+  background: var(--accent-soft);
+  box-shadow: 0 0 28px var(--accent-glow);
+}
+
 .studyAction:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -707,12 +719,10 @@
   transition:
     background 160ms ease,
     border-color 160ms ease,
-    box-shadow 160ms ease,
-    transform 160ms ease;
+    box-shadow 160ms ease;
 }
 
 .staticWordCard:hover {
-  transform: translateY(-1px);
   border-color: var(--border-strong);
   background: var(--surface-glass-strong);
   box-shadow: 0 0 24px var(--accent-glow);
@@ -744,6 +754,12 @@
   font-weight: 650;
   line-height: 1.35;
   overflow-wrap: anywhere;
+}
+
+.levelHeroTitle {
+  max-width: 52rem;
+  font-size: clamp(1.85rem, 4vw, 3.15rem);
+  line-height: 1.05;
 }
 
 .staticAudioButton {

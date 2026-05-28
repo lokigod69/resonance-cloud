@@ -19,7 +19,12 @@ import {
 } from '@/data/categories'
 import { listImportedCurriculumDecks } from '@/lib/curriculumDeckBridge'
 import { generatedCategoryHeroImagePath } from '@/lib/generatedCategoryImages'
-import { staticLibraryRouteSuffix, readStaticLibraryTargetLanguage, resolveVisibleStaticLanguage } from '@/lib/staticLibraryLanguage'
+import {
+  getLocalizedStaticLevelLabel,
+  staticLibraryRouteSuffix,
+  readStaticLibraryTargetLanguage,
+  resolveVisibleStaticLanguage,
+} from '@/lib/staticLibraryLanguage'
 import CurriculumEntryImage from '@/components/categories/CurriculumEntryImage'
 import styles from './Categories.module.css'
 
@@ -64,7 +69,7 @@ export default function CategoryDetailPage() {
   const [searchParams] = useSearchParams()
   const { profile, user } = useAuth()
   const { activeLanguage } = useLanguage()
-  const { t, tp } = useTranslation()
+  const { t, tp, locale } = useTranslation()
   const category = getCurriculumCategoryBySlug(categorySlug)
   const staticCategory = category ? null : getStaticCategoryById(categorySlug)
   const targetLanguage = readStaticLibraryTargetLanguage(searchParams.get('targetLanguage'), activeLanguage)
@@ -115,6 +120,7 @@ export default function CategoryDetailPage() {
       helperLanguage,
       t,
       tp,
+      locale,
     })
   }
 
@@ -145,7 +151,6 @@ export default function CategoryDetailPage() {
         <div>
           <p className={styles.eyebrow}>{tp('categories.levelCount', category.levelCount)}</p>
           <h1 className={styles.title}>{category.title}</h1>
-          <p className={styles.subtitle}>{category.description}</p>
         </div>
       </header>
 
@@ -194,6 +199,7 @@ function renderStaticCategoryDetail({
   helperLanguage,
   t,
   tp,
+  locale,
 }: {
   category: StaticCategory
   group: CategoryGroup
@@ -201,6 +207,7 @@ function renderStaticCategoryDetail({
   helperLanguage: string
   t: ReturnType<typeof useTranslation>['t']
   tp: ReturnType<typeof useTranslation>['tp']
+  locale: ReturnType<typeof useTranslation>['locale']
 }) {
   const vocabularyItems = getStaticCategoryVocabularyItems(category)
   const levelCount = category.staticWordLevels?.length ?? 0
@@ -218,7 +225,6 @@ function renderStaticCategoryDetail({
         <div>
           <p className={styles.eyebrow}>{t(group.groupKey)}</p>
           <h1 className={styles.title}>{t(category.labelKey)}</h1>
-          <p className={styles.subtitle}>{category.description}</p>
           <div className={styles.tileMeta}>
             <span className={styles.chip}>{tp('categories.entryCount', vocabularyItems.length)}</span>
             <span className={styles.chip}>{tp('categories.levelCount', levelCount)}</span>
@@ -229,6 +235,7 @@ function renderStaticCategoryDetail({
       <div className={styles.levelPreviewGrid}>
         {(category.staticWordLevels ?? []).map((level) => {
           const previewItems = getStaticCategorySelectedItems(category, 4, level.level, targetLanguage, helperLanguage)
+          const localizedLevelLabel = getLocalizedStaticLevelLabel(level, locale)
           return (
             <Link
               key={level.level}
@@ -254,7 +261,7 @@ function renderStaticCategoryDetail({
               <div className={styles.levelPreviewBody}>
                 <span className={styles.levelBadge}>{level.level}</span>
                 <div className={styles.levelPreviewCopy}>
-                  <h2 className={styles.levelPreviewTitle}>{level.label}</h2>
+                  <h2 className={styles.levelPreviewTitle}>{localizedLevelLabel}</h2>
                   <p className={styles.rowMeta}>{tp('categories.entryCount', level.words.length)}</p>
                 </div>
               </div>

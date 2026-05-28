@@ -36,8 +36,10 @@ import {
   type SelectedCategoryVocabularyItem,
 } from '@/data/categories'
 import {
+  getLocalizedStaticLevelLabel,
   readStaticLibraryTargetLanguage,
   resolveVisibleStaticLanguage,
+  shouldShowStaticHelperTerm,
   staticLibraryRouteSuffix,
 } from '@/lib/staticLibraryLanguage'
 import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
@@ -70,7 +72,7 @@ export default function LevelDetailPage() {
   const [searchParams] = useSearchParams()
   const { profile, user } = useAuth()
   const { activeLanguage } = useLanguage()
-  const { t, tp } = useTranslation()
+  const { t, tp, locale } = useTranslation()
   const { toast } = useToast()
   const navigate = useNavigate()
   const [selectedEntry, setSelectedEntry] = useState<CurriculumEntry | null>(null)
@@ -177,6 +179,7 @@ export default function LevelDetailPage() {
         levelNumber={levelNumber}
         targetLanguage={targetLanguage}
         helperLanguage={helperLanguage}
+        locale={locale}
         t={t}
         tp={tp}
       />
@@ -300,6 +303,7 @@ function StaticLevelDetail({
   levelNumber,
   targetLanguage,
   helperLanguage,
+  locale,
   t,
   tp,
 }: {
@@ -308,6 +312,7 @@ function StaticLevelDetail({
   levelNumber?: string
   targetLanguage: string
   helperLanguage: string
+  locale: ReturnType<typeof useTranslation>['locale']
   t: ReturnType<typeof useTranslation>['t']
   tp: ReturnType<typeof useTranslation>['tp']
 }) {
@@ -420,6 +425,7 @@ function StaticLevelDetail({
     : importedDeckId
       ? t('categories.openDeck')
       : t('categories.importLevel')
+  const localizedLevelLabel = getLocalizedStaticLevelLabel(level, locale)
 
   return (
     <section className={styles.page}>
@@ -434,13 +440,13 @@ function StaticLevelDetail({
           <p className={styles.eyebrow}>
             {t(group.groupKey)} · {t('categories.levelLabel', { number: level.level })} · {tp('categories.entryCount', selectedItems.length)}
           </p>
-          <h1 className={styles.title}>{t(category.labelKey)}</h1>
-          <p className={styles.subtitle}>{level.label}</p>
+          <h1 className={`${styles.title} ${styles.levelHeroTitle}`}>{localizedLevelLabel}</h1>
+          <p className={styles.subtitle}>{t(category.labelKey)}</p>
         </div>
         <div className={styles.heroAction}>
           <button
             type="button"
-            className={styles.studyAction}
+            className={`${styles.studyAction} ${styles.staticImportAction}`}
             onClick={handleStaticImport}
             disabled={importDisabled}
             aria-busy={importing || undefined}
@@ -560,7 +566,7 @@ function StaticWordCard({
       </div>
       <div className={styles.staticWordCopy}>
         <h2 className={styles.term}>{item.targetTerm}</h2>
-        {item.helperTerm && item.helperTerm !== item.targetTerm ? (
+        {shouldShowStaticHelperTerm(item) ? (
           <p className={styles.staticWordTranslation}>{item.helperTerm}</p>
         ) : null}
       </div>
@@ -594,7 +600,7 @@ function StaticCategoryEntryDetailModal({
       fallbackEmoji: category.emoji,
       aspect: '16:9',
     },
-    primaryText: item.helperTerm && item.helperTerm !== item.targetTerm ? item.helperTerm : undefined,
+    primaryText: shouldShowStaticHelperTerm(item) ? item.helperTerm : undefined,
     sections: [],
   }
 

@@ -146,7 +146,6 @@ export default function CategoryListPage() {
       <header className={styles.header}>
         <div>
           <h1 className={styles.title}>{t('categories.title')}</h1>
-          <p className={styles.subtitle}>{t('categories.subtitle')}</p>
         </div>
         <label className={styles.libraryLanguageSelect}>
           <span>{t('categories.targetLanguageLabel')}</span>
@@ -164,7 +163,6 @@ export default function CategoryListPage() {
             <h2 id="thematic-static-categories" className={styles.sectionTitle}>
               {t('categories.thematicSectionTitle')}
             </h2>
-            <p className={styles.sectionDescription}>{t('categories.thematicSectionDescription')}</p>
           </div>
         </div>
 

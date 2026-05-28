@@ -20,7 +20,9 @@ const translations = read('src/lib/translations.ts')
 const categoryList = read('src/pages/categories/CategoryListPage.tsx')
 const categoryDetail = read('src/pages/categories/CategoryDetailPage.tsx')
 const levelDetail = read('src/pages/categories/LevelDetailPage.tsx')
+const categoryStyles = read('src/pages/categories/Categories.module.css')
 const bridge = read('src/lib/curriculumDeckBridge.ts')
+const staticLibraryLanguage = read('src/lib/staticLibraryLanguage.ts')
 
 assertIncludes(translations, "'nav.categories': 'Library'", 'English nav')
 assertIncludes(translations, "'nav.categories': 'Wortschatz'", 'German nav')
@@ -32,9 +34,12 @@ assertIncludes(translations, "'categories.legacySectionTitle': 'Basic Vocabulary
 assertIncludes(translations, "'categories.legacySectionTitle': 'Basiswortschatz'", 'German basic heading')
 assertIncludes(translations, "'categories.importLevel': 'Import level'", 'English import CTA')
 assertIncludes(translations, "'categories.importLevel': 'Level importieren'", 'German import CTA')
+assertIncludes(translations, "'nav.categories': 'Bibliothèque'", 'French nav should use the library product label')
 
 assertNotIncludes(categoryList, 'generateFromCategories', 'Library landing')
 assertNotIncludes(categoryList, 'to="/generate"', 'Library landing')
+assertNotIncludes(categoryList, "t('categories.subtitle')", 'Library landing generic subtitle copy')
+assertNotIncludes(categoryList, 'categories.thematicSectionDescription', 'Library landing thematic generic subtitle copy')
 assert.ok(
   categoryList.indexOf('thematic-static-categories') < categoryList.indexOf('legacy-curriculum-categories'),
   'thematic section should render before legacy/basic section',
@@ -51,7 +56,8 @@ assertNotIncludes(categoryDetail, 'staticWordChip', 'Category detail word-chip s
 assertIncludes(categoryDetail, 'levelPreviewGrid', 'Category detail level preview cards')
 assertIncludes(categoryDetail, 'levelPreviewCollage', 'Category detail image preview collage')
 assertIncludes(categoryDetail, 'levelPreviewTitle', 'Category detail level title styling')
-assertIncludes(categoryDetail, '{level.label}', 'Category detail should promote the actual level title')
+assertIncludes(categoryDetail, 'getLocalizedStaticLevelLabel(level, locale)', 'Category detail should localize static level titles')
+assertNotIncludes(categoryDetail, '{category.description}', 'Static category detail should not render generic generated descriptions')
 assertNotIncludes(categoryDetail, "t('categories.levelLabel'", 'Category detail should not repeat Level X text on static level cards')
 assertNotIncludes(categoryDetail, 'categories.openLevelAction', 'Category detail should not render redundant open-level CTA copy')
 
@@ -61,13 +67,22 @@ assertNotIncludes(levelDetail, '/generate?category=', 'Level detail static gener
 assertIncludes(levelDetail, 'importStaticCategoryLevel', 'Level detail static import path')
 assertIncludes(levelDetail, 'StaticCategoryEntryDetailModal', 'Level detail static word modal')
 assertIncludes(levelDetail, 'onClick={() => setSelectedItem(item)}', 'Static word cards should be clickable')
+assertIncludes(levelDetail, 'localizedLevelLabel', 'Static level detail should make the level title primary')
+assertIncludes(levelDetail, 'staticImportAction', 'Static level import button should carry stronger visual weight')
 assertIncludes(levelDetail, 'staticWordCopy', 'Static word cards should use clean word/translation copy')
 assertIncludes(levelDetail, 'staticWordTranslation', 'Static word cards should show readable translations')
+assertIncludes(levelDetail, 'shouldShowStaticHelperTerm(item)', 'Static word cards should intentionally hide same-language duplicate translations')
 assertIncludes(levelDetail, 'Play Serafina pronunciation', 'Static TTS buttons should still render')
 assertNotIncludes(levelDetail, 'formatSelectedCategoryVocabularyLabel', 'Static word cards should not render repeated word/translation pair labels')
 assertNotIncludes(levelDetail, 'styles.enrichment', 'Static word cards should not render metadata enrichment blocks')
 assertNotIncludes(levelDetail, "t('categories.staticSense')", 'Static word cards/modal should hide raw category sense metadata')
 assertNotIncludes(levelDetail, "t('categories.modal.partOfSpeech')", 'Static word cards should hide POS metadata')
+
+assertIncludes(staticLibraryLanguage, 'getLocalizedStaticLevelLabel', 'Static taxonomy localization helper')
+assertIncludes(staticLibraryLanguage, 'shouldShowStaticHelperTerm', 'Same-language translation visibility helper')
+assertNotIncludes(categoryStyles, '.levelPreviewCard:hover {\n  transform:', 'Level card hover should not move image boxes')
+assertNotIncludes(categoryStyles, '.staticWordCard:hover {\n  transform:', 'Static word card hover should not move image boxes')
+assertNotIncludes(categoryStyles, '.tile:hover {\n  transform:', 'Library tile hover should not move image boxes')
 
 assertIncludes(bridge, 'buildStaticCategoryImportPayload', 'Static import bridge')
 assertIncludes(bridge, 'importStaticCategoryLevel', 'Static import bridge')
