@@ -20,6 +20,7 @@ export type StudyWord = {
   suno_storage_url_b: string | null
   suno_audio_url: string | null
   deck_id: string
+  deck_type: 'video' | 'card' | 'card_text' | null
   target_language: string | null
   base_language: string | null
   faces?: CardFaces
@@ -35,8 +36,8 @@ type RetryItem = { wordId: string; cardsSeen: number }
 
 type SessionStats = { remembered: number; reviewLater: number }
 
-type StudyWordRow = Omit<StudyWord, 'target_language' | 'base_language'> & {
-  decks?: { target_language?: string | null } | null
+type StudyWordRow = Omit<StudyWord, 'target_language' | 'base_language' | 'deck_type'> & {
+  decks?: { target_language?: string | null; deck_type?: 'video' | 'card' | 'card_text' | null } | null
 }
 
 // Fisher-Yates shuffle
@@ -161,7 +162,7 @@ export function useStudySession(
 
     let wordsQuery = supabase
       .from('words')
-      .select('id, word, translation, mnemonic, etymology, ipa, video_url, thumbnail_url, tts_audio_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language)')
+      .select('id, word, translation, mnemonic, etymology, ipa, video_url, thumbnail_url, tts_audio_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language, deck_type)')
       .eq('user_id', userId)
       .eq('status', 'complete')
     if (deckId) {
@@ -178,6 +179,7 @@ export function useStudySession(
       const { decks, ...word } = row
       return {
         ...word,
+        deck_type: decks?.deck_type ?? null,
         target_language: decks?.target_language ?? null,
         base_language: profile?.base_language ?? null,
       }

@@ -43,10 +43,15 @@ export default function ProductLaneStep({
       label: t('generate.productLane.premium.label'),
       cost: t('generate.productLane.premium.cost'),
     },
+    {
+      value: 'card_text',
+      label: t('generate.productLane.cardText.label'),
+      cost: t('generate.productLane.cardText.cost'),
+    },
   ]
 
   const tiles = variant === 'card-only'
-    ? allTiles.filter((tile) => tile.value !== 'video')
+    ? allTiles.filter((tile) => tile.value === 'card_standard' || tile.value === 'card_premium')
     : allTiles
 
   const title =

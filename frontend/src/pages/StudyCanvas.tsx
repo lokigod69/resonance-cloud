@@ -287,6 +287,12 @@ export default function StudyCanvas() {
     }
   }, [studyLanguage, words])
 
+  const deckType = useMemo(
+    () => words.find((word) => word.deck_type)?.deck_type ?? null,
+    [words],
+  )
+  const canToggleImages = deckType !== 'card_text'
+
   const hasCompleteDeckLanguagePair = useMemo(() => {
     const languageWord = words.find((word) => word.target_language || word.base_language)
     const deckTarget = languageWord?.target_language ?? null
@@ -420,12 +426,14 @@ export default function StudyCanvas() {
         key={`${activeMode}-${shuffleNonce}-${currentPage}-${direction}`}
         words={currentPageWords}
         masteredWordIds={passedWords}
-        showImages={showImages}
+        showImages={canToggleImages ? showImages : false}
+        deckType={deckType}
         sessionComplete={sessionComplete}
         direction={direction}
         autoReveal={autoReveal}
         languagePair={languagePair}
         canToggleDirection={hasCompleteDeckLanguagePair}
+        canToggleImages={canToggleImages}
         currentPage={currentPage}
         totalPages={totalPages}
         activeMode={activeMode}

@@ -17,11 +17,13 @@ export interface CanvasModeProps {
   words: StudyWord[]
   masteredWordIds: ReadonlySet<string>
   showImages: boolean
+  deckType: 'video' | 'card' | 'card_text' | null
   sessionComplete: boolean
   direction: CanvasDirection
   autoReveal: CanvasAutoReveal
   languagePair: CanvasLanguagePair
   canToggleDirection: boolean
+  canToggleImages: boolean
 
   // Pagination state
   currentPage: number

@@ -39,6 +39,7 @@ export const PRODUCT_LANE_VISUAL_TONES: Record<ProductLane, string> = {
   video: 'video',
   card_standard: 'standard',
   card_premium: 'premium',
+  card_text: 'word',
 }
 
 export const MEANING_STRATEGY_VISUAL_TONES: Record<CardLayer2MeaningStrategy, string> = {

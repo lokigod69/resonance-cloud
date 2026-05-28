@@ -72,6 +72,7 @@ const PRODUCT_LANE_LABEL_KEYS: Record<ProductLane, string> = {
   video: 'generate.productLane.video.label',
   card_standard: 'generate.productLane.standard.label',
   card_premium: 'generate.productLane.premium.label',
+  card_text: 'generate.productLane.cardText.label',
 }
 
 const ART_GROUP_LABEL_KEYS: Record<string, string> = {

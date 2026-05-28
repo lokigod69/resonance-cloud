@@ -99,11 +99,17 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
 interface LockedWordProps {
   word: string
   helperTerm?: string
+  details?: {
+    translation?: string | null
+    ipa?: string | null
+  }
   onRemove: () => void
 }
 
-export function LockedWord({ word, helperTerm, onRemove }: LockedWordProps) {
+export function LockedWord({ word, helperTerm, details, onRemove }: LockedWordProps) {
   const showHelper = helperTerm && !wordsEqual(helperTerm, word)
+  const translation = details?.translation?.trim()
+  const ipa = details?.ipa?.trim()
 
   return (
     <motion.div
@@ -123,11 +129,12 @@ export function LockedWord({ word, helperTerm, onRemove }: LockedWordProps) {
     >
       <Check className="h-3.5 w-3.5 text-[#4ade80]" />
       <span className="min-w-0 break-words [hyphens:auto] text-sm text-foreground/90">
-        {word}
-        {showHelper && (
-          <span className="text-muted-foreground/85">
-            {' / '}
-            {helperTerm}
+        <span>{word}</span>
+        {showHelper && <span className="text-muted-foreground/85">{' / '}{helperTerm}</span>}
+        {(translation || ipa) && (
+          <span className="mt-0.5 block text-left text-[11px] leading-snug text-muted-foreground/85">
+            {translation && <span className="block">{translation}</span>}
+            {ipa && <span className="block text-muted-foreground/65">{ipa}</span>}
           </span>
         )}
       </span>
@@ -145,10 +152,11 @@ export function LockedWord({ word, helperTerm, onRemove }: LockedWordProps) {
 interface WordChipsProps {
   words: string[]
   vocabularyItems?: SelectedCategoryVocabularyItem[]
+  details?: Array<{ translation?: string | null; ipa?: string | null }>
   onRemove: (index: number) => void
 }
 
-export function WordChips({ words, vocabularyItems = [], onRemove }: WordChipsProps) {
+export function WordChips({ words, vocabularyItems = [], details = [], onRemove }: WordChipsProps) {
   return (
     <div className="flex w-full min-w-0 flex-wrap justify-center gap-2">
       <AnimatePresence mode="popLayout">
@@ -159,6 +167,7 @@ export function WordChips({ words, vocabularyItems = [], onRemove }: WordChipsPr
               key={word}
               word={word}
               helperTerm={vocabularyItem?.helperTerm}
+              details={details[i]}
               onRemove={() => onRemove(i)}
             />
           )

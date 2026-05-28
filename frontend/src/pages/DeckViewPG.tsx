@@ -41,6 +41,7 @@ import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useDeleteWords } from '@/hooks/useDeleteWords'
+import { useDeleteImagelessDeck } from '@/hooks/useDeleteImagelessDeck'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { useTranslation } from '@/hooks/useTranslation'
 import { usePronunciation } from '@/hooks/usePronunciation'
@@ -58,7 +59,7 @@ type Deck = {
   status: string
   art_style: string | null
   created_at: string
-  deck_type?: 'video' | 'card'
+  deck_type?: 'video' | 'card' | 'card_text'
   source_kind?: string | null
 }
 
@@ -125,6 +126,7 @@ export default function DeckViewPG() {
   const [showDeckPicker, setShowDeckPicker] = useState(false)
   const { moveWords, moving } = useMoveWords(id!)
   const { deleteWords, deleting } = useDeleteWords(id!)
+  const { deleteImagelessDeck } = useDeleteImagelessDeck()
 
   const handleRetry = async (word: Word) => {
     if (!user) return
@@ -229,7 +231,11 @@ export default function DeckViewPG() {
     if (!deck) return
     setDeletingDeck(true)
     try {
-      if (deck.source_kind === 'curriculum') {
+      if (deck.deck_type === 'card_text') {
+        const confirmed = window.confirm(t('deckview.confirmDeleteDeck'))
+        if (!confirmed) return
+        await deleteImagelessDeck(deck.id)
+      } else if (deck.source_kind === 'curriculum') {
         // Curriculum decks cascade-delete the Learner's personal words for this import.
         const confirmed = window.confirm(t('deckview.confirmCurriculumDelete'))
         if (!confirmed) return
@@ -1103,7 +1109,7 @@ export default function DeckViewPG() {
             </button>
           </>
         )}
-        {words.length === 0 || deck.source_kind === 'curriculum' ? (
+        {words.length === 0 || deck.source_kind === 'curriculum' || deck.deck_type === 'card_text' ? (
           <button
             onClick={handleDeleteDeck}
             disabled={deletingDeck}

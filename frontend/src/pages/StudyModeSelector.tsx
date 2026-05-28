@@ -46,13 +46,13 @@ export default function StudyModeSelector() {
   const { user } = useAuth()
   const { activeLanguage, setActiveLanguage } = useLanguage()
 
-  const [allDecks, setAllDecks] = useState<{ id: string; name: string | null; target_language: string }[]>([])
+  const [allDecks, setAllDecks] = useState<{ id: string; name: string | null; target_language: string; deck_type: string | null }[]>([])
 
   useEffect(() => {
     if (!user) return
     supabase
       .from('decks')
-      .select('id, name, target_language')
+      .select('id, name, target_language, deck_type')
       .eq('user_id', user.id)
       .then(({ data }) => { if (data) setAllDecks(data) })
   }, [user])
@@ -68,6 +68,10 @@ export default function StudyModeSelector() {
   )
 
   const deckName = selectedDeck?.name ?? null
+  const isImagelessDeck = selectedDeck?.deck_type === 'card_text'
+  const visibleModes = isImagelessDeck
+    ? MODES.filter((mode) => mode.key === 'flashcard' || mode.key === 'canvas')
+    : MODES
   const { data: wordStates } = useWordStates(activeLanguage ?? '', { deckId: deckParam })
   const queueLabel = queue ? t(QUEUE_LABEL_KEYS[queue]) : null
   const queueCount = queue ? filterLemmaStatesForQueue(wordStates, queue).length : 0
@@ -131,7 +135,7 @@ export default function StudyModeSelector() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {MODES.map((mode) => {
+          {visibleModes.map((mode) => {
             const title = t(mode.titleKey)
 
             return (
@@ -171,6 +175,7 @@ export default function StudyModeSelector() {
           })}
         </div>
 
+        {!isImagelessDeck && (
         <div className="mt-10 border-t border-border/60 pt-8">
           <h2 className="mb-4 text-center text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             {t('study.games.section')}
@@ -214,6 +219,7 @@ export default function StudyModeSelector() {
             })}
           </div>
         </div>
+        )}
       </div>
     </div>
   )

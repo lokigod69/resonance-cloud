@@ -157,6 +157,7 @@ const PRODUCT_ICONS: Record<ProductLane, PremiumVisualIcon> = {
   video: Music2,
   card_standard: BookOpen,
   card_premium: PremiumCardVisualIcon,
+  card_text: Type,
 }
 
 export function ProductLaneVisualSelector({

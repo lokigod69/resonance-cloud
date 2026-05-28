@@ -90,6 +90,12 @@ interface SpeakHistoryPanelProps {
   open: boolean
   onClose: () => void
   baseLangCode?: string
+  onExtractConversation?: (conversation: {
+    conversationId: string
+    targetLanguage: string
+    baseLanguage: string
+    defaultDeckName: string
+  }) => void
 }
 
 const LANGUAGE_NAMES: Record<string, string> = {
@@ -131,7 +137,7 @@ function formatDate(iso: string, t: (key: string, vars?: Record<string, string |
   return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
 }
 
-export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryPanelProps) {
+export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConversation }: SpeakHistoryPanelProps) {
   const { user } = useAuth()
   const { t } = useTranslation()
   const [conversations, setConversations] = useState<Conversation[]>([])
@@ -142,6 +148,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
   const [corrections, setCorrections] = useState<Correction[] | null>(null)
   const [correctionsLoading, setCorrectionsLoading] = useState(false)
   const [correctionsError, setCorrectionsError] = useState<string | null>(null)
+  const defaultDeckName = `${t('speak.extractWords.defaultDeckName')} - ${new Date().toLocaleDateString()}`
 
   // Load conversations when panel opens
   useEffect(() => {
@@ -497,6 +504,37 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                           ))}
                         </div>
                       )}
+                      {selectedConversation && onExtractConversation && (
+                        <button
+                          type="button"
+                          onClick={() => onExtractConversation({
+                            conversationId: selectedConversation.id,
+                            targetLanguage: selectedConversation.language,
+                            baseLanguage: baseLangCode || 'en',
+                            defaultDeckName,
+                          })}
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors border border-white/10"
+                        >
+                          <span>{t('speak.extractWords.button')}</span>
+                        </button>
+                      )}
+                    </div>
+                  )}
+
+                  {messages.length > 0 && messages.length < 4 && selectedConversation && onExtractConversation && (
+                    <div className="mt-6 flex justify-center">
+                      <button
+                        type="button"
+                        onClick={() => onExtractConversation({
+                          conversationId: selectedConversation.id,
+                          targetLanguage: selectedConversation.language,
+                          baseLanguage: baseLangCode || 'en',
+                          defaultDeckName,
+                        })}
+                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors border border-white/10"
+                      >
+                        <span>{t('speak.extractWords.button')}</span>
+                      </button>
                     </div>
                   )}
                 </div>

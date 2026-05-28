@@ -41,6 +41,8 @@ import {
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useTranslateAndIpa } from '@/hooks/useTranslateAndIpa'
+import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 
@@ -67,6 +69,8 @@ export default function GeneratePG() {
   const hasNavigatedToDeckRef = useRef(false)
 
   const { t } = useTranslation()
+  const { translateAndIpa } = useTranslateAndIpa()
+  const { submitImagelessImport } = useSubmitImagelessImport()
 
   const [existingDeck, setExistingDeck] = useState<ExistingDeck | null>(null)
 
@@ -106,7 +110,9 @@ export default function GeneratePG() {
       setExistingDeck(enrichedDeck)
       dispatch({ type: 'SET_LANGUAGE', language: deck.target_language })
       const lane: ProductLane =
-        deck.deck_type === 'video'
+        deck.deck_type === 'card_text'
+          ? 'card_text'
+          : deck.deck_type === 'video'
           ? 'video'
           : lastCardImageModel === 'gpt_image_2'
             ? 'card_premium'
@@ -136,7 +142,7 @@ export default function GeneratePG() {
   }, [deckIdParam, state.language, activeLanguage, dispatch])
 
   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
-  const generatedQueueIsCard = existingDeck?.deck_type === 'card' || isCardLane(state.productLane)
+  const generatedQueueIsCard = existingDeck?.deck_type === 'card' || state.productLane === 'card_text' || isCardLane(state.productLane)
   const { jobStatus, jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(queueDeckId ?? undefined, {
     enabled: generated && !!queueDeckId && !generatedQueueIsCard,
   })
@@ -177,6 +183,30 @@ export default function GeneratePG() {
     setError(null)
 
     try {
+      if (state.productLane === 'card_text') {
+        const targetLanguage = existingDeck?.target_language ?? state.language ?? ''
+        const targetLanguageCode = LANGUAGES.find((lang) => lang.value === targetLanguage)?.code ?? targetLanguage
+        const baseLanguageValue = profile?.base_language ?? 'English'
+        const baseLanguageCode = LANGUAGES.find((lang) => lang.value === baseLanguageValue)?.code ?? baseLanguageValue
+        const items = await translateAndIpa({
+          items: effectiveWords.map((word) => ({ word, is_phrase: /\s/.test(word.trim()) })),
+          target_language: targetLanguageCode,
+          base_language: baseLanguageCode,
+        })
+        const targetDeckId = await submitImagelessImport({
+          deckName: state.deckName.trim() || `${state.language ?? 'Language'} Text Deck`,
+          targetLanguage: targetLanguageCode,
+          baseLanguage: baseLanguageCode,
+          origin: state.selectedVocabularyItems.length > 0 ? 'category' : 'manual',
+          items,
+        })
+        setGeneratedDeckId(targetDeckId)
+        setGenerated(true)
+        hasNavigatedToDeckRef.current = true
+        navigate(getGeneratedDeckHref(targetDeckId))
+        return
+      }
+
       const payload = buildGeneratePayload({
         state,
         userId: user.id,
@@ -284,8 +314,9 @@ export default function GeneratePG() {
 
   const lane = state.productLane
   const cardLane = isCardLane(lane)
+  const textLane = lane === 'card_text'
   const premiumCardLane = lane === 'card_premium'
-  const reviewStep = cardLane ? 4 : 7
+  const reviewStep = textLane ? 3 : cardLane ? 4 : 7
 
   return (
     <div className="generate-flow-shell max-w-4xl mx-auto px-4">
@@ -295,6 +326,7 @@ export default function GeneratePG() {
         existingDeck={!!existingDeck}
         existingDeckLockedToVideo={existingDeck?.deck_type === 'video'}
         cardLane={cardLane}
+        textLane={textLane}
         premiumCardLane={premiumCardLane}
       />
       {pgStep > 0 && pgStep < reviewStep && (
@@ -304,6 +336,7 @@ export default function GeneratePG() {
           setPgStep={setPgStep}
           existingDeck={existingDeck}
           cardLane={cardLane}
+          textLane={textLane}
         />
       )}
 
@@ -366,7 +399,7 @@ export default function GeneratePG() {
               />
             )
           )}
-          {pgStep === 3 && !cardLane && (
+          {pgStep === 3 && !cardLane && !textLane && (
             <StepVibe
               selected={state.vibe}
               movieTitle={state.movieTitle}
@@ -386,28 +419,28 @@ export default function GeneratePG() {
               onGoToStep={setPgStep}
             />
           )}
-          {pgStep === 4 && !cardLane && (
+          {pgStep === 4 && !cardLane && !textLane && (
             <StepArtStyle
               selected={state.artStyle}
               dispatch={dispatch}
               onContinue={() => setPgStep(5)}
             />
           )}
-          {pgStep === 5 && !cardLane && (
+          {pgStep === 5 && !cardLane && !textLane && (
             <StepNiveau
               selected={state.lyricMode}
               dispatch={dispatch}
               onContinue={() => setPgStep(6)}
             />
           )}
-          {pgStep === 6 && !cardLane && (
+          {pgStep === 6 && !cardLane && !textLane && (
             <StepMusic
               selected={state.genre}
               dispatch={dispatch}
               onContinue={() => setPgStep(7)}
             />
           )}
-          {pgStep === 7 && !cardLane && (
+          {pgStep === 7 && !cardLane && !textLane && (
             <StepReview
               state={state}
               dispatch={dispatch}
@@ -433,6 +466,7 @@ function BreadcrumbPills({
   existingDeck,
   existingDeckLockedToVideo,
   cardLane,
+  textLane,
   premiumCardLane,
 }: {
   pgStep: number
@@ -440,10 +474,17 @@ function BreadcrumbPills({
   existingDeck: boolean
   existingDeckLockedToVideo: boolean
   cardLane: boolean
+  textLane: boolean
   premiumCardLane: boolean
 }) {
   const { t } = useTranslation()
-  const STEP_LABELS = cardLane
+  const STEP_LABELS = textLane
+    ? [
+        t('generate.stepLanguage'),
+        t('generate.productLane.breadcrumb'),
+        t('generate.stepWords'),
+      ]
+    : cardLane
     ? [
         t('generate.stepLanguage'),
         t('generate.productLane.breadcrumb'),
@@ -503,12 +544,14 @@ function GenerateSelectionSummary({
   setPgStep,
   existingDeck,
   cardLane,
+  textLane,
 }: {
   state: WizardState
   pgStep: number
   setPgStep: (s: number) => void
   existingDeck: ExistingDeck | null
   cardLane: boolean
+  textLane: boolean
 }) {
   const items: PremiumSummaryItem[] = []
   const lane = state.productLane
@@ -545,7 +588,7 @@ function GenerateSelectionSummary({
     })
   }
 
-  if (cardLane && state.cardImageStyle && pgStep > 3 && !premiumInfographic) {
+  if (!textLane && cardLane && state.cardImageStyle && pgStep > 3 && !premiumInfographic) {
     items.push({
       key: 'style',
       label: cardLayer2ArtStyleLabel(state.cardImageStyle),
@@ -555,7 +598,7 @@ function GenerateSelectionSummary({
     })
   }
 
-  if (!cardLane && pgStep > 3) {
+  if (!textLane && !cardLane && pgStep > 3) {
     items.push({
       key: 'vibe',
       label: state.vibe && state.vibe !== 'auto' ? state.vibe : 'Auto',
@@ -979,6 +1022,7 @@ function laneLabel(lane: ProductLane | null): string {
   if (lane === 'video') return 'Video & Music'
   if (lane === 'card_standard') return 'Standard Card'
   if (lane === 'card_premium') return 'Premium Card'
+  if (lane === 'card_text') return 'Image-less Deck'
   return ''
 }
 

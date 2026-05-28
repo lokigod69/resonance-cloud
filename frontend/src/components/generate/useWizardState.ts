@@ -3,7 +3,7 @@ import { MAX_WORDS } from './wizardData'
 import { wordsEqual } from '@/lib/wordEquality'
 import type { SelectedCategoryVocabularyItem } from '@/data/categories'
 
-export type ProductLane = 'video' | 'card_standard' | 'card_premium'
+export type ProductLane = 'video' | 'card_standard' | 'card_premium' | 'card_text'
 
 export type CardImageModel = 'zturbo' | 'gpt_image_2'
 export type CardLayer2MeaningStrategy =
@@ -530,8 +530,9 @@ export function isCardLane(
   return lane === 'card_standard' || lane === 'card_premium'
 }
 
-export function laneToDeckType(lane: ProductLane | null | undefined): 'video' | 'card' | null {
+export function laneToDeckType(lane: ProductLane | null | undefined): 'video' | 'card' | 'card_text' | null {
   if (lane === 'video') return 'video'
+  if (lane === 'card_text') return 'card_text'
   if (isCardLane(lane)) return 'card'
   return null
 }
@@ -547,10 +548,11 @@ export function laneToCardImageModel(
 // Translate a deck row (and optional last-used card_image_model) into a lane.
 // Used when entering "Add Cards" mode to preselect the right lane.
 export function deckRowToProductLane(
-  deckType: 'video' | 'card' | null | undefined,
+  deckType: 'video' | 'card' | 'card_text' | null | undefined,
   lastCardImageModel?: string | null,
 ): ProductLane | null {
   if (deckType === 'video') return 'video'
+  if (deckType === 'card_text') return 'card_text'
   if (deckType === 'card') {
     return lastCardImageModel === 'gpt_image_2' ? 'card_premium' : 'card_standard'
   }
@@ -561,6 +563,7 @@ const CREDIT_COST_PER_LANE: Record<ProductLane, number> = {
   video: 10,
   card_standard: 1,
   card_premium: 5,
+  card_text: 0,
 }
 
 export const VIDEO_CREDIT_COST_PER_WORD = CREDIT_COST_PER_LANE.video
@@ -743,7 +746,7 @@ export interface GeneratePayload {
     movie_override: string | null
     word_count: number
     status: 'generating'
-    deck_type: 'video' | 'card'
+    deck_type: 'video' | 'card' | 'card_text'
   } | null
   wordList: string[]
   jobPayload: {
@@ -773,7 +776,7 @@ export interface ExistingDeck {
   art_style: string | null
   movie_override: string | null
   word_count: number
-  deck_type?: 'video' | 'card'
+  deck_type?: 'video' | 'card' | 'card_text'
   /** Last-used `card_image_model` for this deck, derived from the most recent
    *  generation_jobs.settings_override. Optional — used to preselect the lane
    *  when appending to an existing card deck. */

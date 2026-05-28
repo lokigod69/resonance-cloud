@@ -65,6 +65,7 @@ export interface UseVoiceTutorReturn {
   level: string | null
   status: TutorStatus
   messages: TutorMessage[]
+  endedMessages: TutorMessage[]
   error: string | null
   isSupported: boolean
   pendingAudio: { base64: string; format: string } | null
@@ -84,6 +85,7 @@ export interface UseVoiceTutorReturn {
   changeLevel: () => void
   cancelLevelChange: () => void
   showLevelPicker: boolean
+  endConversation: () => Promise<void>
   newChat: () => Promise<void>
   resetConversation: () => void
   studyMode: boolean
@@ -95,6 +97,7 @@ export interface UseVoiceTutorReturn {
   replayMessageAudio: (message: TutorMessage) => Promise<void>
   saveCorrections: (corrections: unknown) => Promise<void>
   conversationId: string | null
+  isEnded: boolean
   provider: SpeakProvider
   setProvider: (provider: SpeakProvider) => void
   geminiModeId: string | null
@@ -200,10 +203,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   )
   const [status, setStatus] = useState<TutorStatus>('idle')
   const [messages, setMessages] = useState<TutorMessage[]>([])
+  const [endedMessages, setEndedMessages] = useState<TutorMessage[]>([])
   const [error, setError] = useState<string | null>(null)
   const [pendingAudio, setPendingAudio] = useState<{ base64: string; format: string } | null>(null)
   const [showLevelPicker, setShowLevelPicker] = useState(false)
   const [conversationId, setConversationId] = useState<string | null>(null)
+  const [isEnded, setIsEnded] = useState(false)
   const [isChangingVoice, setIsChangingVoice] = useState(false)
   const [studyMode, setStudyMode] = useState(false)
   const studyModeRef = useRef(false)
@@ -378,6 +383,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
   const endConversation = useCallback(async () => {
     const convId = conversationIdRef.current
+    if (messagesRef.current.length > 0) {
+      setEndedMessages(messagesRef.current)
+      setIsEnded(true)
+    }
     if (!convId) return
 
     conversationIdRef.current = null
@@ -1247,6 +1256,8 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     if (!lang || !v) return
     stopAllAudio()
     endConversation()
+    setIsEnded(false)
+    setEndedMessages([])
     setMessages([])
     messagesRef.current = []
     setPendingAudio(null)
@@ -1468,6 +1479,8 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const resetConversation = useCallback(() => {
     stopAllAudio()
     endConversation()
+    setIsEnded(false)
+    setEndedMessages([])
     releaseResources()
 
     setLanguage(null)
@@ -1545,6 +1558,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     level,
     status,
     messages,
+    endedMessages,
     error,
     isSupported,
     pendingAudio,
@@ -1565,6 +1579,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     changeLevel,
     cancelLevelChange,
     showLevelPicker,
+    endConversation,
     newChat,
     resetConversation,
     replayMessageAudio,
@@ -1575,6 +1590,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     revealMessage,
     saveCorrections,
     conversationId,
+    isEnded,
     provider,
     setProvider,
     geminiModeId,

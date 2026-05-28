@@ -183,14 +183,16 @@ export default function WordsStep({
                     <Sparkles className="h-5 w-5" />
                     {t('generate.primaryGenerate')}
                   </PillButton>
-                  <PillButton
-                    variant="secondary"
-                    onClick={handleCustomize}
-                    className="px-6 py-2.5 text-xs font-medium"
-                  >
-                    <Wand2 className="h-3.5 w-3.5" />
-                    {t('generate.customize')}
-                  </PillButton>
+                  {state.productLane !== 'card_text' && (
+                    <PillButton
+                      variant="secondary"
+                      onClick={handleCustomize}
+                      className="px-6 py-2.5 text-xs font-medium"
+                    >
+                      <Wand2 className="h-3.5 w-3.5" />
+                      {t('generate.customize')}
+                    </PillButton>
+                  )}
                 </>
               )}
             </motion.div>

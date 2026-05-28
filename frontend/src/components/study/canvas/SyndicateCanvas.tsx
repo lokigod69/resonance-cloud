@@ -9,6 +9,7 @@ import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPosi
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { getCardFullUrl } from '@/lib/imageUrls'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
+import { ImagelessCard } from '@/components/study/ImagelessCard'
 
 type LaneColumn = 'left' | 'right'
 type CanvasPosition = { x: number; y: number; laneColumn?: LaneColumn }
@@ -465,11 +466,13 @@ export default function SyndicateCanvas({
   words,
   masteredWordIds,
   showImages,
+  deckType,
   sessionComplete,
   direction,
   autoReveal,
   languagePair,
   canToggleDirection,
+  canToggleImages,
   currentPage,
   totalPages,
   activeMode,
@@ -986,6 +989,7 @@ export default function SyndicateCanvas({
           autoReveal={autoReveal}
           languagePair={languagePair}
           canToggleDirection={canToggleDirection}
+          canToggleImages={canToggleImages}
           currentPage={currentPage}
           totalPages={totalPages}
           onSwitchMode={onSwitchMode}
@@ -1000,7 +1004,8 @@ export default function SyndicateCanvas({
         <div className="absolute inset-0 z-10">
           {renderWords.map((state) => {
             const imageUrl = !state.imageFailed ? getImageUrl(state.word) : null
-            const showImageCard = showImages && !!imageUrl
+            const isImagelessDeck = deckType === 'card_text'
+            const showImageCard = !isImagelessDeck && showImages && !!imageUrl
             const text = state.word.text ?? state.word.word
             const hueColor = HUES[state.hue] ?? HUES[0]
             const cssVars = {
@@ -1038,7 +1043,15 @@ export default function SyndicateCanvas({
                   className={innerClassName}
                   style={cssVars}
                 >
-                  {showImageCard ? (
+                  {isImagelessDeck ? (
+                    <ImagelessCard
+                      word={state.word.word}
+                      translation={state.word.translation ?? ''}
+                      ipa={state.word.ipa ?? null}
+                      revealed={false}
+                      className="w-36 rounded-lg md:w-44"
+                    />
+                  ) : showImageCard ? (
                     <span className="syndicate-card-image inline-flex items-center gap-1.5">
                       <span className="text-[var(--syn-glow)] opacity-60 font-mono text-lg leading-none">[</span>
                       <img
@@ -1100,6 +1113,7 @@ interface ToolbarProps {
   autoReveal: CanvasModeProps['autoReveal']
   languagePair: CanvasModeProps['languagePair']
   canToggleDirection: boolean
+  canToggleImages: boolean
   currentPage: number
   totalPages: number
   onSwitchMode: (mode: CanvasMode) => void
@@ -1119,6 +1133,7 @@ function Toolbar({
   autoReveal,
   languagePair,
   canToggleDirection,
+  canToggleImages,
   currentPage,
   totalPages,
   onSwitchMode,
@@ -1196,16 +1211,18 @@ function Toolbar({
           {t('study.canvas.hideAnswer')}
         </label>
 
-        <button
-          onClick={(event) => {
-            event.stopPropagation()
-            onToggleImages()
-          }}
-          className="h-9 px-3 text-xs uppercase tracking-widest text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50"
-          title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
-        >
-          {showImages ? '[TXT]' : '[IMG]'}
-        </button>
+        {canToggleImages && (
+          <button
+            onClick={(event) => {
+              event.stopPropagation()
+              onToggleImages()
+            }}
+            className="h-9 px-3 text-xs uppercase tracking-widest text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50"
+            title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
+          >
+            {showImages ? '[TXT]' : '[IMG]'}
+          </button>
+        )}
 
         {totalPages > 1 && (
           <>

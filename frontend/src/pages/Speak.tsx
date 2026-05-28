@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, UserRoundCog, MessageSquarePlus, History, Signal } from 'lucide-react'
 import { useVoiceTutor } from '@/hooks/useVoiceTutor'
 import { useGrokRealtime } from '@/hooks/useGrokRealtime'
 import { useStudyWords } from '@/hooks/useStudyWords'
 import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
+import { EndConversationScreen } from '@/components/speak/EndConversationScreen'
+import { ExtractWordsModal } from '@/components/speak/ExtractWordsModal'
 import { VoiceTutorPicker, type SpeakProvider } from '@/components/speak/VoiceTutorPicker'
 import { ProviderToggle } from '@/components/speak/ProviderToggle'
 import { GrokPicker, type GrokPickerStep } from '@/components/speak/GrokPicker'
@@ -32,11 +35,20 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog'
 import { SPEAK_LANGUAGES, LANGUAGES as ALL_LANGUAGES } from '@/lib/languages'
+import { getGeneratedDeckHref } from '@/lib/cardGenerationProgress'
 
 const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar', 'fil', 'id', 'ko']
 const GROK_LEVEL_VALUES: GrokLevel[] = ['zero', 'beginner', 'intermediate', 'advanced']
 const DEFAULT_GROK_VOICE: GrokVoice = 'eve'
 const DEFAULT_GROK_CATEGORY: GrokCategory | 'free_chat' = 'free_chat'
+
+type ExtractModalSource = {
+  messages?: Array<{ role: 'user' | 'assistant'; content: string }>
+  conversationId?: string
+  targetLanguage: string
+  baseLanguage: string
+  defaultDeckName: string
+}
 
 const LANGUAGES = SPEAK_ORDER
   .map((code) => SPEAK_LANGUAGES.find((l) => l.code === code))
@@ -116,6 +128,7 @@ const defaultProviderFor = (lang: string | null | undefined): SpeakProvider => {
 
 export default function Speak() {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const { toast } = useToast()
   const { profile } = useAuth()
   const baseLangCode = ALL_LANGUAGES.find((l) => l.value === profile?.base_language)?.code
@@ -151,12 +164,16 @@ export default function Speak() {
   const [grokPickerStep, setGrokPickerStep] = useState<GrokPickerStep>('voice')
   const [grokSessionActive, setGrokSessionActive] = useState(false)
   const [grokShowTranscript, setGrokShowTranscript] = useState(false)
+  const [extractSource, setExtractSource] = useState<ExtractModalSource | null>(null)
 
   type Correction = { original: string; corrected: string; explanation: string }
   const [corrections, setCorrections] = useState<Correction[] | null>(null)
   const [correctionsLoading, setCorrectionsLoading] = useState(false)
 
   const selectedLang = LANGUAGES.find((l) => l.code === tutor.language)
+  const targetLanguageCode = tutor.language ?? selectedLang?.code ?? 'en'
+  const extractBaseLanguageCode = baseLangCode ?? 'en'
+  const defaultExtractDeckName = `${t('speak.extractWords.defaultDeckName')} - ${new Date().toLocaleDateString()}`
   const activeMessages = activeProvider === 'grok' && grokSessionActive ? grok.messages : tutor.messages
   const isBusy = activeProvider === 'grok'
     ? grok.status === 'connecting' || grok.status === 'speaking'
@@ -306,6 +323,35 @@ export default function Speak() {
     setCorrections(null)
     setGrokPickerStep('voice')
   }
+
+  const openExtractWords = (source: Omit<ExtractModalSource, 'defaultDeckName'> & { defaultDeckName?: string }) => {
+    setExtractSource({
+      ...source,
+      defaultDeckName: source.defaultDeckName ?? defaultExtractDeckName,
+    })
+  }
+
+  const handleImportedDeck = (deckId: string) => {
+    setExtractSource(null)
+    navigate(getGeneratedDeckHref(deckId))
+  }
+
+  const handleEndTutorConversation = async () => {
+    setCorrections(null)
+    await tutor.endConversation()
+  }
+
+  const extractModal = extractSource ? (
+    <ExtractWordsModal
+      messages={extractSource.messages}
+      conversationId={extractSource.conversationId}
+      targetLanguage={extractSource.targetLanguage}
+      baseLanguage={extractSource.baseLanguage}
+      defaultDeckName={extractSource.defaultDeckName}
+      onClose={() => setExtractSource(null)}
+      onImported={handleImportedDeck}
+    />
+  ) : null
 
   useEffect(() => {
     setCorrections(null)
@@ -767,6 +813,33 @@ export default function Speak() {
     )
   }
 
+  if (activeProvider !== 'grok' && tutor.isEnded && (tutor.endedMessages.length > 0 || tutor.messages.length > 0)) {
+    const endedTutor = tutor.provider === 'gemini' ? 'gemini' : 'voxtral'
+    const endedMessages = (tutor.endedMessages.length > 0 ? tutor.endedMessages : tutor.messages)
+      .filter((msg) => msg.role === 'user' || msg.role === 'assistant')
+      .map((msg) => ({ role: msg.role as 'user' | 'assistant', content: msg.content }))
+
+    return (
+      <>
+        <EndConversationScreen
+          tutor={endedTutor}
+          messages={endedMessages}
+          conversationId={tutor.conversationId}
+          targetLanguage={targetLanguageCode}
+          baseLanguage={extractBaseLanguageCode}
+          onStartNew={() => { void tutor.newChat() }}
+          onExtract={() => openExtractWords({
+            messages: endedMessages,
+            conversationId: tutor.conversationId ?? undefined,
+            targetLanguage: targetLanguageCode,
+            baseLanguage: extractBaseLanguageCode,
+          })}
+        />
+        {extractModal}
+      </>
+    )
+  }
+
   if (grokShowTranscript && grok.messages.length > 0) {
     return (
       <div className="speak-chat-shell fixed inset-x-0 bottom-0 top-[var(--glassy-header-offset)] z-30 flex flex-col">
@@ -820,20 +893,33 @@ export default function Speak() {
           open={historyOpen}
           onClose={() => setHistoryOpen(false)}
           baseLangCode={baseLangCode}
+          onExtractConversation={(conversation) => openExtractWords(conversation)}
         />
 
         <div className="speak-chatbar shrink-0 border-t">
           <div className="px-4 pt-5 pb-[calc(var(--app-safe-bottom)+1.25rem)] max-w-5xl mx-auto w-full">
-            <div className="flex justify-center">
+            <div className="flex flex-col justify-center gap-3 sm:flex-row">
               <button
                 onClick={startNewGrokConversation}
                 className="speak-accent-action px-5 py-3 rounded-full text-sm font-medium transition-colors"
               >
                 {t('speak.startNewConversation')}
               </button>
+              <button
+                type="button"
+                onClick={() => openExtractWords({
+                  messages: grok.messages.map((msg) => ({ role: msg.role, content: msg.content })),
+                  targetLanguage: targetLanguageCode,
+                  baseLanguage: extractBaseLanguageCode,
+                })}
+                className="px-5 py-3 rounded-full border border-[var(--border-subtle)] bg-[var(--surface-glass)] text-sm font-medium text-[var(--text-primary)] transition-colors hover:bg-[var(--surface-glass-strong)]"
+              >
+                {t('speak.extractWords.button')}
+              </button>
             </div>
           </div>
         </div>
+        {extractModal}
       </div>
     )
   }
@@ -995,7 +1081,9 @@ export default function Speak() {
           open={historyOpen}
           onClose={() => setHistoryOpen(false)}
           baseLangCode={baseLangCode}
+          onExtractConversation={(conversation) => openExtractWords(conversation)}
         />
+        {extractModal}
       </div>
     )
   }
@@ -1007,7 +1095,7 @@ export default function Speak() {
       <div className="speak-chatbar shrink-0 border-b">
         <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
           <button
-            onClick={tutor.resetConversation}
+            onClick={() => { void handleEndTutorConversation() }}
             className="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors"
             title={t('speak.backTooltip')}
           >
@@ -1225,7 +1313,9 @@ export default function Speak() {
         open={historyOpen}
         onClose={() => setHistoryOpen(false)}
         baseLangCode={baseLangCode}
+        onExtractConversation={(conversation) => openExtractWords(conversation)}
       />
+      {extractModal}
 
       <Dialog open={newChatConfirmOpen} onOpenChange={setNewChatConfirmOpen}>
         <DialogContent className="sm:max-w-md">
@@ -1243,7 +1333,7 @@ export default function Speak() {
             <button
               onClick={() => {
                 setNewChatConfirmOpen(false)
-                void tutor.newChat()
+                void handleEndTutorConversation()
               }}
               className="speak-accent-action px-4 py-2 rounded-lg text-sm"
             >

@@ -9,6 +9,7 @@ import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPosi
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { getCardFullUrl } from '@/lib/imageUrls'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
+import { ImagelessCard } from '@/components/study/ImagelessCard'
 
 type LaneColumn = 'left' | 'right'
 type CanvasPosition = { x: number; y: number; laneColumn?: LaneColumn }
@@ -369,11 +370,13 @@ export default function EmberCanvas({
   words,
   masteredWordIds,
   showImages,
+  deckType,
   sessionComplete,
   direction,
   autoReveal,
   languagePair,
   canToggleDirection,
+  canToggleImages,
   currentPage,
   totalPages,
   activeMode,
@@ -776,6 +779,7 @@ export default function EmberCanvas({
           autoReveal={autoReveal}
           languagePair={languagePair}
           canToggleDirection={canToggleDirection}
+          canToggleImages={canToggleImages}
           currentPage={currentPage}
           totalPages={totalPages}
           onSwitchMode={onSwitchMode}
@@ -790,7 +794,8 @@ export default function EmberCanvas({
         <div className="absolute inset-0 z-10">
           {renderWords.map((state) => {
             const imageUrl = !state.imageFailed ? getImageUrl(state.word) : null
-            const showImageCard = showImages && !!imageUrl
+            const isImagelessDeck = deckType === 'card_text'
+            const showImageCard = !isImagelessDeck && showImages && !!imageUrl
             const text = state.word.text ?? state.word.word
             const innerClassName = [
               'ember-word-inner transition-[opacity,transform,filter] duration-1000',
@@ -819,7 +824,15 @@ export default function EmberCanvas({
                   className={innerClassName}
                   style={!state.mastered ? { color: HUE_COLORS[state.hue] } : undefined}
                 >
-                  {showImageCard ? (
+                  {isImagelessDeck ? (
+                    <ImagelessCard
+                      word={state.word.word}
+                      translation={state.word.translation ?? ''}
+                      ipa={state.word.ipa ?? null}
+                      revealed={false}
+                      className="w-36 rounded-lg md:w-44"
+                    />
+                  ) : showImageCard ? (
                     <img
                       src={imageUrl}
                       alt={text}
@@ -864,6 +877,7 @@ interface ToolbarProps {
   autoReveal: CanvasModeProps['autoReveal']
   languagePair: CanvasModeProps['languagePair']
   canToggleDirection: boolean
+  canToggleImages: boolean
   currentPage: number
   totalPages: number
   onSwitchMode: (mode: CanvasMode) => void
@@ -883,6 +897,7 @@ function Toolbar({
   autoReveal,
   languagePair,
   canToggleDirection,
+  canToggleImages,
   currentPage,
   totalPages,
   onSwitchMode,
@@ -960,16 +975,18 @@ function Toolbar({
             {t('study.canvas.hideAnswer')}
           </label>
 
-          <button
-            onClick={(event) => {
-              event.stopPropagation()
-              onToggleImages()
-            }}
-            className="h-9 px-3 text-xs uppercase tracking-widest text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded"
-            title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
-          >
-            {showImages ? 'Aa' : 'Img'}
-          </button>
+          {canToggleImages && (
+            <button
+              onClick={(event) => {
+                event.stopPropagation()
+                onToggleImages()
+              }}
+              className="h-9 px-3 text-xs uppercase tracking-widest text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded"
+              title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
+            >
+              {showImages ? 'Aa' : 'Img'}
+            </button>
+          )}
 
           {totalPages > 1 && (
             <>

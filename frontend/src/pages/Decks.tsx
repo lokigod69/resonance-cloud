@@ -3,7 +3,7 @@ import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
-import { Loader, Music, Sparkles } from 'lucide-react'
+import { Loader, Music, Sparkles, Type } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
@@ -17,7 +17,7 @@ type Deck = {
   word_count: number
   status: string
   created_at: string
-  deck_type?: 'video' | 'card'
+  deck_type?: 'video' | 'card' | 'card_text'
 }
 
 type WordStatus = {
@@ -238,6 +238,7 @@ export default function Decks() {
             const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
             const rawThumb = deckThumbnails[deck.id]
             const thumb = deck.deck_type === 'card' ? getCardThumbUrl(rawThumb) ?? undefined : rawThumb
+            const isImagelessDeck = deck.deck_type === 'card_text'
             const deckLanguageLabel = getDeckLanguageLabel(deck.target_language, t)
             const displayName = deck.name || t('generateGo.languageDeckName', { language: deckLanguageLabel })
 
@@ -265,6 +266,12 @@ export default function Decks() {
                 </div>
                 <div className="classic-deck-body">
                   <h3>{displayName}</h3>
+                  {isImagelessDeck && (
+                    <span className="inline-flex w-fit items-center gap-1 rounded-full border border-border/70 bg-card px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+                      <Type className="h-3 w-3" />
+                      {t('decks.imageless.badge')}
+                    </span>
+                  )}
                   <p>{deckLanguageLabel} &bull; {tp('dashboard.wordCount', counts.total)}</p>
                   {deck.status !== 'complete' && (
                     <p className="classic-deck-status">

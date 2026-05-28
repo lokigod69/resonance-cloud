@@ -21,6 +21,7 @@ import {
 } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { QueueIndicator } from '@/components/study/QueueIndicator'
+import { ImagelessCard } from '@/components/study/ImagelessCard'
 import { isStudyQueue } from '@/hooks/useStudySession'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -246,23 +247,33 @@ export default function StudyFlashcard() {
                     />
                   )}
                 </AnimatePresence>
-                <button
-                  type="button"
-                  aria-label={`Play pronunciation for ${current.word}`}
-                  onClick={() => { void playWord(current) }}
-                  className="group flex max-w-full flex-col items-center justify-center gap-3 rounded-xl px-4 py-3 text-foreground transition-colors hover:text-foreground/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--card))]"
-                >
-                  <h2 className="text-3xl sm:text-4xl font-bold text-center long-copy">{current.word}</h2>
-                  <Volume2
-                    className="h-5 w-5 text-muted-foreground/70 transition-colors group-hover:text-muted-foreground"
-                    aria-hidden="true"
+                {current.deck_type === 'card_text' ? (
+                  <ImagelessCard
+                    word={current.word}
+                    translation={current.translation ?? ''}
+                    ipa={current.ipa ?? null}
+                    revealed={revealed}
+                    className="w-full max-w-2xl"
                   />
-                </button>
+                ) : (
+                  <button
+                    type="button"
+                    aria-label={`Play pronunciation for ${current.word}`}
+                    onClick={() => { void playWord(current) }}
+                    className="group flex max-w-full flex-col items-center justify-center gap-3 rounded-xl px-4 py-3 text-foreground transition-colors hover:text-foreground/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--card))]"
+                  >
+                    <h2 className="text-3xl sm:text-4xl font-bold text-center long-copy">{current.word}</h2>
+                    <Volume2
+                      className="h-5 w-5 text-muted-foreground/70 transition-colors group-hover:text-muted-foreground"
+                      aria-hidden="true"
+                    />
+                  </button>
+                )}
               </div>
 
               {/* Reveal area */}
               <div className="text-center mb-6">
-                {revealed ? (
+                {current.deck_type === 'card_text' && revealed ? null : revealed ? (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
