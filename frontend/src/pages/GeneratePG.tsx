@@ -43,6 +43,8 @@ import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useTranslateAndIpa } from '@/hooks/useTranslateAndIpa'
 import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
+import { useAppendImagelessCards } from '@/hooks/useAppendImagelessCards'
+import { useGenerateImagelessTts } from '@/hooks/useGenerateImagelessTts'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 
@@ -50,6 +52,34 @@ import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGen
 
 const PG_EASE = [0.16, 1, 0.3, 1] as const
 const PG_TRANSITION = { duration: 0.5, ease: PG_EASE }
+
+function isLaneLockedDeckType(deckType: ExistingDeck['deck_type'] | null | undefined): boolean {
+  return deckType === 'video' || deckType === 'card_text'
+}
+
+async function fetchAllWordIds(deckId: string): Promise<string[]> {
+  const { data, error } = await supabase
+    .from('words')
+    .select('id')
+    .eq('deck_id', deckId)
+    .order('created_at', { ascending: true })
+    .order('id', { ascending: true })
+  if (error) throw new Error(error.message)
+  return (data ?? []).map((row) => row.id as string)
+}
+
+async function fetchLatestWordIds(deckId: string, count: number): Promise<string[]> {
+  if (count <= 0) return []
+  const { data, error } = await supabase
+    .from('words')
+    .select('id')
+    .eq('deck_id', deckId)
+    .order('created_at', { ascending: false })
+    .order('id', { ascending: false })
+    .limit(count)
+  if (error) throw new Error(error.message)
+  return (data ?? []).map((row) => row.id as string).reverse()
+}
 
 /* ─── Main Component ────────────────────────────── */
 
@@ -71,6 +101,8 @@ export default function GeneratePG() {
   const { t } = useTranslation()
   const { translateAndIpa } = useTranslateAndIpa()
   const { submitImagelessImport } = useSubmitImagelessImport()
+  const { appendImagelessCards } = useAppendImagelessCards()
+  const { generateImagelessTts } = useGenerateImagelessTts()
 
   const [existingDeck, setExistingDeck] = useState<ExistingDeck | null>(null)
 
@@ -120,7 +152,7 @@ export default function GeneratePG() {
       dispatch({ type: 'SET_PRODUCT_LANE', lane })
       // Skip Language and Lane (existing deck locks both for video; for card,
       // lane is preselected but the user can revisit step 1 to change it).
-      setPgStep(deck.deck_type === 'video' ? 2 : 1)
+      setPgStep(isLaneLockedDeckType(deck.deck_type) ? 2 : 1)
     })()
     return () => { cancelled = true }
   }, [deckIdParam, dispatch])
@@ -141,8 +173,16 @@ export default function GeneratePG() {
     return () => window.clearTimeout(timeoutId)
   }, [deckIdParam, state.language, activeLanguage, dispatch])
 
+  const existingDeckLaneLocked = isLaneLockedDeckType(existingDeck?.deck_type)
+  useEffect(() => {
+    if (existingDeckLaneLocked && pgStep < 2) setPgStep(2)
+  }, [existingDeckLaneLocked, pgStep])
+
   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
-  const generatedQueueIsCard = existingDeck?.deck_type === 'card' || state.productLane === 'card_text' || isCardLane(state.productLane)
+  const generatedQueueIsCard = existingDeck?.deck_type === 'card'
+    || existingDeck?.deck_type === 'card_text'
+    || state.productLane === 'card_text'
+    || isCardLane(state.productLane)
   const { jobStatus, jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(queueDeckId ?? undefined, {
     enabled: generated && !!queueDeckId && !generatedQueueIsCard,
   })
@@ -177,13 +217,14 @@ export default function GeneratePG() {
     const effectiveWords = wordsOverride ?? state.words
     if (effectiveWords.length === 0) return
     if (!existingDeck && !state.language) return
-    if (!state.productLane) return
+    const effectiveProductLane = existingDeck?.deck_type === 'card_text' ? 'card_text' : state.productLane
+    if (!effectiveProductLane) return
 
     setSubmitting(true)
     setError(null)
 
     try {
-      if (state.productLane === 'card_text') {
+      if (effectiveProductLane === 'card_text') {
         const targetLanguage = existingDeck?.target_language ?? state.language ?? ''
         const targetLanguageCode = LANGUAGES.find((lang) => lang.value === targetLanguage)?.code ?? targetLanguage
         const baseLanguageValue = profile?.base_language ?? 'English'
@@ -193,13 +234,27 @@ export default function GeneratePG() {
           target_language: targetLanguageCode,
           base_language: baseLanguageCode,
         })
-        const targetDeckId = await submitImagelessImport({
-          deckName: state.deckName.trim() || `${state.language ?? 'Language'} Text Deck`,
-          targetLanguage: targetLanguageCode,
-          baseLanguage: baseLanguageCode,
-          origin: state.selectedVocabularyItems.length > 0 ? 'category' : 'manual',
-          items,
-        })
+
+        const origin = state.selectedVocabularyItems.length > 0 ? 'category' : 'manual'
+        let targetDeckId: string
+        if (existingDeck?.id) {
+          targetDeckId = existingDeck.id
+          const insertedCount = await appendImagelessCards({
+            p_deck_id: existingDeck.id,
+            p_items: items,
+            p_origin: origin,
+          })
+          triggerImagelessTts(() => fetchLatestWordIds(existingDeck.id, insertedCount))
+        } else {
+          targetDeckId = await submitImagelessImport({
+            deckName: state.deckName.trim() || `${targetLanguage || 'Language'} Text Deck`,
+            targetLanguage: targetLanguageCode,
+            baseLanguage: baseLanguageCode,
+            origin,
+            items,
+          })
+          triggerImagelessTts(() => fetchAllWordIds(targetDeckId))
+        }
         setGeneratedDeckId(targetDeckId)
         setGenerated(true)
         hasNavigatedToDeckRef.current = true
@@ -236,6 +291,17 @@ export default function GeneratePG() {
   }
 
   /* ─── Quick Generate path ─── */
+
+  function triggerImagelessTts(loadWordIds: () => Promise<string[]>) {
+    void loadWordIds()
+      .then((wordIds) => {
+        if (wordIds.length > 0) {
+          return generateImagelessTts({ word_ids: wordIds })
+        }
+        return undefined
+      })
+      .catch(() => undefined)
+  }
 
   function handleQuickGenerate(words: string[]) {
     // Quick Generate: drop video-only customisations and submit immediately.
@@ -314,7 +380,7 @@ export default function GeneratePG() {
 
   const lane = state.productLane
   const cardLane = isCardLane(lane)
-  const textLane = lane === 'card_text'
+  const textLane = existingDeck?.deck_type === 'card_text' || lane === 'card_text'
   const premiumCardLane = lane === 'card_premium'
   const reviewStep = textLane ? 3 : cardLane ? 4 : 7
 
@@ -324,7 +390,7 @@ export default function GeneratePG() {
         pgStep={pgStep}
         setPgStep={setPgStep}
         existingDeck={!!existingDeck}
-        existingDeckLockedToVideo={existingDeck?.deck_type === 'video'}
+        existingDeckLaneLocked={existingDeckLaneLocked}
         cardLane={cardLane}
         textLane={textLane}
         premiumCardLane={premiumCardLane}
@@ -356,7 +422,7 @@ export default function GeneratePG() {
               }}
             />
           )}
-          {pgStep === 1 && (
+          {pgStep === 1 && !existingDeckLaneLocked && (
             <ProductLaneStep
               skin="classic"
               variant={existingDeck?.deck_type === 'card' ? 'card-only' : 'all'}
@@ -464,7 +530,7 @@ function BreadcrumbPills({
   pgStep,
   setPgStep,
   existingDeck,
-  existingDeckLockedToVideo,
+  existingDeckLaneLocked,
   cardLane,
   textLane,
   premiumCardLane,
@@ -472,7 +538,7 @@ function BreadcrumbPills({
   pgStep: number
   setPgStep: (s: number) => void
   existingDeck: boolean
-  existingDeckLockedToVideo: boolean
+  existingDeckLaneLocked: boolean
   cardLane: boolean
   textLane: boolean
   premiumCardLane: boolean
@@ -502,7 +568,7 @@ function BreadcrumbPills({
         t('generate.stepMusic'),
         t('generate.stepReview'),
       ]
-  const startIndex = existingDeck ? (existingDeckLockedToVideo ? 2 : 1) : 0
+  const startIndex = existingDeck ? (existingDeckLaneLocked ? 2 : 1) : 0
 
   return (
     <div className="flex flex-wrap gap-2 mb-8 justify-center">
@@ -573,7 +639,7 @@ function GenerateSelectionSummary({
       key: 'product',
       label: laneLabel(lane),
       ariaLabel: 'Back to product step',
-      onClick: existingDeck?.deck_type === 'video' ? undefined : () => setPgStep(1),
+      onClick: isLaneLockedDeckType(existingDeck?.deck_type) ? undefined : () => setPgStep(1),
       tone: 'product',
     })
   }
@@ -1097,7 +1163,7 @@ function StepReview({
           key: 'product',
           label: productLabel,
           ariaLabel: 'Back to product step',
-          onClick: existingDeck?.deck_type === 'video' ? undefined : () => onGoToStep(1),
+          onClick: isLaneLockedDeckType(existingDeck?.deck_type) ? undefined : () => onGoToStep(1),
           tone: 'product',
         }]
       : []),
