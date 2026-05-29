@@ -233,6 +233,7 @@ export function buildStaticCategoryImportPayload(
     level.level,
     targetLanguage,
     helperLanguage,
+    { dedupeTargetTerms: false },
   )
 
   return selectedItems.map((item) => {

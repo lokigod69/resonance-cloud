@@ -26,6 +26,7 @@ import {
   resolveVisibleStaticLanguage,
 } from '@/lib/staticLibraryLanguage'
 import CurriculumEntryImage from '@/components/categories/CurriculumEntryImage'
+import { useCategoryScrollReset } from './useCategoryScrollReset'
 import styles from './Categories.module.css'
 
 function getStaticCategoryById(categoryId: string | undefined): { category: StaticCategory; group: CategoryGroup } | null {
@@ -75,6 +76,7 @@ export default function CategoryDetailPage() {
   const targetLanguage = readStaticLibraryTargetLanguage(searchParams.get('targetLanguage'), activeLanguage)
   const helperLanguage = resolveVisibleStaticLanguage(profile?.base_language, 'German')
   const [importedLevels, setImportedLevels] = useState<Set<number>>(new Set())
+  useCategoryScrollReset()
 
   useEffect(() => {
     let cancelled = false
@@ -115,7 +117,6 @@ export default function CategoryDetailPage() {
   if (staticCategory) {
     return renderStaticCategoryDetail({
       category: staticCategory.category,
-      group: staticCategory.group,
       targetLanguage,
       helperLanguage,
       t,
@@ -194,7 +195,6 @@ export default function CategoryDetailPage() {
 
 function renderStaticCategoryDetail({
   category,
-  group,
   targetLanguage,
   helperLanguage,
   t,
@@ -202,7 +202,6 @@ function renderStaticCategoryDetail({
   locale,
 }: {
   category: StaticCategory
-  group: CategoryGroup
   targetLanguage: string
   helperLanguage: string
   t: ReturnType<typeof useTranslation>['t']
@@ -223,7 +222,6 @@ function renderStaticCategoryDetail({
       <header className={styles.detailHero}>
         <StaticCategoryDetailVisual category={category} />
         <div>
-          <p className={styles.eyebrow}>{t(group.groupKey)}</p>
           <h1 className={styles.title}>{t(category.labelKey)}</h1>
           <div className={styles.tileMeta}>
             <span className={styles.chip}>{tp('categories.entryCount', vocabularyItems.length)}</span>
@@ -234,7 +232,14 @@ function renderStaticCategoryDetail({
 
       <div className={styles.levelPreviewGrid}>
         {(category.staticWordLevels ?? []).map((level) => {
-          const previewItems = getStaticCategorySelectedItems(category, 4, level.level, targetLanguage, helperLanguage)
+          const previewItems = getStaticCategorySelectedItems(
+            category,
+            4,
+            level.level,
+            targetLanguage,
+            helperLanguage,
+            { dedupeTargetTerms: false },
+          )
           const localizedLevelLabel = getLocalizedStaticLevelLabel(level, locale)
           return (
             <Link

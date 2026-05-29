@@ -11,6 +11,7 @@ export interface StaticCategoryTranslation {
   term: string
   needsReview?: boolean
   reviewNote?: string
+  isFallback?: boolean
 }
 
 export type StaticCategoryTranslations = Record<StaticCategoryTargetLanguageCode, StaticCategoryTranslation>
@@ -114,6 +115,10 @@ export interface SelectedCategoryVocabularyItem {
   helperLanguageName: string
   helperTerm: string
   translations: StaticCategoryTranslations
+}
+
+export interface StaticCategorySelectionOptions {
+  dedupeTargetTerms?: boolean
 }
 
 export interface CategoryWordLevel {
@@ -973,10 +978,12 @@ export function getStaticCategorySelectedItems(
   levelNumber?: number,
   targetLanguage?: string | null,
   helperLanguage?: string | null,
+  options: StaticCategorySelectionOptions = {},
 ): SelectedCategoryVocabularyItem[] {
   const selectedItems: SelectedCategoryVocabularyItem[] = []
   const seen = new Set<string>()
   const limit = Math.max(0, requestedCount)
+  const dedupeTargetTerms = options.dedupeTargetTerms ?? true
   const languageCode = resolveStaticCategoryTargetLanguageCode(targetLanguage)
   const helperLanguageCode = resolveStaticCategoryTargetLanguageCode(helperLanguage)
   const targetLanguageName = STATIC_CATEGORY_TRANSLATION_LANGUAGES.find((language) => language.code === languageCode)?.value ?? 'English'
@@ -985,7 +992,7 @@ export function getStaticCategorySelectedItems(
   for (const item of getStaticCategoryVocabularyItems(category, levelNumber)) {
     const trimmed = resolveTranslatedTerm(item, languageCode)
     const normalized = normalizeStaticWord(trimmed)
-    if (seen.has(normalized)) continue
+    if (dedupeTargetTerms && seen.has(normalized)) continue
 
     selectedItems.push({
       conceptId: item.id,
@@ -1003,7 +1010,7 @@ export function getStaticCategorySelectedItems(
       helperTerm: resolveTranslatedTerm(item, helperLanguageCode),
       translations: item.translations,
     })
-    seen.add(normalized)
+    if (dedupeTargetTerms) seen.add(normalized)
     if (selectedItems.length >= limit) return selectedItems
   }
 
@@ -1055,6 +1062,7 @@ function resolveStaticCategoryTranslations(id: string, fallbackEnglishTerm: stri
         code,
         {
           term: translation?.term ?? fallbackEnglishTerm,
+          ...(!translation ? { isFallback: true } : {}),
           ...(translation?.needsReview ? { needsReview: true } : {}),
           ...(translation?.reviewNote ? { reviewNote: translation.reviewNote } : {}),
         },

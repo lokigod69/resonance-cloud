@@ -19,6 +19,7 @@ import {
   readStaticLibraryTargetLanguage,
   staticLibraryRouteSuffix,
 } from '@/lib/staticLibraryLanguage'
+import { useCategoryScrollReset } from './useCategoryScrollReset'
 import styles from './Categories.module.css'
 
 function CategoryHero({ category }: { category: CurriculumCategory }) {
@@ -96,6 +97,7 @@ export default function CategoryListPage() {
   const { user } = useAuth()
   const { activeLanguage } = useLanguage()
   const [searchParams] = useSearchParams()
+  useCategoryScrollReset()
   const categories = listCurriculumCategories()
   const [targetLanguage, setTargetLanguage] = useState(() => readStaticLibraryTargetLanguage(searchParams.get('targetLanguage'), activeLanguage))
   const thematicCategoryGroups = getPublicCategoryGroups()
@@ -148,8 +150,11 @@ export default function CategoryListPage() {
           <h1 className={styles.title}>{t('categories.title')}</h1>
         </div>
         <label className={styles.libraryLanguageSelect}>
-          <span>{t('categories.targetLanguageLabel')}</span>
-          <select value={targetLanguage} onChange={(event) => setTargetLanguage(event.target.value)}>
+          <select
+            value={targetLanguage}
+            onChange={(event) => setTargetLanguage(event.target.value)}
+            aria-label={t('categories.targetLanguageLabel')}
+          >
             {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
               <option key={language.code} value={language.value}>{language.label}</option>
             ))}

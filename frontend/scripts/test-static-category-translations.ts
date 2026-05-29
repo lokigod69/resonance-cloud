@@ -162,6 +162,30 @@ assert.equal(shouldShowStaticHelperTerm(englishWithGermanHelper), true, 'differe
 assert.equal(shouldShowStaticHelperTerm(englishWithEnglishHelper), false, 'same target/helper language should hide duplicate helper translation')
 assert.equal(shouldShowStaticHelperTerm(frenchWithFrenchHelper), false, 'same non-English target/helper language should hide duplicate helper translation')
 assert.equal(shouldShowStaticHelperTerm(englishWithFrenchHelper), true, 'French UI with English target should show French helper translation')
+assert.equal(
+  shouldShowStaticHelperTerm({
+    ...englishWithGermanHelper,
+    targetTerm: englishWithGermanHelper.helperTerm,
+    translations: {
+      ...englishWithGermanHelper.translations,
+      de: { term: englishWithGermanHelper.helperTerm },
+    },
+  }),
+  true,
+  'different target/helper languages should still show identical legitimate translation strings',
+)
+assert.equal(
+  shouldShowStaticHelperTerm({
+    ...englishWithGermanHelper,
+    helperTerm: englishWithGermanHelper.targetTerm,
+    translations: {
+      ...englishWithGermanHelper.translations,
+      de: { term: englishWithGermanHelper.targetTerm, isFallback: true },
+    },
+  }),
+  false,
+  'missing helper translations should hide fallback duplicate subtitles without dropping the word card',
+)
 
 assert.deepEqual(
   getAdjacentStaticLevelNumbers(animals.staticWordLevels ?? [], 1),

@@ -45,6 +45,7 @@ import {
 } from '@/lib/staticLibraryLanguage'
 import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
 import { curriculumEntryImagePath } from '@/lib/curriculumImagePath'
+import { useCategoryScrollReset } from './useCategoryScrollReset'
 import styles from './Categories.module.css'
 
 const STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY = 'static_thematic_en_animals_elisa_raw_v1'
@@ -114,6 +115,7 @@ export default function LevelDetailPage() {
   const staticCategory = category ? null : getStaticCategoryById(categorySlug)
   const targetLanguage = readStaticLibraryTargetLanguage(searchParams.get('targetLanguage'), activeLanguage)
   const helperLanguage = resolveVisibleStaticLanguage(profile?.base_language, 'German')
+  useCategoryScrollReset()
   const baseLanguageIso = profileBaseLanguageToIso(profile?.base_language)
   const { activeSetKey } = useActiveCurriculumImageSet(
     category?.data.target_language ?? 'en',
@@ -205,7 +207,6 @@ export default function LevelDetailPage() {
     return (
       <StaticLevelDetail
         category={staticCategory.category}
-        group={staticCategory.group}
         levelNumber={levelNumber}
         targetLanguage={targetLanguage}
         helperLanguage={helperLanguage}
@@ -339,7 +340,6 @@ export default function LevelDetailPage() {
 
 function StaticLevelDetail({
   category,
-  group,
   levelNumber,
   targetLanguage,
   helperLanguage,
@@ -348,7 +348,6 @@ function StaticLevelDetail({
   tp,
 }: {
   category: StaticCategory
-  group: CategoryGroup
   levelNumber?: string
   targetLanguage: string
   helperLanguage: string
@@ -370,7 +369,14 @@ function StaticLevelDetail({
   const targetLanguageCode = resolveStaticCategoryTargetLanguageCode(targetLanguage)
   const selectedItems = useMemo(
     () => level
-      ? getStaticCategorySelectedItems(category, level.words.length, level.level, targetLanguage, helperLanguage)
+      ? getStaticCategorySelectedItems(
+        category,
+        level.words.length,
+        level.level,
+        targetLanguage,
+        helperLanguage,
+        { dedupeTargetTerms: false },
+      )
       : [],
     [category, helperLanguage, level, targetLanguage],
   )
@@ -489,7 +495,7 @@ function StaticLevelDetail({
         <div className={`${styles.detailEmoji} ${styles.staticDetailEmoji}`} aria-hidden="true">{category.emoji}</div>
         <div>
           <p className={styles.eyebrow}>
-            {t(group.groupKey)} · {t('categories.levelLabel', { number: level.level })} · {tp('categories.entryCount', selectedItems.length)}
+            {t('categories.levelLabel', { number: level.level })} · {tp('categories.entryCount', selectedItems.length)}
           </p>
           <h1 className={`${styles.title} ${styles.levelHeroTitle}`}>{localizedLevelLabel}</h1>
           <p className={styles.subtitle}>{t(category.labelKey)}</p>

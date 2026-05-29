@@ -111,10 +111,6 @@ export function getAdjacentStaticLevelNumbers(
   }
 }
 
-function normalizeStaticHelperValue(value: string): string {
-  return value.trim().normalize('NFC').toLowerCase()
-}
-
 export function shouldShowStaticHelperTerm(item: SelectedCategoryVocabularyItem): boolean {
   const helperTerm = item.helperTerm.trim()
   if (!helperTerm) return false
@@ -123,5 +119,10 @@ export function shouldShowStaticHelperTerm(item: SelectedCategoryVocabularyItem)
   // the translation would duplicate the target word and make static cards noisy.
   if (item.helperLanguage === item.targetLanguage) return false
 
-  return normalizeStaticHelperValue(helperTerm) !== normalizeStaticHelperValue(item.targetTerm)
+  // Missing helper translations are represented as fallback terms so the word
+  // card remains renderable. Hide the fallback subtitle, but keep legitimate
+  // identical strings when the helper and target languages differ.
+  if (item.translations[item.helperLanguage]?.isFallback) return false
+
+  return true
 }
