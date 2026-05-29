@@ -36,3 +36,27 @@ export interface ExtractVocabularyResponse {
 
 // submit_imageless_import RPC payload shape (the jsonb passed as p_items)
 export type SubmitImagelessImportItem = ImagelessItem;
+
+// append_imageless_cards RPC
+export interface AppendImagelessCardsParams {
+  p_deck_id: string;
+  p_items: SubmitImagelessImportItem[];
+  p_origin?: string;
+}
+export type AppendImagelessCardsResponse = number; // count of inserted rows
+
+// /api/generate-imageless-tts
+export interface GenerateImagelessTtsRequest {
+  word_ids: string[];
+}
+export interface GenerateImagelessTtsResult {
+  word_id: string;
+  status: 'ready' | 'failed';
+  tts_audio_url?: string;
+  error?: string;
+}
+export interface GenerateImagelessTtsResponse {
+  generated: number;
+  failed: number;
+  results: GenerateImagelessTtsResult[];
+}
