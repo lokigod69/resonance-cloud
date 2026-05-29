@@ -11,7 +11,7 @@ from fastapi.staticfiles import StaticFiles
 
 from . import state
 from .manifest import read_manifest
-from .routers import health
+from .routers import health, imageless_tts
 from .storage import STORAGE_MODE
 from .workspace import list_word_dirs, read_workspace_meta, write_workspace_meta
 
@@ -81,6 +81,7 @@ app.add_middleware(
 )
 
 app.include_router(health.router)
+app.include_router(imageless_tts.router)
 
 if STORAGE_MODE != "cloud":
     from .routers import generation, media, settings, suno, words, workspace
