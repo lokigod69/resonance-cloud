@@ -1,10 +1,12 @@
 import { cn } from '@/lib/utils'
+import { getCardFontClass, getCardFontStack } from '@/lib/typography/cardFonts'
 
 export interface ImagelessCardProps {
   word: string
   translation: string
   ipa: string | null
   revealed: boolean
+  targetLanguage?: string
   className?: string
 }
 
@@ -13,6 +15,7 @@ export function ImagelessCard({
   translation,
   ipa,
   revealed,
+  targetLanguage = '',
   className,
 }: ImagelessCardProps) {
   const cleanIpa = ipa?.trim()
@@ -33,7 +36,9 @@ export function ImagelessCard({
             isPhrase
               ? 'text-[clamp(1.3rem,4.4vw,3.25rem)]'
               : 'text-[clamp(1.65rem,5.6vw,4.5rem)]',
+            getCardFontClass(targetLanguage),
           )}
+          style={{ fontFamily: getCardFontStack(targetLanguage) }}
         >
           {word}
         </h2>

@@ -9,6 +9,9 @@ import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, 
 import { useMoveWords } from '@/hooks/useMoveWords'
 import DeckPickerSheet from '@/components/deck/DeckPickerSheet'
 import CardWordViewerModal from '@/components/deck/CardWordViewerModal'
+import ImagelessCardEditModal from '@/components/ImagelessCardEditModal'
+import ImagelessCardViewerModal from '@/components/ImagelessCardViewerModal'
+import ImagelessCardThumbnail from '@/components/study/ImagelessCardThumbnail'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
@@ -103,6 +106,7 @@ export default function DeckView() {
   const [editMode, setEditMode] = useState(false)
   const [selectedWords, setSelectedWords] = useState<Set<string>>(new Set())
   const [showDeckPicker, setShowDeckPicker] = useState(false)
+  const [editingImagelessWord, setEditingImagelessWord] = useState<Word | null>(null)
   const { moveWords, moving } = useMoveWords(id!)
   const { deleteWords, deleting } = useDeleteWords(id!)
   const { deleteImagelessDeck } = useDeleteImagelessDeck()
@@ -210,6 +214,42 @@ export default function DeckView() {
     }
   }
 
+  const handleImagelessWordSaved = (updatedWord: Pick<Word, 'id' | 'word' | 'translation' | 'ipa'> & Partial<Pick<Word, 'tts_audio_url'>>) => {
+    setWords((prev) => prev.map((word) => (
+      word.id === updatedWord.id
+        ? {
+          ...word,
+          word: updatedWord.word,
+          translation: updatedWord.translation,
+          ipa: updatedWord.ipa,
+          tts_audio_url: updatedWord.tts_audio_url ?? word.tts_audio_url,
+        }
+        : word
+    )))
+  }
+
+  const handleImagelessWordDeleted = (wordId: string, nextDeck?: { word_count: number; status: string }) => {
+    setWords((prev) => prev.filter((word) => word.id !== wordId))
+    setSelectedWords((prev) => {
+      if (!prev.has(wordId)) return prev
+      const next = new Set(prev)
+      next.delete(wordId)
+      return next
+    })
+    setViewerOpen(false)
+    setEditingImagelessWord(null)
+    setDeck((prev) => {
+      if (!prev) return prev
+      if (nextDeck) return { ...prev, ...nextDeck }
+      return { ...prev, word_count: Math.max(0, prev.word_count - 1) }
+    })
+  }
+
+  const handleDeleteViewerImagelessWord = async (word: Word) => {
+    await handleDeleteWord(word)
+    setViewerOpen(false)
+  }
+
   const handleDeleteDeck = async () => {
     if (!deck) return
     setDeletingDeck(true)
@@ -308,6 +348,8 @@ export default function DeckView() {
   const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0
   const isGenerating = deck.status === 'generating'
   const isCardDeck = deck.deck_type === 'card'
+  const isTextDeck = deck.deck_type === 'card_text'
+  const isVideoDeck = !isCardDeck && !isTextDeck
   const cardGenerationProgress = summarizeCardGenerationProgress(words)
   const completeWords = words.filter((w) => w.status === 'complete')
   const cardMaxWidth = completeWords.length === 1 ? 'max-w-[480px]' : 'max-w-[280px]'
@@ -433,7 +475,7 @@ export default function DeckView() {
               <Progress value={progress} className="h-2 w-full max-w-md mx-auto" />
             </div>
           )}
-          {isGenerating && !isCardDeck && hasChecked && !shouldShowQueue && (
+          {isGenerating && isVideoDeck && hasChecked && !shouldShowQueue && (
             <VerbCycler className="mt-1" />
           )}
         </div>
@@ -456,19 +498,17 @@ export default function DeckView() {
               <BookOpen className="h-4 w-4 mr-2" />
               {t('deckview.study')}
             </Button>
-            {deck.deck_type !== 'card_text' && (
-              <Button
-                variant="outline"
-                className="border-primary/30 text-primary hover:bg-primary/10"
-                onClick={() => navigate(`/generate?deckId=${deck.id}`)}
-              >
-                <Plus className="h-4 w-4 mr-2" />
-                {t('deckview.addCards')}
-              </Button>
-            )}
+            <Button
+              variant="outline"
+              className="border-primary/30 text-primary hover:bg-primary/10"
+              onClick={() => navigate(`/generate?deckId=${deck.id}`)}
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              {t('deckview.addCards')}
+            </Button>
           </>
         )}
-        {words.length === 0 || deck.source_kind === 'curriculum' || deck.deck_type === 'card_text' ? (
+        {words.length === 0 || deck.source_kind === 'curriculum' ? (
           <Button
             variant="outline"
             className="border-destructive/40 text-destructive hover:bg-destructive/10"
@@ -498,6 +538,8 @@ export default function DeckView() {
           >
             {editMode ? (
               <><X className="h-4 w-4 mr-2" />{t('deckview.done')}</>
+            ) : isTextDeck ? (
+              <><PencilLine className="h-4 w-4 mr-2" />{t('deckview.manage')}</>
             ) : (
               <><PencilLine className="h-4 w-4 mr-2" />{t('deckview.editDeck')}</>
             )}
@@ -569,9 +611,14 @@ export default function DeckView() {
                     const idx = completeWords.findIndex(w => w.id === word.id)
                     if (idx >= 0) {
                       setViewerIndex(idx)
-                      if (!isCardDeck) setVideoKey(k => k + 1)
+                      if (isVideoDeck) setVideoKey(k => k + 1)
                       setViewerOpen(true)
                     }
+                  }}
+                  onContextMenu={(event) => {
+                    if (!isTextDeck) return
+                    event.preventDefault()
+                    setEditingImagelessWord(word)
                   }}
                   className={`block glass glass-hover rounded-xl overflow-hidden transition-[background-color,box-shadow,border-color,transform] duration-200 cursor-pointer active:scale-[0.98] ${
                     editMode && isSelected
@@ -590,6 +637,14 @@ export default function DeckView() {
                     </div>
                   )}
                   {/* Thumbnail */}
+                  {isTextDeck ? (
+                    <ImagelessCardThumbnail
+                      word={word.word}
+                      translation={word.translation ?? ''}
+                      ipa={word.ipa}
+                      targetLanguage={deck.target_language}
+                    />
+                  ) : (
                   <div className="aspect-video relative bg-card">
                     {word.thumbnail_url ? (
                       <img
@@ -600,11 +655,11 @@ export default function DeckView() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
-                        {!isCardDeck && <Play className="h-8 w-8 text-primary/50" />}
+                        {isVideoDeck && <Play className="h-8 w-8 text-primary/50" />}
                       </div>
                     )}
                     {/* Play overlay */}
-                    {!isCardDeck && (
+                    {isVideoDeck && (
                     <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <div className="h-12 w-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                         <Play className="h-6 w-6 text-white fill-white" />
@@ -618,6 +673,7 @@ export default function DeckView() {
                       </span>
                     )}
                   </div>
+                  )}
                   {/* Info */}
                   <div className="p-3 space-y-0.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
@@ -658,7 +714,7 @@ export default function DeckView() {
                   <div className="p-3 space-y-1.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
                     <p className="text-xs text-destructive-foreground">
-                      {isCardDeck ? t('deckview.cardFailure') : t('deckview.couldNotGenerate')}
+                      {isCardDeck || isTextDeck ? t('deckview.cardFailure') : t('deckview.couldNotGenerate')}
                     </p>
                     {cardDiagnostic && (
                       <p className="text-[11px] text-destructive-foreground/70">
@@ -698,7 +754,7 @@ export default function DeckView() {
                     <span className="text-xs font-medium text-muted-foreground">
                       {word.status === 'pending'
                         ? t('deckview.queued')
-                        : isCardDeck ? t('deckview.cardCreation') : t('deckview.processing')}
+                        : isCardDeck || isTextDeck ? t('deckview.cardCreation') : t('deckview.processing')}
                     </span>
                   </div>
                   <div className="p-3 space-y-0.5">
@@ -718,7 +774,64 @@ export default function DeckView() {
       </div>
 
       {/* Edit mode action bar */}
-      {editMode && selectedWords.size > 0 && (
+      {editMode && isTextDeck && (
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+          <div className="flex flex-col gap-3 px-4 py-3 max-w-5xl mx-auto sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <span className="text-sm text-white/70 sm:shrink-0">
+              {t('deckview.nSelected', { count: selectedWords.size })}
+            </span>
+            <div className="grid grid-cols-1 gap-2 sm:flex sm:items-center">
+              <Button
+                size="sm"
+                variant="outline"
+                disabled={selectedWords.size === 0 || deleting || moving}
+                onClick={handleDeleteSelected}
+                className="w-full border-red-500/40 text-red-300 hover:bg-red-500/10 hover:text-red-200 sm:w-auto"
+              >
+                {deleting ? (
+                  <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                ) : (
+                  <Trash2 className="h-4 w-4 mr-2" />
+                )}
+                {t('deckview.manage.deleteSelected')}
+              </Button>
+              <Button
+                size="sm"
+                disabled={selectedWords.size === 0 || moving || deleting}
+                onClick={() => setShowDeckPicker(true)}
+                className="w-full bg-emerald-500 hover:bg-emerald-600 text-black font-medium sm:w-auto"
+              >
+                {moving ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : null}
+                {t('deckview.manage.moveSelected')}
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                className="w-full border-white/10 sm:w-auto"
+                onClick={() => {
+                  setEditMode(false)
+                  setSelectedWords(new Set())
+                }}
+              >
+                <X className="h-4 w-4 mr-2" />
+                {t('deckview.manage.cancelManage')}
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                disabled={deletingDeck}
+                onClick={handleDeleteDeck}
+                className="w-full border-red-500/40 text-red-300 hover:bg-red-500/10 hover:text-red-200 sm:w-auto"
+              >
+                {deletingDeck ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Trash2 className="h-4 w-4 mr-2" />}
+                {t('deckview.manage.deleteDeck')}
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {editMode && !isTextDeck && selectedWords.size > 0 && (
         <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
           <div className="flex flex-col gap-3 px-4 py-3 max-w-5xl mx-auto sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <span className="text-sm text-white/70 sm:shrink-0">
@@ -766,8 +879,20 @@ export default function DeckView() {
         />
       )}
 
+      {/* Image-less Card Viewer Modal */}
+      {viewerOpen && viewerWord && isTextDeck && (
+        <ImagelessCardViewerModal
+          word={{ ...viewerWord, target_language: deck.target_language }}
+          isOpen={viewerOpen}
+          isManageMode={editMode}
+          onClose={() => setViewerOpen(false)}
+          onEdit={() => setEditingImagelessWord(viewerWord)}
+          onDelete={() => { void handleDeleteViewerImagelessWord(viewerWord) }}
+        />
+      )}
+
       {/* Video Viewer Modal */}
-      {viewerOpen && viewerWord && !isCardDeck && (
+      {viewerOpen && viewerWord && isVideoDeck && (
         <VideoViewerModal
           words={completeWords}
           currentIndex={viewerIndex}
@@ -782,6 +907,15 @@ export default function DeckView() {
           onRate={handleRate}
         />
       )}
+
+      <ImagelessCardEditModal
+        key={editingImagelessWord?.id ?? 'no-imageless-edit'}
+        word={editingImagelessWord}
+        isOpen={Boolean(editingImagelessWord)}
+        onClose={() => setEditingImagelessWord(null)}
+        onSaved={handleImagelessWordSaved}
+        onDeleted={handleImagelessWordDeleted}
+      />
 
       {/* Deck Picker */}
       {deck && (

@@ -31,6 +31,10 @@ import {
 } from 'lucide-react'
 import { useMoveWords } from '@/hooks/useMoveWords'
 import DeckPickerSheet from '@/components/deck/DeckPickerSheet'
+import ImagelessCardEditModal from '@/components/ImagelessCardEditModal'
+import ImagelessCardViewerModal from '@/components/ImagelessCardViewerModal'
+import ImagelessCard from '@/components/study/ImagelessCard'
+import ImagelessCardThumbnail from '@/components/study/ImagelessCardThumbnail'
 import StarRating from '@/components/ui/StarRating'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
@@ -68,6 +72,7 @@ type Word = {
   word: string
   word_slug: string | null
   translation: string | null
+  ipa: string | null
   mnemonic: string | null
   etymology: string | null
   pos: string | null
@@ -124,6 +129,8 @@ export default function DeckViewPG() {
   const [editMode, setEditMode] = useState(false)
   const [selectedWords, setSelectedWords] = useState<Set<string>>(new Set())
   const [showDeckPicker, setShowDeckPicker] = useState(false)
+  const [editingImagelessWord, setEditingImagelessWord] = useState<Word | null>(null)
+  const [imagelessViewerOpen, setImagelessViewerOpen] = useState(false)
   const { moveWords, moving } = useMoveWords(id!)
   const { deleteWords, deleting } = useDeleteWords(id!)
   const { deleteImagelessDeck } = useDeleteImagelessDeck()
@@ -225,6 +232,46 @@ export default function DeckViewPG() {
     } else {
       toast(result.error || t('deckview.deleteSelectedFailed'), 'error')
     }
+  }
+
+  const handleImagelessWordSaved = (updatedWord: Pick<Word, 'id' | 'word' | 'translation' | 'ipa'> & Partial<Pick<Word, 'tts_audio_url'>>) => {
+    setWords((prev) => prev.map((word) => (
+      word.id === updatedWord.id
+        ? {
+          ...word,
+          word: updatedWord.word,
+          translation: updatedWord.translation,
+          ipa: updatedWord.ipa,
+          tts_audio_url: updatedWord.tts_audio_url ?? word.tts_audio_url,
+        }
+        : word
+    )))
+  }
+
+  const handleImagelessWordDeleted = (wordId: string, nextDeck?: { word_count: number; status: string }) => {
+    const remainingCount = words.filter((word) => word.id !== wordId).length
+    setWords((prev) => prev.filter((word) => word.id !== wordId))
+    setSelectedWords((prev) => {
+      if (!prev.has(wordId)) return prev
+      const next = new Set(prev)
+      next.delete(wordId)
+      return next
+    })
+    setImagelessViewerOpen(false)
+    setEditingImagelessWord(null)
+    if (activeIndex >= remainingCount) {
+      setActiveIndex(Math.max(0, remainingCount - 1))
+    }
+    setDeck((prev) => {
+      if (!prev) return prev
+      if (nextDeck) return { ...prev, ...nextDeck }
+      return { ...prev, word_count: Math.max(0, prev.word_count - 1) }
+    })
+  }
+
+  const handleDeleteViewerImagelessWord = async (word: Word) => {
+    await handleDeleteWord(word)
+    setImagelessViewerOpen(false)
   }
 
   const handleDeleteDeck = async () => {
@@ -447,6 +494,8 @@ export default function DeckViewPG() {
   const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0
   const isGenerating = deck.status === 'generating'
   const isCardDeck = deck.deck_type === 'card'
+  const isTextDeck = deck.deck_type === 'card_text'
+  const isVideoDeck = !isCardDeck && !isTextDeck
   const cardGenerationProgress = summarizeCardGenerationProgress(words)
   const deckLanguageLabel = getDeckLanguageLabel(deck.target_language, t)
   const displayName =
@@ -604,7 +653,7 @@ export default function DeckViewPG() {
     {isGenerating && (
       <div className="flex flex-col items-center gap-6 mb-8">
         <GenerationWheelLoader size={120} className="gap-0" />
-        {!isCardDeck && hasChecked && !shouldShowQueue && (
+        {isVideoDeck && hasChecked && !shouldShowQueue && (
           <VerbCycler intervalMs={5000} />
         )}
         <div className="w-full max-w-md h-1 bg-card/60 rounded-full overflow-hidden">
@@ -665,6 +714,11 @@ export default function DeckViewPG() {
                       return next
                     })
                   }}
+                  onContextMenu={(event) => {
+                    if (!isTextDeck) return
+                    event.preventDefault()
+                    setEditingImagelessWord(word)
+                  }}
                   className={`relative rounded-xl overflow-hidden cursor-pointer border transition-all
                     bg-[#0d0d12]/70 ${
                     isSelected
@@ -682,7 +736,15 @@ export default function DeckViewPG() {
                   </div>
                   {/* Thumbnail */}
                   <div className="aspect-[4/3] relative">
-                    {word.thumbnail_url ? (
+                    {isTextDeck ? (
+                      <ImagelessCardThumbnail
+                        word={word.word}
+                        translation={word.translation ?? ''}
+                        ipa={word.ipa ?? null}
+                        targetLanguage={deck.target_language}
+                        className="h-full"
+                      />
+                    ) : word.thumbnail_url ? (
                       <img
                         src={isCardDeck ? getCardThumbUrl(word.thumbnail_url) ?? undefined : word.thumbnail_url}
                         alt={word.word}
@@ -694,7 +756,7 @@ export default function DeckViewPG() {
                       </div>
                     ) : (
                       <div className="w-full h-full bg-white/5 flex items-center justify-center">
-                        {!isCardDeck && <Play className="h-6 w-6 text-white/20" />}
+                        {isVideoDeck && <Play className="h-6 w-6 text-white/20" />}
                       </div>
                     )}
                   </div>
@@ -765,7 +827,7 @@ export default function DeckViewPG() {
                       {/* Media area — 16:9 aspect ratio */}
                       <div className="w-full relative bg-black/50 overflow-hidden group/video" style={{ aspectRatio: '16/9' }}>
                         {/* Video element — stays mounted once activated to preserve frame on pause */}
-                        {isComplete && !isCardDeck && videoActiveIndex === i && (offset === 0 ? activeVideoUrl : word.video_url) && (
+                        {isComplete && isVideoDeck && videoActiveIndex === i && (offset === 0 ? activeVideoUrl : word.video_url) && (
                           <video
                             ref={videoRef}
                             key={`${word.id}-${version}`}
@@ -786,7 +848,28 @@ export default function DeckViewPG() {
                         )}
 
                         {/* Thumbnail — shown when video not active, or as poster behind video */}
-                        {isComplete && (offset === 0 ? activeThumbnailUrl : word.thumbnail_url) && videoActiveIndex !== i && (
+                        {isComplete && isTextDeck && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setActiveIndex(i)
+                              setImagelessViewerOpen(true)
+                            }}
+                            className="absolute inset-0 z-[1] h-full w-full p-0 text-left"
+                            aria-label={`Open ${word.word}`}
+                          >
+                            <ImagelessCard
+                              word={word.word}
+                              translation={word.translation ?? ''}
+                              ipa={word.ipa ?? null}
+                              revealed
+                              targetLanguage={deck.target_language}
+                              className="h-full rounded-none border-0 shadow-none"
+                            />
+                          </button>
+                        )}
+
+                        {isComplete && !isTextDeck && (offset === 0 ? activeThumbnailUrl : word.thumbnail_url) && videoActiveIndex !== i && (
                           <img
                             src={
                               isCardDeck
@@ -804,16 +887,16 @@ export default function DeckViewPG() {
                           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent">
                             <span className="text-xs text-white/35">
                               {word.status === 'failed'
-                                ? isCardDeck ? t('deckview.cardFailure') : t('deckview.failed')
+                                ? isCardDeck || isTextDeck ? t('deckview.cardFailure') : t('deckview.failed')
                                 : isPending
                                   ? t('deckview.queued')
-                                  : isCardDeck ? t('deckview.cardCreation') : t('deckview.processing')}
+                                  : isCardDeck || isTextDeck ? t('deckview.cardCreation') : t('deckview.processing')}
                             </span>
                           </div>
                         )}
 
                         {/* Play overlay on thumbnail — click/tap to start video */}
-                        {isComplete && !isCardDeck && offset === 0 && videoActiveIndex !== i && word.video_url && (
+                        {isComplete && isVideoDeck && offset === 0 && videoActiveIndex !== i && word.video_url && (
                           <div
                             className="absolute inset-0 z-[2] bg-black/30 opacity-100 md:opacity-0 md:hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
                             onClick={(e) => {
@@ -829,7 +912,7 @@ export default function DeckViewPG() {
                         )}
 
                         {/* Version badge */}
-                        {isComplete && !isCardDeck && offset === 0 && (
+                        {isComplete && isVideoDeck && offset === 0 && (
                           <VersionBadge
                             version={version}
                             hasAlt={hasAltVersion}
@@ -844,7 +927,7 @@ export default function DeckViewPG() {
                         )}
 
                         {/* VolumeControl — moves with the card */}
-                        {!isCardDeck && offset === 0 && (
+                        {isVideoDeck && offset === 0 && (
                           <div className="absolute top-3 left-3 z-10 opacity-100 md:opacity-0 md:group-hover/video:opacity-100 transition-opacity">
                             <VolumeControl
                               volume={volume}
@@ -859,7 +942,7 @@ export default function DeckViewPG() {
                         )}
 
                         {/* Video controls — play/pause + volume + fullscreen */}
-                        {isComplete && !isCardDeck && videoActiveIndex === i && offset === 0 && (
+                        {isComplete && isVideoDeck && videoActiveIndex === i && offset === 0 && (
                           <VideoControls
                             isPlaying={isPlaying}
                             onTogglePlay={() => setIsPlaying(!isPlaying)}
@@ -914,7 +997,7 @@ export default function DeckViewPG() {
                             <p className="text-lg font-bold text-white long-copy">{word.word}</p>
                             {word.status === 'failed' && (
                               <p className="text-xs text-gray-500 mt-1">
-                                {isCardDeck ? t('deckview.cardFailure') : t('deckview.failed')}
+                                {isCardDeck || isTextDeck ? t('deckview.cardFailure') : t('deckview.failed')}
                               </p>
                             )}
                             {word.status === 'failed' && (
@@ -1100,18 +1183,16 @@ export default function DeckViewPG() {
               <BookOpen className="h-4 w-4 inline mr-1.5" />
               {t('deckview.study')}
             </button>
-            {deck.deck_type !== 'card_text' && (
-              <button
-                onClick={() => navigate(`/generate?deckId=${deck.id}`)}
-                className="rounded-xl border border-[var(--pg-accent-teal)]/30 bg-black/35 px-2 py-2.5 text-xs font-display font-medium text-[var(--pg-accent-teal)] backdrop-blur-md transition-all hover:bg-[var(--pg-accent-teal)]/10 sm:px-5 sm:text-sm"
-              >
-                <Plus className="h-4 w-4 inline mr-1.5" />
-                {t('deckview.addCards')}
-              </button>
-            )}
+            <button
+              onClick={() => navigate(`/generate?deckId=${deck.id}`)}
+              className="rounded-xl border border-[var(--pg-accent-teal)]/30 bg-black/35 px-2 py-2.5 text-xs font-display font-medium text-[var(--pg-accent-teal)] backdrop-blur-md transition-all hover:bg-[var(--pg-accent-teal)]/10 sm:px-5 sm:text-sm"
+            >
+              <Plus className="h-4 w-4 inline mr-1.5" />
+              {t('deckview.addCards')}
+            </button>
           </>
         )}
-        {words.length === 0 || deck.source_kind === 'curriculum' || deck.deck_type === 'card_text' ? (
+        {words.length === 0 || deck.source_kind === 'curriculum' ? (
           <button
             onClick={handleDeleteDeck}
             disabled={deletingDeck}
@@ -1139,6 +1220,8 @@ export default function DeckViewPG() {
           >
             {editMode ? (
               <><X className="h-4 w-4 inline mr-1.5" />{t('deckview.done')}</>
+            ) : isTextDeck ? (
+              <><PencilLine className="h-4 w-4 inline mr-1.5" />{t('deckview.manage')}</>
             ) : (
               <><PencilLine className="h-4 w-4 inline mr-1.5" />{t('deckview.editDeck')}</>
             )}
@@ -1147,7 +1230,53 @@ export default function DeckViewPG() {
       </div>
 
       {/* Edit mode action bar */}
-      {editMode && selectedWords.size > 0 && (
+      {editMode && isTextDeck && (
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+          <div className="flex flex-col gap-3 px-4 py-3 max-w-5xl mx-auto sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <span className="text-sm text-white/70 font-display sm:shrink-0">
+              {t('deckview.nSelected', { count: selectedWords.size })}
+            </span>
+            <div className="grid grid-cols-1 gap-2 sm:flex sm:items-center">
+              <button
+                disabled={selectedWords.size === 0 || deleting || moving}
+                onClick={handleDeleteSelected}
+                className="w-full px-5 py-2 rounded-xl border border-red-500/40 bg-black/35 text-red-300 text-sm font-display font-semibold hover:bg-red-500/10 hover:text-red-200 disabled:opacity-40 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 sm:w-auto"
+              >
+                {deleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+                {t('deckview.manage.deleteSelected')}
+              </button>
+              <button
+                disabled={selectedWords.size === 0 || moving || deleting}
+                onClick={() => setShowDeckPicker(true)}
+                className="w-full px-5 py-2 rounded-xl bg-[var(--pg-accent-teal)] text-black text-sm font-display font-semibold hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 sm:w-auto"
+              >
+                {moving && <Loader2 className="h-4 w-4 animate-spin" />}
+                {t('deckview.manage.moveSelected')}
+              </button>
+              <button
+                onClick={() => {
+                  setEditMode(false)
+                  setSelectedWords(new Set())
+                }}
+                className="w-full px-5 py-2 rounded-xl border border-white/10 bg-black/35 text-white/75 text-sm font-display font-semibold hover:bg-white/10 hover:text-white transition-all flex items-center justify-center gap-2 sm:w-auto"
+              >
+                <X className="h-4 w-4" />
+                {t('deckview.manage.cancelManage')}
+              </button>
+              <button
+                onClick={handleDeleteDeck}
+                disabled={deletingDeck}
+                className="w-full px-5 py-2 rounded-xl border border-red-500/40 bg-black/35 text-red-300 text-sm font-display font-semibold hover:bg-red-500/10 hover:text-red-200 disabled:opacity-40 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 sm:w-auto"
+              >
+                {deletingDeck ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+                {t('deckview.manage.deleteDeck')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {editMode && !isTextDeck && selectedWords.size > 0 && (
         <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
           <div className="flex flex-col gap-3 px-4 py-3 max-w-5xl mx-auto sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <span className="text-sm text-white/70 font-display sm:shrink-0">
@@ -1204,6 +1333,26 @@ export default function DeckViewPG() {
           selectedCount={selectedWords.size}
         />
       )}
+
+      {isTextDeck && words[activeIndex] && (
+        <ImagelessCardViewerModal
+          word={{ ...words[activeIndex], target_language: deck.target_language }}
+          isOpen={imagelessViewerOpen}
+          isManageMode={editMode}
+          onClose={() => setImagelessViewerOpen(false)}
+          onEdit={() => setEditingImagelessWord(words[activeIndex])}
+          onDelete={() => { void handleDeleteViewerImagelessWord(words[activeIndex]) }}
+        />
+      )}
+
+      <ImagelessCardEditModal
+        key={editingImagelessWord?.id ?? 'no-imageless-edit'}
+        word={editingImagelessWord}
+        isOpen={Boolean(editingImagelessWord)}
+        onClose={() => setEditingImagelessWord(null)}
+        onSaved={handleImagelessWordSaved}
+        onDeleted={handleImagelessWordDeleted}
+      />
     </div>
   )
 }
