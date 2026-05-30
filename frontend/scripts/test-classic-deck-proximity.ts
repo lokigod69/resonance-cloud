@@ -70,6 +70,7 @@ const center = {
 {
   const css = readFileSync(join(root, 'src', 'index.css'), 'utf8')
   assert.match(css, /\.classic-decks-grid\s*{[^}]*display:\s*grid;/s)
+  assert.match(css, /\.classic-decks-grid\s*{[^}]*justify-items:\s*center;/s)
   assert.match(css, /\.classic-decks-grid\s*{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/s)
   assert.match(css, /@media\s*\(min-width:\s*1200px\)\s*{[^}]*\.classic-decks-grid\s*{[^}]*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\);/s)
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*{[^}]*\.classic-deck-card\s*{/s)
@@ -79,6 +80,8 @@ const center = {
   const source = readFileSync(join(root, 'src', 'pages', 'Decks.tsx'), 'utf8')
   assert.match(source, /calculateClassicDeckProximity/)
   assert.match(source, /formatClassicDeckProximityStyle/)
+  assert.match(source, /requestAnimationFrame/)
+  assert.match(source, /cancelAnimationFrame/)
   assert.match(source, /onPointerMove=\{handleDeckGridPointerMove\}/)
   assert.match(source, /onPointerLeave=\{resetDeckProximity\}/)
 }

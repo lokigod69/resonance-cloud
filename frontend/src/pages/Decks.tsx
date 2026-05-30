@@ -37,6 +37,8 @@ export default function Decks() {
   const navigate = useNavigate()
   const location = useLocation()
   const deckGridRef = useRef<HTMLDivElement | null>(null)
+  const deckProximityFrameRef = useRef<number | null>(null)
+  const pendingDeckPointerRef = useRef<{ clientX: number; clientY: number } | null>(null)
 
   const { t, tp } = useTranslation()
   const userId = user?.id
@@ -136,6 +138,12 @@ export default function Decks() {
   )
 
   const resetDeckProximity = useCallback(() => {
+    if (deckProximityFrameRef.current !== null) {
+      cancelAnimationFrame(deckProximityFrameRef.current)
+      deckProximityFrameRef.current = null
+    }
+    pendingDeckPointerRef.current = null
+
     const grid = deckGridRef.current
     if (!grid) return
 
@@ -149,26 +157,47 @@ export default function Decks() {
   const handleDeckGridPointerMove = useCallback((event: PointerEvent<HTMLDivElement>) => {
     if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return
 
-    const grid = deckGridRef.current
-    if (!grid) return
+    pendingDeckPointerRef.current = {
+      clientX: event.clientX,
+      clientY: event.clientY,
+    }
 
-    grid.querySelectorAll<HTMLElement>('[data-classic-deck-card]').forEach((card) => {
-      const proximity = calculateClassicDeckProximity(event, card.getBoundingClientRect())
+    if (deckProximityFrameRef.current !== null) return
 
-      if (proximity.intensity === 0) {
-        CLASSIC_DECK_PROXIMITY_CSS_PROPERTIES.forEach((property) => {
-          card.style.removeProperty(property)
+    deckProximityFrameRef.current = requestAnimationFrame(() => {
+      deckProximityFrameRef.current = null
+      const pointer = pendingDeckPointerRef.current
+      pendingDeckPointerRef.current = null
+
+      if (!pointer) return
+
+      const grid = deckGridRef.current
+      if (!grid) return
+
+      const proximityStyles = Array.from(grid.querySelectorAll<HTMLElement>('[data-classic-deck-card]'))
+        .map((card) => ({
+          card,
+          proximity: calculateClassicDeckProximity(pointer, card.getBoundingClientRect()),
+        }))
+
+      proximityStyles.forEach(({ card, proximity }) => {
+        if (proximity.intensity === 0) {
+          CLASSIC_DECK_PROXIMITY_CSS_PROPERTIES.forEach((property) => {
+            card.style.removeProperty(property)
+          })
+          return
+        }
+
+        const style = formatClassicDeckProximityStyle(proximity)
+
+        Object.entries(style).forEach(([property, value]) => {
+          card.style.setProperty(property, value)
         })
-        return
-      }
-
-      const style = formatClassicDeckProximityStyle(proximity)
-
-      Object.entries(style).forEach(([property, value]) => {
-        card.style.setProperty(property, value)
       })
     })
   }, [])
+
+  useEffect(() => resetDeckProximity, [resetDeckProximity])
 
   if (authError && !user) {
     return (

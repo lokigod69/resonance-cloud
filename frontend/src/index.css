@@ -354,6 +354,7 @@ input[type="range"].volume-slider::-moz-range-track {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(20px, 2.4vw, 30px);
   align-items: stretch;
+  justify-items: center;
   padding: 0 clamp(16px, 4vw, 48px) 4rem;
   max-width: 860px;
   margin: 0 auto;
