@@ -72,6 +72,7 @@ const center = {
   assert.match(css, /\.classic-decks-grid\s*{[^}]*display:\s*grid;/s)
   assert.match(css, /\.classic-decks-grid\s*{[^}]*justify-items:\s*center;/s)
   assert.match(css, /\.classic-decks-grid\s*{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/s)
+  assert.match(css, /@media\s*\(hover:\s*hover\)\s*and\s*\(pointer:\s*fine\)\s*{[^}]*\.classic-deck-card:hover/s)
   assert.match(css, /@media\s*\(min-width:\s*1200px\)\s*{[^}]*\.classic-decks-grid\s*{[^}]*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\);/s)
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*{[^}]*\.classic-deck-card\s*{/s)
 }

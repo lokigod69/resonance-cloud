@@ -388,13 +388,22 @@ input[type="range"].volume-slider::-moz-range-track {
   will-change: transform, filter, box-shadow;
 }
 
-.classic-deck-card:hover,
 .classic-deck-card:focus-visible {
   --deck-proximity-scale: 1.08;
   --deck-proximity-lift: -14px;
   --deck-proximity-brightness: 1.08;
   --deck-proximity-border-color: rgba(255, 255, 255, 0.39);
   --deck-proximity-shadow: 0 28px 58px rgba(0, 0, 0, 0.78), 0 0 34px rgba(125, 184, 255, 0.36);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .classic-deck-card:hover {
+    --deck-proximity-scale: 1.08;
+    --deck-proximity-lift: -14px;
+    --deck-proximity-brightness: 1.08;
+    --deck-proximity-border-color: rgba(255, 255, 255, 0.39);
+    --deck-proximity-shadow: 0 28px 58px rgba(0, 0, 0, 0.78), 0 0 34px rgba(125, 184, 255, 0.36);
+  }
 }
 
 .classic-deck-media {

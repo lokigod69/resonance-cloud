@@ -526,9 +526,11 @@ body {
   box-shadow: var(--deck-proximity-shadow, var(--shadow-soft));
 }
 
-.classic-deck-card:hover {
-  --deck-proximity-border-color: color-mix(in srgb, var(--accent) 38%, var(--border-subtle));
-  --deck-proximity-shadow: var(--shadow-elevated), 0 0 24px var(--accent-glow);
+@media (hover: hover) and (pointer: fine) {
+  .classic-deck-card:hover {
+    --deck-proximity-border-color: color-mix(in srgb, var(--accent) 38%, var(--border-subtle));
+    --deck-proximity-shadow: var(--shadow-elevated), 0 0 24px var(--accent-glow);
+  }
 }
 
 .classic-deck-gradient {
