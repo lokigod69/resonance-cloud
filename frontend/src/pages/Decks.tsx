@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import type { PointerEvent } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -9,6 +10,11 @@ import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
 import { getCardThumbUrl } from '@/lib/imageUrls'
+import {
+  calculateClassicDeckProximity,
+  CLASSIC_DECK_PROXIMITY_CSS_PROPERTIES,
+  formatClassicDeckProximityStyle,
+} from '@/lib/classicDeckProximity'
 
 type Deck = {
   id: string
@@ -30,6 +36,7 @@ export default function Decks() {
   const { activeLanguage, setActiveLanguage } = useLanguage()
   const navigate = useNavigate()
   const location = useLocation()
+  const deckGridRef = useRef<HTMLDivElement | null>(null)
 
   const { t, tp } = useTranslation()
   const userId = user?.id
@@ -127,6 +134,41 @@ export default function Decks() {
     () => decks.filter((d) => d.target_language === activeLanguage),
     [decks, activeLanguage]
   )
+
+  const resetDeckProximity = useCallback(() => {
+    const grid = deckGridRef.current
+    if (!grid) return
+
+    grid.querySelectorAll<HTMLElement>('[data-classic-deck-card]').forEach((card) => {
+      CLASSIC_DECK_PROXIMITY_CSS_PROPERTIES.forEach((property) => {
+        card.style.removeProperty(property)
+      })
+    })
+  }, [])
+
+  const handleDeckGridPointerMove = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return
+
+    const grid = deckGridRef.current
+    if (!grid) return
+
+    grid.querySelectorAll<HTMLElement>('[data-classic-deck-card]').forEach((card) => {
+      const proximity = calculateClassicDeckProximity(event, card.getBoundingClientRect())
+
+      if (proximity.intensity === 0) {
+        CLASSIC_DECK_PROXIMITY_CSS_PROPERTIES.forEach((property) => {
+          card.style.removeProperty(property)
+        })
+        return
+      }
+
+      const style = formatClassicDeckProximityStyle(proximity)
+
+      Object.entries(style).forEach(([property, value]) => {
+        card.style.setProperty(property, value)
+      })
+    })
+  }, [])
 
   if (authError && !user) {
     return (
@@ -233,7 +275,13 @@ export default function Decks() {
       </div>
 
       {filteredDecks.length > 0 && (
-        <div className="classic-decks-grid">
+        <div
+          ref={deckGridRef}
+          className="classic-decks-grid"
+          onPointerMove={handleDeckGridPointerMove}
+          onPointerLeave={resetDeckProximity}
+          onPointerCancel={resetDeckProximity}
+        >
           {filteredDecks.map((deck) => {
             const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
             const rawThumb = deckThumbnails[deck.id]
@@ -245,6 +293,7 @@ export default function Decks() {
             return (
               <div
                 key={deck.id}
+                data-classic-deck-card
                 className="classic-deck-card"
                 onClick={() => navigate(`/deck/${deck.id}`)}
               >

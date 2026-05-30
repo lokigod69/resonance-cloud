@@ -350,39 +350,50 @@ input[type="range"].volume-slider::-moz-range-track {
 .classic-decks-grid {
   position: relative;
   z-index: 1;
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  padding: 0 40px;
-  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 30px);
+  align-items: stretch;
+  padding: 0 clamp(16px, 4vw, 48px) 4rem;
+  max-width: 860px;
   margin: 0 auto;
-  flex-wrap: wrap;
 }
 
 .classic-deck-card {
   position: relative;
-  width: 320px;
-  min-height: 360px;
-  z-index: 1;
+  width: 100%;
+  min-width: 0;
+  min-height: 340px;
+  z-index: var(--deck-proximity-z, 1);
   background: rgba(20, 24, 34, 0.45);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--deck-proximity-border-color, rgba(255, 255, 255, 0.15));
   border-radius: 20px;
   padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 18px;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  transform: translate3d(0, var(--deck-proximity-lift, 0px), 0) scale(var(--deck-proximity-scale, 1));
+  filter: brightness(var(--deck-proximity-brightness, 1));
+  transition:
+    transform 150ms ease,
+    filter 150ms ease,
+    box-shadow 150ms ease,
+    border-color 150ms ease;
+  box-shadow: var(--deck-proximity-shadow, 0 16px 40px rgba(0, 0, 0, 0.6));
   overflow: hidden;
+  will-change: transform, filter, box-shadow;
 }
 
-.classic-deck-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-  border-color: rgba(255, 255, 255, 0.3);
+.classic-deck-card:hover,
+.classic-deck-card:focus-visible {
+  --deck-proximity-scale: 1.08;
+  --deck-proximity-lift: -14px;
+  --deck-proximity-brightness: 1.08;
+  --deck-proximity-border-color: rgba(255, 255, 255, 0.39);
+  --deck-proximity-shadow: 0 28px 58px rgba(0, 0, 0, 0.78), 0 0 34px rgba(125, 184, 255, 0.36);
 }
 
 .classic-deck-media {
@@ -440,15 +451,31 @@ input[type="range"].volume-slider::-moz-range-track {
 
 @media (max-width: 768px) {
   .classic-decks-grid {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr);
     padding: 0 16px;
+    max-width: 360px;
   }
 
   .classic-deck-card {
-    width: 100%;
     max-width: 320px;
     min-height: 320px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .classic-decks-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 1320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .classic-deck-card {
+    transform: none !important;
+    transition:
+      filter 150ms ease,
+      box-shadow 150ms ease,
+      border-color 150ms ease;
   }
 }
 
