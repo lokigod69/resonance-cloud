@@ -276,8 +276,9 @@
 
 .thematicTile .tileBody {
   display: flex;
-  min-height: 13rem;
+  min-height: 7.5rem;
   flex-direction: column;
+  justify-content: center;
 }
 
 .basicTile {
@@ -342,15 +343,6 @@
   padding: 1.15rem 1rem 1.25rem;
 }
 
-.thematicGroupLabel {
-  margin: 0 0 0.45rem;
-  color: var(--text-muted);
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .tileTitle {
   display: flex;
   align-items: center;
@@ -361,9 +353,17 @@
   line-height: 1.12;
 }
 
+.thematicTile .tileTitle {
+  font-size: clamp(1.5rem, 2.35vw, 2rem);
+}
+
 .tileEmoji {
   font-size: 1.45rem;
   line-height: 1;
+}
+
+.thematicTile .tileEmoji {
+  font-size: 1.85rem;
 }
 
 .tileMeta {
@@ -374,17 +374,6 @@
   color: var(--text-muted);
   font-size: 0.86rem;
   font-weight: 650;
-}
-
-.tileAction {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-top: auto;
-  padding-top: 1rem;
-  color: var(--accent);
-  font-size: 0.86rem;
-  font-weight: 850;
 }
 
 .chip {
@@ -543,10 +532,6 @@
   font-weight: 850;
   line-height: 1.22;
   overflow-wrap: anywhere;
-}
-
-.levelPreviewCopy .rowMeta {
-  margin-top: 0.5rem;
 }
 
 .levelRow {

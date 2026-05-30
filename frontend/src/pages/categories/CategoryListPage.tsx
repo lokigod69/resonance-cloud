@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { ArrowRight, Check } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -10,7 +10,6 @@ import { generatedCategoryHeroImagePath } from '@/lib/generatedCategoryImages'
 import {
   STATIC_CATEGORY_TARGET_LANGUAGES,
   getPublicCategoryGroups,
-  getStaticCategoryVocabularyItems,
   type Category as StaticCategory,
 } from '@/data/categories'
 import { listImportedCurriculumDecks } from '@/lib/curriculumDeckBridge'
@@ -93,7 +92,7 @@ function thematicCategoryHref(category: StaticCategory) {
 }
 
 export default function CategoryListPage() {
-  const { t, tp } = useTranslation()
+  const { t } = useTranslation()
   const { user } = useAuth()
   const { activeLanguage } = useLanguage()
   const [searchParams] = useSearchParams()
@@ -180,8 +179,6 @@ export default function CategoryListPage() {
               </h3>
               <div className={styles.thematicGrid}>
                 {group.categories.map((category) => {
-                  const wordCount = getStaticCategoryVocabularyItems(category).length
-                  const levelCount = category.staticWordLevels?.length ?? 0
                   return (
                     <Link
                       key={category.id ?? category.name}
@@ -193,19 +190,10 @@ export default function CategoryListPage() {
                         <ThematicCategoryHero category={category} />
                       </div>
                       <div className={styles.tileBody}>
-                        <p className={styles.thematicGroupLabel}>{t(group.groupKey)}</p>
                         <h2 className={styles.tileTitle}>
                           <span className={styles.tileEmoji} aria-hidden="true">{category.emoji}</span>
                           <span>{t(category.labelKey)}</span>
                         </h2>
-                        <div className={styles.tileMeta}>
-                          <span className={styles.chip}>{tp('categories.entryCount', wordCount)}</span>
-                          <span className={styles.chip}>{tp('categories.levelCount', levelCount)}</span>
-                        </div>
-                        <span className={styles.tileAction}>
-                          {t('categories.openCategoryAction')}
-                          <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                        </span>
                       </div>
                     </Link>
                   )

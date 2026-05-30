@@ -28,7 +28,7 @@ const scrollResetHook = read('src/pages/categories/useCategoryScrollReset.ts')
 
 assertIncludes(translations, "'nav.categories': 'Library'", 'English nav')
 assertIncludes(translations, "'nav.categories': 'Wortschatz'", 'German nav')
-assertIncludes(translations, "'categories.title': 'Library / Wortschatz'", 'English page title')
+assertIncludes(translations, "'categories.title': 'Library'", 'English page title')
 assertIncludes(translations, "'categories.title': 'Wortschatz'", 'German page title')
 assertIncludes(translations, "'categories.thematicSectionTitle': 'Theme Packs'", 'English thematic heading')
 assertIncludes(translations, "'categories.thematicSectionTitle': 'Themenpakete'", 'German thematic heading')
@@ -59,6 +59,10 @@ assert.ok(
 assertIncludes(categoryList, 'useCategoryScrollReset()', 'Library landing should scroll to top on route entry')
 assertIncludes(categoryList, 'aria-label={t(\'categories.targetLanguageLabel\')}', 'Target language select should keep an accessible label')
 assertNotIncludes(categoryList, '<span>{t(\'categories.targetLanguageLabel\')}</span>', 'Target language select label should not render visibly')
+assertNotIncludes(categoryList, "tp('categories.entryCount'", 'Library landing thematic cards should not repeat word counts')
+assertNotIncludes(categoryList, "tp('categories.levelCount'", 'Library landing thematic cards should not repeat level counts')
+assertNotIncludes(categoryList, 'categories.openCategoryAction', 'Library landing thematic cards should not render redundant open-category copy')
+assertNotIncludes(categoryList, 'thematicGroupLabel', 'Library landing thematic cards should not repeat parent group labels')
 
 assertNotIncludes(categoryDetail, 'setTargetLanguage', 'Category detail duplicate language selector')
 assertNotIncludes(categoryDetail, 'setHelperLanguage', 'Category detail duplicate language selector')
@@ -71,6 +75,7 @@ assertIncludes(categoryDetail, 'getLocalizedStaticLevelLabel(level, locale)', 'C
 assertNotIncludes(categoryDetail, '{category.description}', 'Static category detail should not render generic generated descriptions')
 assertIncludes(categoryDetail, 'useCategoryScrollReset()', 'Category detail should scroll to top on route entry')
 assertNotIncludes(categoryDetail, '{t(group.groupKey)}', 'Static category detail hero should not render parent group labels')
+assertNotIncludes(categoryDetail, "tp('categories.entryCount', level.words.length)", 'Static category detail level cards should not repeat per-level word counts')
 assertNotIncludes(categoryDetail, "t('categories.levelLabel'", 'Category detail should not repeat Level X text on static level cards')
 assertNotIncludes(categoryDetail, 'categories.openLevelAction', 'Category detail should not render redundant open-level CTA copy')
 

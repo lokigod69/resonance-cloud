@@ -208,7 +208,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── Categories ──
     'categories.eyebrow': 'Library',
-    'categories.title': 'Library / Wortschatz',
+    'categories.title': 'Library',
     'categories.subtitle': 'Choose a target language and open ready-made vocabulary packs by theme or foundation.',
     'categories.targetLanguageLabel': 'Target vocabulary language',
     'categories.generateFromCategories': 'Generate from thematic categories',

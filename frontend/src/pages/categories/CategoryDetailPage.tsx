@@ -267,7 +267,6 @@ function renderStaticCategoryDetail({
                 <span className={styles.levelBadge}>{level.level}</span>
                 <div className={styles.levelPreviewCopy}>
                   <h2 className={styles.levelPreviewTitle}>{localizedLevelLabel}</h2>
-                  <p className={styles.rowMeta}>{tp('categories.entryCount', level.words.length)}</p>
                 </div>
               </div>
             </Link>
