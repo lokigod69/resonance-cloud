@@ -50,10 +50,6 @@
   --glassy-header-height: 4rem;
   --glassy-header-offset: calc(var(--app-safe-top) + var(--glassy-header-height));
   --deck-footer-space: calc(var(--app-safe-bottom) + 5.5rem);
-  --lingwave-orange: #ff6a1a;
-  --lingwave-pink: #ff3d8a;
-  --lingwave-purple: #b662ff;
-  --lingwave-lavender: #d9b6ff;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -613,20 +609,6 @@ input[type="range"].volume-slider::-moz-range-track {
 /* Glassy font */
 .font-display {
   font-family: 'Outfit', sans-serif;
-}
-
-.lingwave-wordmark {
-  background: linear-gradient(
-    92deg,
-    var(--lingwave-orange) 0%,
-    var(--lingwave-pink) 47%,
-    var(--lingwave-purple) 76%,
-    var(--lingwave-lavender) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 18px color-mix(in srgb, var(--lingwave-pink) 22%, transparent);
 }
 
 /* Glassy scrollbar hide */

@@ -42,7 +42,7 @@ export default function HeroSection() {
       {/* Nav — fixed, frosted glass */}
       <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-4 py-4 sm:px-6 md:px-12 backdrop-blur-md bg-black/30 border-b border-white/5">
         <Link to="/" className="flex items-center gap-2" aria-label="Lingwave home">
-          <LingwaveBrand wordmarkClassName="text-xl" />
+          <LingwaveBrand wordmarkClassName="h-5" />
         </Link>
       </header>
 

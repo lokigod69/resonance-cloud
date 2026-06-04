@@ -50,7 +50,7 @@ function NavContent({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div className="flex flex-col h-full">
       <div className="p-4 flex items-center gap-2">
-        <LingwaveBrand markClassName="h-6 w-6" wordmarkClassName="text-lg" />
+        <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5" />
       </div>
       <Separator />
       <nav className="flex-1 p-2 space-y-1">

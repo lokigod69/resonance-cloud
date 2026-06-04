@@ -87,7 +87,7 @@ export function AppHeader() {
           <SheetContent side="left" className="w-60 p-0">
             <SheetTitle className="sr-only">Navigation</SheetTitle>
             <div className="p-4 flex items-center gap-2 border-b border-border">
-              <LingwaveBrand markClassName="h-6 w-6" wordmarkClassName="text-lg" />
+              <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5" />
             </div>
             <nav className="p-2 space-y-1">
               {mainNav.map(({ to, label, icon: Icon }) => (
@@ -137,7 +137,7 @@ export function AppHeader() {
 
       {/* Logo */}
       <Link to="/dashboard" className="flex items-center gap-2 shrink-0" aria-label="Lingwave dashboard">
-        <LingwaveBrand markClassName="h-6 w-6" wordmarkClassName="text-base sm:text-lg" />
+        <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5 sm:h-6" />
       </Link>
 
       {/* Desktop nav — center */}

@@ -57,7 +57,7 @@ export function WorkspaceChooser({ onWorkspaceSelected }: WorkspaceChooserProps)
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-3 mb-2">
-            <LingwaveBrand markClassName="h-10 w-10" wordmarkClassName="text-2xl" />
+            <LingwaveBrand markClassName="h-10" wordmarkClassName="h-8" />
           </div>
           <p className="text-sm text-[var(--text-muted)]">Select a workspace to get started</p>
         </div>

@@ -83,7 +83,7 @@ export default function Login() {
     >
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2 mb-8" aria-label="Lingwave home">
-        <LingwaveBrand markClassName="h-8 w-8" wordmarkClassName="text-2xl" />
+        <LingwaveBrand markClassName="h-8" wordmarkClassName="h-7" />
       </Link>
 
       <Card className="w-full max-w-md glass border-border">
