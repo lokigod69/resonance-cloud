@@ -56,11 +56,20 @@ assert(isPrimaryNavItemActive('/decks', cardsItem), 'Cards tab is active for dec
 
 const appHeader = readFileSync('src/components/layout/AppHeader.tsx', 'utf8')
 const polishGlassLayout = readFileSync('src/components/layout/PolishGlassLayout.tsx', 'utf8')
+const mobileBottomNav = readFileSync('src/components/layout/MobileBottomNav.tsx', 'utf8')
 const dashboard = readFileSync('src/pages/Dashboard.tsx', 'utf8')
 const dashboardPg = readFileSync('src/pages/DashboardPG.tsx', 'utf8')
 
 assertIncludes(appHeader, '<MobileBottomNav />', 'classic layout renders shared mobile bottom nav')
 assertIncludes(polishGlassLayout, '<MobileBottomNav />', 'glassy layout renders shared mobile bottom nav')
+
+for (const headerGlassClass of ['!backdrop-blur-3xl', '!backdrop-saturate-150', '!bg-black/40']) {
+  assertIncludes(appHeader, headerGlassClass, `classic header uses ${headerGlassClass}`)
+  assertIncludes(polishGlassLayout, headerGlassClass, `glassy header uses ${headerGlassClass}`)
+  assertIncludes(mobileBottomNav, headerGlassClass, `mobile bottom nav mirrors header ${headerGlassClass}`)
+}
+
+assertIncludes(mobileBottomNav, 'pb-[var(--app-safe-bottom)]', 'mobile bottom nav preserves safe-area bottom padding')
 assertNotIncludes(appHeader, 'SheetTrigger', 'classic mobile Sheet hamburger is removed')
 assertNotIncludes(polishGlassLayout, 'mobileOpen', 'glassy mobile dropdown state is removed')
 assertIncludes(polishGlassLayout, 'hidden md:flex', 'glassy desktop nav uses md breakpoint')

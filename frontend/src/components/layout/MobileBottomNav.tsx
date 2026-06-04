@@ -11,7 +11,7 @@ export function MobileBottomNav() {
   return (
     <nav
       aria-label="Primary navigation"
-      className="app-bottomnav fixed inset-x-0 bottom-0 z-50 md:hidden px-1 pt-1 pb-[var(--app-safe-bottom)]"
+      className="app-bottomnav fixed inset-x-0 bottom-0 z-50 md:hidden px-1 pt-1 pb-[var(--app-safe-bottom)] !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40"
     >
       <div className="mx-auto grid h-[var(--mobile-bottom-nav-height)] max-w-md grid-cols-6 gap-0.5">
         {navItems.map((item) => {
