@@ -626,6 +626,19 @@
   justify-content: flex-end;
 }
 
+.staticImportPanel {
+  display: flex;
+  justify-content: center;
+  width: min(100%, 28rem);
+  margin: calc(clamp(1.25rem, 3vw, 2rem) * -0.35) auto clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background:
+    radial-gradient(circle at 50% 0%, var(--accent-glow), transparent 58%),
+    linear-gradient(135deg, var(--surface-glass-strong), var(--surface-glass));
+}
+
 .disabledStudy {
   display: inline-flex;
   align-items: center;
@@ -671,6 +684,8 @@
 }
 
 .staticImportAction {
+  justify-content: center;
+  width: min(100%, 13.5rem);
   min-height: 3rem;
   border-color: var(--accent);
   padding: 0.6rem 1.25rem;

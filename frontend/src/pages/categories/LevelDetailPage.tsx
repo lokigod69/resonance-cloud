@@ -500,23 +500,24 @@ function StaticLevelDetail({
           <h1 className={`${styles.title} ${styles.levelHeroTitle}`}>{localizedLevelLabel}</h1>
           <p className={styles.subtitle}>{t(category.labelKey)}</p>
         </div>
-        <div className={styles.heroAction}>
-          <button
-            type="button"
-            className={`${styles.studyAction} ${styles.staticImportAction}`}
-            onClick={handleStaticImport}
-            disabled={importDisabled}
-            aria-busy={importing || undefined}
-          >
-            {importing ? (
-              <span className={styles.studyActionSpinner} aria-hidden="true" />
-            ) : (
-              <BookOpen className="h-4 w-4" aria-hidden="true" />
-            )}
-            <span>{importLabel}</span>
-          </button>
-        </div>
       </header>
+
+      <div className={styles.staticImportPanel}>
+        <button
+          type="button"
+          className={`${styles.studyAction} ${styles.staticImportAction}`}
+          onClick={handleStaticImport}
+          disabled={importDisabled}
+          aria-busy={importing || undefined}
+        >
+          {importing ? (
+            <span className={styles.studyActionSpinner} aria-hidden="true" />
+          ) : (
+            <BookOpen className="h-4 w-4" aria-hidden="true" />
+          )}
+          <span>{importLabel}</span>
+        </button>
+      </div>
 
       <div className={styles.staticWordGrid}>
         {selectedItems.map((item) => (

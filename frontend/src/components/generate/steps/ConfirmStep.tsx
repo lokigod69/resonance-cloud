@@ -21,6 +21,7 @@ function laneLabel(lane: ProductLane | null): string {
   if (lane === 'video') return 'Video & Music'
   if (lane === 'card_standard') return 'Standard Card'
   if (lane === 'card_premium') return 'Premium Card'
+  if (lane === 'card_text') return 'Text Card'
   return 'Generation'
 }
 

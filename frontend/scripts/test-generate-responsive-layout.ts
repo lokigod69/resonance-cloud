@@ -21,6 +21,8 @@ function containsCall(source: string, callee: string, argument: string): boolean
 
 const glassCss = read('src/themes/glass-orb.css')
 const premiumSelectors = read('src/components/generate/shared/PremiumVisualSelectors.tsx')
+const productLaneStep = read('src/components/generate/steps/ProductLaneStep.tsx')
+const translations = read('src/lib/translations.ts')
 const generatePg = read('src/pages/GeneratePG.tsx')
 const generateGo = read('src/pages/GenerateGO.tsx')
 const cardImageStyleStep = read('src/components/generate/steps/CardImageStyleStep.tsx')
@@ -57,9 +59,24 @@ assert(
 )
 
 assert(
-  /@media\s*\(max-width:\s*640px\)[\s\S]*data-option-value="card_premium"[\s\S]*order:\s*2/.test(glassCss)
-    && /@media\s*\(max-width:\s*640px\)[\s\S]*data-option-value="card_standard"[\s\S]*order:\s*3/.test(glassCss),
-  'Mobile product lane order must be Video, Premium Card, Standard Card.',
+  productLaneStep.indexOf("value: 'card_text'") < productLaneStep.indexOf("value: 'card_standard'")
+    && productLaneStep.indexOf("value: 'card_standard'") < productLaneStep.indexOf("value: 'card_premium'")
+    && productLaneStep.indexOf("value: 'card_premium'") < productLaneStep.indexOf("value: 'video'"),
+  'Product lane source order must be Text Card, Standard Card, Premium Card, Video & Music.',
+)
+
+assert(
+  translations.includes("'generate.productLane.cardText.label': 'Text Card'")
+    && translations.includes("'generate.productLane.cardText.cost': 'Free'"),
+  'Card text lane must render as Text Card with a Free cost label.',
+)
+
+assert(
+  /@media\s*\(max-width:\s*640px\)[\s\S]*data-option-value="card_text"[\s\S]*order:\s*1/.test(glassCss)
+    && /@media\s*\(max-width:\s*640px\)[\s\S]*data-option-value="card_standard"[\s\S]*order:\s*2/.test(glassCss)
+    && /@media\s*\(max-width:\s*640px\)[\s\S]*data-option-value="card_premium"[\s\S]*order:\s*3/.test(glassCss)
+    && /@media\s*\(max-width:\s*640px\)[\s\S]*data-option-value="video"[\s\S]*order:\s*4/.test(glassCss),
+  'Mobile product lane order must be Text Card, Standard Card, Premium Card, Video & Music.',
 )
 
 assert(

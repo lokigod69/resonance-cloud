@@ -29,9 +29,9 @@ export default function ProductLaneStep({
 
   const allTiles: TileDef[] = [
     {
-      value: 'video',
-      label: t('generate.productLane.video.label'),
-      cost: t('generate.productLane.video.cost'),
+      value: 'card_text',
+      label: t('generate.productLane.cardText.label'),
+      cost: t('generate.productLane.cardText.cost'),
     },
     {
       value: 'card_standard',
@@ -44,9 +44,9 @@ export default function ProductLaneStep({
       cost: t('generate.productLane.premium.cost'),
     },
     {
-      value: 'card_text',
-      label: t('generate.productLane.cardText.label'),
-      cost: t('generate.productLane.cardText.cost'),
+      value: 'video',
+      label: t('generate.productLane.video.label'),
+      cost: t('generate.productLane.video.cost'),
     },
   ]
 
