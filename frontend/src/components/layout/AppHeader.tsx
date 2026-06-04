@@ -5,6 +5,7 @@ import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -86,8 +87,7 @@ export function AppHeader() {
           <SheetContent side="left" className="w-60 p-0">
             <SheetTitle className="sr-only">Navigation</SheetTitle>
             <div className="p-4 flex items-center gap-2 border-b border-border">
-              <Music className="h-5 w-5" />
-              <span className="font-bold text-lg">Resonance</span>
+              <LingwaveBrand markClassName="h-6 w-6" wordmarkClassName="text-lg" />
             </div>
             <nav className="p-2 space-y-1">
               {mainNav.map(({ to, label, icon: Icon }) => (
@@ -136,9 +136,8 @@ export function AppHeader() {
       </div>
 
       {/* Logo */}
-      <Link to="/dashboard" className="flex items-center gap-2 shrink-0">
-        <Music className="h-5 w-5" />
-        <span className="font-bold text-base sm:text-lg">Resonance</span>
+      <Link to="/dashboard" className="flex items-center gap-2 shrink-0" aria-label="Lingwave dashboard">
+        <LingwaveBrand markClassName="h-6 w-6" wordmarkClassName="text-base sm:text-lg" />
       </Link>
 
       {/* Desktop nav — center */}

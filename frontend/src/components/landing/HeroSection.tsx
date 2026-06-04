@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
+import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 
 export default function HeroSection() {
   const reducedMotion = useReducedMotion()
@@ -40,9 +41,8 @@ export default function HeroSection() {
     <section className="relative h-screen">
       {/* Nav — fixed, frosted glass */}
       <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-4 py-4 sm:px-6 md:px-12 backdrop-blur-md bg-black/30 border-b border-white/5">
-        <Link to="/" className="flex items-center gap-2">
-          <img src="/favicon.svg" alt="Resonance" className="h-7 w-7" />
-          <span className="font-bold text-xl">Resonance</span>
+        <Link to="/" className="flex items-center gap-2" aria-label="Lingwave home">
+          <LingwaveBrand wordmarkClassName="text-xl" />
         </Link>
       </header>
 

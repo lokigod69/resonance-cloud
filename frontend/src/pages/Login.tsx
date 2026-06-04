@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
+import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 
 export default function Login() {
   const { t } = useLandingLocale()
@@ -81,9 +82,8 @@ export default function Login() {
       }}
     >
       {/* Logo */}
-      <Link to="/" className="flex items-center gap-2 mb-8">
-        <img src="/favicon.svg" alt="Resonance" className="h-8 w-8" />
-        <span className="font-bold text-2xl text-foreground">Resonance</span>
+      <Link to="/" className="flex items-center gap-2 mb-8" aria-label="Lingwave home">
+        <LingwaveBrand markClassName="h-8 w-8" wordmarkClassName="text-2xl" />
       </Link>
 
       <Card className="w-full max-w-md glass border-border">

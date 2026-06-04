@@ -8,7 +8,6 @@ import {
   Users,
   FileText,
   BarChart3,
-  Music,
   ListOrdered,
   Languages,
   Mic,
@@ -22,6 +21,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/s
 import { Button } from '@/components/ui/button'
 import { Menu } from 'lucide-react'
 import { useState } from 'react'
+import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 
 const mainNav = [
   { to: '/dashboard', label: 'Decks', icon: LayoutDashboard },
@@ -50,8 +50,7 @@ function NavContent({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div className="flex flex-col h-full">
       <div className="p-4 flex items-center gap-2">
-        <Music className="h-6 w-6" />
-        <span className="font-bold text-lg">Resonance</span>
+        <LingwaveBrand markClassName="h-6 w-6" wordmarkClassName="text-lg" />
       </div>
       <Separator />
       <nav className="flex-1 p-2 space-y-1">

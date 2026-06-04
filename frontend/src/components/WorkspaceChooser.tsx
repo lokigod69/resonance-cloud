@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { FolderOpen, Clock, ChevronRight, Globe, Loader } from 'lucide-react'
 import { getRecentWorkspaces, switchWorkspace, openWorkspaceFolder, type RecentWorkspaceEntry } from '../api'
 import { WorkspaceManager } from './WorkspaceManager'
+import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 
 interface WorkspaceChooserProps {
   onWorkspaceSelected: () => void
@@ -56,10 +57,7 @@ export function WorkspaceChooser({ onWorkspaceSelected }: WorkspaceChooserProps)
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-lg bg-[var(--accent)] flex items-center justify-center">
-              <span className="text-white text-lg font-bold">R</span>
-            </div>
-            <h1 className="text-2xl font-semibold text-[var(--text-primary)]">Resonance</h1>
+            <LingwaveBrand markClassName="h-10 w-10" wordmarkClassName="text-2xl" />
           </div>
           <p className="text-sm text-[var(--text-muted)]">Select a workspace to get started</p>
         </div>
