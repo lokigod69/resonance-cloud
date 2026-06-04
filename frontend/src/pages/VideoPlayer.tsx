@@ -8,6 +8,7 @@ import {
   ChevronLeft,
   ChevronRight,
   RotateCcw,
+  Volume2,
   X,
 } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
@@ -41,6 +42,7 @@ export default function VideoPlayer() {
   const [words, setWords] = useState<Word[]>([])
   const [loading, setLoading] = useState(true)
   const [videoKey, setVideoKey] = useState(0)
+  const [videoMuted, setVideoMuted] = useState(true)
 
   useEffect(() => {
     if (!deckId) return
@@ -178,14 +180,28 @@ export default function VideoPlayer() {
           {/* Video */}
           <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl">
             {activeVideoUrl ? (
-              <video
-                key={videoKey}
-                src={`${activeVideoUrl}?t=${videoKey}`}
-                controls
-                autoPlay
-                playsInline
-                className="w-full aspect-video"
-              />
+              <>
+                <video
+                  key={videoKey}
+                  src={`${activeVideoUrl}?t=${videoKey}`}
+                  controls
+                  autoPlay
+                  playsInline
+                  muted={videoMuted}
+                  className="w-full aspect-video"
+                />
+                {videoMuted && (
+                  <Button
+                    type="button"
+                    size="sm"
+                    onClick={() => setVideoMuted(false)}
+                    className="absolute right-3 top-3 bg-black/70 text-white hover:bg-black/80"
+                  >
+                    <Volume2 className="mr-2 h-4 w-4" />
+                    Unmute
+                  </Button>
+                )}
+              </>
             ) : (
               <div className="w-full aspect-video flex items-center justify-center bg-white/5">
                 <p className="text-muted-foreground">No video available</p>

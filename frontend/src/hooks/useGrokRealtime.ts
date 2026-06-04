@@ -10,6 +10,8 @@ import {
   setIOSAudioSessionType,
 } from '@/lib/grokIOSAudioDiagnostics'
 import { supabase } from '@/lib/supabase'
+import { ensureNativeMicrophonePermission } from '@/lib/nativeMicrophone'
+import { publicApiUrl } from '@/lib/publicOrigins'
 import type { GrokLevel } from '@/lib/grokPedagogy'
 
 export type GrokStatus = 'idle' | 'connecting' | 'recording' | 'thinking' | 'speaking' | 'error'
@@ -1167,7 +1169,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
     currentUserIdRef.current = data.session.user.id
 
-    const response = await fetch('/api/grok-token', {
+    const response = await fetch(publicApiUrl('/api/grok-token'), {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${data.session.access_token}`,
@@ -1559,6 +1561,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           micCycleId,
         })
       }
+      await ensureNativeMicrophonePermission()
       const stream = await navigator.mediaDevices.getUserMedia({ audio: audioConstraints })
       streamRef.current = stream
       if (GROK_AUDIO_DEBUG) {

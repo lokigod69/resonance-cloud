@@ -1,6 +1,6 @@
 import { Suspense, useEffect } from 'react'
 import { lazyWithRetry } from '@/utils/lazyWithRetry'
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useNavigate } from 'react-router-dom'
 import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { ThemeProvider } from '@/contexts/ThemeProvider'
@@ -62,6 +62,7 @@ import SharePage from '@/pages/SharePage'
 import HybridALanding from '@/landing-experiments/hybrid-a/HybridALanding'
 import HybridBLanding from '@/landing-experiments/hybrid-b/HybridBLanding'
 import LandingExperimentIndex from '@/landing-experiments/hybrid-a/LandingExperimentIndex'
+import { useCapacitorDeepLinks } from '@/hooks/useCapacitorDeepLinks'
 
 const SlicerGame = lazyWithRetry(() => import('@/games/slicer/SlicerGame'), 'slicer-game')
 const RunnerGame = lazyWithRetry(() => import('@/games/runner/RunnerGame'), 'runner-game')
@@ -131,6 +132,8 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
 function AppRoutes() {
   const { skin } = useSkin()
+  const navigate = useNavigate()
+  useCapacitorDeepLinks(navigate)
 
   return (
     <Routes>

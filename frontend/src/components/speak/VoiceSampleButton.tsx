@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Loader2, Play, Square } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
+import { publicApiUrl } from '@/lib/publicOrigins'
 
 interface VoiceSampleButtonProps {
   voiceName: string
@@ -97,7 +98,7 @@ export function VoiceSampleButton({
     if (!url) {
       setLoading(true)
       try {
-        const res = await fetch('/api/voice-sample', {
+        const res = await fetch(publicApiUrl('/api/voice-sample'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

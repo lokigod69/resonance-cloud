@@ -1,8 +1,25 @@
 /**
  * API client for the Resonance Orchestrator backend.
  */
+import { getPublicApiOrigin } from '@/lib/publicOrigins'
+import { isNativeApp } from '@/lib/platform'
 
-const BASE = (import.meta.env.VITE_BACKEND_URL || 'http://localhost:8090') + '/api'
+const LOCAL_BACKEND_ORIGIN = 'http://localhost:8090'
+
+function trimTrailingSlash(value: string | undefined): string | null {
+  const trimmed = value?.trim()
+  if (!trimmed) return null
+  return trimmed.replace(/\/+$/, '')
+}
+
+export function getBackendApiBase(): string {
+  const configuredBackendOrigin = trimTrailingSlash(import.meta.env.VITE_BACKEND_URL)
+  const backendOrigin = configuredBackendOrigin
+    ?? (isNativeApp() ? getPublicApiOrigin() : LOCAL_BACKEND_ORIGIN)
+  return `${backendOrigin}/api`
+}
+
+const BASE = getBackendApiBase()
 
 async function req<T>(path: string, opts?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, opts)

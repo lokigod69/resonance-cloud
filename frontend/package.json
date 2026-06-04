@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:ios": "vite build && cap sync ios",
+    "cap:sync:ios": "cap sync ios",
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
     "test": "tsx scripts/test-deck-delete-ui.ts",
@@ -43,6 +45,10 @@
     "pregen:samples": "tsx scripts/pregenerate-voice-samples.ts"
   },
   "dependencies": {
+    "@capacitor/app": "^8.1.0",
+    "@capacitor/browser": "^8.0.3",
+    "@capacitor/core": "^8.4.0",
+    "@capacitor/preferences": "^8.0.1",
     "@supabase/supabase-js": "^2.99.3",
     "@tailwindcss/vite": "^4.2.2",
     "@use-gesture/react": "^10.3.1",
@@ -62,6 +68,8 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.4.0",
+    "@capacitor/ios": "^8.4.0",
     "@eslint/js": "^9.39.4",
     "@types/node": "^24.12.0",
     "@types/react": "^19.2.14",

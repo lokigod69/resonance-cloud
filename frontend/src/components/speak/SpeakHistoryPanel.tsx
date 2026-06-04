@@ -7,6 +7,7 @@ import { FlagIcon } from '@/components/ui/FlagIcon'
 import { getCharacterById } from '@/characterRegistry'
 import { GEMINI_CHARACTER_MODES } from '@/data/geminiCharacterModes'
 import { GEMINI_ACCENTS } from '@/data/geminiAccents'
+import { publicApiUrl } from '@/lib/publicOrigins'
 
 interface Conversation {
   id: string
@@ -208,7 +209,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
         return
       }
 
-      const res = await fetch('/api/voice-chat', {
+      const res = await fetch(publicApiUrl('/api/voice-chat'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

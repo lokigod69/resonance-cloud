@@ -3,6 +3,11 @@ const PRODUCTION_ORIGINS = new Set([
   'https://www.resonanz.pro',
 ])
 
+const NATIVE_APP_ORIGINS = new Set([
+  'capacitor://localhost',
+  'ionic://localhost',
+])
+
 function isLocalhostOrigin(origin: URL): boolean {
   return ['localhost', '127.0.0.1', '[::1]'].includes(origin.hostname)
     && ['http:', 'https:'].includes(origin.protocol)
@@ -16,6 +21,7 @@ export function getAllowedOrigin(req?: Request): string | null {
   const rawOrigin = req?.headers.get('Origin')
   if (!rawOrigin) return null
   if (PRODUCTION_ORIGINS.has(rawOrigin)) return rawOrigin
+  if (NATIVE_APP_ORIGINS.has(rawOrigin)) return rawOrigin
 
   try {
     const origin = new URL(rawOrigin)

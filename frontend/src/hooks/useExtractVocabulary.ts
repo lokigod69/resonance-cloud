@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import { supabase } from '@/lib/supabase'
+import { publicApiUrl } from '@/lib/publicOrigins'
 import type {
   ExtractVocabularyRequest,
   ExtractVocabularyResponse,
@@ -27,7 +28,7 @@ export function useExtractVocabulary() {
       const token = sessionData.session?.access_token
       if (!token) throw new Error('Your session expired. Please sign in again.')
 
-      const res = await fetch('/api/extract-vocabulary', {
+      const res = await fetch(publicApiUrl('/api/extract-vocabulary'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

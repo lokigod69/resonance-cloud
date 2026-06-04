@@ -14,6 +14,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import { useTranslation } from '@/hooks/useTranslation'
+import { publicApiUrl } from '@/lib/publicOrigins'
 import type { WizardState } from '../useWizardState'
 
 const MIN_CATEGORY_WORD_COUNT = 5
@@ -208,7 +209,7 @@ export default function CategoryPicker({
         throw new Error(t('generate.words.sessionExpired'))
       }
 
-      const res = await fetch('/api/suggest-words', {
+      const res = await fetch(publicApiUrl('/api/suggest-words'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

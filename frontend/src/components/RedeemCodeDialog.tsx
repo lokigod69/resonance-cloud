@@ -12,6 +12,7 @@ import { Input } from '@/components/ui/input'
 import { Coins, Check, Gift, CreditCard } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { isBillingTester } from '@/lib/billingFlags'
+import { publicApiUrl } from '@/lib/publicOrigins'
 
 export function RedeemCodeDialog({
   open,
@@ -76,7 +77,7 @@ export function RedeemCodeDialog({
         return
       }
 
-      const response = await fetch('/api/create-checkout-session', {
+      const response = await fetch(publicApiUrl('/api/create-checkout-session'), {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

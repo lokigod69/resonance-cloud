@@ -1,4 +1,5 @@
 import { supabase } from './supabase'
+import { getPublicWebUrl } from './publicOrigins'
 
 export async function getOrCreateShareLink(wordId: string): Promise<string | null> {
   try {
@@ -15,7 +16,7 @@ export async function getOrCreateShareLink(wordId: string): Promise<string | nul
 
     const result = data as { id?: string; path?: string } | null
     const path = result?.path || (result?.id ? `/v/${result.id}` : null)
-    return path ? `${window.location.origin}${path}` : null
+    return path ? getPublicWebUrl(path) : null
   } catch (err) {
     console.error('[share] Error:', err)
     return null

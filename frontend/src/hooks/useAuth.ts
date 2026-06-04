@@ -1,6 +1,9 @@
 import { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react'
+import { Browser } from '@capacitor/browser'
 import type { Session, User } from '@supabase/supabase-js'
 import { supabase, type AuthProfile } from '@/lib/supabase'
+import { getOAuthRedirectTo } from '@/lib/publicOrigins'
+import { isNativeApp } from '@/lib/platform'
 
 const profileCacheKey = (userId: string) => `resonance_auth_profile_${userId}`
 
@@ -274,9 +277,27 @@ export function useAuthState(): AuthState {
   }
 
   const signInWithGoogle = async () => {
+    if (isNativeApp()) {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: getOAuthRedirectTo(),
+          skipBrowserRedirect: true,
+        },
+      })
+      if (error) return { error: error.message }
+      if (!data.url) return { error: 'Google sign-in did not return an authorization URL.' }
+      try {
+        await Browser.open({ url: data.url })
+      } catch (err) {
+        return { error: err instanceof Error ? err.message : 'Could not open Google sign-in.' }
+      }
+      return { error: null }
+    }
+
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: window.location.origin + '/dashboard' },
+      options: { redirectTo: getOAuthRedirectTo() },
     })
     return { error: error?.message ?? null }
   }

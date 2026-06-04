@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { setIOSAudioSessionType } from '@/lib/grokIOSAudioDiagnostics'
+import { ensureNativeMicrophonePermission } from '@/lib/nativeMicrophone'
+import { publicApiUrl } from '@/lib/publicOrigins'
 import type { GuidedSpeakLocale } from '@/data/guidedLessons'
 
 export type GuidedSpeechRecognitionStatus =
@@ -98,7 +100,7 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
     const controller = new AbortController()
     const timer = window.setTimeout(() => controller.abort(), 20000)
     try {
-      const response = await fetch('/api/guided-transcribe', {
+      const response = await fetch(publicApiUrl('/api/guided-transcribe'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -141,6 +143,7 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
 
     try {
       setIOSAudioSessionType('play-and-record', 'guided-today-before-getUserMedia')
+      await ensureNativeMicrophonePermission()
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       streamRef.current = stream
       const mimeType = getGuidedSpeechMimeType()

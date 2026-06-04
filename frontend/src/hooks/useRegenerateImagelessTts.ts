@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
+import { publicApiUrl } from '@/lib/publicOrigins'
 import type {
   GenerateImagelessTtsResponse,
   GenerateImagelessTtsRequest,
@@ -25,7 +26,7 @@ export function useRegenerateImagelessTts() {
       if (!token) throw new Error('Authentication required')
 
       const request: GenerateImagelessTtsRequest = { word_ids }
-      const res = await fetch('/api/generate-imageless-tts', {
+      const res = await fetch(publicApiUrl('/api/generate-imageless-tts'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -15,6 +15,8 @@ import {
   getNavigatorAudioSession,
   setIOSAudioSessionType,
 } from '@/lib/grokIOSAudioDiagnostics'
+import { ensureNativeMicrophonePermission } from '@/lib/nativeMicrophone'
+import { publicApiUrl } from '@/lib/publicOrigins'
 
 const IS_SAFARI = typeof navigator !== 'undefined' && (
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
@@ -495,7 +497,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
           throw new Error('Your session expired. Please sign in again.')
         }
 
-        res = await fetch('/api/voice-chat', {
+        res = await fetch(publicApiUrl('/api/voice-chat'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -1287,6 +1289,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     // primeAudioForIOS and any prior Grok teardown both leave it there. Flip
     // to 'play-and-record' before the request. No-op off iOS.
     setIOSAudioSessionType('play-and-record', 'voice-tutor-before-getUserMedia')
+    await ensureNativeMicrophonePermission()
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
     streamRef.current = stream
     return stream

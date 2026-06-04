@@ -26,6 +26,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { useAuth } from '@/hooks/useAuth'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
+import { publicApiUrl } from '@/lib/publicOrigins'
 import {
   Dialog,
   DialogContent,
@@ -222,7 +223,7 @@ export default function Speak() {
         throw new Error('Your session expired. Please sign in again.')
       }
 
-      const res = await fetch('/api/voice-chat', {
+      const res = await fetch(publicApiUrl('/api/voice-chat'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

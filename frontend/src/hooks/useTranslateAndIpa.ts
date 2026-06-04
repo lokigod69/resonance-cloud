@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase'
+import { publicApiUrl } from '@/lib/publicOrigins'
 import type {
   ImagelessItem,
   TranslateAndIpaRequest,
@@ -15,7 +16,7 @@ export function useTranslateAndIpa() {
     const token = sessionData.session?.access_token
     if (!token) throw new Error('Your session expired. Please sign in again.')
 
-    const res = await fetch('/api/translate-and-ipa', {
+    const res = await fetch(publicApiUrl('/api/translate-and-ipa'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
