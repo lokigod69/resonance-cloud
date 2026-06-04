@@ -775,7 +775,7 @@ export default function DeckView() {
 
       {/* Edit mode action bar */}
       {editMode && isTextDeck && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+        <div className="fixed left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ bottom: 'var(--fixed-bottom-ui-offset)', paddingBottom: 'var(--fixed-bottom-ui-safe-bottom)' }}>
           <div className="flex flex-col gap-3 px-4 py-3 max-w-5xl mx-auto sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <span className="text-sm text-white/70 sm:shrink-0">
               {t('deckview.nSelected', { count: selectedWords.size })}
@@ -832,7 +832,7 @@ export default function DeckView() {
       )}
 
       {editMode && !isTextDeck && selectedWords.size > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+        <div className="fixed left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ bottom: 'var(--fixed-bottom-ui-offset)', paddingBottom: 'var(--fixed-bottom-ui-safe-bottom)' }}>
           <div className="flex flex-col gap-3 px-4 py-3 max-w-5xl mx-auto sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <span className="text-sm text-white/70 sm:shrink-0">
               {t('deckview.nSelected', { count: selectedWords.size })}

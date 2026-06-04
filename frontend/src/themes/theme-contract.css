@@ -315,8 +315,32 @@ body {
   -webkit-backdrop-filter: blur(48px) saturate(1.5);
 }
 
+.app-bottomnav {
+  min-height: calc(var(--mobile-bottom-nav-height) + var(--app-safe-bottom));
+  background: color-mix(in srgb, var(--app-bg) 90%, transparent);
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  box-shadow: 0 -18px 42px color-mix(in srgb, var(--app-bg) 45%, transparent);
+  backdrop-filter: blur(30px) saturate(1.35);
+  -webkit-backdrop-filter: blur(30px) saturate(1.35);
+}
+
+.skin-classic .app-bottomnav {
+  background: color-mix(in srgb, var(--surface-glass-strong) 82%, var(--app-bg));
+}
+
+.skin-glassy .app-bottomnav {
+  background: color-mix(in srgb, var(--nav-bg) 82%, transparent);
+  backdrop-filter: blur(44px) saturate(1.45);
+  -webkit-backdrop-filter: blur(44px) saturate(1.45);
+}
+
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .app-topnav {
+    background-color: color-mix(in srgb, var(--app-bg) 96%, transparent);
+  }
+
+  .app-bottomnav {
     background-color: color-mix(in srgb, var(--app-bg) 96%, transparent);
   }
 }

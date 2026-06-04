@@ -59,10 +59,10 @@ export function createT(locale: Locale) {
 export const translations: Record<Locale, Record<string, string>> = {
   en: {
     // ── Navigation ──
-    'nav.dashboard': 'Dashboard',
+    'nav.dashboard': 'Home',
     'nav.today': 'Today',
     'nav.categories': 'Library',
-    'nav.decks': 'Decks',
+    'nav.decks': 'Cards',
     'nav.generate': 'Generate',
     'nav.study': 'Study',
     'nav.music': 'Music',
@@ -1336,10 +1336,10 @@ export const translations: Record<Locale, Record<string, string>> = {
 
   de: {
     // ── Navigation ──
-    'nav.dashboard': 'Dashboard',
+    'nav.dashboard': 'Home',
     'nav.today': 'Heute',
     'nav.categories': 'Wortschatz',
-    'nav.decks': 'Decks',
+    'nav.decks': 'Karten',
     'nav.generate': 'Erstellen',
     'nav.study': 'Lernen',
     'nav.music': 'Musik',
@@ -2613,10 +2613,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.productLane.cardText.helper': 'Texte + IPA seulement. Pas d\'image IA, pas d\'audio.',
     'generate.productLane.cardText.cost': 'Gratuit',
     // ── Navigation ──
-    'nav.dashboard': 'Dashboard',
+    'nav.dashboard': 'Accueil',
     'nav.today': 'Aujourd\'hui',
     'nav.categories': 'Bibliothèque',
-    'nav.decks': 'Decks',
+    'nav.decks': 'Cartes',
     'nav.generate': 'Créer',
     'nav.study': 'Étudier',
     'nav.music': 'Musique',

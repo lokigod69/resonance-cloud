@@ -136,6 +136,13 @@ export default function DashboardPG() {
           onSelect={setActiveLanguage}
         />
 
+        <Link
+          to="/categories"
+          className="text-sm font-medium text-[var(--text-muted)] underline-offset-4 transition-colors hover:text-[var(--text-primary)] hover:underline"
+        >
+          {t('nav.categories')}
+        </Link>
+
         <section className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
           <SrsActionTile
             label={t('study.queue.review')}

@@ -49,6 +49,11 @@
   --app-safe-bottom: env(safe-area-inset-bottom, 0px);
   --glassy-header-height: 4rem;
   --glassy-header-offset: calc(var(--app-safe-top) + var(--glassy-header-height));
+  --mobile-bottom-nav-height: 4.25rem;
+  --mobile-bottom-nav-space: calc(var(--mobile-bottom-nav-height) + var(--app-safe-bottom));
+  --mobile-bottom-nav-overlay-gap: var(--mobile-bottom-nav-height);
+  --fixed-bottom-ui-offset: var(--mobile-bottom-nav-space);
+  --fixed-bottom-ui-safe-bottom: 0px;
   --deck-footer-space: calc(var(--app-safe-bottom) + 5.5rem);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -93,6 +98,15 @@
   :root {
     --glassy-header-height: 5rem;
     --deck-footer-space: calc(var(--app-safe-bottom) + 6.5rem);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --mobile-bottom-nav-space: 0px;
+    --mobile-bottom-nav-overlay-gap: 0px;
+    --fixed-bottom-ui-offset: 0px;
+    --fixed-bottom-ui-safe-bottom: var(--app-safe-bottom);
   }
 }
 

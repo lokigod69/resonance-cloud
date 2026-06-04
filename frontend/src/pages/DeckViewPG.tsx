@@ -1172,7 +1172,7 @@ export default function DeckViewPG() {
           editMode=false → 3 buttons (Study/Add/Edit|Delete) → 3-col grid */}
       <div className={editMode
         ? 'flex justify-center pt-8'
-        : 'fixed inset-x-6 bottom-[calc(var(--app-safe-bottom)+1rem)] z-30 grid max-w-xl grid-cols-3 gap-2 mx-auto sm:bottom-[calc(var(--app-safe-bottom)+2rem)] sm:gap-3'
+        : 'fixed inset-x-6 bottom-[calc(var(--fixed-bottom-ui-offset)+1rem)] z-30 grid max-w-xl grid-cols-3 gap-2 mx-auto md:bottom-[calc(var(--app-safe-bottom)+2rem)] md:gap-3'
       }>
         {!editMode && (
           <>
@@ -1231,7 +1231,7 @@ export default function DeckViewPG() {
 
       {/* Edit mode action bar */}
       {editMode && isTextDeck && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+        <div className="fixed left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ bottom: 'var(--fixed-bottom-ui-offset)', paddingBottom: 'var(--fixed-bottom-ui-safe-bottom)' }}>
           <div className="flex flex-col gap-3 px-4 py-3 max-w-5xl mx-auto sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <span className="text-sm text-white/70 font-display sm:shrink-0">
               {t('deckview.nSelected', { count: selectedWords.size })}
@@ -1277,7 +1277,7 @@ export default function DeckViewPG() {
       )}
 
       {editMode && !isTextDeck && selectedWords.size > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+        <div className="fixed left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ bottom: 'var(--fixed-bottom-ui-offset)', paddingBottom: 'var(--fixed-bottom-ui-safe-bottom)' }}>
           <div className="flex flex-col gap-3 px-4 py-3 max-w-5xl mx-auto sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <span className="text-sm text-white/70 font-display sm:shrink-0">
               {t('deckview.nSelected', { count: selectedWords.size })}

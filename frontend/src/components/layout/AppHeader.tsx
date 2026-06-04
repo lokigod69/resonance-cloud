@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
@@ -12,17 +11,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
 import {
-  Music,
-  LayoutDashboard,
-  CalendarDays,
-  Sparkles,
-  BookOpen,
   Coins,
-  Menu,
   ListOrdered,
-  Library,
   Languages,
   Users,
   FileText,
@@ -33,6 +24,8 @@ import {
 } from 'lucide-react'
 import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
+import { MobileBottomNav } from './MobileBottomNav'
+import { getPrimaryNavItems, isPrimaryNavItemActive } from './primaryNav'
 
 const adminNav = [
   { to: '/admin/content', label: 'Content', icon: FileText },
@@ -53,18 +46,7 @@ export function AppHeader() {
   const location = useLocation()
   const isAdmin = profile?.role === 'admin'
   const { setProfileOpen, setRedeemOpen } = useDialogs()
-  const [mobileOpen, setMobileOpen] = useState(false)
-
-  const mainNav = [
-    { to: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
-    { to: '/today', label: t('nav.today'), icon: CalendarDays },
-    { to: '/categories', label: t('nav.categories'), icon: ListOrdered },
-    { to: '/decks', label: t('nav.decks'), icon: Library },
-    { to: '/generate', label: t('nav.generate'), icon: Sparkles },
-    { to: '/study', label: t('nav.study'), icon: BookOpen },
-    { to: '/music', label: t('nav.music'), icon: Music },
-    { to: '/speak', label: t('nav.speak'), icon: Mic },
-  ]
+  const mainNav = getPrimaryNavItems(t)
 
   const displayName = profile?.display_name || user?.email?.split('@')[0] || 'User'
   const initials = displayName
@@ -75,86 +57,28 @@ export function AppHeader() {
     .slice(0, 2)
 
   return (
-    <header className="app-topnav fixed top-0 left-0 right-0 min-h-[var(--glassy-header-offset)] flex items-center px-4 md:px-6 py-2 gap-2 z-50 !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
-      {/* Mobile hamburger */}
-      <div className="md:hidden">
-        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="h-11 w-11 shrink-0">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="w-60 p-0">
-            <SheetTitle className="sr-only">Navigation</SheetTitle>
-            <div className="p-4 flex items-center gap-2 border-b border-border">
-              <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5" />
-            </div>
-            <nav className="p-2 space-y-1">
-              {mainNav.map(({ to, label, icon: Icon }) => (
-                <Link
-                  key={to}
-                  to={to}
-                  onClick={() => setMobileOpen(false)}
-                  className={cn(
-                    'flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors',
-                    location.pathname === to || location.pathname.startsWith(to + '/')
-                      ? 'theme-chip-active'
-                      : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-                  )}
-                >
-                  <Icon className="h-4 w-4" />
-                  {label}
-                </Link>
-              ))}
-              {isAdmin && (
-                <>
-                  <div className="my-2 border-t border-border" />
-                  <p className="px-3 py-1 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                    Admin
-                  </p>
-                  {adminNav.map(({ to, label, icon: Icon }) => (
-                    <Link
-                      key={to}
-                      to={to}
-                      onClick={() => setMobileOpen(false)}
-                      className={cn(
-                        'flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors',
-                        location.pathname === to || location.pathname.startsWith(to + '/')
-                          ? 'theme-chip-active'
-                          : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-                      )}
-                    >
-                      <Icon className="h-4 w-4" />
-                      {label}
-                    </Link>
-                  ))}
-                </>
-              )}
-            </nav>
-          </SheetContent>
-        </Sheet>
-      </div>
-
-      {/* Logo */}
-      <Link to="/dashboard" className="flex items-center gap-2 shrink-0" aria-label="Lingwave dashboard">
-        <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5 sm:h-6" />
-      </Link>
+    <>
+      <header className="app-topnav fixed top-0 left-0 right-0 min-h-[var(--glassy-header-offset)] flex items-center px-4 md:px-6 py-2 gap-2 z-50 !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
+        {/* Logo */}
+        <Link to="/dashboard" className="flex items-center gap-2 shrink-0" aria-label="Lingwave dashboard">
+          <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5 sm:h-6" />
+        </Link>
 
       {/* Desktop nav — center */}
       <nav className="hidden md:flex items-center gap-1 mx-auto">
-        {mainNav.map(({ to, label, icon: Icon }) => (
+        {mainNav.map((item) => (
           <Link
-            key={to}
-            to={to}
+            key={item.to}
+            to={item.to}
             className={cn(
               'flex min-w-[60px] flex-col items-center gap-0.5 px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors lg:min-w-[68px] lg:px-4',
-              location.pathname === to || location.pathname.startsWith(to + '/')
+              isPrimaryNavItemActive(location.pathname, item)
                 ? 'theme-chip-active'
                 : 'text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground'
             )}
           >
-            <Icon className="h-5 w-5" />
-            {label}
+            <item.icon className="h-5 w-5" />
+            {item.label}
           </Link>
         ))}
 
@@ -216,7 +140,8 @@ export function AppHeader() {
           <span className="hidden sm:inline text-sm">{displayName}</span>
         </Button>
       </div>
-
-    </header>
+      </header>
+      <MobileBottomNav />
+    </>
   )
 }

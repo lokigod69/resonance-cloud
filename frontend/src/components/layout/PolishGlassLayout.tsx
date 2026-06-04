@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Coins, User, Shield, LayoutDashboard, CalendarDays, Library, Sparkles, BookOpen, Music, Mic, ListOrdered } from 'lucide-react'
+import { Coins, Shield, User } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
+import { MobileBottomNav } from './MobileBottomNav'
+import { getPrimaryNavItems, isPrimaryNavItemActive } from './primaryNav'
 
 export default function PolishGlassLayout() {
   const location = useLocation()
@@ -14,26 +14,9 @@ export default function PolishGlassLayout() {
   const avatarUrl = useProfileAvatarUrl(profile?.avatar_path, profile?.avatar_updated_at)
   const { t } = useTranslation()
   const { setProfileOpen, setRedeemOpen } = useDialogs()
-  const [mobileOpen, setMobileOpen] = useState(false)
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- route changes should synchronously close the existing mobile menu state
-    setMobileOpen(false)
-  }, [location.pathname])
 
   const isAdmin = profile?.role === 'admin'
-
-  const navItems = [
-    { label: t('nav.dashboard'), path: '/dashboard', icon: LayoutDashboard },
-    { label: t('nav.today'), path: '/today', icon: CalendarDays },
-    { label: t('nav.categories'), path: '/categories', icon: ListOrdered },
-    { label: t('nav.decks'), path: '/decks', icon: Library },
-    { label: t('nav.generate'), path: '/generate', icon: Sparkles },
-    { label: t('nav.study'), path: '/study', icon: BookOpen },
-    { label: t('nav.music'), path: '/music', icon: Music },
-    { label: t('nav.speak'), path: '/speak', icon: Mic },
-  ]
+  const navItems = getPrimaryNavItems(t)
 
   const isActive = (path: string) =>
     location.pathname === path || location.pathname.startsWith(path + '/')
@@ -51,18 +34,10 @@ export default function PolishGlassLayout() {
 
       {/* Top Navigation */}
       <nav className="app-topnav fixed top-0 left-0 w-full min-h-[var(--glassy-header-offset)] px-4 sm:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 flex items-center z-50 pointer-events-auto !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMobileOpen((o) => !o)}
-          className="sm:hidden h-11 w-11 flex items-center justify-center rounded-lg hover:bg-[var(--accent-soft)] transition-colors text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-
         {/* Mobile credits — visible only on mobile */}
         <button
           onClick={() => setRedeemOpen(true)}
-          className="flex sm:hidden min-h-11 items-center gap-1 text-xs text-[var(--text-muted)] ml-auto mr-2 px-2 hover:text-[var(--accent)] transition-colors"
+          className="flex md:hidden min-h-11 items-center gap-1 text-xs text-[var(--text-muted)] ml-auto mr-2 px-2 hover:text-[var(--accent)] transition-colors"
         >
           <Coins className="w-3.5 h-3.5" />
           <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
@@ -71,7 +46,7 @@ export default function PolishGlassLayout() {
         {/* Mobile profile button — visible only on mobile */}
         <button
           onClick={() => setProfileOpen(true)}
-          className="flex sm:hidden h-11 w-11 items-center justify-center rounded-full hover:bg-[var(--accent-soft)] transition-colors ml-1"
+          className="flex md:hidden h-11 w-11 items-center justify-center rounded-full hover:bg-[var(--accent-soft)] transition-colors ml-1"
           aria-label="Settings"
         >
           {avatarUrl ? (
@@ -93,13 +68,13 @@ export default function PolishGlassLayout() {
         </button>
 
         {/* Desktop centered nav with icons */}
-        <div className="hidden sm:flex items-center gap-1 mx-auto">
+        <div className="hidden md:flex items-center gap-1 mx-auto">
           {navItems.map((item) => (
             <Link
-              key={item.path}
-              to={item.path}
+              key={item.to}
+              to={item.to}
               className={`flex min-w-[58px] flex-col items-center gap-0.5 px-2.5 py-1.5 rounded-lg text-xs font-display font-medium transition-all cursor-pointer lg:px-4 ${
-                isActive(item.path)
+                isPrimaryNavItemActive(location.pathname, item)
                   ? 'theme-chip-active'
                   : 'text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)]'
               }`}
@@ -124,7 +99,7 @@ export default function PolishGlassLayout() {
         </div>
 
         {/* Right side: credits + profile */}
-        <div className="hidden sm:flex items-center gap-2 shrink-0">
+        <div className="hidden md:flex items-center gap-2 shrink-0">
           <button
             onClick={() => setRedeemOpen(true)}
             className="theme-chip flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
@@ -157,51 +132,10 @@ export default function PolishGlassLayout() {
         </div>
       </nav>
 
-      {/* Mobile menu overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="app-topnav fixed top-[var(--glassy-header-offset)] left-0 w-full z-40 sm:hidden"
-          >
-            <div className="flex flex-col p-4 gap-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`w-full text-left px-4 py-3 rounded-xl font-display font-medium transition-all flex items-center gap-2 ${
-                    isActive(item.path)
-                      ? 'theme-chip-active'
-                      : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)]'
-                  }`}
-                >
-                  <item.icon className="h-4 w-4" />
-                  {item.label}
-                </Link>
-              ))}
-              {isAdmin && (
-                <Link
-                  to="/admin/content"
-                  className={`w-full text-left px-4 py-3 rounded-xl font-display font-medium transition-all flex items-center gap-2 ${
-                    isActive('/admin')
-                      ? 'theme-chip-active'
-                      : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)]'
-                  }`}
-                >
-                  <Shield className="h-4 w-4" />
-                  Admin
-                </Link>
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MobileBottomNav />
 
       {/* Page content */}
-      <main className={`w-full pt-[var(--glassy-header-offset)] pb-20 relative z-10 ${
+      <main className={`w-full pt-[var(--glassy-header-offset)] pb-[calc(5rem+var(--mobile-bottom-nav-space))] relative z-10 ${
         isSpeakRoute ? 'min-h-0' : 'min-h-dvh'
       }`}>
         <Outlet />
