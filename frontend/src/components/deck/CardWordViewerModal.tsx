@@ -74,7 +74,7 @@ export default function CardWordViewerModal({
       try {
         await navigator.share({
           title: `${word.word}${word.translation ? ` - ${word.translation}` : ''}`,
-          text: word.mnemonic || `Learn "${word.word}" with Resonance`,
+          text: word.mnemonic || `Learn "${word.word}" with Lingwave`,
           url,
         })
       } catch (err) {

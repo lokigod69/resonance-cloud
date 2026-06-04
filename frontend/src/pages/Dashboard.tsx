@@ -84,7 +84,7 @@ export default function Dashboard() {
   if (!user) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 text-center">
-        <h1 className="text-2xl font-semibold">Welcome to Resonance</h1>
+        <h1 className="text-2xl font-semibold">Welcome to Lingwave</h1>
         <p className="max-w-md text-sm text-muted-foreground">
           Sign in to view your SRS dashboard and continue studying.
         </p>

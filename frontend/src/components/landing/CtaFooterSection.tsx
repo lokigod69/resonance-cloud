@@ -41,7 +41,7 @@ export default function CtaFooterSection() {
 
       {/* Footer */}
       <footer className="border-t border-white/5 pt-8 text-sm text-muted-foreground space-y-1">
-        <p>Resonance · resonanz.pro</p>
+        <p>Lingwave · resonanz.pro</p>
         <p>{t('landing.footer')}</p>
       </footer>
     </section>

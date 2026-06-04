@@ -175,7 +175,7 @@ export default function Settings() {
         <div>
           <h2 className="text-lg font-semibold">Theme</h2>
           <p className="text-sm text-muted-foreground">
-            Choose how Resonance looks and feels.
+            Choose how Lingwave looks and feels.
           </p>
         </div>
         <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">

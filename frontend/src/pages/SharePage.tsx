@@ -55,7 +55,7 @@ export default function SharePage() {
         <p className="text-white text-xl font-bold mb-2">Video not found</p>
         <p className="text-gray-500 mb-6">This share link may have expired or been removed.</p>
         <Link to="/" className="text-teal-400 hover:text-teal-300 underline text-sm">
-          Go to Resonance
+          Go to Lingwave
         </Link>
       </div>
     )

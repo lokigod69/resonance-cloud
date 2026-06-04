@@ -38,11 +38,11 @@ function getTrackMediaTitle(track: MusicTrack): string {
 function getTrackMediaArtist(track: MusicTrack): string {
   return compactMusicCaptionSegment(resolveTrackMusicCaption(track))
     ?? track.translation
-    ?? 'Resonance'
+    ?? 'Lingwave'
 }
 
 function getTrackMediaAlbum(track: MusicTrack): string {
-  return track.deckName || 'Resonance'
+  return track.deckName || 'Lingwave'
 }
 
 function getTrackMediaArtwork(track: MusicTrack): MediaImage[] {

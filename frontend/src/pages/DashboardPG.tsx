@@ -87,7 +87,7 @@ export default function DashboardPG() {
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6 px-6 text-center">
         <div className="pg-glass flex max-w-md flex-col items-center gap-4 rounded-2xl p-8">
           <LogIn className="h-10 w-10 text-[var(--pg-accent-teal)]" />
-          <h1 className="font-display text-2xl font-semibold">Welcome to Resonance</h1>
+          <h1 className="font-display text-2xl font-semibold">Welcome to Lingwave</h1>
           <p className="text-sm text-[var(--pg-text-dim)]">
             Sign in to view your SRS dashboard and continue studying.
           </p>

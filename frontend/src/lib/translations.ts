@@ -165,7 +165,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'cardGenerationProgress.ariaLabel': 'Card generation progress',
 
     // ── Onboarding ──
-    'onboarding.welcomeTitle': 'Welcome to Resonance',
+    'onboarding.welcomeTitle': 'Welcome to Lingwave',
     'onboarding.welcomeSubtitle': 'Let\'s get you set up',
     'onboarding.languageTitle': 'What language do you speak?',
     'onboarding.languageDescription': 'This helps us create better translations for you',
@@ -1442,10 +1442,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     'cardGenerationProgress.ariaLabel': 'Fortschritt der Kartenerstellung',
 
     // ── Onboarding ──
-    'onboarding.welcomeTitle': 'Willkommen bei Resonance',
+    'onboarding.welcomeTitle': 'Willkommen bei Lingwave',
     'onboarding.welcomeSubtitle': 'Lass uns dein Profil einrichten',
     'onboarding.languageTitle': 'Was ist deine Muttersprache?',
-    'onboarding.languageDescription': 'Damit passen wir Resonance besser an dich an',
+    'onboarding.languageDescription': 'Damit passen wir Lingwave besser an dich an',
     'onboarding.languagePlaceholder': 'Sprache wählen',
     'onboarding.saving': 'Wird gespeichert...',
     'onboarding.continue': 'Weiter',
@@ -2719,7 +2719,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'cardGenerationProgress.ariaLabel': 'Progression de la création des cartes',
 
     // ── Onboarding ──
-    'onboarding.welcomeTitle': 'Bienvenue sur Resonance',
+    'onboarding.welcomeTitle': 'Bienvenue sur Lingwave',
     'onboarding.welcomeSubtitle': 'Configurons ton profil',
     'onboarding.languageTitle': 'Quelle est ta langue maternelle ?',
     'onboarding.languageDescription': 'Cela nous aide à mieux adapter les traductions',

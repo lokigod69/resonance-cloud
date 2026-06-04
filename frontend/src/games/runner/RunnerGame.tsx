@@ -68,7 +68,7 @@ export default function RunnerGame() {
 
   useEffect(() => {
     const previousTitle = document.title
-    document.title = 'Resonance - Runner'
+    document.title = 'Lingwave - Runner'
     return () => {
       document.title = previousTitle
     }

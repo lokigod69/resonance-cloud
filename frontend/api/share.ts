@@ -45,7 +45,7 @@ export async function GET(req: Request): Promise<Response> {
       : `${word.word}${word.translation ? ` — ${word.translation}` : ''}`
 
     const description = word.mnemonic
-      || `Learn "${word.word}" in ${word.target_language} with Resonance`
+      || `Learn "${word.word}" in ${word.target_language} with Lingwave`
 
     const thumbnail = word.thumbnail_url || ''
     const pageUrl = `${url.origin}/v/${shareId}`
@@ -61,14 +61,14 @@ export async function GET(req: Request): Promise<Response> {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${escapeHtml(title)} | Resonance</title>
+  <title>${escapeHtml(title)} | Lingwave</title>
 
   <!-- Open Graph -->
   <meta property="og:type" content="video.other" />
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
   <meta property="og:url" content="${escapeHtml(pageUrl)}" />
-  <meta property="og:site_name" content="Resonance" />
+  <meta property="og:site_name" content="Lingwave" />
   ${thumbnail ? `<meta property="og:image" content="${escapeHtml(thumbnail)}" />
   <meta property="og:image:width" content="1280" />
   <meta property="og:image:height" content="720" />` : ''}
