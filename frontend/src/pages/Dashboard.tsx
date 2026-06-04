@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { MasteryDonut } from '@/components/dashboard/MasteryDonut'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { Button } from '@/components/ui/button'
@@ -77,7 +76,6 @@ export default function Dashboard() {
 
   const wordStates = useWordStates(activeLanguage ?? '')
   const counts = wordStates.counts
-  const totalWords = wordStates.data.length
   const reviewDue = counts.reviewingDue + counts.masteredDue
   const tilesDisabled = !activeLanguage || wordStates.loading
 
@@ -109,16 +107,10 @@ export default function Dashboard() {
 
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
-      <div className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-6 py-6 text-center">
+      <div className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-5 py-6 text-center sm:gap-6">
         <h1 className="welcome-hero font-display text-3xl font-bold sm:text-5xl md:text-6xl">
           {greeting}
         </h1>
-
-        <MasteryDonut
-          mastered={counts.mastered}
-          total={totalWords}
-          loading={dashboardLoading || wordStates.loading}
-        />
 
         <LanguageCluster
           languages={availableLanguages}
@@ -166,7 +158,7 @@ export default function Dashboard() {
           />
         </div>
 
-        <div className="mastered-circle">
+        <div className="mastered-circle" aria-live="polite">
           {counts.mastered > 0 ? (
             <>
               <button
