@@ -599,6 +599,13 @@
   z-index: 2;
 }
 
+.today-path-gridLesson[data-selected="true"] {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
 .today-path-railLesson {
   align-items: center;
   aspect-ratio: auto;
@@ -643,6 +650,10 @@
   width: 100%;
 }
 
+.today-path-card[data-selected="true"] {
+  opacity: 1;
+}
+
 .today-path-railLesson .today-path-cardNumberImage,
 .today-path-railLesson .today-path-cardCompletionImage {
   height: 2.28rem;
@@ -652,6 +663,20 @@
 .today-path-gridLesson .today-path-cardNumberImage {
   height: clamp(2.25rem, 5vw, 3.1rem);
   width: clamp(2.25rem, 5vw, 3.1rem);
+}
+
+.today-path-card[data-selected="true"] .today-path-cardNumberImage {
+  filter:
+    brightness(1.18)
+    saturate(1.16)
+    drop-shadow(0 0 0.35rem color-mix(in srgb, var(--today-accent-strong) 74%, transparent))
+    drop-shadow(0 0 0.9rem color-mix(in srgb, var(--today-glow) 72%, transparent));
+}
+
+.today-path-card[data-selected="true"] .today-path-cardCompletionImage {
+  filter:
+    brightness(1.12)
+    drop-shadow(0 0 0.5rem color-mix(in srgb, var(--today-glow) 68%, transparent));
 }
 
 .today-path-railCopy {
