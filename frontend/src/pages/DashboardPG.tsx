@@ -118,7 +118,10 @@ export default function DashboardPG() {
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
       <div className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-5 py-6 text-center sm:gap-6">
-        <h1 className="welcome-hero font-display text-3xl font-bold sm:text-5xl md:text-6xl">
+        <h1
+          className="welcome-hero font-display text-3xl font-bold sm:text-5xl md:text-6xl"
+          data-text={greeting}
+        >
           {greeting}
         </h1>
 
