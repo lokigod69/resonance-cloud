@@ -292,41 +292,42 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
   }
 
   return (
-    <div className="today-scene-step grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.8fr)] lg:items-center">
-      <LessonMediaFrame
-        media={lesson.lessonMedia}
-        authoredBaseLanguage={lesson.baseLanguage}
-        preferredBaseLanguage={preferredBaseLanguage}
-      />
-      <div className="today-scene-copy grid gap-4">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
+    <div className="today-scene-step">
+      <div className="today-scene-phraseCard today-scene-phraseCard--hero rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)]">
+        <div className="today-scene-phraseTop">
+          <p className="today-scene-label">
+            {t('today.corePhrase')}
+          </p>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={handleListen}
+          >
+            <Volume2 className="h-4 w-4" />
+            {t('today.listen')}
+          </Button>
+        </div>
+        <p className="today-scene-targetText">
+          {lesson.corePhrase.targetText}
+        </p>
+        <p className="today-scene-baseText">
+          {resolvedCoreBase}
+        </p>
+      </div>
+      <div className="today-scene-mediaContext">
+        <LessonMediaFrame
+          className="today-scene-mediaFrame"
+          media={lesson.lessonMedia}
+          authoredBaseLanguage={lesson.baseLanguage}
+          preferredBaseLanguage={preferredBaseLanguage}
+        />
+        <div className="today-scene-situationStrip rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_54%,transparent)]">
+          <p className="today-scene-label">
             {t('today.scene.situation')}
           </p>
-          <p className="mt-2 text-lg leading-7 text-[var(--text-primary)]">
+          <p className="today-scene-situationText">
             {lesson.situation.de}
-          </p>
-        </div>
-        <div className="today-scene-phraseCard rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)] p-4">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
-              {t('today.corePhrase')}
-            </p>
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={handleListen}
-            >
-              <Volume2 className="h-4 w-4" />
-              {t('today.listen')}
-            </Button>
-          </div>
-          <p className="mt-3 break-words text-3xl font-semibold leading-tight text-[var(--text-primary)]">
-            {lesson.corePhrase.targetText}
-          </p>
-          <p className="mt-3 break-words text-base leading-7 text-[var(--text-secondary)]">
-            {resolvedCoreBase}
           </p>
         </div>
       </div>
