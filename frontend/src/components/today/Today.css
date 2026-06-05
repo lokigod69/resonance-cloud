@@ -1624,6 +1624,15 @@
   padding-inline: 0.5rem;
 }
 
+.today-speech-successIcon {
+  color: #34d399;
+  filter: drop-shadow(0 0 18px color-mix(in srgb, #34d399 54%, transparent));
+  height: clamp(3.2rem, 8vw, 4.6rem);
+  margin-bottom: 0.2rem;
+  stroke-width: 1.9;
+  width: clamp(3.2rem, 8vw, 4.6rem);
+}
+
 .today-speech-resultLabel {
   color: var(--today-accent-strong);
   font-size: 0.82rem;
@@ -2149,6 +2158,14 @@
   height: 3.65rem;
   object-fit: contain;
   width: 3.65rem;
+}
+
+.today-completion-corePhrase {
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--today-glow) 22%, transparent), transparent 64%),
+    color-mix(in srgb, var(--surface-1) 62%, transparent) !important;
+  border-color: color-mix(in srgb, var(--today-accent-strong) 38%, var(--today-border));
+  max-width: 32rem;
 }
 
 .today-completion-vibeBadgeCheck {

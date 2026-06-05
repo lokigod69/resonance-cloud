@@ -301,6 +301,8 @@ const sessionTaskCardCss = sliceBetween(todayCssSource, '.today-session-taskCard
 const speakRecordingButtonSource = sliceBetween(guidedSpeechPromptSource, "className={cn('today-speech-primaryAction'", '</button>')
 const speechSecondaryActionsSource = sliceBetween(guidedSpeechPromptSource, '<div className="today-speech-secondaryActions', '</div>')
 const speechMicAssetCss = sliceBetween(todayCssSource, '.today-speech-micAsset {', '}')
+const speechSuccessIconCss = sliceBetween(todayCssSource, '.today-speech-successIcon {', '}')
+const completionCorePhraseCss = sliceBetween(todayCssSource, '.today-completion-corePhrase {', '}')
 
 assert('overview lesson cards do not render trophy word labels', !containsAny(todayPathOverviewSource, ['today.path.trophyWord', 'lesson.trophyWord', '<Trophy']))
 assert('overview lesson cards do not render selected-vibe phrase previews', !todayPathOverviewSource.includes('lesson.corePhrase.targetText'))
@@ -414,6 +416,8 @@ assert(
 assert('speech prompt uses the generated transparent microphone asset instead of CSS waveform lines', guidedSpeechPromptSource.includes('TODAY_SPEECH_MIC_ASSET') && guidedSpeechPromptSource.includes('today-speech-micAsset') && assetHasBytes(todaySpeechMicAsset, 100000) && !guidedSpeechPromptSource.includes('today-speech-waveform') && !todayCssSource.includes('repeating-linear-gradient'), { guidedSpeechPromptSource, speechMicAssetCss })
 assert('speech result replaces the microphone stage and offers retry in place', guidedSpeechPromptSource.includes('today-speech-resultStage') && guidedSpeechPromptSource.includes('handleTryAgain') && guidedSpeechPromptSource.includes('speech.reset()') && guidedSpeechPromptSource.includes("t('speak.tapRetry')") && !guidedSpeechPromptSource.includes("t('today.speak.expected'"), guidedSpeechPromptSource)
 assert('speech hint is a one-way inline reveal that does not add a second row', guidedSpeechPromptSource.includes('setHintVisible(true)') && !guidedSpeechPromptSource.includes('setHintVisible((current) => !current)') && speechSecondaryActionsSource.includes('today-speech-hint') && !guidedSpeechPromptSource.includes("t('today.speak.hideHint')"), speechSecondaryActionsSource)
+assert('speech success shows a green check and does not repeat the heard line', guidedSpeechPromptSource.includes('CheckCircle2') && guidedSpeechPromptSource.includes('today-speech-successIcon') && guidedSpeechPromptSource.includes("status === 'passed' &&") && guidedSpeechPromptSource.includes("status !== 'passed' &&") && speechSuccessIconCss.includes('#34d399'), { guidedSpeechPromptSource, speechSuccessIconCss })
+assert('speech success hides hints after a correct attempt', guidedSpeechPromptSource.includes("const shouldShowHint = showHintButton && status !== 'passed'") && speechSecondaryActionsSource.includes('shouldShowHint && !hintVisible') && speechSecondaryActionsSource.includes('shouldShowHint && hintVisible'), speechSecondaryActionsSource)
 assert('lesson session primary action is a full-width bottom bar button', todaySessionSource.includes('today-session-footerButton') && todayCssSource.includes('.today-session-footerButton'), todaySessionSource)
 
 console.log('\n[source-level atmosphere tokens]')
@@ -461,6 +465,7 @@ assert('Speak recording state turns the microphone control red instead of using 
 assert('Speak active recording state avoids crossed-out mic icon', !guidedSpeechPromptSource.includes('MicOff'), guidedSpeechPromptSource)
 assert('completion can open the next lesson as primary action', completeStepSource.includes('onOpenNextLesson') && completeStepSource.includes("t('today.nextLesson')"))
 assert('trophy completion avoids long why-it-matters copy', !completeStepSource.includes('whyThisWord'))
+assert('completion primes the learner with the completed core sentence and translation', completeStepSource.includes('today-completion-corePhrase') && completeStepSource.includes('lesson.corePhrase.targetText') && completeStepSource.includes('resolveGuidedBaseContent(lesson.corePhrase.baseText') && completionCorePhraseCss.includes('max-width'), { completeStepSource, completionCorePhraseCss })
 assert('scene placeholder uses lesson media caption as primary text', todayHeroSource.includes('today.media.placeholderLabel') && !todayHeroSource.includes("t('today.media.placeholderTitle')") && containsAny(todayHeroSource, ['{media.caption}', 'media.caption']), todayHeroSource)
 assert('completion screen renders selected vibe emblem badge without success check overlay', completeStepSource.includes('today-completion-vibeBadge') && completeStepSource.includes('guidedVibes[lesson.vibeId].emblem?.url') && !completeStepSource.includes('<CheckCircle2'), completeStepSource)
 

@@ -1,4 +1,4 @@
-import { AlertCircle, Eye, Loader2, Mic, Square } from 'lucide-react'
+import { AlertCircle, CheckCircle2, Eye, Loader2, Mic, Square } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
@@ -159,6 +159,7 @@ export function GuidedSpeechPrompt({
   const expectedAnswer = displayAnswer ?? targetAnswer
   const resultVisible = Boolean(feedbackVisible && speech.transcript)
   const canRetry = status === 'failed' || status === 'close' || status === 'error'
+  const shouldShowHint = showHintButton && status !== 'passed'
   const transcriptFeedbackLabel = status === 'passed'
     ? t('today.speak.passed')
     : status === 'close'
@@ -188,15 +189,20 @@ export function GuidedSpeechPrompt({
       <div className="today-speech-orbStage" data-result-visible={resultVisible}>
         {resultVisible ? (
           <div className="today-speech-resultStage" aria-live="polite">
+            {status === 'passed' && (
+              <CheckCircle2 className="today-speech-successIcon" aria-hidden="true" />
+            )}
             <p className="today-speech-resultLabel">
               {transcriptFeedbackLabel}
             </p>
             <p className="today-speech-resultPhrase">
               {expectedAnswer}
             </p>
-            <p className="today-speech-heardLine">
-              {t('today.speak.heardLabel')}: &quot;{speech.transcript}&quot;
-            </p>
+            {status !== 'passed' && (
+              <p className="today-speech-heardLine">
+                {t('today.speak.heardLabel')}: &quot;{speech.transcript}&quot;
+              </p>
+            )}
             {canRetry && (
               <Button type="button" variant="outline" className="today-speech-retryButton" onClick={handleTryAgain}>
                 {t('speak.tapRetry')}
@@ -266,13 +272,13 @@ export function GuidedSpeechPrompt({
       </div>
 
       <div className="today-speech-secondaryActions flex flex-wrap items-center justify-center gap-3">
-        {showHintButton && !hintVisible && (
+        {shouldShowHint && !hintVisible && (
           <Button type="button" variant="outline" onClick={() => setHintVisible(true)}>
             <Eye className="h-4 w-4" />
             {hintButtonLabel}
           </Button>
         )}
-        {showHintButton && hintVisible && (
+        {shouldShowHint && hintVisible && (
           <div className="today-speech-hint inline-flex w-fit max-w-full rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] px-3 py-2 text-sm font-semibold text-[var(--text-primary)]">
             {expectedAnswer}
           </div>
