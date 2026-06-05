@@ -323,6 +323,7 @@ assert('recommended panel label is next lesson, not internal recommendation copy
 assert('path overview prioritizes an explicitly selected lesson over the recommendation in the featured card', todayPathOverviewSource.includes('const pathLesson = overview.selectedLesson ?? overview.recommendedLesson'), todayPathOverviewSource)
 assert('Today page separates lesson selection from session start and can launch a targeted lesson', containsAny(todayPageSource, ['const handleSelectLesson', 'setSelectedLessonId(lessonId)']) && todayPageSource.includes('const handleStartSelectedLesson = (lessonId?: string)') && todayPageSource.includes('setSessionActive(true)'))
 assert('Today page scrolls to the lesson top when a session starts', todayPageSource.includes('scrollTodayToTop') && todayPageSource.includes('window.scrollTo({ top: 0') && sliceBetween(todayPageSource, 'const handleStartSelectedLesson', 'const handleOpenNextLesson').includes('scrollTodayToTop()'), todayPageSource)
+assert('Today beta banner omits unrelated subscription checkout copy', todayPageSource.includes('today-betaBanner') && !todayPageSource.includes('Subscription checkout is in private testing'), todayPageSource)
 assert('path overview receives a select handler and targeted start handler', todayPathOverviewSource.includes('onSelectLesson') && todayPathOverviewSource.includes('onStartLesson: (lessonId?: string) => void'))
 const englishPathIdsInOrder = getGuidedTodayPathOptions()
   .filter((path) => path.targetLanguage === 'English')
