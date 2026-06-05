@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { AlertCircle, LogIn, RefreshCw } from 'lucide-react'
+import { AlertCircle, Library, LogIn, RefreshCw } from 'lucide-react'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { Button } from '@/components/ui/button'
@@ -9,6 +9,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
+import { staticLibraryRouteSuffix } from '@/lib/staticLibraryLanguage'
 
 type DeckSummary = {
   id: string
@@ -114,14 +115,12 @@ export default function DashboardPG() {
   }
 
   const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
+  const dashboardLibraryHref = activeLanguage ? `/categories${staticLibraryRouteSuffix(activeLanguage)}` : '/categories'
 
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
       <div className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-5 py-6 text-center sm:gap-6">
-        <h1
-          className="welcome-hero font-display text-3xl font-bold sm:text-5xl md:text-6xl"
-          data-text={greeting}
-        >
+        <h1 className="welcome-hero font-display text-3xl font-bold sm:text-5xl md:text-6xl">
           {greeting}
         </h1>
 
@@ -131,11 +130,14 @@ export default function DashboardPG() {
           onSelect={setActiveLanguage}
         />
 
-        <Link
-          to="/categories"
-          className="text-sm font-medium text-[var(--text-muted)] underline-offset-4 transition-colors hover:text-[var(--text-primary)] hover:underline"
-        >
-          {t('nav.categories')}
+        <Link to={dashboardLibraryHref} className="dashboard-library-tile">
+          <Library className="dashboard-library-icon" aria-hidden="true" />
+          <span className="dashboard-library-copy">
+            <span className="dashboard-library-title">{t('nav.categories')}</span>
+            {activeLanguage ? (
+              <span className="dashboard-library-subtitle">{t(`langName.${activeLanguage}`)}</span>
+            ) : null}
+          </span>
         </Link>
 
         <section className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2">

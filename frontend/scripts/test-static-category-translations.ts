@@ -31,7 +31,7 @@ assert.ok(
 )
 
 const expectedLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ceb', 'ko']
-const expectedVisibleLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ko']
+const expectedVisibleLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ceb', 'ko']
 
 assert.deepEqual(
   STATIC_CATEGORY_TRANSLATION_LANGUAGES.map((language) => language.code),
@@ -41,7 +41,7 @@ assert.deepEqual(
 assert.deepEqual(
   STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => language.code),
   expectedVisibleLanguageCodes,
-  'static category vocabulary selector should hide languages that are not ready for public selection',
+  'static category vocabulary selector should expose every language ready for public selection, including Bisaya',
 )
 assert.equal(
   STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => language.code === 'ko')?.status,
@@ -50,8 +50,13 @@ assert.equal(
 )
 assert.equal(
   STATIC_CATEGORY_TRANSLATION_LANGUAGES.find((language) => language.code === 'ceb')?.status,
-  'hidden',
-  'Cebuano should remain stored for review but hidden from the normal selector',
+  'experimental',
+  'Bisaya/Cebuano should be visible but marked experimental',
+)
+assert.match(
+  STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => language.code === 'ceb')?.label ?? '',
+  /Bisaya|Cebuano/i,
+  'Bisaya/Cebuano selector label should make the language recognizable',
 )
 assert.match(
   STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => language.code === 'ko')?.label ?? '',
