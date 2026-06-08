@@ -21,7 +21,7 @@ export function EndConversationScreen({
   const { t } = useTranslation()
 
   return (
-    <div className="speak-chat-shell fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-header-offset)] z-30 flex flex-col">
+    <div className="speak-chat-shell fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-route-top-offset)] z-30 flex flex-col">
       <div className="speak-chatbar shrink-0 border-b">
         <div className="mx-auto flex w-full max-w-5xl items-center gap-2 px-4 py-3">
           <FlagIcon code={targetLanguage} className="w-6 h-auto shrink-0" />

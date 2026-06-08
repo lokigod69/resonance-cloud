@@ -263,7 +263,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
 
   return (
     <div
-      className="fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-header-offset)] z-40 flex flex-col bg-gray-950/95 backdrop-blur-xl transition-transform duration-300"
+      className="fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-route-top-offset)] z-40 flex flex-col bg-gray-950/95 backdrop-blur-xl transition-transform duration-300"
       style={{ transform: open ? 'translateX(0)' : 'translateX(100%)' }}
     >
       {/* ── Header ── */}

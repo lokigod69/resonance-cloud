@@ -7,7 +7,7 @@ type SrsActionTileProps = {
   count: number
   queue: SrsQueue
   language: string
-  tier?: 'top' | 'bottom'
+  tier?: 'top' | 'bottom' | 'compact'
   accent?: 'cool' | 'warm' | 'gold' | 'neutral'
   disabled?: boolean
 }
@@ -44,17 +44,23 @@ export function SrsActionTile({
   const sizing =
     tier === 'top'
       ? 'min-h-[112px] rounded-2xl px-8 py-5 gap-6'
-      : 'min-h-[84px] rounded-xl px-7 py-4 gap-5'
+      : tier === 'compact'
+        ? 'dashboard-action-tile min-h-[74px] rounded-xl px-4 py-3 gap-3'
+        : 'min-h-[84px] rounded-xl px-7 py-4 gap-5'
 
   // Top tier: colored label (accent). Bottom tier: muted neutral label.
   const labelClass =
     tier === 'top'
       ? 'stat-label-accent text-lg font-semibold uppercase tracking-[0.16em]'
+      : tier === 'compact'
+        ? 'stat-label-accent text-sm font-semibold uppercase tracking-[0.12em]'
       : 'text-xs font-semibold uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--text-primary)_64%,transparent)]'
 
   const countClass =
     tier === 'top'
       ? 'stat-count text-5xl font-semibold leading-none'
+      : tier === 'compact'
+        ? 'stat-count text-2xl font-semibold leading-none'
       : 'stat-count text-3xl font-semibold leading-none'
 
   return (

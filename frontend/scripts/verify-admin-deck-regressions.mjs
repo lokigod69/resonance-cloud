@@ -81,6 +81,8 @@ assert(indexCss.includes('.classic-deck-media'), 'Classic deck CSS must define a
 assert(indexCss.includes('.classic-deck-body'), 'Classic deck CSS must keep title and metadata below the media preview')
 assert(indexCss.includes('--app-safe-top'), 'Global CSS must define a reusable mobile safe-area top token')
 assert(indexCss.includes('--glassy-header-offset'), 'Global CSS must define a Glassy header offset that includes safe-area top')
+assert(indexCss.includes('--glassy-content-top-offset'), 'Global CSS must define a responsive Glassy content top offset')
+assert(indexCss.includes('--glassy-route-top-offset'), 'Global CSS must define a responsive Glassy fixed route top offset')
 assert(indexCss.includes('--app-safe-bottom'), 'Global CSS must define a reusable mobile safe-area bottom token')
 assert(indexCss.includes('.long-copy'), 'Global CSS must expose a reusable long-copy wrapping utility')
 assert(indexCss.includes('overflow-wrap: anywhere'), 'long-copy utility must force no-space mobile wrapping')
@@ -139,9 +141,9 @@ for (const path of ['src/components/layout/AppHeader.tsx', 'src/components/layou
 }
 
 const glassLayout = read('src/components/layout/PolishGlassLayout.tsx')
-assert(glassLayout.includes('pt-[calc(var(--app-safe-top)+0.5rem)]'), 'Glassy top navigation must include safe-area top padding')
-assert(glassLayout.includes('pt-[var(--glassy-header-offset)]'), 'Glassy main content must offset below the safe-area-aware header')
-assert(glassLayout.includes('top-[var(--glassy-header-offset)]'), 'Glassy mobile menu must open below the safe-area-aware header')
+assert(glassLayout.includes('hidden md:flex'), 'Glassy top navigation must be hidden on mobile')
+assert(glassLayout.includes('pt-[calc(var(--app-safe-top)+0.5rem)]'), 'Glassy desktop top navigation must include safe-area top padding')
+assert(glassLayout.includes('pt-[var(--glassy-content-top-offset)]'), 'Glassy main content must use the responsive content top offset')
 assert(!glassLayout.includes('to="/admin/queue"'), 'Glassy admin entry must not default to Job Queue')
 assert(glassLayout.includes('to="/admin/content"'), 'Glassy admin entry must default to Content')
 
@@ -231,7 +233,7 @@ for (const [name, source] of [['Study', studyClassic], ['StudyPG', studyPg], ['S
 }
 
 const speak = read('src/pages/Speak.tsx')
-assert(speak.includes('top-[var(--glassy-header-offset)]'), 'Speak fixed chat shells must use the safe-area-aware Glassy header offset')
+assert(speak.includes('top-[var(--glassy-route-top-offset)]'), 'Speak fixed chat shells must use the responsive Glassy route top offset')
 assert(speak.includes('pb-[calc(var(--app-safe-bottom)+1.25rem)]'), 'Speak bottom recording bars must reserve bottom safe area')
 assert(speak.includes('long-copy'), 'Speak message bubbles and corrections must wrap long no-space copy')
 

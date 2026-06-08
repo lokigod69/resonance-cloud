@@ -55,13 +55,16 @@ assert(isPrimaryNavItemActive('/deck/example-id', cardsItem), 'Cards tab is acti
 assert(isPrimaryNavItemActive('/decks', cardsItem), 'Cards tab is active for decks route')
 
 const appHeader = readFileSync('src/components/layout/AppHeader.tsx', 'utf8')
+const appLayout = readFileSync('src/components/layout/AppLayout.tsx', 'utf8')
 const polishGlassLayout = readFileSync('src/components/layout/PolishGlassLayout.tsx', 'utf8')
 const mobileBottomNav = readFileSync('src/components/layout/MobileBottomNav.tsx', 'utf8')
 const dashboard = readFileSync('src/pages/Dashboard.tsx', 'utf8')
 const dashboardPg = readFileSync('src/pages/DashboardPG.tsx', 'utf8')
+const indexHtml = readFileSync('index.html', 'utf8')
 
 assertIncludes(appHeader, '<MobileBottomNav />', 'classic layout renders shared mobile bottom nav')
 assertIncludes(polishGlassLayout, '<MobileBottomNav />', 'glassy layout renders shared mobile bottom nav')
+assertIncludes(indexHtml, 'viewport-fit=cover', 'Capacitor/iOS viewport reserves safe-area variables')
 
 for (const headerGlassClass of ['!backdrop-blur-3xl', '!backdrop-saturate-150', '!bg-black/40']) {
   assertIncludes(appHeader, headerGlassClass, `classic header uses ${headerGlassClass}`)
@@ -72,10 +75,15 @@ for (const headerGlassClass of ['!backdrop-blur-3xl', '!backdrop-saturate-150', 
 assertIncludes(mobileBottomNav, 'pb-[var(--app-safe-bottom)]', 'mobile bottom nav preserves safe-area bottom padding')
 assertNotIncludes(appHeader, 'SheetTrigger', 'classic mobile Sheet hamburger is removed')
 assertNotIncludes(polishGlassLayout, 'mobileOpen', 'glassy mobile dropdown state is removed')
-assertIncludes(polishGlassLayout, 'hidden md:flex', 'glassy desktop nav uses md breakpoint')
-assertIncludes(polishGlassLayout, 'flex md:hidden', 'glassy mobile profile/credits use md breakpoint')
+assertIncludes(appHeader, 'hidden md:flex', 'classic top navigation is desktop-only')
+assertIncludes(polishGlassLayout, 'hidden md:flex', 'glassy top navigation is desktop-only')
+assertNotIncludes(polishGlassLayout, 'flex md:hidden', 'glassy mobile profile/credits are not rendered in the global header')
+assertIncludes(appLayout, 'pt-[var(--classic-content-top-offset)]', 'classic main content uses a responsive desktop-only top offset')
+assertIncludes(polishGlassLayout, 'pt-[var(--glassy-content-top-offset)]', 'glassy main content uses a responsive desktop-only top offset')
 
-assertIncludes(dashboard, 'to="/categories"', 'classic Home links to Library')
-assertIncludes(dashboardPg, 'to="/categories"', 'glassy Home links to Library')
+assertIncludes(dashboard, 'HomeAccountStrip', 'classic Home renders the home-only account strip')
+assertIncludes(dashboardPg, 'HomeAccountStrip', 'glassy Home renders the home-only account strip')
+assertIncludes(dashboard, 'dashboardLibraryHref', 'classic Home keeps a language-aware Library link')
+assertIncludes(dashboardPg, 'dashboardLibraryHref', 'glassy Home keeps a language-aware Library link')
 
 process.stdout.write('mobile bottom nav contract checks passed\n')

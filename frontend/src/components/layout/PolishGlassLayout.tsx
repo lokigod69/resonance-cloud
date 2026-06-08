@@ -19,7 +19,7 @@ export default function PolishGlassLayout() {
   const navItems = getPrimaryNavItems(t)
 
   const isActive = (path: string) =>
-    location.pathname === path || location.pathname.startsWith(path + '/')
+    location.pathname === path || location.pathname.startsWith(`${path}/`)
   const isSpeakRoute = location.pathname.startsWith('/speak')
 
   return (
@@ -32,43 +32,8 @@ export default function PolishGlassLayout() {
         <div className="glassy-atmosphere-vignette" />
       </div>
 
-      {/* Top Navigation */}
-      <nav className="app-topnav fixed top-0 left-0 w-full min-h-[var(--glassy-header-offset)] px-4 sm:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 flex items-center z-50 pointer-events-auto !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
-        {/* Mobile credits — visible only on mobile */}
-        <button
-          onClick={() => setRedeemOpen(true)}
-          className="flex md:hidden min-h-11 items-center gap-1 text-xs text-[var(--text-muted)] ml-auto mr-2 px-2 hover:text-[var(--accent)] transition-colors"
-        >
-          <Coins className="w-3.5 h-3.5" />
-          <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
-        </button>
-
-        {/* Mobile profile button — visible only on mobile */}
-        <button
-          onClick={() => setProfileOpen(true)}
-          className="flex md:hidden h-11 w-11 items-center justify-center rounded-full hover:bg-[var(--accent-soft)] transition-colors ml-1"
-          aria-label="Settings"
-        >
-          {avatarUrl ? (
-            <Avatar className="h-6 w-6">
-              <AvatarImage
-                src={avatarUrl}
-                alt=""
-                draggable={false}
-                onDragStart={(e) => e.preventDefault()}
-                className="object-cover"
-              />
-              <AvatarFallback className="text-[10px]">
-                <User className="h-3 w-3 text-[var(--text-secondary)]" />
-              </AvatarFallback>
-            </Avatar>
-          ) : (
-            <User className="h-4 w-4 text-[var(--text-secondary)]" />
-          )}
-        </button>
-
-        {/* Desktop centered nav with icons */}
-        <div className="hidden md:flex items-center gap-1 mx-auto">
+      <nav className="app-topnav hidden md:flex fixed top-0 left-0 w-full min-h-[var(--glassy-header-offset)] px-4 sm:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 items-center z-50 pointer-events-auto !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
+        <div className="flex items-center gap-1 mx-auto">
           {navItems.map((item) => (
             <Link
               key={item.to}
@@ -98,8 +63,7 @@ export default function PolishGlassLayout() {
           )}
         </div>
 
-        {/* Right side: credits + profile */}
-        <div className="hidden md:flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => setRedeemOpen(true)}
             className="theme-chip flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
@@ -118,7 +82,7 @@ export default function PolishGlassLayout() {
                   src={avatarUrl}
                   alt=""
                   draggable={false}
-                  onDragStart={(e) => e.preventDefault()}
+                  onDragStart={(event) => event.preventDefault()}
                   className="object-cover"
                 />
                 <AvatarFallback className="text-[10px]">
@@ -134,13 +98,11 @@ export default function PolishGlassLayout() {
 
       <MobileBottomNav />
 
-      {/* Page content */}
-      <main className={`w-full pt-[var(--glassy-header-offset)] pb-[calc(5rem+var(--mobile-bottom-nav-space))] relative z-10 ${
+      <main className={`w-full pt-[var(--glassy-content-top-offset)] pb-[var(--glassy-main-bottom-padding)] relative z-10 ${
         isSpeakRoute ? 'min-h-0' : 'min-h-dvh'
       }`}>
         <Outlet />
       </main>
-
     </div>
   )
 }

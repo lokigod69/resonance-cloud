@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { AlertCircle, Library, LogIn, RefreshCw } from 'lucide-react'
+import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { Button } from '@/components/ui/button'
@@ -119,8 +120,10 @@ export default function DashboardPG() {
 
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
-      <div className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-5 py-6 text-center sm:gap-6">
-        <h1 className="welcome-hero font-display text-3xl font-bold sm:text-5xl md:text-6xl">
+      <div className="dashboard-home-stack relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center text-center">
+        <HomeAccountStrip />
+
+        <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
           {greeting}
         </h1>
 
@@ -130,23 +133,13 @@ export default function DashboardPG() {
           onSelect={setActiveLanguage}
         />
 
-        <Link to={dashboardLibraryHref} className="dashboard-library-tile">
-          <Library className="dashboard-library-icon" aria-hidden="true" />
-          <span className="dashboard-library-copy">
-            <span className="dashboard-library-title">{t('nav.categories')}</span>
-            {activeLanguage ? (
-              <span className="dashboard-library-subtitle">{t(`langName.${activeLanguage}`)}</span>
-            ) : null}
-          </span>
-        </Link>
-
-        <section className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
+        <section className="dashboard-action-grid grid w-full grid-cols-2 gap-2.5 sm:gap-3">
           <SrsActionTile
             label={t('study.queue.review')}
             count={reviewDue}
             queue="review"
             language={activeLanguage ?? ''}
-            tier="top"
+            tier="compact"
             accent="cool"
             disabled={tilesDisabled}
           />
@@ -155,49 +148,51 @@ export default function DashboardPG() {
             count={counts.newDue}
             queue="learn"
             language={activeLanguage ?? ''}
-            tier="top"
+            tier="compact"
             accent="warm"
             disabled={tilesDisabled}
           />
-        </section>
-
-        <div className="w-full sm:max-w-xs mx-auto">
           <SrsActionTile
             label={t('study.queue.strengthen')}
             count={counts.learning}
             queue="strengthen"
             language={activeLanguage ?? ''}
-            tier="bottom"
+            tier="compact"
             accent="neutral"
             disabled={tilesDisabled}
           />
-        </div>
+          <Link to={dashboardLibraryHref} className="dashboard-library-tile dashboard-library-action">
+            <Library className="dashboard-library-icon" aria-hidden="true" />
+            <span className="dashboard-library-copy">
+              <span className="dashboard-library-title">{t('nav.categories')}</span>
+              {activeLanguage ? (
+                <span className="dashboard-library-subtitle">{t(`langName.${activeLanguage}`)}</span>
+              ) : null}
+            </span>
+          </Link>
+        </section>
 
-        <div className="mastered-circle" aria-live="polite">
+        <div className="dashboard-mastered-pill" aria-live="polite">
           {counts.mastered > 0 ? (
-            <>
-              <button
-                type="button"
-                className="mastered-circle-disc"
-                disabled={tilesDisabled}
-                onClick={() => {
-                  if (tilesDisabled || !activeLanguage) return
-                  const params = new URLSearchParams({ queue: 'mastered', lang: activeLanguage })
-                  navigate(`/study?${params.toString()}`)
-                }}
-                aria-label={`${counts.mastered} ${t('study.queue.mastered')}`}
-              >
-                {counts.mastered}
-              </button>
-              <span className="mastered-circle-caption">{t('study.queue.mastered')}</span>
-            </>
+            <button
+              type="button"
+              className="dashboard-mastered-pill-button"
+              disabled={tilesDisabled}
+              onClick={() => {
+                if (tilesDisabled || !activeLanguage) return
+                const params = new URLSearchParams({ queue: 'mastered', lang: activeLanguage })
+                navigate(`/study?${params.toString()}`)
+              }}
+              aria-label={`${counts.mastered} ${t('study.queue.mastered')}`}
+            >
+              <span className="dashboard-mastered-count">{counts.mastered}</span>
+              <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
+            </button>
           ) : (
-            <div className="mastered-empty">
-              <span className="mastered-empty-ring">0</span>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[color-mix(in_srgb,var(--text-primary)_52%,transparent)]">
-                {t('study.queue.mastered')}
-              </span>
-            </div>
+            <span className="dashboard-mastered-empty">
+              <span className="dashboard-mastered-count">0</span>
+              <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
+            </span>
           )}
         </div>
       </div>

@@ -17,6 +17,8 @@ function assertNotIncludes(haystack: string, needle: string, message: string): v
 const css = readFileSync('src/index.css', 'utf8')
 const dashboard = readFileSync('src/pages/Dashboard.tsx', 'utf8')
 const dashboardPg = readFileSync('src/pages/DashboardPG.tsx', 'utf8')
+const homeAccountStrip = readFileSync('src/components/dashboard/HomeAccountStrip.tsx', 'utf8')
+const languageCluster = readFileSync('src/components/dashboard/LanguageCluster.tsx', 'utf8')
 const categories = readFileSync('src/data/categories.ts', 'utf8')
 
 assertNotIncludes(
@@ -35,6 +37,26 @@ assertIncludes(dashboard, 'dashboard-library-tile', 'classic dashboard renders L
 assertIncludes(dashboardPg, 'dashboard-library-tile', 'glassy dashboard renders Library as a recognizable tile')
 assertIncludes(dashboard, 'staticLibraryRouteSuffix(activeLanguage)', 'classic dashboard sends active language into Library route')
 assertIncludes(dashboardPg, 'staticLibraryRouteSuffix(activeLanguage)', 'glassy dashboard sends active language into Library route')
+assertIncludes(dashboard, '<HomeAccountStrip />', 'classic dashboard renders account controls on Home only')
+assertIncludes(dashboardPg, '<HomeAccountStrip />', 'glassy dashboard renders account controls on Home only')
+assertIncludes(dashboard, 'dashboard-action-grid', 'classic dashboard uses the compact action grid')
+assertIncludes(dashboardPg, 'dashboard-action-grid', 'glassy dashboard uses the compact action grid')
+assertIncludes(dashboard, 'dashboard-mastered-pill', 'classic dashboard uses compact mastered summary')
+assertIncludes(dashboardPg, 'dashboard-mastered-pill', 'glassy dashboard uses compact mastered summary')
+assertNotIncludes(dashboard, 'mastered-circle', 'classic dashboard removes the oversized mastered circle')
+assertNotIncludes(dashboardPg, 'mastered-circle', 'glassy dashboard removes the oversized mastered circle')
+
+assertIncludes(homeAccountStrip, 'LingwaveBrand', 'Home account strip renders the Lingwave brand')
+assertIncludes(homeAccountStrip, 'setRedeemOpen(true)', 'Home account strip opens credits modal')
+assertIncludes(homeAccountStrip, 'setProfileOpen(true)', 'Home account strip opens profile modal')
+assertIncludes(homeAccountStrip, 'home-account-strip', 'Home account strip has dedicated styling hook')
+
+assertIncludes(languageCluster, 'FlagIcon', 'Language picker shows flags beside language choices')
+assertIncludes(languageCluster, 'language-picker-trigger', 'Language picker uses a bounded trigger')
+assertIncludes(languageCluster, 'language-picker-panel', 'Language picker uses a bounded panel instead of horizontal fan-out')
+assertIncludes(languageCluster, 'aria-expanded={open}', 'Language picker exposes expanded state')
+assertNotIncludes(languageCluster, 'PILL_GAP', 'Language picker no longer uses fixed fan-out offsets')
+assertNotIncludes(languageCluster, 'fanOffset', 'Language picker no longer fans languages off-screen')
 
 const welcomeRule = css.match(/\.welcome-hero\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
 assert(welcomeRule.length > 0, 'welcome hero CSS rule exists')

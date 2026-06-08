@@ -843,7 +843,7 @@ export default function Speak() {
 
   if (grokShowTranscript && grok.messages.length > 0) {
     return (
-      <div className="speak-chat-shell fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-header-offset)] z-30 flex flex-col">
+      <div className="speak-chat-shell fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-route-top-offset)] z-30 flex flex-col">
         <div className="speak-chatbar shrink-0 border-b">
           <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
             <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -978,7 +978,7 @@ export default function Speak() {
               : 'bg-[var(--surface-2)] text-red-100'
 
     return (
-      <div className="speak-chat-shell fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-header-offset)] z-30 flex flex-col">
+      <div className="speak-chat-shell fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-route-top-offset)] z-30 flex flex-col">
         <div className="speak-chatbar shrink-0 border-b">
           <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
             <button
@@ -1092,7 +1092,7 @@ export default function Speak() {
   if (!tutor.voice) return null
 
   return (
-    <div className="speak-chat-shell fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-header-offset)] z-30 flex flex-col">
+    <div className="speak-chat-shell fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-route-top-offset)] z-30 flex flex-col">
       <div className="speak-chatbar shrink-0 border-b">
         <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
           <button

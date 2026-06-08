@@ -378,7 +378,7 @@ export function LyricsSheet({
           onClick={() => onOpenChange(false)}
           className="pointer-events-auto absolute left-0 right-0 z-0 bg-black/60 backdrop-blur-sm lg:hidden"
           style={{
-            top: 'var(--glassy-header-offset)',
+            top: 'var(--glassy-route-top-offset)',
             bottom: 'calc(7rem + env(safe-area-inset-bottom, 0px) + var(--mobile-bottom-nav-overlay-gap))',
           }}
           aria-label="Close"
@@ -388,7 +388,7 @@ export function LyricsSheet({
           className="lyrics-shell lyrics-shell--glassy pointer-events-auto absolute inset-x-3 z-10 flex flex-col lg:hidden"
           style={{
             position: 'absolute',
-            top: 'calc(var(--glassy-header-offset) + 1rem)',
+            top: 'calc(var(--glassy-route-top-offset) + 1rem)',
             bottom: 'calc(7rem + env(safe-area-inset-bottom, 0px) + var(--mobile-bottom-nav-overlay-gap) + 1rem)',
           }}
         >
