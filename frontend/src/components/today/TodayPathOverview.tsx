@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronRight, Play, Settings } from 'lucide-react'
+import { ChevronRight, ClipboardCheck, Play, Settings } from 'lucide-react'
 import { Fragment, type ReactNode, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -99,15 +99,6 @@ export function TodayPathOverview({
       && overview.recommendedLesson
       && pathLesson.id !== overview.recommendedLesson.id,
   )
-  const headerProgressLabel = pathLesson
-    ? t('today.path.lessonProgressHero', {
-        current: pathLesson.lessonNumber,
-        total: overview.totalLessons,
-      })
-    : t('today.path.compactProgress', {
-        completed: overview.completedCount,
-        total: overview.totalLessons,
-      })
   const segmentStates: SegmentRenderState[] = GUIDED_SEGMENT_REVIEWS.map((segment) => {
     const segmentLessons = overview.lessons.filter((entry) => (
       entry.lesson.lessonNumber >= segment.start && entry.lesson.lessonNumber <= segment.end
@@ -153,9 +144,6 @@ export function TodayPathOverview({
                 )
               })()}
             </h1>
-            <p className="today-path-progressLine mt-2 text-sm text-[var(--text-muted)] sm:text-base">
-              {headerProgressLabel}
-            </p>
           </div>
         </div>
         <div className="today-path-actions">
@@ -169,7 +157,6 @@ export function TodayPathOverview({
           >
             <Settings className="h-4 w-4" aria-hidden="true" />
             <span>{t('today.path.options')}</span>
-            <ChevronDown className="h-4 w-4" aria-hidden="true" />
           </Button>
         </div>
       </section>
@@ -179,7 +166,6 @@ export function TodayPathOverview({
         pathOptions={pathOptions}
         selectedPathId={selectedPathId}
         progress={progress}
-        pathCheckHref={pathCheckHref}
         selectedLanguage={selectedLanguage}
         availableLanguages={availableLanguages}
         selectedVibeId={selectedVibeId}
@@ -253,7 +239,8 @@ export function TodayPathOverview({
           {segmentStates.map((segment) => (
             <div key={segment.segment} className="today-path-desktopSegment today-path-desktopRouteRow">
               <div className="today-path-desktopLessonRail">
-                <div className="today-path-segmentGrid">
+                <DesktopRouteWave />
+                <div className="today-path-segmentGrid grid grid-cols-5">
                   {segment.lessons.map((entry, lessonIndex) => (
                     <Fragment key={entry.lesson.id}>
                       <div className="today-path-lessonSlot">
@@ -302,6 +289,8 @@ export function TodayPathOverview({
           ))}
         </div>
 
+        <PathCheckTile href={pathCheckHref} />
+
         {checkpointCard && (
           <CheckpointCard
             href={checkpointCard.href}
@@ -310,6 +299,59 @@ export function TodayPathOverview({
         )}
       </section>
     </div>
+  )
+}
+
+function DesktopRouteWave() {
+  return (
+    <svg
+      className="today-path-desktopWave"
+      viewBox="0 0 100 18"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M 0 9 C 12 1, 20 1, 31 9 S 51 17, 62 9 S 82 1, 100 9"
+        fill="none"
+        stroke="currentColor"
+        strokeDasharray="1 7"
+        strokeLinecap="round"
+        strokeWidth="2.4"
+      >
+        <animate
+          attributeName="stroke-dashoffset"
+          from="0"
+          to="-32"
+          dur="7s"
+          repeatCount="indefinite"
+        />
+      </path>
+    </svg>
+  )
+}
+
+function PathCheckTile({ href }: { href: string }) {
+  const { t } = useTranslation()
+
+  return (
+    <Link
+      to={href}
+      className="today-path-checkAction theme-panel group grid min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-lg border border-[var(--border-subtle)] p-3 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] sm:p-4"
+    >
+      <span className="today-path-checkIcon flex h-10 w-10 items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--accent)_44%,transparent)] text-[var(--accent)]" aria-hidden="true">
+        <ClipboardCheck className="h-5 w-5" />
+      </span>
+      <span className="min-w-0">
+        <span className="block text-sm font-semibold text-[var(--text-primary)]">
+          {t('today.path.pathCheck')}
+        </span>
+        <span className="mt-0.5 block truncate text-xs text-[var(--text-secondary)]">
+          {t('today.checkpoint.pathCheckDiagnostic')}
+        </span>
+      </span>
+      <ChevronRight className="h-4 w-4 text-[var(--accent)] transition group-hover:translate-x-0.5" aria-hidden="true" />
+    </Link>
   )
 }
 
@@ -481,12 +523,12 @@ function RecommendedLessonPanel({
           <p className="sr-only">
             {isSelectedRecommendation ? t('today.path.nextLessonLabel') : t('today.path.selectedLessonLabel')}
           </p>
-          <p className="text-xs font-medium text-[var(--text-secondary)] sm:text-sm">
-            {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
-          </p>
           <h2 className="today-featuredLessonTitle mt-1 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)]">
             {title}
           </h2>
+          <p className="today-featuredLessonKicker mt-2 text-xs font-semibold text-[var(--text-secondary)] sm:text-sm">
+            {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
+          </p>
         </div>
         <Button size="lg" className="today-featuredLessonAction" onClick={() => onStartLesson(lesson.id)}>
           {actionLabel}

@@ -7,9 +7,11 @@ const TARGET_LANGUAGES: ReadonlySet<GuidedTargetLanguage> = new Set([
   'Spanish',
   'Italian',
   'French',
+  'Portuguese',
   'German',
   'Cebuano',
   'Indonesian',
+  'Polish',
 ])
 
 export const DEFAULT_GUIDED_TARGET_LANGUAGE: GuidedTargetLanguage = 'English'

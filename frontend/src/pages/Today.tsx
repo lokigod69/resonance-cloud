@@ -42,7 +42,7 @@ function scrollTodayToTop() {
 
 export default function Today() {
   const { user } = useAuth()
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const pathOptions = useMemo(() => getGuidedTodayPathOptions(), [])
   const availableLanguages = useMemo(() => collectAvailableLanguages(pathOptions), [pathOptions])
   const initialLanguage = useMemo(() => {
@@ -123,15 +123,29 @@ export default function Today() {
     setSessionActive(false)
   }
 
+  const syncTodaySearchParams = (next: {
+    pathId?: string
+    vibeId?: ActiveGuidedVibeId
+  }) => {
+    setSearchParams((current) => {
+      const params = new URLSearchParams(current)
+      if (next.pathId) params.set('path', next.pathId)
+      if (next.vibeId) params.set('vibe', next.vibeId)
+      return params
+    }, { replace: true })
+  }
+
   const handleSelectPath = (pathId: string) => {
     if (pathId === selectedPathId) return
     const pathLanguage = pathOptions.find((path) => path.id === pathId)?.targetLanguage
+    const nextVibeId = getSelectedGuidedVibe(pathId)
     if (pathLanguage && pathLanguage !== selectedLanguage) {
       setSelectedLanguageState(pathLanguage)
       setSelectedGuidedTargetLanguage(pathLanguage)
     }
     setSelectedPathId(pathId)
-    setSelectedVibeId(getSelectedGuidedVibe(pathId))
+    setSelectedVibeId(nextVibeId)
+    syncTodaySearchParams({ pathId, vibeId: nextVibeId })
     setSelectedLessonId(undefined)
     setSessionActive(false)
     setKnownItemIds(new Set())
@@ -141,10 +155,13 @@ export default function Today() {
   const handleSelectLanguage = (language: GuidedTargetLanguage) => {
     if (language === selectedLanguage) return
     const nextPathId = pickDefaultPathForLanguage(pathOptions, language)
+    const nextVibeId = selectedVibeId
     setSelectedLanguageState(language)
     setSelectedGuidedTargetLanguage(language)
     setSelectedPathId(nextPathId)
-    setSelectedVibeId(getSelectedGuidedVibe(nextPathId))
+    setSelectedGuidedVibe(nextPathId, nextVibeId)
+    setSelectedVibeId(nextVibeId)
+    syncTodaySearchParams({ pathId: nextPathId, vibeId: nextVibeId })
     setSelectedLessonId(undefined)
     setSessionActive(false)
     setKnownItemIds(new Set())
@@ -159,7 +176,8 @@ export default function Today() {
 
   const handleSelectVibe = (vibeId: ActiveGuidedVibeId) => {
     setSelectedGuidedVibe(selectedPathId, vibeId)
-    setSelectedVibeId(getSelectedGuidedVibe(selectedPathId))
+    setSelectedVibeId(vibeId)
+    syncTodaySearchParams({ vibeId })
     setSessionActive(false)
     setSessionKey((current) => current + 1)
     setKnownItemIds(new Set())

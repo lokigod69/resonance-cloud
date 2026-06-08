@@ -96,27 +96,22 @@
 }
 
 .today-vibe-pickerCompact {
-  align-items: start;
-  display: flex;
-  flex-direction: column;
-  min-height: 2.5rem;
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
 }
 
-.today-vibe-pill {
-  background:
-    radial-gradient(ellipse at 18% 0%, color-mix(in srgb, var(--today-glow) 48%, transparent), transparent 62%),
-    color-mix(in srgb, var(--today-panel) 78%, transparent);
-  box-shadow: 0 8px 18px color-mix(in srgb, var(--today-glow) 18%, transparent);
-  max-height: 3rem;
+.today-vibe-pickerCompactLabel {
+  color: color-mix(in srgb, var(--today-accent-strong) 78%, var(--text-secondary));
 }
 
 .today-vibe-pickerOptions {
-  max-height: 5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   width: 100%;
 }
 
 .today-vibe-pickerOptions .today-vibe-card {
-  min-height: 3rem;
+  min-height: 3.15rem;
 }
 
 .today-vibe-option[aria-pressed="true"] {
@@ -223,6 +218,17 @@
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--today-accent) 18%, transparent);
 }
 
+.today-path-directoryPathGrid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.25rem), 1fr));
+}
+
+.today-path-directoryOption {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 4.45rem;
+}
+
 @keyframes today-directory-fade {
   from {
     opacity: 0;
@@ -243,6 +249,16 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     max-height: 94dvh;
+  }
+}
+
+@media (max-width: 480px) {
+  .today-vibe-pickerOptions {
+    grid-template-columns: 1fr;
+  }
+
+  .today-path-directoryOption {
+    min-height: 4rem;
   }
 }
 
@@ -313,6 +329,39 @@
 .today-path-segmentGrid {
   --today-node-size: clamp(3.6rem, 7vw, 5.2rem);
   align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, var(--today-node-size)));
+  position: relative;
+  z-index: 1;
+}
+
+.today-path-desktopWave {
+  color: color-mix(in srgb, var(--today-accent-strong) 82%, white 18%);
+  display: none;
+  height: clamp(1.1rem, 2vw, 1.45rem);
+  left: calc(var(--today-node-size) / 2);
+  opacity: 0.74;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(100% - var(--today-node-size));
+  z-index: 0;
+}
+
+.today-path-desktopWave path {
+  animation: today-path-wave-drift 7s linear infinite;
+  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--today-glow) 58%, transparent));
+}
+
+@keyframes today-path-wave-drift {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -32;
+  }
 }
 
 .today-segment-reviewTile {
@@ -520,11 +569,36 @@
   font-size: clamp(1.45rem, 3.2vw, 2rem);
 }
 
+.today-featuredLessonKicker {
+  color: color-mix(in srgb, var(--today-accent-strong) 78%, var(--text-secondary));
+  text-shadow: 0 0 18px color-mix(in srgb, var(--today-glow) 42%, transparent);
+}
+
 .today-featuredLessonAction {
   border-radius: 0.75rem;
   box-shadow: 0 14px 34px color-mix(in srgb, var(--today-glow) 42%, transparent);
   justify-self: center;
   min-width: min(100%, 14rem);
+}
+
+.today-path-checkAction {
+  background:
+    radial-gradient(ellipse at 12% 0%, color-mix(in srgb, var(--today-glow) 24%, transparent), transparent 58%),
+    linear-gradient(145deg, color-mix(in srgb, var(--today-panel) 88%, transparent), color-mix(in srgb, var(--surface-1) 30%, transparent));
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--today-glow) 22%, transparent);
+}
+
+.today-path-checkAction:hover {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 58%, var(--today-border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--today-accent) 18%, transparent),
+    0 18px 36px color-mix(in srgb, var(--today-glow) 34%, transparent);
+}
+
+.today-path-checkIcon {
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--today-glow) 42%, transparent), transparent 68%),
+    color-mix(in srgb, var(--surface-1) 62%, transparent);
 }
 
 .today-path-journey {
@@ -551,6 +625,7 @@
   flex-direction: column;
   gap: 0.18rem;
   grid-column: 1;
+  height: 1.45rem;
   justify-content: center;
   justify-self: start;
   margin-left: calc((3.35rem - 0.34rem) / 2);
@@ -931,6 +1006,10 @@
   .today-path-desktopLessonRail {
     min-width: 0;
     position: relative;
+  }
+
+  .today-path-desktopWave {
+    display: block;
   }
 
   .today-path-segmentGrid {

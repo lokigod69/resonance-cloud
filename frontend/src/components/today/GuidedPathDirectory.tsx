@@ -1,8 +1,6 @@
-import { Check, CheckCircle2, ChevronDown, ClipboardCheck, X } from 'lucide-react'
+import { Check, CheckCircle2, ChevronDown, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import {
-  getPathVibesAvailable,
   getGuidedPathLessons,
   type GuidedPathMetadata,
   type GuidedTargetLanguage,
@@ -20,7 +18,6 @@ type GuidedPathDirectoryProps = {
   pathOptions: GuidedPathMetadata[]
   selectedPathId: string
   progress: TodayProgressState
-  pathCheckHref: string
   selectedLanguage?: GuidedTargetLanguage
   availableLanguages?: GuidedTargetLanguage[]
   selectedVibeId: ActiveGuidedVibeId
@@ -38,7 +35,6 @@ export function GuidedPathDirectory({
   pathOptions,
   selectedPathId,
   progress,
-  pathCheckHref,
   selectedLanguage = 'English',
   availableLanguages = [],
   selectedVibeId,
@@ -49,10 +45,7 @@ export function GuidedPathDirectory({
 }: GuidedPathDirectoryProps) {
   const { t } = useTranslation()
   const [languageExpanded, setLanguageExpanded] = useState(false)
-  const selectedPath = pathOptions.find((path) => path.id === selectedPathId) ?? pathOptions[0]
   const languages = availableLanguages.length > 0 ? availableLanguages : collectLanguages(pathOptions)
-  const pathVibesAvailable = getPathVibesAvailable(selectedPathId)
-  const shouldShowVibePicker = selectedLanguage === 'English' && pathVibesAvailable.length > 1
   const pathsForSelectedLanguage = pathOptions.filter((path) => path.targetLanguage === selectedLanguage)
   const groupedPathOptions = pathsForSelectedLanguage.length > 0
     ? [
@@ -105,27 +98,6 @@ export function GuidedPathDirectory({
           </Button>
         </div>
 
-        {selectedPath && (
-          <div className="today-path-directoryCurrent rounded-lg border border-[var(--border-subtle)] p-3 sm:p-4">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-[var(--text-primary)]">
-                  {formatGuidedPathLabel(selectedPath, t, { includeLanguage: false })}
-                </p>
-                <p className="mt-1 text-xs text-[var(--text-secondary)]">
-                  {formatPathProgressFraction(getPathProgress(progress, selectedPath.id))}
-                </p>
-              </div>
-              <Button asChild type="button" size="sm" variant="outline">
-                <Link to={pathCheckHref} onClick={onClose}>
-                  <ClipboardCheck className="h-4 w-4" />
-                  {t('today.path.pathCheck')}
-                </Link>
-              </Button>
-            </div>
-          </div>
-        )}
-
         {languages.length > 1 && (
           <div className="today-path-directoryLanguage rounded-lg border border-[var(--border-subtle)] p-3">
             <button
@@ -150,7 +122,7 @@ export function GuidedPathDirectory({
 
             {languageExpanded && (
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                {availableLanguages.map((language) => {
+                {languages.map((language) => {
                   const isSelected = language === selectedLanguage
 
                   return (
@@ -178,22 +150,20 @@ export function GuidedPathDirectory({
           </div>
         )}
 
-        {shouldShowVibePicker && (
-          <div className="today-path-directoryVibe rounded-lg border border-[var(--border-subtle)] p-3">
-            <GuidedVibePicker
-              selectedVibeId={selectedVibeId}
-              onSelectVibe={onSelectVibe}
-              compact
-            />
-          </div>
-        )}
+        <div className="today-path-directoryVibe rounded-lg border border-[var(--border-subtle)] p-3">
+          <GuidedVibePicker
+            selectedVibeId={selectedVibeId}
+            onSelectVibe={onSelectVibe}
+            compact
+          />
+        </div>
 
         {groupedPathOptions.map((group) => (
           <div key={group.id} className="today-path-directoryGroup grid gap-2" data-directory-group={group.id}>
             <p className="text-xs font-semibold uppercase text-[var(--text-muted)]">
               {t('today.path.directoryGroupPractical') || group.categoryLabel}
             </p>
-            <div className="grid gap-2 sm:grid-cols-3">
+            <div className="today-path-directoryPathGrid grid gap-2">
               {group.paths.map((path) => {
                 const isSelected = path.id === selectedPathId
                 const pathProgress = getPathProgress(progress, path.id)
