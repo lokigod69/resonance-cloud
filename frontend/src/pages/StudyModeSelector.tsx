@@ -6,6 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { filterLemmaStatesForQueue, isStudyQueue, type StudyQueue } from '@/hooks/useStudySession'
 import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
+import { canonicalizeLanguageValue } from '@/lib/languages'
 import videoIcon from '@/assets/study-mode-icons/video.webp'
 import cardsIcon from '@/assets/study-mode-icons/cards.webp'
 import audioIcon from '@/assets/study-mode-icons/audio.webp'
@@ -58,7 +59,7 @@ export default function StudyModeSelector() {
   }, [user])
 
   const availableLanguages = useMemo(() =>
-    Array.from(new Set(allDecks.map((deck) => deck.target_language))).filter(Boolean),
+    Array.from(new Set(allDecks.map((deck) => canonicalizeLanguageValue(deck.target_language)))).filter(Boolean),
     [allDecks],
   )
 
@@ -78,13 +79,14 @@ export default function StudyModeSelector() {
 
   useEffect(() => {
     if (selectedDeck?.target_language) {
-      setActiveLanguage(selectedDeck.target_language)
+      setActiveLanguage(canonicalizeLanguageValue(selectedDeck.target_language))
     }
   }, [selectedDeck?.target_language, setActiveLanguage])
 
   useEffect(() => {
-    if (!langParam || activeLanguage === langParam) return
-    setActiveLanguage(langParam)
+    const canonicalLangParam = canonicalizeLanguageValue(langParam)
+    if (!canonicalLangParam || activeLanguage === canonicalLangParam) return
+    setActiveLanguage(canonicalLangParam)
   }, [activeLanguage, langParam, setActiveLanguage])
 
   useEffect(() => {

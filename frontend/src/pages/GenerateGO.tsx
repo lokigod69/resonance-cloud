@@ -59,6 +59,7 @@ import {
   type PremiumSummaryItem,
 } from '@/components/generate/shared/PremiumVisualSelectors'
 import { wordsEqual } from '@/lib/wordEquality'
+import { canonicalizeLanguageValue, getLanguageCode } from '@/lib/languages'
 import type { SelectedCategoryVocabularyItem } from '@/data/categories'
 
 const GO_GENRES = [
@@ -539,9 +540,10 @@ export default function GenerateGO() {
 
     try {
       if (effectiveProductLane === 'card_text') {
-        const targetLanguageCode = LANGUAGES.find((lang) => lang.value === effectiveLanguage)?.code ?? effectiveLanguage
-        const baseLanguageValue = profile?.base_language ?? 'English'
-        const baseLanguageCode = LANGUAGES.find((lang) => lang.value === baseLanguageValue)?.code ?? baseLanguageValue
+        const targetLanguageValue = canonicalizeLanguageValue(effectiveLanguage)
+        const targetLanguageCode = getLanguageCode(targetLanguageValue)
+        const baseLanguageValue = canonicalizeLanguageValue(profile?.base_language ?? 'English')
+        const baseLanguageCode = getLanguageCode(baseLanguageValue)
         const items = await translateAndIpa({
           items: effectiveWords.map((word) => ({ word, is_phrase: /\s/.test(word.trim()) })),
           target_language: targetLanguageCode,
@@ -561,8 +563,8 @@ export default function GenerateGO() {
         } else {
           targetDeckId = await submitImagelessImport({
             deckName: deckName.trim() || 'Text Deck',
-            targetLanguage: targetLanguageCode,
-            baseLanguage: baseLanguageCode,
+            targetLanguage: targetLanguageValue,
+            baseLanguage: baseLanguageValue,
             origin,
             items,
           })

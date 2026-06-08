@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
+import { getLanguageQueryValues } from '@/lib/languages'
 
 export type GameWordRow = {
   id: string
@@ -66,7 +67,7 @@ export function useGameDeck(gameId: string, deckId: string | null, language: str
         .from('decks')
         .select('id')
         .eq('user_id', userId)
-        .eq('target_language', language)
+        .in('target_language', getLanguageQueryValues(language))
 
       if (isStale?.()) return
 

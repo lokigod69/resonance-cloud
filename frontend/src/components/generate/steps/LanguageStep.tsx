@@ -3,6 +3,7 @@ import GlassCard from '../shared/GlassCard'
 import { LANGUAGES } from '../wizardData'
 import type { WizardState, WizardAction, ExistingDeck } from '../useWizardState'
 import { FlagIcon } from '@/components/ui/FlagIcon'
+import { canonicalizeLanguageValue } from '@/lib/languages'
 
 interface LanguageStepProps {
   state: WizardState
@@ -23,8 +24,9 @@ const item = {
 export default function LanguageStep({ state, dispatch, existingDeck }: LanguageStepProps) {
   // When adding to existing deck, show locked language and auto-advance
   if (existingDeck) {
-    const lang = LANGUAGES.find((l) => l.value === existingDeck.target_language)
-    const deckName = existingDeck.name || `${existingDeck.target_language} Deck`
+    const targetLanguage = canonicalizeLanguageValue(existingDeck.target_language)
+    const lang = LANGUAGES.find((l) => l.value === targetLanguage)
+    const deckName = existingDeck.name || `${targetLanguage} Deck`
 
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">

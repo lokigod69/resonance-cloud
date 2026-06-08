@@ -96,11 +96,13 @@ export default function ImagelessCardViewerModal({
             >
               {word.word}
             </button>
+            {cleanIpa && (
+              <p className="max-w-2xl font-mono text-sm text-white/45 long-copy">
+                /{cleanIpa.replace(/^\/|\/$/g, '')}/
+              </p>
+            )}
             {cleanTranslation && (
               <p className="max-w-2xl text-lg text-white/65 long-copy">{cleanTranslation}</p>
-            )}
-            {cleanIpa && (
-              <p className="max-w-2xl font-mono text-sm text-white/45 long-copy">{cleanIpa}</p>
             )}
           </div>
 

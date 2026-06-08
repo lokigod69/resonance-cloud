@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { supabase } from '@/lib/supabase'
+import { canonicalizeLanguageValue, languagesMatch } from '@/lib/languages'
 import styles from '../styles.module.css'
 
 export type RunnerDisplayMode = 'image' | 'text'
@@ -81,7 +82,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
   }, [user])
 
   const availableLanguages = useMemo(() => (
-    Array.from(new Set(decks.map((deck) => deck.target_language).filter(Boolean)))
+    Array.from(new Set(decks.map((deck) => canonicalizeLanguageValue(deck.target_language)).filter(Boolean)))
   ), [decks])
 
   useEffect(() => {
@@ -93,7 +94,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
 
   const filteredDecks = useMemo(() => {
     if (!selectedLanguage) return []
-    return decks.filter((deck) => deck.target_language === selectedLanguage)
+    return decks.filter((deck) => languagesMatch(deck.target_language, selectedLanguage))
   }, [decks, selectedLanguage])
 
   const languageLabel = selectedLanguage ? t(`langName.${selectedLanguage}`) : null

@@ -8,6 +8,7 @@ import { filterLemmaStatesForQueue, isStudyQueue } from '@/hooks/useStudySession
 import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { canonicalizeLanguageValue, languagesMatch } from '@/lib/languages'
 import canvasIcon from '@/assets/study-mode-icons/canvas.webp'
 
 const LAST_DECK_STORAGE_PREFIX = 'resonance-canvas-last-deck'
@@ -100,20 +101,22 @@ export default function CanvasDeckPicker() {
   }, [user])
 
   useEffect(() => {
-    if (!queue || !forwardedLanguage || activeLanguage === forwardedLanguage) return
-    setActiveLanguage(forwardedLanguage)
+    const canonicalForwardedLanguage = canonicalizeLanguageValue(forwardedLanguage)
+    if (!queue || !canonicalForwardedLanguage || activeLanguage === canonicalForwardedLanguage) return
+    setActiveLanguage(canonicalForwardedLanguage)
   }, [activeLanguage, forwardedLanguage, queue, setActiveLanguage])
 
   const availableLanguages = useMemo(
-    () => Array.from(new Set(decks.map((deck) => deck.target_language).filter(Boolean))),
+    () => Array.from(new Set(decks.map((deck) => canonicalizeLanguageValue(deck.target_language)).filter(Boolean))),
     [decks],
   )
 
   // If activeLanguage isn't in the user's decks, fall back to the first available.
   useEffect(() => {
     if (loading || availableLanguages.length === 0) return
-    if (forwardedLanguage && availableLanguages.includes(forwardedLanguage)) {
-      setActiveLanguage(forwardedLanguage)
+    const canonicalForwardedLanguage = canonicalizeLanguageValue(forwardedLanguage)
+    if (canonicalForwardedLanguage && availableLanguages.includes(canonicalForwardedLanguage)) {
+      setActiveLanguage(canonicalForwardedLanguage)
       return
     }
     if (!activeLanguage || !availableLanguages.includes(activeLanguage)) {
@@ -123,7 +126,7 @@ export default function CanvasDeckPicker() {
 
   const filteredDecks = useMemo(() => {
     if (!activeLanguage) return []
-    return decks.filter((deck) => deck.target_language === activeLanguage)
+    return decks.filter((deck) => languagesMatch(deck.target_language, activeLanguage))
   }, [decks, activeLanguage])
 
   const languageLabel = activeLanguage ? t(`langName.${activeLanguage}`) : null
@@ -154,7 +157,7 @@ export default function CanvasDeckPicker() {
   function goToCanvas(deckId: string | null, mode?: CanvasModeOption['id']) {
     if (!queue) saveLastDeckKey(activeLanguage, deckId ?? ALL_WORDS_KEY)
     const params = new URLSearchParams()
-    const language = forwardedLanguage ?? activeLanguage
+    const language = canonicalizeLanguageValue(forwardedLanguage ?? activeLanguage)
     if (deckId) params.set('deck', deckId)
     if (queue) params.set('queue', queue)
     if (language) params.set('lang', language)

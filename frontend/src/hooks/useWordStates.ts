@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
-import { LANGUAGES } from '@/lib/languages'
+import { canonicalizeLanguageValue } from '@/lib/languages'
 
 export type WordState = 'new' | 'learning' | 'reviewing' | 'mastered'
 
@@ -66,15 +66,7 @@ const EMPTY_COUNTS: WordStateCounts = {
 }
 
 function toTargetLanguage(language: string): string {
-  const normalized = language.trim()
-  if (!normalized) return ''
-
-  const lower = normalized.toLowerCase()
-  return (
-    LANGUAGES.find((l) => l.code.toLowerCase() === lower)?.value
-    ?? LANGUAGES.find((l) => l.value.toLowerCase() === lower)?.value
-    ?? normalized
-  )
+  return canonicalizeLanguageValue(language)
 }
 
 function mapRow(row: ComputeWordStateRow): LemmaState {

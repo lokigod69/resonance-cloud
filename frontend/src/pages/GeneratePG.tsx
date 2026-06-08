@@ -47,6 +47,7 @@ import { useAppendImagelessCards } from '@/hooks/useAppendImagelessCards'
 import { useGenerateImagelessTts } from '@/hooks/useGenerateImagelessTts'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
+import { canonicalizeLanguageValue, getLanguageCode } from '@/lib/languages'
 
 /* ─── Constants ─────────────────────────────────── */
 
@@ -229,9 +230,10 @@ export default function GeneratePG() {
     try {
       if (effectiveProductLane === 'card_text') {
         const targetLanguage = existingDeck?.target_language ?? state.language ?? ''
-        const targetLanguageCode = LANGUAGES.find((lang) => lang.value === targetLanguage)?.code ?? targetLanguage
-        const baseLanguageValue = profile?.base_language ?? 'English'
-        const baseLanguageCode = LANGUAGES.find((lang) => lang.value === baseLanguageValue)?.code ?? baseLanguageValue
+        const targetLanguageValue = canonicalizeLanguageValue(targetLanguage)
+        const targetLanguageCode = getLanguageCode(targetLanguageValue)
+        const baseLanguageValue = canonicalizeLanguageValue(profile?.base_language ?? 'English')
+        const baseLanguageCode = getLanguageCode(baseLanguageValue)
         const items = await translateAndIpa({
           items: effectiveWords.map((word) => ({ word, is_phrase: /\s/.test(word.trim()) })),
           target_language: targetLanguageCode,
@@ -251,8 +253,8 @@ export default function GeneratePG() {
         } else {
           targetDeckId = await submitImagelessImport({
             deckName: state.deckName.trim() || 'Text Deck',
-            targetLanguage: targetLanguageCode,
-            baseLanguage: baseLanguageCode,
+            targetLanguage: targetLanguageValue,
+            baseLanguage: baseLanguageValue,
             origin,
             items,
           })

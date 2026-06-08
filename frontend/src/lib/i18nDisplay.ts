@@ -1,3 +1,5 @@
+import { canonicalizeLanguageValue } from './languages'
+
 type TranslateFn = (key: string, vars?: Record<string, string | number>) => string
 
 const DECK_STATUS_KEYS: Record<string, string> = {
@@ -21,9 +23,10 @@ export function getDeckStatusLabel(status: string | null | undefined, t: Transla
 }
 
 export function getDeckLanguageLabel(language: string | null | undefined, t: TranslateFn): string {
-  if (!language) return ''
+  const canonicalLanguage = canonicalizeLanguageValue(language)
+  if (!canonicalLanguage) return ''
 
-  const key = `langName.${language}`
+  const key = `langName.${canonicalLanguage}`
   const label = t(key)
-  return label === key ? language : label
+  return label === key ? canonicalLanguage : label
 }

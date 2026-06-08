@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { useTranslation } from '@/hooks/useTranslation'
+import { canonicalizeLanguageValue, languagesMatch } from '@/lib/languages'
 import type { DeckMode } from '../engine/types'
 import styles from '../styles.module.css'
 
@@ -80,7 +81,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
   }, [user])
 
   const availableLanguages = useMemo(() => (
-    Array.from(new Set(decks.map((deck) => deck.target_language).filter(Boolean)))
+    Array.from(new Set(decks.map((deck) => canonicalizeLanguageValue(deck.target_language)).filter(Boolean)))
   ), [decks])
 
   useEffect(() => {
@@ -92,7 +93,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
 
   const filteredDecks = useMemo(() => {
     if (!selectedLanguage) return []
-    return decks.filter((deck) => deck.target_language === selectedLanguage)
+    return decks.filter((deck) => languagesMatch(deck.target_language, selectedLanguage))
   }, [decks, selectedLanguage])
 
   const languageLabel = selectedLanguage ? t(`langName.${selectedLanguage}`) : null
@@ -102,7 +103,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
     return t('slicer.deckPicker.heading', { language: languageLabel })
   }, [languageLabel, t])
 
-  const isGerman = selectedLanguage?.toLowerCase().startsWith('de') ?? false
+  const isGerman = languagesMatch(selectedLanguage, 'German')
   const playAllTitle = isGerman ? 'Alle Wörter' : 'All Words'
   const playAllLabel = isGerman ? 'Alle Wörter spielen' : 'Play all words'
   const untitledDeck = t('slicer.deckPicker.untitledDeck')

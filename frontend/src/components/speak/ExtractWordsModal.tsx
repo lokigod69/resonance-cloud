@@ -4,6 +4,7 @@ import { WordChips } from '@/components/generate/shared/GlassInput'
 import { useExtractVocabulary, type ExtractVocabularyItem } from '@/hooks/useExtractVocabulary'
 import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
 import { useTranslation } from '@/hooks/useTranslation'
+import { canonicalizeLanguageValue } from '@/lib/languages'
 
 interface ExtractWordsModalProps {
   messages?: Array<{ role: 'user' | 'assistant'; content: string }>
@@ -67,10 +68,12 @@ export function ExtractWordsModal({
     if (items.length === 0 || submitting || importInFlightRef.current) return
     importInFlightRef.current = true
     try {
+      const targetLanguageValue = canonicalizeLanguageValue(targetLanguage)
+      const baseLanguageValue = canonicalizeLanguageValue(baseLanguage)
       const deckId = await submitImagelessImport({
         deckName: deckName.trim() || defaultDeckName,
-        targetLanguage,
-        baseLanguage,
+        targetLanguage: targetLanguageValue,
+        baseLanguage: baseLanguageValue,
         origin: 'tutor_extraction',
         items,
       })

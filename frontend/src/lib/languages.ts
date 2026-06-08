@@ -56,6 +56,51 @@ export const WIZARD_LANGUAGES  = LANGUAGES.filter((l) => l.isWizard)
 export const LANDING_LANGUAGES = LANGUAGES.filter((l) => l.isLanding)
 export const SPEAK_LANGUAGES   = LANGUAGES.filter((l) => l.isSpeak)
 
+function cleanLanguageInput(language: string | null | undefined): string {
+  return language?.trim() ?? ''
+}
+
+export function canonicalizeLanguageValue(language: string | null | undefined): string {
+  const cleaned = cleanLanguageInput(language)
+  if (!cleaned) return ''
+
+  const normalized = cleaned.toLowerCase()
+  return (
+    LANGUAGES.find((l) => l.code.toLowerCase() === normalized)?.value
+    ?? LANGUAGES.find((l) => l.value.toLowerCase() === normalized)?.value
+    ?? cleaned
+  )
+}
+
+export function getLanguageCode(language: string | null | undefined): string {
+  const cleaned = cleanLanguageInput(language)
+  if (!cleaned) return ''
+
+  const normalized = cleaned.toLowerCase()
+  const canonical = canonicalizeLanguageValue(cleaned)
+  return (
+    LANGUAGES.find((l) => l.code.toLowerCase() === normalized)?.code
+    ?? LANGUAGES.find((l) => l.value === canonical)?.code
+    ?? cleaned
+  )
+}
+
+export function getLanguageQueryValues(language: string | null | undefined): string[] {
+  const cleaned = cleanLanguageInput(language)
+  const canonical = canonicalizeLanguageValue(cleaned)
+  const code = getLanguageCode(cleaned)
+  return Array.from(new Set([canonical, code, cleaned].filter(Boolean)))
+}
+
+export function languagesMatch(
+  left: string | null | undefined,
+  right: string | null | undefined,
+): boolean {
+  const leftCanonical = canonicalizeLanguageValue(left)
+  const rightCanonical = canonicalizeLanguageValue(right)
+  return Boolean(leftCanonical && rightCanonical && leftCanonical === rightCanonical)
+}
+
 // Maps an ISO code (e.g. 'en') to the canonical wizard-value form
 // (e.g. 'English') used by decks.target_language and profiles.base_language.
 // Mirror of profileBaseLanguageToIso in curriculumCategories.ts. Also accepts
@@ -64,11 +109,5 @@ export const SPEAK_LANGUAGES   = LANGUAGES.filter((l) => l.isSpeak)
 // the caller can still surface a coherent error downstream. Empty string on
 // null/undefined is load-bearing — triggers the RPC's required-param check.
 export function isoToWizardValue(iso: string | null | undefined): string {
-  if (!iso) return ''
-  const normalized = iso.toLowerCase()
-  return (
-    LANGUAGES.find((l) => l.code.toLowerCase() === normalized)?.value
-    ?? LANGUAGES.find((l) => l.value.toLowerCase() === normalized)?.value
-    ?? iso
-  )
+  return canonicalizeLanguageValue(iso)
 }

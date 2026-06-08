@@ -10,6 +10,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
 import { getCardThumbUrl } from '@/lib/imageUrls'
+import { canonicalizeLanguageValue, languagesMatch } from '@/lib/languages'
 import {
   calculateClassicDeckProximity,
   CLASSIC_DECK_PROXIMITY_CSS_PROPERTIES,
@@ -119,7 +120,7 @@ export default function Decks() {
   }, [userId, location.key, loadDecks])
 
   const availableLanguages = useMemo(() => {
-    return Array.from(new Set(decks.map((d) => d.target_language))).filter(Boolean)
+    return Array.from(new Set(decks.map((d) => canonicalizeLanguageValue(d.target_language)))).filter(Boolean)
   }, [decks])
 
   useEffect(() => {
@@ -133,7 +134,7 @@ export default function Decks() {
   }, [availableLanguages, activeLanguage, setActiveLanguage])
 
   const filteredDecks = useMemo(
-    () => decks.filter((d) => d.target_language === activeLanguage),
+    () => decks.filter((d) => languagesMatch(d.target_language, activeLanguage)),
     [decks, activeLanguage]
   )
 

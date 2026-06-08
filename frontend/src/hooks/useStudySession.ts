@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect, useRef } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import type { CardFaces } from '@/lib/cardFaces'
+import { getLanguageQueryValues } from '@/lib/languages'
 import { useWordStates, type LemmaState } from '@/hooks/useWordStates'
 
 export type StudyWord = {
@@ -150,7 +151,7 @@ export function useStudySession(
         .from('decks')
         .select('id')
         .eq('user_id', userId)
-        .eq('target_language', language)
+        .in('target_language', getLanguageQueryValues(language))
       if (isStale?.()) return
       langDeckIds = langDecks?.map(d => d.id) ?? []
       if (langDeckIds.length === 0) {

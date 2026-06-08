@@ -52,6 +52,13 @@ assert.match(modalSource, /data-imageless-modal-details/, 'text card modal shoul
 assert.match(modalSource, /word\.translation/, 'text card modal should show the base-language translation')
 assert.match(modalSource, /word\.ipa/, 'text card modal should show IPA pronunciation guidance')
 
+const modalIpaIndex = modalSource.indexOf('{cleanIpa &&')
+const modalTranslationIndex = modalSource.indexOf('{cleanTranslation &&')
+assert.ok(
+  modalIpaIndex >= 0 && modalTranslationIndex >= 0 && modalIpaIndex < modalTranslationIndex,
+  'text card modal should show IPA between the target word and translation',
+)
+
 assert.doesNotMatch(
   studyFlashcardSource,
   /current\.deck_type\s*===\s*'card_text'\s*&&\s*revealed\s*\?\s*null/,

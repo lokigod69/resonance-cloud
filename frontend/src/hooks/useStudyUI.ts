@@ -7,6 +7,7 @@ import { useVideoPlayback } from './useVideoPlayback'
 import { useAuth } from './useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
+import { canonicalizeLanguageValue, languagesMatch } from '@/lib/languages'
 
 export type { StudyMode } from './useStudySession'
 
@@ -26,7 +27,7 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
   const queueFilter = isStudyQueue(queueParam) ? queueParam : null
   const { user } = useAuth()
   const { activeLanguage, setActiveLanguage } = useLanguage()
-  const studyLanguage = langParam ?? activeLanguage
+  const studyLanguage = canonicalizeLanguageValue(langParam ?? activeLanguage)
 
   const [deckFilter, setDeckFilter] = useState<string>(deckParam ?? 'all')
   const [allDecks, setAllDecks] = useState<DeckOption[]>([])
@@ -41,13 +42,14 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
   }, [user])
 
   useEffect(() => {
-    if (!langParam || activeLanguage === langParam) return
-    setActiveLanguage(langParam)
+    const canonicalLangParam = canonicalizeLanguageValue(langParam)
+    if (!canonicalLangParam || activeLanguage === canonicalLangParam) return
+    setActiveLanguage(canonicalLangParam)
   }, [activeLanguage, langParam, setActiveLanguage])
 
   // Filter decks to active language
   const decks = studyLanguage
-    ? allDecks.filter(d => d.target_language === studyLanguage)
+    ? allDecks.filter(d => languagesMatch(d.target_language, studyLanguage))
     : allDecks
 
   // Reset deck filter when language changes (selected deck may not be in new language)

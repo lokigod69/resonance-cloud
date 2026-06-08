@@ -11,6 +11,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
 import { staticLibraryRouteSuffix } from '@/lib/staticLibraryLanguage'
+import { canonicalizeLanguageValue } from '@/lib/languages'
 
 type DeckSummary = {
   id: string
@@ -62,14 +63,15 @@ export default function DashboardPG() {
   }, [loadDashboardData])
 
   const availableLanguages = useMemo(
-    () => Array.from(new Set(decks.map((deck) => deck.target_language).filter((lang): lang is string => Boolean(lang)))),
+    () => Array.from(new Set(decks.map((deck) => canonicalizeLanguageValue(deck.target_language)).filter(Boolean))),
     [decks],
   )
 
   useEffect(() => {
     if (dashboardLoading || availableLanguages.length === 0) return
-    if (queryLang && availableLanguages.includes(queryLang)) {
-      setActiveLanguage(queryLang)
+    const canonicalQueryLang = canonicalizeLanguageValue(queryLang)
+    if (canonicalQueryLang && availableLanguages.includes(canonicalQueryLang)) {
+      setActiveLanguage(canonicalQueryLang)
       return
     }
     if (!activeLanguage || !availableLanguages.includes(activeLanguage)) {
