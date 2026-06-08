@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Check, ChevronDown } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
 
@@ -47,7 +47,16 @@ export function LanguageCluster({ languages, activeLanguage, onSelect }: Languag
   }
 
   return (
-    <div ref={rootRef} className="lang-cluster language-picker">
+    <div
+      ref={rootRef}
+      className={`lang-cluster language-picker ${open ? 'is-open' : ''}`}
+      onPointerEnter={(event) => {
+        if (event.pointerType === 'mouse' && hasChoices) setOpen(true)
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === 'mouse') setOpen(false)
+      }}
+    >
       <button
         type="button"
         className="lang-pill lang-pill-active language-picker-trigger"
@@ -58,12 +67,9 @@ export function LanguageCluster({ languages, activeLanguage, onSelect }: Languag
       >
         <FlagIcon code={activeLanguage} className="w-5 h-auto" />
         <span>{activeLabel}</span>
-        {hasChoices ? (
-          <ChevronDown className={`h-4 w-4 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
-        ) : null}
       </button>
 
-      {open ? (
+      {hasChoices ? (
         <div className="language-picker-panel" role="listbox" aria-label={t('categories.targetLanguageLabel')}>
           {languages.map((language) => {
             const selected = language === activeLanguage

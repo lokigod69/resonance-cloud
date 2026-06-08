@@ -672,7 +672,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'study.mode.canvas.desc': 'Words floating in a themed world. Click to reveal.',
     'study.queue.review': 'Review',
     'study.queue.learn': 'New',
-    'study.queue.strengthen': 'Practice',
+    'study.queue.strengthen': 'Train',
     'study.queue.mastered': 'Mastered',
     'study.queue.header': 'Studying: {label} — {count} words',
     'study.queue.canvasChooseAesthetic': 'Choose a Canvas style',
