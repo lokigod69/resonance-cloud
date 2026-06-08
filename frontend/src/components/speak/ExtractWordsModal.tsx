@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Loader2, X } from 'lucide-react'
 import { WordChips } from '@/components/generate/shared/GlassInput'
 import { useExtractVocabulary, type ExtractVocabularyItem } from '@/hooks/useExtractVocabulary'
@@ -31,6 +31,7 @@ export function ExtractWordsModal({
   const [deckName, setDeckName] = useState(defaultDeckName)
   const [hasLoaded, setHasLoaded] = useState(false)
   const [retryToken, setRetryToken] = useState(0)
+  const importInFlightRef = useRef(false)
 
   const words = useMemo(() => items.map((item) => item.word), [items])
   const details = useMemo(
@@ -63,7 +64,8 @@ export function ExtractWordsModal({
   }, [baseLanguage, conversationId, extractVocabulary, messages, retryToken, targetLanguage])
 
   async function handleImport() {
-    if (items.length === 0 || submitting) return
+    if (items.length === 0 || submitting || importInFlightRef.current) return
+    importInFlightRef.current = true
     try {
       const deckId = await submitImagelessImport({
         deckName: deckName.trim() || defaultDeckName,
@@ -74,6 +76,7 @@ export function ExtractWordsModal({
       })
       onImported(deckId)
     } catch {
+      importInFlightRef.current = false
       // Error state is surfaced by useSubmitImagelessImport.
     }
   }

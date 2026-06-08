@@ -12,13 +12,9 @@ export interface ImagelessCardProps {
 
 export function ImagelessCard({
   word,
-  translation,
-  ipa,
-  revealed,
   targetLanguage = '',
   className,
 }: ImagelessCardProps) {
-  const cleanIpa = ipa?.trim()
   const isPhrase = /\s/.test(word.trim())
 
   return (
@@ -43,19 +39,6 @@ export function ImagelessCard({
           {word}
         </h2>
 
-        {cleanIpa && (
-          <p className="w-full text-balance text-[clamp(0.9rem,2.1vw,1.25rem)] leading-snug text-white/78">
-            {cleanIpa}
-          </p>
-        )}
-
-        <div className="min-h-[clamp(1.25rem,3vw,1.75rem)]">
-          {revealed && translation.trim() && (
-            <p className="w-full text-balance text-[clamp(1rem,2.6vw,1.6rem)] leading-snug text-white/70">
-              {translation}
-            </p>
-          )}
-        </div>
       </div>
     </div>
   )

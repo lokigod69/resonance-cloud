@@ -336,6 +336,8 @@ export default function Decks() {
                     <div className="classic-deck-placeholder">
                       {deck.status === 'generating' ? (
                         <Loader className="w-8 h-8 text-gray-600 animate-spin" />
+                      ) : isImagelessDeck ? (
+                        <Type className="w-8 h-8 text-gray-600/30" />
                       ) : (
                         <Music className="w-8 h-8 text-gray-600/30" />
                       )}
@@ -344,12 +346,6 @@ export default function Decks() {
                 </div>
                 <div className="classic-deck-body">
                   <h3>{displayName}</h3>
-                  {isImagelessDeck && (
-                    <span className="inline-flex w-fit items-center gap-1 rounded-full border border-border/70 bg-card px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                      <Type className="h-3 w-3" />
-                      {t('decks.imageless.badge')}
-                    </span>
-                  )}
                   <p>{deckLanguageLabel} &bull; {tp('dashboard.wordCount', counts.total)}</p>
                   {deck.status !== 'complete' && (
                     <p className="classic-deck-status">

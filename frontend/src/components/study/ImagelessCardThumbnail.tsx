@@ -11,12 +11,9 @@ interface ImagelessCardThumbnailProps {
 
 export function ImagelessCardThumbnail({
   word,
-  translation,
-  ipa,
   targetLanguage,
   className,
 }: ImagelessCardThumbnailProps) {
-  const cleanIpa = ipa?.trim()
   const isPhrase = /\s/.test(word.trim())
 
   return (
@@ -34,20 +31,6 @@ export function ImagelessCardThumbnail({
             {word}
           </h2>
 
-          {cleanIpa && (
-            <p
-              className="w-full truncate text-[clamp(0.72rem,1.6vw,0.92rem)] leading-snug text-white/70"
-              aria-label={`Pronunciation guidance: ${cleanIpa}`}
-            >
-              {cleanIpa}
-            </p>
-          )}
-
-          {translation.trim() && (
-            <p className="w-full line-clamp-2 text-balance text-[clamp(0.78rem,1.8vw,1rem)] leading-snug text-white/58">
-              {translation}
-            </p>
-          )}
         </div>
       </div>
     </div>

@@ -273,7 +273,7 @@ export default function StudyFlashcard() {
 
               {/* Reveal area */}
               <div className="text-center mb-6">
-                {current.deck_type === 'card_text' && revealed ? null : revealed ? (
+                {revealed ? (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -281,6 +281,9 @@ export default function StudyFlashcard() {
                   >
                     {current.translation && (
                       <p className="text-xl text-muted-foreground long-copy">{current.translation}</p>
+                    )}
+                    {current.deck_type === 'card_text' && current.ipa && (
+                      <p className="font-mono text-sm text-muted-foreground/70 long-copy">{current.ipa}</p>
                     )}
                     {current.mnemonic && (
                       <p className="text-sm italic text-foreground/80 mt-3 max-w-lg mx-auto leading-relaxed long-copy">

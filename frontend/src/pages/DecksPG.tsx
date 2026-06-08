@@ -438,16 +438,6 @@ function getDeckThumbnailUrl(deck: Deck, thumbnail: string | undefined): string 
   return deck.deck_type === 'card' ? getCardThumbUrl(thumbnail) ?? undefined : thumbnail
 }
 
-function ImagelessDeckBadge() {
-  const { t } = useTranslation()
-  return (
-    <span className="inline-flex w-fit items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--pg-text-dim)]">
-      <Type className="h-3 w-3" />
-      {t('decks.imageless.badge')}
-    </span>
-  )
-}
-
 /* ─── Stack View ─────────────────────────────────── */
 
 function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
@@ -614,7 +604,6 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
             <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {languageLabel}
           </p>
           <h2 className="text-2xl font-light text-[var(--text-primary)] font-display">{displayName}</h2>
-          {deck.deck_type === 'card_text' && <div className="mt-2"><ImagelessDeckBadge /></div>}
         </div>
         <p className="text-[var(--pg-text-dim)] text-sm">{tp('dashboard.wordCount', counts.total)}</p>
       </div>
@@ -661,7 +650,6 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
               <h3 className="font-semibold font-display text-sm mb-1 group-hover:text-[var(--accent)] transition-colors">
                 {displayName}
               </h3>
-              {deck.deck_type === 'card_text' && <div className="mb-2"><ImagelessDeckBadge /></div>}
               <p className="text-xs text-[var(--pg-text-dim)]">
                 <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {languageLabel} &middot; {tp('dashboard.wordCount', counts.total)}
               </p>
@@ -1038,7 +1026,7 @@ function WaterDeckCard({
   onClick,
 }: WaterDeckCardProps) {
   const { t, tp, locale } = useTranslation()
-  const { counts, displayName, languageLabel } = getDeckMeta(deck, wordCounts, locale, t)
+  const { counts, displayName } = getDeckMeta(deck, wordCounts, locale, t)
   const thumb = getDeckThumbnailUrl(deck, thumbnails[deck.id])
   const isGenerating = deck.status === 'generating'
   const virtualOffset = useTransform(carouselPosition, (position) => index - (Number.isFinite(position) ? position : 0))
@@ -1095,12 +1083,7 @@ function WaterDeckCard({
         <div className="water-deck-card-dim" aria-hidden="true" />
 
         <div className="water-deck-copy">
-          <p className="water-deck-language">
-            <FlagIcon code={deck.target_language} className="w-4 h-auto" />
-            <span>{languageLabel}</span>
-          </p>
           <h2>{displayName}</h2>
-          {deck.deck_type === 'card_text' && <ImagelessDeckBadge />}
           <p className="water-deck-count">
             {tp('dashboard.wordCount', counts.total)}
             {deck.status !== 'complete' ? <span>{getDeckStatusLabel(deck.status, t)}</span> : null}
@@ -1123,7 +1106,7 @@ interface WaterDeckArtworkProps {
 function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, isPriority = false, reflection = false }: WaterDeckArtworkProps) {
   const { t } = useTranslation()
   const languageLabel = getDeckLanguageLabel(deck.target_language, t)
-  const Icon = isGenerating ? Sparkles : Music
+  const Icon = isGenerating ? Sparkles : deck.deck_type === 'card_text' ? Type : Music
   const [loadedThumbnail, setLoadedThumbnail] = useState<string | null>(null)
   const imageLoaded = Boolean(thumbnail && loadedThumbnail === thumbnail)
 

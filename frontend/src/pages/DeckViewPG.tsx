@@ -764,7 +764,7 @@ export default function DeckViewPG() {
                   {/* Word info */}
                   <div className="p-2.5">
                     <p className="text-sm font-medium font-display truncate">{word.word}</p>
-                    {word.translation && (
+                    {!isTextDeck && word.translation && (
                       <p className="text-xs text-[var(--pg-text-dim)] truncate">{word.translation}</p>
                     )}
                   </div>
@@ -969,7 +969,7 @@ export default function DeckViewPG() {
                             >
                               {word.word}
                             </button>
-                            {word.translation && (
+                            {!isTextDeck && word.translation && (
                               <p className="text-base text-gray-400 mt-1 long-copy">{word.translation}</p>
                             )}
                             {(() => {

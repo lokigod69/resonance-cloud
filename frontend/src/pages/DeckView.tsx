@@ -677,7 +677,7 @@ export default function DeckView() {
                   {/* Info */}
                   <div className="p-3 space-y-0.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
-                    {word.translation && (
+                    {!isTextDeck && word.translation && (
                       <p className="text-xs text-muted-foreground truncate">{word.translation}</p>
                     )}
                   </div>

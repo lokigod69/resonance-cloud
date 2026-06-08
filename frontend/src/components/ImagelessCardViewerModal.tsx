@@ -36,6 +36,8 @@ export default function ImagelessCardViewerModal({
 }: ImagelessCardViewerModalProps) {
   const { playWord } = usePronunciation()
   const { t } = useTranslation()
+  const cleanTranslation = word.translation?.trim()
+  const cleanIpa = word.ipa?.trim()
 
   useEffect(() => {
     if (!isOpen) return
@@ -77,7 +79,10 @@ export default function ImagelessCardViewerModal({
             targetLanguage={word.target_language ?? word.language ?? ''}
           />
 
-          <div className="flex justify-center">
+          <div
+            data-imageless-modal-details
+            className="flex flex-col items-center justify-center gap-1.5 text-center"
+          >
             <button
               type="button"
               onClick={() => { void playWord(word) }}
@@ -91,6 +96,12 @@ export default function ImagelessCardViewerModal({
             >
               {word.word}
             </button>
+            {cleanTranslation && (
+              <p className="max-w-2xl text-lg text-white/65 long-copy">{cleanTranslation}</p>
+            )}
+            {cleanIpa && (
+              <p className="max-w-2xl font-mono text-sm text-white/45 long-copy">{cleanIpa}</p>
+            )}
           </div>
 
           {isManageMode && (

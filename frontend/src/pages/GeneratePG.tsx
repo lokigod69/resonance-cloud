@@ -97,6 +97,7 @@ export default function GeneratePG() {
   const [generated, setGenerated] = useState(false)
   const [generatedDeckId, setGeneratedDeckId] = useState<string | null>(null)
   const hasNavigatedToDeckRef = useRef(false)
+  const submitInFlightRef = useRef(false)
 
   const { t } = useTranslation()
   const { translateAndIpa } = useTranslateAndIpa()
@@ -212,6 +213,7 @@ export default function GeneratePG() {
       premiumInfographicStyle?: PremiumInfographicStyle
     },
   ) {
+    if (submitInFlightRef.current) return
     if (!user) return
     const isQuickGenerate = options?.isQuickGenerate ?? false
     const effectiveWords = wordsOverride ?? state.words
@@ -220,6 +222,7 @@ export default function GeneratePG() {
     const effectiveProductLane = existingDeck?.deck_type === 'card_text' ? 'card_text' : state.productLane
     if (!effectiveProductLane) return
 
+    submitInFlightRef.current = true
     setSubmitting(true)
     setError(null)
 
@@ -247,7 +250,7 @@ export default function GeneratePG() {
           triggerImagelessTts(() => fetchLatestWordIds(existingDeck.id, insertedCount))
         } else {
           targetDeckId = await submitImagelessImport({
-            deckName: state.deckName.trim() || `${targetLanguage || 'Language'} Text Deck`,
+            deckName: state.deckName.trim() || 'Text Deck',
             targetLanguage: targetLanguageCode,
             baseLanguage: baseLanguageCode,
             origin,
@@ -283,6 +286,7 @@ export default function GeneratePG() {
       setGeneratedDeckId(targetDeckId)
       setGenerated(true)
     } catch (err: unknown) {
+      submitInFlightRef.current = false
       const msg = err instanceof Error ? err.message : t('common.somethingWentWrong')
       setError(msg)
       toast(msg, 'error')

@@ -9,6 +9,10 @@ import { FlagIcon } from '@/components/ui/FlagIcon'
 import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useTranslateAndIpa } from '@/hooks/useTranslateAndIpa'
+import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
+import { useAppendImagelessCards } from '@/hooks/useAppendImagelessCards'
+import { useGenerateImagelessTts } from '@/hooks/useGenerateImagelessTts'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 import {
@@ -87,12 +91,44 @@ const ART_GROUP_LABEL_KEYS: Record<string, string> = {
   'Genre & Fantasy': 'generateGo.artGroup.genreFantasy',
 }
 
+function isLaneLockedDeckType(deckType: ExistingDeck['deck_type'] | null | undefined): boolean {
+  return deckType === 'video' || deckType === 'card_text'
+}
+
+async function fetchAllWordIds(deckId: string): Promise<string[]> {
+  const { data, error } = await supabase
+    .from('words')
+    .select('id')
+    .eq('deck_id', deckId)
+    .order('created_at', { ascending: true })
+    .order('id', { ascending: true })
+  if (error) throw new Error(error.message)
+  return (data ?? []).map((row) => row.id as string)
+}
+
+async function fetchLatestWordIds(deckId: string, count: number): Promise<string[]> {
+  if (count <= 0) return []
+  const { data, error } = await supabase
+    .from('words')
+    .select('id')
+    .eq('deck_id', deckId)
+    .order('created_at', { ascending: false })
+    .order('id', { ascending: false })
+    .limit(count)
+  if (error) throw new Error(error.message)
+  return (data ?? []).map((row) => row.id as string).reverse()
+}
+
 export default function GenerateGO() {
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { activeLanguage } = useLanguage()
   const { t, tp } = useTranslation()
   const navigate = useNavigate()
+  const { translateAndIpa } = useTranslateAndIpa()
+  const { submitImagelessImport } = useSubmitImagelessImport()
+  const { appendImagelessCards } = useAppendImagelessCards()
+  const { generateImagelessTts } = useGenerateImagelessTts()
 
   const [step, setStep] = useState(1)
 
@@ -123,6 +159,7 @@ export default function GenerateGO() {
   const [generated, setGenerated] = useState(false)
   const [generatedDeckId, setGeneratedDeckId] = useState<string | null>(null)
   const hasNavigatedToDeckRef = useRef(false)
+  const submitInFlightRef = useRef(false)
 
   // "Add Cards" mode: existing deck via ?deckId=xxx
   const [searchParams] = useSearchParams()
@@ -157,11 +194,13 @@ export default function GenerateGO() {
       setExistingDeck({ ...deck, last_card_image_model: lastCardImageModel })
       setLanguage(deck.target_language)
       const lane: ProductLane =
-        deck.deck_type === 'video'
-          ? 'video'
-          : lastCardImageModel === 'gpt_image_2'
-            ? 'card_premium'
-            : 'card_standard'
+        deck.deck_type === 'card_text'
+          ? 'card_text'
+          : deck.deck_type === 'video'
+            ? 'video'
+            : lastCardImageModel === 'gpt_image_2'
+              ? 'card_premium'
+              : 'card_standard'
       setProductLane(lane)
       if (lane === 'card_premium') {
         setCardImageStyle(DEFAULT_CARD_LAYER2_ART_STYLE)
@@ -174,7 +213,7 @@ export default function GenerateGO() {
       }
       // Existing video deck: skip language and lane (both locked) → words.
       // Existing card deck: skip language, show lane (preselected, mutable).
-      setStep(deck.deck_type === 'video' ? 3 : 2)
+      setStep(isLaneLockedDeckType(deck.deck_type) ? 3 : 2)
     })()
     return () => { cancelled = true }
   }, [deckIdParam])
@@ -194,7 +233,10 @@ export default function GenerateGO() {
   }, [deckIdParam, language, activeLanguage])
 
   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
-  const generatedQueueIsCard = existingDeck?.deck_type === 'card' || isCardLane(productLane)
+  const generatedQueueIsCard = existingDeck?.deck_type === 'card'
+    || existingDeck?.deck_type === 'card_text'
+    || productLane === 'card_text'
+    || isCardLane(productLane)
   const { jobStatus, jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(queueDeckId ?? undefined, {
     enabled: generated && !!queueDeckId && !generatedQueueIsCard,
   })
@@ -478,23 +520,64 @@ export default function GenerateGO() {
     wordsOverride?: string[],
     options?: { premiumQuickMode?: PremiumQuickMode; premiumInfographicStyle?: PremiumInfographicStyle },
   ) {
+    if (submitInFlightRef.current) return
     const isQuickGenerate = wordsOverride !== undefined && !options?.premiumQuickMode
     const effectiveWords = wordsOverride ?? words
     const effectiveVocabularyItems = selectedVocabularyItems.filter((item) =>
       effectiveWords.some((word) => wordsEqual(word, item.targetTerm)),
     )
+    const effectiveProductLane = existingDeck?.deck_type === 'card_text' ? 'card_text' : productLane
+    const effectiveLanguage = existingDeck?.target_language ?? language
     if (!user) return
-    if (!productLane) return
-    if (!language) return
+    if (!effectiveProductLane) return
+    if (!effectiveLanguage) return
     if (effectiveWords.length === 0) return
 
+    submitInFlightRef.current = true
     setSubmitting(true)
     setError(null)
 
     try {
-      const isCard = isCardLane(productLane)
-      const cardImageModel = laneToCardImageModel(productLane)
-      const deckType = laneToDeckType(productLane) ?? 'video'
+      if (effectiveProductLane === 'card_text') {
+        const targetLanguageCode = LANGUAGES.find((lang) => lang.value === effectiveLanguage)?.code ?? effectiveLanguage
+        const baseLanguageValue = profile?.base_language ?? 'English'
+        const baseLanguageCode = LANGUAGES.find((lang) => lang.value === baseLanguageValue)?.code ?? baseLanguageValue
+        const items = await translateAndIpa({
+          items: effectiveWords.map((word) => ({ word, is_phrase: /\s/.test(word.trim()) })),
+          target_language: targetLanguageCode,
+          base_language: baseLanguageCode,
+        })
+
+        const origin = effectiveVocabularyItems.length > 0 ? 'category' : 'manual'
+        let targetDeckId: string
+        if (existingDeck?.id) {
+          targetDeckId = existingDeck.id
+          const insertedCount = await appendImagelessCards({
+            p_deck_id: existingDeck.id,
+            p_items: items,
+            p_origin: origin,
+          })
+          triggerImagelessTts(() => fetchLatestWordIds(existingDeck.id, insertedCount))
+        } else {
+          targetDeckId = await submitImagelessImport({
+            deckName: deckName.trim() || 'Text Deck',
+            targetLanguage: targetLanguageCode,
+            baseLanguage: baseLanguageCode,
+            origin,
+            items,
+          })
+          triggerImagelessTts(() => fetchAllWordIds(targetDeckId))
+        }
+        setGeneratedDeckId(targetDeckId)
+        setGenerated(true)
+        hasNavigatedToDeckRef.current = true
+        navigate(getGeneratedDeckHref(targetDeckId))
+        return
+      }
+
+      const isCard = isCardLane(effectiveProductLane)
+      const cardImageModel = laneToCardImageModel(effectiveProductLane)
+      const deckType = laneToDeckType(effectiveProductLane) ?? 'video'
 
       const movieOverride =
         !isCard && !isQuickGenerate && (vibe === 'movie' || vibe === 'specific_movie')
@@ -575,7 +658,7 @@ export default function GenerateGO() {
           : {
               user_id: user.id,
               name: deckName.trim() || `${language} Deck — ${new Date().toLocaleDateString()}`,
-              target_language: language,
+              target_language: effectiveLanguage,
               art_style: artStyleValue,
               movie_override: movieOverride,
               word_count: effectiveWords.length,
@@ -587,7 +670,7 @@ export default function GenerateGO() {
           user_id: user.id,
           ...(existingDeck ? { deck_id: existingDeck.id } : {}),
           status: 'pending',
-          target_language: language,
+          target_language: effectiveLanguage,
           art_style: isCard ? null : artStyleValue ?? existingDeck?.art_style ?? null,
           movie_override: isCard ? null : movieOverride ?? existingDeck?.movie_override ?? null,
           words_total: effectiveWords.length,
@@ -621,6 +704,7 @@ export default function GenerateGO() {
       setGeneratedDeckId(targetDeckId)
       setGenerated(true)
     } catch (err: unknown) {
+      submitInFlightRef.current = false
       const msg = err instanceof Error ? err.message : 'Something went wrong'
       setError(msg)
       toast(msg, 'error')
@@ -629,6 +713,17 @@ export default function GenerateGO() {
   }
 
   // ── Render helpers ────────────────────────────────
+
+  function triggerImagelessTts(loadWordIds: () => Promise<string[]>) {
+    void loadWordIds()
+      .then((wordIds) => {
+        if (wordIds.length > 0) {
+          return generateImagelessTts({ word_ids: wordIds })
+        }
+        return undefined
+      })
+      .catch(() => undefined)
+  }
 
   const credits = profile?.credits
   const creditCost = computeCreditCost(productLane, words.length)
