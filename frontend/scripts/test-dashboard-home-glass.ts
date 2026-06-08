@@ -99,9 +99,14 @@ assertIncludes(css, 'rgba(0, 0, 0, 0.54)', 'dashboard glass uses an opaque black
 assertIncludes(css, '.dashboard-library-tile', 'dashboard Library tile has dedicated glass styling')
 assertIncludes(css, '@media (hover: hover) and (pointer: fine)', 'desktop language picker opens on pointer hover')
 assertIncludes(css, '.language-picker:hover .language-picker-panel', 'desktop language picker keeps hover behavior')
-assertIncludes(css, 'rgba(8, 4, 14, 0.94)', 'language picker panel uses a nearly opaque glass base')
-assertIncludes(css, 'backdrop-filter: blur(72px) saturate(1.55)', 'language picker panel uses strong glass blur')
-assertIncludes(css, 'justify-content: center;', 'mobile home stack is vertically centered instead of cramped at the top')
+assertIncludes(css, 'calc(var(--app-safe-top) + 0.85rem)', 'mobile account strip sits below the iOS safe area')
+assertIncludes(css, '.home-account-strip {', 'home account strip has explicit mobile spacing')
+assertIncludes(css, 'margin-bottom: clamp(1.45rem, 4dvh, 2.35rem)', 'mobile account strip leaves breathing room before Welcome')
+assertIncludes(css, '.language-picker::after', 'desktop language picker has a hover bridge into the panel')
+assertIncludes(css, 'rgba(5, 3, 8, 0.985)', 'language picker panel uses a near-opaque glass base')
+assertIncludes(css, 'backdrop-filter: blur(96px) saturate(1.65)', 'language picker panel uses stronger glass blur')
+assertIncludes(css, 'max-width: min(46rem, 72vw)', 'desktop Home action grid uses available width')
+assertIncludes(css, 'min-height: 8.25rem', 'desktop Home action tiles are larger than mobile tiles')
 assertIncludes(
   css,
   '@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))',
