@@ -13,6 +13,8 @@ import { supabase } from '@/lib/supabase'
 import { ensureNativeMicrophonePermission } from '@/lib/nativeMicrophone'
 import { publicApiUrl } from '@/lib/publicOrigins'
 import type { GrokLevel } from '@/lib/grokPedagogy'
+import { useTranslation } from '@/hooks/useTranslation'
+import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 
 export type GrokStatus = 'idle' | 'connecting' | 'recording' | 'thinking' | 'speaking' | 'error'
 
@@ -37,6 +39,7 @@ export interface UseGrokRealtimeReturn {
   error: string | null
   isConnected: boolean
   startSession: (params: StartGrokSessionParams) => Promise<void>
+  reconnect: () => Promise<void>
   endSession: () => Promise<void>
   startListening: () => void
   sendTurn: () => void
@@ -287,6 +290,7 @@ function sleepWithCancel(ms: number): { promise: Promise<void>; cancel: () => vo
 }
 
 export function useGrokRealtime(): UseGrokRealtimeReturn {
+  const { t } = useTranslation()
   const [status, setStatus] = useState<GrokStatus>('idle')
   const [messages, setMessages] = useState<GrokMessage[]>([])
   const [error, setError] = useState<string | null>(null)
@@ -635,7 +639,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       }
       URL.revokeObjectURL(url)
       if (mountedRef.current) {
-        setError('Failed to play Grok audio')
+        setError(t('speak.error.tutorAudioPlaybackFailed'))
         setStatus('error')
       }
     }
@@ -658,7 +662,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       }
       URL.revokeObjectURL(url)
       if (mountedRef.current) {
-        setError(err instanceof Error ? err.message : 'Failed to play Grok audio')
+        setError(t('speak.error.tutorAudioPlaybackFailed'))
         setStatus('error')
       }
       grokAudioDebug('htmlBufferedPlayback:play-rejected', {
@@ -668,7 +672,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       })
       return false
     }
-  }, [])
+  }, [t])
 
   const trackPersistencePromise = useCallback(<T,>(promise: Promise<T>) => {
     const tracked = promise as Promise<unknown>
@@ -844,7 +848,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
   const waitForInputCommitAck = useCallback(() => {
     if (pendingInputCommitRef.current) {
-      rejectPendingInputCommit('Previous audio turn did not commit. Please try again.')
+      rejectPendingInputCommit(t('speak.error.audioTurnDidNotCommit'))
     }
 
     return new Promise<void>((resolve, reject) => {
@@ -856,7 +860,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         grokAudioDebug('sendTurn:commit-ack-timeout', {
           msSinceCommitSent: performance.now() - startedAt,
         })
-        reject(new Error('Audio turn did not commit. Please try again.'))
+        reject(new Error(t('speak.error.audioTurnDidNotCommit')))
       }, INPUT_COMMIT_ACK_TIMEOUT_MS)
 
       pendingInputCommitRef.current = {
@@ -866,7 +870,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         timeoutId,
       }
     })
-  }, [rejectPendingInputCommit])
+  }, [rejectPendingInputCommit, t])
 
   const handleSocketMessage = useCallback(async (event: MessageEvent<string>) => {
     let payload: Record<string, unknown>
@@ -1049,7 +1053,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         }
         if (commitAckRecoveryPendingClearRef.current) {
           if (pending) {
-            rejectPendingInputCommit('Audio turn did not commit. Please try again.')
+            rejectPendingInputCommit(t('speak.error.audioTurnDidNotCommit'))
           }
           if (GROK_AUDIO_DEBUG) {
             grokAudioDebug('input_audio_buffer:committed-stale-after-timeout', {
@@ -1127,16 +1131,10 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       case 'response.error':
       case 'response.failed': {
         responseInProgressRef.current = false
-        rejectPendingInputCommit('Grok response failed')
-        const responseError = payload.error
-        const message = typeof payload.message === 'string'
-          ? payload.message
-          : responseError && typeof responseError === 'object' && 'message' in responseError
-            ? String((responseError as { message?: unknown }).message)
-            : 'Grok response failed'
+        rejectPendingInputCommit(t('speak.error.realtimeConnectionFailed'))
         console.error('[grok-realtime] Realtime response error:', payload)
         if (mountedRef.current) {
-          setError(message)
+          setError(t('speak.error.realtimeConnectionFailed'))
           setStatus('error')
         }
         break
@@ -1144,14 +1142,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       case 'error': {
         console.error('[grok-realtime] Realtime error:', payload)
         responseInProgressRef.current = false
-        rejectPendingInputCommit('Grok realtime error')
-        const message = typeof payload.message === 'string'
-          ? payload.message
-          : typeof payload.error === 'string'
-            ? payload.error
-            : 'Grok realtime error'
+        rejectPendingInputCommit(t('speak.error.realtimeConnectionFailed'))
         if (mountedRef.current) {
-          setError(message)
+          setError(t('speak.error.realtimeConnectionFailed'))
           setStatus('error')
         }
         break
@@ -1159,12 +1152,12 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       default:
         break
     }
-  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, playHtmlBufferedAudio, prepareIOSPlaybackRouteAfterMic, rejectPendingInputCommit, resetAudioQueue, trackPersistencePromise])
+  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, playHtmlBufferedAudio, prepareIOSPlaybackRouteAfterMic, rejectPendingInputCommit, resetAudioQueue, t, trackPersistencePromise])
 
   const fetchEphemeralToken = useCallback(async (): Promise<string> => {
     const { data, error: sessionError } = await supabase.auth.getSession()
     if (sessionError || !data.session?.access_token) {
-      throw new Error('Missing authentication')
+      throw new Error(t('speak.error.sessionNotConnected'))
     }
 
     currentUserIdRef.current = data.session.user.id
@@ -1176,18 +1169,24 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       },
     })
 
-    const json = await response.json().catch(() => null) as { value?: string; error?: string } | null
+    const json = await response.json().catch(() => null) as ({ value?: string } & SpeakApiErrorPayload) | null
     if (!response.ok) {
-      throw new Error(json?.error || 'Failed to fetch Grok token')
+      console.warn('[grok-realtime] Token request failed:', {
+        status: response.status,
+        error: json?.error,
+        detail: json?.detail,
+        retry_after_seconds: json?.retry_after_seconds,
+      })
+      throw new Error(formatSpeakApiError(t, response.status, json, 'speak.error.realtimeConnectionFailed'))
     }
 
     const token = json?.value
     if (!token) {
-      throw new Error('Token exchange returned no client secret')
+      throw new Error(t('speak.error.realtimeConnectionFailed'))
     }
 
     return token
-  }, [])
+  }, [t])
 
   const flushPendingInputAudio = useCallback(async () => {
     const worklet = workletRef.current
@@ -1492,13 +1491,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       ws.onerror = () => {
         console.error('[grok-realtime] WebSocket error')
         responseInProgressRef.current = false
-        rejectPendingInputCommit('Realtime connection failed')
+        rejectPendingInputCommit(t('speak.error.realtimeConnectionFailed'))
         if (!settled) {
           settled = true
-          reject(new Error('Realtime connection failed'))
+          reject(new Error(t('speak.error.realtimeConnectionFailed')))
         }
         if (mountedRef.current) {
-          setError('Realtime connection failed')
+          setError(t('speak.error.realtimeConnectionFailed'))
           setStatus('error')
         }
       }
@@ -1508,30 +1507,31 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         wsRef.current = null
         responseInProgressRef.current = false
         commitAckRecoveryPendingClearRef.current = false
-        rejectPendingInputCommit('Realtime connection closed')
+        rejectPendingInputCommit(t('speak.error.realtimeConnectionFailed'))
         if (mountedRef.current) {
           setIsConnected(false)
           setIsListening(false)
         }
         if (!settled) {
           settled = true
-          reject(new Error(`Realtime connection closed (${event.code})`))
+          reject(new Error(t('speak.error.realtimeConnectionFailed')))
         } else if (!endingSessionRef.current && mountedRef.current) {
-          setStatus('idle')
+          setError(t('speak.error.realtimeConnectionFailed'))
+          setStatus('error')
         }
         void updateEndedAt(sessionConversationId)
       }
     })
-  }, [fetchEphemeralToken, handleSocketMessage, primeAudioForIOS, rejectPendingInputCommit, updateEndedAt])
+  }, [fetchEphemeralToken, handleSocketMessage, primeAudioForIOS, rejectPendingInputCommit, t, updateEndedAt])
 
   const startListening = useCallback(async () => {
     if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
-      setError('Grok session is not connected')
+      setError(t('speak.error.sessionNotConnected'))
       setStatus('error')
       return
     }
     if (commitAckRecoveryPendingClearRef.current) {
-      setError('Audio turn did not commit. Please try again.')
+      setError(t('speak.error.audioTurnDidNotCommit'))
       setStatus('idle')
       return
     }
@@ -1608,10 +1608,12 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     } catch (err) {
       console.error('[grok-realtime] Failed to start listening:', err)
       setIOSAudioSessionType('playback', 'after-mic-release')
-      setError(err instanceof Error ? err.message : 'Failed to start microphone')
+      setError(err instanceof DOMException && err.name === 'NotAllowedError'
+        ? t('speak.error.microphoneDenied')
+        : t('speak.error.microphoneUnavailable'))
       setStatus('error')
     }
-  }, [ensureAudioContext, isListening, primeAudioForIOS])
+  }, [ensureAudioContext, isListening, primeAudioForIOS, t])
 
   const sendTurn = useCallback(async () => {
     if (statusRef.current !== 'recording') return
@@ -1619,13 +1621,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     const ws = wsRef.current
     if (!ws || ws.readyState !== WebSocket.OPEN) {
       stopListening()
-      setError('Grok session is not connected')
+      setError(t('speak.error.sessionNotConnected'))
       setStatus('error')
       return
     }
     if (commitAckRecoveryPendingClearRef.current) {
       stopListening()
-      setError('Audio turn did not commit. Please try again.')
+      setError(t('speak.error.audioTurnDidNotCommit'))
       setStatus('idle')
       return
     }
@@ -1636,7 +1638,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         })
       }
       stopListening()
-      setError('Grok is still responding. Please try again.')
+      setError(t('speak.error.tutorStillResponding'))
       setStatus('idle')
       return
     }
@@ -1691,7 +1693,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           ws.send(JSON.stringify({ type: 'input_audio_buffer.clear' }))
         }
         inputAudioAppendedRef.current = false
-        setError(err instanceof Error ? err.message : 'Audio turn did not commit. Please try again.')
+        setError(err instanceof Error ? err.message : t('speak.error.audioTurnDidNotCommit'))
         setStatus('idle')
         return
       }
@@ -1715,20 +1717,16 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     } catch (err) {
       console.error('[grok-realtime] Failed to send turn:', err)
       stopListening()
-      setError(err instanceof Error ? err.message : 'Failed to send audio turn')
+      setError(err instanceof Error ? err.message : t('speak.error.audioTurnDidNotCommit'))
       setStatus('error')
     }
-  }, [appendServerVadSilence, flushPendingInputAudio, pauseListeningCapture, prepareIOSPlaybackRouteAfterMic, stopListening, waitForInputCommitAck])
+  }, [appendServerVadSilence, flushPendingInputAudio, pauseListeningCapture, prepareIOSPlaybackRouteAfterMic, stopListening, t, waitForInputCommitAck])
 
   const endSession = useCallback(async () => {
     await teardownSession()
   }, [teardownSession])
 
-  const startSession = useCallback(async (params: StartGrokSessionParams) => {
-    // iOS audio unlock must run inside the user gesture before any await.
-    primeAudioForIOS()
-    await teardownSession()
-
+  const prepareSessionState = useCallback((params: StartGrokSessionParams, clearMessages: boolean) => {
     conversationIdRef.current = crypto.randomUUID()
     sessionParamsRef.current = params
     conversationInsertedRef.current = false
@@ -1763,11 +1761,44 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     audioSessionTypeAtFirstAudioDeltaRef.current = null
     outputContextRecreatedAfterMicRef.current = false
     playheadRef.current = 0
-    setMessages([])
+    if (clearMessages) setMessages([])
     setError(null)
+  }, [])
 
-    await connectAndConfigure(params)
-  }, [connectAndConfigure, primeAudioForIOS, teardownSession])
+  const beginSession = useCallback(async (params: StartGrokSessionParams, clearMessages: boolean) => {
+    // iOS audio unlock must run inside the user gesture before any await.
+    primeAudioForIOS()
+    await teardownSession()
+    prepareSessionState(params, clearMessages)
+
+    try {
+      await connectAndConfigure(params)
+    } catch (err) {
+      console.warn('[grok-realtime] Session connection failed:', err)
+      if (mountedRef.current) {
+        setIsConnected(false)
+        setIsListening(false)
+        setError(err instanceof Error ? err.message : t('speak.error.realtimeConnectionFailed'))
+        setStatus('error')
+      }
+      throw err
+    }
+  }, [connectAndConfigure, prepareSessionState, primeAudioForIOS, t, teardownSession])
+
+  const startSession = useCallback(async (params: StartGrokSessionParams) => {
+    await beginSession(params, true)
+  }, [beginSession])
+
+  const reconnect = useCallback(async () => {
+    if (statusRef.current === 'connecting') return
+    const params = sessionParamsRef.current
+    if (!params) {
+      setError(t('speak.error.sessionNotConnected'))
+      setStatus('error')
+      return
+    }
+    await beginSession(params, false)
+  }, [beginSession, t])
 
   useEffect(() => { isConnectedRef.current = isConnected }, [isConnected])
   useEffect(() => { statusRef.current = status }, [status])
@@ -1786,6 +1817,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     error,
     isConnected,
     startSession,
+    reconnect,
     endSession,
     startListening,
     sendTurn,

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Loader2, Play, Square } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { publicApiUrl } from '@/lib/publicOrigins'
+import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 
 interface VoiceSampleButtonProps {
   voiceName: string
@@ -107,8 +108,14 @@ export function VoiceSampleButton({
           }),
         })
         if (!res.ok) {
-          const errJson = await res.json().catch(() => ({ error: t('speak.voiceSample.requestFailed') }))
-          throw new Error(errJson.error ?? `HTTP ${res.status}`)
+          const errJson = await res.json().catch(() => null) as SpeakApiErrorPayload | null
+          console.warn('[VoiceSampleButton] voice-sample request failed:', {
+            status: res.status,
+            error: errJson?.error,
+            detail: errJson?.detail,
+            retry_after_seconds: errJson?.retry_after_seconds,
+          })
+          throw new Error(formatSpeakApiError(t, res.status, errJson, 'speak.voiceSample.requestFailed'))
         }
         const data = await res.json() as { url?: string }
         if (!data.url) throw new Error(t('speak.voiceSample.noUrl'))

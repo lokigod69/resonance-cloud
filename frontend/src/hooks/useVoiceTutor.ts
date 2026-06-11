@@ -17,6 +17,8 @@ import {
 } from '@/lib/grokIOSAudioDiagnostics'
 import { ensureNativeMicrophonePermission } from '@/lib/nativeMicrophone'
 import { publicApiUrl } from '@/lib/publicOrigins'
+import { useTranslation } from '@/hooks/useTranslation'
+import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 
 const IS_SAFARI = typeof navigator !== 'undefined' && (
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
@@ -179,6 +181,7 @@ function getMimeType(): string {
 }
 
 export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
+  const { t } = useTranslation()
   const baseLangRef = useRef<string | undefined>(baseLang)
   useEffect(() => { baseLangRef.current = baseLang }, [baseLang])
   const resolveNativeLanguage = (): string => {
@@ -494,7 +497,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       try {
         const { data, error: sessionError } = await supabase.auth.getSession()
         if (sessionError || !data.session?.access_token) {
-          throw new Error('Your session expired. Please sign in again.')
+          throw new Error(t('speak.error.sessionNotConnected'))
         }
 
         res = await fetch(publicApiUrl('/api/voice-chat'), {
@@ -509,20 +512,26 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       } catch (err) {
         clearTimeout(timer)
         if (err instanceof Error && err.name === 'AbortError') {
-          throw new Error('Request timed out — please try again')
+          throw new Error(t('speak.error.requestFailed'))
         }
         throw err
       }
       clearTimeout(timer)
 
       if (!res.ok) {
-        const errJson = await res.json().catch(() => ({ error: 'Request failed' }))
-        throw new Error(errJson.error ?? `HTTP ${res.status}`)
+        const errJson = await res.json().catch(() => null) as SpeakApiErrorPayload | null
+        console.warn('[useVoiceTutor] voice-chat request failed:', {
+          status: res.status,
+          error: errJson?.error,
+          detail: errJson?.detail,
+          retry_after_seconds: errJson?.retry_after_seconds,
+        })
+        throw new Error(formatSpeakApiError(t, res.status, errJson))
       }
 
       return res.json()
     },
-    [],
+    [t],
   )
 
   /**
@@ -715,12 +724,15 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     try {
       await playAudio(pendingAudio.base64, pendingAudio.format)
     } catch {
-      // ignore playback errors — user can tap again or proceed
+      if (audioTaskGenerationRef.current !== taskGeneration) return
+      setError(t('speak.error.tutorAudioPlaybackFailed'))
+      setStatus('error')
+      return
     }
     if (audioTaskGenerationRef.current !== taskGeneration) return
     setPendingAudio(null)
     setStatus('idle')
-  }, [pendingAudio, ensureAudioContext, playAudio])
+  }, [pendingAudio, ensureAudioContext, playAudio, t])
 
   // Reveal the last assistant message after 1.5s
   const scheduleReveal = useCallback(() => {
@@ -857,13 +869,13 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         try {
           await fetchAndPlayGreeting(lang, syntheticVoice)
         } catch (err) {
-          setError(err instanceof Error ? err.message : 'Failed to start conversation')
+          setError(err instanceof Error ? err.message : t('speak.error.requestFailed'))
           setStatus('error')
         }
       }
       // Otherwise level is null → State 2.5 (level picker) renders
     },
-    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS, stopAllAudio],
+    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS, stopAllAudio, t],
   )
 
   const startConversationWithGemini = useCallback(
@@ -923,12 +935,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         try {
           await fetchAndPlayGreeting(lang, syntheticVoice)
         } catch (err) {
-          setError(err instanceof Error ? err.message : 'Failed to start conversation')
+          setError(err instanceof Error ? err.message : t('speak.error.requestFailed'))
           setStatus('error')
         }
       }
     },
-    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS, stopAllAudio],
+    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS, stopAllAudio, t],
   )
 
   // Hot-swap (Part 3): change the active voice/character mid-conversation
@@ -1122,11 +1134,11 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       try {
         await fetchAndPlayGreeting(lang, randomVoice)
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to start scenario')
+        setError(err instanceof Error ? err.message : t('speak.error.requestFailed'))
         setStatus('error')
       }
     },
-    [endConversation, fetchAndPlayGreeting, ensureAudioContext, primeAudioForIOS, stopAllAudio],
+    [endConversation, fetchAndPlayGreeting, ensureAudioContext, primeAudioForIOS, stopAllAudio, t],
   )
 
   const selectLevel = useCallback(
@@ -1147,12 +1159,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         try {
           await fetchAndPlayGreeting(lang, v)
         } catch (err) {
-          setError(err instanceof Error ? err.message : 'Failed to start conversation')
+          setError(err instanceof Error ? err.message : t('speak.error.requestFailed'))
           setStatus('error')
         }
       }
     },
-    [language, fetchAndPlayGreeting, primeAudioForIOS],
+    [language, fetchAndPlayGreeting, primeAudioForIOS, t],
   )
 
   const changeVoice = useCallback(() => {
@@ -1267,10 +1279,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     try {
       await fetchAndPlayGreeting(lang, v)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
+      setError(err instanceof Error ? err.message : t('speak.error.requestFailed'))
       setStatus('error')
     }
-  }, [language, fetchAndPlayGreeting, endConversation, stopAllAudio])
+  }, [language, fetchAndPlayGreeting, endConversation, stopAllAudio, t])
 
   /**
    * Acquire a MediaStream if one isn't already active.
@@ -1298,7 +1310,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const startRecording = useCallback(async () => {
     primeAudioForIOS()
     if (!isSupported) {
-      setError('Audio recording is not supported in this browser. Please try Chrome or Safari.')
+      setError(t('speak.error.audioRecordingUnsupported'))
       setStatus('error')
       return
     }
@@ -1402,7 +1414,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
             setStatus('idle')
           }
         } catch (err) {
-          const msg = err instanceof Error ? err.message : 'Something went wrong. Tap to try again.'
+          const msg = err instanceof Error ? err.message : t('speak.error.requestFailed')
           setError(msg)
           setStatus('error')
         }
@@ -1429,13 +1441,13 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         audioSessionType: getNavigatorAudioSession()?.type ?? null,
       })
       if (err instanceof DOMException && err.name === 'NotAllowedError') {
-        setError('Microphone access denied. Please allow microphone access in your browser settings.')
+        setError(t('speak.error.microphoneDenied'))
       } else {
-        setError('Could not access microphone. Please check your device settings.')
+        setError(t('speak.error.microphoneUnavailable'))
       }
       setStatus('error')
     }
-  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream, ensureAudioContext, playAudio, persistMessages, primeAudioForIOS])
+  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream, ensureAudioContext, playAudio, persistMessages, primeAudioForIOS, t])
 
   const stopRecording = useCallback(() => {
     const recorder = mediaRecorderRef.current
@@ -1551,8 +1563,14 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const replayMessageAudio = useCallback(async (message: TutorMessage) => {
     if (!message.audioBase64 || message.role !== 'assistant') return
     if (statusRef.current === 'playing') return
-    await playAudio(message.audioBase64, message.audioFormat || 'mp3')
-  }, [playAudio])
+    try {
+      await playAudio(message.audioBase64, message.audioFormat || 'mp3')
+    } catch (err) {
+      console.warn('[useVoiceTutor] Failed to replay tutor audio:', err)
+      setError(t('speak.error.tutorAudioPlaybackFailed'))
+      setStatus('error')
+    }
+  }, [playAudio, t])
 
   return {
     language,

@@ -19,6 +19,7 @@ export function EndConversationScreen({
   onExtract,
 }: EndConversationScreenProps) {
   const { t } = useTranslation()
+  const tutorLabel = tutor === 'gemini' ? t('speak.mode.voices') : t('speak.mode.characters')
 
   return (
     <div className="speak-chat-shell fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-route-top-offset)] z-30 flex flex-col">
@@ -26,7 +27,7 @@ export function EndConversationScreen({
         <div className="mx-auto flex w-full max-w-5xl items-center gap-2 px-4 py-3">
           <FlagIcon code={targetLanguage} className="w-6 h-auto shrink-0" />
           <div className="min-w-0">
-            <p className="text-sm font-medium capitalize text-[var(--text-primary)] truncate">{tutor}</p>
+            <p className="text-sm font-medium text-[var(--text-primary)] truncate">{tutorLabel}</p>
             <p className="text-xs text-[var(--text-muted)] truncate">{t('speak.conversationEnded')}</p>
           </div>
         </div>

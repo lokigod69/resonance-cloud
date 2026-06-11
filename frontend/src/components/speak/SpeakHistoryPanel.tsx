@@ -8,6 +8,7 @@ import { getCharacterById } from '@/characterRegistry'
 import { GEMINI_CHARACTER_MODES } from '@/data/geminiCharacterModes'
 import { GEMINI_ACCENTS } from '@/data/geminiAccents'
 import { publicApiUrl } from '@/lib/publicOrigins'
+import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 
 interface Conversation {
   id: string
@@ -223,13 +224,26 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
         }),
       })
       if (!res.ok) {
+        const errorData = await res.json().catch(() => null) as SpeakApiErrorPayload | null
+        console.warn('[SpeakHistoryPanel] Corrections request failed:', {
+          status: res.status,
+          error: errorData?.error,
+          detail: errorData?.detail,
+          retry_after_seconds: errorData?.retry_after_seconds,
+        })
         setCorrectionsError(res.status === 401
           ? t('speak.history.sessionExpired')
-          : t('speak.history.correctionsUnavailable'))
+          : formatSpeakApiError(t, res.status, errorData, 'speak.history.correctionsUnavailable'))
         return
       }
-      const data = await res.json()
-      const list: Correction[] = Array.isArray(data.corrections) ? data.corrections : []
+      const data = await res.json().catch(() => null) as { corrections?: unknown } | null
+      if (!data || !Array.isArray(data.corrections)) {
+        console.warn('[SpeakHistoryPanel] Corrections response missing corrections array:', data)
+        setCorrectionsError(t('speak.history.correctionsUnavailable'))
+        return
+      }
+
+      const list = data.corrections as Correction[]
       setCorrections(list)
       await supabase.from('speak_conversations')
         .update({ corrections: list })
@@ -238,7 +252,6 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
     } catch (err) {
       console.error('Corrections fetch failed:', err)
       setCorrectionsError(t('speak.history.correctionsUnavailable'))
-      setCorrections([])
     } finally {
       setCorrectionsLoading(false)
     }
@@ -306,12 +319,12 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
                       {transcriptSub ? <span className="text-gray-400 font-normal"> · {transcriptSub}</span> : null}
                       {isGemini && (
                         <span className="ml-2 align-middle inline-block text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-900/50 text-cyan-300 border border-cyan-500/30">
-                          Gemini
+                          {t('speak.mode.voices')}
                         </span>
                       )}
                       {isGrok && (
                         <span className="ml-2 align-middle inline-block text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-violet-900/50 text-violet-300 border border-violet-500/30">
-                          Grok
+                          {t('speak.mode.live')}
                         </span>
                       )}
                     </p>
@@ -395,12 +408,12 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
                             )}
                             {isGemini && (
                               <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-900/50 text-cyan-300 border border-cyan-500/30 shrink-0">
-                                Gemini
+                                {t('speak.mode.voices')}
                               </span>
                             )}
                             {isGrok && (
                               <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-violet-900/50 text-violet-300 border border-violet-500/30 shrink-0">
-                                Grok
+                                {t('speak.mode.live')}
                               </span>
                             )}
                             {levelEmoji && <span className="text-sm">{levelEmoji}</span>}

@@ -1,5 +1,6 @@
 import { AudioWaveform, Gem, Sparkles, type LucideIcon } from 'lucide-react'
 import type { SpeakProvider } from './VoiceTutorPicker'
+import { useTranslation } from '@/hooks/useTranslation'
 
 interface ProviderToggleProps {
   value: SpeakProvider
@@ -9,19 +10,21 @@ interface ProviderToggleProps {
   language?: string
 }
 
-const OPTIONS: Array<{ id: SpeakProvider; short: string; full: string; Icon: LucideIcon }> = [
-  { id: 'grok', short: 'GROK', full: 'Grok', Icon: Sparkles },
-  { id: 'voxtral', short: 'VOX', full: 'Voxtral', Icon: AudioWaveform },
-  { id: 'gemini', short: 'GEM', full: 'Gemini', Icon: Gem },
+const OPTIONS: Array<{ id: SpeakProvider; labelKey: string; Icon: LucideIcon }> = [
+  { id: 'grok', labelKey: 'speak.mode.live', Icon: Sparkles },
+  { id: 'voxtral', labelKey: 'speak.mode.characters', Icon: AudioWaveform },
+  { id: 'gemini', labelKey: 'speak.mode.voices', Icon: Gem },
 ]
 
 export function ProviderToggle({ value, onChange, disabled, disabledReason, language }: ProviderToggleProps) {
+  const { t } = useTranslation()
+
   return (
     <div className="mx-auto w-full max-w-xl">
       <div
         className="grid grid-cols-3 gap-1 rounded-full border border-white/10 bg-slate-950/60 p-1 shadow-[0_18px_55px_rgba(2,6,23,0.35),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl"
         title={disabled ? disabledReason : undefined}
-        aria-label="TTS provider"
+        aria-label={t('speak.mode.selectorAria')}
       >
         {OPTIONS.map((opt) => {
           const selected = value === opt.id
@@ -30,9 +33,10 @@ export function ProviderToggle({ value, onChange, disabled, disabledReason, lang
           const optionTitle = disabled
             ? disabledReason
             : unsupportedForLanguage
-              ? 'Grok does not support Tagalog yet'
+              ? t('speak.mode.liveUnavailableForTagalog')
               : undefined
           const Icon = opt.Icon
+          const label = t(opt.labelKey)
 
           return (
             <button
@@ -42,15 +46,15 @@ export function ProviderToggle({ value, onChange, disabled, disabledReason, lang
               disabled={optionDisabled}
               title={optionTitle}
               aria-pressed={selected}
-              aria-label={opt.full}
-              className={`group flex min-h-12 items-center justify-center gap-2 rounded-full px-2 text-sm font-bold tracking-[0.18em] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70 disabled:cursor-not-allowed disabled:opacity-45 sm:px-4 ${
+              aria-label={label}
+              className={`group flex min-h-12 items-center justify-center gap-2 rounded-full px-2 text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70 disabled:cursor-not-allowed disabled:opacity-45 sm:px-4 ${
                 selected
                   ? 'bg-indigo-300/15 text-white'
                   : 'text-slate-400 hover:bg-white/[0.06] hover:text-slate-100'
               }`}
             >
               <Icon className={`h-4 w-4 shrink-0 ${selected ? 'text-indigo-100' : 'text-slate-500 group-hover:text-slate-200'}`} />
-              <span>{opt.short}</span>
+              <span>{label}</span>
             </button>
           )
         })}

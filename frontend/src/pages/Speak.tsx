@@ -37,6 +37,7 @@ import {
 } from '@/components/ui/dialog'
 import { SPEAK_LANGUAGES, LANGUAGES as ALL_LANGUAGES } from '@/lib/languages'
 import { getGeneratedDeckHref } from '@/lib/cardGenerationProgress'
+import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 
 const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar', 'fil', 'id', 'ko']
 const GROK_LEVEL_VALUES: GrokLevel[] = ['zero', 'beginner', 'intermediate', 'advanced']
@@ -127,6 +128,12 @@ const defaultProviderFor = (lang: string | null | undefined): SpeakProvider => {
   return lang === 'fil' ? 'voxtral' : 'grok'
 }
 
+function formatRecordingDuration(seconds: number) {
+  const minutes = Math.floor(seconds / 60)
+  const remainingSeconds = seconds % 60
+  return `${minutes}:${String(remainingSeconds).padStart(2, '0')}`
+}
+
 export default function Speak() {
   const { t } = useTranslation()
   const navigate = useNavigate()
@@ -170,6 +177,8 @@ export default function Speak() {
   type Correction = { original: string; corrected: string; explanation: string }
   const [corrections, setCorrections] = useState<Correction[] | null>(null)
   const [correctionsLoading, setCorrectionsLoading] = useState(false)
+  const [correctionsError, setCorrectionsError] = useState<string | null>(null)
+  const [recordingSeconds, setRecordingSeconds] = useState(0)
 
   const selectedLang = LANGUAGES.find((l) => l.code === tutor.language)
   const targetLanguageCode = tutor.language ?? selectedLang?.code ?? 'en'
@@ -205,6 +214,7 @@ export default function Speak() {
 
   const grokCategoryLabel = getGrokCategoryLabel(selectedGrokCategory)
   const grokHeaderName = selectedGrokVoice ? `${grokCategoryLabel} · ${selectedGrokVoice}` : grokCategoryLabel
+  const recordingTimerLabel = formatRecordingDuration(recordingSeconds)
 
   const clearGrokUiState = () => {
     setSelectedGrokVoice(DEFAULT_GROK_VOICE)
@@ -217,10 +227,12 @@ export default function Speak() {
   const fetchCorrections = async () => {
     if (correctionsLoading || activeMessages.length < 4 || !tutor.language) return
     setCorrectionsLoading(true)
+    setCorrectionsError(null)
     try {
       const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
       if (sessionError || !sessionData.session?.access_token) {
-        throw new Error('Your session expired. Please sign in again.')
+        setCorrectionsError(t('speak.history.sessionExpired'))
+        return
       }
 
       const res = await fetch(publicApiUrl('/api/voice-chat'), {
@@ -236,15 +248,33 @@ export default function Speak() {
           native_language: baseLangCode || 'en',
         }),
       })
-      const data = await res.json()
-      const list: Correction[] = Array.isArray(data.corrections) ? data.corrections : []
+      const data = await res.json().catch(() => null) as ({ corrections?: unknown } & SpeakApiErrorPayload) | null
+      if (!res.ok) {
+        console.warn('[Speak] Corrections request failed:', {
+          status: res.status,
+          error: data?.error,
+          detail: data?.detail,
+          retry_after_seconds: data?.retry_after_seconds,
+        })
+        setCorrectionsError(res.status === 401
+          ? t('speak.history.sessionExpired')
+          : formatSpeakApiError(t, res.status, data, 'speak.correctionsUnavailable'))
+        return
+      }
+      if (!data || !Array.isArray(data.corrections)) {
+        console.warn('[Speak] Corrections response missing corrections array:', data)
+        setCorrectionsError(t('speak.correctionsUnavailable'))
+        return
+      }
+
+      const list = data.corrections as Correction[]
       setCorrections(list)
       if (activeProvider !== 'grok') {
         tutor.saveCorrections(list)
       }
     } catch (err) {
       console.error('Corrections fetch failed:', err)
-      setCorrections([])
+      setCorrectionsError(t('speak.correctionsUnavailable'))
     } finally {
       setCorrectionsLoading(false)
     }
@@ -254,6 +284,7 @@ export default function Speak() {
     if (!tutor.language || !selectedLang || !selectedGrokVoice || !selectedGrokCategory) return
 
     setCorrections(null)
+    setCorrectionsError(null)
     setGrokShowTranscript(false)
     setGrokSessionActive(true)
     try {
@@ -267,7 +298,16 @@ export default function Speak() {
       })
     } catch (err) {
       console.error('Grok session start failed:', err)
-      setGrokSessionActive(false)
+    }
+  }
+
+  const handleGrokReconnect = async () => {
+    if (grok.status === 'connecting') return
+    setGrokSessionActive(true)
+    try {
+      await grok.reconnect()
+    } catch (err) {
+      console.error('Grok reconnect failed:', err)
     }
   }
 
@@ -314,6 +354,7 @@ export default function Speak() {
   const handleEndGrokConversation = async () => {
     await grok.endSession()
     setCorrections(null)
+    setCorrectionsError(null)
     setGrokSessionActive(false)
     setGrokShowTranscript(grok.messages.length > 0)
   }
@@ -322,6 +363,7 @@ export default function Speak() {
     setGrokShowTranscript(false)
     setGrokSessionActive(false)
     setCorrections(null)
+    setCorrectionsError(null)
     setGrokPickerStep('voice')
   }
 
@@ -339,6 +381,7 @@ export default function Speak() {
 
   const handleEndTutorConversation = async () => {
     setCorrections(null)
+    setCorrectionsError(null)
     await tutor.endConversation()
   }
 
@@ -356,7 +399,27 @@ export default function Speak() {
 
   useEffect(() => {
     setCorrections(null)
+    setCorrectionsError(null)
   }, [tutor.conversationId, activeProvider, grokSessionActive])
+
+  useEffect(() => {
+    const isRecording =
+      (activeProvider === 'grok' && grok.status === 'recording') ||
+      (activeProvider !== 'grok' && tutor.status === 'recording')
+
+    if (!isRecording) {
+      setRecordingSeconds(0)
+      return
+    }
+
+    const startedAt = Date.now()
+    setRecordingSeconds(0)
+    const timer = window.setInterval(() => {
+      setRecordingSeconds(Math.floor((Date.now() - startedAt) / 1000))
+    }, 1000)
+
+    return () => window.clearInterval(timer)
+  }, [activeProvider, grok.status, tutor.status])
 
   useEffect(() => {
     if (!tutor.language) {
@@ -681,8 +744,8 @@ export default function Speak() {
                   disabled={providerToggleDisabled}
                   disabledReason={
                     isBusy && activeProvider !== 'grok' && !tutor.isChangingVoice
-                      ? 'Wait for the response to finish…'
-                      : 'End the current conversation to switch providers.'
+                      ? t('speak.mode.waitForResponse')
+                      : t('speak.mode.endConversationToSwitch')
                   }
                   language={tutor.language ?? undefined}
                 />
@@ -926,13 +989,17 @@ export default function Speak() {
   }
 
   if (activeProvider === 'grok' && grokSessionActive) {
+    const grokDisconnected = !grok.isConnected && grok.status !== 'connecting'
     const grokButtonDisabled =
+      grokDisconnected ||
       grok.status === 'connecting' ||
       grok.status === 'thinking' ||
       grok.status === 'speaking'
     const grokStatusLabel =
-      grok.status === 'recording'
-        ? t('speak.listeningNow')
+      grokDisconnected
+        ? grok.error || t('speak.error.sessionNotConnected')
+        : grok.status === 'recording'
+        ? `${t('speak.listeningNow')} ${recordingTimerLabel}`
         : grok.status === 'thinking'
           ? t('speak.thinking')
           : grok.status === 'speaking'
@@ -943,7 +1010,9 @@ export default function Speak() {
                 ? grok.error || t('speak.tapRetry')
                 : t('speak.tapToSpeak')
     const grokStatusClass =
-      grok.status === 'recording'
+      grokDisconnected
+        ? 'text-red-300'
+        : grok.status === 'recording'
         ? 'text-red-300'
         : grok.status === 'thinking'
           ? 'text-[var(--text-secondary)]'
@@ -955,7 +1024,9 @@ export default function Speak() {
                 ? 'text-red-300'
                 : 'text-[var(--accent-2)]'
     const grokButtonOuterClass =
-      grok.status === 'idle'
+      grokDisconnected
+        ? 'border-red-400/30 bg-red-500/5 shadow-[0_0_28px_rgba(239,68,68,0.18)]'
+        : grok.status === 'idle'
         ? 'border-[var(--accent-2)]/30 bg-[var(--accent-2-soft)] shadow-[0_0_46px_var(--accent-glow)]'
         : grok.status === 'recording'
           ? 'border-red-400/60 bg-gradient-to-br from-fuchsia-500/20 via-red-500/10 to-blue-500/10 shadow-[0_0_52px_rgba(239,68,68,0.35)] animate-pulse'
@@ -967,7 +1038,9 @@ export default function Speak() {
                 ? 'border-[var(--border-strong)] bg-[var(--field-bg)] shadow-[0_0_24px_var(--accent-glow)]'
                 : 'border-red-400/30 bg-red-500/5 shadow-[0_0_28px_rgba(239,68,68,0.18)]'
     const grokButtonInnerClass =
-      grok.status === 'idle' || grok.status === 'recording'
+      grokDisconnected
+        ? 'bg-[var(--surface-2)] text-red-100'
+        : grok.status === 'idle' || grok.status === 'recording'
         ? 'bg-[var(--accent)] text-[var(--on-accent)]'
         : grok.status === 'thinking'
           ? 'bg-[var(--surface-2)] text-[var(--text-primary)]'
@@ -1026,13 +1099,14 @@ export default function Speak() {
               <p className={`text-xs font-medium uppercase tracking-[0.28em] transition-colors duration-300 ${grokStatusClass}`}>
                 {grokStatusLabel}
               </p>
-              {grok.status === 'error' && grok.error && (
+              {grok.status === 'error' && grok.error && !grokDisconnected && (
                 <p className="text-xs text-[var(--text-muted)]">{t('speak.tapRetry')}</p>
               )}
             </div>
 
             <button
               onClick={() => {
+                if (grokDisconnected) return
                 if (grok.status === 'idle' || grok.status === 'error') {
                   grok.startListening()
                 } else if (grok.status === 'recording') {
@@ -1050,6 +1124,8 @@ export default function Speak() {
               aria-label={
                 grok.status === 'recording'
                   ? t('speak.recording')
+                  : grokDisconnected
+                    ? t('speak.reconnect')
                   : grok.status === 'error'
                     ? t('speak.tapRetry')
                     : t('speak.tapToSpeak')
@@ -1068,6 +1144,17 @@ export default function Speak() {
                 )}
               </span>
             </button>
+
+            {grokDisconnected && (
+              <button
+                type="button"
+                onClick={() => { void handleGrokReconnect() }}
+                disabled={grok.status === 'connecting'}
+                className="speak-accent-action px-5 py-2.5 rounded-full text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {grok.status === 'connecting' ? t('speak.startingConversation') : t('speak.reconnect')}
+              </button>
+            )}
 
             <button
               onClick={() => { void handleEndGrokConversation() }}
@@ -1258,6 +1345,11 @@ export default function Speak() {
 
         {tutor.messages.length >= 4 && (
           <div className="mt-6 flex flex-col items-center gap-4">
+            {correctionsError && (
+              <div className="text-center text-sm text-amber-200 px-4 py-3 bg-amber-950/30 border border-amber-400/20 rounded-lg">
+                {correctionsError}
+              </div>
+            )}
             {corrections === null ? (
               <button
                 onClick={fetchCorrections}
@@ -1357,7 +1449,10 @@ export default function Speak() {
           <p className="text-xs text-[var(--text-muted)] text-center mb-3 h-4">
             {tutor.status === 'idle' && t('speak.tapToSpeak')}
             {tutor.status === 'recording' && (
-              <span className="text-red-400">{t('speak.recording')}</span>
+              <span className="text-red-400">
+                {t('speak.recording')}
+                <span className="ml-2 font-mono tabular-nums">{recordingTimerLabel}</span>
+              </span>
             )}
             {tutor.status === 'processing' && t('speak.thinking')}
             {tutor.status === 'playing' && (

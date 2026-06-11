@@ -56,6 +56,63 @@ export function createT(locale: Locale) {
   };
 }
 
+export type TranslationFn = ReturnType<typeof createT>;
+
+export type SpeakApiErrorPayload = {
+  error?: unknown;
+  detail?: unknown;
+  retry_after_seconds?: unknown;
+};
+
+function getErrorText(value: unknown): string | null {
+  return typeof value === 'string' && value.trim().length > 0 ? value.trim() : null;
+}
+
+function getRetryAfterSeconds(value: unknown): number | null {
+  const seconds = typeof value === 'number' ? value : Number(value);
+  return Number.isFinite(seconds) && seconds > 0 ? seconds : null;
+}
+
+function isSpeakLimitError(status: number, payload: SpeakApiErrorPayload | null): boolean {
+  if (status === 429) return true;
+  const text = `${getErrorText(payload?.error) ?? ''} ${getErrorText(payload?.detail) ?? ''}`.toLowerCase();
+  return text.includes('quota') || text.includes('rate') || text.includes('limit') || text.includes('too many');
+}
+
+export function formatSpeakRetryAfter(t: TranslationFn, retryAfterSeconds: unknown): string | null {
+  const seconds = getRetryAfterSeconds(retryAfterSeconds);
+  if (seconds === null) return null;
+
+  if (seconds < 60) {
+    const count = Math.max(1, Math.ceil(seconds));
+    return t(count === 1 ? 'speak.retryAfter.second' : 'speak.retryAfter.seconds', { count });
+  }
+
+  if (seconds < 3600) {
+    const count = Math.max(1, Math.ceil(seconds / 60));
+    return t(count === 1 ? 'speak.retryAfter.minute' : 'speak.retryAfter.minutes', { count });
+  }
+
+  const count = Math.max(1, Math.ceil(seconds / 3600));
+  return t(count === 1 ? 'speak.retryAfter.hour' : 'speak.retryAfter.hours', { count });
+}
+
+export function formatSpeakApiError(
+  t: TranslationFn,
+  status: number,
+  payload: SpeakApiErrorPayload | null,
+  fallbackKey = 'speak.error.requestFailed',
+): string {
+  if (isSpeakLimitError(status, payload)) {
+    const retryAfter = formatSpeakRetryAfter(t, payload?.retry_after_seconds);
+    return retryAfter
+      ? t('speak.limitReachedRetry', { time: retryAfter })
+      : t('speak.limitReached');
+  }
+
+  return getErrorText(payload?.detail) ?? getErrorText(payload?.error) ?? t(fallbackKey);
+}
+
 export const translations: Record<Locale, Record<string, string>> = {
   en: {
     // ── Navigation ──
@@ -844,6 +901,32 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.speaking': 'Speaking…',
     'speak.tapRetry': 'Tap to try again',
     'speak.listeningNow': 'Listening...',
+    'speak.reconnect': 'Reconnect',
+    'speak.mode.live': 'Live',
+    'speak.mode.characters': 'Characters',
+    'speak.mode.voices': 'Voices',
+    'speak.mode.selectorAria': 'Speak mode',
+    'speak.mode.liveUnavailableForTagalog': 'Live is not available for Tagalog yet',
+    'speak.mode.waitForResponse': 'Wait for the response to finish...',
+    'speak.mode.endConversationToSwitch': 'End the current conversation to switch modes.',
+    'speak.error.requestFailed': 'Request failed. Please try again.',
+    'speak.error.microphoneDenied': 'Microphone access denied. Please allow microphone access in your browser settings.',
+    'speak.error.microphoneUnavailable': 'Could not access the microphone. Please check your device settings.',
+    'speak.error.audioRecordingUnsupported': 'Audio recording is not supported in this browser. Please try Chrome or Safari.',
+    'speak.error.realtimeConnectionFailed': 'Realtime connection failed. Please reconnect and try again.',
+    'speak.error.tutorAudioPlaybackFailed': 'Failed to play tutor audio. Please try again.',
+    'speak.error.sessionNotConnected': 'Session is not connected. Please reconnect.',
+    'speak.error.audioTurnDidNotCommit': 'Audio turn did not commit. Please try again.',
+    'speak.error.tutorStillResponding': 'Tutor is still responding. Please try again in a moment.',
+    'speak.correctionsUnavailable': "Couldn't check corrections. Try again.",
+    'speak.limitReached': "You've reached today's Speak limit. Try again later.",
+    'speak.limitReachedRetry': "You've reached today's Speak limit. Try again in about {time}.",
+    'speak.retryAfter.second': '{count} second',
+    'speak.retryAfter.seconds': '{count} seconds',
+    'speak.retryAfter.minute': '{count} minute',
+    'speak.retryAfter.minutes': '{count} minutes',
+    'speak.retryAfter.hour': '{count} hour',
+    'speak.retryAfter.hours': '{count} hours',
     'speak.endConversation': 'End Conversation',
     'speak.startNewConversation': 'Start new conversation',
     'speak.conversationEnded': 'Conversation ended',
@@ -2089,6 +2172,32 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.speaking': 'Spricht…',
     'speak.tapRetry': 'Tippen zum erneuten Versuch',
     'speak.listeningNow': 'Hört zu...',
+    'speak.reconnect': 'Neu verbinden',
+    'speak.mode.live': 'Live',
+    'speak.mode.characters': 'Charaktere',
+    'speak.mode.voices': 'Stimmen',
+    'speak.mode.selectorAria': 'Sprechmodus',
+    'speak.mode.liveUnavailableForTagalog': 'Live ist für Tagalog noch nicht verfügbar',
+    'speak.mode.waitForResponse': 'Warte, bis die Antwort fertig ist...',
+    'speak.mode.endConversationToSwitch': 'Beende das aktuelle Gespräch, um den Modus zu wechseln.',
+    'speak.error.requestFailed': 'Anfrage fehlgeschlagen. Bitte versuche es erneut.',
+    'speak.error.microphoneDenied': 'Mikrofonzugriff verweigert. Bitte erlaube den Mikrofonzugriff in deinen Browsereinstellungen.',
+    'speak.error.microphoneUnavailable': 'Das Mikrofon konnte nicht verwendet werden. Bitte prüfe deine Geräteeinstellungen.',
+    'speak.error.audioRecordingUnsupported': 'Audioaufnahme wird in diesem Browser nicht unterstützt. Bitte versuche Chrome oder Safari.',
+    'speak.error.realtimeConnectionFailed': 'Realtime-Verbindung fehlgeschlagen. Bitte verbinde dich neu und versuche es erneut.',
+    'speak.error.tutorAudioPlaybackFailed': 'Tutor-Audio konnte nicht abgespielt werden. Bitte versuche es erneut.',
+    'speak.error.sessionNotConnected': 'Die Sitzung ist nicht verbunden. Bitte verbinde dich neu.',
+    'speak.error.audioTurnDidNotCommit': 'Die Audioaufnahme konnte nicht gesendet werden. Bitte versuche es erneut.',
+    'speak.error.tutorStillResponding': 'Der Tutor antwortet noch. Bitte versuche es gleich erneut.',
+    'speak.correctionsUnavailable': 'Korrekturen konnten nicht geprüft werden. Bitte versuche es erneut.',
+    'speak.limitReached': 'Du hast dein heutiges Speak-Limit erreicht. Versuche es später erneut.',
+    'speak.limitReachedRetry': 'Du hast dein heutiges Speak-Limit erreicht. Versuche es in etwa {time} erneut.',
+    'speak.retryAfter.second': '{count} Sekunde',
+    'speak.retryAfter.seconds': '{count} Sekunden',
+    'speak.retryAfter.minute': '{count} Minute',
+    'speak.retryAfter.minutes': '{count} Minuten',
+    'speak.retryAfter.hour': '{count} Stunde',
+    'speak.retryAfter.hours': '{count} Stunden',
     'speak.endConversation': 'Gespräch beenden',
     'speak.startNewConversation': 'Neues Gespräch starten',
     'speak.conversationEnded': 'Gespräch beendet',
@@ -3488,6 +3597,32 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.speaking': 'Parle…',
     'speak.tapRetry': 'Appuie pour réessayer',
     'speak.listeningNow': 'J\'écoute...',
+    'speak.reconnect': 'Reconnecter',
+    'speak.mode.live': 'Live',
+    'speak.mode.characters': 'Personnages',
+    'speak.mode.voices': 'Voix',
+    'speak.mode.selectorAria': 'Mode Speak',
+    'speak.mode.liveUnavailableForTagalog': 'Live n’est pas encore disponible pour le tagalog',
+    'speak.mode.waitForResponse': 'Attends la fin de la réponse...',
+    'speak.mode.endConversationToSwitch': 'Termine la conversation en cours pour changer de mode.',
+    'speak.error.requestFailed': 'La requête a échoué. Réessaie.',
+    'speak.error.microphoneDenied': 'Accès au microphone refusé. Autorise le microphone dans les paramètres de ton navigateur.',
+    'speak.error.microphoneUnavailable': 'Impossible d’accéder au microphone. Vérifie les paramètres de ton appareil.',
+    'speak.error.audioRecordingUnsupported': 'L’enregistrement audio n’est pas pris en charge dans ce navigateur. Essaie Chrome ou Safari.',
+    'speak.error.realtimeConnectionFailed': 'La connexion en temps réel a échoué. Reconnecte-toi puis réessaie.',
+    'speak.error.tutorAudioPlaybackFailed': 'Impossible de lire l’audio du tuteur. Réessaie.',
+    'speak.error.sessionNotConnected': 'La session n’est pas connectée. Reconnecte-toi.',
+    'speak.error.audioTurnDidNotCommit': 'Le tour audio n’a pas été envoyé. Réessaie.',
+    'speak.error.tutorStillResponding': 'Le tuteur répond encore. Réessaie dans un instant.',
+    'speak.correctionsUnavailable': 'Impossible de vérifier les corrections. Réessaie.',
+    'speak.limitReached': 'Tu as atteint la limite Speak du jour. Réessaie plus tard.',
+    'speak.limitReachedRetry': 'Tu as atteint la limite Speak du jour. Réessaie dans environ {time}.',
+    'speak.retryAfter.second': '{count} seconde',
+    'speak.retryAfter.seconds': '{count} secondes',
+    'speak.retryAfter.minute': '{count} minute',
+    'speak.retryAfter.minutes': '{count} minutes',
+    'speak.retryAfter.hour': '{count} heure',
+    'speak.retryAfter.hours': '{count} heures',
     'speak.endConversation': 'Terminer la conversation',
     'speak.startNewConversation': 'Démarrer une nouvelle conversation',
     'speak.conversationEnded': 'Conversation terminée',
