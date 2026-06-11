@@ -4,10 +4,20 @@ import { Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ScrollReveal from './ScrollReveal'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
+import { getPublicWebOrigin } from '@/lib/publicOrigins'
+
+function getPublicWebHost(): string {
+  try {
+    return new URL(getPublicWebOrigin()).host
+  } catch {
+    return 'lingwave.ai'
+  }
+}
 
 export default function CtaFooterSection() {
   const reducedMotion = useReducedMotion()
   const { t } = useLandingLocale()
+  const publicWebHost = getPublicWebHost()
 
   return (
     <section className="py-16 md:py-32 px-6 text-center bg-[var(--app-bg)]">
@@ -41,7 +51,7 @@ export default function CtaFooterSection() {
 
       {/* Footer */}
       <footer className="border-t border-white/5 pt-8 text-sm text-muted-foreground space-y-1">
-        <p>Lingwave · resonanz.pro</p>
+        <p>Lingwave &middot; {publicWebHost}</p>
         <p>{t('landing.footer')}</p>
       </footer>
     </section>

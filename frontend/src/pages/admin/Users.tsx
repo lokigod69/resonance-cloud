@@ -661,7 +661,7 @@ export default function Users() {
               <div className="space-y-1">
                 <label className="text-xs text-muted-foreground">Code</label>
                 <Input
-                  placeholder="e.g. RESONANZ-TEST-001"
+                  placeholder="e.g. LINGWAVE-TEST-001"
                   value={newCode}
                   onChange={e => setNewCode(e.target.value)}
                   className="w-[220px] uppercase tracking-wider"

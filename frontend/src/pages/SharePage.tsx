@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { getCardFullUrl } from '@/lib/imageUrls'
+import { getPublicWebOrigin } from '@/lib/publicOrigins'
 
 interface SharedWordData {
   share_id: string
@@ -20,12 +21,21 @@ interface SharedWordData {
   view_count: number
 }
 
+function getPublicWebHost(): string {
+  try {
+    return new URL(getPublicWebOrigin()).host
+  } catch {
+    return 'lingwave.ai'
+  }
+}
+
 export default function SharePage() {
   const { shareId } = useParams<{ shareId: string }>()
   const [data, setData] = useState<SharedWordData | null>(null)
   const [loading, setLoading] = useState(true)
   const [notFound, setNotFound] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const publicWebHost = getPublicWebHost()
 
   useEffect(() => {
     if (!shareId) return
@@ -123,7 +133,7 @@ export default function SharePage() {
             ✨ Create Your Own
           </Link>
           <div className="text-center">
-            <p className="text-gray-600 text-sm font-medium">resonanz.pro</p>
+            <p className="text-gray-600 text-sm font-medium">{publicWebHost}</p>
             <p className="text-gray-700 text-xs mt-0.5">
               AI-powered language learning through music and video
             </p>

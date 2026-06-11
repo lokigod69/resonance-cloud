@@ -6,7 +6,12 @@ import { isNativeApp } from '@/lib/platform'
 import { getOAuthRedirectTo } from '@/lib/publicOrigins'
 import { supabase } from '@/lib/supabase'
 
-const WEB_DEEP_LINK_HOSTS = new Set(['resonanz.pro', 'www.resonanz.pro'])
+const WEB_DEEP_LINK_HOSTS = new Set([
+  'resonanz.pro',
+  'www.resonanz.pro',
+  'lingwave.ai',
+  'www.lingwave.ai',
+])
 
 function routeFromUrl(rawUrl: string): string | null {
   let url: URL
