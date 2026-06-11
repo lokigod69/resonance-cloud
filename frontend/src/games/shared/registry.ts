@@ -8,12 +8,11 @@ export type GameEntry = {
   route: string
   enabled: boolean
   comingSoon?: boolean
-  component: () => Promise<{ default: ComponentType }>
+  component?: () => Promise<{ default: ComponentType }>
 }
 
 const gameModules = import.meta.glob<{ default: ComponentType }>([
   '../slicer/SlicerGame.tsx',
-  '../runner/RunnerGame.tsx',
 ])
 
 function loadGameComponent(path: string): () => Promise<{ default: ComponentType }> {
@@ -44,6 +43,5 @@ export const GAMES: GameEntry[] = [
     route: '/games/runner',
     enabled: true,
     comingSoon: true,
-    component: loadGameComponent('../runner/RunnerGame.tsx'),
   },
 ]
