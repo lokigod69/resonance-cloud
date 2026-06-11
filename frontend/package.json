@@ -26,6 +26,7 @@
     "test:dashboard-home-glass": "tsx scripts/test-dashboard-home-glass.ts",
     "test:i18n-display-labels": "tsx scripts/test-i18n-display-labels.ts",
     "test:speak-polish": "tsx scripts/test-speak-polish-contract.ts",
+    "test:landing-polish": "tsx scripts/test-landing-first-session-polish.ts",
     "test:admin-layer2-lab": "tsx scripts/test-admin-layer2-lab.ts",
     "test:card-generation-progress": "tsx scripts/test-card-generation-progress.ts",
     "test:word-metadata": "tsx scripts/test-word-display-metadata.ts",

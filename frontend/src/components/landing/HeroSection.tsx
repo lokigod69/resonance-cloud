@@ -44,6 +44,12 @@ export default function HeroSection() {
         <Link to="/" className="flex items-center gap-2" aria-label="Lingwave home">
           <LingwaveBrand wordmarkClassName="h-5" />
         </Link>
+        <Link
+          to="/login"
+          className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white/78 transition hover:border-white/30 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+        >
+          {t('landing.signIn')}
+        </Link>
       </header>
 
       {/* Hero content — floats up and fades on scroll */}
@@ -85,20 +91,17 @@ export default function HeroSection() {
             <div>
               <motion.p
                 {...fadeUp(0.1)}
-                className="text-lg md:text-xl text-white/60 max-w-xl mx-auto leading-relaxed"
+                className="text-lg md:text-xl text-white/68 max-w-2xl mx-auto leading-relaxed"
               >
                 {t('landing.subheadlineMain')}
-              </motion.p>
-              <motion.p
-                {...fadeUp(0.15)}
-                className="text-base md:text-lg text-white/55 max-w-xl mx-auto mt-1"
-              >
-                {t('landing.subheadlineAccent')}
               </motion.p>
             </div>
 
             {/* CTA with glow pulse */}
-            <motion.div {...fadeUp(0.3)} className="pt-4">
+            <motion.div {...fadeUp(0.3)} className="flex flex-col items-center gap-3 pt-4">
+              <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/72">
+                {t('landing.privateBeta')}
+              </span>
               <motion.div
                 className="mx-auto rounded-md sm:w-[220px]"
                 animate={ctaGlow}

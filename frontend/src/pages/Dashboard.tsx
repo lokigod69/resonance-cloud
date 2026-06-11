@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { Library } from 'lucide-react'
+import { ArrowRight, Library, PlusCircle } from 'lucide-react'
 import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
@@ -87,12 +87,12 @@ export default function Dashboard() {
   if (!user) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 text-center">
-        <h1 className="text-2xl font-semibold">Welcome to Lingwave</h1>
+        <h1 className="text-2xl font-semibold">{t('dashboard.signedOut.title')}</h1>
         <p className="max-w-md text-sm text-muted-foreground">
-          Sign in to view your SRS dashboard and continue studying.
+          {t('dashboard.signedOut.body')}
         </p>
         <Button asChild>
-          <Link to="/auth">Sign in</Link>
+          <Link to="/login">{t('dashboard.signedOut.signIn')}</Link>
         </Button>
       </div>
     )
@@ -120,74 +120,103 @@ export default function Dashboard() {
           {greeting}
         </h1>
 
-        <LanguageCluster
-          languages={availableLanguages}
-          activeLanguage={activeLanguage}
-          onSelect={setActiveLanguage}
-        />
+        {!dashboardLoading && decks.length === 0 ? (
+          <section className="mt-7 w-full rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_54%,transparent)] px-5 py-6 shadow-[0_18px_60px_rgba(0,0,0,0.24)] sm:px-7 sm:py-7">
+            <div className="mx-auto max-w-xl">
+              <h2 className="text-2xl font-semibold tracking-normal text-[var(--text-primary)] sm:text-3xl">
+                {t('dashboard.firstRun.title')}
+              </h2>
+              <p className="mt-3 text-base leading-7 text-[var(--text-secondary)]">
+                {t('dashboard.firstRun.subtitle')}
+              </p>
+              <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Button asChild size="lg">
+                  <Link to="/today">
+                    {t('dashboard.firstRun.startLesson')}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost" size="lg">
+                  <Link to="/generate">
+                    <PlusCircle className="h-4 w-4" aria-hidden="true" />
+                    {t('dashboard.firstRun.createDeck')}
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <>
+            <LanguageCluster
+              languages={availableLanguages}
+              activeLanguage={activeLanguage}
+              onSelect={setActiveLanguage}
+            />
 
-        <section className="dashboard-action-grid grid w-full grid-cols-2 gap-2.5 sm:gap-3">
-          <SrsActionTile
-            label={t('study.queue.review')}
-            count={reviewDue}
-            queue="review"
-            language={activeLanguage ?? ''}
-            tier="compact"
-            accent="cool"
-            disabled={tilesDisabled}
-          />
-          <SrsActionTile
-            label={t('study.queue.learn')}
-            count={counts.newDue}
-            queue="learn"
-            language={activeLanguage ?? ''}
-            tier="compact"
-            accent="warm"
-            disabled={tilesDisabled}
-          />
-          <SrsActionTile
-            label={t('study.queue.strengthen')}
-            count={counts.learning}
-            queue="strengthen"
-            language={activeLanguage ?? ''}
-            tier="compact"
-            accent="neutral"
-            disabled={tilesDisabled}
-          />
-          <Link to={dashboardLibraryHref} className="dashboard-library-tile dashboard-library-action">
-            <Library className="dashboard-library-icon" aria-hidden="true" />
-            <span className="dashboard-library-copy">
-              <span className="dashboard-library-title">{t('nav.categories')}</span>
-              {activeLanguage ? (
-                <span className="dashboard-library-subtitle">{t(`langName.${activeLanguage}`)}</span>
-              ) : null}
-            </span>
-          </Link>
-        </section>
+            <section className="dashboard-action-grid grid w-full grid-cols-2 gap-2.5 sm:gap-3">
+              <SrsActionTile
+                label={t('study.queue.review')}
+                count={reviewDue}
+                queue="review"
+                language={activeLanguage ?? ''}
+                tier="compact"
+                accent="cool"
+                disabled={tilesDisabled}
+              />
+              <SrsActionTile
+                label={t('study.queue.learn')}
+                count={counts.newDue}
+                queue="learn"
+                language={activeLanguage ?? ''}
+                tier="compact"
+                accent="warm"
+                disabled={tilesDisabled}
+              />
+              <SrsActionTile
+                label={t('study.queue.strengthen')}
+                count={counts.learning}
+                queue="strengthen"
+                language={activeLanguage ?? ''}
+                tier="compact"
+                accent="neutral"
+                disabled={tilesDisabled}
+              />
+              <Link to={dashboardLibraryHref} className="dashboard-library-tile dashboard-library-action">
+                <Library className="dashboard-library-icon" aria-hidden="true" />
+                <span className="dashboard-library-copy">
+                  <span className="dashboard-library-title">{t('nav.categories')}</span>
+                  {activeLanguage ? (
+                    <span className="dashboard-library-subtitle">{t(`langName.${activeLanguage}`)}</span>
+                  ) : null}
+                </span>
+              </Link>
+            </section>
 
-        <div className="dashboard-mastered-pill" aria-live="polite">
-          {counts.mastered > 0 ? (
-            <button
-              type="button"
-              className="dashboard-mastered-pill-button"
-              disabled={tilesDisabled}
-              onClick={() => {
-                if (tilesDisabled || !activeLanguage) return
-                const params = new URLSearchParams({ queue: 'mastered', lang: activeLanguage })
-                navigate(`/study?${params.toString()}`)
-              }}
-              aria-label={`${counts.mastered} ${t('study.queue.mastered')}`}
-            >
-              <span className="dashboard-mastered-count">{counts.mastered}</span>
-              <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
-            </button>
-          ) : (
-            <span className="dashboard-mastered-empty">
-              <span className="dashboard-mastered-count">0</span>
-              <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
-            </span>
-          )}
-        </div>
+            <div className="dashboard-mastered-pill" aria-live="polite">
+              {counts.mastered > 0 ? (
+                <button
+                  type="button"
+                  className="dashboard-mastered-pill-button"
+                  disabled={tilesDisabled}
+                  onClick={() => {
+                    if (tilesDisabled || !activeLanguage) return
+                    const params = new URLSearchParams({ queue: 'mastered', lang: activeLanguage })
+                    navigate(`/study?${params.toString()}`)
+                  }}
+                  aria-label={`${counts.mastered} ${t('study.queue.mastered')}`}
+                >
+                  <span className="dashboard-mastered-count">{counts.mastered}</span>
+                  <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
+                </button>
+              ) : (
+                <span className="dashboard-mastered-empty">
+                  <span className="dashboard-mastered-count">0</span>
+                  <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
+                </span>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   )

@@ -124,7 +124,7 @@ export function PremiumSummaryRow({ items, className }: PremiumSummaryRowProps) 
 }
 
 interface ProductLaneVisualSelectorProps {
-  options: Array<{ value: ProductLane; label: string; cost: string }>
+  options: Array<{ value: ProductLane; label: string; helper: string; cost: string }>
   selected: ProductLane | null
   onSelect: (value: ProductLane) => void
 }
@@ -172,6 +172,7 @@ export function ProductLaneVisualSelector({
           key={option.value}
           value={option.value}
           label={option.label}
+          helper={option.helper}
           meta={option.cost}
           selected={selected === option.value}
           onSelect={onSelect}

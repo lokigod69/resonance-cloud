@@ -234,12 +234,14 @@ export default function Today() {
 
       <div className="grid gap-6">
         {!sessionActive && (
-          <div className="today-betaChipRow" role="status">
-            <span className="today-betaChip">
-              <span className="today-betaChipDot" aria-hidden="true" />
-              <span className="today-betaChipLabel">{t('today.betaLabel')}</span>
-              {t('today.betaMessage')}
+          <div
+            className="today-betaBanner rounded-lg border border-[color-mix(in_srgb,var(--accent)_34%,var(--border-subtle))] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] px-3 py-2 text-center text-sm leading-6 text-[var(--text-secondary)] shadow-[0_14px_44px_rgba(0,0,0,0.16)]"
+            role="status"
+          >
+            <span className="mr-2 inline-flex rounded-full border border-[color-mix(in_srgb,var(--accent)_44%,transparent)] px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+              {t('today.betaLabel')}
             </span>
+            <span>{t('today.betaMessage')}</span>
           </div>
         )}
 
