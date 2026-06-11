@@ -35,6 +35,8 @@ export type AuthState = {
   profile: AuthProfile | null
   loading: boolean
   profileLoading: boolean
+  profileReady: boolean
+  profileLoadError: boolean
   authError: string | null
   signInWithEmail: (email: string, password: string) => Promise<{ error: string | null }>
   signUpWithEmail: (email: string, password: string) => Promise<{ error: string | null }>
@@ -59,6 +61,8 @@ export function useAuthState(): AuthState {
   const [profile, setProfile] = useState<AuthProfile | null>(null)
   const [loading, setLoading] = useState(true)
   const [profileLoading, setProfileLoading] = useState(false)
+  const [profileReady, setProfileReady] = useState(false)
+  const [profileLoadError, setProfileLoadError] = useState(false)
   const [authError, setAuthError] = useState<string | null>(null)
   const profileFetchedRef = useRef(false)
   const profileAbortControllerRef = useRef<AbortController | null>(null)
@@ -110,10 +114,14 @@ export function useAuthState(): AuthState {
     profileFetchedUserIdRef.current = null
     setProfile(null)
     setProfileLoading(false)
+    setProfileReady(false)
+    setProfileLoadError(false)
   }, [abortProfileFetch, clearProfileRetry])
 
   const fetchProfile = useCallback(async (userId: string, force = false) => {
     if (!force && profileFetchedRef.current && profileFetchedUserIdRef.current === userId) {
+      setProfileReady(true)
+      setProfileLoadError(false)
       return
     }
 
@@ -148,6 +156,8 @@ export function useAuthState(): AuthState {
           statusText,
           error,
         })
+        setProfileReady(true)
+        setProfileLoadError(true)
         scheduleProfileRetry(userId)
         return
       }
@@ -164,6 +174,8 @@ export function useAuthState(): AuthState {
       writeCachedProfile(userId, data as AuthProfile | null)
       profileFetchedRef.current = true
       profileFetchedUserIdRef.current = userId
+      setProfileReady(true)
+      setProfileLoadError(false)
       clearProfileRetry()
     } catch (err) {
       if (controller.signal.aborted) {
@@ -173,7 +185,11 @@ export function useAuthState(): AuthState {
           reason: controller.signal.reason,
           error: err,
         })
-        scheduleProfileRetry(userId)
+        if (profileAbortControllerRef.current === controller) {
+          setProfileReady(true)
+          setProfileLoadError(true)
+          scheduleProfileRetry(userId)
+        }
         return
       }
 
@@ -182,6 +198,8 @@ export function useAuthState(): AuthState {
         durationMs: Math.round(performance.now() - startedAt),
         error: err,
       })
+      setProfileReady(true)
+      setProfileLoadError(true)
       scheduleProfileRetry(userId)
     } finally {
       const isCurrentRequest = profileAbortControllerRef.current === controller
@@ -231,6 +249,8 @@ export function useAuthState(): AuthState {
         if (profileFetchedUserIdRef.current !== nextSession.user.id) {
           profileFetchedRef.current = false
           profileFetchedUserIdRef.current = null
+          setProfileReady(false)
+          setProfileLoadError(false)
           setProfile(cachedProfile)
         }
         void fetchProfile(nextSession.user.id)
@@ -317,6 +337,8 @@ export function useAuthState(): AuthState {
     profile,
     loading,
     profileLoading,
+    profileReady,
+    profileLoadError,
     authError,
     signInWithEmail,
     signUpWithEmail,

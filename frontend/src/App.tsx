@@ -1,7 +1,8 @@
 import { Suspense, useEffect } from 'react'
 import { lazyWithRetry } from '@/utils/lazyWithRetry'
-import { BrowserRouter, Routes, Route, Navigate, Outlet, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
+import type { AuthState } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { ThemeProvider } from '@/contexts/ThemeProvider'
 import { SkinProvider } from '@/contexts/SkinProvider'
@@ -76,20 +77,51 @@ function RouteSuspenseFallback() {
   )
 }
 
-function ProtectedRoute() {
-  const { session, loading: authLoading } = useAuth()
+function FullScreenRouteLoading() {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+      <ParticleSpinner preset="spirograph" size={160} />
+      <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
+    </div>
+  )
+}
 
-  if (authLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <ParticleSpinner preset="spirograph" size={160} />
-        <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
-      </div>
-    )
+function shouldWaitForProfileGate(auth: AuthState) {
+  return Boolean(
+    auth.session &&
+    !auth.profileLoadError &&
+    (!auth.profileReady || auth.profileLoading)
+  )
+}
+
+function shouldRedirectToOnboarding(auth: AuthState, pathname: string) {
+  const { session, profile, profileReady, profileLoading, profileLoadError } = auth
+
+  return Boolean(
+    session &&
+    profileReady &&
+    !profileLoading &&
+    !profileLoadError &&
+    profile &&
+    !profile.base_language?.trim() &&
+    pathname !== '/onboarding'
+  )
+}
+
+function ProtectedRoute() {
+  const auth = useAuth()
+  const location = useLocation()
+
+  if (auth.loading || shouldWaitForProfileGate(auth)) {
+    return <FullScreenRouteLoading />
   }
 
-  if (!session) {
+  if (!auth.session) {
     return <Navigate to="/login" replace />
+  }
+
+  if (shouldRedirectToOnboarding(auth, location.pathname)) {
+    return <Navigate to="/onboarding" replace state={{ from: location }} />
   }
 
   return <Outlet />
@@ -99,12 +131,7 @@ function OnboardingRoute() {
   const { session, loading: authLoading } = useAuth()
 
   if (authLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <ParticleSpinner preset="spirograph" size={160} />
-        <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
-      </div>
-    )
+    return <FullScreenRouteLoading />
   }
 
   if (!session) {
@@ -115,18 +142,18 @@ function OnboardingRoute() {
 }
 
 function PublicRoute() {
-  const { session, loading: authLoading } = useAuth()
+  const auth = useAuth()
+  const location = useLocation()
 
-  if (authLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <ParticleSpinner preset="spirograph" size={160} />
-        <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
-      </div>
-    )
+  if (auth.loading || shouldWaitForProfileGate(auth)) {
+    return <FullScreenRouteLoading />
   }
 
-  if (session) {
+  if (auth.session) {
+    if (shouldRedirectToOnboarding(auth, location.pathname)) {
+      return <Navigate to="/onboarding" replace state={{ from: location }} />
+    }
+
     return <Navigate to="/dashboard" replace />
   }
 
