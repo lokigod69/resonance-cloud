@@ -1,6 +1,8 @@
 const PRODUCTION_ORIGINS = new Set([
   'https://resonanz.pro',
   'https://www.resonanz.pro',
+  'https://lingwave.ai',
+  'https://www.lingwave.ai',
 ])
 
 const NATIVE_APP_ORIGINS = new Set([
@@ -18,15 +20,21 @@ function isVercelPreviewOrigin(origin: URL): boolean {
 }
 
 export function getAllowedOrigin(req?: Request): string | null {
-  const rawOrigin = req?.headers.get('Origin')
+  return getAllowedOriginValue(req?.headers.get('Origin'))
+}
+
+export function getAllowedOriginValue(rawOrigin: string | null | undefined): string | null {
   if (!rawOrigin) return null
   if (PRODUCTION_ORIGINS.has(rawOrigin)) return rawOrigin
   if (NATIVE_APP_ORIGINS.has(rawOrigin)) return rawOrigin
 
   try {
     const origin = new URL(rawOrigin)
+    const normalizedOrigin = origin.origin
+    if (PRODUCTION_ORIGINS.has(normalizedOrigin)) return normalizedOrigin
+    if (NATIVE_APP_ORIGINS.has(normalizedOrigin)) return normalizedOrigin
     if (isLocalhostOrigin(origin) || isVercelPreviewOrigin(origin)) {
-      return rawOrigin
+      return normalizedOrigin
     }
   } catch {
     return null

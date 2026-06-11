@@ -1,50 +1,92 @@
 import Stripe from 'stripe'
 import { createClient } from '@supabase/supabase-js'
-import { requireSupabaseUser } from './_shared/auth'
+import { requireSupabaseUser, type AuthenticatedUser } from './_shared/auth'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse } from './_shared/http'
-import { optionsResponse } from './_shared/cors'
+import { getAllowedOrigin, getAllowedOriginValue, optionsResponse } from './_shared/cors'
 import { loadStripeBillingConfig } from './_shared/stripeBilling'
 
-const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+type CheckoutGateUser = Pick<AuthenticatedUser, 'id' | 'appMetadata' | 'userMetadata'>
 
-type ProfileProbe = {
-  role?: string | null
+type AdminRoleProbe = {
+  user_id?: string | null
 }
 
-function getAppOrigin(req: Request): string {
-  const origin = req.headers.get('Origin')
-  if (origin) return origin
-  return process.env.APP_URL || process.env.VITE_APP_URL || 'http://localhost:5173'
+type AdminRoleLookupResult<T> = {
+  data: T | null
+  error: { message?: string } | null
 }
 
-function userMetadataAllowsBilling(userMetadata: Record<string, unknown> | null | undefined): boolean {
-  return userMetadata?.is_test_user === true || userMetadata?.stripe_tester === true
+export type AdminRoleLookupClient = {
+  from(table: 'admin_roles'): {
+    select(columns: 'user_id'): {
+      eq(column: 'user_id', value: string): {
+        maybeSingle<T>(): Promise<AdminRoleLookupResult<T>>
+      }
+    }
+  }
+}
+
+function getSupabaseAdminEnv() {
+  return {
+    url: process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || '',
+    serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
+  }
+}
+
+function createSupabaseAdminClient(): AdminRoleLookupClient | null {
+  const { url, serviceKey } = getSupabaseAdminEnv()
+  if (!url || !serviceKey) return null
+
+  return createClient(url, serviceKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+      detectSessionInUrl: false,
+    },
+  }) as unknown as AdminRoleLookupClient
+}
+
+function getConfiguredAppOrigin(): string | null {
+  return getAllowedOriginValue(process.env.APP_URL)
+    ?? getAllowedOriginValue(process.env.VITE_APP_URL)
+}
+
+export function resolveCheckoutAppOrigin(req: Request): string | null {
+  return getAllowedOrigin(req) ?? getConfiguredAppOrigin()
+}
+
+function appMetadataAllowsBilling(appMetadata: Record<string, unknown> | null | undefined): boolean {
+  return appMetadata?.is_test_user === true || appMetadata?.stripe_tester === true
 }
 
 function serverSandboxBillingEnabled(): boolean {
   return process.env.STRIPE_BILLING_SANDBOX_ENABLED === 'true'
 }
 
-async function isBillingAllowed(userId: string, userMetadata: Record<string, unknown>): Promise<boolean> {
+async function isAdminByAdminRoles(userId: string, admin: AdminRoleLookupClient): Promise<boolean> {
+  const { data, error } = await admin
+    .from('admin_roles')
+    .select('user_id')
+    .eq('user_id', userId)
+    .maybeSingle<AdminRoleProbe>()
+
+  if (error) {
+    console.warn('[stripe] admin_roles checkout probe failed', error.message ?? error)
+    return false
+  }
+
+  return data?.user_id === userId
+}
+
+export async function isBillingAllowedForCheckout(
+  user: CheckoutGateUser,
+  admin = createSupabaseAdminClient(),
+): Promise<boolean> {
   if (serverSandboxBillingEnabled()) return true
-  if (userMetadataAllowsBilling(userMetadata)) return true
-  if (!supabaseUrl || !supabaseServiceKey) return false
+  if (appMetadataAllowsBilling(user.appMetadata)) return true
+  if (!admin) return false
 
-  const admin = createClient(supabaseUrl, supabaseServiceKey, {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false,
-      detectSessionInUrl: false,
-    },
-  })
-  const { data } = await admin
-    .from('profiles')
-    .select('role')
-    .eq('id', userId)
-    .maybeSingle<ProfileProbe>()
-
-  return data?.role === 'admin'
+  return isAdminByAdminRoles(user.id, admin)
 }
 
 export async function OPTIONS(req: Request): Promise<Response> {
@@ -54,13 +96,16 @@ export async function OPTIONS(req: Request): Promise<Response> {
 export async function POST(req: Request): Promise<Response> {
   try {
     const user = await requireSupabaseUser(req)
-    if (!(await isBillingAllowed(user.id, user.userMetadata))) {
+    if (!(await isBillingAllowedForCheckout(user))) {
       throw new ApiError(403, 'Billing checkout is not available for this account yet')
     }
 
+    const origin = resolveCheckoutAppOrigin(req)
+    if (!origin) {
+      throw new ApiError(400, 'Checkout redirect origin is not safely configured')
+    }
     const config = loadStripeBillingConfig()
     const stripe = new Stripe(config.secretKey)
-    const origin = getAppOrigin(req)
 
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',

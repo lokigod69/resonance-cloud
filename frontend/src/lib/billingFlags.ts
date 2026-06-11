@@ -1,4 +1,5 @@
 type BillingUser = {
+  app_metadata?: Record<string, unknown> | null
   user_metadata?: Record<string, unknown> | null
 } | null | undefined
 
@@ -19,6 +20,6 @@ export function isBillingTester(user: BillingUser, profile: BillingProfile): boo
   if (isBillingSandboxEnabled()) return true
   if (profile?.role === 'admin') return true
 
-  const metadata = user?.user_metadata
+  const metadata = user?.app_metadata
   return metadata?.is_test_user === true || metadata?.stripe_tester === true
 }
