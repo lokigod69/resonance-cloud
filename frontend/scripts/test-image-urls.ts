@@ -28,9 +28,13 @@ function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
 }
 
-function assertParam(url: string, key: string, value: string) {
+function assertDirectStorageUrl(url: string | null, expected: string, label: string) {
+  assert(url === expected, `Expected ${label} to return direct storage URL, got ${url}`)
   const parsed = new URL(url)
-  assert(parsed.searchParams.get(key) === value, `Expected ${key}=${value}, got ${parsed.searchParams.get(key)}`)
+  assert(!parsed.pathname.includes('/storage/v1/render/image/'), `Expected ${label} to avoid Supabase render path`)
+  for (const key of ['width', 'height', 'resize', 'quality', 'format']) {
+    assert(!parsed.searchParams.has(key), `Expected ${label} to avoid ${key} transform param`)
+  }
 }
 
 const server = await createServer({
@@ -47,7 +51,7 @@ try {
   assert(typeof mod.getThumbnailUrl === 'function', 'Expected getThumbnailUrl export')
 
   const raw = 'https://rkiucrrusrwgcviodysp.supabase.co/storage/v1/object/public/videos/user/deck/cards/metadaten_word.png'
-  const transformed = mod.getStorageImageUrl(raw, {
+  const storageUrl = mod.getStorageImageUrl(raw, {
     width: 640,
     height: 360,
     resize: 'contain',
@@ -55,37 +59,16 @@ try {
     format: 'webp',
   })
 
-  assert(transformed !== null, 'Expected transformed URL')
-  assert(
-    transformed.startsWith('https://rkiucrrusrwgcviodysp.supabase.co/storage/v1/render/image/public/videos/'),
-    `Expected render image path, got ${transformed}`,
-  )
-  assertParam(transformed, 'width', '640')
-  assertParam(transformed, 'height', '360')
-  assertParam(transformed, 'resize', 'contain')
-  assertParam(transformed, 'quality', '88')
-  assertParam(transformed, 'format', 'webp')
+  assertDirectStorageUrl(storageUrl, raw, 'getStorageImageUrl')
 
   const thumb = mod.getCardThumbUrl(raw)
-  assert(thumb !== null, 'Expected card thumb URL')
-  assertParam(thumb, 'width', '256')
-  assertParam(thumb, 'height', '256')
-  assertParam(thumb, 'resize', 'cover')
-  assertParam(thumb, 'quality', '75')
-  assertParam(thumb, 'format', 'webp')
+  assertDirectStorageUrl(thumb, raw, 'getCardThumbUrl')
 
   const gameThumb = mod.getCardThumbUrl(raw, 512)
-  assert(gameThumb !== null, 'Expected game card thumb URL')
-  assertParam(gameThumb, 'width', '512')
-  assertParam(gameThumb, 'height', '512')
+  assertDirectStorageUrl(gameThumb, raw, 'getCardThumbUrl(size)')
 
   const full = mod.getCardFullUrl(raw)
-  assert(full !== null, 'Expected card full URL')
-  assertParam(full, 'width', '1280')
-  assertParam(full, 'height', '720')
-  assertParam(full, 'resize', 'contain')
-  assertParam(full, 'quality', '90')
-  assertParam(full, 'format', 'webp')
+  assertDirectStorageUrl(full, raw, 'getCardFullUrl')
 
   assert(mod.getStorageImageUrl(null, { width: 1, height: 1 }) === null, 'Expected null input to return null')
   assert(
@@ -94,11 +77,7 @@ try {
   )
 
   const legacy = mod.getThumbnailUrl(raw, { size: 128, format: 'webp' })
-  assert(legacy !== null, 'Expected legacy thumbnail URL')
-  assertParam(legacy, 'width', '128')
-  assertParam(legacy, 'height', '128')
-  assertParam(legacy, 'resize', 'cover')
-  assertParam(legacy, 'format', 'webp')
+  assertDirectStorageUrl(legacy, raw, 'getThumbnailUrl')
 } finally {
   await server.close()
 }
