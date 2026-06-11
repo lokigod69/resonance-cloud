@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
 import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
+import { LingwaveWaves } from '@/components/branding/LingwaveWaves'
 
 export default function Login() {
   const { t } = useLandingLocale()
@@ -106,20 +107,15 @@ export default function Login() {
   }
 
   return (
-    <div
-      className="theme-cosmos min-h-screen flex flex-col items-center justify-center bg-[var(--app-bg)] p-4"
-      style={{
-        backgroundImage: "url('/brand/cosmos/cosmos-auth.webp')",
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-      }}
-    >
+    <div className="theme-cosmos relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[var(--app-bg)] p-4">
+      <LingwaveWaves />
+
       {/* Logo */}
-      <Link to="/" className="flex items-center gap-2 mb-8" aria-label="Lingwave home">
+      <Link to="/" className="relative z-10 flex items-center gap-2 mb-8" aria-label="Lingwave home">
         <LingwaveBrand markClassName="h-8" wordmarkClassName="h-7" />
       </Link>
 
-      <Card className="w-full max-w-md glass border-border">
+      <Card className="relative z-10 w-full max-w-md glass border-border">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
             {isSignUp ? (
