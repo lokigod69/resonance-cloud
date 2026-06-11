@@ -17,6 +17,7 @@ import ProfileModal from '@/components/ProfileModal'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import LandingPage from '@/pages/LandingPage'
 import Login from '@/pages/Login'
+import ResetPassword from '@/pages/ResetPassword'
 import Onboarding from '@/pages/Onboarding'
 import Dashboard from '@/pages/Dashboard'
 import Today from '@/pages/Today'
@@ -145,6 +146,7 @@ function AppRoutes() {
       <Route path="/landing" element={<LandingExperimentIndex />} />
       <Route path="/landing/a" element={<HybridALanding />} />
       <Route path="/landing/b" element={<HybridBLanding />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
 
       {/* Public routes */}
       <Route element={<PublicRoute />}>
