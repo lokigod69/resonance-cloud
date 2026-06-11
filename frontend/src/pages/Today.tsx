@@ -30,6 +30,7 @@ import {
   getSelectedGuidedTargetLanguage,
   setSelectedGuidedTargetLanguage,
 } from '@/lib/todayLanguage'
+import { useTranslation } from '@/hooks/useTranslation'
 import '@/components/today/Today.css'
 
 function scrollTodayToTop() {
@@ -42,6 +43,7 @@ function scrollTodayToTop() {
 
 export default function Today() {
   const { user } = useAuth()
+  const { t } = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams()
   const pathOptions = useMemo(() => getGuidedTodayPathOptions(), [])
   const availableLanguages = useMemo(() => collectAvailableLanguages(pathOptions), [pathOptions])
@@ -104,11 +106,15 @@ export default function Today() {
   }, [queryVibeId, selectedPathId, user?.id])
 
   useEffect(() => {
-    if (queryPathId) setSelectedPathId(queryPathId)
+    if (queryPathId) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- URL path param must hydrate the local lesson path selection.
+      setSelectedPathId(queryPathId)
+    }
   }, [queryPathId])
 
   useEffect(() => {
     if (queryPathLanguage && queryPathLanguage !== selectedLanguage) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- URL path selection owns the visible target language.
       setSelectedLanguageState(queryPathLanguage)
       setSelectedGuidedTargetLanguage(queryPathLanguage)
     }
@@ -228,13 +234,12 @@ export default function Today() {
 
       <div className="grid gap-6">
         {!sessionActive && (
-          <div
-            className="today-betaBanner overflow-hidden rounded-md border border-destructive/40 bg-muted/50 text-center"
-            role="status"
-          >
-            <div className="bg-destructive px-3 py-1 text-xs font-semibold text-destructive-foreground sm:text-sm">
-              Today is being built — explore freely, but the experience here will change.
-            </div>
+          <div className="today-betaChipRow" role="status">
+            <span className="today-betaChip">
+              <span className="today-betaChipDot" aria-hidden="true" />
+              <span className="today-betaChipLabel">{t('today.betaLabel')}</span>
+              {t('today.betaMessage')}
+            </span>
           </div>
         )}
 

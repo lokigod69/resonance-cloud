@@ -161,6 +161,7 @@ export function TodayHero({
   const preferredBaseLanguage = profile?.base_language
   const terminalStatus = status === 'completed' || status === 'skipped'
   const pathTitle = formatGuidedPathFullTitle(lesson.pathMetadata, t)
+  const selectedVibeLabel = t(todayVibeLabelKey(lesson.vibeId))
   const resolvedTitle = resolveGuidedBaseContent(lesson.lessonMetadata.title, {
     preferredBaseLanguage,
     authoredBaseLanguage: lesson.baseLanguage,
@@ -194,7 +195,7 @@ export function TodayHero({
                 {pathDirection}
               </Badge>
               <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
-                {t('today.vibeIndicator', { vibe: guidedVibes[lesson.vibeId].label })}
+                {t('today.vibeIndicator', { vibe: selectedVibeLabel })}
               </Badge>
             </div>
 
@@ -372,6 +373,7 @@ export function GuidedVibePicker({
           {ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => {
             const vibe = guidedVibes[vibeId]
             const isSelected = selectedVibeId === vibeId
+            const label = t(todayVibeLabelKey(vibeId))
 
             return (
               <button
@@ -396,7 +398,7 @@ export function GuidedVibePicker({
                     />
                   )}
                 </span>
-                <span className="min-w-0 truncate text-sm font-semibold text-[var(--text-primary)]">{vibe.label}</span>
+                <span className="min-w-0 truncate text-sm font-semibold text-[var(--text-primary)]">{label}</span>
                 {isSelected && <Check className="ml-auto h-4 w-4 shrink-0 text-[var(--accent)]" aria-hidden="true" />}
               </button>
             )
@@ -425,6 +427,8 @@ export function GuidedVibePicker({
         {ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => {
           const vibe = guidedVibes[vibeId]
           const isSelected = selectedVibeId === vibeId
+          const label = t(todayVibeLabelKey(vibeId))
+          const description = t(todayVibeDescriptionKey(vibeId))
 
           return (
             <button
@@ -433,7 +437,7 @@ export function GuidedVibePicker({
               aria-pressed={isSelected}
               onClick={() => onSelectVibe(vibeId)}
               className={cn(
-                'today-vibe-card relative flex min-h-36 min-w-0 flex-col items-center justify-center rounded-lg border p-3 text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+                'today-vibe-card relative flex min-h-40 min-w-0 flex-col items-center justify-center rounded-lg border p-3 text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
                 isSelected
                   ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)] shadow-[0_0_24px_color-mix(in_srgb,var(--accent)_18%,transparent)]'
                   : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_16%,transparent)]',
@@ -450,8 +454,11 @@ export function GuidedVibePicker({
                 )}
               </span>
               <div className="mt-3 flex min-h-5 items-center justify-center gap-2">
-                <span className="text-sm font-semibold text-[var(--text-primary)]">{vibe.label}</span>
+                <span className="text-sm font-semibold text-[var(--text-primary)]">{label}</span>
               </div>
+              <p className="mt-1 max-w-[12rem] text-xs leading-5 text-[var(--text-secondary)]">
+                {description}
+              </p>
               {isSelected && (
                 <span className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--accent)_62%,transparent)] bg-[color-mix(in_srgb,var(--app-bg)_72%,transparent)] text-[var(--accent)]">
                   <Check className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -470,6 +477,7 @@ export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
   const { profile } = useAuth()
   const preferredBaseLanguage = profile?.base_language
   const pathTitle = formatGuidedPathFullTitle(lesson.pathMetadata, t)
+  const selectedVibeLabel = t(todayVibeLabelKey(lesson.vibeId))
   const resolvedTitle = resolveGuidedBaseContent(lesson.lessonMetadata.title, {
     preferredBaseLanguage,
     authoredBaseLanguage: lesson.baseLanguage,
@@ -489,7 +497,7 @@ export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
               {pathDirection}
             </span>
             <span className="text-xs font-medium text-[var(--text-muted)]">
-              {t('today.vibeIndicator', { vibe: guidedVibes[lesson.vibeId].label })}
+              {t('today.vibeIndicator', { vibe: selectedVibeLabel })}
             </span>
           </div>
           <h1 className="mt-3 break-words text-xl font-semibold text-[var(--text-primary)]">
@@ -502,4 +510,12 @@ export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
       </div>
     </section>
   )
+}
+
+function todayVibeLabelKey(vibeId: ActiveGuidedVibeId) {
+  return `today.vibe.${vibeId}.label`
+}
+
+function todayVibeDescriptionKey(vibeId: ActiveGuidedVibeId) {
+  return `today.vibe.${vibeId}.description`
 }

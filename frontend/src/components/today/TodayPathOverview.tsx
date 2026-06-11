@@ -9,7 +9,7 @@ import {
   type GuidedPathOverview,
   type GuidedTargetLanguage,
 } from '@/data/guidedLessons'
-import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
+import { ACTIVE_GUIDED_VIBE_IDS, guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayProgress'
 import { readGuidedSegmentReviewRecord, type GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
 import { splitGuidedPathLabel } from '@/lib/guidedPathLabels'
@@ -121,9 +121,14 @@ export function TodayPathOverview({
     }
   })
 
+  const heroLessonNumber = Math.min(overview.completedCount + 1, overview.totalLessons)
+  const heroProgressRatio = overview.totalLessons > 0
+    ? overview.completedCount / overview.totalLessons
+    : 0
+
   return (
     <div className="today-path-shell grid gap-4 sm:gap-5">
-      <section className="today-path-hero theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
+      <section className="today-path-hero theme-panel today-reveal rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
         <img
           src={TODAY_PATH_HERO_ASSET}
           alt=""
@@ -133,7 +138,10 @@ export function TodayPathOverview({
         />
         <div className="today-path-header">
           <div className="min-w-0">
-            <h1 className="today-path-heroTitle break-words text-3xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
+            <p className="today-path-heroKicker">
+              {t('today.path.heroKicker')}
+            </p>
+            <h1 className="today-path-heroTitle break-words font-semibold leading-tight text-[var(--text-primary)]">
               {(() => {
                 const parts = splitGuidedPathLabel(overview.pathMetadata, t)
                 return (
@@ -144,6 +152,22 @@ export function TodayPathOverview({
                 )
               })()}
             </h1>
+            <div className="today-path-heroProgress">
+              <span className="today-path-heroProgressRail" aria-hidden="true">
+                <span
+                  className="today-path-heroProgressFill"
+                  style={{ width: `${Math.round(heroProgressRatio * 100)}%` }}
+                />
+              </span>
+              <span className="today-path-heroProgressLabel">
+                {overview.isComplete
+                  ? t('today.path.completeLabel')
+                  : t('today.path.lessonProgressHero', {
+                      current: heroLessonNumber,
+                      total: overview.totalLessons,
+                    })}
+              </span>
+            </div>
           </div>
         </div>
         <div className="today-path-actions">
@@ -160,6 +184,11 @@ export function TodayPathOverview({
           </Button>
         </div>
       </section>
+
+      <TodayVibeStrip
+        selectedVibeId={selectedVibeId}
+        onSelectVibe={onSelectVibe}
+      />
 
       <GuidedPathDirectory
         open={directoryOpen}
@@ -184,7 +213,7 @@ export function TodayPathOverview({
         />
       )}
 
-      <section className="today-path-journey grid gap-4" aria-labelledby="today-path-journey-title">
+      <section className="today-path-journey today-reveal grid gap-4" aria-labelledby="today-path-journey-title">
         <h2 id="today-path-journey-title" className="sr-only">
           {t('today.path.yourPath')}
         </h2>
@@ -299,6 +328,57 @@ export function TodayPathOverview({
         )}
       </section>
     </div>
+  )
+}
+
+function TodayVibeStrip({
+  selectedVibeId,
+  onSelectVibe,
+}: {
+  selectedVibeId: ActiveGuidedVibeId
+  onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
+}) {
+  const { t } = useTranslation()
+
+  return (
+    <section
+      className="today-vibeStrip today-reveal"
+      aria-label={t('today.vibePicker.title')}
+    >
+      <div className="today-vibeStrip-head">
+        <span className="today-vibeStrip-label">{t('today.vibe.rowLabel')}</span>
+        <p className="today-vibeStrip-description" key={selectedVibeId}>
+          {t(`today.vibe.${selectedVibeId}.description`)}
+        </p>
+      </div>
+      <div className="today-vibeStrip-options" role="group" aria-label={t('today.vibePicker.title')}>
+        {ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => {
+          const vibe = guidedVibes[vibeId]
+          const isSelected = vibeId === selectedVibeId
+
+          return (
+            <button
+              key={vibeId}
+              type="button"
+              aria-pressed={isSelected}
+              onClick={() => onSelectVibe(vibeId)}
+              className="today-vibeStrip-option"
+              data-vibe-option={vibeId}
+              data-selected={isSelected}
+            >
+              <span className="today-vibeStrip-emblem" aria-hidden="true">
+                {vibe.emblem?.url && (
+                  <img src={vibe.emblem.url} alt="" draggable={false} />
+                )}
+              </span>
+              <span className="today-vibeStrip-name">
+                {t(`today.vibe.${vibeId}.label`)}
+              </span>
+            </button>
+          )
+        })}
+      </div>
+    </section>
   )
 }
 
@@ -510,7 +590,7 @@ function RecommendedLessonPanel({
   const actionLabel = isSelectedRecommendation ? t('today.nextLesson') : t('today.startLesson')
 
   return (
-    <section className="today-featuredLesson today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-5">
+    <section className="today-featuredLesson today-recommended-panel theme-panel today-reveal rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-5">
       <img
         src={TODAY_PATH_LESSON_ORB_ASSET}
         alt=""
@@ -520,15 +600,18 @@ function RecommendedLessonPanel({
       />
       <div className="today-featuredLessonContent grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
         <div className="min-w-0">
-          <p className="sr-only">
-            {isSelectedRecommendation ? t('today.path.nextLessonLabel') : t('today.path.selectedLessonLabel')}
+          <p className="today-featuredLessonKicker">
+            <span className="today-featuredLessonKickerNumber">
+              {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
+            </span>
+            <span className="today-featuredLessonKickerDivider" aria-hidden="true" />
+            <span className="today-featuredLessonKickerStatus">
+              {isSelectedRecommendation ? t('today.path.nextLessonLabel') : t('today.path.selectedLessonLabel')}
+            </span>
           </p>
-          <h2 className="today-featuredLessonTitle mt-1 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)]">
+          <h2 className="today-featuredLessonTitle mt-2 break-words font-semibold leading-tight text-[var(--text-primary)]">
             {title}
           </h2>
-          <p className="today-featuredLessonKicker mt-2 text-xs font-semibold text-[var(--text-secondary)] sm:text-sm">
-            {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
-          </p>
         </div>
         <Button size="lg" className="today-featuredLessonAction" onClick={() => onStartLesson(lesson.id)}>
           {actionLabel}

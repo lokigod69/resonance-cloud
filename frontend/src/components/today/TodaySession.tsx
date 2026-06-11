@@ -138,7 +138,7 @@ export function TodaySession({
         <TodayLessonProgressRail stepIndex={stepIndex} />
       </header>
 
-      <div className="today-session-taskCard" data-session-step={step} data-step-state={stepVisualState}>
+      <div key={step} className="today-session-taskCard today-step-stage" data-session-step={step} data-step-state={stepVisualState}>
         {step !== 'complete' && (
           <div className="today-session-taskHeader">
             <TodayLessonStepIcon step={step} compact />
@@ -371,7 +371,7 @@ function CompleteStep({
   }
 
   return (
-    <div className="grid gap-5 text-center">
+    <div className="today-completion-stage grid gap-5 text-center">
       <div className="today-completion-vibeBadge mx-auto" aria-label={vibe.label}>
         {guidedVibes[lesson.vibeId].emblem?.url && (
           <img
