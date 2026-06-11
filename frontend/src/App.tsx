@@ -17,56 +17,64 @@ import ProfileModal from '@/components/ProfileModal'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import LandingPage from '@/pages/LandingPage'
 import Login from '@/pages/Login'
-import ResetPassword from '@/pages/ResetPassword'
-import Onboarding from '@/pages/Onboarding'
-import Dashboard from '@/pages/Dashboard'
-import Today from '@/pages/Today'
-import GuidedCheckpoint from '@/pages/GuidedCheckpoint'
-import CategoryListPage from '@/pages/categories/CategoryListPage'
-import CategoryDetailPage from '@/pages/categories/CategoryDetailPage'
-import LevelDetailPage from '@/pages/categories/LevelDetailPage'
-import Generate from '@/pages/Generate'
-import DeckView from '@/pages/DeckView'
-import VideoPlayer from '@/pages/VideoPlayer'
-import Study from '@/pages/Study'
-import DashboardPG from '@/pages/DashboardPG'
-import Decks from '@/pages/Decks'
-import DecksPG from '@/pages/DecksPG'
-
-import DeckViewPG from '@/pages/DeckViewPG'
-import StudyPG from '@/pages/StudyPG'
-import StudyModeSelector from '@/pages/StudyModeSelector'
-import StudyFlashcard from '@/pages/StudyFlashcard'
-import StudyAudio from '@/pages/StudyAudio'
-import StudyCanvas from '@/pages/StudyCanvas'
-import CanvasDeckPicker from '@/pages/CanvasDeckPicker'
-import GamesHub from '@/pages/GamesHub'
 import { ComingSoonPlaceholder } from '@/components/games/ComingSoonPlaceholder'
-import GenerateGO from '@/pages/GenerateGO'
-import Users from '@/pages/admin/Users'
-import Content from '@/pages/admin/Content'
-import Metrics from '@/pages/admin/Metrics'
-import Queue from '@/pages/admin/Queue'
-import Profiles from '@/pages/admin/Profiles'
-import Voices from '@/pages/admin/Voices'
-import Quotas from '@/pages/admin/Quotas'
-import Layer2Lab from '@/pages/admin/Layer2Lab'
-import CurriculumImageSets from '@/pages/admin/CurriculumImageSets'
-import ObservabilityAggregate from '@/pages/admin/ObservabilityAggregate'
-import ObservabilityWordDetail from '@/pages/admin/ObservabilityWordDetail'
-import Music from '@/pages/Music'
-import MusicPG from '@/pages/MusicPG'
-import Speak from '@/pages/Speak'
 import AdminRoute from '@/components/AdminRoute'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
-import SharePage from '@/pages/SharePage'
-import HybridALanding from '@/landing-experiments/hybrid-a/HybridALanding'
-import HybridBLanding from '@/landing-experiments/hybrid-b/HybridBLanding'
-import LandingExperimentIndex from '@/landing-experiments/hybrid-a/LandingExperimentIndex'
 import { useCapacitorDeepLinks } from '@/hooks/useCapacitorDeepLinks'
 
+const ResetPassword = lazyWithRetry(() => import('@/pages/ResetPassword'), 'reset-password')
+const Onboarding = lazyWithRetry(() => import('@/pages/Onboarding'), 'onboarding')
+const SharePage = lazyWithRetry(() => import('@/pages/SharePage'), 'share-page')
+const HybridALanding = lazyWithRetry(() => import('@/landing-experiments/hybrid-a/HybridALanding'), 'hybrid-a-landing')
+const HybridBLanding = lazyWithRetry(() => import('@/landing-experiments/hybrid-b/HybridBLanding'), 'hybrid-b-landing')
+const LandingExperimentIndex = lazyWithRetry(() => import('@/landing-experiments/hybrid-a/LandingExperimentIndex'), 'landing-experiment-index')
+const Dashboard = lazyWithRetry(() => import('@/pages/Dashboard'), 'dashboard')
+const DashboardPG = lazyWithRetry(() => import('@/pages/DashboardPG'), 'dashboard-pg')
+const Today = lazyWithRetry(() => import('@/pages/Today'), 'today')
+const GuidedCheckpoint = lazyWithRetry(() => import('@/pages/GuidedCheckpoint'), 'guided-checkpoint')
+const CategoryListPage = lazyWithRetry(() => import('@/pages/categories/CategoryListPage'), 'category-list')
+const CategoryDetailPage = lazyWithRetry(() => import('@/pages/categories/CategoryDetailPage'), 'category-detail')
+const LevelDetailPage = lazyWithRetry(() => import('@/pages/categories/LevelDetailPage'), 'level-detail')
+const GamesHub = lazyWithRetry(() => import('@/pages/GamesHub'), 'games-hub')
+const Generate = lazyWithRetry(() => import('@/pages/Generate'), 'generate')
+const GenerateGO = lazyWithRetry(() => import('@/pages/GenerateGO'), 'generate-go')
+const Decks = lazyWithRetry(() => import('@/pages/Decks'), 'decks')
+const DecksPG = lazyWithRetry(() => import('@/pages/DecksPG'), 'decks-pg')
+const DeckView = lazyWithRetry(() => import('@/pages/DeckView'), 'deck-view')
+const DeckViewPG = lazyWithRetry(() => import('@/pages/DeckViewPG'), 'deck-view-pg')
+const VideoPlayer = lazyWithRetry(() => import('@/pages/VideoPlayer'), 'video-player')
+const Study = lazyWithRetry(() => import('@/pages/Study'), 'study')
+const StudyPG = lazyWithRetry(() => import('@/pages/StudyPG'), 'study-pg')
+const StudyModeSelector = lazyWithRetry(() => import('@/pages/StudyModeSelector'), 'study-mode-selector')
+const StudyFlashcard = lazyWithRetry(() => import('@/pages/StudyFlashcard'), 'study-flashcard')
+const StudyAudio = lazyWithRetry(() => import('@/pages/StudyAudio'), 'study-audio')
+const StudyCanvas = lazyWithRetry(() => import('@/pages/StudyCanvas'), 'study-canvas')
+const CanvasDeckPicker = lazyWithRetry(() => import('@/pages/CanvasDeckPicker'), 'canvas-deck-picker')
+const Music = lazyWithRetry(() => import('@/pages/Music'), 'music')
+const MusicPG = lazyWithRetry(() => import('@/pages/MusicPG'), 'music-pg')
+const Speak = lazyWithRetry(() => import('@/pages/Speak'), 'speak')
+const Users = lazyWithRetry(() => import('@/pages/admin/Users'), 'admin-users')
+const Content = lazyWithRetry(() => import('@/pages/admin/Content'), 'admin-content')
+const Metrics = lazyWithRetry(() => import('@/pages/admin/Metrics'), 'admin-metrics')
+const Queue = lazyWithRetry(() => import('@/pages/admin/Queue'), 'admin-queue')
+const Profiles = lazyWithRetry(() => import('@/pages/admin/Profiles'), 'admin-profiles')
+const Voices = lazyWithRetry(() => import('@/pages/admin/Voices'), 'admin-voices')
+const Quotas = lazyWithRetry(() => import('@/pages/admin/Quotas'), 'admin-quotas')
+const Layer2Lab = lazyWithRetry(() => import('@/pages/admin/Layer2Lab'), 'admin-layer2-lab')
+const CurriculumImageSets = lazyWithRetry(() => import('@/pages/admin/CurriculumImageSets'), 'admin-curriculum-image-sets')
+const ObservabilityAggregate = lazyWithRetry(() => import('@/pages/admin/ObservabilityAggregate'), 'admin-observability-aggregate')
+const ObservabilityWordDetail = lazyWithRetry(() => import('@/pages/admin/ObservabilityWordDetail'), 'admin-observability-word-detail')
 const SlicerGame = lazyWithRetry(() => import('@/games/slicer/SlicerGame'), 'slicer-game')
 export const RUNNER_GAME_ROUTE_ENABLED = false
+
+function RouteSuspenseFallback() {
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background text-foreground">
+      <ParticleSpinner preset="spirograph" size={160} />
+      <p className="text-sm text-muted-foreground opacity-70">Loading...</p>
+    </div>
+  )
+}
 
 function ProtectedRoute() {
   const { session, loading: authLoading } = useAuth()
@@ -136,6 +144,7 @@ function AppRoutes() {
   useCapacitorDeepLinks(navigate)
 
   return (
+    <Suspense fallback={<RouteSuspenseFallback />}>
     <Routes>
       {/* Fully public routes — no auth, no redirect */}
       <Route path="/share/:shareId" element={<SharePage />} />
@@ -164,11 +173,7 @@ function AppRoutes() {
         <Route path="/deck/:id/word/:wordId" element={<VideoPlayer />} />
         <Route
           path="/games/slicer"
-          element={(
-            <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><ParticleSpinner preset="spirograph" size={160} /></div>}>
-              <SlicerGame />
-            </Suspense>
-          )}
+          element={<SlicerGame />}
         />
         <Route
           path="/games/runner"
@@ -248,6 +253,7 @@ function AppRoutes() {
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    </Suspense>
   )
 }
 
