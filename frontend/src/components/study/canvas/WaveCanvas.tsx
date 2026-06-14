@@ -7,7 +7,7 @@ import { usePronunciation } from '@/hooks/usePronunciation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { getCardFullUrl } from '@/lib/imageUrls'
-import { LingwaveWaves } from '@/components/branding/LingwaveWaves'
+import { LingwaveWaves, type WaveRipple } from '@/components/branding/LingwaveWaves'
 import type { CanvasModeProps } from './types'
 import { CanvasToolbar } from './CanvasToolbar'
 import { CANVAS_TOOLBAR_THEMES } from './canvasToolbarThemes'
@@ -63,7 +63,6 @@ type AudioKind = 'hover' | 'reveal' | 'pass' | 'fail'
 
 const AMBIENT_SPRAY_COUNT = 38
 const AMBIENT_FOAM_COUNT = 9
-const PHYSICS_FRAMES = 300
 const TOOLBAR_CARD_CLEARANCE_PX = 64
 const WAVE_LANE_CARD_EDGE_CLAMP_PX = 90
 // Buoy ride: peak vertical travel (px) of a word sitting on a crest vs a trough.
@@ -476,8 +475,9 @@ export default function WaveCanvas({
   const particlesRef = useRef<SprayParticle[]>(particles)
   const particleElementsRef = useRef(new Map<number, HTMLDivElement>())
   const swellsRef = useRef<Swell[]>([])
+  // Tap ripples fed to the brand ocean so the visible wave lines roll outward.
+  const ripplesRef = useRef<WaveRipple[]>([])
   const frameRef = useRef<number | null>(null)
-  const physicsFrameRef = useRef(0)
   const audioContextRef = useRef<AudioContext | null>(null)
   const reducedMotionRef = useRef(false)
   const timersRef = useRef<number[]>([])
@@ -594,7 +594,6 @@ export default function WaveCanvas({
 
   useEffect(() => {
     wordStatesRef.current = createWordStates(words, imageFailures, viewport, masteredWordIds, wordStatesRef.current)
-    physicsFrameRef.current = 0
 
     const timer = window.setTimeout(() => {
       setRevealedId((current) => words.some((word) => word.id === current) ? current : null)
@@ -616,8 +615,6 @@ export default function WaveCanvas({
       const reducedMotion = reducedMotionRef.current
       const t = now / 1000
       const { minDistX, minDistY } = getBounds()
-      physicsFrameRef.current += 1
-      const physicsActive = physicsFrameRef.current <= PHYSICS_FRAMES
 
       // Retire swells whose front has rolled off the field.
       swellsRef.current = swellsRef.current.filter((sw) => now - sw.spawnTime <= SWELL_DURATION_MS)
@@ -665,28 +662,29 @@ export default function WaveCanvas({
           let newX = word.x + Math.sin(word.drift) * 0.02
           let newY = word.y + Math.cos(word.drift * 0.8) * 0.015
 
-          if (physicsActive) {
-            let repelX = 0
-            let repelY = 0
+          // Continuous separation: runs every frame so words never drift into
+          // overlap (settled gold crests act as fixed obstacles), but force is
+          // applied only where cards actually overlap, so there's no idle jitter.
+          let repelX = 0
+          let repelY = 0
 
-            for (const other of wordStatesRef.current) {
-              if (other.id === word.id || other.washing) continue
-              const dx = newX - other.x
-              const dy = newY - other.y
-              const distX = Math.abs(dx)
-              const distY = Math.abs(dy)
+          for (const other of wordStatesRef.current) {
+            if (other.id === word.id || other.washing) continue
+            const dx = newX - other.x
+            const dy = newY - other.y
+            const distX = Math.abs(dx)
+            const distY = Math.abs(dy)
 
-              if (distX < minDistX && distY < minDistY) {
-                const overlapX = minDistX - distX
-                const overlapY = minDistY - distY
-                if (distX > 0.1) repelX += (dx > 0 ? 1 : -1) * overlapX * 0.03
-                if (distY > 0.1) repelY += (dy > 0 ? 1 : -1) * overlapY * 0.03
-              }
+            if (distX < minDistX && distY < minDistY) {
+              const overlapX = minDistX - distX
+              const overlapY = minDistY - distY
+              if (distX > 0.1) repelX += (dx > 0 ? 1 : -1) * overlapX * 0.03
+              if (distY > 0.1) repelY += (dy > 0 ? 1 : -1) * overlapY * 0.03
             }
-
-            newX += repelX
-            newY += repelY
           }
+
+          newX += repelX
+          newY += repelY
 
           const bounds = getDriftBounds(word.layout, word.laneColumn, word.x)
           word.x = clamp(newX, bounds.minX, bounds.maxX)
@@ -753,14 +751,19 @@ export default function WaveCanvas({
 
   const handleBackgroundClick = (event: ReactMouseEvent<HTMLDivElement>) => {
     if (!containerRef.current || (event.target as HTMLElement).closest('button, [data-toolbar], .wave-word-inner')) return
+    if (reducedMotionRef.current) return
     const rect = containerRef.current.getBoundingClientRect()
+    // Word swell uses world-% coords; the loop lifts words as the front passes.
     const x = ((event.clientX - rect.left) / rect.width) * 100
     const y = ((event.clientY - rect.top + containerRef.current.scrollTop) / containerRef.current.scrollHeight) * 100
-    addSprayBurst(x, y, 10, 0.35)
-    // Send a swell rolling out from the tap; the loop lifts words as it passes.
-    if (!reducedMotionRef.current) {
-      swellsRef.current.push({ x, y, spawnTime: performance.now() })
-    }
+    swellsRef.current.push({ x, y, spawnTime: performance.now() })
+    // Background ripple uses viewport fractions (the ocean canvas is fixed to the
+    // viewport): the tap rolls a visible wave outward through the contour lines.
+    ripplesRef.current.push({
+      x: event.clientX / window.innerWidth,
+      y: event.clientY / window.innerHeight,
+      start: performance.now(),
+    })
   }
 
   const handleSelectWord = (state: WaveWordState, event: ReactMouseEvent) => {
@@ -852,7 +855,7 @@ export default function WaveCanvas({
       <WaveStyle />
       {/* Brand ocean stays pinned to the viewport while words scroll above it. */}
       <div className="pointer-events-none fixed inset-0 z-0">
-        <LingwaveWaves />
+        <LingwaveWaves ripplesRef={ripplesRef} />
         <div className="absolute inset-x-0" style={dawnStyle} />
       </div>
 

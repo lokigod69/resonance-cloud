@@ -32,6 +32,34 @@ const MAX_DPR = 1.75
 const CAM_HEIGHT = 3.2
 const AMP = 1.51 // sum of amplitudes in waveHeight
 
+// Tap ripples — an optional, interactive disturbance the swell field can carry.
+// A ripple is a wavetrain that expands from a point and decays; it displaces the
+// rendered contour lines so a tap visibly rolls outward through the water.
+// x/y are 0..1 fractions of the canvas; start is a performance.now() timestamp.
+export type WaveRipple = { x: number; y: number; start: number }
+const NO_RIPPLES: WaveRipple[] = []
+const RIPPLE_LIFE_MS = 2200
+const RIPPLE_SPEED_PX = 460 // how fast the ring front travels outward
+const RIPPLE_WAVELEN_PX = 70 // spatial period of the wavetrain
+const RIPPLE_AMP_PX = 13 // peak vertical displacement of the lines
+const RIPPLE_WIDTH_PX = 150 // envelope width of the moving ring
+
+function rippleDispAt(sx: number, sy: number, ripples: WaveRipple[], nowMs: number, w: number, h: number): number {
+  let disp = 0
+  for (const r of ripples) {
+    const age = (nowMs - r.start) / 1000
+    if (age < 0 || age > RIPPLE_LIFE_MS / 1000) continue
+    const dx = sx - r.x * w
+    const dy = sy - r.y * h
+    const dist = Math.sqrt(dx * dx + dy * dy)
+    const ringPos = dist - age * RIPPLE_SPEED_PX
+    const env = Math.exp(-(ringPos * ringPos) / (2 * RIPPLE_WIDTH_PX * RIPPLE_WIDTH_PX))
+    const fade = 1 - age / (RIPPLE_LIFE_MS / 1000)
+    disp += RIPPLE_AMP_PX * Math.sin((ringPos / RIPPLE_WAVELEN_PX) * Math.PI * 2) * env * fade
+  }
+  return disp
+}
+
 // Long, layered swells travelling toward the viewer (+t on z-terms).
 function waveHeight(x: number, z: number, t: number): number {
   return (
@@ -79,7 +107,7 @@ function makeStars(count: number): Star[] {
   return stars
 }
 
-function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, stars: Star[]) {
+function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, stars: Star[], ripples: WaveRipple[], nowMs: number) {
   const horizon = h * 0.4
   const focal = h * 0.85
   const cx = w / 2
@@ -186,7 +214,9 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
       const worldX = ((sx - cx) * z) / focal
       const hh = waveHeight(worldX, z, t)
       sxs[k] = sx
-      sys[k] = horizon + ((CAM_HEIGHT - hh) * focal) / z
+      let sy = horizon + ((CAM_HEIGHT - hh) * focal) / z
+      if (ripples.length) sy += rippleDispAt(sx, sy, ripples, nowMs, w, h)
+      sys[k] = sy
       hns[k] = (hh / AMP + 1) / 2
     }
 
@@ -244,7 +274,7 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
   ctx.fillRect(0, 0, w, h)
 }
 
-export function LingwaveWaves({ className }: { className?: string }) {
+export function LingwaveWaves({ className, ripplesRef }: { className?: string; ripplesRef?: { current: WaveRipple[] } }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
@@ -268,13 +298,19 @@ export function LingwaveWaves({ className }: { className?: string }) {
       canvas.width = Math.max(1, Math.round(width * dpr))
       canvas.height = Math.max(1, Math.round(height * dpr))
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      if (reduceMotion) render(ctx, width, height, t, stars)
+      if (reduceMotion) render(ctx, width, height, t, stars, NO_RIPPLES, performance.now())
     }
 
     const frame = (now: number) => {
       t += Math.min(0.05, (now - last) / 1000)
       last = now
-      render(ctx, width, height, t, stars)
+      // Retire spent ripples, then render the live ones into the swell field.
+      let ripples = NO_RIPPLES
+      if (ripplesRef && ripplesRef.current.length) {
+        ripplesRef.current = ripplesRef.current.filter((r) => now - r.start <= RIPPLE_LIFE_MS)
+        ripples = ripplesRef.current
+      }
+      render(ctx, width, height, t, stars, ripples, now)
       raf = requestAnimationFrame(frame)
     }
 
@@ -298,7 +334,7 @@ export function LingwaveWaves({ className }: { className?: string }) {
       window.removeEventListener('resize', resize)
       document.removeEventListener('visibilitychange', onVisibility)
     }
-  }, [])
+  }, [ripplesRef])
 
   return (
     <div
