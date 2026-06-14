@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useAuth } from '@/hooks/useAuth'
+import { useDeleteAccount } from '@/hooks/useDeleteAccount'
 import { useSkin, type SkinId } from '@/contexts/SkinContext'
 import { useTheme, type Theme } from '@/contexts/ThemeContext'
 import { supabase } from '@/lib/supabase'
@@ -7,6 +8,8 @@ import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
@@ -20,7 +23,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { LogOut, Check, Upload, Trash2 } from 'lucide-react'
+import { LogOut, Check, Upload, Trash2, AlertTriangle } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
 import { useToast } from '@/components/Toast'
@@ -105,9 +108,12 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
   const { skin, setSkin } = useSkin()
   const { theme, setTheme } = useTheme()
   const { toast } = useToast()
+  const { deleteAccount, loading: deleteAccountLoading } = useDeleteAccount()
 
   const [displayName, setDisplayName] = useState(profile?.display_name || '')
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+  const [deleteConfirmInput, setDeleteConfirmInput] = useState('')
 
   // Sync state when modal opens or profile data changes
   useEffect(() => {
@@ -117,6 +123,12 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
       setBaseLanguage(profile?.base_language || '')
     }
   }, [open, profile?.display_name, profile?.base_language])
+
+  useEffect(() => {
+    if (!deleteDialogOpen) {
+      setDeleteConfirmInput('')
+    }
+  }, [deleteDialogOpen])
 
   const [nameSaving, setNameSaving] = useState(false)
   const [nameSaved, setNameSaved] = useState(false)
@@ -134,6 +146,10 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
     .join('')
     .toUpperCase()
     .slice(0, 2)
+  const deleteConfirmationText = user?.email ?? 'DELETE'
+  const normalizedDeleteConfirmInput = deleteConfirmInput.trim()
+  const deleteConfirmMatches = normalizedDeleteConfirmInput === 'DELETE'
+    || (!!user?.email && normalizedDeleteConfirmInput.toLowerCase() === user.email.toLowerCase())
 
   async function handleAvatarFile(file: File) {
     if (!user) return
@@ -285,175 +301,261 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
     }
   }
 
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="theme-dialog sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>{t('profile.heading')}</DialogTitle>
-        </DialogHeader>
+  async function handleDeleteAccount() {
+    if (!deleteConfirmMatches || deleteAccountLoading) return
 
-        <div className="space-y-6 py-2">
-          {/* Avatar */}
-          <div className="flex flex-col items-center gap-3">
-            <Avatar size="lg" className="size-28">
-              {avatarUrl && (
-                <AvatarImage
-                  src={avatarUrl}
-                  alt=""
-                  draggable={false}
-                  onDragStart={(e) => e.preventDefault()}
-                  className="object-cover"
-                />
-              )}
-              <AvatarFallback className="text-2xl">{initials}</AvatarFallback>
-            </Avatar>
-            <div className="flex items-center gap-2">
-              <Button
-                type="button"
-                variant="outline"
-                size="icon"
-                aria-label={hasAvatar ? t('profile.avatar.replace') : t('profile.avatar.upload')}
-                title={hasAvatar ? t('profile.avatar.replace') : t('profile.avatar.upload')}
-                className="min-h-11 min-w-11 border-border"
-                disabled={avatarUploading}
-                onClick={() => fileInputRef.current?.click()}
-              >
-                <Upload className="h-4 w-4" />
-              </Button>
-              {hasAvatar && (
+    try {
+      await deleteAccount()
+      setDeleteDialogOpen(false)
+      onOpenChange(false)
+      toast(t('profile.deleteAccount.deleted'), 'success')
+    } catch (error) {
+      const message = error instanceof Error ? error.message : t('profile.deleteAccount.failed')
+      toast(message || t('profile.deleteAccount.failed'), 'error')
+    }
+  }
+
+  return (
+    <>
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="theme-dialog sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>{t('profile.heading')}</DialogTitle>
+          </DialogHeader>
+
+          <div className="space-y-6 py-2">
+            {/* Avatar */}
+            <div className="flex flex-col items-center gap-3">
+              <Avatar size="lg" className="size-28">
+                {avatarUrl && (
+                  <AvatarImage
+                    src={avatarUrl}
+                    alt=""
+                    draggable={false}
+                    onDragStart={(e) => e.preventDefault()}
+                    className="object-cover"
+                  />
+                )}
+                <AvatarFallback className="text-2xl">{initials}</AvatarFallback>
+              </Avatar>
+              <div className="flex items-center gap-2">
                 <Button
                   type="button"
                   variant="outline"
                   size="icon"
-                  aria-label={t('profile.avatar.remove')}
-                  title={t('profile.avatar.remove')}
+                  aria-label={hasAvatar ? t('profile.avatar.replace') : t('profile.avatar.upload')}
+                  title={hasAvatar ? t('profile.avatar.replace') : t('profile.avatar.upload')}
                   className="min-h-11 min-w-11 border-border"
                   disabled={avatarUploading}
-                  onClick={() => void handleAvatarRemove()}
+                  onClick={() => fileInputRef.current?.click()}
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Upload className="h-4 w-4" />
                 </Button>
-              )}
-            </div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              className="hidden"
-              onChange={(e) => {
-                const file = e.target.files?.[0]
-                // Reset so re-selecting the same file still triggers onChange.
-                e.target.value = ''
-                if (file) void handleAvatarFile(file)
-              }}
-            />
-          </div>
-
-          {/* Skin Selector */}
-          <div className="space-y-2">
-            <label className="text-sm font-medium">{t('profile.skin')}</label>
-            <div className="grid grid-cols-2 gap-2">
-              {SKINS.map((s) => (
-                <button
-                  key={s.id}
-                  onClick={() => handleSkinChange(s.id)}
-                  className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
-                    skin === s.id
-                      ? 'theme-chip-active'
-                      : 'theme-chip'
-                  }`}
-                >
-                  {s.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Theme Selector */}
-          <div className="space-y-2">
-            <label className="text-sm font-medium">{t('profile.theme')}</label>
-            <div className="flex gap-2">
-              {THEMES.map((themeOption) => (
-                <button
-                  key={themeOption.id}
-                  onClick={() => setTheme(themeOption.id)}
-                  aria-label={themeOption.label}
-                  title={themeOption.label}
-                  className={`relative h-[44px] w-[50px] overflow-hidden rounded-md border-2 transition-all ${
-                    theme === themeOption.id
-                      ? 'border-primary ring-2 ring-primary/30'
-                      : 'border-border hover:border-muted-foreground'
-                  }`}
-                >
-                  <span
-                    className="absolute inset-0"
-                    style={{
-                      background: `linear-gradient(135deg, ${themeOption.palette[0]}, ${themeOption.palette[1]})`,
-                    }}
-                  />
-                  <span
-                    className="absolute bottom-1.5 right-1.5 h-3 w-3 rounded-full shadow-[0_0_14px_currentColor]"
-                    style={{ background: themeOption.palette[2], color: themeOption.palette[2] }}
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Display Name */}
-          <div className="space-y-2">
-            <label className="text-sm font-medium">{t('profile.displayName')}</label>
-            <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
-              <Input
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSaveDisplayName()}
-                onBlur={() => { if (open) handleSaveDisplayName() }}
-                placeholder={t('profile.displayNamePlaceholder')}
-                className="theme-input"
+                {hasAvatar && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label={t('profile.avatar.remove')}
+                    title={t('profile.avatar.remove')}
+                    className="min-h-11 min-w-11 border-border"
+                    disabled={avatarUploading}
+                    onClick={() => void handleAvatarRemove()}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0]
+                  // Reset so re-selecting the same file still triggers onChange.
+                  e.target.value = ''
+                  if (file) void handleAvatarFile(file)
+                }}
               />
-              {nameSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}
-              {nameSaved && (
-                <span className="text-xs text-[var(--accent-2)] flex items-center gap-1 shrink-0">
-                  <Check className="h-3 w-3" /> {t('profile.saved')}
-                </span>
-              )}
+            </div>
+
+            {/* Skin Selector */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">{t('profile.skin')}</label>
+              <div className="grid grid-cols-2 gap-2">
+                {SKINS.map((s) => (
+                  <button
+                    key={s.id}
+                    onClick={() => handleSkinChange(s.id)}
+                    className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
+                      skin === s.id
+                        ? 'theme-chip-active'
+                        : 'theme-chip'
+                    }`}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Theme Selector */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">{t('profile.theme')}</label>
+              <div className="flex gap-2">
+                {THEMES.map((themeOption) => (
+                  <button
+                    key={themeOption.id}
+                    onClick={() => setTheme(themeOption.id)}
+                    aria-label={themeOption.label}
+                    title={themeOption.label}
+                    className={`relative h-[44px] w-[50px] overflow-hidden rounded-md border-2 transition-all ${
+                      theme === themeOption.id
+                        ? 'border-primary ring-2 ring-primary/30'
+                        : 'border-border hover:border-muted-foreground'
+                    }`}
+                  >
+                    <span
+                      className="absolute inset-0"
+                      style={{
+                        background: `linear-gradient(135deg, ${themeOption.palette[0]}, ${themeOption.palette[1]})`,
+                      }}
+                    />
+                    <span
+                      className="absolute bottom-1.5 right-1.5 h-3 w-3 rounded-full shadow-[0_0_14px_currentColor]"
+                      style={{ background: themeOption.palette[2], color: themeOption.palette[2] }}
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Display Name */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">{t('profile.displayName')}</label>
+              <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
+                <Input
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSaveDisplayName()}
+                  onBlur={() => { if (open) handleSaveDisplayName() }}
+                  placeholder={t('profile.displayNamePlaceholder')}
+                  className="theme-input"
+                />
+                {nameSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}
+                {nameSaved && (
+                  <span className="text-xs text-[var(--accent-2)] flex items-center gap-1 shrink-0">
+                    <Check className="h-3 w-3" /> {t('profile.saved')}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Base Language */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">{t('profile.baseLanguage')}</label>
+              <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
+                <Select value={baseLanguage} onValueChange={handleSaveLanguage}>
+                  <SelectTrigger className="theme-input">
+                    <SelectValue placeholder={t('profile.selectLanguage')} />
+                  </SelectTrigger>
+                  <SelectContent className="theme-popover">
+                    {BASE_LANGUAGES.map((lang) => (
+                      <SelectItem key={lang.value} value={lang.value}>
+                        {getDisplayLabel(lang)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {langSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}
+              </div>
+            </div>
+
+            {/* Email (read-only) */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-muted-foreground">{t('profile.email')}</label>
+              <p className="text-sm text-muted-foreground">{user?.email}</p>
+            </div>
+
+            {/* Sign Out */}
+            <Button variant="outline" onClick={signOut} className="w-full border-border">
+              <LogOut className="h-4 w-4 mr-2" />
+              {t('profile.signOut')}
+            </Button>
+
+            {/* Delete Account */}
+            <div className="border-t border-border pt-4">
+              <Button
+                type="button"
+                variant="destructive"
+                onClick={() => setDeleteDialogOpen(true)}
+                className="w-full"
+              >
+                <Trash2 className="h-4 w-4 mr-2" />
+                {t('profile.deleteAccount')}
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={deleteDialogOpen}
+        onOpenChange={(nextOpen) => {
+          if (!deleteAccountLoading) setDeleteDialogOpen(nextOpen)
+        }}
+      >
+        <DialogContent className="theme-dialog sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5 text-destructive" />
+              {t('profile.deleteAccount.title')}
+            </DialogTitle>
+            <DialogDescription>
+              {t('profile.deleteAccount.description')}
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-3">
+            <p className="text-sm text-destructive">{t('profile.deleteAccount.warning')}</p>
+            <div className="space-y-2">
+              <label className="text-sm font-medium">
+                {t('profile.deleteAccount.confirmLabel', { value: deleteConfirmationText })}
+              </label>
+              <Input
+                value={deleteConfirmInput}
+                onChange={(e) => setDeleteConfirmInput(e.target.value)}
+                placeholder={t('profile.deleteAccount.confirmPlaceholder')}
+                className="theme-input"
+                disabled={deleteAccountLoading}
+                autoComplete="off"
+              />
             </div>
           </div>
 
-          {/* Base Language */}
-          <div className="space-y-2">
-            <label className="text-sm font-medium">{t('profile.baseLanguage')}</label>
-            <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
-              <Select value={baseLanguage} onValueChange={handleSaveLanguage}>
-                <SelectTrigger className="theme-input">
-                  <SelectValue placeholder={t('profile.selectLanguage')} />
-                </SelectTrigger>
-                <SelectContent className="theme-popover">
-                  {BASE_LANGUAGES.map((lang) => (
-                    <SelectItem key={lang.value} value={lang.value}>
-                      {getDisplayLabel(lang)}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {langSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}
-            </div>
-          </div>
-
-          {/* Email (read-only) */}
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-muted-foreground">{t('profile.email')}</label>
-            <p className="text-sm text-muted-foreground">{user?.email}</p>
-          </div>
-
-          {/* Sign Out */}
-          <Button variant="outline" onClick={signOut} className="w-full border-border">
-            <LogOut className="h-4 w-4 mr-2" />
-            {t('profile.signOut')}
-          </Button>
-        </div>
-      </DialogContent>
-    </Dialog>
+          <DialogFooter>
+            <Button
+              type="button"
+              variant="outline"
+              className="border-border"
+              disabled={deleteAccountLoading}
+              onClick={() => setDeleteDialogOpen(false)}
+            >
+              {t('profile.deleteAccount.cancel')}
+            </Button>
+            <Button
+              type="button"
+              variant="destructive"
+              disabled={!deleteConfirmMatches || deleteAccountLoading}
+              onClick={() => void handleDeleteAccount()}
+            >
+              <Trash2 className="h-4 w-4 mr-2" />
+              {deleteAccountLoading ? t('profile.deleteAccount.deleting') : t('profile.deleteAccount.confirm')}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
   )
 }
