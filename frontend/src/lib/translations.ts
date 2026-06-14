@@ -228,6 +228,18 @@ export const translations: Record<Locale, Record<string, string>> = {
     'auth.signUp': 'Sign Up',
     'auth.alreadyHaveAccount': 'Already have an account?',
     'auth.dontHaveAccount': 'Don\'t have an account?',
+    'auth.signupConsentPrefix': 'By creating an account, you agree to our',
+    'auth.signupConsentJoiner': 'and',
+    'auth.signupConsentSuffix': '.',
+
+    // Legal
+    'legal.footerNavLabel': 'Legal links',
+    'legal.privacy': 'Privacy',
+    'legal.privacyPolicy': 'Privacy Policy',
+    'legal.terms': 'Terms',
+    'legal.cookies': 'Cookies',
+    'legal.contact': 'Contact',
+    'legal.support': 'Support',
 
     // ── Errors ──
     'error.sessionExpired': 'Session expired',
@@ -1572,6 +1584,18 @@ export const translations: Record<Locale, Record<string, string>> = {
     'auth.signUp': 'Registrieren',
     'auth.alreadyHaveAccount': 'Du hast schon ein Konto?',
     'auth.dontHaveAccount': 'Du hast noch kein Konto?',
+    'auth.signupConsentPrefix': 'Mit der Erstellung eines Kontos stimmst du unseren',
+    'auth.signupConsentJoiner': 'und unserer',
+    'auth.signupConsentSuffix': ' zu.',
+
+    // Rechtliches
+    'legal.footerNavLabel': 'Rechtliche Links',
+    'legal.privacy': 'Datenschutz',
+    'legal.privacyPolicy': 'Datenschutzerklaerung',
+    'legal.terms': 'Nutzungsbedingungen',
+    'legal.cookies': 'Cookies',
+    'legal.contact': 'Kontakt',
+    'legal.support': 'Support',
 
     // ── Errors ──
     'error.sessionExpired': 'Sitzung abgelaufen',
@@ -2916,6 +2940,18 @@ export const translations: Record<Locale, Record<string, string>> = {
     'auth.signUp': 'S\'inscrire',
     'auth.alreadyHaveAccount': 'Tu as déjà un compte ?',
     'auth.dontHaveAccount': 'Tu n\'as pas encore de compte ?',
+    'auth.signupConsentPrefix': 'En creant un compte, tu acceptes nos',
+    'auth.signupConsentJoiner': 'et notre',
+    'auth.signupConsentSuffix': '.',
+
+    // Mentions legales
+    'legal.footerNavLabel': 'Liens legaux',
+    'legal.privacy': 'Confidentialite',
+    'legal.privacyPolicy': 'Politique de confidentialite',
+    'legal.terms': 'Conditions',
+    'legal.cookies': 'Cookies',
+    'legal.contact': 'Contact',
+    'legal.support': 'Support',
 
     // ── Errors ──
     'error.sessionExpired': 'Session expirée',

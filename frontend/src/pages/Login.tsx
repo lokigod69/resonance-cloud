@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
 import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 import { LingwaveWaves } from '@/components/branding/LingwaveWaves'
+import { handleLegalLinkClick } from '@/lib/legalLinks'
 
 export default function Login() {
   const { t } = useLandingLocale()
@@ -126,6 +127,28 @@ export default function Login() {
           </CardDescription>
         </CardHeader>
         <CardContent>
+          {isSignUp && !isResetRequest && (
+            <p className="mb-4 text-center text-xs leading-relaxed text-muted-foreground">
+              {t('auth.signupConsentPrefix')}{' '}
+              <a
+                href="/terms"
+                onClick={(event) => handleLegalLinkClick(event, '/terms')}
+                className="text-foreground underline underline-offset-4 hover:text-primary"
+              >
+                {t('legal.terms')}
+              </a>{' '}
+              {t('auth.signupConsentJoiner')}{' '}
+              <a
+                href="/privacy"
+                onClick={(event) => handleLegalLinkClick(event, '/privacy')}
+                className="text-foreground underline underline-offset-4 hover:text-primary"
+              >
+                {t('legal.privacyPolicy')}
+              </a>
+              {t('auth.signupConsentSuffix')}
+            </p>
+          )}
+
           {!isResetRequest && (
             <>
               {/* Google OAuth first - primary action */}

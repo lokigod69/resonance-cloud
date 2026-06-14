@@ -4,6 +4,7 @@ import { Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ScrollReveal from './ScrollReveal'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
+import { LEGAL_LINKS, handleLegalLinkClick } from '@/lib/legalLinks'
 import { getPublicWebOrigin } from '@/lib/publicOrigins'
 
 function getPublicWebHost(): string {
@@ -50,8 +51,20 @@ export default function CtaFooterSection() {
       </ScrollReveal>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 pt-8 text-sm text-muted-foreground space-y-1">
+      <footer className="border-t border-white/5 pt-8 text-sm text-muted-foreground space-y-3">
         <p>Lingwave &middot; {publicWebHost}</p>
+        <nav aria-label={t('legal.footerNavLabel')} className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+          {LEGAL_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={(event) => handleLegalLinkClick(event, link.href)}
+              className="underline-offset-4 transition-colors hover:text-foreground hover:underline"
+            >
+              {t(link.labelKey)}
+            </a>
+          ))}
+        </nav>
         <p>{t('landing.footer')}</p>
       </footer>
     </section>
