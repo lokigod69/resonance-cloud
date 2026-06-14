@@ -7,15 +7,21 @@ import { usePronunciation } from '@/hooks/usePronunciation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { getCardFullUrl } from '@/lib/imageUrls'
+import { LingwaveWaves } from '@/components/branding/LingwaveWaves'
 import type { CanvasModeProps } from './types'
 import { CanvasToolbar } from './CanvasToolbar'
 import { CANVAS_TOOLBAR_THEMES } from './canvasToolbarThemes'
 import { ImagelessCard } from '@/components/study/ImagelessCard'
 
+// Wave — the Lingwave brand mode. Words float as glass buoys over the same
+// luminous ocean that greets users on the login page (LingwaveWaves): plum
+// troughs, rose mid-water, vermillion swells, gold crests. Mastering a word
+// turns it into a gold crest; missing one washes it back into the sea.
+
 type LaneColumn = 'left' | 'right'
 type CanvasPosition = { x: number; y: number; laneColumn?: LaneColumn }
 
-type EmberWordState = {
+type WaveWordState = {
   id: string
   x: number
   y: number
@@ -23,13 +29,17 @@ type EmberWordState = {
   laneColumn: LaneColumn | null
   drift: number
   hue: number
+  // z + depth drive how each buoy rides the swell: z de-phases neighbours so
+  // they don't bob in unison; depth is a 0..1 nearness factor for parallax.
+  z: number
+  depth: number
   mastered: boolean
-  burning: boolean
+  washing: boolean
   imageFailed: boolean
   word: CanvasModeProps['words'][number]
 }
 
-type EmberParticle = {
+type SprayParticle = {
   id: number
   x: number
   y: number
@@ -38,21 +48,58 @@ type EmberParticle = {
   brightness: number
   phase: number
   golden: boolean
-  permanent: boolean
+  foam: boolean
+}
+
+// A passing swell raised by tapping the open sea; it lifts words as its front
+// rolls through them, then dissipates.
+type Swell = {
+  x: number
+  y: number
+  spawnTime: number
 }
 
 type AudioKind = 'hover' | 'reveal' | 'pass' | 'fail'
 
-const INITIAL_EMBER_COUNT = 150
+const AMBIENT_SPRAY_COUNT = 38
+const AMBIENT_FOAM_COUNT = 9
 const PHYSICS_FRAMES = 300
 const TOOLBAR_CARD_CLEARANCE_PX = 64
-const EMBER_LANE_CARD_EDGE_CLAMP_PX = 90
+const WAVE_LANE_CARD_EDGE_CLAMP_PX = 90
+// Buoy ride: peak vertical travel (px) of a word sitting on a crest vs a trough.
+const WAVE_RIDE_PX = 16
+// Sum of the waveHeight term amplitudes below — used to normalize to [-1, 1].
+const WAVE_AMP_SUM = 1.51
+// Tap-swell propagation.
+const SWELL_DURATION_MS = 1900
+const SWELL_SPEED_PCT_PER_SECOND = 46
+const SWELL_THICKNESS_PCT = 6
+const SWELL_MAX_LIFT_PX = 14
+
+// The same layered swell field the brand background paints (LingwaveWaves), so
+// words ride contours coherent with the ocean behind them. Returns roughly
+// [-WAVE_AMP_SUM, WAVE_AMP_SUM].
+function waveHeight(x: number, z: number, t: number): number {
+  return (
+    0.55 * Math.sin(x * 0.18 + z * 0.3 + t * 0.42) +
+    0.38 * Math.sin(x * 0.3 - z * 0.16 + t * 0.27) +
+    0.28 * Math.sin(x * 0.06 + z * 0.44 + t * 0.36) +
+    0.18 * Math.sin(x * 0.52 + z * 0.08 - t * 0.22) +
+    0.12 * Math.sin(x * 0.85 + z * 0.65 + t * 0.55)
+  )
+}
+
+// Map a word's horizontal screen percentage to the wave field's world X.
+function worldXFromPercent(xPercent: number): number {
+  return (xPercent - 50) * 0.12
+}
+// Cosmos palette accents, one per buoy (plum → rose → vermillion → gold → foam)
 const HUE_COLORS = [
-  'rgba(255, 160, 100, 0.85)',
-  'rgba(255, 190, 120, 0.85)',
-  'rgba(255, 130, 100, 0.85)',
-  'rgba(255, 200, 140, 0.85)',
-  'rgba(255, 145, 85, 0.85)',
+  'rgba(196, 168, 240, 0.92)',
+  'rgba(235, 142, 188, 0.92)',
+  'rgba(250, 140, 92, 0.92)',
+  'rgba(247, 200, 67, 0.92)',
+  'rgba(255, 234, 214, 0.92)',
 ]
 
 function getBounds() {
@@ -66,6 +113,10 @@ function getBounds() {
     minDistX: 16,
     minDistY: 10,
   }
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, value))
 }
 
 function deterministicOffset(index: number, salt: number, range: number) {
@@ -136,9 +187,7 @@ function generateNonOverlappingPositions(
     if (i === 0) {
       x = centerX + (Math.random() - 0.5) * 5
       y = centerY + (Math.random() - 0.5) * 5
-      if (!hasCollision(x, y) && inBounds(x, y)) {
-        placed = true
-      }
+      if (!hasCollision(x, y) && inBounds(x, y)) placed = true
     }
 
     if (!placed) {
@@ -163,11 +212,8 @@ function generateNonOverlappingPositions(
         }
 
         for (const candidate of candidates) {
-          const jitterX = (Math.random() - 0.5) * spacingX * 0.25
-          const jitterY = (Math.random() - 0.5) * spacingY * 0.25
-          const testX = candidate.x + jitterX
-          const testY = candidate.y + jitterY
-
+          const testX = candidate.x + (Math.random() - 0.5) * spacingX * 0.25
+          const testY = candidate.y + (Math.random() - 0.5) * spacingY * 0.25
           if (inBounds(testX, testY) && !hasCollision(testX, testY)) {
             x = testX
             y = testY
@@ -193,17 +239,32 @@ function generateNonOverlappingPositions(
   return positions
 }
 
-function createParticle(golden = false, x?: number, y?: number, permanent = false): EmberParticle {
+function createSpray(golden = false, x?: number, y?: number): SprayParticle {
   return {
     id: Math.random(),
     x: x !== undefined ? x : Math.random() * 100,
     y: y !== undefined ? y : Math.random() * 100 + 20,
-    size: 1 + Math.random() * 3,
-    speed: permanent ? 0.002 : 0.01 + Math.random() * 0.04,
-    brightness: golden ? 1 : 0.1 + Math.random() * 0.4,
+    size: 1 + Math.random() * 2.5,
+    speed: 0.008 + Math.random() * 0.03,
+    brightness: golden ? 0.9 : 0.12 + Math.random() * 0.3,
     phase: Math.random() * Math.PI * 2,
     golden,
-    permanent,
+    foam: false,
+  }
+}
+
+// Foam sits low and wide, drifting sideways near the waterline for body.
+function createFoam(): SprayParticle {
+  return {
+    id: Math.random(),
+    x: Math.random() * 100,
+    y: 62 + Math.random() * 46,
+    size: 3 + Math.random() * 5,
+    speed: 0.004 + Math.random() * 0.012,
+    brightness: 0.08 + Math.random() * 0.16,
+    phase: Math.random() * Math.PI * 2,
+    golden: Math.random() < 0.25,
+    foam: true,
   }
 }
 
@@ -212,7 +273,7 @@ function createWordStates(
   imageFailures: Set<string>,
   layout: CanvasViewport,
   masteredWordIds: ReadonlySet<string>,
-  existingStates: EmberWordState[] = [],
+  existingStates: WaveWordState[] = [],
 ) {
   const existingById = new Map(existingStates.map((state) => [state.id, state]))
   const positions = layout === 'lane'
@@ -230,8 +291,10 @@ function createWordStates(
       laneColumn: layout === 'lane' ? positions[index]?.laneColumn ?? null : null,
       drift: existing?.drift ?? Math.random() * Math.PI * 2,
       hue: existing?.hue ?? index % HUE_COLORS.length,
+      z: existing?.z ?? 4 + index * 3.1,
+      depth: existing?.depth ?? Math.random(),
       mastered: existing?.mastered || masteredWordIds.has(word.id),
-      burning: false,
+      washing: false,
       imageFailed: imageFailures.has(word.id),
       word,
     }
@@ -261,10 +324,6 @@ function getStringField(word: CanvasModeProps['words'][number], keys: string[]) 
     if (typeof value === 'string' && value.trim().length > 0) return value.trim()
   }
   return null
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, value))
 }
 
 function useToolbarClearancePx(toolbarRef: RefObject<HTMLDivElement | null>) {
@@ -301,7 +360,7 @@ function useToolbarClearancePx(toolbarRef: RefObject<HTMLDivElement | null>) {
 
 function useLaneTopOffsetPx(
   worldRef: RefObject<HTMLDivElement | null>,
-  words: EmberWordState[],
+  words: WaveWordState[],
   layout: CanvasViewport,
   toolbarClearancePx: number,
 ) {
@@ -359,16 +418,15 @@ function getToolbarAwareTop(
   return toolbarClearancePx > 0 ? `max(${y}%, ${toolbarClearancePx}px)` : `${y}%`
 }
 
-// Keep cards on-screen in the mobile lane layout (centered cards at the lane
-// edges would otherwise overflow the viewport).
+// Keep cards on-screen in the mobile lane layout, mirroring Zen's clamp.
 function getCardAwareLeft(x: number, layout: CanvasViewport) {
   return layout === 'lane'
-    ? `clamp(${EMBER_LANE_CARD_EDGE_CLAMP_PX}px, ${x}%, calc(100% - ${EMBER_LANE_CARD_EDGE_CLAMP_PX}px))`
+    ? `clamp(${WAVE_LANE_CARD_EDGE_CLAMP_PX}px, ${x}%, calc(100% - ${WAVE_LANE_CARD_EDGE_CLAMP_PX}px))`
     : `${x}%`
 }
 
-// Phrase rule: single short headwords stay tight and nowrap; phrases or long tokens
-// wrap on word boundaries in a wider warm card so compound vocabulary stays readable.
+// Phrase rule: single short headwords stay tight and nowrap; phrases or long
+// tokens wrap on word boundaries in a wider glass card.
 function phraseClassName(text: string) {
   const isPhrase = /\s/.test(text) || text.length > 18
   return isPhrase
@@ -376,7 +434,7 @@ function phraseClassName(text: string) {
     : 'whitespace-nowrap max-w-[min(200px,55vw)]'
 }
 
-export default function EmberCanvas({
+export default function WaveCanvas({
   words,
   masteredWordIds,
   showImages,
@@ -403,19 +461,21 @@ export default function EmberCanvas({
 }: CanvasModeProps) {
   const { playWord } = usePronunciation()
   const viewport = useViewport()
-  const [renderWords, setRenderWords] = useState<EmberWordState[]>(() => createWordStates(words, new Set(), viewport, masteredWordIds))
-  const [particles, setParticles] = useState<EmberParticle[]>(
-    () => Array.from({ length: INITIAL_EMBER_COUNT }, () => createParticle()),
-  )
+  const [renderWords, setRenderWords] = useState<WaveWordState[]>(() => createWordStates(words, new Set(), viewport, masteredWordIds))
+  const [particles, setParticles] = useState<SprayParticle[]>(() => [
+    ...Array.from({ length: AMBIENT_SPRAY_COUNT }, () => createSpray()),
+    ...Array.from({ length: AMBIENT_FOAM_COUNT }, () => createFoam()),
+  ])
   const [revealedId, setRevealedId] = useState<string | null>(null)
   const [imageFailures, setImageFailures] = useState<Set<string>>(new Set())
   const containerRef = useRef<HTMLDivElement | null>(null)
   const worldRef = useRef<HTMLDivElement | null>(null)
   const toolbarRef = useRef<HTMLDivElement | null>(null)
-  const wordStatesRef = useRef<EmberWordState[]>(renderWords)
+  const wordStatesRef = useRef<WaveWordState[]>(renderWords)
   const wordElementsRef = useRef(new Map<string, HTMLDivElement>())
-  const particlesRef = useRef<EmberParticle[]>(particles)
+  const particlesRef = useRef<SprayParticle[]>(particles)
   const particleElementsRef = useRef(new Map<number, HTMLDivElement>())
+  const swellsRef = useRef<Swell[]>([])
   const frameRef = useRef<number | null>(null)
   const physicsFrameRef = useRef(0)
   const audioContextRef = useRef<AudioContext | null>(null)
@@ -430,16 +490,17 @@ export default function EmberCanvas({
   const toolbarClearancePx = useToolbarClearancePx(toolbarRef)
   const laneTopOffsetPx = useLaneTopOffsetPx(worldRef, renderWords, viewport, toolbarClearancePx)
   useCanvasSafeAreaCacheReset()
-  const passedOnPage = renderWords.filter((w) => w.mastered).length
-  const progress = words.length > 0 ? passedOnPage / words.length : 0
-  const warmthRoot = Math.sqrt(progress)
+  const masteredCount = renderWords.filter((w) => w.mastered).length
+  const progress = words.length > 0 ? masteredCount / words.length : 0
 
-  const warmthStyle = useMemo<CSSProperties>(() => ({
-    height: `${10 + warmthRoot * 20}%`,
-    opacity: 0.2 + warmthRoot * 0.35,
-    background: 'linear-gradient(to top, rgba(255,69,0,0.4), transparent)',
-    filter: 'blur(30px)',
-  }), [warmthRoot])
+  // The dawn brightens as the session progresses.
+  const dawnStyle = useMemo<CSSProperties>(() => ({
+    top: '30%',
+    height: '22%',
+    opacity: 0.08 + Math.sqrt(progress) * 0.4,
+    background: 'radial-gradient(ellipse at 50% 60%, rgba(247,200,67,0.5), rgba(242,79,19,0.18) 45%, transparent 72%)',
+    filter: 'blur(26px)',
+  }), [progress])
 
   const playSound = useCallback((kind: AudioKind) => {
     if (reducedMotionRef.current || typeof window === 'undefined') return
@@ -449,57 +510,51 @@ export default function EmberCanvas({
       const ctx = audioContextRef.current ?? new AudioCtor()
       audioContextRef.current = ctx
 
-      if (kind === 'hover') {
-        const buffer = ctx.createBuffer(1, Math.max(1, Math.floor(ctx.sampleRate * 0.05)), ctx.sampleRate)
-        const channel = buffer.getChannelData(0)
-        for (let i = 0; i < channel.length; i++) {
-          channel[i] = (Math.random() * 2 - 1) * (1 - i / channel.length)
-        }
-        const source = ctx.createBufferSource()
-        const gain = ctx.createGain()
-        gain.gain.setValueAtTime(0.05, ctx.currentTime)
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05)
-        source.buffer = buffer
-        source.connect(gain)
-        gain.connect(ctx.destination)
-        source.start()
-        source.stop(ctx.currentTime + 0.05)
-        return
-      }
-
       const gain = ctx.createGain()
       gain.connect(ctx.destination)
 
-      if (kind === 'reveal') {
+      if (kind === 'hover') {
         const osc = ctx.createOscillator()
-        osc.type = 'triangle'
-        osc.frequency.setValueAtTime(196, ctx.currentTime)
-        osc.frequency.exponentialRampToValueAtTime(164, ctx.currentTime + 0.12)
-        gain.gain.setValueAtTime(0.035, ctx.currentTime)
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12)
+        osc.type = 'sine'
+        osc.frequency.setValueAtTime(660, ctx.currentTime)
+        gain.gain.setValueAtTime(0.025, ctx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.07)
         osc.connect(gain)
         osc.start()
-        osc.stop(ctx.currentTime + 0.12)
+        osc.stop(ctx.currentTime + 0.07)
+      } else if (kind === 'reveal') {
+        const osc = ctx.createOscillator()
+        osc.type = 'sine'
+        osc.frequency.setValueAtTime(392, ctx.currentTime)
+        osc.frequency.exponentialRampToValueAtTime(523, ctx.currentTime + 0.14)
+        gain.gain.setValueAtTime(0.04, ctx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.14)
+        osc.connect(gain)
+        osc.start()
+        osc.stop(ctx.currentTime + 0.14)
       } else if (kind === 'pass') {
-        for (const freq of [440, 660]) {
+        // Rising swell: D5 → A5, soft sine pair like water catching light.
+        gain.gain.setValueAtTime(0.06, ctx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3)
+        for (const [index, freq] of [587, 880].entries()) {
           const osc = ctx.createOscillator()
           osc.type = 'sine'
-          osc.frequency.setValueAtTime(freq, ctx.currentTime)
+          const startAt = ctx.currentTime + index * 0.09
+          osc.frequency.setValueAtTime(freq, startAt)
           osc.connect(gain)
-          osc.start()
-          osc.stop(ctx.currentTime + 0.15)
+          osc.start(startAt)
+          osc.stop(startAt + 0.22)
         }
-        gain.gain.setValueAtTime(0.1, ctx.currentTime)
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15)
       } else {
         const osc = ctx.createOscillator()
-        osc.type = 'triangle'
-        osc.frequency.setValueAtTime(110, ctx.currentTime)
-        gain.gain.setValueAtTime(0.08, ctx.currentTime)
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2)
+        osc.type = 'sine'
+        osc.frequency.setValueAtTime(330, ctx.currentTime)
+        osc.frequency.exponentialRampToValueAtTime(165, ctx.currentTime + 0.3)
+        gain.gain.setValueAtTime(0.06, ctx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3)
         osc.connect(gain)
         osc.start()
-        osc.stop(ctx.currentTime + 0.2)
+        osc.stop(ctx.currentTime + 0.3)
       }
     } catch {
       // Audio is decorative; blocked autoplay or missing APIs should not affect study.
@@ -522,30 +577,20 @@ export default function EmberCanvas({
     }
   }, [])
 
-  const syncParticles = useCallback((next: EmberParticle[]) => {
+  const addSprayBurst = useCallback((x: number, y: number, count: number, goldenRatio = 0.5) => {
+    const next = [...particlesRef.current]
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2
+      const spread = 2 + Math.random() * 7
+      next.push(createSpray(
+        Math.random() < goldenRatio,
+        x + Math.cos(angle) * spread,
+        y + Math.sin(angle) * spread,
+      ))
+    }
     particlesRef.current = next
     setParticles([...next])
   }, [])
-
-  const addParticles = useCallback((count: number, options: { x?: number; y?: number; golden?: boolean; goldenRatio?: number; burst?: boolean } = {}) => {
-    const next = [...particlesRef.current]
-    for (let i = 0; i < count; i++) {
-      if (options.burst && options.x !== undefined && options.y !== undefined) {
-        const angle = Math.random() * Math.PI * 2
-        const spread = 2 + Math.random() * 8
-        const golden = options.goldenRatio !== undefined ? Math.random() < options.goldenRatio : !!options.golden
-        next.push(createParticle(
-          golden,
-          options.x + Math.cos(angle) * spread,
-          options.y + Math.sin(angle) * spread,
-          Math.random() < 0.4,
-        ))
-      } else {
-        next.push(createParticle(!!options.golden, options.x, options.y, false))
-      }
-    }
-    syncParticles(next)
-  }, [syncParticles])
 
   useEffect(() => {
     wordStatesRef.current = createWordStates(words, imageFailures, viewport, masteredWordIds, wordStatesRef.current)
@@ -562,85 +607,129 @@ export default function EmberCanvas({
   useEffect(() => {
     reducedMotionRef.current = typeof window !== 'undefined'
       && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    if (typeof document !== 'undefined' && !document.getElementById('ember-font-link')) {
-      const link = document.createElement('link')
-      link.id = 'ember-font-link'
-      link.rel = 'stylesheet'
-      link.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap'
-      document.head.appendChild(link)
-    }
   }, [])
 
   useEffect(() => {
     if (sessionComplete) return undefined
 
-    function loop() {
+    function loop(now: number) {
+      const reducedMotion = reducedMotionRef.current
+      const t = now / 1000
       const { minDistX, minDistY } = getBounds()
       physicsFrameRef.current += 1
       const physicsActive = physicsFrameRef.current <= PHYSICS_FRAMES
 
-      for (const word of wordStatesRef.current) {
-        if (word.mastered || word.burning) {
-          const el = wordElementsRef.current.get(word.id)
-          if (el) {
-            el.style.left = getCardAwareLeft(word.x, word.layout)
-            syncCanvasCardTop(el, getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout))
+      // Retire swells whose front has rolled off the field.
+      swellsRef.current = swellsRef.current.filter((sw) => now - sw.spawnTime <= SWELL_DURATION_MS)
+
+      // Vertical travel (px) + buoy tilt (deg) for a word riding the swell,
+      // coherent with the brand ocean and lifted by any passing tap-swell.
+      const computeRide = (word: WaveWordState) => {
+        const wx = worldXFromPercent(word.x)
+        const norm = waveHeight(wx, word.z, t) / WAVE_AMP_SUM
+        const amp = WAVE_RIDE_PX * (0.55 + word.depth * 0.9)
+        let translateY = -norm * amp
+        const slope = waveHeight(wx + 0.4, word.z, t) - waveHeight(wx - 0.4, word.z, t)
+        const tilt = clamp(slope * 6, -7, 7)
+
+        for (const sw of swellsRef.current) {
+          const elapsed = now - sw.spawnTime
+          const radius = (elapsed / 1000) * SWELL_SPEED_PCT_PER_SECOND
+          const dx = word.x - sw.x
+          const dy = word.y - sw.y
+          const frontDelta = Math.abs(Math.sqrt(dx * dx + dy * dy) - radius)
+          if (frontDelta < SWELL_THICKNESS_PCT) {
+            const falloff = 1 - frontDelta / SWELL_THICKNESS_PCT
+            const fade = Math.max(0, 1 - elapsed / SWELL_DURATION_MS)
+            translateY -= SWELL_MAX_LIFT_PX * falloff * falloff * fade
           }
+        }
+
+        return { translateY, tilt }
+      }
+
+      for (const word of wordStatesRef.current) {
+        const el = wordElementsRef.current.get(word.id)
+        if (!el) continue
+
+        // Washing-away words hand their transform to the CSS .wave-washing class.
+        if (word.washing) {
+          el.style.left = getCardAwareLeft(word.x, word.layout)
+          syncCanvasCardTop(el, getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout))
           continue
         }
 
-        let newX = word.x + Math.sin(word.drift) * 0.02
-        let newY = word.y + Math.cos(word.drift) * 0.01
+        // Only live (unmastered) words drift and resolve collisions; mastered
+        // crests hold their place but still ride the swell.
+        if (!word.mastered) {
+          let newX = word.x + Math.sin(word.drift) * 0.02
+          let newY = word.y + Math.cos(word.drift * 0.8) * 0.015
 
-        if (physicsActive) {
-          let repelX = 0
-          let repelY = 0
+          if (physicsActive) {
+            let repelX = 0
+            let repelY = 0
 
-          for (const other of wordStatesRef.current) {
-            if (other.id === word.id || other.mastered || other.burning) continue
-            const dx = newX - other.x
-            const dy = newY - other.y
-            const distX = Math.abs(dx)
-            const distY = Math.abs(dy)
+            for (const other of wordStatesRef.current) {
+              if (other.id === word.id || other.washing) continue
+              const dx = newX - other.x
+              const dy = newY - other.y
+              const distX = Math.abs(dx)
+              const distY = Math.abs(dy)
 
-            if (distX < minDistX && distY < minDistY) {
-              const overlapX = minDistX - distX
-              const overlapY = minDistY - distY
-              if (distX > 0.1) repelX += (dx > 0 ? 1 : -1) * overlapX * 0.03
-              if (distY > 0.1) repelY += (dy > 0 ? 1 : -1) * overlapY * 0.03
+              if (distX < minDistX && distY < minDistY) {
+                const overlapX = minDistX - distX
+                const overlapY = minDistY - distY
+                if (distX > 0.1) repelX += (dx > 0 ? 1 : -1) * overlapX * 0.03
+                if (distY > 0.1) repelY += (dy > 0 ? 1 : -1) * overlapY * 0.03
+              }
+            }
+
+            newX += repelX
+            newY += repelY
+          }
+
+          const bounds = getDriftBounds(word.layout, word.laneColumn, word.x)
+          word.x = clamp(newX, bounds.minX, bounds.maxX)
+          word.y = clamp(newY, bounds.minY, bounds.maxY)
+          word.drift += 0.005
+        }
+
+        el.style.left = getCardAwareLeft(word.x, word.layout)
+        if (reducedMotion) {
+          el.style.transform = 'translate(-50%, -50%)'
+        } else {
+          const { translateY, tilt } = computeRide(word)
+          el.style.transform = `translate(-50%, -50%) translateY(${translateY.toFixed(2)}px) rotate(${tilt.toFixed(2)}deg)`
+        }
+        syncCanvasCardTop(el, getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout))
+      }
+
+      if (!reducedMotion) {
+        for (const particle of particlesRef.current) {
+          if (particle.foam) {
+            // Foam loiters near the waterline, sliding sideways more than it rises.
+            particle.y -= particle.speed
+            particle.x += Math.sin(particle.phase) * 0.05
+            particle.phase += 0.01
+            if (particle.y < 54) {
+              particle.y = 108
+              particle.x = Math.random() * 100
+            }
+          } else {
+            particle.y -= particle.speed
+            particle.x += Math.sin(particle.phase) * 0.018
+            particle.phase += 0.018
+            if (particle.y < -8) {
+              particle.y = 108
+              particle.x = Math.random() * 100
             }
           }
 
-          newX += repelX
-          newY += repelY
-        }
-
-        const bounds = getDriftBounds(word.layout, word.laneColumn, word.x)
-        word.x = clamp(newX, bounds.minX, bounds.maxX)
-        word.y = clamp(newY, bounds.minY, bounds.maxY)
-        word.drift += 0.005
-
-        const el = wordElementsRef.current.get(word.id)
-        if (el) {
-          el.style.left = getCardAwareLeft(word.x, word.layout)
-          syncCanvasCardTop(el, getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout))
-        }
-      }
-
-      for (const particle of particlesRef.current) {
-        particle.y -= particle.speed
-        particle.x += Math.sin(particle.phase) * 0.02
-        particle.phase += 0.02
-        if (particle.y < -10) {
-          particle.y = 110
-          particle.x = Math.random() * 100
-        }
-
-        const el = particleElementsRef.current.get(particle.id)
-        if (el) {
-          el.style.left = `${particle.x}%`
-          el.style.top = `${particle.y}%`
+          const el = particleElementsRef.current.get(particle.id)
+          if (el) {
+            el.style.left = `${particle.x}%`
+            el.style.top = `${particle.y}%`
+          }
         }
       }
 
@@ -663,16 +752,20 @@ export default function EmberCanvas({
   }, [])
 
   const handleBackgroundClick = (event: ReactMouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || (event.target as HTMLElement).closest('button, [data-toolbar], .ember-word-inner')) return
+    if (!containerRef.current || (event.target as HTMLElement).closest('button, [data-toolbar], .wave-word-inner')) return
     const rect = containerRef.current.getBoundingClientRect()
     const x = ((event.clientX - rect.left) / rect.width) * 100
     const y = ((event.clientY - rect.top + containerRef.current.scrollTop) / containerRef.current.scrollHeight) * 100
-    addParticles(12, { x, y, burst: true })
+    addSprayBurst(x, y, 10, 0.35)
+    // Send a swell rolling out from the tap; the loop lifts words as it passes.
+    if (!reducedMotionRef.current) {
+      swellsRef.current.push({ x, y, spawnTime: performance.now() })
+    }
   }
 
-  const handleSelectWord = (state: EmberWordState, event: ReactMouseEvent) => {
+  const handleSelectWord = (state: WaveWordState, event: ReactMouseEvent) => {
     event.stopPropagation()
-    if (state.burning || sessionComplete) return
+    if (state.washing || sessionComplete) return
     playSound('reveal')
     setRevealedId(state.id)
   }
@@ -686,7 +779,7 @@ export default function EmberCanvas({
 
     playSound('pass')
     target.mastered = true
-    addParticles(15, { x: target.x, y: target.y, burst: true, goldenRatio: 0.5 })
+    addSprayBurst(target.x, target.y, 14, 0.7)
     onPass(target.id)
     setRevealedId(null)
     setRenderWords([...wordStatesRef.current])
@@ -696,7 +789,7 @@ export default function EmberCanvas({
     const target = revealedId ? wordStatesRef.current.find((word) => word.id === revealedId) : null
     if (!target) return
     playSound('fail')
-    target.burning = true
+    target.washing = true
     onFail(target.id)
     setRevealedId(null)
     setRenderWords([...wordStatesRef.current])
@@ -713,9 +806,9 @@ export default function EmberCanvas({
       target.layout = viewport
       target.laneColumn = viewport === 'lane' ? position?.laneColumn ?? target.laneColumn : null
       target.drift = Math.random() * Math.PI * 2
-      target.burning = false
+      target.washing = false
       setRenderWords([...wordStatesRef.current])
-    }, 1200)
+    }, 1100)
     timersRef.current.push(timer)
   }
 
@@ -732,15 +825,16 @@ export default function EmberCanvas({
 
   if (sessionComplete) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-[2px]">
-        <EmberStyle />
-        <div className="text-center">
-          <h1 className="text-5xl md:text-6xl text-yellow-500 font-ember tracking-widest mb-4 drop-shadow-[0_0_20px_gold] animate-pulse">
-            GARDEN COMPLETE
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a060e]">
+        <WaveStyle />
+        <LingwaveWaves />
+        <div className="relative text-center">
+          <h1 className="wave-gold-gradient mb-4 text-5xl font-light tracking-widest md:text-6xl">
+            Tide Turned
           </h1>
           <button
             onClick={onContinue}
-            className="mt-8 px-8 py-3 text-orange-500 border border-orange-500/50 hover:bg-orange-500/10 rounded font-ember tracking-widest"
+            className="mt-8 rounded-lg border border-[#f24f13]/50 px-8 py-3 tracking-widest text-[#f7c843] transition-colors hover:border-[#f7c843] hover:bg-[#f24f13]/10"
           >
             Continue
           </button>
@@ -753,20 +847,27 @@ export default function EmberCanvas({
     <div
       ref={containerRef}
       onClick={handleBackgroundClick}
-      className="fixed inset-0 z-40 h-[100dvh] max-h-[100dvh] bg-[#050505] overflow-y-auto md:overflow-hidden font-ember text-gray-300 cursor-crosshair select-none"
+      className="fixed inset-0 z-40 h-[100dvh] max-h-[100dvh] select-none overflow-y-auto bg-[#0a060e] text-[#f4e8dc] md:overflow-hidden"
     >
-      <EmberStyle />
-      <div ref={worldRef} className="relative min-h-[150dvh] md:min-h-full md:h-full overflow-hidden">
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0" style={warmthStyle} />
+      <WaveStyle />
+      {/* Brand ocean stays pinned to the viewport while words scroll above it. */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <LingwaveWaves />
+        <div className="absolute inset-x-0" style={dawnStyle} />
+      </div>
 
+      <div ref={worldRef} className="relative min-h-[150dvh] overflow-hidden md:h-full md:min-h-full">
         <div className="pointer-events-none absolute inset-0 z-0">
           {particles.map((particle) => {
-            const color = particle.golden ? '#ffd700' : '#ff4500'
+            // Spray glints gold/vermillion; foam is a soft pale-rose haze on the water.
+            const color = particle.foam
+              ? (particle.golden ? 'rgba(247,200,67,0.5)' : 'rgba(235,142,188,0.4)')
+              : (particle.golden ? '#f7c843' : '#f24f13')
             return (
               <div
                 key={particle.id}
                 ref={(node) => setParticleElement(particle.id, node)}
-                className="absolute rounded-full transition-opacity"
+                className="absolute rounded-full"
                 style={{
                   left: `${particle.x}%`,
                   top: `${particle.y}%`,
@@ -774,7 +875,10 @@ export default function EmberCanvas({
                   height: `${particle.size}px`,
                   opacity: particle.brightness,
                   backgroundColor: color,
-                  boxShadow: `0 0 ${particle.size * 4}px ${color}`,
+                  boxShadow: particle.foam
+                    ? `0 0 ${particle.size * 3}px ${color}`
+                    : `0 0 ${particle.size * 4}px ${color}`,
+                  filter: particle.foam ? 'blur(1.5px)' : undefined,
                 }}
               />
             )
@@ -783,7 +887,7 @@ export default function EmberCanvas({
 
         <CanvasToolbar
           toolbarRef={toolbarRef}
-          theme={CANVAS_TOOLBAR_THEMES.ember}
+          theme={CANVAS_TOOLBAR_THEMES.wave}
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
@@ -793,7 +897,7 @@ export default function EmberCanvas({
           canToggleImages={canToggleImages}
           currentPage={currentPage}
           totalPages={totalPages}
-          masteredCount={passedOnPage}
+          masteredCount={masteredCount}
           totalWords={words.length}
           onSwitchMode={onSwitchMode}
           onToggleImages={onToggleImages}
@@ -811,9 +915,9 @@ export default function EmberCanvas({
             const showImageCard = !isImagelessDeck && showImages && !!imageUrl
             const text = state.word.text ?? state.word.word
             const innerClassName = [
-              'ember-word-inner transition-[opacity,transform,filter] duration-1000',
-              state.burning ? 'opacity-0 scale-150 blur-md' : 'opacity-100 scale-100 blur-0',
-              state.mastered ? 'ember-card-mastered' : 'ember-card-unmastered',
+              'wave-word-inner transition-[opacity,transform,filter] duration-1000',
+              state.washing ? 'wave-washing' : 'opacity-100',
+              state.mastered ? 'wave-card-mastered' : 'wave-card-unmastered',
             ].join(' ')
 
             return (
@@ -850,10 +954,10 @@ export default function EmberCanvas({
                       src={imageUrl}
                       alt={text}
                       onError={() => handleImageError(state.id)}
-                      className="w-20 h-20 md:w-24 md:h-24 rounded-lg object-cover border border-orange-900/30 opacity-85"
+                      className="h-20 w-20 rounded-lg border border-[#f24f13]/30 object-cover opacity-85 md:h-24 md:w-24"
                     />
                   ) : (
-                    <span className={`ember-card-text ${phraseClassName(text)}`}>
+                    <span className={`wave-card-text ${phraseClassName(text)}`}>
                       {text}
                     </span>
                   )}
@@ -883,7 +987,7 @@ export default function EmberCanvas({
 }
 
 interface RevealModalProps {
-  state: EmberWordState
+  state: WaveWordState
   learning: ReturnType<typeof resolveCardLearningMetadata> | null
   imageUrl: string | null
   direction: CanvasModeProps['direction']
@@ -942,15 +1046,15 @@ function RevealModal({
       }}
       onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/95 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 bg-[#0a060e]/95 backdrop-blur-[2px]" />
       <div
         data-phase-g-modal
-        className="relative flex flex-col w-full mx-auto max-h-[85vh] overflow-x-hidden ember-modal-enter"
+        className="wave-modal-enter relative mx-auto flex w-full max-h-[85vh] flex-col overflow-x-hidden"
         style={{ maxWidth: 'min(calc(100vw - 32px), 600px)' }}
         onClick={(event) => event.stopPropagation()}
       >
         <button
-          className="absolute top-2 right-2 z-20 text-gray-600 cursor-pointer hover:text-white bg-black/80 border border-orange-900/30 rounded-full w-10 h-10 flex items-center justify-center text-xl"
+          className="absolute right-2 top-2 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#f24f13]/30 bg-[#0a060e]/85 text-xl text-[#d6a060]/70 hover:text-[#f7c843]"
           onClick={onClose}
           aria-label={t('study.canvas.close')}
         >
@@ -958,23 +1062,23 @@ function RevealModal({
         </button>
 
         <div
-          className="bg-gradient-to-b from-[#121212] to-black border border-orange-900/40 rounded-xl text-center shadow-[0_0_100px_rgba(255,69,0,0.15)] flex max-h-[85vh] min-h-0 flex-col overflow-hidden"
+          className="flex max-h-[85vh] min-h-0 flex-col overflow-hidden rounded-xl border border-[#f24f13]/35 bg-gradient-to-b from-[#1c0f22] to-[#0a060e] text-center shadow-[0_0_100px_rgba(242,79,19,0.16)]"
           style={{ overflowWrap: 'anywhere', wordBreak: 'normal' }}
         >
           <div
             data-phase-g-modal-header
-            className="sticky top-0 z-10 flex-shrink-0 bg-[#121212] px-6 pb-3 pt-12 md:px-10"
+            className="sticky top-0 z-10 flex-shrink-0 bg-[#1c0f22] px-6 pb-3 pt-12 md:px-10"
           >
             <button
               type="button"
               onClick={onSpeak}
-              className="text-4xl md:text-5xl lg:text-6xl text-orange-100 font-ember tracking-wider drop-shadow-[0_0_15px_rgba(255,100,0,0.4)] cursor-pointer hover:scale-105 transition-transform bg-transparent border-none mb-3"
+              className="mb-3 border-none bg-transparent text-4xl font-light tracking-wider text-[#ffe9d6] drop-shadow-[0_0_16px_rgba(242,79,19,0.45)] transition-transform hover:scale-105 md:text-5xl lg:text-6xl"
             >
               {promptFace}
             </button>
 
             {direction === 'target-visible' && phonetic && (
-              <p className="text-orange-500/50 text-sm mb-3 font-sans tracking-widest text-center">
+              <p className="mb-3 text-center font-sans text-sm tracking-widest text-[#eb8ebc]/60">
                 {phonetic}
               </p>
             )}
@@ -987,24 +1091,24 @@ function RevealModal({
             style={{ WebkitOverflowScrolling: 'touch' }}
           >
             <div
-              className={!canGrade ? 'ember-answer-guard ember-answer-blurred mb-6' : 'ember-answer-guard mb-6'}
+              className={!canGrade ? 'wave-answer-guard wave-answer-blurred mb-6' : 'wave-answer-guard mb-6'}
               onClick={revealAnswer}
             >
               {direction === 'base-visible' && phonetic && (
-                <p className="ember-answer-content text-orange-500/50 text-sm mb-3 font-sans tracking-widest text-center">
+                <p className="wave-answer-content mb-3 text-center font-sans text-sm tracking-widest text-[#eb8ebc]/60">
                   {phonetic}
                 </p>
               )}
-              <p className="ember-answer-content text-xl md:text-2xl text-gray-200 leading-relaxed font-light font-ember">
+              <p className="wave-answer-content text-xl font-light leading-relaxed text-[#f4e8dc] md:text-2xl">
                 {answerFace}
               </p>
             </div>
 
             {imageUrl && (
               <div className="mb-6 flex justify-center">
-                <div className="relative w-[140px] md:w-[160px] aspect-video overflow-hidden rounded-lg border border-orange-900/30">
+                <div className="relative aspect-video w-[140px] overflow-hidden rounded-lg border border-[#f24f13]/30 md:w-[160px]">
                   <div
-                    className={`absolute inset-0 animate-pulse bg-orange-950/40 transition-opacity duration-300 ${imageLoaded ? 'opacity-0' : 'opacity-100'}`}
+                    className={`absolute inset-0 animate-pulse bg-[#1c0f22] transition-opacity duration-300 ${imageLoaded ? 'opacity-0' : 'opacity-100'}`}
                     aria-hidden="true"
                   />
                   <img
@@ -1020,65 +1124,64 @@ function RevealModal({
 
             {hasRichData && (
               <div
-                className={!canGrade ? 'ember-answer-guard ember-answer-blurred mt-6 text-left' : 'ember-answer-guard mt-6 text-left'}
+                className={!canGrade ? 'wave-answer-guard wave-answer-blurred mt-6 text-left' : 'wave-answer-guard mt-6 text-left'}
                 onClick={revealAnswer}
               >
-                <div className="ember-answer-content">
-                {learning?.mnemonic && (
-                  <div className="border-t border-orange-900/30 pt-4">
-                    <p className="text-[10px] tracking-widest text-orange-500 uppercase mb-2">
-                      {t('study.canvas.mnemonic')}
-                    </p>
-                    <p className="text-base text-gray-300 font-ember leading-relaxed">
-                      {learning.mnemonic}
-                    </p>
-                  </div>
-                )}
-
-                {learning?.etymology && (
-                  <div className="border-t border-orange-900/30 pt-4 mt-4">
-                    <p className="text-[10px] tracking-widest text-gray-500 uppercase mb-2">
-                      {t('study.canvas.etymology')}
-                    </p>
-                    <p className="text-base italic text-gray-400 leading-relaxed">
-                      {learning.etymology}
-                    </p>
-                  </div>
-                )}
-
-                {usage && (
-                  <div className="border-t border-orange-900/30 pt-4 mt-4">
-                    <p className="text-[10px] tracking-[0.2em] text-orange-500/60 uppercase mb-2">
-                      {t('study.canvas.usage')}
-                    </p>
-                    {usage.target && (
-                      <p className="text-lg italic text-orange-200/80 leading-relaxed">
-                        {usage.target}
+                <div className="wave-answer-content">
+                  {learning?.mnemonic && (
+                    <div className="border-t border-[#f24f13]/25 pt-4">
+                      <p className="mb-2 text-[10px] uppercase tracking-widest text-[#f7c843]/80">
+                        {t('study.canvas.mnemonic')}
                       </p>
-                    )}
-                    {usage.base && (
-                      <p className="text-base italic text-gray-400 leading-relaxed mt-1">
-                        {usage.base}
+                      <p className="text-base leading-relaxed text-[#f4e8dc]/90">
+                        {learning.mnemonic}
                       </p>
-                    )}
-                  </div>
-                )}
+                    </div>
+                  )}
+
+                  {learning?.etymology && (
+                    <div className="mt-4 border-t border-[#f24f13]/25 pt-4">
+                      <p className="mb-2 text-[10px] uppercase tracking-widest text-[#c4a8f0]/70">
+                        {t('study.canvas.etymology')}
+                      </p>
+                      <p className="text-base italic leading-relaxed text-[#f4e8dc]/70">
+                        {learning.etymology}
+                      </p>
+                    </div>
+                  )}
+
+                  {usage && (
+                    <div className="mt-4 border-t border-[#f24f13]/25 pt-4">
+                      <p className="mb-2 text-[10px] uppercase tracking-[0.2em] text-[#eb8ebc]/70">
+                        {t('study.canvas.usage')}
+                      </p>
+                      {usage.target && (
+                        <p className="text-lg italic leading-relaxed text-[#ffd9a8]/85">
+                          {usage.target}
+                        </p>
+                      )}
+                      {usage.base && (
+                        <p className="mt-1 text-base italic leading-relaxed text-[#f4e8dc]/65">
+                          {usage.base}
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             )}
-
           </div>
 
           <div
             data-phase-g-modal-footer
-            className="sticky bottom-0 z-10 flex-shrink-0 border-t border-orange-900/30 bg-black px-6 pb-4 pt-5 md:px-10"
+            className="sticky bottom-0 z-10 flex-shrink-0 border-t border-[#f24f13]/25 bg-[#0a060e] px-6 pb-4 pt-5 md:px-10"
             style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
           >
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={onFail}
                 disabled={!canGrade}
-                className={`h-12 rounded border bg-orange-900/10 border-orange-600/30 hover:bg-orange-500/20 hover:border-orange-500 text-orange-500 text-2xl drop-shadow-[0_0_8px_rgba(255,69,0,0.6)] hover:drop-shadow-[0_0_12px_rgba(255,69,0,0.8)] ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
+                className={`h-12 rounded-lg border border-[#f24f13]/40 bg-[#f24f13]/10 text-2xl text-[#fa8c5c] drop-shadow-[0_0_8px_rgba(242,79,19,0.5)] hover:border-[#f24f13] hover:bg-[#f24f13]/20 ${!canGrade ? 'pointer-events-none opacity-35' : ''}`}
                 aria-label={t('study.reviewLater')}
               >
                 ✕
@@ -1086,7 +1189,7 @@ function RevealModal({
               <button
                 onClick={onPass}
                 disabled={!canGrade}
-                className={`h-12 rounded border bg-yellow-900/10 border-yellow-600/30 hover:bg-yellow-500/20 hover:border-yellow-500 text-yellow-500 text-2xl drop-shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:drop-shadow-[0_0_12px_rgba(255,215,0,0.8)] ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
+                className={`h-12 rounded-lg border border-[#f7c843]/40 bg-[#f7c843]/10 text-2xl text-[#f7c843] drop-shadow-[0_0_8px_rgba(247,200,67,0.5)] hover:border-[#f7c843] hover:bg-[#f7c843]/20 ${!canGrade ? 'pointer-events-none opacity-35' : ''}`}
                 aria-label={t('study.rememberedAction')}
               >
                 ✓
@@ -1099,139 +1202,163 @@ function RevealModal({
   )
 }
 
-function EmberStyle() {
+function WaveStyle() {
   return (
     <style>
       {`
-        .font-ember {
-          font-family: "Cormorant Garamond", "Georgia", serif;
-        }
-
-        .ember-word-inner {
+        .wave-word-inner {
           background: transparent;
           border: 0;
           padding: 0;
           cursor: pointer;
         }
 
-        .ember-card-text {
+        .wave-card-text {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 0.5rem 0.75rem;
-          background: rgba(255, 107, 53, 0.08);
-          border: 1px solid rgba(255, 107, 53, 0.2);
-          border-radius: 8px;
+          padding: 0.5rem 0.8rem;
+          background: rgba(28, 15, 34, 0.6);
+          border: 1px solid rgba(242, 79, 19, 0.28);
+          border-radius: 10px;
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+          box-shadow: 0 4px 18px rgba(5, 2, 8, 0.45);
           font-size: clamp(0.85rem, 3.5vw, 1.2rem);
+          font-weight: 350;
           line-height: 1.3;
           min-height: 44px;
           min-width: 60px;
           text-align: center;
+          letter-spacing: 0.02em;
         }
 
-        .ember-card-unmastered {
-          text-shadow: 0 0 8px rgba(255, 100, 50, 0.4);
-          transition: color 1000ms, text-shadow 1000ms;
+        .wave-card-unmastered {
+          text-shadow: 0 0 10px rgba(242, 79, 19, 0.3);
+          transition: color 800ms, text-shadow 800ms;
         }
 
-        .ember-card-unmastered:hover .ember-card-text {
-          color: rgba(255, 220, 180, 1);
-          background: rgba(255, 107, 53, 0.2);
-          border-color: rgba(255, 107, 53, 0.5);
-          text-shadow: 0 0 12px rgba(255, 100, 50, 0.6);
+        .wave-card-unmastered:hover .wave-card-text {
+          color: #ffe9d6;
+          background: rgba(28, 15, 34, 0.8);
+          border-color: rgba(247, 200, 67, 0.55);
+          box-shadow: 0 4px 22px rgba(5, 2, 8, 0.5), 0 0 18px rgba(242, 79, 19, 0.25);
         }
 
-        .ember-card-unmastered:hover {
+        .wave-card-unmastered:hover {
           transform: scale(1.05);
-          filter: brightness(1.15);
         }
 
-        .ember-card-mastered {
-          color: #ffd700;
-          text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.5);
-          transform: scale(1.15);
-          animation: ember-mastered-pulse 2s ease-in-out infinite;
+        .wave-card-mastered {
+          color: #f7c843;
+          animation: wave-crest-pulse 3s ease-in-out infinite;
         }
 
-        .ember-card-mastered .ember-card-text {
-          color: #ffd700;
-          background: rgba(255, 215, 0, 0.15);
-          border-color: rgba(255, 215, 0, 0.5);
+        .wave-card-mastered .wave-card-text {
+          color: #f7c843;
+          background: rgba(247, 200, 67, 0.12);
+          border-color: rgba(247, 200, 67, 0.55);
+          text-shadow: 0 0 14px rgba(247, 200, 67, 0.8);
         }
 
-        @keyframes ember-mastered-pulse {
-          0%, 100% {
-            text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.5);
-            filter: brightness(1);
-          }
-          50% {
-            text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 215, 0, 0.7);
-            filter: brightness(1.2);
-          }
+        .wave-washing {
+          opacity: 0;
+          transform: translateY(26px) scale(0.9);
+          filter: blur(6px);
         }
 
-        .ember-modal-enter {
-          animation: ember-modal-scale 160ms ease-out;
+        .wave-gold-gradient {
+          background: linear-gradient(100deg, #eb8ebc 0%, #f24f13 35%, #f7c843 60%, #f24f13 85%);
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
+          animation: wave-gradient-drift 5s ease-in-out infinite;
         }
 
-        .ember-answer-guard {
+        .wave-modal-enter {
+          animation: wave-modal-rise 200ms ease-out;
+        }
+
+        .wave-answer-guard {
           position: relative;
           transition: transform 200ms ease, box-shadow 200ms ease;
         }
 
-        .ember-answer-blurred {
+        .wave-answer-blurred {
           cursor: pointer;
         }
 
         @media (hover: hover) {
-          .ember-answer-blurred:hover {
+          .wave-answer-blurred:hover {
             transform: scale(1.02);
-            box-shadow: 0 0 18px rgba(255, 107, 53, 0.28);
+            box-shadow: 0 0 18px rgba(247, 200, 67, 0.22);
           }
         }
 
-        .ember-answer-blurred .ember-answer-content {
+        .wave-answer-blurred .wave-answer-content {
           filter: blur(8px);
           user-select: none;
           pointer-events: none;
         }
 
-        .ember-answer-blurred::after {
+        .wave-answer-blurred::after {
           content: "";
           position: absolute;
           inset: -0.35rem;
           border-radius: 10px;
-          border: 1px solid rgba(255, 107, 53, 0.22);
-          background: rgba(255, 92, 24, 0.15);
+          border: 1px solid rgba(242, 79, 19, 0.25);
+          background: rgba(184, 68, 122, 0.12);
           pointer-events: none;
         }
 
-        @keyframes ember-modal-scale {
+        @keyframes wave-crest-pulse {
+          0%, 100% {
+            filter: brightness(1) drop-shadow(0 0 10px rgba(247, 200, 67, 0.4));
+          }
+          50% {
+            filter: brightness(1.18) drop-shadow(0 0 22px rgba(247, 200, 67, 0.65));
+          }
+        }
+
+        @keyframes wave-gradient-drift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+
+        @keyframes wave-modal-rise {
           from {
             opacity: 0;
-            transform: scale(0.96);
+            transform: translateY(14px) scale(0.97);
           }
           to {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0) scale(1);
           }
         }
 
         @media (max-width: 768px) {
-          .ember-card-text {
+          .wave-card-text {
             max-width: min(180px, 50vw);
             font-size: 0.95rem;
             padding: 0.5rem 0.8rem;
-            line-height: 1.3;
-            min-height: 44px;
           }
         }
 
         @media (max-width: 400px) {
-          .ember-card-text {
+          .wave-card-text {
             max-width: min(160px, 45vw);
             font-size: 0.9rem;
             padding: 0.4rem 0.7rem;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .wave-card-mastered,
+          .wave-gold-gradient,
+          .wave-modal-enter {
+            animation: none !important;
           }
         }
       `}

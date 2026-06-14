@@ -22,11 +22,12 @@ type DeckRow = {
 }
 
 type CanvasModeOption = {
-  id: 'ember' | 'frost' | 'syndicate' | 'zen'
+  id: 'ember' | 'frost' | 'syndicate' | 'zen' | 'wave'
   label: string
 }
 
 const CANVAS_MODE_OPTIONS: CanvasModeOption[] = [
+  { id: 'wave', label: 'Wave' },
   { id: 'ember', label: 'Ember' },
   { id: 'frost', label: 'Frost' },
   { id: 'syndicate', label: 'Syndicate' },

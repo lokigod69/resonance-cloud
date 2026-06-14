@@ -8,6 +8,7 @@ import EmberCanvas from '@/components/study/canvas/EmberCanvas'
 import FrostCanvas from '@/components/study/canvas/FrostCanvas'
 import SyndicateCanvas from '@/components/study/canvas/SyndicateCanvas'
 import ZenCanvas from '@/components/study/canvas/ZenCanvas'
+import WaveCanvas from '@/components/study/canvas/WaveCanvas'
 import { CanvasShell } from '@/components/study/canvas/CanvasShell'
 import type { CanvasAutoReveal, CanvasDirection, CanvasLanguagePair, CanvasMode } from '@/components/study/canvas/types'
 import { getCardFaces } from '@/lib/cardFaces'
@@ -17,7 +18,7 @@ const PAGE_SIZE = 20
 const SESSION_STORAGE_PREFIX = 'resonance-canvas-session'
 const DIRECTION_STORAGE_KEY = 'resonance-canvas-direction'
 const AUTO_REVEAL_STORAGE_KEY = 'resonance-canvas-auto-reveal'
-const DEFAULT_MODE: CanvasMode = 'ember'
+const DEFAULT_MODE: CanvasMode = 'wave'
 const DEFAULT_DIRECTION: CanvasDirection = 'target-visible'
 const DEFAULT_AUTO_REVEAL: CanvasAutoReveal = 'off'
 
@@ -31,7 +32,7 @@ type CanvasSessionSnapshot = {
 }
 
 function isCanvasMode(value: string | null): value is CanvasMode {
-  return value === 'ember' || value === 'frost' || value === 'syndicate' || value === 'zen'
+  return value === 'ember' || value === 'frost' || value === 'syndicate' || value === 'zen' || value === 'wave'
 }
 
 function isCanvasDirection(value: string | null): value is CanvasDirection {
@@ -413,7 +414,9 @@ export default function StudyCanvas() {
         ? FrostCanvas
         : activeMode === 'syndicate'
           ? SyndicateCanvas
-          : ZenCanvas
+          : activeMode === 'zen'
+            ? ZenCanvas
+            : WaveCanvas
 
   return (
     <CanvasShell>

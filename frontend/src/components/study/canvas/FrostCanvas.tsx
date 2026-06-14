@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
-import { DoorOpen } from 'lucide-react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -8,7 +7,9 @@ import { usePronunciation } from '@/hooks/usePronunciation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { getCardFullUrl } from '@/lib/imageUrls'
-import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
+import type { CanvasModeProps } from './types'
+import { CanvasToolbar } from './CanvasToolbar'
+import { CANVAS_TOOLBAR_THEMES } from './canvasToolbarThemes'
 import { ImagelessCard } from '@/components/study/ImagelessCard'
 
 type LaneColumn = 'left' | 'right'
@@ -46,6 +47,7 @@ type AudioKind = 'hover' | 'reveal' | 'pass' | 'fail' | 'snowfall'
 const PHYSICS_FRAMES = 300
 const TOOLBAR_CARD_CLEARANCE_PX = 64
 const FROST_LANE_Y_SPACING_PERCENT = 14
+const FROST_LANE_CARD_EDGE_CLAMP_PX = 90
 const SNOWFLAKE_CHARS = ['❄', '❅', '❆', '✻', '✼']
 
 function getBounds() {
@@ -333,6 +335,14 @@ function getToolbarAwareTop(
   return toolbarClearancePx > 0 ? `max(${y}%, ${toolbarClearancePx}px)` : `${y}%`
 }
 
+// Keep cards on-screen in the mobile lane layout (centered cards at the lane
+// edges would otherwise overflow the viewport).
+function getCardAwareLeft(x: number, layout: CanvasViewport) {
+  return layout === 'lane'
+    ? `clamp(${FROST_LANE_CARD_EDGE_CLAMP_PX}px, ${x}%, calc(100% - ${FROST_LANE_CARD_EDGE_CLAMP_PX}px))`
+    : `${x}%`
+}
+
 // Phrase rule: single short headwords stay tight and nowrap; phrases or long tokens
 // wrap in a wider frosted card with a slightly smaller handwritten size.
 function phraseClassName(text: string) {
@@ -531,7 +541,7 @@ export default function FrostCanvas({
         if (word.mastered || word.crystallizing) {
           const el = wordElementsRef.current.get(word.id)
           if (el) {
-            el.style.left = `${word.x}%`
+            el.style.left = getCardAwareLeft(word.x, word.layout)
             syncCanvasCardTop(el, getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout))
           }
           continue
@@ -570,7 +580,7 @@ export default function FrostCanvas({
 
         const el = wordElementsRef.current.get(word.id)
         if (el) {
-          el.style.left = `${word.x}%`
+          el.style.left = getCardAwareLeft(word.x, word.layout)
           syncCanvasCardTop(el, getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout))
         }
       }
@@ -753,8 +763,9 @@ export default function FrostCanvas({
           ))}
         </div>
 
-        <Toolbar
+        <CanvasToolbar
           toolbarRef={toolbarRef}
+          theme={CANVAS_TOOLBAR_THEMES.frost}
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
@@ -764,6 +775,8 @@ export default function FrostCanvas({
           canToggleImages={canToggleImages}
           currentPage={currentPage}
           totalPages={totalPages}
+          masteredCount={renderWords.filter((word) => word.mastered).length}
+          totalWords={words.length}
           onSwitchMode={onSwitchMode}
           onToggleImages={onToggleImages}
           onToggleDirection={onToggleDirection}
@@ -794,7 +807,7 @@ export default function FrostCanvas({
                 }}
                 className="absolute"
                 style={{
-                  left: `${state.x}%`,
+                  left: getCardAwareLeft(state.x, state.layout),
                   top: getToolbarAwareTop(state.y, toolbarClearancePx, laneTopOffsetPx, state.layout),
                   transform: 'translate(-50%, -50%)',
                 }}
@@ -872,173 +885,6 @@ function FrostCrystalOverlay() {
       <path d="M28 78 L45 70 L42 88" stroke="rgba(168, 216, 234, 0.3)" strokeWidth="1" fill="none" />
       <path d="M72 78 L55 70 L58 88" stroke="rgba(168, 216, 234, 0.3)" strokeWidth="1" fill="none" />
     </svg>
-  )
-}
-
-interface ToolbarProps {
-  toolbarRef: RefObject<HTMLDivElement | null>
-  activeMode: CanvasMode
-  showImages: boolean
-  direction: CanvasModeProps['direction']
-  autoReveal: CanvasModeProps['autoReveal']
-  languagePair: CanvasModeProps['languagePair']
-  canToggleDirection: boolean
-  canToggleImages: boolean
-  currentPage: number
-  totalPages: number
-  onSwitchMode: (mode: CanvasMode) => void
-  onToggleImages: () => void
-  onToggleDirection: () => void
-  onToggleAutoReveal: () => void
-  onPrevPage: () => void
-  onNextPage: () => void
-  onExit: () => void
-}
-
-function Toolbar({
-  toolbarRef,
-  activeMode,
-  showImages,
-  direction,
-  autoReveal,
-  languagePair,
-  canToggleDirection,
-  canToggleImages,
-  currentPage,
-  totalPages,
-  onSwitchMode,
-  onToggleImages,
-  onToggleDirection,
-  onToggleAutoReveal,
-  onPrevPage,
-  onNextPage,
-  onExit,
-}: ToolbarProps) {
-  const { t } = useTranslation()
-  const exitLabel = t('study.canvas.exit')
-  const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
-  const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
-
-  // Top padding respects the iOS notch; right-anchored Exit is the primary egress.
-  return (
-    <div
-      ref={toolbarRef}
-      data-toolbar
-      className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex items-start gap-2 pb-2 sm:gap-3 sm:pb-3 bg-black/50 border-b border-white/10"
-      style={{
-        paddingTop: 'max(0.5rem, calc(env(safe-area-inset-top, 0px) + 0.25rem))',
-        paddingLeft: 'max(0.75rem, calc(env(safe-area-inset-left, 0px) + 0.75rem))',
-        paddingRight: 'max(0.75rem, calc(env(safe-area-inset-right, 0px) + 0.75rem))',
-      }}
-    >
-      <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2 sm:gap-3">
-      <div className="flex flex-wrap gap-1">
-        {CANVAS_MODES.map((mode) => (
-          <button
-            key={mode}
-            onClick={(event) => {
-              event.stopPropagation()
-              onSwitchMode(mode)
-            }}
-            disabled={mode === activeMode}
-            className={`h-9 px-3 text-xs uppercase tracking-widest border bg-black/50 rounded-lg transition-colors ${
-              mode === activeMode
-                ? 'text-[#a8d8ea] border-[#a8d8ea] cursor-default'
-                : 'text-white/30 border-white/10 hover:text-[#a8d8ea] hover:border-[#a8d8ea]/50'
-            }`}
-          >
-            {mode}
-          </button>
-        ))}
-      </div>
-
-      <div className="flex min-w-0 flex-wrap items-center justify-start gap-2">
-        {canToggleDirection && (
-          <button
-            onClick={(event) => {
-              event.stopPropagation()
-              onToggleDirection()
-            }}
-            className="h-9 px-3 text-xs uppercase tracking-widest text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg"
-            title={t('study.canvas.swapPromptAnswer')}
-          >
-            <span className="text-[#a8d8ea]">{visibleCode}</span>
-            <span className="mx-1 text-white/30">→</span>
-            <span>{hiddenCode}</span>
-          </button>
-        )}
-
-        <label
-          className="h-9 px-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg cursor-pointer"
-          onClick={(event) => event.stopPropagation()}
-        >
-          <input
-            type="checkbox"
-            checked={autoReveal === 'off'}
-            onChange={onToggleAutoReveal}
-            className="accent-[#a8d8ea]"
-          />
-          {t('study.canvas.hideAnswer')}
-        </label>
-
-        {canToggleImages && (
-          <button
-            onClick={(event) => {
-              event.stopPropagation()
-              onToggleImages()
-            }}
-            className="h-9 px-3 text-xs uppercase tracking-widest text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg"
-            title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
-          >
-            {showImages ? 'Aa' : 'Img'}
-          </button>
-        )}
-
-        {totalPages > 1 && (
-          <>
-            <span className="px-2 text-xs text-[#a8d8ea]/70 tracking-widest whitespace-nowrap">
-              {t('study.canvas.pageOf', { current: currentPage + 1, total: totalPages })}
-            </span>
-            <button
-              onClick={(event) => {
-                event.stopPropagation()
-                onPrevPage()
-              }}
-              disabled={currentPage === 0}
-              className="w-9 h-9 text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label={t('study.canvas.previousPage')}
-            >
-              ‹
-            </button>
-            <button
-              onClick={(event) => {
-                event.stopPropagation()
-                onNextPage()
-              }}
-              disabled={currentPage >= totalPages - 1}
-              className="w-9 h-9 text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label={t('study.canvas.nextPage')}
-            >
-              ›
-            </button>
-          </>
-        )}
-      </div>
-      </div>
-
-      <button
-        type="button"
-        onClick={(event) => {
-          event.stopPropagation()
-          onExit()
-        }}
-        aria-label={exitLabel}
-        title={exitLabel}
-        className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-[#cfeefb]/70 bg-[#bfe6f7]/10 text-[#cfeefb] shadow-[0_0_10px_rgba(168,216,234,0.18)] transition-colors hover:border-[#cfeefb] hover:bg-[#bfe6f7]/20 hover:text-white hover:shadow-[0_0_18px_rgba(207,238,251,0.4)]"
-      >
-        <DoorOpen size={20} aria-hidden="true" />
-      </button>
-    </div>
   )
 }
 

@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
-import { DoorOpen } from 'lucide-react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -8,7 +7,9 @@ import { usePronunciation } from '@/hooks/usePronunciation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { getCardFullUrl } from '@/lib/imageUrls'
-import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
+import type { CanvasModeProps } from './types'
+import { CanvasToolbar } from './CanvasToolbar'
+import { CANVAS_TOOLBAR_THEMES } from './canvasToolbarThemes'
 import { ImagelessCard } from '@/components/study/ImagelessCard'
 
 type LaneColumn = 'left' | 'right'
@@ -451,7 +452,6 @@ export default function ZenCanvas({
   useCanvasSafeAreaCacheReset()
   const masteredCount = renderWords.filter((word) => word.mastered).length
   const breathScale = 1 + Math.sin(breathPhase * 0.0628) * 0.08
-  const progressOpacity = 0.3 + ((Math.sin(breathPhase * 0.0628) + 1) / 2) * 0.3
 
   const noiseStyle = useMemo<CSSProperties>(() => ({
     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")`,
@@ -873,8 +873,9 @@ export default function ZenCanvas({
           ))}
         </div>
 
-        <Toolbar
+        <CanvasToolbar
           toolbarRef={toolbarRef}
+          theme={CANVAS_TOOLBAR_THEMES.zen}
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
@@ -886,7 +887,6 @@ export default function ZenCanvas({
           totalPages={totalPages}
           masteredCount={masteredCount}
           totalWords={words.length}
-          progressOpacity={progressOpacity}
           onSwitchMode={onSwitchMode}
           onToggleImages={onToggleImages}
           onToggleDirection={onToggleDirection}
@@ -981,186 +981,6 @@ export default function ZenCanvas({
           />
         )}
       </div>
-    </div>
-  )
-}
-
-interface ToolbarProps {
-  toolbarRef: RefObject<HTMLDivElement | null>
-  activeMode: CanvasMode
-  showImages: boolean
-  direction: CanvasModeProps['direction']
-  autoReveal: CanvasModeProps['autoReveal']
-  languagePair: CanvasModeProps['languagePair']
-  canToggleDirection: boolean
-  canToggleImages: boolean
-  currentPage: number
-  totalPages: number
-  masteredCount: number
-  totalWords: number
-  progressOpacity: number
-  onSwitchMode: (mode: CanvasMode) => void
-  onToggleImages: () => void
-  onToggleDirection: () => void
-  onToggleAutoReveal: () => void
-  onPrevPage: () => void
-  onNextPage: () => void
-  onExit: () => void
-}
-
-function Toolbar({
-  toolbarRef,
-  activeMode,
-  showImages,
-  direction,
-  autoReveal,
-  languagePair,
-  canToggleDirection,
-  canToggleImages,
-  currentPage,
-  totalPages,
-  masteredCount,
-  totalWords,
-  progressOpacity,
-  onSwitchMode,
-  onToggleImages,
-  onToggleDirection,
-  onToggleAutoReveal,
-  onPrevPage,
-  onNextPage,
-  onExit,
-}: ToolbarProps) {
-  const { t } = useTranslation()
-  const exitLabel = t('study.canvas.exit')
-  const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
-  const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
-
-  // Top padding respects the iOS notch; right-anchored Exit is the primary egress.
-  return (
-    <div
-      ref={toolbarRef}
-      data-toolbar
-      className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex items-start gap-2 pb-2 sm:gap-3 sm:pb-3 bg-[#0a0a0a]/40"
-      style={{
-        paddingTop: 'max(0.5rem, calc(env(safe-area-inset-top, 0px) + 0.25rem))',
-        paddingLeft: 'max(0.75rem, calc(env(safe-area-inset-left, 0px) + 0.75rem))',
-        paddingRight: 'max(0.75rem, calc(env(safe-area-inset-right, 0px) + 0.75rem))',
-      }}
-    >
-      <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2 sm:gap-3">
-      <div className="flex flex-wrap gap-1">
-        {CANVAS_MODES.map((mode) => (
-          <button
-            key={mode}
-            onClick={(event) => {
-              event.stopPropagation()
-              onSwitchMode(mode)
-            }}
-            disabled={mode === activeMode}
-            className={`h-9 px-3 text-xs uppercase tracking-widest border bg-[#0a0a0a]/60 rounded transition-colors ${
-              mode === activeMode
-                ? 'text-white/80 border-white/40 cursor-default'
-                : 'text-white/30 border-white/10 hover:text-white/80 hover:border-white/40'
-            }`}
-          >
-            {mode}
-          </button>
-        ))}
-      </div>
-
-      <div className="flex min-w-0 flex-wrap items-center justify-start gap-2">
-        {canToggleDirection && (
-          <button
-            onClick={(event) => {
-              event.stopPropagation()
-              onToggleDirection()
-            }}
-            className="h-9 px-3 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded"
-            title={t('study.canvas.swapPromptAnswer')}
-          >
-            <span className="text-white/80">{visibleCode}</span>
-            <span className="mx-1 text-white/30">→</span>
-            <span>{hiddenCode}</span>
-          </button>
-        )}
-
-        <label
-          className="h-9 px-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded cursor-pointer"
-          onClick={(event) => event.stopPropagation()}
-        >
-          <input
-            type="checkbox"
-            checked={autoReveal === 'off'}
-            onChange={onToggleAutoReveal}
-            className="accent-[#777]"
-          />
-          {t('study.canvas.hideAnswer')}
-        </label>
-
-        {canToggleImages && (
-          <button
-            onClick={(event) => {
-              event.stopPropagation()
-              onToggleImages()
-            }}
-            className="h-9 px-3 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded"
-            title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
-          >
-            {showImages ? 'Aa' : 'Img'}
-          </button>
-        )}
-
-        <span
-          className="px-2 text-sm text-[#555] font-light tracking-wider whitespace-nowrap animate-void-breathe-text"
-          style={{ opacity: progressOpacity }}
-        >
-          {masteredCount}/{totalWords}
-        </span>
-
-        {totalPages > 1 && (
-          <>
-            <span className="px-2 text-[#555] text-sm font-light tracking-wider whitespace-nowrap">
-              {t('study.canvas.pageOf', { current: currentPage + 1, total: totalPages })}
-            </span>
-            <button
-              onClick={(event) => {
-                event.stopPropagation()
-                onPrevPage()
-              }}
-              disabled={currentPage === 0}
-              className="w-9 h-9 text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label={t('study.canvas.previousPage')}
-            >
-              ‹
-            </button>
-            <button
-              onClick={(event) => {
-                event.stopPropagation()
-                onNextPage()
-              }}
-              disabled={currentPage >= totalPages - 1}
-              className="w-9 h-9 text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label={t('study.canvas.nextPage')}
-            >
-              ›
-            </button>
-          </>
-        )}
-      </div>
-      </div>
-
-      <button
-        type="button"
-        onClick={(event) => {
-          event.stopPropagation()
-          onExit()
-        }}
-        aria-label={exitLabel}
-        title={exitLabel}
-        className="grid h-11 w-11 shrink-0 place-items-center rounded border border-amber-100/70 bg-amber-100/10 text-amber-50 shadow-[0_0_14px_rgba(255,236,200,0.22)] transition-colors hover:bg-amber-100/20 hover:border-amber-100 hover:shadow-[0_0_22px_rgba(255,236,200,0.45)]"
-      >
-        <DoorOpen size={20} aria-hidden="true" />
-      </button>
     </div>
   )
 }
@@ -1359,22 +1179,24 @@ function RevealModal({
           className="sticky bottom-0 z-10 flex-shrink-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/95 to-transparent px-4 pb-4 pt-4"
           style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
         >
+          {/* Quiet ink tints: enough hue to read fail/pass at a glance without
+              breaking zen's restraint. */}
           <div className="grid grid-cols-2 gap-3">
           <button
             onClick={onFail}
             disabled={!canGrade}
-            className={`group h-12 rounded bg-[#111] border border-[#222] text-[#444] hover:text-[#666] hover:border-[#333] transition-colors ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
+            className={`group h-12 rounded border border-rose-200/15 bg-[#131010] text-rose-200/55 transition-colors hover:border-rose-200/30 hover:bg-[#1a1313] hover:text-rose-200/85 ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
             aria-label={t('study.reviewLater')}
           >
-            <span className="text-2xl opacity-60 group-hover:opacity-90">✗</span>
+            <span className="text-2xl opacity-70 group-hover:opacity-100">✗</span>
           </button>
           <button
             onClick={onPass}
             disabled={!canGrade}
-            className={`group h-12 rounded bg-[#111] border border-[#333] text-[#666] hover:text-[#999] hover:border-[#444] transition-colors ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
+            className={`group h-12 rounded border border-emerald-200/20 bg-[#101312] text-emerald-200/65 transition-colors hover:border-emerald-200/40 hover:bg-[#131a17] hover:text-emerald-200/95 ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
             aria-label={t('study.rememberedAction')}
           >
-            <span className="text-2xl opacity-70 group-hover:opacity-100">✓</span>
+            <span className="text-2xl opacity-80 group-hover:opacity-100">✓</span>
           </button>
           </div>
         </div>

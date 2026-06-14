@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
-import { DoorOpen } from 'lucide-react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -8,7 +7,9 @@ import { usePronunciation } from '@/hooks/usePronunciation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { getCardFullUrl } from '@/lib/imageUrls'
-import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
+import type { CanvasModeProps } from './types'
+import { CanvasToolbar } from './CanvasToolbar'
+import { CANVAS_TOOLBAR_THEMES } from './canvasToolbarThemes'
 import { ImagelessCard } from '@/components/study/ImagelessCard'
 
 type LaneColumn = 'left' | 'right'
@@ -981,8 +982,9 @@ export default function SyndicateCanvas({
           ))}
         </div>
 
-        <Toolbar
+        <CanvasToolbar
           toolbarRef={toolbarRef}
+          theme={CANVAS_TOOLBAR_THEMES.syndicate}
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
@@ -992,6 +994,8 @@ export default function SyndicateCanvas({
           canToggleImages={canToggleImages}
           currentPage={currentPage}
           totalPages={totalPages}
+          masteredCount={renderWords.filter((word) => word.mastered).length}
+          totalWords={words.length}
           onSwitchMode={onSwitchMode}
           onToggleImages={onToggleImages}
           onToggleDirection={onToggleDirection}
@@ -1101,173 +1105,6 @@ export default function SyndicateCanvas({
           />
         )}
       </div>
-    </div>
-  )
-}
-
-interface ToolbarProps {
-  toolbarRef: RefObject<HTMLDivElement | null>
-  activeMode: CanvasMode
-  showImages: boolean
-  direction: CanvasModeProps['direction']
-  autoReveal: CanvasModeProps['autoReveal']
-  languagePair: CanvasModeProps['languagePair']
-  canToggleDirection: boolean
-  canToggleImages: boolean
-  currentPage: number
-  totalPages: number
-  onSwitchMode: (mode: CanvasMode) => void
-  onToggleImages: () => void
-  onToggleDirection: () => void
-  onToggleAutoReveal: () => void
-  onPrevPage: () => void
-  onNextPage: () => void
-  onExit: () => void
-}
-
-function Toolbar({
-  toolbarRef,
-  activeMode,
-  showImages,
-  direction,
-  autoReveal,
-  languagePair,
-  canToggleDirection,
-  canToggleImages,
-  currentPage,
-  totalPages,
-  onSwitchMode,
-  onToggleImages,
-  onToggleDirection,
-  onToggleAutoReveal,
-  onPrevPage,
-  onNextPage,
-  onExit,
-}: ToolbarProps) {
-  const { t } = useTranslation()
-  const exitLabel = t('study.canvas.exit')
-  const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
-  const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
-
-  // Top padding respects the iOS notch; right-anchored Exit is the primary egress.
-  return (
-    <div
-      ref={toolbarRef}
-      data-toolbar
-      className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex items-start gap-2 pb-2 sm:gap-3 sm:pb-3 bg-black/50 border-b border-[#00fff2]/20 font-mono"
-      style={{
-        paddingTop: 'max(0.5rem, calc(env(safe-area-inset-top, 0px) + 0.25rem))',
-        paddingLeft: 'max(0.75rem, calc(env(safe-area-inset-left, 0px) + 0.75rem))',
-        paddingRight: 'max(0.75rem, calc(env(safe-area-inset-right, 0px) + 0.75rem))',
-      }}
-    >
-      <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2 sm:gap-3">
-      <div className="flex flex-wrap gap-1">
-        {CANVAS_MODES.map((mode) => (
-          <button
-            key={mode}
-            onClick={(event) => {
-              event.stopPropagation()
-              onSwitchMode(mode)
-            }}
-            disabled={mode === activeMode}
-            className={`h-9 px-3 text-xs uppercase tracking-widest border bg-black/50 transition-colors ${
-              mode === activeMode
-                ? 'text-[#00fff2] border-[#00fff2] cursor-default'
-                : 'text-[#00fff2]/50 border-[#00fff2]/30 hover:text-[#00fff2] hover:border-[#00fff2]'
-            }`}
-          >
-            [{mode}]
-          </button>
-        ))}
-      </div>
-
-      <div className="flex min-w-0 flex-wrap items-center justify-start gap-2">
-        {canToggleDirection && (
-          <button
-            onClick={(event) => {
-              event.stopPropagation()
-              onToggleDirection()
-            }}
-            className="h-9 px-3 text-xs uppercase tracking-widest text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50"
-            title={t('study.canvas.swapPromptAnswer')}
-          >
-            <span className="text-[#00fff2]">{visibleCode}</span>
-            <span className="mx-1 text-[#00fff2]/50">→</span>
-            <span>{hiddenCode}</span>
-          </button>
-        )}
-
-        <label
-          className="h-9 px-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50 cursor-pointer"
-          onClick={(event) => event.stopPropagation()}
-        >
-          <input
-            type="checkbox"
-            checked={autoReveal === 'off'}
-            onChange={onToggleAutoReveal}
-            className="accent-[#00fff2]"
-          />
-          {t('study.canvas.hideAnswer')}
-        </label>
-
-        {canToggleImages && (
-          <button
-            onClick={(event) => {
-              event.stopPropagation()
-              onToggleImages()
-            }}
-            className="h-9 px-3 text-xs uppercase tracking-widest text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50"
-            title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
-          >
-            {showImages ? '[TXT]' : '[IMG]'}
-          </button>
-        )}
-
-        {totalPages > 1 && (
-          <>
-            <span className="px-2 text-xs text-[#00fff2]/60 tracking-widest whitespace-nowrap">
-              {currentPage + 1}/{totalPages}
-            </span>
-            <button
-              onClick={(event) => {
-                event.stopPropagation()
-                onPrevPage()
-              }}
-              disabled={currentPage === 0}
-              className="w-9 h-9 text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50 disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label={t('study.canvas.previousPage')}
-            >
-              [&lt;]
-            </button>
-            <button
-              onClick={(event) => {
-                event.stopPropagation()
-                onNextPage()
-              }}
-              disabled={currentPage >= totalPages - 1}
-              className="w-9 h-9 text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50 disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label={t('study.canvas.nextPage')}
-            >
-              [&gt;]
-            </button>
-          </>
-        )}
-      </div>
-      </div>
-
-      <button
-        type="button"
-        onClick={(event) => {
-          event.stopPropagation()
-          onExit()
-        }}
-        aria-label={exitLabel}
-        title={exitLabel}
-        className="grid h-11 w-11 shrink-0 place-items-center border border-[#00fff2]/70 bg-[#00fff2]/10 text-[#00fff2] font-mono shadow-[0_0_10px_rgba(0,255,242,0.18)] transition-colors hover:border-[#00fff2] hover:bg-[#00fff2]/20 hover:text-white hover:shadow-[0_0_18px_rgba(0,255,242,0.45)]"
-      >
-        <DoorOpen size={20} aria-hidden="true" />
-      </button>
     </div>
   )
 }

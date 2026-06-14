@@ -1,6 +1,6 @@
 import type { StudyWord } from '@/hooks/useStudySession'
 
-export type CanvasMode = 'ember' | 'frost' | 'syndicate' | 'zen'
+export type CanvasMode = 'ember' | 'frost' | 'syndicate' | 'zen' | 'wave'
 export type CanvasDirection = 'target-visible' | 'base-visible'
 export type CanvasAutoReveal = 'on' | 'off'
 
@@ -45,4 +45,5 @@ export interface CanvasModeProps {
   onContinue: () => void
 }
 
-export const CANVAS_MODES: readonly CanvasMode[] = ['ember', 'frost', 'syndicate', 'zen']
+// Wave leads: it is the brand mode and the default canvas (StudyCanvas DEFAULT_MODE).
+export const CANVAS_MODES: readonly CanvasMode[] = ['wave', 'ember', 'frost', 'syndicate', 'zen']
