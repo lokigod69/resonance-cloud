@@ -151,6 +151,9 @@ assertIncludes(xcodeProject, 'CODE_SIGN_ENTITLEMENTS = App/App.entitlements;', '
 
 const entitlements = read('ios/App/App/App.entitlements')
 assertIncludes(entitlements, 'applinks:resonanz.pro', 'ios/App/App/App.entitlements')
+assertIncludes(entitlements, 'applinks:www.resonanz.pro', 'ios/App/App/App.entitlements')
+assertIncludes(entitlements, 'applinks:lingwave.ai', 'ios/App/App/App.entitlements')
+assertIncludes(entitlements, 'applinks:www.lingwave.ai', 'ios/App/App/App.entitlements')
 
 const swiftPackage = read('ios/App/CapApp-SPM/Package.swift')
 assertIncludes(swiftPackage, 'CapacitorBrowser', 'ios/App/CapApp-SPM/Package.swift')

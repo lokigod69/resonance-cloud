@@ -1,0 +1,203 @@
+/*
+ * Lingwave legal-page shell — shared by privacy / terms / cookies / contact / support.
+ * Self-contained (these pages are static HTML in public/, with no access to the bundled
+ * app CSS variables). Tokens mirror src/themes/cosmos.css so the pages read as Lingwave.
+ * Re-paste protocol: when swapping a Termly export, replace ONLY the inner HTML of
+ * <div id="policy-content"> on the page — never touch this stylesheet or the shell markup.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap');
+
+:root {
+  --app-bg: #0e0810;
+  --surface-glass: rgba(20, 12, 24, 0.55);
+  --text-primary: #fff7f4;
+  --text-secondary: #dccbd8;
+  --text-muted: #a78fa2;
+  --accent: #f24f13;
+  --accent-2: #f7c843;
+  --border-subtle: rgba(255, 222, 214, 0.12);
+  --border-strong: rgba(242, 79, 19, 0.32);
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--app-bg);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- header / wordmark ---- */
+.legal-header {
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 20px 24px;
+}
+
+.legal-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  max-width: 820px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.legal-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  display: block;
+}
+
+.legal-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+/* ---- content shell ---- */
+.legal-shell {
+  flex: 1;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+.legal-shell h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 36px);
+  color: var(--text-primary);
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+.legal-shell h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--text-primary);
+  margin: 36px 0 12px;
+}
+
+.legal-shell a {
+  color: var(--accent-2);
+  text-decoration: none;
+}
+
+.legal-shell a:hover {
+  text-decoration: underline;
+}
+
+.notice {
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px 22px;
+  background: var(--surface-glass);
+}
+
+.notice strong {
+  color: var(--text-primary);
+}
+
+/* ---- footer ---- */
+.legal-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 24px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.legal-footer-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+}
+
+.legal-footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.legal-footer a:hover {
+  color: var(--text-secondary);
+}
+
+/*
+ * Termly export normalization. A pasted Termly policy ships its own light-theme inline
+ * colors (greys on white) and a <style> block keyed on data-custom-class. These rules are
+ * scoped under #policy-content with higher specificity (ID-led) than Termly's, so the dark
+ * palette wins without editing the exported markup. Inline non-!important colors lose to
+ * these !important rules.
+ */
+#policy-content,
+#policy-content * {
+  color: var(--text-secondary) !important;
+  font-family: var(--font-body) !important;
+  background: transparent !important;
+}
+
+#policy-content [data-custom-class='title'],
+#policy-content [data-custom-class='title'] *,
+#policy-content [data-custom-class='heading_1'],
+#policy-content [data-custom-class='heading_1'] *,
+#policy-content [data-custom-class='heading_2'],
+#policy-content [data-custom-class='heading_2'] *,
+#policy-content h1,
+#policy-content h2,
+#policy-content h3 {
+  color: var(--text-primary) !important;
+  font-family: var(--font-display) !important;
+}
+
+/* Termly locks body/link text to font-size:14px Arial !important; lift it to the brand
+   body size. font-family is already normalized to Inter by the #policy-content * rule above. */
+#policy-content [data-custom-class='body'],
+#policy-content [data-custom-class='body'] *,
+#policy-content [data-custom-class='body_text'],
+#policy-content [data-custom-class='body_text'] *,
+#policy-content [data-custom-class='link'],
+#policy-content [data-custom-class='link'] * {
+  font-size: 15px !important;
+}
+
+#policy-content [data-custom-class='subtitle'],
+#policy-content [data-custom-class='subtitle'] * {
+  color: var(--text-muted) !important;
+}
+
+#policy-content a,
+#policy-content a *,
+#policy-content [data-custom-class='link'],
+#policy-content [data-custom-class='link'] * {
+  color: var(--accent-2) !important;
+}
+
+#policy-content a {
+  text-decoration: none;
+}
+
+#policy-content a:hover {
+  text-decoration: underline;
+}

@@ -74,6 +74,8 @@ app.add_middleware(
         "http://localhost:5173",
         "https://resonanz.pro",
         "https://www.resonanz.pro",
+        "https://lingwave.ai",
+        "https://www.lingwave.ai",
     ],
     allow_credentials=True,
     allow_methods=["*"],

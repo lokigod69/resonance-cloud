@@ -157,7 +157,9 @@ def build_suno_payload(concept_data: dict) -> dict:
         "style": style[:1000],
         "title": title[:80],
         "vocalGender": suno_gender,
-        "callBackUrl": "https://resonanz.pro/api/suno/callback",
+        # Wave 2 will flip this to lingwave.ai by setting SUNO_CALLBACK_BASE_URL in Railway.
+        # Default preserves the existing resonanz.pro behavior when the env var is unset.
+        "callBackUrl": f"{os.getenv('SUNO_CALLBACK_BASE_URL', 'https://resonanz.pro').rstrip('/')}/api/suno/callback",
     }
 
 

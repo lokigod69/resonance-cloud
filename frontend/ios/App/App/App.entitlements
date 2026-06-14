@@ -6,6 +6,8 @@
 	<array>
 		<string>applinks:resonanz.pro</string>
 		<string>applinks:www.resonanz.pro</string>
+		<string>applinks:lingwave.ai</string>
+		<string>applinks:www.lingwave.ai</string>
 	</array>
 </dict>
 </plist>
