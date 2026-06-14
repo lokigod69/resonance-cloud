@@ -130,17 +130,37 @@ export function useStudySession(
   const userId = user?.id ?? null
   const [words, setWords] = useState<StudyWord[]>([])
   const [loading, setLoading] = useState(true)
+  // Gates the page-level spinner to the FIRST load only. After that, SRS-state
+  // refetches (triggered by grading) re-sort words silently — no full refetch,
+  // no spinner. Re-fetches still happen on a real key change via `loading`.
+  const [initialLoadDone, setInitialLoadDone] = useState(false)
   const [sessionStats, setSessionStats] = useState<SessionStats>({ remembered: 0, reviewLater: 0 })
   const retryQueueRef = useRef<RetryItem[]>([])
   // Track total retries per word across consume/re-schedule cycles (fixes infinite retry bug)
   const retryCountRef = useRef<Map<string, number>>(new Map())
+  // Fetched words cached so SRS-state changes can re-sort without re-querying.
+  const rawWordsRef = useRef<StudyWord[]>([])
   const {
     data: wordStates,
     loading: wordStatesLoading,
     refetch: refetchWordStates,
   } = useWordStates(language ?? '', { deckId: deckId ?? null })
 
-  const fetchAndSort = useCallback(async (isStale?: () => boolean) => {
+  // Latest SRS states / queue mirrored into refs (updated in an effect, never
+  // during render) so the intentionally state-stable word fetch can read them
+  // without being re-created — and thus without re-querying — when they change.
+  const wordStatesRef = useRef(wordStates)
+  const queueRef = useRef(queue)
+  useEffect(() => {
+    wordStatesRef.current = wordStates
+    queueRef.current = queue
+  }, [wordStates, queue])
+
+  // Fetch words from the DB. Deliberately NOT keyed on wordStates/queue, so a
+  // grade (which refreshes SRS state) never re-queries the word list or toggles
+  // the page-level spinner. Words are static within a session; only their
+  // scheduling changes, which the re-sort effect below handles silently.
+  const fetchWords = useCallback(async (isStale?: () => boolean) => {
     if (!userId) return
     setLoading(true)
 
@@ -155,7 +175,9 @@ export function useStudySession(
       if (isStale?.()) return
       langDeckIds = langDecks?.map(d => d.id) ?? []
       if (langDeckIds.length === 0) {
+        rawWordsRef.current = []
         setWords([])
+        setInitialLoadDone(true)
         setLoading(false)
         return
       }
@@ -190,16 +212,26 @@ export function useStudySession(
       rawWords = rawWords.filter(w => w.suno_storage_url || w.suno_audio_url)
     }
 
-    setWords(sortByHeat(rawWords, wordStates, queue))
+    rawWordsRef.current = rawWords
+    setWords(sortByHeat(rawWords, wordStatesRef.current, queueRef.current))
+    setInitialLoadDone(true)
     setLoading(false)
-  }, [userId, profile?.base_language, deckId, studyMode, language, wordStates, queue])
+  }, [userId, profile?.base_language, deckId, studyMode, language])
 
   useEffect(() => {
     let stale = false
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- triggers fetch+sort when deps change; setState happens inside async fetchAndSort body
-    fetchAndSort(() => stale)
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- triggers fetch when key deps change; setState happens inside async fetchWords body
+    fetchWords(() => stale)
     return () => { stale = true }
-  }, [fetchAndSort])
+  }, [fetchWords])
+
+  // Re-sort the already-fetched words when SRS state or queue changes (e.g. after
+  // a grade). No DB round-trip and no loading flip, so the canvas never flashes
+  // its spinner mid-session.
+  useEffect(() => {
+    if (rawWordsRef.current.length === 0) return
+    setWords(sortByHeat(rawWordsRef.current, wordStates, queue))
+  }, [wordStates, queue])
 
   useEffect(() => {
     retryQueueRef.current = []
@@ -276,12 +308,16 @@ export function useStudySession(
     retryCountRef.current = new Map()
     setSessionStats({ remembered: 0, reviewLater: 0 })
     refetchWordStates()
-    fetchAndSort()
-  }, [fetchAndSort, refetchWordStates])
+    fetchWords()
+  }, [fetchWords, refetchWordStates])
 
   return {
     words,
-    loading: loading || wordStatesLoading,
+    // Block the UI only on the first load (until both words and SRS states have
+    // arrived). After that, expose just the word-fetch loading — which is true
+    // during real navigations (key changes) but never during a grade's silent
+    // SRS refetch, so the spinner no longer flashes on pass/fail.
+    loading: initialLoadDone ? loading : (loading || wordStatesLoading),
     sessionStats,
     recordAttempt,
     scheduleRetry,
