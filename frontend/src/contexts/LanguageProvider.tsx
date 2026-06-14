@@ -11,14 +11,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth()
   const userId = user?.id ?? null
   const [activeLanguage, setActiveLanguageState] = useState<string | null>(null)
+  const [languageReady, setLanguageReady] = useState(false)
 
   // When user id changes (login / switch user), load that user's scoped language
   useEffect(() => {
     if (!userId) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- external system sync (localStorage scoped per userId); userId is async-loaded so lazy init is not viable
       setActiveLanguageState(null)
+      // No user yet — nothing resolved. Consumers that need a user (e.g. the
+      // generate flow) keep showing their loader until auth + language settle.
+      setLanguageReady(false)
       return
     }
+    setLanguageReady(false)
     // One-time migration: clear the old unscoped key
     localStorage.removeItem(LEGACY_STORAGE_KEY)
 
@@ -26,6 +31,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const stored = localStorage.getItem(key)
     if (stored) {
       setActiveLanguageState(stored)
+      setLanguageReady(true)
       return
     }
 
@@ -44,6 +50,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
           localStorage.setItem(key, lang)
           setActiveLanguageState(lang)
         }
+        setLanguageReady(true)
       })
     return () => {
       cancelled = true
@@ -62,8 +69,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [userId])
 
   const value = useMemo(
-    () => ({ activeLanguage, setActiveLanguage }),
-    [activeLanguage, setActiveLanguage]
+    () => ({ activeLanguage, setActiveLanguage, languageReady }),
+    [activeLanguage, setActiveLanguage, languageReady]
   )
 
   return (

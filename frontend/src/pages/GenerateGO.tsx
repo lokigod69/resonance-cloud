@@ -123,7 +123,7 @@ async function fetchLatestWordIds(deckId: string, count: number): Promise<string
 export default function GenerateGO() {
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
-  const { activeLanguage } = useLanguage()
+  const { activeLanguage, languageReady } = useLanguage()
   const { t, tp } = useTranslation()
   const navigate = useNavigate()
   const { translateAndIpa } = useTranslateAndIpa()
@@ -219,19 +219,25 @@ export default function GenerateGO() {
     return () => { cancelled = true }
   }, [deckIdParam])
 
-  // Pre-seed from LanguageContext.
+  // Pre-seed from LanguageContext. `gateResolved` holds the loader through the
+  // auto-advance (no orbit flash) and prevents the loader from reappearing on
+  // back-navigation to the language step.
+  const [gateResolved, setGateResolved] = useState(false)
   useEffect(() => {
     if (deckIdParam) return
     if (language) return
-    if (!activeLanguage) return
+    if (!languageReady) return
 
     const timeoutId = window.setTimeout(() => {
-      setLanguage(activeLanguage)
-      setStep(2)
+      if (activeLanguage) {
+        setLanguage(activeLanguage)
+        setStep(2)
+      }
+      setGateResolved(true)
     }, 0)
 
     return () => window.clearTimeout(timeoutId)
-  }, [deckIdParam, language, activeLanguage])
+  }, [deckIdParam, language, languageReady, activeLanguage])
 
   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
   const generatedQueueIsCard = existingDeck?.deck_type === 'card'
@@ -968,27 +974,41 @@ export default function GenerateGO() {
 
   const laneVariant: 'all' | 'card-only' = existingDeck?.deck_type === 'card' ? 'card-only' : 'all'
 
+  // Smooth language gate: hold a calm loader while the saved language resolves
+  // (or is about to auto-advance) instead of flashing the orbit then jumping.
+  const showLanguageLoader =
+    !existingDeck && step === 1 && !language && !gateResolved
+
   return (
     <div className="gen-container">
       <PremiumSummaryRow items={summaryItems} className="generate-selection-summary" />
       {/* ── Step 1: Language ── */}
       {!existingDeck && step === 1 && (
         <div ref={el => { sectionRefs.current[0] = el }} className="gen-section">
-          {step === 1 && <h3>{t('generateGo.chooseLanguageOrbit')}</h3>}
-          <div className="gen-orb-row gen-language-grid">
-            {LANGUAGES.map(lang => (
-              <button
-                type="button"
-                key={lang.value}
-                className={orbClass(1, lang.value, language)}
-                onClick={() => handleLanguageSelect(lang.value)}
-                aria-pressed={language === lang.value}
-              >
-                <FlagIcon code={lang.code} className="w-10 h-auto" />
-                <span className="gen-orb-label">{lang.label}</span>
-              </button>
-            ))}
-          </div>
+          {showLanguageLoader ? (
+            <div className="gen-resolving" role="status">
+              <span className="gen-resolving-spinner" aria-hidden="true" />
+              <p>{t('common.loading')}</p>
+            </div>
+          ) : (
+            <>
+              <h3>{t('generateGo.chooseLanguageOrbit')}</h3>
+              <div className="gen-orb-row gen-language-grid">
+                {LANGUAGES.map(lang => (
+                  <button
+                    type="button"
+                    key={lang.value}
+                    className={orbClass(1, lang.value, language)}
+                    onClick={() => handleLanguageSelect(lang.value)}
+                    aria-pressed={language === lang.value}
+                  >
+                    <FlagIcon code={lang.code} className="w-10 h-auto" />
+                    <span className="gen-orb-label">{lang.label}</span>
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       )}
 
@@ -1016,7 +1036,7 @@ export default function GenerateGO() {
       {step === 3 && (
         <div ref={el => { sectionRefs.current[2] = el }} className="gen-section">
           {step === 3 ? (
-            <div className="glass-card">
+            <div className="gen-words-panel">
               <WordsStep
                 state={wordsStepState}
                 dispatch={wordsStepDispatch}

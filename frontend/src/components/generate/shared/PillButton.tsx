@@ -40,7 +40,7 @@ export default function PillButton({
           'border border-border',
           'hover:text-foreground hover:bg-accent',
         ],
-        glow && 'glow-green border-[#4ade80]/30',
+        glow && 'border-[var(--accent)]/40 shadow-[0_0_24px_var(--accent-glow)]',
         className
       )}
     >

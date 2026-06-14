@@ -41,7 +41,7 @@
   min-height: 0;
   width: 100%;
   max-width: 100%;
-  padding: 0 20px 120px;
+  padding: clamp(16px, 3vw, 34px) 20px 120px;
   box-sizing: border-box;
   overscroll-behavior-x: none;
   scrollbar-width: thin;
@@ -75,6 +75,57 @@
   color: var(--go-text-secondary);
   text-align: center;
   margin-bottom: 24px;
+}
+
+/* Smooth language gate loader */
+.skin-glassy .gen-resolving {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 40vh;
+  text-align: center;
+}
+
+.skin-glassy .gen-resolving p {
+  margin: 0;
+  color: var(--go-text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.skin-glassy .gen-resolving-spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--accent) 24%, transparent);
+  border-top-color: var(--accent);
+  animation: genResolveSpin 0.9s linear infinite;
+}
+
+@keyframes genResolveSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skin-glassy .gen-resolving-spinner {
+    animation-duration: 2.4s;
+  }
+}
+
+/* Words step panel — real glass surface (was an undefined .glass-card div) */
+.skin-glassy .gen-words-panel {
+  width: min(100%, 640px);
+  margin: 0 auto;
+  padding: clamp(18px, 3vw, 30px) clamp(14px, 2.4vw, 26px);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--surface-glass) 82%, transparent);
+  border: 1px solid var(--border-subtle);
+  border-top-color: var(--border-strong);
+  box-shadow: var(--shadow-elevated), inset 0 1px 1px color-mix(in srgb, var(--text-primary) 10%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .skin-glassy .gen-orb-row {
@@ -1316,7 +1367,7 @@
 
   /* Generate orbs mobile */
   .skin-glassy .gen-container {
-    padding: 0 12px 100px;
+    padding: 16px 12px 100px;
   }
 
   .skin-glassy .gen-section h3 {

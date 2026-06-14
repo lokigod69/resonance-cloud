@@ -54,6 +54,11 @@ import { canonicalizeLanguageValue, getLanguageCode } from '@/lib/languages'
 const PG_EASE = [0.16, 1, 0.3, 1] as const
 const PG_TRANSITION = { duration: 0.5, ease: PG_EASE }
 
+// One cosmos-vermillion "Continue" treatment shared by every step so the
+// primary advance action looks identical across the flow.
+const CONTINUE_BTN =
+  'px-8 py-3 rounded-xl bg-[var(--accent)]/15 border border-[var(--accent)]/40 text-[var(--accent)] font-display font-semibold hover:bg-[var(--accent)]/25 transition-all'
+
 function isLaneLockedDeckType(deckType: ExistingDeck['deck_type'] | null | undefined): boolean {
   return deckType === 'video' || deckType === 'card_text'
 }
@@ -161,19 +166,26 @@ export default function GeneratePG() {
 
   // Pre-seed from LanguageContext (dashboard language tab). Only seeds if
   // the wizard's own language state is still empty — never overwrites a manual choice.
-  const { activeLanguage } = useLanguage()
+  // `gateResolved` flips once we've made the initial decision (auto-advance vs show
+  // picker) so the loader holds through the auto-advance with no grid flash, and so
+  // back-navigation to the language step never re-shows the loader.
+  const { activeLanguage, languageReady } = useLanguage()
+  const [gateResolved, setGateResolved] = useState(false)
   useEffect(() => {
     if (deckIdParam) return
     if (state.language) return
-    if (!activeLanguage) return
+    if (!languageReady) return
 
-    dispatch({ type: 'SET_LANGUAGE', language: activeLanguage })
+    if (activeLanguage) {
+      dispatch({ type: 'SET_LANGUAGE', language: activeLanguage })
+    }
     const timeoutId = window.setTimeout(() => {
-      setPgStep(1)
+      if (activeLanguage) setPgStep(1)
+      setGateResolved(true)
     }, 0)
 
     return () => window.clearTimeout(timeoutId)
-  }, [deckIdParam, state.language, activeLanguage, dispatch])
+  }, [deckIdParam, state.language, languageReady, activeLanguage, dispatch])
 
   const existingDeckLaneLocked = isLaneLockedDeckType(existingDeck?.deck_type)
   useEffect(() => {
@@ -390,8 +402,14 @@ export default function GeneratePG() {
   const premiumCardLane = lane === 'card_premium'
   const reviewStep = textLane ? 3 : cardLane ? 4 : 7
 
+  // Smooth language gate: while the saved/active language is still resolving (or
+  // is about to auto-advance us to the product step), show a calm loader instead
+  // of flashing the picker and then jumping.
+  const showLanguageLoader =
+    pgStep === 0 && !deckIdParam && !state.language && !gateResolved
+
   return (
-    <div className="generate-flow-shell max-w-4xl mx-auto px-4">
+    <div className="generate-flow-shell max-w-4xl mx-auto px-4 pt-6 sm:pt-10">
       <BreadcrumbPills
         pgStep={pgStep}
         setPgStep={setPgStep}
@@ -421,12 +439,16 @@ export default function GeneratePG() {
           transition={PG_TRANSITION}
         >
           {pgStep === 0 && (
-            <StepLanguage
-              onSelect={(langValue) => {
-                dispatch({ type: 'SET_LANGUAGE', language: langValue })
-                setPgStep(1)
-              }}
-            />
+            showLanguageLoader ? (
+              <StepResolving label={t('common.loading')} />
+            ) : (
+              <StepLanguage
+                onSelect={(langValue) => {
+                  dispatch({ type: 'SET_LANGUAGE', language: langValue })
+                  setPgStep(1)
+                }}
+              />
+            )
           )}
           {pgStep === 1 && !existingDeckLaneLocked && (
             <ProductLaneStep
@@ -713,6 +735,20 @@ function GenerateSelectionSummary({
   return <PremiumSummaryRow items={items} className="generate-selection-summary" />
 }
 
+function StepResolving({ label }: { label: string }) {
+  return (
+    <div className="flex min-h-[40vh] flex-col items-center justify-center gap-5 text-center">
+      <motion.span
+        aria-hidden="true"
+        className="h-10 w-10 rounded-full border-2 border-[var(--pg-accent-teal)]/25 border-t-[var(--pg-accent-teal)]"
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, ease: 'linear', duration: 0.9 }}
+      />
+      <p className="text-sm font-display text-[var(--pg-text-dim)]" role="status">{label}</p>
+    </div>
+  )
+}
+
 function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
   const { t } = useTranslation()
   return (
@@ -778,14 +814,14 @@ function StepVibe({
               onClick={() => dispatch({ type: 'SET_VIBE', vibe: vibe.value })}
               className={`pg-glass rounded-2xl p-5 text-left transition-all hover:brightness-110 ${
                 isSelected
-                  ? 'shadow-[0_0_25px_rgba(139,92,246,0.2)]'
-                  : 'hover:shadow-[0_0_20px_rgba(139,92,246,0.1)]'
+                  ? 'shadow-[0_0_25px_var(--accent-glow)]'
+                  : 'hover:shadow-[0_0_20px_var(--accent-glow)]'
               }`}
               style={{
-                borderColor: isSelected ? 'var(--pg-accent-violet)' : undefined,
+                borderColor: isSelected ? 'var(--accent)' : undefined,
               }}
             >
-              <p className={`font-display font-semibold mb-1 ${isSelected ? 'text-[var(--pg-accent-violet)]' : 'text-foreground'}`}>
+              <p className={`font-display font-semibold mb-1 ${isSelected ? 'text-[var(--accent)]' : 'text-foreground'}`}>
                 {vibe.label}
               </p>
               <p className="text-xs text-[var(--pg-text-dim)]">{vibe.description}</p>
@@ -803,7 +839,7 @@ function StepVibe({
             className="max-w-md mx-auto mb-8"
           >
             <div className="flex items-center gap-2 mb-2">
-              <Film className="h-4 w-4 text-[var(--pg-accent-violet)]" />
+              <Film className="h-4 w-4 text-[var(--accent)]" />
               <label className="text-sm font-display text-[var(--pg-text-dim)]">
                 {effectiveVibe === 'specific_movie' ? t('generate.whichFilm') : t('generate.filmPlaceholder')}
               </label>
@@ -813,16 +849,13 @@ function StepVibe({
               value={movieTitle || ''}
               onChange={(e) => dispatch({ type: 'SET_MOVIE_TITLE', title: e.target.value })}
               placeholder={t('generate.filmExample')}
-              className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder-muted-foreground font-display text-base outline-none focus:border-[var(--pg-accent-violet)]/50 transition-colors"
+              className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder-muted-foreground font-display text-base outline-none focus:border-[var(--accent)]/50 transition-colors"
             />
           </motion.div>
         )}
       </AnimatePresence>
 
-      <button
-        onClick={onContinue}
-        className="px-8 py-3 rounded-xl bg-[var(--pg-accent-violet)]/20 border border-[var(--pg-accent-violet)]/40 text-[var(--pg-accent-violet)] font-display font-semibold hover:bg-[var(--pg-accent-violet)]/30 transition-all"
-      >
+      <button onClick={onContinue} className={CONTINUE_BTN}>
         {t('generate.continue')}
       </button>
     </div>
@@ -851,12 +884,12 @@ function StepArtStyle({
           onClick={() => dispatch({ type: 'SET_ART_STYLE', style: null })}
           className={`w-full pg-glass rounded-2xl p-4 mb-6 text-left transition-all ${
             selected === null
-              ? 'shadow-[0_0_20px_rgba(244,63,94,0.15)]'
-              : 'hover:shadow-[0_0_15px_rgba(244,63,94,0.1)]'
+              ? 'shadow-[0_0_20px_var(--accent-glow)]'
+              : 'hover:shadow-[0_0_15px_var(--accent-glow)]'
           }`}
-          style={{ borderColor: selected === null ? 'var(--pg-accent-rose)' : undefined }}
+          style={{ borderColor: selected === null ? 'var(--accent)' : undefined }}
         >
-          <p className={`font-display font-semibold ${selected === null ? 'text-[var(--pg-accent-rose)]' : 'text-foreground'}`}>
+          <p className={`font-display font-semibold ${selected === null ? 'text-[var(--accent)]' : 'text-foreground'}`}>
             {t('generate.normalStyle')}
           </p>
           <p className="text-xs text-[var(--pg-text-dim)]">{t('generate.normalStyleDesc')}</p>
@@ -876,12 +909,12 @@ function StepArtStyle({
                     onClick={() => dispatch({ type: 'SET_ART_STYLE', style: style.value })}
                     className={`rounded-xl px-3 py-2.5 text-sm font-display text-left transition-all border ${
                       isSelected
-                        ? 'text-[var(--pg-accent-rose)] shadow-[0_0_15px_rgba(244,63,94,0.15)]'
-                        : 'text-foreground/80 hover:text-foreground hover:border-[var(--pg-accent-rose)]/30'
+                        ? 'text-[var(--accent)] shadow-[0_0_15px_var(--accent-glow)]'
+                        : 'text-foreground/80 hover:text-foreground hover:border-[var(--accent)]/30'
                     }`}
                     style={{
-                      backgroundColor: isSelected ? 'rgba(244, 63, 94, 0.1)' : 'color-mix(in srgb, var(--surface-2) 64%, transparent)',
-                      borderColor: isSelected ? 'var(--pg-accent-rose)' : 'var(--border-subtle)',
+                      backgroundColor: isSelected ? 'var(--accent-soft)' : 'color-mix(in srgb, var(--surface-2) 64%, transparent)',
+                      borderColor: isSelected ? 'var(--accent)' : 'var(--border-subtle)',
                     }}
                   >
                     {style.label}
@@ -894,10 +927,7 @@ function StepArtStyle({
       </div>
 
       <div className="mt-6">
-        <button
-          onClick={onContinue}
-          className="px-8 py-3 rounded-xl bg-[var(--pg-accent-rose)]/20 border border-[var(--pg-accent-rose)]/40 text-[var(--pg-accent-rose)] font-display font-semibold hover:bg-[var(--pg-accent-rose)]/30 transition-all"
-        >
+        <button onClick={onContinue} className={CONTINUE_BTN}>
           {t('generate.continue')}
         </button>
       </div>
@@ -943,10 +973,7 @@ function StepNiveau({
         })}
       </div>
 
-      <button
-        onClick={onContinue}
-        className="px-8 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/40 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all"
-      >
+      <button onClick={onContinue} className={CONTINUE_BTN}>
         {t('generate.continue')}
       </button>
     </div>
@@ -1010,17 +1037,17 @@ function StepMusic({
               }}
               className={`px-5 py-2.5 rounded-full text-sm font-display font-medium transition-all border ${
                 isSelected
-                  ? 'text-[var(--pg-accent-green)] shadow-[0_0_15px_rgba(52,211,153,0.2)]'
-                  : 'text-foreground/70 hover:text-foreground hover:border-[var(--pg-accent-green)]/30'
+                  ? 'text-[var(--accent)] shadow-[0_0_15px_var(--accent-glow)]'
+                  : 'text-foreground/70 hover:text-foreground hover:border-[var(--accent)]/30'
               }`}
               style={{
-                backgroundColor: isSelected ? 'rgba(52, 211, 153, 0.12)' : 'color-mix(in srgb, var(--surface-2) 64%, transparent)',
-                borderColor: isSelected ? 'var(--pg-accent-green)' : 'var(--border-subtle)',
+                backgroundColor: isSelected ? 'var(--accent-soft)' : 'color-mix(in srgb, var(--surface-2) 64%, transparent)',
+                borderColor: isSelected ? 'var(--accent)' : 'var(--border-subtle)',
               }}
             >
               {genre.label}
               {isCustomChip && isCustomGenre(selected) && !showCustomInput && (
-                <span className="block text-xs text-[var(--pg-accent-green)]/80 mt-0.5">{selected}</span>
+                <span className="block text-xs text-[var(--accent)]/80 mt-0.5">{selected}</span>
               )}
             </motion.button>
           )
@@ -1050,17 +1077,17 @@ function StepMusic({
               className="w-full rounded-xl px-4 py-3 text-sm text-foreground/90 placeholder:text-muted-foreground
                 bg-card backdrop-blur-md border border-border
                 outline-none transition-all duration-200
-                focus:border-[var(--pg-accent-green)]/60 focus:bg-card"
+                focus:border-[var(--accent)]/60 focus:bg-card"
             />
             {isCustomGenre(selected) && selected !== customText.trim().toLowerCase() && (
-              <div className="text-xs text-[var(--pg-accent-green)]/80 text-center">Current: {selected}</div>
+              <div className="text-xs text-[var(--accent)]/80 text-center">Current: {selected}</div>
             )}
             <div className="flex justify-center">
               <button
                 type="button"
                 onClick={confirmCustom}
                 disabled={!customText.trim()}
-                className="px-6 py-2.5 rounded-full text-sm font-display font-semibold border text-[var(--pg-accent-green)] border-[var(--pg-accent-green)]/50 bg-[var(--pg-accent-green)]/10 hover:bg-[var(--pg-accent-green)]/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                className="px-6 py-2.5 rounded-full text-sm font-display font-semibold border text-[var(--accent)] border-[var(--accent)]/50 bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
               >
                 <span className="sr-only">Confirm genre</span>
                 <span aria-hidden="true">✓</span>
@@ -1080,7 +1107,7 @@ function StepMusic({
           }
           onContinue()
         }}
-        className="px-8 py-3 rounded-xl bg-[var(--pg-accent-green)]/20 border border-[var(--pg-accent-green)]/40 text-[var(--pg-accent-green)] font-display font-semibold hover:bg-[var(--pg-accent-green)]/30 transition-all"
+        className={CONTINUE_BTN}
       >
         {t('generate.continue')}
       </button>
@@ -1360,13 +1387,13 @@ function StepReview({
             onChange={(e) => dispatch({ type: 'SET_DECK_NAME', name: e.target.value })}
             placeholder={t('generate.deckNamePlaceholder')}
             maxLength={50}
-            className="w-full max-w-md mx-auto block p-4 rounded-xl bg-transparent border border-border outline-none focus:border-teal-500/50 transition-colors text-center text-lg font-light text-foreground placeholder:text-muted-foreground"
+            className="w-full max-w-md mx-auto block p-4 rounded-xl bg-transparent border border-border outline-none focus:border-[var(--accent)]/50 transition-colors text-center text-lg font-light text-foreground placeholder:text-muted-foreground"
             style={{ fontFamily: 'var(--font-display, inherit)' }}
           />
         </div>
       )}
 
-      <p className="text-center text-gray-500 text-sm mt-6">
+      <p className="text-center text-[var(--text-muted)] text-sm mt-6">
         {tp('generate.creditsUsed', creditCost)}
       </p>
       {typeof credits === 'number' && credits < creditCost && (
@@ -1381,7 +1408,7 @@ function StepReview({
         <button
           onClick={onSubmit}
           disabled={submitting || (typeof credits === 'number' && credits < creditCost)}
-          className="px-10 py-4 rounded-full bg-foreground text-background font-display font-medium text-lg hover:scale-105 transition-transform shadow-[0_0_40px_var(--accent-glow)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="px-10 py-4 rounded-full bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-white font-display font-semibold text-lg hover:scale-105 transition-transform shadow-[0_0_44px_var(--accent-glow)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           {submitting ? (
             t('generate.initializing')
