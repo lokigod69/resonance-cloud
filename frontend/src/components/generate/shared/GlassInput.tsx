@@ -83,9 +83,9 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
         className={cn(
           'flex h-12 w-12 shrink-0 items-center justify-center rounded-full',
           'border-2 transition-all duration-200',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4ade80]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
           hasValue && !disabled
-            ? 'bg-[var(--accent)]/20 border-[var(--accent)]/60 text-[var(--accent)] shadow-[0_0_18px_var(--accent-glow)] hover:bg-[var(--accent)]/30 hover:border-[var(--accent)]/80'
+            ? 'bg-[#4ade80]/20 border-[#4ade80]/60 text-[#4ade80] shadow-[0_0_18px_rgba(74,222,128,0.35)] hover:bg-[#4ade80]/30 hover:border-[#4ade80]/80'
             : 'glass border-border text-muted-foreground',
           'disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none'
         )}
@@ -121,13 +121,13 @@ export function LockedWord({ word, helperTerm, details, onRemove }: LockedWordPr
       className={cn(
         'inline-flex items-center gap-2 rounded-full px-4 py-2',
         'max-w-full min-w-0',
-        'bg-[var(--accent)]/10 backdrop-blur-md',
-        'border border-[var(--accent)]/30',
-        'shadow-[0_0_12px_var(--accent-glow)]'
+        'bg-[#4ade80]/10 backdrop-blur-md',
+        'border border-[#4ade80]/30',
+        'shadow-[0_0_12px_oklch(0.7_0.18_145_/_0.1)]'
       )}
       aria-label={showHelper ? `${word} / ${helperTerm}` : word}
     >
-      <Check className="h-3.5 w-3.5 text-[var(--accent)]" />
+      <Check className="h-3.5 w-3.5 text-[#4ade80]" />
       <span className="min-w-0 break-words [hyphens:auto] text-sm text-foreground/90">
         <span>{word}</span>
         {showHelper && <span className="text-muted-foreground/85">{' / '}{helperTerm}</span>}

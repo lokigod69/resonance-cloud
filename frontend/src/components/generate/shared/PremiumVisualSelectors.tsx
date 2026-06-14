@@ -314,14 +314,12 @@ const INFOGRAPHIC_ICONS: Record<PremiumInfographicStyle, PremiumVisualIcon> = {
 
 interface PremiumInfographicStyleSelectorProps {
   title: string
-  helper?: string
   selected: PremiumInfographicStyle
   onSelect: (value: PremiumInfographicStyle) => void
 }
 
 export function PremiumInfographicStyleSelector({
   title,
-  helper,
   selected,
   onSelect,
 }: PremiumInfographicStyleSelectorProps) {
@@ -330,16 +328,12 @@ export function PremiumInfographicStyleSelector({
   return (
     <section className="premium-selector-section premium-infographic-style-section">
       <h4 className="premium-selector-heading">{title}</h4>
-      {helper ? (
-        <p className="premium-selector-disabled-note premium-infographic-mode-note">{helper}</p>
-      ) : null}
       <div className="premium-selector-grid premium-infographic-style-grid">
         {PREMIUM_INFOGRAPHIC_STYLE_OPTIONS.map((option) => (
           <PremiumOptionTile
             key={option.value}
             value={option.value}
             label={t(option.labelKey)}
-            helper={t(option.helperKey)}
             selected={selected === option.value}
             onSelect={onSelect}
             icon={INFOGRAPHIC_ICONS[option.value]}

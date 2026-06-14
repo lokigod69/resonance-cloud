@@ -1,5 +1,4 @@
 import { ProductLaneVisualSelector } from '../shared/PremiumVisualSelectors'
-import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import type { ProductLane } from '../useWizardState'
 
@@ -28,8 +27,6 @@ export default function ProductLaneStep({
   skin = 'classic',
 }: ProductLaneStepProps) {
   const { t } = useTranslation()
-  const { profile, profileLoading } = useAuth()
-  const creditCount = typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0
 
   const allTiles: TileDef[] = [
     {
@@ -70,9 +67,6 @@ export default function ProductLaneStep({
   return (
     <div className={`premium-product-step premium-product-step-${skin}`}>
       {skin === 'glassy' ? <h3>{title}</h3> : <h2>{title}</h2>}
-      <p className="mt-2 text-center text-sm text-muted-foreground" aria-live="polite">
-        {t('generate.productLane.creditsAvailable', { count: creditCount })}
-      </p>
       <ProductLaneVisualSelector
         options={tiles}
         selected={value}

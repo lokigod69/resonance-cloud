@@ -342,10 +342,11 @@ export default function DecksPG() {
             </div>
             <button
               onClick={() => navigate('/generate')}
-              className="decks-glass-add p-2.5 rounded-xl bg-[var(--accent-soft)] border border-[color-mix(in_srgb,var(--accent)_40%,transparent)] text-[var(--accent)] hover:brightness-110 transition-all"
+              className="decks-glass-add rounded-xl bg-[var(--accent-soft)] border border-[color-mix(in_srgb,var(--accent)_40%,transparent)] text-[var(--accent)] hover:brightness-110 transition-all"
               title={t('dashboard.newDeck')}
             >
               <Plus className="h-5 w-5" />
+              <span className="decks-glass-add-label">{t('dashboard.newDeck')}</span>
             </button>
           </div>
         </div>

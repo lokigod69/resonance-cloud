@@ -2208,7 +2208,7 @@
   justify-content: space-between;
   gap: clamp(12px, 2vw, 22px);
   min-height: 76px;
-  margin: 0 0 clamp(18px, 3vh, 30px);
+  margin: clamp(10px, 2vh, 20px) 0 clamp(18px, 3vh, 30px);
   padding: clamp(12px, 1.8vw, 16px) clamp(14px, 2vw, 18px);
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -2279,13 +2279,22 @@
 }
 
 .skin-glassy .decks-glass-add {
-  display: grid;
-  place-items: center;
-  width: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
   height: 40px;
+  padding: 0 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
   box-shadow:
     0 12px 32px rgba(8, 176, 188, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.skin-glassy .decks-glass-add-label {
+  line-height: 1;
 }
 
 .skin-glassy .orbs-decks-header {

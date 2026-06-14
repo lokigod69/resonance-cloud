@@ -1044,9 +1044,6 @@ export default function GenerateGO() {
                 onPremiumQuickModeGenerate={(qw, mode) => handlePremiumQuickModeGenerate(qw, mode)}
                 onCustomize={() => setStep(4)}
               />
-              <p style={{ textAlign: 'center', color: 'var(--go-text-secondary)', fontSize: '0.8rem', marginTop: 12 }}>
-                {typeof credits === 'number' ? `${credits} ${t('credits.available')}` : t('generateGo.creditsCheckOnGenerate')}
-              </p>
             </div>
           ) : (
             <div className="gen-orb-row">

@@ -89,7 +89,6 @@ export default function PremiumCardCustomizationStep({
         {isInfographic && (
           <PremiumInfographicStyleSelector
             title={t('premium.infographicStyle.title')}
-            helper={t('premium.infographicStyle.helper')}
             selected={selectedInfographicStyle}
             onSelect={onInfographicStyleChange}
           />
