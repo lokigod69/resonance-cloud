@@ -341,32 +341,45 @@
   z-index: 1;
 }
 
-.today-path-desktopWave {
-  color: color-mix(in srgb, var(--today-accent-strong) 82%, white 18%);
-  display: none;
-  height: clamp(1.1rem, 2vw, 1.45rem);
-  left: calc(var(--today-node-size) / 2);
-  opacity: 0.74;
+.today-path-connector {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-width: 1.5rem;
   pointer-events: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: calc(100% - var(--today-node-size));
-  z-index: 0;
 }
 
-.today-path-desktopWave path {
-  animation: today-path-wave-drift 7s linear infinite;
-  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--today-glow) 58%, transparent));
+.today-path-connectorWave {
+  color: color-mix(in srgb, var(--today-accent-strong) 82%, white 18%);
+  display: block;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--today-glow) 56%, transparent));
+  height: clamp(0.55rem, 1vw, 0.72rem);
+  opacity: 0.72;
+  width: min(78%, 2.9rem);
 }
 
-@keyframes today-path-wave-drift {
-  from {
-    stroke-dashoffset: 0;
-  }
+.today-path-connectorWave--vertical {
+  height: 100%;
+  width: 0.6rem;
+}
 
+.today-path-connectorWave path {
+  animation: today-connector-drift 6s linear infinite;
+}
+
+.today-path-connectorWave--vertical path {
+  animation-name: today-connector-drift-vertical;
+}
+
+@keyframes today-connector-drift {
   to {
-    stroke-dashoffset: -32;
+    stroke-dashoffset: -24;
+  }
+}
+
+@keyframes today-connector-drift-vertical {
+  to {
+    stroke-dashoffset: -22;
   }
 }
 
@@ -629,26 +642,16 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 0.18rem;
   grid-column: 1;
-  height: 1.45rem;
+  height: 1.6rem;
   justify-content: center;
   justify-self: start;
-  margin-left: calc((3.35rem - 0.34rem) / 2);
-  padding-block: 0.3rem;
+  margin-left: calc((3.35rem - 0.6rem) / 2);
+  padding-block: 0.18rem;
   pointer-events: none;
   position: relative;
-  width: 0.34rem;
+  width: 0.6rem;
   z-index: 0;
-}
-
-.today-path-mobileDot {
-  background: radial-gradient(circle, #fff9b7 0%, var(--today-accent-strong) 50%, transparent 78%);
-  border-radius: 999px;
-  box-shadow: 0 0 8px color-mix(in srgb, var(--today-glow) 62%, transparent);
-  display: block;
-  height: 0.3rem;
-  width: 0.3rem;
 }
 
 .today-path-mobileRewards {
@@ -1014,10 +1017,6 @@
     position: relative;
   }
 
-  .today-path-desktopWave {
-    display: block;
-  }
-
   .today-path-segmentGrid {
     align-items: center;
     display: grid;
@@ -1037,24 +1036,6 @@
   .today-path-lessonSlot {
     align-items: center;
     display: contents;
-  }
-
-  .today-path-desktopDots {
-    align-items: center;
-    display: inline-flex;
-    gap: clamp(0.3rem, 0.55vw, 0.45rem);
-    justify-content: center;
-    min-width: 1.5rem;
-    pointer-events: none;
-  }
-
-  .today-path-desktopDot {
-    background: radial-gradient(circle, #fff9b7 0%, var(--today-accent-strong) 50%, transparent 80%);
-    border-radius: 999px;
-    box-shadow: 0 0 8px color-mix(in srgb, var(--today-glow) 56%, transparent);
-    display: inline-block;
-    height: clamp(0.32rem, 0.5vw, 0.42rem);
-    width: clamp(0.32rem, 0.5vw, 0.42rem);
   }
 
   .today-path-desktopRewardSlot {
@@ -1126,7 +1107,7 @@
 .today-session-shell {
   isolation: isolate;
   margin-inline: auto;
-  max-width: min(100%, 54rem);
+  max-width: min(100%, 56rem);
   position: relative;
   display: grid;
   gap: clamp(0.9rem, 2.4vw, 1.25rem);
@@ -1363,7 +1344,7 @@
   min-height: clamp(25rem, 58dvh, 40rem);
   overflow: hidden;
   position: relative;
-  width: min(100%, 46rem);
+  width: min(100%, 50rem);
   display: grid;
   align-content: start;
   gap: clamp(1rem, 2.8vw, 1.45rem);
@@ -1377,15 +1358,6 @@
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, white 6%, transparent),
     0 18px 46px rgba(0, 0, 0, 0.28);
-}
-
-.today-session-shell[data-session-step="scene"] {
-  max-width: min(100%, 64rem);
-}
-
-.today-session-taskCard[data-session-step="scene"] {
-  min-height: 0;
-  width: min(100%, 60rem);
 }
 
 .today-session-taskCard::before {
@@ -2957,6 +2929,7 @@
   .today-completion-vibeBadge,
   .today-vibeStrip-description,
   .today-path-card[data-selected="true"] .today-path-cardMarker,
+  .today-path-connectorWave path,
   .today-featuredLessonAction::after {
     animation: none !important;
   }

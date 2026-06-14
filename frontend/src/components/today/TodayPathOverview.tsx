@@ -237,9 +237,7 @@ export function TodayPathOverview({
                   />
                   {index < segment.lessons.length - 1 && (
                     <span className="today-path-mobileConnectorSegment" aria-hidden="true">
-                      <span className="today-path-mobileDot" />
-                      <span className="today-path-mobileDot" />
-                      <span className="today-path-mobileDot" />
+                      <ConnectorWave vertical />
                     </span>
                   )}
                 </Fragment>
@@ -268,7 +266,6 @@ export function TodayPathOverview({
           {segmentStates.map((segment) => (
             <div key={segment.segment} className="today-path-desktopSegment today-path-desktopRouteRow">
               <div className="today-path-desktopLessonRail">
-                <DesktopRouteWave />
                 <div className="today-path-segmentGrid grid grid-cols-5">
                   {segment.lessons.map((entry, lessonIndex) => (
                     <Fragment key={entry.lesson.id}>
@@ -285,10 +282,8 @@ export function TodayPathOverview({
                           onSelectLesson={onSelectLesson}
                         />
                         {lessonIndex < segment.lessons.length - 1 && (
-                          <span className="today-path-desktopDots" aria-hidden="true">
-                            <span className="today-path-desktopDot" />
-                            <span className="today-path-desktopDot" />
-                            <span className="today-path-desktopDot" />
+                          <span className="today-path-connector" aria-hidden="true">
+                            <ConnectorWave />
                           </span>
                         )}
                       </div>
@@ -382,31 +377,44 @@ function TodayVibeStrip({
   )
 }
 
-function DesktopRouteWave() {
+function ConnectorWave({ vertical = false }: { vertical?: boolean }) {
+  if (vertical) {
+    return (
+      <svg
+        className="today-path-connectorWave today-path-connectorWave--vertical"
+        viewBox="0 0 12 30"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M 6 2 C 1.5 8, 10.5 11, 6 17 S 1.5 26, 6 28"
+          fill="none"
+          stroke="currentColor"
+          strokeDasharray="0.5 5"
+          strokeLinecap="round"
+          strokeWidth="2.2"
+        />
+      </svg>
+    )
+  }
+
   return (
     <svg
-      className="today-path-desktopWave"
-      viewBox="0 0 100 18"
+      className="today-path-connectorWave"
+      viewBox="0 0 44 12"
       preserveAspectRatio="none"
       aria-hidden="true"
       focusable="false"
     >
       <path
-        d="M 0 9 C 12 1, 20 1, 31 9 S 51 17, 62 9 S 82 1, 100 9"
+        d="M 2 6 C 9 1.5, 14 1.5, 22 6 S 35 10.5, 42 6"
         fill="none"
         stroke="currentColor"
-        strokeDasharray="1 7"
+        strokeDasharray="0.5 5.5"
         strokeLinecap="round"
-        strokeWidth="2.4"
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          from="0"
-          to="-32"
-          dur="7s"
-          repeatCount="indefinite"
-        />
-      </path>
+        strokeWidth="2.2"
+      />
     </svg>
   )
 }
