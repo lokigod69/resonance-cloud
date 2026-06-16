@@ -39,7 +39,7 @@ import { SPEAK_LANGUAGES, LANGUAGES as ALL_LANGUAGES } from '@/lib/languages'
 import { getGeneratedDeckHref } from '@/lib/cardGenerationProgress'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 
-const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar', 'fil', 'id', 'ko']
+const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar', 'ceb', 'fil', 'id', 'ko']
 const GROK_LEVEL_VALUES: GrokLevel[] = ['zero', 'beginner', 'intermediate', 'advanced']
 const DEFAULT_GROK_VOICE: GrokVoice = 'eve'
 const DEFAULT_GROK_CATEGORY: GrokCategory | 'free_chat' = 'free_chat'
@@ -125,7 +125,10 @@ function readGrokAudioDebugFlag(): boolean {
 }
 
 const defaultProviderFor = (lang: string | null | undefined): SpeakProvider => {
-  return lang === 'fil' ? 'voxtral' : 'grok'
+  // fil and ceb have no Voxtral voice, so they open on the Gemini ("Voices")
+  // picker by default (fil additionally can't use grok — see ProviderToggle).
+  // Everything else opens on grok ("Live").
+  return lang === 'fil' || lang === 'ceb' ? 'gemini' : 'grok'
 }
 
 function formatRecordingDuration(seconds: number) {
@@ -437,8 +440,8 @@ export default function Speak() {
     setGrokLevel(isGrokLevel(savedLevel) ? savedLevel : null)
     clearGrokUiState()
     void endGrokSessionRef.current()
-    if (tutor.language === 'fil' && activeProvider === 'grok') {
-      setActiveProvider('voxtral')
+    if ((tutor.language === 'fil' || tutor.language === 'ceb') && activeProvider !== 'gemini') {
+      setActiveProvider('gemini')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tutor.language])

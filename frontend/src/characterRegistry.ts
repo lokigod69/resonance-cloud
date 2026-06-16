@@ -23,12 +23,11 @@ export function getDefaultVoice(lang: string, gender: 'male' | 'female'): TutorV
 export function resolveCharacterVoice(
   char: TutorCharacter,
   lang: string,
-): { mistralVoiceId: string; elevenLabsId?: string } {
+): { mistralVoiceId: string } {
   if (char.voices[lang]) return { mistralVoiceId: char.voices[lang] }
   const fallback = getDefaultVoice(lang, char.gender)
   return {
     mistralVoiceId: fallback?.mistralVoiceId ?? '',
-    elevenLabsId: fallback?.elevenLabsId,
   }
 }
 

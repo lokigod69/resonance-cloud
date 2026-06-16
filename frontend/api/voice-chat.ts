@@ -41,7 +41,6 @@ interface RequestBody {
   language: string
   history: Message[]
   voice_id?: string
-  elevenlabs_voice_id?: string
   mime_type?: string
   level?: string
   native_language?: string
@@ -86,14 +85,17 @@ const VOICE_MAP: Record<string, { voiceId: string; name: string; gender: string 
   ar: { voiceId: '414a56c0-f4de-4ec1-8f8a-2bfffe963a1c', name: 'Yousef',   gender: 'male'   },
 }
 
-// Languages supported by Voxtral TTS (others fall back to ElevenLabs)
+// Languages Voxtral TTS can speak. Any Speak language not in this set
+// (fil, id, ko, ceb) is served by Gemini TTS instead — see generateSpeech().
 const VOXTRAL_SUPPORTED = new Set(['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar'])
 
-// ElevenLabs voice IDs for languages Voxtral cannot speak
-const ELEVENLABS_FALLBACK: Record<string, string> = {
-  fil: '4RLeKvASM0Zt73Htf5GF', // Maria
-  id:  '52LXmmR0nGnIcDs1TL3f', // Anjani
-  ko:  'zgDzx5jLLCqEp6Fl7Kl7', // Hanna
+// Default Gemini character mode + voice used when a non-Voxtral language is
+// requested without an explicit Gemini selection (e.g. the "Characters" path or
+// roleplay for fil/id/ko/ceb). Keeps those languages audible via Gemini TTS.
+const DEFAULT_GEMINI_OPTIONS: GeminiSpeechOptions = {
+  characterModeId: 'concierge',
+  voiceName: 'Kore',
+  accentId: 'none',
 }
 
 // ⚠️ KEEP IN SYNC with src/data/geminiCharacterModes.ts
@@ -339,7 +341,6 @@ async function generateSpeech(
   language: string,
   mistralKey: string,
   voiceId?: string,
-  elevenLabsVoiceId?: string,
   geminiOptions?: GeminiSpeechOptions,
 ): Promise<TtsResult> {
   // ── Gemini branch — modular character-mode + prebuilt voice ───────────────
@@ -384,22 +385,10 @@ async function generateSpeech(
     if (!ttsJson.audio_data) throw new Error('Mistral TTS returned no audio_data field')
     return { audio: Buffer.from(ttsJson.audio_data, 'base64'), format: 'mp3' }
   } else {
-    const elevenKey = process.env.ELEVENLABS_API_KEY
-    if (!elevenKey) throw new Error('ELEVENLABS_API_KEY not configured')
-    const resolvedElVoiceId = elevenLabsVoiceId || ELEVENLABS_FALLBACK[language]
-    if (!resolvedElVoiceId) throw new Error(`No TTS voice configured for language: ${language}`)
-    const voiceId = resolvedElVoiceId
-    const response = await fetchWithTimeout(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
-      method: 'POST',
-      headers: { 'xi-api-key': elevenKey, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        text,
-        model_id: 'eleven_multilingual_v2',
-        voice_settings: { stability: 0.5, similarity_boost: 0.75 },
-      }),
-    }, 20000, 'ElevenLabs TTS')
-    if (!response.ok) throw new Error(`ElevenLabs TTS failed: ${response.status}`)
-    return { audio: Buffer.from(await response.arrayBuffer()), format: 'mp3' }
+    // Non-Voxtral language (fil, id, ko, ceb) with no explicit Gemini pick —
+    // serve it with Gemini TTS using a sensible default mode + voice.
+    const audio = await generateGeminiSpeech(text, language, DEFAULT_GEMINI_OPTIONS)
+    return { audio, format: 'wav' }
   }
 }
 
@@ -554,7 +543,6 @@ function validateVoiceBody(raw: unknown): RequestBody & {
     language,
     history: validateMessages(raw.history, 'history', MAX_HISTORY_ENTRIES),
     voice_id: readString(raw.voice_id, 'voice_id', 128),
-    elevenlabs_voice_id: readString(raw.elevenlabs_voice_id, 'elevenlabs_voice_id', 128),
     mime_type: readString(raw.mime_type, 'mime_type', 128),
     level: readString(raw.level, 'level', 64),
     native_language: nativeLanguage,
@@ -685,7 +673,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   try {
-  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words, scenarioPrompt, provider, gemini_character_mode_id, gemini_voice_name, gemini_accent_id, gemini_vibe_directive } = body
+  const { audio_base64, language, history = [], voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words, scenarioPrompt, provider, gemini_character_mode_id, gemini_voice_name, gemini_accent_id, gemini_vibe_directive } = body
   const isRoleplay = body.mode === 'roleplay' && !!scenarioPrompt
   const roleplayText = typeof body.message === 'string' ? body.message : null
 
@@ -799,17 +787,18 @@ export async function POST(req: Request): Promise<Response> {
       fil: 'Hindi ko narinig — puwede mo bang ulitin?',
       id: 'Saya tidak mendengar dengan jelas — bisa coba lagi?',
       ko: '잘 못 들었어요 — 다시 한번 말해 주시겠어요?',
+      ceb: 'Wala ko kadungog — puwede ba nimo usbon?',
     }
     const retryText = retryResponses[language] ?? retryResponses.en
 
-    const mistralKeyRetry = process.env.MISTRAL_API_KEY
-    if (!mistralKeyRetry) {
-      return errorResponse(req, 500, 'Voice service is not configured')
-    }
     const retryGeminiOpts = provider === 'gemini' && gemini_character_mode_id && gemini_voice_name
       ? { characterModeId: gemini_character_mode_id, voiceName: gemini_voice_name, accentId: gemini_accent_id ?? 'none' }
       : undefined
-    const retryResult = await generateSpeech(retryText, language, mistralKeyRetry, voice_id, elevenlabs_voice_id, retryGeminiOpts)
+    const mistralKeyRetry = process.env.MISTRAL_API_KEY
+    if (!mistralKeyRetry && !retryGeminiOpts && VOXTRAL_SUPPORTED.has(language)) {
+      return errorResponse(req, 500, 'Voice service is not configured')
+    }
+    const retryResult = await generateSpeech(retryText, language, mistralKeyRetry ?? '', voice_id, retryGeminiOpts)
 
     return new Response(
       JSON.stringify({
@@ -885,8 +874,14 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   // ── Step 4: Text-to-Speech ─────────────────────────────────────────────────
+  const geminiOpts = provider === 'gemini' && gemini_character_mode_id && gemini_voice_name
+    ? { characterModeId: gemini_character_mode_id, voiceName: gemini_voice_name, accentId: gemini_accent_id ?? 'none' }
+    : undefined
+
+  // Mistral is only required when we'll actually call Voxtral (a Voxtral-supported
+  // language with no Gemini selection). Gemini-served turns need GOOGLE_AI_API_KEY.
   const mistralKey = process.env.MISTRAL_API_KEY
-  if (!mistralKey && provider !== 'gemini') {
+  if (!mistralKey && !geminiOpts && VOXTRAL_SUPPORTED.has(language)) {
     return errorResponse(req, 500, 'Voice service is not configured')
   }
 
@@ -894,12 +889,8 @@ export async function POST(req: Request): Promise<Response> {
   let audio_base64_out = ''
   let audio_format: 'mp3' | 'wav' = 'mp3'
 
-  const geminiOpts = provider === 'gemini' && gemini_character_mode_id && gemini_voice_name
-    ? { characterModeId: gemini_character_mode_id, voiceName: gemini_voice_name, accentId: gemini_accent_id ?? 'none' }
-    : undefined
-
   try {
-    const result = await generateSpeech(ttsText, language, mistralKey ?? '', voice_id, elevenlabs_voice_id, geminiOpts)
+    const result = await generateSpeech(ttsText, language, mistralKey ?? '', voice_id, geminiOpts)
     audio_base64_out = result.audio.toString('base64')
     audio_format = result.format
   } catch (ttsErr) {

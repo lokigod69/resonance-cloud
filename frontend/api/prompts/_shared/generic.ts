@@ -9,8 +9,9 @@ import { buildRoleplaySystemPrompt } from './roleplay'
 import { voxtralRules } from '../voxtral'
 
 // Generic fallback: no character selected, no Gemini vibe. The TTS path at
-// this point is Voxtral or ElevenLabs (not Gemini), so the strict speech rules
-// from voxtralRules apply — the speech engine reads stage directions literally.
+// this point is Voxtral (or a default Gemini voice for non-Voxtral languages),
+// so the strict speech rules from voxtralRules apply — the speech engine reads
+// stage directions literally.
 
 export interface GenericSystemPromptInput {
   language: string

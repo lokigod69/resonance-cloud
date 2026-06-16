@@ -26,13 +26,14 @@ export const LANGUAGE_CONFIG: Record<string, { name: string; nativeName: string;
   fil: { name: 'Filipino',  nativeName: 'Filipino',         encouragement: 'Magaling! / Napakahusay! / Tama!' },
   id:  { name: 'Indonesian', nativeName: 'Bahasa Indonesia', encouragement: 'Bagus sekali! / Hebat! / Benar!' },
   ko:  { name: 'Korean',    nativeName: '한국어',            encouragement: '잘했어요! / 훌륭해요! / 맞아요!' },
+  ceb: { name: 'Cebuano',   nativeName: 'Bisaya',           encouragement: 'Maayo kaayo! / Husto! / Sakto!' },
 }
 
 // Native language names for browser language codes not in LANGUAGE_CONFIG
 export const NATIVE_LANGUAGE_NAMES: Record<string, string> = {
   en: 'English', de: 'German', fr: 'French', it: 'Italian',
   es: 'Spanish', pt: 'Portuguese', nl: 'Dutch', hi: 'Hindi',
-  ar: 'Arabic', fil: 'Filipino', id: 'Indonesian', ko: 'Korean',
+  ar: 'Arabic', fil: 'Filipino', id: 'Indonesian', ko: 'Korean', ceb: 'Cebuano',
   zh: 'Chinese', ja: 'Japanese', ru: 'Russian', tr: 'Turkish',
   pl: 'Polish', th: 'Thai', vi: 'Vietnamese', sv: 'Swedish',
   da: 'Danish', no: 'Norwegian', fi: 'Finnish', cs: 'Czech',

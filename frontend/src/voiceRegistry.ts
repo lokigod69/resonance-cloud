@@ -4,7 +4,6 @@ export interface TutorVoice {
   language: string
   gender: 'male' | 'female'
   mistralVoiceId: string
-  elevenLabsId?: string
   sampleUrl: string
 }
 
@@ -123,14 +122,9 @@ export const TUTOR_VOICES: TutorVoice[] = [
   { id: 'ar_saraar',    name: 'Sara',      language: 'ar', gender: 'female', mistralVoiceId: 'afc7b096-cc10-48dd-9b41-a1add4e8a665', sampleUrl: '/voices/ar_SaraAR_female.mp3' },
   { id: 'ar_yasmine',   name: 'Yasmine',   language: 'ar', gender: 'female', mistralVoiceId: 'b106c1c5-2ec2-4576-b634-9cff6099abcf', sampleUrl: '/voices/ar_Yasmine_female.mp3' },
 
-  // ── Filipino — ElevenLabs only (1 with known ID) ──
-  { id: 'fil_maria',    name: 'Maria',     language: 'fil', gender: 'female', mistralVoiceId: '', elevenLabsId: '4RLeKvASM0Zt73Htf5GF', sampleUrl: '/voices/fil_Maria_female.mp3' },
-
-  // ── Indonesian — ElevenLabs only (1 with known ID) ──
-  { id: 'id_anjani',    name: 'Anjani',    language: 'id',  gender: 'female', mistralVoiceId: '', elevenLabsId: '52LXmmR0nGnIcDs1TL3f', sampleUrl: '/voices/id_Anjani_female.mp3' },
-
-  // ── Korean — ElevenLabs only (1 with known ID) ──
-  { id: 'ko_hanna',     name: 'Hanna',     language: 'ko',  gender: 'female', mistralVoiceId: '', elevenLabsId: 'zgDzx5jLLCqEp6Fl7Kl7', sampleUrl: '/voices/ko_Hanna_female.mp3' },
+  // Filipino (fil), Indonesian (id), Korean (ko) and Cebuano/Bisaya (ceb) are
+  // served by Gemini TTS, which uses its own language-agnostic voice registry
+  // (src/data/geminiVoices.ts) — they have no Voxtral voice entries here.
 ]
 
 export function getVoicesForLanguage(lang: string): TutorVoice[] {

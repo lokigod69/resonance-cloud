@@ -35,7 +35,7 @@ export const LANGUAGES: Language[] = [
   { value: 'German',     nativeName: 'Deutsch',           code: 'de',  landingColor: '#FFD700', wizardColor: '#f59e0b', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'French',     nativeName: 'Français',          code: 'fr',  landingColor: '#4A90D9', wizardColor: '#3b82f6', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'Italian',    nativeName: 'Italiano',          code: 'it',  landingColor: '#4CAF50', wizardColor: '#22c55e', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
-  { value: 'Bisaya',     nativeName: 'Bisaya',            code: 'ceb', landingColor: '#AB47BC', wizardColor: '#ef4444', isBase: true,  isWizard: true,  isLanding: true },
+  { value: 'Bisaya',     nativeName: 'Bisaya',            code: 'ceb', landingColor: '#AB47BC', wizardColor: '#ef4444', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'Tagalog',    nativeName: 'Tagalog',           code: 'fil', landingColor: '#FF6B35', wizardColor: '#06b6d4', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'Korean',     nativeName: '한국어',             code: 'ko',  landingColor: '#CD2E3A', wizardColor: '#a855f7', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'Indonesian', nativeName: 'Bahasa Indonesia',  code: 'id',  landingColor: '#009688', wizardColor: '#f97316',                isWizard: true,  isLanding: true,  isSpeak: true },

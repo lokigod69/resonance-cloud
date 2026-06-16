@@ -461,14 +461,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         if (currentChar) {
           const resolved = resolveCharacterVoice(currentChar, lang)
           if (resolved.mistralVoiceId) body.voice_id = resolved.mistralVoiceId
-          if (resolved.elevenLabsId) body.elevenlabs_voice_id = resolved.elevenLabsId
           body.character_name = currentChar.name
           body.character_tier = currentChar.tier
           if (currentChar.identity) body.character_identity = currentChar.identity
           body.character_directive = currentChar.directive
         } else {
           if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
-          if (v?.elevenLabsId) body.elevenlabs_voice_id = v.elevenLabsId
         }
       }
 
@@ -851,7 +849,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         language: lang,
         gender: char.gender,
         mistralVoiceId: resolved.mistralVoiceId,
-        elevenLabsId: resolved.elevenLabsId,
         sampleUrl: '',
       }
 
@@ -1020,7 +1017,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         language: lang,
         gender: char.gender,
         mistralVoiceId: resolved.mistralVoiceId,
-        elevenLabsId: resolved.elevenLabsId,
         sampleUrl: '',
       }
 
