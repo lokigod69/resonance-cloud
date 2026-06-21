@@ -53,6 +53,7 @@ export default function CtaFooterSection() {
       {/* Footer */}
       <footer className="border-t border-white/5 pt-8 text-sm text-muted-foreground space-y-3">
         <p>Lingwave &middot; {publicWebHost}</p>
+        <p>&copy; 2026 Deep Blue Dodo LLC</p>
         <nav aria-label={t('legal.footerNavLabel')} className="flex flex-wrap justify-center gap-x-4 gap-y-2">
           {LEGAL_LINKS.map((link) => (
             <a
