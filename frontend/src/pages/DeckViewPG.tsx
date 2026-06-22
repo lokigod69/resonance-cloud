@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabase'
 import { useDrag } from '@use-gesture/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import {
@@ -54,6 +55,7 @@ import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@
 import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
 import { getDeckLanguageLabel } from '@/lib/i18nDisplay'
 import { getCardFullUrl, getCardThumbUrl } from '@/lib/imageUrls'
+import { deriveWordSource } from '@/lib/wordSource'
 
 type Deck = {
   id: string
@@ -702,6 +704,8 @@ export default function DeckViewPG() {
             {words.filter(w => w.status !== 'pending' && w.status !== 'processing').map(word => {
               const isSelected = selectedWords.has(word.id)
               const isFailed = word.status === 'failed'
+              const wordSource = deriveWordSource(deck, word)
+              const wordSourceLabel = t(`deckview.source.${wordSource}`)
 
               return (
                 <div
@@ -762,8 +766,13 @@ export default function DeckViewPG() {
                   </div>
 
                   {/* Word info */}
-                  <div className="p-2.5">
-                    <p className="text-sm font-medium font-display truncate">{word.word}</p>
+                  <div className="space-y-1 p-2.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="min-w-0 truncate font-display text-sm font-medium">{word.word}</p>
+                      <Badge variant="outline" className="shrink-0 border-white/10 bg-white/5 px-1.5 py-0 text-[10px] font-semibold uppercase text-[var(--pg-text-dim)]">
+                        {wordSourceLabel}
+                      </Badge>
+                    </div>
                     {!isTextDeck && word.translation && (
                       <p className="text-xs text-[var(--pg-text-dim)] truncate">{word.translation}</p>
                     )}
@@ -801,6 +810,8 @@ export default function DeckViewPG() {
                 if (Math.abs(offset) > 2) return null
                 const isComplete = word.status === 'complete'
                 const isPending = word.status === 'pending' || word.status === 'processing'
+                const wordSource = deriveWordSource(deck, word)
+                const wordSourceLabel = t(`deckview.source.${wordSource}`)
 
                 return (
                   <motion.div
@@ -962,6 +973,9 @@ export default function DeckViewPG() {
                       <div className="px-6 pt-4 pb-2 flex flex-col items-center text-center bg-[#0d0d12]/70">
                         {isComplete ? (
                           <>
+                            <Badge variant="outline" className="mb-2 border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase text-[var(--pg-text-dim)]">
+                              {wordSourceLabel}
+                            </Badge>
                             <button
                               type="button"
                               onClick={() => { void playWord(word) }}
@@ -994,6 +1008,9 @@ export default function DeckViewPG() {
                           </>
                         ) : (
                           <>
+                            <Badge variant="outline" className="mb-2 border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase text-[var(--pg-text-dim)]">
+                              {wordSourceLabel}
+                            </Badge>
                             <p className="text-lg font-bold text-white long-copy">{word.word}</p>
                             {word.status === 'failed' && (
                               <p className="text-xs text-gray-500 mt-1">

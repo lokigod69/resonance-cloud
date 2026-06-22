@@ -5,6 +5,7 @@ import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play, Share2, PencilLine, Sparkles } from 'lucide-react'
 import { useMoveWords } from '@/hooks/useMoveWords'
 import DeckPickerSheet from '@/components/deck/DeckPickerSheet'
@@ -33,6 +34,7 @@ import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@
 import { classifyCardGenerationFailure, getCardRetryAction } from '@/lib/cardFailureClassification'
 import { getDeckLanguageLabel } from '@/lib/i18nDisplay'
 import { getCardThumbUrl } from '@/lib/imageUrls'
+import { deriveWordSource } from '@/lib/wordSource'
 
 type Deck = {
   id: string
@@ -590,6 +592,8 @@ export default function DeckView() {
           const isComplete = word.status === 'complete'
           const isFailed = word.status === 'failed'
           const cardDiagnostic = isCardDeck ? classifyCardGenerationFailure(word) : null
+          const wordSource = deriveWordSource(deck, word)
+          const wordSourceLabel = t(`deckview.source.${wordSource}`)
 
           const isSelectable = word.status !== 'pending' && word.status !== 'processing'
           const isSelected = selectedWords.has(word.id)
@@ -676,7 +680,12 @@ export default function DeckView() {
                   )}
                   {/* Info */}
                   <div className="p-3 space-y-0.5">
-                    <p className="font-semibold text-sm truncate">{word.word}</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="min-w-0 truncate text-sm font-semibold">{word.word}</p>
+                      <Badge variant="outline" className="shrink-0 border-border/70 bg-background/60 px-1.5 py-0 text-[10px] font-semibold uppercase text-muted-foreground">
+                        {wordSourceLabel}
+                      </Badge>
+                    </div>
                     {!isTextDeck && word.translation && (
                       <p className="text-xs text-muted-foreground truncate">{word.translation}</p>
                     )}
@@ -712,7 +721,12 @@ export default function DeckView() {
                     <AlertCircle className="h-8 w-8 text-destructive-foreground/50" />
                   </div>
                   <div className="p-3 space-y-1.5">
-                    <p className="font-semibold text-sm truncate">{word.word}</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="min-w-0 truncate text-sm font-semibold">{word.word}</p>
+                      <Badge variant="outline" className="shrink-0 border-border/70 bg-background/60 px-1.5 py-0 text-[10px] font-semibold uppercase text-muted-foreground">
+                        {wordSourceLabel}
+                      </Badge>
+                    </div>
                     <p className="text-xs text-destructive-foreground">
                       {isCardDeck || isTextDeck ? t('deckview.cardFailure') : t('deckview.couldNotGenerate')}
                     </p>
@@ -758,7 +772,12 @@ export default function DeckView() {
                     </span>
                   </div>
                   <div className="p-3 space-y-0.5">
-                    <p className="font-semibold text-sm truncate">{word.word}</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="min-w-0 truncate text-sm font-semibold">{word.word}</p>
+                      <Badge variant="outline" className="shrink-0 border-border/70 bg-background/60 px-1.5 py-0 text-[10px] font-semibold uppercase text-muted-foreground">
+                        {wordSourceLabel}
+                      </Badge>
+                    </div>
                     {cardDiagnostic && (
                       <p className="text-[11px] text-muted-foreground/70">
                         {cardDiagnostic.label}
