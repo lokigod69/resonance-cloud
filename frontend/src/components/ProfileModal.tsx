@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useDeleteAccount } from '@/hooks/useDeleteAccount'
 import { useSkin, type SkinId } from '@/contexts/SkinContext'
@@ -106,6 +107,7 @@ interface ProfileModalProps {
 
 export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) {
   const { profile, user, signOut, refreshProfile } = useAuth()
+  const navigate = useNavigate()
   const { t } = useTranslation()
   const { skin, setSkin } = useSkin()
   const { theme, setTheme } = useTheme()
@@ -527,8 +529,18 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
               <p className="text-sm text-muted-foreground">{user?.email}</p>
             </div>
 
-            {/* Sign Out */}
-            <Button variant="outline" onClick={signOut} className="w-full border-border">
+            {/* Sign Out — close the modal first (it lives outside the router, so it would
+                otherwise float over /login showing a now-blank profile), then sign out and
+                land on /login deterministically. */}
+            <Button
+              variant="outline"
+              onClick={async () => {
+                onOpenChange(false)
+                await signOut()
+                navigate('/login', { replace: true })
+              }}
+              className="w-full border-border"
+            >
               <LogOut className="h-4 w-4 mr-2" />
               {t('profile.signOut')}
             </Button>
