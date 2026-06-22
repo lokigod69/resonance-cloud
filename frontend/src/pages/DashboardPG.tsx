@@ -25,7 +25,7 @@ type DeckSummary = {
 export default function DashboardPG() {
   const { user, profile } = useAuth()
   const { t } = useTranslation()
-  const { activeLanguage, setActiveLanguage } = useLanguage()
+  const { activeLanguage, setActiveLanguage, languageReady } = useLanguage()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const queryLang = searchParams.get('lang')
@@ -123,7 +123,17 @@ export default function DashboardPG() {
 
   const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
   const dashboardLibraryHref = activeLanguage ? `/categories${staticLibraryRouteSuffix(activeLanguage)}` : '/categories'
-  const isFirstRun = !dashboardLoading && decks.length === 0
+  // Empty-home shows when the ACTIVE language has no decks — a brand-new account
+  // (no decks, no active language) or a language the learner hasn't started yet.
+  const decksInActiveLanguage = activeLanguage
+    ? decks.filter((deck) => canonicalizeLanguageValue(deck.target_language) === activeLanguage)
+    : []
+  // Guard the transient where decks have loaded but the active language hasn't been
+  // pinned yet (decks exist, activeLanguage still null) so an existing user never
+  // flashes the empty card before the pin effect runs.
+  const hasResolvedActiveLanguage = Boolean(activeLanguage) || decks.length === 0
+  const isFirstRun =
+    !dashboardLoading && languageReady && hasResolvedActiveLanguage && decksInActiveLanguage.length === 0
 
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">

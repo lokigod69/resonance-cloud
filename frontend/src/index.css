@@ -1243,6 +1243,63 @@ body::before {
   margin-top: clamp(1rem, 3dvh, 2.25rem);
 }
 
+/* Empty-home two-door tiles (browse the library / make your own deck). Calm,
+   equal-weight glass tiles that mirror the dashboard library tile recipe so the
+   first impression stays coherent with the rest of the home. */
+.home-welcome-door {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.1rem 1rem;
+  border-radius: 0.875rem;
+  border: 1px solid var(--dashboard-glass-border);
+  border-top-color: var(--dashboard-glass-border-strong);
+  background: var(--dashboard-glass-bg);
+  color: var(--text-primary);
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.18s ease, filter 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.home-welcome-door:hover,
+.home-welcome-door:focus-visible {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--border-subtle));
+  box-shadow:
+    0 18px 52px rgba(0, 0, 0, 0.42),
+    0 0 24px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.home-welcome-door:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.home-welcome-door-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: color-mix(in srgb, var(--text-primary) 82%, transparent);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 20%, transparent));
+}
+
+.home-welcome-door-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.home-welcome-door-hint {
+  max-width: 16rem;
+  color: color-mix(in srgb, var(--text-primary) 62%, transparent);
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
 .dashboard-home-stack--welcome {
   justify-content: flex-start;
   gap: clamp(1rem, 3dvh, 1.6rem);
