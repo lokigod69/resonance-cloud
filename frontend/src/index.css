@@ -1210,30 +1210,37 @@ body::before {
   align-items: center;
 }
 
-/* Golden-ratio vertical placement: the free space above and below the welcome
-   block is split ~0.382 : 0.618 via two flex spacers, so the block seats on the
-   upper golden line instead of dead center. Responsive to any viewport height;
-   on short screens the spacers collapse and the block stays fully visible. */
-.dashboard-welcome-center::before,
-.dashboard-welcome-center::after {
+/* The wave background paints its warm horizon line at 40% of the viewport. The
+   greeting lives in the band between the header and that line and is dropped
+   onto the band's upper golden line (free space above:below = 0.382:0.618 via
+   flex spacers). The welcome card is a sibling that flows in right AFTER this
+   band, so it lands just below the horizon line, around the vertical middle —
+   never overlapping the line. */
+.dashboard-welcome-hero-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: calc(40dvh - var(--dashboard-shell-top-offset));
+}
+
+.dashboard-welcome-hero-zone::before,
+.dashboard-welcome-hero-zone::after {
   content: '';
   flex-shrink: 1;
   flex-basis: 0;
 }
 
-.dashboard-welcome-center::before {
+.dashboard-welcome-hero-zone::before {
   flex-grow: 0.382;
 }
 
-.dashboard-welcome-center::after {
+.dashboard-welcome-hero-zone::after {
   flex-grow: 0.618;
 }
 
-.dashboard-welcome-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(1.1rem, 3.2dvh, 2rem);
+.dashboard-home-stack--welcome .home-welcome-card {
+  margin-top: clamp(1rem, 3dvh, 2.25rem);
 }
 
 .dashboard-home-stack--welcome {

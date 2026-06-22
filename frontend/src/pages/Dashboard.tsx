@@ -128,12 +128,12 @@ export default function Dashboard() {
 
         {isFirstRun ? (
           <div className="dashboard-welcome-center">
-            <div className="dashboard-welcome-group">
+            <div className="dashboard-welcome-hero-zone">
               <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
                 {greeting}
               </h1>
-              <HomeWelcomeCard />
             </div>
+            <HomeWelcomeCard />
           </div>
         ) : (
           <>
