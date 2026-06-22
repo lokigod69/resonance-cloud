@@ -137,10 +137,12 @@ export default function DashboardPG() {
 
         {isFirstRun ? (
           <div className="dashboard-welcome-center">
-            <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
-              {greeting}
-            </h1>
-            <HomeWelcomeCard />
+            <div className="dashboard-welcome-group">
+              <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
+                {greeting}
+              </h1>
+              <HomeWelcomeCard />
+            </div>
           </div>
         ) : (
           <>

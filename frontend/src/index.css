@@ -1208,7 +1208,31 @@ body::before {
   width: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+}
+
+/* Golden-ratio vertical placement: the free space above and below the welcome
+   block is split ~0.382 : 0.618 via two flex spacers, so the block seats on the
+   upper golden line instead of dead center. Responsive to any viewport height;
+   on short screens the spacers collapse and the block stays fully visible. */
+.dashboard-welcome-center::before,
+.dashboard-welcome-center::after {
+  content: '';
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+
+.dashboard-welcome-center::before {
+  flex-grow: 0.382;
+}
+
+.dashboard-welcome-center::after {
+  flex-grow: 0.618;
+}
+
+.dashboard-welcome-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: clamp(1.1rem, 3.2dvh, 2rem);
 }
 
