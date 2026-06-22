@@ -5,12 +5,14 @@ import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
+import { DailyTodayPanel } from '@/components/dashboard/DailyTodayPanel'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useWordStates } from '@/hooks/useWordStates'
+import { useStudyStreak } from '@/hooks/useStudyStreak'
 import { supabase } from '@/lib/supabase'
 import { staticLibraryRouteSuffix } from '@/lib/staticLibraryLanguage'
 import { canonicalizeLanguageValue } from '@/lib/languages'
@@ -86,6 +88,8 @@ export default function DashboardPG() {
   const wordStates = useWordStates(activeLanguage ?? '', { newWordDailyCap })
   const counts = wordStates.counts
   const reviewDue = counts.reviewingDue + counts.masteredDue
+  const hasAnyWords = counts.new + counts.learning + counts.reviewing + counts.mastered > 0
+  const studyStreak = useStudyStreak()
   const tilesDisabled = !activeLanguage || wordStates.loading
 
   if (!user) {
@@ -165,6 +169,14 @@ export default function DashboardPG() {
               activeLanguage={activeLanguage}
               onSelect={setActiveLanguage}
             />
+
+        <DailyTodayPanel
+          reviewDue={reviewDue}
+          newDue={counts.newDue}
+          hasAnyWords={hasAnyWords}
+          streak={studyStreak.streak}
+          studiedToday={studyStreak.studiedToday}
+        />
 
         <section className="dashboard-action-grid grid w-full grid-cols-2 gap-2.5 sm:gap-3">
           <SrsActionTile

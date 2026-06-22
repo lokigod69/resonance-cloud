@@ -1650,6 +1650,189 @@ body::before {
   text-transform: uppercase;
 }
 
+/* Daily "today" panel — derived day status, done-for-today celebration, and streak.
+   Token-driven so it tracks the active theme; cosmos supplies vermillion/gold here. */
+.dashboard-today-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle);
+  background:
+    radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%),
+    var(--surface-glass);
+  box-shadow:
+    var(--shadow-soft, 0 18px 56px rgba(0, 0, 0, 0.32)),
+    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 10%, transparent);
+  backdrop-filter: blur(48px) saturate(1.25);
+  -webkit-backdrop-filter: blur(48px) saturate(1.25);
+  text-align: left;
+}
+
+.dashboard-today-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.dashboard-today-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text-primary) 64%, transparent);
+}
+
+.dashboard-today-stats {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dashboard-today-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 1 1 0;
+  min-height: 2.4rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.dashboard-today-stat--cleared {
+  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+  border-color: color-mix(in srgb, var(--accent-2) 32%, transparent);
+}
+
+.dashboard-today-stat-count {
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.dashboard-today-stat-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--accent-2);
+}
+
+.dashboard-today-stat-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text-primary) 58%, transparent);
+}
+
+/* Streak chip — gold, quiet, reads as an earned marker. */
+.dashboard-today-streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 36%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+}
+
+.dashboard-today-streak-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--accent-2);
+}
+
+.dashboard-today-streak-count {
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accent-2);
+}
+
+.dashboard-today-streak-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text-primary) 56%, transparent);
+}
+
+/* Done-for-today celebration — accent-filled surface; on-accent text per brand rules. */
+.dashboard-today-panel--done {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.85rem;
+  border-color: color-mix(in srgb, var(--accent) 48%, transparent);
+  background:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--accent-2) 24%, transparent), transparent 60%),
+    var(--accent);
+  color: var(--on-accent);
+}
+
+.dashboard-today-done-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.dashboard-today-done-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--on-accent);
+}
+
+.dashboard-today-done-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1 1 auto;
+}
+
+.dashboard-today-done-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--on-accent);
+}
+
+.dashboard-today-done-subtitle {
+  font-size: 0.74rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: color-mix(in srgb, var(--on-accent) 82%, transparent);
+}
+
+.dashboard-today-panel--done .dashboard-today-streak {
+  border-color: color-mix(in srgb, var(--on-accent) 42%, transparent);
+  background: color-mix(in srgb, var(--on-accent) 16%, transparent);
+}
+
+.dashboard-today-panel--done .dashboard-today-streak-icon,
+.dashboard-today-panel--done .dashboard-today-streak-count {
+  color: var(--on-accent);
+}
+
+.dashboard-today-panel--done .dashboard-today-streak-label {
+  color: color-mix(in srgb, var(--on-accent) 78%, transparent);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .dashboard-today-panel {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 42%),
+      color-mix(in srgb, var(--app-bg) 86%, var(--text-primary) 14%);
+  }
+
+  .dashboard-today-panel--done {
+    background: var(--accent);
+  }
+}
+
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .dashboard-library-tile,
   .stat-tile,
