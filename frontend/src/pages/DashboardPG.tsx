@@ -2,6 +2,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { AlertCircle, Library, LogIn, RefreshCw } from 'lucide-react'
 import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
+import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
+import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { Button } from '@/components/ui/button'
@@ -121,21 +123,36 @@ export default function DashboardPG() {
 
   const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
   const dashboardLibraryHref = activeLanguage ? `/categories${staticLibraryRouteSuffix(activeLanguage)}` : '/categories'
+  const isFirstRun = !dashboardLoading && decks.length === 0
 
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
-      <div className="dashboard-home-stack relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center text-center">
+      <HomeWaveBackground />
+      <div
+        className={`dashboard-home-stack relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center text-center${
+          isFirstRun ? ' dashboard-home-stack--welcome' : ''
+        }`}
+      >
         <HomeAccountStrip />
 
-        <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
-          {greeting}
-        </h1>
+        {isFirstRun ? (
+          <div className="dashboard-welcome-center">
+            <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
+              {greeting}
+            </h1>
+            <HomeWelcomeCard />
+          </div>
+        ) : (
+          <>
+            <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
+              {greeting}
+            </h1>
 
-        <LanguageCluster
-          languages={availableLanguages}
-          activeLanguage={activeLanguage}
-          onSelect={setActiveLanguage}
-        />
+            <LanguageCluster
+              languages={availableLanguages}
+              activeLanguage={activeLanguage}
+              onSelect={setActiveLanguage}
+            />
 
         <section className="dashboard-action-grid grid w-full grid-cols-2 gap-2.5 sm:gap-3">
           <SrsActionTile
@@ -199,6 +216,8 @@ export default function DashboardPG() {
             </span>
           )}
         </div>
+          </>
+        )}
       </div>
     </div>
   )

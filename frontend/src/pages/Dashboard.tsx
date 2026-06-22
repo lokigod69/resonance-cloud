@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { ArrowRight, Library, PlusCircle } from 'lucide-react'
+import { Library } from 'lucide-react'
 import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
+import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
+import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { Button } from '@/components/ui/button'
@@ -112,43 +114,31 @@ export default function Dashboard() {
 
   const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
   const dashboardLibraryHref = activeLanguage ? `/categories${staticLibraryRouteSuffix(activeLanguage)}` : '/categories'
+  const isFirstRun = !dashboardLoading && decks.length === 0
 
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
-      <div className="dashboard-home-stack relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center text-center">
+      <HomeWaveBackground />
+      <div
+        className={`dashboard-home-stack relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center text-center${
+          isFirstRun ? ' dashboard-home-stack--welcome' : ''
+        }`}
+      >
         <HomeAccountStrip />
 
-        <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
-          {greeting}
-        </h1>
-
-        {!dashboardLoading && decks.length === 0 ? (
-          <section className="mt-7 w-full rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_54%,transparent)] px-5 py-6 shadow-[0_18px_60px_rgba(0,0,0,0.24)] sm:px-7 sm:py-7">
-            <div className="mx-auto max-w-xl">
-              <h2 className="text-2xl font-semibold tracking-normal text-[var(--text-primary)] sm:text-3xl">
-                {t('dashboard.firstRun.title')}
-              </h2>
-              <p className="mt-3 text-base leading-7 text-[var(--text-secondary)]">
-                {t('dashboard.firstRun.subtitle')}
-              </p>
-              <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button asChild size="lg">
-                  <Link to="/today">
-                    {t('dashboard.firstRun.startLesson')}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </Button>
-                <Button asChild variant="ghost" size="lg">
-                  <Link to="/generate">
-                    <PlusCircle className="h-4 w-4" aria-hidden="true" />
-                    {t('dashboard.firstRun.createDeck')}
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </section>
+        {isFirstRun ? (
+          <div className="dashboard-welcome-center">
+            <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
+              {greeting}
+            </h1>
+            <HomeWelcomeCard />
+          </div>
         ) : (
           <>
+            <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
+              {greeting}
+            </h1>
+
             <LanguageCluster
               languages={availableLanguages}
               activeLanguage={activeLanguage}

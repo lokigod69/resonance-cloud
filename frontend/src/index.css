@@ -986,16 +986,22 @@ body::before {
   }
 }
 
+/* Solid cosmos base sits beneath the animated wave field so there is never a
+   flash of shell-bg before the canvas paints its first frame. */
 .dashboard-cosmic::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: -2;
-  background-image: url('/brand/cosmos/cosmos-auth.webp');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  z-index: -3;
+  background: var(--app-bg);
   pointer-events: none;
+}
+
+/* Animated brand swell/star field (LingwaveWaves), shared with the login page.
+   Layered between the solid base (::before, -3) and the legibility scrim
+   (::after, -1) so dashboard content always reads above it. */
+.dashboard-wave-bg {
+  z-index: -2;
 }
 
 .dashboard-cosmic::after {
@@ -1189,6 +1195,38 @@ body::before {
     margin-bottom: clamp(2.4rem, 6dvh, 4.8rem);
   }
 
+}
+
+/* First-run welcome layout — vertically center the greeting + glass card the
+   way the login page centers its card. The mobile-only account strip stays
+   pinned at the top while the centered group fills the remaining height.
+   Placed after the responsive stack rules so these overrides win by source
+   order across breakpoints. */
+.dashboard-welcome-center {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.1rem, 3.2dvh, 2rem);
+}
+
+.dashboard-home-stack--welcome {
+  justify-content: flex-start;
+  gap: clamp(1rem, 3dvh, 1.6rem);
+  padding-top: max(0.85rem, calc(var(--app-safe-top) + 0.85rem));
+}
+
+.dashboard-home-stack--welcome .welcome-hero {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .dashboard-home-stack--welcome {
+    padding-top: 0;
+    gap: 0;
+  }
 }
 
 /* Dashboard action surfaces use the same dark frosted recipe as the header. */
