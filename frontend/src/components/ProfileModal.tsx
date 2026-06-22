@@ -27,6 +27,8 @@ import { LogOut, Check, Upload, Trash2, AlertTriangle } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
 import { useToast } from '@/components/Toast'
+import { NewWordsPerDaySelector } from '@/components/profile/NewWordsPerDaySelector'
+import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
 
 const SKINS: { id: SkinId; label: string }[] = [
   { id: 'classic', label: 'Classic' },
@@ -112,6 +114,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
 
   const [displayName, setDisplayName] = useState(profile?.display_name || '')
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
+  const [newWordsPerDay, setNewWordsPerDay] = useState(normalizeNewWordsPerDay(profile?.new_words_per_day))
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [deleteConfirmInput, setDeleteConfirmInput] = useState('')
 
@@ -121,8 +124,9 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
        
       setDisplayName(profile?.display_name || '')
       setBaseLanguage(profile?.base_language || '')
+      setNewWordsPerDay(normalizeNewWordsPerDay(profile?.new_words_per_day))
     }
-  }, [open, profile?.display_name, profile?.base_language])
+  }, [open, profile?.display_name, profile?.base_language, profile?.new_words_per_day])
 
   useEffect(() => {
     if (!deleteDialogOpen) {
@@ -133,6 +137,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
   const [nameSaving, setNameSaving] = useState(false)
   const [nameSaved, setNameSaved] = useState(false)
   const [langSaving, setLangSaving] = useState(false)
+  const [dailyCapSaving, setDailyCapSaving] = useState(false)
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
   const [avatarUploading, setAvatarUploading] = useState(false)
@@ -289,6 +294,38 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
     }
   }
 
+  async function handleSaveNewWordsPerDay(value: number) {
+    if (!user || value === newWordsPerDay) return
+    const previousNewWordsPerDay = newWordsPerDay
+    setNewWordsPerDay(value)
+    setDailyCapSaving(true)
+
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .update({ new_words_per_day: value })
+        .eq('id', user.id)
+        .select('new_words_per_day')
+        .single()
+      const savedValue = normalizeNewWordsPerDay(data?.new_words_per_day)
+
+      if (error || savedValue !== value) {
+        setNewWordsPerDay(previousNewWordsPerDay)
+        toast(t('profile.saveFailed'), 'error')
+        return
+      }
+
+      await refreshProfile()
+      setNewWordsPerDay(savedValue)
+      toast(t('profile.saved'), 'success')
+    } catch {
+      setNewWordsPerDay(previousNewWordsPerDay)
+      toast(t('profile.saveFailed'), 'error')
+    } finally {
+      setDailyCapSaving(false)
+    }
+  }
+
   function handleSkinChange(id: SkinId) {
     setSkin(id)
     if (user?.id) {
@@ -429,6 +466,18 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                   </button>
                 ))}
               </div>
+            </div>
+
+            {/* New Words Per Day */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">{t('profile.newWordsPerDay')}</label>
+              <p className="text-xs text-muted-foreground">{t('profile.newWordsPerDayDescription')}</p>
+              <NewWordsPerDaySelector
+                value={newWordsPerDay}
+                disabled={dailyCapSaving}
+                onChange={handleSaveNewWordsPerDay}
+              />
+              {dailyCapSaving && <span className="text-xs text-muted-foreground">{t('profile.saving')}</span>}
             </div>
 
             {/* Display Name */}

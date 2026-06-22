@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { canonicalizeLanguageValue } from '@/lib/languages'
+import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
 
 export type WordState = 'new' | 'learning' | 'reviewing' | 'mastered'
 
@@ -90,11 +91,12 @@ export function useWordStates(
   language: string,
   opts?: { deckId?: string | null; newWordDailyCap?: number },
 ): UseWordStatesResult {
-  const { user } = useAuth()
+  const { user, profile } = useAuth()
   const userId = user?.id ?? null
   const targetLanguage = toTargetLanguage(language)
   const deckId = opts?.deckId ?? null
-  const newWordDailyCap = opts?.newWordDailyCap ?? 10
+  const profileNewWordDailyCap = normalizeNewWordsPerDay(profile?.new_words_per_day)
+  const newWordDailyCap = normalizeNewWordsPerDay(opts?.newWordDailyCap ?? profileNewWordDailyCap)
   const [data, setData] = useState<LemmaState[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null)

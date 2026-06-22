@@ -45,6 +45,7 @@ export type Profile = {
   base_language: string | null
   role: 'learner' | 'admin'
   credits: number
+  new_words_per_day?: number | null
   seen_tutorials: Record<string, string | null>
   theme?: string
   avatar_path?: string | null
@@ -54,5 +55,12 @@ export type Profile = {
 
 export type AuthProfile = Pick<
   Profile,
-  'display_name' | 'base_language' | 'role' | 'credits' | 'seen_tutorials' | 'avatar_path' | 'avatar_updated_at'
+  | 'display_name'
+  | 'base_language'
+  | 'role'
+  | 'credits'
+  | 'new_words_per_day'
+  | 'seen_tutorials'
+  | 'avatar_path'
+  | 'avatar_updated_at'
 >

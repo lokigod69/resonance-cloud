@@ -12,6 +12,7 @@ import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
 import { staticLibraryRouteSuffix } from '@/lib/staticLibraryLanguage'
 import { canonicalizeLanguageValue } from '@/lib/languages'
+import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
 
 type DeckSummary = {
   id: string
@@ -79,7 +80,8 @@ export default function Dashboard() {
     }
   }, [activeLanguage, availableLanguages, dashboardLoading, queryLang, setActiveLanguage])
 
-  const wordStates = useWordStates(activeLanguage ?? '')
+  const newWordDailyCap = normalizeNewWordsPerDay(profile?.new_words_per_day)
+  const wordStates = useWordStates(activeLanguage ?? '', { newWordDailyCap })
   const counts = wordStates.counts
   const reviewDue = counts.reviewingDue + counts.masteredDue
   const tilesDisabled = !activeLanguage || wordStates.loading

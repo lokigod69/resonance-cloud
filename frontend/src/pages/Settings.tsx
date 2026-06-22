@@ -15,6 +15,8 @@ import { Coins, LogOut, Check } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
 import { useTranslation } from '@/hooks/useTranslation'
+import { NewWordsPerDaySelector } from '@/components/profile/NewWordsPerDaySelector'
+import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
 
 export default function Settings() {
   const { t } = useTranslation()
@@ -23,20 +25,25 @@ export default function Settings() {
   const { skin, setSkin } = useSkin()
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
   const [displayName, setDisplayName] = useState(profile?.display_name || '')
+  const [newWordsPerDay, setNewWordsPerDay] = useState(normalizeNewWordsPerDay(profile?.new_words_per_day))
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [nameSaving, setNameSaving] = useState(false)
   const [nameSaved, setNameSaved] = useState(false)
+  const [dailyCapSaving, setDailyCapSaving] = useState(false)
+  const [dailyCapSaved, setDailyCapSaved] = useState(false)
+  const [dailyCapError, setDailyCapError] = useState<string | null>(null)
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
       setBaseLanguage(profile?.base_language || '')
       setDisplayName(profile?.display_name || '')
+      setNewWordsPerDay(normalizeNewWordsPerDay(profile?.new_words_per_day))
     }, 0)
 
     return () => window.clearTimeout(timeoutId)
-  }, [profile?.base_language, profile?.display_name])
+  }, [profile?.base_language, profile?.display_name, profile?.new_words_per_day])
 
   async function handleSaveDisplayName() {
     if (!user) return
@@ -101,6 +108,43 @@ export default function Settings() {
     }
   }
 
+  async function handleSaveNewWordsPerDay(value: number) {
+    if (!user || value === newWordsPerDay) return
+    const previousNewWordsPerDay = newWordsPerDay
+    setNewWordsPerDay(value)
+    setDailyCapSaving(true)
+    setDailyCapSaved(false)
+    setDailyCapError(null)
+
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .update({ new_words_per_day: value })
+        .eq('id', user.id)
+        .select('new_words_per_day')
+        .single()
+      const savedValue = normalizeNewWordsPerDay(data?.new_words_per_day)
+
+      if (error || savedValue !== value) {
+        setNewWordsPerDay(previousNewWordsPerDay)
+        setDailyCapSaved(false)
+        setDailyCapError(t('profile.saveFailed'))
+        return
+      }
+
+      await refreshProfile()
+      setNewWordsPerDay(savedValue)
+      setDailyCapSaved(true)
+      setTimeout(() => setDailyCapSaved(false), 2000)
+    } catch {
+      setNewWordsPerDay(previousNewWordsPerDay)
+      setDailyCapSaved(false)
+      setDailyCapError(t('profile.saveFailed'))
+    } finally {
+      setDailyCapSaving(false)
+    }
+  }
+
   return (
     <div className="max-w-xl mx-auto space-y-8">
       <div>
@@ -136,6 +180,32 @@ export default function Settings() {
             </span>
           )}
           {error && <span className="text-sm text-destructive">{error}</span>}
+        </div>
+      </div>
+
+      {/* New Words Per Day */}
+      <div className="glass rounded-xl p-6 space-y-4">
+        <div>
+          <h2 className="text-lg font-semibold">{t('profile.newWordsPerDay')}</h2>
+          <p className="text-sm text-muted-foreground">
+            {t('profile.newWordsPerDayDescription')}
+          </p>
+        </div>
+        <div className="space-y-2">
+          <NewWordsPerDaySelector
+            value={newWordsPerDay}
+            disabled={dailyCapSaving}
+            onChange={handleSaveNewWordsPerDay}
+          />
+          <div className="min-h-5">
+            {dailyCapSaving && <span className="text-sm text-muted-foreground">{t('profile.saving')}</span>}
+            {dailyCapSaved && (
+              <span className="text-sm text-[var(--accent-2)] flex items-center gap-1">
+                <Check className="h-3 w-3" /> {t('profile.saved')}
+              </span>
+            )}
+            {dailyCapError && <span className="text-sm text-destructive">{dailyCapError}</span>}
+          </div>
         </div>
       </div>
 
