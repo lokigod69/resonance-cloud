@@ -14,10 +14,12 @@ import {
 } from '@/data/categories'
 import { listImportedCurriculumDecks } from '@/lib/curriculumDeckBridge'
 import {
+  hasStoredStaticLibraryTargetLanguage,
   persistStaticLibraryTargetLanguage,
   readStaticLibraryTargetLanguage,
   staticLibraryRouteSuffix,
 } from '@/lib/staticLibraryLanguage'
+import { LibraryLanguageChooser } from './LibraryLanguageChooser'
 import { useCategoryScrollReset } from './useCategoryScrollReset'
 import styles from './Categories.module.css'
 
@@ -94,11 +96,30 @@ function thematicCategoryHref(category: StaticCategory) {
 export default function CategoryListPage() {
   const { t } = useTranslation()
   const { user } = useAuth()
-  const { activeLanguage } = useLanguage()
+  const { activeLanguage, languageReady } = useLanguage()
   const [searchParams] = useSearchParams()
   useCategoryScrollReset()
   const categories = listCurriculumCategories()
   const [targetLanguage, setTargetLanguage] = useState(() => readStaticLibraryTargetLanguage(searchParams.get('targetLanguage'), activeLanguage))
+  const [languagePicked, setLanguagePicked] = useState(false)
+
+  // First-visit chooser: only when there's genuinely nothing to go on — no route language, no
+  // stored Library preference, and no active study language — so we don't interrupt learners who
+  // already have a language while still catching the brand-new cold start. `activeLanguage`
+  // resolves asynchronously (LanguageProvider seeds it from storage/decks after mount), so it can
+  // only be trusted once `languageReady`. Derived (not effect state) so the decision can't get
+  // stuck once the active language arrives: `null` = still deciding (don't flash the library),
+  // `false` = proceed, `true` = show the chooser.
+  const hasExplicitLibraryChoice =
+    Boolean(searchParams.get('targetLanguage')) || hasStoredStaticLibraryTargetLanguage()
+  const needsLanguageChoice: boolean | null =
+    languagePicked || hasExplicitLibraryChoice ? false : !languageReady ? null : !activeLanguage
+
+  const handleChooseLanguage = (languageValue: string) => {
+    persistStaticLibraryTargetLanguage(languageValue)
+    setTargetLanguage(languageValue)
+    setLanguagePicked(true)
+  }
   const thematicCategoryGroups = getPublicCategoryGroups()
     .map((group) => ({
       ...group,
@@ -108,8 +129,11 @@ export default function CategoryListPage() {
   const [importedCategorySlugs, setImportedCategorySlugs] = useState<Set<string>>(new Set())
 
   useEffect(() => {
+    // Only persist once we've resolved to proceed into the library (false) — not while deciding
+    // (null) or showing the first-visit chooser (true), so we never store a silent default.
+    if (needsLanguageChoice !== false) return
     persistStaticLibraryTargetLanguage(targetLanguage)
-  }, [targetLanguage])
+  }, [targetLanguage, needsLanguageChoice])
 
   useEffect(() => {
     let cancelled = false
@@ -141,6 +165,20 @@ export default function CategoryListPage() {
       cancelled = true
     }
   }, [user?.id])
+
+  if (needsLanguageChoice === null) {
+    // Still deciding whether to prompt (waiting for the active language to settle) — render a
+    // bare page rather than flashing the library and then swapping in the chooser.
+    return <section className={styles.page} aria-busy="true" />
+  }
+
+  if (needsLanguageChoice) {
+    return (
+      <section className={styles.page}>
+        <LibraryLanguageChooser onChoose={handleChooseLanguage} />
+      </section>
+    )
+  }
 
   return (
     <section className={styles.page}>

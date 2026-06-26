@@ -986,6 +986,32 @@ body::before {
   }
 }
 
+/* ── Glassy skin: dashboard glass over the wave field ──────────────────────────────
+   The glassy layout (PolishGlassLayout) nests the dashboard inside an isolation /
+   stacking context (`.skin-glassy .app-shell { isolation: isolate }` + `main { position:
+   relative; z-index: 10 }`) that no-ops the tiles' own `backdrop-filter` against the
+   fixed wave field — so the waves read straight through the semi-transparent surfaces.
+   The app header frosts correctly precisely because it sits OUTSIDE that boundary. We
+   can't move the tiles out of the boundary without touching the background, so instead
+   we replicate the header's glass recipe (same blur 64 / saturate 1.5 already on the
+   tiles) but lean the base more opaque/dampened so the surfaces still read as frosted,
+   legible panels over the waves where the blur is a no-op. Scoped to `.skin-glassy`
+   only — the classic skin keeps its lighter, blur-driven base exactly as designed. */
+.skin-glassy .dashboard-cosmic {
+  --dashboard-glass-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 38%),
+    rgba(0, 0, 0, 0.68);
+}
+
+/* Today panel uses the theme's --surface-glass by default; under glassy, route it
+   through the same (more opaque) dashboard glass base as the tiles so the whole home
+   reads as one coherent frosted surface over the waves. */
+.skin-glassy .dashboard-today-panel {
+  background:
+    radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%),
+    var(--dashboard-glass-bg);
+}
+
 /* Solid cosmos base sits beneath the animated wave field so there is never a
    flash of shell-bg before the canvas paints its first frame. */
 .dashboard-cosmic::before {
@@ -1708,6 +1734,22 @@ body::before {
   border-color: color-mix(in srgb, var(--accent-2) 32%, transparent);
 }
 
+/* Nothing of this kind exists yet (no reviewable cards, no new words): a quiet, dimmed row that
+   reads as "nothing due", not as a completed/actionable state. */
+.dashboard-today-stat--empty {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--text-primary) 8%, transparent);
+  border-style: dashed;
+  opacity: 0.62;
+}
+
+.dashboard-today-stat-empty {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: color-mix(in srgb, var(--text-primary) 50%, transparent);
+}
+
 .dashboard-today-stat-count {
   font-size: 1.35rem;
   font-weight: 800;
@@ -1828,6 +1870,15 @@ body::before {
       color-mix(in srgb, var(--app-bg) 86%, var(--text-primary) 14%);
   }
 
+  /* The glassy override (.skin-glassy .dashboard-today-panel, specificity 0,2,0) would otherwise
+     beat the fallback above — restate it here so a no-backdrop-filter environment still gets an
+     opaque surface under the glassy skin. */
+  .skin-glassy .dashboard-today-panel {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 42%),
+      color-mix(in srgb, var(--app-bg) 86%, var(--text-primary) 14%);
+  }
+
   .dashboard-today-panel--done {
     background: var(--accent);
   }
@@ -1886,9 +1937,11 @@ body::before {
 }
 
 .language-picker-trigger {
+  display: inline-flex;
+  align-items: center;
   min-height: 2.6rem;
   max-width: min(100%, 18rem);
-  gap: 0.45rem;
+  gap: 0.55rem;
   border-radius: 999px;
   padding: 0.48rem 1rem;
   font-size: 1rem;

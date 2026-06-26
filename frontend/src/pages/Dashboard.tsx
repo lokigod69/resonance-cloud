@@ -127,8 +127,12 @@ export default function Dashboard() {
   // pinned yet (decks exist, activeLanguage still null) so an existing user never
   // flashes the empty card before the pin effect runs.
   const hasResolvedActiveLanguage = Boolean(activeLanguage) || decks.length === 0
-  const isFirstRun =
-    !dashboardLoading && languageReady && hasResolvedActiveLanguage && decksInActiveLanguage.length === 0
+  // Until the empty-vs-populated decision is settled (decks still loading, language not yet
+  // ready/pinned) we render a neutral home — bare wave background + account strip — rather than
+  // flashing the zero-count dashboard. The two-door card or the populated grid appears the
+  // instant the decision resolves.
+  const decisionResolved = !dashboardLoading && languageReady && hasResolvedActiveLanguage
+  const isFirstRun = decisionResolved && decksInActiveLanguage.length === 0
 
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
@@ -140,7 +144,7 @@ export default function Dashboard() {
       >
         <HomeAccountStrip />
 
-        {isFirstRun ? (
+        {!decisionResolved ? null : isFirstRun ? (
           <div className="dashboard-welcome-center">
             <div className="dashboard-welcome-hero-zone">
               <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
@@ -164,6 +168,8 @@ export default function Dashboard() {
             <DailyTodayPanel
               reviewDue={reviewDue}
               newDue={counts.newDue}
+              reviewPool={counts.reviewing + counts.mastered}
+              newPool={counts.new}
               hasAnyWords={hasAnyWords}
               streak={studyStreak.streak}
               studiedToday={studyStreak.studiedToday}

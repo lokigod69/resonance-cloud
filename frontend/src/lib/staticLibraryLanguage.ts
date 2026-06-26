@@ -33,6 +33,16 @@ export function readStaticLibraryTargetLanguage(queryValue?: string | null, fall
   return resolveVisibleStaticLanguage(fallback, 'English')
 }
 
+/** Whether the learner has ever explicitly stored a Library target language (local preference). */
+export function hasStoredStaticLibraryTargetLanguage(): boolean {
+  if (typeof window === 'undefined') return false
+  try {
+    return Boolean(window.localStorage.getItem(STATIC_LIBRARY_TARGET_LANGUAGE_KEY))
+  } catch {
+    return false
+  }
+}
+
 export function persistStaticLibraryTargetLanguage(language: string): void {
   if (typeof window === 'undefined') return
   try {

@@ -7,6 +7,11 @@ type DailyTodayPanelProps = {
   reviewDue: number
   /** New words still available within today's daily cap. */
   newDue: number
+  /** Review-eligible pool (reviewing + mastered). Distinguishes "no reviews exist yet" from
+   *  "reviews cleared today" so a zero count never reads as a misleading done-checkmark. */
+  reviewPool: number
+  /** New-word pool (cards still in the `new` state). Same nothing-due-vs-cleared distinction. */
+  newPool: number
   /** Whether the active language has any studyable words at all (guards the empty account). */
   hasAnyWords: boolean
   /** Consecutive-day study streak (derived, UTC-day buckets, runner excluded). */
@@ -23,6 +28,8 @@ type DailyTodayPanelProps = {
 export function DailyTodayPanel({
   reviewDue,
   newDue,
+  reviewPool,
+  newPool,
   hasAnyWords,
   streak,
   studiedToday,
@@ -67,19 +74,33 @@ export function DailyTodayPanel({
         {streakChip}
       </div>
       <div className="dashboard-today-stats">
-        <TodayStat label={t('study.queue.review')} count={reviewDue} />
-        <TodayStat label={t('study.queue.learn')} count={newDue} />
+        <TodayStat label={t('study.queue.review')} count={reviewDue} pool={reviewPool} />
+        <TodayStat label={t('study.queue.learn')} count={newDue} pool={newPool} />
       </div>
     </section>
   )
 }
 
-function TodayStat({ label, count }: { label: string; count: number }) {
-  const cleared = count === 0
+/**
+ * One row of the today panel. Three states, so a zero never lies:
+ * - `count > 0` — work remaining: show the number.
+ * - `count === 0 && pool > 0` — genuinely cleared today: gold checkmark.
+ * - `count === 0 && pool === 0` — nothing of this kind exists yet (e.g. no reviewable cards):
+ *   a muted "nothing due" dash, not a done-checkmark, and visibly non-actionable.
+ */
+function TodayStat({ label, count, pool }: { label: string; count: number; pool: number }) {
+  const cleared = count === 0 && pool > 0
+  const empty = count === 0 && pool === 0
   return (
-    <span className={`dashboard-today-stat${cleared ? ' dashboard-today-stat--cleared' : ''}`}>
+    <span
+      className={`dashboard-today-stat${cleared ? ' dashboard-today-stat--cleared' : ''}${
+        empty ? ' dashboard-today-stat--empty' : ''
+      }`}
+    >
       {cleared ? (
         <Check className="dashboard-today-stat-icon" aria-hidden="true" />
+      ) : empty ? (
+        <span className="dashboard-today-stat-empty" aria-hidden="true">—</span>
       ) : (
         <span className="dashboard-today-stat-count">{count}</span>
       )}
