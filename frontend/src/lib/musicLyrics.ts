@@ -3,6 +3,7 @@ type JsonRecord = Record<string, unknown>
 export type MusicLyricsSource = {
   lyrics: string
   source: 'music_generation_jobs.concept_artifact.suno_lyrics'
+    | 'music_generation_jobs.lyrics'
     | 'music_lyrics.display_lyrics'
     | 'music_lyrics.lyrics'
     | 'music_lyrics.suno_lyrics'
@@ -55,10 +56,12 @@ export function cleanDisplayLyrics(rawLyrics: string): string {
 
 export function extractMusicLyrics({
   musicLyricsRow,
+  jobLyrics,
   conceptArtifact,
   songGeneration,
 }: {
   musicLyricsRow?: MusicLyricsRow | null
+  jobLyrics?: unknown
   conceptArtifact?: JsonRecord | null
   songGeneration?: JsonRecord | null
 }): MusicLyricsSource | null {
@@ -83,6 +86,14 @@ export function extractMusicLyrics({
     return {
       lyrics: musicLyrics,
       source: 'music_lyrics.lyrics',
+    }
+  }
+
+  const levelJobLyrics = cleanText(jobLyrics)
+  if (levelJobLyrics) {
+    return {
+      lyrics: levelJobLyrics,
+      source: 'music_generation_jobs.lyrics',
     }
   }
 

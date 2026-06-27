@@ -900,6 +900,48 @@ def test_frontend_song_submit_is_single_flight_and_idempotency_key_tracks_settin
     assert "disabled={!track || insufficientCredits || submitting}" in modal
 
 
+def test_frontend_level_song_submit_helper_and_library_modal_wiring():
+    helper = (REPO_ROOT / "frontend" / "src" / "lib" / "songGeneration.ts").read_text(encoding="utf-8")
+    level_page = (
+        REPO_ROOT
+        / "frontend"
+        / "src"
+        / "pages"
+        / "categories"
+        / "LevelDetailPage.tsx"
+    ).read_text(encoding="utf-8")
+    modal = (
+        REPO_ROOT
+        / "frontend"
+        / "src"
+        / "components"
+        / "song-generation"
+        / "LevelGenerateSongModal.tsx"
+    ).read_text(encoding="utf-8")
+    translations = (REPO_ROOT / "frontend" / "src" / "lib" / "translations.ts").read_text(encoding="utf-8")
+
+    assert "export type SubmitLevelMusicOnlyJobInput" in helper
+    assert "submit_level_music_only_job" in helper
+    assert "p_category_slug: categorySlug" in helper
+    assert "p_level_number: levelNumber" in helper
+    assert "p_word_list: wordList" in helper
+    assert "getLevelSongJobIdempotencyKey" in helper
+    assert "'resonance-level-song-job'" in helper
+
+    assert "LevelGenerateSongModal" in level_page
+    assert "setLevelSongModalOpen(true)" in level_page
+    assert "target: item.targetTerm" in level_page
+    assert "gloss: item.helperTerm" in level_page
+
+    assert "submitLevelMusicOnlyJob" in modal
+    assert "getLevelSongJobIdempotencyKey" in modal
+    assert "onSubmitted(result.music_job_id" in modal
+
+    assert translations.count("'categories.generateLevelSong':") == 3
+    assert translations.count("'modal.generateLevelSong.title':") == 3
+    assert translations.count("'modal.generateLevelSong.body':") == 3
+
+
 def test_frontend_song_genre_picker_commits_custom_text_while_typing():
     picker = (
         REPO_ROOT
@@ -968,6 +1010,33 @@ def test_frontend_music_track_has_audio_helper_accepts_storage_or_provider_url()
     assert "trackHasAudio(track)" in music_pg_page
     assert "trackHasAudio(track)" in playlist_row
     assert "trackHasAudio(track)" in orb_row
+
+
+def test_frontend_music_pages_include_completed_level_song_tracks():
+    player_hook = (REPO_ROOT / "frontend" / "src" / "hooks" / "useMusicPlayer.ts").read_text(encoding="utf-8")
+    music_page = (REPO_ROOT / "frontend" / "src" / "pages" / "Music.tsx").read_text(encoding="utf-8")
+    music_pg_page = (REPO_ROOT / "frontend" / "src" / "pages" / "MusicPG.tsx").read_text(encoding="utf-8")
+
+    assert "kind: 'word' | 'level'" in player_hook
+    assert "category_slug: string | null" in player_hook
+    assert "level_number: number | null" in player_hook
+
+    for page in (music_page, music_pg_page):
+        assert "fetchCompletedLevelSongJobs" in page
+        assert ".eq('scope', 'level')" in page
+        assert "kind: 'level'" in page
+        assert "display_title" in page
+        assert "lyrics" in page
+
+
+def test_frontend_lyrics_sheet_reads_level_job_lyrics_without_word_lookup():
+    sheet = (REPO_ROOT / "frontend" / "src" / "components" / "music" / "LyricsSheet.tsx").read_text(encoding="utf-8")
+    helper = (REPO_ROOT / "frontend" / "src" / "lib" / "musicLyrics.ts").read_text(encoding="utf-8")
+
+    assert "if (track.kind === 'level')" in sheet
+    assert ".eq('id', track.id)" in sheet
+    assert "lyrics, concept_artifact" in sheet
+    assert "music_generation_jobs.lyrics" in helper
 
 
 def test_frontend_music_pages_refetch_on_mount_and_bust_cache_on_completion():

@@ -628,8 +628,10 @@
 
 .staticImportPanel {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   justify-content: center;
-  width: min(100%, 28rem);
+  width: min(100%, 36rem);
   margin: calc(clamp(1.25rem, 3vw, 2rem) * -0.35) auto clamp(1.25rem, 3vw, 2rem);
   border: 1px solid var(--border-subtle);
   border-radius: 0.5rem;

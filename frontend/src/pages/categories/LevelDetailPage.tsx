@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, BookOpen, Check, ChevronLeft, ChevronRight, Volume2 } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, ChevronLeft, ChevronRight, Music, Volume2 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useToast } from '@/components/Toast'
@@ -9,6 +9,7 @@ import { supabase } from '@/lib/supabase'
 import CardDetailModal, { type CardDetailModel } from '@/components/common/CardDetailModal'
 import CurriculumEntryDetailModal from '@/components/categories/CurriculumEntryDetailModal'
 import CurriculumEntryImage from '@/components/categories/CurriculumEntryImage'
+import { LevelGenerateSongModal } from '@/components/song-generation/LevelGenerateSongModal'
 import {
   getCurriculumEnrichmentBySlug,
   getCurriculumCategoryBySlug,
@@ -355,13 +356,14 @@ function StaticLevelDetail({
   t: ReturnType<typeof useTranslation>['t']
   tp: ReturnType<typeof useTranslation>['tp']
 }) {
-  const { user } = useAuth()
+  const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
   const navigate = useNavigate()
   const [selectedItem, setSelectedItem] = useState<SelectedCategoryVocabularyItem | null>(null)
   const [importedDeckId, setImportedDeckId] = useState<string | null>(null)
   const [deckLookupLoading, setDeckLookupLoading] = useState(true)
   const [importing, setImporting] = useState(false)
+  const [levelSongModalOpen, setLevelSongModalOpen] = useState(false)
   const parsedLevel = Number(levelNumber)
   const level = Number.isInteger(parsedLevel)
     ? category.staticWordLevels?.find((item) => item.level === parsedLevel)
@@ -379,6 +381,10 @@ function StaticLevelDetail({
       )
       : [],
     [category, helperLanguage, level, targetLanguage],
+  )
+  const levelSongWords = useMemo(
+    () => selectedItems.map((item) => ({ target: item.targetTerm, gloss: item.helperTerm })),
+    [selectedItems],
   )
   const conceptIds = useMemo(() => selectedItems.map((item) => item.conceptId), [selectedItems])
   const categorySlug = category.id ?? category.name
@@ -517,6 +523,14 @@ function StaticLevelDetail({
           )}
           <span>{importLabel}</span>
         </button>
+        <button
+          type="button"
+          className={`${styles.studyAction} ${styles.staticImportAction}`}
+          onClick={() => setLevelSongModalOpen(true)}
+        >
+          <Music className="h-4 w-4" aria-hidden="true" />
+          <span>{t('categories.generateLevelSong')}</span>
+        </button>
       </div>
 
       <div className={styles.staticWordGrid}>
@@ -555,6 +569,19 @@ function StaticLevelDetail({
         category={category}
         onClose={() => setSelectedItem(null)}
         t={t}
+      />
+      <LevelGenerateSongModal
+        open={levelSongModalOpen}
+        onOpenChange={setLevelSongModalOpen}
+        categorySlug={categorySlug}
+        levelNumber={level.level}
+        targetLanguage={targetLanguage}
+        displayTitle={localizedLevelLabel}
+        wordList={levelSongWords}
+        credits={profile?.credits ?? 0}
+        onSubmitted={() => {
+          void refreshProfile()
+        }}
       />
     </section>
   )

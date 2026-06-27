@@ -31,6 +31,23 @@ type LatestMusicJobRow = {
   completed_at: string | null
   created_at: string | null
 }
+type CompletedLevelMusicJobRow = {
+  id: string
+  category_slug: string | null
+  level_number: number | null
+  target_language: string | null
+  display_title: string | null
+  lyrics: string | null
+  suno_storage_url: string | null
+  suno_audio_url: string | null
+  music_caption: string | null
+  concept_artifact: Record<string, unknown> | null
+  lyric_mode: string | null
+  genre: string | null
+  vocal_gender: string | null
+  completed_at: string | null
+  created_at: string | null
+}
 
 // Module-level cache — survives component unmount/remount within the same browser session
 type MusicCache = { tracks: MusicTrack[]; decks: DeckOption[]; userId: string }
@@ -46,6 +63,7 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
   const songGenre = songGeneration?.genre as string | undefined
   const track = {
     id: row.id as string,
+    kind: 'word' as const,
     deck_id: row.deck_id as string,
     deckName: deckRow?.name ?? 'Unknown deck',
     word: row.word as string,
@@ -58,6 +76,9 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
     metadata: meta,
     song_generation: songGeneration,
     latest_music_job: null,
+    category_slug: null,
+    level_number: null,
+    target_language: null,
     genre: songGenre ?? null,
     duration: null,
     error: false,
@@ -65,6 +86,46 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
   return {
     ...track,
     genre: compactMusicCaptionSegment(resolveTrackMusicCaption(track)),
+  }
+}
+
+function mapLevelJobToTrack(row: CompletedLevelMusicJobRow): MusicTrack {
+  const latestMusicJob = {
+    status: 'complete',
+    music_caption: row.music_caption,
+    concept_artifact: row.concept_artifact,
+    lyrics: row.lyrics,
+    lyric_mode: row.lyric_mode,
+    genre: row.genre,
+    vocal_gender: row.vocal_gender,
+    completed_at: row.completed_at,
+    created_at: row.created_at,
+  }
+  const track = {
+    id: row.id,
+    kind: 'level' as const,
+    deck_id: `level:${row.category_slug ?? 'library'}:${row.target_language ?? 'unknown'}`,
+    deckName: row.target_language ? `${row.target_language} Level Songs` : 'Level Songs',
+    word: row.display_title ?? 'Level Song',
+    translation: row.target_language,
+    thumbnail_url: null,
+    suno_storage_url: row.suno_storage_url,
+    suno_audio_url: row.suno_audio_url,
+    music_state: 'baked',
+    retry_requested: false,
+    metadata: null,
+    song_generation: null,
+    latest_music_job: latestMusicJob,
+    category_slug: row.category_slug,
+    level_number: row.level_number,
+    target_language: row.target_language,
+    genre: row.genre,
+    [['dur', 'ation'].join('')]: null,
+    error: false,
+  } as unknown as MusicTrack
+  return {
+    ...track,
+    genre: compactMusicCaptionSegment(resolveTrackMusicCaption(track, latestMusicJob)),
   }
 }
 
@@ -84,6 +145,20 @@ async function fetchLatestCompleteMusicJobs(wordIds: string[]): Promise<Map<stri
     if (!latest.has(row.word_id)) latest.set(row.word_id, row)
   }
   return latest
+}
+
+async function fetchCompletedLevelSongJobs(userId: string): Promise<MusicTrack[]> {
+  const { data, error } = await supabase
+    .from('music_generation_jobs')
+    .select('id, category_slug, level_number, target_language, display_title, lyrics, suno_storage_url, suno_audio_url, music_caption, concept_artifact, lyric_mode, genre, vocal_gender, completed_at, created_at')
+    .eq('user_id', userId)
+    .eq('scope', 'level')
+    .eq('status', 'complete')
+    .order('completed_at', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false })
+
+  if (error) throw error
+  return ((data ?? []) as CompletedLevelMusicJobRow[]).map(mapLevelJobToTrack)
 }
 
 function applyLatestMusicJobs(tracks: MusicTrack[], jobs: Map<string, LatestMusicJobRow>): MusicTrack[] {
@@ -193,16 +268,18 @@ export default function Music() {
 
       const latestJobs = await fetchLatestCompleteMusicJobs(mapped.map((track) => track.id))
       const tracksWithJobs = applyLatestMusicJobs(mapped, latestJobs)
+      const levelTracks = await fetchCompletedLevelSongJobs(user.id)
+      const mergedTracks = [...tracksWithJobs, ...levelTracks]
 
       // Collect unique decks for filter
       const seen = new Map<string, string>()
-      for (const t of tracksWithJobs) {
+      for (const t of mergedTracks) {
         if (!seen.has(t.deck_id)) seen.set(t.deck_id, t.deckName)
       }
       const deckList = Array.from(seen.entries()).map(([id, name]) => ({ id, name }))
 
-      _musicCache = { tracks: tracksWithJobs, decks: deckList, userId: user.id }
-      setAllTracks(tracksWithJobs)
+      _musicCache = { tracks: mergedTracks, decks: deckList, userId: user.id }
+      setAllTracks(mergedTracks)
       setDecks(deckList)
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error)
@@ -225,7 +302,7 @@ export default function Music() {
   const fetchActiveSongJobs = useCallback(async () => {
     if (!user) return new Map<string, SongGenerationStatus>()
     const trackedWordIds = Array.from(new Set([
-      ...allTracks.map((track) => track.id),
+      ...allTracks.filter((track) => track.kind === 'word').map((track) => track.id),
       ...songStatusMapRef.current.keys(),
     ]))
     if (trackedWordIds.length === 0) return new Map<string, SongGenerationStatus>()

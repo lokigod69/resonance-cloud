@@ -34,6 +34,7 @@ type MusicLyricsRow = {
 }
 
 type LyricsJobRow = {
+  lyrics: string | null
   concept_artifact: Record<string, unknown> | null
   music_caption: string | null
   genre: string | null
@@ -105,6 +106,43 @@ export function LyricsSheet({
       if (!track) return
       setState({ status: 'loading', lyrics: null, row: null, lyricsRow: null, error: null })
       setTranslationView('original')
+
+      if (track.kind === 'level') {
+        const { data, error } = await supabase
+          .from('music_generation_jobs')
+          .select('lyrics, concept_artifact, music_caption, genre, lyric_mode, vocal_gender, completed_at, created_at')
+          .eq('id', track.id)
+          .eq('scope', 'level')
+          .eq('status', 'complete')
+          .maybeSingle()
+
+        if (cancelled) return
+
+        if (error) {
+          setState({
+            status: 'error',
+            lyrics: null,
+            row: null,
+            lyricsRow: null,
+            error: error.message || t('music.lyrics.error'),
+          })
+          return
+        }
+
+        const row = (data ?? null) as LyricsJobRow | null
+        const result = extractMusicLyrics({
+          jobLyrics: row?.lyrics,
+          conceptArtifact: row?.concept_artifact ?? null,
+        })
+        setState({
+          status: 'ready',
+          lyrics: { original: result?.lyrics ?? null, translation: null },
+          row,
+          lyricsRow: null,
+          error: null,
+        })
+        return
+      }
 
       const { data: lyricsData, error: lyricsError } = await supabase
         .from('music_lyrics')

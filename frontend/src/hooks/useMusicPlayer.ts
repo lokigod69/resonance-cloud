@@ -4,6 +4,7 @@ import { getThumbnailUrl } from '@/lib/imageUrls'
 
 export interface MusicTrack {
   id: string
+  kind: 'word' | 'level'
   deck_id: string
   deckName: string
   word: string
@@ -16,6 +17,9 @@ export interface MusicTrack {
   metadata: Record<string, unknown> | null
   song_generation: Record<string, unknown> | null
   latest_music_job?: Record<string, unknown> | null
+  category_slug: string | null
+  level_number: number | null
+  target_language: string | null
   genre: string | null
   duration: number | null
   error: boolean
