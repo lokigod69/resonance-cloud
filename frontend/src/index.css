@@ -986,30 +986,24 @@ body::before {
   }
 }
 
-/* ── Glassy skin: dashboard glass over the wave field ──────────────────────────────
-   The glassy layout (PolishGlassLayout) nests the dashboard inside an isolation /
-   stacking context (`.skin-glassy .app-shell { isolation: isolate }` + `main { position:
-   relative; z-index: 10 }`) that no-ops the tiles' own `backdrop-filter` against the
-   fixed wave field — so the waves read straight through the semi-transparent surfaces.
-   The app header frosts correctly precisely because it sits OUTSIDE that boundary. We
-   can't move the tiles out of the boundary without touching the background, so instead
-   we replicate the header's glass recipe (same blur 64 / saturate 1.5 already on the
-   tiles) but lean the base more opaque/dampened so the surfaces still read as frosted,
-   legible panels over the waves where the blur is a no-op. Scoped to `.skin-glassy`
-   only — the classic skin keeps its lighter, blur-driven base exactly as designed. */
+/* ── Glassy skin: let the dashboard glass share the header's backdrop root ──────────
+   The glassy layout nests the dashboard inside `.dashboard-cosmic { isolation: isolate }`,
+   which makes that element the tiles'/panel's nearest backdrop root. The only content
+   behind them inside it is the `position: fixed` cosmos/wave layers, which a nested
+   backdrop root does not capture — so the tiles' own `backdrop-filter` is a no-op and the
+   waves read straight through. The app header frosts correctly because it sits directly
+   under `.skin-glassy .app-shell` (its backdrop root) where the fixed waves ARE captured.
+   Dropping the isolate here (glassy only) lets the tiles' nearest backdrop root resolve up
+   to that same `.skin-glassy .app-shell`, so their existing blur(64) saturate(1.5) samples
+   the waves exactly like the header — no new recipe. The fixed cosmos/wave layers then
+   scope to PolishGlassLayout's `main` (position: relative; z-index: 10) stacking context,
+   which sits above .glassy-atmosphere and below the dashboard content, so layering holds.
+   Classic keeps `isolation: isolate` and is untouched; the wave/cosmos background is too.
+   NOTE: this relies on PolishGlassLayout's `main` staying a plain stacking context — do not
+   add filter/transform/contain/isolation/will-change to it, or it becomes a backdrop root
+   between the tiles and `.app-shell` and the blur silently goes no-op again. */
 .skin-glassy .dashboard-cosmic {
-  --dashboard-glass-bg:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 38%),
-    rgba(0, 0, 0, 0.68);
-}
-
-/* Today panel uses the theme's --surface-glass by default; under glassy, route it
-   through the same (more opaque) dashboard glass base as the tiles so the whole home
-   reads as one coherent frosted surface over the waves. */
-.skin-glassy .dashboard-today-panel {
-  background:
-    radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%),
-    var(--dashboard-glass-bg);
+  isolation: auto;
 }
 
 /* Solid cosmos base sits beneath the animated wave field so there is never a
@@ -1221,6 +1215,23 @@ body::before {
     margin-bottom: clamp(2.4rem, 6dvh, 4.8rem);
   }
 
+}
+
+/* Glassy desktop: fill the height. Keep the hero / language pill / HEUTE box up top (above
+   the wave horizon, as tuned above), then drop the 2×2 action grid and the BEHERRSCHT pill
+   into the lower half so the bottom of the screen isn't left empty and the pill is never
+   jammed against the last tile. `margin-top: auto` on the grid absorbs the free space below
+   HEUTE; the pill gets an even gap below the grid plus breathing room above the screen edge.
+   Scoped to .skin-glassy — classic desktop keeps its top-aligned layout. */
+@media (min-width: 768px) {
+  .skin-glassy .dashboard-action-grid {
+    margin-top: auto;
+  }
+
+  .skin-glassy .dashboard-mastered-pill {
+    margin-top: clamp(1.5rem, 4dvh, 2.75rem);
+    margin-bottom: clamp(0.5rem, 3dvh, 2rem);
+  }
 }
 
 /* First-run welcome layout — vertically center the greeting + glass card the
@@ -1865,15 +1876,6 @@ body::before {
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .dashboard-today-panel {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 42%),
-      color-mix(in srgb, var(--app-bg) 86%, var(--text-primary) 14%);
-  }
-
-  /* The glassy override (.skin-glassy .dashboard-today-panel, specificity 0,2,0) would otherwise
-     beat the fallback above — restate it here so a no-backdrop-filter environment still gets an
-     opaque surface under the glassy skin. */
-  .skin-glassy .dashboard-today-panel {
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 42%),
       color-mix(in srgb, var(--app-bg) 86%, var(--text-primary) 14%);
