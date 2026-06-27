@@ -995,49 +995,32 @@ body::before {
 }
 
 .skin-glassy .dashboard-cosmic .dashboard-today-panel {
-  border-color: color-mix(in srgb, var(--text-primary) 24%, transparent);
-  border-top-color: color-mix(in srgb, var(--text-primary) 34%, transparent);
-  background:
-    radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 60%),
-    linear-gradient(180deg, color-mix(in srgb, var(--text-primary) 24%, transparent), transparent 44%),
-    color-mix(in srgb, var(--surface-glass-strong) 78%, transparent);
-  box-shadow:
-    0 18px 56px color-mix(in srgb, var(--app-bg) 44%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 22%, transparent),
-    inset 0 -1px 0 color-mix(in srgb, var(--text-primary) 8%, transparent);
-  backdrop-filter: blur(64px) saturate(1.5);
-  -webkit-backdrop-filter: blur(64px) saturate(1.5);
+  border-color: var(--border-subtle);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 18px 56px color-mix(in srgb, var(--app-bg) 44%, transparent);
+  backdrop-filter: blur(48px) saturate(1.5);
+  -webkit-backdrop-filter: blur(48px) saturate(1.5);
 }
 
 .skin-glassy .dashboard-cosmic .stat-tile {
-  border-color: color-mix(in srgb, var(--text-primary) 24%, transparent);
-  border-top-color: color-mix(in srgb, var(--text-primary) 34%, transparent);
-  border-left-color: color-mix(in srgb, var(--text-primary) 28%, transparent);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--text-primary) 24%, transparent), transparent 40%),
-    radial-gradient(ellipse at 18% 0%, color-mix(in srgb, var(--text-primary) 16%, transparent), transparent 58%),
-    color-mix(in srgb, var(--surface-glass-strong) 76%, transparent);
-  box-shadow:
-    0 18px 56px color-mix(in srgb, var(--app-bg) 48%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 24%, transparent),
-    inset 0 -1px 0 color-mix(in srgb, var(--text-primary) 8%, transparent);
-  backdrop-filter: blur(64px) saturate(1.5);
-  -webkit-backdrop-filter: blur(64px) saturate(1.5);
+  border-color: var(--border-subtle);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 18px 56px color-mix(in srgb, var(--app-bg) 48%, transparent);
+  backdrop-filter: blur(48px) saturate(1.5);
+  -webkit-backdrop-filter: blur(48px) saturate(1.5);
 }
 
 .skin-glassy .dashboard-cosmic .dashboard-library-tile {
-  border-color: color-mix(in srgb, var(--text-primary) 24%, transparent);
-  border-top-color: color-mix(in srgb, var(--text-primary) 34%, transparent);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--text-primary) 24%, transparent), transparent 40%),
-    radial-gradient(ellipse at 18% 0%, color-mix(in srgb, var(--text-primary) 16%, transparent), transparent 58%),
-    color-mix(in srgb, var(--surface-glass-strong) 76%, transparent);
-  box-shadow:
-    0 18px 56px color-mix(in srgb, var(--app-bg) 48%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 24%, transparent),
-    inset 0 -1px 0 color-mix(in srgb, var(--text-primary) 8%, transparent);
-  backdrop-filter: blur(64px) saturate(1.5);
-  -webkit-backdrop-filter: blur(64px) saturate(1.5);
+  border-color: var(--border-subtle);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 18px 56px color-mix(in srgb, var(--app-bg) 48%, transparent);
+  backdrop-filter: blur(48px) saturate(1.5);
+  -webkit-backdrop-filter: blur(48px) saturate(1.5);
+}
+
+.skin-glassy .dashboard-cosmic .stat-tile::before,
+.skin-glassy .dashboard-cosmic .dashboard-library-tile::before {
+  opacity: 0;
 }
 
 /* Solid cosmos base sits beneath the animated wave field so there is never a
@@ -1251,20 +1234,17 @@ body::before {
 
 }
 
-/* Glassy desktop: fill the height. Keep the hero / language pill / HEUTE box up top (above
-   the wave horizon, as tuned above), then drop the 2×2 action grid and the BEHERRSCHT pill
-   into the lower half so the bottom of the screen isn't left empty and the pill is never
-   jammed against the last tile. `margin-top: auto` on the grid absorbs the free space below
-   HEUTE; the pill gets an even gap below the grid plus breathing room above the screen edge.
-   Scoped to .skin-glassy — classic desktop keeps its top-aligned layout. */
+/* Glassy desktop: keep the action grid near the shared dashboard flow while
+   preserving a bounded gap below HEUTE. Scoped to .skin-glassy so Classic's
+   reference layout remains untouched. */
 @media (min-width: 768px) {
   .skin-glassy .dashboard-action-grid {
-    margin-top: auto;
+    margin-top: clamp(1rem, 3dvh, 2rem);
   }
 
   .skin-glassy .dashboard-mastered-pill {
-    margin-top: clamp(1.5rem, 4dvh, 2.75rem);
-    margin-bottom: clamp(0.5rem, 3dvh, 2rem);
+    margin-top: clamp(0.85rem, 2.4dvh, 1.6rem);
+    margin-bottom: clamp(0.5rem, 2dvh, 1.25rem);
   }
 }
 

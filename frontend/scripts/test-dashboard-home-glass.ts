@@ -118,10 +118,19 @@ for (const [selector, label] of [
     new RegExp(`\\.skin-glassy\\s+\\.dashboard-cosmic\\s+${escapedSelector}\\s*\\{[\\s\\S]*?\\n\\}`),
   )?.[0] ?? ''
   assert(rule.length > 0, `glassy-scoped milk-glass override exists for ${label}`)
-  assertIncludes(rule, 'backdrop-filter: blur(64px) saturate(1.5)', `${label} uses header-grade frosted blur`)
-  assertIncludes(rule, '-webkit-backdrop-filter: blur(64px) saturate(1.5)', `${label} includes WebKit frosted blur`)
-  assertIncludes(rule, 'color-mix(in srgb, var(--text-primary) 24%', `${label} uses a milky highlight layer`)
+  assertIncludes(rule, 'background: rgba(0, 0, 0, 0.4)', `${label} uses the dark header/nav glass base`)
+  assertIncludes(rule, 'backdrop-filter: blur(48px) saturate(1.5)', `${label} uses header-grade frosted blur`)
+  assertIncludes(rule, '-webkit-backdrop-filter: blur(48px) saturate(1.5)', `${label} includes WebKit frosted blur`)
+  assertNotIncludes(rule, 'linear-gradient', `${label} removes the white linear sheen`)
+  assertNotIncludes(rule, 'radial-gradient', `${label} removes the white radial sheen`)
+  assertNotIncludes(rule, 'var(--text-primary)', `${label} removes text-colored glass highlights`)
 }
+const glassySheenOverride = css.match(
+  /\.skin-glassy\s+\.dashboard-cosmic\s+\.stat-tile::before,[\s\S]*?\.skin-glassy\s+\.dashboard-cosmic\s+\.dashboard-library-tile::before\s*\{[\s\S]*?\n\}/,
+)?.[0] ?? ''
+assert(glassySheenOverride.length > 0, 'glassy dashboard disables inherited tile sheen')
+assertIncludes(glassySheenOverride, 'opacity: 0', 'glassy dashboard tile sheen is transparent')
+assertNotIncludes(css, 'margin-top: auto;\n  }\n\n  .skin-glassy .dashboard-mastered-pill', 'glassy action grid no longer bottom-pins with auto margin')
 assertIncludes(css, '.dashboard-library-tile', 'dashboard Library tile has dedicated glass styling')
 assertIncludes(css, '@media (hover: hover) and (pointer: fine)', 'desktop language picker opens on pointer hover')
 assertIncludes(css, '.language-picker:hover .language-picker-panel', 'desktop language picker keeps hover behavior')
