@@ -7,7 +7,7 @@ import { filterLemmaStatesForQueue, isStudyQueue, type StudyQueue } from '@/hook
 import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
 import { canonicalizeLanguageValue } from '@/lib/languages'
-import videoIcon from '@/assets/study-mode-icons/video.webp'
+import imageIcon from '@/assets/study-mode-icons/video.webp'
 import cardsIcon from '@/assets/study-mode-icons/cards.webp'
 import audioIcon from '@/assets/study-mode-icons/audio.webp'
 import canvasIcon from '@/assets/study-mode-icons/canvas.webp'
@@ -23,9 +23,13 @@ type ModeConfig = {
   enabled: boolean
 }
 
+// Video is discontinued (hidden from the selector); its study pages remain for the
+// Image mode to clone. Each remaining mode is shown only when the words carry what it
+// needs — Text is text-only so it is always available; Image needs images; Audio needs
+// a Suno song; Canvas is out of scope and always offered.
 const MODES: ModeConfig[] = [
-  { key: 'video', iconSrc: videoIcon, titleKey: 'study.mode.video', route: '/study/video', enabled: true },
-  { key: 'flashcard', iconSrc: cardsIcon, titleKey: 'study.mode.flashcard', route: '/study/flashcard', enabled: true },
+  { key: 'text', iconSrc: cardsIcon, titleKey: 'study.mode.text', route: '/study/flashcard', enabled: true },
+  { key: 'image', iconSrc: imageIcon, titleKey: 'study.mode.image', route: '/study/image', enabled: true },
   { key: 'audio', iconSrc: audioIcon, titleKey: 'study.mode.audio', route: '/study/audio', enabled: true },
   { key: 'canvas', iconSrc: canvasIcon, titleKey: 'study.mode.canvas', route: '/study/canvas/select', enabled: true },
 ]
@@ -44,7 +48,7 @@ export default function StudyModeSelector() {
   const queueParam = searchParams.get('queue')
   const langParam = searchParams.get('lang')
   const queue = isStudyQueue(queueParam) ? queueParam : null
-  const { t } = useTranslation()
+  const { t, tp } = useTranslation()
   const { user } = useAuth()
   const { activeLanguage, setActiveLanguage } = useLanguage()
 
@@ -71,12 +75,68 @@ export default function StudyModeSelector() {
 
   const deckName = selectedDeck?.name ?? null
   const isImagelessDeck = selectedDeck?.deck_type === 'card_text'
-  const visibleModes = isImagelessDeck
-    ? MODES.filter((mode) => mode.key === 'flashcard' || mode.key === 'canvas')
-    : MODES
-  const { data: wordStates } = useWordStates(activeLanguage ?? '', { deckId: deckParam })
+
+  // The decks a session here would draw from: the selected deck, or every deck in the
+  // active language. Used to gate modes on the words' real assets.
+  const scopeDeckIds = useMemo(() => {
+    if (deckParam) return [deckParam]
+    if (!activeLanguage) return []
+    return allDecks
+      .filter((deck) => canonicalizeLanguageValue(deck.target_language) === activeLanguage)
+      .map((deck) => deck.id)
+  }, [deckParam, activeLanguage, allDecks])
+
+  // Real asset presence across the scope. Two cheap existence probes (limit 1) so the
+  // selector can hide Image/Audio when no word carries them.
+  const [hasImages, setHasImages] = useState(false)
+  const [hasAudio, setHasAudio] = useState(false)
+  useEffect(() => {
+    // Reset on every scope change so a stale flag from the previous deck/language can't
+    // briefly offer Image/Audio for a scope that doesn't have them.
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reset-on-key pattern; cleared before the async probes resolve
+    setHasImages(false)
+    setHasAudio(false)
+    if (!user || scopeDeckIds.length === 0) return
+    let cancelled = false
+
+    void supabase
+      .from('words')
+      .select('id')
+      .eq('user_id', user.id)
+      .eq('status', 'complete')
+      .in('deck_id', scopeDeckIds)
+      .not('thumbnail_url', 'is', null)
+      .limit(1)
+      .then(({ data }) => { if (!cancelled) setHasImages((data?.length ?? 0) > 0) })
+
+    void supabase
+      .from('words')
+      .select('id')
+      .eq('user_id', user.id)
+      .eq('status', 'complete')
+      .in('deck_id', scopeDeckIds)
+      .or('suno_storage_url.not.is.null,suno_audio_url.not.is.null')
+      .limit(1)
+      .then(({ data }) => { if (!cancelled) setHasAudio((data?.length ?? 0) > 0) })
+
+    return () => { cancelled = true }
+  }, [user, scopeDeckIds])
+
+  const visibleModes = MODES.filter((mode) => {
+    if (mode.key === 'text' || mode.key === 'canvas') return true
+    if (mode.key === 'image') return hasImages
+    if (mode.key === 'audio') return hasAudio
+    return false
+  })
+
+  const { data: wordStates, counts } = useWordStates(activeLanguage ?? '', { deckId: deckParam })
   const queueLabel = queue ? t(QUEUE_LABEL_KEYS[queue]) : null
-  const queueCount = queue ? filterLemmaStatesForQueue(wordStates, queue).length : 0
+  // Words this session would study: the queue's set when a queue is chosen, otherwise
+  // everything due now (new-due + learning + reviewing/mastered-due) — the same buckets
+  // the study session draws from.
+  const sessionWordCount = queue
+    ? filterLemmaStatesForQueue(wordStates, queue).length
+    : counts.newDue + counts.totalDue
 
   useEffect(() => {
     if (selectedDeck?.target_language) {
@@ -131,14 +191,18 @@ export default function StudyModeSelector() {
               {t('study.studyingDeck', { name: deckName })}
             </p>
           )}
-          {queue && queueLabel && (
+          {queue && queueLabel ? (
             <p className="mt-3 inline-flex rounded-full border border-border/70 bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
-              {t('study.queue.header', { label: queueLabel, count: queueCount })}
+              {t('study.queue.header', { label: queueLabel, count: sessionWordCount })}
             </p>
-          )}
+          ) : sessionWordCount > 0 ? (
+            <p className="mt-3 inline-flex rounded-full border border-border/70 bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+              {tp('study.session.words', sessionWordCount)}
+            </p>
+          ) : null}
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="flex flex-wrap justify-center gap-4">
           {visibleModes.map((mode) => {
             const title = t(mode.titleKey)
 
@@ -149,7 +213,7 @@ export default function StudyModeSelector() {
                 disabled={!mode.enabled}
                 className={`
                   study-mode-card
-                  relative flex min-h-[180px] flex-col items-center justify-center gap-4 rounded-2xl border p-6 text-center
+                  relative flex min-h-[180px] w-[160px] flex-col items-center justify-center gap-4 rounded-2xl border p-6 text-center
                   transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30
                   ${mode.enabled
                     ? 'cursor-pointer border-border bg-card backdrop-blur hover:scale-[1.03] hover:border-accent hover:bg-accent active:scale-[0.98]'

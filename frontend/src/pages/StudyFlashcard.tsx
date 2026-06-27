@@ -26,6 +26,7 @@ import { isStudyQueue } from '@/hooks/useStudySession'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
 import { usePronunciation } from '@/hooks/usePronunciation'
+import { useVideoVersion } from '@/hooks/useVideoVersion'
 import { computeStudyProgress } from '@/lib/studyProgress'
 
 type FeedbackPulse = 'remembered' | 'reviewLater'
@@ -50,6 +51,16 @@ export default function StudyFlashcard() {
   } = useStudyUI({ videoRef, studyMode: 'flashcard', queue })
 
   const progress = computeStudyProgress(clearedCount, words.length)
+
+  // Back-face image for the flip — resolved exactly as the study video/image pages do
+  // (a/b version preference, raw thumbnail_url). Null for card_text (imageless) decks.
+  const { activeThumbnailUrl } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
+  const [imgError, setImgError] = useState(false)
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- canonical reset-on-key pattern; clears the broken-image flag when the current word changes
+    setImgError(false)
+  }, [current?.id])
+  const backImageUrl = activeThumbnailUrl && !imgError ? activeThumbnailUrl : null
 
   const isFeedbackActive = feedbackPulse !== null
 
@@ -244,14 +255,14 @@ export default function StudyFlashcard() {
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               className="w-full"
             >
-              {/* Flashcard */}
-              <div className="relative rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 backdrop-blur-sm min-h-[280px] sm:min-h-[340px] flex flex-col items-center justify-center px-6 py-10 mb-6">
+              {/* Flashcard — flips from the word alone to (image + word + translation) on reveal */}
+              <div className="relative mb-6" style={{ perspective: '1200px' }}>
                 <AnimatePresence>
                   {feedbackPulse && (
                     <motion.div
                       key={`${feedbackPulse}-${current.id}`}
                       aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 rounded-2xl"
+                      className="pointer-events-none absolute inset-0 z-10 rounded-2xl"
                       initial={{ opacity: 0, scale: 0.98 }}
                       animate={{ opacity: [0, 1, 0], scale: [0.98, 1.018, 1.04] }}
                       exit={{ opacity: 0 }}
@@ -265,28 +276,62 @@ export default function StudyFlashcard() {
                     />
                   )}
                 </AnimatePresence>
-                {current.deck_type === 'card_text' ? (
-                  <ImagelessCard
-                    word={current.word}
-                    translation={current.translation ?? ''}
-                    ipa={current.ipa ?? null}
-                    revealed={revealed}
-                    className="w-full max-w-2xl"
-                  />
-                ) : (
-                  <button
-                    type="button"
-                    aria-label={`Play pronunciation for ${current.word}`}
-                    onClick={() => { void playWord(current) }}
-                    className="group flex max-w-full flex-col items-center justify-center gap-3 rounded-xl px-4 py-3 text-foreground transition-colors hover:text-foreground/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--card))]"
+                <motion.div
+                  animate={{ rotateY: revealed ? 180 : 0 }}
+                  transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+                  style={{ transformStyle: 'preserve-3d' }}
+                  className="relative w-full min-h-[280px] sm:min-h-[340px]"
+                >
+                  {/* Front — target word alone */}
+                  <div
+                    aria-hidden={revealed}
+                    style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                    className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 px-6 py-10 backdrop-blur-sm"
                   >
-                    <h2 className="text-3xl sm:text-4xl font-bold text-center long-copy">{current.word}</h2>
-                    <Volume2
-                      className="h-5 w-5 text-muted-foreground/70 transition-colors group-hover:text-muted-foreground"
-                      aria-hidden="true"
-                    />
-                  </button>
-                )}
+                    {current.deck_type === 'card_text' ? (
+                      <ImagelessCard
+                        word={current.word}
+                        translation={current.translation ?? ''}
+                        ipa={current.ipa ?? null}
+                        revealed={revealed}
+                        className="w-full max-w-2xl"
+                      />
+                    ) : (
+                      <button
+                        type="button"
+                        aria-label={`Play pronunciation for ${current.word}`}
+                        onClick={() => { void playWord(current) }}
+                        className="group flex max-w-full flex-col items-center justify-center gap-3 rounded-xl px-4 py-3 text-foreground transition-colors hover:text-foreground/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--card))]"
+                      >
+                        <h2 className="text-3xl sm:text-4xl font-bold text-center long-copy">{current.word}</h2>
+                        <Volume2
+                          className="h-5 w-5 text-muted-foreground/70 transition-colors group-hover:text-muted-foreground"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Back — image on top, word + translation underneath (image omitted when the deck has none) */}
+                  <div
+                    aria-hidden={!revealed}
+                    style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 px-6 py-8 backdrop-blur-sm"
+                  >
+                    {backImageUrl && (
+                      <img
+                        src={backImageUrl}
+                        alt={current.word}
+                        onError={() => setImgError(true)}
+                        className="w-full max-w-[280px] aspect-video rounded-xl border border-border bg-black object-contain"
+                      />
+                    )}
+                    <h2 className="text-2xl sm:text-3xl font-bold text-center long-copy">{current.word}</h2>
+                    {current.translation && (
+                      <p className="text-center text-lg text-muted-foreground long-copy">{current.translation}</p>
+                    )}
+                  </div>
+                </motion.div>
               </div>
 
               {/* Reveal area */}
@@ -297,9 +342,6 @@ export default function StudyFlashcard() {
                     animate={{ opacity: 1, y: 0 }}
                     className="space-y-2"
                   >
-                    {current.translation && (
-                      <p className="text-xl text-muted-foreground long-copy">{current.translation}</p>
-                    )}
                     {current.deck_type === 'card_text' && current.ipa && (
                       <p className="font-mono text-sm text-muted-foreground/70 long-copy">{current.ipa}</p>
                     )}
