@@ -172,6 +172,14 @@ function applyLatestMusicJobs(tracks: MusicTrack[], jobs: Map<string, LatestMusi
   })
 }
 
+function buildDeckList(tracks: MusicTrack[]): { id: string; name: string }[] {
+  const seen = new Map<string, string>()
+  for (const track of tracks) {
+    if (!seen.has(track.deck_id)) seen.set(track.deck_id, track.deckName)
+  }
+  return Array.from(seen.entries()).map(([id, name]) => ({ id, name }))
+}
+
 export default function Music() {
   const { t } = useTranslation()
   const { user, profile, refreshProfile } = useAuth()
@@ -268,15 +276,27 @@ export default function Music() {
 
       const latestJobs = await fetchLatestCompleteMusicJobs(mapped.map((track) => track.id))
       const tracksWithJobs = applyLatestMusicJobs(mapped, latestJobs)
-      const levelTracks = await fetchCompletedLevelSongJobs(user.id)
-      const mergedTracks = [...tracksWithJobs, ...levelTracks]
+      const wordDeckList = buildDeckList(tracksWithJobs)
 
-      // Collect unique decks for filter
-      const seen = new Map<string, string>()
-      for (const t of mergedTracks) {
-        if (!seen.has(t.deck_id)) seen.set(t.deck_id, t.deckName)
+      _musicCache = { tracks: tracksWithJobs, decks: wordDeckList, userId: user.id }
+      setAllTracks(tracksWithJobs)
+      setDecks(wordDeckList)
+      setLoading(false)
+
+      let levelTracks: MusicTrack[] = []
+      try {
+        levelTracks = await fetchCompletedLevelSongJobs(user.id)
+      } catch (levelError) {
+        const message = levelError instanceof Error ? levelError.message : String(levelError)
+        console.warn('[Music] failed to fetch level songs', {
+          userId: user.id,
+          message,
+        })
+        return
       }
-      const deckList = Array.from(seen.entries()).map(([id, name]) => ({ id, name }))
+
+      const mergedTracks = [...tracksWithJobs, ...levelTracks]
+      const deckList = buildDeckList(mergedTracks)
 
       _musicCache = { tracks: mergedTracks, decks: deckList, userId: user.id }
       setAllTracks(mergedTracks)

@@ -179,6 +179,14 @@ function applyLatestMusicJobs(tracks: MusicTrack[], jobs: Map<string, LatestMusi
   })
 }
 
+function buildDeckList(tracks: MusicTrack[]): { id: string; name: string }[] {
+  const seen = new Map<string, string>()
+  for (const track of tracks) {
+    if (!seen.has(track.deck_id)) seen.set(track.deck_id, track.deckName)
+  }
+  return Array.from(seen.entries()).map(([id, name]) => ({ id, name }))
+}
+
 function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) return '0:00'
   const m = Math.floor(s / 60)
@@ -309,14 +317,27 @@ export default function MusicPG() {
 
       const latestJobs = await fetchLatestCompleteMusicJobs(mapped.map((track) => track.id))
       const tracksWithJobs = applyLatestMusicJobs(mapped, latestJobs)
-      const levelTracks = await fetchCompletedLevelSongJobs(user.id)
-      const mergedTracks = [...tracksWithJobs, ...levelTracks]
+      const wordDeckList = buildDeckList(tracksWithJobs)
 
-      const seen = new Map<string, string>()
-      for (const t of mergedTracks) {
-        if (!seen.has(t.deck_id)) seen.set(t.deck_id, t.deckName)
+      _pgMusicCache = { tracks: tracksWithJobs, decks: wordDeckList, userId: user.id }
+      setAllTracks(tracksWithJobs)
+      setDecks(wordDeckList)
+      setLoading(false)
+
+      let levelTracks: MusicTrack[] = []
+      try {
+        levelTracks = await fetchCompletedLevelSongJobs(user.id)
+      } catch (levelError) {
+        const message = levelError instanceof Error ? levelError.message : String(levelError)
+        console.warn('[MusicPG] failed to fetch level songs', {
+          userId: user.id,
+          message,
+        })
+        return
       }
-      const deckList = Array.from(seen.entries()).map(([id, name]) => ({ id, name }))
+
+      const mergedTracks = [...tracksWithJobs, ...levelTracks]
+      const deckList = buildDeckList(mergedTracks)
 
       _pgMusicCache = { tracks: mergedTracks, decks: deckList, userId: user.id }
       setAllTracks(mergedTracks)
