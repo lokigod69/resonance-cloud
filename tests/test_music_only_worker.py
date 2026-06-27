@@ -392,6 +392,219 @@ def test_song_only_suno_uploads_audio_without_updating_words(tmp_path, monkeypat
     assert len(sb.storage.bucket.uploads) == 2
 
 
+def test_song_only_suno_uses_level_storage_prefix(tmp_path, monkeypatch):
+    from src.services import song_only_suno
+
+    async def fake_download(_url, dest_path):
+        dest_path.parent.mkdir(parents=True, exist_ok=True)
+        dest_path.write_bytes(b"mp3")
+        return dest_path
+
+    monkeypatch.setattr(song_only_suno, "download_suno_audio", fake_download)
+
+    class FakeBucket:
+        def __init__(self):
+            self.uploads = []
+
+        def upload(self, key, content, file_options=None):
+            self.uploads.append((key, content, file_options))
+
+        def get_public_url(self, key):
+            return f"https://audio.example/{key}"
+
+    class FakeStorage:
+        def __init__(self):
+            self.bucket = FakeBucket()
+
+        def from_(self, bucket):
+            assert bucket == "audio"
+            return self.bucket
+
+    sb = SimpleNamespace(storage=FakeStorage())
+
+    result = asyncio.run(
+        song_only_suno.download_and_upload_song_audio(
+            sb,
+            job={
+                "id": "job-1",
+                "scope": "level",
+                "user_id": "user-1",
+                "deck_id": None,
+                "word_id": None,
+                "category_slug": "animals",
+                "level_number": 8,
+                "target_language": "German",
+            },
+            audio_url="https://cdn.example/a.mp3",
+            audio_url_b=None,
+            work_dir=tmp_path,
+        )
+    )
+
+    assert result == {
+        "suno_storage_url": "https://audio.example/user-1/no-deck/music_only/levels/animals/level-8/german/job-1/suno_a.mp3",
+        "suno_storage_url_b": None,
+    }
+    assert len(sb.storage.bucket.uploads) == 1
+
+
+def test_level_song_concept_builds_level_artifact(tmp_path, monkeypatch):
+    from cloud_engines.concept_engine.models import CaptionResult
+    from src.services import level_song_concept
+
+    captured: dict = {}
+
+    monkeypatch.setattr(level_song_concept, "get_workspace_root", lambda: tmp_path)
+    monkeypatch.setattr(level_song_concept, "OpenRouterClient", lambda: object())
+
+    def fake_generate_lyrics(**kwargs):
+        captured["lyrics"] = kwargs
+        return "[Verse]\nKrokodil singt\nNilpferd tanzt\n[Interlude]"
+
+    def fake_generate_caption(word, translation, language, settings, llm_client, identity=None):
+        captured["caption"] = {
+            "word": word,
+            "translation": translation,
+            "language": language,
+            "settings": settings,
+            "identity": identity,
+            "llm_client": llm_client,
+        }
+        return CaptionResult(
+            caption="acoustic pop, German female vocal",
+            source="llm_auto",
+            language_injected=False,
+        )
+
+    monkeypatch.setattr(level_song_concept, "generate_level_song_lyrics", fake_generate_lyrics)
+    monkeypatch.setattr(level_song_concept, "generate_caption", fake_generate_caption)
+
+    result = level_song_concept.build_level_song_concept(
+        job={
+            "id": "job-1",
+            "user_id": "user-1",
+            "scope": "level",
+            "category_slug": "animals",
+            "level_number": 8,
+            "target_language": "German",
+            "display_title": "Animals Level 8",
+            "word_list": [
+                {"target": "Krokodil", "gloss": "crocodile"},
+                {"target": "Nilpferd", "gloss": "hippopotamus"},
+            ],
+            "lyric_mode": "creative",
+            "genre": None,
+            "vocal_gender": "female",
+            "attempts": 1,
+        }
+    )
+
+    assert captured["lyrics"]["depth"] == "story"
+    assert captured["lyrics"]["language"] == "German"
+    assert captured["caption"]["word"] == "Animals Level 8"
+    assert "Krokodil = crocodile" in captured["caption"]["translation"]
+    assert captured["caption"]["settings"].genre == "auto"
+    assert result["concept_data"]["word"] == "Animals Level 8"
+    assert result["concept_data"]["lyrics"].endswith("[Interlude]")
+    assert result["concept_artifact"]["scope"] == "level"
+    assert result["concept_artifact"]["generation_info"]["level_depth"] == "story"
+    assert Path(result["artifact_path"]).exists()
+
+
+def test_music_only_worker_level_path_skips_word_lyrics_and_completes_level(monkeypatch, tmp_path):
+    from src.orchestration import music_only_worker
+    from src.orchestration.music_only_worker import MusicOnlyWorker
+    from tests.fake_supabase import FakeSupabase
+
+    sb = FakeSupabase()
+    job = {
+        "id": "job-1",
+        "scope": "level",
+        "user_id": "user-1",
+        "word_id": None,
+        "deck_id": None,
+        "status": "pending",
+        "category_slug": "animals",
+        "level_number": 8,
+        "target_language": "German",
+        "display_title": "Animals Level 8",
+        "word_list": [{"target": "Krokodil", "gloss": "crocodile"}],
+        "lyric_mode": "reliable",
+        "genre": None,
+        "vocal_gender": "female",
+        "suno_task_id": None,
+        "concept_artifact": None,
+        "attempts": 1,
+    }
+    sb._tables["music_generation_jobs"] = [job]
+    captured: dict = {}
+
+    async def fake_submit(concept_data, **kwargs):
+        captured["submit"] = {"concept_data": concept_data, "kwargs": kwargs}
+        return "task-1"
+
+    async def fake_poll(*_args, **_kwargs):
+        return {
+            "status": "success",
+            "task_id": "task-1",
+            "audio_url": "https://cdn.example/a.mp3",
+            "audio_url_b": None,
+            "error": None,
+        }
+
+    async def fake_upload(*_args, **_kwargs):
+        return {
+            "suno_storage_url": "https://audio.example/a.mp3",
+            "suno_storage_url_b": None,
+        }
+
+    async def fail_persist(*_args, **_kwargs):
+        raise AssertionError("level jobs skip word lyric persistence")
+
+    monkeypatch.setattr(
+        music_only_worker,
+        "build_level_song_concept",
+        lambda **_kwargs: {
+            "concept_artifact": {
+                "scope": "level",
+                "word": "Animals Level 8",
+                "lyrics": "Krokodil\n[Interlude]",
+                "suno_lyrics": "Krokodil\n[Interlude]",
+                "music_caption": "pop",
+            },
+            "concept_data": {
+                "word": "Animals Level 8",
+                "translation": "",
+                "lyrics": "Krokodil\n[Interlude]",
+                "music_caption": "pop",
+                "language": "German",
+                "vocal_gender": "female",
+            },
+        },
+    )
+    monkeypatch.setattr(music_only_worker, "submit_song_only_task", fake_submit)
+    monkeypatch.setattr(music_only_worker, "fetch_existing_task", fake_poll)
+    monkeypatch.setattr(music_only_worker, "download_and_upload_song_audio", fake_upload)
+
+    worker = MusicOnlyWorker(sb, poll_interval=0.01, concurrency=1, workspace_root=tmp_path)
+    monkeypatch.setattr(worker, "_fetch_candidate_jobs", lambda: asyncio.sleep(0, [job]))
+    monkeypatch.setattr(worker, "_claim", lambda _job_id: asyncio.sleep(0, {**job, "status": "processing"}))
+    monkeypatch.setattr(worker, "_mark_submitted", lambda _job_id, task_id: asyncio.sleep(0, None))
+    monkeypatch.setattr(worker, "_persist_generated_lyrics", fail_persist)
+
+    async def fake_complete(job_id, **params):
+        captured["complete"] = {"job_id": job_id, "params": params}
+
+    monkeypatch.setattr(worker, "_complete", fake_complete)
+
+    asyncio.run(worker.process_once())
+
+    assert captured["submit"]["kwargs"]["word_id"] is None
+    assert captured["submit"]["kwargs"]["deck_id"] is None
+    assert captured["complete"]["params"]["scope"] == "level"
+    assert captured["complete"]["params"]["lyrics"] == "Krokodil\n[Interlude]"
+
+
 def test_music_only_worker_happy_path_keeps_full_pipeline_state_untouched(monkeypatch, tmp_path):
     from src.orchestration.music_only_worker import MusicOnlyWorker
 
@@ -620,6 +833,49 @@ def test_music_only_creative_mode_is_allowed_by_addendum_migration():
     assert "claim_music_only_job" not in sql
     assert "complete_music_only_job" not in sql
     assert "fail_music_only_job" not in sql
+
+
+def test_level_music_migration_adds_level_scope_and_submit_rpc():
+    sql = (
+        REPO_ROOT
+        / "frontend"
+        / "supabase"
+        / "migrations"
+        / "20260628090000_level_music_generation_jobs.sql"
+    ).read_text(encoding="utf-8")
+
+    assert "alter column word_id drop not null" in sql
+    assert "add column if not exists scope text not null default 'word'" in sql
+    assert "add column if not exists category_slug text" in sql
+    assert "add column if not exists level_number integer" in sql
+    assert "add column if not exists target_language text" in sql
+    assert "add column if not exists word_list jsonb" in sql
+    assert "add column if not exists display_title text" in sql
+    assert "add column if not exists lyrics text" in sql
+    assert "idx_music_generation_jobs_active_level" in sql
+    assert "create or replace function public.submit_level_music_only_job" in sql
+    assert "create or replace function public.complete_level_music_only_job" in sql
+    assert "grant execute on function public.submit_level_music_only_job" in sql
+    assert "grant execute on function public.complete_level_music_only_job" in sql
+
+    submit_body = sql.split("create or replace function public.submit_level_music_only_job", 1)[1].split(
+        "create or replace function public.mark_music_only_submitted",
+        1,
+    )[0]
+    same_key_check = submit_body.index("where user_id = v_user_id")
+    same_key_return = submit_body.index("'idempotent', true")
+    active_level_check = submit_body.index("and scope = 'level'")
+    credit_debit = submit_body.index("set credits = credits - v_cost")
+
+    assert same_key_check < same_key_return < credit_debit
+    assert active_level_check < credit_debit
+    assert "update public.words" not in submit_body
+    assert "insert into public.words" not in submit_body
+    assert "insert into public.decks" not in submit_body
+    assert "scope," in submit_body
+    assert "'level'," in submit_body
+
+    assert "if v_job.scope = 'word' then" in sql
 
 
 def test_frontend_song_submit_is_single_flight_and_idempotency_key_tracks_settings():

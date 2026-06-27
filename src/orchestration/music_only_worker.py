@@ -14,6 +14,7 @@ from src.services.music_lyrics_store import (
     translation_result_to_columns,
     upsert_music_lyrics_row,
 )
+from src.services.level_song_concept import build_level_song_concept
 from src.services.song_only_concept import build_song_only_concept
 from src.services.song_only_suno import (
     download_and_upload_song_audio,
@@ -75,6 +76,10 @@ def _settings_override(row: dict[str, Any] | None) -> dict[str, Any]:
         return direct
     nested = _metadata(row).get("settings_override")
     return nested if isinstance(nested, dict) else {}
+
+
+def _job_scope(job: dict[str, Any] | None) -> str:
+    return "level" if (job or {}).get("scope") == "level" else "word"
 
 
 def _first_text(*values: Any) -> str | None:
@@ -186,25 +191,31 @@ class MusicOnlyWorker:
                 job = claimed
                 log.info("music_only: claimed job=%s", job_id)
 
-                context = await self._fetch_context(job)
-                concept = await asyncio.to_thread(
-                    build_song_only_concept,
-                    job=job,
-                    word=context["word"],
-                    deck=context.get("deck"),
-                )
-                await self._persist_concept(job_id, concept)
-                log.info("music_only: concept generated job=%s", job_id)
-                try:
-                    await self._persist_generated_lyrics(job, context, concept)
-                except Exception as lyrics_exc:
-                    log.warning(
-                        "music_only: lyrics persist skipped job=%s word=%s: %s",
-                        job_id,
-                        job.get("word_id"),
-                        lyrics_exc,
-                        exc_info=True,
+                scope = _job_scope(job)
+                context: dict[str, Any] = {}
+                if scope == "level":
+                    concept = await asyncio.to_thread(build_level_song_concept, job=job)
+                else:
+                    context = await self._fetch_context(job)
+                    concept = await asyncio.to_thread(
+                        build_song_only_concept,
+                        job=job,
+                        word=context["word"],
+                        deck=context.get("deck"),
                     )
+                await self._persist_concept(job_id, concept, scope=scope)
+                log.info("music_only: concept generated job=%s", job_id)
+                if scope == "word":
+                    try:
+                        await self._persist_generated_lyrics(job, context, concept)
+                    except Exception as lyrics_exc:
+                        log.warning(
+                            "music_only: lyrics persist skipped job=%s word=%s: %s",
+                            job_id,
+                            job.get("word_id"),
+                            lyrics_exc,
+                            exc_info=True,
+                        )
 
                 task_id = await submit_song_only_task(
                     concept["concept_data"],
@@ -220,6 +231,11 @@ class MusicOnlyWorker:
                     "status": "submitted",
                     "suno_task_id": task_id,
                     "concept_artifact": concept["concept_artifact"],
+                    "lyrics": _first_text(
+                        concept["concept_artifact"].get("suno_lyrics"),
+                        concept["concept_artifact"].get("lyrics"),
+                        concept["concept_data"].get("lyrics"),
+                    ),
                 }
 
             task_id = job.get("suno_task_id")
@@ -280,14 +296,21 @@ class MusicOnlyWorker:
                 or (concept_artifact.get("music_caption") if isinstance(concept_artifact, dict) else None)
                 or ""
             )
+            lyrics = _first_text(
+                latest.get("lyrics"),
+                concept_artifact.get("suno_lyrics") if isinstance(concept_artifact, dict) else None,
+                concept_artifact.get("lyrics") if isinstance(concept_artifact, dict) else None,
+            )
             await self._complete(
                 job_id,
+                scope=_job_scope(job),
                 suno_audio_url=audio_url,
                 suno_audio_url_b=poll.get("audio_url_b"),
                 suno_storage_url=storage_urls.get("suno_storage_url"),
                 suno_storage_url_b=storage_urls.get("suno_storage_url_b"),
                 music_caption=music_caption,
                 concept_artifact=concept_artifact,
+                lyrics=lyrics,
             )
             log.info("music_only: completed job=%s", job_id)
         except Exception as exc:
@@ -327,23 +350,26 @@ class MusicOnlyWorker:
             raise RuntimeError(data.get("error") or "mark_music_only_submitted failed")
 
     async def _complete(self, job_id: str, **params: Any) -> None:
+        scope = params.get("scope") or "word"
+        rpc_name = "complete_level_music_only_job" if scope == "level" else "complete_music_only_job"
+        rpc_params = {
+            "p_job_id": job_id,
+            "p_suno_audio_url": params.get("suno_audio_url"),
+            "p_suno_audio_url_b": params.get("suno_audio_url_b"),
+            "p_suno_storage_url": params.get("suno_storage_url"),
+            "p_suno_storage_url_b": params.get("suno_storage_url_b"),
+            "p_music_caption": params.get("music_caption"),
+            "p_concept_artifact": params.get("concept_artifact") or {},
+        }
+        if scope == "level":
+            rpc_params["p_lyrics"] = params.get("lyrics")
+
         def _call():
-            return self.sb.rpc(
-                "complete_music_only_job",
-                {
-                    "p_job_id": job_id,
-                    "p_suno_audio_url": params.get("suno_audio_url"),
-                    "p_suno_audio_url_b": params.get("suno_audio_url_b"),
-                    "p_suno_storage_url": params.get("suno_storage_url"),
-                    "p_suno_storage_url_b": params.get("suno_storage_url_b"),
-                    "p_music_caption": params.get("music_caption"),
-                    "p_concept_artifact": params.get("concept_artifact") or {},
-                },
-            ).execute()
+            return self.sb.rpc(rpc_name, rpc_params).execute()
 
         data = _response_data(await asyncio.to_thread(_call)) or {}
         if not isinstance(data, dict) or data.get("success") is not True:
-            raise RuntimeError(data.get("error") or "complete_music_only_job failed")
+            raise RuntimeError(data.get("error") or f"{rpc_name} failed")
 
     async def _fail(self, job_id: str, failed_step: str, error_message: str) -> None:
         def _call():
@@ -380,12 +406,25 @@ class MusicOnlyWorker:
 
         await asyncio.to_thread(_update)
 
-    async def _persist_concept(self, job_id: str, concept: dict[str, Any]) -> None:
+    async def _persist_concept(
+        self,
+        job_id: str,
+        concept: dict[str, Any],
+        *,
+        scope: str = "word",
+    ) -> None:
         artifact = concept.get("concept_artifact") or {}
         values = {
             "concept_artifact": artifact,
             "music_caption": artifact.get("music_caption") if isinstance(artifact, dict) else None,
         }
+        if scope == "level":
+            concept_data = concept.get("concept_data") or {}
+            values["lyrics"] = _first_text(
+                artifact.get("suno_lyrics") if isinstance(artifact, dict) else None,
+                artifact.get("lyrics") if isinstance(artifact, dict) else None,
+                concept_data.get("lyrics") if isinstance(concept_data, dict) else None,
+            )
 
         def _update():
             return (

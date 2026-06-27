@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import logging
 from pathlib import Path
+import re
 from typing import Any, Mapping
 
 import httpx
@@ -86,9 +87,21 @@ async def submit_song_only_task(
 def _storage_prefix(job: Mapping[str, Any]) -> str:
     user_id = str(job["user_id"])
     deck_id = str(job.get("deck_id") or "no-deck")
-    word_id = str(job["word_id"])
     job_id = str(job["id"])
+    if job.get("scope") == "level":
+        category = _safe_storage_segment(job.get("category_slug"), "category")
+        level = _safe_storage_segment(f"level-{job.get('level_number')}", "level")
+        language = _safe_storage_segment(job.get("target_language"), "language")
+        return f"{user_id}/{deck_id}/music_only/levels/{category}/{level}/{language}/{job_id}"
+
+    word_id = str(job["word_id"])
     return f"{user_id}/{deck_id}/music_only/{word_id}/{job_id}"
+
+
+def _safe_storage_segment(value: Any, fallback: str) -> str:
+    text = str(value or "").strip().lower()
+    text = re.sub(r"[^a-z0-9._=-]+", "-", text).strip("-")
+    return text or fallback
 
 
 def upload_suno_audio_to_storage(
@@ -151,4 +164,3 @@ async def download_and_upload_song_audio(
         path_a=path_a,
         path_b=path_b,
     )
-
