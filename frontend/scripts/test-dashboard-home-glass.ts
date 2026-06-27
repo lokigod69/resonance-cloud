@@ -78,7 +78,7 @@ assertNotIncludes(
   'welcome hero does not duplicate the greeting through generated content',
 )
 
-const statTileRule = css.match(/\.stat-tile\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+const statTileRule = css.match(/^\.stat-tile\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assert(statTileRule.length > 0, 'stat tile CSS rule exists')
 assertIncludes(
   statTileRule,
@@ -96,6 +96,32 @@ assertIncludes(
   'stat tiles include a glossy highlight layer',
 )
 assertIncludes(css, 'rgba(0, 0, 0, 0.54)', 'dashboard glass uses an opaque black glass base like the header')
+const glassyDashboardCosmicRule = css.match(/\.skin-glassy\s+\.dashboard-cosmic\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+assert(glassyDashboardCosmicRule.length > 0, 'glassy dashboard cosmic override exists')
+assertIncludes(
+  glassyDashboardCosmicRule,
+  'isolation: isolate',
+  'glassy dashboard uses Classic wave containment instead of dropping the dashboard isolate',
+)
+assertNotIncludes(
+  glassyDashboardCosmicRule,
+  'isolation: auto',
+  'glassy dashboard no longer removes the dashboard isolate that Classic uses for full waves',
+)
+for (const [selector, label] of [
+  ['.dashboard-today-panel', 'today panel'],
+  ['.stat-tile', 'SRS action tiles'],
+  ['.dashboard-library-tile', 'Library action tile'],
+] as const) {
+  const escapedSelector = selector.replace('.', '\\.')
+  const rule = css.match(
+    new RegExp(`\\.skin-glassy\\s+\\.dashboard-cosmic\\s+${escapedSelector}\\s*\\{[\\s\\S]*?\\n\\}`),
+  )?.[0] ?? ''
+  assert(rule.length > 0, `glassy-scoped milk-glass override exists for ${label}`)
+  assertIncludes(rule, 'backdrop-filter: blur(64px) saturate(1.5)', `${label} uses header-grade frosted blur`)
+  assertIncludes(rule, '-webkit-backdrop-filter: blur(64px) saturate(1.5)', `${label} includes WebKit frosted blur`)
+  assertIncludes(rule, 'color-mix(in srgb, var(--text-primary) 24%', `${label} uses a milky highlight layer`)
+}
 assertIncludes(css, '.dashboard-library-tile', 'dashboard Library tile has dedicated glass styling')
 assertIncludes(css, '@media (hover: hover) and (pointer: fine)', 'desktop language picker opens on pointer hover')
 assertIncludes(css, '.language-picker:hover .language-picker-panel', 'desktop language picker keeps hover behavior')
