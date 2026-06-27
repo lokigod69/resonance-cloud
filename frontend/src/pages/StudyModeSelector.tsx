@@ -13,6 +13,7 @@ import audioIcon from '@/assets/study-mode-icons/audio.webp'
 import canvasIcon from '@/assets/study-mode-icons/canvas.webp'
 import { GAMES } from '@/games/shared/registry'
 import { ComingSoonOverlay } from '@/components/games/ComingSoonOverlay'
+import { FirstStudyNewWordsPrompt } from '@/components/study/FirstStudyNewWordsPrompt'
 
 type ModeConfig = {
   key: string
@@ -118,6 +119,7 @@ export default function StudyModeSelector() {
 
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-6">
+      <FirstStudyNewWordsPrompt />
       <div className="w-full max-w-2xl">
         <div className="mb-8 text-center">
           <h1 className="text-2xl font-bold">{t('study.chooseMode')}</h1>

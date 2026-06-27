@@ -59,12 +59,16 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
     setDeckFilter('all')
   }, [studyLanguage, deckParam])
 
-  const { words, loading, sessionStats, recordAttempt, scheduleRetry, consumeRetry, restart: restartSession } = useStudySession(deckFilter === 'all' ? null : deckFilter, studyMode, studyLanguage, queueFilter)
+  const { words, dailyNewQuotaReached, loading, sessionStats, recordAttempt, scheduleRetry, consumeRetry, restart: restartSession } = useStudySession(deckFilter === 'all' ? null : deckFilter, studyMode, studyLanguage, queueFilter)
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [sessionComplete, setSessionComplete] = useState(false)
   const [reviewed, setReviewed] = useState(0)
+  // Distinct cards advanced past, for a coherent "X / N" counter against the frozen
+  // snapshot. A card resurfaced by the retry pocket is already counted, so it never
+  // bumps this — the displayed progress can't exceed the snapshot size.
+  const [clearedCount, setClearedCount] = useState(0)
   const visitedIdsRef = useRef<Set<string>>(new Set())
   const wasPlayingRef = useRef(true)
 
@@ -75,6 +79,7 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
     setRevealed(false)
     setSessionComplete(false)
     setReviewed(0)
+    setClearedCount(0)
     visitedIdsRef.current = new Set()
   }, [deckFilter, studyLanguage, queueFilter])
 
@@ -98,7 +103,12 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
     wasPlayingRef.current = !(videoRef.current?.paused ?? false)
     setReviewed((r) => r + 1)
     setRevealed(false)
-    if (current) visitedIdsRef.current.add(current.id)
+    // Count a card toward progress only the first time it is cleared; a retry-pocket
+    // revisit of an already-seen card must not advance the counter past the snapshot.
+    if (current && !visitedIdsRef.current.has(current.id)) {
+      visitedIdsRef.current.add(current.id)
+      setClearedCount((c) => c + 1)
+    }
 
     // Check retry pocket
     const retryId = consumeRetry()
@@ -155,6 +165,7 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
     setRevealed(false)
     setSessionComplete(false)
     setReviewed(0)
+    setClearedCount(0)
     visitedIdsRef.current = new Set()
   }, [restartSession])
 
@@ -203,6 +214,8 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
     words,
     current,
     currentIndex,
+    clearedCount,
+    dailyNewQuotaReached,
     loading,
     sessionComplete,
     sessionStats,

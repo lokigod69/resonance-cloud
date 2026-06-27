@@ -25,7 +25,7 @@ export default function StudyPG() {
   const queue = isStudyQueue(queueParam) ? queueParam : null
 
   const {
-    words, current, currentIndex, loading, sessionComplete, sessionStats, reviewed,
+    words, current, currentIndex, dailyNewQuotaReached, loading, sessionComplete, sessionStats, reviewed,
     revealed, setRevealed, decks, deckFilter, setDeckFilter,
     activeVideoUrl, activeThumbnailUrl, isMuted, togglePlay, onPlay, onPause,
     handleRemembered, handleReviewLater, restart, selectIndex, skipPrev, skipNext,
@@ -36,6 +36,26 @@ export default function StudyPG() {
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <ParticleSpinner preset="heart" size={140} />
         <p className="text-sm text-muted-foreground opacity-60">{t('study.loadingCards')}</p>
+      </div>
+    )
+  }
+
+  if (dailyNewQuotaReached) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6 text-center">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[var(--pg-accent-green)]/40 bg-[var(--pg-accent-green)]/20">
+          <Check className="h-8 w-8 text-[var(--pg-accent-green)]" />
+        </div>
+        <div>
+          <h2 className="text-xl font-bold font-display mb-2">{t('study.dailyNewDone.title')}</h2>
+          <p className="text-[var(--pg-text-dim)] text-sm max-w-sm">{t('study.dailyNewDone.body')}</p>
+        </div>
+        <button
+          onClick={() => navigate('/dashboard')}
+          className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all"
+        >
+          {t('study.dailyNewDone.cta')}
+        </button>
       </div>
     )
   }

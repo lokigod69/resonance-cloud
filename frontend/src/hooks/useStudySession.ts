@@ -138,8 +138,12 @@ export function useStudySession(
   const retryQueueRef = useRef<RetryItem[]>([])
   // Track total retries per word across consume/re-schedule cycles (fixes infinite retry bug)
   const retryCountRef = useRef<Map<string, number>>(new Map())
-  // Fetched words cached so SRS-state changes can re-sort without re-querying.
+  // Fetched words cached so the session snapshot can be (re)built without re-querying.
   const rawWordsRef = useRef<StudyWord[]>([])
+  // The active session's word list is FROZEN once built (see the freeze effect below):
+  // grading refreshes SRS state in the background, but must never re-sort or shrink the
+  // session the learner is in.
+  const sessionFrozenRef = useRef(false)
   const {
     data: wordStates,
     loading: wordStatesLoading,
@@ -225,17 +229,24 @@ export function useStudySession(
     return () => { stale = true }
   }, [fetchWords])
 
-  // Re-sort the already-fetched words when SRS state or queue changes (e.g. after
-  // a grade). No DB round-trip and no loading flip, so the canvas never flashes
-  // its spinner mid-session.
+  // Build the session word list ONCE — the first time both the fetched words and their
+  // SRS states are ready — then FREEZE it. Grading triggers a background SRS refetch
+  // (so the dashboard tiles and the NEXT session stay fresh), but the ACTIVE session must
+  // never be re-sorted or shrunk underneath the learner. The previous "re-sort on every
+  // SRS change" behaviour dropped each graded word out of the queue mid-session, which
+  // made the progress counter overshoot ("6 / 5") and stranded the session on an
+  // out-of-bounds card with no completion. See investigations report 2026-06-27.
   useEffect(() => {
-    if (rawWordsRef.current.length === 0) return
+    if (sessionFrozenRef.current) return
+    if (loading || wordStatesLoading) return
     setWords(sortByHeat(rawWordsRef.current, wordStates, queue))
-  }, [wordStates, queue])
+    sessionFrozenRef.current = true
+  }, [loading, wordStatesLoading, wordStates, queue])
 
   useEffect(() => {
     retryQueueRef.current = []
     retryCountRef.current = new Map()
+    sessionFrozenRef.current = false
     // eslint-disable-next-line react-hooks/set-state-in-effect -- resets session stats when deckId/studyMode/language change; canonical reset-on-key pattern
     setSessionStats({ remembered: 0, reviewLater: 0 })
   }, [deckId, studyMode, language, queue])
@@ -306,13 +317,31 @@ export function useStudySession(
   const restart = useCallback(() => {
     retryQueueRef.current = []
     retryCountRef.current = new Map()
+    sessionFrozenRef.current = false
     setSessionStats({ remembered: 0, reviewLater: 0 })
     refetchWordStates()
     fetchWords()
   }, [fetchWords, refetchWordStates])
 
+  // "New" legitimately empties when today's new-word quota is spent even though
+  // unlearned words remain — surface that distinctly from "no words at all" so the
+  // learner sees a friendly done-for-today state instead of a confusing empty session.
+  //
+  // Gated on the FROZEN snapshot being empty (`words.length === 0`): grading flips new
+  // lemmas to 'learning' and refetches SRS state live, so without this gate the flag
+  // would turn true after the last new card is graded and hijack the screen mid-session
+  // — cutting off the retry-pocket drain and the completion screen. The snapshot is
+  // empty only when the session started with nothing new due, which is exactly the
+  // done-for-today case; an active or just-completed session keeps words.length > 0.
+  const dailyNewQuotaReached =
+    queue === 'learn' &&
+    words.length === 0 &&
+    wordStates.some((lemma) => lemma.state === 'new') &&
+    !wordStates.some((lemma) => lemma.state === 'new' && lemma.due)
+
   return {
     words,
+    dailyNewQuotaReached,
     // Block the UI only on the first load (until both words and SRS states have
     // arrived). After that, expose just the word-fetch loading — which is true
     // during real navigations (key changes) but never during a grade's silent

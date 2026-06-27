@@ -26,6 +26,7 @@ import { isStudyQueue } from '@/hooks/useStudySession'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
 import { usePronunciation } from '@/hooks/usePronunciation'
+import { computeStudyProgress } from '@/lib/studyProgress'
 
 type FeedbackPulse = 'remembered' | 'reviewLater'
 
@@ -43,10 +44,12 @@ export default function StudyFlashcard() {
   const [feedbackPulse, setFeedbackPulse] = useState<FeedbackPulse | null>(null)
 
   const {
-    words, current, currentIndex, loading, sessionComplete, sessionStats, reviewed,
+    words, current, currentIndex, clearedCount, dailyNewQuotaReached, loading, sessionComplete, sessionStats, reviewed,
     revealed, setRevealed, decks, deckFilter, setDeckFilter,
     handleRemembered, handleReviewLater, restart, skipPrev, skipNext,
   } = useStudyUI({ videoRef, studyMode: 'flashcard', queue })
+
+  const progress = computeStudyProgress(clearedCount, words.length)
 
   const isFeedbackActive = feedbackPulse !== null
 
@@ -90,6 +93,21 @@ export default function StudyFlashcard() {
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <ParticleSpinner preset="heart" size={140} />
         <p className="text-sm text-muted-foreground opacity-60">{t('study.loadingCards')}</p>
+      </div>
+    )
+  }
+
+  if (dailyNewQuotaReached) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6 text-center">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-green-500/40 bg-green-500/15">
+          <Check className="h-8 w-8 text-green-400" />
+        </div>
+        <div>
+          <h2 className="text-xl font-bold mb-2">{t('study.dailyNewDone.title')}</h2>
+          <p className="text-muted-foreground text-sm max-w-sm">{t('study.dailyNewDone.body')}</p>
+        </div>
+        <Button onClick={() => navigate('/dashboard')}>{t('study.dailyNewDone.cta')}</Button>
       </div>
     )
   }
@@ -211,9 +229,9 @@ export default function StudyFlashcard() {
           </div>
         )}
 
-        {/* Progress counter */}
+        {/* Progress counter — distinct cards cleared against the frozen snapshot */}
         <p className="text-center text-sm text-muted-foreground mb-6">
-          {currentIndex + 1} / {words.length}
+          {progress.current} / {progress.total}
         </p>
 
         <AnimatePresence mode="wait">
