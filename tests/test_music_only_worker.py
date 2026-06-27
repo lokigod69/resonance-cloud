@@ -661,6 +661,28 @@ def test_frontend_song_genre_picker_commits_custom_text_while_typing():
     assert "onChange(trimmed || null)" in picker
 
 
+def test_frontend_song_controls_present_random_and_simple_labels():
+    wizard_data = (
+        REPO_ROOT
+        / "frontend"
+        / "src"
+        / "components"
+        / "generate"
+        / "wizardData.ts"
+    ).read_text(encoding="utf-8")
+    generate_go = (REPO_ROOT / "frontend" / "src" / "pages" / "GenerateGO.tsx").read_text(encoding="utf-8")
+    translations = (REPO_ROOT / "frontend" / "src" / "lib" / "translations.ts").read_text(encoding="utf-8")
+
+    assert "{ value: 'auto', label: 'Random' }" in wizard_data
+    assert "{ value: 'auto', label: 'Random' }" in generate_go
+    assert translations.count("'modal.generateSong.depth.short': 'Simple'") == 2
+    assert translations.count("'music.lyrics.mode.reliable': 'Simple'") == 2
+    assert translations.count("'generate.niveau.short': 'Simple'") == 2
+    assert translations.count("'modal.generateSong.depth.short': 'Einfach'") == 1
+    assert translations.count("'music.lyrics.mode.reliable': 'Einfach'") == 1
+    assert "'generate.niveau.short': 'Einfach'" in translations
+
+
 def test_frontend_music_track_has_audio_helper_accepts_storage_or_provider_url():
     player_hook = (REPO_ROOT / "frontend" / "src" / "hooks" / "useMusicPlayer.ts").read_text(encoding="utf-8")
     music_page = (REPO_ROOT / "frontend" / "src" / "pages" / "Music.tsx").read_text(encoding="utf-8")

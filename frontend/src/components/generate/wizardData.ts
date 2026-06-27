@@ -132,7 +132,7 @@ export const ART_STYLE_GROUPS: ArtStyleGroup[] = [
 ]
 
 export const GENRES = [
-  { value: 'auto', label: 'Auto' },
+  { value: 'auto', label: 'Random' },
   { value: 'pop', label: 'Pop' },
   { value: 'rock', label: 'Rock' },
   { value: 'electronic', label: 'Electronic' },

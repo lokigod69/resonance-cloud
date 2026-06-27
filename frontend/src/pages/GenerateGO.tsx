@@ -63,7 +63,7 @@ import { canonicalizeLanguageValue, getLanguageCode } from '@/lib/languages'
 import type { SelectedCategoryVocabularyItem } from '@/data/categories'
 
 const GO_GENRES = [
-  { value: 'auto', label: 'Auto' },
+  { value: 'auto', label: 'Random' },
   { value: 'pop', label: 'Pop' },
   { value: 'hip-hop', label: 'Hip-Hop' },
   { value: 'jazz', label: 'Jazz' },

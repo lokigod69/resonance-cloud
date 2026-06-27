@@ -8,6 +8,7 @@ Prompts are from ENGINE_CONCEPT.md Sections 5.2 and 6.1.
 from __future__ import annotations
 
 import logging
+import random
 import re
 
 from src.services.events import logged_llm_call
@@ -17,6 +18,51 @@ from .llm_client import OpenRouterClient
 from .models import CaptionResult, ConceptSettings
 
 logger = logging.getLogger(__name__)
+
+
+RANDOM_GENRE_INSPIRATION_POOL: tuple[str, ...] = (
+    "gypsy jazz",
+    "bossa nova",
+    "vintage soul",
+    "folk singer-songwriter",
+    "acoustic blues",
+    "flamenco",
+    "French chanson",
+    "laid-back reggae",
+    "Afrobeat",
+    "samba",
+    "country waltz",
+    "bluegrass porch band",
+    "Motown-inspired pop soul",
+    "Cuban son",
+    "calypso",
+    "desert blues",
+    "Nordic folk",
+    "Andean folk",
+    "tango nuevo",
+    "swing big band",
+    "chamber pop",
+    "indie folk",
+    "dream pop",
+    "sophisti-pop",
+    "acoustic funk",
+    "Latin jazz",
+    "gospel piano soul",
+    "roots rock",
+    "surf rock",
+    "nylon-string bolero",
+    "disco strings",
+    "city pop",
+    "lo-fi indie pop",
+    "warm piano ballad",
+    "klezmer dance band",
+    "Mediterranean acoustic ensemble",
+    "West African highlife",
+    "Mariachi ranchera",
+    "Appalachian fiddle tune",
+    "Brazilian MPB",
+)
+_RANDOM_CHOOSER = random.SystemRandom()
 
 
 def generate_caption(
@@ -182,12 +228,20 @@ def _select_caption_prompt(
     """Select the appropriate caption prompt based on caption_style and genre."""
     if settings.caption_style == "production":
         if settings.genre == "auto":
-            return _auto_genre_production_prompt(word, translation, language, settings)
+            return _auto_genre_production_prompt(
+                word, translation, language, settings, _random_inspiration_seed()
+            )
         return _manual_genre_production_prompt(word, translation, language, settings)
     # vocal_forward (original behavior)
     if settings.genre == "auto":
-        return _auto_genre_prompt(word, translation, language, settings)
+        return _auto_genre_prompt(
+            word, translation, language, settings, _random_inspiration_seed()
+        )
     return _manual_genre_prompt(word, translation, language, settings)
+
+
+def _random_inspiration_seed() -> str:
+    return _RANDOM_CHOOSER.choice(RANDOM_GENRE_INSPIRATION_POOL)
 
 
 def _art_style_context(settings: ConceptSettings) -> str:
@@ -202,7 +256,7 @@ def _art_style_context(settings: ConceptSettings) -> str:
 
 
 def _auto_genre_prompt(
-    word: str, translation: str, language: str, settings: ConceptSettings,
+    word: str, translation: str, language: str, settings: ConceptSettings, seed: str,
 ) -> str:
     """Auto-genre prompt from Section 5.2."""
     if translation:
@@ -210,27 +264,20 @@ def _auto_genre_prompt(
     else:
         word_line = f'Word: "{word}"\nLanguage: {language}\nDetermine the meaning of this word from its language context.'
     return (
-        f'You are a music curator who matches words to their perfect sonic identity.\n'
+        f'You are a music curator shaping a clear, voice-forward vocabulary song caption.\n'
         f'\n'
         f'{word_line}\n'
         f'Language: {language}\n'
+        f'Random inspiration seed: {seed}\n'
         f'{_art_style_context(settings)}'
         f'\n'
-        f'Based on this word\'s emotional weight, cultural associations, and energy,\n'
-        f'choose a musical style that EMBODIES the word — not one that "teaches" it.\n'
+        f'Use the seed as inspiration; elaborate, blend, or extend this seed so the word has a memorable sonic identity.\n'
+        f'Favor a clear, forward melodic {language} {settings.vocal_gender} vocal with enough space around the voice for pronunciation.\n'
         f'\n'
-        f'Generate a single-line music caption in this format:\n'
-        f'[vocal type] {language} {settings.vocal_gender} vocal, [genre], [2-3 specific instruments], [2-3 mood words]\n'
+        f'Generate one single-line music caption with these dimensions:\n'
+        f'voice placement, specific sub-style, instrumentation, production texture, tempo feel, and mood.\n'
         f'\n'
-        f'Rules:\n'
-        f'- Voice description MUST come first — this ensures clear pronunciation\n'
-        f'- Under 20 words total\n'
-        f'- Use specific instrument names (not generic terms)\n'
-        f'- For 30-second songs, limit to 2-3 instruments\n'
-        f'- Describe energy through mood and instrumentation rather than numeric tempo\n'
-        f'- Do NOT include BPM or numeric tempo values\n'
-        f'- Do NOT include key or duration\n'
-        f'- Output ONLY the caption line. No explanation.'
+        f'Output one caption line only.'
     )
 
 
@@ -243,32 +290,25 @@ def _manual_genre_prompt(
     else:
         word_line = f'Word: "{word}"\nDetermine the meaning of this word from its language context.'
     return (
-        f'You are a music production assistant generating a caption for Ace-Step AI music generator.\n'
+        f'You are a music production assistant generating a rich caption for Ace-Step AI music generation.\n'
         f'\n'
         f'Genre: {settings.genre}\n'
         f'Language: {language}\n'
-        f'Song duration: {settings.duration} seconds\n'
         f'{word_line}\n'
         f'{_art_style_context(settings)}'
         f'\n'
-        f'Generate a single-line music caption in this format:\n'
-        f'[vocal type] {language} {settings.vocal_gender} vocal, [genre or style descriptor], [2-3 specific instruments], [2-3 mood words]\n'
-        f'If "Genre" names an artist, producer, band, or person, render it as a descriptive style label (genre family + sound character) and do not include the name in the output.\n'
+        f'Create a specific {settings.genre} caption with a clear, forward melodic {language} {settings.vocal_gender} vocal.\n'
+        f'When the genre names an artist, producer, band, or person, render it as a descriptive style label using genre family, era, arrangement, and sound character.\n'
         f'\n'
-        f'Rules:\n'
-        f'- Voice description MUST come first — this ensures clear pronunciation\n'
-        f'- Under 20 words total\n'
-        f'- Use specific instrument names (not "{settings.genre} instruments")\n'
-        f'- For 30-second songs, limit to 2-3 instruments\n'
-        f'- Describe energy through mood and instrumentation rather than numeric tempo\n'
-        f'- Do NOT include BPM or numeric tempo values\n'
-        f'- Do NOT include key or duration\n'
-        f'- Output ONLY the caption line. No explanation.'
+        f'Generate one single-line music caption with these dimensions:\n'
+        f'voice placement, specific sub-style, instrumentation, production texture, tempo feel, and mood.\n'
+        f'\n'
+        f'Output one caption line only.'
     )
 
 
 def _auto_genre_production_prompt(
-    word: str, translation: str, language: str, settings: ConceptSettings,
+    word: str, translation: str, language: str, settings: ConceptSettings, seed: str,
 ) -> str:
     """Production-style auto-genre prompt — music-first, fuller arrangement."""
     if translation:
@@ -276,32 +316,21 @@ def _auto_genre_production_prompt(
     else:
         word_line = f'Word: "{word}"\nLanguage: {language}\nDetermine the meaning of this word from its language context.'
     return (
-        f'You are a music producer creating a {settings.duration}-second track that makes a single foreign word unforgettable through melody and arrangement.\n'
+        f'You are a music producer creating a polished vocabulary song caption that makes a foreign word memorable through melody and arrangement.\n'
         f'\n'
         f'{word_line}\n'
         f'Language: {language}\n'
+        f'Random inspiration seed: {seed}\n'
         f'{_art_style_context(settings)}'
         f'\n'
-        f'Create a music caption that describes a PRODUCED SONG — not spoken word with light accompaniment.\n'
-        f'The word will be sung within a real musical arrangement with melody, rhythm, and emotional arc.\n'
+        f'Use the seed as inspiration; elaborate, blend, or extend this seed into a specific musical world for the word.\n'
+        f'The word will be sung in a real arrangement with melody, rhythm, emotional arc, and a clear, forward vocal presence.\n'
         f'\n'
-        f'Generate a single-line music caption in this format:\n'
-        f'[genre], [2-3 instruments], melodic {language} {settings.vocal_gender} vocal, [2-3 emotional descriptors], clear diction\n'
+        f'Generate one single-line music caption with these dimensions:\n'
+        f'specific sub-style, instrumentation, production texture, tempo feel, melodic {language} {settings.vocal_gender} vocal, vocal presence, and mood.\n'
         f'\n'
-        f'Example outputs:\n'
-        f'- upbeat indie pop, bright acoustic guitar, punchy drums, melodic Italian female vocal, playful, sunny, clear diction\n'
-        f'- cinematic orchestral waltz, sweeping strings, gentle harp, soaring German male vocal, bittersweet, nostalgic, clear diction\n'
-        f'- groovy funk, slap bass, wah-wah guitar, smooth Korean female vocal, cheeky, confident, clear diction\n'
-        f'\n'
-        f'Rules:\n'
-        f'- Lead with genre — this sets the song\'s energy\n'
-        f'- 2-3 instruments maximum (this is a {settings.duration}-second track — keep it focused)\n'
-        f'- Vocal style should be melodic singing, not "speech-sung" or "spoken"\n'
-        f'- End with "clear diction" to ensure vocal clarity\n'
-        f'- Under 25 words total\n'
-        f'- Do NOT include BPM or numeric tempo values\n'
-        f'- Do NOT include key signature or time signature\n'
-        f'- Output ONLY the caption line. No explanation.'
+        f'Keep the line concise enough for a Suno style field while giving enough detail to shape a distinctive arrangement.\n'
+        f'Output one caption line only.'
     )
 
 
@@ -314,26 +343,21 @@ def _manual_genre_production_prompt(
     else:
         word_line = f'Word: "{word}"\nDetermine the meaning of this word from its language context.'
     return (
-        f'You are a music producer arranging a {settings.duration}-second {settings.genre} track for a vocabulary learning song.\n'
+        f'You are a music producer arranging a polished {settings.genre} vocabulary song caption.\n'
         f'\n'
         f'{word_line}\n'
         f'Language: {language}\n'
         f'Genre: {settings.genre}\n'
         f'{_art_style_context(settings)}'
         f'\n'
-        f'Create a music caption that describes a fully produced {settings.genre} arrangement.\n'
+        f'Create a music caption that describes a fully produced {settings.genre} arrangement with a clear, forward melodic {language} {settings.vocal_gender} vocal.\n'
+        f'When the genre names an artist, producer, band, or person, render it as a descriptive style label using genre family, era, arrangement, and sound character.\n'
         f'\n'
-        f'Generate a single-line music caption in this format:\n'
-        f'[genre or style descriptor], [2-3 instruments], melodic {language} {settings.vocal_gender} vocal, [2-3 emotional descriptors], clear diction\n'
-        f'If "Genre" names an artist, producer, band, or person, render it as a descriptive style label (genre family + sound character) and do not include the name in the output.\n'
+        f'Generate one single-line music caption with these dimensions:\n'
+        f'specific sub-style, instrumentation, production texture, tempo feel, melodic {language} {settings.vocal_gender} vocal, vocal presence, and mood.\n'
         f'\n'
-        f'Rules:\n'
-        f'- Pick 2-3 instruments authentic to {settings.genre}\n'
-        f'- Vocal should be melodic singing\n'
-        f'- End with "clear diction" for vocal clarity\n'
-        f'- Under 25 words total\n'
-        f'- Do NOT include BPM or numeric tempo values\n'
-        f'- Output ONLY the caption line. No explanation.'
+        f'Keep the line concise enough for a Suno style field while giving enough detail to shape a distinctive arrangement.\n'
+        f'Output one caption line only.'
     )
 
 
@@ -434,12 +458,15 @@ def _ensure_language(caption: str, language: str, vocal_gender: str) -> tuple[st
     return modified, True
 
 
-def _enforce_length(caption: str, max_words: int = 30, truncate_to: int = 25) -> str:
-    """Truncate caption if it exceeds max_words."""
-    words = caption.split()
-    if len(words) <= max_words:
+def _enforce_length(caption: str, max_chars: int = 900) -> str:
+    """Keep captions inside the Suno style field budget."""
+    if len(caption) <= max_chars:
         return caption
-    return " ".join(words[:truncate_to])
+    trimmed = caption[:max_chars].rstrip(" ,")
+    comma_boundary = trimmed.rfind(",")
+    if comma_boundary >= max_chars // 2:
+        trimmed = trimmed[:comma_boundary].rstrip(" ,")
+    return trimmed
 
 
 def _build_reliable_prompt(
@@ -461,7 +488,7 @@ def _build_reliable_prompt(
     )
 
     no_brackets = (
-        '\n- Do NOT start the caption with bracket tags (no [speech-sung], [whispery alto], etc.)'
+        '\nBegin the caption with descriptive music language rather than bracket tags.'
     )
 
     output_format = (
