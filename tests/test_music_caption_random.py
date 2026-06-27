@@ -56,3 +56,18 @@ def test_rich_caption_is_preserved_inside_suno_style_budget():
 
     assert result.caption == rich_caption
     assert len(result.caption) < 1000
+
+
+def test_manual_artist_name_prompt_keeps_explicit_omit_name_guard():
+    settings = ConceptSettings(
+        genre="Taylor Swift",
+        vocal_gender="female",
+        caption_style="production",
+    )
+
+    prompt = caption.build_caption_prompt_for_combined("Krokodil", "crocodile", "German", settings)
+
+    assert "Treat the Genre value as user-provided inspiration" in prompt
+    assert "leave the name out of the output" in prompt
+    assert "descriptive style label" in prompt
+    assert "melodic German female vocal" in prompt
