@@ -5,7 +5,7 @@ import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
-import { DailyTodayPanel } from '@/components/dashboard/DailyTodayPanel'
+import { DashboardStreak } from '@/components/dashboard/DashboardStreak'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
@@ -88,7 +88,6 @@ export default function Dashboard() {
   const wordStates = useWordStates(activeLanguage ?? '', { newWordDailyCap })
   const counts = wordStates.counts
   const reviewDue = counts.reviewingDue + counts.masteredDue
-  const hasAnyWords = counts.new + counts.learning + counts.reviewing + counts.mastered > 0
   const studyStreak = useStudyStreak()
   const tilesDisabled = !activeLanguage || wordStates.loading
 
@@ -165,15 +164,7 @@ export default function Dashboard() {
               onSelect={setActiveLanguage}
             />
 
-            <DailyTodayPanel
-              reviewDue={reviewDue}
-              newDue={counts.newDue}
-              reviewPool={counts.reviewing + counts.mastered}
-              newPool={counts.new}
-              hasAnyWords={hasAnyWords}
-              streak={studyStreak.streak}
-              studiedToday={studyStreak.studiedToday}
-            />
+            <DashboardStreak streak={studyStreak.streak} />
 
             <section className="dashboard-action-grid grid w-full grid-cols-2 gap-2.5 sm:gap-3">
               <SrsActionTile

@@ -5,7 +5,7 @@ import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
-import { DailyTodayPanel } from '@/components/dashboard/DailyTodayPanel'
+import { DashboardStreak } from '@/components/dashboard/DashboardStreak'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
@@ -88,7 +88,6 @@ export default function DashboardPG() {
   const wordStates = useWordStates(activeLanguage ?? '', { newWordDailyCap })
   const counts = wordStates.counts
   const reviewDue = counts.reviewingDue + counts.masteredDue
-  const hasAnyWords = counts.new + counts.learning + counts.reviewing + counts.mastered > 0
   const studyStreak = useStudyStreak()
   const tilesDisabled = !activeLanguage || wordStates.loading
 
@@ -174,78 +173,70 @@ export default function DashboardPG() {
               onSelect={setActiveLanguage}
             />
 
-        <DailyTodayPanel
-          reviewDue={reviewDue}
-          newDue={counts.newDue}
-          reviewPool={counts.reviewing + counts.mastered}
-          newPool={counts.new}
-          hasAnyWords={hasAnyWords}
-          streak={studyStreak.streak}
-          studiedToday={studyStreak.studiedToday}
-        />
+            <DashboardStreak streak={studyStreak.streak} />
 
-        <section className="dashboard-action-grid grid w-full grid-cols-2 gap-2.5 sm:gap-3">
-          <SrsActionTile
-            label={t('study.queue.review')}
-            count={reviewDue}
-            queue="review"
-            language={activeLanguage ?? ''}
-            tier="compact"
-            accent="cool"
-            disabled={tilesDisabled}
-          />
-          <SrsActionTile
-            label={t('study.queue.learn')}
-            count={counts.newDue}
-            queue="learn"
-            language={activeLanguage ?? ''}
-            tier="compact"
-            accent="warm"
-            disabled={tilesDisabled}
-          />
-          <SrsActionTile
-            label={t('study.queue.strengthen')}
-            count={counts.learning}
-            queue="strengthen"
-            language={activeLanguage ?? ''}
-            tier="compact"
-            accent="neutral"
-            disabled={tilesDisabled}
-          />
-          <Link to={dashboardLibraryHref} className="dashboard-library-tile dashboard-library-action">
-            <Library className="dashboard-library-icon" aria-hidden="true" />
-            <span className="dashboard-library-copy">
-              <span className="dashboard-library-title">{t('nav.categories')}</span>
-              {activeLanguage ? (
-                <span className="dashboard-library-subtitle">{t(`langName.${activeLanguage}`)}</span>
-              ) : null}
-            </span>
-          </Link>
-        </section>
+            <section className="dashboard-action-grid grid w-full grid-cols-2 gap-2.5 sm:gap-3">
+              <SrsActionTile
+                label={t('study.queue.review')}
+                count={reviewDue}
+                queue="review"
+                language={activeLanguage ?? ''}
+                tier="compact"
+                accent="cool"
+                disabled={tilesDisabled}
+              />
+              <SrsActionTile
+                label={t('study.queue.learn')}
+                count={counts.newDue}
+                queue="learn"
+                language={activeLanguage ?? ''}
+                tier="compact"
+                accent="warm"
+                disabled={tilesDisabled}
+              />
+              <SrsActionTile
+                label={t('study.queue.strengthen')}
+                count={counts.learning}
+                queue="strengthen"
+                language={activeLanguage ?? ''}
+                tier="compact"
+                accent="neutral"
+                disabled={tilesDisabled}
+              />
+              <Link to={dashboardLibraryHref} className="dashboard-library-tile dashboard-library-action">
+                <Library className="dashboard-library-icon" aria-hidden="true" />
+                <span className="dashboard-library-copy">
+                  <span className="dashboard-library-title">{t('nav.categories')}</span>
+                  {activeLanguage ? (
+                    <span className="dashboard-library-subtitle">{t(`langName.${activeLanguage}`)}</span>
+                  ) : null}
+                </span>
+              </Link>
+            </section>
 
-        <div className="dashboard-mastered-pill" aria-live="polite">
-          {counts.mastered > 0 ? (
-            <button
-              type="button"
-              className="dashboard-mastered-pill-button"
-              disabled={tilesDisabled}
-              onClick={() => {
-                if (tilesDisabled || !activeLanguage) return
-                const params = new URLSearchParams({ queue: 'mastered', lang: activeLanguage })
-                navigate(`/study?${params.toString()}`)
-              }}
-              aria-label={`${counts.mastered} ${t('study.queue.mastered')}`}
-            >
-              <span className="dashboard-mastered-count">{counts.mastered}</span>
-              <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
-            </button>
-          ) : (
-            <span className="dashboard-mastered-empty">
-              <span className="dashboard-mastered-count">0</span>
-              <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
-            </span>
-          )}
-        </div>
+            <div className="dashboard-mastered-pill" aria-live="polite">
+              {counts.mastered > 0 ? (
+                <button
+                  type="button"
+                  className="dashboard-mastered-pill-button"
+                  disabled={tilesDisabled}
+                  onClick={() => {
+                    if (tilesDisabled || !activeLanguage) return
+                    const params = new URLSearchParams({ queue: 'mastered', lang: activeLanguage })
+                    navigate(`/study?${params.toString()}`)
+                  }}
+                  aria-label={`${counts.mastered} ${t('study.queue.mastered')}`}
+                >
+                  <span className="dashboard-mastered-count">{counts.mastered}</span>
+                  <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
+                </button>
+              ) : (
+                <span className="dashboard-mastered-empty">
+                  <span className="dashboard-mastered-count">0</span>
+                  <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
+                </span>
+              )}
+            </div>
           </>
         )}
       </div>

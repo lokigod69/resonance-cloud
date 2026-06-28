@@ -40,6 +40,10 @@ assertIncludes(dashboard, 'staticLibraryRouteSuffix(activeLanguage)', 'classic d
 assertIncludes(dashboardPg, 'staticLibraryRouteSuffix(activeLanguage)', 'glassy dashboard sends active language into Library route')
 assertIncludes(dashboard, '<HomeAccountStrip />', 'classic dashboard renders account controls on Home only')
 assertIncludes(dashboardPg, '<HomeAccountStrip />', 'glassy dashboard renders account controls on Home only')
+assertNotIncludes(dashboard, 'DailyTodayPanel', 'classic dashboard removes the duplicated HEUTE panel')
+assertNotIncludes(dashboardPg, 'DailyTodayPanel', 'glassy dashboard removes the duplicated HEUTE panel')
+assertIncludes(dashboard, '<DashboardStreak', 'classic dashboard keeps the streak-only indicator')
+assertIncludes(dashboardPg, '<DashboardStreak', 'glassy dashboard keeps the streak-only indicator')
 assertIncludes(dashboard, 'dashboard-action-grid', 'classic dashboard uses the compact action grid')
 assertIncludes(dashboardPg, 'dashboard-action-grid', 'glassy dashboard uses the compact action grid')
 assertIncludes(dashboard, 'dashboard-mastered-pill', 'classic dashboard uses compact mastered summary')
@@ -82,20 +86,29 @@ const statTileRule = css.match(/^\.stat-tile\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assert(statTileRule.length > 0, 'stat tile CSS rule exists')
 assertIncludes(
   statTileRule,
-  'var(--dashboard-glass-bg)',
-  'stat tiles use a shared dashboard glass recipe',
+  'rgba(0, 0, 0, 0.86)',
+  'stat tiles use a near-opaque dark glass base',
 )
 assertIncludes(
   statTileRule,
-  'backdrop-filter: blur(64px) saturate(1.5)',
+  'backdrop-filter: blur(48px) saturate(1.5)',
   'stat tiles use the header-grade blur and saturation',
 )
-assertIncludes(
-  css,
-  '.stat-tile::before',
-  'stat tiles include a glossy highlight layer',
-)
-assertIncludes(css, 'rgba(0, 0, 0, 0.54)', 'dashboard glass uses an opaque black glass base like the header')
+assertIncludes(css, 'rgba(0, 0, 0, 0.86)', 'dashboard glass uses a dark base opaque enough to hide bright waves')
+const libraryTileRule = css.match(/^\.dashboard-library-tile\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
+assert(libraryTileRule.length > 0, 'library tile CSS rule exists')
+assertIncludes(libraryTileRule, 'rgba(0, 0, 0, 0.86)', 'library tile uses the same opaque frost base')
+assertIncludes(libraryTileRule, 'backdrop-filter: blur(48px) saturate(1.5)', 'library tile uses header-grade blur')
+const todayPanelRule = css.match(/^\.dashboard-today-panel\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
+assert(todayPanelRule.length > 0, 'streak surface CSS rule exists')
+assertIncludes(todayPanelRule, 'rgba(0, 0, 0, 0.86)', 'streak surface uses the same opaque frost base')
+assertIncludes(todayPanelRule, 'backdrop-filter: blur(48px) saturate(1.5)', 'streak surface uses header-grade blur')
+const statTileBeforeRule = css.match(/^\.stat-tile::before\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
+const libraryTileBeforeRule = css.match(/^\.dashboard-library-tile::before\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
+assertNotIncludes(statTileBeforeRule, 'var(--text-primary)', 'stat tiles remove text-primary sheen')
+assertNotIncludes(libraryTileBeforeRule, 'var(--text-primary)', 'library tile removes text-primary sheen')
+assertIncludes(statTileBeforeRule, 'opacity: 0', 'stat tile sheen is disabled for both skins')
+assertIncludes(libraryTileBeforeRule, 'opacity: 0', 'library tile sheen is disabled for both skins')
 const glassyDashboardCosmicRule = css.match(/\.skin-glassy\s+\.dashboard-cosmic\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
 assert(glassyDashboardCosmicRule.length > 0, 'glassy dashboard cosmic override exists')
 assertIncludes(
@@ -117,20 +130,11 @@ for (const [selector, label] of [
   const rule = css.match(
     new RegExp(`\\.skin-glassy\\s+\\.dashboard-cosmic\\s+${escapedSelector}\\s*\\{[\\s\\S]*?\\n\\}`),
   )?.[0] ?? ''
-  assert(rule.length > 0, `glassy-scoped milk-glass override exists for ${label}`)
-  assertIncludes(rule, 'background: rgba(0, 0, 0, 0.4)', `${label} uses the dark header/nav glass base`)
-  assertIncludes(rule, 'backdrop-filter: blur(48px) saturate(1.5)', `${label} uses header-grade frosted blur`)
-  assertIncludes(rule, '-webkit-backdrop-filter: blur(48px) saturate(1.5)', `${label} includes WebKit frosted blur`)
-  assertNotIncludes(rule, 'linear-gradient', `${label} removes the white linear sheen`)
-  assertNotIncludes(rule, 'radial-gradient', `${label} removes the white radial sheen`)
-  assertNotIncludes(rule, 'var(--text-primary)', `${label} removes text-colored glass highlights`)
+  assert(rule.length === 0, `glassy no longer needs a separate ${label} material override`)
 }
-const glassySheenOverride = css.match(
-  /\.skin-glassy\s+\.dashboard-cosmic\s+\.stat-tile::before,[\s\S]*?\.skin-glassy\s+\.dashboard-cosmic\s+\.dashboard-library-tile::before\s*\{[\s\S]*?\n\}/,
-)?.[0] ?? ''
-assert(glassySheenOverride.length > 0, 'glassy dashboard disables inherited tile sheen')
-assertIncludes(glassySheenOverride, 'opacity: 0', 'glassy dashboard tile sheen is transparent')
-assertNotIncludes(css, 'margin-top: auto;\n  }\n\n  .skin-glassy .dashboard-mastered-pill', 'glassy action grid no longer bottom-pins with auto margin')
+const desktopActionGridRule = css.match(/@media \(min-width: 768px\)\s*\{[\s\S]*?\.dashboard-action-grid\s*\{[\s\S]*?\n\s*\}[\s\S]*?\n\}/)?.[0] ?? ''
+assertIncludes(desktopActionGridRule, 'margin-top: clamp(', 'desktop action grid has a bounded shared spacer')
+assertNotIncludes(css, 'margin-top: auto', 'dashboard action grid is never bottom-pinned with auto margin')
 assertIncludes(css, '.dashboard-library-tile', 'dashboard Library tile has dedicated glass styling')
 assertIncludes(css, '@media (hover: hover) and (pointer: fine)', 'desktop language picker opens on pointer hover')
 assertIncludes(css, '.language-picker:hover .language-picker-panel', 'desktop language picker keeps hover behavior')
