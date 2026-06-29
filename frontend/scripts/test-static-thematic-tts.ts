@@ -142,6 +142,29 @@ assert.deepEqual(
 )
 assert.ok(!indonesianLevelOne.some((item) => item.spoken_text === item.english_qa_label))
 
+const germanLevelOne = buildStaticThematicTtsInventory({
+  targetLanguage: 'de',
+  category: 'animals',
+  level: 1,
+})
+assert.equal(germanLevelOne.length, 10, 'German Animals Level 1 should export 10 items')
+assert.deepEqual(
+  germanLevelOne.slice(0, 4).map((item) => ({
+    concept_id: item.concept_id,
+    english_qa_label: item.english_qa_label,
+    spoken_text: item.spoken_text,
+    target_language_code: item.target_language_code,
+  })),
+  [
+    { concept_id: 'animals.dog', english_qa_label: 'dog', spoken_text: 'Hund', target_language_code: 'de' },
+    { concept_id: 'animals.cat', english_qa_label: 'cat', spoken_text: 'Katze', target_language_code: 'de' },
+    { concept_id: 'animals.bird', english_qa_label: 'bird', spoken_text: 'Vogel', target_language_code: 'de' },
+    { concept_id: 'animals.fish', english_qa_label: 'fish', spoken_text: 'Fisch', target_language_code: 'de' },
+  ],
+  'German spoken_text should preserve the existing German static term',
+)
+assert.ok(!germanLevelOne.some((item) => item.spoken_text === item.english_qa_label))
+
 const cebuanoAllCategories = buildStaticThematicTtsInventory({
   targetLanguage: 'ceb',
   allCategories: true,
@@ -184,6 +207,25 @@ assert.deepEqual(query.filters, {
 })
 assert.deepEqual(query.conceptIds, ['fruits.apple', 'fruits.banana'])
 assert.deepEqual(query.voiceProfileKeys, ['static_thematic_ceb_yumi_raw_v1'])
+
+const germanKeys = buildStaticThematicPlaybackQuery({
+  targetLanguageCode: 'de',
+  categorySlug: 'animals',
+  levelNumber: 1,
+  conceptIds: ['animals.dog'],
+  voiceProfileKeys: [
+    'static_thematic_de_laura_raw_v1',
+    'static_thematic_de_william_raw_v1',
+    'static_thematic_de_helmut_raw_v1',
+    'static_thematic_de_enniah_raw_v1',
+  ],
+})
+assert.deepEqual(germanKeys.voiceProfileKeys, [
+  'static_thematic_de_laura_raw_v1',
+  'static_thematic_de_william_raw_v1',
+  'static_thematic_de_helmut_raw_v1',
+  'static_thematic_de_enniah_raw_v1',
+])
 
 const lookup = buildStaticThematicAudioLookup([
   {
