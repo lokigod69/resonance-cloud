@@ -7,6 +7,7 @@ import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
 import { DashboardStreak } from '@/components/dashboard/DashboardStreak'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
+import { LiquidGlassActionTile } from '@/components/liquid-glass/LiquidGlassActionTile'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -185,12 +186,11 @@ export default function DashboardPG() {
                 accent="cool"
                 disabled={tilesDisabled}
               />
-              <SrsActionTile
+              <LiquidGlassActionTile
                 label={t('study.queue.learn')}
                 count={counts.newDue}
                 queue="learn"
                 language={activeLanguage ?? ''}
-                tier="compact"
                 accent="warm"
                 disabled={tilesDisabled}
               />

@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 
 function assert(condition: boolean, message: string): void {
   if (!condition) {
@@ -14,6 +14,10 @@ function assertNotIncludes(haystack: string, needle: string, message: string): v
   assert(!haystack.includes(needle), `${message}: expected not to find "${needle}"`)
 }
 
+function countIncludes(haystack: string, needle: string): number {
+  return haystack.split(needle).length - 1
+}
+
 const css = readFileSync('src/index.css', 'utf8')
 const dashboard = readFileSync('src/pages/Dashboard.tsx', 'utf8')
 const dashboardPg = readFileSync('src/pages/DashboardPG.tsx', 'utf8')
@@ -24,7 +28,7 @@ const translations = readFileSync('src/lib/translations.ts', 'utf8')
 const packageJson = readFileSync('package.json', 'utf8')
 const packageLock = readFileSync('package-lock.json', 'utf8')
 const liquidGlassRenderer = readFileSync('src/components/liquid-glass/LiquidGlassRenderer.ts', 'utf8')
-const liquidGlassPopover = readFileSync('src/components/liquid-glass/LiquidGlassPopoverOverlay.tsx', 'utf8')
+const liquidGlassActionTile = readFileSync('src/components/liquid-glass/LiquidGlassActionTile.tsx', 'utf8')
 
 assertNotIncludes(
   dashboard,
@@ -68,24 +72,26 @@ assertIncludes(languageCluster, 'is-open', 'Language picker exposes an open clas
 assertNotIncludes(languageCluster, 'ChevronDown', 'Language picker trigger removes the chevron affordance')
 assertNotIncludes(languageCluster, 'PILL_GAP', 'Language picker no longer uses fixed fan-out offsets')
 assertNotIncludes(languageCluster, 'fanOffset', 'Language picker no longer fans languages off-screen')
-assertIncludes(languageCluster, 'useSkin', 'Language picker gates liquid glass by active skin')
-assertIncludes(languageCluster, "skin === 'glassy'", 'Language picker only enables liquid glass on Glassy')
-assertIncludes(languageCluster, 'LiquidGlassPopoverOverlay', 'Glassy language picker uses the vendored liquid glass popover')
-assertIncludes(
+assertNotIncludes(languageCluster, 'useSkin', 'Language picker is back to the shared plain dropdown')
+assertNotIncludes(languageCluster, 'LiquidGlassPopoverOverlay', 'Language picker no longer mounts liquid glass')
+assertNotIncludes(
   languageCluster,
   "document.querySelector('.dashboard-wave-bg canvas')",
-  'Glassy language picker samples the live dashboard wave canvas in memory',
+  'Language picker no longer samples the dashboard wave canvas',
 )
-assertIncludes(
+assertNotIncludes(
   languageCluster,
   "'/brand/cosmos/cosmos-auth.webp'",
-  'Glassy liquid glass popover keeps a static cosmos fallback image',
+  'Language picker no longer owns a liquid glass fallback image',
 )
-assertIncludes(
-  languageCluster,
-  'hasChoices && useLiquidGlassPopover && open',
-  'Glassy liquid glass renderer only mounts while the popover is open',
+assert(!existsSync('src/components/liquid-glass/LiquidGlassPopoverOverlay.tsx'), 'liquid glass popover test surface was removed')
+assertIncludes(dashboardPg, 'LiquidGlassActionTile', 'glassy dashboard uses the liquid glass action tile for one test surface')
+assert(
+  countIncludes(dashboardPg, '<LiquidGlassActionTile') === 1,
+  'glassy dashboard mounts exactly one liquid glass tile while iPhone performance is unverified',
 )
+assertIncludes(dashboardPg, 'queue="learn"', 'the first liquid glass tile is the NEU / learn tile')
+assertNotIncludes(dashboard, 'LiquidGlassActionTile', 'classic dashboard does not mount liquid glass tiles')
 
 assertNotIncludes(packageJson, '@ogtirth/liquid-glass-oss', 'Liquid glass is vendored, not installed as a dependency')
 assertNotIncludes(packageLock, '@ogtirth/liquid-glass-oss', 'Liquid glass package is not locked as a dependency')
@@ -120,19 +126,24 @@ assertIncludes(
   'Vendored renderer sizes canvas-backed textures from canvas width',
 )
 assertIncludes(
-  liquidGlassPopover,
+  liquidGlassActionTile,
   'new LiquidGlassRenderer(canvas, backgroundImage, mergedSettings)',
-  'Glassy popover uses the vendored renderer',
+  'Glassy liquid tile uses the vendored renderer',
 )
 assertIncludes(
-  liquidGlassPopover,
+  liquidGlassActionTile,
   'renderer.setCanvasSource(canvasSource)',
-  'Glassy popover forwards the live wave canvas into the renderer',
+  'Glassy liquid tile forwards the live wave canvas into the renderer',
 )
 assertIncludes(
-  liquidGlassPopover,
+  liquidGlassActionTile,
   'renderer.setBackgroundSampling(true)',
-  'Glassy popover enables shader background sampling',
+  'Glassy liquid tile enables shader background sampling',
+)
+assertIncludes(
+  liquidGlassActionTile,
+  "document.querySelector('.dashboard-wave-bg canvas')",
+  'Glassy liquid tile samples the live dashboard wave canvas in memory',
 )
 
 const welcomeRule = css.match(/\.welcome-hero\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
@@ -212,8 +223,10 @@ assertIncludes(css, 'calc(var(--app-safe-top) + 0.85rem)', 'mobile account strip
 assertIncludes(css, '.home-account-strip {', 'home account strip has explicit mobile spacing')
 assertIncludes(css, 'margin-bottom: clamp(1.45rem, 4dvh, 2.35rem)', 'mobile account strip leaves breathing room before Welcome')
 assertIncludes(css, '.language-picker::after', 'desktop language picker has a hover bridge into the panel')
-assertIncludes(css, '.skin-glassy .language-picker-panel--liquid', 'liquid language popover styling is Glassy-scoped')
-assertIncludes(css, '.liquid-glass-popover-overlay__glass', 'Glassy liquid popover has a dedicated WebGL canvas layer')
+assertNotIncludes(css, '.language-picker-panel--liquid', 'language picker no longer has liquid glass styling')
+assertNotIncludes(css, 'liquid-glass-popover', 'language picker popover glass CSS was removed')
+assertIncludes(css, '.skin-glassy .stat-tile--liquid', 'one-tile liquid material is Glassy-scoped')
+assertIncludes(css, '.liquid-glass-tile-surface__glass', 'Glassy liquid tile has a dedicated WebGL canvas layer')
 assertIncludes(css, 'rgba(5, 3, 8, 0.985)', 'language picker panel uses a near-opaque glass base')
 assertIncludes(css, 'backdrop-filter: blur(96px) saturate(1.65)', 'language picker panel uses stronger glass blur')
 assertIncludes(css, 'max-width: min(46rem, 72vw)', 'desktop Home action grid uses available width')
