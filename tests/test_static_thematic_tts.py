@@ -89,6 +89,23 @@ def make_cebuano_all_category_inventory() -> list[dict[str, Any]]:
     ]
 
 
+def make_indonesian_inventory() -> list[dict[str, Any]]:
+    return [
+        {
+            "target_language_code": "id",
+            "category_slug": "animals",
+            "level_number": 1,
+            "order": 1,
+            "concept_id": "animals.dog",
+            "target_term": "anjing",
+            "spoken_text": "anjing",
+            "english_qa_label": "dog",
+            "part_of_speech": "noun",
+            "sense": "animals",
+        }
+    ]
+
+
 def make_config(**overrides) -> StaticTtsConfig:
     base = {
         "target_language": "en",
@@ -577,6 +594,71 @@ def test_cebuano_ready_commit_uses_bisaya_profile_and_yumi_voice(monkeypatch):
     assert report["items"][0]["postprocess_mode"] == "raw"
     assert report["items"][0]["raw_duration_ms"] == 740
     assert report["items"][0]["final_duration_ms"] == 740
+
+
+def test_indonesian_ready_commit_uses_indo_profile_and_gavrila_voice(monkeypatch):
+    sb = FakeSupabase()
+    sb.storage = RecordingStorage()
+    sb.table("voices")
+    sb.table("language_profiles")
+    sb.table("guided_voice_profiles")
+    sb.table("guided_tts_assets")
+    sb.table("static_tts_asset_usages")
+    sb.table("static_tts_voice_assignments")
+    sb._tables["language_profiles"] = [
+        {"id": "profile-indo", "language": "Indonesian", "name": "Indo1", "is_active": True}
+    ]
+    sb._tables["voices"] = [
+        {
+            "id": "voice-row-id",
+            "voice_id": "voice-gavrila",
+            "name": "Gavrila",
+            "language": "Indonesian",
+            "language_code": "id",
+        }
+    ]
+
+    raw_audio = b"raw-audio" * 128
+
+    async def provider(**kwargs):
+        assert kwargs["text"] == "anjing"
+        assert kwargs["voice_id"] == "voice-gavrila"
+        assert kwargs["language_code"] == "id"
+        return raw_audio
+
+    monkeypatch.setattr("scripts.generate_static_thematic_tts._probe_duration_ms", lambda _path: 680)
+
+    report = run_inventory(
+        sb=sb,
+        inventory=make_indonesian_inventory(),
+        config=make_config(
+            target_language="id",
+            voice_profile_key="static_thematic_id_animals_gavrila_raw_v1",
+            profile_name="Indo1",
+            voice_name="Gavrila",
+            commit_db=True,
+            allow_provider_calls=True,
+            postprocess_mode="raw",
+            qa_status="ready",
+            activate_assignment=False,
+        ),
+        provider_synthesize=provider,
+    )
+
+    assert report["totals"]["generated"] == 1
+    assert report["voice_profile"]["resolved_profile_name"] == "Indo1"
+    assert report["voice_profile"]["resolved_voice_name"] == "Gavrila"
+    assert report["voice_profile"]["resolved_voice_language_code"] == "id"
+    assert sb.storage.uploads[0]["path"] == (
+        "static/v1/id/static_thematic_id_animals_gavrila_raw_v1/animals/level-1/animals.dog.mp3"
+    )
+    assert sb.storage.uploads[0]["data"] == raw_audio
+    assert sb._tables["static_tts_asset_usages"][0]["qa_status"] == "ready"
+    assert sb._tables["static_tts_voice_assignments"] == []
+    assert report["items"][0]["spoken_text"] == "anjing"
+    assert report["items"][0]["postprocess_mode"] == "raw"
+    assert report["items"][0]["raw_duration_ms"] == 680
+    assert report["items"][0]["final_duration_ms"] == 680
 
 
 def test_cebuano_inventory_rejects_english_spoken_text():
