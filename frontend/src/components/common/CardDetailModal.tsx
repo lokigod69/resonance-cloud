@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import type { ReactNode } from 'react'
 import { X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -22,6 +23,12 @@ export type CardDetailModel = {
   exampleBlock?: { target: string; base?: string }
   sections: CardDetailField[]
   chipsBelowTitle?: string[]
+  primaryAction?: {
+    label: string
+    ariaLabel: string
+    onClick: () => void
+    icon?: ReactNode
+  }
 }
 
 type CardDetailModalProps = {
@@ -269,6 +276,17 @@ export default function CardDetailModal({ model, onClose }: CardDetailModalProps
                       </span>
                     ))}
                   </div>
+                ) : null}
+                {model.primaryAction ? (
+                  <button
+                    type="button"
+                    className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--surface-glass)] px-3 py-1.5 text-sm font-semibold text-[var(--text-secondary)] transition-[background,border-color,box-shadow,color] hover:cursor-pointer hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                    onClick={model.primaryAction.onClick}
+                    aria-label={model.primaryAction.ariaLabel}
+                  >
+                    {model.primaryAction.icon}
+                    <span>{model.primaryAction.label}</span>
+                  </button>
                 ) : null}
               </header>
 

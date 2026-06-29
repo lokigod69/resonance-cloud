@@ -29,6 +29,12 @@ import {
 import { useActiveCurriculumImageSet } from '@/lib/curriculumImageSetConfig'
 import { useStaticThematicAudio } from '@/hooks/useStaticThematicAudio'
 import {
+  STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY,
+  STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY,
+  STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY,
+  getStaticThematicVoiceProfileKeys,
+} from '@/lib/staticThematicAudio'
+import {
   getPublicCategoryGroups,
   getStaticCategorySelectedItems,
   resolveStaticCategoryTargetLanguageCode,
@@ -48,13 +54,6 @@ import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
 import { curriculumEntryImagePath } from '@/lib/curriculumImagePath'
 import { useCategoryScrollReset } from './useCategoryScrollReset'
 import styles from './Categories.module.css'
-
-const STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY = 'static_thematic_en_animals_elisa_raw_v1'
-const STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY = 'static_thematic_en_animals_serafina_raw_v1'
-const STATIC_ANIMALS_RAW_PROFILE_KEYS = [
-  STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY,
-  STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY,
-]
 
 function LevelNavigation({
   previousLevelHref,
@@ -388,13 +387,19 @@ function StaticLevelDetail({
   )
   const conceptIds = useMemo(() => selectedItems.map((item) => item.conceptId), [selectedItems])
   const categorySlug = category.id ?? category.name
+  const staticVoiceProfileKeys = useMemo(
+    () => getStaticThematicVoiceProfileKeys({ targetLanguageCode, categorySlug }),
+    [categorySlug, targetLanguageCode],
+  )
+  const staticAudioEnabled = Boolean(level)
+    && (targetLanguageCode === 'ceb' || (targetLanguageCode === 'en' && categorySlug === 'animals'))
   const staticAudio = useStaticThematicAudio({
-    enabled: Boolean(level) && targetLanguageCode === 'en' && categorySlug === 'animals',
+    enabled: staticAudioEnabled,
     targetLanguageCode,
     categorySlug,
     levelNumber: level?.level ?? 0,
     conceptIds,
-    voiceProfileKeys: STATIC_ANIMALS_RAW_PROFILE_KEYS,
+    voiceProfileKeys: staticVoiceProfileKeys,
   })
 
   useEffect(() => {
@@ -553,11 +558,12 @@ function StaticLevelDetail({
               category={category}
               hasElisaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
               hasSerafinaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
+              hasCebuanoAudio={staticAudio.hasAudio(item.conceptId, STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY)}
               showMissingAudioMarker={
                 import.meta.env.DEV
-                && targetLanguageCode === 'en'
-                && categorySlug === 'animals'
+                && staticAudioEnabled
               }
+              onPlayCebuano={() => void staticAudio.play(item.conceptId, STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY)}
               onPlayElisa={() => void staticAudio.play(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
               onPlaySerafina={() => void staticAudio.play(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
             />
@@ -567,6 +573,18 @@ function StaticLevelDetail({
       <StaticCategoryEntryDetailModal
         item={selectedItem}
         category={category}
+        hasAudio={selectedItem
+          ? staticAudio.hasAudio(
+            selectedItem.conceptId,
+            targetLanguageCode === 'ceb' ? STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY : undefined,
+          )
+          : false}
+        onPlayAudio={selectedItem
+          ? () => void staticAudio.play(
+            selectedItem.conceptId,
+            targetLanguageCode === 'ceb' ? STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY : undefined,
+          )
+          : undefined}
         onClose={() => setSelectedItem(null)}
         t={t}
       />
@@ -592,7 +610,9 @@ function StaticWordCard({
   category,
   hasElisaAudio,
   hasSerafinaAudio,
+  hasCebuanoAudio,
   showMissingAudioMarker,
+  onPlayCebuano,
   onPlayElisa,
   onPlaySerafina,
 }: {
@@ -600,7 +620,9 @@ function StaticWordCard({
   category: StaticCategory
   hasElisaAudio: boolean
   hasSerafinaAudio: boolean
+  hasCebuanoAudio: boolean
   showMissingAudioMarker: boolean
+  onPlayCebuano: () => void
   onPlayElisa: () => void
   onPlaySerafina: () => void
 }) {
@@ -615,6 +637,20 @@ function StaticWordCard({
               alt=""
               className={styles.entryImage}
             />
+        {hasCebuanoAudio ? (
+          <button
+            type="button"
+            className={`${styles.staticAudioButton} ${styles.staticAudioButtonRight}`}
+            onClick={(event) => {
+              event.stopPropagation()
+              onPlayCebuano()
+            }}
+            aria-label={`Play pronunciation for ${item.targetTerm}`}
+            title={`Play ${item.targetTerm}`}
+          >
+            <Volume2 className="h-4 w-4" aria-hidden="true" />
+          </button>
+        ) : null}
         {hasSerafinaAudio ? (
           <button
             type="button"
@@ -645,7 +681,7 @@ function StaticWordCard({
             <span className={styles.staticAudioButtonBadge}>E</span>
           </button>
         ) : null}
-        {!hasElisaAudio && !hasSerafinaAudio && showMissingAudioMarker ? (
+        {!hasCebuanoAudio && !hasElisaAudio && !hasSerafinaAudio && showMissingAudioMarker ? (
           <span className={styles.staticAudioMissing} title="Missing static audio">TTS</span>
         ) : null}
       </div>
@@ -662,11 +698,15 @@ function StaticWordCard({
 function StaticCategoryEntryDetailModal({
   item,
   category,
+  hasAudio,
+  onPlayAudio,
   onClose,
   t,
 }: {
   item: SelectedCategoryVocabularyItem | null
   category: StaticCategory
+  hasAudio: boolean
+  onPlayAudio?: () => void
   onClose: () => void
   t: ReturnType<typeof useTranslation>['t']
 }) {
@@ -686,6 +726,12 @@ function StaticCategoryEntryDetailModal({
       aspect: '16:9',
     },
     primaryText: shouldShowStaticHelperTerm(item) ? item.helperTerm : undefined,
+    primaryAction: hasAudio && onPlayAudio ? {
+      label: 'Play',
+      ariaLabel: `Play pronunciation for ${item.targetTerm}`,
+      onClick: onPlayAudio,
+      icon: <Volume2 className="h-4 w-4" aria-hidden="true" />,
+    } : undefined,
     sections: [],
   }
 

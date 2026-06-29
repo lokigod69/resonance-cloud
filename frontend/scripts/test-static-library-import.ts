@@ -40,10 +40,56 @@ for (const entry of payload) {
   )
   assert.equal(entry.metadata?.source, 'static_thematic_library', `${entry.term} should identify static library source`)
   assert.equal(entry.metadata?.category_slug, 'animals', `${entry.term} should preserve category slug`)
+  assert.equal(entry.metadata?.source_category_slug, 'animals', `${entry.term} should preserve source category slug`)
   assert.equal(entry.metadata?.level, 1, `${entry.term} should preserve level`)
+  assert.equal(entry.metadata?.source_level_number, 1, `${entry.term} should preserve source level number`)
+  assert.ok(entry.metadata?.source_concept_id, `${entry.term} should preserve source concept id`)
   assert.equal(entry.metadata?.target_language, 'English', `${entry.term} should preserve target language`)
+  assert.equal(entry.metadata?.source_target_language_code, 'en', `${entry.term} should preserve source target language code`)
   assert.equal(entry.metadata?.helper_language, 'German', `${entry.term} should preserve helper language`)
 }
+
+const cebuanoPayloadWithAudio = buildStaticCategoryImportPayload(
+  animals,
+  1,
+  'Bisaya',
+  'English',
+  new Map([
+    [
+      'animals.dog',
+      {
+        target_language_code: 'ceb',
+        category_slug: 'animals',
+        level_number: 1,
+        concept_id: 'animals.dog',
+        spoken_text: 'iro',
+        public_url: 'https://cdn.example/static/ceb/animals.dog.mp3',
+        duration_ms: 603,
+        audio_version: 1,
+        voice_profile_key: 'static_thematic_ceb_yumi_raw_v1',
+        qa_status: 'ready',
+      },
+    ],
+  ]),
+)
+const cebuanoDog = cebuanoPayloadWithAudio[0]
+assert.equal(cebuanoDog.term, 'iro', 'Cebuano/Bisaya import should use target-language terms')
+assert.equal(cebuanoDog.translation, 'dog', 'Cebuano/Bisaya import should use helper-language translations')
+assert.equal(
+  cebuanoDog.tts_audio_url,
+  'https://cdn.example/static/ceb/animals.dog.mp3',
+  'static category import should copy canonical static public URL into the existing deck audio field',
+)
+assert.equal(
+  cebuanoDog.metadata?.static_tts_public_url,
+  'https://cdn.example/static/ceb/animals.dog.mp3',
+  'static category import should preserve canonical static public URL in metadata',
+)
+assert.equal(
+  cebuanoDog.metadata?.static_tts_voice_profile_key,
+  'static_thematic_ceb_yumi_raw_v1',
+  'static category import should preserve canonical static voice profile key in metadata',
+)
 
 assert.equal(
   buildStaticCategoryLevelDeckName('Animals', 1),

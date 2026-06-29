@@ -6,6 +6,7 @@ import {
   STATIC_CATEGORY_TRANSLATION_LANGUAGES,
   getPublicCategoryGroups,
   getStaticCategoryVocabularyItems,
+  type Category,
   type StaticCategoryTargetLanguageCode,
 } from '../src/data/categories.ts'
 
@@ -18,6 +19,8 @@ export type StaticThematicTtsInventoryItem = {
   english_qa_label: string
   target_term: string
   spoken_text: string
+  target_translation_is_fallback: boolean
+  spoken_text_matches_english: boolean
   part_of_speech: string
   sense: string
   helper_translations: Record<string, string>
@@ -61,34 +64,39 @@ function resolveStaticTtsTargetLanguageCode(targetLanguage: string): StaticCateg
 
 export function buildStaticThematicTtsInventory({
   targetLanguage,
-  category,
+  category = 'animals',
   level,
+  allCategories = false,
   allLevels = false,
 }: {
   targetLanguage: string
-  category: string
+  category?: string
   level?: number
+  allCategories?: boolean
   allLevels?: boolean
 }): StaticThematicTtsInventoryItem[] {
   const targetLanguageCode = resolveStaticTtsTargetLanguageCode(targetLanguage)
-  if (category !== 'animals') {
-    throw new Error('Only the Animals category is supported in this pilot.')
-  }
-  if (!allLevels && (!Number.isInteger(level) || Number(level) < 1)) {
+  if (!allCategories && !allLevels && (!Number.isInteger(level) || Number(level) < 1)) {
     throw new Error('Pass --level <number> or --all-levels.')
   }
 
-  const staticCategory = getPublicCategoryGroups()
+  const publicStaticCategories = getPublicCategoryGroups()
     .flatMap((group) => group.categories)
-    .find((item) => item.id === category)
-  if (!staticCategory?.staticWordLevels?.length) {
+    .filter((item): item is Category & { staticWordLevels: NonNullable<Category['staticWordLevels']> } => (
+      Boolean(item.staticWordLevels?.length)
+    ))
+  const categories = allCategories
+    ? publicStaticCategories
+    : publicStaticCategories.filter((item) => item.id === category)
+
+  if (categories.length === 0) {
     throw new Error(`Unsupported static category: ${category}`)
   }
 
-  const sourceItems = getStaticCategoryVocabularyItems(
+  const sourceItems = categories.flatMap((staticCategory) => getStaticCategoryVocabularyItems(
     staticCategory,
-    allLevels ? undefined : level,
-  )
+    allCategories || allLevels ? undefined : level,
+  ))
 
   const items = sourceItems.map((item): StaticThematicTtsInventoryItem => {
     const englishQaLabel = item.translations.en.term.trim()
@@ -98,9 +106,6 @@ export function buildStaticThematicTtsInventory({
     }
     const targetTerm = targetTranslation.term.trim()
     const spokenText = targetTerm
-    if (targetLanguageCode !== 'en' && normalizeTerm(spokenText) === normalizeTerm(englishQaLabel)) {
-      throw new Error(`Inventory item ${item.id} has English spoken_text for ${targetLanguageCode}: ${spokenText}`)
-    }
     return {
       target_language_code: targetLanguageCode,
       category_slug: item.categoryId,
@@ -110,6 +115,8 @@ export function buildStaticThematicTtsInventory({
       english_qa_label: englishQaLabel,
       target_term: targetTerm,
       spoken_text: spokenText,
+      target_translation_is_fallback: Boolean(targetTranslation.isFallback),
+      spoken_text_matches_english: targetLanguageCode !== 'en' && normalizeTerm(spokenText) === normalizeTerm(englishQaLabel),
       part_of_speech: item.part_of_speech,
       sense: item.sense,
       helper_translations: Object.fromEntries(
@@ -135,19 +142,33 @@ export function buildStaticThematicTtsInventory({
 export function validateInventory(items: StaticThematicTtsInventoryItem[]): void {
   const seen = new Set<string>()
   for (const item of items) {
+    if (item.target_language_code !== 'en' && item.target_translation_is_fallback) {
+      throw new Error(`Inventory item ${item.concept_id} has fallback spoken_text for ${item.target_language_code}.`)
+    }
+    if (!item.target_language_code?.trim()) throw new Error(`Inventory item ${item.concept_id} is missing target_language_code.`)
+    if (!item.category_slug?.trim()) throw new Error(`Inventory item ${item.concept_id} is missing category_slug.`)
+    if (!Number.isInteger(item.level_number) || item.level_number < 1) {
+      throw new Error(`Inventory item ${item.concept_id} is missing level_number.`)
+    }
     if (!item.concept_id?.trim()) throw new Error('Inventory item is missing concept_id.')
     if (!item.target_term?.trim()) throw new Error(`Inventory item ${item.concept_id} is missing target_term.`)
     if (!item.spoken_text?.trim()) throw new Error(`Inventory item ${item.concept_id} is missing spoken_text.`)
-    if (
-      item.target_language_code !== 'en'
-      && item.english_qa_label
-      && normalizeTerm(item.spoken_text) === normalizeTerm(item.english_qa_label)
-    ) {
-      throw new Error(`Inventory item ${item.concept_id} has English spoken_text for ${item.target_language_code}.`)
-    }
-    if (seen.has(item.concept_id)) throw new Error(`Duplicate concept_id in export: ${item.concept_id}`)
-    seen.add(item.concept_id)
+    const key = `${item.target_language_code}|${item.category_slug}|${item.concept_id}`
+    if (seen.has(key)) throw new Error(`Duplicate concept_id in export: ${item.concept_id}`)
+    seen.add(key)
   }
+}
+
+export function summarizeInventory(items: StaticThematicTtsInventoryItem[]): string {
+  const counts = new Map<string, number>()
+  for (const item of items) {
+    const key = `${item.category_slug} level ${item.level_number}`
+    counts.set(key, (counts.get(key) ?? 0) + 1)
+  }
+  return [...counts.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, count]) => `${key}: ${count}`)
+    .join('\n')
 }
 
 export function writeStaticThematicTtsInventory(items: StaticThematicTtsInventoryItem[], outPath?: string): string {
@@ -166,6 +187,7 @@ function main() {
       'target-language': { type: 'string', default: 'en' },
       category: { type: 'string', default: 'animals' },
       level: { type: 'string' },
+      'all-categories': { type: 'boolean', default: false },
       'all-levels': { type: 'boolean', default: false },
       out: { type: 'string' },
     },
@@ -176,11 +198,18 @@ function main() {
     targetLanguage: values['target-language'] ?? 'en',
     category: values.category ?? 'animals',
     level,
+    allCategories: Boolean(values['all-categories']),
     allLevels: Boolean(values['all-levels']),
   })
   const payload = writeStaticThematicTtsInventory(items, values.out)
   if (!values.out) process.stdout.write(payload)
-  else process.stdout.write(`Wrote ${items.length} static TTS inventory items to ${values.out}\n`)
+  else {
+    process.stdout.write(`Wrote ${items.length} static TTS inventory items to ${values.out}\n`)
+    process.stdout.write(`${summarizeInventory(items)}\n`)
+    if (items.length > 1200) {
+      process.stdout.write(`WARNING: inventory count ${items.length} exceeds the 1200-call paid generation gate.\n`)
+    }
+  }
 }
 
 const argv1 = process.argv[1] ?? ''

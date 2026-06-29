@@ -113,7 +113,7 @@ export function useStaticThematicAudio({
       })
       .catch((err) => {
         if (cancelled) return
-        console.error('[static-tts] playback lookup failed', err)
+        if (import.meta.env.DEV) console.error('[static-tts] playback lookup failed', err)
         setError(err)
         setAudioByConceptId(new Map())
       })
@@ -141,7 +141,7 @@ export function useStaticThematicAudio({
       await audio.play()
       return 'audio'
     } catch (err) {
-      console.error('[static-tts] playback failed', err)
+      if (import.meta.env.DEV) console.error('[static-tts] playback failed', err)
       stopStaticAudio()
       return 'none'
     }
