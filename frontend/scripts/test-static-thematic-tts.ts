@@ -211,6 +211,29 @@ assert.deepEqual(
 )
 assert.ok(!frenchLevelOne.some((item) => item.spoken_text === item.english_qa_label))
 
+const koreanLevelOne = buildStaticThematicTtsInventory({
+  targetLanguage: 'ko',
+  category: 'animals',
+  level: 1,
+})
+assert.equal(koreanLevelOne.length, 10, 'Korean Animals Level 1 should export 10 items')
+assert.deepEqual(
+  koreanLevelOne.slice(0, 4).map((item) => ({
+    concept_id: item.concept_id,
+    english_qa_label: item.english_qa_label,
+    spoken_text: item.spoken_text,
+    target_language_code: item.target_language_code,
+  })),
+  [
+    { concept_id: 'animals.dog', english_qa_label: 'dog', spoken_text: '개', target_language_code: 'ko' },
+    { concept_id: 'animals.cat', english_qa_label: 'cat', spoken_text: '고양이', target_language_code: 'ko' },
+    { concept_id: 'animals.bird', english_qa_label: 'bird', spoken_text: '새', target_language_code: 'ko' },
+    { concept_id: 'animals.fish', english_qa_label: 'fish', spoken_text: '물고기', target_language_code: 'ko' },
+  ],
+  'Korean spoken_text should preserve the existing Korean static term',
+)
+assert.ok(!koreanLevelOne.some((item) => item.spoken_text === item.english_qa_label))
+
 const cebuanoAllCategories = buildStaticThematicTtsInventory({
   targetLanguage: 'ceb',
   allCategories: true,
@@ -309,6 +332,29 @@ assert.deepEqual(frenchKeys.voiceProfileKeys, [
   'static_thematic_fr_stephyra_raw_v1',
   'static_thematic_fr_guillaume_raw_v1',
   'static_thematic_fr_adam_raw_v1',
+])
+
+const koreanKeys = buildStaticThematicPlaybackQuery({
+  targetLanguageCode: 'ko',
+  categorySlug: 'animals',
+  levelNumber: 1,
+  conceptIds: ['animals.dog'],
+  voiceProfileKeys: [
+    'static_thematic_ko_jini_raw_v1',
+    'static_thematic_ko_yuna_raw_v1',
+    'static_thematic_ko_kanna_raw_v1',
+    'static_thematic_ko_selly_raw_v1',
+    'static_thematic_ko_emily_raw_v1',
+    'static_thematic_ko_sola_raw_v1',
+  ],
+})
+assert.deepEqual(koreanKeys.voiceProfileKeys, [
+  'static_thematic_ko_jini_raw_v1',
+  'static_thematic_ko_yuna_raw_v1',
+  'static_thematic_ko_kanna_raw_v1',
+  'static_thematic_ko_selly_raw_v1',
+  'static_thematic_ko_emily_raw_v1',
+  'static_thematic_ko_sola_raw_v1',
 ])
 
 const lookup = buildStaticThematicAudioLookup([

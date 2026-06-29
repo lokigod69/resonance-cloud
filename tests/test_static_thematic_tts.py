@@ -157,6 +157,23 @@ def make_french_inventory() -> list[dict[str, Any]]:
     ]
 
 
+def make_korean_inventory() -> list[dict[str, Any]]:
+    return [
+        {
+            "target_language_code": "ko",
+            "category_slug": "animals",
+            "level_number": 1,
+            "order": 1,
+            "concept_id": "animals.dog",
+            "target_term": "개",
+            "spoken_text": "개",
+            "english_qa_label": "dog",
+            "part_of_speech": "noun",
+            "sense": "animals",
+        }
+    ]
+
+
 def make_config(**overrides) -> StaticTtsConfig:
     base = {
         "target_language": "en",
@@ -905,6 +922,71 @@ def test_french_ready_commit_uses_french_profile_and_lilly_voice(monkeypatch):
     assert report["items"][0]["postprocess_mode"] == "raw"
     assert report["items"][0]["raw_duration_ms"] == 705
     assert report["items"][0]["final_duration_ms"] == 705
+
+
+def test_korean_ready_commit_uses_korean_profile_and_jini_voice(monkeypatch):
+    sb = FakeSupabase()
+    sb.storage = RecordingStorage()
+    sb.table("voices")
+    sb.table("language_profiles")
+    sb.table("guided_voice_profiles")
+    sb.table("guided_tts_assets")
+    sb.table("static_tts_asset_usages")
+    sb.table("static_tts_voice_assignments")
+    sb._tables["language_profiles"] = [
+        {"id": "profile-ko", "language": "Korean", "name": "Korean1", "is_active": True}
+    ]
+    sb._tables["voices"] = [
+        {
+            "id": "voice-row-ko",
+            "voice_id": "voice-jini",
+            "name": "Jini",
+            "language": "Korean",
+            "language_code": "ko",
+        }
+    ]
+
+    raw_audio = b"raw-audio" * 128
+
+    async def provider(**kwargs):
+        assert kwargs["text"] == "개"
+        assert kwargs["voice_id"] == "voice-jini"
+        assert kwargs["language_code"] == "ko"
+        return raw_audio
+
+    monkeypatch.setattr("scripts.generate_static_thematic_tts._probe_duration_ms", lambda _path: 690)
+
+    report = run_inventory(
+        sb=sb,
+        inventory=make_korean_inventory(),
+        config=make_config(
+            target_language="ko",
+            voice_profile_key="static_thematic_ko_jini_raw_v1",
+            profile_name="Korean1",
+            voice_name="Jini",
+            commit_db=True,
+            allow_provider_calls=True,
+            postprocess_mode="raw",
+            qa_status="ready",
+            activate_assignment=False,
+        ),
+        provider_synthesize=provider,
+    )
+
+    assert report["totals"]["generated"] == 1
+    assert report["voice_profile"]["resolved_profile_name"] == "Korean1"
+    assert report["voice_profile"]["resolved_voice_name"] == "Jini"
+    assert report["voice_profile"]["resolved_voice_language_code"] == "ko"
+    assert sb.storage.uploads[0]["path"] == (
+        "static/v1/ko/static_thematic_ko_jini_raw_v1/animals/level-1/animals.dog.mp3"
+    )
+    assert sb.storage.uploads[0]["data"] == raw_audio
+    assert sb._tables["static_tts_asset_usages"][0]["qa_status"] == "ready"
+    assert sb._tables["static_tts_voice_assignments"] == []
+    assert report["items"][0]["spoken_text"] == "개"
+    assert report["items"][0]["postprocess_mode"] == "raw"
+    assert report["items"][0]["raw_duration_ms"] == 690
+    assert report["items"][0]["final_duration_ms"] == 690
 
 
 def test_cebuano_inventory_rejects_english_spoken_text():
