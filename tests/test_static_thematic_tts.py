@@ -123,6 +123,23 @@ def make_german_inventory() -> list[dict[str, Any]]:
     ]
 
 
+def make_spanish_inventory() -> list[dict[str, Any]]:
+    return [
+        {
+            "target_language_code": "es",
+            "category_slug": "animals",
+            "level_number": 1,
+            "order": 1,
+            "concept_id": "animals.dog",
+            "target_term": "perro",
+            "spoken_text": "perro",
+            "english_qa_label": "dog",
+            "part_of_speech": "noun",
+            "sense": "animals",
+        }
+    ]
+
+
 def make_config(**overrides) -> StaticTtsConfig:
     base = {
         "target_language": "en",
@@ -741,6 +758,71 @@ def test_german_ready_commit_uses_german_profile_and_laura_voice(monkeypatch):
     assert report["items"][0]["postprocess_mode"] == "raw"
     assert report["items"][0]["raw_duration_ms"] == 720
     assert report["items"][0]["final_duration_ms"] == 720
+
+
+def test_spanish_ready_commit_uses_spanish_profile_and_lia_voice(monkeypatch):
+    sb = FakeSupabase()
+    sb.storage = RecordingStorage()
+    sb.table("voices")
+    sb.table("language_profiles")
+    sb.table("guided_voice_profiles")
+    sb.table("guided_tts_assets")
+    sb.table("static_tts_asset_usages")
+    sb.table("static_tts_voice_assignments")
+    sb._tables["language_profiles"] = [
+        {"id": "profile-es", "language": "Spanish", "name": "Spanish1", "is_active": True}
+    ]
+    sb._tables["voices"] = [
+        {
+            "id": "voice-row-es",
+            "voice_id": "voice-lia",
+            "name": "Lia",
+            "language": "Spanish",
+            "language_code": "es",
+        }
+    ]
+
+    raw_audio = b"raw-audio" * 128
+
+    async def provider(**kwargs):
+        assert kwargs["text"] == "perro"
+        assert kwargs["voice_id"] == "voice-lia"
+        assert kwargs["language_code"] == "es"
+        return raw_audio
+
+    monkeypatch.setattr("scripts.generate_static_thematic_tts._probe_duration_ms", lambda _path: 710)
+
+    report = run_inventory(
+        sb=sb,
+        inventory=make_spanish_inventory(),
+        config=make_config(
+            target_language="es",
+            voice_profile_key="static_thematic_es_lia_raw_v1",
+            profile_name="Spanish1",
+            voice_name="Lia",
+            commit_db=True,
+            allow_provider_calls=True,
+            postprocess_mode="raw",
+            qa_status="ready",
+            activate_assignment=False,
+        ),
+        provider_synthesize=provider,
+    )
+
+    assert report["totals"]["generated"] == 1
+    assert report["voice_profile"]["resolved_profile_name"] == "Spanish1"
+    assert report["voice_profile"]["resolved_voice_name"] == "Lia"
+    assert report["voice_profile"]["resolved_voice_language_code"] == "es"
+    assert sb.storage.uploads[0]["path"] == (
+        "static/v1/es/static_thematic_es_lia_raw_v1/animals/level-1/animals.dog.mp3"
+    )
+    assert sb.storage.uploads[0]["data"] == raw_audio
+    assert sb._tables["static_tts_asset_usages"][0]["qa_status"] == "ready"
+    assert sb._tables["static_tts_voice_assignments"] == []
+    assert report["items"][0]["spoken_text"] == "perro"
+    assert report["items"][0]["postprocess_mode"] == "raw"
+    assert report["items"][0]["raw_duration_ms"] == 710
+    assert report["items"][0]["final_duration_ms"] == 710
 
 
 def test_cebuano_inventory_rejects_english_spoken_text():

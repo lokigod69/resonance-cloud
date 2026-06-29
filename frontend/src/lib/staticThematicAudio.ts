@@ -5,6 +5,10 @@ export const STATIC_THEMATIC_DE_LAURA_RAW_PROFILE_KEY = 'static_thematic_de_laur
 export const STATIC_THEMATIC_DE_WILLIAM_RAW_PROFILE_KEY = 'static_thematic_de_william_raw_v1'
 export const STATIC_THEMATIC_DE_HELMUT_RAW_PROFILE_KEY = 'static_thematic_de_helmut_raw_v1'
 export const STATIC_THEMATIC_DE_ENNIAH_RAW_PROFILE_KEY = 'static_thematic_de_enniah_raw_v1'
+export const STATIC_THEMATIC_ES_LIA_RAW_PROFILE_KEY = 'static_thematic_es_lia_raw_v1'
+export const STATIC_THEMATIC_ES_VERONICA_RAW_PROFILE_KEY = 'static_thematic_es_veronica_raw_v1'
+export const STATIC_THEMATIC_ES_EL_FARAO_RAW_PROFILE_KEY = 'static_thematic_es_el_farao_raw_v1'
+export const STATIC_THEMATIC_ES_DAVID_RAW_PROFILE_KEY = 'static_thematic_es_david_raw_v1'
 export const STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY = 'static_thematic_en_animals_elisa_raw_v1'
 export const STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY = 'static_thematic_en_animals_serafina_raw_v1'
 
@@ -35,6 +39,14 @@ export function getStaticThematicVoiceProfileKeys({
       STATIC_THEMATIC_DE_WILLIAM_RAW_PROFILE_KEY,
       STATIC_THEMATIC_DE_HELMUT_RAW_PROFILE_KEY,
       STATIC_THEMATIC_DE_ENNIAH_RAW_PROFILE_KEY,
+    ]
+  }
+  if (targetLanguageCode === 'es') {
+    return [
+      STATIC_THEMATIC_ES_LIA_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_ES_VERONICA_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_ES_EL_FARAO_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_ES_DAVID_RAW_PROFILE_KEY,
     ]
   }
   if (targetLanguageCode === 'en' && categorySlug === 'animals') {
