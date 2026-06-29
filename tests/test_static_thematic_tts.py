@@ -464,6 +464,54 @@ def test_commit_uses_configured_qa_status_and_does_not_activate_assignment_by_de
     assert report["items"][0]["postprocess"]["postprocess_mode"] == "raw"
 
 
+def test_provider_call_cap_defers_remaining_items_without_failures(monkeypatch):
+    sb = FakeSupabase()
+    sb.storage = RecordingStorage()
+    sb.table("voices")
+    sb.table("guided_voice_profiles")
+    sb.table("guided_tts_assets")
+    sb.table("static_tts_asset_usages")
+    sb.table("static_tts_voice_assignments")
+    sb._tables["voices"] = [{"voice_id": "voice-elisa", "name": "Elisa", "language_code": "en"}]
+
+    calls = 0
+
+    async def provider(**_kwargs):
+        nonlocal calls
+        calls += 1
+        return b"raw-audio" * 128
+
+    monkeypatch.setattr("scripts.generate_static_thematic_tts._probe_duration_ms", lambda _path: 740)
+
+    second_item = {
+        **make_inventory()[0],
+        "order": 2,
+        "concept_id": "animals.cat",
+        "target_term": "cat",
+        "spoken_text": "cat",
+        "english_qa_label": "cat",
+    }
+    report = run_inventory(
+        sb=sb,
+        inventory=[make_inventory()[0], second_item],
+        config=make_config(
+            voice_profile_key="static_thematic_en_animals_elisa_raw_v1",
+            voice_name="Elisa",
+            commit_db=True,
+            allow_provider_calls=True,
+            max_provider_calls=1,
+        ),
+        provider_synthesize=provider,
+    )
+
+    assert calls == 1
+    assert report["totals"]["provider_calls"] == 1
+    assert report["totals"]["generated"] == 1
+    assert report["totals"]["deferred_provider_cap"] == 1
+    assert report["totals"]["failed"] == 0
+    assert report["items"][1]["status"] == "deferred_provider_cap"
+
+
 def test_cebuano_ready_commit_uses_bisaya_profile_and_yumi_voice(monkeypatch):
     sb = FakeSupabase()
     sb.storage = RecordingStorage()
