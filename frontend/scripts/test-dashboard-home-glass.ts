@@ -18,6 +18,16 @@ function countIncludes(haystack: string, needle: string): number {
   return haystack.split(needle).length - 1
 }
 
+function assertOrdered(haystack: string, needles: string[], message: string): void {
+  let previousIndex = -1
+  for (const needle of needles) {
+    const index = haystack.indexOf(needle)
+    assert(index >= 0, `${message}: expected to find "${needle}"`)
+    assert(index > previousIndex, `${message}: expected "${needle}" after the previous marker`)
+    previousIndex = index
+  }
+}
+
 const css = readFileSync('src/index.css', 'utf8')
 const dashboard = readFileSync('src/pages/Dashboard.tsx', 'utf8')
 const dashboardPg = readFileSync('src/pages/DashboardPG.tsx', 'utf8')
@@ -53,6 +63,18 @@ assertIncludes(dashboard, '<DashboardStreak', 'classic dashboard keeps the strea
 assertIncludes(dashboardPg, '<DashboardStreak', 'glassy dashboard keeps the streak-only indicator')
 assertIncludes(dashboard, 'dashboard-action-grid', 'classic dashboard uses the compact action grid')
 assertIncludes(dashboardPg, 'dashboard-action-grid', 'glassy dashboard uses the compact action grid')
+assertIncludes(dashboard, 'dashboard-study-row', 'classic dashboard groups the three study tiles below Library')
+assertIncludes(dashboardPg, 'dashboard-study-row', 'glassy dashboard groups the three study tiles below Library')
+assertOrdered(
+  dashboard,
+  ['dashboard-library-tile', 'dashboard-study-row', 'queue="review"', 'queue="learn"', 'queue="strengthen"'],
+  'classic dashboard orders Library above the Review/Learn/Train row',
+)
+assertOrdered(
+  dashboardPg,
+  ['dashboard-library-tile', 'dashboard-study-row', 'queue="review"', 'queue="learn"', 'queue="strengthen"'],
+  'glassy dashboard orders Library above the Review/Learn/Train row',
+)
 assertIncludes(dashboard, 'dashboard-mastered-pill', 'classic dashboard uses compact mastered summary')
 assertIncludes(dashboardPg, 'dashboard-mastered-pill', 'glassy dashboard uses compact mastered summary')
 assertNotIncludes(dashboard, 'mastered-circle', 'classic dashboard removes the oversized mastered circle')
@@ -183,6 +205,35 @@ assertNotIncludes(glassyLibraryTileRule, 'rgba(0, 0, 0, 0.86)', 'glassy Library 
 const glassyDisabledStatTileRule = css.match(/\.skin-glassy\s+\.stat-tile:disabled\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
 assert(glassyDisabledStatTileRule.length > 0, 'glassy zero-count stat tile override exists')
 assertIncludes(glassyDisabledStatTileRule, 'opacity: 1', 'glassy zero-count tiles keep the same frost opacity')
+const classicStatTileRule = css.match(/\.skin-classic\s+\.stat-tile\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+assert(classicStatTileRule.length > 0, 'classic stat tile frost override exists')
+assertIncludes(
+  classicStatTileRule,
+  'background: color-mix(in srgb, var(--nav-bg) 82%, transparent)',
+  'classic stat tiles mirror the Glassy translucent base',
+)
+assertIncludes(
+  classicStatTileRule,
+  'backdrop-filter: blur(48px) saturate(1.5)',
+  'classic stat tiles mirror the Glassy header-grade blur and saturation',
+)
+assertNotIncludes(classicStatTileRule, 'rgba(0, 0, 0, 0.86)', 'classic stat tile override removes the near-opaque dark base')
+const classicLibraryTileRule = css.match(/\.skin-classic\s+\.dashboard-library-tile\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+assert(classicLibraryTileRule.length > 0, 'classic Library tile frost override exists')
+assertIncludes(
+  classicLibraryTileRule,
+  'background: color-mix(in srgb, var(--nav-bg) 82%, transparent)',
+  'classic Library tile mirrors the Glassy translucent base',
+)
+assertIncludes(
+  classicLibraryTileRule,
+  'backdrop-filter: blur(48px) saturate(1.5)',
+  'classic Library tile mirrors the Glassy header-grade blur and saturation',
+)
+assertNotIncludes(classicLibraryTileRule, 'rgba(0, 0, 0, 0.86)', 'classic Library tile override removes the near-opaque dark base')
+const classicDisabledStatTileRule = css.match(/\.skin-classic\s+\.stat-tile:disabled\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+assert(classicDisabledStatTileRule.length > 0, 'classic zero-count stat tile override exists')
+assertIncludes(classicDisabledStatTileRule, 'opacity: 1', 'classic zero-count tiles keep the same frost opacity')
 const todayPanelRule = css.match(/^\.dashboard-today-panel\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assert(todayPanelRule.length > 0, 'streak surface CSS rule exists')
 assertIncludes(todayPanelRule, 'rgba(0, 0, 0, 0.86)', 'streak surface uses the same opaque frost base')
@@ -218,8 +269,12 @@ for (const [selector, label] of [
 }
 const desktopActionGridRule = css.match(/@media \(min-width: 768px\)\s*\{[\s\S]*?\.dashboard-action-grid\s*\{[\s\S]*?\n\s*\}[\s\S]*?\n\}/)?.[0] ?? ''
 assertIncludes(desktopActionGridRule, 'margin-top: clamp(', 'desktop action grid has a bounded shared spacer')
+assertIncludes(desktopActionGridRule, '40dvh', 'desktop action grid is nudged relative to the 40dvh wave horizon')
 assertNotIncludes(css, 'margin-top: auto', 'dashboard action grid is never bottom-pinned with auto margin')
 assertIncludes(css, '.dashboard-library-tile', 'dashboard Library tile has dedicated glass styling')
+assertIncludes(css, '.dashboard-study-row', 'dashboard has a dedicated row for the three study tiles')
+assertIncludes(css, 'grid-template-columns: repeat(3, minmax(0, 1fr))', 'study tiles sit in a single three-column row')
+assertIncludes(css, 'to right,', 'mobile study tile divider rotates horizontally for narrow columns')
 assertIncludes(css, '@media (hover: hover) and (pointer: fine)', 'desktop language picker opens on pointer hover')
 assertIncludes(css, '.language-picker:hover .language-picker-panel', 'desktop language picker keeps hover behavior')
 assertIncludes(css, 'calc(var(--app-safe-top) + 0.85rem)', 'mobile account strip sits below the iOS safe area')
@@ -232,8 +287,8 @@ assertNotIncludes(css, '.stat-tile--liquid', 'tiles no longer use the WebGL liqu
 assertNotIncludes(css, 'liquid-glass-tile', 'tile WebGL canvas CSS was removed')
 assertIncludes(css, 'rgba(5, 3, 8, 0.985)', 'language picker panel uses a near-opaque glass base')
 assertIncludes(css, 'backdrop-filter: blur(96px) saturate(1.65)', 'language picker panel uses stronger glass blur')
-assertIncludes(css, 'max-width: min(46rem, 72vw)', 'desktop Home action grid uses available width')
-assertIncludes(css, 'min-height: 8.25rem', 'desktop Home action tiles are larger than mobile tiles')
+assertIncludes(css, 'max-width: min(56rem, 78vw)', 'desktop Home action grid uses available width for three tiles')
+assertIncludes(css, 'min-height: clamp(5.5rem, 9dvh, 6.75rem)', 'desktop Home action tiles are larger than mobile tiles')
 assertIncludes(
   css,
   '@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))',

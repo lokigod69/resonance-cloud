@@ -166,34 +166,7 @@ export default function Dashboard() {
 
             <DashboardStreak streak={studyStreak.streak} />
 
-            <section className="dashboard-action-grid grid w-full grid-cols-2 gap-2.5 sm:gap-3">
-              <SrsActionTile
-                label={t('study.queue.review')}
-                count={reviewDue}
-                queue="review"
-                language={activeLanguage ?? ''}
-                tier="compact"
-                accent="cool"
-                disabled={tilesDisabled}
-              />
-              <SrsActionTile
-                label={t('study.queue.learn')}
-                count={counts.newDue}
-                queue="learn"
-                language={activeLanguage ?? ''}
-                tier="compact"
-                accent="warm"
-                disabled={tilesDisabled}
-              />
-              <SrsActionTile
-                label={t('study.queue.strengthen')}
-                count={counts.learning}
-                queue="strengthen"
-                language={activeLanguage ?? ''}
-                tier="compact"
-                accent="neutral"
-                disabled={tilesDisabled}
-              />
+            <section className="dashboard-action-grid w-full">
               <Link to={dashboardLibraryHref} className="dashboard-library-tile dashboard-library-action">
                 <Library className="dashboard-library-icon" aria-hidden="true" />
                 <span className="dashboard-library-copy">
@@ -203,6 +176,35 @@ export default function Dashboard() {
                   ) : null}
                 </span>
               </Link>
+              <div className="dashboard-study-row">
+                <SrsActionTile
+                  label={t('study.queue.review')}
+                  count={reviewDue}
+                  queue="review"
+                  language={activeLanguage ?? ''}
+                  tier="compact"
+                  accent="cool"
+                  disabled={tilesDisabled}
+                />
+                <SrsActionTile
+                  label={t('study.queue.learn')}
+                  count={counts.newDue}
+                  queue="learn"
+                  language={activeLanguage ?? ''}
+                  tier="compact"
+                  accent="warm"
+                  disabled={tilesDisabled}
+                />
+                <SrsActionTile
+                  label={t('study.queue.strengthen')}
+                  count={counts.learning}
+                  queue="strengthen"
+                  language={activeLanguage ?? ''}
+                  tier="compact"
+                  accent="neutral"
+                  disabled={tilesDisabled}
+                />
+              </div>
             </section>
 
             <div className="dashboard-mastered-pill" aria-live="polite">
