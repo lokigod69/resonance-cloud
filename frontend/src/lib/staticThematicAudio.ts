@@ -6,6 +6,10 @@ export const STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY = 'static_thematic_ceb_yum
 // assigned voice's rows for a given level, so resolution self-selects without dupes.
 export const STATIC_THEMATIC_ID_GAVRILA_RAW_PROFILE_KEY = 'static_thematic_id_gavrila_raw_v1'
 export const STATIC_THEMATIC_ID_BLASTO_RAW_PROFILE_KEY = 'static_thematic_id_blasto_raw_v1'
+// Even-level Blasto playback/import uses the headroom-capped +8 dB boosted copy
+// (raw Blasto was ~16 dB quieter than Gavrila). Raw assets are retained but their
+// usage rows are rejected, so only the boosted rows appear in static_tts_playback.
+export const STATIC_THEMATIC_ID_BLASTO_GAIN8_PROFILE_KEY = 'static_thematic_id_blasto_gain8_rawsource_v1'
 export const STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY = 'static_thematic_en_animals_elisa_raw_v1'
 export const STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY = 'static_thematic_en_animals_serafina_raw_v1'
 
@@ -31,7 +35,7 @@ export function getStaticThematicVoiceProfileKeys({
 }): string[] | undefined {
   if (targetLanguageCode === 'ceb') return [STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY]
   if (targetLanguageCode === 'id') {
-    return [STATIC_THEMATIC_ID_GAVRILA_RAW_PROFILE_KEY, STATIC_THEMATIC_ID_BLASTO_RAW_PROFILE_KEY]
+    return [STATIC_THEMATIC_ID_GAVRILA_RAW_PROFILE_KEY, STATIC_THEMATIC_ID_BLASTO_GAIN8_PROFILE_KEY]
   }
   if (targetLanguageCode === 'en' && categorySlug === 'animals') {
     return [STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY]

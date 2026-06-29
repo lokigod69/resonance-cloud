@@ -141,8 +141,11 @@ Checks: `npm run typecheck`, targeted `eslint`, `npm run test:static-thematic-tt
 
 ## Known limitations
 
-- **Blasto loudness**: ~16 dB quieter than Gavrila; a future boost/normalization pass is
-  recommended. Not addressed here by rule.
+- **Blasto loudness**: ~16 dB quieter than Gavrila. **Addressed in follow-up** — a safe
+  headroom-capped +8 dB boost now serves even-level playback from
+  `static_thematic_id_blasto_gain8_rawsource_v1`; raw Blasto usages were rejected (files
+  retained). See
+  [STATIC_THEMATIC_TTS_ID_BLASTO_GAIN8_BOOST_REPORT.md](STATIC_THEMATIC_TTS_ID_BLASTO_GAIN8_BOOST_REPORT.md).
 - 80 of 1850 concepts share identical Indonesian terms within a voice and reuse one cached
   asset (1770 distinct storage objects); correct behavior (same word = same pronunciation).
 - Generation ran in a dedicated worktree off `61f3c245` (`orchestrator-id-static-tts`) to avoid
