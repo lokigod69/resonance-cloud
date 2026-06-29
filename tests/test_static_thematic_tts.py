@@ -70,6 +70,25 @@ def make_cebuano_inventory() -> list[dict[str, Any]]:
     ]
 
 
+def make_cebuano_all_category_inventory() -> list[dict[str, Any]]:
+    return [
+        make_cebuano_inventory()[0],
+        {
+            "target_language_code": "ceb",
+            "category_slug": "fruits",
+            "level_number": 2,
+            "order": 3,
+            "concept_id": "fruits.blueberry",
+            "target_term": "blueberry",
+            "spoken_text": "blueberry",
+            "english_qa_label": "blueberry",
+            "part_of_speech": "noun",
+            "sense": "fruit",
+            "target_translation_is_fallback": False,
+        },
+    ]
+
+
 def make_config(**overrides) -> StaticTtsConfig:
     base = {
         "target_language": "en",
@@ -241,6 +260,102 @@ def test_commit_without_allow_provider_calls_refuses_generation():
         )
 
 
+def test_all_category_cebuano_inventory_allows_explicit_same_as_english_terms():
+    sb = FakeSupabase()
+    sb.table("language_profiles")
+    sb.table("guided_voice_profiles")
+    sb._tables["language_profiles"] = [
+        {"id": "profile-bisaya", "language": "Bisaya", "name": "Bisaya1", "is_active": True}
+    ]
+
+    report = run_inventory(
+        sb=sb,
+        inventory=make_cebuano_all_category_inventory(),
+        config=make_config(
+            target_language="ceb",
+            category=None,
+            voice_profile_key="static_thematic_ceb_yumi_raw_v1",
+            profile_name="Bisaya",
+            provider_voice_id="voice-yumi",
+            voice_name=None,
+            qa_status="ready",
+        ),
+    )
+
+    assert report["category"] == "all"
+    assert report["totals"]["items"] == 2
+    assert report["totals"]["would_generate"] == 2
+
+
+def test_candidate_qa_status_is_not_supported():
+    sb = FakeSupabase()
+    sb.table("language_profiles")
+    sb.table("guided_voice_profiles")
+    sb._tables["language_profiles"] = [
+        {"id": "profile-bisaya", "language": "Bisaya", "name": "Bisaya", "is_active": True}
+    ]
+
+    with pytest.raises(RuntimeError, match="--qa-status"):
+        run_inventory(
+            sb=sb,
+            inventory=make_cebuano_inventory(),
+            config=make_config(
+                target_language="ceb",
+                voice_profile_key="static_thematic_ceb_animals_yumi_raw_v1",
+                profile_name="Bisaya",
+                provider_voice_id="voice-yumi",
+                voice_name=None,
+                qa_status="candidate",
+            ),
+        )
+
+
+def test_language_level_assignment_uses_null_category_slug():
+    sb = FakeSupabase()
+    settings_hash = voice_settings_hash(DEFAULT_VOICE_SETTINGS)
+    sb.table("language_profiles")
+    sb.table("guided_voice_profiles")
+    sb.table("static_tts_voice_assignments")
+    sb._tables["language_profiles"] = [
+        {"id": "profile-bisaya", "language": "Bisaya", "name": "Bisaya1", "is_active": True}
+    ]
+    sb._tables["guided_voice_profiles"] = [
+        {
+            "id": "profile-1",
+            "voice_profile_key": "static_thematic_ceb_yumi_raw_v1",
+            "provider": "elevenlabs",
+            "target_language_code": "ceb",
+            "provider_voice_id": "voice-yumi",
+            "provider_model_id": "eleven_flash_v2_5",
+            "output_format": "mp3_44100_128",
+            "voice_settings": dict(DEFAULT_VOICE_SETTINGS),
+            "voice_settings_hash": settings_hash,
+            "assignment_version": 1,
+            "active": True,
+            "priority": 100,
+        }
+    ]
+
+    report = run_inventory(
+        sb=sb,
+        inventory=[],
+        config=make_config(
+            target_language="ceb",
+            category=None,
+            voice_profile_key="static_thematic_ceb_yumi_raw_v1",
+            profile_name="Bisaya",
+            voice_name="Yumi",
+            commit_db=True,
+            allow_provider_calls=False,
+            activate_assignment=True,
+        ),
+    )
+
+    assert report["totals"]["items"] == 0
+    assert sb._tables["static_tts_voice_assignments"][0]["category_slug"] is None
+    assert sb._tables["static_tts_voice_assignments"][0]["voice_profile_key"] == "static_thematic_ceb_yumi_raw_v1"
+
+
 def test_skips_existing_ready_asset_and_usage():
     sb = FakeSupabase()
     sb.storage = RecordingStorage()
@@ -349,7 +464,7 @@ def test_commit_uses_configured_qa_status_and_does_not_activate_assignment_by_de
     assert report["items"][0]["postprocess"]["postprocess_mode"] == "raw"
 
 
-def test_cebuano_candidate_commit_uses_bisaya_profile_and_yumi_voice(monkeypatch):
+def test_cebuano_ready_commit_uses_bisaya_profile_and_yumi_voice(monkeypatch):
     sb = FakeSupabase()
     sb.storage = RecordingStorage()
     sb.table("voices")
@@ -392,7 +507,7 @@ def test_cebuano_candidate_commit_uses_bisaya_profile_and_yumi_voice(monkeypatch
             commit_db=True,
             allow_provider_calls=True,
             postprocess_mode="raw",
-            qa_status="candidate",
+            qa_status="ready",
             activate_assignment=False,
         ),
         provider_synthesize=provider,
@@ -407,7 +522,7 @@ def test_cebuano_candidate_commit_uses_bisaya_profile_and_yumi_voice(monkeypatch
         "static/v1/ceb/static_thematic_ceb_animals_yumi_raw_v1/animals/level-1/animals.dog.mp3"
     )
     assert sb.storage.uploads[0]["data"] == raw_audio
-    assert sb._tables["static_tts_asset_usages"][0]["qa_status"] == "candidate"
+    assert sb._tables["static_tts_asset_usages"][0]["qa_status"] == "ready"
     assert sb._tables["static_tts_voice_assignments"] == []
     assert report["items"][0]["english_qa_label"] == "dog"
     assert report["items"][0]["spoken_text"] == "iro"
@@ -436,7 +551,7 @@ def test_cebuano_inventory_rejects_english_spoken_text():
                 profile_name="Bisaya",
                 provider_voice_id="voice-yumi",
                 voice_name=None,
-                qa_status="candidate",
+                qa_status="ready",
             ),
         )
 

@@ -101,15 +101,38 @@ const allAnimals = buildStaticThematicTtsInventory({
 })
 assert.equal(allAnimals.length, 100, 'English Animals all-level export should include 100 words')
 
+const cebuanoFruitsLevelTwo = buildStaticThematicTtsInventory({
+  targetLanguage: 'ceb',
+  category: 'fruits',
+  level: 2,
+})
+assert.equal(cebuanoFruitsLevelTwo.length, 10, 'Cebuano/Bisaya Fruits Level 2 should export 10 items')
+assert.equal(
+  cebuanoFruitsLevelTwo.find((item) => item.concept_id === 'fruits.blueberry')?.spoken_text,
+  'blueberry',
+  'Cebuano/Bisaya export should allow same-as-English terms when static data explicitly supplies them',
+)
+
+const cebuanoAllCategories = buildStaticThematicTtsInventory({
+  targetLanguage: 'ceb',
+  allCategories: true,
+  allLevels: true,
+})
+assert.equal(cebuanoAllCategories.length, 1850, 'Cebuano/Bisaya all-category export should include every public static thematic item')
+assert.ok(cebuanoAllCategories.every((item) => item.target_language_code === 'ceb'))
+assert.ok(cebuanoAllCategories.every((item) => item.category_slug))
+assert.ok(cebuanoAllCategories.every((item) => Number.isInteger(item.level_number) && item.level_number > 0))
+assert.ok(cebuanoAllCategories.every((item) => item.spoken_text.trim().length > 0))
+assert.equal(
+  new Set(cebuanoAllCategories.map((item) => `${item.target_language_code}|${item.category_slug}|${item.concept_id}`)).size,
+  cebuanoAllCategories.length,
+  'all-category export should not duplicate concept ids within a target language/category',
+)
+
 assert.throws(
   () => buildStaticThematicTtsInventory({ targetLanguage: 'not-a-language', category: 'animals', level: 1 }),
   /Unsupported target language/,
   'exporter should reject unsupported target-language requests',
-)
-assert.throws(
-  () => buildStaticThematicTtsInventory({ targetLanguage: 'en', category: 'fruits', level: 1 }),
-  /Only the Animals category/,
-  'exporter should reject non-Animals pilot requests',
 )
 assert.throws(
   () => writeStaticThematicTtsInventory([{ ...levelOne[0] }, { ...levelOne[0] }]),
@@ -118,20 +141,20 @@ assert.throws(
 )
 
 const query = buildStaticThematicPlaybackQuery({
-  targetLanguageCode: 'en',
-  categorySlug: 'animals',
+  targetLanguageCode: 'ceb',
+  categorySlug: 'fruits',
   levelNumber: 1,
-  conceptIds: ['animals.dog', 'animals.cat'],
-  voiceProfileKeys: ['static_thematic_en_animals_elisa_raw_v1', 'static_thematic_en_animals_serafina_raw_v1'],
+  conceptIds: ['fruits.apple', 'fruits.banana'],
+  voiceProfileKeys: ['static_thematic_ceb_yumi_raw_v1'],
 })
 assert.equal(query.table, 'static_tts_playback')
 assert.deepEqual(query.filters, {
-  target_language_code: 'en',
-  category_slug: 'animals',
+  target_language_code: 'ceb',
+  category_slug: 'fruits',
   level_number: 1,
 })
-assert.deepEqual(query.conceptIds, ['animals.dog', 'animals.cat'])
-assert.deepEqual(query.voiceProfileKeys, ['static_thematic_en_animals_elisa_raw_v1', 'static_thematic_en_animals_serafina_raw_v1'])
+assert.deepEqual(query.conceptIds, ['fruits.apple', 'fruits.banana'])
+assert.deepEqual(query.voiceProfileKeys, ['static_thematic_ceb_yumi_raw_v1'])
 
 const lookup = buildStaticThematicAudioLookup([
   {

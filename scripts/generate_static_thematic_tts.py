@@ -1,4 +1,4 @@
-"""Generate static thematic TTS assets for the English Animals pilot.
+"""Generate static thematic TTS assets.
 
 Default mode is a dry run. The script only calls ElevenLabs when both
 ``--commit-db`` and ``--allow-provider-calls`` are present.
@@ -39,7 +39,7 @@ from src.services.guided_tts.inventory import (
 ProviderCallable = Callable[..., bytes | Awaitable[bytes]]
 AUDIO_VERSION = 1
 SUPPORTED_TARGET_LANGUAGES = {"en", "ceb"}
-SUPPORTED_QA_STATUSES = {"pending", "ready", "approved", "candidate", "rejected", "failed"}
+SUPPORTED_QA_STATUSES = {"pending", "ready", "approved", "rejected", "failed"}
 CEBUANO_LANGUAGE_ALIASES = {"ceb", "cebuano", "sebuano", "bisaya"}
 ENGLISH_ANIMALS_LEVEL_1_WORDS = {
     "dog",
@@ -58,7 +58,7 @@ ENGLISH_ANIMALS_LEVEL_1_WORDS = {
 @dataclass(frozen=True)
 class StaticTtsConfig:
     target_language: str
-    category: str
+    category: str | None
     voice_profile_key: str
     profile_name: str | None
     voice_name: str | None
@@ -132,9 +132,7 @@ def _normalize_label(value: str | None) -> str:
 
 def _validate_scope(config: StaticTtsConfig) -> None:
     if config.target_language not in SUPPORTED_TARGET_LANGUAGES:
-        raise RuntimeError("Only --target-language en or ceb is supported for this pilot.")
-    if config.category != "animals":
-        raise RuntimeError("Only --category animals is supported for this pilot.")
+        raise RuntimeError("Only --target-language en or ceb is supported.")
     if config.force_regenerate and config.skip_existing:
         raise RuntimeError("Use either --skip-existing or --force-regenerate, not both.")
     if config.commit_db and not config.allow_provider_calls and config.force_regenerate:
@@ -142,7 +140,7 @@ def _validate_scope(config: StaticTtsConfig) -> None:
     if config.postprocess_mode not in {"raw", "safe"}:
         raise RuntimeError("--postprocess-mode must be raw or safe.")
     if config.qa_status not in SUPPORTED_QA_STATUSES:
-        raise RuntimeError("--qa-status must be pending, ready, approved, candidate, rejected, or failed.")
+        raise RuntimeError("--qa-status must be pending, ready, approved, rejected, or failed.")
     if config.max_provider_calls < 0:
         raise RuntimeError("--max-provider-calls must be zero or greater.")
 
@@ -155,8 +153,17 @@ def _validate_inventory(items: list[dict[str, Any]], config: StaticTtsConfig) ->
             raise RuntimeError(
                 f"Inventory item {item.get('concept_id')} is not target_language_code={config.target_language}."
             )
-        if item.get("category_slug") != config.category:
-            raise RuntimeError(f"Inventory item {item.get('concept_id')} is not category_slug=animals.")
+        category_slug = str(item.get("category_slug") or "").strip()
+        if not category_slug:
+            raise RuntimeError(f"Inventory item {item.get('concept_id')} is missing category_slug.")
+        if config.category and category_slug != config.category:
+            raise RuntimeError(f"Inventory item {item.get('concept_id')} is not category_slug={config.category}.")
+        try:
+            level_number = int(item.get("level_number") or 0)
+        except (TypeError, ValueError):
+            level_number = 0
+        if level_number < 1:
+            raise RuntimeError(f"Inventory item {item.get('concept_id')} is missing level_number.")
         concept_id = str(item.get("concept_id") or "").strip()
         spoken_text = str(item.get("spoken_text") or "").strip()
         english_qa_label = str(item.get("english_qa_label") or item.get("source_concept") or "").strip()
@@ -165,18 +172,20 @@ def _validate_inventory(items: list[dict[str, Any]], config: StaticTtsConfig) ->
         if not spoken_text:
             raise RuntimeError(f"Inventory item {concept_id} is missing spoken_text.")
         if config.target_language != "en":
+            if item.get("target_translation_is_fallback") is True:
+                raise RuntimeError(f"Inventory item {concept_id} has fallback spoken_text for {config.target_language}.")
             normalized_spoken = _normalize_label(spoken_text)
-            if english_qa_label and normalized_spoken == _normalize_label(english_qa_label):
-                raise RuntimeError(f"Inventory item {concept_id} has English spoken_text for {config.target_language}.")
             if (
                 config.target_language == "ceb"
-                and int(item.get("level_number") or 0) == 1
+                and category_slug == "animals"
+                and level_number == 1
                 and normalized_spoken in ENGLISH_ANIMALS_LEVEL_1_WORDS
             ):
                 raise RuntimeError(f"Inventory item {concept_id} has English spoken_text for Cebuano/Bisaya.")
-        if concept_id in seen:
+        key = f"{config.target_language}|{category_slug}|{concept_id}"
+        if key in seen:
             raise RuntimeError(f"Duplicate concept_id in inventory: {concept_id}")
-        seen.add(concept_id)
+        seen.add(key)
         out.append(item)
     if config.limit is not None:
         return out[: max(0, config.limit)]
@@ -331,7 +340,7 @@ def resolve_or_upsert_voice_profile(sb, config: StaticTtsConfig) -> dict[str, An
         "active": True,
         "priority": 100,
         "notes": (
-            f"Static thematic {config.target_language} Animals pilot voice"
+            f"Static thematic {config.target_language} voice"
             f"{f' resolved from {resolved_name}' if resolved_name else ''}."
         ),
         "resolved_profile_name": resolved_profile_name,
@@ -369,22 +378,27 @@ def resolve_or_upsert_voice_profile(sb, config: StaticTtsConfig) -> dict[str, An
 
 
 def _upsert_assignment(sb, config: StaticTtsConfig) -> None:
-    existing = (
+    existing_query = (
         sb.table("static_tts_voice_assignments")
         .select("*")
         .eq("target_language_code", config.target_language)
-        .eq("category_slug", config.category)
         .eq("voice_profile_key", config.voice_profile_key)
         .eq("audio_version", AUDIO_VERSION)
-        .execute()
-        .data
-        or []
     )
+    if config.category is None:
+        existing_query = existing_query.is_("category_slug", "null")
+    else:
+        existing_query = existing_query.eq("category_slug", config.category)
+    existing = existing_query.execute().data or []
     payload = {
         "target_language_code": config.target_language,
         "category_slug": config.category,
         "voice_profile_key": config.voice_profile_key,
-        "label": f"{config.target_language} Animals static thematic TTS pilot",
+        "label": (
+            f"{config.target_language} static thematic TTS"
+            if config.category is None
+            else f"{config.target_language} {config.category} static thematic TTS"
+        ),
         "active": True,
         "priority": 100,
         "audio_version": AUDIO_VERSION,
@@ -417,6 +431,46 @@ def _find_usage(
         or []
     )
     return rows[0] if rows else None
+
+
+def _usage_lookup_key(target_language_code: str, category_slug: str, concept_id: str) -> str:
+    return f"{target_language_code}|{category_slug}|{concept_id}"
+
+
+def _load_existing_usages(
+    sb,
+    *,
+    target_language_code: str,
+    voice_profile_key: str,
+    category_slug: str | None,
+) -> dict[str, dict[str, Any]]:
+    query = (
+        sb.table("static_tts_asset_usages")
+        .select("*")
+        .eq("target_language_code", target_language_code)
+        .eq("voice_profile_key", voice_profile_key)
+        .eq("audio_version", AUDIO_VERSION)
+    )
+    if category_slug:
+        query = query.eq("category_slug", category_slug)
+    rows = query.execute().data or []
+    return {
+        _usage_lookup_key(row["target_language_code"], row["category_slug"], row["concept_id"]): row
+        for row in rows
+    }
+
+
+def _load_existing_assets_by_cache_key_chunked(
+    sb,
+    cache_keys: list[str],
+    *,
+    chunk_size: int = 100,
+) -> dict[str, dict[str, Any]]:
+    out: dict[str, dict[str, Any]] = {}
+    keys = [key for key in dict.fromkeys(cache_keys) if key]
+    for start in range(0, len(keys), chunk_size):
+        out.update(guided_db.load_existing_assets_by_cache_key(sb, keys[start : start + chunk_size]))
+    return out
 
 
 def _upsert_static_usage(
@@ -659,23 +713,11 @@ def run_inventory(
     if config.commit_db and config.activate_assignment:
         _upsert_assignment(sb, config)
 
-    report_items: list[dict[str, Any]] = []
-    totals = {
-        "items": len(items),
-        "existing_ready_assets": 0,
-        "existing_usages": 0,
-        "skipped_existing": 0,
-        "would_generate": 0,
-        "generated": 0,
-        "failed": 0,
-        "provider_calls": 0,
-    }
-    generated_cache: dict[str, str] = {}
-
+    settings_hash = profile["voice_settings_hash"]
+    prepared_items: list[dict[str, Any]] = []
     for item in items:
         normalized = normalize_spoken_text(item["spoken_text"])
         th = text_hash(normalized)
-        settings_hash = profile["voice_settings_hash"]
         cache_key = build_cache_key(
             provider=profile.get("provider") or DEFAULT_PROVIDER,
             target_language_code=item["target_language_code"],
@@ -694,13 +736,49 @@ def run_inventory(
             level_number=int(item["level_number"]),
             concept_id=item["concept_id"],
         )
-        existing_asset = guided_db.load_existing_assets_by_cache_key(sb, [cache_key]).get(cache_key)
-        existing_usage = _find_usage(
-            sb,
-            target_language_code=item["target_language_code"],
-            category_slug=item["category_slug"],
-            concept_id=item["concept_id"],
-            voice_profile_key=config.voice_profile_key,
+        prepared_items.append(
+            {
+                "item": item,
+                "normalized": normalized,
+                "text_hash": th,
+                "cache_key": cache_key,
+                "storage_path": storage_path,
+            }
+        )
+
+    existing_assets_by_cache_key = _load_existing_assets_by_cache_key_chunked(
+        sb,
+        [prepared["cache_key"] for prepared in prepared_items],
+    )
+    existing_usages_by_key = _load_existing_usages(
+        sb,
+        target_language_code=config.target_language,
+        voice_profile_key=config.voice_profile_key,
+        category_slug=config.category,
+    )
+
+    report_items: list[dict[str, Any]] = []
+    totals = {
+        "items": len(items),
+        "existing_ready_assets": 0,
+        "existing_usages": 0,
+        "skipped_existing": 0,
+        "would_generate": 0,
+        "generated": 0,
+        "failed": 0,
+        "provider_calls": 0,
+    }
+    generated_cache: dict[str, str] = {}
+
+    for prepared in prepared_items:
+        item = prepared["item"]
+        normalized = prepared["normalized"]
+        th = prepared["text_hash"]
+        cache_key = prepared["cache_key"]
+        storage_path = prepared["storage_path"]
+        existing_asset = existing_assets_by_cache_key.get(cache_key)
+        existing_usage = existing_usages_by_key.get(
+            _usage_lookup_key(item["target_language_code"], item["category_slug"], item["concept_id"])
         )
         asset_ready = existing_asset is not None and existing_asset.get("status") == "ready"
         if asset_ready:
@@ -851,7 +929,7 @@ def run_inventory(
     return {
         "mode": "commit" if config.commit_db else "dry-run",
         "target_language": config.target_language,
-        "category": config.category,
+        "category": config.category or "all",
         "voice_profile": {
             "voice_profile_key": config.voice_profile_key,
             "target_language_code": profile.get("target_language_code"),
@@ -898,13 +976,25 @@ def _load_inventory(path: str) -> list[dict[str, Any]]:
 
 def write_listening_html(report: dict[str, Any], out_path: str) -> None:
     rows: list[str] = []
-    for item in report.get("items") or []:
+    items = sorted(
+        report.get("items") or [],
+        key=lambda item: (
+            str(item.get("category_slug") or ""),
+            int(item.get("level_number") or 0),
+            int(item.get("order") or 0),
+            str(item.get("concept_id") or ""),
+        ),
+    )
+    for item in items:
         public_url = str(item.get("public_url") or "")
         if not public_url:
             continue
         rows.append(
             "<tr>"
+            f"<td>{html.escape(str(item.get('category_slug') or ''))}</td>"
+            f"<td>{html.escape(str(item.get('level_number') or ''))}</td>"
             f"<td>{html.escape(str(item.get('concept_id') or ''))}</td>"
+            f"<td>{html.escape(str(item.get('target_term') or ''))}</td>"
             f"<td>{html.escape(str(item.get('english_qa_label') or ''))}</td>"
             f"<td>{html.escape(str(item.get('spoken_text') or ''))}</td>"
             f"<td><audio controls preload=\"none\" src=\"{html.escape(public_url, quote=True)}\"></audio></td>"
@@ -916,7 +1006,7 @@ def write_listening_html(report: dict[str, Any], out_path: str) -> None:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cebuano Animals Level 1 Yumi Raw TTS</title>
+  <title>Static Thematic TTS Listening Index</title>
   <style>
     body { font-family: system-ui, sans-serif; margin: 24px; color: #111827; }
     table { border-collapse: collapse; width: 100%; }
@@ -926,10 +1016,10 @@ def write_listening_html(report: dict[str, Any], out_path: str) -> None:
   </style>
 </head>
 <body>
-  <h1>Cebuano/Bisaya Animals Level 1 - Yumi Raw TTS</h1>
+  <h1>Static Thematic TTS Listening Index</h1>
   <table>
     <thead>
-      <tr><th>Concept ID</th><th>English QA Label</th><th>Cebuano/Bisaya Text</th><th>Audio</th></tr>
+      <tr><th>Category</th><th>Level</th><th>Concept ID</th><th>Visible Term</th><th>English QA Label</th><th>Spoken Text</th><th>Audio</th></tr>
     </thead>
     <tbody>
       __ROWS__
@@ -944,10 +1034,10 @@ def write_listening_html(report: dict[str, Any], out_path: str) -> None:
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Static thematic TTS generator for Animals.")
+    parser = argparse.ArgumentParser(description="Static thematic TTS generator.")
     parser.add_argument("--inventory", required=True)
     parser.add_argument("--target-language", default="en")
-    parser.add_argument("--category", default="animals")
+    parser.add_argument("--category", default=None)
     parser.add_argument("--voice-profile-key", default="static_thematic_en_animals_v1")
     parser.add_argument("--profile-name", default=None)
     parser.add_argument("--voice-name", default=None)

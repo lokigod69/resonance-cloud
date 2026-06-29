@@ -17,6 +17,13 @@ import { KNOWN_CURRICULUM_ENTRY_IMAGES } from '@/data/curriculumEntryImageManife
 import { curriculumEntryImagePath, normalizeCurriculumTerm } from '@/lib/curriculumImagePath'
 import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
 import { isoToWizardValue } from '@/lib/languages'
+import {
+  buildStaticThematicPlaybackQuery,
+  fetchStaticThematicPlayback,
+  getStaticThematicAudio,
+  getStaticThematicVoiceProfileKeys,
+  type StaticThematicPlaybackRow,
+} from '@/lib/staticThematicAudio'
 
 export interface ImportedCurriculumDeckRow {
   id: string
@@ -37,6 +44,7 @@ export interface CurriculumImportEntryPayload {
   synonyms?: string
   tags?: string
   thumbnail_url?: string | null
+  tts_audio_url?: string | null
   metadata?: Record<string, unknown>
 }
 
@@ -220,6 +228,7 @@ export function buildStaticCategoryImportPayload(
   levelNumber: number,
   targetLanguage: string,
   helperLanguage: string,
+  staticAudioByConceptId?: Map<string, StaticThematicPlaybackRow>,
 ): CurriculumImportEntryPayload[] {
   const level = category.staticWordLevels?.find((item) => item.level === levelNumber)
   if (!level) return []
@@ -240,27 +249,131 @@ export function buildStaticCategoryImportPayload(
     const englishTerm = item.translations.en.term
     const thumbnailUrl = generatedCategoryEntryImagePath('en', categorySlug, englishTerm)
       ?? curriculumEntryImagePath('en', categorySlug, englishTerm)
+    const staticAudio = staticAudioByConceptId?.get(item.conceptId)
+    const metadata: Record<string, unknown> = {
+      source: 'static_thematic_library',
+      category_slug: categorySlug,
+      level: level.level,
+      entry_id: item.itemId,
+      concept_id: item.conceptId,
+      source_category_slug: categorySlug,
+      source_level_number: level.level,
+      source_concept_id: item.conceptId,
+      source_target_language_code: targetLanguageCode,
+      english_term: englishTerm,
+      sense: item.sense,
+      target_language: item.targetLanguageName,
+      target_language_code: targetLanguageCode,
+      helper_language: item.helperLanguageName,
+      helper_language_code: helperLanguageCode,
+    }
+
+    if (staticAudio?.public_url) {
+      metadata.static_tts_public_url = staticAudio.public_url
+      metadata.static_tts_voice_profile_key = staticAudio.voice_profile_key
+      metadata.static_tts_audio_version = staticAudio.audio_version
+      metadata.static_tts_spoken_text = staticAudio.spoken_text
+    }
 
     return {
       term: item.targetTerm,
       translation: item.helperTerm,
       pos: item.part_of_speech,
       thumbnail_url: thumbnailUrl,
-      metadata: {
-        source: 'static_thematic_library',
-        category_slug: categorySlug,
-        level: level.level,
-        entry_id: item.itemId,
-        concept_id: item.conceptId,
-        english_term: englishTerm,
-        sense: item.sense,
-        target_language: item.targetLanguageName,
-        target_language_code: targetLanguageCode,
-        helper_language: item.helperLanguageName,
-        helper_language_code: helperLanguageCode,
-      },
+      tts_audio_url: staticAudio?.public_url ?? null,
+      metadata,
     }
   })
+}
+
+async function fetchStaticCategoryAudioForImport(
+  supabase: SupabaseClient,
+  categorySlug: string,
+  levelNumber: number,
+  targetLanguageCode: string,
+  conceptIds: string[],
+): Promise<Map<string, StaticThematicPlaybackRow>> {
+  const voiceProfileKeys = getStaticThematicVoiceProfileKeys({ targetLanguageCode, categorySlug })
+  if (!voiceProfileKeys?.length) return new Map()
+
+  try {
+    const lookup = await fetchStaticThematicPlayback(
+      supabase,
+      buildStaticThematicPlaybackQuery({
+        targetLanguageCode,
+        categorySlug,
+        levelNumber,
+        conceptIds,
+        voiceProfileKeys,
+      }),
+    )
+    const audioByConceptId = new Map<string, StaticThematicPlaybackRow>()
+    for (const conceptId of conceptIds) {
+      const row = getStaticThematicAudio(lookup, conceptId, voiceProfileKeys[0])
+      if (row?.public_url) audioByConceptId.set(conceptId, row)
+    }
+    return audioByConceptId
+  } catch (error) {
+    if (import.meta.env?.DEV) console.error('[static-tts] import audio lookup failed', error)
+    return new Map()
+  }
+}
+
+function readCurriculumMetadata(value: unknown): Record<string, unknown> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
+  const metadata = value as Record<string, unknown>
+  const curriculum = metadata.curriculum
+  if (!curriculum || typeof curriculum !== 'object' || Array.isArray(curriculum)) return {}
+  return curriculum as Record<string, unknown>
+}
+
+export async function attachStaticThematicAudioToImportedDeck(
+  supabase: SupabaseClient,
+  deckId: string,
+  entries: CurriculumImportEntryPayload[],
+): Promise<number> {
+  const audioByConceptId = new Map<string, string>()
+  const audioByTerm = new Map<string, string>()
+  for (const entry of entries) {
+    if (!entry.tts_audio_url) continue
+    const conceptId = entry.metadata?.source_concept_id ?? entry.metadata?.concept_id
+    if (typeof conceptId === 'string') audioByConceptId.set(conceptId, entry.tts_audio_url)
+    audioByTerm.set(entry.term, entry.tts_audio_url)
+  }
+  if (audioByConceptId.size === 0 && audioByTerm.size === 0) return 0
+
+  const { data, error } = await supabase
+    .from('words')
+    .select('id, word, curriculum_entry_term, metadata, tts_audio_url')
+    .eq('deck_id', deckId)
+
+  if (error) throw error
+
+  let updated = 0
+  for (const row of data ?? []) {
+    const curriculum = readCurriculumMetadata((row as { metadata?: unknown }).metadata)
+    const conceptId = curriculum.source_concept_id ?? curriculum.concept_id
+    const term = (row as { curriculum_entry_term?: string | null; word?: string | null }).curriculum_entry_term
+      ?? (row as { word?: string | null }).word
+      ?? ''
+    const audioUrl = (typeof conceptId === 'string' ? audioByConceptId.get(conceptId) : undefined)
+      ?? audioByTerm.get(term)
+    if (!audioUrl || (row as { tts_audio_url?: string | null }).tts_audio_url === audioUrl) continue
+
+    const { error: updateError } = await supabase
+      .from('words')
+      .update({
+        tts_audio_url: audioUrl,
+        tts_status: 'ready',
+        tts_generated_at: new Date().toISOString(),
+      })
+      .eq('id', (row as { id: string }).id)
+
+    if (updateError) throw updateError
+    updated += 1
+  }
+
+  return updated
 }
 
 export async function getImportedCurriculumDeck(
@@ -335,13 +448,36 @@ export async function importStaticCategoryLevel(
   helperLanguage: string,
   deckName: string,
 ): Promise<string> {
-  const entries = buildStaticCategoryImportPayload(category, levelNumber, targetLanguage, helperLanguage)
+  const categorySlug = category.id ?? category.name
+  const targetLanguageCode = resolveStaticCategoryTargetLanguageCode(targetLanguage)
+  const conceptIds = getStaticCategorySelectedItems(
+    category,
+    category.staticWordLevels?.find((item) => item.level === levelNumber)?.words.length ?? 0,
+    levelNumber,
+    targetLanguage,
+    helperLanguage,
+    { dedupeTargetTerms: false },
+  ).map((item) => item.conceptId)
+  const staticAudioByConceptId = await fetchStaticCategoryAudioForImport(
+    supabase,
+    categorySlug,
+    levelNumber,
+    targetLanguageCode,
+    conceptIds,
+  )
+  const entries = buildStaticCategoryImportPayload(
+    category,
+    levelNumber,
+    targetLanguage,
+    helperLanguage,
+    staticAudioByConceptId,
+  )
   if (entries.length === 0) {
     throw new Error('Static category level has no importable entries')
   }
 
   const { data, error } = await supabase.rpc('submit_curriculum_import', {
-    p_category_slug: category.id ?? category.name,
+    p_category_slug: categorySlug,
     p_level_number: levelNumber,
     p_level_name: deckName,
     p_entries: entries,
@@ -350,6 +486,11 @@ export async function importStaticCategoryLevel(
   if (error) throw error
   if (typeof data !== 'string') {
     throw new Error('submit_curriculum_import did not return a deck id')
+  }
+  try {
+    await attachStaticThematicAudioToImportedDeck(supabase, data, entries)
+  } catch (attachError) {
+    if (import.meta.env?.DEV) console.error('[static-tts] import audio attach failed', attachError)
   }
   return data
 }
