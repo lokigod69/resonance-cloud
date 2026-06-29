@@ -188,6 +188,29 @@ assert.deepEqual(
 )
 assert.ok(!spanishLevelOne.some((item) => item.spoken_text === item.english_qa_label))
 
+const frenchLevelOne = buildStaticThematicTtsInventory({
+  targetLanguage: 'fr',
+  category: 'animals',
+  level: 1,
+})
+assert.equal(frenchLevelOne.length, 10, 'French Animals Level 1 should export 10 items')
+assert.deepEqual(
+  frenchLevelOne.slice(0, 4).map((item) => ({
+    concept_id: item.concept_id,
+    english_qa_label: item.english_qa_label,
+    spoken_text: item.spoken_text,
+    target_language_code: item.target_language_code,
+  })),
+  [
+    { concept_id: 'animals.dog', english_qa_label: 'dog', spoken_text: 'chien', target_language_code: 'fr' },
+    { concept_id: 'animals.cat', english_qa_label: 'cat', spoken_text: 'chat', target_language_code: 'fr' },
+    { concept_id: 'animals.bird', english_qa_label: 'bird', spoken_text: 'oiseau', target_language_code: 'fr' },
+    { concept_id: 'animals.fish', english_qa_label: 'fish', spoken_text: 'poisson', target_language_code: 'fr' },
+  ],
+  'French spoken_text should preserve the existing French static term',
+)
+assert.ok(!frenchLevelOne.some((item) => item.spoken_text === item.english_qa_label))
+
 const cebuanoAllCategories = buildStaticThematicTtsInventory({
   targetLanguage: 'ceb',
   allCategories: true,
@@ -267,6 +290,25 @@ assert.deepEqual(spanishKeys.voiceProfileKeys, [
   'static_thematic_es_veronica_raw_v1',
   'static_thematic_es_el_farao_raw_v1',
   'static_thematic_es_david_raw_v1',
+])
+
+const frenchKeys = buildStaticThematicPlaybackQuery({
+  targetLanguageCode: 'fr',
+  categorySlug: 'animals',
+  levelNumber: 1,
+  conceptIds: ['animals.dog'],
+  voiceProfileKeys: [
+    'static_thematic_fr_lilly_raw_v1',
+    'static_thematic_fr_stephyra_raw_v1',
+    'static_thematic_fr_guillaume_raw_v1',
+    'static_thematic_fr_adam_raw_v1',
+  ],
+})
+assert.deepEqual(frenchKeys.voiceProfileKeys, [
+  'static_thematic_fr_lilly_raw_v1',
+  'static_thematic_fr_stephyra_raw_v1',
+  'static_thematic_fr_guillaume_raw_v1',
+  'static_thematic_fr_adam_raw_v1',
 ])
 
 const lookup = buildStaticThematicAudioLookup([
