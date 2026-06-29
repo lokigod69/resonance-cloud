@@ -21,6 +21,10 @@ const homeAccountStrip = readFileSync('src/components/dashboard/HomeAccountStrip
 const languageCluster = readFileSync('src/components/dashboard/LanguageCluster.tsx', 'utf8')
 const categories = readFileSync('src/data/categories.ts', 'utf8')
 const translations = readFileSync('src/lib/translations.ts', 'utf8')
+const packageJson = readFileSync('package.json', 'utf8')
+const packageLock = readFileSync('package-lock.json', 'utf8')
+const liquidGlassRenderer = readFileSync('src/components/liquid-glass/LiquidGlassRenderer.ts', 'utf8')
+const liquidGlassPopover = readFileSync('src/components/liquid-glass/LiquidGlassPopoverOverlay.tsx', 'utf8')
 
 assertNotIncludes(
   dashboard,
@@ -64,6 +68,72 @@ assertIncludes(languageCluster, 'is-open', 'Language picker exposes an open clas
 assertNotIncludes(languageCluster, 'ChevronDown', 'Language picker trigger removes the chevron affordance')
 assertNotIncludes(languageCluster, 'PILL_GAP', 'Language picker no longer uses fixed fan-out offsets')
 assertNotIncludes(languageCluster, 'fanOffset', 'Language picker no longer fans languages off-screen')
+assertIncludes(languageCluster, 'useSkin', 'Language picker gates liquid glass by active skin')
+assertIncludes(languageCluster, "skin === 'glassy'", 'Language picker only enables liquid glass on Glassy')
+assertIncludes(languageCluster, 'LiquidGlassPopoverOverlay', 'Glassy language picker uses the vendored liquid glass popover')
+assertIncludes(
+  languageCluster,
+  "document.querySelector('.dashboard-wave-bg canvas')",
+  'Glassy language picker samples the live dashboard wave canvas in memory',
+)
+assertIncludes(
+  languageCluster,
+  "'/brand/cosmos/cosmos-auth.webp'",
+  'Glassy liquid glass popover keeps a static cosmos fallback image',
+)
+assertIncludes(
+  languageCluster,
+  'hasChoices && useLiquidGlassPopover && open',
+  'Glassy liquid glass renderer only mounts while the popover is open',
+)
+
+assertNotIncludes(packageJson, '@ogtirth/liquid-glass-oss', 'Liquid glass is vendored, not installed as a dependency')
+assertNotIncludes(packageLock, '@ogtirth/liquid-glass-oss', 'Liquid glass package is not locked as a dependency')
+assertIncludes(
+  liquidGlassRenderer,
+  'Copyright (c) 2026 Liquid Glass OSS contributors',
+  'Vendored renderer retains the upstream MIT copyright notice',
+)
+assertIncludes(
+  liquidGlassRenderer,
+  'canvasSource: HTMLCanvasElement | null',
+  'Vendored renderer stores a live canvas texture source',
+)
+assertIncludes(
+  liquidGlassRenderer,
+  'setCanvasSource(canvas: HTMLCanvasElement | null)',
+  'Vendored renderer exposes a runtime canvas source setter',
+)
+assertIncludes(
+  liquidGlassRenderer,
+  'const source = this.canvasSource ?? this.video ?? this.image',
+  'Vendored renderer prioritizes the live canvas source over video and image fallbacks',
+)
+assertIncludes(
+  liquidGlassRenderer,
+  'gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, this.canvasSource)',
+  'Vendored renderer re-uploads the live canvas texture in memory each frame',
+)
+assertIncludes(
+  liquidGlassRenderer,
+  'this.canvasSource.width',
+  'Vendored renderer sizes canvas-backed textures from canvas width',
+)
+assertIncludes(
+  liquidGlassPopover,
+  'new LiquidGlassRenderer(canvas, backgroundImage, mergedSettings)',
+  'Glassy popover uses the vendored renderer',
+)
+assertIncludes(
+  liquidGlassPopover,
+  'renderer.setCanvasSource(canvasSource)',
+  'Glassy popover forwards the live wave canvas into the renderer',
+)
+assertIncludes(
+  liquidGlassPopover,
+  'renderer.setBackgroundSampling(true)',
+  'Glassy popover enables shader background sampling',
+)
 
 const welcomeRule = css.match(/\.welcome-hero\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
 assert(welcomeRule.length > 0, 'welcome hero CSS rule exists')
@@ -142,6 +212,8 @@ assertIncludes(css, 'calc(var(--app-safe-top) + 0.85rem)', 'mobile account strip
 assertIncludes(css, '.home-account-strip {', 'home account strip has explicit mobile spacing')
 assertIncludes(css, 'margin-bottom: clamp(1.45rem, 4dvh, 2.35rem)', 'mobile account strip leaves breathing room before Welcome')
 assertIncludes(css, '.language-picker::after', 'desktop language picker has a hover bridge into the panel')
+assertIncludes(css, '.skin-glassy .language-picker-panel--liquid', 'liquid language popover styling is Glassy-scoped')
+assertIncludes(css, '.liquid-glass-popover-overlay__glass', 'Glassy liquid popover has a dedicated WebGL canvas layer')
 assertIncludes(css, 'rgba(5, 3, 8, 0.985)', 'language picker panel uses a near-opaque glass base')
 assertIncludes(css, 'backdrop-filter: blur(96px) saturate(1.65)', 'language picker panel uses stronger glass blur')
 assertIncludes(css, 'max-width: min(46rem, 72vw)', 'desktop Home action grid uses available width')
