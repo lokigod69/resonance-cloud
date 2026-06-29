@@ -46,6 +46,24 @@ def make_inventory() -> list[dict[str, Any]]:
             "concept_id": "animals.dog",
             "target_term": "dog",
             "spoken_text": "dog",
+            "english_qa_label": "dog",
+            "part_of_speech": "noun",
+            "sense": "animals",
+        }
+    ]
+
+
+def make_cebuano_inventory() -> list[dict[str, Any]]:
+    return [
+        {
+            "target_language_code": "ceb",
+            "category_slug": "animals",
+            "level_number": 1,
+            "order": 1,
+            "concept_id": "animals.dog",
+            "target_term": "iro",
+            "spoken_text": "iro",
+            "english_qa_label": "dog",
             "part_of_speech": "noun",
             "sense": "animals",
         }
@@ -57,6 +75,7 @@ def make_config(**overrides) -> StaticTtsConfig:
         "target_language": "en",
         "category": "animals",
         "voice_profile_key": "static_thematic_en_animals_v1",
+        "profile_name": None,
         "voice_name": "Eliza",
         "provider_voice_id": None,
         "commit_db": False,
@@ -191,6 +210,22 @@ def test_raw_mode_preserves_provider_bytes_without_ffmpeg_filters(monkeypatch):
     assert calls == []
 
 
+def test_raw_mode_keeps_provider_bytes_when_ffprobe_fails(monkeypatch):
+    monkeypatch.setattr(
+        "scripts.generate_static_thematic_tts._probe_duration_ms",
+        lambda _path: (_ for _ in ()).throw(RuntimeError("ffprobe failed")),
+    )
+
+    raw = b"provider-original-audio" * 32
+    processed, duration_ms, qa = postprocess_audio(raw, postprocess_mode="raw")
+
+    assert processed == raw
+    assert duration_ms is None
+    assert qa["raw_duration_ms"] is None
+    assert qa["final_duration_ms"] is None
+    assert "ffprobe_failed" in qa["warnings"]
+
+
 def test_commit_without_allow_provider_calls_refuses_generation():
     sb = FakeSupabase()
     sb.table("voices")
@@ -312,6 +347,98 @@ def test_commit_uses_configured_qa_status_and_does_not_activate_assignment_by_de
     assert sb._tables["static_tts_asset_usages"][0]["qa_status"] == "ready"
     assert sb._tables["static_tts_voice_assignments"] == []
     assert report["items"][0]["postprocess"]["postprocess_mode"] == "raw"
+
+
+def test_cebuano_candidate_commit_uses_bisaya_profile_and_yumi_voice(monkeypatch):
+    sb = FakeSupabase()
+    sb.storage = RecordingStorage()
+    sb.table("voices")
+    sb.table("language_profiles")
+    sb.table("guided_voice_profiles")
+    sb.table("guided_tts_assets")
+    sb.table("static_tts_asset_usages")
+    sb.table("static_tts_voice_assignments")
+    sb._tables["language_profiles"] = [
+        {"id": "profile-bisaya", "language": "Bisaya", "name": "Bisaya", "is_active": True}
+    ]
+    sb._tables["voices"] = [
+        {
+            "id": "voice-row-1",
+            "voice_id": "voice-mayumi",
+            "name": "Mayumi",
+            "language": "Cebuano",
+            "language_code": "fil",
+        }
+    ]
+
+    raw_audio = b"raw-audio" * 128
+
+    async def provider(**kwargs):
+        assert kwargs["text"] == "iro"
+        assert kwargs["voice_id"] == "voice-mayumi"
+        assert kwargs["language_code"] == "fil"
+        return raw_audio
+
+    monkeypatch.setattr("scripts.generate_static_thematic_tts._probe_duration_ms", lambda _path: 740)
+
+    report = run_inventory(
+        sb=sb,
+        inventory=make_cebuano_inventory(),
+        config=make_config(
+            target_language="ceb",
+            voice_profile_key="static_thematic_ceb_animals_yumi_raw_v1",
+            profile_name="Bisaya",
+            voice_name="Yumi",
+            commit_db=True,
+            allow_provider_calls=True,
+            postprocess_mode="raw",
+            qa_status="candidate",
+            activate_assignment=False,
+        ),
+        provider_synthesize=provider,
+    )
+
+    assert report["totals"]["generated"] == 1
+    assert report["voice_profile"]["resolved_profile_name"] == "Bisaya"
+    assert report["voice_profile"]["resolved_voice_name"] == "Mayumi"
+    assert report["voice_profile"]["resolved_voice_language_code"] == "fil"
+    assert report["voice_profile"]["provider_voice_id_last4"] == "yumi"
+    assert sb.storage.uploads[0]["path"] == (
+        "static/v1/ceb/static_thematic_ceb_animals_yumi_raw_v1/animals/level-1/animals.dog.mp3"
+    )
+    assert sb.storage.uploads[0]["data"] == raw_audio
+    assert sb._tables["static_tts_asset_usages"][0]["qa_status"] == "candidate"
+    assert sb._tables["static_tts_voice_assignments"] == []
+    assert report["items"][0]["english_qa_label"] == "dog"
+    assert report["items"][0]["spoken_text"] == "iro"
+    assert report["items"][0]["postprocess_mode"] == "raw"
+    assert report["items"][0]["raw_duration_ms"] == 740
+    assert report["items"][0]["final_duration_ms"] == 740
+
+
+def test_cebuano_inventory_rejects_english_spoken_text():
+    sb = FakeSupabase()
+    sb.table("language_profiles")
+    sb.table("guided_voice_profiles")
+    sb._tables["language_profiles"] = [
+        {"id": "profile-bisaya", "language": "Bisaya", "name": "Bisaya", "is_active": True}
+    ]
+
+    bad_inventory = [{**make_cebuano_inventory()[0], "target_term": "dog", "spoken_text": "dog"}]
+
+    with pytest.raises(RuntimeError, match="English spoken_text"):
+        run_inventory(
+            sb=sb,
+            inventory=bad_inventory,
+            config=make_config(
+                target_language="ceb",
+                voice_profile_key="static_thematic_ceb_animals_yumi_raw_v1",
+                profile_name="Bisaya",
+                provider_voice_id="voice-yumi",
+                voice_name=None,
+                qa_status="candidate",
+            ),
+        )
 
 
 def test_voice_profile_resolution_fails_without_name_or_provider_id():
