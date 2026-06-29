@@ -28,7 +28,6 @@ const translations = readFileSync('src/lib/translations.ts', 'utf8')
 const packageJson = readFileSync('package.json', 'utf8')
 const packageLock = readFileSync('package-lock.json', 'utf8')
 const liquidGlassRenderer = readFileSync('src/components/liquid-glass/LiquidGlassRenderer.ts', 'utf8')
-const liquidGlassActionTile = readFileSync('src/components/liquid-glass/LiquidGlassActionTile.tsx', 'utf8')
 
 assertNotIncludes(
   dashboard,
@@ -85,12 +84,14 @@ assertNotIncludes(
   'Language picker no longer owns a liquid glass fallback image',
 )
 assert(!existsSync('src/components/liquid-glass/LiquidGlassPopoverOverlay.tsx'), 'liquid glass popover test surface was removed')
-assertIncludes(dashboardPg, 'LiquidGlassActionTile', 'glassy dashboard uses the liquid glass action tile for one test surface')
+assert(!existsSync('src/components/liquid-glass/LiquidGlassActionTile.tsx'), 'liquid glass tile test surface was removed')
+assertNotIncludes(dashboardPg, 'LiquidGlassActionTile', 'glassy dashboard no longer mounts WebGL tile glass')
+assertNotIncludes(dashboardPg, 'liquid-glass', 'glassy dashboard has no liquid-glass UI import')
 assert(
-  countIncludes(dashboardPg, '<LiquidGlassActionTile') === 1,
-  'glassy dashboard mounts exactly one liquid glass tile while iPhone performance is unverified',
+  countIncludes(dashboardPg, '<SrsActionTile') === 3,
+  'glassy dashboard uses plain SRS action tiles for Review, New, and Train',
 )
-assertIncludes(dashboardPg, 'queue="learn"', 'the first liquid glass tile is the NEU / learn tile')
+assertIncludes(dashboardPg, 'queue="learn"', 'the NEU / learn tile is still present as a plain action tile')
 assertNotIncludes(dashboard, 'LiquidGlassActionTile', 'classic dashboard does not mount liquid glass tiles')
 
 assertNotIncludes(packageJson, '@ogtirth/liquid-glass-oss', 'Liquid glass is vendored, not installed as a dependency')
@@ -125,26 +126,6 @@ assertIncludes(
   'this.canvasSource.width',
   'Vendored renderer sizes canvas-backed textures from canvas width',
 )
-assertIncludes(
-  liquidGlassActionTile,
-  'new LiquidGlassRenderer(canvas, backgroundImage, mergedSettings)',
-  'Glassy liquid tile uses the vendored renderer',
-)
-assertIncludes(
-  liquidGlassActionTile,
-  'renderer.setCanvasSource(canvasSource)',
-  'Glassy liquid tile forwards the live wave canvas into the renderer',
-)
-assertIncludes(
-  liquidGlassActionTile,
-  'renderer.setBackgroundSampling(true)',
-  'Glassy liquid tile enables shader background sampling',
-)
-assertIncludes(
-  liquidGlassActionTile,
-  "document.querySelector('.dashboard-wave-bg canvas')",
-  'Glassy liquid tile samples the live dashboard wave canvas in memory',
-)
 
 const welcomeRule = css.match(/\.welcome-hero\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
 assert(welcomeRule.length > 0, 'welcome hero CSS rule exists')
@@ -167,19 +148,41 @@ const statTileRule = css.match(/^\.stat-tile\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assert(statTileRule.length > 0, 'stat tile CSS rule exists')
 assertIncludes(
   statTileRule,
-  'rgba(0, 0, 0, 0.86)',
-  'stat tiles use a near-opaque dark glass base',
-)
-assertIncludes(
-  statTileRule,
   'backdrop-filter: blur(48px) saturate(1.5)',
-  'stat tiles use the header-grade blur and saturation',
+  'stat tile base keeps header-grade blur and saturation',
 )
-assertIncludes(css, 'rgba(0, 0, 0, 0.86)', 'dashboard glass uses a dark base opaque enough to hide bright waves')
 const libraryTileRule = css.match(/^\.dashboard-library-tile\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assert(libraryTileRule.length > 0, 'library tile CSS rule exists')
-assertIncludes(libraryTileRule, 'rgba(0, 0, 0, 0.86)', 'library tile uses the same opaque frost base')
 assertIncludes(libraryTileRule, 'backdrop-filter: blur(48px) saturate(1.5)', 'library tile uses header-grade blur')
+const glassyStatTileRule = css.match(/\.skin-glassy\s+\.stat-tile\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+assert(glassyStatTileRule.length > 0, 'glassy stat tile frost override exists')
+assertIncludes(
+  glassyStatTileRule,
+  'background: color-mix(in srgb, var(--nav-bg) 82%, transparent)',
+  'glassy stat tiles use the nav-grade translucent base',
+)
+assertIncludes(
+  glassyStatTileRule,
+  'backdrop-filter: blur(48px) saturate(1.5)',
+  'glassy stat tiles use the header-grade blur and saturation',
+)
+assertNotIncludes(glassyStatTileRule, 'rgba(0, 0, 0, 0.86)', 'glassy stat tile override removes the near-opaque dark base')
+const glassyLibraryTileRule = css.match(/\.skin-glassy\s+\.dashboard-library-tile\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+assert(glassyLibraryTileRule.length > 0, 'glassy Library tile frost override exists')
+assertIncludes(
+  glassyLibraryTileRule,
+  'background: color-mix(in srgb, var(--nav-bg) 82%, transparent)',
+  'glassy Library tile uses the nav-grade translucent base',
+)
+assertIncludes(
+  glassyLibraryTileRule,
+  'backdrop-filter: blur(48px) saturate(1.5)',
+  'glassy Library tile uses the header-grade blur and saturation',
+)
+assertNotIncludes(glassyLibraryTileRule, 'rgba(0, 0, 0, 0.86)', 'glassy Library tile override removes the near-opaque dark base')
+const glassyDisabledStatTileRule = css.match(/\.skin-glassy\s+\.stat-tile:disabled\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+assert(glassyDisabledStatTileRule.length > 0, 'glassy zero-count stat tile override exists')
+assertIncludes(glassyDisabledStatTileRule, 'opacity: 1', 'glassy zero-count tiles keep the same frost opacity')
 const todayPanelRule = css.match(/^\.dashboard-today-panel\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assert(todayPanelRule.length > 0, 'streak surface CSS rule exists')
 assertIncludes(todayPanelRule, 'rgba(0, 0, 0, 0.86)', 'streak surface uses the same opaque frost base')
@@ -211,7 +214,7 @@ for (const [selector, label] of [
   const rule = css.match(
     new RegExp(`\\.skin-glassy\\s+\\.dashboard-cosmic\\s+${escapedSelector}\\s*\\{[\\s\\S]*?\\n\\}`),
   )?.[0] ?? ''
-  assert(rule.length === 0, `glassy no longer needs a separate ${label} material override`)
+  assert(rule.length === 0, `glassy ${label} material override is not tied to dashboard-cosmic stacking`)
 }
 const desktopActionGridRule = css.match(/@media \(min-width: 768px\)\s*\{[\s\S]*?\.dashboard-action-grid\s*\{[\s\S]*?\n\s*\}[\s\S]*?\n\}/)?.[0] ?? ''
 assertIncludes(desktopActionGridRule, 'margin-top: clamp(', 'desktop action grid has a bounded shared spacer')
@@ -225,8 +228,8 @@ assertIncludes(css, 'margin-bottom: clamp(1.45rem, 4dvh, 2.35rem)', 'mobile acco
 assertIncludes(css, '.language-picker::after', 'desktop language picker has a hover bridge into the panel')
 assertNotIncludes(css, '.language-picker-panel--liquid', 'language picker no longer has liquid glass styling')
 assertNotIncludes(css, 'liquid-glass-popover', 'language picker popover glass CSS was removed')
-assertIncludes(css, '.skin-glassy .stat-tile--liquid', 'one-tile liquid material is Glassy-scoped')
-assertIncludes(css, '.liquid-glass-tile-surface__glass', 'Glassy liquid tile has a dedicated WebGL canvas layer')
+assertNotIncludes(css, '.stat-tile--liquid', 'tiles no longer use the WebGL liquid material class')
+assertNotIncludes(css, 'liquid-glass-tile', 'tile WebGL canvas CSS was removed')
 assertIncludes(css, 'rgba(5, 3, 8, 0.985)', 'language picker panel uses a near-opaque glass base')
 assertIncludes(css, 'backdrop-filter: blur(96px) saturate(1.65)', 'language picker panel uses stronger glass blur')
 assertIncludes(css, 'max-width: min(46rem, 72vw)', 'desktop Home action grid uses available width')

@@ -1370,6 +1370,17 @@ body::before {
   z-index: 1;
 }
 
+.skin-glassy .dashboard-library-tile {
+  background: color-mix(in srgb, var(--nav-bg) 82%, transparent);
+  border-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
+  border-top-color: color-mix(in srgb, var(--text-primary) 28%, transparent);
+  box-shadow:
+    0 18px 56px color-mix(in srgb, var(--app-bg) 42%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 12%, transparent);
+  backdrop-filter: blur(48px) saturate(1.5);
+  -webkit-backdrop-filter: blur(48px) saturate(1.5);
+}
+
 .dashboard-library-tile:hover,
 .dashboard-library-tile:focus-visible {
   transform: translateY(-1px);
@@ -1513,47 +1524,30 @@ body::before {
   z-index: 1;
 }
 
-.skin-glassy .stat-tile--liquid {
-  background: rgba(5, 3, 8, 0.18);
-  border-color: color-mix(in srgb, var(--text-primary) 28%, transparent);
-  border-top-color: color-mix(in srgb, var(--text-primary) 38%, transparent);
+.skin-glassy .stat-tile {
+  background: color-mix(in srgb, var(--nav-bg) 82%, transparent);
+  border-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
+  border-top-color: color-mix(in srgb, var(--text-primary) 28%, transparent);
+  border-left-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
   box-shadow:
-    0 18px 52px rgba(0, 0, 0, 0.48),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-.skin-glassy .stat-tile--liquid.is-fallback {
-  background: rgba(0, 0, 0, 0.86);
+    0 18px 56px color-mix(in srgb, var(--app-bg) 42%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 12%, transparent);
   backdrop-filter: blur(48px) saturate(1.5);
   -webkit-backdrop-filter: blur(48px) saturate(1.5);
 }
 
-.skin-glassy .stat-tile--liquid .liquid-glass-tile-surface {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  pointer-events: none;
+.skin-glassy .stat-tile:disabled {
+  opacity: 1;
 }
 
-.skin-glassy .stat-tile--liquid .liquid-glass-tile-surface__glass {
-  position: absolute;
-  inset: -14px -18px;
-  width: calc(100% + 36px);
-  height: calc(100% + 28px);
-  pointer-events: none;
-}
-
-.skin-glassy .stat-tile--liquid .stat-label-accent,
-.skin-glassy .stat-tile--liquid .stat-count {
+.skin-glassy .stat-tile .stat-label-accent,
+.skin-glassy .stat-tile .stat-count {
   text-shadow:
     0 1px 12px rgba(0, 0, 0, 0.92),
     0 0 24px var(--tile-accent-glow, transparent);
 }
 
-.skin-glassy .stat-tile--liquid .stat-tile-divider {
+.skin-glassy .stat-tile .stat-tile-divider {
   box-shadow:
     0 0 10px var(--tile-accent-glow, transparent),
     0 0 18px rgba(0, 0, 0, 0.72);
