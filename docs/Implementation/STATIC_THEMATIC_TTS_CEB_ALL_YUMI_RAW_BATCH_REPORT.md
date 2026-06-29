@@ -4,9 +4,9 @@ Date: 2026-06-29
 
 ## Status
 
-Blocked before paid generation.
+Completed.
 
-The full Cebuano/Bisaya static thematic inventory exports successfully and the dry run completes, but the dry run reports 1,850 would-generate rows. The approved cap for this run is 1,200 ElevenLabs calls, so paid generation was not run.
+The full Cebuano/Bisaya static thematic inventory was generated in resumable capped batches using raw ElevenLabs provider bytes. The final public playback view exposes one Cebuano row per generated static thematic item for the full-language voice profile key.
 
 ## Resolved Voice
 
@@ -17,142 +17,190 @@ The full Cebuano/Bisaya static thematic inventory exports successfully and the d
 - Resolved voice: `Mayumi`
 - Provider/admin language: `Cebuano`
 - Provider/admin language code: `fil`
-- Full batch voice profile key: `static_thematic_ceb_yumi_raw_v1`
+- Full-language voice profile key: `static_thematic_ceb_yumi_raw_v1`
+- Provider model: `eleven_flash_v2_5`
+- Output format: `mp3_44100_128`
 - Postprocess mode: `raw`
-- QA status: `ready`
-
-## Commands Run
-
-```powershell
-npm --prefix frontend run tts:static:inventory -- --target-language ceb --all-categories --all-levels --out ../tmp/static-tts-ceb-all.json
-```
-
-```powershell
-python -c "import truststore; truststore.inject_into_ssl(); from dotenv import load_dotenv; load_dotenv(r'D:\CODING\ResonanceTEST\orchestrator\.env'); from scripts.generate_static_thematic_tts import main; raise SystemExit(main())" --inventory tmp/static-tts-ceb-all.json --target-language ceb --voice-profile-key static_thematic_ceb_yumi_raw_v1 --profile-name "Bisaya" --voice-name "Yumi" --postprocess-mode raw --qa-status ready --dry-run --report-out tmp/static-tts-ceb-all-yumi-raw-dry-run-report.json
-```
-
-The dry-run stdout was redirected to:
-
-```text
-tmp/static-tts-ceb-all-yumi-raw-dry-run-stdout.txt
-```
+- QA status for new full-language usages: `ready`
 
 ## Inventory
 
 - Total inventory count: 1,850
 - Categories: 19
-- Duplicate target/category/concept keys: 0
-- Empty or missing required fields: 0
-- Fallback Cebuano rows: 0
-- Same-as-English Cebuano rows: 627
+- Category/level groups: 185
+- Duplicate `category_slug + concept_id` rows: 0
+- Missing required fields: 0
+- Empty `spoken_text` rows: 0
+- Non-`ceb` rows: 0
 
-The same-as-English rows are explicit static translation data, not fallback rows.
+English-looking terms were not edited in this run. They are current static Cebuano/Bisaya terms in the inventory where present.
+
+## Commands
+
+Inventory export:
+
+```powershell
+npm --prefix frontend run tts:static:inventory -- --target-language ceb --all-categories --all-levels --out ../tmp/static-tts-ceb-all.json
+```
+
+Dry run:
+
+```powershell
+python -c "import truststore; truststore.inject_into_ssl(); from dotenv import load_dotenv; load_dotenv(r'D:\CODING\ResonanceTEST\orchestrator\.env'); from scripts.generate_static_thematic_tts import main; raise SystemExit(main())" --inventory tmp/static-tts-ceb-all.json --target-language ceb --voice-profile-key static_thematic_ceb_yumi_raw_v1 --profile-name "Bisaya" --voice-name "Yumi" --postprocess-mode raw --qa-status ready --dry-run --report-out tmp/static-tts-ceb-all-yumi-raw-dry-run-report.json
+```
+
+Batch generation template:
+
+```powershell
+python -c "import truststore; truststore.inject_into_ssl(); from dotenv import load_dotenv; load_dotenv(r'D:\CODING\ResonanceTEST\orchestrator\.env'); from scripts.generate_static_thematic_tts import main; raise SystemExit(main())" --inventory tmp/static-tts-ceb-all.json --target-language ceb --voice-profile-key static_thematic_ceb_yumi_raw_v1 --profile-name "Bisaya" --voice-name "Yumi" --postprocess-mode raw --qa-status ready --commit-db --allow-provider-calls --max-provider-calls 200 --report-out tmp/static-tts-ceb-all-yumi-raw-batch-001-report.json
+```
+
+Batches 002 through 010 were run by the tmp-only helper:
+
+```text
+tmp/run_ceb_tts_batches.ps1
+```
+
+Activation and listening-index pass:
+
+```powershell
+python -c "import truststore; truststore.inject_into_ssl(); from dotenv import load_dotenv; load_dotenv(r'D:\CODING\ResonanceTEST\orchestrator\.env'); from scripts.generate_static_thematic_tts import main; raise SystemExit(main())" --inventory tmp/static-tts-ceb-all.json --target-language ceb --voice-profile-key static_thematic_ceb_yumi_raw_v1 --profile-name "Bisaya" --voice-name "Yumi" --postprocess-mode raw --qa-status ready --commit-db --allow-provider-calls --max-provider-calls 0 --activate-assignment --report-out tmp/static-tts-ceb-all-yumi-raw-final-report.json --listening-html-out tmp/static-tts-ceb-all-yumi-raw-listening.html
+```
 
 ## Dry Run
 
-- Mode: `dry-run`
 - Total items: 1,850
 - Existing ready assets: 0
 - Existing usages: 0
-- Skipped existing: 0
 - Would generate: 1,850
 - Generated: 0
 - Failed: 0
 - Provider calls: 0
-- Failed words: none
 
-Dry-run report:
+Report:
 
 ```text
 tmp/static-tts-ceb-all-yumi-raw-dry-run-report.json
 ```
 
-## Paid Generation
+## Batch Results
 
-Paid generation was not run.
+| Batch | Provider calls | Generated assets | Skipped/linked in pass | Deferred | Failed |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 001 | 200 | 200 | 5 | 1,645 | 0 |
+| 002 | 200 | 200 | 207 | 1,443 | 0 |
+| 003 | 200 | 200 | 415 | 1,235 | 0 |
+| 004 | 200 | 200 | 635 | 1,015 | 0 |
+| 005 | 200 | 200 | 843 | 807 | 0 |
+| 006 | 200 | 200 | 1,061 | 589 | 0 |
+| 007 | 200 | 200 | 1,263 | 387 | 0 |
+| 008 | 200 | 200 | 1,468 | 182 | 0 |
+| 009 | 177 | 177 | 1,673 | 0 | 0 |
+| 010 | 0 | 0 | 1,850 | 0 | 0 |
 
-Reason: `would_generate=1850` exceeds the explicit `--max-provider-calls 1200` cap and the plan says to stop if the dry run detects more than 1,200 would-generate calls.
+Totals:
 
-Expected storage prefix when approved:
+- Paid batches: 9
+- Total batch passes: 10
+- Total ElevenLabs calls: 1,777
+- Generated ready asset rows/files under the full-language key: 1,777
+- Ready static usage rows under the full-language key: 1,850
+- Final verification skipped existing: 1,850
+- Failed: 0
+- Failed words: none
+
+The generated asset count is lower than the inventory count because duplicate normalized spoken text reuses a single ready asset across multiple concept usages.
+
+## Storage And DB Verification
+
+- Storage prefix: `guided-tts/static/v1/ceb/static_thematic_ceb_yumi_raw_v1/`
+- Storage objects at prefix: 1,777
+- `guided_tts_assets` ready rows for full-language key: 1,777
+- `static_tts_asset_usages` ready rows for full-language key: 1,850
+- `static_tts_playback` rows for full-language key: 1,850
+- All Cebuano `static_tts_playback` rows after deactivating the old pilot public usages: 1,850
+- Old Animals Level 1 pilot playback rows after deactivation: 0
+- Duration range: 464 ms to 2,182 ms
+- Duration rows measured: 1,777
+
+Verification artifact:
 
 ```text
-guided-tts/static/v1/ceb/static_thematic_ceb_yumi_raw_v1/
+tmp/static-tts-ceb-all-yumi-raw-db-verification.json
 ```
 
-Listening HTML was not created because paid generation did not run. Expected path after approved generation:
+## Assignment
+
+The language-level assignment was activated:
+
+- `target_language_code`: `ceb`
+- `category_slug`: `null`
+- `voice_profile_key`: `static_thematic_ceb_yumi_raw_v1`
+- `active`: `true`
+- `priority`: `100`
+- `audio_version`: `1`
+
+The old pilot files were not deleted. Its 10 old `static_tts_asset_usages` rows for `static_thematic_ceb_animals_yumi_raw_v1` were moved from `ready` to `rejected` so `public.static_tts_playback` exposes only one Cebuano row per category/concept.
+
+Old-pilot deactivation artifact:
+
+```text
+tmp/static-tts-ceb-old-pilot-deactivation.json
+```
+
+## Listening Index
+
+Owner QA index:
 
 ```text
 tmp/static-tts-ceb-all-yumi-raw-listening.html
 ```
 
-Duration range is not available because no new audio was generated in this batch.
+The index groups rows by category, level, concept ID, visible term, spoken text, and audio player.
 
-## Candidate Flow
+## Frontend Playback
 
-- `qa_status=candidate` is no longer accepted by the static generator.
-- The unapplied migration `frontend/supabase/migrations/20260629100000_static_tts_candidate_qa_status.sql` was removed from the repo.
-- No SQL migration was applied.
-- Generation commands use `qa_status=ready`.
+Library/category playback remains wired for Cebuano/Bisaya static audio:
 
-## Frontend Wiring
-
-Library/category playback was wired for Cebuano/Bisaya static audio:
-
-- Static level pages query `public.static_tts_playback` using `target_language_code=ceb`, `category_slug`, `level_number`, concept IDs, and `static_thematic_ceb_yumi_raw_v1`.
-- The query is independent of helper/base language.
-- Cards show a speaker button when audio exists.
-- Detail modals expose a speaker action when audio exists.
-- Playback uses browser `Audio` and never calls ElevenLabs from the frontend.
-- Missing lookup/playback errors are quiet outside development builds.
-- One static audio clip plays at a time through the existing shared hook.
-
-Existing English Animals dual-button playback remains in place.
-
-Visible word text can differ from `spoken_text`: the page renders `item.targetTerm` from static translations, while audio lookup rows expose canonical `spoken_text` from `static_tts_playback`.
+- Static level pages query `public.static_tts_playback` for `target_language_code=ceb`, category, level, concept IDs, and `static_thematic_ceb_yumi_raw_v1`.
+- Playback uses the vocabulary language, not the helper language.
+- Cards and detail modals expose a speaker action when audio exists.
+- Browser playback uses existing public URLs and does not call ElevenLabs.
+- The shared hook keeps one static audio clip active at a time.
 
 ## Import-To-Deck Reuse
 
-Static category import reuse was wired without a new migration:
+Static category import reuse remains wired:
 
-- The import path still calls the no-credit `submit_curriculum_import` RPC.
-- Import payload metadata now preserves:
-  - `source_category_slug`
-  - `source_level_number`
-  - `source_concept_id`
-  - `source_target_language_code`
-  - `static_tts_public_url` when available
-  - `static_tts_voice_profile_key` when available
-- After the RPC returns a deck id, the frontend best-effort updates imported `words.tts_audio_url` with the canonical static public URL.
-- Existing schema field used: `words.tts_audio_url`.
-- No generated deck TTS, generated deck flow, `submit_generation`, retry, credits, Suno, KIE, Speak, or Guided Today code was touched.
+- The import path keeps using the no-credit `submit_curriculum_import` RPC.
+- Static audio public URLs are attached to imported words when available.
+- Source metadata preserves category, level, concept ID, target language, static public URL, and static voice profile key.
+- Imported static deck words can reuse the static audio URL instead of falling back to generated deck TTS when static audio is present.
 
-## Assignment
+## Checks
 
-Language-level assignment was not activated because paid generation did not run.
-
-The generator now supports a language-level assignment with:
+Run before completion:
 
 ```text
-target_language_code = ceb
-category_slug = null
-voice_profile_key = static_thematic_ceb_yumi_raw_v1
-active = true
-priority = 100
-audio_version = 1
+git diff --check
+git diff --cached --check
+D:\CODING\ResonanceTEST\orchestrator\.venv\Scripts\python.exe -m compileall scripts\generate_static_thematic_tts.py
+D:\CODING\ResonanceTEST\orchestrator\.venv\Scripts\python.exe -m pytest tests\test_static_thematic_tts.py -q
+npm --prefix frontend run test:static-thematic-tts
+npm --prefix frontend run test:vocabulary-library
+npm exec eslint -- scripts/export-static-thematic-tts-inventory.ts scripts/test-static-thematic-tts.ts scripts/test-static-library-import.ts src/components/common/CardDetailModal.tsx src/hooks/useStaticThematicAudio.ts src/lib/curriculumDeckBridge.ts src/lib/staticThematicAudio.ts src/pages/categories/LevelDetailPage.tsx
+npm exec vite build
 ```
+
+`npm run build` was not used.
+
+## Candidate Flow
+
+- No candidate SQL migration was applied.
+- `qa_status=candidate` was not used.
+- New full-language generation used `qa_status=ready`.
 
 ## Known Limitations
 
-- Full paid generation needs 1,850 calls when using the new full-language voice profile key, because the existing Animals Level 1 pilot used a different voice profile key.
-- The requested cap is 1,200 calls, so this needs either an explicit raised cap or a split rollout.
-- No storage object count, ready row count, playback row count, listening index, or duration range exists for the full batch yet because paid generation was not run.
-
-## Next Rollout Plan
-
-1. Approve one of:
-   - raise the cap to at least 1,850 calls, or
-   - split the batch into chunks of at most 1,200 calls.
-2. Run the paid generation command with `--qa-status ready`, `--postprocess-mode raw`, and the same inventory.
-3. Verify ready usage rows, playback rows, linked ready assets, and storage objects under the full-language prefix.
-4. Activate the language-level assignment.
-5. Generate the listening HTML index for owner QA.
+- Browser UI verification was not run with an authenticated app session in this batch. The library/import behavior was verified through the implemented helper tests and direct `static_tts_playback` data checks.
+- Duration range is counted on unique generated assets, not all 1,850 usage rows, because duplicate spoken text can share one asset.

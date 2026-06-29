@@ -764,6 +764,7 @@ def run_inventory(
         "existing_usages": 0,
         "skipped_existing": 0,
         "would_generate": 0,
+        "deferred_provider_cap": 0,
         "generated": 0,
         "failed": 0,
         "provider_calls": 0,
@@ -856,9 +857,15 @@ def run_inventory(
                 continue
 
             if totals["provider_calls"] >= config.max_provider_calls:
-                raise RuntimeError(
-                    f"Provider call cap exceeded: max {config.max_provider_calls} ElevenLabs calls for this run."
+                totals["deferred_provider_cap"] += 1
+                report_items.append(
+                    {
+                        **base_report,
+                        "status": "deferred_provider_cap",
+                        "warnings": [f"provider_call_cap_reached:{config.max_provider_calls}"],
+                    }
                 )
+                continue
             totals["provider_calls"] += 1
             raw_audio = _maybe_await(
                 provider_synthesize(
