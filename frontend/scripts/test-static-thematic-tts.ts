@@ -113,6 +113,35 @@ assert.equal(
   'Cebuano/Bisaya export should allow same-as-English terms when static data explicitly supplies them',
 )
 
+const indonesianLevelOne = buildStaticThematicTtsInventory({
+  targetLanguage: 'id',
+  category: 'animals',
+  level: 1,
+})
+assert.equal(indonesianLevelOne.length, 10, 'Indonesian Animals Level 1 should export 10 items')
+assert.deepEqual(
+  indonesianLevelOne.map((item) => ({
+    concept_id: item.concept_id,
+    english_qa_label: item.english_qa_label,
+    spoken_text: item.spoken_text,
+    target_language_code: item.target_language_code,
+  })),
+  [
+    { concept_id: 'animals.dog', english_qa_label: 'dog', spoken_text: 'anjing', target_language_code: 'id' },
+    { concept_id: 'animals.cat', english_qa_label: 'cat', spoken_text: 'kucing', target_language_code: 'id' },
+    { concept_id: 'animals.bird', english_qa_label: 'bird', spoken_text: 'burung', target_language_code: 'id' },
+    { concept_id: 'animals.fish', english_qa_label: 'fish', spoken_text: 'ikan', target_language_code: 'id' },
+    { concept_id: 'animals.horse', english_qa_label: 'horse', spoken_text: 'kuda', target_language_code: 'id' },
+    { concept_id: 'animals.cow', english_qa_label: 'cow', spoken_text: 'sapi', target_language_code: 'id' },
+    { concept_id: 'animals.pig', english_qa_label: 'pig', spoken_text: 'babi', target_language_code: 'id' },
+    { concept_id: 'animals.sheep', english_qa_label: 'sheep', spoken_text: 'domba', target_language_code: 'id' },
+    { concept_id: 'animals.goat', english_qa_label: 'goat', spoken_text: 'kambing', target_language_code: 'id' },
+    { concept_id: 'animals.chicken', english_qa_label: 'chicken', spoken_text: 'ayam', target_language_code: 'id' },
+  ],
+  'Indonesian spoken_text should be the bare Indonesian term, not English',
+)
+assert.ok(!indonesianLevelOne.some((item) => item.spoken_text === item.english_qa_label))
+
 const cebuanoAllCategories = buildStaticThematicTtsInventory({
   targetLanguage: 'ceb',
   allCategories: true,
