@@ -392,7 +392,9 @@ function StaticLevelDetail({
     [categorySlug, targetLanguageCode],
   )
   const staticAudioEnabled = Boolean(level)
-    && (targetLanguageCode === 'ceb' || (targetLanguageCode === 'en' && categorySlug === 'animals'))
+    && (targetLanguageCode === 'ceb'
+      || targetLanguageCode === 'id'
+      || (targetLanguageCode === 'en' && categorySlug === 'animals'))
   const staticAudio = useStaticThematicAudio({
     enabled: staticAudioEnabled,
     targetLanguageCode,
@@ -559,10 +561,12 @@ function StaticLevelDetail({
               hasElisaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
               hasSerafinaAudio={staticAudio.hasAudio(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
               hasCebuanoAudio={staticAudio.hasAudio(item.conceptId, STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY)}
+              hasIndonesianAudio={targetLanguageCode === 'id' && staticAudio.hasAudio(item.conceptId)}
               showMissingAudioMarker={
                 import.meta.env.DEV
                 && staticAudioEnabled
               }
+              onPlayIndonesian={() => void staticAudio.play(item.conceptId)}
               onPlayCebuano={() => void staticAudio.play(item.conceptId, STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY)}
               onPlayElisa={() => void staticAudio.play(item.conceptId, STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY)}
               onPlaySerafina={() => void staticAudio.play(item.conceptId, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY)}
@@ -611,8 +615,10 @@ function StaticWordCard({
   hasElisaAudio,
   hasSerafinaAudio,
   hasCebuanoAudio,
+  hasIndonesianAudio,
   showMissingAudioMarker,
   onPlayCebuano,
+  onPlayIndonesian,
   onPlayElisa,
   onPlaySerafina,
 }: {
@@ -621,8 +627,10 @@ function StaticWordCard({
   hasElisaAudio: boolean
   hasSerafinaAudio: boolean
   hasCebuanoAudio: boolean
+  hasIndonesianAudio: boolean
   showMissingAudioMarker: boolean
   onPlayCebuano: () => void
+  onPlayIndonesian: () => void
   onPlayElisa: () => void
   onPlaySerafina: () => void
 }) {
@@ -644,6 +652,20 @@ function StaticWordCard({
             onClick={(event) => {
               event.stopPropagation()
               onPlayCebuano()
+            }}
+            aria-label={`Play pronunciation for ${item.targetTerm}`}
+            title={`Play ${item.targetTerm}`}
+          >
+            <Volume2 className="h-4 w-4" aria-hidden="true" />
+          </button>
+        ) : null}
+        {hasIndonesianAudio ? (
+          <button
+            type="button"
+            className={`${styles.staticAudioButton} ${styles.staticAudioButtonRight}`}
+            onClick={(event) => {
+              event.stopPropagation()
+              onPlayIndonesian()
             }}
             aria-label={`Play pronunciation for ${item.targetTerm}`}
             title={`Play ${item.targetTerm}`}
@@ -681,7 +703,7 @@ function StaticWordCard({
             <span className={styles.staticAudioButtonBadge}>E</span>
           </button>
         ) : null}
-        {!hasCebuanoAudio && !hasElisaAudio && !hasSerafinaAudio && showMissingAudioMarker ? (
+        {!hasCebuanoAudio && !hasIndonesianAudio && !hasElisaAudio && !hasSerafinaAudio && showMissingAudioMarker ? (
           <span className={styles.staticAudioMissing} title="Missing static audio">TTS</span>
         ) : null}
       </div>
