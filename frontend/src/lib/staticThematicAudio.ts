@@ -1,6 +1,11 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 
 export const STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY = 'static_thematic_ceb_yumi_raw_v1'
+// Indonesian uses deterministic per-level voice alternation (odd levels = Gavrila,
+// even levels = Blasto). Both keys are queried; the playback view only ever has the
+// assigned voice's rows for a given level, so resolution self-selects without dupes.
+export const STATIC_THEMATIC_ID_GAVRILA_RAW_PROFILE_KEY = 'static_thematic_id_gavrila_raw_v1'
+export const STATIC_THEMATIC_ID_BLASTO_RAW_PROFILE_KEY = 'static_thematic_id_blasto_raw_v1'
 export const STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY = 'static_thematic_en_animals_elisa_raw_v1'
 export const STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY = 'static_thematic_en_animals_serafina_raw_v1'
 
@@ -25,6 +30,9 @@ export function getStaticThematicVoiceProfileKeys({
   categorySlug: string
 }): string[] | undefined {
   if (targetLanguageCode === 'ceb') return [STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY]
+  if (targetLanguageCode === 'id') {
+    return [STATIC_THEMATIC_ID_GAVRILA_RAW_PROFILE_KEY, STATIC_THEMATIC_ID_BLASTO_RAW_PROFILE_KEY]
+  }
   if (targetLanguageCode === 'en' && categorySlug === 'animals') {
     return [STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY, STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY]
   }
