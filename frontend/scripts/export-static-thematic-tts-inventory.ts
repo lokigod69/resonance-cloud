@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path'
 import { parseArgs } from 'node:util'
 
 import {
+  STATIC_CATEGORY_TRANSLATION_LANGUAGES,
   getPublicCategoryGroups,
   getStaticCategoryVocabularyItems,
   type StaticCategoryTargetLanguageCode,
@@ -14,6 +15,7 @@ export type StaticThematicTtsInventoryItem = {
   level_number: number
   order: number
   concept_id: string
+  english_qa_label: string
   target_term: string
   spoken_text: string
   part_of_speech: string
@@ -24,6 +26,37 @@ export type StaticThematicTtsInventoryItem = {
     category_slug: string
     term: string
   }
+}
+
+const SUPPORTED_STATIC_TTS_TARGET_LANGUAGES = new Set<StaticCategoryTargetLanguageCode>(['en', 'ceb'])
+const CEBUANO_ALIASES = new Set(['ceb', 'cebuano', 'bisaya', 'sebuano'])
+
+function normalizeLanguageName(value: string): string {
+  return value.trim().normalize('NFC').toLowerCase()
+}
+
+function normalizeTerm(value: string): string {
+  return value.trim().normalize('NFC').toLowerCase()
+}
+
+function resolveStaticTtsTargetLanguageCode(targetLanguage: string): StaticCategoryTargetLanguageCode {
+  const normalized = normalizeLanguageName(targetLanguage)
+  const match = STATIC_CATEGORY_TRANSLATION_LANGUAGES.find((entry) => (
+    entry.code === normalized
+    || normalizeLanguageName(entry.value) === normalized
+    || normalizeLanguageName(entry.label) === normalized
+    || normalizeLanguageName(entry.name) === normalized
+    || normalizeLanguageName(entry.nativeName) === normalized
+    || (entry.code === 'ceb' && CEBUANO_ALIASES.has(normalized))
+  ))
+
+  if (!match) {
+    throw new Error(`Unsupported target language for static thematic TTS export: ${targetLanguage}`)
+  }
+  if (!SUPPORTED_STATIC_TTS_TARGET_LANGUAGES.has(match.code)) {
+    throw new Error('Only English and Cebuano/Bisaya static thematic TTS export is supported in this pilot.')
+  }
+  return match.code
 }
 
 export function buildStaticThematicTtsInventory({
@@ -37,9 +70,7 @@ export function buildStaticThematicTtsInventory({
   level?: number
   allLevels?: boolean
 }): StaticThematicTtsInventoryItem[] {
-  if (targetLanguage !== 'en') {
-    throw new Error('Only English static thematic TTS export is supported in this pilot.')
-  }
+  const targetLanguageCode = resolveStaticTtsTargetLanguageCode(targetLanguage)
   if (category !== 'animals') {
     throw new Error('Only the Animals category is supported in this pilot.')
   }
@@ -60,14 +91,23 @@ export function buildStaticThematicTtsInventory({
   )
 
   const items = sourceItems.map((item): StaticThematicTtsInventoryItem => {
-    const targetTerm = item.translations.en.term.trim()
+    const englishQaLabel = item.translations.en.term.trim()
+    const targetTranslation = item.translations[targetLanguageCode]
+    if (!targetTranslation || targetTranslation.isFallback) {
+      throw new Error(`Inventory item ${item.id} is missing ${targetLanguageCode} target_term.`)
+    }
+    const targetTerm = targetTranslation.term.trim()
     const spokenText = targetTerm
+    if (targetLanguageCode !== 'en' && normalizeTerm(spokenText) === normalizeTerm(englishQaLabel)) {
+      throw new Error(`Inventory item ${item.id} has English spoken_text for ${targetLanguageCode}: ${spokenText}`)
+    }
     return {
-      target_language_code: 'en',
+      target_language_code: targetLanguageCode,
       category_slug: item.categoryId,
       level_number: item.level,
       order: item.order,
       concept_id: item.id,
+      english_qa_label: englishQaLabel,
       target_term: targetTerm,
       spoken_text: spokenText,
       part_of_speech: item.part_of_speech,
@@ -80,11 +120,14 @@ export function buildStaticThematicTtsInventory({
       image_hint: {
         language_iso: 'en',
         category_slug: item.categoryId,
-        term: item.translations.en.term,
+        term: englishQaLabel,
       },
     }
   })
 
+  if (!allLevels && category === 'animals' && level === 1 && items.length !== 10) {
+    throw new Error(`Animals Level 1 static TTS inventory expected 10 items; found ${items.length}.`)
+  }
   validateInventory(items)
   return items
 }
@@ -95,6 +138,13 @@ export function validateInventory(items: StaticThematicTtsInventoryItem[]): void
     if (!item.concept_id?.trim()) throw new Error('Inventory item is missing concept_id.')
     if (!item.target_term?.trim()) throw new Error(`Inventory item ${item.concept_id} is missing target_term.`)
     if (!item.spoken_text?.trim()) throw new Error(`Inventory item ${item.concept_id} is missing spoken_text.`)
+    if (
+      item.target_language_code !== 'en'
+      && item.english_qa_label
+      && normalizeTerm(item.spoken_text) === normalizeTerm(item.english_qa_label)
+    ) {
+      throw new Error(`Inventory item ${item.concept_id} has English spoken_text for ${item.target_language_code}.`)
+    }
     if (seen.has(item.concept_id)) throw new Error(`Duplicate concept_id in export: ${item.concept_id}`)
     seen.add(item.concept_id)
   }

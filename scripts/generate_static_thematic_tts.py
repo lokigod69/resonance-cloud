@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import html
 import json
 import os
 import re
@@ -37,6 +38,21 @@ from src.services.guided_tts.inventory import (
 
 ProviderCallable = Callable[..., bytes | Awaitable[bytes]]
 AUDIO_VERSION = 1
+SUPPORTED_TARGET_LANGUAGES = {"en", "ceb"}
+SUPPORTED_QA_STATUSES = {"pending", "ready", "approved", "candidate", "rejected", "failed"}
+CEBUANO_LANGUAGE_ALIASES = {"ceb", "cebuano", "sebuano", "bisaya"}
+ENGLISH_ANIMALS_LEVEL_1_WORDS = {
+    "dog",
+    "cat",
+    "bird",
+    "fish",
+    "horse",
+    "cow",
+    "pig",
+    "sheep",
+    "goat",
+    "chicken",
+}
 
 
 @dataclass(frozen=True)
@@ -44,6 +60,7 @@ class StaticTtsConfig:
     target_language: str
     category: str
     voice_profile_key: str
+    profile_name: str | None
     voice_name: str | None
     provider_voice_id: str | None
     commit_db: bool
@@ -55,7 +72,9 @@ class StaticTtsConfig:
     postprocess_mode: str
     qa_status: str
     activate_assignment: bool
+    max_provider_calls: int = 10
     report_out: str | None = None
+    listening_html_out: str | None = None
 
 
 def build_storage_path(
@@ -107,9 +126,13 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _normalize_label(value: str | None) -> str:
+    return (value or "").strip().casefold()
+
+
 def _validate_scope(config: StaticTtsConfig) -> None:
-    if config.target_language != "en":
-        raise RuntimeError("Only --target-language en is supported for this pilot.")
+    if config.target_language not in SUPPORTED_TARGET_LANGUAGES:
+        raise RuntimeError("Only --target-language en or ceb is supported for this pilot.")
     if config.category != "animals":
         raise RuntimeError("Only --category animals is supported for this pilot.")
     if config.force_regenerate and config.skip_existing:
@@ -118,8 +141,10 @@ def _validate_scope(config: StaticTtsConfig) -> None:
         raise RuntimeError("--force-regenerate with --commit-db requires --allow-provider-calls.")
     if config.postprocess_mode not in {"raw", "safe"}:
         raise RuntimeError("--postprocess-mode must be raw or safe.")
-    if config.qa_status not in {"pending", "ready", "approved", "rejected", "failed"}:
-        raise RuntimeError("--qa-status must be pending, ready, approved, rejected, or failed.")
+    if config.qa_status not in SUPPORTED_QA_STATUSES:
+        raise RuntimeError("--qa-status must be pending, ready, approved, candidate, rejected, or failed.")
+    if config.max_provider_calls < 0:
+        raise RuntimeError("--max-provider-calls must be zero or greater.")
 
 
 def _validate_inventory(items: list[dict[str, Any]], config: StaticTtsConfig) -> list[dict[str, Any]]:
@@ -127,15 +152,28 @@ def _validate_inventory(items: list[dict[str, Any]], config: StaticTtsConfig) ->
     out: list[dict[str, Any]] = []
     for item in items:
         if item.get("target_language_code") != config.target_language:
-            raise RuntimeError(f"Inventory item {item.get('concept_id')} is not target_language_code=en.")
+            raise RuntimeError(
+                f"Inventory item {item.get('concept_id')} is not target_language_code={config.target_language}."
+            )
         if item.get("category_slug") != config.category:
             raise RuntimeError(f"Inventory item {item.get('concept_id')} is not category_slug=animals.")
         concept_id = str(item.get("concept_id") or "").strip()
         spoken_text = str(item.get("spoken_text") or "").strip()
+        english_qa_label = str(item.get("english_qa_label") or item.get("source_concept") or "").strip()
         if not concept_id:
             raise RuntimeError("Inventory item is missing concept_id.")
         if not spoken_text:
             raise RuntimeError(f"Inventory item {concept_id} is missing spoken_text.")
+        if config.target_language != "en":
+            normalized_spoken = _normalize_label(spoken_text)
+            if english_qa_label and normalized_spoken == _normalize_label(english_qa_label):
+                raise RuntimeError(f"Inventory item {concept_id} has English spoken_text for {config.target_language}.")
+            if (
+                config.target_language == "ceb"
+                and int(item.get("level_number") or 0) == 1
+                and normalized_spoken in ENGLISH_ANIMALS_LEVEL_1_WORDS
+            ):
+                raise RuntimeError(f"Inventory item {concept_id} has English spoken_text for Cebuano/Bisaya.")
         if concept_id in seen:
             raise RuntimeError(f"Duplicate concept_id in inventory: {concept_id}")
         seen.add(concept_id)
@@ -158,30 +196,125 @@ def _find_existing_voice_profile(sb, voice_profile_key: str) -> dict[str, Any] |
     return rows[0] if rows else None
 
 
-def _resolve_provider_voice_id(sb, config: StaticTtsConfig) -> tuple[str, str | None]:
+def _target_language_aliases(target_language: str) -> set[str]:
+    if target_language == "ceb":
+        return set(CEBUANO_LANGUAGE_ALIASES) | {"fil", "tl", "tagalog", "filipino"}
+    if target_language == "en":
+        return {"en", "en-us", "en-gb", "english"}
+    return {_normalize_label(target_language)}
+
+
+def _resolve_language_profile(sb, config: StaticTtsConfig) -> dict[str, Any] | None:
+    if not config.profile_name:
+        return None
+    rows = sb.table("language_profiles").select("*").execute().data or []
+    wanted = _normalize_label(config.profile_name)
+    aliases = _target_language_aliases(config.target_language)
+    matches: list[dict[str, Any]] = []
+    for row in rows:
+        row_name = _normalize_label(row.get("name"))
+        row_language = _normalize_label(row.get("language"))
+        if row_name != wanted and row_language != wanted:
+            continue
+        if config.target_language != "en" and row_language and row_language not in aliases:
+            continue
+        matches.append(row)
+
+    if not matches:
+        raise RuntimeError(
+            f"No language_profiles row matched --profile-name {config.profile_name!r} "
+            f"for target language {config.target_language!r}."
+        )
+    matches.sort(key=lambda row: (not bool(row.get("is_active", False)), str(row.get("name") or "")))
+    return matches[0]
+
+
+def _voice_matches_target_language(row: dict[str, Any], target_language: str) -> bool:
+    aliases = _target_language_aliases(target_language)
+    row_values = {
+        _normalize_label(row.get("language_code")),
+        _normalize_label(row.get("language")),
+    }
+    return any(value in aliases for value in row_values if value)
+
+
+def _voice_name_rank(row_name: str, wanted: str) -> int | None:
+    normalized = _normalize_label(row_name)
+    if normalized == wanted:
+        return 0
+    if normalized.startswith(wanted):
+        return 1
+    if normalized.endswith(wanted):
+        return 2
+    if wanted in normalized:
+        return 3
+    return None
+
+
+def _find_voice_by_id(sb, provider_voice_id: str | None) -> dict[str, Any] | None:
+    if not provider_voice_id:
+        return None
+    rows = sb.table("voices").select("*").execute().data or []
+    for row in rows:
+        if row.get("voice_id") == provider_voice_id:
+            return row
+    return None
+
+
+def _resolve_provider_voice_id(sb, config: StaticTtsConfig) -> tuple[str, str | None, str | None, str | None]:
     if config.provider_voice_id:
-        return config.provider_voice_id, config.voice_name
+        row = _find_voice_by_id(sb, config.provider_voice_id)
+        return (
+            config.provider_voice_id,
+            (row or {}).get("name") or config.voice_name,
+            (row or {}).get("language_code"),
+            (row or {}).get("language"),
+        )
     if not config.voice_name:
         raise RuntimeError(
             f"No guided_voice_profiles row exists for {config.voice_profile_key!r}. "
             "Pass --voice-name or --provider-voice-id."
         )
-    matches = guided_db.find_voices_by_name(sb, names=[config.voice_name])
-    rows = matches.get(config.voice_name) or []
-    if not rows:
-        raise RuntimeError(f"No English public.voices row matched --voice-name {config.voice_name!r}.")
+    wanted = _normalize_label(config.voice_name)
+    rows = sb.table("voices").select("*").execute().data or []
+    ranked: list[tuple[int, dict[str, Any]]] = []
+    for row in rows:
+        if not _voice_matches_target_language(row, config.target_language):
+            continue
+        rank = _voice_name_rank(str(row.get("name") or ""), wanted)
+        if rank is not None:
+            ranked.append((rank, row))
+
+    if not ranked:
+        raise RuntimeError(
+            f"No public.voices row matched --voice-name {config.voice_name!r} "
+            f"for target language {config.target_language!r}."
+        )
+
+    ranked.sort(key=lambda entry: (entry[0], str(entry[1].get("name") or "")))
+    best_rank = ranked[0][0]
+    rows = [row for rank, row in ranked if rank == best_rank]
     if len(rows) > 1:
         names = ", ".join(f"{row.get('name')} ({row.get('voice_id')})" for row in rows)
         raise RuntimeError(f"--voice-name {config.voice_name!r} is ambiguous in public.voices: {names}")
-    return rows[0]["voice_id"], rows[0].get("name")
+    return rows[0]["voice_id"], rows[0].get("name"), rows[0].get("language_code"), rows[0].get("language")
 
 
 def resolve_or_upsert_voice_profile(sb, config: StaticTtsConfig) -> dict[str, Any]:
+    language_profile = _resolve_language_profile(sb, config)
+    resolved_profile_name = language_profile.get("name") if language_profile else None
     existing = _find_existing_voice_profile(sb, config.voice_profile_key)
     if existing:
-        return existing
+        voice_row = _find_voice_by_id(sb, existing.get("provider_voice_id")) or {}
+        return {
+            **existing,
+            "resolved_profile_name": resolved_profile_name,
+            "resolved_voice_name": voice_row.get("name"),
+            "resolved_voice_language_code": voice_row.get("language_code"),
+            "resolved_voice_language": voice_row.get("language"),
+        }
 
-    provider_voice_id, resolved_name = _resolve_provider_voice_id(sb, config)
+    provider_voice_id, resolved_name, resolved_language_code, resolved_language = _resolve_provider_voice_id(sb, config)
     settings = dict(DEFAULT_VOICE_SETTINGS)
     settings_hash = voice_settings_hash(settings)
     payload = {
@@ -197,13 +330,20 @@ def resolve_or_upsert_voice_profile(sb, config: StaticTtsConfig) -> dict[str, An
         "assignment_version": 1,
         "active": True,
         "priority": 100,
-        "notes": f"Static thematic English Animals pilot voice{f' resolved from {resolved_name}' if resolved_name else ''}.",
+        "notes": (
+            f"Static thematic {config.target_language} Animals pilot voice"
+            f"{f' resolved from {resolved_name}' if resolved_name else ''}."
+        ),
+        "resolved_profile_name": resolved_profile_name,
+        "resolved_voice_name": resolved_name,
+        "resolved_voice_language_code": resolved_language_code,
+        "resolved_voice_language": resolved_language,
     }
 
     if not config.commit_db:
         return {**payload, "id": None, "planned": True}
 
-    return guided_db.upsert_voice_profile(
+    saved = guided_db.upsert_voice_profile(
         sb,
         voice_profile_key=config.voice_profile_key,
         target_language_code=config.target_language,
@@ -219,6 +359,13 @@ def resolve_or_upsert_voice_profile(sb, config: StaticTtsConfig) -> dict[str, An
         priority=100,
         notes=payload["notes"],
     )
+    return {
+        **saved,
+        "resolved_profile_name": resolved_profile_name,
+        "resolved_voice_name": resolved_name,
+        "resolved_voice_language_code": resolved_language_code,
+        "resolved_voice_language": resolved_language,
+    }
 
 
 def _upsert_assignment(sb, config: StaticTtsConfig) -> None:
@@ -237,7 +384,7 @@ def _upsert_assignment(sb, config: StaticTtsConfig) -> None:
         "target_language_code": config.target_language,
         "category_slug": config.category,
         "voice_profile_key": config.voice_profile_key,
-        "label": "English Animals static thematic TTS pilot",
+        "label": f"{config.target_language} Animals static thematic TTS pilot",
         "active": True,
         "priority": 100,
         "audio_version": AUDIO_VERSION,
@@ -360,14 +507,19 @@ def _detect_peak_db(path: Path) -> float | None:
 
 def postprocess_audio(audio_bytes: bytes, *, postprocess_mode: str) -> tuple[bytes, int | None, dict[str, Any]]:
     if postprocess_mode == "raw":
+        warnings: list[str] = []
+        if len(audio_bytes) == 0:
+            raise RuntimeError("provider_returned_empty_audio")
         if len(audio_bytes) < 512:
-            raise RuntimeError(f"Raw audio is too small: {len(audio_bytes)} bytes")
+            warnings.append("suspiciously_small_file")
         with tempfile.TemporaryDirectory() as tmp:
             raw = Path(tmp) / "raw.mp3"
             raw.write_bytes(audio_bytes)
-            duration_ms = _probe_duration_ms(raw)
-        if duration_ms <= 150:
-            raise RuntimeError(f"Raw audio is too short: {duration_ms}ms")
+            try:
+                duration_ms = _probe_duration_ms(raw)
+            except Exception:
+                duration_ms = None
+                warnings.append("ffprobe_failed")
         return audio_bytes, duration_ms, {
             "status": "raw",
             "postprocess_mode": "raw",
@@ -376,6 +528,7 @@ def postprocess_audio(audio_bytes: bytes, *, postprocess_mode: str) -> tuple[byt
             "final_duration_ms": duration_ms,
             "raw_file_size_bytes": len(audio_bytes),
             "final_file_size_bytes": len(audio_bytes),
+            "warnings": warnings,
         }
 
     _require_audio_tools()
@@ -454,6 +607,44 @@ def _git_commit_sha() -> str | None:
         return None
 
 
+def _unique_warnings(values: list[str]) -> list[str]:
+    out: list[str] = []
+    for value in values:
+        if value and value not in out:
+            out.append(value)
+    return out
+
+
+def _looks_multisyllable(text: str) -> bool:
+    return len(re.findall(r"[aeiouyAEIOUY]+", text)) >= 2
+
+
+def _item_warnings(spoken_text: str, qa: dict[str, Any]) -> list[str]:
+    warnings = list(qa.get("warnings") or [])
+    duration_ms = qa.get("final_duration_ms")
+    if isinstance(duration_ms, int):
+        if duration_ms < 500:
+            warnings.append("duration_under_500ms")
+        if duration_ms < 800 and _looks_multisyllable(spoken_text):
+            warnings.append("duration_under_800ms_for_multisyllable")
+        if duration_ms > 3000:
+            warnings.append("duration_over_3000ms")
+    final_size = qa.get("final_file_size_bytes") or qa.get("size_bytes")
+    if isinstance(final_size, int) and final_size < 1024:
+        warnings.append("suspiciously_small_file")
+    return _unique_warnings(warnings)
+
+
+def _flatten_postprocess_qa(qa: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "postprocess_mode": qa.get("postprocess_mode"),
+        "raw_duration_ms": qa.get("raw_duration_ms"),
+        "final_duration_ms": qa.get("final_duration_ms"),
+        "raw_file_size_bytes": qa.get("raw_file_size_bytes"),
+        "final_file_size_bytes": qa.get("final_file_size_bytes") or qa.get("size_bytes"),
+    }
+
+
 def run_inventory(
     *,
     sb,
@@ -477,6 +668,7 @@ def run_inventory(
         "would_generate": 0,
         "generated": 0,
         "failed": 0,
+        "provider_calls": 0,
     }
     generated_cache: dict[str, str] = {}
 
@@ -518,12 +710,31 @@ def run_inventory(
 
         base_report = {
             "concept_id": item["concept_id"],
+            "english_qa_label": item.get("english_qa_label") or item.get("source_concept"),
             "spoken_text": item["spoken_text"],
+            "target_term": item.get("target_term") or item["spoken_text"],
+            "target_language_code": item["target_language_code"],
+            "category_slug": item["category_slug"],
+            "level_number": int(item["level_number"]),
+            "order": item.get("order"),
+            "part_of_speech": item.get("part_of_speech"),
+            "sense": item.get("sense"),
+            "voice_profile_key": config.voice_profile_key,
+            "resolved_voice_name": profile.get("resolved_voice_name"),
+            "postprocess_mode": config.postprocess_mode,
+            "raw_duration_ms": None,
+            "final_duration_ms": None,
+            "raw_file_size_bytes": None,
+            "final_file_size_bytes": None,
             "normalized_text": normalized,
             "cache_key": cache_key,
             "storage_path": storage_path,
             "asset_id": existing_asset.get("id") if existing_asset else None,
             "usage_id": existing_usage.get("id") if existing_usage else None,
+            "public_url": existing_asset.get("public_url") if existing_asset else None,
+            "qa_status": config.qa_status,
+            "warnings": [],
+            "errors": [],
         }
 
         if asset_ready and existing_usage and config.skip_existing and not config.force_regenerate:
@@ -566,6 +777,11 @@ def run_inventory(
                 report_items.append({**base_report, "status": "linked_generated_duplicate", "usage_id": usage["id"]})
                 continue
 
+            if totals["provider_calls"] >= config.max_provider_calls:
+                raise RuntimeError(
+                    f"Provider call cap exceeded: max {config.max_provider_calls} ElevenLabs calls for this run."
+                )
+            totals["provider_calls"] += 1
             raw_audio = _maybe_await(
                 provider_synthesize(
                     text=normalized,
@@ -573,7 +789,7 @@ def run_inventory(
                     model_id=profile.get("provider_model_id") or DEFAULT_MODEL_ID,
                     output_format=profile.get("output_format") or DEFAULT_OUTPUT_FORMAT,
                     voice_settings=profile.get("voice_settings") or dict(DEFAULT_VOICE_SETTINGS),
-                    language_code=item["target_language_code"],
+                    language_code=profile.get("resolved_voice_language_code") or item["target_language_code"],
                     request_id=cache_key[:32],
                 )
             )
@@ -613,6 +829,7 @@ def run_inventory(
             )
             generated_cache[cache_key] = asset["id"]
             totals["generated"] += 1
+            warnings = _item_warnings(item["spoken_text"], qa)
             report_items.append(
                 {
                     **base_report,
@@ -621,12 +838,15 @@ def run_inventory(
                     "usage_id": usage["id"],
                     "public_url": public_url,
                     "qa_status": config.qa_status,
+                    **_flatten_postprocess_qa(qa),
+                    "warnings": warnings,
+                    "errors": [],
                     "postprocess": qa,
                 }
             )
         except Exception as exc:  # noqa: BLE001 - batch must continue and report item failure
             totals["failed"] += 1
-            report_items.append({**base_report, "status": "failed", "error": str(exc)})
+            report_items.append({**base_report, "status": "failed", "error": str(exc), "errors": [str(exc)]})
 
     return {
         "mode": "commit" if config.commit_db else "dry-run",
@@ -639,6 +859,11 @@ def run_inventory(
             "provider_model_id": profile.get("provider_model_id") or DEFAULT_MODEL_ID,
             "output_format": profile.get("output_format") or DEFAULT_OUTPUT_FORMAT,
             "resolved_from_existing_profile": not profile.get("planned", False),
+            "resolved_profile_name": profile.get("resolved_profile_name"),
+            "resolved_voice_name": profile.get("resolved_voice_name"),
+            "resolved_voice_language": profile.get("resolved_voice_language"),
+            "resolved_voice_language_code": profile.get("resolved_voice_language_code"),
+            "provider_voice_id_last4": str(profile.get("provider_voice_id") or "")[-4:],
             "postprocess_mode": config.postprocess_mode,
             "qa_status": config.qa_status,
             "activate_assignment": config.activate_assignment,
@@ -671,12 +896,60 @@ def _load_inventory(path: str) -> list[dict[str, Any]]:
     return data
 
 
+def write_listening_html(report: dict[str, Any], out_path: str) -> None:
+    rows: list[str] = []
+    for item in report.get("items") or []:
+        public_url = str(item.get("public_url") or "")
+        if not public_url:
+            continue
+        rows.append(
+            "<tr>"
+            f"<td>{html.escape(str(item.get('concept_id') or ''))}</td>"
+            f"<td>{html.escape(str(item.get('english_qa_label') or ''))}</td>"
+            f"<td>{html.escape(str(item.get('spoken_text') or ''))}</td>"
+            f"<td><audio controls preload=\"none\" src=\"{html.escape(public_url, quote=True)}\"></audio></td>"
+            "</tr>"
+        )
+
+    payload = """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cebuano Animals Level 1 Yumi Raw TTS</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; color: #111827; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border-bottom: 1px solid #d1d5db; padding: 10px; text-align: left; vertical-align: middle; }
+    th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: #4b5563; }
+    audio { width: 320px; max-width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>Cebuano/Bisaya Animals Level 1 - Yumi Raw TTS</h1>
+  <table>
+    <thead>
+      <tr><th>Concept ID</th><th>English QA Label</th><th>Cebuano/Bisaya Text</th><th>Audio</th></tr>
+    </thead>
+    <tbody>
+      __ROWS__
+    </tbody>
+  </table>
+</body>
+</html>
+"""
+    out = Path(out_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(payload.replace("      __ROWS__", "\n      ".join(rows)), encoding="utf-8")
+
+
 def _build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Static thematic TTS generator for English Animals.")
+    parser = argparse.ArgumentParser(description="Static thematic TTS generator for Animals.")
     parser.add_argument("--inventory", required=True)
     parser.add_argument("--target-language", default="en")
     parser.add_argument("--category", default="animals")
     parser.add_argument("--voice-profile-key", default="static_thematic_en_animals_v1")
+    parser.add_argument("--profile-name", default=None)
     parser.add_argument("--voice-name", default=None)
     parser.add_argument("--provider-voice-id", default=None)
     parser.add_argument("--dry-run", action="store_true", help="Default. No DB writes or provider calls.")
@@ -688,9 +961,11 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--allow-raw-audio", action="store_true", default=False, help="Deprecated alias for --postprocess-mode raw.")
     parser.add_argument("--postprocess-mode", choices=["raw", "safe"], default="raw")
-    parser.add_argument("--qa-status", choices=["pending", "ready", "approved", "rejected", "failed"], default="ready")
+    parser.add_argument("--qa-status", choices=sorted(SUPPORTED_QA_STATUSES), default="ready")
     parser.add_argument("--activate-assignment", action="store_true", default=False)
+    parser.add_argument("--max-provider-calls", type=int, default=10)
     parser.add_argument("--report-out", default="tmp/static-tts-en-animals-report.json")
+    parser.add_argument("--listening-html-out", default=None)
     return parser
 
 
@@ -704,6 +979,7 @@ def main(argv: list[str] | None = None) -> int:
         target_language=args.target_language,
         category=args.category,
         voice_profile_key=args.voice_profile_key,
+        profile_name=args.profile_name,
         voice_name=args.voice_name,
         provider_voice_id=args.provider_voice_id,
         commit_db=bool(args.commit_db),
@@ -715,7 +991,9 @@ def main(argv: list[str] | None = None) -> int:
         postprocess_mode="raw" if args.allow_raw_audio else args.postprocess_mode,
         qa_status=args.qa_status,
         activate_assignment=bool(args.activate_assignment),
+        max_provider_calls=args.max_provider_calls,
         report_out=args.report_out,
+        listening_html_out=args.listening_html_out,
     )
     inventory = _load_inventory(args.inventory)
     sb = _build_supabase_client()
@@ -732,6 +1010,8 @@ def main(argv: list[str] | None = None) -> int:
         out = Path(config.report_out)
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(payload + "\n", encoding="utf-8")
+    if config.listening_html_out:
+        write_listening_html(report, config.listening_html_out)
     sys.stdout.write(payload + "\n")
     return 0 if report["totals"]["failed"] == 0 else 1
 

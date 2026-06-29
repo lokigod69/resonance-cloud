@@ -51,6 +51,49 @@ assert.ok(levelOne.every((item) => item.target_language_code === 'en'))
 assert.ok(levelOne.every((item) => item.category_slug === 'animals'))
 assert.ok(levelOne.every((item) => item.part_of_speech === 'noun'))
 
+const cebuanoLevelOne = buildStaticThematicTtsInventory({
+  targetLanguage: 'ceb',
+  category: 'animals',
+  level: 1,
+})
+
+assert.equal(cebuanoLevelOne.length, 10, 'Cebuano/Bisaya Animals Level 1 should export 10 items')
+assert.deepEqual(
+  cebuanoLevelOne.map((item) => ({
+    concept_id: item.concept_id,
+    english_qa_label: item.english_qa_label,
+    target_term: item.target_term,
+    spoken_text: item.spoken_text,
+    target_language_code: item.target_language_code,
+  })),
+  [
+    { concept_id: 'animals.dog', english_qa_label: 'dog', target_term: 'iro', spoken_text: 'iro', target_language_code: 'ceb' },
+    { concept_id: 'animals.cat', english_qa_label: 'cat', target_term: 'iring', spoken_text: 'iring', target_language_code: 'ceb' },
+    { concept_id: 'animals.bird', english_qa_label: 'bird', target_term: 'langgam', spoken_text: 'langgam', target_language_code: 'ceb' },
+    { concept_id: 'animals.fish', english_qa_label: 'fish', target_term: 'isda', spoken_text: 'isda', target_language_code: 'ceb' },
+    { concept_id: 'animals.horse', english_qa_label: 'horse', target_term: 'kabayo', spoken_text: 'kabayo', target_language_code: 'ceb' },
+    { concept_id: 'animals.cow', english_qa_label: 'cow', target_term: 'baka', spoken_text: 'baka', target_language_code: 'ceb' },
+    { concept_id: 'animals.pig', english_qa_label: 'pig', target_term: 'baboy', spoken_text: 'baboy', target_language_code: 'ceb' },
+    { concept_id: 'animals.sheep', english_qa_label: 'sheep', target_term: 'karnero', spoken_text: 'karnero', target_language_code: 'ceb' },
+    { concept_id: 'animals.goat', english_qa_label: 'goat', target_term: 'kanding', spoken_text: 'kanding', target_language_code: 'ceb' },
+    { concept_id: 'animals.chicken', english_qa_label: 'chicken', target_term: 'manok', spoken_text: 'manok', target_language_code: 'ceb' },
+  ],
+  'Cebuano spoken_text should be the bare Cebuano/Bisaya term, not English',
+)
+assert.ok(!cebuanoLevelOne.some((item) => item.spoken_text === item.english_qa_label))
+assert.equal(
+  buildStaticThematicTtsInventory({ targetLanguage: 'cebuano', category: 'animals', level: 1 })[0].target_language_code,
+  'ceb',
+)
+assert.equal(
+  buildStaticThematicTtsInventory({ targetLanguage: 'bisaya', category: 'animals', level: 1 })[0].target_language_code,
+  'ceb',
+)
+assert.equal(
+  buildStaticThematicTtsInventory({ targetLanguage: 'sebuano', category: 'animals', level: 1 })[0].target_language_code,
+  'ceb',
+)
+
 const allAnimals = buildStaticThematicTtsInventory({
   targetLanguage: 'en',
   category: 'animals',
@@ -59,9 +102,9 @@ const allAnimals = buildStaticThematicTtsInventory({
 assert.equal(allAnimals.length, 100, 'English Animals all-level export should include 100 words')
 
 assert.throws(
-  () => buildStaticThematicTtsInventory({ targetLanguage: 'de', category: 'animals', level: 1 }),
-  /Only English/,
-  'exporter should reject non-English pilot requests',
+  () => buildStaticThematicTtsInventory({ targetLanguage: 'not-a-language', category: 'animals', level: 1 }),
+  /Unsupported target language/,
+  'exporter should reject unsupported target-language requests',
 )
 assert.throws(
   () => buildStaticThematicTtsInventory({ targetLanguage: 'en', category: 'fruits', level: 1 }),
