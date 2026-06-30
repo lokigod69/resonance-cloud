@@ -15,6 +15,10 @@ from cloud_engines.concept_engine.models import (
     ConceptSettings,
     Enrichment,
 )
+from cloud_engines.concept_engine.song_full import (
+    LYRIC_MODE_TO_SONG_DEPTH,
+    generate_full_song_lyrics,
+)
 
 from src.slugify import language_to_code
 from src.storage import get_workspace_root
@@ -157,6 +161,46 @@ def build_song_only_concept(
 
     artifact_file = _artifact_path(output_dir, result.output_paths)
     artifact = json.loads(artifact_file.read_text(encoding="utf-8"))
+
+    # A standalone song has no video clip, so it must not inherit the concept
+    # engine's 15-second clip duration (INV-LONGSONG-001). Keep the engine's
+    # caption/article/language work, but override the lyric with a full-song
+    # builder scaled to the depth so every depth renders a complete song.
+    generation_info = artifact.get("generation_info") or {}
+    depth = LYRIC_MODE_TO_SONG_DEPTH.get(lyric_mode, "long")
+    # Let any generation error propagate: the music-only worker's failure path
+    # fails the job and the existing refund logic returns the reserved credits.
+    full_lyrics = generate_full_song_lyrics(
+        word=word_text,
+        translation=_first_text(artifact.get("translation"), word.get("translation")) or "",
+        language=language,
+        language_code=language_code,
+        depth=depth,
+        article=generation_info.get("article_used") or "",
+        music_caption=_first_text(artifact.get("music_caption")),
+        llm_model=payload.settings.llm_model,
+    )
+    # Never submit an empty/whitespace lyric to Suno (which would otherwise fall
+    # back to the bare word and silently bill a degraded song). Fail loudly so the
+    # worker refunds the reserved credits rather than charging for nothing. We do
+    # NOT fall back to the engine's short clip lyric — that would bill for the very
+    # degraded short song this override exists to prevent.
+    if not full_lyrics or not full_lyrics.strip():
+        raise RuntimeError(
+            f"Full-song lyric generation returned empty for job {job_id} "
+            f"(depth={depth}); failing the job so reserved credits are refunded."
+        )
+    artifact["lyrics"] = full_lyrics
+    artifact["suno_lyrics"] = full_lyrics
+    if isinstance(generation_info, dict):
+        generation_info["lyrics_source"] = "song_full_llm"
+        generation_info["song_depth"] = depth
+        artifact["generation_info"] = generation_info
+    artifact_file.write_text(
+        json.dumps(artifact, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
     concept_data = _concept_data_from_artifact(
         artifact,
         word=word,

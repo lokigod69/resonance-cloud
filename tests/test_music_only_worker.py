@@ -5,6 +5,8 @@ from types import SimpleNamespace
 import asyncio
 from contextlib import contextmanager
 
+import pytest
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -295,8 +297,15 @@ def test_song_only_concept_builds_payload_and_prefers_suno_lyrics(tmp_path, monk
         )
         return ConceptResult(status="success", output_paths=["concept.json"], error=None)
 
+    full_song_calls = {}
+
+    def fake_full_song(**kwargs):
+        full_song_calls.update(kwargs)
+        return "[Intro]\nbonjour\n\n[Verse]\nfull song lyrics\n[Interlude]"
+
     monkeypatch.setattr(song_only_concept, "get_workspace_root", fake_workspace_root)
     monkeypatch.setattr(song_only_concept, "generate_concept", fake_generate_concept)
+    monkeypatch.setattr(song_only_concept, "generate_full_song_lyrics", fake_full_song)
 
     result = song_only_concept.build_song_only_concept(
         job={
@@ -328,8 +337,62 @@ def test_song_only_concept_builds_payload_and_prefers_suno_lyrics(tmp_path, monk
     assert payload.content.external_music_caption is None
     assert payload.settings.lyric_mode == "contextual"
     assert payload.settings.genre == "acoustic pop"
-    assert result["concept_data"]["lyrics"] == "provider lyrics"
+
+    # Song-only lyrics are overridden with the full-song builder (freed from the
+    # 15s clip duration). The caption path is untouched.
+    assert full_song_calls["depth"] == "phrase"  # contextual -> phrase
+    assert full_song_calls["word"] == "bonjour"
+    assert full_song_calls["language"] == "French"
+    assert full_song_calls["music_caption"] == "acoustic pop, female vocal"
+    assert result["concept_data"]["lyrics"] == (
+        "[Intro]\nbonjour\n\n[Verse]\nfull song lyrics\n[Interlude]"
+    )
+    assert result["concept_artifact"]["suno_lyrics"] == result["concept_data"]["lyrics"]
     assert result["concept_data"]["music_caption"] == "acoustic pop, female vocal"
+
+
+def test_song_only_concept_raises_when_full_song_lyric_is_empty(tmp_path, monkeypatch):
+    """An empty/whitespace override lyric must raise, not silently submit a bare
+    word to Suno. Raising routes the job through the worker's failure path so the
+    reserved credits are refunded."""
+    from cloud_engines.concept_engine.models import ConceptResult
+    from src.services import song_only_concept
+
+    def fake_workspace_root():
+        return tmp_path
+
+    def fake_generate_concept(payload):
+        output_dir = Path(payload.output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        (output_dir / "concept.json").write_text(
+            """{
+              "word": "gurita", "translation": "octopus",
+              "language": "Indonesian", "language_code": "id",
+              "lyrics": "short clip lyric", "suno_lyrics": "short clip lyric",
+              "music_caption": "slow waltz, female vocal",
+              "generation_info": {"lyric_mode": "dramatic", "genre_mode": "auto",
+                "syllable_count": 4, "word_length_class": "medium", "llm_calls": 1,
+                "lyrics_source": "llm", "caption_source": "llm", "article_used": ""}
+            }""",
+            encoding="utf-8",
+        )
+        return ConceptResult(status="success", output_paths=["concept.json"], error=None)
+
+    monkeypatch.setattr(song_only_concept, "get_workspace_root", fake_workspace_root)
+    monkeypatch.setattr(song_only_concept, "generate_concept", fake_generate_concept)
+    monkeypatch.setattr(song_only_concept, "generate_full_song_lyrics", lambda **kwargs: "   \n  ")
+
+    with pytest.raises(RuntimeError, match="empty"):
+        song_only_concept.build_song_only_concept(
+            job={
+                "id": "job-empty", "user_id": "user-1", "word_id": "word-1",
+                "deck_id": "deck-1", "lyric_mode": "dramatic", "genre": "auto",
+                "vocal_gender": "female", "attempts": 1,
+            },
+            word={"id": "word-1", "word": "gurita", "translation": "octopus",
+                  "metadata": {}},
+            deck={"id": "deck-1", "target_language": "Indonesian"},
+        )
 
 
 def test_song_only_suno_uploads_audio_without_updating_words(tmp_path, monkeypatch):
