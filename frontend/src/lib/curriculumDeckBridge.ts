@@ -309,7 +309,15 @@ async function fetchStaticCategoryAudioForImport(
     )
     const audioByConceptId = new Map<string, StaticThematicPlaybackRow>()
     for (const conceptId of conceptIds) {
-      const row = getStaticThematicAudio(lookup, conceptId, voiceProfileKeys[0])
+      // Take the first voice profile that actually has a row for this concept/level.
+      // Languages with per-level voice alternation (e.g. Indonesian Gavrila/Blasto)
+      // only ever have one voice present per level, so this self-selects correctly
+      // while preserving the preferred-voice ordering for single/dual-voice languages.
+      let row: StaticThematicPlaybackRow | undefined
+      for (const voiceProfileKey of voiceProfileKeys) {
+        row = getStaticThematicAudio(lookup, conceptId, voiceProfileKey)
+        if (row?.public_url) break
+      }
       if (row?.public_url) audioByConceptId.set(conceptId, row)
     }
     return audioByConceptId

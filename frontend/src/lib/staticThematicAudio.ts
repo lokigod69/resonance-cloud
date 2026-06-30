@@ -13,6 +13,21 @@ export const STATIC_THEMATIC_FR_LILLY_RAW_PROFILE_KEY = 'static_thematic_fr_lill
 export const STATIC_THEMATIC_FR_STEPHYRA_RAW_PROFILE_KEY = 'static_thematic_fr_stephyra_raw_v1'
 export const STATIC_THEMATIC_FR_GUILLAUME_RAW_PROFILE_KEY = 'static_thematic_fr_guillaume_raw_v1'
 export const STATIC_THEMATIC_FR_ADAM_RAW_PROFILE_KEY = 'static_thematic_fr_adam_raw_v1'
+export const STATIC_THEMATIC_KO_JINI_RAW_PROFILE_KEY = 'static_thematic_ko_jini_raw_v1'
+export const STATIC_THEMATIC_KO_YUNA_RAW_PROFILE_KEY = 'static_thematic_ko_yuna_raw_v1'
+export const STATIC_THEMATIC_KO_KANNA_RAW_PROFILE_KEY = 'static_thematic_ko_kanna_raw_v1'
+export const STATIC_THEMATIC_KO_SELLY_RAW_PROFILE_KEY = 'static_thematic_ko_selly_raw_v1'
+export const STATIC_THEMATIC_KO_EMILY_RAW_PROFILE_KEY = 'static_thematic_ko_emily_raw_v1'
+export const STATIC_THEMATIC_KO_SOLA_RAW_PROFILE_KEY = 'static_thematic_ko_sola_raw_v1'
+// Indonesian uses deterministic per-level voice alternation (odd levels = Gavrila,
+// even levels = Blasto). Both keys are queried; the playback view only ever has the
+// assigned voice's rows for a given level, so resolution self-selects without dupes.
+// Even-level Blasto playback/import uses the headroom-capped +8 dB boosted copy
+// (raw Blasto was ~16 dB quieter than Gavrila); raw Blasto usage rows are rejected,
+// so only the boosted rows appear in static_tts_playback.
+export const STATIC_THEMATIC_ID_GAVRILA_RAW_PROFILE_KEY = 'static_thematic_id_gavrila_raw_v1'
+export const STATIC_THEMATIC_ID_BLASTO_RAW_PROFILE_KEY = 'static_thematic_id_blasto_raw_v1'
+export const STATIC_THEMATIC_ID_BLASTO_GAIN8_PROFILE_KEY = 'static_thematic_id_blasto_gain8_rawsource_v1'
 export const STATIC_ANIMALS_ELISA_RAW_PROFILE_KEY = 'static_thematic_en_animals_elisa_raw_v1'
 export const STATIC_ANIMALS_SERAFINA_RAW_PROFILE_KEY = 'static_thematic_en_animals_serafina_raw_v1'
 
@@ -37,6 +52,9 @@ export function getStaticThematicVoiceProfileKeys({
   categorySlug: string
 }): string[] | undefined {
   if (targetLanguageCode === 'ceb') return [STATIC_THEMATIC_CEB_YUMI_RAW_PROFILE_KEY]
+  if (targetLanguageCode === 'id') {
+    return [STATIC_THEMATIC_ID_GAVRILA_RAW_PROFILE_KEY, STATIC_THEMATIC_ID_BLASTO_GAIN8_PROFILE_KEY]
+  }
   if (targetLanguageCode === 'de') {
     return [
       STATIC_THEMATIC_DE_LAURA_RAW_PROFILE_KEY,
@@ -59,6 +77,16 @@ export function getStaticThematicVoiceProfileKeys({
       STATIC_THEMATIC_FR_STEPHYRA_RAW_PROFILE_KEY,
       STATIC_THEMATIC_FR_GUILLAUME_RAW_PROFILE_KEY,
       STATIC_THEMATIC_FR_ADAM_RAW_PROFILE_KEY,
+    ]
+  }
+  if (targetLanguageCode === 'ko') {
+    return [
+      STATIC_THEMATIC_KO_JINI_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_KO_YUNA_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_KO_KANNA_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_KO_SELLY_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_KO_EMILY_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_KO_SOLA_RAW_PROFILE_KEY,
     ]
   }
   if (targetLanguageCode === 'en' && categorySlug === 'animals') {
