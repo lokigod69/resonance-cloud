@@ -211,6 +211,29 @@ assert.deepEqual(
 )
 assert.ok(!frenchLevelOne.some((item) => item.spoken_text === item.english_qa_label))
 
+const italianLevelOne = buildStaticThematicTtsInventory({
+  targetLanguage: 'it',
+  category: 'animals',
+  level: 1,
+})
+assert.equal(italianLevelOne.length, 10, 'Italian Animals Level 1 should export 10 items')
+assert.deepEqual(
+  italianLevelOne.slice(0, 4).map((item) => ({
+    concept_id: item.concept_id,
+    english_qa_label: item.english_qa_label,
+    spoken_text: item.spoken_text,
+    target_language_code: item.target_language_code,
+  })),
+  [
+    { concept_id: 'animals.dog', english_qa_label: 'dog', spoken_text: 'cane', target_language_code: 'it' },
+    { concept_id: 'animals.cat', english_qa_label: 'cat', spoken_text: 'gatto', target_language_code: 'it' },
+    { concept_id: 'animals.bird', english_qa_label: 'bird', spoken_text: 'uccello', target_language_code: 'it' },
+    { concept_id: 'animals.fish', english_qa_label: 'fish', spoken_text: 'pesce', target_language_code: 'it' },
+  ],
+  'Italian spoken_text should preserve the existing Italian static term',
+)
+assert.ok(!italianLevelOne.some((item) => item.spoken_text === item.english_qa_label))
+
 const cebuanoAllCategories = buildStaticThematicTtsInventory({
   targetLanguage: 'ceb',
   allCategories: true,
@@ -309,6 +332,23 @@ assert.deepEqual(frenchKeys.voiceProfileKeys, [
   'static_thematic_fr_stephyra_raw_v1',
   'static_thematic_fr_guillaume_raw_v1',
   'static_thematic_fr_adam_raw_v1',
+])
+
+const italianKeys = buildStaticThematicPlaybackQuery({
+  targetLanguageCode: 'it',
+  categorySlug: 'animals',
+  levelNumber: 1,
+  conceptIds: ['animals.dog'],
+  voiceProfileKeys: [
+    'static_thematic_it_marco_raw_v1',
+    'static_thematic_it_rosanna_raw_v1',
+    'static_thematic_it_samanta_raw_v1',
+  ],
+})
+assert.deepEqual(italianKeys.voiceProfileKeys, [
+  'static_thematic_it_marco_raw_v1',
+  'static_thematic_it_rosanna_raw_v1',
+  'static_thematic_it_samanta_raw_v1',
 ])
 
 const lookup = buildStaticThematicAudioLookup([

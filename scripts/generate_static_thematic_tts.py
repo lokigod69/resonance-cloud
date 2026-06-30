@@ -38,7 +38,7 @@ from src.services.guided_tts.inventory import (
 
 ProviderCallable = Callable[..., bytes | Awaitable[bytes]]
 AUDIO_VERSION = 1
-SUPPORTED_TARGET_LANGUAGES = {"en", "ceb", "id", "de", "es", "fr"}
+SUPPORTED_TARGET_LANGUAGES = {"en", "ceb", "id", "de", "es", "fr", "it"}
 SUPPORTED_QA_STATUSES = {"pending", "ready", "approved", "rejected", "failed"}
 CEBUANO_LANGUAGE_ALIASES = {"ceb", "cebuano", "sebuano", "bisaya"}
 ENGLISH_ANIMALS_LEVEL_1_WORDS = {
@@ -132,7 +132,7 @@ def _normalize_label(value: str | None) -> str:
 
 def _validate_scope(config: StaticTtsConfig) -> None:
     if config.target_language not in SUPPORTED_TARGET_LANGUAGES:
-        raise RuntimeError("Only --target-language en, ceb, id, de, es, or fr is supported.")
+        raise RuntimeError("Only --target-language en, ceb, id, de, es, fr, or it is supported.")
     if config.force_regenerate and config.skip_existing:
         raise RuntimeError("Use either --skip-existing or --force-regenerate, not both.")
     if config.commit_db and not config.allow_provider_calls and config.force_regenerate:
@@ -218,6 +218,8 @@ def _target_language_aliases(target_language: str) -> set[str]:
         return {"es", "es-es", "spanish", "español", "espanol"}
     if target_language == "fr":
         return {"fr", "fr-fr", "french", "français", "francais"}
+    if target_language == "it":
+        return {"it", "it-it", "italian", "italiano"}
     return {_normalize_label(target_language)}
 
 
