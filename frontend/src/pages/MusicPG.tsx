@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/select'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useTranslation } from '@/hooks/useTranslation'
+import { formatMusicDeckLabel, type MusicLabelTranslateFn } from '@/lib/musicTrackLabels'
 import {
   PLAYER_ACTIVE_TOGGLE_CLASS,
   PLAYER_FOCUS_RING_CLASS,
@@ -31,6 +32,8 @@ type SongGenerationStatus = typeof ACTIVE_MUSIC_JOB_STATUSES[number]
 type AudioFilter = 'all' | 'with' | 'without'
 
 type DeckOption = { id: string; name: string }
+type TrackDeckRow = { id: string; name: string; target_language: string | null }
+type TrackDeckRelation = TrackDeckRow | TrackDeckRow[] | null
 type LatestMusicJobRow = {
   word_id: string
   status: string | null
@@ -41,6 +44,7 @@ type LatestMusicJobRow = {
 }
 type CompletedLevelMusicJobRow = {
   id: string
+  deck_id: string | null
   category_slug: string | null
   level_number: number | null
   target_language: string | null
@@ -55,24 +59,29 @@ type CompletedLevelMusicJobRow = {
   vocal_gender: string | null
   completed_at: string | null
   created_at: string | null
+  decks: TrackDeckRelation
 }
 
-type MusicCache = { tracks: MusicTrack[]; decks: DeckOption[]; userId: string }
+type MusicCache = { tracks: MusicTrack[]; decks: DeckOption[]; userId: string; locale: string }
 let _pgMusicCache: MusicCache | null = null
 
-function mapToTrack(row: Record<string, unknown>): MusicTrack {
+function resolveTrackDeckRow(decks: TrackDeckRelation): TrackDeckRow | null {
+  return Array.isArray(decks) ? decks[0] ?? null : decks
+}
+
+function mapToTrack(row: Record<string, unknown>, t: MusicLabelTranslateFn): MusicTrack {
   const meta = row.metadata as Record<string, unknown> | null
   const songGeneration =
     meta?.song_generation && typeof meta.song_generation === 'object'
       ? meta.song_generation as Record<string, unknown>
       : null
-  const deckRow = row.decks as { id: string; name: string } | null
+  const deckRow = resolveTrackDeckRow(row.decks as TrackDeckRelation)
   const songGenre = songGeneration?.genre as string | undefined
   const track = {
     id: row.id as string,
     kind: 'word' as const,
     deck_id: row.deck_id as string,
-    deckName: deckRow?.name ?? 'Unknown deck',
+    deckName: formatMusicDeckLabel(deckRow?.name ?? 'Unknown deck', deckRow?.target_language ?? null, t),
     word: row.word as string,
     translation: (row.translation as string | null) ?? null,
     thumbnail_url: (row.thumbnail_url as string | null) ?? null,
@@ -85,7 +94,7 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
     latest_music_job: null,
     category_slug: null,
     level_number: null,
-    target_language: null,
+    target_language: deckRow?.target_language ?? null,
     genre: songGenre ?? null,
     duration: null,
     error: false,
@@ -96,7 +105,7 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
   }
 }
 
-function mapLevelJobToTrack(row: CompletedLevelMusicJobRow): MusicTrack {
+function mapLevelJobToTrack(row: CompletedLevelMusicJobRow, t: MusicLabelTranslateFn): MusicTrack {
   const latestMusicJob = {
     status: 'complete',
     music_caption: row.music_caption,
@@ -108,11 +117,13 @@ function mapLevelJobToTrack(row: CompletedLevelMusicJobRow): MusicTrack {
     completed_at: row.completed_at,
     created_at: row.created_at,
   }
+  const deckRow = resolveTrackDeckRow(row.decks)
+  const deckLabelRoot = deckRow?.name ?? row.display_title ?? 'Level Songs'
   const track = {
     id: row.id,
     kind: 'level' as const,
-    deck_id: `level:${row.category_slug ?? 'library'}:${row.target_language ?? 'unknown'}`,
-    deckName: row.target_language ? `${row.target_language} Level Songs` : 'Level Songs',
+    deck_id: row.deck_id ?? `level:${row.category_slug ?? 'library'}:${row.target_language ?? 'unknown'}`,
+    deckName: formatMusicDeckLabel(deckLabelRoot, row.target_language, t),
     word: row.display_title ?? 'Level Song',
     translation: row.target_language,
     thumbnail_url: null,
@@ -154,10 +165,10 @@ async function fetchLatestCompleteMusicJobs(wordIds: string[]): Promise<Map<stri
   return latest
 }
 
-async function fetchCompletedLevelSongJobs(userId: string): Promise<MusicTrack[]> {
+async function fetchCompletedLevelSongJobs(userId: string, t: MusicLabelTranslateFn): Promise<MusicTrack[]> {
   const { data, error } = await supabase
     .from('music_generation_jobs')
-    .select('id, category_slug, level_number, target_language, display_title, lyrics, suno_storage_url, suno_audio_url, music_caption, concept_artifact, lyric_mode, genre, vocal_gender, completed_at, created_at')
+    .select('id, deck_id, category_slug, level_number, target_language, display_title, lyrics, suno_storage_url, suno_audio_url, music_caption, concept_artifact, lyric_mode, genre, vocal_gender, completed_at, created_at, decks(id, name, target_language)')
     .eq('user_id', userId)
     .eq('scope', 'level')
     .eq('status', 'complete')
@@ -165,7 +176,7 @@ async function fetchCompletedLevelSongJobs(userId: string): Promise<MusicTrack[]
     .order('created_at', { ascending: false })
 
   if (error) throw error
-  return ((data ?? []) as CompletedLevelMusicJobRow[]).map(mapLevelJobToTrack)
+  return ((data ?? []) as CompletedLevelMusicJobRow[]).map((row) => mapLevelJobToTrack(row, t))
 }
 
 function applyLatestMusicJobs(tracks: MusicTrack[], jobs: Map<string, LatestMusicJobRow>): MusicTrack[] {
@@ -195,7 +206,7 @@ function formatTime(s: number): string {
 }
 
 export default function MusicPG() {
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
   const { user, profile, refreshProfile } = useAuth()
   const [allTracks, setAllTracks] = useState<MusicTrack[]>([])
   const [errorTrackIds, setErrorTrackIds] = useState<Set<string>>(new Set())
@@ -269,7 +280,7 @@ export default function MusicPG() {
   const fetchTracks = useCallback(async (bustCache = false) => {
     if (!user) return
 
-    if (!bustCache && _pgMusicCache && _pgMusicCache.userId === user.id) {
+    if (!bustCache && _pgMusicCache && _pgMusicCache.userId === user.id && _pgMusicCache.locale === locale) {
       setLoadError(null)
       setAllTracks(_pgMusicCache.tracks)
       setDecks(_pgMusicCache.decks)
@@ -287,7 +298,7 @@ export default function MusicPG() {
         .select(`
           id, deck_id, word, translation,
           thumbnail_url, suno_storage_url, suno_audio_url, music_state, retry_requested, metadata, created_at,
-          decks(id, name)
+          decks(id, name, target_language)
         `)
         .eq('user_id', user.id)
         .eq('status', 'complete')
@@ -301,7 +312,7 @@ export default function MusicPG() {
         return
       }
 
-      const mapped = ((data ?? []) as Record<string, unknown>[]).map(mapToTrack)
+      const mapped = ((data ?? []) as Record<string, unknown>[]).map((row) => mapToTrack(row, t))
       if (import.meta.env.DEV) {
         const playableCount = mapped.filter(trackHasAudio).length
         const missingAudioCount = mapped.filter(
@@ -319,14 +330,14 @@ export default function MusicPG() {
       const tracksWithJobs = applyLatestMusicJobs(mapped, latestJobs)
       const wordDeckList = buildDeckList(tracksWithJobs)
 
-      _pgMusicCache = { tracks: tracksWithJobs, decks: wordDeckList, userId: user.id }
+      _pgMusicCache = { tracks: tracksWithJobs, decks: wordDeckList, userId: user.id, locale }
       setAllTracks(tracksWithJobs)
       setDecks(wordDeckList)
       setLoading(false)
 
       let levelTracks: MusicTrack[] = []
       try {
-        levelTracks = await fetchCompletedLevelSongJobs(user.id)
+        levelTracks = await fetchCompletedLevelSongJobs(user.id, t)
       } catch (levelError) {
         const message = levelError instanceof Error ? levelError.message : String(levelError)
         console.warn('[MusicPG] failed to fetch level songs', {
@@ -339,7 +350,7 @@ export default function MusicPG() {
       const mergedTracks = [...tracksWithJobs, ...levelTracks]
       const deckList = buildDeckList(mergedTracks)
 
-      _pgMusicCache = { tracks: mergedTracks, decks: deckList, userId: user.id }
+      _pgMusicCache = { tracks: mergedTracks, decks: deckList, userId: user.id, locale }
       setAllTracks(mergedTracks)
       setDecks(deckList)
     } catch (error) {
@@ -352,7 +363,7 @@ export default function MusicPG() {
     } finally {
       setLoading(false)
     }
-  }, [user])
+  }, [user, t, locale])
 
   // Fetch data
   useEffect(() => {

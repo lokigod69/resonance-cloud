@@ -30,7 +30,7 @@ function assertLevelFetchIsOptional({ path, label, warningPrefix }: PageContract
   const source = readFileSync(join(root, path), 'utf8')
   const tracksWithJobsIndex = source.indexOf('const tracksWithJobs = applyLatestMusicJobs')
   const firstCommitIndex = source.indexOf('setAllTracks(tracksWithJobs)', tracksWithJobsIndex)
-  const levelFetchIndex = source.indexOf('fetchCompletedLevelSongJobs(user.id)', tracksWithJobsIndex)
+  const levelFetchIndex = source.indexOf('fetchCompletedLevelSongJobs(user.id', tracksWithJobsIndex)
   const mergedCommitIndex = source.indexOf('setAllTracks(mergedTracks)', levelFetchIndex)
   const warningIndex = source.indexOf(warningPrefix, levelFetchIndex)
 

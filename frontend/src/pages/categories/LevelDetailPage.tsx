@@ -363,6 +363,8 @@ function StaticLevelDetail({
   const [deckLookupLoading, setDeckLookupLoading] = useState(true)
   const [importing, setImporting] = useState(false)
   const [levelSongModalOpen, setLevelSongModalOpen] = useState(false)
+  const [levelSongDeckId, setLevelSongDeckId] = useState<string | null>(null)
+  const [levelSongImporting, setLevelSongImporting] = useState(false)
   const parsedLevel = Number(levelNumber)
   const level = Number.isInteger(parsedLevel)
     ? category.staticWordLevels?.find((item) => item.level === parsedLevel)
@@ -407,6 +409,7 @@ function StaticLevelDetail({
     // eslint-disable-next-line react-hooks/set-state-in-effect -- resets imported static deck state when route/user keys change before async lookup
     setDeckLookupLoading(true)
     setImportedDeckId(null)
+    setLevelSongDeckId(null)
 
     if (!user?.id || !level) {
       setDeckLookupLoading(false)
@@ -434,32 +437,66 @@ function StaticLevelDetail({
     }
   }, [categorySlug, level, targetLanguage, user?.id])
 
+  const ensureStaticLevelImported = useCallback(async () => {
+    if (!level) {
+      throw new Error('Static category level not found')
+    }
+    if (!user?.id) {
+      throw new Error('Authentication required')
+    }
+
+    if (importedDeckId) {
+      return importedDeckId
+    }
+
+    const existing = await getImportedCurriculumDeck(supabase, user.id, categorySlug, level.level, targetLanguage)
+    if (existing?.id) {
+      setImportedDeckId(existing.id)
+      return existing.id
+    }
+
+    const deckName = buildStaticCategoryLevelDeckName(t(category.labelKey), level.level)
+    const deckId = await importStaticCategoryLevel(
+      supabase,
+      category,
+      level.level,
+      targetLanguage,
+      helperLanguage,
+      deckName,
+    )
+    setImportedDeckId(deckId)
+    return deckId
+  }, [category, categorySlug, helperLanguage, importedDeckId, level, t, targetLanguage, user?.id])
+
   const handleStaticImport = useCallback(async () => {
     if (!level) return
-    if (importedDeckId) {
-      navigate(`/deck/${importedDeckId}`)
-      return
-    }
 
     setImporting(true)
     try {
-      const deckName = buildStaticCategoryLevelDeckName(t(category.labelKey), level.level)
-      const deckId = await importStaticCategoryLevel(
-        supabase,
-        category,
-        level.level,
-        targetLanguage,
-        helperLanguage,
-        deckName,
-      )
-      setImportedDeckId(deckId)
+      const deckId = await ensureStaticLevelImported()
       navigate(`/deck/${deckId}`)
     } catch (error) {
       console.error('[categories] static import failed', error)
       toast(t('categories.importFailed'), 'error')
       setImporting(false)
     }
-  }, [category, helperLanguage, importedDeckId, level, navigate, t, targetLanguage, toast])
+  }, [ensureStaticLevelImported, level, navigate, t, toast])
+
+  const handleGenerateLevelSong = useCallback(async () => {
+    if (!level || levelSongImporting) return
+
+    setLevelSongImporting(true)
+    try {
+      const deckId = await ensureStaticLevelImported()
+      setLevelSongDeckId(deckId)
+      setLevelSongModalOpen(true)
+    } catch (error) {
+      console.error('[categories] static import before level song failed', error)
+      toast(t('categories.importFailed'), 'error')
+    } finally {
+      setLevelSongImporting(false)
+    }
+  }, [ensureStaticLevelImported, level, levelSongImporting, t, toast])
 
   if (!level) {
     return (
@@ -531,9 +568,15 @@ function StaticLevelDetail({
         <button
           type="button"
           className={`${styles.studyAction} ${styles.staticImportAction}`}
-          onClick={() => setLevelSongModalOpen(true)}
+          onClick={handleGenerateLevelSong}
+          disabled={levelSongImporting || deckLookupLoading}
+          aria-busy={levelSongImporting || undefined}
         >
-          <Music className="h-4 w-4" aria-hidden="true" />
+          {levelSongImporting ? (
+            <span className={styles.studyActionSpinner} aria-hidden="true" />
+          ) : (
+            <Music className="h-4 w-4" aria-hidden="true" />
+          )}
           <span>{t('categories.generateLevelSong')}</span>
         </button>
       </div>
@@ -588,19 +631,25 @@ function StaticLevelDetail({
         onClose={() => setSelectedItem(null)}
         t={t}
       />
-      <LevelGenerateSongModal
-        open={levelSongModalOpen}
-        onOpenChange={setLevelSongModalOpen}
-        categorySlug={categorySlug}
-        levelNumber={level.level}
-        targetLanguage={targetLanguage}
-        displayTitle={localizedLevelLabel}
-        wordList={levelSongWords}
-        credits={profile?.credits ?? 0}
-        onSubmitted={() => {
-          void refreshProfile()
-        }}
-      />
+      {levelSongDeckId ? (
+        <LevelGenerateSongModal
+          open={levelSongModalOpen}
+          onOpenChange={(open) => {
+            setLevelSongModalOpen(open)
+            if (!open) setLevelSongDeckId(null)
+          }}
+          categorySlug={categorySlug}
+          levelNumber={level.level}
+          targetLanguage={targetLanguage}
+          deckId={levelSongDeckId}
+          displayTitle={localizedLevelLabel}
+          wordList={levelSongWords}
+          credits={profile?.credits ?? 0}
+          onSubmitted={() => {
+            void refreshProfile()
+          }}
+        />
+      ) : null}
     </section>
   )
 }

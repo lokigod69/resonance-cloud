@@ -35,6 +35,7 @@ export function LevelGenerateSongModal({
   categorySlug,
   levelNumber,
   targetLanguage,
+  deckId,
   displayTitle,
   wordList,
   credits,
@@ -45,6 +46,7 @@ export function LevelGenerateSongModal({
   categorySlug: string
   levelNumber: number
   targetLanguage: string
+  deckId: string
   displayTitle: string
   wordList: LevelSongWord[]
   credits: number
@@ -83,6 +85,7 @@ export function LevelGenerateSongModal({
         categorySlug,
         levelNumber,
         targetLanguage,
+        deckId,
         wordList,
         displayTitle,
         lyricMode,

@@ -20,6 +20,7 @@ export type SubmitLevelMusicOnlyJobInput = {
   categorySlug: string
   levelNumber: number
   targetLanguage: string
+  deckId?: string
   wordList: LevelSongWord[]
   displayTitle: string
   lyricMode: SongLyricMode
@@ -31,6 +32,7 @@ export type SubmitLevelMusicOnlyJobInput = {
 export type SubmitMusicOnlyJobResult = {
   success?: boolean
   music_job_id?: string
+  deck_id?: string
   idempotent?: boolean
   error?: string
   status?: string
@@ -65,6 +67,7 @@ export async function submitLevelMusicOnlyJob({
   categorySlug,
   levelNumber,
   targetLanguage,
+  deckId,
   wordList,
   displayTitle,
   lyricMode,
@@ -77,6 +80,7 @@ export async function submitLevelMusicOnlyJob({
     p_category_slug: categorySlug,
     p_level_number: levelNumber,
     p_target_language: targetLanguage,
+    p_deck_id: deckId ?? null,
     p_word_list: wordList,
     p_display_title: displayTitle,
     p_lyric_mode: lyricMode,
