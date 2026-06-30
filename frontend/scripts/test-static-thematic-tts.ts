@@ -234,6 +234,29 @@ assert.deepEqual(
 )
 assert.ok(!koreanLevelOne.some((item) => item.spoken_text === item.english_qa_label))
 
+const portugueseLevelOne = buildStaticThematicTtsInventory({
+  targetLanguage: 'pt',
+  category: 'animals',
+  level: 1,
+})
+assert.equal(portugueseLevelOne.length, 10, 'Portuguese Animals Level 1 should export 10 items')
+assert.deepEqual(
+  portugueseLevelOne.slice(0, 4).map((item) => ({
+    concept_id: item.concept_id,
+    english_qa_label: item.english_qa_label,
+    spoken_text: item.spoken_text,
+    target_language_code: item.target_language_code,
+  })),
+  [
+    { concept_id: 'animals.dog', english_qa_label: 'dog', spoken_text: 'cachorro', target_language_code: 'pt' },
+    { concept_id: 'animals.cat', english_qa_label: 'cat', spoken_text: 'gato', target_language_code: 'pt' },
+    { concept_id: 'animals.bird', english_qa_label: 'bird', spoken_text: 'pássaro', target_language_code: 'pt' },
+    { concept_id: 'animals.fish', english_qa_label: 'fish', spoken_text: 'peixe', target_language_code: 'pt' },
+  ],
+  'Portuguese spoken_text should preserve the existing Portuguese static term',
+)
+assert.ok(!portugueseLevelOne.some((item) => item.spoken_text === item.english_qa_label))
+
 const cebuanoAllCategories = buildStaticThematicTtsInventory({
   targetLanguage: 'ceb',
   allCategories: true,
@@ -355,6 +378,23 @@ assert.deepEqual(koreanKeys.voiceProfileKeys, [
   'static_thematic_ko_selly_raw_v1',
   'static_thematic_ko_emily_raw_v1',
   'static_thematic_ko_sola_raw_v1',
+])
+
+const portugueseKeys = buildStaticThematicPlaybackQuery({
+  targetLanguageCode: 'pt',
+  categorySlug: 'animals',
+  levelNumber: 1,
+  conceptIds: ['animals.dog'],
+  voiceProfileKeys: [
+    'static_thematic_pt_raquel_raw_v1',
+    'static_thematic_pt_carla_raw_v1',
+    'static_thematic_pt_lair_raw_v1',
+  ],
+})
+assert.deepEqual(portugueseKeys.voiceProfileKeys, [
+  'static_thematic_pt_raquel_raw_v1',
+  'static_thematic_pt_carla_raw_v1',
+  'static_thematic_pt_lair_raw_v1',
 ])
 
 const lookup = buildStaticThematicAudioLookup([

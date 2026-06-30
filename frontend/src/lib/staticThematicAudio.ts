@@ -19,6 +19,9 @@ export const STATIC_THEMATIC_KO_KANNA_RAW_PROFILE_KEY = 'static_thematic_ko_kann
 export const STATIC_THEMATIC_KO_SELLY_RAW_PROFILE_KEY = 'static_thematic_ko_selly_raw_v1'
 export const STATIC_THEMATIC_KO_EMILY_RAW_PROFILE_KEY = 'static_thematic_ko_emily_raw_v1'
 export const STATIC_THEMATIC_KO_SOLA_RAW_PROFILE_KEY = 'static_thematic_ko_sola_raw_v1'
+export const STATIC_THEMATIC_PT_RAQUEL_RAW_PROFILE_KEY = 'static_thematic_pt_raquel_raw_v1'
+export const STATIC_THEMATIC_PT_CARLA_RAW_PROFILE_KEY = 'static_thematic_pt_carla_raw_v1'
+export const STATIC_THEMATIC_PT_LAIR_RAW_PROFILE_KEY = 'static_thematic_pt_lair_raw_v1'
 // Indonesian uses deterministic per-level voice alternation (odd levels = Gavrila,
 // even levels = Blasto). Both keys are queried; the playback view only ever has the
 // assigned voice's rows for a given level, so resolution self-selects without dupes.
@@ -87,6 +90,13 @@ export function getStaticThematicVoiceProfileKeys({
       STATIC_THEMATIC_KO_SELLY_RAW_PROFILE_KEY,
       STATIC_THEMATIC_KO_EMILY_RAW_PROFILE_KEY,
       STATIC_THEMATIC_KO_SOLA_RAW_PROFILE_KEY,
+    ]
+  }
+  if (targetLanguageCode === 'pt') {
+    return [
+      STATIC_THEMATIC_PT_RAQUEL_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_PT_CARLA_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_PT_LAIR_RAW_PROFILE_KEY,
     ]
   }
   if (targetLanguageCode === 'en' && categorySlug === 'animals') {

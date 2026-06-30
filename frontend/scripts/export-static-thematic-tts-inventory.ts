@@ -31,7 +31,7 @@ export type StaticThematicTtsInventoryItem = {
   }
 }
 
-const SUPPORTED_STATIC_TTS_TARGET_LANGUAGES = new Set<StaticCategoryTargetLanguageCode>(['en', 'ceb', 'id', 'de', 'es', 'fr', 'ko'])
+const SUPPORTED_STATIC_TTS_TARGET_LANGUAGES = new Set<StaticCategoryTargetLanguageCode>(['en', 'ceb', 'id', 'de', 'es', 'fr', 'ko', 'pt'])
 const CEBUANO_ALIASES = new Set(['ceb', 'cebuano', 'bisaya', 'sebuano'])
 
 function normalizeLanguageName(value: string): string {
@@ -57,7 +57,7 @@ function resolveStaticTtsTargetLanguageCode(targetLanguage: string): StaticCateg
     throw new Error(`Unsupported target language for static thematic TTS export: ${targetLanguage}`)
   }
   if (!SUPPORTED_STATIC_TTS_TARGET_LANGUAGES.has(match.code)) {
-    throw new Error('Only English, Cebuano/Bisaya, Indonesian, German, Spanish, French, and Korean static thematic TTS export is supported in this pilot.')
+    throw new Error('Only English, Cebuano/Bisaya, Indonesian, German, Spanish, French, Korean, and Portuguese static thematic TTS export is supported in this pilot.')
   }
   return match.code
 }

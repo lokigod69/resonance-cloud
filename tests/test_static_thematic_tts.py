@@ -174,6 +174,23 @@ def make_korean_inventory() -> list[dict[str, Any]]:
     ]
 
 
+def make_portuguese_inventory() -> list[dict[str, Any]]:
+    return [
+        {
+            "target_language_code": "pt",
+            "category_slug": "animals",
+            "level_number": 1,
+            "order": 1,
+            "concept_id": "animals.dog",
+            "target_term": "cachorro",
+            "spoken_text": "cachorro",
+            "english_qa_label": "dog",
+            "part_of_speech": "noun",
+            "sense": "animals",
+        }
+    ]
+
+
 def make_config(**overrides) -> StaticTtsConfig:
     base = {
         "target_language": "en",
@@ -987,6 +1004,68 @@ def test_korean_ready_commit_uses_korean_profile_and_jini_voice(monkeypatch):
     assert report["items"][0]["postprocess_mode"] == "raw"
     assert report["items"][0]["raw_duration_ms"] == 690
     assert report["items"][0]["final_duration_ms"] == 690
+
+
+def test_portuguese_ready_commit_uses_portuguese_raquel_voice(monkeypatch):
+    sb = FakeSupabase()
+    sb.storage = RecordingStorage()
+    sb.table("voices")
+    sb.table("language_profiles")
+    sb.table("guided_voice_profiles")
+    sb.table("guided_tts_assets")
+    sb.table("static_tts_asset_usages")
+    sb.table("static_tts_voice_assignments")
+    sb._tables["voices"] = [
+        {
+            "id": "voice-row-pt",
+            "voice_id": "voice-raquel",
+            "name": "Raquel",
+            "language": "Portuguese",
+            "language_code": "pt",
+        }
+    ]
+
+    raw_audio = b"raw-audio" * 128
+
+    async def provider(**kwargs):
+        assert kwargs["text"] == "cachorro"
+        assert kwargs["voice_id"] == "voice-raquel"
+        assert kwargs["language_code"] == "pt"
+        return raw_audio
+
+    monkeypatch.setattr("scripts.generate_static_thematic_tts._probe_duration_ms", lambda _path: 700)
+
+    report = run_inventory(
+        sb=sb,
+        inventory=make_portuguese_inventory(),
+        config=make_config(
+            target_language="pt",
+            voice_profile_key="static_thematic_pt_raquel_raw_v1",
+            profile_name=None,
+            voice_name="Raquel",
+            commit_db=True,
+            allow_provider_calls=True,
+            postprocess_mode="raw",
+            qa_status="ready",
+            activate_assignment=False,
+        ),
+        provider_synthesize=provider,
+    )
+
+    assert report["totals"]["generated"] == 1
+    assert report["voice_profile"]["resolved_profile_name"] is None
+    assert report["voice_profile"]["resolved_voice_name"] == "Raquel"
+    assert report["voice_profile"]["resolved_voice_language_code"] == "pt"
+    assert sb.storage.uploads[0]["path"] == (
+        "static/v1/pt/static_thematic_pt_raquel_raw_v1/animals/level-1/animals.dog.mp3"
+    )
+    assert sb.storage.uploads[0]["data"] == raw_audio
+    assert sb._tables["static_tts_asset_usages"][0]["qa_status"] == "ready"
+    assert sb._tables["static_tts_voice_assignments"] == []
+    assert report["items"][0]["spoken_text"] == "cachorro"
+    assert report["items"][0]["postprocess_mode"] == "raw"
+    assert report["items"][0]["raw_duration_ms"] == 700
+    assert report["items"][0]["final_duration_ms"] == 700
 
 
 def test_cebuano_inventory_rejects_english_spoken_text():
