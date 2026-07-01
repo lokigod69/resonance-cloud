@@ -120,6 +120,23 @@ export default function Today() {
     }
   }, [queryPathLanguage, selectedLanguage])
 
+  // The dashboard's mission card deep-links with `start=1` to drop straight into the
+  // recommended lesson. Consume the flag (so refresh/back land on the overview) and open
+  // the session. Declared after the progress-hydration effect above: both state updates
+  // land in the same commit, so the session resolves its lesson from real progress.
+  const shouldAutoStart = searchParams.get('start') === '1'
+  useEffect(() => {
+    if (!shouldAutoStart) return
+    setSearchParams((current) => {
+      const params = new URLSearchParams(current)
+      params.delete('start')
+      return params
+    }, { replace: true })
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the start=1 deep link must open the session once on entry
+    setSessionActive(true)
+    scrollTodayToTop()
+  }, [shouldAutoStart, setSearchParams])
+
   const persistProgress = (nextProgress: TodayProgressState) => {
     setProgress(nextProgress)
     writeTodayProgressState(user?.id, nextProgress)

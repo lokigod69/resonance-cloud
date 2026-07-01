@@ -7,12 +7,14 @@ import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
 import { DashboardStreak } from '@/components/dashboard/DashboardStreak'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
+import { TodayMissionCard } from '@/components/dashboard/TodayMissionCard'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useWordStates } from '@/hooks/useWordStates'
 import { useStudyStreak } from '@/hooks/useStudyStreak'
+import { useTodayMission } from '@/hooks/useTodayMission'
 import { supabase } from '@/lib/supabase'
 import { staticLibraryRouteSuffix } from '@/lib/staticLibraryLanguage'
 import { canonicalizeLanguageValue } from '@/lib/languages'
@@ -91,6 +93,29 @@ export default function Dashboard() {
   const studyStreak = useStudyStreak()
   const tilesDisabled = !activeLanguage || wordStates.loading
 
+  // Empty-home shows when the ACTIVE language has no decks — a brand-new account
+  // (no decks, no active language) or a language the learner hasn't started yet.
+  const decksInActiveLanguage = activeLanguage
+    ? decks.filter((deck) => canonicalizeLanguageValue(deck.target_language) === activeLanguage)
+    : []
+  // Guard the transient where decks have loaded but the active language hasn't been
+  // pinned yet (decks exist, activeLanguage still null) so an existing user never
+  // flashes the empty card before the pin effect runs.
+  const hasResolvedActiveLanguage = Boolean(activeLanguage) || decks.length === 0
+  // Until the empty-vs-populated decision is settled (decks still loading, language not yet
+  // ready/pinned) we render a neutral home — bare wave background + account strip — rather than
+  // flashing the zero-count dashboard. The two-door card or the populated grid appears the
+  // instant the decision resolves.
+  const decisionResolved = !dashboardLoading && languageReady && hasResolvedActiveLanguage
+  const isFirstRun = decisionResolved && decksInActiveLanguage.length === 0
+
+  const todayMission = useTodayMission({
+    activeLanguage,
+    baseLanguage: profile?.base_language,
+    userId: user?.id,
+    enabled: decisionResolved && !isFirstRun,
+  })
+
   if (!user) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 text-center">
@@ -117,21 +142,6 @@ export default function Dashboard() {
 
   const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
   const dashboardLibraryHref = activeLanguage ? `/categories${staticLibraryRouteSuffix(activeLanguage)}` : '/categories'
-  // Empty-home shows when the ACTIVE language has no decks — a brand-new account
-  // (no decks, no active language) or a language the learner hasn't started yet.
-  const decksInActiveLanguage = activeLanguage
-    ? decks.filter((deck) => canonicalizeLanguageValue(deck.target_language) === activeLanguage)
-    : []
-  // Guard the transient where decks have loaded but the active language hasn't been
-  // pinned yet (decks exist, activeLanguage still null) so an existing user never
-  // flashes the empty card before the pin effect runs.
-  const hasResolvedActiveLanguage = Boolean(activeLanguage) || decks.length === 0
-  // Until the empty-vs-populated decision is settled (decks still loading, language not yet
-  // ready/pinned) we render a neutral home — bare wave background + account strip — rather than
-  // flashing the zero-count dashboard. The two-door card or the populated grid appears the
-  // instant the decision resolves.
-  const decisionResolved = !dashboardLoading && languageReady && hasResolvedActiveLanguage
-  const isFirstRun = decisionResolved && decksInActiveLanguage.length === 0
 
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
@@ -167,6 +177,39 @@ export default function Dashboard() {
             <DashboardStreak streak={studyStreak.streak} />
 
             <section className="dashboard-action-grid w-full">
+              <TodayMissionCard mission={todayMission.mission} loading={todayMission.loading} />
+              <div className="dashboard-practice-stack">
+                <span className="dashboard-practice-caption">{t('dashboard.practice.caption')}</span>
+                <div className="dashboard-study-row">
+                  <SrsActionTile
+                    label={t('study.queue.review')}
+                    count={reviewDue}
+                    queue="review"
+                    language={activeLanguage ?? ''}
+                    tier="compact"
+                    accent="cool"
+                    disabled={tilesDisabled}
+                  />
+                  <SrsActionTile
+                    label={t('study.queue.learn')}
+                    count={counts.newDue}
+                    queue="learn"
+                    language={activeLanguage ?? ''}
+                    tier="compact"
+                    accent="warm"
+                    disabled={tilesDisabled}
+                  />
+                  <SrsActionTile
+                    label={t('study.queue.strengthen')}
+                    count={counts.learning}
+                    queue="strengthen"
+                    language={activeLanguage ?? ''}
+                    tier="compact"
+                    accent="neutral"
+                    disabled={tilesDisabled}
+                  />
+                </div>
+              </div>
               <Link to={dashboardLibraryHref} className="dashboard-library-tile dashboard-library-action">
                 <Library className="dashboard-library-icon" aria-hidden="true" />
                 <span className="dashboard-library-copy">
@@ -176,35 +219,6 @@ export default function Dashboard() {
                   ) : null}
                 </span>
               </Link>
-              <div className="dashboard-study-row">
-                <SrsActionTile
-                  label={t('study.queue.review')}
-                  count={reviewDue}
-                  queue="review"
-                  language={activeLanguage ?? ''}
-                  tier="compact"
-                  accent="cool"
-                  disabled={tilesDisabled}
-                />
-                <SrsActionTile
-                  label={t('study.queue.learn')}
-                  count={counts.newDue}
-                  queue="learn"
-                  language={activeLanguage ?? ''}
-                  tier="compact"
-                  accent="warm"
-                  disabled={tilesDisabled}
-                />
-                <SrsActionTile
-                  label={t('study.queue.strengthen')}
-                  count={counts.learning}
-                  queue="strengthen"
-                  language={activeLanguage ?? ''}
-                  tier="compact"
-                  accent="neutral"
-                  disabled={tilesDisabled}
-                />
-              </div>
             </section>
 
             <div className="dashboard-mastered-pill" aria-live="polite">
