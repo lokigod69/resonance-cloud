@@ -11,6 +11,7 @@ import { useLandingLocale } from '@/hooks/useLandingLocale'
 import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 import { LingwaveWaves } from '@/components/branding/LingwaveWaves'
 import { handleLegalLinkClick } from '@/lib/legalLinks'
+import { getPublicWebUrl } from '@/lib/publicOrigins'
 
 export default function Login() {
   const { t } = useLandingLocale()
@@ -42,7 +43,7 @@ export default function Login() {
     try {
       if (isResetRequest) {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: `${window.location.origin}/reset-password`,
+          redirectTo: getPublicWebUrl('/reset-password'),
         })
         if (error) {
           setError(t('auth.resetRequestFailed'))

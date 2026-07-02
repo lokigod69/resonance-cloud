@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Browser } from '@capacitor/browser'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import {
@@ -13,6 +14,7 @@ import { Coins, Check, Gift, CreditCard } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { isBillingTester } from '@/lib/billingFlags'
 import { publicApiUrl } from '@/lib/publicOrigins'
+import { isNativeApp } from '@/lib/platform'
 
 export function RedeemCodeDialog({
   open,
@@ -92,7 +94,11 @@ export function RedeemCodeDialog({
         return
       }
 
-      window.location.href = payload.url
+      if (isNativeApp()) {
+        await Browser.open({ url: payload.url })
+      } else {
+        window.location.href = payload.url
+      }
     } catch (error) {
       console.error('Stripe checkout failed:', error)
       setCheckoutError('Checkout is not available right now.')

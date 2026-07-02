@@ -14,8 +14,7 @@ function trimTrailingSlash(value: string | undefined): string | null {
 
 export function getBackendApiBase(): string {
   const configuredBackendOrigin = trimTrailingSlash(import.meta.env.VITE_BACKEND_URL)
-  const backendOrigin = configuredBackendOrigin
-    ?? (isNativeApp() ? getPublicApiOrigin() : LOCAL_BACKEND_ORIGIN)
+  const backendOrigin = isNativeApp() ? getPublicApiOrigin() : configuredBackendOrigin ?? LOCAL_BACKEND_ORIGIN
   return `${backendOrigin}/api`
 }
 

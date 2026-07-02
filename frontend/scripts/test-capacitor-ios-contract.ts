@@ -78,6 +78,7 @@ assertIncludes(cors, 'ionic://localhost', 'api/_shared/cors.ts')
 const apiClient = read('src/api.ts')
 assertIncludes(apiClient, 'getBackendApiBase', 'src/api.ts')
 assertNotIncludes(apiClient, "import.meta.env.VITE_BACKEND_URL || 'http://localhost:8090'", 'src/api.ts')
+assertIncludes(apiClient, 'isNativeApp() ? getPublicApiOrigin() : configuredBackendOrigin ?? LOCAL_BACKEND_ORIGIN', 'src/api.ts')
 
 const supabaseClient = read('src/lib/supabase.ts')
 for (const token of [
@@ -114,6 +115,16 @@ assertIncludes(useAuth, 'skipBrowserRedirect: true', 'src/hooks/useAuth.ts')
 assertIncludes(useAuth, 'Browser.open', 'src/hooks/useAuth.ts')
 assertNotIncludes(read('src/lib/shareWord.ts'), 'window.location.origin', 'src/lib/shareWord.ts')
 
+const login = read('src/pages/Login.tsx')
+assertNotIncludes(login, 'window.location.origin', 'src/pages/Login.tsx')
+assertIncludes(login, 'getPublicWebUrl', 'src/pages/Login.tsx')
+assertIncludes(login, "redirectTo: getPublicWebUrl('/reset-password')", 'src/pages/Login.tsx')
+
+const redeemCodeDialog = read('src/components/RedeemCodeDialog.tsx')
+assertIncludes(redeemCodeDialog, '@capacitor/browser', 'src/components/RedeemCodeDialog.tsx')
+assertIncludes(redeemCodeDialog, 'isNativeApp', 'src/components/RedeemCodeDialog.tsx')
+assertIncludes(redeemCodeDialog, 'Browser.open({ url: payload.url })', 'src/components/RedeemCodeDialog.tsx')
+
 const deepLinks = read('src/hooks/useCapacitorDeepLinks.ts')
 assertIncludes(deepLinks, "App.addListener('appUrlOpen'", 'src/hooks/useCapacitorDeepLinks.ts')
 assertIncludes(deepLinks, 'exchangeCodeForSession', 'src/hooks/useCapacitorDeepLinks.ts')
@@ -141,6 +152,11 @@ assertIncludes(infoPlist, 'NSMicrophoneUsageDescription', 'ios/App/App/Info.plis
 assertIncludes(infoPlist, 'CFBundleURLSchemes', 'ios/App/App/Info.plist')
 assertIncludes(infoPlist, 'resonance', 'ios/App/App/Info.plist')
 
+assert(exists('ios/App/App/PrivacyInfo.xcprivacy'), 'ios/App/App/PrivacyInfo.xcprivacy must exist')
+const privacyManifest = read('ios/App/App/PrivacyInfo.xcprivacy')
+assertIncludes(privacyManifest, 'NSPrivacyAccessedAPICategoryUserDefaults', 'ios/App/App/PrivacyInfo.xcprivacy')
+assertIncludes(privacyManifest, 'CA92.1', 'ios/App/App/PrivacyInfo.xcprivacy')
+
 const appDelegate = read('ios/App/App/AppDelegate.swift')
 assertIncludes(appDelegate, 'AVFoundation', 'ios/App/App/AppDelegate.swift')
 assertIncludes(appDelegate, 'AVAudioSession.sharedInstance()', 'ios/App/App/AppDelegate.swift')
@@ -148,6 +164,7 @@ assertIncludes(appDelegate, 'AVAudioSession.sharedInstance()', 'ios/App/App/AppD
 const xcodeProject = read('ios/App/App.xcodeproj/project.pbxproj')
 assertIncludes(xcodeProject, 'IPHONEOS_DEPLOYMENT_TARGET = 15.0;', 'ios/App/App.xcodeproj/project.pbxproj')
 assertIncludes(xcodeProject, 'CODE_SIGN_ENTITLEMENTS = App/App.entitlements;', 'ios/App/App.xcodeproj/project.pbxproj')
+assertIncludes(xcodeProject, 'PrivacyInfo.xcprivacy in Resources', 'ios/App/App.xcodeproj/project.pbxproj')
 
 const entitlements = read('ios/App/App/App.entitlements')
 assertIncludes(entitlements, 'applinks:resonanz.pro', 'ios/App/App/App.entitlements')
@@ -157,5 +174,9 @@ assertIncludes(entitlements, 'applinks:www.lingwave.ai', 'ios/App/App/App.entitl
 
 const swiftPackage = read('ios/App/CapApp-SPM/Package.swift')
 assertIncludes(swiftPackage, 'CapacitorBrowser', 'ios/App/CapApp-SPM/Package.swift')
+assertNotIncludes(swiftPackage, '..\\..\\..\\node_modules', 'ios/App/CapApp-SPM/Package.swift')
+assertIncludes(swiftPackage, '../../../node_modules/@capacitor/app', 'ios/App/CapApp-SPM/Package.swift')
+assertIncludes(swiftPackage, '../../../node_modules/@capacitor/browser', 'ios/App/CapApp-SPM/Package.swift')
+assertIncludes(swiftPackage, '../../../node_modules/@capacitor/preferences', 'ios/App/CapApp-SPM/Package.swift')
 
 console.log('Capacitor iOS shell contract passed')
