@@ -248,7 +248,7 @@ export default function StudyModeSelector() {
           <h2 className="mb-4 text-center text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             {t('study.games.section')}
           </h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="flex flex-wrap justify-center gap-4">
             {GAMES.filter((game) => game.enabled).map((game) => {
               const isComingSoon = game.comingSoon === true
 
@@ -262,7 +262,7 @@ export default function StudyModeSelector() {
                   }}
                   aria-disabled={isComingSoon}
                   className={`
-                    study-mode-card relative flex min-h-[180px] flex-col items-center justify-center gap-4 rounded-2xl border border-border bg-card p-6 text-center backdrop-blur transition-all duration-200
+                    study-mode-card relative flex min-h-[180px] w-[160px] flex-col items-center justify-center gap-4 rounded-2xl border border-border bg-card p-6 text-center backdrop-blur transition-all duration-200
                     ${isComingSoon
                       ? 'cursor-not-allowed opacity-75'
                       : 'hover:scale-[1.03] hover:border-accent hover:bg-accent active:scale-[0.98]'

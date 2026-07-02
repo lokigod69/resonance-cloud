@@ -80,11 +80,12 @@ export function FirstStudyNewWordsPrompt() {
 
   return (
     <Dialog open={open} onOpenChange={(next) => { if (!next) close() }}>
-      <DialogContent className="sm:max-w-sm" showCloseButton={false}>
+      <DialogContent className="theme-cosmos rounded-2xl sm:max-w-sm" showCloseButton={false}>
         <DialogHeader>
           <DialogTitle>{t('study.newWordsPrompt.title')}</DialogTitle>
           <DialogDescription>{t('study.newWordsPrompt.body')}</DialogDescription>
         </DialogHeader>
+        <div aria-hidden="true" className="h-px w-full bg-gradient-to-r from-[var(--accent)] via-[var(--accent-2)] to-transparent opacity-70" />
 
         <div className="space-y-2">
           <label className="text-sm font-medium">{t('profile.newWordsPerDay')}</label>
@@ -95,7 +96,7 @@ export function FirstStudyNewWordsPrompt() {
             <SelectTrigger className="w-full">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="theme-cosmos">
               {NEW_WORDS_PER_DAY_OPTIONS.map((option) => (
                 <SelectItem key={option} value={String(option)}>
                   {t('study.newWordsPrompt.perDayOption', { count: option })}
@@ -106,7 +107,7 @@ export function FirstStudyNewWordsPrompt() {
         </div>
 
         <DialogFooter>
-          <Button onClick={handleConfirm} disabled={saving}>
+          <Button className="shadow-[0_10px_28px_var(--accent-glow)]" onClick={handleConfirm} disabled={saving}>
             {t('study.newWordsPrompt.confirm')}
           </Button>
         </DialogFooter>

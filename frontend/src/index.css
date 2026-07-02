@@ -1039,11 +1039,12 @@ body::before {
 /* Classic reads as calmer, more matte cards: deeper tint, softer lift, quieter
    sheen — same geometry and hierarchy, clearly composed rather than liquid. */
 .skin-classic .dashboard-cosmic {
-  /* Same near-opaque guarantee as glassy (see above), just quieter: less
-     white wash, deeper plum. */
+  /* Classic is deliberately more translucent per design feedback: a milky
+     pane the waves faintly shimmer through, while keeping the calmer matte
+     read. */
   --dashboard-glass-bg:
-    linear-gradient(166deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02) 34%, rgba(255, 255, 255, 0) 60%),
-    rgba(13, 8, 16, 0.94);
+    linear-gradient(166deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035) 34%, rgba(255, 255, 255, 0.01) 60%),
+    rgba(20, 13, 25, 0.8);
   --dashboard-glass-frost: blur(28px) saturate(1.45) brightness(1.15);
   --dashboard-glass-sheen: 0.55;
 }
