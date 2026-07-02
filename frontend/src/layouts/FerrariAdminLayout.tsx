@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import styles from './FerrariAdminLayout.module.css'
 
 export default function FerrariAdminLayout() {
@@ -15,7 +16,9 @@ export default function FerrariAdminLayout() {
         </div>
       </header>
       <main className={styles.main}>
-        <Outlet context={{ setTitle }} />
+        <Suspense fallback={<LingwaveLoader />}>
+          <Outlet context={{ setTitle }} />
+        </Suspense>
       </main>
     </div>
   )

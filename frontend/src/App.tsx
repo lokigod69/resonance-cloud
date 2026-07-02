@@ -14,78 +14,77 @@ import { ToastProvider } from '@/components/ToastProvider'
 import { AppLayout } from '@/components/layout/AppLayout'
 import PolishGlassLayout from '@/components/layout/PolishGlassLayout'
 import FerrariAdminLayout from '@/layouts/FerrariAdminLayout'
-import ProfileModal from '@/components/ProfileModal'
-import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
-import LandingPage from '@/pages/LandingPage'
-import Login from '@/pages/Login'
 import { ComingSoonPlaceholder } from '@/components/games/ComingSoonPlaceholder'
 import AdminRoute from '@/components/AdminRoute'
-import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { useCapacitorDeepLinks } from '@/hooks/useCapacitorDeepLinks'
+import {
+  getPrimaryNavRouteImports,
+  routeImports,
+  scheduleIdleRoutePrefetch,
+} from '@/routes/routeImports'
 
-const ResetPassword = lazyWithRetry(() => import('@/pages/ResetPassword'), 'reset-password')
-const Onboarding = lazyWithRetry(() => import('@/pages/Onboarding'), 'onboarding')
-const SharePage = lazyWithRetry(() => import('@/pages/SharePage'), 'share-page')
-const HybridALanding = lazyWithRetry(() => import('@/landing-experiments/hybrid-a/HybridALanding'), 'hybrid-a-landing')
-const HybridBLanding = lazyWithRetry(() => import('@/landing-experiments/hybrid-b/HybridBLanding'), 'hybrid-b-landing')
-const LandingExperimentIndex = lazyWithRetry(() => import('@/landing-experiments/hybrid-a/LandingExperimentIndex'), 'landing-experiment-index')
-const Dashboard = lazyWithRetry(() => import('@/pages/Dashboard'), 'dashboard')
-const DashboardPG = lazyWithRetry(() => import('@/pages/DashboardPG'), 'dashboard-pg')
-const Today = lazyWithRetry(() => import('@/pages/Today'), 'today')
-const GuidedCheckpoint = lazyWithRetry(() => import('@/pages/GuidedCheckpoint'), 'guided-checkpoint')
-const CategoryListPage = lazyWithRetry(() => import('@/pages/categories/CategoryListPage'), 'category-list')
-const CategoryDetailPage = lazyWithRetry(() => import('@/pages/categories/CategoryDetailPage'), 'category-detail')
-const LevelDetailPage = lazyWithRetry(() => import('@/pages/categories/LevelDetailPage'), 'level-detail')
-const GamesHub = lazyWithRetry(() => import('@/pages/GamesHub'), 'games-hub')
-const Generate = lazyWithRetry(() => import('@/pages/Generate'), 'generate')
-const GenerateGO = lazyWithRetry(() => import('@/pages/GenerateGO'), 'generate-go')
-const Decks = lazyWithRetry(() => import('@/pages/Decks'), 'decks')
-const DecksPG = lazyWithRetry(() => import('@/pages/DecksPG'), 'decks-pg')
-const DeckView = lazyWithRetry(() => import('@/pages/DeckView'), 'deck-view')
-const DeckViewPG = lazyWithRetry(() => import('@/pages/DeckViewPG'), 'deck-view-pg')
-const VideoPlayer = lazyWithRetry(() => import('@/pages/VideoPlayer'), 'video-player')
-const Study = lazyWithRetry(() => import('@/pages/Study'), 'study')
-const StudyPG = lazyWithRetry(() => import('@/pages/StudyPG'), 'study-pg')
-const StudyImage = lazyWithRetry(() => import('@/pages/StudyImage'), 'study-image')
-const StudyImagePG = lazyWithRetry(() => import('@/pages/StudyImagePG'), 'study-image-pg')
-const StudyModeSelector = lazyWithRetry(() => import('@/pages/StudyModeSelector'), 'study-mode-selector')
-const StudyFlashcard = lazyWithRetry(() => import('@/pages/StudyFlashcard'), 'study-flashcard')
-const StudyAudio = lazyWithRetry(() => import('@/pages/StudyAudio'), 'study-audio')
-const StudyCanvas = lazyWithRetry(() => import('@/pages/StudyCanvas'), 'study-canvas')
-const CanvasDeckPicker = lazyWithRetry(() => import('@/pages/CanvasDeckPicker'), 'canvas-deck-picker')
-const Music = lazyWithRetry(() => import('@/pages/Music'), 'music')
-const MusicPG = lazyWithRetry(() => import('@/pages/MusicPG'), 'music-pg')
-const Speak = lazyWithRetry(() => import('@/pages/Speak'), 'speak')
-const Users = lazyWithRetry(() => import('@/pages/admin/Users'), 'admin-users')
-const Content = lazyWithRetry(() => import('@/pages/admin/Content'), 'admin-content')
-const Metrics = lazyWithRetry(() => import('@/pages/admin/Metrics'), 'admin-metrics')
-const Queue = lazyWithRetry(() => import('@/pages/admin/Queue'), 'admin-queue')
-const Profiles = lazyWithRetry(() => import('@/pages/admin/Profiles'), 'admin-profiles')
-const Voices = lazyWithRetry(() => import('@/pages/admin/Voices'), 'admin-voices')
-const Quotas = lazyWithRetry(() => import('@/pages/admin/Quotas'), 'admin-quotas')
-const Layer2Lab = lazyWithRetry(() => import('@/pages/admin/Layer2Lab'), 'admin-layer2-lab')
-const CurriculumImageSets = lazyWithRetry(() => import('@/pages/admin/CurriculumImageSets'), 'admin-curriculum-image-sets')
-const ObservabilityAggregate = lazyWithRetry(() => import('@/pages/admin/ObservabilityAggregate'), 'admin-observability-aggregate')
-const ObservabilityWordDetail = lazyWithRetry(() => import('@/pages/admin/ObservabilityWordDetail'), 'admin-observability-word-detail')
-const SlicerGame = lazyWithRetry(() => import('@/games/slicer/SlicerGame'), 'slicer-game')
+const LandingPage = lazyWithRetry(routeImports.landingPage, 'landing-page')
+const Login = lazyWithRetry(routeImports.login, 'login')
+const ProfileModal = lazyWithRetry(() => import('@/components/ProfileModal'), 'profile-modal')
+const RedeemCodeDialog = lazyWithRetry(
+  () => import('@/components/RedeemCodeDialog').then((mod) => ({ default: mod.RedeemCodeDialog })),
+  'redeem-code-dialog',
+)
+const ResetPassword = lazyWithRetry(routeImports.resetPassword, 'reset-password')
+const Onboarding = lazyWithRetry(routeImports.onboarding, 'onboarding')
+const SharePage = lazyWithRetry(routeImports.sharePage, 'share-page')
+const HybridALanding = lazyWithRetry(routeImports.hybridALanding, 'hybrid-a-landing')
+const HybridBLanding = lazyWithRetry(routeImports.hybridBLanding, 'hybrid-b-landing')
+const LandingExperimentIndex = lazyWithRetry(routeImports.landingExperimentIndex, 'landing-experiment-index')
+const Dashboard = lazyWithRetry(routeImports.dashboard, 'dashboard')
+const DashboardPG = lazyWithRetry(routeImports.dashboardPG, 'dashboard-pg')
+const Today = lazyWithRetry(routeImports.today, 'today')
+const GuidedCheckpoint = lazyWithRetry(routeImports.guidedCheckpoint, 'guided-checkpoint')
+const CategoryListPage = lazyWithRetry(routeImports.categoryList, 'category-list')
+const CategoryDetailPage = lazyWithRetry(routeImports.categoryDetail, 'category-detail')
+const LevelDetailPage = lazyWithRetry(routeImports.levelDetail, 'level-detail')
+const GamesHub = lazyWithRetry(routeImports.gamesHub, 'games-hub')
+const Generate = lazyWithRetry(routeImports.generate, 'generate')
+const GenerateGO = lazyWithRetry(routeImports.generateGO, 'generate-go')
+const Decks = lazyWithRetry(routeImports.decks, 'decks')
+const DecksPG = lazyWithRetry(routeImports.decksPG, 'decks-pg')
+const DeckView = lazyWithRetry(routeImports.deckView, 'deck-view')
+const DeckViewPG = lazyWithRetry(routeImports.deckViewPG, 'deck-view-pg')
+const VideoPlayer = lazyWithRetry(routeImports.videoPlayer, 'video-player')
+const Study = lazyWithRetry(routeImports.study, 'study')
+const StudyPG = lazyWithRetry(routeImports.studyPG, 'study-pg')
+const StudyImage = lazyWithRetry(routeImports.studyImage, 'study-image')
+const StudyImagePG = lazyWithRetry(routeImports.studyImagePG, 'study-image-pg')
+const StudyModeSelector = lazyWithRetry(routeImports.studyModeSelector, 'study-mode-selector')
+const StudyFlashcard = lazyWithRetry(routeImports.studyFlashcard, 'study-flashcard')
+const StudyAudio = lazyWithRetry(routeImports.studyAudio, 'study-audio')
+const StudyCanvas = lazyWithRetry(routeImports.studyCanvas, 'study-canvas')
+const CanvasDeckPicker = lazyWithRetry(routeImports.canvasDeckPicker, 'canvas-deck-picker')
+const Music = lazyWithRetry(routeImports.music, 'music')
+const MusicPG = lazyWithRetry(routeImports.musicPG, 'music-pg')
+const Speak = lazyWithRetry(routeImports.speak, 'speak')
+const Users = lazyWithRetry(routeImports.adminUsers, 'admin-users')
+const Content = lazyWithRetry(routeImports.adminContent, 'admin-content')
+const Metrics = lazyWithRetry(routeImports.adminMetrics, 'admin-metrics')
+const Queue = lazyWithRetry(routeImports.adminQueue, 'admin-queue')
+const Profiles = lazyWithRetry(routeImports.adminProfiles, 'admin-profiles')
+const Voices = lazyWithRetry(routeImports.adminVoices, 'admin-voices')
+const Quotas = lazyWithRetry(routeImports.adminQuotas, 'admin-quotas')
+const Layer2Lab = lazyWithRetry(routeImports.adminLayer2Lab, 'admin-layer2-lab')
+const CurriculumImageSets = lazyWithRetry(routeImports.adminCurriculumImageSets, 'admin-curriculum-image-sets')
+const ObservabilityAggregate = lazyWithRetry(routeImports.adminObservabilityAggregate, 'admin-observability-aggregate')
+const ObservabilityWordDetail = lazyWithRetry(routeImports.adminObservabilityWordDetail, 'admin-observability-word-detail')
+const ObservabilityCost = lazyWithRetry(routeImports.adminObservabilityCost, 'admin-observability-cost')
+const SlicerGame = lazyWithRetry(routeImports.slicerGame, 'slicer-game')
 export const RUNNER_GAME_ROUTE_ENABLED = false
 
 function RouteSuspenseFallback() {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background text-foreground">
-      <ParticleSpinner preset="spirograph" size={160} />
-      <p className="text-sm text-muted-foreground opacity-70">Loading...</p>
-    </div>
-  )
+  return <LingwaveLoader fullScreen />
 }
 
 function FullScreenRouteLoading() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-      <ParticleSpinner preset="spirograph" size={160} />
-      <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
-    </div>
-  )
+  return <LingwaveLoader fullScreen />
 }
 
 function shouldWaitForProfileGate(auth: AuthState) {
@@ -169,8 +168,17 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
 function AppRoutes() {
   const { skin } = useSkin()
+  const { session } = useAuth()
   const navigate = useNavigate()
   useCapacitorDeepLinks(navigate)
+
+  // Warm the primary-nav route chunks so in-app transitions are cache hits.
+  // Only for signed-in users: logged-out visitors on the landing page should
+  // not pay for app chunks they may never open.
+  useEffect(() => {
+    if (!session) return
+    return scheduleIdleRoutePrefetch(getPrimaryNavRouteImports(skin))
+  }, [skin, session])
 
   return (
     <Suspense fallback={<RouteSuspenseFallback />}>
@@ -277,6 +285,7 @@ function AppRoutes() {
         <Route element={<AdminRoute />}>
           <Route element={<FerrariAdminLayout />}>
             <Route path="/admin/observability/aggregate" element={<ObservabilityAggregate />} />
+            <Route path="/admin/observability/cost" element={<ObservabilityCost />} />
             <Route path="/admin/observability/word/:wordId" element={<ObservabilityWordDetail />} />
           </Route>
         </Route>
@@ -302,8 +311,10 @@ function AppShellDialogs() {
   const { profileOpen, setProfileOpen, redeemOpen, setRedeemOpen } = useDialogs()
   return (
     <>
-      <ProfileModal open={profileOpen} onOpenChange={setProfileOpen} />
-      <RedeemCodeDialog open={redeemOpen} onOpenChange={setRedeemOpen} />
+      <Suspense fallback={null}>
+        {profileOpen ? <ProfileModal open={profileOpen} onOpenChange={setProfileOpen} /> : null}
+        {redeemOpen ? <RedeemCodeDialog open={redeemOpen} onOpenChange={setRedeemOpen} /> : null}
+      </Suspense>
     </>
   )
 }

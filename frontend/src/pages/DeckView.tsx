@@ -26,8 +26,7 @@ import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useDeleteWords } from '@/hooks/useDeleteWords'
 import { useDeleteImagelessDeck } from '@/hooks/useDeleteImagelessDeck'
 import { VerbCycler } from '@/components/ui/VerbCycler'
-import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
-import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { useTranslation } from '@/hooks/useTranslation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
 import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
@@ -327,7 +326,7 @@ export default function DeckView() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
-        <ParticleSpinner preset="spiral" size={140} />
+        <LingwaveLoader size={80} className="py-0" />
         <p className="text-sm text-muted-foreground opacity-60">{t('deckview.loadingDeck')}</p>
       </div>
     )
@@ -473,7 +472,7 @@ export default function DeckView() {
           )}
           {isGenerating && (
             <div className="mt-6 flex flex-col items-center gap-5">
-              <GenerationWheelLoader size={112} className="gap-0" />
+              <LingwaveLoader size={80} className="py-0" />
               <Progress value={progress} className="h-2 w-full max-w-md mx-auto" />
             </div>
           )}

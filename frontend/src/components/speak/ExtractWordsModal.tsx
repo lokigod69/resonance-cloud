@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Loader2, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { WordChips } from '@/components/generate/shared/GlassInput'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { useExtractVocabulary, type ExtractVocabularyItem } from '@/hooks/useExtractVocabulary'
 import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -105,7 +106,7 @@ export function ExtractWordsModal({
         <div className="max-h-[70vh] overflow-y-auto px-5 py-5">
           {(loading || !hasLoaded) && (
             <div className="flex min-h-48 flex-col items-center justify-center gap-3 text-sm text-gray-400">
-              <Loader2 className="h-6 w-6 animate-spin" />
+              <LingwaveLoader size={64} className="py-0" />
               {t('speak.extractWords.loading')}
             </div>
           )}

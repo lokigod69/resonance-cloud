@@ -19,7 +19,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react'
-import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { QueueIndicator } from '@/components/study/QueueIndicator'
 import { ImagelessCard } from '@/components/study/ImagelessCard'
 import { isStudyQueue } from '@/hooks/useStudySession'
@@ -102,7 +102,7 @@ export default function StudyFlashcard() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <ParticleSpinner preset="heart" size={140} />
+        <LingwaveLoader size={80} className="py-0" />
         <p className="text-sm text-muted-foreground opacity-60">{t('study.loadingCards')}</p>
       </div>
     )

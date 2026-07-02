@@ -5,7 +5,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import { Loader, Music, Sparkles, Type } from 'lucide-react'
-import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
@@ -241,7 +241,7 @@ export default function Decks() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
-        <ParticleSpinner preset="rose" size={140} />
+        <LingwaveLoader size={80} className="py-0" />
         <p className="text-sm text-muted-foreground opacity-60">{t('dashboard.loadingDecks')}</p>
       </div>
     )

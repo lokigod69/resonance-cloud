@@ -45,7 +45,7 @@ import { useTranslateAndIpa } from '@/hooks/useTranslateAndIpa'
 import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
 import { useAppendImagelessCards } from '@/hooks/useAppendImagelessCards'
 import { useGenerateImagelessTts } from '@/hooks/useGenerateImagelessTts'
-import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 import { canonicalizeLanguageValue, getLanguageCode } from '@/lib/languages'
 
@@ -189,7 +189,9 @@ export default function GeneratePG() {
 
   const existingDeckLaneLocked = isLaneLockedDeckType(existingDeck?.deck_type)
   useEffect(() => {
-    if (existingDeckLaneLocked && pgStep < 2) setPgStep(2)
+    if (!existingDeckLaneLocked || pgStep >= 2) return
+    const timeoutId = window.setTimeout(() => setPgStep(2), 0)
+    return () => window.clearTimeout(timeoutId)
   }, [existingDeckLaneLocked, pgStep])
 
   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
@@ -360,12 +362,17 @@ export default function GeneratePG() {
           transition={{ type: 'spring', stiffness: 300, damping: 25 }}
           className="flex w-full max-w-xl flex-col items-center text-center gap-8"
         >
-          <GenerationWheelLoader
-            label={t('generate.forgingMemories')}
-            sublabel={existingDeck
-              ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
-              : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
-          />
+          <div className="flex flex-col items-center gap-3">
+            <LingwaveLoader size={80} className="py-0" />
+            <p className="text-sm font-medium text-[var(--text-primary)]">
+              {t('generate.forgingMemories')}
+            </p>
+            <p className="max-w-md text-xs text-[var(--pg-text-dim)]">
+              {existingDeck
+                ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
+                : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
+            </p>
+          </div>
           {generatedQueueIsCard && (
             <p className="text-xs text-[var(--pg-text-dim)] opacity-80">
               Generating cards...

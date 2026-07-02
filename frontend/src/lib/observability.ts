@@ -28,6 +28,7 @@ export interface PipelineEvent {
   response_body: string | null
   error_type: string | null
   error_message: string | null
+  feature: string | null
 }
 
 export interface WordRow {
@@ -88,7 +89,8 @@ const EVENT_COLUMNS = `
   user_prompt,
   response_body,
   error_type,
-  error_message
+  error_message,
+  feature
 `
 
 let aggregateReadCapWarned = false
@@ -130,6 +132,7 @@ function normalizeEvent(row: Record<string, unknown>): PipelineEvent {
     response_body: (row.response_body as string | null) ?? null,
     error_type: (row.error_type as string | null) ?? null,
     error_message: (row.error_message as string | null) ?? null,
+    feature: (row.feature as string | null) ?? null,
   }
 }
 
@@ -236,6 +239,118 @@ export async function fetchCostByProvider(): Promise<ProviderCost[]> {
   return Array.from(costs.entries())
     .map(([model_provider, cost_usd]) => ({ model_provider, cost_usd }))
     .sort((a, b) => b.cost_usd - a.cost_usd)
+}
+
+export interface CostByFeature {
+  feature: string
+  cost_usd: number
+  count: number
+  success_count: number
+}
+
+export interface CostByDay {
+  day: string
+  cost_usd: number
+  count: number
+}
+
+export interface CostByUser {
+  user_id: string
+  cost_usd: number
+  count: number
+}
+
+export interface WasteByFeatureModel {
+  feature: string
+  model: string
+  cost_usd: number
+  success_count: number
+  /** cost_usd / successful events — surfaces retry-heavy or low-yield prompts. */
+  cost_per_success: number
+}
+
+/** Total estimated spend across all (capped) events. */
+export async function fetchTotalCost(): Promise<number> {
+  const events = await fetchAllEvents()
+  return events.reduce((sum, event) => sum + (event.cost_usd ?? 0), 0)
+}
+
+export async function fetchCostByFeature(): Promise<CostByFeature[]> {
+  const events = await fetchAllEvents()
+  const byFeature = new Map<string, CostByFeature>()
+
+  for (const event of events) {
+    const feature = event.feature ?? event.stage ?? 'unknown'
+    const current = byFeature.get(feature) ?? { feature, cost_usd: 0, count: 0, success_count: 0 }
+    current.cost_usd += event.cost_usd ?? 0
+    current.count += 1
+    if (event.status === 'success') current.success_count += 1
+    byFeature.set(feature, current)
+  }
+
+  return Array.from(byFeature.values()).sort((a, b) => b.cost_usd - a.cost_usd)
+}
+
+export async function fetchCostByDay(): Promise<CostByDay[]> {
+  const events = await fetchAllEvents()
+  const byDay = new Map<string, CostByDay>()
+
+  for (const event of events) {
+    const day = (event.created_at ?? '').slice(0, 10) || 'unknown'
+    const current = byDay.get(day) ?? { day, cost_usd: 0, count: 0 }
+    current.cost_usd += event.cost_usd ?? 0
+    current.count += 1
+    byDay.set(day, current)
+  }
+
+  return Array.from(byDay.values()).sort((a, b) => b.day.localeCompare(a.day))
+}
+
+export async function fetchCostByUser(limit = 25): Promise<CostByUser[]> {
+  const events = await fetchAllEvents()
+  const byUser = new Map<string, CostByUser>()
+
+  for (const event of events) {
+    if (event.cost_usd === null) continue
+    const user_id = event.user_id ?? 'unknown'
+    const current = byUser.get(user_id) ?? { user_id, cost_usd: 0, count: 0 }
+    current.cost_usd += event.cost_usd
+    current.count += 1
+    byUser.set(user_id, current)
+  }
+
+  return Array.from(byUser.values())
+    .sort((a, b) => b.cost_usd - a.cost_usd)
+    .slice(0, limit)
+}
+
+/**
+ * Waste finder: cost per *successful* outcome by feature+model. A high
+ * cost-per-success means a feature is burning spend on retries or low-yield
+ * calls. Successes counted from events with status === 'success'.
+ */
+export async function fetchWasteByFeatureModel(limit = 25): Promise<WasteByFeatureModel[]> {
+  const events = await fetchAllEvents()
+  const byKey = new Map<string, { feature: string; model: string; cost_usd: number; success_count: number }>()
+
+  for (const event of events) {
+    const feature = event.feature ?? event.stage ?? 'unknown'
+    const model = event.model_name ?? 'unknown'
+    const key = `${feature} ${model}`
+    const current = byKey.get(key) ?? { feature, model, cost_usd: 0, success_count: 0 }
+    current.cost_usd += event.cost_usd ?? 0
+    if (event.status === 'success') current.success_count += 1
+    byKey.set(key, current)
+  }
+
+  return Array.from(byKey.values())
+    .map((row) => ({
+      ...row,
+      cost_per_success: row.success_count > 0 ? row.cost_usd / row.success_count : row.cost_usd,
+    }))
+    .filter((row) => row.cost_usd > 0)
+    .sort((a, b) => b.cost_per_success - a.cost_per_success)
+    .slice(0, limit)
 }
 
 export async function fetchFailureCountsByStage(): Promise<FailureCount[]> {

@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+scripts/perf/dist/
+scripts/perf/.benchmark-user.json
 *.local
 .env
 .env.*
@@ -27,3 +29,4 @@ supabase/.temp/
 *.sw?
 
 .vercel
+scripts/perf/results/*.json

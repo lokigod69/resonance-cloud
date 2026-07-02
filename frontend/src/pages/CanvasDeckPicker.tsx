@@ -7,7 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { filterLemmaStatesForQueue, isStudyQueue } from '@/hooks/useStudySession'
 import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
-import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { canonicalizeLanguageValue, languagesMatch } from '@/lib/languages'
 import canvasIcon from '@/assets/study-mode-icons/canvas.webp'
 
@@ -239,7 +239,7 @@ export default function CanvasDeckPicker() {
 
         {loading ? (
           <div className="flex justify-center py-12">
-            <ParticleSpinner preset="rose" size={100} />
+          <LingwaveLoader size={80} className="py-0" />
           </div>
         ) : error ? (
           <div className="rounded-2xl border border-destructive/30 bg-destructive/10 p-8 text-center text-sm text-destructive">

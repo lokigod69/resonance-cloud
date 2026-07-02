@@ -13,14 +13,16 @@ function assert(condition, message) {
   }
 }
 
-const wheel = read('src/components/ui/GenerationWheelLoader.tsx')
-assert(wheel.includes('export function GenerationWheelLoader'), 'GenerationWheelLoader must be exported')
-assert(wheel.includes('conic-gradient'), 'GenerationWheelLoader must render a conic gradient')
+const lingwaveLoader = read('src/components/ui/LingwaveLoader.tsx')
+assert(lingwaveLoader.includes('export function LingwaveLoader'), 'LingwaveLoader must be exported')
+assert(lingwaveLoader.includes('/branding/lingwave-loader.png'), 'LingwaveLoader must render the Lingwave mark asset')
 
 const deckView = read('src/pages/DeckView.tsx')
 const deckViewPg = read('src/pages/DeckViewPG.tsx')
-assert(deckView.includes('<GenerationWheelLoader size={112}'), 'DeckView generation flow must render the wheel')
-assert(deckViewPg.includes('<GenerationWheelLoader size={120}'), 'DeckViewPG generation flow must render the wheel')
+assert(deckView.includes('<LingwaveLoader size={80}'), 'DeckView generation flow must render the unified loader')
+assert(deckViewPg.includes('<LingwaveLoader size={80}'), 'DeckViewPG generation flow must render the unified loader')
+assert(!deckView.includes('GenerationWheelLoader'), 'DeckView generation flow must not render the old wheel')
+assert(!deckViewPg.includes('GenerationWheelLoader'), 'DeckViewPG generation flow must not render the old wheel')
 assert(!deckView.includes('<Loader2 className="h-4 w-4 text-primary animate-spin"'), 'DeckView generation status must not render the blue Loader2 spinner')
 assert(deckView.includes("import CardWordViewerModal from '@/components/deck/CardWordViewerModal'"), 'DeckView must use the shared card word viewer modal')
 assert(deckView.includes('viewerOpen && viewerWord && isCardDeck'), 'DeckView must render the card viewer modal for card decks')

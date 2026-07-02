@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { getCardFullUrl } from '@/lib/imageUrls'
 import { getPublicWebOrigin } from '@/lib/publicOrigins'
 
@@ -54,7 +55,7 @@ export default function SharePage() {
   if (loading) {
     return (
       <div className="min-h-dvh bg-gray-950 flex items-center justify-center">
-        <div className="h-8 w-8 rounded-full border-2 border-teal-400 border-t-transparent animate-spin" />
+        <LingwaveLoader fullScreen />
       </div>
     )
   }

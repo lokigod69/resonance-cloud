@@ -590,6 +590,70 @@
   text-transform: uppercase;
 }
 
+/* ── Cost rollups ─────────────────────────────────────────────────────────── */
+
+.costSection {
+  padding: 24px 40px;
+  background: var(--f-color-black);
+  border-bottom: 1px solid var(--f-color-ui-90);
+}
+
+.costSectionTitle {
+  margin: 0 0 14px;
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--f-color-black-50);
+}
+
+.costTable {
+  display: grid;
+  gap: 1px;
+}
+
+.costRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px 90px;
+  gap: 16px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--f-color-ui-90);
+}
+
+.costRowWide {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 120px 90px 120px;
+}
+
+.costHeadRow {
+  color: var(--f-color-black-50);
+  font-family: var(--f-font-body);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.costLabel {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--f-font-ferrari);
+  font-size: 14px;
+  color: var(--f-color-ui-0);
+}
+
+.costValue {
+  text-align: right;
+  font-family: var(--f-font-mono);
+  font-size: 13px;
+  color: var(--f-color-ui-20);
+}
+
+.costValueStrong {
+  color: var(--f-color-accent-100);
+}
+
 @media (max-width: 760px) {
   .eventRow {
     grid-template-columns: 1fr auto;

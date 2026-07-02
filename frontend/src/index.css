@@ -255,6 +255,37 @@ input[type="range"].volume-slider::-moz-range-track {
 }
 
 /* ============================================
+   LINGWAVE LOADER — the single app-wide loading indicator
+   Invisible for the first 300ms so fast loads never flash it;
+   only genuinely slow loads reveal the slowly spinning mark.
+   ============================================ */
+
+.lw-loader {
+  opacity: 0;
+  animation: lw-loader-reveal 240ms ease-out 300ms forwards;
+}
+
+.lw-loader-mark {
+  animation: lw-loader-spin 2.8s linear infinite;
+  will-change: transform;
+}
+
+@keyframes lw-loader-reveal {
+  to { opacity: 1; }
+}
+
+@keyframes lw-loader-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lw-loader-mark {
+    animation: none;
+  }
+}
+
+/* ============================================
    CLASSIC SKIN — Dashboard
    Aurora breathing bg + glass deck cards
    ============================================ */

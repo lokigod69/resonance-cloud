@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { Input } from '@/components/ui/input'
 import {
   Select,
@@ -443,7 +444,7 @@ export default function Content() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <RefreshCw className="h-6 w-6 animate-spin text-muted-foreground" />
+        <LingwaveLoader size={80} className="py-0" />
       </div>
     )
   }

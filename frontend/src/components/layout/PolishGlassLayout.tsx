@@ -1,8 +1,10 @@
+import { Suspense } from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { Coins, Shield, User } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { MobileBottomNav } from './MobileBottomNav'
@@ -101,7 +103,9 @@ export default function PolishGlassLayout() {
       <main className={`w-full pt-[var(--glassy-content-top-offset)] pb-[var(--glassy-main-bottom-padding)] relative z-10 ${
         isSpeakRoute ? 'min-h-0' : 'min-h-dvh'
       }`}>
-        <Outlet />
+        <Suspense fallback={<LingwaveLoader />}>
+          <Outlet />
+        </Suspense>
       </main>
     </div>
   )

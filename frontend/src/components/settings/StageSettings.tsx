@@ -5,6 +5,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Loader, RotateCcw } from 'lucide-react'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { getWordStageSettings, updateWordSettings, deleteWordStageSettings } from '../../api'
 import type { FieldDef } from './fieldConfigs'
 import { StageSettingsPanel } from './SettingsControls'
@@ -69,7 +70,7 @@ export function StageSettings({ slug, stage, onOverridesChange }: StageSettingsP
   if (loading) {
     return (
       <div className="flex items-center justify-center py-6">
-        <Loader size={14} className="animate-spin text-[var(--text-muted)]" />
+        <LingwaveLoader size={64} className="py-0" />
       </div>
     )
   }

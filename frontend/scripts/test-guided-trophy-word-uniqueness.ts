@@ -44,8 +44,6 @@ const TARGET_LANGUAGE_BY_PATH = new Map<string, GuidedTargetLanguage>(
   ACTIVE_PATH_OPTIONS.map((path) => [path.id, path.targetLanguage]),
 )
 
-const VIBES: Vibe[] = ['bright', 'wistful', 'sharp']
-
 // Hard-fail threshold for global multiplicity: more than this many cells of
 // the same trophy word fails the build unless allowlisted.
 const GLOBAL_HARD_FAIL_THRESHOLD = 3

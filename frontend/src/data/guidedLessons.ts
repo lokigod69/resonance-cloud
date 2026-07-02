@@ -36902,7 +36902,7 @@ const cebuanoA1Practical2Inputs: CebuanoP2LessonInput[] = [
         word: 'husto',
         meaning: { de: 'richtig / korrekt', en: 'right / correct' },
         example: 'Mao ni ang husto?',
-        whyThisWord: { de: 'Husto ist eine klare Cebuano-Form für richtig oder korrekt und passt zu Bestätigungen.', en: 'Right / correct. Husto is the everyday Cebuano confirmation word. Mao acts like a soft \"is/that\" identifier, and ang is the focus marker that makes ang husto behave like \"the right one\" — Cebuano has no separate verb \"to be\" at A1.' },
+        whyThisWord: { de: 'Husto ist eine klare Cebuano-Form für richtig oder korrekt und passt zu Bestätigungen.', en: 'Right / correct. Husto is the everyday Cebuano confirmation word. Mao acts like a soft "is/that" identifier, and ang is the focus marker that makes ang husto behave like "the right one" — Cebuano has no separate verb "to be" at A1.' },
       },
       placeholderCaption: { de: 'Door or vehicle sign, learner confirms it is the right one.', en: 'A door or vehicle sign, the learner confirms it is the right one.' },
       songMood: 'confirming the right one',

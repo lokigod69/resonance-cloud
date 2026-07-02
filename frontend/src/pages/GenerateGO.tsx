@@ -13,7 +13,7 @@ import { useTranslateAndIpa } from '@/hooks/useTranslateAndIpa'
 import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
 import { useAppendImagelessCards } from '@/hooks/useAppendImagelessCards'
 import { useGenerateImagelessTts } from '@/hooks/useGenerateImagelessTts'
-import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 import {
   DEFAULT_CARD_LAYER2,
@@ -931,15 +931,19 @@ export default function GenerateGO() {
       <div className="gen-container">
         <div className="gen-section" style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
-            <GenerationWheelLoader
-              label={t('generate.forgingMemories')}
-              labelClassName="text-[var(--go-text-primary)]"
-              sublabel={existingDeck
-                ? t('generateGo.newCardsGeneratingForDeck', {
-                    name: existingDeck.name || t('generateGo.languageDeckName', { language: existingDeck.target_language }),
-                  })
-                : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
-            />
+            <div className="flex flex-col items-center gap-3">
+              <LingwaveLoader size={80} className="py-0" />
+              <p className="text-sm font-medium text-[var(--go-text-primary)]">
+                {t('generate.forgingMemories')}
+              </p>
+              <p className="max-w-md text-xs text-[var(--go-text-secondary)]">
+                {existingDeck
+                  ? t('generateGo.newCardsGeneratingForDeck', {
+                      name: existingDeck.name || t('generateGo.languageDeckName', { language: existingDeck.target_language }),
+                    })
+                  : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
+              </p>
+            </div>
             {generatedQueueIsCard && (
               <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
                 {t('generateGo.generatingCards')}

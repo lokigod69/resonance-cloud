@@ -35,6 +35,7 @@ const adminNav = [
   { to: '/admin/voices', label: 'Voices', icon: Mic },
   { to: '/admin/metrics', label: 'Metrics', icon: BarChart3 },
   { to: '/admin/observability/aggregate', label: 'Observability', icon: BarChart3 },
+  { to: '/admin/observability/cost', label: 'Cost', icon: BarChart3 },
   { to: '/admin/layer2-lab', label: 'Layer 2 Lab', icon: Beaker },
   { to: '/admin/curriculum', label: 'Curriculum Images', icon: Images },
 ]

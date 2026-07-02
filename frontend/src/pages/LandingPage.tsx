@@ -1,10 +1,16 @@
+import { useEffect } from 'react'
 import HeroSection from '@/components/landing/HeroSection'
 import ScrollStorySection from '@/components/landing/ScrollStorySection'
 import VoiceTutorSection from '@/components/landing/VoiceTutorSection'
 import LanguagesSection from '@/components/landing/LanguagesSection'
 import CtaFooterSection from '@/components/landing/CtaFooterSection'
+import { routeImports, scheduleIdleRoutePrefetch } from '@/routes/routeImports'
 
 export default function LandingPage() {
+  useEffect(() => {
+    return scheduleIdleRoutePrefetch([routeImports.login], 1000)
+  }, [])
+
   return (
     <div className="theme-cosmos min-h-screen bg-[var(--app-bg)] text-foreground">
       {/* Layer 1: Hero image only, fading down into page black */}

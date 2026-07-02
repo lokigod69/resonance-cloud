@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { isStudyQueue, useStudySession } from '@/hooks/useStudySession'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { QueueIndicator } from '@/components/study/QueueIndicator'
 import EmberCanvas from '@/components/study/canvas/EmberCanvas'
 import FrostCanvas from '@/components/study/canvas/FrostCanvas'
@@ -400,7 +400,7 @@ export default function StudyCanvas() {
     return (
       <CanvasShell>
         <div className="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center gap-4">
-          <ParticleSpinner preset="heart" size={140} />
+        <LingwaveLoader size={80} className="py-0" />
           <p className="text-sm text-white/50">Loading…</p>
         </div>
       </CanvasShell>

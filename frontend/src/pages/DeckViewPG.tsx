@@ -7,8 +7,7 @@ import { useDrag } from '@use-gesture/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
-import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
+import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import {
   ArrowLeft,
   Play,
@@ -473,7 +472,7 @@ export default function DeckViewPG() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <ParticleSpinner preset="spiral" size={140} />
+        <LingwaveLoader size={80} className="py-0" />
         <p className="text-sm text-muted-foreground opacity-60">{t('deckview.loadingDeck')}</p>
       </div>
     )
@@ -654,7 +653,7 @@ export default function DeckViewPG() {
     {/* Generation progress showcase */}
     {isGenerating && (
       <div className="flex flex-col items-center gap-6 mb-8">
-        <GenerationWheelLoader size={120} className="gap-0" />
+        <LingwaveLoader size={80} className="py-0" />
         {isVideoDeck && hasChecked && !shouldShowQueue && (
           <VerbCycler intervalMs={5000} />
         )}
