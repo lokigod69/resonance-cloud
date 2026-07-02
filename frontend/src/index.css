@@ -1019,10 +1019,14 @@ body::before {
    negative-z wave stack above the shell background. */
 .skin-glassy .dashboard-cosmic {
   isolation: isolate;
-  /* Match the login modal's .theme-cosmos .glass.glass material exactly:
-     surface-glass body, subtle borders, soft shadow, and blur(24px)
-     saturate(1.12). */
-  --dashboard-glass-bg: var(--surface-glass);
+  /* Milky frosted pane in the spirit of the login modal, but with a
+     near-opaque body: the wave field behind is a fixed composited layer that
+     backdrop-filter cannot reliably sample (works headless, fails on real
+     GPUs), so the body color alone must guarantee the waves never read
+     through the cards. Blur stays as progressive edge frost only. */
+  --dashboard-glass-bg:
+    linear-gradient(166deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04) 38%, rgba(255, 255, 255, 0.01) 66%),
+    rgba(21, 13, 25, 0.95);
   --dashboard-glass-frost: blur(24px) saturate(1.12);
   --dashboard-glass-border: var(--border-subtle);
   --dashboard-glass-border-strong: color-mix(in srgb, var(--text-primary) 18%, transparent);
@@ -1035,21 +1039,24 @@ body::before {
 /* Classic reads as calmer, more matte cards: deeper tint, softer lift, quieter
    sheen — same geometry and hierarchy, clearly composed rather than liquid. */
 .skin-classic .dashboard-cosmic {
+  /* Same near-opaque guarantee as glassy (see above), just quieter: less
+     white wash, deeper plum. */
   --dashboard-glass-bg:
     linear-gradient(166deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02) 34%, rgba(255, 255, 255, 0) 60%),
-    rgba(13, 8, 16, 0.52);
+    rgba(13, 8, 16, 0.94);
   --dashboard-glass-frost: blur(28px) saturate(1.45) brightness(1.15);
   --dashboard-glass-sheen: 0.55;
 }
 
 /* Solid cosmos base sits beneath the animated wave field so there is never a
-   flash of shell-bg before the canvas paints its first frame. The whole bg
-   stack (::before base, wave canvas, ::after scrim) is absolute rather than
-   fixed: fixed layers composite independently and Chromium excludes them from
-   the backdrop image, which silently disables the cards' backdrop-filter. */
+   flash of shell-bg before the canvas paints its first frame. The bg stack
+   (::before base, wave canvas, ::after scrim) is fixed so it fills the whole
+   viewport even beyond the dashboard section's own height. Fixed layers may be
+   excluded from backdrop-filter sampling, so card surfaces above must hide the
+   waves with a near-opaque body, not with blur. */
 .dashboard-cosmic::before {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: -3;
   background: var(--app-bg);
@@ -1065,7 +1072,7 @@ body::before {
 
 .dashboard-cosmic::after {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: -1;
   background:
