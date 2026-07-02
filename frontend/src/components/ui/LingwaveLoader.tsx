@@ -16,7 +16,7 @@ type LingwaveLoaderProps = {
 }
 
 /**
- * The single app-wide loading indicator: the Lingwave mark in a slow spin.
+ * The single app-wide loading indicator: the Lingwave mark.
  * The whole element stays invisible for the first 300ms (see .lw-loader in
  * index.css), so fast loads and route transitions never flash a spinner —
  * it only appears when something is genuinely slow.

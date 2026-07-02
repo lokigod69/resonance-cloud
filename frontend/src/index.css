@@ -257,7 +257,7 @@ input[type="range"].volume-slider::-moz-range-track {
 /* ============================================
    LINGWAVE LOADER — the single app-wide loading indicator
    Invisible for the first 300ms so fast loads never flash it;
-   only genuinely slow loads reveal the slowly spinning mark.
+   only genuinely slow loads reveal the Lingwave mark.
    ============================================ */
 
 .lw-loader {
@@ -266,23 +266,11 @@ input[type="range"].volume-slider::-moz-range-track {
 }
 
 .lw-loader-mark {
-  animation: lw-loader-spin 2.8s linear infinite;
-  will-change: transform;
+  display: block;
 }
 
 @keyframes lw-loader-reveal {
   to { opacity: 1; }
-}
-
-@keyframes lw-loader-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .lw-loader-mark {
-    animation: none;
-  }
 }
 
 /* ============================================
@@ -1031,15 +1019,17 @@ body::before {
    fixed negative wave layers fill the viewport above the shell background. */
 .skin-glassy .dashboard-cosmic {
   isolation: isolate;
-  /* Milky frosted glass, matched to the login modal material (.theme-cosmos
-     .glass: surface-glass body + moderate blur): a visible white wash over a
-     deeper plum body so panels read as solid frosted panes, with just enough
-     brightness lift that the waves still glow through softly. */
-  --dashboard-glass-bg:
-    linear-gradient(166deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.07) 38%, rgba(255, 255, 255, 0.03) 70%),
-    rgba(22, 14, 26, 0.58);
-  --dashboard-glass-frost: blur(26px) saturate(1.5) brightness(1.18);
-  --dashboard-glass-sheen: 1;
+  /* Match the login modal's .theme-cosmos .glass.glass material exactly:
+     surface-glass body, subtle borders, soft shadow, and blur(24px)
+     saturate(1.12). */
+  --dashboard-glass-bg: var(--surface-glass);
+  --dashboard-glass-frost: blur(24px) saturate(1.12);
+  --dashboard-glass-border: var(--border-subtle);
+  --dashboard-glass-border-strong: color-mix(in srgb, var(--text-primary) 18%, transparent);
+  --dashboard-glass-shadow:
+    var(--shadow-soft),
+    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 12%, transparent);
+  --dashboard-glass-sheen: 0.72;
 }
 
 /* Classic reads as calmer, more matte cards: deeper tint, softer lift, quieter
@@ -1347,9 +1337,7 @@ body::before {
   transform: translateY(-1px);
   filter: brightness(1.06);
   border-color: color-mix(in srgb, var(--accent) 42%, var(--border-subtle));
-  box-shadow:
-    0 18px 52px rgba(0, 0, 0, 0.42),
-    0 0 24px color-mix(in srgb, var(--accent) 22%, transparent);
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.42);
 }
 
 .home-welcome-door:focus-visible {
@@ -1368,7 +1356,7 @@ body::before {
   background:
     linear-gradient(120deg, color-mix(in srgb, var(--accent) 26%, transparent), color-mix(in srgb, var(--accent-2) 12%, transparent)),
     var(--dashboard-glass-bg);
-  box-shadow: 0 12px 32px color-mix(in srgb, var(--accent) 18%, transparent);
+  box-shadow: var(--dashboard-glass-shadow);
 }
 
 .home-welcome-door--primary .home-welcome-door-icon {
@@ -1381,7 +1369,6 @@ body::before {
   width: 1.6rem;
   height: 1.6rem;
   color: color-mix(in srgb, var(--text-primary) 82%, transparent);
-  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 20%, transparent));
 }
 
 .home-welcome-door-title {
@@ -1462,9 +1449,7 @@ body::before {
   transform: translateY(-1px);
   filter: brightness(1.06);
   border-color: color-mix(in srgb, var(--accent) 42%, var(--border-subtle));
-  box-shadow:
-    0 18px 52px rgba(0, 0, 0, 0.52),
-    0 0 24px color-mix(in srgb, var(--accent) 24%, transparent);
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.52);
 }
 
 .dashboard-library-tile:focus-visible {
@@ -1478,7 +1463,6 @@ body::before {
   width: 1.35rem;
   height: 1.35rem;
   color: color-mix(in srgb, var(--text-primary) 78%, transparent);
-  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 18%, transparent));
 }
 
 .dashboard-library-copy {
@@ -1648,9 +1632,7 @@ body::before {
   border: 1px solid var(--dashboard-glass-border);
   background: var(--dashboard-glass-bg);
   color: var(--text-primary);
-  box-shadow:
-    var(--dashboard-glass-shadow),
-    0 0 40px color-mix(in srgb, var(--accent) 12%, transparent);
+  box-shadow: var(--dashboard-glass-shadow);
   backdrop-filter: var(--dashboard-glass-frost);
   -webkit-backdrop-filter: var(--dashboard-glass-frost);
   padding: 0.85rem 1rem 1rem;
@@ -1981,9 +1963,7 @@ body::before {
 }
 
 .stat-tile .stat-tile-divider {
-  box-shadow:
-    0 0 10px var(--tile-accent-glow, transparent),
-    0 0 18px rgba(0, 0, 0, 0.72);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.48);
 }
 
 .stat-tile:not(:disabled):hover {
@@ -2023,25 +2003,19 @@ body::before {
 .stat-tile-accent-warm:not(:disabled):hover,
 .stat-tile-accent-gold:not(:disabled):hover {
   border-color: color-mix(in srgb, var(--tile-accent) 44%, var(--border-subtle));
-  box-shadow:
-    0 18px 52px rgba(0, 0, 0, 0.52),
-    0 0 28px var(--tile-accent-glow);
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.52);
 }
 
 /* A deep dark shadow keeps counts/labels readable now that lit waves glow
    through the pane; the accent glow rides on top of it. */
 .stat-tile .stat-count {
   color: var(--tile-accent, var(--text-primary));
-  text-shadow:
-    0 1px 12px rgba(0, 0, 0, 0.92),
-    0 0 24px var(--tile-accent-glow, transparent);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.82);
 }
 
 .stat-tile .stat-label-accent {
   color: var(--tile-accent, var(--text-primary));
-  text-shadow:
-    0 1px 12px rgba(0, 0, 0, 0.92),
-    0 0 18px var(--tile-accent-glow, transparent);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.82);
 }
 
 /* Vertical glow divider between label and count. Picks up --tile-accent
@@ -2056,7 +2030,7 @@ body::before {
     color-mix(in srgb, var(--tile-accent, var(--text-primary)) 48%, transparent) 50%,
     transparent
   );
-  box-shadow: 0 0 10px var(--tile-accent-glow, transparent);
+  box-shadow: none;
 }
 
 /* Mastered summary stays quiet and below the primary actions. */
@@ -2187,7 +2161,7 @@ body::before {
   .dashboard-mastered-pill-button,
   .dashboard-mastered-empty,
   .home-account-strip,
-  .language-picker-panel {
+  .language-picker-strip {
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.11), transparent 42%),
       color-mix(in srgb, var(--app-bg) 88%, var(--text-primary) 12%);
@@ -2234,12 +2208,13 @@ body::before {
 }
 
 .lang-pill {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: var(--dashboard-glass-frost, blur(64px) saturate(1.5));
-  -webkit-backdrop-filter: var(--dashboard-glass-frost, blur(64px) saturate(1.5));
-  border: 1px solid var(--border-subtle);
+  background: var(--dashboard-glass-bg);
+  backdrop-filter: var(--dashboard-glass-frost, blur(24px) saturate(1.12));
+  -webkit-backdrop-filter: var(--dashboard-glass-frost, blur(24px) saturate(1.12));
+  border: 1px solid var(--dashboard-glass-border);
   color: var(--text-primary);
-  transition: filter 180ms ease, box-shadow 180ms ease, color 180ms ease;
+  box-shadow: var(--dashboard-glass-shadow);
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease, opacity 180ms ease, transform 180ms ease;
 }
 
 .language-picker {
@@ -2278,10 +2253,9 @@ body::before {
 
 .lang-pill-active {
   border-color: color-mix(in srgb, var(--accent) 56%, var(--border-subtle));
-  box-shadow: 0 0 24px var(--accent-glow), inset 0 1px 0 color-mix(in srgb, var(--text-primary) 14%, transparent);
 }
 
-.language-picker-panel {
+.language-picker-strip {
   position: absolute;
   top: calc(100% + 0.28rem);
   left: 50%;
@@ -2293,24 +2267,19 @@ body::before {
   overflow: auto;
   border-radius: 1rem;
   border: 1px solid var(--dashboard-glass-border-strong);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05) 34%, transparent),
-    rgba(5, 3, 8, 0.985);
-  box-shadow:
-    0 28px 76px rgba(0, 0, 0, 0.78),
-    0 0 0 1px rgba(255, 255, 255, 0.04),
-    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 18%, transparent);
+  background: var(--dashboard-glass-bg);
+  box-shadow: var(--dashboard-glass-shadow);
   opacity: 0;
   padding: 0.5rem;
   pointer-events: none;
   transform: translate(-50%, -0.35rem) scale(0.98);
   transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
   visibility: hidden;
-  backdrop-filter: blur(96px) saturate(1.65);
-  -webkit-backdrop-filter: blur(96px) saturate(1.65);
+  backdrop-filter: var(--dashboard-glass-frost);
+  -webkit-backdrop-filter: var(--dashboard-glass-frost);
 }
 
-.language-picker.is-open .language-picker-panel {
+.language-picker.is-open .language-picker-strip {
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, 0) scale(1);
@@ -2318,13 +2287,25 @@ body::before {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .language-picker:hover .language-picker-panel,
-  .language-picker:focus-within .language-picker-panel {
+  .language-picker:hover .language-picker-strip,
+  .language-picker:focus-within .language-picker-strip {
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, 0) scale(1);
     visibility: visible;
   }
+}
+
+.language-picker-choice {
+  display: flex;
+  width: 100%;
+  min-height: 2.7rem;
+  align-items: center;
+  gap: 0.62rem;
+  border-radius: 0.7rem;
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
 }
 
 /* Desktop: the picker expands sideways from the pill as one horizontal strip
@@ -2333,62 +2314,96 @@ body::before {
    picker root, so pointerleave only fires when the cursor exits the whole
    selector. Mobile keeps the compact vertical panel below the pill. */
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-  .language-picker-panel {
+  .language-picker {
+    min-height: 3.2rem;
+  }
+
+  .language-picker::after {
     top: 50%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: max-content;
-    max-width: min(92vw, 46rem);
+    width: min(48rem, calc(100vw - 2rem));
+    height: 3.45rem;
+    transform: translate(-50%, -50%);
+  }
+
+  .language-picker-trigger {
+    position: relative;
+    z-index: 62;
+  }
+
+  .language-picker-strip,
+  .language-picker:hover .language-picker-strip,
+  .language-picker:focus-within .language-picker-strip,
+  .language-picker.is-open .language-picker-strip {
+    top: 50%;
+    width: 0;
+    max-width: none;
     max-height: none;
-    overflow-x: auto;
-    overflow-y: hidden;
-    gap: 0.3rem;
-    padding: 0.32rem;
-    border-radius: 999px;
-    transform: translate(-50%, -50%) scale(0.98);
+    overflow: visible;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: translate(-50%, -50%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
-  .language-picker:hover .language-picker-panel,
-  .language-picker:focus-within .language-picker-panel,
-  .language-picker.is-open .language-picker-panel {
-    transform: translate(-50%, -50%) scale(1);
+  .language-picker-strip {
+    display: block;
   }
 
-  .language-picker-option {
-    width: auto;
-    flex: 0 0 auto;
-    min-height: 2.35rem;
+  .language-picker-choice {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max-content;
+    min-width: 0;
+    min-height: 2.45rem;
+    max-width: 13rem;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
     gap: 0.45rem;
     border-radius: 999px;
     padding: 0.3rem 0.75rem;
     white-space: nowrap;
   }
+
+  .language-picker-choice[data-side="left"] {
+    transform: translate(calc(-50% - var(--language-choice-offset)), -50%) scale(0.94);
+  }
+
+  .language-picker-choice[data-side="right"] {
+    transform: translate(calc(-50% + var(--language-choice-offset)), -50%) scale(0.94);
+  }
+
+  .language-picker:hover .language-picker-choice,
+  .language-picker:focus-within .language-picker-choice,
+  .language-picker.is-open .language-picker-choice {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .language-picker:hover .language-picker-choice[data-side="left"],
+  .language-picker:focus-within .language-picker-choice[data-side="left"],
+  .language-picker.is-open .language-picker-choice[data-side="left"] {
+    transform: translate(calc(-50% - var(--language-choice-offset)), -50%) scale(1);
+  }
+
+  .language-picker:hover .language-picker-choice[data-side="right"],
+  .language-picker:focus-within .language-picker-choice[data-side="right"],
+  .language-picker.is-open .language-picker-choice[data-side="right"] {
+    transform: translate(calc(-50% + var(--language-choice-offset)), -50%) scale(1);
+  }
 }
 
-.language-picker-option {
-  display: flex;
-  width: 100%;
-  min-height: 2.7rem;
-  align-items: center;
-  gap: 0.62rem;
-  border-radius: 0.7rem;
-  border: 1px solid transparent;
-  background: rgba(255, 255, 255, 0.02);
-  color: var(--text-primary);
-  padding: 0.45rem 0.6rem;
-  text-align: left;
-  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
-}
-
-.language-picker-option:hover,
-.language-picker-option:focus-visible,
-.language-picker-option.is-selected {
+.language-picker-choice:hover,
+.language-picker-choice:focus-visible {
   border-color: color-mix(in srgb, var(--accent) 36%, transparent);
   background: color-mix(in srgb, var(--accent-soft) 48%, transparent);
 }
 
-.language-picker-option:focus-visible {
+.language-picker-choice:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--accent);
 }

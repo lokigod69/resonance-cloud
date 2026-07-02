@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
-import { Check } from 'lucide-react'
+import { type CSSProperties, useEffect, useRef, useState } from 'react'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
 
@@ -7,6 +6,10 @@ type LanguageClusterProps = {
   languages: string[]
   activeLanguage: string | null
   onSelect: (lang: string) => void
+}
+
+type LanguageChoiceStyle = CSSProperties & {
+  '--language-choice-offset': string
 }
 
 export function LanguageCluster({ languages, activeLanguage, onSelect }: LanguageClusterProps) {
@@ -40,29 +43,39 @@ export function LanguageCluster({ languages, activeLanguage, onSelect }: Languag
 
   const activeLabel = t(`langName.${activeLanguage}`)
   const hasChoices = languages.length > 1
+  const activeIndex = Math.max(languages.indexOf(activeLanguage), 0)
 
   const handleSelect = (language: string) => {
     onSelect(language)
     setOpen(false)
   }
 
-  const languageOptions = languages.map((language) => {
-    const selected = language === activeLanguage
-    return (
+  const languageOptions = [
+    ...languages.slice(0, activeIndex).reverse().map((language, optionIndex) => ({
+      language,
+      optionIndex,
+      side: 'left' as const,
+    })),
+    ...languages.slice(activeIndex + 1).map((language, optionIndex) => ({
+      language,
+      optionIndex,
+      side: 'right' as const,
+    })),
+  ].map(({ language, optionIndex, side }) => (
       <button
         key={language}
         type="button"
-        role="option"
-        aria-selected={selected}
-        className={`language-picker-option ${selected ? 'is-selected' : ''}`}
+        aria-pressed={false}
+        className="language-picker-choice lang-pill"
+        data-side={side}
+        data-option-index={optionIndex}
+        style={{ '--language-choice-offset': `${(optionIndex + 1) * 8.25}rem` } as LanguageChoiceStyle}
         onClick={() => handleSelect(language)}
       >
         <FlagIcon code={language} className="w-6 h-auto" />
         <span>{t(`langName.${language}`)}</span>
-        {selected ? <Check className="ml-auto h-4 w-4" aria-hidden="true" /> : null}
       </button>
-    )
-  })
+  ))
 
   return (
     <div
@@ -74,12 +87,17 @@ export function LanguageCluster({ languages, activeLanguage, onSelect }: Languag
       onPointerLeave={(event) => {
         if (event.pointerType === 'mouse') setOpen(false)
       }}
+      onFocus={() => {
+        if (hasChoices) setOpen(true)
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setOpen(false)
+      }}
     >
       <button
         type="button"
         className="lang-pill lang-pill-active language-picker-trigger"
         onClick={() => hasChoices && setOpen((value) => !value)}
-        aria-haspopup="listbox"
         aria-expanded={open}
         disabled={!hasChoices}
       >
@@ -88,7 +106,7 @@ export function LanguageCluster({ languages, activeLanguage, onSelect }: Languag
       </button>
 
       {hasChoices ? (
-        <div className="language-picker-panel" role="listbox" aria-label={t('categories.targetLanguageLabel')}>
+        <div className="language-picker-strip" role="group" aria-label={t('categories.targetLanguageLabel')}>
           {languageOptions}
         </div>
       ) : null}

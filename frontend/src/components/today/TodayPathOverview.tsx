@@ -9,7 +9,7 @@ import {
   type GuidedPathOverview,
   type GuidedTargetLanguage,
 } from '@/data/guidedLessons'
-import { ACTIVE_GUIDED_VIBE_IDS, guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
+import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayProgress'
 import { readGuidedSegmentReviewRecord, type GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
 import { splitGuidedPathLabel } from '@/lib/guidedPathLabels'
@@ -185,11 +185,6 @@ export function TodayPathOverview({
         </div>
       </section>
 
-      <TodayVibeStrip
-        selectedVibeId={selectedVibeId}
-        onSelectVibe={onSelectVibe}
-      />
-
       <GuidedPathDirectory
         open={directoryOpen}
         pathOptions={pathOptions}
@@ -323,57 +318,6 @@ export function TodayPathOverview({
         )}
       </section>
     </div>
-  )
-}
-
-function TodayVibeStrip({
-  selectedVibeId,
-  onSelectVibe,
-}: {
-  selectedVibeId: ActiveGuidedVibeId
-  onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
-}) {
-  const { t } = useTranslation()
-
-  return (
-    <section
-      className="today-vibeStrip today-reveal"
-      aria-label={t('today.vibePicker.title')}
-    >
-      <div className="today-vibeStrip-head">
-        <span className="today-vibeStrip-label">{t('today.vibe.rowLabel')}</span>
-        <p className="today-vibeStrip-description" key={selectedVibeId}>
-          {t(`today.vibe.${selectedVibeId}.description`)}
-        </p>
-      </div>
-      <div className="today-vibeStrip-options" role="group" aria-label={t('today.vibePicker.title')}>
-        {ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => {
-          const vibe = guidedVibes[vibeId]
-          const isSelected = vibeId === selectedVibeId
-
-          return (
-            <button
-              key={vibeId}
-              type="button"
-              aria-pressed={isSelected}
-              onClick={() => onSelectVibe(vibeId)}
-              className="today-vibeStrip-option"
-              data-vibe-option={vibeId}
-              data-selected={isSelected}
-            >
-              <span className="today-vibeStrip-emblem" aria-hidden="true">
-                {vibe.emblem?.url && (
-                  <img src={vibe.emblem.url} alt="" draggable={false} />
-                )}
-              </span>
-              <span className="today-vibeStrip-name">
-                {t(`today.vibe.${vibeId}.label`)}
-              </span>
-            </button>
-          )
-        })}
-      </div>
-    </section>
   )
 }
 
