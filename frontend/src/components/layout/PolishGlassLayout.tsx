@@ -4,6 +4,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { Coins, Shield, User } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -34,7 +35,11 @@ export default function PolishGlassLayout() {
         <div className="glassy-atmosphere-vignette" />
       </div>
 
-      <nav className="app-topnav hidden md:flex fixed top-0 left-0 w-full min-h-[var(--glassy-header-offset)] px-4 sm:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 items-center z-50 pointer-events-auto !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
+      <nav className="app-topnav hidden md:flex fixed top-0 left-0 w-full min-h-[var(--glassy-header-offset)] px-4 sm:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 items-center gap-2 z-50 pointer-events-auto !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
+        <Link to="/dashboard" className="flex items-center gap-2 shrink-0" aria-label="Lingwave dashboard">
+          <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5 sm:h-6" />
+        </Link>
+
         <div className="flex items-center gap-1 mx-auto">
           {navItems.map((item) => (
             <Link

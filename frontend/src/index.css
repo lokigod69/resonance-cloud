@@ -1015,8 +1015,8 @@ body::before {
   }
 }
 
-/* Glassy home keeps the same isolated dashboard containment that makes Classic's
-   fixed negative wave layers fill the viewport above the shell background. */
+/* Glassy home keeps the same isolated dashboard containment that layers the
+   negative-z wave stack above the shell background. */
 .skin-glassy .dashboard-cosmic {
   isolation: isolate;
   /* Match the login modal's .theme-cosmos .glass.glass material exactly:
@@ -1043,10 +1043,13 @@ body::before {
 }
 
 /* Solid cosmos base sits beneath the animated wave field so there is never a
-   flash of shell-bg before the canvas paints its first frame. */
+   flash of shell-bg before the canvas paints its first frame. The whole bg
+   stack (::before base, wave canvas, ::after scrim) is absolute rather than
+   fixed: fixed layers composite independently and Chromium excludes them from
+   the backdrop image, which silently disables the cards' backdrop-filter. */
 .dashboard-cosmic::before {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: -3;
   background: var(--app-bg);
@@ -1062,7 +1065,7 @@ body::before {
 
 .dashboard-cosmic::after {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: -1;
   background:

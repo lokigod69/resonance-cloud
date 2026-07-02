@@ -8,8 +8,11 @@ import { LingwaveWaves } from '@/components/branding/LingwaveWaves'
  * so it is cheap enough to run on the landing surface.
  */
 export function HomeWaveBackground() {
+  // absolute, not fixed: Chromium leaves fixed (independently composited)
+  // layers out of the backdrop image, so the cards' backdrop-filter blur
+  // would silently skip the waves and panels read as plain transparent tint.
   return (
-    <div aria-hidden="true" className="dashboard-wave-bg pointer-events-none fixed inset-0">
+    <div aria-hidden="true" className="dashboard-wave-bg pointer-events-none absolute inset-0">
       <LingwaveWaves />
     </div>
   )
