@@ -958,14 +958,24 @@ body::before {
   isolation: isolate;
   display: flex;
   flex-direction: column;
+  /* Lit-glass material tokens. One recipe feeds every home surface (strip,
+     mission card, tiles, library, pills); the skins only retune these values.
+     The key move is in --dashboard-glass-frost: moderate blur plus a
+     saturate/brightness lift, so the wave's vermillion/gold contours bloom
+     INSIDE each panel instead of being buried under heavy blur. Black stays
+     black under brightness(), so only the water's light amplifies. */
   --dashboard-glass-bg:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 38%),
-    rgba(0, 0, 0, 0.54);
-  --dashboard-glass-border: color-mix(in srgb, var(--text-primary) 12%, transparent);
-  --dashboard-glass-border-strong: color-mix(in srgb, var(--text-primary) 22%, transparent);
+    linear-gradient(166deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03) 34%, rgba(255, 255, 255, 0) 60%),
+    rgba(16, 9, 20, 0.34);
+  --dashboard-glass-frost: blur(18px) saturate(1.8) brightness(1.32);
+  --dashboard-glass-border: color-mix(in srgb, var(--text-primary) 14%, transparent);
+  --dashboard-glass-border-strong: color-mix(in srgb, var(--text-primary) 30%, transparent);
   --dashboard-glass-shadow:
-    0 10px 30px color-mix(in srgb, var(--app-bg) 42%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 12%, transparent);
+    0 24px 48px -16px rgba(4, 2, 8, 0.8),
+    0 4px 16px -8px rgba(4, 2, 8, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.32);
+  --dashboard-glass-sheen: 1;
   /* Fit exactly within the viewport on desktop so the page does not scroll
      under either skin's main padding. AppLayout main has pb-1.5rem, while
      PolishGlassLayout main has pb-5rem (room for the voice player widget).
@@ -990,6 +1000,22 @@ body::before {
    fixed negative wave layers fill the viewport above the shell background. */
 .skin-glassy .dashboard-cosmic {
   isolation: isolate;
+  /* Watery, luminous glass: thin frost, strong light gather, full sheen. */
+  --dashboard-glass-bg:
+    linear-gradient(166deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03) 34%, rgba(255, 255, 255, 0) 60%),
+    rgba(16, 9, 20, 0.34);
+  --dashboard-glass-frost: blur(18px) saturate(1.8) brightness(1.32);
+  --dashboard-glass-sheen: 1;
+}
+
+/* Classic reads as calmer, more matte cards: deeper tint, softer lift, quieter
+   sheen — same geometry and hierarchy, clearly composed rather than liquid. */
+.skin-classic .dashboard-cosmic {
+  --dashboard-glass-bg:
+    linear-gradient(166deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02) 34%, rgba(255, 255, 255, 0) 60%),
+    rgba(13, 8, 16, 0.52);
+  --dashboard-glass-frost: blur(28px) saturate(1.45) brightness(1.15);
+  --dashboard-glass-sheen: 0.55;
 }
 
 /* Solid cosmos base sits beneath the animated wave field so there is never a
@@ -1061,8 +1087,8 @@ body::before {
   background: var(--dashboard-glass-bg);
   color: var(--text-primary);
   box-shadow: var(--dashboard-glass-shadow);
-  backdrop-filter: blur(64px) saturate(1.5);
-  -webkit-backdrop-filter: blur(64px) saturate(1.5);
+  backdrop-filter: var(--dashboard-glass-frost);
+  -webkit-backdrop-filter: var(--dashboard-glass-frost);
   padding: 0.48rem 0.55rem 0.48rem 0.75rem;
 }
 
@@ -1274,6 +1300,9 @@ body::before {
   border-top-color: var(--dashboard-glass-border-strong);
   background: var(--dashboard-glass-bg);
   color: var(--text-primary);
+  box-shadow: var(--dashboard-glass-shadow);
+  backdrop-filter: var(--dashboard-glass-frost);
+  -webkit-backdrop-filter: var(--dashboard-glass-frost);
   text-align: center;
   text-decoration: none;
   transition: transform 0.18s ease, filter 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
@@ -1351,7 +1380,9 @@ body::before {
   }
 }
 
-/* Dashboard action surfaces use the same dark frosted recipe as the header. */
+/* Dashboard action surfaces share the lit-glass token recipe; the skins only
+   retune the tokens on .dashboard-cosmic, so there are no per-surface skin
+   overrides to drift apart. */
 .dashboard-library-tile {
   position: relative;
   isolation: isolate;
@@ -1364,16 +1395,18 @@ body::before {
   overflow: hidden;
   border-radius: 0.875rem;
   border: 1px solid var(--dashboard-glass-border);
-  border-top-color: var(--border-subtle);
-  background: rgba(0, 0, 0, 0.86);
+  border-top-color: var(--dashboard-glass-border-strong);
+  background: var(--dashboard-glass-bg);
   color: var(--text-primary);
   text-decoration: none;
-  box-shadow: 0 18px 56px color-mix(in srgb, var(--app-bg) 50%, transparent);
-  backdrop-filter: blur(48px) saturate(1.5);
-  -webkit-backdrop-filter: blur(48px) saturate(1.5);
+  box-shadow: var(--dashboard-glass-shadow);
+  backdrop-filter: var(--dashboard-glass-frost);
+  -webkit-backdrop-filter: var(--dashboard-glass-frost);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, filter 180ms ease;
 }
 
+/* Specular sheen — a soft light catch falling from the upper left, the cue
+   that the panel is a pane with a surface, not a tinted rectangle. */
 .dashboard-library-tile::before {
   content: '';
   position: absolute;
@@ -1381,35 +1414,13 @@ body::before {
   z-index: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: none;
-  opacity: 0;
+  background: radial-gradient(120% 90% at 12% -12%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04) 38%, transparent 62%);
+  opacity: var(--dashboard-glass-sheen);
 }
 
 .dashboard-library-tile > * {
   position: relative;
   z-index: 1;
-}
-
-.skin-glassy .dashboard-library-tile {
-  background: color-mix(in srgb, var(--nav-bg) 82%, transparent);
-  border-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
-  border-top-color: color-mix(in srgb, var(--text-primary) 28%, transparent);
-  box-shadow:
-    0 18px 56px color-mix(in srgb, var(--app-bg) 42%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 12%, transparent);
-  backdrop-filter: blur(48px) saturate(1.5);
-  -webkit-backdrop-filter: blur(48px) saturate(1.5);
-}
-
-.skin-classic .dashboard-library-tile {
-  background: color-mix(in srgb, var(--nav-bg) 82%, transparent);
-  border-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
-  border-top-color: color-mix(in srgb, var(--text-primary) 28%, transparent);
-  box-shadow:
-    0 18px 56px color-mix(in srgb, var(--app-bg) 42%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 12%, transparent);
-  backdrop-filter: blur(48px) saturate(1.5);
-  -webkit-backdrop-filter: blur(48px) saturate(1.5);
 }
 
 .dashboard-library-tile:hover,
@@ -1584,13 +1595,15 @@ body::before {
 }
 
 /* ------------------------------------------------------------
-   Today mission card — the home hero. Same frosted recipe as the
-   account strip so the wave stays visible through it, plus a faint
-   vermillion→gold aura along the top edge to mark it as the page's
-   one primary action.
+   Today mission card — the home hero and the page's one bold
+   surface. Same lit-glass tokens as everything else, elevated by
+   a "dawn rim": a gold→vermillion light caught on the card's top
+   edge (masked gradient ring in ::after), echoing the wave
+   horizon behind it. Everything around this card stays quiet.
    ------------------------------------------------------------ */
 .dashboard-mission-card {
   position: relative;
+  isolation: isolate;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -1599,34 +1612,62 @@ body::before {
   overflow: hidden;
   border-radius: 1.05rem;
   border: 1px solid var(--dashboard-glass-border);
-  border-top-color: color-mix(in srgb, var(--accent) 38%, var(--dashboard-glass-border-strong));
   background: var(--dashboard-glass-bg);
   color: var(--text-primary);
   box-shadow:
     var(--dashboard-glass-shadow),
-    0 0 34px color-mix(in srgb, var(--accent) 10%, transparent);
-  backdrop-filter: blur(64px) saturate(1.5);
-  -webkit-backdrop-filter: blur(64px) saturate(1.5);
+    0 0 40px color-mix(in srgb, var(--accent) 12%, transparent);
+  backdrop-filter: var(--dashboard-glass-frost);
+  -webkit-backdrop-filter: var(--dashboard-glass-frost);
   padding: 0.85rem 1rem 1rem;
   text-align: left;
 }
 
+/* Warm aura bleeding down from the rim + the shared specular sheen. */
 .dashboard-mission-card::before {
   content: '';
   position: absolute;
-  inset: 0 0 auto;
-  height: 4.5rem;
-  background: radial-gradient(
-    ellipse at 50% -40%,
-    color-mix(in srgb, var(--accent) 22%, transparent),
-    color-mix(in srgb, var(--accent-2) 7%, transparent) 55%,
-    transparent 78%
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      ellipse 100% 4.5rem at 50% -1.8rem,
+      color-mix(in srgb, var(--accent) 22%, transparent),
+      color-mix(in srgb, var(--accent-2) 7%, transparent) 55%,
+      transparent 78%
+    ),
+    radial-gradient(120% 90% at 12% -12%, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 38%, transparent 62%);
+  pointer-events: none;
+}
+
+/* Dawn rim — a 1px gradient border ring (padding + mask-composite keeps only
+   the ring). Gold ignites at the upper left, cools through vermillion, and
+   fades out along the bottom so the card reads as glass catching the horizon
+   light. Browsers without mask-composite simply keep the plain border. */
+.dashboard-mission-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    148deg,
+    color-mix(in srgb, var(--accent-2) 66%, transparent),
+    color-mix(in srgb, var(--accent) 44%, transparent) 26%,
+    rgba(255, 255, 255, 0.12) 48%,
+    rgba(255, 255, 255, 0.05) 62%,
+    color-mix(in srgb, var(--accent) 24%, transparent)
   );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   pointer-events: none;
 }
 
 .dashboard-mission-card > * {
   position: relative;
+  z-index: 1;
 }
 
 .dashboard-mission-head {
@@ -1873,13 +1914,12 @@ body::before {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.86);
-  backdrop-filter: blur(48px) saturate(1.5);
-  -webkit-backdrop-filter: blur(48px) saturate(1.5);
+  background: var(--dashboard-glass-bg);
+  backdrop-filter: var(--dashboard-glass-frost);
+  -webkit-backdrop-filter: var(--dashboard-glass-frost);
   border: 1px solid var(--dashboard-glass-border);
-  border-top-color: var(--border-subtle);
-  border-left-color: var(--border-subtle);
-  box-shadow: 0 18px 56px color-mix(in srgb, var(--app-bg) 50%, transparent);
+  border-top-color: var(--dashboard-glass-border-strong);
+  box-shadow: var(--dashboard-glass-shadow);
   color: var(--text-primary);
   transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, filter 200ms ease;
 }
@@ -1891,8 +1931,8 @@ body::before {
   z-index: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: none;
-  opacity: 0;
+  background: radial-gradient(120% 90% at 12% -12%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04) 38%, transparent 62%);
+  opacity: var(--dashboard-glass-sheen);
 }
 
 .stat-tile > * {
@@ -1900,59 +1940,13 @@ body::before {
   z-index: 1;
 }
 
-.skin-glassy .stat-tile {
-  background: color-mix(in srgb, var(--nav-bg) 82%, transparent);
-  border-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
-  border-top-color: color-mix(in srgb, var(--text-primary) 28%, transparent);
-  border-left-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
-  box-shadow:
-    0 18px 56px color-mix(in srgb, var(--app-bg) 42%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 12%, transparent);
-  backdrop-filter: blur(48px) saturate(1.5);
-  -webkit-backdrop-filter: blur(48px) saturate(1.5);
-}
-
-.skin-classic .stat-tile {
-  background: color-mix(in srgb, var(--nav-bg) 82%, transparent);
-  border-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
-  border-top-color: color-mix(in srgb, var(--text-primary) 28%, transparent);
-  border-left-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
-  box-shadow:
-    0 18px 56px color-mix(in srgb, var(--app-bg) 42%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--text-primary) 12%, transparent);
-  backdrop-filter: blur(48px) saturate(1.5);
-  -webkit-backdrop-filter: blur(48px) saturate(1.5);
-}
-
-.skin-glassy .stat-tile:disabled {
+/* Zero-count tiles keep the full glass material (the utility opacity-55 would
+   dull the pane itself); only their content quiets down via aria/disabled. */
+.stat-tile:disabled {
   opacity: 1;
 }
 
-.skin-classic .stat-tile:disabled {
-  opacity: 1;
-}
-
-.skin-glassy .stat-tile .stat-label-accent,
-.skin-glassy .stat-tile .stat-count {
-  text-shadow:
-    0 1px 12px rgba(0, 0, 0, 0.92),
-    0 0 24px var(--tile-accent-glow, transparent);
-}
-
-.skin-classic .stat-tile .stat-label-accent,
-.skin-classic .stat-tile .stat-count {
-  text-shadow:
-    0 1px 12px rgba(0, 0, 0, 0.92),
-    0 0 24px var(--tile-accent-glow, transparent);
-}
-
-.skin-glassy .stat-tile .stat-tile-divider {
-  box-shadow:
-    0 0 10px var(--tile-accent-glow, transparent),
-    0 0 18px rgba(0, 0, 0, 0.72);
-}
-
-.skin-classic .stat-tile .stat-tile-divider {
+.stat-tile .stat-tile-divider {
   box-shadow:
     0 0 10px var(--tile-accent-glow, transparent),
     0 0 18px rgba(0, 0, 0, 0.72);
@@ -2000,14 +1994,20 @@ body::before {
     0 0 28px var(--tile-accent-glow);
 }
 
+/* A deep dark shadow keeps counts/labels readable now that lit waves glow
+   through the pane; the accent glow rides on top of it. */
 .stat-tile .stat-count {
   color: var(--tile-accent, var(--text-primary));
-  text-shadow: 0 0 24px var(--tile-accent-glow, transparent);
+  text-shadow:
+    0 1px 12px rgba(0, 0, 0, 0.92),
+    0 0 24px var(--tile-accent-glow, transparent);
 }
 
 .stat-tile .stat-label-accent {
   color: var(--tile-accent, var(--text-primary));
-  text-shadow: 0 0 18px var(--tile-accent-glow, transparent);
+  text-shadow:
+    0 1px 12px rgba(0, 0, 0, 0.92),
+    0 0 18px var(--tile-accent-glow, transparent);
 }
 
 /* Vertical glow divider between label and count. Picks up --tile-accent
@@ -2050,8 +2050,8 @@ body::before {
   box-shadow:
     0 0 16px rgba(247, 200, 67, 0.12),
     inset 0 1px 0 color-mix(in srgb, #f7c843 14%, transparent);
-  backdrop-filter: blur(64px) saturate(1.45);
-  -webkit-backdrop-filter: blur(64px) saturate(1.45);
+  backdrop-filter: var(--dashboard-glass-frost);
+  -webkit-backdrop-filter: var(--dashboard-glass-frost);
 }
 
 .dashboard-mastered-pill-button {
@@ -2206,6 +2206,8 @@ body::before {
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--accent-2) 36%, transparent);
   background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
 }
 
 .dashboard-today-streak-icon {
@@ -2301,8 +2303,12 @@ body::before {
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .dashboard-library-tile,
-  .stat-tile {
-    background: rgba(0, 0, 0, 0.92);
+  .stat-tile,
+  .dashboard-mission-card,
+  .home-welcome-door {
+    background:
+      linear-gradient(166deg, rgba(255, 255, 255, 0.07), transparent 45%),
+      rgba(10, 6, 13, 0.92);
   }
 
   .dashboard-mastered-pill-button,
@@ -2312,6 +2318,31 @@ body::before {
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.11), transparent 42%),
       color-mix(in srgb, var(--app-bg) 88%, var(--text-primary) 12%);
+  }
+}
+
+/* Reduced transparency: honor the OS setting with the same solid fills even
+   where backdrop-filter is supported. */
+@media (prefers-reduced-transparency: reduce) {
+  .dashboard-library-tile,
+  .stat-tile,
+  .dashboard-mission-card,
+  .home-welcome-door {
+    background:
+      linear-gradient(166deg, rgba(255, 255, 255, 0.07), transparent 45%),
+      rgba(10, 6, 13, 0.92);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .dashboard-mastered-pill-button,
+  .dashboard-mastered-empty,
+  .home-account-strip {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.11), transparent 42%),
+      color-mix(in srgb, var(--app-bg) 88%, var(--text-primary) 12%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
 
@@ -2331,8 +2362,8 @@ body::before {
 
 .lang-pill {
   background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(64px) saturate(1.5);
-  -webkit-backdrop-filter: blur(64px) saturate(1.5);
+  backdrop-filter: var(--dashboard-glass-frost, blur(64px) saturate(1.5));
+  -webkit-backdrop-filter: var(--dashboard-glass-frost, blur(64px) saturate(1.5));
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   transition: filter 180ms ease, box-shadow 180ms ease, color 180ms ease;

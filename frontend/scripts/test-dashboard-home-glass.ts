@@ -37,7 +37,6 @@ const categories = readFileSync('src/data/categories.ts', 'utf8')
 const translations = readFileSync('src/lib/translations.ts', 'utf8')
 const packageJson = readFileSync('package.json', 'utf8')
 const packageLock = readFileSync('package-lock.json', 'utf8')
-const liquidGlassRenderer = readFileSync('src/components/liquid-glass/LiquidGlassRenderer.ts', 'utf8')
 
 assertNotIncludes(
   dashboard,
@@ -67,13 +66,13 @@ assertIncludes(dashboard, 'dashboard-study-row', 'classic dashboard groups the t
 assertIncludes(dashboardPg, 'dashboard-study-row', 'glassy dashboard groups the three study tiles below Library')
 assertOrdered(
   dashboard,
-  ['dashboard-library-tile', 'dashboard-study-row', 'queue="review"', 'queue="learn"', 'queue="strengthen"'],
-  'classic dashboard orders Library above the Review/Learn/Train row',
+  ['TodayMissionCard', 'dashboard-study-row', 'queue="review"', 'queue="learn"', 'queue="strengthen"', 'dashboard-library-tile'],
+  'classic dashboard leads with the mission card, then the practice row, then Library',
 )
 assertOrdered(
   dashboardPg,
-  ['dashboard-library-tile', 'dashboard-study-row', 'queue="review"', 'queue="learn"', 'queue="strengthen"'],
-  'glassy dashboard orders Library above the Review/Learn/Train row',
+  ['TodayMissionCard', 'dashboard-study-row', 'queue="review"', 'queue="learn"', 'queue="strengthen"', 'dashboard-library-tile'],
+  'glassy dashboard leads with the mission card, then the practice row, then Library',
 )
 assertIncludes(dashboard, 'dashboard-mastered-pill', 'classic dashboard uses compact mastered summary')
 assertIncludes(dashboardPg, 'dashboard-mastered-pill', 'glassy dashboard uses compact mastered summary')
@@ -105,8 +104,7 @@ assertNotIncludes(
   "'/brand/cosmos/cosmos-auth.webp'",
   'Language picker no longer owns a liquid glass fallback image',
 )
-assert(!existsSync('src/components/liquid-glass/LiquidGlassPopoverOverlay.tsx'), 'liquid glass popover test surface was removed')
-assert(!existsSync('src/components/liquid-glass/LiquidGlassActionTile.tsx'), 'liquid glass tile test surface was removed')
+assert(!existsSync('src/components/liquid-glass'), 'the WebGL liquid-glass path is fully removed (Option B: CSS lit-glass is the dashboard material)')
 assertNotIncludes(dashboardPg, 'LiquidGlassActionTile', 'glassy dashboard no longer mounts WebGL tile glass')
 assertNotIncludes(dashboardPg, 'liquid-glass', 'glassy dashboard has no liquid-glass UI import')
 assert(
@@ -116,38 +114,8 @@ assert(
 assertIncludes(dashboardPg, 'queue="learn"', 'the NEU / learn tile is still present as a plain action tile')
 assertNotIncludes(dashboard, 'LiquidGlassActionTile', 'classic dashboard does not mount liquid glass tiles')
 
-assertNotIncludes(packageJson, '@ogtirth/liquid-glass-oss', 'Liquid glass is vendored, not installed as a dependency')
+assertNotIncludes(packageJson, '@ogtirth/liquid-glass-oss', 'Liquid glass never returns as a dependency')
 assertNotIncludes(packageLock, '@ogtirth/liquid-glass-oss', 'Liquid glass package is not locked as a dependency')
-assertIncludes(
-  liquidGlassRenderer,
-  'Copyright (c) 2026 Liquid Glass OSS contributors',
-  'Vendored renderer retains the upstream MIT copyright notice',
-)
-assertIncludes(
-  liquidGlassRenderer,
-  'canvasSource: HTMLCanvasElement | null',
-  'Vendored renderer stores a live canvas texture source',
-)
-assertIncludes(
-  liquidGlassRenderer,
-  'setCanvasSource(canvas: HTMLCanvasElement | null)',
-  'Vendored renderer exposes a runtime canvas source setter',
-)
-assertIncludes(
-  liquidGlassRenderer,
-  'const source = this.canvasSource ?? this.video ?? this.image',
-  'Vendored renderer prioritizes the live canvas source over video and image fallbacks',
-)
-assertIncludes(
-  liquidGlassRenderer,
-  'gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, this.canvasSource)',
-  'Vendored renderer re-uploads the live canvas texture in memory each frame',
-)
-assertIncludes(
-  liquidGlassRenderer,
-  'this.canvasSource.width',
-  'Vendored renderer sizes canvas-backed textures from canvas width',
-)
 
 const welcomeRule = css.match(/\.welcome-hero\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
 assert(welcomeRule.length > 0, 'welcome hero CSS rule exists')
@@ -166,84 +134,62 @@ assertNotIncludes(
   'welcome hero does not duplicate the greeting through generated content',
 )
 
+/* Lit-glass material contract: one token recipe on .dashboard-cosmic feeds
+   every home surface; the skins only retune token values. The frost token
+   must carry a brightness() lift — that is what makes the wave's light bloom
+   inside the panels instead of drowning under heavy blur. */
+const cosmicRule = css.match(/^\.dashboard-cosmic\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
+assert(cosmicRule.length > 0, 'dashboard cosmic root rule exists')
+assertIncludes(cosmicRule, '--dashboard-glass-bg:', 'cosmic root defines the shared glass tint token')
+assertIncludes(cosmicRule, '--dashboard-glass-frost:', 'cosmic root defines the shared frost token')
+assertIncludes(cosmicRule, '--dashboard-glass-sheen:', 'cosmic root defines the shared sheen token')
+assertIncludes(cosmicRule, 'brightness(', 'frost token gathers light so waves bloom through the glass')
+const glassySkinRule = css.match(/\.skin-glassy\s+\.dashboard-cosmic\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+assert(glassySkinRule.length > 0, 'glassy skin token override exists')
+assertIncludes(glassySkinRule, '--dashboard-glass-frost:', 'glassy skin retunes the frost token')
+const classicSkinRule = css.match(/\.skin-classic\s+\.dashboard-cosmic\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+assert(classicSkinRule.length > 0, 'classic skin token override exists')
+assertIncludes(classicSkinRule, '--dashboard-glass-frost:', 'classic skin retunes the frost token')
+
 const statTileRule = css.match(/^\.stat-tile\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assert(statTileRule.length > 0, 'stat tile CSS rule exists')
-assertIncludes(
-  statTileRule,
-  'backdrop-filter: blur(48px) saturate(1.5)',
-  'stat tile base keeps header-grade blur and saturation',
-)
+assertIncludes(statTileRule, 'background: var(--dashboard-glass-bg)', 'stat tiles consume the shared glass tint')
+assertIncludes(statTileRule, 'backdrop-filter: var(--dashboard-glass-frost)', 'stat tiles consume the shared frost')
+assertNotIncludes(statTileRule, 'rgba(0, 0, 0, 0.86)', 'stat tiles dropped the near-opaque dark base')
 const libraryTileRule = css.match(/^\.dashboard-library-tile\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assert(libraryTileRule.length > 0, 'library tile CSS rule exists')
-assertIncludes(libraryTileRule, 'backdrop-filter: blur(48px) saturate(1.5)', 'library tile uses header-grade blur')
-const glassyStatTileRule = css.match(/\.skin-glassy\s+\.stat-tile\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
-assert(glassyStatTileRule.length > 0, 'glassy stat tile frost override exists')
-assertIncludes(
-  glassyStatTileRule,
-  'background: color-mix(in srgb, var(--nav-bg) 82%, transparent)',
-  'glassy stat tiles use the nav-grade translucent base',
-)
-assertIncludes(
-  glassyStatTileRule,
-  'backdrop-filter: blur(48px) saturate(1.5)',
-  'glassy stat tiles use the header-grade blur and saturation',
-)
-assertNotIncludes(glassyStatTileRule, 'rgba(0, 0, 0, 0.86)', 'glassy stat tile override removes the near-opaque dark base')
-const glassyLibraryTileRule = css.match(/\.skin-glassy\s+\.dashboard-library-tile\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
-assert(glassyLibraryTileRule.length > 0, 'glassy Library tile frost override exists')
-assertIncludes(
-  glassyLibraryTileRule,
-  'background: color-mix(in srgb, var(--nav-bg) 82%, transparent)',
-  'glassy Library tile uses the nav-grade translucent base',
-)
-assertIncludes(
-  glassyLibraryTileRule,
-  'backdrop-filter: blur(48px) saturate(1.5)',
-  'glassy Library tile uses the header-grade blur and saturation',
-)
-assertNotIncludes(glassyLibraryTileRule, 'rgba(0, 0, 0, 0.86)', 'glassy Library tile override removes the near-opaque dark base')
-const glassyDisabledStatTileRule = css.match(/\.skin-glassy\s+\.stat-tile:disabled\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
-assert(glassyDisabledStatTileRule.length > 0, 'glassy zero-count stat tile override exists')
-assertIncludes(glassyDisabledStatTileRule, 'opacity: 1', 'glassy zero-count tiles keep the same frost opacity')
-const classicStatTileRule = css.match(/\.skin-classic\s+\.stat-tile\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
-assert(classicStatTileRule.length > 0, 'classic stat tile frost override exists')
-assertIncludes(
-  classicStatTileRule,
-  'background: color-mix(in srgb, var(--nav-bg) 82%, transparent)',
-  'classic stat tiles mirror the Glassy translucent base',
-)
-assertIncludes(
-  classicStatTileRule,
-  'backdrop-filter: blur(48px) saturate(1.5)',
-  'classic stat tiles mirror the Glassy header-grade blur and saturation',
-)
-assertNotIncludes(classicStatTileRule, 'rgba(0, 0, 0, 0.86)', 'classic stat tile override removes the near-opaque dark base')
-const classicLibraryTileRule = css.match(/\.skin-classic\s+\.dashboard-library-tile\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
-assert(classicLibraryTileRule.length > 0, 'classic Library tile frost override exists')
-assertIncludes(
-  classicLibraryTileRule,
-  'background: color-mix(in srgb, var(--nav-bg) 82%, transparent)',
-  'classic Library tile mirrors the Glassy translucent base',
-)
-assertIncludes(
-  classicLibraryTileRule,
-  'backdrop-filter: blur(48px) saturate(1.5)',
-  'classic Library tile mirrors the Glassy header-grade blur and saturation',
-)
-assertNotIncludes(classicLibraryTileRule, 'rgba(0, 0, 0, 0.86)', 'classic Library tile override removes the near-opaque dark base')
-const classicDisabledStatTileRule = css.match(/\.skin-classic\s+\.stat-tile:disabled\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
-assert(classicDisabledStatTileRule.length > 0, 'classic zero-count stat tile override exists')
-assertIncludes(classicDisabledStatTileRule, 'opacity: 1', 'classic zero-count tiles keep the same frost opacity')
+assertIncludes(libraryTileRule, 'background: var(--dashboard-glass-bg)', 'library tile consumes the shared glass tint')
+assertIncludes(libraryTileRule, 'backdrop-filter: var(--dashboard-glass-frost)', 'library tile consumes the shared frost')
+assertNotIncludes(libraryTileRule, 'rgba(0, 0, 0, 0.86)', 'library tile dropped the near-opaque dark base')
+const missionCardRule = css.match(/^\.dashboard-mission-card\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
+assert(missionCardRule.length > 0, 'mission card CSS rule exists')
+assertIncludes(missionCardRule, 'background: var(--dashboard-glass-bg)', 'mission card consumes the shared glass tint')
+assertIncludes(missionCardRule, 'backdrop-filter: var(--dashboard-glass-frost)', 'mission card consumes the shared frost')
+const missionRimRule = css.match(/\.dashboard-mission-card::after\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
+assert(missionRimRule.length > 0, 'mission card dawn rim exists')
+assertIncludes(missionRimRule, 'mask-composite: exclude', 'dawn rim is a masked gradient ring, not a fill')
+assertIncludes(missionRimRule, 'var(--accent-2)', 'dawn rim ignites with the gold accent')
+
+/* Per-surface skin overrides must not return — the skins tune tokens only. */
+for (const selector of [
+  '.skin-glassy .stat-tile',
+  '.skin-classic .stat-tile',
+  '.skin-glassy .dashboard-library-tile',
+  '.skin-classic .dashboard-library-tile',
+]) {
+  assertNotIncludes(css, `${selector} {`, `per-surface skin override "${selector}" stays collapsed into tokens`)
+}
+const disabledStatTileRule = css.match(/^\.stat-tile:disabled\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
+assert(disabledStatTileRule.length > 0, 'zero-count stat tile rule exists once, unscoped by skin')
+assertIncludes(disabledStatTileRule, 'opacity: 1', 'zero-count tiles keep the full glass material')
 const todayPanelRule = css.match(/^\.dashboard-today-panel\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assert(todayPanelRule.length > 0, 'streak surface CSS rule exists')
 assertIncludes(todayPanelRule, 'rgba(0, 0, 0, 0.86)', 'streak surface uses the same opaque frost base')
 assertIncludes(todayPanelRule, 'backdrop-filter: blur(48px) saturate(1.5)', 'streak surface uses header-grade blur')
 const statTileBeforeRule = css.match(/^\.stat-tile::before\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 const libraryTileBeforeRule = css.match(/^\.dashboard-library-tile::before\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
-assertNotIncludes(statTileBeforeRule, 'var(--text-primary)', 'stat tiles remove text-primary sheen')
-assertNotIncludes(libraryTileBeforeRule, 'var(--text-primary)', 'library tile removes text-primary sheen')
-assertIncludes(statTileBeforeRule, 'opacity: 0', 'stat tile sheen is disabled for both skins')
-assertIncludes(libraryTileBeforeRule, 'opacity: 0', 'library tile sheen is disabled for both skins')
+assertIncludes(statTileBeforeRule, 'opacity: var(--dashboard-glass-sheen)', 'stat tile sheen strength is skin-tuned via token')
+assertIncludes(libraryTileBeforeRule, 'opacity: var(--dashboard-glass-sheen)', 'library tile sheen strength is skin-tuned via token')
 const glassyDashboardCosmicRule = css.match(/\.skin-glassy\s+\.dashboard-cosmic\s*\{[\s\S]*?\n\}/)?.[0] ?? ''
 assert(glassyDashboardCosmicRule.length > 0, 'glassy dashboard cosmic override exists')
 assertIncludes(
@@ -287,13 +233,14 @@ assertNotIncludes(css, '.stat-tile--liquid', 'tiles no longer use the WebGL liqu
 assertNotIncludes(css, 'liquid-glass-tile', 'tile WebGL canvas CSS was removed')
 assertIncludes(css, 'rgba(5, 3, 8, 0.985)', 'language picker panel uses a near-opaque glass base')
 assertIncludes(css, 'backdrop-filter: blur(96px) saturate(1.65)', 'language picker panel uses stronger glass blur')
-assertIncludes(css, 'max-width: min(56rem, 78vw)', 'desktop Home action grid uses available width for three tiles')
-assertIncludes(css, 'min-height: clamp(5.5rem, 9dvh, 6.75rem)', 'desktop Home action tiles are larger than mobile tiles')
-assertIncludes(
-  css,
-  '@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))',
-  'dashboard glass has a non-backdrop fallback',
-)
+assertIncludes(css, 'max-width: min(31rem, 88vw)', 'desktop Home action grid stays one mission-led column')
+assertIncludes(css, 'min-height: clamp(5rem, 8dvh, 5.9rem)', 'desktop Home action tiles are larger than mobile tiles')
+const backdropFallback = css.match(
+  /@supports not \(\(backdrop-filter: blur\(1px\)\) or \(-webkit-backdrop-filter: blur\(1px\)\)\)\s*\{[\s\S]*?\n\}/g,
+)?.join('\n') ?? ''
+assert(backdropFallback.length > 0, 'dashboard glass has a non-backdrop fallback')
+assertIncludes(backdropFallback, '.dashboard-mission-card', 'mission card is covered by the non-backdrop fallback')
+assertIncludes(css, '@media (prefers-reduced-transparency: reduce)', 'reduced-transparency users get solid fills')
 assertIncludes(translations, "'study.queue.strengthen': 'Train'", 'English strengthen queue label is short enough for the compact tile')
 assertIncludes(categories, "code: 'ceb'", 'static vocabulary language metadata contains Bisaya/Cebuano')
 assertNotIncludes(categories, "label: 'Bisaya / Cebuano (hidden: review)'", 'Bisaya/Cebuano is not hidden behind a review label')
