@@ -33,6 +33,7 @@ const dashboard = readFileSync('src/pages/Dashboard.tsx', 'utf8')
 const dashboardPg = readFileSync('src/pages/DashboardPG.tsx', 'utf8')
 const homeAccountStrip = readFileSync('src/components/dashboard/HomeAccountStrip.tsx', 'utf8')
 const languageCluster = readFileSync('src/components/dashboard/LanguageCluster.tsx', 'utf8')
+const missionCard = readFileSync('src/components/dashboard/TodayMissionCard.tsx', 'utf8')
 const categories = readFileSync('src/data/categories.ts', 'utf8')
 const translations = readFileSync('src/lib/translations.ts', 'utf8')
 const packageJson = readFileSync('package.json', 'utf8')
@@ -78,6 +79,8 @@ assertIncludes(dashboard, 'dashboard-mastered-pill', 'classic dashboard uses com
 assertIncludes(dashboardPg, 'dashboard-mastered-pill', 'glassy dashboard uses compact mastered summary')
 assertNotIncludes(dashboard, 'mastered-circle', 'classic dashboard removes the oversized mastered circle')
 assertNotIncludes(dashboardPg, 'mastered-circle', 'glassy dashboard removes the oversized mastered circle')
+
+assertNotIncludes(missionCard, 'dashboard.mission.minutes', 'mission card shows no time estimate')
 
 assertIncludes(homeAccountStrip, 'LingwaveBrand', 'Home account strip renders the Lingwave brand')
 assertIncludes(homeAccountStrip, 'setRedeemOpen(true)', 'Home account strip opens credits modal')
@@ -182,10 +185,10 @@ for (const selector of [
 const disabledStatTileRule = css.match(/^\.stat-tile:disabled\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assert(disabledStatTileRule.length > 0, 'zero-count stat tile rule exists once, unscoped by skin')
 assertIncludes(disabledStatTileRule, 'opacity: 1', 'zero-count tiles keep the full glass material')
-const todayPanelRule = css.match(/^\.dashboard-today-panel\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
-assert(todayPanelRule.length > 0, 'streak surface CSS rule exists')
-assertIncludes(todayPanelRule, 'rgba(0, 0, 0, 0.86)', 'streak surface uses the same opaque frost base')
-assertIncludes(todayPanelRule, 'backdrop-filter: blur(48px) saturate(1.5)', 'streak surface uses header-grade blur')
+assert(!existsSync('src/components/dashboard/DailyTodayPanel.tsx'), 'orphaned DailyTodayPanel component was removed')
+assertNotIncludes(css, '.dashboard-today-panel', 'orphaned today-panel CSS was removed with its component')
+const streakChipRule = css.match(/^\.dashboard-today-streak\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
+assert(streakChipRule.length > 0, 'streak chip CSS survives the today-panel cleanup')
 const statTileBeforeRule = css.match(/^\.stat-tile::before\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 const libraryTileBeforeRule = css.match(/^\.dashboard-library-tile::before\s*\{[\s\S]*?\n\}/m)?.[0] ?? ''
 assertIncludes(statTileBeforeRule, 'opacity: var(--dashboard-glass-sheen)', 'stat tile sheen strength is skin-tuned via token')
@@ -203,7 +206,6 @@ assertNotIncludes(
   'glassy dashboard no longer removes the dashboard isolate that Classic uses for full waves',
 )
 for (const [selector, label] of [
-  ['.dashboard-today-panel', 'today panel'],
   ['.stat-tile', 'SRS action tiles'],
   ['.dashboard-library-tile', 'Library action tile'],
 ] as const) {
@@ -223,6 +225,12 @@ assertIncludes(css, 'grid-template-columns: repeat(3, minmax(0, 1fr))', 'study t
 assertIncludes(css, 'to right,', 'mobile study tile divider rotates horizontally for narrow columns')
 assertIncludes(css, '@media (hover: hover) and (pointer: fine)', 'desktop language picker opens on pointer hover')
 assertIncludes(css, '.language-picker:hover .language-picker-panel', 'desktop language picker keeps hover behavior')
+assertIncludes(
+  css,
+  '@media (min-width: 768px) and (hover: hover) and (pointer: fine)',
+  'desktop language picker expands as a horizontal strip instead of a drop-down',
+)
+assertIncludes(css, 'transform: translate(-50%, -50%) scale(0.98)', 'desktop picker strip is centered on the pill, not below it')
 assertIncludes(css, 'calc(var(--app-safe-top) + 0.85rem)', 'mobile account strip sits below the iOS safe area')
 assertIncludes(css, '.home-account-strip {', 'home account strip has explicit mobile spacing')
 assertIncludes(css, 'margin-bottom: clamp(1.45rem, 4dvh, 2.35rem)', 'mobile account strip leaves breathing room before Welcome')

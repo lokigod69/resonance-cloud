@@ -83,8 +83,6 @@ export function TodayMissionCard({ mission, loading }: TodayMissionCardProps) {
         <span className="dashboard-mission-kicker">{t('dashboard.mission.kicker')}</span>
         <span className="dashboard-mission-meta">
           {t('dashboard.mission.lessonOf', { number: mission.lessonNumber, total: mission.totalLessons })}
-          {' · '}
-          {t('dashboard.mission.minutes', { minutes: mission.estimatedMinutes })}
         </span>
       </div>
       {progressBar}

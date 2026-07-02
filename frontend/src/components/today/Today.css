@@ -1341,7 +1341,6 @@
 
 .today-session-taskCard {
   justify-self: center;
-  min-height: clamp(25rem, 58dvh, 40rem);
   overflow: hidden;
   position: relative;
   width: min(100%, 50rem);
@@ -1374,6 +1373,35 @@
 
 .today-session-taskCard > * {
   position: relative;
+}
+
+@media (min-width: 641px) {
+  .today-session-taskCard {
+    align-content: stretch;
+    grid-template-rows: auto minmax(0, 1fr);
+    height: clamp(25rem, 58dvh, 40rem);
+  }
+
+  .today-session-taskCard[data-session-step="complete"] {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .today-session-taskHeader {
+    grid-row: 1;
+  }
+
+  .today-session-taskCard > :is(.today-scene-step, .today-match-step, .today-build-step, .today-type-step, .today-speech-prompt, .today-completion-stage) {
+    min-height: 0;
+    min-width: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  .today-session-taskCard:not([data-session-step="complete"]) > :is(.today-scene-step, .today-match-step, .today-build-step, .today-type-step, .today-speech-prompt) {
+    grid-row: 2;
+  }
 }
 
 .today-session-safeText,
