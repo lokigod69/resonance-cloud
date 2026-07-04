@@ -7,6 +7,7 @@ import { usePronunciation } from '@/hooks/usePronunciation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { getCardFullUrl } from '@/lib/imageUrls'
+import { waveHeight, WAVE_AMP_SUM, worldXFromPercent } from '@/lib/waveField'
 import { LingwaveWaves, type WaveRipple } from '@/components/branding/LingwaveWaves'
 import type { CanvasModeProps } from './types'
 import { CanvasToolbar } from './CanvasToolbar'
@@ -67,31 +68,11 @@ const TOOLBAR_CARD_CLEARANCE_PX = 64
 const WAVE_LANE_CARD_EDGE_CLAMP_PX = 90
 // Buoy ride: peak vertical travel (px) of a word sitting on a crest vs a trough.
 const WAVE_RIDE_PX = 16
-// Sum of the waveHeight term amplitudes below — used to normalize to [-1, 1].
-const WAVE_AMP_SUM = 1.51
 // Tap-swell propagation.
 const SWELL_DURATION_MS = 1900
 const SWELL_SPEED_PCT_PER_SECOND = 46
 const SWELL_THICKNESS_PCT = 6
 const SWELL_MAX_LIFT_PX = 14
-
-// The same layered swell field the brand background paints (LingwaveWaves), so
-// words ride contours coherent with the ocean behind them. Returns roughly
-// [-WAVE_AMP_SUM, WAVE_AMP_SUM].
-function waveHeight(x: number, z: number, t: number): number {
-  return (
-    0.55 * Math.sin(x * 0.18 + z * 0.3 + t * 0.42) +
-    0.38 * Math.sin(x * 0.3 - z * 0.16 + t * 0.27) +
-    0.28 * Math.sin(x * 0.06 + z * 0.44 + t * 0.36) +
-    0.18 * Math.sin(x * 0.52 + z * 0.08 - t * 0.22) +
-    0.12 * Math.sin(x * 0.85 + z * 0.65 + t * 0.55)
-  )
-}
-
-// Map a word's horizontal screen percentage to the wave field's world X.
-function worldXFromPercent(xPercent: number): number {
-  return (xPercent - 50) * 0.12
-}
 // Cosmos palette accents, one per buoy (plum → rose → vermillion → gold → foam)
 const HUE_COLORS = [
   'rgba(196, 168, 240, 0.92)',

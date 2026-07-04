@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { waveHeight, WAVE_AMP_SUM } from '@/lib/waveField'
 
 /**
  * LingwaveWaves — animated brand background for auth/marketing surfaces.
@@ -9,6 +10,12 @@ import { useEffect, useRef } from 'react'
  *
  * Canvas 2D only (no WebGL, no dependencies). DPR is capped, the loop pauses
  * while the tab is hidden, and prefers-reduced-motion gets one still frame.
+ *
+ * Optional live inputs (all default to the classic behavior):
+ * - `ripplesRef` — tap wavetrains that roll outward through the contours.
+ * - `windRef`    — a pointer-following breeze that locally raises the swell.
+ * - `energyRef`  — 0..1 scroll coupling; the sea rises and quickens with it.
+ * - `dawn`       — 0 cold night → 1 golden dawn (brighter glow, fewer stars).
  */
 
 type RGB = [number, number, number]
@@ -30,13 +37,29 @@ const COL_SPACING = 2.6
 const COL_STEPS = 36
 const MAX_DPR = 1.75
 const CAM_HEIGHT = 3.2
-const AMP = 1.51 // sum of amplitudes in waveHeight
+const AMP = WAVE_AMP_SUM
+
+// Pointer wind — a smoothed breeze center that locally raises the swell.
+// x/y are 0..1 canvas fractions; strength eases toward the ref each frame.
+export type WaveWind = { x: number; y: number; strength: number }
+const WIND_GAIN = 0.26 // max amplitude boost at the wind center
+const WIND_SIGMA = 0.19 // falloff radius as a fraction of canvas width
+const WIND_LERP = 0.06 // per-frame easing toward the target wind
+
+// Scroll energy — camera dives and time quickens as the page starts moving.
+const ENERGY_CAM_DROP = 0.65
+const ENERGY_TIME_GAIN = 0.35
+
+// Self-degradation: if frames stay slow, thin the field before dropping fps.
+const SLOW_FRAME_MS = 24
+const SLOW_FRAME_WINDOW = 60
 
 // Tap ripples — an optional, interactive disturbance the swell field can carry.
 // A ripple is a wavetrain that expands from a point and decays; it displaces the
 // rendered contour lines so a tap visibly rolls outward through the water.
 // x/y are 0..1 fractions of the canvas; start is a performance.now() timestamp.
-export type WaveRipple = { x: number; y: number; start: number }
+// `amp` scales the wavetrain (1 = full tap; wake ripples ride lower).
+export type WaveRipple = { x: number; y: number; start: number; amp?: number }
 const NO_RIPPLES: WaveRipple[] = []
 const RIPPLE_LIFE_MS = 2200
 const RIPPLE_SPEED_PX = 460 // how fast the ring front travels outward
@@ -55,20 +78,9 @@ function rippleDispAt(sx: number, sy: number, ripples: WaveRipple[], nowMs: numb
     const ringPos = dist - age * RIPPLE_SPEED_PX
     const env = Math.exp(-(ringPos * ringPos) / (2 * RIPPLE_WIDTH_PX * RIPPLE_WIDTH_PX))
     const fade = 1 - age / (RIPPLE_LIFE_MS / 1000)
-    disp += RIPPLE_AMP_PX * Math.sin((ringPos / RIPPLE_WAVELEN_PX) * Math.PI * 2) * env * fade
+    disp += RIPPLE_AMP_PX * (r.amp ?? 1) * Math.sin((ringPos / RIPPLE_WAVELEN_PX) * Math.PI * 2) * env * fade
   }
   return disp
-}
-
-// Long, layered swells travelling toward the viewer (+t on z-terms).
-function waveHeight(x: number, z: number, t: number): number {
-  return (
-    0.55 * Math.sin(x * 0.18 + z * 0.3 + t * 0.42) +
-    0.38 * Math.sin(x * 0.3 - z * 0.16 + t * 0.27) +
-    0.28 * Math.sin(x * 0.06 + z * 0.44 + t * 0.36) +
-    0.18 * Math.sin(x * 0.52 + z * 0.08 - t * 0.22) +
-    0.12 * Math.sin(x * 0.85 + z * 0.65 + t * 0.55)
-  )
 }
 
 function mix(a: RGB, b: RGB, t: number): RGB {
@@ -107,11 +119,20 @@ function makeStars(count: number): Star[] {
   return stars
 }
 
-function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, stars: Star[], ripples: WaveRipple[], nowMs: number) {
+type WaveFx = { wind: WaveWind; energy: number; dawn: number; degraded: boolean }
+const STILL_FX: WaveFx = { wind: { x: 0.5, y: 0.5, strength: 0 }, energy: 0, dawn: 0, degraded: false }
+
+function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, stars: Star[], ripples: WaveRipple[], nowMs: number, fx: WaveFx) {
   const horizon = h * 0.4
   const focal = h * 0.85
   const cx = w / 2
   const xPad = 24
+  const camHeight = CAM_HEIGHT - ENERGY_CAM_DROP * fx.energy
+  const dawn = fx.dawn
+  const windOn = fx.wind.strength > 0.01
+  const windX = fx.wind.x * w
+  const windY = fx.wind.y * h
+  const windSigma2 = 2 * (WIND_SIGMA * w) * (WIND_SIGMA * w)
 
   // Sky
   const sky = ctx.createLinearGradient(0, 0, 0, horizon)
@@ -127,27 +148,31 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
   ctx.fillStyle = sea
   ctx.fillRect(0, horizon, w, h - horizon)
 
-  // Stars (slow twinkle)
-  for (const s of stars) {
-    const a = 0.18 + 0.22 * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase))
+  // Stars (slow twinkle) — they thin out and fade as dawn comes up.
+  const starAlphaScale = 1 - 0.7 * dawn
+  const starStep = fx.degraded ? 2 : 1
+  for (let i = 0; i < stars.length; i += starStep) {
+    const s = stars[i]
+    const a = (0.18 + 0.22 * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase))) * starAlphaScale
     ctx.fillStyle = rgba([255, 244, 234], a)
     ctx.beginPath()
     ctx.arc(s.x * w, s.y * (horizon - 14), s.r, 0, Math.PI * 2)
     ctx.fill()
   }
 
-  // Horizon glow — a warm dawn behind the wave field
+  // Horizon glow — a warm dawn behind the wave field; `dawn` turns it up.
+  const glowScale = 1 + 1.2 * dawn
   ctx.save()
   ctx.translate(cx, horizon)
   ctx.scale(1, 0.34)
-  const glow = ctx.createRadialGradient(0, 0, 0, 0, 0, w * 0.58)
-  glow.addColorStop(0, rgba(SWELL_WARM, 0.2))
-  glow.addColorStop(0.45, rgba(SWELL_MID, 0.09))
+  const glow = ctx.createRadialGradient(0, 0, 0, 0, 0, w * (0.58 + 0.1 * dawn))
+  glow.addColorStop(0, rgba(SWELL_WARM, 0.2 * glowScale))
+  glow.addColorStop(0.45, rgba(SWELL_MID, 0.09 * glowScale))
   glow.addColorStop(1, rgba(SWELL_MID, 0))
   ctx.fillStyle = glow
   ctx.fillRect(-w, -w, 2 * w, 2 * w)
   const core = ctx.createRadialGradient(0, 0, 0, 0, 0, w * 0.2)
-  core.addColorStop(0, rgba(SWELL_CREST, 0.16))
+  core.addColorStop(0, rgba(SWELL_CREST, 0.16 * glowScale))
   core.addColorStop(1, rgba(SWELL_CREST, 0))
   ctx.fillStyle = core
   ctx.fillRect(-w, -w, 2 * w, 2 * w)
@@ -156,7 +181,7 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
   // Thin horizon light
   const hline = ctx.createLinearGradient(0, 0, w, 0)
   hline.addColorStop(0, rgba(SWELL_CREST, 0))
-  hline.addColorStop(0.5, rgba(SWELL_CREST, 0.28))
+  hline.addColorStop(0.5, rgba(SWELL_CREST, Math.min(0.55, 0.28 * glowScale)))
   hline.addColorStop(1, rgba(SWELL_CREST, 0))
   ctx.fillStyle = hline
   ctx.fillRect(0, horizon - 0.75, w, 1.5)
@@ -175,7 +200,7 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
       const z = depthAt(s / COL_STEPS)
       const hh = waveHeight(worldX, z, t)
       const sx = cx + (worldX * focal) / z
-      const sy = horizon + ((CAM_HEIGHT - hh) * focal) / z
+      const sy = horizon + ((camHeight - hh) * focal) / z
       if (s === 0) {
         nearX = sx
         nearY = sy
@@ -201,6 +226,7 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
   const sys: number[] = []
   const hns: number[] = []
   for (let i = ROWS - 1; i >= 0; i--) {
+    if (fx.degraded && i % 3 === 2) continue
     const v = i / (ROWS - 1)
     const z = depthAt(v)
     const fogT = (z - Z_NEAR) / (Z_FAR - Z_NEAR)
@@ -209,12 +235,20 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
     const rowAlpha = (0.08 + 0.6 * fade) * dissolve
     if (rowAlpha < 0.012) continue
 
+    // Wind falloff uses the row's calm-water screen height, constant per row.
+    const rowBaseY = horizon + (camHeight * focal) / z
+    const windDy2 = windOn ? (rowBaseY - windY) * (rowBaseY - windY) : 0
+
     for (let k = 0; k < ROW_POINTS; k++) {
       const sx = left + ((right - left) * k) / (ROW_POINTS - 1)
       const worldX = ((sx - cx) * z) / focal
-      const hh = waveHeight(worldX, z, t)
+      let hh = waveHeight(worldX, z, t)
+      if (windOn) {
+        const dx = sx - windX
+        hh *= 1 + WIND_GAIN * fx.wind.strength * Math.exp(-(dx * dx + windDy2) / windSigma2)
+      }
       sxs[k] = sx
-      let sy = horizon + ((CAM_HEIGHT - hh) * focal) / z
+      let sy = horizon + ((camHeight - hh) * focal) / z
       if (ripples.length) sy += rippleDispAt(sx, sy, ripples, nowMs, w, h)
       sys[k] = sy
       hns[k] = (hh / AMP + 1) / 2
@@ -274,7 +308,19 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
   ctx.fillRect(0, 0, w, h)
 }
 
-export function LingwaveWaves({ className, ripplesRef }: { className?: string; ripplesRef?: { current: WaveRipple[] } }) {
+export function LingwaveWaves({
+  className,
+  ripplesRef,
+  windRef,
+  energyRef,
+  dawn = 0,
+}: {
+  className?: string
+  ripplesRef?: { current: WaveRipple[] }
+  windRef?: { current: WaveWind }
+  energyRef?: { current: number }
+  dawn?: number
+}) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
@@ -290,6 +336,14 @@ export function LingwaveWaves({ className, ripplesRef }: { className?: string; r
     let t = 30 // start mid-swell instead of a flat sea
     let width = 0
     let height = 0
+    let slowFrames = 0
+    const fx: WaveFx = {
+      wind: { x: 0.5, y: 0.5, strength: 0 },
+      energy: 0,
+      dawn,
+      degraded: false,
+    }
+    const stillFx: WaveFx = { ...STILL_FX, dawn }
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
@@ -298,19 +352,38 @@ export function LingwaveWaves({ className, ripplesRef }: { className?: string; r
       canvas.width = Math.max(1, Math.round(width * dpr))
       canvas.height = Math.max(1, Math.round(height * dpr))
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      if (reduceMotion) render(ctx, width, height, t, stars, NO_RIPPLES, performance.now())
+      if (reduceMotion) render(ctx, width, height, t, stars, NO_RIPPLES, performance.now(), stillFx)
     }
 
     const frame = (now: number) => {
-      t += Math.min(0.05, (now - last) / 1000)
+      const dt = Math.min(0.05, (now - last) / 1000)
+      // Ease the breeze toward the live pointer target; energy reads directly.
+      if (windRef) {
+        const target = windRef.current
+        fx.wind.x += (target.x - fx.wind.x) * WIND_LERP
+        fx.wind.y += (target.y - fx.wind.y) * WIND_LERP
+        fx.wind.strength += (target.strength - fx.wind.strength) * WIND_LERP
+      }
+      if (energyRef) fx.energy = Math.min(1, Math.max(0, energyRef.current))
+      t += dt * (1 + ENERGY_TIME_GAIN * fx.energy)
+
+      // Sustained slow frames thin the field rather than dropping smoothness.
+      if (!fx.degraded) {
+        if (now - last > SLOW_FRAME_MS) {
+          if (++slowFrames >= SLOW_FRAME_WINDOW) fx.degraded = true
+        } else if (slowFrames > 0) {
+          slowFrames--
+        }
+      }
       last = now
+
       // Retire spent ripples, then render the live ones into the swell field.
       let ripples = NO_RIPPLES
       if (ripplesRef && ripplesRef.current.length) {
         ripplesRef.current = ripplesRef.current.filter((r) => now - r.start <= RIPPLE_LIFE_MS)
         ripples = ripplesRef.current
       }
-      render(ctx, width, height, t, stars, ripples, now)
+      render(ctx, width, height, t, stars, ripples, now, fx)
       raf = requestAnimationFrame(frame)
     }
 
@@ -334,7 +407,7 @@ export function LingwaveWaves({ className, ripplesRef }: { className?: string; r
       window.removeEventListener('resize', resize)
       document.removeEventListener('visibilitychange', onVisibility)
     }
-  }, [ripplesRef])
+  }, [dawn, energyRef, ripplesRef, windRef])
 
   return (
     <div

@@ -10,6 +10,10 @@ import { useLandingLocale } from '@/hooks/useLandingLocale'
 import { LEGAL_LINKS, handleLegalLinkClick } from '@/lib/legalLinks'
 import { getPublicWebOrigin } from '@/lib/publicOrigins'
 
+// FinalCTA — the sea at dawn. The ocean returns for the close, but warmer:
+// the dawn uniform turns the horizon gold and fades the stars. The canvas only
+// mounts while in view; compact and reduced-motion get the still waveform.
+
 function getPublicWebHost(): string {
   try {
     return new URL(getPublicWebOrigin()).host
@@ -22,18 +26,16 @@ function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(
     () => typeof window !== 'undefined' && window.matchMedia(query).matches,
   )
-
   useEffect(() => {
     const media = window.matchMedia(query)
     const update = (event: MediaQueryListEvent) => setMatches(event.matches)
     media.addEventListener('change', update)
     return () => media.removeEventListener('change', update)
   }, [query])
-
   return matches
 }
 
-export default function CtaFooterSection() {
+export default function FinalCTA() {
   const reducedMotion = useReducedMotion()
   const isCompact = useMediaQuery('(max-width: 768px)')
   const [waveInView, setWaveInView] = useState(false)
@@ -47,7 +49,6 @@ export default function CtaFooterSection() {
     if (useStaticWave || !node || typeof IntersectionObserver === 'undefined') {
       return
     }
-
     const observer = new IntersectionObserver(
       ([entry]) => setWaveInView(entry.isIntersecting),
       { rootMargin: '220px 0px', threshold: 0.05 },
@@ -58,13 +59,13 @@ export default function CtaFooterSection() {
 
   return (
     <section className="bg-[var(--app-bg)] text-center">
-      <div ref={ctaRef} className="relative overflow-hidden px-6 py-16 md:py-32">
+      <div ref={ctaRef} className="relative overflow-hidden px-6 py-20 md:py-36">
         {!useStaticWave && waveInView && (
-          <LingwaveWaves className="cosmos-bg-mask-both opacity-80" />
+          <LingwaveWaves className="cosmos-bg-mask-both opacity-90" dawn={1} />
         )}
 
         {useStaticWave && (
-          <div className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 opacity-45" aria-hidden="true">
+          <div className="pointer-events-none absolute inset-x-0 top-[78%] -translate-y-1/2 opacity-35" aria-hidden="true">
             <WaveformDivider className="flex" animated={false} />
           </div>
         )}
@@ -75,21 +76,24 @@ export default function CtaFooterSection() {
         />
 
         <ScrollReveal direction="blur" className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            {t('landing.ctaHeadline')}
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            {t('landing.ctaSubline')}
+          <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--accent-2)]/80">
+            {t('landing.ctaKicker')}
           </p>
+          <h2 className="mb-4 text-3xl font-bold md:text-5xl">{t('landing.ctaHeadline')}</h2>
+          <p className="mb-8 text-lg text-muted-foreground">{t('landing.ctaSubline')}</p>
           <motion.div
             className="inline-block rounded-md"
-            animate={reducedMotion ? {} : {
-              boxShadow: [
-                '0 0 20px var(--cta-glow)',
-                '0 0 40px var(--cta-glow-strong)',
-                '0 0 20px var(--cta-glow)',
-              ],
-            }}
+            animate={
+              reducedMotion
+                ? {}
+                : {
+                    boxShadow: [
+                      '0 0 20px var(--cta-glow)',
+                      '0 0 40px var(--cta-glow-strong)',
+                      '0 0 20px var(--cta-glow)',
+                    ],
+                  }
+            }
             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
           >
             <Button variant="glass-vermillion" size="lg" asChild className="text-lg px-8 py-6">
