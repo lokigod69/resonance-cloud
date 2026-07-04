@@ -1,8 +1,7 @@
-import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { DEMO_WORDS } from '@/components/landing/landingData'
 
-const videoWords = [
+const mediaWords = [
   DEMO_WORDS[0],
   DEMO_WORDS[1],
   DEMO_WORDS[3],
@@ -12,7 +11,6 @@ const videoWords = [
 ].filter(Boolean)
 
 export function SonandaMediaShowcase() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const reducedMotion = useReducedMotion()
 
   return (
@@ -22,7 +20,7 @@ export function SonandaMediaShowcase() {
         <h2 id="hybrid-a-media-heading">Words become visual anchors, sound, and motion.</h2>
       </div>
       <div className="hybrid-a-media-reel" aria-label="Generated vocabulary media examples">
-        {videoWords.map((word, index) => (
+        {mediaWords.map((word, index) => (
           <motion.article
             className="hybrid-a-media-card"
             key={`${word.word}-${word.language}`}
@@ -31,15 +29,8 @@ export function SonandaMediaShowcase() {
             whileHover={reducedMotion ? undefined : { y: -8, scale: 1.035 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.55, delay: index * 0.055, ease: 'easeOut' }}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
           >
             <img src={word.thumbnail} alt={`${word.word} generated thumbnail`} loading="lazy" />
-            {hoveredIndex === index && (
-              <video autoPlay muted loop playsInline>
-                <source src={word.videoUrl} type="video/mp4" />
-              </video>
-            )}
             <div className="hybrid-a-media-card-gradient" aria-hidden="true" />
             <div className="hybrid-a-media-card-copy">
               <span>{word.language}</span>

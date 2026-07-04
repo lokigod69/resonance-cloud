@@ -10,9 +10,15 @@ const BAR_SPACING = 16.6
 const CENTER_Y = 40
 const MAX_HALF_HEIGHT = 30
 
-export default function WaveformDivider() {
+export default function WaveformDivider({
+  className = 'hidden md:flex',
+  animated = true,
+}: {
+  className?: string
+  animated?: boolean
+}) {
   return (
-    <div className="hidden md:flex justify-center py-8 opacity-75">
+    <div className={`${className} justify-center py-8 opacity-75`}>
       <svg
         viewBox="0 0 700 80"
         width="100%"
@@ -52,11 +58,15 @@ export default function WaveformDivider() {
               <g
                 key={i}
                 className="wf-bar"
-                style={{
-                  animation: `waveformPulse 2.8s ease-in-out infinite`,
-                  animationDelay: `${i * 0.06}s`,
-                  transformOrigin: `${x + BAR_WIDTH / 2}px ${CENTER_Y}px`,
-                }}
+                style={
+                  animated
+                    ? {
+                        animation: `waveformPulse 2.8s ease-in-out infinite`,
+                        animationDelay: `${i * 0.06}s`,
+                        transformOrigin: `${x + BAR_WIDTH / 2}px ${CENTER_Y}px`,
+                      }
+                    : undefined
+                }
               >
                 {/* Bar going up */}
                 <rect

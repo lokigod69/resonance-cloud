@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { motion, useScroll, useTransform, useReducedMotion, type MotionValue } from 'framer-motion'
 import { Keyboard, Sparkles, Brain } from 'lucide-react'
 import { DEMO_WORDS } from './landingData'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
@@ -12,9 +12,13 @@ const ICONS = [Keyboard, Sparkles, Brain]
 const ROW_1 = DEMO_WORDS.slice(0, 6)
 const ROW_2 = DEMO_WORDS.slice(6)
 
-function StaticCardSlot({ w }: { w: typeof DEMO_WORDS[0] }) {
+function StaticCardSlot({ w, accent = false }: { w: typeof DEMO_WORDS[0]; accent?: boolean }) {
   return (
-    <div className="relative w-52 h-72 rounded-xl overflow-hidden shrink-0">
+    <div
+      className={`relative h-72 w-52 shrink-0 overflow-hidden rounded-xl border border-white/10 ${
+        accent ? 'shadow-[0_0_24px_var(--accent-glow)]' : 'shadow-2xl shadow-black/30'
+      }`}
+    >
       <img
         src={w.thumbnail}
         alt={w.word}
@@ -28,6 +32,31 @@ function StaticCardSlot({ w }: { w: typeof DEMO_WORDS[0] }) {
         <p className="text-sm text-white/60">{w.translation}</p>
       </div>
     </div>
+  )
+}
+
+function DispersingCard({
+  w,
+  index,
+  progress,
+  range,
+  rotateTo,
+  yTo,
+}: {
+  w: typeof DEMO_WORDS[0]
+  index: number
+  progress: MotionValue<number>
+  range: [number, number]
+  rotateTo: number
+  yTo: number
+}) {
+  const rotate = useTransform(progress, range, [0, rotateTo])
+  const y = useTransform(progress, range, [0, yTo])
+
+  return (
+    <motion.div style={{ rotate, y }}>
+      <StaticCardSlot w={w} accent={index % 4 === 0} />
+    </motion.div>
   )
 }
 
@@ -169,14 +198,34 @@ export default function ScrollStorySection() {
                 className="flex gap-6"
                 style={{ x: leftRow1X, opacity: row1Opacity, scale: cardsScale }}
               >
-                {ROW_1.slice(0, 3).map(w => <StaticCardSlot key={w.word} w={w} />)}
+                {ROW_1.slice(0, 3).map((w, index) => (
+                  <DispersingCard
+                    key={w.word}
+                    w={w}
+                    index={index}
+                    progress={scrollYProgress}
+                    range={[0.12, 0.30]}
+                    rotateTo={[-4, 3, -5][index]}
+                    yTo={[10, -6, 14][index]}
+                  />
+                ))}
               </motion.div>
               {/* Right half slides right */}
               <motion.div
                 className="flex gap-6"
                 style={{ x: rightRow1X, opacity: row1Opacity, scale: cardsScale }}
               >
-                {ROW_1.slice(3).map(w => <StaticCardSlot key={w.word} w={w} />)}
+                {ROW_1.slice(3).map((w, index) => (
+                  <DispersingCard
+                    key={w.word}
+                    w={w}
+                    index={index + 3}
+                    progress={scrollYProgress}
+                    range={[0.12, 0.30]}
+                    rotateTo={[5, -3, 4][index]}
+                    yTo={[-8, 12, 6][index]}
+                  />
+                ))}
               </motion.div>
             </div>
 
@@ -187,14 +236,34 @@ export default function ScrollStorySection() {
                 className="flex gap-6"
                 style={{ x: leftRow2X, opacity: row2Opacity, scale: cardsScale }}
               >
-                {ROW_2.slice(0, 3).map(w => <StaticCardSlot key={w.word} w={w} />)}
+                {ROW_2.slice(0, 3).map((w, index) => (
+                  <DispersingCard
+                    key={w.word}
+                    w={w}
+                    index={index + 6}
+                    progress={scrollYProgress}
+                    range={[0.14, 0.32]}
+                    rotateTo={[3, -5, 4][index]}
+                    yTo={[8, 14, -7][index]}
+                  />
+                ))}
               </motion.div>
               {/* Right half slides right */}
               <motion.div
                 className="flex gap-6"
                 style={{ x: rightRow2X, opacity: row2Opacity, scale: cardsScale }}
               >
-                {ROW_2.slice(3).map(w => <StaticCardSlot key={w.word} w={w} />)}
+                {ROW_2.slice(3).map((w, index) => (
+                  <DispersingCard
+                    key={w.word}
+                    w={w}
+                    index={index + 9}
+                    progress={scrollYProgress}
+                    range={[0.14, 0.32]}
+                    rotateTo={[-4, 5, -3][index]}
+                    yTo={[12, -8, 10][index]}
+                  />
+                ))}
               </motion.div>
             </div>
           </div>

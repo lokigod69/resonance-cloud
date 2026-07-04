@@ -58,7 +58,7 @@ export default function VoiceTutorSection() {
                 </div>
                 <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-xs text-white/55">
                   <RotateCcw className="h-3.5 w-3.5" />
-                  New Chat
+                  {t('landing.tutorNewChat')}
                 </div>
               </div>
 
@@ -84,7 +84,7 @@ export default function VoiceTutorSection() {
 
               {/* Mock footer — matches Speak.tsx idle mic state */}
               <div className="shrink-0 border-t border-white/10 bg-[#08060c] px-4 py-5">
-                <p className="text-xs text-white/45 text-center mb-3">Tap and hold to speak</p>
+                <p className="text-xs text-white/45 text-center mb-3">{t('landing.tutorTapHold')}</p>
                 <div className="flex justify-center">
                   <div className="w-16 h-16 rounded-full border border-[#F24F13]/50 bg-[#F24F13]/20 flex items-center justify-center shadow-[0_0_32px_rgba(242,79,19,0.48)]">
                     <Mic className="h-7 w-7 text-white" />
@@ -100,16 +100,16 @@ export default function VoiceTutorSection() {
         <ScrollReveal delay={0.3} className="w-full">
           <div className="flex flex-wrap justify-center gap-3 mt-8">
             {[
-              { icon: Globe, label: '12 languages' },
-              { icon: Mic, label: 'Real-time voice' },
-              { icon: Volume2, label: 'Speaks back to you' },
-            ].map(({ icon: Icon, label }) => (
+              { icon: Globe, labelKey: 'landing.tutorPillLanguages' },
+              { icon: Mic, labelKey: 'landing.tutorPillRealtime' },
+              { icon: Volume2, labelKey: 'landing.tutorPillSpeaksBack' },
+            ].map(({ icon: Icon, labelKey }) => (
               <div
-                key={label}
+                key={labelKey}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#46334F]/35 border border-[#F24F13]/20 text-xs text-white/65"
               >
                 <Icon className="h-3.5 w-3.5" />
-                {label}
+                {t(labelKey)}
               </div>
             ))}
           </div>
