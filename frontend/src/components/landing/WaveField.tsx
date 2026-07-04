@@ -9,9 +9,12 @@ import { LingwaveWaves, type WaveRipple, type WaveWind } from '@/components/bran
 // All listeners are window-level and mapped into the canvas' own space (the
 // canvas spans the first page-viewport), so no element needs pointer events.
 
-const WAKE_MIN_INTERVAL_MS = 260
-const WAKE_MIN_TRAVEL_PX = 64
-const WAKE_AMP = 0.4
+// Wake stays sparse and quiet: at most a few gentle ripples at a time, so the
+// sea reacts to the cursor without churning (and the ripple math stays cheap).
+const WAKE_MIN_INTERVAL_MS = 480
+const WAKE_MIN_TRAVEL_PX = 110
+const WAKE_AMP = 0.28
+const MAX_LIVE_RIPPLES = 4
 
 export default function WaveField({
   className,
@@ -64,14 +67,14 @@ export default function WaveField({
         lastWakeAt = now
         lastWakeX = event.clientX
         lastWakeY = event.clientY
-        ripplesRef.current = [...ripplesRef.current.slice(-7), { x, y, start: now, amp: WAKE_AMP }]
+        ripplesRef.current = [...ripplesRef.current.slice(-(MAX_LIVE_RIPPLES - 1)), { x, y, start: now, amp: WAKE_AMP }]
       }
     }
 
     const onPointerDown = (event: PointerEvent) => {
       const { x, y } = toCanvasFrac(event.clientX, event.clientY)
       if (y > 1) return
-      ripplesRef.current = [...ripplesRef.current.slice(-7), { x, y, start: performance.now() }]
+      ripplesRef.current = [...ripplesRef.current.slice(-(MAX_LIVE_RIPPLES - 1)), { x, y, start: performance.now() }]
     }
 
     const onPointerLeave = () => {

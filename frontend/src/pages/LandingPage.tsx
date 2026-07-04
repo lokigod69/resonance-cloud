@@ -40,7 +40,7 @@ export default function LandingPage() {
         <LandingHero />
       </div>
 
-      <div className="relative z-10 h-[25vh]" />
+      <div className="relative z-10 h-[4vh]" />
 
       <div className="relative z-20">
         <div

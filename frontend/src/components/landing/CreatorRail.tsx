@@ -1,55 +1,40 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
-import { DEMO_WORDS } from './landingData'
 import { waveHeight, waveSlope, WAVE_AMP_SUM } from '@/lib/waveField'
+import { curriculumImageUrl } from './landingData'
 import ScrollReveal from './ScrollReveal'
 
-// CreatorRail — the memory shelf. Real vocabulary cards travel horizontally as
-// the user scrolls (scroll is the playhead), and the whole rail floats: every
-// card samples the shared wave field at its live screen position, so the
-// shelf visibly rides the same ocean as the hero. Mobile keeps a native snap
-// scroller; the bob stays because it's transform-only and cheap.
+// CreatorRail — the memory shelf. Real curriculum renders (same-origin static
+// webp, the app's own library imagery) travel horizontally as the user
+// scrolls, and the whole rail floats on the shared wave field. Card positions
+// are measured once and derived from the scrub value afterwards — the rAF
+// loop performs zero layout reads, so scrolling stays smooth.
 
 type RailWord = {
-  word: string
-  translation: string
-  language: string
-  thumbnail: string
-  ipa?: string
+  slug: string
+  en: string
+  de: string
+  fr: string
+  lang: 'DE' | 'FR' // which language the big word is shown in
   mastered?: boolean
 }
 
-const IPA: Record<string, string> = {
-  ciel: '/sjɛl/',
-  Fuchs: '/fʊks/',
-  furz: '/fʊʁts/',
-  Peur: '/pœʁ/',
-  ferocious: '/fəˈroʊʃəs/',
-  'liberté': '/li.bɛʁ.te/',
-  oublier: '/u.bli.je/',
-  Ferkelchen: '/ˈfɛʁkl̩çən/',
-  frigide: '/fʁiˈɡiːdə/',
-  chameau: '/ʃa.mo/',
-  lahmarschig: '/ˈlaːmˌʔaʁʃɪç/',
-}
+const RAIL_WORDS: RailWord[] = [
+  { slug: 'fox', en: 'fox', de: 'Fuchs', fr: 'renard', lang: 'FR' },
+  { slug: 'apple', en: 'apple', de: 'Apfel', fr: 'pomme', lang: 'DE' },
+  { slug: 'bread', en: 'bread', de: 'Brot', fr: 'pain', lang: 'FR' },
+  { slug: 'basketball', en: 'basketball', de: 'Basketball', fr: 'basket-ball', lang: 'DE' },
+  { slug: 'hiking', en: 'hiking', de: 'Wandern', fr: 'randonnée', lang: 'FR' },
+  { slug: 'rowing', en: 'rowing', de: 'Rudern', fr: 'aviron', lang: 'DE' },
+  { slug: 'fencing', en: 'fencing', de: 'Fechten', fr: 'escrime', lang: 'FR' },
+  { slug: 'trophy', en: 'trophy', de: 'Trophäe', fr: 'trophée', lang: 'DE', mastered: true },
+  { slug: 'lonely', en: 'lonely', de: 'einsam', fr: 'solitaire', lang: 'DE' },
+  { slug: 'proud', en: 'proud', de: 'stolz', fr: 'fier', lang: 'FR', mastered: true },
+]
 
-const MASTERED = new Set(['liberté', 'Fuchs'])
-
-const RAIL_WORDS: RailWord[] = DEMO_WORDS.map((w) => ({
-  ...w,
-  ipa: IPA[w.word],
-  mastered: MASTERED.has(w.word),
-}))
-
-const LANG_CODE: Record<string, string> = {
-  French: 'FR',
-  German: 'DE',
-  English: 'EN',
-}
-
-const RIDE_PX = 12
-const TILT_MAX_DEG = 5
+const RIDE_PX = 10
+const TILT_MAX_DEG = 4
 const HOVER_LIFT_PX = -6
 
 function useIsCompact() {
@@ -65,37 +50,47 @@ function useIsCompact() {
   return compact
 }
 
-// One rAF drives every card's float: read all rects, then write all
-// transforms. Pauses whenever the rail scrolls out of view or the tab hides.
+// One rAF drives every card's float. Screen positions are measured once per
+// resize; each frame derives them from the current horizontal shift, so the
+// loop never touches getBoundingClientRect while animating.
 function useBuoyLoop(
   rootRef: { current: HTMLElement | null },
   cardRefs: { current: (HTMLDivElement | null)[] },
   hoveredRef: { current: number | null },
-  options: { scale: boolean; enabled: boolean },
+  getShift: () => number,
+  scale: boolean,
 ) {
-  const { scale, enabled } = options
   useEffect(() => {
-    if (!enabled) return
     const root = rootRef.current
     if (!root) return
 
     let raf = 0
     let running = false
-    const start = performance.now()
+    const start0 = performance.now()
     const lifts: number[] = []
+    let baseCenters: number[] = []
+    let shift0 = 0
+
+    const measure = () => {
+      shift0 = getShift()
+      baseCenters = cardRefs.current.map((el) => {
+        if (!el) return -1e4
+        const r = el.getBoundingClientRect()
+        return r.left + r.width / 2
+      })
+    }
 
     const frame = () => {
-      const t = 30 + (performance.now() - start) / 1000
+      const t = 30 + (performance.now() - start0) / 1000
       const vw = window.innerWidth
+      const delta = getShift() - shift0
       const cards = cardRefs.current
-      const rects: (DOMRect | null)[] = cards.map((el) => (el ? el.getBoundingClientRect() : null))
 
       for (let i = 0; i < cards.length; i++) {
         const el = cards[i]
-        const rect = rects[i]
-        if (!el || !rect) continue
-        const centerX = rect.left + rect.width / 2
-        if (centerX < -rect.width || centerX > vw + rect.width) continue
+        if (!el) continue
+        const centerX = baseCenters[i] + delta
+        if (centerX < -400 || centerX > vw + 400) continue
 
         const worldX = ((centerX / vw) * 100 - 50) * 0.12
         const z = 4 + i * 2.3
@@ -107,9 +102,9 @@ function useBuoyLoop(
         const y = -norm * RIDE_PX * depth + lifts[i]
         const tilt = hovered
           ? 0
-          : Math.max(-TILT_MAX_DEG, Math.min(TILT_MAX_DEG, waveSlope(worldX, z, t) * 4))
+          : Math.max(-TILT_MAX_DEG, Math.min(TILT_MAX_DEG, waveSlope(worldX, z, t) * 3))
         const centerDist = Math.min(1, Math.abs(centerX - vw / 2) / (vw / 2))
-        const s = scale ? 1 - 0.06 * centerDist : 1
+        const s = scale ? 1 - 0.05 * centerDist : 1
 
         el.style.transform = `translateY(${y.toFixed(2)}px) rotate(${tilt.toFixed(2)}deg) scale(${s.toFixed(3)})`
       }
@@ -127,6 +122,9 @@ function useBuoyLoop(
       raf = requestAnimationFrame(frame)
     }
 
+    const onResize = () => measure()
+    measure()
+
     const observer = new IntersectionObserver(
       ([entry]) => (entry.isIntersecting && !document.hidden ? startLoop() : stop()),
       { threshold: 0 },
@@ -134,13 +132,16 @@ function useBuoyLoop(
     observer.observe(root)
     const onVisibility = () => (document.hidden ? stop() : startLoop())
     document.addEventListener('visibilitychange', onVisibility)
+    window.addEventListener('resize', onResize)
 
     return () => {
       stop()
       observer.disconnect()
       document.removeEventListener('visibilitychange', onVisibility)
+      window.removeEventListener('resize', onResize)
     }
-  }, [cardRefs, enabled, hoveredRef, rootRef, scale])
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- refs and getShift are stable per mount
+  }, [])
 }
 
 export default function CreatorRail() {
@@ -191,19 +192,16 @@ function RailScrub() {
     return () => window.removeEventListener('resize', measure)
   }, [])
 
-  useBuoyLoop(sectionRef as { current: HTMLElement | null }, cardRefs, hoveredRef, {
-    scale: true,
-    enabled: true,
-  })
+  useBuoyLoop(sectionRef as { current: HTMLElement | null }, cardRefs, hoveredRef, () => x.get(), true)
 
   return (
-    <section ref={sectionRef} className="relative h-[260vh] bg-[var(--app-bg)]">
+    <section ref={sectionRef} className="relative h-[240vh] bg-[var(--app-bg)]">
       <div className="sticky top-0 flex h-screen flex-col justify-center gap-12 overflow-hidden">
         <RailHeading />
         <motion.div ref={railRef} style={{ x }} className="flex w-max items-center gap-6 px-12 will-change-transform">
           {RAIL_WORDS.map((word, i) => (
             <div
-              key={word.word}
+              key={word.slug}
               ref={(node) => {
                 cardRefs.current[i] = node
               }}
@@ -227,21 +225,34 @@ function RailScrub() {
 
 function RailSnap() {
   const rootRef = useRef<HTMLElement | null>(null)
+  const scrollerRef = useRef<HTMLDivElement | null>(null)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
   const hoveredRef = useRef<number | null>(null)
+  const scrollLeftRef = useRef(0)
 
-  useBuoyLoop(rootRef as { current: HTMLElement | null }, cardRefs, hoveredRef, {
-    scale: false,
-    enabled: true,
-  })
+  useEffect(() => {
+    const scroller = scrollerRef.current
+    if (!scroller) return
+    const onScroll = () => {
+      scrollLeftRef.current = scroller.scrollLeft
+    }
+    onScroll()
+    scroller.addEventListener('scroll', onScroll, { passive: true })
+    return () => scroller.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useBuoyLoop(rootRef as { current: HTMLElement | null }, cardRefs, hoveredRef, () => -scrollLeftRef.current, false)
 
   return (
     <section ref={rootRef} className="bg-[var(--app-bg)] py-20">
       <RailHeading />
-      <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-6 [scrollbar-width:none]">
+      <div
+        ref={scrollerRef}
+        className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-6 [scrollbar-width:none]"
+      >
         {RAIL_WORDS.map((word, i) => (
           <div
-            key={word.word}
+            key={word.slug}
             ref={(node) => {
               cardRefs.current[i] = node
             }}
@@ -265,7 +276,7 @@ function RailReduced() {
       </ScrollReveal>
       <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-6 [scrollbar-width:none]">
         {RAIL_WORDS.map((word) => (
-          <div key={word.word} className="snap-center">
+          <div key={word.slug} className="snap-center">
             <RailCard word={word} />
           </div>
         ))}
@@ -277,40 +288,48 @@ function RailReduced() {
 /* --------------------------------- card ---------------------------------- */
 
 function RailCard({ word }: { word: RailWord }) {
-  const { t } = useLandingLocale()
+  const { t, locale } = useLandingLocale()
   const [failed, setFailed] = useState(false)
-  const code = LANG_CODE[word.language] ?? word.language.slice(0, 2).toUpperCase()
+
+  const big = word.lang === 'DE' ? word.de : word.fr
+  // Caption in the visitor's language; if it would repeat the big word, fall
+  // back to English so the card always teaches a pairing.
+  const localTerm = locale === 'de' ? word.de : locale === 'fr' ? word.fr : word.en
+  const caption = localTerm === big ? word.en : localTerm
 
   return (
     <figure
-      className={`group relative w-[200px] shrink-0 overflow-hidden rounded-2xl border shadow-[var(--shadow-soft)] transition-[border-color,box-shadow] duration-300 md:w-[240px] ${
+      className={`group relative w-[300px] shrink-0 overflow-hidden rounded-2xl border shadow-[var(--shadow-soft)] transition-[border-color,box-shadow] duration-300 md:w-[340px] ${
         word.mastered
           ? 'border-[var(--accent-2)]/45 hover:shadow-[0_0_28px_rgba(247,200,67,0.22)]'
           : 'border-white/10 hover:border-[var(--accent-2)]/35 hover:shadow-[0_0_24px_var(--accent-glow)]'
       }`}
     >
-      <div className="aspect-[3/4] w-full bg-gradient-to-b from-[#1c0f22] to-[#0a060e]">
+      <div className="aspect-video w-full bg-gradient-to-b from-[#1c0f22] to-[#0a060e]">
         {!failed && (
           <img
-            src={word.thumbnail}
-            alt={`${word.word} — ${word.translation}`}
+            src={curriculumImageUrl(word.slug)}
+            alt={`${big} — ${caption}`}
+            width={840}
+            height={472}
             loading="lazy"
             decoding="async"
             onError={() => setFailed(true)}
-            className="h-full w-full object-cover opacity-90 transition-opacity duration-300 group-hover:opacity-100"
+            className="h-full w-full object-cover opacity-95 transition-opacity duration-300 group-hover:opacity-100"
           />
         )}
       </div>
-      <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent px-4 pb-3 pt-12">
-        <p className="text-lg font-semibold text-white">{word.word}</p>
-        <p className="text-sm text-white/55">{word.translation}</p>
-        {word.ipa && <p className="mt-0.5 font-mono text-[11px] tracking-widest text-white/40">{word.ipa}</p>}
+      <figcaption className="flex items-baseline justify-between gap-3 bg-[#120b17] px-4 py-3">
+        <div className="min-w-0">
+          <p className="truncate text-lg font-semibold text-white">{big}</p>
+          <p className="truncate text-sm text-white/55">{caption}</p>
+        </div>
+        <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.18em] text-white/45">
+          {word.lang}
+        </span>
       </figcaption>
-      <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/70 backdrop-blur-sm">
-        {code}
-      </span>
       {word.mastered && (
-        <span className="absolute right-3 top-3 rounded-full border border-[var(--accent-2)]/50 bg-[var(--accent-2)]/15 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent-2)]">
+        <span className="absolute right-3 top-3 rounded-full border border-[var(--accent-2)]/50 bg-black/45 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent-2)]">
           {t('landing.railMastered')}
         </span>
       )}

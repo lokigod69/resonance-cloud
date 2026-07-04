@@ -42,17 +42,13 @@ const AMP = WAVE_AMP_SUM
 // Pointer wind — a smoothed breeze center that locally raises the swell.
 // x/y are 0..1 canvas fractions; strength eases toward the ref each frame.
 export type WaveWind = { x: number; y: number; strength: number }
-const WIND_GAIN = 0.26 // max amplitude boost at the wind center
+const WIND_GAIN = 0.12 // max amplitude boost at the wind center (kept gentle)
 const WIND_SIGMA = 0.19 // falloff radius as a fraction of canvas width
 const WIND_LERP = 0.06 // per-frame easing toward the target wind
 
 // Scroll energy — camera dives and time quickens as the page starts moving.
 const ENERGY_CAM_DROP = 0.65
 const ENERGY_TIME_GAIN = 0.35
-
-// Self-degradation: if frames stay slow, thin the field before dropping fps.
-const SLOW_FRAME_MS = 24
-const SLOW_FRAME_WINDOW = 60
 
 // Tap ripples — an optional, interactive disturbance the swell field can carry.
 // A ripple is a wavetrain that expands from a point and decays; it displaces the
@@ -119,8 +115,8 @@ function makeStars(count: number): Star[] {
   return stars
 }
 
-type WaveFx = { wind: WaveWind; energy: number; dawn: number; degraded: boolean }
-const STILL_FX: WaveFx = { wind: { x: 0.5, y: 0.5, strength: 0 }, energy: 0, dawn: 0, degraded: false }
+type WaveFx = { wind: WaveWind; energy: number; dawn: number }
+const STILL_FX: WaveFx = { wind: { x: 0.5, y: 0.5, strength: 0 }, energy: 0, dawn: 0 }
 
 function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, stars: Star[], ripples: WaveRipple[], nowMs: number, fx: WaveFx) {
   const horizon = h * 0.4
@@ -148,10 +144,9 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
   ctx.fillStyle = sea
   ctx.fillRect(0, horizon, w, h - horizon)
 
-  // Stars (slow twinkle) — they thin out and fade as dawn comes up.
+  // Stars (slow twinkle) — they fade as dawn comes up.
   const starAlphaScale = 1 - 0.7 * dawn
-  const starStep = fx.degraded ? 2 : 1
-  for (let i = 0; i < stars.length; i += starStep) {
+  for (let i = 0; i < stars.length; i++) {
     const s = stars[i]
     const a = (0.18 + 0.22 * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase))) * starAlphaScale
     ctx.fillStyle = rgba([255, 244, 234], a)
@@ -226,7 +221,6 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
   const sys: number[] = []
   const hns: number[] = []
   for (let i = ROWS - 1; i >= 0; i--) {
-    if (fx.degraded && i % 3 === 2) continue
     const v = i / (ROWS - 1)
     const z = depthAt(v)
     const fogT = (z - Z_NEAR) / (Z_FAR - Z_NEAR)
@@ -336,12 +330,11 @@ export function LingwaveWaves({
     let t = 30 // start mid-swell instead of a flat sea
     let width = 0
     let height = 0
-    let slowFrames = 0
+    let inView = true
     const fx: WaveFx = {
       wind: { x: 0.5, y: 0.5, strength: 0 },
       energy: 0,
       dawn,
-      degraded: false,
     }
     const stillFx: WaveFx = { ...STILL_FX, dawn }
 
@@ -366,15 +359,6 @@ export function LingwaveWaves({
       }
       if (energyRef) fx.energy = Math.min(1, Math.max(0, energyRef.current))
       t += dt * (1 + ENERGY_TIME_GAIN * fx.energy)
-
-      // Sustained slow frames thin the field rather than dropping smoothness.
-      if (!fx.degraded) {
-        if (now - last > SLOW_FRAME_MS) {
-          if (++slowFrames >= SLOW_FRAME_WINDOW) fx.degraded = true
-        } else if (slowFrames > 0) {
-          slowFrames--
-        }
-      }
       last = now
 
       // Retire spent ripples, then render the live ones into the swell field.
@@ -388,7 +372,7 @@ export function LingwaveWaves({
     }
 
     const start = () => {
-      if (raf || reduceMotion) return
+      if (raf || reduceMotion || !inView || document.hidden) return
       last = performance.now()
       raf = requestAnimationFrame(frame)
     }
@@ -398,12 +382,24 @@ export function LingwaveWaves({
     }
     const onVisibility = () => (document.hidden ? stop() : start())
 
+    // Pause the loop entirely while the canvas is scrolled out of view; the
+    // sea resumes mid-swell on re-entry, so nothing visibly resets.
+    const observer = typeof IntersectionObserver !== 'undefined'
+      ? new IntersectionObserver(([entry]) => {
+          inView = entry.isIntersecting
+          if (inView) start()
+          else stop()
+        })
+      : null
+    observer?.observe(canvas)
+
     resize()
     start()
     window.addEventListener('resize', resize)
     document.addEventListener('visibilitychange', onVisibility)
     return () => {
       stop()
+      observer?.disconnect()
       window.removeEventListener('resize', resize)
       document.removeEventListener('visibilitychange', onVisibility)
     }

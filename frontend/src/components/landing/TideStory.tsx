@@ -9,7 +9,7 @@ import {
   type MotionValue,
 } from 'framer-motion'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
-import { DEMO_WORDS } from './landingData'
+import { curriculumImageUrl } from './landingData'
 import ScrollReveal from './ScrollReveal'
 import { TIDE_EASE } from './landingMotion'
 
@@ -33,7 +33,6 @@ type Seed = {
 }
 
 function pickSeed(locale: string): Seed {
-  const byWord = (w: string) => DEMO_WORDS.find((d) => d.word === w)
   if (locale === 'fr') {
     // French visitors learn a German word; everyone else learns a French one.
     return {
@@ -42,10 +41,10 @@ function pickSeed(locale: string): Seed {
       lang: 'DE',
       translationKey: 'landing.tideSeedTranslation',
       lyric: '♪ der Fuchs tanzt leis durch die Nacht ♪',
-      thumbnail: byWord('Fuchs')?.thumbnail ?? '',
+      thumbnail: curriculumImageUrl('fox'),
       echoes: [
-        { word: 'Ferkelchen', thumbnail: byWord('Ferkelchen')?.thumbnail ?? '' },
-        { word: 'lahmarschig', thumbnail: byWord('lahmarschig')?.thumbnail ?? '' },
+        { word: 'Wald', thumbnail: curriculumImageUrl('forest') },
+        { word: 'Kaninchen', thumbnail: curriculumImageUrl('rabbit') },
       ],
       bubbles: [
         { role: 'user', text: 'Schau, ein Fuchs!' },
@@ -60,15 +59,15 @@ function pickSeed(locale: string): Seed {
     lang: 'FR',
     translationKey: 'landing.tideSeedTranslation',
     lyric: '♪ le ciel, le ciel bleu — je vole vers le ciel ♪',
-    thumbnail: byWord('ciel')?.thumbnail ?? '',
+    thumbnail: curriculumImageUrl('sky'),
     echoes: [
-      { word: 'liberté', thumbnail: byWord('liberté')?.thumbnail ?? '' },
-      { word: 'chameau', thumbnail: byWord('chameau')?.thumbnail ?? '' },
+      { word: 'soleil', thumbnail: curriculumImageUrl('sun') },
+      { word: 'lune', thumbnail: curriculumImageUrl('moon') },
     ],
     bubbles: [
       { role: 'user', text: 'Regarde le ciel !' },
-      { role: 'assistant', text: 'Oui — le ciel est clair ce soir. Tu vois les étoiles ?' },
-      { role: 'user', text: 'Une étoile… et le ciel !' },
+      { role: 'assistant', text: 'Oui — le ciel est clair ce soir. Tu vois la lune ?' },
+      { role: 'user', text: 'La lune… et le ciel !' },
     ],
   }
 }
@@ -136,14 +135,18 @@ function TideStoryScrub({ seed }: { seed: Seed }) {
     setBeat((prev) => (prev === next ? prev : next))
   })
 
-  const stageOpacity = useTransform(p, [0, 0.03, 0.93, 1], [0, 1, 1, 0])
+  // The stage is fully visible while the section scrolls into view — the copy
+  // column and waterline greet the visitor during the handoff; only the exit
+  // fades. (An entry fade here reads as a black void under the hero.)
+  const stageOpacity = useTransform(p, [0.93, 1], [1, 0])
   const stageY = useTransform(p, [0.93, 1], [0, -60])
 
-  // 01 — WORD: the seed rises out of the water, blur resolving.
-  const wordOpacity = useTransform(p, [0.02, 0.1, 0.36, 0.44], [0, 1, 1, 0])
-  const wordY = useTransform(p, [0.02, 0.12], [260, 0])
+  // 01 — WORD: the seed rises out of the water, blur resolving. It starts
+  // arriving immediately so there is no dark gap after the hero hands off.
+  const wordOpacity = useTransform(p, [0, 0.05, 0.36, 0.44], [0, 1, 1, 0])
+  const wordY = useTransform(p, [0, 0.08], [220, 0])
   const wordScale = useTransform(p, [0.36, 0.44], [1, 0.94])
-  const wordBlur = useTransform(p, [0.02, 0.12], [8, 0])
+  const wordBlur = useTransform(p, [0, 0.08], [8, 0])
   const wordFilter = useTransform(wordBlur, (b) => `blur(${b.toFixed(2)}px)`)
 
   // 02 — SONG: the crest line becomes an equalizer under the word.
@@ -309,10 +312,10 @@ function TalkBubble({ p, index, bubble }: { p: MotionValue<number>; index: numbe
   return (
     <motion.div
       style={{ opacity, y }}
-      className={`max-w-[85%] rounded-2xl border px-4 py-3 text-sm leading-relaxed backdrop-blur-md ${
+      className={`max-w-[85%] rounded-2xl border px-4 py-3 text-sm leading-relaxed ${
         isUser
-          ? 'self-end rounded-br-md border-[var(--accent)]/35 bg-[var(--accent)]/12 text-white/90'
-          : 'self-start rounded-bl-md border-white/10 bg-[var(--surface-glass)] text-white/78'
+          ? 'self-end rounded-br-md border-[var(--accent)]/35 bg-[#2a1310] text-white/90'
+          : 'self-start rounded-bl-md border-white/10 bg-[#160d1c] text-white/78'
       }`}
     >
       {bubble.text}
@@ -333,7 +336,7 @@ function BubbleIpa({ p, seed }: { p: MotionValue<number>; seed: Seed }) {
 
 function SeedWordCard({ seed, translation }: { seed: Seed; translation: string }) {
   return (
-    <div className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-[var(--surface-glass)] px-10 py-8 text-center shadow-[var(--shadow-soft)] backdrop-blur-md">
+    <div className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-[#160d1c] px-10 py-8 text-center shadow-[var(--shadow-soft)]">
       <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">{seed.lang}</span>
       <span className="font-display text-5xl font-bold tracking-tight text-white">{seed.word}</span>
       <span className="font-mono text-sm tracking-widest text-[var(--m-mid)]">{seed.ipa}</span>
@@ -345,26 +348,30 @@ function SeedWordCard({ seed, translation }: { seed: Seed; translation: string }
 function SceneCard({ seed, translation }: { seed: Seed; translation: string }) {
   const [failed, setFailed] = useState(false)
   return (
-    <div className="relative w-[260px] overflow-hidden rounded-2xl border border-white/10 shadow-[var(--shadow-soft)]">
-      <div className="aspect-[3/4] w-full bg-gradient-to-b from-[#1c0f22] to-[#0a060e]">
+    <div className="relative w-[340px] overflow-hidden rounded-2xl border border-white/10 shadow-[var(--shadow-soft)] md:w-[380px]">
+      <div className="aspect-video w-full bg-gradient-to-b from-[#1c0f22] to-[#0a060e]">
         {!failed && seed.thumbnail && (
           <img
             src={seed.thumbnail}
             alt={`${seed.word} — ${translation}`}
+            width={840}
+            height={472}
             loading="lazy"
             decoding="async"
             onError={() => setFailed(true)}
-            className="h-full w-full object-cover opacity-90"
+            className="h-full w-full object-cover opacity-95"
           />
         )}
       </div>
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent px-4 pb-3 pt-10">
-        <p className="text-lg font-semibold text-white">{seed.word}</p>
-        <p className="text-sm text-white/55">{translation}</p>
+      <div className="flex items-baseline justify-between gap-3 bg-[#120b17] px-4 py-3">
+        <div className="min-w-0">
+          <p className="truncate text-lg font-semibold text-white">{seed.word}</p>
+          <p className="truncate text-sm text-white/55">{translation}</p>
+        </div>
+        <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.18em] text-white/45">
+          {seed.lang}
+        </span>
       </div>
-      <span className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/70 backdrop-blur-sm">
-        {seed.lang}
-      </span>
     </div>
   )
 }
@@ -372,16 +379,18 @@ function SceneCard({ seed, translation }: { seed: Seed; translation: string }) {
 function EchoCard({ thumbnail, word }: { thumbnail?: string; word?: string }) {
   const [failed, setFailed] = useState(false)
   return (
-    <div className="relative w-[190px] overflow-hidden rounded-2xl border border-white/10 opacity-90 shadow-[var(--shadow-soft)]">
-      <div className="aspect-[3/4] w-full bg-gradient-to-b from-[#1c0f22] to-[#0a060e]">
+    <div className="relative w-[240px] overflow-hidden rounded-2xl border border-white/10 opacity-90 shadow-[var(--shadow-soft)]">
+      <div className="aspect-video w-full bg-gradient-to-b from-[#1c0f22] to-[#0a060e]">
         {!failed && thumbnail && (
           <img
             src={thumbnail}
             alt=""
+            width={840}
+            height={472}
             loading="lazy"
             decoding="async"
             onError={() => setFailed(true)}
-            className="h-full w-full object-cover opacity-70"
+            className="h-full w-full object-cover opacity-75"
           />
         )}
       </div>

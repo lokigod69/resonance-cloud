@@ -1,11 +1,61 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Compass, Gamepad2, Layers, Mic, Music2, type LucideIcon } from 'lucide-react'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
+import { curriculumImageUrl } from './landingData'
 import { TIDE_EASE } from './landingMotion'
 
-// ModePortals — five ways into the water. Deliberately asymmetric (two wide,
-// three narrow) so it never reads as a SaaS feature grid; each portal is quiet
-// glass with a warm glow that only wakes on hover.
+// ModePortals — five ways into the water, introduced by the library wall: two
+// slow counter-drifting rows of real curriculum renders (a single composited
+// transform per row, so it costs almost nothing) that show the sheer size of
+// the illustrated vocabulary before the feature portals.
+
+const WALL_ROW_A = ['dog', 'apple', 'guitar', 'hiking', 'coffee', 'hockey', 'moon', 'carrot']
+const WALL_ROW_B = ['mountain', 'bread', 'basketball', 'piano', 'ocean', 'rain', 'book', 'dancing']
+
+function WallRow({ slugs, reverse, reducedMotion }: { slugs: string[]; reverse?: boolean; reducedMotion: boolean }) {
+  // Row content is doubled; the loop travels exactly half its width, so the
+  // drift is seamless. Reduced motion renders a still strip.
+  const items = reducedMotion ? slugs : [...slugs, ...slugs]
+  return (
+    <div className="flex w-max gap-4" style={reducedMotion ? {} : { animation: `${reverse ? 'lw-wall-b' : 'lw-wall-a'} 80s linear infinite` }}>
+      {items.map((slug, i) => (
+        <div key={`${slug}-${i}`} className="h-20 shrink-0 overflow-hidden rounded-xl border border-white/10 md:h-24" style={{ aspectRatio: '840 / 472' }}>
+          <img
+            src={curriculumImageUrl(slug)}
+            alt=""
+            width={840}
+            height={472}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover opacity-80"
+          />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function LibraryWall() {
+  const { t } = useLandingLocale()
+  const reducedMotion = useReducedMotion() === true
+  return (
+    <div aria-hidden="true" className="relative -mx-6 mt-12 overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)' }}>
+      <style>
+        {`
+          @keyframes lw-wall-a { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+          @keyframes lw-wall-b { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+        `}
+      </style>
+      <div className="flex flex-col gap-4">
+        <WallRow slugs={WALL_ROW_A} reducedMotion={reducedMotion} />
+        <WallRow slugs={WALL_ROW_B} reverse reducedMotion={reducedMotion} />
+      </div>
+      <p className="mt-5 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-white/40">
+        {t('landing.libraryCount')}
+      </p>
+    </div>
+  )
+}
 
 type Portal = {
   icon: LucideIcon
@@ -47,7 +97,11 @@ export default function ModePortals() {
             {t('landing.featuresSubline')}
           </p>
         </motion.div>
+      </div>
 
+      <LibraryWall />
+
+      <div className="mx-auto max-w-6xl">
         <div className="mt-12 grid gap-5 md:grid-cols-6">
           {PORTALS.map((portal, i) => {
             const Icon = portal.icon
@@ -55,7 +109,7 @@ export default function ModePortals() {
               <motion.div
                 key={portal.titleKey}
                 {...reveal(i + 1)}
-                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-[var(--surface-glass)] p-6 backdrop-blur-md transition-colors duration-300 hover:border-[var(--accent)]/35 md:p-8 ${
+                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-[#140c19] p-6 transition-colors duration-300 hover:border-[var(--accent)]/35 md:p-8 ${
                   portal.wide ? 'md:col-span-3' : 'md:col-span-2'
                 }`}
               >

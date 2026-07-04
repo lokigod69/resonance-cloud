@@ -75,7 +75,7 @@ export default function FinalCTA() {
           aria-hidden="true"
         />
 
-        <ScrollReveal direction="blur" className="relative z-10 mx-auto max-w-2xl">
+        <ScrollReveal direction="blur" className="relative z-10 mx-auto mt-14 max-w-2xl md:mt-24">
           <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--accent-2)]/80">
             {t('landing.ctaKicker')}
           </p>

@@ -2,6 +2,13 @@
 // Language names used in DEMO_WORDS must be resolvable by FlagIcon's LANG_NAME_MAP
 import { LANDING_LANGUAGES } from '@/lib/languages'
 
+// Curriculum renders — same-origin static webp (840×472) shipped in
+// public/curriculum/en/set-c/. The landing pins set-c (the richest set)
+// instead of going through the Supabase-backed set switcher.
+export function curriculumImageUrl(slug: string) {
+  return `/curriculum/en/set-c/${slug}.webp`
+}
+
 type DemoLanguage = 'French' | 'German' | 'English' | 'Italian' | 'Spanish' | 'Portuguese' | 'Dutch' | 'Hindi' | 'Arabic' | 'Filipino' | 'Tagalog' | 'Bisaya' | 'Indonesian' | 'Korean'
 
 const STATIC_THUMBNAIL_BUCKET = 'https://rkiucrrusrwgcviodysp.supabase.co/storage/v1/object/public/videos'

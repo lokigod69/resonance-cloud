@@ -16,8 +16,10 @@ export default function LandingHero() {
   const { scrollY } = useScroll()
   const { t, locale } = useLandingLocale()
 
-  const textY = useTransform(scrollY, [0, 500], [0, -200])
-  const textOpacity = useTransform(scrollY, [0, 400], [1, 0])
+  // The headline stays with the visitor most of the way through the hero so
+  // the handoff to the tide story never opens onto empty water.
+  const textY = useTransform(scrollY, [0, 700], [0, -240])
+  const textOpacity = useTransform(scrollY, [150, 700], [1, 0])
 
   // Per-word arrival: blur resolves as the word surfaces.
   const surface = (delay: number) =>
@@ -50,6 +52,21 @@ export default function LandingHero() {
 
   return (
     <section className="relative h-screen overflow-hidden">
+      <style>
+        {`
+          @keyframes lw-hero-bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+          }
+          .lw-hero-bob {
+            display: inline-block;
+            animation: lw-hero-bob 9s ease-in-out infinite;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .lw-hero-bob { animation: none; }
+          }
+        `}
+      </style>
       <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-4 py-4 sm:px-6 md:px-12 backdrop-blur-md bg-black/30 border-b border-white/5">
         <Link to="/" className="flex items-center gap-2" aria-label="Lingwave home">
           <LingwaveBrand wordmarkClassName="h-5" />
@@ -82,7 +99,7 @@ export default function LandingHero() {
               {...surface(0.05)}
               className="font-display text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]"
             >
-              <span className="hero-word-warm">{t('landing.headlineWord')}</span>
+              <span className="hero-word-warm lw-hero-bob">{t('landing.headlineWord')}</span>
             </motion.span>
             <motion.span {...fadeUp(0.5)} className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
               {t('landing.headlineBy')}
@@ -91,7 +108,7 @@ export default function LandingHero() {
               {...surface(0.23)}
               className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]"
             >
-              <span className="hero-word-mid">{t('landing.headlineMelody')}</span>
+              <span className="hero-word-mid lw-hero-bob" style={{ animationDelay: '0.9s' }}>{t('landing.headlineMelody')}</span>
             </motion.span>
             <motion.span {...fadeUp(0.58)} className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
               {t('landing.headlineAnd')}
@@ -100,7 +117,7 @@ export default function LandingHero() {
               {...surface(0.41)}
               className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]"
             >
-              <span className="hero-word-cool">{t('landing.headlineMotion')}</span>
+              <span className="hero-word-cool lw-hero-bob" style={{ animationDelay: '1.8s' }}>{t('landing.headlineMotion')}</span>
             </motion.span>
           </h1>
 
