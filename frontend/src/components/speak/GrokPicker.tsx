@@ -33,7 +33,7 @@ interface GrokPickerProps {
   isStarting: boolean
 }
 
-const SECTION_LABEL_CLASS = 'text-xs font-semibold text-slate-400 uppercase tracking-[0.22em]'
+const SECTION_LABEL_CLASS = 'text-xs font-semibold text-[var(--text-muted)] uppercase tracking-[0.22em]'
 const LEVEL_VALUES: GrokLevel[] = ['zero', 'beginner', 'intermediate', 'advanced']
 
 const CATEGORY_VISUALS: Record<GrokCategory, { description: string }> = {
@@ -64,27 +64,27 @@ const CATEGORY_VISUALS: Record<GrokCategory, { description: string }> = {
 }
 
 const VOICE_ACCENTS: Record<GrokVoice, string> = {
-  eve: 'from-indigo-200/90 to-cyan-200/70',
-  ara: 'from-rose-200/90 to-indigo-200/70',
-  rex: 'from-cyan-200/90 to-blue-300/70',
-  sal: 'from-violet-200/90 to-slate-200/70',
-  leo: 'from-amber-200/90 to-indigo-200/70',
+  eve: 'from-[var(--accent)]/90 to-[var(--accent-2)]/70',
+  ara: 'from-[var(--accent-2)]/90 to-[var(--accent)]/60',
+  rex: 'from-[var(--accent)]/80 to-[var(--accent-warm)]/70',
+  sal: 'from-[var(--accent-warm)]/90 to-[var(--accent-2)]/60',
+  leo: 'from-[var(--accent-2)]/80 to-[var(--accent-warm)]/70',
 }
 
 const LEVEL_VISUALS: Record<GrokLevel, { badge: string; accent: string }> = {
-  zero: { badge: 'L0', accent: 'from-emerald-300/25 to-cyan-400/10' },
-  beginner: { badge: 'L1', accent: 'from-sky-300/25 to-indigo-400/10' },
-  intermediate: { badge: 'L2', accent: 'from-violet-300/25 to-indigo-400/10' },
-  advanced: { badge: 'L3', accent: 'from-amber-300/25 to-indigo-400/10' },
+  zero: { badge: 'L0', accent: 'from-[var(--accent-2)]/25 to-[var(--accent-2)]/5' },
+  beginner: { badge: 'L1', accent: 'from-[var(--accent-warm)]/25 to-[var(--accent-warm)]/5' },
+  intermediate: { badge: 'L2', accent: 'from-[var(--accent)]/25 to-[var(--accent)]/5' },
+  advanced: { badge: 'L3', accent: 'from-[var(--accent)]/40 to-[var(--accent-2)]/10' },
 }
 
 const cardBase =
-  'speak-glass-card relative overflow-hidden transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70 disabled:cursor-not-allowed disabled:opacity-50'
-const cardIdle = 'hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65'
+  'speak-glass-card relative overflow-hidden transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/70 disabled:cursor-not-allowed disabled:opacity-50'
+const cardIdle = 'hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:bg-[var(--surface-glass-strong)]'
 const cardSelected =
-  'border-indigo-200/55 bg-indigo-950/35 shadow-[0_0_0_1px_rgba(165,180,252,0.25),0_18px_45px_rgba(79,70,229,0.22)]'
+  'border-[var(--accent)]/55 bg-[var(--accent-soft)] shadow-[0_0_0_1px_var(--accent-glow),0_18px_45px_var(--accent-glow)]'
 const levelCardSelected =
-  'border-cyan-200/65 bg-cyan-400/[0.10] shadow-[0_0_0_1px_rgba(125,211,252,0.28),0_18px_45px_rgba(14,165,233,0.22)]'
+  'border-[var(--accent-2)]/65 bg-[var(--accent-2-soft)] shadow-[0_0_0_1px_var(--accent-glow),0_18px_45px_var(--accent-glow)]'
 
 function VoiceWaveIcon({ voice, selected }: { voice: GrokVoice; selected: boolean }) {
   const heights = voice === 'eve'
@@ -98,13 +98,13 @@ function VoiceWaveIcon({ voice, selected }: { voice: GrokVoice; selected: boolea
           : ['h-7', 'h-5', 'h-4', 'h-6', 'h-3']
 
   return (
-    <span className={`relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full border ${selected ? 'border-indigo-100/45 bg-indigo-200/15' : 'border-white/10 bg-white/[0.06]'}`}>
+    <span className={`relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full border ${selected ? 'border-[var(--accent)]/45 bg-[var(--accent-soft)]' : 'border-[var(--border-subtle)] bg-[var(--field-bg)]'}`}>
       <span className={`absolute inset-1 rounded-full bg-gradient-to-br ${VOICE_ACCENTS[voice]} opacity-10`} />
       <span className="relative flex items-center gap-1">
         {heights.map((height, index) => (
           <span
             key={`${voice}-${index}`}
-            className={`speak-wave-bar ${height} w-1 rounded-full bg-gradient-to-t ${VOICE_ACCENTS[voice]} shadow-[0_0_14px_rgba(165,180,252,0.24)]`}
+            className={`speak-wave-bar ${height} w-1 rounded-full bg-gradient-to-t ${VOICE_ACCENTS[voice]} shadow-[0_0_14px_var(--accent-glow)]`}
           />
         ))}
       </span>
@@ -135,16 +135,16 @@ function VoiceCard({
       <div className="flex w-full items-start justify-between gap-3">
         <VoiceWaveIcon voice={voice.id} selected={selected} />
         {selected && (
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-200/15 text-indigo-100">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
             <Check className="h-4 w-4" />
           </span>
         )}
       </div>
       <div>
-        <p className="text-base font-semibold text-white">{voice.displayName}</p>
-        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-100/75">{voice.tone}</p>
+        <p className="text-base font-semibold text-[var(--text-primary)]">{voice.displayName}</p>
+        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent-2)]/90">{voice.tone}</p>
       </div>
-      <p className="text-sm leading-relaxed text-slate-400">{voice.description}</p>
+      <p className="text-sm leading-relaxed text-[var(--text-muted)]">{voice.description}</p>
     </button>
   )
 }
@@ -226,11 +226,11 @@ function ModeCard({
     >
       <div className="flex w-full items-start justify-between gap-3">
         <ModeVisual kind={category.id} selected={selected} />
-        {selected && <Check className="h-4 w-4 text-indigo-100" />}
+        {selected && <Check className="h-4 w-4 text-[var(--accent)]" />}
       </div>
       <div>
-        <p className="text-sm font-semibold text-white">{t(category.displayKey)}</p>
-        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-400">{t(visual.description)}</p>
+        <p className="text-sm font-semibold text-[var(--text-primary)]">{t(category.displayKey)}</p>
+        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-[var(--text-muted)]">{t(visual.description)}</p>
       </div>
     </button>
   )
@@ -240,9 +240,9 @@ function LevelBadge({ level, selected }: { level: GrokLevel; selected: boolean }
   const visual = LEVEL_VISUALS[level]
 
   return (
-    <span className={`relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border ${selected ? 'border-indigo-100/45 bg-indigo-200/15' : 'border-white/10 bg-white/[0.06]'}`}>
+    <span className={`relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border ${selected ? 'border-[var(--accent)]/45 bg-[var(--accent-soft)]' : 'border-[var(--border-subtle)] bg-[var(--field-bg)]'}`}>
       <span className={`absolute inset-0 bg-gradient-to-br ${visual.accent}`} />
-      <span className="relative text-xs font-black tracking-[0.18em] text-white/90">{visual.badge}</span>
+      <span className="relative text-xs font-black tracking-[0.18em] text-[var(--text-primary)]/90">{visual.badge}</span>
     </span>
   )
 }
@@ -263,7 +263,7 @@ function StartConversationButton({
         type="button"
         onClick={onStart}
         disabled={disabled}
-        className="speak-start-button inline-flex min-h-14 w-full max-w-sm items-center justify-center gap-2 rounded-full bg-indigo-500 px-6 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-indigo-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80 disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 disabled:shadow-none"
+        className="speak-start-button inline-flex min-h-14 w-full max-w-sm items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-6 py-4 text-sm font-bold text-[var(--on-accent)] transition-all hover:-translate-y-0.5 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/80 disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-muted)] disabled:shadow-none"
       >
         {isStarting ? (
           <>
@@ -322,7 +322,7 @@ export function GrokPicker({
         <div className="mb-3 flex items-end justify-between gap-3">
           <div>
             <p className={`${SECTION_LABEL_CLASS} pl-1`}>{t('speak.grok.voiceLabel')}</p>
-            <p className="mt-1 text-sm text-slate-400">{t('speak.grok.voiceHint')}</p>
+            <p className="mt-1 text-sm text-[var(--text-muted)]">{t('speak.grok.voiceHint')}</p>
           </div>
         </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -356,15 +356,15 @@ export function GrokPicker({
               <ModeVisual kind="free_chat" selected={freeChatSelected} large />
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <p className="text-lg font-semibold text-white">{t('speak.grok.freeChat')}</p>
-                  <Sparkles className="h-4 w-4 text-indigo-200/80" />
+                  <p className="text-lg font-semibold text-[var(--text-primary)]">{t('speak.grok.freeChat')}</p>
+                  <Sparkles className="h-4 w-4 text-[var(--accent-2)]/80" />
                 </div>
-                <p className="mt-1 text-sm leading-relaxed text-slate-400">
+                <p className="mt-1 text-sm leading-relaxed text-[var(--text-muted)]">
                   {t('speak.grok.freeChatDescription')}
                 </p>
               </div>
             </div>
-            {freeChatSelected && <Check className="hidden h-5 w-5 shrink-0 text-indigo-100 sm:block" />}
+            {freeChatSelected && <Check className="hidden h-5 w-5 shrink-0 text-[var(--accent)] sm:block" />}
           </button>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -386,10 +386,10 @@ export function GrokPicker({
   return (
     <section className="relative isolate mx-auto w-full max-w-md space-y-6 px-1">
       <div className="px-1">
-        <h2 className="text-xl font-semibold text-white mb-2">
+        <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-2">
           {t('speak.howMuch', { language: languageName })}
         </h2>
-        <p className="text-sm text-slate-400">{t('speak.levelHint')}</p>
+        <p className="text-sm text-[var(--text-muted)]">{t('speak.levelHint')}</p>
       </div>
 
       <div className="grid grid-cols-1 gap-3">
@@ -404,14 +404,14 @@ export function GrokPicker({
               aria-pressed={selected}
               className={`${cardBase} ${selected ? levelCardSelected : cardIdle} flex items-center gap-4 p-4 text-left`}
             >
-              {selected && <span className="pointer-events-none absolute inset-y-4 left-0 w-1 rounded-r-full bg-cyan-200/70 shadow-[0_0_16px_rgba(125,211,252,0.55)]" />}
+              {selected && <span className="pointer-events-none absolute inset-y-4 left-0 w-1 rounded-r-full bg-[var(--accent-2)]/70 shadow-[0_0_16px_var(--accent-glow)]" />}
               <LevelBadge level={opt.level} selected={selected} />
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-medium text-white">{opt.title}</p>
-                <p className="text-xs text-slate-400">{opt.desc}</p>
+                <p className="text-sm font-medium text-[var(--text-primary)]">{opt.title}</p>
+                <p className="text-xs text-[var(--text-muted)]">{opt.desc}</p>
               </div>
               {selected && (
-                <span className="ml-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cyan-200/15 text-cyan-100">
+                <span className="ml-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--accent-2-soft)] text-[var(--accent-2)]">
                   <Check className="h-4 w-4" />
                 </span>
               )}

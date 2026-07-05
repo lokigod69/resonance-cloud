@@ -113,7 +113,7 @@ export default function StudyImagePG() {
           <p className="text-sm mt-1" style={{ color: 'var(--pg-text-dim)' }}>
             <span style={{ color: 'var(--pg-accent-green)' }}>{t('study.remembered', { count: sessionStats.remembered })}</span>
             {sessionStats.reviewLater > 0 && (
-              <span className="ml-2" style={{ color: '#fb923c' }}>{t('study.needReview', { count: sessionStats.reviewLater })}</span>
+              <span className="ml-2" style={{ color: 'var(--pg-accent-gold)' }}>{t('study.needReview', { count: sessionStats.reviewLater })}</span>
             )}
           </p>
         </div>

@@ -87,16 +87,16 @@ export function ExtractWordsModal({
 
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/70 px-4 py-6 backdrop-blur-md">
-      <div className="w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-gray-950 text-white shadow-2xl">
-        <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+      <div className="w-full max-w-2xl overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-1)] text-[var(--text-primary)] shadow-2xl">
+        <div className="flex items-center justify-between border-b border-[var(--border-subtle)] px-5 py-4">
           <div>
             <h2 className="text-base font-semibold">{t('speak.extractWords.title')}</h2>
-            <p className="text-xs text-gray-500">{targetLanguage} {'->'} {baseLanguage}</p>
+            <p className="text-xs text-[var(--text-muted)]">{targetLanguage} {'->'} {baseLanguage}</p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-white/5 hover:text-white"
+            className="rounded-lg p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)]"
             aria-label={t('speak.extractWords.cancelButton')}
           >
             <X className="h-4 w-4" />
@@ -105,7 +105,7 @@ export function ExtractWordsModal({
 
         <div className="max-h-[70vh] overflow-y-auto px-5 py-5">
           {(loading || !hasLoaded) && (
-            <div className="flex min-h-48 flex-col items-center justify-center gap-3 text-sm text-gray-400">
+            <div className="flex min-h-48 flex-col items-center justify-center gap-3 text-sm text-[var(--text-muted)]">
               <LingwaveLoader size={64} className="py-0" />
               {t('speak.extractWords.loading')}
             </div>
@@ -117,7 +117,7 @@ export function ExtractWordsModal({
               <button
                 type="button"
                 onClick={() => setRetryToken((value) => value + 1)}
-                className="rounded-full border border-white/10 px-4 py-2 text-xs text-gray-200 transition-colors hover:bg-white/5"
+                className="rounded-full border border-[var(--border-subtle)] px-4 py-2 text-xs text-[var(--text-secondary)] transition-colors hover:bg-[var(--accent-soft)]"
               >
                 {t('speak.extractWords.retry')}
               </button>
@@ -127,7 +127,7 @@ export function ExtractWordsModal({
           {hasLoaded && !error && (
             <div className="space-y-5">
               {items.length === 0 ? (
-                <p className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-8 text-center text-sm text-gray-400">
+                <p className="rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-glass)] px-4 py-8 text-center text-sm text-[var(--text-muted)]">
                   {t('speak.extractWords.empty')}
                 </p>
               ) : (
@@ -139,11 +139,11 @@ export function ExtractWordsModal({
               )}
 
               <label className="block space-y-2">
-                <span className="text-xs font-medium text-gray-400">{t('speak.extractWords.deckNamePlaceholder')}</span>
+                <span className="text-xs font-medium text-[var(--text-muted)]">{t('speak.extractWords.deckNamePlaceholder')}</span>
                 <input
                   value={deckName}
                   onChange={(event) => setDeckName(event.target.value)}
-                  className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-gray-600 focus:border-cyan-400/60"
+                  className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--field-bg)] px-4 py-3 text-sm text-[var(--text-primary)] outline-none transition-colors placeholder:text-[var(--text-muted)]/60 focus:border-[var(--accent)]/60"
                   placeholder={t('speak.extractWords.deckNamePlaceholder')}
                 />
               </label>
@@ -157,11 +157,11 @@ export function ExtractWordsModal({
           )}
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-white/10 px-5 py-4 sm:flex-row sm:justify-end">
+        <div className="flex flex-col gap-3 border-t border-[var(--border-subtle)] px-5 py-4 sm:flex-row sm:justify-end">
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full border border-white/10 px-5 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/5"
+            className="rounded-full border border-[var(--border-subtle)] px-5 py-2.5 text-sm text-[var(--text-secondary)] transition-colors hover:bg-[var(--accent-soft)]"
           >
             {t('speak.extractWords.cancelButton')}
           </button>
@@ -169,7 +169,7 @@ export function ExtractWordsModal({
             type="button"
             onClick={handleImport}
             disabled={items.length === 0 || submitting || loading || !!error}
-            className="rounded-full bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-gray-950 transition-colors hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-[var(--on-accent)] transition-colors hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {submitting
               ? t('common.loading')

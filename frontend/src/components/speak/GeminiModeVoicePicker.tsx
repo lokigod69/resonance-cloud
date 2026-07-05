@@ -7,6 +7,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { VoiceSampleButton } from './VoiceSampleButton'
 import type { GeminiPickerStage } from '@/hooks/useVoiceTutor'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useAuth } from '@/hooks/useAuth'
+import { canUseExperimentalSpeakOptions } from '@/lib/speakCuration'
 
 export interface GeminiSelection {
   mode: GeminiCharacterMode
@@ -35,7 +37,7 @@ const GROUP_LABEL_KEYS: Record<GeminiAccent['group'], string> = {
   theatrical: 'speak.accent.group.theatrical',
 }
 
-const SECTION_LABEL_CLASS = 'text-xs font-semibold text-gray-400 uppercase tracking-wider'
+const SECTION_LABEL_CLASS = 'text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider'
 
 export function GeminiModeVoicePicker({
   language,
@@ -52,6 +54,8 @@ export function GeminiModeVoicePicker({
   confirmLabel,
 }: GeminiModeVoicePickerProps) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const showTheatricalAccents = canUseExperimentalSpeakOptions(profile)
   const [nowPlaying, setNowPlaying] = useState<string | null>(null)
   const [accentOpen, setAccentOpen] = useState(false)
 
@@ -91,8 +95,8 @@ export function GeminiModeVoicePicker({
                 key={voice.name}
                 className={`speak-glass-card relative transition-all ${
                   selected
-                    ? 'border-indigo-200/55 bg-indigo-950/35 shadow-[0_0_0_1px_rgba(165,180,252,0.25),0_18px_45px_rgba(79,70,229,0.22)]'
-                    : 'hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65'
+                    ? 'border-[var(--accent)]/55 bg-[var(--accent-soft)] shadow-[0_0_0_1px_var(--accent-glow),0_18px_45px_var(--accent-glow)]'
+                    : 'hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:bg-[var(--surface-glass-strong)]'
                 }`}
               >
                 <button
@@ -104,8 +108,8 @@ export function GeminiModeVoicePicker({
                   disabled={disabled}
                   className="w-full flex min-h-[104px] flex-col items-start justify-center gap-1 px-4 py-4 pr-12 rounded-2xl text-left disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span className="text-sm font-medium text-white truncate max-w-full">{voice.name}</span>
-                  <span className="text-xs text-gray-400 truncate max-w-full">{voice.tone}</span>
+                  <span className="text-sm font-medium text-[var(--text-primary)] truncate max-w-full">{voice.name}</span>
+                  <span className="text-xs text-[var(--text-muted)] truncate max-w-full">{voice.tone}</span>
                 </button>
                 <div className="absolute top-1.5 right-1.5">
                   <VoiceSampleButton
@@ -142,12 +146,12 @@ export function GeminiModeVoicePicker({
                 disabled={disabled}
                 className={`speak-glass-card flex min-h-[132px] flex-col items-start gap-2 px-4 py-4 text-left transition-all disabled:cursor-not-allowed disabled:opacity-50 ${
                   selected
-                    ? 'border-indigo-200/55 bg-indigo-950/35 shadow-[0_0_0_1px_rgba(165,180,252,0.25),0_18px_45px_rgba(79,70,229,0.22)]'
-                    : 'hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65'
+                    ? 'border-[var(--accent)]/55 bg-[var(--accent-soft)] shadow-[0_0_0_1px_var(--accent-glow),0_18px_45px_var(--accent-glow)]'
+                    : 'hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:bg-[var(--surface-glass-strong)]'
                 }`}
               >
-                <span className="text-sm font-medium text-white">{mode.displayName}</span>
-                <span className="text-xs text-gray-400 leading-snug">{mode.description}</span>
+                <span className="text-sm font-medium text-[var(--text-primary)]">{mode.displayName}</span>
+                <span className="text-xs text-[var(--text-muted)] leading-snug">{mode.description}</span>
               </button>
             )
           })}
@@ -168,7 +172,7 @@ export function GeminiModeVoicePicker({
     <section className="mx-auto w-full max-w-3xl space-y-4 px-1">
       <div>
         <p className={SECTION_LABEL_CLASS}>{t('speak.accent.ready')}</p>
-        <p className="mt-1 truncate text-sm text-gray-300" title={readySummary}>
+        <p className="mt-1 truncate text-sm text-[var(--text-secondary)]" title={readySummary}>
           {readySummary}
         </p>
       </div>
@@ -177,7 +181,7 @@ export function GeminiModeVoicePicker({
         type="button"
         onClick={startGemini}
         disabled={!selectedMode || !selectedVoiceName || disabled}
-        className="speak-start-button w-full rounded-full bg-indigo-500 px-4 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-indigo-400 disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 disabled:shadow-none"
+        className="speak-start-button w-full rounded-full bg-[var(--accent)] px-4 py-3 text-sm font-bold text-[var(--on-accent)] transition-all hover:-translate-y-0.5 hover:brightness-110 disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-[var(--surface-2)] disabled:text-[var(--text-muted)] disabled:shadow-none"
       >
         {confirmLabel ?? t('speak.grok.startConversation')}
       </button>
@@ -188,14 +192,14 @@ export function GeminiModeVoicePicker({
             type="button"
             aria-expanded={accentOpen}
             disabled={disabled}
-            className="flex w-full items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/45 px-4 py-3 text-left transition-colors hover:bg-slate-900/65 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex w-full items-center gap-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-glass)] px-4 py-3 text-left transition-colors hover:bg-[var(--surface-glass-strong)] disabled:cursor-not-allowed disabled:opacity-50"
           >
-            <ChevronDown className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${accentOpen ? 'rotate-180' : ''}`} />
+            <ChevronDown className={`h-4 w-4 shrink-0 text-[var(--text-muted)] transition-transform ${accentOpen ? 'rotate-180' : ''}`} />
             <span className="min-w-0 flex-1">
-              <span className="block text-xs font-semibold uppercase tracking-wider text-gray-400">
+              <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
                 {t('speak.accent')} ({t('speak.accentOptional')})
               </span>
-              <span className="mt-1 block truncate text-sm text-white">
+              <span className="mt-1 block truncate text-sm text-[var(--text-primary)]">
                 {accentSummary}
               </span>
             </span>
@@ -203,12 +207,15 @@ export function GeminiModeVoicePicker({
         </CollapsibleTrigger>
         <CollapsibleContent>
           <div className="space-y-4 overscroll-contain pt-4 pr-1">
-            <p className="text-xs text-amber-200/90">
+            <p className="text-xs text-[var(--accent-warm)]/90">
               {t('speak.accent.experimental')}
             </p>
-            {(['none', 'regional', 'theatrical'] as const).map((group) => (
+            {(showTheatricalAccents
+              ? (['none', 'regional', 'theatrical'] as const)
+              : (['none', 'regional'] as const)
+            ).map((group) => (
               <div key={group}>
-                <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
+                <p className="text-[11px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
                   {t(GROUP_LABEL_KEYS[group])}
                 </p>
                 <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
@@ -225,12 +232,12 @@ export function GeminiModeVoicePicker({
                         disabled={disabled}
                         className={`flex items-center justify-between gap-2 rounded-xl border px-3 py-2.5 text-left transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
                           selected
-                            ? 'border-indigo-200/45 bg-indigo-950/35 text-white'
-                            : 'border-white/10 bg-slate-900/55 text-slate-200 hover:bg-slate-800/65'
+                            ? 'border-[var(--accent)]/45 bg-[var(--accent-soft)] text-[var(--text-primary)]'
+                            : 'border-[var(--border-subtle)] bg-[var(--surface-glass)] text-[var(--text-secondary)] hover:bg-[var(--surface-glass-strong)]'
                         }`}
                       >
                         <span className="text-xs font-medium truncate">{accent.name}</span>
-                        {selected && <Check className="h-3.5 w-3.5 text-cyan-300 shrink-0" />}
+                        {selected && <Check className="h-3.5 w-3.5 text-[var(--accent-2)] shrink-0" />}
                       </button>
                     )
                   })}

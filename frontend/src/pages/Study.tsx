@@ -202,8 +202,8 @@ export default function Study() {
                 ) : activeThumbnailUrl ? (
                   <img
                     src={activeThumbnailUrl}
-                    alt={current.word}
-                    className="w-full aspect-video object-cover"
+                    alt={revealed ? current.word : ''}
+                    className="w-full aspect-video object-contain"
                   />
                 ) : (
                   <div className="w-full aspect-video bg-muted flex items-center justify-center">

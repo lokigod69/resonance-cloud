@@ -107,7 +107,7 @@ export default function StudyPG() {
           <p className="text-sm mt-1" style={{ color: 'var(--pg-text-dim)' }}>
             <span style={{ color: 'var(--pg-accent-green)' }}>{t('study.remembered', { count: sessionStats.remembered })}</span>
             {sessionStats.reviewLater > 0 && (
-              <span className="ml-2" style={{ color: '#fb923c' }}>{t('study.needReview', { count: sessionStats.reviewLater })}</span>
+              <span className="ml-2" style={{ color: 'var(--pg-accent-gold)' }}>{t('study.needReview', { count: sessionStats.reviewLater })}</span>
             )}
           </p>
         </div>
@@ -208,8 +208,8 @@ export default function StudyPG() {
               ) : activeThumbnailUrl ? (
                 <img
                   src={activeThumbnailUrl}
-                  alt={current.word}
-                  className="w-full aspect-video object-cover"
+                  alt={revealed ? current.word : ''}
+                  className="w-full aspect-video object-contain"
                 />
               ) : (
                 <div className="w-full aspect-video bg-gradient-to-br from-card to-transparent flex items-center justify-center">

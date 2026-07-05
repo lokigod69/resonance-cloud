@@ -60,14 +60,14 @@ export function CharacterGrid({ onSelect, disabled }: CharacterGridProps) {
     <div className="space-y-5">
       {/* Style Tutors */}
       <div>
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">STYLE TUTORS</h3>
+        <h3 className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-3">STYLE TUTORS</h3>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {styleTutors.map((char, index) => (
             <button
               key={char.id}
               onClick={() => onSelect(char)}
               disabled={disabled}
-              className="speak-glass-card flex min-h-[144px] flex-col items-center justify-center gap-2 px-3 py-4 transition-all hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65 disabled:cursor-not-allowed disabled:opacity-50"
+              className="speak-glass-card flex min-h-[144px] flex-col items-center justify-center gap-2 px-3 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:bg-[var(--surface-glass-strong)] disabled:cursor-not-allowed disabled:opacity-50"
             >
               <CharacterAvatar
                 name={char.name}
@@ -76,28 +76,28 @@ export function CharacterGrid({ onSelect, disabled }: CharacterGridProps) {
                 loading={getStyleTutorAvatarLoading(index)}
                 framed
               />
-              <span className="text-xs font-medium text-white truncate w-full text-center">{char.name}</span>
+              <span className="text-xs font-medium text-[var(--text-primary)] truncate w-full text-center">{char.name}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* Separator */}
-      <div className="border-t border-white/5" />
+      <div className="border-t border-[var(--border-subtle)]" />
 
       {/* Persona + Public Characters */}
       <div>
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">CHARACTERS</h3>
+        <h3 className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-3">CHARACTERS</h3>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {personaCharacters.map((char) => (
             <button
               key={char.id}
               onClick={() => onSelect(char)}
               disabled={disabled}
-              className="speak-glass-card flex min-h-[144px] flex-col items-center justify-center gap-2 px-3 py-4 transition-all hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65 disabled:cursor-not-allowed disabled:opacity-50"
+              className="speak-glass-card flex min-h-[144px] flex-col items-center justify-center gap-2 px-3 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:bg-[var(--surface-glass-strong)] disabled:cursor-not-allowed disabled:opacity-50"
             >
               <CharacterAvatar name={char.name} gender={char.gender} avatarUrl={char.avatarUrl} />
-              <span className="text-xs font-medium text-white truncate w-full text-center">{char.name}</span>
+              <span className="text-xs font-medium text-[var(--text-primary)] truncate w-full text-center">{char.name}</span>
             </button>
           ))}
         </div>

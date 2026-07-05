@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { isStudyQueue, useStudySession } from '@/hooks/useStudySession'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { useTranslation } from '@/hooks/useTranslation'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { QueueIndicator } from '@/components/study/QueueIndicator'
 import EmberCanvas from '@/components/study/canvas/EmberCanvas'
@@ -148,6 +149,7 @@ function getLanguageCode(language: string | null | undefined) {
 
 export default function StudyCanvas() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const [searchParams] = useSearchParams()
   const { activeLanguage, setActiveLanguage } = useLanguage()
 
@@ -401,7 +403,7 @@ export default function StudyCanvas() {
       <CanvasShell>
         <div className="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center gap-4">
         <LingwaveLoader size={80} className="py-0" />
-          <p className="text-sm text-white/50">Loading…</p>
+          <p className="text-sm text-white/50">{t('study.loadingCards')}</p>
         </div>
       </CanvasShell>
     )

@@ -162,10 +162,10 @@ export function VoiceSampleButton({
       aria-label={title}
       className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
         isPlaying
-          ? 'bg-cyan-600 text-white hover:bg-cyan-500'
+          ? 'bg-[var(--accent)] text-[var(--on-accent)] hover:brightness-110'
           : error
           ? 'bg-red-900/40 text-red-300 hover:bg-red-900/60'
-          : 'bg-gray-700/60 text-gray-200 hover:bg-gray-600'
+          : 'bg-[var(--field-bg)] text-[var(--text-secondary)] hover:bg-[var(--accent-soft)]'
       } disabled:opacity-60 disabled:cursor-wait`}
     >
       {loading ? (

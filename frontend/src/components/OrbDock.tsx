@@ -53,7 +53,8 @@ export default function OrbDock({ words, currentIndex, onSelect }: OrbDockProps)
                   width: '100%',
                   height: '100%',
                   borderRadius: '50%',
-                  background: `hsl(${(index * 40) % 360}, 60%, 40%)`,
+                  background: 'linear-gradient(135deg, var(--surface-glass-strong), var(--surface-glass))',
+                  border: '1px solid var(--border-subtle)',
                 }}
               />
             )}

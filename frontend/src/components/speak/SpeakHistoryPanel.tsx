@@ -276,16 +276,16 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
 
   return (
     <div
-      className="fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-route-top-offset)] z-40 flex flex-col bg-gray-950/95 backdrop-blur-xl transition-transform duration-300"
+      className="fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-route-top-offset)] z-40 flex flex-col bg-[var(--surface-1)]/95 backdrop-blur-xl transition-transform duration-300"
       style={{ transform: open ? 'translateX(0)' : 'translateX(100%)' }}
     >
       {/* ── Header ── */}
-      <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md">
+      <div className="shrink-0 border-b border-[var(--border-subtle)] bg-[var(--surface-1)]/80 backdrop-blur-md">
         <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
           {selectedId ? (
             <button
               onClick={() => { setSelectedId(null); setMessages([]) }}
-              className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+              className="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors"
               title={t('speak.history.back')}
             >
               <ArrowLeft className="h-5 w-5" />
@@ -314,32 +314,32 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
                 <div className="flex items-center gap-2">
                   <FlagIcon code={selectedConversation.language} className="w-6 h-auto" />
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-white truncate">
+                    <p className="text-sm font-medium text-[var(--text-primary)] truncate">
                       {transcriptTitle}
-                      {transcriptSub ? <span className="text-gray-400 font-normal"> · {transcriptSub}</span> : null}
+                      {transcriptSub ? <span className="text-[var(--text-muted)] font-normal"> · {transcriptSub}</span> : null}
                       {isGemini && (
-                        <span className="ml-2 align-middle inline-block text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-900/50 text-cyan-300 border border-cyan-500/30">
+                        <span className="ml-2 align-middle inline-block text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[var(--accent-2-soft)] text-[var(--accent-2)] border border-[var(--accent-2)]/30">
                           {t('speak.mode.voices')}
                         </span>
                       )}
                       {isGrok && (
-                        <span className="ml-2 align-middle inline-block text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-violet-900/50 text-violet-300 border border-violet-500/30">
+                        <span className="ml-2 align-middle inline-block text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent)]/30">
                           {t('speak.mode.live')}
                         </span>
                       )}
                     </p>
-                    <p className="text-xs text-gray-500">{formatDate(selectedConversation.started_at, t)}</p>
+                    <p className="text-xs text-[var(--text-muted)]/80">{formatDate(selectedConversation.started_at, t)}</p>
                   </div>
                 </div>
               )
             })() : (
-              <p className="text-sm font-semibold text-white">{t('speak.history.title')}</p>
+              <p className="text-sm font-semibold text-[var(--text-primary)]">{t('speak.history.title')}</p>
             )}
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+            className="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors"
             title={t('speak.history.close')}
           >
             <X className="h-5 w-5" />
@@ -355,16 +355,16 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
           {!selectedId && (
             <>
               {loading && (
-                <div className="flex items-center justify-center py-16 text-gray-500 text-sm">
+                <div className="flex items-center justify-center py-16 text-[var(--text-muted)]/80 text-sm">
                   {t('speak.history.loading')}
                 </div>
               )}
 
               {!loading && conversations.length === 0 && (
                 <div className="flex flex-col items-center justify-center py-20 gap-3 text-center">
-                  <Mic className="h-10 w-10 text-gray-700" />
-                  <p className="text-gray-400 text-sm font-medium">{t('speak.history.emptyTitle')}</p>
-                  <p className="text-gray-600 text-xs max-w-xs">{t('speak.history.emptyDescription')}</p>
+                  <Mic className="h-10 w-10 text-[var(--text-muted)]/40" />
+                  <p className="text-[var(--text-muted)] text-sm font-medium">{t('speak.history.emptyTitle')}</p>
+                  <p className="text-[var(--text-muted)]/60 text-xs max-w-xs">{t('speak.history.emptyDescription')}</p>
                 </div>
               )}
 
@@ -393,43 +393,43 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
                         tabIndex={0}
                         onClick={() => setSelectedId(conv.id)}
                         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedId(conv.id) }}
-                        className="group w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left cursor-pointer"
+                        className="group w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[var(--surface-glass)] border border-[var(--border-subtle)] hover:bg-[var(--surface-glass-strong)] hover:border-[var(--border-strong)] transition-all text-left cursor-pointer"
                       >
                         <FlagIcon code={conv.language} className="w-7 h-auto shrink-0" />
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
                             {isRoleplay && <span className="text-sm">🎭</span>}
-                            <span className="text-sm font-medium text-white truncate">
+                            <span className="text-sm font-medium text-[var(--text-primary)] truncate">
                               {displayTitle}
                             </span>
                             {displayName && (
-                              <span className="text-xs text-gray-400 truncate">· {displayName}</span>
+                              <span className="text-xs text-[var(--text-muted)] truncate">· {displayName}</span>
                             )}
                             {isGemini && (
-                              <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-900/50 text-cyan-300 border border-cyan-500/30 shrink-0">
+                              <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[var(--accent-2-soft)] text-[var(--accent-2)] border border-[var(--accent-2)]/30 shrink-0">
                                 {t('speak.mode.voices')}
                               </span>
                             )}
                             {isGrok && (
-                              <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-violet-900/50 text-violet-300 border border-violet-500/30 shrink-0">
+                              <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent)]/30 shrink-0">
                                 {t('speak.mode.live')}
                               </span>
                             )}
                             {levelEmoji && <span className="text-sm">{levelEmoji}</span>}
                           </div>
                           {!isRoleplay && conv.title && (
-                            <p className="text-xs text-gray-400 truncate">{conv.title}</p>
+                            <p className="text-xs text-[var(--text-muted)] truncate">{conv.title}</p>
                           )}
                           {isRoleplay && (
-                            <p className="text-xs text-gray-500 truncate">{LANGUAGE_NAMES[conv.language] ?? conv.language}</p>
+                            <p className="text-xs text-[var(--text-muted)]/80 truncate">{LANGUAGE_NAMES[conv.language] ?? conv.language}</p>
                           )}
                         </div>
 
                         <div className="flex flex-col items-end gap-1 shrink-0">
-                          <span className="text-xs text-gray-500">{formatDate(conv.started_at, t)}</span>
+                          <span className="text-xs text-[var(--text-muted)]/80">{formatDate(conv.started_at, t)}</span>
                           {conv.message_count > 0 && (
-                            <span className="text-xs bg-gray-700/60 text-gray-400 px-1.5 py-0.5 rounded-full">
+                            <span className="text-xs bg-[var(--field-bg)] text-[var(--text-muted)] px-1.5 py-0.5 rounded-full">
                               {conv.message_count}
                             </span>
                           )}
@@ -437,13 +437,13 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
 
                         <button
                           onClick={(e) => deleteConversation(conv.id, e)}
-                          className="p-1 rounded text-gray-500 hover:text-red-400 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shrink-0"
+                          className="p-1 rounded text-[var(--text-muted)]/80 hover:text-red-400 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shrink-0"
                           title={t('speak.history.delete')}
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
 
-                        <ChevronRight className="h-4 w-4 text-gray-600 shrink-0" />
+                        <ChevronRight className="h-4 w-4 text-[var(--text-muted)]/60 shrink-0" />
                       </div>
                     )
                   })}
@@ -456,13 +456,13 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
           {selectedId && (
             <>
               {messagesLoading && (
-                <div className="flex items-center justify-center py-16 text-gray-500 text-sm">
+                <div className="flex items-center justify-center py-16 text-[var(--text-muted)]/80 text-sm">
                   {t('speak.history.loading')}
                 </div>
               )}
 
               {!messagesLoading && messages.length === 0 && (
-                <div className="flex items-center justify-center py-16 text-gray-600 text-sm">
+                <div className="flex items-center justify-center py-16 text-[var(--text-muted)]/60 text-sm">
                   {t('speak.history.emptyMessages')}
                 </div>
               )}
@@ -477,8 +477,8 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
                       <div
                         className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed long-copy ${
                           msg.role === 'user'
-                            ? 'bg-cyan-900/50 text-white rounded-br-sm'
-                            : 'bg-gray-800/60 text-gray-100 rounded-bl-sm'
+                            ? 'speak-message-user rounded-br-sm'
+                            : 'speak-message-assistant rounded-bl-sm'
                         }`}
                       >
                         <p className="long-copy">{msg.content}</p>
@@ -497,7 +497,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
                         <button
                           onClick={fetchHistoryCorrections}
                           disabled={correctionsLoading}
-                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors border border-white/10 disabled:opacity-50"
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors border border-[var(--border-subtle)] disabled:opacity-50"
                         >
                           <span>📝</span>
                           <span>{correctionsLoading ? t('speak.reviewLoading') : t('speak.reviewButton')}</span>
@@ -508,12 +508,12 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
                         </div>
                       ) : (
                         <div className="w-full max-w-lg space-y-3">
-                          <p className="text-xs text-gray-500 text-center mb-2">{t('speak.reviewTitle')}</p>
+                          <p className="text-xs text-[var(--text-muted)]/80 text-center mb-2">{t('speak.reviewTitle')}</p>
                           {corrections.map((c, i) => (
-                            <div key={i} className="bg-white/5 rounded-lg p-3 space-y-1 long-copy">
+                            <div key={i} className="theme-panel rounded-lg p-3 space-y-1 long-copy">
                               <p className="text-sm text-red-400/80 line-through long-copy">{c.original}</p>
                               <p className="text-sm text-green-400/80 long-copy">{c.corrected}</p>
-                              <p className="text-xs text-gray-500 long-copy">{c.explanation}</p>
+                              <p className="text-xs text-[var(--text-muted)]/80 long-copy">{c.explanation}</p>
                             </div>
                           ))}
                         </div>
@@ -527,7 +527,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
                             baseLanguage: baseLangCode || 'en',
                             defaultDeckName,
                           })}
-                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors border border-white/10"
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors border border-[var(--border-subtle)]"
                         >
                           <span>{t('speak.extractWords.button')}</span>
                         </button>
@@ -545,7 +545,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
                           baseLanguage: baseLangCode || 'en',
                           defaultDeckName,
                         })}
-                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors border border-white/10"
+                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors border border-[var(--border-subtle)]"
                       >
                         <span>{t('speak.extractWords.button')}</span>
                       </button>
