@@ -1,14 +1,15 @@
 import { ProductLaneVisualSelector } from '../shared/PremiumVisualSelectors'
 import { useTranslation } from '@/hooks/useTranslation'
+import { VIDEO_LANE_ENABLED } from '@/lib/productFlags'
 import type { ProductLane } from '../useWizardState'
 
 interface ProductLaneStepProps {
   value: ProductLane | null
   onChange: (value: ProductLane) => void
-  /** "all" shows Video + Standard + Premium. "card-only" shows just the two
-   *  card tiles — used when appending to an existing card deck (the deck's
-   *  language and card vs. video commitment is locked, but the user may still
-   *  pick Standard or Premium). */
+  /** "all" shows every offered lane (Video only while VIDEO_LANE_ENABLED).
+   *  "card-only" shows just the two card tiles — used when appending to an
+   *  existing card deck (the deck's language and card vs. video commitment is
+   *  locked, but the user may still pick Standard or Premium). */
   variant?: 'all' | 'card-only'
   skin?: 'classic' | 'glassy'
 }
@@ -57,7 +58,7 @@ export default function ProductLaneStep({
 
   const tiles = variant === 'card-only'
     ? allTiles.filter((tile) => tile.value === 'card_standard' || tile.value === 'card_premium')
-    : allTiles
+    : allTiles.filter((tile) => VIDEO_LANE_ENABLED || tile.value !== 'video')
 
   const title =
     variant === 'card-only'
