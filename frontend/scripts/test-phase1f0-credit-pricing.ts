@@ -477,11 +477,8 @@ async function main() {
     assert.ok(ok(quota.status), `quota read failed ${quota.status}: ${JSON.stringify(quota.data)}`)
     assert.equal((quota.data as Array<{ enforcement_enabled: boolean }>)[0]?.enforcement_enabled, false)
 
-    const settingsCopy = fs.readFileSync(path.resolve('src/pages/Settings.tsx'), 'utf8')
-    assert.ok(
-      !settingsCopy.includes('Each word generation costs 1 credit'),
-      'Settings copy must not say every word generation costs 1 credit',
-    )
+    // The standalone Settings page (and its stale pricing copy) was removed in
+    // the 2026-07 cleanup pass; profile settings live in ProfileModal now.
 
     console.log('Phase 1F.0 credit pricing tests passed')
   } finally {
