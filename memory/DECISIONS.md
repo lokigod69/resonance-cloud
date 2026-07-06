@@ -2,6 +2,39 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-07-06 — Language additions follow the tier model; Tier 0 is the default landing point
+**Status:** active — encoded in `docs/Product/FABLE_LANGUAGE_ARCHITECTURE.md` + `.claude/skills/add-target-language`
+**Decision:** A new target language ships at Tier 0 (wizard-only: one `LANGUAGES` entry + langName keys + flag maps) by default; every higher tier (1 categories, 2 curated TTS, 3 Speak, 4 script pack, 5 guided) is a separately approved step, and paid asset batches (ElevenLabs/Mistral) always need explicit owner approval. Base-locale additions gate on `check-i18n-coverage.ts` `requiredLocales`; RTL base locales are blocked pending a layout pass. Russian shipped 2026-07-06 at Tier 0 + Cyrillic script pack as the system's proof.
+**Why:** The investigation showed surfaces degrade gracefully at lower tiers but fail non-gracefully when half-wired (voice-chat 400s, silent thematic cards, invisible landing chips) — so tiers must be all-or-nothing per surface, and the skills enforce that.
+**Rejected:** “Add everything everywhere” single-pass language additions; optimistic wiring of Speak/guided/category lists ahead of their content.
+
+## 2026-07-06 — Lens beta exposure, placement, and quota (owner answers, Phase 2A kickoff)
+**Status:** active — recorded in `FABLE_VISUAL_LENS_MASTER_PLAN.md` §Owner answers
+**Decision:** `VISUAL_LENS_ENABLED` ships ON for the first TestFlight testers (Lens is visible from day one). Placement stays a dashboard/home tile — owner leans against giving Lens a bottom-nav slot; revisit only if dogfooding demands it (any nav change still needs explicit owner approval). Free quota starts at 30 scans/day ("at least 30 is okay at the beginning"); can be raised later, cost permits. Working name Lens proceeds; final copy sign-off remains open until the 2F gate.
+**Why:** Owner wants testers exercising the wow feature immediately, and prefers home-surface discovery over fighting the hard six-slot nav grid during beta.
+**Rejected:** Flag-off-for-beta (Fable's earlier fewer-visible-systems recommendation — owner overrode); immediate tab promotion.
+
+## 2026-07-06 — Lens mixed save counts stay count-based unless per-row identity is known
+**Status:** active — implemented in working tree, uncommitted
+**Decision:** Phase 2D does not infer per-item save outcomes from `submit_lens_save` count-only responses. If all submitted items insert, rows are marked saved. If all submitted items skip, rows are marked already present. If inserts and skips are mixed, Lens shows the accurate aggregate line (`saved`, `already known`) and leaves ambiguous rows unmutated; only pre-save `existingWordHints` can mark known duplicates ahead of the RPC. The visual prompt also treats target-language text as reading/meaning mode rather than re-translation.
+**Why:** The RPC intentionally returns counts, not item IDs. Marking every submitted row saved after a partial skip made the recap false; count-based messaging preserves truth without changing the schema or RPC contract.
+
+## 2026-07-06 — Lens saves use a dedicated RPC and normalized word_slug idempotency
+**Status:** active — implemented in working tree, uncommitted
+**Decision:** `submit_lens_save` is a new `security definer` RPC instead of mutating imageless import contracts. It owns the find-or-create for `Lens — {Language}` `card_text` decks, writes Lens lexical fields directly to `words`, stores transliteration only in `words.metadata`, and dedupes inside the Lens deck with normalized `lower(btrim(word))` `word_slug` plus fallback matching for older/null-slug rows.
+**Why:** Existing imageless RPCs do not support `origin='lens'`, rich fields, find-or-create, or idempotent duplicate handling. The current import path also does not reliably populate `word_slug`, so Lens makes the normalized key explicit while preserving compatibility with existing rows by checking `lower(btrim(word))`.
+
+## 2026-07-06 — Lens Phase 2B keeps scan text transient and normalizes at API boundary
+**Status:** active — implemented in working tree, uncommitted
+**Decision:** `/api/visual-scan` owns all provider parsing and clamps Gemini output to the existing client contract before the browser sees it: snake_case lexical fields, `kind`, `safety`, max 8 text/menu items, max 2 alternates, confidence coercion, and no lexical items when `safety` is set. Usage events record feature/model/tokens/cost/count metadata only; image bytes are never logged or stored. OpenRouter vision exists only as a same-interface stub for later failover.
+**Why:** The camera frame is private and intentionally one-shot; putting normalization server-side keeps client UI stable, avoids leaking provider drift into Phase 2A code, and gives quota/metering one controlled boundary.
+
+## 2026-07-06 — Lens (camera vocabulary) is capture-first, one vision call, existing deck rails
+**Status:** proposed — Phase Zero + master plan done, implementation not started; see `docs/Product/FABLE_VISUAL_LENS_MASTER_PLAN.md`
+**Decision:** The camera feature ("Lens", flag `VISUAL_LENS_ENABLED`, route `/lens` via dashboard tile) is a deliberate shutter-tap → single Gemini-Flash multimodal call (object/OCR/menu in one structured lexical response) → result sheet → save into an auto "Lens — {language}" `card_text` deck through ONE new RPC `submit_lens_save` (atomic find-or-create, in-RPC dedupe, origin `lens`, rich fields into existing `words` columns, transliteration into `metadata`). New quota action `visual_scan`; frames never stored; browser TTS tap-to-speak only; no new tables.
+**Why:** Web-in-Capacitor reality kills on-device CV (no Apple Vision; TF.js = MBs for 80 classes); one vision call is cheaper (<$0.001/scan), calmer UX, and handles lexical correctness in-prompt. Import-into-the-learning-loop is the differentiator (sibling of Speak's extract-words), not recognition itself.
+**Rejected:** Continuous scanning/auto-speak (cost, chaos, privacy); fal.ai (not in stack, no fit); the GPT prompt's 11-table `visual_*` schema (decks/words/quota/usage-events already cover it); reusing `append_imageless_cards` for saves (origin whitelist, `{word,translation,ipa,is_phrase}`-only items, no find-or-create/dedupe — proven too narrow by Codex adversarial review); bottom-nav tab at MVP (hard 6-slot grid + beta minimalism; owner decides promotion later).
+
 ## 2026-07-06 — Writing systems are a registry-driven data module ("Script Lab") at /alphabet
 **Status:** active — Korean/Hangul shipped as the reference implementation
 **Decision:** Non-Roman writing systems get one generic module: user-facing "Alphabet" at `/alphabet(/:scriptId)` (both skins), discovered via a registry-gated tile in the Study hub. Everything language-specific is data (`src/data/scripts/*.ts` conforming to `lib/scriptlab/types.ts`) + one registry entry; UI components never know a script. Audio is spec-first (`{itemId, text}` — letter names like 기역, never bare jamo) resolving manifest asset → browser speechSynthesis; no paid TTS in any client path. Content localization is `LocalizedText{en,de,fr}` in the data (enforced by `test:script-lab`, stricter than check:i18n's warn-only fr). Progress is localStorage-only. New scripts follow `.claude/skills/add-script-lab-language/SKILL.md`.

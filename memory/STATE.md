@@ -1,5 +1,5 @@
 # Current State
-Last updated: 2026-07-06
+Last updated: 2026-07-06 (night — Lens 2A–2D uncommitted; language-expansion system + Russian shipped)
 
 ## What this is
 Lingwave, a cloud-first language-learning app (guided lessons, SRS cards, AI music, voice tutor). Live frontend in `frontend/` (Vercel + Supabase); Python generation backend (`job_runner.py`, `src/`, `cloud_engines/`) on Railway. Target: TestFlight/private beta this month (July 2026).
@@ -9,27 +9,32 @@ Lingwave, a cloud-first language-learning app (guided lessons, SRS cards, AI mus
 - Cloud generation pipeline: `job_runner.py` v2 pipelined orchestrator + `src/orchestration/*` workers + in-process `src/cloud_dispatcher.py` → `cloud_engines/*`. Orchestration last active 2026-06-28.
 - Phase 1 stabilization program (docs/Stabilization/): role/credit hardening, RPC-only invite redemption, atomic `submit_generation` + `request_word_retry`, worker `pre_bootstrap`. Has a `PHASE1_FINAL_CLOSEOUT_REPORT.md`.
 - Static thematic TTS batches (es/de/fr/ceb/id/ko), Capacitor iOS shell readiness work landed.
-- **Script Lab / Alphabet module (2026-07-06):** `/alphabet` teaches writing systems; Korean/Hangul V1 live (47 symbols, Learn/Build/Quiz, browser-speech audio). Registry-driven — new scripts are data packs (`.claude/skills/add-script-lab-language`). Docs: `docs/Product/FABLE_SCRIPT_LAB_ARCHITECTURE.md` + Hangul spec + audio plan. All checks green; manual mobile QA pending.
+- **Script Lab / Alphabet module (2026-07-06):** `/alphabet` teaches writing systems; Korean/Hangul V1 live (47 symbols, Learn/Build/Quiz, 141 static audio clips + browser-speech fallback, pushed to main) and **Russian/Cyrillic** (33 letters, browser-speech audio). Registry-driven — new scripts are data packs (`.claude/skills/add-script-lab-language`). Manual mobile QA pending.
+- **Language-expansion system (2026-07-06):** `docs/Product/FABLE_LANGUAGE_ARCHITECTURE.md` (4 disjoint registries, launch tiers 0–5, landmines) + three skills — `.claude/skills/add-target-language`, `add-base-locale` (RTL blocked), `review-language-addition`. Proven live: **Russian added at Tier 0** (wizard-selectable, RU flag, en/de/fr labels) + Cyrillic pack, both by fresh agents using only the skills; review-skill pass caught and fixed 2 content defects. Higher Russian tiers (categories ~1,850 terms, Speak api/ wiring, landing, guided) are separate approvable steps.
 
 ## In progress
-- **Launch-readiness cleanup pass (session A, 2026-07-06): DONE.** Video lane hidden (`VIDEO_LANE_ENABLED` in `lib/productFlags.ts`, commit 6b5991ce); ~2,000 lines provably dead code removed (ade651bc, baaeea7c); video-era study copy fixed in 3 locales (b749a300); README rewritten. Decision docs: `docs/Refactors/FABLE_{CODE_CLEANUP_AUDIT_REPORT,VIDEO_DEPRECATION_BOUNDARY,SAFE_CLEANUP_PATCH_PLAN}.md`. (Codex packet was never delivered — runtime wedged twice; findings folded into the audit report.)
-- **TestFlight UX-coherence pass (session B, 2026-07-06):** audit complete, 4 plan docs in `docs/Product/FABLE_*.md`, first 7 small UI fixes landed (study i18n/colors, speak accent gating via new `frontend/src/lib/speakCuration.ts`). Next: Speak Phase 1 re-skin + Phase 2 curation, StudyCardFrame/SessionComplete extraction (see plan docs).
-- Video product direction: deprecated user-facing, backend pipeline kept (see [[DECISIONS]]).
+- **Lens camera feature: phases 2A–2D BUILT AND VERIFIED, entirely UNCOMMITTED in `orchestrator/frontend`.** Capture-first camera page `/lens` (flag `VISUAL_LENS_ENABLED=true`, protected fullscreen route, lazy, dashboard tiles in both skins) → `/api/visual-scan` (Gemini 2.5 Flash-Lite, quota action `visual_scan` 30/day, cost/usage metering, strict contract normalization, safety stripping) → save via new `submit_lens_save` RPC into auto "Lens — {Language}" `card_text` decks (find-or-create, in-RPC `word_slug` dedupe, transliteration in metadata). Per-row save for text/menu results, bulk save, recap, duplicate hints, source-language prompt rules. All checks green (typecheck, api typecheck, lint, check:i18n, 18/18 endpoint tests, 17/17 mapping tests). Two migrations written, NOT applied: `20260706020000_visual_scan_quota_action.sql`, `20260706030000_submit_lens_save.sql`. Docs: `docs/Product/FABLE_VISUAL_LENS_MASTER_PLAN.md` (status: built; owner answers recorded) + discovery report in `D:\CODING\ResonanceTEST\investigations\`.
+- **TestFlight UX-coherence pass (session B):** audit complete, 4 plan docs in `docs/Product/FABLE_*.md`; Speak Phase 1 re-skin landed; next: Speak Phase 2 curation (provider consolidation ON HOLD by owner), StudyCardFrame/SessionComplete extraction.
+- Video product direction: deprecated user-facing (`VIDEO_LANE_ENABLED=false`), backend pipeline kept (see [[DECISIONS]]).
 
 ## Known problems
-- Root-level clutter: one-off scripts/artifacts (`resonance_arch_compare_pack/`, `investigation/`, `manual_repair_enrichment_wedged_words.sql`, `ADVERSARIAL_REVIEW_*`, `start*.bat`, `recent-workspaces.json`). Deferred (L5 in patch plan) pending owner archive/delete call.
-- Duplicated skin page pairs (classic vs PG/GO variants) — same routes, two component sets chosen in `App.tsx` by `skin === 'glassy'`; divergence risk. Blocked on glassy-only-for-beta decision (L1).
+- Root-level clutter: one-off scripts/artifacts (`resonance_arch_compare_pack/`, `investigation/`, `manual_repair_enrichment_wedged_words.sql`, `ADVERSARIAL_REVIEW_*`, `start*.bat`, `recent-workspaces.json`). Deferred (L5) pending owner archive/delete call.
+- Duplicated skin page pairs (classic vs PG/GO variants) — divergence risk; blocked on glassy-only-for-beta decision (L1).
 - Video/pipeline Python core frozen since ~2026-04-30 — treat as legacy-stable; don't refactor casually.
 - `start_cloud.py:66-89` hard-requires video-era `POD_URL`/`POD_AUTH_TOKEN` at boot — unsetting them in Railway kills card/music generation (L4).
 - The `videos` Supabase bucket holds card PNGs too (`card_worker.py:710-783`) — never "clean up" that bucket as video-only (L6).
-- Admin Profiles voice/LoRA pickers call local-DAW endpoints via `src/api.ts` that 404 in production (admin-only; inventory note).
+- Admin Profiles voice/LoRA pickers call local-DAW endpoints via `src/api.ts` that 404 in production (admin-only).
+- `/api/generate-imageless-tts` is referenced by `useGenerateImagelessTts.ts` but the Vercel function doesn't exist — blocks Lens Phase C generated audio (browser TTS unaffected).
+- Codex sandbox on this machine cannot spawn esbuild (`tsx` → `spawn EPERM`) — Codex packets can't run tsx-based checks; Fable must re-verify locally every time.
 
 ## Open questions
-- Landing experiment routes `/a`, `/b`, `/landing/*` publicly routable — gate or keep? (session B's call)
-- Glassy-only for beta — owner sign-off pending (see DECISIONS 2026-07-06 proposed entry).
+- Landing experiment routes `/a`, `/b`, `/landing/*` publicly routable — gate or keep?
+- Glassy-only for beta — owner sign-off pending.
+- Lens name final sign-off + eventual tab promotion — owner decides at the 2F gate after dogfood.
 
 ## Next actions
-1. UX pass follow-ups (docs/Product/FABLE_* plans): Speak Phase 1 palette re-skin → Phase 2 curation; StudyCardFrame + SessionComplete extraction; gate landing experiment routes; decide glassy-only-for-beta (owner sign-off).
-2. Script Lab follow-ups: owner mobile/visual QA of /alphabet (audio batch DONE 2026-07-06 — 141 clips live, review-hardened, pushed to main); dashboard tile entry point; first reuse proof requires adding the language first — see `docs/Product/FABLE_LANGUAGE_EXPANSION_BRIEF.md` (next big agenda: add-target-language / add-base-locale skills, proof = Russian).
-3. Cleanup later-pass items live in `docs/Refactors/FABLE_SAFE_CLEANUP_PATCH_PLAN.md` (L1–L8) — pick up L2 (unreachable video wizard steps) on the next wizard touch.
-4. Explicitly deferred: Stripe/iOS work, tutor-catalog Phase 3, Study 2×2 file consolidation, PG/classic consolidation, any Supabase schema changes.
+1. **Lens deploy gate (owner go/no-go):** commit + push the working tree (Vercel deploy), apply the two Lens migrations to Supabase, confirm `GOOGLE_AI_API_KEY` in Vercel env. Then owner iPhone QA — the 2E device matrix: WKWebView camera permission/preview, orientation, torch, backgrounding, offline mid-scan, end-to-end save → deck → study.
+2. UX pass follow-ups: StudyCardFrame + SessionComplete extraction; gate landing experiment routes; glassy-only-for-beta decision.
+3. Script Lab follow-ups: owner mobile QA of /alphabet (now incl. Russian). Language-expansion agenda DONE 2026-07-06 (system + Russian Tier 0 proof); next Russian tiers on owner request via `.claude/skills/add-target-language`. Pre-existing breakage found: `test:i18n-display-labels` fails on HEAD (`generate.words.typeOwn` asserted by 2 test scripts but removed from translations.ts) — fix tests or restore key.
+4. Cleanup later-pass ladder L1–L8 in `docs/Refactors/FABLE_SAFE_CLEANUP_PATCH_PLAN.md`.
+5. Explicitly deferred: Stripe/iOS work, tutor-catalog Phase 3, Study 2×2 consolidation, PG/classic consolidation, any further Supabase schema changes beyond the two Lens migrations.
