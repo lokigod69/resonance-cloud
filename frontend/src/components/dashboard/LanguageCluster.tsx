@@ -1,21 +1,33 @@
 import { type CSSProperties, useEffect, useRef, useState } from 'react'
+import { Plus } from 'lucide-react'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
+import { WIZARD_LANGUAGES } from '@/lib/languages'
 
 type LanguageClusterProps = {
   languages: string[]
   activeLanguage: string | null
   onSelect: (lang: string) => void
+  /** When provided, an "+ Add language" affordance is shown that expands the
+   *  wizard languages the learner hasn't started yet. Called with the canonical
+   *  language value on selection. Omit to hide the add flow entirely. */
+  onAddLanguage?: (lang: string) => void
 }
 
 type LanguageChoiceStyle = CSSProperties & {
   '--language-choice-offset': string
 }
 
-export function LanguageCluster({ languages, activeLanguage, onSelect }: LanguageClusterProps) {
+export function LanguageCluster({ languages, activeLanguage, onSelect, onAddLanguage }: LanguageClusterProps) {
   const { t } = useTranslation()
   const [open, setOpen] = useState(false)
+  const [adding, setAdding] = useState(false)
   const rootRef = useRef<HTMLDivElement | null>(null)
+
+  const closePanel = () => {
+    setOpen(false)
+    setAdding(false)
+  }
 
   useEffect(() => {
     if (!open) return
@@ -23,11 +35,15 @@ export function LanguageCluster({ languages, activeLanguage, onSelect }: Languag
     const handlePointerDown = (event: PointerEvent) => {
       if (!rootRef.current?.contains(event.target as Node)) {
         setOpen(false)
+        setAdding(false)
       }
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false)
+      if (event.key === 'Escape') {
+        setOpen(false)
+        setAdding(false)
+      }
     }
 
     document.addEventListener('pointerdown', handlePointerDown)
@@ -44,10 +60,22 @@ export function LanguageCluster({ languages, activeLanguage, onSelect }: Languag
   const activeLabel = t(`langName.${activeLanguage}`)
   const hasChoices = languages.length > 1
   const activeIndex = Math.max(languages.indexOf(activeLanguage), 0)
+  const addableLanguages = onAddLanguage
+    ? WIZARD_LANGUAGES.filter((lang) => !languages.includes(lang.value))
+    : []
+  const canAdd = addableLanguages.length > 0
+  // The panel is worth opening when there's something inside it — other
+  // languages to switch to, or the add-language flow.
+  const hasPanel = hasChoices || canAdd
 
   const handleSelect = (language: string) => {
     onSelect(language)
-    setOpen(false)
+    closePanel()
+  }
+
+  const handleAdd = (language: string) => {
+    onAddLanguage?.(language)
+    closePanel()
   }
 
   const languageOptions = [
@@ -82,32 +110,62 @@ export function LanguageCluster({ languages, activeLanguage, onSelect }: Languag
       ref={rootRef}
       className={`lang-cluster language-picker ${open ? 'is-open' : ''}`}
       onPointerEnter={(event) => {
-        if (event.pointerType === 'mouse' && hasChoices) setOpen(true)
+        if (event.pointerType === 'mouse' && hasPanel) setOpen(true)
       }}
       onPointerLeave={(event) => {
-        if (event.pointerType === 'mouse') setOpen(false)
+        if (event.pointerType === 'mouse') closePanel()
       }}
       onFocus={() => {
-        if (hasChoices) setOpen(true)
+        if (hasPanel) setOpen(true)
       }}
       onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setOpen(false)
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) closePanel()
       }}
     >
       <button
         type="button"
         className="lang-pill lang-pill-active language-picker-trigger"
-        onClick={() => hasChoices && setOpen((value) => !value)}
+        onClick={() => {
+          if (!hasPanel) return
+          if (open) closePanel()
+          else setOpen(true)
+        }}
         aria-expanded={open}
-        disabled={!hasChoices}
+        disabled={!hasPanel}
       >
         <FlagIcon code={activeLanguage} className="w-5 h-auto" />
         <span>{activeLabel}</span>
       </button>
 
-      {hasChoices ? (
+      {hasPanel ? (
         <div className="language-picker-strip" role="group" aria-label={t('categories.targetLanguageLabel')}>
           {languageOptions}
+          {canAdd ? (
+            <div className="language-picker-add">
+              {adding ? (
+                addableLanguages.map((lang) => (
+                  <button
+                    key={lang.value}
+                    type="button"
+                    className="language-picker-add-option lang-pill"
+                    onClick={() => handleAdd(lang.value)}
+                  >
+                    <FlagIcon code={lang.code} className="w-6 h-auto" />
+                    <span>{t(`langName.${lang.value}`)}</span>
+                  </button>
+                ))
+              ) : (
+                <button
+                  type="button"
+                  className="language-picker-add-trigger lang-pill"
+                  onClick={() => setAdding(true)}
+                >
+                  <Plus className="w-4 h-4" aria-hidden="true" />
+                  <span>{t('dashboard.addLanguage')}</span>
+                </button>
+              )}
+            </div>
+          ) : null}
         </div>
       ) : null}
     </div>

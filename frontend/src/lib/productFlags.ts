@@ -1,8 +1,8 @@
 /**
  * Product-level feature flags for learner-facing surfaces.
  *
- * Same idea as RUNNER_GAME_ROUTE_ENABLED in App.tsx and the role gating in
- * lib/speakCuration.ts: hide, never delete. Flipping a flag back restores the
+ * Same idea as the role gating in lib/speakCuration.ts: hide, never delete.
+ * Flipping a flag back restores the
  * surface without touching data, routes, or backend behavior.
  */
 

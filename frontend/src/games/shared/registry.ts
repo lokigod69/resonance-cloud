@@ -7,7 +7,6 @@ export type GameEntry = {
   iconSrc: string
   route: string
   enabled: boolean
-  comingSoon?: boolean
   component?: () => Promise<{ default: ComponentType }>
 }
 
@@ -34,14 +33,5 @@ export const GAMES: GameEntry[] = [
     route: '/games/slicer',
     enabled: true,
     component: loadGameComponent('../slicer/SlicerGame.tsx'),
-  },
-  {
-    id: 'runner',
-    titleKey: 'games.runner.title',
-    subtitleKey: 'games.runner.subtitle',
-    iconSrc: '/games/runner/branding/runner-tile-icon.png',
-    route: '/games/runner',
-    enabled: true,
-    comingSoon: true,
   },
 ]

@@ -2288,9 +2288,20 @@
   font-size: 0.9rem;
   font-weight: 700;
   white-space: nowrap;
+  /* Primary action: accent-washed fill + firmer border so it reads clearly as
+     the main call to action rather than a faint tinted pill. */
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--accent) 34%, transparent), color-mix(in srgb, var(--accent) 14%, transparent)),
+    var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 58%, transparent);
   box-shadow:
-    0 12px 32px rgba(8, 176, 188, 0.14),
+    0 12px 32px rgba(8, 176, 188, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.skin-glassy .decks-glass-add:hover {
+  border-color: color-mix(in srgb, var(--accent) 78%, transparent);
+  filter: brightness(1.08);
 }
 
 .skin-glassy .decks-glass-add-label {

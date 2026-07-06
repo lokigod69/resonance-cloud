@@ -108,7 +108,7 @@ export default function PolishGlassLayout() {
       <main className={`w-full pt-[var(--glassy-content-top-offset)] pb-[var(--glassy-main-bottom-padding)] relative z-10 ${
         isSpeakRoute ? 'min-h-0' : 'min-h-dvh'
       }`}>
-        <Suspense fallback={<LingwaveLoader />}>
+        <Suspense fallback={<LingwaveLoader className="min-h-[calc(100dvh-8rem)]" />}>
           <Outlet />
         </Suspense>
       </main>

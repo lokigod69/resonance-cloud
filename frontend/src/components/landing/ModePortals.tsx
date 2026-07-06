@@ -9,8 +9,8 @@ import { TIDE_EASE } from './landingMotion'
 // transform per row, so it costs almost nothing) that show the sheer size of
 // the illustrated vocabulary before the feature portals.
 
-const WALL_ROW_A = ['dog', 'apple', 'guitar', 'hiking', 'coffee', 'hockey', 'moon', 'carrot']
-const WALL_ROW_B = ['mountain', 'bread', 'basketball', 'piano', 'ocean', 'rain', 'book', 'dancing']
+const WALL_ROW_A = ['dog', 'cat', 'guitar', 'lighthouse', 'coffee', 'hockey', 'moon', 'carrot']
+const WALL_ROW_B = ['mountain', 'cheese', 'waterfall', 'piano', 'ocean', 'rain', 'book', 'dancing']
 
 function WallRow({ slugs, reverse, reducedMotion }: { slugs: string[]; reverse?: boolean; reducedMotion: boolean }) {
   // Row content is doubled; the loop travels exactly half its width, so the

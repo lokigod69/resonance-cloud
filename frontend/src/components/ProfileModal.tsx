@@ -24,7 +24,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { LogOut, Check, Upload, Trash2, AlertTriangle } from 'lucide-react'
+import { LogOut, Check, Upload, Trash2, AlertTriangle, ChevronDown } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
 import { useToast } from '@/components/Toast'
@@ -119,6 +119,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
   const [newWordsPerDay, setNewWordsPerDay] = useState(normalizeNewWordsPerDay(profile?.new_words_per_day))
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [deleteConfirmInput, setDeleteConfirmInput] = useState('')
+  const [advancedOpen, setAdvancedOpen] = useState(false)
 
   // Sync state when modal opens or profile data changes
   useEffect(() => {
@@ -135,6 +136,13 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
       setDeleteConfirmInput('')
     }
   }, [deleteDialogOpen])
+
+  // Collapse Advanced options whenever the modal closes so it starts collapsed on reopen.
+  useEffect(() => {
+    if (!open) {
+      setAdvancedOpen(false)
+    }
+  }, [open])
 
   const [nameSaving, setNameSaving] = useState(false)
   const [nameSaved, setNameSaved] = useState(false)
@@ -545,17 +553,34 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
               {t('profile.signOut')}
             </Button>
 
-            {/* Delete Account */}
+            {/* Advanced options — keeps destructive actions (Delete account) out of the way */}
             <div className="border-t border-border pt-4">
-              <Button
+              <button
                 type="button"
-                variant="destructive"
-                onClick={() => setDeleteDialogOpen(true)}
-                className="w-full"
+                onClick={() => setAdvancedOpen((prev) => !prev)}
+                aria-expanded={advancedOpen}
+                className="flex w-full items-center justify-between rounded-lg px-1 py-2 text-sm font-medium text-muted-foreground"
               >
-                <Trash2 className="h-4 w-4 mr-2" />
-                {t('profile.deleteAccount')}
-              </Button>
+                {t('profile.advancedOptions')}
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${advancedOpen ? 'rotate-180' : ''}`}
+                  aria-hidden="true"
+                />
+              </button>
+
+              {advancedOpen && (
+                <div className="pt-3">
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    onClick={() => setDeleteDialogOpen(true)}
+                    className="w-full"
+                  >
+                    <Trash2 className="h-4 w-4 mr-2" />
+                    {t('profile.deleteAccount')}
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </DialogContent>

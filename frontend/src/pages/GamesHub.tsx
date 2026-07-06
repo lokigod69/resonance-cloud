@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { GAMES } from '@/games/shared/registry'
-import { ComingSoonOverlay } from '@/components/games/ComingSoonOverlay'
 
 export default function GamesHub() {
   const navigate = useNavigate()
@@ -25,26 +24,19 @@ export default function GamesHub() {
             const params = new URLSearchParams()
             params.set('returnTo', '/games')
             if (activeLanguage) params.set('lang', activeLanguage)
-            const isComingSoon = game.comingSoon === true
 
             return (
               <button
                 key={game.id}
                 type="button"
                 onClick={() => {
-                  if (isComingSoon) return
                   navigate(`${game.route}?${params.toString()}`)
                 }}
-                aria-disabled={isComingSoon}
-                className={`
+                className="
                   study-mode-card relative flex min-h-[180px] flex-col items-center justify-center gap-4 rounded-2xl border border-border bg-card p-6 text-center backdrop-blur transition-all duration-200
-                  ${isComingSoon
-                    ? 'cursor-not-allowed opacity-75'
-                    : 'hover:scale-[1.03] hover:border-accent hover:bg-accent active:scale-[0.98]'
-                  }
-                `}
+                  hover:scale-[1.03] hover:border-accent hover:bg-accent active:scale-[0.98]
+                "
               >
-                {isComingSoon && <ComingSoonOverlay />}
                 <img
                   src={game.iconSrc}
                   alt={t(game.titleKey)}

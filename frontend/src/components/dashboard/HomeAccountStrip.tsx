@@ -22,7 +22,7 @@ export function HomeAccountStrip() {
   const credits = typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0
 
   return (
-    <div className="home-account-strip flex md:hidden" aria-label="Account controls">
+    <div className="home-account-strip grid md:hidden" aria-label="Account controls">
       <Link to="/dashboard" className="home-account-brand" aria-label="Lingwave home">
         <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5" />
       </Link>
@@ -32,10 +32,9 @@ export function HomeAccountStrip() {
           type="button"
           className="home-account-credit"
           onClick={() => setRedeemOpen(true)}
-          aria-label={t('credits.heading')}
+          aria-label={`${t('credits.heading')}: ${credits}`}
         >
           <Coins className="h-4 w-4" aria-hidden="true" />
-          <span>{credits}</span>
         </button>
 
         <button

@@ -14,7 +14,6 @@ import { ToastProvider } from '@/components/ToastProvider'
 import { AppLayout } from '@/components/layout/AppLayout'
 import PolishGlassLayout from '@/components/layout/PolishGlassLayout'
 import FerrariAdminLayout from '@/layouts/FerrariAdminLayout'
-import { ComingSoonPlaceholder } from '@/components/games/ComingSoonPlaceholder'
 import AdminRoute from '@/components/AdminRoute'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { useCapacitorDeepLinks } from '@/hooks/useCapacitorDeepLinks'
@@ -80,7 +79,6 @@ const ObservabilityAggregate = lazyWithRetry(routeImports.adminObservabilityAggr
 const ObservabilityWordDetail = lazyWithRetry(routeImports.adminObservabilityWordDetail, 'admin-observability-word-detail')
 const ObservabilityCost = lazyWithRetry(routeImports.adminObservabilityCost, 'admin-observability-cost')
 const SlicerGame = lazyWithRetry(routeImports.slicerGame, 'slicer-game')
-export const RUNNER_GAME_ROUTE_ENABLED = false
 
 function RouteSuspenseFallback() {
   return <LingwaveLoader fullScreen />
@@ -214,10 +212,6 @@ function AppRoutes() {
         <Route
           path="/games/slicer"
           element={<SlicerGame />}
-        />
-        <Route
-          path="/games/runner"
-          element={<ComingSoonPlaceholder />}
         />
         {/* Canvas is a headerless immersion mode (like the games above) — lifted out of the skin layouts so no global header overlaps its toolbar */}
         <Route path="/study/canvas" element={<StudyCanvas />} />

@@ -185,6 +185,48 @@ body:has(.theme-cosmos) #root {
   background-image: linear-gradient(to right, var(--m-cool) 0%, #ffffff 70%);
 }
 
+/* MemoryMechanicSection — the same hero gradient words, but scoped to travel
+   a shimmering band left-to-right, one line after another (a "wave" pass
+   over the letters instead of a static gradient). */
+.theme-cosmos .memory-wave .hero-word-warm,
+.theme-cosmos .memory-wave .hero-word-mid,
+.theme-cosmos .memory-wave .hero-word-cool {
+  background-size: 200% 100%;
+  animation: lw-word-wave 4.5s linear infinite;
+}
+
+.theme-cosmos .memory-wave .hero-word-warm {
+  background-image: linear-gradient(to right, var(--m-warm) 0%, #ffffff 50%, var(--m-warm) 100%);
+  animation-delay: 0s;
+}
+
+.theme-cosmos .memory-wave .hero-word-mid {
+  background-image: linear-gradient(to right, var(--m-mid) 0%, #ffffff 50%, var(--m-mid) 100%);
+  animation-delay: 0.6s;
+}
+
+.theme-cosmos .memory-wave .hero-word-cool {
+  background-image: linear-gradient(to right, var(--m-cool) 0%, #ffffff 50%, var(--m-cool) 100%);
+  animation-delay: 1.2s;
+}
+
+@keyframes lw-word-wave {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: 0% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-cosmos .memory-wave .hero-word-warm,
+  .theme-cosmos .memory-wave .hero-word-mid,
+  .theme-cosmos .memory-wave .hero-word-cool {
+    animation: none;
+  }
+}
+
 .theme-cosmos ::selection {
   background: rgba(242, 79, 19, 0.32);
   color: #ffffff;

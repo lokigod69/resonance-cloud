@@ -6,6 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import { Loader, Music, Sparkles, Type } from 'lucide-react'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
+import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
@@ -137,6 +138,15 @@ export default function Decks() {
     () => decks.filter((d) => languagesMatch(d.target_language, activeLanguage)),
     [decks, activeLanguage]
   )
+
+  // Adding a language from the Decks picker preselects it in the wizard
+  // (the generate flow seeds its language step from the active language).
+  const handleAddLanguage = useCallback((lang: string) => {
+    const canonical = canonicalizeLanguageValue(lang)
+    if (!canonical) return
+    setActiveLanguage(canonical)
+    navigate('/generate')
+  }, [navigate, setActiveLanguage])
 
   const resetDeckProximity = useCallback(() => {
     if (deckProximityFrameRef.current !== null) {
@@ -274,32 +284,22 @@ export default function Decks() {
       </div>
 
       {availableLanguages.length > 1 && (
-        <div className="flex gap-2 mb-6 overflow-x-auto px-4 sm:justify-center sm:flex-wrap sm:overflow-visible scrollbar-none -mx-1">
-          {availableLanguages.map((lang) => {
-            const isActive = lang === activeLanguage
-            return (
-              <button
-                key={lang}
-                onClick={() => setActiveLanguage(lang)}
-                className={`flex-shrink-0 min-h-[44px] px-4 py-2 rounded-full text-sm border transition-all ${
-                  isActive
-                    ? 'bg-card border-border text-foreground shadow-[0_0_20px_var(--accent-glow)]'
-                    : 'border-border text-muted-foreground hover:text-foreground/90 hover:border-accent'
-                }`}
-              >
-                {getDeckLanguageLabel(lang, t)}
-              </button>
-            )
-          })}
+        <div className="decks-language-cluster">
+          <LanguageCluster
+            languages={availableLanguages}
+            activeLanguage={activeLanguage}
+            onSelect={setActiveLanguage}
+            onAddLanguage={handleAddLanguage}
+          />
         </div>
       )}
 
       <div className="flex justify-center mb-8 px-4">
         <button
           onClick={() => navigate('/generate')}
-          className="w-full sm:w-auto flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-full bg-card hover:bg-accent border border-border hover:border-accent text-sm font-medium text-foreground transition-colors"
+          className="decks-generate-cta w-full sm:w-auto flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-full text-base font-semibold transition-all"
         >
-          <Sparkles size={14} />
+          <Sparkles size={16} />
           {t('dashboard.generate')}
         </button>
       </div>

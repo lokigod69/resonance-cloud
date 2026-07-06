@@ -28,7 +28,7 @@ export default function MemoryMechanicSection() {
 
   return (
     <section className="bg-[var(--app-bg)] px-6 py-24 text-center md:py-32">
-      <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
+      <div className="memory-wave mx-auto flex max-w-3xl flex-col items-center gap-4">
         {LINES.map((line, i) => (
           <motion.p
             key={line.wordKey}

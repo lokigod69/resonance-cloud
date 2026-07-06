@@ -365,6 +365,7 @@ function StaticLevelDetail({
   const [levelSongModalOpen, setLevelSongModalOpen] = useState(false)
   const [levelSongDeckId, setLevelSongDeckId] = useState<string | null>(null)
   const [levelSongImporting, setLevelSongImporting] = useState(false)
+  const [songRequested, setSongRequested] = useState(false)
   const parsedLevel = Number(levelNumber)
   const level = Number.isInteger(parsedLevel)
     ? category.staticWordLevels?.find((item) => item.level === parsedLevel)
@@ -412,6 +413,7 @@ function StaticLevelDetail({
     setDeckLookupLoading(true)
     setImportedDeckId(null)
     setLevelSongDeckId(null)
+    setSongRequested(false)
 
     if (!user?.id || !level) {
       setDeckLookupLoading(false)
@@ -567,20 +569,38 @@ function StaticLevelDetail({
           )}
           <span>{importLabel}</span>
         </button>
-        <button
-          type="button"
-          className={`${styles.studyAction} ${styles.staticImportAction}`}
-          onClick={handleGenerateLevelSong}
-          disabled={levelSongImporting || deckLookupLoading}
-          aria-busy={levelSongImporting || undefined}
-        >
-          {levelSongImporting ? (
-            <span className={styles.studyActionSpinner} aria-hidden="true" />
-          ) : (
-            <Music className="h-4 w-4" aria-hidden="true" />
-          )}
-          <span>{t('categories.generateLevelSong')}</span>
-        </button>
+        {songRequested ? (
+          <>
+            <button
+              type="button"
+              className={`${styles.studyAction} ${styles.staticImportAction}`}
+              disabled
+              aria-disabled="true"
+            >
+              <Check className="h-4 w-4" aria-hidden="true" />
+              <span>{t('categories.levelSongQueued')}</span>
+            </button>
+            <Link to="/music" className={`${styles.studyAction} ${styles.staticImportAction}`}>
+              <Music className="h-4 w-4" aria-hidden="true" />
+              <span>{t('categories.goToMusic')}</span>
+            </Link>
+          </>
+        ) : (
+          <button
+            type="button"
+            className={`${styles.studyAction} ${styles.staticImportAction}`}
+            onClick={handleGenerateLevelSong}
+            disabled={levelSongImporting || deckLookupLoading}
+            aria-busy={levelSongImporting || undefined}
+          >
+            {levelSongImporting ? (
+              <span className={styles.studyActionSpinner} aria-hidden="true" />
+            ) : (
+              <Music className="h-4 w-4" aria-hidden="true" />
+            )}
+            <span>{t('categories.generateLevelSong')}</span>
+          </button>
+        )}
       </div>
 
       <div className={styles.staticWordGrid}>
@@ -650,6 +670,7 @@ function StaticLevelDetail({
           wordList={levelSongWords}
           credits={profile?.credits ?? 0}
           onSubmitted={() => {
+            setSongRequested(true)
             void refreshProfile()
           }}
         />

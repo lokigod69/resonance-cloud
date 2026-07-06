@@ -39,6 +39,37 @@ export default function Dashboard() {
   const [dashboardLoading, setDashboardLoading] = useState(true)
   const [dashboardError, setDashboardError] = useState<string | null>(null)
 
+  // Languages the learner added from the picker before they have any deck in
+  // them — persisted per user so the empty/first-run dashboard keeps showing
+  // for that language across reloads, exactly like a deck-derived language.
+  const addedStorageKey = user ? `lingwave_added_languages_${user.id}` : null
+  const [addedLanguages, setAddedLanguages] = useState<string[]>([])
+
+  useEffect(() => {
+    if (!addedStorageKey) {
+      setAddedLanguages([])
+      return
+    }
+    try {
+      const raw = localStorage.getItem(addedStorageKey)
+      const parsed = raw ? (JSON.parse(raw) as unknown) : []
+      setAddedLanguages(Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === 'string') : [])
+    } catch {
+      setAddedLanguages([])
+    }
+  }, [addedStorageKey])
+
+  const handleAddLanguage = useCallback((lang: string) => {
+    const canonical = canonicalizeLanguageValue(lang)
+    if (!canonical) return
+    setAddedLanguages((prev) => {
+      const next = prev.includes(canonical) ? prev : [...prev, canonical]
+      if (addedStorageKey) localStorage.setItem(addedStorageKey, JSON.stringify(next))
+      return next
+    })
+    setActiveLanguage(canonical)
+  }, [addedStorageKey, setActiveLanguage])
+
   const loadDashboardData = useCallback(async () => {
     if (!user) {
       setDecks([])
@@ -71,8 +102,11 @@ export default function Dashboard() {
   }, [loadDashboardData])
 
   const availableLanguages = useMemo(
-    () => Array.from(new Set(decks.map((deck) => canonicalizeLanguageValue(deck.target_language)).filter(Boolean))),
-    [decks],
+    () => Array.from(new Set([
+      ...decks.map((deck) => canonicalizeLanguageValue(deck.target_language)),
+      ...addedLanguages,
+    ].filter(Boolean))),
+    [decks, addedLanguages],
   )
 
   useEffect(() => {
@@ -173,6 +207,7 @@ export default function Dashboard() {
               languages={availableLanguages}
               activeLanguage={activeLanguage}
               onSelect={setActiveLanguage}
+              onAddLanguage={handleAddLanguage}
             />
 
             <DashboardStreak streak={studyStreak.streak} />
