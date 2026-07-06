@@ -11,10 +11,12 @@ interface ImagelessCardThumbnailProps {
 
 export function ImagelessCardThumbnail({
   word,
+  translation,
   targetLanguage,
   className,
 }: ImagelessCardThumbnailProps) {
   const isPhrase = /\s/.test(word.trim())
+  const cleanTranslation = translation.trim()
 
   return (
     <div className={cn('aspect-video relative bg-card', className)}>
@@ -30,7 +32,11 @@ export function ImagelessCardThumbnail({
           >
             {word}
           </h2>
-
+          {cleanTranslation ? (
+            <p className="w-full line-clamp-2 text-balance text-center leading-snug text-white/65 text-[clamp(0.78rem,2vw,1rem)]">
+              {cleanTranslation}
+            </p>
+          ) : null}
         </div>
       </div>
     </div>

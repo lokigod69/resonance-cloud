@@ -1706,14 +1706,17 @@ body::before {
   pointer-events: none;
   background:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.62), transparent 22%, transparent 58%, rgba(0, 0, 0, 0.74)),
-    radial-gradient(circle at 50% 44%, transparent 0 32%, rgba(0, 0, 0, 0.32) 72%);
+    radial-gradient(circle at 50% 44%, transparent 0 40%, rgba(0, 0, 0, 0.32) 76%);
 }
 
+/* The reticle is not just visual: captureAndScan crops the scan payload to
+   this circle (plus context margin) — keep it generous so close-up objects
+   fit without backing away. */
 .lens-reticle {
   position: absolute;
   left: 50%;
   top: 46%;
-  width: min(58vw, 18rem);
+  width: min(74vw, 23rem);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   border: 1px solid rgba(255, 255, 255, 0.42);
@@ -1779,6 +1782,67 @@ body::before {
   font-size: 0.68rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.lens-language-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  max-width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.lens-language-trigger .lens-chevron {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.lens-language-menu {
+  position: absolute;
+  left: 50%;
+  top: calc(max(0.75rem, env(safe-area-inset-top)) + 3.4rem);
+  z-index: 5;
+  display: flex;
+  width: min(16rem, calc(100vw - 2rem));
+  transform: translateX(-50%);
+  flex-direction: column;
+  gap: 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(8, 8, 12, 0.86);
+  padding: 0.5rem;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.lens-language-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 0.6rem;
+  background: transparent;
+  padding: 0.55rem 0.65rem;
+  color: rgba(255, 250, 242, 0.88);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.lens-language-option:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.lens-language-option--active {
+  border-color: color-mix(in srgb, var(--accent) 62%, transparent);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
 }
 
 .lens-instruction {
@@ -1914,7 +1978,29 @@ body::before {
 }
 
 .lens-recap-row {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 1.7rem;
+}
+
+.lens-recap-discard {
+  display: inline-flex;
+  width: 1.7rem;
+  height: 1.7rem;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 250, 242, 0.55);
+}
+
+button.lens-recap-discard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 250, 242, 0.9);
+}
+
+.lens-recap-discard svg {
+  width: 0.95rem;
+  height: 0.95rem;
 }
 
 .lens-item-row--active {
@@ -1958,7 +2044,7 @@ body::before {
 }
 
 .lens-item-select span:last-child,
-.lens-recap-row span:last-child {
+.lens-recap-row span:nth-child(2) {
   color: color-mix(in srgb, var(--text-primary) 66%, transparent);
   text-align: right;
 }

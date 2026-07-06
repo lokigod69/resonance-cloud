@@ -293,7 +293,7 @@ export default function StudyFlashcard() {
                         word={current.word}
                         translation={current.translation ?? ''}
                         ipa={current.ipa ?? null}
-                        revealed={revealed}
+                        revealed={false}
                         className="w-full max-w-2xl"
                       />
                     ) : (

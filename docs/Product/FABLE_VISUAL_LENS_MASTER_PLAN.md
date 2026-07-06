@@ -1,6 +1,6 @@
 # Lens — Visual Language Learning: Master Plan
 
-Date: 2026-07-06 · Author: Fable 5 · Status: built — Phases 2A–2D landed uncommitted 2026-07-06 (four Codex packets, Fable-reviewed); remaining: deploy (commit/push + apply the two Lens migrations) and owner device QA on iPhone (2E matrix), then 2F decision gate
+Date: 2026-07-06 · Author: Fable 5 · Status: live + hardened — Phases 2A–2D deployed (commit `0d42e989`, lingwave.ai, migrations applied); iPhone Safari QA passed end to end 2026-07-07; **2G trust/recognition hardening pass built 2026-07-07 (uncommitted)** — reticle-crop capture, confidence de-surfacing, transient-502 retry, in-Lens language switcher, recap discard, TTS voice fix; remaining: owner re-test + commit, 2E device matrix, then 2F decision gate
 Companion: `D:\CODING\ResonanceTEST\investigations\VISUAL_LENS_CODEBASE_DISCOVERY_2026_07_06.md`
 Supersedes: the founder/GPT "Visual tab" master prompt (kept in spirit, re-architected in substance).
 
@@ -68,8 +68,13 @@ Camera-forward, capture-to-ask:
    camera UI has no skin-specific chrome, matching the fullscreen-route precedent).
 2. Live preview with a soft reticle and one quiet instruction line ("Point at something to learn
    its word" — i18n'd). No detection runs. No sound. Nothing moves.
-3. User taps the shutter (or taps the preview itself — whole-frame is the target at MVP; region
-   tap is a later refinement). Frame freezes immediately — the freeze *is* the feedback.
+3. User taps the shutter (or taps the preview itself). Frame freezes immediately — the freeze
+   *is* the feedback. **Since 2G (2026-07-07) the reticle is functional, not cosmetic:** the
+   scan payload sent to the API is a crop of the reticle circle plus a 35% context margin
+   (`reticleRegion` in `Lens.tsx` maps the CSS circle back to intrinsic video pixels through
+   the object-fit-cover transform; falls back to full frame if the rect is unavailable). The
+   frozen preview stays full-frame so capture never visually "jumps". The reticle is sized
+   `min(74vw, 23rem)` so close objects fit without backing away.
 4. One request to `/api/visual-scan` with the downscaled frame + target language, base language,
    user level. Loading shimmer on a bottom sheet, cancellable, target < 2.5 s perceived.
 5. Result sheet slides up over the frozen frame:
@@ -81,6 +86,12 @@ Camera-forward, capture-to-ask:
    - 🔊 tap-to-speak (never auto-speak), ⭐ Save, ✕ dismiss-and-rescan
    - low-confidence / ambiguity: up to 2 alternates shown as small chips ("Did you mean…"),
      tapping swaps the sheet content — this is the correction flow, no separate mode
+   - **confidence display policy (2G, 2026-07-07):** the model's self-reported confidence is
+     UI-internal. It is NEVER rendered as a positive trust marker (the high/medium/low chip
+     is gone); only `low` surfaces, as a caution that points at the alternates. Rationale:
+     the self-report proved uncalibrated in live QA (wrong answers labeled high), and in a
+     vocabulary app confident-and-wrong is the one failure mode that must not be amplified.
+     The field stays in the API contract so a future calibration effort can plug in.
 6. Save writes to the auto deck "Lens — {Language}" and shows a small confirmation with an
    "Open deck" affordance. Duplicate of an existing user word → "Already in your vocabulary"
    with a link instead of a second copy.
@@ -292,3 +303,19 @@ disables on first tap).
 - 2026-07-06 — Route+tile first, tab decision deferred post-dogfood (grid-cols-6 + beta strategy).
 - 2026-07-06 — Tap-to-speak only, browser TTS at MVP (house audio rules).
 - 2026-07-06 — No frame storage, ever, at MVP; safety flag for people/documents.
+- 2026-07-07 — (2G) Scan payload crops to the reticle + 35% context; frozen preview stays
+  full-frame; reticle enlarged. Input intent beats prompt-only fixes for wrong-object errors.
+- 2026-07-07 — (2G) Confidence never displayed as a positive signal; only `low` renders, as a
+  caution steering to alternates. Prompt gained framing + calibration rules; calibrating the
+  self-report itself rejected (soft signal shown as fact, high effort).
+- 2026-07-07 — (2G) One silent server-side retry for transient Gemini 502s (not timeouts, not
+  4xx) inside the provider — quota is consumed once per user scan, so retries never
+  double-charge. Client keeps surfacing errors after that.
+- 2026-07-07 — (2G) In-Lens language switcher (deck-derived + added languages, shared
+  `setActiveLanguage`); recap items are language-tagged and bulk save groups per language so a
+  mid-session switch cannot save words into the wrong deck. Recap gained per-item discard.
+- 2026-07-07 — (2G) Photo-on-card DECLINED at MVP: persisting the captured frame as the card
+  image would reverse the "frames never stored" pillar (App Store label, plan §Privacy), add a
+  bucket + RLS + delete-account surface, and force reworking `deck_type`-based imageless
+  gating across both skins — for a low-quality mnemonic. Feasibility plan is on record in the
+  memory DECISIONS log if user demand materializes.

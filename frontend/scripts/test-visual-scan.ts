@@ -12,7 +12,7 @@ import visualScanEndpoint from '../api/visual-scan.ts'
 import type { VisualScanProvider } from '../api/visual-scan.ts'
 
 const { ApiError } = httpShared
-const { parseGeminiVisionJson } = visualScanProviderShared
+const { parseGeminiVisionJson, createGeminiVisualScanProvider } = visualScanProviderShared
 const { createVisualScanPostHandler } = visualScanEndpoint
 type ApiErrorInstance = InstanceType<typeof ApiError>
 
@@ -201,6 +201,71 @@ console.log('\n[malformed model JSON]')
   const res = await post(jsonRequest(baseBody))
   const body = await readJson(res)
   assert('status 422', res.status === 422, body)
+}
+
+console.log('\n[gemini provider transient retry]')
+{
+  const geminiSuccess = () => new Response(JSON.stringify({
+    candidates: [{
+      content: {
+        parts: [{
+          text: JSON.stringify({
+            kind: 'object',
+            safety: null,
+            items: [{ target_text: 'die Lampe', base_text: 'lamp', confidence: 'medium' }],
+          }),
+        }],
+      },
+    }],
+    usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 20 },
+  }), { status: 200, headers: { 'Content-Type': 'application/json' } })
+
+  // 5xx once, then success → the single silent retry recovers the scan.
+  {
+    let calls = 0
+    const provider = createGeminiVisualScanProvider('test-key', async () => {
+      calls += 1
+      if (calls === 1) return new Response('upstream hiccup', { status: 500 })
+      return geminiSuccess()
+    })
+    const result = await provider.scan({ image: 'abcd', targetLanguage: 'German', baseLanguage: 'English' })
+    assert('retries once on transient 5xx', calls === 2, calls)
+    assert('retry returns parsed result', result.items[0]?.target_text === 'die Lampe', result)
+  }
+
+  // Deterministic 4xx → no retry, surfaces 422 immediately.
+  {
+    let calls = 0
+    const provider = createGeminiVisualScanProvider('test-key', async () => {
+      calls += 1
+      return new Response('bad image', { status: 400 })
+    })
+    let thrown: unknown = null
+    try {
+      await provider.scan({ image: 'abcd', targetLanguage: 'German', baseLanguage: 'English' })
+    } catch (error) {
+      thrown = error
+    }
+    assert('4xx does not retry', calls === 1, calls)
+    assert('4xx surfaces as 422', thrown instanceof ApiError && thrown.status === 422, thrown)
+  }
+
+  // Persistent 5xx → exactly one retry, then the 502 surfaces.
+  {
+    let calls = 0
+    const provider = createGeminiVisualScanProvider('test-key', async () => {
+      calls += 1
+      return new Response('still down', { status: 503 })
+    })
+    let thrown: unknown = null
+    try {
+      await provider.scan({ image: 'abcd', targetLanguage: 'German', baseLanguage: 'English' })
+    } catch (error) {
+      thrown = error
+    }
+    assert('persistent failure retries exactly once', calls === 2, calls)
+    assert('persistent failure surfaces as 502', thrown instanceof ApiError && thrown.status === 502, thrown)
+  }
 }
 
 if (failures > 0) {

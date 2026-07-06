@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+import { getLanguageCode } from '@/lib/languages'
 
 type PronunciationInput = {
   text: string
@@ -22,10 +23,35 @@ function stopActiveAudio() {
   activeAudio = null
 }
 
+// Some engines (iOS Safari especially) stay silent when no installed voice
+// matches utterance.lang and none was assigned explicitly — German works while
+// Korean says nothing. Normalize the language ('Korean' → 'ko') and pick a
+// concrete matching voice (exact tag, then regional 'ko-*', then base-prefix).
+function pickVoice(code: string): SpeechSynthesisVoice | null {
+  const voices = globalThis.speechSynthesis.getVoices()
+  if (voices.length === 0) return null
+  const wanted = code.toLowerCase()
+  return (
+    voices.find((voice) => voice.lang.toLowerCase() === wanted)
+    ?? voices.find((voice) => voice.lang.toLowerCase().startsWith(`${wanted}-`))
+    ?? voices.find((voice) => voice.lang.toLowerCase().split('-')[0] === wanted)
+    ?? null
+  )
+}
+
 function speakWithBrowser({ text, lang }: PronunciationInput) {
   if (!('speechSynthesis' in globalThis) || !text.trim()) return 'none' as const
   const utterance = new SpeechSynthesisUtterance(text)
-  if (lang) utterance.lang = lang
+  if (lang) {
+    const code = getLanguageCode(lang) || lang
+    const voice = pickVoice(code)
+    if (voice) {
+      utterance.voice = voice
+      utterance.lang = voice.lang
+    } else {
+      utterance.lang = code
+    }
+  }
   globalThis.speechSynthesis.speak(utterance)
   return 'speech' as const
 }

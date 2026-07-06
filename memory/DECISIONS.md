@@ -2,6 +2,18 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-07-07 — Lens confidence is never displayed as a positive signal; the scan is cropped to the reticle
+**Status:** active — implemented in working tree (2G hardening pass), uncommitted
+**Decision:** Gemini's self-reported confidence stays in the API contract but is UI-internal except for `low`, which renders as an actionable caution pointing at the alternates. The always-on high/medium/low chip is deleted (i18n keys removed in en/de/fr). Complementary input-side fix: `frameToCanvas` crops the scan payload to the reticle circle + 35% context margin (cover-math mapping to intrinsic video pixels; full-frame fallback), the reticle grew to `min(74vw, 23rem)`, and the prompt now carries explicit framing ("subject is the item nearest the center") and calibration rules ("never high when several objects could plausibly be the subject"). The frozen preview stays full-frame.
+**Why:** Live QA showed wrong answers ("nightstand", "suit") labeled high-confidence — an uncalibrated self-report shown as a trust marker is worse than no marker in a vocabulary app, and the failure mode that matters (confident-and-wrong) is eliminated by construction when only low can surface. The wrong answers were also partly an input problem: the model saw the whole room while the user aimed at one object.
+**Rejected:** Calibrating the self-report (logprobs/multi-pass — high effort, still a soft signal displayed as fact); keeping a "medium" caution (medium is also the server's fallback default — it would spam); cropping hard to the circle with no margin (kills object edges and menu/text scans).
+
+## 2026-07-07 — Lens photo-on-card declined at MVP; "frames never stored" stands
+**Status:** decided (owner asked for preparation only; revisit on real user demand)
+**Decision:** The captured Lens frame is NOT persisted as the saved card's image. The prepared plan (Opus feasibility study, this session) is on record: it would need a new private bucket + RLS migration, `submit_lens_save` accepting per-item `thumbnail_url`, client upload before the RPC (ProfileModal avatar pattern), delete-account wiring, and — the real cost — reworking the `deck_type`-vs-`thumbnail_url` gating split across DeckView/StudyCanvas and both skins. It also reverses the master plan's "frames never stored" privacy pillar and the planned App Store label ("processed, not stored").
+**Why:** A cosmetic card-back photo (often blurry/cluttered at 1024px) is not worth spending the headline privacy promise plus a storage/deletion compliance surface. Most of the memory-anchor value is available for free: the frozen frame is already on screen at save time.
+**Rejected (for now):** Client upload into the `videos` bucket (locked to service-role by `20260611120000`, and mixes user media with pipeline media).
+
 ## 2026-07-06 — Language additions follow the tier model; Tier 0 is the default landing point
 **Status:** active — encoded in `docs/Product/FABLE_LANGUAGE_ARCHITECTURE.md` + `.claude/skills/add-target-language`
 **Decision:** A new target language ships at Tier 0 (wizard-only: one `LANGUAGES` entry + langName keys + flag maps) by default; every higher tier (1 categories, 2 curated TTS, 3 Speak, 4 script pack, 5 guided) is a separately approved step, and paid asset batches (ElevenLabs/Mistral) always need explicit owner approval. Base-locale additions gate on `check-i18n-coverage.ts` `requiredLocales`; RTL base locales are blocked pending a layout pass. Russian shipped 2026-07-06 at Tier 0 + Cyrillic script pack as the system's proof.

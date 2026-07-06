@@ -1,9 +1,7 @@
 import { useEffect } from 'react'
-import { PencilLine, Trash2, X } from 'lucide-react'
+import { PencilLine, Trash2, Volume2, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ImagelessCard from '@/components/study/ImagelessCard'
-import { getCardFontClass, getCardFontStack } from '@/lib/typography/cardFonts'
-import { cn } from '@/lib/utils'
 import { usePronunciation } from '@/hooks/usePronunciation'
 import { useTranslation } from '@/hooks/useTranslation'
 
@@ -36,7 +34,6 @@ export default function ImagelessCardViewerModal({
 }: ImagelessCardViewerModalProps) {
   const { playWord } = usePronunciation()
   const { t } = useTranslation()
-  const cleanTranslation = word.translation?.trim()
   const cleanIpa = word.ipa?.trim()
 
   useEffect(() => {
@@ -86,23 +83,15 @@ export default function ImagelessCardViewerModal({
             <button
               type="button"
               onClick={() => { void playWord(word) }}
-              className={cn(
-                'bg-transparent border-0 p-0 text-2xl font-bold text-white long-copy cursor-pointer hover:opacity-85 transition-opacity',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-black',
-                getCardFontClass(word.target_language ?? word.language ?? ''),
-              )}
-              style={{ fontFamily: getCardFontStack(word.target_language ?? word.language ?? '') }}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/85 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               aria-label={`Play pronunciation for ${word.word}`}
             >
-              {word.word}
+              <Volume2 className="h-5 w-5" aria-hidden="true" />
             </button>
             {cleanIpa && (
               <p className="max-w-2xl font-mono text-sm text-white/45 long-copy">
                 /{cleanIpa.replace(/^\/|\/$/g, '')}/
               </p>
-            )}
-            {cleanTranslation && (
-              <p className="max-w-2xl text-lg text-white/65 long-copy">{cleanTranslation}</p>
             )}
           </div>
 

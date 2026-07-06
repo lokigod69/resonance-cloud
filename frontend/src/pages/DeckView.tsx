@@ -677,18 +677,20 @@ export default function DeckView() {
                     )}
                   </div>
                   )}
-                  {/* Info */}
-                  <div className="p-3 space-y-0.5">
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="min-w-0 truncate text-sm font-semibold">{word.word}</p>
-                      <Badge variant="outline" className="shrink-0 border-border/70 bg-background/60 px-1.5 py-0 text-[10px] font-semibold uppercase text-muted-foreground">
-                        {wordSourceLabel}
-                      </Badge>
+                  {/* Info — text-deck tiles carry word + translation on the card face itself */}
+                  {!isTextDeck && (
+                    <div className="p-3 space-y-0.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="min-w-0 truncate text-sm font-semibold">{word.word}</p>
+                        <Badge variant="outline" className="shrink-0 border-border/70 bg-background/60 px-1.5 py-0 text-[10px] font-semibold uppercase text-muted-foreground">
+                          {wordSourceLabel}
+                        </Badge>
+                      </div>
+                      {word.translation && (
+                        <p className="text-xs text-muted-foreground truncate">{word.translation}</p>
+                      )}
                     </div>
-                    {!isTextDeck && word.translation && (
-                      <p className="text-xs text-muted-foreground truncate">{word.translation}</p>
-                    )}
-                  </div>
+                  )}
                 </div>
               ) : isFailed ? (
                 <div
@@ -722,9 +724,11 @@ export default function DeckView() {
                   <div className="p-3 space-y-1.5">
                     <div className="flex items-center justify-between gap-2">
                       <p className="min-w-0 truncate text-sm font-semibold">{word.word}</p>
-                      <Badge variant="outline" className="shrink-0 border-border/70 bg-background/60 px-1.5 py-0 text-[10px] font-semibold uppercase text-muted-foreground">
-                        {wordSourceLabel}
-                      </Badge>
+                      {!isTextDeck && (
+                        <Badge variant="outline" className="shrink-0 border-border/70 bg-background/60 px-1.5 py-0 text-[10px] font-semibold uppercase text-muted-foreground">
+                          {wordSourceLabel}
+                        </Badge>
+                      )}
                     </div>
                     <p className="text-xs text-destructive-foreground">
                       {isCardDeck || isTextDeck ? t('deckview.cardFailure') : t('deckview.couldNotGenerate')}
@@ -773,9 +777,11 @@ export default function DeckView() {
                   <div className="p-3 space-y-0.5">
                     <div className="flex items-center justify-between gap-2">
                       <p className="min-w-0 truncate text-sm font-semibold">{word.word}</p>
-                      <Badge variant="outline" className="shrink-0 border-border/70 bg-background/60 px-1.5 py-0 text-[10px] font-semibold uppercase text-muted-foreground">
-                        {wordSourceLabel}
-                      </Badge>
+                      {!isTextDeck && (
+                        <Badge variant="outline" className="shrink-0 border-border/70 bg-background/60 px-1.5 py-0 text-[10px] font-semibold uppercase text-muted-foreground">
+                          {wordSourceLabel}
+                        </Badge>
+                      )}
                     </div>
                     {cardDiagnostic && (
                       <p className="text-[11px] text-muted-foreground/70">

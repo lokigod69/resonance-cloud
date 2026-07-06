@@ -72,6 +72,8 @@ interface GeminiGenerateContentResponse {
 function languageRules(): string {
   return [
     'Language-learning rules:',
+    '- The learner framed this photo deliberately: the subject is the item nearest the center of the frame. Name that item; ignore background or edge objects.',
+    '- Report confidence for the visual identification only. high = the subject is unmistakable; medium = probable but visually ambiguous; low = uncertain, partially visible, blurry, or several different objects could be the intended subject. Never use high when more than one distinct object could plausibly be the subject — use medium or low and offer alternates instead.',
     '- Return the natural target-language word or phrase a native speaker would learn, not a literal visual label.',
     '- For German, French, Spanish, and Italian nouns, include the article/gender marker in article when it helps the learner.',
     '- For languages with classifiers or measure words, put the common classifier in article.',
@@ -158,67 +160,91 @@ export function parseGeminiVisionJson(text: string): VisualScanResponse {
   }
 }
 
-export function createGeminiVisualScanProvider(apiKey = process.env.GOOGLE_AI_API_KEY): VisualScanProvider {
+const RETRY_DELAY_MS = 350
+const RETRY_ELAPSED_BUDGET_MS = 8000
+
+export function createGeminiVisualScanProvider(
+  apiKey = process.env.GOOGLE_AI_API_KEY,
+  fetchImpl: typeof fetch = fetch,
+): VisualScanProvider {
+  async function performScan(request: VisualScanRequest): Promise<VisualScanProviderResult> {
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 20000)
+    let response: Response
+    try {
+      response = await fetchImpl(GEMINI_VISION_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-goog-api-key': apiKey as string,
+        },
+        body: JSON.stringify({
+          contents: [{
+            role: 'user',
+            parts: [
+              { text: buildPrompt(request) },
+              { inlineData: { mimeType: 'image/jpeg', data: request.image } },
+            ],
+          }],
+          generationConfig: {
+            responseMimeType: 'application/json',
+            responseSchema: responseSchema(),
+            maxOutputTokens: MAX_OUTPUT_TOKENS,
+            temperature: 0.2,
+          },
+        }),
+        signal: controller.signal,
+      })
+    } catch (error) {
+      if (error instanceof Error && error.name === 'AbortError') {
+        throw new ApiError(502, 'Vision service timed out')
+      }
+      throw new ApiError(502, 'Vision service unavailable')
+    } finally {
+      clearTimeout(timeout)
+    }
+
+    if (!response.ok) {
+      if (response.status === 400 || response.status === 422) {
+        throw new ApiError(422, 'Image could not be processed')
+      }
+      throw new ApiError(502, 'Vision service unavailable')
+    }
+
+    const data = await response.json() as GeminiGenerateContentResponse
+    const candidate = data.candidates?.[0]
+    if (candidate?.finishReason === 'SAFETY') {
+      throw new ApiError(422, 'Vision model refused the image')
+    }
+    const text = candidate?.content?.parts?.map((part) => part.text || '').join('').trim()
+    if (!text) throw new ApiError(422, 'Vision model returned no content')
+
+    return {
+      ...parseGeminiVisionJson(text),
+      usage: data.usageMetadata ?? {},
+      provider: 'gemini',
+      model: GEMINI_VISION_MODEL,
+    }
+  }
+
   return {
     async scan(request) {
       if (!apiKey) throw new ApiError(502, 'Vision service is not configured')
 
-      const controller = new AbortController()
-      const timeout = setTimeout(() => controller.abort(), 20000)
-      let response: Response
+      const startedAt = Date.now()
       try {
-        response = await fetch(GEMINI_VISION_ENDPOINT, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-goog-api-key': apiKey,
-          },
-          body: JSON.stringify({
-            contents: [{
-              role: 'user',
-              parts: [
-                { text: buildPrompt(request) },
-                { inlineData: { mimeType: 'image/jpeg', data: request.image } },
-              ],
-            }],
-            generationConfig: {
-              responseMimeType: 'application/json',
-              responseSchema: responseSchema(),
-              maxOutputTokens: MAX_OUTPUT_TOKENS,
-              temperature: 0.2,
-            },
-          }),
-          signal: controller.signal,
-        })
+        return await performScan(request)
       } catch (error) {
-        if (error instanceof Error && error.name === 'AbortError') {
-          throw new ApiError(502, 'Vision service timed out')
-        }
-        throw new ApiError(502, 'Vision service unavailable')
-      } finally {
-        clearTimeout(timeout)
-      }
-
-      if (!response.ok) {
-        if (response.status === 400 || response.status === 422) {
-          throw new ApiError(422, 'Image could not be processed')
-        }
-        throw new ApiError(502, 'Vision service unavailable')
-      }
-
-      const data = await response.json() as GeminiGenerateContentResponse
-      const candidate = data.candidates?.[0]
-      if (candidate?.finishReason === 'SAFETY') {
-        throw new ApiError(422, 'Vision model refused the image')
-      }
-      const text = candidate?.content?.parts?.map((part) => part.text || '').join('').trim()
-      if (!text) throw new ApiError(422, 'Vision model returned no content')
-
-      return {
-        ...parseGeminiVisionJson(text),
-        usage: data.usageMetadata ?? {},
-        provider: 'gemini',
-        model: GEMINI_VISION_MODEL,
+        // One silent retry for transient upstream failures (network blip or
+        // Gemini 5xx). Timeouts already spent 20s and 4xx-class errors are
+        // deterministic — both surface immediately. The quota was consumed
+        // once for this scan, so retrying here never double-charges the user.
+        const transient = error instanceof ApiError
+          && error.status === 502
+          && error.message === 'Vision service unavailable'
+        if (!transient || Date.now() - startedAt > RETRY_ELAPSED_BUDGET_MS) throw error
+        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS))
+        return performScan(request)
       }
     },
   }

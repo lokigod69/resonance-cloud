@@ -28,6 +28,7 @@ import {
   PencilLine,
   Loader2,
   AlertTriangle,
+  Volume2,
 } from 'lucide-react'
 import { useMoveWords } from '@/hooks/useMoveWords'
 import DeckPickerSheet from '@/components/deck/DeckPickerSheet'
@@ -764,18 +765,20 @@ export default function DeckViewPG() {
                     )}
                   </div>
 
-                  {/* Word info */}
-                  <div className="space-y-1 p-2.5">
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="min-w-0 truncate font-display text-sm font-medium">{word.word}</p>
-                      <Badge variant="outline" className="shrink-0 border-white/10 bg-white/5 px-1.5 py-0 text-[10px] font-semibold uppercase text-[var(--pg-text-dim)]">
-                        {wordSourceLabel}
-                      </Badge>
+                  {/* Word info — text-deck tiles carry word + translation on the card face itself */}
+                  {!isTextDeck && (
+                    <div className="space-y-1 p-2.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="min-w-0 truncate font-display text-sm font-medium">{word.word}</p>
+                        <Badge variant="outline" className="shrink-0 border-white/10 bg-white/5 px-1.5 py-0 text-[10px] font-semibold uppercase text-[var(--pg-text-dim)]">
+                          {wordSourceLabel}
+                        </Badge>
+                      </div>
+                      {word.translation && (
+                        <p className="text-xs text-[var(--pg-text-dim)] truncate">{word.translation}</p>
+                      )}
                     </div>
-                    {!isTextDeck && word.translation && (
-                      <p className="text-xs text-[var(--pg-text-dim)] truncate">{word.translation}</p>
-                    )}
-                  </div>
+                  )}
                 </div>
               )
             })}
@@ -972,16 +975,30 @@ export default function DeckViewPG() {
                       <div className="px-6 pt-4 pb-2 flex flex-col items-center text-center bg-[#0d0d12]/70">
                         {isComplete ? (
                           <>
-                            <Badge variant="outline" className="mb-2 border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase text-[var(--pg-text-dim)]">
-                              {wordSourceLabel}
-                            </Badge>
-                            <button
-                              type="button"
-                              onClick={() => { void playWord(word) }}
-                              className="bg-transparent border-0 p-0 text-2xl font-bold text-white long-copy cursor-pointer hover:opacity-85 transition-opacity"
-                            >
-                              {word.word}
-                            </button>
+                            {!isTextDeck && (
+                              <Badge variant="outline" className="mb-2 border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase text-[var(--pg-text-dim)]">
+                                {wordSourceLabel}
+                              </Badge>
+                            )}
+                            {isTextDeck ? (
+                              /* Word + translation already live on the card face — keep only the speak affordance */
+                              <button
+                                type="button"
+                                onClick={() => { void playWord(word) }}
+                                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+                                aria-label={`Play pronunciation for ${word.word}`}
+                              >
+                                <Volume2 className="h-5 w-5" aria-hidden="true" />
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={() => { void playWord(word) }}
+                                className="bg-transparent border-0 p-0 text-2xl font-bold text-white long-copy cursor-pointer hover:opacity-85 transition-opacity"
+                              >
+                                {word.word}
+                              </button>
+                            )}
                             {!isTextDeck && word.translation && (
                               <p className="text-base text-gray-400 mt-1 long-copy">{word.translation}</p>
                             )}
@@ -1007,9 +1024,11 @@ export default function DeckViewPG() {
                           </>
                         ) : (
                           <>
-                            <Badge variant="outline" className="mb-2 border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase text-[var(--pg-text-dim)]">
-                              {wordSourceLabel}
-                            </Badge>
+                            {!isTextDeck && (
+                              <Badge variant="outline" className="mb-2 border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase text-[var(--pg-text-dim)]">
+                                {wordSourceLabel}
+                              </Badge>
+                            )}
                             <p className="text-lg font-bold text-white long-copy">{word.word}</p>
                             {word.status === 'failed' && (
                               <p className="text-xs text-gray-500 mt-1">
