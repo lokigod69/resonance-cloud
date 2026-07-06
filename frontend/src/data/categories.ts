@@ -4,7 +4,7 @@ import { STATIC_CATEGORY_TRANSLATIONS } from './staticCategoryTranslations'
 // (and used in backend prompts). They must remain in stable English. The
 // `labelKey` / `groupKey` fields are i18n lookups for display only — the
 // English `name` / `label` fields stay as English fallbacks via t().
-export type StaticCategoryTargetLanguageCode = 'en' | 'de' | 'fr' | 'es' | 'pt' | 'it' | 'pl' | 'id' | 'ceb' | 'ko'
+export type StaticCategoryTargetLanguageCode = 'en' | 'de' | 'fr' | 'es' | 'pt' | 'it' | 'pl' | 'id' | 'ceb' | 'ko' | 'ru'
 export type StaticCategoryLanguageStatus = 'stable' | 'experimental' | 'hidden'
 
 export interface StaticCategoryTranslation {
@@ -55,6 +55,16 @@ export const STATIC_CATEGORY_TRANSLATION_LANGUAGES: StaticCategoryLanguageMetada
     status: 'experimental',
     reviewLabel: 'experimental',
     script: 'Hangul',
+  },
+  {
+    code: 'ru',
+    value: 'Russian',
+    name: 'Russian',
+    nativeName: 'Русский',
+    label: 'Русский (experimental)',
+    status: 'experimental',
+    reviewLabel: 'experimental',
+    script: 'Cyrillic',
   },
 ]
 

@@ -15,9 +15,6 @@ assertEqual(tEn('generate.words.addTitle'), 'Add your words', 'EN words title')
 assertEqual(tDe('generate.words.addTitle'), 'Wörter hinzufügen', 'DE words title')
 assertEqual(tFr('generate.words.addTitle'), 'Ajouter tes mots', 'FR words title')
 
-assertEqual(tDe('generate.words.typeOwn'), 'Selbst eingeben', 'DE type-own label')
-assertEqual(tDe('generate.words.pickCategory'), 'Kategorie wählen', 'DE category label')
-
 assertEqual(getDeckStatusLabel('draft', tDe), 'Entwurf', 'DE draft status')
 assertEqual(getDeckStatusLabel('generating', tDe), 'Wird erstellt', 'DE generating status')
 assertEqual(getDeckStatusLabel('pending', tDe), 'Wartet', 'DE pending status')

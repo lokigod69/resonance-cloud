@@ -818,6 +818,7 @@ export async function POST(req: Request): Promise<Response> {
     let greetingInstruction: string
     if (character) {
       greetingInstruction = buildVoxtralGreeting({
+      ru: 'Что-то плохо слышно — повтори, пожалуйста?',
         level,
         targetLangName: lang.name,
         nativeLangName,

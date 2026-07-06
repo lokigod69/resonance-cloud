@@ -39,7 +39,7 @@ import { SPEAK_LANGUAGES, LANGUAGES as ALL_LANGUAGES } from '@/lib/languages'
 import { getGeneratedDeckHref } from '@/lib/cardGenerationProgress'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 
-const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar', 'ceb', 'fil', 'id', 'ko']
+const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar', 'ru', 'ceb', 'fil', 'id', 'ko']
 const GROK_LEVEL_VALUES: GrokLevel[] = ['zero', 'beginner', 'intermediate', 'advanced']
 const DEFAULT_GROK_VOICE: GrokVoice = 'eve'
 const DEFAULT_GROK_CATEGORY: GrokCategory | 'free_chat' = 'free_chat'

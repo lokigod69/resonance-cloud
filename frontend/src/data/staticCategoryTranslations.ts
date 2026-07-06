@@ -31,6 +31,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "개"
+    },
+    "ru": {
+      "term": "собака"
     }
   },
   "animals.cat": {
@@ -63,6 +66,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "고양이"
+    },
+    "ru": {
+      "term": "кошка"
     }
   },
   "animals.bird": {
@@ -95,6 +101,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "새"
+    },
+    "ru": {
+      "term": "птица"
     }
   },
   "animals.fish": {
@@ -127,6 +136,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "물고기"
+    },
+    "ru": {
+      "term": "рыба"
     }
   },
   "animals.horse": {
@@ -159,6 +171,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "말"
+    },
+    "ru": {
+      "term": "лошадь"
     }
   },
   "animals.cow": {
@@ -191,6 +206,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "소"
+    },
+    "ru": {
+      "term": "корова"
     }
   },
   "animals.pig": {
@@ -223,6 +241,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "돼지"
+    },
+    "ru": {
+      "term": "свинья"
     }
   },
   "animals.sheep": {
@@ -255,6 +276,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "양"
+    },
+    "ru": {
+      "term": "овца"
     }
   },
   "animals.goat": {
@@ -287,6 +311,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "염소"
+    },
+    "ru": {
+      "term": "коза"
     }
   },
   "animals.chicken": {
@@ -319,6 +346,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "닭"
+    },
+    "ru": {
+      "term": "курица"
     }
   },
   "animals.duck": {
@@ -351,6 +381,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "오리"
+    },
+    "ru": {
+      "term": "утка"
     }
   },
   "animals.rabbit": {
@@ -383,6 +416,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "토끼"
+    },
+    "ru": {
+      "term": "кролик"
     }
   },
   "animals.mouse": {
@@ -415,6 +451,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "생쥐"
+    },
+    "ru": {
+      "term": "мышь"
     }
   },
   "animals.rat": {
@@ -447,6 +486,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "쥐"
+    },
+    "ru": {
+      "term": "крыса"
     }
   },
   "animals.frog": {
@@ -479,6 +521,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "개구리"
+    },
+    "ru": {
+      "term": "лягушка"
     }
   },
   "animals.turtle": {
@@ -511,6 +556,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "거북이"
+    },
+    "ru": {
+      "term": "черепаха"
     }
   },
   "animals.snake": {
@@ -543,6 +591,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "뱀"
+    },
+    "ru": {
+      "term": "змея"
     }
   },
   "animals.lizard": {
@@ -575,6 +626,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "도마뱀"
+    },
+    "ru": {
+      "term": "ящерица"
     }
   },
   "animals.bee": {
@@ -607,6 +661,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "벌"
+    },
+    "ru": {
+      "term": "пчела"
     }
   },
   "animals.butterfly": {
@@ -639,6 +696,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "나비"
+    },
+    "ru": {
+      "term": "бабочка"
     }
   },
   "animals.lion": {
@@ -671,6 +731,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "사자"
+    },
+    "ru": {
+      "term": "лев"
     }
   },
   "animals.tiger": {
@@ -703,6 +766,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "호랑이"
+    },
+    "ru": {
+      "term": "тигр"
     }
   },
   "animals.elephant": {
@@ -735,6 +801,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "코끼리"
+    },
+    "ru": {
+      "term": "слон"
     }
   },
   "animals.giraffe": {
@@ -768,6 +837,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "기린"
+    },
+    "ru": {
+      "term": "жираф"
     }
   },
   "animals.zebra": {
@@ -801,6 +873,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "얼룩말"
+    },
+    "ru": {
+      "term": "зебра"
     }
   },
   "animals.bear": {
@@ -833,6 +908,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "곰"
+    },
+    "ru": {
+      "term": "медведь"
     }
   },
   "animals.wolf": {
@@ -865,6 +943,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "늑대"
+    },
+    "ru": {
+      "term": "волк"
     }
   },
   "animals.fox": {
@@ -898,6 +979,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "여우"
+    },
+    "ru": {
+      "term": "лиса"
     }
   },
   "animals.deer": {
@@ -930,6 +1014,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "사슴"
+    },
+    "ru": {
+      "term": "олень"
     }
   },
   "animals.monkey": {
@@ -962,6 +1049,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "원숭이"
+    },
+    "ru": {
+      "term": "обезьяна"
     }
   },
   "animals.dolphin": {
@@ -996,6 +1086,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "돌고래",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дельфин"
     }
   },
   "animals.whale": {
@@ -1029,6 +1122,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "고래",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кит"
     }
   },
   "animals.shark": {
@@ -1062,6 +1158,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "상어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "акула"
     }
   },
   "animals.octopus": {
@@ -1095,6 +1194,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "문어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "осьминог"
     }
   },
   "animals.crab": {
@@ -1128,6 +1230,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "게",
       "needsReview": true
+    },
+    "ru": {
+      "term": "краб"
     }
   },
   "animals.lobster": {
@@ -1161,6 +1266,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "랍스터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "омар"
     }
   },
   "animals.seal": {
@@ -1194,6 +1302,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "봉인",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тюлень",
+      "needsReview": true,
+      "reviewNote": "de/fr/es give the \"stamp/seal\" sense (Siegel/sceau/sello); animals.seal -> marine mammal \"тюлень\" chosen per category"
     }
   },
   "animals.penguin": {
@@ -1228,6 +1341,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "펭귄",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пингвин"
     }
   },
   "animals.seahorse": {
@@ -1261,6 +1377,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "해마",
       "needsReview": true
+    },
+    "ru": {
+      "term": "морской конёк",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian term; \"морской конёк\" is the standard two-word name"
     }
   },
   "animals.jellyfish": {
@@ -1295,6 +1416,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "해파리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "медуза"
     }
   },
   "animals.eagle": {
@@ -1328,6 +1452,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "독수리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "орёл"
     }
   },
   "animals.owl": {
@@ -1361,6 +1488,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "올빼미",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сова"
     }
   },
   "animals.parrot": {
@@ -1395,6 +1525,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "앵무새",
       "needsReview": true
+    },
+    "ru": {
+      "term": "попугай"
     }
   },
   "animals.crow": {
@@ -1428,6 +1561,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "까마귀",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ворона"
     }
   },
   "animals.swan": {
@@ -1461,6 +1597,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "백조",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лебедь"
     }
   },
   "animals.peacock": {
@@ -1494,6 +1633,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "공작",
       "needsReview": true
+    },
+    "ru": {
+      "term": "павлин"
     }
   },
   "animals.flamingo": {
@@ -1528,6 +1670,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "플라밍고",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фламинго"
     }
   },
   "animals.ostrich": {
@@ -1562,6 +1707,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "타조",
       "needsReview": true
+    },
+    "ru": {
+      "term": "страус"
     }
   },
   "animals.hummingbird": {
@@ -1596,6 +1744,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "벌새",
       "needsReview": true
+    },
+    "ru": {
+      "term": "колибри"
     }
   },
   "animals.woodpecker": {
@@ -1630,6 +1781,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "딱따구리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дятел"
     }
   },
   "animals.ant": {
@@ -1663,6 +1817,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "개미",
       "needsReview": true
+    },
+    "ru": {
+      "term": "муравей"
     }
   },
   "animals.spider": {
@@ -1696,6 +1853,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "거미",
       "needsReview": true
+    },
+    "ru": {
+      "term": "паук"
     }
   },
   "animals.mosquito": {
@@ -1729,6 +1889,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "모기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "комар"
     }
   },
   "animals.fly": {
@@ -1762,6 +1925,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "파리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "муха",
+      "needsReview": true,
+      "reviewNote": "de/fr/es give the verb \"to fly\" (fliegen/voler/volar); animals.fly -> insect \"муха\" chosen per category. If the verb was intended use \"летать\""
     }
   },
   "animals.beetle": {
@@ -1795,6 +1963,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "딱정벌레",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жук"
     }
   },
   "animals.grasshopper": {
@@ -1828,6 +1999,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "메뚜기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кузнечик"
     }
   },
   "animals.dragonfly": {
@@ -1861,6 +2035,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "잠자리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стрекоза"
     }
   },
   "animals.snail": {
@@ -1894,6 +2071,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "달팽이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "улитка"
     }
   },
   "animals.worm": {
@@ -1927,6 +2107,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "벌레",
       "needsReview": true
+    },
+    "ru": {
+      "term": "червяк"
     }
   },
   "animals.scorpion": {
@@ -1960,6 +2143,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전갈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "скорпион"
     }
   },
   "animals.kangaroo": {
@@ -1994,6 +2180,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캥거루",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кенгуру"
     }
   },
   "animals.koala": {
@@ -2028,6 +2217,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "코알라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "коала"
     }
   },
   "animals.panda": {
@@ -2062,6 +2254,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "팬더",
       "needsReview": true
+    },
+    "ru": {
+      "term": "панда"
     }
   },
   "animals.camel": {
@@ -2095,6 +2290,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "낙타",
       "needsReview": true
+    },
+    "ru": {
+      "term": "верблюд"
     }
   },
   "animals.llama": {
@@ -2129,6 +2327,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "라마",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лама"
     }
   },
   "animals.alpaca": {
@@ -2163,6 +2364,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "알파카",
       "needsReview": true
+    },
+    "ru": {
+      "term": "альпака"
     }
   },
   "animals.raccoon": {
@@ -2197,6 +2401,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "너구리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "енот"
     }
   },
   "animals.skunk": {
@@ -2231,6 +2438,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스컹크",
       "needsReview": true
+    },
+    "ru": {
+      "term": "скунс"
     }
   },
   "animals.hedgehog": {
@@ -2265,6 +2475,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "고슴도치",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ёж"
     }
   },
   "animals.squirrel": {
@@ -2299,6 +2512,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "다람쥐",
       "needsReview": true
+    },
+    "ru": {
+      "term": "белка"
     }
   },
   "animals.crocodile": {
@@ -2332,6 +2548,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "악어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "крокодил"
     }
   },
   "animals.alligator": {
@@ -2365,6 +2584,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "악어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аллигатор"
     }
   },
   "animals.rhinoceros": {
@@ -2399,6 +2621,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "코뿔소",
       "needsReview": true
+    },
+    "ru": {
+      "term": "носорог"
     }
   },
   "animals.hippopotamus": {
@@ -2433,6 +2658,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "하마",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бегемот"
     }
   },
   "animals.gorilla": {
@@ -2466,6 +2694,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "고릴라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "горилла"
     }
   },
   "animals.chimpanzee": {
@@ -2500,6 +2731,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "침팬지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шимпанзе"
     }
   },
   "animals.hyena": {
@@ -2534,6 +2768,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "하이에나",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гиена"
     }
   },
   "animals.cheetah": {
@@ -2568,6 +2805,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "치타",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гепард"
     }
   },
   "animals.leopard": {
@@ -2601,6 +2841,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "표범",
       "needsReview": true
+    },
+    "ru": {
+      "term": "леопард"
     }
   },
   "animals.meerkat": {
@@ -2635,6 +2878,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "미어캣",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сурикат"
     }
   },
   "animals.otter": {
@@ -2669,6 +2915,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수달",
       "needsReview": true
+    },
+    "ru": {
+      "term": "выдра"
     }
   },
   "animals.beaver": {
@@ -2703,6 +2952,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비버",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бобр"
     }
   },
   "animals.badger": {
@@ -2737,6 +2989,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오소리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "барсук"
     }
   },
   "animals.weasel": {
@@ -2771,6 +3026,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "족제비",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ласка"
     }
   },
   "animals.ferret": {
@@ -2805,6 +3063,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "흰 족제비",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хорёк"
     }
   },
   "animals.mole": {
@@ -2838,6 +3099,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "두더지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "крот"
     }
   },
   "animals.bat": {
@@ -2871,6 +3135,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "박쥐",
       "needsReview": true
+    },
+    "ru": {
+      "term": "летучая мышь",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian term; \"летучая мышь\" is the standard two-word name"
     }
   },
   "animals.armadillo": {
@@ -2905,6 +3174,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아르마딜로",
       "needsReview": true
+    },
+    "ru": {
+      "term": "броненосец"
     }
   },
   "animals.sloth": {
@@ -2938,6 +3210,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "나무늘보",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ленивец"
     }
   },
   "animals.anteater": {
@@ -2972,6 +3247,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "개미핥기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "муравьед"
     }
   },
   "animals.platypus": {
@@ -3006,6 +3284,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오리너구리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "утконос"
     }
   },
   "animals.narwhal": {
@@ -3040,6 +3321,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "일각고래",
       "needsReview": true
+    },
+    "ru": {
+      "term": "нарвал"
     }
   },
   "animals.walrus": {
@@ -3074,6 +3358,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "바다코끼리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "морж"
     }
   },
   "animals.manatee": {
@@ -3108,6 +3395,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "해우",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ламантин"
     }
   },
   "animals.lemur": {
@@ -3142,6 +3432,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "여우원숭이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лемур"
     }
   },
   "animals.orangutan": {
@@ -3176,6 +3469,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오랑우탄",
       "needsReview": true
+    },
+    "ru": {
+      "term": "орангутан"
     }
   },
   "animals.tapir": {
@@ -3210,6 +3506,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "테이퍼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тапир"
     }
   },
   "animals.aardvark": {
@@ -3244,6 +3543,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "땅돼지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "трубкозуб"
     }
   },
   "animals.pangolin": {
@@ -3278,6 +3580,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "천산갑",
       "needsReview": true
+    },
+    "ru": {
+      "term": "панголин"
     }
   },
   "animals.capybara": {
@@ -3312,6 +3617,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카피바라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "капибара"
     }
   },
   "fruits.apple": {
@@ -3344,6 +3652,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "사과"
+    },
+    "ru": {
+      "term": "яблоко"
     }
   },
   "fruits.banana": {
@@ -3376,6 +3687,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "바나나"
+    },
+    "ru": {
+      "term": "банан"
     }
   },
   "fruits.orange": {
@@ -3408,6 +3722,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "오렌지"
+    },
+    "ru": {
+      "term": "апельсин"
     }
   },
   "fruits.grape": {
@@ -3440,6 +3757,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "포도"
+    },
+    "ru": {
+      "term": "виноград"
     }
   },
   "fruits.strawberry": {
@@ -3473,6 +3793,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "딸기"
+    },
+    "ru": {
+      "term": "клубника"
     }
   },
   "fruits.lemon": {
@@ -3506,6 +3829,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "레몬"
+    },
+    "ru": {
+      "term": "лимон"
     }
   },
   "fruits.peach": {
@@ -3539,6 +3865,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "복숭아"
+    },
+    "ru": {
+      "term": "персик"
     }
   },
   "fruits.pear": {
@@ -3572,6 +3901,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "배"
+    },
+    "ru": {
+      "term": "груша"
     }
   },
   "fruits.cherry": {
@@ -3605,6 +3937,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "체리"
+    },
+    "ru": {
+      "term": "вишня"
     }
   },
   "fruits.watermelon": {
@@ -3637,6 +3972,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "수박"
+    },
+    "ru": {
+      "term": "арбуз"
     }
   },
   "fruits.pineapple": {
@@ -3669,6 +4007,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "파인애플"
+    },
+    "ru": {
+      "term": "ананас"
     }
   },
   "fruits.mango": {
@@ -3701,6 +4042,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "망고"
+    },
+    "ru": {
+      "term": "манго"
     }
   },
   "fruits.blueberry": {
@@ -3734,6 +4078,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "블루베리"
+    },
+    "ru": {
+      "term": "голубика"
     }
   },
   "fruits.raspberry": {
@@ -3767,6 +4114,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "라즈베리"
+    },
+    "ru": {
+      "term": "малина"
     }
   },
   "fruits.blackberry": {
@@ -3800,6 +4150,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "블랙베리"
+    },
+    "ru": {
+      "term": "ежевика"
     }
   },
   "fruits.plum": {
@@ -3833,6 +4186,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "자두"
+    },
+    "ru": {
+      "term": "слива"
     }
   },
   "fruits.kiwi": {
@@ -3866,6 +4222,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "키위"
+    },
+    "ru": {
+      "term": "киви"
     }
   },
   "fruits.melon": {
@@ -3899,6 +4258,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "멜론"
+    },
+    "ru": {
+      "term": "дыня"
     }
   },
   "fruits.lime": {
@@ -3931,6 +4293,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "라임"
+    },
+    "ru": {
+      "term": "лайм"
     }
   },
   "fruits.grapefruit": {
@@ -3964,6 +4329,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "자몽"
+    },
+    "ru": {
+      "term": "грейпфрут"
     }
   },
   "fruits.coconut": {
@@ -3996,6 +4364,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "코코넛"
+    },
+    "ru": {
+      "term": "кокос"
     }
   },
   "fruits.avocado": {
@@ -4028,6 +4399,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "아보카도"
+    },
+    "ru": {
+      "term": "авокадо"
     }
   },
   "fruits.apricot": {
@@ -4061,6 +4435,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "살구"
+    },
+    "ru": {
+      "term": "абрикос"
     }
   },
   "fruits.nectarine": {
@@ -4094,6 +4471,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "천도복숭아"
+    },
+    "ru": {
+      "term": "нектарин"
     }
   },
   "fruits.tangerine": {
@@ -4127,6 +4507,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "귤"
+    },
+    "ru": {
+      "term": "мандарин",
+      "needsReview": true,
+      "reviewNote": "Russian has no everyday word separating tangerine from mandarin; both are мандарин."
     }
   },
   "fruits.mandarin": {
@@ -4160,6 +4545,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "만다린 오렌지"
+    },
+    "ru": {
+      "term": "мандарин"
     }
   },
   "fruits.pomegranate": {
@@ -4192,6 +4580,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "석류"
+    },
+    "ru": {
+      "term": "гранат"
     }
   },
   "fruits.fig": {
@@ -4225,6 +4616,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "무화과"
+    },
+    "ru": {
+      "term": "инжир"
     }
   },
   "fruits.date": {
@@ -4257,6 +4651,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "대추야자"
+    },
+    "ru": {
+      "term": "финик"
     }
   },
   "fruits.cranberry": {
@@ -4290,6 +4687,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "크랜베리"
+    },
+    "ru": {
+      "term": "клюква"
     }
   },
   "fruits.papaya": {
@@ -4323,6 +4723,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "파파야",
       "needsReview": true
+    },
+    "ru": {
+      "term": "папайя"
     }
   },
   "fruits.passion_fruit": {
@@ -4356,6 +4759,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "열정 과일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "маракуйя"
     }
   },
   "fruits.guava": {
@@ -4389,6 +4795,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "구아바",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гуава"
     }
   },
   "fruits.lychee": {
@@ -4423,6 +4832,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "리치",
       "needsReview": true
+    },
+    "ru": {
+      "term": "личи"
     }
   },
   "fruits.dragon_fruit": {
@@ -4456,6 +4868,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "용과",
       "needsReview": true
+    },
+    "ru": {
+      "term": "питахайя"
     }
   },
   "fruits.starfruit": {
@@ -4490,6 +4905,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스타프루트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "карамбола"
     }
   },
   "fruits.persimmon": {
@@ -4524,6 +4942,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "감",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хурма"
     }
   },
   "fruits.quince": {
@@ -4558,6 +4979,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "모과",
       "needsReview": true
+    },
+    "ru": {
+      "term": "айва"
     }
   },
   "fruits.cantaloupe": {
@@ -4592,6 +5016,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "멜론",
       "needsReview": true
+    },
+    "ru": {
+      "term": "канталупа",
+      "needsReview": true,
+      "reviewNote": "A muskmelon variety; everyday speech often just says дыня."
     }
   },
   "fruits.honeydew": {
@@ -4625,6 +5054,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "단물",
       "needsReview": true
+    },
+    "ru": {
+      "term": "медовая дыня",
+      "needsReview": true,
+      "reviewNote": "No single-word term; медовая дыня is multi-word. Source de/fr/es mistranslate as aphid honeydew/molasses."
     }
   },
   "fruits.blackcurrant": {
@@ -4658,6 +5092,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "까치밥나무",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чёрная смородина",
+      "needsReview": true,
+      "reviewNote": "Standard term but multi-word; no single-word Russian equivalent."
     }
   },
   "fruits.redcurrant": {
@@ -4691,6 +5130,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "붉은 건포도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "красная смородина",
+      "needsReview": true,
+      "reviewNote": "Standard term but multi-word; no single-word Russian equivalent."
     }
   },
   "fruits.gooseberry": {
@@ -4725,6 +5169,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "구스베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "крыжовник"
     }
   },
   "fruits.elderberry": {
@@ -4759,6 +5206,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "엘더베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бузина"
     }
   },
   "fruits.mulberry": {
@@ -4793,6 +5243,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "뽕나무",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шелковица"
     }
   },
   "fruits.boysenberry": {
@@ -4827,6 +5280,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "보이젠베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бойзенова ягода",
+      "needsReview": true,
+      "reviewNote": "Rare blackberry/raspberry hybrid; no established Russian term (also бойзенберри)."
     }
   },
   "fruits.loganberry": {
@@ -4861,6 +5319,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "로건베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "логанова ягода",
+      "needsReview": true,
+      "reviewNote": "Rare hybrid berry; no established Russian term (also логанберри)."
     }
   },
   "fruits.cloudberry": {
@@ -4895,6 +5358,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "클라우드베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "морошка"
     }
   },
   "fruits.lingonberry": {
@@ -4929,6 +5395,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "링곤베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "брусника"
     }
   },
   "fruits.huckleberry": {
@@ -4963,6 +5432,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "허클베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "черника",
+      "needsReview": true,
+      "reviewNote": "N. American huckleberry has no distinct Russian word; rendered as bilberry черника per de=Heidelbeere/fr=myrtille."
     }
   },
   "fruits.plantain": {
@@ -4997,6 +5471,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "질경이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "платано",
+      "needsReview": true,
+      "reviewNote": "Cooking plantain has no common Russian word (платано/плантайн); source de=Wegerich is the unrelated herb подорожник."
     }
   },
   "fruits.jackfruit": {
@@ -5030,6 +5509,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "잭푸르트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "джекфрут"
     }
   },
   "fruits.durian": {
@@ -5064,6 +5546,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "두리안",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дуриан"
     }
   },
   "fruits.rambutan": {
@@ -5098,6 +5583,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "람부탄",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рамбутан"
     }
   },
   "fruits.mangosteen": {
@@ -5132,6 +5620,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "망고스틴",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мангустин"
     }
   },
   "fruits.longan": {
@@ -5166,6 +5657,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "용안",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лонган"
     }
   },
   "fruits.soursop": {
@@ -5200,6 +5694,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가시여지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гуанабана",
+      "needsReview": true,
+      "reviewNote": "Multiple competing names (гуанабана / сметанное яблоко); no single common term."
     }
   },
   "fruits.breadfruit": {
@@ -5233,6 +5732,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "빵나무",
       "needsReview": true
+    },
+    "ru": {
+      "term": "плод хлебного дерева",
+      "needsReview": true,
+      "reviewNote": "No single-word term; multi-word (lit. 'fruit of the bread tree')."
     }
   },
   "fruits.custard_apple": {
@@ -5266,6 +5770,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "커스터드 애플",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аннона",
+      "needsReview": true,
+      "reviewNote": "Botanical genus name; overlaps cherimoya; alt. calques кремовое/сахарное яблоко."
     }
   },
   "fruits.cherimoya": {
@@ -5300,6 +5809,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "체리모야",
       "needsReview": true
+    },
+    "ru": {
+      "term": "черимойя"
     }
   },
   "fruits.clementine": {
@@ -5334,6 +5846,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "클레멘타인",
       "needsReview": true
+    },
+    "ru": {
+      "term": "клементин"
     }
   },
   "fruits.pomelo": {
@@ -5368,6 +5883,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "포멜로",
       "needsReview": true
+    },
+    "ru": {
+      "term": "помело"
     }
   },
   "fruits.kumquat": {
@@ -5402,6 +5920,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "금귤",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кумкват"
     }
   },
   "fruits.yuzu": {
@@ -5436,6 +5957,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "유자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "юдзу"
     }
   },
   "fruits.calamansi": {
@@ -5470,6 +5994,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "깔라만시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "каламанси"
     }
   },
   "fruits.blood_orange": {
@@ -5503,6 +6030,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "블러드 오렌지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "красный апельсин",
+      "needsReview": true,
+      "reviewNote": "Multi-word; also кровавый апельсин / королёк."
     }
   },
   "fruits.satsuma": {
@@ -5537,6 +6069,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사츠마",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мандарин",
+      "needsReview": true,
+      "reviewNote": "Satsuma is a mandarin variety; Russian everyday word is just мандарин (rare: сацума)."
     }
   },
   "fruits.citron": {
@@ -5571,6 +6108,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "유자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "цитрон"
     }
   },
   "fruits.bergamot_orange": {
@@ -5604,6 +6144,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "베르가못 오렌지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бергамот"
     }
   },
   "fruits.ugli_fruit": {
@@ -5637,6 +6180,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "못생긴 과일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "углифрут",
+      "needsReview": true,
+      "reviewNote": "A Jamaican tangelo; no common Russian word; углифрут is a rare transliteration."
     }
   },
   "fruits.damson": {
@@ -5671,6 +6219,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "다손",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тернослива",
+      "needsReview": true,
+      "reviewNote": "Closest match for the damson plum; no exact everyday term (also венгерка)."
     }
   },
   "fruits.mirabelle": {
@@ -5705,6 +6258,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "미라벨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мирабель"
     }
   },
   "fruits.greengage": {
@@ -5739,6 +6295,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "녹지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ренклод"
     }
   },
   "fruits.crabapple": {
@@ -5773,6 +6332,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "게사과",
       "needsReview": true
+    },
+    "ru": {
+      "term": "райское яблоко",
+      "needsReview": true,
+      "reviewNote": "Multi-word; the small ornamental/wild apple; also дичка / дикая яблоня."
     }
   },
   "fruits.medlar": {
@@ -5807,6 +6371,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "메들라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мушмула"
     }
   },
   "fruits.rose_hip": {
@@ -5840,6 +6407,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "로즈힙",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шиповник"
     }
   },
   "fruits.hawthorn_berry": {
@@ -5873,6 +6443,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "산사나무 열매",
       "needsReview": true
+    },
+    "ru": {
+      "term": "боярышник"
     }
   },
   "fruits.serviceberry": {
@@ -5907,6 +6480,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "서비스 베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ирга"
     }
   },
   "fruits.chokeberry": {
@@ -5941,6 +6517,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "초크베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "черноплодная рябина",
+      "needsReview": true,
+      "reviewNote": "Multi-word; same plant as aronia berry (single word арония)."
     }
   },
   "fruits.sea_buckthorn": {
@@ -5975,6 +6556,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "바다 갈매 나무속",
       "needsReview": true
+    },
+    "ru": {
+      "term": "облепиха"
     }
   },
   "fruits.salak": {
@@ -6009,6 +6593,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "살락",
       "needsReview": true
+    },
+    "ru": {
+      "term": "салак",
+      "needsReview": true,
+      "reviewNote": "Snake fruit; rare transliteration (also змеиный фрукт); note homograph салака = a fish."
     }
   },
   "fruits.sapodilla": {
@@ -6043,6 +6632,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사포딜라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "саподилла"
     }
   },
   "fruits.feijoa": {
@@ -6077,6 +6669,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "페이조아",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фейхоа"
     }
   },
   "fruits.jabuticaba": {
@@ -6111,6 +6706,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "자부티카바",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жаботикаба"
     }
   },
   "fruits.acerola": {
@@ -6145,6 +6743,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아세로라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ацерола"
     }
   },
   "fruits.cupuacu": {
@@ -6179,6 +6780,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "쿠푸아수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "купуасу"
     }
   },
   "fruits.lucuma": {
@@ -6212,6 +6816,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "루쿠마",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лукума"
     }
   },
   "fruits.marionberry": {
@@ -6246,6 +6853,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "매리언베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "марионова ягода",
+      "needsReview": true,
+      "reviewNote": "Blackberry cultivar; no common Russian term (also марионберри)."
     }
   },
   "fruits.miracle_fruit": {
@@ -6279,6 +6891,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기적의 열매",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чудо-ягода",
+      "needsReview": true,
+      "reviewNote": "No established Russian term; чудо-ягода is a calque (also синсепалум)."
     }
   },
   "fruits.horned_melon": {
@@ -6312,6 +6929,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "뿔이 있는 멜론",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кивано"
     }
   },
   "fruits.acai_berry": {
@@ -6345,6 +6965,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아사이베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "асаи"
     }
   },
   "fruits.goji_berry": {
@@ -6379,6 +7002,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "구기베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "годжи"
     }
   },
   "fruits.aronia_berry": {
@@ -6413,6 +7039,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아로니아 베리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "арония",
+      "needsReview": true,
+      "reviewNote": "Same plant as chokeberry (черноплодная рябина)."
     }
   },
   "fruits.pawpaw": {
@@ -6447,6 +7078,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "포포",
       "needsReview": true
+    },
+    "ru": {
+      "term": "азимина",
+      "needsReview": true,
+      "reviewNote": "Pawpaw = Asimina (азимина), but source de/es say papaya (папайя), duplicating fruits.papaya — verify intended sense."
     }
   },
   "fruits.loquat": {
@@ -6481,6 +7117,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비파",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мушмула японская",
+      "needsReview": true,
+      "reviewNote": "Multi-word; also локва; distinct from medlar (мушмула)."
     }
   },
   "fruits.langsat": {
@@ -6515,6 +7156,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "랑삿",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лангсат",
+      "needsReview": true,
+      "reviewNote": "Obscure SE-Asian fruit; лангсат is a transliteration, no common Russian term."
     }
   },
   "fruits.bael_fruit": {
@@ -6548,6 +7194,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "바엘 과일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "баиль",
+      "needsReview": true,
+      "reviewNote": "Obscure; no common Russian term (баиль / баэль / бенгальская айва)."
     }
   },
   "fruits.tamarillo": {
@@ -6582,6 +7233,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "타마릴로",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тамарилло"
     }
   },
   "fruits.cashew_apple": {
@@ -6615,6 +7269,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캐슈 사과",
       "needsReview": true
+    },
+    "ru": {
+      "term": "яблоко кешью",
+      "needsReview": true,
+      "reviewNote": "Multi-word; the cashew fruit (not the nut)."
     }
   },
   "fruits.ackee": {
@@ -6649,6 +7308,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아키",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аки",
+      "needsReview": true,
+      "reviewNote": "Jamaican ackee; rare transliteration (аки/акки), no established term."
     }
   },
   "vegetables.carrot": {
@@ -6681,6 +7345,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "당근"
+    },
+    "ru": {
+      "term": "морковь"
     }
   },
   "vegetables.potato": {
@@ -6713,6 +7380,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "감자"
+    },
+    "ru": {
+      "term": "картофель"
     }
   },
   "vegetables.onion": {
@@ -6745,6 +7415,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "양파"
+    },
+    "ru": {
+      "term": "лук"
     }
   },
   "vegetables.tomato": {
@@ -6777,6 +7450,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "토마토"
+    },
+    "ru": {
+      "term": "помидор"
     }
   },
   "vegetables.cucumber": {
@@ -6809,6 +7485,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "오이"
+    },
+    "ru": {
+      "term": "огурец"
     }
   },
   "vegetables.lettuce": {
@@ -6842,6 +7521,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "상추"
+    },
+    "ru": {
+      "term": "салат",
+      "needsReview": true,
+      "reviewNote": "салат also means 'salad'; латук / салат-латук name the lettuce plant specifically."
     }
   },
   "vegetables.garlic": {
@@ -6874,6 +7558,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "마늘"
+    },
+    "ru": {
+      "term": "чеснок"
     }
   },
   "vegetables.corn": {
@@ -6906,6 +7593,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "옥수수"
+    },
+    "ru": {
+      "term": "кукуруза"
     }
   },
   "vegetables.mushroom": {
@@ -6938,6 +7628,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "버섯"
+    },
+    "ru": {
+      "term": "гриб"
     }
   },
   "vegetables.broccoli": {
@@ -6971,6 +7664,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "브로콜리"
+    },
+    "ru": {
+      "term": "брокколи"
     }
   },
   "vegetables.cabbage": {
@@ -7003,6 +7699,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "양배추"
+    },
+    "ru": {
+      "term": "капуста"
     }
   },
   "vegetables.cauliflower": {
@@ -7036,6 +7735,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "콜리플라워"
+    },
+    "ru": {
+      "term": "цветная капуста"
     }
   },
   "vegetables.spinach": {
@@ -7069,6 +7771,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "시금치"
+    },
+    "ru": {
+      "term": "шпинат"
     }
   },
   "vegetables.pea": {
@@ -7102,6 +7807,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "완두콩"
+    },
+    "ru": {
+      "term": "горох"
     }
   },
   "vegetables.green_bean": {
@@ -7134,6 +7842,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "껍질콩"
+    },
+    "ru": {
+      "term": "стручковая фасоль"
     }
   },
   "vegetables.bell_pepper": {
@@ -7166,6 +7877,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "피망"
+    },
+    "ru": {
+      "term": "болгарский перец"
     }
   },
   "vegetables.chili_pepper": {
@@ -7198,6 +7912,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "칠리 고추"
+    },
+    "ru": {
+      "term": "перец чили"
     }
   },
   "vegetables.zucchini": {
@@ -7231,6 +7948,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "주키니"
+    },
+    "ru": {
+      "term": "кабачок"
     }
   },
   "vegetables.eggplant": {
@@ -7263,6 +7983,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "가지"
+    },
+    "ru": {
+      "term": "баклажан"
     }
   },
   "vegetables.pumpkin": {
@@ -7295,6 +8018,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "호박"
+    },
+    "ru": {
+      "term": "тыква"
     }
   },
   "vegetables.sweet_potato": {
@@ -7327,6 +8053,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "고구마"
+    },
+    "ru": {
+      "term": "батат"
     }
   },
   "vegetables.yam": {
@@ -7360,6 +8089,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "마"
+    },
+    "ru": {
+      "term": "ямс",
+      "needsReview": true,
+      "reviewNote": "Exotic in Russian; ямс (true yam) is easily confused with sweet potato (батат)."
     }
   },
   "vegetables.beetroot": {
@@ -7393,6 +8127,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "비트뿌리"
+    },
+    "ru": {
+      "term": "свёкла"
     }
   },
   "vegetables.radish": {
@@ -7425,6 +8162,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "무"
+    },
+    "ru": {
+      "term": "редис",
+      "needsReview": true,
+      "reviewNote": "редис = small red radish; larger radish is редька (German Rettich points to редька)."
     }
   },
   "vegetables.turnip": {
@@ -7457,6 +8199,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "순무"
+    },
+    "ru": {
+      "term": "репа"
     }
   },
   "vegetables.parsnip": {
@@ -7490,6 +8235,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "파스닙"
+    },
+    "ru": {
+      "term": "пастернак"
     }
   },
   "vegetables.rutabaga": {
@@ -7523,6 +8271,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "루타바가"
+    },
+    "ru": {
+      "term": "брюква"
     }
   },
   "vegetables.celeriac": {
@@ -7556,6 +8307,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "셀러리악"
+    },
+    "ru": {
+      "term": "корневой сельдерей",
+      "needsReview": true,
+      "reviewNote": "Two words; overlaps with celery (сельдерей); means celery root."
     }
   },
   "vegetables.taro": {
@@ -7589,6 +8345,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "타로"
+    },
+    "ru": {
+      "term": "таро",
+      "needsReview": true,
+      "reviewNote": "Exotic; таро (also колоказия) is the accepted transliteration."
     }
   },
   "vegetables.cassava": {
@@ -7621,6 +8382,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "카사바"
+    },
+    "ru": {
+      "term": "маниок",
+      "needsReview": true,
+      "reviewNote": "Exotic; маниок (also кассава) — confirm preferred form."
     }
   },
   "vegetables.kale": {
@@ -7655,6 +8421,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "케일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кудрявая капуста",
+      "needsReview": true,
+      "reviewNote": "Competing terms: кудрявая капуста / кале / грюнколь; two words."
     }
   },
   "vegetables.arugula": {
@@ -7689,6 +8460,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "루콜라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "руккола"
     }
   },
   "vegetables.watercress": {
@@ -7723,6 +8497,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "물냉이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "водяной кресс",
+      "needsReview": true,
+      "reviewNote": "Watercress; кресс-салат is used loosely but denotes garden cress."
     }
   },
   "vegetables.swiss_chard": {
@@ -7757,6 +8536,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "근대",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мангольд"
     }
   },
   "vegetables.bok_choy": {
@@ -7791,6 +8573,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "청경채",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бок-чой",
+      "needsReview": true,
+      "reviewNote": "Transliteration (also пак-чой); loosely called китайская капуста."
     }
   },
   "vegetables.collard_greens": {
@@ -7825,6 +8612,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "콜라드 그린",
       "needsReview": true
+    },
+    "ru": {
+      "term": "листовая капуста",
+      "needsReview": true,
+      "reviewNote": "No settled single term; overlaps with kale; also браунколь."
     }
   },
   "vegetables.mustard_greens": {
@@ -7859,6 +8651,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "겨자잎",
       "needsReview": true
+    },
+    "ru": {
+      "term": "горчичная зелень",
+      "needsReview": true,
+      "reviewNote": "No settled single term; also листья горчицы / салатная горчица; two words."
     }
   },
   "vegetables.endive": {
@@ -7893,6 +8690,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "꽃상추",
       "needsReview": true
+    },
+    "ru": {
+      "term": "эндивий"
     }
   },
   "vegetables.escarole": {
@@ -7927,6 +8727,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "에스카롤",
       "needsReview": true
+    },
+    "ru": {
+      "term": "эскариоль",
+      "needsReview": true,
+      "reviewNote": "Broad-leaved endive; эскариоль is little known; often subsumed under эндивий."
     }
   },
   "vegetables.radicchio": {
@@ -7961,6 +8766,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "라디키오",
       "needsReview": true
+    },
+    "ru": {
+      "term": "радиккио",
+      "needsReview": true,
+      "reviewNote": "Transliteration (indeclinable); also красный цикорий."
     }
   },
   "vegetables.leek": {
@@ -7995,6 +8805,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "부추",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лук-порей"
     }
   },
   "vegetables.scallion": {
@@ -8029,6 +8842,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "파",
       "needsReview": true
+    },
+    "ru": {
+      "term": "зелёный лук"
     }
   },
   "vegetables.shallot": {
@@ -8063,6 +8879,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "샬롯",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лук-шалот"
     }
   },
   "vegetables.chive": {
@@ -8097,6 +8916,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "골파",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шнитт-лук"
     }
   },
   "vegetables.celery": {
@@ -8131,6 +8953,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "셀러리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сельдерей"
     }
   },
   "vegetables.asparagus": {
@@ -8165,6 +8990,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아스파라거스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "спаржа"
     }
   },
   "vegetables.artichoke": {
@@ -8199,6 +9027,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아티초크",
       "needsReview": true
+    },
+    "ru": {
+      "term": "артишок"
     }
   },
   "vegetables.fennel": {
@@ -8232,6 +9063,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "회향",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фенхель"
     }
   },
   "vegetables.bamboo_shoot": {
@@ -8265,6 +9099,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "죽순",
       "needsReview": true
+    },
+    "ru": {
+      "term": "побег бамбука",
+      "needsReview": true,
+      "reviewNote": "Two words; no single-word equivalent (usually plural побеги бамбука)."
     }
   },
   "vegetables.heart_of_palm": {
@@ -8298,6 +9137,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "손바닥의 심장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пальмовая сердцевина",
+      "needsReview": true,
+      "reviewNote": "No settled term; also сердцевина пальмы / пальмито; multi-word."
     }
   },
   "vegetables.brussels_sprout": {
@@ -8331,6 +9175,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "브뤼셀 새싹",
       "needsReview": true
+    },
+    "ru": {
+      "term": "брюссельская капуста"
     }
   },
   "vegetables.napa_cabbage": {
@@ -8365,6 +9212,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "배추",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пекинская капуста"
     }
   },
   "vegetables.savoy_cabbage": {
@@ -8398,6 +9248,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사보이 양배추",
       "needsReview": true
+    },
+    "ru": {
+      "term": "савойская капуста"
     }
   },
   "vegetables.red_cabbage": {
@@ -8431,6 +9284,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "붉은 양배추",
       "needsReview": true
+    },
+    "ru": {
+      "term": "краснокочанная капуста"
     }
   },
   "vegetables.kohlrabi": {
@@ -8465,6 +9321,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "알 줄기 양배추",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кольраби"
     }
   },
   "vegetables.romanesco": {
@@ -8499,6 +9358,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "로마네스크",
       "needsReview": true
+    },
+    "ru": {
+      "term": "романеско",
+      "needsReview": true,
+      "reviewNote": "Transliteration (indeclinable); also романская капуста; not universally known."
     }
   },
   "vegetables.broccolini": {
@@ -8533,6 +9397,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "브로콜리니",
       "needsReview": true
+    },
+    "ru": {
+      "term": "брокколини",
+      "needsReview": true,
+      "reviewNote": "Transliteration; also бэби-брокколи."
     }
   },
   "vegetables.chinese_broccoli": {
@@ -8566,6 +9435,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "중국 브로콜리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "китайская брокколи",
+      "needsReview": true,
+      "reviewNote": "Two words; also кай-лан / гайлан."
     }
   },
   "vegetables.rapini": {
@@ -8600,6 +9474,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "라피니",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рапини",
+      "needsReview": true,
+      "reviewNote": "Transliteration; also брокколи рааб; little known in Russian."
     }
   },
   "vegetables.daikon": {
@@ -8634,6 +9513,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "무",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дайкон"
     }
   },
   "vegetables.snap_pea": {
@@ -8667,6 +9549,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스냅 완두콩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сахарный горох",
+      "needsReview": true,
+      "reviewNote": "Russian сахарный горох covers both snap and snow peas; two words."
     }
   },
   "vegetables.snow_pea": {
@@ -8700,6 +9587,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "눈 완두콩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "горох мангетаут",
+      "needsReview": true,
+      "reviewNote": "Overlaps with snap pea; commonly also just сахарный горох; мангетаут is rare."
     }
   },
   "vegetables.edamame": {
@@ -8734,6 +9626,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "완두콩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "эдамаме",
+      "needsReview": true,
+      "reviewNote": "Borrowing (young soybeans); mainly a food/restaurant term."
     }
   },
   "vegetables.broad_bean": {
@@ -8767,6 +9664,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "누에콩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бобы",
+      "needsReview": true,
+      "reviewNote": "Fava bean; боб(ы) = Old World fava vs фасоль (New World); конские/садовые бобы more specific."
     }
   },
   "vegetables.lima_bean": {
@@ -8800,6 +9702,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "리마콩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лимская фасоль",
+      "needsReview": true,
+      "reviewNote": "Calque; two words; not everyday-common."
     }
   },
   "vegetables.chickpea": {
@@ -8834,6 +9741,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "병아리콩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "нут"
     }
   },
   "vegetables.lentil": {
@@ -8868,6 +9778,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "렌즈콩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чечевица"
     }
   },
   "vegetables.okra": {
@@ -8902,6 +9815,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오크라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "окра",
+      "needsReview": true,
+      "reviewNote": "Two common terms: окра (modern) / бамия (traditional)."
     }
   },
   "vegetables.bean_sprout": {
@@ -8935,6 +9853,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "콩나물",
       "needsReview": true
+    },
+    "ru": {
+      "term": "соевый росток",
+      "needsReview": true,
+      "reviewNote": "de/fr specify soy; bean sprouts are often mung (ростки маша); usually plural."
     }
   },
   "vegetables.alfalfa_sprout": {
@@ -8969,6 +9892,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "알팔파 새싹",
       "needsReview": true
+    },
+    "ru": {
+      "term": "росток люцерны",
+      "needsReview": true,
+      "reviewNote": "Two words; no single-word equivalent (usually plural ростки люцерны)."
     }
   },
   "vegetables.squash": {
@@ -9002,6 +9930,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스쿼시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тыква",
+      "needsReview": true,
+      "reviewNote": "Generic squash overlaps with pumpkin (тыква); summer squash = кабачок."
     }
   },
   "vegetables.butternut_squash": {
@@ -9036,6 +9969,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "버터넛 스쿼시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мускатная тыква"
     }
   },
   "vegetables.acorn_squash": {
@@ -9069,6 +10005,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "도토리 스쿼시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жёлудевая тыква",
+      "needsReview": true,
+      "reviewNote": "Not well established; also тыква акорн; two words."
     }
   },
   "vegetables.spaghetti_squash": {
@@ -9102,6 +10043,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스파게티 스쿼시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тыква спагетти",
+      "needsReview": true,
+      "reviewNote": "Descriptive; two words."
     }
   },
   "vegetables.pattypan_squash": {
@@ -9135,6 +10081,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "패티팬 스쿼시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "патиссон"
     }
   },
   "vegetables.kabocha_squash": {
@@ -9168,6 +10117,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카보차 스쿼시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тыква кабоча",
+      "needsReview": true,
+      "reviewNote": "Japanese squash; transliteration; two words."
     }
   },
   "vegetables.delicata_squash": {
@@ -9201,6 +10155,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "델리카타 스쿼시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тыква деликата",
+      "needsReview": true,
+      "reviewNote": "Not established; transliteration; two words."
     }
   },
   "vegetables.chayote": {
@@ -9235,6 +10194,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "차요테",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чайот",
+      "needsReview": true,
+      "reviewNote": "Exotic; transliteration; also мексиканский огурец."
     }
   },
   "vegetables.bottle_gourd": {
@@ -9268,6 +10232,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "병 조롱박",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бутылочная тыква",
+      "needsReview": true,
+      "reviewNote": "Also горлянка / лагенария; two words."
     }
   },
   "vegetables.bitter_melon": {
@@ -9301,6 +10270,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "쓴 멜론",
       "needsReview": true
+    },
+    "ru": {
+      "term": "момордика",
+      "needsReview": true,
+      "reviewNote": "Bitter melon; also горький огурец / горькая тыква."
     }
   },
   "vegetables.shiitake_mushroom": {
@@ -9334,6 +10308,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "표고버섯",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шиитаке"
     }
   },
   "vegetables.oyster_mushroom": {
@@ -9367,6 +10344,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "굴버섯",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вёшенка"
     }
   },
   "vegetables.portobello_mushroom": {
@@ -9400,6 +10380,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "포토벨로 버섯",
       "needsReview": true
+    },
+    "ru": {
+      "term": "портобелло"
     }
   },
   "vegetables.enoki_mushroom": {
@@ -9433,6 +10416,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "팽이버섯",
       "needsReview": true
+    },
+    "ru": {
+      "term": "эноки",
+      "needsReview": true,
+      "reviewNote": "Transliteration (Japanese); less established than shiitake."
     }
   },
   "vegetables.porcini_mushroom": {
@@ -9466,6 +10454,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "포르치니 버섯",
       "needsReview": true
+    },
+    "ru": {
+      "term": "белый гриб"
     }
   },
   "vegetables.chanterelle": {
@@ -9500,6 +10491,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "살구",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лисичка"
     }
   },
   "vegetables.morel": {
@@ -9534,6 +10528,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "곰보버섯",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сморчок"
     }
   },
   "vegetables.truffle": {
@@ -9568,6 +10565,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "송로버섯",
       "needsReview": true
+    },
+    "ru": {
+      "term": "трюфель"
     }
   },
   "vegetables.maitake_mushroom": {
@@ -9601,6 +10601,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "잎새버섯",
       "needsReview": true
+    },
+    "ru": {
+      "term": "майтаке",
+      "needsReview": true,
+      "reviewNote": "Transliteration; also грифола курчавая / гриб-баран."
     }
   },
   "vegetables.king_oyster_mushroom": {
@@ -9634,6 +10639,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "새송이버섯",
       "needsReview": true
+    },
+    "ru": {
+      "term": "эринги",
+      "needsReview": true,
+      "reviewNote": "Also королевская вёшенка; эринги is the market term."
     }
   },
   "vegetables.lotus_root": {
@@ -9667,6 +10677,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "연근",
       "needsReview": true
+    },
+    "ru": {
+      "term": "корень лотоса",
+      "needsReview": true,
+      "reviewNote": "Two words; no single-word equivalent."
     }
   },
   "vegetables.burdock_root": {
@@ -9700,6 +10715,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "우엉",
       "needsReview": true
+    },
+    "ru": {
+      "term": "корень лопуха",
+      "needsReview": true,
+      "reviewNote": "Two words; also гобо (Japanese)."
     }
   },
   "vegetables.jicama": {
@@ -9734,6 +10754,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "히카마",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хикама",
+      "needsReview": true,
+      "reviewNote": "Exotic; transliteration; also мексиканская репа."
     }
   },
   "vegetables.malanga": {
@@ -9768,6 +10793,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "말랑가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "маланга",
+      "needsReview": true,
+      "reviewNote": "Exotic; transliteration; little known in Russian."
     }
   },
   "vegetables.salsify": {
@@ -9802,6 +10832,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "염분화하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "козлобородник",
+      "needsReview": true,
+      "reviewNote": "Salsify; also овсяный корень; German Schwarzwurzeln points to скорцонера (black salsify)."
     }
   },
   "vegetables.crosne": {
@@ -9836,6 +10871,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "크로네",
       "needsReview": true
+    },
+    "ru": {
+      "term": "китайский артишок",
+      "needsReview": true,
+      "reviewNote": "Exotic; also стахис; two words."
     }
   },
   "vegetables.nopales": {
@@ -9870,6 +10910,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "노팔레스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "нопаль",
+      "needsReview": true,
+      "reviewNote": "Edible prickly-pear pads; also нопалес / опунция; exotic."
     }
   },
   "vegetables.fiddlehead_fern": {
@@ -9904,6 +10949,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "피들머리 고사리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "побег папоротника",
+      "needsReview": true,
+      "reviewNote": "Fiddleheads; usually папоротник-орляк; descriptive/multi-word (usually plural)."
     }
   },
   "vegetables.samphire": {
@@ -9938,6 +10988,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "샘파이어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "солерос",
+      "needsReview": true,
+      "reviewNote": "Marsh samphire/glasswort; also солянка / морской укроп; exotic."
     }
   },
   "vegetables.seaweed": {
@@ -9971,6 +11026,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "해초",
       "needsReview": true
+    },
+    "ru": {
+      "term": "морская капуста",
+      "needsReview": true,
+      "reviewNote": "As food = морская капуста (kelp); generic seaweed/algae = (морские) водоросли."
     }
   },
   "food_drinks.bread": {
@@ -10003,6 +11063,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "빵"
+    },
+    "ru": {
+      "term": "хлеб"
     }
   },
   "food_drinks.rice": {
@@ -10035,6 +11098,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "쌀"
+    },
+    "ru": {
+      "term": "рис"
     }
   },
   "food_drinks.pasta": {
@@ -10068,6 +11134,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "파스타"
+    },
+    "ru": {
+      "term": "макароны"
     }
   },
   "food_drinks.soup": {
@@ -10100,6 +11169,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "수프"
+    },
+    "ru": {
+      "term": "суп"
     }
   },
   "food_drinks.sandwich": {
@@ -10133,6 +11205,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "샌드위치"
+    },
+    "ru": {
+      "term": "бутерброд"
     }
   },
   "food_drinks.pizza": {
@@ -10166,6 +11241,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "피자"
+    },
+    "ru": {
+      "term": "пицца"
     }
   },
   "food_drinks.egg": {
@@ -10198,6 +11276,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "계란"
+    },
+    "ru": {
+      "term": "яйцо"
     }
   },
   "food_drinks.cheese": {
@@ -10230,6 +11311,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "치즈"
+    },
+    "ru": {
+      "term": "сыр"
     }
   },
   "food_drinks.meat": {
@@ -10262,6 +11346,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "고기"
+    },
+    "ru": {
+      "term": "мясо"
     }
   },
   "food_drinks.salad": {
@@ -10295,6 +11382,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "샐러드"
+    },
+    "ru": {
+      "term": "салат"
     }
   },
   "food_drinks.noodles": {
@@ -10327,6 +11417,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "국수"
+    },
+    "ru": {
+      "term": "лапша"
     }
   },
   "food_drinks.cereal": {
@@ -10360,6 +11453,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "시리얼"
+    },
+    "ru": {
+      "term": "хлопья",
+      "needsReview": true,
+      "reviewNote": "'Cereal' has no exact single Russian word; хлопья = breakfast flakes; de=Müsli would be мюсли (muesli)."
     }
   },
   "food_drinks.oatmeal": {
@@ -10393,6 +11491,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "오트밀"
+    },
+    "ru": {
+      "term": "овсянка"
     }
   },
   "food_drinks.pancake": {
@@ -10426,6 +11527,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "팬케이크"
+    },
+    "ru": {
+      "term": "блин"
     }
   },
   "food_drinks.toast": {
@@ -10459,6 +11563,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "토스트"
+    },
+    "ru": {
+      "term": "тост"
     }
   },
   "food_drinks.burger": {
@@ -10492,6 +11599,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "버거"
+    },
+    "ru": {
+      "term": "бургер"
     }
   },
   "food_drinks.fries": {
@@ -10525,6 +11635,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "감자튀김"
+    },
+    "ru": {
+      "term": "картофель фри",
+      "needsReview": true,
+      "reviewNote": "Multi-word; no single-word equivalent ('фри' used colloquially alone)."
     }
   },
   "food_drinks.hot_dog": {
@@ -10557,6 +11672,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "핫도그"
+    },
+    "ru": {
+      "term": "хот-дог"
     }
   },
   "food_drinks.steak": {
@@ -10590,6 +11708,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스테이크"
+    },
+    "ru": {
+      "term": "стейк"
     }
   },
   "food_drinks.sausage": {
@@ -10623,6 +11744,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "소시지"
+    },
+    "ru": {
+      "term": "колбаса",
+      "needsReview": true,
+      "reviewNote": "колбаса = generic/deli sausage (matches de Wurst); сосиска = frankfurter type (fr saucisse / es salchicha)."
     }
   },
   "food_drinks.yogurt": {
@@ -10656,6 +11782,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "요구르트"
+    },
+    "ru": {
+      "term": "йогурт"
     }
   },
   "food_drinks.butter": {
@@ -10688,6 +11817,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "버터"
+    },
+    "ru": {
+      "term": "масло",
+      "needsReview": true,
+      "reviewNote": "масло alone also means oil; сливочное масло is butter specifically."
     }
   },
   "food_drinks.cream": {
@@ -10720,6 +11854,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "크림"
+    },
+    "ru": {
+      "term": "сливки"
     }
   },
   "food_drinks.ice_cream": {
@@ -10753,6 +11890,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "아이스크림"
+    },
+    "ru": {
+      "term": "мороженое"
     }
   },
   "food_drinks.beef": {
@@ -10785,6 +11925,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "쇠고기"
+    },
+    "ru": {
+      "term": "говядина"
     }
   },
   "food_drinks.pork": {
@@ -10817,6 +11960,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "돼지고기"
+    },
+    "ru": {
+      "term": "свинина"
     }
   },
   "food_drinks.lamb": {
@@ -10849,6 +11995,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "양고기"
+    },
+    "ru": {
+      "term": "баранина"
     }
   },
   "food_drinks.bacon": {
@@ -10882,6 +12031,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "베이컨"
+    },
+    "ru": {
+      "term": "бекон"
     }
   },
   "food_drinks.ham": {
@@ -10915,6 +12067,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "햄"
+    },
+    "ru": {
+      "term": "ветчина"
     }
   },
   "food_drinks.meatball": {
@@ -10948,6 +12103,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "미트볼"
+    },
+    "ru": {
+      "term": "фрикаделька"
     }
   },
   "food_drinks.water": {
@@ -10981,6 +12139,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "물",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вода"
     }
   },
   "food_drinks.tea": {
@@ -11014,6 +12175,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "차",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чай"
     }
   },
   "food_drinks.coffee": {
@@ -11047,6 +12211,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "커피",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кофе"
     }
   },
   "food_drinks.juice": {
@@ -11080,6 +12247,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "주스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сок"
     }
   },
   "food_drinks.milk": {
@@ -11113,6 +12283,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "우유",
       "needsReview": true
+    },
+    "ru": {
+      "term": "молоко"
     }
   },
   "food_drinks.soda": {
@@ -11147,6 +12320,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "газировка"
     }
   },
   "food_drinks.lemonade": {
@@ -11180,6 +12356,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "레모네이드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лимонад"
     }
   },
   "food_drinks.smoothie": {
@@ -11214,6 +12393,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "점잖은 사람",
       "needsReview": true
+    },
+    "ru": {
+      "term": "смузи"
     }
   },
   "food_drinks.hot_chocolate": {
@@ -11247,6 +12429,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "핫 초콜릿",
       "needsReview": true
+    },
+    "ru": {
+      "term": "горячий шоколад",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard fixed phrase, no single-word equivalent."
     }
   },
   "food_drinks.mineral_water": {
@@ -11280,6 +12467,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "미네랄 워터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "минеральная вода",
+      "needsReview": true,
+      "reviewNote": "Multi-word; colloquial single-word alternative is минералка."
     }
   },
   "food_drinks.cake": {
@@ -11314,6 +12506,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "케이크",
       "needsReview": true
+    },
+    "ru": {
+      "term": "торт"
     }
   },
   "food_drinks.cookie": {
@@ -11348,6 +12543,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "쿠키",
       "needsReview": true
+    },
+    "ru": {
+      "term": "печенье"
     }
   },
   "food_drinks.biscuit": {
@@ -11381,6 +12579,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비스킷",
       "needsReview": true
+    },
+    "ru": {
+      "term": "печенье"
     }
   },
   "food_drinks.chocolate": {
@@ -11414,6 +12615,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "초콜릿",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шоколад"
     }
   },
   "food_drinks.candy": {
@@ -11447,6 +12651,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사탕",
       "needsReview": true
+    },
+    "ru": {
+      "term": "конфета"
     }
   },
   "food_drinks.pie": {
@@ -11481,6 +12688,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "파이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пирог"
     }
   },
   "food_drinks.muffin": {
@@ -11515,6 +12725,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "머핀",
       "needsReview": true
+    },
+    "ru": {
+      "term": "маффин"
     }
   },
   "food_drinks.donut": {
@@ -11549,6 +12762,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "도넛",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пончик"
     }
   },
   "food_drinks.pudding": {
@@ -11582,6 +12798,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "푸딩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пудинг"
     }
   },
   "food_drinks.brownie": {
@@ -11616,6 +12835,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "브라우니",
       "needsReview": true
+    },
+    "ru": {
+      "term": "брауни"
     }
   },
   "food_drinks.cracker": {
@@ -11650,6 +12872,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "크래커",
       "needsReview": true
+    },
+    "ru": {
+      "term": "крекер"
     }
   },
   "food_drinks.popcorn": {
@@ -11684,6 +12909,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "팝콘",
       "needsReview": true
+    },
+    "ru": {
+      "term": "попкорн"
     }
   },
   "food_drinks.chips": {
@@ -11717,6 +12945,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "칩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чипсы"
     }
   },
   "food_drinks.pretzel": {
@@ -11751,6 +12982,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "프레첼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "крендель",
+      "needsReview": true,
+      "reviewNote": "крендель = traditional pretzel-shaped (often sweet) pastry; брецель for the German salty soft pretzel."
     }
   },
   "food_drinks.nachos": {
@@ -11785,6 +13021,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "나쵸",
       "needsReview": true
+    },
+    "ru": {
+      "term": "начос"
     }
   },
   "food_drinks.taco": {
@@ -11819,6 +13058,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "타코",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тако"
     }
   },
   "food_drinks.burrito": {
@@ -11853,6 +13095,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "부리토",
       "needsReview": true
+    },
+    "ru": {
+      "term": "буррито"
     }
   },
   "food_drinks.dumpling": {
@@ -11887,6 +13132,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "만두",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пельмень",
+      "needsReview": true,
+      "reviewNote": "Broad category; пельмень = filled meat dumpling (most iconic); клёцка matches plain-dough de Knödel / es bola de masa."
     }
   },
   "food_drinks.spring_roll": {
@@ -11921,6 +13171,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스프링롤",
       "needsReview": true
+    },
+    "ru": {
+      "term": "спринг-ролл"
     }
   },
   "food_drinks.sushi": {
@@ -11955,6 +13208,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "초밥",
       "needsReview": true
+    },
+    "ru": {
+      "term": "суши"
     }
   },
   "food_drinks.salt": {
@@ -11988,6 +13244,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소금",
       "needsReview": true
+    },
+    "ru": {
+      "term": "соль"
     }
   },
   "food_drinks.pepper": {
@@ -12021,6 +13280,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "후추",
       "needsReview": true
+    },
+    "ru": {
+      "term": "перец"
     }
   },
   "food_drinks.sugar": {
@@ -12054,6 +13316,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "설탕",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сахар"
     }
   },
   "food_drinks.honey": {
@@ -12087,6 +13352,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "여보",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мёд"
     }
   },
   "food_drinks.jam": {
@@ -12121,6 +13389,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "잼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "джем"
     }
   },
   "food_drinks.mayonnaise": {
@@ -12154,6 +13425,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "마요네즈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "майонез"
     }
   },
   "food_drinks.ketchup": {
@@ -12188,6 +13462,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "케첩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кетчуп"
     }
   },
   "food_drinks.mustard": {
@@ -12221,6 +13498,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "겨자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "горчица"
     }
   },
   "food_drinks.soy_sauce": {
@@ -12254,6 +13534,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "간장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "соевый соус",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard fixed phrase, no single-word equivalent."
     }
   },
   "food_drinks.peanut_butter": {
@@ -12288,6 +13573,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "땅콩버터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "арахисовая паста",
+      "needsReview": true,
+      "reviewNote": "Multi-word; арахисовое масло also used but can mean peanut oil."
     }
   },
   "food_drinks.curry": {
@@ -12321,6 +13611,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카레",
       "needsReview": true
+    },
+    "ru": {
+      "term": "карри"
     }
   },
   "food_drinks.stew": {
@@ -12354,6 +13647,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스튜",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рагу"
     }
   },
   "food_drinks.roast": {
@@ -12387,6 +13683,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "로스트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жаркое",
+      "needsReview": true,
+      "reviewNote": "Taken as noun (a roast dish); de=braten suggests the verb 'to roast' = жарить/запекать."
     }
   },
   "food_drinks.barbecue": {
@@ -12421,6 +13722,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "바베큐",
       "needsReview": true
+    },
+    "ru": {
+      "term": "барбекю"
     }
   },
   "food_drinks.omelet": {
@@ -12455,6 +13759,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오믈렛",
       "needsReview": true
+    },
+    "ru": {
+      "term": "омлет"
     }
   },
   "food_drinks.lasagna": {
@@ -12489,6 +13796,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "라자냐",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лазанья"
     }
   },
   "food_drinks.risotto": {
@@ -12523,6 +13833,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "리조또",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ризотто"
     }
   },
   "food_drinks.fried_rice": {
@@ -12556,6 +13869,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "볶음밥",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жареный рис",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard phrase, no single-word equivalent."
     }
   },
   "food_drinks.ramen": {
@@ -12590,6 +13908,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "라면",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рамен"
     }
   },
   "food_drinks.kebab": {
@@ -12624,6 +13945,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "케밥",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кебаб"
     }
   },
   "food_drinks.roll": {
@@ -12657,6 +13981,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "롤",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рулет",
+      "needsReview": true,
+      "reviewNote": "de/fr/es give the verb 'to roll'; as food, рулет = rolled cake/meat roll; ролл = sushi roll; булочка = bread roll (overlaps 'bun')."
     }
   },
   "food_drinks.bun": {
@@ -12691,6 +14020,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "롤빵",
       "needsReview": true
+    },
+    "ru": {
+      "term": "булочка"
     }
   },
   "food_drinks.bagel": {
@@ -12725,6 +14057,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "베이글",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бублик",
+      "needsReview": true,
+      "reviewNote": "бублик = traditional Russian ring bread (closest common analog); бейгл is the direct loanword for the American bagel."
     }
   },
   "food_drinks.croissant": {
@@ -12759,6 +14096,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "크로와상",
       "needsReview": true
+    },
+    "ru": {
+      "term": "круассан"
     }
   },
   "food_drinks.waffle": {
@@ -12793,6 +14133,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "와플",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вафля"
     }
   },
   "food_drinks.tortilla": {
@@ -12827,6 +14170,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "옥수수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тортилья"
     }
   },
   "food_drinks.flatbread": {
@@ -12860,6 +14206,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "플랫 브레드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лепёшка"
     }
   },
   "food_drinks.pita": {
@@ -12894,6 +14243,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "피타",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пита"
     }
   },
   "food_drinks.couscous": {
@@ -12928,6 +14280,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "쿠스쿠스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кускус"
     }
   },
   "food_drinks.quinoa": {
@@ -12962,6 +14317,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "퀴노아",
       "needsReview": true
+    },
+    "ru": {
+      "term": "киноа"
     }
   },
   "food_drinks.espresso": {
@@ -12996,6 +14354,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "에스프레소",
       "needsReview": true
+    },
+    "ru": {
+      "term": "эспрессо"
     }
   },
   "food_drinks.cappuccino": {
@@ -13030,6 +14391,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카푸치노",
       "needsReview": true
+    },
+    "ru": {
+      "term": "капучино"
     }
   },
   "food_drinks.herbal_tea": {
@@ -13063,6 +14427,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "허브티",
       "needsReview": true
+    },
+    "ru": {
+      "term": "травяной чай",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard phrase, no single-word equivalent."
     }
   },
   "food_drinks.iced_tea": {
@@ -13096,6 +14465,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아이스티",
       "needsReview": true
+    },
+    "ru": {
+      "term": "холодный чай",
+      "needsReview": true,
+      "reviewNote": "Multi-word; also чай со льдом; no single-word equivalent."
     }
   },
   "food_drinks.coconut_water": {
@@ -13129,6 +14503,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "코코넛 워터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кокосовая вода",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard phrase, no single-word equivalent."
     }
   },
   "food_drinks.bubble_tea": {
@@ -13162,6 +14541,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "버블티",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бабл-ти",
+      "needsReview": true,
+      "reviewNote": "Modern loanword with unstable rendering; calques: пузырьковый чай / чай с шариками."
     }
   },
   "food_drinks.kombucha": {
@@ -13196,6 +14580,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "콤부차",
       "needsReview": true
+    },
+    "ru": {
+      "term": "комбуча"
     }
   },
   "food_drinks.tofu": {
@@ -13230,6 +14617,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "두부",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тофу"
     }
   },
   "food_drinks.hummus": {
@@ -13264,6 +14654,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "후무스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хумус"
     }
   },
   "food_drinks.falafel": {
@@ -13298,6 +14691,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "팔라펠",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фалафель"
     }
   },
   "nuts_seeds.almond": {
@@ -13330,6 +14726,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "아몬드"
+    },
+    "ru": {
+      "term": "миндаль"
     }
   },
   "nuts_seeds.peanut": {
@@ -13362,6 +14761,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "땅콩"
+    },
+    "ru": {
+      "term": "арахис"
     }
   },
   "nuts_seeds.walnut": {
@@ -13395,6 +14797,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "호두"
+    },
+    "ru": {
+      "term": "грецкий орех"
     }
   },
   "nuts_seeds.cashew": {
@@ -13427,6 +14832,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "캐슈"
+    },
+    "ru": {
+      "term": "кешью"
     }
   },
   "nuts_seeds.pistachio": {
@@ -13460,6 +14868,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "피스타치오"
+    },
+    "ru": {
+      "term": "фисташка"
     }
   },
   "nuts_seeds.hazelnut": {
@@ -13493,6 +14904,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "헤이즐넛"
+    },
+    "ru": {
+      "term": "фундук"
     }
   },
   "nuts_seeds.pecan": {
@@ -13526,6 +14940,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "피칸"
+    },
+    "ru": {
+      "term": "пекан"
     }
   },
   "nuts_seeds.chestnut": {
@@ -13558,6 +14975,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "밤"
+    },
+    "ru": {
+      "term": "каштан"
     }
   },
   "nuts_seeds.sunflower_seed": {
@@ -13590,6 +15010,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "해바라기 씨"
+    },
+    "ru": {
+      "term": "семечко подсолнечника",
+      "needsReview": true,
+      "reviewNote": "Everyday Russian uses the plural 'семечки'; singular given per citation rule."
     }
   },
   "nuts_seeds.pumpkin_seed": {
@@ -13622,6 +15047,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "호박씨"
+    },
+    "ru": {
+      "term": "тыквенное семечко",
+      "needsReview": true,
+      "reviewNote": "Everyday Russian uses the plural 'тыквенные семечки'; singular given per citation rule."
     }
   },
   "nuts_seeds.sesame_seed": {
@@ -13654,6 +15084,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "참깨"
+    },
+    "ru": {
+      "term": "кунжут"
     }
   },
   "nuts_seeds.chia_seed": {
@@ -13686,6 +15119,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "치아씨드"
+    },
+    "ru": {
+      "term": "семена чиа",
+      "needsReview": true,
+      "reviewNote": "Inherently plural in use; 'чиа' is indeclinable."
     }
   },
   "nuts_seeds.flaxseed": {
@@ -13718,6 +15156,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "아마씨"
+    },
+    "ru": {
+      "term": "льняное семя"
     }
   },
   "nuts_seeds.poppy_seed": {
@@ -13750,6 +15191,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "양귀비 씨앗"
+    },
+    "ru": {
+      "term": "мак"
     }
   },
   "nuts_seeds.hemp_seed": {
@@ -13782,6 +15226,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "대마씨"
+    },
+    "ru": {
+      "term": "конопляное семя"
     }
   },
   "nuts_seeds.pine_nut": {
@@ -13815,6 +15262,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "잣"
+    },
+    "ru": {
+      "term": "кедровый орех"
     }
   },
   "nuts_seeds.brazil_nut": {
@@ -13848,6 +15298,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "브라질 너트"
+    },
+    "ru": {
+      "term": "бразильский орех"
     }
   },
   "nuts_seeds.macadamia_nut": {
@@ -13881,6 +15334,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "마카다미아 너트"
+    },
+    "ru": {
+      "term": "макадамия"
     }
   },
   "nuts_seeds.mixed_nuts": {
@@ -13913,6 +15369,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "혼합 견과류"
+    },
+    "ru": {
+      "term": "смесь орехов",
+      "needsReview": true,
+      "reviewNote": "No single word; also 'ассорти орехов'."
     }
   },
   "nuts_seeds.trail_mix": {
@@ -13946,6 +15407,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "트레일 믹스"
+    },
+    "ru": {
+      "term": "смесь орехов и сухофруктов",
+      "needsReview": true,
+      "reviewNote": "No lexicalized term; descriptive phrase (nut-and-dried-fruit mix)."
     }
   },
   "nuts_seeds.almond_milk": {
@@ -13978,6 +15444,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "아몬드 우유"
+    },
+    "ru": {
+      "term": "миндальное молоко"
     }
   },
   "nuts_seeds.almond_flour": {
@@ -14010,6 +15479,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "아몬드 가루"
+    },
+    "ru": {
+      "term": "миндальная мука"
     }
   },
   "nuts_seeds.tahini": {
@@ -14043,6 +15515,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "타히니"
+    },
+    "ru": {
+      "term": "тахини"
     }
   },
   "nuts_seeds.sesame_oil": {
@@ -14075,6 +15550,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "참기름"
+    },
+    "ru": {
+      "term": "кунжутное масло"
     }
   },
   "nuts_seeds.sunflower_oil": {
@@ -14107,6 +15585,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "해바라기 기름"
+    },
+    "ru": {
+      "term": "подсолнечное масло"
     }
   },
   "nuts_seeds.pumpkin_seed_oil": {
@@ -14139,6 +15620,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "호박씨 기름"
+    },
+    "ru": {
+      "term": "тыквенное масло"
     }
   },
   "nuts_seeds.nut_butter": {
@@ -14172,6 +15656,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "너트 버터"
+    },
+    "ru": {
+      "term": "ореховая паста"
     }
   },
   "nuts_seeds.seed_butter": {
@@ -14204,6 +15691,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "씨드 버터"
+    },
+    "ru": {
+      "term": "паста из семян",
+      "needsReview": true,
+      "reviewNote": "No established term; descriptive, parallel to 'ореховая паста'."
     }
   },
   "nuts_seeds.granola": {
@@ -14237,6 +15729,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "그래놀라"
+    },
+    "ru": {
+      "term": "гранола"
     }
   },
   "nuts_seeds.praline": {
@@ -14270,6 +15765,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "프랄린"
+    },
+    "ru": {
+      "term": "пралине"
     }
   },
   "nuts_seeds.mustard_seed": {
@@ -14303,6 +15801,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "겨자씨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "семя горчицы"
     }
   },
   "nuts_seeds.cumin_seed": {
@@ -14336,6 +15837,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "커민씨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "зира",
+      "needsReview": true,
+      "reviewNote": "Cumin = зира (or кумин); NOT тмин, which is caraway."
     }
   },
   "nuts_seeds.coriander_seed": {
@@ -14369,6 +15875,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "고수풀 씨앗",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кориандр"
     }
   },
   "nuts_seeds.fennel_seed": {
@@ -14402,6 +15911,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "회향씨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "семя фенхеля"
     }
   },
   "nuts_seeds.caraway_seed": {
@@ -14435,6 +15947,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캐러웨이 씨앗",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тмин"
     }
   },
   "nuts_seeds.anise_seed": {
@@ -14468,6 +15983,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아니스 씨앗",
       "needsReview": true
+    },
+    "ru": {
+      "term": "анис"
     }
   },
   "nuts_seeds.dill_seed": {
@@ -14501,6 +16019,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "딜 씨앗",
       "needsReview": true
+    },
+    "ru": {
+      "term": "семя укропа"
     }
   },
   "nuts_seeds.celery_seed": {
@@ -14534,6 +16055,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "셀러리 씨앗",
       "needsReview": true
+    },
+    "ru": {
+      "term": "семя сельдерея"
     }
   },
   "nuts_seeds.fenugreek_seed": {
@@ -14567,6 +16091,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "호로파 씨앗",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пажитник",
+      "needsReview": true,
+      "reviewNote": "Fenugreek = пажитник (also шамбала / фенугрек); uncommon spice."
     }
   },
   "nuts_seeds.nigella_seed": {
@@ -14600,6 +16129,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "나이젤라 씨앗",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чёрный тмин",
+      "needsReview": true,
+      "reviewNote": "Nigella = чёрный тмин (also чернушка / калинджи); distinct from тмин = caraway."
     }
   },
   "nuts_seeds.acorn": {
@@ -14634,6 +16168,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "도토리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жёлудь"
     }
   },
   "nuts_seeds.hickory_nut": {
@@ -14668,6 +16205,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "히코리 너트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "орех гикори",
+      "needsReview": true,
+      "reviewNote": "Hickory = гикори (borrowed); no native single word."
     }
   },
   "nuts_seeds.beech_nut": {
@@ -14702,6 +16244,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "너도밤나무 열매",
       "needsReview": true
+    },
+    "ru": {
+      "term": "буковый орешек",
+      "needsReview": true,
+      "reviewNote": "Descriptive; also 'орешек бука'."
     }
   },
   "nuts_seeds.kola_nut": {
@@ -14736,6 +16283,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "콜라 너트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "орех кола",
+      "needsReview": true,
+      "reviewNote": "'кола' alone reads as the cola drink; 'орех кола' disambiguates."
     }
   },
   "nuts_seeds.candlenut": {
@@ -14769,6 +16321,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캔들넛",
       "needsReview": true
+    },
+    "ru": {
+      "term": "свечной орех",
+      "needsReview": true,
+      "reviewNote": "No established Russian name; свечной орех is a calque (also кемири / кукуи)."
     }
   },
   "nuts_seeds.pili_nut": {
@@ -14803,6 +16360,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "필리 너트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "орех пили",
+      "needsReview": true,
+      "reviewNote": "Transliteration; no established Russian term."
     }
   },
   "nuts_seeds.baru_nut": {
@@ -14836,6 +16398,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "바루 너트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "орех бару",
+      "needsReview": true,
+      "reviewNote": "Transliteration; no established Russian term."
     }
   },
   "nuts_seeds.ginkgo_nut": {
@@ -14870,6 +16437,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "은행나무 열매",
       "needsReview": true
+    },
+    "ru": {
+      "term": "орех гинкго",
+      "needsReview": true,
+      "reviewNote": "'гинкго' is indeclinable; also 'семена гинкго'."
     }
   },
   "nuts_seeds.fox_nut": {
@@ -14904,6 +16476,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "폭스 너트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "макхана",
+      "needsReview": true,
+      "reviewNote": "No established Russian name; макхана (transliteration) or 'семена эвриалы'."
     }
   },
   "nuts_seeds.lotus_seed": {
@@ -14937,6 +16514,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "연꽃씨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "семя лотоса"
     }
   },
   "home_objects.chair": {
@@ -14969,6 +16549,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "의자"
+    },
+    "ru": {
+      "term": "стул"
     }
   },
   "home_objects.table": {
@@ -15001,6 +16584,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "테이블"
+    },
+    "ru": {
+      "term": "стол"
     }
   },
   "home_objects.bed": {
@@ -15033,6 +16619,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "침대"
+    },
+    "ru": {
+      "term": "кровать"
     }
   },
   "home_objects.sofa": {
@@ -15066,6 +16655,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "소파"
+    },
+    "ru": {
+      "term": "диван"
     }
   },
   "home_objects.door": {
@@ -15098,6 +16690,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "문"
+    },
+    "ru": {
+      "term": "дверь"
     }
   },
   "home_objects.window": {
@@ -15130,6 +16725,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "창문"
+    },
+    "ru": {
+      "term": "окно"
     }
   },
   "home_objects.key": {
@@ -15162,6 +16760,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "열쇠"
+    },
+    "ru": {
+      "term": "ключ"
     }
   },
   "home_objects.lamp": {
@@ -15194,6 +16795,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "램프"
+    },
+    "ru": {
+      "term": "лампа"
     }
   },
   "home_objects.mirror": {
@@ -15226,6 +16830,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "거울"
+    },
+    "ru": {
+      "term": "зеркало"
     }
   },
   "home_objects.shelf": {
@@ -15258,6 +16865,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "선반"
+    },
+    "ru": {
+      "term": "полка"
     }
   },
   "home_objects.house": {
@@ -15290,6 +16900,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "집"
+    },
+    "ru": {
+      "term": "дом"
     }
   },
   "home_objects.apartment": {
@@ -15323,6 +16936,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "아파트"
+    },
+    "ru": {
+      "term": "квартира"
     }
   },
   "home_objects.room": {
@@ -15355,6 +16971,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "방"
+    },
+    "ru": {
+      "term": "комната"
     }
   },
   "home_objects.kitchen": {
@@ -15387,6 +17006,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "부엌"
+    },
+    "ru": {
+      "term": "кухня"
     }
   },
   "home_objects.bathroom": {
@@ -15419,6 +17041,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "화장실"
+    },
+    "ru": {
+      "term": "ванная"
     }
   },
   "home_objects.bedroom": {
@@ -15451,6 +17076,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "침실"
+    },
+    "ru": {
+      "term": "спальня"
     }
   },
   "home_objects.living_room": {
@@ -15483,6 +17111,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "거실"
+    },
+    "ru": {
+      "term": "гостиная"
     }
   },
   "home_objects.hallway": {
@@ -15515,6 +17146,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "복도"
+    },
+    "ru": {
+      "term": "коридор"
     }
   },
   "home_objects.balcony": {
@@ -15547,6 +17181,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "발코니"
+    },
+    "ru": {
+      "term": "балкон"
     }
   },
   "home_objects.garage": {
@@ -15579,6 +17216,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "차고"
+    },
+    "ru": {
+      "term": "гараж"
     }
   },
   "home_objects.plate": {
@@ -15611,6 +17251,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "접시"
+    },
+    "ru": {
+      "term": "тарелка"
     }
   },
   "home_objects.bowl": {
@@ -15643,6 +17286,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "그릇"
+    },
+    "ru": {
+      "term": "миска"
     }
   },
   "home_objects.cup": {
@@ -15675,6 +17321,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "컵"
+    },
+    "ru": {
+      "term": "чашка"
     }
   },
   "home_objects.glass": {
@@ -15707,6 +17356,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "유리잔"
+    },
+    "ru": {
+      "term": "стакан",
+      "needsReview": true,
+      "reviewNote": "es 'vidrio' is the material (стекло); tableware context indicates a drinking glass = стакан."
     }
   },
   "home_objects.bottle": {
@@ -15739,6 +17393,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "병"
+    },
+    "ru": {
+      "term": "бутылка"
     }
   },
   "home_objects.spoon": {
@@ -15771,6 +17428,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "숟가락"
+    },
+    "ru": {
+      "term": "ложка"
     }
   },
   "home_objects.fork": {
@@ -15803,6 +17463,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "포크"
+    },
+    "ru": {
+      "term": "вилка"
     }
   },
   "home_objects.knife": {
@@ -15835,6 +17498,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "칼"
+    },
+    "ru": {
+      "term": "нож"
     }
   },
   "home_objects.pan": {
@@ -15868,6 +17534,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "팬"
+    },
+    "ru": {
+      "term": "сковорода"
     }
   },
   "home_objects.pot": {
@@ -15900,6 +17569,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "냄비"
+    },
+    "ru": {
+      "term": "кастрюля"
     }
   },
   "home_objects.pillow": {
@@ -15933,6 +17605,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "베개",
       "needsReview": true
+    },
+    "ru": {
+      "term": "подушка"
     }
   },
   "home_objects.blanket": {
@@ -15966,6 +17641,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "담요",
       "needsReview": true
+    },
+    "ru": {
+      "term": "одеяло"
     }
   },
   "home_objects.sheet": {
@@ -15999,6 +17677,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "простыня",
+      "needsReview": true,
+      "reviewNote": "de/fr/es render 'sheet' as a sheet of paper (лист); bedding context (between blanket and mattress) indicates a bed sheet = простыня."
     }
   },
   "home_objects.mattress": {
@@ -16032,6 +17715,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "매트리스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "матрас"
     }
   },
   "home_objects.towel": {
@@ -16065,6 +17751,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수건",
       "needsReview": true
+    },
+    "ru": {
+      "term": "полотенце"
     }
   },
   "home_objects.toothbrush": {
@@ -16099,6 +17788,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "칫솔",
       "needsReview": true
+    },
+    "ru": {
+      "term": "зубная щётка",
+      "needsReview": true,
+      "reviewNote": "Standard fixed two-word term; no single-word Russian equivalent."
     }
   },
   "home_objects.toothpaste": {
@@ -16133,6 +17827,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "치약",
       "needsReview": true
+    },
+    "ru": {
+      "term": "зубная паста",
+      "needsReview": true,
+      "reviewNote": "Standard fixed two-word term; no single-word Russian equivalent."
     }
   },
   "home_objects.soap": {
@@ -16166,6 +17865,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비누",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мыло"
     }
   },
   "home_objects.shampoo": {
@@ -16200,6 +17902,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "샴푸",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шампунь"
     }
   },
   "home_objects.toilet": {
@@ -16233,6 +17938,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "화장실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "туалет",
+      "needsReview": true,
+      "reviewNote": "туалет = the WC/room; унитаз = the toilet-bowl fixture — pick per the intended object."
     }
   },
   "home_objects.fridge": {
@@ -16266,6 +17976,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "냉장고",
       "needsReview": true
+    },
+    "ru": {
+      "term": "холодильник"
     }
   },
   "home_objects.oven": {
@@ -16299,6 +18012,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오븐",
       "needsReview": true
+    },
+    "ru": {
+      "term": "духовка"
     }
   },
   "home_objects.stove": {
@@ -16332,6 +18048,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "난로",
       "needsReview": true
+    },
+    "ru": {
+      "term": "плита"
     }
   },
   "home_objects.microwave": {
@@ -16366,6 +18085,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전자레인지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "микроволновка"
     }
   },
   "home_objects.kettle": {
@@ -16400,6 +18122,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "주전자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чайник"
     }
   },
   "home_objects.toaster": {
@@ -16434,6 +18159,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "토스터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тостер"
     }
   },
   "home_objects.dishwasher": {
@@ -16467,6 +18195,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "식기세척기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "посудомоечная машина",
+      "needsReview": true,
+      "reviewNote": "Standard multi-word appliance name; colloquial single word посудомойка."
     }
   },
   "home_objects.washing_machine": {
@@ -16501,6 +18234,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "세탁기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стиральная машина",
+      "needsReview": true,
+      "reviewNote": "Standard multi-word appliance name; colloquial single word стиралка."
     }
   },
   "home_objects.dryer": {
@@ -16535,6 +18273,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "건조기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сушильная машина",
+      "needsReview": true,
+      "reviewNote": "Multi-word; single word сушилка also means a drying rack, hence сушильная машина."
     }
   },
   "home_objects.vacuum_cleaner": {
@@ -16568,6 +18311,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "진공청소기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пылесос"
     }
   },
   "home_objects.box": {
@@ -16601,6 +18347,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "상자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "коробка"
     }
   },
   "home_objects.bag": {
@@ -16635,6 +18384,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가방",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сумка"
     }
   },
   "home_objects.basket": {
@@ -16668,6 +18420,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "바구니",
       "needsReview": true
+    },
+    "ru": {
+      "term": "корзина"
     }
   },
   "home_objects.drawer": {
@@ -16702,6 +18457,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "서랍",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ящик"
     }
   },
   "home_objects.closet": {
@@ -16735,6 +18493,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "옷장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шкаф",
+      "needsReview": true,
+      "reviewNote": "шкаф also covers 'wardrobe'/'cabinet'; встроенный шкаф for a built-in closet."
     }
   },
   "home_objects.wardrobe": {
@@ -16768,6 +18531,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "옷장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "платяной шкаф",
+      "needsReview": true,
+      "reviewNote": "Clothes wardrobe; the everyday word шкаф overlaps with 'closet'."
     }
   },
   "home_objects.cabinet": {
@@ -16801,6 +18569,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캐비닛",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шкаф",
+      "needsReview": true,
+      "reviewNote": "шкаф overlaps with 'closet'/'wardrobe'; шкафчик or тумбочка for a small cabinet."
     }
   },
   "home_objects.jar": {
@@ -16834,6 +18607,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "항아리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "банка"
     }
   },
   "home_objects.can": {
@@ -16867,6 +18643,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "할 수 있다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "банка",
+      "needsReview": true,
+      "reviewNote": "de/fr/es give the verb 'can' (мочь); container context indicates a tin can = банка (same word as 'jar'); консервная банка to disambiguate."
     }
   },
   "home_objects.envelope": {
@@ -16900,6 +18681,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "봉투",
       "needsReview": true
+    },
+    "ru": {
+      "term": "конверт"
     }
   },
   "home_objects.broom": {
@@ -16933,6 +18717,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "빗자루",
       "needsReview": true
+    },
+    "ru": {
+      "term": "веник",
+      "needsReview": true,
+      "reviewNote": "веник = small household broom (used with a dustpan); метла = large/outdoor broom."
     }
   },
   "home_objects.mop": {
@@ -16967,6 +18756,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "걸레",
       "needsReview": true
+    },
+    "ru": {
+      "term": "швабра"
     }
   },
   "home_objects.sponge": {
@@ -17000,6 +18792,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스펀지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "губка"
     }
   },
   "home_objects.bucket": {
@@ -17033,6 +18828,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "양동이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ведро"
     }
   },
   "home_objects.detergent": {
@@ -17067,6 +18865,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "세제",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стиральный порошок",
+      "needsReview": true,
+      "reviewNote": "Multi-word; стиральный порошок = laundry detergent (de 'Waschmittel'); моющее средство if a general detergent is meant."
     }
   },
   "home_objects.trash_can": {
@@ -17100,6 +18903,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "쓰레기통",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мусорное ведро",
+      "needsReview": true,
+      "reviewNote": "Standard multi-word term; colloquial single word мусорка."
     }
   },
   "home_objects.recycling_bin": {
@@ -17133,6 +18941,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "재활용 쓰레기통",
       "needsReview": true
+    },
+    "ru": {
+      "term": "контейнер для переработки",
+      "needsReview": true,
+      "reviewNote": "Non-lexicalized multi-word calque; de 'Papierkorb' is actually a wastepaper basket (корзина для бумаг)."
     }
   },
   "home_objects.dustpan": {
@@ -17167,6 +18980,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "쓰레받기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "совок",
+      "needsReview": true,
+      "reviewNote": "совок is standard for a dustpan but also means 'scoop' generally; совок для мусора to disambiguate."
     }
   },
   "home_objects.cloth": {
@@ -17200,6 +19018,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "천",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тряпка",
+      "needsReview": true,
+      "reviewNote": "de/fr/es render 'cloth' as fabric (ткань); cleaning-supplies context indicates a cleaning cloth/rag = тряпка."
     }
   },
   "home_objects.laundry_basket": {
@@ -17233,6 +19056,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "세탁 바구니",
       "needsReview": true
+    },
+    "ru": {
+      "term": "корзина для белья",
+      "needsReview": true,
+      "reviewNote": "Standard multi-word term; no single-word equivalent."
     }
   },
   "home_objects.hammer": {
@@ -17266,6 +19094,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "망치",
       "needsReview": true
+    },
+    "ru": {
+      "term": "молоток"
     }
   },
   "home_objects.screwdriver": {
@@ -17300,6 +19131,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "드라이버",
       "needsReview": true
+    },
+    "ru": {
+      "term": "отвёртка"
     }
   },
   "home_objects.wrench": {
@@ -17334,6 +19168,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "렌치",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гаечный ключ",
+      "needsReview": true,
+      "reviewNote": "Multi-word; plain ключ collides with 'key', hence гаечный ключ."
     }
   },
   "home_objects.drill": {
@@ -17368,6 +19207,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "드릴",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дрель",
+      "needsReview": true,
+      "reviewNote": "de/fr/es give the verb 'to drill' (сверлить); tools context indicates the tool = дрель."
     }
   },
   "home_objects.nail": {
@@ -17401,6 +19245,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "네일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гвоздь"
     }
   },
   "home_objects.screw": {
@@ -17434,6 +19281,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "나사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шуруп",
+      "needsReview": true,
+      "reviewNote": "шуруп = wood/self-tapping screw; винт = machine screw/bolt."
     }
   },
   "home_objects.ladder": {
@@ -17467,6 +19319,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사다리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лестница",
+      "needsReview": true,
+      "reviewNote": "лестница also means 'staircase'; стремянка = stepladder."
     }
   },
   "home_objects.tape_measure": {
@@ -17500,6 +19357,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "줄자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рулетка"
     }
   },
   "home_objects.flashlight": {
@@ -17534,6 +19394,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "손전등",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фонарик"
     }
   },
   "home_objects.toolbox": {
@@ -17568,6 +19431,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "도구 상자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ящик для инструментов",
+      "needsReview": true,
+      "reviewNote": "Multi-word; no clean single-word equivalent."
     }
   },
   "home_objects.desk": {
@@ -17601,6 +19469,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "책상",
       "needsReview": true
+    },
+    "ru": {
+      "term": "письменный стол",
+      "needsReview": true,
+      "reviewNote": "Multi-word; стол alone = table, so письменный стол specifies a desk."
     }
   },
   "home_objects.book": {
@@ -17634,6 +19507,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "책",
       "needsReview": true
+    },
+    "ru": {
+      "term": "книга"
     }
   },
   "home_objects.notebook": {
@@ -17668,6 +19544,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "노트북",
       "needsReview": true
+    },
+    "ru": {
+      "term": "блокнот",
+      "needsReview": true,
+      "reviewNote": "блокнот = notepad/notebook (de 'Notizbuch'); тетрадь = school exercise book (fr/es cahier/cuaderno)."
     }
   },
   "home_objects.pen": {
@@ -17702,6 +19583,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "펜",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ручка"
     }
   },
   "home_objects.pencil": {
@@ -17735,6 +19619,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "연필",
       "needsReview": true
+    },
+    "ru": {
+      "term": "карандаш"
     }
   },
   "home_objects.eraser": {
@@ -17769,6 +19656,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "지우개",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ластик"
     }
   },
   "home_objects.ruler": {
@@ -17802,6 +19692,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "통치자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "линейка",
+      "needsReview": true,
+      "reviewNote": "de 'Herrscher'/es 'gobernante' = monarch (правитель); stationery context + fr 'règle' indicate a measuring ruler = линейка."
     }
   },
   "home_objects.scissors": {
@@ -17835,6 +19730,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가위",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ножницы"
     }
   },
   "home_objects.paper": {
@@ -17868,6 +19766,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "종이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бумага"
     }
   },
   "home_objects.calendar": {
@@ -17901,6 +19802,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "달력",
       "needsReview": true
+    },
+    "ru": {
+      "term": "календарь"
     }
   },
   "home_objects.curtain": {
@@ -17934,6 +19838,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "커튼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "штора"
     }
   },
   "home_objects.blinds": {
@@ -17967,6 +19874,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "블라인드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жалюзи"
     }
   },
   "home_objects.cushion": {
@@ -18000,6 +19910,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "쿠션",
       "needsReview": true
+    },
+    "ru": {
+      "term": "подушка",
+      "needsReview": true,
+      "reviewNote": "Same word as 'pillow' (подушка); диванная/декоративная подушка specifies a couch/decorative cushion."
     }
   },
   "home_objects.vase": {
@@ -18033,6 +19948,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "꽃병",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ваза"
     }
   },
   "home_objects.candle": {
@@ -18066,6 +19984,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "양초",
       "needsReview": true
+    },
+    "ru": {
+      "term": "свеча"
     }
   },
   "home_objects.picture_frame": {
@@ -18099,6 +20020,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "액자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фоторамка"
     }
   },
   "home_objects.doormat": {
@@ -18133,6 +20057,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "현관 매트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "коврик",
+      "needsReview": true,
+      "reviewNote": "коврик is a generic small mat; придверный коврик or половик specifies a doormat."
     }
   },
   "home_objects.coat_rack": {
@@ -18167,6 +20096,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "코트 걸이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вешалка"
     }
   },
   "home_objects.remote_control": {
@@ -18200,6 +20132,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "원격 제어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пульт"
     }
   },
   "home_objects.clock": {
@@ -18233,6 +20168,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시계",
       "needsReview": true
+    },
+    "ru": {
+      "term": "часы"
     }
   },
   "body_health.head": {
@@ -18265,6 +20203,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "머리"
+    },
+    "ru": {
+      "term": "голова"
     }
   },
   "body_health.face": {
@@ -18297,6 +20238,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "얼굴"
+    },
+    "ru": {
+      "term": "лицо"
     }
   },
   "body_health.eye": {
@@ -18329,6 +20273,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "눈"
+    },
+    "ru": {
+      "term": "глаз"
     }
   },
   "body_health.ear": {
@@ -18361,6 +20308,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "귀"
+    },
+    "ru": {
+      "term": "ухо"
     }
   },
   "body_health.nose": {
@@ -18393,6 +20343,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "코"
+    },
+    "ru": {
+      "term": "нос"
     }
   },
   "body_health.mouth": {
@@ -18425,6 +20378,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "입"
+    },
+    "ru": {
+      "term": "рот"
     }
   },
   "body_health.hand": {
@@ -18457,6 +20413,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "손"
+    },
+    "ru": {
+      "term": "рука",
+      "needsReview": true,
+      "reviewNote": "Russian 'рука' means both hand and arm; the anatomically specific hand is 'кисть'."
     }
   },
   "body_health.arm": {
@@ -18489,6 +20450,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "팔"
+    },
+    "ru": {
+      "term": "рука",
+      "needsReview": true,
+      "reviewNote": "Russian 'рука' means both arm and hand; there is no distinct everyday word for the arm alone."
     }
   },
   "body_health.leg": {
@@ -18521,6 +20487,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "다리"
+    },
+    "ru": {
+      "term": "нога"
     }
   },
   "body_health.foot": {
@@ -18553,6 +20522,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "발"
+    },
+    "ru": {
+      "term": "стопа"
     }
   },
   "body_health.hair": {
@@ -18585,6 +20557,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "머리카락"
+    },
+    "ru": {
+      "term": "волосы"
     }
   },
   "body_health.tooth": {
@@ -18617,6 +20592,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "치아"
+    },
+    "ru": {
+      "term": "зуб"
     }
   },
   "body_health.tongue": {
@@ -18649,6 +20627,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "혀"
+    },
+    "ru": {
+      "term": "язык"
     }
   },
   "body_health.neck": {
@@ -18681,6 +20662,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "목"
+    },
+    "ru": {
+      "term": "шея"
     }
   },
   "body_health.shoulder": {
@@ -18713,6 +20697,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "어깨"
+    },
+    "ru": {
+      "term": "плечо"
     }
   },
   "body_health.elbow": {
@@ -18745,6 +20732,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "팔꿈치"
+    },
+    "ru": {
+      "term": "локоть"
     }
   },
   "body_health.wrist": {
@@ -18777,6 +20767,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "손목"
+    },
+    "ru": {
+      "term": "запястье"
     }
   },
   "body_health.finger": {
@@ -18809,6 +20802,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "손가락"
+    },
+    "ru": {
+      "term": "палец"
     }
   },
   "body_health.knee": {
@@ -18841,6 +20837,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "무릎"
+    },
+    "ru": {
+      "term": "колено"
     }
   },
   "body_health.toe": {
@@ -18873,6 +20872,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "발가락"
+    },
+    "ru": {
+      "term": "палец ноги",
+      "needsReview": true,
+      "reviewNote": "Russian has no single word for toe; 'палец' alone means finger or toe, so 'палец ноги' specifies toe."
     }
   },
   "body_health.back": {
@@ -18905,6 +20909,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "등"
+    },
+    "ru": {
+      "term": "спина",
+      "needsReview": true,
+      "reviewNote": "de/fr/es disambiguators show the 'return/go back' sense; body-part 'back' assumed = 'спина' per the body_health category."
     }
   },
   "body_health.chest": {
@@ -18937,6 +20946,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "가슴"
+    },
+    "ru": {
+      "term": "грудь"
     }
   },
   "body_health.stomach": {
@@ -18969,6 +20981,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "배"
+    },
+    "ru": {
+      "term": "желудок",
+      "needsReview": true,
+      "reviewNote": "Disambiguators specify the internal organ ('желудок'); in everyday body vocab 'stomach/belly' is often 'живот'."
     }
   },
   "body_health.waist": {
@@ -19001,6 +21018,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "허리"
+    },
+    "ru": {
+      "term": "талия"
     }
   },
   "body_health.hip": {
@@ -19033,6 +21053,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "엉덩이"
+    },
+    "ru": {
+      "term": "бедро"
     }
   },
   "body_health.skin": {
@@ -19065,6 +21088,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "피부"
+    },
+    "ru": {
+      "term": "кожа"
     }
   },
   "body_health.bone": {
@@ -19097,6 +21123,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "뼈"
+    },
+    "ru": {
+      "term": "кость"
     }
   },
   "body_health.muscle": {
@@ -19129,6 +21158,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "근육"
+    },
+    "ru": {
+      "term": "мышца"
     }
   },
   "body_health.blood": {
@@ -19161,6 +21193,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "피"
+    },
+    "ru": {
+      "term": "кровь"
     }
   },
   "body_health.heart": {
@@ -19193,6 +21228,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "심장"
+    },
+    "ru": {
+      "term": "сердце"
     }
   },
   "body_health.brain": {
@@ -19226,6 +21264,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "뇌",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мозг"
     }
   },
   "body_health.lung": {
@@ -19259,6 +21300,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "폐",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лёгкое"
     }
   },
   "body_health.liver": {
@@ -19292,6 +21336,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "간",
       "needsReview": true
+    },
+    "ru": {
+      "term": "печень"
     }
   },
   "body_health.kidney": {
@@ -19326,6 +21373,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "신장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "почка"
     }
   },
   "body_health.throat": {
@@ -19359,6 +21409,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "목구멍",
       "needsReview": true
+    },
+    "ru": {
+      "term": "горло"
     }
   },
   "body_health.breath": {
@@ -19392,6 +21445,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "숨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дыхание"
     }
   },
   "body_health.sight": {
@@ -19425,6 +21481,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시력",
       "needsReview": true
+    },
+    "ru": {
+      "term": "зрение"
     }
   },
   "body_health.hearing": {
@@ -19458,6 +21517,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "청각",
       "needsReview": true
+    },
+    "ru": {
+      "term": "слух"
     }
   },
   "body_health.smell": {
@@ -19491,6 +21553,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "냄새",
       "needsReview": true
+    },
+    "ru": {
+      "term": "обоняние",
+      "needsReview": true,
+      "reviewNote": "As a sense (parallel to sight/hearing) = 'обоняние'; as an odor (per disambiguators) = 'запах'."
     }
   },
   "body_health.taste": {
@@ -19524,6 +21591,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "맛",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вкус"
     }
   },
   "body_health.healthy": {
@@ -19557,6 +21627,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "건강한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "здоровый"
     }
   },
   "body_health.sick": {
@@ -19590,6 +21663,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아프다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "больной"
     }
   },
   "body_health.tired": {
@@ -19623,6 +21699,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "피곤하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "усталый"
     }
   },
   "body_health.hungry": {
@@ -19656,6 +21735,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "배고픈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "голодный"
     }
   },
   "body_health.thirsty": {
@@ -19689,6 +21771,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "목마른",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жаждущий",
+      "needsReview": true,
+      "reviewNote": "No everyday one-word adjective for 'thirsty'; 'жаждущий' is formal/figurative and thirst is usually said as 'хочет пить'."
     }
   },
   "body_health.dizzy": {
@@ -19722,6 +21809,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "현기증",
       "needsReview": true
+    },
+    "ru": {
+      "term": "головокружение",
+      "needsReview": true,
+      "reviewNote": "No adjective for 'dizzy'; 'головокружение' is the noun 'dizziness' and the state is 'кружится голова'."
     }
   },
   "body_health.weak": {
@@ -19755,6 +21847,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "약한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "слабый"
     }
   },
   "body_health.strong": {
@@ -19788,6 +21883,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "강한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сильный"
     }
   },
   "body_health.sleepy": {
@@ -19821,6 +21919,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "졸린",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сонный"
     }
   },
   "body_health.awake": {
@@ -19854,6 +21955,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "깨어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бодрствующий",
+      "needsReview": true,
+      "reviewNote": "No everyday one-word adjective; 'awake' is usually 'не спит'/'проснулся'; 'бодрствующий' is formal."
     }
   },
   "body_health.pain": {
@@ -19887,6 +21993,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "고통",
       "needsReview": true
+    },
+    "ru": {
+      "term": "боль"
     }
   },
   "body_health.fever": {
@@ -19920,6 +22029,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "발열",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жар"
     }
   },
   "body_health.cough": {
@@ -19953,6 +22065,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기침",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кашель"
     }
   },
   "body_health.cold": {
@@ -19986,6 +22101,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "감기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "простуда",
+      "needsReview": true,
+      "reviewNote": "Disambiguators show the temperature adjective, but context (cough/cold/flu) means the illness 'a cold' = 'простуда'; the adjective 'cold' = 'холодный'."
     }
   },
   "body_health.flu": {
@@ -20019,6 +22139,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "독감",
       "needsReview": true
+    },
+    "ru": {
+      "term": "грипп"
     }
   },
   "body_health.headache": {
@@ -20052,6 +22175,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "두통",
       "needsReview": true
+    },
+    "ru": {
+      "term": "головная боль",
+      "needsReview": true,
+      "reviewNote": "No single word; the standard term is the phrase 'головная боль'."
     }
   },
   "body_health.stomachache": {
@@ -20085,6 +22213,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "복통",
       "needsReview": true
+    },
+    "ru": {
+      "term": "боль в животе",
+      "needsReview": true,
+      "reviewNote": "No single word; standard phrase 'боль в животе' (belly) or 'боль в желудке'."
     }
   },
   "body_health.sore_throat": {
@@ -20118,6 +22251,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "목이 아프다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "боль в горле",
+      "needsReview": true,
+      "reviewNote": "No single word; 'боль в горле' or 'больное горло'."
     }
   },
   "body_health.rash": {
@@ -20151,6 +22289,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "발진",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сыпь"
     }
   },
   "body_health.nausea": {
@@ -20184,6 +22325,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "메스꺼움",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тошнота"
     }
   },
   "body_health.cut": {
@@ -20217,6 +22361,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "절단",
       "needsReview": true
+    },
+    "ru": {
+      "term": "порез",
+      "needsReview": true,
+      "reviewNote": "Disambiguators show the verb 'to cut' (резать); in an injuries list the noun 'a cut' = 'порез' is assumed."
     }
   },
   "body_health.bruise": {
@@ -20250,6 +22399,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "타박상",
       "needsReview": true
+    },
+    "ru": {
+      "term": "синяк"
     }
   },
   "body_health.burn": {
@@ -20283,6 +22435,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "화상",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ожог",
+      "needsReview": true,
+      "reviewNote": "Disambiguators show the verb 'to burn'; in an injuries list the noun 'a burn' = 'ожог' is assumed (verb = 'обжечь'/'жечь')."
     }
   },
   "body_health.wound": {
@@ -20316,6 +22473,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "상처",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рана"
     }
   },
   "body_health.scar": {
@@ -20349,6 +22509,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "흉터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шрам"
     }
   },
   "body_health.swelling": {
@@ -20382,6 +22545,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "붓기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "отёк"
     }
   },
   "body_health.bleeding": {
@@ -20415,6 +22581,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "출혈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кровотечение"
     }
   },
   "body_health.broken_bone": {
@@ -20448,6 +22617,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "부러진 뼈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "перелом"
     }
   },
   "body_health.sprain": {
@@ -20481,6 +22653,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "염좌",
       "needsReview": true
+    },
+    "ru": {
+      "term": "растяжение"
     }
   },
   "body_health.infection": {
@@ -20514,6 +22689,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "감염",
       "needsReview": true
+    },
+    "ru": {
+      "term": "инфекция"
     }
   },
   "body_health.medicine": {
@@ -20547,6 +22725,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "의학",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лекарство",
+      "needsReview": true,
+      "reviewNote": "'лекарство' = a medicine/drug (fits the pill/tablet context); the field/science of medicine = 'медицина'."
     }
   },
   "body_health.pill": {
@@ -20580,6 +22763,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "알약",
       "needsReview": true
+    },
+    "ru": {
+      "term": "таблетка",
+      "needsReview": true,
+      "reviewNote": "Both 'pill' and 'tablet' are commonly 'таблетка'; the dated 'пилюля' can specify a pill."
     }
   },
   "body_health.tablet": {
@@ -20613,6 +22801,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "태블릿",
       "needsReview": true
+    },
+    "ru": {
+      "term": "таблетка"
     }
   },
   "body_health.bandage": {
@@ -20646,6 +22837,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "붕대",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бинт"
     }
   },
   "body_health.cast": {
@@ -20680,6 +22874,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캐스트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гипс",
+      "needsReview": true,
+      "reviewNote": "Disambiguators show 'casting/throw/emit' senses; the medical plaster cast = 'гипс' is assumed per health context."
     }
   },
   "body_health.injection": {
@@ -20713,6 +22912,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "주입",
       "needsReview": true
+    },
+    "ru": {
+      "term": "укол"
     }
   },
   "body_health.vaccine": {
@@ -20746,6 +22948,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "백신",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вакцина"
     }
   },
   "body_health.thermometer": {
@@ -20780,6 +22985,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "온도계",
       "needsReview": true
+    },
+    "ru": {
+      "term": "термометр"
     }
   },
   "body_health.treatment": {
@@ -20813,6 +23021,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "치료",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лечение"
     }
   },
   "body_health.checkup": {
@@ -20846,6 +23057,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "검진",
       "needsReview": true
+    },
+    "ru": {
+      "term": "осмотр"
     }
   },
   "body_health.body_temperature": {
@@ -20879,6 +23093,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "체온",
       "needsReview": true
+    },
+    "ru": {
+      "term": "температура тела",
+      "needsReview": true,
+      "reviewNote": "Multi-word 'температура тела'; commonly shortened to just 'температура' in context."
     }
   },
   "body_health.blood_pressure": {
@@ -20912,6 +23131,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "혈압",
       "needsReview": true
+    },
+    "ru": {
+      "term": "давление",
+      "needsReview": true,
+      "reviewNote": "Common speech uses 'давление'; the full term is 'артериальное'/'кровяное давление'."
     }
   },
   "body_health.pulse": {
@@ -20945,6 +23169,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "맥박",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пульс"
     }
   },
   "body_health.heartbeat": {
@@ -20978,6 +23205,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "심장 박동",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сердцебиение"
     }
   },
   "body_health.breathing": {
@@ -21011,6 +23241,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "호흡",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дыхание",
+      "needsReview": true,
+      "reviewNote": "Same word as 'breath' ('дыхание'); the verb 'to breathe' = 'дышать'."
     }
   },
   "body_health.weight": {
@@ -21044,6 +23279,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "무게",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вес"
     }
   },
   "body_health.height": {
@@ -21077,6 +23315,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "신장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рост",
+      "needsReview": true,
+      "reviewNote": "Disambiguators show general height/elevation ('высота'); a person's height = 'рост'."
     }
   },
   "body_health.x_ray": {
@@ -21111,6 +23354,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "엑스레이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рентген"
     }
   },
   "body_health.medical_test": {
@@ -21144,6 +23390,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "의료 테스트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "анализ",
+      "needsReview": true,
+      "reviewNote": "'анализ' = a (lab) test; a broader examination = 'обследование'; 'medical test' is broad."
     }
   },
   "body_health.scan": {
@@ -21178,6 +23429,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스캔",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сканирование",
+      "needsReview": true,
+      "reviewNote": "'сканирование' = the scanning procedure; verb 'to scan' = 'сканировать'; medical scans are often 'КТ'/'МРТ'/'УЗИ'."
     }
   },
   "body_health.immune_system": {
@@ -21212,6 +23468,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "면역 체계",
       "needsReview": true
+    },
+    "ru": {
+      "term": "иммунная система",
+      "needsReview": true,
+      "reviewNote": "Standard two-word term 'иммунная система'; no single-word equivalent."
     }
   },
   "body_health.nervous_system": {
@@ -21245,6 +23506,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "신경계",
       "needsReview": true
+    },
+    "ru": {
+      "term": "нервная система",
+      "needsReview": true,
+      "reviewNote": "Standard two-word term 'нервная система'; no single-word equivalent."
     }
   },
   "body_health.digestive_system": {
@@ -21279,6 +23545,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소화 시스템",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пищеварительная система",
+      "needsReview": true,
+      "reviewNote": "Standard two-word term 'пищеварительная система'; no single-word equivalent."
     }
   },
   "body_health.skeleton": {
@@ -21312,6 +23583,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "해골",
       "needsReview": true
+    },
+    "ru": {
+      "term": "скелет"
     }
   },
   "body_health.joint": {
@@ -21345,6 +23619,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "관절",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сустав"
     }
   },
   "body_health.tendon": {
@@ -21379,6 +23656,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "힘줄",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сухожилие"
     }
   },
   "body_health.ligament": {
@@ -21413,6 +23693,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "인대",
       "needsReview": true
+    },
+    "ru": {
+      "term": "связка"
     }
   },
   "body_health.artery": {
@@ -21446,6 +23729,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "동맥",
       "needsReview": true
+    },
+    "ru": {
+      "term": "артерия"
     }
   },
   "body_health.vein": {
@@ -21479,6 +23765,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "정맥",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вена"
     }
   },
   "body_health.organ": {
@@ -21512,6 +23801,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오르간",
       "needsReview": true
+    },
+    "ru": {
+      "term": "орган"
     }
   },
   "clothing_appearance.shirt": {
@@ -21544,6 +23836,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "셔츠"
+    },
+    "ru": {
+      "term": "рубашка"
     }
   },
   "clothing_appearance.pants": {
@@ -21576,6 +23871,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "바지"
+    },
+    "ru": {
+      "term": "брюки"
     }
   },
   "clothing_appearance.dress": {
@@ -21608,6 +23906,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "드레스"
+    },
+    "ru": {
+      "term": "платье"
     }
   },
   "clothing_appearance.skirt": {
@@ -21640,6 +23941,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스커트"
+    },
+    "ru": {
+      "term": "юбка"
     }
   },
   "clothing_appearance.jacket": {
@@ -21672,6 +23976,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "재킷"
+    },
+    "ru": {
+      "term": "куртка"
     }
   },
   "clothing_appearance.coat": {
@@ -21704,6 +24011,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "코트"
+    },
+    "ru": {
+      "term": "пальто"
     }
   },
   "clothing_appearance.sweater": {
@@ -21737,6 +24047,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스웨터"
+    },
+    "ru": {
+      "term": "свитер"
     }
   },
   "clothing_appearance.shoes": {
@@ -21769,6 +24082,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "신발"
+    },
+    "ru": {
+      "term": "туфли"
     }
   },
   "clothing_appearance.socks": {
@@ -21801,6 +24117,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "양말"
+    },
+    "ru": {
+      "term": "носки"
     }
   },
   "clothing_appearance.hat": {
@@ -21833,6 +24152,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "모자"
+    },
+    "ru": {
+      "term": "шляпа"
     }
   },
   "clothing_appearance.t_shirt": {
@@ -21866,6 +24188,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "티셔츠"
+    },
+    "ru": {
+      "term": "футболка"
     }
   },
   "clothing_appearance.jeans": {
@@ -21898,6 +24223,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "청바지"
+    },
+    "ru": {
+      "term": "джинсы"
     }
   },
   "clothing_appearance.shorts": {
@@ -21931,6 +24259,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "반바지"
+    },
+    "ru": {
+      "term": "шорты"
     }
   },
   "clothing_appearance.suit": {
@@ -21964,6 +24295,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "정장"
+    },
+    "ru": {
+      "term": "костюм"
     }
   },
   "clothing_appearance.uniform": {
@@ -21996,6 +24330,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "유니폼"
+    },
+    "ru": {
+      "term": "форма"
     }
   },
   "clothing_appearance.hoodie": {
@@ -22029,6 +24366,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "후드티"
+    },
+    "ru": {
+      "term": "худи"
     }
   },
   "clothing_appearance.scarf": {
@@ -22061,6 +24401,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스카프"
+    },
+    "ru": {
+      "term": "шарф"
     }
   },
   "clothing_appearance.gloves": {
@@ -22093,6 +24436,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "장갑"
+    },
+    "ru": {
+      "term": "перчатки"
     }
   },
   "clothing_appearance.belt": {
@@ -22125,6 +24471,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "벨트"
+    },
+    "ru": {
+      "term": "ремень"
     }
   },
   "clothing_appearance.underwear": {
@@ -22158,6 +24507,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "속옷"
+    },
+    "ru": {
+      "term": "бельё"
     }
   },
   "clothing_appearance.boots": {
@@ -22190,6 +24542,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "부츠"
+    },
+    "ru": {
+      "term": "сапоги"
     }
   },
   "clothing_appearance.sandals": {
@@ -22222,6 +24577,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "샌들"
+    },
+    "ru": {
+      "term": "сандалии"
     }
   },
   "clothing_appearance.sneakers": {
@@ -22254,6 +24612,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "운동화"
+    },
+    "ru": {
+      "term": "кроссовки"
     }
   },
   "clothing_appearance.slippers": {
@@ -22286,6 +24647,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "슬리퍼"
+    },
+    "ru": {
+      "term": "тапочки"
     }
   },
   "clothing_appearance.high_heels": {
@@ -22318,6 +24682,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "하이힐"
+    },
+    "ru": {
+      "term": "туфли на каблуках",
+      "needsReview": true,
+      "reviewNote": "High heels: multi-word; 'туфли на каблуках' / 'на высоких каблуках'; colloquially just 'каблуки'."
     }
   },
   "clothing_appearance.tie": {
@@ -22350,6 +24719,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "넥타이"
+    },
+    "ru": {
+      "term": "галстук"
     }
   },
   "clothing_appearance.necklace": {
@@ -22382,6 +24754,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "목걸이"
+    },
+    "ru": {
+      "term": "ожерелье"
     }
   },
   "clothing_appearance.bracelet": {
@@ -22414,6 +24789,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "팔찌"
+    },
+    "ru": {
+      "term": "браслет"
     }
   },
   "clothing_appearance.ring": {
@@ -22446,6 +24824,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "반지"
+    },
+    "ru": {
+      "term": "кольцо"
     }
   },
   "clothing_appearance.watch": {
@@ -22478,6 +24859,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "손목시계"
+    },
+    "ru": {
+      "term": "часы"
     }
   },
   "clothing_appearance.raincoat": {
@@ -22511,6 +24895,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비옷",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дождевик"
     }
   },
   "clothing_appearance.swimsuit": {
@@ -22545,6 +24932,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수영복",
       "needsReview": true
+    },
+    "ru": {
+      "term": "купальник"
     }
   },
   "clothing_appearance.pajamas": {
@@ -22578,6 +24968,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "잠옷",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пижама"
     }
   },
   "clothing_appearance.robe": {
@@ -22611,6 +25004,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가운",
       "needsReview": true
+    },
+    "ru": {
+      "term": "халат"
     }
   },
   "clothing_appearance.apron": {
@@ -22645,6 +25041,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "앞치마",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фартук"
     }
   },
   "clothing_appearance.vest": {
@@ -22679,6 +25078,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "조끼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жилет"
     }
   },
   "clothing_appearance.cardigan": {
@@ -22713,6 +25115,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카디건",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кардиган"
     }
   },
   "clothing_appearance.blazer": {
@@ -22747,6 +25152,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "블레이저",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пиджак"
     }
   },
   "clothing_appearance.tracksuit": {
@@ -22781,6 +25189,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "운동복",
       "needsReview": true
+    },
+    "ru": {
+      "term": "спортивный костюм",
+      "needsReview": true,
+      "reviewNote": "Tracksuit: no single-word term; standard phrase is 'спортивный костюм'."
     }
   },
   "clothing_appearance.leggings": {
@@ -22815,6 +25228,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "레깅스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "леггинсы"
     }
   },
   "clothing_appearance.button": {
@@ -22848,6 +25264,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "버튼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пуговица"
     }
   },
   "clothing_appearance.zipper": {
@@ -22882,6 +25301,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "지퍼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "молния"
     }
   },
   "clothing_appearance.pocket": {
@@ -22915,6 +25337,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "주머니",
       "needsReview": true
+    },
+    "ru": {
+      "term": "карман"
     }
   },
   "clothing_appearance.collar": {
@@ -22948,6 +25373,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "칼라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "воротник"
     }
   },
   "clothing_appearance.sleeve": {
@@ -22981,6 +25409,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소매",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рукав"
     }
   },
   "clothing_appearance.hood": {
@@ -23015,6 +25446,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "후드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "капюшон"
     }
   },
   "clothing_appearance.lace": {
@@ -23049,6 +25483,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "레이스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кружево"
     }
   },
   "clothing_appearance.buckle": {
@@ -23083,6 +25520,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "버클",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пряжка"
     }
   },
   "clothing_appearance.heel": {
@@ -23116,6 +25556,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "뒤꿈치",
       "needsReview": true
+    },
+    "ru": {
+      "term": "каблук",
+      "needsReview": true,
+      "reviewNote": "Heel: shoe-parts context (next to 'sole') → 'каблук' (shoe heel); de 'Ferse' points to foot heel = 'пятка'."
     }
   },
   "clothing_appearance.sole": {
@@ -23149,6 +25594,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "유일한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "подошва"
     }
   },
   "clothing_appearance.cotton": {
@@ -23182,6 +25630,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "면화",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хлопок"
     }
   },
   "clothing_appearance.wool": {
@@ -23215,6 +25666,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "양모",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шерсть"
     }
   },
   "clothing_appearance.leather": {
@@ -23248,6 +25702,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가죽",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кожа"
     }
   },
   "clothing_appearance.silk": {
@@ -23281,6 +25738,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "실크",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шёлк"
     }
   },
   "clothing_appearance.denim": {
@@ -23314,6 +25774,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "데님",
       "needsReview": true
+    },
+    "ru": {
+      "term": "джинсовая ткань",
+      "needsReview": true,
+      "reviewNote": "Denim fabric: no common single-word term (colloquial 'джинса', fashion borrowing 'деним')."
     }
   },
   "clothing_appearance.linen": {
@@ -23347,6 +25812,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "리넨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лён"
     }
   },
   "clothing_appearance.polyester": {
@@ -23381,6 +25849,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "폴리에스테르",
       "needsReview": true
+    },
+    "ru": {
+      "term": "полиэстер"
     }
   },
   "clothing_appearance.nylon": {
@@ -23414,6 +25885,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "나일론",
       "needsReview": true
+    },
+    "ru": {
+      "term": "нейлон"
     }
   },
   "clothing_appearance.fleece": {
@@ -23447,6 +25921,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "양털",
       "needsReview": true
+    },
+    "ru": {
+      "term": "флис"
     }
   },
   "clothing_appearance.velvet": {
@@ -23481,6 +25958,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "벨벳",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бархат"
     }
   },
   "clothing_appearance.striped": {
@@ -23514,6 +25994,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "줄무늬",
       "needsReview": true
+    },
+    "ru": {
+      "term": "полосатый"
     }
   },
   "clothing_appearance.checked": {
@@ -23547,6 +26030,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "확인됨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "клетчатый"
     }
   },
   "clothing_appearance.floral": {
@@ -23580,6 +26066,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "꽃무늬",
       "needsReview": true
+    },
+    "ru": {
+      "term": "цветочный"
     }
   },
   "clothing_appearance.plain": {
@@ -23613,6 +26102,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "평원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "однотонный"
     }
   },
   "clothing_appearance.patterned": {
@@ -23646,6 +26138,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "무늬가 있는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "узорчатый"
     }
   },
   "clothing_appearance.spotted": {
@@ -23679,6 +26174,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "더럽혀진",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пятнистый"
     }
   },
   "clothing_appearance.shiny": {
@@ -23712,6 +26210,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "빛나는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "блестящий"
     }
   },
   "clothing_appearance.formal": {
@@ -23745,6 +26246,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "형식적인",
       "needsReview": true
+    },
+    "ru": {
+      "term": "формальный"
     }
   },
   "clothing_appearance.casual": {
@@ -23778,6 +26282,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캐주얼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "повседневный"
     }
   },
   "clothing_appearance.fashionable": {
@@ -23811,6 +26318,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "유행하는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "модный"
     }
   },
   "clothing_appearance.haircut": {
@@ -23844,6 +26354,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "이발",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стрижка"
     }
   },
   "clothing_appearance.hairstyle": {
@@ -23877,6 +26390,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "헤어스타일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "причёска"
     }
   },
   "clothing_appearance.beard": {
@@ -23910,6 +26426,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수염",
       "needsReview": true
+    },
+    "ru": {
+      "term": "борода"
     }
   },
   "clothing_appearance.mustache": {
@@ -23943,6 +26462,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "콧수염",
       "needsReview": true
+    },
+    "ru": {
+      "term": "усы"
     }
   },
   "clothing_appearance.bangs": {
@@ -23977,6 +26499,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "앞머리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чёлка"
     }
   },
   "clothing_appearance.ponytail": {
@@ -24011,6 +26536,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "포니테일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хвост",
+      "needsReview": true,
+      "reviewNote": "Ponytail: common colloquial 'хвост' (lit. 'tail'); fuller unambiguous form 'конский хвост'."
     }
   },
   "clothing_appearance.braid": {
@@ -24044,6 +26574,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "브레이드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "коса"
     }
   },
   "clothing_appearance.wig": {
@@ -24077,6 +26610,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가발",
       "needsReview": true
+    },
+    "ru": {
+      "term": "парик"
     }
   },
   "clothing_appearance.makeup": {
@@ -24111,6 +26647,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "메이크업",
       "needsReview": true
+    },
+    "ru": {
+      "term": "макияж"
     }
   },
   "clothing_appearance.perfume": {
@@ -24144,6 +26683,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "향수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "духи"
     }
   },
   "clothing_appearance.tall": {
@@ -24177,6 +26719,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "키가 큰",
       "needsReview": true
+    },
+    "ru": {
+      "term": "высокий"
     }
   },
   "clothing_appearance.short": {
@@ -24210,6 +26755,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "짧은",
       "needsReview": true
+    },
+    "ru": {
+      "term": "короткий",
+      "needsReview": true,
+      "reviewNote": "Short: disambiguators (kurz/court/corto) = short in length → 'короткий'; for short stature use 'невысокий/низкий'."
     }
   },
   "clothing_appearance.young": {
@@ -24243,6 +26793,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "젊은",
       "needsReview": true
+    },
+    "ru": {
+      "term": "молодой"
     }
   },
   "clothing_appearance.old": {
@@ -24276,6 +26829,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "늙은",
       "needsReview": true
+    },
+    "ru": {
+      "term": "старый"
     }
   },
   "clothing_appearance.slim": {
@@ -24310,6 +26866,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "날씬한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стройный"
     }
   },
   "clothing_appearance.muscular": {
@@ -24343,6 +26902,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "근육질의",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мускулистый"
     }
   },
   "clothing_appearance.clean": {
@@ -24376,6 +26938,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "깨끗한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чистый"
     }
   },
   "clothing_appearance.dirty": {
@@ -24409,6 +26974,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "더러운",
       "needsReview": true
+    },
+    "ru": {
+      "term": "грязный"
     }
   },
   "clothing_appearance.neat": {
@@ -24442,6 +27010,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "깔끔한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "опрятный"
     }
   },
   "clothing_appearance.messy": {
@@ -24475,6 +27046,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "지저분한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "неряшливый"
     }
   },
   "clothing_appearance.earrings": {
@@ -24508,6 +27082,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "귀걸이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "серьги"
     }
   },
   "clothing_appearance.brooch": {
@@ -24541,6 +27118,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "브로치",
       "needsReview": true
+    },
+    "ru": {
+      "term": "брошь"
     }
   },
   "clothing_appearance.cufflink": {
@@ -24575,6 +27155,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "커프스 단추",
       "needsReview": true
+    },
+    "ru": {
+      "term": "запонка"
     }
   },
   "clothing_appearance.handbag": {
@@ -24608,6 +27191,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "핸드백",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сумочка"
     }
   },
   "clothing_appearance.sunglasses": {
@@ -24642,6 +27228,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "선글라스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "солнцезащитные очки",
+      "needsReview": true,
+      "reviewNote": "Sunglasses: no single-word term; 'солнцезащитные очки' (colloquial 'тёмные очки')."
     }
   },
   "clothing_appearance.helmet": {
@@ -24676,6 +27267,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "헬멧",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шлем"
     }
   },
   "clothing_appearance.cloak": {
@@ -24709,6 +27303,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "망토",
       "needsReview": true
+    },
+    "ru": {
+      "term": "плащ"
     }
   },
   "clothing_appearance.veil": {
@@ -24742,6 +27339,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "베일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вуаль",
+      "needsReview": true,
+      "reviewNote": "Veil: general/face veil → 'вуаль'; a bridal veil is 'фата'."
     }
   },
   "clothing_appearance.headscarf": {
@@ -24775,6 +27377,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "머리 스카프",
       "needsReview": true
+    },
+    "ru": {
+      "term": "платок"
     }
   },
   "clothing_appearance.kimono": {
@@ -24809,6 +27414,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기모노",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кимоно"
     }
   },
   "nature_weather.sun": {
@@ -24841,6 +27449,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "해"
+    },
+    "ru": {
+      "term": "солнце"
     }
   },
   "nature_weather.moon": {
@@ -24873,6 +27484,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "달"
+    },
+    "ru": {
+      "term": "луна"
     }
   },
   "nature_weather.sky": {
@@ -24905,6 +27519,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "하늘"
+    },
+    "ru": {
+      "term": "небо"
     }
   },
   "nature_weather.cloud": {
@@ -24937,6 +27554,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "구름"
+    },
+    "ru": {
+      "term": "облако"
     }
   },
   "nature_weather.rain": {
@@ -24969,6 +27589,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "비"
+    },
+    "ru": {
+      "term": "дождь"
     }
   },
   "nature_weather.snow": {
@@ -25001,6 +27624,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "눈"
+    },
+    "ru": {
+      "term": "снег"
     }
   },
   "nature_weather.wind": {
@@ -25033,6 +27659,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "바람"
+    },
+    "ru": {
+      "term": "ветер"
     }
   },
   "nature_weather.weather": {
@@ -25065,6 +27694,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "날씨"
+    },
+    "ru": {
+      "term": "погода"
     }
   },
   "nature_weather.tree": {
@@ -25097,6 +27729,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "나무"
+    },
+    "ru": {
+      "term": "дерево"
     }
   },
   "nature_weather.flower": {
@@ -25129,6 +27764,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "꽃"
+    },
+    "ru": {
+      "term": "цветок"
     }
   },
   "nature_weather.grass": {
@@ -25161,6 +27799,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "잔디"
+    },
+    "ru": {
+      "term": "трава"
     }
   },
   "nature_weather.river": {
@@ -25193,6 +27834,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "강"
+    },
+    "ru": {
+      "term": "река"
     }
   },
   "nature_weather.lake": {
@@ -25225,6 +27869,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "호수"
+    },
+    "ru": {
+      "term": "озеро"
     }
   },
   "nature_weather.sea": {
@@ -25257,6 +27904,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "바다"
+    },
+    "ru": {
+      "term": "море"
     }
   },
   "nature_weather.ocean": {
@@ -25289,6 +27939,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "대양"
+    },
+    "ru": {
+      "term": "океан"
     }
   },
   "nature_weather.beach": {
@@ -25321,6 +27974,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "해변"
+    },
+    "ru": {
+      "term": "пляж"
     }
   },
   "nature_weather.forest": {
@@ -25353,6 +28009,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "숲"
+    },
+    "ru": {
+      "term": "лес"
     }
   },
   "nature_weather.mountain": {
@@ -25385,6 +28044,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "산"
+    },
+    "ru": {
+      "term": "гора"
     }
   },
   "nature_weather.hill": {
@@ -25417,6 +28079,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "언덕"
+    },
+    "ru": {
+      "term": "холм"
     }
   },
   "nature_weather.field": {
@@ -25449,6 +28114,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "들판"
+    },
+    "ru": {
+      "term": "поле"
     }
   },
   "nature_weather.island": {
@@ -25481,6 +28149,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "섬"
+    },
+    "ru": {
+      "term": "остров"
     }
   },
   "nature_weather.desert": {
@@ -25513,6 +28184,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "사막"
+    },
+    "ru": {
+      "term": "пустыня"
     }
   },
   "nature_weather.valley": {
@@ -25545,6 +28219,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "계곡"
+    },
+    "ru": {
+      "term": "долина"
     }
   },
   "nature_weather.cave": {
@@ -25577,6 +28254,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "동굴"
+    },
+    "ru": {
+      "term": "пещера"
     }
   },
   "nature_weather.waterfall": {
@@ -25609,6 +28289,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "폭포"
+    },
+    "ru": {
+      "term": "водопад"
     }
   },
   "nature_weather.stream": {
@@ -25641,6 +28324,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "시내"
+    },
+    "ru": {
+      "term": "ручей",
+      "needsReview": true,
+      "reviewNote": "en 'stream' as a nature term = ручей (brook), but de/fr/es (Strom/flux/corriente) point to 'current/flow' = поток."
     }
   },
   "nature_weather.pond": {
@@ -25673,6 +28361,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "연못"
+    },
+    "ru": {
+      "term": "пруд"
     }
   },
   "nature_weather.coast": {
@@ -25705,6 +28396,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "해안"
+    },
+    "ru": {
+      "term": "побережье"
     }
   },
   "nature_weather.shore": {
@@ -25737,6 +28431,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "물가"
+    },
+    "ru": {
+      "term": "берег"
     }
   },
   "nature_weather.cliff": {
@@ -25769,6 +28466,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "절벽"
+    },
+    "ru": {
+      "term": "утёс"
     }
   },
   "nature_weather.storm": {
@@ -25802,6 +28502,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "폭풍",
       "needsReview": true
+    },
+    "ru": {
+      "term": "буря"
     }
   },
   "nature_weather.thunder": {
@@ -25835,6 +28538,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "천둥",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гром"
     }
   },
   "nature_weather.lightning": {
@@ -25868,6 +28574,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "번개",
       "needsReview": true
+    },
+    "ru": {
+      "term": "молния"
     }
   },
   "nature_weather.fog": {
@@ -25901,6 +28610,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "안개",
       "needsReview": true
+    },
+    "ru": {
+      "term": "туман"
     }
   },
   "nature_weather.mist": {
@@ -25934,6 +28646,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "안개",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дымка",
+      "needsReview": true,
+      "reviewNote": "Russian uses туман for both fog and mist; дымка = light haze chosen to distinguish from fog=туман."
     }
   },
   "nature_weather.rainbow": {
@@ -25967,6 +28684,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "무지개",
       "needsReview": true
+    },
+    "ru": {
+      "term": "радуга"
     }
   },
   "nature_weather.sunshine": {
@@ -26000,6 +28720,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "햇빛",
       "needsReview": true
+    },
+    "ru": {
+      "term": "солнечный свет",
+      "needsReview": true,
+      "reviewNote": "No single-word equivalent; солнечный свет = 'sunlight' (two words)."
     }
   },
   "nature_weather.breeze": {
@@ -26033,6 +28758,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "미풍",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ветерок"
     }
   },
   "nature_weather.frost": {
@@ -26066,6 +28794,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "서리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мороз",
+      "needsReview": true,
+      "reviewNote": "мороз = freezing cold (de Frost/fr gel); if the frozen-coating sense (es escarcha) is meant, use иней (hoarfrost)."
     }
   },
   "nature_weather.hail": {
@@ -26099,6 +28832,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "우박",
       "needsReview": true
+    },
+    "ru": {
+      "term": "град"
     }
   },
   "nature_weather.spring": {
@@ -26132,6 +28868,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "봄",
       "needsReview": true
+    },
+    "ru": {
+      "term": "весна"
     }
   },
   "nature_weather.summer": {
@@ -26165,6 +28904,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "여름",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лето"
     }
   },
   "nature_weather.autumn": {
@@ -26198,6 +28940,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가을",
       "needsReview": true
+    },
+    "ru": {
+      "term": "осень"
     }
   },
   "nature_weather.winter": {
@@ -26231,6 +28976,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "겨울",
       "needsReview": true
+    },
+    "ru": {
+      "term": "зима"
     }
   },
   "nature_weather.season": {
@@ -26264,6 +29012,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시즌",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сезон",
+      "needsReview": true,
+      "reviewNote": "сезон matches de/fr/es (Saison/saison/temporada); but after the four seasons, 'season of the year' = время года (two words)."
     }
   },
   "nature_weather.sunrise": {
@@ -26297,6 +29050,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "일출",
       "needsReview": true
+    },
+    "ru": {
+      "term": "восход"
     }
   },
   "nature_weather.sunset": {
@@ -26330,6 +29086,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "일몰",
       "needsReview": true
+    },
+    "ru": {
+      "term": "закат"
     }
   },
   "nature_weather.dawn": {
@@ -26363,6 +29122,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "새벽",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рассвет"
     }
   },
   "nature_weather.dusk": {
@@ -26396,6 +29158,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "황혼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сумерки"
     }
   },
   "nature_weather.moonlight": {
@@ -26429,6 +29194,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "달빛",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лунный свет",
+      "needsReview": true,
+      "reviewNote": "No single-word equivalent; лунный свет = 'moon light' (two words)."
     }
   },
   "nature_weather.leaf": {
@@ -26462,6 +29232,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "잎",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лист"
     }
   },
   "nature_weather.branch": {
@@ -26495,6 +29268,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ветка"
     }
   },
   "nature_weather.root": {
@@ -26528,6 +29304,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "뿌리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "корень"
     }
   },
   "nature_weather.seed": {
@@ -26561,6 +29340,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "종자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "семя"
     }
   },
   "nature_weather.bush": {
@@ -26594,6 +29376,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "부시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "куст"
     }
   },
   "nature_weather.plant": {
@@ -26627,6 +29412,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "식물",
       "needsReview": true
+    },
+    "ru": {
+      "term": "растение"
     }
   },
   "nature_weather.moss": {
@@ -26660,6 +29448,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "이끼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мох"
     }
   },
   "nature_weather.fern": {
@@ -26693,6 +29484,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "양치류",
       "needsReview": true
+    },
+    "ru": {
+      "term": "папоротник"
     }
   },
   "nature_weather.vine": {
@@ -26726,6 +29520,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "덩굴",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лоза"
     }
   },
   "nature_weather.bark": {
@@ -26759,6 +29556,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "나무껍질",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кора"
     }
   },
   "nature_weather.earth": {
@@ -26792,6 +29592,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "지구",
       "needsReview": true
+    },
+    "ru": {
+      "term": "земля"
     }
   },
   "nature_weather.soil": {
@@ -26825,6 +29628,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "토양",
       "needsReview": true
+    },
+    "ru": {
+      "term": "почва"
     }
   },
   "nature_weather.mud": {
@@ -26858,6 +29664,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "진흙",
       "needsReview": true
+    },
+    "ru": {
+      "term": "грязь"
     }
   },
   "nature_weather.sand": {
@@ -26891,6 +29700,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "모래",
       "needsReview": true
+    },
+    "ru": {
+      "term": "песок"
     }
   },
   "nature_weather.stone": {
@@ -26924,6 +29736,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "돌",
       "needsReview": true
+    },
+    "ru": {
+      "term": "камень"
     }
   },
   "nature_weather.rock": {
@@ -26957,6 +29772,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "록",
       "needsReview": true
+    },
+    "ru": {
+      "term": "скала",
+      "needsReview": true,
+      "reviewNote": "Russian камень covers stone and rock; скала chosen to differ from stone=камень but means a large rock/crag."
     }
   },
   "nature_weather.pebble": {
@@ -26990,6 +29810,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "조약돌",
       "needsReview": true
+    },
+    "ru": {
+      "term": "галька"
     }
   },
   "nature_weather.boulder": {
@@ -27023,6 +29846,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "둥근 돌",
       "needsReview": true
+    },
+    "ru": {
+      "term": "валун"
     }
   },
   "nature_weather.dust": {
@@ -27056,6 +29882,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "먼지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пыль"
     }
   },
   "nature_weather.volcano": {
@@ -27089,6 +29918,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "화산",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вулкан"
     }
   },
   "nature_weather.jungle": {
@@ -27122,6 +29954,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "정글",
       "needsReview": true
+    },
+    "ru": {
+      "term": "джунгли"
     }
   },
   "nature_weather.rainforest": {
@@ -27156,6 +29991,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "열대우림",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тропический лес",
+      "needsReview": true,
+      "reviewNote": "No single word; тропический лес = 'tropical forest' (two words)."
     }
   },
   "nature_weather.swamp": {
@@ -27189,6 +30029,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "늪",
       "needsReview": true
+    },
+    "ru": {
+      "term": "болото"
     }
   },
   "nature_weather.marsh": {
@@ -27222,6 +30065,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "습지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "болото",
+      "needsReview": true,
+      "reviewNote": "Russian uses болото for both swamp and marsh; топь/трясина denote a mire if differentiation is needed."
     }
   },
   "nature_weather.meadow": {
@@ -27255,6 +30103,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "초원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "луг"
     }
   },
   "nature_weather.prairie": {
@@ -27288,6 +30139,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "대초원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "прерия"
     }
   },
   "nature_weather.savanna": {
@@ -27322,6 +30176,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사바나",
       "needsReview": true
+    },
+    "ru": {
+      "term": "саванна"
     }
   },
   "nature_weather.tundra": {
@@ -27356,6 +30213,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "툰드라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тундра"
     }
   },
   "nature_weather.wetland": {
@@ -27389,6 +30249,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "습지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "водно-болотные угодья",
+      "needsReview": true,
+      "reviewNote": "No single common word; водно-болотные угодья is the technical term; заболоченная местность is a plainer multi-word option."
     }
   },
   "nature_weather.reef": {
@@ -27423,6 +30288,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "암초",
       "needsReview": true
+    },
+    "ru": {
+      "term": "риф"
     }
   },
   "nature_weather.hurricane": {
@@ -27456,6 +30324,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "허리케인",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ураган"
     }
   },
   "nature_weather.tornado": {
@@ -27489,6 +30360,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "토네이도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "торнадо"
     }
   },
   "nature_weather.blizzard": {
@@ -27523,6 +30397,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "눈보라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "метель"
     }
   },
   "nature_weather.drought": {
@@ -27556,6 +30433,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가뭄",
       "needsReview": true
+    },
+    "ru": {
+      "term": "засуха"
     }
   },
   "nature_weather.flood": {
@@ -27589,6 +30469,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "홍수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "наводнение"
     }
   },
   "nature_weather.earthquake": {
@@ -27622,6 +30505,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "지진",
       "needsReview": true
+    },
+    "ru": {
+      "term": "землетрясение"
     }
   },
   "nature_weather.landslide": {
@@ -27655,6 +30541,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "산사태",
       "needsReview": true
+    },
+    "ru": {
+      "term": "оползень"
     }
   },
   "nature_weather.avalanche": {
@@ -27688,6 +30577,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "눈사태",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лавина"
     }
   },
   "nature_weather.wildfire": {
@@ -27722,6 +30614,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "산불",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лесной пожар",
+      "needsReview": true,
+      "reviewNote": "No single word; лесной пожар = 'forest fire' (two words)."
     }
   },
   "nature_weather.eruption": {
@@ -27755,6 +30652,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "분출",
       "needsReview": true
+    },
+    "ru": {
+      "term": "извержение"
     }
   },
   "nature_weather.climate": {
@@ -27788,6 +30688,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기후",
       "needsReview": true
+    },
+    "ru": {
+      "term": "климат"
     }
   },
   "nature_weather.atmosphere": {
@@ -27821,6 +30724,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "분위기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "атмосфера"
     }
   },
   "nature_weather.temperature": {
@@ -27854,6 +30760,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "온도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "температура"
     }
   },
   "nature_weather.humidity": {
@@ -27888,6 +30797,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "습도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "влажность"
     }
   },
   "nature_weather.forecast": {
@@ -27921,6 +30833,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "예측",
       "needsReview": true
+    },
+    "ru": {
+      "term": "прогноз"
     }
   },
   "nature_weather.drizzle": {
@@ -27954,6 +30869,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "이슬비",
       "needsReview": true
+    },
+    "ru": {
+      "term": "морось"
     }
   },
   "nature_weather.downpour": {
@@ -27987,6 +30905,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "억수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ливень"
     }
   },
   "nature_weather.monsoon": {
@@ -28020,6 +30941,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "몬순",
       "needsReview": true
+    },
+    "ru": {
+      "term": "муссон"
     }
   },
   "nature_weather.tide": {
@@ -28053,6 +30977,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "조수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "прилив",
+      "needsReview": true,
+      "reviewNote": "прилив = incoming/high tide (matches de Flut); full tidal cycle is приливы и отливы."
     }
   },
   "nature_weather.glacier": {
@@ -28087,6 +31016,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "빙하",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ледник"
     }
   },
   "places_buildings.school": {
@@ -28119,6 +31051,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "학교"
+    },
+    "ru": {
+      "term": "школа"
     }
   },
   "places_buildings.hospital": {
@@ -28151,6 +31086,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "병원"
+    },
+    "ru": {
+      "term": "больница"
     }
   },
   "places_buildings.park": {
@@ -28183,6 +31121,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "공원"
+    },
+    "ru": {
+      "term": "парк"
     }
   },
   "places_buildings.store": {
@@ -28215,6 +31156,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "상점"
+    },
+    "ru": {
+      "term": "магазин"
     }
   },
   "places_buildings.restaurant": {
@@ -28247,6 +31191,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "레스토랑"
+    },
+    "ru": {
+      "term": "ресторан"
     }
   },
   "places_buildings.cafe": {
@@ -28280,6 +31227,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "카페"
+    },
+    "ru": {
+      "term": "кафе"
     }
   },
   "places_buildings.hotel": {
@@ -28313,6 +31263,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "호텔"
+    },
+    "ru": {
+      "term": "гостиница"
     }
   },
   "places_buildings.bank": {
@@ -28345,6 +31298,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "은행"
+    },
+    "ru": {
+      "term": "банк"
     }
   },
   "places_buildings.library": {
@@ -28377,6 +31333,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "도서관"
+    },
+    "ru": {
+      "term": "библиотека"
     }
   },
   "places_buildings.market": {
@@ -28409,6 +31368,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "시장"
+    },
+    "ru": {
+      "term": "рынок"
     }
   },
   "places_buildings.post_office": {
@@ -28442,6 +31404,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "우체국"
+    },
+    "ru": {
+      "term": "почта"
     }
   },
   "places_buildings.police_station": {
@@ -28474,6 +31439,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "경찰서"
+    },
+    "ru": {
+      "term": "полицейский участок",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian equivalent; 'полицейский участок' is the standard two-word term."
     }
   },
   "places_buildings.fire_station": {
@@ -28506,6 +31476,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "소방서"
+    },
+    "ru": {
+      "term": "пожарная часть",
+      "needsReview": true,
+      "reviewNote": "No single-word equivalent; 'пожарная часть' is the standard two-word term."
     }
   },
   "places_buildings.pharmacy": {
@@ -28538,6 +31513,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "약국"
+    },
+    "ru": {
+      "term": "аптека"
     }
   },
   "places_buildings.supermarket": {
@@ -28571,6 +31549,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "슈퍼마켓"
+    },
+    "ru": {
+      "term": "супермаркет"
     }
   },
   "places_buildings.mall": {
@@ -28604,6 +31585,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "쇼핑몰"
+    },
+    "ru": {
+      "term": "торговый центр",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard term for a shopping mall, with no single-word equivalent."
     }
   },
   "places_buildings.cinema": {
@@ -28636,6 +31622,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "영화관"
+    },
+    "ru": {
+      "term": "кинотеатр"
     }
   },
   "places_buildings.theater": {
@@ -28668,6 +31657,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "극장"
+    },
+    "ru": {
+      "term": "театр"
     }
   },
   "places_buildings.museum": {
@@ -28700,6 +31692,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "박물관"
+    },
+    "ru": {
+      "term": "музей"
     }
   },
   "places_buildings.church": {
@@ -28732,6 +31727,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "교회"
+    },
+    "ru": {
+      "term": "церковь"
     }
   },
   "places_buildings.airport": {
@@ -28765,6 +31763,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "공항"
+    },
+    "ru": {
+      "term": "аэропорт"
     }
   },
   "places_buildings.train_station": {
@@ -28797,6 +31798,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "기차역"
+    },
+    "ru": {
+      "term": "вокзал"
     }
   },
   "places_buildings.bus_station": {
@@ -28829,6 +31833,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "버스 터미널"
+    },
+    "ru": {
+      "term": "автовокзал"
     }
   },
   "places_buildings.subway_station": {
@@ -28861,6 +31868,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "지하철역"
+    },
+    "ru": {
+      "term": "станция метро",
+      "needsReview": true,
+      "reviewNote": "Multi-word; no single-word Russian equivalent."
     }
   },
   "places_buildings.port": {
@@ -28893,6 +31905,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "항구"
+    },
+    "ru": {
+      "term": "порт"
     }
   },
   "places_buildings.harbor": {
@@ -28925,6 +31940,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "항만"
+    },
+    "ru": {
+      "term": "гавань"
     }
   },
   "places_buildings.parking_lot": {
@@ -28957,6 +31975,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "주차장"
+    },
+    "ru": {
+      "term": "парковка"
     }
   },
   "places_buildings.gas_station": {
@@ -28989,6 +32010,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "주유소"
+    },
+    "ru": {
+      "term": "заправка"
     }
   },
   "places_buildings.bridge": {
@@ -29021,6 +32045,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "다리"
+    },
+    "ru": {
+      "term": "мост"
     }
   },
   "places_buildings.tunnel": {
@@ -29053,6 +32080,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "터널"
+    },
+    "ru": {
+      "term": "тоннель"
     }
   },
   "places_buildings.office": {
@@ -29086,6 +32116,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사무실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "офис"
     }
   },
   "places_buildings.factory": {
@@ -29119,6 +32152,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "공장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фабрика"
     }
   },
   "places_buildings.warehouse": {
@@ -29152,6 +32188,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "창고",
       "needsReview": true
+    },
+    "ru": {
+      "term": "склад"
     }
   },
   "places_buildings.farm": {
@@ -29185,6 +32224,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "농장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ферма"
     }
   },
   "places_buildings.university": {
@@ -29218,6 +32260,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "대학",
       "needsReview": true
+    },
+    "ru": {
+      "term": "университет"
     }
   },
   "places_buildings.college": {
@@ -29251,6 +32296,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "대학",
       "needsReview": true
+    },
+    "ru": {
+      "term": "колледж"
     }
   },
   "places_buildings.classroom": {
@@ -29285,6 +32333,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "교실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "класс",
+      "needsReview": true,
+      "reviewNote": "'класс' also means a grade/year and a class-group; the unambiguous room is 'классная комната'."
     }
   },
   "places_buildings.laboratory": {
@@ -29318,6 +32371,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "실험실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лаборатория"
     }
   },
   "places_buildings.workshop": {
@@ -29352,6 +32408,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "작업장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мастерская"
     }
   },
   "places_buildings.studio": {
@@ -29386,6 +32445,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스튜디오",
       "needsReview": true
+    },
+    "ru": {
+      "term": "студия"
     }
   },
   "places_buildings.clinic": {
@@ -29419,6 +32481,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "진료소",
       "needsReview": true
+    },
+    "ru": {
+      "term": "клиника"
     }
   },
   "places_buildings.dentist_s_office": {
@@ -29452,6 +32517,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "치과 의사 사무실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стоматология",
+      "needsReview": true,
+      "reviewNote": "'стоматология' (lit. dentistry) is the everyday word for a dental office; the literal 'кабинет стоматолога' is multi-word."
     }
   },
   "places_buildings.emergency_room": {
@@ -29485,6 +32555,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "응급실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "приёмный покой",
+      "needsReview": true,
+      "reviewNote": "Multi-word; 'приёмный покой' is the hospital ER reception; also 'отделение неотложной помощи'."
     }
   },
   "places_buildings.medical_center": {
@@ -29518,6 +32593,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "의료 센터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "медицинский центр",
+      "needsReview": true,
+      "reviewNote": "Multi-word; no single-word Russian equivalent."
     }
   },
   "places_buildings.nursing_home": {
@@ -29552,6 +32632,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "요양원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дом престарелых",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard term, with no single-word equivalent."
     }
   },
   "places_buildings.daycare_center": {
@@ -29586,6 +32671,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "어린이집",
       "needsReview": true
+    },
+    "ru": {
+      "term": "детский сад",
+      "needsReview": true,
+      "reviewNote": "Multi-word; 'детский сад' is kindergarten/daycare (infant nursery is 'ясли')."
     }
   },
   "places_buildings.veterinary_clinic": {
@@ -29619,6 +32709,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "동물병원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ветклиника"
     }
   },
   "places_buildings.gym": {
@@ -29653,6 +32746,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "체육관",
       "needsReview": true
+    },
+    "ru": {
+      "term": "спортзал"
     }
   },
   "places_buildings.swimming_pool": {
@@ -29687,6 +32783,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수영장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бассейн"
     }
   },
   "places_buildings.sports_center": {
@@ -29721,6 +32820,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스포츠 센터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "спортивный центр",
+      "needsReview": true,
+      "reviewNote": "Multi-word; also the compound 'спорткомплекс'."
     }
   },
   "places_buildings.bakery": {
@@ -29754,6 +32858,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "빵집",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пекарня"
     }
   },
   "places_buildings.butcher_shop": {
@@ -29787,6 +32894,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "정육점",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мясная лавка",
+      "needsReview": true,
+      "reviewNote": "Multi-word; also 'мясной магазин'; no single-word equivalent."
     }
   },
   "places_buildings.bookstore": {
@@ -29820,6 +32932,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "서점",
       "needsReview": true
+    },
+    "ru": {
+      "term": "книжный магазин",
+      "needsReview": true,
+      "reviewNote": "Multi-word; colloquially shortened to 'книжный'."
     }
   },
   "places_buildings.clothes_shop": {
@@ -29853,6 +32970,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "옷가게",
       "needsReview": true
+    },
+    "ru": {
+      "term": "магазин одежды",
+      "needsReview": true,
+      "reviewNote": "Multi-word; no single-word Russian equivalent."
     }
   },
   "places_buildings.shoe_store": {
@@ -29886,6 +33008,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "신발 가게",
       "needsReview": true
+    },
+    "ru": {
+      "term": "обувной магазин",
+      "needsReview": true,
+      "reviewNote": "Multi-word; also 'магазин обуви'."
     }
   },
   "places_buildings.toy_store": {
@@ -29919,6 +33046,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "장난감 가게",
       "needsReview": true
+    },
+    "ru": {
+      "term": "магазин игрушек",
+      "needsReview": true,
+      "reviewNote": "Multi-word; no single-word Russian equivalent."
     }
   },
   "places_buildings.florist": {
@@ -29953,6 +33085,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "꽃집",
       "needsReview": true
+    },
+    "ru": {
+      "term": "цветочный магазин",
+      "needsReview": true,
+      "reviewNote": "Multi-word; the shop is 'цветочный магазин'; the person (florist) is 'флорист'."
     }
   },
   "places_buildings.hair_salon": {
@@ -29986,6 +33123,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "미용실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "парикмахерская"
     }
   },
   "places_buildings.laundromat": {
@@ -30019,6 +33159,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "세탁소",
       "needsReview": true
+    },
+    "ru": {
+      "term": "прачечная"
     }
   },
   "places_buildings.hardware_store": {
@@ -30052,6 +33195,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "철물점",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хозяйственный магазин",
+      "needsReview": true,
+      "reviewNote": "Ambiguous/multi-word; household sense = 'хозяйственный магазин'; DIY/building (de Baumarkt) = 'строительный магазин'."
     }
   },
   "places_buildings.city_hall": {
@@ -30086,6 +33234,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시청",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мэрия"
     }
   },
   "places_buildings.town_hall": {
@@ -30119,6 +33270,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시청",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ратуша"
     }
   },
   "places_buildings.courthouse": {
@@ -30152,6 +33306,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "법원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "суд",
+      "needsReview": true,
+      "reviewNote": "'суд' means both the court (institution/trial) and the courthouse building."
     }
   },
   "places_buildings.embassy": {
@@ -30185,6 +33344,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "대사관",
       "needsReview": true
+    },
+    "ru": {
+      "term": "посольство"
     }
   },
   "places_buildings.consulate": {
@@ -30218,6 +33380,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "영사관",
       "needsReview": true
+    },
+    "ru": {
+      "term": "консульство"
     }
   },
   "places_buildings.prison": {
@@ -30251,6 +33416,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "감옥",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тюрьма"
     }
   },
   "places_buildings.parliament": {
@@ -30284,6 +33452,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "의회",
       "needsReview": true
+    },
+    "ru": {
+      "term": "парламент"
     }
   },
   "places_buildings.community_center": {
@@ -30317,6 +33488,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "커뮤니티 센터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "общественный центр",
+      "needsReview": true,
+      "reviewNote": "Multi-word; also 'дом культуры', which is culturally closer."
     }
   },
   "places_buildings.public_square": {
@@ -30350,6 +33526,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "공공 광장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "площадь"
     }
   },
   "places_buildings.border_crossing": {
@@ -30383,6 +33562,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "국경 통과",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пограничный переход",
+      "needsReview": true,
+      "reviewNote": "Multi-word; also 'пункт пропуска' / 'КПП'."
     }
   },
   "places_buildings.stadium": {
@@ -30416,6 +33600,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "경기장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стадион"
     }
   },
   "places_buildings.zoo": {
@@ -30450,6 +33637,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "동물원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "зоопарк"
     }
   },
   "places_buildings.aquarium": {
@@ -30484,6 +33674,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수족관",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аквариум",
+      "needsReview": true,
+      "reviewNote": "A public aquarium attraction is 'океанариум'; 'аквариум' is the direct term (and a home fish tank)."
     }
   },
   "places_buildings.amusement_park": {
@@ -30518,6 +33713,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "놀이공원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "парк аттракционов",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard term; also 'парк развлечений'."
     }
   },
   "places_buildings.playground": {
@@ -30551,6 +33751,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "운동장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "детская площадка",
+      "needsReview": true,
+      "reviewNote": "Multi-word; no single-word Russian equivalent."
     }
   },
   "places_buildings.art_gallery": {
@@ -30584,6 +33789,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "미술관",
       "needsReview": true
+    },
+    "ru": {
+      "term": "художественная галерея",
+      "needsReview": true,
+      "reviewNote": "Multi-word; often shortened to 'галерея'."
     }
   },
   "places_buildings.concert_hall": {
@@ -30617,6 +33827,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "콘서트홀",
       "needsReview": true
+    },
+    "ru": {
+      "term": "концертный зал",
+      "needsReview": true,
+      "reviewNote": "Multi-word; no single-word Russian equivalent."
     }
   },
   "places_buildings.mosque": {
@@ -30651,6 +33866,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "모스크",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мечеть"
     }
   },
   "places_buildings.temple": {
@@ -30684,6 +33902,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "храм"
     }
   },
   "places_buildings.synagogue": {
@@ -30717,6 +33938,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "회당",
       "needsReview": true
+    },
+    "ru": {
+      "term": "синагога"
     }
   },
   "places_buildings.hostel": {
@@ -30751,6 +33975,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "호스텔",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хостел"
     }
   },
   "places_buildings.motel": {
@@ -30785,6 +34012,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "모텔",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мотель"
     }
   },
   "places_buildings.resort": {
@@ -30819,6 +34049,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "리조트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "курорт"
     }
   },
   "places_buildings.campsite": {
@@ -30852,6 +34085,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캠프장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кемпинг"
     }
   },
   "places_buildings.cabin": {
@@ -30886,6 +34122,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "선실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кабина",
+      "needsReview": true,
+      "reviewNote": "de/fr/es (Kabine/cabine/cabina) point to a booth/compartment, not a log cabin; a woodland cabin would be 'хижина' / 'домик'."
     }
   },
   "places_buildings.cottage": {
@@ -30920,6 +34161,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "별장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "коттедж",
+      "needsReview": true,
+      "reviewNote": "Russian 'коттедж' = a modern detached house; the rustic sense (Hütte/chalet/cabaña) is closer to 'домик' / 'дача'."
     }
   },
   "places_buildings.palace": {
@@ -30953,6 +34199,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "궁전",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дворец"
     }
   },
   "places_buildings.castle": {
@@ -30986,6 +34235,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "성",
       "needsReview": true
+    },
+    "ru": {
+      "term": "замок"
     }
   },
   "places_buildings.tower": {
@@ -31019,6 +34271,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "탑",
       "needsReview": true
+    },
+    "ru": {
+      "term": "башня"
     }
   },
   "places_buildings.lighthouse": {
@@ -31052,6 +34307,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "등대",
       "needsReview": true
+    },
+    "ru": {
+      "term": "маяк"
     }
   },
   "places_buildings.skyscraper": {
@@ -31086,6 +34344,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "초고층 빌딩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "небоскрёб"
     }
   },
   "places_buildings.observatory": {
@@ -31119,6 +34380,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전망대",
       "needsReview": true
+    },
+    "ru": {
+      "term": "обсерватория"
     }
   },
   "places_buildings.planetarium": {
@@ -31153,6 +34417,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "천문관",
       "needsReview": true
+    },
+    "ru": {
+      "term": "планетарий"
     }
   },
   "places_buildings.monastery": {
@@ -31186,6 +34453,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수도원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "монастырь"
     }
   },
   "places_buildings.cathedral": {
@@ -31219,6 +34489,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "대성당",
       "needsReview": true
+    },
+    "ru": {
+      "term": "собор"
     }
   },
   "places_buildings.shrine": {
@@ -31253,6 +34526,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "신사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "святилище",
+      "needsReview": true,
+      "reviewNote": "'shrine' is polysemous; 'святилище' = sanctuary/holy place; a roadside/chapel shrine is 'часовня', a reliquary is 'рака'."
     }
   },
   "places_buildings.greenhouse": {
@@ -31287,6 +34565,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "온실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "теплица"
     }
   },
   "places_buildings.refinery": {
@@ -31321,6 +34602,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "정유소",
       "needsReview": true
+    },
+    "ru": {
+      "term": "нефтеперерабатывающий завод",
+      "needsReview": true,
+      "reviewNote": "Multi-word; assumes an oil refinery (НПЗ), the most common referent."
     }
   },
   "places_buildings.power_plant": {
@@ -31354,6 +34640,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "발전소",
       "needsReview": true
+    },
+    "ru": {
+      "term": "электростанция"
     }
   },
   "places_buildings.dam": {
@@ -31388,6 +34677,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "댐",
       "needsReview": true
+    },
+    "ru": {
+      "term": "плотина"
     }
   },
   "transport_travel.car": {
@@ -31420,6 +34712,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "자동차"
+    },
+    "ru": {
+      "term": "машина"
     }
   },
   "transport_travel.bus": {
@@ -31453,6 +34748,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "버스"
+    },
+    "ru": {
+      "term": "автобус"
     }
   },
   "transport_travel.train": {
@@ -31485,6 +34783,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "기차"
+    },
+    "ru": {
+      "term": "поезд"
     }
   },
   "transport_travel.bicycle": {
@@ -31517,6 +34818,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "자전거"
+    },
+    "ru": {
+      "term": "велосипед"
     }
   },
   "transport_travel.motorcycle": {
@@ -31549,6 +34853,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "오토바이"
+    },
+    "ru": {
+      "term": "мотоцикл"
     }
   },
   "transport_travel.plane": {
@@ -31581,6 +34888,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "비행기"
+    },
+    "ru": {
+      "term": "самолёт"
     }
   },
   "transport_travel.boat": {
@@ -31613,6 +34923,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "보트"
+    },
+    "ru": {
+      "term": "лодка"
     }
   },
   "transport_travel.ship": {
@@ -31645,6 +34958,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "배"
+    },
+    "ru": {
+      "term": "корабль"
     }
   },
   "transport_travel.taxi": {
@@ -31678,6 +34994,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "택시"
+    },
+    "ru": {
+      "term": "такси"
     }
   },
   "transport_travel.truck": {
@@ -31710,6 +35029,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "트럭"
+    },
+    "ru": {
+      "term": "грузовик"
     }
   },
   "transport_travel.van": {
@@ -31743,6 +35065,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "밴"
+    },
+    "ru": {
+      "term": "фургон"
     }
   },
   "transport_travel.scooter": {
@@ -31776,6 +35101,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스쿠터"
+    },
+    "ru": {
+      "term": "скутер",
+      "needsReview": true,
+      "reviewNote": "English 'scooter' is ambiguous; rendered as motor scooter (скутер); a kick scooter would be самокат."
     }
   },
   "transport_travel.tram": {
@@ -31809,6 +35139,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "트램"
+    },
+    "ru": {
+      "term": "трамвай"
     }
   },
   "transport_travel.subway": {
@@ -31842,6 +35175,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "지하철"
+    },
+    "ru": {
+      "term": "метро"
     }
   },
   "transport_travel.ferry": {
@@ -31874,6 +35210,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "페리"
+    },
+    "ru": {
+      "term": "паром"
     }
   },
   "transport_travel.minibus": {
@@ -31907,6 +35246,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "미니버스"
+    },
+    "ru": {
+      "term": "микроавтобус"
     }
   },
   "transport_travel.pickup_truck": {
@@ -31939,6 +35281,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "픽업트럭"
+    },
+    "ru": {
+      "term": "пикап"
     }
   },
   "transport_travel.ambulance": {
@@ -31971,6 +35316,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "구급차"
+    },
+    "ru": {
+      "term": "скорая помощь",
+      "needsReview": true,
+      "reviewNote": "No single-word term; скорая помощь is two words (colloquially скорая; the vehicle is машина скорой помощи)."
     }
   },
   "transport_travel.fire_truck": {
@@ -32003,6 +35353,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "소방차"
+    },
+    "ru": {
+      "term": "пожарная машина",
+      "needsReview": true,
+      "reviewNote": "No single-word term; standard equivalent is two words."
     }
   },
   "transport_travel.police_car": {
@@ -32035,6 +35390,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "경찰차"
+    },
+    "ru": {
+      "term": "полицейская машина",
+      "needsReview": true,
+      "reviewNote": "No single-word term; standard equivalent is two words (also патрульная машина)."
     }
   },
   "transport_travel.ticket": {
@@ -32067,6 +35427,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "티켓"
+    },
+    "ru": {
+      "term": "билет"
     }
   },
   "transport_travel.passport": {
@@ -32099,6 +35462,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "여권"
+    },
+    "ru": {
+      "term": "паспорт"
     }
   },
   "transport_travel.luggage": {
@@ -32131,6 +35497,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "수하물"
+    },
+    "ru": {
+      "term": "багаж"
     }
   },
   "transport_travel.suitcase": {
@@ -32163,6 +35532,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "여행 가방"
+    },
+    "ru": {
+      "term": "чемодан"
     }
   },
   "transport_travel.backpack": {
@@ -32196,6 +35568,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "배낭"
+    },
+    "ru": {
+      "term": "рюкзак"
     }
   },
   "transport_travel.map": {
@@ -32228,6 +35603,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "지도"
+    },
+    "ru": {
+      "term": "карта"
     }
   },
   "transport_travel.route": {
@@ -32260,6 +35638,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "경로"
+    },
+    "ru": {
+      "term": "маршрут"
     }
   },
   "transport_travel.trip": {
@@ -32292,6 +35673,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "여행"
+    },
+    "ru": {
+      "term": "поездка"
     }
   },
   "transport_travel.journey": {
@@ -32324,6 +35708,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "여정"
+    },
+    "ru": {
+      "term": "путешествие"
     }
   },
   "transport_travel.destination": {
@@ -32356,6 +35743,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "목적지"
+    },
+    "ru": {
+      "term": "пункт назначения",
+      "needsReview": true,
+      "reviewNote": "No single-word term; standard equivalent is two words."
     }
   },
   "transport_travel.road": {
@@ -32389,6 +35781,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "도로",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дорога"
     }
   },
   "transport_travel.street": {
@@ -32422,6 +35817,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "거리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "улица"
     }
   },
   "transport_travel.highway": {
@@ -32455,6 +35853,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "고속도로",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шоссе"
     }
   },
   "transport_travel.lane": {
@@ -32489,6 +35890,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "차선",
       "needsReview": true
+    },
+    "ru": {
+      "term": "полоса"
     }
   },
   "transport_travel.traffic": {
@@ -32522,6 +35926,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "교통",
       "needsReview": true
+    },
+    "ru": {
+      "term": "движение",
+      "needsReview": true,
+      "reviewNote": "движение also means 'movement'; road traffic is precisely дорожное движение."
     }
   },
   "transport_travel.traffic_light": {
@@ -32555,6 +35964,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "신호등",
       "needsReview": true
+    },
+    "ru": {
+      "term": "светофор"
     }
   },
   "transport_travel.crosswalk": {
@@ -32589,6 +36001,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "횡단보도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пешеходный переход",
+      "needsReview": true,
+      "reviewNote": "No single-word term; standard is two words (colloquially зебра)."
     }
   },
   "transport_travel.sidewalk": {
@@ -32623,6 +36040,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "보도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тротуар"
     }
   },
   "transport_travel.roundabout": {
@@ -32657,6 +36077,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "로터리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "круговое движение",
+      "needsReview": true,
+      "reviewNote": "No single-word term; road-sign term круговое движение (colloquially кольцо)."
     }
   },
   "transport_travel.intersection": {
@@ -32691,6 +36116,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "교차로",
       "needsReview": true
+    },
+    "ru": {
+      "term": "перекрёсток"
     }
   },
   "transport_travel.wheel": {
@@ -32724,6 +36152,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "바퀴",
       "needsReview": true
+    },
+    "ru": {
+      "term": "колесо"
     }
   },
   "transport_travel.tire": {
@@ -32757,6 +36188,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "타이어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шина"
     }
   },
   "transport_travel.engine": {
@@ -32790,6 +36224,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "엔진",
       "needsReview": true
+    },
+    "ru": {
+      "term": "двигатель"
     }
   },
   "transport_travel.seat": {
@@ -32823,6 +36260,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "좌석",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сиденье"
     }
   },
   "transport_travel.seat_belt": {
@@ -32857,6 +36297,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "안전벨트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ремень безопасности",
+      "needsReview": true,
+      "reviewNote": "No single-word term; standard equivalent is two words."
     }
   },
   "transport_travel.steering_wheel": {
@@ -32890,6 +36335,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스티어링 휠",
       "needsReview": true
+    },
+    "ru": {
+      "term": "руль"
     }
   },
   "transport_travel.brake": {
@@ -32923,6 +36371,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "브레이크",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тормоз"
     }
   },
   "transport_travel.pedal": {
@@ -32957,6 +36408,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "페달",
       "needsReview": true
+    },
+    "ru": {
+      "term": "педаль"
     }
   },
   "transport_travel.trunk": {
@@ -32990,6 +36444,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "트렁크",
       "needsReview": true
+    },
+    "ru": {
+      "term": "багажник"
     }
   },
   "transport_travel.license_plate": {
@@ -33023,6 +36480,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "번호판",
       "needsReview": true
+    },
+    "ru": {
+      "term": "номерной знак",
+      "needsReview": true,
+      "reviewNote": "No single-word term; standard is two words (colloquially номер/госномер)."
     }
   },
   "transport_travel.bus_stop": {
@@ -33056,6 +36518,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "버스 정류장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "остановка"
     }
   },
   "transport_travel.platform": {
@@ -33089,6 +36554,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "플랫폼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "платформа"
     }
   },
   "transport_travel.fare": {
@@ -33122,6 +36590,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "운임",
       "needsReview": true
+    },
+    "ru": {
+      "term": "плата за проезд",
+      "needsReview": true,
+      "reviewNote": "No single-word term; also стоимость проезда."
     }
   },
   "transport_travel.schedule": {
@@ -33155,6 +36628,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "일정",
       "needsReview": true
+    },
+    "ru": {
+      "term": "расписание"
     }
   },
   "transport_travel.timetable": {
@@ -33189,6 +36665,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시간표",
       "needsReview": true
+    },
+    "ru": {
+      "term": "расписание"
     }
   },
   "transport_travel.transfer": {
@@ -33222,6 +36701,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "환승",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пересадка",
+      "needsReview": true,
+      "reviewNote": "Ambiguous; пересадка = changing vehicles/connection; a shuttle transfer would be трансфер."
     }
   },
   "transport_travel.commuter": {
@@ -33256,6 +36740,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "통근자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пригородный пассажир",
+      "needsReview": true,
+      "reviewNote": "Russian has no single word for 'commuter'; пригородный пассажир is the closest phrase."
     }
   },
   "transport_travel.passenger": {
@@ -33289,6 +36778,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "승객",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пассажир"
     }
   },
   "transport_travel.driver": {
@@ -33322,6 +36814,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "운전사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "водитель"
     }
   },
   "transport_travel.conductor": {
@@ -33355,6 +36850,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "지휘자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кондуктор",
+      "needsReview": true,
+      "reviewNote": "Transport conductor = кондуктор; de/fr disambiguators point to an orchestra conductor (дирижёр)."
     }
   },
   "transport_travel.flight": {
@@ -33388,6 +36888,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비행",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рейс"
     }
   },
   "transport_travel.airline": {
@@ -33421,6 +36924,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "항공사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "авиакомпания"
     }
   },
   "transport_travel.boarding_pass": {
@@ -33455,6 +36961,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "탑승권",
       "needsReview": true
+    },
+    "ru": {
+      "term": "посадочный талон",
+      "needsReview": true,
+      "reviewNote": "No single-word term; standard is two words (colloquially посадочный)."
     }
   },
   "transport_travel.gate": {
@@ -33488,6 +36999,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "게이트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "выход на посадку",
+      "needsReview": true,
+      "reviewNote": "Airport gate = выход на посадку; de 'Tor' instead suggests a physical gate (ворота)."
     }
   },
   "transport_travel.terminal": {
@@ -33522,6 +37038,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "터미널",
       "needsReview": true
+    },
+    "ru": {
+      "term": "терминал"
     }
   },
   "transport_travel.runway": {
@@ -33556,6 +37075,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "활주로",
       "needsReview": true
+    },
+    "ru": {
+      "term": "взлётная полоса",
+      "needsReview": true,
+      "reviewNote": "No single-word term; also взлётно-посадочная полоса."
     }
   },
   "transport_travel.pilot": {
@@ -33589,6 +37113,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "조종사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пилот"
     }
   },
   "transport_travel.cabin": {
@@ -33623,6 +37150,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "선실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "салон",
+      "needsReview": true,
+      "reviewNote": "Aircraft passenger cabin = салон; cockpit = кабина, ship cabin = каюта."
     }
   },
   "transport_travel.baggage_claim": {
@@ -33656,6 +37188,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수하물 찾는 곳",
       "needsReview": true
+    },
+    "ru": {
+      "term": "выдача багажа",
+      "needsReview": true,
+      "reviewNote": "No single-word term; also получение багажа."
     }
   },
   "transport_travel.customs": {
@@ -33689,6 +37226,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "세관",
       "needsReview": true
+    },
+    "ru": {
+      "term": "таможня"
     }
   },
   "transport_travel.railway": {
@@ -33722,6 +37262,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "철도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "железная дорога",
+      "needsReview": true,
+      "reviewNote": "No single-word term; железная дорога is the standard two-word term."
     }
   },
   "transport_travel.track": {
@@ -33756,6 +37301,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "트랙",
       "needsReview": true
+    },
+    "ru": {
+      "term": "путь",
+      "needsReview": true,
+      "reviewNote": "Ambiguous; путь also means 'way/path'; rails = рельсы."
     }
   },
   "transport_travel.carriage": {
@@ -33789,6 +37339,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "마차",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вагон",
+      "needsReview": true,
+      "reviewNote": "Railway carriage = вагон; de/fr/es disambiguators point to a horse carriage/cart (карета/повозка)."
     }
   },
   "transport_travel.locomotive": {
@@ -33822,6 +37377,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기관차",
       "needsReview": true
+    },
+    "ru": {
+      "term": "локомотив"
     }
   },
   "transport_travel.compartment": {
@@ -33855,6 +37413,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "구획",
       "needsReview": true
+    },
+    "ru": {
+      "term": "купе"
     }
   },
   "transport_travel.sleeper_train": {
@@ -33888,6 +37449,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "침대 열차",
       "needsReview": true
+    },
+    "ru": {
+      "term": "спальный вагон",
+      "needsReview": true,
+      "reviewNote": "спальный вагон is the sleeping car; the train itself is поезд со спальными вагонами / ночной поезд."
     }
   },
   "transport_travel.deck": {
@@ -33922,6 +37488,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "갑판",
       "needsReview": true
+    },
+    "ru": {
+      "term": "палуба"
     }
   },
   "transport_travel.cabin_cruiser": {
@@ -33956,6 +37525,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캐빈 크루저",
       "needsReview": true
+    },
+    "ru": {
+      "term": "катер",
+      "needsReview": true,
+      "reviewNote": "катер = motorboat generally; a cabin cruiser specifically is каютный катер."
     }
   },
   "transport_travel.lifeboat": {
@@ -33990,6 +37564,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "구명정",
       "needsReview": true
+    },
+    "ru": {
+      "term": "спасательная шлюпка",
+      "needsReview": true,
+      "reviewNote": "No single-word term; шлюпка alone = ship's boat."
     }
   },
   "transport_travel.anchor": {
@@ -34023,6 +37602,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "앵커",
       "needsReview": true
+    },
+    "ru": {
+      "term": "якорь"
     }
   },
   "transport_travel.reservation": {
@@ -34056,6 +37638,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "예약",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бронирование"
     }
   },
   "transport_travel.booking": {
@@ -34089,6 +37674,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "예약",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бронирование"
     }
   },
   "transport_travel.itinerary": {
@@ -34123,6 +37711,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "여정",
       "needsReview": true
+    },
+    "ru": {
+      "term": "маршрут"
     }
   },
   "transport_travel.tour": {
@@ -34157,6 +37748,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "투어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тур"
     }
   },
   "transport_travel.guidebook": {
@@ -34190,6 +37784,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가이드북",
       "needsReview": true
+    },
+    "ru": {
+      "term": "путеводитель"
     }
   },
   "transport_travel.tourist": {
@@ -34223,6 +37820,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "관광객",
       "needsReview": true
+    },
+    "ru": {
+      "term": "турист"
     }
   },
   "transport_travel.visitor": {
@@ -34256,6 +37856,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "방문객",
       "needsReview": true
+    },
+    "ru": {
+      "term": "посетитель"
     }
   },
   "transport_travel.visa": {
@@ -34289,6 +37892,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "виза"
     }
   },
   "transport_travel.travel_insurance": {
@@ -34322,6 +37928,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "여행 보험",
       "needsReview": true
+    },
+    "ru": {
+      "term": "туристическая страховка",
+      "needsReview": true,
+      "reviewNote": "No single-word term; also страховка для путешествий."
     }
   },
   "transport_travel.currency_exchange": {
@@ -34355,6 +37966,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "환전",
       "needsReview": true
+    },
+    "ru": {
+      "term": "обмен валюты",
+      "needsReview": true,
+      "reviewNote": "No single-word term; also валютный обмен."
     }
   },
   "transport_travel.helicopter": {
@@ -34389,6 +38005,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "헬리콥터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вертолёт"
     }
   },
   "transport_travel.submarine": {
@@ -34422,6 +38041,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "잠수함",
       "needsReview": true
+    },
+    "ru": {
+      "term": "подводная лодка",
+      "needsReview": true,
+      "reviewNote": "Most common term is two words; субмарина is a single-word synonym."
     }
   },
   "transport_travel.yacht": {
@@ -34455,6 +38079,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "요트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "яхта"
     }
   },
   "transport_travel.canoe": {
@@ -34488,6 +38115,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카누",
       "needsReview": true
+    },
+    "ru": {
+      "term": "каноэ"
     }
   },
   "transport_travel.kayak": {
@@ -34522,6 +38152,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카약",
       "needsReview": true
+    },
+    "ru": {
+      "term": "каяк"
     }
   },
   "transport_travel.skateboard": {
@@ -34556,6 +38189,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스케이트보드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "скейтборд"
     }
   },
   "transport_travel.roller_skates": {
@@ -34589,6 +38225,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "롤러 스케이트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ролики"
     }
   },
   "transport_travel.electric_car": {
@@ -34622,6 +38261,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전기 자동차",
       "needsReview": true
+    },
+    "ru": {
+      "term": "электромобиль"
     }
   },
   "transport_travel.charging_station": {
@@ -34655,6 +38297,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "충전소",
       "needsReview": true
+    },
+    "ru": {
+      "term": "зарядная станция",
+      "needsReview": true,
+      "reviewNote": "No single-word term; standard is two words (for EVs)."
     }
   },
   "transport_travel.navigation": {
@@ -34688,6 +38335,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "네비게이션",
       "needsReview": true
+    },
+    "ru": {
+      "term": "навигация"
     }
   },
   "jobs_people.person": {
@@ -34720,6 +38370,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "사람"
+    },
+    "ru": {
+      "term": "человек"
     }
   },
   "jobs_people.man": {
@@ -34752,6 +38405,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "남자"
+    },
+    "ru": {
+      "term": "мужчина"
     }
   },
   "jobs_people.woman": {
@@ -34784,6 +38440,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "여자"
+    },
+    "ru": {
+      "term": "женщина"
     }
   },
   "jobs_people.child": {
@@ -34816,6 +38475,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "아이"
+    },
+    "ru": {
+      "term": "ребёнок"
     }
   },
   "jobs_people.baby": {
@@ -34848,6 +38510,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "아기"
+    },
+    "ru": {
+      "term": "младенец"
     }
   },
   "jobs_people.adult": {
@@ -34880,6 +38545,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "성인"
+    },
+    "ru": {
+      "term": "взрослый"
     }
   },
   "jobs_people.teenager": {
@@ -34912,6 +38580,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "십대"
+    },
+    "ru": {
+      "term": "подросток"
     }
   },
   "jobs_people.stranger": {
@@ -34944,6 +38615,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "낯선 사람"
+    },
+    "ru": {
+      "term": "незнакомец"
     }
   },
   "jobs_people.neighbor": {
@@ -34976,6 +38650,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "이웃"
+    },
+    "ru": {
+      "term": "сосед"
     }
   },
   "jobs_people.customer": {
@@ -35008,6 +38685,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "고객"
+    },
+    "ru": {
+      "term": "клиент"
     }
   },
   "jobs_people.worker": {
@@ -35040,6 +38720,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "근로자"
+    },
+    "ru": {
+      "term": "рабочий"
     }
   },
   "jobs_people.employee": {
@@ -35072,6 +38755,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "직원"
+    },
+    "ru": {
+      "term": "сотрудник"
     }
   },
   "jobs_people.employer": {
@@ -35104,6 +38790,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "고용주"
+    },
+    "ru": {
+      "term": "работодатель"
     }
   },
   "jobs_people.boss": {
@@ -35137,6 +38826,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "상사"
+    },
+    "ru": {
+      "term": "начальник"
     }
   },
   "jobs_people.manager": {
@@ -35169,6 +38861,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "매니저"
+    },
+    "ru": {
+      "term": "менеджер"
     }
   },
   "jobs_people.assistant": {
@@ -35201,6 +38896,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "보조원"
+    },
+    "ru": {
+      "term": "помощник"
     }
   },
   "jobs_people.secretary": {
@@ -35233,6 +38931,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "비서"
+    },
+    "ru": {
+      "term": "секретарь"
     }
   },
   "jobs_people.receptionist": {
@@ -35266,6 +38967,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "접수원"
+    },
+    "ru": {
+      "term": "администратор",
+      "needsReview": true,
+      "reviewNote": "No dedicated Russian noun; администратор (front-desk) is common but also means 'administrator'; ресепшионист is a colloquial borrowing."
     }
   },
   "jobs_people.colleague": {
@@ -35298,6 +39004,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "동료"
+    },
+    "ru": {
+      "term": "коллега"
     }
   },
   "jobs_people.volunteer": {
@@ -35330,6 +39039,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "자원봉사자"
+    },
+    "ru": {
+      "term": "волонтёр"
     }
   },
   "jobs_people.teacher": {
@@ -35362,6 +39074,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "선생님"
+    },
+    "ru": {
+      "term": "учитель"
     }
   },
   "jobs_people.professor": {
@@ -35394,6 +39109,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "교수"
+    },
+    "ru": {
+      "term": "профессор"
     }
   },
   "jobs_people.tutor": {
@@ -35426,6 +39144,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "가정교사"
+    },
+    "ru": {
+      "term": "репетитор"
     }
   },
   "jobs_people.principal": {
@@ -35458,6 +39179,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "교장"
+    },
+    "ru": {
+      "term": "директор"
     }
   },
   "jobs_people.librarian": {
@@ -35491,6 +39215,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "사서"
+    },
+    "ru": {
+      "term": "библиотекарь"
     }
   },
   "jobs_people.researcher": {
@@ -35523,6 +39250,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "연구원"
+    },
+    "ru": {
+      "term": "исследователь"
     }
   },
   "jobs_people.scientist": {
@@ -35555,6 +39285,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "과학자"
+    },
+    "ru": {
+      "term": "учёный"
     }
   },
   "jobs_people.coach": {
@@ -35588,6 +39321,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "코치"
+    },
+    "ru": {
+      "term": "тренер"
     }
   },
   "jobs_people.instructor": {
@@ -35620,6 +39356,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "강사"
+    },
+    "ru": {
+      "term": "инструктор"
     }
   },
   "jobs_people.trainee": {
@@ -35653,6 +39392,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "훈련생"
+    },
+    "ru": {
+      "term": "стажёр"
     }
   },
   "jobs_people.doctor": {
@@ -35686,6 +39428,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "의사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "врач"
     }
   },
   "jobs_people.nurse": {
@@ -35719,6 +39464,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "간호사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "медсестра"
     }
   },
   "jobs_people.dentist": {
@@ -35752,6 +39500,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "치과 의사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стоматолог"
     }
   },
   "jobs_people.surgeon": {
@@ -35785,6 +39536,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "외과 의사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хирург"
     }
   },
   "jobs_people.pharmacist": {
@@ -35819,6 +39573,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "약사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фармацевт"
     }
   },
   "jobs_people.paramedic": {
@@ -35853,6 +39610,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "구급대원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фельдшер",
+      "needsReview": true,
+      "reviewNote": "Russia's EMS uses фельдшер (mid-level medic); парамедик is a non-native borrowing whose scope differs from a Western paramedic."
     }
   },
   "jobs_people.therapist": {
@@ -35887,6 +39649,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "치료사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "психотерапевт",
+      "needsReview": true,
+      "reviewNote": "Took the mental-health sense; beware терапевт is a false friend meaning 'GP/internist', not 'therapist'."
     }
   },
   "jobs_people.veterinarian": {
@@ -35920,6 +39687,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수의사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ветеринар"
     }
   },
   "jobs_people.firefighter": {
@@ -35953,6 +39723,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소방관",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пожарный"
     }
   },
   "jobs_people.police_officer": {
@@ -35986,6 +39759,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "경찰관",
       "needsReview": true
+    },
+    "ru": {
+      "term": "полицейский"
     }
   },
   "jobs_people.waiter": {
@@ -36020,6 +39796,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "웨이터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "официант"
     }
   },
   "jobs_people.waitress": {
@@ -36054,6 +39833,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "웨이트리스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "официантка"
     }
   },
   "jobs_people.chef": {
@@ -36088,6 +39870,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "요리사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шеф-повар"
     }
   },
   "jobs_people.cook": {
@@ -36121,6 +39906,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "요리사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "повар",
+      "needsReview": true,
+      "reviewNote": "Rendered as the person (jobs category); note source de 'kochen' and es 'cocinar' are the verb 'to cook'."
     }
   },
   "jobs_people.baker": {
@@ -36154,6 +39944,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "빵 굽는 사람",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пекарь"
     }
   },
   "jobs_people.butcher": {
@@ -36187,6 +39980,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "정육점",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мясник"
     }
   },
   "jobs_people.cleaner": {
@@ -36220,6 +40016,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "청소기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "уборщик",
+      "needsReview": true,
+      "reviewNote": "Person who cleans; fem. уборщица is more commonly heard; source de 'sauberer'/fr 'nettoyant' are not the person-noun."
     }
   },
   "jobs_people.barber": {
@@ -36253,6 +40054,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "이발사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "парикмахер",
+      "needsReview": true,
+      "reviewNote": "парикмахер covers both barber and hairdresser; барбер is a recent borrowing specific to men's barbers."
     }
   },
   "jobs_people.hairdresser": {
@@ -36286,6 +40092,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "미용사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "парикмахер"
     }
   },
   "jobs_people.cashier": {
@@ -36320,6 +40129,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "계산원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кассир"
     }
   },
   "jobs_people.builder": {
@@ -36353,6 +40165,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "건축업자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "строитель"
     }
   },
   "jobs_people.carpenter": {
@@ -36386,6 +40201,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "목수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "плотник"
     }
   },
   "jobs_people.electrician": {
@@ -36420,6 +40238,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전기 기술자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "электрик"
     }
   },
   "jobs_people.plumber": {
@@ -36453,6 +40274,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "배관공",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сантехник"
     }
   },
   "jobs_people.mechanic": {
@@ -36486,6 +40310,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기계공",
       "needsReview": true
+    },
+    "ru": {
+      "term": "механик"
     }
   },
   "jobs_people.painter": {
@@ -36519,6 +40346,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "화가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "маляр",
+      "needsReview": true,
+      "reviewNote": "Trades context → маляр (house/construction painter); the fine-art painter is художник (see 'artist')."
     }
   },
   "jobs_people.gardener": {
@@ -36552,6 +40384,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "정원사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "садовник"
     }
   },
   "jobs_people.farmer": {
@@ -36585,6 +40420,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "농부",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фермер"
     }
   },
   "jobs_people.tailor": {
@@ -36618,6 +40456,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "재단사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "портной"
     }
   },
   "jobs_people.miner": {
@@ -36651,6 +40492,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "광부",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шахтёр"
     }
   },
   "jobs_people.artist": {
@@ -36684,6 +40528,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "예술가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "художник"
     }
   },
   "jobs_people.musician": {
@@ -36717,6 +40564,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "음악가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "музыкант"
     }
   },
   "jobs_people.singer": {
@@ -36750,6 +40600,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "певец"
     }
   },
   "jobs_people.actor": {
@@ -36783,6 +40636,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "배우",
       "needsReview": true
+    },
+    "ru": {
+      "term": "актёр"
     }
   },
   "jobs_people.dancer": {
@@ -36816,6 +40672,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "댄서",
       "needsReview": true
+    },
+    "ru": {
+      "term": "танцор"
     }
   },
   "jobs_people.writer": {
@@ -36849,6 +40708,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "작가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "писатель"
     }
   },
   "jobs_people.photographer": {
@@ -36883,6 +40745,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사진작가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фотограф"
     }
   },
   "jobs_people.designer": {
@@ -36916,6 +40781,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "디자이너",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дизайнер"
     }
   },
   "jobs_people.filmmaker": {
@@ -36949,6 +40817,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "영화제작자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "режиссёр",
+      "needsReview": true,
+      "reviewNote": "режиссёр = (film) director, the common everyday term; broader 'filmmaker' is кинематографист."
     }
   },
   "jobs_people.journalist": {
@@ -36982,6 +40855,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "저널리스트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "журналист"
     }
   },
   "jobs_people.accountant": {
@@ -37016,6 +40892,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "회계사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бухгалтер"
     }
   },
   "jobs_people.lawyer": {
@@ -37049,6 +40928,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "변호사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "юрист",
+      "needsReview": true,
+      "reviewNote": "юрист = legal professional (broad); de Anwalt/fr avocat/es abogado point to адвокат (courtroom attorney) — choose per intended sense."
     }
   },
   "jobs_people.judge": {
@@ -37082,6 +40966,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "판사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "судья"
     }
   },
   "jobs_people.politician": {
@@ -37115,6 +41002,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "정치인",
       "needsReview": true
+    },
+    "ru": {
+      "term": "политик"
     }
   },
   "jobs_people.diplomat": {
@@ -37149,6 +41039,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "외교관",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дипломат"
     }
   },
   "jobs_people.mayor": {
@@ -37183,6 +41076,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мэр"
     }
   },
   "jobs_people.soldier": {
@@ -37216,6 +41112,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "군인",
       "needsReview": true
+    },
+    "ru": {
+      "term": "солдат"
     }
   },
   "jobs_people.security_guard": {
@@ -37250,6 +41149,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "경비원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "охранник"
     }
   },
   "jobs_people.banker": {
@@ -37283,6 +41185,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "은행가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "банкир"
     }
   },
   "jobs_people.entrepreneur": {
@@ -37316,6 +41221,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기업가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "предприниматель"
     }
   },
   "jobs_people.engineer": {
@@ -37349,6 +41257,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "엔지니어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "инженер"
     }
   },
   "jobs_people.programmer": {
@@ -37383,6 +41294,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "프로그래머",
       "needsReview": true
+    },
+    "ru": {
+      "term": "программист"
     }
   },
   "jobs_people.developer": {
@@ -37417,6 +41331,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "개발자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "разработчик"
     }
   },
   "jobs_people.technician": {
@@ -37451,6 +41368,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기술자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "техник"
     }
   },
   "jobs_people.architect": {
@@ -37484,6 +41404,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "건축가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "архитектор"
     }
   },
   "jobs_people.analyst": {
@@ -37517,6 +41440,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "분석가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аналитик"
     }
   },
   "jobs_people.consultant": {
@@ -37551,6 +41477,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "컨설턴트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "консультант"
     }
   },
   "jobs_people.translator": {
@@ -37584,6 +41513,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "번역가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "переводчик"
     }
   },
   "jobs_people.interpreter": {
@@ -37617,6 +41549,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "통역사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "переводчик",
+      "needsReview": true,
+      "reviewNote": "Same word as 'translator'; an oral interpreter specifically is устный переводчик."
     }
   },
   "jobs_people.editor": {
@@ -37651,6 +41588,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "편집자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "редактор"
     }
   },
   "jobs_people.ambassador": {
@@ -37684,6 +41624,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "대사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "посол"
     }
   },
   "jobs_people.activist": {
@@ -37717,6 +41660,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "활동가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "активист"
     }
   },
   "jobs_people.historian": {
@@ -37750,6 +41696,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "역사가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "историк"
     }
   },
   "jobs_people.economist": {
@@ -37783,6 +41732,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "경제학자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "экономист"
     }
   },
   "jobs_people.psychologist": {
@@ -37817,6 +41769,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "심리학자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "психолог"
     }
   },
   "jobs_people.sociologist": {
@@ -37850,6 +41805,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사회학자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "социолог"
     }
   },
   "jobs_people.archaeologist": {
@@ -37883,6 +41841,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "고고학자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "археолог"
     }
   },
   "jobs_people.astronomer": {
@@ -37916,6 +41877,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "천문학자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "астроном"
     }
   },
   "jobs_people.composer": {
@@ -37949,6 +41913,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "작곡가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "композитор"
     }
   },
   "jobs_people.poet": {
@@ -37982,6 +41949,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시인",
       "needsReview": true
+    },
+    "ru": {
+      "term": "поэт"
     }
   },
   "feelings_states.happy": {
@@ -38014,6 +41984,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "행복하다"
+    },
+    "ru": {
+      "term": "счастливый"
     }
   },
   "feelings_states.sad": {
@@ -38046,6 +42019,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "슬프다"
+    },
+    "ru": {
+      "term": "грустный"
     }
   },
   "feelings_states.angry": {
@@ -38078,6 +42054,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "화나다"
+    },
+    "ru": {
+      "term": "сердитый"
     }
   },
   "feelings_states.afraid": {
@@ -38110,6 +42089,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "두렵다"
+    },
+    "ru": {
+      "term": "испуганный",
+      "needsReview": true,
+      "reviewNote": "No distinct single adjective vs 'scared'; usually the verb бояться or predicative 'мне страшно'."
     }
   },
   "feelings_states.scared": {
@@ -38142,6 +42126,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "무섭다"
+    },
+    "ru": {
+      "term": "напуганный"
     }
   },
   "feelings_states.calm": {
@@ -38174,6 +42161,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "차분하다"
+    },
+    "ru": {
+      "term": "спокойный"
     }
   },
   "feelings_states.excited": {
@@ -38206,6 +42196,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "신나다"
+    },
+    "ru": {
+      "term": "взволнованный",
+      "needsReview": true,
+      "reviewNote": "взволнованный also means 'agitated/nervous'; positive-excited sense is context-dependent."
     }
   },
   "feelings_states.nervous": {
@@ -38238,6 +42233,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "긴장하다"
+    },
+    "ru": {
+      "term": "нервный"
     }
   },
   "feelings_states.surprised": {
@@ -38270,6 +42268,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "놀라다"
+    },
+    "ru": {
+      "term": "удивлённый"
     }
   },
   "feelings_states.bored": {
@@ -38302,6 +42303,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "지루하다"
+    },
+    "ru": {
+      "term": "скучающий"
     }
   },
   "feelings_states.lonely": {
@@ -38334,6 +42338,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "외롭다"
+    },
+    "ru": {
+      "term": "одинокий"
     }
   },
   "feelings_states.proud": {
@@ -38366,6 +42373,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "자랑스럽다"
+    },
+    "ru": {
+      "term": "гордый"
     }
   },
   "feelings_states.shy": {
@@ -38398,6 +42408,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "수줍다"
+    },
+    "ru": {
+      "term": "застенчивый"
     }
   },
   "feelings_states.embarrassed": {
@@ -38430,6 +42443,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "창피하다"
+    },
+    "ru": {
+      "term": "смущённый"
     }
   },
   "feelings_states.jealous": {
@@ -38462,6 +42478,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "질투하다"
+    },
+    "ru": {
+      "term": "ревнивый"
     }
   },
   "feelings_states.grateful": {
@@ -38494,6 +42513,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "감사하다"
+    },
+    "ru": {
+      "term": "благодарный"
     }
   },
   "feelings_states.hopeful": {
@@ -38526,6 +42548,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "희망적이다"
+    },
+    "ru": {
+      "term": "обнадёженный",
+      "needsReview": true,
+      "reviewNote": "No clean single adjective; обнадёженный = 'given hope/reassured'; 'hopeful' is often 'полный надежды'."
     }
   },
   "feelings_states.disappointed": {
@@ -38558,6 +42585,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "실망하다"
+    },
+    "ru": {
+      "term": "разочарованный"
     }
   },
   "feelings_states.confused": {
@@ -38590,6 +42620,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "혼란스럽다"
+    },
+    "ru": {
+      "term": "растерянный"
     }
   },
   "feelings_states.worried": {
@@ -38622,6 +42655,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "걱정되다"
+    },
+    "ru": {
+      "term": "обеспокоенный"
     }
   },
   "feelings_states.cheerful": {
@@ -38654,6 +42690,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "쾌활하다"
+    },
+    "ru": {
+      "term": "весёлый"
     }
   },
   "feelings_states.relaxed": {
@@ -38686,6 +42725,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "느긋하다"
+    },
+    "ru": {
+      "term": "расслабленный"
     }
   },
   "feelings_states.peaceful": {
@@ -38718,6 +42760,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "평화롭다"
+    },
+    "ru": {
+      "term": "умиротворённый"
     }
   },
   "feelings_states.confident": {
@@ -38750,6 +42795,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "자신감 있다"
+    },
+    "ru": {
+      "term": "уверенный"
     }
   },
   "feelings_states.comfortable": {
@@ -38782,6 +42830,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "편안하다"
+    },
+    "ru": {
+      "term": "комфортно",
+      "needsReview": true,
+      "reviewNote": "No masculine adjective for the experiencer; expressed impersonally ('мне комфортно/уютно'). комфортный describes objects, not the person."
     }
   },
   "feelings_states.curious": {
@@ -38814,6 +42867,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "호기심이 많다"
+    },
+    "ru": {
+      "term": "любопытный"
     }
   },
   "feelings_states.interested": {
@@ -38846,6 +42902,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "관심이 있다"
+    },
+    "ru": {
+      "term": "заинтересованный"
     }
   },
   "feelings_states.amused": {
@@ -38878,6 +42937,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "재미있다"
+    },
+    "ru": {
+      "term": "позабавленный",
+      "needsReview": true,
+      "reviewNote": "No common single adjective; usually impersonal 'мне смешно' / 'меня забавляет'."
     }
   },
   "feelings_states.satisfied": {
@@ -38910,6 +42974,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "만족하다"
+    },
+    "ru": {
+      "term": "довольный"
     }
   },
   "feelings_states.relieved": {
@@ -38942,6 +43009,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "안심하다"
+    },
+    "ru": {
+      "term": "успокоенный",
+      "needsReview": true,
+      "reviewNote": "No clean single adjective; relief is expressed as 'почувствовать облегчение' / 'с облегчением'; успокоенный = 'calmed'."
     }
   },
   "feelings_states.upset": {
@@ -38975,6 +43047,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "당황하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "расстроенный"
     }
   },
   "feelings_states.annoyed": {
@@ -39008,6 +43083,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "짜증",
       "needsReview": true
+    },
+    "ru": {
+      "term": "раздражённый"
     }
   },
   "feelings_states.frustrated": {
@@ -39041,6 +43119,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "좌절하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "раздосадованный",
+      "needsReview": true,
+      "reviewNote": "= 'vexed/annoyed'; the thwarted-goal sense of 'frustrated' is often 'расстроенный' or clinical 'фрустрированный'."
     }
   },
   "feelings_states.stressed": {
@@ -39075,6 +43158,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스트레스를 받은",
       "needsReview": true
+    },
+    "ru": {
+      "term": "напряжённый",
+      "needsReview": true,
+      "reviewNote": "напряжённый = 'tense/strained'; 'stressed' is usually rendered 'в стрессе'."
     }
   },
   "feelings_states.anxious": {
@@ -39108,6 +43196,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "불안한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тревожный"
     }
   },
   "feelings_states.uncomfortable": {
@@ -39141,6 +43232,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "불편하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "некомфортно",
+      "needsReview": true,
+      "reviewNote": "No masculine adjective for the experiencer; impersonal 'мне некомфортно/неудобно/неловко'."
     }
   },
   "feelings_states.impatient": {
@@ -39174,6 +43270,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "참을성이 없는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "нетерпеливый"
     }
   },
   "feelings_states.restless": {
@@ -39207,6 +43306,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "불안한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "беспокойный"
     }
   },
   "feelings_states.miserable": {
@@ -39240,6 +43342,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비참한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "несчастный"
     }
   },
   "feelings_states.overwhelmed": {
@@ -39273,6 +43378,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "압도당하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "перегруженный",
+      "needsReview": true,
+      "reviewNote": "No single equivalent; = 'overloaded'; emotional overwhelm is 'подавленный' / 'не справляюсь'."
     }
   },
   "feelings_states.delighted": {
@@ -39306,6 +43416,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기뻐하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "восхищённый"
     }
   },
   "feelings_states.thrilled": {
@@ -39339,6 +43452,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "감격하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "восторженный"
     }
   },
   "feelings_states.amazed": {
@@ -39372,6 +43488,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "놀란",
       "needsReview": true
+    },
+    "ru": {
+      "term": "изумлённый"
     }
   },
   "feelings_states.shocked": {
@@ -39405,6 +43524,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "충격을 받은",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шокированный"
     }
   },
   "feelings_states.terrified": {
@@ -39438,6 +43560,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "겁에 질린",
       "needsReview": true
+    },
+    "ru": {
+      "term": "перепуганный"
     }
   },
   "feelings_states.furious": {
@@ -39471,6 +43596,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "맹렬한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "взбешённый"
     }
   },
   "feelings_states.heartbroken": {
@@ -39504,6 +43632,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "상심한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "безутешный"
     }
   },
   "feelings_states.homesick": {
@@ -39537,6 +43668,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "향수병",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тоскующий по дому",
+      "needsReview": true,
+      "reviewNote": "No single word; noun 'тоска по дому' or verb 'скучать по дому'."
     }
   },
   "feelings_states.nostalgic": {
@@ -39570,6 +43706,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "향수를 불러일으키는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ностальгический"
     }
   },
   "feelings_states.disgusted": {
@@ -39603,6 +43742,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "역겨운",
       "needsReview": true
+    },
+    "ru": {
+      "term": "противно",
+      "needsReview": true,
+      "reviewNote": "No adjective for the disgusted experiencer; impersonal 'мне противно' / 'испытывать отвращение'."
     }
   },
   "feelings_states.joy": {
@@ -39636,6 +43780,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기쁨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "радость"
     }
   },
   "feelings_states.sadness": {
@@ -39669,6 +43816,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "슬픔",
       "needsReview": true
+    },
+    "ru": {
+      "term": "грусть"
     }
   },
   "feelings_states.anger": {
@@ -39702,6 +43852,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "분노",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гнев"
     }
   },
   "feelings_states.fear": {
@@ -39735,6 +43888,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "무서움",
       "needsReview": true
+    },
+    "ru": {
+      "term": "страх"
     }
   },
   "feelings_states.love": {
@@ -39768,6 +43924,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사랑",
       "needsReview": true
+    },
+    "ru": {
+      "term": "любовь"
     }
   },
   "feelings_states.affection": {
@@ -39801,6 +43960,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "애정",
       "needsReview": true
+    },
+    "ru": {
+      "term": "привязанность"
     }
   },
   "feelings_states.stress": {
@@ -39835,6 +43997,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스트레스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стресс"
     }
   },
   "feelings_states.anxiety": {
@@ -39868,6 +44033,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "불안",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тревога"
     }
   },
   "feelings_states.shame": {
@@ -39901,6 +44069,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수치심",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стыд"
     }
   },
   "feelings_states.guilt": {
@@ -39934,6 +44105,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "죄책감",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вина"
     }
   },
   "feelings_states.focused": {
@@ -39967,6 +44141,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "집중된",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сосредоточенный"
     }
   },
   "feelings_states.distracted": {
@@ -40000,6 +44177,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "산만하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рассеянный"
     }
   },
   "feelings_states.certain": {
@@ -40033,6 +44213,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "확실한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "уверенный",
+      "needsReview": true,
+      "reviewNote": "Same word as the 'confident' entry; 'sure of a fact' can also be 'убеждённый'."
     }
   },
   "feelings_states.unsure": {
@@ -40066,6 +44251,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "확실하지 않다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "неуверенный"
     }
   },
   "feelings_states.doubtful": {
@@ -40099,6 +44287,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "의심스러운",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сомневающийся",
+      "needsReview": true,
+      "reviewNote": "Feeling sense = 'doubting/full of doubt'; de/fr/es render 'doubtful' as 'dubious' (сомнительный), a different sense — confirm intent."
     }
   },
   "feelings_states.determined": {
@@ -40132,6 +44325,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "결정됨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "решительный"
     }
   },
   "feelings_states.motivated": {
@@ -40165,6 +44361,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "동기 부여",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мотивированный"
     }
   },
   "feelings_states.unmotivated": {
@@ -40198,6 +44397,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "의욕이 없는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "демотивированный",
+      "needsReview": true,
+      "reviewNote": "No clean single adjective; = 'demotivated'; also 'без мотивации'."
     }
   },
   "feelings_states.patient": {
@@ -40231,6 +44435,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "환자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "терпеливый"
     }
   },
   "feelings_states.open_minded": {
@@ -40264,6 +44471,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "개방적인",
       "needsReview": true
+    },
+    "ru": {
+      "term": "непредвзятый",
+      "needsReview": true,
+      "reviewNote": "No single word for 'open-minded'; непредвзятый = 'unbiased'; also 'открытый (к новому)' / 'с широкими взглядами'."
     }
   },
   "feelings_states.loved": {
@@ -40297,6 +44509,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사랑받는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "любимый"
     }
   },
   "feelings_states.ignored": {
@@ -40330,6 +44545,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "무시됨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "игнорируемый"
     }
   },
   "feelings_states.accepted": {
@@ -40363,6 +44581,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수락됨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "принятый"
     }
   },
   "feelings_states.rejected": {
@@ -40396,6 +44617,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "거부됨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "отвергнутый"
     }
   },
   "feelings_states.respected": {
@@ -40429,6 +44653,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "존경받는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "уважаемый"
     }
   },
   "feelings_states.trusted": {
@@ -40462,6 +44689,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "신뢰할 수 있는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "доверенный",
+      "needsReview": true,
+      "reviewNote": "доверенный = 'trusted (person)'; the felt state 'I feel trusted' is 'мне доверяют'; de/fr/es render 'trustworthy' (надёжный)."
     }
   },
   "feelings_states.betrayed": {
@@ -40495,6 +44727,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "배신당하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "преданный",
+      "needsReview": true,
+      "reviewNote": "Homograph: also means 'devoted/loyal'; ambiguous without context; consider 'обманутый' (deceived)."
     }
   },
   "feelings_states.forgiven": {
@@ -40528,6 +44765,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "용서받은",
       "needsReview": true
+    },
+    "ru": {
+      "term": "прощённый"
     }
   },
   "feelings_states.supported": {
@@ -40561,6 +44801,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "지원됨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "поддерживаемый"
     }
   },
   "feelings_states.included": {
@@ -40594,6 +44837,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "포함됨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вовлечённый",
+      "needsReview": true,
+      "reviewNote": "No clean word for social 'included'; вовлечённый = 'involved/engaged'; literal включённый also = 'switched on'."
     }
   },
   "feelings_states.feel": {
@@ -40627,6 +44875,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "느낌",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чувствовать"
     }
   },
   "feelings_states.worry": {
@@ -40660,6 +44911,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "걱정하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "беспокоиться"
     }
   },
   "feelings_states.miss": {
@@ -40694,6 +44948,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "그리워",
       "needsReview": true
+    },
+    "ru": {
+      "term": "скучать",
+      "needsReview": true,
+      "reviewNote": "= 'to miss / long for someone'; de/fr/es wrongly rendered it as the title 'Miss' (Fräulein/mademoiselle/señorita) — source error."
     }
   },
   "feelings_states.trust": {
@@ -40727,6 +44986,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "신뢰",
       "needsReview": true
+    },
+    "ru": {
+      "term": "доверие"
     }
   },
   "feelings_states.doubt": {
@@ -40760,6 +45022,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "의심",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сомнение"
     }
   },
   "feelings_states.hope": {
@@ -40793,6 +45058,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "희망",
       "needsReview": true
+    },
+    "ru": {
+      "term": "надежда"
     }
   },
   "feelings_states.enjoy": {
@@ -40826,6 +45094,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "즐기다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "наслаждаться"
     }
   },
   "feelings_states.hate": {
@@ -40859,6 +45130,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "증오",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ненавидеть"
     }
   },
   "feelings_states.forgive": {
@@ -40892,6 +45166,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "용서하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "прощать"
     }
   },
   "feelings_states.regret": {
@@ -40925,6 +45202,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "후회하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сожалеть"
     }
   },
   "feelings_states.content": {
@@ -40958,6 +45238,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "내용",
       "needsReview": true
+    },
+    "ru": {
+      "term": "удовлетворённый",
+      "needsReview": true,
+      "reviewNote": "en 'content' = adjective 'content/satisfied'; de/fr/es misread it as the noun 'contents' (Inhalt/contenu) — source error. Near-synonym of 'satisfied'."
     }
   },
   "feelings_states.resentful": {
@@ -40991,6 +45276,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "분개한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "обиженный",
+      "needsReview": true,
+      "reviewNote": "обиженный = 'offended/hurt'; deeper grudge-holding 'resentful' is 'злопамятный' / 'затаивший обиду'."
     }
   },
   "feelings_states.envious": {
@@ -41024,6 +45314,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "부러워하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "завистливый"
     }
   },
   "feelings_states.apprehensive": {
@@ -41057,6 +45350,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "불안한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "опасающийся",
+      "needsReview": true,
+      "reviewNote": "Overlaps 'worried/anxious'; опасающийся = 'fearing/wary'; also 'полный опасений'."
     }
   },
   "feelings_states.vulnerable": {
@@ -41090,6 +45388,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "취약한",
       "needsReview": true
+    },
+    "ru": {
+      "term": "уязвимый"
     }
   },
   "feelings_states.reluctant": {
@@ -41123,6 +45424,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "꺼려하는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "неохотный",
+      "needsReview": true,
+      "reviewNote": "No clean common adjective; usually adverbial 'неохотно' or 'не желающий'."
     }
   },
   "feelings_states.eager": {
@@ -41156,6 +45462,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "열망하는",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жаждущий",
+      "needsReview": true,
+      "reviewNote": "No clean single adjective; жаждущий = 'craving'; also 'горящий желанием' / 'полный энтузиазма'."
     }
   },
   "feelings_states.indifferent": {
@@ -41189,6 +45500,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "무관심",
       "needsReview": true
+    },
+    "ru": {
+      "term": "равнодушный"
     }
   },
   "feelings_states.empathy": {
@@ -41222,6 +45536,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "공감",
       "needsReview": true
+    },
+    "ru": {
+      "term": "эмпатия"
     }
   },
   "feelings_states.compassion": {
@@ -41255,6 +45572,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "연민",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сострадание"
     }
   },
   "education_learning.student": {
@@ -41287,6 +45607,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "학생"
+    },
+    "ru": {
+      "term": "студент"
     }
   },
   "education_learning.pupil": {
@@ -41319,6 +45642,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "학생"
+    },
+    "ru": {
+      "term": "ученик"
     }
   },
   "education_learning.learner": {
@@ -41351,6 +45677,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "학습자"
+    },
+    "ru": {
+      "term": "учащийся",
+      "needsReview": true,
+      "reviewNote": "'учащийся' is the general learner; overlaps with ученик (pupil); обучающийся is a more formal alternative."
     }
   },
   "education_learning.lesson": {
@@ -41383,6 +45714,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "수업"
+    },
+    "ru": {
+      "term": "урок"
     }
   },
   "education_learning.class": {
@@ -41415,6 +45749,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "수업"
+    },
+    "ru": {
+      "term": "класс"
     }
   },
   "education_learning.homework": {
@@ -41447,6 +45784,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "숙제"
+    },
+    "ru": {
+      "term": "домашнее задание",
+      "needsReview": true,
+      "reviewNote": "Standard fixed phrase (two words); no neutral single-word equivalent (домашка is colloquial)."
     }
   },
   "education_learning.question": {
@@ -41479,6 +45821,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "질문"
+    },
+    "ru": {
+      "term": "вопрос"
     }
   },
   "education_learning.answer": {
@@ -41511,6 +45856,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "답"
+    },
+    "ru": {
+      "term": "ответ"
     }
   },
   "education_learning.word": {
@@ -41543,6 +45891,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "단어"
+    },
+    "ru": {
+      "term": "слово"
     }
   },
   "education_learning.sentence": {
@@ -41575,6 +45926,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "문장"
+    },
+    "ru": {
+      "term": "предложение"
     }
   },
   "education_learning.textbook": {
@@ -41607,6 +45961,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "교과서"
+    },
+    "ru": {
+      "term": "учебник"
     }
   },
   "education_learning.workbook": {
@@ -41640,6 +45997,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "워크북"
+    },
+    "ru": {
+      "term": "рабочая тетрадь",
+      "needsReview": true,
+      "reviewNote": "Standard term but two words; no single-word equivalent."
     }
   },
   "education_learning.worksheet": {
@@ -41673,6 +46035,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "워크시트"
+    },
+    "ru": {
+      "term": "рабочий лист",
+      "needsReview": true,
+      "reviewNote": "Two words; fr source 'feuille de calcul' means spreadsheet, but en/de/es sense is an exercise sheet."
     }
   },
   "education_learning.flashcard": {
@@ -41706,6 +46073,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "플래시카드"
+    },
+    "ru": {
+      "term": "карточка"
     }
   },
   "education_learning.pencil_case": {
@@ -41738,6 +46108,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "필통"
+    },
+    "ru": {
+      "term": "пенал",
+      "needsReview": true,
+      "reviewNote": "Confident single-word equivalent; flagged only because the source is multi-word."
     }
   },
   "education_learning.highlighter": {
@@ -41771,6 +46146,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "형광펜"
+    },
+    "ru": {
+      "term": "текстовыделитель",
+      "needsReview": true,
+      "reviewNote": "Precise term; colloquially also маркер, which collides with 'marker'."
     }
   },
   "education_learning.marker": {
@@ -41803,6 +46183,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "마커"
+    },
+    "ru": {
+      "term": "маркер"
     }
   },
   "education_learning.glue_stick": {
@@ -41836,6 +46219,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "딱풀"
+    },
+    "ru": {
+      "term": "клей-карандаш",
+      "needsReview": true,
+      "reviewNote": "Standard compound; flagged only because the source is multi-word."
     }
   },
   "education_learning.calculator": {
@@ -41869,6 +46257,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "계산기"
+    },
+    "ru": {
+      "term": "калькулятор"
     }
   },
   "education_learning.whiteboard": {
@@ -41902,6 +46293,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "화이트보드"
+    },
+    "ru": {
+      "term": "маркерная доска",
+      "needsReview": true,
+      "reviewNote": "Two words; 'доска' alone means board/blackboard."
     }
   },
   "education_learning.subject": {
@@ -41934,6 +46330,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "과목"
+    },
+    "ru": {
+      "term": "предмет",
+      "needsReview": true,
+      "reviewNote": "'предмет' = school subject (per education context); de 'Thema'/es 'sujeto' could instead mean тема (topic) or grammatical subject."
     }
   },
   "education_learning.course": {
@@ -41966,6 +46367,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "강좌"
+    },
+    "ru": {
+      "term": "курс"
     }
   },
   "education_learning.school_day": {
@@ -41998,6 +46402,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "수업일"
+    },
+    "ru": {
+      "term": "школьный день",
+      "needsReview": true,
+      "reviewNote": "Two words; учебный день is an equivalent."
     }
   },
   "education_learning.school_year": {
@@ -42031,6 +46440,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "학년"
+    },
+    "ru": {
+      "term": "учебный год",
+      "needsReview": true,
+      "reviewNote": "Standard two-word phrase."
     }
   },
   "education_learning.term": {
@@ -42063,6 +46477,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "학기 기간"
+    },
+    "ru": {
+      "term": "термин",
+      "needsReview": true,
+      "reviewNote": "'термин' = a word/concept (per de 'Begriff'); NOT an academic term (that would be четверть/семестр)."
     }
   },
   "education_learning.semester": {
@@ -42096,6 +46515,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "학기"
+    },
+    "ru": {
+      "term": "семестр"
     }
   },
   "education_learning.attendance": {
@@ -42128,6 +46550,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "출석"
+    },
+    "ru": {
+      "term": "посещаемость",
+      "needsReview": true,
+      "reviewNote": "'посещаемость' = attendance record/rate; присутствие = being present (de 'Anwesenheit')."
     }
   },
   "education_learning.recess": {
@@ -42161,6 +46588,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "쉬는 시간"
+    },
+    "ru": {
+      "term": "перемена"
     }
   },
   "education_learning.break_time": {
@@ -42193,6 +46623,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "휴식 시간"
+    },
+    "ru": {
+      "term": "перерыв",
+      "needsReview": true,
+      "reviewNote": "'перерыв' = general break; overlaps with перемена (recess) in a school setting."
     }
   },
   "education_learning.classmate": {
@@ -42226,6 +46661,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "동급생"
+    },
+    "ru": {
+      "term": "одноклассник"
     }
   },
   "education_learning.learn": {
@@ -42258,6 +46696,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "배우다"
+    },
+    "ru": {
+      "term": "учить",
+      "needsReview": true,
+      "reviewNote": "'учить' = to learn (e.g. учить слова) but can also mean 'to teach'; учиться = to study."
     }
   },
   "education_learning.study": {
@@ -42290,6 +46733,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "공부하다"
+    },
+    "ru": {
+      "term": "учиться",
+      "needsReview": true,
+      "reviewNote": "'учиться' = to study/be a learner; изучать = to study a specific subject."
     }
   },
   "education_learning.read": {
@@ -42322,6 +46770,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "읽다"
+    },
+    "ru": {
+      "term": "читать"
     }
   },
   "education_learning.write": {
@@ -42354,6 +46805,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "쓰다"
+    },
+    "ru": {
+      "term": "писать"
     }
   },
   "education_learning.listen": {
@@ -42386,6 +46840,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "듣다"
+    },
+    "ru": {
+      "term": "слушать"
     }
   },
   "education_learning.repeat": {
@@ -42418,6 +46875,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "반복하다"
+    },
+    "ru": {
+      "term": "повторять"
     }
   },
   "education_learning.practice": {
@@ -42450,6 +46910,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "연습하다"
+    },
+    "ru": {
+      "term": "практиковать",
+      "needsReview": true,
+      "reviewNote": "Verb per de 'üben'; тренироваться/упражняться also fit; the noun 'practice' = практика."
     }
   },
   "education_learning.memorize": {
@@ -42482,6 +46947,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "암기하다"
+    },
+    "ru": {
+      "term": "запоминать",
+      "needsReview": true,
+      "reviewNote": "'запоминать' = to memorize; заучивать / выучить наизусть convey 'by heart' (de 'auswendig lernen')."
     }
   },
   "education_learning.understand": {
@@ -42514,6 +46984,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "이해하다"
+    },
+    "ru": {
+      "term": "понимать"
     }
   },
   "education_learning.explain": {
@@ -42546,6 +47019,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "설명하다"
+    },
+    "ru": {
+      "term": "объяснять"
     }
   },
   "education_learning.alphabet": {
@@ -42579,6 +47055,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "알파벳",
       "needsReview": true
+    },
+    "ru": {
+      "term": "алфавит"
     }
   },
   "education_learning.letter": {
@@ -42612,6 +47091,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "편지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "буква",
+      "needsReview": true,
+      "reviewNote": "'буква' = letter of the alphabet (per context with vowel/consonant); de 'Brief'/es 'carta' instead mean письмо (mail letter)."
     }
   },
   "education_learning.vowel": {
@@ -42645,6 +47129,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "모음",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гласный"
     }
   },
   "education_learning.consonant": {
@@ -42678,6 +47165,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "자음",
       "needsReview": true
+    },
+    "ru": {
+      "term": "согласный"
     }
   },
   "education_learning.syllable": {
@@ -42711,6 +47201,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "음절",
       "needsReview": true
+    },
+    "ru": {
+      "term": "слог"
     }
   },
   "education_learning.grammar": {
@@ -42744,6 +47237,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "문법",
       "needsReview": true
+    },
+    "ru": {
+      "term": "грамматика"
     }
   },
   "education_learning.spelling": {
@@ -42777,6 +47273,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "철자법",
       "needsReview": true
+    },
+    "ru": {
+      "term": "орфография"
     }
   },
   "education_learning.pronunciation": {
@@ -42810,6 +47309,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "발음",
       "needsReview": true
+    },
+    "ru": {
+      "term": "произношение"
     }
   },
   "education_learning.vocabulary": {
@@ -42843,6 +47345,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "어휘",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лексика",
+      "needsReview": true,
+      "reviewNote": "'лексика' = vocabulary/lexis (single word); словарный запас (two words) = one's personal vocabulary."
     }
   },
   "education_learning.translation": {
@@ -42876,6 +47383,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "번역",
       "needsReview": true
+    },
+    "ru": {
+      "term": "перевод"
     }
   },
   "education_learning.addition": {
@@ -42909,6 +47419,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "추가",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сложение"
     }
   },
   "education_learning.subtraction": {
@@ -42942,6 +47455,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "빼기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вычитание"
     }
   },
   "education_learning.multiplication": {
@@ -42975,6 +47491,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "곱셈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "умножение"
     }
   },
   "education_learning.division": {
@@ -43008,6 +47527,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "구분",
       "needsReview": true
+    },
+    "ru": {
+      "term": "деление"
     }
   },
   "education_learning.equation": {
@@ -43042,6 +47564,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "방정식",
       "needsReview": true
+    },
+    "ru": {
+      "term": "уравнение"
     }
   },
   "education_learning.formula": {
@@ -43075,6 +47600,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "공식",
       "needsReview": true
+    },
+    "ru": {
+      "term": "формула"
     }
   },
   "education_learning.experiment": {
@@ -43108,6 +47636,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "실험",
       "needsReview": true
+    },
+    "ru": {
+      "term": "эксперимент"
     }
   },
   "education_learning.diagram": {
@@ -43141,6 +47672,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "다이어그램",
       "needsReview": true
+    },
+    "ru": {
+      "term": "диаграмма",
+      "needsReview": true,
+      "reviewNote": "'диаграмма'; overlaps with 'chart'; схема fits a schematic/labelled diagram."
     }
   },
   "education_learning.chart": {
@@ -43174,6 +47710,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "차트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "график",
+      "needsReview": true,
+      "reviewNote": "'график' (per fr 'graphique'/es 'gráfico'); диаграмма also possible; overlaps with 'diagram'."
     }
   },
   "education_learning.lab_report": {
@@ -43207,6 +47748,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "실험실 보고서",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лабораторная работа",
+      "needsReview": true,
+      "reviewNote": "Two words; commonly covers the write-up; precise 'report' = отчёт о лабораторной работе."
     }
   },
   "education_learning.test": {
@@ -43240,6 +47786,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "테스트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тест"
     }
   },
   "education_learning.exam": {
@@ -43273,6 +47822,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시험",
       "needsReview": true
+    },
+    "ru": {
+      "term": "экзамен"
     }
   },
   "education_learning.quiz": {
@@ -43307,6 +47859,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "퀴즈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "викторина",
+      "needsReview": true,
+      "reviewNote": "'викторина' = quiz/trivia; a graded class quiz = проверочная работа or тест; es 'cuestionario' suggests опросник."
     }
   },
   "education_learning.grade": {
@@ -43340,6 +47897,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "등급",
       "needsReview": true
+    },
+    "ru": {
+      "term": "оценка",
+      "needsReview": true,
+      "reviewNote": "'оценка' = a mark (per fr 'note' and context); de 'Klasse'/es 'grado' instead suggest класс (school year)."
     }
   },
   "education_learning.score": {
@@ -43373,6 +47935,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "점수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "балл",
+      "needsReview": true,
+      "reviewNote": "'балл' = points on a test (per es 'puntuación'); счёт = a game score."
     }
   },
   "education_learning.result": {
@@ -43406,6 +47973,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "결과",
       "needsReview": true
+    },
+    "ru": {
+      "term": "результат"
     }
   },
   "education_learning.mistake": {
@@ -43439,6 +48009,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "실수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ошибка"
     }
   },
   "education_learning.correction": {
@@ -43472,6 +48045,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "교정",
       "needsReview": true
+    },
+    "ru": {
+      "term": "исправление"
     }
   },
   "education_learning.feedback": {
@@ -43506,6 +48082,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "피드백",
       "needsReview": true
+    },
+    "ru": {
+      "term": "обратная связь",
+      "needsReview": true,
+      "reviewNote": "Standard term but two words; отзыв is a single-word 'feedback/review'."
     }
   },
   "education_learning.certificate": {
@@ -43539,6 +48120,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "인증서",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сертификат"
     }
   },
   "education_learning.kindergarten": {
@@ -43573,6 +48157,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "유치원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "детский сад",
+      "needsReview": true,
+      "reviewNote": "Standard two-word phrase (садик colloquially)."
     }
   },
   "education_learning.primary_school": {
@@ -43606,6 +48195,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "초등학교",
       "needsReview": true
+    },
+    "ru": {
+      "term": "начальная школа",
+      "needsReview": true,
+      "reviewNote": "Two words; identical to 'elementary school' in Russian."
     }
   },
   "education_learning.elementary_school": {
@@ -43639,6 +48233,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "초등학교",
       "needsReview": true
+    },
+    "ru": {
+      "term": "начальная школа",
+      "needsReview": true,
+      "reviewNote": "Two words; identical to 'primary school' in Russian."
     }
   },
   "education_learning.middle_school": {
@@ -43672,6 +48271,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "중학교",
       "needsReview": true
+    },
+    "ru": {
+      "term": "средняя школа",
+      "needsReview": true,
+      "reviewNote": "Two words; Russian system has no exact 'middle school' — средняя школа also means secondary school; основная школа = grades 5-9."
     }
   },
   "education_learning.high_school": {
@@ -43705,6 +48309,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "고등학교",
       "needsReview": true
+    },
+    "ru": {
+      "term": "старшая школа",
+      "needsReview": true,
+      "reviewNote": "Two words; grades 10-11; also старшие классы; Russian system differs from US/German."
     }
   },
   "education_learning.boarding_school": {
@@ -43739,6 +48348,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기숙학교",
       "needsReview": true
+    },
+    "ru": {
+      "term": "интернат",
+      "needsReview": true,
+      "reviewNote": "Confident single word; школа-интернат also used; flagged as the source is multi-word."
     }
   },
   "education_learning.language_school": {
@@ -43772,6 +48386,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "어학원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "языковая школа",
+      "needsReview": true,
+      "reviewNote": "Standard two-word phrase."
     }
   },
   "education_learning.online_course": {
@@ -43805,6 +48424,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "온라인 코스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "онлайн-курс",
+      "needsReview": true,
+      "reviewNote": "Standard compound; flagged only because the source is multi-word."
     }
   },
   "education_learning.campus": {
@@ -43838,6 +48462,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캠퍼스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кампус"
     }
   },
   "education_learning.lecture_hall": {
@@ -43872,6 +48499,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "강당",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аудитория",
+      "needsReview": true,
+      "reviewNote": "'аудитория' = lecture room (common); лекционный зал = a large lecture hall."
     }
   },
   "education_learning.lecture": {
@@ -43906,6 +48538,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "강의",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лекция"
     }
   },
   "education_learning.seminar": {
@@ -43940,6 +48575,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "세미나",
       "needsReview": true
+    },
+    "ru": {
+      "term": "семинар"
     }
   },
   "education_learning.degree": {
@@ -43974,6 +48612,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "정도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "степень",
+      "needsReview": true,
+      "reviewNote": "'степень' = academic degree; диплом = diploma/qualification; de 'Abschluss' = a completed qualification."
     }
   },
   "education_learning.diploma": {
@@ -44008,6 +48651,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "졸업장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "диплом"
     }
   },
   "education_learning.bachelor_s_degree": {
@@ -44042,6 +48688,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "학사 학위",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бакалавриат",
+      "needsReview": true,
+      "reviewNote": "'бакалавриат' = bachelor's level (single word); степень бакалавра = the degree literally (two words)."
     }
   },
   "education_learning.master_s_degree": {
@@ -44076,6 +48727,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "석사 학위",
       "needsReview": true
+    },
+    "ru": {
+      "term": "магистратура",
+      "needsReview": true,
+      "reviewNote": "'магистратура' = master's level (single word); степень магистра = the degree literally."
     }
   },
   "education_learning.doctorate": {
@@ -44110,6 +48766,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "박사 학위",
       "needsReview": true
+    },
+    "ru": {
+      "term": "докторантура",
+      "needsReview": true,
+      "reviewNote": "Russian system differs: аспирантура leads to кандидат наук (≈ PhD), докторантура to доктор наук; the degree itself = докторская степень."
     }
   },
   "education_learning.thesis": {
@@ -44144,6 +48805,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "논문",
       "needsReview": true
+    },
+    "ru": {
+      "term": "диссертация",
+      "needsReview": true,
+      "reviewNote": "'диссертация' = academic thesis/dissertation; тезис = a proposition; дипломная работа = a graduation thesis."
     }
   },
   "education_learning.research_paper": {
@@ -44177,6 +48843,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "연구 논문",
       "needsReview": true
+    },
+    "ru": {
+      "term": "научная работа",
+      "needsReview": true,
+      "reviewNote": "Two words; научная статья = a published paper; реферат = a school research paper."
     }
   },
   "education_learning.scholarship": {
@@ -44211,6 +48882,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "장학금",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стипендия"
     }
   },
   "education_learning.knowledge": {
@@ -44244,6 +48918,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "지식",
       "needsReview": true
+    },
+    "ru": {
+      "term": "знание"
     }
   },
   "education_learning.skill": {
@@ -44277,6 +48954,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기술",
       "needsReview": true
+    },
+    "ru": {
+      "term": "навык"
     }
   },
   "education_learning.ability": {
@@ -44310,6 +48990,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "능력",
       "needsReview": true
+    },
+    "ru": {
+      "term": "способность"
     }
   },
   "education_learning.memory": {
@@ -44343,6 +49026,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기억",
       "needsReview": true
+    },
+    "ru": {
+      "term": "память",
+      "needsReview": true,
+      "reviewNote": "'память' = the memory faculty (per learning context); de 'Erinnerung' can mean воспоминание (a specific recollection)."
     }
   },
   "education_learning.concentration": {
@@ -44376,6 +49064,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "집중",
       "needsReview": true
+    },
+    "ru": {
+      "term": "концентрация"
     }
   },
   "education_learning.study_plan": {
@@ -44409,6 +49100,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "학습 계획",
       "needsReview": true
+    },
+    "ru": {
+      "term": "учебный план",
+      "needsReview": true,
+      "reviewNote": "Two words; also means institutional curriculum; личный план обучения for a personal plan."
     }
   },
   "education_learning.learning_goal": {
@@ -44442,6 +49138,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "학습 목표",
       "needsReview": true
+    },
+    "ru": {
+      "term": "учебная цель",
+      "needsReview": true,
+      "reviewNote": "Two words; цель обучения is equivalent."
     }
   },
   "education_learning.critical_thinking": {
@@ -44475,6 +49176,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비판적 사고",
       "needsReview": true
+    },
+    "ru": {
+      "term": "критическое мышление",
+      "needsReview": true,
+      "reviewNote": "Standard two-word phrase."
     }
   },
   "education_learning.problem_solving": {
@@ -44508,6 +49214,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "문제 해결",
       "needsReview": true
+    },
+    "ru": {
+      "term": "решение проблем",
+      "needsReview": true,
+      "reviewNote": "Two words; решение задач for math/task-solving."
     }
   },
   "education_learning.lifelong_learning": {
@@ -44541,6 +49252,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "평생 학습",
       "needsReview": true
+    },
+    "ru": {
+      "term": "непрерывное образование",
+      "needsReview": true,
+      "reviewNote": "Standard two-word phrase; обучение на протяжении всей жизни is more literal."
     }
   },
   "sports_hobbies.football": {
@@ -44574,6 +49290,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "축구"
+    },
+    "ru": {
+      "term": "футбол"
     }
   },
   "sports_hobbies.basketball": {
@@ -44607,6 +49326,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "농구"
+    },
+    "ru": {
+      "term": "баскетбол"
     }
   },
   "sports_hobbies.tennis": {
@@ -44640,6 +49362,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "테니스"
+    },
+    "ru": {
+      "term": "теннис"
     }
   },
   "sports_hobbies.swimming": {
@@ -44672,6 +49397,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "수영"
+    },
+    "ru": {
+      "term": "плавание"
     }
   },
   "sports_hobbies.running": {
@@ -44704,6 +49432,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "달리기"
+    },
+    "ru": {
+      "term": "бег"
     }
   },
   "sports_hobbies.cycling": {
@@ -44736,6 +49467,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "사이클링"
+    },
+    "ru": {
+      "term": "велоспорт"
     }
   },
   "sports_hobbies.baseball": {
@@ -44769,6 +49503,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "야구"
+    },
+    "ru": {
+      "term": "бейсбол"
     }
   },
   "sports_hobbies.volleyball": {
@@ -44802,6 +49539,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "배구"
+    },
+    "ru": {
+      "term": "волейбол"
     }
   },
   "sports_hobbies.golf": {
@@ -44835,6 +49575,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "골프"
+    },
+    "ru": {
+      "term": "гольф"
     }
   },
   "sports_hobbies.boxing": {
@@ -44867,6 +49610,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "권투"
+    },
+    "ru": {
+      "term": "бокс"
     }
   },
   "sports_hobbies.walking": {
@@ -44899,6 +49645,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "걷기"
+    },
+    "ru": {
+      "term": "ходьба"
     }
   },
   "sports_hobbies.hiking": {
@@ -44931,6 +49680,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "하이킹"
+    },
+    "ru": {
+      "term": "пеший туризм",
+      "needsReview": true,
+      "reviewNote": "Multi-word; RU has no single-word equivalent (colloquial: поход)."
     }
   },
   "sports_hobbies.jogging": {
@@ -44963,6 +49717,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "조깅"
+    },
+    "ru": {
+      "term": "бег трусцой",
+      "needsReview": true,
+      "reviewNote": "Multi-word standard term; distinct from бег (running)."
     }
   },
   "sports_hobbies.dancing": {
@@ -44995,6 +49754,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "댄스"
+    },
+    "ru": {
+      "term": "танцы"
     }
   },
   "sports_hobbies.yoga": {
@@ -45028,6 +49790,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "요가"
+    },
+    "ru": {
+      "term": "йога"
     }
   },
   "sports_hobbies.pilates": {
@@ -45061,6 +49826,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "필라테스"
+    },
+    "ru": {
+      "term": "пилатес"
     }
   },
   "sports_hobbies.gymnastics": {
@@ -45094,6 +49862,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "체조"
+    },
+    "ru": {
+      "term": "гимнастика"
     }
   },
   "sports_hobbies.skating": {
@@ -45127,6 +49898,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스케이팅"
+    },
+    "ru": {
+      "term": "катание на роликах",
+      "needsReview": true,
+      "reviewNote": "Ambiguous: roller/inline vs skateboard (de=Skaten); ice skating is a separate entry."
     }
   },
   "sports_hobbies.skiing": {
@@ -45159,6 +49935,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스키"
+    },
+    "ru": {
+      "term": "катание на лыжах"
     }
   },
   "sports_hobbies.snowboarding": {
@@ -45192,6 +49971,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스노보드"
+    },
+    "ru": {
+      "term": "сноубординг"
     }
   },
   "sports_hobbies.rugby": {
@@ -45225,6 +50007,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "럭비"
+    },
+    "ru": {
+      "term": "регби"
     }
   },
   "sports_hobbies.cricket": {
@@ -45257,6 +50042,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "크리켓"
+    },
+    "ru": {
+      "term": "крикет"
     }
   },
   "sports_hobbies.hockey": {
@@ -45290,6 +50078,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "하키"
+    },
+    "ru": {
+      "term": "хоккей"
     }
   },
   "sports_hobbies.american_football": {
@@ -45323,6 +50114,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "미식축구"
+    },
+    "ru": {
+      "term": "американский футбол"
     }
   },
   "sports_hobbies.badminton": {
@@ -45356,6 +50150,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "배드민턴"
+    },
+    "ru": {
+      "term": "бадминтон"
     }
   },
   "sports_hobbies.table_tennis": {
@@ -45389,6 +50186,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "탁구"
+    },
+    "ru": {
+      "term": "настольный теннис"
     }
   },
   "sports_hobbies.handball": {
@@ -45422,6 +50222,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "핸드볼"
+    },
+    "ru": {
+      "term": "гандбол"
     }
   },
   "sports_hobbies.dodgeball": {
@@ -45455,6 +50258,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "피구"
+    },
+    "ru": {
+      "term": "вышибалы"
     }
   },
   "sports_hobbies.lacrosse": {
@@ -45488,6 +50294,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "라크로스"
+    },
+    "ru": {
+      "term": "лакросс"
     }
   },
   "sports_hobbies.water_polo": {
@@ -45520,6 +50329,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "수구"
+    },
+    "ru": {
+      "term": "водное поло"
     }
   },
   "sports_hobbies.wrestling": {
@@ -45554,6 +50366,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "레슬링",
       "needsReview": true
+    },
+    "ru": {
+      "term": "борьба"
     }
   },
   "sports_hobbies.karate": {
@@ -45588,6 +50403,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가라테",
       "needsReview": true
+    },
+    "ru": {
+      "term": "карате"
     }
   },
   "sports_hobbies.judo": {
@@ -45622,6 +50440,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "유도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дзюдо"
     }
   },
   "sports_hobbies.taekwondo": {
@@ -45656,6 +50477,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "태권도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тхэквондо"
     }
   },
   "sports_hobbies.kickboxing": {
@@ -45690,6 +50514,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "킥복싱",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кикбоксинг"
     }
   },
   "sports_hobbies.weightlifting": {
@@ -45723,6 +50550,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "역도",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тяжёлая атлетика"
     }
   },
   "sports_hobbies.bodybuilding": {
@@ -45756,6 +50586,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "보디빌딩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бодибилдинг"
     }
   },
   "sports_hobbies.fencing": {
@@ -45789,6 +50622,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "펜싱",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фехтование"
     }
   },
   "sports_hobbies.archery": {
@@ -45822,6 +50658,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "양궁",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стрельба из лука"
     }
   },
   "sports_hobbies.martial_arts": {
@@ -45856,6 +50695,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "무술",
       "needsReview": true
+    },
+    "ru": {
+      "term": "боевые искусства"
     }
   },
   "sports_hobbies.surfing": {
@@ -45890,6 +50732,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "서핑",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сёрфинг"
     }
   },
   "sports_hobbies.sailing": {
@@ -45923,6 +50768,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "항해",
       "needsReview": true
+    },
+    "ru": {
+      "term": "парусный спорт",
+      "needsReview": true,
+      "reviewNote": "Sport sense; recreational sailing = хождение под парусом / яхтинг."
     }
   },
   "sports_hobbies.rowing": {
@@ -45956,6 +50806,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "조정",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гребля"
     }
   },
   "sports_hobbies.canoeing": {
@@ -45989,6 +50842,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카누 타기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гребля на каноэ",
+      "needsReview": true,
+      "reviewNote": "Multi-word; short form каноэ."
     }
   },
   "sports_hobbies.kayaking": {
@@ -46023,6 +50881,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카약",
       "needsReview": true
+    },
+    "ru": {
+      "term": "каякинг"
     }
   },
   "sports_hobbies.diving": {
@@ -46057,6 +50918,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "다이빙",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ныряние",
+      "needsReview": true,
+      "reviewNote": "Ambiguous: underwater diving vs springboard (прыжки в воду); overlaps scuba_diving."
     }
   },
   "sports_hobbies.snorkeling": {
@@ -46091,6 +50957,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스노클링",
       "needsReview": true
+    },
+    "ru": {
+      "term": "снорклинг",
+      "needsReview": true,
+      "reviewNote": "Borrowing; descriptive alt плавание с маской и трубкой."
     }
   },
   "sports_hobbies.rock_climbing": {
@@ -46124,6 +50995,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "암벽 등반",
       "needsReview": true
+    },
+    "ru": {
+      "term": "скалолазание"
     }
   },
   "sports_hobbies.mountain_biking": {
@@ -46157,6 +51031,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "산악자전거",
       "needsReview": true
+    },
+    "ru": {
+      "term": "маунтинбайк",
+      "needsReview": true,
+      "reviewNote": "Borrowing (also = the bike); alt катание на горном велосипеде."
     }
   },
   "sports_hobbies.horseback_riding": {
@@ -46190,6 +51069,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "승마",
       "needsReview": true
+    },
+    "ru": {
+      "term": "верховая езда"
     }
   },
   "sports_hobbies.ball": {
@@ -46223,6 +51105,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "공",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мяч"
     }
   },
   "sports_hobbies.racket": {
@@ -46256,6 +51141,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "라켓",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ракетка"
     }
   },
   "sports_hobbies.baseball_bat": {
@@ -46290,6 +51178,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "야구 방망이",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бейсбольная бита"
     }
   },
   "sports_hobbies.goal": {
@@ -46323,6 +51214,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "목표",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ворота",
+      "needsReview": true,
+      "reviewNote": "Equipment sense = goal frame (ворота); disambiguators suggest abstract objective (цель); scored goal = гол."
     }
   },
   "sports_hobbies.net": {
@@ -46356,6 +51252,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "그물",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сетка",
+      "needsReview": true,
+      "reviewNote": "Sports net (сетка); de/es disambiguators show financial 'net' (wrong sense)."
     }
   },
   "sports_hobbies.puck": {
@@ -46389,6 +51290,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "퍽",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шайба"
     }
   },
   "sports_hobbies.trophy": {
@@ -46422,6 +51326,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "트로피",
       "needsReview": true
+    },
+    "ru": {
+      "term": "трофей"
     }
   },
   "sports_hobbies.medal": {
@@ -46455,6 +51362,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "메달",
       "needsReview": true
+    },
+    "ru": {
+      "term": "медаль"
     }
   },
   "sports_hobbies.whistle": {
@@ -46488,6 +51398,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "휘파람",
       "needsReview": true
+    },
+    "ru": {
+      "term": "свисток"
     }
   },
   "sports_hobbies.scoreboard": {
@@ -46522,6 +51435,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "점수판",
       "needsReview": true
+    },
+    "ru": {
+      "term": "табло"
     }
   },
   "sports_hobbies.aerobics": {
@@ -46556,6 +51472,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "에어로빅",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аэробика"
     }
   },
   "sports_hobbies.stretching": {
@@ -46589,6 +51508,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스트레칭",
       "needsReview": true
+    },
+    "ru": {
+      "term": "растяжка"
     }
   },
   "sports_hobbies.jump_rope": {
@@ -46622,6 +51544,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "줄넘기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "скакалка"
     }
   },
   "sports_hobbies.frisbee": {
@@ -46656,6 +51581,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "프리스비",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фрисби"
     }
   },
   "sports_hobbies.pickleball": {
@@ -46690,6 +51618,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "피클볼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пиклбол",
+      "needsReview": true,
+      "reviewNote": "Emerging sport; transliteration not yet standardized."
     }
   },
   "sports_hobbies.padel": {
@@ -46724,6 +51657,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "패들",
       "needsReview": true
+    },
+    "ru": {
+      "term": "падел",
+      "needsReview": true,
+      "reviewNote": "Emerging sport; also падел-теннис."
     }
   },
   "sports_hobbies.racquetball": {
@@ -46758,6 +51696,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "라켓볼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ракетбол",
+      "needsReview": true,
+      "reviewNote": "Niche sport; transliteration."
     }
   },
   "sports_hobbies.softball": {
@@ -46792,6 +51735,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소프트볼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "софтбол"
     }
   },
   "sports_hobbies.field_hockey": {
@@ -46826,6 +51772,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "필드하키",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хоккей на траве"
     }
   },
   "sports_hobbies.ice_skating": {
@@ -46860,6 +51809,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아이스 스케이팅",
       "needsReview": true
+    },
+    "ru": {
+      "term": "катание на коньках"
     }
   },
   "sports_hobbies.comedy": {
@@ -46893,6 +51845,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "코미디",
       "needsReview": true
+    },
+    "ru": {
+      "term": "комедия"
     }
   },
   "sports_hobbies.magic": {
@@ -46926,6 +51881,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "마법",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фокусы",
+      "needsReview": true,
+      "reviewNote": "Hobby sense = performing magic tricks (фокусы); general/mystical magic = магия."
     }
   },
   "sports_hobbies.juggling": {
@@ -46960,6 +51920,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "저글링",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жонглирование"
     }
   },
   "sports_hobbies.podcasting": {
@@ -46994,6 +51957,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "팟캐스팅",
       "needsReview": true
+    },
+    "ru": {
+      "term": "подкастинг"
     }
   },
   "sports_hobbies.blogging": {
@@ -47027,6 +51993,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "블로깅",
       "needsReview": true
+    },
+    "ru": {
+      "term": "блогинг"
     }
   },
   "sports_hobbies.vlogging": {
@@ -47061,6 +52030,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "브이로그",
       "needsReview": true
+    },
+    "ru": {
+      "term": "влогинг",
+      "needsReview": true,
+      "reviewNote": "Newer borrowing; alt видеоблогинг."
     }
   },
   "sports_hobbies.creative_writing": {
@@ -47094,6 +52068,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "창의적인 글쓰기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "литературное творчество",
+      "needsReview": true,
+      "reviewNote": "Multi-word; alts творческое письмо / писательство."
     }
   },
   "sports_hobbies.storytelling": {
@@ -47127,6 +52106,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스토리텔링",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сторителлинг",
+      "needsReview": true,
+      "reviewNote": "Borrowing (marketing/media); transparent alt рассказывание историй."
     }
   },
   "sports_hobbies.improvisation": {
@@ -47160,6 +52144,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "즉흥 연주",
       "needsReview": true
+    },
+    "ru": {
+      "term": "импровизация"
     }
   },
   "sports_hobbies.acting": {
@@ -47193,6 +52180,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "연기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "актёрское мастерство"
     }
   },
   "sports_hobbies.scuba_diving": {
@@ -47227,6 +52217,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스쿠버 다이빙",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дайвинг"
     }
   },
   "sports_hobbies.trail_running": {
@@ -47260,6 +52253,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "트레일 러닝",
       "needsReview": true
+    },
+    "ru": {
+      "term": "трейлраннинг",
+      "needsReview": true,
+      "reviewNote": "Borrowing; alt бег по пересечённой местности."
     }
   },
   "sports_hobbies.marathon": {
@@ -47294,6 +52292,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "마라톤",
       "needsReview": true
+    },
+    "ru": {
+      "term": "марафон"
     }
   },
   "sports_hobbies.triathlon": {
@@ -47328,6 +52329,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "철인 3종 경기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "триатлон"
     }
   },
   "sports_hobbies.orienteering": {
@@ -47362,6 +52366,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오리엔티어링",
       "needsReview": true
+    },
+    "ru": {
+      "term": "спортивное ориентирование"
     }
   },
   "sports_hobbies.cheerleading": {
@@ -47396,6 +52403,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "치어리딩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "чирлидинг"
     }
   },
   "sports_hobbies.disc_golf": {
@@ -47429,6 +52439,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "디스크 골프",
       "needsReview": true
+    },
+    "ru": {
+      "term": "диск-гольф",
+      "needsReview": true,
+      "reviewNote": "Niche sport; transliteration/calque."
     }
   },
   "sports_hobbies.parkour": {
@@ -47463,6 +52478,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "파쿠르",
       "needsReview": true
+    },
+    "ru": {
+      "term": "паркур"
     }
   },
   "sports_hobbies.table_football": {
@@ -47496,6 +52514,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "테이블 축구",
       "needsReview": true
+    },
+    "ru": {
+      "term": "настольный футбол"
     }
   },
   "sports_hobbies.ultimate_frisbee": {
@@ -47529,6 +52550,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "궁극의 프리스비",
       "needsReview": true
+    },
+    "ru": {
+      "term": "алтимат фрисби",
+      "needsReview": true,
+      "reviewNote": "Niche sport; often just алтимат."
     }
   },
   "sports_hobbies.gardening": {
@@ -47562,6 +52588,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "원예",
       "needsReview": true
+    },
+    "ru": {
+      "term": "садоводство"
     }
   },
   "sports_hobbies.fishing": {
@@ -47595,6 +52624,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "낚시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рыбалка"
     }
   },
   "sports_hobbies.camping": {
@@ -47628,6 +52660,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캠핑",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кемпинг"
     }
   },
   "sports_hobbies.birdwatching": {
@@ -47661,6 +52696,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "들새 관찰",
       "needsReview": true
+    },
+    "ru": {
+      "term": "наблюдение за птицами",
+      "needsReview": true,
+      "reviewNote": "Descriptive multi-word term; borrowed alt бёрдвотчинг."
     }
   },
   "sports_hobbies.stargazing": {
@@ -47694,6 +52734,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "별을 관찰하다",
       "needsReview": true
+    },
+    "ru": {
+      "term": "наблюдение за звёздами",
+      "needsReview": true,
+      "reviewNote": "Descriptive multi-word term."
     }
   },
   "sports_hobbies.woodworking": {
@@ -47727,6 +52772,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "목공",
       "needsReview": true
+    },
+    "ru": {
+      "term": "столярное дело",
+      "needsReview": true,
+      "reviewNote": "Craft term; alts работа по дереву / деревообработка (industrial)."
     }
   },
   "sports_hobbies.model_building": {
@@ -47760,6 +52810,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "모델 빌딩",
       "needsReview": true
+    },
+    "ru": {
+      "term": "моделизм"
     }
   },
   "sports_hobbies.coin_collecting": {
@@ -47793,6 +52846,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "동전 수집",
       "needsReview": true
+    },
+    "ru": {
+      "term": "нумизматика"
     }
   },
   "sports_hobbies.stamp_collecting": {
@@ -47826,6 +52882,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "우표수집",
       "needsReview": true
+    },
+    "ru": {
+      "term": "филателия"
     }
   },
   "sports_hobbies.geocaching": {
@@ -47860,6 +52919,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "지오캐싱",
       "needsReview": true
+    },
+    "ru": {
+      "term": "геокэшинг"
     }
   },
   "music_instruments.music": {
@@ -47892,6 +52954,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "음악"
+    },
+    "ru": {
+      "term": "музыка"
     }
   },
   "music_instruments.song": {
@@ -47924,6 +52989,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "노래"
+    },
+    "ru": {
+      "term": "песня"
     }
   },
   "music_instruments.guitar": {
@@ -47956,6 +53024,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "기타"
+    },
+    "ru": {
+      "term": "гитара"
     }
   },
   "music_instruments.piano": {
@@ -47989,6 +53060,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "피아노"
+    },
+    "ru": {
+      "term": "пианино"
     }
   },
   "music_instruments.drums": {
@@ -48021,6 +53095,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "드럼"
+    },
+    "ru": {
+      "term": "барабаны"
     }
   },
   "music_instruments.violin": {
@@ -48053,6 +53130,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "바이올린"
+    },
+    "ru": {
+      "term": "скрипка"
     }
   },
   "music_instruments.flute": {
@@ -48085,6 +53165,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "플루트"
+    },
+    "ru": {
+      "term": "флейта"
     }
   },
   "music_instruments.trumpet": {
@@ -48117,6 +53200,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "트럼펫"
+    },
+    "ru": {
+      "term": "труба"
     }
   },
   "music_instruments.microphone": {
@@ -48149,6 +53235,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "마이크"
+    },
+    "ru": {
+      "term": "микрофон"
     }
   },
   "music_instruments.headphones": {
@@ -48181,6 +53270,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "헤드폰"
+    },
+    "ru": {
+      "term": "наушники"
     }
   },
   "music_instruments.keyboard": {
@@ -48214,6 +53306,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "키보드"
+    },
+    "ru": {
+      "term": "синтезатор",
+      "needsReview": true,
+      "reviewNote": "de/fr/es gloss the set of keys / computer keyboard (клавиатура); as a music instrument = синтезатор — sense ambiguous."
     }
   },
   "music_instruments.bass_guitar": {
@@ -48246,6 +53343,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "베이스 기타"
+    },
+    "ru": {
+      "term": "бас-гитара"
     }
   },
   "music_instruments.electric_guitar": {
@@ -48278,6 +53378,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "일렉트릭 기타"
+    },
+    "ru": {
+      "term": "электрогитара"
     }
   },
   "music_instruments.acoustic_guitar": {
@@ -48310,6 +53413,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "어쿠스틱 기타"
+    },
+    "ru": {
+      "term": "акустическая гитара",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian; акустическая гитара is the standard multi-word term."
     }
   },
   "music_instruments.saxophone": {
@@ -48343,6 +53451,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "색소폰"
+    },
+    "ru": {
+      "term": "саксофон"
     }
   },
   "music_instruments.clarinet": {
@@ -48376,6 +53487,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "클라리넷"
+    },
+    "ru": {
+      "term": "кларнет"
     }
   },
   "music_instruments.cello": {
@@ -48409,6 +53523,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "첼로"
+    },
+    "ru": {
+      "term": "виолончель"
     }
   },
   "music_instruments.harp": {
@@ -48441,6 +53558,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "하프"
+    },
+    "ru": {
+      "term": "арфа"
     }
   },
   "music_instruments.accordion": {
@@ -48473,6 +53593,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "아코디언"
+    },
+    "ru": {
+      "term": "аккордеон"
     }
   },
   "music_instruments.harmonica": {
@@ -48506,6 +53629,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "하모니카"
+    },
+    "ru": {
+      "term": "губная гармошка",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian; губная гармошка is the standard term for harmonica."
     }
   },
   "music_instruments.voice": {
@@ -48538,6 +53666,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "목소리"
+    },
+    "ru": {
+      "term": "голос"
     }
   },
   "music_instruments.singing": {
@@ -48570,6 +53701,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "노래하기"
+    },
+    "ru": {
+      "term": "петь",
+      "needsReview": true,
+      "reviewNote": "de/fr gloss the infinitive 'to sing' (петь); the noun 'singing' = пение — part-of-speech ambiguous."
     }
   },
   "music_instruments.melody": {
@@ -48602,6 +53738,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "멜로디"
+    },
+    "ru": {
+      "term": "мелодия"
     }
   },
   "music_instruments.rhythm": {
@@ -48634,6 +53773,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "리듬"
+    },
+    "ru": {
+      "term": "ритм"
     }
   },
   "music_instruments.beat": {
@@ -48666,6 +53808,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "박자"
+    },
+    "ru": {
+      "term": "бит",
+      "needsReview": true,
+      "reviewNote": "de/fr/es gloss the verb 'to strike/defeat'; music-category 'beat' = бит (rhythmic pulse) — sense mismatch."
     }
   },
   "music_instruments.lyrics": {
@@ -48698,6 +53845,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "가사"
+    },
+    "ru": {
+      "term": "текст",
+      "needsReview": true,
+      "reviewNote": "текст = 'text'; fuller unambiguous 'lyrics' = текст песни / слова песни."
     }
   },
   "music_instruments.chorus": {
@@ -48730,6 +53882,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "후렴"
+    },
+    "ru": {
+      "term": "припев",
+      "needsReview": true,
+      "reviewNote": "de/fr/es gloss 'choir' (хор), but 'choir' is a separate entry; song refrain = припев."
     }
   },
   "music_instruments.verse": {
@@ -48762,6 +53919,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "절"
+    },
+    "ru": {
+      "term": "куплет"
     }
   },
   "music_instruments.concert": {
@@ -48794,6 +53954,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "콘서트"
+    },
+    "ru": {
+      "term": "концерт"
     }
   },
   "music_instruments.performance": {
@@ -48826,6 +53989,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "공연"
+    },
+    "ru": {
+      "term": "выступление",
+      "needsReview": true,
+      "reviewNote": "de/es gloss 'achievement/output' (производительность); stage/music performance = выступление — sense mismatch."
     }
   },
   "music_instruments.snare_drum": {
@@ -48860,6 +54028,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스네어 드럼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "малый барабан",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian; малый барабан is the standard term for snare drum."
     }
   },
   "music_instruments.bass_drum": {
@@ -48894,6 +54067,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "베이스 드럼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "большой барабан",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian; большой барабан (or бас-барабан) is the standard term for bass drum."
     }
   },
   "music_instruments.cymbal": {
@@ -48927,6 +54105,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "심벌즈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тарелка"
     }
   },
   "music_instruments.tambourine": {
@@ -48960,6 +54141,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "탬버린",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бубен"
     }
   },
   "music_instruments.xylophone": {
@@ -48994,6 +54178,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "실로폰",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ксилофон"
     }
   },
   "music_instruments.marimba": {
@@ -49028,6 +54215,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "마림바",
       "needsReview": true
+    },
+    "ru": {
+      "term": "маримба"
     }
   },
   "music_instruments.triangle": {
@@ -49061,6 +54251,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "삼각형",
       "needsReview": true
+    },
+    "ru": {
+      "term": "треугольник"
     }
   },
   "music_instruments.gong": {
@@ -49095,6 +54288,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "징",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гонг"
     }
   },
   "music_instruments.bongo": {
@@ -49129,6 +54325,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "봉고",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бонго"
     }
   },
   "music_instruments.timpani": {
@@ -49163,6 +54362,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "팀파니",
       "needsReview": true
+    },
+    "ru": {
+      "term": "литавры"
     }
   },
   "music_instruments.banjo": {
@@ -49197,6 +54399,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "밴조",
       "needsReview": true
+    },
+    "ru": {
+      "term": "банджо"
     }
   },
   "music_instruments.ukulele": {
@@ -49231,6 +54436,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "우쿨렐레",
       "needsReview": true
+    },
+    "ru": {
+      "term": "укулеле"
     }
   },
   "music_instruments.mandolin": {
@@ -49265,6 +54473,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "만돌린",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мандолина"
     }
   },
   "music_instruments.viola": {
@@ -49299,6 +54510,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비올라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "альт"
     }
   },
   "music_instruments.double_bass": {
@@ -49332,6 +54546,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "더블베이스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "контрабас"
     }
   },
   "music_instruments.sitar": {
@@ -49366,6 +54583,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시타르",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ситар"
     }
   },
   "music_instruments.lute": {
@@ -49400,6 +54620,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "류트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лютня"
     }
   },
   "music_instruments.lyre": {
@@ -49433,6 +54656,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "거문고",
       "needsReview": true
+    },
+    "ru": {
+      "term": "лира"
     }
   },
   "music_instruments.zither": {
@@ -49466,6 +54692,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "치터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "цитра"
     }
   },
   "music_instruments.koto": {
@@ -49500,6 +54729,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "고토",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кото"
     }
   },
   "music_instruments.trombone": {
@@ -49534,6 +54766,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "트롬본",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тромбон"
     }
   },
   "music_instruments.tuba": {
@@ -49568,6 +54803,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "튜바",
       "needsReview": true
+    },
+    "ru": {
+      "term": "туба"
     }
   },
   "music_instruments.french_horn": {
@@ -49601,6 +54839,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "프렌치 호른",
       "needsReview": true
+    },
+    "ru": {
+      "term": "валторна"
     }
   },
   "music_instruments.recorder": {
@@ -49634,6 +54875,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "레코더",
       "needsReview": true
+    },
+    "ru": {
+      "term": "блокфлейта",
+      "needsReview": true,
+      "reviewNote": "de/fr/es gloss a 'recording device' (магнитофон); the woodwind recorder = блокфлейта — sense mismatch."
     }
   },
   "music_instruments.oboe": {
@@ -49668,6 +54914,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오보에",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гобой"
     }
   },
   "music_instruments.bassoon": {
@@ -49702,6 +54951,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "바순",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фагот"
     }
   },
   "music_instruments.piccolo": {
@@ -49736,6 +54988,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "피콜로",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пикколо"
     }
   },
   "music_instruments.bagpipes": {
@@ -49769,6 +55024,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "백파이프",
       "needsReview": true
+    },
+    "ru": {
+      "term": "волынка"
     }
   },
   "music_instruments.pan_flute": {
@@ -49802,6 +55060,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "팬 플루트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пан-флейта"
     }
   },
   "music_instruments.didgeridoo": {
@@ -49836,6 +55097,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "디저리두",
       "needsReview": true
+    },
+    "ru": {
+      "term": "диджериду"
     }
   },
   "music_instruments.note": {
@@ -49869,6 +55133,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "참고",
       "needsReview": true
+    },
+    "ru": {
+      "term": "нота",
+      "needsReview": true,
+      "reviewNote": "de/fr gloss 'memo/remark' (заметка); music-category 'note' = нота (musical note) — sense mismatch."
     }
   },
   "music_instruments.scale": {
@@ -49902,6 +55171,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "규모",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гамма",
+      "needsReview": true,
+      "reviewNote": "de/fr/es gloss a generic measurement scale (шкала); musical scale = гамма — sense mismatch."
     }
   },
   "music_instruments.chord": {
@@ -49936,6 +55210,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "화음",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аккорд"
     }
   },
   "music_instruments.harmony": {
@@ -49969,6 +55246,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "조화",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гармония"
     }
   },
   "music_instruments.tempo": {
@@ -50003,6 +55283,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "템포",
       "needsReview": true
+    },
+    "ru": {
+      "term": "темп"
     }
   },
   "music_instruments.pitch": {
@@ -50037,6 +55320,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "피치",
       "needsReview": true
+    },
+    "ru": {
+      "term": "высота тона",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian (высота alone = 'height'); musical pitch = высота тона; fr glosses 'location'."
     }
   },
   "music_instruments.musical_key": {
@@ -50070,6 +55358,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "뮤지컬 키",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тональность"
     }
   },
   "music_instruments.sheet_music": {
@@ -50103,6 +55394,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "악보",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ноты"
     }
   },
   "music_instruments.staff": {
@@ -50136,6 +55430,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "직원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "нотный стан",
+      "needsReview": true,
+      "reviewNote": "de/fr/es gloss 'personnel/employees' (персонал); the five-line staff = нотный стан — sense mismatch."
     }
   },
   "music_instruments.clef": {
@@ -50170,6 +55469,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "음자리표",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ключ"
     }
   },
   "music_instruments.recording": {
@@ -50203,6 +55505,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "녹음",
       "needsReview": true
+    },
+    "ru": {
+      "term": "запись"
     }
   },
   "music_instruments.album": {
@@ -50237,6 +55542,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "앨범",
       "needsReview": true
+    },
+    "ru": {
+      "term": "альбом"
     }
   },
   "music_instruments.track": {
@@ -50271,6 +55579,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "트랙",
       "needsReview": true
+    },
+    "ru": {
+      "term": "трек"
     }
   },
   "music_instruments.playlist": {
@@ -50305,6 +55616,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "재생목록",
       "needsReview": true
+    },
+    "ru": {
+      "term": "плейлист"
     }
   },
   "music_instruments.sound": {
@@ -50338,6 +55652,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "звук"
     }
   },
   "music_instruments.volume": {
@@ -50371,6 +55688,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "볼륨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "громкость"
     }
   },
   "music_instruments.audio": {
@@ -50405,6 +55725,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오디오",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аудио"
     }
   },
   "music_instruments.remix": {
@@ -50439,6 +55762,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "리믹스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ремикс"
     }
   },
   "music_instruments.amplifier": {
@@ -50473,6 +55799,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "증폭기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "усилитель"
     }
   },
   "music_instruments.sound_system": {
@@ -50507,6 +55836,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사운드 시스템",
       "needsReview": true
+    },
+    "ru": {
+      "term": "звуковая система",
+      "needsReview": true,
+      "reviewNote": "No clean single word; звуковая система (or аудиосистема) = 'sound system'."
     }
   },
   "music_instruments.band": {
@@ -50540,6 +55874,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "밴드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "группа"
     }
   },
   "music_instruments.orchestra": {
@@ -50573,6 +55910,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오케스트라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "оркестр"
     }
   },
   "music_instruments.choir": {
@@ -50606,6 +55946,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "합창단",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хор"
     }
   },
   "music_instruments.solo": {
@@ -50640,6 +55983,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "솔로",
       "needsReview": true
+    },
+    "ru": {
+      "term": "соло"
     }
   },
   "music_instruments.duet": {
@@ -50674,6 +56020,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "듀엣",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дуэт"
     }
   },
   "music_instruments.trio": {
@@ -50708,6 +56057,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "트리오",
       "needsReview": true
+    },
+    "ru": {
+      "term": "трио"
     }
   },
   "music_instruments.quartet": {
@@ -50742,6 +56094,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사중주",
       "needsReview": true
+    },
+    "ru": {
+      "term": "квартет"
     }
   },
   "music_instruments.karaoke": {
@@ -50776,6 +56131,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "노래방",
       "needsReview": true
+    },
+    "ru": {
+      "term": "караоке"
     }
   },
   "music_instruments.music_festival": {
@@ -50809,6 +56167,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "음악 축제",
       "needsReview": true
+    },
+    "ru": {
+      "term": "музыкальный фестиваль",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian; музыкальный фестиваль = 'music festival'."
     }
   },
   "music_instruments.rehearsal": {
@@ -50842,6 +56205,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "리허설",
       "needsReview": true
+    },
+    "ru": {
+      "term": "репетиция"
     }
   },
   "music_instruments.classical_music": {
@@ -50875,6 +56241,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "클래식 음악",
       "needsReview": true
+    },
+    "ru": {
+      "term": "классическая музыка",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian; классическая музыка is the standard multi-word term."
     }
   },
   "music_instruments.jazz": {
@@ -50909,6 +56280,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "재즈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "джаз"
     }
   },
   "music_instruments.rock_music": {
@@ -50942,6 +56316,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "록 음악",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рок-музыка"
     }
   },
   "music_instruments.pop_music": {
@@ -50975,6 +56352,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "팝 음악",
       "needsReview": true
+    },
+    "ru": {
+      "term": "поп-музыка"
     }
   },
   "music_instruments.hip_hop": {
@@ -51009,6 +56389,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "힙합",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хип-хоп"
     }
   },
   "music_instruments.folk_music": {
@@ -51043,6 +56426,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "민속음악",
       "needsReview": true
+    },
+    "ru": {
+      "term": "народная музыка",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian; народная музыка (traditional) or the genre 'фолк'."
     }
   },
   "music_instruments.electronic_music": {
@@ -51076,6 +56464,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전자 음악",
       "needsReview": true
+    },
+    "ru": {
+      "term": "электронная музыка",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian; электронная музыка (or colloquial электроника)."
     }
   },
   "music_instruments.reggae": {
@@ -51110,6 +56503,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "레게",
       "needsReview": true
+    },
+    "ru": {
+      "term": "регги"
     }
   },
   "music_instruments.opera": {
@@ -51144,6 +56540,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "오페라",
       "needsReview": true
+    },
+    "ru": {
+      "term": "опера"
     }
   },
   "music_instruments.blues": {
@@ -51177,6 +56576,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "블루스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "блюз"
     }
   },
   "arts_entertainment.art": {
@@ -51209,6 +56611,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "예술"
+    },
+    "ru": {
+      "term": "искусство"
     }
   },
   "arts_entertainment.drawing": {
@@ -51241,6 +56646,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "그림 그리기"
+    },
+    "ru": {
+      "term": "рисунок"
     }
   },
   "arts_entertainment.painting": {
@@ -51273,6 +56681,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "그림"
+    },
+    "ru": {
+      "term": "живопись"
     }
   },
   "arts_entertainment.paint": {
@@ -51305,6 +56716,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "물감"
+    },
+    "ru": {
+      "term": "рисовать",
+      "needsReview": true,
+      "reviewNote": "Verb 'to paint'; рисовать is the common register but also means 'to draw' — Russian has no distinct common single verb for painting a picture (formal: писать красками)."
     }
   },
   "arts_entertainment.paintbrush": {
@@ -51337,6 +56753,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "붓"
+    },
+    "ru": {
+      "term": "кисть"
     }
   },
   "arts_entertainment.canvas": {
@@ -51370,6 +56789,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "캔버스"
+    },
+    "ru": {
+      "term": "холст"
     }
   },
   "arts_entertainment.sketch": {
@@ -51403,6 +56825,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스케치"
+    },
+    "ru": {
+      "term": "набросок"
     }
   },
   "arts_entertainment.sculpture": {
@@ -51435,6 +56860,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "조각품"
+    },
+    "ru": {
+      "term": "скульптура"
     }
   },
   "arts_entertainment.clay": {
@@ -51467,6 +56895,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "점토"
+    },
+    "ru": {
+      "term": "глина"
     }
   },
   "arts_entertainment.easel": {
@@ -51500,6 +56931,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "이젤"
+    },
+    "ru": {
+      "term": "мольберт"
     }
   },
   "arts_entertainment.crafts": {
@@ -51533,6 +56967,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "공예"
+    },
+    "ru": {
+      "term": "рукоделие",
+      "needsReview": true,
+      "reviewNote": "рукоделие leans to needlework/handicraft; broader 'crafts' could be поделки or ремёсла."
     }
   },
   "arts_entertainment.knitting": {
@@ -51565,6 +57004,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "뜨개질"
+    },
+    "ru": {
+      "term": "вязание"
     }
   },
   "arts_entertainment.sewing": {
@@ -51597,6 +57039,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "바느질"
+    },
+    "ru": {
+      "term": "шитьё"
     }
   },
   "arts_entertainment.embroidery": {
@@ -51629,6 +57074,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "자수"
+    },
+    "ru": {
+      "term": "вышивка"
     }
   },
   "arts_entertainment.crochet": {
@@ -51661,6 +57109,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "크로셰 뜨개질"
+    },
+    "ru": {
+      "term": "вязание крючком",
+      "needsReview": true,
+      "reviewNote": "No single-word Russian term; literally 'knitting with a hook'."
     }
   },
   "arts_entertainment.weaving": {
@@ -51693,6 +57146,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "직조"
+    },
+    "ru": {
+      "term": "ткачество"
     }
   },
   "arts_entertainment.pottery": {
@@ -51726,6 +57182,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "도자기"
+    },
+    "ru": {
+      "term": "керамика"
     }
   },
   "arts_entertainment.origami": {
@@ -51759,6 +57218,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "종이접기"
+    },
+    "ru": {
+      "term": "оригами"
     }
   },
   "arts_entertainment.collage": {
@@ -51792,6 +57254,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "콜라주"
+    },
+    "ru": {
+      "term": "коллаж"
     }
   },
   "arts_entertainment.scrapbooking": {
@@ -51825,6 +57290,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스크랩북"
+    },
+    "ru": {
+      "term": "скрапбукинг"
     }
   },
   "arts_entertainment.illustration": {
@@ -51857,6 +57325,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "일러스트레이션"
+    },
+    "ru": {
+      "term": "иллюстрация"
     }
   },
   "arts_entertainment.portrait": {
@@ -51889,6 +57360,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "초상화"
+    },
+    "ru": {
+      "term": "портрет"
     }
   },
   "arts_entertainment.landscape_painting": {
@@ -51921,6 +57395,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "풍경화"
+    },
+    "ru": {
+      "term": "пейзаж"
     }
   },
   "arts_entertainment.still_life": {
@@ -51953,6 +57430,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "정물"
+    },
+    "ru": {
+      "term": "натюрморт"
     }
   },
   "arts_entertainment.mural": {
@@ -51986,6 +57466,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "벽화"
+    },
+    "ru": {
+      "term": "настенная роспись",
+      "needsReview": true,
+      "reviewNote": "No common single word; 'фреска' means fresco specifically; 'мурал' is an emerging loanword for street murals."
     }
   },
   "arts_entertainment.graffiti_art": {
@@ -52018,6 +57503,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "그래피티 아트"
+    },
+    "ru": {
+      "term": "граффити"
     }
   },
   "arts_entertainment.calligraphy": {
@@ -52050,6 +57538,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "서예"
+    },
+    "ru": {
+      "term": "каллиграфия"
     }
   },
   "arts_entertainment.printmaking": {
@@ -52082,6 +57573,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "판화"
+    },
+    "ru": {
+      "term": "гравюра"
     }
   },
   "arts_entertainment.photography": {
@@ -52114,6 +57608,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "사진"
+    },
+    "ru": {
+      "term": "фотография"
     }
   },
   "arts_entertainment.digital_art": {
@@ -52146,6 +57643,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "디지털 아트"
+    },
+    "ru": {
+      "term": "цифровое искусство",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard term, no single-word equivalent."
     }
   },
   "arts_entertainment.stage": {
@@ -52179,6 +57681,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "무대",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сцена",
+      "needsReview": true,
+      "reviewNote": "Theatrical stage (de 'Bühne'); сцена also means 'scene'. fr/es glosses 'étape/etapa' mean 'phase' — likely a source error."
     }
   },
   "arts_entertainment.stage_play": {
@@ -52212,6 +57719,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "무대 연극",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пьеса"
     }
   },
   "arts_entertainment.drama": {
@@ -52246,6 +57756,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "드라마",
       "needsReview": true
+    },
+    "ru": {
+      "term": "драма"
     }
   },
   "arts_entertainment.musical": {
@@ -52279,6 +57792,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "뮤지컬",
       "needsReview": true
+    },
+    "ru": {
+      "term": "мюзикл"
     }
   },
   "arts_entertainment.scene": {
@@ -52312,6 +57828,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "장면",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сцена"
     }
   },
   "arts_entertainment.audience": {
@@ -52345,6 +57864,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "청중",
       "needsReview": true
+    },
+    "ru": {
+      "term": "публика"
     }
   },
   "arts_entertainment.prop": {
@@ -52379,6 +57901,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소품",
       "needsReview": true
+    },
+    "ru": {
+      "term": "реквизит",
+      "needsReview": true,
+      "reviewNote": "Chose stage-prop sense (реквизит) per en/fr/category; de 'Stütze'/es 'apuntalar' mean physical 'support/prop up'."
     }
   },
   "arts_entertainment.costume": {
@@ -52413,6 +57940,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "의상",
       "needsReview": true
+    },
+    "ru": {
+      "term": "костюм"
     }
   },
   "arts_entertainment.applause": {
@@ -52446,6 +57976,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "박수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аплодисменты"
     }
   },
   "arts_entertainment.spotlight": {
@@ -52480,6 +58013,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스포트라이트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "прожектор"
     }
   },
   "arts_entertainment.film": {
@@ -52513,6 +58049,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "영화",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фильм"
     }
   },
   "arts_entertainment.documentary": {
@@ -52546,6 +58085,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "다큐멘터리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "документальный фильм",
+      "needsReview": true,
+      "reviewNote": "Multi-word; colloquial single word 'документалка'."
     }
   },
   "arts_entertainment.short_film": {
@@ -52579,6 +58123,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "단편영화",
       "needsReview": true
+    },
+    "ru": {
+      "term": "короткометражный фильм",
+      "needsReview": true,
+      "reviewNote": "Multi-word; colloquial single word 'короткометражка'."
     }
   },
   "arts_entertainment.trailer": {
@@ -52613,6 +58162,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "트레일러",
       "needsReview": true
+    },
+    "ru": {
+      "term": "трейлер",
+      "needsReview": true,
+      "reviewNote": "Film-trailer sense (трейлер) per fr/category; de 'Anhänger'/es 'remolque' mean a vehicle trailer."
     }
   },
   "arts_entertainment.screenplay": {
@@ -52647,6 +58201,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "각본",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сценарий"
     }
   },
   "arts_entertainment.director": {
@@ -52680,6 +58237,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "감독",
       "needsReview": true
+    },
+    "ru": {
+      "term": "режиссёр"
     }
   },
   "arts_entertainment.character": {
@@ -52713,6 +58273,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "성격",
       "needsReview": true
+    },
+    "ru": {
+      "term": "персонаж"
     }
   },
   "arts_entertainment.plot": {
@@ -52746,6 +58309,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "줄거리",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сюжет"
     }
   },
   "arts_entertainment.genre": {
@@ -52780,6 +58346,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "장르",
       "needsReview": true
+    },
+    "ru": {
+      "term": "жанр"
     }
   },
   "arts_entertainment.special_effects": {
@@ -52813,6 +58382,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "특수 효과",
       "needsReview": true
+    },
+    "ru": {
+      "term": "спецэффекты"
     }
   },
   "arts_entertainment.story": {
@@ -52846,6 +58418,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "이야기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "история"
     }
   },
   "arts_entertainment.novel": {
@@ -52879,6 +58454,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소설",
       "needsReview": true
+    },
+    "ru": {
+      "term": "роман"
     }
   },
   "arts_entertainment.poem": {
@@ -52912,6 +58490,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стихотворение"
     }
   },
   "arts_entertainment.comic_book": {
@@ -52945,6 +58526,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "만화책",
       "needsReview": true
+    },
+    "ru": {
+      "term": "комикс"
     }
   },
   "arts_entertainment.manga": {
@@ -52979,6 +58563,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "만화",
       "needsReview": true
+    },
+    "ru": {
+      "term": "манга"
     }
   },
   "arts_entertainment.fairy_tale": {
@@ -53013,6 +58600,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "동화",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сказка"
     }
   },
   "arts_entertainment.legend": {
@@ -53046,6 +58636,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전설",
       "needsReview": true
+    },
+    "ru": {
+      "term": "легенда"
     }
   },
   "arts_entertainment.chapter": {
@@ -53079,6 +58672,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "глава"
     }
   },
   "arts_entertainment.narrator": {
@@ -53112,6 +58708,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "해설자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рассказчик"
     }
   },
   "arts_entertainment.cover_art": {
@@ -53146,6 +58745,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "표지 아트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "обложка",
+      "needsReview": true,
+      "reviewNote": "обложка = 'cover'; renders 'cover art' contextually, not the 'artwork' nuance specifically."
     }
   },
   "arts_entertainment.game": {
@@ -53179,6 +58783,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "게임",
       "needsReview": true
+    },
+    "ru": {
+      "term": "игра"
     }
   },
   "arts_entertainment.board_game": {
@@ -53212,6 +58819,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "보드게임",
       "needsReview": true
+    },
+    "ru": {
+      "term": "настольная игра",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard term, no single-word equivalent."
     }
   },
   "arts_entertainment.card_game": {
@@ -53245,6 +58857,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카드 게임",
       "needsReview": true
+    },
+    "ru": {
+      "term": "карточная игра",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard term, no single-word equivalent."
     }
   },
   "arts_entertainment.chess": {
@@ -53279,6 +58896,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "체스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шахматы"
     }
   },
   "arts_entertainment.checkers": {
@@ -53312,6 +58932,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "체커",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шашки"
     }
   },
   "arts_entertainment.puzzle": {
@@ -53346,6 +58969,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "퍼즐",
       "needsReview": true
+    },
+    "ru": {
+      "term": "головоломка"
     }
   },
   "arts_entertainment.jigsaw_puzzle": {
@@ -53380,6 +59006,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "직소 퍼즐",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пазл"
     }
   },
   "arts_entertainment.crossword": {
@@ -53414,6 +59043,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "크로스워드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кроссворд"
     }
   },
   "arts_entertainment.riddle": {
@@ -53447,6 +59079,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수수께끼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "загадка"
     }
   },
   "arts_entertainment.dice": {
@@ -53481,6 +59116,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "주사위",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кубик",
+      "needsReview": true,
+      "reviewNote": "Singular of 'dice'; кубик lit. 'small cube', common for a game die; formal 'игральная кость'."
     }
   },
   "arts_entertainment.game_console": {
@@ -53515,6 +59155,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "게임 콘솔",
       "needsReview": true
+    },
+    "ru": {
+      "term": "игровая приставка",
+      "needsReview": true,
+      "reviewNote": "Multi-word; colloquial 'приставка' and 'консоль' also common."
     }
   },
   "arts_entertainment.game_controller": {
@@ -53548,6 +59193,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "게임 컨트롤러",
       "needsReview": true
+    },
+    "ru": {
+      "term": "геймпад"
     }
   },
   "arts_entertainment.joystick": {
@@ -53582,6 +59230,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "조이스틱",
       "needsReview": true
+    },
+    "ru": {
+      "term": "джойстик"
     }
   },
   "arts_entertainment.arcade_game": {
@@ -53615,6 +59266,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아케이드 게임",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аркадная игра",
+      "needsReview": true,
+      "reviewNote": "Multi-word; 'аркада' (single word) = the genre, 'игровой автомат' = a physical arcade machine."
     }
   },
   "arts_entertainment.game_level": {
@@ -53648,6 +59304,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "게임 레벨",
       "needsReview": true
+    },
+    "ru": {
+      "term": "уровень"
     }
   },
   "arts_entertainment.quest": {
@@ -53681,6 +59340,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "퀘스트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "квест",
+      "needsReview": true,
+      "reviewNote": "Game-quest sense (квест) per en/category; de 'Suche'/es 'búsqueda' gloss 'search' (поиск)."
     }
   },
   "arts_entertainment.avatar": {
@@ -53715,6 +59379,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아바타",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аватар"
     }
   },
   "arts_entertainment.player": {
@@ -53748,6 +59415,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "플레이어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "игрок"
     }
   },
   "arts_entertainment.high_score": {
@@ -53781,6 +59451,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "높은 점수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рекорд",
+      "needsReview": true,
+      "reviewNote": "рекорд lit. 'record'; standard for a game high score; multi-word alt 'лучший результат'."
     }
   },
   "arts_entertainment.virtual_world": {
@@ -53814,6 +59489,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가상 세계",
       "needsReview": true
+    },
+    "ru": {
+      "term": "виртуальный мир",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard term, no single-word equivalent."
     }
   },
   "arts_entertainment.show": {
@@ -53847,6 +59527,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "쇼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "показывать",
+      "needsReview": true,
+      "reviewNote": "de/fr/es gloss the verb 'to show' (показывать, imperfective infinitive); en 'show' in this category may mean the noun 'шоу'."
     }
   },
   "arts_entertainment.live_show": {
@@ -53881,6 +59566,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "라이브 쇼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "живое выступление",
+      "needsReview": true,
+      "reviewNote": "Multi-word; 'live performance'; colloquial 'лайв'."
     }
   },
   "arts_entertainment.event": {
@@ -53914,6 +59604,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "이벤트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "событие",
+      "needsReview": true,
+      "reviewNote": "de 'Ereignis' → событие (occurrence); in an entertainment context 'event' may mean мероприятие (an organized event)."
     }
   },
   "arts_entertainment.festival": {
@@ -53947,6 +59642,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "축제",
       "needsReview": true
+    },
+    "ru": {
+      "term": "праздник",
+      "needsReview": true,
+      "reviewNote": "Glosses de 'Fest'/fr 'fête'/es 'fiesta' = celebration → праздник; en 'festival' may mean фестиваль (an organized arts festival)."
     }
   },
   "arts_entertainment.carnival": {
@@ -53980,6 +59680,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "카니발",
       "needsReview": true
+    },
+    "ru": {
+      "term": "карнавал"
     }
   },
   "arts_entertainment.circus": {
@@ -54013,6 +59716,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "서커스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "цирк"
     }
   },
   "arts_entertainment.parade": {
@@ -54046,6 +59752,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "퍼레이드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "парад"
     }
   },
   "arts_entertainment.magic_show": {
@@ -54080,6 +59789,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "마술쇼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шоу фокусов",
+      "needsReview": true,
+      "reviewNote": "Multi-word; lit. 'show of tricks'; the act alone is 'фокусы'."
     }
   },
   "arts_entertainment.comedy_show": {
@@ -54113,6 +59827,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "코미디 쇼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "комедийное шоу",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard term; stand-up is 'стендап'."
     }
   },
   "arts_entertainment.talent_show": {
@@ -54147,6 +59866,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "장기자랑",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шоу талантов",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard calque."
     }
   },
   "arts_entertainment.exhibition": {
@@ -54180,6 +59904,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전시회",
       "needsReview": true
+    },
+    "ru": {
+      "term": "выставка"
     }
   },
   "arts_entertainment.installation_art": {
@@ -54213,6 +59940,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "설치 미술",
       "needsReview": true
+    },
+    "ru": {
+      "term": "инсталляция"
     }
   },
   "arts_entertainment.masterpiece": {
@@ -54246,6 +59976,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "걸작",
       "needsReview": true
+    },
+    "ru": {
+      "term": "шедевр"
     }
   },
   "arts_entertainment.abstract_art": {
@@ -54279,6 +60012,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "추상 미술",
       "needsReview": true
+    },
+    "ru": {
+      "term": "абстрактное искусство",
+      "needsReview": true,
+      "reviewNote": "Multi-word; 'абстракционизм' (single word) names the movement/style."
     }
   },
   "arts_entertainment.realism": {
@@ -54312,6 +60050,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사실주의",
       "needsReview": true
+    },
+    "ru": {
+      "term": "реализм"
     }
   },
   "arts_entertainment.surrealism": {
@@ -54345,6 +60086,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "초현실주의",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сюрреализм"
     }
   },
   "arts_entertainment.choreography": {
@@ -54378,6 +60122,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "안무",
       "needsReview": true
+    },
+    "ru": {
+      "term": "хореография"
     }
   },
   "arts_entertainment.improvisation": {
@@ -54411,6 +60158,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "즉흥 연주",
       "needsReview": true
+    },
+    "ru": {
+      "term": "импровизация"
     }
   },
   "arts_entertainment.critique": {
@@ -54444,6 +60194,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비판",
       "needsReview": true
+    },
+    "ru": {
+      "term": "критика"
     }
   },
   "arts_entertainment.awards_ceremony": {
@@ -54477,6 +60230,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시상식",
       "needsReview": true
+    },
+    "ru": {
+      "term": "церемония награждения",
+      "needsReview": true,
+      "reviewNote": "Multi-word; single-word near-equivalent 'награждение'."
     }
   },
   "technology_media.computer": {
@@ -54509,6 +60267,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "컴퓨터"
+    },
+    "ru": {
+      "term": "компьютер"
     }
   },
   "technology_media.laptop": {
@@ -54542,6 +60303,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "노트북"
+    },
+    "ru": {
+      "term": "ноутбук"
     }
   },
   "technology_media.smartphone": {
@@ -54575,6 +60339,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스마트폰"
+    },
+    "ru": {
+      "term": "смартфон"
     }
   },
   "technology_media.tablet_computer": {
@@ -54607,6 +60374,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "태블릿 컴퓨터"
+    },
+    "ru": {
+      "term": "планшет"
     }
   },
   "technology_media.camera": {
@@ -54639,6 +60409,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "카메라"
+    },
+    "ru": {
+      "term": "камера"
     }
   },
   "technology_media.television": {
@@ -54671,6 +60444,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "텔레비전"
+    },
+    "ru": {
+      "term": "телевизор"
     }
   },
   "technology_media.radio": {
@@ -54703,6 +60479,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "라디오"
+    },
+    "ru": {
+      "term": "радио"
     }
   },
   "technology_media.screen": {
@@ -54736,6 +60515,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스크린"
+    },
+    "ru": {
+      "term": "экран"
     }
   },
   "technology_media.charger": {
@@ -54769,6 +60551,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "충전기"
+    },
+    "ru": {
+      "term": "зарядное устройство"
     }
   },
   "technology_media.battery": {
@@ -54801,6 +60586,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "배터리"
+    },
+    "ru": {
+      "term": "батарея"
     }
   },
   "technology_media.computer_keyboard": {
@@ -54833,6 +60621,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "컴퓨터 키보드"
+    },
+    "ru": {
+      "term": "клавиатура"
     }
   },
   "technology_media.computer_mouse": {
@@ -54865,6 +60656,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "컴퓨터 마우스"
+    },
+    "ru": {
+      "term": "мышь"
     }
   },
   "technology_media.monitor": {
@@ -54898,6 +60692,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "모니터"
+    },
+    "ru": {
+      "term": "монитор",
+      "needsReview": true,
+      "reviewNote": "en + category = the display device монитор; but de/fr/es give the verb 'to monitor/surveil' (наблюдать) — likely a source error."
     }
   },
   "technology_media.printer": {
@@ -54930,6 +60729,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "프린터"
+    },
+    "ru": {
+      "term": "принтер"
     }
   },
   "technology_media.scanner": {
@@ -54963,6 +60765,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스캐너"
+    },
+    "ru": {
+      "term": "сканер"
     }
   },
   "technology_media.webcam": {
@@ -54996,6 +60801,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "웹캠"
+    },
+    "ru": {
+      "term": "веб-камера"
     }
   },
   "technology_media.speaker": {
@@ -55028,6 +60836,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "스피커"
+    },
+    "ru": {
+      "term": "динамик"
     }
   },
   "technology_media.cable": {
@@ -55060,6 +60871,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "케이블"
+    },
+    "ru": {
+      "term": "кабель"
     }
   },
   "technology_media.adapter": {
@@ -55092,6 +60906,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "어댑터"
+    },
+    "ru": {
+      "term": "адаптер"
     }
   },
   "technology_media.projector": {
@@ -55125,6 +60942,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "프로젝터"
+    },
+    "ru": {
+      "term": "проектор"
     }
   },
   "technology_media.internet": {
@@ -55158,6 +60978,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "인터넷"
+    },
+    "ru": {
+      "term": "интернет"
     }
   },
   "technology_media.website": {
@@ -55191,6 +61014,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "웹사이트"
+    },
+    "ru": {
+      "term": "сайт"
     }
   },
   "technology_media.browser": {
@@ -55224,6 +61050,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "브라우저"
+    },
+    "ru": {
+      "term": "браузер"
     }
   },
   "technology_media.search_engine": {
@@ -55257,6 +61086,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "검색 엔진"
+    },
+    "ru": {
+      "term": "поисковая система"
     }
   },
   "technology_media.wi_fi": {
@@ -55290,6 +61122,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "Wi-Fi"
+    },
+    "ru": {
+      "term": "вайфай",
+      "needsReview": true,
+      "reviewNote": "Cyrillic colloquial form; standard written Russian usually keeps Latin 'Wi-Fi'."
     }
   },
   "technology_media.network": {
@@ -55323,6 +61160,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "네트워크"
+    },
+    "ru": {
+      "term": "сеть"
     }
   },
   "technology_media.router": {
@@ -55356,6 +61196,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "라우터"
+    },
+    "ru": {
+      "term": "роутер"
     }
   },
   "technology_media.modem": {
@@ -55389,6 +61232,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "모뎀"
+    },
+    "ru": {
+      "term": "модем"
     }
   },
   "technology_media.hotspot": {
@@ -55422,6 +61268,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "핫스팟"
+    },
+    "ru": {
+      "term": "точка доступа"
     }
   },
   "technology_media.connection": {
@@ -55454,6 +61303,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "연결"
+    },
+    "ru": {
+      "term": "соединение"
     }
   },
   "technology_media.app": {
@@ -55488,6 +61340,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "앱",
       "needsReview": true
+    },
+    "ru": {
+      "term": "приложение"
     }
   },
   "technology_media.software": {
@@ -55522,6 +61377,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소프트웨어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "программное обеспечение"
     }
   },
   "technology_media.program": {
@@ -55555,6 +61413,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "프로그램",
       "needsReview": true
+    },
+    "ru": {
+      "term": "программа"
     }
   },
   "technology_media.file": {
@@ -55589,6 +61450,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "파일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "файл"
     }
   },
   "technology_media.folder": {
@@ -55623,6 +61487,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "폴더",
       "needsReview": true
+    },
+    "ru": {
+      "term": "папка"
     }
   },
   "technology_media.document": {
@@ -55656,6 +61523,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "문서",
       "needsReview": true
+    },
+    "ru": {
+      "term": "документ"
     }
   },
   "technology_media.download": {
@@ -55690,6 +61560,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "다운로드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "скачать"
     }
   },
   "technology_media.upload": {
@@ -55724,6 +61597,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "업로드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "загрузить"
     }
   },
   "technology_media.update": {
@@ -55758,6 +61634,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "업데이트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "обновить"
     }
   },
   "technology_media.notification": {
@@ -55791,6 +61670,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "알림",
       "needsReview": true
+    },
+    "ru": {
+      "term": "уведомление"
     }
   },
   "technology_media.email": {
@@ -55825,6 +61707,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "이메일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "электронная почта"
     }
   },
   "technology_media.message": {
@@ -55858,6 +61743,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "메시지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сообщение"
     }
   },
   "technology_media.text_message": {
@@ -55892,6 +61780,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "문자 메시지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "СМС",
+      "needsReview": true,
+      "reviewNote": "Abbreviation (read эс-эм-эс); today a text is often just сообщение."
     }
   },
   "technology_media.chat": {
@@ -55926,6 +61819,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "채팅",
       "needsReview": true
+    },
+    "ru": {
+      "term": "общаться"
     }
   },
   "technology_media.video_call": {
@@ -55960,6 +61856,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "영상 통화",
       "needsReview": true
+    },
+    "ru": {
+      "term": "видеозвонок"
     }
   },
   "technology_media.phone_call": {
@@ -55993,6 +61892,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전화 통화",
       "needsReview": true
+    },
+    "ru": {
+      "term": "звонок"
     }
   },
   "technology_media.voicemail": {
@@ -56027,6 +61929,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "음성 메일",
       "needsReview": true
+    },
+    "ru": {
+      "term": "голосовая почта"
     }
   },
   "technology_media.contact": {
@@ -56060,6 +61965,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "연락",
       "needsReview": true
+    },
+    "ru": {
+      "term": "контакт"
     }
   },
   "technology_media.username": {
@@ -56094,6 +62002,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사용자 이름",
       "needsReview": true
+    },
+    "ru": {
+      "term": "имя пользователя"
     }
   },
   "technology_media.profile": {
@@ -56128,6 +62039,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "프로필",
       "needsReview": true
+    },
+    "ru": {
+      "term": "профиль"
     }
   },
   "technology_media.social_media": {
@@ -56162,6 +62076,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소셜 미디어",
       "needsReview": true
+    },
+    "ru": {
+      "term": "социальные сети"
     }
   },
   "technology_media.post": {
@@ -56196,6 +62113,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "포스트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пост"
     }
   },
   "technology_media.comment": {
@@ -56229,6 +62149,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "코멘트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "комментарий"
     }
   },
   "technology_media.like_button": {
@@ -56262,6 +62185,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "좋아요 버튼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кнопка лайка",
+      "needsReview": true,
+      "reviewNote": "Multi-word; no single common word — лайк = the like itself."
     }
   },
   "technology_media.share_button": {
@@ -56295,6 +62223,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "공유 버튼",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кнопка «Поделиться»",
+      "needsReview": true,
+      "reviewNote": "Multi-word; «Поделиться» is the UI button label."
     }
   },
   "technology_media.follower": {
@@ -56328,6 +62261,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "추종자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "подписчик"
     }
   },
   "technology_media.channel": {
@@ -56362,6 +62298,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "채널",
       "needsReview": true
+    },
+    "ru": {
+      "term": "канал"
     }
   },
   "technology_media.livestream": {
@@ -56396,6 +62335,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "실시간 스트리밍",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стрим"
     }
   },
   "technology_media.podcast": {
@@ -56430,6 +62372,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "팟캐스트",
       "needsReview": true
+    },
+    "ru": {
+      "term": "подкаст"
     }
   },
   "technology_media.blog": {
@@ -56464,6 +62409,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "블로그",
       "needsReview": true
+    },
+    "ru": {
+      "term": "блог"
     }
   },
   "technology_media.photo": {
@@ -56497,6 +62445,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사진",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фотография"
     }
   },
   "technology_media.video": {
@@ -56531,6 +62482,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비디오",
       "needsReview": true
+    },
+    "ru": {
+      "term": "видео"
     }
   },
   "technology_media.selfie": {
@@ -56565,6 +62519,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "셀카",
       "needsReview": true
+    },
+    "ru": {
+      "term": "селфи"
     }
   },
   "technology_media.clip": {
@@ -56599,6 +62556,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "클립",
       "needsReview": true
+    },
+    "ru": {
+      "term": "клип",
+      "needsReview": true,
+      "reviewNote": "Media/video clip assumed from tech context; fr 'agrafe' suggests paper clip = скрепка."
     }
   },
   "technology_media.frame": {
@@ -56632,6 +62594,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "프레임",
       "needsReview": true
+    },
+    "ru": {
+      "term": "рамка",
+      "needsReview": true,
+      "reviewNote": "frame/border per de/fr/es; in a photo/video context this could be кадр (a single frame/shot)."
     }
   },
   "technology_media.lens": {
@@ -56665,6 +62632,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "렌즈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "объектив"
     }
   },
   "technology_media.tripod": {
@@ -56699,6 +62669,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "삼각대",
       "needsReview": true
+    },
+    "ru": {
+      "term": "штатив"
     }
   },
   "technology_media.filter": {
@@ -56732,6 +62705,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "필터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фильтр"
     }
   },
   "technology_media.caption": {
@@ -56766,6 +62742,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "캡션",
       "needsReview": true
+    },
+    "ru": {
+      "term": "подпись"
     }
   },
   "technology_media.thumbnail": {
@@ -56800,6 +62779,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "미리보기 이미지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "миниатюра"
     }
   },
   "technology_media.streaming": {
@@ -56834,6 +62816,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스트리밍",
       "needsReview": true
+    },
+    "ru": {
+      "term": "стриминг"
     }
   },
   "technology_media.movie": {
@@ -56867,6 +62852,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "영화",
       "needsReview": true
+    },
+    "ru": {
+      "term": "фильм"
     }
   },
   "technology_media.series": {
@@ -56900,6 +62888,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "시리즈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сериал"
     }
   },
   "technology_media.episode": {
@@ -56933,6 +62924,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "에피소드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "серия"
     }
   },
   "technology_media.news": {
@@ -56966,6 +62960,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "뉴스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "новости"
     }
   },
   "technology_media.article": {
@@ -56999,6 +62996,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "기사",
       "needsReview": true
+    },
+    "ru": {
+      "term": "статья"
     }
   },
   "technology_media.advertisement": {
@@ -57033,6 +63033,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "광고",
       "needsReview": true
+    },
+    "ru": {
+      "term": "реклама"
     }
   },
   "technology_media.subtitle": {
@@ -57067,6 +63070,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "자막",
       "needsReview": true
+    },
+    "ru": {
+      "term": "субтитр"
     }
   },
   "technology_media.animation": {
@@ -57101,6 +63107,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "애니메이션",
       "needsReview": true
+    },
+    "ru": {
+      "term": "анимация"
     }
   },
   "technology_media.subscription": {
@@ -57134,6 +63143,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "구독",
       "needsReview": true
+    },
+    "ru": {
+      "term": "подписка"
     }
   },
   "technology_media.password": {
@@ -57168,6 +63180,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비밀번호",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пароль"
     }
   },
   "technology_media.passcode": {
@@ -57202,6 +63217,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비밀번호",
       "needsReview": true
+    },
+    "ru": {
+      "term": "код доступа",
+      "needsReview": true,
+      "reviewNote": "passcode / access code; overlaps with пароль (password), which is also commonly used."
     }
   },
   "technology_media.login": {
@@ -57236,6 +63256,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "로그인",
       "needsReview": true
+    },
+    "ru": {
+      "term": "вход",
+      "needsReview": true,
+      "reviewNote": "Noun 'login' = вход; the action 'to log in' (de/es) = войти."
     }
   },
   "technology_media.account": {
@@ -57269,6 +63294,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "계정",
       "needsReview": true
+    },
+    "ru": {
+      "term": "аккаунт"
     }
   },
   "technology_media.cloud_storage": {
@@ -57302,6 +63330,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "클라우드 스토리지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "облачное хранилище"
     }
   },
   "technology_media.backup": {
@@ -57336,6 +63367,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "백업",
       "needsReview": true
+    },
+    "ru": {
+      "term": "резервная копия"
     }
   },
   "technology_media.data": {
@@ -57369,6 +63403,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "데이터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "данные"
     }
   },
   "technology_media.database": {
@@ -57403,6 +63440,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "데이터베이스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "база данных"
     }
   },
   "technology_media.server": {
@@ -57437,6 +63477,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "서버",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сервер"
     }
   },
   "technology_media.firewall": {
@@ -57471,6 +63514,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "방화벽",
       "needsReview": true
+    },
+    "ru": {
+      "term": "брандмауэр"
     }
   },
   "technology_media.artificial_intelligence": {
@@ -57504,6 +63550,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "인공지능",
       "needsReview": true
+    },
+    "ru": {
+      "term": "искусственный интеллект"
     }
   },
   "technology_media.robot": {
@@ -57538,6 +63587,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "로봇",
       "needsReview": true
+    },
+    "ru": {
+      "term": "робот"
     }
   },
   "technology_media.drone": {
@@ -57572,6 +63624,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "드론",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дрон"
     }
   },
   "technology_media.virtual_reality": {
@@ -57605,6 +63660,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가상 현실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "виртуальная реальность"
     }
   },
   "technology_media.augmented_reality": {
@@ -57638,6 +63696,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "증강 현실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "дополненная реальность"
     }
   },
   "technology_media.smart_home": {
@@ -57671,6 +63732,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "스마트 홈",
       "needsReview": true
+    },
+    "ru": {
+      "term": "умный дом"
     }
   },
   "technology_media.3d_printer": {
@@ -57704,6 +63768,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "3D 프린터",
       "needsReview": true
+    },
+    "ru": {
+      "term": "3D-принтер",
+      "needsReview": true,
+      "reviewNote": "Standard Russian keeps '3D'; a fully-Cyrillic 'трёхмерный принтер' is rare/unnatural."
     }
   },
   "technology_media.cryptocurrency": {
@@ -57738,6 +63807,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "암호화폐",
       "needsReview": true
+    },
+    "ru": {
+      "term": "криптовалюта"
     }
   },
   "technology_media.algorithm": {
@@ -57772,6 +63844,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "알고리즘",
       "needsReview": true
+    },
+    "ru": {
+      "term": "алгоритм"
     }
   },
   "technology_media.sensor": {
@@ -57806,6 +63881,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "센서",
       "needsReview": true
+    },
+    "ru": {
+      "term": "датчик"
     }
   },
   "money_shopping_services.money": {
@@ -57838,6 +63916,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "돈"
+    },
+    "ru": {
+      "term": "деньги"
     }
   },
   "money_shopping_services.cash": {
@@ -57870,6 +63951,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "현금"
+    },
+    "ru": {
+      "term": "наличные"
     }
   },
   "money_shopping_services.coin": {
@@ -57902,6 +63986,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "동전"
+    },
+    "ru": {
+      "term": "монета"
     }
   },
   "money_shopping_services.banknote": {
@@ -57934,6 +64021,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "지폐"
+    },
+    "ru": {
+      "term": "банкнота"
     }
   },
   "money_shopping_services.wallet": {
@@ -57966,6 +64056,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "지갑"
+    },
+    "ru": {
+      "term": "кошелёк"
     }
   },
   "money_shopping_services.price": {
@@ -57998,6 +64091,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "가격"
+    },
+    "ru": {
+      "term": "цена"
     }
   },
   "money_shopping_services.receipt": {
@@ -58030,6 +64126,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "영수증"
+    },
+    "ru": {
+      "term": "чек"
     }
   },
   "money_shopping_services.payment": {
@@ -58062,6 +64161,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "결제"
+    },
+    "ru": {
+      "term": "платёж"
     }
   },
   "money_shopping_services.shop": {
@@ -58094,6 +64196,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "가게"
+    },
+    "ru": {
+      "term": "магазин"
     }
   },
   "money_shopping_services.shopping_bag": {
@@ -58127,6 +64232,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "쇼핑백"
+    },
+    "ru": {
+      "term": "сумка",
+      "needsReview": true,
+      "reviewNote": "Multi-word source; сумка = generic/reusable bag; пакет = plastic carrier bag."
     }
   },
   "money_shopping_services.buy": {
@@ -58159,6 +64269,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "사다"
+    },
+    "ru": {
+      "term": "покупать"
     }
   },
   "money_shopping_services.sell": {
@@ -58191,6 +64304,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "팔다"
+    },
+    "ru": {
+      "term": "продавать"
     }
   },
   "money_shopping_services.pay": {
@@ -58223,6 +64339,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "지불하다"
+    },
+    "ru": {
+      "term": "платить"
     }
   },
   "money_shopping_services.spend": {
@@ -58255,6 +64374,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "쓰다"
+    },
+    "ru": {
+      "term": "тратить"
     }
   },
   "money_shopping_services.save": {
@@ -58287,6 +64409,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "저축하다"
+    },
+    "ru": {
+      "term": "сохранять",
+      "needsReview": true,
+      "reviewNote": "de speichern/fr enregistrer/es guardar = store/keep sense (сохранять), not 'save money' (копить/экономить)."
     }
   },
   "money_shopping_services.cost": {
@@ -58319,6 +64446,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "비용이 들다"
+    },
+    "ru": {
+      "term": "стоимость"
     }
   },
   "money_shopping_services.charge": {
@@ -58351,6 +64481,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "청구하다"
+    },
+    "ru": {
+      "term": "плата",
+      "needsReview": true,
+      "reviewNote": "Source mixes noun (de Gebühr=fee -> плата) and verb (fr facturer/es cargar=to bill -> взимать)."
     }
   },
   "money_shopping_services.borrow": {
@@ -58383,6 +64518,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "빌리다"
+    },
+    "ru": {
+      "term": "занимать",
+      "needsReview": true,
+      "reviewNote": "занимать also = 'to occupy'; брать взаймы is unambiguous 'to borrow'."
     }
   },
   "money_shopping_services.lend": {
@@ -58415,6 +64555,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "빌려주다"
+    },
+    "ru": {
+      "term": "одалживать",
+      "needsReview": true,
+      "reviewNote": "lend/borrow easily confused; одалживать=lend; одолжить colloquially can mean both; давать взаймы is unambiguous."
     }
   },
   "money_shopping_services.rent": {
@@ -58447,6 +64592,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "임대하다"
+    },
+    "ru": {
+      "term": "арендовать",
+      "needsReview": true,
+      "reviewNote": "Source mixes verb (fr louer/es alquilar=to rent -> арендовать/снимать) and noun (de Miete=rent -> аренда); the noun is covered by rent_payment."
     }
   },
   "money_shopping_services.cheap": {
@@ -58479,6 +64629,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "싸다"
+    },
+    "ru": {
+      "term": "дешёвый"
     }
   },
   "money_shopping_services.expensive": {
@@ -58511,6 +64664,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "비싸다"
+    },
+    "ru": {
+      "term": "дорогой"
     }
   },
   "money_shopping_services.free": {
@@ -58543,6 +64699,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "무료인"
+    },
+    "ru": {
+      "term": "бесплатный"
     }
   },
   "money_shopping_services.discount": {
@@ -58575,6 +64734,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "할인"
+    },
+    "ru": {
+      "term": "скидка"
     }
   },
   "money_shopping_services.sale": {
@@ -58607,6 +64769,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "세일"
+    },
+    "ru": {
+      "term": "продажа",
+      "needsReview": true,
+      "reviewNote": "de Verkauf/fr vente/es venta = act of selling (продажа); English 'sale' may mean a discount event (распродажа)."
     }
   },
   "money_shopping_services.coupon": {
@@ -58639,6 +64806,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "쿠폰"
+    },
+    "ru": {
+      "term": "купон"
     }
   },
   "money_shopping_services.bargain": {
@@ -58671,6 +64841,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "특가"
+    },
+    "ru": {
+      "term": "торговаться",
+      "needsReview": true,
+      "reviewNote": "Source mixes verb (fr négocier/es negociar=to haggle -> торговаться) and noun (de Schnäppchen=a good deal -> выгодная покупка)."
     }
   },
   "money_shopping_services.tax": {
@@ -58703,6 +64878,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "세금"
+    },
+    "ru": {
+      "term": "налог"
     }
   },
   "money_shopping_services.tip": {
@@ -58736,6 +64914,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "팁"
+    },
+    "ru": {
+      "term": "чаевые",
+      "needsReview": true,
+      "reviewNote": "Category=money -> gratuity (чаевые); but de Tipp/fr conseil = advice (совет) — source conflict."
     }
   },
   "money_shopping_services.total": {
@@ -58768,6 +64951,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     },
     "ko": {
       "term": "합계"
+    },
+    "ru": {
+      "term": "итог"
     }
   },
   "money_shopping_services.shopping_cart": {
@@ -58802,6 +64988,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "장바구니",
       "needsReview": true
+    },
+    "ru": {
+      "term": "тележка",
+      "needsReview": true,
+      "reviewNote": "Multi-word source; тележка=wheeled store cart; online shopping cart=корзина."
     }
   },
   "money_shopping_services.shopping_basket": {
@@ -58836,6 +65027,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "장바구니",
       "needsReview": true
+    },
+    "ru": {
+      "term": "корзина"
     }
   },
   "money_shopping_services.checkout": {
@@ -58870,6 +65064,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "결제",
       "needsReview": true
+    },
+    "ru": {
+      "term": "касса"
     }
   },
   "money_shopping_services.cash_register": {
@@ -58904,6 +65101,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "금전 등록기",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кассовый аппарат",
+      "needsReview": true,
+      "reviewNote": "Multi-word; кассовый аппарат=register device; касса (colloquial) also used."
     }
   },
   "money_shopping_services.barcode": {
@@ -58938,6 +65140,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "바코드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "штрихкод"
     }
   },
   "money_shopping_services.price_tag": {
@@ -58971,6 +65176,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "가격표",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ценник"
     }
   },
   "money_shopping_services.display_shelf": {
@@ -59004,6 +65212,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "진열대",
       "needsReview": true
+    },
+    "ru": {
+      "term": "витрина",
+      "needsReview": true,
+      "reviewNote": "Multi-word source; витрина=display case/window; стеллаж=shelving unit; полка=shelf."
     }
   },
   "money_shopping_services.product": {
@@ -59037,6 +65250,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "제품",
       "needsReview": true
+    },
+    "ru": {
+      "term": "продукт"
     }
   },
   "money_shopping_services.item": {
@@ -59070,6 +65286,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "아이템",
       "needsReview": true
+    },
+    "ru": {
+      "term": "товар"
     }
   },
   "money_shopping_services.package": {
@@ -59103,6 +65322,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "패키지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пакет",
+      "needsReview": true,
+      "reviewNote": "пакет=package/packet; посылка=mailed parcel; упаковка=packaging."
     }
   },
   "money_shopping_services.bank_account": {
@@ -59137,6 +65361,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "은행 계좌",
       "needsReview": true
+    },
+    "ru": {
+      "term": "банковский счёт",
+      "needsReview": true,
+      "reviewNote": "Multi-word; standard term банковский счёт; счёт alone=account/bill."
     }
   },
   "money_shopping_services.savings_account": {
@@ -59171,6 +65400,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "저축 계좌",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сберегательный счёт",
+      "needsReview": true,
+      "reviewNote": "Multi-word; сберегательный счёт; накопительный счёт=modern savings account."
     }
   },
   "money_shopping_services.checking_account": {
@@ -59204,6 +65438,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "당좌 예금 계좌",
       "needsReview": true
+    },
+    "ru": {
+      "term": "текущий счёт",
+      "needsReview": true,
+      "reviewNote": "Multi-word; no exact RU equivalent (checks unused); текущий счёт=current account; расчётный счёт=business settlement account."
     }
   },
   "money_shopping_services.atm": {
@@ -59238,6 +65477,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "ATM",
       "needsReview": true
+    },
+    "ru": {
+      "term": "банкомат"
     }
   },
   "money_shopping_services.bank_card": {
@@ -59271,6 +65513,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "은행 카드",
       "needsReview": true
+    },
+    "ru": {
+      "term": "банковская карта",
+      "needsReview": true,
+      "reviewNote": "Multi-word; банковская карта; карта (colloquial)."
     }
   },
   "money_shopping_services.deposit": {
@@ -59304,6 +65551,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "예금",
       "needsReview": true
+    },
+    "ru": {
+      "term": "депозит",
+      "needsReview": true,
+      "reviewNote": "Banking deposit=депозит/вклад (pairs with withdrawal); de Anzahlung=down payment (задаток/предоплата) — source conflict."
     }
   },
   "money_shopping_services.withdrawal": {
@@ -59337,6 +65589,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "철수",
       "needsReview": true
+    },
+    "ru": {
+      "term": "снятие",
+      "needsReview": true,
+      "reviewNote": "de Rückzug=retreat (mistranslation); intended=account withdrawal=снятие (денег/наличных)."
     }
   },
   "money_shopping_services.money_transfer": {
@@ -59370,6 +65627,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "송금",
       "needsReview": true
+    },
+    "ru": {
+      "term": "денежный перевод",
+      "needsReview": true,
+      "reviewNote": "Multi-word; денежный перевод; перевод alone also = 'translation'."
     }
   },
   "money_shopping_services.loan": {
@@ -59403,6 +65665,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "대출",
       "needsReview": true
+    },
+    "ru": {
+      "term": "кредит"
     }
   },
   "money_shopping_services.interest": {
@@ -59436,6 +65701,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "관심",
       "needsReview": true
+    },
+    "ru": {
+      "term": "проценты",
+      "needsReview": true,
+      "reviewNote": "Financial interest=проценты (on loan/deposit), naturally plural; de Interesse=curiosity (интерес) — wrong sense."
     }
   },
   "money_shopping_services.online_store": {
@@ -59469,6 +65739,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "온라인 상점",
       "needsReview": true
+    },
+    "ru": {
+      "term": "интернет-магазин"
     }
   },
   "money_shopping_services.shopping_app": {
@@ -59503,6 +65776,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "쇼핑 앱",
       "needsReview": true
+    },
+    "ru": {
+      "term": "приложение для покупок",
+      "needsReview": true,
+      "reviewNote": "Multi-word; приложение для покупок; also торговое приложение."
     }
   },
   "money_shopping_services.online_order": {
@@ -59536,6 +65814,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "온라인 주문",
       "needsReview": true
+    },
+    "ru": {
+      "term": "онлайн-заказ"
     }
   },
   "money_shopping_services.checkout_page": {
@@ -59569,6 +65850,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "결제 페이지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "страница оплаты",
+      "needsReview": true,
+      "reviewNote": "Multi-word; страница оплаты=payment page; страница оформления заказа=order page."
     }
   },
   "money_shopping_services.delivery": {
@@ -59602,6 +65888,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "배달",
       "needsReview": true
+    },
+    "ru": {
+      "term": "доставка"
     }
   },
   "money_shopping_services.shipping": {
@@ -59635,6 +65924,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "배송",
       "needsReview": true
+    },
+    "ru": {
+      "term": "отправка",
+      "needsReview": true,
+      "reviewNote": "shipping/delivery overlap in RU; отправка=dispatch/sending; доставка=delivery (also 'shipping' in e-commerce)."
     }
   },
   "money_shopping_services.tracking_number": {
@@ -59668,6 +65962,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "추적 번호",
       "needsReview": true
+    },
+    "ru": {
+      "term": "трек-номер",
+      "needsReview": true,
+      "reviewNote": "Multi-word source; трек-номер (colloquial, common); номер отслеживания (formal)."
     }
   },
   "money_shopping_services.return": {
@@ -59701,6 +66000,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "반환",
       "needsReview": true
+    },
+    "ru": {
+      "term": "возврат",
+      "needsReview": true,
+      "reviewNote": "Shopping sense=возврат (товара)=product return; de Rückkehr/es regresar=coming back (возвращение) — different sense."
     }
   },
   "money_shopping_services.refund": {
@@ -59735,6 +66039,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "환불",
       "needsReview": true
+    },
+    "ru": {
+      "term": "возврат средств",
+      "needsReview": true,
+      "reviewNote": "Multi-word; возврат средств/возврат денег=money refund; cf. return=возврат (goods)."
     }
   },
   "money_shopping_services.review": {
@@ -59768,6 +66077,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "검토",
       "needsReview": true
+    },
+    "ru": {
+      "term": "отзыв",
+      "needsReview": true,
+      "reviewNote": "Shopping sense=отзыв (customer review); рецензия=critic's review; fr examen/es revisar=examination/to review — off sense."
     }
   },
   "money_shopping_services.service": {
@@ -59801,6 +66115,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "서비스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "услуга"
     }
   },
   "money_shopping_services.appointment": {
@@ -59835,6 +66152,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "약속",
       "needsReview": true
+    },
+    "ru": {
+      "term": "запись",
+      "needsReview": true,
+      "reviewNote": "запись=booking/appointment slot; приём=appointment (doctor); встреча=meeting."
     }
   },
   "money_shopping_services.repair_service": {
@@ -59868,6 +66190,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수리 서비스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ремонт",
+      "needsReview": true,
+      "reviewNote": "Multi-word; ремонт=repair; ремонтная мастерская=repair shop; сервисный центр=service center."
     }
   },
   "money_shopping_services.cleaning_service": {
@@ -59901,6 +66228,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "청소 서비스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "уборка",
+      "needsReview": true,
+      "reviewNote": "Multi-word; уборка=cleaning; клининг/клининговая служба=cleaning company."
     }
   },
   "money_shopping_services.laundry_service": {
@@ -59934,6 +66266,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "세탁 서비스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "прачечная"
     }
   },
   "money_shopping_services.delivery_service": {
@@ -59967,6 +66302,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "배달 서비스",
       "needsReview": true
+    },
+    "ru": {
+      "term": "служба доставки",
+      "needsReview": true,
+      "reviewNote": "Multi-word; служба доставки=delivery company; доставка=delivery (act)."
     }
   },
   "money_shopping_services.customer_support": {
@@ -60000,6 +66340,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "고객 지원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "поддержка клиентов",
+      "needsReview": true,
+      "reviewNote": "Multi-word; поддержка клиентов; служба поддержки also common."
     }
   },
   "money_shopping_services.help_desk": {
@@ -60033,6 +66378,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "헬프 데스크",
       "needsReview": true
+    },
+    "ru": {
+      "term": "служба поддержки",
+      "needsReview": true,
+      "reviewNote": "Multi-word; служба поддержки/техподдержка=help desk; справочная=info desk."
     }
   },
   "money_shopping_services.warranty": {
@@ -60066,6 +66416,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "보증",
       "needsReview": true
+    },
+    "ru": {
+      "term": "гарантия"
     }
   },
   "money_shopping_services.membership": {
@@ -60099,6 +66452,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "회원",
       "needsReview": true
+    },
+    "ru": {
+      "term": "членство"
     }
   },
   "money_shopping_services.bill": {
@@ -60133,6 +66489,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "계산서",
       "needsReview": true
+    },
+    "ru": {
+      "term": "счёт"
     }
   },
   "money_shopping_services.invoice": {
@@ -60167,6 +66526,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "송장",
       "needsReview": true
+    },
+    "ru": {
+      "term": "счёт",
+      "needsReview": true,
+      "reviewNote": "invoice=счёт (same word as 'bill' in RU); счёт-фактура=formal tax invoice."
     }
   },
   "money_shopping_services.rent_payment": {
@@ -60200,6 +66564,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "임대료 지불",
       "needsReview": true
+    },
+    "ru": {
+      "term": "арендная плата",
+      "needsReview": true,
+      "reviewNote": "Multi-word; арендная плата=rent payment; квартплата=housing rent (+utilities)."
     }
   },
   "money_shopping_services.electricity_bill": {
@@ -60233,6 +66602,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전기요금",
       "needsReview": true
+    },
+    "ru": {
+      "term": "счёт за электричество",
+      "needsReview": true,
+      "reviewNote": "Multi-word; счёт за электричество/электроэнергию."
     }
   },
   "money_shopping_services.water_bill": {
@@ -60266,6 +66640,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "수도요금",
       "needsReview": true
+    },
+    "ru": {
+      "term": "счёт за воду",
+      "needsReview": true,
+      "reviewNote": "Multi-word; счёт за воду."
     }
   },
   "money_shopping_services.phone_bill": {
@@ -60299,6 +66678,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "전화요금",
       "needsReview": true
+    },
+    "ru": {
+      "term": "счёт за телефон",
+      "needsReview": true,
+      "reviewNote": "Multi-word; счёт за телефон."
     }
   },
   "money_shopping_services.internet_bill": {
@@ -60332,6 +66716,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "인터넷 청구서",
       "needsReview": true
+    },
+    "ru": {
+      "term": "счёт за интернет",
+      "needsReview": true,
+      "reviewNote": "Multi-word; счёт за интернет."
     }
   },
   "money_shopping_services.service_fee": {
@@ -60365,6 +66754,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "서비스 요금",
       "needsReview": true
+    },
+    "ru": {
+      "term": "сервисный сбор",
+      "needsReview": true,
+      "reviewNote": "Multi-word; сервисный сбор/плата за обслуживание/комиссия."
     }
   },
   "money_shopping_services.late_fee": {
@@ -60398,6 +66792,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "연체료",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пеня",
+      "needsReview": true,
+      "reviewNote": "Multi-word source; пеня=late-payment penalty; штраф за просрочку=late fee (fuller)."
     }
   },
   "money_shopping_services.fine": {
@@ -60431,6 +66830,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "괜찮아",
       "needsReview": true
+    },
+    "ru": {
+      "term": "штраф",
+      "needsReview": true,
+      "reviewNote": "Category=money -> штраф (penalty); but de gut/fr bien/es bien = 'fine=good/okay' (хорошо) — wrong sense in source."
     }
   },
   "money_shopping_services.salary": {
@@ -60464,6 +66868,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "급여",
       "needsReview": true
+    },
+    "ru": {
+      "term": "зарплата"
     }
   },
   "money_shopping_services.wage": {
@@ -60497,6 +66904,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "임금",
       "needsReview": true
+    },
+    "ru": {
+      "term": "заработная плата",
+      "needsReview": true,
+      "reviewNote": "RU doesn't distinguish wage/salary; заработная плата=formal 'wages' (=зарплата); оклад=fixed salary rate."
     }
   },
   "money_shopping_services.income": {
@@ -60530,6 +66942,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "소득",
       "needsReview": true
+    },
+    "ru": {
+      "term": "доход"
     }
   },
   "money_shopping_services.budget": {
@@ -60563,6 +66978,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "예산",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бюджет"
     }
   },
   "money_shopping_services.expense": {
@@ -60596,6 +67014,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "비용",
       "needsReview": true
+    },
+    "ru": {
+      "term": "расход"
     }
   },
   "money_shopping_services.profit": {
@@ -60629,6 +67050,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "이익",
       "needsReview": true
+    },
+    "ru": {
+      "term": "прибыль"
     }
   },
   "money_shopping_services.loss": {
@@ -60662,6 +67086,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "손실",
       "needsReview": true
+    },
+    "ru": {
+      "term": "убыток"
     }
   },
   "money_shopping_services.investment": {
@@ -60695,6 +67122,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "투자",
       "needsReview": true
+    },
+    "ru": {
+      "term": "инвестиция"
     }
   },
   "money_shopping_services.business": {
@@ -60728,6 +67158,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "사업",
       "needsReview": true
+    },
+    "ru": {
+      "term": "бизнес"
     }
   },
   "money_shopping_services.contract": {
@@ -60761,6 +67194,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "계약",
       "needsReview": true
+    },
+    "ru": {
+      "term": "договор"
     }
   },
   "money_shopping_services.currency": {
@@ -60794,6 +67230,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "통화",
       "needsReview": true
+    },
+    "ru": {
+      "term": "валюта"
     }
   },
   "money_shopping_services.exchange_rate": {
@@ -60828,6 +67267,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "환율",
       "needsReview": true
+    },
+    "ru": {
+      "term": "курс валют",
+      "needsReview": true,
+      "reviewNote": "Multi-word; курс валют/валютный курс/обменный курс; курс alone=rate (ambiguous)."
     }
   },
   "money_shopping_services.inflation": {
@@ -60862,6 +67306,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "인플레이션",
       "needsReview": true
+    },
+    "ru": {
+      "term": "инфляция"
     }
   },
   "money_shopping_services.debt": {
@@ -60895,6 +67342,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "부채",
       "needsReview": true
+    },
+    "ru": {
+      "term": "долг"
     }
   },
   "money_shopping_services.mortgage": {
@@ -60928,6 +67378,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "모기지",
       "needsReview": true
+    },
+    "ru": {
+      "term": "ипотека"
     }
   },
   "money_shopping_services.insurance": {
@@ -60962,6 +67415,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "보험",
       "needsReview": true
+    },
+    "ru": {
+      "term": "страховка"
     }
   },
   "money_shopping_services.premium": {
@@ -60996,6 +67452,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "프리미엄",
       "needsReview": true
+    },
+    "ru": {
+      "term": "страховая премия",
+      "needsReview": true,
+      "reviewNote": "Context (after insurance)=insurance premium=страховая премия/страховой взнос; премия alone=bonus/prize."
     }
   },
   "money_shopping_services.pension": {
@@ -61029,6 +67490,9 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "연금",
       "needsReview": true
+    },
+    "ru": {
+      "term": "пенсия"
     }
   },
   "money_shopping_services.stock": {
@@ -61063,6 +67527,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "주식",
       "needsReview": true
+    },
+    "ru": {
+      "term": "акция",
+      "needsReview": true,
+      "reviewNote": "Finance sense=акции (shares) per fr actions/es valores; de Lager=inventory/stock (запас) — different sense."
     }
   },
   "money_shopping_services.bond": {
@@ -61096,6 +67565,11 @@ export const STATIC_CATEGORY_TRANSLATIONS = {
     "ko": {
       "term": "채권",
       "needsReview": true
+    },
+    "ru": {
+      "term": "облигация",
+      "needsReview": true,
+      "reviewNote": "Finance sense=облигация (bond); de Bindung/fr lien/es vínculo=tie/link (связь/узы) — wrong sense in source."
     }
   }
 } as const

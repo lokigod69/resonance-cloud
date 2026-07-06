@@ -27,6 +27,7 @@ export const LANGUAGE_CONFIG: Record<string, { name: string; nativeName: string;
   id:  { name: 'Indonesian', nativeName: 'Bahasa Indonesia', encouragement: 'Bagus sekali! / Hebat! / Benar!' },
   ko:  { name: 'Korean',    nativeName: '한국어',            encouragement: '잘했어요! / 훌륭해요! / 맞아요!' },
   ceb: { name: 'Cebuano',   nativeName: 'Bisaya',           encouragement: 'Maayo kaayo! / Husto! / Sakto!' },
+  ru:  { name: 'Russian',   nativeName: 'Русский',          encouragement: 'Отлично! / Молодец! / Правильно!' },
 }
 
 // Native language names for browser language codes not in LANGUAGE_CONFIG

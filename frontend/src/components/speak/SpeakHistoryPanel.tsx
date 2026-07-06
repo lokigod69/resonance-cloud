@@ -113,6 +113,7 @@ const LANGUAGE_NAMES: Record<string, string> = {
   fil: 'Filipino',
   id:  'Bahasa Indonesia',
   ko:  '한국어',
+  ru:  'Русский',
 }
 
 const LEVEL_EMOJI: Record<string, string> = {

@@ -44,7 +44,7 @@ export const LANGUAGES: Language[] = [
   { value: 'Hindi',      nativeName: 'हिन्दी',              code: 'hi',  landingColor: '#F9A825',                                                         isLanding: true,  isSpeak: true },
   { value: 'Portuguese', nativeName: 'Português',         code: 'pt',                                                                                                     isSpeak: true },
   { value: 'Arabic',     nativeName: 'العربية',           code: 'ar',                                                                                                     isSpeak: true },
-  { value: 'Russian',    nativeName: 'Русский',           code: 'ru',                           wizardColor: '#14b8a6',                isWizard: true },
+  { value: 'Russian',    nativeName: 'Русский',           code: 'ru',  landingColor: '#3A5FCD', wizardColor: '#14b8a6', isWizard: true,  isLanding: true,  isSpeak: true },
 ]
 
 /** Build a "Native (English)" label, collapsing to a single name when they match. */

@@ -56,6 +56,7 @@ export const DRIFT_PHRASES: { text: string; lang: string }[] = [
   { text: 'golf', lang: 'nl' },
   { text: 'balud', lang: 'ceb' },
   { text: 'cantar', lang: 'pt' },
+  { text: 'помнить', lang: 'ru' },
 ]
 
 export const GREETINGS: { text: string; lang: string }[] = [
@@ -71,6 +72,7 @@ export const GREETINGS: { text: string; lang: string }[] = [
   { text: 'नमस्ते', lang: 'hi' },
   { text: 'Olá', lang: 'pt' },
   { text: 'مرحبا', lang: 'ar' },
+  { text: 'Привет', lang: 'ru' },
 ]
 
 // Landing showcase chips, derived from the shared LANGUAGES module.
@@ -90,6 +92,7 @@ const LANDING_ORDER = [
   'Spanish',
   'Hindi',
   'Korean',
+  'Russian',
 ]
 
 const COSMOS_LANGUAGE_COLOR = '#46334F'
