@@ -9,6 +9,7 @@ export const routeImports = {
   landingExperimentIndex: () => import('@/landing-experiments/hybrid-a/LandingExperimentIndex'),
   dashboard: () => import('@/pages/Dashboard'),
   dashboardPG: () => import('@/pages/DashboardPG'),
+  lens: () => import('@/pages/Lens'),
   today: () => import('@/pages/Today'),
   guidedCheckpoint: () => import('@/pages/GuidedCheckpoint'),
   categoryList: () => import('@/pages/categories/CategoryListPage'),

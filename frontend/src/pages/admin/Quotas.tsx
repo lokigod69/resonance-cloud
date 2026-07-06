@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 
-type QuotaAction = 'voice_chat' | 'guided_transcribe' | 'suggest_words' | 'grok_token'
+type QuotaAction = 'voice_chat' | 'guided_transcribe' | 'suggest_words' | 'grok_token' | 'visual_scan'
 
 type QuotaSettings = {
   enforcement_enabled: boolean
@@ -41,9 +41,10 @@ const ACTION_LABELS: Record<QuotaAction, string> = {
   guided_transcribe: 'Guided Today STT',
   suggest_words: 'suggest_words',
   grok_token: 'grok_token',
+  visual_scan: 'Lens visual scan',
 }
 
-const ACTION_ORDER: QuotaAction[] = ['voice_chat', 'guided_transcribe', 'suggest_words', 'grok_token']
+const ACTION_ORDER: QuotaAction[] = ['voice_chat', 'guided_transcribe', 'suggest_words', 'grok_token', 'visual_scan']
 
 function formatDate(value: string | null): string {
   if (!value) return 'Never'

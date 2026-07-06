@@ -23,6 +23,7 @@ import {
   routeImports,
   scheduleIdleRoutePrefetch,
 } from '@/routes/routeImports'
+import { VISUAL_LENS_ENABLED } from '@/lib/productFlags'
 
 const LandingPage = lazyWithRetry(routeImports.landingPage, 'landing-page')
 const Login = lazyWithRetry(routeImports.login, 'login')
@@ -39,6 +40,7 @@ const HybridBLanding = lazyWithRetry(routeImports.hybridBLanding, 'hybrid-b-land
 const LandingExperimentIndex = lazyWithRetry(routeImports.landingExperimentIndex, 'landing-experiment-index')
 const Dashboard = lazyWithRetry(routeImports.dashboard, 'dashboard')
 const DashboardPG = lazyWithRetry(routeImports.dashboardPG, 'dashboard-pg')
+const Lens = lazyWithRetry(routeImports.lens, 'lens')
 const Today = lazyWithRetry(routeImports.today, 'today')
 const GuidedCheckpoint = lazyWithRetry(routeImports.guidedCheckpoint, 'guided-checkpoint')
 const CategoryListPage = lazyWithRetry(routeImports.categoryList, 'category-list')
@@ -219,6 +221,7 @@ function AppRoutes() {
         />
         {/* Canvas is a headerless immersion mode (like the games above) — lifted out of the skin layouts so no global header overlaps its toolbar */}
         <Route path="/study/canvas" element={<StudyCanvas />} />
+        {VISUAL_LENS_ENABLED ? <Route path="/lens" element={<Lens />} /> : null}
 
         {/* User-facing routes — skin-aware layout */}
         {skin === 'glassy' ? (

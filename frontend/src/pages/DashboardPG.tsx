@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { AlertCircle, Library, LogIn, RefreshCw } from 'lucide-react'
+import { AlertCircle, Camera, Library, LogIn, RefreshCw } from 'lucide-react'
 import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
@@ -19,6 +19,7 @@ import { supabase } from '@/lib/supabase'
 import { staticLibraryRouteSuffix } from '@/lib/staticLibraryLanguage'
 import { canonicalizeLanguageValue } from '@/lib/languages'
 import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
+import { VISUAL_LENS_ENABLED } from '@/lib/productFlags'
 
 type DeckSummary = {
   id: string
@@ -228,6 +229,15 @@ export default function DashboardPG() {
                   ) : null}
                 </span>
               </Link>
+              {VISUAL_LENS_ENABLED ? (
+                <Link to="/lens" className="dashboard-library-tile dashboard-library-action">
+                  <Camera className="dashboard-library-icon" aria-hidden="true" />
+                  <span className="dashboard-library-copy">
+                    <span className="dashboard-library-title">{t('lens.tile.title')}</span>
+                    <span className="dashboard-library-subtitle">{t('lens.tile.subtitle')}</span>
+                  </span>
+                </Link>
+              ) : null}
             </section>
 
             <div className="dashboard-mastered-pill" aria-live="polite">

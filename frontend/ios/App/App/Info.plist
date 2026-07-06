@@ -37,6 +37,8 @@
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Lingwave uses the microphone for pronunciation practice and spoken lessons.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Lingwave uses the camera to identify objects and text so it can teach you vocabulary.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
