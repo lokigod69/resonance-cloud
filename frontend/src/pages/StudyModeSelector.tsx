@@ -7,6 +7,7 @@ import { filterLemmaStatesForQueue, isStudyQueue, type StudyQueue } from '@/hook
 import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
 import { canonicalizeLanguageValue } from '@/lib/languages'
+import { getScriptsForLanguage } from '@/lib/scriptlab/registry'
 import imageIcon from '@/assets/study-mode-icons/video.webp'
 import cardsIcon from '@/assets/study-mode-icons/cards.webp'
 import audioIcon from '@/assets/study-mode-icons/audio.webp'
@@ -241,6 +242,25 @@ export default function StudyModeSelector() {
               </button>
             )
           })}
+
+          {/* Script Lab: offered whenever the active language has a registered
+              writing system (e.g. Korean → Hangul). Static content, no deck
+              or asset gating needed. */}
+          {getScriptsForLanguage(activeLanguage).map((entry) => (
+            <button
+              key={entry.id}
+              onClick={() => navigate(`/alphabet/${entry.id}`)}
+              className="study-mode-card relative flex min-h-[180px] w-[160px] cursor-pointer flex-col items-center justify-center gap-4 rounded-2xl border border-border bg-card p-6 text-center backdrop-blur transition-all duration-200 hover:scale-[1.03] hover:border-accent hover:bg-accent active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30"
+            >
+              <span
+                aria-hidden="true"
+                className="flex h-[88px] w-[88px] items-center justify-center rounded-2xl text-5xl font-bold text-[var(--accent)] shadow-[0_0_24px_var(--accent-glow)]"
+              >
+                {entry.emblem}
+              </span>
+              <h3 className="text-lg font-semibold">{t('study.mode.script')}</h3>
+            </button>
+          ))}
         </div>
 
         {!isImagelessDeck && (

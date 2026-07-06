@@ -16,8 +16,9 @@ frontend/.vite/
 frontend/.env
 frontend/.env.local
 
-# IDE / Agent
-.claude/
+# IDE / Agent (skills are shared team/agent knowledge and stay tracked)
+.claude/*
+!.claude/skills/
 review-artifacts/
 frontend/review-artifacts/
 
@@ -37,5 +38,6 @@ Thumbs.db
 *.wav
 *.mp3
 !frontend/public/voices/*.mp3
+!frontend/public/scripts/**/*.mp3
 *.flac
 *.mp4

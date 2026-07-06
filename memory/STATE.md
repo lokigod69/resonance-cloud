@@ -30,6 +30,6 @@ Lingwave, a cloud-first language-learning app (guided lessons, SRS cards, AI mus
 
 ## Next actions
 1. UX pass follow-ups (docs/Product/FABLE_* plans): Speak Phase 1 palette re-skin → Phase 2 curation; StudyCardFrame + SessionComplete extraction; gate landing experiment routes; decide glassy-only-for-beta (owner sign-off).
-2. Script Lab follow-ups: owner mobile/visual QA of /alphabet; audio asset batch (needs explicit approval — see audio plan doc); dashboard tile entry point; first reuse proof (Cyrillic or Kana data pack via the add-script-lab-language skill).
+2. Script Lab follow-ups: owner mobile/visual QA of /alphabet (audio batch DONE 2026-07-06 — 141 clips live, review-hardened, pushed to main); dashboard tile entry point; first reuse proof requires adding the language first — see `docs/Product/FABLE_LANGUAGE_EXPANSION_BRIEF.md` (next big agenda: add-target-language / add-base-locale skills, proof = Russian).
 3. Cleanup later-pass items live in `docs/Refactors/FABLE_SAFE_CLEANUP_PATCH_PLAN.md` (L1–L8) — pick up L2 (unreachable video wizard steps) on the next wizard touch.
 4. Explicitly deferred: Stripe/iOS work, tutor-catalog Phase 3, Study 2×2 file consolidation, PG/classic consolidation, any Supabase schema changes.

@@ -64,6 +64,7 @@ const CanvasDeckPicker = lazyWithRetry(routeImports.canvasDeckPicker, 'canvas-de
 const Music = lazyWithRetry(routeImports.music, 'music')
 const MusicPG = lazyWithRetry(routeImports.musicPG, 'music-pg')
 const Speak = lazyWithRetry(routeImports.speak, 'speak')
+const ScriptLab = lazyWithRetry(routeImports.scriptLab, 'script-lab')
 const Users = lazyWithRetry(routeImports.adminUsers, 'admin-users')
 const Content = lazyWithRetry(routeImports.adminContent, 'admin-content')
 const Metrics = lazyWithRetry(routeImports.adminMetrics, 'admin-metrics')
@@ -239,6 +240,8 @@ function AppRoutes() {
             <Route path="/study/flashcard" element={<StudyFlashcard />} />
             <Route path="/study/audio" element={<StudyAudio />} />
             <Route path="/study/canvas/select" element={<CanvasDeckPicker />} />
+            <Route path="/alphabet" element={<ScriptLab />} />
+            <Route path="/alphabet/:scriptId" element={<ScriptLab />} />
             <Route path="/music" element={<MusicPG />} />
             <Route path="/speak" element={<Speak />} />
           </Route>
@@ -261,6 +264,8 @@ function AppRoutes() {
             <Route path="/study/flashcard" element={<StudyFlashcard />} />
             <Route path="/study/audio" element={<StudyAudio />} />
             <Route path="/study/canvas/select" element={<CanvasDeckPicker />} />
+            <Route path="/alphabet" element={<ScriptLab />} />
+            <Route path="/alphabet/:scriptId" element={<ScriptLab />} />
             <Route path="/music" element={<Music />} />
             <Route path="/speak" element={<Speak />} />
           </Route>

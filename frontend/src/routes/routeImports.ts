@@ -34,6 +34,7 @@ export const routeImports = {
   music: () => import('@/pages/Music'),
   musicPG: () => import('@/pages/MusicPG'),
   speak: () => import('@/pages/Speak'),
+  scriptLab: () => import('@/pages/ScriptLab'),
   adminUsers: () => import('@/pages/admin/Users'),
   adminContent: () => import('@/pages/admin/Content'),
   adminMetrics: () => import('@/pages/admin/Metrics'),
