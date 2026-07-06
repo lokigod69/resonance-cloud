@@ -1570,6 +1570,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Korean': 'Korean',
     'langName.Portuguese': 'Portuguese',
     'langName.Arabic': 'Arabic',
+    'langName.Russian': 'Russian',
     // ISO-code aliases — safety net so any path that hands an ISO code to the
     // labeler still resolves a localized name. Keep in sync with langName.<FullWord>.
     'langName.de':  'German',
@@ -1585,6 +1586,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.ko':  'Korean',
     'langName.pt':  'Portuguese',
     'langName.ar':  'Arabic',
+    'langName.ru':  'Russian',
 
     // ── Category groups (display labels; underlying API value stays English) ──
     'category.group.essentials': 'Essentials',
@@ -1626,7 +1628,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'category.feelingsStates': 'Feelings & States',
     'category.educationLearning': 'Education & Learning',
     'category.sportsHobbies': 'Sports & Hobbies',
-    'langName.Russian': 'Russian',
     'category.musicInstruments': 'Music & Instruments',
     'category.artsEntertainment': 'Arts & Entertainment',
     'category.technologyMedia': 'Technology & Media',
@@ -1642,7 +1643,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'category.untranslatable': 'Untranslatable Words',
     'category.philosophical': 'Philosophical Concepts',
     'category.poetic': 'Poetic & Literary',
-    'langName.ru':  'Russian',
     'category.humorWordplay': 'Humor & Wordplay',
     'category.tongueTwisters': 'Tongue Twisters',
     'category.onomatopoeia': 'Onomatopoeia (Sound Words)',
@@ -3105,6 +3105,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Korean': 'Koreanisch',
     'langName.Portuguese': 'Portugiesisch',
     'langName.Arabic': 'Arabisch',
+    'langName.Russian': 'Russisch',
     // ISO-Code-Aliase — Sicherheitsnetz für Aufrufer, die einen ISO-Code an
     // den Labeler übergeben. Mit langName.<Vollform> synchron halten.
     'langName.de':  'Deutsch',
@@ -3120,6 +3121,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.ko':  'Koreanisch',
     'langName.pt':  'Portugiesisch',
     'langName.ar':  'Arabisch',
+    'langName.ru':  'Russisch',
 
     // ── Kategorie-Gruppen (Anzeigetexte; API-Wert bleibt englisch) ──
     'category.group.essentials': 'Grundlagen',
@@ -3217,7 +3219,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.email': 'E-mail',
     'profile.signOut': 'Déconnexion',
     'profile.deleteAccount': 'Supprimer le compte',
-    'langName.Russian': 'Russisch',
     'profile.deleteAccount.title': 'Supprimer le compte',
     'profile.deleteAccount.description': 'Cela supprime définitivement ton compte et tes données d’apprentissage.',
     'profile.deleteAccount.warning': 'Cette action est irréversible.',
@@ -3233,7 +3234,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.saveFailed': 'Impossible d’enregistrer. Vérifie ta session et réessaie.',
     'profile.avatar.upload': 'Téléverser un avatar',
     'profile.avatar.replace': 'Remplacer',
-    'langName.ru':  'Russisch',
     'profile.avatar.remove': 'Supprimer',
     'profile.avatar.saved': 'Avatar enregistré',
     'profile.avatar.uploadFailed': 'Échec du téléversement',
