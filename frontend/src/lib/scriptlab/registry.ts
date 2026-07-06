@@ -41,6 +41,16 @@ export const SCRIPTS: ScriptRegistryEntry[] = [
     emblem: '한',
     load: () => import('@/data/scripts/koreanHangul'),
   },
+  {
+    id: 'russian-cyrillic',
+    language: 'Russian',
+    languageCode: 'ru',
+    kind: 'alphabet',
+    nativeName: 'Кириллица',
+    displayName: 'Cyrillic',
+    emblem: 'Я',
+    load: () => import('@/data/scripts/russianCyrillic'),
+  },
 ]
 
 export function getScriptEntry(scriptId: string | null | undefined): ScriptRegistryEntry | undefined {

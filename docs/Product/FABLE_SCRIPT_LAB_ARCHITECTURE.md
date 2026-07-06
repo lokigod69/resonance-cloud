@@ -1,6 +1,6 @@
 # Script Lab — Reusable Writing-System Architecture
 
-**Status:** V1 implemented (Korean/Hangul), 2026-07-06
+**Status:** V1 implemented (Korean/Hangul), 2026-07-06; Russian/Cyrillic shipped 2026-07-06
 **Owner docs:** this file (architecture), `FABLE_HANGUL_V1_PRODUCT_SPEC.md` (Korean V1), `FABLE_SCRIPT_AUDIO_PROVIDER_PLAN.md` (audio)
 
 ## What this is
@@ -94,11 +94,16 @@ There is a project skill (`.claude/skills/add-script-lab-language/SKILL.md`) tha
 agent through exactly this, including per-kind pedagogy guidance and the content-accuracy
 checklist.
 
+Shipped beyond Hangul:
+
+- **russian-cyrillic (alphabet):** shipped 2026-07-06 (`src/data/scripts/russianCyrillic.ts`).
+  Sections: looks-and-sounds-familiar (6) / false friends В Н Р С У Х (6) / new letters (19)
+  / signs ь ъ (2, advanced). No composition; practical (BGN/PCGN-style) transcription;
+  TTS speaks the Russian letter names, never bare consonants; ь/ъ share a
+  `homophone:silent-sign` tag.
+
 Per-kind guidance for the next scripts:
 
-- **russian-cyrillic (alphabet):** straightforward — sections like "letters that look and
-  sound familiar" / "false friends (В, Н, Р, С)" / "new letters" / "signs (ь, ъ)". No
-  composition. The false-friend framing belongs in section descriptions and notes.
 - **japanese-hiragana / japanese-katakana (syllabary):** two separate registry entries
   sharing one language ('Japanese') — the Study tile maps over all matches. Sections =
   gojūon rows (あ/か/さ…), then dakuten/handakuten as advanced, then combos (きゃ) as

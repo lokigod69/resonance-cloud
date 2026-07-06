@@ -136,6 +136,86 @@ function validateHangul(script: ScriptDefinition) {
   }
 }
 
+/** Official Russian letter names — the only strings TTS may speak for a
+ * symbol tap (vowels speak themselves; consonants/signs speak their name,
+ * never the bare letter). */
+const RUSSIAN_LETTER_NAMES: Record<string, string> = {
+  А: 'а', Б: 'бэ', В: 'вэ', Г: 'гэ', Д: 'дэ', Е: 'е', Ё: 'ё', Ж: 'жэ', З: 'зэ',
+  И: 'и', Й: 'и краткое', К: 'ка', Л: 'эль', М: 'эм', Н: 'эн', О: 'о', П: 'пэ',
+  Р: 'эр', С: 'эс', Т: 'тэ', У: 'у', Ф: 'эф', Х: 'ха', Ц: 'це', Ч: 'че',
+  Ш: 'ша', Щ: 'ща', Ъ: 'твёрдый знак', Ы: 'ы', Ь: 'мягкий знак', Э: 'э',
+  Ю: 'ю', Я: 'я',
+}
+
+function validateRussianCyrillic(script: ScriptDefinition) {
+  console.log(`  [${script.id}: cyrillic-specific]`)
+
+  // Exactly the 33 letters of the Russian alphabet: А–Я (U+0410–U+042F) + Ё.
+  assert(`${script.id}: exactly 33 symbols`, script.symbols.length === 33, script.symbols.length)
+  const characters = new Set(script.symbols.map((s) => s.character))
+  assert(`${script.id}: 33 unique characters`, characters.size === 33, characters.size)
+  const expected = new Set<string>(['Ё'])
+  for (let code = 0x0410; code <= 0x042f; code++) expected.add(String.fromCharCode(code))
+  for (const char of expected) {
+    assert(`${script.id}: alphabet covers '${char}'`, characters.has(char), char)
+  }
+  for (const char of characters) {
+    assert(`${script.id}: '${char}' belongs to the Russian alphabet`, expected.has(char), char)
+  }
+
+  assert(`${script.id}: no composition block (letters sit in a row)`, script.composition === undefined)
+  assert(`${script.id}: speechLang is ru-RU`, script.speechLang === 'ru-RU', script.speechLang)
+
+  for (const symbol of script.symbols) {
+    const ctx = `${script.id}/${symbol.id}`
+
+    // Symbol audio must be the official letter name — never the bare letter
+    // for consonants/signs, which TTS engines misread.
+    const expectedName = RUSSIAN_LETTER_NAMES[symbol.character]
+    assert(`${ctx}: audio text '${symbol.audio.text}' is the letter name '${expectedName}'`, symbol.audio.text === expectedName, symbol.audio)
+    if (symbol.type === 'consonant' || symbol.type === 'mark') {
+      assert(`${ctx}: consonant/sign audio is never a bare letter`, symbol.audio.text.length > 1, symbol.audio.text)
+      assert(`${ctx}: name matches the spoken letter name`, symbol.name === expectedName, symbol.name)
+    }
+
+    // Example words must contain the letter prominently and speak themselves.
+    const word = symbol.exampleWord.word
+    assert(`${ctx}: exampleWord '${word}' contains '${symbol.character}'`, word.toLowerCase().includes(symbol.character.toLowerCase()), word)
+    assert(`${ctx}: exampleWord audio speaks the word itself`, symbol.exampleWord.audio.text === word, symbol.exampleWord.audio)
+    assert(`${ctx}: exampleWord is Cyrillic-only`, /^[а-яё]+$/i.test(word), word)
+  }
+
+  // Both silent signs are tagged as mutual homophones (both make no sound of
+  // their own) so the quiz can never play one against the other.
+  for (const id of ['soft-sign', 'hard-sign']) {
+    const symbol = script.symbols.find((s) => s.id === id)
+    assert(`${script.id}/${id}: tagged homophone:silent-sign`, (symbol?.tags ?? []).includes('homophone:silent-sign'), symbol?.tags)
+  }
+
+  // Section shape from the Cyrillic pedagogy: familiar(6) → false friends(6)
+  // → new letters(19) → signs(2, advanced).
+  const sectionSizes = script.sections.map((s) => ({ id: s.id, size: s.symbolIds.length, advanced: s.advanced ?? false }))
+  assert(
+    `${script.id}: sections are familiar(6) / false-friends(6) / new-letters(19) / signs(2 advanced)`,
+    JSON.stringify(sectionSizes) === JSON.stringify([
+      { id: 'familiar', size: 6, advanced: false },
+      { id: 'false-friends', size: 6, advanced: false },
+      { id: 'new-letters', size: 19, advanced: false },
+      { id: 'signs', size: 2, advanced: true },
+    ]),
+    sectionSizes,
+  )
+  const falseFriends = script.sections.find((s) => s.id === 'false-friends')
+  const falseFriendChars = (falseFriends?.symbolIds ?? [])
+    .map((id) => script.symbols.find((s) => s.id === id)?.character)
+    .sort()
+  assert(
+    `${script.id}: false friends are exactly В Н Р С У Х`,
+    JSON.stringify(falseFriendChars) === JSON.stringify(['В', 'Н', 'Р', 'С', 'У', 'Х'].sort()),
+    falseFriendChars,
+  )
+}
+
 console.log('[registry]')
 const registryIds = new Set<string>()
 for (const entry of SCRIPTS) {
@@ -295,6 +375,9 @@ for (const entry of SCRIPTS) {
 
   if (script.id === 'korean-hangul') {
     validateHangul(script)
+  }
+  if (script.id === 'russian-cyrillic') {
+    validateRussianCyrillic(script)
   }
 }
 

@@ -37,14 +37,18 @@ from the registry. Read these before writing anything:
 
 ## Content rules (non-negotiable)
 
-- **Accuracy over coverage.** Use the official romanization system for the language
-  (Revised Romanization for Korean, ISO 9 / practical transcription for Russian, Hepburn
-  for Japanese, …) and name it in the data file's header comment. Never invent
-  pronunciation notes; if unsure of a detail, leave the optional field out.
+- **Accuracy over coverage.** Use ONE named romanization system for the language
+  (Revised Romanization for Korean, practical transcription — BGN/PCGN style, not
+  ISO 9 — for Russian, Hepburn for Japanese, …) and name it in the data file's header
+  comment. Never invent pronunciation notes; if unsure of a detail, leave the optional
+  field out.
 - **Romanization is helper text**, never the learning target. Notes are one sentence,
   jargon-free, localized naturally in en/de/fr (German with real umlauts).
 - **Example words**: common, beginner-relevant, contain the symbol prominently
-  (word-initial where possible). Meanings localized in all three locales.
+  (word-initial where possible). Meanings localized in all three locales. In languages
+  with stress-dependent vowel reduction (Russian: unstressed о sounds like [ɐ]), the
+  symbol's position must also be STRESSED so the audible sound matches the taught one —
+  осень, not окно.
 - **Audio `text` is what a TTS engine must speak** — never a bare letter if engines
   misread it (spell letter names or carrier syllables instead; Hangul speaks 기역, not ㄱ).
   `itemId`s are stable asset keys: `symbol-<id>`, `syllable-<id>`, `word-<id>`.
@@ -60,8 +64,23 @@ from the registry. Read these before writing anything:
 
 ## Per-kind notes
 
-- **alphabet (Cyrillic, Greek):** no `composition`. For Cyrillic, section by familiarity:
-  looks-and-sounds-familiar → false friends (В Н Р С У Х) → new letters → signs (ь ъ).
+- **alphabet (Cyrillic, Greek):** no `composition` (the Build tab hides itself).
+  Reference implementation: `frontend/src/data/scripts/russianCyrillic.ts`. For
+  Cyrillic, section by familiarity: looks-and-sounds-familiar → false friends
+  (В Н Р С У Х) → new letters → signs (ь ъ). Facts you must design around:
+  - With no `exampleSyllable`, listen questions play `symbol.audio` — i.e. the **letter
+    name** ("эр"), so the quiz tests name recall, not sound recognition. That's the
+    accepted V1 behavior for alphabets; make letter-name audio unambiguous.
+  - Distractors come from the same section, so a section with <4 symbols is
+    **unquizzable by construction** (fine for signs; don't put teachable sounds in a
+    tiny section). The quiz engine also skips distractors sharing a romanization
+    (й/ы both "y" is safe), but don't rely on romanization alone to distinguish options.
+  - Silent letters (ь ъ): use `type: 'mark'`, omit `ipa` entirely, and give both a
+    shared `homophone:` tag — the suite treats identically-absent IPA as matching, and
+    the tag defends against future quiz changes.
+  - Case pairs (А/а, Б/б): V1 is uppercase-only; lowercase appears via example words. Do
+    NOT hack lowercase into `character` — if a script truly needs it, that's a
+    `lowercase?: string` type extension with UI + tests (see "Type changes").
 - **syllabary (hiragana, katakana):** two separate registry entries sharing
   `language: 'Japanese'`; sections = gojūon rows, dakuten/handakuten and yōon as advanced.
 - **abjad (Arabic, Hebrew):** BLOCKED on two type extensions — contextual letterforms
