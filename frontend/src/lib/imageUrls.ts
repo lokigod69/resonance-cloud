@@ -1,3 +1,5 @@
+import { publicAssetUrl } from '@/lib/publicOrigins'
+
 export type ThumbSize = 128 | 192 | 256 | 512 | 768
 
 export interface ThumbOptions {
@@ -21,7 +23,7 @@ export function getStorageImageUrl(
 ): string | null {
   void opts
   // Assets are generated at the needed formats/sizes; avoid Supabase Storage Image Transformations.
-  return rawUrl || null
+  return publicAssetUrl(rawUrl) || null
 }
 
 export function getThumbnailUrl(
@@ -29,12 +31,12 @@ export function getThumbnailUrl(
   opts: ThumbOptions,
 ): string | null {
   void opts
-  return rawUrl || null
+  return publicAssetUrl(rawUrl) || null
 }
 
 export function getCardThumbUrl(rawUrl: string | null | undefined, size = 256): string | null {
   void size
-  return rawUrl || null
+  return publicAssetUrl(rawUrl) || null
 }
 
 export function getCardFullUrl(
@@ -44,5 +46,5 @@ export function getCardFullUrl(
 ): string | null {
   void width
   void height
-  return rawUrl || null
+  return publicAssetUrl(rawUrl) || null
 }

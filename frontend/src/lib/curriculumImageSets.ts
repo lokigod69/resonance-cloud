@@ -14,6 +14,7 @@ import {
   CURRICULUM_IMAGE_SET_A_WORD_SET,
   CURRICULUM_IMAGE_SET_C_WORD_SET,
 } from '@/data/curriculumImageSetAvailability'
+import { publicAssetUrl } from '@/lib/publicOrigins'
 
 export type CurriculumImageSetKey = 'A' | 'C'
 
@@ -78,7 +79,7 @@ export function resolveCurriculumImageSetAsset(
   const tryResolve = (set: CurriculumImageSetKey): string | null => {
     const idx = set === 'A' ? indexA : indexC
     if (!idx.has(normalizedWord)) return null
-    return `${idx.publicBasePath}/${normalizedWord}.webp`
+    return publicAssetUrl(`${idx.publicBasePath}/${normalizedWord}.webp`)
   }
 
   if (requestedSet === 'C') {

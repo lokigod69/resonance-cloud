@@ -7,6 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import { listCurriculumCategories, type CurriculumCategory } from '@/data/curriculumCategories'
 import { generatedCategoryHeroImagePath } from '@/lib/generatedCategoryImages'
+import { curriculumCategoryHeroPath } from '@/lib/curriculumImagePath'
 import {
   STATIC_CATEGORY_TARGET_LANGUAGES,
   getPublicCategoryGroups,
@@ -25,7 +26,7 @@ import styles from './Categories.module.css'
 
 function CategoryHero({ category }: { category: CurriculumCategory }) {
   const [imageFailed, setImageFailed] = useState(false)
-  const heroSrc = `/curriculum/categories/en/${category.slug}/hero.webp`
+  const heroSrc = curriculumCategoryHeroPath('en', category.slug)
 
   if (imageFailed) {
     return (

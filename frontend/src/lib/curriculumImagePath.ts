@@ -1,3 +1,5 @@
+import { publicAssetUrl } from '@/lib/publicOrigins'
+
 export function normalizeCurriculumTerm(term: string): string {
   return term
     .toLowerCase()
@@ -14,12 +16,12 @@ export function curriculumEntryImagePath(
   categorySlug: string,
   term: string,
 ): string {
-  return `/curriculum/categories/${languageIso}/${categorySlug}/entries/${normalizeCurriculumTerm(term)}.webp`
+  return publicAssetUrl(`/curriculum/categories/${languageIso}/${categorySlug}/entries/${normalizeCurriculumTerm(term)}.webp`)
 }
 
 export function curriculumCategoryHeroPath(
   languageIso: string,
   categorySlug: string,
 ): string {
-  return `/curriculum/categories/${languageIso}/${categorySlug}/hero.webp`
+  return publicAssetUrl(`/curriculum/categories/${languageIso}/${categorySlug}/hero.webp`)
 }

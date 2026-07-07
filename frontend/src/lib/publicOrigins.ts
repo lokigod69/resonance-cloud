@@ -40,6 +40,19 @@ export function getPublicWebUrl(path: string): string {
   return `${getPublicWebOrigin()}${normalizePath(path)}`
 }
 
+const NON_REWRITABLE_ASSET_PREFIX = /^(https?:\/\/|data:|blob:|\/\/|capacitor:\/\/|resonance:\/\/)/i
+
+export function publicAssetUrl(path: string): string
+export function publicAssetUrl(path: string | null | undefined): string | null | undefined
+export function publicAssetUrl(path: string | null | undefined): string | null | undefined {
+  // Bundled public assets (curriculum/guided) are stripped from the native app;
+  // on device they must be fetched from the web origin instead.
+  if (!path) return path
+  if (NON_REWRITABLE_ASSET_PREFIX.test(path)) return path
+  if (!isNativeApp()) return path
+  return `${getPublicWebOrigin()}${normalizePath(path)}`
+}
+
 export function getOAuthRedirectTo(): string {
   if (isNativeApp()) {
     return trimTrailingSlash(import.meta.env.VITE_NATIVE_AUTH_REDIRECT_URL)

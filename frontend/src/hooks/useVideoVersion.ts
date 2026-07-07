@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
+import { publicAssetUrl } from '@/lib/publicOrigins'
 
 const STORAGE_KEY = 'resonance-video-version'
 
@@ -54,7 +55,7 @@ export function useVideoVersion(word: WordWithVersions) {
   }, [version, word.id])
 
   const activeVideoUrl = version === 'b' && word.video_url_b ? word.video_url_b : word.video_url
-  const activeThumbnailUrl = version === 'b' && word.thumbnail_url_b ? word.thumbnail_url_b : word.thumbnail_url
+  const activeThumbnailUrl = publicAssetUrl(version === 'b' && word.thumbnail_url_b ? word.thumbnail_url_b : word.thumbnail_url)
 
   return {
     version,

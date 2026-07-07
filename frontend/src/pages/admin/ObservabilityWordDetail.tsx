@@ -17,6 +17,7 @@ import {
   type PipelineEvent,
   type WordRow,
 } from '@/lib/observability'
+import { publicAssetUrl } from '@/lib/publicOrigins'
 import { supabase } from '@/lib/supabase'
 import { useFerrariTitle } from '@/layouts/useFerrariTitle'
 
@@ -131,7 +132,7 @@ export default function ObservabilityWordDetail() {
     <>
       <FailureNotice events={failedEvents} />
       <FinalVideo src={finalVideoUrl} />
-      <CardImage src={word?.deck_type === 'card' ? word?.thumbnail_url ?? null : null} />
+      <CardImage src={word?.deck_type === 'card' ? publicAssetUrl(word?.thumbnail_url) ?? null : null} />
       <SceneStills events={events} />
       <SunoTracks wordId={wordId} />
       <AggregatorSnapshot metadata={word?.metadata ?? null} />

@@ -28,6 +28,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { SimulatedWaveform } from '@/components/music/SimulatedWaveform'
 import { VolumeControl } from '@/components/VolumeControl'
 import { PLAYER_SOFT_ICON_BUTTON_CLASS } from '@/lib/playerStyles'
+import { publicAssetUrl } from '@/lib/publicOrigins'
 
 const THUMB_KEY = 'resonance-audio-thumbnail'
 
@@ -236,7 +237,7 @@ export default function StudyAudio() {
                   <motion.img
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    src={current.thumbnail_url}
+                    src={publicAssetUrl(current.thumbnail_url)}
                     alt=""
                     className="w-24 h-24 rounded-xl object-cover mb-6 border border-border"
                   />

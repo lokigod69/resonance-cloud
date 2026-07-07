@@ -3,6 +3,7 @@ import {
   GENERATED_CATEGORY_IMAGE_HERO_TERMS,
   type GeneratedCategoryImageCategory,
 } from '@/data/generatedCategoryImageAvailability'
+import { publicAssetUrl } from '@/lib/publicOrigins'
 import { normalizeCurriculumTerm } from './curriculumImagePath'
 
 function normalizeCategoryId(categoryId: string): string {
@@ -21,7 +22,7 @@ export function generatedCategoryEntryImagePath(
   const normalizedCategoryId = normalizeCategoryId(categoryId)
   if (!hasGeneratedCategoryImages(normalizedCategoryId)) return null
 
-  return `/curriculum/generated-categories/${languageIso}/${normalizedCategoryId}/entries/${normalizeCurriculumTerm(term)}.webp`
+  return publicAssetUrl(`/curriculum/generated-categories/${languageIso}/${normalizedCategoryId}/entries/${normalizeCurriculumTerm(term)}.webp`)
 }
 
 export function generatedCategoryHeroImagePath(

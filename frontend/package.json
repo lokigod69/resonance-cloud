@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:ios": "vite build --mode ios && cap sync ios",
+    "build:ios": "vite build --mode ios && tsx scripts/strip-ios-bundle.ts && cap sync ios",
     "cap:sync:ios": "cap sync ios",
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",

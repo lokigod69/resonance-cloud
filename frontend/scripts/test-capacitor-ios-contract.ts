@@ -49,6 +49,7 @@ for (const dep of ['@capacitor/cli', '@capacitor/ios']) {
 }
 
 assert(scripts['build:ios']?.includes('vite build'), 'package.json must define build:ios')
+assert(scripts['build:ios']?.includes('strip-ios-bundle'), 'build:ios must strip web-served asset trees before cap sync')
 assert(scripts['cap:sync:ios']?.includes('cap sync ios'), 'package.json must define cap:sync:ios')
 
 assert(exists('capacitor.config.ts'), 'capacitor.config.ts must exist')
@@ -66,6 +67,7 @@ for (const token of [
   'VITE_PUBLIC_WEB_ORIGIN',
   'VITE_NATIVE_AUTH_REDIRECT_URL',
   'publicApiUrl',
+  'publicAssetUrl',
   'getOAuthRedirectTo',
 ]) {
   assertIncludes(publicOrigins, token, 'src/lib/publicOrigins.ts')
