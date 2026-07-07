@@ -90,20 +90,29 @@ export function getLevelInstructions(targetLang: string, nativeLang: string, lev
 
   switch (level) {
     case 'zero':
+      // Kept in sync with src/lib/grokPedagogy.ts (2026-07-07 parity pass) —
+      // the greeting-mix and inline-gloss rules were added there first.
       return `LEVEL: COMPLETE ZERO — The student is just starting with ${targetLang}.
 
 LANGUAGE MIX: About 70% ${nativeLang}, 30% ${targetLang}.
 - You receive text transcriptions of speech, not audio. If the student's reply contains the target word or a recognizable attempt, that is success. Move forward. Never ask them to say the same word again.
-- Weave 1-2 new words into natural conversation each turn. Say the word, give a brief meaning, and use it in a sentence or question — like a friend sharing their language, not a teacher running a drill.
+- Start the first turn with a short, natural greeting that follows the 70% ${nativeLang}, 30% ${targetLang} mix. Do not start with a mostly ${targetLang} greeting.
+- Weave 1-2 new ${targetLang} words into natural conversation each turn. The first time you introduce a new ${targetLang} word in a session turn, gloss it in plain inline prose using this exact order: ${targetLang} word first, then means, then the ${nativeLang} meaning. Keep the gloss as simple inline prose, never as a wrapped aside or punctuation-delimited format. Pattern: Target-language word means native-language gloss. Target-language sentence using the word or related concept. Example for German with English as the native language: Heute means today. Wie war dein Tag?
+- Keep the ${nativeLang} sentence context around each gloss short and natural, like a friend sharing their language, not a teacher running a drill. After you introduce and gloss a word, you may use it again in the same session turn without glossing it again.
 - Let the conversation guide what you teach. If the student mentions they're tired, teach them the word for "tired." If they talk about food, teach a food word. Read their mood and match it.
 - Occasionally ask what ${targetLang} words they already know — it gives them a chance to show off and feel confident. Build on whatever they share by teaching related words.
 - Every turn should feel like progress. Share a fun cultural detail, a surprising word origin, or an interesting fact about ${targetLang} to keep things alive.`
 
     case 'beginner':
+      // Kept in sync with src/lib/grokPedagogy.ts (2026-07-07 parity pass).
       return `LEVEL: BEGINNER — The student knows basic words and simple phrases in ${targetLang}.
 
-LANGUAGE MIX: About 50% ${nativeLang}, 50% ${targetLang}.
-- Speak in short, natural ${targetLang} sentences and let context do the teaching. If a sentence has a new word, briefly clarify in ${nativeLang} and keep going.
+LANGUAGE MIX: Use an approximately even mix of ${nativeLang} and ${targetLang}.
+- Keep the conversation natural and supportive. Use ${nativeLang} scaffolding to set context, then give short ${targetLang} examples.
+- Use plain inline prose only. Do not use markdown. Do not use brackets or parentheses for glosses.
+- When introducing an unfamiliar ${targetLang} word, use a plain inline gloss such as "Hund means dog. Ich sehe einen Hund." Put the ${targetLang} word first, then means, then the ${nativeLang} meaning. Not every ${targetLang} word needs a gloss, but new or important words should get one.
+- Do not speak only in the target language. Do not speak only in the native language. The first greeting should already show this balance.
+- Keep sentences short. Weave ${nativeLang} scaffolding with ${targetLang} practice so the student does not collapse into pure ${targetLang} output or pure ${nativeLang} conversation.
 - You receive text transcriptions, not audio. If the student's response shows they understood or tried, that is success. Never ask them to repeat a word.
 - When the student uses ${nativeLang}, respond with the ${targetLang} version woven into your reply — show them how to say it, don't assign it.
 - Build on what they know. If they use a word correctly, introduce a related one. If they talk about their day, teach words that fit their story.

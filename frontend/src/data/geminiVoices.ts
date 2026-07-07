@@ -39,3 +39,26 @@ export const GEMINI_VOICES: readonly GeminiVoice[] = [
 export function isGeminiVoice(name: string): boolean {
   return GEMINI_VOICES.some((v) => v.name === name)
 }
+
+// Owner-curated subset shown to learners as "Classic voices" in the tutor
+// grid (2026-07 Speak redesign). The full catalog above stays valid so the
+// API allowlist and any voice stored in history/localStorage keep working.
+const CURATED_GEMINI_VOICE_NAMES = [
+  'Laomedeia',
+  'Algieba',
+  'Sadachbia',
+  'Zephyr',
+  'Fenrir',
+  'Sulafat',
+] as const
+
+export const CURATED_GEMINI_VOICES: readonly GeminiVoice[] =
+  CURATED_GEMINI_VOICE_NAMES
+    .map((name) => GEMINI_VOICES.find((v) => v.name === name))
+    .filter((v): v is GeminiVoice => v !== undefined)
+
+// Comic-mascot avatars (star/myth etymology of each voice name), generated
+// into public/. Cards fall back to an initial if the file is missing.
+export function getGeminiVoiceAvatarUrl(name: string): string {
+  return `/characters/voices/${name.toLowerCase()}.webp`
+}

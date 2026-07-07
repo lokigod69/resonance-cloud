@@ -1,15 +1,8 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
-import { type TutorVoice, TUTOR_VOICES, getVoicesForLanguage } from '@/voiceRegistry'
+import { type TutorVoice } from '@/voiceRegistry'
 import { type TutorCharacter, resolveCharacterVoice } from '@/characterRegistry'
 import { supabase } from '@/lib/supabase'
 import { playAudioViaContext, playAudioViaElement } from '@/lib/audioUtils'
-import {
-  type RoleplayScenario,
-  pickContextVariant,
-  pickNpcName,
-  pickNpcMood,
-  compileScenarioPrompt,
-} from '@/data/roleplayScenarios'
 import { getGeminiCharacterMode } from '@/data/geminiCharacterModes'
 import {
   getNavigatorAudioSession,
@@ -79,10 +72,6 @@ export interface UseVoiceTutorReturn {
   selectLanguage: (lang: string) => void
   startConversationWithCharacter: (char: TutorCharacter) => Promise<void>
   startConversationWithGemini: (params: GeminiTutorParams) => Promise<void>
-  startRoleplay: (scenario: RoleplayScenario, language: string, level: string) => Promise<void>
-  isRoleplayMode: boolean
-  activeScenario: RoleplayScenario | null
-  activeNpcName: string | null
   selectLevel: (level: string) => Promise<void>
   changeVoice: () => void
   cancelChangeVoice: () => void
@@ -221,19 +210,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const [listenMode, setListenMode] = useState(false)
   const listenModeRef = useRef(false)
 
-  // ── Roleplay mode state ──
-  const [isRoleplayMode, setIsRoleplayMode] = useState(false)
-  const [activeScenario, setActiveScenario] = useState<RoleplayScenario | null>(null)
-  const [activeNpcName, setActiveNpcName] = useState<string | null>(null)
-  const isRoleplayRef = useRef(false)
-  const scenarioPromptRef = useRef<string | null>(null)
-  const roleplayMetaRef = useRef<{
-    scenarioId: string
-    npcName: string
-    variantId: string
-    title: string
-  } | null>(null)
-
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
   const audioContextRef = useRef<AudioContext | null>(null)
@@ -325,34 +301,24 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       setConversationId(id)
       convMessageCountRef.current = 1
 
-      const rp = roleplayMetaRef.current
       const isGemini = providerRef.current === 'gemini'
       await supabase.from('speak_conversations').insert({
         id,
         user_id: userId,
         language: lang,
-        voice_name: rp
-          ? rp.npcName
-          : (isGemini
-              ? geminiVoiceNameRef.current
-              : (characterRef.current?.name ?? voiceRef.current?.name ?? null)),
-        character_id: rp || isGemini ? null : (characterRef.current?.id ?? null),
+        voice_name: isGemini
+          ? geminiVoiceNameRef.current
+          : (characterRef.current?.name ?? voiceRef.current?.name ?? null),
+        character_id: isGemini ? null : (characterRef.current?.id ?? null),
         level: levelRef.current ?? null,
         message_count: 1,
-        title: rp ? rp.title : greeting.slice(0, 80),
+        title: greeting.slice(0, 80),
         started_at: new Date().toISOString(),
         provider: providerRef.current,
         gemini_character_mode_id: isGemini ? geminiModeIdRef.current : null,
         gemini_voice_name: isGemini ? geminiVoiceNameRef.current : null,
         gemini_accent_id: isGemini ? geminiAccentIdRef.current : null,
-        ...(rp
-          ? {
-              mode: 'roleplay',
-              scenario_id: rp.scenarioId,
-              npc_name: rp.npcName,
-              context_variant: rp.variantId,
-            }
-          : { mode: 'freeform' }),
+        mode: 'freeform',
       })
 
       await supabase.from('speak_messages').insert({
@@ -472,20 +438,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
       if (studyModeRef.current && studyWordsRef.current.length > 0) {
         body.study_words = studyWordsRef.current
-      }
-
-      // Roleplay: inject scenario prompt; on initial (no audio) call, send sentinel
-      if (isRoleplayRef.current && scenarioPromptRef.current) {
-        body.mode = 'roleplay'
-        body.scenarioPrompt = scenarioPromptRef.current
-        // Tutor persona fields should not apply in roleplay
-        delete body.character_name
-        delete body.character_tier
-        delete body.character_identity
-        delete body.character_directive
-        if (!audio_base64) {
-          body.message = '__ROLEPLAY_OPEN__'
-        }
       }
 
       const controller = new AbortController()
@@ -804,13 +756,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       studyModeRef.current = false
       studyWordsRef.current = []
       setStudyMode(false)
-      // Exit roleplay when switching language
-      isRoleplayRef.current = false
-      setIsRoleplayMode(false)
-      setActiveScenario(null)
-      setActiveNpcName(null)
-      scenarioPromptRef.current = null
-      roleplayMetaRef.current = null
       setGeminiPickerStageState('voice')
     },
     [endConversation, stopAllAudio],
@@ -824,14 +769,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
       // iOS: unlock AudioContext on the user gesture before any await
       await ensureAudioContext()
-
-      // Defensive: ensure roleplay state is cleared if entering freeform from any path
-      isRoleplayRef.current = false
-      scenarioPromptRef.current = null
-      roleplayMetaRef.current = null
-      setIsRoleplayMode(false)
-      setActiveScenario(null)
-      setActiveNpcName(null)
 
       // End any prior conversation (e.g. when switching tutors via changeVoice)
       stopAllAudio()
@@ -882,14 +819,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       if (!lang) return
 
       await ensureAudioContext()
-
-      // Clear roleplay + prior Voxtral character — Gemini has no character tier
-      isRoleplayRef.current = false
-      scenarioPromptRef.current = null
-      roleplayMetaRef.current = null
-      setIsRoleplayMode(false)
-      setActiveScenario(null)
-      setActiveNpcName(null)
 
       stopAllAudio()
       endConversation()
@@ -1073,69 +1002,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     setError(null)
     setStatus('idle')
   }, [stopAllAudio])
-
-  const startRoleplay = useCallback(
-    async (scenario: RoleplayScenario, lang: string, selectedLevel: string) => {
-      primeAudioForIOS()
-      await ensureAudioContext()
-      stopAllAudio()
-      endConversation()
-      previousStateRef.current = null
-
-      const variant = pickContextVariant(scenario)
-      const npcName = pickNpcName(scenario)
-      const mood = pickNpcMood(scenario)
-      const compiled = compileScenarioPrompt(scenario, npcName, mood, variant)
-
-      // Pick a random gendered voice for the target language
-      const langVoices = getVoicesForLanguage(lang)
-      const pool = langVoices.length > 0 ? langVoices : TUTOR_VOICES.filter((v) => v.language === 'en')
-      const randomVoice = pool[Math.floor(Math.random() * pool.length)]
-
-      // Clear tutor character — roleplay has none
-      setCharacter(null)
-      characterRef.current = null
-      setVoice(randomVoice)
-      voiceRef.current = randomVoice
-
-      setLanguage(lang)
-      setLevel(selectedLevel)
-      levelRef.current = selectedLevel
-      localStorage.setItem(`voice-tutor-level-${lang}`, selectedLevel)
-
-      // Roleplay state
-      setIsRoleplayMode(true)
-      isRoleplayRef.current = true
-      setActiveScenario(scenario)
-      setActiveNpcName(npcName)
-      scenarioPromptRef.current = compiled
-      roleplayMetaRef.current = {
-        scenarioId: scenario.id,
-        npcName,
-        variantId: variant.id,
-        title: scenario.title,
-      }
-
-      // Clear any prior session
-      setMessages([])
-      messagesRef.current = []
-      setPendingAudio(null)
-      setError(null)
-      studyModeRef.current = false
-      studyWordsRef.current = []
-      setStudyMode(false)
-      listenModeRef.current = false
-      setListenMode(false)
-
-      try {
-        await fetchAndPlayGreeting(lang, randomVoice)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : t('speak.error.requestFailed'))
-        setStatus('error')
-      }
-    },
-    [endConversation, fetchAndPlayGreeting, ensureAudioContext, primeAudioForIOS, stopAllAudio, t],
-  )
 
   const selectLevel = useCallback(
     async (selectedLevel: string) => {
@@ -1514,13 +1380,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     setStudyMode(false)
     listenModeRef.current = false
     setListenMode(false)
-    // Roleplay cleanup
-    isRoleplayRef.current = false
-    setIsRoleplayMode(false)
-    setActiveScenario(null)
-    setActiveNpcName(null)
-    scenarioPromptRef.current = null
-    roleplayMetaRef.current = null
     setGeminiPickerStageState('voice')
   }, [releaseResources, endConversation, stopAllAudio])
 
@@ -1586,10 +1445,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     selectLanguage,
     startConversationWithCharacter,
     startConversationWithGemini,
-    startRoleplay,
-    isRoleplayMode,
-    activeScenario,
-    activeNpcName,
     selectLevel,
     changeVoice,
     cancelChangeVoice,

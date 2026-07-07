@@ -1,10 +1,8 @@
 import { useMemo, useState } from 'react'
 import { Check, ChevronDown } from 'lucide-react'
 import { GEMINI_CHARACTER_MODES, type GeminiCharacterMode } from '@/data/geminiCharacterModes'
-import { GEMINI_VOICES } from '@/data/geminiVoices'
 import { GEMINI_ACCENTS, DEFAULT_GEMINI_ACCENT_ID, type GeminiAccent } from '@/data/geminiAccents'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
-import { VoiceSampleButton } from './VoiceSampleButton'
 import type { GeminiPickerStage } from '@/hooks/useVoiceTutor'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useAuth } from '@/hooks/useAuth'
@@ -17,14 +15,12 @@ export interface GeminiSelection {
 }
 
 interface GeminiModeVoicePickerProps {
-  language: string
   disabled?: boolean
   stage: GeminiPickerStage
   selectedModeId?: string | null
   selectedVoiceName?: string | null
   selectedAccentId?: string | null
   onModeChange: (modeId: string) => void
-  onVoiceChange: (voiceName: string) => void
   onAccentChange: (accentId: string) => void
   onStageChange: (stage: GeminiPickerStage) => void
   onStart: (selection: GeminiSelection) => void
@@ -40,14 +36,12 @@ const GROUP_LABEL_KEYS: Record<GeminiAccent['group'], string> = {
 const SECTION_LABEL_CLASS = 'text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider'
 
 export function GeminiModeVoicePicker({
-  language,
   disabled,
   stage,
   selectedModeId,
   selectedVoiceName,
   selectedAccentId,
   onModeChange,
-  onVoiceChange,
   onAccentChange,
   onStageChange,
   onStart,
@@ -56,7 +50,6 @@ export function GeminiModeVoicePicker({
   const { t } = useTranslation()
   const { profile } = useAuth()
   const showTheatricalAccents = canUseExperimentalSpeakOptions(profile)
-  const [nowPlaying, setNowPlaying] = useState<string | null>(null)
   const [accentOpen, setAccentOpen] = useState(false)
 
   const selectedMode = selectedModeId
@@ -83,51 +76,10 @@ export function GeminiModeVoicePicker({
     })
   }
 
-  if (stage === 'voice') {
-    return (
-      <div>
-        <p className={`${SECTION_LABEL_CLASS} mb-3`}>{t('speak.accent.voiceStyles')}</p>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {GEMINI_VOICES.map((voice) => {
-            const selected = selectedVoiceName === voice.name
-            return (
-              <div
-                key={voice.name}
-                className={`speak-glass-card relative transition-all ${
-                  selected
-                    ? 'border-[var(--accent)]/55 bg-[var(--accent-soft)] shadow-[0_0_0_1px_var(--accent-glow),0_18px_45px_var(--accent-glow)]'
-                    : 'hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:bg-[var(--surface-glass-strong)]'
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => {
-                    onVoiceChange(voice.name)
-                    onStageChange('mode')
-                  }}
-                  disabled={disabled}
-                  className="w-full flex min-h-[104px] flex-col items-start justify-center gap-1 px-4 py-4 pr-12 rounded-2xl text-left disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <span className="text-sm font-medium text-[var(--text-primary)] truncate max-w-full">{voice.name}</span>
-                  <span className="text-xs text-[var(--text-muted)] truncate max-w-full">{voice.tone}</span>
-                </button>
-                <div className="absolute top-1.5 right-1.5">
-                  <VoiceSampleButton
-                    voiceName={voice.name}
-                    language={language}
-                    nowPlaying={nowPlaying}
-                    onPlayStart={setNowPlaying}
-                    onPlayEnd={() => setNowPlaying(null)}
-                  />
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    )
-  }
-
+  // Voice selection happens on the merged tutor grid ("Classic voices"
+  // cards in CharacterGrid); this picker only handles the vibe + accent
+  // stages that follow. Stage 'voice' is the grid's marker, never rendered
+  // here.
   if (stage === 'mode') {
     return (
       <div>
