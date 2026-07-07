@@ -85,6 +85,8 @@ export interface UseVoiceTutorReturn {
   toggleStudyMode: (words: Array<{ word: string; translation: string }>) => void
   listenMode: boolean
   toggleListenMode: () => void
+  muted: boolean
+  toggleMuted: () => void
   revealMessage: (index: number) => void
   playPendingAudio: () => Promise<void>
   replayMessageAudio: (message: TutorMessage) => Promise<void>
@@ -112,6 +114,7 @@ const LS_PROVIDER = 'resonance_speak_provider'
 const LS_GEMINI_MODE = 'resonance_speak_gemini_mode_id'
 const LS_GEMINI_VOICE = 'resonance_speak_gemini_voice_name'
 const LS_GEMINI_ACCENT = 'resonance_speak_gemini_accent_id'
+const LS_MUTED = 'speak-tutor-muted'
 const DEFAULT_ACCENT_ID = 'none'
 
 function readStoredProvider(): SpeakProvider {
@@ -209,6 +212,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const studyWordsRef = useRef<Array<{ word: string; translation: string }>>([])
   const [listenMode, setListenMode] = useState(false)
   const listenModeRef = useRef(false)
+  // Device-level preference: silence tutor auto-speak. Persisted across chats
+  // and tutor changes; only affects TTS providers, never Grok live sessions.
+  const [muted, setMuted] = useState<boolean>(() => readStored(LS_MUTED) === '1')
+  const mutedRef = useRef(muted)
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
@@ -283,6 +290,11 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     geminiAccentIdRef.current = geminiAccentId
     writeStored(LS_GEMINI_ACCENT, geminiAccentId)
   }, [geminiAccentId])
+
+  useEffect(() => {
+    mutedRef.current = muted
+    writeStored(LS_MUTED, muted ? '1' : '0')
+  }, [muted])
 
   const isSupported =
     typeof navigator !== 'undefined' &&
@@ -716,7 +728,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       messagesRef.current = [msg]
       createConversation(lang, data.ai_text)
 
-      if (data.audio_base64) {
+      if (mutedRef.current) {
+        // Muted: tutor auto-speak is silenced. Show text only — no playback and
+        // no tap-to-hear fallback (an explicit replay tap still plays).
+        if (audioTaskGenerationRef.current !== taskGeneration) return
+        setStatus('idle')
+      } else if (data.audio_base64) {
         // Try auto-play, fall back to Tap to hear
         try {
           setStatus('playing')
@@ -1106,6 +1123,23 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     }
   }, [])
 
+  const toggleMuted = useCallback(() => {
+    const next = !mutedRef.current
+    mutedRef.current = next
+    setMuted(next)
+    if (next) {
+      // Turning mute ON mid-playback must silence immediately. stopAllAudio
+      // invalidates in-flight audio tasks and clears any pending tap-to-hear,
+      // but only resets status when currently 'playing' — recording is untouched.
+      stopAllAudio()
+      // If listen mode is on, the user would otherwise see and hear nothing.
+      // Its existing toggle reveals the hidden messages as it turns off.
+      if (listenModeRef.current) {
+        toggleListenMode()
+      }
+    }
+  }, [stopAllAudio, toggleListenMode])
+
   const revealMessage = useCallback((index: number) => {
     setMessages((prev) => prev.map((m, i) => (i === index ? { ...m, revealed: true } : m)))
     messagesRef.current = messagesRef.current.map((m, i) =>
@@ -1256,7 +1290,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
           // Reveal AI text after 1.5s regardless of whether audio plays
           scheduleReveal()
 
-          if (data.audio_base64) {
+          if (mutedRef.current) {
+            // Muted: silence the reply's auto-speak. Text still appears; no
+            // pending tap-to-hear (an explicit replay tap still plays).
+            if (audioTaskGenerationRef.current !== taskGeneration) return
+            setStatus('idle')
+          } else if (data.audio_base64) {
             // Play via AudioContext (unlocked on mic press) — works from onstop on iOS.
             // Falls back to pendingAudio if AudioContext unavailable or decoding fails.
             try {
@@ -1459,6 +1498,8 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     toggleStudyMode,
     listenMode,
     toggleListenMode,
+    muted,
+    toggleMuted,
     revealMessage,
     saveCorrections,
     conversationId,

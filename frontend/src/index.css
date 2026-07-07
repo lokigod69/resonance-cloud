@@ -896,6 +896,31 @@ input[type="range"].volume-slider::-moz-range-track {
     inset 0 -1px 0 rgba(0, 0, 0, 0.35);
 }
 
+/* Casting-screen "Browse tutors & voices" accordion. The grid-rows 0fr↔1fr
+   trick animates height without measuring; the inner wrapper clips overflow. */
+.speak-browse-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0.4;
+  transition: grid-template-rows 350ms ease, opacity 350ms ease;
+}
+
+.speak-browse-panel[data-open='true'] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.speak-browse-panel > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speak-browse-panel {
+    transition: none;
+  }
+}
+
 .speak-wave-bar {
   transform-origin: center;
   animation: speakWavePulse 2.4s ease-in-out infinite;

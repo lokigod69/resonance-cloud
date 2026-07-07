@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, UserRoundCog, MessageSquarePlus, History, Signal, ChevronDown, SlidersHorizontal, ChevronRight } from 'lucide-react'
+import { Mic, Volume2, VolumeX, ArrowLeft, Loader2, Play, Square, UserRoundCog, MessageSquarePlus, History, Signal, ChevronDown, SlidersHorizontal, ChevronRight } from 'lucide-react'
 import { useVoiceTutor, type SpeakProvider } from '@/hooks/useVoiceTutor'
 import { useGrokRealtime } from '@/hooks/useGrokRealtime'
 import { useStudyWords } from '@/hooks/useStudyWords'
@@ -221,6 +221,10 @@ export default function Speak() {
   // room shows whenever a last-used setup exists and the learner hasn't asked
   // to recast.
   const [showCasting, setShowCasting] = useState(false)
+  // Collapsible "Browse tutors & voices" section on the casting screen. null
+  // means "follow the default open/closed rule"; once the learner toggles it
+  // their choice sticks.
+  const [browseOverride, setBrowseOverride] = useState<boolean | null>(null)
   const [grokFlowActive, setGrokFlowActive] = useState(false)
   const [lastSetup, setLastSetup] = useState<LastSpeakSetup | null>(null)
   const [selectedGrokVoice, setSelectedGrokVoice] = useState<GrokVoice | null>(DEFAULT_GROK_VOICE)
@@ -769,6 +773,12 @@ export default function Speak() {
     const savedLevelLabel = levelOptions.find((opt) => opt.level === (isGrokLevel(tutor.level) ? tutor.level : grokLevel))
     const grokAvailable = tutor.language !== 'fil'
     const voxtralAvailable = tutor.language !== 'fil' && tutor.language !== 'ceb'
+    // The Live door is the hero; browse-tutors collapses under it for organic
+    // first-timers, but stays open when there's no Live door (fil / voice
+    // change) or the learner explicitly came here to recast.
+    const liveDoorVisible = grokAvailable && !tutor.isChangingVoice
+    const browseDefaultOpen = !liveDoorVisible || showCasting || tutor.isChangingVoice
+    const browseOpen = browseOverride ?? browseDefaultOpen
 
     const goBack = () => {
       if (grokFlowActive) {
@@ -946,7 +956,7 @@ export default function Speak() {
               </div>
             ) : (
               <div className="space-y-6">
-                {grokAvailable && !tutor.isChangingVoice && (
+                {liveDoorVisible && (
                   <LiveDoorCard
                     disabled={isStarting}
                     onEnter={() => {
@@ -956,13 +966,29 @@ export default function Speak() {
                     }}
                   />
                 )}
-                <CharacterGrid
-                  language={tutor.language}
-                  disabled={isStarting}
-                  voxtralAvailable={voxtralAvailable}
-                  onSelect={handleVoxtralSelect}
-                  onClassicVoiceSelect={handleClassicVoiceSelect}
-                />
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => setBrowseOverride(!browseOpen)}
+                    aria-expanded={browseOpen}
+                    aria-controls="speak-browse-panel"
+                    className="flex w-full items-center justify-between gap-3 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-glass)] px-5 py-3.5 text-left transition-colors hover:bg-[var(--surface-glass-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/60"
+                  >
+                    <span className="text-sm font-semibold text-[var(--text-primary)]">{t('speak.casting.browseTutors')}</span>
+                    <ChevronDown className={`h-5 w-5 shrink-0 text-[var(--text-muted)] transition-transform duration-300 ${browseOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <div id="speak-browse-panel" className="speak-browse-panel mt-3" data-open={browseOpen}>
+                    <div>
+                      <CharacterGrid
+                        language={tutor.language}
+                        disabled={isStarting}
+                        voxtralAvailable={voxtralAvailable}
+                        onSelect={handleVoxtralSelect}
+                        onClassicVoiceSelect={handleClassicVoiceSelect}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -1371,6 +1397,23 @@ export default function Speak() {
             </div>
           </div>
 
+          {/* Quick mute toggle for the tutor's auto-speak — kept as a bare
+              icon so the header stays uncluttered. Only shown for TTS tutors;
+              the Grok live header is a separate block and never renders this. */}
+          <button
+            onClick={tutor.toggleMuted}
+            aria-pressed={tutor.muted}
+            aria-label={tutor.muted ? t('speak.unmuteTutor') : t('speak.muteTutor')}
+            title={tutor.muted ? t('speak.unmuteTutor') : t('speak.muteTutor')}
+            className={`flex items-center justify-center p-2 rounded-lg transition-colors shrink-0 ${
+              tutor.muted
+                ? 'text-[var(--accent)] hover:bg-[var(--accent-soft)]'
+                : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)]'
+            }`}
+          >
+            {tutor.muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+          </button>
+
           {/* Every conversation control lives in one settings sheet with
               written-out labels — the old icon strip was cut off on mobile
               and unreadable without tooltips. */}
@@ -1570,6 +1613,27 @@ export default function Speak() {
                   : 'bg-[var(--field-bg)] text-[var(--text-muted)]'
               }`}>
                 {tutor.listenMode ? t('speak.settingsOn') : t('speak.settingsOff')}
+              </span>
+            </button>
+
+            <button
+              onClick={tutor.toggleMuted}
+              className={sheetRowClass}
+              aria-pressed={!tutor.muted}
+            >
+              <span className="text-lg">{tutor.muted ? '🔇' : '🔊'}</span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-medium text-[var(--text-primary)]">{t('speak.sound')}</span>
+                <span className="block text-xs text-[var(--text-muted)]">
+                  {tutor.muted ? t('speak.soundOffTooltip') : t('speak.soundTooltip')}
+                </span>
+              </span>
+              <span className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${
+                !tutor.muted
+                  ? 'bg-[var(--accent-soft)] text-[var(--accent)]'
+                  : 'bg-[var(--field-bg)] text-[var(--text-muted)]'
+              }`}>
+                {!tutor.muted ? t('speak.settingsOn') : t('speak.settingsOff')}
               </span>
             </button>
 
