@@ -8,6 +8,8 @@ import { optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
+import { writeUsageEvent } from './_shared/usageEvents'
+import { openRouterCost, type LlmUsage } from './_shared/usageCost'
 import { createClient } from '@supabase/supabase-js'
 
 const SUGGEST_MODEL = 'deepseek/deepseek-v4-flash'
@@ -231,11 +233,13 @@ export async function OPTIONS(req?: Request): Promise<Response> {
 export async function POST(req: Request): Promise<Response> {
   let body: SuggestWordsBody
   let userJwt: string
+  let userId = ''
   try {
     const token = extractBearerToken(req)
     if (!token) throw new ApiError(401, 'Missing authentication')
     userJwt = token
     const user = await requireSupabaseUser(req)
+    userId = user.id
     const rawBody = await readJsonWithLimit<unknown>(req, SUGGEST_WORDS_BODY_MAX_BYTES)
     body = validateBody(rawBody)
     await consumeApiQuota(user.id, 'suggest_words')
@@ -254,10 +258,16 @@ export async function POST(req: Request): Promise<Response> {
   const systemPrompt = buildSystemPrompt(body.count, body.base_language, avoidList)
   const userPrompt = buildUserPrompt(body.count, body.category, body.target_language)
 
+  const startedAt = Date.now()
   try {
     const llmRes = await callOpenRouter(apiKey, systemPrompt, userPrompt)
 
     if (!llmRes.ok) {
+      await writeUsageEvent({
+        userId, feature: 'suggest_words', stage: 'enrichment', status: 'failed',
+        modelProvider: 'openrouter', modelName: SUGGEST_MODEL,
+        latencyMs: Date.now() - startedAt, errorType: `http_${llmRes.status}`, metadata: { pass: 'primary' },
+      })
       const status = llmRes.status === 429 ? 429 : 502
       const detail = status === 429
         ? 'Too many requests. Please wait a moment.'
@@ -265,16 +275,36 @@ export async function POST(req: Request): Promise<Response> {
       return jsonResponse(req, { detail }, status)
     }
 
-    const llmData = await llmRes.json()
+    const llmData = await llmRes.json() as { choices?: Array<{ message?: { content?: string } }>; usage?: LlmUsage }
+    const cost = openRouterCost(SUGGEST_MODEL, llmData.usage)
     const content = llmData?.choices?.[0]?.message?.content
     if (!content) {
+      await writeUsageEvent({
+        userId, feature: 'suggest_words', stage: 'enrichment', status: 'partial',
+        modelProvider: 'openrouter', modelName: SUGGEST_MODEL,
+        costUsd: cost.costUsd, tokensIn: cost.tokensIn, tokensOut: cost.tokensOut,
+        latencyMs: Date.now() - startedAt, errorType: 'empty_content', metadata: { pass: 'primary' },
+      })
       return jsonResponse(req, { detail: 'Invalid response from word suggestion service' }, 502)
     }
 
     const parsedWords = parseAndCleanWords(content)
     if (!parsedWords) {
+      await writeUsageEvent({
+        userId, feature: 'suggest_words', stage: 'enrichment', status: 'partial',
+        modelProvider: 'openrouter', modelName: SUGGEST_MODEL,
+        costUsd: cost.costUsd, tokensIn: cost.tokensIn, tokensOut: cost.tokensOut,
+        latencyMs: Date.now() - startedAt, errorType: 'malformed_words', metadata: { pass: 'primary' },
+      })
       return jsonResponse(req, { detail: 'Invalid response from word suggestion service' }, 502)
     }
+
+    await writeUsageEvent({
+      userId, feature: 'suggest_words', stage: 'enrichment', status: 'success',
+      modelProvider: 'openrouter', modelName: SUGGEST_MODEL,
+      costUsd: cost.costUsd, tokensIn: cost.tokensIn, tokensOut: cost.tokensOut,
+      latencyMs: Date.now() - startedAt, metadata: { pass: 'primary', words_returned: parsedWords.length },
+    })
 
     let filtered = filterAgainstAvoid(parsedWords, avoidList)
 
@@ -288,24 +318,49 @@ export async function POST(req: Request): Promise<Response> {
         `\n\nIMPORTANT: ${retryReminder}`
       const retryUserPrompt = buildUserPrompt(retryCount, body.category, body.target_language)
 
+      const retryStartedAt = Date.now()
       try {
         const retryRes = await callOpenRouter(apiKey, retrySystemPrompt, retryUserPrompt)
 
         if (retryRes.ok) {
-          const retryData = await retryRes.json()
+          const retryData = await retryRes.json() as { choices?: Array<{ message?: { content?: string } }>; usage?: LlmUsage }
+          const retryCost = openRouterCost(SUGGEST_MODEL, retryData.usage)
           const retryContent = retryData?.choices?.[0]?.message?.content
+          let retryStatus: 'success' | 'partial' = 'partial'
+          let retryError: string | null = 'empty_content'
           if (retryContent) {
             const retryWords = parseAndCleanWords(retryContent)
             if (retryWords) {
               const retryFiltered = filterAgainstAvoid(retryWords, avoidList)
               filtered = mergeUniqueWords(filtered, retryFiltered)
+              retryStatus = 'success'
+              retryError = null
+            } else {
+              retryError = 'malformed_words'
             }
           }
+          await writeUsageEvent({
+            userId, feature: 'suggest_words', stage: 'enrichment', status: retryStatus,
+            modelProvider: 'openrouter', modelName: SUGGEST_MODEL,
+            costUsd: retryCost.costUsd, tokensIn: retryCost.tokensIn, tokensOut: retryCost.tokensOut,
+            latencyMs: Date.now() - retryStartedAt, errorType: retryError, metadata: { pass: 'retry' },
+          })
         } else {
           console.error('[suggest-words] retry OpenRouter error:', retryRes.status)
+          await writeUsageEvent({
+            userId, feature: 'suggest_words', stage: 'enrichment', status: 'failed',
+            modelProvider: 'openrouter', modelName: SUGGEST_MODEL,
+            latencyMs: Date.now() - retryStartedAt, errorType: `http_${retryRes.status}`, metadata: { pass: 'retry' },
+          })
         }
       } catch (error) {
         console.warn('[suggest-words] retry failed, preserving first-pass results:', error)
+        await writeUsageEvent({
+          userId, feature: 'suggest_words', stage: 'enrichment', status: 'failed',
+          modelProvider: 'openrouter', modelName: SUGGEST_MODEL,
+          latencyMs: Date.now() - retryStartedAt,
+          errorType: error instanceof Error ? error.name : 'unknown', metadata: { pass: 'retry' },
+        })
       }
     }
 
@@ -315,6 +370,12 @@ export async function POST(req: Request): Promise<Response> {
 
   } catch (err) {
     console.error('suggest-words error:', err instanceof Error ? err.message : err)
+    await writeUsageEvent({
+      userId, feature: 'suggest_words', stage: 'enrichment', status: 'failed',
+      modelProvider: 'openrouter', modelName: SUGGEST_MODEL,
+      latencyMs: Date.now() - startedAt,
+      errorType: err instanceof Error ? err.name : 'unknown', metadata: { pass: 'primary' },
+    })
     if (err instanceof TypeError && err.message.includes('fetch')) {
       return jsonResponse(req, { detail: 'Word suggestion service unreachable' }, 502)
     }

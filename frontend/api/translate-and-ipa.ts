@@ -6,6 +6,8 @@ import { optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
+import { writeUsageEvent } from './_shared/usageEvents'
+import { openRouterCost, type LlmUsage } from './_shared/usageCost'
 
 const TRANSLATE_MODEL = 'deepseek/deepseek-v4-flash'
 const MAX_TOKENS = 3000
@@ -153,8 +155,10 @@ export async function OPTIONS(req?: Request): Promise<Response> {
 
 export async function POST(req: Request): Promise<Response> {
   let body: TranslateBody
+  let userId = ''
   try {
     const user = await requireSupabaseUser(req)
+    userId = user.id
     const rawBody = await readJsonWithLimit<unknown>(req, TRANSLATE_BODY_MAX_BYTES)
     body = validateBody(rawBody)
     await consumeApiQuota(user.id, 'suggest_words')
@@ -178,34 +182,66 @@ export async function POST(req: Request): Promise<Response> {
       ? baseSystemPrompt
       : `${baseSystemPrompt}\n\nYour previous response was invalid. Return exactly ${body.items.length} items in the same order, preserving every input word verbatim.`
 
+    const startedAt = Date.now()
     try {
       const llmRes = await callOpenRouter(apiKey, systemPrompt, userPrompt)
       if (!llmRes.ok) {
         lastDetail = llmRes.status === 429
           ? 'Too many requests. Please wait a moment.'
           : 'Translation service unavailable'
+        await writeUsageEvent({
+          userId, feature: 'translate_ipa', stage: 'enrichment', status: 'failed',
+          modelProvider: 'openrouter', modelName: TRANSLATE_MODEL,
+          latencyMs: Date.now() - startedAt, errorType: `http_${llmRes.status}`,
+          metadata: { attempt },
+        })
         continue
       }
 
-      const llmData = await llmRes.json()
+      const llmData = await llmRes.json() as { choices?: Array<{ message?: { content?: string } }>; usage?: LlmUsage }
+      const cost = openRouterCost(TRANSLATE_MODEL, llmData.usage)
       const content = llmData?.choices?.[0]?.message?.content
       if (typeof content !== 'string' || !content.trim()) {
         lastDetail = 'Invalid response from translation service'
+        await writeUsageEvent({
+          userId, feature: 'translate_ipa', stage: 'enrichment', status: 'partial',
+          modelProvider: 'openrouter', modelName: TRANSLATE_MODEL,
+          costUsd: cost.costUsd, tokensIn: cost.tokensIn, tokensOut: cost.tokensOut,
+          latencyMs: Date.now() - startedAt, errorType: 'empty_content', metadata: { attempt },
+        })
         continue
       }
 
       const items = parseTranslatedItems(content, body.items)
       if (!items) {
         lastDetail = 'Translation service returned malformed or mismatched items'
+        await writeUsageEvent({
+          userId, feature: 'translate_ipa', stage: 'enrichment', status: 'partial',
+          modelProvider: 'openrouter', modelName: TRANSLATE_MODEL,
+          costUsd: cost.costUsd, tokensIn: cost.tokensIn, tokensOut: cost.tokensOut,
+          latencyMs: Date.now() - startedAt, errorType: 'malformed_items', metadata: { attempt },
+        })
         continue
       }
 
+      await writeUsageEvent({
+        userId, feature: 'translate_ipa', stage: 'enrichment', status: 'success',
+        modelProvider: 'openrouter', modelName: TRANSLATE_MODEL,
+        costUsd: cost.costUsd, tokensIn: cost.tokensIn, tokensOut: cost.tokensOut,
+        latencyMs: Date.now() - startedAt, metadata: { attempt, items_returned: items.length },
+      })
       return jsonResponse(req, { items }, 200)
     } catch (err) {
       console.error('[translate-and-ipa] OpenRouter attempt failed:', err instanceof Error ? err.message : err)
       lastDetail = err instanceof TypeError && err.message.includes('fetch')
         ? 'Translation service unreachable'
         : 'Translation service unavailable'
+      await writeUsageEvent({
+        userId, feature: 'translate_ipa', stage: 'enrichment', status: 'failed',
+        modelProvider: 'openrouter', modelName: TRANSLATE_MODEL,
+        latencyMs: Date.now() - startedAt,
+        errorType: err instanceof Error ? err.name : 'unknown', metadata: { attempt },
+      })
     }
   }
 

@@ -12,6 +12,16 @@ import { corsHeaders, optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit, sanitizedProviderError } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
+import { writeUsageEvent } from './_shared/usageEvents'
+import {
+  groqLlmCost, groqSttCost, geminiTtsCost, voxtralTtsCost,
+  type LlmUsage, type GeminiTtsUsageLike,
+} from './_shared/usageCost'
+
+const SPEAK_LLM_MODEL = 'llama-3.3-70b-versatile'
+const SPEAK_STT_MODEL = 'whisper-large-v3'
+const SPEAK_GEMINI_TTS_MODEL = 'gemini-3.1-flash-tts-preview'
+const SPEAK_VOXTRAL_TTS_MODEL = 'voxtral-mini-tts-2603'
 
 // Vercel Serverless Function — Voice Tutor pipeline
 // POST /api/voice-chat
@@ -300,12 +310,21 @@ function sanitizeForTTS(text: string): string {
 interface TtsResult {
   audio: Buffer
   format: 'mp3' | 'wav'
+  provider: 'gemini' | 'voxtral'
+  model: string
+  usage?: GeminiTtsUsageLike   // Gemini TTS token usage (text in + audio out)
+  chars?: number               // Voxtral synthesized character count
 }
 
 interface GeminiSpeechOptions {
   characterModeId: string
   voiceName: string
   accentId?: string
+}
+
+/** Estimate TTS spend from a TtsResult (Gemini audio/text tokens or Voxtral chars). */
+function ttsCostOf(result: TtsResult): number {
+  return result.provider === 'gemini' ? geminiTtsCost(result.usage) : voxtralTtsCost(result.chars)
 }
 
 function buildGeminiTtsPrompt(
@@ -345,8 +364,8 @@ async function generateSpeech(
 ): Promise<TtsResult> {
   // ── Gemini branch — modular character-mode + prebuilt voice ───────────────
   if (geminiOptions) {
-    const audio = await generateGeminiSpeech(text, language, geminiOptions)
-    return { audio, format: 'wav' }
+    const { audio, usage } = await generateGeminiSpeech(text, language, geminiOptions)
+    return { audio, format: 'wav', provider: 'gemini', model: SPEAK_GEMINI_TTS_MODEL, usage }
   }
 
   if (VOXTRAL_SUPPORTED.has(language)) {
@@ -383,12 +402,15 @@ async function generateSpeech(
     }
     const ttsJson = await ttsResponse.json() as { audio_data?: string }
     if (!ttsJson.audio_data) throw new Error('Mistral TTS returned no audio_data field')
-    return { audio: Buffer.from(ttsJson.audio_data, 'base64'), format: 'mp3' }
+    return {
+      audio: Buffer.from(ttsJson.audio_data, 'base64'), format: 'mp3',
+      provider: 'voxtral', model: SPEAK_VOXTRAL_TTS_MODEL, chars: text.length,
+    }
   } else {
     // Non-Voxtral language (fil, id, ko, ceb) with no explicit Gemini pick —
     // serve it with Gemini TTS using a sensible default mode + voice.
-    const audio = await generateGeminiSpeech(text, language, DEFAULT_GEMINI_OPTIONS)
-    return { audio, format: 'wav' }
+    const { audio, usage } = await generateGeminiSpeech(text, language, DEFAULT_GEMINI_OPTIONS)
+    return { audio, format: 'wav', provider: 'gemini', model: SPEAK_GEMINI_TTS_MODEL, usage }
   }
 }
 
@@ -398,7 +420,7 @@ async function generateGeminiSpeech(
   text: string,
   language: string,
   options: GeminiSpeechOptions,
-): Promise<Buffer> {
+): Promise<{ audio: Buffer; usage: GeminiTtsUsageLike }> {
   const mode = getGeminiMode(options.characterModeId)
   if (!mode) throw new Error(`Unknown Gemini character mode: ${options.characterModeId}`)
   if (!GEMINI_VOICE_NAMES.has(options.voiceName)) {
@@ -409,7 +431,7 @@ async function generateGeminiSpeech(
   const accentSuffix = GEMINI_ACCENT_SUFFIXES[accentId] ?? ''
   const fullPrompt = buildGeminiTtsPrompt(text, language, mode.geminiStylePrompt, accentSuffix)
   const result = await generateGeminiTtsFromPrompt(fullPrompt, options.voiceName)
-  return result.audio
+  return { audio: result.audio, usage: result.usage }
 }
 
 function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number, label: string): Promise<Response> {
@@ -657,8 +679,10 @@ If no errors: {"corrections": []}`
 
 export async function POST(req: Request): Promise<Response> {
   let body: RequestBody & { mode?: string; transcript?: Array<{ role: string; content: string }>; message?: string }
+  let userId = ''
   try {
     const user = await requireSupabaseUser(req)
+    userId = user.id
     const rawBody = await readJsonWithLimit<unknown>(req, VOICE_CHAT_BODY_MAX_BYTES)
     body = validateVoiceBody(rawBody)
     await consumeApiQuota(user.id, 'voice_chat')
@@ -694,6 +718,10 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   let user_text = ''
+  // Usage accumulators for the per-turn pipeline_events row (written at the end).
+  const turnStartedAt = Date.now()
+  let sttDurationSeconds: number | null = null
+  let llmUsage: LlmUsage | undefined
 
   // Roleplay text path: client may send text (including the __ROLEPLAY_OPEN__ sentinel)
   // instead of audio. Skip STT entirely in that case. Always self-contained:
@@ -715,7 +743,8 @@ export async function POST(req: Request): Promise<Response> {
     const formData = new FormData()
     formData.append('file', audioBlob, `audio.${extension}`)
     formData.append('model', 'whisper-large-v3')
-    formData.append('response_format', 'json')
+    // verbose_json returns the real audio `duration` (for cost metering) alongside `text`.
+    formData.append('response_format', 'verbose_json')
 
     const sttRes = await fetchWithTimeout('https://api.groq.com/openai/v1/audio/transcriptions', {
       method: 'POST',
@@ -727,8 +756,9 @@ export async function POST(req: Request): Promise<Response> {
       return sanitizedProviderError(req, 'Speech transcription service unavailable')
     }
 
-    const sttJson = await sttRes.json() as { text: string }
+    const sttJson = await sttRes.json() as { text?: string; duration?: number }
     user_text = sttJson.text?.trim() ?? ''
+    if (typeof sttJson.duration === 'number') sttDurationSeconds = sttJson.duration
   }
 
   // ── Step 2: Build LLM messages ─────────────────────────────────────────────
@@ -788,6 +818,7 @@ export async function POST(req: Request): Promise<Response> {
       id: 'Saya tidak mendengar dengan jelas — bisa coba lagi?',
       ko: '잘 못 들었어요 — 다시 한번 말해 주시겠어요?',
       ceb: 'Wala ko kadungog — puwede ba nimo usbon?',
+      ru: 'Что-то плохо слышно — повтори, пожалуйста?',
     }
     const retryText = retryResponses[language] ?? retryResponses.en
 
@@ -799,6 +830,25 @@ export async function POST(req: Request): Promise<Response> {
       return errorResponse(req, 500, 'Voice service is not configured')
     }
     const retryResult = await generateSpeech(retryText, language, mistralKeyRetry ?? '', voice_id, retryGeminiOpts)
+
+    // STT ran (and was billed) but returned nothing — record the STT + retry-TTS spend.
+    const retrySttCost = groqSttCost(sttDurationSeconds)
+    const retryTtsCost = ttsCostOf(retryResult)
+    await writeUsageEvent({
+      // STT (groq) + TTS (voxtral/gemini) blend — model_provider 'multi' so the
+      // per-provider rollup isn't falsely credited to one vendor; the per-component
+      // split lives in metadata.
+      userId, feature: 'speak_turn', stage: 'speak', status: 'partial',
+      modelProvider: 'multi', modelName: null,
+      costUsd: retrySttCost + retryTtsCost,
+      audioSeconds: sttDurationSeconds, chars: retryResult.chars ?? null,
+      latencyMs: Date.now() - turnStartedAt, errorType: 'stt_empty',
+      metadata: {
+        language, mode: 'stt_retry',
+        stt: { provider: 'groq', model: SPEAK_STT_MODEL, audio_seconds: sttDurationSeconds, cost_usd: retrySttCost },
+        tts: { provider: retryResult.provider, model: retryResult.model, chars: retryResult.chars ?? null, usage: retryResult.usage ?? null, cost_usd: retryTtsCost },
+      },
+    })
 
     return new Response(
       JSON.stringify({
@@ -818,7 +868,6 @@ export async function POST(req: Request): Promise<Response> {
     let greetingInstruction: string
     if (character) {
       greetingInstruction = buildVoxtralGreeting({
-      ru: 'Что-то плохо слышно — повтори, пожалуйста?',
         level,
         targetLangName: lang.name,
         nativeLangName,
@@ -864,13 +913,33 @@ export async function POST(req: Request): Promise<Response> {
   }, 20000, 'Groq LLM')
 
   if (!llmRes.ok) {
+    // LLM call failed (not billed); STT may already have been billed this turn.
+    await writeUsageEvent({
+      userId, feature: 'speak_turn', stage: 'speak', status: 'failed',
+      modelProvider: 'groq', modelName: SPEAK_LLM_MODEL,
+      costUsd: groqSttCost(sttDurationSeconds), audioSeconds: sttDurationSeconds,
+      latencyMs: Date.now() - turnStartedAt, errorType: `llm_http_${llmRes.status}`,
+      metadata: { language, stt: { provider: 'groq', model: SPEAK_STT_MODEL, audio_seconds: sttDurationSeconds } },
+    })
     return sanitizedProviderError(req, 'Voice chat service unavailable')
   }
 
-  const llmJson = await llmRes.json() as { choices: Array<{ message: { content: string } }> }
+  const llmJson = await llmRes.json() as { choices: Array<{ message: { content: string } }>; usage?: LlmUsage }
+  if (llmJson.usage) llmUsage = llmJson.usage
   const ai_text = llmJson.choices?.[0]?.message?.content?.trim() ?? ''
 
   if (!ai_text) {
+    // LLM returned (and was billed) but produced no text — record STT + LLM spend.
+    const emptyLlm = groqLlmCost(SPEAK_LLM_MODEL, llmUsage)
+    await writeUsageEvent({
+      userId, feature: 'speak_turn', stage: 'speak', status: 'failed',
+      modelProvider: 'groq', modelName: SPEAK_LLM_MODEL,
+      costUsd: groqSttCost(sttDurationSeconds) + emptyLlm.costUsd,
+      tokensIn: emptyLlm.tokensIn, tokensOut: emptyLlm.tokensOut,
+      audioSeconds: sttDurationSeconds, latencyMs: Date.now() - turnStartedAt,
+      errorType: 'empty_ai_text',
+      metadata: { language, stt: { provider: 'groq', model: SPEAK_STT_MODEL, audio_seconds: sttDurationSeconds } },
+    })
     return sanitizedProviderError(req, 'Voice chat service unavailable')
   }
 
@@ -889,18 +958,49 @@ export async function POST(req: Request): Promise<Response> {
   const ttsText = sanitizeForTTS(ai_text)
   let audio_base64_out = ''
   let audio_format: 'mp3' | 'wav' = 'mp3'
+  let ttsResult: TtsResult | null = null
+  let ttsFailed = false
 
   try {
-    const result = await generateSpeech(ttsText, language, mistralKey ?? '', voice_id, geminiOpts)
-    audio_base64_out = result.audio.toString('base64')
-    audio_format = result.format
+    ttsResult = await generateSpeech(ttsText, language, mistralKey ?? '', voice_id, geminiOpts)
+    audio_base64_out = ttsResult.audio.toString('base64')
+    audio_format = ttsResult.format
   } catch (ttsErr) {
     // TTS failed — log it but don't fail the whole request
+    ttsFailed = true
     console.warn('[voice-chat] TTS failed, returning text-only response:', ttsErr instanceof Error ? ttsErr.message : ttsErr)
     // audio_base64_out stays empty — client will show text without audio
   }
 
-  // ── Step 5: Return response ────────────────────────────────────────────────
+  // ── Step 5: Record per-turn usage + cost — one pipeline_events row per turn ──
+  const sttCost = groqSttCost(sttDurationSeconds)
+  const llm = groqLlmCost(SPEAK_LLM_MODEL, llmUsage)
+  const ttsCost = ttsResult ? ttsCostOf(ttsResult) : 0
+  await writeUsageEvent({
+    // STT (groq) + LLM (groq) + TTS (voxtral/gemini) blend — model_provider 'multi'
+    // so the per-provider rollup isn't falsely credited to Groq; the per-component
+    // split (incl. each provider + model) lives in metadata.
+    userId, feature: 'speak_turn', stage: 'speak',
+    status: ttsFailed ? 'partial' : 'success',
+    modelProvider: 'multi', modelName: null,
+    costUsd: sttCost + llm.costUsd + ttsCost,
+    tokensIn: llm.tokensIn, tokensOut: llm.tokensOut,
+    audioSeconds: sttDurationSeconds,
+    chars: ttsResult?.chars ?? null,
+    latencyMs: Date.now() - turnStartedAt,
+    errorType: ttsFailed ? 'tts_failed' : null,
+    metadata: {
+      language,
+      mode: isRoleplay ? 'roleplay' : (isGreeting ? 'greeting' : 'turn'),
+      stt: { provider: 'groq', model: SPEAK_STT_MODEL, audio_seconds: sttDurationSeconds, cost_usd: sttCost },
+      llm: { provider: 'groq', model: SPEAK_LLM_MODEL, tokens_in: llm.tokensIn, tokens_out: llm.tokensOut, cost_usd: llm.costUsd },
+      tts: ttsResult
+        ? { provider: ttsResult.provider, model: ttsResult.model, chars: ttsResult.chars ?? null, usage: ttsResult.usage ?? null, cost_usd: ttsCost }
+        : { failed: true },
+    },
+  })
+
+  // ── Step 6: Return response ────────────────────────────────────────────────
   return new Response(
     JSON.stringify({
       user_text,

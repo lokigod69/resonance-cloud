@@ -7,6 +7,8 @@ import { optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
+import { writeUsageEvent } from './_shared/usageEvents'
+import { openRouterCost, type LlmUsage } from './_shared/usageCost'
 
 const OPENROUTER_MODEL = 'deepseek/deepseek-v4-flash'
 const EXTRACT_BODY_MAX_BYTES = 512 * 1024
@@ -317,15 +319,29 @@ export async function POST(req: Request): Promise<Response> {
     return errorResponse(req, 500, 'Vocabulary extraction service is not configured')
   }
 
+  const startedAt = Date.now()
   try {
     const llmRes = await callOpenRouter(apiKey, buildSystemPrompt(body), cleanTranscript)
     if (!llmRes.ok) {
+      await writeUsageEvent({
+        userId, feature: 'extract_vocab', stage: 'enrichment', status: 'failed',
+        modelProvider: 'openrouter', modelName: OPENROUTER_MODEL,
+        latencyMs: Date.now() - startedAt, errorType: `http_${llmRes.status}`,
+      })
       return jsonResponse(req, { detail: 'Vocabulary extraction service unavailable' }, 502)
     }
 
-    const llmJson = await llmRes.json() as { choices?: Array<{ message?: { content?: string } }> }
+    const llmJson = await llmRes.json() as { choices?: Array<{ message?: { content?: string } }>; usage?: LlmUsage }
     const content = llmJson.choices?.[0]?.message?.content?.trim() || '{"items":[]}'
     const items = parseItems(content, body)
+
+    const cost = openRouterCost(OPENROUTER_MODEL, llmJson.usage)
+    await writeUsageEvent({
+      userId, feature: 'extract_vocab', stage: 'enrichment', status: 'success',
+      modelProvider: 'openrouter', modelName: OPENROUTER_MODEL,
+      costUsd: cost.costUsd, tokensIn: cost.tokensIn, tokensOut: cost.tokensOut,
+      latencyMs: Date.now() - startedAt, metadata: { items_returned: items.length },
+    })
 
     return jsonResponse(req, {
       items,
@@ -333,6 +349,12 @@ export async function POST(req: Request): Promise<Response> {
     }, 200)
   } catch (err) {
     console.error('[extract-vocabulary] OpenRouter call failed:', err instanceof Error ? err.message : err)
+    await writeUsageEvent({
+      userId, feature: 'extract_vocab', stage: 'enrichment', status: 'failed',
+      modelProvider: 'openrouter', modelName: OPENROUTER_MODEL,
+      latencyMs: Date.now() - startedAt,
+      errorType: err instanceof Error ? err.name : 'unknown',
+    })
     return jsonResponse(req, { detail: 'Vocabulary extraction service unavailable' }, 502)
   }
 }

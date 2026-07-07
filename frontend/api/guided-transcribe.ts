@@ -2,6 +2,8 @@ import { corsHeaders, optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit, sanitizedProviderError } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
+import { writeUsageEvent } from './_shared/usageEvents'
+import { groqSttCost } from './_shared/usageCost'
 
 type GuidedTranscribeBody = {
   audio_base64: string
@@ -45,10 +47,12 @@ export function DELETE(req: Request): Response {
 
 export async function POST(req: Request): Promise<Response> {
   let body: GuidedTranscribeBody
+  let userId = ''
   try {
     const rawBody = await readJsonWithLimit<unknown>(req, GUIDED_TRANSCRIBE_BODY_MAX_BYTES)
     body = validateGuidedTranscribeBody(rawBody)
     const user = await requireSupabaseUser(req)
+    userId = user.id
     await consumeApiQuota(user.id, 'guided_transcribe')
   } catch (err) {
     if (err instanceof ApiError) return apiErrorResponse(req, err)
@@ -61,6 +65,7 @@ export async function POST(req: Request): Promise<Response> {
     return errorResponse(req, 500, 'Speech transcription service is not configured')
   }
 
+  const startedAt = Date.now()
   try {
     const audioBuffer = Buffer.from(body.audio_base64, 'base64')
     const extension = getAudioExtension(body.mime_type)
@@ -68,7 +73,9 @@ export async function POST(req: Request): Promise<Response> {
     const formData = new FormData()
     formData.append('file', audioBlob, `guided-today.${extension}`)
     formData.append('model', 'whisper-large-v3')
-    formData.append('response_format', 'json')
+    // verbose_json returns the real audio `duration` (used for cost metering)
+    // alongside `text` — json returns text only.
+    formData.append('response_format', 'verbose_json')
     formData.append('language', 'en')
 
     const sttRes = await fetchWithTimeout('https://api.groq.com/openai/v1/audio/transcriptions', {
@@ -78,13 +85,29 @@ export async function POST(req: Request): Promise<Response> {
     }, 15000)
 
     if (!sttRes.ok) {
+      await writeUsageEvent({
+        userId, feature: 'guided_transcribe', stage: 'guided', status: 'failed',
+        modelProvider: 'groq', modelName: 'whisper-large-v3',
+        latencyMs: Date.now() - startedAt, errorType: `http_${sttRes.status}`,
+      })
       return sanitizedProviderError(req, 'Speech transcription service unavailable')
     }
 
-    const sttJson = await sttRes.json() as { text?: string }
+    const sttJson = await sttRes.json() as { text?: string; duration?: number }
+    const audioSeconds = typeof sttJson.duration === 'number' ? sttJson.duration : null
+    await writeUsageEvent({
+      userId, feature: 'guided_transcribe', stage: 'guided', status: 'success',
+      modelProvider: 'groq', modelName: 'whisper-large-v3',
+      audioSeconds, costUsd: groqSttCost(audioSeconds), latencyMs: Date.now() - startedAt,
+    })
     return jsonResponse(req, { transcript: sttJson.text?.trim() ?? '' }, 200)
   } catch (err) {
     console.error('[guided-transcribe] STT failed:', err instanceof Error ? err.message : err)
+    await writeUsageEvent({
+      userId, feature: 'guided_transcribe', stage: 'guided', status: 'failed',
+      modelProvider: 'groq', modelName: 'whisper-large-v3',
+      latencyMs: Date.now() - startedAt, errorType: err instanceof Error ? err.name : 'unknown',
+    })
     return sanitizedProviderError(req, 'Speech transcription service unavailable')
   }
 }
