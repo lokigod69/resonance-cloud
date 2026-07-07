@@ -11,9 +11,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Music, ChevronRight, Gift, Check } from 'lucide-react'
+import { ChevronRight, Gift, Check } from 'lucide-react'
 import { BASE_LANGUAGES, type Language } from '@/lib/languages'
 import { useTranslation } from '@/hooks/useTranslation'
+import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
+import { LingwaveWaves } from '@/components/branding/LingwaveWaves'
 
 export default function Onboarding() {
   const { t } = useTranslation()
@@ -119,12 +121,12 @@ export default function Onboarding() {
   }
 
   return (
-    <div className="min-h-screen gradient-bg flex items-center justify-center p-6">
-      <div className="w-full max-w-md space-y-8">
-        {/* Logo */}
-        <div className="text-center space-y-2">
-          <Music className="h-10 w-10 text-primary mx-auto" />
-          <h1 className="text-2xl font-bold">{t('onboarding.welcomeTitle')}</h1>
+    <div className="theme-cosmos relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--app-bg)] p-6">
+      <LingwaveWaves />
+      <div className="relative z-10 w-full max-w-md space-y-8">
+        {/* Brand */}
+        <div className="flex flex-col items-center gap-3 text-center">
+          <LingwaveBrand markClassName="h-9" wordmarkClassName="h-7" />
           <p className="text-muted-foreground text-sm">{t('onboarding.welcomeSubtitle')}</p>
         </div>
 

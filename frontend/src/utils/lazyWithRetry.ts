@@ -18,6 +18,8 @@ function isDynamicImportFailure(error: unknown): boolean {
   return false
 }
 
+// React.lazy's public generic is constrained to ComponentType<any>; keep the escape hatch here.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function lazyWithRetry<T extends ComponentType<any>>(
   factory: () => Promise<{ default: T }>,
   key: string,
