@@ -139,15 +139,6 @@ export default function Decks() {
     [decks, activeLanguage]
   )
 
-  // Adding a language from the Decks picker preselects it in the wizard
-  // (the generate flow seeds its language step from the active language).
-  const handleAddLanguage = useCallback((lang: string) => {
-    const canonical = canonicalizeLanguageValue(lang)
-    if (!canonical) return
-    setActiveLanguage(canonical)
-    navigate('/generate')
-  }, [navigate, setActiveLanguage])
-
   const resetDeckProximity = useCallback(() => {
     if (deckProximityFrameRef.current !== null) {
       cancelAnimationFrame(deckProximityFrameRef.current)
@@ -285,11 +276,11 @@ export default function Decks() {
 
       {availableLanguages.length > 1 && (
         <div className="decks-language-cluster">
+          {/* Switching only — adding a language lives on the home page. */}
           <LanguageCluster
             languages={availableLanguages}
             activeLanguage={activeLanguage}
             onSelect={setActiveLanguage}
-            onAddLanguage={handleAddLanguage}
           />
         </div>
       )}

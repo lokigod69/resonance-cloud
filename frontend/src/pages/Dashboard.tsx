@@ -195,6 +195,15 @@ export default function Dashboard() {
                 {greeting}
               </h1>
             </div>
+            {/* Keep the language picker available on the empty state too — after
+                adding a language the learner lands here and must be able to hop
+                back to a language they already study. */}
+            <LanguageCluster
+              languages={availableLanguages}
+              activeLanguage={activeLanguage}
+              onSelect={setActiveLanguage}
+              onAddLanguage={handleAddLanguage}
+            />
             <HomeWelcomeCard />
           </div>
         ) : (
