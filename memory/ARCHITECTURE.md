@@ -1,5 +1,5 @@
 # Architecture
-Last verified: 2026-07-06
+Last verified: 2026-07-06 (domains line corrected 2026-07-07 audit)
 
 ## Overview
 Two production halves in one git repo (root: `orchestrator/`). (1) The user-facing app: React 19 + TypeScript + Vite + Tailwind v4 SPA in `frontend/`, deployed on Vercel with serverless functions in `frontend/api/`, auth/DB/storage on Supabase, iOS via a Capacitor shell. (2) The generation backend: a single Python worker process on Railway (`start_cloud.py` → `job_runner.py`) that polls Supabase for jobs and drives `src/orchestration/*` workers, calling engines in-process via `src/cloud_dispatcher.py` (`DISPATCH_MODE=direct`). A third, legacy half — the local "DAW" (FastAPI routers + per-engine HTTP servers) — remains in-tree but only loads when `STORAGE_MODE != "cloud"`.
@@ -25,7 +25,7 @@ Frontend submits work via Supabase RPCs (`submit_generation`, `request_word_retr
 - Supabase (auth, Postgres incl. RPCs from Phase 1A/1B, storage buckets) — everything breaks without it.
 - Vercel (SPA + serverless functions; Vite preset needs named exports), Railway (worker container).
 - Paid providers: OpenAI/GPT-image, Fal, Kie, Suno, ElevenLabs, Gemini TTS, Grok realtime, Kling/LTX/RunPod (video-era, dormant).
-- Domains: resonanz.pro (canonical today) → lingwave.ai rebrand in progress; CORS in `src/app.py` allows both.
+- Domains: lingwave.ai is the live domain (owner QA runs against it); resonanz.pro is dead (DEPLOYMENT_NOT_FOUND). CORS in `src/app.py` still allows both.
 
 ## Conventions
 - Frontend work commits directly to `main`; standard `git push`; commit only when asked.

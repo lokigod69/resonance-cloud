@@ -2,6 +2,36 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-07-08 — Both skins ship for beta; glassy is the default for new users/devices (owner delegated the call to Fable)
+**Status:** active — committed `a2ee4e16`
+**Decision:** The skin switcher stays (both classic and glassy selectable in ProfileModal); `migrateSkinId`'s no-stored-value fallback flips classic→glassy so new users and wiped devices land on glassy, matching the v1-done definition ("beta in the glassy skin"). Unrecognized legacy values still resolve to classic. `profiles.skin` is now restored when localStorage is empty (same pattern/rationale as the theme-restore decision below). PG/classic page-pair consolidation stays parked until beta testers reveal a preference.
+**Why:** Glassy-only's real payoff is deleting the classic page variants — a large refactor with real risk mid-beta-push and zero user-visible gain; the switcher itself costs nothing and produces preference data. Owner leaned "leave both" and delegated; this keeps both while aligning the default with the beta definition.
+**Rejected:** Hiding the switcher for beta (removes the cheap preference signal for no QA gain — both skins still ship in the bundle either way); deleting classic now (risk without payoff before feedback).
+
+## 2026-07-08 — iOS bundle stays fat (~600 MB) for the private TestFlight; curriculum slimming is a fast-follow, not half-wired now
+**Status:** active — deliberate deferral
+**Decision:** `webDir: dist` bundles all of `public/` (curriculum 460 MB tracked + guided 71 MB + ~65 MB misc) into the IPA. Ship the private beta that way — TestFlight's limit is 4 GB and installs are WiFi. Before any wider beta: add a native-only `publicAssetUrl()` (web keeps relative paths), funnel the DB-persisted relative `thumbnail_url` values (written by `curriculumDeckBridge` into card rows, rendered in ~35 files) through one resolver, then strip `dist/curriculum` in `build:ios` (→ ~135 MB).
+**Why:** Stripping without the DB-path resolver breaks every curriculum-imported deck thumbnail on native; wiring only the 6 code-side builders would be a half-measure that forces network loads for still-bundled assets. Shipping beats elegant size optimization for a July beta ([[STATE]] v1-done).
+**Rejected:** `server.url` remote-loading the live site (Apple review risk, forfeits bundling); stripping + wrapping only the code-built paths tonight (breaks DB-sourced thumbnails — the language-expansion rule "never half-wire" applies).
+
+## 2026-07-08 — Theme restore comes from profiles.theme only when localStorage is empty; local always wins
+**Status:** active — committed `c4ede7a9`
+**Decision:** `ThemeProvider` restores the theme from Supabase `profiles.theme` (on mount and on SIGNED_IN) only when `resonance-theme` is absent from localStorage; a present local value always wins, and a successful restore writes back to localStorage. Fixes the one-way sync where `setTheme` wrote to the profile but nothing ever read it (owner's "purple header turned blue" after clearing site data).
+**Why:** localStorage is the declared primary store and the most recent explicit choice on the device; the profile is the cross-device/recovery backup. Restoring only into the empty case can never fight a fresh local pick.
+**Rejected:** Server-wins on every load (would clobber a newer local choice made while offline/logged-out); making the branded cosmos palette a selectable/default theme (a real design decision the owner hasn't made — cosmos stays a scoped marketing island).
+
+## 2026-07-08 — Speak: mute is a device preference that silences autoplay only; explicit taps always play
+**Status:** active — committed `c4ede7a9`
+**Decision:** `muted` lives in `useVoiceTutor` (localStorage `speak-tutor-muted`), survives new chat and tutor changes, gates only the two autoplay sites (first greeting, post-reply) with no tap-to-hear fallback while muted; explicit replay taps and "Tap to hear" still play; turning mute ON stops in-flight audio (`stopAllAudio`) and switches listenMode off so the user isn't left with hidden text AND no audio. Grok live realtime is out of scope. Surfaced twice: icon-only Volume2/VolumeX in the conversation header + a written-out "Sound" row in the settings sheet.
+**Why:** The owner's ask was "maybe I just want to read it" — a reading mode, not an audio kill-switch; an explicit tap is an unambiguous request to hear. Mute-implies-listen-off prevents a see-nothing-hear-nothing dead state.
+**Rejected:** Gating inside `playAudio` itself (would break explicit replays); resetting mute per conversation (it's a device/session preference, like theme).
+
+## 2026-07-08 — Casting screen: Live door is the hero; tutors collapse under it (organic first-visit only)
+**Status:** active — implemented in working tree, uncommitted
+**Decision:** LiveDoorCard renders as a centered max-w-xl vertical hero (Premium badge kept, deliberately NO quota/limits copy — testers are unlimited on purpose until public use); CharacterGrid sits under a "Browse tutors & voices" accordion (CSS grid-rows 0fr↔1fr animation, reduced-motion guarded) that defaults collapsed only when the Live door is visible and arrival was organic, and defaults expanded for fil / voice-change / the explicit "Choose a different tutor" path; a manual toggle overrides the default for the rest of the visit. Header hover across the app gained the fixed-color brand ramp hairline (gold→vermillion→magenta→plum→white per LingwaveWaves' pinned palette) rather than theme vars.
+**Why:** Owner's re-test verdict: live conversation should be the big obvious center; premium separation by presentation, not by quota threats. The expanded-when-no-door rule keeps fil/ceb and recast flows from landing on a collapsed empty screen. Fixed brand colors because the hairline must match the logo PNG, which no theme recolors.
+**Rejected:** Quota copy on the door (explicitly deferred); collapsing for the "change tutor" path (user's stated intent there IS the grid).
+
 ## 2026-07-07 — Lens confidence is never displayed as a positive signal; the scan is cropped to the reticle
 **Status:** active — implemented in working tree (2G hardening pass), uncommitted
 **Decision:** Gemini's self-reported confidence stays in the API contract but is UI-internal except for `low`, which renders as an actionable caution pointing at the alternates. The always-on high/medium/low chip is deleted (i18n keys removed in en/de/fr). Complementary input-side fix: `frameToCanvas` crops the scan payload to the reticle circle + 35% context margin (cover-math mapping to intrinsic video pixels; full-frame fallback), the reticle grew to `min(74vw, 23rem)`, and the prompt now carries explicit framing ("subject is the item nearest the center") and calibration rules ("never high when several objects could plausibly be the subject"). The frozen preview stays full-frame.
