@@ -1,3 +1,5 @@
+import { publicAssetUrl } from '@/lib/publicOrigins'
+
 export const ACTIVE_GUIDED_VIBE_IDS = ['bright', 'wistful', 'sharp'] as const
 export const FUTURE_GUIDED_VIBE_IDS = ['tender', 'bold', 'cheeky'] as const
 
@@ -45,7 +47,7 @@ export const guidedVibes = {
     trophyWordCandidates: ['please', 'hello', 'easy', 'sure', 'great', 'smile'],
     status: 'active',
     emblem: {
-      url: '/guided/vibes/bright-emblem.webp',
+      url: publicAssetUrl('/guided/vibes/bright-emblem.webp'),
       alt: 'Bright voice emblem',
     },
   },
@@ -64,7 +66,7 @@ export const guidedVibes = {
     trophyWordCandidates: ['sorry', 'quiet', 'home', 'lost', 'softly', 'again'],
     status: 'active',
     emblem: {
-      url: '/guided/vibes/wistful-emblem.webp',
+      url: publicAssetUrl('/guided/vibes/wistful-emblem.webp'),
       alt: 'Wistful voice emblem',
     },
   },
@@ -83,7 +85,7 @@ export const guidedVibes = {
     trophyWordCandidates: ['clear', 'now', 'ready', 'fast', 'exact', 'focus'],
     status: 'active',
     emblem: {
-      url: '/guided/vibes/sharp-emblem.webp',
+      url: publicAssetUrl('/guided/vibes/sharp-emblem.webp'),
       alt: 'Sharp voice emblem',
     },
   },

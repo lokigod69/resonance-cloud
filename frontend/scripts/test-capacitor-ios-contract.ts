@@ -73,6 +73,16 @@ for (const token of [
   assertIncludes(publicOrigins, token, 'src/lib/publicOrigins.ts')
 }
 
+const stripScript = read('scripts/strip-ios-bundle.ts')
+for (const target of ["'curriculum'", "'guided/trophy-songs'", "'guided/vibes'"]) {
+  assertIncludes(stripScript, target, 'scripts/strip-ios-bundle.ts')
+}
+
+// Stripped trees must be fetched from the web origin on device.
+for (const relPath of ['src/data/guidedVibes.ts', 'src/data/guidedTrophySongs.ts']) {
+  assertIncludes(read(relPath), 'publicAssetUrl(', relPath)
+}
+
 const cors = read('api/_shared/cors.ts')
 assertIncludes(cors, 'capacitor://localhost', 'api/_shared/cors.ts')
 assertIncludes(cors, 'ionic://localhost', 'api/_shared/cors.ts')

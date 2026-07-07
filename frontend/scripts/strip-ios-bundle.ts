@@ -3,15 +3,17 @@
 // via publicAssetUrl() (src/lib/publicOrigins.ts). The plain `build` script is
 // untouched, so the Vercel deploy still ships the full trees.
 //
-// Phase 1: dist/curriculum (~471M). Phase 2 (after the guided literals funnel
-// through publicAssetUrl): dist/guided/trophy-songs + dist/guided/vibes.
+// Phase 1: dist/curriculum (~471M). Phase 2: dist/guided/trophy-songs +
+// dist/guided/vibes (the guided literals funnel through publicAssetUrl).
+// The rest of dist/guided (today, reviews, trophies, lesson-numbers, ~5M)
+// stays bundled on purpose — it is small and works offline.
 import fs from 'node:fs'
 import path from 'node:path'
 
 const root = process.cwd()
 const distDir = path.join(root, 'dist')
 
-const STRIP_TARGETS = ['curriculum']
+const STRIP_TARGETS = ['curriculum', 'guided/trophy-songs', 'guided/vibes']
 
 function dirSizeBytes(dir: string): number {
   let total = 0

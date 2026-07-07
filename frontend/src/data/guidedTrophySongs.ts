@@ -1,5 +1,6 @@
 import type { ActiveGuidedVibeId } from './guidedVibes'
 import type { GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
+import { publicAssetUrl } from '@/lib/publicOrigins'
 
 export type GuidedTrophySongAudioStatus = 'ready' | 'missing' | 'failed'
 export type GuidedTrophySongCandidateId = 'A' | 'B'
@@ -1185,7 +1186,7 @@ function defineGuidedTrophySong(input: GuidedTrophySongInput): GuidedTrophySongC
     clozePositions,
     audioCandidates: input.audioCandidates ?? {},
     activeCandidateDefault: input.activeCandidateDefault ?? 'A',
-    audioPublicUrl: input.audioPublicUrl ?? null,
+    audioPublicUrl: publicAssetUrl(input.audioPublicUrl) ?? null,
     audioStatus: input.audioStatus ?? 'missing',
   }
 }
@@ -1197,13 +1198,13 @@ function normalizeTrophyWord(word: string) {
 function defineAudioCandidates(catalogId: string, providerUrlA: string, providerUrlB?: string, assetCollection = 'a1p1') {
   return {
     A: {
-      publicUrl: `/guided/trophy-songs/${assetCollection}/${catalogId}/candidate-a.mp3`,
+      publicUrl: publicAssetUrl(`/guided/trophy-songs/${assetCollection}/${catalogId}/candidate-a.mp3`),
       providerUrl: providerUrlA,
     },
     ...(providerUrlB
       ? {
           B: {
-            publicUrl: `/guided/trophy-songs/${assetCollection}/${catalogId}/candidate-b.mp3`,
+            publicUrl: publicAssetUrl(`/guided/trophy-songs/${assetCollection}/${catalogId}/candidate-b.mp3`),
             providerUrl: providerUrlB,
           },
         }
