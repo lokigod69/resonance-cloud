@@ -1745,7 +1745,7 @@ body::before {
   pointer-events: none;
   background:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.62), transparent 22%, transparent 58%, rgba(0, 0, 0, 0.74)),
-    radial-gradient(circle at 50% 44%, transparent 0 40%, rgba(0, 0, 0, 0.32) 76%);
+    radial-gradient(circle at 50% 44%, transparent 0 47%, rgba(0, 0, 0, 0.32) 82%);
 }
 
 /* The reticle is not just visual: captureAndScan crops the scan payload to
@@ -1755,7 +1755,7 @@ body::before {
   position: absolute;
   left: 50%;
   top: 46%;
-  width: min(74vw, 23rem);
+  width: min(90vw, 28rem);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   border: 1px solid rgba(255, 255, 255, 0.42);

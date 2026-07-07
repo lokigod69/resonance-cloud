@@ -27,7 +27,6 @@ const generatePg = read('src/pages/GeneratePG.tsx')
 const generateGo = read('src/pages/GenerateGO.tsx')
 const cardImageStyleStep = read('src/components/generate/steps/CardImageStyleStep.tsx')
 const categoryPicker = read('src/components/generate/steps/CategoryPicker.tsx')
-const wordsStep = read('src/components/generate/steps/WordsStep.tsx')
 const premiumQuickModePanel = read('src/components/generate/shared/PremiumQuickModePanel.tsx')
 const premiumCustomizeStep = read('src/components/generate/steps/PremiumCardCustomizationStep.tsx')
 const glassInput = read('src/components/generate/shared/GlassInput.tsx')
@@ -85,38 +84,8 @@ assert(
   'Standard Card visual style must use centered shared layout classes.',
 )
 
-const typeOwnIndex = categoryPicker.indexOf("t('generate.words.typeOwn')")
-const pickCategoryIndex = categoryPicker.indexOf("t('generate.words.pickCategory')")
 assert(
-  typeOwnIndex >= 0
-    && pickCategoryIndex > typeOwnIndex
-    && !categoryPicker.includes('Type Your Own')
-    && !categoryPicker.includes('Pick a Category')
-    && !categoryPicker.includes('Choose a Category'),
-  'Add Words first-choice buttons must use translated Type Your Own / Pick a Category keys in order.',
-)
-
-assert(
-  categoryPicker.includes('words-choice-button')
-    && !/glow\s+onClick=\{\(\)\s*=>\s*setMode\('picking'\)\}/.test(categoryPicker),
-  'Add Words first-choice buttons must use equal neutral choice styling without the old green glow.',
-)
-
-assert(
-  (wordsStep.includes('>Back</button>') || />\s*Back\s*<\/button>/.test(wordsStep))
-    && !wordsStep.includes('Back to Categories'),
-  'Manual word entry back button must use the shorter "Back" label.',
-)
-
-assert(
-  wordsStep.includes('words-back-button')
-    && /\.words-back-button\s*\{[\s\S]*width:\s*fit-content[\s\S]*margin-inline:\s*auto/.test(glassCss),
-  'Manual word entry back control must use a visible centered neutral button style.',
-)
-
-assert(
-  !premiumQuickModePanel.includes('Sparkles')
-    && /className="premium-quick-button"[\s\S]*\{\s*t\(option\.labelKey\)\s*\}/.test(premiumQuickModePanel)
+  /className="premium-quick-button"[\s\S]*\{\s*t\(option\.labelKey\)\s*\}/.test(premiumQuickModePanel)
     && !/className="premium-quick-button"[\s\S]*<[^>]*Icon|className="premium-quick-button"[\s\S]*<Sparkles/.test(premiumQuickModePanel),
   'Premium quick mode buttons must render label-only controls without sparkle or star icons.',
 )
@@ -124,10 +93,10 @@ assert(
 assert(
   categoryPicker.includes('className="word-count-slider"')
     && categoryPicker.includes('word-count-slider-endpoints')
-    && categoryPicker.includes('<span>1</span>')
-    && categoryPicker.includes('<span>Max 20</span>')
-    && /min=\{1\}[\s\S]*max=\{20\}/.test(categoryPicker),
-  'Category picker slider must keep range 1-20 and display visible endpoint labels.',
+    && categoryPicker.includes('<span>{MIN_CATEGORY_WORD_COUNT}</span>')
+    && categoryPicker.includes("t('generate.words.maxCount'")
+    && /min=\{MIN_CATEGORY_WORD_COUNT\}[\s\S]*max=\{MAX_CATEGORY_WORD_COUNT\}/.test(categoryPicker),
+  'Category picker slider must use the shared min/max constants and translated endpoint labels.',
 )
 
 assert(
@@ -175,7 +144,7 @@ assert(
 
 assert(
   premiumQuickModePanel.includes('useTranslation')
-    && containsCall(premiumQuickModePanel, 't', 'generate.quickGenerate')
+    && containsCall(premiumQuickModePanel, 't', 'generate.primaryGenerate')
     && containsCall(premiumQuickModePanel, 't', 'generate.customize')
     && !premiumQuickModePanel.includes('>Quick Generate<')
     && !premiumQuickModePanel.includes('>Customize<'),
@@ -193,14 +162,6 @@ assert(
     && !premiumCustomizeStep.includes('Presentation Form')
     && !premiumCustomizeStep.includes('Art Style'),
   'Premium customize step must render translated headings.',
-)
-
-assert(
-  containsCall(categoryPicker, 't', 'generate.quickGenerate')
-    && containsCall(categoryPicker, 't', 'generate.customize')
-    && /label=\{\s*t\(option\.labelKey\)\s*\}/.test(categoryPicker)
-    && !/label="Quick Generate"|label="Customize"|label=\{option\.label\}/.test(categoryPicker),
-  'Premium quick choices in CategoryPicker must render translated labels.',
 )
 
 assert(

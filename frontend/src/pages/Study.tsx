@@ -12,7 +12,6 @@ import {
 import {
   Check,
   X,
-  RotateCcw,
   Sparkles,
   BookOpen,
   ChevronLeft,
@@ -20,6 +19,7 @@ import {
 } from 'lucide-react'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { QueueIndicator } from '@/components/study/QueueIndicator'
+import { SessionComplete } from '@/components/study/SessionComplete'
 import { isStudyQueue } from '@/hooks/useStudySession'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -27,7 +27,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 export default function Study() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const { t, tp } = useTranslation()
+  const { t } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
   const queueParam = searchParams.get('queue')
   const queue = isStudyQueue(queueParam) ? queueParam : null
@@ -90,37 +90,13 @@ export default function Study() {
 
   if (sessionComplete) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6 text-center">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-          className="w-20 h-20 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center"
-        >
-          <Check className="h-10 w-10 text-green-400" />
-        </motion.div>
-        <div>
-          <h2 className="text-2xl font-bold mb-2">{t('study.sessionComplete')}</h2>
-          <p className="text-muted-foreground">
-            {tp('study.wordsReviewed', reviewed)}
-          </p>
-          <p className="text-sm text-muted-foreground mt-1">
-            <span className="text-green-400">{t('study.remembered', { count: sessionStats.remembered })}</span>
-            {sessionStats.reviewLater > 0 && (
-              <span className="text-orange-400 ml-2">{t('study.needReview', { count: sessionStats.reviewLater })}</span>
-            )}
-          </p>
-        </div>
-        <div className="flex gap-3">
-          <Button onClick={restart}>
-            <RotateCcw className="h-4 w-4 mr-2" />
-            {t('study.startAgain')}
-          </Button>
-          <Button variant="outline" onClick={() => navigate('/dashboard')}>
-            {t('nav.decks')}
-          </Button>
-        </div>
-      </div>
+      <SessionComplete
+        reviewed={reviewed}
+        sessionStats={sessionStats}
+        onRestart={restart}
+        onBack={() => navigate('/dashboard')}
+        backLabel={t('nav.decks')}
+      />
     )
   }
 

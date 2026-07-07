@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, X, RotateCcw, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Check, X, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { QueueIndicator } from '@/components/study/QueueIndicator'
+import { SessionComplete } from '@/components/study/SessionComplete'
 import OrbDock from '@/components/OrbDock'
 import {
   Select,
@@ -21,7 +22,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 export default function StudyImagePG() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const { t, tp } = useTranslation()
+  const { t } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
   const queueParam = searchParams.get('queue')
   const queue = isStudyQueue(queueParam) ? queueParam : null
@@ -96,43 +97,13 @@ export default function StudyImagePG() {
 
   if (sessionComplete) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6 text-center">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-          className="w-20 h-20 rounded-full bg-[var(--pg-accent-green)]/20 border border-[var(--pg-accent-green)]/40 flex items-center justify-center"
-        >
-          <Check className="h-10 w-10 text-[var(--pg-accent-green)]" />
-        </motion.div>
-        <div>
-          <h2 className="text-2xl font-bold font-display mb-2">{t('study.sessionComplete')}</h2>
-          <p className="text-[var(--pg-text-dim)]">
-            {tp('study.wordsReviewed', reviewed)}
-          </p>
-          <p className="text-sm mt-1" style={{ color: 'var(--pg-text-dim)' }}>
-            <span style={{ color: 'var(--pg-accent-green)' }}>{t('study.remembered', { count: sessionStats.remembered })}</span>
-            {sessionStats.reviewLater > 0 && (
-              <span className="ml-2" style={{ color: 'var(--pg-accent-gold)' }}>{t('study.needReview', { count: sessionStats.reviewLater })}</span>
-            )}
-          </p>
-        </div>
-        <div className="flex gap-3">
-          <button
-            onClick={restart}
-            className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all"
-          >
-            <RotateCcw className="h-4 w-4 inline mr-2" />
-            {t('study.startAgain')}
-          </button>
-          <button
-            onClick={() => navigate('/dashboard')}
-            className="px-6 py-3 rounded-xl border border-border text-[var(--pg-text-dim)] font-display font-medium hover:bg-accent transition-all"
-          >
-            {t('nav.decks')}
-          </button>
-        </div>
-      </div>
+      <SessionComplete
+        reviewed={reviewed}
+        sessionStats={sessionStats}
+        onRestart={restart}
+        onBack={() => navigate('/dashboard')}
+        backLabel={t('nav.decks')}
+      />
     )
   }
 

@@ -12,7 +12,6 @@ import {
 import {
   Check,
   X,
-  RotateCcw,
   Sparkles,
   BookOpen,
   Volume2,
@@ -21,6 +20,8 @@ import {
 } from 'lucide-react'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { QueueIndicator } from '@/components/study/QueueIndicator'
+import { SessionComplete } from '@/components/study/SessionComplete'
+import { StudyCardFrame } from '@/components/study/StudyCardFrame'
 import { ImagelessCard } from '@/components/study/ImagelessCard'
 import { isStudyQueue } from '@/hooks/useStudySession'
 import { useStudyUI } from '@/hooks/useStudyUI'
@@ -36,7 +37,7 @@ const FEEDBACK_ADVANCE_DELAY_MS = 280
 export default function StudyFlashcard() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const { t, tp } = useTranslation()
+  const { t } = useTranslation()
   const { playWord } = usePronunciation()
   const videoRef = useRef<HTMLVideoElement>(null)
   const queueParam = searchParams.get('queue')
@@ -148,37 +149,13 @@ export default function StudyFlashcard() {
 
   if (sessionComplete) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6 text-center">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-          className="w-20 h-20 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center"
-        >
-          <Check className="h-10 w-10 text-green-400" />
-        </motion.div>
-        <div>
-          <h2 className="text-2xl font-bold mb-2">{t('study.sessionComplete')}</h2>
-          <p className="text-muted-foreground">
-            {tp('study.wordsReviewed', reviewed)}
-          </p>
-          <p className="text-sm text-muted-foreground mt-1">
-            <span className="text-green-400">{t('study.remembered', { count: sessionStats.remembered })}</span>
-            {sessionStats.reviewLater > 0 && (
-              <span className="text-orange-400 ml-2">{t('study.needReview', { count: sessionStats.reviewLater })}</span>
-            )}
-          </p>
-        </div>
-        <div className="flex gap-3">
-          <Button onClick={restart}>
-            <RotateCcw className="h-4 w-4 mr-2" />
-            {t('study.startAgain')}
-          </Button>
-          <Button variant="outline" onClick={() => navigate('/dashboard')}>
-            {t('study.backToDecks')}
-          </Button>
-        </div>
-      </div>
+      <SessionComplete
+        reviewed={reviewed}
+        sessionStats={sessionStats}
+        onRestart={restart}
+        onBack={() => navigate('/dashboard')}
+        backLabel={t('study.backToDecks')}
+      />
     )
   }
 
@@ -283,10 +260,10 @@ export default function StudyFlashcard() {
                   className="relative w-full min-h-[280px] sm:min-h-[340px]"
                 >
                   {/* Front — target word alone */}
-                  <div
+                  <StudyCardFrame
                     aria-hidden={revealed}
                     style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
-                    className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 px-6 py-10 backdrop-blur-sm"
+                    className="absolute inset-0 flex flex-col items-center justify-center px-6 py-10"
                   >
                     {current.deck_type === 'card_text' ? (
                       <ImagelessCard
@@ -310,13 +287,13 @@ export default function StudyFlashcard() {
                         />
                       </button>
                     )}
-                  </div>
+                  </StudyCardFrame>
 
                   {/* Back — image on top, word + translation underneath (image omitted when the deck has none) */}
-                  <div
+                  <StudyCardFrame
                     aria-hidden={!revealed}
                     style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-                    className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 px-6 py-8 backdrop-blur-sm"
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 py-8"
                   >
                     {backImageUrl && (
                       <img
@@ -330,7 +307,7 @@ export default function StudyFlashcard() {
                     {current.translation && (
                       <p className="text-center text-lg text-muted-foreground long-copy">{current.translation}</p>
                     )}
-                  </div>
+                  </StudyCardFrame>
                 </motion.div>
               </div>
 
