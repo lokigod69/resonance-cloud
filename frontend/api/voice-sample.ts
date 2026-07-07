@@ -7,15 +7,10 @@
 // This endpoint never calls Gemini TTS. Cache miss => 404.
 
 import { createClient } from '@supabase/supabase-js'
+import { corsHeaders, optionsResponse } from './_shared/cors'
 
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
-
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-}
 
 const NEUTRAL_CHARACTER_MODE_ID = '_neutral'
 const NEUTRAL_ACCENT_ID = 'none'
@@ -34,27 +29,27 @@ const SUPPORTED_SAMPLE_LANGUAGES = new Set([
   'en', 'de', 'fr', 'it', 'es', 'ko', 'ceb', 'fil', 'id',
 ])
 
-export async function OPTIONS(): Promise<Response> {
-  return new Response(null, { status: 204, headers: CORS_HEADERS })
+export async function OPTIONS(req: Request): Promise<Response> {
+  return optionsResponse(req)
 }
 
 export async function POST(req: Request): Promise<Response> {
   if (!supabaseUrl || !supabaseServiceKey) {
-    return json({ error: 'Supabase service credentials not configured' }, 500)
+    return json(req, { error: 'Supabase service credentials not configured' }, 500)
   }
 
   let body: { voice_name?: string; language?: string }
   try {
     body = await req.json()
   } catch {
-    return json({ error: 'Invalid JSON body' }, 400)
+    return json(req, { error: 'Invalid JSON body' }, 400)
   }
 
   const voice_name = body.voice_name ?? ''
   const language = body.language ?? ''
 
-  if (!GEMINI_VOICE_NAMES.has(voice_name)) return json({ error: `Unknown voice: ${voice_name}` }, 400)
-  if (!SUPPORTED_SAMPLE_LANGUAGES.has(language)) return json({ error: `Unsupported language: ${language}` }, 400)
+  if (!GEMINI_VOICE_NAMES.has(voice_name)) return json(req, { error: `Unknown voice: ${voice_name}` }, 400)
+  if (!SUPPORTED_SAMPLE_LANGUAGES.has(language)) return json(req, { error: `Unsupported language: ${language}` }, 400)
 
   const admin = createClient(supabaseUrl, supabaseServiceKey)
   const { data: existing } = await admin
@@ -69,15 +64,15 @@ export async function POST(req: Request): Promise<Response> {
     .maybeSingle()
 
   if (!existing?.storage_url) {
-    return json({ error: 'Sample not yet available for this voice/language' }, 404)
+    return json(req, { error: 'Sample not yet available for this voice/language' }, 404)
   }
 
-  return json({ url: existing.storage_url }, 200)
+  return json(req, { url: existing.storage_url }, 200)
 }
 
-function json(body: unknown, status: number): Response {
+function json(req: Request, body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+    headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
   })
 }

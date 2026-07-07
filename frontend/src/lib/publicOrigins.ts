@@ -1,6 +1,6 @@
 import { isNativeApp } from '@/lib/platform'
 
-const DEFAULT_PUBLIC_WEB_ORIGIN = 'https://resonanz.pro'
+const DEFAULT_PUBLIC_WEB_ORIGIN = 'https://lingwave.ai'
 const DEFAULT_NATIVE_AUTH_REDIRECT_URL = 'resonance://auth/callback'
 
 function trimTrailingSlash(value: string | undefined): string | null {
