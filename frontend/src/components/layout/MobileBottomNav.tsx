@@ -24,10 +24,10 @@ export function MobileBottomNav() {
               to={item.to}
               aria-current={active ? 'page' : undefined}
               className={cn(
-                'flex min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-0.5 py-1 text-[10px] font-semibold leading-none transition-colors',
+                'flex min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-0.5 py-1 text-[10px] font-semibold leading-none transition-[transform,background-color,color] duration-100 active:scale-95',
                 active
                   ? 'theme-chip-active'
-                  : 'text-[var(--text-muted)] hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)]',
+                  : 'text-[var(--text-muted)] hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] active:bg-[var(--accent-soft)] active:text-[var(--text-primary)]',
               )}
             >
               <Icon className="h-5 w-5 shrink-0" aria-hidden />

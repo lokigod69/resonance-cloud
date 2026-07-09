@@ -11,7 +11,8 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   const toast = useCallback((message: string, type: ToastType = 'info') => {
     const id = ++nextId.current
     setToasts(t => [...t, { id, message, type }])
-    setTimeout(() => setToasts(t => t.filter(x => x.id !== id)), 3500)
+    // errors need reading time; transient status can go quickly
+    setTimeout(() => setToasts(t => t.filter(x => x.id !== id)), type === 'error' ? 7000 : 3500)
   }, [])
 
   const dismiss = (id: number) => setToasts(t => t.filter(x => x.id !== id))
