@@ -2,6 +2,12 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-07-10 — SRS grading is never input-gated; swipe-to-grade is the flagship gesture
+**Status:** active — committed `526dfbaa`
+**Decision:** Grading in the SRS flashcard loop advances state in the same tick as the input — decorative feedback (pulse, direction-aware exits) plays over the transition and never disables buttons or keys. The only input filter is a 260ms repeat guard (must outlast the 220ms card-exit so held keys/ghost taps can't grade a still-hidden card) plus `e.repeat`/focused-control checks on the 1/2 keys. Swipe-to-grade (`SwipeGradeCard.tsx`) commits via Apple momentum projection (d=0.998, threshold `min(42% width, 200px)`, velocity sign wins over position) with release-velocity handoff into every spring; buttons/keyboard remain the accessible path; right = remembered, left = review later, matching the button layout.
+**Why:** The 280ms lockout was pure latency in the highest-frequency loop in the app (hundreds of taps/session); apple-design §1/§3 — decoration must never gate input. Physics per the apple-design skill; Codex adversarial review found no blockers and drove the guard/keyboard/aria hardening.
+**Rejected:** keeping the per-card ring glow (cannot ride the outgoing card once advance is immediate — replaced by direction-aware exits); rubber-banding during the drag (the whole axis is meaningful input, no boundary to resist); gating swipe on reveal (buttons already allow pre-reveal grading; consistency wins); delaying SessionComplete so the last fling finishes (immediacy over ceremony).
+
 ## 2026-07-08 — Both skins ship for beta; glassy is the default for new users/devices (owner delegated the call to Fable)
 **Status:** active — committed `a2ee4e16`
 **Decision:** The skin switcher stays (both classic and glassy selectable in ProfileModal); `migrateSkinId`'s no-stored-value fallback flips classic→glassy so new users and wiped devices land on glassy, matching the v1-done definition ("beta in the glassy skin"). Unrecognized legacy values still resolve to classic. `profiles.skin` is now restored when localStorage is empty (same pattern/rationale as the theme-restore decision below). PG/classic page-pair consolidation stays parked until beta testers reveal a preference.
