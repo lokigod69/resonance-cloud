@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import {
   Select,
@@ -22,6 +22,7 @@ import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { QueueIndicator } from '@/components/study/QueueIndicator'
 import { SessionComplete } from '@/components/study/SessionComplete'
 import { StudyCardFrame } from '@/components/study/StudyCardFrame'
+import { SwipeGradeCard } from '@/components/study/SwipeGradeCard'
 import { ImagelessCard } from '@/components/study/ImagelessCard'
 import { isStudyQueue } from '@/hooks/useStudySession'
 import { useStudyUI } from '@/hooks/useStudyUI'
@@ -32,7 +33,13 @@ import { computeStudyProgress } from '@/lib/studyProgress'
 
 type FeedbackPulse = 'remembered' | 'reviewLater'
 
-const FEEDBACK_ADVANCE_DELAY_MS = 280
+// How long the decorative grading pulse stays mounted — it plays over the next
+// card and never gates input. Advancing is immediate.
+const FEEDBACK_PULSE_MS = 700
+// Swallows ghost double-taps/clicks re-grading the *next* card. Must outlast
+// the 220ms card-exit transition (the next card isn't visible before then),
+// while staying imperceptible for deliberate grading.
+const GRADE_REPEAT_GUARD_MS = 260
 
 export default function StudyFlashcard() {
   const navigate = useNavigate()
@@ -43,7 +50,13 @@ export default function StudyFlashcard() {
   const queueParam = searchParams.get('queue')
   const queue = isStudyQueue(queueParam) ? queueParam : null
   const feedbackTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null)
-  const [feedbackPulse, setFeedbackPulse] = useState<FeedbackPulse | null>(null)
+  const [feedbackPulse, setFeedbackPulse] = useState<{ kind: FeedbackPulse; seq: number } | null>(null)
+  const pulseSeqRef = useRef(0)
+  const lastGradeAtRef = useRef(0)
+  // 1 = graded remembered (exits right), -1 = review later (exits left),
+  // 0 = skip/other navigation (default upward exit)
+  const [exitDir, setExitDir] = useState<0 | 1 | -1>(0)
+  const reducedMotion = useReducedMotion()
 
   const {
     words, current, currentIndex, clearedCount, dailyNewQuotaReached, loading, sessionComplete, sessionStats, reviewed,
@@ -60,10 +73,12 @@ export default function StudyFlashcard() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- canonical reset-on-key pattern; clears the broken-image flag when the current word changes
     setImgError(false)
+    // Cards advanced by paths that bypass grade() (Space/Enter in useStudyUI)
+    // must not inherit the previous grade's exit direction. The graded card's
+    // exit already resolved its direction at the removal render, before this runs.
+    setExitDir(0)
   }, [current?.id])
   const backImageUrl = activeThumbnailUrl && !imgError ? activeThumbnailUrl : null
-
-  const isFeedbackActive = feedbackPulse !== null
 
   useEffect(() => {
     return () => {
@@ -71,34 +86,45 @@ export default function StudyFlashcard() {
     }
   }, [])
 
-  const playFeedbackAndAdvance = useCallback((pulse: FeedbackPulse, advance: () => void) => {
+  // Grade and advance in the same tick — the pulse is decoration, never a gate.
+  // Returns whether the grade was accepted so a swipe can spring back if not.
+  const grade = useCallback((kind: FeedbackPulse): boolean => {
+    const now = performance.now()
+    if (now - lastGradeAtRef.current < GRADE_REPEAT_GUARD_MS) return false
+    lastGradeAtRef.current = now
     if (feedbackTimerRef.current) window.clearTimeout(feedbackTimerRef.current)
-    setFeedbackPulse(pulse)
+    pulseSeqRef.current += 1
+    setFeedbackPulse({ kind, seq: pulseSeqRef.current })
     feedbackTimerRef.current = window.setTimeout(() => {
       setFeedbackPulse(null)
       feedbackTimerRef.current = null
-      advance()
-    }, FEEDBACK_ADVANCE_DELAY_MS)
-  }, [])
+    }, FEEDBACK_PULSE_MS)
+    setExitDir(kind === 'remembered' ? 1 : -1)
+    if (kind === 'remembered') handleRemembered()
+    else handleReviewLater()
+    return true
+  }, [handleRemembered, handleReviewLater])
 
-  const handleFeedbackReviewLater = useCallback(() => {
-    playFeedbackAndAdvance('reviewLater', handleReviewLater)
-  }, [handleReviewLater, playFeedbackAndAdvance])
+  const handleFeedbackReviewLater = useCallback(() => { grade('reviewLater') }, [grade])
+  const handleFeedbackRemembered = useCallback(() => { grade('remembered') }, [grade])
+  const handleSkipPrev = useCallback(() => { setExitDir(0); skipPrev() }, [skipPrev])
+  const handleSkipNext = useCallback(() => { setExitDir(0); skipNext() }, [skipNext])
 
-  const handleFeedbackRemembered = useCallback(() => {
-    playFeedbackAndAdvance('remembered', handleRemembered)
-  }, [handleRemembered, playFeedbackAndAdvance])
-
-  // Flashcard-specific keyboard shortcuts (1/2 for review/remember)
+  // Flashcard-specific keyboard shortcuts (1/2 for review/remember).
+  // Same focus/repeat guards as the shared handler in useStudyUI: held keys
+  // must not machine-gun grades, and typing in a focused control never grades.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (sessionComplete || isFeedbackActive) return
+      if (sessionComplete || e.repeat) return
+      const target = e.target as HTMLElement | null
+      const tag = target?.tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON' || target?.closest('[role="listbox"]')) return
       if (e.key === '1') { e.preventDefault(); handleFeedbackReviewLater() }
       if (e.key === '2') { e.preventDefault(); handleFeedbackRemembered() }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [sessionComplete, isFeedbackActive, handleFeedbackReviewLater, handleFeedbackRemembered])
+  }, [sessionComplete, handleFeedbackReviewLater, handleFeedbackRemembered])
 
   if (loading) {
     return (
@@ -164,7 +190,7 @@ export default function StudyFlashcard() {
       <AnimatePresence>
         {feedbackPulse && (
           <motion.div
-            key={feedbackPulse}
+            key={`${feedbackPulse.kind}-${feedbackPulse.seq}`}
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 z-0"
             initial={{ opacity: 0 }}
@@ -174,12 +200,12 @@ export default function StudyFlashcard() {
           >
             <motion.div
               className="absolute inset-x-[-20%] top-20 h-[460px] rounded-full blur-3xl"
-              initial={{ opacity: 0, scale: 0.68, y: 70 }}
-              animate={{ opacity: [0, 0.32, 0], scale: [0.68, 1.08, 1.18], y: [70, 18, 0] }}
+              initial={reducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.68, y: 70 }}
+              animate={reducedMotion ? { opacity: [0, 0.32, 0] } : { opacity: [0, 0.32, 0], scale: [0.68, 1.08, 1.18], y: [70, 18, 0] }}
               transition={{ duration: 0.64, ease: 'easeOut' }}
               style={{
                 background:
-                  feedbackPulse === 'remembered'
+                  feedbackPulse.kind === 'remembered'
                     ? 'radial-gradient(circle, rgba(34, 197, 94, 0.34) 0%, rgba(34, 197, 94, 0.13) 32%, transparent 70%)'
                     : 'radial-gradient(circle, rgba(239, 68, 68, 0.34) 0%, rgba(239, 68, 68, 0.13) 32%, transparent 70%)',
               }}
@@ -222,40 +248,35 @@ export default function StudyFlashcard() {
           {progress.current} / {progress.total}
         </p>
 
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" custom={exitDir}>
           {current && (
             <motion.div
               key={current.id}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -30, scale: 0.95 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              custom={exitDir}
+              variants={{
+                initial: reducedMotion ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.95 },
+                animate: reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 },
+                // Graded cards leave along the grade's axis (remembered → right,
+                // review later → left) — the same paths the swipe gesture uses,
+                // so button grading quietly teaches the gesture.
+                exit: (dir: 0 | 1 | -1) => {
+                  if (reducedMotion) return { opacity: 0 }
+                  if (dir !== 0) return { opacity: 0, x: dir * 84, transition: { duration: 0.22, ease: 'easeOut' } }
+                  return { opacity: 0, y: -30, scale: 0.95 }
+                },
+              }}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={reducedMotion ? { duration: 0.2 } : { type: 'spring', stiffness: 300, damping: 30 }}
               className="w-full"
             >
-              {/* Flashcard — flips from the word alone to (image + word + translation) on reveal */}
-              <div className="relative mb-6" style={{ perspective: '1200px' }}>
-                <AnimatePresence>
-                  {feedbackPulse && (
-                    <motion.div
-                      key={`${feedbackPulse}-${current.id}`}
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 z-10 rounded-2xl"
-                      initial={{ opacity: 0, scale: 0.98 }}
-                      animate={{ opacity: [0, 1, 0], scale: [0.98, 1.018, 1.04] }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.55, ease: 'easeOut' }}
-                      style={{
-                        boxShadow:
-                          feedbackPulse === 'remembered'
-                            ? '0 0 0 1px rgba(34, 197, 94, 0.35), 0 0 42px rgba(34, 197, 94, 0.24)'
-                            : '0 0 0 1px rgba(239, 68, 68, 0.35), 0 0 42px rgba(239, 68, 68, 0.24)',
-                      }}
-                    />
-                  )}
-                </AnimatePresence>
+              {/* Flashcard — flips from the word alone to (image + word + translation) on reveal.
+                  Wrapped in SwipeGradeCard: drag right = remembered, left = review later. */}
+              <SwipeGradeCard onGrade={grade} className="mb-6" style={{ perspective: '1200px' }}>
                 <motion.div
                   animate={{ rotateY: revealed ? 180 : 0 }}
-                  transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+                  transition={reducedMotion ? { duration: 0 } : { type: 'spring', stiffness: 260, damping: 26 }}
                   style={{ transformStyle: 'preserve-3d' }}
                   className="relative w-full min-h-[280px] sm:min-h-[340px]"
                 >
@@ -276,7 +297,7 @@ export default function StudyFlashcard() {
                     ) : (
                       <button
                         type="button"
-                        aria-label={`Play pronunciation for ${current.word}`}
+                        aria-label={t('study.playPronunciationAria', { word: current.word })}
                         onClick={() => { void playWord(current) }}
                         className="group flex max-w-full flex-col items-center justify-center gap-3 rounded-xl px-4 py-3 text-foreground transition-colors hover:text-foreground/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--card))]"
                       >
@@ -309,7 +330,7 @@ export default function StudyFlashcard() {
                     )}
                   </StudyCardFrame>
                 </motion.div>
-              </div>
+              </SwipeGradeCard>
 
               {/* Reveal area */}
               <div className="text-center mb-6">
@@ -348,10 +369,10 @@ export default function StudyFlashcard() {
               >
                 <button
                   type="button"
-                  aria-label="Previous card"
-                  onClick={skipPrev}
-                  disabled={currentIndex === 0 || isFeedbackActive}
-                  className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-border bg-card/70 text-muted-foreground transition-all hover:bg-accent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  aria-label={t('study.prevCardAria')}
+                  onClick={handleSkipPrev}
+                  disabled={currentIndex === 0}
+                  className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-border bg-card/70 text-muted-foreground transition-all hover:bg-accent hover:text-foreground active:scale-95 active:bg-accent active:text-foreground disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <ChevronLeft className="h-6 w-6" aria-hidden="true" />
                 </button>
@@ -359,9 +380,8 @@ export default function StudyFlashcard() {
                 <button
                   type="button"
                   onClick={handleFeedbackReviewLater}
-                  disabled={isFeedbackActive}
-                  aria-label="Review Later"
-                  className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-red-500/40 bg-red-500/15 text-red-400 transition-all hover:border-red-500/60 hover:bg-red-500/25 disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  aria-label={t('study.reviewLater')}
+                  className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-red-500/40 bg-red-500/15 text-red-400 transition-all hover:border-red-500/60 hover:bg-red-500/25 active:scale-90 active:border-red-500/80 active:bg-red-500/30 disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <X className="h-7 w-7" aria-hidden="true" />
                 </button>
@@ -369,19 +389,18 @@ export default function StudyFlashcard() {
                 <button
                   type="button"
                   onClick={handleFeedbackRemembered}
-                  disabled={isFeedbackActive}
-                  aria-label="Remembered"
-                  className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-green-500/40 bg-green-500/15 text-green-400 transition-all hover:border-green-500/60 hover:bg-green-500/25 disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  aria-label={t('study.rememberedAction')}
+                  className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-green-500/40 bg-green-500/15 text-green-400 transition-all hover:border-green-500/60 hover:bg-green-500/25 active:scale-90 active:border-green-500/80 active:bg-green-500/30 disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <Check className="h-7 w-7" aria-hidden="true" />
                 </button>
 
                 <button
                   type="button"
-                  aria-label="Skip card"
-                  onClick={skipNext}
-                  disabled={words.length <= 1 || isFeedbackActive}
-                  className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-border bg-card/70 text-muted-foreground transition-all hover:bg-accent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  aria-label={t('study.skipCardAria')}
+                  onClick={handleSkipNext}
+                  disabled={words.length <= 1}
+                  className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-border bg-card/70 text-muted-foreground transition-all hover:bg-accent hover:text-foreground active:scale-95 active:bg-accent active:text-foreground disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <ChevronRight className="h-6 w-6" aria-hidden="true" />
                 </button>
