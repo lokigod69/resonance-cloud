@@ -59,7 +59,7 @@ export function AppHeader() {
 
   return (
     <>
-      <header className="app-topnav hidden md:flex fixed top-0 left-0 right-0 min-h-[var(--glassy-header-offset)] items-center px-4 md:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 gap-2 z-50 !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
+      <header className="app-topnav hidden md:flex fixed top-0 left-0 right-0 min-h-[var(--glassy-header-offset)] items-center px-4 md:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 gap-2 z-50">
         {/* Logo */}
         <Link to="/dashboard" className="flex items-center gap-2 shrink-0" aria-label="Lingwave dashboard">
           <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5 sm:h-6" />

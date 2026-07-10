@@ -35,7 +35,7 @@ export default function PolishGlassLayout() {
         <div className="glassy-atmosphere-vignette" />
       </div>
 
-      <nav className="app-topnav hidden md:flex fixed top-0 left-0 w-full min-h-[var(--glassy-header-offset)] px-4 sm:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 items-center gap-2 z-50 pointer-events-auto !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
+      <nav className="app-topnav hidden md:flex fixed top-0 left-0 w-full min-h-[var(--glassy-header-offset)] px-4 sm:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 items-center gap-2 z-50 pointer-events-auto">
         <Link to="/dashboard" className="flex items-center gap-2 shrink-0" aria-label="Lingwave dashboard">
           <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5 sm:h-6" />
         </Link>
