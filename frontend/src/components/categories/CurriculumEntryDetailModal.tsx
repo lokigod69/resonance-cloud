@@ -1,4 +1,4 @@
-import CardDetailModal, { type CardDetailField, type CardDetailModel } from '@/components/common/CardDetailModal'
+import CardDetailModal, { type CardDetailField, type CardDetailModel, type CardDetailNavigation } from '@/components/common/CardDetailModal'
 import { curriculumEntryImagePath } from '@/lib/curriculumImagePath'
 import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
 import {
@@ -21,6 +21,7 @@ type CurriculumEntryDetailModalProps = {
   baseLanguageIso: string
   // Admin-resolved active image set for this language/category.
   activeImageSet?: CurriculumImageSetKey
+  navigation?: CardDetailNavigation | null
   onClose: () => void
 }
 
@@ -50,6 +51,7 @@ export default function CurriculumEntryDetailModal({
   languageIso,
   baseLanguageIso,
   activeImageSet,
+  navigation,
   onClose,
 }: CurriculumEntryDetailModalProps) {
   const { t } = useTranslation()
@@ -57,6 +59,7 @@ export default function CurriculumEntryDetailModal({
   if (!entry) {
     return <CardDetailModal model={null} onClose={onClose} />
   }
+
 
   const category = getCurriculumCategoryBySlug(categorySlug)
   const perSource = enrichment?.per_source?.[baseLanguageIso] ?? enrichment?.per_source?.de
@@ -209,5 +212,5 @@ export default function CurriculumEntryDetailModal({
     chipsBelowTitle,
   }
 
-  return <CardDetailModal model={model} onClose={onClose} />
+  return <CardDetailModal model={model} onClose={onClose} navigation={navigation} />
 }

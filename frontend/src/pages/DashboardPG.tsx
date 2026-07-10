@@ -1,25 +1,33 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { AlertCircle, Camera, Library, LogIn, RefreshCw } from 'lucide-react'
+import { AlertCircle, Camera, ChevronRight, Library, LogIn, RefreshCw } from 'lucide-react'
 import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
 import { DashboardStreak } from '@/components/dashboard/DashboardStreak'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
-import { TodayMissionCard } from '@/components/dashboard/TodayMissionCard'
+import WordTide from '@/components/dashboard/WordTide'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useWordStates } from '@/hooks/useWordStates'
 import { useStudyStreak } from '@/hooks/useStudyStreak'
-import { useTodayMission } from '@/hooks/useTodayMission'
 import { supabase } from '@/lib/supabase'
 import { staticLibraryRouteSuffix } from '@/lib/staticLibraryLanguage'
 import { canonicalizeLanguageValue } from '@/lib/languages'
 import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
 import { VISUAL_LENS_ENABLED } from '@/lib/productFlags'
+import {
+  EXPERIENCE_PRESETS,
+  PRESET_EMOJI,
+  presetLabelKey,
+  presetStudyRoute,
+  readExperiencePreset,
+  writeExperiencePreset,
+  type ExperiencePreset,
+} from '@/lib/experiencePreset'
 
 type DeckSummary = {
   id: string
@@ -125,8 +133,38 @@ export default function DashboardPG() {
   const wordStates = useWordStates(activeLanguage ?? '', { newWordDailyCap })
   const counts = wordStates.counts
   const reviewDue = counts.reviewingDue + counts.masteredDue
+  const dueTotal = counts.newDue + counts.totalDue
   const studyStreak = useStudyStreak()
   const tilesDisabled = !activeLanguage || wordStates.loading
+
+  // Per-language experience preset: how quick practice opens from home. Unset →
+  // the one-time picker shows in place of the dive-in CTA.
+  const [preset, setPreset] = useState<ExperiencePreset | null>(null)
+  const [changingPreset, setChangingPreset] = useState(false)
+  useEffect(() => {
+    setPreset(readExperiencePreset(user?.id, activeLanguage))
+    setChangingPreset(false)
+  }, [user?.id, activeLanguage])
+
+  const pickPreset = useCallback((next: ExperiencePreset) => {
+    writeExperiencePreset(user?.id, activeLanguage, next)
+    setPreset(next)
+    setChangingPreset(false)
+  }, [user?.id, activeLanguage])
+
+  // Zero-config practice entry: straight into the preset's study mode with
+  // everything due now (no queue param = the all-due session). Playful launches
+  // the slicer; unset preset falls back to the configurator.
+  const diveInHref = (() => {
+    if (!activeLanguage) return '/study'
+    const lang = encodeURIComponent(activeLanguage)
+    if (!preset) return `/study?lang=${lang}`
+    if (preset === 'playful') return `/games/slicer?returnTo=/dashboard&lang=${lang}`
+    return `${presetStudyRoute(preset)}?lang=${lang}`
+  })()
+  // Queue tiles deep-link into the preset's mode too (configurator only when
+  // playful/unset — the slicer needs its own launch flow).
+  const tileModeRoute = preset && preset !== 'playful' ? presetStudyRoute(preset) ?? undefined : undefined
 
   // Empty-home shows when the ACTIVE language has no decks — a brand-new account
   // (no decks, no active language) or a language the learner hasn't started yet.
@@ -143,13 +181,6 @@ export default function DashboardPG() {
   // instant the decision resolves.
   const decisionResolved = !dashboardLoading && languageReady && hasResolvedActiveLanguage
   const isFirstRun = decisionResolved && decksInActiveLanguage.length === 0
-
-  const todayMission = useTodayMission({
-    activeLanguage,
-    baseLanguage: profile?.base_language,
-    userId: user?.id,
-    enabled: decisionResolved && !isFirstRun,
-  })
 
   if (!user) {
     return (
@@ -217,10 +248,6 @@ export default function DashboardPG() {
           </div>
         ) : (
           <>
-            <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
-              {greeting}
-            </h1>
-
             <LanguageCluster
               languages={availableLanguages}
               activeLanguage={activeLanguage}
@@ -230,8 +257,66 @@ export default function DashboardPG() {
 
             <DashboardStreak streak={studyStreak.streak} />
 
+            {/* The Word Tide: today's words drift over the wave, tap to practice
+                inline. The old greeting + mission hero moved out of the way — the
+                guided course lives on the Today tab. */}
+            {activeLanguage && (
+              <WordTide
+                userId={user.id}
+                language={activeLanguage}
+                lemmas={wordStates.data}
+                loading={wordStates.loading}
+                onGraded={wordStates.refetch}
+              />
+            )}
+
+            {preset === null || changingPreset ? (
+              <div className="pg-glass w-full max-w-md rounded-2xl px-5 py-4 text-center">
+                <p className="font-display text-base font-semibold">{t('home.preset.question')}</p>
+                <p className="mt-1 text-xs text-[var(--text-muted)]">{t('home.preset.hint')}</p>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  {EXPERIENCE_PRESETS.map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => pickPreset(option)}
+                      className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-2.5 font-display text-sm font-semibold transition-all hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] ${
+                        preset === option
+                          ? 'border-[var(--accent)] bg-[var(--accent-soft)]'
+                          : 'border-[var(--border-subtle)] bg-[var(--surface-glass)]'
+                      }`}
+                    >
+                      <span aria-hidden="true">{PRESET_EMOJI[option]}</span>
+                      <span>{t(presetLabelKey(option))}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="flex w-full max-w-md flex-col items-center gap-2">
+                {dueTotal > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => navigate(diveInHref)}
+                    disabled={tilesDisabled}
+                    className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-[var(--accent)]/60 bg-[var(--accent)]/15 py-4 font-display text-base font-semibold uppercase tracking-widest text-[var(--accent)] transition-all hover:bg-[var(--accent)]/25 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {t('home.tide.diveIn', { count: dueTotal })}
+                    <ChevronRight className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setChangingPreset(true)}
+                  className="text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
+                  aria-label={t('home.preset.changeAria')}
+                >
+                  {PRESET_EMOJI[preset]} {t(presetLabelKey(preset))}
+                </button>
+              </div>
+            )}
+
             <section className="dashboard-action-grid w-full">
-              <TodayMissionCard mission={todayMission.mission} loading={todayMission.loading} />
               <div className="dashboard-practice-stack">
                 <span className="dashboard-practice-caption">{t('dashboard.practice.caption')}</span>
                 <div className="dashboard-study-row">
@@ -243,6 +328,7 @@ export default function DashboardPG() {
                     tier="compact"
                     accent="cool"
                     disabled={tilesDisabled}
+                    modeRoute={tileModeRoute}
                   />
                   <SrsActionTile
                     label={t('study.queue.learn')}
@@ -252,6 +338,7 @@ export default function DashboardPG() {
                     tier="compact"
                     accent="warm"
                     disabled={tilesDisabled}
+                    modeRoute={tileModeRoute}
                   />
                   <SrsActionTile
                     label={t('study.queue.strengthen')}
@@ -261,6 +348,7 @@ export default function DashboardPG() {
                     tier="compact"
                     accent="neutral"
                     disabled={tilesDisabled}
+                    modeRoute={tileModeRoute}
                   />
                 </div>
               </div>

@@ -30,7 +30,7 @@ export type StudyWord = {
   answerFace?: string
 }
 
-export type StudyMode = 'video' | 'audio' | 'flashcard' | 'canvas' | 'image'
+export type StudyMode = 'video' | 'audio' | 'flashcard' | 'canvas' | 'image' | 'typed'
 export type StudyQueue = 'review' | 'learn' | 'strengthen' | 'mastered'
 
 type RetryItem = { wordId: string; cardsSeen: number }

@@ -17,7 +17,8 @@ import { FirstStudyNewWordsPrompt } from '@/components/study/FirstStudyNewWordsP
 
 type ModeConfig = {
   key: string
-  iconSrc: string
+  iconSrc?: string
+  emblem?: string
   titleKey: string
   route: string
   enabled: boolean
@@ -25,10 +26,11 @@ type ModeConfig = {
 
 // Video is discontinued (hidden from the selector); its study pages remain for the
 // Image mode to clone. Each remaining mode is shown only when the words carry what it
-// needs — Text is text-only so it is always available; Image needs images; Audio needs
-// a Suno song; Canvas is out of scope and always offered.
+// needs — Text and Write are text-only so they are always available; Image needs
+// images; Audio needs a Suno song; Canvas is out of scope and always offered.
 const MODES: ModeConfig[] = [
   { key: 'text', iconSrc: cardsIcon, titleKey: 'study.mode.text', route: '/study/flashcard', enabled: true },
+  { key: 'type', emblem: '✍️', titleKey: 'study.mode.type', route: '/study/type', enabled: true },
   { key: 'image', iconSrc: imageIcon, titleKey: 'study.mode.image', route: '/study/image', enabled: true },
   { key: 'audio', iconSrc: audioIcon, titleKey: 'study.mode.audio', route: '/study/audio', enabled: true },
   { key: 'canvas', iconSrc: canvasIcon, titleKey: 'study.mode.canvas', route: '/study/canvas/select', enabled: true },
@@ -86,6 +88,19 @@ export default function StudyModeSelector() {
       .map((deck) => deck.id)
   }, [deckParam, activeLanguage, allDecks])
 
+  const { data: wordStates, counts } = useWordStates(activeLanguage ?? '', { deckId: deckParam })
+
+  // When a queue drove us here (home practice tiles), gate Image/Audio on the words
+  // that queue will actually serve — not the whole language scope. Otherwise "Train →
+  // Audio" offers a mode whose session draws entirely different words than the tile
+  // advertised. Falls back to scope-wide probing for very large queues, where the id
+  // list would blow up the query URL and the mismatch risk is negligible anyway.
+  const queueWordIds = useMemo(() => {
+    if (!queue) return null
+    const ids = filterLemmaStatesForQueue(wordStates, queue).flatMap((lemma) => lemma.wordIds)
+    return ids.length <= 150 ? ids : null
+  }, [queue, wordStates])
+
   // Real asset presence across the scope. Two cheap existence probes (limit 1) so the
   // selector can hide Image/Audio when no word carries them.
   const [hasImages, setHasImages] = useState(false)
@@ -97,39 +112,40 @@ export default function StudyModeSelector() {
     setHasImages(false)
     setHasAudio(false)
     if (!user || scopeDeckIds.length === 0) return
+    // Queue known and empty → nothing this session could show; keep Image/Audio hidden.
+    if (queueWordIds !== null && queueWordIds.length === 0) return
     let cancelled = false
 
-    void supabase
-      .from('words')
-      .select('id')
-      .eq('user_id', user.id)
-      .eq('status', 'complete')
-      .in('deck_id', scopeDeckIds)
+    const probeBase = () => {
+      const query = supabase
+        .from('words')
+        .select('id')
+        .eq('user_id', user.id)
+        .eq('status', 'complete')
+      return queueWordIds !== null
+        ? query.in('id', queueWordIds)
+        : query.in('deck_id', scopeDeckIds)
+    }
+
+    void probeBase()
       .not('thumbnail_url', 'is', null)
       .limit(1)
       .then(({ data }) => { if (!cancelled) setHasImages((data?.length ?? 0) > 0) })
 
-    void supabase
-      .from('words')
-      .select('id')
-      .eq('user_id', user.id)
-      .eq('status', 'complete')
-      .in('deck_id', scopeDeckIds)
+    void probeBase()
       .or('suno_storage_url.not.is.null,suno_audio_url.not.is.null')
       .limit(1)
       .then(({ data }) => { if (!cancelled) setHasAudio((data?.length ?? 0) > 0) })
 
     return () => { cancelled = true }
-  }, [user, scopeDeckIds])
+  }, [user, scopeDeckIds, queueWordIds])
 
   const visibleModes = MODES.filter((mode) => {
-    if (mode.key === 'text' || mode.key === 'canvas') return true
+    if (mode.key === 'text' || mode.key === 'type' || mode.key === 'canvas') return true
     if (mode.key === 'image') return hasImages
     if (mode.key === 'audio') return hasAudio
     return false
   })
-
-  const { data: wordStates, counts } = useWordStates(activeLanguage ?? '', { deckId: deckParam })
   const queueLabel = queue ? t(QUEUE_LABEL_KEYS[queue]) : null
   // Words this session would study: the queue's set when a queue is chosen, otherwise
   // everything due now (new-due + learning + reviewing/mastered-due) — the same buckets
@@ -227,15 +243,24 @@ export default function StudyModeSelector() {
                   </span>
                 )}
 
-                <img
-                  src={mode.iconSrc}
-                  alt={title}
-                  width={88}
-                  height={88}
-                  loading="eager"
-                  decoding="sync"
-                  className="h-[88px] w-[88px] rounded-2xl object-contain shadow-[0_0_24px_rgba(59,130,246,0.18)]"
-                />
+                {mode.iconSrc ? (
+                  <img
+                    src={mode.iconSrc}
+                    alt={title}
+                    width={88}
+                    height={88}
+                    loading="eager"
+                    decoding="sync"
+                    className="h-[88px] w-[88px] rounded-2xl object-contain shadow-[0_0_24px_rgba(59,130,246,0.18)]"
+                  />
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    className="flex h-[88px] w-[88px] items-center justify-center rounded-2xl text-5xl shadow-[0_0_24px_rgba(59,130,246,0.18)]"
+                  >
+                    {mode.emblem}
+                  </span>
+                )}
 
                 <h3 className="text-lg font-semibold">{title}</h3>
               </button>

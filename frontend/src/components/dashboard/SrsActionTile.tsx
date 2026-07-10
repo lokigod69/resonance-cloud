@@ -10,6 +10,9 @@ type SrsActionTileProps = {
   tier?: 'top' | 'bottom' | 'compact'
   accent?: 'cool' | 'warm' | 'gold' | 'neutral'
   disabled?: boolean
+  // Study-mode page to open directly (e.g. '/study/type' from the home
+  // experience preset). Defaults to the /study configurator.
+  modeRoute?: string
 }
 
 const ACCENT_CLASS: Record<NonNullable<SrsActionTileProps['accent']>, string> = {
@@ -27,6 +30,7 @@ export function SrsActionTile({
   tier = 'top',
   accent = 'neutral',
   disabled = false,
+  modeRoute,
 }: SrsActionTileProps) {
   const navigate = useNavigate()
   const isDisabled = disabled || count === 0 || !language
@@ -38,7 +42,7 @@ export function SrsActionTile({
       queue,
       lang: language,
     })
-    navigate(`/study?${params.toString()}`)
+    navigate(`${modeRoute ?? '/study'}?${params.toString()}`)
   }
 
   const sizing =

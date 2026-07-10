@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import { X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
@@ -29,11 +29,23 @@ export type CardDetailModel = {
     onClick: () => void
     icon?: ReactNode
   }
+  // Simple word cards (title + translation + play) read better centered under
+  // their image; the default left-align stays for dense enrichment content.
+  centered?: boolean
+}
+
+// Prev/next stepping through the parent's word list without closing the modal.
+// index/total also render as a position counter.
+export type CardDetailNavigation = {
+  index: number
+  total: number
+  onNavigate: (index: number) => void
 }
 
 type CardDetailModalProps = {
   model: CardDetailModel | null
   onClose: () => void
+  navigation?: CardDetailNavigation | null
 }
 
 function getFocusable(container: HTMLElement | null): HTMLElement[] {
@@ -127,12 +139,18 @@ function FieldValue({ field }: { field: CardDetailField }) {
   )
 }
 
-export default function CardDetailModal({ model, onClose }: CardDetailModalProps) {
+export default function CardDetailModal({ model, onClose, navigation }: CardDetailModalProps) {
   const { t } = useTranslation()
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const previousFocusRef = useRef<HTMLElement | null>(null)
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null)
   const isOpen = Boolean(model)
+
+  const hasPrev = Boolean(navigation && navigation.index > 0)
+  const hasNext = Boolean(navigation && navigation.index < navigation.total - 1)
+  const goPrev = () => { if (navigation && hasPrev) navigation.onNavigate(navigation.index - 1) }
+  const goNext = () => { if (navigation && hasNext) navigation.onNavigate(navigation.index + 1) }
 
   useBodyScrollLock(isOpen)
 
@@ -152,6 +170,16 @@ export default function CardDetailModal({ model, onClose }: CardDetailModalProps
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         onClose()
+        return
+      }
+      if (navigation && event.key === 'ArrowLeft' && navigation.index > 0) {
+        event.preventDefault()
+        navigation.onNavigate(navigation.index - 1)
+        return
+      }
+      if (navigation && event.key === 'ArrowRight' && navigation.index < navigation.total - 1) {
+        event.preventDefault()
+        navigation.onNavigate(navigation.index + 1)
         return
       }
       if (event.key !== 'Tab') return
@@ -175,7 +203,7 @@ export default function CardDetailModal({ model, onClose }: CardDetailModalProps
 
     document.addEventListener('keydown', onKeyDown)
     return () => document.removeEventListener('keydown', onKeyDown)
-  }, [model, onClose])
+  }, [model, onClose, navigation])
 
   return (
     <AnimatePresence>
@@ -211,8 +239,30 @@ export default function CardDetailModal({ model, onClose }: CardDetailModalProps
             exit={{ opacity: 0, scale: 0.94 }}
             transition={{ type: 'spring', stiffness: 340, damping: 28 }}
             onClick={(event) => event.stopPropagation()}
+            onTouchStart={(event) => {
+              const touch = event.touches[0]
+              touchStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null
+            }}
+            onTouchEnd={(event) => {
+              const start = touchStartRef.current
+              touchStartRef.current = null
+              if (!start || !navigation) return
+              const touch = event.changedTouches[0]
+              if (!touch) return
+              const dx = touch.clientX - start.x
+              const dy = touch.clientY - start.y
+              // Horizontal swipe with clear dominance over vertical scroll intent.
+              if (Math.abs(dx) < 56 || Math.abs(dx) < Math.abs(dy) * 1.5) return
+              if (dx < 0) goNext()
+              else goPrev()
+            }}
           >
-            <div className="card-detail-close-row mb-4 flex justify-end">
+            <div className="card-detail-close-row mb-4 flex items-center justify-between">
+              {navigation ? (
+                <span className="text-sm tabular-nums" style={{ color: 'var(--text-muted)' }} aria-hidden="true">
+                  {navigation.index + 1} / {navigation.total}
+                </span>
+              ) : <span aria-hidden="true" />}
               <button
                 ref={closeButtonRef}
                 type="button"
@@ -224,11 +274,35 @@ export default function CardDetailModal({ model, onClose }: CardDetailModalProps
               </button>
             </div>
 
-            {model.image && <ModalImage image={model.image} title={model.title} noImageLabel={t('categories.modal.noImage')} />}
+            {model.image && (
+              <div className="relative">
+                <ModalImage image={model.image} title={model.title} noImageLabel={t('categories.modal.noImage')} />
+                {navigation && hasPrev && (
+                  <button
+                    type="button"
+                    onClick={goPrev}
+                    className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--surface-glass-strong)] text-[var(--text-secondary)] backdrop-blur-sm transition-[background,border-color,color] hover:cursor-pointer hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                    aria-label={t('categories.modal.previous')}
+                  >
+                    <ChevronLeft size={20} aria-hidden="true" />
+                  </button>
+                )}
+                {navigation && hasNext && (
+                  <button
+                    type="button"
+                    onClick={goNext}
+                    className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--surface-glass-strong)] text-[var(--text-secondary)] backdrop-blur-sm transition-[background,border-color,color] hover:cursor-pointer hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                    aria-label={t('categories.modal.next')}
+                  >
+                    <ChevronRight size={20} aria-hidden="true" />
+                  </button>
+                )}
+              </div>
+            )}
 
             <div className="space-y-4">
-              <header className="space-y-2">
-                <div className="flex flex-wrap items-center gap-2">
+              <header className={model.centered ? 'space-y-2 text-center' : 'space-y-2'}>
+                <div className={`flex flex-wrap items-center gap-2${model.centered ? ' justify-center' : ''}`}>
                   <h2 id="card-detail-title" className="m-0 text-2xl font-semibold tracking-tight sm:text-3xl">
                     {model.title}
                   </h2>
@@ -261,7 +335,7 @@ export default function CardDetailModal({ model, onClose }: CardDetailModalProps
                   </p>
                 )}
                 {model.chipsBelowTitle?.length ? (
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className={`flex flex-wrap gap-1.5${model.centered ? ' justify-center' : ''}`}>
                     {model.chipsBelowTitle.map((chip) => (
                       <span
                         key={chip}

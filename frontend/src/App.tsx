@@ -59,6 +59,7 @@ const StudyImage = lazyWithRetry(routeImports.studyImage, 'study-image')
 const StudyImagePG = lazyWithRetry(routeImports.studyImagePG, 'study-image-pg')
 const StudyModeSelector = lazyWithRetry(routeImports.studyModeSelector, 'study-mode-selector')
 const StudyFlashcard = lazyWithRetry(routeImports.studyFlashcard, 'study-flashcard')
+const StudyType = lazyWithRetry(routeImports.studyType, 'study-type')
 const StudyAudio = lazyWithRetry(routeImports.studyAudio, 'study-audio')
 const StudyCanvas = lazyWithRetry(routeImports.studyCanvas, 'study-canvas')
 const CanvasDeckPicker = lazyWithRetry(routeImports.canvasDeckPicker, 'canvas-deck-picker')
@@ -235,6 +236,7 @@ function AppRoutes() {
             <Route path="/study/video" element={<StudyPG />} />
             <Route path="/study/image" element={<StudyImagePG />} />
             <Route path="/study/flashcard" element={<StudyFlashcard />} />
+            <Route path="/study/type" element={<StudyType />} />
             <Route path="/study/audio" element={<StudyAudio />} />
             <Route path="/study/canvas/select" element={<CanvasDeckPicker />} />
             <Route path="/alphabet" element={<ScriptLab />} />
@@ -259,6 +261,7 @@ function AppRoutes() {
             <Route path="/study/video" element={<Study />} />
             <Route path="/study/image" element={<StudyImage />} />
             <Route path="/study/flashcard" element={<StudyFlashcard />} />
+            <Route path="/study/type" element={<StudyType />} />
             <Route path="/study/audio" element={<StudyAudio />} />
             <Route path="/study/canvas/select" element={<CanvasDeckPicker />} />
             <Route path="/alphabet" element={<ScriptLab />} />

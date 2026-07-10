@@ -29,6 +29,7 @@ export const routeImports = {
   studyImagePG: () => import('@/pages/StudyImagePG'),
   studyModeSelector: () => import('@/pages/StudyModeSelector'),
   studyFlashcard: () => import('@/pages/StudyFlashcard'),
+  studyType: () => import('@/pages/StudyType'),
   studyAudio: () => import('@/pages/StudyAudio'),
   studyCanvas: () => import('@/pages/StudyCanvas'),
   canvasDeckPicker: () => import('@/pages/CanvasDeckPicker'),

@@ -6,7 +6,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { useToast } from '@/components/Toast'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
-import CardDetailModal, { type CardDetailModel } from '@/components/common/CardDetailModal'
+import CardDetailModal, { type CardDetailModel, type CardDetailNavigation } from '@/components/common/CardDetailModal'
 import CurriculumEntryDetailModal from '@/components/categories/CurriculumEntryDetailModal'
 import CurriculumEntryImage from '@/components/categories/CurriculumEntryImage'
 import { LevelGenerateSongModal } from '@/components/song-generation/LevelGenerateSongModal'
@@ -242,6 +242,9 @@ export default function LevelDetailPage() {
     : importedDeckId
       ? t('categories.continueLearning')
       : t('categories.startLearning')
+  const selectedEntryIndex = selectedEntry
+    ? level.entries.findIndex((entry) => entry.term === selectedEntry.term)
+    : -1
   const currentLevelIndex = category.levels.findIndex((item) => item.level === level.level)
   const previousLevel = currentLevelIndex > 0 ? category.levels[currentLevelIndex - 1] : null
   const nextLevel = currentLevelIndex >= 0 && currentLevelIndex < category.levels.length - 1
@@ -332,6 +335,11 @@ export default function LevelDetailPage() {
         languageIso={category.data.target_language}
         baseLanguageIso={baseLanguageIso}
         activeImageSet={activeSetKey}
+        navigation={selectedEntryIndex >= 0 ? {
+          index: selectedEntryIndex,
+          total: level.entries.length,
+          onNavigate: (idx) => setSelectedEntry(level.entries[idx] ?? null),
+        } : null}
         onClose={() => setSelectedEntry(null)}
       />
     </section>
@@ -524,6 +532,9 @@ function StaticLevelDetail({
       ? t('categories.openDeck')
       : t('categories.importLevel')
   const localizedLevelLabel = getLocalizedStaticLevelLabel(level, locale)
+  const selectedItemIndex = selectedItem
+    ? selectedItems.findIndex((item) => item.conceptId === selectedItem.conceptId)
+    : -1
   const staticLevels = category.staticWordLevels ?? []
   const { previousLevelNumber, nextLevelNumber } = getAdjacentStaticLevelNumbers(staticLevels, level.level)
   const previousLevelHref = previousLevelNumber
@@ -640,6 +651,11 @@ function StaticLevelDetail({
       <StaticCategoryEntryDetailModal
         item={selectedItem}
         category={category}
+        navigation={selectedItemIndex >= 0 ? {
+          index: selectedItemIndex,
+          total: selectedItems.length,
+          onNavigate: (idx) => setSelectedItem(selectedItems[idx] ?? null),
+        } : null}
         hasAudio={selectedItem
           ? staticAudio.hasAudio(
             selectedItem.conceptId,
@@ -791,6 +807,7 @@ function StaticCategoryEntryDetailModal({
   item,
   category,
   hasAudio,
+  navigation,
   onPlayAudio,
   onClose,
   t,
@@ -798,6 +815,7 @@ function StaticCategoryEntryDetailModal({
   item: SelectedCategoryVocabularyItem | null
   category: StaticCategory
   hasAudio: boolean
+  navigation?: CardDetailNavigation | null
   onPlayAudio?: () => void
   onClose: () => void
   t: ReturnType<typeof useTranslation>['t']
@@ -819,13 +837,15 @@ function StaticCategoryEntryDetailModal({
     },
     primaryText: shouldShowStaticHelperTerm(item) ? item.helperTerm : undefined,
     primaryAction: hasAudio && onPlayAudio ? {
-      label: 'Play',
-      ariaLabel: `Play pronunciation for ${item.targetTerm}`,
+      label: t('categories.modal.play'),
+      ariaLabel: t('categories.modal.playAria', { term: item.targetTerm }),
       onClick: onPlayAudio,
       icon: <Volume2 className="h-4 w-4" aria-hidden="true" />,
     } : undefined,
     sections: [],
+    // Word + translation + play only — reads better centered under the image.
+    centered: true,
   }
 
-  return <CardDetailModal model={model} onClose={onClose} />
+  return <CardDetailModal model={model} onClose={onClose} navigation={navigation} />
 }
