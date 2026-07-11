@@ -56,7 +56,7 @@ export default function SlicerGame() {
   const dueLanguage = searchParams.get('queue') === 'due'
     ? canonicalizeLanguageValue(searchParams.get('lang')) || null
     : null
-  const returnTo = searchParams.get('returnTo') || '/games'
+  const returnTo = searchParams.get('returnTo') || '/dashboard'
   const bus = useMemo(() => createGameEventBus(), [])
   const recordResult = useRecordGameResult()
   const { primeOnGesture } = useIOSAudioPrimer()

@@ -13,7 +13,7 @@ export function GameShell({ children, className, onExit }: GameShellProps) {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const { setActiveLanguage } = useLanguage()
-  const returnTo = searchParams.get('returnTo') || '/games'
+  const returnTo = searchParams.get('returnTo') || '/dashboard'
   const launchLanguage = searchParams.get('lang')
 
   useBodyScrollLock(true)

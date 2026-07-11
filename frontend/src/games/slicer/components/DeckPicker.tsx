@@ -41,7 +41,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
   const [searchParams] = useSearchParams()
   // Leave the game toward wherever it was launched from (home dive-in passes
   // /dashboard, the study configurator /study) — same contract GameShell uses.
-  const returnTo = searchParams.get('returnTo') || '/games'
+  const returnTo = searchParams.get('returnTo') || '/dashboard'
   const { user } = useAuth()
   const { t } = useTranslation()
   const [decks, setDecks] = useState<DeckRow[]>([])
