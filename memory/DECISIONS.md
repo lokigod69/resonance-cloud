@@ -154,3 +154,21 @@ Wrong turns are part of the memory.
 **Status:** active — do not rework without a concrete bug
 **Decision:** Role/credit hardening, RPC-only invite redemption, atomic `submit_generation` and `request_word_retry` RPCs, worker `pre_bootstrap`; further hardening phases (paid-API auth/rate-limits, quotas, storage cleanup, migration drift) documented under `docs/Stabilization/` with a final closeout report.
 **Why:** Close direct-mutation and cost-abuse holes before beta.
+
+## 2026-07-12 — Wizard offers every content-bearing language; Polish registered wizard-only
+**Status:** active
+**Decision:** The home "+ Add language" wizard now includes every language with real content (Polish, Portuguese) plus the Speak-only trio (Dutch, Hindi, Arabic) — 15 total. Polish deliberately does NOT get `isSpeak` (api/ has no 'pl' LANGUAGE_CONFIG; Speak degrades to its language grid). Polish rides the fallback font stack, not the Bebas display stack (Latin-Extended coverage guarantee, same reasoning as Cyrillic).
+**Why:** Owner: the guided/Today offering and home must agree; a language with a full A1 course that can't be added from home is a product bug, not a tier choice.
+**Rejected:** Flipping `isSpeak` alongside (half-wires Tier 3 → voice-chat 400s); adding landing chips (marketing surface, owner's call).
+
+## 2026-07-12 — New guided languages author the bright vibe only; per-language data modules
+**Status:** active
+**Decision:** All new guided-lesson content is authored as `vibeVariants: { bright }` only (`fallbackVibeId` covers the rest) — matching Cebuano/Indonesian/Polish precedent and the owner's intent to discontinue vibes as *content* variants (English keeps its authored wistful/sharp; they stay dormant). New guided languages live in per-language modules under `src/data/guided/` (first: `koreanA1.ts`) with type-only imports from `guidedLessons.ts` — the 65k-line monolith stops growing; the dynamic-import chunk boundary is unchanged.
+**Why:** 3× authoring cost for variants nobody differentiates; review confirmed only English ever got them. Module seam needed before 5+ more languages land.
+**Rejected:** Deleting English wistful/sharp content now (works, no cost to keep); splitting the existing monolith retroactively (churn without need).
+
+## 2026-07-12 — guided-transcribe accepts all guided speak locales
+**Status:** active
+**Decision:** `api/guided-transcribe.ts` accepts every `GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES` value (incl. ko-KR) via a hand-synced locale→Whisper-hint map; Cebuano (ceb-PH) sends no hint (not Whisper-supported, auto-detect).
+**Why:** The client always sends the lesson locale; the old en-US/en-GB gate + hardcoded 'en' Whisper hint silently broke the speak step for 8 of 9 guided languages.
+**Rejected:** Importing the locale list from src/ (api/ can't import src/); dropping the language param client-side (loses the accuracy of a correct hint).
