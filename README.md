@@ -48,12 +48,12 @@ Engines: concept, image, song, video, assembly, bookend under `cloud_engines/`.
 **Video is deprecated user-facing** but the pipeline stays for legacy decks and
 admin/support — see `docs/Refactors/FABLE_VIDEO_DEPRECATION_BOUNDARY.md`.
 
-## Legacy local mode (DAW)
+## Legacy local mode (DAW) — removed 2026-07-11
 
-The original local workflow (FastAPI routers in `src/routers/`, per-engine HTTP servers,
-`start*.bat`, `src/dispatcher.py`) only loads when `STORAGE_MODE != "cloud"` and is **not
-part of any deployment** — the cloud image never ships the FastAPI server. Kept for local
-tinkering and history; don't build new features on it.
+The original local workflow (FastAPI app in `src/app.py` + `src/routers/`, per-engine HTTP
+servers, `start*.bat` launchers) was never part of any deployment and was deleted in the
+2026-07-11 cleanup pass. It lives in git history if ever needed; `src/dispatcher.py` and
+`src/pipeline.py` remain as part of the preserved video pipeline. Don't rebuild on the DAW.
 
 ## Where to read more
 
@@ -61,3 +61,7 @@ tinkering and history; don't build new features on it.
 - `docs/Stabilization/` — Phase 1 hardening program (roles/credits, atomic RPCs, quotas).
 - `docs/Refactors/` — cleanup audits and the video deprecation boundary.
 - `docs/Product/` — current product direction (guided Today missions, TestFlight prep).
+- `docs/Infrastructure/` — GPU/LTX worker specs and the video-disable plan.
+- `docs/archive/` — historical docs (pipeline-era architecture, handoffs, investigations).
+- Investigation/audit reports for new work go one level up in
+  `D:\CODING\ResonanceTEST\investigations\`, not in `docs/`.
