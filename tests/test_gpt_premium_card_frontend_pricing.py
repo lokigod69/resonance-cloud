@@ -8,7 +8,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 USE_WIZARD_STATE = ROOT / "frontend" / "src" / "components" / "generate" / "useWizardState.ts"
 CARD_STYLE_STEP = ROOT / "frontend" / "src" / "components" / "generate" / "steps" / "CardImageStyleStep.tsx"
-CONFIRM_STEP = ROOT / "frontend" / "src" / "components" / "generate" / "steps" / "ConfirmStep.tsx"
 GENERATE_PG = ROOT / "frontend" / "src" / "pages" / "GeneratePG.tsx"
 GENERATE_GO = ROOT / "frontend" / "src" / "pages" / "GenerateGO.tsx"
 DECK_VIEW = ROOT / "frontend" / "src" / "pages" / "DeckView.tsx"
@@ -62,11 +61,10 @@ def test_wizard_copy_exposes_distinct_standard_and_gpt_card_tiers():
 
 
 def test_confirm_step_uses_model_aware_credit_cost():
-    source = _source(CONFIRM_STEP)
-
-    assert "computeCreditCost(lane, state.words.length)" in source
-    assert "Premium Card" in source
-    assert "Standard Card" in source
+    # The live confirm surfaces are inline in the wizard pages (the standalone
+    # ConfirmStep.tsx was dead code, removed 2026-07-11).
+    assert "computeCreditCost(lane, state.words.length)" in _source(GENERATE_PG)
+    assert "computeCreditCost(productLane, words.length)" in _source(GENERATE_GO)
 
 
 def test_card_deck_views_suppress_video_affordances_for_card_decks():
