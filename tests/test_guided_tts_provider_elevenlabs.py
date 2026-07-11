@@ -72,6 +72,37 @@ def test_synthesize_posts_to_correct_endpoint_with_expected_body():
     assert "use_speaker_boost" in captured["json"]
 
 
+def test_synthesize_omits_language_code_for_multilingual_v2():
+    # ElevenLabs rejects `language_code` on models without language
+    # enforcement (only Turbo/Flash v2.5 support it), so the provider must
+    # drop the field for eleven_multilingual_v2.
+    captured: dict[str, Any] = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        captured["json"] = request.read().decode("utf-8")
+        return _ok_response(b"mp3")
+
+    provider = ElevenLabsGuidedTTSProvider(
+        api_key="test-key",
+        transport=httpx.MockTransport(handler),
+        sleeper=lambda _: asyncio.sleep(0),
+    )
+    audio = _run(
+        provider.synthesize(
+            text="Dzień dobry, czy mówi pan po angielsku?",
+            voice_id="voice-pl",
+            model_id="eleven_multilingual_v2",
+            output_format="mp3_44100_128",
+            voice_settings={},
+            language_code="pl",
+        )
+    )
+
+    assert audio == b"mp3"
+    assert "language_code" not in captured["json"]
+    assert "eleven_multilingual_v2" in captured["json"]
+
+
 def test_synthesize_retries_on_429_then_succeeds():
     attempts: list[int] = []
 

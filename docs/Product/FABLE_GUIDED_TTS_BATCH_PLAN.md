@@ -1,8 +1,32 @@
 # FABLE — Guided-Lesson TTS Batch Plan (v1, owner review)
 
-Date: 2026-07-12. Status: **PLAN — nothing applied, nothing spent.** Owner keeps: the
-Supabase migration, the ElevenLabs spend approval, and the voice picks. Evidence from a
-full tooling inventory this session (agent report, file:line-verified).
+Date: 2026-07-12. Status: **EXECUTING — decisions resolved same day (owner voice brief
++ explicit prod-write/spend approval).** Resolution deltas against the plan below:
+
+1. **No migration needed.** A prod probe (`scripts/probe_guided_tts_state.py`) showed the
+   guided SQL was already applied: all four tables, the `guided_tts_playback` view, and
+   the `guided-tts` bucket exist; English A1 flash-v2.5 assets (368) + 447 usages live.
+2. **Model: `eleven_multilingual_v2`** (quality over speed, owner call). The provider now
+   omits `language_code` for models without language enforcement — ElevenLabs 400s it
+   outside Turbo/Flash v2.5.
+3. **One generation per text** (owner: no per-phrase double voices). Diversity comes from
+   rotating each language's hand-picked roster **per path** (10-lesson block keeps one
+   voice, next path switches — gender-alternating where the roster allows). Seeded as 91
+   `scope_path_id` bright profiles (`scripts/seed_guided_bright_rotation.py`), specificity
+   12 beats the English vibe-level rows (8) and scope-less static rows (0).
+   it/pt/pl voices existed in `public.voices` after all (Rosanna/Marco/Samanta,
+   Raquel/Lair/Carla, Maria/Rysard/Marta/Wojech). Indonesian = Gavrila only (raw Blasto
+   is ~16 dB quiet; guided pipeline has no gain step). Korean P1 = Jini.
+4. **Bright-only confirmed**; wistful/sharp English clips stay as-is pending the vibe
+   discontinuation.
+5. Scope guardrails run programmatically in `scripts/run_guided_bright_batch.py`
+   (dry-run + commit in one process: profile-pattern check, 8k/language and 60k/batch
+   char caps) instead of hand-maintained per-language `EXPECTED_SCOPES` rows.
+   Measured envelope: **47,055 chars** across all 10 languages (incl. Korean P1).
+6. Sequencing: the 193-finding content fix batch lands first so no audio is generated
+   for text about to change.
+
+Original plan (superseded where the deltas above say so):
 
 ## What already exists (surprisingly much)
 

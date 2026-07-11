@@ -189,11 +189,11 @@ assert('canary lesson is present in GUIDED_LESSONS', Boolean(canaryLesson))
   })
   const core = rows.find((r) => r.surface === 'corePhrase')
   assert(
-    'wistful core phrase em-dash normalizes to ascii dash with 46 chars',
+    'wistful core phrase passes through normalization unchanged with 30 chars',
     core !== undefined &&
-      core.source_text === 'Sorry to ask — do you happen to speak English?' &&
-      core.normalized_text === 'Sorry to ask - do you happen to speak English?' &&
-      core.normalized_text.length === 46,
+      core.source_text === 'Do you speak a little English?' &&
+      core.normalized_text === 'Do you speak a little English?' &&
+      core.normalized_text.length === 30,
   )
 }
 
@@ -213,11 +213,11 @@ console.log('\n[A1P1 canary inventory]')
   assert('15 unique cache keys', inventory.totals.unique_cache_keys === 15)
   assert('12 unique normalized texts ignoring voice', inventory.totals.unique_normalized_texts === 12)
   assert('estimated 15 provider calls', inventory.totals.estimated_provider_calls === 15)
-  assert('estimated 236 provider characters', inventory.totals.estimated_provider_characters === 236)
+  assert('estimated 202 provider characters', inventory.totals.estimated_provider_characters === 202)
 
   const byKey = new Map(inventory.per_voice.map((entry) => [entry.voice_profile_key, entry]))
-  assert('bright per-voice character count is 67', byKey.get('english_a1_bright_v1')?.character_count === 67)
-  assert('wistful per-voice character count is 93', byKey.get('english_a1_wistful_v1')?.character_count === 93)
+  assert('bright per-voice character count is 63', byKey.get('english_a1_bright_v1')?.character_count === 63)
+  assert('wistful per-voice character count is 63', byKey.get('english_a1_wistful_v1')?.character_count === 63)
   assert('sharp per-voice character count is 76', byKey.get('english_a1_sharp_v1')?.character_count === 76)
   for (const [key, entry] of byKey) {
     assert(`${key} unique texts = 5`, entry.unique_texts === 5)
@@ -276,7 +276,7 @@ console.log('\n[A1P1 canary inventory]')
     target_language_code: 'en-US',
   })
   assert('cache hit reduces estimated provider calls by 1', inventory.totals.estimated_provider_calls === 14)
-  assert('cache hit reduces estimated characters by 7 ("English")', inventory.totals.estimated_provider_characters === 236 - 7)
+  assert('cache hit reduces estimated characters by 7 ("English")', inventory.totals.estimated_provider_characters === 202 - 7)
   assert('cache hit reports asset_id', inventory.items.some((i) => i.status === 'ready' && i.asset_id === 'asset-001'))
 }
 

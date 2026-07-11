@@ -186,245 +186,245 @@ const firstDefinition = pathLessons[0]
 const lessonIds = pathLessons.map((lesson) => lesson.id)
 const lessonNumbers = pathLessons.map((lesson) => lesson.lessonNumber)
 const expectedTitles = [
-  'First contact',
-  'Polite follow-up',
-  'Coffee order',
-  'Price question',
-  'Café exit',
-  'Ask for help',
-  'Train station',
-  'Train time',
-  'Small talk',
-  'Tomorrow at seven',
+  "Erster Kontakt",
+  "Höfliche Nachfrage",
+  "Kaffee bestellen",
+  "Nach dem Preis fragen",
+  "Das Café verlassen",
+  "Um Hilfe bitten",
+  "Am Bahnhof",
+  "Abfahrtszeit",
+  "Small Talk",
+  "Morgen um sieben",
 ]
 const expectedBrightPathOnePhrases = [
-  'Hi there, do you speak English?',
-  'Sorry, could you say that again?',
+  "Hi there, do you speak English?",
+  "Sorry, could you say that again?",
   "I'd like a coffee, please.",
-  'How much is this?',
-  'Wonderful, thanks so much. Goodbye.',
-  'Hi, could you help me, please?',
-  'Where is the train station?',
-  'What time is the train, please?',
-  'I love it here.',
-  'Tomorrow at seven? Great!',
+  "How much is this?",
+  "Wonderful, thanks so much. Goodbye.",
+  "Hi, could you help me, please?",
+  "Where is the train station?",
+  "What time is the train, please?",
+  "I love it here.",
+  "Tomorrow at seven? Great!",
 ]
 const expectedPathTwoTitles = [
-  "I don't understand",
-  'Write it down',
-  'Show me',
-  'Which one?',
-  'Do you have...?',
-  'By card',
-  'A receipt, please',
-  'I have a reservation',
-  'Is this right?',
-  'One moment',
+  "Ich verstehe das nicht",
+  "Schreiben Sie es auf",
+  "Zeigen Sie es mir",
+  "Welches?",
+  "Haben Sie ...?",
+  "Mit Karte",
+  "Eine Quittung, bitte",
+  "Ich habe eine Reservierung",
+  "Ist das richtig?",
+  "Einen Moment",
 ]
 const expectedPathThreeTitles = [
-  'Right or left?',
-  'How far is it?',
-  'Is it open?',
-  'Which bus?',
-  'The next stop',
-  'A ticket, please',
-  'What time does it close?',
-  'The corner',
-  'By foot or by taxi?',
-  'I missed my stop',
+  "Rechts oder links?",
+  "Wie weit ist es?",
+  "Ist es geöffnet?",
+  "Welcher Bus?",
+  "Die nächste Haltestelle",
+  "Eine Fahrkarte, bitte",
+  "Wann schließt es?",
+  "Die Ecke",
+  "Zu Fuß oder mit dem Taxi?",
+  "Ist das meine Haltestelle?",
 ]
 const expectedPathFourTitles = [
-  'A table, please',
-  'The menu',
-  "I'd like tea",
-  'No sugar',
-  'Is it fresh?',
-  'Anything else?',
-  'To go, please',
-  'It was good',
-  'Small talk at the counter',
-  'The bill, please',
+  "Einen Tisch, bitte",
+  "Die Speisekarte",
+  "Ich hätte gern Tee",
+  "Ohne Zucker",
+  "Ist es frisch?",
+  "Noch etwas?",
+  "Zum Mitnehmen, bitte",
+  "Das ist lecker",
+  "Small Talk an der Theke",
+  "Die Rechnung, bitte",
 ]
 const expectedPathFiveTitles = [
-  "Sorry, I'm late",
-  'I forgot',
-  "What's your name?",
-  'Nice to meet you',
-  'Where are you from?',
-  'Do you live here?',
-  'Are you free tonight?',
-  "Let's meet at the café",
-  'Maybe tomorrow',
-  'See you tomorrow',
+  "Entschuldigung, ich bin zu spät",
+  "Wie war das noch mal?",
+  "Wie heißen Sie?",
+  "Schön, Sie kennenzulernen",
+  "Woher kommen Sie?",
+  "Wohnen Sie hier?",
+  "Haben Sie heute Abend Zeit?",
+  "Treffen wir uns im Café",
+  "Vielleicht morgen",
+  "Bis morgen",
 ]
 const expectedPathSixTitles = [
-  "I don't feel well",
-  'A pharmacy nearby?',
-  'I need medicine',
-  'It hurts here',
-  'I have a headache',
-  'I need water',
-  'Is there a doctor?',
-  'I have an allergy',
-  'Can you call for help?',
-  'I feel better now',
+  "Mir geht es nicht gut",
+  "Eine Apotheke in der Nähe?",
+  "Ich brauche ein Medikament",
+  "Hier tut es weh",
+  "Ich habe Kopfschmerzen",
+  "Ich brauche Wasser",
+  "Gibt es hier einen Arzt?",
+  "Ich habe eine Allergie",
+  "Können Sie Hilfe holen?",
+  "Mir geht es jetzt besser",
 ]
 const expectedPathSevenTitles = [
-  'I need a ticket',
-  'Where is the bus?',
-  'What time does it leave?',
-  'Is this the right train?',
-  'I need a taxi',
-  'Can we go there?',
-  'Please stop here',
-  'I am going to the station',
-  'How long does it take?',
-  'I have arrived',
+  "Eine Fahrkarte, bitte",
+  "Wo ist die Bushaltestelle?",
+  "Wann fährt der Bus ab?",
+  "Ist das der richtige Zug?",
+  "Ich brauche ein Taxi",
+  "Können wir dorthin fahren?",
+  "Bitte halten Sie hier",
+  "Ich fahre zum Bahnhof",
+  "Wie lange dauert es?",
+  "Wir sind da",
 ]
 const expectedPathEightTitles = [
-  'I have a reservation',
-  'I need a room',
-  'Where is my room?',
-  'I need the key',
-  'Is there Wi-Fi?',
-  'Where is the bathroom?',
-  'I need a towel',
-  'I want to sleep',
-  'What time is breakfast?',
-  'I am checking out',
+  "Ich habe eine Reservierung",
+  "Ich brauche ein Zimmer",
+  "Wo ist mein Zimmer?",
+  "Ich brauche den Schlüssel",
+  "Gibt es WLAN?",
+  "Wo ist das Bad?",
+  "Ich brauche ein Handtuch",
+  "Ich möchte schlafen",
+  "Wann gibt es Frühstück?",
+  "Ich möchte auschecken",
 ]
 const expectedPathNineTitles = [
-  'Nice to meet you',
-  'Are you free today?',
-  'Can we meet later?',
-  'What time works for you?',
-  "Let's meet here",
-  'I am waiting outside',
-  'I am running late',
-  'Can we change the plan?',
-  'See you tomorrow',
-  'Have a good evening',
+  "Schön, Sie kennenzulernen",
+  "Haben Sie heute Zeit?",
+  "Können wir uns später treffen?",
+  "Welche Uhrzeit passt Ihnen?",
+  "Treffen wir uns hier",
+  "Ich warte draußen",
+  "Ich verspäte mich",
+  "Können wir den Plan ändern?",
+  "Bis morgen",
+  "Schönen Abend",
 ]
 const expectedPathTenTitles = [
-  'Today was good',
-  'I liked this place',
-  'Thank you for your help',
-  'I learned a lot',
-  'I am tired now',
-  'I need to go',
-  'See you next time',
-  'Tomorrow works for me',
-  'Have a good night',
-  'Goodbye for now',
+  "Heute ist ein guter Tag",
+  "Ich mag diesen Ort",
+  "Danke für Ihre Hilfe",
+  "Ich lerne viel",
+  "Ich bin jetzt müde",
+  "Ich muss gehen",
+  "Bis zum nächsten Mal",
+  "Morgen passt mir",
+  "Gute Nacht",
+  "Auf Wiedersehen fürs Erste",
 ]
 const expectedBrightPathTwoToTenPhrases: Record<string, string[]> = {
   [pathTwoId]: [
     "Hi there, I don't understand. Could you help me?",
-    'Could you write it down?',
-    'Could you show me on the map?',
-    'Which one is better, this one or that one?',
-    'Hi, is this available today?',
-    'Could I pay by card?',
-    'Could I get a receipt and a bag?',
-    'Hi, I have a booking.',
-    'Is this the right bus?',
+    "Could you write it down?",
+    "Could you show me on the map?",
+    "Which one is better, this one or that one?",
+    "Hi, is this available today?",
+    "Could I pay by card?",
+    "Could I get a receipt and a bag?",
+    "Hi, I have a booking.",
+    "Is this the right bus?",
     "One moment! I'm almost ready.",
   ],
   [pathThreeId]: [
-    'Excuse me, should I turn left here?',
-    'Is it about five minutes away?',
-    'Is it open now?',
-    'Which bus goes to the museum?',
-    'Is the next stop Central Park?',
-    'One ticket to the city, please.',
-    'What time does it close today?',
-    'Is it on the corner?',
-    'Should we walk there or take a taxi?',
-    'Sorry, I missed my stop. Could you help me?',
+    "Excuse me, should I turn left here?",
+    "Is it about five minutes away?",
+    "Is it open now?",
+    "Which bus goes to the museum?",
+    "Is the next stop Central Park?",
+    "One ticket to the city, please.",
+    "What time does it close today?",
+    "Is it on the corner?",
+    "Should we walk there or take a taxi?",
+    "Sorry, is this my stop?",
   ],
   [pathFourId]: [
-    'Could we have a table for two?',
-    'Could I see the menu?',
+    "Could we have a table for two?",
+    "Could I see the menu?",
     "I'd like a tea with lemon.",
-    'No sugar for me, thank you.',
-    'Is it fresh today?',
-    'Yes, a croissant too.',
-    'Could I get that to go?',
-    'That was lovely, thank you.',
+    "No sugar for me, thank you.",
+    "Is it fresh today?",
+    "Yes, a croissant too.",
+    "Could I get that to go?",
+    "This is lovely, thank you.",
     "Beautiful day, isn't it?",
-    'Could I have the bill?',
+    "Could I have the bill?",
   ],
   [pathFiveId]: [
     "I'm so sorry I'm late!",
-    'Oh, I forgot. Sorry!',
+    "Sorry, what is it again?",
     "What's your name?",
-    'Nice to meet you!',
-    'Where are you from?',
-    'Do you live here?',
-    'Are you free tonight?',
+    "Nice to meet you!",
+    "Where are you from?",
+    "Do you live here?",
+    "Are you free tonight?",
     "Let's meet at the café!",
-    'Could we try tomorrow?',
-    'See you tomorrow!',
+    "Could we try tomorrow?",
+    "See you tomorrow!",
   ],
   [pathSixId]: [
     "I don't feel well. Could you help me?",
-    'Could you show me a pharmacy nearby?',
-    'I need medicine.',
-    'It hurts here.',
-    'I have a headache.',
-    'Could I have some water?',
-    'Is there a doctor here?',
-    'I have an allergy.',
-    'Could you get help for me?',
-    'I feel better now, thank you.',
+    "Is there a pharmacy nearby?",
+    "I need medicine.",
+    "It hurts here.",
+    "I have a headache.",
+    "Could I have some water?",
+    "Is there a doctor here?",
+    "I have an allergy.",
+    "Could you get help for me?",
+    "I feel better now, thank you.",
   ],
   [pathSevenId]: [
-    'I need a ticket.',
-    'Where is the bus stop?',
-    'What time does the bus leave?',
-    'Is this the right train?',
-    'I need a taxi.',
-    'Can we go there?',
-    'Could you stop here?',
-    'I am going to the station.',
-    'How long does it take?',
-    'I have arrived, thank you.',
+    "I need a ticket.",
+    "Where is the bus stop?",
+    "What time does the bus leave?",
+    "Is this the right train?",
+    "I need a taxi.",
+    "Can we go there?",
+    "Could you stop here?",
+    "I am going to the station.",
+    "How long does it take?",
+    "We're here. Thank you.",
   ],
   [pathEightId]: [
-    'I have a reservation.',
-    'I need a room.',
-    'Where is my room?',
-    'I need the key, please.',
-    'Is there Wi-Fi here?',
-    'Where is the bathroom?',
-    'I need a towel.',
-    'I want to sleep now.',
-    'What time is breakfast?',
-    'I am checking out now.',
+    "I have a reservation.",
+    "I need a room.",
+    "Where is my room?",
+    "I need the key, please.",
+    "Is there Wi-Fi here?",
+    "Where is the bathroom?",
+    "I need a towel.",
+    "I want to sleep now.",
+    "What time is breakfast?",
+    "I am checking out now.",
   ],
   [pathNineId]: [
     "Hi, I'm really glad to meet you.",
-    'Are you free today?',
-    'Can we meet later?',
-    'What time works for you?',
+    "Are you free today?",
+    "Can we meet later?",
+    "What time works for you?",
     "Let's meet here.",
-    'I am waiting outside.',
-    'I am running late.',
-    'Can we change the plan?',
-    'See you tomorrow.',
-    'Have a good evening.',
+    "I am waiting outside.",
+    "I am running late.",
+    "Can we change the plan?",
+    "See you tomorrow.",
+    "Have a good evening.",
   ],
   [pathTenId]: [
-    'Today was good.',
-    'I liked this place.',
-    'Thank you for your help.',
-    'I learned a lot today.',
-    'I am tired now.',
-    'I need to go now.',
-    'See you next time.',
-    'Tomorrow works for me.',
-    'Have a good night.',
-    'Goodbye for now.',
+    "Today is a good day.",
+    "I like this place.",
+    "Thank you for your help.",
+    "I learn a lot here.",
+    "I am tired now.",
+    "I need to go now.",
+    "See you next time.",
+    "Tomorrow works for me.",
+    "Have a good night.",
+    "Goodbye for now.",
   ],
 }
 
@@ -893,7 +893,7 @@ assert('Indonesian A1 Practical 7 accepts taxi spelling variant for taksi but do
 assert('Indonesian A1 Practical 7 accepts Bapak as elevated variant for Pak', indonesianP7LessonSevenItems.some((item) => item.id === 'pak' && item.acceptedAnswers.includes('Bapak')), indonesianP7LessonSevenItems)
 assert('Indonesian A1 Practical 7 uses tiba as arrival trophy instead of prior sampai jumpa trophy phrase', indonesianP7LessonTenItems.some((item) => item.id === 'tiba') && !indonesianPathSevenTrophies.includes('sampai'), indonesianP7LessonTenItems)
 const indonesianPathEightBrightVariants = indonesianPathEightLessons.map((lesson) => lesson.vibeVariants.bright)
-const expectedIndonesianPathEightTrophies = ['hotel', 'kamar', 'lantai', 'kunci', 'wi-fi', 'toilet', 'handuk', 'tidur', 'sarapan', 'keluar']
+const expectedIndonesianPathEightTrophies = ['hotel', 'kamar', 'lantai', 'kunci', 'wi-fi', 'toilet', 'handuk', 'tidur', 'sarapan', 'sekarang']
 const indonesianPriorTrophiesAfterP7 = new Set([...expectedIndonesianPathOneTrophies, ...expectedIndonesianPathTwoTrophies, ...expectedIndonesianPathThreeTrophies, ...expectedIndonesianPathFourTrophies, ...expectedIndonesianPathFiveTrophies, ...expectedIndonesianPathSixTrophies, ...expectedIndonesianPathSevenTrophies].map((word) => normalizeGuidedAnswer(word)))
 const indonesianPathEightTrophies = indonesianPathEightBrightVariants
   .map((variant) => variant?.trophyWord.word ?? '')
@@ -928,10 +928,27 @@ assert('Indonesian A1 Practical 8 trophies live in productive target text', indo
   return [variant.corePhrase.targetText, variant.build.targetText, variant.typeRecall.answer, variant.speakTarget.targetPhrase, variant.trophyWord.example]
     .some((text) => normalizeGuidedAnswer(text).includes(trophy))
 }), indonesianPathEightTrophies)
-assert('Indonesian A1 Practical 8 target surfaces avoid English hotel-service leakage', indonesianPathEightTargetSurfaces.every((text) => {
+// The L10 checkout lesson deliberately teaches the loanword "check-out" — it is the
+// standard Indonesian hotel term (the earlier pure-Indonesian "keluar dari hotel"
+// mistranslated the intent, content review 2026-07-12). Only that lesson is exempt.
+const indonesianPathEightNonCheckoutSurfaces = indonesianPathEightBrightVariants.slice(0, 9).flatMap((variant) => [
+  variant?.corePhrase.targetText,
+  variant?.build.targetText,
+  variant?.typeRecall.before,
+  variant?.typeRecall.answer,
+  variant?.typeRecall.after,
+  variant?.speakTarget.targetPhrase,
+  variant?.trophyWord.example,
+  variant?.sceneCaption,
+  ...(variant?.build.chips ?? []),
+  ...(variant?.typeRecall.fallbackChoices ?? []),
+  ...(variant?.chunks.map((chunk) => chunk.targetText) ?? []),
+  ...(variant?.lessonItems.map((item) => item.targetText) ?? []),
+].filter((text): text is string => typeof text === 'string'))
+assert('Indonesian A1 Practical 8 target surfaces avoid English hotel-service leakage outside the checkout lesson', indonesianPathEightNonCheckoutSurfaces.every((text) => {
   const normalized = normalizeGuidedAnswer(text)
   return !['check-in', 'check in', 'check-out', 'check out', 'checkout', 'checkin'].some((marker) => normalized.includes(marker))
-}), indonesianPathEightTargetSurfaces)
+}), indonesianPathEightNonCheckoutSurfaces)
 const indonesianP8LessonFiveItems = indonesianPathEightBrightVariants[4]?.lessonItems ?? []
 const indonesianP8LessonSixItems = indonesianPathEightBrightVariants[5]?.lessonItems ?? []
 const indonesianP8LessonTenItems = indonesianPathEightBrightVariants[9]?.lessonItems ?? []
@@ -1107,7 +1124,7 @@ assert('Cebuano A1 Practical 3 trophies live in productive target text', cebuano
     .some((text) => normalizeGuidedAnswer(text).includes(trophy))
 }), cebuanoPathThreeTrophies)
 const cebuanoPathFourBrightVariants = cebuanoPathFourLessons.map((lesson) => lesson.vibeVariants.bright)
-const expectedCebuanoPathFourTrophies = ['lamesa', 'menu', 'tubig', 'asukar', 'presko', 'dugang', 'dad-on', 'lami', 'karon', 'bayranan']
+const expectedCebuanoPathFourTrophies = ['lamesa', 'menu', 'tubig', 'asukar', 'presko', 'dugang', 'dad-on', 'lami', 'mao', 'bayranan']
 const priorCebuanoPathOneTwoThreeTrophies = new Set([
   'kumusta', 'pasaylo', 'asa', 'palihug', 'tagpila', 'kanus a', 'tabang', 'nindot', 'ugma', 'salamat',
   'kasabot', 'isulat', 'mapa', 'kana', 'naa', 'dawat', 'resibo', 'ngalan', 'husto', 'kadiyot',
@@ -1183,7 +1200,7 @@ assert('Cebuano A1 Practical 5 trophies live in productive target text', cebuano
     .some((text) => normalizeGuidedAnswer(text).includes(trophy))
 }), cebuanoPathFiveTrophies)
 const cebuanoPathSixBrightVariants = cebuanoPathSixLessons.map((lesson) => lesson.vibeVariants.bright)
-const expectedCebuanoPathSixTrophies = ['pamati', 'botika', 'tambal', 'sakit', 'ulo', 'moinom', 'doktor', 'alerdyi', 'motawag', 'maayo']
+const expectedCebuanoPathSixTrophies = ['pamati', 'botika', 'tambal', 'sakit', 'ulo', 'moinom', 'doktor', 'alerdyik', 'motawag', 'maayo']
 const priorCebuanoPathOneTwoThreeFourFiveTrophies = new Set([
   'kumusta', 'pasaylo', 'asa', 'palihug', 'tagpila', 'kanus a', 'tabang', 'nindot', 'ugma', 'salamat',
   'kasabot', 'isulat', 'mapa', 'kana', 'naa', 'dawat', 'resibo', 'ngalan', 'husto', 'kadiyot',
@@ -1388,7 +1405,7 @@ const cebuanoP9SocialOverreachMarkers = ['date night', 'romantic', 'contract', '
 assert('Cebuano A1 Practical 9 stays in basic social planning phrases', cebuanoPathNineTargetSurfaces.every((text) => !cebuanoP9SocialOverreachMarkers.some((marker) => normalizeGuidedAnswer(text).includes(normalizeGuidedAnswer(marker)))), cebuanoPathNineTargetSurfaces)
 
 const cebuanoPathTenBrightVariants = cebuanoPathTenLessons.map((lesson) => lesson.vibeVariants.bright)
-const expectedCebuanoPathTenTrophies = ['tanan', 'ganahan', 'nagpasalamat', 'daghan', 'gikapoy', 'molakaw', 'hangtod', 'uyon', 'tulog', 'mopanamilit']
+const expectedCebuanoPathTenTrophies = ['tanan', 'ganahan', 'nagpasalamat', 'daghan', 'gikapoy', 'molakaw', 'hangtod', 'okey', 'tulog', 'adto']
 const priorCebuanoPathOneThroughNineTrophies = new Set([
   ...priorCebuanoPathOneTwoThreeFourFiveSixSevenEightTrophies,
   ...expectedCebuanoPathNineTrophies.map((word) => normalizeGuidedAnswer(word)),
@@ -1465,7 +1482,7 @@ assert('Cebuano A1 Practical 10 accepts mo lakaw as a speech variant for molakaw
 const cebuanoP10WrapOverreachMarkers = ['dramatic goodbye', 'farewell forever', 'graduation speech', 'contract', 'complaint', 'refund']
 assert('Cebuano A1 Practical 10 stays in basic wrap-up phrases', cebuanoPathTenTargetSurfaces.every((text) => !cebuanoP10WrapOverreachMarkers.some((marker) => normalizeGuidedAnswer(text).includes(normalizeGuidedAnswer(marker)))), cebuanoPathTenTargetSurfaces)
 const portuguesePathFiveBrightVariants = portuguesePathFiveLessons.map((lesson) => lesson.vibeVariants.bright)
-const expectedPortuguesePathFiveTrophies = ['atraso', 'esqueci', 'nome', 'prazer', 'cidade', 'mora', 'noite', 'parque', 'talvez', 'tchau']
+const expectedPortuguesePathFiveTrophies = ['atraso', 'qual', 'nome', 'prazer', 'cidade', 'mora', 'noite', 'parque', 'talvez', 'tchau']
 const priorPortugueseTrophies = new Set([
   'olá', 'desculpe', 'onde', 'café', 'quanto', 'trem', 'ajuda', 'aqui', 'amanhã', 'obrigado',
   'entendo', 'escrever', 'mapa', 'melhor', 'disponível', 'cartão', 'sacola', 'reserva', 'certo', 'momento',
@@ -1537,7 +1554,7 @@ assert('Portuguese A1 Practical 6 avoids dosage, diagnosis, treatment, and emerg
 const portugueseP6LessonTenObrigadoItem = portuguesePathSixBrightVariants[9]?.lessonItems.find((item) => item.id === 'obrigado')
 assert('Portuguese A1 Practical 6 accepts obrigado and obrigada speaker-gender variants', ['obrigado', 'obrigada'].every((answer) => portugueseP6LessonTenObrigadoItem?.acceptedAnswers?.includes(answer)), portugueseP6LessonTenObrigadoItem)
 const portuguesePathSevenBrightVariants = portuguesePathSevenLessons.map((lesson) => lesson.vibeVariants.bright)
-const expectedPortuguesePathSevenTrophies = ['bilhete', 'plataforma', 'sai', 'este', 'preciso', 'vamos', 'parar', 'estação', 'tempo', 'cheguei']
+const expectedPortuguesePathSevenTrophies = ['bilhete', 'ponto', 'sai', 'este', 'preciso', 'vamos', 'parar', 'estação', 'tempo', 'estou']
 const priorPortugueseThroughP6Trophies = new Set([
   ...priorPortugueseThroughP5Trophies,
   ...expectedPortuguesePathSixTrophies,
@@ -1568,10 +1585,10 @@ assert('Portuguese A1 Practical 7 trophies live in productive target text', port
   return [variant.corePhrase.targetText, variant.build.targetText, variant.typeRecall.answer, variant.speakTarget.targetPhrase, variant.trophyWord.example]
     .some((text) => normalizeGuidedAnswer(text).includes(trophy))
 }), portuguesePathSevenTrophies)
-const portugueseP7LessonTwoDoOnibusItem = portuguesePathSevenBrightVariants[1]?.lessonItems.find((item) => item.id === 'do-onibus')
+const portugueseP7LessonTwoDoOnibusItem = portuguesePathSevenBrightVariants[1]?.lessonItems.find((item) => item.id === 'ponto-de-onibus')
 const portugueseP7LessonFourEsteEItem = portuguesePathSevenBrightVariants[3]?.lessonItems.find((item) => item.id === 'este-e')
 const portugueseP7LessonEightEstacaoItem = portuguesePathSevenBrightVariants[7]?.lessonItems.find((item) => item.id === 'estacao')
-assert('Portuguese A1 Practical 7 accepts diacritic omissions for ônibus contraction', ['do onibus'].every((answer) => portugueseP7LessonTwoDoOnibusItem?.acceptedAnswers?.includes(answer)), portugueseP7LessonTwoDoOnibusItem)
+assert('Portuguese A1 Practical 7 accepts diacritic omissions for ônibus contraction', ['ponto de onibus'].every((answer) => portugueseP7LessonTwoDoOnibusItem?.acceptedAnswers?.includes(answer)), portugueseP7LessonTwoDoOnibusItem)
 assert('Portuguese A1 Practical 7 accepts partial diacritic variant for este é', ['este e'].every((answer) => portugueseP7LessonFourEsteEItem?.acceptedAnswers?.includes(answer)), portugueseP7LessonFourEsteEItem)
 assert('Portuguese A1 Practical 7 accepts nasal diacritic omission for estação', ['estacao'].every((answer) => portugueseP7LessonEightEstacaoItem?.acceptedAnswers?.includes(answer)), portugueseP7LessonEightEstacaoItem)
 const portuguesePathEightBrightVariants = portuguesePathEightLessons.map((lesson) => lesson.vibeVariants.bright)
@@ -1653,7 +1670,7 @@ assert('Portuguese A1 Practical 9 accepts diacritic omission for horário', ['ho
 assert('Portuguese A1 Practical 9 accepts diacritic omission for se vê', ['se ve'].every((answer) => portugueseP9LessonNineSeVeItem?.acceptedAnswers?.includes(answer)), portugueseP9LessonNineSeVeItem)
 assert('Portuguese A1 Practical 9 accepts partial diacritic variants for até amanhã', ['ate amanha', 'até amanha', 'ate amanhã'].every((answer) => portugueseP9LessonTenAteAmanhaItem?.acceptedAnswers?.includes(answer)), portugueseP9LessonTenAteAmanhaItem)
 const portuguesePathTenBrightVariants = portuguesePathTenLessons.map((lesson) => lesson.vibeVariants.bright)
-const expectedPortuguesePathTenTrophies = ['dia', 'lugar', 'pela', 'aprendi', 'cansado', 'ir', 'vez', 'funciona', 'durma', 'logo']
+const expectedPortuguesePathTenTrophies = ['dia', 'lugar', 'pela', 'aprendo', 'cansado', 'ir', 'até', 'funciona', 'durma', 'logo']
 const priorPortugueseThroughP9Trophies = new Set([
   ...priorPortugueseThroughP8Trophies,
   ...expectedPortuguesePathNineTrophies,
@@ -1687,7 +1704,7 @@ assert('Portuguese A1 Practical 10 trophies live in productive target text', por
 }), portuguesePathTenTrophies)
 const portugueseP10LessonThreeObrigadoItem = portuguesePathTenBrightVariants[2]?.lessonItems.find((item) => item.id === 'obrigado-pela')
 const portugueseP10LessonFiveCansadoItem = portuguesePathTenBrightVariants[4]?.lessonItems.find((item) => item.id === 'cansado')
-const portugueseP10LessonSevenAteProximaVezItem = portuguesePathTenBrightVariants[6]?.lessonItems.find((item) => item.id === 'ate-a-proxima-vez')
+const portugueseP10LessonSevenAteProximaVezItem = portuguesePathTenBrightVariants[6]?.lessonItems.find((item) => item.id === 'ate-a-proxima-item')
 const portugueseP10LessonEightAmanhaFuncionaItem = portuguesePathTenBrightVariants[7]?.lessonItems.find((item) => item.id === 'amanha-funciona')
 const portugueseP10LessonTenAteLogoItem = portuguesePathTenBrightVariants[9]?.lessonItems.find((item) => item.id === 'ate-logo')
 const portugueseP10LessonThreeSpeak = portuguesePathTenBrightVariants[2]?.speakTarget
@@ -1708,7 +1725,7 @@ assert('Portuguese A1 Practical 10 speech accepts feminine cansada variant', por
   requiredTokens: portugueseP10LessonFiveSpeak.requiredTokens,
   optionalTokens: portugueseP10LessonFiveSpeak.optionalTokens,
 }).status === 'correct' : false, portugueseP10LessonFiveSpeak)
-assert('Portuguese A1 Practical 10 accepts diacritic variants for até a próxima vez', ['ate a proxima vez', 'até a proxima vez', 'ate a próxima vez'].every((answer) => portugueseP10LessonSevenAteProximaVezItem?.acceptedAnswers?.includes(answer)), portugueseP10LessonSevenAteProximaVezItem)
+assert('Portuguese A1 Practical 10 accepts diacritic variants for até a próxima', ['ate a proxima', 'até a proxima', 'ate a próxima'].every((answer) => portugueseP10LessonSevenAteProximaVezItem?.acceptedAnswers?.includes(answer)), portugueseP10LessonSevenAteProximaVezItem)
 assert('Portuguese A1 Practical 10 accepts nasal diacritic omission for amanhã funciona', ['amanha funciona'].every((answer) => portugueseP10LessonEightAmanhaFuncionaItem?.acceptedAnswers?.includes(answer)), portugueseP10LessonEightAmanhaFuncionaItem)
 assert('Portuguese A1 Practical 10 accepts diacritic omission for até logo', ['ate logo'].every((answer) => portugueseP10LessonTenAteLogoItem?.acceptedAnswers?.includes(answer)), portugueseP10LessonTenAteLogoItem)
 assert('A1 Practical 1 Bright phrase baseline matches PR4 product corrections', JSON.stringify(pathLessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? '')) === JSON.stringify(expectedBrightPathOnePhrases), pathLessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? ''))
@@ -2778,6 +2795,17 @@ function looksLikeGermanCue(value: GuidedBaseContentText) {
     'wo',
     'wann',
     'welcher',
+    'welche',
+    'ihnen',
+    'passt',
+    'hier',
+    'richtig',
+    'links',
+    'rechts',
+    'bis',
+    'dann',
+    'gute',
+    'nacht',
     'morgen',
     'tschüss',
     'auf wiedersehen',

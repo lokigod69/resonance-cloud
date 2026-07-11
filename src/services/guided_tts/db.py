@@ -189,20 +189,30 @@ def upsert_voice_profile(
 def load_existing_assets_by_cache_key(
     sb,
     cache_keys: Iterable[str],
+    *,
+    batch_size: int = 100,
 ) -> dict[str, dict[str, Any]]:
-    """Fetch existing guided_tts_assets indexed by cache_key."""
-    keys = [k for k in cache_keys if k]
+    """Fetch existing guided_tts_assets indexed by cache_key.
+
+    Batched: PostgREST encodes ``in.(...)`` filters in the URL, and a few
+    hundred 64-char cache keys exceed the server's URL length limit (400).
+    """
+    keys = sorted({k for k in cache_keys if k})
     if not keys:
         return {}
-    rows = (
-        sb.table("guided_tts_assets")
-        .select("*")
-        .in_("cache_key", list(set(keys)))
-        .execute()
-        .data
-        or []
-    )
-    return {row["cache_key"]: row for row in rows}
+    out: dict[str, dict[str, Any]] = {}
+    for start in range(0, len(keys), batch_size):
+        rows = (
+            sb.table("guided_tts_assets")
+            .select("*")
+            .in_("cache_key", keys[start : start + batch_size])
+            .execute()
+            .data
+            or []
+        )
+        for row in rows:
+            out[row["cache_key"]] = row
+    return out
 
 
 def upsert_ready_asset(

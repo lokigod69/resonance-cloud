@@ -532,6 +532,13 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--path", default=None, help="Restrict to this path id")
     p.add_argument("--paths", default=None, help="Restrict to comma-separated path ids")
+    p.add_argument(
+        "--language",
+        default="en-US",
+        help="target_language_code for the scoped rows and voice-profile "
+        "resolution (e.g. en-US, es, it, fr, pt, de, pl, id, ceb, ko). "
+        "Must match the seeded guided_voice_profiles rows.",
+    )
     p.add_argument("--lesson", type=int, default=None, help="Restrict to this lesson number")
     p.add_argument("--lesson-id", default=None, help="Restrict to this lesson id")
     p.add_argument(
@@ -605,6 +612,7 @@ def main(argv: list[str] | None = None) -> int:
             path_ids=path_ids,
             lesson_id=args.lesson_id,
             lesson_number=args.lesson,
+            target_language_code=args.language,
             dry_run=dry_run,
             provider_synthesize=provider_synth,
             allow_unscoped_commit=args.allow_unscoped_commit,
@@ -612,6 +620,11 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     sys.stdout.write(json.dumps(result["inventory"]["totals"], indent=2) + "\n")
+    per_voice = [
+        {k: v for k, v in entry.items() if k != "provider_voice_id"}
+        for entry in result["inventory"]["per_voice"]
+    ]
+    sys.stdout.write(json.dumps(per_voice, indent=2) + "\n")
     sys.stdout.write(
         json.dumps(
             {

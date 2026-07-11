@@ -20,6 +20,14 @@ DEFAULT_TIMEOUT_SECONDS = 30.0
 MAX_RETRIES = 3
 ACCEPT_HEADER = "audio/mpeg"
 
+# ElevenLabs only accepts `language_code` on models with language enforcement
+# (Turbo/Flash v2.5); Multilingual v2/v3 reject the field with a 400.
+MODELS_WITH_LANGUAGE_ENFORCEMENT = ("eleven_flash_v2_5", "eleven_turbo_v2_5")
+
+
+def supports_language_enforcement(model_id: str | None) -> bool:
+    return (model_id or "") in MODELS_WITH_LANGUAGE_ENFORCEMENT
+
 
 def to_elevenlabs_language_code(code: str | None) -> str | None:
     """Map Guided Today's BCP47 codes to ElevenLabs' ISO-639-1 wire format.
@@ -103,7 +111,7 @@ class ElevenLabsGuidedTTSProvider:
             "voice_settings": dict(voice_settings or {}),
         }
         wire_language_code = to_elevenlabs_language_code(language_code)
-        if wire_language_code:
+        if wire_language_code and supports_language_enforcement(model_id):
             body["language_code"] = wire_language_code
 
         headers = {
@@ -163,4 +171,8 @@ class ElevenLabsGuidedTTSProvider:
         )
 
 
-__all__ = ["ElevenLabsGuidedTTSProvider", "GuidedTTSProviderError"]
+__all__ = [
+    "ElevenLabsGuidedTTSProvider",
+    "GuidedTTSProviderError",
+    "supports_language_enforcement",
+]
