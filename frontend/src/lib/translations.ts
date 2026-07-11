@@ -1450,15 +1450,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'deckview.cards.one': 'card',
     'deckview.cards.other': 'cards',
 
-    // ── WordLibrary ──
-    'wordLibrary.all': 'All',
-    'wordLibrary.words': 'Words',
-    'wordLibrary.phrases': 'Phrases',
-    'wordLibrary.recent': 'Recent',
-    'wordLibrary.az': 'A-Z',
-    'wordLibrary.za': 'Z-A',
-    'wordLibrary.noWords': 'No words to show.',
-
     // ── Decks ──
     'decks.title': 'Your Decks',
     'deck.status.draft': 'Draft',
@@ -3013,15 +3004,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'deckview.statusPartial': 'Teilweise ({completed}/{total})',
     'deckview.confirmRemove': '"{word}" aus diesem Deck entfernen?',
     'deckview.noCredits': 'Keine Credits mehr',
-
-    // ── WordLibrary ──
-    'wordLibrary.all': 'Alle',
-    'wordLibrary.words': 'Wörter',
-    'wordLibrary.phrases': 'Phrasen',
-    'wordLibrary.recent': 'Neueste',
-    'wordLibrary.az': 'A-Z',
-    'wordLibrary.za': 'Z-A',
-    'wordLibrary.noWords': 'Keine Wörter zum Anzeigen.',
 
     // ── Decks ──
     'decks.title': 'Deine Decks',
@@ -4587,15 +4569,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'deckview.statusPartial': 'Partiel ({completed}/{total})',
     'deckview.confirmRemove': 'Supprimer « {word} » de ce deck ?',
     'deckview.noCredits': 'Plus de crédits',
-
-    // ── WordLibrary ──
-    'wordLibrary.all': 'Tout',
-    'wordLibrary.words': 'Mots',
-    'wordLibrary.phrases': 'Phrases',
-    'wordLibrary.recent': 'Récents',
-    'wordLibrary.az': 'A-Z',
-    'wordLibrary.za': 'Z-A',
-    'wordLibrary.noWords': 'Aucun mot à afficher.',
 
     // ── Decks ──
     'decks.title': 'Vos Decks',

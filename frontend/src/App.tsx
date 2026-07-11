@@ -45,7 +45,6 @@ const GuidedCheckpoint = lazyWithRetry(routeImports.guidedCheckpoint, 'guided-ch
 const CategoryListPage = lazyWithRetry(routeImports.categoryList, 'category-list')
 const CategoryDetailPage = lazyWithRetry(routeImports.categoryDetail, 'category-detail')
 const LevelDetailPage = lazyWithRetry(routeImports.levelDetail, 'level-detail')
-const GamesHub = lazyWithRetry(routeImports.gamesHub, 'games-hub')
 const Generate = lazyWithRetry(routeImports.generate, 'generate')
 const GenerateGO = lazyWithRetry(routeImports.generateGO, 'generate-go')
 const Decks = lazyWithRetry(routeImports.decks, 'decks')
@@ -228,7 +227,6 @@ function AppRoutes() {
             <Route path="/categories/:categorySlug" element={<CategoryDetailPage />} />
             <Route path="/categories/:categorySlug/level/:levelNumber" element={<LevelDetailPage />} />
             <Route path="/categories/:categorySlug/:levelNumber" element={<LevelDetailPage />} />
-            <Route path="/games" element={<GamesHub />} />
             <Route path="/decks" element={<DecksPG />} />
             <Route path="/generate" element={<GenerateGO />} />
             <Route path="/deck/:id" element={<DeckViewPG />} />
@@ -253,7 +251,6 @@ function AppRoutes() {
             <Route path="/categories/:categorySlug" element={<CategoryDetailPage />} />
             <Route path="/categories/:categorySlug/level/:levelNumber" element={<LevelDetailPage />} />
             <Route path="/categories/:categorySlug/:levelNumber" element={<LevelDetailPage />} />
-            <Route path="/games" element={<GamesHub />} />
             <Route path="/decks" element={<Decks />} />
             <Route path="/generate" element={<Generate />} />
             <Route path="/deck/:id" element={<DeckView />} />

@@ -17,7 +17,6 @@ export const routeImports = {
   categoryList: () => import('@/pages/categories/CategoryListPage'),
   categoryDetail: () => import('@/pages/categories/CategoryDetailPage'),
   levelDetail: () => import('@/pages/categories/LevelDetailPage'),
-  gamesHub: () => import('@/pages/GamesHub'),
   generate: () => import('@/pages/Generate'),
   generateGO: () => import('@/pages/GenerateGO'),
   decks: () => import('@/pages/Decks'),
