@@ -39,12 +39,15 @@ export const LANGUAGES: Language[] = [
   { value: 'Tagalog',    nativeName: 'Tagalog',           code: 'fil', landingColor: '#FF6B35', wizardColor: '#06b6d4', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'Korean',     nativeName: '한국어',             code: 'ko',  landingColor: '#CD2E3A', wizardColor: '#a855f7', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'Indonesian', nativeName: 'Bahasa Indonesia',  code: 'id',  landingColor: '#009688', wizardColor: '#f97316',                isWizard: true,  isLanding: true,  isSpeak: true },
-  { value: 'Dutch',      nativeName: 'Nederlands',        code: 'nl',  landingColor: '#E65100',                                                         isLanding: true,  isSpeak: true },
+  { value: 'Dutch',      nativeName: 'Nederlands',        code: 'nl',  landingColor: '#E65100', wizardColor: '#db2777',                isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'Spanish',    nativeName: 'Español',           code: 'es',  landingColor: '#C62828', wizardColor: '#ec4c47', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
-  { value: 'Hindi',      nativeName: 'हिन्दी',              code: 'hi',  landingColor: '#F9A825',                                                         isLanding: true,  isSpeak: true },
-  { value: 'Portuguese', nativeName: 'Português',         code: 'pt',                                                                                                     isSpeak: true },
-  { value: 'Arabic',     nativeName: 'العربية',           code: 'ar',                                                                                                     isSpeak: true },
+  { value: 'Hindi',      nativeName: 'हिन्दी',              code: 'hi',  landingColor: '#F9A825', wizardColor: '#65a30d',                isWizard: true,  isLanding: true,  isSpeak: true },
+  { value: 'Portuguese', nativeName: 'Português',         code: 'pt',                           wizardColor: '#059669',                isWizard: true,                    isSpeak: true },
+  { value: 'Arabic',     nativeName: 'العربية',           code: 'ar',                           wizardColor: '#166534',                isWizard: true,                    isSpeak: true },
   { value: 'Russian',    nativeName: 'Русский',           code: 'ru',  landingColor: '#3A5FCD', wizardColor: '#14b8a6', isWizard: true,  isLanding: true,  isSpeak: true },
+  // Polish has full guided A1 content + categories (code 'pl' in categories.ts) but is
+  // NOT Speak-enabled: api/ LANGUAGE_CONFIG has no 'pl' — do not set isSpeak without Tier 3.
+  { value: 'Polish',     nativeName: 'Polski',            code: 'pl',                           wizardColor: '#e11d48',                isWizard: true },
 ]
 
 /** Build a "Native (English)" label, collapsing to a single name when they match. */

@@ -1591,6 +1591,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Portuguese': 'Portuguese',
     'langName.Arabic': 'Arabic',
     'langName.Russian': 'Russian',
+    'langName.Polish': 'Polish',
     // ISO-code aliases — safety net so any path that hands an ISO code to the
     // labeler still resolves a localized name. Keep in sync with langName.<FullWord>.
     'langName.de':  'German',
@@ -1607,6 +1608,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.pt':  'Portuguese',
     'langName.ar':  'Arabic',
     'langName.ru':  'Russian',
+    'langName.pl':  'Polish',
 
     // ── Category groups (display labels; underlying API value stays English) ──
     'category.group.essentials': 'Essentials',
@@ -3146,6 +3148,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Portuguese': 'Portugiesisch',
     'langName.Arabic': 'Arabisch',
     'langName.Russian': 'Russisch',
+    'langName.Polish': 'Polnisch',
     // ISO-Code-Aliase — Sicherheitsnetz für Aufrufer, die einen ISO-Code an
     // den Labeler übergeben. Mit langName.<Vollform> synchron halten.
     'langName.de':  'Deutsch',
@@ -3162,6 +3165,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.pt':  'Portugiesisch',
     'langName.ar':  'Arabisch',
     'langName.ru':  'Russisch',
+    'langName.pl':  'Polnisch',
 
     // ── Kategorie-Gruppen (Anzeigetexte; API-Wert bleibt englisch) ──
     'category.group.essentials': 'Grundlagen',
@@ -4706,6 +4710,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Portuguese': 'Portugais',
     'langName.Arabic': 'Arabe',
     'langName.Russian': 'Russe',
+    'langName.Polish': 'Polonais',
     // Alias des codes ISO — filet de sécurité pour les appelants qui passent
     // un code ISO au labeler. À synchroniser avec langName.<FormeComplète>.
     'langName.de':  'Allemand',
@@ -4722,6 +4727,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.pt':  'Portugais',
     'langName.ar':  'Arabe',
     'langName.ru':  'Russe',
+    'langName.pl':  'Polonais',
 
     // ── Groupes de catégories (libellés d'affichage; valeur API en anglais) ──
     'category.group.essentials': 'Essentiels',

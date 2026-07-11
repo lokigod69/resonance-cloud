@@ -40,7 +40,9 @@ export function normalizeGuidedSpeechPhrase(text: string): string {
 
   const words = normalized
     .replace(/['\u2019]/g, '')
-    .replace(/[^a-z0-9\s]/g, ' ')
+    // Unicode-aware: must keep non-Latin scripts (Hangul, Cyrillic, \u2026) and Latin
+    // diacritics intact \u2014 an ASCII-only class erases them and empties the transcript.
+    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
     .trim()
     .split(/\s+/)
     .filter(Boolean)

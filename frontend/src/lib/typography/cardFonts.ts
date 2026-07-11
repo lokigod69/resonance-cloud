@@ -3,7 +3,10 @@ const LATIN_FALLBACK_STACK = '"Noto Sans", Arial, "Segoe UI", sans-serif'
 const CJK_FONT_STACK = '"Noto Sans CJK KR", "Noto Sans CJK", "Noto Sans CJK SC", "Malgun Gothic", sans-serif'
 
 const CJK_LANGUAGE_CODES = new Set(['ko', 'zh', 'ja'])
-const SUPPORTED_LATIN_LANGUAGE_CODES = new Set(['de', 'fr', 'it', 'es', 'en', 'ceb', 'tl', 'fil', 'id'])
+// 'pl' is deliberately absent: Polish Latin-Extended diacritics (ą/ł/ż) aren't
+// guaranteed in locally-installed display fonts, so it rides LATIN_FALLBACK_STACK
+// (full coverage) like Cyrillic does.
+const SUPPORTED_LATIN_LANGUAGE_CODES = new Set(['de', 'fr', 'it', 'es', 'en', 'ceb', 'tl', 'fil', 'id', 'pt', 'nl'])
 
 function normalizeLanguageCode(targetLanguage: string): string {
   return targetLanguage.trim().toLowerCase().replace('_', '-').split('-')[0] ?? ''

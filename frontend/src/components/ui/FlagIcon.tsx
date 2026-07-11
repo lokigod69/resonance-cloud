@@ -12,6 +12,7 @@ import PH from 'country-flag-icons/react/3x2/PH'
 import ID from 'country-flag-icons/react/3x2/ID'
 import KR from 'country-flag-icons/react/3x2/KR'
 import RU from 'country-flag-icons/react/3x2/RU'
+import PL from 'country-flag-icons/react/3x2/PL'
 
 type FlagComponent = FC<{ className?: string }>
 
@@ -31,10 +32,11 @@ const LANG_CODE_MAP: Record<string, FlagComponent> = {
   id: ID,
   ko: KR,
   ru: RU,
+  pl: PL,
 }
 
 const COUNTRY_CODE_MAP: Record<string, FlagComponent> = {
-  GB, DE, FR, IT, ES, PT, NL, IN, SA, PH, ID, KR, RU,
+  GB, DE, FR, IT, ES, PT, NL, IN, SA, PH, ID, KR, RU, PL,
 }
 
 const LANG_NAME_MAP: Record<string, string> = {
@@ -55,6 +57,7 @@ const LANG_NAME_MAP: Record<string, string> = {
   'bahasa indonesia': 'id',
   korean: 'ko',
   russian: 'ru',
+  polish: 'pl',
 }
 
 interface FlagIconProps {

@@ -10,6 +10,24 @@ by hand. Companion skills: `.claude/skills/add-target-language`,
 All paths relative to `orchestrator/frontend` unless noted. Line numbers are as of
 2026-07-06 — treat them as pointers, not gospel; re-grep before editing.
 
+> **Delta 2026-07-12** (details: `investigations/LANGUAGE_SURFACE_UNIFICATION_2026_07_12.md`):
+> `LANGUAGES` now has **15 entries** — Russian (2026-07-06, wizard+landing+speak) and
+> **Polish** (2026-07-12, wizard-only; has guided Tier 5 + categories, NOT isSpeak) were
+> added, and `isWizard` was flipped on for Portuguese/Dutch/Hindi/Arabic (wizard = 15).
+> `api/guided-transcribe.ts` now accepts every guided speak locale and forwards proper
+> Whisper hints (was en-US/en-GB-only with a hardcoded 'en' — the §5 text below is stale
+> on this point). Static-TTS generation tooling is now ON main
+> (`orchestrator/scripts/generate_static_thematic_tts.py`, `orchestrator/src/services/guided_tts/`)
+> — landmine 8's worktree note is obsolete (worktrees deleted in the 2026-07-11 cleanup).
+> `components/dashboard/articleDisplay.ts` (§6) no longer exists — article/gender rules
+> live in the Lens prompt (`api/_shared/visualScanProvider.ts`) and `lib/typedAnswer.ts`'s
+> article sets. Vibe reality check: only English has wistful/sharp variants; all other
+> guided languages are bright-only (quality review 2026-07-12). **Korean now has guided
+> A1 Practical 1** via the new per-language module pattern `src/data/guided/koreanA1.ts`
+> (type-only imports from guidedLessons.ts; new guided languages go in such modules, not
+> the monolith). Speech-scoring normalizers are Unicode-aware as of 2026-07-12 — non-Latin
+> guided targets are safe.
+
 ---
 
 ## 1. The two expansions — never conflate them

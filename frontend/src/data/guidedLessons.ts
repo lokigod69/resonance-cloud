@@ -6,14 +6,18 @@ import {
   type GuidedVibeId,
 } from '@/data/guidedVibes'
 import type { TodayProgressState } from '@/lib/todayProgress'
+import {
+  GUIDED_TODAY_PATH_KOREAN_ONE_METADATA,
+  KOREAN_A1_PRACTICAL_1_LESSONS,
+} from './guided/koreanA1'
 
 export type LessonMediaType = 'image' | 'video' | 'music_video'
 
-export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese' | 'German' | 'Cebuano' | 'Indonesian' | 'Polish'
+export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese' | 'German' | 'Cebuano' | 'Indonesian' | 'Polish' | 'Korean'
 export type GuidedBaseLanguage = 'German' | 'English'
 export type GuidedBaseContentLocale = 'en' | 'de'
 export type GuidedBaseContentText = Partial<Record<GuidedBaseContentLocale, string>>
-export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH' | 'id-ID' | 'pl-PL'
+export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH' | 'id-ID' | 'pl-PL' | 'ko-KR'
 
 export const GUIDED_BASE_LANGUAGE_TO_CONTENT_LOCALE: Partial<Record<string, GuidedBaseContentLocale>> = {
   English: 'en',
@@ -65295,6 +65299,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...polishA1Practical8Lessons,
   ...polishA1Practical9Lessons,
   ...polishA1Practical10Lessons,
+  ...KOREAN_A1_PRACTICAL_1_LESSONS,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -65397,6 +65402,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_POLISH_EIGHT_METADATA,
     GUIDED_TODAY_PATH_POLISH_NINE_METADATA,
     GUIDED_TODAY_PATH_POLISH_TEN_METADATA,
+    GUIDED_TODAY_PATH_KOREAN_ONE_METADATA,
   ]
 }
 
@@ -65432,6 +65438,7 @@ export const GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES: Record<GuidedTargetLanguage, 
   Cebuano: ['ceb-PH'],
   Indonesian: ['id-ID'],
   Polish: ['pl-PL'],
+  Korean: ['ko-KR'],
 }
 
 export function getGuidedPathOverview(

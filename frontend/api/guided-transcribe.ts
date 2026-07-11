@@ -8,7 +8,25 @@ import { groqSttCost } from './_shared/usageCost'
 type GuidedTranscribeBody = {
   audio_base64: string
   mime_type: string
-  language?: 'en-US' | 'en-GB'
+  language?: string
+}
+
+// Guided speak locales (GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES in
+// src/data/guidedLessons.ts — api/ cannot import src/, keep in sync by hand)
+// mapped to Whisper language hints. Cebuano is not a Whisper-supported
+// language: `null` means omit the hint and let the model auto-detect.
+const GUIDED_LOCALE_TO_WHISPER_LANGUAGE: Record<string, string | null> = {
+  'en-US': 'en',
+  'en-GB': 'en',
+  'es-ES': 'es',
+  'it-IT': 'it',
+  'fr-FR': 'fr',
+  'pt-BR': 'pt',
+  'de-DE': 'de',
+  'ceb-PH': null,
+  'id-ID': 'id',
+  'pl-PL': 'pl',
+  'ko-KR': 'ko',
 }
 
 const GUIDED_TRANSCRIBE_BODY_MAX_BYTES = 4 * 1024 * 1024
@@ -76,7 +94,15 @@ export async function POST(req: Request): Promise<Response> {
     // verbose_json returns the real audio `duration` (used for cost metering)
     // alongside `text` — json returns text only.
     formData.append('response_format', 'verbose_json')
-    formData.append('language', 'en')
+    // Hint Whisper with the lesson's speak locale; no hint for languages
+    // Whisper doesn't support (auto-detect). Absent language keeps the
+    // historical English default.
+    const whisperLanguage = body.language === undefined
+      ? 'en'
+      : GUIDED_LOCALE_TO_WHISPER_LANGUAGE[body.language]
+    if (whisperLanguage) {
+      formData.append('language', whisperLanguage)
+    }
 
     const sttRes = await fetchWithTimeout('https://api.groq.com/openai/v1/audio/transcriptions', {
       method: 'POST',
@@ -146,7 +172,7 @@ function validateGuidedTranscribeBody(raw: unknown): GuidedTranscribeBody {
   let language: GuidedTranscribeBody['language']
   if (raw.language !== undefined) {
     const rawLanguage = readString(raw.language, 'language', 16, true)
-    if (rawLanguage !== 'en-US' && rawLanguage !== 'en-GB') {
+    if (!(rawLanguage in GUIDED_LOCALE_TO_WHISPER_LANGUAGE)) {
       throw new ApiError(400, 'Unsupported language')
     }
     language = rawLanguage

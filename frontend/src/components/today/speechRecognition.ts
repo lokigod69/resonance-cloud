@@ -87,7 +87,8 @@ export function normalizeSpokenPhrase(text: string) {
   return text
     .toLowerCase()
     .replace(/['\u2019]/g, '')
-    .replace(/[^a-z0-9\s]/g, ' ')
+    // Unicode-aware: keep non-Latin scripts and Latin diacritics (see guidedSpeechCheck.ts).
+    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
     .trim()
     .split(/\s+/)
     .filter(Boolean)
