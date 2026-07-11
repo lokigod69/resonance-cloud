@@ -1,5 +1,5 @@
 # Current State
-Last updated: 2026-07-11 late evening (6-tab nav restructure + slicer due-words mode COMMITTED+PUSHED `a1068fc9` on owner call; owner kicked off the repo-wide docs/dead-code cleanup as the next big task)
+Last updated: 2026-07-11 night (nav restructure pushed `a1068fc9`; **repo-wide cleanup pass EXECUTED + PUSHED** — 4 commits `c16e83d7`..`9067e188`, DAW deleted, ~900MB archived, worktrees/branches cleared; report `investigations/CLEANUP_PASS_2026_07_11_REPORT.md`, details LOG 2026-07-11 (4); owner decide-list open)
 
 ## What this is
 Lingwave, a cloud-first language-learning app (guided lessons, SRS cards, AI music, voice tutor). Live frontend in `frontend/` (Vercel + Supabase); Python generation backend (`job_runner.py`, `src/`, `cloud_engines/`) on Railway. Target: TestFlight/private beta this month (July 2026).
@@ -33,7 +33,8 @@ Lingwave, a cloud-first language-learning app (guided lessons, SRS cards, AI mus
 - Video product direction: deprecated user-facing (`VIDEO_LANE_ENABLED=false`), backend pipeline kept (see [[DECISIONS]]).
 
 ## Known problems
-- Root-level clutter: one-off scripts/artifacts (`resonance_arch_compare_pack/`, `investigation/`, `manual_repair_enrichment_wedged_words.sql`, `ADVERSARIAL_REVIEW_*`, `start*.bat`, `recent-workspaces.json`). Deferred (L5) pending owner archive/delete call.
+- ~~Root-level clutter (L5)~~ SOLVED 2026-07-11: archived to `D:\CODING\ResonanceTEST\_archive\` / git-rm'd (see LOG 2026-07-11 (4)). Still open from the pass: owner decide-list — 11 leftover worktrees + `orchestrator-origin-main-check` (223MB stale copy), `content/`+`curriculum/`+`brand/` media fate, `_archive/` final deletion, `ltx-worker/.venv` (4.9GB), `refactor` branch reconciliation, root `supabase/` + archived `guided_tts_v1.sql` drafts (verify never applied).
+- 14 pre-existing stale frontend-contract pytest failures (assert on evolved UI copy/structure; verified present before the cleanup): music_lyrics_frontend ×6, profile_base_language ×2, gpt_premium_pricing ×2, admin_gpt_image_2 ×1, frontend_duration_fields ×1, phase1b_atomic_retry ×1, concept_lyric_levels ×1(+env). Same class as the guided-today-path-overview staleness. Needs a repoint-at-live-surfaces pass.
 - Duplicated skin page pairs (classic vs PG/GO variants) — divergence risk; both skins ship for beta (decided 2026-07-08, glassy default), consolidation deferred to beta feedback (L1).
 - Video/pipeline Python core frozen since ~2026-04-30 — treat as legacy-stable; don't refactor casually.
 - `start_cloud.py:66-89` hard-requires video-era `POD_URL`/`POD_AUTH_TOKEN` at boot — unsetting them in Railway kills card/music generation (L4).
@@ -54,5 +55,5 @@ Lingwave, a cloud-first language-learning app (guided lessons, SRS cards, AI mus
 3. Capacitor fast-follow before wider beta: ~~slimming phases 1+2~~ (COMPLETE 2026-07-08, `26255d8f` + `aeb8cf2b`, dist 77.7 MiB — only native device smoke remains). Owner skim of `src/cost_logger.py` UNVERIFIED rates before trusting cost dashboards.
 4. UX pass follow-ups: ~~StudyCardFrame + SessionComplete extraction~~ (done 2026-07-08 night, uncommitted); gate landing experiment routes; home-page loading perf (owner noted slowness 2026-07-06); plan Phase 4 image-study consolidation.
 5. Script Lab follow-ups: owner mobile QA of /alphabet (now incl. Russian); next Russian tiers on owner request via `.claude/skills/add-target-language`. ~~Pre-existing test breakage~~ fixed 2026-07-08 night: the failing script was `test:generate-responsive-layout` (not `test:i18n-display-labels` as previously recorded) — stale asserts for deleted/evolved generate UI removed/updated, green now.
-6. Cleanup later-pass ladder L1–L8 in `docs/Refactors/FABLE_SAFE_CLEANUP_PATCH_PLAN.md`; guided/trophy-song untracked experiment assets (~97 MB local) need an archive/delete call.
+6. Cleanup ladder `docs/Refactors/FABLE_SAFE_CLEANUP_PATCH_PLAN.md`: L5 EXECUTED 2026-07-11 (plus DAW deletion, one-off archive, docs restructure — see LOG (4)); trophy-song/vibes experiment assets archived same pass. Remaining rungs L1–L4/L6–L8 unchanged (triggers not met). Owner decide-list from the pass is in NEXT_STEP.
 7. Deferred but rising: Stripe/Supabase purchase config (owner flagged 2026-07-08 as "probably next"); tutor-catalog Phase 3, Study 2×2 consolidation, PG/classic consolidation (parked until beta skin feedback), further Supabase schema changes.

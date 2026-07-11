@@ -2,6 +2,12 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-07-11 — Repo-wide cleanup: archive-first, DAW deleted, video + TTS tooling kept
+**Status:** active — commits `c16e83d7`/`be208ef6`/`8a1c20a8`/`9067e188`, report `investigations/CLEANUP_PASS_2026_07_11_REPORT.md`
+**Decision:** Pre-TestFlight cleanup ran under an archive-first policy: un-versioned material moves to `D:\CODING\ResonanceTEST\_archive\` with manifests (never deleted); tracked deletions go through `git rm` in small revertable commits. The legacy local-DAW backend (src/app.py + routers + state/presets/voices/csv_import + start*.bat) was DELETED as provably undeployed dead code; the video pipeline was NOT touched (owner keep-decision; Codex classification confirms the boundary — partial deletion would break `_ensure_engines_loaded()`). Static/guided TTS tooling KEPT despite being classified one-off, because Russian Tier 2 static TTS is a pending owner-run batch. Completed setc image-batch script/test families archived out. Unpushed branch work was pushed/bundled BEFORE any worktree/branch removal.
+**Why:** Owner mandate "clean for TestFlight, keep the video pipeline, don't lose anything important"; archive-first makes every step reversible without owner pre-approval of each item.
+**Rejected:** Deleting `content\`/`curriculum\` media (expensive-to-regenerate, owner call); restoring dead ConfirmStep.tsx to keep a stale contract test green (test repointed at the live wizard pages instead); archiving guided_tts services (future batches need them).
+
 ## 2026-07-10 — SRS grading is never input-gated; swipe-to-grade is the flagship gesture
 **Status:** active — committed `526dfbaa`
 **Decision:** Grading in the SRS flashcard loop advances state in the same tick as the input — decorative feedback (pulse, direction-aware exits) plays over the transition and never disables buttons or keys. The only input filter is a 260ms repeat guard (must outlast the 220ms card-exit so held keys/ghost taps can't grade a still-hidden card) plus `e.repeat`/focused-control checks on the 1/2 keys. Swipe-to-grade (`SwipeGradeCard.tsx`) commits via Apple momentum projection (d=0.998, threshold `min(42% width, 200px)`, velocity sign wins over position) with release-velocity handoff into every spring; buttons/keyboard remain the accessible path; right = remembered, left = review later, matching the button layout.
