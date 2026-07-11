@@ -27,7 +27,7 @@ export default function StudyPG() {
 
   const {
     words, current, currentIndex, dailyNewQuotaReached, loading, sessionComplete, sessionStats, reviewed,
-    revealed, setRevealed, decks, deckFilter, setDeckFilter,
+    revealed, setRevealed, decks, deckFilter, setDeckFilter, deckScopeLocked,
     activeVideoUrl, activeThumbnailUrl, isMuted, togglePlay, onPlay, onPause,
     handleRemembered, handleReviewLater, restart, selectIndex, skipPrev, skipNext,
   } = useStudyUI({ videoRef, studyMode: 'video', queue })
@@ -109,8 +109,8 @@ export default function StudyPG() {
           <QueueIndicator queue={queue} count={words.length} language={current?.target_language ?? searchParams.get('lang') ?? ''} />
         )}
 
-        {/* Deck filter */}
-        {decks.length > 1 && (
+        {/* Deck filter — hidden when the entry point already fixed the pool */}
+        {decks.length > 1 && !deckScopeLocked && (
           <div className="flex justify-center mb-4">
             <Select value={deckFilter} onValueChange={setDeckFilter}>
               <SelectTrigger

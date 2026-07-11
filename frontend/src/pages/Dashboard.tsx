@@ -186,7 +186,7 @@ export default function Dashboard() {
           isFirstRun ? ' dashboard-home-stack--welcome' : ''
         }`}
       >
-        <HomeAccountStrip />
+        <HomeAccountStrip streak={studyStreak.streak} />
 
         {!decisionResolved ? null : isFirstRun ? (
           <div className="dashboard-welcome-center">

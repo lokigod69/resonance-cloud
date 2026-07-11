@@ -60,7 +60,7 @@ export default function StudyFlashcard() {
 
   const {
     words, current, currentIndex, clearedCount, dailyNewQuotaReached, loading, sessionComplete, sessionStats, reviewed,
-    revealed, setRevealed, decks, deckFilter, setDeckFilter,
+    revealed, setRevealed, decks, deckFilter, setDeckFilter, deckScopeLocked,
     handleRemembered, handleReviewLater, restart, skipPrev, skipNext,
   } = useStudyUI({ videoRef, studyMode: 'flashcard', queue })
 
@@ -219,8 +219,8 @@ export default function StudyFlashcard() {
           <QueueIndicator queue={queue} count={words.length} language={current?.target_language ?? searchParams.get('lang') ?? ''} />
         )}
 
-        {/* Deck filter */}
-        {decks.length > 1 && (
+        {/* Deck filter — hidden when the entry point already fixed the pool */}
+        {decks.length > 1 && !deckScopeLocked && (
           <div className="flex justify-center mb-4">
             <Select value={deckFilter} onValueChange={setDeckFilter}>
               <SelectTrigger

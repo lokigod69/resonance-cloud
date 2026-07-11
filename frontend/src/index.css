@@ -1222,6 +1222,25 @@ body::before {
   gap: 0.45rem;
 }
 
+/* Compact day-streak chip in the strip's left column — the mobile home shows
+   the streak here instead of a standalone row, saving vertical space. */
+.home-account-streak {
+  display: inline-flex;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  align-items: center;
+  gap: 0.26rem;
+  padding: 0.24rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 36%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+  color: var(--accent-2);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
 .home-account-credit,
 .home-account-profile {
   display: inline-flex;
@@ -1285,6 +1304,11 @@ body::before {
 
   .home-account-strip {
     margin-bottom: clamp(1.45rem, 4dvh, 2.35rem);
+  }
+
+  /* The streak lives in the account strip on mobile — drop the standalone row. */
+  .dashboard-streak-row {
+    display: none;
   }
 
   .language-picker {

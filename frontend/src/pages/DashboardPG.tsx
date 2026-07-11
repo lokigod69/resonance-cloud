@@ -137,6 +137,49 @@ export default function DashboardPG() {
   const studyStreak = useStudyStreak()
   const tilesDisabled = !activeLanguage || wordStates.loading
 
+  // Empty-home shows when the ACTIVE language has no decks — a brand-new account
+  // (no decks, no active language) or a language the learner hasn't started yet.
+  const decksInActiveLanguage = useMemo(() => (
+    activeLanguage
+      ? decks.filter((deck) => canonicalizeLanguageValue(deck.target_language) === activeLanguage)
+      : []
+  ), [activeLanguage, decks])
+
+  // Which assets this language's words actually carry (same limit-1 probes as
+  // the /study configurator) — gates the visual/listening presets so home never
+  // offers an experience whose session immediately dead-ends ("no audio
+  // available" before the first song exists). null = probe still in flight.
+  const [hasImages, setHasImages] = useState<boolean | null>(null)
+  const [hasAudio, setHasAudio] = useState<boolean | null>(null)
+  const languageDeckIds = useMemo(() => decksInActiveLanguage.map((deck) => deck.id), [decksInActiveLanguage])
+  useEffect(() => {
+    setHasImages(null)
+    setHasAudio(null)
+    if (!user || languageDeckIds.length === 0) return
+    let cancelled = false
+    const probeBase = () => supabase
+      .from('words')
+      .select('id')
+      .eq('user_id', user.id)
+      .eq('status', 'complete')
+      .in('deck_id', languageDeckIds)
+    void probeBase()
+      .not('thumbnail_url', 'is', null)
+      .limit(1)
+      .then(({ data }) => { if (!cancelled) setHasImages((data?.length ?? 0) > 0) })
+    void probeBase()
+      .or('suno_storage_url.not.is.null,suno_audio_url.not.is.null')
+      .limit(1)
+      .then(({ data }) => { if (!cancelled) setHasAudio((data?.length ?? 0) > 0) })
+    return () => { cancelled = true }
+  }, [user, languageDeckIds])
+
+  const presetAvailable = useCallback((option: ExperiencePreset) => {
+    if (option === 'visual') return hasImages === true
+    if (option === 'listening') return hasAudio === true
+    return true
+  }, [hasImages, hasAudio])
+
   // Per-language experience preset: how quick practice opens from home. Unset →
   // the one-time picker shows in place of the dive-in CTA.
   const [preset, setPreset] = useState<ExperiencePreset | null>(null)
@@ -152,25 +195,28 @@ export default function DashboardPG() {
     setChangingPreset(false)
   }, [user?.id, activeLanguage])
 
+  // A stored preset whose assets are confirmed missing (e.g. listening chosen
+  // before any song was generated) falls back to the picker instead of driving
+  // "Dive in" into a dead end.
+  const presetUnusable =
+    (preset === 'visual' && hasImages === false) || (preset === 'listening' && hasAudio === false)
+  const effectivePreset = presetUnusable ? null : preset
+
   // Zero-config practice entry: straight into the preset's study mode with
   // everything due now (no queue param = the all-due session). Playful launches
   // the slicer; unset preset falls back to the configurator.
   const diveInHref = (() => {
     if (!activeLanguage) return '/study'
     const lang = encodeURIComponent(activeLanguage)
-    if (!preset) return `/study?lang=${lang}`
-    if (preset === 'playful') return `/games/slicer?returnTo=/dashboard&lang=${lang}`
-    return `${presetStudyRoute(preset)}?lang=${lang}`
+    if (!effectivePreset) return `/study?lang=${lang}`
+    if (effectivePreset === 'playful') return `/games/slicer?returnTo=/dashboard&lang=${lang}`
+    return `${presetStudyRoute(effectivePreset)}?lang=${lang}`
   })()
   // Queue tiles deep-link into the preset's mode too (configurator only when
   // playful/unset — the slicer needs its own launch flow).
-  const tileModeRoute = preset && preset !== 'playful' ? presetStudyRoute(preset) ?? undefined : undefined
-
-  // Empty-home shows when the ACTIVE language has no decks — a brand-new account
-  // (no decks, no active language) or a language the learner hasn't started yet.
-  const decksInActiveLanguage = activeLanguage
-    ? decks.filter((deck) => canonicalizeLanguageValue(deck.target_language) === activeLanguage)
-    : []
+  const tileModeRoute = effectivePreset && effectivePreset !== 'playful'
+    ? presetStudyRoute(effectivePreset) ?? undefined
+    : undefined
   // Guard the transient where decks have loaded but the active language hasn't been
   // pinned yet (decks exist, activeLanguage still null) so an existing user never
   // flashes the empty card before the pin effect runs.
@@ -226,7 +272,7 @@ export default function DashboardPG() {
           isFirstRun ? ' dashboard-home-stack--welcome' : ''
         }`}
       >
-        <HomeAccountStrip />
+        <HomeAccountStrip streak={studyStreak.streak} />
 
         {!decisionResolved ? null : isFirstRun ? (
           <div className="dashboard-welcome-center">
@@ -270,12 +316,12 @@ export default function DashboardPG() {
               />
             )}
 
-            {preset === null || changingPreset ? (
+            {effectivePreset === null || changingPreset ? (
               <div className="pg-glass w-full max-w-md rounded-2xl px-5 py-4 text-center">
                 <p className="font-display text-base font-semibold">{t('home.preset.question')}</p>
                 <p className="mt-1 text-xs text-[var(--text-muted)]">{t('home.preset.hint')}</p>
                 <div className="mt-3 grid grid-cols-2 gap-2">
-                  {EXPERIENCE_PRESETS.map((option) => (
+                  {EXPERIENCE_PRESETS.filter(presetAvailable).map((option) => (
                     <button
                       key={option}
                       type="button"
@@ -311,7 +357,7 @@ export default function DashboardPG() {
                   className="text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
                   aria-label={t('home.preset.changeAria')}
                 >
-                  {PRESET_EMOJI[preset]} {t(presetLabelKey(preset))}
+                  {PRESET_EMOJI[effectivePreset]} {t(presetLabelKey(effectivePreset))}
                 </button>
               </div>
             )}

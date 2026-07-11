@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Coins, User } from 'lucide-react'
+import { Coins, Flame, User } from 'lucide-react'
 import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useDialogs } from '@/contexts/DialogContext'
@@ -7,7 +7,13 @@ import { useAuth } from '@/hooks/useAuth'
 import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { useTranslation } from '@/hooks/useTranslation'
 
-export function HomeAccountStrip() {
+type HomeAccountStripProps = {
+  // Day streak shown as a compact chip in the strip's left column — the header
+  // carries it on mobile so the home stack below keeps its vertical space.
+  streak?: number
+}
+
+export function HomeAccountStrip({ streak = 0 }: HomeAccountStripProps) {
   const { profile, profileLoading, user } = useAuth()
   const { t } = useTranslation()
   const { setProfileOpen, setRedeemOpen } = useDialogs()
@@ -23,6 +29,13 @@ export function HomeAccountStrip() {
 
   return (
     <div className="home-account-strip grid md:hidden" aria-label="Account controls">
+      {streak > 0 ? (
+        <span className="home-account-streak" aria-label={t('dashboard.streak.aria', { count: streak })}>
+          <Flame className="h-3.5 w-3.5" aria-hidden="true" />
+          <span>{streak}</span>
+        </span>
+      ) : null}
+
       <Link to="/dashboard" className="home-account-brand" aria-label="Lingwave home">
         <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5" />
       </Link>

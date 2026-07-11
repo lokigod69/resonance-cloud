@@ -50,7 +50,7 @@ export default function StudyAudio() {
   // useStudyUI expects HTMLVideoElement ref, but all hooks only use HTMLMediaElement APIs
   const {
     words, current, currentIndex, loading, sessionComplete, sessionStats, reviewed,
-    revealed, setRevealed, decks, deckFilter, setDeckFilter,
+    revealed, setRevealed, decks, deckFilter, setDeckFilter, deckScopeLocked,
     isMuted, toggleMute,
     handleRemembered, handleReviewLater, restart,
   } = useStudyUI({ videoRef: audioRef as unknown as React.RefObject<HTMLVideoElement | null>, studyMode: 'audio', queue })
@@ -179,8 +179,8 @@ export default function StudyAudio() {
           <QueueIndicator queue={queue} count={words.length} language={current?.target_language ?? searchParams.get('lang') ?? ''} />
         )}
 
-        {/* Deck filter */}
-        {decks.length > 1 && (
+        {/* Deck filter — hidden when the entry point already fixed the pool */}
+        {decks.length > 1 && !deckScopeLocked && (
           <div className="flex justify-center mb-4">
             <Select value={deckFilter} onValueChange={setDeckFilter}>
               <SelectTrigger

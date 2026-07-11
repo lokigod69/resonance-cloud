@@ -52,6 +52,12 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
     ? allDecks.filter(d => languagesMatch(d.target_language, studyLanguage))
     : allDecks
 
+  // Sessions deep-linked from home (dive-in, practice tiles, mastered pill)
+  // arrive with a queue and/or lang param and study a fixed pool — offering the
+  // deck dropdown there contradicts what the entry point promised, so pages
+  // hide it. Organic /study-configurator entries carry neither param.
+  const deckScopeLocked = queueFilter !== null || Boolean(langParam)
+
   // Reset deck filter when language changes (selected deck may not be in new language)
   useEffect(() => {
     if (deckParam) return // don't override explicit deck param
@@ -225,6 +231,7 @@ export function useStudyUI({ videoRef, studyMode = 'video', queue }: UseStudyUIO
     decks,
     deckFilter,
     setDeckFilter,
+    deckScopeLocked,
     // Video
     activeVideoUrl,
     activeThumbnailUrl,

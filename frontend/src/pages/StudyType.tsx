@@ -26,6 +26,12 @@ const ADVANCE_DELAY_MS: Record<'correct' | 'close', number> = {
   close: 1900,
 }
 
+// Auto-focusing the answer field pops the software keyboard over the prompt on
+// touch devices — only pre-focus where a hardware keyboard is the norm.
+const AUTOFOCUS_ANSWER = typeof window !== 'undefined'
+  && typeof window.matchMedia === 'function'
+  && window.matchMedia('(pointer: fine)').matches
+
 // Typed-recall mode: the prompt (picture when the word has one, otherwise the
 // translation) stays fixed and the learner must TYPE the word from memory —
 // production instead of recognition. Matching is forgiving (case, articles,
@@ -45,7 +51,7 @@ export default function StudyType() {
 
   const {
     words, current, currentIndex, dailyNewQuotaReached, loading, sessionComplete, sessionStats, reviewed,
-    decks, deckFilter, setDeckFilter,
+    decks, deckFilter, setDeckFilter, deckScopeLocked,
     activeThumbnailUrl,
     handleRemembered, handleReviewLater, restart, selectIndex,
   } = useStudyUI({ videoRef, studyMode: 'typed', queue })
@@ -191,14 +197,17 @@ export default function StudyType() {
   const wrongHidden = result?.verdict === 'wrong' && !result.revealed
 
   return (
-    <div className="px-0 sm:px-4 md:px-6 max-w-5xl mx-auto flex min-h-[calc(100dvh-5rem)] flex-col items-center justify-start pt-4 pb-10 sm:pt-6">
-      <div className="w-full max-w-4xl">
+    // Fixed-height column: prompt + input stay put, only the orb dock (its own
+    // overflow container) scrolls. Falls back to page scroll when the viewport
+    // is genuinely too small for the fixed parts.
+    <div className="px-0 sm:px-4 md:px-6 max-w-5xl mx-auto flex h-[calc(100dvh-var(--glassy-content-top-offset)-var(--glassy-main-bottom-padding))] flex-col items-center overflow-y-auto pt-2 sm:pt-4">
+      <div className="flex min-h-0 w-full max-w-4xl flex-1 flex-col">
         {queue && (
           <QueueIndicator queue={queue} count={words.length} language={current?.target_language ?? searchParams.get('lang') ?? ''} />
         )}
 
-        {/* Deck filter */}
-        {decks.length > 1 && (
+        {/* Deck filter — hidden when the entry point already fixed the pool */}
+        {decks.length > 1 && !deckScopeLocked && (
           <div className="flex justify-center mb-4">
             <Select value={deckFilter} onValueChange={setDeckFilter}>
               <SelectTrigger
@@ -229,19 +238,21 @@ export default function StudyType() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -30, scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="w-full"
+              className="flex min-h-0 w-full flex-1 flex-col"
             >
-              {/* Prompt: picture when available, otherwise the translation */}
-              <div className="relative pg-glass rounded-none sm:rounded-2xl overflow-hidden mb-6">
+              {/* Prompt: picture when available, otherwise the translation.
+                  Flexes into whatever height the viewport leaves so the input
+                  and dock below never get pushed off-screen. */}
+              <div className="relative pg-glass mb-4 min-h-[8rem] flex-1 overflow-hidden rounded-none sm:rounded-2xl">
                 {showImage ? (
                   <img
                     src={activeThumbnailUrl ?? undefined}
                     alt=""
                     onError={() => setImgError(true)}
-                    className="w-full aspect-video object-contain bg-black"
+                    className="h-full w-full object-contain bg-black"
                   />
                 ) : (
-                  <div className="flex min-h-[12rem] w-full items-center justify-center px-6 py-14 sm:min-h-[16rem]">
+                  <div className="flex h-full w-full items-center justify-center px-6 py-8">
                     <p className="text-center text-3xl font-bold font-display long-copy sm:text-4xl">
                       {current.translation ?? current.mnemonic ?? '…'}
                     </p>
@@ -250,7 +261,7 @@ export default function StudyType() {
               </div>
 
               {/* Answer input */}
-              <div className="mx-auto w-full max-w-md px-4">
+              <div className="mx-auto w-full max-w-md shrink-0 px-4">
                 <motion.div
                   animate={wrongHidden && !reduceMotion ? { x: [0, -10, 10, -7, 7, -3, 3, 0] } : { x: 0 }}
                   transition={{ duration: 0.45 }}
@@ -266,7 +277,7 @@ export default function StudyType() {
                     }}
                     onKeyDown={onInputKeyDown}
                     readOnly={isSuccess || wrongRevealed}
-                    autoFocus
+                    autoFocus={AUTOFOCUS_ANSWER}
                     autoCapitalize="none"
                     autoCorrect="off"
                     autoComplete="off"

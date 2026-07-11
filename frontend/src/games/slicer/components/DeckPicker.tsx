@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -38,6 +38,10 @@ const MODES: Array<{ value: DeckMode; labelKey: 'imageMode' | 'textMode' }> = [
 
 export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLanguageChange, onSelect }: DeckPickerProps) {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  // Leave the game toward wherever it was launched from (home dive-in passes
+  // /dashboard, the study configurator /study) — same contract GameShell uses.
+  const returnTo = searchParams.get('returnTo') || '/games'
   const { user } = useAuth()
   const { t } = useTranslation()
   const [decks, setDecks] = useState<DeckRow[]>([])
@@ -120,7 +124,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
       <div className="mx-auto flex w-full max-w-6xl flex-col">
         <button
           type="button"
-          onClick={() => navigate('/study')}
+          onClick={() => navigate(returnTo)}
           className="mb-2 inline-flex min-h-11 w-fit items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/30 px-4 text-sm text-[#fff1d0] transition hover:bg-white/10 sm:mb-3"
         >
           <ArrowLeft size={16} />

@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Check, X } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useTranslation } from '@/hooks/useTranslation'
 import { playPronunciation } from '@/hooks/usePronunciation'
 import { evaluateTypedAnswer } from '@/lib/typedAnswer'
@@ -244,6 +246,10 @@ function TidePracticeSheet({
   const [successLabelKey, setSuccessLabelKey] = useState('study.typed.correct')
   const advanceTimerRef = useRef<number | null>(null)
 
+  // The home page must not scroll (or pan under the iOS keyboard) behind the
+  // open sheet.
+  useBodyScrollLock(lemma !== null)
+
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- canonical reset-on-key pattern
     setAnswer('')
@@ -282,11 +288,15 @@ function TidePracticeSheet({
     void playPronunciation({ text: lemma.displayWord, audioUrl: detail?.ttsAudioUrl, lang: language })
   }, [detail?.ttsAudioUrl, language, lemma, result])
 
-  return (
+  // Portalled to <body>: the layout's <main> is a z-10 stacking context that
+  // sits UNDER the fixed z-50 bottom nav, so a sheet rendered in place could
+  // never cover the nav — and any transformed ancestor would re-anchor
+  // position:fixed to itself instead of the viewport.
+  return createPortal(
     <AnimatePresence>
       {lemma && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4"
+          className="fixed inset-0 z-[60] flex items-center justify-center p-4"
           style={{
             background: 'color-mix(in srgb, var(--app-bg) 72%, transparent)',
             backdropFilter: 'blur(20px) saturate(0.95)',
@@ -300,7 +310,8 @@ function TidePracticeSheet({
           <motion.div
             role="dialog"
             aria-modal="true"
-            className="w-full max-w-md rounded-t-2xl p-5 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)] sm:rounded-2xl sm:p-6"
+            data-body-scroll-lock-scrollable="true"
+            className="max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl p-5 sm:p-6"
             style={{
               background: 'var(--surface-glass-strong)',
               border: '1px solid var(--border-strong)',
@@ -353,7 +364,6 @@ function TidePracticeSheet({
                   else if (result === 'revealed' && lemma) onGrade(lemma, false)
                 }}
                 readOnly={result !== null}
-                autoFocus
                 autoCapitalize="none"
                 autoCorrect="off"
                 autoComplete="off"
@@ -434,6 +444,7 @@ function TidePracticeSheet({
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   )
 }
