@@ -1,3 +1,5 @@
+import { VISUAL_LENS_ENABLED } from '@/lib/productFlags'
+
 export const routeImports = {
   landingPage: () => import('@/pages/LandingPage'),
   login: () => import('@/pages/Login'),
@@ -94,19 +96,15 @@ export function scheduleIdleRoutePrefetch(routeImportList: readonly RouteImport[
 // the ~2.8MB guidedLessons module (guided helpers live in the same file as the
 // data), so warming it would pull megabytes on every app boot.
 export function getPrimaryNavRouteImports(skin: 'classic' | 'glassy'): RouteImport[] {
+  // studyModeSelector stays warm even without a Study tab — home's Dive in and
+  // the mastered pill land on it.
+  const shared = [
+    routeImports.categoryList,
+    ...(VISUAL_LENS_ENABLED ? [routeImports.lens] : []),
+    routeImports.studyModeSelector,
+    routeImports.speak,
+  ]
   return skin === 'glassy'
-    ? [
-        routeImports.dashboardPG,
-        routeImports.decksPG,
-        routeImports.studyModeSelector,
-        routeImports.musicPG,
-        routeImports.speak,
-      ]
-    : [
-        routeImports.dashboard,
-        routeImports.decks,
-        routeImports.studyModeSelector,
-        routeImports.music,
-        routeImports.speak,
-      ]
+    ? [routeImports.dashboardPG, routeImports.decksPG, routeImports.musicPG, ...shared]
+    : [routeImports.dashboard, routeImports.decks, routeImports.music, ...shared]
 }

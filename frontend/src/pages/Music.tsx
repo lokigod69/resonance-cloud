@@ -3,6 +3,7 @@ import { Music as MusicIcon } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
 import { trackHasAudio, useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
+import { MediaSegments } from '@/components/media/MediaSegments'
 import { PlaylistRow } from '@/components/music/PlaylistRow'
 import { PlayerBar } from '@/components/music/PlayerBar'
 import { LyricsSheet } from '@/components/music/LyricsSheet'
@@ -443,6 +444,7 @@ export default function Music() {
     <div className="flex flex-col min-h-full pb-[calc(6rem+var(--mobile-bottom-nav-space))] md:pb-28">
       {/* Page header */}
       <div className="max-w-5xl mx-auto w-full px-6 pt-6 pb-4">
+        <MediaSegments className="mb-4" />
         <div className="flex items-center gap-3 flex-wrap">
           <MusicIcon className="h-6 w-6 text-[var(--accent,#06b6d4)]" />
           <h1 className="text-xl font-semibold text-secondary-foreground">{t('music.yourMusic')}</h1>

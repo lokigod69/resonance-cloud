@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
 import { trackHasAudio, useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
+import { MediaSegments } from '@/components/media/MediaSegments'
 import { OrbVisualizer } from '@/components/music/OrbVisualizer'
 import { OrbThumbnailRow } from '@/components/music/OrbThumbnailRow'
 import { LyricsSheet } from '@/components/music/LyricsSheet'
@@ -481,6 +482,7 @@ export default function MusicPG() {
 
   return (
     <div className="flex flex-col min-h-full pb-[calc(5rem+var(--mobile-bottom-nav-space))]">
+      <MediaSegments className="pb-1" />
       {/* Header */}
       <div className="sticky top-0 z-40 bg-[var(--nav-bg)] pt-6 pb-2 px-6 flex justify-center backdrop-blur-md border-b border-[var(--border-subtle)]">
         <div className="flex items-center gap-3 flex-wrap w-full max-w-2xl">

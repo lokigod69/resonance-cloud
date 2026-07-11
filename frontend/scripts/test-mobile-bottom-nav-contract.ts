@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { createT } from '../src/lib/translations'
 import { getPrimaryNavItems, isPrimaryNavItemActive } from '../src/components/layout/primaryNav'
+import { VISUAL_LENS_ENABLED } from '../src/lib/productFlags'
 
 function assert(condition: boolean, message: string) {
   if (!condition) throw new Error(message)
@@ -32,27 +33,35 @@ assertEqual(tEn('nav.dashboard'), 'Home', 'EN dashboard nav label')
 assertEqual(tDe('nav.dashboard'), 'Home', 'DE dashboard nav label')
 assertEqual(tFr('nav.dashboard'), 'Accueil', 'FR dashboard nav label')
 
-assertEqual(tEn('nav.decks'), 'Cards', 'EN decks nav label')
-assertEqual(tDe('nav.decks'), 'Karten', 'DE decks nav label')
-assertEqual(tFr('nav.decks'), 'Cartes', 'FR decks nav label')
+assertEqual(tEn('nav.media'), 'Media', 'EN media nav label')
+assertEqual(tDe('nav.media'), 'Medien', 'DE media nav label')
+assertEqual(tFr('nav.media'), 'Médias', 'FR media nav label')
 
 const items = getPrimaryNavItems(tEn)
+// Lens is a flag-gated tab — the expected set follows the flag so toggling it
+// off doesn't break this contract.
 assertArrayEqual(
   items.map((item) => item.to),
-  ['/dashboard', '/today', '/decks', '/study', '/music', '/speak'],
+  VISUAL_LENS_ENABLED
+    ? ['/dashboard', '/today', '/decks', '/categories', '/lens', '/speak']
+    : ['/dashboard', '/today', '/decks', '/categories', '/speak'],
   'primary nav routes',
 )
 assertArrayEqual(
   items.map((item) => item.label),
-  ['Home', 'Today', 'Cards', 'Study', 'Music', 'Speak'],
+  VISUAL_LENS_ENABLED
+    ? ['Home', 'Today', 'Media', 'Library', 'Lens', 'Speak']
+    : ['Home', 'Today', 'Media', 'Library', 'Speak'],
   'primary nav labels',
 )
-assert(items.every((item) => item.to !== '/categories' && item.to !== '/generate'), 'primary nav excludes Library and Generate')
+assert(items.every((item) => item.to !== '/study'), 'primary nav excludes Study — home is the study entry')
 
-const cardsItem = items.find((item) => item.to === '/decks')
-assert(cardsItem !== undefined, 'Cards item exists')
-assert(isPrimaryNavItemActive('/deck/example-id', cardsItem), 'Cards tab is active for deck detail routes')
-assert(isPrimaryNavItemActive('/decks', cardsItem), 'Cards tab is active for decks route')
+const mediaItem = items.find((item) => item.to === '/decks')
+assert(mediaItem !== undefined, 'Media item exists')
+assert(isPrimaryNavItemActive('/decks', mediaItem), 'Media tab is active for decks route')
+assert(isPrimaryNavItemActive('/deck/example-id', mediaItem), 'Media tab is active for deck detail routes')
+assert(isPrimaryNavItemActive('/music', mediaItem), 'Media tab is active for the music route')
+assert(isPrimaryNavItemActive('/generate', mediaItem), 'Media tab is active for the generate route')
 
 const appHeader = readFileSync('src/components/layout/AppHeader.tsx', 'utf8')
 const appLayout = readFileSync('src/components/layout/AppLayout.tsx', 'utf8')
@@ -66,11 +75,11 @@ assertIncludes(appHeader, '<MobileBottomNav />', 'classic layout renders shared 
 assertIncludes(polishGlassLayout, '<MobileBottomNav />', 'glassy layout renders shared mobile bottom nav')
 assertIncludes(indexHtml, 'viewport-fit=cover', 'Capacitor/iOS viewport reserves safe-area variables')
 
-for (const headerGlassClass of ['!backdrop-blur-3xl', '!backdrop-saturate-150', '!bg-black/40']) {
-  assertIncludes(appHeader, headerGlassClass, `classic header uses ${headerGlassClass}`)
-  assertIncludes(polishGlassLayout, headerGlassClass, `glassy header uses ${headerGlassClass}`)
-  assertIncludes(mobileBottomNav, headerGlassClass, `mobile bottom nav mirrors header ${headerGlassClass}`)
-}
+// Nav chrome paints via the theme contract (--nav-bg et al.), not hardcoded
+// glass utility overrides.
+assertIncludes(appHeader, 'app-topnav', 'classic header uses the themed top-nav surface')
+assertIncludes(polishGlassLayout, 'app-topnav', 'glassy header uses the themed top-nav surface')
+assertIncludes(mobileBottomNav, 'app-bottomnav', 'mobile bottom nav uses the themed bottom-nav surface')
 
 assertIncludes(mobileBottomNav, 'pb-[var(--app-safe-bottom)]', 'mobile bottom nav preserves safe-area bottom padding')
 assertNotIncludes(appHeader, 'SheetTrigger', 'classic mobile Sheet hamburger is removed')
@@ -83,7 +92,9 @@ assertIncludes(polishGlassLayout, 'pt-[var(--glassy-content-top-offset)]', 'glas
 
 assertIncludes(dashboard, 'HomeAccountStrip', 'classic Home renders the home-only account strip')
 assertIncludes(dashboardPg, 'HomeAccountStrip', 'glassy Home renders the home-only account strip')
-assertIncludes(dashboard, 'dashboardLibraryHref', 'classic Home keeps a language-aware Library link')
-assertIncludes(dashboardPg, 'dashboardLibraryHref', 'glassy Home keeps a language-aware Library link')
+// Library and Lens live in the primary nav now — home pages must not re-render
+// them as tiles.
+assertNotIncludes(dashboard, 'dashboard-library-tile', 'classic Home dropped the Library/Lens tiles')
+assertNotIncludes(dashboardPg, 'dashboard-library-tile', 'glassy Home dropped the Library/Lens tiles')
 
 process.stdout.write('mobile bottom nav contract checks passed\n')

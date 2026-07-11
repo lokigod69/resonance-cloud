@@ -35,6 +35,10 @@ export type WordStateCounts = {
 export type UseWordStatesResult = {
   data: LemmaState[]
   loading: boolean
+  // True once a load for the CURRENT query has finished (even empty/errored) —
+  // callers distinguishing "no due words" from "not fetched yet" need this,
+  // since `loading` starts false before the first fetch kicks off.
+  fetched: boolean
   error: Error | null
   refetch: () => void
   counts: WordStateCounts
@@ -53,6 +57,14 @@ type ComputeWordStateRow = {
   total_attempts: number | null
   last_attempt_at: string | null
   last_knew_it: boolean | null
+}
+
+// Words due right now — the buckets a no-queue study session (and the home
+// tide / playful dive-in) draws from: due new/reviewing/mastered plus every
+// learning word.
+export function isLemmaDueNow(lemma: LemmaState): boolean {
+  if (lemma.state === 'learning') return true
+  return lemma.due
 }
 
 const EMPTY_COUNTS: WordStateCounts = {
@@ -99,8 +111,11 @@ export function useWordStates(
   const newWordDailyCap = normalizeNewWordsPerDay(opts?.newWordDailyCap ?? profileNewWordDailyCap)
   const [data, setData] = useState<LemmaState[]>([])
   const [loading, setLoading] = useState(false)
+  const [fetchedKey, setFetchedKey] = useState<string | null>(null)
   const [error, setError] = useState<Error | null>(null)
   const [reloadKey, setReloadKey] = useState(0)
+
+  const queryKey = `${userId ?? ''}|${targetLanguage}|${deckId ?? ''}|${newWordDailyCap}|${reloadKey}`
 
   const refetch = useCallback(() => {
     setReloadKey((key) => key + 1)
@@ -114,6 +129,7 @@ export function useWordStates(
         setData([])
         setError(null)
         setLoading(false)
+        setFetchedKey(queryKey)
         return
       }
 
@@ -133,11 +149,13 @@ export function useWordStates(
         setData([])
         setError(new Error(rpcError.message))
         setLoading(false)
+        setFetchedKey(queryKey)
         return
       }
 
       setData(((rows ?? []) as ComputeWordStateRow[]).map(mapRow))
       setLoading(false)
+      setFetchedKey(queryKey)
     }
 
     run().catch((err) => {
@@ -145,12 +163,13 @@ export function useWordStates(
       setData([])
       setError(err instanceof Error ? err : new Error(String(err)))
       setLoading(false)
+      setFetchedKey(queryKey)
     })
 
     return () => {
       cancelled = true
     }
-  }, [userId, targetLanguage, deckId, newWordDailyCap, reloadKey])
+  }, [userId, targetLanguage, deckId, newWordDailyCap, reloadKey, queryKey])
 
   const counts = useMemo(() => {
     if (data.length === 0) return EMPTY_COUNTS
@@ -174,5 +193,5 @@ export function useWordStates(
     }, { ...EMPTY_COUNTS })
   }, [data])
 
-  return { data, loading, error, refetch, counts }
+  return { data, loading, fetched: fetchedKey === queryKey, error, refetch, counts }
 }

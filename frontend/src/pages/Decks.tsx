@@ -9,6 +9,7 @@ import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
+import { MediaSegments } from '@/components/media/MediaSegments'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
 import { getCardThumbUrl } from '@/lib/imageUrls'
 import { canonicalizeLanguageValue, languagesMatch } from '@/lib/languages'
@@ -269,6 +270,8 @@ export default function Decks() {
   return (
     <div className="classic-dashboard-wrapper">
       <div className="classic-aurora" aria-hidden="true" />
+
+      <MediaSegments className="mb-3" />
 
       <div className="classic-dashboard-header">
         <h1>{t('decks.title')}</h1>

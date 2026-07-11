@@ -7,7 +7,7 @@ import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useTranslation } from '@/hooks/useTranslation'
 import { playPronunciation } from '@/hooks/usePronunciation'
 import { evaluateTypedAnswer } from '@/lib/typedAnswer'
-import type { LemmaState } from '@/hooks/useWordStates'
+import { isLemmaDueNow, type LemmaState } from '@/hooks/useWordStates'
 
 // The Word Tide: today's due words drift as tappable orbs over the wave.
 // Tap one → it opens into an inline practice card (image or translation as
@@ -47,13 +47,6 @@ type WordTideProps = {
   onGraded: () => void
 }
 
-// Words due right now — the same buckets a no-queue study session draws from.
-function isDueNow(lemma: LemmaState): boolean {
-  if (lemma.state === 'new') return lemma.due
-  if (lemma.state === 'learning') return true
-  return lemma.due
-}
-
 // Stable, pleasant hue per lemma so text-card orbs are colorful but not random
 // per render.
 function hueFor(key: string): number {
@@ -79,7 +72,7 @@ export default function WordTide({ userId, language, lemmas, loading, onGraded }
   }, [language])
 
   const pool = useMemo(
-    () => lemmas.filter((lemma) => isDueNow(lemma) && !clearedKeys.has(lemma.lemmaKey) && lemma.wordIds.length > 0),
+    () => lemmas.filter((lemma) => isLemmaDueNow(lemma) && !clearedKeys.has(lemma.lemmaKey) && lemma.wordIds.length > 0),
     [lemmas, clearedKeys],
   )
 

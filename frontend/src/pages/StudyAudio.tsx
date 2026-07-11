@@ -167,7 +167,7 @@ export default function StudyAudio() {
         sessionStats={sessionStats}
         onRestart={restart}
         onBack={() => navigate('/dashboard')}
-        backLabel={t('study.backToDecks')}
+        backLabel={t('study.backHome')}
       />
     )
   }

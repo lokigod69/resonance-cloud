@@ -105,7 +105,7 @@ export default function StudyImage() {
         sessionStats={sessionStats}
         onRestart={restart}
         onBack={() => navigate('/dashboard')}
-        backLabel={t('nav.decks')}
+        backLabel={t('study.backHome')}
       />
     )
   }

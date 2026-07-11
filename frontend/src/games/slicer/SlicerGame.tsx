@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type Dispatch, type SetStateAction } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Volume2 } from 'lucide-react'
 import type PhaserRuntime from 'phaser'
 import { createGameEventBus } from '../shared/GameEventBus'
@@ -9,9 +10,12 @@ import { usePhaserMount } from '../shared/usePhaserMount'
 import { useRecordGameResult } from '../shared/useRecordGameResult'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { useTranslation } from '@/hooks/useTranslation'
+import { isLemmaDueNow, useWordStates } from '@/hooks/useWordStates'
+import { canonicalizeLanguageValue } from '@/lib/languages'
 import type { GameEvent } from '../shared/gameEvents'
 import type { DeckDefinition } from './engine/types'
-import { wordsToSlicerDeck } from './adapters/deckAdapter'
+import { pickImageUrl, wordsToSlicerDeck } from './adapters/deckAdapter'
 import { SlicerScene, type SlicerStudyCue } from './scene/SlicerScene'
 import { DeckPicker, type SlicerDeckChoice } from './components/DeckPicker'
 import { PauseOverlay } from './components/PauseOverlay'
@@ -44,6 +48,15 @@ const INITIAL_TALLY: SlicerSessionResult = { correct: 0, wrong: 0 }
 export default function SlicerGame() {
   const { profile } = useAuth()
   const { activeLanguage } = useLanguage()
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  // Playful dive-in from home: ?queue=due&lang=X skips the picker and slices
+  // today's due pool (the same buckets the Word Tide draws from).
+  const dueLanguage = searchParams.get('queue') === 'due'
+    ? canonicalizeLanguageValue(searchParams.get('lang')) || null
+    : null
+  const returnTo = searchParams.get('returnTo') || '/games'
   const bus = useMemo(() => createGameEventBus(), [])
   const recordResult = useRecordGameResult()
   const { primeOnGesture } = useIOSAudioPrimer()
@@ -67,25 +80,73 @@ export default function SlicerGame() {
   const [slicerLanguage, setSlicerLanguage] = useState<string | null>(activeLanguage)
   const [studyCue, setStudyCue] = useState<SlicerStudyCue | null>(null)
 
-  const selectedDeckId = selectedDeck?.isPlayAll ? null : selectedDeck?.id ?? null
+  // Due mode resolves its word pool before a deck exists: SRS lemma states for
+  // the language, narrowed to what's due now. The hook idles on '' outside due
+  // mode. `fetched` distinguishes a genuinely empty pool from one still loading
+  // so the picker fallback never flashes before the first load lands.
+  const dueStates = useWordStates(dueLanguage ?? '')
+  const dueResolved = dueStates.fetched && !dueStates.loading
+  const dueWordIds = useMemo(() => {
+    if (!dueLanguage) return null
+    // One card per lemma (first word id, like the Word Tide) — a lemma living
+    // in several decks must not spawn duplicate cards.
+    return new Set(
+      dueStates.data
+        .filter(isLemmaDueNow)
+        .map((lemma) => lemma.wordIds[0])
+        .filter((id): id is string => Boolean(id)),
+    )
+  }, [dueLanguage, dueStates.data])
+  // Dead end (pool emptied between home and here, or states errored) → the
+  // picker takes over so the player still gets a session.
+  const duePickerFallback = Boolean(dueLanguage) && dueResolved && (dueWordIds?.size ?? 0) === 0
+
+  // Due mode never touches the picker: its "selection" is derived from the due
+  // pool. Audio priming happens on the first in-game gesture instead (the scene
+  // primes on pointerdown), since navigation ate the launching tap.
+  const dueChoice = useMemo<SlicerDeckChoice | null>(() => {
+    if (!dueLanguage || !dueResolved || !dueWordIds || dueWordIds.size === 0) return null
+    return {
+      id: `due-${dueLanguage}`,
+      title: t('slicer.dueWords.title'),
+      targetLanguage: dueLanguage,
+      mode: 'audio_to_image',
+      isPlayAll: true,
+    }
+  }, [dueLanguage, dueResolved, dueWordIds, t])
+  const activeDeck = selectedDeck ?? dueChoice
+  // A picker selection (including the empty-pool fallback) always outranks due
+  // mode — its rows must NOT be narrowed to the (possibly empty) due set.
+  const inDueSession = !selectedDeck && dueChoice !== null
+
+  const selectedDeckId = activeDeck?.isPlayAll ? null : activeDeck?.id ?? null
 
   const { rows, loading: deckLoading, error: deckError } = useGameDeck(
-    selectedDeck ? 'slicer' : '',
+    activeDeck ? 'slicer' : '',
     selectedDeckId,
-    selectedDeck?.targetLanguage ?? null,
+    activeDeck?.targetLanguage ?? null,
   )
 
+  const sessionRows = useMemo(() => (
+    inDueSession && dueWordIds ? rows.filter((row) => dueWordIds.has(row.id)) : rows
+  ), [inDueSession, dueWordIds, rows])
+
   const slicerDeck = useMemo<DeckDefinition | null>(() => {
-    if (!selectedDeck || rows.length === 0) return null
-    return wordsToSlicerDeck(rows, {
-      mode: selectedDeck.mode,
-      targetLanguage: selectedDeck.targetLanguage,
+    if (!activeDeck || sessionRows.length === 0) return null
+    // Due pools mix generated and text-only cards: image mode when anything
+    // has an image (cards without one fall back to their text label).
+    const mode = inDueSession
+      ? (sessionRows.some((row) => pickImageUrl(row)) ? 'audio_to_image' : 'audio_to_text')
+      : activeDeck.mode
+    return wordsToSlicerDeck(sessionRows, {
+      mode,
+      targetLanguage: activeDeck.targetLanguage,
       baseLanguage: profile?.base_language ?? 'en',
-      deckId: selectedDeck.isPlayAll ? `play-all-${selectedDeck.targetLanguage}` : selectedDeck.id,
-      deckTitle: selectedDeck.title,
-      shuffle: selectedDeck.isPlayAll,
+      deckId: activeDeck.isPlayAll ? `play-all-${activeDeck.targetLanguage}` : activeDeck.id,
+      deckTitle: activeDeck.title,
+      shuffle: activeDeck.isPlayAll,
     })
-  }, [profile?.base_language, rows, selectedDeck])
+  }, [activeDeck, inDueSession, profile?.base_language, sessionRows])
 
   const sceneKey = useMemo(() => {
     if (!slicerDeck) return null
@@ -137,7 +198,7 @@ export default function SlicerGame() {
     buildConfig,
   })
 
-  const preparingDeck = Boolean(selectedDeck && ready && sceneKey && readySceneKey !== sceneKey)
+  const preparingDeck = Boolean(activeDeck && ready && sceneKey && readySceneKey !== sceneKey)
 
   const primeSceneAudio = useCallback(async () => {
     await audioPrimePromiseRef.current?.catch(() => undefined)
@@ -203,7 +264,7 @@ export default function SlicerGame() {
   }, [primeOnGesture, studyCue])
 
   const showStudyCue = Boolean(
-    selectedDeck
+    activeDeck
       && studyCue
       && ready
       && !preparingDeck
@@ -219,10 +280,10 @@ export default function SlicerGame() {
     // in-app DeckPicker (no session yet) we hand it `undefined` so GameShell
     // falls back to its built-in navigate(returnTo) — otherwise ESC at the
     // picker would pop a meaningless 0/0 summary instead of leaving Slicer.
-    <GameShell className={styles.slicerStage} onExit={selectedDeck ? handleExitToSummary : undefined}>
+    <GameShell className={styles.slicerStage} onExit={activeDeck ? handleExitToSummary : undefined}>
       <div ref={phaserHostRef} className={styles.phaserHost} />
       <div className={styles.reactLayer}>
-        {!selectedDeck && (
+        {!activeDeck && (!dueLanguage || duePickerFallback) && (
           <DeckPicker
             easyMode={easyMode}
             selectedLanguage={slicerLanguage}
@@ -231,9 +292,14 @@ export default function SlicerGame() {
             onSelect={handleDeckSelected}
           />
         )}
-        {selectedDeck && (
+        {!activeDeck && dueLanguage && !duePickerFallback && (
+          <div className="pointer-events-auto absolute inset-x-4 top-24 z-40 mx-auto max-w-sm rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/55 p-4 text-center text-[#ffd2a5]">
+            {t('slicer.loadingDeck')}
+          </div>
+        )}
+        {activeDeck && (
           <SlicerHUD
-            deckTitle={hud.deckTitle}
+            deckTitle={selectedDeck ? hud.deckTitle : activeDeck.title}
             roundNumber={hud.roundNumber}
             cardProgress={hud.cardProgress}
             lives={hud.lives}
@@ -244,17 +310,17 @@ export default function SlicerGame() {
             onExit={handleExitToSummary}
           />
         )}
-        {selectedDeck && deckLoading && (
+        {activeDeck && deckLoading && (
           <div className="pointer-events-auto absolute inset-x-4 top-24 z-40 mx-auto max-w-sm rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/55 p-4 text-center text-[#ffd2a5]">
-            Loading deck...
+            {t('slicer.loadingDeck')}
           </div>
         )}
-        {selectedDeck && deckError && (
+        {activeDeck && deckError && (
           <div className="pointer-events-auto absolute inset-x-4 top-24 z-40 mx-auto max-w-sm rounded-lg border border-red-400/30 bg-red-950/50 p-4 text-center text-red-100">
             {deckError.message}
           </div>
         )}
-        {selectedDeck && ready && preparingDeck && (
+        {activeDeck && ready && preparingDeck && (
           <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2 rounded-lg border border-[var(--slicer-border-subtle)] bg-black/55 px-5 py-3 text-center font-[var(--slicer-font-display)] text-xl text-[var(--slicer-text-primary)] shadow-[var(--slicer-shadow-soft)]">
             Preparing cards…
           </div>
@@ -264,7 +330,11 @@ export default function SlicerGame() {
         )}
         <RoundOverlay label={roundLabel} />
         <PauseOverlay open={paused && !sessionResult} onResume={resumeScene} onExit={handleExitToSummary} />
-        <SessionComplete result={sessionResult} onExit={handleReturnToPicker} />
+        <SessionComplete
+          result={sessionResult}
+          onExit={inDueSession ? () => navigate(returnTo) : handleReturnToPicker}
+          exitLabel={inDueSession ? t('slicer.dueWords.exit') : undefined}
+        />
       </div>
     </GameShell>
   )

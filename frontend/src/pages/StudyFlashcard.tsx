@@ -180,7 +180,7 @@ export default function StudyFlashcard() {
         sessionStats={sessionStats}
         onRestart={restart}
         onBack={() => navigate('/dashboard')}
-        backLabel={t('study.backToDecks')}
+        backLabel={t('study.backHome')}
       />
     )
   }

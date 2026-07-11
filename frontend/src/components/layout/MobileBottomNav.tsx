@@ -13,7 +13,10 @@ export function MobileBottomNav() {
       aria-label="Primary navigation"
       className="app-bottomnav fixed inset-x-0 bottom-0 z-50 md:hidden px-1 pt-1 pb-[var(--app-safe-bottom)]"
     >
-      <div className="mx-auto grid h-[var(--mobile-bottom-nav-height)] max-w-md grid-cols-6 gap-0.5">
+      <div
+        className="mx-auto grid h-[var(--mobile-bottom-nav-height)] max-w-md gap-0.5"
+        style={{ gridTemplateColumns: `repeat(${navItems.length}, minmax(0, 1fr))` }}
+      >
         {navItems.map((item) => {
           const active = isPrimaryNavItemActive(location.pathname, item)
           const Icon = item.icon

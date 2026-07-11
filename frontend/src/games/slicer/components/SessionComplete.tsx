@@ -6,9 +6,11 @@ export type SlicerSessionResult = {
 type SessionCompleteProps = {
   result: SlicerSessionResult | null
   onExit: () => void
+  // Due-mode sessions exit toward home rather than the picker.
+  exitLabel?: string
 }
 
-export function SessionComplete({ result, onExit }: SessionCompleteProps) {
+export function SessionComplete({ result, onExit, exitLabel }: SessionCompleteProps) {
   if (!result) return null
 
   const total = result.correct + result.wrong
@@ -30,7 +32,7 @@ export function SessionComplete({ result, onExit }: SessionCompleteProps) {
             onClick={onExit}
             className="min-h-11 rounded-lg border border-[rgba(255,107,53,0.34)] bg-[#ff6b35]/15 px-6 text-[#ffd700] transition hover:bg-[#ff6b35]/25"
           >
-            Exit to decks
+            {exitLabel ?? 'Exit to decks'}
           </button>
         </div>
       </div>

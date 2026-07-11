@@ -1,5 +1,6 @@
 import type { LucideIcon } from 'lucide-react'
-import { BookOpen, CalendarDays, Home, Library, Mic, Music } from 'lucide-react'
+import { CalendarDays, Camera, Home, Layers, Library, Mic } from 'lucide-react'
+import { VISUAL_LENS_ENABLED } from '@/lib/productFlags'
 
 export type PrimaryNavItem = {
   to: string
@@ -10,15 +11,20 @@ export type PrimaryNavItem = {
 
 type Translate = (key: string) => string
 
+// Home is the study entry (Word Tide + Dive in), so /study has no tab of its
+// own; Media bundles the deck and music collections under one roof.
 export function getPrimaryNavItems(t: Translate): PrimaryNavItem[] {
-  return [
+  const items: PrimaryNavItem[] = [
     { to: '/dashboard', label: t('nav.dashboard'), icon: Home },
     { to: '/today', label: t('nav.today'), icon: CalendarDays },
-    { to: '/decks', label: t('nav.decks'), icon: Library, activePaths: ['/deck'] },
-    { to: '/study', label: t('nav.study'), icon: BookOpen },
-    { to: '/music', label: t('nav.music'), icon: Music },
-    { to: '/speak', label: t('nav.speak'), icon: Mic },
+    { to: '/decks', label: t('nav.media'), icon: Layers, activePaths: ['/deck', '/generate', '/music'] },
+    { to: '/categories', label: t('nav.categories'), icon: Library },
   ]
+  if (VISUAL_LENS_ENABLED) {
+    items.push({ to: '/lens', label: t('nav.lens'), icon: Camera })
+  }
+  items.push({ to: '/speak', label: t('nav.speak'), icon: Mic })
+  return items
 }
 
 export function isPrimaryNavItemActive(pathname: string, item: PrimaryNavItem) {

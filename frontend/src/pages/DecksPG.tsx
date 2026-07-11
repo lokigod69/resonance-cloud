@@ -33,6 +33,7 @@ import {
 } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
+import { MediaSegments } from '@/components/media/MediaSegments'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
 import { getCardThumbUrl } from '@/lib/imageUrls'
 
@@ -308,6 +309,7 @@ export default function DecksPG() {
 
   return (
     <div className={pageClassName}>
+      <MediaSegments className="pb-3" />
       <div className={headerClassName}>
         <div className="decks-glass-header">
           <div className="decks-glass-title min-w-0">

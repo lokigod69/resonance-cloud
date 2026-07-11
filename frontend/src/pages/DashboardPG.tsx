@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { AlertCircle, Camera, ChevronRight, Library, LogIn, RefreshCw } from 'lucide-react'
+import { AlertCircle, ChevronRight, LogIn, RefreshCw } from 'lucide-react'
 import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
-import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
 import { DashboardStreak } from '@/components/dashboard/DashboardStreak'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import WordTide from '@/components/dashboard/WordTide'
@@ -15,10 +14,8 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { useWordStates } from '@/hooks/useWordStates'
 import { useStudyStreak } from '@/hooks/useStudyStreak'
 import { supabase } from '@/lib/supabase'
-import { staticLibraryRouteSuffix } from '@/lib/staticLibraryLanguage'
 import { canonicalizeLanguageValue } from '@/lib/languages'
 import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
-import { VISUAL_LENS_ENABLED } from '@/lib/productFlags'
 import {
   EXPERIENCE_PRESETS,
   PRESET_EMOJI,
@@ -132,7 +129,6 @@ export default function DashboardPG() {
   const newWordDailyCap = normalizeNewWordsPerDay(profile?.new_words_per_day)
   const wordStates = useWordStates(activeLanguage ?? '', { newWordDailyCap })
   const counts = wordStates.counts
-  const reviewDue = counts.reviewingDue + counts.masteredDue
   const dueTotal = counts.newDue + counts.totalDue
   const studyStreak = useStudyStreak()
   const tilesDisabled = !activeLanguage || wordStates.loading
@@ -204,19 +200,15 @@ export default function DashboardPG() {
 
   // Zero-config practice entry: straight into the preset's study mode with
   // everything due now (no queue param = the all-due session). Playful launches
-  // the slicer; unset preset falls back to the configurator.
+  // the slicer straight into today's due words; unset preset falls back to the
+  // configurator.
   const diveInHref = (() => {
     if (!activeLanguage) return '/study'
     const lang = encodeURIComponent(activeLanguage)
     if (!effectivePreset) return `/study?lang=${lang}`
-    if (effectivePreset === 'playful') return `/games/slicer?returnTo=/dashboard&lang=${lang}`
+    if (effectivePreset === 'playful') return `/games/slicer?returnTo=/dashboard&lang=${lang}&queue=due`
     return `${presetStudyRoute(effectivePreset)}?lang=${lang}`
   })()
-  // Queue tiles deep-link into the preset's mode too (configurator only when
-  // playful/unset — the slicer needs its own launch flow).
-  const tileModeRoute = effectivePreset && effectivePreset !== 'playful'
-    ? presetStudyRoute(effectivePreset) ?? undefined
-    : undefined
   // Guard the transient where decks have loaded but the active language hasn't been
   // pinned yet (decks exist, activeLanguage still null) so an existing user never
   // flashes the empty card before the pin effect runs.
@@ -262,7 +254,6 @@ export default function DashboardPG() {
   }
 
   const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
-  const dashboardLibraryHref = activeLanguage ? `/categories${staticLibraryRouteSuffix(activeLanguage)}` : '/categories'
 
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
@@ -361,62 +352,6 @@ export default function DashboardPG() {
                 </button>
               </div>
             )}
-
-            <section className="dashboard-action-grid w-full">
-              <div className="dashboard-practice-stack">
-                <span className="dashboard-practice-caption">{t('dashboard.practice.caption')}</span>
-                <div className="dashboard-study-row">
-                  <SrsActionTile
-                    label={t('study.queue.review')}
-                    count={reviewDue}
-                    queue="review"
-                    language={activeLanguage ?? ''}
-                    tier="compact"
-                    accent="cool"
-                    disabled={tilesDisabled}
-                    modeRoute={tileModeRoute}
-                  />
-                  <SrsActionTile
-                    label={t('study.queue.learn')}
-                    count={counts.newDue}
-                    queue="learn"
-                    language={activeLanguage ?? ''}
-                    tier="compact"
-                    accent="warm"
-                    disabled={tilesDisabled}
-                    modeRoute={tileModeRoute}
-                  />
-                  <SrsActionTile
-                    label={t('study.queue.strengthen')}
-                    count={counts.learning}
-                    queue="strengthen"
-                    language={activeLanguage ?? ''}
-                    tier="compact"
-                    accent="neutral"
-                    disabled={tilesDisabled}
-                    modeRoute={tileModeRoute}
-                  />
-                </div>
-              </div>
-              <Link to={dashboardLibraryHref} className="dashboard-library-tile dashboard-library-action">
-                <Library className="dashboard-library-icon" aria-hidden="true" />
-                <span className="dashboard-library-copy">
-                  <span className="dashboard-library-title">{t('nav.categories')}</span>
-                  {activeLanguage ? (
-                    <span className="dashboard-library-subtitle">{t(`langName.${activeLanguage}`)}</span>
-                  ) : null}
-                </span>
-              </Link>
-              {VISUAL_LENS_ENABLED ? (
-                <Link to="/lens" className="dashboard-library-tile dashboard-library-action">
-                  <Camera className="dashboard-library-icon" aria-hidden="true" />
-                  <span className="dashboard-library-copy">
-                    <span className="dashboard-library-title">{t('lens.tile.title')}</span>
-                    <span className="dashboard-library-subtitle">{t('lens.tile.subtitle')}</span>
-                  </span>
-                </Link>
-              ) : null}
-            </section>
 
             <div className="dashboard-mastered-pill" aria-live="polite">
               {counts.mastered > 0 ? (
