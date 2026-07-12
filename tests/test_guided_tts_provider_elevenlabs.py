@@ -131,6 +131,60 @@ def test_synthesize_retries_on_429_then_succeeds():
     assert len(attempts) == 3
 
 
+def test_synthesize_rejects_non_audio_200_then_recovers():
+    attempts: list[int] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        attempts.append(1)
+        if len(attempts) < 2:
+            return httpx.Response(
+                200,
+                content=b'{"detail": "proxy error"}',
+                headers={"content-type": "application/json"},
+            )
+        return _ok_response(b"real-audio")
+
+    provider = ElevenLabsGuidedTTSProvider(
+        api_key="key",
+        transport=httpx.MockTransport(handler),
+        sleeper=lambda _: asyncio.sleep(0),
+    )
+    audio = _run(
+        provider.synthesize(
+            text="hi",
+            voice_id="voice-bright",
+            model_id="eleven_flash_v2_5",
+            output_format="mp3_44100_128",
+            voice_settings={},
+            language_code=None,
+        )
+    )
+    assert audio == b"real-audio"
+    assert len(attempts) == 2
+
+
+def test_synthesize_rejects_empty_200_body_then_fails():
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, content=b"", headers={"content-type": "audio/mpeg"})
+
+    provider = ElevenLabsGuidedTTSProvider(
+        api_key="key",
+        transport=httpx.MockTransport(handler),
+        sleeper=lambda _: asyncio.sleep(0),
+    )
+    with pytest.raises(GuidedTTSProviderError, match="non-audio 200"):
+        _run(
+            provider.synthesize(
+                text="hi",
+                voice_id="voice-bright",
+                model_id="eleven_flash_v2_5",
+                output_format="mp3_44100_128",
+                voice_settings={},
+                language_code=None,
+            )
+        )
+
+
 def test_synthesize_retries_on_500_then_fails():
     attempts: list[int] = []
 

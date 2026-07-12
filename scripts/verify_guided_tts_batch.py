@@ -1,5 +1,9 @@
-"""Post-batch verification: playback-view coverage per language + audio spot-checks."""
-import os, random
+"""Post-batch verification: playback-view coverage per language + audio spot-checks.
+
+Exits nonzero on any failed asset, missing public_url, or BAD spot-check —
+a green exit code IS the certification, not the printed summary.
+"""
+import os, random, sys
 from collections import Counter
 import httpx
 from dotenv import load_dotenv
@@ -12,7 +16,12 @@ H = {"apikey": KEY, "Authorization": f"Bearer {KEY}"}
 # failed assets remaining?
 r = httpx.head(f"{URL}/rest/v1/guided_tts_assets", headers={**H, "Prefer": "count=exact"},
                params={"select": "id", "status": "eq.failed"}, timeout=30)
-print("failed assets remaining:", r.headers.get("content-range"))
+content_range = r.headers.get("content-range", "")
+print("failed assets remaining:", content_range)
+failed_assets = int(content_range.split("/")[-1]) if "/" in content_range else -1
+problems: list[str] = []
+if failed_assets != 0:
+    problems.append(f"{failed_assets} failed assets remaining (or count unreadable)")
 
 # playback rows per language prefix (bright only, paged)
 rows = []
@@ -32,6 +41,10 @@ for lang, n in sorted(langs.items()):
     print(f"  {lang:12s} {n}")
 missing_urls = [p for p in rows if not p["public_url"]]
 print("rows missing public_url:", len(missing_urls))
+if missing_urls:
+    problems.append(f"{len(missing_urls)} playback rows missing public_url")
+if not rows:
+    problems.append("no bright playback rows at all")
 
 # spot-check audio URLs across languages incl. the retried Cebuano clip
 random.seed(7)
@@ -56,3 +69,12 @@ for p in picks:
         ok += 1
     print(f"  {status} {p['path_id']:28s} {p['surface']:10s} {resp.status_code} {ct} {cl}B")
 print(f"spot-checks passed: {ok}/{len(picks)}")
+if ok != len(picks):
+    problems.append(f"{len(picks) - ok} audio spot-checks BAD")
+
+if problems:
+    print("VERIFICATION FAILED:")
+    for p in problems:
+        print(f"  - {p}")
+    sys.exit(1)
+print("VERIFICATION PASSED")

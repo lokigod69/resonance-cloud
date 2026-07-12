@@ -174,13 +174,14 @@ def test_storage_path_uses_short_settings_hash_and_text_hash():
     p = storage_path(
         target_language_code="en-US",
         voice_profile_key="english_a1_bright_v1",
+        provider_voice_id="voice-bright",
         provider_model_id=DEFAULT_MODEL_ID,
         output_format=DEFAULT_OUTPUT_FORMAT,
         settings_hash="0123456789abcdef" * 4,
         text_hash_value=th,
     )
     assert p == (
-        f"elevenlabs/en-US/english_a1_bright_v1/eleven_flash_v2_5/"
+        f"elevenlabs/en-US/english_a1_bright_v1/voice-bright/eleven_flash_v2_5/"
         f"mp3_44100_128/0123456789ab/{th}.mp3"
     )
 

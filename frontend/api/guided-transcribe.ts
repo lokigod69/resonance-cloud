@@ -172,7 +172,8 @@ function validateGuidedTranscribeBody(raw: unknown): GuidedTranscribeBody {
   let language: GuidedTranscribeBody['language']
   if (raw.language !== undefined) {
     const rawLanguage = readString(raw.language, 'language', 16, true)
-    if (!(rawLanguage in GUIDED_LOCALE_TO_WHISPER_LANGUAGE)) {
+    // Own-property check: `in` also matches prototype keys like 'toString'.
+    if (!Object.prototype.hasOwnProperty.call(GUIDED_LOCALE_TO_WHISPER_LANGUAGE, rawLanguage)) {
       throw new ApiError(400, 'Unsupported language')
     }
     language = rawLanguage

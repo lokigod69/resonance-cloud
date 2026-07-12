@@ -123,17 +123,23 @@ def storage_path(
     *,
     target_language_code: str,
     voice_profile_key: str,
+    provider_voice_id: str,
     provider_model_id: str,
     output_format: str,
     settings_hash: str,
     text_hash_value: str,
 ) -> str:
-    """Storage path the worker would write to. Pure function; no IO."""
+    """Storage path the worker would write to. Pure function; no IO.
+
+    Includes provider_voice_id (like cache_key does): if a profile key is
+    reseeded onto a different voice, the new clip must land on a new object
+    instead of overwriting bytes that older asset rows still point to.
+    """
     safe = lambda value: re.sub(r"[^A-Za-z0-9_.-]+", "_", value or "")
     return (
         f"elevenlabs/{safe(target_language_code)}/{safe(voice_profile_key)}/"
-        f"{safe(provider_model_id)}/{safe(output_format)}/{settings_hash[:12]}/"
-        f"{text_hash_value}.mp3"
+        f"{safe(provider_voice_id)}/{safe(provider_model_id)}/{safe(output_format)}/"
+        f"{settings_hash[:12]}/{text_hash_value}.mp3"
     )
 
 
@@ -507,6 +513,7 @@ def build_inventory(
         sp = storage_path(
             target_language_code=row.target_language_code,
             voice_profile_key=profile.voice_profile_key,
+            provider_voice_id=profile.provider_voice_id,
             provider_model_id=profile.provider_model_id,
             output_format=profile.output_format,
             settings_hash=profile.voice_settings_hash,

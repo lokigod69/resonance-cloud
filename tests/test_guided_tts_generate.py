@@ -752,10 +752,12 @@ def test_commit_storage_paths_follow_guided_tts_layout():
         segments = path.split("/")
         assert segments[0] == "elevenlabs"
         assert segments[1] == "en-US"
-        assert segments[3] == "eleven_flash_v2_5"
-        assert segments[4] == "mp3_44100_128"
+        # provider_voice_id segment keeps reseeded voices on distinct objects
+        assert segments[3] in {"voice-bright", "voice-wistful", "voice-sharp"}
+        assert segments[4] == "eleven_flash_v2_5"
+        assert segments[5] == "mp3_44100_128"
         # settings_hash[:12] segment
-        assert len(segments[5]) == 12
+        assert len(segments[6]) == 12
         assert segments[-1].endswith(".mp3")
 
 

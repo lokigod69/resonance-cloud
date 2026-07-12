@@ -363,6 +363,7 @@ async def run_async(
     failed = 0
     skipped = totals["ready"]
     deduped_usages = 0
+    usage_failures = 0
     generated_assets_by_cache_key: dict[str, str] = {}
 
     for item in inventory["items"]:
@@ -456,19 +457,6 @@ async def run_async(
                 duration_ms=None,
                 provider_request_id=None,
             )
-            generated_assets_by_cache_key[item["cache_key"]] = asset_row["id"]
-            guided_db.upsert_usage(
-                sb,
-                asset_id=asset_row["id"],
-                path_id=item["path_id"],
-                lesson_id=item["lesson_id"],
-                lesson_number=item["lesson_number"],
-                vibe=item["vibe"],
-                surface=item["surface"],
-                surface_key=item["surface_key"],
-                source_text=item["source_text"],
-            )
-            generated += 1
         except Exception as err:  # noqa: BLE001 — we want to record any provider failure
             failed += 1
             guided_db.upsert_failed_asset(
@@ -489,8 +477,38 @@ async def run_async(
                 character_count=item["character_count"],
                 error=str(err),
             )
+            continue
 
-    status = "completed" if failed == 0 else "failed"
+        # The clip is paid for, uploaded, and its asset row is ready. From here
+        # on, nothing may demote it to failed — a rerun would regenerate it and
+        # spend credits again. A failed usage upsert self-heals on rerun via the
+        # ready-item branch above, without touching the provider.
+        generated_assets_by_cache_key[item["cache_key"]] = asset_row["id"]
+        generated += 1
+        try:
+            guided_db.upsert_usage(
+                sb,
+                asset_id=asset_row["id"],
+                path_id=item["path_id"],
+                lesson_id=item["lesson_id"],
+                lesson_number=item["lesson_number"],
+                vibe=item["vibe"],
+                surface=item["surface"],
+                surface_key=item["surface_key"],
+                source_text=item["source_text"],
+            )
+        except Exception as err:  # noqa: BLE001
+            usage_failures += 1
+            print(
+                f"WARNING: usage upsert failed for ready asset {asset_row['id']} "
+                f"({item['lesson_id']}/{item['surface']}/{item['surface_key']}): {err} "
+                "— asset kept ready; rerun to reattach the usage row."
+            )
+
+    status = "completed" if failed == 0 and usage_failures == 0 else "failed"
+    notes = f"commit finished (status={status})"
+    if usage_failures:
+        notes += f"; {usage_failures} usage upserts failed on ready assets (rerun to reattach)"
     guided_db.finalize_run(
         sb,
         run_id=run_row["id"],
@@ -501,7 +519,7 @@ async def run_async(
         skipped_assets=skipped,
         failed_assets=failed,
         total_character_count=totals["total_character_count_all_voices"],
-        notes=f"commit finished (status={status})",
+        notes=notes,
     )
 
     return {
@@ -512,6 +530,7 @@ async def run_async(
         "generated_assets": generated,
         "failed_assets": failed,
         "deduped_usages": deduped_usages,
+        "usage_failures": usage_failures,
     }
 
 

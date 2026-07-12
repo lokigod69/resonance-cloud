@@ -146,7 +146,23 @@ class ElevenLabsGuidedTTSProvider:
                 )
 
             if response.status_code == 200:
-                return response.content
+                # Never trust a bare 200: a proxy/provider error page recorded
+                # as a ready asset would be skipped by every future rerun.
+                content_type = response.headers.get("content-type", "")
+                if response.content and (
+                    "audio" in content_type or "octet-stream" in content_type
+                ):
+                    return response.content
+                last_error = (
+                    f"200 with invalid payload: content-type={content_type!r} "
+                    f"bytes={len(response.content)}"
+                )
+                if attempt < self._max_retries - 1:
+                    await self._sleeper(2 ** attempt)
+                    continue
+                raise GuidedTTSProviderError(
+                    f"ElevenLabs returned non-audio 200 response ({last_error})"
+                )
 
             if response.status_code == 401:
                 raise GuidedTTSProviderError(
