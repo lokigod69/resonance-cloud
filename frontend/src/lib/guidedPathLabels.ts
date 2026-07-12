@@ -21,7 +21,7 @@ export function formatGuidedPathLabel(
   const prefix = includeLanguage ? `${language} ` : ''
 
   if (numberMatch?.[1]) {
-    return `${prefix}A1 P${numberMatch[1]}`
+    return `${prefix}${path.level} P${numberMatch[1]}`
   }
 
   return includeLanguage
@@ -31,7 +31,7 @@ export function formatGuidedPathLabel(
 
 export function formatGuidedPathFullTitle(path: GuidedPathMetadata | undefined, t: TranslationFn = createT('en')) {
   const language = t(`today.language.${path?.targetLanguage ?? 'English'}`)
-  return `${language} A1 ${t('today.path.directoryGroupPractical')}`
+  return `${language} ${path?.level ?? 'A1'} ${t('today.path.directoryGroupPractical')}`
 }
 
 export function splitGuidedPathLabel(
@@ -46,7 +46,7 @@ export function splitGuidedPathLabel(
   const language = t(`today.language.${path.targetLanguage}`)
 
   if (numberMatch?.[1]) {
-    return { language, level: `A1 P${numberMatch[1]}` }
+    return { language, level: `${path.level} P${numberMatch[1]}` }
   }
 
   const fallback = path.shortTitle.replace(new RegExp(`^${path.targetLanguage}\\s*`, 'i'), '').trim()

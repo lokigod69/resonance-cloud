@@ -176,6 +176,50 @@ assert('invalid path falls back safely to no query path', resolveTodayPathId('en
 assert('invalid vibe falls back safely to the default active vibe', resolveTodayVibeId('stormy') === undefined && DEFAULT_GUIDED_VIBE_ID === 'bright')
 assert('plain /today defaults to P1 when no path query is present', (resolveTodayPathId(null, pathOptions) ?? pathOptions[0]?.id) === 'english-a1-practical-1')
 
+console.log('\n[A2 pilot matrix]')
+{
+  const a2PathId = 'spanish-a2-practical-1'
+  const orderedPathIds = pathOptions.map((path) => path.id)
+  assert(
+    'Spanish A2 pilot path is exposed directly after Spanish A1 P10',
+    orderedPathIds.indexOf(a2PathId) === orderedPathIds.indexOf('spanish-a1-practical-10') + 1,
+    orderedPathIds.filter((id) => id.startsWith('spanish-')),
+  )
+  assert(
+    'Spanish A2 pilot path metadata carries level A2',
+    pathOptions.find((path) => path.id === a2PathId)?.level === 'A2',
+  )
+  for (const segment of SEGMENTS) {
+    const fallbackWords = getGuidedTrophyWordsForSegment(a2PathId, segment, 'bright')
+    const wordLabels = fallbackWords.map((word) => word.word)
+    assert(`${a2PathId} segment ${segment} bright returns exactly five trophy cards`, fallbackWords.length === 5, fallbackWords)
+    assert(`${a2PathId} segment ${segment} bright has no duplicate TrophyWordCard keys`, new Set(wordLabels).size === wordLabels.length, wordLabels)
+    for (const trophyWord of fallbackWords) {
+      for (const field of TROPHY_TARGET_FIELDS) {
+        assert(
+          `${a2PathId} segment ${segment} bright ${trophyWord.word} has non-empty ${field}`,
+          typeof trophyWord[field] === 'string' && trophyWord[field].trim().length > 0,
+          trophyWord,
+        )
+      }
+      for (const field of TROPHY_BASE_FIELDS) {
+        assert(
+          `${a2PathId} segment ${segment} bright ${trophyWord.word} has non-empty ${field}`,
+          resolveGuidedBaseContent(trophyWord[field], { authoredBaseLanguage: 'German' }).text.trim().length > 0,
+          trophyWord,
+        )
+      }
+    }
+  }
+  let a2MissingSongError: unknown
+  try {
+    await fetchTrophySongCanonical(a2PathId, 1, 'bright')
+  } catch (error) {
+    a2MissingSongError = error
+  }
+  assert('missing A2 canonical song row throws typed unavailable error', a2MissingSongError instanceof TrophySongNotAvailableError, a2MissingSongError)
+}
+
 console.log('\n[fallback vs song routing]')
 const supportedRow = await fetchTrophySongCanonical('english-a1-practical-1', 1, 'bright')
 assert('canonical trophy song row still exists for P1 segment 1 Bright', supportedRow.pathId === 'english-a1-practical-1' && supportedRow.segment === 1 && supportedRow.vibe === 'bright')

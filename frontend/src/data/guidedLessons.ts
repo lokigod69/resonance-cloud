@@ -10,6 +10,10 @@ import {
   GUIDED_TODAY_PATH_KOREAN_ONE_METADATA,
   KOREAN_A1_PRACTICAL_1_LESSONS,
 } from './guided/koreanA1'
+import {
+  GUIDED_TODAY_PATH_SPANISH_A2_ONE_METADATA,
+  SPANISH_A2_PRACTICAL_1_LESSONS,
+} from './guided/spanishA2'
 
 export type LessonMediaType = 'image' | 'video' | 'music_video'
 
@@ -94,7 +98,7 @@ export type GuidedPathMetadata = {
   title: string
   shortTitle: string
   subtitle: GuidedBaseContentText
-  level: 'A1'
+  level: 'A1' | 'A2'
   baseLanguage: GuidedBaseLanguage
   targetLanguage: GuidedTargetLanguage
   estimatedMinutes: number
@@ -198,7 +202,7 @@ export type GuidedLessonDefinition = {
   id: string
   pathId: string
   courseTitle: string
-  level: 'A1'
+  level: 'A1' | 'A2'
   lessonNumber: number
   baseLanguage: GuidedBaseLanguage
   targetLanguage: GuidedTargetLanguage
@@ -65262,6 +65266,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...polishA1Practical9Lessons,
   ...polishA1Practical10Lessons,
   ...KOREAN_A1_PRACTICAL_1_LESSONS,
+  ...SPANISH_A2_PRACTICAL_1_LESSONS,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -65294,6 +65299,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
     GUIDED_TODAY_PATH_SPANISH_NINE_METADATA,
     GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    GUIDED_TODAY_PATH_SPANISH_A2_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA,

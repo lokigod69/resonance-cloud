@@ -11,9 +11,15 @@ Indonesian deliberately uses Gavrila only: raw Blasto is ~16 dB quieter and
 the guided pipeline has no gain post-processing step (the static pipeline
 shipped a +8 dB boosted copy instead — see staticThematicAudio.ts notes).
 
+A2 (2026-07-12, pilot): --level a2 seeds {slug}_a2_bright_p{n}_multiv2_v1 profiles
+scoped to {slug}-a2-practical-{n}. The voice rotation CONTINUES past the language's
+A1 paths (A2 P1 picks up where A1 P10 left off) so adjacent A1/A2 paths do not
+repeat a voice. Use --paths to limit how many A2 paths exist so far (pilot: 1).
+
 Usage:
     python scripts/seed_guided_bright_rotation.py            # dry-run (default)
     python scripts/seed_guided_bright_rotation.py --commit   # write profiles
+    python scripts/seed_guided_bright_rotation.py --level a2 --languages spanish --paths 1
 """
 
 from __future__ import annotations
@@ -90,6 +96,18 @@ def main() -> int:
         default=",".join(ROSTERS),
         help="Comma-separated language slugs to seed (default: all)",
     )
+    parser.add_argument(
+        "--level",
+        choices=("a1", "a2"),
+        default="a1",
+        help="Curriculum level to seed profiles for (default: a1)",
+    )
+    parser.add_argument(
+        "--paths",
+        type=int,
+        default=None,
+        help="Number of paths to seed (default: the roster's full path count)",
+    )
     args = parser.parse_args()
     dry_run = not args.commit
 
@@ -106,11 +124,15 @@ def main() -> int:
         resolved = resolve_roster(sb, slug, voice_lang_codes, names)
         print(f"\n{slug} ({lang_code}) — roster: "
               + ", ".join(f"{n} ({resolved[n]['voice_id'][:8]}...)" for n in names))
-        for n in range(1, path_count + 1):
-            voice_name = names[(n - 1) % len(names)]
+        seed_path_count = args.paths if args.paths is not None else path_count
+        # a2 continues the rotation after the language's a1 paths so adjacent
+        # a1/a2 paths do not repeat a voice
+        rotation_offset = path_count if args.level == "a2" else 0
+        for n in range(1, seed_path_count + 1):
+            voice_name = names[(rotation_offset + n - 1) % len(names)]
             row = resolved[voice_name]
-            key = f"{slug}_a1_bright_p{n}_multiv2_v1"
-            path_id = f"{slug}-a1-practical-{n}"
+            key = f"{slug}_{args.level}_bright_p{n}_multiv2_v1"
+            path_id = f"{slug}-{args.level}-practical-{n}"
             print(f"  {key:44s} path={path_id:26s} voice={voice_name}")
             total += 1
             if dry_run:
@@ -129,7 +151,7 @@ def main() -> int:
                 assignment_version=1,
                 active=True,
                 priority=90,
-                notes=f"A1 bright per-path rotation — {voice_name} ({MODEL_ID})",
+                notes=f"{args.level.upper()} bright per-path rotation — {voice_name} ({MODEL_ID})",
             )
     print(f"\n{'DRY-RUN: would seed' if dry_run else 'Seeded'} {total} profiles.")
     if dry_run:

@@ -14,10 +14,16 @@ Guardrails per language before any provider call:
   * estimated_provider_characters <= PER_LANGUAGE_CHAR_CAP
   * batch running total <= TOTAL_CHAR_CAP
 
+A2 (2026-07-12, pilot): --level a2 targets {slug}-a2-practical-{n} paths and
+expects {slug}_a2_bright_p<n>_multiv2_v1 rotation profiles (seed them first via
+seed_guided_bright_rotation.py --level a2). Use --paths for how many A2 paths
+exist so far (pilot: 1).
+
 Usage:
     python scripts/run_guided_bright_batch.py              # dry-run report
     python scripts/run_guided_bright_batch.py --commit     # paid generation
     python scripts/run_guided_bright_batch.py --languages korean --commit
+    python scripts/run_guided_bright_batch.py --level a2 --languages spanish --paths 1
 """
 
 from __future__ import annotations
@@ -61,16 +67,16 @@ LANGUAGES: dict[str, tuple[str, int]] = {
 }
 
 
-def path_ids(slug: str, count: int) -> list[str]:
-    return [f"{slug}-a1-practical-{n}" for n in range(1, count + 1)]
+def path_ids(slug: str, count: int, level: str) -> list[str]:
+    return [f"{slug}-{level}-practical-{n}" for n in range(1, count + 1)]
 
 
-def check_guardrails(slug: str, inventory: dict, chars_so_far: int) -> list[str]:
+def check_guardrails(slug: str, level: str, inventory: dict, chars_so_far: int) -> list[str]:
     problems: list[str] = []
     totals = inventory["totals"]
     if totals["missing_voice_profile"] > 0:
         problems.append(f"{totals['missing_voice_profile']} rows without a voice profile")
-    pattern = re.compile(rf"^{slug}_a1_bright_p\d+_multiv2_v1$")
+    pattern = re.compile(rf"^{slug}_{level}_bright_p\d+_multiv2_v1$")
     for entry in inventory["per_voice"]:
         if not pattern.match(entry["voice_profile_key"]):
             problems.append(
@@ -114,7 +120,9 @@ async def main_async(args) -> int:
     grand = {"generated": 0, "failed": 0, "skipped_ready": 0, "chars": 0}
     for slug in slugs:
         lang_code, count = LANGUAGES[slug]
-        paths = path_ids(slug, count)
+        if args.paths is not None:
+            count = args.paths
+        paths = path_ids(slug, count, args.level)
         dry = await run_async(
             sb=sb,
             lessons=lessons,
@@ -134,7 +142,7 @@ async def main_async(args) -> int:
         for entry in dry["inventory"]["per_voice"]:
             print(f"  {entry['voice_profile_key']:44s} texts={entry['unique_texts']:4d} "
                   f"chars={entry['character_count']:5d} ready={entry['ready']} missing={entry['missing']}")
-        problems = check_guardrails(slug, dry["inventory"], chars_spent)
+        problems = check_guardrails(slug, args.level, dry["inventory"], chars_spent)
         if problems:
             print(f"GUARDRAIL FAILURE for {slug}:")
             for p in problems:
@@ -184,6 +192,10 @@ def main() -> int:
     parser.add_argument("--commit", action="store_true", help="Spend: call ElevenLabs and write assets")
     parser.add_argument("--languages", default=",".join(LANGUAGES),
                         help="Comma-separated language slugs (default: all)")
+    parser.add_argument("--level", choices=("a1", "a2"), default="a1",
+                        help="Curriculum level to batch (default: a1)")
+    parser.add_argument("--paths", type=int, default=None,
+                        help="Number of paths to include (default: the language's full A1 count)")
     args = parser.parse_args()
     return asyncio.run(main_async(args))
 

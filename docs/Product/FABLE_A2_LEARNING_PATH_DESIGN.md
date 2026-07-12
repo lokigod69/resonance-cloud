@@ -60,6 +60,31 @@ path 10 consolidates. Trophy words may become "slightly more abstract" per V0:
 connectors and pragmatic words (already, almost, actually, instead, because) join the
 concrete nouns.
 
+### 2.1 Grounding against institute inventories (verified 2026-07-12, owner ask)
+
+The spine was checked against the four canonical A2 specifications — it is not a
+vibes-based list. Per-path mapping:
+
+| Path | Institute grounding |
+|---|---|
+| 1 Back again | CEFR-CV A2 *Information exchange*: "can ask and answer questions about habits and routines… can ask for and give simple directions"; PCIC A2 funciones 1: alternative questions (¿Qué/Cuál… o…?), answering with detail |
+| 2 This one, because… | PCIC A2 gramática: full comparative system (más/menos/tan… que, mejor/peor); CEFR-CV A2: "can explain what he/she likes or dislikes and give simple reasons" |
+| 3 Yesterday and just now | PCIC A2 gramática: pretérito indefinido + perfecto introduced AT A2 (ya/todavía no markers); CEFR-CV A2 spoken production: "can describe past activities and personal experiences" |
+| 4 Plans and changes | PCIC A2 funciones: proposing (¿Qué tal si…?/¿Por qué no…?), inviting (Te invito a…), refusing politely (Lo siento + excusa); ir a + inf.; CEFR-CV A2: "can make and respond to invitations and suggestions… discuss what to do, arrange to meet" |
+| 5 Actually, no | PCIC A2: attenuated requests (¿Puedes + inf.?), polite refusal with excuse; CEFR-CV A2 *Obtaining goods and services*. Full complaint rhetoric is B1 — path 5 stays inside A2 by using fixed politeness formulas as chunks, never argued disagreement |
+| 6 Getting things done | Waystage/CEFR-CV A2 *Transactions*: "can ask for and provide everyday goods and services"; Cambridge A2 Key topics: shopping, services; Goethe A2 Prüfungsziele: routine situations, immediate needs |
+| 7 What do you recommend? | Cambridge A2 Key topics: places and buildings, food and drink, travel; CEFR-CV A2: "can give short, basic descriptions of places" + simple recommendations as formulas |
+| 8 How's it going? | Cambridge A2 Key topics: weather, personal feelings/opinions/experiences, health; CEFR-CV A2 *Conversation*: "can handle very short social exchanges… express how he/she feels in simple terms" |
+| 9 Something's wrong | CEFR-CV A2: "can say when something is wrong / doesn't work"; PCIC A2 grammar supplies the mixed perfect+present toolkit. Extended complaint negotiation stays out (B1) — lessons resolve in one repair exchange |
+| 10 Your story | Goethe A2 + CEFR-CV A2 spoken production: "can describe his/her family, living conditions, educational background, present or most recent job"; PCIC A2 funciones: formal introductions, written/spoken leave-taking |
+
+Sources: CEFR Companion Volume 2020 A2 descriptors (Council of Europe), Plan
+Curricular del Instituto Cervantes A1–A2 inventories (funciones, gramática, nociones
+específicas — 20 temas), Cambridge A2 Key vocabulary/topic list (2025 revision,
+~1,500 productive items), Goethe-Zertifikat A2 Wortliste (~1,300 lexical units) +
+Prüfungsziele, and Waystage 1990 (van Ek & Trim) as the historical A2 spec. Vocabulary
+selection per language follows §5 rule 8.
+
 ## 3. Lesson shape vs A1
 
 **Unchanged: the 6-step engine.** The step sequence is a hardcoded constant
@@ -165,6 +190,14 @@ module header and the review checklist verbatim.
 7. **Trophy discipline:** unique across the language's entire guided corpus (A1+A2
    together — the uniqueness suite spans `GUIDED_LESSONS` globally), level-appropriate,
    anchored to the lesson's production, with a grammatical example sentence.
+8. **A2 vocabulary is inventory-anchored (owner rule, 2026-07-12).** Content words
+   introduced in A2 lessons must be plausible members of the established A2 inventories
+   — PCIC nociones específicas A1–A2 for Spanish, Goethe A2 Wortliste for German,
+   Cambridge A2 Key list for English, and the CEFR-CV A2 thematic domains for languages
+   without a national inventory (it/pt/pl/ceb/id/ko). Not every word needs a citation,
+   but every lesson's lexical load must come from A2-typical categories (services,
+   errands, weather, feelings, travel, biography), and anything a reviewer would flag
+   as B1+ (abstract argument nouns, low-frequency register) gets swapped at review.
 
 Gate per language, in order: author → the 15 guided suites green → a
 `review-language-addition`-style adversarial content review → fixes → owner spot-check
@@ -203,14 +236,15 @@ New step types or session templates (Dialogue Turn as an engine feature, Choice 
 Scenario Mission), wistful/sharp variants, guided base-locale expansion beyond en/de,
 Supabase-persisted guided progress, per-language chunk splitting (§4.7), B1 anything.
 
-## 9. Owner decisions needed
+## 9. Owner decisions — ANSWERED 2026-07-12
 
-1. **Spine sign-off:** the 10 A2 path themes in §2 (adjust freely — themes are cheap to
-   swap before authoring, expensive after TTS).
-2. **Pilot language:** Spanish (recommended) or Polish (dogfood option) — §6.
-3. **Bright-only confirm** for all A2 content (recommended; consistent with TTS batch).
-4. **Directory badge:** show a small "A2" level chip on A2 paths in the path
-   directory/overview (trivial now that `level` is real; recommended yes).
-5. **Korean A2 waits** for Korean A1 completion (recommended yes).
-6. **TTS cadence:** batch audio per phase after that phase's review gate (recommended),
-   vs one big batch at the end.
+1. **Spine sign-off:** ✅ approved, with the condition that the themes be grounded in
+   real institute A2 inventories, not vibes — done, see §2.1 and §5 rule 8.
+2. **Pilot language:** ✅ **Spanish.**
+3. **Bright-only:** ✅ confirmed for all A2 content.
+4. **Directory badge:** ✅ yes (recommended option).
+5. **Korean A2 waits** for Korean A1 completion: ✅ yes.
+6. **TTS cadence:** ✅ per phase, after that phase's content is signed off.
+
+Owner also authorized (same message): Codex delegation wherever useful, and building
+out as far as possible including the pilot TTS batch.
