@@ -1,7 +1,12 @@
 # FABLE — Guided-Lesson TTS Batch Plan (v1, owner review)
 
-Date: 2026-07-12. Status: **EXECUTING — decisions resolved same day (owner voice brief
-+ explicit prod-write/spend approval).** Resolution deltas against the plan below:
+Date: 2026-07-12. Status: **DONE — batch executed 2026-07-12 after the 193-finding
+content fix batch landed.** Results: 3,744 clips generated (46,991 + 33 retry chars),
+1 transient ElevenLabs timeout (Cebuano) retried clean, 0 failed assets remaining;
+3,970 bright `guided_tts_playback` rows across all 10 languages (424–453 per language,
+50 for Korean P1), 13/13 audio spot-checks (200 / audio-mpeg / sane sizes). Verification
+tooling: `scripts/verify_guided_tts_batch.py` + `scripts/verify_guided_tts_counts.py`.
+Resolution deltas against the plan below:
 
 1. **No migration needed.** A prod probe (`scripts/probe_guided_tts_state.py`) showed the
    guided SQL was already applied: all four tables, the `guided_tts_playback` view, and
