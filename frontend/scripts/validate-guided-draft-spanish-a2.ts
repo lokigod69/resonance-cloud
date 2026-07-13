@@ -1,12 +1,12 @@
 /**
- * Mechanical validator for Spanish A2 P2–P4 (uncommitted batch) — mirrors the §5
- * contract invariants that the integrated suites would enforce, plus batch-local rules.
+ * Mechanical validator for the un-integrated Spanish A2 draft paths (P2–P10) —
+ * mirrors the §5 authoring-contract invariants that the integrated suites would
+ * enforce, plus batch conventions (single-word speak tokens, chunk/distractor
+ * hygiene, cross-corpus trophy uniqueness). Paths not yet authored are skipped
+ * with a notice. P1 (TTS-frozen) gets intactness guards only.
  */
-import {
-  SPANISH_A2_PRACTICAL_2_LESSONS,
-  SPANISH_A2_PRACTICAL_3_LESSONS,
-  SPANISH_A2_PRACTICAL_4_LESSONS,
-} from '../src/data/guided/spanishA2'
+import * as spanishA2 from '../src/data/guided/spanishA2'
+import type { GuidedLessonDefinition } from '../src/data/guidedLessons'
 import { GUIDED_LESSONS } from '../src/data/guidedLessons'
 
 let failures = 0
@@ -23,21 +23,35 @@ const normalizeWs = (s: string) => s.replace(/\s+/g, ' ').trim()
 const tokenize = (s: string) =>
   s.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean)
 
-const batches = [
-  ['P2', SPANISH_A2_PRACTICAL_2_LESSONS],
-  ['P3', SPANISH_A2_PRACTICAL_3_LESSONS],
-  ['P4', SPANISH_A2_PRACTICAL_4_LESSONS],
-] as const
+const PATH_EXPORT_NAMES: Record<number, string> = {
+  2: 'SPANISH_A2_PRACTICAL_2_LESSONS',
+  3: 'SPANISH_A2_PRACTICAL_3_LESSONS',
+  4: 'SPANISH_A2_PRACTICAL_4_LESSONS',
+  5: 'SPANISH_A2_PRACTICAL_5_LESSONS',
+  6: 'SPANISH_A2_PRACTICAL_6_LESSONS',
+  7: 'SPANISH_A2_PRACTICAL_7_LESSONS',
+  8: 'SPANISH_A2_PRACTICAL_8_LESSONS',
+  9: 'SPANISH_A2_PRACTICAL_9_LESSONS',
+  10: 'SPANISH_A2_PRACTICAL_10_LESSONS',
+}
 
-// Existing Spanish trophies (A1 + A2 P1) from the integrated corpus
+// Existing Spanish trophies (A1 + A2 P1) — the draft paths themselves are excluded
+// so this check stays meaningful after integration into GUIDED_LESSONS.
+const draftPathIds = new Set(Object.keys(PATH_EXPORT_NAMES).map((n) => `spanish-a2-practical-${n}`))
 const existingSpanishTrophies = new Set(
-  GUIDED_LESSONS.filter((l) => l.targetLanguage === 'Spanish').flatMap((l) =>
+  GUIDED_LESSONS.filter((l) => l.targetLanguage === 'Spanish' && !draftPathIds.has(l.pathId)).flatMap((l) =>
     Object.values(l.vibeVariants).map((v) => v?.trophyWord.word.toLowerCase()).filter(Boolean) as string[],
   ),
 )
 const batchTrophies = new Map<string, string>()
 
-for (const [label, lessons] of batches) {
+for (const [pathNumber, exportName] of Object.entries(PATH_EXPORT_NAMES)) {
+  const lessons = (spanishA2 as Record<string, unknown>)[exportName] as GuidedLessonDefinition[] | undefined
+  const label = `P${pathNumber}`
+  if (!lessons) {
+    console.log(`SKIP  ${label} not authored yet (${exportName} missing)`)
+    continue
+  }
   assert(`${label} has 10 lessons`, lessons.length === 10, lessons.length)
   lessons.forEach((lesson, i) => {
     const v = lesson.vibeVariants.bright
@@ -47,7 +61,7 @@ for (const [label, lessons] of batches) {
     // ids and numbering
     assert(`${id} lessonNumber`, lesson.lessonNumber === i + 1, lesson.lessonNumber)
     assert(`${id} level A2`, lesson.level === 'A2')
-    assert(`${id} pathId`, lesson.pathId === `spanish-a2-practical-${label.slice(1)}`)
+    assert(`${id} pathId`, lesson.pathId === `spanish-a2-practical-${pathNumber}`)
 
     // chunks concat === corePhrase
     const concat = normalizeWs(v.chunks.map((c) => c.targetText).join(' '))
@@ -89,7 +103,7 @@ for (const [label, lessons] of batches) {
     // trophy
     const w = v.trophyWord.word.toLowerCase()
     assert(`${id} trophy not in existing Spanish corpus`, !existingSpanishTrophies.has(w), w)
-    assert(`${id} trophy unique within batch`, !batchTrophies.has(w), { word: w, also: batchTrophies.get(w) })
+    assert(`${id} trophy unique within draft batch`, !batchTrophies.has(w), { word: w, also: batchTrophies.get(w) })
     batchTrophies.set(w, id)
     assert(`${id} trophy example contains word stem`, v.trophyWord.example.toLowerCase().includes(w.slice(0, Math.max(3, w.length - 2))), { w, ex: v.trophyWord.example })
 
@@ -104,11 +118,10 @@ for (const [label, lessons] of batches) {
   })
 }
 
-// P1 must be byte-identical in behavior: check its ids and first corePhrase survived
-import { SPANISH_A2_PRACTICAL_1_LESSONS } from '../src/data/guided/spanishA2'
-assert('P1 intact: 10 lessons', SPANISH_A2_PRACTICAL_1_LESSONS.length === 10)
-assert('P1 intact: first id', SPANISH_A2_PRACTICAL_1_LESSONS[0].id === 'spanish-a2-practical-1-001-lo-de-siempre')
-assert('P1 intact: first corePhrase', SPANISH_A2_PRACTICAL_1_LESSONS[0].vibeVariants.bright?.corePhrase.targetText === 'Sí, lo de siempre: un café con leche, por favor.')
+// P1 must remain byte-stable: ids and first corePhrase are TTS cache keys
+assert('P1 intact: 10 lessons', spanishA2.SPANISH_A2_PRACTICAL_1_LESSONS.length === 10)
+assert('P1 intact: first id', spanishA2.SPANISH_A2_PRACTICAL_1_LESSONS[0].id === 'spanish-a2-practical-1-001-lo-de-siempre')
+assert('P1 intact: first corePhrase', spanishA2.SPANISH_A2_PRACTICAL_1_LESSONS[0].vibeVariants.bright?.corePhrase.targetText === 'Sí, lo de siempre: un café con leche, por favor.')
 
 console.log(`\n${checks - failures} passed, ${failures} failed (of ${checks})`)
 if (failures > 0) process.exit(1)

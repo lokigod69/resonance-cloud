@@ -176,44 +176,53 @@ assert('invalid path falls back safely to no query path', resolveTodayPathId('en
 assert('invalid vibe falls back safely to the default active vibe', resolveTodayVibeId('stormy') === undefined && DEFAULT_GUIDED_VIBE_ID === 'bright')
 assert('plain /today defaults to P1 when no path query is present', (resolveTodayPathId(null, pathOptions) ?? pathOptions[0]?.id) === 'english-a1-practical-1')
 
-console.log('\n[A2 pilot matrix]')
+console.log('\n[A2 matrix]')
 {
-  const a2PathId = 'spanish-a2-practical-1'
   const orderedPathIds = pathOptions.map((path) => path.id)
   assert(
-    'Spanish A2 pilot path is exposed directly after Spanish A1 P10',
-    orderedPathIds.indexOf(a2PathId) === orderedPathIds.indexOf('spanish-a1-practical-10') + 1,
+    'Spanish A2 P1 is exposed directly after Spanish A1 P10',
+    orderedPathIds.indexOf('spanish-a2-practical-1') === orderedPathIds.indexOf('spanish-a1-practical-10') + 1,
     orderedPathIds.filter((id) => id.startsWith('spanish-')),
   )
-  assert(
-    'Spanish A2 pilot path metadata carries level A2',
-    pathOptions.find((path) => path.id === a2PathId)?.level === 'A2',
-  )
-  for (const segment of SEGMENTS) {
-    const fallbackWords = getGuidedTrophyWordsForSegment(a2PathId, segment, 'bright')
-    const wordLabels = fallbackWords.map((word) => word.word)
-    assert(`${a2PathId} segment ${segment} bright returns exactly five trophy cards`, fallbackWords.length === 5, fallbackWords)
-    assert(`${a2PathId} segment ${segment} bright has no duplicate TrophyWordCard keys`, new Set(wordLabels).size === wordLabels.length, wordLabels)
-    for (const trophyWord of fallbackWords) {
-      for (const field of TROPHY_TARGET_FIELDS) {
-        assert(
-          `${a2PathId} segment ${segment} bright ${trophyWord.word} has non-empty ${field}`,
-          typeof trophyWord[field] === 'string' && trophyWord[field].trim().length > 0,
-          trophyWord,
-        )
-      }
-      for (const field of TROPHY_BASE_FIELDS) {
-        assert(
-          `${a2PathId} segment ${segment} bright ${trophyWord.word} has non-empty ${field}`,
-          resolveGuidedBaseContent(trophyWord[field], { authoredBaseLanguage: 'German' }).text.trim().length > 0,
-          trophyWord,
-        )
+  for (let pathNumber = 1; pathNumber <= 10; pathNumber += 1) {
+    const a2PathId = `spanish-a2-practical-${pathNumber}`
+    if (pathNumber > 1) {
+      assert(
+        `Spanish A2 P${pathNumber} follows A2 P${pathNumber - 1} in the selector`,
+        orderedPathIds.indexOf(a2PathId) === orderedPathIds.indexOf(`spanish-a2-practical-${pathNumber - 1}`) + 1,
+        orderedPathIds.filter((id) => id.startsWith('spanish-a2-')),
+      )
+    }
+    assert(
+      `Spanish A2 P${pathNumber} metadata carries level A2`,
+      pathOptions.find((path) => path.id === a2PathId)?.level === 'A2',
+    )
+    for (const segment of SEGMENTS) {
+      const fallbackWords = getGuidedTrophyWordsForSegment(a2PathId, segment, 'bright')
+      const wordLabels = fallbackWords.map((word) => word.word)
+      assert(`${a2PathId} segment ${segment} bright returns exactly five trophy cards`, fallbackWords.length === 5, fallbackWords)
+      assert(`${a2PathId} segment ${segment} bright has no duplicate TrophyWordCard keys`, new Set(wordLabels).size === wordLabels.length, wordLabels)
+      for (const trophyWord of fallbackWords) {
+        for (const field of TROPHY_TARGET_FIELDS) {
+          assert(
+            `${a2PathId} segment ${segment} bright ${trophyWord.word} has non-empty ${field}`,
+            typeof trophyWord[field] === 'string' && trophyWord[field].trim().length > 0,
+            trophyWord,
+          )
+        }
+        for (const field of TROPHY_BASE_FIELDS) {
+          assert(
+            `${a2PathId} segment ${segment} bright ${trophyWord.word} has non-empty ${field}`,
+            resolveGuidedBaseContent(trophyWord[field], { authoredBaseLanguage: 'German' }).text.trim().length > 0,
+            trophyWord,
+          )
+        }
       }
     }
   }
   let a2MissingSongError: unknown
   try {
-    await fetchTrophySongCanonical(a2PathId, 1, 'bright')
+    await fetchTrophySongCanonical('spanish-a2-practical-1', 1, 'bright')
   } catch (error) {
     a2MissingSongError = error
   }
