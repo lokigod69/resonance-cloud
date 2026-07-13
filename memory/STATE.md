@@ -1,5 +1,7 @@
 # Current State
-Last updated: 2026-07-13 (main: **Spanish A2 COMPLETE + Korean A1 COMPLETE — 180 lessons integrated, TTS live 846 clips/0 failed, owner-approved; pushing** — LOG (3); wave-rider: Wave Rider game BUILT+VERIFIED, uncommitted — LOG (2))
+Last updated: 2026-07-13 (main: **Spanish A2 COMPLETE + Korean A1 COMPLETE — 180 lessons integrated, TTS live 846 clips/0 failed, owner-approved, pushed** — LOG (3); wave-rider: **v1.5 overhaul BUILT+VERIFIED, uncommitted** — LOG (4)+(5))
+
+> 2026-07-13 update (LOG 4+5): after the owner rejected v1's visuals, Wave Rider got a full v1.5 overhaul, all uncommitted awaiting owner device test + commit call: (a) render layer rebuilt in **three.js** (`renderer/` replaces the Phaser `scene/`; low-poly ocean, jet-ski rider, pontoon word buoys, day-cycle skies; Phaser stays for slicer); (b) `?deck=` deep-link auto-starts the deck (no second picker); (c) library-imported decks with null `tts_audio_url` get static thematic audio attached in-memory from `metadata.curriculum` concept ids; (d) picker leads with one Play card. Codex adversarial review 5/5 findings fixed (texture LRU, context-loss pause, water vert budget, param-change remount, AudioContext dispose). All gates green (typecheck, eslint, engine 13/13, adapters 5/5, i18n 1531/1531, prod build) + headless mocked-Supabase playtests incl. rush, replay, pause, 120fps, 0 console errors. package.json gained `three` + `@types/three` 0.185.1.
 
 ## What this is
 Lingwave, a cloud-first language-learning app (guided lessons, SRS cards, AI music, voice tutor). Live frontend in `frontend/` (Vercel + Supabase); Python generation backend (`job_runner.py`, `src/`, `cloud_engines/`) on Railway. Target: TestFlight/private beta this month (July 2026).

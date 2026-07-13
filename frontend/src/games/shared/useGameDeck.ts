@@ -20,8 +20,9 @@ export type GameWordRow = {
   suno_storage_url: string | null
   suno_storage_url_b: string | null
   suno_audio_url: string | null
+  metadata: Record<string, unknown> | null
   deck_id: string
-  decks?: { target_language?: string | null } | null
+  decks?: { target_language?: string | null; name?: string | null } | null
 }
 
 const WORD_SELECT = [
@@ -39,8 +40,9 @@ const WORD_SELECT = [
   'suno_storage_url',
   'suno_storage_url_b',
   'suno_audio_url',
+  'metadata',
   'deck_id',
-  'decks(target_language)',
+  'decks(target_language, name)',
 ].join(', ')
 
 export function useGameDeck(gameId: string, deckId: string | null, language: string | null) {

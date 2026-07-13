@@ -1,3 +1,5 @@
+import * as THREE from 'three'
+
 export type SurfPalette = {
   skyTop: number
   skyBottom: number
@@ -32,12 +34,9 @@ export function lerpPalette(a: SurfPalette, b: SurfPalette, t: number): SurfPale
       | (Math.round(fromGreen + (toGreen - fromGreen) * progress) << 8)
       | Math.round(fromBlue + (toBlue - fromBlue) * progress)
   }
-  return {
-    skyTop: lerp(a.skyTop, b.skyTop),
-    skyBottom: lerp(a.skyBottom, b.skyBottom),
-    horizonGlow: lerp(a.horizonGlow, b.horizonGlow),
-    waterDeep: lerp(a.waterDeep, b.waterDeep),
-    waterCrest: lerp(a.waterCrest, b.waterCrest),
-    accent: lerp(a.accent, b.accent),
-  }
+  return { skyTop: lerp(a.skyTop, b.skyTop), skyBottom: lerp(a.skyBottom, b.skyBottom), horizonGlow: lerp(a.horizonGlow, b.horizonGlow), waterDeep: lerp(a.waterDeep, b.waterDeep), waterCrest: lerp(a.waterCrest, b.waterCrest), accent: lerp(a.accent, b.accent) }
+}
+
+export function colorFromNumber(value: number, target = new THREE.Color()): THREE.Color {
+  return target.setHex(value)
 }

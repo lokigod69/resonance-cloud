@@ -44,9 +44,18 @@ export function attachPackAudio(
   voiceProfileKey?: string,
 ): SurfDeck {
   deck.cards.forEach((card) => {
-    const audio = getStaticThematicAudio(lookup, card.id, voiceProfileKey)
-      ?? getStaticThematicAudio(lookup, card.id)
-    if (audio?.public_url) card.audioUrl = audio.public_url
+    const audioUrl = resolveStaticThematicAudioUrl(lookup, card.id, voiceProfileKey)
+    if (audioUrl) card.audioUrl = audioUrl
   })
   return deck
+}
+
+export function resolveStaticThematicAudioUrl(
+  lookup: Map<string, Map<string, StaticThematicPlaybackRow>>,
+  conceptId: string,
+  voiceProfileKey?: string,
+): string | null {
+  const audio = getStaticThematicAudio(lookup, conceptId, voiceProfileKey)
+    ?? getStaticThematicAudio(lookup, conceptId)
+  return audio?.public_url ?? null
 }

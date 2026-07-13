@@ -327,7 +327,7 @@ async function fetchStaticCategoryAudioForImport(
   }
 }
 
-function readCurriculumMetadata(value: unknown): Record<string, unknown> {
+export function readCurriculumMetadata(value: unknown): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
   const metadata = value as Record<string, unknown>
   const curriculum = metadata.curriculum

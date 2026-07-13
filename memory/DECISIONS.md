@@ -2,6 +2,12 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-07-13 - Imported-deck thematic audio is a read-only session fallback
+**Status:** active - LOG 2026-07-13 (4)
+**Decision:** Wave Rider reads curriculum metadata at session start and attaches existing static thematic playback to the in-memory session deck only. Existing `tts_audio_url` wins; unavailable static audio falls through to browser speech.
+**Why:** Existing imports retain stable concept ids and the static assets already exist, so playback recovers without a migration, write permissions, or changes to user data.
+**Rejected:** A session-side database backfill and treating a missing lookup as fatal.
+
 ## 2026-07-13 — Wave Rider: surf concept, SRS-feeding, packs unrecorded, programmatic art
 **Status:** active — LOG 2026-07-13 (2), design doc `docs/Product/FABLE_WAVE_RIDER_PLAN.md`
 **Decision:** (1) The El Taxico-inspired lane game is a **surf** game ('Wave Rider', id `surf`), not a car/taxi clone — waves/tide are Lingwave's brand language and the owner floated surfing himself. (2) `study_mode='surf'` **feeds SRS** (a genuine 1-of-3 recall test, same standing as slicer); only the old 'runner' stays excluded. (3) **Pack sessions record nothing** — concept ids aren't `words` rows, and recall_attempts.word_id is an FK; packs are pure arcade. (4) **v1 art is programmatic** (canvas textures, palette-lerped ocean, orb rider) + a headless-Chrome-rendered tile icon — no Blender/Asset Forge round-trip until the game earns it. (5) SFX come from the ElevenLabs sound-generation API as static files in `public/games/surf/sfx/` with a never-throwing silent fallback (batch currently blocked: key lacks the `sound_generation` permission — owner-side toggle).

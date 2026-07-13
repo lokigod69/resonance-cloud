@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import type PhaserRuntime from 'phaser'
 import { GameShell } from '../shared/GameShell'
 import { useGameDeck } from '../shared/useGameDeck'
 import { useIOSAudioPrimer } from '../shared/useIOSAudioPrimer'
-import { usePhaserMount } from '../shared/usePhaserMount'
 import { useRecordGameResult } from '../shared/useRecordGameResult'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -26,14 +24,13 @@ import {
 } from '@/lib/staticThematicAudio'
 import { DEFAULT_SESSION_CONFIG, MIN_DECK_CARDS, type ResolveResult, type SessionEngine, type SessionStats, type SurfDeck, type SurfMode, type WaveSpec } from './engine/types'
 import { createSessionEngine } from './engine/sessionEngine'
-import { wordsToSurfDeck } from './adapters/deckAdapter'
+import { attachDeckStaticAudio, collectDeckStaticAudioRequests, wordsToSurfDeck } from './adapters/deckAdapter'
 import { attachPackAudio, packToSurfDeck } from './adapters/packAdapter'
 import { SurfPicker, type SurfPickerOption } from './components/SurfPicker'
 import { SurfHUD } from './components/SurfHUD'
 import { SurfSessionComplete } from './components/SurfSessionComplete'
-import { SurfSfx } from './scene/audio'
-import { SurfScene } from './scene/SurfScene'
-import { paletteForLevel } from './scene/palettes'
+import { SurfSfx } from './audio'
+import { SurfRenderer, type SurfRendererCallbacks } from './renderer/SurfRenderer'
 import styles from './styles.module.css'
 
 type HudState = { score: number; combo: number; lives: number; level: number }
@@ -43,7 +40,17 @@ type SurfSession = { deck: SurfDeck; mode: SurfMode }
 
 const INITIAL_HUD: HudState = { score: 0, combo: 0, lives: DEFAULT_SESSION_CONFIG.lives, level: 0 }
 
+/** A changed deep-link target (deck / due queue) remounts the whole session via
+ * `key` — the React-idiomatic way to tear down a live run instead of manual
+ * state resets (a stale session must never keep playing over new params). */
 export default function SurfGame() {
+  const [searchParams] = useSearchParams()
+  const deckKey = searchParams.get('deck') ?? ''
+  const dueKey = searchParams.get('queue') === 'due' ? searchParams.get('lang') ?? '' : ''
+  return <SurfGameSession key={`${deckKey}|${dueKey}`} />
+}
+
+function SurfGameSession() {
   const { profile } = useAuth()
   const { activeLanguage } = useLanguage()
   const { t } = useTranslation()
@@ -51,8 +58,10 @@ export default function SurfGame() {
   const [searchParams] = useSearchParams()
   const { primeOnGesture } = useIOSAudioPrimer()
   const recordResult = useRecordGameResult()
-  const phaserHostRef = useRef<HTMLDivElement | null>(null)
+  const hostRef = useRef<HTMLDivElement | null>(null)
+  const rendererRef = useRef<SurfRenderer | null>(null)
   const autoStartedDueRef = useRef(false)
+  const autoStartedDeckRef = useRef(false)
   const [sfx] = useState(() => new SurfSfx())
   const [phase, setPhase] = useState<Phase>('picker')
   const [engine, setEngine] = useState<SessionEngine | null>(null)
@@ -66,11 +75,12 @@ export default function SurfGame() {
 
   const queryLanguage = canonicalizeLanguageValue(searchParams.get('lang'))
   const language = queryLanguage || activeLanguage || null
+  const deckParam = searchParams.get('deck')
   const dueLanguage = searchParams.get('queue') === 'due'
     ? canonicalizeLanguageValue(searchParams.get('lang')) || null
     : null
   const returnTo = searchParams.get('returnTo') || '/dashboard'
-  const { rows, loading: deckLoading } = useGameDeck('surf', null, language)
+  const { rows, loading: deckLoading } = useGameDeck('surf', deckParam, language)
   const dueStates = useWordStates(dueLanguage ?? '')
   const dueResolved = dueStates.fetched && !dueStates.loading
   const dueWordIds = useMemo(() => {
@@ -83,16 +93,24 @@ export default function SurfGame() {
     )
   }, [dueLanguage, dueStates.data])
 
+  const deckTargetLanguage = rows[0]?.decks?.target_language ?? null
+  const deckLabel = rows[0]?.decks?.name?.trim() || language || ''
   const allDeck = useMemo(() => wordsToSurfDeck(rows, {
     id: `surf-all-${language ?? 'unknown'}`,
-    label: language ?? '',
+    label: deckParam ? deckLabel : language ?? '',
     source: 'deck',
     language,
-  }), [language, rows])
-  const dueDeck = useMemo(() => wordsToSurfDeck(
-    dueWordIds ? rows.filter((row) => dueWordIds.has(row.id)) : [],
-    { id: `surf-due-${dueLanguage ?? 'unknown'}`, label: t('surf.picker.dueWords'), source: 'due', language: dueLanguage },
-  ), [dueLanguage, dueWordIds, rows, t])
+  }), [deckLabel, deckParam, language, rows])
+  const dueRows = useMemo(
+    () => dueWordIds ? rows.filter((row) => dueWordIds.has(row.id)) : [],
+    [dueWordIds, rows],
+  )
+  const dueOnlyDeck = useMemo(() => wordsToSurfDeck(
+    dueRows,
+    { id: `surf-due-${dueLanguage ?? 'unknown'}`, label: deckParam ? deckLabel : t('surf.picker.dueWords'), source: 'due', language: dueLanguage },
+  ), [deckLabel, deckParam, dueLanguage, dueRows, t])
+  const dueDeck = deckParam && dueOnlyDeck.cards.length < MIN_DECK_CARDS ? allDeck : dueOnlyDeck
+  const dueSessionRows = deckParam && dueOnlyDeck.cards.length < MIN_DECK_CARDS ? rows : dueRows
   const dueReady = Boolean(dueLanguage && dueResolved && !deckLoading)
   const duePickerFallback = Boolean(dueLanguage && dueReady && dueDeck.cards.length < MIN_DECK_CARDS)
   const options = useMemo<SurfPickerOption[]>(() => {
@@ -110,26 +128,31 @@ export default function SurfGame() {
     [],
   )
 
-  const buildConfig = useCallback((Phaser: typeof PhaserRuntime) => ({
-    type: Phaser.AUTO,
-    backgroundColor: `#${paletteForLevel(0).skyTop.toString(16).padStart(6, '0')}`,
-    width: phaserHostRef.current?.clientWidth || window.innerWidth,
-    height: phaserHostRef.current?.clientHeight || window.innerHeight,
-    scene: [],
-    scale: { mode: Phaser.Scale.RESIZE, autoCenter: Phaser.Scale.CENTER_BOTH },
-    render: { antialias: true, pixelArt: false },
-    input: { activePointers: 2, touch: true },
-  } satisfies Phaser.Types.Core.GameConfig), [])
-  const { gameRef, ready } = usePhaserMount({ parentRef: phaserHostRef, enabled: phase !== 'picker', buildConfig })
-
   const primeAudio = useCallback(() => {
     void primeOnGesture().catch(() => undefined)
     void sfx.unlock().then(() => sfx.load()).catch(() => undefined)
   }, [primeOnGesture, sfx])
 
-  const startSession = useCallback((deck: SurfDeck, mode: SurfMode, prime = true) => {
+  const attachStaticAudio = useCallback((deck: SurfDeck, sourceRows: typeof rows) => {
+    const targetLanguageCode = resolveStaticCategoryTargetLanguageCode(language ?? deckTargetLanguage)
+    collectDeckStaticAudioRequests(sourceRows).forEach(({ categorySlug, level, conceptIds, rowIdByConceptId }) => {
+      const voiceProfileKeys = getStaticThematicVoiceProfileKeys({ targetLanguageCode, categorySlug })
+      void fetchStaticThematicPlayback(supabase, buildStaticThematicPlaybackQuery({
+        targetLanguageCode,
+        categorySlug,
+        levelNumber: level,
+        conceptIds,
+        voiceProfileKeys,
+      }))
+        .then((lookup) => attachDeckStaticAudio(deck, lookup, rowIdByConceptId, voiceProfileKeys?.[0]))
+        .catch(() => undefined)
+    })
+  }, [deckTargetLanguage, language])
+
+  const startSession = useCallback((deck: SurfDeck, mode: SurfMode, prime = true, sourceRows?: typeof rows) => {
     if (deck.cards.length < MIN_DECK_CARDS) return
     if (prime) primeAudio()
+    if (deck.source !== 'pack' && sourceRows) attachStaticAudio(deck, sourceRows)
     setWave(null)
     setHud(INITIAL_HUD)
     setFeedback(null)
@@ -143,11 +166,11 @@ export default function SurfGame() {
     }))
     setRunKey((current) => current + 1)
     setPhase('playing')
-  }, [primeAudio])
+  }, [attachStaticAudio, primeAudio])
 
   const startWords = useCallback((option: SurfPickerOption, mode: SurfMode) => {
-    startSession(option.source === 'due' ? dueDeck : allDeck, mode)
-  }, [allDeck, dueDeck, startSession])
+    startSession(option.source === 'due' ? dueDeck : allDeck, mode, true, option.source === 'due' ? dueSessionRows : rows)
+  }, [allDeck, dueDeck, dueSessionRows, rows, startSession])
 
   const startPack = useCallback((category: Category, level: number, mode: SurfMode) => {
     const languageCode = resolveStaticCategoryTargetLanguageCode(language)
@@ -172,13 +195,13 @@ export default function SurfGame() {
     startSession(deck, mode)
   }, [language, profile?.base_language, startSession, t])
 
-  useEffect(() => {
-    autoStartedDueRef.current = false
-  }, [dueLanguage])
+  // Each visit owns its AudioContext; browsers cap how many can stay alive.
+  useEffect(() => () => sfx.dispose(), [sfx])
 
   useEffect(() => {
     if (
       !dueLanguage
+      || deckParam
       || !dueReady
       || duePickerFallback
       || autoStartedDueRef.current
@@ -187,12 +210,33 @@ export default function SurfGame() {
     autoStartedDueRef.current = true
     let cancelled = false
     queueMicrotask(() => {
-      if (!cancelled) startSession(dueDeck, 'cruise', false)
+      if (!cancelled) startSession(dueDeck, 'cruise', false, dueSessionRows)
     })
     return () => {
       cancelled = true
     }
-  }, [dueDeck, dueLanguage, duePickerFallback, dueReady, phase, startSession])
+  }, [deckParam, dueDeck, dueLanguage, duePickerFallback, dueReady, dueSessionRows, phase, startSession])
+
+  useEffect(() => {
+    const deckReady = !deckLoading && (!dueLanguage || dueResolved)
+    const sessionDeck = dueLanguage ? dueDeck : allDeck
+    const sessionRows = dueLanguage ? dueSessionRows : rows
+    if (
+      !deckParam
+      || !deckReady
+      || sessionDeck.cards.length < MIN_DECK_CARDS
+      || autoStartedDeckRef.current
+      || phase !== 'picker'
+    ) return
+    autoStartedDeckRef.current = true
+    let cancelled = false
+    queueMicrotask(() => {
+      if (!cancelled) startSession(sessionDeck, 'cruise', false, sessionRows)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [allDeck, deckLoading, deckParam, dueDeck, dueLanguage, dueResolved, dueSessionRows, phase, rows, startSession])
 
   const onResolve = useCallback((result: ResolveResult) => {
     setFeedback({ correct: result.correct, target: result.target.term, prompt: result.target.prompt })
@@ -209,7 +253,7 @@ export default function SurfGame() {
     }
   }, [recordResult, session])
 
-  const callbacks = useMemo(() => ({
+  const callbacks = useMemo<SurfRendererCallbacks>(() => ({
     onWave: setWave,
     onResolve,
     onHud: setHud,
@@ -219,31 +263,38 @@ export default function SurfGame() {
     },
   }), [onResolve])
 
+  const callbacksRef = useRef(callbacks)
   useEffect(() => {
-    if (!ready || !gameRef.current || !engine) return undefined
-    const game = gameRef.current
-    if (game.scene.getScene('surf')) game.scene.remove('surf')
-    game.scene.add('surf', SurfScene, true, { engine, sfx, callbacks })
-    return () => {
-      if (game.scene.getScene('surf')) game.scene.remove('surf')
-    }
-  }, [callbacks, engine, gameRef, ready, runKey, sfx])
+    callbacksRef.current = callbacks
+  }, [callbacks])
+  const rendererCallbacks = useMemo<SurfRendererCallbacks>(() => ({
+    onWave: (nextWave) => callbacksRef.current.onWave(nextWave),
+    onResolve: (result) => callbacksRef.current.onResolve(result),
+    onHud: (nextHud) => callbacksRef.current.onHud(nextHud),
+    onSessionComplete: (stats) => callbacksRef.current.onSessionComplete(stats),
+  }), [])
 
-  const getScene = useCallback((): SurfScene | null => {
-    try {
-      return gameRef.current?.scene.getScene('surf') as SurfScene ?? null
-    } catch {
-      return null
+  // A run stays mounted across playing/paused/complete; only a fresh runKey
+  // (or leaving for the picker) rebuilds the renderer.
+  const runActive = phase !== 'picker'
+  useEffect(() => {
+    if (!runActive || !engine || !hostRef.current) return undefined
+    const renderer = new SurfRenderer(hostRef.current, { engine, sfx, callbacks: rendererCallbacks })
+    rendererRef.current = renderer
+    return () => {
+      renderer.destroy()
+      if (rendererRef.current === renderer) rendererRef.current = null
     }
-  }, [gameRef])
+  }, [engine, rendererCallbacks, runActive, runKey, sfx])
+
   const pause = useCallback(() => {
-    getScene()?.pause()
+    rendererRef.current?.pause()
     setPhase('paused')
-  }, [getScene])
+  }, [])
   const resume = useCallback(() => {
-    getScene()?.resume()
+    rendererRef.current?.resume()
     setPhase('playing')
-  }, [getScene])
+  }, [])
   const toggleMuted = useCallback(() => {
     const next = !sfx.muted
     sfx.setMuted(next)
@@ -259,7 +310,7 @@ export default function SurfGame() {
 
   return (
     <GameShell className={styles.stage} onExit={shellExit}>
-      <div ref={phaserHostRef} className={styles.phaserHost} onPointerDownCapture={primeAudio} />
+      <div ref={hostRef} className={styles.stageHost} onPointerDownCapture={primeAudio} />
       {phase === 'picker' && (
         <SurfPicker
           language={language}
@@ -267,7 +318,9 @@ export default function SurfGame() {
           options={options}
           packs={packs}
           loading={deckLoading || Boolean(dueLanguage && !dueResolved)}
-          needsMoreWords={duePickerFallback || (!deckLoading && allDeck.cards.length < MIN_DECK_CARDS)}
+          needsMoreWords={deckParam
+            ? !deckLoading && allDeck.cards.length < MIN_DECK_CARDS
+            : duePickerFallback || (!deckLoading && allDeck.cards.length < MIN_DECK_CARDS)}
           onStartWords={startWords}
           onStartPack={startPack}
         />

@@ -38,6 +38,15 @@ export class SurfSfx {
     if (context.state !== 'running') await context.resume().catch(() => undefined)
   }
 
+  /** Browsers cap live AudioContexts — every page visit must release its own. */
+  dispose(): void {
+    const context = this.context
+    this.context = null
+    this.buffers.clear()
+    this.loading.clear()
+    if (context && context.state !== 'closed') void context.close().catch(() => undefined)
+  }
+
   async load(): Promise<void> {
     await Promise.all(SURF_SFX_NAMES.map((name) => this.loadOne(name)))
   }

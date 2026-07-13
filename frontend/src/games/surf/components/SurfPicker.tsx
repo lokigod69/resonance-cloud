@@ -41,6 +41,8 @@ export function SurfPicker({
     () => selectedPack?.staticWordLevels?.map((level) => level.level) ?? [],
     [selectedPack],
   )
+  const primaryWordOption = options.find((option) => option.source === 'due') ?? options[0]
+  const remainingWordOptions = options.filter((option) => option.id !== primaryWordOption?.id)
 
   return (
     <section className={styles.picker} aria-label={t('games.surf.title')}>
@@ -50,33 +52,60 @@ export function SurfPicker({
       <div className={styles.pickerCard}>
         <p className={styles.completeKicker}>{t('games.surf.title')}</p>
         <h1>{t('games.surf.subtitle')}</h1>
-        <div className={styles.modeToggle} aria-label={t('surf.picker.mode')}>
-          <button
-            type="button"
-            className={mode === 'cruise' ? styles.modeActive : undefined}
-            onClick={() => setMode('cruise')}
-          >
-            {t('surf.picker.mode.cruise')}
-          </button>
-          <button
-            type="button"
-            className={mode === 'rush' ? styles.modeActive : undefined}
-            onClick={() => setMode('rush')}
-          >
-            {t('surf.picker.mode.rush')}
-          </button>
-        </div>
-
         <h2>{t('surf.picker.yourWords')}</h2>
         {loading && <p className={styles.pickerHint}>{t('surf.picker.loading')}</p>}
-        <div className={styles.sourceList}>
-          {options.map((option) => (
-            <button key={option.id} type="button" className={styles.sourceCard} onClick={() => onStartWords(option, mode)}>
-              <strong>{option.label}</strong>
-              <span>{t('surf.picker.wordCount', { count: option.count })}</span>
+        {primaryWordOption ? (
+          <>
+            <button type="button" className={styles.primarySourceButton} onClick={() => onStartWords(primaryWordOption, mode)}>
+              <span>{t('surf.picker.play')}</span>
+              <strong>{primaryWordOption.label}</strong>
+              <small>{t('surf.picker.wordCount', { count: primaryWordOption.count })}</small>
             </button>
-          ))}
-        </div>
+            <div className={`${styles.modeToggle} ${styles.compactModeToggle}`} aria-label={t('surf.picker.mode')}>
+              <button
+                type="button"
+                className={mode === 'cruise' ? styles.modeActive : undefined}
+                onClick={() => setMode('cruise')}
+              >
+                {t('surf.picker.mode.cruise')}
+              </button>
+              <button
+                type="button"
+                className={mode === 'rush' ? styles.modeActive : undefined}
+                onClick={() => setMode('rush')}
+              >
+                {t('surf.picker.mode.rush')}
+              </button>
+            </div>
+            {remainingWordOptions.length > 0 && (
+              <div className={styles.sourceList}>
+                {remainingWordOptions.map((option) => (
+                  <button key={option.id} type="button" className={`${styles.sourceCard} ${styles.secondarySourceCard}`} onClick={() => onStartWords(option, mode)}>
+                    <strong>{option.label}</strong>
+                    <span>{t('surf.picker.wordCount', { count: option.count })}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <div className={styles.modeToggle} aria-label={t('surf.picker.mode')}>
+            <button
+              type="button"
+              className={mode === 'cruise' ? styles.modeActive : undefined}
+              onClick={() => setMode('cruise')}
+            >
+              {t('surf.picker.mode.cruise')}
+            </button>
+            <button
+              type="button"
+              className={mode === 'rush' ? styles.modeActive : undefined}
+              onClick={() => setMode('rush')}
+            >
+              {t('surf.picker.mode.rush')}
+            </button>
+          </div>
+        )}
         {needsMoreWords && <p className={styles.pickerHint}>{t('surf.picker.needMoreWords')}</p>}
 
         <h2>{t('surf.picker.packs')}</h2>

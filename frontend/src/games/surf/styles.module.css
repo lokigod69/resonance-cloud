@@ -5,12 +5,12 @@
   background: #1a0f2e;
 }
 
-.phaserHost {
+.stageHost {
   position: absolute;
   inset: 0;
 }
 
-.phaserHost canvas {
+.stageHost canvas {
   display: block;
 }
 
@@ -206,6 +206,46 @@
   color: #fff6ce;
 }
 
+.compactModeToggle {
+  width: min(100%, 30rem);
+  margin: 0.7rem 0;
+}
+
+.compactModeToggle button {
+  padding: 0.55rem 0.65rem;
+  font-size: 0.82rem;
+}
+
+.primarySourceButton {
+  display: grid;
+  width: 100%;
+  gap: 0.2rem;
+  cursor: pointer;
+  border: 1px solid #f7c843;
+  border-radius: 1rem;
+  padding: 1.1rem;
+  background: linear-gradient(135deg, rgb(247 200 67 / 24%), rgb(244 79 19 / 16%));
+  color: #fff;
+  text-align: left;
+}
+
+.primarySourceButton span {
+  color: #fff6ce;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.primarySourceButton strong {
+  font-size: 1.05rem;
+}
+
+.primarySourceButton small {
+  color: rgb(255 255 255 / 72%);
+  font-size: 0.86rem;
+}
+
 .sourceCard {
   display: flex;
   align-items: center;
@@ -218,6 +258,11 @@
   background: rgb(255 255 255 / 5%);
   color: #fff;
   text-align: left;
+}
+
+.secondarySourceCard {
+  padding: 0.75rem 0.9rem;
+  border-color: rgb(255 255 255 / 22%);
 }
 
 .sourceCard span,
