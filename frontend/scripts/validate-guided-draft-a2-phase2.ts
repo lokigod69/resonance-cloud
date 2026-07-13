@@ -1,13 +1,18 @@
 /**
- * Mechanical validator for the un-integrated A2 phase-2 draft paths
- * (French / Italian / Portuguese, P1–P10) — mirrors the §5 authoring-contract
- * invariants plus the batch conventions proven on Spanish A2 (single-word speak
- * tokens, chunk/distractor hygiene, cross-corpus trophy uniqueness) and the
- * per-language rules from the tmp\A2_{LANG}_P1_P10_SPEC.md specs (punctuation
- * conventions, elision-safe tokens, Brazilian-variety bans). Paths not yet
- * authored are skipped with a notice.
+ * Mechanical validator for the un-integrated A2 draft paths (phase 2:
+ * French / Italian / Portuguese; phase 3: German / English, P1–P10) — mirrors
+ * the §5 authoring-contract invariants plus the batch conventions proven on
+ * Spanish A2 (single-word speak tokens, chunk/distractor hygiene, cross-corpus
+ * trophy uniqueness) and the per-language rules from the
+ * tmp\A2_{LANG}_P1_P10_SPEC.md specs (punctuation conventions, elision-safe
+ * tokens, variety/register/tense bans). Paths not yet authored are skipped
+ * with a notice.
  *
- * Usage: npx tsx scripts/validate-guided-draft-a2-phase2.ts [french|italian|portuguese]
+ * Base-locale note: fr/it/pt author both .de and .en base fields; German A2 is
+ * base-English only (matching German A1) and English A2 is base-German only —
+ * the per-config baseLocales drives which fields are required.
+ *
+ * Usage: npx tsx scripts/validate-guided-draft-a2-phase2.ts [french|italian|portuguese|german|english]
  */
 import type { GuidedLessonDefinition } from '../src/data/guidedLessons'
 import { GUIDED_LESSONS } from '../src/data/guidedLessons'
@@ -35,11 +40,22 @@ type LangConfig = {
   pathIdPrefix: string
   speakLanguage: string
   objectPronouns: string[]
-  /** true → require a space before ? and ! (French); false → forbid it (it/pt) */
+  /** true → require a space before ? and ! (French); false → forbid it (it/pt/de/en) */
   spaceBeforePunctuation: boolean
   /** substrings banned anywhere in target text (variety/tense guards) */
   bannedTargetPatterns: Array<{ re: RegExp; why: string }>
+  /** which base locales must carry content (fr/it/pt: both; german: en; english: de) */
+  baseLocales: Array<'de' | 'en'>
+  /** German nouns keep their capital — exempt from the lowercase-trophy rule */
+  allowCapitalizedTrophies?: boolean
+  /** which typed fallback the recall acceptedAnswers must include: accent-stripped (fr/it/pt), umlaut-digraph (de), or plain lowercase (en) */
+  recallVariant: 'accentless' | 'digraph' | 'plain'
 }
+
+const toDigraph = (s: string) => s
+  .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')
+  .replace(/Ä/g, 'Ae').replace(/Ö/g, 'Oe').replace(/Ü/g, 'Ue')
+  .replace(/ß/g, 'ss')
 
 const CONFIGS: LangConfig[] = [
   {
@@ -56,6 +72,8 @@ const CONFIGS: LangConfig[] = [
       { re: /\b(j'étais|c'était)\b/i, why: 'imparfait banned' },
       { re: /\btu\b|\bton\b|\bta\b(?= )/i, why: 'tu register banned (vous throughout)' },
     ],
+    baseLocales: ['de', 'en'],
+    recallVariant: 'accentless',
   },
   {
     key: 'italian',
@@ -71,6 +89,8 @@ const CONFIGS: LangConfig[] = [
       { re: /\b(ero|stavo)\b/i, why: 'imperfetto banned' },
       { re: /\bscusa\b/i, why: 'tu register banned (Lei throughout)' },
     ],
+    baseLocales: ['de', 'en'],
+    recallVariant: 'accentless',
   },
   {
     key: 'portuguese',
@@ -88,6 +108,44 @@ const CONFIGS: LangConfig[] = [
       { re: /\bdesculpa\b/, why: 'tu-imperative apology banned (use desculpe)' },
       { re: /\bo senhor\b|\ba senhora\b/i, why: 'senhor/senhora register banned (você throughout)' },
     ],
+    baseLocales: ['de', 'en'],
+    recallVariant: 'accentless',
+  },
+  {
+    key: 'german',
+    targetLanguage: 'German',
+    modulePath: '../src/data/guided/germanA2',
+    exportPrefix: 'GERMAN_A2_PRACTICAL_',
+    pathIdPrefix: 'german-a2-practical-',
+    speakLanguage: 'de-DE',
+    objectPronouns: ['ihn', 'sie', 'es', 'mir', 'mich', 'dir', 'dich', 'ihm', 'ihr', 'ihnen', 'uns'],
+    spaceBeforePunctuation: false,
+    bannedTargetPatterns: [
+      { re: /\bich werde\b/i, why: 'werden-future banned (present + time expression)' },
+      { re: /\b(ging|kam|sah|nahm|stand|fuhr|aß|blieb|wusste|dachte|brachte)\b/i, why: 'Präteritum banned except war/hatte' },
+      { re: /\b(ae|oe|ue)[a-zäöü]/i, why: 'umlaut digraph in German target text' },
+      { re: /\b(hi|sorry)\b/i, why: 'English leak in German target text' },
+    ],
+    baseLocales: ['en'],
+    allowCapitalizedTrophies: true,
+    recallVariant: 'digraph',
+  },
+  {
+    key: 'english',
+    targetLanguage: 'English',
+    modulePath: '../src/data/guided/englishA2',
+    exportPrefix: 'ENGLISH_A2_PRACTICAL_',
+    pathIdPrefix: 'english-a2-practical-',
+    speakLanguage: 'en-US',
+    objectPronouns: ['it', 'them', 'him', 'her', 'me', 'us'],
+    spaceBeforePunctuation: false,
+    bannedTargetPatterns: [
+      { re: /\b(colour|favourite|centre|theatre|apologise|organise|queue|takeaway|petrol|fortnight|cinema\b.*queue)\b/i, why: 'British variety banned (American corpus, en-US)' },
+      { re: /\bwill\b/i, why: 'will-future banned (going to; contracted I\'ll allowed as fixed chunk)' },
+      { re: /\bhave you ever\b/i, why: 'experiential present perfect banned (B1)' },
+    ],
+    baseLocales: ['de'],
+    recallVariant: 'plain',
   },
 ]
 
@@ -126,11 +184,12 @@ for (const cfg of CONFIGS) {
     assert(`${label} has 10 lessons`, lessons.length === 10, lessons.length)
 
     // template-collapse tripwires: captions and distractors must vary across a path
-    const captions = lessons.map((l) => l.vibeVariants.bright?.sceneCaption.de ?? '')
+    const primaryLocale = cfg.baseLocales[0]
+    const captions = lessons.map((l) => l.vibeVariants.bright?.sceneCaption[primaryLocale] ?? '')
     assert(`${label} sceneCaptions vary across path`, new Set(captions).size >= 8, captions.slice(0, 3))
     const distractorSets = lessons.map((l) => (l.vibeVariants.bright?.build.chips ?? []).slice(-2).join('|'))
     assert(`${label} distractors vary across path`, new Set(distractorSets).size >= 6, distractorSets.slice(0, 3))
-    const glosses = lessons.flatMap((l) => l.vibeVariants.bright?.lessonItems.map((x) => x.baseText.de) ?? [])
+    const glosses = lessons.flatMap((l) => l.vibeVariants.bright?.lessonItems.map((x) => x.baseText[primaryLocale]) ?? [])
     assert(`${label} term glosses are real (not one repeated placeholder)`, new Set(glosses).size > lessons.length, glosses.slice(0, 3))
 
     lessons.forEach((lesson, i) => {
@@ -154,8 +213,9 @@ for (const cfg of CONFIGS) {
       const concat = normalizeWs(v.chunks.map((c) => c.targetText).join(' '))
       assert(`${id} chunks concat == corePhrase`, concat === normalizeWs(v.corePhrase.targetText), { concat, core: v.corePhrase.targetText })
       assert(`${id} chunk count 3..6`, v.chunks.length >= 3 && v.chunks.length <= 6, v.chunks.length)
-      const bareFunctionWords = new Set(['le', 'la', 'les', 'un', 'une', 'de', 'du', 'des', 'à', 'au', 'aux', 'en', 'il', 'lo', 'gli', 'i', 'di', 'del', 'della', 'al', 'alla', 'in', 'o', 'a', 'os', 'as', 'um', 'uma', 'no', 'na', 'ao', 'em', 'do', 'da'])
+      const bareFunctionWords = new Set(['le', 'la', 'les', 'un', 'une', 'de', 'du', 'des', 'à', 'au', 'aux', 'en', 'il', 'lo', 'gli', 'i', 'di', 'del', 'della', 'al', 'alla', 'in', 'o', 'a', 'os', 'as', 'um', 'uma', 'no', 'na', 'ao', 'em', 'do', 'da', 'der', 'die', 'das', 'ein', 'eine', 'einen', 'einem', 'einer', 'dem', 'den', 'zu', 'zum', 'zur', 'im', 'am', 'ins', 'the', 'an', 'to', 'at', 'of', 'for'])
       assert(`${id} no bare article or preposition chunk`, v.chunks.every((c) => !bareFunctionWords.has(c.targetText.toLowerCase().replace(/[.,!?»«]/g, '').trim())), v.chunks.map((c) => c.targetText))
+      assert(`${id} chunk texts have no leading/trailing whitespace`, v.chunks.every((c) => c.targetText === c.targetText.trim()), v.chunks.map((c) => c.targetText).filter((t) => t !== t.trim()))
 
       // build
       assert(`${id} build target == corePhrase`, v.build.targetText === v.corePhrase.targetText)
@@ -163,13 +223,17 @@ for (const cfg of CONFIGS) {
       assert(`${id} every chunk is a chip`, v.chunks.every((c) => chipSet.has(c.targetText)))
       assert(`${id} chips = chunks + 2 distractors, <=7`, v.build.chips.length === v.chunks.length + 2 && v.build.chips.length <= 7, v.build.chips.length)
       assert(`${id} chips unique`, chipSet.size === v.build.chips.length)
+      assert(`${id} chips have no leading/trailing whitespace`, v.build.chips.every((c) => c === c.trim()), v.build.chips.filter((c) => c !== c.trim()))
 
       // typeRecall
       const tr = v.typeRecall
       assert(`${id} recall before+answer+after == corePhrase`, `${tr.before}${tr.answer}${tr.after}` === v.corePhrase.targetText, `${tr.before}|${tr.answer}|${tr.after}`)
       assert(`${id} recall acceptedAnswers include answer`, tr.acceptedAnswers.includes(tr.answer))
       assert(`${id} recall accepts lowercase`, tr.acceptedAnswers.includes(tr.answer.toLowerCase()))
-      assert(`${id} recall accepts accentless`, tr.acceptedAnswers.includes(stripAccents(tr.answer.toLowerCase())))
+      const recallFallback = cfg.recallVariant === 'accentless' ? stripAccents(tr.answer.toLowerCase())
+        : cfg.recallVariant === 'digraph' ? toDigraph(tr.answer).toLowerCase()
+        : tr.answer.toLowerCase()
+      assert(`${id} recall accepts ${cfg.recallVariant} typed fallback`, tr.acceptedAnswers.includes(recallFallback))
       assert(`${id} recall fallback has 4 choices incl answer`, tr.fallbackChoices.length === 4 && tr.fallbackChoices.includes(tr.answer), tr.fallbackChoices)
       const pronouns = new Set(cfg.objectPronouns)
       assert(`${id} recall never blanks an object pronoun`, !pronouns.has(tr.answer.toLowerCase()))
@@ -194,7 +258,9 @@ for (const cfg of CONFIGS) {
       // trophy
       const w = v.trophyWord.word.toLowerCase()
       assert(`${id} trophy single word, no clitic/elision`, !/[\s'-]/.test(w), w)
-      assert(`${id} trophy not a proper noun (authored lowercase)`, v.trophyWord.word === v.trophyWord.word.toLowerCase(), v.trophyWord.word)
+      if (!cfg.allowCapitalizedTrophies) {
+        assert(`${id} trophy not a proper noun (authored lowercase)`, v.trophyWord.word === v.trophyWord.word.toLowerCase(), v.trophyWord.word)
+      }
       assert(`${id} trophy not in existing ${cfg.targetLanguage} corpus`, !existingTrophies.has(w), w)
       assert(`${id} trophy unique within draft batch`, !batchTrophies.has(w), { word: w, also: batchTrophies.get(w) })
       batchTrophies.set(w, id)
@@ -214,12 +280,19 @@ for (const cfg of CONFIGS) {
         assert(`${id} ban: ${ban.why}`, !ban.re.test(v.corePhrase.targetText), v.corePhrase.targetText)
       }
 
-      // locale hygiene quick screens
-      const deFields = [v.corePhrase.baseText.de, v.meaning.de, v.sceneCaption.de, lesson.situation.de, v.trophyWord.meaning.de, v.trophyWord.whyThisWord.de]
-      assert(`${id} .de fields present`, deFields.every((s) => typeof s === 'string' && s.length > 0))
-      assert(`${id} no digraph umlauts in de`, deFields.every((s) => !/\b(ae|oe|ue)[a-z]/.test(s ?? '')))
-      assert(`${id} no slash alternatives`, [v.corePhrase.targetText, v.corePhrase.baseText.de, v.corePhrase.baseText.en].every((s) => !s.includes('/')))
-      assert(`${id} scene caption quotes interlocutor line`, /[„“”«»]/.test(v.sceneCaption.de) && /[“”«»"]/.test(v.sceneCaption.en), v.sceneCaption)
+      // locale hygiene quick screens (per-config base locales; situation is
+      // bilingual by type for every language, so its .de is always screened)
+      for (const locale of cfg.baseLocales) {
+        const fields = [v.corePhrase.baseText[locale], v.meaning[locale], v.sceneCaption[locale], lesson.situation[locale], v.trophyWord.meaning[locale], v.trophyWord.whyThisWord[locale]]
+        assert(`${id} .${locale} fields present`, fields.every((s) => typeof s === 'string' && s.length > 0))
+      }
+      const deScreened = cfg.baseLocales.includes('de')
+        ? [v.corePhrase.baseText.de, v.meaning.de, v.sceneCaption.de, lesson.situation.de, v.trophyWord.meaning.de, v.trophyWord.whyThisWord.de]
+        : [lesson.situation.de]
+      assert(`${id} no digraph umlauts in de`, deScreened.every((s) => !/\b(ae|oe|ue)[a-z]/.test(s ?? '')))
+      assert(`${id} situation.de present`, typeof lesson.situation.de === 'string' && lesson.situation.de.length > 0)
+      assert(`${id} no slash alternatives`, [v.corePhrase.targetText, v.corePhrase.baseText.de, v.corePhrase.baseText.en].every((s) => !(s ?? '').includes('/')))
+      assert(`${id} scene caption quotes interlocutor line`, cfg.baseLocales.every((locale) => /[„“”«»"]/.test(v.sceneCaption[locale] ?? '')), v.sceneCaption)
 
       // status draft
       assert(`${id} contentStatus draft`, v.contentStatus === 'draft')
