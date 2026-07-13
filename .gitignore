@@ -39,5 +39,6 @@ Thumbs.db
 *.mp3
 !frontend/public/voices/*.mp3
 !frontend/public/scripts/**/*.mp3
+!frontend/public/games/**/*.mp3
 *.flac
 *.mp4

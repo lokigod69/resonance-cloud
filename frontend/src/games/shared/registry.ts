@@ -12,6 +12,7 @@ export type GameEntry = {
 
 const gameModules = import.meta.glob<{ default: ComponentType }>([
   '../slicer/SlicerGame.tsx',
+  '../surf/SurfGame.tsx',
 ])
 
 function loadGameComponent(path: string): () => Promise<{ default: ComponentType }> {
@@ -33,5 +34,14 @@ export const GAMES: GameEntry[] = [
     route: '/games/slicer',
     enabled: true,
     component: loadGameComponent('../slicer/SlicerGame.tsx'),
+  },
+  {
+    id: 'surf',
+    titleKey: 'games.surf.title',
+    subtitleKey: 'games.surf.subtitle',
+    iconSrc: '/games/surf/branding/surf-tile-icon.png',
+    route: '/games/surf',
+    enabled: true,
+    component: loadGameComponent('../surf/SurfGame.tsx'),
   },
 ]

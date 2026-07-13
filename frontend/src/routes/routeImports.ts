@@ -51,6 +51,7 @@ export const routeImports = {
   adminObservabilityWordDetail: () => import('@/pages/admin/ObservabilityWordDetail'),
   adminObservabilityCost: () => import('@/pages/admin/ObservabilityCost'),
   slicerGame: () => import('@/games/slicer/SlicerGame'),
+  surfGame: () => import('@/games/surf/SurfGame'),
 } as const
 
 export type RouteImport = () => Promise<unknown>

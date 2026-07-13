@@ -79,6 +79,7 @@ const ObservabilityAggregate = lazyWithRetry(routeImports.adminObservabilityAggr
 const ObservabilityWordDetail = lazyWithRetry(routeImports.adminObservabilityWordDetail, 'admin-observability-word-detail')
 const ObservabilityCost = lazyWithRetry(routeImports.adminObservabilityCost, 'admin-observability-cost')
 const SlicerGame = lazyWithRetry(routeImports.slicerGame, 'slicer-game')
+const SurfGame = lazyWithRetry(routeImports.surfGame, 'surf-game')
 
 function RouteSuspenseFallback() {
   return <LingwaveLoader fullScreen />
@@ -213,6 +214,7 @@ function AppRoutes() {
           path="/games/slicer"
           element={<SlicerGame />}
         />
+        <Route path="/games/surf" element={<SurfGame />} />
         {/* Canvas is a headerless immersion mode (like the games above) — lifted out of the skin layouts so no global header overlaps its toolbar */}
         <Route path="/study/canvas" element={<StudyCanvas />} />
         {VISUAL_LENS_ENABLED ? <Route path="/lens" element={<Lens />} /> : null}
