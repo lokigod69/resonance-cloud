@@ -179,43 +179,51 @@ assert('plain /today defaults to P1 when no path query is present', (resolveToda
 console.log('\n[A2 matrix]')
 {
   const orderedPathIds = pathOptions.map((path) => path.id)
-  assert(
-    'Spanish A2 P1 is exposed directly after Spanish A1 P10',
-    orderedPathIds.indexOf('spanish-a2-practical-1') === orderedPathIds.indexOf('spanish-a1-practical-10') + 1,
-    orderedPathIds.filter((id) => id.startsWith('spanish-')),
-  )
-  for (let pathNumber = 1; pathNumber <= 10; pathNumber += 1) {
-    const a2PathId = `spanish-a2-practical-${pathNumber}`
-    if (pathNumber > 1) {
-      assert(
-        `Spanish A2 P${pathNumber} follows A2 P${pathNumber - 1} in the selector`,
-        orderedPathIds.indexOf(a2PathId) === orderedPathIds.indexOf(`spanish-a2-practical-${pathNumber - 1}`) + 1,
-        orderedPathIds.filter((id) => id.startsWith('spanish-a2-')),
-      )
-    }
+  const A2_LANGUAGES = [
+    { label: 'Spanish', slug: 'spanish' },
+    { label: 'French', slug: 'french' },
+    { label: 'Italian', slug: 'italian' },
+    { label: 'Portuguese', slug: 'portuguese' },
+  ]
+  for (const { label, slug } of A2_LANGUAGES) {
     assert(
-      `Spanish A2 P${pathNumber} metadata carries level A2`,
-      pathOptions.find((path) => path.id === a2PathId)?.level === 'A2',
+      `${label} A2 P1 is exposed directly after ${label} A1 P10`,
+      orderedPathIds.indexOf(`${slug}-a2-practical-1`) === orderedPathIds.indexOf(`${slug}-a1-practical-10`) + 1,
+      orderedPathIds.filter((id) => id.startsWith(`${slug}-`)),
     )
-    for (const segment of SEGMENTS) {
-      const fallbackWords = getGuidedTrophyWordsForSegment(a2PathId, segment, 'bright')
-      const wordLabels = fallbackWords.map((word) => word.word)
-      assert(`${a2PathId} segment ${segment} bright returns exactly five trophy cards`, fallbackWords.length === 5, fallbackWords)
-      assert(`${a2PathId} segment ${segment} bright has no duplicate TrophyWordCard keys`, new Set(wordLabels).size === wordLabels.length, wordLabels)
-      for (const trophyWord of fallbackWords) {
-        for (const field of TROPHY_TARGET_FIELDS) {
-          assert(
-            `${a2PathId} segment ${segment} bright ${trophyWord.word} has non-empty ${field}`,
-            typeof trophyWord[field] === 'string' && trophyWord[field].trim().length > 0,
-            trophyWord,
-          )
-        }
-        for (const field of TROPHY_BASE_FIELDS) {
-          assert(
-            `${a2PathId} segment ${segment} bright ${trophyWord.word} has non-empty ${field}`,
-            resolveGuidedBaseContent(trophyWord[field], { authoredBaseLanguage: 'German' }).text.trim().length > 0,
-            trophyWord,
-          )
+    for (let pathNumber = 1; pathNumber <= 10; pathNumber += 1) {
+      const a2PathId = `${slug}-a2-practical-${pathNumber}`
+      if (pathNumber > 1) {
+        assert(
+          `${label} A2 P${pathNumber} follows A2 P${pathNumber - 1} in the selector`,
+          orderedPathIds.indexOf(a2PathId) === orderedPathIds.indexOf(`${slug}-a2-practical-${pathNumber - 1}`) + 1,
+          orderedPathIds.filter((id) => id.startsWith(`${slug}-a2-`)),
+        )
+      }
+      assert(
+        `${label} A2 P${pathNumber} metadata carries level A2`,
+        pathOptions.find((path) => path.id === a2PathId)?.level === 'A2',
+      )
+      for (const segment of SEGMENTS) {
+        const fallbackWords = getGuidedTrophyWordsForSegment(a2PathId, segment, 'bright')
+        const wordLabels = fallbackWords.map((word) => word.word)
+        assert(`${a2PathId} segment ${segment} bright returns exactly five trophy cards`, fallbackWords.length === 5, fallbackWords)
+        assert(`${a2PathId} segment ${segment} bright has no duplicate TrophyWordCard keys`, new Set(wordLabels).size === wordLabels.length, wordLabels)
+        for (const trophyWord of fallbackWords) {
+          for (const field of TROPHY_TARGET_FIELDS) {
+            assert(
+              `${a2PathId} segment ${segment} bright ${trophyWord.word} has non-empty ${field}`,
+              typeof trophyWord[field] === 'string' && trophyWord[field].trim().length > 0,
+              trophyWord,
+            )
+          }
+          for (const field of TROPHY_BASE_FIELDS) {
+            assert(
+              `${a2PathId} segment ${segment} bright ${trophyWord.word} has non-empty ${field}`,
+              resolveGuidedBaseContent(trophyWord[field], { authoredBaseLanguage: 'German' }).text.trim().length > 0,
+              trophyWord,
+            )
+          }
         }
       }
     }

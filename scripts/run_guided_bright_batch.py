@@ -49,7 +49,9 @@ from src.services.guided_tts.generate import (  # noqa: E402
 
 SURFACES = ["corePhrase", "chunks", "trophyWord"]
 VIBES = ["bright"]
-PER_LANGUAGE_CHAR_CAP = 8_000
+# Raised 8k -> 12k for the A2 phase-2 batch (fr/it/pt run 9.6-10.9k chars each;
+# owner approved the 30.1k total 2026-07-13).
+PER_LANGUAGE_CHAR_CAP = 12_000
 TOTAL_CHAR_CAP = 60_000
 
 # language slug -> (target_language_code, path count)
