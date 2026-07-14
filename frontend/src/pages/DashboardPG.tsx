@@ -4,7 +4,6 @@ import { AlertCircle, ChevronRight, LogIn, RefreshCw } from 'lucide-react'
 import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
-import { DashboardStreak } from '@/components/dashboard/DashboardStreak'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import WordTide from '@/components/dashboard/WordTide'
 import { Button } from '@/components/ui/button'
@@ -291,8 +290,6 @@ export default function DashboardPG() {
               onSelect={setActiveLanguage}
               onAddLanguage={handleAddLanguage}
             />
-
-            <DashboardStreak streak={studyStreak.streak} />
 
             {/* The Word Tide: today's words drift over the wave, tap to practice
                 inline. The old greeting + mission hero moved out of the way — the

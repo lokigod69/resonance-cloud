@@ -4,7 +4,6 @@ import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
 import { SrsActionTile } from '@/components/dashboard/SrsActionTile'
-import { DashboardStreak } from '@/components/dashboard/DashboardStreak'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
 import { TodayMissionCard } from '@/components/dashboard/TodayMissionCard'
 import { Button } from '@/components/ui/button'
@@ -214,8 +213,6 @@ export default function Dashboard() {
               onSelect={setActiveLanguage}
               onAddLanguage={handleAddLanguage}
             />
-
-            <DashboardStreak streak={studyStreak.streak} />
 
             <section className="dashboard-action-grid w-full">
               <TodayMissionCard mission={todayMission.mission} loading={todayMission.loading} />
