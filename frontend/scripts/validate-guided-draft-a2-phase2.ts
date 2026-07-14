@@ -9,10 +9,11 @@
  * with a notice.
  *
  * Base-locale note: fr/it/pt author both .de and .en base fields; German A2 is
- * base-English only (matching German A1) and English A2 is base-German only —
- * the per-config baseLocales drives which fields are required.
+ * base-English only (matching German A1), English A2 is base-German only, and
+ * Korean A2 carries both (matching Korean A1, baseLanguage German) — the
+ * per-config baseLocales drives which fields are required.
  *
- * Usage: npx tsx scripts/validate-guided-draft-a2-phase2.ts [french|italian|portuguese|german|english]
+ * Usage: npx tsx scripts/validate-guided-draft-a2-phase2.ts [french|italian|portuguese|german|english|korean]
  */
 import type { GuidedLessonDefinition } from '../src/data/guidedLessons'
 import { GUIDED_LESSONS } from '../src/data/guidedLessons'
@@ -48,8 +49,10 @@ type LangConfig = {
   baseLocales: Array<'de' | 'en'>
   /** German nouns keep their capital — exempt from the lowercase-trophy rule */
   allowCapitalizedTrophies?: boolean
-  /** which typed fallback the recall acceptedAnswers must include: accent-stripped (fr/it/pt), umlaut-digraph (de), or plain lowercase (en) */
+  /** which typed fallback the recall acceptedAnswers must include: accent-stripped (fr/it/pt), umlaut-digraph (de), or plain lowercase (en/ko — identity for Hangul) */
   recallVariant: 'accentless' | 'digraph' | 'plain'
+  /** minimum whitespace-token count for the corePhrase — Korean eojeol agglutinate particles, so Hangul phrases carry fewer tokens (default 6) */
+  minCoreTokens?: number
 }
 
 const toDigraph = (s: string) => s
@@ -147,6 +150,26 @@ const CONFIGS: LangConfig[] = [
     baseLocales: ['de'],
     recallVariant: 'plain',
   },
+  {
+    key: 'korean',
+    targetLanguage: 'Korean',
+    modulePath: '../src/data/guided/koreanA2',
+    exportPrefix: 'KOREAN_A2_PRACTICAL_',
+    pathIdPrefix: 'korean-a2-practical-',
+    speakLanguage: 'ko-KR',
+    objectPronouns: ['이거', '그거', '저거', '이것', '그것', '저것', '저', '뭐', '네', '아니요'],
+    spaceBeforePunctuation: false,
+    bannedTargetPatterns: [
+      { re: /(?<!알겠)습니다/, why: '습니다-paradigm banned beyond fixed chunks (해요체 throughout)' },
+      { re: /(?<!죄송|감사|알겠)합니다/, why: '합니다-form banned beyond 죄송/감사/알겠 fixed chunks' },
+      { re: /십시오/, why: '-십시오 imperative banned (해요체 requests with 주세요)' },
+      { re: /(?<!알)겠/, why: '-겠- banned (future = -(으)ㄹ 거예요; 알겠- fixed chunk allowed)' },
+      { re: /\b(hi|sorry|okay|ok)\b/i, why: 'English leak in Korean target text' },
+    ],
+    baseLocales: ['de', 'en'],
+    recallVariant: 'plain',
+    minCoreTokens: 5,
+  },
 ]
 
 const filter = process.argv[2]?.toLowerCase()
@@ -205,9 +228,10 @@ for (const cfg of CONFIGS) {
       assert(`${id} lesson id unique in module`, !allLessonIds.has(lesson.id))
       allLessonIds.add(lesson.id)
 
-      // A2 sizing: corePhrase 6–14 words (tokenized; 16 hard cap for punctuation-heavy phrases)
+      // A2 sizing: corePhrase 6–14 words (tokenized; 16 hard cap for punctuation-heavy phrases; Korean eojeol pack particles, so its floor is lower)
+      const minCoreTokens = cfg.minCoreTokens ?? 6
       const coreTokens = tokenize(v.corePhrase.targetText)
-      assert(`${id} corePhrase 6..16 tokens (A2 sizing)`, coreTokens.length >= 6 && coreTokens.length <= 16, { n: coreTokens.length, core: v.corePhrase.targetText })
+      assert(`${id} corePhrase ${minCoreTokens}..16 tokens (A2 sizing)`, coreTokens.length >= minCoreTokens && coreTokens.length <= 16, { n: coreTokens.length, core: v.corePhrase.targetText })
 
       // chunks concat === corePhrase
       const concat = normalizeWs(v.chunks.map((c) => c.targetText).join(' '))
