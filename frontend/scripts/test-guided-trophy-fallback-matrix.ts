@@ -184,6 +184,12 @@ console.log('\n[A2 matrix]')
     { label: 'French', slug: 'french' },
     { label: 'Italian', slug: 'italian' },
     { label: 'Portuguese', slug: 'portuguese' },
+    { label: 'German', slug: 'german' },
+    { label: 'English', slug: 'english' },
+    { label: 'Korean', slug: 'korean' },
+    { label: 'Polish', slug: 'polish' },
+    { label: 'Indonesian', slug: 'indonesian' },
+    { label: 'Cebuano', slug: 'cebuano' },
   ]
   for (const { label, slug } of A2_LANGUAGES) {
     assert(

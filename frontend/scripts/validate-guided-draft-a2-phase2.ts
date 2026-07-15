@@ -1,19 +1,20 @@
 /**
  * Mechanical validator for the un-integrated A2 draft paths (phase 2:
- * French / Italian / Portuguese; phase 3: German / English, P1–P10) — mirrors
- * the §5 authoring-contract invariants plus the batch conventions proven on
- * Spanish A2 (single-word speak tokens, chunk/distractor hygiene, cross-corpus
- * trophy uniqueness) and the per-language rules from the
- * tmp\A2_{LANG}_P1_P10_SPEC.md specs (punctuation conventions, elision-safe
- * tokens, variety/register/tense bans). Paths not yet authored are skipped
- * with a notice.
+ * French / Italian / Portuguese; phase 3: German / English; Korean; phase 4:
+ * Polish / Indonesian / Cebuano, P1–P10) — mirrors the §5 authoring-contract
+ * invariants plus the batch conventions proven on Spanish A2 (single-word
+ * speak tokens, chunk/distractor hygiene, cross-corpus trophy uniqueness) and
+ * the per-language rules from the tmp\A2_{LANG}_P1_P10_SPEC.md specs
+ * (punctuation conventions, elision-safe tokens, variety/register/tense bans).
+ * Paths not yet authored are skipped with a notice.
  *
  * Base-locale note: fr/it/pt author both .de and .en base fields; German A2 is
  * base-English only (matching German A1), English A2 is base-German only, and
- * Korean A2 carries both (matching Korean A1, baseLanguage German) — the
- * per-config baseLocales drives which fields are required.
+ * Korean/Polish/Indonesian/Cebuano A2 carry both (matching their A1s,
+ * baseLanguage German) — the per-config baseLocales drives which fields are
+ * required.
  *
- * Usage: npx tsx scripts/validate-guided-draft-a2-phase2.ts [french|italian|portuguese|german|english|korean]
+ * Usage: npx tsx scripts/validate-guided-draft-a2-phase2.ts [french|italian|portuguese|german|english|korean|polish|indonesian|cebuano]
  */
 import type { GuidedLessonDefinition } from '../src/data/guidedLessons'
 import { GUIDED_LESSONS } from '../src/data/guidedLessons'
@@ -49,16 +50,29 @@ type LangConfig = {
   baseLocales: Array<'de' | 'en'>
   /** German nouns keep their capital — exempt from the lowercase-trophy rule */
   allowCapitalizedTrophies?: boolean
-  /** which typed fallback the recall acceptedAnswers must include: accent-stripped (fr/it/pt), umlaut-digraph (de), or plain lowercase (en/ko — identity for Hangul) */
-  recallVariant: 'accentless' | 'digraph' | 'plain'
-  /** minimum whitespace-token count for the corePhrase — Korean eojeol agglutinate particles, so Hangul phrases carry fewer tokens (default 6) */
+  /** which typed fallback the recall acceptedAnswers must include: accent-stripped (fr/it/pt), umlaut-digraph (de), plain lowercase (en/ko — identity for Hangul), or the Polish fold (NFD misses ł, which has no combining decomposition) */
+  recallVariant: 'accentless' | 'digraph' | 'plain' | 'polish'
+  /** minimum whitespace-token count for the corePhrase — Korean eojeol agglutinate particles and pl/ceb are pro-drop/article-free, so their phrases carry fewer tokens (default 6) */
   minCoreTokens?: number
+  /** extra bare function words banned as standalone chunks for THIS language only (the shared set stays frozen so already-green languages can't regress) */
+  bareFunctionWords?: string[]
+  /** patterns the typeRecall answer must NOT match (e.g. Polish speaker-gendered past -łem/-łam — doc §5.3: never blank a gendered form) */
+  bannedRecallAnswerPatterns?: Array<{ re: RegExp; why: string }>
+  /** patterns no speakTarget.requiredTokens entry may match (e.g. Polish gendered verb forms — the other-gender learner must be free to swap them) */
+  bannedRequiredTokenPatterns?: Array<{ re: RegExp; why: string }>
 }
 
 const toDigraph = (s: string) => s
   .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')
   .replace(/Ä/g, 'Ae').replace(/Ö/g, 'Oe').replace(/Ü/g, 'Ue')
   .replace(/ß/g, 'ss')
+
+// mirrors polishA2.ts polishFold — ł has no NFD decomposition, so stripAccents can't produce it
+const toPolishFold = (s: string) => s
+  .replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e').replace(/ł/g, 'l')
+  .replace(/ń/g, 'n').replace(/ó/g, 'o').replace(/ś/g, 's').replace(/ź/g, 'z').replace(/ż/g, 'z')
+  .replace(/Ą/g, 'A').replace(/Ć/g, 'C').replace(/Ę/g, 'E').replace(/Ł/g, 'L')
+  .replace(/Ń/g, 'N').replace(/Ó/g, 'O').replace(/Ś/g, 'S').replace(/Ź/g, 'Z').replace(/Ż/g, 'Z')
 
 const CONFIGS: LangConfig[] = [
   {
@@ -170,6 +184,74 @@ const CONFIGS: LangConfig[] = [
     recallVariant: 'plain',
     minCoreTokens: 5,
   },
+  {
+    key: 'polish',
+    targetLanguage: 'Polish',
+    modulePath: '../src/data/guided/polishA2',
+    exportPrefix: 'POLISH_A2_PRACTICAL_',
+    pathIdPrefix: 'polish-a2-practical-',
+    speakLanguage: 'pl-PL',
+    objectPronouns: ['go', 'ją', 'je', 'mi', 'mnie', 'ci', 'cię', 'mu', 'jej', 'nam', 'im'],
+    spaceBeforePunctuation: false,
+    bannedTargetPatterns: [
+      { re: /ł[ao]?by[mś]?\b/i, why: 'conditional -by- form banned (speaker-gendered: chciałbym/chciałabym — doc §5.3)' },
+      { re: /\bbęd(ę|zie|ziesz|ziemy|ziecie|ą)\s+\p{L}+ł[aoy]?\b/iu, why: 'będę + -ł participle future banned (speaker-gendered); use perfective non-past' },
+      { re: /\bponieważ\b/i, why: 'ponieważ banned (stiff) — bo is the A2 subordinator' },
+      { re: /\b(hi|sorry|okay|ok)\b/i, why: 'English leak in Polish target text' },
+    ],
+    baseLocales: ['de', 'en'],
+    recallVariant: 'polish',
+    minCoreTokens: 5,
+    bareFunctionWords: ['w', 'na', 'do', 'z', 'i', 'o', 'po', 'że', 'bo', 'czy', 'to', 'ta', 'ten', 'te'],
+    bannedRecallAnswerPatterns: [
+      { re: /(łem|łam|łeś|łaś)$/i, why: 'recall must never blank a speaker-gendered past form (doc §5.3)' },
+    ],
+    bannedRequiredTokenPatterns: [
+      { re: /(łem|łam|łeś|łaś)$/i, why: 'speakRequired must never pin a speaker-gendered form' },
+    ],
+  },
+  {
+    key: 'indonesian',
+    targetLanguage: 'Indonesian',
+    modulePath: '../src/data/guided/indonesianA2',
+    exportPrefix: 'INDONESIAN_A2_PRACTICAL_',
+    pathIdPrefix: 'indonesian-a2-practical-',
+    speakLanguage: 'id-ID',
+    objectPronouns: ['saya', 'anda', 'kamu', 'ini', 'itu', 'yang'],
+    spaceBeforePunctuation: false,
+    bannedTargetPatterns: [
+      { re: /\b(awak|sila|tandas|nak)\b/i, why: 'Malay banned (Indonesian corpus)' },
+      { re: /\bmacam mana\b/i, why: 'Malay banned (Indonesian corpus)' },
+      { re: /\b(gak|nggak|udah|banget|dong|deh|sih|kayak)\b/i, why: 'Jakarta slang banned (polite standard spoken Indonesian)' },
+      { re: /\btelah\b/i, why: 'telah banned (written register) — sudah is the spoken completed marker' },
+      { re: /\b(hi|sorry|okay|please|thanks)\b/i, why: 'English leak in Indonesian target text' },
+    ],
+    baseLocales: ['de', 'en'],
+    recallVariant: 'plain',
+    bareFunctionWords: ['di', 'ke', 'yang', 'dan', 'atau', 'untuk', 'dari', 'itu', 'ini'],
+  },
+  {
+    key: 'cebuano',
+    targetLanguage: 'Cebuano',
+    modulePath: '../src/data/guided/cebuanoA2',
+    exportPrefix: 'CEBUANO_A2_PRACTICAL_',
+    pathIdPrefix: 'cebuano-a2-practical-',
+    speakLanguage: 'ceb-PH',
+    objectPronouns: ['ko', 'ka', 'ta', 'mi', 'siya', 'kini', 'kana', 'kadto', 'ni', 'ang'],
+    spaceBeforePunctuation: false,
+    bannedTargetPatterns: [
+      { re: /\b(po|opo|pakisuyo|kayo|hindi)\b/i, why: 'Tagalog banned (Cebuano corpus — palihug politeness, dili negation)' },
+      { re: /\btungod kay\b/i, why: 'tungod kay banned (heavy) — bare kay is the A2 subordinator' },
+      { re: /\b(hi|sorry|okay|please|thanks)\b/i, why: 'English leak in Cebuano target text (okey is the naturalized spelling)' },
+    ],
+    baseLocales: ['de', 'en'],
+    recallVariant: 'plain',
+    minCoreTokens: 5,
+    bareFunctionWords: ['sa', 'og', 'ug', 'ang', 'ba', 'nga'],
+    bannedRecallAnswerPatterns: [
+      { re: /-/, why: 'recall must not blank a hyphenated/glottal word (kanus-a, bag-o — typed matching is unreliable)' },
+    ],
+  },
 ]
 
 const filter = process.argv[2]?.toLowerCase()
@@ -237,7 +319,7 @@ for (const cfg of CONFIGS) {
       const concat = normalizeWs(v.chunks.map((c) => c.targetText).join(' '))
       assert(`${id} chunks concat == corePhrase`, concat === normalizeWs(v.corePhrase.targetText), { concat, core: v.corePhrase.targetText })
       assert(`${id} chunk count 3..6`, v.chunks.length >= 3 && v.chunks.length <= 6, v.chunks.length)
-      const bareFunctionWords = new Set(['le', 'la', 'les', 'un', 'une', 'de', 'du', 'des', 'à', 'au', 'aux', 'en', 'il', 'lo', 'gli', 'i', 'di', 'del', 'della', 'al', 'alla', 'in', 'o', 'a', 'os', 'as', 'um', 'uma', 'no', 'na', 'ao', 'em', 'do', 'da', 'der', 'die', 'das', 'ein', 'eine', 'einen', 'einem', 'einer', 'dem', 'den', 'zu', 'zum', 'zur', 'im', 'am', 'ins', 'the', 'an', 'to', 'at', 'of', 'for'])
+      const bareFunctionWords = new Set(['le', 'la', 'les', 'un', 'une', 'de', 'du', 'des', 'à', 'au', 'aux', 'en', 'il', 'lo', 'gli', 'i', 'di', 'del', 'della', 'al', 'alla', 'in', 'o', 'a', 'os', 'as', 'um', 'uma', 'no', 'na', 'ao', 'em', 'do', 'da', 'der', 'die', 'das', 'ein', 'eine', 'einen', 'einem', 'einer', 'dem', 'den', 'zu', 'zum', 'zur', 'im', 'am', 'ins', 'the', 'an', 'to', 'at', 'of', 'for', ...(cfg.bareFunctionWords ?? [])])
       assert(`${id} no bare article or preposition chunk`, v.chunks.every((c) => !bareFunctionWords.has(c.targetText.toLowerCase().replace(/[.,!?»«]/g, '').trim())), v.chunks.map((c) => c.targetText))
       assert(`${id} chunk texts have no leading/trailing whitespace`, v.chunks.every((c) => c.targetText === c.targetText.trim()), v.chunks.map((c) => c.targetText).filter((t) => t !== t.trim()))
 
@@ -256,12 +338,16 @@ for (const cfg of CONFIGS) {
       assert(`${id} recall accepts lowercase`, tr.acceptedAnswers.includes(tr.answer.toLowerCase()))
       const recallFallback = cfg.recallVariant === 'accentless' ? stripAccents(tr.answer.toLowerCase())
         : cfg.recallVariant === 'digraph' ? toDigraph(tr.answer).toLowerCase()
+        : cfg.recallVariant === 'polish' ? toPolishFold(tr.answer).toLowerCase()
         : tr.answer.toLowerCase()
       assert(`${id} recall accepts ${cfg.recallVariant} typed fallback`, tr.acceptedAnswers.includes(recallFallback))
       assert(`${id} recall fallback has 4 choices incl answer`, tr.fallbackChoices.length === 4 && tr.fallbackChoices.includes(tr.answer), tr.fallbackChoices)
       const pronouns = new Set(cfg.objectPronouns)
       assert(`${id} recall never blanks an object pronoun`, !pronouns.has(tr.answer.toLowerCase()))
       assert(`${id} recall answer no elision boundary`, !tr.answer.includes("'"), tr.answer)
+      for (const ban of cfg.bannedRecallAnswerPatterns ?? []) {
+        assert(`${id} recall ban: ${ban.why}`, !ban.re.test(tr.answer), tr.answer)
+      }
 
       // speak target
       const st = v.speakTarget
@@ -272,6 +358,9 @@ for (const cfg of CONFIGS) {
       assert(`${id} optional tokens single words in phrase`, (st.optionalTokens ?? []).every((t) => !t.includes(' ') && targetTokens.has(t)), st.optionalTokens)
       assert(`${id} required/optional disjoint`, (st.requiredTokens ?? []).every((t) => !(st.optionalTokens ?? []).includes(t)))
       assert(`${id} speak phrase == corePhrase`, st.targetPhrase === v.corePhrase.targetText)
+      for (const ban of cfg.bannedRequiredTokenPatterns ?? []) {
+        assert(`${id} required-token ban: ${ban.why}`, (st.requiredTokens ?? []).every((t) => !ban.re.test(t)), st.requiredTokens)
+      }
 
       // lessonItems
       assert(`${id} 5..7 lessonItems`, v.lessonItems.length >= 5 && v.lessonItems.length <= 7, v.lessonItems.length)
