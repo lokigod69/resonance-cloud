@@ -208,6 +208,23 @@ files you changed). Push on owner call. Then the protocol closing ritual: brain
 save, NEXT_STEP, LOG. Add any NEW tripwires discovered this run to **this skill**
 — that's the whole point of it.
 
+Fix-prompt tripwire (Phase 4): when a fix renames or replaces a taught word
+(trophy/term swap), the fix list MUST also cover `pedagogicalGoal`, distractors,
+and any whyThisWord that mention the old word — three remnants survived the
+Phase-4 fix pass in exactly those fields. Sweep with a contains-check per
+replaced word after applying.
+
+Codex-ops (Phase 4): companion `status <id> --json` nests everything under
+`.job` — a watcher parsing top-level `.status` reads 'unknown' forever.
+`seed_guided_bright_rotation.py` and `run_guided_bright_batch.py` take
+`--languages a,b,c` as ONE comma-separated arg. The batch runner's dry-run
+char total should match the module-derived forecast exactly (Phase 4: 31,391
+to the char) — a mismatch means the wrong snapshot is loaded.
+
+Test-suite tripwire: `test-guided-trophy-fallback-matrix.ts` has an explicit
+`A2_LANGUAGES` list that does NOT grow automatically — extend it in the same
+commit as integration (phase 3 forgot de/en/ko; Phase 4 backfilled).
+
 ## Per-language notes (accreting)
 
 - **Spanish**: pilot language; preterite whitelist proved the model.
@@ -226,11 +243,37 @@ save, NEXT_STEP, LOG. Add any NEW tripwires discovered this run to **this skill*
   slugs (`cheoncheonhi-please`); Hangul accepted answers are identity (no
   case/accents); past 았/었어요 gender-free; speech check is Unicode-aware
   (Hangul-safe since the guidedSpeechCheck fix).
-- **Polish** (pending): gendered past (-łem/-łam) — the §5.3 hard case; both-gender
-  acceptedAnswers or neutral constructions; never blank a gendered form in recall.
-- **Indonesian**: atemporal — watch base-text tense matching (the A1
-  atemporal-target/past-base mismatch finding); loanword policy per lesson
-  (the "check-out" precedent: teach it, exempt that lesson from the anti-loanword
-  test by id).
-- **Cebuano**: A1 had systemic wrong-locale sceneCaption.de findings — locale
-  hygiene needs extra review weight.
+- **Polish** (A2 shipped 2026-07-15): the §5.3 gendered past SOLVED by matching
+  each path's TTS voice gender (rotation math: A2 Pn voice =
+  roster[(10+n-1) % len]; P3/P9 female → -łam, P10 male → -łem callback);
+  gendered terms teach the pair via the scaffold's `alsoAccept`; recall/
+  speakRequired/trophies never gendered (validator hooks
+  bannedRecallAnswerPatterns/bannedRequiredTokenPatterns); ALL -by-
+  conditionals and będę+participle BANNED (gendered) — future = perfective
+  non-past; ponieważ banned (bo only); NFD accent-stripping misses ł (no
+  decomposition) — use the polishFold helper / validator recallVariant
+  'polish'. Known false positive: the recall gendered-form regex also matches
+  present-tense -łać verbs (wysyłam) — over-strict, acceptable. Case-matched
+  fallbackChoices (genitive blank → genitive distractors) is the A1-carried
+  pattern reviewers expect.
+- **Indonesian** (A2 shipped): atemporal base-tense licensing is THE rule —
+  every past/perfect/future base needs an explicit target marker (sudah/belum/
+  tadi/kemarin/baru saja; mau/akan/nanti/besok); polite standard SPOKEN
+  register, not bookish (sudah bayar > membayar at counters — the reviewer
+  flagged mencari→cari); Malay (awak/sila/tandas/macam mana/nak), Jakarta
+  slang (gak/udah/banget/dong/deh/sih), and telah are validator-banned;
+  di- passives only as lexicalized fixed chunks (dibungkus), never recall
+  targets; ter- state verbs read as B1 (tersambung → pakai); struk not bukti
+  for receipts; loanword policy per lesson (check-out precedent).
+- **Cebuano** (A2 shipped): locale hygiene held clean this time but keeps
+  extra review weight; aspect licensing (ni-/naka- + na, wala pa, mo-/mag- +
+  time word) mirrors the Indonesian rule; Tagalog banned (po/opo/pakisuyo/
+  kayo/hindi) + tungod kay; friendly particles uy/lagi/bitaw ONLY in friend
+  paths ≤1/lesson, and agreement bitaw/lagi sits early (Bitaw, ulan na pud —
+  not clause-final); full service questions need ang (Unsa ANG problema…);
+  wala + ka- form is the natural negated past (Wala ko katulog og maayo, not
+  Natulog og dili maayo); dili ko kalugar = idiomatic "can't make it";
+  hyphenated words (kanus-a, bag-o) never in speakRequired/recall answers/
+  trophies — the tokenizer splits them; nakatilaw/naka-order etc. are fine in
+  INTERLOCUTOR caption lines (whitelists bind learner lines only — reject
+  reviewer findings against captions).
