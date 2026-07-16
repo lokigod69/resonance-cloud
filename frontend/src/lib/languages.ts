@@ -48,6 +48,7 @@ export const LANGUAGES: Language[] = [
   // Polish has full guided A1 content + categories (code 'pl' in categories.ts) but is
   // NOT Speak-enabled: api/ LANGUAGE_CONFIG has no 'pl' — do not set isSpeak without Tier 3.
   { value: 'Polish',     nativeName: 'Polski',            code: 'pl',                           wizardColor: '#e11d48',                isWizard: true },
+  { value: 'Japanese',   nativeName: '日本語',             code: 'ja',                           wizardColor: '#eab308',                isWizard: true },
 ]
 
 /** Build a "Native (English)" label, collapsing to a single name when they match. */

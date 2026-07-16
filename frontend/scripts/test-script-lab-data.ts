@@ -216,6 +216,85 @@ function validateRussianCyrillic(script: ScriptDefinition) {
   )
 }
 
+/** Canonical Hepburn for the 46 base gojūon kana. Keyed by the kana itself.
+ * Doubles as the id: each symbol's id and romanization must equal this exactly,
+ * which enforces Hepburn (shi/chi/tsu/fu, not si/ti/tu/hu) and pins the inventory
+ * to the base set — no dakuten/handakuten/yōon in V1. */
+const HIRAGANA_ROMAJI: Record<string, string> = {
+  あ: 'a', い: 'i', う: 'u', え: 'e', お: 'o',
+  か: 'ka', き: 'ki', く: 'ku', け: 'ke', こ: 'ko',
+  さ: 'sa', し: 'shi', す: 'su', せ: 'se', そ: 'so',
+  た: 'ta', ち: 'chi', つ: 'tsu', て: 'te', と: 'to',
+  な: 'na', に: 'ni', ぬ: 'nu', ね: 'ne', の: 'no',
+  は: 'ha', ひ: 'hi', ふ: 'fu', へ: 'he', ほ: 'ho',
+  ま: 'ma', み: 'mi', む: 'mu', め: 'me', も: 'mo',
+  や: 'ya', ゆ: 'yu', よ: 'yo',
+  ら: 'ra', り: 'ri', る: 'ru', れ: 're', ろ: 'ro',
+  わ: 'wa', を: 'wo', ん: 'n',
+}
+
+function validateJapaneseHiragana(script: ScriptDefinition) {
+  console.log(`  [${script.id}: hiragana-specific]`)
+
+  // Exactly the 46 base gojūon kana — no dakuten/handakuten/yōon in V1.
+  assert(`${script.id}: exactly 46 symbols`, script.symbols.length === 46, script.symbols.length)
+  const characters = new Set(script.symbols.map((s) => s.character))
+  assert(`${script.id}: 46 unique characters`, characters.size === 46, characters.size)
+  const expected = new Set(Object.keys(HIRAGANA_ROMAJI))
+  for (const char of expected) {
+    assert(`${script.id}: gojūon covers '${char}'`, characters.has(char), char)
+  }
+  for (const char of characters) {
+    assert(`${script.id}: '${char}' is a base gojūon kana`, expected.has(char), char)
+  }
+
+  assert(`${script.id}: no composition block (a syllabary's kana already are their sound)`, script.composition === undefined)
+  assert(`${script.id}: speechLang is ja-JP`, script.speechLang === 'ja-JP', script.speechLang)
+
+  for (const symbol of script.symbols) {
+    const ctx = `${script.id}/${symbol.id}`
+    const romaji = HIRAGANA_ROMAJI[symbol.character]
+
+    // id and romanization are the canonical Hepburn — enforces shi/chi/tsu/fu.
+    assert(`${ctx}: id '${symbol.id}' is the Hepburn romaji '${romaji}'`, symbol.id === romaji, symbol.id)
+    assert(`${ctx}: romanization '${symbol.romanization}' is Hepburn '${romaji}'`, symbol.romanization === romaji, symbol.romanization)
+
+    // A lone kana speaks itself in ja-JP TTS — the symbol audio must be the kana,
+    // never a romaji spelling, so listen-quiz tests real sound recognition.
+    assert(`${ctx}: symbol audio speaks the kana itself`, symbol.audio.text === symbol.character, symbol.audio)
+
+    // Example words must contain the kana, speak themselves, and use only base kana
+    // so a beginner is never asked to read a kana that isn't in this pack.
+    const word = symbol.exampleWord.word
+    assert(`${ctx}: exampleWord '${word}' contains '${symbol.character}'`, word.includes(symbol.character), word)
+    assert(`${ctx}: exampleWord audio speaks the word itself`, symbol.exampleWord.audio.text === word, symbol.exampleWord.audio)
+    for (const char of word) {
+      assert(`${ctx}: exampleWord '${word}' uses only base kana ('${char}')`, expected.has(char), char)
+    }
+  }
+
+  // お and を are homophones (both [o]); the shared tag keeps them apart in quizzes.
+  for (const id of ['o', 'wo']) {
+    const symbol = script.symbols.find((s) => s.id === id)
+    assert(`${script.id}/${id}: tagged homophone:o`, (symbol?.tags ?? []).includes('homophone:o'), symbol?.tags)
+  }
+
+  // Section shape: vowels(5) → k-s(10) → t-n(10) → h-m(10) → y-r-w+ん(11), none
+  // advanced. Every section has >= 5 symbols, so all are quizzable (needs >= 4).
+  const sectionSizes = script.sections.map((s) => ({ id: s.id, size: s.symbolIds.length, advanced: s.advanced ?? false }))
+  assert(
+    `${script.id}: sections are vowels(5) / k-s(10) / t-n(10) / h-m(10) / y-r-w(11)`,
+    JSON.stringify(sectionSizes) === JSON.stringify([
+      { id: 'vowels', size: 5, advanced: false },
+      { id: 'k-s-rows', size: 10, advanced: false },
+      { id: 't-n-rows', size: 10, advanced: false },
+      { id: 'h-m-rows', size: 10, advanced: false },
+      { id: 'y-r-w-rows', size: 11, advanced: false },
+    ]),
+    sectionSizes,
+  )
+}
+
 console.log('[registry]')
 const registryIds = new Set<string>()
 for (const entry of SCRIPTS) {
@@ -378,6 +457,9 @@ for (const entry of SCRIPTS) {
   }
   if (script.id === 'russian-cyrillic') {
     validateRussianCyrillic(script)
+  }
+  if (script.id === 'japanese-hiragana') {
+    validateJapaneseHiragana(script)
   }
 }
 

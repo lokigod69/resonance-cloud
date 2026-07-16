@@ -51,6 +51,16 @@ export const SCRIPTS: ScriptRegistryEntry[] = [
     emblem: 'Я',
     load: () => import('@/data/scripts/russianCyrillic'),
   },
+  {
+    id: 'japanese-hiragana',
+    language: 'Japanese',
+    languageCode: 'ja',
+    kind: 'syllabary',
+    nativeName: 'ひらがな',
+    displayName: 'Hiragana',
+    emblem: 'あ',
+    load: () => import('@/data/scripts/japaneseHiragana'),
+  },
 ]
 
 export function getScriptEntry(scriptId: string | null | undefined): ScriptRegistryEntry | undefined {

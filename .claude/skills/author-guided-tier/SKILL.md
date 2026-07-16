@@ -225,6 +225,30 @@ Test-suite tripwire: `test-guided-trophy-fallback-matrix.ts` has an explicit
 `A2_LANGUAGES` list that does NOT grow automatically — extend it in the same
 commit as integration (phase 3 forgot de/en/ko; Phase 4 backfilled).
 
+New-language A1 accretions (2026-07-16, ru+ja run):
+- A NEW language's A1 P1–P10 works as 4 batches (3/3/3/1) with the SAME prompt
+  shape; quality bar reference = koreanA1 P1–P2. Write a per-language draft
+  validator (`validate-guided-draft-{lang}-a1.ts`, korean-a1 pattern) — the
+  shared a2-phase2 validator is A2-shaped (two-turn captions).
+- Tell adversarial reviewers the buildChips convention UP FRONT: distractors
+  forming valid DIFFERENT-MEANING sentences are the corpus norm (the build
+  step is meaning-anchored); only same-meaning synonym substitutions are
+  defects; ungrammatical distractor chips are banned. The ru review burned 55
+  findings on this class before the addendum existed.
+- typeRecall may blank an adjective when the adjective IS the teaching point
+  (spec-rule amendment; contract-literal noun/verb/adverb-only produced
+  pedagogy-false findings).
+- corePhrase shortenings proposed by reviewers must keep ≥3 spaced units
+  (speakRequired needs 3 tokens) and must not strip the trophy from the
+  phrase — check BOTH before accepting.
+- Fix-script hazard: NEVER re-run a replacement script whose new string
+  CONTAINS the old string (insertions duplicate — a wifi item landed 4×).
+  Batch-1 lessons may use multiline typeRecall formatting while later batches
+  are single-line — capture exact context before writing replacements.
+- codex-companion job-registry records can vanish (observed after a day
+  boundary): save `result` output to tmp IMMEDIATELY on completion and gate
+  batches on files+validators, never on the registry.
+
 ## Per-language notes (accreting)
 
 - **Spanish**: pilot language; preterite whitelist proved the model.
@@ -265,6 +289,25 @@ commit as integration (phase 3 forgot de/en/ko; Phase 4 backfilled).
   di- passives only as lexicalized fixed chunks (dibungkus), never recall
   targets; ter- state verbs read as B1 (tersambung → pakai); struk not bukti
   for receipts; loanword policy per lesson (check-out precedent).
+- **Russian** (A1 shipped to tree 2026-07-16, uncommitted): A1 is 100%
+  GENDER-FREE by design (no past tense, no рад/рада — neutral recasts:
+  Извините за опоздание / Мне пора отдыхать / Я всё лучше понимаю русский);
+  ё kept in target text with е-fold via scaffold `russianAccepted`; вы
+  throughout; TORFL-A1 scope; trophy-example containment needs declension
+  stems + -ть/-ться/-ти/-чь infinitive exemptions in the validator. **A2
+  requires the Polish-style per-path voice-gender PLAN BEFORE authoring**
+  (no TTS roster exists — content will dictate the roster's genders).
+- **Japanese** (A1 shipped to tree 2026-07-16, uncommitted): WAKACHIGAKI in
+  every target sentence field (particles attached, punctuation attached, か
+  attached to its verb — spaced か is a floating-particle validator fail);
+  survival-kanji + kana orthography, Hepburn readings in item glosses, kana
+  variants via `japaneseAccepted` + all-kana speak acceptedAnswers;
+  conjugation whitelist です/ます + fixed て-ください chunks + 行きたい/
+  戻りたい + budgets (ね≤1, ましょう≤2, ています named-only per path) +
+  わかりました/助かりました as only past formulas; ja-JP ASR is unspaced —
+  guidedSpeechCheck.ts CJK branch handles it (Hangul excluded); trophies
+  particle-free; topic-particle chunk glosses must be natural noun phrases,
+  never "as for X" metalanguage; no TTS voices exist yet — ids unfrozen.
 - **Cebuano** (A2 shipped): locale hygiene held clean this time but keeps
   extra review weight; aspect licensing (ni-/naka- + na, wala pa, mo-/mag- +
   time word) mirrors the Indonesian rule; Tagalog banned (po/opo/pakisuyo/

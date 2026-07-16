@@ -1625,6 +1625,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Arabic': 'Arabic',
     'langName.Russian': 'Russian',
     'langName.Polish': 'Polish',
+    'langName.Japanese': 'Japanese',
     // ISO-code aliases — safety net so any path that hands an ISO code to the
     // labeler still resolves a localized name. Keep in sync with langName.<FullWord>.
     'langName.de':  'German',
@@ -1642,6 +1643,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.ar':  'Arabic',
     'langName.ru':  'Russian',
     'langName.pl':  'Polish',
+    'langName.ja':  'Japanese',
 
     // ── Category groups (display labels; underlying API value stays English) ──
     'category.group.essentials': 'Essentials',
@@ -3215,6 +3217,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Arabic': 'Arabisch',
     'langName.Russian': 'Russisch',
     'langName.Polish': 'Polnisch',
+    'langName.Japanese': 'Japanisch',
     // ISO-Code-Aliase — Sicherheitsnetz für Aufrufer, die einen ISO-Code an
     // den Labeler übergeben. Mit langName.<Vollform> synchron halten.
     'langName.de':  'Deutsch',
@@ -3232,6 +3235,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.ar':  'Arabisch',
     'langName.ru':  'Russisch',
     'langName.pl':  'Polnisch',
+    'langName.ja':  'Japanisch',
 
     // ── Kategorie-Gruppen (Anzeigetexte; API-Wert bleibt englisch) ──
     'category.group.essentials': 'Grundlagen',
@@ -4810,6 +4814,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Arabic': 'Arabe',
     'langName.Russian': 'Russe',
     'langName.Polish': 'Polonais',
+    'langName.Japanese': 'Japonais',
     // Alias des codes ISO — filet de sécurité pour les appelants qui passent
     // un code ISO au labeler. À synchroniser avec langName.<FormeComplète>.
     'langName.de':  'Allemand',
@@ -4827,6 +4832,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.ar':  'Arabe',
     'langName.ru':  'Russe',
     'langName.pl':  'Polonais',
+    'langName.ja':  'Japonais',
 
     // ── Groupes de catégories (libellés d'affichage; valeur API en anglais) ──
     'category.group.essentials': 'Essentiels',

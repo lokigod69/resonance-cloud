@@ -27,6 +27,8 @@ const GUIDED_LOCALE_TO_WHISPER_LANGUAGE: Record<string, string | null> = {
   'id-ID': 'id',
   'pl-PL': 'pl',
   'ko-KR': 'ko',
+  'ru-RU': 'ru',
+  'ja-JP': 'ja',
 }
 
 const GUIDED_TRANSCRIBE_BODY_MAX_BYTES = 4 * 1024 * 1024

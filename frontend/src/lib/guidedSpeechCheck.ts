@@ -19,6 +19,14 @@ export type GuidedSpeechCheckResult = {
 
 const EDGE_FILLERS = new Set(['uh', 'um', 'please', 'maybe'])
 
+// Japanese (and Chinese) ASR transcripts arrive as one unspaced string, so the
+// whitespace tokenization below can never match them — CJK targets compare
+// space-insensitively and match required tokens as substrings instead. Hangul is
+// deliberately NOT in this class: Korean ASR emits spaces and keeps the word path.
+const CJK_SCRIPT_PATTERN = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u
+
+const squashWhitespace = (text: string) => text.replace(/\s+/g, '')
+
 const CONTRACTIONS: Array<[RegExp, string]> = [
   [/\bcan't\b/g, 'cannot'],
   [/\bwon't\b/g, 'will not'],
@@ -82,6 +90,10 @@ export function checkGuidedSpeechAnswer(input: GuidedSpeechCheckInput): GuidedSp
     return result('incorrect', 'empty', normalizedTranscript, normalizedTarget, 0, normalizedRequiredTokens)
   }
 
+  if (CJK_SCRIPT_PATTERN.test(input.targetAnswer)) {
+    return checkCjkAnswer(normalizedTranscript, normalizedTarget, acceptedAnswers, normalizedRequiredTokens)
+  }
+
   if (normalizedTranscript === normalizedTarget) {
     return result('correct', 'exact', normalizedTranscript, normalizedTarget, 1, [])
   }
@@ -100,6 +112,51 @@ export function checkGuidedSpeechAnswer(input: GuidedSpeechCheckInput): GuidedSp
 
   const score = tokenSimilarity(transcriptTokens, normalizedRequiredTokens)
   if (score >= 0.72 && missingTokens.length <= Math.max(1, Math.floor(normalizedRequiredTokens.length * 0.25))) {
+    return result('close', 'close_missing_token', normalizedTranscript, normalizedTarget, score, missingTokens)
+  }
+
+  return result('incorrect', 'low_similarity', normalizedTranscript, normalizedTarget, score, missingTokens)
+}
+
+function checkCjkAnswer(
+  normalizedTranscript: string,
+  normalizedTarget: string,
+  acceptedAnswers: string[],
+  requiredTokens: string[],
+): GuidedSpeechCheckResult {
+  const transcript = squashWhitespace(normalizedTranscript)
+  const target = squashWhitespace(normalizedTarget)
+
+  if (transcript === target) {
+    return result('correct', 'exact', normalizedTranscript, normalizedTarget, 1, [])
+  }
+
+  if (acceptedAnswers.some((answer) => squashWhitespace(answer) === transcript)) {
+    return result('correct', 'variant', normalizedTranscript, normalizedTarget, 1, [])
+  }
+
+  const squashedTokens = requiredTokens.map(squashWhitespace).filter(Boolean)
+  const missingTokens = squashedTokens.filter((token) => !transcript.includes(token))
+
+  let cursor = 0
+  let inOrder = squashedTokens.length > 0
+  for (const token of squashedTokens) {
+    const index = transcript.indexOf(token, cursor)
+    if (index === -1) {
+      inOrder = false
+      break
+    }
+    cursor = index + token.length
+  }
+
+  if (inOrder && missingTokens.length === 0) {
+    return result('correct', 'core_tokens', normalizedTranscript, normalizedTarget, 1, [])
+  }
+
+  const score = squashedTokens.length > 0
+    ? (squashedTokens.length - missingTokens.length) / squashedTokens.length
+    : 0
+  if (score >= 0.72 && missingTokens.length <= Math.max(1, Math.floor(squashedTokens.length * 0.25))) {
     return result('close', 'close_missing_token', normalizedTranscript, normalizedTarget, score, missingTokens)
   }
 

@@ -96,6 +96,61 @@ assert.equal(
   'near miss is close, not correct',
 )
 
+// Japanese: ASR transcripts arrive unspaced — CJK targets must score
+// space-insensitively with substring required-token matching.
+const japaneseConfig = {
+  targetAnswer: 'すみません、駅はどこですか。',
+  acceptedAnswers: ['すみません、えきはどこですか'],
+  requiredTokens: ['駅', 'どこ', 'ですか'],
+}
+
+assert.equal(
+  checkGuidedSpeechAnswer({ transcript: 'すみません駅はどこですか', ...japaneseConfig }).status,
+  'correct',
+  'unspaced Japanese transcript matches exactly despite missing punctuation',
+)
+
+assert.equal(
+  checkGuidedSpeechAnswer({ transcript: 'すみません、えきはどこですか。', ...japaneseConfig }).status,
+  'correct',
+  'kana-only accepted-answer variant passes',
+)
+
+assert.equal(
+  checkGuidedSpeechAnswer({ transcript: 'あの、駅はどこですか', ...japaneseConfig }).status,
+  'correct',
+  'required tokens found as substrings in order pass',
+)
+
+assert.equal(
+  checkGuidedSpeechAnswer({ transcript: 'コーヒーをください', ...japaneseConfig }).status,
+  'incorrect',
+  'unrelated Japanese transcript fails',
+)
+
+assert.notEqual(
+  checkGuidedSpeechAnswer({ transcript: 'ですかどこ駅', ...japaneseConfig }).status,
+  'correct',
+  'Japanese required tokens out of order are not correct',
+)
+
+assert.equal(
+  checkGuidedSpeechAnswer({ transcript: '駅 は どこ です か', ...japaneseConfig }).status,
+  'correct',
+  'spaced ASR variance still matches the unspaced target',
+)
+
+// Korean must keep whitespace-token behavior (Hangul is not in the CJK class).
+assert.equal(
+  checkGuidedSpeechAnswer({
+    transcript: '혹시 영어를 할 수 있어요',
+    targetAnswer: '안녕하세요. 혹시 영어를 할 수 있어요?',
+    requiredTokens: ['혹시', '영어를', '있어요'],
+  }).status,
+  'correct',
+  'Korean whitespace token matching is unchanged',
+)
+
 for (const vibeId of ['bright', 'wistful', 'sharp'] as const) {
   const lesson = getCurrentGuidedLesson(vibeId)
   assert.equal(
