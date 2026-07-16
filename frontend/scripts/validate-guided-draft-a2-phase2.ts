@@ -14,7 +14,7 @@
  * baseLanguage German) — the per-config baseLocales drives which fields are
  * required.
  *
- * Usage: npx tsx scripts/validate-guided-draft-a2-phase2.ts [french|italian|portuguese|german|english|korean|polish|indonesian|cebuano]
+ * Usage: npx tsx scripts/validate-guided-draft-a2-phase2.ts [french|italian|portuguese|german|english|korean|polish|indonesian|cebuano|japanese|russian]
  */
 import type { GuidedLessonDefinition } from '../src/data/guidedLessons'
 import { GUIDED_LESSONS } from '../src/data/guidedLessons'
@@ -250,6 +250,57 @@ const CONFIGS: LangConfig[] = [
     bareFunctionWords: ['sa', 'og', 'ug', 'ang', 'ba', 'nga'],
     bannedRecallAnswerPatterns: [
       { re: /-/, why: 'recall must not blank a hyphenated/glottal word (kanus-a, bag-o — typed matching is unreliable)' },
+    ],
+  },
+  {
+    key: 'japanese',
+    targetLanguage: 'Japanese',
+    modulePath: '../src/data/guided/japaneseA2',
+    exportPrefix: 'JAPANESE_A2_PRACTICAL_',
+    pathIdPrefix: 'japanese-a2-practical-',
+    speakLanguage: 'ja-JP',
+    objectPronouns: ['これ', 'それ', 'あれ', 'ここ', 'そこ', 'あそこ', '私', 'わたし', '何', 'はい', 'いいえ', 'どこ', 'どれ'],
+    spaceBeforePunctuation: false,
+    bannedTargetPatterns: [
+      // かな only sentence-finally — it is a substring of na-adjectives (静かな 方が)
+      { re: /(だよ|だね|だろう)([\s。、!?]|$)|だ。|かな[。?!]/, why: 'casual/plain sentence ender banned (です・ます throughout)' },
+      { re: /(?<!ありがとう)ございま/, why: 'keigo banned beyond ありがとうございます/ました fixed chunks' },
+      { re: /(いたします|おります|でございま|くださいませ|なさいます)/, why: 'humble/honorific keigo banned (B1+)' },
+      { re: /思いま/, why: 'と思います banned (embeds plain form) — use たぶん + present' },
+      { re: /ので([\s、。]|$)/, why: 'ので banned — polite form + から is the single A2 subordinator' },
+      { re: /(^|\s)か[。?]?(\s|$)/, why: 'floating か particle (must attach to its verb — wakachigaki rule)' },
+      { re: /[0-9０-９]/, why: 'digits banned — numbers are kanji numeral words (三千円, 二つ)' },
+      { re: /\b(hi|sorry|okay|ok)\b/i, why: 'English leak in Japanese target text' },
+    ],
+    baseLocales: ['de', 'en'],
+    recallVariant: 'plain',
+    minCoreTokens: 4,
+  },
+  {
+    key: 'russian',
+    targetLanguage: 'Russian',
+    modulePath: '../src/data/guided/russianA2',
+    exportPrefix: 'RUSSIAN_A2_PRACTICAL_',
+    pathIdPrefix: 'russian-a2-practical-',
+    speakLanguage: 'ru-RU',
+    objectPronouns: ['это', 'то', 'я', 'вы', 'мы', 'он', 'она', 'они', 'что', 'да', 'нет', 'вот', 'здесь', 'там'],
+    spaceBeforePunctuation: false,
+    bannedTargetPatterns: [
+      { re: /\b(ты|тебя|тебе|тобой|твой|твоя|твоё|твои)\b/iu, why: 'ты register banned (вы throughout — voice-gender plan §3)' },
+      { re: /\bбы\b/iu, why: 'conditional бы banned (speaker-gendered participle — voice-gender plan)' },
+      { re: /\bдавай\b/iu, why: 'bare давай banned (ты-form) — давайте is the вы proposal' },
+      { re: /[0-9０-９]/, why: 'digits banned — numbers are words (пятьсот рублей, два яблока)' },
+      { re: /\b(hi|sorry|okay|ok)\b/i, why: 'English leak in Russian target text' },
+    ],
+    baseLocales: ['de', 'en'],
+    recallVariant: 'accentless',
+    minCoreTokens: 4,
+    bareFunctionWords: ['в', 'на', 'с', 'к', 'у', 'о', 'и', 'а', 'но', 'же', 'не', 'за', 'до', 'из', 'по'],
+    bannedRecallAnswerPatterns: [
+      { re: /^(заплатил|приехал|заказал|купил|попробовал|видел|ходил|сделал|позвонил|потерял|спал|пришёл|пришел|устал|был|рад|готов|должен|занят|уверен)(а)?$/iu, why: 'recall must never blank a speaker-gendered form (voice-gender plan §3)' },
+    ],
+    bannedRequiredTokenPatterns: [
+      { re: /^(заплатила?|приехала?|заказала?|купила?|попробовала?|видела?|ходила?|сделала?|позвонила?|потеряла?|спала?|пришёл|пришел|пришла|устала?|была?|рада?|готова?|должна|должен|занята?|уверена?)$/iu, why: 'speakRequired must never pin a speaker-gendered form (voice-gender plan §3)' },
     ],
   },
 ]
