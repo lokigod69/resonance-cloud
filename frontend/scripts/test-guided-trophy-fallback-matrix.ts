@@ -257,11 +257,11 @@ console.log('\n[B1 matrix]')
     'German B1 P1 metadata carries level B1',
     pathOptions.find((path) => path.id === 'german-b1-practical-1')?.level === 'B1',
   )
-  // Phase 0: the path holds the 3 handwritten device-gate pilots, so segment 1
-  // surfaces one trophy card per authored lesson (grows to 5 as P1 fills).
+  // P1 is fully authored (10 lessons), so segment 1 surfaces the standard
+  // five trophy cards (lessons 1–5).
   const b1FallbackWords = getGuidedTrophyWordsForSegment('german-b1-practical-1', 1, 'bright')
   const b1WordLabels = b1FallbackWords.map((word) => word.word)
-  assert('german-b1-practical-1 segment 1 bright returns the 3 pilot trophy cards', b1FallbackWords.length === 3, b1FallbackWords)
+  assert('german-b1-practical-1 segment 1 bright returns 5 trophy cards', b1FallbackWords.length === 5, b1FallbackWords)
   assert('german-b1-practical-1 segment 1 bright has no duplicate TrophyWordCard keys', new Set(b1WordLabels).size === b1WordLabels.length, b1WordLabels)
   for (const trophyWord of b1FallbackWords) {
     for (const field of TROPHY_TARGET_FIELDS) {

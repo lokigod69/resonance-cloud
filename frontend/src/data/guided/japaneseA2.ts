@@ -23,8 +23,9 @@
  * - Numbers are kanji numeral words (三千円, 二つ, 十分), never digits.
  * - Trophies unique across the entire Japanese guided corpus (A1 + A2),
  *   particle-free single words.
- * - NO TTS voices exist yet — ids are NOT frozen until a batch runs; text fixes
- *   are still cheap.
+ * - TTS-FROZEN (2026-07-17): the bright ElevenLabs batch ran for all 10 paths
+ *   (profiles japanese_a2_bright_p{n}_multiv2_v1) — ids and TTS-bearing text
+ *   (corePhrase/chunks/trophyWord) must NOT change without a regeneration plan.
  */
 import type {
   GuidedBaseContentText,

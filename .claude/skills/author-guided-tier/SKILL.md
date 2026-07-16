@@ -331,6 +331,31 @@ deltas:
 - **Engine note:** the session engine keys on `lesson.level`, not the authored
   `steps` array — a B1 module MUST set `level: 'B1'` in its path metadata or the
   lesson silently runs the A1/A2 5-step flow.
+- **Cloze-chip tripwires (2026-07-17, de P1 L4–L10 run):** connector-blank chip
+  sets must never mix near-synonymous sequencers (dann/danach — Codex did it in
+  5 of 7 lessons); safest clearly-wrong fills are zuerst (when already used in
+  the sentence), endlich, damals, trotzdem — and re-check EVERY proposed chip
+  for causal plausibility in ITS slot (deshalb/später fit most narrative slots;
+  the adversarial reviewer itself proposed deshalb into two causally-friendly
+  slots). Modal-blank 4th chip = durfte, never hatte (hatte + infinitive is
+  ungrammatical and tests nothing). sein-Perfekt participle blanks need
+  sein-verb chips (bin + eingekauft is ungrammatical — form-matched includes
+  auxiliary-matched).
+- **Episode-tense coherence (same run):** a past-narration episode must not
+  answer a live present-tense them-turn with past narration (L5 drafted "Ich
+  hatte ... nicht dabei" against a live "Haben Sie ... dabei?"). Fix by
+  reframing the them-turns as retrospective (next-day visit) — keeps you₁/you₂
+  and every mechanical field untouched. Watch for it whenever the anchor forces
+  past tense onto a service-counter scene. Reviewers can miss this class —
+  Fable's read-through owns it.
+- **Codex-ops (same run):** companion jobs land under
+  `~\.claude\plugins\data\codex-openai-codex\state\{cwdBaseName-hash}\jobs\`
+  — the hash dir is cwd-dependent (repo root → `ResonanceTEST-*`, orchestrator
+  → `orchestrator-*`), and `status <id>` from one cwd cannot see another's
+  jobs; poll the job JSON file directly. The `%TEMP%\codex-companion` dir is a
+  stale legacy registry. The codex:codex-rescue subagent is a fire-and-return
+  forwarder — it launches `--background` and CANNOT babysit; poll from the
+  main thread.
 
 ## Per-language notes (accreting)
 

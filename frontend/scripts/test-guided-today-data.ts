@@ -700,7 +700,7 @@ for (const cebuanoA2PathId of cebuanoA2PathIds) {
 for (const germanB1PathId of germanB1PathIds) {
   const germanB1PathLessons = getGuidedPathLessons(germanB1PathId)
   // Phase 0 ships exactly the 3 handwritten device-gate pilots (B1 design doc §6); update when the path fills to 10.
-  assert(`German B1 path ${germanB1PathId} resolves the 3 Phase-0 pilot lessons`, germanB1PathLessons.length === 3, germanB1PathLessons.length)
+  assert(`German B1 path ${germanB1PathId} resolves all 10 lessons`, germanB1PathLessons.length === 10, germanB1PathLessons.length)
   assert(`German B1 path ${germanB1PathId} carries level B1`, germanB1PathLessons.every((lesson) => lesson.level === 'B1'))
   assert(`German B1 path ${germanB1PathId} uses de-DE in every speak target`, germanB1PathLessons.every((lesson) => lesson.vibeVariants.bright?.speakTarget.language === 'de-DE'))
   assert(`German B1 path ${germanB1PathId} keeps English base language`, germanB1PathLessons.every((lesson) => lesson.baseLanguage === 'English'))

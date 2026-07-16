@@ -59,6 +59,12 @@ ROSTERS: dict[str, tuple[str, tuple[str, ...], list[str], int]] = {
     "indonesian": ("id", ("id",), ["Gavrila"], 10),
     "polish": ("pl", ("pl",), ["Maria", "Rysard", "Marta", "Wojech"], 10),
     "korean": ("ko", ("ko",), ["Jini", "Yuna", "Selly", "Kanna", "Emily", "Sola"], 1),
+    # ja gender-unconstrained (A1+A2 specs are gender-free); order alternates
+    # F/M-leaning voices for variety: Akane(F) / Koichi(M) / Konoha(F) / ishibashi(M).
+    "japanese": ("ja", ("ja",), ["Akane", "Koichi", "Konoha", "ishibashi"], 10),
+    # NOTE russian is deliberately absent: public.voices has no ru rows yet and
+    # tmp\A2_RUSSIAN_VOICE_GENDER_PLAN.md requires >=2F+2M mapped odd-F/even-M
+    # for A2 before any seeding. Add the roster here once the owner picks voices.
 }
 
 

@@ -1,6 +1,7 @@
 import { RotateCcw } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { getDeterministicBuildChips, type GuidedLesson } from '@/data/guidedLessons'
+import { getDeterministicBuildChips, resolveGuidedBaseContent, type GuidedLesson } from '@/data/guidedLessons'
+import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -17,6 +18,8 @@ type BuildPhraseStepProps = {
 
 export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepProps) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const preferredBaseLanguage = profile?.base_language
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([])
   const [status, setStatus] = useState<BuildPhraseCheckState['status']>('idle')
   const [attempts, setAttempts] = useState(0)
@@ -82,11 +85,32 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
     applySelection([])
   }
 
+  // The base-language line the learner is translating. build.targetText is
+  // validator-pinned to corePhrase.targetText, so corePhrase.baseText is its
+  // meaning; the guard keeps any drifting data from showing a wrong cue.
+  const cueText = lesson.build.targetText === lesson.corePhrase.targetText
+    ? resolveGuidedBaseContent(lesson.corePhrase.baseText, {
+      preferredBaseLanguage,
+      authoredBaseLanguage: lesson.baseLanguage,
+    }).text
+    : undefined
+
   return (
     <div className="today-build-step grid gap-5">
       <p className="today-step-prompt max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
         {t('today.build.prompt')}
       </p>
+
+      {cueText && (
+        <div className="today-build-cueCard rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4">
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+            {t('today.build.cueLabel')}
+          </p>
+          <p className="mt-2 break-words text-xl font-semibold leading-snug text-[var(--text-primary)] sm:text-2xl">
+            {cueText}
+          </p>
+        </div>
+      )}
 
       <div
         data-build-state={status}

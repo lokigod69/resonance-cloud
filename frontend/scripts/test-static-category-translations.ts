@@ -30,8 +30,8 @@ assert.ok(
   'translation review export script should exist',
 )
 
-const expectedLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ceb', 'ko']
-const expectedVisibleLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ceb', 'ko']
+const expectedLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ceb', 'ko', 'ru', 'ja']
+const expectedVisibleLanguageCodes: StaticCategoryTargetLanguageCode[] = ['en', 'de', 'fr', 'es', 'pt', 'it', 'pl', 'id', 'ceb', 'ko', 'ru', 'ja']
 
 assert.deepEqual(
   STATIC_CATEGORY_TRANSLATION_LANGUAGES.map((language) => language.code),

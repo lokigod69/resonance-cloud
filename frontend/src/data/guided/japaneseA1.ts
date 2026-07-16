@@ -9,7 +9,9 @@
  * single spaces to the corePhrase. Slugs are Hepburn romaji. The speech check
  * scores CJK targets space-insensitively (lib/guidedSpeechCheck.ts), so spaced
  * targets match unspaced ja-JP ASR transcripts.
- * No TTS voices exist yet — ids are NOT frozen until a batch runs.
+ * TTS-FROZEN (2026-07-17): the bright ElevenLabs batch ran for all 10 paths
+ * (profiles japanese_a1_bright_p{n}_multiv2_v1) — ids and TTS-bearing text
+ * (corePhrase/chunks/trophyWord) must NOT change without a regeneration plan.
  */
 import type {
   GuidedBaseContentText,
