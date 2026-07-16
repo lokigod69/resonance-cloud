@@ -2,7 +2,12 @@ import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { GuidedSpeakLocale } from '@/data/guidedLessons'
 import { cancelGuidedSpeech, speakGuidedText } from '@/components/today/speech'
 
-export type GuidedAudioSurface = 'corePhrase' | 'chunk' | 'trophyWord'
+/**
+ * B1 adds two surfaces (design doc §4.7): 'dialogue' keys the episode's
+ * non-core turns as 'turn-1' / 'turn-3' / 'turn-4' (you₁ = turn 2 stays on
+ * 'corePhrase'/'__self'), and 'pattern' keys the spotlight examples 'ex-1..3'.
+ */
+export type GuidedAudioSurface = 'corePhrase' | 'chunk' | 'trophyWord' | 'dialogue' | 'pattern'
 
 export type GuidedAudioLookupArgs = {
   pathId: string

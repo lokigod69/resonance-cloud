@@ -14,6 +14,10 @@ export type TodayLessonResult = {
   reviewCorrect?: number
   reviewTotal?: number
   knownItemCount?: number
+  /** B1 sessions only: complication-cloze and role-play stats (the shared fields above already carry their summed equivalents) */
+  clozeBlanksTotal?: number
+  clozeBlanksFirstTry?: number
+  rolePlayTurnsPassed?: number
 }
 
 export type TodayCompletionSummary = {

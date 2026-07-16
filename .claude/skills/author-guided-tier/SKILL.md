@@ -249,6 +249,89 @@ New-language A1 accretions (2026-07-16, ru+ja run):
   boundary): save `result` output to tmp IMMEDIATELY on completion and gate
   batches on files+validators, never on the registry.
 
+A2-for-new-languages accretions (2026-07-16, ru+ja A2 run):
+- **Draft jobs edit lessons in their verify loop AFTER writing them** — a
+  Fable read taken while the job still shows `running` can go stale (ja P4·2
+  was rebuilt post-read). Read only after the job closes, or re-extract the
+  slug|corePhrase|trophy table at the end and re-read changed rows.
+- Validator regex false-positive classes to design around: ja かな matches
+  inside na-adjectives (ban it sentence-finally only: かな[。?!]); ru
+  speaker-gender token bans hit subject-agreeing short forms (Мой телефон уже
+  готов) — the validator cannot know the referent, so keep the tripwire strict
+  and swap the offending speak token instead of weakening the ban.
+- Reviewer failure modes that recur even when the prompt warns: caption-
+  whitelist findings (interlocutor lines flagged for learner-tense bans) and
+  per-lesson over-generalization of the P9 "past+present mixed" capstone (the
+  mix is a PATH-level property — Korean precedent has present-only repair
+  beats). State "the capstone mix is path-level" in future review prompts.
+- Review-proposed replacement captions can DUPLICATE a sibling lesson's
+  content (ru P8: proposed news line = L1's news; proposed weather question =
+  L2's) — arbiter must cross-check the path before accepting caption swaps.
+- Parallel-language batching works: ja and ru batches ran concurrently the
+  whole way (distinct files), halving wall-clock; batches within one language
+  stay sequential.
+- `npx rg` is NOT ripgrep (bogus rg@0.0.2 npm package) — use the harness Grep
+  tool or a real ripgrep install.
+
+## B1 branch (2026-07-16 — episode tier; German pilot)
+
+B1 is NOT A2-with-harder-words: the lesson is a four-turn EPISODE and the session
+runs 7 steps (scene → matchPairs → **pattern** → build → **complication** (multi-
+blank cloze) → **rolePlay** (speak both turns) → complete). Design doc:
+`orchestrator/docs/Product/FABLE_B1_LEARNING_PATH_DESIGN.md`; per-path contract:
+`tmp\B1_GERMAN_P1_P10_SPEC.md` (anchor staging, episode shapes, blank schemas,
+100-trophy pre-allocation). Everything in stages 0–9 above still applies; the
+deltas:
+
+- **Preconditions (extra):** the language's A2 is complete AND the owner has
+  approved the B1 design §8 + the Phase-0 device gate (handwritten cloze/rolePlay
+  lessons proven on the owner's phone) BEFORE any Codex batch.
+- **Scaffold:** copy `germanB1.ts`, not `germanA2.ts` — the compact input adds
+  `register` (per LESSON, supersedes A2's per-path lock), `dialogue` (4 turns,
+  you₁ auto-becomes corePhrase), `pattern` (label + 1-sentence rule + 2–3
+  highlighted examples), and `cloze` (parts array: strings are text segments,
+  objects are blanks with kind/answer/cue/4 choices). estimatedMinutes 7, speak
+  15 s. dialogue turn 4 and the cloze are authored SEPARATELY — keep
+  you₂ === cloze concat by hand; the validator enforces the identity.
+- **Spec must declare per path:** the anchor-family STAGING across L1–L10 (one
+  family per path, staged, recycling map), the episode shape (A complication /
+  B interested listener / C negotiation — them₂ must ADD content, and in shape B
+  the two you-turns read as ONE connected piece of discourse), the blank schema
+  (allowed kinds + which kind targets the anchor), register tendency, and the
+  trophy pre-allocation for ALL 100 lessons up front (checked mechanically
+  against the language's whole corpus — no batch-by-batch trophy scavenging).
+- **Batch-prompt additions** (on top of the A2 known_failure_modes): the scene
+  shows them₁ ONLY — never author them₂ as something the scene already reveals
+  (delayed complication is the tier's core move); cloze blanks never bare
+  pronouns/articles (typed kinds), every blank ships exactly 4 same-category
+  never-also-correct chips; choice-kind ONLY where typing tests spelling not
+  grammar (relative pronouns, als/wenn); pattern examples must reuse ≥ 1 episode
+  line and carry a contiguous highlight substring; multi-word blank answers ≤ 3
+  words (verb-final clusters encouraged where the anchor is word order);
+  typeRecall still reconstructs you₁ exactly (checkpoints consume it).
+- **Validator:** `npx tsx scripts/validate-guided-draft-b1.ts` (episode-shaped;
+  the a2-phase2 validator stays A2-only). It owns dialogue shape, you₁/corePhrase
+  and cloze-concat identities, blank taxonomy vs the spec's schema table, pattern
+  honesty, per-lesson register consistency (mid-sentence formal address in
+  du-lessons, du-forms in Sie-lessons), German rails, and cross-corpus trophy
+  uniqueness. New failure mode → permanent tripwire, same commit.
+- **Suite baselines:** `test-guided-today-data.ts` (germanB1PathIds + explicit
+  per-path lesson COUNT — Phase 0 pins 3) and the trophy matrix's `[B1 matrix]`
+  block (pins segment-1 card count) grow with every batch — update them in the
+  integration commit or the suites fail loudly.
+- **Review-prompt additions:** B1 reviewer failure modes = flagging interlocutor
+  turns against learner rails (them-turns are exempt, as at A2), proposing
+  cloze rewrites that break the concat identity or blank count, "fixing"
+  register by flattening du-lessons to Sie, and demanding the complication be
+  foreshadowed in the scene (it must NOT be). State all four in the prompt.
+- **TTS:** two NEW surfaces — `dialogue` (`turn-1`/`turn-3`/`turn-4`; you₁ stays
+  corePhrase `__self`) and `pattern` (`ex-1..3`). ~20–25k chars for a full
+  B1 language (+60% vs A2). Seeder/batch-runner/verify scripts need the surface
+  enumeration extended BEFORE the first B1 batch run. Ids unfrozen until then.
+- **Engine note:** the session engine keys on `lesson.level`, not the authored
+  `steps` array — a B1 module MUST set `level: 'B1'` in its path metadata or the
+  lesson silently runs the A1/A2 5-step flow.
+
 ## Per-language notes (accreting)
 
 - **Spanish**: pilot language; preterite whitelist proved the model.
@@ -289,7 +372,7 @@ New-language A1 accretions (2026-07-16, ru+ja run):
   di- passives only as lexicalized fixed chunks (dibungkus), never recall
   targets; ter- state verbs read as B1 (tersambung → pakai); struk not bukti
   for receipts; loanword policy per lesson (check-out precedent).
-- **Russian** (A1 shipped to tree 2026-07-16, uncommitted): A1 is 100%
+- **Russian** (A1 committed `353253cf`; A2 shipped `2b58fd94` 2026-07-16): A1 is 100%
   GENDER-FREE by design (no past tense, no рад/рада — neutral recasts:
   Извините за опоздание / Мне пора отдыхать / Я всё лучше понимаю русский);
   ё kept in target text with е-fold via scaffold `russianAccepted`; вы
@@ -297,7 +380,18 @@ New-language A1 accretions (2026-07-16, ru+ja run):
   stems + -ть/-ться/-ти/-чь infinitive exemptions in the validator. **A2
   requires the Polish-style per-path voice-gender PLAN BEFORE authoring**
   (no TTS roster exists — content will dictate the roster's genders).
-- **Japanese** (A1 shipped to tree 2026-07-16, uncommitted): WAKACHIGAKI in
+  **A2 DONE under that plan** (tmp\A2_RUSSIAN_VOICE_GENDER_PLAN.md): odd paths
+  FEMALE, even MALE (P3/P9 F past, P10 M Я приехал callback); `genderForms
+  {voiced, other}` scaffold field generates swapped speak/type variants; бы
+  banned outright; futures gender-FREE (буду+inf, perfective non-past) — P4
+  uses real futures, easier than Polish; потому что only; вы all 10 paths;
+  future roster needs ≥2F+2M voices mapped odd-F/even-M, A1 unconstrained.
+- **Japanese** (A1 committed `353253cf`; A2 shipped `2b58fd94` 2026-07-16 —
+  です・ます ALL paths incl. friends, past ました whitelist P3/P9 + marked
+  recycling, plans = present + time word (no morphological future/つもり/
+  でしょう), から-only reasons — ので/と思います banned, ています named-budget
+  per path, kanji numerals never digits, targetKana/kana fields feed kana
+  speak+type variants): WAKACHIGAKI in
   every target sentence field (particles attached, punctuation attached, か
   attached to its verb — spaced か is a floating-particle validator fail);
   survival-kanji + kana orthography, Hepburn readings in item glosses, kana

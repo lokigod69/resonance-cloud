@@ -2,6 +2,24 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-07-16 — CSS convention: -webkit-backdrop-filter FIRST, standard backdrop-filter LAST in every pair
+**Status:** active — LOG 2026-07-16, commit `e7b2c98e`
+**Decision:** Every paired blur declaration in source CSS writes the `-webkit-` prefixed property first and the standard property last. Never reintroduce standard-first order.
+**Why:** The production CSS minifier dedupes the alias pair keeping only the LAST declaration, and current desktop Chrome no longer implements `-webkit-backdrop-filter` — standard-first order shipped webkit-only blur and killed frosted glass app-wide in production while dev (unminified) looked fine. Webkit-first order makes the minifier keep BOTH properties (verified in dist: 59+59).
+**Rejected:** `!important` on the declarations (Codex's proposal — nothing actually fights the cascade; it was a minifier/browser-support issue) and dropping the webkit twin entirely (old iOS Safari still reads it).
+
+## 2026-07-16 — Library (/categories) follows the app-wide active language
+**Status:** active — LOG 2026-07-16, commit `e7b2c98e`
+**Decision:** `readStaticLibraryTargetLanguage` precedence is route query → app-wide active language (skipped when it has no static pack) → stored Library key (last resort). The Library's in-page selector is a session-only override and does not fight global state.
+**Why:** The stored-key-first order let an old Library pick (German) permanently shadow the learner's current study language (Korean) on every nav entry; owner-reported. Active language changes must be reflected everywhere without ceremony.
+**Rejected:** Making the in-page selector write the global active language (would make Library browsing mutate app-wide study state, e.g. for Tier-0 languages with no packs).
+
+## 2026-07-16 — Russian A2 voice-gender plan (inverted Polish §5.3: the plan dictates the future TTS roster)
+**Status:** active — tmp\A2_RUSSIAN_VOICE_GENDER_PLAN.md, LOG 2026-07-16
+**Decision:** Russian A2 narrator gender is pinned per path BEFORE authoring: odd paths FEMALE, even paths MALE (P3/P9 female past -ла, P10 male Я приехал callback — mirrors the Polish anchors). Canonical learner text agrees with the path gender; a `genderForms {voiced, other}` scaffold declaration generates swapped-gender accepted answers; recall/speakRequired/trophies never gendered; бы banned outright. The eventual ElevenLabs roster must supply ≥2 female + ≥2 male Russian voices mapped odd-F/even-M; Russian A1 (gender-free) rotates unconstrained.
+**Why:** Russian past tense and short adjectives agree with the speaker; with no TTS roster existing yet, fixing gender content-first keeps authoring unblocked and turns the owner's later voice purchase into a constrained pick instead of a content rewrite. Russian futures carry no gender, so unlike Polish no future-tense workaround is needed.
+**Rejected:** Waiting for the owner's voice picks before authoring (blocks the frontier on a paid decision), and gender-neutral-only A2 content (impossible: past tense is the A2 curriculum).
+
 ## 2026-07-13 - Imported-deck thematic audio is a read-only session fallback
 **Status:** active - LOG 2026-07-13 (4)
 **Decision:** Wave Rider reads curriculum metadata at session start and attaches existing static thematic playback to the in-memory session deck only. Existing `tts_audio_url` wins; unavailable static audio falls through to browser speech.
@@ -235,3 +253,22 @@ Build-step distractors that form grammatically valid but DIFFERENT-MEANING sente
 
 ## 2026-07-16 — typeRecall may blank adjectives when they are the teaching point
 Spec rule 8 amendment (both new A1 specs): adjective blanks allowed when the adjective IS the lesson's teaching point (открыта/острое/нужная class) — the noun/verb/adverb-only rule was over-literal and produced pedagogy-false review findings.
+
+## 2026-07-16 — B1 tier design decisions (doc v2; owner sign-off pending on §8)
+- **B1 lesson = four-turn episode with DELAYED complication.** them₁ → learner builds you₁ → only then them₂ lands (audio+reveal) → learner completes you₂ via multi-blank cloze → rolePlay speaks both turns cued by the them-lines. **Rejected:** v1's show-the-whole-episode-in-the-scene flow (Codex review: temporal inversion — revealing the complication and resolution before production kills the communicative need pushed output depends on).
+- **Three licensed episode shapes, one engine** — Complication (transactional), Interested listener (narration/opinion: them₂ is a genuine follow-up, the learner's two turns form connected discourse), Negotiation (arrangements); assigned per path. **Rejected:** one them/you/them/you template for all 100 lessons (manufactured complications by lesson 47) and per-shape engine templates (breaks repeatability, multiplies engine work).
+- **Grammar: explicit but embedded, no standalone grammar lessons.** Per-path staged anchor FAMILIES + an in-lesson pattern-spotlight step + anchor-forcing cloze blanks; spotlights stay reachable during production. Framing honesty ruled: "explicit beats implicit" is meta-analytic (Norris & Ortega); "embedded beats isolated" is our design choice, not a research result. **Rejected:** separate grammar-unit track (transfer risk, forks the product shape).
+- **Cloze blank taxonomy, not one-size-fits-all:** form blanks (lemma-cued, ≤3 words, may sit at the clause-final slot so filling = the word-order decision), connector blanks, choice-chip blanks for closed classes (relative pronouns, als/wenn). **Rejected:** mandatory lemma-cued morphology blank in every lesson (doesn't fit syntactic anchors; v1's own example violated the Präteritum rail).
+- **Engine keys B1 behavior on `lesson.level`, NOT `lesson.steps`** — authored steps arrays have never been read; activating them would put ~2,400 frozen data rows in the behavior path for zero benefit.
+- **B1 keeps `typeRecall`** (single blank, unused by the B1 session flow) purely so segment reviews + checkpoints work unchanged; the path-checkpoint prompt gets a B1 before/blank/after rendering branch.
+- **Phase-0 device gate:** cloze + rolePlay must be device-checked on 2–3 handwritten German lessons BEFORE any Codex batch — the mobile interaction contract shapes viable segment lengths, so content can't precede it.
+- **German is the B1 pilot** (owner verifies natively); Spanish and the rest wait. Guided-progress persistence (localStorage-only at 300 lessons/language) escalated from out-of-scope to a named owner decision.
+
+## 2026-07-16 — B1 §8 owner sign-off + Phase-0 build decisions
+- **Owner signed off all six §8 decisions** (voice, 2026-07-16): spine/anchors, delayed-complication flow, embedded grammar ("okay better not" to standalone grammar lessons), German pilot + device gate, **progress persistence stays localStorage-only through the B1 era** (no users yet; Supabase-persisted progress explicitly deferred, owner open to it later), TTS cadence unchanged.
+- **B1 matchPairs draws from `lessonItems`, not `phraseChunks`** — the design's step 2 anchors lexis from the WHOLE episode (6–8 items), and you₁'s chunks alone under-serve the complication vocabulary. A1/A2 keep chunk pairs (frozen behavior). Item-keyed `chunk`-surface audio falls back to browser speech until the B1 TTS batch covers those keys.
+- **The pre-lesson surfaces must honor the delayed-production contract too:** TodayHero previews them₁ (not the corePhrase) and the B1 scene/hero resolve `situation` to the learner's base language (the legacy situation.de convention stays for A1/A2 — frozen behavior).
+- **RolePlay aggregate status is never 'passed' until BOTH turns pass** (review HIGH: a single turn's 'passed' status unlocked the session footer). Per-turn 'passed' maps to 'idle' in the aggregate.
+- **Cloze→type equivalence is summed per blank:** one Check press adds one attempt per unresolved blank it evaluates; fallback = any blank's chips used after a miss.
+- **Rejected (review finding 8): gating segment-2 review / path check / trophy links on partial paths** — they land on graceful "unavailable" screens, the 3-lesson state is transient Phase-0 reality, and the consumers fill in when P1 completes. Owner informed instead.
+- **Validator carries stage-gates, not just bans:** war/hatte + es gab legal from P1 L4, modal Präteritum from P1 L6, free in later paths; anchor-targeting blanks for closed-class paths (P2/P4/P7/P8) must match the class whitelist, not just the blank kind; pattern "drawn from the episode" = every token of ≥1 example inside one turn.

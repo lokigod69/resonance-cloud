@@ -172,6 +172,19 @@ export function TodayHero({
   })
   const effectiveBaseLanguage = resolvedCoreBase.language
   const pathDirection = `${t(`today.language.${effectiveBaseLanguage}`)} -> ${t(`today.language.${lesson.pathMetadata.targetLanguage}`)}`
+  // B1 keeps you₁ hidden until the build step (design doc §3.2): the hero
+  // previews the interlocutor's opening line instead of the core phrase.
+  const heroThemOne = lesson.level === 'B1' ? lesson.dialogue?.[0] : undefined
+  const resolvedThemOneBase = heroThemOne
+    ? resolveGuidedBaseContent(heroThemOne.baseText, {
+      preferredBaseLanguage,
+      authoredBaseLanguage: lesson.baseLanguage,
+    }).text
+    : undefined
+  const resolvedSituation = resolveGuidedBaseContent(
+    { en: lesson.situation.en, de: lesson.situation.de },
+    { preferredBaseLanguage, authoredBaseLanguage: lesson.baseLanguage },
+  ).text
 
   return (
     <section className="theme-panel relative overflow-hidden rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
@@ -207,18 +220,18 @@ export function TodayHero({
               {resolvedTitle}
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--text-secondary)]">
-              {lesson.situation.de}
+              {lesson.level === 'B1' ? resolvedSituation : lesson.situation.de}
             </p>
 
             <div className="mt-6 grid gap-3 rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4">
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
-                {t('today.corePhrase')}
+                {heroThemOne ? t('today.scene.theyOpen') : t('today.corePhrase')}
               </p>
               <p className="break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-3xl">
-                {lesson.corePhrase.targetText}
+                {heroThemOne ? heroThemOne.targetText : lesson.corePhrase.targetText}
               </p>
               <p className="break-words text-sm leading-6 text-[var(--text-secondary)]">
-                {resolvedCoreBase.text}
+                {heroThemOne ? resolvedThemOneBase : resolvedCoreBase.text}
               </p>
             </div>
 

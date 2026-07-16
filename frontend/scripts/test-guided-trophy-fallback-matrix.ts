@@ -245,6 +245,42 @@ console.log('\n[A2 matrix]')
   assert('missing A2 canonical song row throws typed unavailable error', a2MissingSongError instanceof TrophySongNotAvailableError, a2MissingSongError)
 }
 
+console.log('\n[B1 matrix]')
+{
+  const orderedPathIds = pathOptions.map((path) => path.id)
+  assert(
+    'German B1 P1 is exposed directly after German A2 P10',
+    orderedPathIds.indexOf('german-b1-practical-1') === orderedPathIds.indexOf('german-a2-practical-10') + 1,
+    orderedPathIds.filter((id) => id.startsWith('german-')),
+  )
+  assert(
+    'German B1 P1 metadata carries level B1',
+    pathOptions.find((path) => path.id === 'german-b1-practical-1')?.level === 'B1',
+  )
+  // Phase 0: the path holds the 3 handwritten device-gate pilots, so segment 1
+  // surfaces one trophy card per authored lesson (grows to 5 as P1 fills).
+  const b1FallbackWords = getGuidedTrophyWordsForSegment('german-b1-practical-1', 1, 'bright')
+  const b1WordLabels = b1FallbackWords.map((word) => word.word)
+  assert('german-b1-practical-1 segment 1 bright returns the 3 pilot trophy cards', b1FallbackWords.length === 3, b1FallbackWords)
+  assert('german-b1-practical-1 segment 1 bright has no duplicate TrophyWordCard keys', new Set(b1WordLabels).size === b1WordLabels.length, b1WordLabels)
+  for (const trophyWord of b1FallbackWords) {
+    for (const field of TROPHY_TARGET_FIELDS) {
+      assert(
+        `german-b1-practical-1 segment 1 bright ${trophyWord.word} has non-empty ${field}`,
+        typeof trophyWord[field] === 'string' && trophyWord[field].trim().length > 0,
+        trophyWord,
+      )
+    }
+    for (const field of TROPHY_BASE_FIELDS) {
+      assert(
+        `german-b1-practical-1 segment 1 bright ${trophyWord.word} has non-empty ${field}`,
+        resolveGuidedBaseContent(trophyWord[field], { authoredBaseLanguage: 'English' }).text.trim().length > 0,
+        trophyWord,
+      )
+    }
+  }
+}
+
 console.log('\n[fallback vs song routing]')
 const supportedRow = await fetchTrophySongCanonical('english-a1-practical-1', 1, 'bright')
 assert('canonical trophy song row still exists for P1 segment 1 Bright', supportedRow.pathId === 'english-a1-practical-1' && supportedRow.segment === 1 && supportedRow.vibe === 'bright')

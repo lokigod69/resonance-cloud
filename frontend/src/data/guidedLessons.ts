@@ -227,6 +227,10 @@ import {
   GUIDED_TODAY_PATH_GERMAN_A2_TWO_METADATA,
 } from './guided/germanA2'
 import {
+  GERMAN_B1_PRACTICAL_1_LESSONS,
+  GUIDED_TODAY_PATH_GERMAN_B1_ONE_METADATA,
+} from './guided/germanB1'
+import {
   ENGLISH_A2_PRACTICAL_1_LESSONS,
   ENGLISH_A2_PRACTICAL_2_LESSONS,
   ENGLISH_A2_PRACTICAL_3_LESSONS,
@@ -415,12 +419,14 @@ export type GuidedLessonMedia = {
   caption: GuidedBaseContentText
 }
 
+export type GuidedLessonLevel = 'A1' | 'A2' | 'B1'
+
 export type GuidedPathMetadata = {
   id: string
   title: string
   shortTitle: string
   subtitle: GuidedBaseContentText
-  level: 'A1' | 'A2'
+  level: GuidedLessonLevel
   baseLanguage: GuidedBaseLanguage
   targetLanguage: GuidedTargetLanguage
   estimatedMinutes: number
@@ -459,7 +465,17 @@ export type GuidedTypeFallbackChoice = {
   isCorrect: boolean
 }
 
-export type GuidedLessonStep = 'scene' | 'matchPairs' | 'build' | 'type' | 'speak' | 'review' | 'complete'
+export type GuidedLessonStep =
+  | 'scene'
+  | 'matchPairs'
+  | 'pattern'
+  | 'build'
+  | 'type'
+  | 'complication'
+  | 'rolePlay'
+  | 'speak'
+  | 'review'
+  | 'complete'
 
 export type GuidedLessonTrophyWord = {
   word: string
@@ -479,6 +495,58 @@ export type GuidedLessonPlaceholderMedia = {
   posterUrl?: string
   caption?: GuidedBaseContentText
 }
+
+/**
+ * B1 episode types (docs/Product/FABLE_B1_LEARNING_PATH_DESIGN.md §3).
+ * A B1 lesson is a four-turn episode them/you/them/you: dialogue[1] (you₁) is
+ * the corePhrase (built, spoken, TTS-anchored) and dialogue[3] (you₂) is the
+ * complication cloze's full text. A1/A2 lessons never carry these fields.
+ */
+export type GuidedDialogueTurn = {
+  speaker: 'them' | 'you'
+  targetText: string
+  baseText: GuidedBaseContentText
+}
+
+export type GuidedPatternExample = {
+  targetText: string
+  baseText: GuidedBaseContentText
+  /** exact substring of targetText that carries the anchor form (rendered highlighted) */
+  highlight: string
+}
+
+export type GuidedPatternSpotlight = {
+  /** anchor name shown as a chip, e.g. 'Perfekt' — kept in the target language's grammar term */
+  label: string
+  /** one base-language sentence, no metalanguage beyond the label's term */
+  rule: GuidedBaseContentText
+  examples: GuidedPatternExample[]
+}
+
+export type GuidedClozeBlankKind = 'form' | 'connector' | 'choice'
+
+export type GuidedClozeBlank = {
+  kind: GuidedClozeBlankKind
+  /** canonical answer; multi-word (≤ 3 words) allowed for clause-final form blanks */
+  answer: string
+  acceptedAnswers: string[]
+  /** lemma cue shown for form blanks, e.g. 'verlieren' */
+  cue?: string
+  /** choice blanks: exactly 4 same-category chips (incl. the answer); typed kinds: 4 fallback chips revealed on a miss */
+  choices: string[]
+}
+
+export type GuidedClozeSegment =
+  | { type: 'text'; text: string }
+  | { type: 'blank'; blank: GuidedClozeBlank }
+
+export type GuidedCloze = {
+  /** segments concatenate (answers in place of blanks) to dialogue[3].targetText */
+  segments: GuidedClozeSegment[]
+}
+
+/** One interlocutor per lesson; all four turns agree. Supersedes A2's per-path register lock at B1. */
+export type GuidedRegister = 'Sie' | 'du'
 
 export type GuidedLessonVibeVariant = {
   contentStatus: 'final' | 'draft'
@@ -518,13 +586,18 @@ export type GuidedLessonVibeVariant = {
   placeholderMedia?: GuidedLessonPlaceholderMedia
   songSeed?: GuidedLessonSongSeed
   visualNotes?: string
+  /** B1 only (validated mandatory there): the four-turn episode + its steps' data */
+  dialogue?: GuidedDialogueTurn[]
+  pattern?: GuidedPatternSpotlight
+  cloze?: GuidedCloze
+  register?: GuidedRegister
 }
 
 export type GuidedLessonDefinition = {
   id: string
   pathId: string
   courseTitle: string
-  level: 'A1' | 'A2'
+  level: GuidedLessonLevel
   lessonNumber: number
   baseLanguage: GuidedBaseLanguage
   targetLanguage: GuidedTargetLanguage
@@ -564,6 +637,10 @@ export type GuidedLesson = GuidedLessonDefinition & {
   trophyWord: GuidedLessonTrophyWord
   sceneCaption: GuidedBaseContentText
   songSeed?: GuidedLessonSongSeed
+  dialogue?: GuidedDialogueTurn[]
+  pattern?: GuidedPatternSpotlight
+  cloze?: GuidedCloze
+  register?: GuidedRegister
 }
 
 export type GuidedPathLessonCardStatus = 'complete' | 'current' | 'not-started'
@@ -65737,6 +65814,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...CEBUANO_A2_PRACTICAL_8_LESSONS,
   ...CEBUANO_A2_PRACTICAL_9_LESSONS,
   ...CEBUANO_A2_PRACTICAL_10_LESSONS,
+  ...GERMAN_B1_PRACTICAL_1_LESSONS,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -65874,6 +65952,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_GERMAN_A2_EIGHT_METADATA,
     GUIDED_TODAY_PATH_GERMAN_A2_NINE_METADATA,
     GUIDED_TODAY_PATH_GERMAN_A2_TEN_METADATA,
+    GUIDED_TODAY_PATH_GERMAN_B1_ONE_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA,
     GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_INDONESIAN_TWO_METADATA,
@@ -66136,7 +66215,18 @@ export function resolveGuidedLessonVariant(
     trophyWord: variant.trophyWord,
     sceneCaption: variant.sceneCaption,
     songSeed: variant.songSeed,
+    dialogue: variant.dialogue,
+    pattern: variant.pattern,
+    cloze: variant.cloze,
+    register: variant.register,
   }
+}
+
+/** The full cloze text (answers in place): must equal dialogue[3].targetText for B1 lessons. */
+export function getGuidedClozeText(cloze: GuidedCloze): string {
+  return cloze.segments
+    .map((segment) => (segment.type === 'text' ? segment.text : segment.blank.answer))
+    .join('')
 }
 
 export function normalizeGuidedAnswer(answer: string) {
@@ -66150,10 +66240,13 @@ export function guidedAnswerMatches(input: string, acceptedAnswers: string[]) {
 }
 
 export function getGuidedMatchPairs(lesson: GuidedLesson): GuidedMatchPair[] {
-  return lesson.phraseChunks.map((chunk) => ({
-    id: chunk.id,
-    targetText: chunk.targetText,
-    baseText: chunk.baseText,
+  // B1 anchors lexis from the WHOLE episode before the pattern step (design doc
+  // §3.2 step 2) — lessonItems carry those 6–8 items; A1/A2 keep chunk pairs.
+  const source = lesson.level === 'B1' ? lesson.lessonItems : lesson.phraseChunks
+  return source.map((entry) => ({
+    id: entry.id,
+    targetText: entry.targetText,
+    baseText: entry.baseText,
   }))
 }
 

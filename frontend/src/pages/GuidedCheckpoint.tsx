@@ -410,6 +410,10 @@ function CheckpointTypeStep({
     preferredBaseLanguage: profile?.base_language,
     authoredBaseLanguage: item.lesson.baseLanguage,
   }).text
+  // B1 core phrases run 8–16 words; prompting with the whole translation while
+  // checking a single blank is wrong there — always render before/blank/after
+  // (design doc §4.5). A1/A2 path-check keeps the translation-prompt form.
+  const useBlankPhrase = isSegmentReviewMode || item.lesson.level === 'B1'
   const continueButtonRef = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
@@ -442,7 +446,7 @@ function CheckpointTypeStep({
               : t('today.checkpoint.typePrompt')}
         </p>
 
-        {isSegmentReviewMode && (
+        {useBlankPhrase && (
           <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4" data-result={result ?? 'pending'}>
             <TypeRecallPhrase
               before={item.lesson.typeRecall.before}
@@ -450,7 +454,7 @@ function CheckpointTypeStep({
               answer={answer}
               submitted={submitted}
               onAnswerChange={onAnswerChange}
-              placeholderKey="today.checkpoint.segmentInputPlaceholder"
+              placeholderKey={isSegmentReviewMode ? 'today.checkpoint.segmentInputPlaceholder' : 'today.checkpoint.typePlaceholder'}
             />
             <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
               {t('today.checkpoint.baseCue')}
@@ -461,7 +465,7 @@ function CheckpointTypeStep({
           </div>
         )}
 
-        {!isSegmentReviewMode && (
+        {!useBlankPhrase && (
           <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4" data-result={result ?? 'pending'}>
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
               {t('today.checkpoint.basePrompt')}
@@ -473,7 +477,7 @@ function CheckpointTypeStep({
         )}
 
         <div className="grid w-full max-w-xl justify-items-center gap-4">
-          {!isSegmentReviewMode && (
+          {!useBlankPhrase && (
             <Input
               value={answer}
               onChange={(event) => onAnswerChange(event.target.value)}
