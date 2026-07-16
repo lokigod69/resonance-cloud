@@ -101,24 +101,32 @@ export default function CategoryListPage() {
   const [searchParams] = useSearchParams()
   useCategoryScrollReset()
   const categories = listCurriculumCategories()
-  const [targetLanguage, setTargetLanguage] = useState(() => readStaticLibraryTargetLanguage(searchParams.get('targetLanguage'), activeLanguage))
+  // The displayed language follows the app-wide active language live (via the
+  // shared resolver's precedence: route query → active language → stored Library
+  // preference). A one-time useState snapshot here previously froze whatever the
+  // resolver returned before LanguageProvider had settled — which is how a Korean
+  // learner could land on a stale stored German. The in-page selector only sets a
+  // session override; it never has to fight the global state.
+  const queryLanguage = searchParams.get('targetLanguage')
+  const [languageOverride, setLanguageOverride] = useState<string | null>(null)
+  const targetLanguage = languageOverride ?? readStaticLibraryTargetLanguage(queryLanguage, activeLanguage)
   const [languagePicked, setLanguagePicked] = useState(false)
 
   // First-visit chooser: only when there's genuinely nothing to go on — no route language, no
-  // stored Library preference, and no active study language — so we don't interrupt learners who
-  // already have a language while still catching the brand-new cold start. `activeLanguage`
-  // resolves asynchronously (LanguageProvider seeds it from storage/decks after mount), so it can
-  // only be trusted once `languageReady`. Derived (not effect state) so the decision can't get
-  // stuck once the active language arrives: `null` = still deciding (don't flash the library),
-  // `false` = proceed, `true` = show the chooser.
-  const hasExplicitLibraryChoice =
-    Boolean(searchParams.get('targetLanguage')) || hasStoredStaticLibraryTargetLanguage()
+  // in-page pick, no active study language, and no stored Library preference — so we don't
+  // interrupt learners who already have a language while still catching the brand-new cold
+  // start. `activeLanguage` resolves asynchronously (LanguageProvider seeds it from
+  // storage/decks after mount), so every non-query path waits for `languageReady` — this also
+  // keeps a stale stored preference from flashing before the active language arrives.
+  // `null` = still deciding (don't flash the library), `false` = proceed, `true` = chooser.
   const needsLanguageChoice: boolean | null =
-    languagePicked || hasExplicitLibraryChoice ? false : !languageReady ? null : !activeLanguage
+    languagePicked || languageOverride || queryLanguage ? false
+      : !languageReady ? null
+        : activeLanguage || hasStoredStaticLibraryTargetLanguage() ? false : true
 
   const handleChooseLanguage = (languageValue: string) => {
     persistStaticLibraryTargetLanguage(languageValue)
-    setTargetLanguage(languageValue)
+    setLanguageOverride(languageValue)
     setLanguagePicked(true)
   }
   const thematicCategoryGroups = getPublicCategoryGroups()
@@ -190,7 +198,7 @@ export default function CategoryListPage() {
         <label className={styles.libraryLanguageSelect}>
           <select
             value={targetLanguage}
-            onChange={(event) => setTargetLanguage(event.target.value)}
+            onChange={(event) => setLanguageOverride(event.target.value)}
             aria-label={t('categories.targetLanguageLabel')}
           >
             {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (

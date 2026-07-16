@@ -22,6 +22,15 @@ export function resolveVisibleStaticLanguage(value: string | null | undefined, f
 
 export function readStaticLibraryTargetLanguage(queryValue?: string | null, fallback?: string | null): string {
   if (queryValue) return resolveVisibleStaticLanguage(queryValue, 'English')
+  // The app-wide active language (passed as fallback) outranks the Library's own
+  // stored preference: entering the Library from the nav must land on the language
+  // the learner is actually studying. The stored key only carries users whose
+  // active language has no static pack (or none at all — e.g. Library-only
+  // browsing before the wizard).
+  if (fallback) {
+    const matched = resolveVisibleStaticLanguage(fallback, '')
+    if (matched) return matched
+  }
   if (typeof window !== 'undefined') {
     try {
       const stored = window.localStorage.getItem(STATIC_LIBRARY_TARGET_LANGUAGE_KEY)
@@ -30,7 +39,7 @@ export function readStaticLibraryTargetLanguage(queryValue?: string | null, fall
       // Local preference is best-effort only.
     }
   }
-  return resolveVisibleStaticLanguage(fallback, 'English')
+  return 'English'
 }
 
 /** Whether the learner has ever explicitly stored a Library target language (local preference). */

@@ -279,8 +279,8 @@ body {
   border-bottom: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   box-shadow: 0 10px 30px color-mix(in srgb, var(--app-bg) 34%, transparent);
-  backdrop-filter: blur(40px) saturate(1.4);
   -webkit-backdrop-filter: blur(40px) saturate(1.4);
+  backdrop-filter: blur(40px) saturate(1.4);
 }
 
 .skin-classic .app-topnav {
@@ -311,8 +311,8 @@ body {
 }
 
 .skin-glassy .app-topnav {
-  backdrop-filter: blur(48px) saturate(1.5);
   -webkit-backdrop-filter: blur(48px) saturate(1.5);
+  backdrop-filter: blur(48px) saturate(1.5);
 }
 
 /* Brand hairline on hover — the logo's wave ramp (gold → vermillion → magenta →
@@ -356,8 +356,8 @@ body {
   border-top: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   box-shadow: 0 -18px 42px color-mix(in srgb, var(--app-bg) 45%, transparent);
-  backdrop-filter: blur(30px) saturate(1.35);
   -webkit-backdrop-filter: blur(30px) saturate(1.35);
+  backdrop-filter: blur(30px) saturate(1.35);
 }
 
 .skin-classic .app-bottomnav {
@@ -366,8 +366,8 @@ body {
 
 .skin-glassy .app-bottomnav {
   background: color-mix(in srgb, var(--nav-bg) 82%, transparent);
-  backdrop-filter: blur(44px) saturate(1.45);
   -webkit-backdrop-filter: blur(44px) saturate(1.45);
+  backdrop-filter: blur(44px) saturate(1.45);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -385,8 +385,8 @@ body {
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-soft);
   color: var(--text-primary);
-  backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
 }
 
 .theme-card {
@@ -430,8 +430,8 @@ body {
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   box-shadow: var(--shadow-elevated);
-  backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
 }
 
 .theme-dialog {
@@ -439,8 +439,8 @@ body {
   border: 1px solid var(--border-strong);
   color: var(--text-primary);
   box-shadow: var(--shadow-elevated);
-  backdrop-filter: blur(28px) saturate(1.1);
   -webkit-backdrop-filter: blur(28px) saturate(1.1);
+  backdrop-filter: blur(28px) saturate(1.1);
 }
 
 .theme-icon-accent {
@@ -477,8 +477,8 @@ body {
   border-color: var(--border-subtle);
   color: var(--text-primary);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
 }
 
 .lyrics-scroll-fade {
@@ -536,8 +536,8 @@ body {
 
 [data-slot="dialog-overlay"] {
   background: color-mix(in srgb, var(--app-bg) 76%, transparent);
-  backdrop-filter: blur(24px) saturate(0.9);
   -webkit-backdrop-filter: blur(24px) saturate(0.9);
+  backdrop-filter: blur(24px) saturate(0.9);
 }
 
 [data-slot="dialog-content"] {
@@ -545,16 +545,16 @@ body {
   border-color: var(--border-strong);
   color: var(--text-primary);
   box-shadow: var(--shadow-elevated);
-  backdrop-filter: blur(26px) saturate(1.08);
   -webkit-backdrop-filter: blur(26px) saturate(1.08);
+  backdrop-filter: blur(26px) saturate(1.08);
 }
 
 [data-slot="select-content"] {
   background: var(--popover);
   border-color: var(--border-subtle);
   color: var(--text-primary);
-  backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
 }
 
 [data-slot="select-trigger"],
@@ -833,8 +833,8 @@ body {
   background: var(--nav-bg);
   border-color: var(--border-subtle);
   color: var(--text-primary);
-  backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
 }
 
 .speak-message-user {
