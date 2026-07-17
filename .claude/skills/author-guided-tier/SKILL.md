@@ -348,6 +348,35 @@ deltas:
   and every mechanical field untouched. Watch for it whenever the anchor forces
   past tense onto a service-counter scene. Reviewers can miss this class —
   Fable's read-through owns it.
+- **P2–P10 accretions (2026-07-17, de B1 full-tier run):**
+  - Reconcile the spec's trophy table against the staging table BEFORE writing
+    any batch prompt — the de spec shipped three conflicts (hätte trophy L4 vs
+    staging L5–7; ob trophy L4 vs L5–7; damit trophy L1 vs L6–8). Realign
+    staging to the trophy table, or swap trophies (damit↔klappt precedent),
+    and add validator staged-form tripwires for the new anchors in the same
+    commit.
+  - **Learner you₂ must never assert a service action only the interlocutor
+    can decide** ("Dann wird ein neuer Auftrag geschickt." from the customer's
+    mouth). Five instances across P6/P9 drafts. Question-form passives are the
+    fix ("Wird … geschickt?"); say it in shape-A batch prompts explicitly.
+  - Purpose-clause chunking trap: Codex glosses a final 'zu verteilen.' chunk
+    as bare punctuation. Chunk um…zu as 'um' | '… zu verteilen.' with real
+    glosses — 5 instances, all P7.
+  - als/wenn choice blanks are only valid when the slot FORCES one reading —
+    add Immer wenn / Jedes Mal / zum ersten Mal style forcers; a bare "Wenn es
+    heiß war" also parses as als.
+  - Recurring ungrammatical distractor template: present tense + gestern
+    ("Ich fahre gestern") — Codex stamped it 4× in P3. Ban the template by
+    name.
+  - Coarse per-path blank schemas break when late lessons stage a different
+    layer (P8 L8–10 comparatives have no als/wenn slot) — the validator may
+    need lesson-range anchor alternatives, not a weaker path rule.
+  - Saga paths: check every relative day word against the beat calendar
+    (P9 L6 "gestern" on a Monday beat pointed at Sunday).
+  - Review-prompt shape checks pay off: naming the per-shape dramaturgy
+    contract (B continues / A resolves / C accepts-with-modification) and
+    cross-path trophy dilution got the reviewer to catch assert-class you₂
+    turns and Modell-dilution that mechanical checks cannot see.
 - **Codex-ops (same run):** companion jobs land under
   `~\.claude\plugins\data\codex-openai-codex\state\{cwdBaseName-hash}\jobs\`
   — the hash dir is cwd-dependent (repo root → `ResonanceTEST-*`, orchestrator

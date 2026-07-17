@@ -5,7 +5,10 @@
  * belongs, and ZERO gendered learner forms — no past tense (-л/-ла) and no
  * short-adjective agreement (рад/рада) anywhere in learner lines. Chunks join
  * with single spaces to the corePhrase. Slugs are ASCII transliterations.
- * No TTS exists yet — ids are NOT frozen until a batch runs.
+ * TTS-FROZEN (2026-07-17): the bright ElevenLabs batch ran for all 10 paths
+ * (profiles russian_a1_bright_p{n}_multiv2_v1, roster Maria/Alan/Nina/Mark) —
+ * ids and TTS-bearing text (corePhrase/chunks/trophyWord) must NOT change
+ * without a regeneration plan.
  */
 import type {
   GuidedBaseContentText,

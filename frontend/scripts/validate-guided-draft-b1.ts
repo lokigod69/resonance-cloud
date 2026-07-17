@@ -63,7 +63,9 @@ const BARE_TYPED_BLANK_BAN = new Set([
 /** German rails (§5.6) — learner turns only; interlocutor turns are whitelist-exempt. */
 const GERMAN_B1_BANNED_LEARNER_PATTERNS: Array<{ re: RegExp; why: string }> = [
   { re: /\b(ich|du|wir|ihr) (werde|wirst|werden|werdet)\b/i, why: 'person-complete werden-future in learner production (present + time word; wird/wurde-passive stays legal)' },
-  { re: /\b(ging|kam|sah|nahm|stand|fuhr|aß|blieb|wusste|dachte|brachte|hielt|lief|rief|schrieb|sprach|traf|trug)\b/i, why: 'strong-verb Präteritum in learner line (Perfekt is the narrative default)' },
+  { re: /\b(ging|kam|sah|nahm|fuhr|aß|blieb|wusste|dachte|brachte|hielt|lief|rief|schrieb|sprach|traf|trug)\b/i, why: 'strong-verb Präteritum in learner line (Perfekt is the narrative default)' },
+  // 'stand' split out case-sensitively: capitalized 'Stand' is the noun (market booth), found as a false positive in P2 L10.
+  { re: /\bstand\b/, why: 'strong-verb Präteritum stand in learner line (Perfekt is the narrative default)' },
   { re: /(?<!\bes )\bgab\b/i, why: 'gab without es (only the es-gab frame is licensed, and only from P1 L4)' },
   { re: /\b(machte|sagte|kaufte|fragte|wartete|spielte|wohnte|arbeitete|suchte|brauchte|redete|zeigte|meinte|lernte|hörte|holte|schickte)(st|t|n)?\b/i, why: 'weak-verb Präteritum in learner line (Perfekt is the narrative default)' },
   { re: /\b(dessen|deren|denen)\b/i, why: 'genitive/dative relative pronoun (Nom/Akk only at B1)' },
@@ -81,6 +83,13 @@ const GERMAN_B1_STAGED_FORMS: Array<{ re: RegExp; fromPath: number; fromLesson: 
   { re: /\b(war|waren|warst|hatte|hatten|hattest)\b/i, fromPath: 1, fromLesson: 4, why: 'war/hatte before its P1 L4 staging' },
   { re: /\bes gab\b/i, fromPath: 1, fromLesson: 4, why: 'es gab before its P1 L4 staging' },
   { re: /\b(konnte|musste|wollte|durfte|sollte)(st|t|n)?\b/i, fromPath: 1, fromLesson: 6, why: 'modal Präteritum before its P1 L6 staging' },
+  { re: /\bobwohl\b/i, fromPath: 2, fromLesson: 4, why: 'obwohl before its P2 L4 staging' },
+  { re: /\btrotzdem\b/i, fromPath: 2, fromLesson: 7, why: 'trotzdem before its P2 L7 staging' },
+  { re: /\bwürde(st|t|n)?\b/i, fromPath: 3, fromLesson: 1, why: 'würde before its P3 L1 staging' },
+  { re: /\bhätte(st|t|n)?\b/i, fromPath: 3, fromLesson: 4, why: 'hätte before its P3 L4 staging' },
+  { re: /\bwäre(st|t|n)?\b/i, fromPath: 3, fromLesson: 6, why: 'wäre before its P3 L6 staging' },
+  { re: /\bkönnte(st|t|n)?\b/i, fromPath: 3, fromLesson: 7, why: 'könnte before its P3 L7 staging (P3 realigned staging 2026-07-17)' },
+  { re: /\bmüsste(st|t|n)?\b/i, fromPath: 3, fromLesson: 9, why: 'müsste before its P3 L9 staging' },
 ]
 
 function isStagedFormAllowed(staged: { fromPath: number; fromLesson: number }, pathNumber: number, lessonNumber: number) {
@@ -173,11 +182,16 @@ for (const lesson of germanB1Lessons) {
         blanks.every((segment) => schema.allowed.includes(segment.blank.kind)),
         blanks.map((segment) => segment.blank.kind),
       )
+      const anchorOk = blanks.some((segment) =>
+        schema.anchor.includes(segment.blank.kind)
+        && (!schema.anchorAnswerRe || schema.anchorAnswerRe.test(segment.blank.answer)))
+      // P8 L8–10 stage früher/heute + comparatives (spec §2) — there the anchor may be a
+      // comparative or war/hatte form blank; the als/wenn choice anchor binds L1–7 strictly.
+      const p8LateAnchorOk = pathNumber === 8 && lesson.lessonNumber >= 8 && blanks.some((segment) =>
+        segment.blank.kind === 'form' && /[a-zäöü]{2,}er\b|\bmehr\b|\bweniger\b|^(war|hatte)\b/i.test(segment.blank.answer))
       assert(
         `${label} ≥ 1 blank targets the path anchor (${schema.anchor.join('/')})`,
-        blanks.some((segment) =>
-          schema.anchor.includes(segment.blank.kind)
-          && (!schema.anchorAnswerRe || schema.anchorAnswerRe.test(segment.blank.answer))),
+        anchorOk || p8LateAnchorOk,
         blanks.map((segment) => `${segment.blank.kind}:${segment.blank.answer}`),
       )
     }

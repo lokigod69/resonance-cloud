@@ -67,6 +67,7 @@ LANGUAGES: dict[str, tuple[str, int]] = {
     "polish": ("pl", 10),
     "korean": ("ko", 1),
     "japanese": ("ja", 10),
+    "russian": ("ru", 10),
 }
 
 

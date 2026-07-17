@@ -581,8 +581,8 @@ const russianA2PathIds = Array.from({ length: 10 }, (_, index) => `russian-a2-pr
 const japaneseA2PathIds = Array.from({ length: 10 }, (_, index) => `japanese-a2-practical-${index + 1}`)
 const polishA2PathIds = Array.from({ length: 10 }, (_, index) => `polish-a2-practical-${index + 1}`)
 const indonesianA2PathIds = Array.from({ length: 10 }, (_, index) => `indonesian-a2-practical-${index + 1}`)
-// B1 Phase 0: only P1 exists (3 handwritten device-gate pilots); grows with the German B1 rollout.
-const germanB1PathIds = ['german-b1-practical-1']
+// German B1: all 10 paths authored (P1 committed 1009945e+af2ca125; P2–P10 from the 2026-07-17 run).
+const germanB1PathIds = Array.from({ length: 10 }, (_, index) => `german-b1-practical-${index + 1}`)
 const cebuanoA2PathIds = Array.from({ length: 10 }, (_, index) => `cebuano-a2-practical-${index + 1}`)
 assert('Cebuano A1 Practical 1 resolves 10 lessons', getGuidedPathLessons(cebuanoPathOneId).length === 10, getGuidedPathLessons(cebuanoPathOneId).length)
 assert('Cebuano A1 Practical 2 resolves 10 lessons', cebuanoPathTwoLessons.length === 10, cebuanoPathTwoLessons.length)

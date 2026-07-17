@@ -24,8 +24,12 @@
  * - Numbers are words, never digits; case agreement after numerals (два яблока,
  *   пять минут) is a line-by-line review checkpoint.
  * - Trophies unique across the entire Russian guided corpus (A1 + A2).
- * - NO TTS voices exist yet — ids are NOT frozen until a batch runs; the
- *   eventual roster must provide ≥2 female + ≥2 male voices per the plan.
+ * - TTS-FROZEN (2026-07-17): the bright ElevenLabs batch ran for all 10 paths
+ *   (profiles russian_a2_bright_p{n}_multiv2_v1). The per-path narrator gender
+ *   from tmp\A2_RUSSIAN_VOICE_GENDER_PLAN.md is now realised in the roster —
+ *   odd paths female (Nina/Maria), even paths male (Mark/Alan). ids and
+ *   TTS-bearing text (corePhrase/chunks/trophyWord) must NOT change without a
+ *   regeneration plan; the per-path voice gender is locked to the canon.
  */
 import type {
   GuidedBaseContentText,

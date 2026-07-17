@@ -62,9 +62,12 @@ ROSTERS: dict[str, tuple[str, tuple[str, ...], list[str], int]] = {
     # ja gender-unconstrained (A1+A2 specs are gender-free); order alternates
     # F/M-leaning voices for variety: Akane(F) / Koichi(M) / Konoha(F) / ishibashi(M).
     "japanese": ("ja", ("ja",), ["Akane", "Koichi", "Konoha", "ishibashi"], 10),
-    # NOTE russian is deliberately absent: public.voices has no ru rows yet and
-    # tmp\A2_RUSSIAN_VOICE_GENDER_PLAN.md requires >=2F+2M mapped odd-F/even-M
-    # for A2 before any seeding. Add the roster here once the owner picks voices.
+    # russian: owner added 4 ru voices 2026-07-17. Roster ordered [F, M, F, M]
+    # so the A2 rotation (offset = 10 A1 paths) lands odd paths female / even
+    # paths male, per tmp\A2_RUSSIAN_VOICE_GENDER_PLAN.md. A2 Pn = names[(10+n-1)%4]:
+    # P1 Nina(F) P2 Mark(M) P3 Maria(F) P4 Alan(M) ... P10 Mark(M) — all agree.
+    # A1 is gender-free so its rotation is unconstrained.
+    "russian": ("ru", ("ru",), ["Maria", "Alan", "Nina", "Mark"], 10),
 }
 
 
