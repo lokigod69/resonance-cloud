@@ -19,11 +19,19 @@ expects {slug}_a2_bright_p<n>_multiv2_v1 rotation profiles (seed them first via
 seed_guided_bright_rotation.py --level a2). Use --paths for how many A2 paths
 exist so far (pilot: 1).
 
+B1 (2026-07-17, German only): --level b1 additionally enumerates the episode
+surfaces — dialogue turns 1/3/4 (turn 2 = corePhrase) and pattern examples
+ex-1..N (the tier ships 2-3 per lesson) — per B1 spec §5, and uses a higher
+per-language char cap (German: ~35.1k unique paid chars, ~40.0k on the cap's
+row-sum metric). Only languages in B1_LANGUAGES are accepted; the run FREEZES
+the tier's lesson ids once committed.
+
 Usage:
     python scripts/run_guided_bright_batch.py              # dry-run report
     python scripts/run_guided_bright_batch.py --commit     # paid generation
     python scripts/run_guided_bright_batch.py --languages korean --commit
     python scripts/run_guided_bright_batch.py --level a2 --languages spanish --paths 1
+    python scripts/run_guided_bright_batch.py --level b1 --languages german
 """
 
 from __future__ import annotations
@@ -47,12 +55,27 @@ from src.services.guided_tts.generate import (  # noqa: E402
     run_async,
 )
 
-SURFACES = ["corePhrase", "chunks", "trophyWord"]
+BASE_SURFACES = ["corePhrase", "chunks", "trophyWord"]
+# B1 adds the episode surfaces (spec §5): dialogue turn-1/3/4 + pattern ex-1..3.
+SURFACES_BY_LEVEL = {
+    "a1": BASE_SURFACES,
+    "a2": BASE_SURFACES,
+    "b1": BASE_SURFACES + ["dialogue", "pattern"],
+}
 VIBES = ["bright"]
 # Raised 8k -> 12k for the A2 phase-2 batch (fr/it/pt run 9.6-10.9k chars each;
-# owner approved the 30.1k total 2026-07-13).
-PER_LANGUAGE_CHAR_CAP = 12_000
+# owner approved the 30.1k total 2026-07-13). B1 carries its own cap: German
+# measures 39,973 on this metric (which sums every missing row, double-counting
+# texts repeated across surfaces); the actual paid spend after cache-key dedupe
+# is ~35.1k unique chars / ~1,025 provider calls (spec §5 forecast 20-25k
+# pre-P2-P10; measured 2026-07-17).
+PER_LANGUAGE_CHAR_CAP_BY_LEVEL = {"a1": 12_000, "a2": 12_000, "b1": 45_000}
 TOTAL_CHAR_CAP = 60_000
+
+# Languages with an authored B1 tier (path counts differ from the A1 table).
+B1_LANGUAGES: dict[str, tuple[str, int]] = {
+    "german": ("de", 10),
+}
 
 # language slug -> (target_language_code, path count)
 LANGUAGES: dict[str, tuple[str, int]] = {
@@ -93,8 +116,9 @@ def check_guardrails(slug: str, level: str, inventory: dict, chars_so_far: int) 
                 f"{entry['provider_model_id']!r}, expected eleven_multilingual_v2"
             )
     est = totals["estimated_provider_characters"]
-    if est > PER_LANGUAGE_CHAR_CAP:
-        problems.append(f"estimated {est} chars exceeds per-language cap {PER_LANGUAGE_CHAR_CAP}")
+    per_language_cap = PER_LANGUAGE_CHAR_CAP_BY_LEVEL[level]
+    if est > per_language_cap:
+        problems.append(f"estimated {est} chars exceeds per-language cap {per_language_cap}")
     if chars_so_far + est > TOTAL_CHAR_CAP:
         problems.append(f"batch total would exceed cap {TOTAL_CHAR_CAP}")
     return problems
@@ -114,16 +138,22 @@ async def main_async(args) -> int:
         )
         provider_synth = ElevenLabsGuidedTTSProvider().synthesize
 
+    language_table = B1_LANGUAGES if args.level == "b1" else LANGUAGES
     slugs = [s.strip() for s in args.languages.split(",") if s.strip()]
-    unknown = [s for s in slugs if s not in LANGUAGES]
+    unknown = [s for s in slugs if s not in language_table]
     if unknown:
-        print(f"ERROR: unknown slugs {unknown}")
+        if args.level == "b1":
+            print(f"ERROR: no B1 tier authored for {unknown}; known: {list(B1_LANGUAGES)} "
+                  "(pass --languages explicitly)")
+        else:
+            print(f"ERROR: unknown slugs {unknown}")
         return 2
 
+    surfaces = SURFACES_BY_LEVEL[args.level]
     chars_spent = 0
     grand = {"generated": 0, "failed": 0, "skipped_ready": 0, "chars": 0}
     for slug in slugs:
-        lang_code, count = LANGUAGES[slug]
+        lang_code, count = language_table[slug]
         if args.paths is not None:
             count = args.paths
         paths = path_ids(slug, count, args.level)
@@ -132,7 +162,7 @@ async def main_async(args) -> int:
             lessons=lessons,
             voice_profiles=voice_profiles,
             vibes=VIBES,
-            surfaces=SURFACES,
+            surfaces=surfaces,
             path_id=None,
             path_ids=paths,
             lesson_id=None,
@@ -163,7 +193,7 @@ async def main_async(args) -> int:
             lessons=lessons,
             voice_profiles=voice_profiles,
             vibes=VIBES,
-            surfaces=SURFACES,
+            surfaces=surfaces,
             path_id=None,
             path_ids=paths,
             lesson_id=None,
@@ -196,7 +226,7 @@ def main() -> int:
     parser.add_argument("--commit", action="store_true", help="Spend: call ElevenLabs and write assets")
     parser.add_argument("--languages", default=",".join(LANGUAGES),
                         help="Comma-separated language slugs (default: all)")
-    parser.add_argument("--level", choices=("a1", "a2"), default="a1",
+    parser.add_argument("--level", choices=("a1", "a2", "b1"), default="a1",
                         help="Curriculum level to batch (default: a1)")
     parser.add_argument("--paths", type=int, default=None,
                         help="Number of paths to include (default: the language's full A1 count)")

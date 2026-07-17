@@ -300,6 +300,87 @@ def test_extract_lesson_surfaces_em_dash_normalization_is_applied():
 
 
 # ---------------------------------------------------------------------------
+# B1 episode surfaces (dialogue turn-1/3/4 + pattern ex-1..3)
+# ---------------------------------------------------------------------------
+
+B1_EPISODE_LESSON = {
+    "id": "german-b1-practical-001-lost-key",
+    "pathId": "german-b1-practical-1",
+    "lessonNumber": 1,
+    "vibeVariants": {
+        "bright": {
+            "corePhrase": {"targetText": "Ich habe meinen Schlüssel verloren."},
+            "chunks": [
+                {"id": "ich-habe", "targetText": "Ich habe"},
+                {"id": "meinen-schluessel", "targetText": "meinen Schlüssel"},
+                {"id": "verloren", "targetText": "verloren"},
+            ],
+            "speakTarget": {"targetPhrase": "Ich habe meinen Schlüssel verloren."},
+            "trophyWord": {"word": "verloren"},
+            "dialogue": [
+                {"targetText": "Warum bist du noch hier?"},
+                {"targetText": "Ich habe meinen Schlüssel verloren."},
+                {"targetText": "Oh nein — wie bist du reingekommen?"},
+                {"targetText": "Ich habe ein Taxi genommen und meine Kollegin angerufen."},
+            ],
+            "pattern": {
+                "examples": [
+                    {"targetText": "Ich habe meinen Schlüssel verloren."},
+                    {"targetText": "Ich habe ein Taxi genommen."},
+                    {"targetText": "Ich habe meine Kollegin angerufen."},
+                ]
+            },
+        },
+    },
+}
+
+
+def test_extract_dialogue_emits_turns_1_3_4_and_skips_the_core_phrase_turn():
+    rows = extract_lesson_surfaces(
+        lesson=B1_EPISODE_LESSON, vibes=["bright"], surfaces=["dialogue"]
+    )
+    assert [(r.surface, r.surface_key) for r in rows] == [
+        ("dialogue", "turn-1"),
+        ("dialogue", "turn-3"),
+        ("dialogue", "turn-4"),
+    ]
+    turn_3 = next(r for r in rows if r.surface_key == "turn-3")
+    # em-dash normalization applies to dialogue turns like every other surface
+    assert turn_3.normalized_text == "Oh nein - wie bist du reingekommen?"
+
+
+def test_extract_pattern_emits_examples_in_order():
+    rows = extract_lesson_surfaces(
+        lesson=B1_EPISODE_LESSON, vibes=["bright"], surfaces=["pattern"]
+    )
+    assert [(r.surface, r.surface_key) for r in rows] == [
+        ("pattern", "ex-1"),
+        ("pattern", "ex-2"),
+        ("pattern", "ex-3"),
+    ]
+    assert rows[1].source_text == "Ich habe ein Taxi genommen."
+
+
+def test_a1_lessons_emit_nothing_for_the_b1_surfaces():
+    rows = extract_lesson_surfaces(
+        lesson=A1P1_LESSON_1,
+        vibes=["bright", "wistful", "sharp"],
+        surfaces=["dialogue", "pattern"],
+    )
+    assert rows == []
+
+
+def test_b1_full_surface_set_matches_batch_runner_scope():
+    rows = extract_lesson_surfaces(
+        lesson=B1_EPISODE_LESSON,
+        vibes=["bright"],
+        surfaces=["corePhrase", "chunks", "trophyWord", "dialogue", "pattern"],
+    )
+    # 1 core + 3 chunks + 1 trophy + 3 dialogue turns + 3 pattern examples
+    assert len(rows) == 11
+
+
+# ---------------------------------------------------------------------------
 # A1P1 canary inventory (architecture report §7)
 # ---------------------------------------------------------------------------
 

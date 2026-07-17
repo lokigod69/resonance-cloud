@@ -797,3 +797,102 @@ def test_dry_run_path_does_not_import_provider_elevenlabs(monkeypatch):
     assert all(
         not mod.endswith("provider_elevenlabs") for mod in sys.modules.keys()
     )
+
+
+# ---------------------------------------------------------------------------
+# Usage upserts must never abort a paid batch (2026-07-17: the B1 surface
+# check constraint rejected dialogue/pattern usages and the then-unwrapped
+# dedupe-branch upsert crashed the run mid-flight)
+# ---------------------------------------------------------------------------
+
+B1_EPISODE_LESSON = {
+    "id": "german-b1-practical-001-lost-key",
+    "pathId": "german-b1-practical-1",
+    "lessonNumber": 1,
+    "vibeVariants": {
+        "bright": {
+            "corePhrase": {"targetText": "Ich habe meinen Schlüssel verloren."},
+            "chunks": [{"id": "verloren", "targetText": "verloren"}],
+            "speakTarget": {"targetPhrase": "Ich habe meinen Schlüssel verloren."},
+            "trophyWord": {"word": "verloren"},
+            "dialogue": [
+                {"targetText": "Warum bist du noch hier?"},
+                {"targetText": "Ich habe meinen Schlüssel verloren."},
+                {"targetText": "Wie bist du reingekommen?"},
+                {"targetText": "Ich habe ein Taxi genommen."},
+            ],
+            "pattern": {
+                # ex-1 repeats the corePhrase text → hits the same-run dedupe
+                # branch under the single bright profile.
+                "examples": [
+                    {"targetText": "Ich habe meinen Schlüssel verloren."},
+                    {"targetText": "Ich habe ein Glas Wasser genommen."},
+                ]
+            },
+        },
+    },
+}
+
+
+def test_usage_upsert_failure_on_new_surfaces_does_not_abort_the_paid_batch(monkeypatch):
+    """Simulate the pre-migration DB check constraint: every dialogue/pattern
+    usage upsert raises. Paid generation must run to completion, keep every
+    asset ready, and mark the run failed for a reattach rerun."""
+    sb = _make_sb_with_profiles()
+    sb._tables["guided_voice_profiles"][:] = [
+        {
+            **_bright_wistful_sharp_voice_profile_rows()[0],
+            "voice_profile_key": "german_b1_bright_p1_multiv2_v1",
+            "target_language_code": "de",
+            "scope_path_id": "german-b1-practical-1",
+        }
+    ]
+
+    real_upsert = guided_db.upsert_usage
+    rejected: list[str] = []
+
+    def constrained_upsert(sb_, **kwargs):
+        if kwargs["surface"] in ("dialogue", "pattern"):
+            rejected.append(f"{kwargs['surface']}/{kwargs['surface_key']}")
+            raise RuntimeError("violates check constraint guided_tts_asset_usages_surface_check")
+        return real_upsert(sb_, **kwargs)
+
+    monkeypatch.setattr(guided_db, "upsert_usage", constrained_upsert)
+
+    calls: list[dict[str, Any]] = []
+
+    async def provider_stub(**kwargs):
+        calls.append(kwargs)
+        return b"mp3-bytes"
+
+    result = _run(
+        run_async(
+            sb=sb,
+            lessons=[B1_EPISODE_LESSON],
+            voice_profiles=guided_db.load_active_voice_profiles(sb),
+            vibes=["bright"],
+            surfaces=["corePhrase", "chunks", "trophyWord", "dialogue", "pattern"],
+            path_id="german-b1-practical-1",
+            path_ids=None,
+            lesson_id=None,
+            lesson_number=None,
+            target_language_code="de",
+            dry_run=False,
+            provider_synthesize=provider_stub,
+            allow_unscoped_commit=True,
+        )
+    )
+
+    # 8 rows: core, 1 chunk, trophy, 3 dialogue turns, 2 pattern examples;
+    # trophy dedupes onto the chunk (both 'verloren') and pattern ex-1 onto
+    # the corePhrase → 6 provider calls.
+    assert len(calls) == 6
+    assert result["generated_assets"] == 6
+    assert result["failed_assets"] == 0
+    # 3 dialogue + 2 pattern usages rejected (incl. the dedupe-branch ex-1).
+    assert result["usage_failures"] == 5
+    assert "pattern/ex-1" in rejected
+    # Every generated asset stayed ready; nothing was demoted by the failures.
+    assert all(a["status"] == "ready" for a in sb._tables["guided_tts_assets"])
+    # The run is marked failed so the operator knows to rerun for reattach.
+    assert sb._tables["guided_tts_generation_runs"][0]["status"] == "failed"

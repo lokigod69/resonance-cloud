@@ -369,17 +369,27 @@ async def run_async(
     for item in inventory["items"]:
         if item["status"] == "ready":
             asset_id = item["asset_id"]
-            guided_db.upsert_usage(
-                sb,
-                asset_id=asset_id,
-                path_id=item["path_id"],
-                lesson_id=item["lesson_id"],
-                lesson_number=item["lesson_number"],
-                vibe=item["vibe"],
-                surface=item["surface"],
-                surface_key=item["surface_key"],
-                source_text=item["source_text"],
-            )
+            # A usage failure must never abort the batch: the asset is already
+            # paid for and ready, and the row self-heals on rerun.
+            try:
+                guided_db.upsert_usage(
+                    sb,
+                    asset_id=asset_id,
+                    path_id=item["path_id"],
+                    lesson_id=item["lesson_id"],
+                    lesson_number=item["lesson_number"],
+                    vibe=item["vibe"],
+                    surface=item["surface"],
+                    surface_key=item["surface_key"],
+                    source_text=item["source_text"],
+                )
+            except Exception as err:  # noqa: BLE001
+                usage_failures += 1
+                print(
+                    f"WARNING: usage upsert failed for ready asset {asset_id} "
+                    f"({item['lesson_id']}/{item['surface']}/{item['surface_key']}): {err} "
+                    "— asset kept ready; rerun to reattach the usage row."
+                )
             continue
 
         if item["status"] != "missing":
@@ -391,17 +401,28 @@ async def run_async(
 
         cache_key_value = item["cache_key"]
         if cache_key_value in generated_assets_by_cache_key:
-            guided_db.upsert_usage(
-                sb,
-                asset_id=generated_assets_by_cache_key[cache_key_value],
-                path_id=item["path_id"],
-                lesson_id=item["lesson_id"],
-                lesson_number=item["lesson_number"],
-                vibe=item["vibe"],
-                surface=item["surface"],
-                surface_key=item["surface_key"],
-                source_text=item["source_text"],
-            )
+            # Same non-abort rule as the ready branch: the deduped-onto asset
+            # was generated this run and is already paid for.
+            try:
+                guided_db.upsert_usage(
+                    sb,
+                    asset_id=generated_assets_by_cache_key[cache_key_value],
+                    path_id=item["path_id"],
+                    lesson_id=item["lesson_id"],
+                    lesson_number=item["lesson_number"],
+                    vibe=item["vibe"],
+                    surface=item["surface"],
+                    surface_key=item["surface_key"],
+                    source_text=item["source_text"],
+                )
+            except Exception as err:  # noqa: BLE001
+                usage_failures += 1
+                print(
+                    f"WARNING: usage upsert failed for deduped asset "
+                    f"{generated_assets_by_cache_key[cache_key_value]} "
+                    f"({item['lesson_id']}/{item['surface']}/{item['surface_key']}): {err} "
+                    "— asset kept ready; rerun to reattach the usage row."
+                )
             deduped_usages += 1
             skipped += 1
             continue

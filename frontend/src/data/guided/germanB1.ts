@@ -27,6 +27,10 @@
  *   quoted interlocutor German inside captions is the only German in .en fields.
  * - Trophies unique across the entire German guided corpus (A1 + A2 + B1);
  *   German nouns keep their capital letter.
+ * TTS-FROZEN (2026-07-18): the bright ElevenLabs batch ran for all 10 paths
+ * (profiles german_b1_bright_p{n}_multiv2_v1) — ids and TTS-bearing text
+ * (corePhrase/chunks/trophyWord + dialogue turn-1/3/4 + pattern ex-1..N)
+ * must NOT change without a regeneration plan.
  */
 import type {
   GuidedBaseContentText,

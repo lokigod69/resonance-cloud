@@ -16,6 +16,11 @@ scoped to {slug}-a2-practical-{n}. The voice rotation CONTINUES past the languag
 A1 paths (A2 P1 picks up where A1 P10 left off) so adjacent A1/A2 paths do not
 repeat a voice. Use --paths to limit how many A2 paths exist so far (pilot: 1).
 
+B1 (2026-07-17, German only — see B1_SLUGS): --level b1 continues the same
+rotation past A1 AND A2 (offset = 2 x path count), so German B1 P1 lands on
+Laura after A2 P10's Helmut. German has no speaker-gender constraint (unlike
+ru/pl past forms), so the rotation stays unconstrained.
+
 Usage:
     python scripts/seed_guided_bright_rotation.py            # dry-run (default)
     python scripts/seed_guided_bright_rotation.py --commit   # write profiles
@@ -44,6 +49,13 @@ from src.services.guided_tts.inventory import (  # noqa: E402
 
 MODEL_ID = "eleven_multilingual_v2"
 SETTINGS_HASH = voice_settings_hash(DEFAULT_VOICE_SETTINGS)
+
+# Languages with an authored B1 tier; --level b1 refuses other slugs so a
+# default all-languages run can't seed profiles for paths that don't exist.
+B1_SLUGS = ("german",)
+
+# How many levels of paths precede each level in the rotation.
+LEVEL_ROTATION_MULTIPLIER = {"a1": 0, "a2": 1, "b1": 2}
 
 # language slug -> (target_language_code, voices-table language_codes,
 #                   rotation roster (gender-alternating where possible),
@@ -107,7 +119,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--level",
-        choices=("a1", "a2"),
+        choices=("a1", "a2", "b1"),
         default="a1",
         help="Curriculum level to seed profiles for (default: a1)",
     )
@@ -125,6 +137,12 @@ def main() -> int:
     if unknown:
         print(f"ERROR: unknown language slugs {unknown}; known: {list(ROSTERS)}")
         return 2
+    if args.level == "b1":
+        no_b1 = [s for s in slugs if s not in B1_SLUGS]
+        if no_b1:
+            print(f"ERROR: no B1 tier authored for {no_b1}; known: {list(B1_SLUGS)} "
+                  "(pass --languages explicitly)")
+            return 2
 
     sb = build_client()
     total = 0
@@ -134,9 +152,9 @@ def main() -> int:
         print(f"\n{slug} ({lang_code}) — roster: "
               + ", ".join(f"{n} ({resolved[n]['voice_id'][:8]}...)" for n in names))
         seed_path_count = args.paths if args.paths is not None else path_count
-        # a2 continues the rotation after the language's a1 paths so adjacent
-        # a1/a2 paths do not repeat a voice
-        rotation_offset = path_count if args.level == "a2" else 0
+        # each level continues the rotation after all lower levels' paths so
+        # adjacent paths across the level boundary do not repeat a voice
+        rotation_offset = path_count * LEVEL_ROTATION_MULTIPLIER[args.level]
         for n in range(1, seed_path_count + 1):
             voice_name = names[(rotation_offset + n - 1) % len(names)]
             row = resolved[voice_name]

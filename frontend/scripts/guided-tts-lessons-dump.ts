@@ -24,6 +24,14 @@ const payload = GUIDED_LESSONS.map((lesson) => ({
             })),
             speakTarget: { targetPhrase: variant.speakTarget?.targetPhrase ?? '' },
             trophyWord: { word: variant.trophyWord?.word ?? '' },
+            // B1 episode surfaces (absent on A1/A2 lessons): the Python side
+            // keys turns positionally as turn-1..turn-4 and examples as ex-N.
+            ...(variant.dialogue
+              ? { dialogue: variant.dialogue.map((turn) => ({ targetText: turn.targetText })) }
+              : {}),
+            ...(variant.pattern
+              ? { pattern: { examples: variant.pattern.examples.map((ex) => ({ targetText: ex.targetText })) } }
+              : {}),
           }
         : null,
     ]),

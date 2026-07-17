@@ -34,7 +34,14 @@ DEFAULT_VOICE_SETTINGS: dict[str, Any] = {
 }
 
 VALID_VIBES: tuple[str, ...] = ("bright", "wistful", "sharp")
-VALID_SURFACES: tuple[str, ...] = ("corePhrase", "chunks", "trophyWord", "speak")
+VALID_SURFACES: tuple[str, ...] = (
+    "corePhrase",
+    "chunks",
+    "trophyWord",
+    "speak",
+    "dialogue",
+    "pattern",
+)
 
 _ASSET_STATUS_READY = "ready"
 _ASSET_STATUS_MISSING = "missing"
@@ -247,8 +254,8 @@ class SurfaceRow:
     lesson_id: str
     lesson_number: int
     vibe: str
-    surface: str           # 'corePhrase' | 'chunk' | 'trophyWord' | 'speakTarget'
-    surface_key: str       # chunk id or '__self'
+    surface: str           # 'corePhrase' | 'chunk' | 'trophyWord' | 'speakTarget' | 'dialogue' | 'pattern'
+    surface_key: str       # chunk id, 'turn-N', 'ex-N', or '__self'
     source_text: str
     normalized_text: str
     text_hash: str
@@ -326,6 +333,12 @@ def extract_lesson_surfaces(
       * ``trophyWord.example`` and ``lessonItems`` are NOT included in PR #1.
       * ``build.chips`` are NOT included — punctuation tokens would create
         near-duplicates and hurt cache reuse.
+      * B1 episodes: ``dialogue`` emits turns 1/3/4 as surface_keys
+        'turn-1'/'turn-3'/'turn-4' — turn 2 (you₁) IS the corePhrase and
+        playback requests it via 'corePhrase'/'__self', so it is skipped
+        here. ``pattern`` emits the spotlight examples as 'ex-1'..'ex-N'.
+        A1/A2 lessons carry neither field and emit nothing for these
+        surfaces.
     """
     requested_surfaces = _normalize_surfaces_arg(surfaces)
     requested_vibes = _normalize_vibes_arg(vibes)
@@ -390,6 +403,46 @@ def extract_lesson_surfaces(
                         surface="trophyWord",
                         surface_key="__self",
                         text=trophy_word,
+                        target_language_code=target_language_code,
+                    )
+                )
+
+        if "dialogue" in requested_surfaces:
+            turns = variant.get("dialogue") or []
+            for index in (0, 2, 3):
+                if index >= len(turns):
+                    continue
+                turn_text = (turns[index] or {}).get("targetText") or ""
+                if not turn_text:
+                    continue
+                rows.append(
+                    _make_row(
+                        path_id=path_id,
+                        lesson_id=lesson_id,
+                        lesson_number=lesson_number,
+                        vibe=vibe,
+                        surface="dialogue",
+                        surface_key=f"turn-{index + 1}",
+                        text=turn_text,
+                        target_language_code=target_language_code,
+                    )
+                )
+
+        if "pattern" in requested_surfaces:
+            examples = (variant.get("pattern") or {}).get("examples") or []
+            for index, example in enumerate(examples):
+                example_text = (example or {}).get("targetText") or ""
+                if not example_text:
+                    continue
+                rows.append(
+                    _make_row(
+                        path_id=path_id,
+                        lesson_id=lesson_id,
+                        lesson_number=lesson_number,
+                        vibe=vibe,
+                        surface="pattern",
+                        surface_key=f"ex-{index + 1}",
+                        text=example_text,
                         target_language_code=target_language_code,
                     )
                 )
