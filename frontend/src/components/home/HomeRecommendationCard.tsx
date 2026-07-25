@@ -119,7 +119,7 @@ export default function HomeRecommendationCard({ hero, phraseLang, onStartRecall
       <button
         type="button"
         onClick={onCta}
-        className="mt-auto inline-flex h-11 shrink-0 items-center justify-center rounded-xl bg-[var(--accent)] px-5 font-display text-sm font-semibold text-white transition-all hover:brightness-110 active:scale-[0.98]"
+        className="lw-swell-cta mt-auto inline-flex h-11 shrink-0 items-center justify-center rounded-xl px-5 font-display text-sm font-semibold active:scale-[0.98]"
       >
         {ctaLabel}
       </button>

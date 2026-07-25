@@ -2,8 +2,17 @@
 import { record } from './scenario'
 
 export async function playPronunciation(input: any): Promise<'audio' | 'speech' | 'none'> {
-  record('pronounce', { text: input?.text, audioUrl: input?.audioUrl ?? null, lang: input?.lang })
+  record('pronounce', {
+    text: input?.text,
+    audioUrl: input?.audioUrl ?? null,
+    lang: input?.lang,
+    allowSpeechFallback: input?.allowSpeechFallback !== false,
+  })
   return 'audio'
+}
+
+export function prefetchPronunciationAudio(url: string | null | undefined): void {
+  if (url) record('prefetch', { url })
 }
 
 export function usePronunciation() {

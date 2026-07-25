@@ -10,7 +10,7 @@ import { useTodayMission } from '@/hooks/useTodayMission'
 import { useHomeVisit } from '@/hooks/useHomeVisit'
 import { useHomeRecommendation } from '@/hooks/useHomeRecommendation'
 import { useHomeWordDetails } from '@/lib/homeWordDetails'
-import { playPronunciation } from '@/hooks/usePronunciation'
+import { playPronunciation, prefetchPronunciationAudio } from '@/hooks/usePronunciation'
 import { getLanguageCode, speakConversationLanguageCode } from '@/lib/languages'
 import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
 import { WAVE_HORIZON_FRACTION } from '@/lib/waveField'
@@ -218,25 +218,26 @@ export default function FirstLightHome({
     if (!knewIt) startCooldown(lemma.lemmaKey)
   }, [addRipple, recordGraded, startCooldown, userId])
 
-  // The sheet's advance effect re-subscribes on identity change and guards
-  // against double-advance, so this callback can safely depend on live state —
-  // by the time an advance fires (insert resolved + celebration done), the
-  // grade's state updates have already rendered into this closure.
-  const advanceQueue = useCallback((graded: LemmaState) => {
-    setSheet((current) => {
-      if (!current) return null
-      if (visit && visit.graded >= visit.proposed) return null
-      // Next unlocked due BUOY (§6.4 — the queue runs over the buoys actually
-      // on the water, never a pool word without one).
-      const next = onWaterDue.find(
-        (lemma) =>
-          lemma.lemmaKey !== graded.lemmaKey &&
-          !cooldowns.has(lemma.lemmaKey) &&
-          !clearedKeys.has(lemma.lemmaKey),
-      )
-      return next ? { lemma: next, cooldown: false } : null
-    })
-  }, [clearedKeys, cooldowns, onWaterDue, visit])
+  // What the queue would serve next, live. The learner asks for it explicitly
+  // (§6.4 — the card holds until they press Next), so this is read at click
+  // time with the grade's state updates already rendered into it, and the
+  // sheet can honestly label the button Next vs Done before they press it.
+  // The queue runs over the buoys actually on the water, never a pool word
+  // without one.
+  const nextInQueue = useMemo(() => {
+    if (!sheet) return null
+    if (visit && visit.graded >= visit.proposed) return null
+    return onWaterDue.find(
+      (lemma) =>
+        lemma.lemmaKey !== sheet.lemma.lemmaKey &&
+        !cooldowns.has(lemma.lemmaKey) &&
+        !clearedKeys.has(lemma.lemmaKey),
+    ) ?? null
+  }, [clearedKeys, cooldowns, onWaterDue, sheet, visit])
+
+  const advanceQueue = useCallback(() => {
+    setSheet(nextInQueue ? { lemma: nextInQueue, cooldown: false } : null)
+  }, [nextInQueue])
 
   // Server truth refreshes when the sheet closes — not per grade. Mid-queue the
   // local pool (data minus clearedKeys) already tells the truth, and a per-grade
@@ -313,9 +314,22 @@ export default function FirstLightHome({
   )
   const details = useHomeWordDetails(detailLemmas, activeLanguage)
 
+  // Warm every buoy's recording as soon as its url resolves. The first card of
+  // a visit is the one most likely to be tapped before the static-library
+  // lookup has landed — a cold fetch there is what makes the browser's
+  // synthetic voice stand in for a word we actually recorded.
+  useEffect(() => {
+    details.forEach((detail) => prefetchPronunciationAudio(detail.ttsAudioUrl))
+  }, [details])
+
   const onTapRest = useCallback((lemma: LemmaState) => {
     const detail = details.get(lemma.wordIds[0])
-    void playPronunciation({ text: lemma.displayWord, audioUrl: detail?.ttsAudioUrl, lang: activeLanguage })
+    void playPronunciation({
+      text: lemma.displayWord,
+      audioUrl: detail?.ttsAudioUrl,
+      lang: activeLanguage,
+      allowSpeechFallback: !detail?.ttsAudioUrl,
+    })
   }, [activeLanguage, details])
 
   // ── State line: the dawn's text twin (§4), aria-live debounced (§12) ──────
@@ -528,6 +542,7 @@ export default function FirstLightHome({
         language={activeLanguage}
         langCode={langCode}
         cooldown={Boolean(sheet && sheet.cooldown && cooldowns.has(sheet.lemma.lemmaKey))}
+        hasNext={nextInQueue !== null}
         onGrade={submitGrade}
         onAdvance={advanceQueue}
         onClose={() => setSheet(null)}

@@ -96,15 +96,18 @@ function bandFor(z: number): 'far' | 'mid' | 'near' {
   return 'near'
 }
 
+// Desktop reads the sea from further away and has room to spare — one step up
+// per band there. The measuring twin carries the same classes, so collision
+// widths are always measured at the size the buoy actually renders.
 const WORD_CLASS: Record<'far' | 'mid' | 'near', string> = {
-  far: 'text-[13px]',
-  mid: 'text-[15px]',
-  near: 'text-[17px]',
+  far: 'text-[13px] lg:text-[15px]',
+  mid: 'text-[15px] lg:text-[18px]',
+  near: 'text-[17px] lg:text-[21px]',
 }
 const GLOSS_CLASS: Record<'far' | 'mid' | 'near', string> = {
-  far: 'text-[11px]',
-  mid: 'text-[12px]',
-  near: 'text-[13px]',
+  far: 'text-[11px] lg:text-[12px]',
+  mid: 'text-[12px] lg:text-[14px]',
+  near: 'text-[13px] lg:text-[16px]',
 }
 
 type TidelineBuoysProps = {

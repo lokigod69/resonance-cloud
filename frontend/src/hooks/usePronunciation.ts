@@ -5,6 +5,11 @@ type PronunciationInput = {
   text: string
   audioUrl?: string | null
   lang?: string | null
+  /** When false, a word whose real audio fails to play stays SILENT instead of
+   * dropping to the browser's synthetic voice. Callers that know the word has
+   * a recorded file pass false — a robot voice standing in for a real one is
+   * worse than nothing, and it teaches the wrong pronunciation. */
+  allowSpeechFallback?: boolean
 }
 
 type PronunciationWord = {
@@ -56,6 +61,22 @@ function speakWithBrowser({ text, lang }: PronunciationInput) {
   return 'speech' as const
 }
 
+// Warms a recorded pronunciation so the first play starts inside the user's
+// gesture instead of waiting on the network — a cold mp3 fetch is what makes
+// an autoplay-policy rejection (and with it the robot fallback) likely.
+const prefetched = new Map<string, HTMLAudioElement>()
+
+export function prefetchPronunciationAudio(url: string | null | undefined): void {
+  if (!url || !('Audio' in globalThis) || prefetched.has(url)) return
+  // Bounded: the Home water shows at most a dozen words at a time.
+  if (prefetched.size > 32) prefetched.clear()
+  const audio = new Audio()
+  audio.preload = 'auto'
+  audio.src = url
+  audio.load()
+  prefetched.set(url, audio)
+}
+
 export async function playPronunciation(input: PronunciationInput): Promise<'audio' | 'speech' | 'none'> {
   const text = input.text.trim()
   if (!text) return 'none'
@@ -72,6 +93,10 @@ export async function playPronunciation(input: PronunciationInput): Promise<'aud
     } catch {
       stopActiveAudio()
     }
+    // The file exists but this attempt did not start (autoplay policy, a
+    // transient network error). Staying silent keeps the caller's replay
+    // control honest; a synthetic voice here would sound like the answer.
+    if (input.allowSpeechFallback === false) return 'none'
   }
 
   return speakWithBrowser({ text, lang: input.lang })

@@ -35,13 +35,20 @@ export default function FirstLightTopRow({ languages, activeLanguage, onSelectLa
     .slice(0, 2)
   const credits = typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0
 
+  // `.language-picker` carries the classic dashboard's stack spacing (a
+  // dvh-scaled margin-bottom). Inside a centered flex row that margin lifts
+  // the pill clear of the brand and the avatar — up to ~21px on a tall phone.
+  // First Light lays the row out itself, so the inherited spacing is reset
+  // here rather than in the shared component.
   const cluster = (
-    <LanguageCluster
-      languages={languages}
-      activeLanguage={activeLanguage}
-      onSelect={onSelectLanguage}
-      onAddLanguage={onAddLanguage}
-    />
+    <div className="flex min-w-0 items-center [&>.lang-cluster]:!m-0">
+      <LanguageCluster
+        languages={languages}
+        activeLanguage={activeLanguage}
+        onSelect={onSelectLanguage}
+        onAddLanguage={onAddLanguage}
+      />
+    </div>
   )
 
   return (

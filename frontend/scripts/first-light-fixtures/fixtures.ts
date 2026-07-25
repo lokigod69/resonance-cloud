@@ -221,13 +221,31 @@ function promptText(): string {
   return textOf(dialog()?.querySelector('p') ?? null)
 }
 
-/** Reveal → Continue on the open sheet, resolving to the recorded insert. */
+/** The live Next/Done control on a settled card, once it is actually pressable
+ * (it stays disabled until the attempt has landed). */
+function advanceButton(): HTMLButtonElement | null {
+  const sheet = dialog()
+  if (!sheet) return null
+  const button = Array.from(sheet.querySelectorAll('button')).find((b) => {
+    const label = textOf(b)
+    return label === 'Next word' || label === 'Done'
+  }) as HTMLButtonElement | undefined
+  return button && !button.disabled ? button : null
+}
+
+/** The card holds after it resolves (§6.4) — this is the learner pressing on. */
+async function advanceCard() {
+  const button = await waitFor('advance button', advanceButton, 8000)
+  button.click()
+}
+
+/** Reveal → the attempt writes itself → press on. */
 async function missCurrentCard() {
+  const before = inserts().length
   dlgButton('Show answer').click()
   await waitFor('solution shown', () => dialog() && textOf(dialog()!).includes('Correct answer'))
-  const before = inserts().length
-  dlgButton('Continue').click()
   await waitFor('insert recorded', () => inserts().length > before, 6000)
+  await advanceCard()
 }
 
 async function solveCurrentCard(word: string) {
@@ -547,13 +565,12 @@ export const FIXTURES: Fixture[] = [
       await waitFor('sheet', dialog, 6000)
       dlgButton('Show answer').click()
       await waitFor('solution shown', () => textOf(dialog()).includes('Correct answer'))
-      dlgButton('Continue').click()
       await waitFor('insert attempted', () => inserts().length === 1, 6000)
       await settle(900)
       const sheet = dialog()
       ctx.check('sheet stays open on a failed write', Boolean(sheet), '')
       ctx.check('inline Retry offered', Boolean(sheet) && textOf(sheet!).includes('Retry'), textOf(sheet))
-      ctx.check('no Continue advance after failure', Boolean(sheet) && !/Continue$/.test(textOf(sheet!)), textOf(sheet))
+      ctx.check('no way to advance after failure', advanceButton() === null, textOf(sheet))
       ctx.check('graded did not advance (0 of 3)', stateLine().includes('0 of 3 practiced'), stateLine())
       ctx.check('dawn unchanged (tier still night)', stateLine().includes('night'), stateLine())
       ctx.check('state line unchanged since before the attempt', stateLine() === lineBefore, `${lineBefore} → ${stateLine()}`)
@@ -747,6 +764,7 @@ export const FIXTURES: Fixture[] = [
         await solveCurrentCard(word)
         await waitFor(`grade ${i + 1} written`, () => inserts().length === i + 1, 8000)
         if (i === 0) {
+          await advanceCard()
           await waitFor('card advanced', () => promptText() !== prompt, 10000)
           await settle(400)
         }
