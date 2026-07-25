@@ -62,9 +62,13 @@ const LABEL_SHADOW = '0 2px 14px rgba(5,2,8,0.6)'
 // (pair, viewport); recomputed only on resize.
 const proximityCache = new Map<string, number>()
 function proximityFraction(a: BuoySlot, b: BuoySlot, w: number, h: number): number {
-  const key = `${a.x},${a.z}|${b.x},${b.z}|${w}x${h}`
+  // Quantize the viewport to 16px buckets and cap the cache — a window-edge
+  // drag produces hundreds of distinct sizes, and each cold 12-slot pass costs
+  // ~4ms of sine sampling.
+  const key = `${a.x},${a.z}|${b.x},${b.z}|${Math.round(w / 16)}x${Math.round(h / 16)}`
   const hit = proximityCache.get(key)
   if (hit !== undefined) return hit
+  if (proximityCache.size > 512) proximityCache.clear()
   const worldXA = worldXForScreenX((a.x / 100) * w, a.z, w, h)
   const worldXB = worldXForScreenX((b.x / 100) * w, b.z, w, h)
   let near = 0
@@ -117,9 +121,10 @@ type TidelineBuoysProps = {
   /** Out-param: each buoy's current screen position as viewport fractions —
    * the parent aims tap ripples with it. Mutated in place, never re-created. */
   positionsRef?: { current: Map<string, { x: number; y: number }> }
-  /** Reports the collision-resolved visible count so the backlog marker can
-   * name the words ACTUALLY off the water, not the slot budget. */
-  onVisibleCountChange?: (count: number) => void
+  /** Reports the lemma keys actually on the water after collision resolution —
+   * the parent's queue, cooldown guarantee, and backlog marker key off this
+   * set, never the slot budget. */
+  onVisibleChange?: (keys: string[]) => void
 }
 
 // Per-band measurements: every candidate label is measured at ALL THREE font
@@ -140,7 +145,7 @@ export default function TidelineBuoys({
   reduceMotion,
   buoyAria,
   positionsRef,
-  onVisibleCountChange,
+  onVisibleChange,
 }: TidelineBuoysProps) {
   const slots = maxCount > 5 ? DESKTOP_SLOTS : MOBILE_SLOTS
   const candidates = useMemo(() => lemmas.slice(0, Math.min(maxCount, slots.length)), [lemmas, maxCount, slots.length])
@@ -160,12 +165,32 @@ export default function TidelineBuoys({
   const viewportW = viewport.w
 
   useEffect(() => {
-    const onResize = () => setViewport({
-      w: document.documentElement.clientWidth,
-      h: document.documentElement.clientHeight,
-    })
+    let timer = 0
+    const onResize = () => {
+      window.clearTimeout(timer)
+      timer = window.setTimeout(() => setViewport({
+        w: document.documentElement.clientWidth,
+        h: document.documentElement.clientHeight,
+      }), 150)
+    }
     window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
+    return () => {
+      window.clearTimeout(timer)
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
+
+  // The Outfit webfont swaps in after first paint; label widths measured
+  // against the fallback font would silently misjudge collisions forever.
+  const [fontsReady, setFontsReady] = useState(false)
+  useEffect(() => {
+    let cancelled = false
+    void document.fonts?.ready.then(() => {
+      if (!cancelled) setFontsReady(true)
+    })
+    return () => {
+      cancelled = true
+    }
   }, [])
 
   // Measure candidate labels in a hidden twin: the word at full width, the
@@ -190,21 +215,25 @@ export default function TidelineBuoys({
       entry[band] = { width, glossFits }
       next.set(key, entry)
     }
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- DOM measurement must land in state; keyed by membership so it cannot loop
+     
     setMeasured(next)
-  }, [measureKey, viewportW])
+    // fontsReady re-measures once after the webfont swap replaces the
+    // fallback metrics.
+     
+  }, [measureKey, viewportW, fontsReady])
 
-  // Collision resolution: reduce the visible count until no two labels that
-  // can meet on screen overlap horizontally (5→4→3, floor 3). "Can meet" is
-  // judged from the projection itself — static calm-water Y plus each slot's
-  // real bob amplitude — because the swell routinely crosses buoys from
-  // different depth rows past each other.
-  const visibleCount = useMemo(() => {
-    let count = candidates.length
-    const positionsFor = (n: number) => {
+  // Collision resolution: when two labels that genuinely share water would
+  // overlap, EXCLUDE the offending pair's later-slot member and let the next
+  // candidate wash in — trimming the tail can never fix a collision between
+  // low-index slots (the most likely mobile pair is 0-1). The count only
+  // drops when the pool has no substitute, floored at MIN_VISIBLE; a residual
+  // overlap at the floor is the accepted worst case.
+  const visible = useMemo(() => {
+    const h = viewport.h
+    const place = (pool: LemmaState[]) => {
       const used = new Set<number>()
       const items: Array<{ key: string; slot: BuoySlot; width: number }> = []
-      for (const lemma of candidates.slice(0, n)) {
+      for (const lemma of pool) {
         let index = slotByKey.get(lemma.lemmaKey)
         if (index === undefined || index >= slots.length || used.has(index)) {
           index = 0
@@ -220,8 +249,8 @@ export default function TidelineBuoys({
       }
       return items
     }
-    const h = viewport.h
-    const collides = (items: ReturnType<typeof positionsFor>) => {
+    // Returns the key of the later-slot member of the first colliding pair.
+    const findCollision = (items: ReturnType<typeof place>) => {
       for (let i = 0; i < items.length; i++) {
         for (let j = i + 1; j < items.length; j++) {
           const a = items[i]
@@ -229,23 +258,41 @@ export default function TidelineBuoys({
           if (proximityFraction(a.slot, b.slot, viewportW, h) < SUSTAINED_PROXIMITY) continue
           const ax = (a.slot.x / 100) * viewportW
           const bx = (b.slot.x / 100) * viewportW
-          if (Math.abs(ax - bx) < a.width / 2 + b.width / 2 + COLLISION_PAD_PX) return true
+          if (Math.abs(ax - bx) < a.width / 2 + b.width / 2 + COLLISION_PAD_PX) {
+            return slots.indexOf(a.slot) > slots.indexOf(b.slot) ? a.key : b.key
+          }
         }
       }
-      return false
+      return null
     }
-    while (count > MIN_VISIBLE && collides(positionsFor(count))) count--
-    return count
-  }, [candidates, measured, slotByKey, slots, viewport.h, viewportW])
+    const excluded = new Set<string>()
+    const maxExclusions = Math.max(0, candidates.length - MIN_VISIBLE)
+    for (;;) {
+      const pool = candidates
+        .filter((lemma) => !excluded.has(lemma.lemmaKey))
+        .slice(0, Math.min(maxCount, slots.length))
+      const offender = findCollision(place(pool))
+      if (offender === null || excluded.size >= maxExclusions) return pool
+      excluded.add(offender)
+    }
+  }, [candidates, maxCount, measured, slotByKey, slots, viewport.h, viewportW])
 
-  const visible = useMemo(() => candidates.slice(0, visibleCount), [candidates, visibleCount])
+  // Report the buoys ACTUALLY on the water — the parent's queue, cooldown
+  // guarantee, and backlog marker all key off this set, never the slot budget.
+  useEffect(() => {
+    onVisibleChange?.(visible.map((lemma) => lemma.lemmaKey))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onVisibleChange, visible.map((lemma) => lemma.lemmaKey).join('|')])
 
   useEffect(() => {
-    onVisibleCountChange?.(visible.length)
-  }, [onVisibleCountChange, visible.length])
-
-  useEffect(() => {
-     
+    // Prune stale positions here, outside the state updater — updaters must
+    // stay pure (StrictMode double-invokes them).
+    if (positionsRef) {
+      const liveKeys = new Set(visible.map((lemma) => lemma.lemmaKey))
+      for (const key of Array.from(positionsRef.current.keys())) {
+        if (!liveKeys.has(key)) positionsRef.current.delete(key)
+      }
+    }
     setSlotByKey((prev) => {
       const liveKeys = new Set(visible.map((lemma) => lemma.lemmaKey))
       let changed = false
@@ -254,11 +301,6 @@ export default function TidelineBuoys({
         if (!liveKeys.has(key)) {
           next.delete(key)
           changed = true
-        }
-      }
-      if (positionsRef) {
-        for (const key of Array.from(positionsRef.current.keys())) {
-          if (!liveKeys.has(key)) positionsRef.current.delete(key)
         }
       }
       const used = new Set(next.values())

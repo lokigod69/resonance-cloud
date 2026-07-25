@@ -149,6 +149,9 @@ export function useHomeRecommendation({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visitKey, commitKind])
 
+  // `unavailable` is a failure surface, not content — it may displace even a
+  // committed hero, or a mid-visit RPC failure could never offer Retry.
+  if (resolved.kind === 'unavailable') return resolved
   if (visitKey && committed?.key === visitKey) return committed.hero
   return resolved
 }

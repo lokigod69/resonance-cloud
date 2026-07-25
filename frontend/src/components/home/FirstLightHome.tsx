@@ -122,11 +122,24 @@ export default function FirstLightHome({
 
   const visibleDue = useMemo(() => duePool.slice(0, maxBuoys), [duePool, maxBuoys])
 
+  // The buoys ACTUALLY on the water, as reported by TidelineBuoys after
+  // collision resolution — the queue, the never-lock-last guarantee, and the
+  // backlog marker all key off this set. Words in the slot-budget slice with
+  // no rendered buoy must never count as "unlocked" or be served by the sheet.
+  const [onWaterKeys, setOnWaterKeys] = useState<ReadonlySet<string>>(new Set())
+  const onWaterChange = useCallback((keys: string[]) => setOnWaterKeys(new Set(keys)), [])
+  const onWaterDue = useMemo(() => {
+    const filtered = duePool.filter((lemma) => onWaterKeys.has(lemma.lemmaKey))
+    // Before the first report (or across a mode switch with stale keys) fall
+    // back to the slot-budget slice so the water is never wrongly "empty".
+    return filtered.length > 0 ? filtered : duePool.slice(0, maxBuoys)
+  }, [duePool, maxBuoys, onWaterKeys])
+
   const startCooldown = useCallback((lemmaKey: string) => {
     setCooldowns((prev) => {
-      // Unlocked = visible and not already cooling; if this miss is the last
-      // unlocked buoy, the cooldown never applies (§6.3).
-      const unlocked = visibleDue.filter((lemma) => !prev.has(lemma.lemmaKey))
+      // Unlocked = on the water and not already cooling; if this miss is the
+      // last unlocked buoy, the cooldown never applies (§6.3).
+      const unlocked = onWaterDue.filter((lemma) => !prev.has(lemma.lemmaKey))
       if (unlocked.length <= 1) return prev
       const next = new Map(prev)
       next.set(lemmaKey, Date.now() + MISS_COOLDOWN_MS)
@@ -142,19 +155,19 @@ export default function FirstLightHome({
       cooldownTimersRef.current.set(lemmaKey, timer)
       return next
     })
-  }, [visibleDue])
+  }, [onWaterDue])
 
   // The never-lock-last guarantee must hold REACTIVELY, not just at the moment
   // a cooldown starts: a correct grade can remove the last unlocked buoy from
   // the pool while others still cool (miss w1, clear w2 → w1 alone and locked).
-  // Whenever every visible due buoy is cooling, release the earliest-expiring
+  // Whenever every buoy ON THE WATER is cooling, release the earliest-expiring
   // cooldown so one buoy is always actionable (§6.3/§6.4).
   useEffect(() => {
-    if (visibleDue.length === 0 || !visibleDue.every((lemma) => cooldowns.has(lemma.lemmaKey))) return
+    if (onWaterDue.length === 0 || !onWaterDue.every((lemma) => cooldowns.has(lemma.lemmaKey))) return
     let earliest: string | null = null
     let earliestUntil = Infinity
     cooldowns.forEach((until, lemmaKey) => {
-      if (until < earliestUntil && visibleDue.some((lemma) => lemma.lemmaKey === lemmaKey)) {
+      if (until < earliestUntil && onWaterDue.some((lemma) => lemma.lemmaKey === lemmaKey)) {
         earliestUntil = until
         earliest = lemmaKey
       }
@@ -173,7 +186,7 @@ export default function FirstLightHome({
       next.delete(releaseKey)
       return next
     })
-  }, [cooldowns, visibleDue])
+  }, [cooldowns, onWaterDue])
 
   // ── The chained sheet queue (§6.4) ────────────────────────────────────────
   const [sheet, setSheet] = useState<{ lemma: LemmaState; cooldown: boolean } | null>(null)
@@ -186,14 +199,14 @@ export default function FirstLightHome({
   // described. Never a dead button (§8.1): with buoys locked, hand off to the
   // all-due session; with the pool empty, to the library.
   const startRecallRun = useCallback(() => {
-    const first = visibleDue.find((lemma) => !cooldowns.has(lemma.lemmaKey))
+    const first = onWaterDue.find((lemma) => !cooldowns.has(lemma.lemmaKey))
     if (first) {
       setSheet({ lemma: first, cooldown: false })
       return
     }
     if (duePool.length > 0) navigate(`/study?lang=${encodeURIComponent(activeLanguage)}`)
     else navigate('/categories')
-  }, [activeLanguage, cooldowns, duePool.length, navigate, visibleDue])
+  }, [activeLanguage, cooldowns, duePool.length, navigate, onWaterDue])
 
   const submitGrade = useCallback(async (lemma: LemmaState, knewIt: boolean) => {
     const { error } = await supabase
@@ -213,10 +226,9 @@ export default function FirstLightHome({
     setSheet((current) => {
       if (!current) return null
       if (visit && visit.graded >= visit.proposed) return null
-      // Next unlocked due BUOY (§6.4 — the queue runs over the buoys, never a
-      // pool word without one): slice first, then filter, so a missed lemma
-      // still occupying its slot cannot pull word #6 into the queue.
-      const next = duePool.slice(0, maxBuoys).find(
+      // Next unlocked due BUOY (§6.4 — the queue runs over the buoys actually
+      // on the water, never a pool word without one).
+      const next = onWaterDue.find(
         (lemma) =>
           lemma.lemmaKey !== graded.lemmaKey &&
           !cooldowns.has(lemma.lemmaKey) &&
@@ -224,7 +236,7 @@ export default function FirstLightHome({
       )
       return next ? { lemma: next, cooldown: false } : null
     })
-  }, [clearedKeys, cooldowns, duePool, maxBuoys, visit])
+  }, [clearedKeys, cooldowns, onWaterDue, visit])
 
   // Server truth refreshes when the sheet closes — not per grade. Mid-queue the
   // local pool (data minus clearedKeys) already tells the truth, and a per-grade
@@ -246,6 +258,7 @@ export default function FirstLightHome({
     return () => {
       setSheet(null)
       setCooldowns(new Map())
+      setOnWaterKeys(new Set())
       clearCooldownTimers()
     }
   }, [lifecycleKey, clearCooldownTimers])
@@ -263,8 +276,12 @@ export default function FirstLightHome({
   useEffect(() => () => clearCooldownTimers(), [clearCooldownTimers])
 
   // ── Water state: clear moment, rest buoys ─────────────────────────────────
+  // An empty pool is only TRUSTED when the RPC is healthy — on failure
+  // useWordStates clears data, and celebrating a network error as "the water
+  // is clear" would be the worst lie this surface could tell (§5/§8.1).
+  const poolEmptyTrusted = duePool.length === 0 && wordStates.error === null
   const zeroDueArrival = Boolean(visit) && !visit?.segments.recall
-  const waterCleared = Boolean(visit?.segments.recall) && duePool.length === 0 && cooldowns.size === 0
+  const waterCleared = Boolean(visit?.segments.recall) && poolEmptyTrusted && cooldowns.size === 0
   const [clearMomentDone, setClearMomentDone] = useState(false)
   useEffect(() => {
     if (!waterCleared) {
@@ -276,7 +293,10 @@ export default function FirstLightHome({
     return () => window.clearTimeout(timer)
   }, [waterCleared])
 
-  const showRestBuoys = zeroDueArrival || (waterCleared && clearMomentDone)
+  // Rest mode requires the pool to be ACTUALLY empty right now — the visit's
+  // zero-due composition is immutable, but the pool can refill on a focus
+  // refetch, and a due word must never hide behind a latched rest state.
+  const showRestBuoys = poolEmptyTrusted && (zeroDueArrival || (waterCleared && clearMomentDone))
   const restLemmas = useMemo(() => {
     if (!showRestBuoys) return []
     const poolKeys = new Set(duePool.map((lemma) => lemma.lemmaKey))
@@ -346,8 +366,7 @@ export default function FirstLightHome({
   // Folded strip (§2): the strip's tokens — plural — fold into the state line
   // so nothing the waterline carried is lost, and the screen-reader twin below
   // announces this same complete string.
-  const poolEmpty = duePool.length === 0
-  const recallDoneFold = visit ? visit.graded >= visit.proposed || poolEmpty : false
+  const recallDoneFold = visit ? visit.graded >= visit.proposed || poolEmptyTrusted : false
   const speakPendingFold = Boolean(visit?.segments.speak) && !visit?.speakDone
   const allDoneFold = Boolean(visit) && !speakPendingFold
     && (!visit?.segments.lesson || visit.lessonDone)
@@ -376,11 +395,9 @@ export default function FirstLightHome({
   }, [])
 
   // Backlog counts against the buoys ACTUALLY on the water — collision
-  // resolution can reduce them below the slot budget, and understating the
-  // debt would break the binding backlog ruling (§0).
-  const [visibleBuoyCount, setVisibleBuoyCount] = useState(maxBuoys)
-  const onVisibleCountChange = useCallback((count: number) => setVisibleBuoyCount(count), [])
-  const backlogCount = duePool.length - Math.min(visibleBuoyCount, maxBuoys)
+  // resolution can swap or reduce them, and understating the debt would break
+  // the binding backlog ruling (§0).
+  const backlogCount = duePool.length - onWaterDue.length
   const langCode = getLanguageCode(activeLanguage) || undefined
 
   const activeDetail = sheet ? details.get(sheet.lemma.wordIds[0]) : undefined
@@ -429,7 +446,7 @@ export default function FirstLightHome({
             className="absolute inset-x-0"
             style={{ top: `calc(${WAVE_HORIZON_FRACTION * 100}% + 0.5rem)` }}
           >
-            <CurrentStrip visit={visit} lessonNumber={lessonNumber} poolEmpty={duePool.length === 0} />
+            <CurrentStrip visit={visit} lessonNumber={lessonNumber} poolEmpty={poolEmptyTrusted} />
           </div>
         )}
 
@@ -490,7 +507,7 @@ export default function FirstLightHome({
                 ? `${lemma.displayWord} · ${t('home.fl.sheetCooldown')}`
                 : t('home.fl.buoyAria', { word: lemma.displayWord, gloss: lemma.translation })}
             positionsRef={positionsRef}
-            onVisibleCountChange={onVisibleCountChange}
+            onVisibleChange={onWaterChange}
           />
         )}
       </div>
@@ -499,7 +516,7 @@ export default function FirstLightHome({
       {navSlot && visit
         ? createPortal(
             <span className="hidden text-right font-display text-xs leading-tight text-[var(--text-secondary)] md:block">
-              {stateLine}
+              {skyLine}
             </span>,
             navSlot,
           )
@@ -510,7 +527,7 @@ export default function FirstLightHome({
         detail={activeDetail}
         language={activeLanguage}
         langCode={langCode}
-        cooldown={sheet?.cooldown ?? false}
+        cooldown={Boolean(sheet && sheet.cooldown && cooldowns.has(sheet.lemma.lemmaKey))}
         onGrade={submitGrade}
         onAdvance={advanceQueue}
         onClose={() => setSheet(null)}

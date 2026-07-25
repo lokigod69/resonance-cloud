@@ -367,11 +367,14 @@ export function useHomeVisit({ userId, language, wordStates, mission, missionLoa
     }
   }, [key])
 
-  // Dawn: the pool-empty arm completes the recall segment (§4/Codex delta 9),
-  // and the sky is monotonic non-decreasing within a visit — a late
+  // Dawn: the pool-empty arm completes the recall segment (§4/Codex delta 9)
+  // — but ONLY when the empty pool is trusted: on RPC failure useWordStates
+  // clears data, and a network blip must never light full dawn (§5/Opus 12).
+  // The sky stays monotonic non-decreasing within a visit — a late
   // recomposition can never darken it.
   const currentVisit = visit && visit.key === key ? visit : null
-  const rawDawn = dawnForVisit(visitForDawn(currentVisit, duePool.length === 0))
+  const trustedPoolEmpty = duePool.length === 0 && wordStates.error === null
+  const rawDawn = dawnForVisit(visitForDawn(currentVisit, trustedPoolEmpty))
   const dawn = Math.max(maxDawn, rawDawn)
   useEffect(() => {
     if (rawDawn > maxDawn) {
