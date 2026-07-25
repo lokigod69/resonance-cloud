@@ -61,6 +61,16 @@ export const WIZARD_LANGUAGES  = LANGUAGES.filter((l) => l.isWizard)
 export const LANDING_LANGUAGES = LANGUAGES.filter((l) => l.isLanding)
 export const SPEAK_LANGUAGES   = LANGUAGES.filter((l) => l.isSpeak)
 
+/** The exact language→code resolution Speak uses before persisting
+ * `speak_conversations.language` (Speak.tsx picks `.code` off its
+ * SPEAK_LANGUAGES entry by display value). Home's spoke-today check must query
+ * with this — never re-derive through getLanguageCode/canonicalize, or the two
+ * surfaces drift the moment a mapping diverges. */
+export function speakConversationLanguageCode(language: string | null | undefined): string | null {
+  if (!language) return null
+  return SPEAK_LANGUAGES.find((l) => l.value === language)?.code ?? null
+}
+
 function cleanLanguageInput(language: string | null | undefined): string {
   return language?.trim() ?? ''
 }

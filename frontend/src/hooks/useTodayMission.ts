@@ -17,6 +17,9 @@ export type TodayMission = {
   pathShortTitle: string
   targetLanguage: string
   vibeId: ActiveGuidedVibeId
+  /** Stable lesson id — lets Home snapshot {pathId, lessonId} and observe
+   * completion in todayProgress without re-resolving the mission. */
+  lessonId: string
   lessonNumber: number
   totalLessons: number
   completedCount: number
@@ -46,6 +49,12 @@ type UseTodayMissionArgs = {
   userId: string | undefined
   /** Gate so first-run/empty homes never pay the guided-data chunk download. */
   enabled: boolean
+  /** Opt-in: when the active language has no guided path, fall back to the
+   * learner's last-used guided language. Strict active-language matching is
+   * the DEFAULT — a Korean-active home must never surface a Cebuano lesson.
+   * No caller passes this today; it exists so the old behavior stays reachable
+   * by name instead of by accident. */
+  allowGuidedLanguageFallback?: boolean
 }
 
 // Deck/wizard languages use 'Bisaya'; guided content names the same language 'Cebuano'.
@@ -56,11 +65,12 @@ const DASHBOARD_TO_GUIDED_LANGUAGE: Record<string, string> = {
 /**
  * Resolves the learner's one guided "mission of the day" for the dashboard hero:
  * the recommended lesson on the most relevant incomplete path for the active
- * language (falling back to their last-used guided language when the active
- * language has no guided path yet). Returns `mission: null` when guided content
- * has nothing honest to offer, so the dashboard can degrade to practice-only.
+ * language. Strict language matching is the default; the fallback to the
+ * learner's last-used guided language requires the named opt-in. Returns
+ * `mission: null` when guided content has nothing honest to offer, so the
+ * dashboard can degrade to practice-only.
  */
-export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled }: UseTodayMissionArgs): TodayMissionState {
+export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled, allowGuidedLanguageFallback = false }: UseTodayMissionArgs): TodayMissionState {
   const [state, setState] = useState<TodayMissionState>({ loading: true, mission: null })
 
   useEffect(() => {
@@ -77,7 +87,7 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled 
         ])
         if (cancelled) return
         const progress = readTodayProgressState(userId)
-        const mission = buildTodayMission({ lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage })
+        const mission = buildTodayMission({ lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage, allowGuidedLanguageFallback })
         setState({ loading: false, mission })
       } catch {
         if (!cancelled) setState({ loading: false, mission: null })
@@ -87,7 +97,7 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled 
     return () => {
       cancelled = true
     }
-  }, [activeLanguage, baseLanguage, enabled, userId])
+  }, [activeLanguage, allowGuidedLanguageFallback, baseLanguage, enabled, userId])
 
   return state
 }
@@ -98,10 +108,11 @@ function buildTodayMission(input: {
   progress: TodayProgressState
   activeLanguage: string | null
   baseLanguage: string | null | undefined
+  allowGuidedLanguageFallback: boolean
 }): TodayMission | null {
-  const { lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage } = input
+  const { lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage, allowGuidedLanguageFallback } = input
 
-  const guidedLanguage = resolveMissionLanguage(lessonsModule, progress, activeLanguage)
+  const guidedLanguage = resolveMissionLanguage(lessonsModule, progress, activeLanguage, allowGuidedLanguageFallback)
   if (!guidedLanguage) return null
 
   const path = pickMissionPath(lessonsModule, progress, guidedLanguage)
@@ -124,6 +135,7 @@ function buildTodayMission(input: {
     pathShortTitle: path.shortTitle,
     targetLanguage: path.targetLanguage,
     vibeId,
+    lessonId: lesson.id,
     lessonNumber: lesson.lessonNumber,
     totalLessons: overview.totalLessons,
     completedCount: overview.completedCount,
@@ -144,6 +156,7 @@ function resolveMissionLanguage(
   lessonsModule: GuidedLessonsModule,
   progress: TodayProgressState,
   activeLanguage: string | null,
+  allowGuidedLanguageFallback: boolean,
 ): string | null {
   const guidedLanguages = new Set<string>(
     lessonsModule.getGuidedTodayPathOptions().map((path) => path.targetLanguage),
@@ -151,9 +164,12 @@ function resolveMissionLanguage(
   const mapped = activeLanguage ? (DASHBOARD_TO_GUIDED_LANGUAGE[activeLanguage] ?? activeLanguage) : null
   if (mapped && guidedLanguages.has(mapped)) return mapped
 
-  // The active deck language has no guided path (e.g. Korean). Only fall back to the
-  // learner's last-used guided language when they have actually engaged with guided
-  // lessons — never push an unrelated default course onto the home screen.
+  // The active deck language has no guided path (e.g. Korean). Strict matching
+  // stops here by default — a home hero must never cross languages. The
+  // fallback to the learner's last-used guided language survives only behind
+  // the named opt-in, and even then only when they have actually engaged with
+  // guided lessons.
+  if (!allowGuidedLanguageFallback) return null
   const hasGuidedProgress = Object.values(progress.courses).some(
     (course) => course.completedLessonIds.length > 0 || course.skippedLessonIds.length > 0,
   )

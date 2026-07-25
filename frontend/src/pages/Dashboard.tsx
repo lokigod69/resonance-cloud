@@ -247,6 +247,21 @@ export default function Dashboard() {
                     disabled={tilesDisabled}
                   />
                 </div>
+                {/* Always a primary action (spec §8.1): with nothing due all
+                    three tiles disable, which used to leave this section — and
+                    on lesson-less languages the whole home — with no CTA. Only
+                    when the counts are REAL (no RPC error — an error must
+                    never read as "nothing due") and no mission card already
+                    offers the primary action. */}
+                {!wordStates.loading && wordStates.fetched && wordStates.error === null
+                  && !todayMission.mission && reviewDue + counts.newDue + counts.learning === 0 && (
+                  <Link
+                    to="/categories"
+                    className="mt-2 inline-flex items-center justify-center rounded-xl border-2 border-[var(--accent)]/60 bg-[var(--accent)]/15 px-5 py-2.5 font-display text-sm font-semibold text-[var(--accent)] transition-all hover:bg-[var(--accent)]/25"
+                  >
+                    {t('home.fl.hero.cta.browse')}
+                  </Link>
+                )}
               </div>
             </section>
 

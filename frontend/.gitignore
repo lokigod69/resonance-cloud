@@ -32,3 +32,4 @@ supabase/.temp/
 
 .vercel
 scripts/perf/results/*.json
+scripts/first-light-fixtures/out/

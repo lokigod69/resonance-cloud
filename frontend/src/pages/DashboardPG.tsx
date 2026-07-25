@@ -1,29 +1,18 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { AlertCircle, ChevronRight, LogIn, RefreshCw } from 'lucide-react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { AlertCircle, LogIn, RefreshCw } from 'lucide-react'
 import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
 import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
-import WordTide from '@/components/dashboard/WordTide'
+import FirstLightHome from '@/components/home/FirstLightHome'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
-import { useWordStates } from '@/hooks/useWordStates'
 import { useStudyStreak } from '@/hooks/useStudyStreak'
 import { supabase } from '@/lib/supabase'
 import { canonicalizeLanguageValue } from '@/lib/languages'
-import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
-import {
-  EXPERIENCE_PRESETS,
-  PRESET_EMOJI,
-  presetLabelKey,
-  presetStudyRoute,
-  readExperiencePreset,
-  writeExperiencePreset,
-  type ExperiencePreset,
-} from '@/lib/experiencePreset'
 
 type DeckSummary = {
   id: string
@@ -35,7 +24,6 @@ export default function DashboardPG() {
   const { user, profile } = useAuth()
   const { t } = useTranslation()
   const { activeLanguage, setActiveLanguage, languageReady } = useLanguage()
-  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const queryLang = searchParams.get('lang')
 
@@ -125,12 +113,7 @@ export default function DashboardPG() {
     }
   }, [activeLanguage, availableLanguages, dashboardLoading, queryLang, setActiveLanguage])
 
-  const newWordDailyCap = normalizeNewWordsPerDay(profile?.new_words_per_day)
-  const wordStates = useWordStates(activeLanguage ?? '', { newWordDailyCap })
-  const counts = wordStates.counts
-  const dueTotal = counts.newDue + counts.totalDue
   const studyStreak = useStudyStreak()
-  const tilesDisabled = !activeLanguage || wordStates.loading
 
   // Empty-home shows when the ACTIVE language has no decks — a brand-new account
   // (no decks, no active language) or a language the learner hasn't started yet.
@@ -140,74 +123,6 @@ export default function DashboardPG() {
       : []
   ), [activeLanguage, decks])
 
-  // Which assets this language's words actually carry (same limit-1 probes as
-  // the /study configurator) — gates the visual/listening presets so home never
-  // offers an experience whose session immediately dead-ends ("no audio
-  // available" before the first song exists). null = probe still in flight.
-  const [hasImages, setHasImages] = useState<boolean | null>(null)
-  const [hasAudio, setHasAudio] = useState<boolean | null>(null)
-  const languageDeckIds = useMemo(() => decksInActiveLanguage.map((deck) => deck.id), [decksInActiveLanguage])
-  useEffect(() => {
-    setHasImages(null)
-    setHasAudio(null)
-    if (!user || languageDeckIds.length === 0) return
-    let cancelled = false
-    const probeBase = () => supabase
-      .from('words')
-      .select('id')
-      .eq('user_id', user.id)
-      .eq('status', 'complete')
-      .in('deck_id', languageDeckIds)
-    void probeBase()
-      .not('thumbnail_url', 'is', null)
-      .limit(1)
-      .then(({ data }) => { if (!cancelled) setHasImages((data?.length ?? 0) > 0) })
-    void probeBase()
-      .or('suno_storage_url.not.is.null,suno_audio_url.not.is.null')
-      .limit(1)
-      .then(({ data }) => { if (!cancelled) setHasAudio((data?.length ?? 0) > 0) })
-    return () => { cancelled = true }
-  }, [user, languageDeckIds])
-
-  const presetAvailable = useCallback((option: ExperiencePreset) => {
-    if (option === 'visual') return hasImages === true
-    if (option === 'listening') return hasAudio === true
-    return true
-  }, [hasImages, hasAudio])
-
-  // Per-language experience preset: how quick practice opens from home. Unset →
-  // the one-time picker shows in place of the dive-in CTA.
-  const [preset, setPreset] = useState<ExperiencePreset | null>(null)
-  const [changingPreset, setChangingPreset] = useState(false)
-  useEffect(() => {
-    setPreset(readExperiencePreset(user?.id, activeLanguage))
-    setChangingPreset(false)
-  }, [user?.id, activeLanguage])
-
-  const pickPreset = useCallback((next: ExperiencePreset) => {
-    writeExperiencePreset(user?.id, activeLanguage, next)
-    setPreset(next)
-    setChangingPreset(false)
-  }, [user?.id, activeLanguage])
-
-  // A stored preset whose assets are confirmed missing (e.g. listening chosen
-  // before any song was generated) falls back to the picker instead of driving
-  // "Dive in" into a dead end.
-  const presetUnusable =
-    (preset === 'visual' && hasImages === false) || (preset === 'listening' && hasAudio === false)
-  const effectivePreset = presetUnusable ? null : preset
-
-  // Zero-config practice entry: straight into the preset's study mode with
-  // everything due now (no queue param = the all-due session). Playful launches
-  // the slicer straight into today's due words; unset preset falls back to the
-  // configurator.
-  const diveInHref = (() => {
-    if (!activeLanguage) return '/study'
-    const lang = encodeURIComponent(activeLanguage)
-    if (!effectivePreset) return `/study?lang=${lang}`
-    if (effectivePreset === 'playful') return `/games/slicer?returnTo=/dashboard&lang=${lang}&queue=due`
-    return `${presetStudyRoute(effectivePreset)}?lang=${lang}`
-  })()
   // Guard the transient where decks have loaded but the active language hasn't been
   // pinned yet (decks exist, activeLanguage still null) so an existing user never
   // flashes the empty card before the pin effect runs.
@@ -253,129 +168,54 @@ export default function DashboardPG() {
   }
 
   const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
+  const isPopulated = decisionResolved && !isFirstRun
 
   return (
     <div className="theme-cosmos dashboard-cosmic px-4 md:px-6">
-      <HomeWaveBackground />
-      <div
-        className={`dashboard-home-stack relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center text-center${
-          isFirstRun ? ' dashboard-home-stack--welcome' : ''
-        }`}
-      >
-        <HomeAccountStrip streak={studyStreak.streak} />
+      {isPopulated && activeLanguage ? (
+        /* The First Light home (design/DESIGN_SPEC.md): sky · waterline ·
+           buoys. It renders its own wave background because it drives the
+           sea live (dawn/ripples/clock). */
+        <FirstLightHome
+          userId={user.id}
+          activeLanguage={activeLanguage}
+          availableLanguages={availableLanguages}
+          onSelectLanguage={setActiveLanguage}
+          onAddLanguage={handleAddLanguage}
+          deckHref={decksInActiveLanguage[0] ? `/deck/${decksInActiveLanguage[0].id}` : '/decks'}
+        />
+      ) : (
+        <>
+          <HomeWaveBackground />
+          <div
+            className={`dashboard-home-stack relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center text-center${
+              isFirstRun ? ' dashboard-home-stack--welcome' : ''
+            }`}
+          >
+            <HomeAccountStrip streak={studyStreak.streak} />
 
-        {!decisionResolved ? null : isFirstRun ? (
-          <div className="dashboard-welcome-center">
-            <div className="dashboard-welcome-hero-zone">
-              <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
-                {greeting}
-              </h1>
-            </div>
-            {/* Keep the language picker available on the empty state too — after
-                adding a language the learner lands here and must be able to hop
-                back to a language they already study. */}
-            <LanguageCluster
-              languages={availableLanguages}
-              activeLanguage={activeLanguage}
-              onSelect={setActiveLanguage}
-              onAddLanguage={handleAddLanguage}
-            />
-            <HomeWelcomeCard />
-          </div>
-        ) : (
-          <>
-            <LanguageCluster
-              languages={availableLanguages}
-              activeLanguage={activeLanguage}
-              onSelect={setActiveLanguage}
-              onAddLanguage={handleAddLanguage}
-            />
-
-            {/* The Word Tide: today's words drift over the wave, tap to practice
-                inline. The old greeting + mission hero moved out of the way — the
-                guided course lives on the Today tab. */}
-            {activeLanguage && (
-              <WordTide
-                userId={user.id}
-                language={activeLanguage}
-                lemmas={wordStates.data}
-                loading={wordStates.loading}
-                onGraded={wordStates.refetch}
-              />
-            )}
-
-            {effectivePreset === null || changingPreset ? (
-              <div className="pg-glass w-full max-w-md rounded-2xl px-5 py-4 text-center">
-                <p className="font-display text-base font-semibold">{t('home.preset.question')}</p>
-                <p className="mt-1 text-xs text-[var(--text-muted)]">{t('home.preset.hint')}</p>
-                <div className="mt-3 grid grid-cols-2 gap-2">
-                  {EXPERIENCE_PRESETS.filter(presetAvailable).map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      onClick={() => pickPreset(option)}
-                      className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-2.5 font-display text-sm font-semibold transition-all hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] ${
-                        preset === option
-                          ? 'border-[var(--accent)] bg-[var(--accent-soft)]'
-                          : 'border-[var(--border-subtle)] bg-[var(--surface-glass)]'
-                      }`}
-                    >
-                      <span aria-hidden="true">{PRESET_EMOJI[option]}</span>
-                      <span>{t(presetLabelKey(option))}</span>
-                    </button>
-                  ))}
+            {!decisionResolved ? null : (
+              <div className="dashboard-welcome-center">
+                <div className="dashboard-welcome-hero-zone">
+                  <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
+                    {greeting}
+                  </h1>
                 </div>
-              </div>
-            ) : (
-              <div className="flex w-full max-w-md flex-col items-center gap-2">
-                {dueTotal > 0 && (
-                  <button
-                    type="button"
-                    onClick={() => navigate(diveInHref)}
-                    disabled={tilesDisabled}
-                    className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-[var(--accent)]/60 bg-[var(--accent)]/15 py-4 font-display text-base font-semibold uppercase tracking-widest text-[var(--accent)] transition-all hover:bg-[var(--accent)]/25 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {t('home.tide.diveIn', { count: dueTotal })}
-                    <ChevronRight className="h-5 w-5" aria-hidden="true" />
-                  </button>
-                )}
-                <button
-                  type="button"
-                  onClick={() => setChangingPreset(true)}
-                  className="text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
-                  aria-label={t('home.preset.changeAria')}
-                >
-                  {PRESET_EMOJI[effectivePreset]} {t(presetLabelKey(effectivePreset))}
-                </button>
+                {/* Keep the language picker available on the empty state too — after
+                    adding a language the learner lands here and must be able to hop
+                    back to a language they already study. */}
+                <LanguageCluster
+                  languages={availableLanguages}
+                  activeLanguage={activeLanguage}
+                  onSelect={setActiveLanguage}
+                  onAddLanguage={handleAddLanguage}
+                />
+                <HomeWelcomeCard />
               </div>
             )}
-
-            <div className="dashboard-mastered-pill" aria-live="polite">
-              {counts.mastered > 0 ? (
-                <button
-                  type="button"
-                  className="dashboard-mastered-pill-button"
-                  disabled={tilesDisabled}
-                  onClick={() => {
-                    if (tilesDisabled || !activeLanguage) return
-                    const params = new URLSearchParams({ queue: 'mastered', lang: activeLanguage })
-                    navigate(`/study?${params.toString()}`)
-                  }}
-                  aria-label={`${counts.mastered} ${t('study.queue.mastered')}`}
-                >
-                  <span className="dashboard-mastered-count">{counts.mastered}</span>
-                  <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
-                </button>
-              ) : (
-                <span className="dashboard-mastered-empty">
-                  <span className="dashboard-mastered-count">0</span>
-                  <span className="dashboard-mastered-label">{t('study.queue.mastered')}</span>
-                </span>
-              )}
-            </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </div>
   )
 }

@@ -71,6 +71,9 @@ export default function PolishGlassLayout() {
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
+          {/* Right-slot portal node: the First Light home portals its THIS
+              VISIT text block here on desktop (spec §7). Empty otherwise. */}
+          <span id="app-topnav-right-slot" className="flex items-center" />
           <button
             onClick={() => setRedeemOpen(true)}
             className="theme-chip flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"

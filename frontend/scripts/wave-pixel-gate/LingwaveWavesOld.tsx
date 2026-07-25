@@ -1,13 +1,10 @@
+// VERBATIM copy of src/components/branding/LingwaveWaves.tsx at git HEAD
+// (`git show HEAD:frontend/src/components/branding/LingwaveWaves.tsx`).
+// The ONLY edits are this header, the eslint-disable, and renaming the exported
+// component to LingwaveWavesOld. Do not "fix" anything in here — it is the
+// baseline the working-tree component is compared against.
 import { useEffect, useRef } from 'react'
-import {
-  waveHeight,
-  WAVE_AMP_SUM,
-  WAVE_FOCAL_FRACTION,
-  WAVE_HORIZON_FRACTION,
-  WAVE_Z_FAR,
-  WAVE_Z_NEAR,
-  waveCamHeight,
-} from '@/lib/waveField'
+import { waveHeight, WAVE_AMP_SUM } from '@/lib/waveField'
 
 /**
  * LingwaveWaves — animated brand background for auth/marketing surfaces.
@@ -24,10 +21,6 @@ import {
  * - `windRef`    — a pointer-following breeze that locally raises the swell.
  * - `energyRef`  — 0..1 scroll coupling; the sea rises and quickens with it.
  * - `dawn`       — 0 cold night → 1 golden dawn (brighter glow, fewer stars).
- *                  Changes ease in-loop over ~1.5s; they never restart the sea.
- * - `clockRef`   — out-param: the loop writes its wave time `t` here each frame
- *                  (seeded with the still frame's t under reduced motion), so
- *                  DOM elements riding the swell share the exact time base.
  */
 
 type RGB = [number, number, number]
@@ -41,16 +34,14 @@ const SWELL_MID: RGB = [184, 68, 122] // --m-mid
 const SWELL_WARM: RGB = [242, 79, 19] // --accent
 const SWELL_CREST: RGB = [247, 200, 67] // --accent-2
 
-// Projection (camera height, horizon/focal fractions, depth range) is shared
-// through lib/waveField.ts so DOM elements can sit on the drawn surface;
-// painting detail (row/column density, DPR cap) stays private to the canvas.
-const Z_NEAR = WAVE_Z_NEAR
-const Z_FAR = WAVE_Z_FAR
+const Z_NEAR = 2
+const Z_FAR = 46
 const ROWS = 64
 const ROW_POINTS = 72
 const COL_SPACING = 2.6
 const COL_STEPS = 36
 const MAX_DPR = 1.75
+const CAM_HEIGHT = 3.2
 const AMP = WAVE_AMP_SUM
 
 // Pointer wind — a smoothed breeze center that locally raises the swell.
@@ -60,13 +51,9 @@ const WIND_GAIN = 0.12 // max amplitude boost at the wind center (kept gentle)
 const WIND_SIGMA = 0.19 // falloff radius as a fraction of canvas width
 const WIND_LERP = 0.06 // per-frame easing toward the target wind
 
-// Scroll energy — camera dives (waveCamHeight) and time quickens with it.
+// Scroll energy — camera dives and time quickens as the page starts moving.
+const ENERGY_CAM_DROP = 0.65
 const ENERGY_TIME_GAIN = 0.35
-
-// Dawn eases toward its target inside the frame loop — the same per-frame-lerp
-// pattern as WIND_LERP, settling in ~1.5s. Callers set the prop on discrete
-// events; nothing pokes the canvas at 60fps and nothing tears the loop down.
-const DAWN_LERP = 0.035
 
 // Tap ripples — an optional, interactive disturbance the swell field can carry.
 // A ripple is a wavetrain that expands from a point and decays; it displaces the
@@ -137,11 +124,11 @@ type WaveFx = { wind: WaveWind; energy: number; dawn: number }
 const STILL_FX: WaveFx = { wind: { x: 0.5, y: 0.5, strength: 0 }, energy: 0, dawn: 0 }
 
 function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, stars: Star[], ripples: WaveRipple[], nowMs: number, fx: WaveFx) {
-  const horizon = h * WAVE_HORIZON_FRACTION
-  const focal = h * WAVE_FOCAL_FRACTION
+  const horizon = h * 0.4
+  const focal = h * 0.85
   const cx = w / 2
   const xPad = 24
-  const camHeight = waveCamHeight(fx.energy)
+  const camHeight = CAM_HEIGHT - ENERGY_CAM_DROP * fx.energy
   const dawn = fx.dawn
   const windOn = fx.wind.strength > 0.01
   const windX = fx.wind.x * w
@@ -320,35 +307,20 @@ function render(ctx: CanvasRenderingContext2D, w: number, h: number, t: number, 
   ctx.fillRect(0, 0, w, h)
 }
 
-export function LingwaveWaves({
+export function LingwaveWavesOld({
   className,
   ripplesRef,
   windRef,
   energyRef,
   dawn = 0,
-  clockRef,
 }: {
   className?: string
   ripplesRef?: { current: WaveRipple[] }
   windRef?: { current: WaveWind }
   energyRef?: { current: number }
   dawn?: number
-  clockRef?: { current: number }
 }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  // Dawn target and the star field live in refs so a dawn change never re-runs
-  // the main effect — the old dep tore the loop down, reshuffled all 110 stars,
-  // reset t and reallocated the canvas on every change (~90× under one lerp).
-  const dawnRef = useRef(dawn)
-  const starsRef = useRef<Star[] | null>(null)
-  const redrawStillRef = useRef<(() => void) | null>(null)
-
-  useEffect(() => {
-    dawnRef.current = dawn
-    // Under reduced motion no frame loop will pick the target up — repaint the
-    // still frame explicitly. (No-op while the loop runs; it is null then.)
-    redrawStillRef.current?.()
-  }, [dawn])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -357,7 +329,7 @@ export function LingwaveWaves({
     if (!ctx) return
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const stars = starsRef.current ?? (starsRef.current = makeStars(110))
+    const stars = makeStars(110)
     let raf = 0
     let last = performance.now()
     let t = 30 // start mid-swell instead of a flat sea
@@ -367,20 +339,9 @@ export function LingwaveWaves({
     const fx: WaveFx = {
       wind: { x: 0.5, y: 0.5, strength: 0 },
       energy: 0,
-      dawn: dawnRef.current,
+      dawn,
     }
-    const stillFx: WaveFx = { ...STILL_FX, dawn: dawnRef.current }
-    if (clockRef) clockRef.current = t
-
-    // The reduced-motion still frame: painted at the current dawn target with
-    // the clock seeded to the frame's t — static buoys must project at t=30,
-    // never t=0, or they miss their crests.
-    const renderStill = () => {
-      stillFx.dawn = dawnRef.current
-      if (clockRef) clockRef.current = t
-      render(ctx, width, height, t, stars, NO_RIPPLES, performance.now(), stillFx)
-    }
-    redrawStillRef.current = reduceMotion ? renderStill : null
+    const stillFx: WaveFx = { ...STILL_FX, dawn }
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
@@ -389,7 +350,7 @@ export function LingwaveWaves({
       canvas.width = Math.max(1, Math.round(width * dpr))
       canvas.height = Math.max(1, Math.round(height * dpr))
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      if (reduceMotion) renderStill()
+      if (reduceMotion) render(ctx, width, height, t, stars, NO_RIPPLES, performance.now(), stillFx)
     }
 
     const frame = (now: number) => {
@@ -402,9 +363,7 @@ export function LingwaveWaves({
         fx.wind.strength += (target.strength - fx.wind.strength) * WIND_LERP
       }
       if (energyRef) fx.energy = Math.min(1, Math.max(0, energyRef.current))
-      fx.dawn += (dawnRef.current - fx.dawn) * DAWN_LERP
       t += dt * (1 + ENERGY_TIME_GAIN * fx.energy)
-      if (clockRef) clockRef.current = t
       last = now
 
       // Retire spent ripples, then render the live ones into the swell field.
@@ -445,12 +404,11 @@ export function LingwaveWaves({
     document.addEventListener('visibilitychange', onVisibility)
     return () => {
       stop()
-      redrawStillRef.current = null
       observer?.disconnect()
       window.removeEventListener('resize', resize)
       document.removeEventListener('visibilitychange', onVisibility)
     }
-  }, [clockRef, energyRef, ripplesRef, windRef])
+  }, [dawn, energyRef, ripplesRef, windRef])
 
   return (
     <div

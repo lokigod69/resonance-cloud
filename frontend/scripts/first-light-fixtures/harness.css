@@ -1,0 +1,5 @@
+/* The app's real stylesheet, plus an explicit @source so Tailwind v4 scans
+   frontend/src for utilities (auto-detection would otherwise only look next to
+   this file, and the harness would render unstyled). */
+@import "../../src/index.css";
+@source "../../src";

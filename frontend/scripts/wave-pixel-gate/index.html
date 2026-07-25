@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>wave-pixel-gate</title>
+    <style>
+      /* Minimal stand-ins for the handful of Tailwind utilities the two
+         components put on their own DOM. Both use the identical class list,
+         so this affects them identically. */
+      html, body { margin: 0; padding: 0; background: #000; }
+      .pointer-events-none { pointer-events: none; }
+      .absolute { position: absolute; }
+      .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+      .overflow-hidden { overflow: hidden; }
+      .block { display: block; }
+      .h-full { height: 100%; }
+      .w-full { width: 100%; }
+      #result { color: #9f9; font: 12px/1.4 monospace; white-space: pre-wrap; }
+      #stage { position: relative; width: 390px; height: 844px; }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <pre id="result"></pre>
+    <script type="module" src="/main.tsx"></script>
+  </body>
+</html>
