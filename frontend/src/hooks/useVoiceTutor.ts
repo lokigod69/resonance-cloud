@@ -11,6 +11,7 @@ import {
 import { ensureNativeMicrophonePermission } from '@/lib/nativeMicrophone'
 import { publicApiUrl } from '@/lib/publicOrigins'
 import { useTranslation } from '@/hooks/useTranslation'
+import { isPlanLimitSpeakCode, SpeakPlanLimitError } from '@/lib/speakErrors'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 
 const IS_SAFARI = typeof navigator !== 'undefined' && (
@@ -72,6 +73,7 @@ export interface UseVoiceTutorReturn {
   messages: TutorMessage[]
   endedMessages: TutorMessage[]
   error: string | null
+  planLimited: boolean
   speakAllowance: SpeakAllowance | null
   isSupported: boolean
   pendingAudio: { base64: string; format: string } | null
@@ -211,6 +213,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const [messages, setMessages] = useState<TutorMessage[]>([])
   const [endedMessages, setEndedMessages] = useState<TutorMessage[]>([])
   const [error, setError] = useState<string | null>(null)
+  const [planLimited, setPlanLimited] = useState(false)
   const [speakAllowance, setSpeakAllowance] = useState<SpeakAllowance | null>(null)
   const [pendingAudio, setPendingAudio] = useState<{ base64: string; format: string } | null>(null)
   const [showLevelPicker, setShowLevelPicker] = useState(false)
@@ -499,7 +502,11 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
           code: errJson?.code,
           retry_after_seconds: errJson?.retry_after_seconds,
         })
-        throw new Error(formatSpeakApiError(t, res.status, errJson))
+        const message = formatSpeakApiError(t, res.status, errJson)
+        if (isPlanLimitSpeakCode(errJson?.code)) {
+          throw new SpeakPlanLimitError(message)
+        }
+        throw new Error(message)
       }
 
       const json = await res.json() as VoiceChatResponse
@@ -702,6 +709,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       await playAudio(pendingAudio.base64, pendingAudio.format)
     } catch {
       if (audioTaskGenerationRef.current !== taskGeneration) return
+      setPlanLimited(false)
       setError(t('speak.error.tutorAudioPlaybackFailed'))
       setStatus('error')
       return
@@ -783,6 +791,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       levelRef.current = null
       setMessages([])
       messagesRef.current = []
+      setPlanLimited(false)
       setError(null)
       setStatus('idle')
       studyModeRef.current = false
@@ -825,6 +834,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       characterRef.current = char
       setVoice(syntheticVoice)
       voiceRef.current = syntheticVoice
+      setPlanLimited(false)
       setError(null)
 
       // Check for saved level — skip level picker if available
@@ -835,6 +845,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         try {
           await fetchAndPlayGreeting(lang, syntheticVoice)
         } catch (err) {
+          setPlanLimited(err instanceof SpeakPlanLimitError)
           setError(err instanceof Error ? err.message : t('speak.error.requestFailed'))
           setStatus('error')
         }
@@ -884,6 +895,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       setGeminiPickerStageState('mode')
       setVoice(syntheticVoice)
       voiceRef.current = syntheticVoice
+      setPlanLimited(false)
       setError(null)
 
       const savedLevel = localStorage.getItem(`voice-tutor-level-${lang}`)
@@ -893,6 +905,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         try {
           await fetchAndPlayGreeting(lang, syntheticVoice)
         } catch (err) {
+          setPlanLimited(err instanceof SpeakPlanLimitError)
           setError(err instanceof Error ? err.message : t('speak.error.requestFailed'))
           setStatus('error')
         }
@@ -956,6 +969,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
       previousStateRef.current = null
       setIsChangingVoice(false)
+      setPlanLimited(false)
       setError(null)
       setStatus('idle')
     },
@@ -1006,6 +1020,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
       previousStateRef.current = null
       setIsChangingVoice(false)
+      setPlanLimited(false)
       setError(null)
       setStatus('idle')
     },
@@ -1031,6 +1046,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       messagesRef.current = []
     }
     setPendingAudio(null)
+    setPlanLimited(false)
     setError(null)
     setStatus('idle')
   }, [stopAllAudio])
@@ -1053,6 +1069,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         try {
           await fetchAndPlayGreeting(lang, v)
         } catch (err) {
+          setPlanLimited(err instanceof SpeakPlanLimitError)
           setError(err instanceof Error ? err.message : t('speak.error.requestFailed'))
           setStatus('error')
         }
@@ -1104,6 +1121,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       setListenMode(false)
     }
     setPendingAudio(null)
+    setPlanLimited(false)
     setError(null)
     setStatus('idle')
     setShowLevelPicker(false)
@@ -1186,10 +1204,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     setMessages([])
     messagesRef.current = []
     setPendingAudio(null)
+    setPlanLimited(false)
     setError(null)
     try {
       await fetchAndPlayGreeting(lang, v)
     } catch (err) {
+      setPlanLimited(err instanceof SpeakPlanLimitError)
       setError(err instanceof Error ? err.message : t('speak.error.requestFailed'))
       setStatus('error')
     }
@@ -1221,6 +1241,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const startRecording = useCallback(async () => {
     primeAudioForIOS()
     if (!isSupported) {
+      setPlanLimited(false)
       setError(t('speak.error.audioRecordingUnsupported'))
       setStatus('error')
       return
@@ -1331,6 +1352,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
           }
         } catch (err) {
           const msg = err instanceof Error ? err.message : t('speak.error.requestFailed')
+          setPlanLimited(err instanceof SpeakPlanLimitError)
           setError(msg)
           setStatus('error')
         }
@@ -1345,6 +1367,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       } else {
         recorder.start(250)  // Periodic chunks every 250ms
       }
+      setPlanLimited(false)
       setError(null)
       setPendingAudio(null)
       setStatus('recording')
@@ -1356,6 +1379,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         errorMessage: err instanceof Error ? err.message : String(err),
         audioSessionType: getNavigatorAudioSession()?.type ?? null,
       })
+      setPlanLimited(false)
       if (err instanceof DOMException && err.name === 'NotAllowedError') {
         setError(t('speak.error.microphoneDenied'))
       } else {
@@ -1426,6 +1450,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     setMessages([])
     messagesRef.current = []
     setPendingAudio(null)
+    setPlanLimited(false)
     setError(null)
     setStatus('idle')
     setIsChangingVoice(false)
@@ -1476,6 +1501,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       await playAudio(message.audioBase64, message.audioFormat || 'mp3')
     } catch (err) {
       console.warn('[useVoiceTutor] Failed to replay tutor audio:', err)
+      setPlanLimited(false)
       setError(t('speak.error.tutorAudioPlaybackFailed'))
       setStatus('error')
     }
@@ -1490,6 +1516,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     messages,
     endedMessages,
     error,
+    planLimited,
     speakAllowance,
     isSupported,
     pendingAudio,

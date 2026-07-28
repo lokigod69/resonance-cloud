@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Loader2, Music, X } from 'lucide-react'
 import {
   Dialog,
@@ -54,6 +55,7 @@ export function LevelGenerateSongModal({
 }) {
   const { t } = useTranslation()
   const { toast } = useToast()
+  const navigate = useNavigate()
   const [genre, setGenre] = useState<string | null>(null)
   const [lyricMode, setLyricMode] = useState<SongLyricMode>('reliable')
   const [vocalGender, setVocalGender] = useState<SongVocalGender>('female')
@@ -95,7 +97,13 @@ export function LevelGenerateSongModal({
       })
       if (!result.success) {
         if (result.error === 'premium_required') {
-          toast(t('music.premiumRequired'), 'error')
+          toast(t('music.premiumRequired'), 'error', {
+            label: t('plans.seeAction'),
+            onClick: () => {
+              onOpenChange(false)
+              navigate('/plans')
+            },
+          })
           return
         }
         if (result.error === 'insufficient_credits') {

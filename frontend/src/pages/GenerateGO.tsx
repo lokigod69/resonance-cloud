@@ -8,6 +8,7 @@ import { LANGUAGES, VIBES, ART_STYLE_GROUPS, MAX_WORDS, NIVEAU_OPTIONS } from '@
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
+import { prefetchPlan } from '@/hooks/usePlan'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useTranslateAndIpa } from '@/hooks/useTranslateAndIpa'
 import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
@@ -131,6 +132,10 @@ export default function GenerateGO() {
   const { submitImagelessImport } = useSubmitImagelessImport()
   const { appendImagelessCards } = useAppendImagelessCards()
   const { generateImagelessTts } = useGenerateImagelessTts()
+
+  useEffect(() => {
+    prefetchPlan()
+  }, [])
 
   const [step, setStep] = useState(1)
 

@@ -3,8 +3,10 @@ import { BookOpen, Columns2, FileText, KeyRound, Lightbulb, Music2, PanelsTopLef
 import { useTranslation } from '@/hooks/useTranslation'
 import { cn } from '@/lib/utils'
 import {
+  MEANING_STRATEGY_SAMPLE_PATHS,
   MEANING_STRATEGY_VISUAL_TONES,
   PREMIUM_STYLE_SAMPLE_PATHS,
+  PRESENTATION_FORM_SAMPLE_PATHS,
   INFOGRAPHIC_STYLE_VISUAL_TONES,
   PRESENTATION_FORM_VISUAL_TONES,
   PRODUCT_LANE_VISUAL_TONES,
@@ -239,6 +241,9 @@ export function PremiumVisualSelector<T extends CardLayer2MeaningStrategy | Card
           const Icon = isMeaning
             ? MEANING_ICONS[value as CardLayer2MeaningStrategy]
             : PRESENTATION_ICONS[value as CardLayer2PresentationForm]
+          const imageSrc = isMeaning
+            ? MEANING_STRATEGY_SAMPLE_PATHS[value as CardLayer2MeaningStrategy]
+            : PRESENTATION_FORM_SAMPLE_PATHS[value as CardLayer2PresentationForm]
 
           return (
             <PremiumOptionTile
@@ -249,6 +254,7 @@ export function PremiumVisualSelector<T extends CardLayer2MeaningStrategy | Card
               selected={selected === value}
               onSelect={onSelect}
               icon={Icon}
+              imageSrc={imageSrc}
               tone={tone}
               disabled={disabled}
             />

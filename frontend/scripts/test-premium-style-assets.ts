@@ -11,8 +11,11 @@ import {
   type CardLayer2ArtStyle,
 } from '../src/components/generate/useWizardState.ts'
 import {
+  MEANING_STRATEGY_SAMPLE_PATHS,
+  PREMIUM_OPTION_SAMPLE_BASE_PATH,
   PREMIUM_STYLE_SAMPLE_BASE_PATH,
   PREMIUM_STYLE_SAMPLE_PATHS,
+  PRESENTATION_FORM_SAMPLE_PATHS,
   premiumStyleSamplePath,
 } from '../src/components/generate/premiumVisualAssets.ts'
 
@@ -62,6 +65,26 @@ assert(
   'mapping is strongly typed for all style enums',
   styles.every((style) => Boolean(PREMIUM_STYLE_SAMPLE_PATHS[style as CardLayer2ArtStyle])),
 )
+
+console.log('\n[premium option sample assets]')
+assert(
+  'option base path is public premium-option-samples',
+  PREMIUM_OPTION_SAMPLE_BASE_PATH === '/premium-option-samples',
+  PREMIUM_OPTION_SAMPLE_BASE_PATH,
+)
+const optionSamples: Array<[string, string]> = [
+  ...Object.entries(MEANING_STRATEGY_SAMPLE_PATHS),
+  ...Object.entries(PRESENTATION_FORM_SAMPLE_PATHS),
+]
+assert('9 meaning/presentation options have sample mappings', optionSamples.length === 9)
+for (const [option, mappedPath] of optionSamples) {
+  const expectedPath = `/premium-option-samples/${option}.webp`
+  assert(`${option} path uses enum filename`, mappedPath === expectedPath, mappedPath)
+  assert(
+    `${option} exists in public assets`,
+    existsSync(join(process.cwd(), 'public', 'premium-option-samples', `${option}.webp`)),
+  )
+}
 
 console.log(`\n${passes} passed, ${failures} failed`)
 if (failures > 0) process.exit(1)

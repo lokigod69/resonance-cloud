@@ -12,6 +12,7 @@ import {
   type WizardAction,
 } from '../useWizardState'
 import CategoryPicker from './CategoryPicker'
+import { usePlan } from '@/hooks/usePlan'
 import { useTranslation } from '@/hooks/useTranslation'
 import { wordsEqual } from '@/lib/wordEquality'
 import type { SelectedCategoryVocabularyItem } from '@/data/categories'
@@ -32,6 +33,7 @@ export default function WordsStep({
   onCustomize,
 }: WordsStepProps) {
   const { t, tp } = useTranslation()
+  const { isPremiumUi } = usePlan()
   const [searchParams] = useSearchParams()
   const [error, setError] = useState<string | null>(null)
   const glassInputRef = useRef<GlassInputHandle>(null)
@@ -167,7 +169,7 @@ export default function WordsStep({
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               className="flex flex-col items-center gap-3 pt-6"
             >
-              {state.productLane === 'card_premium' ? (
+              {state.productLane === 'card_premium' && isPremiumUi ? (
                 <PremiumQuickModePanel
                   onQuickGenerate={handleQuickGenerate}
                   onModeGenerate={handleModeGenerate}
@@ -183,7 +185,7 @@ export default function WordsStep({
                     <Sparkles className="h-5 w-5" />
                     {t('generate.primaryGenerate')}
                   </PillButton>
-                  {state.productLane !== 'card_text' && (
+                  {state.productLane === 'card_standard' && (
                     <PillButton
                       variant="secondary"
                       onClick={handleCustomize}

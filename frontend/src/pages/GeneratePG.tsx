@@ -40,6 +40,7 @@ import {
 } from '@/components/generate/wizardData'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
+import { prefetchPlan } from '@/hooks/usePlan'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useTranslateAndIpa } from '@/hooks/useTranslateAndIpa'
 import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
@@ -111,6 +112,10 @@ export default function GeneratePG() {
   const { submitImagelessImport } = useSubmitImagelessImport()
   const { appendImagelessCards } = useAppendImagelessCards()
   const { generateImagelessTts } = useGenerateImagelessTts()
+
+  useEffect(() => {
+    prefetchPlan()
+  }, [])
 
   const [existingDeck, setExistingDeck] = useState<ExistingDeck | null>(null)
 

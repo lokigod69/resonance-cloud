@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Mic, Volume2, VolumeX, ArrowLeft, Loader2, Play, Square, UserRoundCog, MessageSquarePlus, History, Signal, ChevronDown, SlidersHorizontal, ChevronRight } from 'lucide-react'
 import { useVoiceTutor, type SpeakProvider } from '@/hooks/useVoiceTutor'
 import { useGrokRealtime } from '@/hooks/useGrokRealtime'
@@ -761,6 +761,11 @@ export default function Speak() {
             {tutor.status === 'error' && tutor.error && (
               <div className="mt-6 rounded-2xl border border-red-400/20 bg-red-950/25 px-4 py-3 text-sm text-red-200 backdrop-blur-xl">
                 {tutor.error}
+                {tutor.planLimited && (
+                  <Link to="/plans" className="ml-2 text-inherit underline underline-offset-2">
+                    {t('plans.seeAction')}
+                  </Link>
+                )}
               </div>
             )}
           </div>
@@ -856,12 +861,22 @@ export default function Speak() {
             {grokFlowActive && grok.error && (
               <div className="mb-4 rounded-2xl border border-red-400/20 bg-red-950/25 px-4 py-3 text-sm text-red-200 backdrop-blur-xl">
                 {grok.error}
+                {grok.planLimited && (
+                  <Link to="/plans" className="ml-2 text-inherit underline underline-offset-2">
+                    {t('plans.seeAction')}
+                  </Link>
+                )}
               </div>
             )}
 
             {!grokFlowActive && tutor.status === 'error' && tutor.error && (
               <div className="mb-4 rounded-2xl border border-red-400/20 bg-red-950/25 px-4 py-3 text-sm text-red-200 backdrop-blur-xl">
                 {tutor.error}
+                {tutor.planLimited && (
+                  <Link to="/plans" className="ml-2 text-inherit underline underline-offset-2">
+                    {t('plans.seeAction')}
+                  </Link>
+                )}
               </div>
             )}
 
@@ -1734,7 +1749,14 @@ export default function Speak() {
       >
         <div className="px-4 pt-5 pb-[calc(var(--app-safe-bottom)+1.25rem)] max-w-5xl mx-auto w-full">
           {tutor.status === 'error' && tutor.error && (
-            <p className="text-red-400 text-xs text-center mb-3">{tutor.error}</p>
+            <p className="text-red-400 text-xs text-center mb-3">
+              {tutor.error}
+              {tutor.planLimited && (
+                <Link to="/plans" className="ml-1 text-inherit underline underline-offset-2">
+                  {t('plans.seeAction')}
+                </Link>
+              )}
+            </p>
           )}
 
           <p className="text-xs text-[var(--text-muted)] text-center mb-3 h-4">

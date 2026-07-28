@@ -2,15 +2,24 @@ import { useState, useCallback, useRef } from 'react'
 import { X } from 'lucide-react'
 import { ToastContext, type ToastType } from './Toast'
 
-interface ToastItem { id: number; message: string; type: ToastType }
+interface ToastItem {
+  id: number
+  message: string
+  type: ToastType
+  action?: { label: string; onClick: () => void }
+}
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([])
   const nextId = useRef(0)
 
-  const toast = useCallback((message: string, type: ToastType = 'info') => {
+  const toast = useCallback((
+    message: string,
+    type: ToastType = 'info',
+    action?: { label: string; onClick: () => void },
+  ) => {
     const id = ++nextId.current
-    setToasts(t => [...t, { id, message, type }])
+    setToasts(t => [...t, { id, message, type, action }])
     // errors need reading time; transient status can go quickly
     setTimeout(() => setToasts(t => t.filter(x => x.id !== id)), type === 'error' ? 7000 : 3500)
   }, [])
@@ -35,6 +44,17 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
           >
             <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: colors[t.type] }} />
             <span className="flex-1">{t.message}</span>
+            {t.action && (
+              <button
+                onClick={() => {
+                  dismiss(t.id)
+                  t.action?.onClick()
+                }}
+                className="flex-shrink-0 text-xs font-semibold text-[var(--accent)] underline underline-offset-2"
+              >
+                {t.action.label}
+              </button>
+            )}
             <button
               onClick={() => dismiss(t.id)}
               className="ml-1 text-[var(--text-muted)] hover:text-[var(--text-secondary)] flex-shrink-0"

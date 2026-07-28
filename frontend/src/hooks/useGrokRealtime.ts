@@ -14,6 +14,7 @@ import { ensureNativeMicrophonePermission } from '@/lib/nativeMicrophone'
 import { publicApiUrl } from '@/lib/publicOrigins'
 import type { GrokLevel } from '@/lib/grokPedagogy'
 import { useTranslation } from '@/hooks/useTranslation'
+import { isPlanLimitSpeakCode, SpeakPlanLimitError } from '@/lib/speakErrors'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 
 export type GrokStatus = 'idle' | 'connecting' | 'recording' | 'thinking' | 'speaking' | 'error'
@@ -37,6 +38,7 @@ export interface UseGrokRealtimeReturn {
   status: GrokStatus
   messages: GrokMessage[]
   error: string | null
+  planLimited: boolean
   isConnected: boolean
   startSession: (params: StartGrokSessionParams) => Promise<void>
   reconnect: () => Promise<void>
@@ -294,6 +296,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const [status, setStatus] = useState<GrokStatus>('idle')
   const [messages, setMessages] = useState<GrokMessage[]>([])
   const [error, setError] = useState<string | null>(null)
+  const [planLimited, setPlanLimited] = useState(false)
   const [isConnected, setIsConnected] = useState(false)
   const [isListening, setIsListening] = useState(false)
 
@@ -639,6 +642,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       }
       URL.revokeObjectURL(url)
       if (mountedRef.current) {
+        setPlanLimited(false)
         setError(t('speak.error.tutorAudioPlaybackFailed'))
         setStatus('error')
       }
@@ -662,6 +666,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       }
       URL.revokeObjectURL(url)
       if (mountedRef.current) {
+        setPlanLimited(false)
         setError(t('speak.error.tutorAudioPlaybackFailed'))
         setStatus('error')
       }
@@ -1134,6 +1139,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         rejectPendingInputCommit(t('speak.error.realtimeConnectionFailed'))
         console.error('[grok-realtime] Realtime response error:', payload)
         if (mountedRef.current) {
+          setPlanLimited(false)
           setError(t('speak.error.realtimeConnectionFailed'))
           setStatus('error')
         }
@@ -1144,6 +1150,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         responseInProgressRef.current = false
         rejectPendingInputCommit(t('speak.error.realtimeConnectionFailed'))
         if (mountedRef.current) {
+          setPlanLimited(false)
           setError(t('speak.error.realtimeConnectionFailed'))
           setStatus('error')
         }
@@ -1177,7 +1184,11 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         detail: json?.detail,
         retry_after_seconds: json?.retry_after_seconds,
       })
-      throw new Error(formatSpeakApiError(t, response.status, json, 'speak.error.realtimeConnectionFailed'))
+      const message = formatSpeakApiError(t, response.status, json, 'speak.error.realtimeConnectionFailed')
+      if (isPlanLimitSpeakCode(json?.code)) {
+        throw new SpeakPlanLimitError(message)
+      }
+      throw new Error(message)
     }
 
     const token = json?.value
@@ -1453,6 +1464,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const connectAndConfigure = useCallback(async (params: StartGrokSessionParams): Promise<void> => {
     primeAudioForIOS()
     setStatus('connecting')
+    setPlanLimited(false)
     setError(null)
 
     const token = await fetchEphemeralToken()
@@ -1506,6 +1518,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           reject(new Error(t('speak.error.realtimeConnectionFailed')))
         }
         if (mountedRef.current) {
+          setPlanLimited(false)
           setError(t('speak.error.realtimeConnectionFailed'))
           setStatus('error')
         }
@@ -1525,6 +1538,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           settled = true
           reject(new Error(t('speak.error.realtimeConnectionFailed')))
         } else if (!endingSessionRef.current && mountedRef.current) {
+          setPlanLimited(false)
           setError(t('speak.error.realtimeConnectionFailed'))
           setStatus('error')
         }
@@ -1535,11 +1549,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
   const startListening = useCallback(async () => {
     if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
+      setPlanLimited(false)
       setError(t('speak.error.sessionNotConnected'))
       setStatus('error')
       return
     }
     if (commitAckRecoveryPendingClearRef.current) {
+      setPlanLimited(false)
       setError(t('speak.error.audioTurnDidNotCommit'))
       setStatus('idle')
       return
@@ -1552,6 +1568,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         micCycleId = micCycleSeqRef.current + 1
         micCycleSeqRef.current = micCycleId
       }
+      setPlanLimited(false)
       setError(null)
       primeAudioForIOS()
       const ctx = await ensureAudioContext()
@@ -1617,6 +1634,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     } catch (err) {
       console.error('[grok-realtime] Failed to start listening:', err)
       setIOSAudioSessionType('playback', 'after-mic-release')
+      setPlanLimited(err instanceof SpeakPlanLimitError)
       setError(err instanceof DOMException && err.name === 'NotAllowedError'
         ? t('speak.error.microphoneDenied')
         : t('speak.error.microphoneUnavailable'))
@@ -1630,12 +1648,14 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     const ws = wsRef.current
     if (!ws || ws.readyState !== WebSocket.OPEN) {
       stopListening()
+      setPlanLimited(false)
       setError(t('speak.error.sessionNotConnected'))
       setStatus('error')
       return
     }
     if (commitAckRecoveryPendingClearRef.current) {
       stopListening()
+      setPlanLimited(false)
       setError(t('speak.error.audioTurnDidNotCommit'))
       setStatus('idle')
       return
@@ -1647,6 +1667,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         })
       }
       stopListening()
+      setPlanLimited(false)
       setError(t('speak.error.tutorStillResponding'))
       setStatus('idle')
       return
@@ -1670,6 +1691,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       if (turnProtocol === 'server_vad') {
         appendServerVadSilence(ws)
         inputAudioAppendedRef.current = false
+        setPlanLimited(false)
         setError(null)
         setStatus('thinking')
         if (GROK_AUDIO_DEBUG) {
@@ -1702,6 +1724,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           ws.send(JSON.stringify({ type: 'input_audio_buffer.clear' }))
         }
         inputAudioAppendedRef.current = false
+        setPlanLimited(err instanceof SpeakPlanLimitError)
         setError(err instanceof Error ? err.message : t('speak.error.audioTurnDidNotCommit'))
         setStatus('idle')
         return
@@ -1721,11 +1744,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         })
       }
       inputAudioAppendedRef.current = false
+      setPlanLimited(false)
       setError(null)
       setStatus('thinking')
     } catch (err) {
       console.error('[grok-realtime] Failed to send turn:', err)
       stopListening()
+      setPlanLimited(err instanceof SpeakPlanLimitError)
       setError(err instanceof Error ? err.message : t('speak.error.audioTurnDidNotCommit'))
       setStatus('error')
     }
@@ -1771,6 +1796,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     outputContextRecreatedAfterMicRef.current = false
     playheadRef.current = 0
     if (clearMessages) setMessages([])
+    setPlanLimited(false)
     setError(null)
   }, [])
 
@@ -1791,6 +1817,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       if (mountedRef.current) {
         setIsConnected(false)
         setIsListening(false)
+        setPlanLimited(err instanceof SpeakPlanLimitError)
         setError(err instanceof Error ? err.message : t('speak.error.realtimeConnectionFailed'))
         setStatus('error')
       }
@@ -1806,6 +1833,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     if (statusRef.current === 'connecting') return
     const params = sessionParamsRef.current
     if (!params) {
+      setPlanLimited(false)
       setError(t('speak.error.sessionNotConnected'))
       setStatus('error')
       return
@@ -1828,6 +1856,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     status,
     messages,
     error,
+    planLimited,
     isConnected,
     startSession,
     reconnect,

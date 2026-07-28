@@ -257,10 +257,10 @@ export default function CategoryPicker({
         type="button"
         onClick={() => handleTileClick(cat)}
         aria-pressed={isActive}
-        className={`inline-flex min-h-[44px] items-center gap-1 rounded-full border px-4 py-2 text-sm transition ${
+        className={`inline-flex min-h-[40px] items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm leading-tight transition duration-150 ${
           isActive
             ? 'border-accent bg-accent text-foreground shadow-[0_0_18px_rgba(138,167,199,0.22)]'
-            : 'border-border bg-card text-foreground/80 hover:border-accent hover:bg-accent'
+            : 'border-border bg-card text-foreground/80 hover:-translate-y-px hover:border-accent hover:bg-accent'
         }`}
       >
         <span aria-hidden="true">{cat.emoji}</span> {t(cat.labelKey)}
@@ -417,22 +417,35 @@ export default function CategoryPicker({
                 </div>
               )}
 
-              {publicCategoryGroups.map((group) => (
-                <div key={group.label}>
-                  <h3 className="mb-3 text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                    <span aria-hidden="true">{group.emoji}</span> {t(group.groupKey)}
-                  </h3>
-                  <div className={`flex flex-wrap gap-2 ${group.categories.length === 1 ? 'justify-center' : ''}`}>
-                    {group.categories.map((cat) => renderTile(cat))}
+              <div className="space-y-3">
+                {publicCategoryGroups.map((group) => (
+                  <div
+                    key={group.label}
+                    className="w-full rounded-2xl border border-border/60 bg-card/50 p-3"
+                  >
+                    {/* Not an <h3>: the glassy skin styles `.gen-section h3` at 1.8rem/centered. */}
+                    <p
+                      role="heading"
+                      aria-level={3}
+                      className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground"
+                    >
+                      <span aria-hidden="true">{group.emoji}</span>
+                      {t(group.groupKey)}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {group.categories.map((cat) => renderTile(cat))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
 
-              {PINNED_BOTTOM_CATEGORIES.length > 0 && (
-                <div className="flex flex-wrap justify-center gap-2 pt-1">
-                  {PINNED_BOTTOM_CATEGORIES.map((cat) => renderTile(cat))}
-                </div>
-              )}
+                {PINNED_BOTTOM_CATEGORIES.length > 0 && (
+                  <div className="w-full rounded-2xl border border-border/60 bg-card/50 p-3">
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {PINNED_BOTTOM_CATEGORIES.map((cat) => renderTile(cat))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </motion.div>
         )}

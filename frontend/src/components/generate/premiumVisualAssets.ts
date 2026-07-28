@@ -35,6 +35,26 @@ export function premiumStyleSamplePath(style: CardLayer2ArtStyle): string {
   return PREMIUM_STYLE_SAMPLE_PATHS[style]
 }
 
+// Generated brand-style sample art for the meaning/presentation option orbs
+// (gpt-image-2 batch, cosmos palette). Same filename-per-enum contract as the
+// art-style samples above; test-premium-style-assets.ts asserts existence.
+export const PREMIUM_OPTION_SAMPLE_BASE_PATH = '/premium-option-samples'
+
+export const MEANING_STRATEGY_SAMPLE_PATHS: Record<CardLayer2MeaningStrategy, string> = {
+  clear_meaning: `${PREMIUM_OPTION_SAMPLE_BASE_PATH}/clear_meaning.webp`,
+  exaggerated_meaning: `${PREMIUM_OPTION_SAMPLE_BASE_PATH}/exaggerated_meaning.webp`,
+  absurd_hook: `${PREMIUM_OPTION_SAMPLE_BASE_PATH}/absurd_hook.webp`,
+  sound_mnemonic: `${PREMIUM_OPTION_SAMPLE_BASE_PATH}/sound_mnemonic.webp`,
+}
+
+export const PRESENTATION_FORM_SAMPLE_PATHS: Record<CardLayer2PresentationForm, string> = {
+  single_scene: `${PREMIUM_OPTION_SAMPLE_BASE_PATH}/single_scene.webp`,
+  mini_story: `${PREMIUM_OPTION_SAMPLE_BASE_PATH}/mini_story.webp`,
+  split_panel: `${PREMIUM_OPTION_SAMPLE_BASE_PATH}/split_panel.webp`,
+  word_object_design: `${PREMIUM_OPTION_SAMPLE_BASE_PATH}/word_object_design.webp`,
+  infographic_card: `${PREMIUM_OPTION_SAMPLE_BASE_PATH}/infographic_card.webp`,
+}
+
 export const PRODUCT_LANE_VISUAL_TONES: Record<ProductLane, string> = {
   video: 'video',
   card_standard: 'standard',
