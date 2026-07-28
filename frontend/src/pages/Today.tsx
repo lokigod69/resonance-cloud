@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {
   getGuidedPathOverview,
@@ -30,8 +30,14 @@ import {
   getSelectedGuidedTargetLanguage,
   setSelectedGuidedTargetLanguage,
 } from '@/lib/todayLanguage'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { toGuidedLanguageName, toWizardLanguageName } from '@/lib/targetLanguage'
+import { BETA_TARGET_LANGUAGES } from '@/lib/languages'
 import { useTranslation } from '@/hooks/useTranslation'
 import '@/components/today/Today.css'
+
+// Guided-space names of the beta target languages ('Bisaya' → 'Cebuano').
+const BETA_GUIDED_LANGUAGES = new Set(BETA_TARGET_LANGUAGES.map((lang) => toGuidedLanguageName(lang)))
 
 function scrollTodayToTop() {
   if (typeof window === 'undefined') return
@@ -44,13 +50,31 @@ function scrollTodayToTop() {
 export default function Today() {
   const { user } = useAuth()
   const { t } = useTranslation()
+  const { activeLanguage, setActiveLanguage, languageReady } = useLanguage()
   const [searchParams, setSearchParams] = useSearchParams()
   const pathOptions = useMemo(() => getGuidedTodayPathOptions(), [])
-  const availableLanguages = useMemo(() => collectAvailableLanguages(pathOptions), [pathOptions])
+  // Every language with authored paths (all 12) — the resolution set. A legacy
+  // Korean/Russian learner keeps their course even though the SWITCHER below
+  // only offers the beta eight.
+  const allGuidedLanguages = useMemo(() => collectAvailableLanguages(pathOptions), [pathOptions])
+  const availableLanguages = useMemo(
+    () => allGuidedLanguages.filter((language) => BETA_GUIDED_LANGUAGES.has(language)),
+    [allGuidedLanguages],
+  )
   const initialLanguage = useMemo(() => {
+    // The app-wide active language is the canonical choice (onboarding/home/
+    // library all funnel into it); the guided key is its synced mirror and
+    // covers the cold-load moment before the provider resolves. Both resolve
+    // against ALL guided languages, not the beta subset — trimming here would
+    // silently bounce a legacy learner into English.
+    const canonical = toGuidedLanguageName(activeLanguage)
+    if (allGuidedLanguages.includes(canonical as GuidedTargetLanguage)) {
+      return canonical as GuidedTargetLanguage
+    }
     const stored = getSelectedGuidedTargetLanguage()
-    return availableLanguages.includes(stored) ? stored : (availableLanguages[0] ?? 'English')
-  }, [availableLanguages])
+    return allGuidedLanguages.includes(stored) ? stored : (availableLanguages[0] ?? 'English')
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- one-shot initial value; selectedLanguage state owns later changes
+  }, [allGuidedLanguages, availableLanguages])
   const queryPathId = useMemo(
     () => resolveTodayPathId(searchParams.get('path'), pathOptions),
     [pathOptions, searchParams],
@@ -96,7 +120,7 @@ export default function Today() {
   }, [lesson, overview.lessons])
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- user-scoped localStorage progress must refresh when the authenticated user changes
+
     setProgress(readTodayProgressState(user?.id))
     setSelectedVibeId(queryVibeId ?? getSelectedGuidedVibe(selectedPathId))
     setSelectedLessonId(undefined)
@@ -107,18 +131,38 @@ export default function Today() {
 
   useEffect(() => {
     if (queryPathId) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- URL path param must hydrate the local lesson path selection.
+
       setSelectedPathId(queryPathId)
     }
   }, [queryPathId])
 
   useEffect(() => {
     if (queryPathLanguage && queryPathLanguage !== selectedLanguage) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- URL path selection owns the visible target language.
       setSelectedLanguageState(queryPathLanguage)
       setSelectedGuidedTargetLanguage(queryPathLanguage)
+      // One language everywhere: following a path link is a language switch too.
+      setActiveLanguage(toWizardLanguageName(queryPathLanguage))
     }
-  }, [queryPathLanguage, selectedLanguage])
+  }, [queryPathLanguage, selectedLanguage, setActiveLanguage])
+
+  // The provider resolves activeLanguage asynchronously: a cold /today load can
+  // run the one-shot initializer first and freeze a stale guided-key mirror
+  // (e.g. a returning learner whose guided key predates the canonical model).
+  // Adopt the canonical language exactly once when it arrives — unless a ?path=
+  // deep link or an already-running session owns the page.
+  const canonicalAdoptedRef = useRef(false)
+  useEffect(() => {
+    if (canonicalAdoptedRef.current || !languageReady || queryPathId) return
+    canonicalAdoptedRef.current = true
+    if (sessionActive) return
+    const canonical = toGuidedLanguageName(activeLanguage)
+    if (!canonical || canonical === selectedLanguage) return
+    if (!allGuidedLanguages.includes(canonical as GuidedTargetLanguage)) return
+
+    setSelectedLanguageState(canonical as GuidedTargetLanguage)
+    setSelectedGuidedTargetLanguage(canonical as GuidedTargetLanguage)
+    setSelectedPathId(pickDefaultPathForLanguage(pathOptions, canonical as GuidedTargetLanguage))
+  }, [languageReady, queryPathId, sessionActive, activeLanguage, selectedLanguage, allGuidedLanguages, pathOptions])
 
   // The dashboard's mission card deep-links with `start=1` to drop straight into the
   // recommended lesson. Consume the flag (so refresh/back land on the overview) and open
@@ -132,7 +176,7 @@ export default function Today() {
       params.delete('start')
       return params
     }, { replace: true })
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- the start=1 deep link must open the session once on entry
+
     setSessionActive(true)
     scrollTodayToTop()
   }, [shouldAutoStart, setSearchParams])
@@ -165,6 +209,7 @@ export default function Today() {
     if (pathLanguage && pathLanguage !== selectedLanguage) {
       setSelectedLanguageState(pathLanguage)
       setSelectedGuidedTargetLanguage(pathLanguage)
+      setActiveLanguage(toWizardLanguageName(pathLanguage))
     }
     setSelectedPathId(pathId)
     setSelectedVibeId(nextVibeId)
@@ -181,6 +226,8 @@ export default function Today() {
     const nextVibeId = selectedVibeId
     setSelectedLanguageState(language)
     setSelectedGuidedTargetLanguage(language)
+    // One language everywhere: the Today picker is a full language switch.
+    setActiveLanguage(toWizardLanguageName(language))
     setSelectedPathId(nextPathId)
     setSelectedGuidedVibe(nextPathId, nextVibeId)
     setSelectedVibeId(nextVibeId)

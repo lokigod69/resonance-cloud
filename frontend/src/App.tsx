@@ -23,6 +23,7 @@ import {
   scheduleIdleRoutePrefetch,
 } from '@/routes/routeImports'
 import { VISUAL_LENS_ENABLED } from '@/lib/productFlags'
+import { hasLocallyChosenTargetLanguage } from '@/lib/targetLanguage'
 
 const LandingPage = lazyWithRetry(routeImports.landingPage, 'landing-page')
 const Login = lazyWithRetry(routeImports.login, 'login')
@@ -34,9 +35,9 @@ const RedeemCodeDialog = lazyWithRetry(
 const ResetPassword = lazyWithRetry(routeImports.resetPassword, 'reset-password')
 const Onboarding = lazyWithRetry(routeImports.onboarding, 'onboarding')
 const SharePage = lazyWithRetry(routeImports.sharePage, 'share-page')
-const HybridALanding = lazyWithRetry(routeImports.hybridALanding, 'hybrid-a-landing')
-const HybridBLanding = lazyWithRetry(routeImports.hybridBLanding, 'hybrid-b-landing')
-const LandingExperimentIndex = lazyWithRetry(routeImports.landingExperimentIndex, 'landing-experiment-index')
+// The /a /b /landing/* experiment routes were unshipped 2026-07-27 (beta trim):
+// they carried the dead Sonanda brand and a "Not built" placeholder into prod.
+// The pages survive under src/landing-experiments/ for reference only.
 const Dashboard = lazyWithRetry(routeImports.dashboard, 'dashboard')
 const DashboardPG = lazyWithRetry(routeImports.dashboardPG, 'dashboard-pg')
 const Lens = lazyWithRetry(routeImports.lens, 'lens')
@@ -100,13 +101,19 @@ function shouldWaitForProfileGate(auth: AuthState) {
 function shouldRedirectToOnboarding(auth: AuthState, pathname: string) {
   const { session, profile, profileReady, profileLoading, profileLoadError } = auth
 
+  // The gate is the TARGET language, not base_language: profiles.base_language
+  // carries a DB default ('English'), so a gate on it never fires — confirmed in
+  // production 2026-07-27, which is how onboarding shipped as dead code. The
+  // profile column is the durable answer; the local flag covers the window
+  // before migration 20260727090000 is applied and any write-failure fallback.
   return Boolean(
     session &&
     profileReady &&
     !profileLoading &&
     !profileLoadError &&
     profile &&
-    !profile.base_language?.trim() &&
+    !profile.target_language?.trim() &&
+    !hasLocallyChosenTargetLanguage(session.user.id) &&
     pathname !== '/onboarding'
   )
 }
@@ -188,11 +195,6 @@ function AppRoutes() {
       {/* Fully public routes — no auth, no redirect */}
       <Route path="/share/:shareId" element={<SharePage />} />
       <Route path="/v/:shareId" element={<SharePage />} />
-      <Route path="/a" element={<HybridALanding />} />
-      <Route path="/b" element={<HybridBLanding />} />
-      <Route path="/landing" element={<LandingExperimentIndex />} />
-      <Route path="/landing/a" element={<HybridALanding />} />
-      <Route path="/landing/b" element={<HybridBLanding />} />
       <Route path="/reset-password" element={<ResetPassword />} />
 
       {/* Public routes */}

@@ -4,8 +4,6 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:resonanz.pro</string>
-		<string>applinks:www.resonanz.pro</string>
 		<string>applinks:lingwave.ai</string>
 		<string>applinks:www.lingwave.ai</string>
 	</array>

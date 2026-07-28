@@ -22,3 +22,13 @@ export const VIDEO_LANE_ENABLED = false
  * dogfood/TestFlight exposure can be changed without removing the surface.
  */
 export const VISUAL_LENS_ENABLED = true
+
+/**
+ * The classic skin is retired for the beta (owner call, 2026-07-27: "historical
+ * debt — get rid of it"). While true, every user resolves to glassy regardless of
+ * localStorage or profiles.skin, and the skin selector is hidden in ProfileModal.
+ * Hide, never delete: the classic pages stay in the tree until a deliberate
+ * deletion batch; flipping this back restores the choice without data loss
+ * (profiles.skin values are preserved, not overwritten).
+ */
+export const CLASSIC_SKIN_RETIRED = true

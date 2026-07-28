@@ -26,13 +26,15 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>pro.resonanz.app.auth</string>
+			<string>ai.lingwave.app.auth</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>resonance</string>
 			</array>
 		</dict>
 	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>

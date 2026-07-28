@@ -4,6 +4,7 @@ import { ChevronDown, Loader2, Sparkles } from 'lucide-react'
 import PillButton from '../shared/PillButton'
 import {
   PINNED_BOTTOM_CATEGORIES,
+  STATIC_CATEGORY_BETA_TARGET_LANGUAGES,
   STATIC_CATEGORY_TARGET_LANGUAGES,
   getPublicCategoryGroups,
   getStaticCategorySelectedItems,
@@ -154,11 +155,15 @@ export default function CategoryPicker({
             onChange={(event) => handleTargetLanguageChange(event.target.value)}
             className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
           >
-            {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+            {STATIC_CATEGORY_BETA_TARGET_LANGUAGES.map((language) => (
               <option key={language.code} value={language.value} data-status={language.status}>
                 {language.label}
               </option>
             ))}
+            {/* Legacy value (resolved via the full registry) stays visible. */}
+            {targetLanguage && !STATIC_CATEGORY_BETA_TARGET_LANGUAGES.some((language) => language.value === targetLanguage) && (
+              <option value={targetLanguage}>{targetLanguage}</option>
+            )}
           </select>
         </div>
 
@@ -173,11 +178,14 @@ export default function CategoryPicker({
             onChange={(event) => handleHelperLanguageChange(event.target.value)}
             className="min-h-[40px] w-full rounded-xl border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition focus:border-accent"
           >
-            {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+            {STATIC_CATEGORY_BETA_TARGET_LANGUAGES.map((language) => (
               <option key={language.code} value={language.value} data-status={language.status}>
                 {language.label}
               </option>
             ))}
+            {helperLanguage && !STATIC_CATEGORY_BETA_TARGET_LANGUAGES.some((language) => language.value === helperLanguage) && (
+              <option value={helperLanguage}>{helperLanguage}</option>
+            )}
           </select>
         </div>
       </div>

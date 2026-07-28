@@ -11,6 +11,16 @@ function json<T>(relPath: string): T {
   return JSON.parse(read(relPath)) as T
 }
 
+// PNG IHDR: width/height at bytes 16-23, colour type at byte 25 (4 and 6 carry alpha).
+function pngHeader(relPath: string): { width: number, height: number, hasAlpha: boolean } {
+  const buf = fs.readFileSync(path.join(root, relPath))
+  return {
+    width: buf.readUInt32BE(16),
+    height: buf.readUInt32BE(20),
+    hasAlpha: buf[25] === 4 || buf[25] === 6,
+  }
+}
+
 function exists(relPath: string): boolean {
   return fs.existsSync(path.join(root, relPath))
 }
@@ -50,13 +60,34 @@ for (const dep of ['@capacitor/cli', '@capacitor/ios']) {
 
 assert(scripts['build:ios']?.includes('vite build'), 'package.json must define build:ios')
 assert(scripts['build:ios']?.includes('strip-ios-bundle'), 'build:ios must strip web-served asset trees before cap sync')
+assert(scripts['build:ios']?.includes('guard-cap-sync-platform'), 'build:ios must refuse to cap sync off macOS (Windows writes backslash paths into Package.swift)')
 assert(scripts['cap:sync:ios']?.includes('cap sync ios'), 'package.json must define cap:sync:ios')
 
 assert(exists('capacitor.config.ts'), 'capacitor.config.ts must exist')
 const capacitorConfig = read('capacitor.config.ts')
-assertIncludes(capacitorConfig, "appId: 'pro.resonanz.app'", 'capacitor.config.ts')
+// The bundle id becomes permanent at the first App Store Connect upload. It must be identical in
+// four places or the archive is signed as one app and the universal links point at another.
+const BUNDLE_ID = 'ai.lingwave.app'
+const APPLE_TEAM_ID = 'ZL69STWQHV'
+
+assertIncludes(capacitorConfig, `appId: '${BUNDLE_ID}'`, 'capacitor.config.ts')
 assertIncludes(capacitorConfig, "appName: 'Lingwave'", 'capacitor.config.ts')
 assertIncludes(capacitorConfig, "webDir: 'dist'", 'capacitor.config.ts')
+
+const pbxproj = read('ios/App/App.xcodeproj/project.pbxproj')
+assertIncludes(pbxproj, `PRODUCT_BUNDLE_IDENTIFIER = ${BUNDLE_ID};`, 'ios/App/App.xcodeproj/project.pbxproj')
+assertNotIncludes(pbxproj, 'pro.resonanz.app', 'ios/App/App.xcodeproj/project.pbxproj')
+// Without a signing team Xcode cannot produce an archive at all — the failure only surfaces on the
+// Mac, halfway through an upload session, so it is asserted here where it is cheap to catch.
+assertIncludes(pbxproj, `DEVELOPMENT_TEAM = ${APPLE_TEAM_ID};`, 'ios/App/App.xcodeproj/project.pbxproj')
+assert(
+  pbxproj.split(`DEVELOPMENT_TEAM = ${APPLE_TEAM_ID};`).length - 1 === 2,
+  'both the Debug and Release build configurations must set DEVELOPMENT_TEAM',
+)
+
+// The AASA appID is `<TeamID>.<BundleID>`; a mismatch silently breaks universal links with no error.
+const aasa = read('public/.well-known/apple-app-site-association')
+assertIncludes(aasa, `"appID": "${APPLE_TEAM_ID}.${BUNDLE_ID}"`, 'public/.well-known/apple-app-site-association')
 
 const tsconfigNode = read('tsconfig.node.json')
 assertIncludes(tsconfigNode, 'capacitor.config.ts', 'tsconfig.node.json')
@@ -159,10 +190,30 @@ const videoPlayer = read('src/pages/VideoPlayer.tsx')
 assertIncludes(videoPlayer, 'muted={videoMuted}', 'src/pages/VideoPlayer.tsx')
 assertIncludes(videoPlayer, 'Volume2', 'src/pages/VideoPlayer.tsx')
 
+// Guideline 3.1.1: the native app must never offer the Stripe checkout path. The gate has
+// to live in code, not in env — VITE_STRIPE_BILLING_SANDBOX_ENABLED is baked in from the
+// .env of whatever machine builds the iOS bundle, and it was `true` here on 2026-07-25.
+const billingFlags = read('src/lib/billingFlags.ts')
+assertIncludes(billingFlags, 'if (isNativeApp()) return false', 'src/lib/billingFlags.ts')
+
 const infoPlist = read('ios/App/App/Info.plist')
 assertIncludes(infoPlist, 'NSMicrophoneUsageDescription', 'ios/App/App/Info.plist')
+// HTTPS-only app: declaring the standard exemption up front stops App Store Connect
+// asking the export-compliance question on every single upload.
+assertIncludes(infoPlist, 'ITSAppUsesNonExemptEncryption', 'ios/App/App/Info.plist')
 assertIncludes(infoPlist, 'CFBundleURLSchemes', 'ios/App/App/Info.plist')
 assertIncludes(infoPlist, 'resonance', 'ios/App/App/Info.plist')
+
+// The App Store icon must be exactly 1024x1024 with NO alpha channel — Xcode rejects
+// alpha outright. Generated from public/android-chrome-512x512.png (2026-07-25), replacing
+// the stock Capacitor placeholder that had shipped in this slot since the project was created.
+const appIcon = pngHeader('ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png')
+assert(appIcon.width === 1024 && appIcon.height === 1024, `app icon must be 1024x1024, got ${appIcon.width}x${appIcon.height}`)
+assert(!appIcon.hasAlpha, 'app icon must not carry an alpha channel — Xcode rejects it')
+const splash = pngHeader('ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png')
+assert(splash.width === 2732 && splash.height === 2732, `splash must be 2732x2732, got ${splash.width}x${splash.height}`)
+
+assertIncludes(capacitorConfig, "backgroundColor: '#0e0810'", 'capacitor.config.ts')
 
 assert(exists('ios/App/App/PrivacyInfo.xcprivacy'), 'ios/App/App/PrivacyInfo.xcprivacy must exist')
 const privacyManifest = read('ios/App/App/PrivacyInfo.xcprivacy')
@@ -179,8 +230,10 @@ assertIncludes(xcodeProject, 'CODE_SIGN_ENTITLEMENTS = App/App.entitlements;', '
 assertIncludes(xcodeProject, 'PrivacyInfo.xcprivacy in Resources', 'ios/App/App.xcodeproj/project.pbxproj')
 
 const entitlements = read('ios/App/App/App.entitlements')
-assertIncludes(entitlements, 'applinks:resonanz.pro', 'ios/App/App/App.entitlements')
-assertIncludes(entitlements, 'applinks:www.resonanz.pro', 'ios/App/App/App.entitlements')
+// resonanz.pro is dead (DEPLOYMENT_NOT_FOUND) so it can never serve an AASA file —
+// an applinks entry for it is a domain the App ID has to provision and can never validate.
+assertNotIncludes(entitlements, 'applinks:resonanz.pro', 'ios/App/App/App.entitlements')
+assertNotIncludes(entitlements, 'applinks:www.resonanz.pro', 'ios/App/App/App.entitlements')
 assertIncludes(entitlements, 'applinks:lingwave.ai', 'ios/App/App/App.entitlements')
 assertIncludes(entitlements, 'applinks:www.lingwave.ai', 'ios/App/App/App.entitlements')
 

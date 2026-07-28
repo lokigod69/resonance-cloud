@@ -47,7 +47,7 @@ import { useAppendImagelessCards } from '@/hooks/useAppendImagelessCards'
 import { useGenerateImagelessTts } from '@/hooks/useGenerateImagelessTts'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
-import { canonicalizeLanguageValue, getLanguageCode } from '@/lib/languages'
+import { canonicalizeLanguageValue, getLanguageCode, isBetaTargetLanguage } from '@/lib/languages'
 
 /* ─── Constants ─────────────────────────────────── */
 
@@ -176,11 +176,15 @@ export default function GeneratePG() {
     if (state.language) return
     if (!languageReady) return
 
-    if (activeLanguage) {
+    // Auto-advance only for beta languages: a legacy active language (e.g.
+    // Korean) must not skip the picker and mint a NEW deck in a language the
+    // beta no longer offers. Appending to an existing deck is untouched.
+    const canAutoSeed = Boolean(activeLanguage && isBetaTargetLanguage(activeLanguage))
+    if (canAutoSeed && activeLanguage) {
       dispatch({ type: 'SET_LANGUAGE', language: activeLanguage })
     }
     const timeoutId = window.setTimeout(() => {
-      if (activeLanguage) setPgStep(1)
+      if (canAutoSeed) setPgStep(1)
       setGateResolved(true)
     }, 0)
 

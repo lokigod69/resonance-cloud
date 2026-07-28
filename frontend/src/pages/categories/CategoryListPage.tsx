@@ -9,7 +9,7 @@ import { listCurriculumCategories, type CurriculumCategory } from '@/data/curric
 import { generatedCategoryHeroImagePath } from '@/lib/generatedCategoryImages'
 import { curriculumCategoryHeroPath } from '@/lib/curriculumImagePath'
 import {
-  STATIC_CATEGORY_TARGET_LANGUAGES,
+  STATIC_CATEGORY_BETA_TARGET_LANGUAGES,
   getPublicCategoryGroups,
   type Category as StaticCategory,
 } from '@/data/categories'
@@ -201,9 +201,14 @@ export default function CategoryListPage() {
             onChange={(event) => setLanguageOverride(event.target.value)}
             aria-label={t('categories.targetLanguageLabel')}
           >
-            {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+            {STATIC_CATEGORY_BETA_TARGET_LANGUAGES.map((language) => (
               <option key={language.code} value={language.value}>{language.label}</option>
             ))}
+            {/* A legacy active language (e.g. Korean) still resolves through the
+                full registry; keep it visible so the control isn't blank. */}
+            {targetLanguage && !STATIC_CATEGORY_BETA_TARGET_LANGUAGES.some((language) => language.value === targetLanguage) && (
+              <option value={targetLanguage}>{targetLanguage}</option>
+            )}
           </select>
         </label>
       </header>

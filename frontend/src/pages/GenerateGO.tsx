@@ -59,7 +59,7 @@ import {
   type PremiumSummaryItem,
 } from '@/components/generate/shared/PremiumVisualSelectors'
 import { wordsEqual } from '@/lib/wordEquality'
-import { canonicalizeLanguageValue, getLanguageCode } from '@/lib/languages'
+import { canonicalizeLanguageValue, getLanguageCode, isBetaTargetLanguage } from '@/lib/languages'
 import type { SelectedCategoryVocabularyItem } from '@/data/categories'
 
 const GO_GENRES = [
@@ -229,7 +229,11 @@ export default function GenerateGO() {
     if (!languageReady) return
 
     const timeoutId = window.setTimeout(() => {
-      if (activeLanguage) {
+      // Auto-advance only for beta languages: a legacy active language (e.g.
+      // Korean) must not skip the picker and mint a NEW deck in a language the
+      // beta no longer offers. Appending words to an existing deck is untouched
+      // (deckIdParam path above).
+      if (activeLanguage && isBetaTargetLanguage(activeLanguage)) {
         setLanguage(activeLanguage)
         setStep(2)
       }

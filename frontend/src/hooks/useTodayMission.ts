@@ -4,6 +4,7 @@ import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { readTodayProgressState, type TodayProgressState } from '@/lib/todayProgress'
 import { getSelectedGuidedTargetLanguage } from '@/lib/todayLanguage'
 import { getSelectedGuidedVibe } from '@/lib/todayVibe'
+import { toGuidedLanguageName } from '@/lib/targetLanguage'
 
 // guidedLessons.ts is a ~65k-line data module. It must NEVER be statically imported
 // from the dashboard (it would swallow the home chunk); this hook loads it through a
@@ -57,10 +58,8 @@ type UseTodayMissionArgs = {
   allowGuidedLanguageFallback?: boolean
 }
 
-// Deck/wizard languages use 'Bisaya'; guided content names the same language 'Cebuano'.
-const DASHBOARD_TO_GUIDED_LANGUAGE: Record<string, string> = {
-  Bisaya: 'Cebuano',
-}
+// Deck/wizard languages use 'Bisaya'; guided content names the same language
+// 'Cebuano'. The bridge lives in lib/targetLanguage.ts — one map, no drift.
 
 /**
  * Resolves the learner's one guided "mission of the day" for the dashboard hero:
@@ -161,7 +160,7 @@ function resolveMissionLanguage(
   const guidedLanguages = new Set<string>(
     lessonsModule.getGuidedTodayPathOptions().map((path) => path.targetLanguage),
   )
-  const mapped = activeLanguage ? (DASHBOARD_TO_GUIDED_LANGUAGE[activeLanguage] ?? activeLanguage) : null
+  const mapped = activeLanguage ? toGuidedLanguageName(activeLanguage) : null
   if (mapped && guidedLanguages.has(mapped)) return mapped
 
   // The active deck language has no guided path (e.g. Korean). Strict matching

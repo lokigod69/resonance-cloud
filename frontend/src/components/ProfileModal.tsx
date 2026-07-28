@@ -30,6 +30,7 @@ import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
 import { useToast } from '@/components/Toast'
 import { NewWordsPerDaySelector } from '@/components/profile/NewWordsPerDaySelector'
 import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
+import { CLASSIC_SKIN_RETIRED } from '@/lib/productFlags'
 
 const SKINS: { id: SkinId; label: string }[] = [
   { id: 'classic', label: 'Classic' },
@@ -427,25 +428,27 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
               />
             </div>
 
-            {/* Skin Selector */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">{t('profile.skin')}</label>
-              <div className="grid grid-cols-2 gap-2">
-                {SKINS.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => handleSkinChange(s.id)}
-                    className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
-                      skin === s.id
-                        ? 'theme-chip-active'
-                        : 'theme-chip'
-                    }`}
-                  >
-                    {s.label}
-                  </button>
-                ))}
+            {/* Skin Selector — hidden while classic is retired (beta ships glassy-only) */}
+            {!CLASSIC_SKIN_RETIRED && (
+              <div className="space-y-2">
+                <label className="text-sm font-medium">{t('profile.skin')}</label>
+                <div className="grid grid-cols-2 gap-2">
+                  {SKINS.map((s) => (
+                    <button
+                      key={s.id}
+                      onClick={() => handleSkinChange(s.id)}
+                      className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
+                        skin === s.id
+                          ? 'theme-chip-active'
+                          : 'theme-chip'
+                      }`}
+                    >
+                      {s.label}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Theme Selector */}
             <div className="space-y-2">
@@ -525,6 +528,12 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                         {getDisplayLabel(lang)}
                       </SelectItem>
                     ))}
+                    {/* Legacy base languages (Korean/Spanish/… predate the en/de/fr
+                        trim). Keep the stored value visible so the select doesn't
+                        render as empty; picking a listed language migrates them. */}
+                    {baseLanguage && !BASE_LANGUAGES.some((lang) => lang.value === baseLanguage) && (
+                      <SelectItem value={baseLanguage}>{baseLanguage}</SelectItem>
+                    )}
                   </SelectContent>
                 </Select>
                 {langSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}

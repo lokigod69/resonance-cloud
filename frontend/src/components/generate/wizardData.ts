@@ -1,10 +1,12 @@
-import { WIZARD_LANGUAGES } from '@/lib/languages'
+import { BETA_WIZARD_LANGUAGES } from '@/lib/languages'
 
 // Wizard tile data, derived from the shared LANGUAGES module.
 // `label` here is the native-only name (e.g. 'Deutsch'), not the 'Native (English)' form.
 // `color` falls back to the landing palette if a wizardColor isn't defined.
+// Beta-trimmed: only complete languages are offered for new decks; existing decks
+// in dropped languages keep working (registries/resolvers are untrimmed).
 export const LANGUAGES: { value: string; label: string; code: string; color: string }[] =
-  WIZARD_LANGUAGES.map((l) => ({
+  BETA_WIZARD_LANGUAGES.map((l) => ({
     value: l.value,
     label: l.nativeName,
     code: l.code,

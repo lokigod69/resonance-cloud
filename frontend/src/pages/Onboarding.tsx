@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import {
   Select,
   SelectContent,
@@ -11,39 +10,43 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { ChevronRight, Gift, Check } from 'lucide-react'
-import { BASE_LANGUAGES, type Language } from '@/lib/languages'
+import { ChevronRight } from 'lucide-react'
+import { BASE_LANGUAGES, BETA_WIZARD_LANGUAGES, type Language } from '@/lib/languages'
+import { markTargetLanguageChosen } from '@/lib/targetLanguage'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 import { LingwaveWaves } from '@/components/branding/LingwaveWaves'
 
+/**
+ * The two questions that define a language-learning account: what you speak,
+ * and what you want to learn. Nothing else belongs here — invite-code
+ * redemption lives in the global RedeemCodeDialog (header/coin/account strip),
+ * and new accounts start with signup credits.
+ *
+ * The gate that routes here fires on a missing TARGET language (see
+ * shouldRedirectToOnboarding in App.tsx) — never on base_language, whose DB
+ * default made the old gate dead code in production.
+ */
 export default function Onboarding() {
   const { t } = useTranslation()
   const { user, refreshProfile } = useAuth()
+  const { setActiveLanguage } = useLanguage()
   const navigate = useNavigate()
+  const location = useLocation()
 
   const [step, setStep] = useState<1 | 2>(1)
   const [selectedLanguage, setSelectedLanguage] = useState('')
   const [saving, setSaving] = useState(false)
   const [languageError, setLanguageError] = useState<string | null>(null)
 
-  const [inviteCode, setInviteCode] = useState('')
-  const [redeemError, setRedeemError] = useState<string | null>(null)
-  const [redeemSuccess, setRedeemSuccess] = useState<{ credits: number } | null>(null)
-  const [redeeming, setRedeeming] = useState(false)
+  const [selectedTarget, setSelectedTarget] = useState('')
+  const [savingTarget, setSavingTarget] = useState(false)
+  const [targetError, setTargetError] = useState<string | null>(null)
 
   function getLocalizedLanguageLabel(lang: Language) {
     const translatedName = t(`langName.${lang.value}`)
     return lang.nativeName === translatedName ? translatedName : `${lang.nativeName} (${translatedName})`
-  }
-
-  function getRedeemErrorMessage(error?: string) {
-    const normalizedError = error?.toLowerCase() ?? ''
-
-    if (normalizedError.includes('already redeemed')) return t('credits.errorRedeemed')
-    if (normalizedError.includes('invalid') || normalizedError.includes('inactive')) return t('credits.errorInvalid')
-
-    return t('credits.errorFailed')
   }
 
   async function handleLanguageContinue() {
@@ -84,40 +87,49 @@ export default function Onboarding() {
     }
   }
 
-  async function handleRedeemCode() {
-    if (!inviteCode.trim() || !user) return
-    setRedeeming(true)
-    setRedeemError(null)
-
-    const code = inviteCode.trim().toUpperCase()
+  async function handleTargetContinue() {
+    if (!selectedTarget || !user) return
+    setSavingTarget(true)
+    setTargetError(null)
 
     try {
-      const { data, error: rpcError } = await supabase.rpc('redeem_invite_code', { code_text: code })
-      if (rpcError || !data) {
-        console.error('Invite code redemption failed:', rpcError)
-        setRedeemError(t('credits.errorFailed'))
-        return
+      // Server-side first: the profile column survives reinstalls and devices.
+      // Best-effort by design — until migration 20260727090000 lands, the column
+      // does not exist and this update fails; the local flag + language stores
+      // below still complete onboarding, and the app degrades to device-scoped.
+      const { error } = await supabase
+        .from('profiles')
+        .update({ target_language: selectedTarget })
+        .eq('id', user.id)
+      if (error) {
+        console.warn('[Onboarding] target_language profile write failed (pre-migration is expected)', {
+          userId: user.id,
+          requestedTargetLanguage: selectedTarget,
+          error,
+        })
       }
 
-      const result = data as { success: boolean; credits_awarded?: number; error?: string }
-      if (!result.success) {
-        setRedeemError(getRedeemErrorMessage(result.error))
-      } else {
-        setRedeemSuccess({ credits: result.credits_awarded || 0 })
-        setInviteCode('')
-        await refreshProfile()
-      }
+      // Local truth: the sticky flag closes the gate; setActiveLanguage fans the
+      // choice out to the guided (Today) and Library stores plus availableLanguages.
+      markTargetLanguageChosen(user.id)
+      setActiveLanguage(selectedTarget)
+      await refreshProfile()
+
+      const from = (location.state as { from?: { pathname?: string; search?: string; hash?: string } } | null)?.from
+      const destination = from?.pathname && from.pathname !== '/onboarding'
+        ? `${from.pathname}${from.search ?? ''}${from.hash ?? ''}`
+        : '/dashboard'
+      navigate(destination, { replace: true })
     } catch (error) {
-      console.error('Invite code redemption failed:', error)
-      setRedeemError(t('credits.errorFailed'))
+      console.error('[Onboarding] target language selection failed', {
+        userId: user.id,
+        requestedTargetLanguage: selectedTarget,
+        error,
+      })
+      setTargetError(t('profile.saveFailed'))
     } finally {
-      setRedeeming(false)
+      setSavingTarget(false)
     }
-  }
-
-  function handleFinish() {
-    localStorage.setItem('resonance_onboarding_done', 'true')
-    navigate('/dashboard')
   }
 
   return (
@@ -174,57 +186,49 @@ export default function Onboarding() {
           </div>
         )}
 
-        {/* Step 2: Invite Code */}
+        {/* Step 2: Target Language */}
         {step === 2 && (
           <div className="glass rounded-xl p-8 space-y-6">
             <div className="text-center space-y-2">
-              <Gift className="h-8 w-8 text-primary mx-auto" />
-              <h2 className="text-xl font-semibold">{t('onboarding.inviteTitle')}</h2>
+              <h2 className="text-xl font-semibold">{t('onboarding.targetTitle')}</h2>
               <p className="text-sm text-muted-foreground">
-                {t('onboarding.inviteDescription')}
+                {t('onboarding.targetDescription')}
               </p>
             </div>
 
-            {!redeemSuccess ? (
-              <div className="space-y-3">
-                <Input
-                  placeholder={t('credits.placeholder')}
-                  value={inviteCode}
-                  onChange={(e) => setInviteCode(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleRedeemCode()}
-                  className="h-12 bg-card border-border text-center text-lg tracking-wider uppercase"
-                />
-                {redeemError && (
-                  <p className="text-sm text-destructive-foreground text-center">{redeemError}</p>
-                )}
-                <Button
-                  className="w-full h-12"
-                  onClick={handleRedeemCode}
-                  disabled={redeeming || !inviteCode.trim()}
-                >
-                  {redeeming ? t('credits.redeeming') : t('credits.redeemButton')}
-                </Button>
-              </div>
-            ) : (
-              <div className="text-center space-y-3">
-                <div className="h-12 w-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto">
-                  <Check className="h-6 w-6 text-green-400" />
-                </div>
-                <p className="text-lg font-medium">
-                  {t('credits.added', { count: redeemSuccess.credits })}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {t('onboarding.successDescription')}
-                </p>
-              </div>
+            <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label={t('onboarding.targetTitle')}>
+              {BETA_WIZARD_LANGUAGES.map((lang) => {
+                const isSelected = selectedTarget === lang.value
+                return (
+                  <button
+                    key={lang.value}
+                    type="button"
+                    role="radio"
+                    aria-checked={isSelected}
+                    onClick={() => setSelectedTarget(lang.value)}
+                    className={`flex min-h-[56px] flex-col items-start justify-center rounded-lg border-2 px-4 py-2 text-left transition-all ${
+                      isSelected ? 'theme-chip-active' : 'theme-chip'
+                    }`}
+                  >
+                    <span className="text-sm font-medium">{lang.nativeName}</span>
+                    {lang.nativeName !== t(`langName.${lang.value}`) && (
+                      <span className="text-xs text-muted-foreground">{t(`langName.${lang.value}`)}</span>
+                    )}
+                  </button>
+                )
+              })}
+            </div>
+
+            {targetError && (
+              <p className="text-center text-sm text-destructive">{targetError}</p>
             )}
 
             <Button
-              variant={redeemSuccess ? 'default' : 'ghost'}
               className="w-full h-12"
-              onClick={handleFinish}
+              onClick={handleTargetContinue}
+              disabled={!selectedTarget || savingTarget}
             >
-              {redeemSuccess ? t('onboarding.goToDecks') : t('onboarding.skipForNow')}
+              {savingTarget ? t('onboarding.saving') : t('onboarding.startLearning')}
               <ChevronRight className="h-4 w-4 ml-2" />
             </Button>
           </div>

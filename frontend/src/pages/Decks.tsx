@@ -127,7 +127,10 @@ export default function Decks() {
 
   useEffect(() => {
     if (availableLanguages.length === 0) {
-      if (activeLanguage) setActiveLanguage(null)
+      // Zero decks ≠ no language: onboarding seeds the canonical choice before
+      // any deck exists, and nulling it here wiped that choice for the whole
+      // app (the old behavior). Keep the language; the page shows its empty
+      // state and the wizard creates the first deck in it.
       return
     }
     if (!activeLanguage || !availableLanguages.includes(activeLanguage)) {

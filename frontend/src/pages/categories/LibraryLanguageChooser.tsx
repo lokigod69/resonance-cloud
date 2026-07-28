@@ -1,6 +1,6 @@
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
-import { STATIC_CATEGORY_TARGET_LANGUAGES } from '@/data/categories'
+import { STATIC_CATEGORY_BETA_TARGET_LANGUAGES } from '@/data/categories'
 import styles from './Categories.module.css'
 
 type LibraryLanguageChooserProps = {
@@ -24,7 +24,7 @@ export function LibraryLanguageChooser({ onChoose }: LibraryLanguageChooserProps
         {t('categories.chooseLanguageTitle')}
       </h1>
       <div className={styles.languageChooserGrid}>
-        {STATIC_CATEGORY_TARGET_LANGUAGES.map((language) => (
+        {STATIC_CATEGORY_BETA_TARGET_LANGUAGES.map((language) => (
           <button
             key={language.code}
             type="button"

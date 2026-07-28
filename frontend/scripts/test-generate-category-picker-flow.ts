@@ -99,8 +99,12 @@ assert.ok(
   'CategoryPicker should use target/helper-language-aware local static vocabulary items for leveled static categories instead of the suggestion API',
 )
 assert.ok(
-  categoryPicker.includes('STATIC_CATEGORY_TARGET_LANGUAGES.map'),
-  'CategoryPicker should expose the static vocabulary target language selector',
+  categoryPicker.includes('STATIC_CATEGORY_BETA_TARGET_LANGUAGES.map'),
+  'CategoryPicker should expose the static vocabulary target language selector (beta-trimmed list)',
+)
+assert.ok(
+  categoryPicker.includes('STATIC_CATEGORY_TARGET_LANGUAGES.find'),
+  'CategoryPicker resolver must keep the FULL language list so legacy values still resolve',
 )
 assert.ok(
   wordsStep.includes('useSearchParams') && wordsStep.includes('initialCategoryId'),

@@ -82,6 +82,17 @@ export const STATIC_CATEGORY_TARGET_LANGUAGES = STATIC_CATEGORY_TRANSLATION_LANG
   (language) => language.status !== 'hidden',
 )
 
+// The beta-visible subset for language PICKERS only (Library chooser/select,
+// generate CategoryPicker). Resolvers keep using the full list above so decks
+// and URLs in dropped languages still resolve. Values are wizard-space; the
+// list itself lives in lib/languages.ts (BETA_TARGET_LANGUAGES) — kept as a
+// plain literal here because importing lib/languages from this data module
+// would invert the data←lib layering for one array.
+const BETA_TARGET_LANGUAGE_VALUES = ['English', 'German', 'Spanish', 'French', 'Italian', 'Portuguese', 'Bisaya', 'Indonesian']
+export const STATIC_CATEGORY_BETA_TARGET_LANGUAGES = STATIC_CATEGORY_TARGET_LANGUAGES.filter(
+  (language) => BETA_TARGET_LANGUAGE_VALUES.includes(language.value),
+)
+
 export interface Category {
   id?: string
   name: string

@@ -16,6 +16,9 @@ export function resolveVisibleStaticLanguage(value: string | null | undefined, f
     || language.label.toLowerCase() === normalized
     || language.name.toLowerCase() === normalized
     || language.nativeName.toLowerCase() === normalized
+    // Guided-space naming: the ceb entry's fields all say 'Bisaya', so 'Cebuano'
+    // fell through to the fallback — same alias categories.ts:resolveStatic… has.
+    || (language.code === 'ceb' && normalized === 'cebuano')
   ))
   return matched?.value ?? fallback
 }

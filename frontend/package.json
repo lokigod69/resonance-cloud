@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:ios": "vite build --mode ios && tsx scripts/strip-ios-bundle.ts && cap sync ios",
-    "cap:sync:ios": "cap sync ios",
+    "build:ios": "vite build --mode ios && tsx scripts/strip-ios-bundle.ts && tsx scripts/guard-cap-sync-platform.ts && cap sync ios",
+    "cap:sync:ios": "tsx scripts/guard-cap-sync-platform.ts && cap sync ios",
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
     "test": "tsx scripts/test-deck-delete-ui.ts",

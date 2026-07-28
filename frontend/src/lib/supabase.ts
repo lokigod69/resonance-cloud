@@ -43,6 +43,10 @@ export type Profile = {
   email?: string | null
   display_name: string | null
   base_language: string | null
+  /** Canonical learning-target language (wizard naming). Optional because the
+   * column arrives with migration 20260727090000 — code must tolerate its
+   * absence (undefined) and read it defensively until applied. */
+  target_language?: string | null
   role: 'learner' | 'admin'
   credits: number
   new_words_per_day?: number | null
@@ -57,6 +61,7 @@ export type AuthProfile = Pick<
   Profile,
   | 'display_name'
   | 'base_language'
+  | 'target_language'
   | 'role'
   | 'credits'
   | 'new_words_per_day'

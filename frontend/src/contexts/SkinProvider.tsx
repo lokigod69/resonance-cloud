@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { supabase } from '../lib/supabase'
+import { CLASSIC_SKIN_RETIRED } from '../lib/productFlags'
 import { SkinContext, type SkinId } from './SkinContext'
 
 const STORAGE_KEY = 'resonance-skin'
@@ -14,6 +15,10 @@ const LEGACY_MAP: Record<string, SkinId> = {
 }
 
 function migrateSkinId(raw: string | null): SkinId {
+  // Classic is retired for the beta: everyone resolves to glassy, and neither
+  // localStorage nor profiles.skin is overwritten — flipping the flag back
+  // restores the previous choice untouched.
+  if (CLASSIC_SKIN_RETIRED) return 'glassy'
   // No stored choice = new device/user → glassy (the beta ships in the glassy skin);
   // unrecognized legacy values stay on classic, matching the LEGACY_MAP mappings.
   if (!raw) return 'glassy'
@@ -26,8 +31,9 @@ export function SkinProvider({ children }: { children: ReactNode }) {
   const [skin, setSkinState] = useState<SkinId>(() => {
     const raw = localStorage.getItem(STORAGE_KEY)
     const resolved = migrateSkinId(raw)
-    // Write back if migrated from legacy value
-    if (raw && raw !== resolved) {
+    // Write back if migrated from legacy value — but never while classic is
+    // retired: the stored choice must survive so un-retiring restores it.
+    if (!CLASSIC_SKIN_RETIRED && raw && raw !== resolved) {
       localStorage.setItem(STORAGE_KEY, resolved)
     }
     return resolved
@@ -45,6 +51,9 @@ export function SkinProvider({ children }: { children: ReactNode }) {
   // (e.g. after the user clears site data) — the profile modal writes to
   // profiles.skin but nothing read it back before this.
   useEffect(() => {
+    // Skin is pinned to glassy while classic is retired — nothing to restore,
+    // and skipping avoids caching a pinned value over the user's real choice.
+    if (CLASSIC_SKIN_RETIRED) return
     let cancelled = false
     const restoreFromProfile = async () => {
       if (localStorage.getItem(STORAGE_KEY)) return

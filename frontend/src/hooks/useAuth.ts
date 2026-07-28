@@ -141,9 +141,13 @@ export function useAuthState(): AuthState {
 
     try {
       console.log('[useAuth] fetchProfile called for:', userId)
+      // select('*') on purpose: the row is RLS-scoped to the user anyway, and an
+      // explicit column list 400s the whole login whenever the client ships a
+      // column the database doesn't have yet (or vice versa). target_language
+      // in particular must be readable-if-present, absent-if-not.
       const { data, error, status, statusText } = await supabase
         .from('profiles')
-        .select('display_name, credits, base_language, role, new_words_per_day, seen_tutorials, avatar_path, avatar_updated_at')
+        .select('*')
         .eq('id', userId)
         .abortSignal(controller.signal)
         .single()

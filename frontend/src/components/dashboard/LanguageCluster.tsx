@@ -2,7 +2,7 @@ import { type CSSProperties, useEffect, useRef, useState } from 'react'
 import { Plus } from 'lucide-react'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
-import { WIZARD_LANGUAGES } from '@/lib/languages'
+import { BETA_WIZARD_LANGUAGES } from '@/lib/languages'
 
 type LanguageClusterProps = {
   languages: string[]
@@ -61,7 +61,7 @@ export function LanguageCluster({ languages, activeLanguage, onSelect, onAddLang
   const hasChoices = languages.length > 1
   const activeIndex = Math.max(languages.indexOf(activeLanguage), 0)
   const addableLanguages = onAddLanguage
-    ? WIZARD_LANGUAGES.filter((lang) => !languages.includes(lang.value))
+    ? BETA_WIZARD_LANGUAGES.filter((lang) => !languages.includes(lang.value))
     : []
   const canAdd = addableLanguages.length > 0
   // The panel is worth opening when there's something inside it — other

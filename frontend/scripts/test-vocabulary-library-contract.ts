@@ -54,8 +54,8 @@ assert.ok(
   'thematic section should render before legacy/basic section',
 )
 assert.ok(
-  categoryList.indexOf('targetLanguage') >= 0 && categoryList.indexOf('STATIC_CATEGORY_TARGET_LANGUAGES') >= 0,
-  'Library landing should own target language selection',
+  categoryList.indexOf('targetLanguage') >= 0 && categoryList.indexOf('STATIC_CATEGORY_BETA_TARGET_LANGUAGES') >= 0,
+  'Library landing should own target language selection (beta-trimmed list)',
 )
 assertIncludes(categoryList, 'useCategoryScrollReset()', 'Library landing should scroll to top on route entry')
 assertIncludes(categoryList, 'aria-label={t(\'categories.targetLanguageLabel\')}', 'Target language select should keep an accessible label')

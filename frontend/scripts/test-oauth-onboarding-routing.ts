@@ -37,7 +37,12 @@ assertIncludes('route gate waits for profile readiness', appSource, 'profileRead
 assertIncludes('route gate respects active profile loading', appSource, 'profileLoading')
 assertIncludes('route gate fails open when profile fetch failed', appSource, 'profileLoadError')
 assertIncludes('route gate does not redirect from onboarding to itself', appSource, "pathname !== '/onboarding'")
-assertIncludes('route gate checks profile base_language', appSource, '!profile.base_language?.trim()')
+// The gate keys on the TARGET language: base_language carries a DB default
+// ('English'), so a gate on it can never fire — that exact bug shipped
+// onboarding as dead code until 2026-07-27.
+assertIncludes('route gate checks profile target_language', appSource, '!profile.target_language?.trim()')
+assertNotIncludes('route gate must not key on base_language (DB default makes it dead)', appSource, '!profile.base_language?.trim()')
+assertIncludes('route gate honors the local chosen-target fallback (pre-migration devices)', appSource, 'hasLocallyChosenTargetLanguage(session.user.id)')
 assertIncludes('route gate redirects missing-language users to onboarding', appSource, '<Navigate to="/onboarding" replace')
 
 const publicRouteStart = appSource.indexOf('function PublicRoute()')
@@ -73,7 +78,11 @@ assertNotIncludes('Login does not fetch current user for onboarding routing', lo
 process.stdout.write('\n[onboarding completion contract]\n')
 assertIncludes('Onboarding writes selected base_language to profile', onboardingSource, 'update({ base_language: selectedLanguage })')
 assertIncludes('Onboarding refreshes profile after base_language update', onboardingSource, 'await refreshProfile()')
-assertIncludes('Onboarding still finishes to dashboard after profile update flow', onboardingSource, "navigate('/dashboard')")
+assertIncludes('Onboarding persists the target language to the profile', onboardingSource, 'update({ target_language: selectedTarget })')
+assertIncludes('Onboarding closes the gate locally even if the profile write fails', onboardingSource, 'markTargetLanguageChosen(user.id)')
+assertIncludes('Onboarding seeds the canonical active language', onboardingSource, 'setActiveLanguage(selectedTarget)')
+assertIncludes('Onboarding finishes with a replace navigation (no back-into-onboarding)', onboardingSource, 'navigate(destination, { replace: true })')
+assertIncludes('Onboarding honors the deep-link a user was heading to', onboardingSource, 'location.state')
 assertIncludes('oauth onboarding contract script is runnable from package.json', packageSource, 'test:oauth-onboarding')
 
 process.stdout.write(`\n${passes} passed, ${failures} failed\n`)

@@ -6,7 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { filterLemmaStatesForQueue, isStudyQueue, type StudyQueue } from '@/hooks/useStudySession'
 import { useWordStates } from '@/hooks/useWordStates'
 import { supabase } from '@/lib/supabase'
-import { canonicalizeLanguageValue } from '@/lib/languages'
+import { canonicalizeLanguageValue, isLatinScriptLanguage } from '@/lib/languages'
 import { getScriptsForLanguage } from '@/lib/scriptlab/registry'
 import imageIcon from '@/assets/study-mode-icons/video.webp'
 import cardsIcon from '@/assets/study-mode-icons/cards.webp'
@@ -141,7 +141,10 @@ export default function StudyModeSelector() {
   }, [user, scopeDeckIds, queueWordIds])
 
   const visibleModes = MODES.filter((mode) => {
-    if (mode.key === 'text' || mode.key === 'type' || mode.key === 'canvas') return true
+    if (mode.key === 'text' || mode.key === 'canvas') return true
+    // Typed recall is Latin-script-only: the matcher can't honestly grade
+    // Hangul/kana/Cyrillic and testers may have no way to type them at all.
+    if (mode.key === 'type') return isLatinScriptLanguage(selectedDeck?.target_language ?? activeLanguage)
     if (mode.key === 'image') return hasImages
     if (mode.key === 'audio') return hasAudio
     return false
