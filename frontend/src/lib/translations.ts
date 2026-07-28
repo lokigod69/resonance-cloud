@@ -61,6 +61,7 @@ export type TranslationFn = ReturnType<typeof createT>;
 export type SpeakApiErrorPayload = {
   error?: unknown;
   detail?: unknown;
+  code?: unknown;
   retry_after_seconds?: unknown;
 };
 
@@ -103,6 +104,10 @@ export function formatSpeakApiError(
   payload: SpeakApiErrorPayload | null,
   fallbackKey = 'speak.error.requestFailed',
 ): string {
+  const code = getErrorText(payload?.code);
+  if (code === 'speak_trial_exhausted') return t('speak.trialExhausted');
+  if (code === 'speak_allowance_exhausted') return t('speak.allowanceExhausted');
+
   if (isSpeakLimitError(status, payload)) {
     const retryAfter = formatSpeakRetryAfter(t, payload?.retry_after_seconds);
     return retryAfter
@@ -206,6 +211,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     'plans.feature.songs': 'AI song generation',
     'plans.comingSoon': 'Subscriptions are coming soon — everything here stays free during the beta.',
     'plans.alreadySubscribed': 'You already have an active subscription. Plan changes are coming soon.',
+    'speak.minutesLeft': '{count} min',
+    'speak.minutesLeftTitle': 'Speak minutes remaining this period',
+    'speak.trialExhausted': 'Your free Speak trial minute is used up — see Plans for more.',
+    'speak.allowanceExhausted': 'Your Speak minutes are used up for this period — they refresh at renewal.',
     'music.premiumRequired': 'Song generation is a Premium feature — see Plans.',
     'music.insufficientCredits': 'Not enough credits for a song (10 needed).',
 
@@ -1900,6 +1909,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     'plans.feature.songs': 'KI-Song-Generierung',
     'plans.comingSoon': 'Abos kommen bald — während der Beta bleibt hier alles kostenlos.',
     'plans.alreadySubscribed': 'Du hast bereits ein aktives Abo. Tarifwechsel kommen bald.',
+    'speak.minutesLeft': '{count} Min.',
+    'speak.minutesLeftTitle': 'Verbleibende Speak-Minuten in diesem Zeitraum',
+    'speak.trialExhausted': 'Deine kostenlose Speak-Probeminute ist aufgebraucht — mehr unter Tarife.',
+    'speak.allowanceExhausted': 'Deine Speak-Minuten sind für diesen Zeitraum aufgebraucht — sie erneuern sich zur Verlängerung.',
     'music.premiumRequired': 'Songs sind ein Premium-Feature — siehe Tarife.',
     'music.insufficientCredits': 'Nicht genug Credits für einen Song (10 nötig).',
 
@@ -3594,6 +3607,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     'plans.feature.songs': 'Génération de chansons IA',
     'plans.comingSoon': 'Les abonnements arrivent bientôt — tout reste gratuit pendant la bêta.',
     'plans.alreadySubscribed': 'Tu as déjà un abonnement actif. Le changement de formule arrive bientôt.',
+    'speak.minutesLeft': '{count} min',
+    'speak.minutesLeftTitle': 'Minutes Speak restantes pour cette période',
+    'speak.trialExhausted': 'Ta minute d\'essai Speak gratuite est épuisée — voir Formules pour continuer.',
+    'speak.allowanceExhausted': 'Tes minutes Speak sont épuisées pour cette période — elles se renouvellent à l\'échéance.',
     'music.premiumRequired': 'Les chansons sont une fonction Premium — voir Formules.',
     'music.insufficientCredits': 'Pas assez de crédits pour une chanson (10 requis).',
 

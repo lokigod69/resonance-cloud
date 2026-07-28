@@ -42,6 +42,14 @@ interface VoiceChatResponse {
   ai_text: string
   audio_base64: string
   audio_format: string
+  speak_allowance?: SpeakAllowance | null
+}
+
+/** Per-plan Speak allowance echoed by /api/voice-chat (null for admins). */
+export interface SpeakAllowance {
+  plan: string
+  limit_seconds: number
+  remaining_seconds: number
 }
 
 export type SpeakProvider = 'voxtral' | 'gemini' | 'grok'
@@ -64,6 +72,7 @@ export interface UseVoiceTutorReturn {
   messages: TutorMessage[]
   endedMessages: TutorMessage[]
   error: string | null
+  speakAllowance: SpeakAllowance | null
   isSupported: boolean
   pendingAudio: { base64: string; format: string } | null
   startRecording: () => Promise<void>
@@ -202,6 +211,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const [messages, setMessages] = useState<TutorMessage[]>([])
   const [endedMessages, setEndedMessages] = useState<TutorMessage[]>([])
   const [error, setError] = useState<string | null>(null)
+  const [speakAllowance, setSpeakAllowance] = useState<SpeakAllowance | null>(null)
   const [pendingAudio, setPendingAudio] = useState<{ base64: string; format: string } | null>(null)
   const [showLevelPicker, setShowLevelPicker] = useState(false)
   const [conversationId, setConversationId] = useState<string | null>(null)
@@ -486,12 +496,17 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
           status: res.status,
           error: errJson?.error,
           detail: errJson?.detail,
+          code: errJson?.code,
           retry_after_seconds: errJson?.retry_after_seconds,
         })
         throw new Error(formatSpeakApiError(t, res.status, errJson))
       }
 
-      return res.json()
+      const json = await res.json() as VoiceChatResponse
+      if (json.speak_allowance) {
+        setSpeakAllowance(json.speak_allowance)
+      }
+      return json
     },
     [t],
   )
@@ -1475,6 +1490,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     messages,
     endedMessages,
     error,
+    speakAllowance,
     isSupported,
     pendingAudio,
     playPendingAudio,

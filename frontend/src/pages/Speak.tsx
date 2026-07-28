@@ -1400,6 +1400,17 @@ export default function Speak() {
             </div>
           </div>
 
+          {/* Remaining Speak minutes for metered plans — appears after the
+              first turn reports the allowance; admins never receive one. */}
+          {tutor.speakAllowance && (
+            <span
+              className="shrink-0 rounded-full bg-[var(--accent-soft)] px-2.5 py-1 text-xs font-medium text-[var(--text-primary)]"
+              title={t('speak.minutesLeftTitle')}
+            >
+              {t('speak.minutesLeft', { count: Math.ceil(tutor.speakAllowance.remaining_seconds / 60) })}
+            </span>
+          )}
+
           {/* Quick mute toggle for the tutor's auto-speak — kept as a bare
               icon so the header stays uncluttered. Only shown for TTS tutors;
               the Grok live header is a separate block and never renders this. */}
