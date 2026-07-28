@@ -142,7 +142,7 @@ for (const relPath of [
   'src/hooks/useVoiceTutor.ts',
   'src/hooks/useRegenerateImagelessTts.ts',
   'src/hooks/useTranslateAndIpa.ts',
-  'src/components/RedeemCodeDialog.tsx',
+  'src/pages/PlansPage.tsx',
   'src/components/generate/steps/CategoryPicker.tsx',
   'src/components/speak/VoiceSampleButton.tsx',
   'src/components/speak/SpeakHistoryPanel.tsx',
@@ -163,10 +163,15 @@ assertNotIncludes(login, 'window.location.origin', 'src/pages/Login.tsx')
 assertIncludes(login, 'getPublicWebUrl', 'src/pages/Login.tsx')
 assertIncludes(login, "redirectTo: getPublicWebUrl('/reset-password')", 'src/pages/Login.tsx')
 
+// Checkout moved from RedeemCodeDialog to /plans (2026-07-28 tier batch).
+// The dialog only links to the page and must hide that link on native; the
+// page itself must never render checkout buttons on native (App Review 3.1.1).
 const redeemCodeDialog = read('src/components/RedeemCodeDialog.tsx')
-assertIncludes(redeemCodeDialog, '@capacitor/browser', 'src/components/RedeemCodeDialog.tsx')
 assertIncludes(redeemCodeDialog, 'isNativeApp', 'src/components/RedeemCodeDialog.tsx')
-assertIncludes(redeemCodeDialog, 'Browser.open({ url: payload.url })', 'src/components/RedeemCodeDialog.tsx')
+assertNotIncludes(redeemCodeDialog, 'create-checkout-session', 'src/components/RedeemCodeDialog.tsx')
+const plansPage = read('src/pages/PlansPage.tsx')
+assertIncludes(plansPage, 'isNativeApp', 'src/pages/PlansPage.tsx')
+assertIncludes(plansPage, 'if (native) return', 'src/pages/PlansPage.tsx')
 
 const deepLinks = read('src/hooks/useCapacitorDeepLinks.ts')
 assertIncludes(deepLinks, "App.addListener('appUrlOpen'", 'src/hooks/useCapacitorDeepLinks.ts')

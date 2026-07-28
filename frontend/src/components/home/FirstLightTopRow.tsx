@@ -7,6 +7,7 @@ import { useDialogs } from '@/contexts/DialogContext'
 import { useAuth } from '@/hooks/useAuth'
 import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { useTranslation } from '@/hooks/useTranslation'
+import { totalCredits } from '@/lib/credits'
 
 // FirstLightTopRow — brand · language pill · credits · avatar (§3).
 // The sky's one chrome row on mobile. No streak flame (locked out of D-02);
@@ -33,7 +34,7 @@ export default function FirstLightTopRow({ languages, activeLanguage, onSelectLa
     .join('')
     .toUpperCase()
     .slice(0, 2)
-  const credits = typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0
+  const credits = typeof profile?.credits === 'number' ? totalCredits(profile) : profileLoading ? '...' : 0
 
   // `.language-picker` carries the classic dashboard's stack spacing (a
   // dvh-scaled margin-bottom). Inside a centered flex row that margin lifts

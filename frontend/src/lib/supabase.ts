@@ -49,6 +49,9 @@ export type Profile = {
   target_language?: string | null
   role: 'learner' | 'admin'
   credits: number
+  /** Current-period subscription credit grant (resets each renewal, spent before
+   * credits). Optional until migration 20260728090000 is applied. */
+  plan_credits?: number | null
   new_words_per_day?: number | null
   seen_tutorials: Record<string, string | null>
   theme?: string
@@ -64,6 +67,7 @@ export type AuthProfile = Pick<
   | 'target_language'
   | 'role'
   | 'credits'
+  | 'plan_credits'
   | 'new_words_per_day'
   | 'seen_tutorials'
   | 'avatar_path'

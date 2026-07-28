@@ -48,6 +48,7 @@ import { useGenerateImagelessTts } from '@/hooks/useGenerateImagelessTts'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 import { canonicalizeLanguageValue, getLanguageCode, isBetaTargetLanguage } from '@/lib/languages'
+import { totalCredits } from '@/lib/credits'
 
 /* ─── Constants ─────────────────────────────────── */
 
@@ -299,7 +300,7 @@ export default function GeneratePG() {
         user.id,
         payload,
         existingDeck ?? undefined,
-        { cachedCredits: profile?.credits },
+        { cachedCredits: totalCredits(profile) },
       )
 
       await refreshProfile()
@@ -516,7 +517,7 @@ export default function GeneratePG() {
             <StepReview
               state={state}
               dispatch={dispatch}
-              credits={profile?.credits}
+              credits={totalCredits(profile)}
               onSubmit={() => handleGenerate()}
               submitting={submitting}
               error={error}
@@ -549,7 +550,7 @@ export default function GeneratePG() {
             <StepReview
               state={state}
               dispatch={dispatch}
-              credits={profile?.credits}
+              credits={totalCredits(profile)}
               onSubmit={() => handleGenerate()}
               submitting={submitting}
               error={error}

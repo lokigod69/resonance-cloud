@@ -6,6 +6,7 @@ import { useDialogs } from '@/contexts/DialogContext'
 import { useAuth } from '@/hooks/useAuth'
 import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { useTranslation } from '@/hooks/useTranslation'
+import { totalCredits } from '@/lib/credits'
 
 type HomeAccountStripProps = {
   // Day streak shown as a compact chip in the strip's left column — the header
@@ -25,7 +26,7 @@ export function HomeAccountStrip({ streak = 0 }: HomeAccountStripProps) {
     .join('')
     .toUpperCase()
     .slice(0, 2)
-  const credits = typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0
+  const credits = typeof profile?.credits === 'number' ? totalCredits(profile) : profileLoading ? '...' : 0
 
   return (
     <div className="home-account-strip grid md:hidden" aria-label="Account controls">

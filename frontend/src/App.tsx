@@ -32,6 +32,7 @@ const RedeemCodeDialog = lazyWithRetry(
   () => import('@/components/RedeemCodeDialog').then((mod) => ({ default: mod.RedeemCodeDialog })),
   'redeem-code-dialog',
 )
+const PlansPage = lazyWithRetry(() => import('@/pages/PlansPage'), 'plans-page')
 const ResetPassword = lazyWithRetry(routeImports.resetPassword, 'reset-password')
 const Onboarding = lazyWithRetry(routeImports.onboarding, 'onboarding')
 const SharePage = lazyWithRetry(routeImports.sharePage, 'share-page')
@@ -245,6 +246,7 @@ function AppRoutes() {
             <Route path="/alphabet/:scriptId" element={<ScriptLab />} />
             <Route path="/music" element={<MusicPG />} />
             <Route path="/speak" element={<Speak />} />
+            <Route path="/plans" element={<PlansPage />} />
           </Route>
         ) : (
           <Route element={<AppLayout />}>
@@ -269,6 +271,7 @@ function AppRoutes() {
             <Route path="/alphabet/:scriptId" element={<ScriptLab />} />
             <Route path="/music" element={<Music />} />
             <Route path="/speak" element={<Speak />} />
+            <Route path="/plans" element={<PlansPage />} />
           </Route>
         )}
 

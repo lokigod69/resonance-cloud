@@ -81,6 +81,14 @@ export function GenerateSongModal({
         idempotencyKey,
       })
       if (!result.success) {
+        if (result.error === 'premium_required') {
+          toast(t('music.premiumRequired'), 'error')
+          return
+        }
+        if (result.error === 'insufficient_credits') {
+          toast(t('music.insufficientCredits'), 'error')
+          return
+        }
         throw new Error(result.error || t('music.songRequestFailed'))
       }
       onSubmitted(track.id, result.status === 'processing' ? 'processing' : 'pending')

@@ -52,9 +52,10 @@ const GEMINI_FLASH_LITE_VISION_OUTPUT_USD_PER_MTOKEN = 0.4
 // Source: https://openrouter.ai/mistralai/voxtral-mini-tts-2603 — verified 2026-06-19.
 const VOXTRAL_TTS_USD_PER_MCHAR = 16
 
-// xAI grok realtime — USD per minute of connected session (for speak_grok_session
-// rows; not written by the call sites in this change, kept here for one-place edits).
-export const GROK_REALTIME_USD_PER_MINUTE = 0.05 // UNVERIFIED — xAI realtime, estimate 2026-06-19
+// xAI Grok Voice Agent API — flat USD per minute of connected audio.
+// Source: x.ai/news/grok-voice-agent-api ("a simple flat rate of $0.05 per
+// minute of audio duration") — VERIFIED 2026-07-28.
+export const GROK_REALTIME_USD_PER_MINUTE = 0.05
 
 // ── Usage shapes ─────────────────────────────────────────────────────────────
 

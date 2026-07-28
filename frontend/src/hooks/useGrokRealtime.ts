@@ -1364,11 +1364,20 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     }
   }, [])
 
+  // One Live session is billed server-side as a 10-minute block at token mint
+  // (the client secret's TTL). The session ends itself when that block is up,
+  // so what the user experiences matches what was debited.
+  const sessionTimerRef = useRef<number | null>(null)
+
   const teardownSession = useCallback(async () => {
     if (teardownPromiseRef.current) return teardownPromiseRef.current
 
     const teardownPromise = (async () => {
       endingSessionRef.current = true
+      if (sessionTimerRef.current !== null) {
+        window.clearTimeout(sessionTimerRef.current)
+        sessionTimerRef.current = null
+      }
       const closingConversationId = conversationIdRef.current
       const ws = wsRef.current
 
@@ -1773,6 +1782,10 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
     try {
       await connectAndConfigure(params)
+      sessionTimerRef.current = window.setTimeout(() => {
+        sessionTimerRef.current = null
+        void teardownSessionRef.current()
+      }, 10 * 60 * 1000)
     } catch (err) {
       console.warn('[grok-realtime] Session connection failed:', err)
       if (mountedRef.current) {

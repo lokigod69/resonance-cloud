@@ -1,8 +1,6 @@
-type StripeBillingConfig = {
+type StripeCoreConfig = {
   secretKey: string
   webhookSecret: string
-  priceId: string
-  subscriptionCredits: number
 }
 
 type MetadataCarrier = {
@@ -21,31 +19,10 @@ function requiredEnv(name: string): string {
   return value
 }
 
-function parsePositiveInteger(name: string, raw: string | undefined): number {
-  const parsed = Number(raw)
-  if (!Number.isInteger(parsed) || parsed <= 0) {
-    throw new Error(`${name} must be a positive integer`)
-  }
-  return parsed
-}
-
-function requiredStripePriceId(): string {
-  const value = requiredEnv('STRIPE_PRICE_ID')
-  if (!value.startsWith('price_')) {
-    throw new Error('STRIPE_PRICE_ID must be a recurring Stripe Price API ID starting with price_, not a prod_ product ID')
-  }
-  return value
-}
-
-export function loadStripeBillingConfig(): StripeBillingConfig {
+export function loadStripeCoreConfig(): StripeCoreConfig {
   return {
     secretKey: requiredEnv('STRIPE_SECRET_KEY'),
     webhookSecret: requiredEnv('STRIPE_WEBHOOK_SECRET'),
-    priceId: requiredStripePriceId(),
-    subscriptionCredits: parsePositiveInteger(
-      'SUBSCRIPTION_CREDITS',
-      process.env.SUBSCRIPTION_CREDITS,
-    ),
   }
 }
 
@@ -57,7 +34,13 @@ export function buildRefundCreditIdempotencyKey(chargeId: string, refundId: stri
   return `stripe:refund:${chargeId}:${refundId}`
 }
 
-export function getSubscriptionCredits(source: MetadataCarrier): number {
+/**
+ * Credit amount for subscriptions created by the pre-tier single-price flow
+ * (STRIPE_PRICE_ID + SUBSCRIPTION_CREDITS). Returns null when neither the
+ * Stripe metadata nor the legacy env var supplies a positive integer — the
+ * caller then skips the legacy grant instead of crashing the webhook.
+ */
+export function legacySubscriptionCredits(source: MetadataCarrier): number | null {
   const metadataCredits = source.metadata?.subscription_credits
   if (metadataCredits !== undefined && metadataCredits !== null) {
     const parsedMetadataCredits = Number(metadataCredits)
@@ -66,7 +49,12 @@ export function getSubscriptionCredits(source: MetadataCarrier): number {
     }
   }
 
-  return parsePositiveInteger('SUBSCRIPTION_CREDITS', process.env.SUBSCRIPTION_CREDITS)
+  const envCredits = Number(process.env.SUBSCRIPTION_CREDITS)
+  if (Number.isInteger(envCredits) && envCredits > 0) {
+    return envCredits
+  }
+
+  return null
 }
 
 export function stripeObjectId(value: string | IdCarrier | null | undefined): string | null {

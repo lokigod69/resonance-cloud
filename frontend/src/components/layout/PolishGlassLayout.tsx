@@ -8,6 +8,7 @@ import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
+import { totalCredits } from '@/lib/credits'
 import { MobileBottomNav } from './MobileBottomNav'
 import { getPrimaryNavItems, isPrimaryNavItemActive } from './primaryNav'
 
@@ -79,7 +80,7 @@ export default function PolishGlassLayout() {
             className="theme-chip flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
           >
             <Coins className="h-3.5 w-3.5" />
-            <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
+            <span>{typeof profile?.credits === 'number' ? totalCredits(profile) : profileLoading ? '...' : 0}</span>
           </button>
           <button
             onClick={() => setProfileOpen(true)}

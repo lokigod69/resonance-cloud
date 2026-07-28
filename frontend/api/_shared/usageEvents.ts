@@ -36,6 +36,8 @@ export interface UsageEventInput {
   tokensOut?: number | null
   chars?: number | null
   audioSeconds?: number | null
+  /** Wall-clock session duration (grok realtime); fills the session_seconds column. */
+  sessionSeconds?: number | null
   images?: number | null
   latencyMs?: number | null
   errorType?: string | null
@@ -93,6 +95,7 @@ export async function writeUsageEvent(input: UsageEventInput): Promise<void> {
       tokens_out: input.tokensOut ?? null,
       chars: input.chars ?? null,
       audio_seconds: input.audioSeconds ?? null,
+      session_seconds: input.sessionSeconds ?? null,
       images: input.images ?? null,
       error_type: input.errorType ?? null,
       request_id: input.requestId ?? null,

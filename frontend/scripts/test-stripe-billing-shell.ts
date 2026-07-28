@@ -9,9 +9,16 @@ import { isBillingSandboxEnabled, isBillingTester } from '../src/lib/billingFlag
 const {
   buildInvoiceCreditIdempotencyKey,
   buildRefundCreditIdempotencyKey,
-  getSubscriptionCredits,
-  loadStripeBillingConfig,
+  legacySubscriptionCredits,
+  loadStripeCoreConfig,
 } = stripeBilling
+const {
+  loadStripePriceId,
+  planFromPriceId,
+  isPaidPlanId,
+  isPlanInterval,
+  PLAN_GRANTS,
+} = await import('../api/_shared/planCatalog.ts')
 const { getAllowedOrigin } = await import('../api/_shared/cors.ts')
 const {
   isBillingAllowedForCheckout,
@@ -61,44 +68,55 @@ try {
   resetEnv({
     STRIPE_SECRET_KEY: 'sk_test_unit',
     STRIPE_WEBHOOK_SECRET: 'whsec_unit',
-    STRIPE_PRICE_ID: 'price_monthly_unit',
-    SUBSCRIPTION_CREDITS: '1250',
   })
 
-  const config = loadStripeBillingConfig()
+  const config = loadStripeCoreConfig()
   assert.equal(config.secretKey, 'sk_test_unit')
   assert.equal(config.webhookSecret, 'whsec_unit')
-  assert.equal(config.priceId, 'price_monthly_unit')
-  assert.equal(config.subscriptionCredits, 1250)
 
+  resetEnv({ STRIPE_SECRET_KEY: 'sk_test_unit', STRIPE_WEBHOOK_SECRET: '' })
+  assert.throws(() => loadStripeCoreConfig(), /STRIPE_WEBHOOK_SECRET is required/)
+
+  // Four tier prices resolve by env and map back to plan+interval.
   resetEnv({
-    STRIPE_SECRET_KEY: 'sk_test_unit',
-    STRIPE_WEBHOOK_SECRET: 'whsec_unit',
-    STRIPE_PRICE_ID: 'price_monthly_unit',
-    SUBSCRIPTION_CREDITS: 'not-a-number',
+    STRIPE_PRICE_STANDARD_MONTHLY: 'price_std_m',
+    STRIPE_PRICE_STANDARD_WEEKLY: 'price_std_w',
+    STRIPE_PRICE_PREMIUM_MONTHLY: 'price_prem_m',
+    STRIPE_PRICE_PREMIUM_WEEKLY: 'price_prem_w',
   })
+  assert.equal(loadStripePriceId('standard', 'month'), 'price_std_m')
+  assert.equal(loadStripePriceId('premium', 'week'), 'price_prem_w')
+  assert.deepEqual(planFromPriceId('price_std_w'), { plan: 'standard', interval: 'week' })
+  assert.deepEqual(planFromPriceId('price_prem_m'), { plan: 'premium', interval: 'month' })
+  assert.equal(planFromPriceId('price_unknown'), null)
+  assert.equal(planFromPriceId(null), null)
+
+  resetEnv({ STRIPE_PRICE_STANDARD_MONTHLY: 'prod_wrong' })
   assert.throws(
-    () => loadStripeBillingConfig(),
-    /SUBSCRIPTION_CREDITS must be a positive integer/,
+    () => loadStripePriceId('standard', 'month'),
+    /must be a recurring Stripe Price API ID/,
   )
+  resetEnv({})
+  assert.throws(() => loadStripePriceId('premium', 'month'), /STRIPE_PRICE_PREMIUM_MONTHLY is required/)
 
-  resetEnv({
-    STRIPE_SECRET_KEY: 'sk_test_unit',
-    STRIPE_WEBHOOK_SECRET: 'whsec_unit',
-    STRIPE_PRICE_ID: 'prod_unit_wrong',
-    SUBSCRIPTION_CREDITS: '1000',
-  })
-  assert.throws(
-    () => loadStripeBillingConfig(),
-    /STRIPE_PRICE_ID must be a recurring Stripe Price API ID/,
-  )
+  assert.equal(isPaidPlanId('standard'), true)
+  assert.equal(isPaidPlanId('free'), false)
+  assert.equal(isPlanInterval('week'), true)
+  assert.equal(isPlanInterval('year'), false)
 
-  resetEnv({
-    STRIPE_SECRET_KEY: 'sk_test_unit',
-    STRIPE_WEBHOOK_SECRET: 'whsec_unit',
-    STRIPE_PRICE_ID: 'price_monthly_unit',
-    SUBSCRIPTION_CREDITS: '1000',
-  })
+  // Locked 2026-07-28 prices/grants stay locked (weekly grants = quarter monthly).
+  assert.equal(PLAN_GRANTS.standard.month.priceUsd, 7.99)
+  assert.equal(PLAN_GRANTS.standard.week.priceUsd, 2.99)
+  assert.equal(PLAN_GRANTS.premium.month.priceUsd, 14.99)
+  assert.equal(PLAN_GRANTS.premium.week.priceUsd, 4.99)
+  assert.equal(PLAN_GRANTS.standard.month.credits, 100)
+  assert.equal(PLAN_GRANTS.premium.month.credits, 300)
+  assert.equal(PLAN_GRANTS.standard.week.credits, PLAN_GRANTS.standard.month.credits / 4)
+  assert.equal(PLAN_GRANTS.premium.week.speakSeconds, PLAN_GRANTS.premium.month.speakSeconds / 4)
+  assert.equal(PLAN_GRANTS.standard.month.liveMinutes, 0)
+  assert.equal(PLAN_GRANTS.premium.month.liveMinutes, 60)
+
+  resetEnv({ SUBSCRIPTION_CREDITS: '1000' })
 
   assert.equal(
     buildInvoiceCreditIdempotencyKey('in_unit_123'),
@@ -109,9 +127,11 @@ try {
     'stripe:refund:ch_unit_123:re_unit_456',
   )
 
-  assert.equal(getSubscriptionCredits({ metadata: { subscription_credits: '2500' } }), 2500)
-  assert.equal(getSubscriptionCredits({ metadata: {} }), 1000)
-  assert.equal(getSubscriptionCredits({ metadata: { subscription_credits: '-1' } }), 1000)
+  assert.equal(legacySubscriptionCredits({ metadata: { subscription_credits: '2500' } }), 2500)
+  assert.equal(legacySubscriptionCredits({ metadata: {} }), 1000)
+  assert.equal(legacySubscriptionCredits({ metadata: { subscription_credits: '-1' } }), 1000)
+  resetEnv({ SUBSCRIPTION_CREDITS: '' })
+  assert.equal(legacySubscriptionCredits({ metadata: {} }), null)
 
   assert.equal(getAllowedOrigin(requestFromOrigin('https://resonanz.pro')), 'https://resonanz.pro')
   assert.equal(getAllowedOrigin(requestFromOrigin('https://www.resonanz.pro')), 'https://www.resonanz.pro')
@@ -174,6 +194,20 @@ try {
         id: '11111111-1111-4111-8111-111111111111',
         appMetadata: {},
         userMetadata: { is_test_user: true },
+      },
+      fakeAdminRolesClient(false),
+    ),
+    true,
+  )
+
+  // The production switch opens checkout to everyone signed in.
+  resetEnv({ STRIPE_BILLING_ENABLED: 'true', STRIPE_BILLING_SANDBOX_ENABLED: 'false' })
+  assert.equal(
+    await isBillingAllowedForCheckout(
+      {
+        id: '11111111-1111-4111-8111-111111111111',
+        appMetadata: {},
+        userMetadata: {},
       },
       fakeAdminRolesClient(false),
     ),

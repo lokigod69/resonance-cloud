@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Browser } from '@capacitor/browser'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import {
@@ -12,9 +12,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Coins, Check, Gift, CreditCard } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
-import { isBillingTester } from '@/lib/billingFlags'
-import { publicApiUrl } from '@/lib/publicOrigins'
 import { isNativeApp } from '@/lib/platform'
+import { totalCredits } from '@/lib/credits'
 
 export function RedeemCodeDialog({
   open,
@@ -25,15 +24,15 @@ export function RedeemCodeDialog({
 }) {
   const { user, profile, profileLoading, refreshProfile } = useAuth()
   const { t } = useTranslation()
+  const navigate = useNavigate()
 
   const [inviteCode, setInviteCode] = useState('')
   const [redeeming, setRedeeming] = useState(false)
-  const [checkoutLoading, setCheckoutLoading] = useState(false)
   const [redeemError, setRedeemError] = useState<string | null>(null)
-  const [checkoutError, setCheckoutError] = useState<string | null>(null)
   const [redeemSuccess, setRedeemSuccess] = useState<{ credits: number } | null>(null)
-  const creditCount = typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0
-  const billingAvailable = isBillingTester(user, profile)
+  const creditCount = typeof profile?.credits === 'number' ? totalCredits(profile) : profileLoading ? '...' : 0
+  // Subscriptions are web-only (App Review 3.1.1) — the plans door hides on native.
+  const plansAvailable = !isNativeApp()
 
   async function handleRedeem() {
     if (!inviteCode.trim() || !user) return
@@ -66,56 +65,19 @@ export function RedeemCodeDialog({
     }
   }
 
-  async function handleSubscribe() {
-    if (!user) return
-    setCheckoutLoading(true)
-    setCheckoutError(null)
-
-    try {
-      const { data: sessionData } = await supabase.auth.getSession()
-      const token = sessionData.session?.access_token
-      if (!token) {
-        setCheckoutError('Please sign in again before starting checkout.')
-        return
-      }
-
-      const response = await fetch(publicApiUrl('/api/create-checkout-session'), {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({}),
-      })
-      const payload = await response.json().catch(() => null) as { url?: string; error?: string } | null
-
-      if (!response.ok || !payload?.url) {
-        setCheckoutError(payload?.error || 'Checkout is not available right now.')
-        return
-      }
-
-      if (isNativeApp()) {
-        await Browser.open({ url: payload.url })
-      } else {
-        window.location.href = payload.url
-      }
-    } catch (error) {
-      console.error('Stripe checkout failed:', error)
-      setCheckoutError('Checkout is not available right now.')
-    } finally {
-      setCheckoutLoading(false)
-    }
-  }
-
   function handleClose(open: boolean) {
     if (!open) {
       // Reset state when closing
       setInviteCode('')
       setRedeemError(null)
-      setCheckoutError(null)
       setRedeemSuccess(null)
     }
     onOpenChange(open)
+  }
+
+  function handleViewPlans() {
+    onOpenChange(false)
+    navigate('/plans')
   }
 
   return (
@@ -134,25 +96,17 @@ export function RedeemCodeDialog({
           </div>
         </div>
 
-        {/* Subscription sandbox - only shown to billing testers */}
-        {billingAvailable && (
+        {/* Plans & subscription — web only */}
+        {plansAvailable && (
           <div className="space-y-3 border-t border-border pt-4">
-            <div className="flex items-center justify-center gap-2 text-sm font-medium">
-              <CreditCard className="h-4 w-4" />
-              Subscription
-            </div>
-            <div className="space-y-2">
-              <Button
-                className="w-full"
-                onClick={handleSubscribe}
-                disabled={checkoutLoading}
-              >
-                {checkoutLoading ? 'Opening checkout...' : 'Subscribe with Stripe Sandbox'}
-              </Button>
-              {checkoutError && (
-                <p className="text-sm text-destructive text-center">{checkoutError}</p>
-              )}
-            </div>
+            <Button
+              variant="secondary"
+              className="w-full"
+              onClick={handleViewPlans}
+            >
+              <CreditCard className="mr-2 h-4 w-4" />
+              {t('credits.viewPlans')}
+            </Button>
           </div>
         )}
 

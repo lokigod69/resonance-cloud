@@ -12,6 +12,19 @@ import { corsHeaders, optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit, sanitizedProviderError } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
+import {
+  consumeFeatureAllowance,
+  getFeatureUsed,
+  recordFeatureUsage,
+  resolveEntitlements,
+  type UserEntitlements,
+} from './_shared/entitlements'
+
+// Audio-less turns (greeting, roleplay text) still spend LLM + TTS, so they
+// debit a flat charge against the Speak allowance instead of slipping through
+// unmetered (review finding 2026-07-28). 15s ≈ the provider cost of a typical
+// spoken turn of that length.
+const NO_AUDIO_TURN_BILLABLE_SECONDS = 15
 import { writeUsageEvent } from './_shared/usageEvents'
 import {
   groqLlmCost, groqSttCost, geminiTtsCost, voxtralTtsCost,
@@ -680,12 +693,32 @@ If no errors: {"corrections": []}`
 export async function POST(req: Request): Promise<Response> {
   let body: RequestBody & { mode?: string; transcript?: Array<{ role: string; content: string }>; message?: string }
   let userId = ''
+  let entitlements: UserEntitlements | null = null
+  let speakSecondsUsedBefore = 0
   try {
     const user = await requireSupabaseUser(req)
     userId = user.id
     const rawBody = await readJsonWithLimit<unknown>(req, VOICE_CHAT_BODY_MAX_BYTES)
     body = validateVoiceBody(rawBody)
     await consumeApiQuota(user.id, 'voice_chat')
+
+    // Speak-minute allowance (free: lifetime trial; paid: per-period grant).
+    // Corrections mode is a post-session text review — never gated, so a learner
+    // who ran out mid-conversation can still collect their feedback.
+    if (body.mode !== 'corrections') {
+      entitlements = await resolveEntitlements(user.id)
+      if (!entitlements.isAdmin) {
+        speakSecondsUsedBefore = await getFeatureUsed(user.id, 'speak_seconds', entitlements.periodKey)
+        if (speakSecondsUsedBefore >= entitlements.grants.speakSeconds) {
+          throw new ApiError(403, 'Speak allowance is used up', {
+            code: entitlements.plan === 'free' ? 'speak_trial_exhausted' : 'speak_allowance_exhausted',
+            plan: entitlements.plan,
+            used_seconds: Math.round(speakSecondsUsedBefore),
+            limit_seconds: entitlements.grants.speakSeconds,
+          })
+        }
+      }
+    }
   } catch (err) {
     if (err instanceof ApiError) return apiErrorResponse(req, err)
     console.error('[voice-chat] Request gate failed:', err instanceof Error ? err.message : err)
@@ -759,6 +792,37 @@ export async function POST(req: Request): Promise<Response> {
     const sttJson = await sttRes.json() as { text?: string; duration?: number }
     user_text = sttJson.text?.trim() ?? ''
     if (typeof sttJson.duration === 'number') sttDurationSeconds = sttJson.duration
+  }
+
+  // ── Step 1b: Debit the Speak allowance atomically, BEFORE LLM/TTS spend ────
+  // Ceiling = allowance + this turn, so a turn that starts with remaining > 0
+  // may cross the boundary once, but concurrent or oversized turns cannot run
+  // away (the next request is denied by ceiling and pre-check alike).
+  const billableSeconds = sttDurationSeconds && sttDurationSeconds > 0
+    ? sttDurationSeconds
+    : NO_AUDIO_TURN_BILLABLE_SECONDS
+  let speakSecondsUsedAfter: number | null = null
+  if (entitlements) {
+    if (entitlements.isAdmin) {
+      await recordFeatureUsage(userId, 'speak_seconds', entitlements.periodKey, billableSeconds)
+    } else {
+      const debit = await consumeFeatureAllowance(
+        userId,
+        'speak_seconds',
+        entitlements.periodKey,
+        billableSeconds,
+        entitlements.grants.speakSeconds + billableSeconds,
+      )
+      if (!debit.allowed) {
+        return apiErrorResponse(req, new ApiError(403, 'Speak allowance is used up', {
+          code: entitlements.plan === 'free' ? 'speak_trial_exhausted' : 'speak_allowance_exhausted',
+          plan: entitlements.plan,
+          used_seconds: Math.round(debit.used),
+          limit_seconds: entitlements.grants.speakSeconds,
+        }))
+      }
+      speakSecondsUsedAfter = debit.used
+    }
   }
 
   // ── Step 2: Build LLM messages ─────────────────────────────────────────────
@@ -1000,6 +1064,18 @@ export async function POST(req: Request): Promise<Response> {
     },
   })
 
+  // The allowance was debited in Step 1b (atomic, pre-LLM/TTS).
+  const speakAllowance = entitlements && !entitlements.isAdmin
+    ? {
+        plan: entitlements.plan,
+        limit_seconds: entitlements.grants.speakSeconds,
+        remaining_seconds: Math.max(
+          0,
+          Math.round(entitlements.grants.speakSeconds - (speakSecondsUsedAfter ?? speakSecondsUsedBefore + billableSeconds)),
+        ),
+      }
+    : null
+
   // ── Step 6: Return response ────────────────────────────────────────────────
   return new Response(
     JSON.stringify({
@@ -1007,6 +1083,7 @@ export async function POST(req: Request): Promise<Response> {
       ai_text,
       audio_base64: audio_base64_out,
       audio_format,
+      speak_allowance: speakAllowance,
     }),
     {
       status: 200,

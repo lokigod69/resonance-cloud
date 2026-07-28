@@ -52,6 +52,7 @@ import {
 } from '@/lib/staticLibraryLanguage'
 import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
 import { curriculumEntryImagePath } from '@/lib/curriculumImagePath'
+import { totalCredits } from '@/lib/credits'
 import { useCategoryScrollReset } from './useCategoryScrollReset'
 import styles from './Categories.module.css'
 
@@ -417,7 +418,7 @@ function StaticLevelDetail({
 
   useEffect(() => {
     let cancelled = false
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets imported static deck state when route/user keys change before async lookup
+
     setDeckLookupLoading(true)
     setImportedDeckId(null)
     setLevelSongDeckId(null)
@@ -684,7 +685,7 @@ function StaticLevelDetail({
           deckId={levelSongDeckId}
           displayTitle={localizedLevelLabel}
           wordList={levelSongWords}
-          credits={profile?.credits ?? 0}
+          credits={totalCredits(profile)}
           onSubmitted={() => {
             setSongRequested(true)
             void refreshProfile()

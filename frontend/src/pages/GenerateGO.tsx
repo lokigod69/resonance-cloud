@@ -60,6 +60,7 @@ import {
 } from '@/components/generate/shared/PremiumVisualSelectors'
 import { wordsEqual } from '@/lib/wordEquality'
 import { canonicalizeLanguageValue, getLanguageCode, isBetaTargetLanguage } from '@/lib/languages'
+import { totalCredits } from '@/lib/credits'
 import type { SelectedCategoryVocabularyItem } from '@/data/categories'
 
 const GO_GENRES = [
@@ -710,7 +711,7 @@ export default function GenerateGO() {
         user.id,
         payload,
         existingDeck ?? undefined,
-        { cachedCredits: profile?.credits },
+        { cachedCredits: totalCredits(profile) },
       )
       await refreshProfile()
       setGeneratedDeckId(targetDeckId)
@@ -737,7 +738,7 @@ export default function GenerateGO() {
       .catch(() => undefined)
   }
 
-  const credits = profile?.credits
+  const credits = profile ? totalCredits(profile) : undefined
   const creditCost = computeCreditCost(productLane, words.length)
   const showLaneStep = !existingDeck || existingDeck.deck_type === 'card'
 

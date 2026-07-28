@@ -24,6 +24,7 @@ import {
 } from 'lucide-react'
 import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
+import { totalCredits } from '@/lib/credits'
 import { MobileBottomNav } from './MobileBottomNav'
 import { getPrimaryNavItems, isPrimaryNavItemActive } from './primaryNav'
 
@@ -121,7 +122,7 @@ export function AppHeader() {
           className="flex min-h-11 items-center gap-1.5 px-3 py-1.5 rounded-lg glass glass-hover text-sm font-medium transition-colors"
         >
           <Coins className="h-4 w-4 text-primary" />
-          <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
+          <span>{typeof profile?.credits === 'number' ? totalCredits(profile) : profileLoading ? '...' : 0}</span>
         </button>
 
         {/* Profile button → opens modal */}

@@ -19,6 +19,7 @@ import {
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useTranslation } from '@/hooks/useTranslation'
 import { formatMusicDeckLabel, type MusicLabelTranslateFn } from '@/lib/musicTrackLabels'
+import { totalCredits } from '@/lib/credits'
 
 const ACTIVE_MUSIC_JOB_STATUSES = ['pending', 'processing', 'submitted', 'polling', 'uploading'] as const
 type SongGenerationStatus = typeof ACTIVE_MUSIC_JOB_STATUSES[number]
@@ -553,7 +554,7 @@ export default function Music() {
         open={songModalTrack !== null}
         onOpenChange={(open) => !open && setSongModalTrack(null)}
         track={songModalTrack}
-        credits={profile?.credits ?? 0}
+        credits={totalCredits(profile)}
         onSubmitted={handleSongSubmitted}
       />
       <LyricsSheet

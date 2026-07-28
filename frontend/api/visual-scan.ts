@@ -2,6 +2,7 @@ import { optionsResponse } from './_shared/cors'
 import { requireSupabaseUser, type AuthenticatedUser } from './_shared/auth'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { consumeApiQuota } from './_shared/quota'
+import { consumeFeatureAllowance, recordFeatureUsage, resolveEntitlements } from './_shared/entitlements'
 import { geminiVisionCost } from './_shared/usageCost'
 import { writeUsageEvent, type UsageEventInput } from './_shared/usageEvents'
 import {
@@ -32,8 +33,37 @@ const MAX_ITEMS = 8
 type HandlerDeps = {
   requireUser: (req: Request) => Promise<AuthenticatedUser>
   consumeQuota: (userId: string) => Promise<unknown>
+  /** Tier allowance debit (optional so contract tests with custom deps keep the pre-tier behavior). */
+  consumeAllowance?: (userId: string) => Promise<void>
   writeUsage: (input: UsageEventInput) => Promise<void>
   provider: VisualScanProvider
+}
+
+// One scan = one allowance unit, debited at request time (the debit IS the
+// authorization; a rare provider failure after debit costs the user one scan —
+// accepted for v1, the daily quota rail keeps abuse bounded either way).
+async function consumeLensAllowance(userId: string): Promise<void> {
+  const entitlements = await resolveEntitlements(userId)
+  if (entitlements.isAdmin) {
+    await recordFeatureUsage(userId, 'lens_scans', entitlements.periodKey, 1)
+    return
+  }
+
+  const debit = await consumeFeatureAllowance(
+    userId,
+    'lens_scans',
+    entitlements.periodKey,
+    1,
+    entitlements.grants.lensScans,
+  )
+  if (!debit.allowed) {
+    throw new ApiError(403, 'Lens allowance is used up', {
+      code: entitlements.plan === 'free' ? 'lens_trial_exhausted' : 'lens_allowance_exhausted',
+      plan: entitlements.plan,
+      used: debit.used,
+      limit: entitlements.grants.lensScans,
+    })
+  }
 }
 
 function isObject(value: unknown): value is Record<string, unknown> {
@@ -187,6 +217,7 @@ function createDefaultDeps(): HandlerDeps {
   return {
     requireUser: requireSupabaseUser,
     consumeQuota: (userId) => consumeApiQuota(userId, 'visual_scan'),
+    consumeAllowance: consumeLensAllowance,
     writeUsage: writeUsageEvent,
     provider: createGeminiVisualScanProvider(),
   }
@@ -202,6 +233,9 @@ export function createVisualScanPostHandler(deps: HandlerDeps = createDefaultDep
       const rawBody = await readJsonWithLimit<unknown>(req, VISUAL_SCAN_BODY_MAX_BYTES)
       body = validateBody(rawBody)
       await deps.consumeQuota(user.id)
+      if (deps.consumeAllowance) {
+        await deps.consumeAllowance(user.id)
+      }
     } catch (error) {
       if (error instanceof ApiError) return apiErrorResponse(req, error)
       console.error('[visual-scan] request gate failed:', error instanceof Error ? error.message : error)
