@@ -1,57 +1,20 @@
 import Stripe from 'stripe'
 import { createClient } from '@supabase/supabase-js'
-import { requireSupabaseUser, type AuthenticatedUser } from './_shared/auth'
+import { requireSupabaseUser } from './_shared/auth'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { getAllowedOrigin, getAllowedOriginValue, optionsResponse } from './_shared/cors'
 import { loadStripeCoreConfig } from './_shared/stripeBilling'
+import { getSupabaseAdminEnv, isBillingAllowedForCheckout } from './_shared/billingAccess'
 import { isPaidPlanId, isPlanInterval, loadStripePriceId, type PaidPlanId, type PlanInterval } from './_shared/planCatalog'
+
+export { isBillingAllowedForCheckout }
+export type { AdminRoleLookupClient } from './_shared/billingAccess'
 
 const CHECKOUT_BODY_MAX_BYTES = 2048
 
 type CheckoutRequestBody = {
   plan?: unknown
   interval?: unknown
-}
-
-type CheckoutGateUser = Pick<AuthenticatedUser, 'id' | 'appMetadata' | 'userMetadata'>
-
-type AdminRoleProbe = {
-  user_id?: string | null
-}
-
-type AdminRoleLookupResult<T> = {
-  data: T | null
-  error: { message?: string } | null
-}
-
-export type AdminRoleLookupClient = {
-  from(table: 'admin_roles'): {
-    select(columns: 'user_id'): {
-      eq(column: 'user_id', value: string): {
-        maybeSingle<T>(): Promise<AdminRoleLookupResult<T>>
-      }
-    }
-  }
-}
-
-function getSupabaseAdminEnv() {
-  return {
-    url: process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || '',
-    serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
-  }
-}
-
-function createSupabaseAdminClient(): AdminRoleLookupClient | null {
-  const { url, serviceKey } = getSupabaseAdminEnv()
-  if (!url || !serviceKey) return null
-
-  return createClient(url, serviceKey, {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false,
-      detectSessionInUrl: false,
-    },
-  }) as unknown as AdminRoleLookupClient
 }
 
 function getConfiguredAppOrigin(): string | null {
@@ -61,21 +24,6 @@ function getConfiguredAppOrigin(): string | null {
 
 export function resolveCheckoutAppOrigin(req: Request): string | null {
   return getAllowedOrigin(req) ?? getConfiguredAppOrigin()
-}
-
-function appMetadataAllowsBilling(appMetadata: Record<string, unknown> | null | undefined): boolean {
-  return appMetadata?.is_test_user === true || appMetadata?.stripe_tester === true
-}
-
-function serverSandboxBillingEnabled(): boolean {
-  return process.env.STRIPE_BILLING_SANDBOX_ENABLED === 'true'
-}
-
-// The production switch: checkout opens to every signed-in user only when the
-// owner flips STRIPE_BILLING_ENABLED=true in Vercel (after creating the four
-// live prices). Until then only sandbox/testers/admins can reach Stripe.
-function serverBillingLiveEnabled(): boolean {
-  return process.env.STRIPE_BILLING_ENABLED === 'true'
 }
 
 // One active subscription per account: a second Checkout would double-bill
@@ -106,33 +54,6 @@ async function hasActiveSubscription(userId: string): Promise<boolean> {
 
   const status = (data as { status?: string | null } | null)?.status ?? ''
   return status === 'active' || status === 'trialing'
-}
-
-async function isAdminByAdminRoles(userId: string, admin: AdminRoleLookupClient): Promise<boolean> {
-  const { data, error } = await admin
-    .from('admin_roles')
-    .select('user_id')
-    .eq('user_id', userId)
-    .maybeSingle<AdminRoleProbe>()
-
-  if (error) {
-    console.warn('[stripe] admin_roles checkout probe failed', error.message ?? error)
-    return false
-  }
-
-  return data?.user_id === userId
-}
-
-export async function isBillingAllowedForCheckout(
-  user: CheckoutGateUser,
-  admin = createSupabaseAdminClient(),
-): Promise<boolean> {
-  if (serverBillingLiveEnabled()) return true
-  if (serverSandboxBillingEnabled()) return true
-  if (appMetadataAllowsBilling(user.appMetadata)) return true
-  if (!admin) return false
-
-  return isAdminByAdminRoles(user.id, admin)
 }
 
 export async function OPTIONS(req: Request): Promise<Response> {

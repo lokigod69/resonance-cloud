@@ -10,6 +10,7 @@ import { optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { getFeatureUsed, resolveEntitlements } from './_shared/entitlements'
+import { isBillingAllowedForCheckout } from './_shared/billingAccess'
 import {
   FREE_SIGNUP_CREDITS,
   FREE_TRIAL_LENS_SCANS,
@@ -43,11 +44,12 @@ export async function GET(req: Request): Promise<Response> {
     const entitlements = await resolveEntitlements(user.id)
 
     const supabase = serviceClient()
-    const [profileRes, speakUsed, lensUsed, liveUsed] = await Promise.all([
+    const [profileRes, speakUsed, lensUsed, liveUsed, billingAllowed] = await Promise.all([
       supabase.from('profiles').select('credits, plan_credits').eq('id', user.id).maybeSingle(),
       getFeatureUsed(user.id, 'speak_seconds', entitlements.periodKey),
       getFeatureUsed(user.id, 'lens_scans', entitlements.periodKey),
       getFeatureUsed(user.id, 'live_minutes', entitlements.periodKey),
+      isBillingAllowedForCheckout(user),
     ])
 
     const profile = (profileRes.data ?? {}) as { credits?: number | null; plan_credits?: number | null }
@@ -72,10 +74,9 @@ export async function GET(req: Request): Promise<Response> {
       },
       // Server-authoritative CTA gating: subscribe buttons only render when
       // checkout would actually be allowed for this user (staged rollout).
-      billing_available:
-        process.env.STRIPE_BILLING_ENABLED === 'true'
-        || process.env.STRIPE_BILLING_SANDBOX_ENABLED === 'true'
-        || entitlements.isAdmin,
+      // Same predicate the checkout endpoint enforces, so the button can never
+      // promise what POST /api/create-checkout-session would refuse.
+      billing_available: billingAllowed,
     })
   } catch (error) {
     if (error instanceof ApiError) return apiErrorResponse(req, error)
