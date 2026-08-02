@@ -53,6 +53,9 @@ export type Profile = {
    * credits). Optional until migration 20260728090000 is applied. */
   plan_credits?: number | null
   new_words_per_day?: number | null
+  /** Suppresses all portfolio analytics emits for this user when true.
+   * Optional until migration 20260802090000 is applied. */
+  analytics_opt_out?: boolean | null
   seen_tutorials: Record<string, string | null>
   theme?: string
   avatar_path?: string | null
@@ -69,6 +72,7 @@ export type AuthProfile = Pick<
   | 'credits'
   | 'plan_credits'
   | 'new_words_per_day'
+  | 'analytics_opt_out'
   | 'seen_tutorials'
   | 'avatar_path'
   | 'avatar_updated_at'

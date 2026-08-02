@@ -32,6 +32,7 @@ import {
 } from '@/lib/todayLanguage'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { toGuidedLanguageName, toWizardLanguageName } from '@/lib/targetLanguage'
+import { trackLearningAction } from '@/lib/analytics'
 import { BETA_TARGET_LANGUAGES } from '@/lib/languages'
 import { useTranslation } from '@/hooks/useTranslation'
 import '@/components/today/Today.css'
@@ -242,6 +243,7 @@ export default function Today() {
     if (!lesson) return
     const nextProgress = markTodayLessonComplete(progress, lesson, result)
     persistProgress(nextProgress)
+    trackLearningAction('guided_step', { lesson_id: lesson.id, step_type: 'lesson_complete' })
   }
 
   const handleSelectVibe = (vibeId: ActiveGuidedVibeId) => {

@@ -4,8 +4,27 @@ import type { Session, User } from '@supabase/supabase-js'
 import { supabase, type AuthProfile } from '@/lib/supabase'
 import { getOAuthRedirectTo } from '@/lib/publicOrigins'
 import { isNativeApp } from '@/lib/platform'
+import { analytics, deterministicUuid } from '@/lib/analytics'
 
 const profileCacheKey = (userId: string) => `resonance_auth_profile_${userId}`
+
+// Portfolio 'signup' — once per page load; the deterministic uuid dedupes
+// same-day repeats server-side. Password signups emit at the signUp() success
+// seam (works even when email confirmation delays the first session); OAuth
+// signups emit on the first session, detected by last_sign_in_at landing
+// within minutes of created_at (an OAuth first round-trip is immediate).
+let signupEmittedThisLoad = false
+
+function maybeTrackOAuthSignup(user: User) {
+  if (signupEmittedThisLoad || !analytics.enabled) return
+  if (user.app_metadata?.provider !== 'google') return
+  const createdAt = Date.parse(user.created_at ?? '')
+  const lastSignIn = Date.parse(user.last_sign_in_at ?? '')
+  if (!Number.isFinite(createdAt) || !Number.isFinite(lastSignIn)) return
+  if (Math.abs(lastSignIn - createdAt) > 5 * 60_000) return
+  signupEmittedThisLoad = true
+  analytics.track('signup', { method: 'google' }, { uuid: deterministicUuid(`signup:${user.id}`) })
+}
 
 function readCachedProfile(userId: string): AuthProfile | null {
   try {
@@ -175,6 +194,7 @@ export function useAuthState(): AuthState {
         base_language: data?.base_language,
       })
       setProfile(data as AuthProfile | null)
+      analytics.setOptOut(Boolean((data as AuthProfile | null)?.analytics_opt_out))
       writeCachedProfile(userId, data as AuthProfile | null)
       profileFetchedRef.current = true
       profileFetchedUserIdRef.current = userId
@@ -249,7 +269,12 @@ export function useAuthState(): AuthState {
       setAuthError(null)
 
       if (nextSession?.user) {
+        analytics.identify(nextSession.user.id)
+        maybeTrackOAuthSignup(nextSession.user)
         const cachedProfile = readCachedProfile(nextSession.user.id)
+        if (cachedProfile) {
+          analytics.setOptOut(Boolean(cachedProfile.analytics_opt_out))
+        }
         if (profileFetchedUserIdRef.current !== nextSession.user.id) {
           profileFetchedRef.current = false
           profileFetchedUserIdRef.current = null
@@ -259,6 +284,8 @@ export function useAuthState(): AuthState {
         }
         void fetchProfile(nextSession.user.id)
       } else {
+        analytics.reset()
+        analytics.setOptOut(false)
         resetProfileState()
       }
     }
@@ -296,7 +323,14 @@ export function useAuthState(): AuthState {
   }
 
   const signUpWithEmail = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signUp({ email, password })
+    const { data, error } = await supabase.auth.signUp({ email, password })
+    if (!error && data.user && !signupEmittedThisLoad) {
+      // Emit under the new account's id even though the session may only
+      // arrive after email confirmation; retries dedupe via the uuid.
+      signupEmittedThisLoad = true
+      analytics.identify(data.user.id)
+      analytics.track('signup', { method: 'password' }, { uuid: deterministicUuid(`signup:${data.user.id}`) })
+    }
     return { error: error?.message ?? null }
   }
 

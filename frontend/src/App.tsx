@@ -25,6 +25,7 @@ import {
 } from '@/routes/routeImports'
 import { VISUAL_LENS_ENABLED } from '@/lib/productFlags'
 import { hasLocallyChosenTargetLanguage } from '@/lib/targetLanguage'
+import { analytics, ANALYTICS_ENTRY_PATH, classifyEntryPath } from '@/lib/analytics'
 
 const LandingPage = lazyWithRetry(routeImports.landingPage, 'landing-page')
 const Login = lazyWithRetry(routeImports.login, 'login')
@@ -341,6 +342,27 @@ function BillingReturnNotice() {
   return null
 }
 
+// Portfolio 'visit' — once per SPA boot, after the auth restore settles so a
+// logged-in visit carries the user's id. Classifies the path the load actually
+// entered on (the catch-all redirect to "/" would otherwise overcount landing).
+// Module-level flag: survives StrictMode's double effect invocation.
+let visitTracked = false
+function VisitPing() {
+  const { loading } = useAuth()
+
+  useEffect(() => {
+    if (loading || visitTracked) return
+    visitTracked = true
+    analytics.track('visit', {
+      page_type: classifyEntryPath(ANALYTICS_ENTRY_PATH),
+      entry_path: ANALYTICS_ENTRY_PATH,
+      skin: 'glassy',
+    })
+  }, [loading])
+
+  return null
+}
+
 function AppShellDialogs() {
   const { profileOpen, setProfileOpen, redeemOpen, setRedeemOpen } = useDialogs()
   return (
@@ -364,6 +386,7 @@ export default function App() {
           <DialogProvider>
             <DocumentLanguageSync />
             <BillingReturnNotice />
+            <VisitPing />
             <AppRoutes />
             <AppShellDialogs />
           </DialogProvider>

@@ -30,6 +30,7 @@ import { ComplicationStep, type ComplicationCheckState } from '@/components/toda
 import { RolePlayStep, type RolePlayCheckState } from '@/components/today/RolePlayStep'
 import { canUseGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
 import { getSessionSteps, type TodaySessionStep } from '@/components/today/sessionSteps'
+import { trackLearningAction } from '@/lib/analytics'
 import { cn } from '@/lib/utils'
 
 type TodaySessionProps = {
@@ -107,6 +108,8 @@ export function TodaySession({
 
   const handleNext = () => {
     if (!canContinue) return
+
+    trackLearningAction('guided_step', { lesson_id: lesson.id, step_type: step })
 
     if (step === 'speak' || step === 'rolePlay') {
       completeLesson()

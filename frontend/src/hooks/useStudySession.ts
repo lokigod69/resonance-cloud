@@ -4,6 +4,7 @@ import { supabase } from '@/lib/supabase'
 import type { CardFaces } from '@/lib/cardFaces'
 import { getLanguageQueryValues } from '@/lib/languages'
 import { useWordStates, type LemmaState } from '@/hooks/useWordStates'
+import { trackLearningAction } from '@/lib/analytics'
 
 export type StudyWord = {
   id: string
@@ -263,6 +264,8 @@ export function useStudySession(
           if (error) console.error('[study] recall insert failed:', error)
           else refetchWordStates()
         })
+
+      trackLearningAction('study_rep', { study_mode: studyMode, correct: knewIt })
 
       // Update local stats
       setSessionStats((s) =>

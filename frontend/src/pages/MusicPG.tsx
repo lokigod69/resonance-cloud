@@ -22,6 +22,7 @@ import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useTranslation } from '@/hooks/useTranslation'
 import { formatMusicDeckLabel, type MusicLabelTranslateFn } from '@/lib/musicTrackLabels'
 import { totalCredits } from '@/lib/credits'
+import { trackLearningAction } from '@/lib/analytics'
 import {
   PLAYER_ACTIVE_TOGGLE_CLASS,
   PLAYER_FOCUS_RING_CLASS,
@@ -432,6 +433,27 @@ export default function MusicPG() {
       if (justCompleted.length > 0) {
         void fetchTracks(true)
         void refreshProfile()
+        // Leaving the active set means finished OR failed — confirm the latest
+        // job per word actually reached 'complete' before counting the song.
+        void (async () => {
+          try {
+            const { data } = await supabase
+              .from('music_generation_jobs')
+              .select('word_id, status, created_at')
+              .eq('user_id', user.id)
+              .in('word_id', justCompleted)
+              .order('created_at', { ascending: false })
+            const latestByWord = new Map<string, string>()
+            for (const row of data ?? []) {
+              if (!latestByWord.has(row.word_id)) latestByWord.set(row.word_id, row.status)
+            }
+            for (const status of latestByWord.values()) {
+              if (status === 'complete') trackLearningAction('song_generated', { units: 1 })
+            }
+          } catch {
+            // analytics only — never disturb the poll
+          }
+        })()
       }
 
       setSongStatusMap(newMap)

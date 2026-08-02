@@ -5,6 +5,7 @@ import { consumeApiQuota } from './_shared/quota'
 import { consumeFeatureAllowance, recordFeatureUsage, resolveEntitlements } from './_shared/entitlements'
 import { geminiVisionCost } from './_shared/usageCost'
 import { writeUsageEvent, type UsageEventInput } from './_shared/usageEvents'
+import { analyticsPlatformFromRequest, trackServerCoreAction } from './_shared/analytics'
 import {
   createGeminiVisualScanProvider,
   GEMINI_VISION_MODEL,
@@ -262,6 +263,19 @@ export function createVisualScanPostHandler(deps: HandlerDeps = createDefaultDep
         images: 1,
         latencyMs: Date.now() - startedAt,
         metadata: { kind: result.kind, safety: result.safety, items_returned: result.items.length },
+      })
+      await trackServerCoreAction({
+        userId,
+        platform: analyticsPlatformFromRequest(req),
+        kind: 'lens_scan',
+        props: {
+          compute: {
+            tokens_in: cost.tokensIn,
+            tokens_out: cost.tokensOut,
+            est_cost_usd: cost.costUsd,
+            providers: [model.provider],
+          },
+        },
       })
       return jsonResponse(req, result, 200)
     } catch (error) {

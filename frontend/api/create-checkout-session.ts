@@ -6,6 +6,7 @@ import { getAllowedOrigin, getAllowedOriginValue, optionsResponse } from './_sha
 import { loadStripeCoreConfig } from './_shared/stripeBilling'
 import { getSupabaseAdminEnv, isBillingAllowedForCheckout } from './_shared/billingAccess'
 import { isPaidPlanId, isPlanInterval, loadStripePriceId, type PaidPlanId, type PlanInterval } from './_shared/planCatalog'
+import { deterministicUuid, trackServerEvent } from './_shared/analytics'
 
 export { isBillingAllowedForCheckout }
 export type { AdminRoleLookupClient } from './_shared/billingAccess'
@@ -111,6 +112,16 @@ export async function POST(req: Request): Promise<Response> {
     if (!session.url) {
       return errorResponse(req, 502, 'Stripe did not return a checkout URL')
     }
+
+    // Portfolio trial_start: entered evaluation with paid intent = a Checkout
+    // session exists. Checkout is web-only by design, so platform reads web.
+    await trackServerEvent({
+      event: 'trial_start',
+      distinctId: user.id,
+      platform: 'web',
+      uuid: deterministicUuid(`trial_start:${session.id}`),
+      props: { plan, interval },
+    })
 
     return jsonResponse(req, { url: session.url })
   } catch (error) {

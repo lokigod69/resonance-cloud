@@ -1,0 +1,38 @@
+manifest_version: 1
+project:
+  id: lingwave            # immutable forever
+  name: Lingwave
+  one_liner: "Language learning with AI music, a voice tutor, camera vocabulary, and daily guided lessons."
+  status: beta
+  repos: ["github.com/lokigod69/resonance-cloud"]
+  platforms: [web, ios]
+  stack: ["react19+vite", "vercel-functions", "supabase", "railway-python", "capacitor8", "stripe"]
+entity:
+  operator: "Deep Blue Dodo LLC"   # per CO-5 (named on the live /privacy page)
+  jurisdiction: TBD
+  markets: [EU, TBD]
+commercial:
+  model: subscription      # 2 tiers x 2 intervals + consumable credits; web-only checkout
+  pricing: "standard 7.99/mo|2.99/wk; premium 14.99/mo|4.99/wk; credits consumable; free = lifetime trial grants"
+  payment_rails: [stripe]
+data:
+  collects: [account_email, learning_activity, audio_transient, camera_transient, payment, analytics]
+  processors: ["supabase", "stripe", "groq", "google-gemini", "mistral", "xai", "openrouter", "kie.ai", "elevenlabs", "posthog-eu"]
+  permissions: [microphone, camera]
+  age_gate: TBD
+brand:
+  kit_path: brand/
+  voice: TBD
+  channel_policy: TBD
+  handles: {}
+# Instrumentation is fully implemented and dark (env flags unset). Per the
+# same-commit rule this flips to true in the SAME commit that flips the
+# enablement env flags after owner approval of the analytics block below.
+analytics_enabled: false
+analytics:
+  tier: 3
+  activation_event: "first_learning_action"
+  core_action: "learning_action"
+  funnel: [visit, signup, activation, core_action]
+apis_consumed: []
+support: {}

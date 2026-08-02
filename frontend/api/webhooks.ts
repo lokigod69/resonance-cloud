@@ -17,6 +17,7 @@ import {
   type PaidPlanId,
   type PlanInterval,
 } from './_shared/planCatalog'
+import { deterministicUuid, trackServerEvent } from './_shared/analytics'
 
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
@@ -120,6 +121,73 @@ function resolvePlanForInvoice(invoice: InvoiceWithParent): ResolvedTierInvoice 
   return null
 }
 
+// Portfolio 'conversion': the FIRST successful subscription payment only, ever,
+// per user — renewals and upgrades stay invisible by design. Prior paid periods
+// are visible as credit_ledger grant rows carrying a different invoice id
+// ('subscription_grant' = tier flow, 'stripe_subscription' = legacy flow).
+// Called only after the grant RPC reported inserted (replays/stale skipped);
+// any lookup doubt suppresses the emit rather than risking a double-count.
+async function maybeEmitConversion(
+  userId: string,
+  invoice: InvoiceWithParent,
+  resolved: ResolvedTierInvoice | null,
+) {
+  try {
+    const admin = serviceClient()
+    const { data, error } = await admin
+      .from('credit_ledger')
+      .select('id')
+      .eq('user_id', userId)
+      .in('event_type', ['subscription_grant', 'stripe_subscription'])
+      .not('stripe_invoice_id', 'is', null)
+      .neq('stripe_invoice_id', invoice.id ?? '')
+      .limit(1)
+    if (error || (data ?? []).length > 0) return
+
+    const paidAtIso = unixSecondsToIso(
+      invoice.status_transitions?.paid_at ?? invoice.created ?? null,
+    )
+    await trackServerEvent({
+      event: 'conversion',
+      distinctId: userId,
+      platform: 'web',
+      uuid: deterministicUuid(`conversion:${userId}`),
+      ...(paidAtIso ? { ts: paidAtIso } : {}),
+      ...(resolved ? { props: { plan: resolved.plan, interval: resolved.interval } } : {}),
+    })
+  } catch (err) {
+    console.error('[analytics] conversion emit failed:', err instanceof Error ? err.message : err)
+  }
+}
+
+// Portfolio 'churn_marker': explicit goodbyes only — here, the subscription
+// cancellation taking effect (customer.subscription.deleted).
+async function emitSubscriptionChurn(subscription: Stripe.Subscription) {
+  try {
+    let userId: string | null = subscription.metadata?.user_id ?? null
+    if (!userId) {
+      const admin = serviceClient()
+      const { data } = await admin
+        .from('user_subscriptions')
+        .select('user_id')
+        .eq('stripe_subscription_id', subscription.id)
+        .maybeSingle()
+      userId = (data as { user_id?: string } | null)?.user_id ?? null
+    }
+    if (!userId) return
+
+    await trackServerEvent({
+      event: 'churn_marker',
+      distinctId: userId,
+      platform: 'web',
+      uuid: deterministicUuid(`churn:subscription:${subscription.id}`),
+      props: { reason: 'subscription_cancelled' },
+    })
+  } catch (err) {
+    console.error('[analytics] churn emit failed:', err instanceof Error ? err.message : err)
+  }
+}
+
 async function recordCheckoutSession(session: Stripe.Checkout.Session) {
   const userId = session.client_reference_id ?? session.metadata?.user_id
   const customerId = stripeObjectId(session.customer)
@@ -181,7 +249,9 @@ async function recordPaidInvoice(invoice: InvoiceWithParent) {
     })
 
     if (error) throw error
-    return data as RpcResult
+    const rpcResult = data as RpcResult
+    if (rpcResult?.inserted) await maybeEmitConversion(userId, invoice, resolved)
+    return rpcResult
   }
 
   const amount = legacySubscriptionCredits({ metadata: metadataFromInvoice(invoice) })
@@ -202,7 +272,9 @@ async function recordPaidInvoice(invoice: InvoiceWithParent) {
   })
 
   if (error) throw error
-  return data as RpcResult
+  const rpcResult = data as RpcResult
+  if (rpcResult?.inserted) await maybeEmitConversion(userId, invoice, null)
+  return rpcResult
 }
 
 async function recordRefunds(stripe: Stripe, charge: ChargeWithInvoice) {
@@ -309,7 +381,12 @@ export async function POST(req: Request): Promise<Response> {
       case 'charge.refunded':
         result = await recordRefunds(stripe, event.data.object as ChargeWithInvoice)
         break
-      case 'customer.subscription.deleted':
+      case 'customer.subscription.deleted': {
+        const subscription = event.data.object as Stripe.Subscription
+        result = await recordSubscriptionStatus(subscription)
+        await emitSubscriptionChurn(subscription)
+        break
+      }
       case 'customer.subscription.updated':
         result = await recordSubscriptionStatus(event.data.object as Stripe.Subscription)
         break

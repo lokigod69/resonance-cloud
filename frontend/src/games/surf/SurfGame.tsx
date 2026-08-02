@@ -16,6 +16,7 @@ import {
   type Category,
 } from '@/data/categories'
 import { canonicalizeLanguageValue } from '@/lib/languages'
+import { trackLearningAction } from '@/lib/analytics'
 import { supabase } from '@/lib/supabase'
 import {
   buildStaticThematicPlaybackQuery,
@@ -258,6 +259,12 @@ function SurfGameSession() {
     onResolve,
     onHud: setHud,
     onSessionComplete: (stats: SessionStats) => {
+      trackLearningAction('game_round', {
+        game: 'surf',
+        score: stats.score,
+        correct: stats.correct,
+        wrong: stats.wrong,
+      })
       setCompleteStats(stats)
       setPhase('complete')
     },

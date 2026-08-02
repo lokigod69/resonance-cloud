@@ -20,7 +20,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
+    /* erasableSyntaxOnly was on until 2026-08-02: the vendored Analytics OS
+       snapshot (src/vendor/analyticsos, generated — must not be hand-edited)
+       uses a constructor parameter property. No runtime impact (Vite/esbuild
+       transpile it); restore the flag once the snapshot is regenerated
+       without parameter properties (reported in orchestrator/analyticsos/
+       NOTES_FOR_ANALYTICS_OS.md). */
+    "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",

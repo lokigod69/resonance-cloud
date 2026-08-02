@@ -31,6 +31,7 @@ import { useToast } from '@/components/Toast'
 import { NewWordsPerDaySelector } from '@/components/profile/NewWordsPerDaySelector'
 import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
 import { CLASSIC_SKIN_RETIRED } from '@/lib/productFlags'
+import { analytics } from '@/lib/analytics'
 
 const SKINS: { id: SkinId; label: string }[] = [
   { id: 'classic', label: 'Classic' },
@@ -118,6 +119,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
   const [displayName, setDisplayName] = useState(profile?.display_name || '')
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
   const [newWordsPerDay, setNewWordsPerDay] = useState(normalizeNewWordsPerDay(profile?.new_words_per_day))
+  const [analyticsOptOut, setAnalyticsOptOut] = useState(Boolean(profile?.analytics_opt_out))
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [deleteConfirmInput, setDeleteConfirmInput] = useState('')
   const [advancedOpen, setAdvancedOpen] = useState(false)
@@ -125,12 +127,13 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
   // Sync state when modal opens or profile data changes
   useEffect(() => {
     if (open) {
-       
+
       setDisplayName(profile?.display_name || '')
       setBaseLanguage(profile?.base_language || '')
       setNewWordsPerDay(normalizeNewWordsPerDay(profile?.new_words_per_day))
+      setAnalyticsOptOut(Boolean(profile?.analytics_opt_out))
     }
-  }, [open, profile?.display_name, profile?.base_language, profile?.new_words_per_day])
+  }, [open, profile?.display_name, profile?.base_language, profile?.new_words_per_day, profile?.analytics_opt_out])
 
   useEffect(() => {
     if (!deleteDialogOpen) {
@@ -334,6 +337,37 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
       toast(t('profile.saveFailed'), 'error')
     } finally {
       setDailyCapSaving(false)
+    }
+  }
+
+  async function handleAnalyticsOptOutChange(next: boolean) {
+    if (!user || next === analyticsOptOut) return
+    const previous = analyticsOptOut
+    setAnalyticsOptOut(next)
+    // Suppression takes effect immediately; the DB write makes it durable.
+    analytics.setOptOut(next)
+
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .update({ analytics_opt_out: next } as { analytics_opt_out: boolean })
+        .eq('id', user.id)
+        .select('analytics_opt_out')
+        .single()
+
+      if (error || Boolean((data as { analytics_opt_out?: boolean } | null)?.analytics_opt_out) !== next) {
+        setAnalyticsOptOut(previous)
+        analytics.setOptOut(previous)
+        toast(t('profile.saveFailed'), 'error')
+        return
+      }
+
+      await refreshProfile()
+      toast(t('profile.saved'), 'success')
+    } catch {
+      setAnalyticsOptOut(previous)
+      analytics.setOptOut(previous)
+      toast(t('profile.saveFailed'), 'error')
     }
   }
 
@@ -578,7 +612,27 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
               </button>
 
               {advancedOpen && (
-                <div className="pt-3">
+                <div className="pt-3 space-y-4">
+                  {/* Analytics opt-out (portfolio analytics; suppresses all emits at source) */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium">{t('profile.analyticsOptOut')}</p>
+                      <p className="text-xs text-muted-foreground">{t('profile.analyticsOptOutDescription')}</p>
+                    </div>
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={analyticsOptOut}
+                      aria-label={t('profile.analyticsOptOut')}
+                      onClick={() => void handleAnalyticsOptOutChange(!analyticsOptOut)}
+                      className={`shrink-0 px-3 py-2 rounded-lg border-2 text-xs font-medium transition-all ${
+                        analyticsOptOut ? 'theme-chip-active' : 'theme-chip'
+                      }`}
+                    >
+                      {analyticsOptOut ? t('profile.analyticsOptOutOn') : t('profile.analyticsOptOutOff')}
+                    </button>
+                  </div>
+
                   <Button
                     type="button"
                     variant="destructive"

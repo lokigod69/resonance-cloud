@@ -1,7 +1,16 @@
+import Stripe from 'stripe'
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { requireSupabaseUser } from './_shared/auth'
 import { corsHeaders } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse } from './_shared/http'
+import {
+  ANON_CHURN_DISTINCT_ID,
+  analyticsPlatformFromRequest,
+  deterministicUuid,
+  eraseAnalyticsPerson,
+  isAnalyticsEnabled,
+  trackServerEvent,
+} from './_shared/analytics'
 
 type StorageBucket =
   | 'profile-avatars'
@@ -131,7 +140,31 @@ export async function DELETE(req: Request): Promise<Response> {
     const user = await requireSupabaseUser(req)
     const admin = createSupabaseAdminClient()
 
+    // LW-004 (Legal OS): a deleted account must not leave an active Stripe
+    // subscription charging someone who no longer has an account to cancel
+    // from. This is the one step allowed to abort the deletion (fail closed
+    // on money); the user retries with an intact account.
+    await cancelStripeBilling(admin, user.id)
+
     await clearInviteCodeCreatorReferences(admin, user.id)
+
+    // CO-1: account-deletion churn is id-less (constant anon distinctId) so a
+    // late-landing event can never survive as an orphan of the erased person.
+    // The user's own opt-out still governs the emit, and it must fire BEFORE
+    // the profile row the emitter consults is destroyed.
+    await trackServerEvent({
+      event: 'churn_marker',
+      distinctId: ANON_CHURN_DISTINCT_ID,
+      optOutUserId: user.id,
+      platform: analyticsPlatformFromRequest(req),
+      uuid: deterministicUuid(`churn:delete:${user.id}`),
+      props: { reason: 'account_deleted' },
+    })
+
+    // CO-2 steps 2–3: first-pass PostHog person erasure + the 24h re-sweep
+    // queue row. Neither may ever block the account deletion itself.
+    await requestAnalyticsErasure(admin, user.id)
+
     const storageCleanup = await deleteAccountStorageObjects(admin, user.id)
 
     const { error } = await admin.auth.admin.deleteUser(user.id)
@@ -151,6 +184,87 @@ export async function DELETE(req: Request): Promise<Response> {
     }
     console.error('[delete-account] Account deletion failed', error)
     return withDeleteAccountCors(req, errorResponse(req, 500, 'Unable to delete account'))
+  }
+}
+
+type UserSubscriptionRow = {
+  stripe_subscription_id: string | null
+  stripe_customer_id: string | null
+}
+
+// Stripe refuses some cancels for states that are already what we want:
+// a subscription that is gone or already canceled is a success here.
+function isStripeCancelSafeError(err: unknown): boolean {
+  if (typeof err !== 'object' || err === null) return false
+  if ((err as { code?: unknown }).code === 'resource_missing') return true
+  const message = (err as { message?: unknown }).message
+  return typeof message === 'string' && message.toLowerCase().includes('canceled subscription')
+}
+
+// LW-004 (Legal OS relay, 2026-08-02): cancel Stripe billing before the
+// account dies. Subscription cancellation is money-critical and fails closed;
+// customer deletion after a confirmed cancel is best-effort (a customer with
+// no subscription cannot charge).
+async function cancelStripeBilling(admin: AdminClient, userId: string): Promise<void> {
+  const { data, error } = await admin
+    .from('user_subscriptions')
+    .select('stripe_subscription_id,stripe_customer_id')
+    .eq('user_id', userId)
+    .maybeSingle()
+
+  if (error) {
+    console.error('[delete-account] subscription probe failed', error.message)
+    throw new ApiError(502, 'Unable to verify billing state — account not deleted, please retry')
+  }
+
+  const row = data as UserSubscriptionRow | null
+  if (!row || (!row.stripe_subscription_id && !row.stripe_customer_id)) return
+
+  const secretKey = process.env.STRIPE_SECRET_KEY
+  if (!secretKey) {
+    console.error('[delete-account] STRIPE_SECRET_KEY missing while a subscription row exists')
+    throw new ApiError(502, 'Unable to cancel billing — account not deleted, please retry')
+  }
+  const stripe = new Stripe(secretKey)
+
+  if (row.stripe_subscription_id) {
+    try {
+      await stripe.subscriptions.cancel(row.stripe_subscription_id)
+    } catch (err) {
+      if (!isStripeCancelSafeError(err)) {
+        console.error('[delete-account] Stripe subscription cancel failed', err)
+        throw new ApiError(502, 'Unable to cancel the subscription — account not deleted, please retry')
+      }
+    }
+  }
+
+  if (row.stripe_customer_id) {
+    try {
+      await stripe.customers.del(row.stripe_customer_id)
+    } catch (err) {
+      console.error('[delete-account] Stripe customer delete failed (non-blocking)', err)
+    }
+  }
+}
+
+// CO-2 (Art. 17): erase the user's analytics person at PostHog and queue the
+// daily re-sweep (in-flight events can land after the first pass; the sweep
+// re-issues deletion for rows older than 24h). Active only once analytics is
+// enabled; failed erasure calls simply stay queued.
+async function requestAnalyticsErasure(admin: AdminClient, userId: string): Promise<void> {
+  if (!isAnalyticsEnabled()) return
+
+  await eraseAnalyticsPerson(userId)
+
+  try {
+    const { error } = await admin
+      .from('analytics_deletion_queue')
+      .upsert({ user_uuid: userId }, { onConflict: 'user_uuid' })
+    if (error) {
+      console.error('[delete-account] analytics deletion queue insert failed', error.message)
+    }
+  } catch (err) {
+    console.error('[delete-account] analytics deletion queue insert failed', err)
   }
 }
 

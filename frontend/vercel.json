@@ -1,5 +1,8 @@
 {
   "framework": "vite",
+  "crons": [
+    { "path": "/api/analytics-deletion-sweep", "schedule": "30 3 * * *" }
+  ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/v/(.*)", "dest": "/api/share?id=$1" },

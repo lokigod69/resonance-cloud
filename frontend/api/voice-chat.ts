@@ -26,6 +26,7 @@ import {
 // spoken turn of that length.
 const NO_AUDIO_TURN_BILLABLE_SECONDS = 15
 import { writeUsageEvent } from './_shared/usageEvents'
+import { analyticsPlatformFromRequest, trackServerCoreAction } from './_shared/analytics'
 import {
   groqLlmCost, groqSttCost, geminiTtsCost, voxtralTtsCost,
   type LlmUsage, type GeminiTtsUsageLike,
@@ -1063,6 +1064,25 @@ export async function POST(req: Request): Promise<Response> {
         : { failed: true },
     },
   })
+
+  // Portfolio learning_action: one core_action per completed speak turn (the
+  // pipeline_events row above stays the detailed cost ledger).
+  if (userId) {
+    await trackServerCoreAction({
+      userId,
+      platform: analyticsPlatformFromRequest(req),
+      kind: 'speak_turn',
+      props: {
+        duration_s: sttDurationSeconds,
+        compute: {
+          tokens_in: llm.tokensIn,
+          tokens_out: llm.tokensOut,
+          est_cost_usd: sttCost + llm.costUsd + ttsCost,
+          providers: ttsResult ? ['groq', ttsResult.provider] : ['groq'],
+        },
+      },
+    })
+  }
 
   // The allowance was debited in Step 1b (atomic, pre-LLM/TTS).
   const speakAllowance = entitlements && !entitlements.isAdmin

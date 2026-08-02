@@ -12,6 +12,7 @@ import {
 import { LIVE_SESSION_MINUTES } from './_shared/planCatalog'
 import { GROK_REALTIME_USD_PER_MINUTE } from './_shared/usageCost'
 import { writeUsageEvent } from './_shared/usageEvents'
+import { analyticsPlatformFromRequest, trackServerCoreAction } from './_shared/analytics'
 
 const GROK_TOKEN_BODY_MAX_BYTES = 1024
 
@@ -143,6 +144,21 @@ export async function POST(req: Request): Promise<Response> {
       minutes_debited: LIVE_SESSION_MINUTES,
       plan: entitlements?.plan ?? 'free',
       is_admin: entitlements?.isAdmin ?? false,
+    },
+  })
+
+  // Portfolio learning_action: the client-secret mint IS the billable 10-min
+  // Live block, so it is also the learning_action unit.
+  await trackServerCoreAction({
+    userId,
+    platform: analyticsPlatformFromRequest(req),
+    kind: 'speak_live_block',
+    props: {
+      duration_s: LIVE_SESSION_MINUTES * 60,
+      compute: {
+        est_cost_usd: estCostUsd,
+        providers: ['xai'],
+      },
     },
   })
 

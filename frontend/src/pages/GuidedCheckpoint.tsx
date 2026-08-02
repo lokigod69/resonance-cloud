@@ -24,6 +24,7 @@ import {
 } from '@/lib/guidedSegmentStories'
 import { readTodayProgressState } from '@/lib/todayProgress'
 import { getSelectedGuidedVibe } from '@/lib/todayVibe'
+import { trackLearningAction } from '@/lib/analytics'
 import { fetchTrophySongCanonical, type TrophySongRow } from '@/lib/trophySongsClient'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -103,6 +104,10 @@ export default function GuidedCheckpoint() {
         : isPathCheckMode
           ? createLocalCheckpointRecord(reviewedItemsRef.current)
           : completeGuidedCheckpoint(selectedVibeId, reviewedItemsRef.current)
+      trackLearningAction('guided_step', {
+        step_type: isSegmentReviewMode ? 'segment_review' : isPathCheckMode ? 'path_check' : 'checkpoint',
+        items_reviewed: record.itemsReviewed,
+      })
       setSummary(record)
       setPhase('summary')
       return

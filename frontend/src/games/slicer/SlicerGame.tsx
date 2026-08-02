@@ -13,6 +13,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { isLemmaDueNow, useWordStates } from '@/hooks/useWordStates'
 import { canonicalizeLanguageValue } from '@/lib/languages'
+import { trackLearningAction } from '@/lib/analytics'
 import type { GameEvent } from '../shared/gameEvents'
 import type { DeckDefinition } from './engine/types'
 import { pickImageUrl, wordsToSlicerDeck } from './adapters/deckAdapter'
@@ -426,6 +427,11 @@ function handleGameEvent(
   }
 
   if (event.type === 'session_complete') {
+    trackLearningAction('game_round', {
+      game: 'slicer',
+      score: tallyRef.current.correct,
+      wrong: tallyRef.current.wrong,
+    })
     setSessionResult((current) => current ?? { ...tallyRef.current })
   }
 }

@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
+import { trackLearningAction } from '@/lib/analytics'
 import type { GameAttemptEvent } from './gameEvents'
 
 export function useRecordGameResult() {
@@ -22,6 +23,8 @@ export function useRecordGameResult() {
       .then(({ error }) => {
         if (error) console.error('[games] recall insert failed:', error)
       })
+
+    trackLearningAction('study_rep', { study_mode: event.gameId, correct: event.passed })
   }, [userId])
 }
 
