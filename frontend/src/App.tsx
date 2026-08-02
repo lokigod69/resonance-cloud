@@ -11,6 +11,7 @@ import { LanguageProvider } from '@/contexts/LanguageProvider'
 import { DialogProvider } from '@/contexts/DialogProvider'
 import { useDialogs } from '@/contexts/DialogContext'
 import { ToastProvider } from '@/components/ToastProvider'
+import { useToast } from '@/components/Toast'
 import { AppLayout } from '@/components/layout/AppLayout'
 import PolishGlassLayout from '@/components/layout/PolishGlassLayout'
 import FerrariAdminLayout from '@/layouts/FerrariAdminLayout'
@@ -316,6 +317,30 @@ function DocumentLanguageSync() {
   return null
 }
 
+// Stripe Checkout returns to /dashboard?billing=success|cancelled, but nothing
+// read the marker, so a completed purchase ended in silence (owner feedback
+// 2026-07-30). Toast the outcome once and strip the param from the URL.
+function BillingReturnNotice() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const { toast } = useToast()
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const billing = params.get('billing')
+    if (billing !== 'success' && billing !== 'cancelled') return
+    toast(
+      billing === 'success' ? t('plans.checkoutSuccess') : t('plans.checkoutCancelled'),
+      billing === 'success' ? 'success' : 'info',
+    )
+    params.delete('billing')
+    navigate({ pathname: location.pathname, search: params.toString() }, { replace: true })
+  }, [location.pathname, location.search, navigate, t, toast])
+
+  return null
+}
+
 function AppShellDialogs() {
   const { profileOpen, setProfileOpen, redeemOpen, setRedeemOpen } = useDialogs()
   return (
@@ -338,6 +363,7 @@ export default function App() {
         <LanguageProvider>
           <DialogProvider>
             <DocumentLanguageSync />
+            <BillingReturnNotice />
             <AppRoutes />
             <AppShellDialogs />
           </DialogProvider>
