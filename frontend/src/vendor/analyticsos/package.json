@@ -1,0 +1,4 @@
+{
+  "//": "Build-compat marker, NOT part of the generated snapshot (do not regenerate over it). The api/ functions compile as CommonJS (api/package.json) while frontend/package.json declares type:module; without this boundary marker, Vercel's Node runtime flags the compiled vendor files as ESM and every api function that imports _shared/analytics dies at cold start with ERR_REQUIRE_ESM. Vite ignores this file for .ts source resolution.",
+  "type": "commonjs"
+}
