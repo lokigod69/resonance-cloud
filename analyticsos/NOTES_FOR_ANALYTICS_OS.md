@@ -116,3 +116,24 @@ relays is this batch. Details you should know:
   subscription is worse than a retried deletion), then best-effort deletes the Stripe
   customer. The CO-2 deletion drill will exercise this path too (delete a subscribed
   throwaway).
+
+## Production incident 2026-08-28 — snapshot import crashed every server function that used it (fixed `f235f39b`)
+
+From the moment `4f45b9fc` deployed (2026-08-03) until 2026-08-28, **every Vercel
+function importing `api/_shared/analytics.ts` crashed at cold start** with
+`ERR_REQUIRE_ESM`: our `api/` directory compiles as CommonJS (`api/package.json`
+`{"type":"commonjs"}`) while `frontend/package.json` declares `"type":"module"` — so the
+vendored snapshot under `src/vendor/analyticsos/` was flagged ESM at Node's `require()`
+boundary. Blast radius: visual-scan (Lens), voice-chat (Speak), grok-token,
+create-checkout-session, webhooks (Stripe — still sandbox mode, no real-money loss),
+delete-account, and the daily deletion-sweep cron, all returning 500. No analytics
+implication (system was dark throughout); the damage was product-side.
+
+Fix: a new **`src/vendor/analyticsos/package.json`** containing `{"type":"commonjs"}` —
+a build-compat boundary marker, commented as NOT part of the generated snapshot. Your
+generated `.ts` files remain byte-identical. **Contract addition: the regeneration
+ritual must preserve (or re-create) this file.** If you'd rather own it, fold an
+equivalent marker into the snapshot generator for CJS-consuming projects. Lesson for
+the portfolio: tsc/eslint/build gates cannot catch this class of failure — it only
+exists in Vercel's per-file Node compilation; an unauthenticated smoke probe of each
+touched endpoint (expect 401, not 500) after deploy would have caught it on day one.
