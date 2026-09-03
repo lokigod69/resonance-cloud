@@ -255,7 +255,8 @@ export function createVisualScanPostHandler(deps: HandlerDeps = createDefaultDep
       deps.assertProviderConfigured?.()
       await deps.consumeQuota(user.id)
       if (deps.consumeAllowance) {
-        lensDebit = (await deps.consumeAllowance(user.id)) ?? null
+        // Explicit cast: Vercel compiles api/ with a non-strict tsconfig where `void ?? null` does not narrow.
+        lensDebit = ((await deps.consumeAllowance(user.id)) as LensDebit | undefined) ?? null
       }
     } catch (error) {
       if (error instanceof ApiError) return apiErrorResponse(req, error)
