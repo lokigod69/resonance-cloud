@@ -90,7 +90,7 @@ export function classifyEntryPath(path: string): 'landing' | 'share' | 'app' {
 
 // ── learning actions (core_action + the once-ever activation gate) ──────────
 
-type ClientCoreActionKind = 'guided_step' | 'study_rep' | 'song_generated' | 'game_round'
+type ClientCoreActionKind = 'guided_step' | 'study_rep' | 'song_generated' | 'game_round' | 'stream_keep'
 
 // Per page load: once the activation RPC has answered (either way), stop
 // calling it. In-memory only — analytics keeps nothing on the device.

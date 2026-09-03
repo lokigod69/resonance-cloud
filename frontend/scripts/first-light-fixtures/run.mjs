@@ -347,7 +347,14 @@ async function main() {
   // Deterministic offline typography: the app CSS @imports Google Fonts.
   await cdp.send('Network.setBlockedURLs', { urls: ['*fonts.googleapis.com*', '*fonts.gstatic.com*'] })
 
-  await poll(cdp, 'window.__listReady === true', (v) => v === true, 30000, 'fixture list')
+  try {
+    await poll(cdp, 'window.__listReady === true', (v) => v === true, 30000, 'fixture list')
+  } catch (error) {
+    // A module that throws at evaluation never reaches main() — surface the
+    // page's own console/exception lines instead of a bare timeout.
+    for (const line of consoleLines) log(`   ${line}`)
+    throw error
+  }
   const list = await evaluate(cdp, 'JSON.stringify(window.__fixtureList)')
   const fixtures = JSON.parse(list).filter((f) => !only || only.some((token) => f.id.startsWith(token)))
   log(`${fixtures.length} fixture(s) to run`)

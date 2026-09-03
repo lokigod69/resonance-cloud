@@ -13,7 +13,14 @@ import { useHomeWordDetails } from '@/lib/homeWordDetails'
 import { playPronunciation, prefetchPronunciationAudio } from '@/hooks/usePronunciation'
 import { getLanguageCode, speakConversationLanguageCode } from '@/lib/languages'
 import { normalizeNewWordsPerDay } from '@/lib/dailyHabits'
+import { useToast } from '@/components/Toast'
+import { totalCredits } from '@/lib/credits'
 import { WAVE_HORIZON_FRACTION } from '@/lib/waveField'
+import { STREAM_DESKTOP_LAYOUT, STREAM_MOBILE_LAYOUT, type StreamWord } from '@/lib/wordStream'
+import { useWordStream } from '@/hooks/useWordStream'
+import WordStream, { type StreamRetireReason } from '@/components/home/WordStream'
+import StreamWordSheet from '@/components/home/StreamWordSheet'
+import StreamCatchMarker from '@/components/home/StreamCatchMarker'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import type { WaveRipple } from '@/components/branding/LingwaveWaves'
 import FirstLightTopRow from '@/components/home/FirstLightTopRow'
@@ -36,6 +43,12 @@ const MISS_COOLDOWN_MS = 90_000
 const CLEAR_MOMENT_MS = 2_000
 const REST_BUOY_COUNT = 4
 
+/** Key change = language switch: the sheet closes, timers cancel, the new
+ * visit composes (§4). Also the guard for in-flight stream keeps. */
+function lifecycleKeyOf(userId: string, language: string): string {
+  return `${userId}|${language}`
+}
+
 type FirstLightHomeProps = {
   userId: string
   activeLanguage: string
@@ -54,8 +67,9 @@ export default function FirstLightHome({
   onAddLanguage,
   deckHref,
 }: FirstLightHomeProps) {
-  const { profile } = useAuth()
+  const { profile, refreshProfile } = useAuth()
   const { t } = useTranslation()
+  const { toast } = useToast()
   const navigate = useNavigate()
   const reduceMotion = useReducedMotion() ?? false
 
@@ -86,6 +100,33 @@ export default function FirstLightHome({
   }, [])
   const maxBuoys = isDesktop ? 12 : 5
 
+  // ── The Word Stream (docs/Product/FABLE_WORD_STREAM_PLAN.md) ─────────────
+  // New words the learner does not hold yet drift in on the sea; recall stays
+  // in the card + sheet queue. The stream owns the water whenever it has
+  // words; otherwise the due/rest buoys render exactly as before.
+  const knownLemmaKeys = useMemo(
+    () => new Set(wordStates.data.map((lemma) => lemma.lemmaKey)),
+    [wordStates.data],
+  )
+  const stream = useWordStream({
+    userId,
+    language: activeLanguage,
+    baseLanguage: profile?.base_language,
+    knownLemmaKeys,
+    knownReady: wordStates.fetched && wordStates.error === null,
+    dailyGoal: newWordDailyCap,
+    enabled: true,
+  })
+  const streamLayout = isDesktop ? STREAM_DESKTOP_LAYOUT : STREAM_MOBILE_LAYOUT
+  // Words actually on the water, nearest first (reported by the renderer).
+  // The hero only recommends catching one when there is one to catch.
+  const [aliveWords, setAliveWords] = useState<StreamWord[]>([])
+  const onAliveChange = useCallback((words: StreamWord[]) => setAliveWords(words), [])
+  // The stream owns the water while a word could still spawn OR one is still
+  // drifting; an exhausted pool hands the sea back to the buoys once the
+  // last word has gone — never a blank, dead sea.
+  const streamLive = stream.status === 'ready' && (stream.availableCount > 0 || aliveWords.length > 0)
+
   const hero = useHomeRecommendation({
     wordStates,
     visit,
@@ -95,6 +136,7 @@ export default function FirstLightHome({
     hasDecks: true,
     mission: mission.mission,
     missionLoading: mission.loading,
+    streamLive: streamLive && aliveWords.length > 0,
     isSpeakLanguage: speakConversationLanguageCode(activeLanguage) !== null,
     deckHref,
   })
@@ -128,6 +170,12 @@ export default function FirstLightHome({
   // no rendered buoy must never count as "unlocked" or be served by the sheet.
   const [onWaterKeys, setOnWaterKeys] = useState<ReadonlySet<string>>(new Set())
   const onWaterChange = useCallback((keys: string[]) => setOnWaterKeys(new Set(keys)), [])
+  // With the stream on the water no buoys report; the recall queue then runs
+  // over the slot-budget slice of the pool (the fallback below), never over a
+  // stale key set left by a previous buoy render.
+  useEffect(() => {
+    if (streamLive) setOnWaterKeys(new Set())
+  }, [streamLive])
   const onWaterDue = useMemo(() => {
     const filtered = duePool.filter((lemma) => onWaterKeys.has(lemma.lemmaKey))
     // Before the first report (or across a mode switch with stale keys) fall
@@ -239,6 +287,104 @@ export default function FirstLightHome({
     setSheet(nextInQueue ? { lemma: nextInQueue, cooldown: false } : null)
   }, [nextInQueue])
 
+  // ── The stream sheet and its queue ────────────────────────────────────────
+  // Tap a drifting word → it opens. Keep → it pops off the water (ripple),
+  // the sheet shows the catch and its two credit doors, Next opens the
+  // nearest word still on the water. Pass → it sinks and the next word opens
+  // straight away — the learner stays in the stream.
+  const [streamSheet, setStreamSheet] = useState<StreamWord | null>(null)
+  const [retired, setRetired] = useState<ReadonlyMap<string, StreamRetireReason>>(new Map())
+
+  const retire = useCallback((word: StreamWord, reason: StreamRetireReason) => {
+    setRetired((prev) => {
+      const next = new Map(prev)
+      next.set(word.conceptId, reason)
+      return next
+    })
+  }, [])
+
+  const nextStreamWord = useMemo(
+    () => aliveWords.find((word) => word.conceptId !== streamSheet?.conceptId && !retired.has(word.conceptId)) ?? null,
+    [aliveWords, retired, streamSheet],
+  )
+
+  // The deck name carries no language: the Music page and the deck list
+  // already append the localized language to every deck label.
+  const streamDeckName = t('home.stream.deckName')
+
+  // In-flight keeps must not touch a visit that has since switched language
+  // (the buoys' liveKey rule): the RPC row is durable, the local side-effects
+  // are not applied.
+  const liveLifecycleRef = useRef(lifecycleKeyOf(userId, activeLanguage))
+  liveLifecycleRef.current = lifecycleKeyOf(userId, activeLanguage)
+  // Whether any keep landed while the current stream sheet was open — only
+  // then is the SRS refetched on close (a browse-and-dismiss costs nothing).
+  const keptWhileOpenRef = useRef(false)
+
+  const keepStreamWord = useCallback(async (word: StreamWord, ttsAudioUrl: string | null) => {
+    const guardKey = liveLifecycleRef.current
+    const result = await stream.keep(word, { deckName: streamDeckName, ttsAudioUrl })
+    if (liveLifecycleRef.current !== guardKey) return result
+    keptWhileOpenRef.current = true
+    stream.consume(word, 'kept')
+    retire(word, 'kept')
+    addRipple(word.conceptId, 1)
+    return result
+  }, [addRipple, retire, stream, streamDeckName])
+
+  const passStreamWord = useCallback((word: StreamWord) => {
+    stream.consume(word, 'passed')
+    retire(word, 'passed')
+    addRipple(word.conceptId, 0.6)
+    setStreamSheet(aliveWords.find((candidate) => candidate.conceptId !== word.conceptId && !retired.has(candidate.conceptId)) ?? null)
+  }, [addRipple, aliveWords, retire, retired, stream])
+
+  // Never a dead button (§8.1): with nothing catchable on the water, the
+  // Library is the honest destination.
+  const openNearestStreamWord = useCallback(() => {
+    const nearest = aliveWords.find((word) => !retired.has(word.conceptId))
+    if (nearest) setStreamSheet(nearest)
+    else navigate('/categories')
+  }, [aliveWords, navigate, retired])
+
+  const onSongSubmitted = useCallback(() => {
+    toast(t('home.stream.songStarted'), 'success', { label: t('nav.music'), onClick: () => navigate('/music') })
+    void refreshProfile()
+  }, [navigate, refreshProfile, t, toast])
+
+  // Retired entries are pruned once the renderer no longer lists the word —
+  // including a retire that landed after the word had already left the
+  // water, which would otherwise mask that word from the queue forever.
+  useEffect(() => {
+    setRetired((prev) => {
+      if (prev.size === 0) return prev
+      const live = new Set(aliveWords.map((word) => word.conceptId))
+      let changed = false
+      const next = new Map(prev)
+      for (const key of Array.from(next.keys())) {
+        if (!live.has(key)) {
+          next.delete(key)
+          changed = true
+        }
+      }
+      return changed ? next : prev
+    })
+  }, [aliveWords])
+
+  // A kept word is now a `new` SRS word — refetch when the stream sheet
+  // closes AFTER a keep, so the recall hero and the pool tell the truth
+  // about it. Browsing and dismissing costs no RPC.
+  const prevStreamSheetOpenRef = useRef(false)
+  useEffect(() => {
+    const open = streamSheet !== null
+    if (prevStreamSheetOpenRef.current && !open && keptWhileOpenRef.current) {
+      keptWhileOpenRef.current = false
+      wordStates.refetch()
+    }
+    prevStreamSheetOpenRef.current = open
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [streamSheet, wordStates.refetch])
+
   // Server truth refreshes when the sheet closes — not per grade. Mid-queue the
   // local pool (data minus clearedKeys) already tells the truth, and a per-grade
   // refetch would reshuffle buoys behind the open sheet for nothing (§11).
@@ -254,12 +400,15 @@ export default function FirstLightHome({
   // timers cancel, the new visit composes (§4). Rollover is only detected on
   // wake-up triggers, so an actively running mid-queue session never resets
   // out from under the learner.
-  const lifecycleKey = `${userId}|${activeLanguage}`
+  const lifecycleKey = lifecycleKeyOf(userId, activeLanguage)
   useEffect(() => {
     return () => {
       setSheet(null)
       setCooldowns(new Map())
       setOnWaterKeys(new Set())
+      setStreamSheet(null)
+      setRetired(new Map())
+      setAliveWords([])
       clearCooldownTimers()
     }
   }, [lifecycleKey, clearCooldownTimers])
@@ -411,7 +560,9 @@ export default function FirstLightHome({
   // Backlog counts against the buoys ACTUALLY on the water — collision
   // resolution can swap or reduce them, and understating the debt would break
   // the binding backlog ruling (§0).
-  const backlogCount = duePool.length - onWaterDue.length
+  // With the stream on the water no due word is visible: the whole pool is
+  // the debt, and it must stay visible (§0's binding backlog ruling).
+  const backlogCount = streamLive ? duePool.length : duePool.length - onWaterDue.length
   const langCode = getLanguageCode(activeLanguage) || undefined
 
   const activeDetail = sheet ? details.get(sheet.lemma.wordIds[0]) : undefined
@@ -437,7 +588,7 @@ export default function FirstLightHome({
         />
         {/* Desktop reads this line in the nav's THIS VISIT slot instead —
             rendering both would double it (§7). */}
-        <p className="min-h-5 text-left font-display text-sm text-[var(--text-secondary)] md:hidden [@media(max-height:720px)]:text-[13px]" aria-hidden="true">
+        <p className="min-h-5 line-clamp-1 text-left font-display text-sm text-[var(--text-secondary)] md:hidden [@media(max-height:720px)]:text-[13px]" aria-hidden="true">
           {skyLine}
         </p>
         <span className="sr-only" aria-live="polite">{announcedLine}</span>
@@ -447,6 +598,7 @@ export default function FirstLightHome({
             phraseLang={mission.mission?.phraseLang}
             onStartRecall={startRecallRun}
             onRetry={wordStates.refetch}
+            onCatchNearest={streamLive ? openNearestStreamWord : undefined}
           />
         </div>
       </div>
@@ -464,12 +616,30 @@ export default function FirstLightHome({
           </div>
         )}
 
-        {backlogCount > 0 && (
+        {/* One row under the waterline: today's catch on the left, the due
+            debt on the right — a shared flex row, never two absolutes that
+            can overlap in a long locale at 320pt. With the stream on the
+            water no due word is visible, so the debt is the whole pool
+            ("N to bring back"), not a "+N further out" beyond buoys. */}
+        {((streamLive && stream.keptToday !== null) || backlogCount > 0) && (
           <div
-            className="absolute right-4"
+            className="absolute inset-x-4 flex items-start justify-between gap-3"
             style={{ top: `calc(${WAVE_HORIZON_FRACTION * 100}% + 2.25rem)` }}
           >
-            <HorizonMoreMarker count={backlogCount} language={activeLanguage} />
+            <div className="shrink-0">
+              {streamLive && stream.keptToday !== null ? (
+                <StreamCatchMarker kept={stream.keptToday} goal={stream.goal} deckId={stream.streamDeckId} />
+              ) : null}
+            </div>
+            <div className="min-w-0 truncate text-right">
+              {backlogCount > 0 ? (
+                <HorizonMoreMarker
+                  count={backlogCount}
+                  language={activeLanguage}
+                  labelKey={streamLive ? 'home.stream.due' : 'home.fl.more'}
+                />
+              ) : null}
+            </div>
           </div>
         )}
 
@@ -493,7 +663,26 @@ export default function FirstLightHome({
           )}
         </AnimatePresence>
 
-        {showRestBuoys ? (
+        {streamLive ? (
+          <WordStream
+            key={`${lifecycleKey}|${profile?.base_language ?? ''}|${stream.seed}|${isDesktop ? 'desktop' : 'mobile'}`}
+            pool={stream.pool}
+            startCursor={stream.startCursor}
+            isAvailable={stream.isAvailable}
+            layout={streamLayout}
+            langCode={langCode}
+            clockRef={clockRef}
+            positionsRef={positionsRef}
+            paused={sheet !== null || streamSheet !== null}
+            reduceMotion={reduceMotion}
+            retired={retired}
+            onTap={setStreamSheet}
+            onCursorChange={stream.advanceCursor}
+            onAliveChange={onAliveChange}
+            wordAria={(word) => t('home.stream.wordAria', { word: word.targetTerm, gloss: word.helperTerm })}
+            seed={stream.seed}
+          />
+        ) : showRestBuoys ? (
           <TidelineBuoys
             mode="rest"
             lemmas={restLemmas}
@@ -535,6 +724,22 @@ export default function FirstLightHome({
             navSlot,
           )
         : null}
+
+      <StreamWordSheet
+        word={streamSheet}
+        language={activeLanguage}
+        langCode={langCode}
+        resolveAudio={stream.resolveAudio}
+        keptToday={stream.keptToday}
+        goal={stream.goal}
+        credits={totalCredits(profile)}
+        hasNext={nextStreamWord !== null}
+        onKeep={keepStreamWord}
+        onPass={passStreamWord}
+        onNext={() => setStreamSheet(nextStreamWord)}
+        onClose={() => setStreamSheet(null)}
+        onSongSubmitted={onSongSubmitted}
+      />
 
       <BuoyPracticeSheet
         lemma={sheet?.lemma ?? null}

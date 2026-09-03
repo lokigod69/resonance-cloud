@@ -70,10 +70,22 @@ function resolveBuilder(state: BuilderState): Promise<Res> {
   }
 
   if (state.table === 'words') {
+    // Word Stream kept-today count: select('id', { count, head }) + jsonb filters.
+    const selectCall = state.calls.find((c) => c.method === 'select')
+    const options = selectCall?.args?.[1] as { count?: string; head?: boolean } | undefined
+    if (options?.head) {
+      record('count:words', state.calls)
+      return settle({ data: null, error: null, count: s.streamKeptToday ?? 0 } as any, 10)
+    }
     const inCall = state.calls.find((c) => c.method === 'in')
     const ids = (inCall?.args?.[1] as string[]) ?? []
     const data = ids.map((id) => ({ id, thumbnail_url: null, tts_audio_url: null, metadata: null }))
     return settle({ data, error: null }, 10)
+  }
+
+  if (state.table === 'decks') {
+    const deckId = s.streamDeckId ?? null
+    return settle({ data: deckId ? [{ id: deckId }] : [], error: null }, 10)
   }
 
   return settle({ data: [], error: null }, 10)
@@ -111,6 +123,20 @@ export const supabase: any = {
   rpc(name: string, params: any) {
     const s = scenario()
     record(`rpc:${name}`, params)
+    if (name === 'submit_word_stream_save') {
+      const mode = s.streamKeep ?? 'ok'
+      if (mode === 'missing') {
+        return settle({ data: null, error: { code: 'PGRST202', message: 'Could not find the function public.submit_word_stream_save' } }, 40)
+      }
+      if (mode === 'error') return settle({ data: null, error: { message: 'keep failed (fixture)' } }, 40)
+      const w = window as any
+      w.__streamKeeps = (w.__streamKeeps ?? 0) + 1
+      const inserted = mode === 'duplicate' ? 0 : 1
+      return settle({
+        data: { deck_id: s.streamDeckId ?? 'stream-deck', inserted, skipped: 1 - inserted, word_ids: inserted ? [`stream-word-${w.__streamKeeps}`] : [] },
+        error: null,
+      }, 60)
+    }
     if (name !== 'compute_word_states') return settle({ data: null, error: null })
     const mode = s.rpc ?? 'ok'
     if (mode === 'never') return NEVER

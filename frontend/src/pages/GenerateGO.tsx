@@ -229,8 +229,45 @@ export default function GenerateGO() {
   // auto-advance (no orbit flash) and prevents the loader from reappearing on
   // back-navigation to the language step.
   const [gateResolved, setGateResolved] = useState(false)
+
+  // Word Stream seam: `?word=<term>&lang=<language>` pre-seeds the language and
+  // a one-word list and opens on the lane step, so "Add a picture" from the
+  // Home sheet lands the learner one choice (standard / premium) away from a
+  // generated card. A lane-locked deck link (`?deckId=`) always wins.
+  const wordParam = searchParams.get('word')
+  const langParam = searchParams.get('lang')
+  const seededWordTerm = wordParam?.trim().slice(0, 80) || null
+  const seededWordLanguage = canonicalizeLanguageValue(langParam)
+  // The word seed only OWNS the pre-seed when it can honour it (a beta
+  // language and a non-empty term); otherwise the LanguageContext pre-seed
+  // below runs as usual and the learner lands on the picker, never a loader.
+  const wordSeedOwned = Boolean(seededWordTerm && seededWordLanguage && isBetaTargetLanguage(seededWordLanguage))
+  const seededWordRef = useRef<string | null>(null)
   useEffect(() => {
-    if (deckIdParam) return
+    if (deckIdParam || !wordSeedOwned || !seededWordTerm || !seededWordLanguage) return
+    const seededLanguage = seededWordLanguage
+    const term = seededWordTerm
+    const seedKey = `${seededLanguage}|${term}`
+    if (seededWordRef.current === seedKey) return
+    // Deferred like the LanguageContext pre-seed below: the loader holds
+    // through the auto-advance instead of flashing the language orbit. The
+    // once-guard is set inside the timeout so a cancelled first run (Strict
+    // Mode) still seeds on the second.
+    const timeoutId = window.setTimeout(() => {
+      seededWordRef.current = seedKey
+      setLanguage(seededLanguage)
+      setWords([term])
+      // The learner asked for a picture of THIS word — the deck is named
+      // after it, never "German Deck — 9/4/2026".
+      setDeckName(term)
+      setStep(2)
+      setGateResolved(true)
+    }, 0)
+    return () => window.clearTimeout(timeoutId)
+  }, [deckIdParam, seededWordLanguage, seededWordTerm, wordSeedOwned])
+
+  useEffect(() => {
+    if (deckIdParam || wordSeedOwned) return
     if (language) return
     if (!languageReady) return
 
@@ -247,7 +284,7 @@ export default function GenerateGO() {
     }, 0)
 
     return () => window.clearTimeout(timeoutId)
-  }, [deckIdParam, language, languageReady, activeLanguage])
+  }, [deckIdParam, wordSeedOwned, language, languageReady, activeLanguage])
 
   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
   const generatedQueueIsCard = existingDeck?.deck_type === 'card'
@@ -986,7 +1023,10 @@ export default function GenerateGO() {
 
   // ── Render ────────────────────────────────────────
 
-  const laneVariant: 'all' | 'card-only' = existingDeck?.deck_type === 'card' ? 'card-only' : 'all'
+  // Card-only when appending to a card deck, and when the Word Stream sent
+  // the learner here for a picture — a free text card would only duplicate
+  // the word they already keep, without the picture they asked for.
+  const laneVariant: 'all' | 'card-only' = existingDeck?.deck_type === 'card' || wordSeedOwned ? 'card-only' : 'all'
 
   // Smooth language gate: hold a calm loader while the saved language resolves
   // (or is about to auto-advance) instead of flashing the orbit then jumping.

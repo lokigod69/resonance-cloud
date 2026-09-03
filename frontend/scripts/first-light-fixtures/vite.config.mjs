@@ -25,6 +25,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@/lib/supabase': stub('supabase.ts'),
+      // analytics imports the client by RELATIVE path — stub the module.
+      '@/lib/analytics': stub('analytics.ts'),
+      '@/components/Toast': stub('Toast.ts'),
       '@/hooks/useAuth': stub('useAuth.ts'),
       '@/contexts/DialogContext': stub('DialogContext.ts'),
       '@/hooks/useProfileAvatarUrl': stub('useProfileAvatarUrl.ts'),

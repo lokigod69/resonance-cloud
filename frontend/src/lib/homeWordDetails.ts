@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { supabase } from '@/lib/supabase'
-import { readCurriculumMetadata } from '@/lib/curriculumDeckBridge'
-import { resolveStaticCategoryTargetLanguageCode } from '@/data/categories'
+import { readCurriculumMetadata } from '@/lib/curriculumMetadata'
+// The light language module, not `@/data/categories` — the latter would drag
+// the ~2 MB translation table into the home chunk for one code lookup.
+import { resolveStaticCategoryTargetLanguageCode } from '@/data/staticCategoryLanguages'
 import {
   buildStaticThematicPlaybackQuery,
   fetchStaticThematicPlayback,

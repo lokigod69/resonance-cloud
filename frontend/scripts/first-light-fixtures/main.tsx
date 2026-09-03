@@ -82,6 +82,9 @@ async function main() {
   w.__calls = []
   try {
     localStorage.clear()
+    // useTodayMission caches the day's mission per tab — a previous fixture's
+    // lesson must not leak into this one.
+    sessionStorage.clear()
   } catch {}
   for (const [key, value] of Object.entries(fixture.localStorageSeed ?? {})) {
     localStorage.setItem(key, value)

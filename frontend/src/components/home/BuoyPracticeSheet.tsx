@@ -84,6 +84,34 @@ export default function BuoyPracticeSheet({
   // open sheet.
   useBodyScrollLock(lemma !== null)
 
+  // Escape closes; focus lands on the dialog when it opens (the buoy that had
+  // focus is gone from the water) — the stream sheet's rule, shared here.
+  const dialogRef = useRef<HTMLDivElement | null>(null)
+  useEffect(() => {
+    if (!lemma) return
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      event.preventDefault()
+      onClose()
+    }
+    document.addEventListener('keydown', onKey)
+    const focusTimer = window.setTimeout(() => {
+      const root = dialogRef.current
+      if (!root) return
+      const input = root.querySelector<HTMLInputElement>('input[type="text"]')
+      ;(input ?? root).focus({ preventScroll: true })
+    }, 0)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      window.clearTimeout(focusTimer)
+    }
+  }, [lemma, onClose])
+
+  // A picture that fails to load (the row's url may be a bare bundle path on
+  // device) falls back to the translation prompt — never a broken box above
+  // an empty answer.
+  const [imgFailedFor, setImgFailedFor] = useState<string | null>(null)
+
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- canonical reset-on-key pattern
     setAnswer('')
@@ -176,7 +204,8 @@ export default function BuoyPracticeSheet({
     playOnce()
   }, [detail?.ttsResolved, playOnce, settled])
 
-  const thumbnailUrl = detail?.thumbnailUrl ?? null
+  const thumbnailUrl = detail?.thumbnailUrl && imgFailedFor !== lemma?.lemmaKey ? detail.thumbnailUrl : null
+  const onImgError = () => setImgFailedFor(lemma?.lemmaKey ?? null)
 
   // Portalled to <body>: the layout's <main> is a z-10 stacking context that
   // sits UNDER the fixed z-50 bottom nav, so a sheet rendered in place could
@@ -198,11 +227,14 @@ export default function BuoyPracticeSheet({
           onClick={onClose}
         >
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
+            tabIndex={-1}
             data-body-scroll-lock-scrollable="true"
-            className="max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl p-5 sm:p-6"
+            className="max-h-[calc(100vh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl p-5 outline-none sm:p-6"
             style={{
+              maxHeight: 'calc(100dvh - 2rem)',
               background: 'var(--surface-glass-strong)',
               border: '1px solid var(--border-strong)',
               boxShadow: 'var(--shadow-elevated)',
@@ -247,7 +279,7 @@ export default function BuoyPracticeSheet({
                       className="relative mb-4 block w-full cursor-pointer overflow-hidden rounded-xl transition-transform active:scale-[0.99]"
                       style={{ border: '1px solid var(--border-subtle)' }}
                     >
-                      <img src={thumbnailUrl} alt="" className="block max-h-56 w-full object-cover" />
+                      <img src={thumbnailUrl} alt="" className="block max-h-56 w-full object-cover" onError={onImgError} />
                       <span
                         aria-hidden="true"
                         className="absolute bottom-2 right-2 flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[color-mix(in_srgb,var(--app-bg)_74%,transparent)] text-[var(--accent-2)] backdrop-blur-sm"
@@ -261,6 +293,7 @@ export default function BuoyPracticeSheet({
                       alt=""
                       className="mb-4 block max-h-56 w-full rounded-xl object-cover"
                       style={{ border: '1px solid var(--border-subtle)' }}
+                      onError={onImgError}
                     />
                   )
                 ) : (

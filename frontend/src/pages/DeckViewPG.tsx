@@ -740,7 +740,10 @@ export default function DeckViewPG() {
                   </div>
                   {/* Thumbnail */}
                   <div className="aspect-[4/3] relative">
-                    {isTextDeck ? (
+                    {/* A text-deck word that carries a picture (Word Stream
+                        keeps store the Library image) shows it — the same
+                        picture the learner saw on the home sheet. */}
+                    {isTextDeck && !word.thumbnail_url ? (
                       <ImagelessCardThumbnail
                         word={word.word}
                         translation={word.translation ?? ''}

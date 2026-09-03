@@ -259,6 +259,7 @@ async function main() {
     mission: null,
     missionPending: false,
     lessonDoneToday: false,
+    streamLive: false,
     isSpeakLanguage: true,
     deckHref: '/deck/d1',
   }
@@ -273,18 +274,28 @@ async function main() {
               for (const m of [null, mission, { ...mission, isPathComplete: true }])
                 for (const missionPending of [true, false])
                   for (const lessonDoneToday of [true, false])
-                    for (const isSpeakLanguage of [true, false]) {
-                      const hero = resolveHomeHero({
-                        fetched, hasError, hasDecks, wordCount, duePoolCount,
-                        mission: m, missionPending, lessonDoneToday, isSpeakLanguage,
-                        deckHref: '/deck/d1',
-                      })
-                      assert.ok(hero && typeof hero.kind === 'string', 'resolver returned nothing')
-                      kinds.add(hero.kind)
-                    }
-    for (const expected of ['skeleton', 'unavailable', 'preparing', 'lesson', 'recall', 'speak', 'discover']) {
+                    for (const streamLive of [true, false])
+                      for (const isSpeakLanguage of [true, false]) {
+                        const hero = resolveHomeHero({
+                          fetched, hasError, hasDecks, wordCount, duePoolCount,
+                          mission: m, missionPending, lessonDoneToday, streamLive, isSpeakLanguage,
+                          deckHref: '/deck/d1',
+                        })
+                        assert.ok(hero && typeof hero.kind === 'string', 'resolver returned nothing')
+                        kinds.add(hero.kind)
+                      }
+    for (const expected of ['skeleton', 'unavailable', 'preparing', 'lesson', 'recall', 'stream', 'speak', 'discover']) {
       assert.ok(kinds.has(expected), `kind ${expected} unreachable`)
     }
+  })
+
+  check('hero: the stream outranks speak/discover only when nothing is owed', () => {
+    assert.equal(resolveHomeHero({ ...heroBase, streamLive: true, mission }).kind, 'lesson')
+    assert.equal(resolveHomeHero({ ...heroBase, streamLive: true }).kind, 'recall')
+    assert.equal(resolveHomeHero({ ...heroBase, streamLive: true, duePoolCount: 0 }).kind, 'stream')
+    assert.equal(resolveHomeHero({ ...heroBase, streamLive: true, duePoolCount: 0, isSpeakLanguage: false }).kind, 'stream')
+    assert.equal(resolveHomeHero({ ...heroBase, streamLive: true, duePoolCount: 0, hasError: true }).kind, 'unavailable')
+    assert.equal(resolveHomeHero({ ...heroBase, streamLive: true, duePoolCount: 0, wordCount: 0 }).kind, 'preparing')
   })
 
   check('hero: an RPC failure is unavailable, never "nothing is due" (Opus 12)', () => {

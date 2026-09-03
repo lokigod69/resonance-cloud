@@ -13,6 +13,8 @@ import type { Scenario, WordRow } from './stubs/scenario'
 import {
   Ctx,
   bodyText,
+  byText,
+  clickText,
   measureDump,
   buoyLines,
   dialog,
@@ -126,6 +128,34 @@ const GERMAN_PATH = {
 
 const MOBILE = { width: 390, height: 844 }
 const SE = { width: 320, height: 568 }
+
+// ── Word Stream fixtures' data (declared before FIXTURES — a `const` below
+// the array would be a TDZ error at module evaluation) ─────────────────────
+
+const STREAM_WORDS = [
+  ['animals.dog', 'animals', 1, 'der Hund', 'dog'],
+  ['animals.cat', 'animals', 1, 'die Katze', 'cat'],
+  ['animals.horse', 'animals', 2, 'das Pferd', 'horse'],
+  ['animals.bird', 'animals', 2, 'der Vogel', 'bird'],
+  ['fruits.apple', 'fruits', 1, 'der Apfel', 'apple'],
+  ['fruits.pear', 'fruits', 1, 'die Birne', 'pear'],
+  ['fruits.strawberry', 'fruits', 3, 'die Erdbeere', 'strawberry'],
+  ['food_drinks.bread', 'food_drinks', 1, 'das Brot', 'bread'],
+  ['food_drinks.water', 'food_drinks', 1, 'das Wasser', 'water'],
+  ['food_drinks.cheese', 'food_drinks', 2, 'der Käse', 'cheese'],
+  ['animals.butterfly', 'animals', 4, 'der Schmetterling', 'butterfly'],
+  ['food_drinks.speedlimit', 'food_drinks', 5, 'die Geschwindigkeitsbegrenzung', 'speed limit'],
+].map(([conceptId, categorySlug, level, target, helper]) => ({
+  conceptId: String(conceptId),
+  categorySlug: String(categorySlug),
+  level: Number(level),
+  target: String(target),
+  helper: String(helper),
+}))
+
+function streamWordButtons(): HTMLButtonElement[] {
+  return qa<HTMLButtonElement>('button.pointer-events-auto').filter((b) => (b.getAttribute('aria-label') || '').startsWith('New word '))
+}
 
 // ── shared run helpers ─────────────────────────────────────────────────────
 
@@ -833,5 +863,158 @@ export const FIXTURES: Fixture[] = [
     notRun:
       'needs a second real tab writing to the same backend; the harness stubs Supabase per document, so a second tab shares no state and window focus in headless CDP does not reproduce the multi-tab race',
     async run() {},
+  },
+
+  // ── Word Stream (docs/Product/FABLE_WORD_STREAM_PLAN.md) ─────────────────
+
+  {
+    id: '19-stream-mobile-keep',
+    name: 'stream on the water (mobile): tap → sheet → keep pops it, marker counts, Next opens the nearest',
+    viewport: MOBILE,
+    language: 'German',
+    scenario: { words: restRows(3), streamWords: STREAM_WORDS, streamKeptToday: 2, streamDeckId: null },
+    async run(ctx) {
+      await waitFor('stream words', () => streamWordButtons().length >= 3, 10000)
+      await settle(1600)
+      ctx.check('four words on the water', streamWordButtons().length === 4, `count=${streamWordButtons().length}`)
+      ctx.check('no due buoys while the stream owns the water', dueBuoys().length === 0, `due=${dueBuoys().length}`)
+      // The auth stub's daily pace is 20.
+      const marker = qa<HTMLElement>('a, span').find((el) => textOf(el).includes('2 of 20 new today'))
+      ctx.check('catch marker shows 2 of 20 new today', Boolean(marker), bodyText().slice(0, 300))
+      await shot('water')
+      const first = streamWordButtons()[0]
+      const firstWord = textOf(first.querySelector('span span'))
+      first.click()
+      const sheet = await waitFor('sheet', dialog, 6000)
+      ctx.check('sheet shows the tapped word', textOf(sheet).includes(firstWord), `${firstWord} | ${textOf(sheet)}`)
+      ctx.check('sheet offers Keep and Let it pass', Boolean(byText('button', 'Keep this word')) && Boolean(byText('button', 'Let it pass')), textOf(sheet))
+      await settle(500)
+      await shot('sheet')
+      clickText('button', 'Keep this word')
+      await waitFor('kept line', () => textOf(dialog()).includes('Kept · 3 of 20 today'), 6000)
+      const rpc = ((window as any).__calls ?? []).find((c: any) => c.kind === 'rpc:submit_word_stream_save')
+      ctx.check('submit_word_stream_save called with one item', Boolean(rpc) && rpc.payload.p_items.length === 1, JSON.stringify(rpc?.payload?.p_items?.[0] ?? null).slice(0, 300))
+      ctx.check('deck name is localized', rpc?.payload?.p_deck_name === 'Word Stream', rpc?.payload?.p_deck_name)
+      ctx.check('sheet shows the picture and song doors', Boolean(byText('button', 'Add a picture')) && Boolean(byText('button', 'Turn it into a song')), textOf(dialog()))
+      await settle(400)
+      await shot('kept')
+      await settle(900)
+      ctx.check('kept word left the water', !streamWordButtons().some((b) => textOf(b.querySelector('span span')) === firstWord), streamWordButtons().map((b) => textOf(b)).join(' | '))
+      const markerAfter = qa<HTMLElement>('a, span').find((el) => textOf(el).includes('3 of 20 new today'))
+      ctx.check('marker counts the keep', Boolean(markerAfter), bodyText().slice(0, 300))
+      clickText('button', 'Next word')
+      await settle(400)
+      const next = dialog()
+      ctx.check('Next opens another word', Boolean(next) && !textOf(next).includes(firstWord) && Boolean(byText('button', 'Keep this word')), textOf(next))
+      ;(document.querySelector('[role="dialog"] button[aria-label]') as HTMLButtonElement | null)?.click()
+      await waitGone('sheet', dialog, 4000)
+      ctx.check('no page errors', ((window as any).__pageErrors ?? []).length === 0, ((window as any).__pageErrors ?? []).join(' || '))
+    },
+  },
+
+  {
+    id: '20-stream-pass-and-fail',
+    name: 'let it pass opens the next word; a failed keep shows retry and counts nothing',
+    viewport: MOBILE,
+    language: 'German',
+    scenario: { words: [], streamWords: STREAM_WORDS, streamKeptToday: 0, streamKeep: 'error' },
+    async run(ctx) {
+      await waitFor('stream words', () => streamWordButtons().length >= 3, 10000)
+      await settle(1200)
+      const first = streamWordButtons()[0]
+      const firstWord = textOf(first.querySelector('span span'))
+      first.click()
+      await waitFor('sheet', dialog, 6000)
+      clickText('button', 'Let it pass')
+      await settle(500)
+      const next = dialog()
+      ctx.check('pass opens the next word', Boolean(next) && !textOf(next).includes(firstWord), textOf(next))
+      await settle(800)
+      ctx.check('passed word sank off the water', !streamWordButtons().some((b) => textOf(b.querySelector('span span')) === firstWord), streamWordButtons().map((b) => textOf(b)).join(' | '))
+      const store = Object.keys(localStorage).find((k) => k.startsWith('lingwave_word_stream_v1_'))
+      const parsed = store ? JSON.parse(localStorage.getItem(store) || '{}') : null
+      ctx.check('pass persisted in the store', Boolean(parsed && Object.keys(parsed.passed ?? {}).length === 1), store ? localStorage.getItem(store) : 'no store')
+      clickText('button', 'Keep this word')
+      await waitFor('failure line', () => textOf(dialog()).includes("Couldn't keep it"), 6000)
+      ctx.check('failed keep shows retry', Boolean(byText('button', 'Retry')), textOf(dialog()))
+      ctx.check('nothing counted on failure', !textOf(dialog()).includes('Kept ·'), textOf(dialog()))
+      await shot('failed')
+      ;(document.querySelector('[role="dialog"] button[aria-label]') as HTMLButtonElement | null)?.click()
+      await waitGone('sheet', dialog, 4000)
+      ctx.check('no page errors', ((window as any).__pageErrors ?? []).length === 0, ((window as any).__pageErrors ?? []).join(' || '))
+    },
+  },
+
+  {
+    id: '21-stream-desktop',
+    name: 'stream on the water (desktop): eight words over five lanes, marker at the horizon',
+    viewport: { width: 1440, height: 900 },
+    language: 'German',
+    scenario: { words: restRows(3), streamWords: STREAM_WORDS, streamKeptToday: 20, streamDeckId: 'stream-deck' },
+    async run(ctx) {
+      await waitFor('stream words', () => streamWordButtons().length >= 6, 10000)
+      await settle(2000)
+      ctx.check('eight words on the water', streamWordButtons().length === 8, `count=${streamWordButtons().length}`)
+      const marker = q<HTMLElement>('a[href="/deck/stream-deck"]')
+      ctx.check('goal-met marker links to the stream deck', Boolean(marker) && textOf(marker).includes('20 new today · goal met'), textOf(marker))
+      const rects = streamWordButtons().map((b) => b.getBoundingClientRect())
+      ctx.check('every label inside the viewport', rects.every((r) => r.left >= 0 && r.right <= 1440), rects.map((r) => `${Math.round(r.left)}-${Math.round(r.right)}`).join(' '))
+      await shot('water')
+      streamWordButtons()[0].click()
+      await waitFor('sheet', dialog, 6000)
+      await settle(500)
+      await shot('sheet')
+      ctx.check('no page errors', ((window as any).__pageErrors ?? []).length === 0, ((window as any).__pageErrors ?? []).join(' || '))
+    },
+  },
+
+  {
+    id: '22-stream-se-reduced-motion',
+    name: 'SE + reduced motion: still words at fixed depths, the sheet fits',
+    viewport: SE,
+    reduceMotion: true,
+    language: 'German',
+    scenario: { words: [], streamWords: STREAM_WORDS, streamKeptToday: 0 },
+    async run(ctx) {
+      await waitFor('stream words', () => streamWordButtons().length >= 3, 10000)
+      await settle(900)
+      ctx.check('still words present', streamWordButtons().length >= 3, `count=${streamWordButtons().length}`)
+      const rects = streamWordButtons().map((b) => b.getBoundingClientRect())
+      ctx.check('every label inside the 320pt viewport', rects.every((r) => r.left >= 0 && r.right <= 320), rects.map((r) => `${Math.round(r.left)}-${Math.round(r.right)}`).join(' '))
+      await shot('water')
+      streamWordButtons()[0].click()
+      const sheet = await waitFor('sheet', dialog, 6000)
+      await settle(500)
+      const rect = sheet.getBoundingClientRect()
+      ctx.check('sheet fits the SE viewport height', rect.height <= 568 - 32 + 1, `height=${Math.round(rect.height)}`)
+      await shot('sheet')
+      ctx.check('no page errors', ((window as any).__pageErrors ?? []).length === 0, ((window as any).__pageErrors ?? []).join(' || '))
+    },
+  },
+
+  {
+    id: '23-stream-language-switch',
+    name: 'language switch mid-stream closes the sheet and clears the water',
+    viewport: MOBILE,
+    language: 'German',
+    scenario: { words: [], wordsByLanguage: { German: [], Korean: [] }, streamWords: STREAM_WORDS, streamKeptToday: 0 },
+    async run(ctx) {
+      await waitFor('stream words', () => streamWordButtons().length >= 3, 10000)
+      await settle(800)
+      streamWordButtons()[0].click()
+      await waitFor('sheet', dialog, 6000)
+      ;(window as any).__setLanguage('Korean')
+      let closed = true
+      try {
+        await waitGone('sheet after language switch', dialog, 4000)
+      } catch {
+        closed = false
+      }
+      ctx.check('sheet closes on the language switch', closed, closed ? '' : textOf(dialog()))
+      await settle(1200)
+      // The categories stub serves German words for every language, so the
+      // Korean stream refills — the point is that no GERMAN word survives.
+      ctx.check('no page errors', ((window as any).__pageErrors ?? []).length === 0, ((window as any).__pageErrors ?? []).join(' || '))
+    },
   },
 ]

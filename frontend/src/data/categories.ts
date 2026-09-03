@@ -4,8 +4,24 @@ import { STATIC_CATEGORY_TRANSLATIONS } from './staticCategoryTranslations'
 // (and used in backend prompts). They must remain in stable English. The
 // `labelKey` / `groupKey` fields are i18n lookups for display only — the
 // English `name` / `label` fields stay as English fallbacks via t().
-export type StaticCategoryTargetLanguageCode = 'en' | 'de' | 'fr' | 'es' | 'pt' | 'it' | 'pl' | 'id' | 'ceb' | 'ko' | 'ru' | 'ja'
-export type StaticCategoryLanguageStatus = 'stable' | 'experimental' | 'hidden'
+// The language table and code resolver live in the light-weight sibling
+// module so callers that only need a code do not pull the translation table.
+import {
+  STATIC_CATEGORY_TRANSLATION_LANGUAGES,
+  resolveStaticCategoryTargetLanguageCode,
+  type StaticCategoryTargetLanguageCode,
+} from './staticCategoryLanguages'
+
+export {
+  STATIC_CATEGORY_TRANSLATION_LANGUAGES,
+  isStaticCategoryLanguage,
+  resolveStaticCategoryTargetLanguageCode,
+} from './staticCategoryLanguages'
+export type {
+  StaticCategoryLanguageMetadata,
+  StaticCategoryLanguageStatus,
+  StaticCategoryTargetLanguageCode,
+} from './staticCategoryLanguages'
 
 export interface StaticCategoryTranslation {
   term: string
@@ -15,68 +31,6 @@ export interface StaticCategoryTranslation {
 }
 
 export type StaticCategoryTranslations = Record<StaticCategoryTargetLanguageCode, StaticCategoryTranslation>
-
-export interface StaticCategoryLanguageMetadata {
-  code: StaticCategoryTargetLanguageCode
-  value: string
-  label: string
-  name: string
-  nativeName: string
-  status: StaticCategoryLanguageStatus
-  reviewLabel?: string
-  script: string
-}
-
-export const STATIC_CATEGORY_TRANSLATION_LANGUAGES: StaticCategoryLanguageMetadata[] = [
-  { code: 'en', value: 'English', name: 'English', nativeName: 'English', label: 'English', status: 'stable', script: 'Latin' },
-  { code: 'de', value: 'German', name: 'German', nativeName: 'Deutsch', label: 'Deutsch', status: 'stable', script: 'Latin' },
-  { code: 'fr', value: 'French', name: 'French', nativeName: 'Français', label: 'Français', status: 'stable', script: 'Latin' },
-  { code: 'es', value: 'Spanish', name: 'Spanish', nativeName: 'Español', label: 'Español', status: 'stable', script: 'Latin' },
-  { code: 'pt', value: 'Portuguese', name: 'Portuguese', nativeName: 'Português', label: 'Português', status: 'stable', script: 'Latin' },
-  { code: 'it', value: 'Italian', name: 'Italian', nativeName: 'Italiano', label: 'Italiano', status: 'stable', script: 'Latin' },
-  { code: 'pl', value: 'Polish', name: 'Polish', nativeName: 'Polski', label: 'Polski', status: 'stable', script: 'Latin' },
-  { code: 'id', value: 'Indonesian', name: 'Indonesian', nativeName: 'Bahasa Indonesia', label: 'Bahasa Indonesia', status: 'stable', script: 'Latin' },
-  {
-    code: 'ceb',
-    value: 'Bisaya',
-    name: 'Bisaya / Cebuano',
-    nativeName: 'Bisaya / Cebuano',
-    label: 'Bisaya / Cebuano',
-    status: 'experimental',
-    reviewLabel: 'review',
-    script: 'Latin',
-  },
-  {
-    code: 'ko',
-    value: 'Korean',
-    name: 'Korean',
-    nativeName: '한국어',
-    label: '한국어 (experimental)',
-    status: 'experimental',
-    reviewLabel: 'experimental',
-    script: 'Hangul',
-  },
-  {
-    code: 'ru',
-    value: 'Russian',
-    name: 'Russian',
-    nativeName: 'Русский',
-    label: 'Русский (experimental)',
-    status: 'experimental',
-    reviewLabel: 'experimental',
-    script: 'Cyrillic',
-  },
-  {
-    code: 'ja',
-    value: 'Japanese',
-    name: 'Japanese',
-    nativeName: '日本語',
-    label: '日本語 (experimental)',
-    status: 'experimental',
-    reviewLabel: 'experimental',
-    script: 'Japanese',
-  },
-]
 
 export const STATIC_CATEGORY_TARGET_LANGUAGES = STATIC_CATEGORY_TRANSLATION_LANGUAGES.filter(
   (language) => language.status !== 'hidden',
@@ -1052,18 +1006,6 @@ export function formatSelectedCategoryVocabularyLabel(item: SelectedCategoryVoca
   return item.helperTerm && normalizeStaticWord(item.helperTerm) !== normalizeStaticWord(item.targetTerm)
     ? `${item.targetTerm} / ${item.helperTerm}`
     : item.targetTerm
-}
-
-export function resolveStaticCategoryTargetLanguageCode(language?: string | null): StaticCategoryTargetLanguageCode {
-  const normalized = (language ?? '').trim().toLowerCase()
-  return STATIC_CATEGORY_TRANSLATION_LANGUAGES.find((entry) => (
-    entry.code === normalized
-    || entry.value.toLowerCase() === normalized
-    || entry.label.toLowerCase() === normalized
-    || entry.name.toLowerCase() === normalized
-    || entry.nativeName.toLowerCase() === normalized
-    || (entry.code === 'ceb' && normalized === 'cebuano')
-  ))?.code ?? 'en'
 }
 
 function getCategoryEntryWord(entry: string | CategoryWordEntry): string {

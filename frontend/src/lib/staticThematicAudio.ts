@@ -25,6 +25,20 @@ export const STATIC_THEMATIC_KO_SOLA_RAW_PROFILE_KEY = 'static_thematic_ko_sola_
 // Even-level Blasto playback/import uses the headroom-capped +8 dB boosted copy
 // (raw Blasto was ~16 dB quieter than Gavrila); raw Blasto usage rows are rejected,
 // so only the boosted rows appear in static_tts_playback.
+// Portuguese, Italian and Polish were recorded in the same batch as the six
+// languages above (static_tts_playback carries their rows) but were never
+// wired into playback — switched on 2026-09-04 with the Word Stream so a
+// tapped word in those languages plays its recording, not a browser voice.
+export const STATIC_THEMATIC_PT_RAQUEL_RAW_PROFILE_KEY = 'static_thematic_pt_raquel_raw_v1'
+export const STATIC_THEMATIC_PT_LAIR_RAW_PROFILE_KEY = 'static_thematic_pt_lair_raw_v1'
+export const STATIC_THEMATIC_PT_CARLA_RAW_PROFILE_KEY = 'static_thematic_pt_carla_raw_v1'
+export const STATIC_THEMATIC_IT_ROSANNA_RAW_PROFILE_KEY = 'static_thematic_it_rosanna_raw_v1'
+export const STATIC_THEMATIC_IT_MARCO_RAW_PROFILE_KEY = 'static_thematic_it_marco_raw_v1'
+export const STATIC_THEMATIC_IT_SAMANTA_RAW_PROFILE_KEY = 'static_thematic_it_samanta_raw_v1'
+export const STATIC_THEMATIC_PL_MARIA_RAW_PROFILE_KEY = 'static_thematic_pl_maria_raw_v1'
+export const STATIC_THEMATIC_PL_RYSARD_RAW_PROFILE_KEY = 'static_thematic_pl_rysard_raw_v1'
+export const STATIC_THEMATIC_PL_MARTA_RAW_PROFILE_KEY = 'static_thematic_pl_marta_raw_v1'
+export const STATIC_THEMATIC_PL_WOJECH_RAW_PROFILE_KEY = 'static_thematic_pl_wojech_raw_v1'
 export const STATIC_THEMATIC_ID_GAVRILA_RAW_PROFILE_KEY = 'static_thematic_id_gavrila_raw_v1'
 export const STATIC_THEMATIC_ID_BLASTO_RAW_PROFILE_KEY = 'static_thematic_id_blasto_raw_v1'
 export const STATIC_THEMATIC_ID_BLASTO_GAIN8_PROFILE_KEY = 'static_thematic_id_blasto_gain8_rawsource_v1'
@@ -87,6 +101,28 @@ export function getStaticThematicVoiceProfileKeys({
       STATIC_THEMATIC_KO_SELLY_RAW_PROFILE_KEY,
       STATIC_THEMATIC_KO_EMILY_RAW_PROFILE_KEY,
       STATIC_THEMATIC_KO_SOLA_RAW_PROFILE_KEY,
+    ]
+  }
+  if (targetLanguageCode === 'pt') {
+    return [
+      STATIC_THEMATIC_PT_RAQUEL_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_PT_LAIR_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_PT_CARLA_RAW_PROFILE_KEY,
+    ]
+  }
+  if (targetLanguageCode === 'it') {
+    return [
+      STATIC_THEMATIC_IT_ROSANNA_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_IT_MARCO_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_IT_SAMANTA_RAW_PROFILE_KEY,
+    ]
+  }
+  if (targetLanguageCode === 'pl') {
+    return [
+      STATIC_THEMATIC_PL_MARIA_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_PL_RYSARD_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_PL_MARTA_RAW_PROFILE_KEY,
+      STATIC_THEMATIC_PL_WOJECH_RAW_PROFILE_KEY,
     ]
   }
   if (targetLanguageCode === 'en' && categorySlug === 'animals') {

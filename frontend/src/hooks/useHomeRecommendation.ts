@@ -27,6 +27,7 @@ export type HomeHero =
   | { kind: 'preparing'; href: string }
   | { kind: 'lesson'; mission: TodayMission }
   | { kind: 'recall'; count: number }
+  | { kind: 'stream' }
   | { kind: 'speak' }
   | { kind: 'discover' }
 
@@ -45,6 +46,8 @@ export type ResolveHomeHeroInput = {
   missionPending: boolean
   /** The mission's lesson segment was already completed today (UTC). */
   lessonDoneToday: boolean
+  /** The Word Stream has words on the water (docs/Product/FABLE_WORD_STREAM_PLAN.md). */
+  streamLive: boolean
   isSpeakLanguage: boolean
   /** Target for the `preparing` hero's deck link. */
   deckHref: string
@@ -53,7 +56,7 @@ export type ResolveHomeHeroInput = {
 /** Pure, total resolver — unit-tested for totality. Returns `skeleton` only
  * while a decision genuinely cannot be made yet. */
 export function resolveHomeHero(input: ResolveHomeHeroInput): HomeHero {
-  const { fetched, hasError, hasDecks, wordCount, duePoolCount, mission, missionPending, lessonDoneToday, isSpeakLanguage, deckHref } = input
+  const { fetched, hasError, hasDecks, wordCount, duePoolCount, mission, missionPending, lessonDoneToday, streamLive, isSpeakLanguage, deckHref } = input
   if (!fetched) return { kind: 'skeleton' }
   if (hasError) return { kind: 'unavailable' }
   if (hasDecks && wordCount === 0) return { kind: 'preparing', href: deckHref }
@@ -64,6 +67,9 @@ export function resolveHomeHero(input: ResolveHomeHeroInput): HomeHero {
     return { kind: 'skeleton' }
   }
   if (duePoolCount > 0) return { kind: 'recall', count: duePoolCount }
+  // Nothing owed: the sea already carries new words, and catching one is the
+  // most immediate thing to do — Speak follows (owner call 2026-09-04).
+  if (streamLive) return { kind: 'stream' }
   if (isSpeakLanguage) return { kind: 'speak' }
   return { kind: 'discover' }
 }
@@ -77,6 +83,10 @@ type UseHomeRecommendationArgs = {
   hasDecks: boolean
   mission: TodayMission | null
   missionLoading: boolean
+  /** The Word Stream has words on the water. Lands asynchronously (lazy
+   * library), so it may UPGRADE a committed speak/discover hero — both are
+   * "nothing owed" heroes, and swapping between them moves no workload. */
+  streamLive: boolean
   isSpeakLanguage: boolean
   deckHref: string
 }
@@ -89,6 +99,7 @@ export function useHomeRecommendation({
   hasDecks,
   mission,
   missionLoading,
+  streamLive,
   isSpeakLanguage,
   deckHref,
 }: UseHomeRecommendationArgs): HomeHero {
@@ -131,23 +142,31 @@ export function useHomeRecommendation({
         // with nothing due there is no substitute — wait the mission out.
         missionPending: missionLoading && (duePoolCount === 0 || !missionTimedOut),
         lessonDoneToday: visit?.lessonDone ?? false,
+        streamLive,
         isSpeakLanguage,
         deckHref,
       })
 
   // Commit-once per visit key. Transient states (skeleton/unavailable) never
   // commit and never overwrite a commitment; the first real hero survives all
-  // later resolutions. The effect fires the render after the first real
-  // resolution — the same value renders uncommitted for that one frame, so
-  // nothing visibly changes.
+  // later resolutions — with one upgrade: `stream` may replace a committed
+  // speak/discover (the library lands after those resolve; all three are
+  // "nothing owed" heroes, so the swap moves no workload). The effect fires
+  // the render after the first real resolution — the same value renders
+  // uncommitted for that one frame, so nothing visibly changes.
   const commitKind = resolved.kind !== 'skeleton' && resolved.kind !== 'unavailable'
+  const resolvedKind = resolved.kind
   useEffect(() => {
     if (!visitKey || !commitKind) return
-    setCommitted((prev) => (prev?.key === visitKey ? prev : { key: visitKey, hero: resolved }))
+    setCommitted((prev) => {
+      if (prev?.key !== visitKey) return { key: visitKey, hero: resolved }
+      const upgradable = prev.hero.kind === 'speak' || prev.hero.kind === 'discover'
+      return resolvedKind === 'stream' && upgradable ? { key: visitKey, hero: resolved } : prev
+    })
     // `resolved` is rebuilt per render; the prev-guard makes this idempotent
-    // and only the first real hero per key is ever stored.
+    // and only the first real hero per key (plus the stream upgrade) is stored.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visitKey, commitKind])
+  }, [visitKey, commitKind, resolvedKind])
 
   // `unavailable` is a failure surface, not content — it may displace even a
   // committed hero, or a mid-visit RPC failure could never offer Retry.

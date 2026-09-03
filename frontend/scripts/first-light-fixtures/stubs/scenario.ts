@@ -50,6 +50,23 @@ export type Scenario = {
   recommendedLessonId?: string
   /** Delays resolution of the dynamic import('@/data/guidedLessons'). */
   guidedDelayMs?: number
+  /** Word Stream: the thematic-library words the categories stub serves for
+   * the active language (none = the stream has no words → buoys render). */
+  streamWords?: StreamWordStub[]
+  /** Word Stream: kept-today count the words count query answers. */
+  streamKeptToday?: number
+  /** Word Stream: existing stream deck id, if any. */
+  streamDeckId?: string | null
+  /** Word Stream: submit_word_stream_save fails ('error') or is missing ('missing'). */
+  streamKeep?: 'ok' | 'error' | 'missing' | 'duplicate'
+}
+
+export type StreamWordStub = {
+  conceptId: string
+  categorySlug: string
+  level: number
+  target: string
+  helper: string
 }
 
 export function scenario(): Scenario {

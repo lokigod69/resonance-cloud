@@ -14,6 +14,9 @@ type HomeRecommendationCardProps = {
   phraseLang: string | undefined
   onStartRecall: () => void
   onRetry: () => void
+  /** The Word Stream is live on the water: the `discover` hero points at it
+   * (nearest word) instead of at the Library. */
+  onCatchNearest?: () => void
 }
 
 // 120–150pt cap (§0): 9.375rem = 150pt — the cap's top; two-line displays
@@ -22,7 +25,7 @@ type HomeRecommendationCardProps = {
 // by clipping descenders.
 const CARD_HEIGHT = 'h-[9.375rem]'
 
-export default function HomeRecommendationCard({ hero, phraseLang, onStartRecall, onRetry }: HomeRecommendationCardProps) {
+export default function HomeRecommendationCard({ hero, phraseLang, onStartRecall, onRetry, onCatchNearest }: HomeRecommendationCardProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
@@ -84,6 +87,14 @@ export default function HomeRecommendationCard({ hero, phraseLang, onStartRecall
       sub = null
       ctaLabel = t('home.fl.hero.unavailableRetry')
       onCta = onRetry
+      break
+    case 'stream':
+      eyebrow = t('home.stream.hero.title')
+      display = t('home.stream.hero.sub')
+      sub = null
+      ctaLabel = t('home.stream.hero.cta')
+      // Never a dead button (§8.1): without the water's callback, the Library.
+      onCta = onCatchNearest ?? (() => navigate('/categories'))
       break
     default:
       eyebrow = t('home.fl.hero.discoverTitle')

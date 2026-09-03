@@ -1,4 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
+import { readCurriculumMetadata } from '@/lib/curriculumMetadata'
 import {
   getCurriculumEnrichmentBySlug,
   type CurriculumCategory,
@@ -327,13 +328,7 @@ async function fetchStaticCategoryAudioForImport(
   }
 }
 
-export function readCurriculumMetadata(value: unknown): Record<string, unknown> {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
-  const metadata = value as Record<string, unknown>
-  const curriculum = metadata.curriculum
-  if (!curriculum || typeof curriculum !== 'object' || Array.isArray(curriculum)) return {}
-  return curriculum as Record<string, unknown>
-}
+export { readCurriculumMetadata } from '@/lib/curriculumMetadata'
 
 export async function attachStaticThematicAudioToImportedDeck(
   supabase: SupabaseClient,
