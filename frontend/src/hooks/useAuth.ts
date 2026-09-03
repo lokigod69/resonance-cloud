@@ -1,12 +1,24 @@
-import { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState, useCallback, useRef } from 'react'
 import { Browser } from '@capacitor/browser'
 import type { Session, User } from '@supabase/supabase-js'
 import { supabase, type AuthProfile } from '@/lib/supabase'
 import { getOAuthRedirectTo } from '@/lib/publicOrigins'
 import { isNativeApp } from '@/lib/platform'
 import { analytics, deterministicUuid } from '@/lib/analytics'
+import { invalidatePlan } from '@/hooks/usePlan'
 
 const profileCacheKey = (userId: string) => `resonance_auth_profile_${userId}`
+
+// Session restore normally settles in well under a second. If it never does
+// (captive portal, black-holed TLS, a Web Locks lock held by a frozen tab) the
+// app must not sit on a full-screen loader forever (audit 2026-09-03 F-07).
+const AUTH_BOOT_TIMEOUT_MS = 12_000
+
+// Dev-only diagnostics: user ids, credits and base language must not reach
+// production consoles (they end up in support screenshots — audit C-05).
+function debugLog(...args: unknown[]) {
+  if (import.meta.env.DEV) console.log(...args)
+}
 
 // Portfolio 'signup' — once per page load; the deterministic uuid dedupes
 // same-day repeats server-side. Password signups emit at the signUp() success
@@ -90,6 +102,7 @@ export function useAuthState(): AuthState {
   const profileRetryTimeoutRef = useRef<number | null>(null)
   const profileRetryAttemptRef = useRef(0)
   const fetchProfileRef = useRef<((userId: string, force?: boolean) => Promise<void>) | null>(null)
+  const lastUserIdRef = useRef<string | null>(null)
 
   const clearProfileRetry = useCallback(() => {
     if (profileRetryTimeoutRef.current !== null) {
@@ -159,7 +172,7 @@ export function useAuthState(): AuthState {
     const startedAt = performance.now()
 
     try {
-      console.log('[useAuth] fetchProfile called for:', userId)
+      debugLog('[useAuth] fetchProfile called for:', userId)
       // select('*') on purpose: the row is RLS-scoped to the user anyway, and an
       // explicit column list 400s the whole login whenever the client ships a
       // column the database doesn't have yet (or vice versa). target_language
@@ -185,7 +198,7 @@ export function useAuthState(): AuthState {
         return
       }
 
-      console.log('[useAuth] fetchProfile result:', {
+      debugLog('[useAuth] fetchProfile result:', {
         userId,
         durationMs: Math.round(performance.now() - startedAt),
         status,
@@ -244,7 +257,7 @@ export function useAuthState(): AuthState {
 
   const refreshProfile = useCallback(async () => {
     const { data: { session: currentSession } } = await supabase.auth.getSession()
-    console.log('[useAuth] refreshProfile - session user:', currentSession?.user?.id ?? 'none')
+    debugLog('[useAuth] refreshProfile - session user:', currentSession?.user?.id ?? 'none')
     if (currentSession?.user) {
       profileFetchedRef.current = false
       profileFetchedUserIdRef.current = null
@@ -262,9 +275,23 @@ export function useAuthState(): AuthState {
         return
       }
 
-      console.log('[useAuth] session state:', nextSession?.user?.id ?? 'no-session')
+      debugLog('[useAuth] session state:', nextSession?.user?.id ?? 'no-session')
+      const nextUserId = nextSession?.user?.id ?? null
+      if (lastUserIdRef.current !== nextUserId) {
+        // Entitlements are per user: a previous account's plan must never
+        // survive a sign-out / sign-in on the same tab (audit F-09).
+        invalidatePlan()
+        lastUserIdRef.current = nextUserId
+      }
       setSession(nextSession)
-      setUser(nextSession?.user ?? null)
+      // auth-js re-emits SIGNED_IN with a fresh user object on every tab-focus
+      // token check; keep the previous object when nothing about the user
+      // changed so effects keyed on `user` do not refetch (audit E-04).
+      setUser((prev) => {
+        const next = nextSession?.user ?? null
+        if (prev && next && prev.id === next.id && prev.updated_at === next.updated_at) return prev
+        return next
+      })
       setLoading(false)
       setAuthError(null)
 
@@ -278,7 +305,12 @@ export function useAuthState(): AuthState {
         if (profileFetchedUserIdRef.current !== nextSession.user.id) {
           profileFetchedRef.current = false
           profileFetchedUserIdRef.current = null
-          setProfileReady(false)
+          // Stale-while-revalidate: a cached profile opens the route gate at
+          // once and the fetch below refreshes it in the background, so a
+          // returning user no longer waits a round trip on a spinner
+          // (audit D-08 / F-08). A cold cache (new account, new device) still
+          // gates so the onboarding decision is made on real data.
+          setProfileReady(Boolean(cachedProfile))
           setProfileLoadError(false)
           setProfile(cachedProfile)
         }
@@ -303,6 +335,17 @@ export function useAuthState(): AuthState {
         setLoading(false)
       })
 
+    // A hang is not a rejection: bound the restore so the route gates open
+    // (to /login) instead of pulsing the loader forever. A session that
+    // arrives later still flows through onAuthStateChange.
+    const bootTimer = window.setTimeout(() => {
+      if (!active) return
+      setLoading((stillLoading) => {
+        if (stillLoading) console.warn('[useAuth] session restore did not settle in time; continuing without it')
+        return false
+      })
+    }, AUTH_BOOT_TIMEOUT_MS)
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, nextSession) => {
         applySession(nextSession)
@@ -311,18 +354,19 @@ export function useAuthState(): AuthState {
 
     return () => {
       active = false
+      window.clearTimeout(bootTimer)
       abortProfileFetch()
       clearProfileRetry()
       subscription.unsubscribe()
     }
   }, [abortProfileFetch, clearProfileRetry, fetchProfile, resetProfileState])
 
-  const signInWithEmail = async (email: string, password: string) => {
+  const signInWithEmail = useCallback(async (email: string, password: string) => {
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     return { error: error?.message ?? null }
-  }
+  }, [])
 
-  const signUpWithEmail = async (email: string, password: string) => {
+  const signUpWithEmail = useCallback(async (email: string, password: string) => {
     const { data, error } = await supabase.auth.signUp({ email, password })
     if (!error && data.user && !signupEmittedThisLoad) {
       // Emit under the new account's id even though the session may only
@@ -332,9 +376,9 @@ export function useAuthState(): AuthState {
       analytics.track('signup', { method: 'password' }, { uuid: deterministicUuid(`signup:${data.user.id}`) })
     }
     return { error: error?.message ?? null }
-  }
+  }, [])
 
-  const signInWithGoogle = async () => {
+  const signInWithGoogle = useCallback(async () => {
     if (isNativeApp()) {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
@@ -358,18 +402,25 @@ export function useAuthState(): AuthState {
       options: { redirectTo: getOAuthRedirectTo() },
     })
     return { error: error?.message ?? null }
-  }
+  }, [])
 
-  const signOut = async () => {
+  const signOut = useCallback(async () => {
+    // The cached profile row (name, role, balances) must not outlive the
+    // session on a shared device (audit C-04); the plan cache is per user.
+    const currentUserId = user?.id ?? profileFetchedUserIdRef.current
+    if (currentUserId) writeCachedProfile(currentUserId, null)
+    invalidatePlan()
     resetProfileState()
     await supabase.auth.signOut()
     setSession(null)
     setUser(null)
     setAuthError(null)
     setLoading(false)
-  }
+  }, [resetProfileState, user])
 
-  return {
+  // One stable context value per state change: without this every render of
+  // AuthProvider re-rendered every consumer in the tree (audit E-05).
+  return useMemo(() => ({
     session,
     user,
     profile,
@@ -383,5 +434,19 @@ export function useAuthState(): AuthState {
     signInWithGoogle,
     signOut,
     refreshProfile,
-  }
+  }), [
+    session,
+    user,
+    profile,
+    loading,
+    profileLoading,
+    profileReady,
+    profileLoadError,
+    authError,
+    signInWithEmail,
+    signUpWithEmail,
+    signInWithGoogle,
+    signOut,
+    refreshProfile,
+  ])
 }

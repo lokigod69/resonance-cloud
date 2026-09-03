@@ -122,6 +122,11 @@ export function formatSpeakApiError(
 
 export const translations: Record<Locale, Record<string, string>> = {
   en: {
+    // Route error boundary (audit 2026-09-03 F-01)
+    'errors.route.title': 'Something went wrong on this page',
+    'errors.route.body': 'Your progress is safe. Try again or go back home.',
+    'errors.route.retry': 'Try again',
+    'errors.route.home': 'Go home',
     // ── Navigation ──
     'nav.dashboard': 'Home',
     'nav.today': 'Today',
@@ -1829,6 +1834,11 @@ export const translations: Record<Locale, Record<string, string>> = {
   },
 
   de: {
+    // Route error boundary (audit 2026-09-03 F-01)
+    'errors.route.title': 'Auf dieser Seite ist etwas schiefgelaufen',
+    'errors.route.body': 'Dein Fortschritt ist gespeichert. Versuch es noch einmal oder geh zurück zur Startseite.',
+    'errors.route.retry': 'Erneut versuchen',
+    'errors.route.home': 'Zur Startseite',
     // ── Navigation ──
     'nav.dashboard': 'Home',
     'nav.today': 'Heute',
@@ -3533,6 +3543,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.productLane.cardText.cost': 'Kostenlos',
   },
   fr: {
+    // Route error boundary (audit 2026-09-03 F-01)
+    'errors.route.title': 'Un problème est survenu sur cette page',
+    'errors.route.body': 'Ta progression est sauvegardée. Réessaie ou reviens à l’accueil.',
+    'errors.route.retry': 'Réessayer',
+    'errors.route.home': 'Retour à l’accueil',
     'generate.productLane.cardText.label': 'Carte texte',
     'generate.productLane.cardText.helper': 'Texte + IPA seulement. Pas d\'image IA, pas d\'audio.',
     'generate.productLane.cardText.cost': 'Gratuit',

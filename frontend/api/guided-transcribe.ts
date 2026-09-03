@@ -73,6 +73,11 @@ export async function POST(req: Request): Promise<Response> {
     body = validateGuidedTranscribeBody(rawBody)
     const user = await requireSupabaseUser(req)
     userId = user.id
+    // Provider config is checked before the quota unit is spent, so a
+    // misconfigured deploy cannot burn a user's daily allowance (A-12).
+    if (!process.env.GROQ_API_KEY) {
+      throw new ApiError(503, 'Speech transcription service is not configured')
+    }
     await consumeApiQuota(user.id, 'guided_transcribe')
   } catch (err) {
     if (err instanceof ApiError) return apiErrorResponse(req, err)

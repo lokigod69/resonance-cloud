@@ -4,7 +4,7 @@
 
 import { createClient } from '@supabase/supabase-js'
 import { optionsResponse } from './_shared/cors'
-import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
+import { ApiError, apiErrorResponse, errorResponse, fetchWithTimeout, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
 import { writeUsageEvent } from './_shared/usageEvents'
@@ -220,8 +220,11 @@ For each item, return:
 Return only valid JSON of the form {"items":[{"word":"...","translation":"...","ipa":"...","is_phrase":false}]}. If the transcript contains no suitable items, return {"items":[]}.`
 }
 
+// A hung OpenRouter call must not pin the function (audit 2026-09-03 A-07).
+const OPENROUTER_TIMEOUT_MS = 20_000
+
 async function callOpenRouter(apiKey: string, systemPrompt: string, transcript: TranscriptMessage[]): Promise<Response> {
-  return fetch('https://openrouter.ai/api/v1/chat/completions', {
+  return fetchWithTimeout('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -235,7 +238,7 @@ async function callOpenRouter(apiKey: string, systemPrompt: string, transcript: 
       ],
       response_format: { type: 'json_object' },
     }),
-  })
+  }, OPENROUTER_TIMEOUT_MS)
 }
 
 function stripCodeFences(s: string): string {

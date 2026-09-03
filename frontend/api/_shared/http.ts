@@ -90,3 +90,24 @@ export async function rejectBodyOverLimit(req: Request, maxBytes: number): Promi
 export function sanitizedProviderError(req: Request, message = 'Upstream provider unavailable'): Response {
   return errorResponse(req, 502, message)
 }
+
+/**
+ * fetch() with a hard deadline. Every upstream call made from api/ carries one:
+ * a hung provider would otherwise pin the function until the platform kills it,
+ * and the client would then parse an HTML 504 instead of our JSON error.
+ * `fetchImpl` is resolved at call time so contract tests can swap the global.
+ */
+export async function fetchWithTimeout(
+  url: string,
+  init: RequestInit,
+  timeoutMs: number,
+  fetchImpl: typeof fetch = fetch,
+): Promise<Response> {
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), timeoutMs)
+  try {
+    return await fetchImpl(url, { ...init, signal: controller.signal })
+  } finally {
+    clearTimeout(timer)
+  }
+}

@@ -3,7 +3,7 @@
 // and attach IPA for image-less text decks.
 
 import { optionsResponse } from './_shared/cors'
-import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
+import { ApiError, apiErrorResponse, errorResponse, fetchWithTimeout, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
 import { writeUsageEvent } from './_shared/usageEvents'
@@ -102,8 +102,11 @@ function buildUserPrompt(body: TranslateBody): string {
   })
 }
 
+// A hung OpenRouter call must not pin the function (audit 2026-09-03 A-07).
+const OPENROUTER_TIMEOUT_MS = 20_000
+
 async function callOpenRouter(apiKey: string, systemPrompt: string, userPrompt: string): Promise<Response> {
-  return fetch('https://openrouter.ai/api/v1/chat/completions', {
+  return fetchWithTimeout('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -118,7 +121,7 @@ async function callOpenRouter(apiKey: string, systemPrompt: string, userPrompt: 
         { role: 'user', content: userPrompt },
       ],
     }),
-  })
+  }, OPENROUTER_TIMEOUT_MS)
 }
 
 function parseTranslatedItems(content: string, inputs: TranslateInputItem[]): TranslatedItem[] | null {

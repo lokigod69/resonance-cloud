@@ -29,12 +29,23 @@ function migrateSkinId(raw: string | null): SkinId {
 
 export function SkinProvider({ children }: { children: ReactNode }) {
   const [skin, setSkinState] = useState<SkinId>(() => {
-    const raw = localStorage.getItem(STORAGE_KEY)
+    // Storage access can throw at first render (cookies blocked, some private
+    // modes); this runs above every error boundary, so never let it (F-13).
+    let raw: string | null = null
+    try {
+      raw = localStorage.getItem(STORAGE_KEY)
+    } catch {
+      raw = null
+    }
     const resolved = migrateSkinId(raw)
     // Write back if migrated from legacy value — but never while classic is
     // retired: the stored choice must survive so un-retiring restores it.
     if (!CLASSIC_SKIN_RETIRED && raw && raw !== resolved) {
-      localStorage.setItem(STORAGE_KEY, resolved)
+      try {
+        localStorage.setItem(STORAGE_KEY, resolved)
+      } catch {
+        // best-effort
+      }
     }
     return resolved
   })

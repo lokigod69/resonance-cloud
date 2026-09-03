@@ -14,6 +14,7 @@ import { CanvasShell } from '@/components/study/canvas/CanvasShell'
 import type { CanvasAutoReveal, CanvasDirection, CanvasLanguagePair, CanvasMode } from '@/components/study/canvas/types'
 import { getCardFaces } from '@/lib/cardFaces'
 import { LANGUAGES } from '@/lib/languages'
+import { safeInternalPath } from '@/lib/safeInternalPath'
 
 const PAGE_SIZE = 20
 const SESSION_STORAGE_PREFIX = 'resonance-canvas-session'
@@ -160,7 +161,7 @@ export default function StudyCanvas() {
   const modeParam = searchParams.get('mode')
   const requestedMode = isCanvasMode(modeParam) ? modeParam : null
   const rawReturnTo = searchParams.get('returnTo')
-  const returnTo = rawReturnTo?.startsWith('/') ? rawReturnTo : null
+  const returnTo = rawReturnTo ? safeInternalPath(rawReturnTo, '') || null : null
   const studyLanguage = langParam ?? activeLanguage
   const sessionStorageKey = useMemo(
     () => getCanvasSessionStorageKey(deckId, studyLanguage, queue),

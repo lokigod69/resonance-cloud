@@ -23,6 +23,11 @@ const FAILED_PLAN: PlanState = {
   loaded: true,
 }
 
+// Module cache, scoped to one signed-in user. A failed fetch is never cached
+// (the next mount retries), and useAuth invalidates on sign-out / user switch
+// so an admin's plan can never leak into the next learner's session on the
+// same tab (audit 2026-09-03 F-09).
+let cachedUserId: string | null = null
 let resolvedPlan: PlanState | null = null
 let planPromise: Promise<PlanState> | null = null
 
@@ -30,37 +35,55 @@ function isPlan(value: unknown): value is Plan {
   return value === 'free' || value === 'standard' || value === 'premium'
 }
 
-async function fetchPlan(): Promise<PlanState> {
+export function invalidatePlan(): void {
+  cachedUserId = null
+  resolvedPlan = null
+  planPromise = null
+}
+
+async function fetchPlan(): Promise<{ state: PlanState; userId: string | null }> {
   try {
     const { data, error } = await supabase.auth.getSession()
     const token = data.session?.access_token
-    if (error || !token) return FAILED_PLAN
+    const userId = data.session?.user?.id ?? null
+    if (error || !token) return { state: FAILED_PLAN, userId }
 
     const response = await fetch(publicApiUrl('/api/entitlements'), {
       headers: { Authorization: `Bearer ${token}` },
+      signal: AbortSignal.timeout(15_000),
     })
-    if (!response.ok) return FAILED_PLAN
+    if (!response.ok) return { state: FAILED_PLAN, userId }
 
     const payload = await response.json() as { plan?: unknown; is_admin?: unknown }
-    if (!isPlan(payload.plan) || typeof payload.is_admin !== 'boolean') return FAILED_PLAN
+    if (!isPlan(payload.plan) || typeof payload.is_admin !== 'boolean') return { state: FAILED_PLAN, userId }
 
     return {
-      plan: payload.plan,
-      isAdmin: payload.is_admin,
-      isPremiumUi: payload.plan === 'premium' || payload.is_admin,
-      loaded: true,
+      state: {
+        plan: payload.plan,
+        isAdmin: payload.is_admin,
+        isPremiumUi: payload.plan === 'premium' || payload.is_admin,
+        loaded: true,
+      },
+      userId,
     }
   } catch {
-    return FAILED_PLAN
+    return { state: FAILED_PLAN, userId: null }
   }
 }
 
 function getPlan(): Promise<PlanState> {
   if (!planPromise) {
-    planPromise = fetchPlan().then((value) => {
-      resolvedPlan = value
-      return value
+    const request = fetchPlan().then(({ state, userId }) => {
+      if (state === FAILED_PLAN) {
+        // Do not pin a failure; let the next mount try again.
+        if (planPromise === request) planPromise = null
+        return state
+      }
+      resolvedPlan = state
+      cachedUserId = userId
+      return state
     })
+    planPromise = request
   }
   return planPromise
 }
@@ -83,4 +106,9 @@ export function usePlan(): PlanState {
   }, [])
 
   return plan
+}
+
+/** The user id the cached plan belongs to (null when nothing is cached). */
+export function cachedPlanUserId(): string | null {
+  return cachedUserId
 }

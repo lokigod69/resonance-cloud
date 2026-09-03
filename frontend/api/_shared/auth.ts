@@ -25,7 +25,9 @@ export async function requireSupabaseUser(req: Request): Promise<AuthenticatedUs
 
   const { url, anonKey } = getSupabaseAuthEnv()
   if (!url || !anonKey) {
-    throw new ApiError(401, 'Authentication unavailable')
+    // A server misconfiguration, not a client fault: 503 keeps the client from
+    // telling the user to sign in again (A-12).
+    throw new ApiError(503, 'Authentication unavailable')
   }
 
   const supabase = createClient(url, anonKey, {

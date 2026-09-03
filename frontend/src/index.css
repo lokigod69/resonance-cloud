@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+/* Web fonts are requested once from index.html (Inter, Outfit, Nunito) so they
+   load in parallel with the entry script instead of as chained @imports at the
+   end of this stylesheet (audit 2026-09-03 D-05). */
 @import "tailwindcss";
 @import './themes/glass-orb.css';
 @import './themes/cosmos.css';

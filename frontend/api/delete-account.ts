@@ -165,18 +165,32 @@ export async function DELETE(req: Request): Promise<Response> {
     // queue row. Neither may ever block the account deletion itself.
     await requestAnalyticsErasure(admin, user.id)
 
-    const storageCleanup = await deleteAccountStorageObjects(admin, user.id)
+    // Collect first, destroy the auth row (the point of no return), THEN remove
+    // objects: a transient deleteUser failure must not leave a half-deleted
+    // account whose media is already gone (audit 2026-09-03 A-08 / F-16).
+    const plan = await collectAccountStorageObjects(admin, user.id)
 
     const { error } = await admin.auth.admin.deleteUser(user.id)
     if (error) {
-      throw new ApiError(502, 'Unable to delete account', {
-        storageCleanup,
+      throw new ApiError(502, 'Unable to delete account')
+    }
+
+    const storageCleanup = await removeCollectedObjects(admin, plan)
+    if (storageCleanup.failed.length > 0) {
+      // Full detail stays server-side; the client only needs counts.
+      console.error('[delete-account] storage cleanup incomplete', {
+        userId: user.id,
+        failed: storageCleanup.failed,
       })
     }
 
     return withDeleteAccountCors(req, jsonResponse(req, {
       success: true,
-      storageCleanup,
+      storageCleanup: {
+        attempted: storageCleanup.attempted,
+        deleted: storageCleanup.deleted,
+        failed: storageCleanup.failed.length,
+      },
     }))
   } catch (error) {
     if (error instanceof ApiError) {
@@ -280,16 +294,49 @@ async function clearInviteCodeCreatorReferences(admin: AdminClient, userId: stri
   }
 }
 
-async function deleteAccountStorageObjects(admin: AdminClient, userId: string): Promise<StorageCleanupSummary> {
+type StorageCleanupPlan = {
+  objectsByBucket: Record<StorageBucket, Set<string>>
+  failures: StorageFailure[]
+  wordIds: string[]
+  exclusiveAssetIds: string[]
+}
+
+// Phase 1 (before the auth row is destroyed): read-only. Enumerates every
+// object the account owns and the pronunciation assets only its words link to.
+async function collectAccountStorageObjects(admin: AdminClient, userId: string): Promise<StorageCleanupPlan> {
   const objectsByBucket = createBucketPathMap()
   const failures: StorageFailure[] = []
+  const exclusiveAssetIds: string[] = []
 
   addStoragePath(objectsByBucket, 'profile-avatars', `${userId}/avatar.jpg`)
 
   await collectPrefixOwnedObjects(admin, userId, objectsByBucket, failures)
   const wordRows = await collectWordStorageObjects(admin, userId, objectsByBucket, failures)
+  const wordIds = wordRows.map(row => row.id)
   await collectPipelineEventObjects(admin, userId, objectsByBucket, failures)
-  await collectExclusivePronunciationObjects(admin, userId, wordRows.map(row => row.id), objectsByBucket, failures)
+  await collectExclusivePronunciationObjects(admin, userId, wordIds, objectsByBucket, failures, exclusiveAssetIds)
+
+  return { objectsByBucket, failures, wordIds, exclusiveAssetIds }
+}
+
+// Phase 2 (after deleteUser succeeded): best-effort destruction. The words
+// rows are already gone with the profile; the asset rows and objects are not
+// user-owned, so they are removed here.
+async function removeCollectedObjects(admin: AdminClient, plan: StorageCleanupPlan): Promise<StorageCleanupSummary> {
+  const { objectsByBucket, failures, wordIds, exclusiveAssetIds } = plan
+
+  if (exclusiveAssetIds.length > 0) {
+    try {
+      await deleteWordTtsLinks(admin, wordIds, exclusiveAssetIds)
+      await deleteTtsAssets(admin, exclusiveAssetIds)
+    } catch (error) {
+      failures.push({
+        bucket: 'tts-pronunciations',
+        phase: 'remove',
+        error: storageErrorMessage(error),
+      })
+    }
+  }
 
   let attempted = 0
   let deleted = 0
@@ -418,6 +465,7 @@ async function collectExclusivePronunciationObjects(
   wordIds: string[],
   objectsByBucket: Record<StorageBucket, Set<string>>,
   failures: StorageFailure[],
+  exclusiveAssetIdsOut: string[],
 ): Promise<void> {
   if (wordIds.length === 0) return
 
@@ -464,8 +512,8 @@ async function collectExclusivePronunciationObjects(
         .in('id', ids),
     )
 
-    await deleteWordTtsLinks(admin, wordIds, exclusiveAssetIds)
-    await deleteTtsAssets(admin, exclusiveAssetIds)
+    // Row deletion happens in removeCollectedObjects, after the auth row is gone.
+    exclusiveAssetIdsOut.push(...exclusiveAssetIds)
 
     for (const asset of assets) {
       if (asset.storage_bucket === 'tts-pronunciations') {

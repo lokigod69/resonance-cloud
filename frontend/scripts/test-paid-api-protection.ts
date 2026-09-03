@@ -113,6 +113,31 @@ globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise
     return json([])
   }
 
+  // Post-turn telemetry inserts (usage/cost events, Live session rows). Not part
+  // of the gate sequence under test; accept them silently.
+  if (
+    url.startsWith('https://supabase.test/rest/v1/pipeline_events')
+    || url.startsWith('https://supabase.test/rest/v1/live_sessions')
+  ) {
+    return json([], { status: 201 })
+  }
+
+  // Tier entitlements (resolveEntitlements + allowance RPCs). The test user is
+  // an admin so the paid-route gates under test (auth → quota → provider) are
+  // exercised without modelling the subscription ladder here.
+  if (url.startsWith('https://supabase.test/rest/v1/profiles')) {
+    return json({ role: 'admin' })
+  }
+  if (url.startsWith('https://supabase.test/rest/v1/user_subscriptions')) {
+    return new Response('null', { status: 200, headers: { 'Content-Type': 'application/json' } })
+  }
+  if (url === 'https://supabase.test/rest/v1/rpc/consume_feature_usage') {
+    return json([{ allowed: true, used: 1 }])
+  }
+  if (url.startsWith('https://supabase.test/rest/v1/usage_counters')) {
+    return new Response('null', { status: 200, headers: { 'Content-Type': 'application/json' } })
+  }
+
   if (url === 'https://openrouter.ai/api/v1/chat/completions') {
     callSequence.push('provider:openrouter')
     return json({
@@ -154,11 +179,11 @@ const guidedTranscribeMethods = guidedTranscribe as typeof guidedTranscribe & {
 
 function request(body: unknown, token?: string): Request {
   const headers: Record<string, string> = {
-    Origin: 'https://resonanz.pro',
+    Origin: 'https://lingwave.ai',
   }
   if (body !== undefined) headers['Content-Type'] = 'application/json'
   if (token) headers.Authorization = `Bearer ${token}`
-  return new Request('https://resonanz.pro/api/test', {
+  return new Request('https://lingwave.ai/api/test', {
     method: 'POST',
     headers,
     body: body === undefined ? undefined : JSON.stringify(body),
@@ -237,9 +262,9 @@ await (async function invalidAuthReturns401() {
 
 await (async function corsPreflightDoesNotCallProviders() {
   resetMocks()
-  const req = new Request('https://resonanz.pro/api/test', {
+  const req = new Request('https://lingwave.ai/api/test', {
     method: 'OPTIONS',
-    headers: { Origin: 'https://resonanz.pro' },
+    headers: { Origin: 'https://lingwave.ai' },
   })
   await expectStatus('voice-chat preflight returns 204', await voiceChat.OPTIONS(req), 204)
   await expectStatus('guided-transcribe preflight returns 204', await guidedTranscribe.OPTIONS(req), 204)
@@ -252,13 +277,13 @@ await (async function guidedTranscribeRejectsNonPostMethods() {
   resetMocks()
   assert.equal(typeof guidedTranscribeMethods.GET, 'function', 'guided-transcribe must export an explicit GET rejection')
   assert.equal(typeof guidedTranscribeMethods.PUT, 'function', 'guided-transcribe must export an explicit PUT rejection')
-  const getReq = new Request('https://resonanz.pro/api/test', {
+  const getReq = new Request('https://lingwave.ai/api/test', {
     method: 'GET',
-    headers: { Origin: 'https://resonanz.pro' },
+    headers: { Origin: 'https://lingwave.ai' },
   })
-  const putReq = new Request('https://resonanz.pro/api/test', {
+  const putReq = new Request('https://lingwave.ai/api/test', {
     method: 'PUT',
-    headers: { Origin: 'https://resonanz.pro' },
+    headers: { Origin: 'https://lingwave.ai' },
   })
   await expectStatus('guided-transcribe GET returns 405', await guidedTranscribeMethods.GET(getReq), 405)
   await expectStatus('guided-transcribe PUT returns 405', await guidedTranscribeMethods.PUT(putReq), 405)
@@ -268,7 +293,7 @@ await (async function guidedTranscribeRejectsNonPostMethods() {
 
 await (async function disallowedCorsOriginGetsNoAllowOrigin() {
   resetMocks()
-  const req = new Request('https://resonanz.pro/api/test', {
+  const req = new Request('https://lingwave.ai/api/test', {
     method: 'OPTIONS',
     headers: { Origin: 'https://evil.example' },
   })

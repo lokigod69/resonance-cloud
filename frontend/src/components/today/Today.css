@@ -1,3 +1,6 @@
+/* Route-scoped: loaded with the Today CSS chunk, not on every page. */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
 .today-shell {
   --today-font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --today-space-1: 0.382rem;

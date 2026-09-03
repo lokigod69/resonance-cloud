@@ -42,3 +42,6 @@ Thumbs.db
 !frontend/public/games/**/*.mp3
 *.flac
 *.mp4
+
+# Vercel CLI link metadata (project/org ids) — never commit
+.vercel

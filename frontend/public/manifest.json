@@ -2,7 +2,7 @@
   "name": "Lingwave",
   "short_name": "Lingwave",
   "description": "Language learning through music, motion, and visual study.",
-  "start_url": "/",
+  "start_url": "/dashboard",
   "display": "standalone",
   "background_color": "#0b0713",
   "theme_color": "#0b0713",

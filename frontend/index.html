@@ -17,9 +17,12 @@
     <title>Lingwave</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="/brand/cosmos/cosmos-hero.webp" fetchpriority="high">
     <link rel="preload" as="image" href="/branding/lingwave-loader.png">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=VT323&family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Only the families the app shell paints at first load (Inter = body,
+         Outfit = display, Nunito = Generate). Cormorant is route-scoped
+         (Today / slicer); VT323, Share Tech Mono and Material Symbols were
+         unused (audit 2026-09-03 D-05). -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="root"></div>

@@ -109,6 +109,11 @@ export default function PlansPage() {
         )
         return
       }
+      // Defense in depth: only ever hand the browser to Stripe Checkout.
+      if (new URL(payload.url).origin !== 'https://checkout.stripe.com') {
+        setCheckoutError(t('plans.checkoutError'))
+        return
+      }
       window.location.href = payload.url
     } catch {
       setCheckoutError(t('plans.checkoutError'))

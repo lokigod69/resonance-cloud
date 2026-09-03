@@ -33,6 +33,7 @@ import { SurfSessionComplete } from './components/SurfSessionComplete'
 import { SurfSfx } from './audio'
 import { SurfRenderer, type SurfRendererCallbacks } from './renderer/SurfRenderer'
 import styles from './styles.module.css'
+import { safeInternalPath } from '@/lib/safeInternalPath'
 
 type HudState = { score: number; combo: number; lives: number; level: number }
 type Phase = 'picker' | 'playing' | 'paused' | 'complete'
@@ -80,7 +81,7 @@ function SurfGameSession() {
   const dueLanguage = searchParams.get('queue') === 'due'
     ? canonicalizeLanguageValue(searchParams.get('lang')) || null
     : null
-  const returnTo = searchParams.get('returnTo') || '/dashboard'
+  const returnTo = safeInternalPath(searchParams.get('returnTo'), '/dashboard')
   const { rows, loading: deckLoading } = useGameDeck('surf', deckParam, language)
   const dueStates = useWordStates(dueLanguage ?? '')
   const dueResolved = dueStates.fetched && !dueStates.loading

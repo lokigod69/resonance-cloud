@@ -12,6 +12,7 @@ import {
   X,
 } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
+import { safeInternalPath } from '@/lib/safeInternalPath'
 
 type Word = {
   id: string
@@ -36,7 +37,7 @@ export default function VideoPlayer() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const rawReturnTo = searchParams.get('returnTo')
-  const returnTo = rawReturnTo?.startsWith('/') ? rawReturnTo : null
+  const returnTo = rawReturnTo ? safeInternalPath(rawReturnTo, '') || null : null
   const returnMode = searchParams.get('returnMode')
   const returnLang = searchParams.get('returnLang')
   const [words, setWords] = useState<Word[]>([])

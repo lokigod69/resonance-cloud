@@ -1,6 +1,6 @@
+// resonanz.pro was dropped 2026-09-03: the domain is dead (DEPLOYMENT_NOT_FOUND)
+// and a lapsed registration must never stay a trusted origin.
 const PRODUCTION_ORIGINS = new Set([
-  'https://resonanz.pro',
-  'https://www.resonanz.pro',
   'https://lingwave.ai',
   'https://www.lingwave.ai',
 ])
@@ -10,13 +10,18 @@ const NATIVE_APP_ORIGINS = new Set([
   'ionic://localhost',
 ])
 
+// Only THIS project's Vercel preview deployments, not every tenant on
+// vercel.app. Preview hosts look like frontend-<hash>-lokigod69s-projects.vercel.app;
+// override the suffix via env if the team slug ever changes.
+const PREVIEW_ORIGIN_SUFFIX = process.env.PREVIEW_ORIGIN_SUFFIX || '-lokigod69s-projects.vercel.app'
+
 function isLocalhostOrigin(origin: URL): boolean {
   return ['localhost', '127.0.0.1', '[::1]'].includes(origin.hostname)
     && ['http:', 'https:'].includes(origin.protocol)
 }
 
 function isVercelPreviewOrigin(origin: URL): boolean {
-  return origin.protocol === 'https:' && origin.hostname.endsWith('.vercel.app')
+  return origin.protocol === 'https:' && origin.hostname.endsWith(PREVIEW_ORIGIN_SUFFIX)
 }
 
 export function getAllowedOrigin(req?: Request): string | null {
@@ -45,8 +50,11 @@ export function getAllowedOriginValue(rawOrigin: string | null | undefined): str
 
 export function corsHeaders(req?: Request): HeadersInit {
   const headers: Record<string, string> = {
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+    // Let browsers (and the iOS shell) reuse one preflight per endpoint instead
+    // of paying a round trip before every call.
+    'Access-Control-Max-Age': '600',
     Vary: 'Origin',
   }
   const origin = getAllowedOrigin(req)

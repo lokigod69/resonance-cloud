@@ -5,6 +5,7 @@ import { readTodayProgressState, type TodayProgressState } from '@/lib/todayProg
 import { getSelectedGuidedTargetLanguage } from '@/lib/todayLanguage'
 import { getSelectedGuidedVibe } from '@/lib/todayVibe'
 import { toGuidedLanguageName } from '@/lib/targetLanguage'
+import { isConstrainedConnection } from '@/lib/network'
 
 // guidedLessons.ts is a ~65k-line data module. It must NEVER be statically imported
 // from the dashboard (it would swallow the home chunk); this hook loads it through a
@@ -69,6 +70,61 @@ type UseTodayMissionArgs = {
  * `mission: null` when guided content has nothing honest to offer, so the
  * dashboard can degrade to practice-only.
  */
+// The resolved mission is a pure function of (language, base language, user,
+// guided progress). Cache it per tab so a home revisit never re-downloads the
+// corpus, and defer the first resolution to idle time so the 6.96 MB chunk
+// stops competing with the dashboard's own critical path (audit D-02 / E-01).
+// The durable fix is the guided index/body split (D-01); until then this keeps
+// the download off the first paint and off metered connections entirely.
+const MISSION_CACHE_KEY = 'lingwave:todayMission:v1'
+const MISSION_IDLE_TIMEOUT_MS = 6_000
+
+function progressSignature(progress: TodayProgressState): string {
+  const parts: string[] = []
+  for (const [pathId, course] of Object.entries(progress.courses)) {
+    let latest = ''
+    for (const lessonProgress of Object.values(course.lessons ?? {})) {
+      for (const stamp of [lessonProgress.completedAt, lessonProgress.skippedAt]) {
+        if (stamp && stamp > latest) latest = stamp
+      }
+    }
+    parts.push(`${pathId}:${course.completedLessonIds.length}:${course.skippedLessonIds.length}:${latest}`)
+  }
+  return parts.sort().join('|')
+}
+
+function readMissionCache(key: string): TodayMission | null | undefined {
+  try {
+    const raw = window.sessionStorage.getItem(MISSION_CACHE_KEY)
+    if (!raw) return undefined
+    const parsed = JSON.parse(raw) as { key?: string; mission?: TodayMission | null }
+    return parsed.key === key ? parsed.mission ?? null : undefined
+  } catch {
+    return undefined
+  }
+}
+
+function writeMissionCache(key: string, mission: TodayMission | null): void {
+  try {
+    window.sessionStorage.setItem(MISSION_CACHE_KEY, JSON.stringify({ key, mission }))
+  } catch {
+    // storage unavailable — the in-memory result still serves this mount
+  }
+}
+
+function whenIdle(callback: () => void, timeout: number): () => void {
+  const win = window as Window & {
+    requestIdleCallback?: (cb: () => void, opts?: { timeout?: number }) => number
+    cancelIdleCallback?: (id: number) => void
+  }
+  if (typeof win.requestIdleCallback === 'function') {
+    const id = win.requestIdleCallback(callback, { timeout })
+    return () => win.cancelIdleCallback?.(id)
+  }
+  const id = window.setTimeout(callback, Math.min(timeout, 1_500))
+  return () => window.clearTimeout(id)
+}
+
 export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled, allowGuidedLanguageFallback = false }: UseTodayMissionArgs): TodayMissionState {
   const [state, setState] = useState<TodayMissionState>({ loading: true, mission: null })
 
@@ -76,25 +132,49 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled,
     if (!enabled) return
 
     let cancelled = false
+    const progress = readTodayProgressState(userId)
+    const cacheKey = [
+      activeLanguage ?? '',
+      baseLanguage ?? '',
+      userId ?? '',
+      allowGuidedLanguageFallback ? '1' : '0',
+      progressSignature(progress),
+    ].join('#')
+
+    const cached = readMissionCache(cacheKey)
+    if (cached !== undefined) {
+      setState({ loading: false, mission: cached })
+      return
+    }
+
+    if (isConstrainedConnection()) {
+      // Never pull the corpus over a metered / 2G link for one card.
+      setState({ loading: false, mission: null })
+      return
+    }
+
     setState({ loading: true, mission: null })
 
-    void (async () => {
-      try {
-        const [lessonsModule, checkpointModule] = await Promise.all([
-          import('@/data/guidedLessons'),
-          import('@/lib/guidedCheckpoint'),
-        ])
-        if (cancelled) return
-        const progress = readTodayProgressState(userId)
-        const mission = buildTodayMission({ lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage, allowGuidedLanguageFallback })
-        setState({ loading: false, mission })
-      } catch {
-        if (!cancelled) setState({ loading: false, mission: null })
-      }
-    })()
+    const cancelIdle = whenIdle(() => {
+      void (async () => {
+        try {
+          const [lessonsModule, checkpointModule] = await Promise.all([
+            import('@/data/guidedLessons'),
+            import('@/lib/guidedCheckpoint'),
+          ])
+          if (cancelled) return
+          const mission = buildTodayMission({ lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage, allowGuidedLanguageFallback })
+          writeMissionCache(cacheKey, mission)
+          setState({ loading: false, mission })
+        } catch {
+          if (!cancelled) setState({ loading: false, mission: null })
+        }
+      })()
+    }, MISSION_IDLE_TIMEOUT_MS)
 
     return () => {
       cancelled = true
+      cancelIdle()
     }
   }, [activeLanguage, allowGuidedLanguageFallback, baseLanguage, enabled, userId])
 

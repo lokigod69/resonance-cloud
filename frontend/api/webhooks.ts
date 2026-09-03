@@ -351,14 +351,27 @@ async function recordSubscriptionStatus(subscription: Stripe.Subscription) {
 }
 
 export async function POST(req: Request): Promise<Response> {
-  const config = loadStripeCoreConfig()
+  // Config and body reads used to sit outside any try: a missing env var
+  // became a platform 500 with no JSON body (audit 2026-09-03 A-11).
+  let config: ReturnType<typeof loadStripeCoreConfig>
+  try {
+    config = loadStripeCoreConfig()
+  } catch (error) {
+    console.error('[stripe] webhook config missing', error instanceof Error ? error.message : error)
+    return errorResponse(req, 503, 'Stripe webhook is not configured')
+  }
   const stripe = new Stripe(config.secretKey)
   const signature = req.headers.get('stripe-signature')
   if (!signature) {
     return errorResponse(req, 400, 'Missing Stripe signature')
   }
 
-  const rawBody = await req.text()
+  let rawBody: string
+  try {
+    rawBody = await req.text()
+  } catch {
+    return errorResponse(req, 400, 'Unreadable webhook body')
+  }
   let event: Stripe.Event
 
   try {

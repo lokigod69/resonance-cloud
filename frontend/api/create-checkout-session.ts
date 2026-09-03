@@ -23,16 +23,23 @@ function getConfiguredAppOrigin(): string | null {
     ?? getAllowedOriginValue(process.env.VITE_APP_URL)
 }
 
+// The configured app origin wins over the request's Origin so a preview
+// deployment (or a lapsed domain) can never become the post-payment landing
+// page; the request origin only fills in when nothing is configured (local dev).
 export function resolveCheckoutAppOrigin(req: Request): string | null {
-  return getAllowedOrigin(req) ?? getConfiguredAppOrigin()
+  return getConfiguredAppOrigin() ?? getAllowedOrigin(req)
 }
 
 // One active subscription per account: a second Checkout would double-bill
 // while only one subscription row is tracked (review finding 2026-07-28).
 // Plan/interval changes go through a future portal flow, not a second checkout.
+// 'checkout_completed' counts as taken: between the session completing and the
+// first paid invoice landing, a second checkout would create a second live
+// subscription that the tracked row can never cancel (audit 2026-09-03 F-04).
 async function hasActiveSubscription(userId: string): Promise<boolean> {
   const { url, serviceKey } = getSupabaseAdminEnv()
-  if (!url || !serviceKey) return false
+  // Fail closed for money safety, like the error branch below.
+  if (!url || !serviceKey) return true
 
   const admin = createClient(url, serviceKey, {
     auth: {
@@ -54,7 +61,7 @@ async function hasActiveSubscription(userId: string): Promise<boolean> {
   }
 
   const status = (data as { status?: string | null } | null)?.status ?? ''
-  return status === 'active' || status === 'trialing'
+  return status === 'active' || status === 'trialing' || status === 'checkout_completed'
 }
 
 export async function OPTIONS(req: Request): Promise<Response> {
@@ -95,6 +102,9 @@ export async function POST(req: Request): Promise<Response> {
       plan_interval: interval,
     }
 
+    // A double-click (or a retried request) within the same minute replays the
+    // same Checkout session instead of minting a second one.
+    const idempotencyKey = `checkout:${user.id}:${plan}:${interval}:${Math.floor(Date.now() / 60_000)}`
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       customer_email: user.email ?? undefined,
@@ -107,7 +117,7 @@ export async function POST(req: Request): Promise<Response> {
       subscription_data: {
         metadata: planMetadata,
       },
-    })
+    }, { idempotencyKey })
 
     if (!session.url) {
       return errorResponse(req, 502, 'Stripe did not return a checkout URL')

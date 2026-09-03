@@ -133,21 +133,36 @@ try {
   resetEnv({ SUBSCRIPTION_CREDITS: '' })
   assert.equal(legacySubscriptionCredits({ metadata: {} }), null)
 
-  assert.equal(getAllowedOrigin(requestFromOrigin('https://resonanz.pro')), 'https://resonanz.pro')
-  assert.equal(getAllowedOrigin(requestFromOrigin('https://www.resonanz.pro')), 'https://www.resonanz.pro')
+  // resonanz.pro is dead and no longer trusted (audit 2026-09-03).
+  assert.equal(getAllowedOrigin(requestFromOrigin('https://resonanz.pro')), null)
+  assert.equal(getAllowedOrigin(requestFromOrigin('https://www.resonanz.pro')), null)
   assert.equal(getAllowedOrigin(requestFromOrigin('https://lingwave.ai')), 'https://lingwave.ai')
   assert.equal(getAllowedOrigin(requestFromOrigin('https://www.lingwave.ai')), 'https://www.lingwave.ai')
   assert.equal(getAllowedOrigin(requestFromOrigin('https://evil.example')), null)
+  // Only this project's preview deployments, not every vercel.app tenant.
+  assert.equal(
+    getAllowedOrigin(requestFromOrigin('https://frontend-abc123-lokigod69s-projects.vercel.app')),
+    'https://frontend-abc123-lokigod69s-projects.vercel.app',
+  )
+  assert.equal(getAllowedOrigin(requestFromOrigin('https://evil-tenant.vercel.app')), null)
 
-  resetEnv({ APP_URL: 'https://resonanz.pro', VITE_APP_URL: '' })
+  // The configured origin wins over the request origin; the request origin is
+  // only a fallback when nothing is configured.
+  resetEnv({ APP_URL: 'https://www.lingwave.ai', VITE_APP_URL: '' })
+  assert.equal(
+    resolveCheckoutAppOrigin(requestFromOrigin('https://lingwave.ai')),
+    'https://www.lingwave.ai',
+  )
+  assert.equal(
+    resolveCheckoutAppOrigin(requestFromOrigin('https://evil.example')),
+    'https://www.lingwave.ai',
+  )
+  resetEnv({ APP_URL: '', VITE_APP_URL: '' })
   assert.equal(
     resolveCheckoutAppOrigin(requestFromOrigin('https://lingwave.ai')),
     'https://lingwave.ai',
   )
-  assert.equal(
-    resolveCheckoutAppOrigin(requestFromOrigin('https://evil.example')),
-    'https://resonanz.pro',
-  )
+  assert.equal(resolveCheckoutAppOrigin(requestFromOrigin('https://evil.example')), null)
 
   resetEnv({ APP_URL: 'https://evil.example', VITE_APP_URL: '' })
   assert.equal(resolveCheckoutAppOrigin(requestFromOrigin('https://evil.example')), null)

@@ -2,6 +2,7 @@ import { useEffect, type ReactNode } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
+import { safeInternalPath } from '@/lib/safeInternalPath'
 
 type GameShellProps = {
   children: ReactNode
@@ -13,7 +14,7 @@ export function GameShell({ children, className, onExit }: GameShellProps) {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const { setActiveLanguage } = useLanguage()
-  const returnTo = searchParams.get('returnTo') || '/dashboard'
+  const returnTo = safeInternalPath(searchParams.get('returnTo'), '/dashboard')
   const launchLanguage = searchParams.get('lang')
 
   useBodyScrollLock(true)

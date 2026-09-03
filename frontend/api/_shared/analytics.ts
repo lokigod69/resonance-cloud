@@ -197,7 +197,12 @@ export async function eraseAnalyticsPerson(userId: string): Promise<boolean> {
     const headers = { Authorization: `Bearer ${config.key}` }
     const base = `${config.host}/api/projects/${config.projectId}/persons/`
 
-    const lookup = await fetch(`${base}?distinct_id=${encodeURIComponent(userId)}`, { headers })
+    // Deadlines: the erasure runs inside delete-account and the nightly sweep;
+    // a stalled PostHog call must never pin either function.
+    const lookup = await fetch(`${base}?distinct_id=${encodeURIComponent(userId)}`, {
+      headers,
+      signal: AbortSignal.timeout(10_000),
+    })
     if (!lookup.ok) return false
     const body = (await lookup.json()) as { results?: Array<{ id?: number | string | null }> }
     const persons = body.results ?? []
@@ -208,6 +213,7 @@ export async function eraseAnalyticsPerson(userId: string): Promise<boolean> {
       const del = await fetch(`${base}${person.id}/?delete_events=true`, {
         method: 'DELETE',
         headers,
+        signal: AbortSignal.timeout(10_000),
       })
       if (!del.ok && del.status !== 404) return false
     }

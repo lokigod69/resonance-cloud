@@ -2,7 +2,7 @@ import { optionsResponse } from './_shared/cors'
 import { requireSupabaseUser, type AuthenticatedUser } from './_shared/auth'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { consumeApiQuota } from './_shared/quota'
-import { consumeFeatureAllowance, recordFeatureUsage, resolveEntitlements } from './_shared/entitlements'
+import { consumeFeatureAllowance, recordFeatureUsage, refundFeatureUsage, resolveEntitlements } from './_shared/entitlements'
 import { geminiVisionCost } from './_shared/usageCost'
 import { writeUsageEvent, type UsageEventInput } from './_shared/usageEvents'
 import { analyticsPlatformFromRequest, trackServerCoreAction } from './_shared/analytics'
@@ -31,23 +31,33 @@ const MAX_TEXT_FIELD_LENGTH = 320
 const MAX_EXAMPLE_LENGTH = 600
 const MAX_ITEMS = 8
 
+/** A completed allowance debit, with the compensation for a scan that never happened. */
+type LensDebit = {
+  refund: () => Promise<void>
+}
+
 type HandlerDeps = {
   requireUser: (req: Request) => Promise<AuthenticatedUser>
+  /** Throws before any quota/allowance is spent when the provider cannot run (optional for tests). */
+  assertProviderConfigured?: () => void
   consumeQuota: (userId: string) => Promise<unknown>
   /** Tier allowance debit (optional so contract tests with custom deps keep the pre-tier behavior). */
-  consumeAllowance?: (userId: string) => Promise<void>
+  consumeAllowance?: (userId: string) => Promise<LensDebit | void>
   writeUsage: (input: UsageEventInput) => Promise<void>
   provider: VisualScanProvider
 }
 
 // One scan = one allowance unit, debited at request time (the debit IS the
-// authorization; a rare provider failure after debit costs the user one scan —
-// accepted for v1, the daily quota rail keeps abuse bounded either way).
-async function consumeLensAllowance(userId: string): Promise<void> {
+// authorization). Infrastructure failures after the debit refund it — a free
+// account has three lifetime scans and must not lose them to a Gemini outage
+// (audit 2026-09-03 A-09). Model refusals (422) keep the debit.
+async function consumeLensAllowance(userId: string): Promise<LensDebit> {
   const entitlements = await resolveEntitlements(userId)
+  const refund = () => refundFeatureUsage(userId, 'lens_scans', entitlements.periodKey, 1)
+
   if (entitlements.isAdmin) {
     await recordFeatureUsage(userId, 'lens_scans', entitlements.periodKey, 1)
-    return
+    return { refund }
   }
 
   const debit = await consumeFeatureAllowance(
@@ -64,6 +74,13 @@ async function consumeLensAllowance(userId: string): Promise<void> {
       used: debit.used,
       limit: entitlements.grants.lensScans,
     })
+  }
+  return { refund }
+}
+
+function assertGeminiConfigured(): void {
+  if (!process.env.GOOGLE_AI_API_KEY) {
+    throw new ApiError(503, 'Vision service is not configured')
   }
 }
 
@@ -217,6 +234,7 @@ function modelFromResult(raw: unknown): { provider: string; model: string } {
 function createDefaultDeps(): HandlerDeps {
   return {
     requireUser: requireSupabaseUser,
+    assertProviderConfigured: assertGeminiConfigured,
     consumeQuota: (userId) => consumeApiQuota(userId, 'visual_scan'),
     consumeAllowance: consumeLensAllowance,
     writeUsage: writeUsageEvent,
@@ -228,14 +246,16 @@ export function createVisualScanPostHandler(deps: HandlerDeps = createDefaultDep
   return async function POST(req: Request): Promise<Response> {
     let body: VisualScanRequest
     let userId = ''
+    let lensDebit: LensDebit | null = null
     try {
       const user = await deps.requireUser(req)
       userId = user.id
       const rawBody = await readJsonWithLimit<unknown>(req, VISUAL_SCAN_BODY_MAX_BYTES)
       body = validateBody(rawBody)
+      deps.assertProviderConfigured?.()
       await deps.consumeQuota(user.id)
       if (deps.consumeAllowance) {
-        await deps.consumeAllowance(user.id)
+        lensDebit = (await deps.consumeAllowance(user.id)) ?? null
       }
     } catch (error) {
       if (error instanceof ApiError) return apiErrorResponse(req, error)
@@ -281,6 +301,11 @@ export function createVisualScanPostHandler(deps: HandlerDeps = createDefaultDep
     } catch (error) {
       const status = error instanceof ApiError ? error.status : 502
       const message = error instanceof ApiError ? error.message : 'Vision service unavailable'
+      // The scan never happened on our side of the wire: give the unit back.
+      // 4xx-class provider verdicts (refused/unusable image) keep the debit.
+      if (lensDebit && status >= 500) {
+        await lensDebit.refund()
+      }
       await deps.writeUsage({
         userId,
         feature: 'lens',

@@ -70,6 +70,16 @@ export async function consumeApiQuota(
   }
 
   const quota = normalizeQuotaResult(data, action)
+  if (quota.mode === 'monitor_only') {
+    // With api_quota_settings.enforcement_enabled = false every rail is
+    // decorative and the RPC allows everything. Say so on every call, and fail
+    // closed when the deployment demands enforcement so a flag reset can never
+    // silently uncap provider spend again (audit 2026-09-03 A-01).
+    console.error('[quota] enforcement disabled — action is unmetered', { action, userId })
+    if (process.env.API_QUOTA_REQUIRE_ENFORCED === 'true') {
+      throw new ApiError(503, 'Quota enforcement is not active', { mode: 'fail_closed' })
+    }
+  }
   if (!quota.allowed) {
     throw new ApiError(429, 'API quota exceeded', {
       retry_after_seconds: quota.retry_after_seconds,

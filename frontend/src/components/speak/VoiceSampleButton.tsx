@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Loader2, Play, Square } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { publicApiUrl } from '@/lib/publicOrigins'
+import { supabase } from '@/lib/supabase'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 
 interface VoiceSampleButtonProps {
@@ -99,9 +100,15 @@ export function VoiceSampleButton({
     if (!url) {
       setLoading(true)
       try {
+        // The sample lookup is a signed-in surface (server verifies the token).
+        const { data: sessionData } = await supabase.auth.getSession()
+        const accessToken = sessionData.session?.access_token
         const res = await fetch(publicApiUrl('/api/voice-sample'), {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
+          },
           body: JSON.stringify({
             voice_name: voiceName,
             language,

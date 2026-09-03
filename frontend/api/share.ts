@@ -8,6 +8,10 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || ''
 
+// Share ids are 12 hex chars (gen_random_bytes); accept a slightly wider shape
+// so older ids keep working, but never let anything else reach the page.
+const SHARE_ID_PATTERN = /^[A-Za-z0-9_-]{6,64}$/
+
 interface SharedWordData {
   share_id: string
   word: string
@@ -23,14 +27,16 @@ interface SharedWordData {
 
 export async function GET(req: Request): Promise<Response> {
   const url = new URL(req.url)
-  const shareId = url.searchParams.get('id')
+  const shareId = url.searchParams.get('id') ?? ''
 
-  if (!shareId) {
+  if (!SHARE_ID_PATTERN.test(shareId)) {
     return Response.redirect(`${url.origin}/`, 302)
   }
 
   try {
-    const supabase = createClient(supabaseUrl, supabaseAnonKey)
+    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+    })
 
     const { data, error } = await supabase.rpc('get_shared_word', { share_id: shareId })
 
@@ -48,14 +54,19 @@ export async function GET(req: Request): Promise<Response> {
       || `Learn "${word.word}" in ${word.target_language} with Lingwave`
 
     const thumbnail = word.thumbnail_url || ''
-    const pageUrl = `${url.origin}/v/${shareId}`
-    const spaUrl = `${url.origin}/share/${shareId}`
+    const encodedId = encodeURIComponent(shareId)
+    const pageUrl = `${url.origin}/v/${encodedId}`
+    const spaUrl = `${url.origin}/share/${encodedId}`
 
-    // Increment view count atomically. Fire-and-forget so crawlers still get OG tags.
-    supabase
-      .rpc('increment_shared_word_view', { p_share_id: shareId })
-      .then(() => {})
+    // Count the view before responding: a fire-and-forget promise may not
+    // complete once the function freezes. Never fail the page over it.
+    const { error: viewError } = await supabase.rpc('increment_shared_word_view', { p_share_id: shareId })
+    if (viewError) {
+      console.warn('[share] view increment failed:', viewError.message)
+    }
 
+    // No inline script: the meta refresh already redirects browsers, and the
+    // page then lives cleanly under a script-src 'self' CSP.
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,14 +96,17 @@ export async function GET(req: Request): Promise<Response> {
   <meta http-equiv="refresh" content="0;url=${escapeHtml(spaUrl)}" />
 </head>
 <body>
-  <p>Loading...</p>
-  <script>window.location.replace(${JSON.stringify(spaUrl)})</script>
+  <p>Loading… <a href="${escapeHtml(spaUrl)}">Open in Lingwave</a></p>
 </body>
 </html>`
 
     return new Response(html, {
       status: 200,
-      headers: { 'Content-Type': 'text/html; charset=utf-8' },
+      headers: {
+        'Content-Type': 'text/html; charset=utf-8',
+        'Cache-Control': 'public, max-age=300, s-maxage=600',
+        'X-Content-Type-Options': 'nosniff',
+      },
     })
   } catch (err) {
     console.error('[share] Error:', err)
@@ -104,6 +118,7 @@ function escapeHtml(str: string): string {
   return str
     .replace(/&/g, '&amp;')
     .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
 }

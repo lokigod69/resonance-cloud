@@ -25,6 +25,7 @@ import { SessionComplete, type SlicerSessionResult } from './components/SessionC
 import { SlicerHUD } from './components/SlicerHUD'
 import { SlicerAudio } from './scene/audio'
 import styles from './styles.module.css'
+import { safeInternalPath } from '@/lib/safeInternalPath'
 
 type CardProgress = { current: number; total: number }
 
@@ -57,7 +58,7 @@ export default function SlicerGame() {
   const dueLanguage = searchParams.get('queue') === 'due'
     ? canonicalizeLanguageValue(searchParams.get('lang')) || null
     : null
-  const returnTo = searchParams.get('returnTo') || '/dashboard'
+  const returnTo = safeInternalPath(searchParams.get('returnTo'), '/dashboard')
   const bus = useMemo(() => createGameEventBus(), [])
   const recordResult = useRecordGameResult()
   const { primeOnGesture } = useIOSAudioPrimer()

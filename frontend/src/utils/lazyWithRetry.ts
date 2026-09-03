@@ -14,6 +14,9 @@ function isDynamicImportFailure(error: unknown): boolean {
     if (message.includes('Importing a module script failed')) return true
     if (message.includes('Expected a JavaScript module script')) return true
     if (message.includes('Expected a JavaScript-or-Wasm module script')) return true
+    // Vite's preload helper rejects with this when a route's CSS chunk is gone
+    // after a deploy (audit 2026-09-03 F-03).
+    if (message.includes('Unable to preload CSS')) return true
   }
   return false
 }

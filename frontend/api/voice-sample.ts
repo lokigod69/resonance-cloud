@@ -5,12 +5,17 @@
 //
 // Read-only cache: samples are pre-generated offline and stored in Supabase.
 // This endpoint never calls Gemini TTS. Cache miss => 404.
+//
+// Signed-in callers only (audit 2026-09-03 A-04): the lookup runs with the
+// service role, so it must not be an anonymous surface, and the body is
+// size-capped like every other handler.
 
 import { createClient } from '@supabase/supabase-js'
-import { corsHeaders, optionsResponse } from './_shared/cors'
+import { optionsResponse } from './_shared/cors'
+import { requireSupabaseUser } from './_shared/auth'
+import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
 
-const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+const VOICE_SAMPLE_BODY_MAX_BYTES = 1024
 
 const NEUTRAL_CHARACTER_MODE_ID = '_neutral'
 const NEUTRAL_ACCENT_ID = 'none'
@@ -34,45 +39,52 @@ export async function OPTIONS(req: Request): Promise<Response> {
 }
 
 export async function POST(req: Request): Promise<Response> {
-  if (!supabaseUrl || !supabaseServiceKey) {
-    return json(req, { error: 'Supabase service credentials not configured' }, 500)
-  }
-
-  let body: { voice_name?: string; language?: string }
   try {
-    body = await req.json()
-  } catch {
-    return json(req, { error: 'Invalid JSON body' }, 400)
+    await requireSupabaseUser(req)
+
+    const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+    if (!supabaseUrl || !supabaseServiceKey) {
+      throw new ApiError(503, 'Voice samples are not configured')
+    }
+
+    const body = await readJsonWithLimit<{ voice_name?: unknown; language?: unknown }>(
+      req,
+      VOICE_SAMPLE_BODY_MAX_BYTES,
+    )
+    const voiceName = typeof body.voice_name === 'string' ? body.voice_name : ''
+    const language = typeof body.language === 'string' ? body.language : ''
+
+    // Static messages on purpose: never echo caller input back.
+    if (!GEMINI_VOICE_NAMES.has(voiceName)) throw new ApiError(400, 'Unknown voice')
+    if (!SUPPORTED_SAMPLE_LANGUAGES.has(language)) throw new ApiError(400, 'Unsupported language')
+
+    const admin = createClient(supabaseUrl, supabaseServiceKey, {
+      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+    })
+    const { data: existing, error } = await admin
+      .from('voice_samples')
+      .select('storage_url')
+      .eq('voice_name', voiceName)
+      .eq('language', language)
+      .eq('character_mode_id', NEUTRAL_CHARACTER_MODE_ID)
+      .eq('version', SAMPLE_VERSION)
+      .eq('accent_id', NEUTRAL_ACCENT_ID)
+      .is('invalidated_at', null)
+      .maybeSingle()
+
+    if (error) {
+      console.error('[voice-sample] lookup failed:', error.message)
+      return errorResponse(req, 502, 'Voice sample lookup failed')
+    }
+    if (!existing?.storage_url) {
+      return errorResponse(req, 404, 'Sample not yet available for this voice/language')
+    }
+
+    return jsonResponse(req, { url: existing.storage_url })
+  } catch (err) {
+    if (err instanceof ApiError) return apiErrorResponse(req, err)
+    console.error('[voice-sample] failed:', err instanceof Error ? err.message : err)
+    return errorResponse(req, 500, 'Voice sample lookup failed')
   }
-
-  const voice_name = body.voice_name ?? ''
-  const language = body.language ?? ''
-
-  if (!GEMINI_VOICE_NAMES.has(voice_name)) return json(req, { error: `Unknown voice: ${voice_name}` }, 400)
-  if (!SUPPORTED_SAMPLE_LANGUAGES.has(language)) return json(req, { error: `Unsupported language: ${language}` }, 400)
-
-  const admin = createClient(supabaseUrl, supabaseServiceKey)
-  const { data: existing } = await admin
-    .from('voice_samples')
-    .select('storage_url')
-    .eq('voice_name', voice_name)
-    .eq('language', language)
-    .eq('character_mode_id', NEUTRAL_CHARACTER_MODE_ID)
-    .eq('version', SAMPLE_VERSION)
-    .eq('accent_id', NEUTRAL_ACCENT_ID)
-    .is('invalidated_at', null)
-    .maybeSingle()
-
-  if (!existing?.storage_url) {
-    return json(req, { error: 'Sample not yet available for this voice/language' }, 404)
-  }
-
-  return json(req, { url: existing.storage_url }, 200)
-}
-
-function json(req: Request, body: unknown, status: number): Response {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
-  })
 }

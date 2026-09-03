@@ -33,12 +33,25 @@ function applyThemeClass(theme: Theme) {
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
-    const saved = localStorage.getItem(STORAGE_KEY)
+    // Storage access can throw at first render (cookies blocked, some private
+    // modes); this runs above every error boundary, so never let it (F-13).
+    let saved: string | null = null
+    try {
+      saved = localStorage.getItem(STORAGE_KEY)
+    } catch {
+      return DEFAULT_THEME
+    }
     // Migrate old theme names
     const migrated = MIGRATION_MAP[saved as string] ?? saved
     if (migrated && VALID_THEMES.includes(migrated as Theme)) {
       // Persist migration if value changed
-      if (migrated !== saved) localStorage.setItem(STORAGE_KEY, migrated)
+      if (migrated !== saved) {
+        try {
+          localStorage.setItem(STORAGE_KEY, migrated)
+        } catch {
+          // best-effort
+        }
+      }
       return migrated as Theme
     }
     return DEFAULT_THEME

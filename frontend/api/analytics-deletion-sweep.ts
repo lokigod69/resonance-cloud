@@ -16,8 +16,13 @@ const REQUEUE_AGE_MS = 24 * 60 * 60 * 1000
 
 export async function GET(req: Request): Promise<Response> {
   // Vercel sends `Authorization: Bearer ${CRON_SECRET}` when the env is set.
+  // Fail closed without it: an unset secret would otherwise turn this into a
+  // public trigger for privileged PostHog deletion calls (audit 2026-09-03).
   const cronSecret = process.env.CRON_SECRET
-  if (cronSecret && req.headers.get('authorization') !== `Bearer ${cronSecret}`) {
+  if (!cronSecret) {
+    return errorResponse(req, 503, 'Cron is not configured')
+  }
+  if (req.headers.get('authorization') !== `Bearer ${cronSecret}`) {
     return errorResponse(req, 401, 'Unauthorized')
   }
 

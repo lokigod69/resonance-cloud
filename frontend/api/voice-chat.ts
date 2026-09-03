@@ -16,6 +16,7 @@ import {
   consumeFeatureAllowance,
   getFeatureUsed,
   recordFeatureUsage,
+  refundFeatureUsage,
   resolveEntitlements,
   type UserEntitlements,
 } from './_shared/entitlements'
@@ -508,7 +509,9 @@ function validateMessages(value: unknown, field: string, maxEntries: number): Me
   return value.map((entry, index) => {
     if (!isObject(entry)) throw new ApiError(400, `${field}[${index}] is invalid`)
     const role = entry.role
-    if (role !== 'user' && role !== 'assistant' && role !== 'system') {
+    // The system prompt is server-authored; a client-supplied 'system' entry
+    // would be spliced straight into the LLM context (audit 2026-09-03 A-06).
+    if (role !== 'user' && role !== 'assistant') {
       throw new ApiError(400, `${field}[${index}].role is invalid`)
     }
     const content = readString(entry.content, `${field}[${index}].content`, MAX_MESSAGE_LENGTH, true)!
@@ -696,11 +699,26 @@ export async function POST(req: Request): Promise<Response> {
   let userId = ''
   let entitlements: UserEntitlements | null = null
   let speakSecondsUsedBefore = 0
+  // Seconds debited for this turn (set after STT). A turn the user never
+  // received (LLM failure) gives them back — otherwise a provider outage
+  // silently burns the free trial (audit 2026-09-03 F-05). TTS failures
+  // degrade to text and are correctly not refunded.
+  let debitedSpeakSeconds = 0
+  const refundSpeakDebit = async () => {
+    if (debitedSpeakSeconds > 0 && entitlements && !entitlements.isAdmin) {
+      await refundFeatureUsage(userId, 'speak_seconds', entitlements.periodKey, debitedSpeakSeconds)
+      debitedSpeakSeconds = 0
+    }
+  }
   try {
     const user = await requireSupabaseUser(req)
     userId = user.id
     const rawBody = await readJsonWithLimit<unknown>(req, VOICE_CHAT_BODY_MAX_BYTES)
     body = validateVoiceBody(rawBody)
+    // Provider config is checked before any quota or allowance is spent (A-12).
+    if (!process.env.GROQ_API_KEY) {
+      throw new ApiError(503, 'Voice service is not configured')
+    }
     await consumeApiQuota(user.id, 'voice_chat')
 
     // Speak-minute allowance (free: lifetime trial; paid: per-period grant).
@@ -823,6 +841,7 @@ export async function POST(req: Request): Promise<Response> {
         }))
       }
       speakSecondsUsedAfter = debit.used
+      debitedSpeakSeconds = billableSeconds
     }
   }
 
@@ -986,6 +1005,7 @@ export async function POST(req: Request): Promise<Response> {
       latencyMs: Date.now() - turnStartedAt, errorType: `llm_http_${llmRes.status}`,
       metadata: { language, stt: { provider: 'groq', model: SPEAK_STT_MODEL, audio_seconds: sttDurationSeconds } },
     })
+    await refundSpeakDebit()
     return sanitizedProviderError(req, 'Voice chat service unavailable')
   }
 
@@ -1005,6 +1025,7 @@ export async function POST(req: Request): Promise<Response> {
       errorType: 'empty_ai_text',
       metadata: { language, stt: { provider: 'groq', model: SPEAK_STT_MODEL, audio_seconds: sttDurationSeconds } },
     })
+    await refundSpeakDebit()
     return sanitizedProviderError(req, 'Voice chat service unavailable')
   }
 
@@ -1112,6 +1133,7 @@ export async function POST(req: Request): Promise<Response> {
   )
   } catch (err) {
     console.error('[voice-chat] Provider flow failed:', err instanceof Error ? err.message : err)
+    await refundSpeakDebit()
     return sanitizedProviderError(req, 'Voice chat service unavailable')
   }
 }

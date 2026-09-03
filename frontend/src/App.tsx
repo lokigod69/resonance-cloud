@@ -20,12 +20,16 @@ import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { useCapacitorDeepLinks } from '@/hooks/useCapacitorDeepLinks'
 import {
   getPrimaryNavRouteImports,
+  prefetchRouteImport,
   routeImports,
   scheduleIdleRoutePrefetch,
 } from '@/routes/routeImports'
 import { VISUAL_LENS_ENABLED } from '@/lib/productFlags'
 import { hasLocallyChosenTargetLanguage } from '@/lib/targetLanguage'
 import { analytics, ANALYTICS_ENTRY_PATH, classifyEntryPath } from '@/lib/analytics'
+import { isConstrainedConnection } from '@/lib/network'
+import { invalidatePlan } from '@/hooks/usePlan'
+import { RouteErrorBoundary } from '@/components/RouteErrorBoundary'
 
 const LandingPage = lazyWithRetry(routeImports.landingPage, 'landing-page')
 const Login = lazyWithRetry(routeImports.login, 'login')
@@ -124,6 +128,15 @@ function shouldRedirectToOnboarding(auth: AuthState, pathname: string) {
 function ProtectedRoute() {
   const auth = useAuth()
   const location = useLocation()
+  const { skin } = useSkin()
+
+  // Start the home chunk download while the profile gate is still closed: the
+  // route element (and therefore its import) only mounts once the gate opens,
+  // which used to serialize "profile round trip" → "chunk download" (D-08).
+  useEffect(() => {
+    if (!auth.session) return
+    prefetchRouteImport(skin === 'glassy' ? routeImports.dashboardPG : routeImports.dashboard)
+  }, [auth.session, skin])
 
   if (auth.loading || shouldWaitForProfileGate(auth)) {
     return <FullScreenRouteLoading />
@@ -182,17 +195,21 @@ function AppRoutes() {
   const { skin } = useSkin()
   const { session } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
   useCapacitorDeepLinks(navigate)
 
   // Warm the primary-nav route chunks so in-app transitions are cache hits.
   // Only for signed-in users: logged-out visitors on the landing page should
-  // not pay for app chunks they may never open.
+  // not pay for app chunks they may never open. Idle-only with a long timeout,
+  // and never on metered / 2G links: the prefetch used to fire within 1.5 s and
+  // compete with the home's own chunk graph on slow phones (D-07).
   useEffect(() => {
-    if (!session) return
-    return scheduleIdleRoutePrefetch(getPrimaryNavRouteImports(skin))
+    if (!session || isConstrainedConnection()) return
+    return scheduleIdleRoutePrefetch(getPrimaryNavRouteImports(skin), 10_000)
   }, [skin, session])
 
   return (
+    <RouteErrorBoundary resetKey={location.pathname}>
     <Suspense fallback={<RouteSuspenseFallback />}>
     <Routes>
       {/* Fully public routes — no auth, no redirect */}
@@ -305,6 +322,7 @@ function AppRoutes() {
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
     </Suspense>
+    </RouteErrorBoundary>
   )
 }
 
@@ -326,6 +344,7 @@ function BillingReturnNotice() {
   const navigate = useNavigate()
   const { toast } = useToast()
   const { t } = useTranslation()
+  const { refreshProfile } = useAuth()
 
   useEffect(() => {
     const params = new URLSearchParams(location.search)
@@ -335,9 +354,21 @@ function BillingReturnNotice() {
       billing === 'success' ? t('plans.checkoutSuccess') : t('plans.checkoutCancelled'),
       billing === 'success' ? 'success' : 'info',
     )
+    if (billing === 'success') {
+      // The plan grant lands via webhook seconds after Stripe redirects back.
+      // Re-read entitlements + profile a few times so the badge and credits
+      // update without a manual reload (audit 2026-09-03 F-10).
+      invalidatePlan()
+      for (const delay of [1_500, 4_000, 8_000, 15_000]) {
+        window.setTimeout(() => {
+          invalidatePlan()
+          void refreshProfile()
+        }, delay)
+      }
+    }
     params.delete('billing')
     navigate({ pathname: location.pathname, search: params.toString() }, { replace: true })
-  }, [location.pathname, location.search, navigate, t, toast])
+  }, [location.pathname, location.search, navigate, refreshProfile, t, toast])
 
   return null
 }
@@ -377,7 +408,11 @@ function AppShellDialogs() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    // Without transitions the Suspense fallback shows while a route chunk
+    // downloads (the loader stays invisible for 300 ms, so fast hops never
+    // flash). With react-router's default startTransition wrapping, the old
+    // page just froze for the whole download (audit 2026-09-03 D-09).
+    <BrowserRouter unstable_useTransitions={false}>
       <ThemeProvider>
       <SkinProvider>
       <ToastProvider>

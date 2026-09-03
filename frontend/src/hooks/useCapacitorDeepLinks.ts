@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { App } from '@capacitor/app'
 import { Browser } from '@capacitor/browser'
 import type { NavigateFunction } from 'react-router-dom'
@@ -6,12 +6,20 @@ import { isNativeApp } from '@/lib/platform'
 import { getOAuthRedirectTo } from '@/lib/publicOrigins'
 import { supabase } from '@/lib/supabase'
 
+// resonanz.pro dropped 2026-09-03: the domain is dead and must not stay a
+// trusted deep-link host.
 const WEB_DEEP_LINK_HOSTS = new Set([
-  'resonanz.pro',
-  'www.resonanz.pro',
   'lingwave.ai',
   'www.lingwave.ai',
 ])
+
+// Capacitor's getLaunchUrl() returns the LAST url opened for the whole process
+// lifetime, not a one-shot launch value. Handle it exactly once per process or
+// every re-run would replay it (audit 2026-09-03 F-02).
+let launchUrlHandled = false
+// A cold start can deliver the same OAuth callback through both appUrlOpen and
+// getLaunchUrl; a PKCE code may only be exchanged once.
+const inFlightExchanges = new Map<string, Promise<{ error: unknown }>>()
 
 function routeFromUrl(rawUrl: string): string | null {
   let url: URL
@@ -51,6 +59,18 @@ function isNativeAuthCallbackUrl(url: URL): boolean {
     && url.pathname === expected.pathname
 }
 
+function exchangeCodeOnce(code: string): Promise<{ error: unknown }> {
+  const existing = inFlightExchanges.get(code)
+  if (existing) return existing
+  const exchange = supabase.auth.exchangeCodeForSession(code)
+    .then(({ error }) => ({ error }))
+    .finally(() => {
+      // Keep the entry: a consumed code must never be exchanged again.
+    })
+  inFlightExchanges.set(code, exchange)
+  return exchange
+}
+
 async function handleAppUrlOpen(rawUrl: string, navigate: NavigateFunction): Promise<void> {
   let url: URL
   try {
@@ -68,7 +88,7 @@ async function handleAppUrlOpen(rawUrl: string, navigate: NavigateFunction): Pro
       return
     }
 
-    const { error } = await supabase.auth.exchangeCodeForSession(code)
+    const { error } = await exchangeCodeOnce(code)
     await Browser.close().catch(() => {})
     navigate(error ? '/login' : '/dashboard', { replace: true })
     return
@@ -81,14 +101,24 @@ async function handleAppUrlOpen(rawUrl: string, navigate: NavigateFunction): Pro
 }
 
 export function useCapacitorDeepLinks(navigate: NavigateFunction): void {
+  // react-router recreates `navigate` on every pathname change; read it through
+  // a ref so the listener is registered once instead of per navigation.
+  const navigateRef = useRef(navigate)
+  useEffect(() => {
+    navigateRef.current = navigate
+  }, [navigate])
+
   useEffect(() => {
     if (!isNativeApp()) return
 
     let removeListener: (() => void) | null = null
     let active = true
+    const handle = (url: string) => {
+      void handleAppUrlOpen(url, navigateRef.current)
+    }
 
     void App.addListener('appUrlOpen', (event) => {
-      void handleAppUrlOpen(event.url, navigate)
+      handle(event.url)
     }).then((listener) => {
       if (!active) {
         void listener.remove()
@@ -99,15 +129,18 @@ export function useCapacitorDeepLinks(navigate: NavigateFunction): void {
       }
     })
 
-    void App.getLaunchUrl().then((launchUrl) => {
-      if (launchUrl?.url) {
-        void handleAppUrlOpen(launchUrl.url, navigate)
-      }
-    })
+    if (!launchUrlHandled) {
+      launchUrlHandled = true
+      void App.getLaunchUrl().then((launchUrl) => {
+        if (launchUrl?.url) {
+          handle(launchUrl.url)
+        }
+      })
+    }
 
     return () => {
       active = false
       removeListener?.()
     }
-  }, [navigate])
+  }, [])
 }

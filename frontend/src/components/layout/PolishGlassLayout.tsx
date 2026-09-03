@@ -6,6 +6,7 @@ import { Coins, Shield, User } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
+import { OutletErrorBoundary } from '@/components/RouteErrorBoundary'
 import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { totalCredits } from '@/lib/credits'
@@ -113,7 +114,9 @@ export default function PolishGlassLayout() {
         isSpeakRoute ? 'min-h-0' : 'min-h-dvh'
       }`}>
         <Suspense fallback={<LingwaveLoader className="min-h-[calc(100dvh-8rem)]" />}>
-          <Outlet />
+          <OutletErrorBoundary>
+            <Outlet />
+          </OutletErrorBoundary>
         </Suspense>
       </main>
     </div>
