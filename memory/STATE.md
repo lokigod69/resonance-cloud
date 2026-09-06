@@ -2,12 +2,13 @@
 Last updated: 2026-09-07
 
 ## Current release
-- Today/guided refinement is implemented; final browser/release checks are underway. Fixed cold “0 of 0”, direct lesson opening/resume, wrong/reveal/Back/speech alternatives, account-scoped reviews/trophies, local storage/audio failure recovery and explicit phrase Keep. New120000 migration is applied, history recorded, production rollback suite passed with no residue. Details: notes/today-guided-2026-09-07.md.
+- Today/guided is LIVE: main58ac56bf, Vercel dpl_5BgBSedstJdU1jLxZNCAXDQ6VR4T Ready on lingwave.ai/www; Railway a08ba88b-98d2-4eb7-a3fb-280e42a82ee2 success. Signed-in Cebuano course shows10lessons; direct opening and return-to-Resume verified. All13 API probes pass. New120000 migration/history and rollback integration verified with no residue. Details: notes/today-guided-2026-09-07.md.
 - Hardening is LIVE: main commits c0192206 + d16e0bd2. Vercel dpl_AR6RjhD5WPw9KZHNF1N8YCCEiPhF Ready on lingwave.ai/www; Railway a856e9c6-19d9-4e78-a290-0833a208fcdf success. Production Home/Speak/Lens/Today/guided assets and 13 expected API responses verified.
 - The first c0192206 production probe caught Speak ERR_REQUIRE_ESM. Restored previous working deployment, fixed API-local generated persona catalog in d16e0bd2, verified candidate, promoted and re-probed. Automatic domain assignment is back ON. Do not import src/ ESM directly from API CommonJS.
 - Home9535d7f8 and prior Speak/Lens e079e32b refinements remain included. Approved Cosmos/First Light direction and all waves are unchanged. Preserve the unrelated WordTide diff/hash d4bcb0929af228c78d7c4f3f56aec8557cbbf095; never stage or revert it.
 
 ## What now works
+- Today: cold loading/direct start/resume, wrong/reveal/Back/no-microphone outcomes, scoped checkpoint/trophy state, denied/failed local storage, audio/media recovery and explicit core-phrase Keep with matching recording. Desktop names/localized review labels, responsive tasks and reduced motion;841,669decorative PNG bytes and remote font removed. All wave hashes preserved.
 - Lens has stable user/language deck identity independent of name, safe legacy adoption, exact per-row mixed-save receipts, language-scoped duplicate hints and bounded save/scan operations.
 - Live retries/reconnects reuse one ten-minute reservation/charge and stored encrypted client credential. Definitive or abandoned no-secret failures refund once; existing authenticated daily maintenance covers abandoned reservations. Browser connection attestation cannot trigger refunds.
 - Server whole-operation deadlines cover auth/body/quota/providers/response parsing, with bounded fresh-signal cleanup. Client deadlines cover auth/fetch/body and use iOS15-compatible cancellation helpers. Spending requests are not automatically retried.
@@ -20,12 +21,13 @@ Last updated: 2026-09-07
 - Password reset requires PASSWORD_RECOVERY; local sign-out clears state even on network failure. Compatible dependency updates resolve all npm audit findings.
 
 ## Database/configuration verified
-- Applied 13 migrations: Sept3 120000/121000/122000/123000/124000/125000; Sept7 100000/101000/102000/103000/104000/105000/106000. All exact date-prefixed versions are recorded in Supabase history. No blanket db push or certification of older manual migration drift.
+- Applied14 migrations: prior sixSept3 and sevenSept7 hardening files, plusSept7 120000guided_phrase_keep. All exact date-prefixed versions recorded in Supabase history. No blanket db push or certification of older manual migration drift.
 - Removed direct INSERT grants/policies, installed ten indexes and privileged field/profile/admin guards. Lens/Live/credits/Stripe/recall/thumbnail rollback-only integration suites passed remotely. Exact500 import +500 append passed; no test-deck residue.106000 installs a missing pure language-normalization helper without historical backfill.
 - Production Vercel CRON_SECRET and API_QUOTA_REQUIRE_ENFORCED=true added; APP_URL explicitly https://lingwave.ai. Current daily cron enabled 03:30 UTC; unauthenticated trigger 401. Actual scheduled execution not observed.
 - Supabase email confirmation already ON; Secure password change enabled and saved/read back ON. CAPTCHA remains OFF pending client/provider integration. Sensitive existing Vercel values are withheld, not presumed empty.
 
 ## Evidence and limits
+- Today final: full guided chain, frontend/API tsc, build, scoped lint0warnings/errors, i18n1726EN/DE/FR, browser14/14with77checks, FirstLight32 and iOSshell pass. Production Today/shared corpus assets200/immutable;13 API smoke checks pass. No paid calls or physical-device claim.
 - Frontend/API tsc, build, i18n1696/1696 EN/DE/FR, complete guided suite and20 focused scripts pass. Final deadline13, persona78, Lens38+27, Speak31. Full lint zero errors/two unchanged stub warnings. npm audit zero vulnerabilities.
 - Browser matrix20/20 with84 checks at320/390/1440 EN/DE/FR. Combined Python180 passed; fixed two tests that leaked a manifest stub across the suite. Physical iPhone, paid generation and live voice quality were not tested.
 - Supabase outstanding-invoice warning requires owner billing action. Owner deferred physical iPhone/TestFlight checks until later.
