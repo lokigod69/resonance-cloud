@@ -351,3 +351,16 @@ Spec rule 8 amendment (both new A1 specs): adjective blanks allowed when the adj
 - Desktop lanes use viewport-relative spread while sampling the unchanged wave at the displayed X. Phone world-lane math stays fixed. Hidden collision controls cannot be Next candidates.
 - Both Home sheets share modal focus/inert/restore behavior and own Cosmos theme tokens in their body portals. The previous absence of a focus trap is superseded by this accessibility fix.
 - First-run stream access, queue ordering, paid ru/ja voices, pearls/filter remain explicit product choices. Remote hardening setup stays unverified until evidence exists; source changes alone do not prove production configuration.
+
+## 2026-09-07 — Reliability and accounting hardening
+- Owner authorized direct implementation, SQL/config changes and commit/deploy for Lens identity/mixed receipts, Live reconnect billing and remaining hardening. Preserve waves and the unrelated WordTide diff.
+- Separate identities from display names: Lens deck identity is user/language scoped; UI reconciles exact client-ID save outcomes, never count-based guesses.
+- Live retries reuse one stored encrypted credential/ten-minute reservation. No untrusted browser-connected attestation or refund. Refund abandoned no-secret blocks through authenticated maintenance. This does not create a trusted provider socket-duration ceiling.
+- Refund exact generation operations and original credit buckets once. Worker failures carry operation fences; expired plan credits remain expired. Ambiguous old accounting is flagged for reconciliation rather than guessed.
+- Stripe order and financial accounting are separate. Older invoice payments still enter the idempotent ledger; canceled/expired allowance is not resurrected and its refund cannot claw unrelated credits. Durable customer/checkout reservations survive lost responses. Keep old RPC signatures during rolling deployment.
+- One server request clock begins before auth/body/quota; compensation has a short fresh signal under the final hard cap. One client deadline covers auth/fetch/body, without automatic spending retries. Use iOS15-safe signal checks.
+- Canonical persona registry resolves Speak instructions on server. New clients send IDs; legacy tuples must match exactly. The unused custom-script roleplay network mode is rejected; Today guided roleplay remains unchanged.
+- Guided data split is now implemented and semantically verified (2500 lessons/250 paths). This supersedes the September3 deferral. Authored source stays intact; generated runtime data must be regenerated and checked together.
+- Compatible dependency updates resolve npm vulnerabilities. React Router7.18.3 removed unstable_useTransitions, so the unsupported BrowserRouter prop was removed; the complete Speak/Lens route fixture matrix passes. This supersedes the earlier explicit-prop instruction.
+- Durable IndexedDB recall receipts precede network delivery. Account switches, deadlines and skewed device clocks must not strand the queue or duplicate a result.
+- No automatic workspace deletion until a deck-level admission/deletion lease exists. No CAPTCHA dashboard-only activation without a working client integration. No blind repair of historical migration history and no automated Supabase invoice payment.

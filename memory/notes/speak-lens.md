@@ -1,6 +1,8 @@
 # Speak and Lens
 Verified from source: 2026-09-07. Full audit: D:/CODING/ResonanceTEST/investigations/SPEAK_LENS_REFINEMENT_2026_09_07.md.
 
+**Later September 7 update:** [[hardening-2026-09-07]] supersedes earlier open items for stable Lens identity/per-row receipts, Live reservation billing, whole-request deadlines and client-authored personality fields. Those are implemented in c0192206 with applied migrations. Physical device/live-provider quality and a trusted server-enforced Live cost ceiling remain open.
+
 ## Providers
 - Default Live Speak: xAI `grok-voice-think-fast-1.0`; manual tap-to-send over WebSocket, PCM 24 kHz. Existing iOS acknowledgement/audio protocol remains authoritative.
 - Other Speak voices: Groq `whisper-large-v3` transcription → Groq `llama-3.3-70b-versatile` reply → Mistral `voxtral-mini-tts-2603` or Google `gemini-3.1-flash-tts-preview` audio. Mistral/Gemini are TTS engines, not the reply model.

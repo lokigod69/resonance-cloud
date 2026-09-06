@@ -19,6 +19,7 @@ Last updated: 2026-09-07
 <!-- One line per page in notes/, added when created:
 - [[notes/some-topic]] — one-line description -->
 - [[notes/speak-lens]] — current providers, prompt rules, lifecycle contracts and remaining device/save/billing gates.
+- [[notes/hardening-2026-09-07]] — Lens receipts, Live/credit/Stripe invariants, whole-request deadlines, offline recall, guided split, applied SQL and remaining operational gates.
 
 ## Rules for agents
 Read [[STATE]] at session start; open the rest only when needed. After meaningful work: prepend [[LOG]], refresh [[STATE]], append decisions to [[DECISIONS]]. Update, don't duplicate. Date everything. Mark wrong things `⚠️ superseded` — never leave known-false statements looking current. Never edit raw/. Full protocol: SecondBrainOS/PROTOCOL.md.

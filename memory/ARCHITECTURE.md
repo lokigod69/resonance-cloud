@@ -1,5 +1,14 @@
 # Architecture
-Last verified: 2026-07-06 (domains line corrected 2026-07-07 audit)
+Last verified: 2026-09-07 for the hardening additions below; older unchanged sections retain their original verification scope.
+
+## September 7 architecture additions
+- Server request scopes/deadlines: `frontend/api/_shared/requestDeadline.ts`; shared transports include auth, quotas, providers, bodies and bounded compensation. Client counterpart `frontend/src/lib/clientDeadline.ts` supports iOS15.
+- Canonical Speak personality authority: `api/_shared/speakPersona.ts` reads a generated API-local catalog, checked against picker registries by prebuild. Do not import src/ ESM from API CommonJS. New clients send IDs; exact legacy tuples remain compatible.
+- Ledger/reservations: `generation_credit_operations`, `words.active_credit_operation_id`, Live session reservation fields, `stripe_billing_customers` and `stripe_checkout_reservations`; server-only allocation/settlement RPCs. Ordered Stripe mutations separate subscription state from invoice credit/refund accounting.
+- Durable recall: `src/lib/recallAttemptQueue.ts` uses IndexedDB plus `record_recall_attempt` and unique user/receipt IDs. App bridge drains on user, online and foreground changes.
+- Guided authoring stays in `guidedLessonsAuthoring.ts`. `generate:guided-runtime` derives a lightweight index and 12 dynamic language modules under `src/data/guided-runtime/`; runtime callers load only required language bodies.
+- Card list previews use `words.card_thumbnail_url` (640x360 WebP); study/detail retain `thumbnail_url` full PNG. SQL deletion/cleanup owns both URLs. Runner uses `src/path_safety.py`, bounded subprocess helpers and persisted bootstrap retry state.
+- Full invariants, rollout compatibility and remaining limits: [[notes/hardening-2026-09-07]].
 
 ## Overview
 Two production halves in one git repo (root: `orchestrator/`). (1) The user-facing app: React 19 + TypeScript + Vite + Tailwind v4 SPA in `frontend/`, deployed on Vercel with serverless functions in `frontend/api/`, auth/DB/storage on Supabase, iOS via a Capacitor shell. (2) The generation backend: a single Python worker process on Railway (`start_cloud.py` → `job_runner.py`) that polls Supabase for jobs and drives `src/orchestration/*` workers, calling engines in-process via `src/cloud_dispatcher.py` (`DISPATCH_MODE=direct`). A third, legacy half — the local "DAW" (FastAPI routers + per-engine HTTP servers) — remains in-tree but only loads when `STORAGE_MODE != "cloud"`.
