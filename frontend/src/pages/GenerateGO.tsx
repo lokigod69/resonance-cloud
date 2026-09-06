@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
@@ -55,6 +55,11 @@ import ProductLaneStep from '@/components/generate/steps/ProductLaneStep'
 import CardImageStyleStep from '@/components/generate/steps/CardImageStyleStep'
 import PremiumCardCustomizationStep from '@/components/generate/steps/PremiumCardCustomizationStep'
 import WordsStep from '@/components/generate/steps/WordsStep'
+import StreamPictureReview from '@/components/generate/StreamPictureReview'
+import {
+  resolveStreamPictureContext,
+  streamPictureDeckName,
+} from '@/components/generate/streamPictureFlow'
 import {
   PremiumSummaryRow,
   type PremiumSummaryItem,
@@ -128,6 +133,7 @@ export default function GenerateGO() {
   const { activeLanguage, languageReady } = useLanguage()
   const { t, tp } = useTranslation()
   const navigate = useNavigate()
+  const location = useLocation()
   const { translateAndIpa } = useTranslateAndIpa()
   const { submitImagelessImport } = useSubmitImagelessImport()
   const { appendImagelessCards } = useAppendImagelessCards()
@@ -230,10 +236,10 @@ export default function GenerateGO() {
   // back-navigation to the language step.
   const [gateResolved, setGateResolved] = useState(false)
 
-  // Word Stream seam: `?word=<term>&lang=<language>` pre-seeds the language and
-  // a one-word list and opens on the lane step, so "Add a picture" from the
-  // Home sheet lands the learner one choice (standard / premium) away from a
-  // generated card. A lane-locked deck link (`?deckId=`) always wins.
+  // Word Stream seam: `?word=<term>&lang=<language>` pre-seeds a focused,
+  // single-word Standard Card review. A matching navigation-state StreamWord
+  // adds its trusted gloss; query-only links remain supported. A lane-locked
+  // deck link (`?deckId=`) always wins.
   const wordParam = searchParams.get('word')
   const langParam = searchParams.get('lang')
   const seededWordTerm = wordParam?.trim().slice(0, 80) || null
@@ -242,6 +248,12 @@ export default function GenerateGO() {
   // language and a non-empty term); otherwise the LanguageContext pre-seed
   // below runs as usual and the learner lands on the picker, never a loader.
   const wordSeedOwned = Boolean(seededWordTerm && seededWordLanguage && isBetaTargetLanguage(seededWordLanguage))
+  const focusedWordSeed = !deckIdParam && wordSeedOwned
+  const streamPictureContext = resolveStreamPictureContext(
+    location.state,
+    seededWordTerm,
+    seededWordLanguage,
+  )
   const seededWordRef = useRef<string | null>(null)
   useEffect(() => {
     if (deckIdParam || !wordSeedOwned || !seededWordTerm || !seededWordLanguage) return
@@ -257,10 +269,17 @@ export default function GenerateGO() {
       seededWordRef.current = seedKey
       setLanguage(seededLanguage)
       setWords([term])
+      setSelectedVocabularyItems([])
+      setProductLane('card_standard')
+      setCardImageStyle(null)
+      setCardLayer2(null)
+      setPremiumQuickMode(DEFAULT_PREMIUM_QUICK_MODE)
       // The learner asked for a picture of THIS word — the deck is named
       // after it, never "German Deck — 9/4/2026".
-      setDeckName(term)
-      setStep(2)
+      setDeckName(streamPictureDeckName(term))
+      // This is a focused review, not the generic lane/word-entry wizard. No
+      // paid work starts here; the learner still presses Generate explicitly.
+      setStep(3)
       setGateResolved(true)
     }, 0)
     return () => window.clearTimeout(timeoutId)
@@ -849,7 +868,7 @@ export default function GenerateGO() {
   const premiumInfographicSelected =
     productLane === 'card_premium' && cardLayer2?.presentation_form === 'infographic_card'
   const summaryItems: PremiumSummaryItem[] = [
-    ...(!existingDeck && language && step > 1
+    ...(!existingDeck && !focusedWordSeed && language && step > 1
       ? [{
           key: 'language',
           label: languageDisplayLabel(language),
@@ -867,7 +886,7 @@ export default function GenerateGO() {
           tone: 'product',
         }]
       : []),
-    ...(words.length > 0 && step > 3
+    ...(!focusedWordSeed && words.length > 0 && step > 3
       ? [{
           key: 'words',
           label: wordCountLabel(words.length),
@@ -1035,7 +1054,7 @@ export default function GenerateGO() {
 
   return (
     <div className="gen-container">
-      <PremiumSummaryRow items={summaryItems} className="generate-selection-summary" />
+      {(!focusedWordSeed || step !== 3) && <PremiumSummaryRow items={summaryItems} className="generate-selection-summary" />}
       {/* ── Step 1: Language ── */}
       {!existingDeck && step === 1 && (
         <div ref={el => { sectionRefs.current[0] = el }} className="gen-section">
@@ -1089,7 +1108,32 @@ export default function GenerateGO() {
       {/* ── Step 3: Words ── */}
       {step === 3 && (
         <div ref={el => { sectionRefs.current[2] = el }} className="gen-section">
-          {step === 3 ? (
+          {focusedWordSeed && seededWordTerm && seededWordLanguage ? (
+            <StreamPictureReview
+              word={seededWordTerm}
+              gloss={streamPictureContext?.helperTerm ?? null}
+              languageLabel={languageDisplayLabel(seededWordLanguage)}
+              languageCode={streamPictureContext?.targetLanguageCode || getLanguageCode(seededWordLanguage)}
+              glossLanguageCode={streamPictureContext?.helperLanguageCode ?? null}
+              deckName={deckName}
+              productLane={productLane === 'card_premium' ? 'card_premium' : 'card_standard'}
+              cardImageStyle={isStandardCardImageStyle(cardImageStyle) ? cardImageStyle : null}
+              creditCost={creditCost}
+              credits={credits}
+              submitting={submitting}
+              error={error}
+              onDeckNameChange={setDeckName}
+              onStyleChange={setCardImageStyle}
+              onUseStandard={() => handleLaneSelect('card_standard')}
+              onUsePremium={() => {
+                handleLaneSelect('card_premium')
+                setStep(4)
+              }}
+              onCustomizePremium={() => setStep(4)}
+              onGenerate={() => { void handleInitialize() }}
+              onBack={() => navigate(`/dashboard?lang=${encodeURIComponent(seededWordLanguage)}`)}
+            />
+          ) : step === 3 ? (
             <div className="gen-words-panel">
               <WordsStep
                 state={wordsStepState}
@@ -1275,7 +1319,7 @@ export default function GenerateGO() {
                 onLayer2Change={(value) => setCardLayer2(prev => ({ ...(prev ?? DEFAULT_CARD_LAYER2), ...value }))}
                 onArtStyleChange={(value) => setCardImageStyle(value)}
                 onInfographicStyleChange={setPremiumInfographicStyle}
-                onContinue={() => setStep(5)}
+                onContinue={() => setStep(focusedWordSeed ? 3 : 5)}
               />
             ) : (
               <CardImageStyleStep

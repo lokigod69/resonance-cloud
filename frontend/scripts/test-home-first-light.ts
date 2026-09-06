@@ -68,7 +68,12 @@ async function main() {
     homeVisitKey,
     HOME_DAWN_FLOOR,
   } = visitModule
-  const { resolveHomeHero } = recModule
+  const {
+    resolveHomeHero,
+    isHomeMissionPending,
+    shouldRetainCommittedHomeHero,
+    shouldReplaceCommittedHomeHero,
+  } = recModule
 
   const mission = {
     pathId: 'de-p4',
@@ -295,7 +300,7 @@ async function main() {
     assert.equal(resolveHomeHero({ ...heroBase, streamLive: true, duePoolCount: 0 }).kind, 'stream')
     assert.equal(resolveHomeHero({ ...heroBase, streamLive: true, duePoolCount: 0, isSpeakLanguage: false }).kind, 'stream')
     assert.equal(resolveHomeHero({ ...heroBase, streamLive: true, duePoolCount: 0, hasError: true }).kind, 'unavailable')
-    assert.equal(resolveHomeHero({ ...heroBase, streamLive: true, duePoolCount: 0, wordCount: 0 }).kind, 'preparing')
+    assert.equal(resolveHomeHero({ ...heroBase, streamLive: true, duePoolCount: 0, wordCount: 0 }).kind, 'stream')
   })
 
   check('hero: an RPC failure is unavailable, never "nothing is due" (Opus 12)', () => {
@@ -306,6 +311,11 @@ async function main() {
   check('hero: decks with zero complete words are preparing, with the deck link', () => {
     const hero = resolveHomeHero({ ...heroBase, wordCount: 0, duePoolCount: 0 })
     assert.deepEqual(hero, { kind: 'preparing', href: '/deck/d1' })
+  })
+
+  check('hero: a live stream gives an empty deck useful work while its words are preparing', () => {
+    const hero = resolveHomeHero({ ...heroBase, wordCount: 0, duePoolCount: 0, streamLive: true })
+    assert.deepEqual(hero, { kind: 'stream' })
   })
 
   check('hero: priority lesson → recall → speak → discover', () => {
@@ -328,6 +338,29 @@ async function main() {
   check('hero: mission pending holds the skeleton; timeout falls through to recall', () => {
     assert.equal(resolveHomeHero({ ...heroBase, missionPending: true }).kind, 'skeleton')
     assert.equal(resolveHomeHero({ ...heroBase, missionPending: false }).kind, 'recall')
+  })
+
+  check('hero: timeout releases a live stream, but waits when no useful work is ready', () => {
+    assert.equal(isHomeMissionPending({ missionLoading: true, missionTimedOut: false, duePoolCount: 0, streamLive: true }), true)
+    assert.equal(isHomeMissionPending({ missionLoading: true, missionTimedOut: true, duePoolCount: 0, streamLive: true }), false)
+    assert.equal(isHomeMissionPending({ missionLoading: true, missionTimedOut: true, duePoolCount: 0, streamLive: false }), true)
+    assert.equal(isHomeMissionPending({ missionLoading: true, missionTimedOut: true, duePoolCount: 3, streamLive: false }), false)
+  })
+
+  check('hero: a committed stream is retained only while it remains live', () => {
+    assert.equal(shouldRetainCommittedHomeHero({ kind: 'stream' }, true), true)
+    assert.equal(shouldRetainCommittedHomeHero({ kind: 'stream' }, false), false)
+    assert.equal(shouldRetainCommittedHomeHero({ kind: 'lesson', mission }, false), true)
+    assert.equal(shouldRetainCommittedHomeHero({ kind: 'recall', count: 3 }, false), true)
+  })
+
+  check('hero: a lazy stream promotes only fallback commitments', () => {
+    assert.equal(shouldReplaceCommittedHomeHero({ kind: 'preparing', href: '/deck/d1' }, 'stream', true), true)
+    assert.equal(shouldReplaceCommittedHomeHero({ kind: 'speak' }, 'stream', true), true)
+    assert.equal(shouldReplaceCommittedHomeHero({ kind: 'discover' }, 'stream', true), true)
+    assert.equal(shouldReplaceCommittedHomeHero({ kind: 'lesson', mission }, 'stream', true), false)
+    assert.equal(shouldReplaceCommittedHomeHero({ kind: 'recall', count: 3 }, 'stream', true), false)
+    assert.equal(shouldReplaceCommittedHomeHero({ kind: 'stream' }, 'speak', false), true)
   })
 
   check('hero: new-due-only deck heroes recall (fresh-deck regression)', () => {

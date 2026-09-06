@@ -123,6 +123,9 @@ export const supabase: any = {
   rpc(name: string, params: any) {
     const s = scenario()
     record(`rpc:${name}`, params)
+    if (name === 'submit_generation') {
+      return settle({ data: { success: true, deck_id: 'picture-deck' }, error: null }, 100)
+    }
     if (name === 'submit_word_stream_save') {
       const mode = s.streamKeep ?? 'ok'
       if (mode === 'missing') {

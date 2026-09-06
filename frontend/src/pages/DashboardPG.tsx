@@ -113,8 +113,6 @@ export default function DashboardPG() {
     }
   }, [activeLanguage, availableLanguages, dashboardLoading, queryLang, setActiveLanguage])
 
-  const studyStreak = useStudyStreak()
-
   // Empty-home shows when the ACTIVE language has no decks — a brand-new account
   // (no decks, no active language) or a language the learner hasn't started yet.
   const decksInActiveLanguage = useMemo(() => (
@@ -133,18 +131,21 @@ export default function DashboardPG() {
   // instant the decision resolves.
   const decisionResolved = !dashboardLoading && languageReady && hasResolvedActiveLanguage
   const isFirstRun = decisionResolved && decksInActiveLanguage.length === 0
+  // First Light carries its own progress line. Avoid downloading up to 5,000
+  // recall-attempt timestamps for a streak that only the empty home renders.
+  const studyStreak = useStudyStreak({ enabled: isFirstRun })
 
   if (!user) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6 px-6 text-center">
         <div className="pg-glass flex max-w-md flex-col items-center gap-4 rounded-2xl p-8">
           <LogIn className="h-10 w-10 text-[var(--pg-accent-teal)]" />
-          <h1 className="font-display text-2xl font-semibold">Welcome to Lingwave</h1>
+          <h1 className="font-display text-2xl font-semibold">{t('dashboard.signedOut.title')}</h1>
           <p className="text-sm text-[var(--pg-text-dim)]">
-            Sign in to view your SRS dashboard and continue studying.
+            {t('dashboard.signedOut.body')}
           </p>
           <Button asChild>
-            <Link to="/auth">Sign in</Link>
+            <Link to="/login">{t('dashboard.signedOut.signIn')}</Link>
           </Button>
         </div>
       </div>
@@ -156,11 +157,11 @@ export default function DashboardPG() {
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6 px-6 text-center">
         <div className="pg-glass flex max-w-md flex-col items-center gap-4 rounded-2xl p-8">
           <AlertCircle className="h-10 w-10 text-destructive" />
-          <h1 className="font-display text-xl font-semibold">Dashboard unavailable</h1>
-          <p className="text-sm text-[var(--pg-text-dim)]">{dashboardError}</p>
+          <h1 className="font-display text-xl font-semibold">{t('errors.route.title')}</h1>
+          <p className="text-sm text-[var(--pg-text-dim)]">{t('errors.route.body')}</p>
           <Button onClick={loadDashboardData}>
             <RefreshCw className="mr-2 h-4 w-4" />
-            Try again
+            {t('errors.route.retry')}
           </Button>
         </div>
       </div>

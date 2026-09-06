@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { WAVE_FOCAL_FRACTION, screenYForWave } from '@/lib/waveField'
+import { WAVE_FOCAL_FRACTION, screenYForWave, worldXForScreenX } from '@/lib/waveField'
 import {
   nextStreamLane,
   poolIndexAt,
@@ -8,6 +8,7 @@ import {
   streamDepthAt,
   streamOpacityAt,
   streamScaleAt,
+  streamScreenXAt,
   streamSpawnIntervalMs,
   streamStillProgressSlots,
   type StreamLayout,
@@ -112,6 +113,7 @@ export default function WordStream({
   poolRef.current = pool
   const pausedRef = useRef(paused)
   pausedRef.current = paused
+  const keyboardFocusRef = useRef(false)
 
   const lifetime = layout.lifetimeMs
   const spawnInterval = useMemo(() => streamSpawnIntervalMs(layout), [layout])
@@ -168,25 +170,13 @@ export default function WordStream({
   useEffect(() => {
     if (filledRef.current || pool.length === 0) return
     filledRef.current = true
-    const next: AliveWord[] = []
     for (let i = 0; i < budget; i++) {
-      const word = takeNextWord()
-      if (!word) break
-      const lane = nextStreamLane(laneRef.current, layout.lanes.length, seededUnit(seed, `lane:${i}`))
-      laneRef.current = lane
-      // Nearest first: the first word is furthest along its run.
-      next.push({
-        key: word.conceptId,
-        word,
-        lane,
-        bornAt: reduceMotion ? 0 : -(budget - 1 - i) * spawnInterval,
-        stillSlot: i,
-      })
+      // Use the live spawn path so each selection excludes words already
+      // placed, including when fewer candidates remain than the slot budget.
+      if (!spawn(reduceMotion ? 0 : -(budget - 1 - i) * spawnInterval)) break
     }
-    spawnCountRef.current = next.length
     lastSpawnAtRef.current = 0
-    commitAlive(next)
-  }, [commitAlive, layout.lanes.length, budget, pool.length, reduceMotion, seed, spawnInterval, takeNextWord])
+  }, [budget, pool.length, reduceMotion, spawn, spawnInterval])
 
   // Retired words leave the water with their exit; the parent already counted
   // them and prunes its map once `onAliveChange` no longer lists them. Under
@@ -202,9 +192,10 @@ export default function WordStream({
   }, [commitAlive, budget, reduceMotion, retired, spawn])
 
   useEffect(() => {
+    if (reduceMotion) return // the collision pass reports only visible words
     onAliveChange?.(alive.map((entry) => entry.word))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onAliveChange, alive.map((entry) => entry.key).join('|')])
+  }, [onAliveChange, reduceMotion, alive.map((entry) => entry.key).join('|')])
 
   // ── Placement ────────────────────────────────────────────────────────────
   // The outer element carries translate only; the scale rides on a CSS
@@ -212,8 +203,9 @@ export default function WordStream({
   const placeEntry = useCallback((entry: AliveWord, progress: number, w: number, h: number, t: number) => {
     const el = elByKey.current.get(entry.key)
     if (!el) return null
+    el.style.visibility = ''
+    el.inert = false
     const z = streamDepthAt(progress)
-    const worldX = layout.lanes[entry.lane] ?? 0
     const focal = h * WAVE_FOCAL_FRACTION
     const scale = streamScaleAt(progress)
     // Clamp into the viewport: an outer lane at the near edge fans a long
@@ -224,8 +216,10 @@ export default function WordStream({
       widthByKey.current.set(entry.key, width)
     }
     const half = (width * scale) / 2 + 8
-    const unclampedX = w / 2 + (worldX * focal) / z
+    const unclampedX = streamScreenXAt(layout, entry.lane, progress, w, focal)
     const sx = half * 2 >= w ? w / 2 : Math.min(w - half, Math.max(half, unclampedX))
+    // Sample the sea at the displayed X, including after an edge clamp.
+    const worldX = worldXForScreenX(sx, z, w, h)
     const y = screenYForWave(worldX, z, t, w, h)
     el.style.transform = `translate3d(${sx.toFixed(2)}px, ${y.toFixed(2)}px, 0) translate(-50%, -100%)`
     el.style.setProperty('--stream-scale', scale.toFixed(3))
@@ -240,7 +234,7 @@ export default function WordStream({
       }
     }
     return { el, sx, y, halfWidth: half, height: 48 * scale }
-  }, [layout.lanes, positionsRef])
+  }, [layout, positionsRef])
 
   // Reduced motion: fixed depths (sticky per word), re-placed after every
   // spawn/removal and on resize; no frame loop.
@@ -254,6 +248,7 @@ export default function WordStream({
       const w = document.documentElement.clientWidth
       const h = document.documentElement.clientHeight
       const kept: Array<{ x0: number; x1: number; y0: number; y1: number }> = []
+      const visibleWords: StreamWord[] = []
       const ordered = [...aliveRef.current].sort((a, b) => a.stillSlot - b.stillSlot)
       for (const entry of ordered) {
         const geometry = placeEntry(entry, slots[entry.stillSlot] ?? 0.5, w, h, clockRef.current)
@@ -262,17 +257,21 @@ export default function WordStream({
         const collides = kept.some((other) => box.x0 < other.x1 && box.x1 > other.x0 && box.y0 < other.y1 && box.y1 > other.y0)
         if (collides) {
           geometry.el.style.opacity = '0'
-          geometry.el.style.pointerEvents = 'none'
+          geometry.el.style.visibility = 'hidden'
+          geometry.el.inert = true
         } else {
-          geometry.el.style.pointerEvents = ''
+          geometry.el.style.visibility = ''
+          geometry.el.inert = false
           kept.push(box)
+          visibleWords.push(entry.word)
         }
       }
+      onAliveChange?.(visibleWords)
     }
     place()
     window.addEventListener('resize', place)
     return () => window.removeEventListener('resize', place)
-  }, [alive, clockRef, budget, placeEntry, reduceMotion])
+  }, [alive, clockRef, budget, onAliveChange, placeEntry, reduceMotion])
 
   // Reduced motion: a crossfade rotation every 12 s. Neither `alive` nor
   // `paused` is a dependency — a keep or an open sheet must not restart the
@@ -280,7 +279,7 @@ export default function WordStream({
   useEffect(() => {
     if (!reduceMotion) return
     const timer = window.setInterval(() => {
-      if (pausedRef.current || document.hidden) return
+      if (pausedRef.current || keyboardFocusRef.current || document.hidden) return
       const [nearest] = aliveRef.current
       if (!nearest) {
         spawn(0)
@@ -302,7 +301,8 @@ export default function WordStream({
     let lastTs = 0
 
     const frame = (ts: number) => {
-      const delta = lastTs && !pausedRef.current ? Math.min(MAX_FRAME_DELTA_MS, ts - lastTs) : 0
+      const driftPaused = pausedRef.current || keyboardFocusRef.current
+      const delta = lastTs && !driftPaused ? Math.min(MAX_FRAME_DELTA_MS, ts - lastTs) : 0
       lastTs = ts
       streamTimeRef.current += delta
       const now = streamTimeRef.current
@@ -323,7 +323,7 @@ export default function WordStream({
         const gone = new Set(drifted.map((entry) => entry.key))
         commitAlive(aliveRef.current.filter((entry) => !gone.has(entry.key)))
       }
-      if (!pausedRef.current && aliveRef.current.length < budget && now - lastSpawnAtRef.current >= spawnInterval) {
+      if (!driftPaused && aliveRef.current.length < budget && now - lastSpawnAtRef.current >= spawnInterval) {
         if (!spawn(now)) lastSpawnAtRef.current = now // nothing available — retry after an interval
       }
       raf = requestAnimationFrame(frame)
@@ -374,7 +374,12 @@ export default function WordStream({
   const ordered = useMemo(() => [...alive].sort((a, b) => b.bornAt - a.bornAt), [alive])
 
   return (
-    <div ref={containerRef} className="absolute inset-0">
+    <div
+      ref={containerRef}
+      className="absolute inset-0"
+      onFocusCapture={(event) => { keyboardFocusRef.current = event.target.matches(':focus-visible') }}
+      onBlurCapture={() => { keyboardFocusRef.current = false }}
+    >
       <AnimatePresence>
         {ordered.map((entry) => {
           const reason = retired.get(entry.key)
@@ -415,7 +420,7 @@ export default function WordStream({
                   >
                     {entry.word.targetTerm}
                   </span>
-                  <span className="whitespace-nowrap text-[13px] text-[var(--text-secondary)] lg:text-[14px]">
+                  <span className="whitespace-nowrap text-[13px] text-[var(--text-secondary)] lg:text-[14px]" lang={entry.word.helperLanguageCode} dir="auto">
                     {entry.word.helperTerm}
                   </span>
                 </span>

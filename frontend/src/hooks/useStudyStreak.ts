@@ -23,7 +23,7 @@ export type UseStudyStreakResult = StudyStreak & {
  * The streak is global (all languages) — `recall_attempts` carries no language and a habit
  * streak is about showing up, not a single language.
  */
-export function useStudyStreak(): UseStudyStreakResult {
+export function useStudyStreak({ enabled = true }: { enabled?: boolean } = {}): UseStudyStreakResult {
   const { user } = useAuth()
   const userId = user?.id ?? null
   const [timestamps, setTimestamps] = useState<string[]>([])
@@ -34,7 +34,7 @@ export function useStudyStreak(): UseStudyStreakResult {
     let cancelled = false
 
     async function run() {
-      if (!userId) {
+      if (!enabled || !userId) {
         setTimestamps([])
         setError(null)
         setLoading(false)
@@ -77,7 +77,7 @@ export function useStudyStreak(): UseStudyStreakResult {
     return () => {
       cancelled = true
     }
-  }, [userId])
+  }, [enabled, userId])
 
   const { streak, studiedToday } = useMemo(() => computeStudyStreak(timestamps), [timestamps])
 

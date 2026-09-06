@@ -17,9 +17,11 @@ type CurrentStripProps = {
   lessonNumber: number | null
   /** Recall segment finished through the pool-empty arm (§4). */
   poolEmpty: boolean
+  /** The main card offers a stream word now; avoid a competing next action. */
+  streamRecommended?: boolean
 }
 
-export default function CurrentStrip({ visit, lessonNumber, poolEmpty }: CurrentStripProps) {
+export default function CurrentStrip({ visit, lessonNumber, poolEmpty, streamRecommended = false }: CurrentStripProps) {
   const { t } = useTranslation()
   const lineRef = useRef<HTMLDivElement | null>(null)
   const [dropLevel, setDropLevel] = useState(0)
@@ -44,8 +46,9 @@ export default function CurrentStrip({ visit, lessonNumber, poolEmpty }: Current
     if (lessonToken) tokens.push({ text: lessonToken.done ? `${lessonToken.text} ✓` : lessonToken.text, done: lessonToken.done, kind: 'progress' })
     if (recallToken) tokens.push({ text: recallToken.done ? `${recallToken.text} ✓` : recallToken.text, done: recallToken.done, kind: 'progress' })
     if (allDone) tokens.push({ text: t('home.fl.current.done'), done: false, kind: 'progress' })
-    else if (speakPending) tokens.push({ text: t('home.fl.current.next', { step: t('nav.speak') }), done: false, kind: 'next' })
+    else if (speakPending && !streamRecommended) tokens.push({ text: t('home.fl.current.next', { step: t('nav.speak') }), done: false, kind: 'next' })
   }
+  if (tokens.length === 1) tokens.length = 0
 
   const visible = tokens.filter((token) => {
     if (dropLevel >= 1 && token.kind === 'next') return false
@@ -74,6 +77,8 @@ export default function CurrentStrip({ visit, lessonNumber, poolEmpty }: Current
     window.addEventListener('resize', fit)
     return () => window.removeEventListener('resize', fit)
   }, [contentKey, dropLevel])
+
+  if (visible.length === 0) return null
 
   return (
     <div className="flex min-h-6 w-full items-center justify-center px-4">

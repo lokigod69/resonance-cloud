@@ -17,7 +17,7 @@ function state() {
       display_name: 'Fixture Learner',
       base_language: s.baseLanguage ?? 'English',
       new_words_per_day: 20,
-      credits: 12,
+      credits: s.credits ?? 12,
       avatar_path: null,
       avatar_updated_at: null,
     },

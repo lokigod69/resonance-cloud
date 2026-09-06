@@ -541,7 +541,7 @@ export default function FirstLightHome({
       skyLine += ` · ${t('home.fl.current.lesson', { lesson: lessonNumber })}${visit.lessonDone ? ' ✓' : ''}`
     }
     if (allDoneFold) skyLine += ` · ${t('home.fl.current.done')}`
-    else if (speakPendingFold) skyLine += ` · ${t('home.fl.current.next', { step: t('nav.speak') })}`
+    else if (speakPendingFold && hero.kind !== 'stream') skyLine += ` · ${t('home.fl.current.next', { step: t('nav.speak') })}`
   }
 
   const [announcedLine, setAnnouncedLine] = useState('')
@@ -612,7 +612,7 @@ export default function FirstLightHome({
             className="absolute inset-x-0"
             style={{ top: `calc(${WAVE_HORIZON_FRACTION * 100}% + 0.5rem)` }}
           >
-            <CurrentStrip visit={visit} lessonNumber={lessonNumber} poolEmpty={poolEmptyTrusted} />
+            <CurrentStrip visit={visit} lessonNumber={lessonNumber} poolEmpty={poolEmptyTrusted} streamRecommended={hero.kind === 'stream'} />
           </div>
         )}
 

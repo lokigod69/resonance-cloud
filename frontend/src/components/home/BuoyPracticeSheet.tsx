@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Check, Volume2, X } from 'lucide-react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
+import { useHomeSheetFocus } from '@/hooks/useHomeSheetFocus'
 import { useTranslation } from '@/hooks/useTranslation'
 import { playPronunciation, prefetchPronunciationAudio } from '@/hooks/usePronunciation'
 import { evaluateTypedAnswer } from '@/lib/typedAnswer'
@@ -84,28 +85,14 @@ export default function BuoyPracticeSheet({
   // open sheet.
   useBodyScrollLock(lemma !== null)
 
-  // Escape closes; focus lands on the dialog when it opens (the buoy that had
-  // focus is gone from the water) — the stream sheet's rule, shared here.
   const dialogRef = useRef<HTMLDivElement | null>(null)
-  useEffect(() => {
-    if (!lemma) return
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape') return
-      event.preventDefault()
-      onClose()
-    }
-    document.addEventListener('keydown', onKey)
-    const focusTimer = window.setTimeout(() => {
-      const root = dialogRef.current
-      if (!root) return
-      const input = root.querySelector<HTMLInputElement>('input[type="text"]')
-      ;(input ?? root).focus({ preventScroll: true })
-    }, 0)
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      window.clearTimeout(focusTimer)
-    }
-  }, [lemma, onClose])
+  useHomeSheetFocus({
+    open: lemma !== null,
+    dialogRef,
+    onClose,
+    initialFocusSelector: 'input[type="text"]',
+    focusKey: lemma?.lemmaKey,
+  })
 
   // A picture that fails to load (the row's url may be a bare bundle path on
   // device) falls back to the translation prompt — never a broken box above
@@ -215,7 +202,7 @@ export default function BuoyPracticeSheet({
     <AnimatePresence>
       {lemma && (
         <motion.div
-          className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+          className="theme-cosmos fixed inset-0 z-[60] flex items-center justify-center p-4"
           style={{
             background: 'color-mix(in srgb, var(--app-bg) 72%, transparent)',
             backdropFilter: 'blur(20px) saturate(0.95)',
@@ -223,13 +210,14 @@ export default function BuoyPracticeSheet({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.18 }}
+          transition={reduceMotion ? { duration: 0 } : { duration: 0.18 }}
           onClick={onClose}
         >
           <motion.div
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
+            aria-labelledby="buoy-practice-title"
             tabIndex={-1}
             data-body-scroll-lock-scrollable="true"
             className="max-h-[calc(100vh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl p-5 outline-none sm:p-6"
@@ -240,17 +228,18 @@ export default function BuoyPracticeSheet({
               boxShadow: 'var(--shadow-elevated)',
               color: 'var(--text-primary)',
             }}
-            initial={{ opacity: 0, y: reduceMotion ? 0 : 32, scale: 0.96 }}
+            initial={reduceMotion ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 32, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: reduceMotion ? 0 : 24, scale: 0.96 }}
-            transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+            exit={reduceMotion ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 24, scale: 0.96 }}
+            transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 320, damping: 28 }}
             onClick={(event) => event.stopPropagation()}
           >
+            <h2 id="buoy-practice-title" className="sr-only" lang={langCode} dir="auto">{lemma.displayWord}</h2>
             <div className="mb-3 flex justify-end">
               <button
                 type="button"
                 onClick={onClose}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--surface-glass)] text-[var(--text-secondary)] transition-colors hover:cursor-pointer hover:border-[var(--accent)] hover:text-[var(--text-primary)]"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--surface-glass)] text-[var(--text-secondary)] transition-colors hover:cursor-pointer hover:border-[var(--accent)] hover:text-[var(--text-primary)]"
                 aria-label={t('categories.modal.close')}
               >
                 <X size={16} aria-hidden="true" />
@@ -276,7 +265,7 @@ export default function BuoyPracticeSheet({
                       type="button"
                       onClick={play}
                       aria-label={t('study.playPronunciationAria', { word: lemma.displayWord })}
-                      className="relative mb-4 block w-full cursor-pointer overflow-hidden rounded-xl transition-transform active:scale-[0.99]"
+                      className={`relative mb-4 block w-full cursor-pointer overflow-hidden rounded-xl ${reduceMotion ? 'transition-none' : 'transition-transform active:scale-[0.99]'}`}
                       style={{ border: '1px solid var(--border-subtle)' }}
                     >
                       <img src={thumbnailUrl} alt="" className="block max-h-56 w-full object-cover" onError={onImgError} />
@@ -391,7 +380,7 @@ export default function BuoyPracticeSheet({
                           type="button"
                           onClick={play}
                           aria-label={t('study.playPronunciationAria', { word: lemma.displayWord })}
-                          className="flex max-w-full cursor-pointer items-center justify-center gap-2 rounded-xl px-3 py-1.5 transition-colors hover:bg-[var(--accent-soft)] active:scale-[0.98]"
+                          className={`flex max-w-full cursor-pointer items-center justify-center gap-2 rounded-xl px-3 py-1.5 transition-colors hover:bg-[var(--accent-soft)] ${reduceMotion ? '' : 'active:scale-[0.98]'}`}
                         >
                           <span className="font-display text-2xl font-bold long-copy" lang={langCode} dir="auto">
                             {lemma.displayWord}

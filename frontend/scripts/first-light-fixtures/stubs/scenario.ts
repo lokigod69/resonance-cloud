@@ -37,6 +37,7 @@ export type GuidedPathStub = {
 export type Scenario = {
   userId?: string
   baseLanguage?: string
+  credits?: number
   /** compute_word_states behaviour. */
   rpc?: 'ok' | 'error' | 'never'
   rpcDelayMs?: number

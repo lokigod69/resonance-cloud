@@ -25,17 +25,17 @@ export default function CardImageStyleStep({
   const tiles = [
     {
       value: 'Photorealistic' as const,
-      label: skin === 'classic' ? t('generate.cardImageStyle.realistic.label') : 'Realistic',
+      label: t('generate.cardImageStyle.realistic.label'),
       tone: 'realistic',
     },
     {
       value: 'Editorial' as const,
-      label: skin === 'classic' ? t('generate.cardImageStyle.editorial.label') : 'Editorial',
+      label: t('generate.cardImageStyle.editorial.label'),
       tone: 'editorial',
     },
     {
       value: 'Random' as const,
-      label: skin === 'classic' ? t('generate.cardImageStyle.random.label') : 'Random',
+      label: t('generate.cardImageStyle.random.label'),
       tone: 'random',
     },
   ]

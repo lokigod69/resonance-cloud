@@ -29,6 +29,7 @@ export default defineConfig({
       '@/lib/analytics': stub('analytics.ts'),
       '@/components/Toast': stub('Toast.ts'),
       '@/hooks/useAuth': stub('useAuth.ts'),
+      '@/contexts/LanguageContext': stub('LanguageContext.ts'),
       '@/contexts/DialogContext': stub('DialogContext.ts'),
       '@/hooks/useProfileAvatarUrl': stub('useProfileAvatarUrl.ts'),
       '@/hooks/usePronunciation': stub('usePronunciation.ts'),

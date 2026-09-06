@@ -1,8 +1,5 @@
-import {
-  STATIC_CATEGORY_TARGET_LANGUAGES,
-  type CategoryWordLevel,
-  type SelectedCategoryVocabularyItem,
-} from '@/data/categories'
+import { STATIC_CATEGORY_TRANSLATION_LANGUAGES } from '@/data/staticCategoryLanguages'
+import type { CategoryWordLevel, SelectedCategoryVocabularyItem } from '@/data/categories'
 import type { Locale } from '@/lib/translations'
 
 export const STATIC_LIBRARY_TARGET_LANGUAGE_KEY = 'resonance.staticLibrary.targetLanguage'
@@ -10,15 +7,16 @@ export const STATIC_LIBRARY_TARGET_LANGUAGE_KEY = 'resonance.staticLibrary.targe
 export function resolveVisibleStaticLanguage(value: string | null | undefined, fallback = 'English'): string {
   if (!value) return fallback
   const normalized = value.trim().toLowerCase()
-  const matched = STATIC_CATEGORY_TARGET_LANGUAGES.find((language) => (
-    language.value.toLowerCase() === normalized
+  const matched = STATIC_CATEGORY_TRANSLATION_LANGUAGES.find((language) => (
+    language.status !== 'hidden'
+    && (language.value.toLowerCase() === normalized
     || language.code === normalized
     || language.label.toLowerCase() === normalized
     || language.name.toLowerCase() === normalized
     || language.nativeName.toLowerCase() === normalized
     // Guided-space naming: the ceb entry's fields all say 'Bisaya', so 'Cebuano'
     // fell through to the fallback — same alias categories.ts:resolveStatic… has.
-    || (language.code === 'ceb' && normalized === 'cebuano')
+    || (language.code === 'ceb' && normalized === 'cebuano'))
   ))
   return matched?.value ?? fallback
 }

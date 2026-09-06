@@ -10,6 +10,7 @@ import {
   WAVE_HORIZON_FRACTION,
 } from '@/lib/waveField'
 import type { Scenario, WordRow } from './stubs/scenario'
+import { createT } from '@/lib/translations'
 import {
   Ctx,
   bodyText,
@@ -155,6 +156,69 @@ const STREAM_WORDS = [
 
 function streamWordButtons(): HTMLButtonElement[] {
   return qa<HTMLButtonElement>('button.pointer-events-auto').filter((b) => (b.getAttribute('aria-label') || '').startsWith('New word '))
+}
+
+function visibleStreamButtons(): HTMLButtonElement[] {
+  return streamWordButtons().filter((button) => !button.closest('[inert]') && getComputedStyle(button).visibility !== 'hidden')
+}
+
+function pictureFixture(id: string, locale: 'en' | 'de' | 'fr', width: number, credits = 12): Fixture {
+  const t = createT(locale)
+  return {
+    id,
+    name: `${locale} stream → picture card, ${width}px, ${credits} credits`,
+    viewport: { width, height: width === 320 ? 568 : 844 },
+    language: 'Spanish',
+    scenario: {
+      baseLanguage: locale === 'de' ? 'German' : locale === 'fr' ? 'French' : 'English',
+      credits,
+      words: restRows(1),
+      streamWords: [{ conceptId: 'instruments.violin', categorySlug: 'animals', level: 1, target: 'el violín', helper: locale === 'de' ? 'die Geige' : locale === 'fr' ? 'le violon' : 'violin' }],
+    },
+    async run(ctx) {
+      const word = await waitFor('word on water', () => qa<HTMLButtonElement>('button.pointer-events-auto').find((button) => button.textContent?.includes('el violín')), 10000)
+      word.click()
+      await waitFor('sheet', dialog, 6000)
+      clickText('button', t('home.stream.sheet.keep'))
+      const picture = await waitFor('picture door', () => byText('button', t('home.stream.sheet.picture')), 6000)
+      picture.click()
+      const review = await waitFor('focused picture page', () => q<HTMLElement>('[data-stream-picture-review]'), 6000)
+      await settle(500)
+      const generate = review.querySelector<HTMLButtonElement>('[data-stream-picture-generate]')!
+      ctx.check('selected term and meaning stay visible', textOf(review).includes('el violín') && textOf(review).includes(locale === 'de' ? 'die Geige' : locale === 'fr' ? 'le violon' : 'violin'), textOf(review))
+      ctx.check('Standard is preselected', textOf(review).includes(t('generate.productLane.standard.label')), textOf(review))
+      ctx.check('no request to add more words', !bodyText().includes(t('generate.words.addTitle')) && !q('input[placeholder]'), bodyText().slice(0, 500))
+      ctx.check('no paid submission on arrival', !(window as any).__calls.some((c: any) => c.kind === 'rpc:submit_generation'))
+      const rect = generate.getBoundingClientRect()
+      ctx.check('Generate is visible without scrolling', rect.top >= 0 && rect.bottom <= window.innerHeight, `${rect.top.toFixed(0)}-${rect.bottom.toFixed(0)}`)
+      ctx.check('no horizontal overflow', document.documentElement.scrollWidth <= window.innerWidth + 1, `${document.documentElement.scrollWidth}/${window.innerWidth}`)
+      await shot('review')
+      if (credits === 0) {
+        ctx.check('insufficient credits disables Generate', generate.disabled)
+        generate.click()
+        await settle(200)
+        ctx.check('disabled Generate never submits', !(window as any).__calls.some((c: any) => c.kind === 'rpc:submit_generation'))
+        clickText('button', t('generate.streamPicture.back'))
+        await waitFor('return to the same language stream', () => (window as any).__location === '/dashboard?lang=Spanish', 6000)
+        return
+      }
+      if (locale === 'de') {
+        const options = review.querySelector('details')!
+        options.open = true
+        clickText('button', t('generate.cardImageStyle.editorial.label'))
+        options.open = false
+        await settle(100)
+      }
+      generate.click()
+      generate.click()
+      const request = await waitFor('one explicit generation', () => (window as any).__calls.find((c: any) => c.kind === 'rpc:submit_generation'), 6000)
+      ctx.check('one exact word submitted', JSON.stringify(request.payload.p_word_list) === JSON.stringify(['el violín']), JSON.stringify(request.payload.p_word_list))
+      ctx.check('word-named Standard picture deck, correct target', request.payload.p_deck_payload.name === 'el violín' && request.payload.p_deck_payload.target_language === 'Spanish' && request.payload.p_job_payload.settings_override.card_image_model === 'zturbo', JSON.stringify(request.payload.p_deck_payload))
+      ctx.check('double press is idempotent locally', (window as any).__calls.filter((c: any) => c.kind === 'rpc:submit_generation').length === 1)
+      if (locale === 'de') ctx.check('optional image style reaches the generation payload', request.payload.p_job_payload.settings_override.card_image_style === 'Editorial', JSON.stringify(request.payload.p_job_payload.settings_override))
+      await waitFor('generated card destination', () => (window as any).__location.startsWith('/deck/picture-deck'), 6000)
+    },
+  }
 }
 
 // ── shared run helpers ─────────────────────────────────────────────────────
@@ -309,6 +373,10 @@ async function awaitCardWord(): Promise<string> {
 // ── the matrix ─────────────────────────────────────────────────────────────
 
 export const FIXTURES: Fixture[] = [
+  pictureFixture('26-picture-en-mobile', 'en', 390),
+  pictureFixture('27-picture-de-se', 'de', 320),
+  pictureFixture('28-picture-fr-desktop', 'fr', 1440),
+  pictureFixture('29-picture-no-credits', 'en', 390, 0),
   {
     id: '01-hero-lesson',
     name: 'hero = lesson (mission resolves, due words exist)',
@@ -887,6 +955,14 @@ export const FIXTURES: Fixture[] = [
       first.click()
       const sheet = await waitFor('sheet', dialog, 6000)
       ctx.check('sheet shows the tapped word', textOf(sheet).includes(firstWord), `${firstWord} | ${textOf(sheet)}`)
+      ctx.check('Home behind the sheet is inert', document.getElementById('root')?.inert === true)
+      const controls = Array.from(sheet.querySelectorAll<HTMLButtonElement>('button:not([disabled])')).filter((button) => button.getClientRects().length > 0)
+      controls[controls.length - 1].focus()
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true }))
+      ctx.check('Tab wraps to first sheet control', document.activeElement === controls[0])
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true, bubbles: true, cancelable: true }))
+      ctx.check('Shift-Tab wraps to last sheet control', document.activeElement === controls[controls.length - 1])
+      ctx.check('sheet inherits the same brand accent as Home', getComputedStyle(sheet).getPropertyValue('--accent').trim() === getComputedStyle(q<HTMLElement>('#root .theme-cosmos')!).getPropertyValue('--accent').trim())
       ctx.check('sheet offers Keep and Let it pass', Boolean(byText('button', 'Keep this word')) && Boolean(byText('button', 'Let it pass')), textOf(sheet))
       await settle(500)
       await shot('sheet')
@@ -908,6 +984,7 @@ export const FIXTURES: Fixture[] = [
       ctx.check('Next opens another word', Boolean(next) && !textOf(next).includes(firstWord) && Boolean(byText('button', 'Keep this word')), textOf(next))
       ;(document.querySelector('[role="dialog"] button[aria-label]') as HTMLButtonElement | null)?.click()
       await waitGone('sheet', dialog, 4000)
+      ctx.check('Home becomes interactive after closing', document.getElementById('root')?.inert === false)
       ctx.check('no page errors', ((window as any).__pageErrors ?? []).length === 0, ((window as any).__pageErrors ?? []).join(' || '))
     },
   },
@@ -959,6 +1036,7 @@ export const FIXTURES: Fixture[] = [
       ctx.check('goal-met marker links to the stream deck', Boolean(marker) && textOf(marker).includes('20 new today · goal met'), textOf(marker))
       const rects = streamWordButtons().map((b) => b.getBoundingClientRect())
       ctx.check('every label inside the viewport', rects.every((r) => r.left >= 0 && r.right <= 1440), rects.map((r) => `${Math.round(r.left)}-${Math.round(r.right)}`).join(' '))
+      ctx.check('desktop words occupy both outer thirds of the sea', rects.some((r) => r.right < 480) && rects.some((r) => r.left > 960), rects.map((r) => `${Math.round(r.left)}-${Math.round(r.right)}`).join(' '))
       await shot('water')
       streamWordButtons()[0].click()
       await waitFor('sheet', dialog, 6000)
@@ -979,6 +1057,10 @@ export const FIXTURES: Fixture[] = [
       await waitFor('stream words', () => streamWordButtons().length >= 3, 10000)
       await settle(900)
       ctx.check('still words present', streamWordButtons().length >= 3, `count=${streamWordButtons().length}`)
+      ctx.check('a live stream replaces the temporary preparing hero', bodyText().includes('Catch the nearest'), textOf(heroCard()))
+      const visible = visibleStreamButtons()
+      const visibleRects = visible.map((button) => button.getBoundingClientRect())
+      ctx.check('still visible words never overlap', visibleRects.every((a, index) => visibleRects.slice(index + 1).every((b) => a.right <= b.left || b.right <= a.left || a.bottom <= b.top || b.bottom <= a.top)), visibleRects.map((r) => `${r.x.toFixed(0)},${r.y.toFixed(0)}`).join(' | '))
       const rects = streamWordButtons().map((b) => b.getBoundingClientRect())
       ctx.check('every label inside the 320pt viewport', rects.every((r) => r.left >= 0 && r.right <= 320), rects.map((r) => `${Math.round(r.left)}-${Math.round(r.right)}`).join(' '))
       await shot('water')
@@ -989,6 +1071,43 @@ export const FIXTURES: Fixture[] = [
       ctx.check('sheet fits the SE viewport height', rect.height <= 568 - 32 + 1, `height=${Math.round(rect.height)}`)
       await shot('sheet')
       ctx.check('no page errors', ((window as any).__pageErrors ?? []).length === 0, ((window as any).__pageErrors ?? []).join(' || '))
+    },
+  },
+
+  {
+    id: '24-stream-small-pool',
+    name: 'one remaining word appears once, then an exhausted stream has an actionable fallback',
+    viewport: MOBILE,
+    language: 'German',
+    scenario: { words: restRows(1), streamWords: STREAM_WORDS.slice(0, 1), streamKeptToday: 0 },
+    async run(ctx) {
+      await waitFor('single stream word', () => streamWordButtons().length > 0, 10000)
+      await settle(1200)
+      ctx.check('the remaining word appears only once', streamWordButtons().length === 1, `count=${streamWordButtons().length}`)
+      streamWordButtons()[0].click()
+      await waitFor('sheet', dialog, 6000)
+      clickText('button', 'Keep this word')
+      await waitFor('kept word', () => textOf(dialog()).includes('Kept'), 6000)
+      await settle(600)
+      ;(dialog()?.querySelector('button[aria-label="Close"]') as HTMLButtonElement)?.click()
+      await waitGone('sheet', dialog, 6000)
+      await settle(1000)
+      ctx.check('Catch nearest disappears when no words remain', !bodyText().includes('Catch the nearest'), bodyText().slice(0, 350))
+    },
+  },
+
+  {
+    id: '25-stream-slow-mission',
+    name: 'a live stream gets an actionable hero before a slow lesson module settles',
+    viewport: MOBILE,
+    language: 'German',
+    scenario: { words: restRows(1), streamWords: STREAM_WORDS, guidedDelayMs: 15000, guidedPaths: [GERMAN_PATH] },
+    async run(ctx) {
+      await waitFor('stream', () => streamWordButtons().length > 0, 10000)
+      await waitFor('Catch nearest within three seconds of available words', () => byText('button', 'Catch the nearest'), 3000)
+      ctx.check('hero offers the ready stream', textOf(heroCard()).includes('Catch the nearest'), textOf(heroCard()))
+      ctx.check('strip does not offer Speak at the same time', !stripText().includes('Next: Speak'), stripText())
+      await shot('ready')
     },
   },
 

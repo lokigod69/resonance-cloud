@@ -22,6 +22,7 @@ import {
   streamDepthAt,
   streamOpacityAt,
   streamScaleAt,
+  streamScreenXAt,
   streamSeed,
   streamSpawnIntervalMs,
   streamStillProgressSlots,
@@ -271,6 +272,24 @@ test('scale and opacity envelopes', () => {
   assert.equal(streamOpacityAt(0.5), 1)
   assert.ok(streamOpacityAt(0.96) > 0 && streamOpacityAt(0.96) < 1)
   assert.equal(streamOpacityAt(1), 0)
+})
+
+test('desktop spread uses the viewport at every depth without changing phone lanes', () => {
+  for (const width of [1024, 1440, 2560]) {
+    for (const p of [0, 0.5, 1]) {
+      const left = streamScreenXAt(STREAM_DESKTOP_LAYOUT, 0, p, width, 765)
+      const right = streamScreenXAt(STREAM_DESKTOP_LAYOUT, 4, p, width, 765)
+      assert.ok(left >= width * 0.09 && left <= width * 0.22)
+      assert.ok(right >= width * 0.78 && right <= width * 0.91)
+      assert.equal(left + right, width)
+    }
+  }
+  for (const width of [320, 390, 768]) {
+    const focal = 568 * 0.85
+    for (const p of [0, 0.5, 1]) {
+      assert.equal(streamScreenXAt(STREAM_MOBILE_LAYOUT, 0, p, width, focal), width / 2 - 1.15 * focal / streamDepthAt(p))
+    }
+  }
 })
 
 test('spawn cadence keeps consecutive words a quarter of the run apart', () => {

@@ -216,10 +216,25 @@ export type StreamLayout = {
   lanes: readonly number[]
   maxAlive: number
   lifetimeMs: number
+  /** Desktop spread from horizon to near edge, as fractions of the viewport
+   * half-width. Mobile keeps the established world-lane projection. */
+  viewportSpread?: readonly [number, number]
 }
 
 export const STREAM_MOBILE_LAYOUT: StreamLayout = { lanes: [-1.15, 0, 1.15], maxAlive: 4, lifetimeMs: 24_000 }
-export const STREAM_DESKTOP_LAYOUT: StreamLayout = { lanes: [-4.4, -2.2, 0, 2.2, 4.4], maxAlive: 8, lifetimeMs: 30_000 }
+export const STREAM_DESKTOP_LAYOUT: StreamLayout = { lanes: [-4.4, -2.2, 0, 2.2, 4.4], maxAlive: 8, lifetimeMs: 30_000, viewportSpread: [0.58, 0.8] }
+
+/** Horizontal placement has its own responsive envelope. Wider monitors
+ * gain usable water at every depth, while words still fan out as they arrive. */
+export function streamScreenXAt(layout: StreamLayout, lane: number, progress: number, width: number, focal: number): number {
+  const laneX = layout.lanes[lane] ?? 0
+  if (!layout.viewportSpread) return width / 2 + laneX * focal / streamDepthAt(progress)
+  let extent = 1
+  for (const value of layout.lanes) extent = Math.max(extent, Math.abs(value))
+  const p = Math.max(0, Math.min(1, progress))
+  const [far, near] = layout.viewportSpread
+  return width / 2 + laneX / extent * width / 2 * (far + (near - far) * p)
+}
 
 /** Depth at progress p ∈ [0, 1], linear in 1/z so the SCREEN speed reads as
  * constant — linear z would park a word at the horizon for half its life. */

@@ -8,18 +8,48 @@ import type { HomeVisit } from '@/hooks/useHomeVisit'
 // Total by construction: every input state maps to a hero — loading to a
 // fixed-height skeleton, an RPC failure to an honest `unavailable` card with
 // Retry (never to "nothing is due"), decks-without-complete-words to
-// `preparing`. Priority for real heroes: lesson → recall → speak → discover.
+// `preparing` until the stream is usable. Priority for real heroes:
+// lesson → recall → stream → speak → discover.
 //
 // The hero COMMITS once per visit: the first real resolution wins, and a
-// mission that resolves later goes to the strip/clause, never a hero swap —
-// no content jumping. `skeleton`/`unavailable` are transient states, not
-// commitments; recovering from a failure may still land any hero.
+// mission that resolves later goes to the strip/clause, never a hero swap.
+// A stream commitment expires when no word remains live; lesson and recall
+// stay fixed. `skeleton`/`unavailable` are transient states, not commitments.
 //
-// Recall-first timeout: the guided module (~2.8MB, lazy) may take a while on
-// cold cache. When due words exist and the mission hasn't resolved within
-// 800ms, the recall hero commits and the lesson surfaces in the strip later.
+// Useful-work timeout: the guided module (~6.96 MB, lazy) may take a while on
+// cold cache. When due recall or a live stream exists and the mission has not
+// resolved within 800ms, useful work commits and the lesson surfaces later.
 
 export const HERO_MISSION_TIMEOUT_MS = 800
+
+export function isHomeMissionPending(input: {
+  missionLoading: boolean
+  missionTimedOut: boolean
+  duePoolCount: number
+  streamLive: boolean
+}): boolean {
+  const { missionLoading, missionTimedOut, duePoolCount, streamLive } = input
+  // Recall or a live stream can carry the card after the bounded wait. With
+  // neither available, keep the skeleton: Speak/discover are weaker fallbacks
+  // and would make the eventual lesson swap feel arbitrary.
+  return missionLoading && (!missionTimedOut || (duePoolCount === 0 && !streamLive))
+}
+
+export function shouldRetainCommittedHomeHero(hero: HomeHero, streamLive: boolean): boolean {
+  // A stream commitment is only truthful while the renderer can still put a
+  // word on the water. Lesson and recall commitments remain stable per visit.
+  return hero.kind !== 'stream' || streamLive
+}
+
+export function shouldReplaceCommittedHomeHero(
+  hero: HomeHero,
+  resolvedKind: HomeHero['kind'],
+  streamLive: boolean,
+): boolean {
+  if (hero.kind === 'stream') return !streamLive && resolvedKind !== 'stream'
+  return resolvedKind === 'stream'
+    && (hero.kind === 'preparing' || hero.kind === 'speak' || hero.kind === 'discover')
+}
 
 export type HomeHero =
   | { kind: 'skeleton' }
@@ -40,9 +70,8 @@ export type ResolveHomeHeroInput = {
   wordCount: number
   duePoolCount: number
   mission: TodayMission | null
-  /** Mission still genuinely undecided: loading, and either nothing is due
-   * (no substitute — wait it out) or the 800ms recall-first timer hasn't
-   * fired yet. */
+  /** Mission still genuinely undecided: loading, and either the 800ms timer
+   * has not fired or neither due recall nor a live stream can substitute. */
   missionPending: boolean
   /** The mission's lesson segment was already completed today (UTC). */
   lessonDoneToday: boolean
@@ -59,7 +88,7 @@ export function resolveHomeHero(input: ResolveHomeHeroInput): HomeHero {
   const { fetched, hasError, hasDecks, wordCount, duePoolCount, mission, missionPending, lessonDoneToday, streamLive, isSpeakLanguage, deckHref } = input
   if (!fetched) return { kind: 'skeleton' }
   if (hasError) return { kind: 'unavailable' }
-  if (hasDecks && wordCount === 0) return { kind: 'preparing', href: deckHref }
+  if (hasDecks && wordCount === 0 && !streamLive) return { kind: 'preparing', href: deckHref }
   if (mission && !mission.isPathComplete && !lessonDoneToday) return { kind: 'lesson', mission }
   if (missionPending) {
     // The lesson still outranks recall if it lands in time; with no due words
@@ -138,9 +167,9 @@ export function useHomeRecommendation({
         wordCount: wordStates.data.length,
         duePoolCount,
         mission: missionLoading ? null : mission,
-        // The recall-first timeout only exists because recall can substitute;
-        // with nothing due there is no substitute — wait the mission out.
-        missionPending: missionLoading && (duePoolCount === 0 || !missionTimedOut),
+        // After the bounded wait, due recall or a live stream can carry the
+        // card while the large guided module finishes in the background.
+        missionPending: isHomeMissionPending({ missionLoading, missionTimedOut, duePoolCount, streamLive }),
         lessonDoneToday: visit?.lessonDone ?? false,
         streamLive,
         isSpeakLanguage,
@@ -150,8 +179,8 @@ export function useHomeRecommendation({
   // Commit-once per visit key. Transient states (skeleton/unavailable) never
   // commit and never overwrite a commitment; the first real hero survives all
   // later resolutions — with one upgrade: `stream` may replace a committed
-  // speak/discover (the library lands after those resolve; all three are
-  // "nothing owed" heroes, so the swap moves no workload). The effect fires
+  // preparing/speak/discover fallback once the lazy library proves that useful
+  // work is ready. The effect fires
   // the render after the first real resolution — the same value renders
   // uncommitted for that one frame, so nothing visibly changes.
   const commitKind = resolved.kind !== 'skeleton' && resolved.kind !== 'unavailable'
@@ -160,17 +189,18 @@ export function useHomeRecommendation({
     if (!visitKey || !commitKind) return
     setCommitted((prev) => {
       if (prev?.key !== visitKey) return { key: visitKey, hero: resolved }
-      const upgradable = prev.hero.kind === 'speak' || prev.hero.kind === 'discover'
-      return resolvedKind === 'stream' && upgradable ? { key: visitKey, hero: resolved } : prev
+      return shouldReplaceCommittedHomeHero(prev.hero, resolvedKind, streamLive)
+        ? { key: visitKey, hero: resolved }
+        : prev
     })
     // `resolved` is rebuilt per render; the prev-guard makes this idempotent
     // and only the first real hero per key (plus the stream upgrade) is stored.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visitKey, commitKind, resolvedKind])
+  }, [visitKey, commitKind, resolvedKind, streamLive])
 
   // `unavailable` is a failure surface, not content — it may displace even a
   // committed hero, or a mid-visit RPC failure could never offer Retry.
   if (resolved.kind === 'unavailable') return resolved
-  if (visitKey && committed?.key === visitKey) return committed.hero
+  if (visitKey && committed?.key === visitKey && shouldRetainCommittedHomeHero(committed.hero, streamLive)) return committed.hero
   return resolved
 }

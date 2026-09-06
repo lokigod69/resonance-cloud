@@ -1,26 +1,14 @@
-/* eslint-disable */
 // Scenario-driven stand-in for the ~2 MB thematic library. The Word Stream
 // hook dynamic-imports this module and reads two functions; the words they
 // serve come from window.__scenario.streamWords (none → no stream → the
 // due/rest buoys render exactly as before).
 
 import { scenario, type StreamWordStub } from './scenario'
-
-export function resolveStaticCategoryTargetLanguageCode(language?: string | null): string {
-  const value = (language ?? '').trim().toLowerCase()
-  if (value.startsWith('kor')) return 'ko'
-  if (value.startsWith('pol')) return 'pl'
-  if (value.startsWith('eng')) return 'en'
-  return 'de'
-}
-
-// lib/staticLibraryLanguage.ts entered the Home graph via lib/targetLanguage.ts
-// (the canonical-language fan-out). The harness only needs the shape its
-// resolver reads — enough entries for fixtures to resolve German/English.
-export const STATIC_CATEGORY_TARGET_LANGUAGES = [
-  { value: 'English', code: 'en', label: 'English', name: 'English', nativeName: 'English' },
-  { value: 'German', code: 'de', label: 'German', name: 'German', nativeName: 'Deutsch' },
-]
+import { resolveStaticCategoryTargetLanguageCode, STATIC_CATEGORY_TRANSLATION_LANGUAGES } from '@/data/staticCategoryLanguages'
+export { resolveStaticCategoryTargetLanguageCode }
+export const STATIC_CATEGORY_TARGET_LANGUAGES = STATIC_CATEGORY_TRANSLATION_LANGUAGES.filter((entry) => entry.status !== 'hidden')
+export const STATIC_CATEGORY_BETA_TARGET_LANGUAGES = STATIC_CATEGORY_TARGET_LANGUAGES.filter((entry) => ['English', 'German', 'Spanish', 'French', 'Italian', 'Portuguese', 'Bisaya', 'Indonesian'].includes(entry.value))
+export const PINNED_BOTTOM_CATEGORIES = []
 
 const CATEGORY_META: Record<string, { labelKey: string; emoji: string }> = {
   animals: { labelKey: 'category.animals', emoji: '🐾' },
@@ -47,6 +35,8 @@ export function getPublicCategoryGroups() {
     })),
   }]
 }
+
+export const getCategoryGroups = getPublicCategoryGroups
 
 export function getStaticCategorySelectedItems(
   category: { id?: string; name: string },

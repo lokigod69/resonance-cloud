@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Check, ImagePlus, Music, Volume2, X } from 'lucide-react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
+import { useHomeSheetFocus } from '@/hooks/useHomeSheetFocus'
 import { useTranslation } from '@/hooks/useTranslation'
 import { playPronunciation, prefetchPronunciationAudio } from '@/hooks/usePronunciation'
 import type { MusicTrack } from '@/hooks/useMusicPlayer'
@@ -24,9 +25,8 @@ import type { StreamWord } from '@/lib/wordStream'
 // Honest counting, the buoys' rule: only a resolved insert marks the word
 // kept; a failed insert shows an inline retry and nothing advances.
 //
-// Keyboard: Escape closes; focus lands on the dialog when it opens (the
-// drifting word that had focus is gone from the water) and returns to the
-// body on close.
+// Keyboard: Escape closes; focus stays in the sheet and returns to the opener
+// or the Home CTA when a keep removed that opener from the water.
 
 type KeepState =
   | { kind: 'idle' }
@@ -85,10 +85,12 @@ export default function StreamWordSheet({
   const audioUrl = audio && audio.key === key ? audio.url : null
   const audioResolved = audio?.key === key && audio.resolved
   const songOpen = key !== null && songOpenFor === key
+  const sheetOpen = word !== null
 
   // The song modal (a Radix Dialog) scrolls its own content; the sheet's
   // touchmove lock would make it unscrollable on iOS, so it lifts meanwhile.
   useBodyScrollLock(word !== null && !songOpen)
+  useHomeSheetFocus({ open: sheetOpen, dialogRef, onClose, suspended: songOpen, focusKey: key })
 
   // Resolve the recording as the sheet opens; warm it so the first play is
   // instant. Late results for a previous word are ignored by key.
@@ -106,23 +108,6 @@ export default function StreamWordSheet({
       cancelled = true
     }
   }, [resolveAudio, word])
-
-  // Escape closes (the song modal handles its own while open); focus moves
-  // onto the dialog so keyboard and screen-reader users start inside it.
-  useEffect(() => {
-    if (!word) return
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape' || songOpen) return
-      event.preventDefault()
-      onClose()
-    }
-    document.addEventListener('keydown', onKey)
-    const focusTimer = window.setTimeout(() => dialogRef.current?.focus({ preventScroll: true }), 0)
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      window.clearTimeout(focusTimer)
-    }
-  }, [onClose, songOpen, word])
 
   const play = useCallback(() => {
     if (!word) return
@@ -188,11 +173,11 @@ export default function StreamWordSheet({
 
   const openPicture = useCallback(() => {
     if (!word) return
-    const params = new URLSearchParams({ word: word.targetTerm, lang: language })
-    navigate(`/generate?${params.toString()}`)
-  }, [language, navigate, word])
+    const params = new URLSearchParams({ word: word.targetTerm, lang: word.targetLanguageName })
+    navigate(`/generate?${params.toString()}`, { state: { streamWord: word } })
+  }, [navigate, word])
 
-  const ctaClass = 'w-full rounded-xl border-2 border-[var(--accent)]/60 bg-[var(--accent)]/15 py-3 font-display text-sm font-semibold uppercase tracking-widest text-[var(--accent)] transition-all hover:bg-[var(--accent)]/25 disabled:cursor-not-allowed disabled:opacity-50'
+  const ctaClass = `w-full rounded-xl border-2 border-[var(--accent)]/60 bg-[var(--accent)]/15 py-3 font-display text-sm font-semibold uppercase tracking-widest text-[var(--accent)] hover:bg-[var(--accent)]/25 disabled:cursor-not-allowed disabled:opacity-50 ${reduceMotion ? 'transition-none' : 'transition-all active:scale-[0.98]'}`
   const doorClass = 'flex w-full cursor-pointer items-center gap-3 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-glass)] px-3 py-2.5 text-left transition-colors hover:border-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-50'
 
   return createPortal(
@@ -203,7 +188,7 @@ export default function StreamWordSheet({
             // The song modal is a Radix Dialog at z-50 in the same body
             // portal; while it is open the sheet steps below it so the modal
             // is the visible, interactive layer.
-            className={`fixed inset-0 flex items-center justify-center p-4 ${songOpen ? 'z-40' : 'z-[60]'}`}
+            className={`theme-cosmos fixed inset-0 flex items-center justify-center p-4 ${songOpen ? 'z-40' : 'z-[60]'}`}
             style={{
               background: 'color-mix(in srgb, var(--app-bg) 72%, transparent)',
               backdropFilter: 'blur(20px) saturate(0.95)',
@@ -211,7 +196,7 @@ export default function StreamWordSheet({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
+            transition={reduceMotion ? { duration: 0 } : { duration: 0.18 }}
             onClick={onClose}
           >
             <motion.div
@@ -231,10 +216,10 @@ export default function StreamWordSheet({
                 boxShadow: 'var(--shadow-elevated)',
                 color: 'var(--text-primary)',
               }}
-              initial={{ opacity: 0, y: reduceMotion ? 0 : 32, scale: 0.96 }}
+              initial={reduceMotion ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 32, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: reduceMotion ? 0 : 24, scale: 0.96 }}
-              transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+              exit={reduceMotion ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 24, scale: 0.96 }}
+              transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 320, damping: 28 }}
               onClick={(event) => event.stopPropagation()}
             >
               <div className="mb-3 flex items-center justify-between gap-3">
@@ -247,7 +232,7 @@ export default function StreamWordSheet({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--surface-glass)] text-[var(--text-secondary)] transition-colors hover:cursor-pointer hover:border-[var(--accent)] hover:text-[var(--text-primary)]"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--surface-glass)] text-[var(--text-secondary)] transition-colors hover:cursor-pointer hover:border-[var(--accent)] hover:text-[var(--text-primary)]"
                   aria-label={t('categories.modal.close')}
                 >
                   <X size={16} aria-hidden="true" />
@@ -261,10 +246,11 @@ export default function StreamWordSheet({
                   the next word. */}
               {word.thumbnailUrl ? (
                 <button
+                  key={word.conceptId}
                   type="button"
                   onClick={play}
                   aria-label={t('study.playPronunciationAria', { word: word.targetTerm })}
-                  className="relative mb-4 block w-full cursor-pointer overflow-hidden rounded-xl transition-transform active:scale-[0.99]"
+                  className={`relative mb-4 block w-full cursor-pointer overflow-hidden rounded-xl ${reduceMotion ? 'transition-none' : 'transition-transform active:scale-[0.99]'}`}
                   style={{ border: '1px solid var(--border-subtle)' }}
                 >
                   <img
@@ -292,14 +278,14 @@ export default function StreamWordSheet({
                 type="button"
                 onClick={play}
                 aria-label={t('study.playPronunciationAria', { word: word.targetTerm })}
-                className="mx-auto flex max-w-full cursor-pointer items-center justify-center gap-2 rounded-xl px-3 py-1.5 transition-colors hover:bg-[var(--accent-soft)] active:scale-[0.98]"
+                className={`mx-auto flex max-w-full cursor-pointer items-center justify-center gap-2 rounded-xl px-3 py-1.5 transition-colors hover:bg-[var(--accent-soft)] ${reduceMotion ? '' : 'active:scale-[0.98]'}`}
               >
                 <span id="stream-word-title" className="font-display text-3xl font-bold long-copy" lang={langCode} dir="auto">
                   {word.targetTerm}
                 </span>
                 <Volume2 className="h-5 w-5 shrink-0 text-[var(--accent-2)]" aria-hidden="true" />
               </button>
-              <p className="mt-1 text-center text-base text-[var(--text-secondary)] long-copy">{word.helperTerm}</p>
+              <p className="mt-1 text-center text-base text-[var(--text-secondary)] long-copy" lang={word.helperLanguageCode} dir="auto">{word.helperTerm}</p>
 
               <div className="mt-5 min-h-[7rem]" aria-live="polite">
                 <AnimatePresence mode="wait">
@@ -370,7 +356,7 @@ export default function StreamWordSheet({
                         type="button"
                         onClick={runKeep}
                         disabled={keepState.kind === 'pending'}
-                        className="lw-swell-cta inline-flex h-11 w-full items-center justify-center rounded-xl px-5 font-display text-sm font-semibold active:scale-[0.98] disabled:cursor-wait disabled:opacity-70"
+                        className={`lw-swell-cta inline-flex h-11 w-full items-center justify-center rounded-xl px-5 font-display text-sm font-semibold disabled:cursor-wait disabled:opacity-70 ${reduceMotion ? '' : 'active:scale-[0.98]'}`}
                       >
                         {keepState.kind === 'pending'
                           ? t('home.stream.sheet.keeping')

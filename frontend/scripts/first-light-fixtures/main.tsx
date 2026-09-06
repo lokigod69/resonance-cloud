@@ -9,8 +9,9 @@
 
 import { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { MemoryRouter, useLocation } from 'react-router-dom'
+import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom'
 import FirstLightHome from '@/components/home/FirstLightHome'
+import GenerateGO from '@/pages/GenerateGO'
 import './harness.css'
 import { FIXTURES } from './fixtures'
 import { Ctx } from './utils'
@@ -93,7 +94,11 @@ async function main() {
   createRoot(document.getElementById('root')!).render(
     <MemoryRouter initialEntries={['/dashboard']}>
       <LocationProbe />
-      <Harness fixture={fixture} />
+      <Routes>
+        <Route path="/dashboard" element={<Harness fixture={fixture} />} />
+        <Route path="/generate" element={<div className="theme-cosmos"><GenerateGO /></div>} />
+        <Route path="/deck/:id" element={<div>Generated deck</div>} />
+      </Routes>
     </MemoryRouter>,
   )
 
