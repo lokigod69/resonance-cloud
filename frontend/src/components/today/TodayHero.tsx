@@ -1,4 +1,5 @@
 import { CalendarDays, Check, CheckCircle2, Circle, Play, RotateCcw, SkipForward, Sparkles } from 'lucide-react'
+import { useState } from 'react'
 import {
   resolveGuidedBaseContent,
   resolveGuidedLessonEffectiveBaseLanguage,
@@ -44,22 +45,96 @@ export function LessonMediaFrame({
   mode = 'playback',
   showCaption = false,
 }: LessonMediaFrameProps) {
-  const { t } = useTranslation()
   const caption = resolveGuidedBaseContent(media.caption, { preferredBaseLanguage, authoredBaseLanguage }).text
   const mediaUrl = media.url.trim()
   const posterUrl = media.posterUrl?.trim()
+
+  return (
+    <LessonMediaFrameContent
+      key={`${media.type}:${mediaUrl}:${posterUrl ?? ''}`}
+      media={media}
+      mediaUrl={mediaUrl}
+      posterUrl={posterUrl}
+      caption={caption}
+      className={className}
+      mode={mode}
+      showCaption={showCaption}
+    />
+  )
+}
+
+function LessonMediaFrameContent({
+  media,
+  mediaUrl,
+  posterUrl,
+  caption,
+  className,
+  mode,
+  showCaption,
+}: {
+  media: GuidedLessonMedia
+  mediaUrl: string
+  posterUrl?: string
+  caption: string
+  className?: string
+  mode: 'preview' | 'playback'
+  showCaption: boolean
+}) {
+  const { t } = useTranslation()
+  const [failed, setFailed] = useState(false)
+  const [attempt, setAttempt] = useState(0)
   const canRenderVideo = (media.type === 'video' || media.type === 'music_video') && mediaUrl.length > 0
   const canRenderImage = media.type === 'image' && mediaUrl.length > 0
   const isPlaceholder = !canRenderVideo && !canRenderImage
+  const showFallback = isPlaceholder || failed
   const shouldRenderPreview = mode === 'preview'
+  const handleError = () => setFailed(true)
+  const handleRetry = () => {
+    setFailed(false)
+    setAttempt((current) => current + 1)
+  }
+
+  const fallback = (preview: boolean) => (
+    <div
+      className={cn(
+        'flex h-full min-h-[220px] flex-col p-5 sm:p-6',
+        preview ? 'justify-between' : 'justify-end',
+      )}
+      style={{
+        background:
+          'radial-gradient(ellipse at 20% 20%, var(--accent-glow), transparent 34%), radial-gradient(ellipse at 80% 14%, var(--accent-2-soft), transparent 34%), linear-gradient(135deg, color-mix(in srgb, var(--surface-2) 80%, transparent), color-mix(in srgb, var(--app-bg) 92%, transparent))',
+      }}
+    >
+      <div
+        className={cn('flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]', !preview && 'mb-auto')}
+        role={failed ? 'alert' : undefined}
+      >
+        <Sparkles className="h-4 w-4 text-[var(--accent)]" />
+        {failed ? t('today.media.failedLabel') : t('today.media.placeholderLabel')}
+      </div>
+      <div className="max-w-xl">
+        <p className={cn('font-semibold leading-snug text-[var(--text-primary)]', preview ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl')}>
+          {caption}
+        </p>
+        {failed && (
+          <Button type="button" variant="outline" className="mt-4 min-h-11" onClick={handleRetry}>
+            {t('common.retry')}
+          </Button>
+        )}
+      </div>
+    </div>
+  )
 
   return (
     <figure className={cn('min-w-0', className)}>
       <div className="theme-panel relative aspect-video min-h-[220px] overflow-hidden rounded-lg border border-[var(--border-subtle)]">
         {shouldRenderPreview ? (
           <div className="relative h-full min-h-[220px] overflow-hidden">
-            {canRenderVideo ? (
+            {showFallback ? (
+              fallback(true)
+            ) : canRenderVideo ? (
               <video
+                key={attempt}
                 className="h-full w-full object-cover opacity-80 saturate-[0.92]"
                 src={mediaUrl}
                 poster={posterUrl || undefined}
@@ -68,75 +143,56 @@ export function LessonMediaFrame({
                 preload="metadata"
                 tabIndex={-1}
                 aria-hidden="true"
+                onError={handleError}
               />
             ) : canRenderImage ? (
-              <img className="h-full w-full object-cover opacity-80 saturate-[0.92]" src={mediaUrl} alt="" aria-hidden="true" />
-            ) : (
-              <div
-                className="h-full min-h-[220px]"
-                style={{
-                  background:
-                    'radial-gradient(ellipse at 18% 16%, var(--accent-glow), transparent 34%), radial-gradient(ellipse at 82% 18%, var(--accent-2-soft), transparent 34%), linear-gradient(135deg, color-mix(in srgb, var(--surface-2) 82%, transparent), color-mix(in srgb, var(--app-bg) 94%, transparent))',
-                }}
-              />
-            )}
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  'linear-gradient(180deg, color-mix(in srgb, var(--app-bg) 24%, transparent), color-mix(in srgb, var(--app-bg) 78%, transparent)), radial-gradient(ellipse at 18% 16%, var(--accent-glow), transparent 44%)',
-              }}
-              aria-hidden="true"
-            />
-            <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6">
-              <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
-                <Sparkles className="h-4 w-4 text-[var(--accent)]" />
-                {isPlaceholder ? t('today.media.placeholderLabel') : t('today.media.previewLabel')}
-              </div>
-              <div className="max-w-xl">
-                {!isPlaceholder && (
-                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_72%,transparent)] text-[var(--text-primary)]">
-                    <Play className="h-4 w-4" />
+              <img key={attempt} className="h-full w-full object-cover opacity-80 saturate-[0.92]" src={mediaUrl} alt="" aria-hidden="true" onError={handleError} />
+            ) : null}
+            {!showFallback && (
+              <>
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, color-mix(in srgb, var(--app-bg) 24%, transparent), color-mix(in srgb, var(--app-bg) 78%, transparent)), radial-gradient(ellipse at 18% 16%, var(--accent-glow), transparent 44%)',
+                  }}
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6">
+                  <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
+                    <Sparkles className="h-4 w-4 text-[var(--accent)]" />
+                    {t('today.media.previewLabel')}
                   </div>
-                )}
-                <p className="text-lg font-semibold leading-snug text-[var(--text-primary)] sm:text-xl">
-                  {isPlaceholder ? caption : t('today.media.previewHint')}
-                </p>
-              </div>
-            </div>
+                  <div className="max-w-xl">
+                    <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_72%,transparent)] text-[var(--text-primary)]">
+                      <Play className="h-4 w-4" />
+                    </div>
+                    <p className="text-lg font-semibold leading-snug text-[var(--text-primary)] sm:text-xl">
+                      {t('today.media.previewHint')}
+                    </p>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
+        ) : showFallback ? (
+          fallback(false)
         ) : canRenderVideo ? (
           <video
+            key={attempt}
             className="h-full w-full object-cover"
             src={mediaUrl}
             poster={posterUrl || undefined}
             controls
             playsInline
             preload="metadata"
+            onError={handleError}
           />
         ) : canRenderImage ? (
-          <img className="h-full w-full object-cover" src={mediaUrl} alt={caption} />
-        ) : (
-          <div
-            className="flex h-full min-h-[220px] flex-col justify-end p-5 sm:p-6"
-            style={{
-              background:
-                'radial-gradient(ellipse at 20% 20%, var(--accent-glow), transparent 34%), radial-gradient(ellipse at 80% 14%, var(--accent-2-soft), transparent 34%), linear-gradient(135deg, color-mix(in srgb, var(--surface-2) 80%, transparent), color-mix(in srgb, var(--app-bg) 92%, transparent))',
-            }}
-          >
-            <div className="mb-auto flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
-              <Sparkles className="h-4 w-4 text-[var(--accent)]" />
-              {t('today.media.placeholderLabel')}
-            </div>
-            <div className="max-w-xl">
-              <p className="text-xl font-semibold leading-snug text-[var(--text-primary)] sm:text-2xl">
-                {caption}
-              </p>
-            </div>
-          </div>
-        )}
+          <img key={attempt} className="h-full w-full object-cover" src={mediaUrl} alt={caption} onError={handleError} />
+        ) : null}
       </div>
-      {showCaption && !isPlaceholder && (
+      {showCaption && !showFallback && (
         <figcaption className="mt-3 text-xs leading-5 text-[var(--text-muted)]">
           {caption}
         </figcaption>
@@ -220,7 +276,7 @@ export function TodayHero({
               {resolvedTitle}
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--text-secondary)]">
-              {lesson.level === 'B1' ? resolvedSituation : lesson.situation.de}
+              {resolvedSituation}
             </p>
 
             <div className="mt-6 grid gap-3 rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4">

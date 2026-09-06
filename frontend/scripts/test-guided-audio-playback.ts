@@ -10,6 +10,7 @@ import {
   clearGuidedAudioCache,
   playGuidedAudio,
   resolveGuidedAudio,
+  stopGuidedAudio,
   type GuidedAudioLookupArgs,
   type GuidedAudioPlaybackRow,
 } from '../src/lib/guidedAudio.ts'
@@ -27,6 +28,12 @@ function assert(name: string, condition: boolean, detail?: unknown) {
   failures += 1
   console.error(`  FAIL ${name}`)
   if (detail !== undefined) console.error('       ', detail)
+}
+
+function deferred<T>() {
+  let resolve!: (value: T) => void
+  const promise = new Promise<T>((nextResolve) => { resolve = nextResolve })
+  return { promise, resolve }
 }
 
 function assertEqual<T>(name: string, actual: T, expected: T) {
@@ -114,6 +121,45 @@ console.log('\n[resolver]')
   assert('missing cache avoids a second Supabase read', client.calls.length === 1, client.calls)
 }
 
+{
+  clearGuidedAudioCache()
+  let reads = 0
+  const client = {
+    from() {
+      const builder = {
+        select() { return builder },
+        eq() { return builder },
+        abortSignal() { return builder },
+        async maybeSingle() {
+          reads += 1
+          return reads === 1
+            ? { data: null, error: { message: 'temporary transport failure' } }
+            : {
+                data: {
+                  path_id: 'english-a1-practical-1',
+                  lesson_id: 'english-a1-practical-001-first-contact',
+                  vibe: 'bright',
+                  surface: 'corePhrase',
+                  surface_key: '__self',
+                  public_url: 'https://example.test/recovered.mp3',
+                  duration_ms: null,
+                },
+                error: null,
+              }
+        },
+      }
+      return builder
+    },
+  }
+  assertEqual('transient resolver failure falls back for that attempt', await resolveGuidedAudio(createLookup(), { client }), { kind: 'missing' })
+  assertEqual('transient resolver failure is not cached', await resolveGuidedAudio(createLookup(), { client }), {
+    kind: 'ready',
+    url: 'https://example.test/recovered.mp3',
+    durationMs: undefined,
+  })
+  assert('resolver retries after transient failure', reads === 2, reads)
+}
+
 console.log('\n[playback fallback]')
 {
   clearGuidedAudioCache()
@@ -160,6 +206,54 @@ console.log('\n[playback fallback]')
   assertEqual('audio error fallback speaks once', spoken, ['Hi there, do you speak English?'])
 }
 
+
+console.log('\n[playback lifecycle]')
+{
+  clearGuidedAudioCache()
+  const pending = deferred<{ data: GuidedAudioPlaybackRow | null; error: null }>()
+  const slowClient = {
+    from() {
+      const builder = {
+        select() { return builder },
+        eq() { return builder },
+        abortSignal() { return builder },
+        maybeSingle() { return pending.promise },
+      }
+      return builder
+    },
+  }
+  const spoken: string[] = []
+  const first = playGuidedAudio({
+    ...createLookup(),
+    text: 'first',
+    client: slowClient,
+    speak: (text) => spoken.push(text),
+  })
+  const second = await playGuidedAudio({
+    ...createLookup({ surfaceKey: 'newer' }),
+    text: 'second',
+    client: createPlaybackClient([]),
+    speak: (text) => spoken.push(text),
+  })
+  assertEqual('newer playback starts while an older lookup is pending', second, { kind: 'browser-fallback' })
+  assertEqual('superseded lookup is cancelled', await first, { kind: 'cancelled' })
+  assertEqual('superseded lookup never speaks stale text', spoken, ['second'])
+}
+
+{
+  clearGuidedAudioCache()
+  let speechCancels = 0
+  await playGuidedAudio({
+    ...createLookup(),
+    text: 'browser fallback',
+    client: createPlaybackClient([]),
+    speak: () => undefined,
+    cancelSpeech: () => { speechCancels += 1 },
+  })
+  stopGuidedAudio()
+  assert('stopGuidedAudio cancels active browser speech', speechCancels === 1, speechCancels)
+}
+
 console.log('\n[frontend safety]')
 {
   const sourcePath = fileURLToPath(new URL('../src/lib/guidedAudio.ts', import.meta.url))
@@ -179,13 +273,13 @@ console.log('\n[frontend safety]')
 console.log('\n[A1P1 surface keys]')
 {
   const lessonSource = readFileSync(
-    fileURLToPath(new URL('../src/data/guidedLessons.ts', import.meta.url)),
+    fileURLToPath(new URL('../src/data/guidedLessonsAuthoring.ts', import.meta.url)),
     'utf8',
   )
   assert('A1P1 lesson 1 exists', lessonSource.includes('id: "english-a1-practical-001-first-contact"'))
   const expectedChunkKeys = {
     bright: ['hi-there', 'do-you-speak', 'english'],
-    wistful: ['sorry-to-ask', 'do-you-happen-to-speak', 'english'],
+    wistful: ['do-you-speak', 'a-little', 'english'],
     sharp: ['quick-question', 'do-you-speak', 'english'],
   }
 
@@ -239,5 +333,5 @@ function extractChunkIds(variantSource: string) {
   const chunksStart = variantSource.indexOf('chunks: [')
   const lessonItemsStart = variantSource.indexOf('lessonItems:', chunksStart)
   const chunksSource = variantSource.slice(chunksStart, lessonItemsStart)
-  return Array.from(chunksSource.matchAll(/\{\s*id:\s*"([^"]+)"/g)).map((match) => match[1])
+  return Array.from(chunksSource.matchAll(/\{\s*id:\s*["']([^"']+)["']/g)).map((match) => match[1])
 }

@@ -1,8 +1,7 @@
 /* Route-scoped: loaded with the Today CSS chunk, not on every page. */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
 .today-shell {
-  --today-font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --today-font-display: Georgia, "Times New Roman", serif;
   --today-space-1: 0.382rem;
   --today-space-2: 0.618rem;
   --today-space-3: 1rem;
@@ -405,20 +404,42 @@
   box-shadow: none;
 }
 
-.today-segment-reviewImage {
-  display: block;
-  max-height: 2.65rem;
-  max-width: min(100%, 16rem);
-  object-fit: contain;
+.today-segment-reviewBadge {
+  align-items: center;
+  background:
+    radial-gradient(circle at 18% 50%, color-mix(in srgb, var(--today-glow) 30%, transparent), transparent 42%),
+    color-mix(in srgb, var(--surface-1) 54%, transparent);
+  border: 1px solid color-mix(in srgb, var(--today-accent-strong) 68%, transparent);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--today-accent) 10%, transparent);
+  display: flex;
+  justify-content: center;
+  min-height: 2.75rem;
   transition:
-    filter 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
     transform 160ms ease;
-  width: min(100%, 16rem);
+  width: min(100%, 8rem);
 }
 
-.today-segment-reviewTile:hover .today-segment-reviewImage,
-.today-segment-reviewTile:focus-visible .today-segment-reviewImage {
-  filter: brightness(1.08) drop-shadow(0 0 18px color-mix(in srgb, var(--today-glow) 72%, transparent));
+.today-segment-reviewLabel {
+  color: var(--text-primary);
+  font-size: clamp(0.72rem, 0.8vw, 0.82rem);
+  font-weight: 750;
+  letter-spacing: 0.015em;
+  line-height: 1.25;
+  overflow: hidden;
+  padding: 0.3rem 0.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.today-segment-reviewTile:hover .today-segment-reviewBadge,
+.today-segment-reviewTile:focus-visible .today-segment-reviewBadge {
+  border-color: var(--today-accent-strong);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--today-accent) 18%, transparent),
+    0 0 18px color-mix(in srgb, var(--today-glow) 42%, transparent);
   transform: scale(1.035);
 }
 
@@ -870,13 +891,6 @@
   line-height: 1.2;
 }
 
-.today-path-reviewImage {
-  max-height: 3rem;
-  max-width: clamp(7.25rem, 13vw, 10rem);
-  object-fit: contain;
-  width: clamp(7.25rem, 13vw, 10rem);
-}
-
 .today-segment-trophyImage {
   display: block;
   height: 2.6rem;
@@ -970,11 +984,6 @@
     min-width: 0;
   }
 
-  .today-path-mobileRewards .today-path-reviewImage {
-    max-width: 7.5rem;
-    width: 7.5rem;
-  }
-
   .today-path-mobileRewards .today-segment-trophyImage {
     height: 2.8rem;
     width: 2.8rem;
@@ -1012,7 +1021,7 @@
       minmax(0, var(--today-desktop-route-width))
       clamp(6.8rem, 10vw, 9.25rem)
       clamp(3.4rem, 5vw, 4.55rem);
-    min-height: clamp(4.7rem, 6.6vw, 5.7rem);
+    min-height: clamp(6.7rem, 8vw, 7.4rem);
   }
 
   .today-path-desktopLessonRail {
@@ -1031,7 +1040,7 @@
       var(--today-node-size) 1fr
       var(--today-node-size);
     min-width: 0;
-    padding-block: clamp(0.35rem, 0.9vw, 0.62rem);
+    padding: clamp(0.35rem, 0.9vw, 0.62rem) 0 2.45rem;
     position: relative;
     z-index: 1;
   }
@@ -1039,6 +1048,35 @@
   .today-path-lessonSlot {
     align-items: center;
     display: contents;
+  }
+
+  .today-path-gridLesson {
+    overflow: visible;
+  }
+
+  .today-path-desktopLessonTitle {
+    color: var(--text-secondary);
+    display: -webkit-box;
+    font-size: clamp(0.68rem, 0.78vw, 0.82rem);
+    font-weight: 620;
+    left: 50%;
+    line-height: 1.25;
+    max-height: 2.5em;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    text-overflow: ellipsis;
+    top: calc(100% + 0.38rem);
+    transform: translateX(-50%);
+    width: clamp(4.2rem, 7.2vw, 6.6rem);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .today-path-gridLesson[data-selected="true"] .today-path-desktopLessonTitle,
+  .today-path-gridLesson[data-recommended="true"][data-recommended-quiet="false"] .today-path-desktopLessonTitle {
+    color: var(--text-primary);
   }
 
   .today-path-desktopRewardSlot {
@@ -1059,12 +1097,6 @@
 
   .today-path-desktopReviewSlot .today-segment-reviewTile .today-path-nodeMedia {
     min-width: 0;
-  }
-
-  .today-path-desktopReviewSlot .today-segment-reviewImage {
-    max-height: clamp(2.25rem, 3.4vw, 3.05rem);
-    max-width: 100%;
-    width: min(100%, 8.8rem);
   }
 
   .today-path-desktopTrophySlot .today-segment-trophyTile {
@@ -2173,11 +2205,6 @@
     min-height: 3.25rem;
   }
 
-  .today-segment-reviewImage {
-    max-height: 2.65rem;
-    max-width: min(100%, 13rem);
-    width: min(100%, 13rem);
-  }
 }
 
 .today-shell [data-slot="progress-indicator"] {
@@ -2825,4 +2852,72 @@
   .today-path-card:hover {
     transform: none;
   }
+}
+
+/* Focused practice: one task, visible feedback and predictable navigation. */
+.today-shell::after,
+.today-session-iconAura,
+.today-path-card[data-selected="true"] .today-path-cardMarker {
+  animation: none;
+}
+.today-directoryPortal::before,
+.today-directoryPortal::after { display: none; }
+.today-path-hero { min-height: 0; padding-block: 1.1rem; }
+.today-path-card[data-lesson-status="not-started"] { opacity: 1; }
+.today-path-card:not([data-selected="true"]) .today-path-cardMarker { opacity: 0.78; }
+.today-path-hero { padding-right: 1rem; }
+.today-path-hero .today-path-header { max-width: 100%; }
+.today-path-heroOrb { right: -2rem; }
+.today-path-heroOrb { opacity: 0.52; max-width: 34%; }
+.today-path-heroTitle { font-size: clamp(1.8rem, 4vw, 2.7rem); letter-spacing: -0.025em; }
+.today-featuredLessonTitle { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.18; }
+.today-featuredLessonOrb { opacity: 0.4; }
+.today-session-shell { max-width: 48rem; background: none; border: 0; box-shadow: none; padding: 0; }
+.today-session-shell::before { display: none; }
+.today-session-title { line-height: 1.15; letter-spacing: -0.02em; }
+.today-session-backPill,
+.today-shell button,
+.today-path-directoryPanel button { min-height: 44px; }
+.today-shell button:has(> svg:only-child) { min-width: 44px; }
+.today-session-countPill { background: none; border: none; }
+.today-session-taskCard { height: auto; min-height: 22rem; padding: clamp(1rem, 3vw, 1.6rem); }
+.today-session-taskCard > :is(.today-scene-step, .today-match-step, .today-build-step, .today-type-step, .today-speech-prompt, .today-completion-stage) {
+  overflow: visible; scrollbar-gutter: auto;
+}
+.today-session-taskCard[data-session-step="complete"] { height: auto; }
+.today-step-stage { animation: today-focused-enter 180ms ease-out both; }
+@keyframes today-focused-enter { from { opacity: 0.35; } to { opacity: 1; } }
+.today-answer-feedback { min-height: 1.5rem; width: 100%; max-width: 34rem; margin-inline: auto; line-height: 1.6; font-size: 0.95rem; }
+.today-answer-feedback[data-feedback="wrong"] { color: #ffc8b8; }
+.today-answer-feedback[data-feedback="correct"] { color: #8ee4be; }
+.today-type-actions { width: 100%; }
+.today-type-answerLine { border-radius: 0.75rem; overflow-wrap: anywhere; }
+.today-session-footer { position: relative; bottom: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 0.6rem; padding: 0.75rem 0; }
+.today-session-footerButton { width: 100%; min-height: 3rem; font-size: 1rem; box-shadow: none; }
+.today-session-saveNotice { grid-column: 1 / -1; text-align: center; color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5; margin: 0; }
+.today-session-saveNotice[role="alert"] { color: #ffc8b8; }
+.today-completion-stage > *,
+.today-completion-vibeBadge { animation: today-focused-enter 180ms ease-out both; animation-delay: 0ms; }
+.today-completion-vibeBadge { width: 3.5rem; height: 3.5rem; box-shadow: none; }
+.today-completion-vibeBadgeImage { width: 2.75rem; height: 2.75rem; }
+.today-session-taskCard input { font-size: max(1rem, 1em); }
+@media (max-width: 640px) {
+  .today-session-taskCard { min-height: 0; }
+  .today-session-titleRow { grid-template-columns: minmax(0, 1fr); }
+  .today-session-topActions { justify-content: space-between; order: -1; }
+  .today-session-backLabel { display: inline; }
+  .today-session-title { font-size: 1.65rem; }
+  .today-type-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .today-path-heroOrb { max-width: 35%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .today-shell, .today-shell *, .today-shell *::before, .today-shell *::after {
+    animation: none !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  .today-shell button:hover, .today-shell a:hover { transform: none !important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .today-session-taskCard, .today-path-directoryPanel { background: var(--app-bg); backdrop-filter: none; }
 }

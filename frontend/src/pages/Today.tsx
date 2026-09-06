@@ -13,10 +13,8 @@ import { useAuth } from '@/hooks/useAuth'
 import { TodayPathOverview } from '@/components/today/TodayPathOverview'
 import { TodaySession } from '@/components/today/TodaySession'
 import {
-  createEmptyTodayProgressState,
-  markTodayLessonComplete,
+  commitTodayLessonCompletion,
   readTodayProgressState,
-  writeTodayProgressState,
   type TodayLessonResult,
   type TodayProgressState,
 } from '@/lib/todayProgress'
@@ -108,20 +106,19 @@ export default function Today() {
   const [selectedVibeId, setSelectedVibeId] = useState<ActiveGuidedVibeId>(() => (
     queryVibeId ?? getSelectedGuidedVibe(initialPathId)
   ))
-  const [progress, setProgress] = useState<TodayProgressState>(() => createEmptyTodayProgressState())
+  const [progress, setProgress] = useState<TodayProgressState>(() => readTodayProgressState(user?.id))
   const [selectedLessonId, setSelectedLessonId] = useState<string | undefined>(undefined)
   const [sessionActive, setSessionActive] = useState(false)
   const [sessionKey, setSessionKey] = useState(0)
   const [knownItemIds, setKnownItemIds] = useState<Set<string>>(() => new Set())
-  const overview = useMemo(
-    () => getGuidedPathOverview(selectedPathId, progress, selectedVibeId, selectedLessonId),
-    [progress, selectedLessonId, selectedPathId, selectedVibeId],
-  )
-  const checkpointPlan = useMemo(() => (
-    hasPendingGuidedCheckpoint(progress, selectedVibeId)
-      ? { completedPathCount: countCompletedGuidedCheckpointPaths(progress, selectedVibeId) }
+  // Ten lightweight rows read the registry after the language import resolves.
+  // Memoizing only the path/progress would preserve the pre-import empty result.
+  const overview = getGuidedPathOverview(selectedPathId, progress, selectedVibeId, selectedLessonId)
+  const checkpointPlan = (
+    hasPendingGuidedCheckpoint(progress, { userId: user?.id ?? '', targetLanguage: selectedLanguage, vibe: selectedVibeId })
+      ? { completedPathCount: countCompletedGuidedCheckpointPaths(progress, selectedLanguage, selectedVibeId) }
       : undefined
-  ), [progress, selectedVibeId])
+  )
   const lesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
   const nextLesson = useMemo(() => {
     if (!lesson) return undefined
@@ -208,11 +205,6 @@ export default function Today() {
     scrollTodayToTop()
   }, [shouldAutoStart, setSearchParams])
 
-  const persistProgress = (nextProgress: TodayProgressState) => {
-    setProgress(nextProgress)
-    writeTodayProgressState(user?.id, nextProgress)
-  }
-
   const handleExitToIntro = () => {
     setSessionActive(false)
   }
@@ -266,10 +258,15 @@ export default function Today() {
   }
 
   const handleComplete = (result: TodayLessonResult) => {
-    if (!lesson) return
-    const nextProgress = markTodayLessonComplete(progress, lesson, result)
-    persistProgress(nextProgress)
+    if (!lesson) return false
+    const completion = commitTodayLessonCompletion(user?.id, lesson, result)
+    if (!completion.saved) return false
+    // Pin the lesson before installing progress so the recommendation advancing
+    // cannot swap the completion screen to the next lesson.
+    setSelectedLessonId(lesson.id)
+    setProgress(completion.state)
     trackLearningAction('guided_step', { lesson_id: lesson.id, step_type: 'lesson_complete' })
+    return true
   }
 
   const handleSelectVibe = (vibeId: ActiveGuidedVibeId) => {
@@ -285,11 +282,14 @@ export default function Today() {
     setSelectedLessonId(lessonId)
     setKnownItemIds(new Set())
     setSessionKey((current) => current + 1)
+    setSessionActive(true)
+    scrollTodayToTop()
   }
 
   const handleStartSelectedLesson = (lessonId?: string) => {
-    if (lessonId) {
-      setSelectedLessonId(lessonId)
+    const startLessonId = lessonId ?? lesson?.id
+    if (startLessonId) {
+      setSelectedLessonId(startLessonId)
       setKnownItemIds(new Set())
       setSessionKey((current) => current + 1)
     }
@@ -325,18 +325,6 @@ export default function Today() {
       />
 
       <div className="grid gap-6">
-        {!sessionActive && (
-          <div
-            className="today-betaBanner rounded-lg border border-[color-mix(in_srgb,var(--accent)_34%,var(--border-subtle))] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] px-3 py-2 text-center text-sm leading-6 text-[var(--text-secondary)] shadow-[0_14px_44px_rgba(0,0,0,0.16)]"
-            role="status"
-          >
-            <span className="mr-2 inline-flex rounded-full border border-[color-mix(in_srgb,var(--accent)_44%,transparent)] px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-              {t('today.betaLabel')}
-            </span>
-            <span>{t('today.betaMessage')}</span>
-          </div>
-        )}
-
         {failedLanguage === selectedLanguage ? (
           <div className="grid min-h-[45vh] place-items-center gap-4 text-center" role="alert">
             <p className="text-sm text-[var(--text-secondary)]">{t('errors.route.title')}</p>

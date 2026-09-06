@@ -187,7 +187,7 @@ console.log('\n[route and prompt]')
 const checkpointSpeakSource = sliceBetween(checkpointSource, 'function CheckpointSpeakStep', 'function CheckpointSummary')
 assert('checkpoint route detects segment-review mode', checkpointSource.includes('mode') && checkpointSource.includes('segment-review'))
 assert('checkpoint route uses Segment Review plan builder', checkpointSource.includes('buildGuidedSegmentReviewPlan'))
-assert('Segment Review completion does not call normal checkpoint storage writer', checkpointSource.includes('completeGuidedSegmentReview') && checkpointSource.includes('isSegmentReviewMode') && checkpointSource.includes('completeGuidedCheckpoint(selectedVibeId'))
+assert('Segment Review completion does not call normal checkpoint storage writer', checkpointSource.includes('completeGuidedSegmentReview') && checkpointSource.includes('isSegmentReviewMode') && checkpointSource.includes('completeGuidedCheckpoint(checkpointScope'))
 assert('Segment Review type step uses Type Recall before/input/after shape', checkpointSource.includes('item.lesson.typeRecall.before') && checkpointSource.includes('item.lesson.typeRecall.after'))
 assert('Segment Review type step handles empty-before and empty-after layouts', checkpointSource.includes('data-empty-before={!hasBefore}') && checkpointSource.includes('data-empty-after={!hasAfter}'))
 assert('Enter key can continue after type feedback', checkpointSource.includes('KeyboardEvent<HTMLFormElement>') && checkpointSource.includes("event.key !== 'Enter'") && checkpointSource.includes('onAdvance()'))
@@ -227,9 +227,11 @@ try {
     needsReview: index === 1,
   })) ?? []
   const beforeProgress = JSON.stringify(secondSegmentProgress)
-  const record = completeGuidedSegmentReview(pathIds[3]!, 2, 'sharp', reviewed, new Date('2026-05-13T00:00:00.000Z'))
-  assert('Segment Review writes a separate local summary key', window.localStorage.getItem(guidedSegmentReviewKey(pathIds[3]!, 2, 'sharp')) !== null)
-  assert('Segment Review record round-trips from storage', readGuidedSegmentReviewRecord(pathIds[3]!, 2, 'sharp')?.itemsReviewed === record.itemsReviewed)
+  const scope = { userId: 'review-user', pathId: pathIds[3]!, segment: 2 as const, vibe: 'sharp' as const }
+  const completion = completeGuidedSegmentReview(scope, reviewed, new Date('2026-05-13T00:00:00.000Z'))
+  assert('Segment Review writes a separate account-scoped local summary key', completion.saved && window.localStorage.getItem(guidedSegmentReviewKey(scope)) !== null)
+  assert('Segment Review record round-trips from storage', readGuidedSegmentReviewRecord(scope)?.itemsReviewed === completion.record.itemsReviewed)
+  assert('Segment Review record is invisible to another account', readGuidedSegmentReviewRecord({ ...scope, userId: 'other-user' }) === undefined)
   assert('Segment Review completion does not mutate lesson progress', JSON.stringify(secondSegmentProgress) === beforeProgress)
 } finally {
   Object.defineProperty(globalThis, 'window', {

@@ -2,6 +2,10 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-09-07 — Guided Today favors explicit practice, truthful completion and phrase retention
+**Status:** active; owner delegated product/design judgment and scoped release.
+**Decision:** Refine the existing Cosmos course, keep waves unchanged. Direct lesson opening, local resume, visible correction and explicit assisted/no-microphone outcomes take priority over extra ceremony. Keep one useful core phrase to a stable account deck with its registered recording; never imply automatic import or a speech pass. Device-local guided progress remains explicit. Unsupported explanation languages use the authored edition consistently, with disclosure; French UI does not imply a French lesson corpus. Six exact existing trophy repetitions are retained pending coordinated editorial/audio review; validators must inspect the full corpus. Relevant cultural scenes merit a small verified video/caption pilot with delayed recall, not wholesale paid regeneration or arbitrary distracting details. See [[notes/today-guided-2026-09-07]].
+
 ## 2026-09-07 — Speak/Lens refinements retain providers and teaching levels; verify real layout and separate live gates
 **Status:** active — owner-authorized release after scoped verification; details in notes/speak-lens.md.
 **Decision:** Keep the explicit Grok Live and async Groq → Mistral/Gemini models, existing eight-language beta, and approved visual direction. Compact shared prompts without weakening level-specific base/target mix or provider audio rules. Bound provider/body waits and optional telemetry, keep recent audio/correction payloads bounded, and preserve authoritative conversation state across reconnects. Use real Cosmos/layout/assets in browser fixtures; simulated camera/audio tests do not certify physical iPhone or live model quality. No paid batches, database migrations or billing-policy redesign in this pass.

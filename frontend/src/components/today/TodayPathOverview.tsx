@@ -14,15 +14,13 @@ import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayPr
 import { readGuidedSegmentReviewRecord, type GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
 import { splitGuidedPathLabel } from '@/lib/guidedPathLabels'
 import { readGuidedTrophyClozeRecord } from '@/lib/guidedTrophy'
+import { readTodayLessonDraft } from '@/lib/todayProgress'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
 import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
 import { cn } from '@/lib/utils'
-
-const TODAY_PATH_HERO_ASSET = '/guided/today/today-orb-hero.png'
-const TODAY_PATH_LESSON_ORB_ASSET = '/guided/today/today-lesson-orb.png'
 
 const GUIDED_SEGMENT_REVIEWS = [
   {
@@ -85,7 +83,7 @@ export function TodayPathOverview({
   onStartLesson,
 }: TodayPathOverviewProps) {
   const { t } = useTranslation()
-  const { profile } = useAuth()
+  const { profile, user } = useAuth()
   const preferredBaseLanguage = profile?.base_language
   const [directoryOpen, setDirectoryOpen] = useState(false)
   const pathLesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
@@ -106,11 +104,7 @@ export function TodayPathOverview({
     const completedCount = segmentLessons.filter((entry) => (
       getTodayLessonVibeStatus(progress, entry.lesson, selectedVibeId) === 'completed'
     )).length
-    const reviewRecord = readGuidedSegmentReviewRecord(
-      selectedPathId,
-      segment.segment,
-      selectedVibeId,
-    )
+    const reviewRecord = readGuidedSegmentReviewRecord({ userId: user?.id ?? '', pathId: selectedPathId, segment: segment.segment, vibe: selectedVibeId })
 
     return {
       ...segment,
@@ -121,7 +115,6 @@ export function TodayPathOverview({
     }
   })
 
-  const heroLessonNumber = Math.min(overview.completedCount + 1, overview.totalLessons)
   const heroProgressRatio = overview.totalLessons > 0
     ? overview.completedCount / overview.totalLessons
     : 0
@@ -129,13 +122,6 @@ export function TodayPathOverview({
   return (
     <div className="today-path-shell grid gap-4 sm:gap-5">
       <section className="today-path-hero theme-panel today-reveal rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
-        <img
-          src={TODAY_PATH_HERO_ASSET}
-          alt=""
-          className="today-path-heroOrb"
-          draggable={false}
-          aria-hidden="true"
-        />
         <div className="today-path-header">
           <div className="min-w-0">
             <p className="today-path-heroKicker">
@@ -162,8 +148,8 @@ export function TodayPathOverview({
               <span className="today-path-heroProgressLabel">
                 {overview.isComplete
                   ? t('today.path.completeLabel')
-                  : t('today.path.lessonProgressHero', {
-                      current: heroLessonNumber,
+                  : t('today.practice.completedCount', {
+                      current: overview.completedCount,
                       total: overview.totalLessons,
                     })}
               </span>
@@ -242,9 +228,9 @@ export function TodayPathOverview({
                   href={segment.reviewHref}
                   segment={segment.segment}
                   label={t(segment.labelKey)}
+                  displayLabel={t('today.step.review')}
                   rangeLabel={t(segment.rangeKey)}
                   completedCount={segment.completedCount}
-                  selectedVibeId={selectedVibeId}
                   isReviewComplete={segment.isReviewComplete}
                 />
                 <SegmentTrophyTile
@@ -274,6 +260,7 @@ export function TodayPathOverview({
                           isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
                           completedVibeIds={entry.completedVibeIds}
                           selectedVibeId={selectedVibeId}
+                          showDesktopLabel
                           onSelectLesson={onSelectLesson}
                         />
                         {lessonIndex < segment.lessons.length - 1 && (
@@ -291,9 +278,9 @@ export function TodayPathOverview({
                   href={segment.reviewHref}
                   segment={segment.segment}
                   label={t(segment.labelKey)}
+                  displayLabel={t('today.step.review')}
                   rangeLabel={t(segment.rangeKey)}
                   completedCount={segment.completedCount}
-                  selectedVibeId={selectedVibeId}
                   isReviewComplete={segment.isReviewComplete}
                 />
               </div>
@@ -391,21 +378,20 @@ function SegmentReviewTile({
   href,
   segment,
   label,
+  displayLabel,
   rangeLabel,
   completedCount,
-  selectedVibeId,
   isReviewComplete,
 }: {
   href: string
   segment: GuidedSegmentReviewNumber
   label: string
+  displayLabel: string
   rangeLabel: string
   completedCount: number
-  selectedVibeId: ActiveGuidedVibeId
   isReviewComplete: boolean
 }) {
   const accessibleLabel = `${label}: ${rangeLabel}`
-  const assetName = isReviewComplete ? `${selectedVibeId}-review-complete.webp` : `${selectedVibeId}-review.webp`
 
   return (
     <TodaySegmentNode
@@ -417,12 +403,9 @@ function SegmentReviewTile({
       isComplete={isReviewComplete}
       className="today-segment-reviewTile"
     >
-      <img
-        src={`/guided/reviews/${assetName}`}
-        alt=""
-        className="today-segment-reviewImage today-path-reviewImage"
-        draggable={false}
-      />
+      <span className="today-segment-reviewBadge">
+        <span className="today-segment-reviewLabel">{displayLabel}</span>
+      </span>
     </TodaySegmentNode>
   )
 }
@@ -437,7 +420,8 @@ function SegmentTrophyTile({
   vibeId: ActiveGuidedVibeId
 }) {
   const { t } = useTranslation()
-  const completionRecord = readGuidedTrophyClozeRecord(pathId, vibeId, segment)
+  const { user } = useAuth()
+  const completionRecord = readGuidedTrophyClozeRecord({ userId: user?.id ?? '', pathId, vibe: vibeId, segment })
   const isComplete = Boolean(completionRecord)
   const assetName = `${vibeId}-trophy.webp`
   const accessibleLabel = t('today.trophy.tileAria', { segment })
@@ -539,17 +523,12 @@ function RecommendedLessonPanel({
     preferredBaseLanguage,
     authoredBaseLanguage: lesson.baseLanguage,
   }).text
-  const actionLabel = isSelectedRecommendation ? t('today.nextLesson') : t('today.startLesson')
+  const { user } = useAuth()
+  const isResumable = Boolean(readTodayLessonDraft(user?.id, lesson))
+  const actionLabel = isResumable ? t('today.practice.resume') : t('today.startLesson')
 
   return (
     <section className="today-featuredLesson today-recommended-panel theme-panel today-reveal rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-5">
-      <img
-        src={TODAY_PATH_LESSON_ORB_ASSET}
-        alt=""
-        className="today-featuredLessonOrb"
-        draggable={false}
-        aria-hidden="true"
-      />
       <div className="today-featuredLessonContent grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
         <div className="min-w-0">
           <p className="today-featuredLessonKicker">
@@ -564,6 +543,10 @@ function RecommendedLessonPanel({
           <h2 className="today-featuredLessonTitle mt-2 break-words font-semibold leading-tight text-[var(--text-primary)]">
             {title}
           </h2>
+          <p className="mt-2 text-sm text-[var(--text-secondary)]">{t('today.practice.lessonPreview')}</p>
+          {preferredBaseLanguage && !['English', 'German'].includes(preferredBaseLanguage) && (
+            <p className="mt-2 text-sm text-[var(--text-secondary)]">{t('today.practice.explanationsIn', { language: t(`today.language.${lesson.baseLanguage}`) })}</p>
+          )}
         </div>
         <Button size="lg" className="today-featuredLessonAction" onClick={() => onStartLesson(lesson.id)}>
           {actionLabel}
@@ -584,6 +567,7 @@ function LessonPathCard({
   completedVibeIds,
   selectedVibeId,
   showRailLabel = false,
+  showDesktopLabel = false,
   onSelectLesson,
 }: {
   lesson: GuidedLesson
@@ -595,6 +579,7 @@ function LessonPathCard({
   completedVibeIds: ActiveGuidedVibeId[]
   selectedVibeId: ActiveGuidedVibeId
   showRailLabel?: boolean
+  showDesktopLabel?: boolean
   onSelectLesson: (lessonId: string) => void
 }) {
   const { t } = useTranslation()
@@ -643,6 +628,9 @@ function LessonPathCard({
         <span className="today-path-railCopy" aria-hidden="true">
           <span className="today-path-railTitle">{title}</span>
         </span>
+      )}
+      {showDesktopLabel && (
+        <span className="today-path-desktopLessonTitle" aria-hidden="true">{title}</span>
       )}
       {showRailLabel && isSelected && (
         <ChevronRight className="today-path-railChevron h-4 w-4" aria-hidden="true" />

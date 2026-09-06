@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
 import { readGuidedTrophyClozeRecord } from '@/lib/guidedTrophy'
+import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { cn } from '@/lib/utils'
 
@@ -14,7 +15,13 @@ type SegmentTrophyTileProps = {
 
 export function SegmentTrophyTile({ pathId, segment, vibeId }: SegmentTrophyTileProps) {
   const { t } = useTranslation()
-  const completionRecord = readGuidedTrophyClozeRecord(pathId, vibeId, segment)
+  const { user } = useAuth()
+  const completionRecord = readGuidedTrophyClozeRecord({
+    userId: user?.id ?? '',
+    pathId,
+    vibe: vibeId,
+    segment,
+  })
   const isComplete = Boolean(completionRecord)
   const assetName = `${vibeId}-trophy.webp`
   const accessibleLabel = t('today.trophy.tileAria', { segment })

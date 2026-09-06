@@ -2,7 +2,7 @@
  * Cross-path trophy-word uniqueness check for Guided Today A1P1–A1P10.
  *
  * Trophy words are intended to feel collectible, special, and meaningfully
- * varied across the 300 active cells. Post-global-dedup pass policy:
+ * varied across the authored cells. Post-global-dedup pass policy:
  *
  * Hard-fails on:
  *   - missing or empty trophy fields (word, meaning, example, whyThisWord)
@@ -23,11 +23,11 @@
  */
 
 import {
-  GUIDED_LESSONS,
   getGuidedTodayPathOptions,
   resolveGuidedBaseContent,
   type GuidedTargetLanguage,
 } from '../src/data/guidedLessons.ts'
+import { GUIDED_LESSONS } from '../src/data/guidedLessonsAuthoring.ts'
 import { isActiveGuidedVibeId, type ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
 
 type Vibe = ActiveGuidedVibeId
@@ -50,18 +50,71 @@ const GLOBAL_HARD_FAIL_THRESHOLD = 3
 
 // Within-path allowlist. Each entry must list every cell where the word
 // appears in the path; the test only honors the entry if the actual cell
-// set matches exactly. After the A1P1-P10 global dedup pass, all earlier
-// within-path duplicates were patched and no entries remain. Leaving this
-// list empty (rather than removing the mechanism) preserves the structure
-// for future product-approved exact-cell exceptions.
-const WITHIN_PATH_ALLOWLIST: AllowlistEntry[] = []
+// set matches exactly. September 7 restored the full authored inventory
+// after the runtime split left this check empty. These five existing repeats
+// are retained deliberately; new or changed repetitions still fail.
+const RETAINED_CURRICULUM_REASON = 'retained existing recorded curriculum; reuse is not a wrong-language answer; needs editorial replacement+recording review'
+
+const WITHIN_PATH_ALLOWLIST: AllowlistEntry[] = [
+  {
+    word: 'again',
+    cells: [
+      { pathId: 'english-a1-practical-1', lessonNumber: 2, vibe: 'bright' },
+      { pathId: 'english-a1-practical-1', lessonNumber: 9, vibe: 'wistful' },
+    ],
+    reason: RETAINED_CURRICULUM_REASON,
+  },
+  {
+    word: 'walk',
+    cells: [
+      { pathId: 'english-a1-practical-3', lessonNumber: 2, vibe: 'wistful' },
+      { pathId: 'english-a1-practical-3', lessonNumber: 9, vibe: 'bright' },
+    ],
+    reason: RETAINED_CURRICULUM_REASON,
+  },
+  {
+    word: 'habitación',
+    cells: [
+      { pathId: 'spanish-a1-practical-8', lessonNumber: 1, vibe: 'bright' },
+      { pathId: 'spanish-a1-practical-8', lessonNumber: 10, vibe: 'bright' },
+    ],
+    reason: RETAINED_CURRICULUM_REASON,
+  },
+  {
+    word: 'fermata',
+    cells: [
+      { pathId: 'italian-a1-practical-3', lessonNumber: 5, vibe: 'bright' },
+      { pathId: 'italian-a1-practical-3', lessonNumber: 10, vibe: 'bright' },
+    ],
+    reason: RETAINED_CURRICULUM_REASON,
+  },
+  {
+    word: 'café',
+    cells: [
+      { pathId: 'portuguese-a1-practical-1', lessonNumber: 4, vibe: 'bright' },
+      { pathId: 'portuguese-a1-practical-1', lessonNumber: 8, vibe: 'bright' },
+    ],
+    reason: RETAINED_CURRICULUM_REASON,
+  },
+]
 
 // Cross-path / global allowlist. Each entry must list every cell where
 // the word appears; the test only honors the entry if the actual cell
 // set matches exactly. This is the escape hatch for product-approved
-// global multiplicity above the hard-fail threshold. Empty by default
-// after the global dedup pass.
-const CROSS_PATH_ALLOWLIST: AllowlistEntry[] = []
+// global multiplicity above the hard-fail threshold. One recorded repeat
+// restored by the September 7 inventory repair is retained explicitly.
+const CROSS_PATH_ALLOWLIST: AllowlistEntry[] = [
+  {
+    word: 'again',
+    cells: [
+      { pathId: 'english-a1-practical-1', lessonNumber: 2, vibe: 'bright' },
+      { pathId: 'english-a1-practical-1', lessonNumber: 9, vibe: 'wistful' },
+      { pathId: 'english-a1-practical-5', lessonNumber: 2, vibe: 'bright' },
+      { pathId: 'english-a1-practical-10', lessonNumber: 7, vibe: 'wistful' },
+    ],
+    reason: RETAINED_CURRICULUM_REASON,
+  },
+]
 
 function cellKey(c: { pathId: string; lessonNumber: number; vibe: Vibe }) {
   return `${c.pathId}|L${c.lessonNumber}|${c.vibe}`
@@ -134,6 +187,10 @@ for (const lesson of GUIDED_LESSONS) {
     }
   }
 }
+
+assert('authored guided lesson inventory is non-empty', GUIDED_LESSONS.length > 0, GUIDED_LESSONS.length)
+assert('active trophy inventory is non-empty', expectedCells > 0, expectedCells)
+assert('active trophy inventory remains exactly 2,700 cells', expectedCells === 2700, expectedCells)
 
 assert(
   `expected ${expectedCells} active trophy cells; observed ${allCells.length}`,

@@ -14,16 +14,29 @@ export type TypeRecallCheckState = {
 
 type TypeRecallStepProps = {
   lesson: GuidedLesson
+  initialAttempts?: number
+  initialStatus?: TypeRecallCheckState['status']
+  initialUsedFallback?: boolean
   onCheckStateChange: (state: TypeRecallCheckState) => void
 }
 
-export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepProps) {
+export function TypeRecallStep({
+  lesson,
+  initialAttempts = 0,
+  initialStatus = 'idle',
+  initialUsedFallback = false,
+  onCheckStateChange,
+}: TypeRecallStepProps) {
   const { t } = useTranslation()
-  const [answer, setAnswer] = useState('')
-  const [status, setStatus] = useState<TypeRecallCheckState['status']>('idle')
-  const [attempts, setAttempts] = useState(0)
-  const [fallbackVisible, setFallbackVisible] = useState(false)
-  const [usedFallback, setUsedFallback] = useState(false)
+  const [answer, setAnswer] = useState(() => (
+    initialStatus === 'correct' || initialStatus === 'revealed'
+      ? lesson.typeRecall.answer
+      : ''
+  ))
+  const [status, setStatus] = useState<TypeRecallCheckState['status']>(initialStatus)
+  const [attempts, setAttempts] = useState(initialAttempts)
+  const [fallbackVisible, setFallbackVisible] = useState(initialUsedFallback || initialStatus === 'revealed')
+  const [usedFallback, setUsedFallback] = useState(initialUsedFallback)
 
   const handleAnswerChange = (value: string) => {
     setAnswer(value)
@@ -47,10 +60,12 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
   }
 
   const handleCheck = () => {
+    if (!answer.trim() || status === 'correct' || status === 'revealed') return
     applyCheck(answer, usedFallback)
   }
 
   const handleShowFallback = () => {
+    setAnswer(lesson.typeRecall.answer)
     setFallbackVisible(true)
     setUsedFallback(true)
     setStatus('revealed')
@@ -81,8 +96,20 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
           <Input
             value={answer}
             onChange={(event) => handleAnswerChange(event.target.value)}
+            disabled={status === 'revealed'}
             placeholder={t('today.type.placeholder')}
             aria-label={t('today.type.inputLabel')}
+            aria-invalid={status === 'wrong'}
+            aria-describedby="today-type-feedback"
+            autoComplete="off"
+            autoCapitalize="none"
+            spellCheck={false}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' && !event.nativeEvent.isComposing) {
+                event.preventDefault()
+                handleCheck()
+              }
+            }}
             className="h-12 w-full text-xl font-semibold sm:w-64 sm:text-2xl md:w-72"
           />
           <span>{lesson.typeRecall.after}</span>
@@ -90,7 +117,7 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
       </div>
 
       <div className="today-type-actions flex flex-wrap items-center justify-center gap-3">
-        <Button className="today-type-checkButton" onClick={handleCheck}>
+        <Button className="today-type-checkButton" onClick={handleCheck} disabled={!answer.trim() || status === 'correct' || status === 'revealed'}>
           {t('today.checkAnswer')}
         </Button>
         {!fallbackVisible && (
@@ -106,8 +133,14 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
         </p>
       )}
 
-      <div aria-live="polite" className="sr-only">
-        {status === 'wrong' ? t('today.type.wrong') : ''}
+      <div id="today-type-feedback" aria-live="polite" className="today-answer-feedback" data-feedback={status}>
+        {status === 'wrong'
+          ? t('today.type.wrong')
+          : status === 'correct'
+            ? t('today.practice.correct')
+            : status === 'revealed'
+              ? t('today.practice.answerShown')
+              : ''}
       </div>
     </div>
   )

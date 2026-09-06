@@ -79,20 +79,21 @@ export function RolePlayStep({ lesson, onCheckStateChange }: RolePlayStepProps) 
   const yourTurn = dialogue[turnIndex === 0 ? 1 : 3]
   const themSurfaceKey = turnIndex === 0 ? 'turn-1' : 'turn-3'
   const currentState = turnStates[turnIndex]
-  const canAdvanceToSecondTurn = turnIndex === 0 && turnStates[0].status === 'passed'
+  const isTurnComplete = (state: GuidedSpeechPromptCheckState) => state.status === 'passed' || state.status === 'continued'
+  const canAdvanceToSecondTurn = turnIndex === 0 && isTurnComplete(turnStates[0])
 
   const publish = (nextStates: [GuidedSpeechPromptCheckState, GuidedSpeechPromptCheckState], activeIndex: 0 | 1) => {
     const bothPassed = nextStates[0].passed && nextStates[1].passed
-    const anyUnsupported = nextStates[0].status === 'unsupported' || nextStates[1].status === 'unsupported'
+    const bothComplete = isTurnComplete(nextStates[0]) && isTurnComplete(nextStates[1])
     // The step passes only when BOTH turns pass — a single turn's 'passed'
     // must never unlock the session footer (the episode is performed whole).
     const activeStatus = nextStates[activeIndex].status
     onCheckStateChange({
       status: bothPassed
         ? 'passed'
-        : anyUnsupported
-          ? 'unsupported'
-          : activeStatus === 'passed' ? 'idle' : activeStatus,
+        : bothComplete
+          ? 'continued'
+          : isTurnComplete(nextStates[activeIndex]) ? 'idle' : activeStatus,
       attempts: nextStates[0].attempts + nextStates[1].attempts,
       transcriptMatch: Math.min(nextStates[0].transcriptMatch, nextStates[1].transcriptMatch),
       passed: bothPassed,
@@ -131,16 +132,16 @@ export function RolePlayStep({ lesson, onCheckStateChange }: RolePlayStepProps) 
       <div className="today-roleplay-turnRow mx-auto flex items-center gap-2 text-sm text-[var(--text-secondary)]">
         <span
           className="today-roleplay-turnPill inline-flex items-center gap-1 rounded-full border border-[var(--border-subtle)] px-3 py-1"
-          data-turn-state={turnStates[0].passed ? 'passed' : turnIndex === 0 ? 'current' : 'upcoming'}
+          data-turn-state={isTurnComplete(turnStates[0]) ? 'passed' : turnIndex === 0 ? 'current' : 'upcoming'}
         >
-          {turnStates[0].passed && <CheckCircle2 className="h-3.5 w-3.5 text-[#34d399]" aria-hidden="true" />}
+          {isTurnComplete(turnStates[0]) && <CheckCircle2 className="h-3.5 w-3.5 text-[#34d399]" aria-hidden="true" />}
           {t('today.rolePlay.turnLabel', { turn: 1 })}
         </span>
         <span
           className="today-roleplay-turnPill inline-flex items-center gap-1 rounded-full border border-[var(--border-subtle)] px-3 py-1"
-          data-turn-state={turnStates[1].passed ? 'passed' : turnIndex === 1 ? 'current' : 'upcoming'}
+          data-turn-state={isTurnComplete(turnStates[1]) ? 'passed' : turnIndex === 1 ? 'current' : 'upcoming'}
         >
-          {turnStates[1].passed && <CheckCircle2 className="h-3.5 w-3.5 text-[#34d399]" aria-hidden="true" />}
+          {isTurnComplete(turnStates[1]) && <CheckCircle2 className="h-3.5 w-3.5 text-[#34d399]" aria-hidden="true" />}
           {t('today.rolePlay.turnLabel', { turn: 2 })}
         </span>
       </div>
@@ -172,6 +173,7 @@ export function RolePlayStep({ lesson, onCheckStateChange }: RolePlayStepProps) 
         optionalTokens={turnIndex === 0 ? lesson.speak.optionalTokens : undefined}
         language={lesson.speak.language}
         maxRecordingSeconds={lesson.speak.maxRecordingSeconds}
+        allowContinueWhenUnsupported
         onCheckStateChange={handleTurnStateChange}
       />
 

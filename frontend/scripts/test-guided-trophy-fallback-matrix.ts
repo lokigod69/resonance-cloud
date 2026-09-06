@@ -311,7 +311,7 @@ assert('Path Check link includes selected path and vibe', todaySource.includes('
 assert('Checkpoint card link includes selected path and vibe', todaySource.includes('href: `/today/checkpoint?path=${selectedPathId}&vibe=${selectedVibeId}`'))
 assert('Trophy tile links include selected path, segment, and vibe', trophyTileSource.includes('mode=trophy-cloze&path=${pathId}&segment=${segment}&vibe=${vibeId}'))
 assert('GuidedCheckpoint builds /today back href with path and vibe', checkpointSource.includes('function buildTodayPathHref') && checkpointSource.includes('return `/today?path=${pathId}&vibe=${vibe}`'))
-assert('GuidedCheckpoint passes preserved back href to song and fallback panels', checkpointSource.includes('TrophySongPanel row={row} backToTodayHref={backToTodayHref}') && checkpointSource.includes('TrophyWordFallbackPanel'))
+assert('GuidedCheckpoint passes preserved back href to song and fallback panels', checkpointSource.includes('<TrophySongPanel') && checkpointSource.includes('<TrophyWordFallbackPanel') && checkpointSource.split('backToTodayHref={backToTodayHref}').length - 1 >= 2)
 assert('Today reads and validates path/vibe query params', todaySource.includes("searchParams.get('path')") && todaySource.includes('resolveTodayPathId') && todaySource.includes("searchParams.get('vibe')") && todaySource.includes('resolveTodayVibeId'))
 assert('canonical song rows render TrophySongPanel', checkpointSource.includes('if (!row)') && checkpointSource.includes('return <TrophySongPanel row={row}'))
 assert('missing song rows render TrophyWordFallbackPanel', checkpointSource.includes('setRow(undefined)') && checkpointSource.includes('return (\n      <TrophyWordFallbackPanel'))

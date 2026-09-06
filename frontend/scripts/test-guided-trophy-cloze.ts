@@ -15,6 +15,7 @@ import {
   getTrophyClozeAcceptedAnswers,
   getGuidedTrophyWordsForSegment,
   guidedTrophyClozeKey,
+  isGuidedTrophyClozeComplete,
   readGuidedTrophyClozeRecord,
   writeGuidedTrophyClozeRecord,
   type GuidedTrophyClozeRecord,
@@ -38,9 +39,10 @@ function assert(name: string, condition: boolean, detail?: unknown) {
 }
 
 console.log('\n[storage key and record]')
+const trophyScope = { userId: 'trophy-user', pathId: 'english-a1-practical-1', vibe: 'bright' as const, segment: 1 as const }
 assert(
-  'trophy cloze key is path/vibe/segment scoped',
-  guidedTrophyClozeKey('english-a1-practical-1', 'bright', 1) === 'guided_trophy_cloze_english-a1-practical-1_bright_1',
+  'trophy cloze key is account/path/vibe/segment scoped',
+  guidedTrophyClozeKey(trophyScope) === 'guided_trophy_cloze_v2_trophy-user_english-a1-practical-1_bright_1',
 )
 
 const originalWindow = globalThis.window
@@ -67,16 +69,23 @@ try {
     ],
   }
 
-  writeGuidedTrophyClozeRecord(record)
+  const completion = writeGuidedTrophyClozeRecord(trophyScope.userId, record)
   assert(
-    'trophy cloze record writes only the trophy namespace key',
-    window.localStorage.key(0) === guidedTrophyClozeKey(record.pathId, record.vibe, record.segment),
+    'trophy cloze record writes only the account-scoped trophy namespace key',
+    completion.saved && window.localStorage.key(0) === guidedTrophyClozeKey(trophyScope),
     window.localStorage.key(0),
   )
   assert(
     'trophy cloze record round-trips from localStorage',
-    readGuidedTrophyClozeRecord(record.pathId, record.vibe, record.segment)?.correctCount === 4,
+    readGuidedTrophyClozeRecord(trophyScope)?.correctCount === 4,
   )
+  assert('another account cannot inherit trophy completion', readGuidedTrophyClozeRecord({ ...trophyScope, userId: 'other-user' }) === undefined)
+  Object.defineProperty(window, 'localStorage', {
+    configurable: true,
+    get() { throw new Error('storage access denied') },
+  })
+  assert('a denied localStorage getter cannot expose trophy completion', readGuidedTrophyClozeRecord(trophyScope) === undefined)
+  assert('a denied localStorage getter reports trophy completion as unsaved', !writeGuidedTrophyClozeRecord(trophyScope.userId, record).saved)
 } finally {
   Object.defineProperty(globalThis, 'window', {
     value: originalWindow,
@@ -149,6 +158,8 @@ try {
 assert('static client throws typed unavailable error for unsupported tuples', unsupportedError instanceof TrophySongNotAvailableError, unsupportedError)
 
 console.log('\n[answer matching]')
+assert('wrong final cloze answer cannot complete the trophy', !isGuidedTrophyClozeComplete([{ correct: true }, { correct: false }], 2))
+assert('all correct cloze answers complete the trophy', isGuidedTrophyClozeComplete([{ correct: true }, { correct: true }], 2))
 const accepted = getTrophyClozeAcceptedAnswers('Splendid!')
 assert('cloze accepted answers include original, lowercase, punctuation-stripped, and lowercase-punctuation-stripped variants', JSON.stringify(accepted) === JSON.stringify(['Splendid!', 'splendid!', 'Splendid', 'splendid']), accepted)
 assert('guidedAnswerMatches accepts original trophy word variant', guidedAnswerMatches('Splendid!', accepted))
@@ -179,6 +190,8 @@ assert('checkpoint route renders TrophySongPanel for trophy mode', checkpointSou
 assert('checkpoint route renders local trophy-word fallback when no canonical song row exists', checkpointSource.includes('TrophyWordFallbackPanel') && fallbackPanelSource.includes('getGuidedTrophyWordsForSegment') && fallbackPanelSource.includes('TrophyWordCard'))
 assert('trophy back links preserve selected path and vibe', checkpointSource.includes('backToTodayHref') && checkpointSource.includes('path=${pathId}') && checkpointSource.includes('vibe=${vibe}'))
 assert('cloze drill reads full song lyrics instead of slicing to first five lines', !clozeDrillSource.includes('.slice(0, 5)'))
+assert('cloze completion requires every answer correct and an explicit action', clozeDrillSource.includes('isGuidedTrophyClozeComplete') && clozeDrillSource.includes('onClick={handleComplete}') && clozeDrillSource.includes('disabled={!completeReady}'))
+assert('fallback trophy review has an explicit completion action', fallbackPanelSource.includes('createGuidedTrophyWordReviewRecord') && fallbackPanelSource.includes('handleComplete'))
 assert('trophy tile and panel styling are present', cssSource.includes('.today-segment-trophyTile') && cssSource.includes('.today-trophy-clozeInput'))
 assert('English and German trophy translations are present', countOccurrences(translationsSource, "'today.trophy.tileTitle'") >= 2 && translationsSource.includes("'today.trophy.player.play'"))
 assert('guided trophy cloze test is part of test:guided-today chain', packageSource.includes('scripts/test-guided-trophy-cloze.ts'))

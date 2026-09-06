@@ -48,6 +48,8 @@ export function resolveGuidedBaseContent(
   isFallback: boolean
 } {
   const authoredLocale = guidedBaseLanguageToContentLocale(options.authoredBaseLanguage) ?? 'en'
+  // Keep unsupported explanation languages in the authored edition. Mixing
+  // partial English glosses with German cues would mislabel the lesson.
   const preferredLocale = guidedBaseLanguageToContentLocale(options.preferredBaseLanguage)
 
   const preferredText = preferredLocale ? value?.[preferredLocale]?.trim() : undefined
@@ -66,7 +68,7 @@ export function resolveGuidedBaseContent(
       text: value?.[authoredLocale] ?? '',
       locale: authoredLocale,
       language: guidedContentLocaleToBaseLanguage(authoredLocale),
-      isFallback: preferredLocale !== undefined && preferredLocale !== authoredLocale,
+      isFallback: Boolean(options.preferredBaseLanguage && options.preferredBaseLanguage !== options.authoredBaseLanguage),
     }
   }
 

@@ -1,4 +1,5 @@
 import { ChevronLeft } from 'lucide-react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   getGuidedPathMetadata,
@@ -20,12 +21,14 @@ import { TrophyWordCard } from '@/components/today/trophy/TrophyWordCard'
 
 type TrophySongPanelProps = {
   row: TrophySongRow
+  userId?: string
   backToTodayHref: string
   onComplete: (record: GuidedTrophyClozeRecord) => void
 }
 
-export function TrophySongPanel({ row, backToTodayHref, onComplete }: TrophySongPanelProps) {
+export function TrophySongPanel({ row, userId, backToTodayHref, onComplete }: TrophySongPanelProps) {
   const { t } = useTranslation()
+  const [saveFailed, setSaveFailed] = useState(false)
   const pathMetadata = getGuidedPathMetadata(row.pathId)
   const trophyWords = getGuidedPathLessons(row.pathId)
     .filter((lesson) => (
@@ -36,10 +39,16 @@ export function TrophySongPanel({ row, backToTodayHref, onComplete }: TrophySong
     .map((lesson) => resolveGuidedLessonVariant(lesson, row.vibe).trophyWord)
 
   const handleDrillComplete = (items: GuidedTrophyClozeItem[]) => {
-    const record = writeGuidedTrophyClozeRecord(
+    const result = writeGuidedTrophyClozeRecord(
+      userId,
       createGuidedTrophyClozeRecord(row.pathId, row.vibe, row.segment, items),
     )
-    onComplete(record)
+    if (!result.saved) {
+      setSaveFailed(true)
+      return false
+    }
+    onComplete(result.record)
+    return true
   }
 
   return (
@@ -97,6 +106,14 @@ export function TrophySongPanel({ row, backToTodayHref, onComplete }: TrophySong
         trophyWords={row.trophyWords}
         onComplete={handleDrillComplete}
       />
+      {saveFailed && (
+        <section className="rounded-lg border border-[color-mix(in_srgb,#f59e0b_48%,var(--border-subtle))] p-4 text-center" role="alert">
+          <p className="text-sm text-[var(--text-secondary)]">{t('errors.route.title')}</p>
+          <Button type="button" variant="outline" className="mt-3" onClick={() => setSaveFailed(false)}>
+            {t('errors.route.retry')}
+          </Button>
+        </section>
+      )}
     </main>
   )
 }

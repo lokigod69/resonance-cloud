@@ -15,8 +15,16 @@ import {
   buildGuidedCheckpointPlan,
   buildGuidedPathCheckPlan,
   buildGuidedSegmentReviewPlan,
+  clearGuidedCheckpointDraft,
   completeGuidedCheckpoint,
   completeGuidedSegmentReview,
+  guidedCheckpointDraftKey,
+  readGuidedCheckpointDraft,
+  restoreGuidedCheckpointPlan,
+  writeGuidedCheckpointDraft,
+  type GuidedCheckpointDraft,
+  type GuidedCheckpointDraftMode,
+  type GuidedCheckpointDraftScope,
   type GuidedSegmentReviewNumber,
   type GuidedCheckpointPlan,
   type GuidedCheckpointPlanItem,
@@ -60,17 +68,26 @@ export default function GuidedCheckpoint() {
   const isTrophyClozeMode = checkpointMode === 'trophy-cloze'
   const selectedSegment = resolveSegmentReviewNumber(searchParams.get('segment'))
   const backToTodayHref = buildTodayPathHref(selectedPathId, selectedVibeId)
+  const selectedTargetLanguage = pathOptions.find((path) => path.id === selectedPathId)?.targetLanguage ?? 'English'
+  const checkpointScope = useMemo(() => ({
+    userId: user?.id ?? '',
+    targetLanguage: selectedTargetLanguage,
+    vibe: selectedVibeId,
+  }), [selectedTargetLanguage, selectedVibeId, user?.id])
+  const draftMode: GuidedCheckpointDraftMode = isPathCheckMode
+    ? 'path-check'
+    : isSegmentReviewMode
+      ? 'segment-review'
+      : 'checkpoint'
+  const draftScope = useMemo<GuidedCheckpointDraftScope>(() => ({
+    ...checkpointScope,
+    mode: draftMode,
+    pathId: selectedPathId,
+    segment: isSegmentReviewMode ? selectedSegment : undefined,
+  }), [checkpointScope, draftMode, isSegmentReviewMode, selectedPathId, selectedSegment])
+  const draftStorageKey = guidedCheckpointDraftKey(draftScope)
   const progress = useMemo(() => readTodayProgressState(user?.id), [user?.id])
-  const requiredLanguages = useMemo(() => {
-    const languages = isPathCheckMode || isSegmentReviewMode || isTrophyClozeMode
-      ? pathOptions
-          .filter((path) => path.id === selectedPathId)
-          .map((path) => path.targetLanguage)
-      : pathOptions
-          .filter((path) => progress.courses[path.id])
-          .map((path) => path.targetLanguage)
-    return Array.from(new Set(languages))
-  }, [isPathCheckMode, isSegmentReviewMode, isTrophyClozeMode, pathOptions, progress, selectedPathId])
+  const requiredLanguages = useMemo(() => [selectedTargetLanguage], [selectedTargetLanguage])
   const lessonLoadKey = requiredLanguages.join('|')
   const [lessonLoad, setLessonLoad] = useState<{ key: string; status: 'loading' | 'ready' | 'error' }>({
     key: lessonLoadKey,
@@ -91,26 +108,74 @@ export default function GuidedCheckpoint() {
       active = false
     }
   }, [lessonLoadKey, requiredLanguages])
+  const storedDraft = useMemo(() => (
+    lessonsState === 'ready' && user?.id && !isTrophyClozeMode
+      ? readGuidedCheckpointDraft(draftScope)
+      : undefined
+  ), [draftScope, isTrophyClozeMode, lessonsState, user?.id])
+  const restoredPlan = useMemo(() => (
+    storedDraft ? restoreGuidedCheckpointPlan(storedDraft) : undefined
+  ), [storedDraft])
   const plan = useMemo(
     () => (
       lessonsState !== 'ready' || isTrophyClozeMode
         ? undefined
+        : restoredPlan
+          ? restoredPlan
         : isPathCheckMode
         ? buildGuidedPathCheckPlan(selectedPathId, selectedVibeId)
         : isSegmentReviewMode && selectedSegment
           ? buildGuidedSegmentReviewPlan(progress, selectedPathId, selectedSegment, selectedVibeId)
-        : buildGuidedCheckpointPlan(progress, selectedVibeId)
+        : buildGuidedCheckpointPlan(progress, checkpointScope)
     ),
-    [isPathCheckMode, isSegmentReviewMode, isTrophyClozeMode, lessonsState, progress, selectedPathId, selectedSegment, selectedVibeId],
+    [checkpointScope, isPathCheckMode, isSegmentReviewMode, isTrophyClozeMode, lessonsState, progress, restoredPlan, selectedPathId, selectedSegment, selectedVibeId],
   )
   const [phase, setPhase] = useState<CheckpointPhase>('type')
   const [itemIndex, setItemIndex] = useState(0)
   const [answer, setAnswer] = useState('')
   const [typeResult, setTypeResult] = useState<'correct' | 'wrong' | undefined>(undefined)
   const [summary, setSummary] = useState<GuidedCheckpointRecord | undefined>(undefined)
+  const [completionSaveFailed, setCompletionSaveFailed] = useState(false)
   const reviewedItemsRef = useRef<GuidedCheckpointReviewedItem[]>([])
   const currentItem = plan?.items[itemIndex]
   const progressValue = plan ? Math.round(((itemIndex + 1) / plan.items.length) * 100) : 0
+
+  useEffect(() => {
+    // Route identity and the asynchronously loaded local draft define a new
+    // checkpoint run; reset all transient fields together before restoring it.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSummary(undefined)
+    setCompletionSaveFailed(false)
+    setAnswer('')
+    setTypeResult(undefined)
+
+    if (!plan) {
+      setItemIndex(0)
+      setPhase('type')
+      reviewedItemsRef.current = []
+      return
+    }
+
+    if (storedDraft && restoredPlan) {
+      setItemIndex(storedDraft.itemIndex)
+      setPhase(storedDraft.phase)
+      reviewedItemsRef.current = [...storedDraft.reviewedItems]
+      return
+    }
+
+    setItemIndex(0)
+    setPhase('type')
+    reviewedItemsRef.current = []
+    if (user?.id) writeGuidedCheckpointDraft(draftScope, createCheckpointDraft(draftScope, plan, 0, 'type', []))
+  }, [draftScope, draftStorageKey, plan, restoredPlan, storedDraft, user?.id])
+
+  const persistDraft = (nextItemIndex: number, nextPhase: 'type' | 'speak') => {
+    if (!plan || !user?.id) return false
+    return writeGuidedCheckpointDraft(
+      draftScope,
+      createCheckpointDraft(draftScope, plan, nextItemIndex, nextPhase, reviewedItemsRef.current),
+    )
+  }
 
   const handleTypeSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -129,6 +194,7 @@ export default function GuidedCheckpoint() {
 
   const handleAdvanceToSpeak = () => {
     if (!typeResult) return
+    persistDraft(itemIndex, 'speak')
     setPhase('speak')
   }
 
@@ -136,11 +202,22 @@ export default function GuidedCheckpoint() {
     if (!plan) return
 
     if (itemIndex >= plan.items.length - 1) {
-      const record = isSegmentReviewMode && selectedSegment
-        ? completeGuidedSegmentReview(selectedPathId, selectedSegment, selectedVibeId, reviewedItemsRef.current)
+      const completion = isSegmentReviewMode && selectedSegment
+        ? completeGuidedSegmentReview({
+            userId: user?.id ?? '',
+            pathId: selectedPathId,
+            segment: selectedSegment,
+            vibe: selectedVibeId,
+          }, reviewedItemsRef.current)
         : isPathCheckMode
-          ? createLocalCheckpointRecord(reviewedItemsRef.current)
-          : completeGuidedCheckpoint(selectedVibeId, reviewedItemsRef.current)
+          ? { record: createLocalCheckpointRecord(reviewedItemsRef.current), saved: true, alreadyCompleted: false }
+          : completeGuidedCheckpoint(checkpointScope, plan.checkpointIndex, reviewedItemsRef.current)
+      if (!completion.saved) {
+        setCompletionSaveFailed(true)
+        return
+      }
+      const { record } = completion
+      clearGuidedCheckpointDraft(draftScope)
       trackLearningAction('guided_step', {
         step_type: isSegmentReviewMode ? 'segment_review' : isPathCheckMode ? 'path_check' : 'checkpoint',
         items_reviewed: record.itemsReviewed,
@@ -150,6 +227,7 @@ export default function GuidedCheckpoint() {
       return
     }
 
+    persistDraft(itemIndex + 1, 'type')
     setItemIndex((current) => current + 1)
     setAnswer('')
     setTypeResult(undefined)
@@ -186,6 +264,7 @@ export default function GuidedCheckpoint() {
   if (isTrophyClozeMode) {
     return (
       <TrophyCheckpoint
+        userId={user?.id}
         pathId={selectedPathId}
         segment={selectedSegment}
         vibe={selectedVibeId}
@@ -266,17 +345,30 @@ export default function GuidedCheckpoint() {
           onContinueAnyway={handleContinueAnywayFromSpeak}
         />
       )}
+      {completionSaveFailed && (
+        <div className="theme-panel rounded-lg border border-[color-mix(in_srgb,#f59e0b_48%,var(--border-subtle))] p-4 text-center" role="alert">
+          <p className="text-sm text-[var(--text-secondary)]">{t('errors.route.title')}</p>
+          <Button type="button" variant="outline" className="mt-3" onClick={() => {
+            setCompletionSaveFailed(false)
+            handleNextItem()
+          }}>
+            {t('errors.route.retry')}
+          </Button>
+        </div>
+      )}
     </main>
   )
 }
 
 function TrophyCheckpoint({
+  userId,
   pathId,
   segment,
   vibe,
   backToTodayHref,
   onBackToToday,
 }: {
+  userId?: string
   pathId: string
   segment: GuidedSegmentReviewNumber | undefined
   vibe: ActiveGuidedVibeId
@@ -354,15 +446,17 @@ function TrophyCheckpoint({
   if (!row) {
     return (
       <TrophyWordFallbackPanel
+        userId={userId}
         pathId={pathId}
         segment={segment}
         vibe={vibe}
         backToTodayHref={backToTodayHref}
+        onComplete={onBackToToday}
       />
     )
   }
 
-  return <TrophySongPanel row={row} backToTodayHref={backToTodayHref} onComplete={onBackToToday} />
+  return <TrophySongPanel row={row} userId={userId} backToTodayHref={backToTodayHref} onComplete={onBackToToday} />
 }
 
 function CheckpointHeader({
@@ -835,5 +929,33 @@ function createLocalCheckpointRecord(
       firstTryCorrect: item.firstTryCorrect,
       needsReview: item.needsReview,
     })),
+  }
+}
+
+function createCheckpointDraft(
+  scope: GuidedCheckpointDraftScope,
+  plan: GuidedCheckpointPlan,
+  itemIndex: number,
+  phase: 'type' | 'speak',
+  reviewedItems: GuidedCheckpointReviewedItem[],
+): GuidedCheckpointDraft {
+  return {
+    schemaVersion: 1,
+    mode: scope.mode,
+    pathId: scope.pathId,
+    segment: scope.segment,
+    targetLanguage: scope.targetLanguage,
+    vibe: scope.vibe,
+    checkpointIndex: plan.checkpointIndex,
+    completedPathCount: plan.completedPathCount,
+    itemIndex,
+    phase,
+    planItems: plan.items.map((item) => ({
+      lessonId: item.lessonId,
+      pathId: item.pathId,
+      vibe: item.vibe,
+    })),
+    reviewedItems: reviewedItems.map((item) => ({ ...item })),
+    updatedAt: new Date().toISOString(),
   }
 }

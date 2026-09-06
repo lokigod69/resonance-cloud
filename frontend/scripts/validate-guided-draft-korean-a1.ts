@@ -6,7 +6,7 @@
  */
 import * as koreanA1 from '../src/data/guided/koreanA1'
 import type { GuidedLessonDefinition } from '../src/data/guidedLessons'
-import { GUIDED_LESSONS } from '../src/data/guidedLessons'
+import { GUIDED_LESSONS } from '../src/data/guidedLessonsAuthoring'
 
 let failures = 0
 let checks = 0
@@ -17,6 +17,7 @@ function assert(label: string, ok: boolean, detail?: unknown) {
     console.log(`FAIL  ${label}${detail !== undefined ? ` :: ${JSON.stringify(detail)}` : ''}`)
   }
 }
+assert('authored guided corpus is non-empty', GUIDED_LESSONS.length > 0, GUIDED_LESSONS.length)
 
 const normalizeWs = (s: string) => s.replace(/\s+/g, ' ').trim()
 const tokenize = (s: string) =>

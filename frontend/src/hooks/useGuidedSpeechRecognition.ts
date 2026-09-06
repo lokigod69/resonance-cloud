@@ -3,6 +3,7 @@ import { supabase } from '@/lib/supabase'
 import { setIOSAudioSessionType } from '@/lib/grokIOSAudioDiagnostics'
 import { ensureNativeMicrophonePermission } from '@/lib/nativeMicrophone'
 import { publicApiUrl } from '@/lib/publicOrigins'
+import { assertClientActive, withClientDeadline } from '@/lib/clientDeadline'
 import type { GuidedSpeakLocale } from '@/data/guidedLessons'
 
 export type GuidedSpeechRecognitionStatus =
@@ -26,6 +27,25 @@ type GuidedTranscribeResponse = {
 
 const DEFAULT_MAX_RECORDING_SECONDS = 12
 const MIN_AUDIO_BYTES = 100
+const TRANSCRIPTION_TIMEOUT_MS = 20000
+
+export type GuidedSpeechErrorKey =
+  | 'today.speak.error.recordingTooShort'
+  | 'today.speak.error.sessionExpired'
+  | 'today.speak.error.quotaReached'
+  | 'today.speak.error.transcriptionFailed'
+  | 'today.speak.error.transcriptionTimeout'
+  | 'today.speak.error.recordingFailed'
+  | 'today.speak.error.microphoneBlocked'
+  | 'today.speak.error.microphoneMissing'
+  | 'today.speak.error.microphoneFailed'
+  | 'today.speak.error.audioReadFailed'
+
+class GuidedSpeechError extends Error {
+  constructor(readonly translationKey: GuidedSpeechErrorKey) {
+    super(translationKey)
+  }
+}
 
 export function canUseGuidedSpeechRecognition(): boolean {
   return typeof navigator !== 'undefined'
@@ -49,7 +69,7 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
   const { language, maxRecordingSeconds = DEFAULT_MAX_RECORDING_SECONDS } = options
   const [status, setStatus] = useState<GuidedSpeechRecognitionStatus>('idle')
   const [transcript, setTranscript] = useState('')
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<GuidedSpeechErrorKey | null>(null)
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
   const chunksRef = useRef<Blob[]>([])
@@ -57,6 +77,9 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
   const stopTimerRef = useRef<number | null>(null)
   const mountedRef = useRef(true)
   const discardRecordingRef = useRef(false)
+  const requestControllerRef = useRef<AbortController | null>(null)
+  const operationIdRef = useRef(0)
+  const languageRef = useRef(language)
 
   const clearStopTimer = useCallback(() => {
     if (stopTimerRef.current !== null) {
@@ -70,13 +93,20 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
     streamRef.current = null
   }, [])
 
+  const cancelPendingRequest = useCallback(() => {
+    operationIdRef.current += 1
+    requestControllerRef.current?.abort()
+    requestControllerRef.current = null
+  }, [])
+
   const reset = useCallback(() => {
+    cancelPendingRequest()
     clearStopTimer()
     chunksRef.current = []
     setTranscript('')
     setError(null)
     setStatus('idle')
-  }, [clearStopTimer])
+  }, [cancelPendingRequest, clearStopTimer])
 
   const stopRecording = useCallback(() => {
     clearStopTimer()
@@ -86,65 +116,73 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
     }
   }, [clearStopTimer])
 
-  const transcribeAudio = useCallback(async (audioBlob: Blob) => {
+  const transcribeAudio = useCallback(async (audioBlob: Blob, callerSignal: AbortSignal) => {
     if (audioBlob.size < MIN_AUDIO_BYTES) {
-      throw new Error('Keine verwertbare Aufnahme erkannt. Bitte versuche es noch einmal.')
+      throw new GuidedSpeechError('today.speak.error.recordingTooShort')
     }
 
-    const audio_base64 = await blobToBase64(audioBlob)
-    const { data, error: sessionError } = await supabase.auth.getSession()
-    if (sessionError || !data.session?.access_token) {
-      throw new Error('Deine Sitzung ist abgelaufen. Bitte melde dich erneut an.')
-    }
-
-    const controller = new AbortController()
-    const timer = window.setTimeout(() => controller.abort(), 20000)
     try {
-      const response = await fetch(publicApiUrl('/api/guided-transcribe'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${data.session.access_token}`,
-        },
-        body: JSON.stringify({
-          audio_base64,
-          mime_type: audioBlob.type || mimeTypeRef.current || 'audio/webm',
-          language,
-        }),
-        signal: controller.signal,
-      })
+      return await withClientDeadline(async (signal) => {
+        const audio_base64 = await blobToBase64(audioBlob, signal)
+        assertClientActive(signal)
+        const { data, error: sessionError } = await supabase.auth.getSession()
+        assertClientActive(signal)
+        if (sessionError || !data.session?.access_token) {
+          throw new GuidedSpeechError('today.speak.error.sessionExpired')
+        }
 
-      const payload = await response.json().catch(() => ({})) as GuidedTranscribeResponse
-      if (!response.ok) {
-        throw new Error(payload.error ?? payload.detail ?? 'Transkription fehlgeschlagen.')
-      }
+        const response = await fetch(publicApiUrl('/api/guided-transcribe'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${data.session.access_token}`,
+          },
+          body: JSON.stringify({
+            audio_base64,
+            mime_type: audioBlob.type || mimeTypeRef.current || 'audio/webm',
+            language,
+          }),
+          signal,
+        })
 
-      return payload.transcript?.trim() ?? ''
+        const payload = await response.json().catch(() => ({})) as GuidedTranscribeResponse
+        assertClientActive(signal)
+        if (!response.ok) {
+          if (response.status === 401) throw new GuidedSpeechError('today.speak.error.sessionExpired')
+          if (response.status === 429) throw new GuidedSpeechError('today.speak.error.quotaReached')
+          throw new GuidedSpeechError('today.speak.error.transcriptionFailed')
+        }
+
+        return payload.transcript?.trim() ?? ''
+      }, TRANSCRIPTION_TIMEOUT_MS, callerSignal)
     } catch (err) {
-      if (err instanceof Error && err.name === 'AbortError') {
-        throw new Error('Transkription hat zu lange gedauert. Bitte versuche es erneut.')
+      if (err instanceof Error && err.name === 'TimeoutError') {
+        throw new GuidedSpeechError('today.speak.error.transcriptionTimeout')
       }
       throw err
-    } finally {
-      window.clearTimeout(timer)
     }
   }, [language])
 
   const startRecording = useCallback(async () => {
     if (!canUseGuidedSpeechRecognition()) {
-      setError('Audioaufnahme ist in diesem Browser nicht verfuegbar.')
+      setError('today.speak.error.microphoneFailed')
       setStatus('error')
       return
     }
     if (mediaRecorderRef.current?.state === 'recording') return
 
     reset()
+    const operationId = operationIdRef.current
     setStatus('requesting_permission')
 
     try {
       setIOSAudioSessionType('play-and-record', 'guided-today-before-getUserMedia')
       await ensureNativeMicrophonePermission()
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      if (!mountedRef.current || operationId !== operationIdRef.current) {
+        stream.getTracks().forEach((track) => track.stop())
+        return
+      }
       streamRef.current = stream
       const mimeType = getGuidedSpeechMimeType()
       const recorder = mimeType
@@ -158,7 +196,8 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
       }
 
       recorder.onerror = () => {
-        setError('Aufnahme fehlgeschlagen. Bitte versuche es erneut.')
+        if (!mountedRef.current || operationId !== operationIdRef.current) return
+        setError('today.speak.error.recordingFailed')
         setStatus('error')
         mediaRecorderRef.current = null
         releaseStream()
@@ -173,16 +212,21 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
         releaseStream()
         mediaRecorderRef.current = null
         if (shouldDiscard) return
+        const requestController = new AbortController()
+        requestControllerRef.current?.abort()
+        requestControllerRef.current = requestController
         setStatus('transcribing')
-        void transcribeAudio(audioBlob)
+        void transcribeAudio(audioBlob, requestController.signal)
           .then((nextTranscript) => {
-            if (!mountedRef.current) return
+            if (!mountedRef.current || requestController.signal.aborted || operationId !== operationIdRef.current) return
+            requestControllerRef.current = null
             setTranscript(nextTranscript)
             setStatus('checked')
           })
           .catch((err) => {
-            if (!mountedRef.current) return
-            setError(err instanceof Error ? err.message : 'Transkription fehlgeschlagen.')
+            if (!mountedRef.current || requestController.signal.aborted || operationId !== operationIdRef.current) return
+            requestControllerRef.current = null
+            setError(err instanceof GuidedSpeechError ? err.translationKey : 'today.speak.error.transcriptionFailed')
             setStatus('error')
           })
       }
@@ -198,6 +242,7 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
         stopRecording()
       }, Math.max(1, maxRecordingSeconds) * 1000)
     } catch (err) {
+      if (!mountedRef.current || operationId !== operationIdRef.current) return
       clearStopTimer()
       releaseStream()
       mediaRecorderRef.current = null
@@ -206,8 +251,25 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
     }
   }, [clearStopTimer, maxRecordingSeconds, releaseStream, reset, stopRecording, transcribeAudio])
 
-  useEffect(() => () => {
-    mountedRef.current = false
+  useEffect(() => {
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+      cancelPendingRequest()
+      clearStopTimer()
+      if (mediaRecorderRef.current?.state === 'recording') {
+        discardRecordingRef.current = true
+        mediaRecorderRef.current.stop()
+      }
+      mediaRecorderRef.current = null
+      releaseStream()
+    }
+  }, [cancelPendingRequest, clearStopTimer, releaseStream])
+
+  useEffect(() => {
+    if (languageRef.current === language) return
+    languageRef.current = language
+    cancelPendingRequest()
     clearStopTimer()
     if (mediaRecorderRef.current?.state === 'recording') {
       discardRecordingRef.current = true
@@ -215,7 +277,13 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
     }
     mediaRecorderRef.current = null
     releaseStream()
-  }, [clearStopTimer, releaseStream])
+    chunksRef.current = []
+    // A language switch invalidates both the external recorder and its UI result.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTranscript('')
+    setError(null)
+    setStatus('idle')
+  }, [cancelPendingRequest, clearStopTimer, language, releaseStream])
 
   return {
     status,
@@ -228,26 +296,39 @@ export function useGuidedSpeechRecognition(options: UseGuidedSpeechRecognitionOp
   }
 }
 
-function blobToBase64(blob: Blob): Promise<string> {
+function blobToBase64(blob: Blob, signal: AbortSignal): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
+    const onAbort = () => {
+      reader.abort()
+      reject((signal as AbortSignal & { reason?: unknown }).reason ?? new DOMException('Request cancelled', 'AbortError'))
+    }
     reader.onloadend = () => {
+      signal.removeEventListener('abort', onAbort)
       const result = typeof reader.result === 'string' ? reader.result : ''
       resolve(result.split(',')[1] ?? '')
     }
-    reader.onerror = () => reject(new Error('Audio konnte nicht gelesen werden.'))
+    reader.onerror = () => {
+      signal.removeEventListener('abort', onAbort)
+      reject(new GuidedSpeechError('today.speak.error.audioReadFailed'))
+    }
+    signal.addEventListener('abort', onAbort, { once: true })
+    if (signal.aborted) {
+      onAbort()
+      return
+    }
     reader.readAsDataURL(blob)
   })
 }
 
-function getMicrophoneErrorMessage(err: unknown): string {
+function getMicrophoneErrorMessage(err: unknown): GuidedSpeechErrorKey {
   if (err instanceof DOMException && err.name === 'NotAllowedError') {
-    return 'Mikrofonzugriff blockiert. Bitte erlaube das Mikrofon im Browser.'
+    return 'today.speak.error.microphoneBlocked'
   }
   if (err instanceof DOMException && err.name === 'NotFoundError') {
-    return 'Kein Mikrofon gefunden.'
+    return 'today.speak.error.microphoneMissing'
   }
-  return 'Mikrofon konnte nicht gestartet werden. Bitte pruefe die Browser- oder Geraeteeinstellungen.'
+  return 'today.speak.error.microphoneFailed'
 }
 
 function isLikelySafari(): boolean {

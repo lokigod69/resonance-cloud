@@ -1,9 +1,15 @@
 import { ChevronLeft } from 'lucide-react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getGuidedPathMetadata } from '@/data/guidedLessons'
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
-import { getGuidedTrophyWordsForSegment } from '@/lib/guidedTrophy'
+import {
+  createGuidedTrophyWordReviewRecord,
+  getGuidedTrophyWordsForSegment,
+  writeGuidedTrophyClozeRecord,
+  type GuidedTrophyClozeRecord,
+} from '@/lib/guidedTrophy'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { TrophyWordCard } from '@/components/today/trophy/TrophyWordCard'
@@ -13,6 +19,8 @@ type TrophyWordFallbackPanelProps = {
   segment: GuidedSegmentReviewNumber
   vibe: ActiveGuidedVibeId
   backToTodayHref: string
+  userId?: string
+  onComplete: (record: GuidedTrophyClozeRecord) => void
 }
 
 export function TrophyWordFallbackPanel({
@@ -20,10 +28,24 @@ export function TrophyWordFallbackPanel({
   segment,
   vibe,
   backToTodayHref,
+  userId,
+  onComplete,
 }: TrophyWordFallbackPanelProps) {
   const { t } = useTranslation()
+  const [saveFailed, setSaveFailed] = useState(false)
   const pathMetadata = getGuidedPathMetadata(pathId)
   const trophyWords = getGuidedTrophyWordsForSegment(pathId, segment, vibe)
+  const handleComplete = () => {
+    const result = writeGuidedTrophyClozeRecord(
+      userId,
+      createGuidedTrophyWordReviewRecord(pathId, vibe, segment),
+    )
+    if (!result.saved) {
+      setSaveFailed(true)
+      return
+    }
+    onComplete(result.record)
+  }
 
   return (
     <main
@@ -68,6 +90,17 @@ export function TrophyWordFallbackPanel({
         <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
           {t('today.trophy.fallbackBody')}
         </p>
+        <Button type="button" className="mt-4" onClick={handleComplete}>
+          {t('today.checkpoint.done')}
+        </Button>
+        {saveFailed && (
+          <div className="mt-4" role="alert">
+            <p className="text-sm text-[var(--text-secondary)]">{t('errors.route.title')}</p>
+            <Button type="button" variant="outline" className="mt-3" onClick={() => setSaveFailed(false)}>
+              {t('errors.route.retry')}
+            </Button>
+          </div>
+        )}
       </section>
     </main>
   )

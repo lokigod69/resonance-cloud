@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { getCurrentGuidedLesson } from '../src/data/guidedLessons'
+import { getCurrentGuidedLesson, loadGuidedLessonsForLanguage } from '../src/data/guidedLessons'
 import { checkGuidedSpeechAnswer } from '../src/lib/guidedSpeechCheck'
 
 const coreConfig = {
@@ -13,6 +13,8 @@ const coreConfig = {
   requiredTokens: ['do', 'you', 'speak', 'english'],
   optionalTokens: ['hi', 'hello', 'there'],
 }
+
+await loadGuidedLessonsForLanguage('English')
 
 assert.equal(
   checkGuidedSpeechAnswer({ transcript: 'Hi there, do you speak English?', ...coreConfig }).status,

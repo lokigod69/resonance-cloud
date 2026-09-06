@@ -1,6 +1,7 @@
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { GuidedSpeakLocale } from '@/data/guidedLessons'
 import { cancelGuidedSpeech, speakGuidedText } from '@/components/today/speech'
+import { withClientDeadline } from '@/lib/clientDeadline'
 
 /**
  * B1 adds two surfaces (design doc §4.7): 'dialogue' keys the episode's
@@ -24,6 +25,7 @@ export type GuidedAudioResolution =
 export type GuidedAudioPlaybackResult =
   | { kind: 'stored' }
   | { kind: 'browser-fallback' }
+  | { kind: 'cancelled' }
 
 export type GuidedAudioPlaybackRow = {
   path_id: string
@@ -37,6 +39,7 @@ export type GuidedAudioPlaybackRow = {
 
 type GuidedAudioFilterBuilder = {
   eq: (column: string, value: string) => GuidedAudioFilterBuilder
+  abortSignal?: (signal: AbortSignal) => GuidedAudioFilterBuilder
   maybeSingle: () => Promise<{ data: GuidedAudioPlaybackRow | null; error: { message?: string } | null }>
 }
 
@@ -48,17 +51,23 @@ export type GuidedAudioClient = {
 
 type ResolveOptions = {
   client?: GuidedAudioClient
+  signal?: AbortSignal
 }
 
 type PlayOptions = ResolveOptions & {
   text: string
   lang?: GuidedSpeakLocale
   speak?: typeof speakGuidedText
+  cancelSpeech?: typeof cancelGuidedSpeech
   createAudio?: (url: string) => HTMLAudioElement
 }
 
+const GUIDED_AUDIO_LOOKUP_TIMEOUT_MS = 8000
 const playbackCache = new Map<string, GuidedAudioResolution>()
 let activeAudio: HTMLAudioElement | null = null
+let activeSpeechCancel: typeof cancelGuidedSpeech = cancelGuidedSpeech
+let activeResolveController: AbortController | null = null
+let playbackGeneration = 0
 
 export function clearGuidedAudioCache() {
   playbackCache.clear()
@@ -74,7 +83,7 @@ export async function resolveGuidedAudio(
 
   try {
     const client = options.client ?? await getDefaultSupabaseClient()
-    const { data, error } = await client
+    let query = client
       .from('guided_tts_playback')
       .select('path_id,lesson_id,vibe,surface,surface_key,public_url,duration_ms')
       .eq('path_id', args.pathId)
@@ -82,9 +91,15 @@ export async function resolveGuidedAudio(
       .eq('vibe', args.vibe)
       .eq('surface', args.surface)
       .eq('surface_key', args.surfaceKey)
-      .maybeSingle()
 
-    const result = error || !data?.public_url
+    const { data, error } = await withClientDeadline(async (signal) => {
+      if (query.abortSignal) query = query.abortSignal(signal)
+      return query.maybeSingle()
+    }, GUIDED_AUDIO_LOOKUP_TIMEOUT_MS, options.signal)
+
+    if (error) return { kind: 'missing' }
+
+    const result = !data?.public_url
       ? { kind: 'missing' as const }
       : {
           kind: 'ready' as const,
@@ -95,9 +110,9 @@ export async function resolveGuidedAudio(
     playbackCache.set(key, result)
     return result
   } catch {
-    const missing = { kind: 'missing' as const }
-    playbackCache.set(key, missing)
-    return missing
+    // A timeout, abort, or transport failure is not proof that stored audio is
+    // absent. Fall back for this attempt without poisoning the page cache.
+    return { kind: 'missing' }
   }
 }
 
@@ -105,21 +120,26 @@ export async function playGuidedAudio(
   args: GuidedAudioLookupArgs & PlayOptions,
 ): Promise<GuidedAudioPlaybackResult> {
   const speak = args.speak ?? speakGuidedText
-  const resolution = await resolveGuidedAudio(args, { client: args.client })
+  const requestGeneration = ++playbackGeneration
+  stopActivePlayback()
+  const controller = new AbortController()
+  activeResolveController = controller
+  const resolution = await resolveGuidedAudio(args, { client: args.client, signal: controller.signal })
+  if (activeResolveController === controller) activeResolveController = null
 
-  stopGuidedAudio()
+  if (requestGeneration !== playbackGeneration) return { kind: 'cancelled' }
 
   if (resolution.kind !== 'ready') {
+    activeSpeechCancel = args.cancelSpeech ?? cancelGuidedSpeech
     speak(args.text, args.lang)
     return { kind: 'browser-fallback' }
   }
-
-  cancelGuidedSpeech()
 
   let audio: HTMLAudioElement
   try {
     audio = (args.createAudio ?? createBrowserAudio)(resolution.url)
   } catch {
+    activeSpeechCancel = args.cancelSpeech ?? cancelGuidedSpeech
     speak(args.text, args.lang)
     return { kind: 'browser-fallback' }
   }
@@ -127,9 +147,10 @@ export async function playGuidedAudio(
 
   let didFallback = false
   const fallback = () => {
-    if (didFallback) return
+    if (didFallback || requestGeneration !== playbackGeneration || activeAudio !== audio) return
     didFallback = true
-    if (activeAudio === audio) stopGuidedAudio()
+    stopActivePlayback()
+    activeSpeechCancel = args.cancelSpeech ?? cancelGuidedSpeech
     speak(args.text, args.lang)
   }
 
@@ -141,10 +162,20 @@ export async function playGuidedAudio(
     fallback()
   }
 
+  if (requestGeneration !== playbackGeneration) return { kind: 'cancelled' }
   return didFallback ? { kind: 'browser-fallback' } : { kind: 'stored' }
 }
 
 export function stopGuidedAudio() {
+  playbackGeneration += 1
+  stopActivePlayback()
+}
+
+function stopActivePlayback() {
+  activeResolveController?.abort()
+  activeResolveController = null
+  activeSpeechCancel()
+  activeSpeechCancel = cancelGuidedSpeech
   if (!activeAudio) return
 
   try {

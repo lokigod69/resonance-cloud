@@ -5,6 +5,7 @@ import {
   resolveGuidedLessonVariant,
   type GuidedLesson,
   type GuidedPathMetadata,
+  type GuidedTargetLanguage,
 } from '@/data/guidedLessons'
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { TodayProgressState } from '@/lib/todayProgress'
@@ -45,49 +46,92 @@ export type GuidedCheckpointRecord = {
   items: GuidedCheckpointReviewedItem[]
 }
 
+export type GuidedCheckpointScope = {
+  userId: string
+  targetLanguage: GuidedTargetLanguage
+  vibe: ActiveGuidedVibeId
+}
+
+export type GuidedSegmentReviewScope = {
+  userId: string
+  pathId: string
+  segment: GuidedSegmentReviewNumber
+  vibe: ActiveGuidedVibeId
+}
+
+export type GuidedCheckpointWriteResult = {
+  record: GuidedCheckpointRecord
+  saved: boolean
+  alreadyCompleted: boolean
+}
+
+export type GuidedCheckpointDraftMode = 'checkpoint' | 'path-check' | 'segment-review'
+
+export type GuidedCheckpointDraft = {
+  schemaVersion: 1
+  mode: GuidedCheckpointDraftMode
+  pathId: string
+  segment?: GuidedSegmentReviewNumber
+  targetLanguage: GuidedTargetLanguage
+  vibe: ActiveGuidedVibeId
+  checkpointIndex: number
+  completedPathCount: number
+  itemIndex: number
+  phase: 'type' | 'speak'
+  planItems: Array<Pick<GuidedCheckpointPlanItem, 'lessonId' | 'pathId' | 'vibe'>>
+  reviewedItems: GuidedCheckpointReviewedItem[]
+  updatedAt: string
+}
+
+export type GuidedCheckpointDraftScope = Pick<
+  GuidedCheckpointDraft,
+  'mode' | 'pathId' | 'segment' | 'targetLanguage' | 'vibe'
+> & { userId: string }
+
 type RandomSource = () => number
 
-export function guidedCheckpointKey(vibe: ActiveGuidedVibeId, checkpointIndex: number) {
-  return `guided_checkpoint_${vibe}_${checkpointIndex}`
+export function guidedCheckpointKey(scope: GuidedCheckpointScope, checkpointIndex: number) {
+  return `guided_checkpoint_v2_${encodeURIComponent(scope.userId)}_${scope.targetLanguage}_${scope.vibe}_${checkpointIndex}`
 }
 
 export function countCompletedGuidedCheckpointPaths(
   progress: TodayProgressState,
+  targetLanguage: GuidedTargetLanguage,
   vibe: ActiveGuidedVibeId,
   pathOptions: GuidedPathMetadata[] = getGuidedTodayPathOptions(),
 ) {
-  return getCompletedGuidedCheckpointPathIds(progress, vibe, pathOptions).length
+  return getCompletedGuidedCheckpointPathIds(progress, targetLanguage, vibe, pathOptions).length
 }
 
 export function hasPendingGuidedCheckpoint(
   progress: TodayProgressState,
-  vibe: ActiveGuidedVibeId,
-  checkpointCount = getGuidedCheckpointCount(vibe),
+  scope: GuidedCheckpointScope,
+  checkpointCount = getGuidedCheckpointCount(scope),
   pathOptions: GuidedPathMetadata[] = getGuidedTodayPathOptions(),
 ) {
-  return countCompletedGuidedCheckpointPaths(progress, vibe, pathOptions) > checkpointCount
+  return countCompletedGuidedCheckpointPaths(progress, scope.targetLanguage, scope.vibe, pathOptions) > checkpointCount
 }
 
 export function buildGuidedCheckpointPlan(
   progress: TodayProgressState,
-  vibe: ActiveGuidedVibeId,
+  scope: GuidedCheckpointScope,
   random: RandomSource = Math.random,
   pathOptions: GuidedPathMetadata[] = getGuidedTodayPathOptions(),
 ): GuidedCheckpointPlan | undefined {
-  const completedPathIds = getCompletedGuidedCheckpointPathIds(progress, vibe, pathOptions)
+  const completedPathIds = getCompletedGuidedCheckpointPathIds(progress, scope.targetLanguage, scope.vibe, pathOptions)
   if (completedPathIds.length === 0) return undefined
 
   const eligibleByPath = new Map<string, GuidedCheckpointPlanItem[]>()
   for (const pathId of completedPathIds) {
     const items = getGuidedPathLessons(pathId)
-      .filter((lesson) => isLessonCompletedInVibe(progress, pathId, lesson.id, vibe))
+      .filter((lesson) => isLessonCompletedInVibe(progress, pathId, lesson.id, scope.vibe))
       .map((lesson) => {
-        const resolvedLesson = resolveGuidedLessonVariant(lesson, vibe)
+        const resolvedLesson = resolveGuidedLessonVariant(lesson, scope.vibe)
         return {
           lesson: resolvedLesson,
           lessonId: resolvedLesson.id,
           pathId,
-          vibe,
+          vibe: scope.vibe,
         }
       })
 
@@ -134,8 +178,8 @@ export function buildGuidedCheckpointPlan(
   }
 
   return {
-    vibe,
-    checkpointIndex: getNextGuidedCheckpointIndex(vibe),
+    vibe: scope.vibe,
+    checkpointIndex: getNextGuidedCheckpointIndex(scope),
     completedPathCount: completedPathIds.length,
     items: interleavePathBuckets(pathBuckets, random).slice(0, GUIDED_CHECKPOINT_ITEM_COUNT),
   }
@@ -208,27 +252,28 @@ export function buildGuidedSegmentReviewPlan(
   }
 }
 
-export function getGuidedCheckpointCount(vibe: ActiveGuidedVibeId) {
-  return getGuidedCheckpointIndexes(vibe).length
+export function getGuidedCheckpointCount(scope: GuidedCheckpointScope) {
+  if (!scope.userId) return 0
+  return getGuidedCheckpointIndexes(scope).length
 }
 
-export function getNextGuidedCheckpointIndex(vibe: ActiveGuidedVibeId) {
-  const indexes = getGuidedCheckpointIndexes(vibe)
+export function getNextGuidedCheckpointIndex(scope: GuidedCheckpointScope) {
+  const indexes = getGuidedCheckpointIndexes(scope)
   if (indexes.length === 0) return 0
   return Math.max(...indexes) + 1
 }
 
 export function readGuidedCheckpointRecord(
-  vibe: ActiveGuidedVibeId,
+  scope: GuidedCheckpointScope,
   checkpointIndex: number,
 ): GuidedCheckpointRecord | undefined {
-  if (!canUseLocalStorage()) return undefined
+  if (!scope.userId || !canUseLocalStorage()) return undefined
 
   try {
-    const raw = window.localStorage.getItem(guidedCheckpointKey(vibe, checkpointIndex))
+    const raw = window.localStorage.getItem(guidedCheckpointKey(scope, checkpointIndex))
     if (!raw) return undefined
     const parsed = JSON.parse(raw) as GuidedCheckpointRecord
-    if (!isGuidedCheckpointRecord(parsed, vibe)) return undefined
+    if (!isGuidedCheckpointRecord(parsed, scope.vibe)) return undefined
     return parsed
   } catch {
     return undefined
@@ -236,10 +281,11 @@ export function readGuidedCheckpointRecord(
 }
 
 export function completeGuidedCheckpoint(
-  vibe: ActiveGuidedVibeId,
+  scope: GuidedCheckpointScope,
+  checkpointIndex: number,
   items: GuidedCheckpointReviewedItem[],
   completedAt: Date = new Date(),
-): GuidedCheckpointRecord {
+): GuidedCheckpointWriteResult {
   const record: GuidedCheckpointRecord = {
     completedAt: completedAt.toISOString(),
     itemsReviewed: items.length,
@@ -253,40 +299,38 @@ export function completeGuidedCheckpoint(
     })),
   }
 
-  if (!canUseLocalStorage()) return record
+  if (!scope.userId || !canUseLocalStorage()) return { record, saved: false, alreadyCompleted: false }
 
   try {
+    const existing = readGuidedCheckpointRecord(scope, checkpointIndex)
+    if (existing) return { record: existing, saved: true, alreadyCompleted: true }
     window.localStorage.setItem(
-      guidedCheckpointKey(vibe, getNextGuidedCheckpointIndex(vibe)),
+      guidedCheckpointKey(scope, checkpointIndex),
       JSON.stringify(record),
     )
   } catch {
-    return record
+    return { record, saved: false, alreadyCompleted: false }
   }
 
-  return record
+  return { record, saved: true, alreadyCompleted: false }
 }
 
 export function guidedSegmentReviewKey(
-  pathId: string,
-  segment: GuidedSegmentReviewNumber,
-  vibe: ActiveGuidedVibeId,
+  scope: GuidedSegmentReviewScope,
 ) {
-  return `guided_segment_review_${pathId}_${vibe}_${segment}`
+  return `guided_segment_review_v2_${encodeURIComponent(scope.userId)}_${encodeURIComponent(scope.pathId)}_${scope.vibe}_${scope.segment}`
 }
 
 export function readGuidedSegmentReviewRecord(
-  pathId: string,
-  segment: GuidedSegmentReviewNumber,
-  vibe: ActiveGuidedVibeId,
+  scope: GuidedSegmentReviewScope,
 ): GuidedCheckpointRecord | undefined {
-  if (!canUseLocalStorage()) return undefined
+  if (!scope.userId || !canUseLocalStorage()) return undefined
 
   try {
-    const raw = window.localStorage.getItem(guidedSegmentReviewKey(pathId, segment, vibe))
+    const raw = window.localStorage.getItem(guidedSegmentReviewKey(scope))
     if (!raw) return undefined
     const parsed = JSON.parse(raw) as GuidedCheckpointRecord
-    if (!isGuidedCheckpointRecord(parsed, vibe)) return undefined
+    if (!isGuidedCheckpointRecord(parsed, scope.vibe)) return undefined
     return parsed
   } catch {
     return undefined
@@ -294,12 +338,10 @@ export function readGuidedSegmentReviewRecord(
 }
 
 export function completeGuidedSegmentReview(
-  pathId: string,
-  segment: GuidedSegmentReviewNumber,
-  vibe: ActiveGuidedVibeId,
+  scope: GuidedSegmentReviewScope,
   items: GuidedCheckpointReviewedItem[],
   completedAt: Date = new Date(),
-): GuidedCheckpointRecord {
+): GuidedCheckpointWriteResult {
   const record: GuidedCheckpointRecord = {
     completedAt: completedAt.toISOString(),
     itemsReviewed: items.length,
@@ -313,18 +355,91 @@ export function completeGuidedSegmentReview(
     })),
   }
 
-  if (!canUseLocalStorage()) return record
+  if (!scope.userId || !canUseLocalStorage()) return { record, saved: false, alreadyCompleted: false }
 
   try {
+    const existing = readGuidedSegmentReviewRecord(scope)
+    if (existing) return { record: existing, saved: true, alreadyCompleted: true }
     window.localStorage.setItem(
-      guidedSegmentReviewKey(pathId, segment, vibe),
+      guidedSegmentReviewKey(scope),
       JSON.stringify(record),
     )
   } catch {
-    return record
+    return { record, saved: false, alreadyCompleted: false }
   }
 
-  return record
+  return { record, saved: true, alreadyCompleted: false }
+}
+
+export function guidedCheckpointDraftKey(scope: GuidedCheckpointDraftScope) {
+  const segment = scope.segment ?? 0
+  return `guided_checkpoint_draft_v1_${encodeURIComponent(scope.userId)}_${scope.targetLanguage}_${scope.vibe}_${scope.mode}_${encodeURIComponent(scope.pathId)}_${segment}`
+}
+
+export function readGuidedCheckpointDraft(
+  scope: GuidedCheckpointDraftScope,
+): GuidedCheckpointDraft | undefined {
+  if (!scope.userId || !canUseLocalStorage()) return undefined
+
+  try {
+    const raw = window.localStorage.getItem(guidedCheckpointDraftKey(scope))
+    if (!raw) return undefined
+    const parsed = JSON.parse(raw) as unknown
+    return isGuidedCheckpointDraft(parsed, scope) ? parsed : undefined
+  } catch {
+    return undefined
+  }
+}
+
+export function writeGuidedCheckpointDraft(
+  scope: GuidedCheckpointDraftScope,
+  draft: GuidedCheckpointDraft,
+): boolean {
+  if (!scope.userId || !canUseLocalStorage() || !isGuidedCheckpointDraft(draft, scope)) return false
+
+  try {
+    window.localStorage.setItem(guidedCheckpointDraftKey(scope), JSON.stringify(draft))
+    return true
+  } catch {
+    return false
+  }
+}
+
+export function clearGuidedCheckpointDraft(scope: GuidedCheckpointDraftScope): boolean {
+  if (!scope.userId || !canUseLocalStorage()) return false
+
+  try {
+    window.localStorage.removeItem(guidedCheckpointDraftKey(scope))
+    return true
+  } catch {
+    return false
+  }
+}
+
+export function restoreGuidedCheckpointPlan(draft: GuidedCheckpointDraft): GuidedCheckpointPlan | undefined {
+  const items: GuidedCheckpointPlanItem[] = []
+  for (const reference of draft.planItems) {
+    const definition = getGuidedPathLessons(reference.pathId)
+      .find((lesson) => lesson.id === reference.lessonId && lesson.targetLanguage === draft.targetLanguage)
+    if (!definition) return undefined
+    const lesson = resolveGuidedLessonVariant(definition, reference.vibe)
+    items.push({
+      lesson,
+      lessonId: lesson.id,
+      pathId: lesson.pathId,
+      vibe: reference.vibe,
+    })
+  }
+
+  if (items.length === 0 || draft.itemIndex >= items.length) return undefined
+  return {
+    vibe: draft.vibe,
+    checkpointIndex: draft.checkpointIndex,
+    completedPathCount: draft.completedPathCount,
+    pathId: draft.mode === 'checkpoint' ? undefined : draft.pathId,
+    segment: draft.mode === 'segment-review' ? draft.segment : undefined,
+    items,
+  }
 }
 
 function getGuidedSegmentReviewDefinition(segment: number): { segment: GuidedSegmentReviewNumber; startLesson: number; endLesson: number } | undefined {
@@ -335,10 +450,12 @@ function getGuidedSegmentReviewDefinition(segment: number): { segment: GuidedSeg
 
 function getCompletedGuidedCheckpointPathIds(
   progress: TodayProgressState,
+  targetLanguage: GuidedTargetLanguage,
   vibe: ActiveGuidedVibeId,
   pathOptions: GuidedPathMetadata[],
 ) {
   return pathOptions
+    .filter((path) => path.targetLanguage === targetLanguage)
     .map((path) => path.id)
     .filter((pathId) => {
       const lessonIds = getGuidedPathLessonIds(pathId)
@@ -437,10 +554,10 @@ function checkpointItemKey(item: Pick<GuidedCheckpointPlanItem, 'lessonId' | 'pa
   return `${item.pathId}:${item.lessonId}:${item.vibe}`
 }
 
-function getGuidedCheckpointIndexes(vibe: ActiveGuidedVibeId) {
+function getGuidedCheckpointIndexes(scope: GuidedCheckpointScope) {
   if (!canUseLocalStorage()) return []
 
-  const prefix = `guided_checkpoint_${vibe}_`
+  const prefix = `${guidedCheckpointKey(scope, 0).slice(0, -1)}`
   const indexes: number[] = []
 
   try {
@@ -448,7 +565,12 @@ function getGuidedCheckpointIndexes(vibe: ActiveGuidedVibeId) {
       const key = window.localStorage.key(index)
       if (!key?.startsWith(prefix)) continue
       const checkpointIndex = Number.parseInt(key.slice(prefix.length), 10)
-      if (Number.isInteger(checkpointIndex) && checkpointIndex >= 0) {
+      if (
+        Number.isInteger(checkpointIndex)
+        && checkpointIndex >= 0
+        && key === guidedCheckpointKey(scope, checkpointIndex)
+        && readGuidedCheckpointRecord(scope, checkpointIndex)
+      ) {
         indexes.push(checkpointIndex)
       }
     }
@@ -476,6 +598,51 @@ function isGuidedCheckpointRecord(
     ))
 }
 
+function isGuidedCheckpointDraft(
+  value: unknown,
+  scope: GuidedCheckpointDraftScope,
+): value is GuidedCheckpointDraft {
+  if (!isRecord(value) || value.schemaVersion !== 1) return false
+  if (
+    value.mode !== scope.mode
+    || value.pathId !== scope.pathId
+    || value.segment !== scope.segment
+    || value.targetLanguage !== scope.targetLanguage
+    || value.vibe !== scope.vibe
+  ) return false
+  if (!Number.isInteger(value.checkpointIndex) || (value.checkpointIndex as number) < 0) return false
+  if (!Number.isInteger(value.completedPathCount) || (value.completedPathCount as number) < 0) return false
+  if (!Number.isInteger(value.itemIndex) || (value.itemIndex as number) < 0) return false
+  if (value.phase !== 'type' && value.phase !== 'speak') return false
+  if (typeof value.updatedAt !== 'string' || !Array.isArray(value.planItems) || !Array.isArray(value.reviewedItems)) return false
+  if ((value.itemIndex as number) >= value.planItems.length) return false
+
+  return value.planItems.every((item) => (
+    isRecord(item)
+    && typeof item.lessonId === 'string'
+    && typeof item.pathId === 'string'
+    && item.vibe === scope.vibe
+  )) && value.reviewedItems.every((item) => isGuidedCheckpointReviewedItem(item, scope.vibe))
+}
+
+function isGuidedCheckpointReviewedItem(value: unknown, vibe: ActiveGuidedVibeId): value is GuidedCheckpointReviewedItem {
+  return isRecord(value)
+    && typeof value.lessonId === 'string'
+    && typeof value.pathId === 'string'
+    && value.vibe === vibe
+    && typeof value.firstTryCorrect === 'boolean'
+    && typeof value.needsReview === 'boolean'
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
+
 function canUseLocalStorage() {
-  return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined'
+  if (typeof window === 'undefined') return false
+  try {
+    return typeof window.localStorage !== 'undefined'
+  } catch {
+    return false
+  }
 }

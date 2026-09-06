@@ -5,7 +5,9 @@ export type TodayLessonStatus = 'completed' | 'skipped'
 
 export type TodayLessonResult = {
   buildAttempts: number
+  buildUsedFallback?: boolean
   typeAttempts: number
+  typePassed?: boolean
   typeUsedFallback?: boolean
   speakAttempts?: number
   speakTranscriptMatch?: number
@@ -70,6 +72,31 @@ export type TodayProgressState = {
   courses: Record<string, TodayCourseProgress>
 }
 
+export type TodayProgressWriteResult = {
+  state: TodayProgressState
+  saved: boolean
+}
+
+export type TodayLessonDraftStep =
+  | 'scene'
+  | 'matchPairs'
+  | 'pattern'
+  | 'build'
+  | 'type'
+  | 'complication'
+  | 'speak'
+  | 'rolePlay'
+
+export type TodayLessonDraft = {
+  schemaVersion: 1
+  pathId: string
+  lessonId: string
+  vibeId: ActiveGuidedVibeId
+  step: TodayLessonDraftStep
+  result: Partial<TodayLessonResult>
+  updatedAt: string
+}
+
 export type TodayVisibleStatus = TodayLessonStatus | 'new'
 
 const LEGACY_GUIDED_TODAY_PATH_ID = 'english-a1-practical'
@@ -77,6 +104,15 @@ const GUIDED_TODAY_PATH_ONE_ID = 'english-a1-practical-1'
 
 export function todayProgressKey(userId: string) {
   return `resonance_today_progress_v1_${userId}`
+}
+
+export function todayLessonDraftKey(
+  userId: string,
+  pathId: string,
+  lessonId: string,
+  vibeId: ActiveGuidedVibeId,
+) {
+  return `resonance_today_lesson_draft_v1_${encodeURIComponent(userId)}_${encodeURIComponent(pathId)}_${encodeURIComponent(lessonId)}_${vibeId}`
 }
 
 export function createEmptyTodayProgressState(): TodayProgressState {
@@ -234,7 +270,9 @@ export function getTodayCompletionLines(result: TodayLessonResult): TodayComplet
 
   const lines: TodayCompletionLine[] = [
     {
-      key: result.typeUsedFallback ? 'today.completion.typeWithHelp' : 'today.completion.typePassed',
+      key: result.typeUsedFallback || result.typePassed === false
+        ? 'today.completion.typeWithHelp'
+        : 'today.completion.typePassed',
     },
   ]
 
@@ -303,15 +341,80 @@ export function readTodayProgressState(userId: string | undefined): TodayProgres
   }
 }
 
-export function writeTodayProgressState(userId: string | undefined, state: TodayProgressState) {
+export function writeTodayProgressState(userId: string | undefined, state: TodayProgressState): boolean {
   if (!userId || !canUseLocalStorage()) {
-    return
+    return false
   }
 
   try {
     window.localStorage.setItem(todayProgressKey(userId), JSON.stringify(state))
+    return true
   } catch {
-    return
+    return false
+  }
+}
+
+/**
+ * Commits one lesson completion against the newest local snapshot. The returned
+ * state is suitable for replacing a render closure that may be stale after a
+ * storage event or another tab's earlier completion.
+ */
+export function commitTodayLessonCompletion(
+  userId: string | undefined,
+  lesson: GuidedLesson,
+  result: TodayLessonResult,
+): TodayProgressWriteResult {
+  const state = markTodayLessonComplete(readTodayProgressState(userId), lesson, result)
+  return {
+    state,
+    saved: writeTodayProgressState(userId, state),
+  }
+}
+
+export function readTodayLessonDraft(
+  userId: string | undefined,
+  lesson: Pick<GuidedLesson, 'pathId' | 'id' | 'vibeId'>,
+): TodayLessonDraft | undefined {
+  if (!userId || !canUseLocalStorage()) return undefined
+
+  try {
+    const raw = window.localStorage.getItem(todayLessonDraftKey(userId, lesson.pathId, lesson.id, lesson.vibeId))
+    if (!raw) return undefined
+    const parsed = JSON.parse(raw) as unknown
+    return isTodayLessonDraft(parsed, lesson) ? parsed : undefined
+  } catch {
+    return undefined
+  }
+}
+
+export function writeTodayLessonDraft(
+  userId: string | undefined,
+  draft: TodayLessonDraft,
+): boolean {
+  if (!userId || !canUseLocalStorage() || !isTodayLessonDraft(draft, draft)) return false
+
+  try {
+    window.localStorage.setItem(
+      todayLessonDraftKey(userId, draft.pathId, draft.lessonId, draft.vibeId),
+      JSON.stringify(draft),
+    )
+    return true
+  } catch {
+    return false
+  }
+}
+
+export function clearTodayLessonDraft(
+  userId: string | undefined,
+  lesson: Pick<GuidedLesson, 'pathId' | 'id' | 'vibeId'>,
+): boolean {
+  if (!userId || !canUseLocalStorage()) return false
+
+  try {
+    window.localStorage.removeItem(todayLessonDraftKey(userId, lesson.pathId, lesson.id, lesson.vibeId))
+    return true
+  } catch {
+    return false
   }
 }
 
@@ -351,5 +454,58 @@ function getKnownMarkedCount(result: Pick<TodayLessonResult, 'knownItemCount' | 
 }
 
 function canUseLocalStorage() {
-  return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined'
+  if (typeof window === 'undefined') return false
+  try {
+    return typeof window.localStorage !== 'undefined'
+  } catch {
+    return false
+  }
+}
+
+function isTodayLessonDraft(
+  value: unknown,
+  lesson: { pathId: string; id?: string; lessonId?: string; vibeId: ActiveGuidedVibeId },
+): value is TodayLessonDraft {
+  if (!isRecord(value) || value.schemaVersion !== 1) return false
+  const lessonId = lesson.id ?? lesson.lessonId
+  if (value.pathId !== lesson.pathId || value.lessonId !== lessonId || value.vibeId !== lesson.vibeId) return false
+  if (!isTodayLessonDraftStep(value.step) || typeof value.updatedAt !== 'string' || !isRecord(value.result)) return false
+
+  return Object.keys(value.result).every((key) => TODAY_LESSON_RESULT_KEYS.has(key as keyof TodayLessonResult))
+    && Object.values(value.result).every((entry) => (
+      typeof entry === 'number' || typeof entry === 'boolean' || entry === undefined
+    ))
+}
+
+const TODAY_LESSON_RESULT_KEYS = new Set<keyof TodayLessonResult>([
+  'buildAttempts',
+  'buildUsedFallback',
+  'typeAttempts',
+  'typePassed',
+  'typeUsedFallback',
+  'speakAttempts',
+  'speakTranscriptMatch',
+  'speakPassed',
+  'knownMarkedCount',
+  'reviewCorrect',
+  'reviewTotal',
+  'knownItemCount',
+  'clozeBlanksTotal',
+  'clozeBlanksFirstTry',
+  'rolePlayTurnsPassed',
+])
+
+function isTodayLessonDraftStep(value: unknown): value is TodayLessonDraftStep {
+  return value === 'scene'
+    || value === 'matchPairs'
+    || value === 'pattern'
+    || value === 'build'
+    || value === 'type'
+    || value === 'complication'
+    || value === 'speak'
+    || value === 'rolePlay'
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
 }

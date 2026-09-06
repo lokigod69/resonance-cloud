@@ -12,11 +12,13 @@ import {
   Volume2,
   type LucideIcon,
 } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { getGuidedMatchPairs, resolveGuidedBaseContent, type GuidedDialogueTurn, type GuidedLesson } from '@/data/guidedLessons'
 import { guidedVibes } from '@/data/guidedVibes'
-import type { TodayLessonResult } from '@/lib/todayProgress'
+import { clearTodayLessonDraft, readTodayLessonDraft, writeTodayLessonDraft, type TodayLessonResult } from '@/lib/todayProgress'
 import { playGuidedAudio, stopGuidedAudio } from '@/lib/guidedAudio'
+import { keepGuidedPhrase } from '@/lib/guidedPhraseKeep'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
@@ -37,7 +39,7 @@ type TodaySessionProps = {
   lesson: GuidedLesson
   nextLesson?: GuidedLesson
   knownItemIds: Set<string>
-  onComplete: (result: TodayLessonResult) => void
+  onComplete: (result: TodayLessonResult) => boolean
   onViewPath: () => void
   onOpenNextLesson: () => void
 }
@@ -51,7 +53,7 @@ export function TodaySession({
   onOpenNextLesson,
 }: TodaySessionProps) {
   const { t } = useTranslation()
-  const { profile } = useAuth()
+  const { profile, user } = useAuth()
   const preferredBaseLanguage = profile?.base_language
   const resolvedLessonTitle = resolveGuidedBaseContent(lesson.title, {
     preferredBaseLanguage,
@@ -59,30 +61,53 @@ export function TodaySession({
   }).text
   const matchPairs = getGuidedMatchPairs(lesson)
   const sessionSteps = getSessionSteps(lesson)
-  const [stepIndex, setStepIndex] = useState(0)
+  const [draft] = useState(() => readTodayLessonDraft(user?.id, lesson))
+  const [stepIndex, setStepIndex] = useState(() => draft ? Math.max(0, sessionSteps.indexOf(draft.step)) : 0)
+  const taskHeadingRef = useRef<HTMLHeadingElement>(null)
+  const committedRef = useRef(false)
+  const [saveFailed, setSaveFailed] = useState(false)
+  const [draftSaveStatus, setDraftSaveStatus] = useState<'unknown' | 'saved' | 'unavailable'>('unknown')
   const [matchedPairIds, setMatchedPairIds] = useState<Set<string>>(() => new Set())
-  const [buildState, setBuildState] = useState<BuildPhraseCheckState>({ status: 'idle', attempts: 0 })
-  const [typeState, setTypeState] = useState<TypeRecallCheckState>({ status: 'idle', attempts: 0, usedFallback: false })
+  const [buildState, setBuildState] = useState<BuildPhraseCheckState>({
+    status: draft?.result.buildUsedFallback ? 'revealed' : 'idle',
+    attempts: draft?.result.buildAttempts ?? 0,
+    usedFallback: draft?.result.buildUsedFallback ?? false,
+  })
+  const [typeState, setTypeState] = useState<TypeRecallCheckState>({
+    status: draft?.result.typePassed
+      ? 'correct'
+      : draft?.result.typeUsedFallback
+        ? 'revealed'
+        : 'idle',
+    attempts: draft?.result.typeAttempts ?? 0,
+    usedFallback: draft?.result.typeUsedFallback ?? false,
+  })
   const [speakState, setSpeakState] = useState<SpeakCheckState>(() => ({
     status: canUseGuidedSpeechRecognition() ? 'idle' : 'unsupported',
-    attempts: 0,
-    transcriptMatch: 0,
-    passed: false,
+    attempts: draft?.result.speakAttempts ?? 0,
+    transcriptMatch: draft?.result.speakTranscriptMatch ?? 0,
+    passed: draft?.result.speakPassed ?? false,
   }))
-  const [clozeState, setClozeState] = useState<ComplicationCheckState>({
-    status: 'idle',
-    attempts: 0,
-    usedFallback: false,
-    blanksTotal: 0,
-    blanksFirstTry: 0,
-  })
+  const [clozeState, setClozeState] = useState<ComplicationCheckState>(() => ({
+    status: draft && sessionSteps.indexOf(draft.step) > sessionSteps.indexOf('complication')
+      ? 'correct'
+      : 'idle',
+    attempts: draft?.result.typeAttempts ?? 0,
+    usedFallback: draft?.result.typeUsedFallback ?? false,
+    blanksTotal: draft?.result.clozeBlanksTotal ?? 0,
+    blanksFirstTry: draft?.result.clozeBlanksFirstTry ?? 0,
+  }))
   const [rolePlayState, setRolePlayState] = useState<RolePlayCheckState>(() => ({
-    status: canUseGuidedSpeechRecognition() ? 'idle' : 'unsupported',
-    attempts: 0,
-    transcriptMatch: 0,
-    passed: false,
-    turnsPassed: 0,
+    status: draft?.result.speakPassed
+      ? 'passed'
+      : canUseGuidedSpeechRecognition() ? 'idle' : 'unsupported',
+    attempts: draft?.result.speakAttempts ?? 0,
+    transcriptMatch: draft?.result.speakTranscriptMatch ?? 0,
+    passed: draft?.result.speakPassed ?? false,
+    turnsPassed: draft?.result.rolePlayTurnsPassed ?? 0,
   }))
+  const clozeChildAttemptsRef = useRef(0)
+  const rolePlayChildAttemptsRef = useRef(0)
   const step = sessionSteps[stepIndex]
   const stepVisualState = getStepVisualState(step, {
     matchedPairIds,
@@ -95,13 +120,18 @@ export function TodaySession({
   })
 
   useEffect(() => stopGuidedAudio, [])
+  useEffect(() => {
+    stopGuidedAudio()
+    taskHeadingRef.current?.focus({ preventScroll: true })
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [step])
 
   const canContinue =
     step === 'scene'
     || step === 'pattern'
     || (step === 'matchPairs' && matchedPairIds.size === matchPairs.length)
-    || (step === 'build' && buildState.status === 'correct')
-    || (step === 'type' && typeState.status !== 'idle')
+    || (step === 'build' && (buildState.status === 'correct' || buildState.status === 'revealed'))
+    || (step === 'type' && (typeState.status === 'correct' || typeState.status === 'revealed'))
     || (step === 'complication' && clozeState.status === 'correct')
     || (step === 'speak' && canContinueFromSpeak(speakState))
     || (step === 'rolePlay' && canContinueFromSpeak(rolePlayState))
@@ -116,18 +146,20 @@ export function TodaySession({
       return
     }
 
-    setStepIndex((current) => Math.min(current + 1, sessionSteps.length - 1))
+    enterStep(Math.min(stepIndex + 1, sessionSteps.length - 1))
   }
 
-  const completeLesson = () => {
+  const completedResult = useMemo((): TodayLessonResult => {
     // B1 sessions have no type/speak steps: the cloze feeds the type fields and
     // rolePlay feeds the speak fields, so todayProgress consumers stay unchanged.
     const isB1Session = sessionSteps.includes('rolePlay')
-    const completedResult: TodayLessonResult = isB1Session
+    return isB1Session
       ? {
         buildAttempts: buildState.attempts,
+        buildUsedFallback: buildState.usedFallback,
         typeAttempts: clozeState.attempts,
         typeUsedFallback: clozeState.usedFallback,
+        typePassed: clozeState.status === 'correct' && !clozeState.usedFallback,
         speakAttempts: rolePlayState.attempts,
         speakTranscriptMatch: rolePlayState.transcriptMatch,
         speakPassed: rolePlayState.passed,
@@ -138,15 +170,82 @@ export function TodaySession({
       }
       : {
         buildAttempts: buildState.attempts,
+        buildUsedFallback: buildState.usedFallback,
         typeAttempts: typeState.attempts,
         typeUsedFallback: typeState.usedFallback,
+        typePassed: typeState.status === 'correct' && !typeState.usedFallback,
         speakAttempts: speakState.attempts,
         speakTranscriptMatch: speakState.transcriptMatch,
         speakPassed: speakState.passed,
         knownMarkedCount: knownItemIds.size,
       }
-    onComplete(completedResult)
+  }, [sessionSteps, buildState, typeState, speakState, clozeState, rolePlayState, knownItemIds.size])
+
+  useEffect(() => {
+    if (step === 'complete' || committedRef.current) return
+    // This effect writes the current resume boundary to external storage; the
+    // status mirrors that write so the UI never claims an unverified save.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDraftSaveStatus(writeTodayLessonDraft(user?.id, {
+      schemaVersion: 1, pathId: lesson.pathId, lessonId: lesson.id,
+      vibeId: lesson.vibeId, step, result: completedResult, updatedAt: new Date().toISOString(),
+    }) ? 'saved' : 'unavailable')
+  }, [user?.id, lesson.pathId, lesson.id, lesson.vibeId, step, completedResult])
+
+  const completeLesson = () => {
+    if (committedRef.current) return
+    if (!onComplete(completedResult)) {
+      setSaveFailed(true)
+      return
+    }
+    committedRef.current = true
+    clearTodayLessonDraft(user?.id, lesson)
+    setSaveFailed(false)
     setStepIndex(sessionSteps.indexOf('complete'))
+  }
+
+  const enterStep = (index: number) => {
+    const destination = sessionSteps[index]
+    setSaveFailed(false)
+    // Exercises remount when revisited, so their gate must reset too.
+    if (destination === 'matchPairs') setMatchedPairIds(new Set())
+    if (destination === 'build') setBuildState((state) => ({ ...state, status: 'idle' }))
+    if (destination === 'type') setTypeState((state) => ({ ...state, status: 'idle' }))
+    if (destination === 'complication') {
+      clozeChildAttemptsRef.current = 0
+      setClozeState((state) => ({ ...state, status: 'idle' }))
+    }
+    if (destination === 'speak') setSpeakState((state) => ({ ...state, status: canUseGuidedSpeechRecognition() ? 'idle' : 'unsupported', passed: false }))
+    if (destination === 'rolePlay') {
+      rolePlayChildAttemptsRef.current = 0
+      setRolePlayState((state) => ({ ...state, status: canUseGuidedSpeechRecognition() ? 'idle' : 'unsupported', passed: false }))
+    }
+    setStepIndex(index)
+  }
+
+  const handleClozeStateChange = (next: ComplicationCheckState) => {
+    const addedAttempts = Math.max(0, next.attempts - clozeChildAttemptsRef.current)
+    clozeChildAttemptsRef.current = next.attempts
+    setClozeState((current) => ({
+      ...next,
+      attempts: current.attempts + addedAttempts,
+      usedFallback: current.usedFallback || next.usedFallback,
+      blanksTotal: Math.max(current.blanksTotal, next.blanksTotal),
+      blanksFirstTry: Math.max(current.blanksFirstTry, next.blanksFirstTry),
+    }))
+  }
+
+  const handleRolePlayStateChange = (next: RolePlayCheckState) => {
+    const addedAttempts = Math.max(0, next.attempts - rolePlayChildAttemptsRef.current)
+    rolePlayChildAttemptsRef.current = next.attempts
+    setRolePlayState((current) => ({
+      ...next,
+      status: current.passed ? 'passed' : next.status,
+      attempts: current.attempts + addedAttempts,
+      transcriptMatch: next.transcriptMatch > 0 ? next.transcriptMatch : current.transcriptMatch,
+      passed: current.passed || next.passed,
+      turnsPassed: Math.max(current.turnsPassed, next.turnsPassed),
+    }))
   }
 
   return (
@@ -175,18 +274,21 @@ export function TodaySession({
               </span>
             </button>
             <span className="today-session-countPill">
-              {t('today.progressLabel', { current: stepIndex + 1, total: sessionSteps.length })}
+              {t('today.progressLabel', { current: Math.min(stepIndex + 1, sessionSteps.length - 1), total: sessionSteps.length - 1 })}
             </span>
           </div>
         </div>
-        <TodayLessonProgressRail steps={sessionSteps} stepIndex={stepIndex} />
+        <TodayLessonProgressRail steps={sessionSteps.filter((item) => item !== 'complete')} stepIndex={stepIndex} />
+        {profile?.base_language && !['English', 'German'].includes(profile.base_language) && (
+          <p className="text-sm text-[var(--text-secondary)]">{t('today.practice.explanationsIn', { language: t(`today.language.${resolveGuidedBaseContent(lesson.corePhrase.baseText, { preferredBaseLanguage, authoredBaseLanguage: lesson.baseLanguage }).language}`) })}</p>
+        )}
       </header>
 
       <div key={step} className="today-session-taskCard today-step-stage" data-session-step={step} data-step-state={stepVisualState}>
         {step !== 'complete' && (
           <div className="today-session-taskHeader">
             <TodayLessonStepIcon step={step} compact />
-            <h3 className="today-session-taskTitle">
+            <h3 ref={taskHeadingRef} tabIndex={-1} className="today-session-taskTitle outline-none">
               {t(getStepTitleKey(step, lesson))}
             </h3>
           </div>
@@ -201,19 +303,31 @@ export function TodaySession({
         )}
         {step === 'pattern' && <PatternStep lesson={lesson} />}
         {step === 'build' && (
-          <BuildPhraseStep lesson={lesson} onCheckStateChange={setBuildState} />
+          <BuildPhraseStep
+            lesson={lesson}
+            initialAttempts={buildState.attempts}
+            initialStatus={buildState.status}
+            initialUsedFallback={buildState.usedFallback}
+            onCheckStateChange={setBuildState}
+          />
         )}
         {step === 'type' && (
-          <TypeRecallStep lesson={lesson} onCheckStateChange={setTypeState} />
+          <TypeRecallStep
+            lesson={lesson}
+            initialAttempts={typeState.attempts}
+            initialStatus={typeState.status}
+            initialUsedFallback={typeState.usedFallback}
+            onCheckStateChange={setTypeState}
+          />
         )}
         {step === 'complication' && (
-          <ComplicationStep lesson={lesson} onCheckStateChange={setClozeState} />
+          <ComplicationStep lesson={lesson} onCheckStateChange={handleClozeStateChange} />
         )}
         {step === 'speak' && (
           <SpeakStep lesson={lesson} onCheckStateChange={setSpeakState} />
         )}
         {step === 'rolePlay' && (
-          <RolePlayStep lesson={lesson} onCheckStateChange={setRolePlayState} />
+          <RolePlayStep lesson={lesson} onCheckStateChange={handleRolePlayStateChange} />
         )}
         {step === 'complete' && (
           <CompleteStep
@@ -227,10 +341,19 @@ export function TodaySession({
 
       {step !== 'complete' && (
         <div className="today-session-footer">
+          {saveFailed && <p role="alert" className="today-session-saveNotice">{t('today.practice.saveFailed')}</p>}
+          <Button variant="ghost" onClick={() => stepIndex > 0 ? enterStep(stepIndex - 1) : onViewPath()}>
+            <ChevronLeft className="h-4 w-4" />{t('today.practice.back')}
+          </Button>
           <Button className="today-session-footerButton" onClick={handleNext} disabled={!canContinue}>
-            {t('today.continue')}
+            {saveFailed ? t('errors.route.retry') : t('today.continue')}
             <ChevronRight className="h-4 w-4" />
           </Button>
+          {draftSaveStatus !== 'unknown' && (
+            <p className="today-session-saveNotice" role="status">
+              {t(draftSaveStatus === 'saved' ? 'today.practice.savedLocally' : 'today.practice.draftUnavailable')}
+            </p>
+          )}
         </div>
       )}
     </section>
@@ -271,7 +394,7 @@ function TodayLessonProgressRail({ steps, stepIndex }: { steps: TodaySessionStep
     <div className="today-session-progressRail" aria-hidden="true">
       <span
         className="today-session-progressFill"
-        style={{ width: `${(stepIndex / (steps.length - 1)) * 100}%` }}
+        style={{ width: `${Math.min(1, stepIndex / Math.max(1, steps.length - 1)) * 100}%` }}
       />
       {steps.map((sessionStep, index) => (
         <span
@@ -399,7 +522,7 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
             {t('today.scene.situation')}
           </p>
           <p className="today-scene-situationText">
-            {lesson.situation.de}
+            {resolveGuidedBaseContent(lesson.situation, { preferredBaseLanguage, authoredBaseLanguage: lesson.baseLanguage }).text}
           </p>
         </div>
       </div>
@@ -494,6 +617,25 @@ function CompleteStep({
   const { t } = useTranslation()
   const { profile } = useAuth()
   const preferredBaseLanguage = profile?.base_language
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const savingRef = useRef(false)
+  const [keepStatus, setKeepStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
+  const [keptDeckId, setKeptDeckId] = useState<string | null>(null)
+  useEffect(() => { titleRef.current?.focus({ preventScroll: true }) }, [])
+  const handleKeepPhrase = async () => {
+    if (savingRef.current || keepStatus === 'saved') return
+    savingRef.current = true
+    setKeepStatus('saving')
+    try {
+      const receipt = await keepGuidedPhrase(lesson, preferredBaseLanguage, t('today.practice.deckName', { language: t(`today.language.${lesson.targetLanguage}`) }))
+      setKeptDeckId(receipt.deckId)
+      setKeepStatus('saved')
+    } catch {
+      setKeepStatus('error')
+    } finally {
+      savingRef.current = false
+    }
+  }
   const vibe = guidedVibes[lesson.vibeId]
   const trophyMeaning = resolveGuidedBaseContent(lesson.trophyWord.meaning, {
     preferredBaseLanguage,
@@ -528,9 +670,10 @@ function CompleteStep({
         )}
       </div>
       <div>
-        <h3 className="text-3xl font-semibold text-[var(--text-primary)]">
+        <h3 ref={titleRef} tabIndex={-1} className="text-3xl font-semibold text-[var(--text-primary)] outline-none">
           {t('today.completion.title')}
         </h3>
+        <p className="mt-2 text-sm text-[var(--text-secondary)]">{t('today.practice.completionHint')}</p>
       </div>
       {lesson.dialogue && lesson.dialogue.length === 4 ? (
         <EpisodeRecap lesson={lesson} dialogue={lesson.dialogue} />
@@ -547,7 +690,24 @@ function CompleteStep({
           </p>
         </div>
       )}
-      <div className="today-trophy-panel mx-auto w-full max-w-sm rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-center">
+      <div className="today-phrase-keep grid justify-items-center gap-2">
+        {keptDeckId ? (
+          <>
+            <p role="status" className="text-sm text-[var(--text-secondary)]">{t('today.practice.phraseSaved')}</p>
+            <Button variant="outline" asChild><Link to={`/deck/${keptDeckId}`}>{t('today.practice.openPhraseDeck')}</Link></Button>
+          </>
+        ) : (
+          <>
+            <Button variant="outline" onClick={() => void handleKeepPhrase()} disabled={keepStatus === 'saving'}>
+              {t(keepStatus === 'saving' ? 'common.loading' : keepStatus === 'error' ? 'today.practice.retryKeep' : 'today.practice.keepPhrase')}
+            </Button>
+            <p className="text-sm text-[var(--text-secondary)]">{t('today.practice.keepHint')}</p>
+            {keepStatus === 'error' && <p role="alert" className="text-sm text-[#ffc8b8]">{t('today.practice.keepFailed')}</p>}
+          </>
+        )}
+      </div>
+      <details className="today-trophy-panel mx-auto w-full max-w-sm rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-center">
+        <summary className="min-h-11 cursor-pointer py-2 text-sm text-[var(--text-secondary)]">{t('today.trophyWord.title')}</summary>
         <p className="flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
           <Trophy className="h-4 w-4 text-[var(--accent)]" />
           {t('today.trophyWord.title')}
@@ -577,7 +737,7 @@ function CompleteStep({
             </p>
           )}
         </div>
-      </div>
+      </details>
       <div className="flex flex-wrap justify-center gap-3">
         {nextLesson ? (
           <Button onClick={onOpenNextLesson}>
@@ -644,5 +804,4 @@ function EpisodeRecap({ lesson, dialogue }: { lesson: GuidedLesson; dialogue: Gu
 function canContinueFromSpeak(speakState: Pick<SpeakCheckState, 'status'>) {
   return speakState.status === 'passed'
     || speakState.status === 'continued'
-    || speakState.status === 'unsupported'
 }

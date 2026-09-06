@@ -6,9 +6,12 @@
  * Run via: npx tsx scripts/guided-tts-lessons-dump.ts
  */
 
-import { GUIDED_LESSONS } from '../src/data/guidedLessons.ts'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { GUIDED_LESSONS } from '../src/data/guidedLessonsAuthoring.ts'
 
-const payload = GUIDED_LESSONS.map((lesson) => ({
+export function buildGuidedTtsLessonsDump() {
+  return GUIDED_LESSONS.map((lesson) => ({
   id: lesson.id,
   pathId: lesson.pathId,
   lessonNumber: lesson.lessonNumber,
@@ -36,6 +39,9 @@ const payload = GUIDED_LESSONS.map((lesson) => ({
         : null,
     ]),
   ),
-}))
+  }))
+}
 
-process.stdout.write(JSON.stringify(payload))
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  process.stdout.write(JSON.stringify(buildGuidedTtsLessonsDump()))
+}

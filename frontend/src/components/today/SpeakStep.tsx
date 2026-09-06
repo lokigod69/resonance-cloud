@@ -33,6 +33,7 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
       optionalTokens={lesson.speak.optionalTokens}
       language={lesson.speak.language}
       maxRecordingSeconds={lesson.speak.maxRecordingSeconds}
+      allowContinueWhenUnsupported
       onCheckStateChange={onCheckStateChange}
     />
   )

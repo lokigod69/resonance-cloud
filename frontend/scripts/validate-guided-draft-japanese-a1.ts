@@ -8,7 +8,7 @@
  */
 import * as japaneseA1 from '../src/data/guided/japaneseA1'
 import type { GuidedLessonDefinition } from '../src/data/guidedLessons'
-import { GUIDED_LESSONS } from '../src/data/guidedLessons'
+import { GUIDED_LESSONS } from '../src/data/guidedLessonsAuthoring'
 
 let failures = 0
 let checks = 0
@@ -19,6 +19,7 @@ function assert(label: string, ok: boolean, detail?: unknown) {
     console.log(`FAIL  ${label}${detail !== undefined ? ` :: ${JSON.stringify(detail)}` : ''}`)
   }
 }
+assert('authored guided corpus is non-empty', GUIDED_LESSONS.length > 0, GUIDED_LESSONS.length)
 
 const hasJapanese = (s: string) => /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(s)
 const hasHan = (s: string) => /\p{Script=Han}/u.test(s)

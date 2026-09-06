@@ -13,7 +13,7 @@
  * Usage: npx tsx scripts/validate-guided-draft-b1.ts
  */
 import type { GuidedClozeSegment, GuidedLessonDefinition, GuidedLessonVibeVariant } from '../src/data/guidedLessons'
-import { GUIDED_LESSONS } from '../src/data/guidedLessons'
+import { GUIDED_LESSONS } from '../src/data/guidedLessonsAuthoring'
 
 let failures = 0
 let checks = 0
@@ -121,6 +121,7 @@ function checkRegisterConsistency(label: string, variant: GuidedLessonVibeVarian
 const germanB1Lessons = GUIDED_LESSONS.filter(
   (lesson) => lesson.level === 'B1' && lesson.targetLanguage === 'German',
 )
+assert('loaded 100 authored German B1 lessons', germanB1Lessons.length === 100, germanB1Lessons.length)
 
 console.log(`B1 validator: ${germanB1Lessons.length} German B1 lesson(s) on disk`)
 

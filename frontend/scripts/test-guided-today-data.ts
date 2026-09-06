@@ -39,6 +39,8 @@ await loadAllGuidedLessons()
 import { checkGuidedSpeechAnswer } from '../src/lib/guidedSpeechCheck.ts'
 import {
   createEmptyTodayProgressState,
+  clearTodayLessonDraft,
+  commitTodayLessonCompletion,
   getCompletedTodayLessonVibeIds,
   getTodayCompletionLines,
   getTodayCompletionSummary,
@@ -47,8 +49,11 @@ import {
   markTodayLessonComplete,
   markTodayLessonSkipped,
   readTodayProgressState,
+  readTodayLessonDraft,
   restartTodayLessonProgress,
   todayProgressKey,
+  todayLessonDraftKey,
+  writeTodayLessonDraft,
   writeTodayProgressState,
 } from '../src/lib/todayProgress.ts'
 
@@ -2487,10 +2492,10 @@ const englishAuthored = resolveGuidedBaseContent(
 assert('German-target English-authored content resolves English for English preference', englishAuthored.text === 'English cue' && englishAuthored.locale === 'en' && englishAuthored.language === 'English' && !englishAuthored.isFallback, englishAuthored)
 
 const unknownPreferred = resolveGuidedBaseContent(
-  { de: 'Autorisierter deutscher Hinweis' },
+  { de: 'Autorisierter deutscher Hinweis', en: 'Approved English guidance' },
   { preferredBaseLanguage: 'Spanish', authoredBaseLanguage: 'German' },
 )
-assert('unknown preferred base language silently falls back to authored base', unknownPreferred.text === 'Autorisierter deutscher Hinweis' && unknownPreferred.locale === 'de' && unknownPreferred.language === 'German', unknownPreferred)
+assert('unsupported preferred base language keeps the coherent authored edition and reports the visible fallback', unknownPreferred.text === 'Autorisierter deutscher Hinweis' && unknownPreferred.locale === 'de' && unknownPreferred.language === 'German' && unknownPreferred.isFallback, unknownPreferred)
 assert('base language to content locale map is intentionally limited', guidedBaseLanguageToContentLocale('English') === 'en' && guidedBaseLanguageToContentLocale('German') === 'de' && guidedBaseLanguageToContentLocale('Spanish') === undefined, guidedBaseLanguageToContentLocale('Spanish'))
 assert('content locale maps back to display base language', guidedContentLocaleToBaseLanguage('en') === 'English' && guidedContentLocaleToBaseLanguage('de') === 'German', { en: guidedContentLocaleToBaseLanguage('en'), de: guidedContentLocaleToBaseLanguage('de') })
 
@@ -2560,6 +2565,11 @@ const storedResultJson = JSON.stringify(completed.courses[brightLesson.courseId]
 assert('no raw typed recall answers are stored', !containsAny(storedResultJson, ['typedAnswer', 'typeAnswer', 'typedRecallAnswer', 'rawAnswer']), completed)
 assert('no raw speech transcripts are stored', !containsAny(storedResultJson, ['speechTranscript', 'transcriptText', 'rawTranscript', stripPunctuation(brightLesson.speak.targetPhrase)]), completed)
 assert('completion lines include type and speak summaries', getTodayCompletionLines(completed.courses[brightLesson.courseId]!.lessons[brightLesson.id]!.result!).length >= 2)
+assert(
+  'a failed type outcome is never summarized as passed',
+  getTodayCompletionLines({ ...minimalResult(), typePassed: false }).some((line) => line.key === 'today.completion.typeWithHelp')
+    && !getTodayCompletionLines({ ...minimalResult(), typePassed: false }).some((line) => line.key === 'today.completion.typePassed'),
+)
 assert('completion summary supports no known items', getTodayCompletionSummary(completed.courses[brightLesson.courseId]!.lessons[brightLesson.id]!.result!).key === 'today.completion.summary')
 const pathTwoBrightLesson = resolveGuidedLessonVariant(pathTwoLessons[0]!, 'bright')
 const completedPathTwoFirst = markTodayLessonComplete(completed, pathTwoBrightLesson, minimalResult())
@@ -2646,6 +2656,57 @@ try {
   writeTodayProgressState(userId, completedBrightAndSharp)
   const stored = JSON.parse(window.localStorage.getItem(todayProgressKey(userId)) ?? '{}') as { schemaVersion?: number }
   assert('written localStorage progress uses schema version 2', stored.schemaVersion === 2, stored)
+  const draft = {
+    schemaVersion: 1 as const,
+    pathId: brightLesson.pathId,
+    lessonId: brightLesson.id,
+    vibeId: brightLesson.vibeId,
+    step: 'type' as const,
+    result: { buildAttempts: 2, buildUsedFallback: true },
+    updatedAt: '2026-09-07T00:00:00.000Z',
+  }
+  assert('lesson draft key is account/path/lesson/vibe scoped', todayLessonDraftKey(userId, brightLesson.pathId, brightLesson.id, brightLesson.vibeId).includes('user-123'))
+  assert('compact lesson draft writes without raw answers', writeTodayLessonDraft(userId, draft))
+  assert('compact lesson draft round-trips counters', readTodayLessonDraft(userId, brightLesson)?.result.buildAttempts === 2)
+  assert('another account cannot read the draft', readTodayLessonDraft('user-456', brightLesson) === undefined)
+  assert('lesson draft clears after completion', clearTodayLessonDraft(userId, brightLesson) && readTodayLessonDraft(userId, brightLesson) === undefined)
+
+  const otherLesson = resolveGuidedLessonVariant(pathTwoLessons[0]!, 'bright')
+  const firstCommit = commitTodayLessonCompletion(userId, brightLesson, minimalResult())
+  const secondCommit = commitTodayLessonCompletion(userId, otherLesson, minimalResult())
+  assert('completion helper rereads latest state before appending another path', firstCommit.saved && secondCommit.saved && getTodayLessonStatus(secondCommit.state, brightLesson) === 'completed' && getTodayLessonStatus(secondCommit.state, otherLesson) === 'completed')
+  window.localStorage.setItem = () => { throw new Error('quota exceeded') }
+  assert('completion helper reports storage failure instead of claiming durability', !commitTodayLessonCompletion(userId, brightLesson, minimalResult()).saved)
+} finally {
+  Object.defineProperty(globalThis, 'window', {
+    value: originalWindow,
+    configurable: true,
+  })
+}
+
+Object.defineProperty(globalThis, 'window', {
+  value: Object.defineProperty({}, 'localStorage', {
+    configurable: true,
+    get() { throw new Error('storage access denied') },
+  }),
+  configurable: true,
+})
+try {
+  const unavailableState = readTodayProgressState(userId)
+  assert('a denied localStorage getter returns empty Today progress without throwing', Object.keys(unavailableState.courses).length === 0)
+  assert('a denied localStorage getter reports Today progress writes as unsaved', !writeTodayProgressState(userId, unavailableState))
+  assert('a denied localStorage getter reports lesson completion as unsaved', !commitTodayLessonCompletion(userId, brightLesson, minimalResult()).saved)
+  assert('a denied localStorage getter cannot expose a lesson draft', readTodayLessonDraft(userId, brightLesson) === undefined)
+  assert('a denied localStorage getter reports draft writes as unavailable', !writeTodayLessonDraft(userId, {
+    schemaVersion: 1,
+    pathId: brightLesson.pathId,
+    lessonId: brightLesson.id,
+    vibeId: brightLesson.vibeId,
+    step: 'scene',
+    result: {},
+    updatedAt: '2026-09-07T00:00:00.000Z',
+  }))
+  assert('a denied localStorage getter reports draft clears as unavailable', !clearTodayLessonDraft(userId, brightLesson))
 } finally {
   Object.defineProperty(globalThis, 'window', {
     value: originalWindow,

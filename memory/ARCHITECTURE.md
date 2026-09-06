@@ -2,6 +2,7 @@
 Last verified: 2026-09-07 for the hardening additions below; older unchanged sections retain their original verification scope.
 
 ## September 7 architecture additions
+- Guided practice contracts: [[notes/today-guided-2026-09-07]]. Account-scoped local lesson/checkpoint/trophy drafts and honest assisted outcomes; explicit `keep_guided_phrase` RPC saves a core phrase to a stable per-language card_text deck via `guided_phrase_decks`, attaching matching existing audio without generation/credits. Progress remains device-local; phrase decks are account-backed.
 - Server request scopes/deadlines: `frontend/api/_shared/requestDeadline.ts`; shared transports include auth, quotas, providers, bodies and bounded compensation. Client counterpart `frontend/src/lib/clientDeadline.ts` supports iOS15.
 - Canonical Speak personality authority: `api/_shared/speakPersona.ts` reads a generated API-local catalog, checked against picker registries by prebuild. Do not import src/ ESM from API CommonJS. New clients send IDs; exact legacy tuples remain compatible.
 - Ledger/reservations: `generation_credit_operations`, `words.active_credit_operation_id`, Live session reservation fields, `stripe_billing_customers` and `stripe_checkout_reservations`; server-only allocation/settlement RPCs. Ordered Stripe mutations separate subscription state from invoice credit/refund accounting.

@@ -168,7 +168,7 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled,
             await lessonsModule.loadGuidedLessonsForLanguage(guidedLanguage)
           }
           if (cancelled) return
-          const mission = buildTodayMission({ lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage, allowGuidedLanguageFallback })
+          const mission = buildTodayMission({ lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage, userId, allowGuidedLanguageFallback })
           writeMissionCache(cacheKey, mission)
           setState({ loading: false, mission })
         } catch {
@@ -187,6 +187,7 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled,
 }
 
 function buildTodayMission(input: {
+  userId: string | undefined
   lessonsModule: GuidedLessonsModule
   checkpointModule: GuidedCheckpointModule
   progress: TodayProgressState
@@ -229,7 +230,7 @@ function buildTodayMission(input: {
     phraseLang: speakLocale ? speakLocale.split('-')[0] : undefined,
     estimatedMinutes: lesson.estimatedMinutes,
     isPathComplete: overview.isComplete,
-    checkpointPending: checkpointModule.hasPendingGuidedCheckpoint(progress, vibeId),
+    checkpointPending: checkpointModule.hasPendingGuidedCheckpoint(progress, { userId: input.userId ?? '', targetLanguage: path.targetLanguage, vibe: vibeId }),
     startHref: `/today?${query}&start=1`,
     pathHref: `/today?${query}`,
     checkpointHref: `/today/checkpoint?${query}`,

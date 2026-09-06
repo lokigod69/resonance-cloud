@@ -104,7 +104,7 @@ assert(
   directorySource,
 )
 assert('directory includes lightweight category group structure', containsAny(directorySource, ['categoryLabel', 'directoryGroup', 'today.path.directoryGroupPractical']))
-assert('directory is rendered as an accessible dialog', directorySource.includes('role="dialog"') && directorySource.includes('aria-modal="true"'))
+assert('directory uses Radix dialog semantics with a labelled title', directorySource.includes('<Dialog.Content') && directorySource.includes('<Dialog.Title'))
 assert('directory closes when a path is selected', directorySource.includes('onSelectPath(path.id)') && directorySource.includes('onClose()'))
 assert('directory path rows are keyboard-focusable buttons', directorySource.includes('<button') && directorySource.includes('focus-visible:ring'))
 assert('directory has mobile sheet and desktop panel styling hooks', cssSource.includes('.today-path-directoryOverlay') && cssSource.includes('@media (max-width: 640px)'))
@@ -122,7 +122,11 @@ for (const pathId of pathIds) {
     assert(`${pathId} Segment Review ${segment} samples only the selected path`, segmentPlan?.items.every((item) => item.pathId === pathId) === true, segmentPlan)
   }
 }
-assert('Quick Review remains unavailable with no completed path', buildGuidedCheckpointPlan(emptyProgress, 'bright', fixedRng()) === undefined)
+assert('Quick Review remains unavailable with no completed path', buildGuidedCheckpointPlan(emptyProgress, {
+  userId: 'guided-path-directory-test',
+  targetLanguage: 'English',
+  vibe: 'bright',
+}, fixedRng()) === undefined)
 
 console.log('\n[header integration]')
 assert('overview imports path directory component', overviewSource.includes("GuidedPathDirectory"))
@@ -152,7 +156,7 @@ assert('checkpoint route detects path-check mode', checkpointSource.includes("ch
 assert('checkpoint route uses Path Check plan builder', checkpointSource.includes('buildGuidedPathCheckPlan'))
 assert('Path Check summary does not call checkpoint storage writer', checkpointSource.includes('createLocalCheckpointRecord') && checkpointSource.includes('isPathCheckMode'))
 assert('checkpoint lib exports Path Check plan builder', checkpointLibSource.includes('export function buildGuidedPathCheckPlan'))
-assert('Quick Review remains completion-gated', checkpointLibSource.includes('completedPathIds.length === 0') && checkpointSource.includes('buildGuidedCheckpointPlan(progress, selectedVibeId)'))
+assert('Quick Review remains completion-gated and language-scoped', checkpointLibSource.includes('completedPathIds.length === 0') && checkpointSource.includes('buildGuidedCheckpointPlan(progress, checkpointScope)'))
 
 console.log(`\n${passes} passed, ${failures} failed`)
 if (failures > 0) process.exit(1)

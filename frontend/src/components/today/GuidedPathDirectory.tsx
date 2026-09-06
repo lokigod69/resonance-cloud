@@ -1,7 +1,8 @@
 import { Check, CheckCircle2, ChevronDown, X } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useRef, useState } from 'react'
+import { Dialog } from 'radix-ui'
 import {
-  getGuidedPathLessons,
+  getGuidedPathLessonIds,
   type GuidedPathMetadata,
   type GuidedTargetLanguage,
 } from '@/data/guidedLessons'
@@ -44,6 +45,7 @@ export function GuidedPathDirectory({
   onClose,
 }: GuidedPathDirectoryProps) {
   const { t } = useTranslation()
+  const triggerRef = useRef<HTMLElement | null>(null)
   const [languageExpanded, setLanguageExpanded] = useState(false)
   const languages = availableLanguages.length > 0 ? availableLanguages : collectLanguages(pathOptions)
   const pathsForSelectedLanguage = pathOptions.filter((path) => path.targetLanguage === selectedLanguage)
@@ -57,17 +59,6 @@ export function GuidedPathDirectory({
       ]
     : []
 
-  useEffect(() => {
-    if (!open) return undefined
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose()
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [onClose, open])
-
   if (!open) return null
 
   const handleSelectLanguage = (language: GuidedTargetLanguage) => {
@@ -76,24 +67,26 @@ export function GuidedPathDirectory({
   }
 
   return (
-    <div className="today-path-directoryOverlay fixed inset-0 z-50 grid place-items-center bg-black/55 px-3 py-4 backdrop-blur-sm" onClick={onClose}>
-      <section
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="today-path-directory-title"
-        className="today-path-directoryPanel theme-panel grid max-h-[min(88dvh,44rem)] w-full max-w-3xl gap-4 overflow-y-auto rounded-lg border border-[var(--border-subtle)] p-4 shadow-2xl sm:p-6"
-        onClick={(event) => event.stopPropagation()}
+    <Dialog.Root open={open} onOpenChange={(nextOpen) => { if (!nextOpen) onClose() }}>
+      <Dialog.Portal>
+      <div className="today-shell today-directoryPortal" data-guided-vibe={selectedVibeId}>
+      <Dialog.Overlay className="today-path-directoryOverlay fixed inset-0 z-50 bg-black/55 backdrop-blur-sm" />
+      <Dialog.Content
+        aria-describedby={undefined}
+        className="today-path-directoryPanel theme-panel fixed left-1/2 top-1/2 z-50 grid max-h-[min(88dvh,44rem)] w-[calc(100%-1.5rem)] max-w-3xl -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto rounded-lg border border-[var(--border-subtle)] p-4 shadow-2xl sm:p-6"
+        onOpenAutoFocus={() => { triggerRef.current = document.activeElement as HTMLElement | null }}
+        onCloseAutoFocus={(event) => { event.preventDefault(); triggerRef.current?.focus() }}
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <p className="text-sm font-medium text-[var(--text-secondary)]">
               {t('today.path.directoryCurrent')}
             </p>
-            <h2 id="today-path-directory-title" className="mt-1 text-2xl font-semibold leading-tight text-[var(--text-primary)]">
+            <Dialog.Title className="mt-1 text-2xl font-semibold leading-tight text-[var(--text-primary)]">
               {t('today.path.directoryTitle')}
-            </h2>
+            </Dialog.Title>
           </div>
-          <Button type="button" variant="ghost" size="icon-sm" onClick={onClose} aria-label={t('common.cancel')}>
+          <Button type="button" variant="ghost" size="icon" onClick={onClose} aria-label={t('common.cancel')}>
             <X className="h-4 w-4" />
           </Button>
         </div>
@@ -201,15 +194,17 @@ export function GuidedPathDirectory({
             </div>
           </div>
         ))}
-      </section>
-    </div>
+      </Dialog.Content>
+      </div>
+      </Dialog.Portal>
+    </Dialog.Root>
   )
 }
 
 function getPathProgress(progress: TodayProgressState, pathId: string) {
   return {
     completed: progress.courses[pathId]?.completedLessonIds.length ?? 0,
-    total: getGuidedPathLessons(pathId).length,
+    total: getGuidedPathLessonIds(pathId).length,
   }
 }
 

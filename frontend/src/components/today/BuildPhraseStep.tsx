@@ -1,5 +1,5 @@
 import { RotateCcw } from 'lucide-react'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { getDeterministicBuildChips, resolveGuidedBaseContent, type GuidedLesson } from '@/data/guidedLessons'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -7,32 +7,42 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 export type BuildPhraseCheckState = {
-  status: 'idle' | 'correct' | 'wrong'
+  status: 'idle' | 'correct' | 'wrong' | 'revealed'
   attempts: number
+  usedFallback: boolean
 }
 
 type BuildPhraseStepProps = {
   lesson: GuidedLesson
+  initialAttempts?: number
+  initialStatus?: BuildPhraseCheckState['status']
+  initialUsedFallback?: boolean
   onCheckStateChange: (state: BuildPhraseCheckState) => void
 }
 
-export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepProps) {
+export function BuildPhraseStep({
+  lesson,
+  initialAttempts = 0,
+  initialStatus = 'idle',
+  initialUsedFallback = false,
+  onCheckStateChange,
+}: BuildPhraseStepProps) {
   const { t } = useTranslation()
   const { profile } = useAuth()
   const preferredBaseLanguage = profile?.base_language
-  const [selectedIndexes, setSelectedIndexes] = useState<number[]>([])
-  const [status, setStatus] = useState<BuildPhraseCheckState['status']>('idle')
-  const [attempts, setAttempts] = useState(0)
-  const wrongResetRef = useRef<number | undefined>(undefined)
   const shuffledChips = useMemo(() => getDeterministicBuildChips(lesson), [lesson])
   const targetChipCount = useMemo(() => getTargetBuildChipCount(lesson), [lesson])
+  const [selectedIndexes, setSelectedIndexes] = useState<number[]>(() => (
+    initialStatus === 'correct' || initialStatus === 'revealed'
+      ? Array.from({ length: targetChipCount }, (_, index) => index)
+      : []
+  ))
+  const [status, setStatus] = useState<BuildPhraseCheckState['status']>(initialStatus)
+  const [attempts, setAttempts] = useState(initialAttempts)
+  const [usedFallback, setUsedFallback] = useState(initialUsedFallback)
 
   const availableChips = shuffledChips
     .filter(({ index }) => !selectedIndexes.includes(index))
-
-  useEffect(() => () => {
-    if (wrongResetRef.current !== undefined) window.clearTimeout(wrongResetRef.current)
-  }, [])
 
   const buildPhraseFromIndexes = (indexes: number[]) => (
     indexes.map((index) => lesson.build.chips[index]).join(' ')
@@ -42,12 +52,12 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
     const nextPhrase = buildPhraseFromIndexes(nextSelectedIndexes)
     setSelectedIndexes(nextSelectedIndexes)
 
-    if (status === 'correct') return
+    if (status === 'correct' || status === 'revealed') return
 
     if (nextSelectedIndexes.length < targetChipCount) {
       if (status !== 'idle') {
         setStatus('idle')
-        onCheckStateChange({ status: 'idle', attempts })
+        onCheckStateChange({ status: 'idle', attempts, usedFallback })
       }
       return
     }
@@ -57,32 +67,33 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
 
     if (nextPhrase === lesson.build.targetText) {
       setStatus('correct')
-      onCheckStateChange({ status: 'correct', attempts: nextAttempts })
+      onCheckStateChange({ status: 'correct', attempts: nextAttempts, usedFallback })
       return
     }
 
     setStatus('wrong')
-    onCheckStateChange({ status: 'wrong', attempts: nextAttempts })
-    if (wrongResetRef.current !== undefined) window.clearTimeout(wrongResetRef.current)
-    wrongResetRef.current = window.setTimeout(() => {
-      setSelectedIndexes([])
-      setStatus('idle')
-      onCheckStateChange({ status: 'idle', attempts: nextAttempts })
-    }, 620)
+    onCheckStateChange({ status: 'wrong', attempts: nextAttempts, usedFallback })
   }
 
   const handleSelect = (index: number) => {
-    if (status === 'correct' || status === 'wrong') return
+    if (status === 'correct' || status === 'revealed' || selectedIndexes.includes(index)) return
     applySelection([...selectedIndexes, index])
   }
 
   const handleRemove = (position: number) => {
-    if (status === 'correct' || status === 'wrong') return
+    if (status === 'correct' || status === 'revealed') return
     applySelection(selectedIndexes.filter((_, index) => index !== position))
   }
 
   const handleClear = () => {
     applySelection([])
+  }
+
+  const handleShowAnswer = () => {
+    setSelectedIndexes(Array.from({ length: targetChipCount }, (_, index) => index))
+    setStatus('revealed')
+    setUsedFallback(true)
+    onCheckStateChange({ status: 'revealed', attempts, usedFallback: true })
   }
 
   // The base-language line the learner is translating. build.targetText is
@@ -118,6 +129,8 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
           'today-build-answerSurface rounded-lg border bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-3 transition sm:p-4',
           status === 'correct'
             ? 'border-[color-mix(in_srgb,#34d399_54%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_28%,transparent)]'
+            : status === 'revealed'
+              ? 'border-[color-mix(in_srgb,var(--accent)_42%,transparent)]'
             : status === 'wrong'
               ? 'border-[color-mix(in_srgb,#f87171_58%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#f87171_24%,transparent)]'
               : 'border-[var(--border-subtle)]',
@@ -134,11 +147,11 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
               <button
                 key={`${chipIndex}-${position}`}
                 type="button"
-                disabled={status === 'correct' || status === 'wrong'}
+                disabled={status === 'correct' || status === 'revealed'}
                 onClick={() => handleRemove(position)}
                 className={cn(
                   'theme-chip-active min-h-11 rounded-md px-3 py-2 text-sm font-semibold shadow-sm transition-transform hover:-translate-y-0.5',
-                  (status === 'correct' || status === 'wrong') && 'cursor-default hover:translate-y-0',
+                  (status === 'correct' || status === 'wrong' || status === 'revealed') && 'cursor-default hover:translate-y-0',
                   status === 'correct' && 'ring-1 ring-[#34d399]',
                   status === 'wrong' && 'ring-1 ring-[#f87171]',
                 )}
@@ -155,11 +168,11 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
           <button
             key={`${chip}-${index}`}
             type="button"
-            disabled={status === 'correct' || status === 'wrong'}
+            disabled={status === 'correct' || status === 'revealed'}
             onClick={() => handleSelect(index)}
             className={cn(
               'theme-chip min-h-11 rounded-md px-4 py-2 text-sm font-medium shadow-sm transition-transform hover:-translate-y-0.5',
-              (status === 'correct' || status === 'wrong') && 'cursor-default opacity-70 hover:translate-y-0',
+              (status === 'correct' || status === 'wrong' || status === 'revealed') && 'cursor-default opacity-70 hover:translate-y-0',
             )}
           >
             {chip}
@@ -168,14 +181,21 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
       </div>
 
       <div className="today-step-resetRow flex flex-wrap items-center justify-center gap-3">
-        <Button variant="ghost" onClick={handleClear} disabled={selectedIndexes.length === 0 || status === 'correct'}>
+        <Button variant="ghost" onClick={handleClear} disabled={selectedIndexes.length === 0 || status === 'correct' || status === 'revealed'}>
           <RotateCcw className="h-4 w-4" />
           {t('today.clearAnswer')}
         </Button>
+        {status === 'wrong' && <Button variant="ghost" onClick={handleShowAnswer}>{t('today.type.showFallback')}</Button>}
       </div>
 
-      <div aria-live="polite" className="sr-only">
-        {status === 'wrong' ? t('today.build.wrong') : ''}
+      <div aria-live="polite" className="today-answer-feedback" data-feedback={status}>
+        {status === 'wrong'
+          ? t('today.build.wrong')
+          : status === 'correct'
+            ? t('today.practice.correct')
+            : status === 'revealed'
+              ? t('today.practice.answerShown')
+              : ''}
       </div>
     </div>
   )

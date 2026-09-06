@@ -167,7 +167,7 @@ export function GuidedSpeechPrompt({
       : status === 'continued'
       ? t('today.speak.continued')
       : t('today.speak.failed')
-  const canShowContinueAnyway = allowContinueWhenUnsupported && status === 'unsupported'
+  const canShowContinueAnyway = allowContinueWhenUnsupported && (status === 'unsupported' || status === 'error')
 
   return (
     <div className="today-speech-prompt grid justify-items-center gap-5 text-center" data-speech-state={status}>
@@ -294,14 +294,14 @@ export function GuidedSpeechPrompt({
       {speech.error && (
         <div className="inline-flex max-w-xl items-center gap-2 rounded-lg border border-[color-mix(in_srgb,#f59e0b_48%,var(--border-subtle))] bg-[color-mix(in_srgb,#f59e0b_12%,transparent)] px-3 py-2 text-sm text-[var(--text-secondary)]">
           <AlertCircle className="h-4 w-4 shrink-0 text-[#f59e0b]" />
-          <span>{speech.error}</span>
+          <span>{t(speech.error)}</span>
         </div>
       )}
 
       {canShowContinueAnyway && (
         <div className="flex flex-wrap items-center gap-3">
           <Button type="button" variant="ghost" onClick={handleContinueAnyway}>
-            {t('today.speak.continueAnyway')}
+            {t('today.speak.practiceWithoutMicrophone')}
           </Button>
         </div>
       )}

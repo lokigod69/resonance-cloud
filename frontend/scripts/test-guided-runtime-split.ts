@@ -64,7 +64,7 @@ for (const lesson of AUTHORED_GUIDED_LESSONS.filter((entry) => entry.pathId === 
   )
 }
 assert(
-  countCompletedGuidedCheckpointPaths(completedPathProgress, 'bright') === 1,
+  countCompletedGuidedCheckpointPaths(completedPathProgress, getAuthoredGuidedTodayPathOptions()[0]!.targetLanguage, 'bright') === 1,
   'Checkpoint eligibility must use the lesson-ID index before any lesson body is loaded.',
 )
 
@@ -76,6 +76,11 @@ assert(
   serialize(GUIDED_LESSONS) === serialize(authoredFrench),
   'The independently loaded French corpus must exactly match its authored lessons and order.',
 )
+const cafeCremeLesson = GUIDED_LESSONS.find((lesson) => lesson.id === 'french-a2-practical-1-001-oui-comme-dhabitude-un-cafe-creme-sil-vous-plait')
+const cafeCremeVariant = cafeCremeLesson?.vibeVariants.bright
+assert(cafeCremeVariant?.corePhrase.baseText.en === 'Yes, as usual: a coffee with milk, please.', 'café crème phrase must use the verified English milk gloss.')
+assert(cafeCremeVariant.chunks.some((chunk) => chunk.targetText === 'un café crème,' && chunk.baseText.en === 'a coffee with milk,'), 'café crème chunk must use the verified English milk gloss.')
+assert(cafeCremeVariant.lessonItems.some((item) => item.targetText === 'café crème' && item.baseText.en === 'coffee with milk'), 'café crème term must use the verified English milk gloss.')
 
 await loadGuidedLessonsForLanguage('French')
 assert(
