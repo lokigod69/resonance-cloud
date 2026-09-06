@@ -1,8 +1,7 @@
-import { CHARACTER_REGISTRY } from '../../src/characterRegistry'
-import { GEMINI_CHARACTER_MODES } from '../../src/data/geminiCharacterModes'
+import { CHARACTER_REGISTRY, GEMINI_CHARACTER_MODES } from './speakPersonaCatalog'
 import { ApiError } from './http'
 
-/** Resolve instructions from the same pure-data registry used by the picker. */
+/** Resolve server instructions from the build-checked projection of the picker registries. */
 export function resolveSpeakPersona(input: Record<string, unknown>) {
   const level = input.level || 'intermediate'
   if (!['zero', 'beginner', 'intermediate', 'advanced'].includes(String(level))) {

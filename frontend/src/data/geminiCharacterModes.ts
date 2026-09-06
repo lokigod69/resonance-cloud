@@ -5,7 +5,7 @@
 // so cached samples are regenerated.
 //
 // The TTS style mirror remains in voice-chat.ts. The text-personality resolver
-// imports this pure-data registry directly; it never accepts client instructions.
+// uses a build-checked API projection; it never accepts client instructions.
 
 export interface GeminiCharacterMode {
   id: string

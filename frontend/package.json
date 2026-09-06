@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "generate:speak-personas": "tsx scripts/generate-speak-persona-catalog.ts",
+    "prebuild": "tsx scripts/generate-speak-persona-catalog.ts --check",
     "generate:guided-runtime": "tsx scripts/generate-guided-runtime-data.ts",
     "dev": "vite",
     "build": "tsc -b && vite build",
