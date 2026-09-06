@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, useNavigate } from 'react-router-dom'
 import { Camera, Check, ChevronDown, RotateCcw, Save, Volume2, X, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { useSpeakModalFocus } from '@/components/speak/useSpeakModalFocus'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useAuth } from '@/hooks/useAuth'
 import { useLensScan } from '@/hooks/useLensScan'
@@ -11,13 +13,16 @@ import { useLensSave } from '@/hooks/useLensSave'
 import { usePronunciation } from '@/hooks/usePronunciation'
 import { useTranslation } from '@/hooks/useTranslation'
 import { canonicalizeLanguageValue, getLanguageCode } from '@/lib/languages'
-import { isLensQuotaError } from '@/lib/lensApiProvider'
+import { lensErrorTranslationKey } from '@/lib/lensApiProvider'
+import { classifyLensCameraFailure, lensCameraErrorTranslationKey } from '@/lib/lensCamera'
+import { lensItemFromAlternate } from '@/lib/lensSelection'
 import { supabase } from '@/lib/supabase'
-import type { LensScanItem, LensScanResponse } from '@/lib/lensTypes'
+import type { LensAlternate, LensScanItem, LensScanResponse } from '@/lib/lensTypes'
 
 type LensViewState =
   | 'permission_pending'
   | 'permission_denied'
+  | 'camera_unavailable'
   | 'camera_ready'
   | 'frozen_analyzing'
   | 'result'
@@ -133,13 +138,23 @@ export default function Lens() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { profile, user } = useAuth()
-  const { activeLanguage, setActiveLanguage } = useLanguage()
+  const { activeLanguage, setActiveLanguage, languageReady } = useLanguage()
   const { scan, abort } = useLensScan()
   const { saveLensItems, status: saveStatus, error: saveError } = useLensSave()
   const { play } = usePronunciation()
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const reticleRef = useRef<HTMLDivElement | null>(null)
+  const recapDialogRef = useRef<HTMLElement | null>(null)
+  const languageTriggerRef = useRef<HTMLButtonElement | null>(null)
+  const languageOptionRefs = useRef<Array<HTMLButtonElement | null>>([])
   const streamRef = useRef<MediaStream | null>(null)
+  const mountedRef = useRef(true)
+  const cameraRequestRef = useRef(0)
+  const scanRequestRef = useRef(0)
+  const targetLanguageRef = useRef('')
+  const currentRecapIdsRef = useRef<string[]>([])
+  const recapSequenceRef = useRef(0)
+  const resumeCameraAfterRecapRef = useRef(false)
   const saveInFlightRef = useRef(false)
   const [viewState, setViewState] = useState<LensViewState>(
     typeof navigator !== 'undefined' && navigator.onLine === false ? 'offline' : 'permission_pending',
@@ -159,38 +174,77 @@ export default function Lens() {
   const [lensLanguages, setLensLanguages] = useState<string[]>([])
   const [langMenuOpen, setLangMenuOpen] = useState(false)
 
-  const targetLanguage = activeLanguage || 'German'
-  const baseLanguage = profile?.base_language || 'English'
+  const targetLanguage = activeLanguage?.trim() ?? ''
+  const baseLanguage = profile?.base_language?.trim() ?? ''
+  const scanLanguagesReady = languageReady && targetLanguage.length > 0 && baseLanguage.length > 0
   const targetLangCode = getLanguageCode(targetLanguage) || undefined
+  const baseLangCode = getLanguageCode(baseLanguage) || undefined
+  const lensSubtitle = scanLanguagesReady
+    ? t('lens.subtitle', { language: t(`langName.${targetLanguage}`) })
+    : t('common.loading')
   const selectedItem = useMemo(() => activeItem ?? primaryItem(scanResult, selectedIndex), [activeItem, scanResult, selectedIndex])
   const hasScans = recapItems.length > 0
+  targetLanguageRef.current = targetLanguage
 
-  const stopCamera = useCallback(() => {
+  const stopCamera = useCallback((updateUi = true) => {
     streamRef.current?.getTracks().forEach((track) => track.stop())
     streamRef.current = null
-    setTorchSupported(false)
-    setTorchOn(false)
+    if (updateUi && mountedRef.current) {
+      setTorchSupported(false)
+      setTorchOn(false)
+    }
   }, [])
 
+  // A frozen capture temporarily unmounts the <video>. When it mounts again,
+  // attach whichever stream won the camera request race, including an
+  // immediately resolved getUserMedia promise.
+  const attachVideo = useCallback((node: HTMLVideoElement | null) => {
+    videoRef.current = node
+    const stream = streamRef.current
+    if (!node || !stream) return
+    node.srcObject = stream
+    void node.play().catch((error) => {
+      if (!mountedRef.current || streamRef.current !== stream) return
+      stopCamera()
+      setErrorMessage(t(lensCameraErrorTranslationKey(classifyLensCameraFailure(error))))
+      setViewState('camera_unavailable')
+    })
+  }, [stopCamera, t])
+
   const startCamera = useCallback(async () => {
+    if (!scanLanguagesReady) {
+      cameraRequestRef.current += 1
+      stopCamera()
+      setErrorMessage(null)
+      setViewState('permission_pending')
+      return
+    }
+
     if (typeof navigator === 'undefined' || navigator.onLine === false) {
       setViewState('offline')
       return
     }
 
     if (!navigator.mediaDevices?.getUserMedia) {
-      setViewState('permission_denied')
+      setErrorMessage(t(lensCameraErrorTranslationKey('unsupported')))
+      setViewState('camera_unavailable')
       return
     }
 
+    const requestId = ++cameraRequestRef.current
     setViewState('permission_pending')
     setErrorMessage(null)
 
+    let stream: MediaStream | null = null
     try {
       stopCamera()
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment' },
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { ideal: 'environment' } },
       })
+      if (!mountedRef.current || requestId !== cameraRequestRef.current) {
+        stream.getTracks().forEach((track) => track.stop())
+        return
+      }
       streamRef.current = stream
       const [track] = stream.getVideoTracks()
       const capabilities = track?.getCapabilities?.() as TorchMediaTrackCapabilities | undefined
@@ -198,22 +252,39 @@ export default function Lens() {
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream
-        await videoRef.current.play().catch(() => undefined)
+        await videoRef.current.play()
       }
 
+      if (!mountedRef.current || requestId !== cameraRequestRef.current) {
+        stream.getTracks().forEach((track) => track.stop())
+        if (streamRef.current === stream) streamRef.current = null
+        return
+      }
       setViewState('camera_ready')
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : null)
-      setViewState('permission_denied')
+      stream?.getTracks().forEach((track) => track.stop())
+      if (!mountedRef.current || requestId !== cameraRequestRef.current) return
+      const failure = classifyLensCameraFailure(error)
+      if (failure === 'permission') {
+        setErrorMessage(null)
+        setViewState('permission_denied')
+      } else {
+        setErrorMessage(t(lensCameraErrorTranslationKey(failure)))
+        setViewState('camera_unavailable')
+      }
     }
-  }, [stopCamera])
+  }, [scanLanguagesReady, stopCamera, t])
 
   useEffect(() => {
+    mountedRef.current = true
     const startupId = window.setTimeout(() => void startCamera(), 0)
     return () => {
+      mountedRef.current = false
+      cameraRequestRef.current += 1
+      scanRequestRef.current += 1
       window.clearTimeout(startupId)
       abort()
-      stopCamera()
+      stopCamera(false)
     }
   }, [abort, startCamera, stopCamera])
 
@@ -295,6 +366,8 @@ export default function Lens() {
 
   useEffect(() => {
     const handleOffline = () => {
+      cameraRequestRef.current += 1
+      scanRequestRef.current += 1
       abort()
       stopCamera()
       setViewState('offline')
@@ -310,12 +383,38 @@ export default function Lens() {
     }
   }, [abort, startCamera, stopCamera])
 
+  useEffect(() => {
+    const suspendCamera = () => {
+      cameraRequestRef.current += 1
+      stopCamera()
+    }
+    const resumeCamera = () => {
+      if ((viewState === 'camera_ready' || viewState === 'permission_pending') && !streamRef.current) {
+        void startCamera()
+      }
+    }
+    const handleVisibility = () => {
+      if (document.visibilityState === 'hidden') suspendCamera()
+      else resumeCamera()
+    }
+    window.addEventListener('pagehide', suspendCamera)
+    window.addEventListener('pageshow', resumeCamera)
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => {
+      window.removeEventListener('pagehide', suspendCamera)
+      window.removeEventListener('pageshow', resumeCamera)
+      document.removeEventListener('visibilitychange', handleVisibility)
+    }
+  }, [startCamera, stopCamera, viewState])
+
   const resetForRescan = useCallback(() => {
+    scanRequestRef.current += 1
     abort()
     setCapturedFrame(null)
     setScanResult(null)
     setSelectedIndex(0)
     setActiveItem(null)
+    currentRecapIdsRef.current = []
     setExampleOpen(false)
     setErrorMessage(null)
     setSaveNotice(null)
@@ -323,18 +422,20 @@ export default function Lens() {
   }, [abort, startCamera])
 
   const cancelScan = useCallback(() => {
+    scanRequestRef.current += 1
     abort()
     setCapturedFrame(null)
     setScanResult(null)
     setSelectedIndex(0)
     setActiveItem(null)
+    currentRecapIdsRef.current = []
     setExampleOpen(false)
     setErrorMessage(null)
-    setViewState('camera_ready')
-  }, [abort])
+    void startCamera()
+  }, [abort, startCamera])
 
   const captureAndScan = useCallback(async () => {
-    if (viewState !== 'camera_ready' || !videoRef.current) return
+    if (!scanLanguagesReady || viewState !== 'camera_ready' || !videoRef.current) return
     if (navigator.onLine === false) {
       setViewState('offline')
       return
@@ -354,6 +455,9 @@ export default function Lens() {
     setExampleOpen(false)
     setSaveNotice(null)
     setViewState('frozen_analyzing')
+    stopCamera()
+    const requestId = ++scanRequestRef.current
+    const requestLanguage = targetLanguage
 
     try {
       const result = await scan({
@@ -361,26 +465,30 @@ export default function Lens() {
         targetLanguage,
         baseLanguage,
       })
+      if (requestId !== scanRequestRef.current || requestLanguage !== targetLanguageRef.current) return
       setScanResult(result)
       setViewState('result')
       if (result.items.length > 0) {
+        const recapEntries = result.items.map((item) => ({
+          ...item,
+          id: `lens-${Date.now()}-${++recapSequenceRef.current}`,
+          language: targetLanguage,
+          saved: false,
+          alreadyPresent: existingWordHints.has(normalizedWordKey(item.target_text)),
+        }))
+        currentRecapIdsRef.current = recapEntries.map((item) => item.id)
         setRecapItems((items) => [
           ...items,
-          ...result.items.map((item, index) => ({
-            ...item,
-            id: `${Date.now()}-${index}`,
-            language: targetLanguage,
-            saved: false,
-            alreadyPresent: existingWordHints.has(normalizedWordKey(item.target_text)),
-          })),
+          ...recapEntries,
         ])
       }
     } catch (error) {
+      if (requestId !== scanRequestRef.current || requestLanguage !== targetLanguageRef.current) return
       if (error instanceof DOMException && error.name === 'AbortError') return
-      setErrorMessage(isLensQuotaError(error) ? t('lens.error.quotaExceeded') : error instanceof Error ? error.message : t('lens.error.scanFailed'))
+      setErrorMessage(t(lensErrorTranslationKey(error)))
       setViewState('error')
     }
-  }, [baseLanguage, existingWordHints, scan, t, targetLanguage, viewState])
+  }, [baseLanguage, existingWordHints, scan, scanLanguagesReady, stopCamera, t, targetLanguage, viewState])
 
   const toggleTorch = useCallback(async () => {
     const [track] = streamRef.current?.getVideoTracks() ?? []
@@ -397,11 +505,32 @@ export default function Lens() {
 
   const closeLens = useCallback(() => {
     if (hasScans) {
+      // A learner can open the recap after returning to the live preview. Do
+      // not leave the camera or a pending permission request running behind
+      // the inert dialog; resume only if they cancel back into Lens.
+      resumeCameraAfterRecapRef.current = viewState === 'camera_ready' || viewState === 'permission_pending'
+      cameraRequestRef.current += 1
+      stopCamera()
+      setLangMenuOpen(false)
       setShowRecap(true)
       return
     }
     navigate('/dashboard')
-  }, [hasScans, navigate])
+  }, [hasScans, navigate, stopCamera, viewState])
+
+  const closeRecap = useCallback(() => {
+    setShowRecap(false)
+    if (!resumeCameraAfterRecapRef.current) return
+    resumeCameraAfterRecapRef.current = false
+    void startCamera()
+  }, [startCamera])
+
+  useSpeakModalFocus({
+    open: showRecap,
+    dialogRef: recapDialogRef,
+    onClose: closeRecap,
+    initialFocusSelector: '[data-lens-recap-initial-focus]',
+  })
 
   const markRecapItems = useCallback((itemsToMark: LensScanItem[], language: string, patch: Partial<Pick<RecapItem, 'saved' | 'alreadyPresent'>>) => {
     const keys = new Set(itemsToMark.map((item) => `${normalizedWordKey(item.target_text)}\u0000${normalizedWordKey(item.base_text)}`))
@@ -495,23 +624,126 @@ export default function Lens() {
     setRecapItems((items) => items.filter((item) => item.id !== id))
   }, [])
 
-  const selectLensLanguage = useCallback((language: string) => {
+  const focusLanguageOption = useCallback((position: 'active' | 'first' | 'last') => {
+    window.requestAnimationFrame(() => {
+      const options = languageOptionRefs.current.slice(0, lensLanguages.length)
+      if (options.length === 0) return
+      const activeIndex = Math.max(0, lensLanguages.indexOf(targetLanguage))
+      const index = position === 'first'
+        ? 0
+        : position === 'last'
+          ? options.length - 1
+          : activeIndex
+      options[index]?.focus({ preventScroll: true })
+    })
+  }, [lensLanguages, targetLanguage])
+
+  const openLanguageMenu = useCallback((focusPosition: 'active' | 'first' | 'last' = 'active') => {
+    setLangMenuOpen(true)
+    focusLanguageOption(focusPosition)
+  }, [focusLanguageOption])
+
+  const closeLanguageMenu = useCallback((restoreFocus = false) => {
     setLangMenuOpen(false)
+    if (restoreFocus) {
+      window.setTimeout(() => languageTriggerRef.current?.focus({ preventScroll: true }), 0)
+    }
+  }, [])
+
+  const handleLanguageTriggerKeyDown = useCallback((event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault()
+      openLanguageMenu('first')
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault()
+      openLanguageMenu('last')
+    } else if (event.key === 'Escape' && langMenuOpen) {
+      event.preventDefault()
+      closeLanguageMenu(true)
+    }
+  }, [closeLanguageMenu, langMenuOpen, openLanguageMenu])
+
+  const handleLanguageMenuKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      closeLanguageMenu(true)
+      return
+    }
+    if (event.key === 'Tab') {
+      closeLanguageMenu()
+      return
+    }
+    if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return
+
+    event.preventDefault()
+    const options = languageOptionRefs.current.slice(0, lensLanguages.length)
+    if (options.length === 0) return
+    const currentIndex = options.findIndex((option) => option === document.activeElement)
+    const nextIndex = currentIndex < 0
+      ? event.key === 'ArrowUp' || event.key === 'End' ? options.length - 1 : 0
+      : event.key === 'Home'
+      ? 0
+      : event.key === 'End'
+        ? options.length - 1
+        : event.key === 'ArrowDown'
+          ? (currentIndex + 1 + options.length) % options.length
+          : (currentIndex - 1 + options.length) % options.length
+    options[nextIndex]?.focus({ preventScroll: true })
+  }, [closeLanguageMenu, lensLanguages.length])
+
+  const selectLensLanguage = useCallback((language: string) => {
+    closeLanguageMenu(true)
     if (language === targetLanguage) return
     setActiveLanguage(language)
     // Any result on screen was produced for the previous language — clear it
     // and return to the live preview so the next scan is coherent end to end.
-    if (viewState === 'result' || viewState === 'error') {
+    if (viewState !== 'camera_ready') {
       resetForRescan()
     } else {
       setSaveNotice(null)
     }
-  }, [resetForRescan, setActiveLanguage, targetLanguage, viewState])
+  }, [closeLanguageMenu, resetForRescan, setActiveLanguage, targetLanguage, viewState])
 
   const bulkSaveCurrentItems = useCallback(async () => {
     if (!scanResult) return
     await saveLensItemsAccurately(scanResult.items)
   }, [saveLensItemsAccurately, scanResult])
+
+  const selectAlternate = useCallback((alternate: LensAlternate) => {
+    const replacement = lensItemFromAlternate(alternate)
+    setScanResult((result) => result ? {
+      ...result,
+      items: result.items.map((item, index) => index === selectedIndex ? replacement : item),
+    } : result)
+
+    const currentRecapId = currentRecapIdsRef.current[selectedIndex]
+    setRecapItems((items) => {
+      const current = items.find((item) => item.id === currentRecapId)
+      const replacementRecap: RecapItem = {
+        ...replacement,
+        id: current?.id ?? `lens-${Date.now()}-${++recapSequenceRef.current}`,
+        language: current?.language ?? targetLanguage,
+        saved: false,
+        alreadyPresent: existingWordHints.has(normalizedWordKey(replacement.target_text)),
+      }
+
+      // A saved/known primary is historical session truth. Keep it and add the
+      // learner's alternate as a distinct unsaved row.
+      if (current?.saved || current?.alreadyPresent) {
+        replacementRecap.id = `lens-${Date.now()}-${++recapSequenceRef.current}`
+        currentRecapIdsRef.current[selectedIndex] = replacementRecap.id
+        return [...items, replacementRecap]
+      }
+
+      currentRecapIdsRef.current[selectedIndex] = replacementRecap.id
+      return current
+        ? items.map((item) => item.id === current.id ? replacementRecap : item)
+        : [...items, replacementRecap]
+    })
+    setActiveItem(replacement)
+    setExampleOpen(false)
+    setSaveNotice(null)
+  }, [existingWordHints, selectedIndex, targetLanguage])
 
   const selectedSaved = Boolean(selectedItem && itemSavedInRecap(selectedItem, targetLanguage))
   const selectedAlreadyPresent = Boolean(selectedItem && itemAlreadyPresent(selectedItem, targetLanguage))
@@ -534,13 +766,13 @@ export default function Lens() {
 
   return (
     <TooltipProvider>
-      <div className="lens-shell">
+      <div className="lens-shell" data-lens-state={viewState}>
         <div className="lens-camera-stage">
           {capturedFrame ? (
             <img className="lens-preview-media" src={capturedFrame.previewUrl} alt={t('lens.preview.frozenAlt')} />
           ) : (
             <video
-              ref={videoRef}
+              ref={attachVideo}
               className="lens-preview-media"
               playsInline
               muted
@@ -560,18 +792,24 @@ export default function Lens() {
               <span className="lens-kicker">{t('lens.title')}</span>
               {lensLanguages.length > 1 ? (
                 <button
+                  ref={languageTriggerRef}
                   type="button"
                   className="lens-language-trigger"
-                  onClick={() => setLangMenuOpen((open) => !open)}
+                  onClick={() => {
+                    if (langMenuOpen) closeLanguageMenu()
+                    else openLanguageMenu()
+                  }}
+                  onKeyDown={handleLanguageTriggerKeyDown}
                   aria-expanded={langMenuOpen}
                   aria-haspopup="menu"
+                  aria-controls="lens-language-menu"
                   aria-label={t('lens.language.switch')}
                 >
-                  <span>{t('lens.subtitle', { language: targetLanguage })}</span>
+                  <span>{lensSubtitle}</span>
                   <ChevronDown className={langMenuOpen ? 'lens-chevron lens-chevron--open' : 'lens-chevron'} aria-hidden="true" />
                 </button>
               ) : (
-                <span>{t('lens.subtitle', { language: targetLanguage })}</span>
+                <span>{lensSubtitle}</span>
               )}
             </div>
             <button
@@ -587,12 +825,23 @@ export default function Lens() {
           </header>
 
           {langMenuOpen ? (
-            <div className="lens-language-menu" role="menu" aria-label={t('lens.language.switch')}>
-              {lensLanguages.map((language) => (
+            <div
+              id="lens-language-menu"
+              className="lens-language-menu"
+              role="menu"
+              aria-label={t('lens.language.switch')}
+              onKeyDown={handleLanguageMenuKeyDown}
+            >
+              {lensLanguages.map((language, index) => (
                 <button
                   key={language}
+                  ref={(node) => {
+                    languageOptionRefs.current[index] = node
+                  }}
                   type="button"
                   role="menuitem"
+                  tabIndex={-1}
+                  aria-current={language === targetLanguage ? 'true' : undefined}
                   className={language === targetLanguage ? 'lens-language-option lens-language-option--active' : 'lens-language-option'}
                   onClick={() => selectLensLanguage(language)}
                 >
@@ -603,12 +852,12 @@ export default function Lens() {
             </div>
           ) : null}
 
-          {viewState === 'camera_ready' ? (
+          {viewState === 'camera_ready' && scanLanguagesReady ? (
             <div className="lens-instruction">{t('lens.instruction')}</div>
           ) : null}
 
           <div className="lens-bottom-controls">
-            {viewState === 'camera_ready' ? (
+            {viewState === 'camera_ready' && scanLanguagesReady ? (
               <button type="button" className="lens-shutter" onClick={captureAndScan} aria-label={t('lens.action.capture')}>
                 <Camera aria-hidden="true" />
               </button>
@@ -624,6 +873,14 @@ export default function Lens() {
           <StatusSheet
             title={t('lens.permission.deniedTitle')}
             body={t('lens.permission.deniedBody')}
+            action={<Button onClick={startCamera}>{t('common.retry')}</Button>}
+          />
+        ) : null}
+
+        {viewState === 'camera_unavailable' ? (
+          <StatusSheet
+            title={t('lens.camera.unavailableTitle')}
+            body={errorMessage || t('lens.camera.unavailable')}
             action={<Button onClick={startCamera}>{t('common.retry')}</Button>}
           />
         ) : null}
@@ -687,8 +944,8 @@ export default function Lens() {
                         setExampleOpen(false)
                       }}
                     >
-                      <span>{item.target_text}</span>
-                      <span>{itemSavedInRecap(item, targetLanguage) ? t('lens.action.saved') : itemAlreadyPresent(item, targetLanguage) ? t('lens.action.alreadySaved') : item.base_text}</span>
+                      <span lang={targetLangCode} dir="auto">{item.target_text}</span>
+                      <span lang={baseLangCode} dir="auto">{itemSavedInRecap(item, targetLanguage) ? t('lens.action.saved') : itemAlreadyPresent(item, targetLanguage) ? t('lens.action.alreadySaved') : item.base_text}</span>
                     </button>
                     <button
                       type="button"
@@ -713,7 +970,7 @@ export default function Lens() {
 
             <div className="lens-word-row">
               <div>
-                <h1>{selectedItem.target_text}</h1>
+                <h1 lang={targetLangCode} dir="auto">{selectedItem.target_text}</h1>
                 {selectedItem.transliteration && hasNonLatinText(selectedItem.target_text) ? (
                   <p className="lens-transliteration">{selectedItem.transliteration}</p>
                 ) : null}
@@ -728,14 +985,14 @@ export default function Lens() {
               </button>
             </div>
 
-            <p className="lens-base-text">{selectedItem.base_text}</p>
+            <p className="lens-base-text" lang={baseLangCode} dir="auto">{selectedItem.base_text}</p>
 
             {/* Model-self-reported confidence is not calibrated — never shown
                 as a positive trust marker. Only the low state surfaces, as a
                 caution (above), pointing at the alternates. */}
             {selectedItem.article || selectedItem.pos ? (
               <div className="lens-chip-row">
-                {selectedItem.article ? <span className="lens-chip">{selectedItem.article}</span> : null}
+                {selectedItem.article ? <span className="lens-chip" lang={targetLangCode} dir="auto">{selectedItem.article}</span> : null}
                 {selectedItem.pos ? <span className="lens-chip">{selectedItem.pos}</span> : null}
               </div>
             ) : null}
@@ -749,8 +1006,8 @@ export default function Lens() {
 
             {exampleOpen && selectedItem.example ? (
               <div className="lens-example">
-                <p>{selectedItem.example}</p>
-                {selectedItem.example_gloss ? <span>{selectedItem.example_gloss}</span> : null}
+                <p lang={targetLangCode} dir="auto">{selectedItem.example}</p>
+                {selectedItem.example_gloss ? <span lang={baseLangCode} dir="auto">{selectedItem.example_gloss}</span> : null}
               </div>
             ) : null}
 
@@ -761,16 +1018,9 @@ export default function Lens() {
                     key={`${alternate.target_text}-${alternate.base_text}`}
                     type="button"
                     className="lens-alternate-chip"
-                    onClick={() => {
-                      setActiveItem({
-                        ...selectedItem,
-                        target_text: alternate.target_text,
-                        base_text: alternate.base_text,
-                        confidence: 'medium',
-                        alternates: undefined,
-                      })
-                      setExampleOpen(false)
-                    }}
+                    onClick={() => selectAlternate(alternate)}
+                    lang={targetLangCode}
+                    dir="auto"
                   >
                     {alternate.target_text}
                   </button>
@@ -789,7 +1039,7 @@ export default function Lens() {
               </div>
             ) : null}
 
-            {saveError ? <p className="lens-save-error">{saveError}</p> : null}
+            {saveError ? <p className="lens-save-error">{t('lens.save.failed')}</p> : null}
 
             <div className="lens-actions">
               <Tooltip>
@@ -815,16 +1065,23 @@ export default function Lens() {
           </section>
         ) : null}
 
-        {showRecap ? (
-          <div className="lens-recap-backdrop" role="dialog" aria-modal="true" aria-labelledby="lens-recap-title">
-            <section className="lens-recap">
+        {showRecap && typeof document !== 'undefined' ? createPortal(
+          <div className="theme-cosmos lens-recap-backdrop">
+            <section
+              ref={recapDialogRef}
+              className="lens-recap"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="lens-recap-title"
+              tabIndex={-1}
+            >
               <h2 id="lens-recap-title">{t('lens.recap.title')}</h2>
               <p>{t('lens.recap.body', { count: recapItems.length })}</p>
               <div className="lens-recap-list">
                 {recapItems.map((item) => (
                   <div key={item.id} className="lens-recap-row">
-                    <span>{item.target_text}</span>
-                    <span>{item.saved ? t('lens.recap.saved') : item.alreadyPresent ? t('lens.recap.alreadyPresent') : item.base_text}</span>
+                    <span lang={getLanguageCode(item.language) || undefined} dir="auto">{item.target_text}</span>
+                    <span lang={baseLangCode} dir="auto">{item.saved ? t('lens.recap.saved') : item.alreadyPresent ? t('lens.recap.alreadyPresent') : item.base_text}</span>
                     {item.saved ? (
                       <span className="lens-recap-discard" aria-hidden="true" />
                     ) : (
@@ -846,9 +1103,9 @@ export default function Lens() {
                   <Link to={`/deck/${saveNotice.deckId}`}>{t('lens.save.openDeck')}</Link>
                 </div>
               ) : null}
-              {saveError ? <p className="lens-save-error">{saveError}</p> : null}
+              {saveError ? <p className="lens-save-error">{t('lens.save.failed')}</p> : null}
               <div className="lens-actions">
-                <Button type="button" variant="secondary" onClick={() => setShowRecap(false)}>
+                <Button type="button" variant="secondary" onClick={closeRecap} data-lens-recap-initial-focus>
                   {t('common.cancel')}
                 </Button>
                 <Button type="button" onClick={bulkSaveUnsaved} disabled={saveBusy || recapItems.every((item) => item.saved || item.alreadyPresent)}>
@@ -859,7 +1116,8 @@ export default function Lens() {
                 </Button>
               </div>
             </section>
-          </div>
+          </div>,
+          document.body,
         ) : null}
       </div>
     </TooltipProvider>

@@ -1,0 +1,4 @@
+dist/
+out/
+.chrome-profile-*/
+chrome-launch.stderr.log

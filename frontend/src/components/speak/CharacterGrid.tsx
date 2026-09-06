@@ -18,7 +18,7 @@ interface CharacterGridProps {
   language?: string
   /** When set, a "Classic voices" section (curated Gemini voices) is appended. */
   onClassicVoiceSelect?: (voiceName: string) => void
-  /** fil/ceb have no Voxtral voices — hide the character sections there. */
+  /** Hide character sections whenever the selected language has no Voxtral voice. */
   voxtralAvailable?: boolean
 }
 

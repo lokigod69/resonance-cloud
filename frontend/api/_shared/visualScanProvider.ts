@@ -71,39 +71,35 @@ interface GeminiGenerateContentResponse {
 
 function languageRules(): string {
   return [
-    'Language-learning rules:',
-    '- The learner framed this photo deliberately: the subject is the item nearest the center of the frame. Name that item; ignore background or edge objects.',
-    '- Report confidence for the visual identification only. high = the subject is unmistakable; medium = probable but visually ambiguous; low = uncertain, partially visible, blurry, or several different objects could be the intended subject. Never use high when more than one distinct object could plausibly be the subject — use medium or low and offer alternates instead.',
-    '- Return the natural target-language word or phrase a native speaker would learn, not a literal visual label.',
-    '- For German, French, Spanish, Italian, Portuguese, and Dutch nouns, include the article/gender marker in article when it helps the learner.',
-    '- For languages with classifiers or measure words, put the common classifier in article.',
-    '- For Korean, Japanese, Chinese, Arabic, Hindi, Russian, and Thai, include transliteration/romanization.',
-    '- Include IPA when reliable; otherwise omit ipa.',
-    '- Use register and examples appropriate to the learner level.',
-    '- For object/scene, return the single most useful learnable item unless there are obvious alternates.',
-    '- For text/menu, return up to 8 useful line items.',
-    '- Text/menu source-language edge cases:',
-    '  - If photographed text is already in the target language, use reading/meaning mode: target_text is the text exactly as written, base_text is its meaning in the base language, and transliteration is included when the script is non-Latin. Do not re-translate it into the target language.',
-    '  - If photographed text is in the base language, translate the useful concept into the target language as usual.',
-    '  - If photographed text is in a third language, classify kind appropriately, translate the concept into the target language, and optionally mention the source language in base_text when it helps the learner.',
-    '- If the frame focuses on a person, face, ID, passport, payment card, medical/legal/financial document, or other sensitive personal material, return safety and no items.',
+    'Rules:',
+    '- Identify the deliberately framed subject nearest center; ignore background and edge objects.',
+    '- confidence covers visual identification only: high=unmistakable, medium=probable but ambiguous, low=uncertain/partial/blurry. For multiple plausible subjects, never use high; give alternates.',
+    '- Use the natural target-language term a native speaker would learn. Keep article/classifier out of target_text and in article: include helpful gender/articles for German, French, Spanish, Italian, Portuguese, or Dutch, and common classifiers/measure words.',
+    '- Add transliteration for Korean, Japanese, Chinese, Arabic, Hindi, Russian, or Thai. Add IPA only when reliable.',
+    '- example is a short natural sentence in the target language; example_gloss is its meaning in the base language.',
+    '- Match register and examples to the learner level when one is supplied.',
+    '- object/scene: one useful item; alternates only when visually plausible. text/menu: at most 8 useful lines.',
+    '- Target-language photo text: copy it exactly to target_text, put its base-language meaning in base_text, and transliterate non-Latin script. Do not translate it back to the target language.',
+    '- Base-language photo text: translate the useful concept into the target language. Third-language text: do the same; mention its source language in base_text only if useful.',
+    '- A person, face, ID, passport, payment card, medical/legal/financial document, or other sensitive personal material: return the matching safety value and no items.',
   ].join('\n')
 }
 
-function buildPrompt(request: VisualScanRequest): string {
+export function buildVisualScanPrompt(request: VisualScanRequest): string {
   return [
     'You are Lingwave Lens, a visual lexicographer for language learners.',
-    `Target language: ${request.targetLanguage}.`,
-    `Base language: ${request.baseLanguage}.`,
-    `Learner level: ${request.level || 'beginner'}.`,
-    request.hint ? `User hint: ${request.hint}.` : '',
+    `target_text language: ${JSON.stringify(request.targetLanguage)}.`,
+    `base_text language: ${JSON.stringify(request.baseLanguage)}.`,
+    'Role example: with target German and base English, target_text is "Tasse", article is "die", and base_text is "cup". Never swap these roles.',
+    request.level ? `Learner level: ${JSON.stringify(request.level)}.` : '',
+    request.hint ? `User hint: ${JSON.stringify(request.hint)}.` : '',
     languageRules(),
     'Classify kind as one of object, text, menu, scene, unsupported.',
-    'Return only JSON that matches the schema. Use snake_case keys exactly.',
+    'Return only schema-matching JSON.',
   ].filter(Boolean).join('\n\n')
 }
 
-function responseSchema() {
+export function visualScanResponseSchema() {
   return {
     type: 'OBJECT',
     properties: {
@@ -111,11 +107,12 @@ function responseSchema() {
       safety: { type: 'STRING', nullable: true, enum: ['person', 'sensitive_document'] },
       items: {
         type: 'ARRAY',
+        maxItems: 8,
         items: {
           type: 'OBJECT',
           properties: {
-            target_text: { type: 'STRING' },
-            base_text: { type: 'STRING' },
+            target_text: { type: 'STRING', description: 'Natural term in the target language.' },
+            base_text: { type: 'STRING', description: 'Meaning in the base language.' },
             transliteration: { type: 'STRING' },
             ipa: { type: 'STRING' },
             pos: { type: 'STRING' },
@@ -125,6 +122,7 @@ function responseSchema() {
             confidence: { type: 'STRING', enum: ['high', 'medium', 'low'] },
             alternates: {
               type: 'ARRAY',
+              maxItems: 2,
               items: {
                 type: 'OBJECT',
                 properties: {
@@ -182,13 +180,13 @@ export function createGeminiVisualScanProvider(
           contents: [{
             role: 'user',
             parts: [
-              { text: buildPrompt(request) },
+              { text: buildVisualScanPrompt(request) },
               { inlineData: { mimeType: 'image/jpeg', data: request.image } },
             ],
           }],
           generationConfig: {
             responseMimeType: 'application/json',
-            responseSchema: responseSchema(),
+            responseSchema: visualScanResponseSchema(),
             maxOutputTokens: MAX_OUTPUT_TOKENS,
             temperature: 0.2,
           },

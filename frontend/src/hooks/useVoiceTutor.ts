@@ -13,6 +13,7 @@ import { publicApiUrl } from '@/lib/publicOrigins'
 import { useTranslation } from '@/hooks/useTranslation'
 import { isPlanLimitSpeakCode, SpeakPlanLimitError } from '@/lib/speakErrors'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
+import { capReplayAudio } from '@/lib/speakReplayMemory'
 
 const IS_SAFARI = typeof navigator !== 'undefined' && (
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
@@ -122,6 +123,7 @@ export interface UseVoiceTutorReturn {
 }
 
 const LS_PROVIDER = 'resonance_speak_provider'
+const VOICE_CHAT_TIMEOUT_MS = 55_000
 const LS_GEMINI_MODE = 'resonance_speak_gemini_mode_id'
 const LS_GEMINI_VOICE = 'resonance_speak_gemini_voice_name'
 const LS_GEMINI_ACCENT = 'resonance_speak_gemini_accent_id'
@@ -466,7 +468,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       }
 
       const controller = new AbortController()
-      const timer = setTimeout(() => controller.abort(), 30000)
+      const timer = setTimeout(() => controller.abort(), VOICE_CHAT_TIMEOUT_MS)
 
       let res: Response
       try {
@@ -491,10 +493,23 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         }
         throw err
       }
-      clearTimeout(timer)
+
+      let json: (VoiceChatResponse & SpeakApiErrorPayload) | null = null
+      try {
+        json = await res.json() as VoiceChatResponse & SpeakApiErrorPayload
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          throw new Error(t('speak.error.requestFailed'))
+        }
+        if (res.ok) {
+          throw new Error(t('speak.error.requestFailed'))
+        }
+      } finally {
+        clearTimeout(timer)
+      }
 
       if (!res.ok) {
-        const errJson = await res.json().catch(() => null) as SpeakApiErrorPayload | null
+        const errJson = json as SpeakApiErrorPayload | null
         console.warn('[useVoiceTutor] voice-chat request failed:', {
           status: res.status,
           error: errJson?.error,
@@ -509,7 +524,9 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         throw new Error(message)
       }
 
-      const json = await res.json() as VoiceChatResponse
+      if (!json) {
+        throw new Error(t('speak.error.requestFailed'))
+      }
       if (json.speak_allowance) {
         setSpeakAllowance(json.speak_allowance)
       }
@@ -1319,7 +1336,9 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
               audioBase64: data.audio_base64 || undefined,
               audioFormat: data.audio_format || undefined,
             })
-            return next
+            const capped = capReplayAudio(next)
+            messagesRef.current = capped
+            return capped
           })
           persistMessages(data.user_text || null, data.ai_text)
 

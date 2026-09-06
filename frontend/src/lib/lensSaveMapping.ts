@@ -19,11 +19,16 @@ function cleanOptional(value: string | undefined): string | undefined {
   return trimmed ? trimmed : undefined
 }
 
-function isPhraseTarget(targetText: string, targetLanguage: string): boolean {
+function isPhraseTarget(targetText: string, targetLanguage: string, article?: string): boolean {
   // Keep this intentionally simple: whitespace marks phrases for non-CJK scripts;
   // CJK tokenization needs a richer segmenter and the RPC remains the final guard.
   if (CJK_LANGUAGE_NAMES.has(targetLanguage.trim())) return false
-  return /\s/.test(targetText.trim())
+  const trimmed = targetText.trim()
+  const cleanArticle = article?.trim()
+  const lexicalText = cleanArticle && trimmed.toLocaleLowerCase().startsWith(`${cleanArticle.toLocaleLowerCase()} `)
+    ? trimmed.slice(cleanArticle.length).trim()
+    : trimmed
+  return /\s/.test(lexicalText)
 }
 
 export function mapLensScanItemsForSave(
@@ -39,7 +44,7 @@ export function mapLensScanItemsForSave(
       const mapped: LensSaveRpcItem = {
         word,
         translation,
-        is_phrase: isPhraseTarget(word, options.targetLanguage),
+        is_phrase: isPhraseTarget(word, options.targetLanguage, item.article),
       }
 
       const ipa = cleanOptional(item.ipa)

@@ -3,6 +3,7 @@ import {
   resolveNativeLangName,
   getLevelInstructions,
   buildStudyAddendum,
+  buildGreetingInstruction,
   type StudyWord,
 } from './_shared/pedagogy'
 import { buildRoleplaySystemPrompt } from './_shared/roleplay'
@@ -71,23 +72,5 @@ export interface GeminiGreetingInput {
 }
 
 export function buildGeminiGreeting(input: GeminiGreetingInput): string {
-  const { level, targetLangName, nativeLangName, studyWord } = input
-
-  // Minimal greeting directives — the PERSONALITY block and language-mix rule
-  // in the system prompt do the real work. No forced sentence count, no forced
-  // question, no forced structure. The vibe is the vibe.
-  const studyAddendum = studyWord
-    ? ` If it fits your opening, you can weave in the word "${studyWord.word}" (${studyWord.translation}).`
-    : ''
-
-  if (level === 'zero') {
-    return `Open with a ${targetLangName} greeting, then continue in a mix of ${targetLangName} and ${nativeLangName}. Let your mood come through.${studyAddendum}`
-  }
-
-  if (level === 'beginner') {
-    return `Open with a ${targetLangName} greeting, then continue mostly in ${targetLangName} with some ${nativeLangName} when needed. Let your mood come through.${studyAddendum}`
-  }
-
-  // advanced / intermediate / fallback
-  return `Open the conversation with the student in ${targetLangName}. Let your mood come through.`
+  return `${buildGreetingInstruction(input)} Let your mood come through.`
 }

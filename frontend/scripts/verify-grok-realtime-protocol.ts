@@ -75,9 +75,9 @@ assert(!hookSource.includes('DynamicsCompressor'), 'must not add compressor work
 
 const beginnerInstructions = getGrokLevelInstructions('German', 'English', 'beginner')
 assert(beginnerInstructions.includes('approximately even mix'), 'Beginner prompt must require approximate 50/50 language mix')
-assert(beginnerInstructions.includes('Do not use brackets or parentheses for glosses'), 'Beginner prompt must forbid bracketed/parenthetical glosses')
-assert(beginnerInstructions.includes('Do not speak only in the target language'), 'Beginner prompt must forbid target-only output')
-assert(beginnerInstructions.includes('first greeting should already show this balance'), 'Beginner prompt must require balanced first greeting')
+assert(beginnerInstructions.includes('Do not use markdown, brackets, or parentheses'), 'Beginner prompt must forbid bracketed/parenthetical glosses')
+assert(beginnerInstructions.includes('do not collapse into either one'), 'Beginner prompt must forbid single-language collapse')
+assert(beginnerInstructions.includes('first greeting and every turn should balance both languages'), 'Beginner prompt must require balanced first greeting')
 
 const beginnerConfig = buildGrokSessionConfig({
   language: 'de',

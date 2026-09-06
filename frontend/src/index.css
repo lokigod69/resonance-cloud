@@ -1026,6 +1026,29 @@ input[type="range"].volume-slider::-moz-range-track {
   .speak-mode-emblem-glow {
     animation: none;
   }
+
+  .speak-page-shell *,
+  .speak-chat-shell *,
+  .speak-history-panel * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .speak-page-shell button:hover,
+  .speak-page-shell button:active,
+  .speak-page-shell button:hover *,
+  .speak-page-shell button:active *,
+  .speak-chat-shell button:hover,
+  .speak-chat-shell button:active,
+  .speak-chat-shell button:hover *,
+  .speak-chat-shell button:active *,
+  .speak-history-panel button:hover,
+  .speak-history-panel button:active,
+  .speak-history-panel button:hover *,
+  .speak-history-panel button:active * {
+    transform: none !important;
+  }
 }
 
 body::before {
@@ -1731,12 +1754,13 @@ body::before {
 
 .lens-language-trigger {
   display: inline-flex;
+  min-height: 2.75rem;
   align-items: center;
   gap: 0.3rem;
   max-width: 100%;
   border: 0;
   background: transparent;
-  padding: 0;
+  padding: 0 0.25rem;
   color: inherit;
   font: inherit;
   cursor: pointer;
@@ -1769,6 +1793,7 @@ body::before {
 
 .lens-language-option {
   display: flex;
+  min-height: 2.75rem;
   align-items: center;
   gap: 0.6rem;
   border: 1px solid transparent;
@@ -1783,6 +1808,12 @@ body::before {
 
 .lens-language-option:hover {
   background: rgba(255, 255, 255, 0.07);
+}
+
+.lens-language-trigger:focus-visible,
+.lens-language-option:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
 }
 
 .lens-language-option--active {
@@ -2130,8 +2161,9 @@ button.lens-recap-discard:hover {
 }
 
 .lens-recap-backdrop {
-  position: absolute;
+  position: fixed;
   inset: 0;
+  z-index: 90;
   display: grid;
   place-items: end center;
   background: rgba(0, 0, 0, 0.58);

@@ -37,6 +37,10 @@ const SPEAK_LLM_MODEL = 'llama-3.3-70b-versatile'
 const SPEAK_STT_MODEL = 'whisper-large-v3'
 const SPEAK_GEMINI_TTS_MODEL = 'gemini-3.1-flash-tts-preview'
 const SPEAK_VOXTRAL_TTS_MODEL = 'voxtral-mini-tts-2603'
+const VOICE_PIPELINE_BUDGET_MS = 40_000
+const STT_TIMEOUT_MS = 15_000
+const LLM_TIMEOUT_MS = 20_000
+const TTS_BUDGET_MS = 15_000
 
 // Vercel Serverless Function — Voice Tutor pipeline
 // POST /api/voice-chat
@@ -376,10 +380,12 @@ async function generateSpeech(
   mistralKey: string,
   voiceId?: string,
   geminiOptions?: GeminiSpeechOptions,
+  pipelineDeadline = Date.now() + TTS_BUDGET_MS,
 ): Promise<TtsResult> {
+  const ttsDeadline = Math.min(pipelineDeadline, Date.now() + TTS_BUDGET_MS)
   // ── Gemini branch — modular character-mode + prebuilt voice ───────────────
   if (geminiOptions) {
-    const { audio, usage } = await generateGeminiSpeech(text, language, geminiOptions)
+    const { audio, usage } = await generateGeminiSpeech(text, language, geminiOptions, ttsDeadline)
     return { audio, format: 'wav', provider: 'gemini', model: SPEAK_GEMINI_TTS_MODEL, usage }
   }
 
@@ -397,17 +403,25 @@ async function generateSpeech(
       ttsBody.voice = language === 'ar' ? 'en_paul_confident' : 'en_paul_cheerful'
     }
     let ttsResponse: Response | null = null
+    let completeTtsResponse = () => {}
     for (let attempt = 0; attempt < 2; attempt++) {
-      ttsResponse = await fetchWithTimeout('https://api.mistral.ai/v1/audio/speech', {
+      const remainingMs = ttsDeadline - Date.now()
+      if (remainingMs <= 0) throw new Error('Mistral TTS exceeded the voice pipeline budget')
+      const timedResponse = await fetchWithTimeout('https://api.mistral.ai/v1/audio/speech', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${mistralKey}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(ttsBody),
-      }, 20000, 'Mistral TTS')
-      if (ttsResponse.ok) break
-      if (attempt === 0) {
+      }, remainingMs, 'Mistral TTS')
+      ttsResponse = timedResponse.response
+      if (ttsResponse.ok) {
+        completeTtsResponse = timedResponse.complete
+        break
+      }
+      timedResponse.complete()
+      if (attempt === 0 && ttsDeadline - Date.now() > 500) {
         console.warn(`Mistral TTS attempt 1 failed with ${ttsResponse.status}, retrying...`)
         await new Promise(r => setTimeout(r, 500))
       }
@@ -415,7 +429,12 @@ async function generateSpeech(
     if (!ttsResponse || !ttsResponse.ok) {
       throw new Error(`Mistral TTS failed: ${ttsResponse?.status ?? 'unknown'}`)
     }
-    const ttsJson = await ttsResponse.json() as { audio_data?: string }
+    let ttsJson: { audio_data?: string }
+    try {
+      ttsJson = await ttsResponse.json() as { audio_data?: string }
+    } finally {
+      completeTtsResponse()
+    }
     if (!ttsJson.audio_data) throw new Error('Mistral TTS returned no audio_data field')
     return {
       audio: Buffer.from(ttsJson.audio_data, 'base64'), format: 'mp3',
@@ -424,7 +443,7 @@ async function generateSpeech(
   } else {
     // Non-Voxtral language (fil, id, ko, ceb) with no explicit Gemini pick —
     // serve it with Gemini TTS using a sensible default mode + voice.
-    const { audio, usage } = await generateGeminiSpeech(text, language, DEFAULT_GEMINI_OPTIONS)
+    const { audio, usage } = await generateGeminiSpeech(text, language, DEFAULT_GEMINI_OPTIONS, ttsDeadline)
     return { audio, format: 'wav', provider: 'gemini', model: SPEAK_GEMINI_TTS_MODEL, usage }
   }
 }
@@ -435,6 +454,7 @@ async function generateGeminiSpeech(
   text: string,
   language: string,
   options: GeminiSpeechOptions,
+  deadline: number,
 ): Promise<{ audio: Buffer; usage: GeminiTtsUsageLike }> {
   const mode = getGeminiMode(options.characterModeId)
   if (!mode) throw new Error(`Unknown Gemini character mode: ${options.characterModeId}`)
@@ -445,19 +465,33 @@ async function generateGeminiSpeech(
   const accentId = options.accentId ?? 'none'
   const accentSuffix = GEMINI_ACCENT_SUFFIXES[accentId] ?? ''
   const fullPrompt = buildGeminiTtsPrompt(text, language, mode.geminiStylePrompt, accentSuffix)
-  const result = await generateGeminiTtsFromPrompt(fullPrompt, options.voiceName)
+  const remainingMs = deadline - Date.now()
+  if (remainingMs <= 0) throw new Error('Gemini TTS exceeded the voice pipeline budget')
+  const result = await generateGeminiTtsFromPrompt(fullPrompt, options.voiceName, undefined, remainingMs)
   return { audio: result.audio, usage: result.usage }
 }
 
-function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number, label: string): Promise<Response> {
+interface TimedFetchResponse {
+  response: Response
+  complete: () => void
+}
+
+function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number, label: string): Promise<TimedFetchResponse> {
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs)
   console.log(`[voice-chat] ${label} — starting (${timeoutMs}ms timeout)`)
   return fetch(url, { ...options, signal: controller.signal })
     .then((res) => {
-      clearTimeout(timer)
-      console.log(`[voice-chat] ${label} — completed (status ${res.status})`)
-      return res
+      let completed = false
+      return {
+        response: res,
+        complete: () => {
+          if (completed) return
+          completed = true
+          clearTimeout(timer)
+          console.log(`[voice-chat] ${label} — completed (status ${res.status})`)
+        },
+      }
     })
     .catch((err) => {
       clearTimeout(timer)
@@ -468,6 +502,12 @@ function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number, 
       console.error(`[voice-chat] ${label} — FAILED:`, err.message)
       throw err
     })
+}
+
+function timeoutWithinDeadline(deadline: number, stageLimitMs: number, label: string): number {
+  const remainingMs = deadline - Date.now()
+  if (remainingMs <= 0) throw new Error(`${label} could not start before the voice pipeline deadline`)
+  return Math.min(stageLimitMs, remainingMs)
 }
 
 function isObject(value: unknown): value is Record<string, unknown> {
@@ -610,7 +650,7 @@ async function handleCorrections(body: {
   transcript?: Array<{ role: string; content: string }>
   language?: string
   native_language?: string
-}, req: Request): Promise<Response> {
+}, req: Request, pipelineDeadline: number): Promise<Response> {
   const groqKey = process.env.GROQ_API_KEY
   if (!groqKey) {
     return errorResponse(req, 500, 'Voice service is not configured')
@@ -652,7 +692,7 @@ Respond with a JSON object of the form {"corrections": [{"original": "...", "cor
 If no errors: {"corrections": []}`
 
   try {
-    const llmRes = await fetchWithTimeout('https://api.groq.com/openai/v1/chat/completions', {
+    const timedLlmRes = await fetchWithTimeout('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${groqKey}`,
@@ -666,13 +706,20 @@ If no errors: {"corrections": []}`
         ],
         response_format: { type: 'json_object' },
       }),
-    }, 30000, 'Groq Corrections')
+    }, timeoutWithinDeadline(pipelineDeadline, 30_000, 'Groq Corrections'), 'Groq Corrections')
+    const llmRes = timedLlmRes.response
 
     if (!llmRes.ok) {
+      timedLlmRes.complete()
       return sanitizedProviderError(req, 'Corrections service unavailable')
     }
 
-    const llmJson = await llmRes.json() as { choices: Array<{ message: { content: string } }> }
+    let llmJson: { choices: Array<{ message: { content: string } }> }
+    try {
+      llmJson = await llmRes.json() as { choices: Array<{ message: { content: string } }> }
+    } finally {
+      timedLlmRes.complete()
+    }
     const text = llmJson.choices?.[0]?.message?.content?.trim() || '[]'
 
     let corrections: unknown
@@ -695,6 +742,7 @@ If no errors: {"corrections": []}`
 }
 
 export async function POST(req: Request): Promise<Response> {
+  const pipelineDeadline = Date.now() + VOICE_PIPELINE_BUDGET_MS
   let body: RequestBody & { mode?: string; transcript?: Array<{ role: string; content: string }>; message?: string }
   let userId = ''
   let entitlements: UserEntitlements | null = null
@@ -745,7 +793,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   if (body.mode === 'corrections') {
-    return handleCorrections(body, req)
+    return handleCorrections(body, req, pipelineDeadline)
   }
 
   try {
@@ -798,17 +846,24 @@ export async function POST(req: Request): Promise<Response> {
     // verbose_json returns the real audio `duration` (for cost metering) alongside `text`.
     formData.append('response_format', 'verbose_json')
 
-    const sttRes = await fetchWithTimeout('https://api.groq.com/openai/v1/audio/transcriptions', {
+    const timedSttRes = await fetchWithTimeout('https://api.groq.com/openai/v1/audio/transcriptions', {
       method: 'POST',
       headers: { Authorization: `Bearer ${groqKey}` },
       body: formData,
-    }, 15000, 'Groq STT')
+    }, timeoutWithinDeadline(pipelineDeadline, STT_TIMEOUT_MS, 'Groq STT'), 'Groq STT')
+    const sttRes = timedSttRes.response
 
     if (!sttRes.ok) {
+      timedSttRes.complete()
       return sanitizedProviderError(req, 'Speech transcription service unavailable')
     }
 
-    const sttJson = await sttRes.json() as { text?: string; duration?: number }
+    let sttJson: { text?: string; duration?: number }
+    try {
+      sttJson = await sttRes.json() as { text?: string; duration?: number }
+    } finally {
+      timedSttRes.complete()
+    }
     user_text = sttJson.text?.trim() ?? ''
     if (typeof sttJson.duration === 'number') sttDurationSeconds = sttJson.duration
   }
@@ -913,7 +968,7 @@ export async function POST(req: Request): Promise<Response> {
     if (!mistralKeyRetry && !retryGeminiOpts && VOXTRAL_SUPPORTED.has(language)) {
       return errorResponse(req, 500, 'Voice service is not configured')
     }
-    const retryResult = await generateSpeech(retryText, language, mistralKeyRetry ?? '', voice_id, retryGeminiOpts)
+    const retryResult = await generateSpeech(retryText, language, mistralKeyRetry ?? '', voice_id, retryGeminiOpts, pipelineDeadline)
 
     // STT ran (and was billed) but returned nothing — record the STT + retry-TTS spend.
     const retrySttCost = groqSttCost(sttDurationSeconds)
@@ -979,7 +1034,7 @@ export async function POST(req: Request): Promise<Response> {
   const isGreeting = !user_text && !audio_base64
 
   // ── Step 3: LLM response (Groq, OpenAI-compatible, ~750 tok/s on LPU) ───────
-  const llmRes = await fetchWithTimeout('https://api.groq.com/openai/v1/chat/completions', {
+  const timedLlmRes = await fetchWithTimeout('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${groqKey}`,
@@ -994,9 +1049,11 @@ export async function POST(req: Request): Promise<Response> {
       // across every call. Non-greeting turns keep the Groq default.
       ...(isGreeting ? { temperature: 1.0 } : {}),
     }),
-  }, 20000, 'Groq LLM')
+  }, timeoutWithinDeadline(pipelineDeadline, LLM_TIMEOUT_MS, 'Groq LLM'), 'Groq LLM')
+  const llmRes = timedLlmRes.response
 
   if (!llmRes.ok) {
+    timedLlmRes.complete()
     // LLM call failed (not billed); STT may already have been billed this turn.
     await writeUsageEvent({
       userId, feature: 'speak_turn', stage: 'speak', status: 'failed',
@@ -1009,7 +1066,12 @@ export async function POST(req: Request): Promise<Response> {
     return sanitizedProviderError(req, 'Voice chat service unavailable')
   }
 
-  const llmJson = await llmRes.json() as { choices: Array<{ message: { content: string } }>; usage?: LlmUsage }
+  let llmJson: { choices: Array<{ message: { content: string } }>; usage?: LlmUsage }
+  try {
+    llmJson = await llmRes.json() as { choices: Array<{ message: { content: string } }>; usage?: LlmUsage }
+  } finally {
+    timedLlmRes.complete()
+  }
   if (llmJson.usage) llmUsage = llmJson.usage
   const ai_text = llmJson.choices?.[0]?.message?.content?.trim() ?? ''
 
@@ -1048,7 +1110,7 @@ export async function POST(req: Request): Promise<Response> {
   let ttsFailed = false
 
   try {
-    ttsResult = await generateSpeech(ttsText, language, mistralKey ?? '', voice_id, geminiOpts)
+    ttsResult = await generateSpeech(ttsText, language, mistralKey ?? '', voice_id, geminiOpts, pipelineDeadline)
     audio_base64_out = ttsResult.audio.toString('base64')
     audio_format = ttsResult.format
   } catch (ttsErr) {

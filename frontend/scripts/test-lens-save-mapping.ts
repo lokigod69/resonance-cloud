@@ -5,6 +5,8 @@
  */
 
 import { mapLensScanItemsForSave } from '../src/lib/lensSaveMapping'
+import { classifyLensCameraFailure, lensCameraErrorTranslationKey } from '../src/lib/lensCamera'
+import { lensItemFromAlternate } from '../src/lib/lensSelection'
 import type { LensScanItem } from '../src/lib/lensTypes'
 
 let failures = 0
@@ -50,10 +52,12 @@ console.log('\n[phrase heuristic]')
 {
   const [phrase] = mapLensScanItemsForSave([{ ...baseItem, target_text: 'guten Morgen' }], { targetLanguage: 'German' })
   const [single] = mapLensScanItemsForSave([{ ...baseItem, target_text: 'Schlüssel' }], { targetLanguage: 'German' })
+  const [articleNoun] = mapLensScanItemsForSave([baseItem], { targetLanguage: 'German' })
   const [ko] = mapLensScanItemsForSave([{ ...baseItem, target_text: '김밥' }], { targetLanguage: 'Korean' })
   const [ja] = mapLensScanItemsForSave([{ ...baseItem, target_text: '切符' }], { targetLanguage: 'Japanese' })
   assert('German multi-word phrase is true', phrase.is_phrase === true, phrase)
   assert('German single noun is false', single.is_phrase === false, single)
+  assert('article plus noun is not misclassified as a phrase', articleNoun.is_phrase === false, articleNoun)
   assert('Korean single word is false', ko.is_phrase === false, ko)
   assert('Japanese single word is false', ja.is_phrase === false, ja)
 }
@@ -79,6 +83,22 @@ console.log('\n[empty field dropping]')
   assert('drops blank transliteration', !('transliteration' in mapped), mapped)
   assert('drops blank ipa', !('ipa' in mapped), mapped)
   assert('drops blank example fields', !('example' in mapped) && !('example_gloss' in mapped), mapped)
+}
+
+console.log('\n[alternate selection]')
+{
+  const alternate = lensItemFromAlternate({ target_text: ' die Taste ', base_text: ' keyboard key ' })
+  assert('trims alternate target/base', alternate.target_text === 'die Taste' && alternate.base_text === 'keyboard key', alternate)
+  assert('does not inherit primary grammatical metadata', !alternate.ipa && !alternate.article && !alternate.pos, alternate)
+  assert('does not inherit primary examples', !alternate.example && !alternate.example_gloss, alternate)
+  assert('uses cautious confidence without nested alternates', alternate.confidence === 'medium' && !alternate.alternates, alternate)
+}
+
+console.log('\n[camera failures]')
+{
+  assert('permission denial stays distinct', classifyLensCameraFailure({ name: 'NotAllowedError' }) === 'permission')
+  assert('missing camera is localized separately', lensCameraErrorTranslationKey(classifyLensCameraFailure({ name: 'NotFoundError' })) === 'lens.camera.notFound')
+  assert('busy camera is localized separately', lensCameraErrorTranslationKey(classifyLensCameraFailure({ name: 'NotReadableError' })) === 'lens.camera.notReadable')
 }
 
 if (failures > 0) {

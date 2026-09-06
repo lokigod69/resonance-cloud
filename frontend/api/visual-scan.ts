@@ -203,6 +203,12 @@ function normalizeProviderResponse(raw: unknown): VisualScanResponse {
     return { kind: raw.kind === 'unsupported' ? 'unsupported' : raw.kind, safety, items: [] }
   }
 
+  // Unsupported frames are never vocabulary-bearing, even if the model emits
+  // a stray item alongside the classification.
+  if (raw.kind === 'unsupported') {
+    return { kind: 'unsupported', safety: null, items: [] }
+  }
+
   const maxItems = raw.kind === 'text' || raw.kind === 'menu' ? MAX_ITEMS : 1
   const items = Array.isArray(raw.items)
     ? raw.items.flatMap((item) => {
@@ -211,7 +217,7 @@ function normalizeProviderResponse(raw: unknown): VisualScanResponse {
     }).slice(0, maxItems)
     : []
 
-  if (raw.kind !== 'unsupported' && items.length === 0) {
+  if (items.length === 0) {
     throw new ApiError(422, 'Vision model returned no usable lexical items')
   }
 

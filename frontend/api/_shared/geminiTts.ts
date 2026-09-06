@@ -46,13 +46,19 @@ export async function generateGeminiTtsFromPrompt(
   prompt: string,
   voiceName: string,
   apiKey = process.env.GOOGLE_AI_API_KEY,
+  timeoutBudgetMs = 20_000,
 ): Promise<{ audio: Buffer; usage: GeminiTtsUsage }> {
   if (!apiKey) throw new Error('GOOGLE_AI_API_KEY not configured')
 
   let response: Response | null = null
+  let data: GeminiTtsApiResponse | null = null
+  let finalErrorText = ''
+  const deadline = Date.now() + timeoutBudgetMs
   for (let attempt = 0; attempt < 2; attempt++) {
+    const remainingMs = deadline - Date.now()
+    if (remainingMs <= 0) throw new Error('Gemini TTS exceeded its time budget')
     const controller = new AbortController()
-    const timer = setTimeout(() => controller.abort(), 20000)
+    const timer = setTimeout(() => controller.abort(), remainingMs)
 
     try {
       response = await fetch(GEMINI_TTS_ENDPOINT, {
@@ -72,27 +78,31 @@ export async function generateGeminiTtsFromPrompt(
         }),
         signal: controller.signal,
       })
+      if (response.ok) {
+        data = await response.json() as GeminiTtsApiResponse
+      } else if (attempt === 1) {
+        finalErrorText = await response.text().catch(() => '')
+      }
     } catch (err) {
-      clearTimeout(timer)
       if (err instanceof Error && err.name === 'AbortError') {
-        throw new Error('Gemini TTS timed out after 20s')
+        throw new Error(`Gemini TTS timed out after ${Math.ceil(timeoutBudgetMs / 1000)}s`)
       }
       throw err
+    } finally {
+      clearTimeout(timer)
     }
 
-    clearTimeout(timer)
     if (response.ok) break
-    if (attempt === 0) {
+    if (attempt === 0 && deadline - Date.now() > 500) {
       await new Promise((resolve) => setTimeout(resolve, 500))
     }
   }
 
   if (!response || !response.ok) {
-    const errText = response ? await response.text().catch(() => '') : ''
-    throw new Error(`Gemini TTS failed: ${response?.status ?? 'unknown'} ${errText.slice(0, 200)}`)
+    throw new Error(`Gemini TTS failed: ${response?.status ?? 'unknown'} ${finalErrorText.slice(0, 200)}`)
   }
 
-  const data = await response.json() as GeminiTtsApiResponse
+  if (!data) throw new Error('Gemini TTS returned malformed JSON')
   const inline = data?.candidates?.[0]?.content?.parts?.[0]?.inlineData
   if (!inline?.data) throw new Error('Gemini TTS returned no inlineData')
 

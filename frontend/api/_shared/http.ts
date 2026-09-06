@@ -39,7 +39,9 @@ export function apiErrorResponse(req: Request, error: ApiError): Response {
   return errorResponse(req, error.status, error.message, error.payload)
 }
 
-async function readTextWithLimit(req: Request, maxBytes: number): Promise<string> {
+const DEFAULT_BODY_READ_TIMEOUT_MS = 30_000
+
+async function readTextWithLimit(req: Request, maxBytes: number, timeoutMs: number): Promise<string> {
   const contentLength = req.headers.get('Content-Length')
   if (contentLength && Number(contentLength) > maxBytes) {
     throw new ApiError(413, 'Request body is too large')
@@ -51,24 +53,49 @@ async function readTextWithLimit(req: Request, maxBytes: number): Promise<string
   const decoder = new TextDecoder()
   let total = 0
   let text = ''
+  let cancelled = false
+  let rejectAbort: ((reason: ApiError) => void) | null = null
+  const abortPromise = new Promise<never>((_resolve, reject) => {
+    rejectAbort = reject
+  })
+  const cancelRead = (message: string) => {
+    if (cancelled) return
+    cancelled = true
+    rejectAbort?.(new ApiError(408, message))
+    void reader.cancel().catch(() => undefined)
+  }
+  const handleCallerAbort = () => cancelRead('Request body read was cancelled')
+  const timeout = setTimeout(() => cancelRead('Request body read timed out'), timeoutMs)
+  req.signal.addEventListener('abort', handleCallerAbort, { once: true })
 
-  while (true) {
-    const { done, value } = await reader.read()
-    if (done) break
-    total += value.byteLength
-    if (total > maxBytes) {
-      await reader.cancel().catch(() => undefined)
-      throw new ApiError(413, 'Request body is too large')
+  try {
+    if (req.signal.aborted) cancelRead('Request body read was cancelled')
+    while (true) {
+      const { done, value } = await Promise.race([reader.read(), abortPromise])
+      if (done) break
+      total += value.byteLength
+      if (total > maxBytes) {
+        cancelled = true
+        await reader.cancel().catch(() => undefined)
+        throw new ApiError(413, 'Request body is too large')
+      }
+      text += decoder.decode(value, { stream: true })
     }
-    text += decoder.decode(value, { stream: true })
+  } finally {
+    clearTimeout(timeout)
+    req.signal.removeEventListener('abort', handleCallerAbort)
   }
 
   text += decoder.decode()
   return text
 }
 
-export async function readJsonWithLimit<T>(req: Request, maxBytes: number): Promise<T> {
-  const raw = await readTextWithLimit(req, maxBytes)
+export async function readJsonWithLimit<T>(
+  req: Request,
+  maxBytes: number,
+  bodyReadTimeoutMs = DEFAULT_BODY_READ_TIMEOUT_MS,
+): Promise<T> {
+  const raw = await readTextWithLimit(req, maxBytes, bodyReadTimeoutMs)
   if (!raw.trim()) {
     throw new ApiError(400, 'Invalid JSON body')
   }
@@ -80,8 +107,12 @@ export async function readJsonWithLimit<T>(req: Request, maxBytes: number): Prom
   }
 }
 
-export async function rejectBodyOverLimit(req: Request, maxBytes: number): Promise<void> {
-  const raw = await readTextWithLimit(req, maxBytes)
+export async function rejectBodyOverLimit(
+  req: Request,
+  maxBytes: number,
+  bodyReadTimeoutMs = DEFAULT_BODY_READ_TIMEOUT_MS,
+): Promise<void> {
+  const raw = await readTextWithLimit(req, maxBytes, bodyReadTimeoutMs)
   if (raw.trim().length > 0) {
     throw new ApiError(400, 'Request body is not supported')
   }

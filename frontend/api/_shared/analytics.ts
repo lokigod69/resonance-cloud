@@ -6,13 +6,14 @@
 // Emission rules (Analytics OS handoff, 2026-08-02):
 // - Master switch: AOS_ANALYTICS_ENABLED === 'true' AND AOS_POSTHOG_KEY set.
 //   Both live only in Vercel env; nothing flows until the owner enables them.
-// - Fire-and-forget: every path swallows failures (same philosophy as
-//   writeUsageEvent) — analytics must never break a user request.
+// - Bounded and awaited: every path swallows failures (same philosophy as
+//   writeUsageEvent) before the serverless request ends.
 // - Per-user opt-out: profiles.analytics_opt_out suppresses ALL emits at
 //   source. A failed opt-out lookup suppresses too (privacy-safe default).
 // - No PII in props: never email, name, transcripts, or free-text input.
 
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+import { createTelemetryFetch } from './telemetryFetch'
 import {
   PostHogSink,
   StandardEventSchema,
@@ -55,11 +56,12 @@ export function analyticsPlatformFromRequest(req?: Request): AnalyticsPlatform {
   return origin.startsWith('capacitor:') ? 'ios' : 'web'
 }
 
-export function createAnalyticsAdminClient(): SupabaseClient | null {
+export function createAnalyticsAdminClient(signal?: AbortSignal): SupabaseClient | null {
   const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || ''
   if (!url || !serviceKey) return null
   return createClient(url, serviceKey, {
+    global: { fetch: createTelemetryFetch(signal) },
     auth: {
       persistSession: false,
       autoRefreshToken: false,
@@ -70,9 +72,9 @@ export function createAnalyticsAdminClient(): SupabaseClient | null {
 
 // Suppress on any doubt: a lookup failure (or missing column pre-migration)
 // drops the event rather than emitting for a user who may have opted out.
-async function isOptedOut(userId: string): Promise<boolean> {
+async function isOptedOut(userId: string, signal?: AbortSignal): Promise<boolean> {
   try {
-    const admin = createAnalyticsAdminClient()
+    const admin = createAnalyticsAdminClient(signal)
     if (!admin) return true
     const { data, error } = await admin
       .from('profiles')
@@ -91,10 +93,10 @@ async function isOptedOut(userId: string): Promise<boolean> {
  * promise. Callers should `await` it before returning so the send completes
  * before the serverless function freezes.
  */
-export async function trackServerEvent(input: ServerAnalyticsEvent): Promise<void> {
+export async function trackServerEvent(input: ServerAnalyticsEvent, signal = AbortSignal.timeout(3_000)): Promise<void> {
   try {
     if (!isAnalyticsEnabled()) return
-    if (await isOptedOut(input.optOutUserId ?? input.distinctId)) return
+    if (await isOptedOut(input.optOutUserId ?? input.distinctId, signal)) return
 
     const candidate: StandardEvent = {
       event: input.event,
@@ -109,6 +111,7 @@ export async function trackServerEvent(input: ServerAnalyticsEvent): Promise<voi
     const sink = new PostHogSink({
       ingestHost: AOS_INGEST_HOST,
       projectApiKey: process.env.AOS_POSTHOG_KEY ?? '',
+      fetchImpl: createTelemetryFetch(signal),
     })
     await sink.send([{ distinctId: input.distinctId, event: validated }])
   } catch (err) {
@@ -121,10 +124,10 @@ export async function trackServerEvent(input: ServerAnalyticsEvent): Promise<voi
  * learning_action lands. Returns true only on that first time. Gated on the
  * master switch so nothing is written pre-approval; failures return false.
  */
-async function recordLearningActionActivation(userId: string): Promise<boolean> {
+async function recordLearningActionActivation(userId: string, signal?: AbortSignal): Promise<boolean> {
   try {
     if (!isAnalyticsEnabled()) return false
-    const admin = createAnalyticsAdminClient()
+    const admin = createAnalyticsAdminClient(signal)
     if (!admin) return false
     const { data, error } = await admin.rpc('record_learning_action_activation', {
       p_user_id: userId,
@@ -149,20 +152,21 @@ export async function trackServerCoreAction(input: {
   kind: 'speak_turn' | 'speak_live_block' | 'lens_scan'
   props?: Record<string, unknown>
 }): Promise<void> {
+  const signal = AbortSignal.timeout(3_000)
   await trackServerEvent({
     event: 'core_action',
     distinctId: input.userId,
     platform: input.platform,
     props: { kind: input.kind, skin: 'glassy', ...input.props },
-  })
-  const first = await recordLearningActionActivation(input.userId)
+  }, signal)
+  const first = await recordLearningActionActivation(input.userId, signal)
   if (first) {
     await trackServerEvent({
       event: 'activation',
       distinctId: input.userId,
       platform: input.platform,
       uuid: deterministicUuid(`activation:${input.userId}`),
-    })
+    }, signal)
   }
 }
 

@@ -17,6 +17,7 @@
 // function resolves normally.
 
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+import { telemetryFetch } from './telemetryFetch'
 
 export type UsageStatus = 'success' | 'failed' | 'partial'
 
@@ -56,6 +57,7 @@ function createUsageAdminClient(): SupabaseClient | null {
   const { url, serviceKey } = getServiceEnv()
   if (!url || !serviceKey) return null
   return createClient(url, serviceKey, {
+    global: { fetch: telemetryFetch },
     auth: {
       persistSession: false,
       autoRefreshToken: false,

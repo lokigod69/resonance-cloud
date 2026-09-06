@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useReducedMotion } from 'framer-motion'
 import { Mic, Volume2, VolumeX, ArrowLeft, Loader2, Play, Square, UserRoundCog, MessageSquarePlus, History, Signal, ChevronDown, SlidersHorizontal, ChevronRight } from 'lucide-react'
 import { useVoiceTutor, type SpeakProvider } from '@/hooks/useVoiceTutor'
 import { useGrokRealtime } from '@/hooks/useGrokRealtime'
@@ -37,11 +38,13 @@ import {
 import { SPEAK_LANGUAGES, LANGUAGES as ALL_LANGUAGES } from '@/lib/languages'
 import { getGeneratedDeckHref } from '@/lib/cardGenerationProgress'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
+import { CORRECTIONS_TIMEOUT_MS, prepareCorrectionsTranscript } from '@/lib/speakCorrections'
 
 // Beta-trimmed to the 8 offered target languages (all present in api LANGUAGE_CONFIG).
 // The full pre-beta set was en/de/fr/it/es/pt/nl/hi/ar/ru/ceb/fil/id/ko — restore
 // entries here when a language graduates back in.
 const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'ceb', 'id']
+const VOXTRAL_LANGUAGE_CODES = new Set(['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar'])
 const GROK_LEVEL_VALUES: GrokLevel[] = ['zero', 'beginner', 'intermediate', 'advanced']
 const DEFAULT_GROK_VOICE: GrokVoice = 'eve'
 const DEFAULT_GROK_CATEGORY: GrokCategory | 'free_chat' = 'free_chat'
@@ -102,9 +105,10 @@ function writeLastSetup(lang: string, setup: LastSpeakSetup) {
   } catch { /* storage full/blocked — ready room just won't remember */ }
 }
 
-function TypingIndicator() {
+function TypingIndicator({ label }: { label: string }) {
   return (
-    <div className="speak-typing flex items-center gap-1 px-4 py-3 rounded-2xl w-fit">
+    <div className="speak-typing flex items-center gap-1 px-4 py-3 rounded-2xl w-fit" role="status" aria-live="polite">
+      <span className="sr-only">{label}</span>
       {[0, 1, 2].map((i) => (
         <span
           key={i}
@@ -194,6 +198,7 @@ export default function Speak() {
   const { toast } = useToast()
   const { profile } = useAuth()
   const { activeLanguage, setActiveLanguage, languageReady } = useLanguage()
+  const reduceMotion = useReducedMotion() === true
   const baseLangCode = ALL_LANGUAGES.find((l) => l.value === profile?.base_language)?.code
   const tutor = useVoiceTutor(baseLangCode)
   const grok = useGrokRealtime()
@@ -213,6 +218,7 @@ export default function Speak() {
   const studyWords = useStudyWords(tutor.language)
   const bottomRef = useRef<HTMLDivElement>(null)
   const chatRef = useRef<HTMLDivElement>(null)
+  const correctionsAbortRef = useRef<AbortController | null>(null)
 
   const [historyOpen, setHistoryOpen] = useState(false)
   const [newChatConfirmOpen, setNewChatConfirmOpen] = useState(false)
@@ -302,6 +308,7 @@ export default function Speak() {
       }
     }
     if (lastSetup.kind === 'voxtral') {
+      if (!tutor.language || !VOXTRAL_LANGUAGE_CODES.has(tutor.language)) return null
       const char = getCharacterById(lastSetup.characterId)
       if (!char) return null
       return {
@@ -322,6 +329,14 @@ export default function Speak() {
 
   const fetchCorrections = async () => {
     if (correctionsLoading || activeMessages.length < 4 || !tutor.language) return
+    correctionsAbortRef.current?.abort()
+    const controller = new AbortController()
+    correctionsAbortRef.current = controller
+    let timedOut = false
+    const timeoutId = window.setTimeout(() => {
+      timedOut = true
+      controller.abort()
+    }, CORRECTIONS_TIMEOUT_MS)
     setCorrectionsLoading(true)
     setCorrectionsError(null)
     try {
@@ -337,14 +352,17 @@ export default function Speak() {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${sessionData.session.access_token}`,
         },
+        signal: controller.signal,
         body: JSON.stringify({
           mode: 'corrections',
-          transcript: activeMessages.map((m) => ({ role: m.role, content: m.content })),
+          transcript: prepareCorrectionsTranscript(activeMessages),
           language: tutor.language,
           native_language: baseLangCode || 'en',
         }),
       })
+      if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
       const data = await res.json().catch(() => null) as ({ corrections?: unknown } & SpeakApiErrorPayload) | null
+      if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
       if (!res.ok) {
         console.warn('[Speak] Corrections request failed:', {
           status: res.status,
@@ -369,10 +387,15 @@ export default function Speak() {
         tutor.saveCorrections(list)
       }
     } catch (err) {
+      if (controller.signal.aborted && !timedOut) return
       console.error('Corrections fetch failed:', err)
       setCorrectionsError(t('speak.correctionsUnavailable'))
     } finally {
-      setCorrectionsLoading(false)
+      window.clearTimeout(timeoutId)
+      if (correctionsAbortRef.current === controller) {
+        correctionsAbortRef.current = null
+        setCorrectionsLoading(false)
+      }
     }
   }
 
@@ -525,6 +548,10 @@ export default function Speak() {
       return
     }
     if (lastSetup.kind === 'voxtral') {
+      if (!VOXTRAL_LANGUAGE_CODES.has(tutor.language)) {
+        setShowCasting(true)
+        return
+      }
       const char = getCharacterById(lastSetup.characterId)
       if (!char) {
         setShowCasting(true)
@@ -646,6 +673,9 @@ export default function Speak() {
   )
 
   useEffect(() => {
+    correctionsAbortRef.current?.abort()
+    correctionsAbortRef.current = null
+    setCorrectionsLoading(false)
     setCorrections(null)
     setCorrectionsError(null)
   }, [tutor.conversationId, activeProvider, grokSessionActive])
@@ -699,14 +729,15 @@ export default function Speak() {
 
   useEffect(() => {
     return () => {
+      correctionsAbortRef.current?.abort()
       stopAllAudioRef.current()
       void endGrokSessionRef.current()
     }
   }, [])
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [activeProvider, grok.messages.length, grok.status, grokSessionActive, tutor.messages.length, tutor.status])
+    bottomRef.current?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' })
+  }, [activeProvider, grok.messages.length, grok.status, grokSessionActive, reduceMotion, tutor.messages.length, tutor.status])
 
   if (!tutor.language) {
     return (
@@ -780,7 +811,7 @@ export default function Speak() {
     const showReadyRoom = !grokFlowActive && !inGeminiStages && !tutor.isChangingVoice && !showCasting && !!lastSetup && !!lastSetupDisplay
     const savedLevelLabel = levelOptions.find((opt) => opt.level === (isGrokLevel(tutor.level) ? tutor.level : grokLevel))
     const grokAvailable = tutor.language !== 'fil'
-    const voxtralAvailable = tutor.language !== 'fil' && tutor.language !== 'ceb'
+    const voxtralAvailable = VOXTRAL_LANGUAGE_CODES.has(tutor.language)
     // The Live door is the hero; browse-tutors collapses under it for organic
     // first-timers, but stays open when there's no Live door (fil / voice
     // change) or the learner explicitly came here to recast.
@@ -1015,6 +1046,7 @@ export default function Speak() {
         <SpeakHistoryPanel
           open={historyOpen}
           onClose={() => setHistoryOpen(false)}
+          suspended={Boolean(extractSource)}
           baseLangCode={baseLangCode}
           onExtractConversation={(conversation) => openExtractWords(conversation)}
         />
@@ -1166,6 +1198,7 @@ export default function Speak() {
         <SpeakHistoryPanel
           open={historyOpen}
           onClose={() => setHistoryOpen(false)}
+          suspended={Boolean(extractSource)}
           baseLangCode={baseLangCode}
           onExtractConversation={(conversation) => openExtractWords(conversation)}
         />
@@ -1209,7 +1242,7 @@ export default function Speak() {
       grokDisconnected
         ? grok.error || t('speak.error.sessionNotConnected')
         : grok.status === 'recording'
-        ? `${t('speak.listeningNow')} ${recordingTimerLabel}`
+        ? t('speak.listeningNow')
         : grok.status === 'thinking'
           ? t('speak.thinking')
           : grok.status === 'speaking'
@@ -1306,8 +1339,9 @@ export default function Speak() {
         >
           <div className="mx-auto flex min-h-full max-w-xl flex-col items-center justify-center gap-8 text-center">
             <div className="space-y-2">
-              <p className={`text-xs font-medium uppercase tracking-[0.28em] transition-colors duration-300 ${grokStatusClass}`}>
+              <p role="status" aria-live="polite" className={`text-xs font-medium uppercase tracking-[0.28em] transition-colors duration-300 ${grokStatusClass}`}>
                 {grokStatusLabel}
+                {grok.status === 'recording' && <span aria-hidden="true"> {recordingTimerLabel}</span>}
               </p>
               {grok.status === 'error' && grok.error && !grokDisconnected && (
                 <p className="text-xs text-[var(--text-muted)]">{t('speak.tapRetry')}</p>
@@ -1356,14 +1390,17 @@ export default function Speak() {
             </button>
 
             {grokDisconnected && (
-              <button
-                type="button"
-                onClick={() => { void handleGrokReconnect() }}
-                disabled={grok.status === 'connecting'}
-                className="speak-accent-action px-5 py-2.5 rounded-full text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {grok.status === 'connecting' ? t('speak.startingConversation') : t('speak.reconnect')}
-              </button>
+              <div className="flex flex-col items-center gap-2">
+                <p className="max-w-xs text-xs leading-relaxed text-[var(--text-muted)]">{t('speak.reconnectSessionHint')}</p>
+                <button
+                  type="button"
+                  onClick={() => { void handleGrokReconnect() }}
+                  disabled={grok.status === 'connecting'}
+                  className="speak-accent-action px-5 py-2.5 rounded-full text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {grok.status === 'connecting' ? t('speak.startingConversation') : t('speak.reconnect')}
+                </button>
+              </div>
             )}
 
             <button
@@ -1378,6 +1415,7 @@ export default function Speak() {
         <SpeakHistoryPanel
           open={historyOpen}
           onClose={() => setHistoryOpen(false)}
+          suspended={Boolean(extractSource)}
           baseLangCode={baseLangCode}
           onExtractConversation={(conversation) => openExtractWords(conversation)}
         />
@@ -1468,30 +1506,39 @@ export default function Speak() {
             className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              onClick={msg.role === 'assistant' ? () => {
-                if (tutor.listenMode && !msg.revealed) {
-                  tutor.revealMessage(i)
-                } else if (msg.audioBase64) {
-                  tutor.replayMessageAudio(msg)
-                }
-              } : undefined}
               className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed transition-opacity duration-500 long-copy ${
                 msg.role === 'user'
                   ? 'speak-message-user rounded-br-sm opacity-100'
-                  : `speak-message-assistant rounded-bl-sm ${!tutor.listenMode || msg.revealed ? 'opacity-100' : 'opacity-0'}${msg.audioBase64 || (tutor.listenMode && !msg.revealed) ? ' cursor-pointer active:bg-[var(--accent-soft)] transition-colors' : ''}`
+                  : 'speak-message-assistant rounded-bl-sm opacity-100'
               }`}
             >
-              {msg.role === 'assistant' && !msg.revealed ? (
-                <span className="flex items-center gap-1.5 text-[var(--text-muted)] text-sm italic">
-                  <span>🔊</span> {tutor.listenMode ? t('speak.tapToReveal') : t('speak.listening')}
-                </span>
+              {msg.role === 'assistant' && !msg.revealed && tutor.listenMode ? (
+                <button
+                  type="button"
+                  data-speak-reveal
+                  onClick={() => tutor.revealMessage(i)}
+                  className="flex min-h-11 items-center gap-1.5 rounded-lg text-left text-sm italic text-[var(--text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                >
+                  <span>🔊</span> {t('speak.tapToReveal')}
+                </button>
               ) : (
                 <>
                   <p className="long-copy">{msg.content}</p>
+                  {msg.role === 'assistant' && msg.audioBase64 && (
+                    <button
+                      type="button"
+                      data-speak-replay
+                      onClick={() => tutor.replayMessageAudio(msg)}
+                      className="mt-2 flex min-h-11 items-center gap-1.5 rounded-lg text-xs text-[var(--accent-2)] transition-colors hover:text-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                    >
+                      <Volume2 className="h-3.5 w-3.5" aria-hidden="true" />
+                      <span>{t('speak.tapToHear')}</span>
+                    </button>
+                  )}
                   {tutor.pendingAudio && msg.role === 'assistant' && i === tutor.messages.length - 1 && (
                     <button
-                      onClick={(e) => {
-                        e.stopPropagation()
+                      type="button"
+                      onClick={() => {
                         tutor.playPendingAudio()
                       }}
                       disabled={tutor.status === 'playing'}
@@ -1553,7 +1600,7 @@ export default function Speak() {
 
         {tutor.status === 'processing' && (
           <div className="flex justify-start">
-            <TypingIndicator />
+            <TypingIndicator label={t('speak.thinking')} />
           </div>
         )}
 
@@ -1569,6 +1616,7 @@ export default function Speak() {
       <SpeakHistoryPanel
         open={historyOpen}
         onClose={() => setHistoryOpen(false)}
+        suspended={Boolean(extractSource)}
         baseLangCode={baseLangCode}
         onExtractConversation={(conversation) => openExtractWords(conversation)}
       />
@@ -1759,12 +1807,12 @@ export default function Speak() {
             </p>
           )}
 
-          <p className="text-xs text-[var(--text-muted)] text-center mb-3 h-4">
+          <p role="status" aria-live="polite" className="text-xs text-[var(--text-muted)] text-center mb-3 h-4">
             {tutor.status === 'idle' && t('speak.tapToSpeak')}
             {tutor.status === 'recording' && (
               <span className="text-red-400">
                 {t('speak.recording')}
-                <span className="ml-2 font-mono tabular-nums">{recordingTimerLabel}</span>
+                <span className="ml-2 font-mono tabular-nums" aria-hidden="true">{recordingTimerLabel}</span>
               </span>
             )}
             {tutor.status === 'processing' && t('speak.thinking')}

@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { X, ArrowLeft, Mic, ChevronRight, Trash2 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
@@ -9,6 +10,8 @@ import { GEMINI_CHARACTER_MODES } from '@/data/geminiCharacterModes'
 import { GEMINI_ACCENTS } from '@/data/geminiAccents'
 import { publicApiUrl } from '@/lib/publicOrigins'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
+import { CORRECTIONS_TIMEOUT_MS, prepareCorrectionsTranscript } from '@/lib/speakCorrections'
+import { useSpeakModalFocus } from './useSpeakModalFocus'
 
 interface Conversation {
   id: string
@@ -91,6 +94,7 @@ interface Message {
 interface SpeakHistoryPanelProps {
   open: boolean
   onClose: () => void
+  suspended?: boolean
   baseLangCode?: string
   onExtractConversation?: (conversation: {
     conversationId: string
@@ -140,7 +144,7 @@ function formatDate(iso: string, t: (key: string, vars?: Record<string, string |
   return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
 }
 
-export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConversation }: SpeakHistoryPanelProps) {
+export function SpeakHistoryPanel({ open, onClose, suspended = false, baseLangCode, onExtractConversation }: SpeakHistoryPanelProps) {
   const { user } = useAuth()
   const { t } = useTranslation()
   const [conversations, setConversations] = useState<Conversation[]>([])
@@ -151,11 +155,22 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
   const [corrections, setCorrections] = useState<Correction[] | null>(null)
   const [correctionsLoading, setCorrectionsLoading] = useState(false)
   const [correctionsError, setCorrectionsError] = useState<string | null>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const correctionsAbortRef = useRef<AbortController | null>(null)
   const defaultDeckName = `${t('speak.extractWords.defaultDeckName')} - ${new Date().toLocaleDateString()}`
+
+  useSpeakModalFocus({ open, dialogRef, onClose, suspended })
+
+  useEffect(() => {
+    correctionsAbortRef.current?.abort()
+    correctionsAbortRef.current = null
+    setCorrectionsLoading(false)
+  }, [open, selectedId])
 
   // Load conversations when panel opens
   useEffect(() => {
     if (!open || !user) return
+    let cancelled = false
 
     setLoading(true)
     setSelectedId(null)
@@ -168,9 +183,11 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
       .order('started_at', { ascending: false })
       .limit(50)
       .then(({ data, error }) => {
+        if (cancelled) return
         if (!error && data) setConversations(data as Conversation[])
         setLoading(false)
       })
+    return () => { cancelled = true }
   }, [open, user])
 
   // Load messages when a conversation is selected
@@ -179,14 +196,17 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
       setCorrections(null)
       return
     }
+    let cancelled = false
+    const requestedId = selectedId
 
     setMessagesLoading(true)
     supabase
       .from('speak_messages')
       .select('*')
-      .eq('conversation_id', selectedId)
+      .eq('conversation_id', requestedId)
       .order('created_at', { ascending: true })
       .then(({ data, error }) => {
+        if (cancelled) return
         if (!error && data) setMessages(data as Message[])
         setMessagesLoading(false)
       })
@@ -195,12 +215,22 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
     const conv = conversations.find((c) => c.id === selectedId)
     setCorrections(conv?.corrections ?? null)
     setCorrectionsError(null)
+    return () => { cancelled = true }
   }, [selectedId, conversations])
 
   const selectedConversation = conversations.find((c) => c.id === selectedId)
 
   const fetchHistoryCorrections = async () => {
     if (!selectedConversation || correctionsLoading || messages.length < 4) return
+    correctionsAbortRef.current?.abort()
+    const controller = new AbortController()
+    correctionsAbortRef.current = controller
+    const requestedConversation = selectedConversation
+    let timedOut = false
+    const timeoutId = window.setTimeout(() => {
+      timedOut = true
+      controller.abort()
+    }, CORRECTIONS_TIMEOUT_MS)
     setCorrectionsLoading(true)
     setCorrectionsError(null)
     try {
@@ -217,13 +247,15 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
+        signal: controller.signal,
         body: JSON.stringify({
           mode: 'corrections',
-          transcript: messages.map((m) => ({ role: m.role, content: m.content })),
-          language: selectedConversation.language,
+          transcript: prepareCorrectionsTranscript(messages),
+          language: requestedConversation.language,
           native_language: baseLangCode || 'en',
         }),
       })
+      if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
       if (!res.ok) {
         const errorData = await res.json().catch(() => null) as SpeakApiErrorPayload | null
         console.warn('[SpeakHistoryPanel] Corrections request failed:', {
@@ -238,6 +270,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
         return
       }
       const data = await res.json().catch(() => null) as { corrections?: unknown } | null
+      if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
       if (!data || !Array.isArray(data.corrections)) {
         console.warn('[SpeakHistoryPanel] Corrections response missing corrections array:', data)
         setCorrectionsError(t('speak.history.correctionsUnavailable'))
@@ -248,13 +281,20 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
       setCorrections(list)
       await supabase.from('speak_conversations')
         .update({ corrections: list })
-        .eq('id', selectedConversation.id)
-      setConversations((prev) => prev.map((c) => c.id === selectedConversation.id ? { ...c, corrections: list } : c))
+        .eq('id', requestedConversation.id)
+        .eq('user_id', user?.id ?? '')
+      if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
+      setConversations((prev) => prev.map((c) => c.id === requestedConversation.id ? { ...c, corrections: list } : c))
     } catch (err) {
+      if (controller.signal.aborted && !timedOut) return
       console.error('Corrections fetch failed:', err)
       setCorrectionsError(t('speak.history.correctionsUnavailable'))
     } finally {
-      setCorrectionsLoading(false)
+      window.clearTimeout(timeoutId)
+      if (correctionsAbortRef.current === controller) {
+        correctionsAbortRef.current = null
+        setCorrectionsLoading(false)
+      }
     }
   }
 
@@ -275,11 +315,20 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
     }
   }
 
-  return (
+  if (!open) return null
+
+  return createPortal(
     <div
-      className="fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-route-top-offset)] z-40 flex flex-col bg-[var(--surface-1)]/95 backdrop-blur-xl transition-transform duration-300"
-      style={{ transform: open ? 'translateX(0)' : 'translateX(100%)' }}
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="speak-history-title"
+      aria-hidden={suspended || undefined}
+      inert={suspended || undefined}
+      tabIndex={-1}
+      className="theme-cosmos speak-history-panel fixed inset-x-0 bottom-[var(--fixed-bottom-ui-offset)] top-[var(--glassy-route-top-offset)] z-40 flex flex-col bg-[var(--surface-1)]/95 backdrop-blur-xl outline-none"
     >
+      <h2 id="speak-history-title" className="sr-only">{t('speak.history.title')}</h2>
       {/* ── Header ── */}
       <div className="shrink-0 border-b border-[var(--border-subtle)] bg-[var(--surface-1)]/80 backdrop-blur-md">
         <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
@@ -340,8 +389,9 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
 
           <button
             onClick={onClose}
-            className="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)]"
             title={t('speak.history.close')}
+            aria-label={t('speak.history.close')}
           >
             <X className="h-5 w-5" />
           </button>
@@ -559,6 +609,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode, onExtractConver
 
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }

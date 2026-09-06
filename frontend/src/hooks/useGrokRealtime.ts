@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GrokCategory } from '@/data/grokCategories'
 import type { GrokVoice } from '@/data/grokVoices'
 import { buildGrokSessionConfig, getGrokTurnProtocol } from '@/lib/grokSessionConfig'
+import { emptyGrokTranscript, grokTranscriptText, mergeGrokTranscript } from '@/lib/grokTranscript'
 import {
   getGrokIOSAudioSessionSnapshot,
   getNavigatorAudioSession,
@@ -53,6 +54,7 @@ const PCM_FLUSH_SAMPLES = 2400
 const SILENT_FIRST_CHUNK_PEAK_THRESHOLD = 0.01
 const GROK_REALTIME_MODEL = 'grok-voice-think-fast-1.0'
 const GROK_REALTIME_URL = `wss://api.x.ai/v1/realtime?model=${encodeURIComponent(GROK_REALTIME_MODEL)}`
+const CONNECTION_TIMEOUT_MS = 12_000
 const INPUT_COMMIT_ACK_TIMEOUT_MS = 3000
 const SERVER_VAD_SILENCE_MS = 500
 const USER_TRANSCRIPT_DRAIN_TIMEOUT_MS = 2000
@@ -295,6 +297,8 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const { t } = useTranslation()
   const [status, setStatus] = useState<GrokStatus>('idle')
   const [messages, setMessages] = useState<GrokMessage[]>([])
+  const messagesRef = useRef(messages)
+  useEffect(() => { messagesRef.current = messages }, [messages])
   const [error, setError] = useState<string | null>(null)
   const [planLimited, setPlanLimited] = useState(false)
   const [isConnected, setIsConnected] = useState(false)
@@ -303,6 +307,8 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const audioContextRef = useRef<AudioContext | null>(null)
   const silentPrimerRef = useRef<HTMLAudioElement | null>(null)
   const wsRef = useRef<WebSocket | null>(null)
+  const tokenRequestRef = useRef<AbortController | null>(null)
+  const connectionGenerationRef = useRef(0)
   const workletRef = useRef<AudioWorkletNode | null>(null)
   const micSourceRef = useRef<MediaStreamAudioSourceNode | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
@@ -315,6 +321,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const sessionParamsRef = useRef<StartGrokSessionParams | null>(null)
   const currentAssistantIndexRef = useRef<number | null>(null)
   const pendingAssistantContentRef = useRef<string>('')
+  const assistantTranscriptRef = useRef(emptyGrokTranscript())
   const assistantResponseSeqRef = useRef(0)
   const audioChunkSeqRef = useRef(0)
   const firstChunkSeenForResponseRef = useRef<Set<number>>(new Set())
@@ -768,25 +775,27 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     }
   }, [persistConversationStart])
 
-  const appendAssistantDelta = useCallback((delta: string) => {
-    if (!delta) return
+  const updateAssistantTranscript = useCallback((source: 'text' | 'audio' | 'audio_done', value: string) => {
+    assistantTranscriptRef.current = mergeGrokTranscript(assistantTranscriptRef.current, source, value)
+    const content = grokTranscriptText(assistantTranscriptRef.current)
+    if (!content || content === pendingAssistantContentRef.current) return
     if (!conversationInsertedRef.current) {
       void trackPersistencePromise(persistConversationStart())
     }
 
-    pendingAssistantContentRef.current += delta
+    pendingAssistantContentRef.current = content
 
     setMessages((prev) => {
       const existingIndex = currentAssistantIndexRef.current
-      if (existingIndex === null) {
+      if (existingIndex === null || existingIndex >= prev.length) {
         const nextIndex = prev.length
         currentAssistantIndexRef.current = nextIndex
-        return [...prev, { role: 'assistant', content: delta, timestamp: Date.now() }]
+        return [...prev, { role: 'assistant', content, timestamp: Date.now() }]
       }
 
       return prev.map((message, index) => (
         index === existingIndex
-          ? { ...message, content: message.content + delta }
+          ? { ...message, content }
           : message
       ))
     })
@@ -889,6 +898,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     const type = typeof payload.type === 'string' ? payload.type : ''
     switch (type) {
       case 'response.created': {
+        assistantTranscriptRef.current = emptyGrokTranscript()
         responseInProgressRef.current = true
         if (audioSessionTypeAtResponseCreateRef.current === null) {
           audioSessionTypeAtResponseCreateRef.current = getIOSAudioSessionType()
@@ -904,13 +914,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         const delta = typeof payload.delta === 'string' ? payload.delta : ''
         if (GROK_AUDIO_DEBUG) currentResponseTextDeltaSeenRef.current = true
         if (GROK_VERIFY_L0) grokVerifyTextDeltaAccumRef.current += delta
-        appendAssistantDelta(delta)
+        updateAssistantTranscript('text', delta)
         break
       }
       case 'response.output_audio_transcript.delta': {
         const delta = typeof payload.delta === 'string' ? payload.delta : ''
         if (GROK_VERIFY_L0) grokVerifyAudioTranscriptAccumRef.current += delta
-        appendAssistantDelta(delta)
+        updateAssistantTranscript('audio', delta)
         break
       }
       case 'response.output_audio_transcript.done': {
@@ -926,6 +936,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
             transcriptLength: transcript.length,
           })
         }
+        updateAssistantTranscript('audio_done', transcript)
         break
       }
       case 'response.output_audio.delta': {
@@ -1159,10 +1170,16 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       default:
         break
     }
-  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, playHtmlBufferedAudio, prepareIOSPlaybackRouteAfterMic, rejectPendingInputCommit, resetAudioQueue, t, trackPersistencePromise])
+  }, [updateAssistantTranscript, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, playHtmlBufferedAudio, prepareIOSPlaybackRouteAfterMic, rejectPendingInputCommit, resetAudioQueue, t, trackPersistencePromise])
 
   const fetchEphemeralToken = useCallback(async (): Promise<string> => {
+    tokenRequestRef.current?.abort()
+    const controller = new AbortController()
+    tokenRequestRef.current = controller
+    const timer = window.setTimeout(() => controller.abort(), 20_000)
+    try {
     const { data, error: sessionError } = await supabase.auth.getSession()
+    controller.signal.throwIfAborted()
     if (sessionError || !data.session?.access_token) {
       throw new Error(t('speak.error.sessionNotConnected'))
     }
@@ -1171,6 +1188,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
     const response = await fetch(publicApiUrl('/api/grok-token'), {
       method: 'POST',
+      signal: controller.signal,
       headers: {
         Authorization: `Bearer ${data.session.access_token}`,
       },
@@ -1197,6 +1215,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     }
 
     return token
+    } catch (error) {
+      if (controller.signal.aborted) throw new Error(t('speak.error.realtimeConnectionFailed'))
+      throw error
+    } finally {
+      window.clearTimeout(timer)
+      if (tokenRequestRef.current === controller) tokenRequestRef.current = null
+    }
   }, [t])
 
   const flushPendingInputAudio = useCallback(async () => {
@@ -1381,6 +1406,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const sessionTimerRef = useRef<number | null>(null)
 
   const teardownSession = useCallback(async () => {
+    connectionGenerationRef.current++
+    tokenRequestRef.current?.abort()
+    tokenRequestRef.current = null
     if (teardownPromiseRef.current) return teardownPromiseRef.current
 
     const teardownPromise = (async () => {
@@ -1461,23 +1489,42 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const teardownSessionRef = useRef(teardownSession)
   useEffect(() => { teardownSessionRef.current = teardownSession }, [teardownSession])
 
-  const connectAndConfigure = useCallback(async (params: StartGrokSessionParams): Promise<void> => {
+  const connectAndConfigure = useCallback(async (params: StartGrokSessionParams, recentConversation: GrokMessage[] = []): Promise<void> => {
+    const generation = connectionGenerationRef.current
     primeAudioForIOS()
     setStatus('connecting')
     setPlanLimited(false)
     setError(null)
 
     const token = await fetchEphemeralToken()
+    if (!mountedRef.current || generation !== connectionGenerationRef.current) {
+      throw new Error(t('speak.error.realtimeConnectionFailed'))
+    }
     const ws = new WebSocket(GROK_REALTIME_URL, [`xai-client-secret.${token}`])
     const sessionConversationId = conversationIdRef.current
     wsRef.current = ws
 
     await new Promise<void>((resolve, reject) => {
       let settled = false
+      const connectionTimeout = window.setTimeout(() => {
+        if (settled) return
+        settled = true
+        reject(new Error(t('speak.error.realtimeConnectionFailed')))
+        try { ws.close(1000, 'connection timed out') } catch { /* already closed */ }
+      }, CONNECTION_TIMEOUT_MS)
 
       ws.onopen = () => {
+        if (settled || !mountedRef.current || wsRef.current !== ws || generation !== connectionGenerationRef.current) {
+          window.clearTimeout(connectionTimeout)
+          if (!settled) {
+            settled = true
+            reject(new Error(t('speak.error.realtimeConnectionFailed')))
+          }
+          ws.close(1000, 'session no longer active')
+          return
+        }
         try {
-          const sessionConfig = buildGrokSessionConfig(params)
+          const sessionConfig = buildGrokSessionConfig({ ...params, recentConversation })
           if (GROK_AUDIO_DEBUG) {
             grokAudioDebug('grokSessionConfig:sent', {
               model: GROK_REALTIME_MODEL,
@@ -1498,18 +1545,24 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           setIsConnected(true)
           setStatus('idle')
           settled = true
+          window.clearTimeout(connectionTimeout)
           resolve()
         } catch (err) {
           settled = true
+          window.clearTimeout(connectionTimeout)
+          ws.close(1000, 'session configuration failed')
           reject(err)
         }
       }
 
       ws.onmessage = (event) => {
+        if (wsRef.current !== ws || !mountedRef.current) return
         void handleSocketMessage(event as MessageEvent<string>)
       }
 
       ws.onerror = () => {
+        window.clearTimeout(connectionTimeout)
+        if (wsRef.current !== ws) return
         console.error('[grok-realtime] WebSocket error')
         responseInProgressRef.current = false
         rejectPendingInputCommit(t('speak.error.realtimeConnectionFailed'))
@@ -1518,13 +1571,22 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           reject(new Error(t('speak.error.realtimeConnectionFailed')))
         }
         if (mountedRef.current) {
+          setIsConnected(false)
+          setIsListening(false)
           setPlanLimited(false)
           setError(t('speak.error.realtimeConnectionFailed'))
           setStatus('error')
         }
+        try { ws.close(1000, 'connection failed') } catch { /* already closed */ }
       }
 
       ws.onclose = (event) => {
+        window.clearTimeout(connectionTimeout)
+        if (!settled) {
+          settled = true
+          reject(new Error(t('speak.error.realtimeConnectionFailed')))
+        }
+        if (wsRef.current !== ws) return
         console.log('[grok-realtime] WebSocket closed:', event.code, event.reason)
         wsRef.current = null
         responseInProgressRef.current = false
@@ -1772,6 +1834,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     endedConversationIdsRef.current.delete(conversationIdRef.current)
     currentAssistantIndexRef.current = null
     pendingAssistantContentRef.current = ''
+    assistantTranscriptRef.current = emptyGrokTranscript()
     if (GROK_AUDIO_DEBUG) {
       assistantResponseSeqRef.current = 0
       audioChunkSeqRef.current = 0
@@ -1804,17 +1867,19 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     // iOS audio unlock must run inside the user gesture before any await.
     primeAudioForIOS()
     await teardownSession()
+    const generation = connectionGenerationRef.current
     prepareSessionState(params, clearMessages)
 
     try {
-      await connectAndConfigure(params)
+      await connectAndConfigure(params, clearMessages ? [] : messagesRef.current)
+      if (generation !== connectionGenerationRef.current || !mountedRef.current) return
       sessionTimerRef.current = window.setTimeout(() => {
         sessionTimerRef.current = null
         void teardownSessionRef.current()
       }, 10 * 60 * 1000)
     } catch (err) {
       console.warn('[grok-realtime] Session connection failed:', err)
-      if (mountedRef.current) {
+      if (mountedRef.current && generation === connectionGenerationRef.current) {
         setIsConnected(false)
         setIsListening(false)
         setPlanLimited(err instanceof SpeakPlanLimitError)

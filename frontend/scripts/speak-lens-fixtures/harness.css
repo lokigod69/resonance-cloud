@@ -1,0 +1,9 @@
+@import "../../src/index.css";
+@source "../../src";
+
+/* Deterministic camera image; the real Lens chrome and layout remain intact. */
+.lens-camera-stage {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(247, 200, 67, 0.28), transparent 24%),
+    linear-gradient(145deg, #263934 0%, #17251f 48%, #0b1110 100%);
+}

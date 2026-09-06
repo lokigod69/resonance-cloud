@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { X } from 'lucide-react'
 import { WordChips } from '@/components/generate/shared/GlassInput'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
@@ -6,6 +7,7 @@ import { useExtractVocabulary, type ExtractVocabularyItem } from '@/hooks/useExt
 import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
 import { useTranslation } from '@/hooks/useTranslation'
 import { canonicalizeLanguageValue } from '@/lib/languages'
+import { useSpeakModalFocus } from './useSpeakModalFocus'
 
 interface ExtractWordsModalProps {
   messages?: Array<{ role: 'user' | 'assistant'; content: string }>
@@ -34,6 +36,9 @@ export function ExtractWordsModal({
   const [hasLoaded, setHasLoaded] = useState(false)
   const [retryToken, setRetryToken] = useState(0)
   const importInFlightRef = useRef(false)
+  const dialogRef = useRef<HTMLDivElement>(null)
+
+  useSpeakModalFocus({ open: true, dialogRef, onClose, initialFocusSelector: '[data-speak-modal-initial-focus]' })
 
   const words = useMemo(() => items.map((item) => item.word), [items])
   const details = useMemo(
@@ -85,18 +90,26 @@ export function ExtractWordsModal({
     }
   }
 
-  return (
-    <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/70 px-4 py-6 backdrop-blur-md">
-      <div className="w-full max-w-2xl overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-1)] text-[var(--text-primary)] shadow-2xl">
+  return createPortal(
+    <div className="theme-cosmos fixed inset-0 z-[90] flex items-center justify-center bg-black/70 px-4 py-6 backdrop-blur-md">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="speak-extract-title"
+        tabIndex={-1}
+        className="w-full max-w-2xl overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-1)] text-[var(--text-primary)] shadow-2xl outline-none"
+      >
         <div className="flex items-center justify-between border-b border-[var(--border-subtle)] px-5 py-4">
           <div>
-            <h2 className="text-base font-semibold">{t('speak.extractWords.title')}</h2>
+            <h2 id="speak-extract-title" className="text-base font-semibold">{t('speak.extractWords.title')}</h2>
             <p className="text-xs text-[var(--text-muted)]">{targetLanguage} {'->'} {baseLanguage}</p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)]"
+            data-speak-modal-initial-focus
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)]"
             aria-label={t('speak.extractWords.cancelButton')}
           >
             <X className="h-4 w-4" />
@@ -177,6 +190,7 @@ export function ExtractWordsModal({
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }

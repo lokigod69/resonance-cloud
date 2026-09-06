@@ -3,6 +3,7 @@ import {
   resolveNativeLangName,
   getLevelInstructions,
   buildStudyAddendum,
+  buildGreetingInstruction,
   type StudyWord,
 } from './pedagogy'
 import { buildRoleplaySystemPrompt } from './roleplay'
@@ -56,26 +57,5 @@ export interface GenericGreetingInput {
 }
 
 export function buildGenericGreeting(input: GenericGreetingInput): string {
-  const { level, targetLangName, nativeLangName, studyWord } = input
-
-  if (level === 'zero') {
-    if (studyWord) {
-      return `Open in ${nativeLangName} with a short welcome. Naturally weave in the ${targetLangName} word "${studyWord.word}" (meaning "${studyWord.translation}") — say it, give its meaning, use it in a short sentence. End with a simple question. Two or three short sentences.`
-    }
-    return `Open in ${nativeLangName} with a short welcome. Introduce one ${targetLangName} word: say the word, give its ${nativeLangName} meaning, and use it in one short sentence. End with a simple question. Keep it to two or three short sentences.`
-  }
-
-  if (level === 'beginner') {
-    if (studyWord) {
-      return `Open in ${nativeLangName}. Weave the ${targetLangName} word "${studyWord.word}" (meaning "${studyWord.translation}") into your greeting naturally. End with one question. Three sentences.`
-    }
-    return `Open in ${nativeLangName}. Weave in one ${targetLangName} word naturally — not as a vocabulary lesson. End with one question. Three sentences.`
-  }
-
-  if (level === 'advanced') {
-    return `Open the conversation in ${targetLangName}. Be true to who you are. Keep it natural.`
-  }
-
-  // intermediate (default / fallback)
-  return `Open the conversation in ${targetLangName} with light ${nativeLangName} support where helpful. Be conversational and brief. End with one question.`
+  return buildGreetingInstruction(input)
 }
