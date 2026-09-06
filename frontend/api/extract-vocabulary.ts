@@ -3,6 +3,7 @@
 // voice tutor transcripts for image-less text decks.
 
 import { createClient } from '@supabase/supabase-js'
+import { requestFetch, withRequestDeadline } from './_shared/requestDeadline'
 import { optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, fetchWithTimeout, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
@@ -131,6 +132,7 @@ function createServiceClient() {
   const { url, key } = getSupabaseServiceEnv()
   if (!url || !key) throw new ApiError(500, 'Conversation service is not configured')
   return createClient(url, key, {
+    global: { fetch: requestFetch },
     auth: {
       persistSession: false,
       autoRefreshToken: false,
@@ -287,6 +289,10 @@ export async function OPTIONS(req?: Request): Promise<Response> {
 }
 
 export async function POST(req: Request): Promise<Response> {
+  return withRequestDeadline(req, handlePost)
+}
+
+async function handlePost(req: Request): Promise<Response> {
   let body: ExtractBody
   let userId: string
   try {
@@ -294,6 +300,7 @@ export async function POST(req: Request): Promise<Response> {
     userId = user.id
     const rawBody = await readJsonWithLimit<unknown>(req, EXTRACT_BODY_MAX_BYTES)
     body = validateBody(rawBody)
+    if (!process.env.OPENROUTER_API_KEY) throw new ApiError(503, 'Vocabulary extraction service is not configured')
     await consumeApiQuota(user.id, 'voice_chat')
   } catch (err) {
     if (err instanceof ApiError) return apiErrorResponse(req, err)
@@ -319,7 +326,7 @@ export async function POST(req: Request): Promise<Response> {
 
   const apiKey = process.env.OPENROUTER_API_KEY
   if (!apiKey) {
-    return errorResponse(req, 500, 'Vocabulary extraction service is not configured')
+    return errorResponse(req, 503, 'Vocabulary extraction service is not configured')
   }
 
   const startedAt = Date.now()

@@ -37,7 +37,7 @@ import {
 import { useToast } from '@/components/Toast'
 import WordDetailPanel from '@/components/admin/WordDetailPanel'
 import StarRating from '@/components/ui/StarRating'
-import { getCardThumbUrl } from '@/lib/imageUrls'
+import { getCardPreviewUrl } from '@/lib/imageUrls'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -80,6 +80,7 @@ type WordRecord = {
   status: string
   video_url: string | null
   thumbnail_url: string | null
+  card_thumbnail_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
   error_message: string | null
@@ -620,9 +621,9 @@ export default function Content() {
                         >
                           {/* Thumbnail */}
                           <div className="h-10 w-10 rounded bg-zinc-800 flex-shrink-0 overflow-hidden flex items-center justify-center">
-                            {word.thumbnail_url ? (
+                            {word.card_thumbnail_url || word.thumbnail_url ? (
                               <img
-                                src={deck.deck_type === 'card' ? getCardThumbUrl(word.thumbnail_url) ?? undefined : word.thumbnail_url}
+                                src={deck.deck_type === 'card' ? getCardPreviewUrl(word.card_thumbnail_url, word.thumbnail_url) ?? undefined : word.thumbnail_url ?? undefined}
                                 alt={word.word}
                                 className="h-full w-full object-cover"
                               />

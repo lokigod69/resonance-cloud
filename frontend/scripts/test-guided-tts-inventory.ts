@@ -4,7 +4,7 @@
  * Run: npx tsx scripts/test-guided-tts-inventory.ts
  */
 
-import { GUIDED_LESSONS } from '../src/data/guidedLessons.ts'
+import { GUIDED_LESSONS, loadAllGuidedLessons } from '../src/data/guidedLessons.ts'
 import {
   DEFAULT_MODEL_ID,
   DEFAULT_OUTPUT_FORMAT,
@@ -21,6 +21,8 @@ import {
   voiceSettingsHash,
   type VoiceProfile,
 } from './guided-tts-inventory.ts'
+
+await loadAllGuidedLessons()
 
 let passes = 0
 let failures = 0

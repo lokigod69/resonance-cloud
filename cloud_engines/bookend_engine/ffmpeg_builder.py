@@ -2,6 +2,8 @@ import json
 import subprocess
 from pathlib import Path
 
+from .subprocess_limits import ENCODE_TIMEOUT_SECONDS, PROBE_TIMEOUT_SECONDS
+
 
 def probe_media(file_path: str) -> dict:
     """
@@ -23,6 +25,7 @@ def probe_media(file_path: str) -> dict:
         ],
         capture_output=True,
         text=True,
+        timeout=PROBE_TIMEOUT_SECONDS,
     )
 
     if result.returncode != 0:
@@ -89,12 +92,15 @@ def concatenate_segments(
         output_path,
     ]
 
-    result = subprocess.run(cmd, capture_output=True, text=True)
-
     try:
-        concat_file.unlink(missing_ok=True)
-    except Exception:
-        pass
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, timeout=ENCODE_TIMEOUT_SECONDS,
+        )
+    finally:
+        try:
+            concat_file.unlink(missing_ok=True)
+        except Exception:
+            pass
 
     if result.returncode != 0:
         raise RuntimeError(f"FFMPEG concat failed: {result.stderr[-500:]}")
@@ -123,7 +129,9 @@ def re_encode_assembled_video(
         output_path,
     ]
 
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, timeout=ENCODE_TIMEOUT_SECONDS,
+    )
     if result.returncode != 0:
         raise RuntimeError(f"FFMPEG re-encode failed: {result.stderr[-500:]}")
 

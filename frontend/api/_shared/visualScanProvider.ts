@@ -1,4 +1,5 @@
 import { ApiError } from './http'
+import { assertRequestActive, fetchWithRequestDeadline } from './requestDeadline'
 
 export const GEMINI_VISION_MODEL = 'gemini-2.5-flash-lite'
 
@@ -166,11 +167,9 @@ export function createGeminiVisualScanProvider(
   fetchImpl: typeof fetch = fetch,
 ): VisualScanProvider {
   async function performScan(request: VisualScanRequest): Promise<VisualScanProviderResult> {
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 20000)
     let response: Response
     try {
-      response = await fetchImpl(GEMINI_VISION_ENDPOINT, {
+      response = await fetchWithRequestDeadline(GEMINI_VISION_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -191,15 +190,12 @@ export function createGeminiVisualScanProvider(
             temperature: 0.2,
           },
         }),
-        signal: controller.signal,
-      })
+      }, 20_000, fetchImpl)
     } catch (error) {
       if (error instanceof Error && error.name === 'AbortError') {
         throw new ApiError(502, 'Vision service timed out')
       }
       throw new ApiError(502, 'Vision service unavailable')
-    } finally {
-      clearTimeout(timeout)
     }
 
     if (!response.ok) {
@@ -241,6 +237,7 @@ export function createGeminiVisualScanProvider(
           && error.status === 502
           && error.message === 'Vision service unavailable'
         if (!transient || Date.now() - startedAt > RETRY_ELAPSED_BUDGET_MS) throw error
+        assertRequestActive()
         await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS))
         return performScan(request)
       }

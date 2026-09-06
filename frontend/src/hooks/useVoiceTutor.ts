@@ -14,6 +14,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { isPlanLimitSpeakCode, SpeakPlanLimitError } from '@/lib/speakErrors'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 import { capReplayAudio } from '@/lib/speakReplayMemory'
+import { assertClientActive, withClientDeadline } from '@/lib/clientDeadline'
 
 const IS_SAFARI = typeof navigator !== 'undefined' && (
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
@@ -431,33 +432,13 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         body.gemini_character_mode_id = geminiModeIdRef.current
         body.gemini_voice_name = geminiVoiceNameRef.current
         body.gemini_accent_id = geminiAccentIdRef.current
-        // Inject a lightweight vibe directive so the LLM can colour text to
-        // match the selected Gemini mode (not just TTS pronunciation).
-        // Level-scaled: 'zero' gets the lightest "flavor" tier, 'beginner'
-        // the "hint" tier, 'intermediate'/'advanced' the full directive.
-        // Single-injection invariant: server never re-prepends this string
-        // into the greeting user message.
-        const vibeMode = getGeminiCharacterMode(geminiModeIdRef.current)
-        if (vibeMode) {
-          const currentLevel = levelRef.current || 'intermediate'
-          const tier =
-            currentLevel === 'zero'     ? vibeMode.geminiVibeFlavor :
-            currentLevel === 'beginner' ? vibeMode.geminiVibeHint :
-                                          vibeMode.geminiVibeDirective
-          body.gemini_vibe_directive = tier
-        }
-        // Intentionally no character_* fields — Gemini mode stays TTS-only
-        // for the style prompt; the vibe directive above is the text-layer
-        // equivalent and is handled by a dedicated server branch.
+        // The server resolves the selected mode's level-scaled instructions.
       } else {
         const currentChar = characterRef.current
         if (currentChar) {
           const resolved = resolveCharacterVoice(currentChar, lang)
           if (resolved.mistralVoiceId) body.voice_id = resolved.mistralVoiceId
-          body.character_name = currentChar.name
-          body.character_tier = currentChar.tier
-          if (currentChar.identity) body.character_identity = currentChar.identity
-          body.character_directive = currentChar.directive
+          body.character_id = currentChar.id
         } else {
           if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
         }
@@ -467,46 +448,42 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         body.study_words = studyWordsRef.current
       }
 
-      const controller = new AbortController()
-      const timer = setTimeout(() => controller.abort(), VOICE_CHAT_TIMEOUT_MS)
-
-      let res: Response
+      let result: { res: Response; json: (VoiceChatResponse & SpeakApiErrorPayload) | null }
       try {
-        const { data, error: sessionError } = await supabase.auth.getSession()
-        if (sessionError || !data.session?.access_token) {
-          throw new Error(t('speak.error.sessionNotConnected'))
-        }
+        result = await withClientDeadline(async (signal) => {
+          const { data, error: sessionError } = await supabase.auth.getSession()
+          assertClientActive(signal)
+          if (sessionError || !data.session?.access_token) {
+            throw new Error(t('speak.error.sessionNotConnected'))
+          }
 
-        res = await fetch(publicApiUrl('/api/voice-chat'), {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${data.session.access_token}`,
-          },
-          body: JSON.stringify(body),
-          signal: controller.signal,
-        })
+          const res = await fetch(publicApiUrl('/api/voice-chat'), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${data.session.access_token}`,
+            },
+            body: JSON.stringify(body),
+            signal,
+          })
+
+          let json: (VoiceChatResponse & SpeakApiErrorPayload) | null = null
+          try {
+            json = await res.json() as VoiceChatResponse & SpeakApiErrorPayload
+          } catch {
+            assertClientActive(signal)
+            if (res.ok) throw new Error(t('speak.error.requestFailed'))
+          }
+          assertClientActive(signal)
+          return { res, json }
+        }, VOICE_CHAT_TIMEOUT_MS)
       } catch (err) {
-        clearTimeout(timer)
-        if (err instanceof Error && err.name === 'AbortError') {
-          throw new Error(t('speak.error.requestFailed'))
+        if (err instanceof Error && (err.name === 'AbortError' || err.name === 'TimeoutError')) {
+          throw new Error(t('speak.error.requestTimedOut'))
         }
         throw err
       }
-
-      let json: (VoiceChatResponse & SpeakApiErrorPayload) | null = null
-      try {
-        json = await res.json() as VoiceChatResponse & SpeakApiErrorPayload
-      } catch (err) {
-        if (err instanceof Error && err.name === 'AbortError') {
-          throw new Error(t('speak.error.requestFailed'))
-        }
-        if (res.ok) {
-          throw new Error(t('speak.error.requestFailed'))
-        }
-      } finally {
-        clearTimeout(timer)
-      }
+      const { res, json } = result
 
       if (!res.ok) {
         const errJson = json as SpeakApiErrorPayload | null

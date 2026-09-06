@@ -3,6 +3,8 @@ import { useSearchParams } from 'react-router-dom'
 import {
   getGuidedPathOverview,
   getGuidedTodayPathOptions,
+  isGuidedLanguageLoaded,
+  loadGuidedLessonsForLanguage,
   type GuidedPathMetadata,
   type GuidedTargetLanguage,
 } from '@/data/guidedLessons'
@@ -19,7 +21,7 @@ import {
   type TodayProgressState,
 } from '@/lib/todayProgress'
 import {
-  buildGuidedCheckpointPlan,
+  countCompletedGuidedCheckpointPaths,
   hasPendingGuidedCheckpoint,
 } from '@/lib/guidedCheckpoint'
 import {
@@ -35,6 +37,7 @@ import { toGuidedLanguageName, toWizardLanguageName } from '@/lib/targetLanguage
 import { trackLearningAction } from '@/lib/analytics'
 import { BETA_TARGET_LANGUAGES } from '@/lib/languages'
 import { useTranslation } from '@/hooks/useTranslation'
+import { Button } from '@/components/ui/button'
 import '@/components/today/Today.css'
 
 // Guided-space names of the beta target languages ('Bisaya' → 'Cebuano').
@@ -88,6 +91,13 @@ export default function Today() {
   const [selectedLanguage, setSelectedLanguageState] = useState<GuidedTargetLanguage>(
     queryPathLanguage ?? initialLanguage,
   )
+  const [loadedLanguage, setLoadedLanguage] = useState<GuidedTargetLanguage | null>(() => (
+    isGuidedLanguageLoaded(queryPathLanguage ?? initialLanguage)
+      ? (queryPathLanguage ?? initialLanguage)
+      : null
+  ))
+  const [failedLanguage, setFailedLanguage] = useState<GuidedTargetLanguage | null>(null)
+  const [languageLoadAttempt, setLanguageLoadAttempt] = useState(0)
   const defaultPathId = useMemo(
     () => pickDefaultPathForLanguage(pathOptions, selectedLanguage),
     [pathOptions, selectedLanguage],
@@ -109,7 +119,7 @@ export default function Today() {
   )
   const checkpointPlan = useMemo(() => (
     hasPendingGuidedCheckpoint(progress, selectedVibeId)
-      ? buildGuidedCheckpointPlan(progress, selectedVibeId)
+      ? { completedPathCount: countCompletedGuidedCheckpointPaths(progress, selectedVibeId) }
       : undefined
   ), [progress, selectedVibeId])
   const lesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
@@ -119,6 +129,22 @@ export default function Today() {
     if (currentIndex < 0) return undefined
     return overview.lessons[currentIndex + 1]?.lesson
   }, [lesson, overview.lessons])
+
+  useEffect(() => {
+    let active = true
+    if (!isGuidedLanguageLoaded(selectedLanguage)) setLoadedLanguage(null)
+    setFailedLanguage(null)
+    void loadGuidedLessonsForLanguage(selectedLanguage)
+      .then(() => {
+        if (active) setLoadedLanguage(selectedLanguage)
+      })
+      .catch(() => {
+        if (active) setFailedLanguage(selectedLanguage)
+      })
+    return () => {
+      active = false
+    }
+  }, [languageLoadAttempt, selectedLanguage])
 
   useEffect(() => {
 
@@ -311,7 +337,18 @@ export default function Today() {
           </div>
         )}
 
-        {!sessionActive && (
+        {failedLanguage === selectedLanguage ? (
+          <div className="grid min-h-[45vh] place-items-center gap-4 text-center" role="alert">
+            <p className="text-sm text-[var(--text-secondary)]">{t('errors.route.title')}</p>
+            <Button type="button" onClick={() => setLanguageLoadAttempt((attempt) => attempt + 1)}>
+              {t('errors.route.retry')}
+            </Button>
+          </div>
+        ) : loadedLanguage !== selectedLanguage ? (
+          <div className="grid min-h-[45vh] place-items-center" role="status" aria-live="polite">
+            <p className="text-sm text-[var(--text-secondary)]">{t('common.loading')}</p>
+          </div>
+        ) : !sessionActive ? (
           <TodayPathOverview
             overview={overview}
             pathOptions={pathOptions}
@@ -331,9 +368,9 @@ export default function Today() {
             onSelectLesson={handleSelectLesson}
             onStartLesson={handleStartSelectedLesson}
           />
-        )}
+        ) : null}
 
-        {sessionActive && lesson && (
+        {loadedLanguage === selectedLanguage && sessionActive && lesson && (
           <TodaySession
             key={sessionKey}
             lesson={lesson}

@@ -48,17 +48,31 @@ async def finalize_failure(
     user_id: str,
     failed_stage: str,
     error_message: Optional[str] = None,
+    expected_operation_id: Optional[str] = None,
 ) -> bool:
-    """Terminal failure via `mark_word_failed` RPC + refund on rowcount=1.
+    """Atomically own terminal failure and refund its active charge operation.
 
-    Returns True iff this replica owned the failure (and refunded).
+    Returns True iff this replica owned the failure. Refund eligibility and the
+    exactly-once credit update are resolved inside the same database transaction.
     """
-    owned = await state.mark_failed(
-        sb,
-        word_id,
-        failed_stage=failed_stage,
-        error_message=error_message,
-    )
+    def _finalize():
+        return sb.rpc("mark_word_failed_and_refund", {
+            "p_word_id": word_id,
+            "p_failed_stage": failed_stage,
+            "p_error_message": error_message,
+            "p_expected_operation_id": expected_operation_id,
+        }).execute()
+
+    try:
+        response = await asyncio.to_thread(_finalize)
+        result = response.data
+        if isinstance(result, list):
+            result = result[0] if result else None
+        owned = bool(isinstance(result, dict) and result.get("owned") is True)
+    except Exception as e:
+        log.error("finalize_failure: atomic failure/refund failed for %s: %s", word_id, e)
+        return False
+
     if not owned:
         log.info(
             "finalize_failure: %s already marked failed by another replica",
@@ -66,17 +80,10 @@ async def finalize_failure(
         )
         return False
 
-    def _refund():
-        return sb.rpc("refund_credit", {"user_id_param": user_id}).execute()
-
-    try:
-        await asyncio.to_thread(_refund)
-        log.info(
-            "finalize_failure: refunded credit user=%s word=%s (%s)",
-            user_id, word_id, failed_stage,
-        )
-    except Exception as e:
-        log.error("finalize_failure: refund_credit failed for %s: %s", word_id, e)
+    log.info(
+        "finalize_failure: atomically finalized/refund-settled user=%s word=%s (%s)",
+        user_id, word_id, failed_stage,
+    )
 
     return True
 

@@ -10,6 +10,7 @@ import {
   getGuidedPathLessons,
   getGuidedPathOverview,
   getGuidedTodayPathOptions,
+  loadAllGuidedLessons,
 } from '../src/data/guidedLessons.ts'
 import {
   buildGuidedCheckpointPlan,
@@ -19,6 +20,8 @@ import {
 import { formatGuidedPathLabel } from '../src/lib/guidedPathLabels.ts'
 import { createT } from '../src/lib/translations.ts'
 import { createEmptyTodayProgressState } from '../src/lib/todayProgress.ts'
+
+await loadAllGuidedLessons()
 
 let failures = 0
 let passes = 0
@@ -66,7 +69,7 @@ assert('directory does not expose future A1/A2 paths', !containsAny(directorySou
 const englishPathOptions = getGuidedTodayPathOptions().filter((path) => path.targetLanguage === 'English')
 for (const path of englishPathOptions) {
   const numberSuffix = path.id.match(/-(\d+)$/)?.[1]
-  const expectedLabel = `English A1 P${numberSuffix}`
+  const expectedLabel = `English ${path.level} P${numberSuffix}`
   assert(
     `formatGuidedPathLabel generates compact chooser label ${expectedLabel}`,
     formatGuidedPathLabel(path) === expectedLabel,
@@ -74,20 +77,20 @@ for (const path of englishPathOptions) {
   )
   assert(
     `formatGuidedPathLabel localizes compact chooser label to German`,
-    formatGuidedPathLabel(path, createT('de')) === `Englisch A1 P${numberSuffix}`,
-    { observed: formatGuidedPathLabel(path, createT('de')), expected: `Englisch A1 P${numberSuffix}` },
+    formatGuidedPathLabel(path, createT('de')) === `Englisch ${path.level} P${numberSuffix}`,
+    { observed: formatGuidedPathLabel(path, createT('de')), expected: `Englisch ${path.level} P${numberSuffix}` },
   )
   assert(
     `formatGuidedPathLabel localizes compact chooser label to French`,
-    formatGuidedPathLabel(path, createT('fr')) === `anglais A1 P${numberSuffix}`,
-    { observed: formatGuidedPathLabel(path, createT('fr')), expected: `anglais A1 P${numberSuffix}` },
+    formatGuidedPathLabel(path, createT('fr')) === `anglais ${path.level} P${numberSuffix}`,
+    { observed: formatGuidedPathLabel(path, createT('fr')), expected: `anglais ${path.level} P${numberSuffix}` },
   )
   assert(
-    `formatGuidedPathLabel can omit selected language in directory label A1 P${numberSuffix}`,
-    formatGuidedPathLabel(path, createT('en'), { includeLanguage: false }) === `A1 P${numberSuffix}`,
+    `formatGuidedPathLabel can omit selected language in directory label ${path.level} P${numberSuffix}`,
+    formatGuidedPathLabel(path, createT('en'), { includeLanguage: false }) === `${path.level} P${numberSuffix}`,
     {
       observed: formatGuidedPathLabel(path, createT('en'), { includeLanguage: false }),
-      expected: `A1 P${numberSuffix}`,
+      expected: `${path.level} P${numberSuffix}`,
     },
   )
 }

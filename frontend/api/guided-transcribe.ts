@@ -2,6 +2,7 @@ import { corsHeaders, optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit, sanitizedProviderError } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
+import { withRequestDeadline } from './_shared/requestDeadline'
 import { writeUsageEvent } from './_shared/usageEvents'
 import { groqSttCost } from './_shared/usageCost'
 
@@ -66,6 +67,10 @@ export function DELETE(req: Request): Response {
 }
 
 export async function POST(req: Request): Promise<Response> {
+  return withRequestDeadline(req, handlePost)
+}
+
+async function handlePost(req: Request): Promise<Response> {
   let body: GuidedTranscribeBody
   let userId = ''
   try {

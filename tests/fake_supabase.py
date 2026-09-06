@@ -235,6 +235,25 @@ def _handle_mark_word_failed(sb: "FakeSupabase", params: dict) -> bool:
     return False
 
 
+def _handle_mark_word_failed_and_refund(sb: "FakeSupabase", params: dict) -> dict:
+    """Minimal shape of the atomic B-07 terminalization RPC."""
+    word = next(
+        (row for row in sb._tables["words"] if row.get("id") == params["p_word_id"]),
+        None,
+    )
+    expected = params.get("p_expected_operation_id")
+    if expected is not None and word is not None and word.get("active_credit_operation_id") != expected:
+        return {"owned": False, "reason": "stale_credit_operation"}
+    owned = _handle_mark_word_failed(sb, params)
+    return {
+        "owned": owned,
+        "refund": {
+            "refunded": owned,
+            "credits_refunded": 1 if owned else 0,
+        },
+    }
+
+
 def _handle_claim_retry_word(sb: "FakeSupabase", params: dict) -> bool:
     """Mirror of SQL function claim_retry_word."""
     word_id = params["p_word_id"]
@@ -262,6 +281,7 @@ def _handle_claim_retry_word(sb: "FakeSupabase", params: dict) -> bool:
 _RPC_HANDLERS = {
     "transition_word_stage": _handle_transition_word_stage,
     "mark_word_failed": _handle_mark_word_failed,
+    "mark_word_failed_and_refund": _handle_mark_word_failed_and_refund,
     "claim_retry_word": _handle_claim_retry_word,
 }
 

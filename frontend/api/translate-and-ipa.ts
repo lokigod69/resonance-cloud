@@ -6,6 +6,7 @@ import { optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, fetchWithTimeout, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
+import { withRequestDeadline } from './_shared/requestDeadline'
 import { writeUsageEvent } from './_shared/usageEvents'
 import { openRouterCost, type LlmUsage } from './_shared/usageCost'
 
@@ -157,6 +158,10 @@ export async function OPTIONS(req?: Request): Promise<Response> {
 }
 
 export async function POST(req: Request): Promise<Response> {
+  return withRequestDeadline(req, handlePost)
+}
+
+async function handlePost(req: Request): Promise<Response> {
   let body: TranslateBody
   let userId = ''
   try {
@@ -164,6 +169,7 @@ export async function POST(req: Request): Promise<Response> {
     userId = user.id
     const rawBody = await readJsonWithLimit<unknown>(req, TRANSLATE_BODY_MAX_BYTES)
     body = validateBody(rawBody)
+    if (!process.env.OPENROUTER_API_KEY) throw new ApiError(503, 'Translation service is not configured')
     await consumeApiQuota(user.id, 'suggest_words')
   } catch (err) {
     if (err instanceof ApiError) return apiErrorResponse(req, err)
@@ -173,7 +179,7 @@ export async function POST(req: Request): Promise<Response> {
 
   const apiKey = process.env.OPENROUTER_API_KEY
   if (!apiKey) {
-    return errorResponse(req, 500, 'Translation service is not configured')
+    return errorResponse(req, 503, 'Translation service is not configured')
   }
 
   const baseSystemPrompt = buildSystemPrompt()

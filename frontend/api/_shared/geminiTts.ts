@@ -1,3 +1,5 @@
+import { fetchWithRequestDeadline } from './requestDeadline'
+
 const GEMINI_TTS_MODEL = 'gemini-3.1-flash-tts-preview'
 const GEMINI_TTS_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_TTS_MODEL}:generateContent`
 
@@ -61,7 +63,7 @@ export async function generateGeminiTtsFromPrompt(
     const timer = setTimeout(() => controller.abort(), remainingMs)
 
     try {
-      response = await fetch(GEMINI_TTS_ENDPOINT, {
+      response = await fetchWithRequestDeadline(GEMINI_TTS_ENDPOINT, {
         method: 'POST',
         headers: {
           'x-goog-api-key': apiKey,
@@ -77,7 +79,7 @@ export async function generateGeminiTtsFromPrompt(
           },
         }),
         signal: controller.signal,
-      })
+      }, remainingMs)
       if (response.ok) {
         data = await response.json() as GeminiTtsApiResponse
       } else if (attempt === 1) {

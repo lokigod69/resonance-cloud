@@ -1,4 +1,5 @@
 import {
+  getGuidedPathLessonIds,
   getGuidedPathLessons,
   getGuidedTodayPathOptions,
   resolveGuidedLessonVariant,
@@ -340,9 +341,9 @@ function getCompletedGuidedCheckpointPathIds(
   return pathOptions
     .map((path) => path.id)
     .filter((pathId) => {
-      const lessons = getGuidedPathLessons(pathId)
-      return lessons.length > 0
-        && lessons.every((lesson) => isLessonCompletedInVibe(progress, pathId, lesson.id, vibe))
+      const lessonIds = getGuidedPathLessonIds(pathId)
+      return lessonIds.length > 0
+        && lessonIds.every((lessonId) => isLessonCompletedInVibe(progress, pathId, lessonId, vibe))
     })
 }
 

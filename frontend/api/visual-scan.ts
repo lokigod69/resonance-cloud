@@ -2,6 +2,7 @@ import { optionsResponse } from './_shared/cors'
 import { requireSupabaseUser, type AuthenticatedUser } from './_shared/auth'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
 import { consumeApiQuota } from './_shared/quota'
+import { assertRequestActive, withCleanupDeadline, withRequestDeadline } from './_shared/requestDeadline'
 import { consumeFeatureAllowance, recordFeatureUsage, refundFeatureUsage, resolveEntitlements } from './_shared/entitlements'
 import { geminiVisionCost } from './_shared/usageCost'
 import { writeUsageEvent, type UsageEventInput } from './_shared/usageEvents'
@@ -248,18 +249,27 @@ function createDefaultDeps(): HandlerDeps {
   }
 }
 
-export function createVisualScanPostHandler(deps: HandlerDeps = createDefaultDeps()) {
+export function createVisualScanPostHandler(
+  deps: HandlerDeps = createDefaultDeps(),
+  deadlineOptions?: { timeoutMs?: number; cleanupMs?: number },
+) {
   return async function POST(req: Request): Promise<Response> {
+    return withRequestDeadline(req, handlePost, deadlineOptions)
+  }
+
+  async function handlePost(req: Request): Promise<Response> {
     let body: VisualScanRequest
     let userId = ''
     let lensDebit: LensDebit | null = null
     try {
       const user = await deps.requireUser(req)
+      assertRequestActive()
       userId = user.id
       const rawBody = await readJsonWithLimit<unknown>(req, VISUAL_SCAN_BODY_MAX_BYTES)
       body = validateBody(rawBody)
       deps.assertProviderConfigured?.()
       await deps.consumeQuota(user.id)
+      assertRequestActive()
       if (deps.consumeAllowance) {
         // Explicit cast: Vercel compiles api/ with a non-strict tsconfig where `void ?? null` does not narrow.
         lensDebit = ((await deps.consumeAllowance(user.id)) as LensDebit | undefined) ?? null
@@ -272,6 +282,7 @@ export function createVisualScanPostHandler(deps: HandlerDeps = createDefaultDep
 
     const startedAt = Date.now()
     try {
+      assertRequestActive()
       const rawResult: VisualScanProviderResult = await deps.provider.scan(body)
       const result = normalizeProviderResponse(rawResult)
       const usage = usageFromResult(rawResult)
@@ -311,7 +322,11 @@ export function createVisualScanPostHandler(deps: HandlerDeps = createDefaultDep
       // The scan never happened on our side of the wire: give the unit back.
       // 4xx-class provider verdicts (refused/unusable image) keep the debit.
       if (lensDebit && status >= 500) {
-        await lensDebit.refund()
+        try {
+          await withCleanupDeadline(lensDebit.refund)
+        } catch {
+          console.error('[visual-scan] Allowance refund did not complete')
+        }
       }
       await deps.writeUsage({
         userId,

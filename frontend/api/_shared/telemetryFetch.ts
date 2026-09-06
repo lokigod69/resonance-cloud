@@ -1,3 +1,5 @@
+import { fetchWithRequestDeadline } from './requestDeadline'
+
 const TELEMETRY_TIMEOUT_MS = 1_500
 
 /** Optional metrics must not hold a completed voice turn or scan indefinitely. */
@@ -7,7 +9,7 @@ export function createTelemetryFetch(operationSignal?: AbortSignal): typeof fetc
     const signals = [AbortSignal.timeout(TELEMETRY_TIMEOUT_MS)]
     if (upstreamSignal) signals.push(upstreamSignal)
     if (operationSignal) signals.push(operationSignal)
-    return fetch(input, { ...init, signal: AbortSignal.any(signals) })
+    return fetchWithRequestDeadline(input, { ...init, signal: AbortSignal.any(signals) }, TELEMETRY_TIMEOUT_MS)
   }
 }
 

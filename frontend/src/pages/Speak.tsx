@@ -39,6 +39,7 @@ import { SPEAK_LANGUAGES, LANGUAGES as ALL_LANGUAGES } from '@/lib/languages'
 import { getGeneratedDeckHref } from '@/lib/cardGenerationProgress'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 import { CORRECTIONS_TIMEOUT_MS, prepareCorrectionsTranscript } from '@/lib/speakCorrections'
+import { assertClientActive, withClientDeadline } from '@/lib/clientDeadline'
 
 // Beta-trimmed to the 8 offered target languages (all present in api LANGUAGE_CONFIG).
 // The full pre-beta set was en/de/fr/it/es/pt/nl/hi/ar/ru/ceb/fil/id/ko — restore
@@ -332,66 +333,61 @@ export default function Speak() {
     correctionsAbortRef.current?.abort()
     const controller = new AbortController()
     correctionsAbortRef.current = controller
-    let timedOut = false
-    const timeoutId = window.setTimeout(() => {
-      timedOut = true
-      controller.abort()
-    }, CORRECTIONS_TIMEOUT_MS)
     setCorrectionsLoading(true)
     setCorrectionsError(null)
     try {
-      const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
-      if (sessionError || !sessionData.session?.access_token) {
-        setCorrectionsError(t('speak.history.sessionExpired'))
-        return
-      }
+      const list = await withClientDeadline(async (signal) => {
+        const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
+        assertClientActive(signal)
+        if (sessionError || !sessionData.session?.access_token) throw new Error('session-expired')
 
-      const res = await fetch(publicApiUrl('/api/voice-chat'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${sessionData.session.access_token}`,
-        },
-        signal: controller.signal,
-        body: JSON.stringify({
-          mode: 'corrections',
-          transcript: prepareCorrectionsTranscript(activeMessages),
-          language: tutor.language,
-          native_language: baseLangCode || 'en',
-        }),
-      })
-      if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
-      const data = await res.json().catch(() => null) as ({ corrections?: unknown } & SpeakApiErrorPayload) | null
-      if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
-      if (!res.ok) {
-        console.warn('[Speak] Corrections request failed:', {
-          status: res.status,
-          error: data?.error,
-          detail: data?.detail,
-          retry_after_seconds: data?.retry_after_seconds,
+        const res = await fetch(publicApiUrl('/api/voice-chat'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${sessionData.session.access_token}`,
+          },
+          signal,
+          body: JSON.stringify({
+            mode: 'corrections',
+            transcript: prepareCorrectionsTranscript(activeMessages),
+            language: tutor.language,
+            native_language: baseLangCode || 'en',
+          }),
         })
-        setCorrectionsError(res.status === 401
-          ? t('speak.history.sessionExpired')
-          : formatSpeakApiError(t, res.status, data, 'speak.correctionsUnavailable'))
-        return
-      }
-      if (!data || !Array.isArray(data.corrections)) {
-        console.warn('[Speak] Corrections response missing corrections array:', data)
-        setCorrectionsError(t('speak.correctionsUnavailable'))
-        return
-      }
-
-      const list = data.corrections as Correction[]
+        const data = await res.json().catch(() => null) as ({ corrections?: unknown } & SpeakApiErrorPayload) | null
+        assertClientActive(signal)
+        if (!res.ok) {
+          console.warn('[Speak] Corrections request failed:', {
+            status: res.status,
+            error: data?.error,
+            detail: data?.detail,
+            retry_after_seconds: data?.retry_after_seconds,
+          })
+          throw new Error(res.status === 401
+            ? 'session-expired'
+            : formatSpeakApiError(t, res.status, data, 'speak.correctionsUnavailable'))
+        }
+        if (!data || !Array.isArray(data.corrections)) {
+          console.warn('[Speak] Corrections response missing corrections array:', data)
+          throw new Error('invalid-corrections')
+        }
+        return data.corrections as Correction[]
+      }, CORRECTIONS_TIMEOUT_MS, controller.signal)
+      if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
       setCorrections(list)
       if (activeProvider !== 'grok') {
         tutor.saveCorrections(list)
       }
     } catch (err) {
-      if (controller.signal.aborted && !timedOut) return
+      if (controller.signal.aborted) return
       console.error('Corrections fetch failed:', err)
-      setCorrectionsError(t('speak.correctionsUnavailable'))
+      setCorrectionsError(err instanceof Error && err.message === 'session-expired'
+        ? t('speak.history.sessionExpired')
+        : err instanceof Error && err.message !== 'invalid-corrections' && !(err instanceof DOMException)
+          ? err.message
+          : t('speak.correctionsUnavailable'))
     } finally {
-      window.clearTimeout(timeoutId)
       if (correctionsAbortRef.current === controller) {
         correctionsAbortRef.current = null
         setCorrectionsLoading(false)

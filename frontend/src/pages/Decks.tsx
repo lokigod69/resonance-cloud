@@ -11,7 +11,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 import { MediaSegments } from '@/components/media/MediaSegments'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
-import { getCardThumbUrl } from '@/lib/imageUrls'
+import { getCardPreviewUrl } from '@/lib/imageUrls'
 import { canonicalizeLanguageValue, languagesMatch } from '@/lib/languages'
 import {
   calculateClassicDeckProximity,
@@ -89,17 +89,18 @@ export default function Decks() {
 
           const { data: thumbWords } = await supabase
             .from('words')
-            .select('deck_id, thumbnail_url')
+            .select('deck_id, thumbnail_url, card_thumbnail_url')
             .in('deck_id', deckIds)
             .eq('status', 'complete')
-            .not('thumbnail_url', 'is', null)
+            .or('card_thumbnail_url.not.is.null,thumbnail_url.not.is.null')
             .order('created_at', { ascending: true })
 
           if (thumbWords) {
             const thumbs: Record<string, string> = {}
-            for (const w of thumbWords as { deck_id: string; thumbnail_url: string }[]) {
+            for (const w of thumbWords as { deck_id: string; thumbnail_url: string | null; card_thumbnail_url: string | null }[]) {
               if (!thumbs[w.deck_id]) {
-                thumbs[w.deck_id] = w.thumbnail_url
+                const thumbnail = getCardPreviewUrl(w.card_thumbnail_url, w.thumbnail_url)
+                if (thumbnail) thumbs[w.deck_id] = thumbnail
               }
             }
             setDeckThumbnails(thumbs)
@@ -312,7 +313,7 @@ export default function Decks() {
           {filteredDecks.map((deck) => {
             const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
             const rawThumb = deckThumbnails[deck.id]
-            const thumb = deck.deck_type === 'card' ? getCardThumbUrl(rawThumb) ?? undefined : rawThumb
+            const thumb = rawThumb
             const isImagelessDeck = deck.deck_type === 'card_text'
             const deckLanguageLabel = getDeckLanguageLabel(deck.target_language, t)
             const displayName = deck.name || t('generateGo.languageDeckName', { language: deckLanguageLabel })

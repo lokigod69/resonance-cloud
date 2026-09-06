@@ -11,6 +11,7 @@ import { consumeApiQuota } from './_shared/quota'
 import { writeUsageEvent } from './_shared/usageEvents'
 import { openRouterCost, type LlmUsage } from './_shared/usageCost'
 import { createClient } from '@supabase/supabase-js'
+import { requestFetch, withRequestDeadline } from './_shared/requestDeadline'
 
 const SUGGEST_MODEL = 'deepseek/deepseek-v4-flash'
 const MAX_TOKENS = 1000
@@ -90,6 +91,7 @@ async function fetchAvoidList(userJwt: string, targetLanguage: string): Promise<
     const { url, anonKey } = getSupabaseUserEnv()
     const userClient = createClient(url, anonKey, {
       global: {
+        fetch: requestFetch,
         headers: {
           Authorization: `Bearer ${userJwt}`,
         },
@@ -234,6 +236,10 @@ export async function OPTIONS(req?: Request): Promise<Response> {
 }
 
 export async function POST(req: Request): Promise<Response> {
+  return withRequestDeadline(req, handlePost)
+}
+
+async function handlePost(req: Request): Promise<Response> {
   let body: SuggestWordsBody
   let userJwt: string
   let userId = ''
@@ -245,6 +251,7 @@ export async function POST(req: Request): Promise<Response> {
     userId = user.id
     const rawBody = await readJsonWithLimit<unknown>(req, SUGGEST_WORDS_BODY_MAX_BYTES)
     body = validateBody(rawBody)
+    if (!process.env.OPENROUTER_API_KEY) throw new ApiError(503, 'Word suggestion service is not configured')
     await consumeApiQuota(user.id, 'suggest_words')
   } catch (err) {
     if (err instanceof ApiError) return apiErrorResponse(req, err)
@@ -254,7 +261,7 @@ export async function POST(req: Request): Promise<Response> {
 
   const apiKey = process.env.OPENROUTER_API_KEY
   if (!apiKey) {
-    return errorResponse(req, 500, 'Word suggestion service is not configured')
+    return errorResponse(req, 503, 'Word suggestion service is not configured')
   }
 
   const avoidList = await fetchAvoidList(userJwt, body.target_language)

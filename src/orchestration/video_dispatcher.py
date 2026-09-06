@@ -13,6 +13,9 @@ import logging
 from pathlib import Path
 from typing import Any
 
+from src.path_safety import UnsafePathComponentError
+from src.workspace import get_word_dir
+
 from . import retry, state
 
 log = logging.getLogger(__name__)
@@ -101,16 +104,30 @@ class VideoDispatcher:
         state.timer_for(word_id).enter("video")
 
         from src.pipeline import run_stage
-        from src.storage import get_job_workspace_path
-
-        workspace_path = get_job_workspace_path(
-            user_id=fresh["user_id"], deck_id=fresh["deck_id"],
-        )
         word_slug = fresh.get("word_slug")
         if not word_slug:
             await retry.finalize_failure(
                 self.sb, word_id=word_id, user_id=fresh["user_id"],
-                failed_stage="video",
+                expected_operation_id=fresh.get("active_credit_operation_id"),
+                failed_stage="video", error_message=str(e),
+            )
+            state.clear_log_context()
+            return
+
+
+        try:
+            from src.storage import get_job_workspace_path
+
+            workspace_path = get_job_workspace_path(
+                user_id=fresh["user_id"], deck_id=fresh["deck_id"],
+            )
+            word_dir = get_word_dir(workspace_path, word_slug)
+        except UnsafePathComponentError as exc:
+            log.error("video_dispatcher: unsafe workspace path word=%s: %s", word_id, exc)
+            await retry.finalize_failure(
+                self.sb, word_id=word_id, user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
+                failed_stage="video", error_message=str(exc),
             )
             state.clear_log_context()
             return
@@ -133,7 +150,6 @@ class VideoDispatcher:
                     "DIAG video_dispatcher workspace listing: word_slug=%s contents=%s",
                     word_slug, os.listdir(workspace_path)[:30],
                 )
-                word_dir = workspace_path / word_slug
                 log.info(
                     "DIAG video_dispatcher word_dir: path=%s exists=%s",
                     word_dir, word_dir.exists(),
@@ -167,6 +183,7 @@ class VideoDispatcher:
             log.error("video_dispatcher: budget exhausted word=%s: %s", word_id, e)
             await retry.finalize_failure(
                 self.sb, word_id=word_id, user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
                 failed_stage="video",
             )
             state.clear_log_context()

@@ -1,4 +1,5 @@
 import { corsHeaders } from './cors'
+import { fetchWithRequestDeadline } from './requestDeadline'
 
 export class ApiError extends Error {
   readonly status: number
@@ -134,11 +135,5 @@ export async function fetchWithTimeout(
   timeoutMs: number,
   fetchImpl: typeof fetch = fetch,
 ): Promise<Response> {
-  const controller = new AbortController()
-  const timer = setTimeout(() => controller.abort(), timeoutMs)
-  try {
-    return await fetchImpl(url, { ...init, signal: controller.signal })
-  } finally {
-    clearTimeout(timer)
-  }
+  return fetchWithRequestDeadline(url, init, timeoutMs, fetchImpl)
 }

@@ -16,8 +16,11 @@
 import {
   GUIDED_LESSONS,
   getGuidedTodayPathOptions,
+  loadAllGuidedLessons,
 } from '../src/data/guidedLessons.ts'
 import type { ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
+
+await loadAllGuidedLessons()
 
 const ACTIVE_PATHS = getGuidedTodayPathOptions().map((path) => path.id)
 

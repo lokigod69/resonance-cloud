@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase'
 import { publicApiUrl } from '@/lib/publicOrigins'
 import { mockLensScanProvider } from '@/lib/lensMockProvider'
 import type { LensScanProvider, LensScanRequest, LensScanResponse } from '@/lib/lensTypes'
+import { assertClientActive, withClientDeadline } from '@/lib/clientDeadline'
 
 type LensApiErrorResponse = Partial<LensScanResponse> & {
   error?: string
@@ -63,31 +64,47 @@ async function authToken(): Promise<string> {
 
 export const lensApiProvider: LensScanProvider = {
   async scan(request: LensScanRequest, options?: { signal?: AbortSignal }): Promise<LensScanResponse> {
-    const token = await authToken()
-    const response = await fetch(publicApiUrl('/api/visual-scan'), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(request),
-      signal: options?.signal,
-    })
+    try {
+      return await withClientDeadline(async (signal) => {
+        const token = await authToken()
+        assertClientActive(signal)
+        const response = await fetch(publicApiUrl('/api/visual-scan'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(request),
+          signal,
+        })
 
-    if (response.status === 404 && import.meta.env.DEV) {
-      return mockLensScanProvider.scan(request, options)
+        if (response.status === 404 && import.meta.env.DEV) {
+          return mockLensScanProvider.scan(request, { signal })
+        }
+
+        const body = await response.json().catch((error) => {
+          assertClientActive(signal)
+          if (response.ok) throw new LensScanApiError('Vision service returned an invalid result', 502, 'service_unavailable')
+          if (error instanceof SyntaxError) return {}
+          throw error
+        }) as LensApiErrorResponse
+        assertClientActive(signal)
+        if (!response.ok) {
+          const message = body.detail || body.error || 'Lens scan failed'
+          throw new LensScanApiError(
+            message,
+            response.status,
+            classifyLensApiError(response.status, body.code),
+          )
+        }
+
+        return body as LensScanResponse
+      }, 55_000, options?.signal)
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'TimeoutError') {
+        throw new LensScanApiError('Lens request timed out', 504, 'service_unavailable')
+      }
+      throw error
     }
-
-    const body = await response.json().catch(() => ({})) as LensApiErrorResponse
-    if (!response.ok) {
-      const message = body.detail || body.error || 'Lens scan failed'
-      throw new LensScanApiError(
-        message,
-        response.status,
-        classifyLensApiError(response.status, body.code),
-      )
-    }
-
-    return body as LensScanResponse
   },
 }

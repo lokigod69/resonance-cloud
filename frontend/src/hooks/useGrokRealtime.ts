@@ -17,6 +17,13 @@ import type { GrokLevel } from '@/lib/grokPedagogy'
 import { useTranslation } from '@/hooks/useTranslation'
 import { isPlanLimitSpeakCode, SpeakPlanLimitError } from '@/lib/speakErrors'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
+import {
+  activeReservationId,
+  createGrokMintRequestId,
+  parseGrokTokenLease,
+  remainingReservationMs,
+} from '@/lib/grokLiveReservation'
+import { assertClientActive } from '@/lib/clientDeadline'
 
 export type GrokStatus = 'idle' | 'connecting' | 'recording' | 'thinking' | 'speaking' | 'error'
 
@@ -309,6 +316,8 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const wsRef = useRef<WebSocket | null>(null)
   const tokenRequestRef = useRef<AbortController | null>(null)
   const connectionGenerationRef = useRef(0)
+  const liveReservationIdRef = useRef<string | null>(null)
+  const liveReservationExpiresAtRef = useRef<number | null>(null)
   const workletRef = useRef<AudioWorkletNode | null>(null)
   const micSourceRef = useRef<MediaStreamAudioSourceNode | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
@@ -1179,19 +1188,33 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     const timer = window.setTimeout(() => controller.abort(), 20_000)
     try {
     const { data, error: sessionError } = await supabase.auth.getSession()
-    controller.signal.throwIfAborted()
+    assertClientActive(controller.signal)
     if (sessionError || !data.session?.access_token) {
       throw new Error(t('speak.error.sessionNotConnected'))
     }
 
     currentUserIdRef.current = data.session.user.id
 
+    const reservationId = activeReservationId(
+      liveReservationIdRef.current,
+      liveReservationExpiresAtRef.current,
+    )
+    if (!reservationId) {
+      liveReservationIdRef.current = null
+      liveReservationExpiresAtRef.current = null
+    }
+
     const response = await fetch(publicApiUrl('/api/grok-token'), {
       method: 'POST',
       signal: controller.signal,
       headers: {
         Authorization: `Bearer ${data.session.access_token}`,
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        mint_request_id: createGrokMintRequestId(),
+        reservation_id: reservationId,
+      }),
     })
 
     const json = await response.json().catch(() => null) as ({ value?: string } & SpeakApiErrorPayload) | null
@@ -1209,12 +1232,14 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       throw new Error(message)
     }
 
-    const token = json?.value
-    if (!token) {
+    const lease = parseGrokTokenLease(json)
+    if (!lease || lease.expiresAtMs <= Date.now() || lease.reservationExpiresAtMs <= Date.now()) {
       throw new Error(t('speak.error.realtimeConnectionFailed'))
     }
 
-    return token
+    liveReservationIdRef.current = lease.reservationId
+    liveReservationExpiresAtRef.current = lease.reservationExpiresAtMs
+    return lease.value
     } catch (error) {
       if (controller.signal.aborted) throw new Error(t('speak.error.realtimeConnectionFailed'))
       throw error
@@ -1873,10 +1898,12 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     try {
       await connectAndConfigure(params, clearMessages ? [] : messagesRef.current)
       if (generation !== connectionGenerationRef.current || !mountedRef.current) return
+      const remainingMs = remainingReservationMs(liveReservationExpiresAtRef.current)
+      if (remainingMs <= 0) throw new Error(t('speak.error.realtimeConnectionFailed'))
       sessionTimerRef.current = window.setTimeout(() => {
         sessionTimerRef.current = null
         void teardownSessionRef.current()
-      }, 10 * 60 * 1000)
+      }, remainingMs)
     } catch (err) {
       console.warn('[grok-realtime] Session connection failed:', err)
       if (mountedRef.current && generation === connectionGenerationRef.current) {

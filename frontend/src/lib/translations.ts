@@ -109,6 +109,10 @@ export function formatSpeakApiError(
   if (code === 'speak_allowance_exhausted') return t('speak.allowanceExhausted');
   if (code === 'premium_required') return t('speak.livePremiumRequired');
   if (code === 'live_allowance_exhausted') return t('speak.liveAllowanceExhausted');
+  if (code === 'live_mint_in_progress') return t('speak.livePreparing');
+  if (code === 'live_reservation_expired') return t('speak.liveExpired');
+  if (code === 'live_reconnect_limit') return t('speak.liveReconnectLimit');
+  if (code === 'request_timeout') return t('speak.error.requestTimedOut');
 
   if (isSpeakLimitError(status, payload)) {
     const retryAfter = formatSpeakRetryAfter(t, payload?.retry_after_seconds);
@@ -122,6 +126,8 @@ export function formatSpeakApiError(
 
 export const translations: Record<Locale, Record<string, string>> = {
   en: {
+    'study.syncFailed': 'Your study progress could not be saved.',
+    'study.syncRetry': 'Try again',
     // Route error boundary (audit 2026-09-03 F-01)
     'errors.route.title': 'Something went wrong on this page',
     'errors.route.body': 'Your progress is safe. Try again or go back home.',
@@ -231,6 +237,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.allowanceExhausted': 'Your Speak minutes are used up for this period — they refresh at renewal.',
     'speak.livePremiumRequired': 'The live tutor is a Premium feature.',
     'speak.liveAllowanceExhausted': 'Your live tutor minutes are used up for this period — they refresh at renewal.',
+    'speak.livePreparing': 'Your Live connection is being prepared. Try again in a moment.',
+    'speak.liveExpired': 'This Live session has ended. Start a new session to continue.',
+    'speak.liveReconnectLimit': 'Live could not connect. Try again after this session ends.',
+    'speak.error.requestTimedOut': 'That took too long. Please try again.',
     'music.premiumRequired': 'Song generation is a Premium feature — see Plans.',
     'music.insufficientCredits': 'Not enough credits for a song (10 needed).',
 
@@ -1880,6 +1890,8 @@ export const translations: Record<Locale, Record<string, string>> = {
   },
 
   de: {
+    'study.syncFailed': 'Dein Lernfortschritt konnte nicht gespeichert werden.',
+    'study.syncRetry': 'Erneut versuchen',
     // Route error boundary (audit 2026-09-03 F-01)
     'errors.route.title': 'Auf dieser Seite ist etwas schiefgelaufen',
     'errors.route.body': 'Dein Fortschritt ist gespeichert. Versuch es noch einmal oder geh zurück zur Startseite.',
@@ -1989,6 +2001,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.allowanceExhausted': 'Deine Speak-Minuten sind für diesen Zeitraum aufgebraucht — sie erneuern sich zur Verlängerung.',
     'speak.livePremiumRequired': 'Der Live-Tutor ist ein Premium-Feature.',
     'speak.liveAllowanceExhausted': 'Deine Live-Tutor-Minuten sind für diesen Zeitraum aufgebraucht — sie erneuern sich zur Verlängerung.',
+    'speak.livePreparing': 'Deine Live-Verbindung wird vorbereitet. Versuche es gleich noch einmal.',
+    'speak.liveExpired': 'Diese Live-Sitzung ist beendet. Starte eine neue Sitzung, um weiterzumachen.',
+    'speak.liveReconnectLimit': 'Live konnte keine Verbindung herstellen. Versuche es nach Ende dieser Sitzung erneut.',
+    'speak.error.requestTimedOut': 'Das hat zu lange gedauert. Bitte versuche es erneut.',
     'music.premiumRequired': 'Songs sind ein Premium-Feature — siehe Tarife.',
     'music.insufficientCredits': 'Nicht genug Credits für einen Song (10 nötig).',
 
@@ -3635,6 +3651,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.productLane.cardText.cost': 'Kostenlos',
   },
   fr: {
+    'study.syncFailed': 'Ta progression n’a pas pu être enregistrée.',
+    'study.syncRetry': 'Réessayer',
     // Route error boundary (audit 2026-09-03 F-01)
     'errors.route.title': 'Un problème est survenu sur cette page',
     'errors.route.body': 'Ta progression est sauvegardée. Réessaie ou reviens à l’accueil.',
@@ -3747,6 +3765,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.allowanceExhausted': 'Tes minutes Speak sont épuisées pour cette période — elles se renouvellent à l\'échéance.',
     'speak.livePremiumRequired': 'Le tuteur en direct est une fonction Premium.',
     'speak.liveAllowanceExhausted': 'Tes minutes de tuteur en direct sont épuisées pour cette période — elles se renouvellent à l\'échéance.',
+    'speak.livePreparing': 'Ta connexion Live se prépare. Réessaie dans un instant.',
+    'speak.liveExpired': 'Cette session Live est terminée. Démarre une nouvelle session pour continuer.',
+    'speak.liveReconnectLimit': 'Live n’a pas pu se connecter. Réessaie après la fin de cette session.',
+    'speak.error.requestTimedOut': 'Cela a pris trop de temps. Réessaie.',
     'music.premiumRequired': 'Les chansons sont une fonction Premium — voir Formules.',
     'music.insufficientCredits': 'Pas assez de crédits pour une chanson (10 requis).',
 

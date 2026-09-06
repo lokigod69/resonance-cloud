@@ -6,6 +6,8 @@ from typing import Optional
 
 from dotenv import load_dotenv
 
+from .subprocess_limits import PROBE_TIMEOUT_SECONDS
+
 load_dotenv()
 
 logger = logging.getLogger(__name__)
@@ -42,7 +44,12 @@ def get_api_key() -> str:
 
 
 def get_ffmpeg_version() -> str:
-    result = subprocess.run(["ffmpeg", "-version"], capture_output=True, text=True)
+    result = subprocess.run(
+        ["ffmpeg", "-version"],
+        capture_output=True,
+        text=True,
+        timeout=PROBE_TIMEOUT_SECONDS,
+    )
     first_line = result.stdout.split("\n")[0] if result.stdout else "unknown"
     return first_line
 

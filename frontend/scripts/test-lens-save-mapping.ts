@@ -4,7 +4,12 @@
  * Run: tsx scripts/test-lens-save-mapping.ts
  */
 
-import { mapLensScanItemsForSave } from '../src/lib/lensSaveMapping'
+import {
+  combineLensSaveReceipts,
+  mapLensScanItemsForSave,
+  parseLensSaveResult,
+  reconcileLensSaveResult,
+} from '../src/lib/lensSaveMapping'
 import { classifyLensCameraFailure, lensCameraErrorTranslationKey } from '../src/lib/lensCamera'
 import { lensItemFromAlternate } from '../src/lib/lensSelection'
 import type { LensScanItem } from '../src/lib/lensTypes'
@@ -35,9 +40,12 @@ const baseItem: LensScanItem = {
   confidence: 'high',
 }
 
+const input = (clientId: string, item: LensScanItem = baseItem) => ({ clientId, item })
+
 console.log('\n[rich field mapping]')
 {
-  const [mapped] = mapLensScanItemsForSave([baseItem], { targetLanguage: 'German' })
+  const [mapped] = mapLensScanItemsForSave([input('recap-1')], { targetLanguage: 'German' })
+  assert('keeps the recap client id', mapped.client_id === 'recap-1', mapped)
   assert('maps target_text to word', mapped.word === 'der Schlüssel', mapped)
   assert('maps base_text to translation', mapped.translation === 'key', mapped)
   assert('keeps ipa', mapped.ipa === 'ˈʃlʏsl̩', mapped)
@@ -50,11 +58,11 @@ console.log('\n[rich field mapping]')
 
 console.log('\n[phrase heuristic]')
 {
-  const [phrase] = mapLensScanItemsForSave([{ ...baseItem, target_text: 'guten Morgen' }], { targetLanguage: 'German' })
-  const [single] = mapLensScanItemsForSave([{ ...baseItem, target_text: 'Schlüssel' }], { targetLanguage: 'German' })
-  const [articleNoun] = mapLensScanItemsForSave([baseItem], { targetLanguage: 'German' })
-  const [ko] = mapLensScanItemsForSave([{ ...baseItem, target_text: '김밥' }], { targetLanguage: 'Korean' })
-  const [ja] = mapLensScanItemsForSave([{ ...baseItem, target_text: '切符' }], { targetLanguage: 'Japanese' })
+  const [phrase] = mapLensScanItemsForSave([input('phrase', { ...baseItem, target_text: 'guten Morgen' })], { targetLanguage: 'German' })
+  const [single] = mapLensScanItemsForSave([input('single', { ...baseItem, target_text: 'Schlüssel' })], { targetLanguage: 'German' })
+  const [articleNoun] = mapLensScanItemsForSave([input('article')], { targetLanguage: 'German' })
+  const [ko] = mapLensScanItemsForSave([input('ko', { ...baseItem, target_text: '김밥' })], { targetLanguage: 'Korean' })
+  const [ja] = mapLensScanItemsForSave([input('ja', { ...baseItem, target_text: '切符' })], { targetLanguage: 'Japanese' })
   assert('German multi-word phrase is true', phrase.is_phrase === true, phrase)
   assert('German single noun is false', single.is_phrase === false, single)
   assert('article plus noun is not misclassified as a phrase', articleNoun.is_phrase === false, articleNoun)
@@ -64,8 +72,7 @@ console.log('\n[phrase heuristic]')
 
 console.log('\n[empty field dropping]')
 {
-  const [mapped] = mapLensScanItemsForSave([
-    {
+  const [mapped] = mapLensScanItemsForSave([input('trimmed', {
       target_text: '  vélo  ',
       base_text: '  bicycle  ',
       transliteration: '   ',
@@ -75,14 +82,99 @@ console.log('\n[empty field dropping]')
       example: '   ',
       example_gloss: '\t',
       confidence: 'medium',
-    },
-  ], { targetLanguage: 'French' })
+    })], { targetLanguage: 'French' })
 
   assert('trims required fields', mapped.word === 'vélo' && mapped.translation === 'bicycle', mapped)
   assert('keeps trimmed optional value', mapped.pos === 'noun', mapped)
   assert('drops blank transliteration', !('transliteration' in mapped), mapped)
   assert('drops blank ipa', !('ipa' in mapped), mapped)
   assert('drops blank example fields', !('example' in mapped) && !('example_gloss' in mapped), mapped)
+
+  let rejectedDuplicateIds = false
+  try {
+    mapLensScanItemsForSave([input('same'), input(' same ')], { targetLanguage: 'German' })
+  } catch {
+    rejectedDuplicateIds = true
+  }
+  assert('rejects duplicate normalized client ids', rejectedDuplicateIds)
+}
+
+console.log('\n[exact save receipts]')
+{
+  const exact = parseLensSaveResult({
+    deck_id: 'deck-de',
+    inserted: 1,
+    skipped: 1,
+    outcomes: [
+      { client_id: 'recap-a', word_id: 'word-a', status: 'inserted' },
+      { client_id: 'recap-b', word_id: 'word-b', status: 'skipped' },
+    ],
+  }, ['recap-a', 'recap-b'])
+  assert('parses inserted row identity', exact.outcomes?.[0]?.clientId === 'recap-a' && exact.outcomes[0].wordId === 'word-a' && exact.outcomes[0].status === 'inserted', exact)
+  assert('parses skipped existing row identity', exact.outcomes?.[1]?.clientId === 'recap-b' && exact.outcomes[1].wordId === 'word-b' && exact.outcomes[1].status === 'skipped', exact)
+
+  const legacy = parseLensSaveResult({ deck_id: 'deck-de', inserted: 2, skipped: 0 }, ['a', 'b'])
+  assert('accepts legacy count-only receipt without inventing outcomes', legacy.outcomes === null, legacy)
+
+  let rejectedReordered = false
+  try {
+    parseLensSaveResult({
+      deck_id: 'deck-de',
+      inserted: 1,
+      skipped: 1,
+      outcomes: [
+        { client_id: 'recap-b', word_id: 'word-b', status: 'skipped' },
+        { client_id: 'recap-a', word_id: 'word-a', status: 'inserted' },
+      ],
+    }, ['recap-a', 'recap-b'])
+  } catch {
+    rejectedReordered = true
+  }
+  assert('rejects outcomes that cannot map position-for-position', rejectedReordered)
+
+  let rejectedCounts = false
+  try {
+    parseLensSaveResult({
+      deck_id: 'deck-de',
+      inserted: 2,
+      skipped: 0,
+      outcomes: [
+        { client_id: 'recap-a', word_id: 'word-a', status: 'inserted' },
+        { client_id: 'recap-b', word_id: 'word-b', status: 'skipped' },
+      ],
+    }, ['recap-a', 'recap-b'])
+  } catch {
+    rejectedCounts = true
+  }
+  assert('rejects count/outcome disagreement', rejectedCounts)
+
+  const tracked = [
+    { id: 'recap-a', saved: false },
+    { id: 'recap-b', saved: false },
+    { id: 'unsubmitted', saved: false },
+  ]
+  const reconciled = reconcileLensSaveResult(tracked, ['recap-a', 'recap-b'], exact)
+  assert('marks only the exact inserted recap row saved', reconciled[0].saved === true && reconciled[0].wordId === 'word-a', reconciled)
+  assert('marks only the exact skipped recap row known', reconciled[1].alreadyPresent === true && reconciled[1].wordId === 'word-b', reconciled)
+  assert('leaves unsubmitted recap rows retryable', !reconciled[2].saved && !reconciled[2].alreadyPresent, reconciled)
+
+  const legacyMixed = reconcileLensSaveResult(tracked, ['recap-a', 'recap-b'], {
+    deckId: 'deck-de',
+    inserted: 1,
+    skipped: 1,
+    outcomes: null,
+  })
+  assert('legacy mixed counts never guess per-row outcomes', legacyMixed.every((item) => !item.saved && !item.alreadyPresent), legacyMixed)
+}
+
+console.log('\n[multi-language receipt]')
+{
+  const receipt = combineLensSaveReceipts([
+    { language: 'German', result: { deckId: 'deck-de', inserted: 1, skipped: 1, outcomes: [] } },
+    { language: 'French', result: { deckId: 'deck-fr', inserted: 2, skipped: 0, outcomes: [] } },
+  ])
+  assert('combines saved and known counts across languages', receipt?.inserted === 3 && receipt.skipped === 1, receipt)
+  assert('keeps both language deck links', receipt?.decks.length === 2 && receipt.decks[0].language === 'German' && receipt.decks[1].language === 'French', receipt)
 }
 
 console.log('\n[alternate selection]')

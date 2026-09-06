@@ -35,7 +35,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 import { MediaSegments } from '@/components/media/MediaSegments'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
-import { getCardThumbUrl } from '@/lib/imageUrls'
+import { getCardPreviewUrl } from '@/lib/imageUrls'
 
 type Deck = {
   id: string
@@ -181,17 +181,18 @@ export default function DecksPG() {
 
           const { data: thumbWords } = await supabase
             .from('words')
-            .select('deck_id, thumbnail_url')
+            .select('deck_id, thumbnail_url, card_thumbnail_url')
             .in('deck_id', deckIds)
             .eq('status', 'complete')
-            .not('thumbnail_url', 'is', null)
+            .or('card_thumbnail_url.not.is.null,thumbnail_url.not.is.null')
             .order('created_at', { ascending: true })
 
           if (thumbWords) {
             const thumbs: Record<string, string> = {}
-            for (const w of thumbWords as { deck_id: string; thumbnail_url: string }[]) {
+            for (const w of thumbWords as { deck_id: string; thumbnail_url: string | null; card_thumbnail_url: string | null }[]) {
               if (!thumbs[w.deck_id]) {
-                thumbs[w.deck_id] = w.thumbnail_url
+                const thumbnail = getCardPreviewUrl(w.card_thumbnail_url, w.thumbnail_url)
+                if (thumbnail) thumbs[w.deck_id] = thumbnail
               }
             }
             setDeckThumbnails(thumbs)
@@ -437,8 +438,9 @@ function getDeckMeta(
 }
 
 function getDeckThumbnailUrl(deck: Deck, thumbnail: string | undefined): string | undefined {
+  void deck
   if (!thumbnail) return undefined
-  return deck.deck_type === 'card' ? getCardThumbUrl(thumbnail) ?? undefined : thumbnail
+  return thumbnail
 }
 
 /* ─── Stack View ─────────────────────────────────── */

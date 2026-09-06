@@ -4,9 +4,8 @@
 // voice_samples table to set invalidated_at = now() for that character_mode_id
 // so cached samples are regenerated.
 //
-// The api/ serverless function cannot import from src/ (separate bundle), so
-// this data is duplicated. Silent drift between the two will cause UI copy and
-// TTS output to diverge.
+// The TTS style mirror remains in voice-chat.ts. The text-personality resolver
+// imports this pure-data registry directly; it never accepts client instructions.
 
 export interface GeminiCharacterMode {
   id: string
@@ -14,8 +13,8 @@ export interface GeminiCharacterMode {
   displayName: string
   description: string
   geminiStylePrompt: string
-  // Three-tier vibe text for the LLM layer. Client picks the tier by level
-  // before sending as `gemini_vibe_directive`. Single-injection invariant:
+  // Three-tier vibe text for the LLM layer. Server picks the tier by level
+  // from the selected mode ID. Single-injection invariant:
   // the chosen tier appears ONLY in the system PERSONALITY block, never
   // re-prepended into the greeting user message.
   geminiVibeFlavor: string    // level 'zero'      — tonal adjective phrase, <=15 words, no identity framing

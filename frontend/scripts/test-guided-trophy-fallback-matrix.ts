@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url'
 import {
   getGuidedPathLessons,
   getGuidedTodayPathOptions,
+  loadAllGuidedLessons,
   resolveGuidedBaseContent,
   resolveGuidedLessonVariant,
 } from '../src/data/guidedLessons.ts'
@@ -20,6 +21,8 @@ import {
   fetchTrophySongCanonical,
   TrophySongNotAvailableError,
 } from '../src/lib/trophySongsClient.ts'
+
+await loadAllGuidedLessons()
 
 type Segment = GuidedSegmentReviewNumber
 type MatrixRow = {

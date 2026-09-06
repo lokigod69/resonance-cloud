@@ -6,6 +6,9 @@ export type FixtureScenario = {
   languageReady?: boolean
   speakListenMode?: boolean
   lensResult?: 'high' | 'low' | 'safety' | 'error' | 'stale'
+  lensSaveResult?: 'all-inserted' | 'mixed'
+  lensExistingWords?: Record<string, string[]>
+  lensHintDelayMs?: Record<string, number>
 }
 
 export function scenario(): FixtureScenario {

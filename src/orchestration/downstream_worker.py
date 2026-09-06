@@ -35,6 +35,8 @@ from pathlib import Path
 from typing import Any, Optional
 
 from src.services.music_lyrics_store import persist_video_pipeline_lyrics_best_effort
+from src.path_safety import UnsafePathComponentError
+from src.workspace import get_word_dir
 
 from . import retry, state
 
@@ -145,16 +147,29 @@ class DownstreamWorker:
 
         fresh = await state.fetch_word(self.sb, word_id) or fresh
 
-        from src.storage import get_job_workspace_path
-        workspace_path = get_job_workspace_path(
-            user_id=fresh["user_id"], deck_id=fresh["deck_id"],
-        )
-
         word_slug = fresh.get("word_slug")
         if not word_slug:
             await retry.finalize_failure(
                 self.sb, word_id=word_id, user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
                 failed_stage=target,
+            )
+            state.clear_log_context()
+            return
+
+        try:
+            from src.storage import get_job_workspace_path
+
+            workspace_path = get_job_workspace_path(
+                user_id=fresh["user_id"], deck_id=fresh["deck_id"],
+            )
+            word_dir = get_word_dir(workspace_path, word_slug)
+        except UnsafePathComponentError as exc:
+            log.error("downstream_worker: unsafe workspace path word=%s: %s", word_id, exc)
+            await retry.finalize_failure(
+                self.sb, word_id=word_id, user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
+                failed_stage=target, error_message=str(exc),
             )
             state.clear_log_context()
             return
@@ -177,7 +192,6 @@ class DownstreamWorker:
                     "DIAG downstream_worker workspace listing: word_slug=%s contents=%s",
                     word_slug, os.listdir(workspace_path)[:30],
                 )
-                word_dir = workspace_path / word_slug
                 log.info(
                     "DIAG downstream_worker word_dir: path=%s exists=%s",
                     word_dir, word_dir.exists(),
@@ -234,7 +248,7 @@ class DownstreamWorker:
         """
         from src.manifest import read_manifest
 
-        word_dir = workspace_path / word_slug
+        word_dir = get_word_dir(workspace_path, word_slug)
         try:
             manifest = read_manifest(word_dir)
         except Exception as e:
@@ -245,6 +259,7 @@ class DownstreamWorker:
             )
             await retry.finalize_failure(
                 self.sb, word_id=word["id"], user_id=word["user_id"],
+                expected_operation_id=word.get("active_credit_operation_id"),
                 failed_stage="uploading",
             )
             return False
@@ -338,7 +353,7 @@ class DownstreamWorker:
         defaults = load_defaults(workspace_path)
         suno_settings = defaults.get("suno", {})
         bookend_defaults = defaults.get("bookend", {})
-        word_dir = workspace_path / word_slug
+        word_dir = get_word_dir(workspace_path, word_slug)
 
         bake_result: dict[str, Any] = {}
         bake_ok = False
@@ -449,7 +464,7 @@ class DownstreamWorker:
             await state.mark_music_state(self.sb, word["id"], music_state="disabled")
             return
 
-        word_dir = workspace_path / word_slug
+        word_dir = get_word_dir(workspace_path, word_slug)
         try:
             concept_data = read_concept_data(word_dir)
         except Exception as e:
@@ -510,7 +525,7 @@ class DownstreamWorker:
         from src.settings import load_defaults
 
         word_id = word["id"]
-        word_dir = workspace_path / word_slug
+        word_dir = get_word_dir(workspace_path, word_slug)
 
         defaults = load_defaults(workspace_path)
         suno_settings = defaults.get("suno", {})
@@ -536,13 +551,17 @@ class DownstreamWorker:
             update_selection(word_dir, "song", take)
 
             try:
-                assembly_ok = await self._run_stage_with_budget(
+                await self._run_stage_with_budget(
                     workspace_path, word_slug, "assembly",
                     stage_key="assembly",
                     word_id=word_id,
                 )
+                assembly_ok = True
             except retry.RetryReleased:
                 return False
+            except retry.BudgetExhausted as exc:
+                assembly_ok = False
+                assembly_error = str(exc)
 
             if assembly_ok:
                 assembled_labels.add(label)
@@ -551,7 +570,8 @@ class DownstreamWorker:
                 log.error("downstream_worker: A assembly failed word=%s", word_id)
                 await retry.finalize_failure(
                     self.sb, word_id=word_id, user_id=word["user_id"],
-                    failed_stage="assembly",
+                    expected_operation_id=word.get("active_credit_operation_id"),
+                    failed_stage="assembly", error_message=assembly_error,
                 )
                 return False
             else:
@@ -582,13 +602,16 @@ class DownstreamWorker:
                     update_selection(word_dir, "final", assembly_finals[label])
 
                 try:
-                    bookend_ok = await self._run_stage_with_budget(
+                    await self._run_stage_with_budget(
                         workspace_path, word_slug, "bookend",
                         stage_key="bookend",
                         word_id=word_id,
                     )
+                    bookend_ok = True
                 except retry.RetryReleased:
                     return False
+                except retry.BudgetExhausted:
+                    bookend_ok = False
                 if not bookend_ok:
                     log.warning(
                         "downstream_worker: bookend failed label=%s word=%s "
@@ -630,7 +653,7 @@ class DownstreamWorker:
         *,
         stage_key: str,
         word_id: str,
-    ) -> bool:
+    ) -> None:
         from src.pipeline import run_stage
 
         async def _once():
@@ -641,17 +664,9 @@ class DownstreamWorker:
                 self.sb, word_id=word_id, stage=stage_key, logger=log,
             )
 
-        try:
-            await retry.run_stage_with_budget(
-                stage=stage_key, run_once=_once, bump_attempt_counter=_bump,
-            )
-            return True
-        except retry.BudgetExhausted as e:
-            log.warning(
-                "downstream_worker: %s budget exhausted word=%s: %s",
-                stage, word_id, e,
-            )
-            return False
+        await retry.run_stage_with_budget(
+            stage=stage_key, run_once=_once, bump_attempt_counter=_bump,
+        )
 
     # -------------------------------------------------------------------
     # Upload + complete (shared across all branches)
@@ -670,7 +685,7 @@ class DownstreamWorker:
         state.set_log_context(stage="uploading")
 
         fresh = await state.fetch_word(self.sb, word_id) or word
-        word_dir = workspace_path / word_slug
+        word_dir = get_word_dir(workspace_path, word_slug)
 
         suno_ab = word.get("_suno_ab_manifests") or {}
         ab_manifests = word.get("_ab_manifests") or {}
@@ -713,6 +728,7 @@ class DownstreamWorker:
         if not uploaded:
             await retry.finalize_failure(
                 self.sb, word_id=word_id, user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
                 failed_stage="uploading",
             )
             return False

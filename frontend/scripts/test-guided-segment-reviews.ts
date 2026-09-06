@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url'
 import {
   getGuidedPathLessons,
   getGuidedTodayPathOptions,
+  loadAllGuidedLessons,
   resolveGuidedBaseContent,
   resolveGuidedLessonVariant,
 } from '../src/data/guidedLessons.ts'
@@ -24,6 +25,8 @@ import {
 } from '../src/lib/guidedSegmentStories.ts'
 import { createEmptyTodayProgressState, markTodayLessonComplete } from '../src/lib/todayProgress.ts'
 import type { ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
+
+await loadAllGuidedLessons()
 
 let failures = 0
 let passes = 0
@@ -41,7 +44,7 @@ function assert(name: string, condition: boolean, detail?: unknown) {
 }
 
 const pathIds = getGuidedTodayPathOptions()
-  .filter((path) => path.targetLanguage === 'English')
+  .filter((path) => path.targetLanguage === 'English' && path.level === 'A1')
   .map((path) => path.id)
 const segmentStoryPathIds = pathIds
 

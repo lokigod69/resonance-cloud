@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "generate:guided-runtime": "tsx scripts/generate-guided-runtime-data.ts",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:ios": "vite build --mode ios && tsx scripts/strip-ios-bundle.ts && tsx scripts/guard-cap-sync-platform.ts && cap sync ios",
@@ -11,7 +12,7 @@
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
     "test": "tsx scripts/test-deck-delete-ui.ts",
-    "test:guided-today": "tsx scripts/test-guided-vibes.ts && tsx scripts/test-guided-today-i18n.ts && tsx scripts/test-guided-today-data.ts && tsx scripts/test-guided-path-directory.ts && tsx scripts/test-guided-today-path-overview.ts && tsx scripts/test-guided-segment-reviews.ts && tsx scripts/test-guided-trophy-cloze.ts && tsx scripts/test-guided-trophy-fallback-matrix.ts && tsx scripts/test-guided-cross-vibe.ts && tsx scripts/test-guided-tts-inventory.ts",
+    "test:guided-today": "tsx scripts/test-guided-vibes.ts && tsx scripts/test-guided-today-i18n.ts && tsx scripts/test-guided-runtime-split.ts && tsx scripts/test-guided-today-data.ts && tsx scripts/test-guided-path-directory.ts && tsx scripts/test-guided-today-path-overview.ts && tsx scripts/test-guided-segment-reviews.ts && tsx scripts/test-guided-trophy-cloze.ts && tsx scripts/test-guided-trophy-fallback-matrix.ts && tsx scripts/test-guided-cross-vibe.ts && tsx scripts/test-guided-tts-inventory.ts",
     "check:i18n": "tsx scripts/check-i18n-coverage.ts",
     "test:script-lab": "tsx scripts/test-script-lab-data.ts",
     "test:word-stream": "tsx scripts/test-home-word-stream.ts",
@@ -89,7 +90,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
-    "tsx": "^4.21.0",
+    "tsx": "^4.23.13",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.57.0",
     "vite": "^8.0.1"

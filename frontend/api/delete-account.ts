@@ -44,6 +44,7 @@ type WordStorageRow = {
   id: string
   video_url: string | null
   thumbnail_url: string | null
+  card_thumbnail_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
   suno_storage_url: string | null
@@ -406,12 +407,13 @@ async function collectWordStorageObjects(
   try {
     const rows = await fetchAll<WordStorageRow>(() => admin
       .from('words')
-      .select('id,video_url,thumbnail_url,video_url_b,thumbnail_url_b,suno_storage_url,suno_storage_url_b')
+      .select('id,video_url,thumbnail_url,card_thumbnail_url,video_url_b,thumbnail_url_b,suno_storage_url,suno_storage_url_b')
       .eq('user_id', userId))
 
     for (const row of rows) {
       addStorageUrl(objectsByBucket, 'videos', row.video_url)
       addStorageUrl(objectsByBucket, 'videos', row.thumbnail_url)
+      addStorageUrl(objectsByBucket, 'videos', row.card_thumbnail_url)
       addStorageUrl(objectsByBucket, 'videos', row.video_url_b)
       addStorageUrl(objectsByBucket, 'videos', row.thumbnail_url_b)
       addStorageUrl(objectsByBucket, 'audio', row.suno_storage_url)

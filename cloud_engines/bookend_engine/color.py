@@ -5,6 +5,8 @@ from pathlib import Path
 
 from PIL import Image
 
+from .subprocess_limits import ENCODE_TIMEOUT_SECONDS, PROBE_TIMEOUT_SECONDS
+
 
 def extract_dominant_color(
     video_path: str, sample_position_pct: float = 0.1
@@ -116,6 +118,7 @@ def _extract_color_from_video_frame(
             ],
             capture_output=True,
             check=True,
+            timeout=ENCODE_TIMEOUT_SECONDS,
         )
 
         img = Image.open(tmp_path).convert("RGB")
@@ -280,6 +283,7 @@ def _probe_video_duration(video_path: str) -> float:
         ],
         capture_output=True,
         text=True,
+        timeout=PROBE_TIMEOUT_SECONDS,
     )
     data = json.loads(result.stdout)
     return float(data["format"]["duration"])

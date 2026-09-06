@@ -128,8 +128,8 @@ assert.match(voiceTutorSource, /VOICE_CHAT_TIMEOUT_MS = 55_000/)
 assert.match(voiceTutorSource, /capReplayAudio\(next\)/)
 assert.match(
   voiceTutorSource,
-  /json = await res\.json\(\)[\s\S]*?finally \{\s*clearTimeout\(timer\)\s*\}/,
-  'client abort timer must remain active until the response body has been decoded',
+  /withClientDeadline\(async \(signal\) => \{[\s\S]*?auth\.getSession\(\)[\s\S]*?assertClientActive\(signal\)[\s\S]*?json = await res\.json\(\)[\s\S]*?return \{ res, json \}[\s\S]*?\}, VOICE_CHAT_TIMEOUT_MS\)/,
+  'the tested whole-operation deadline must cover auth, fetch, and body decoding',
 )
 
 console.log('Speak async internals: prompt parity, bounded TTS, and replay memory checks passed')

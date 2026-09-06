@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict'
 import analytics from '../api/_shared/analytics'
+import deadline from '../api/_shared/requestDeadline'
 
-const names = ['AOS_ANALYTICS_ENABLED', 'AOS_POSTHOG_KEY', 'SUPABASE_URL', 'SUPABASE_SERVICE_ROLE_KEY'] as const
+const names = ['AOS_ANALYTICS_ENABLED', 'AOS_POSTHOG_KEY', 'SUPABASE_URL', 'SUPABASE_SERVICE_ROLE_KEY', 'AOS_POSTHOG_DELETION_KEY', 'AOS_POSTHOG_PROJECT_ID'] as const
 const originalEnv = Object.fromEntries(names.map(name => [name, process.env[name]]))
 const originalFetch = globalThis.fetch
 const originalError = console.error
@@ -34,7 +35,24 @@ try {
   globalThis.fetch = async () => { calls++; throw new Error('opt-out lookup unavailable') }
   await analytics.trackServerEvent({ event: 'core_action', distinctId: 'fixture-user', props: { kind: 'lens_scan' } })
   assert.equal(calls, 1, 'failed consent lookup must suppress the outbound event')
-  console.log('Analytics: one total deadline and fail-closed consent lookup passed')
+
+  process.env.AOS_POSTHOG_DELETION_KEY = 'fixture-key'
+  process.env.AOS_POSTHOG_PROJECT_ID = 'fixture-project'
+  let deletes = 0
+  globalThis.fetch = async (_input, init) => {
+    if (init?.method === 'DELETE') deletes++
+    // Simulate a dependency that returns late even after cancellation.
+    await new Promise(resolve => setTimeout(resolve, 80))
+    return Response.json({ results: [{ id: 1 }, { id: 2 }] })
+  }
+  const erased = await deadline.withRequestDeadline(new Request('https://fixture.test/erase'), async () => {
+    await analytics.eraseAnalyticsPerson('fixture-user')
+    return Response.json({ ok: true })
+  }, { timeoutMs: 20, cleanupMs: 10 })
+  assert.equal(erased.status, 504)
+  await new Promise(resolve => setTimeout(resolve, 100))
+  assert.equal(deletes, 0, 'late erasure lookup cannot start a DELETE after the request deadline')
+  console.log('Analytics: shared deadline, fail-closed consent, and no late erasure side effects passed')
 } finally {
   globalThis.fetch = originalFetch
   console.error = originalError

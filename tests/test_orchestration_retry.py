@@ -95,23 +95,52 @@ def test_run_stage_with_budget_exhausts_after_budget(monkeypatch):
 # finalize_failure + refund
 # --------------------------------------------------------------------------
 
-def test_finalize_failure_refunds_once():
+def test_finalize_failure_uses_one_atomic_rpc_once():
     sb = FakeSupabase()
-    word = sb.add_word(current_stage="video", user_id="u-42")
+    word = sb.add_word(
+        current_stage="video", user_id="u-42",
+        active_credit_operation_id="op-current",
+    )
 
     first = _run(retry.finalize_failure(
         sb, word_id=word["id"], user_id="u-42", failed_stage="video",
+        expected_operation_id="op-current",
     ))
     second = _run(retry.finalize_failure(
         sb, word_id=word["id"], user_id="u-42", failed_stage="video",
+        expected_operation_id="op-current",
     ))
 
     assert first is True
     assert second is False
 
-    refund_calls = [r for r in sb.rpc_calls if r[0] == "refund_credit"]
-    assert len(refund_calls) == 1
-    assert refund_calls[0][1] == {"user_id_param": "u-42"}
+    settlement_calls = [
+        r for r in sb.rpc_calls if r[0] == "mark_word_failed_and_refund"
+    ]
+    assert len(settlement_calls) == 2  # second call proves DB-side idempotency
+    assert settlement_calls[0][1] == {
+        "p_word_id": word["id"],
+        "p_failed_stage": "video",
+        "p_error_message": None,
+        "p_expected_operation_id": "op-current",
+    }
+    assert not [r for r in sb.rpc_calls if r[0] == "refund_credit"]
+
+
+def test_finalize_failure_rejects_stale_credit_operation():
+    sb = FakeSupabase()
+    word = sb.add_word(
+        current_stage="images", user_id="u-42",
+        active_credit_operation_id="op-paid-retry",
+    )
+
+    owned = _run(retry.finalize_failure(
+        sb, word_id=word["id"], user_id="u-42", failed_stage="images",
+        expected_operation_id="op-original",
+    ))
+
+    assert owned is False
+    assert sb._tables["words"][0]["current_stage"] == "images"
 
 
 def test_bump_same_stage_or_release_returns_false_when_word_no_longer_owned():

@@ -7,10 +7,8 @@ import { getSelectedGuidedVibe } from '@/lib/todayVibe'
 import { toGuidedLanguageName } from '@/lib/targetLanguage'
 import { isConstrainedConnection } from '@/lib/network'
 
-// guidedLessons.ts is a ~65k-line data module. It must NEVER be statically imported
-// from the dashboard (it would swallow the home chunk); this hook loads it through a
-// dynamic import so Rollup keeps it in the async chunk it already occupies for /today,
-// and the dashboard merely warms that chunk before the learner taps into the lesson.
+// Keep the lightweight guided index out of the dashboard's static graph. This hook
+// loads the facade at idle time; the facade then fetches only the active language body.
 type GuidedLessonsModule = typeof import('@/data/guidedLessons')
 type GuidedCheckpointModule = typeof import('@/lib/guidedCheckpoint')
 
@@ -72,10 +70,8 @@ type UseTodayMissionArgs = {
  */
 // The resolved mission is a pure function of (language, base language, user,
 // guided progress). Cache it per tab so a home revisit never re-downloads the
-// corpus, and defer the first resolution to idle time so the 6.96 MB chunk
-// stops competing with the dashboard's own critical path (audit D-02 / E-01).
-// The durable fix is the guided index/body split (D-01); until then this keeps
-// the download off the first paint and off metered connections entirely.
+// selected language body, and defer the first resolution to idle time so guided
+// content does not compete with the dashboard's critical path (audit D-02 / E-01).
 const MISSION_CACHE_KEY = 'lingwave:todayMission:v1'
 const MISSION_IDLE_TIMEOUT_MS = 6_000
 
@@ -148,7 +144,7 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled,
     }
 
     if (isConstrainedConnection()) {
-      // Never pull the corpus over a metered / 2G link for one card.
+      // Never pull a language body over a metered / 2G link for one card.
       setState({ loading: false, mission: null })
       return
     }
@@ -162,6 +158,15 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled,
             import('@/data/guidedLessons'),
             import('@/lib/guidedCheckpoint'),
           ])
+          const guidedLanguage = resolveMissionLanguage(
+            lessonsModule,
+            progress,
+            activeLanguage,
+            allowGuidedLanguageFallback,
+          )
+          if (guidedLanguage) {
+            await lessonsModule.loadGuidedLessonsForLanguage(guidedLanguage)
+          }
           if (cancelled) return
           const mission = buildTodayMission({ lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage, allowGuidedLanguageFallback })
           writeMissionCache(cacheKey, mission)

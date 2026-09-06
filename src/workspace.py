@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .models import WorkspaceMeta
+from .path_safety import confined_child_path, validate_word_slug
 
 
 STAGE_FOLDERS = ['concept', 'songs', 'images', 'videos', 'final', 'bookend']
@@ -13,7 +14,7 @@ STAGE_FOLDERS = ['concept', 'songs', 'images', 'videos', 'final', 'bookend']
 
 def create_word_folder(workspace_path: Path, word_slug: str) -> Path:
     """Create the folder structure for a single word."""
-    word_dir = workspace_path / word_slug
+    word_dir = get_word_dir(workspace_path, word_slug)
     word_dir.mkdir(parents=True, exist_ok=True)
     for folder in STAGE_FOLDERS:
         (word_dir / folder).mkdir(exist_ok=True)
@@ -21,7 +22,7 @@ def create_word_folder(workspace_path: Path, word_slug: str) -> Path:
 
 
 def get_word_dir(workspace_path: Path, word_slug: str) -> Path:
-    return workspace_path / word_slug
+    return confined_child_path(workspace_path, validate_word_slug(word_slug))
 
 
 def list_word_dirs(workspace_path: Path) -> list[Path]:

@@ -11,6 +11,7 @@ import { GEMINI_ACCENTS } from '@/data/geminiAccents'
 import { publicApiUrl } from '@/lib/publicOrigins'
 import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translations'
 import { CORRECTIONS_TIMEOUT_MS, prepareCorrectionsTranscript } from '@/lib/speakCorrections'
+import { assertClientActive, withClientDeadline } from '@/lib/clientDeadline'
 import { useSpeakModalFocus } from './useSpeakModalFocus'
 
 interface Conversation {
@@ -127,6 +128,8 @@ const LEVEL_EMOJI: Record<string, string> = {
   advanced:     '📕',
 }
 
+const HISTORY_READ_TIMEOUT_MS = 15_000
+
 function formatDate(iso: string, t: (key: string, vars?: Record<string, string | number>) => string): string {
   const date = new Date(iso)
   const now = new Date()
@@ -170,24 +173,28 @@ export function SpeakHistoryPanel({ open, onClose, suspended = false, baseLangCo
   // Load conversations when panel opens
   useEffect(() => {
     if (!open || !user) return
-    let cancelled = false
+    const controller = new AbortController()
 
     setLoading(true)
     setSelectedId(null)
     setMessages([])
 
-    supabase
-      .from('speak_conversations')
-      .select('*')
-      .eq('user_id', user.id)
-      .order('started_at', { ascending: false })
-      .limit(50)
-      .then(({ data, error }) => {
-        if (cancelled) return
-        if (!error && data) setConversations(data as Conversation[])
-        setLoading(false)
-      })
-    return () => { cancelled = true }
+    void withClientDeadline(async (signal) => {
+      const { data, error } = await supabase
+        .from('speak_conversations')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('started_at', { ascending: false })
+        .limit(50)
+        .abortSignal(signal)
+      if (error) throw error
+      return data
+    }, HISTORY_READ_TIMEOUT_MS, controller.signal).then((data) => {
+      if (!controller.signal.aborted && data) setConversations(data as Conversation[])
+    }).catch(() => undefined).finally(() => {
+      if (!controller.signal.aborted) setLoading(false)
+    })
+    return () => controller.abort()
   }, [open, user])
 
   // Load messages when a conversation is selected
@@ -196,26 +203,30 @@ export function SpeakHistoryPanel({ open, onClose, suspended = false, baseLangCo
       setCorrections(null)
       return
     }
-    let cancelled = false
+    const controller = new AbortController()
     const requestedId = selectedId
 
     setMessagesLoading(true)
-    supabase
-      .from('speak_messages')
-      .select('*')
-      .eq('conversation_id', requestedId)
-      .order('created_at', { ascending: true })
-      .then(({ data, error }) => {
-        if (cancelled) return
-        if (!error && data) setMessages(data as Message[])
-        setMessagesLoading(false)
-      })
+    void withClientDeadline(async (signal) => {
+      const { data, error } = await supabase
+        .from('speak_messages')
+        .select('*')
+        .eq('conversation_id', requestedId)
+        .order('created_at', { ascending: true })
+        .abortSignal(signal)
+      if (error) throw error
+      return data
+    }, HISTORY_READ_TIMEOUT_MS, controller.signal).then((data) => {
+      if (!controller.signal.aborted && data) setMessages(data as Message[])
+    }).catch(() => undefined).finally(() => {
+      if (!controller.signal.aborted) setMessagesLoading(false)
+    })
 
     // Hydrate cached corrections if present
     const conv = conversations.find((c) => c.id === selectedId)
     setCorrections(conv?.corrections ?? null)
     setCorrectionsError(null)
-    return () => { cancelled = true }
+    return () => controller.abort()
   }, [selectedId, conversations])
 
   const selectedConversation = conversations.find((c) => c.id === selectedId)
@@ -226,71 +237,67 @@ export function SpeakHistoryPanel({ open, onClose, suspended = false, baseLangCo
     const controller = new AbortController()
     correctionsAbortRef.current = controller
     const requestedConversation = selectedConversation
-    let timedOut = false
-    const timeoutId = window.setTimeout(() => {
-      timedOut = true
-      controller.abort()
-    }, CORRECTIONS_TIMEOUT_MS)
     setCorrectionsLoading(true)
     setCorrectionsError(null)
     try {
-      const { data: sessionData } = await supabase.auth.getSession()
-      const token = sessionData.session?.access_token
-      if (!token) {
-        setCorrectionsError(t('speak.history.sessionExpired'))
-        return
-      }
+      const list = await withClientDeadline(async (signal) => {
+        const { data: sessionData } = await supabase.auth.getSession()
+        assertClientActive(signal)
+        const token = sessionData.session?.access_token
+        if (!token) throw new Error('session-expired')
 
-      const res = await fetch(publicApiUrl('/api/voice-chat'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        signal: controller.signal,
-        body: JSON.stringify({
-          mode: 'corrections',
-          transcript: prepareCorrectionsTranscript(messages),
-          language: requestedConversation.language,
-          native_language: baseLangCode || 'en',
-        }),
-      })
-      if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
-      if (!res.ok) {
-        const errorData = await res.json().catch(() => null) as SpeakApiErrorPayload | null
-        console.warn('[SpeakHistoryPanel] Corrections request failed:', {
-          status: res.status,
-          error: errorData?.error,
-          detail: errorData?.detail,
-          retry_after_seconds: errorData?.retry_after_seconds,
+        const res = await fetch(publicApiUrl('/api/voice-chat'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          signal,
+          body: JSON.stringify({
+            mode: 'corrections',
+            transcript: prepareCorrectionsTranscript(messages),
+            language: requestedConversation.language,
+            native_language: baseLangCode || 'en',
+          }),
         })
-        setCorrectionsError(res.status === 401
-          ? t('speak.history.sessionExpired')
-          : formatSpeakApiError(t, res.status, errorData, 'speak.history.correctionsUnavailable'))
-        return
-      }
-      const data = await res.json().catch(() => null) as { corrections?: unknown } | null
-      if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
-      if (!data || !Array.isArray(data.corrections)) {
-        console.warn('[SpeakHistoryPanel] Corrections response missing corrections array:', data)
-        setCorrectionsError(t('speak.history.correctionsUnavailable'))
-        return
-      }
+        const data = await res.json().catch(() => null) as ({ corrections?: unknown } & SpeakApiErrorPayload) | null
+        assertClientActive(signal)
+        if (!res.ok) {
+          console.warn('[SpeakHistoryPanel] Corrections request failed:', {
+            status: res.status,
+            error: data?.error,
+            detail: data?.detail,
+            retry_after_seconds: data?.retry_after_seconds,
+          })
+          throw new Error(res.status === 401
+            ? 'session-expired'
+            : formatSpeakApiError(t, res.status, data, 'speak.history.correctionsUnavailable'))
+        }
+        if (!data || !Array.isArray(data.corrections)) {
+          console.warn('[SpeakHistoryPanel] Corrections response missing corrections array:', data)
+          throw new Error('invalid-corrections')
+        }
 
-      const list = data.corrections as Correction[]
-      setCorrections(list)
-      await supabase.from('speak_conversations')
-        .update({ corrections: list })
-        .eq('id', requestedConversation.id)
-        .eq('user_id', user?.id ?? '')
+        const nextCorrections = data.corrections as Correction[]
+        await supabase.from('speak_conversations')
+          .update({ corrections: nextCorrections })
+          .eq('id', requestedConversation.id)
+          .eq('user_id', user?.id ?? '')
+          .abortSignal(signal)
+        return nextCorrections
+      }, CORRECTIONS_TIMEOUT_MS, controller.signal)
       if (controller.signal.aborted || correctionsAbortRef.current !== controller) return
+      setCorrections(list)
       setConversations((prev) => prev.map((c) => c.id === requestedConversation.id ? { ...c, corrections: list } : c))
     } catch (err) {
-      if (controller.signal.aborted && !timedOut) return
+      if (controller.signal.aborted) return
       console.error('Corrections fetch failed:', err)
-      setCorrectionsError(t('speak.history.correctionsUnavailable'))
+      setCorrectionsError(err instanceof Error && err.message === 'session-expired'
+        ? t('speak.history.sessionExpired')
+        : err instanceof Error && err.message !== 'invalid-corrections' && !(err instanceof DOMException)
+          ? err.message
+          : t('speak.history.correctionsUnavailable'))
     } finally {
-      window.clearTimeout(timeoutId)
       if (correctionsAbortRef.current === controller) {
         correctionsAbortRef.current = null
         setCorrectionsLoading(false)

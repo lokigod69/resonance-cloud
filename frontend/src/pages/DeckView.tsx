@@ -32,7 +32,7 @@ import { getOrCreateShareLink } from '@/lib/shareWord'
 import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
 import { classifyCardGenerationFailure, getCardRetryAction } from '@/lib/cardFailureClassification'
 import { getDeckLanguageLabel } from '@/lib/i18nDisplay'
-import { getCardThumbUrl } from '@/lib/imageUrls'
+import { getCardPreviewUrl } from '@/lib/imageUrls'
 import { deriveWordSource } from '@/lib/wordSource'
 
 type Deck = {
@@ -61,6 +61,7 @@ type Word = {
   status: string
   video_url: string | null
   thumbnail_url: string | null
+  card_thumbnail_url: string | null
   tts_audio_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
@@ -651,7 +652,7 @@ export default function DeckView() {
                   <div className="aspect-video relative bg-card">
                     {word.thumbnail_url ? (
                       <img
-                        src={isCardDeck ? getCardThumbUrl(word.thumbnail_url) ?? undefined : word.thumbnail_url}
+                        src={isCardDeck ? getCardPreviewUrl(word.card_thumbnail_url, word.thumbnail_url) ?? undefined : word.thumbnail_url}
                         alt={word.word}
                         loading="lazy"
                         className={`w-full h-full ${isCardDeck ? 'object-contain bg-card' : 'object-cover'}`}

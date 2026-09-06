@@ -1,4 +1,5 @@
 import { generateGeminiTtsFromPrompt } from './_shared/geminiTts'
+import { resolveSpeakPersona } from './_shared/speakPersona'
 import {
   LANGUAGE_CONFIG,
   NATIVE_LANGUAGE_NAMES,
@@ -12,6 +13,7 @@ import { corsHeaders, optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit, sanitizedProviderError } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
+import { assertRequestActive, fetchWithRequestDeadline, withRequestDeadline } from './_shared/requestDeadline'
 import {
   consumeFeatureAllowance,
   getFeatureUsed,
@@ -480,7 +482,7 @@ function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number, 
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs)
   console.log(`[voice-chat] ${label} — starting (${timeoutMs}ms timeout)`)
-  return fetch(url, { ...options, signal: controller.signal })
+  return fetchWithRequestDeadline(url, { ...options, signal: controller.signal }, timeoutMs)
     .then((res) => {
       let completed = false
       return {
@@ -617,7 +619,7 @@ function validateVoiceBody(raw: unknown): RequestBody & {
     throw new ApiError(400, 'character_tier is invalid')
   }
 
-  return {
+  const validated = {
     audio_base64: audioBase64,
     language,
     history: validateMessages(raw.history, 'history', MAX_HISTORY_ENTRIES),
@@ -639,6 +641,13 @@ function validateVoiceBody(raw: unknown): RequestBody & {
     gemini_vibe_directive: readString(raw.gemini_vibe_directive, 'gemini_vibe_directive', MAX_CHARACTER_FIELD_LENGTH),
     transcript,
     message: readString(raw.message, 'message', MAX_MESSAGE_LENGTH),
+  }
+  return {
+    ...validated,
+    ...resolveSpeakPersona({
+      ...validated,
+      character_id: readString(raw.character_id, 'character_id', 128),
+    }),
   }
 }
 
@@ -742,6 +751,10 @@ If no errors: {"corrections": []}`
 }
 
 export async function POST(req: Request): Promise<Response> {
+  return withRequestDeadline(req, handlePost)
+}
+
+async function handlePost(req: Request): Promise<Response> {
   const pipelineDeadline = Date.now() + VOICE_PIPELINE_BUDGET_MS
   let body: RequestBody & { mode?: string; transcript?: Array<{ role: string; content: string }>; message?: string }
   let userId = ''
@@ -797,6 +810,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   try {
+  assertRequestActive()
   const { audio_base64, language, history = [], voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words, scenarioPrompt, provider, gemini_character_mode_id, gemini_voice_name, gemini_accent_id, gemini_vibe_directive } = body
   const isRoleplay = body.mode === 'roleplay' && !!scenarioPrompt
   const roleplayText = typeof body.message === 'string' ? body.message : null

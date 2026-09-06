@@ -1,21 +1,22 @@
 import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
-import { mapLensScanItemsForSave } from '@/lib/lensSaveMapping'
-import type { LensScanItem } from '@/lib/lensTypes'
+import { withClientDeadline } from '@/lib/clientDeadline'
+import {
+  mapLensScanItemsForSave,
+  parseLensSaveResult,
+  type LensSaveInputItem,
+  type LensSaveResult,
+} from '@/lib/lensSaveMapping'
 
 export type LensSaveStatus = 'idle' | 'loading' | 'success' | 'error'
-
-export type LensSaveResult = {
-  deckId: string
-  inserted: number
-  skipped: number
-}
+export const LENS_SAVE_DEADLINE_MS = 15_000
 
 type LensSaveRpcResult = {
   deck_id?: string
   deckId?: string
   inserted?: number
   skipped?: number
+  outcomes?: unknown
   error?: string
 } | null
 
@@ -35,7 +36,7 @@ export function useLensSave() {
   async function saveLensItems(request: {
     targetLanguage: string
     baseLanguage: string
-    items: LensScanItem[]
+    items: LensSaveInputItem[]
   }): Promise<LensSaveResult> {
     const pItems = mapLensScanItemsForSave(request.items, { targetLanguage: request.targetLanguage })
     if (pItems.length === 0) {
@@ -47,22 +48,24 @@ export function useLensSave() {
     setResult(null)
 
     try {
-      const { data, error: rpcError } = await supabase.rpc('submit_lens_save', {
-        p_target_language: request.targetLanguage,
-        p_base_language: request.baseLanguage,
-        p_items: pItems,
-      })
+      // Do not automatically retry a timed-out write: the database may have
+      // committed after the client lost the response. A deliberate retry is
+      // safe because submit_lens_save deduplicates the same recap client ids.
+      const { data, error: rpcError } = await withClientDeadline(
+        async (signal) => await supabase.rpc('submit_lens_save', {
+          p_target_language: request.targetLanguage,
+          p_base_language: request.baseLanguage,
+          p_items: pItems,
+        }).abortSignal(signal),
+        LENS_SAVE_DEADLINE_MS,
+      )
       if (rpcError) throw rpcError
 
       const rpcResult = data as LensSaveRpcResult
       const deckId = rpcResult?.deck_id ?? rpcResult?.deckId ?? null
       if (!deckId) throw new Error(rpcResult?.error ?? 'Lens save failed')
 
-      const saveResult = {
-        deckId,
-        inserted: Number(rpcResult?.inserted ?? 0),
-        skipped: Number(rpcResult?.skipped ?? 0),
-      }
+      const saveResult = parseLensSaveResult(rpcResult, pItems.map((item) => item.client_id))
       setResult(saveResult)
       setStatus('success')
       return saveResult

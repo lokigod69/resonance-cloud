@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import { ApiError } from './http'
+import { assertRequestActive, requestFetch } from './requestDeadline'
 
 export type ApiQuotaAction = 'voice_chat' | 'guided_transcribe' | 'suggest_words' | 'grok_token' | 'visual_scan'
 
@@ -52,6 +53,7 @@ export async function consumeApiQuota(
   }
 
   const supabase = createClient(url, key, {
+    global: { fetch: requestFetch },
     auth: {
       persistSession: false,
       autoRefreshToken: false,
@@ -64,6 +66,7 @@ export async function consumeApiQuota(
     p_action: action,
     p_request_fingerprint: requestFingerprint,
   })
+  assertRequestActive()
 
   if (error) {
     throw new ApiError(429, 'Quota check unavailable', { mode: 'fail_closed' })

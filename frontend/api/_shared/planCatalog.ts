@@ -39,8 +39,9 @@ export const FREE_SIGNUP_CREDITS = 10
 export const FREE_TRIAL_SPEAK_SECONDS = 60
 export const FREE_TRIAL_LENS_SCANS = 3
 
-// A Grok Live client secret is minted with a 10-minute TTL, so one mint is one
-// 10-minute debit — the token itself enforces the ceiling.
+// Product allowance is reserved in 10-minute wall-clock blocks. The client
+// closes its socket at the reservation deadline; xAI documents a separate
+// 120-minute connection limit, so secret expiry is not a trusted cost ceiling.
 export const LIVE_SESSION_MINUTES = 10
 
 const PRICE_ENV_NAMES: Record<PaidPlanId, Record<PlanInterval, string>> = {

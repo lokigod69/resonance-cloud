@@ -39,6 +39,14 @@ export function getCardThumbUrl(rawUrl: string | null | undefined, size = 256): 
   return publicAssetUrl(rawUrl) || null
 }
 
+/** Prefer the generated small derivative, with legacy/full-image fallback. */
+export function getCardPreviewUrl(
+  cardThumbnailUrl: string | null | undefined,
+  fullImageUrl: string | null | undefined,
+): string | null {
+  return publicAssetUrl(cardThumbnailUrl) || publicAssetUrl(fullImageUrl) || null
+}
+
 export function getCardFullUrl(
   rawUrl: string | null | undefined,
   width = 1280,

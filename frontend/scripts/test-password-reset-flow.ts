@@ -18,7 +18,7 @@ function assertIncludes(source: string, needle: string, label: string): void {
 
 const loginSource = read('src/pages/Login.tsx')
 assertIncludes(loginSource, 'resetPasswordForEmail', 'Login reset request flow')
-assertIncludes(loginSource, 'redirectTo: `${window.location.origin}/reset-password`', 'Login reset redirect')
+assertIncludes(loginSource, "redirectTo: getPublicWebUrl('/reset-password')", 'Login reset redirect uses the canonical public origin')
 assertIncludes(loginSource, "t('auth.forgotPassword')", 'Login forgot-password link')
 assertIncludes(loginSource, "t('auth.emailPlaceholder')", 'Login email placeholder translation')
 assertIncludes(loginSource, "t('auth.resetRequestTitle')", 'Login reset request title')
@@ -28,6 +28,15 @@ const resetPasswordPath = resolve(root, 'src/pages/ResetPassword.tsx')
 assert.ok(existsSync(resetPasswordPath), 'ResetPassword page must exist')
 const resetPasswordSource = read('src/pages/ResetPassword.tsx')
 assertIncludes(resetPasswordSource, 'PASSWORD_RECOVERY', 'ResetPassword recovery event listener')
+const recoveryProbeSource = resetPasswordSource.slice(
+  resetPasswordSource.indexOf('supabase.auth.getSession()'),
+  resetPasswordSource.indexOf('supabase.auth.onAuthStateChange'),
+)
+assert.ok(
+  !recoveryProbeSource.includes('setHasRecoverySession'),
+  'An ordinary getSession result must not authorize password recovery',
+)
+assertIncludes(resetPasswordSource, 'disabled={loading || checkingRecovery || !hasRecoverySession}', 'ResetPassword form stays disabled outside recovery flow')
 assertIncludes(resetPasswordSource, 'supabase.auth.updateUser({ password })', 'ResetPassword update call')
 assertIncludes(resetPasswordSource, 'minLength={6}', 'ResetPassword minimum password length')
 assertIncludes(resetPasswordSource, "t('auth.resetPasswordTitle')", 'ResetPassword title translation')
@@ -35,7 +44,7 @@ assertIncludes(resetPasswordSource, "t('auth.resetPasswordSuccess')", 'ResetPass
 assertIncludes(resetPasswordSource, "navigate('/dashboard'", 'ResetPassword success navigation')
 
 const appSource = read('src/App.tsx')
-assertIncludes(appSource, "import ResetPassword from '@/pages/ResetPassword'", 'App route import')
+assertIncludes(appSource, "const ResetPassword = lazyWithRetry(routeImports.resetPassword, 'reset-password')", 'App lazy route import')
 assertIncludes(appSource, '<Route path="/reset-password" element={<ResetPassword />} />', 'App reset-password route')
 const resetRouteIndex = appSource.indexOf('<Route path="/reset-password" element={<ResetPassword />} />')
 const publicRouteIndex = appSource.indexOf('<Route element={<PublicRoute />}>')

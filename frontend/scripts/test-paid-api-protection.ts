@@ -49,6 +49,8 @@ let quotaResult: QuotaResult = defaultQuota
 let quotaShouldFail = false
 let callSequence: string[] = []
 let quotaActions: string[] = []
+let liveSecretCiphertext: string | null = null
+let liveSecretExpiresAt: string | null = null
 
 function resetMocks() {
   providerCalls = []
@@ -56,6 +58,8 @@ function resetMocks() {
   quotaShouldFail = false
   callSequence = []
   quotaActions = []
+  liveSecretCiphertext = null
+  liveSecretExpiresAt = null
 }
 
 function json(body: unknown, init?: ResponseInit): Response {
@@ -134,6 +138,30 @@ globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise
   if (url === 'https://supabase.test/rest/v1/rpc/consume_feature_usage') {
     return json([{ allowed: true, used: 1 }])
   }
+  if (url === 'https://supabase.test/rest/v1/rpc/reserve_live_session_mint') {
+    callSequence.push('live-reservation')
+    return json({
+      allowed: true,
+      reservation_id: '22222222-2222-4222-8222-222222222222',
+      reservation_expires_at: new Date(Date.now() + 10 * 60_000).toISOString(),
+      remaining_seconds: 600,
+      created: true,
+      minutes_debited: 0,
+      reuse_secret: liveSecretCiphertext !== null,
+      client_secret_ciphertext: liveSecretCiphertext,
+      client_secret_expires_at: liveSecretExpiresAt,
+      mint_attempt_count: 1,
+    })
+  }
+  if (url === 'https://supabase.test/rest/v1/rpc/complete_live_session_mint') {
+    callSequence.push('live-completion')
+    const rawBody = typeof init?.body === 'string'
+      ? JSON.parse(init.body) as { p_client_secret_ciphertext?: string; p_client_secret_expires_at?: string }
+      : {}
+    liveSecretCiphertext = rawBody.p_client_secret_ciphertext ?? null
+    liveSecretExpiresAt = rawBody.p_client_secret_expires_at ?? null
+    return json({ accepted: true, refunded: false })
+  }
   if (url.startsWith('https://supabase.test/rest/v1/usage_counters')) {
     return new Response('null', { status: 200, headers: { 'Content-Type': 'application/json' } })
   }
@@ -162,7 +190,10 @@ globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise
 
   if (url === 'https://api.x.ai/v1/realtime/client_secrets') {
     callSequence.push('provider:xai')
-    return json({ value: 'xai-client-secret-test' })
+    return json({
+      value: 'xai-client-secret-test',
+      expires_at: Math.floor(Date.now() / 1000) + 600,
+    })
   }
 
   throw new Error(`Unexpected fetch URL in test: ${url}`)
@@ -172,6 +203,8 @@ const voiceChat = await import('../api/voice-chat.ts')
 const guidedTranscribe = await import('../api/guided-transcribe.ts')
 const suggestWords = await import('../api/suggest-words.ts')
 const grokToken = await import('../api/grok-token.ts')
+const translateAndIpa = await import('../api/translate-and-ipa.ts')
+const extractVocabulary = await import('../api/extract-vocabulary.ts')
 const guidedTranscribeMethods = guidedTranscribe as typeof guidedTranscribe & {
   GET?: (req: Request) => Promise<Response> | Response
   PUT?: (req: Request) => Promise<Response> | Response
@@ -462,8 +495,18 @@ await (async function successfulRequestCallsProviderAfterGates() {
 
 await (async function successfulGrokTokenCallsXaiAfterQuota() {
   resetMocks()
-  const res = await grokToken.POST(request(undefined, 'valid-token'))
+  const res = await grokToken.POST(request({
+    mint_request_id: '33333333-3333-4333-8333-333333333333',
+    reservation_id: null,
+  }, 'valid-token'))
   await expectStatus('successful grok-token returns 200', res, 200)
+  const retry = await grokToken.POST(request({
+    mint_request_id: '44444444-4444-4444-8444-444444444444',
+    reservation_id: '22222222-2222-4222-8222-222222222222',
+  }, 'valid-token'))
+  await expectStatus('retry in active Live reservation returns 200', retry, 200)
+  const legacyRetry = await grokToken.POST(request(undefined, 'valid-token'))
+  await expectStatus('legacy empty-body client reuses active Live reservation', legacyRetry, 200)
   assert.deepEqual(
     providerCalls,
     ['https://api.x.ai/v1/realtime/client_secrets'],
@@ -471,10 +514,18 @@ await (async function successfulGrokTokenCallsXaiAfterQuota() {
   )
   assert.deepEqual(
     callSequence,
-    ['auth', 'quota', 'provider:xai'],
-    'xAI call must happen after auth and quota',
+    [
+      'auth', 'quota', 'live-reservation', 'provider:xai', 'live-completion',
+      'auth', 'quota', 'live-reservation',
+      'auth', 'quota', 'live-reservation',
+    ],
+    'retry must reuse the stored secret after auth, quota and reservation lookup',
   )
-  assert.deepEqual(quotaActions, ['grok_token'], 'grok-token must consume grok_token quota')
+  assert.deepEqual(
+    quotaActions,
+    ['grok_token', 'grok_token', 'grok_token'],
+    'each grok-token HTTP request must retain the outer quota rail',
+  )
 })()
 
 await (async function successfulVoiceChatCallsProviderAfterQuota() {
@@ -533,6 +584,26 @@ await (async function currentFrontendLanguageValuesRemainAccepted() {
     count: 5,
   }, 'valid-token'))
   await expectStatus('suggest-words accepts frontend base_language value', suggestRes, 200)
+})()
+
+await (async function missingOpenRouterDoesNotDebitQuota() {
+  const key = process.env.OPENROUTER_API_KEY
+  delete process.env.OPENROUTER_API_KEY
+  try {
+    for (const [handler, body] of [
+      [suggestWords.POST, { category: 'Food', target_language: 'Spanish', base_language: 'English', count: 5 }],
+      [translateAndIpa.POST, { target_language: 'Spanish', base_language: 'English', items: [{ word: 'hola', is_phrase: false }] }],
+      [extractVocabulary.POST, { target_language: 'Spanish', base_language: 'English', messages: [{ role: 'user', content: 'Hola' }] }],
+    ] as const) {
+      resetMocks()
+      const res = await handler(request(body, 'valid-token'))
+      assert.equal(res.status, 503, JSON.stringify(await res.json()))
+      assert.equal(quotaActions.length, 0, 'Missing provider configuration must not debit quota')
+      assert.equal(providerCalls.length, 0)
+    }
+  } finally {
+    process.env.OPENROUTER_API_KEY = key
+  }
 })()
 
 console.log('Phase 1C paid API protection tests passed')

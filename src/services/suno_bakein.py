@@ -10,6 +10,7 @@ from typing import Any
 from src.manifest import read_manifest, update_selection
 from src.pipeline import run_stage
 from src.services.events import write_event_row
+from src.path_safety import validate_word_slug, validate_workspace_component
 from src.suno import (
     _write_to_supabase as suno_write_to_supabase,
     download_suno_audio,
@@ -74,7 +75,11 @@ def _upload_suno_to_storage(
     path_b: Path | None,
 ) -> None:
     """Upload raw Suno MP3s to Supabase Storage and write permanent URLs to words table."""
-    storage_prefix = f"{user_id}/{deck_id}/{word_slug}"
+    storage_prefix = "/".join((
+        validate_workspace_component(user_id, label="user_id"),
+        validate_workspace_component(deck_id, label="deck_id"),
+        validate_word_slug(word_slug),
+    ))
     update: dict[str, str | None] = {}
 
     # Track A

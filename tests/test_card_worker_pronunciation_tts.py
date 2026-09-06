@@ -58,6 +58,9 @@ def test_card_image_success_and_tts_success_completes_word_with_tts_url(monkeypa
     async def fake_upload(self, **_kwargs):
         return "https://cdn.example/card.png", None
 
+    async def fake_thumbnail_upload(self, **_kwargs):
+        return "https://cdn.example/card.thumb.webp"
+
     async def fake_tts(**kwargs):
         tts_calls.append(kwargs)
         return {
@@ -69,6 +72,7 @@ def test_card_image_success_and_tts_success_completes_word_with_tts_url(monkeypa
 
     monkeypatch.setattr(card_engine, "generate_card_image", fake_generate_card_image)
     monkeypatch.setattr(CardWorker, "_upload_card_image", fake_upload)
+    monkeypatch.setattr(CardWorker, "_upload_card_thumbnail", fake_thumbnail_upload)
     monkeypatch.setattr(pronunciation_tts, "generate_target_headword_for_card", fake_tts)
     monkeypatch.setattr(card_worker_mod, "write_event_row", lambda **kwargs: events.append(kwargs))
 
@@ -93,6 +97,7 @@ def test_card_image_success_and_tts_success_completes_word_with_tts_url(monkeypa
     assert error is None
     assert row["current_stage"] == "complete"
     assert row["thumbnail_url"] == "https://cdn.example/card.png"
+    assert row["card_thumbnail_url"] == "https://cdn.example/card.thumb.webp"
     assert row["tts_audio_url"] == "https://cdn.example/tts-pronunciations/de/voice-a/hash.mp3"
     assert row["tts_status"] == "ready"
     assert row["tts_voice_id"] == "voice-a"
@@ -148,6 +153,7 @@ def test_card_image_success_and_tts_failure_still_completes_word(monkeypatch, tm
     assert error is None
     assert row["current_stage"] == "complete"
     assert row["thumbnail_url"] == "https://cdn.example/card.png"
+    assert row["card_thumbnail_url"] is None
     assert row["tts_audio_url"] is None
     assert row["tts_status"] == "failed"
     failure_events = [event for event in events if event["sub_step"] == "tts_pronunciation" and event["status"] == "failed"]

@@ -236,6 +236,35 @@ def _install_signal_handlers(loop: asyncio.AbstractEventLoop) -> None:
                 log.warning("could not install %s handler: %s", sig, e)
 
 
+async def _surface_unexpected_task_exit(
+    *,
+    tasks: list[asyncio.Task],
+    done: set[asyncio.Task],
+    pending: set[asyncio.Task],
+) -> None:
+    """Cancel peer workers and fail the process for Railway ON_FAILURE."""
+    exited = [task for task in tasks if task in done]
+    details = []
+    for task in exited:
+        if task.cancelled():
+            details.append(f"{task.get_name()}: cancelled")
+            continue
+        exc = task.exception()
+        details.append(
+            f"{task.get_name()}: {type(exc).__name__}: {exc}"
+            if exc is not None
+            else f"{task.get_name()}: returned"
+        )
+    detail = "; ".join(details) or "unknown task"
+    log.error(
+        "job_runner: unexpected task exit; cancelling remainder (%s)", detail,
+    )
+    for task in pending:
+        task.cancel()
+    await asyncio.gather(*tasks, return_exceptions=True)
+    raise RuntimeError(f"orchestrator worker exited unexpectedly: {detail}")
+
+
 # ─── Main orchestrator loop ───────────────────────────────────────────────────
 
 async def main() -> None:
@@ -409,12 +438,12 @@ async def main() -> None:
             await asyncio.gather(*tasks, return_exceptions=True)
     else:
         # A worker task exited unexpectedly. Cancel everything and surface.
-        log.error(
-            "job_runner: unexpected task exit; cancelling remainder",
+        shutdown_waiter.cancel()
+        await _surface_unexpected_task_exit(
+            tasks=tasks,
+            done={task for task in done if task is not shutdown_waiter},
+            pending={task for task in pending if task is not shutdown_waiter},
         )
-        for t in pending:
-            t.cancel()
-        await asyncio.gather(*tasks, return_exceptions=True)
 
     shutdown_waiter.cancel()
 

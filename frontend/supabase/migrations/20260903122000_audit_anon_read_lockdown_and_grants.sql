@@ -24,6 +24,7 @@ begin;
 
 -- B-03: system settings → admins only
 drop policy if exists "Anyone can read system settings" on public.system_settings;
+drop policy if exists "Admins read system settings" on public.system_settings;
 create policy "Admins read system settings"
   on public.system_settings for select
   to authenticated
@@ -32,6 +33,7 @@ create policy "Admins read system settings"
 -- B-04: share links → owner (and admins); the public share page keeps working
 -- through get_shared_word (security definer)
 drop policy if exists "Public read shared words" on public.shared_words;
+drop policy if exists "Users read own share links" on public.shared_words;
 create policy "Users read own share links"
   on public.shared_words for select
   to authenticated
@@ -40,30 +42,35 @@ revoke select on public.shared_words from anon;
 
 -- B-05: reference tables → signed-in users (language profiles: admins only)
 drop policy if exists "Anyone can read language profiles" on public.language_profiles;
+drop policy if exists "Admins read language profiles" on public.language_profiles;
 create policy "Admins read language profiles"
   on public.language_profiles for select
   to authenticated
   using ((select public.is_admin()));
 
 drop policy if exists "Anyone can read voices" on public.voices;
+drop policy if exists "Authenticated read voices" on public.voices;
 create policy "Authenticated read voices"
   on public.voices for select
   to authenticated
   using (true);
 
 drop policy if exists "Anyone can read voice_samples" on public.voice_samples;
+drop policy if exists "Authenticated read voice_samples" on public.voice_samples;
 create policy "Authenticated read voice_samples"
   on public.voice_samples for select
   to authenticated
   using (true);
 
 drop policy if exists "Public read tts_assets" on public.tts_assets;
+drop policy if exists "Authenticated read tts_assets" on public.tts_assets;
 create policy "Authenticated read tts_assets"
   on public.tts_assets for select
   to authenticated
   using (true);
 
 drop policy if exists "Anyone can read random word lists" on public.random_word_lists;
+drop policy if exists "Authenticated read random word lists" on public.random_word_lists;
 create policy "Authenticated read random word lists"
   on public.random_word_lists for select
   to authenticated

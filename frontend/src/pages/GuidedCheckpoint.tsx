@@ -1,7 +1,13 @@
 import { ChevronLeft, ChevronRight, CheckCircle2, RotateCcw } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { getGuidedTodayPathOptions, guidedAnswerMatches, resolveGuidedBaseContent, type GuidedPathMetadata } from '@/data/guidedLessons'
+import {
+  getGuidedTodayPathOptions,
+  guidedAnswerMatches,
+  loadGuidedLessonsForLanguage,
+  resolveGuidedBaseContent,
+  type GuidedPathMetadata,
+} from '@/data/guidedLessons'
 import { guidedVibes, isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -41,6 +47,7 @@ type CheckpointPhase = 'type' | 'speak' | 'summary'
 
 export default function GuidedCheckpoint() {
   const { user } = useAuth()
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const pathOptions = useMemo(() => getGuidedTodayPathOptions(), [])
@@ -54,9 +61,39 @@ export default function GuidedCheckpoint() {
   const selectedSegment = resolveSegmentReviewNumber(searchParams.get('segment'))
   const backToTodayHref = buildTodayPathHref(selectedPathId, selectedVibeId)
   const progress = useMemo(() => readTodayProgressState(user?.id), [user?.id])
+  const requiredLanguages = useMemo(() => {
+    const languages = isPathCheckMode || isSegmentReviewMode || isTrophyClozeMode
+      ? pathOptions
+          .filter((path) => path.id === selectedPathId)
+          .map((path) => path.targetLanguage)
+      : pathOptions
+          .filter((path) => progress.courses[path.id])
+          .map((path) => path.targetLanguage)
+    return Array.from(new Set(languages))
+  }, [isPathCheckMode, isSegmentReviewMode, isTrophyClozeMode, pathOptions, progress, selectedPathId])
+  const lessonLoadKey = requiredLanguages.join('|')
+  const [lessonLoad, setLessonLoad] = useState<{ key: string; status: 'loading' | 'ready' | 'error' }>({
+    key: lessonLoadKey,
+    status: 'loading',
+  })
+  const lessonsState = lessonLoad.key === lessonLoadKey ? lessonLoad.status : 'loading'
+  useEffect(() => {
+    let active = true
+    void Promise.all(requiredLanguages.map((language) => loadGuidedLessonsForLanguage(language)))
+      .then(() => {
+        if (active) setLessonLoad({ key: lessonLoadKey, status: 'ready' })
+      })
+      .catch(() => {
+        if (active) setLessonLoad({ key: lessonLoadKey, status: 'error' })
+      })
+
+    return () => {
+      active = false
+    }
+  }, [lessonLoadKey, requiredLanguages])
   const plan = useMemo(
     () => (
-      isTrophyClozeMode
+      lessonsState !== 'ready' || isTrophyClozeMode
         ? undefined
         : isPathCheckMode
         ? buildGuidedPathCheckPlan(selectedPathId, selectedVibeId)
@@ -64,7 +101,7 @@ export default function GuidedCheckpoint() {
           ? buildGuidedSegmentReviewPlan(progress, selectedPathId, selectedSegment, selectedVibeId)
         : buildGuidedCheckpointPlan(progress, selectedVibeId)
     ),
-    [isPathCheckMode, isSegmentReviewMode, isTrophyClozeMode, progress, selectedPathId, selectedSegment, selectedVibeId],
+    [isPathCheckMode, isSegmentReviewMode, isTrophyClozeMode, lessonsState, progress, selectedPathId, selectedSegment, selectedVibeId],
   )
   const [phase, setPhase] = useState<CheckpointPhase>('type')
   const [itemIndex, setItemIndex] = useState(0)
@@ -132,6 +169,18 @@ export default function GuidedCheckpoint() {
       }
     }
     handleNextItem()
+  }
+
+  if (lessonsState === 'loading') {
+    return (
+      <main className="today-shell grid min-h-dvh place-items-center" role="status" aria-live="polite">
+        <p className="text-sm text-[var(--text-secondary)]">{t('common.loading')}</p>
+      </main>
+    )
+  }
+
+  if (lessonsState === 'error') {
+    return <CheckpointUnavailable selectedVibeId={selectedVibeId} backToTodayHref={backToTodayHref} />
   }
 
   if (isTrophyClozeMode) {

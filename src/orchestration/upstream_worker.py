@@ -13,6 +13,8 @@ from pathlib import Path
 from typing import Any, Optional
 
 from src.services.music_lyrics_store import persist_video_pipeline_lyrics_best_effort
+from src.path_safety import UnsafePathComponentError
+from src.workspace import get_word_dir
 
 from . import retry, state
 
@@ -93,17 +95,30 @@ class UpstreamWorker:
             state.clear_log_context()
             return
 
-        from src.storage import get_job_workspace_path
-        workspace_path = get_job_workspace_path(
-            user_id=fresh["user_id"], deck_id=fresh["deck_id"],
-        )
-
         word_slug = fresh.get("word_slug")
         if not word_slug:
             log.error("upstream_worker: word=%s has no word_slug", word_id)
             await retry.finalize_failure(
                 self.sb, word_id=word_id, user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
                 failed_stage="images",
+            )
+            state.clear_log_context()
+            return
+
+        try:
+            from src.storage import get_job_workspace_path
+
+            workspace_path = get_job_workspace_path(
+                user_id=fresh["user_id"], deck_id=fresh["deck_id"],
+            )
+            word_dir = get_word_dir(workspace_path, word_slug)
+        except UnsafePathComponentError as exc:
+            log.error("upstream_worker: unsafe workspace path word=%s: %s", word_id, exc)
+            await retry.finalize_failure(
+                self.sb, word_id=word_id, user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
+                failed_stage="images", error_message=str(exc),
             )
             state.clear_log_context()
             return
@@ -126,7 +141,6 @@ class UpstreamWorker:
                     "DIAG upstream_worker workspace listing: word_slug=%s contents=%s",
                     word_slug, os.listdir(workspace_path)[:30],
                 )
-                word_dir = workspace_path / word_slug
                 log.info(
                     "DIAG upstream_worker word_dir: path=%s exists=%s",
                     word_dir, word_dir.exists(),
@@ -200,7 +214,7 @@ class UpstreamWorker:
         from src.manifest import read_manifest
         from src.settings import load_defaults
 
-        word_dir = workspace_path / word_slug
+        word_dir = get_word_dir(workspace_path, word_slug)
         try:
             manifest = read_manifest(word_dir)
             defaults = load_defaults(workspace_path)
@@ -243,7 +257,8 @@ class UpstreamWorker:
             )
             await retry.finalize_failure(
                 self.sb, word_id=word_id, user_id=word["user_id"],
-                failed_stage=stage,
+                expected_operation_id=word.get("active_credit_operation_id"),
+                failed_stage=stage, error_message=str(e),
             )
             return False
 
@@ -270,7 +285,7 @@ class UpstreamWorker:
         import json as _json
         from src.manifest import read_manifest
 
-        word_dir = workspace_path / word_slug
+        word_dir = get_word_dir(workspace_path, word_slug)
         try:
             images_manifest = read_manifest(word_dir)
             images_version = images_manifest.selected.images
@@ -331,7 +346,7 @@ class UpstreamWorker:
             )
             return
 
-        word_dir = workspace_path / word_slug
+        word_dir = get_word_dir(workspace_path, word_slug)
         try:
             concept_data = read_concept_data(word_dir)
         except FileNotFoundError as e:

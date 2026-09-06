@@ -14,6 +14,7 @@ import {
   getGuidedTodayPathOptions,
   getGuidedPathOverview,
   getGuidedPathLessons,
+  loadAllGuidedLessons,
   resolveGuidedBaseContent,
   resolveGuidedLessonVariant,
 } from '../src/data/guidedLessons.ts'
@@ -29,6 +30,8 @@ import {
 } from '../src/lib/todayVibe.ts'
 import { existsSync, readFileSync, statSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
+
+await loadAllGuidedLessons()
 
 let failures = 0
 let passes = 0
@@ -290,7 +293,6 @@ const trophyTileCss = sliceBetween(todayCssSource, '.today-segment-trophyTile {'
 const trophyTileHoverCss = sliceBetween(todayCssSource, '.today-segment-trophyTile:hover', '}')
 const segmentGridCss = sliceBetween(todayCssSource, '.today-path-segmentGrid {', '}')
 const desktopRouteRowCss = sliceBetween(todayCssSource, '.today-path-desktopRouteRow {', '}')
-const desktopWaveCss = sliceBetween(todayCssSource, '.today-path-desktopWave {', '}')
 const mobileConnectorCss = sliceBetween(todayCssSource, '.today-path-mobileConnectorSegment {', '}')
 const mobileTrophyTileCss = sliceBetween(todayCssSource, '.today-path-mobileRewards .today-segment-trophyTile {', '}')
 const selectedGridLessonCss = sliceBetween(todayCssSource, '.today-path-gridLesson[data-selected="true"] {', '}')
@@ -298,8 +300,6 @@ const selectedLessonNumberCss = sliceBetween(todayCssSource, '.today-path-card[d
 const sessionHeaderSource = sliceBetween(todaySessionSource, '<header className="today-session-header">', '<TodayLessonProgressRail')
 const sessionTaskHeaderSource = sliceBetween(todaySessionSource, '<div className="today-session-taskHeader">', '</div>')
 const sessionTaskCardCss = sliceBetween(todayCssSource, '.today-session-taskCard {', '}')
-const sceneSessionShellCss = sliceBetween(todayCssSource, '.today-session-shell[data-session-step="scene"] {', '}')
-const sceneSessionTaskCardCss = sliceBetween(todayCssSource, '.today-session-taskCard[data-session-step="scene"] {', '}')
 const sceneMediaContextCss = sliceBetween(todayCssSource, '.today-scene-mediaContext {', '}')
 const speakRecordingButtonSource = sliceBetween(guidedSpeechPromptSource, "className={cn('today-speech-primaryAction'", '</button>')
 const speechSecondaryActionsSource = sliceBetween(guidedSpeechPromptSource, '<div className="today-speech-secondaryActions', '</div>')
@@ -336,25 +336,39 @@ assert('path overview receives a select handler and targeted start handler', tod
 const englishPathIdsInOrder = getGuidedTodayPathOptions()
   .filter((path) => path.targetLanguage === 'English')
   .map((path) => path.id)
+const expectedEnglishPathIds = [
+  pathOneId,
+  pathTwoId,
+  pathThreeId,
+  pathFourId,
+  pathFiveId,
+  pathSixId,
+  pathSevenId,
+  pathEightId,
+  pathNineId,
+  pathTenId,
+  ...Array.from({ length: 10 }, (_, index) => `english-a2-practical-${index + 1}`),
+]
 assert(
-  'path selector source exposes implemented active English paths',
-  JSON.stringify(englishPathIdsInOrder) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId]),
+  'path selector source exposes all implemented A1 and A2 English paths in authored order',
+  JSON.stringify(englishPathIdsInOrder) === JSON.stringify(expectedEnglishPathIds),
   englishPathIdsInOrder,
 )
 for (const path of getGuidedTodayPathOptions()) {
   assert(`${path.id} (${path.targetLanguage}) overview exposes 10 lessons`, getGuidedPathLessons(path.id).length === 10, path)
 }
 assert('Today page stores selected path id and passes path options to overview', containsAny(todayPageSource, ['selectedPathId', 'getGuidedTodayPathOptions']) && todayPathOverviewSource.includes('pathOptions'))
+assert('Today language-body load failure offers a localized retry instead of an endless spinner', todayPageSource.includes('.catch(() =>') && todayPageSource.includes('setFailedLanguage(selectedLanguage)') && todayPageSource.includes("t('errors.route.retry')") && todayPageSource.includes('setLanguageLoadAttempt((attempt) => attempt + 1)'), todayPageSource)
 assert('path overview opens gear settings instead of permanent path chips', todayPathOverviewSource.includes('Settings') && todayPathOverviewSource.includes('GuidedPathDirectory') && todayPathOverviewSource.includes("aria-label={t('today.path.changePath')}") && !todayPathOverviewSource.includes('today-path-switcher'))
 assert('path overview shows a visible Options gear control without a dropdown chevron', todayPathOverviewSource.includes('today-path-optionsButton') && todayPathOverviewSource.includes("t('today.path.options')") && todayPathOverviewSource.includes('<Settings') && !todayPathOverviewSource.includes('<ChevronDown'), todayPathOverviewSource)
-assert('path overview keeps lesson progress out of the top hero', !todayPathOverviewSource.includes("t('today.path.lessonProgressHero'") && !todayPathOverviewSource.includes('headerProgressLabel'), todayPathOverviewSource)
+assert('path overview shows compact localized lesson progress in the top hero', todayPathOverviewSource.includes('today-path-heroProgressRail') && todayPathOverviewSource.includes('today-path-heroProgressFill') && todayPathOverviewSource.includes("t('today.path.lessonProgressHero'") && todayPathOverviewSource.includes('overview.totalLessons'), todayPathOverviewSource)
 assert('path overview renders Path Check as a separate diagnostic action outside the options modal', todayPathOverviewSource.includes('PathCheckTile') && todayPathOverviewSource.includes('today-path-checkAction') && todayPathOverviewSource.includes('pathCheckHref'), todayPathOverviewSource)
 assert('path overview uses reusable transparent PNG orb assets', todayPathOverviewSource.includes('TODAY_PATH_HERO_ASSET') && todayPathOverviewSource.includes('TODAY_PATH_LESSON_ORB_ASSET') && todayPathOverviewSource.includes('today-path-heroOrb') && assetHasBytes(todayHeroOrbAsset, 100000) && assetHasBytes(todayLessonOrbAsset, 60000), todayPathOverviewSource)
 assert('path overview keeps old full rail PNG assets out of the lesson grid overlay', assetHasBytes(todayMobileRailAsset, 20000) && assetHasBytes(todayDesktopRailAsset, 30000) && !todayPathOverviewSource.includes('TODAY_PATH_MOBILE_RAIL_ASSET') && !todayPathOverviewSource.includes('TODAY_PATH_DESKTOP_RAIL_ASSET') && !todayPathOverviewSource.includes('today-path-mobileRailAsset') && !todayPathOverviewSource.includes('today-path-desktopRailAsset'), todayPathOverviewSource)
 assert('path overview renders review and trophy with raw media inside compact pills', todayPathOverviewSource.includes('TodaySegmentNode') && todayPathOverviewSource.includes('data-node-kind="review"') && todayPathOverviewSource.includes('data-node-kind="trophy"') && todayPathOverviewSource.includes('today-path-nodeMedia') && !todayPathOverviewSource.includes('today-path-nodeMarker today-segment-reviewMedia') && !todayPathOverviewSource.includes('today-path-nodeMarker today-segment-trophyMedia'), todayPathOverviewSource)
-assert('desktop path keeps connector art behind the five lesson cards', desktopRouteSource.includes('DesktopRouteWave') && segmentGridCss.includes('--today-node-size') && segmentGridCss.includes('grid-template-columns') && desktopWaveCss.includes('position: absolute') && desktopWaveCss.includes('z-index: 0'), { desktopRouteSource, segmentGridCss, desktopWaveCss })
+assert('desktop path keeps connector art between the five lesson cards', desktopRouteSource.includes('today-path-connector') && desktopRouteSource.includes('<ConnectorWave />') && desktopRouteSource.includes('lessonIndex < segment.lessons.length - 1') && segmentGridCss.includes('--today-node-size') && segmentGridCss.includes('grid-template-columns'), { desktopRouteSource, segmentGridCss })
 assert('desktop path uses two compact seven-slot rows with rewards inline after lessons', todayPathOverviewSource.includes('today-path-desktopRouteRow') && todayPathOverviewSource.includes('today-path-desktopRewardSlot') && !todayPathOverviewSource.includes('today-path-desktopRewards') && desktopRouteRowCss.includes('grid-template-columns') && desktopRouteRowCss.includes('today-desktop-route-width'), { todayPathOverviewSource, desktopRouteRowCss })
-assert('desktop path uses an animated SVG wave behind lesson numbers only', todayPathOverviewSource.includes('function DesktopRouteWave') && todayPathOverviewSource.includes('<animate') && todayPathOverviewSource.includes('today-path-desktopLessonRail') && todayPathOverviewSource.includes('today-path-desktopWave') && todayCssSource.includes('.today-path-desktopLessonRail') && desktopWaveCss.includes('position: absolute') && desktopWaveCss.includes('width: calc(100% - var(--today-node-size))') && desktopWaveCss.includes('z-index: 0') && todayCssSource.includes('@keyframes today-path-wave-drift'), { todayPathOverviewSource, desktopWaveCss })
+assert('desktop path uses reduced-motion-aware animated connector SVGs between lesson numbers', todayPathOverviewSource.includes('function ConnectorWave') && todayPathOverviewSource.includes('today-path-connectorWave') && todayCssSource.includes('.today-path-connectorWave path') && todayCssSource.includes('@keyframes today-connector-drift') && todayCssSource.includes('animation: none !important'), { todayPathOverviewSource, todayCssSource })
 assert('mobile path connectors are separate short segments between lesson rows', todayPathOverviewSource.includes('today-path-mobileConnectorSegment') && !todayCssSource.includes('.today-path-mobileRailAsset') && mobileConnectorCss.includes('height:') && mobileConnectorCss.includes('grid-column: 1'), { mobileConnectorCss, todayPathOverviewSource })
 assert('segment review nodes render only the review image with no visible copy', todaySegmentReviewBranchSource.includes('today-path-nodeMedia') && !containsAny(todaySegmentReviewBranchSource, ['today-path-nodeCopy', 'today-path-nodeTitle', 'rangeLabel']), todaySegmentReviewBranchSource)
 assert('segment review tile CSS removes pill chrome around the review asset', reviewTileCss.includes('background: transparent') && reviewTileCss.includes('border-width: 0') && reviewTileCss.includes('box-shadow: none') && reviewTileCss.includes('justify-content: center'), reviewTileCss)
@@ -380,7 +394,7 @@ assert('Wistful lesson cards render selected image number assets', lessonNumberM
 assert('Sharp lesson cards render selected image number assets', lessonNumberMarkerSource.includes("selectedVibeId === 'sharp'") && !sliceBetween(lessonNumberMarkerSource, "selectedVibeId === 'sharp'", 'return <>{lessonNumber}</>').includes('lessonNumber <= 5') && lessonNumberMarkerSource.includes('/guided/lesson-numbers/sharp/${paddedLessonNumber}.webp') && lessonNumberMarkerSource.includes('data-lesson-number-asset="sharp"'))
 assert('segment review and trophy tile CSS is compact for mobile', todayCssSource.includes('min-height: 3.25rem') && todayCssSource.includes('max-height: 2.65rem') && todayCssSource.includes('.today-segment-trophyMedia'))
 assert('lesson cards select only; the featured CTA starts the displayed lesson', lessonPathCardSource.includes('onSelectLesson(lesson.id)') && !lessonPathCardSource.includes('onStartLesson(lesson.id)') && !lessonPathCardSource.includes('onStartLesson: (lessonId?: string) => void') && !todayPathOverviewSource.includes('function isMobileViewport'), lessonPathCardSource)
-assert('selected lesson panel keeps selected/recommended label copy screen-reader only', recommendedLessonPanelSource.includes('className="sr-only"') && recommendedLessonPanelSource.includes("t('today.path.selectedLessonLabel')") && recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')"))
+assert('selected lesson panel visibly distinguishes the recommendation from a manual selection', recommendedLessonPanelSource.includes('today-featuredLessonKickerStatus') && recommendedLessonPanelSource.includes("t('today.path.selectedLessonLabel')") && recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')"))
 assert('selected lesson panel visible copy is reduced to lesson, title, action', !recommendedLessonPanelSource.includes('uppercase tracking-[0.18em] text-[var(--text-muted)]'))
 assert('selected lesson panel action uses Next only for the recommendation and Start for manual selections', recommendedLessonPanelSource.includes("isSelectedRecommendation ? t('today.nextLesson') : t('today.startLesson')") && !recommendedLessonPanelSource.includes('getActionLabel'), recommendedLessonPanelSource)
 assert('selected lesson panel launches the displayed lesson explicitly', recommendedLessonPanelSource.includes('onClick={() => onStartLesson(lesson.id)}'), recommendedLessonPanelSource)
@@ -393,7 +407,7 @@ assert('selected lesson overrides subdued future opacity and lights its number a
 assert('path header keeps only compact actions beside the title', todayPathOverviewSource.includes('today-path-header') && todayPathOverviewSource.includes('today-path-actions') && todayCssSource.includes('.today-path-actions'), todayPathOverviewSource)
 assert('path header uses compact split labels instead of full path titles', todayPathOverviewSource.includes('splitGuidedPathLabel') && todayPathOverviewSource.includes('today-path-heroTitleLevel') && !sliceBetween(todayPathOverviewSource, '<h1', '</h1>').includes('overview.pathMetadata?.title'), todayPathOverviewSource)
 assert('path header hides base-language arrow and selected vibe text', !sliceBetween(todayPathOverviewSource, '<div className="today-path-header', '<GuidedPathDirectory').includes('baseLanguage') && !sliceBetween(todayPathOverviewSource, '<div className="today-path-header', '<GuidedPathDirectory').includes('guidedVibes[selectedVibeId].label'), todayPathOverviewSource)
-assert('path header does not show selected lesson progress above the featured lesson box', !todayPathOverviewSource.includes("t('today.path.compactProgress'") && !todayPathOverviewSource.includes("t('today.path.lessonProgressHero'") && !todayPathOverviewSource.includes('today-path-progressLine'), todayPathOverviewSource)
+assert('path header keeps progress path-level and leaves selected lesson details to the featured box', todayPathOverviewSource.includes("t('today.path.lessonProgressHero'") && !todayPathOverviewSource.includes("t('today.path.compactProgress'") && !todayPathOverviewSource.includes('today-path-progressLine'), todayPathOverviewSource)
 assert('path directory options use compact labels with progress only', todayPathOverviewSource.includes('GuidedPathDirectory') && !todayPathOverviewSource.includes('selectedPath.subtitle'))
 const pathDirectorySource = readSource('../src/components/today/GuidedPathDirectory.tsx')
 assert('path directory current and options omit the selected language and use fraction progress', pathDirectorySource.includes("includeLanguage: false") && pathDirectorySource.includes('formatPathProgressFraction') && !pathDirectorySource.includes("t('today.path.compactProgress'") && !pathDirectorySource.includes('path.subtitle') && !pathDirectorySource.includes('baseLanguage'), pathDirectorySource)
@@ -405,11 +419,11 @@ assert('Today page does not render a separate in-lesson compact path header', !t
 assert('session header omits top Back to path action', !sliceBetween(todaySessionSource, '<div className="mb-6', '<Progress').includes('today.path.backToPath'), todaySessionSource)
 assert('completion screen omits summary chips, green badge check, and restart action', !containsAny(completeStepSource, ['completionLines.map', 'today-completion-vibeBadgeCheck', 'today-completion-replayAction', 'onRestart', 'RotateCcw']), completeStepSource)
 assert('lesson session uses custom glass shell instead of generic progress panel', todaySessionSource.includes('today-session-shell') && todaySessionSource.includes('today-session-taskCard') && !todaySessionSource.includes("from '@/components/ui/progress'"), todaySessionSource)
-assert('lesson session renders a six-node progress rail with current count pill', todaySessionSource.includes('TodayLessonProgressRail') && todaySessionSource.includes('today-session-progressNode') && todaySessionSource.includes("t('today.progressLabel'") && todaySessionSource.includes('TODAY_SESSION_STEPS.map'), todaySessionSource)
+assert('lesson session renders its authored step count as a progress rail and current count pill', todaySessionSource.includes('<TodayLessonProgressRail steps={sessionSteps} stepIndex={stepIndex} />') && todaySessionSource.includes('today-session-progressNode') && todaySessionSource.includes("t('today.progressLabel'") && todaySessionSource.includes('steps.map((sessionStep, index)'), todaySessionSource)
 assert('lesson session header avoids duplicating the step icon on desktop', !sessionHeaderSource.includes('<TodayLessonStepIcon step={step} />') && sessionTaskHeaderSource.includes('<TodayLessonStepIcon step={step} compact />'), { sessionHeaderSource, sessionTaskHeaderSource })
 assert('lesson session header includes a compact back control beside the step count', todaySessionSource.includes('today-session-topActions') && todaySessionSource.includes('today-session-backPill') && todaySessionSource.includes('onClick={onViewPath}') && todaySessionSource.includes("t('today.path.backToPath')") && todaySessionSource.includes('ChevronLeft'), todaySessionSource)
 assert('lesson session task card has a stable desktop measure across step content', sessionTaskCardCss.includes('width: min(100%,') && sessionTaskCardCss.includes('justify-self: center'), sessionTaskCardCss)
-assert('scene session widens only the media step on desktop', sceneSessionShellCss.includes('64rem') && sceneSessionTaskCardCss.includes('60rem') && sceneSessionTaskCardCss.includes('min-height: 0'), { sceneSessionShellCss, sceneSessionTaskCardCss })
+assert('lesson session keeps one stable desktop card width across authored step types', sessionTaskCardCss.includes('width: min(100%, 50rem)') && !todayCssSource.includes('.today-session-taskCard[data-session-step="scene"]') && !todayCssSource.includes('.today-session-shell[data-session-step="scene"]'), { sessionTaskCardCss })
 assert('scene session uses a desktop media/context row under the phrase card', sceneMediaContextCss.includes('grid-template-columns') && sceneMediaContextCss.includes('minmax(0, 1.35fr)') && sceneMediaContextCss.includes('align-items: stretch'), sceneMediaContextCss)
 assert('lesson session text surfaces force mobile-safe wrapping for long phrases', todayCssSource.includes('.today-session-safeText') && todayCssSource.includes('overflow-wrap: anywhere') && todayCssSource.includes('.today-speech-resultPhrase'), todayCssSource)
 assert('lesson session maps every step to a visual icon asset', todaySessionSource.includes('stepIconMap') && todaySessionSource.includes('matchPairs') && todaySessionSource.includes('build') && todaySessionSource.includes('type') && todaySessionSource.includes('speak'), todaySessionSource)

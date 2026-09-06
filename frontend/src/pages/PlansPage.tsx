@@ -14,6 +14,10 @@ import { supabase } from '@/lib/supabase'
 import { publicApiUrl } from '@/lib/publicOrigins'
 import { isNativeApp } from '@/lib/platform'
 import { totalCredits } from '@/lib/credits'
+import { assertClientActive, withClientDeadline } from '@/lib/clientDeadline'
+
+const ENTITLEMENTS_TIMEOUT_MS = 15_000
+const CHECKOUT_TIMEOUT_MS = 40_000
 
 type PlanInterval = 'week' | 'month'
 type PaidPlanId = 'standard' | 'premium'
@@ -53,32 +57,33 @@ export default function PlansPage() {
   const [checkoutPlan, setCheckoutPlan] = useState<PaidPlanId | null>(null)
   const [checkoutError, setCheckoutError] = useState<string | null>(null)
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (callerSignal?: AbortSignal) => {
     setLoadError(false)
     try {
-      const { data: sessionData } = await supabase.auth.getSession()
-      const token = sessionData.session?.access_token
-      if (!token) {
-        setLoadError(true)
-        return
-      }
-      const response = await fetch(publicApiUrl('/api/entitlements'), {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      if (!response.ok) {
-        setLoadError(true)
-        return
-      }
-      const payload = await response.json() as EntitlementsResponse
+      const payload = await withClientDeadline(async (signal) => {
+        const { data: sessionData } = await supabase.auth.getSession()
+        assertClientActive(signal)
+        const token = sessionData.session?.access_token
+        if (!token) throw new Error('Session unavailable')
+        const response = await fetch(publicApiUrl('/api/entitlements'), {
+          headers: { Authorization: `Bearer ${token}` },
+          signal,
+        })
+        if (!response.ok) throw new Error(`Entitlements failed: ${response.status}`)
+        return response.json() as Promise<EntitlementsResponse>
+      }, ENTITLEMENTS_TIMEOUT_MS, callerSignal)
+      if (callerSignal?.aborted) return
       setData(payload)
       if (payload.interval === 'week') setInterval('week')
     } catch {
-      setLoadError(true)
+      if (!callerSignal?.aborted) setLoadError(true)
     }
   }, [])
 
   useEffect(() => {
-    void load()
+    const controller = new AbortController()
+    void load(controller.signal)
+    return () => controller.abort()
   }, [load])
 
   async function handleSubscribe(plan: PaidPlanId) {
@@ -86,21 +91,23 @@ export default function PlansPage() {
     setCheckoutPlan(plan)
     setCheckoutError(null)
     try {
-      const { data: sessionData } = await supabase.auth.getSession()
-      const token = sessionData.session?.access_token
-      if (!token) {
-        setCheckoutError(t('plans.checkoutError'))
-        return
-      }
-      const response = await fetch(publicApiUrl('/api/create-checkout-session'), {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ plan, interval }),
-      })
-      const payload = await response.json().catch(() => null) as { url?: string; error?: string; code?: string } | null
+      const { response, payload } = await withClientDeadline(async (signal) => {
+        const { data: sessionData } = await supabase.auth.getSession()
+        assertClientActive(signal)
+        const token = sessionData.session?.access_token
+        if (!token) throw new Error('Session unavailable')
+        const response = await fetch(publicApiUrl('/api/create-checkout-session'), {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ plan, interval }),
+          signal,
+        })
+        const payload = await response.json().catch(() => null) as { url?: string; error?: string; code?: string } | null
+        return { response, payload }
+      }, CHECKOUT_TIMEOUT_MS)
       if (!response.ok || !payload?.url) {
         setCheckoutError(
           payload?.code === 'already_subscribed'

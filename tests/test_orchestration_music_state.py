@@ -329,14 +329,13 @@ def test_bake_failed_fall_through_single_update():
 # HIGH-1: baked recovery reads manifest from disk
 # ---------------------------------------------------------------------------
 
-def test_high1_baked_recovery_reads_manifest_from_disk(tmp_path=None):
+def test_high1_baked_recovery_reads_manifest_from_disk(monkeypatch):
     """When the downstream worker's claim transitions a baked word to
     'uploading' after recovery, `_prepare_baked_upload` must read the word's
     manifest.json off disk and populate `_suno_ab_manifests` (single-variant
     degradation per §6.4 support-recovery note).
     """
     import tempfile
-    import types
 
     # Install stubs for src.manifest so we can exercise _prepare_baked_upload
     # without the real module's full Pydantic chain.
@@ -344,9 +343,11 @@ def test_high1_baked_recovery_reads_manifest_from_disk(tmp_path=None):
         selected = types.SimpleNamespace(song=None, final=None, video=None)
         settings = {}
 
-    stub = types.ModuleType("src.manifest")
-    stub.read_manifest = lambda word_dir: _StubManifest()
-    sys.modules["src.manifest"] = stub
+    _install_module(
+        monkeypatch,
+        "src.manifest",
+        read_manifest=lambda word_dir: _StubManifest(),
+    )
 
     from src.orchestration.downstream_worker import DownstreamWorker
 
@@ -369,17 +370,13 @@ def test_high1_baked_recovery_reads_manifest_from_disk(tmp_path=None):
         assert word_dict["_suno_ab_manifests"].get("b") is None
 
 
-def test_high1_baked_recovery_manifest_missing_fails_word():
+def test_high1_baked_recovery_manifest_missing_fails_word(monkeypatch):
     """If manifest.json is unreadable (disk lost / workspace wiped), the word
     must terminally fail with failed_stage='uploading' per §6.4 runbook note.
     """
-    import types
-
-    stub = types.ModuleType("src.manifest")
     def _raise(*_a, **_kw):
         raise RuntimeError("manifest unreadable")
-    stub.read_manifest = _raise
-    sys.modules["src.manifest"] = stub
+    _install_module(monkeypatch, "src.manifest", read_manifest=_raise)
 
     from src.orchestration.downstream_worker import DownstreamWorker
 

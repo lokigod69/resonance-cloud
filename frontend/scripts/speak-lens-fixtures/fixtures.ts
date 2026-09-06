@@ -299,4 +299,57 @@ export const FIXTURES: Fixture[] = [
       await shot('language-loading')
     },
   },
+  {
+    id: '19-lens-mixed-save-390-en', name: 'Lens maps mixed save receipts to exact recap rows', viewport: view(390, 844),
+    scenario: {
+      kind: 'lens', locale: 'en', baseLanguage: 'English', activeLanguage: 'German', lensResult: 'high', lensSaveResult: 'mixed',
+    },
+    async run(ctx) {
+      const w = window as unknown as {
+        __lensSaveCalls: Array<{ targetLanguage: string; clientIds: string[]; result: { outcomes: Array<{ clientId: string; status: string }> } }>
+      }
+      await waitFor('camera ready', () => q('.lens-shell[data-lens-state="camera_ready"]'))
+      q<HTMLButtonElement>('.lens-shutter')?.click()
+      await waitFor('result', () => q('.lens-shell[data-lens-state="result"]'))
+      q<HTMLButtonElement>('.lens-topbar .lens-icon-button')?.click()
+      await waitFor('Lens recap', () => q('[aria-labelledby="lens-recap-title"]'))
+      ;(await waitFor('save unsaved', () => byText('button', 'Save unsaved'))).click()
+      await waitFor('exact save receipt', () => w.__lensSaveCalls.length === 1 && bodyText().includes('1 saved, 1 already known'))
+
+      const rows = qa<HTMLElement>('.lens-recap-row')
+      const call = w.__lensSaveCalls[0]
+      ctx.check('fixture returned one exact outcome per submitted row', call.result.outcomes.length === call.clientIds.length && call.clientIds.length === 2, JSON.stringify(call))
+      ctx.check('skipped receipt marks only its matching recap row known', rows[0]?.textContent?.includes('Already in your vocabulary') === true, rows[0]?.textContent)
+      ctx.check('inserted receipt marks only its matching recap row saved', rows[1]?.textContent?.includes('Saved') === true, rows[1]?.textContent)
+      ctx.check('mixed receipt remains truthful', bodyText().includes('1 saved, 1 already known'), bodyText())
+      await shot('mixed-save')
+    },
+  },
+  {
+    id: '20-lens-hints-language-scope-390-en', name: 'Lens never applies old-language word hints after a switch', viewport: view(390, 844),
+    scenario: {
+      kind: 'lens', locale: 'en', baseLanguage: 'English', activeLanguage: 'German', lensResult: 'high',
+      lensExistingWords: { German: ['der Schlüssel'], French: [] },
+      lensHintDelayMs: { French: 1200 },
+    },
+    async run(ctx) {
+      const w = window as unknown as { __lensHintRequests: string[]; __lensHintResponses: string[] }
+      await waitFor('German hints loaded', () => w.__lensHintResponses.includes('German'))
+      q<HTMLButtonElement>('.lens-language-trigger')?.click()
+      ;(await waitFor('French language option', () => qa<HTMLButtonElement>('[role="menuitem"]').find((button) => button.textContent?.includes('French')))).click()
+      await waitFor('French hint lookup started', () => w.__lensHintRequests.includes('French'))
+      q<HTMLButtonElement>('.lens-shutter')?.click()
+      await waitFor('French scan result before hints resolve', () => q('.lens-shell[data-lens-state="result"]'))
+
+      const saveButton = await waitFor('selected save action', () => (
+        qa<HTMLButtonElement>('.lens-actions button').find((button) => button.textContent?.trim() === 'Save')
+      ))
+      ctx.check('old German hint does not disable the French result', !saveButton.disabled, saveButton.outerHTML)
+      ctx.check('old German hint does not label the French result already saved', !bodyText().includes('Already in vocabulary'), bodyText())
+      await waitFor('empty French hints resolved', () => w.__lensHintResponses.includes('French'))
+      await sleep(40)
+      ctx.check('empty French hints keep the result saveable after lookup settles', !saveButton.disabled, saveButton.outerHTML)
+      await shot('language-scoped-hints')
+    },
+  },
 ]

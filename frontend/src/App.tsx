@@ -30,6 +30,7 @@ import { analytics, ANALYTICS_ENTRY_PATH, classifyEntryPath } from '@/lib/analyt
 import { isConstrainedConnection } from '@/lib/network'
 import { invalidatePlan } from '@/hooks/usePlan'
 import { RouteErrorBoundary } from '@/components/RouteErrorBoundary'
+import { RECALL_QUEUE_ERROR_EVENT, recallAttemptQueue, type RecallQueueErrorDetail } from '@/lib/recallAttemptQueue'
 
 const LandingPage = lazyWithRetry(routeImports.landingPage, 'landing-page')
 const Login = lazyWithRetry(routeImports.login, 'login')
@@ -394,6 +395,36 @@ function VisitPing() {
   return null
 }
 
+function RecallQueueBridge() {
+  const { user } = useAuth()
+  const { toast } = useToast()
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    const retry = () => { void recallAttemptQueue.drain() }
+    const onVisible = () => { if (document.visibilityState === 'visible') retry() }
+    const onFailure = (event: Event) => {
+      const detail = (event as CustomEvent<RecallQueueErrorDetail>).detail
+      toast(t('study.syncFailed'), 'error', { label: t('study.syncRetry'), onClick: detail.retry })
+    }
+    window.addEventListener('online', retry)
+    document.addEventListener('visibilitychange', onVisible)
+    window.addEventListener(RECALL_QUEUE_ERROR_EVENT, onFailure)
+    return () => {
+      window.removeEventListener('online', retry)
+      document.removeEventListener('visibilitychange', onVisible)
+      window.removeEventListener(RECALL_QUEUE_ERROR_EVENT, onFailure)
+    }
+  }, [t, toast])
+
+  useEffect(() => {
+    recallAttemptQueue.setUser(user?.id ?? null)
+    return () => recallAttemptQueue.setUser(null)
+  }, [user?.id])
+
+  return null
+}
+
 function AppShellDialogs() {
   const { profileOpen, setProfileOpen, redeemOpen, setRedeemOpen } = useDialogs()
   return (
@@ -408,11 +439,7 @@ function AppShellDialogs() {
 
 export default function App() {
   return (
-    // Without transitions the Suspense fallback shows while a route chunk
-    // downloads (the loader stays invisible for 300 ms, so fast hops never
-    // flash). With react-router's default startTransition wrapping, the old
-    // page just froze for the whole download (audit 2026-09-03 D-09).
-    <BrowserRouter unstable_useTransitions={false}>
+    <BrowserRouter>
       <ThemeProvider>
       <SkinProvider>
       <ToastProvider>
@@ -420,6 +447,7 @@ export default function App() {
         <LanguageProvider>
           <DialogProvider>
             <DocumentLanguageSync />
+            <RecallQueueBridge />
             <BillingReturnNotice />
             <VisitPing />
             <AppRoutes />

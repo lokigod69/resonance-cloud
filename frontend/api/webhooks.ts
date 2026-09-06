@@ -18,6 +18,10 @@ import {
   type PlanInterval,
 } from './_shared/planCatalog'
 import { deterministicUuid, trackServerEvent } from './_shared/analytics'
+import {
+  findCheckoutReservationBySessionId,
+  recordCheckoutReservation,
+} from './_shared/checkoutReservations'
 
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
@@ -26,6 +30,7 @@ type RpcResult = {
   inserted?: boolean
   idempotent?: boolean
   updated?: boolean
+  reason?: string
 }
 
 type InvoiceWithParent = Stripe.Invoice & {
@@ -188,14 +193,14 @@ async function emitSubscriptionChurn(subscription: Stripe.Subscription) {
   }
 }
 
-async function recordCheckoutSession(session: Stripe.Checkout.Session) {
+async function recordCheckoutSession(session: Stripe.Checkout.Session, eventCreated: number) {
   const userId = session.client_reference_id ?? session.metadata?.user_id
   const customerId = stripeObjectId(session.customer)
   const subscriptionId = stripeObjectId(session.subscription)
   if (!userId || !customerId || !subscriptionId) return { skipped: true }
 
   const admin = serviceClient()
-  const { data, error } = await admin.rpc('record_stripe_subscription_checkout', {
+  const { data, error } = await admin.rpc('record_stripe_subscription_checkout_ordered', {
     p_user_id: userId,
     p_stripe_customer_id: customerId,
     p_stripe_subscription_id: subscriptionId,
@@ -206,13 +211,45 @@ async function recordCheckoutSession(session: Stripe.Checkout.Session) {
       checkout_session_id: session.id,
       subscription_credits: session.metadata?.subscription_credits ?? null,
     },
+    p_event_created: eventCreated,
   })
 
   if (error) throw error
+
+  const reservationId = session.metadata?.checkout_reservation_id
+  const reservation = reservationId
+    ? { id: reservationId, userId }
+    : await findCheckoutReservationBySessionId(session.id)
+  if (reservation && reservation.userId === userId) {
+    await recordCheckoutReservation({
+      userId,
+      reservationId: reservation.id,
+      status: 'completed',
+      stripeCustomerId: customerId,
+      stripeSessionId: session.id,
+    })
+  }
+
   return data as RpcResult
 }
 
-async function recordPaidInvoice(invoice: InvoiceWithParent) {
+async function expireCheckoutSession(session: Stripe.Checkout.Session) {
+  const userId = session.client_reference_id ?? session.metadata?.user_id ?? null
+  const reservationId = session.metadata?.checkout_reservation_id
+  const reservation = reservationId && userId
+    ? { id: reservationId, userId }
+    : await findCheckoutReservationBySessionId(session.id)
+  if (!reservation) return { skipped: true }
+  await recordCheckoutReservation({
+    userId: reservation.userId,
+    reservationId: reservation.id,
+    status: 'expired',
+    stripeSessionId: session.id,
+  })
+  return { updated: true }
+}
+
+async function recordPaidInvoice(invoice: InvoiceWithParent, eventCreated: number) {
   if (!invoice.id) return { skipped: true }
   if (invoice.status !== 'paid') return { skipped: true }
   if (!invoice.billing_reason?.startsWith('subscription')) return { skipped: true }
@@ -233,7 +270,7 @@ async function recordPaidInvoice(invoice: InvoiceWithParent) {
   const resolved = resolvePlanForInvoice(invoice)
   if (resolved) {
     const grant = PLAN_GRANTS[resolved.plan][resolved.interval]
-    const { data, error } = await admin.rpc('record_stripe_plan_grant', {
+    const { data, error } = await admin.rpc('record_stripe_plan_grant_ordered', {
       p_user_id: userId,
       p_plan: resolved.plan,
       p_plan_interval: resolved.interval,
@@ -246,6 +283,7 @@ async function recordPaidInvoice(invoice: InvoiceWithParent) {
       p_current_period_end: resolved.period.end,
       p_idempotency_key: buildInvoiceCreditIdempotencyKey(invoice.id),
       p_metadata: invoiceMetadata,
+      p_event_created: eventCreated,
     })
 
     if (error) throw error
@@ -260,7 +298,7 @@ async function recordPaidInvoice(invoice: InvoiceWithParent) {
     return { skipped: true }
   }
 
-  const { data, error } = await admin.rpc('record_stripe_subscription_credit', {
+  const { data, error } = await admin.rpc('record_stripe_subscription_credit_ordered', {
     p_user_id: userId,
     p_amount: amount,
     p_stripe_invoice_id: invoice.id,
@@ -269,6 +307,7 @@ async function recordPaidInvoice(invoice: InvoiceWithParent) {
     p_price_id: priceIdFromInvoice(invoice),
     p_idempotency_key: buildInvoiceCreditIdempotencyKey(invoice.id),
     p_metadata: invoiceMetadata,
+    p_event_created: eventCreated,
   })
 
   if (error) throw error
@@ -323,7 +362,7 @@ async function recordRefunds(stripe: Stripe, charge: ChargeWithInvoice) {
     // Tier refunds claw back the plan grant first (record_stripe_plan_refund);
     // only pre-tier single-price subscriptions use the legacy credits-only RPC.
     const { data, error } = resolved
-      ? await admin.rpc('record_stripe_plan_refund', refundArgs)
+      ? await admin.rpc('record_stripe_plan_refund_ordered', refundArgs)
       : await admin.rpc('record_stripe_refund_credit', refundArgs)
 
     if (error) throw error
@@ -333,21 +372,29 @@ async function recordRefunds(stripe: Stripe, charge: ChargeWithInvoice) {
   return { refunds: results }
 }
 
-async function recordSubscriptionStatus(subscription: Stripe.Subscription) {
+async function recordSubscriptionStatus(subscription: Stripe.Subscription, eventCreated: number) {
+  const currentPeriodStart = subscription.items.data[0]?.current_period_start ?? null
   const currentPeriodEnd = subscription.items.data[0]?.current_period_end ?? null
   const admin = serviceClient()
   const { data, error } = await admin.rpc('record_stripe_subscription_status', {
     p_stripe_subscription_id: subscription.id,
     p_status: subscription.status,
+    p_current_period_start: unixSecondsToIso(currentPeriodStart),
     p_current_period_end: unixSecondsToIso(currentPeriodEnd),
     p_metadata: {
       cancel_at_period_end: subscription.cancel_at_period_end,
       canceled_at: subscription.canceled_at,
     },
+    p_event_created: eventCreated,
   })
 
   if (error) throw error
-  return data as RpcResult
+  const result = data as RpcResult
+  if (result?.updated === false && result.reason === 'unknown_subscription') {
+    // Ask Stripe to retry: checkout/invoice delivery can establish this row.
+    throw new Error(`Subscription status arrived before checkout record: ${subscription.id}`)
+  }
+  return result
 }
 
 export async function POST(req: Request): Promise<Response> {
@@ -386,22 +433,25 @@ export async function POST(req: Request): Promise<Response> {
 
     switch (event.type) {
       case 'checkout.session.completed':
-        result = await recordCheckoutSession(event.data.object as Stripe.Checkout.Session)
+        result = await recordCheckoutSession(event.data.object as Stripe.Checkout.Session, event.created)
+        break
+      case 'checkout.session.expired':
+        result = await expireCheckoutSession(event.data.object as Stripe.Checkout.Session)
         break
       case 'invoice.payment_succeeded':
-        result = await recordPaidInvoice(event.data.object as InvoiceWithParent)
+        result = await recordPaidInvoice(event.data.object as InvoiceWithParent, event.created)
         break
       case 'charge.refunded':
         result = await recordRefunds(stripe, event.data.object as ChargeWithInvoice)
         break
       case 'customer.subscription.deleted': {
         const subscription = event.data.object as Stripe.Subscription
-        result = await recordSubscriptionStatus(subscription)
+        result = await recordSubscriptionStatus(subscription, event.created)
         await emitSubscriptionChurn(subscription)
         break
       }
       case 'customer.subscription.updated':
-        result = await recordSubscriptionStatus(event.data.object as Stripe.Subscription)
+        result = await recordSubscriptionStatus(event.data.object as Stripe.Subscription, event.created)
         break
       default:
         result = { ignored: true, type: event.type }

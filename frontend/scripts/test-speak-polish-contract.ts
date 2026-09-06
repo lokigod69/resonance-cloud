@@ -92,8 +92,8 @@ assert('history corrections unavailable key is rendered', historyPanelSource.inc
 assert('corrections failure does not write an empty correction list', !speakSource.includes('setCorrections([])'))
 assert('current corrections use bounded transcript preparation', speakSource.includes('prepareCorrectionsTranscript(activeMessages)'))
 assert('history corrections use bounded transcript preparation', historyPanelSource.includes('prepareCorrectionsTranscript(messages)'))
-assert('current corrections are abortable', speakSource.includes('signal: controller.signal'))
-assert('history corrections are abortable', historyPanelSource.includes('signal: controller.signal'))
+assert('current corrections are abortable', speakSource.includes('signal,') && speakSource.includes('CORRECTIONS_TIMEOUT_MS, controller.signal'))
+assert('history corrections are abortable', historyPanelSource.includes('signal,') && historyPanelSource.includes('CORRECTIONS_TIMEOUT_MS, controller.signal'))
 
 process.stdout.write(`\n${passes} passed, ${failures} failed\n`)
 if (failures > 0) process.exit(1)

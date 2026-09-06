@@ -29,7 +29,15 @@
 import { readFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { resolve as resolvePath } from 'node:path'
-import { GUIDED_LESSONS, type GuidedLessonDefinition, type GuidedLessonVibeVariant } from '../src/data/guidedLessons.ts'
+import { fileURLToPath } from 'node:url'
+import {
+  GUIDED_LESSONS,
+  getGuidedPathMetadata,
+  loadAllGuidedLessons,
+  loadGuidedLessonsForPath,
+  type GuidedLessonDefinition,
+  type GuidedLessonVibeVariant,
+} from '../src/data/guidedLessons.ts'
 import { ACTIVE_GUIDED_VIBE_IDS, type ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
 
 export const NORMALIZATION_VERSION = 'v1'
@@ -591,13 +599,19 @@ function loadVoiceProfiles(filePath: string): VoiceProfile[] {
   return parsed
 }
 
-function runCli(argv: string[]): number {
+async function runCli(argv: string[]): Promise<number> {
   let parsed: ParsedArgs
   try {
     parsed = parseArgs(argv)
   } catch (err) {
     process.stderr.write(`${(err as Error).message}\n`)
     return 2
+  }
+
+  if (parsed.pathId) {
+    if (getGuidedPathMetadata(parsed.pathId)) await loadGuidedLessonsForPath(parsed.pathId)
+  } else {
+    await loadAllGuidedLessons()
   }
 
   const filteredLessons = filterLessons(GUIDED_LESSONS, {
@@ -639,10 +653,10 @@ function runCli(argv: string[]): number {
 
 const isDirectInvocation = (() => {
   const argv1 = process.argv[1] ?? ''
-  return argv1.endsWith('guided-tts-inventory.ts') || argv1.endsWith('guided-tts-inventory.js')
+  return resolvePath(argv1).toLowerCase() === fileURLToPath(import.meta.url).toLowerCase()
 })()
 
 if (isDirectInvocation) {
-  const code = runCli(process.argv.slice(2))
+  const code = await runCli(process.argv.slice(2))
   if (code !== 0) process.exit(code)
 }

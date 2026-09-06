@@ -7,6 +7,8 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
+from src.path_safety import validate_word_slug, validate_workspace_component
+
 log = logging.getLogger(__name__)
 
 
@@ -103,7 +105,11 @@ async def upload_ab_results(
     Version A uploads to ``video.mp4`` / ``thumb.jpg`` (backward compatible).
     Version B uploads to ``video_b.mp4`` / ``thumb_b.jpg`` (new).
     """
-    prefix = f"{user_id}/{deck_id}/{word_slug}"
+    prefix = "/".join((
+        validate_workspace_component(user_id, label="user_id"),
+        validate_workspace_component(deck_id, label="deck_id"),
+        validate_word_slug(word_slug),
+    ))
 
     # —— Version A (required) ——
     video_a = _resolve_final_video(word_dir, manifest_a)

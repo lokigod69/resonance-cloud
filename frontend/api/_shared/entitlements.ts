@@ -9,6 +9,7 @@
 
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { ApiError } from './http'
+import { assertRequestActive, requestFetch, withCleanupDeadline } from './requestDeadline'
 import {
   FREE_TRIAL_LENS_SCANS,
   FREE_TRIAL_SPEAK_SECONDS,
@@ -45,6 +46,7 @@ function serviceClient(): SupabaseClient {
     throw new ApiError(503, 'Entitlement service unavailable')
   }
   return createClient(url, key, {
+    global: { fetch: requestFetch },
     auth: {
       persistSession: false,
       autoRefreshToken: false,
@@ -68,8 +70,9 @@ export async function resolveEntitlements(userId: string): Promise<UserEntitleme
       .eq('user_id', userId)
       .maybeSingle(),
   ])
+  assertRequestActive()
 
-  if (profileRes.error) {
+  if (profileRes.error || subRes.error) {
     throw new ApiError(503, 'Entitlement service unavailable')
   }
 
@@ -167,7 +170,6 @@ export async function consumeFeatureAllowance(
     p_amount: amount,
     p_max: max,
   })
-
   if (error) {
     throw new ApiError(503, 'Entitlement service unavailable')
   }
@@ -193,47 +195,21 @@ export async function refundFeatureUsage(
 ): Promise<void> {
   if (!Number.isFinite(amount) || amount <= 0) return
   try {
-    const supabase = serviceClient()
-    const { error } = await supabase.rpc('consume_feature_usage', {
-      p_user_id: userId,
-      p_feature: feature,
-      p_period_key: periodKey,
-      p_amount: -Math.abs(amount),
-      p_max: null,
+    await withCleanupDeadline(async () => {
+      const supabase = serviceClient()
+      const { error } = await supabase.rpc('consume_feature_usage', {
+        p_user_id: userId,
+        p_feature: feature,
+        p_period_key: periodKey,
+        p_amount: -Math.abs(amount),
+        p_max: null,
+      })
+      if (error) {
+        console.error('[entitlements] USAGE REFUND FAILED — user over-debited', { userId, feature, amount, error: error.message })
+      }
     })
-    if (error) {
-      console.error('[entitlements] USAGE REFUND FAILED — user over-debited', { userId, feature, amount, error: error.message })
-    }
   } catch (err) {
     console.error('[entitlements] USAGE REFUND FAILED — user over-debited', { userId, feature, amount, err })
-  }
-}
-
-/**
- * One row per Grok Live token mint. The mint is the billable unit (the token
- * itself expires after LIVE_SESSION_MINUTES), so this is conservative,
- * unspoofable accounting. Never throws.
- */
-export async function recordLiveSession(
-  userId: string,
-  plan: PlanId,
-  minutesDebited: number,
-  estCostUsd: number,
-): Promise<void> {
-  try {
-    const supabase = serviceClient()
-    const { error } = await supabase.from('live_sessions').insert({
-      user_id: userId,
-      plan,
-      model: 'grok-realtime',
-      minutes_debited: minutesDebited,
-      est_cost_usd: estCostUsd,
-    })
-    if (error) {
-      console.error('[entitlements] live session record failed', error.message)
-    }
-  } catch (err) {
-    console.error('[entitlements] live session record failed', err)
   }
 }
 

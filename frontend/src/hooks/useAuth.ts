@@ -6,6 +6,7 @@ import { getOAuthRedirectTo } from '@/lib/publicOrigins'
 import { isNativeApp } from '@/lib/platform'
 import { analytics, deterministicUuid } from '@/lib/analytics'
 import { invalidatePlan } from '@/hooks/usePlan'
+import { signOutAndClearLocalState } from '@/lib/authSignOut'
 
 const profileCacheKey = (userId: string) => `resonance_auth_profile_${userId}`
 
@@ -408,14 +409,18 @@ export function useAuthState(): AuthState {
     // The cached profile row (name, role, balances) must not outlive the
     // session on a shared device (audit C-04); the plan cache is per user.
     const currentUserId = user?.id ?? profileFetchedUserIdRef.current
-    if (currentUserId) writeCachedProfile(currentUserId, null)
-    invalidatePlan()
-    resetProfileState()
-    await supabase.auth.signOut()
-    setSession(null)
-    setUser(null)
-    setAuthError(null)
-    setLoading(false)
+    await signOutAndClearLocalState(
+      () => supabase.auth.signOut({ scope: 'local' }),
+      () => {
+      if (currentUserId) writeCachedProfile(currentUserId, null)
+      invalidatePlan()
+      resetProfileState()
+      setSession(null)
+      setUser(null)
+      setAuthError(null)
+      setLoading(false)
+      },
+    )
   }, [resetProfileState, user])
 
   // One stable context value per state change: without this every render of

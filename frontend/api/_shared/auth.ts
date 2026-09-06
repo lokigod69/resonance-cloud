@@ -1,5 +1,6 @@
 import { createClient, type User } from '@supabase/supabase-js'
 import { ApiError } from './http'
+import { assertRequestActive, requestFetch } from './requestDeadline'
 
 export interface AuthenticatedUser {
   id: string
@@ -31,6 +32,7 @@ export async function requireSupabaseUser(req: Request): Promise<AuthenticatedUs
   }
 
   const supabase = createClient(url, anonKey, {
+    global: { fetch: requestFetch },
     auth: {
       persistSession: false,
       autoRefreshToken: false,
@@ -39,7 +41,11 @@ export async function requireSupabaseUser(req: Request): Promise<AuthenticatedUs
   })
 
   const { data, error } = await supabase.auth.getUser(token)
+  assertRequestActive()
   if (error || !data.user) {
+    if (error && (error.status === 0 || (error.status ?? 0) >= 500 || error.name === 'AuthRetryableFetchError')) {
+      throw new ApiError(503, 'Authentication unavailable')
+    }
     throw new ApiError(401, 'Invalid session')
   }
 

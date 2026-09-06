@@ -23,6 +23,7 @@ import {
   getGuidedReviewItems,
   getGuidedTypeFallbackChoices,
   getNextGuidedLesson,
+  loadAllGuidedLessons,
   normalizeGuidedAnswer,
   resolveGuidedBaseContent,
   resolveGuidedLessonVariant,
@@ -33,6 +34,8 @@ import {
 } from '../src/data/guidedLessons.ts'
 import { TODAY_SESSION_STEPS } from '../src/components/today/sessionSteps.ts'
 import { getSpeechWordOverlap } from '../src/components/today/speechRecognition.ts'
+
+await loadAllGuidedLessons()
 import { checkGuidedSpeechAnswer } from '../src/lib/guidedSpeechCheck.ts'
 import {
   createEmptyTodayProgressState,

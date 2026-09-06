@@ -768,6 +768,27 @@ def build_bookend_payload(
     }
 
 
+def _require_engine_status(
+    result: dict[str, Any],
+    *,
+    stage: str,
+    accepted: tuple[str, ...],
+) -> str:
+    """Turn a structured engine failure into the pipeline exception contract."""
+    status = str(result.get("status") or "failed").lower()
+    if status in accepted:
+        return status
+
+    raw_error = result.get("error")
+    if isinstance(raw_error, dict):
+        detail = raw_error.get("message") or raw_error.get("error")
+    else:
+        detail = raw_error
+    if not detail:
+        detail = result.get("message") or f"unexpected engine status {status!r}"
+    raise PipelineError(f"{stage} engine failed: {detail}")
+
+
 async def run_stage(
     workspace_path: Path,
     word_slug: str,
@@ -821,6 +842,7 @@ async def run_stage(
                 add_lineage(word_dir, 'concept', version_name, from_versions, settings, 'success')
             else:
                 add_lineage(word_dir, 'concept', version_name, from_versions, settings, 'failed')
+            _require_engine_status(result, stage=stage, accepted=('success',))
             return {"stage": stage, "version": version_name, "result": result}
 
         elif stage in ('song', 'images', 'video', 'assembly', 'bookend'):
@@ -842,6 +864,7 @@ async def run_stage(
             result = await call_engine('song', payload)
             status = result.get('status', 'failed')
             add_lineage(word_dir, 'song', version_name, from_versions, settings, status)
+            _require_engine_status(result, stage=stage, accepted=('success',))
             if status == 'success':
                 # Auto-select first take if present
                 output_paths = result.get('output_paths', [])
@@ -894,6 +917,9 @@ async def run_stage(
                 lineage_settings["creative_direction_resolved"] = resolved_cd
                 lineage_settings["creative_direction_rationale"] = cd_rationale
             add_lineage(word_dir, 'images', version_name, from_versions, lineage_settings, status)
+            _require_engine_status(
+                result, stage=stage, accepted=('success', 'partial'),
+            )
             if status in ('success', 'partial'):
                 update_selection(word_dir, 'images', version_name)
             return {"stage": stage, "version": version_name, "result": result}
@@ -943,10 +969,20 @@ async def run_stage(
             all_success = all(r.get('status') == 'success' for r in results)
             final_status = 'success' if all_success else ('partial' if any_success else 'failed')
             add_lineage(word_dir, 'video', version_name, from_versions, settings, final_status)
+            aggregate_result = {"status": final_status, "scene_results": results}
+            if final_status == 'failed':
+                scene_error = next(
+                    (r.get('error') for r in results if r.get('error')),
+                    "all video scenes failed",
+                )
+                aggregate_result["error"] = scene_error
+            _require_engine_status(
+                aggregate_result, stage=stage, accepted=('success', 'partial'),
+            )
             if any_success:
                 update_selection(word_dir, 'video', version_name)
 
-            return {"stage": stage, "version": version_name, "result": {"status": final_status, "scene_results": results}}
+            return {"stage": stage, "version": version_name, "result": aggregate_result}
 
         elif stage == 'assembly':
             # When bookend is enabled, force clean assembly mode (bookend handles word cards)
@@ -969,6 +1005,7 @@ async def run_stage(
             result = await call_engine('assembly', payload)
             status = result.get('status', 'failed')
             add_lineage(word_dir, 'assembly', version_name, from_versions, settings, status)
+            _require_engine_status(result, stage=stage, accepted=('success',))
             if status == 'success':
                 update_selection(word_dir, 'final', version_name)
             return {"stage": stage, "version": version_name, "result": result}
@@ -987,6 +1024,7 @@ async def run_stage(
             result = await call_engine('bookend', payload)
             status = result.get('status', 'failed')
             add_lineage(word_dir, 'bookend', version_name, from_versions, settings, status)
+            _require_engine_status(result, stage=stage, accepted=('success',))
             if status == 'success':
                 update_selection(word_dir, 'bookend', version_name)
             return {"stage": stage, "version": version_name, "result": result}

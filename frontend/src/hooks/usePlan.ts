@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { publicApiUrl } from '@/lib/publicOrigins'
 import { supabase } from '@/lib/supabase'
+import { assertClientActive, withClientDeadline } from '@/lib/clientDeadline'
 
 type Plan = 'free' | 'standard' | 'premium'
 
@@ -43,29 +44,32 @@ export function invalidatePlan(): void {
 
 async function fetchPlan(): Promise<{ state: PlanState; userId: string | null }> {
   try {
-    const { data, error } = await supabase.auth.getSession()
-    const token = data.session?.access_token
-    const userId = data.session?.user?.id ?? null
-    if (error || !token) return { state: FAILED_PLAN, userId }
+    return await withClientDeadline(async (signal) => {
+      const { data, error } = await supabase.auth.getSession()
+      assertClientActive(signal)
+      const token = data.session?.access_token
+      const userId = data.session?.user?.id ?? null
+      if (error || !token) return { state: FAILED_PLAN, userId }
 
-    const response = await fetch(publicApiUrl('/api/entitlements'), {
-      headers: { Authorization: `Bearer ${token}` },
-      signal: AbortSignal.timeout(15_000),
-    })
-    if (!response.ok) return { state: FAILED_PLAN, userId }
+      const response = await fetch(publicApiUrl('/api/entitlements'), {
+        headers: { Authorization: `Bearer ${token}` },
+        signal,
+      })
+      if (!response.ok) return { state: FAILED_PLAN, userId }
 
-    const payload = await response.json() as { plan?: unknown; is_admin?: unknown }
-    if (!isPlan(payload.plan) || typeof payload.is_admin !== 'boolean') return { state: FAILED_PLAN, userId }
+      const payload = await response.json() as { plan?: unknown; is_admin?: unknown }
+      if (!isPlan(payload.plan) || typeof payload.is_admin !== 'boolean') return { state: FAILED_PLAN, userId }
 
-    return {
-      state: {
-        plan: payload.plan,
-        isAdmin: payload.is_admin,
-        isPremiumUi: payload.plan === 'premium' || payload.is_admin,
-        loaded: true,
-      },
-      userId,
-    }
+      return {
+        state: {
+          plan: payload.plan,
+          isAdmin: payload.is_admin,
+          isPremiumUi: payload.plan === 'premium' || payload.is_admin,
+          loaded: true,
+        },
+        userId,
+      }
+    }, 15_000)
   } catch {
     return { state: FAILED_PLAN, userId: null }
   }

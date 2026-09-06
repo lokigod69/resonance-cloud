@@ -5,6 +5,7 @@ import type { CardFaces } from '@/lib/cardFaces'
 import { getLanguageQueryValues } from '@/lib/languages'
 import { useWordStates, type LemmaState } from '@/hooks/useWordStates'
 import { trackLearningAction } from '@/lib/analytics'
+import { recallAttemptQueue } from '@/lib/recallAttemptQueue'
 
 export type StudyWord = {
   id: string
@@ -15,6 +16,7 @@ export type StudyWord = {
   ipa?: string | null
   video_url: string | null
   thumbnail_url: string | null
+  card_thumbnail_url: string | null
   tts_audio_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
@@ -190,7 +192,7 @@ export function useStudySession(
 
     let wordsQuery = supabase
       .from('words')
-      .select('id, word, translation, mnemonic, etymology, ipa, video_url, thumbnail_url, tts_audio_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language, deck_type)')
+      .select('id, word, translation, mnemonic, etymology, ipa, video_url, thumbnail_url, card_thumbnail_url, tts_audio_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language, deck_type)')
       .eq('user_id', userId)
       .eq('status', 'complete')
     if (deckId) {
@@ -256,14 +258,14 @@ export function useStudySession(
     (wordId: string, knewIt: boolean) => {
       if (!userId) return
 
-      // Fire-and-forget Supabase insert
-      supabase
-        .from('recall_attempts')
-        .insert({ user_id: userId, word_id: wordId, knew_it: knewIt, study_mode: studyMode })
-        .then(({ error }) => {
-          if (error) console.error('[study] recall insert failed:', error)
-          else refetchWordStates()
-        })
+      void recallAttemptQueue.enqueue({
+        userId,
+        wordId,
+        knewIt,
+        studyMode,
+        metadata: null,
+        occurredAt: new Date().toISOString(),
+      }).then(refetchWordStates).catch(() => undefined)
 
       trackLearningAction('study_rep', { study_mode: studyMode, correct: knewIt })
 

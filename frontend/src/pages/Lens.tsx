@@ -16,6 +16,12 @@ import { canonicalizeLanguageValue, getLanguageCode } from '@/lib/languages'
 import { lensErrorTranslationKey } from '@/lib/lensApiProvider'
 import { classifyLensCameraFailure, lensCameraErrorTranslationKey } from '@/lib/lensCamera'
 import { lensItemFromAlternate } from '@/lib/lensSelection'
+import {
+  combineLensSaveReceipts,
+  reconcileLensSaveResult,
+  type LensSaveReceipt,
+  type LensSaveResult,
+} from '@/lib/lensSaveMapping'
 import { supabase } from '@/lib/supabase'
 import type { LensAlternate, LensScanItem, LensScanResponse } from '@/lib/lensTypes'
 
@@ -37,15 +43,16 @@ type CapturedFrame = {
 type RecapItem = LensScanItem & {
   id: string
   language: string
+  baseLanguage: string
   saved: boolean
   alreadyPresent?: boolean
+  wordId?: string
 }
 
-type SaveNotice = {
-  deckId: string
-  kind: 'saved' | 'duplicate' | 'mixed'
-  inserted: number
-  skipped: number
+type ExistingWordHints = {
+  userId: string
+  language: string
+  words: Set<string>
 }
 
 type TorchMediaTrackCapabilities = MediaTrackCapabilities & {
@@ -151,7 +158,9 @@ export default function Lens() {
   const mountedRef = useRef(true)
   const cameraRequestRef = useRef(0)
   const scanRequestRef = useRef(0)
+  const wordHintsRequestRef = useRef(0)
   const targetLanguageRef = useRef('')
+  const userIdRef = useRef('')
   const currentRecapIdsRef = useRef<string[]>([])
   const recapSequenceRef = useRef(0)
   const resumeCameraAfterRecapRef = useRef(false)
@@ -169,8 +178,9 @@ export default function Lens() {
   const [torchOn, setTorchOn] = useState(false)
   const [recapItems, setRecapItems] = useState<RecapItem[]>([])
   const [showRecap, setShowRecap] = useState(false)
-  const [existingWordHints, setExistingWordHints] = useState<Set<string>>(new Set())
-  const [saveNotice, setSaveNotice] = useState<SaveNotice | null>(null)
+  const existingWordHintsRef = useRef<ExistingWordHints>({ userId: '', language: '', words: new Set() })
+  const [existingWordHints, setExistingWordHints] = useState<ExistingWordHints>(existingWordHintsRef.current)
+  const [saveNotice, setSaveNotice] = useState<LensSaveReceipt | null>(null)
   const [lensLanguages, setLensLanguages] = useState<string[]>([])
   const [langMenuOpen, setLangMenuOpen] = useState(false)
 
@@ -185,6 +195,19 @@ export default function Lens() {
   const selectedItem = useMemo(() => activeItem ?? primaryItem(scanResult, selectedIndex), [activeItem, scanResult, selectedIndex])
   const hasScans = recapItems.length > 0
   targetLanguageRef.current = targetLanguage
+  userIdRef.current = user?.id ?? ''
+
+  const commitExistingWordHints = useCallback((next: ExistingWordHints) => {
+    existingWordHintsRef.current = next
+    setExistingWordHints(next)
+  }, [])
+
+  const hasExistingWordHint = useCallback((language: string, word: string) => {
+    const hints = existingWordHintsRef.current
+    return hints.userId === userIdRef.current
+      && hints.language === language
+      && hints.words.has(normalizedWordKey(word))
+  }, [])
 
   const stopCamera = useCallback((updateUi = true) => {
     streamRef.current?.getTracks().forEach((track) => track.stop())
@@ -331,38 +354,52 @@ export default function Lens() {
   }, [user])
 
   useEffect(() => {
-    let cancelled = false
-    if (!user || !targetLanguage) {
-      setExistingWordHints(new Set())
+    const requestId = ++wordHintsRequestRef.current
+    const requestUserId = user?.id ?? ''
+    const requestLanguage = targetLanguage
+    commitExistingWordHints({ userId: requestUserId, language: requestLanguage, words: new Set() })
+
+    if (!requestUserId || !targetLanguage) {
       return
     }
 
     void (async () => {
       try {
-        const { data } = await supabase.rpc('get_user_words_for_language', { p_target_language: targetLanguage })
-        if (cancelled) return
+        const { data } = await supabase.rpc('get_user_words_for_language', { p_target_language: requestLanguage })
+        if (
+          requestId !== wordHintsRequestRef.current
+          || requestUserId !== userIdRef.current
+          || requestLanguage !== targetLanguageRef.current
+        ) return
         const words = Array.isArray(data) ? data : []
-        setExistingWordHints(new Set(words.map((word) => normalizedWordKey(String(word)))))
+        const fetched = new Set(words.map((word) => normalizedWordKey(String(word))))
+        const current = existingWordHintsRef.current
+        if (current.userId === requestUserId && current.language === requestLanguage) {
+          current.words.forEach((word) => fetched.add(word))
+        }
+        commitExistingWordHints({ userId: requestUserId, language: requestLanguage, words: fetched })
       } catch {
-        if (!cancelled) setExistingWordHints(new Set())
+        // The scope was cleared before the request. Keep any same-scope words
+        // learned from a successful save while this lookup was pending.
       }
     })()
 
     return () => {
-      cancelled = true
+      if (wordHintsRequestRef.current === requestId) wordHintsRequestRef.current += 1
     }
-  }, [targetLanguage, user])
+  }, [commitExistingWordHints, targetLanguage, user?.id])
 
   useEffect(() => {
-    if (existingWordHints.size === 0) return
-    // Hints belong to the current target language — never cross-mark recap
-    // items scanned under a different language.
+    if (
+      existingWordHints.userId !== (user?.id ?? '')
+      || existingWordHints.language !== targetLanguage
+    ) return
     setRecapItems((items) => items.map((item) => (
-      item.language === targetLanguage && existingWordHints.has(normalizedWordKey(item.target_text))
-        ? { ...item, alreadyPresent: true }
+      item.language === targetLanguage && !item.saved
+        ? { ...item, alreadyPresent: existingWordHints.words.has(normalizedWordKey(item.target_text)) }
         : item
     )))
-  }, [existingWordHints, targetLanguage])
+  }, [existingWordHints, targetLanguage, user?.id])
 
   useEffect(() => {
     const handleOffline = () => {
@@ -473,8 +510,9 @@ export default function Lens() {
           ...item,
           id: `lens-${Date.now()}-${++recapSequenceRef.current}`,
           language: targetLanguage,
+          baseLanguage,
           saved: false,
-          alreadyPresent: existingWordHints.has(normalizedWordKey(item.target_text)),
+          alreadyPresent: hasExistingWordHint(requestLanguage, item.target_text),
         }))
         currentRecapIdsRef.current = recapEntries.map((item) => item.id)
         setRecapItems((items) => [
@@ -488,7 +526,7 @@ export default function Lens() {
       setErrorMessage(t(lensErrorTranslationKey(error)))
       setViewState('error')
     }
-  }, [baseLanguage, existingWordHints, scan, scanLanguagesReady, stopCamera, t, targetLanguage, viewState])
+  }, [baseLanguage, hasExistingWordHint, scan, scanLanguagesReady, stopCamera, t, targetLanguage, viewState])
 
   const toggleTorch = useCallback(async () => {
     const [track] = streamRef.current?.getVideoTracks() ?? []
@@ -532,93 +570,93 @@ export default function Lens() {
     initialFocusSelector: '[data-lens-recap-initial-focus]',
   })
 
-  const markRecapItems = useCallback((itemsToMark: LensScanItem[], language: string, patch: Partial<Pick<RecapItem, 'saved' | 'alreadyPresent'>>) => {
-    const keys = new Set(itemsToMark.map((item) => `${normalizedWordKey(item.target_text)}\u0000${normalizedWordKey(item.base_text)}`))
-    setRecapItems((items) => items.map((item) => (
-      item.language === language && keys.has(`${normalizedWordKey(item.target_text)}\u0000${normalizedWordKey(item.base_text)}`)
-        ? { ...item, ...patch }
-        : item
-    )))
-  }, [])
+  const recapItemsById = useMemo(
+    () => new Map(recapItems.map((item) => [item.id, item])),
+    [recapItems],
+  )
 
-  const itemSavedInRecap = useCallback((item: LensScanItem, language: string) => recapItems.some((recapItem) => (
-    recapItem.saved && recapItem.language === language && recapItem.target_text === item.target_text && recapItem.base_text === item.base_text
-  )), [recapItems])
+  const saveLensItemsAccurately = useCallback(async (itemsToSave: RecapItem[]): Promise<LensSaveResult | null> => {
+    const unsaved = itemsToSave.filter((item) => !item.saved && !item.alreadyPresent)
+    if (unsaved.length === 0 || saveInFlightRef.current) return null
 
-  const itemAlreadyPresent = useCallback((item: LensScanItem, language: string) => (
-    (language === targetLanguage && existingWordHints.has(normalizedWordKey(item.target_text)))
-    || recapItems.some((recapItem) => (
-      recapItem.alreadyPresent && recapItem.language === language && recapItem.target_text === item.target_text && recapItem.base_text === item.base_text
-    ))
-  ), [existingWordHints, recapItems, targetLanguage])
-
-  const markSkippedItemsAlreadyPresent = useCallback((itemsToMark: LensScanItem[], language: string) => {
-    markRecapItems(itemsToMark, language, { alreadyPresent: true })
-    // The hint set belongs to the current language only.
-    if (language !== targetLanguage) return
-    setExistingWordHints((words) => {
-      const next = new Set(words)
-      itemsToMark.forEach((item) => next.add(normalizedWordKey(item.target_text)))
-      return next
-    })
-  }, [markRecapItems, targetLanguage])
-
-  const saveLensItemsAccurately = useCallback(async (itemsToSave: LensScanItem[], language?: string) => {
-    const saveLanguage = language ?? targetLanguage
-    const unsaved = itemsToSave.filter((item) => !itemSavedInRecap(item, saveLanguage) && !itemAlreadyPresent(item, saveLanguage))
-    if (unsaved.length === 0) return
-    if (saveInFlightRef.current) return
+    const saveLanguage = unsaved[0].language
+    const saveBaseLanguage = unsaved[0].baseLanguage
+    const saveUserId = userIdRef.current
+    if (unsaved.some((item) => item.language !== saveLanguage || item.baseLanguage !== saveBaseLanguage)) {
+      throw new Error('Lens save batch contains mixed language metadata')
+    }
 
     saveInFlightRef.current = true
-    setSaveNotice(null)
     try {
       const result = await saveLensItems({
         targetLanguage: saveLanguage,
-        baseLanguage,
-        items: unsaved,
+        baseLanguage: saveBaseLanguage,
+        items: unsaved.map((item) => ({ clientId: item.id, item })),
       })
-      const allInserted = result.inserted === unsaved.length && result.skipped === 0
       const allSkipped = result.inserted === 0 && result.skipped > 0
-      const mixed = result.inserted > 0 && result.skipped > 0
 
-      if (allInserted) {
-        markRecapItems(unsaved, saveLanguage, { saved: true })
-      } else if (allSkipped) {
-        markSkippedItemsAlreadyPresent(unsaved, saveLanguage)
+      // Count-only legacy RPCs are safe to reconcile only when every row had
+      // the same result. The helper never infers row identities from mixed counts.
+      setRecapItems((items) => reconcileLensSaveResult(items, unsaved.map((item) => item.id), result))
+
+      const settledItems = result.outcomes || allSkipped || result.inserted === unsaved.length
+        ? unsaved
+        : []
+      if (
+        saveUserId === userIdRef.current
+        && saveLanguage === targetLanguageRef.current
+        && settledItems.length > 0
+      ) {
+        const current = existingWordHintsRef.current
+        const next = current.userId === userIdRef.current && current.language === saveLanguage
+          ? new Set(current.words)
+          : new Set<string>()
+        settledItems.forEach((item) => next.add(normalizedWordKey(item.target_text)))
+        commitExistingWordHints({ userId: saveUserId, language: saveLanguage, words: next })
       }
-
-      setSaveNotice({
-        deckId: result.deckId,
-        kind: mixed ? 'mixed' : allSkipped ? 'duplicate' : 'saved',
-        inserted: result.inserted,
-        skipped: result.skipped,
-      })
+      return result
     } catch {
-      // useLensSave exposes the user-facing error state.
+      // useLensSave exposes the localized user-facing error state. Successful
+      // earlier language groups remain marked, so retry sends only unresolved rows.
+      return null
     } finally {
       saveInFlightRef.current = false
     }
-  }, [baseLanguage, itemAlreadyPresent, itemSavedInRecap, markRecapItems, markSkippedItemsAlreadyPresent, saveLensItems, targetLanguage])
+  }, [commitExistingWordHints, saveLensItems])
+
+  const publishSaveNotice = useCallback((language: string, result: LensSaveResult | null) => {
+    setSaveNotice(result ? combineLensSaveReceipts([{ language, result }]) : null)
+  }, [])
 
   const saveSelectedToRecap = useCallback(async () => {
-    if (!selectedItem) return
-    await saveLensItemsAccurately([selectedItem])
-  }, [saveLensItemsAccurately, selectedItem])
+    const selectedRecapId = currentRecapIdsRef.current[selectedIndex]
+    const selectedRecapItem = selectedRecapId ? recapItemsById.get(selectedRecapId) : null
+    if (!selectedRecapItem) return
+    setSaveNotice(null)
+    const result = await saveLensItemsAccurately([selectedRecapItem])
+    publishSaveNotice(selectedRecapItem.language, result)
+  }, [publishSaveNotice, recapItemsById, saveLensItemsAccurately, selectedIndex])
 
   const bulkSaveUnsaved = useCallback(async () => {
-    // Recap items keep the language they were scanned under — group per
-    // language so a mid-session switch can never save words into the wrong deck.
+    // Recap rows retain both languages from scan time. Each RPC stays
+    // single-language, while the visible receipt combines every successful group.
     const groups = new Map<string, RecapItem[]>()
-    recapItems.forEach((item) => {
-      const language = item.language || targetLanguage
-      const group = groups.get(language)
+    recapItems.filter((item) => !item.saved && !item.alreadyPresent).forEach((item) => {
+      const key = `${item.language}\u0000${item.baseLanguage}`
+      const group = groups.get(key)
       if (group) group.push(item)
-      else groups.set(language, [item])
+      else groups.set(key, [item])
     })
-    for (const [language, items] of groups) {
-      await saveLensItemsAccurately(items, language)
+
+    setSaveNotice(null)
+    const receipts: Array<{ language: string; result: LensSaveResult }> = []
+    for (const items of groups.values()) {
+      const result = await saveLensItemsAccurately(items)
+      if (!result) break
+      receipts.push({ language: items[0].language, result })
     }
-  }, [recapItems, saveLensItemsAccurately, targetLanguage])
+    setSaveNotice(combineLensSaveReceipts(receipts))
+  }, [recapItems, saveLensItemsAccurately])
 
   const discardRecapItem = useCallback((id: string) => {
     setRecapItems((items) => items.filter((item) => item.id !== id))
@@ -694,6 +732,8 @@ export default function Lens() {
   const selectLensLanguage = useCallback((language: string) => {
     closeLanguageMenu(true)
     if (language === targetLanguage) return
+    wordHintsRequestRef.current += 1
+    commitExistingWordHints({ userId: user?.id ?? '', language, words: new Set() })
     setActiveLanguage(language)
     // Any result on screen was produced for the previous language — clear it
     // and return to the live preview so the next scan is coherent end to end.
@@ -702,12 +742,18 @@ export default function Lens() {
     } else {
       setSaveNotice(null)
     }
-  }, [closeLanguageMenu, resetForRescan, setActiveLanguage, targetLanguage, viewState])
+  }, [closeLanguageMenu, commitExistingWordHints, resetForRescan, setActiveLanguage, targetLanguage, user?.id, viewState])
 
   const bulkSaveCurrentItems = useCallback(async () => {
     if (!scanResult) return
-    await saveLensItemsAccurately(scanResult.items)
-  }, [saveLensItemsAccurately, scanResult])
+    const currentItems = currentRecapIdsRef.current
+      .map((id) => recapItemsById.get(id))
+      .filter((item): item is RecapItem => Boolean(item))
+    if (currentItems.length === 0) return
+    setSaveNotice(null)
+    const result = await saveLensItemsAccurately(currentItems)
+    publishSaveNotice(currentItems[0].language, result)
+  }, [publishSaveNotice, recapItemsById, saveLensItemsAccurately, scanResult])
 
   const selectAlternate = useCallback((alternate: LensAlternate) => {
     const replacement = lensItemFromAlternate(alternate)
@@ -723,8 +769,9 @@ export default function Lens() {
         ...replacement,
         id: current?.id ?? `lens-${Date.now()}-${++recapSequenceRef.current}`,
         language: current?.language ?? targetLanguage,
+        baseLanguage: current?.baseLanguage ?? baseLanguage,
         saved: false,
-        alreadyPresent: existingWordHints.has(normalizedWordKey(replacement.target_text)),
+        alreadyPresent: hasExistingWordHint(current?.language ?? targetLanguage, replacement.target_text),
       }
 
       // A saved/known primary is historical session truth. Keep it and add the
@@ -743,23 +790,27 @@ export default function Lens() {
     setActiveItem(replacement)
     setExampleOpen(false)
     setSaveNotice(null)
-  }, [existingWordHints, selectedIndex, targetLanguage])
+  }, [baseLanguage, hasExistingWordHint, selectedIndex, targetLanguage])
 
-  const selectedSaved = Boolean(selectedItem && itemSavedInRecap(selectedItem, targetLanguage))
-  const selectedAlreadyPresent = Boolean(selectedItem && itemAlreadyPresent(selectedItem, targetLanguage))
-  const currentUnsavedCount = scanResult?.items.filter((item) => !itemSavedInRecap(item, targetLanguage) && !itemAlreadyPresent(item, targetLanguage)).length ?? 0
+  const selectedRecapItem = recapItemsById.get(currentRecapIdsRef.current[selectedIndex])
+  const selectedSaved = Boolean(selectedRecapItem?.saved)
+  const selectedAlreadyPresent = Boolean(selectedRecapItem?.alreadyPresent)
+  const currentUnsavedCount = currentRecapIdsRef.current.reduce((count, id) => {
+    const item = recapItemsById.get(id)
+    return count + (item && !item.saved && !item.alreadyPresent ? 1 : 0)
+  }, 0)
   const saveBusy = saveStatus === 'loading'
   const saveNoticeText = saveNotice
-    ? saveNotice.kind === 'duplicate'
+    ? saveNotice.inserted === 0 && saveNotice.skipped > 0
       ? t('lens.save.alreadyInVocabulary')
-      : saveNotice.kind === 'mixed'
+      : saveNotice.inserted > 0 && saveNotice.skipped > 0
         ? t('lens.save.bulkMixed', { saved: saveNotice.inserted, known: saveNotice.skipped })
         : t('lens.save.confirmed')
     : null
   const recapSaveNoticeText = saveNotice
-    ? saveNotice.kind === 'duplicate'
+    ? saveNotice.inserted === 0 && saveNotice.skipped > 0
       ? t('lens.save.alreadyInVocabulary')
-      : saveNotice.kind === 'mixed'
+      : saveNotice.inserted > 0 && saveNotice.skipped > 0
         ? t('lens.save.bulkMixed', { saved: saveNotice.inserted, known: saveNotice.skipped })
         : t('lens.save.bulkConfirmed', { count: saveNotice.inserted })
     : null
@@ -930,8 +981,10 @@ export default function Lens() {
           <section className="lens-result-sheet" aria-live="polite">
             {scanResult && scanResult.items.length > 1 ? (
               <div className="lens-item-list" aria-label={t('lens.result.itemsLabel')}>
-                {scanResult.items.map((item, index) => (
-                  <div
+                {scanResult.items.map((item, index) => {
+                  const recapItem = recapItemsById.get(currentRecapIdsRef.current[index])
+                  const itemResolved = Boolean(recapItem?.saved || recapItem?.alreadyPresent)
+                  return <div
                     key={`${item.target_text}-${index}`}
                     className={`lens-item-row${index === selectedIndex && !activeItem ? ' lens-item-row--active' : ''}`}
                   >
@@ -945,19 +998,23 @@ export default function Lens() {
                       }}
                     >
                       <span lang={targetLangCode} dir="auto">{item.target_text}</span>
-                      <span lang={baseLangCode} dir="auto">{itemSavedInRecap(item, targetLanguage) ? t('lens.action.saved') : itemAlreadyPresent(item, targetLanguage) ? t('lens.action.alreadySaved') : item.base_text}</span>
+                      <span lang={baseLangCode} dir="auto">{recapItem?.saved ? t('lens.action.saved') : recapItem?.alreadyPresent ? t('lens.action.alreadySaved') : item.base_text}</span>
                     </button>
                     <button
                       type="button"
                       className="lens-row-save-button"
-                      onClick={() => void saveLensItemsAccurately([item])}
-                      disabled={saveBusy || itemSavedInRecap(item, targetLanguage) || itemAlreadyPresent(item, targetLanguage)}
-                      aria-label={itemSavedInRecap(item, targetLanguage) || itemAlreadyPresent(item, targetLanguage) ? t('lens.action.alreadySaved') : t('lens.action.save')}
+                      onClick={() => {
+                        if (!recapItem) return
+                        setSaveNotice(null)
+                        void saveLensItemsAccurately([recapItem]).then((result) => publishSaveNotice(recapItem.language, result))
+                      }}
+                      disabled={saveBusy || itemResolved || !recapItem}
+                      aria-label={itemResolved ? t('lens.action.alreadySaved') : t('lens.action.save')}
                     >
-                      {itemSavedInRecap(item, targetLanguage) || itemAlreadyPresent(item, targetLanguage) ? <Check aria-hidden="true" /> : <Save aria-hidden="true" />}
+                      {itemResolved ? <Check aria-hidden="true" /> : <Save aria-hidden="true" />}
                     </button>
                   </div>
-                ))}
+                })}
                 <Button type="button" size="sm" variant="secondary" onClick={bulkSaveCurrentItems} disabled={saveBusy || currentUnsavedCount === 0}>
                   {saveBusy ? t('common.loading') : t('lens.action.saveAll', { count: currentUnsavedCount })}
                 </Button>
@@ -1035,7 +1092,9 @@ export default function Lens() {
             {saveNotice ? (
               <div className="lens-save-confirmation">
                 <span>{saveNoticeText}</span>
-                <Link to={`/deck/${saveNotice.deckId}`}>{t('lens.save.openDeck')}</Link>
+                {saveNotice.decks[0] ? (
+                  <Link to={`/deck/${saveNotice.decks[0].deckId}`}>{t('lens.save.openDeck')}</Link>
+                ) : null}
               </div>
             ) : null}
 
@@ -1081,7 +1140,7 @@ export default function Lens() {
                 {recapItems.map((item) => (
                   <div key={item.id} className="lens-recap-row">
                     <span lang={getLanguageCode(item.language) || undefined} dir="auto">{item.target_text}</span>
-                    <span lang={baseLangCode} dir="auto">{item.saved ? t('lens.recap.saved') : item.alreadyPresent ? t('lens.recap.alreadyPresent') : item.base_text}</span>
+                    <span lang={getLanguageCode(item.baseLanguage) || undefined} dir="auto">{item.saved ? t('lens.recap.saved') : item.alreadyPresent ? t('lens.recap.alreadyPresent') : item.base_text}</span>
                     {item.saved ? (
                       <span className="lens-recap-discard" aria-hidden="true" />
                     ) : (
@@ -1100,7 +1159,11 @@ export default function Lens() {
               {saveNotice ? (
                 <div className="lens-save-confirmation">
                   <span>{recapSaveNoticeText}</span>
-                  <Link to={`/deck/${saveNotice.deckId}`}>{t('lens.save.openDeck')}</Link>
+                  {saveNotice.decks.map((deck) => (
+                    <Link key={`${deck.deckId}-${deck.language}`} to={`/deck/${deck.deckId}`}>
+                      {t('lens.save.openDeck')} · {t(`langName.${deck.language}`)}
+                    </Link>
+                  ))}
                 </div>
               ) : null}
               {saveError ? <p className="lens-save-error">{t('lens.save.failed')}</p> : null}

@@ -10,11 +10,17 @@
 
 import { createAnalyticsAdminClient, eraseAnalyticsPerson } from './_shared/analytics'
 import { errorResponse, jsonResponse } from './_shared/http'
+import { cleanupAbandonedLiveReservations } from './_shared/liveSessionReservations'
+import { assertRequestActive, withRequestDeadline } from './_shared/requestDeadline'
 
 const SWEEP_BATCH_LIMIT = 100
 const REQUEUE_AGE_MS = 24 * 60 * 60 * 1000
 
 export async function GET(req: Request): Promise<Response> {
+  return withRequestDeadline(req, handleGet)
+}
+
+async function handleGet(req: Request): Promise<Response> {
   // Vercel sends `Authorization: Bearer ${CRON_SECRET}` when the env is set.
   // Fail closed without it: an unset secret would otherwise turn this into a
   // public trigger for privileged PostHog deletion calls (audit 2026-09-03).
@@ -24,6 +30,18 @@ export async function GET(req: Request): Promise<Response> {
   }
   if (req.headers.get('authorization') !== `Bearer ${cronSecret}`) {
     return errorResponse(req, 401, 'Unauthorized')
+  }
+
+  // Share the existing authenticated daily maintenance schedule. Reconnects
+  // recover immediately; abandoned credential-free blocks are also refunded
+  // when the learner never comes back. SQL settlement is idempotent.
+  let liveRefunded = 0
+  let liveCleanupFailed = false
+  try {
+    liveRefunded = await cleanupAbandonedLiveReservations()
+  } catch {
+    liveCleanupFailed = true
+    console.error('[maintenance] Live reservation cleanup failed')
   }
 
   const admin = createAnalyticsAdminClient()
@@ -46,6 +64,7 @@ export async function GET(req: Request): Promise<Response> {
   const rows = (data ?? []) as Array<{ user_uuid: string }>
   let erased = 0
   for (const row of rows) {
+    assertRequestActive()
     const gone = await eraseAnalyticsPerson(row.user_uuid)
     if (!gone) continue
     const { error: deleteError } = await admin
@@ -59,5 +78,5 @@ export async function GET(req: Request): Promise<Response> {
     erased += 1
   }
 
-  return jsonResponse(req, { due: rows.length, erased })
+  return jsonResponse(req, { due: rows.length, erased, live_refunded: liveRefunded, live_cleanup_failed: liveCleanupFailed }, liveCleanupFailed ? 503 : 200)
 }

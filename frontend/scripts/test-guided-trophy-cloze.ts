@@ -6,7 +6,7 @@
 
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import { guidedAnswerMatches } from '../src/data/guidedLessons.ts'
+import { guidedAnswerMatches, loadAllGuidedLessons } from '../src/data/guidedLessons.ts'
 import {
   fetchTrophySongCanonical,
   TrophySongNotAvailableError,
@@ -19,6 +19,8 @@ import {
   writeGuidedTrophyClozeRecord,
   type GuidedTrophyClozeRecord,
 } from '../src/lib/guidedTrophy.ts'
+
+await loadAllGuidedLessons()
 
 let failures = 0
 let passes = 0

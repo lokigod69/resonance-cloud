@@ -5,12 +5,13 @@
  */
 
 import { useEffect, useRef } from 'react'
-import { getCardThumbUrl } from '@/lib/imageUrls'
+import { getCardPreviewUrl } from '@/lib/imageUrls'
 
 type OrbDockWord = {
   id: string
   word: string
   thumbnail_url: string | null
+  card_thumbnail_url?: string | null
 }
 
 interface OrbDockProps {
@@ -45,8 +46,8 @@ export default function OrbDock({ words, currentIndex, onSelect }: OrbDockProps)
             onClick={() => onSelect(index)}
             title={word.word}
           >
-            {word.thumbnail_url ? (
-              <img src={getCardThumbUrl(word.thumbnail_url) ?? undefined} alt={word.word} />
+            {word.card_thumbnail_url || word.thumbnail_url ? (
+              <img src={getCardPreviewUrl(word.card_thumbnail_url, word.thumbnail_url) ?? undefined} alt={word.word} />
             ) : (
               <div
                 style={{

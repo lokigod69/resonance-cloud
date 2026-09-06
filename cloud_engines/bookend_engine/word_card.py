@@ -7,6 +7,8 @@ from typing import Optional
 
 from PIL import Image, ImageDraw, ImageFont
 
+from .subprocess_limits import ENCODE_TIMEOUT_SECONDS
+
 logger = logging.getLogger(__name__)
 
 
@@ -334,7 +336,9 @@ def generate_word_card_segment(
         output_path,
     ])
 
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, timeout=ENCODE_TIMEOUT_SECONDS,
+    )
     if result.returncode != 0:
         raise RuntimeError(
             f"FFMPEG word card segment failed: {result.stderr[-500:]}"

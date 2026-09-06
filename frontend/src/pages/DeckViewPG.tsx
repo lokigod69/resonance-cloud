@@ -54,7 +54,7 @@ import { getOrCreateShareLink } from '@/lib/shareWord'
 import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
 import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
 import { getDeckLanguageLabel } from '@/lib/i18nDisplay'
-import { getCardFullUrl, getCardThumbUrl } from '@/lib/imageUrls'
+import { getCardFullUrl, getCardPreviewUrl } from '@/lib/imageUrls'
 import { deriveWordSource } from '@/lib/wordSource'
 
 type Deck = {
@@ -90,6 +90,7 @@ type Word = {
   status: string
   video_url: string | null
   thumbnail_url: string | null
+  card_thumbnail_url: string | null
   tts_audio_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
@@ -753,7 +754,7 @@ export default function DeckViewPG() {
                       />
                     ) : word.thumbnail_url ? (
                       <img
-                        src={isCardDeck ? getCardThumbUrl(word.thumbnail_url) ?? undefined : word.thumbnail_url}
+                        src={isCardDeck ? getCardPreviewUrl(word.card_thumbnail_url, word.thumbnail_url) ?? undefined : word.thumbnail_url}
                         alt={word.word}
                         className={`w-full h-full ${isCardDeck ? 'object-contain bg-black/40' : 'object-cover'}`}
                       />

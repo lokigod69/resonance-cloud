@@ -17,18 +17,70 @@ import time
 from typing import Any
 
 from src.services.events import write_event_row
+from src.path_safety import (
+    UnsafePathComponentError,
+    validate_word_slug,
+    validate_workspace_component,
+)
+from src.workspace import get_word_dir
 
 from . import retry, state
 
 log = logging.getLogger(__name__)
 MAX_ERROR_MESSAGE_CHARS = 500
 DEFAULT_CARD_IMAGE_RENDER_TIMEOUT_SECONDS = 360.0
+CARD_THUMBNAIL_SIZE = (640, 360)
+CARD_THUMBNAIL_WEBP_QUALITY = 82
 
 
 def _card_image_storage_key(
     *, user_id: str, deck_id: str, word_slug: str, word_id: str
 ) -> str:
-    return f"{user_id}/{deck_id}/cards/{word_slug}_{word_id}.png"
+    safe_user_id = validate_workspace_component(user_id, label="user_id")
+    safe_deck_id = validate_workspace_component(deck_id, label="deck_id")
+    safe_word_id = validate_workspace_component(word_id, label="word_id")
+    safe_slug = validate_word_slug(word_slug)
+    return f"{safe_user_id}/{safe_deck_id}/cards/{safe_slug}_{safe_word_id}.png"
+
+
+def _card_thumbnail_storage_key(
+    *, user_id: str, deck_id: str, word_slug: str, word_id: str
+) -> str:
+    safe_user_id = validate_workspace_component(user_id, label="user_id")
+    safe_deck_id = validate_workspace_component(deck_id, label="deck_id")
+    safe_word_id = validate_workspace_component(word_id, label="word_id")
+    safe_slug = validate_word_slug(word_slug)
+    return f"{safe_user_id}/{safe_deck_id}/cards/{safe_slug}_{safe_word_id}.thumb.webp"
+
+
+def _create_card_thumbnail(image_path: Path) -> Path:
+    """Create the small deck-grid derivative while retaining the source image."""
+    from PIL import Image, ImageOps
+
+    thumbnail_path = image_path.with_name(f"{image_path.stem}.thumb.webp")
+    try:
+        with Image.open(image_path) as source:
+            with source.convert("RGB") as rgb_source:
+                thumbnail = ImageOps.fit(
+                    rgb_source,
+                    CARD_THUMBNAIL_SIZE,
+                    method=Image.Resampling.LANCZOS,
+                )
+            try:
+                thumbnail.save(
+                    thumbnail_path,
+                    format="WEBP",
+                    quality=CARD_THUMBNAIL_WEBP_QUALITY,
+                    method=4,
+                )
+            finally:
+                thumbnail.close()
+    except Exception:
+        try:
+            thumbnail_path.unlink(missing_ok=True)
+        finally:
+            raise
+    return thumbnail_path
 
 
 def _bounded_error_message(step: str, error: BaseException | str) -> str:
@@ -138,6 +190,7 @@ class CardWorker:
                 self.sb,
                 word_id=word_id,
                 user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
                 failed_stage="pending_image",
                 error_message=error_message,
             )
@@ -190,13 +243,28 @@ class CardWorker:
 
         from src.manifest import read_manifest
         from src.settings import load_defaults
-        from src.storage import get_job_workspace_path
+        try:
+            from src.storage import get_job_workspace_path
 
-        workspace_path = get_job_workspace_path(
-            user_id=fresh["user_id"],
-            deck_id=fresh["deck_id"],
-        )
-        word_dir = workspace_path / word_slug
+            workspace_path = get_job_workspace_path(
+                user_id=fresh["user_id"],
+                deck_id=fresh["deck_id"],
+            )
+            word_dir = get_word_dir(workspace_path, word_slug)
+        except UnsafePathComponentError as exc:
+            error_message = _bounded_error_message("bootstrap", exc)
+            log.error("card_worker: unsafe workspace path word=%s: %s", word_id, exc)
+            await retry.finalize_failure(
+                self.sb,
+                word_id=word_id,
+                user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
+                failed_stage="pending_image",
+                error_message=error_message,
+            )
+            await self._refresh_deck_status(fresh.get("deck_id"))
+            state.clear_log_context()
+            return
         try:
             manifest = read_manifest(word_dir)
         except Exception as e:
@@ -209,6 +277,7 @@ class CardWorker:
                 self.sb,
                 word_id=word_id,
                 user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
                 failed_stage="pending_image",
                 error_message=error_message,
             )
@@ -268,6 +337,7 @@ class CardWorker:
                 self.sb,
                 word_id=word_id,
                 user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
                 failed_stage="pending_image",
                 error_message=error_message,
             )
@@ -284,6 +354,7 @@ class CardWorker:
                 self.sb,
                 word_id=word_id,
                 user_id=fresh["user_id"],
+                expected_operation_id=fresh.get("active_credit_operation_id"),
                 failed_stage="pending_image",
                 error_message=error_message,
             )
@@ -559,7 +630,19 @@ class CardWorker:
         if not public_url:
             return False, upload_error
 
-        update_data: dict[str, Any] = {"thumbnail_url": public_url}
+        card_thumbnail_url = await self._upload_card_thumbnail(
+            image_path=Path(result.image_path),
+            word=word,
+            user_id=str(word["user_id"]),
+            deck_id=str(word["deck_id"]),
+            word_slug=word_slug,
+        )
+        update_data: dict[str, Any] = {
+            "thumbnail_url": public_url,
+            # Clear an older derivative if regeneration could not replace it;
+            # clients then fall back to this run's full image.
+            "card_thumbnail_url": card_thumbnail_url,
+        }
         tts_started = time.monotonic()
         try:
             from src.settings import resolve_settings
@@ -786,6 +869,93 @@ class CardWorker:
             },
         )
         return public_url, None
+
+    async def _upload_card_thumbnail(
+        self,
+        *,
+        image_path: Path,
+        word: dict[str, Any],
+        user_id: str,
+        deck_id: str,
+        word_slug: str,
+    ) -> str | None:
+        """Create and upload a 640x360 WebP derivative; failure is non-fatal."""
+        storage_key = _card_thumbnail_storage_key(
+            user_id=user_id,
+            deck_id=deck_id,
+            word_slug=word_slug,
+            word_id=str(word["id"]),
+        )
+        started = time.monotonic()
+        thumbnail_path: Path | None = None
+
+        try:
+            thumbnail_path = await asyncio.to_thread(_create_card_thumbnail, image_path)
+
+            def _upload() -> str:
+                with open(thumbnail_path, "rb") as file:
+                    self.sb.storage.from_("videos").upload(
+                        storage_key,
+                        file.read(),
+                        file_options={"content-type": "image/webp", "upsert": "true"},
+                    )
+                return self.sb.storage.from_("videos").get_public_url(storage_key)
+
+            public_url = await asyncio.to_thread(_upload)
+        except Exception as exc:
+            write_event_row(
+                stage="pending_image",
+                sub_step="card_thumbnail_upload",
+                status="failed",
+                event_source="orchestrator",
+                word_id=word.get("id"),
+                deck_id=word.get("deck_id"),
+                user_id=word.get("user_id"),
+                job_id=word.get("generation_job_id"),
+                attempt=word.get("stage_attempts"),
+                error_message=_bounded_error_message("card thumbnail", exc),
+                error_type=type(exc).__name__,
+                latency_ms=int((time.monotonic() - started) * 1000),
+                metadata={"storage_key": storage_key, "bucket": "videos"},
+            )
+            log.warning(
+                "card_worker: card thumbnail creation/upload failed word=%s: %s",
+                word.get("id"),
+                exc,
+            )
+            return None
+        finally:
+            if thumbnail_path is not None:
+                try:
+                    thumbnail_path.unlink(missing_ok=True)
+                except OSError:
+                    log.warning(
+                        "card_worker: could not remove local thumbnail %s",
+                        thumbnail_path,
+                        exc_info=True,
+                    )
+
+        write_event_row(
+            stage="pending_image",
+            sub_step="card_thumbnail_upload",
+            status="success",
+            event_source="orchestrator",
+            word_id=word.get("id"),
+            deck_id=word.get("deck_id"),
+            user_id=word.get("user_id"),
+            job_id=word.get("generation_job_id"),
+            attempt=word.get("stage_attempts"),
+            latency_ms=int((time.monotonic() - started) * 1000),
+            metadata={
+                "storage_key": storage_key,
+                "bucket": "videos",
+                "public_url": public_url,
+                "width": CARD_THUMBNAIL_SIZE[0],
+                "height": CARD_THUMBNAIL_SIZE[1],
+                "format": "webp",
+            },
+        )
+        return public_url
 
     async def _refresh_deck_status(self, deck_id: str | None) -> None:
         if not deck_id:

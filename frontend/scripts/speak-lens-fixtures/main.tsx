@@ -36,7 +36,15 @@ async function main() {
   if (!fixture) { w.__done = true; w.__verdict = { id, status: 'fail', checks: [] }; return }
   localStorage.clear()
   sessionStorage.clear()
-  Object.assign(w, { __scenario: fixture.scenario, __shotRequest: null, __keyRequest: null, __replayCalls: 0 })
+  Object.assign(w, {
+    __scenario: fixture.scenario,
+    __shotRequest: null,
+    __keyRequest: null,
+    __replayCalls: 0,
+    __lensHintRequests: [],
+    __lensHintResponses: [],
+    __lensSaveCalls: [],
+  })
   for (const [key, value] of Object.entries(fixture.localStorageSeed ?? {})) localStorage.setItem(key, value)
   installBrowserFakes()
   const reactRoot = createRoot(document.getElementById('root')!)

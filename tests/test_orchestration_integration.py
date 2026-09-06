@@ -24,20 +24,20 @@ if str(ORCH_ROOT) not in sys.path:
 from tests.fake_supabase import FakeSupabase  # noqa: E402
 
 
-def _install_stubs():
+def _install_stubs(monkeypatch):
     """Monkey-patch heavy src imports used by the upstream worker."""
     pipeline_mod = types.ModuleType("src.pipeline")
     async def _run_stage(*_a, **_kw):
         return None
     pipeline_mod.run_stage = _run_stage
     pipeline_mod.STAGE_ORDER = ["images", "concept", "song", "video", "assembly", "bookend"]
-    sys.modules["src.pipeline"] = pipeline_mod
+    monkeypatch.setitem(sys.modules, "src.pipeline", pipeline_mod)
 
     helpers_mod = types.ModuleType("src.services.stage_helpers")
     helpers_mod.get_incomplete_stages = lambda *_a, **_kw: [
         "images", "concept", "song", "video", "assembly", "bookend",
     ]
-    sys.modules["src.services.stage_helpers"] = helpers_mod
+    monkeypatch.setitem(sys.modules, "src.services.stage_helpers", helpers_mod)
 
     manifest_mod = types.ModuleType("src.manifest")
     class _Sel:
@@ -64,7 +64,7 @@ def _install_stubs():
     manifest_mod.write_manifest = lambda *_a, **_kw: None
     manifest_mod.add_lineage = lambda *_a, **_kw: None
     manifest_mod.now_iso = lambda: "2026-04-18T00:00:00Z"
-    sys.modules["src.manifest"] = manifest_mod
+    monkeypatch.setitem(sys.modules, "src.manifest", manifest_mod)
 
     settings_mod = types.ModuleType("src.settings")
     settings_mod.load_defaults = lambda *_a, **_kw: {
@@ -75,24 +75,24 @@ def _install_stubs():
     settings_mod.DEFAULT_SETTINGS = {}
     settings_mod.resolve_settings = lambda *_a, **_kw: {}
     settings_mod.resolve_random_art_style = lambda s: (s, None)
-    sys.modules["src.settings"] = settings_mod
+    monkeypatch.setitem(sys.modules, "src.settings", settings_mod)
 
     suno_mod = types.ModuleType("src.suno")
     async def _submit(*_a, **_kw): return "fake-task-id"
     suno_mod.submit_song = _submit
     suno_mod.read_concept_data = lambda *_a, **_kw: {}
-    sys.modules["src.suno"] = suno_mod
+    monkeypatch.setitem(sys.modules, "src.suno", suno_mod)
 
     storage_mod = types.ModuleType("src.storage")
     storage_mod.STORAGE_MODE = "local"
     storage_mod.create_job_workspace = lambda user_id, deck_id: Path("/tmp") / deck_id
     storage_mod.get_job_workspace_path = lambda user_id, deck_id: Path("/tmp") / deck_id
     storage_mod.get_workspace_root = lambda: Path("/tmp")
-    sys.modules["src.storage"] = storage_mod
+    monkeypatch.setitem(sys.modules, "src.storage", storage_mod)
 
 
-def test_two_concurrent_workers_drain_three_words_with_counter_correctness():
-    _install_stubs()
+def test_two_concurrent_workers_drain_three_words_with_counter_correctness(monkeypatch):
+    _install_stubs(monkeypatch)
     from src.orchestration.upstream_worker import UpstreamWorker
 
     sb = FakeSupabase()

@@ -23,13 +23,15 @@ export default function ResetPassword() {
   useEffect(() => {
     let active = true
 
-    void supabase.auth.getSession().then(({ data: { session } }) => {
+    // An ordinary authenticated session must never authorize a password reset.
+    // Only Supabase's explicit recovery event grants this page access.
+    void supabase.auth.getSession().then(() => {
       if (!active) return
-      setHasRecoverySession(Boolean(session))
       setCheckingRecovery(false)
     })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (!active) return
       if (event === 'PASSWORD_RECOVERY') {
         setHasRecoverySession(Boolean(session))
         setCheckingRecovery(false)
@@ -123,11 +125,13 @@ export default function ResetPassword() {
               />
             </div>
 
-            {error && (
-              <p className="text-sm text-destructive-foreground">{error}</p>
+            {(error || (!checkingRecovery && !hasRecoverySession)) && (
+              <p className="text-sm text-destructive-foreground">
+                {error || t('auth.resetPasswordInvalid')}
+              </p>
             )}
 
-            <Button type="submit" variant="glass-vermillion" className="w-full" disabled={loading || checkingRecovery}>
+            <Button type="submit" variant="glass-vermillion" className="w-full" disabled={loading || checkingRecovery || !hasRecoverySession}>
               {loading ? t('auth.pleaseWait') : t('auth.updatePassword')}
             </Button>
           </form>

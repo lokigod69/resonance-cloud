@@ -13,8 +13,9 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import os
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Optional
 
@@ -26,6 +27,45 @@ log = logging.getLogger(__name__)
 
 
 POLL_INTERVAL = 5.0  # §6.1
+
+
+def _positive_env_number(name: str, default: float) -> float:
+    try:
+        value = float(os.getenv(name, str(default)))
+    except (TypeError, ValueError):
+        return default
+    return value if value > 0 else default
+
+
+BOOTSTRAP_MAX_ATTEMPTS = max(
+    1, int(_positive_env_number("BOOTSTRAP_MAX_ATTEMPTS", 5)),
+)
+BOOTSTRAP_RETRY_BASE_SECONDS = _positive_env_number(
+    "BOOTSTRAP_RETRY_BASE_SECONDS", 30.0,
+)
+BOOTSTRAP_RETRY_MAX_SECONDS = max(
+    BOOTSTRAP_RETRY_BASE_SECONDS,
+    _positive_env_number("BOOTSTRAP_RETRY_MAX_SECONDS", 900.0),
+)
+
+
+def _retry_due(value: Any, *, now: datetime | None = None) -> bool:
+    if not value:
+        return True
+    try:
+        retry_at = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return True
+    if retry_at.tzinfo is None:
+        retry_at = retry_at.replace(tzinfo=timezone.utc)
+    return retry_at <= (now or datetime.now(timezone.utc))
+
+
+def _bootstrap_retry_delay(attempt: int) -> float:
+    return min(
+        BOOTSTRAP_RETRY_MAX_SECONDS,
+        BOOTSTRAP_RETRY_BASE_SECONDS * (2 ** min(20, max(0, attempt - 1))),
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -286,6 +326,8 @@ class Feeder:
 
         jobs = list(getattr(resp, "data", None) or [])
         for job in jobs:
+            if not _retry_due(job.get("bootstrap_retry_after")):
+                continue
             job_id = job["id"]
             deck_id = job.get("deck_id")
             if await self._deck_has_other_processing(deck_id, job_id):
@@ -299,18 +341,33 @@ class Feeder:
     async def _try_start_job(self, job: dict[str, Any]) -> None:
         job_id = job["id"]
         deck_id = job.get("deck_id")
+        previous_attempts = int(job.get("bootstrap_attempt_count") or 0)
+        next_attempt = previous_attempts + 1
+
+        if next_attempt > BOOTSTRAP_MAX_ATTEMPTS:
+            await self._terminalize_bootstrap_job(
+                job_id,
+                error=job.get("error_message") or "bootstrap retry budget exhausted",
+                expected_status="approved",
+            )
+            return
 
         def _claim():
-            return (
+            query = (
                 self.sb.table("generation_jobs")
                   .update({
                       "status": "processing",
                       "started_at": datetime.now(timezone.utc).isoformat(),
+                      "bootstrap_attempt_count": next_attempt,
+                      "bootstrap_retry_after": None,
+                      "error_message": None,
                   })
                   .eq("id", job_id)
                   .eq("status", "approved")
-                  .execute()
             )
+            if "bootstrap_attempt_count" in job:
+                query = query.eq("bootstrap_attempt_count", previous_attempts)
+            return query.execute()
         try:
             resp = await asyncio.to_thread(_claim)
         except Exception as e:
@@ -327,7 +384,9 @@ class Feeder:
                 deck_id, job_id,
             )
             await self._revert_to_approved(
-                job_id, error="deck already has a processing job",
+                job_id,
+                error="deck already has a processing job",
+                attempt_count=previous_attempts,
             )
             return
 
@@ -339,10 +398,21 @@ class Feeder:
             )
         except Exception as e:
             log.error(
-                "feeder/source1: bootstrap failed for job=%s: %s",
-                job_id, e, exc_info=True,
+                "feeder/source1: bootstrap attempt %d/%d failed for job=%s: %s",
+                next_attempt, BOOTSTRAP_MAX_ATTEMPTS, job_id, e, exc_info=True,
             )
-            await self._revert_to_approved(job_id, error=str(e))
+            await self._rollback_bootstrap_words(job_id, deck_id=deck_id)
+            if next_attempt >= BOOTSTRAP_MAX_ATTEMPTS:
+                await self._terminalize_bootstrap_job(
+                    job_id, error=str(e), expected_status="processing",
+                )
+            else:
+                retry_after = datetime.now(timezone.utc) + timedelta(
+                    seconds=_bootstrap_retry_delay(next_attempt),
+                )
+                await self._revert_to_approved(
+                    job_id, error=str(e), retry_after=retry_after,
+                )
 
     async def _deck_has_other_processing(
         self, deck_id: Optional[str], self_id: str,
@@ -370,14 +440,27 @@ class Feeder:
             )
             return False
 
-    async def _revert_to_approved(self, job_id: str, *, error: str) -> None:
+    async def _revert_to_approved(
+        self,
+        job_id: str,
+        *,
+        error: str,
+        retry_after: datetime | None = None,
+        attempt_count: int | None = None,
+    ) -> None:
         def _do():
+            updates: dict[str, Any] = {
+                "status": "approved",
+                "error_message": (error or "")[:500],
+                "bootstrap_retry_after": (
+                    retry_after.isoformat() if retry_after else None
+                ),
+            }
+            if attempt_count is not None:
+                updates["bootstrap_attempt_count"] = attempt_count
             return (
                 self.sb.table("generation_jobs")
-                  .update({
-                      "status": "approved",
-                      "error_message": (error or "")[:500],
-                  })
+                  .update(updates)
                   .eq("id", job_id)
                   .eq("status", "processing")
                   .execute()
@@ -386,6 +469,106 @@ class Feeder:
             await asyncio.to_thread(_do)
         except Exception as e:
             log.error("feeder: revert-to-approved failed %s: %s", job_id, e)
+
+    async def _rollback_bootstrap_words(
+        self,
+        job_id: str,
+        *,
+        deck_id: Optional[str],
+    ) -> None:
+        """Return all words claimed by a failed bootstrap to pending."""
+        def _read_owned():
+            return (
+                self.sb.table("words")
+                  .select("id, current_stage")
+                  .eq("generation_job_id", job_id)
+                  .execute()
+            )
+
+        try:
+            resp = await asyncio.to_thread(_read_owned)
+            owned_rows = list(getattr(resp, "data", None) or [])
+            rows = [
+                row for row in owned_rows
+                if row.get("current_stage") == "enrichment"
+            ]
+        except Exception as exc:
+            log.warning(
+                "feeder/source1: bootstrap rollback read failed job=%s: %s",
+                job_id, exc,
+            )
+            return
+
+        if not owned_rows and deck_id:
+            def _read_legacy():
+                return (
+                    self.sb.table("words")
+                      .select("id")
+                      .eq("deck_id", deck_id)
+                      .is_("generation_job_id", "null")
+                      .eq("current_stage", "enrichment")
+                      .execute()
+                )
+
+            try:
+                resp = await asyncio.to_thread(_read_legacy)
+                rows = list(getattr(resp, "data", None) or [])
+            except Exception as exc:
+                log.warning(
+                    "feeder/source1: legacy rollback read failed job=%s: %s",
+                    job_id, exc,
+                )
+                return
+
+        rolled_back = 0
+        for row in rows:
+            if await state.transition_stage(
+                self.sb,
+                row["id"],
+                new_stage="pending",
+                allowed_prior=["enrichment"],
+                increment_attempts=False,
+            ):
+                rolled_back += 1
+        log.info(
+            "feeder/source1: rolled back %d enrichment word(s) for job=%s",
+            rolled_back, job_id,
+        )
+
+    async def _terminalize_bootstrap_job(
+        self,
+        job_id: str,
+        *,
+        error: str,
+        expected_status: str,
+    ) -> None:
+        """Stop a permanently failing bootstrap before another paid call."""
+        def _do():
+            return (
+                self.sb.table("generation_jobs")
+                  .update({
+                      "status": "failed",
+                      "completed_at": datetime.now(timezone.utc).isoformat(),
+                      "bootstrap_retry_after": None,
+                      "error_message": (error or "bootstrap failed")[:500],
+                  })
+                  .eq("id", job_id)
+                  .eq("status", expected_status)
+                  .execute()
+            )
+
+        try:
+            resp = await asyncio.to_thread(_do)
+            if getattr(resp, "data", None) or []:
+                log.error(
+                    "feeder/source1: job=%s bootstrap exhausted after %d attempts",
+                    job_id, BOOTSTRAP_MAX_ATTEMPTS,
+                )
+        except Exception as exc:
+            log.error(
+                "feeder/source1: terminal bootstrap update failed job=%s: %s",
+                job_id, exc,
+            )
 
     # -------------------------------------------------------------------
     # SOURCE 2 — retries (lowest priority)

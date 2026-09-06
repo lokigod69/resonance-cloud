@@ -9,6 +9,7 @@ import httpx
 
 from .config import get_api_key
 from .models import TtsResult
+from .subprocess_limits import ENCODE_TIMEOUT_SECONDS, PROBE_TIMEOUT_SECONDS
 from src.cost_logger import estimate_elevenlabs_cost, log_cost
 from src.services.events import logged_api_call
 
@@ -233,7 +234,12 @@ def normalize_tts_audio(tts_path: str, target_lufs: float = -14.0) -> str:
         "-af", f"loudnorm=I={target_lufs}:TP=-1.5:LRA=11:print_format=json",
         "-f", "null", "-",
     ]
-    result = subprocess.run(measure_cmd, capture_output=True, text=True)
+    result = subprocess.run(
+        measure_cmd,
+        capture_output=True,
+        text=True,
+        timeout=ENCODE_TIMEOUT_SECONDS,
+    )
 
     # Parse measured values from stderr (ffmpeg outputs loudnorm stats there)
     stderr = result.stderr
@@ -250,6 +256,7 @@ def normalize_tts_audio(tts_path: str, target_lufs: float = -14.0) -> str:
             ],
             capture_output=True,
             check=True,
+            timeout=ENCODE_TIMEOUT_SECONDS,
         )
         return normalized_path
 
@@ -271,7 +278,12 @@ def normalize_tts_audio(tts_path: str, target_lufs: float = -14.0) -> str:
         ),
         normalized_path,
     ]
-    result = subprocess.run(normalize_cmd, capture_output=True, text=True)
+    result = subprocess.run(
+        normalize_cmd,
+        capture_output=True,
+        text=True,
+        timeout=ENCODE_TIMEOUT_SECONDS,
+    )
     if result.returncode != 0:
         raise RuntimeError(f"TTS LUFS normalization failed: {result.stderr[-300:]}")
 
@@ -288,6 +300,7 @@ def probe_audio_duration(audio_path: str) -> float:
         ],
         capture_output=True,
         text=True,
+        timeout=PROBE_TIMEOUT_SECONDS,
     )
 
     if result.returncode != 0:

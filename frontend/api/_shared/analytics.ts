@@ -14,6 +14,7 @@
 
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { createTelemetryFetch } from './telemetryFetch'
+import { assertRequestActive, fetchWithRequestDeadline } from './requestDeadline'
 import {
   PostHogSink,
   StandardEventSchema,
@@ -203,22 +204,21 @@ export async function eraseAnalyticsPerson(userId: string): Promise<boolean> {
 
     // Deadlines: the erasure runs inside delete-account and the nightly sweep;
     // a stalled PostHog call must never pin either function.
-    const lookup = await fetch(`${base}?distinct_id=${encodeURIComponent(userId)}`, {
+    const lookup = await fetchWithRequestDeadline(`${base}?distinct_id=${encodeURIComponent(userId)}`, {
       headers,
-      signal: AbortSignal.timeout(10_000),
-    })
+    }, 10_000)
     if (!lookup.ok) return false
     const body = (await lookup.json()) as { results?: Array<{ id?: number | string | null }> }
     const persons = body.results ?? []
     if (persons.length === 0) return true
 
     for (const person of persons) {
+      assertRequestActive()
       if (person.id === undefined || person.id === null) return false
-      const del = await fetch(`${base}${person.id}/?delete_events=true`, {
+      const del = await fetchWithRequestDeadline(`${base}${person.id}/?delete_events=true`, {
         method: 'DELETE',
         headers,
-        signal: AbortSignal.timeout(10_000),
-      })
+      }, 10_000)
       if (!del.ok && del.status !== 404) return false
     }
     return true

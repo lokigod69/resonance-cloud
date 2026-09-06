@@ -13,6 +13,13 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from .path_safety import (
+    UnsafePathComponentError,
+    confined_child_path,
+    validate_word_slug,
+    validate_workspace_component,
+)
+
 load_dotenv()
 
 logger = logging.getLogger(__name__)
@@ -20,7 +27,6 @@ logger = logging.getLogger(__name__)
 STORAGE_MODE = os.getenv("STORAGE_MODE", "local")
 
 logger.info("Storage mode: %s", STORAGE_MODE)
-
 
 def get_workspace_root() -> Path:
     """
@@ -59,20 +65,39 @@ def get_job_workspace_path(user_id: str, deck_id: str) -> Path:
     already exist. If it doesn't exist, the caller can detect that
     and handle accordingly (e.g., skip retry, re-run from scratch).
     """
-    workspace_name = f"cloud_{user_id}_{deck_id}"
-    return get_workspace_root() / workspace_name
+    safe_user_id = validate_workspace_component(user_id, label="user_id")
+    safe_deck_id = validate_workspace_component(deck_id, label="deck_id")
+    workspace_name = f"cloud_{safe_user_id}_{safe_deck_id}"
+    return confined_child_path(get_workspace_root(), workspace_name)
 
 
-def cleanup_job_workspace(user_id: str, deck_id: str) -> None:
+def cleanup_job_workspace(
+    user_id: str,
+    deck_id: str,
+    *,
+    terminal_ownership_confirmed: bool = False,
+) -> bool:
     """
     Delete workspace after ALL processing is confirmed complete.
     Only in cloud mode. Local mode preserves workspaces.
 
-    WARNING: Do NOT call until Suno bake-in is confirmed complete.
-    Deferred suno_retry jobs depend on the workspace existing.
+    The caller must hold an admission/cleanup lease spanning its terminal DB
+    check and this deletion. A read-then-delete check is insufficient because
+    workspaces are deck-shared and a retry can be admitted between those steps.
     """
-    if STORAGE_MODE == "cloud":
-        workspace = get_job_workspace_path(user_id=user_id, deck_id=deck_id)
-        if workspace.exists():
-            shutil.rmtree(workspace, ignore_errors=True)
-            logger.info("Cleaned up workspace: %s", workspace)
+    if STORAGE_MODE != "cloud":
+        return False
+    if not terminal_ownership_confirmed:
+        logger.warning(
+            "Refusing workspace cleanup without terminal ownership lease: user=%s deck=%s",
+            user_id, deck_id,
+        )
+        return False
+
+    workspace = get_job_workspace_path(user_id=user_id, deck_id=deck_id)
+    if not workspace.exists():
+        return False
+
+    shutil.rmtree(workspace)
+    logger.info("Cleaned up terminal workspace: %s", workspace)
+    return True
