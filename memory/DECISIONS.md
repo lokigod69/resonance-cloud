@@ -2,6 +2,13 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-09-07 — Speak/Lens refinements retain providers and teaching levels; verify real layout and separate live gates
+**Status:** active — owner-authorized release after scoped verification; details in notes/speak-lens.md.
+**Decision:** Keep the explicit Grok Live and async Groq → Mistral/Gemini models, existing eight-language beta, and approved visual direction. Compact shared prompts without weakening level-specific base/target mix or provider audio rules. Bound provider/body waits and optional telemetry, keep recent audio/correction payloads bounded, and preserve authoritative conversation state across reconnects. Use real Cosmos/layout/assets in browser fixtures; simulated camera/audio tests do not certify physical iPhone or live model quality. No paid batches, database migrations or billing-policy redesign in this pass.
+**Why:** Conflicting greeting/scenario instructions and stale async state caused more concrete problems than the number of prompt files. Model changes would need measured quality, latency and cost evidence. Root and independent reviews found real keyboard, modal, camera and language-switch failures; the final tests cover their behavior.
+**Deferred:** Stable Lens deck identity and per-row mixed-save receipts need an RPC/migration review. Live minting still spends a new 10-minute block before a possible socket failure; disclose it on reconnect until a reservation/refund design is agreed. Supabase gates/refunds are not all inside a hard handler deadline.
+**Historical clarification:** Lens is already in the six-tab navigation introduced by a1068fc9 (2026-07-11), superseding the July 6 home-tile-only placement. July 28 plan allowances supersede the early 30/day proposal. Do not revert current navigation from the older note.
+
 ## 2026-09-04 — Hero order lesson → recall → stream → speak; pt/it/pl recordings switched on; a paused stream freezes drift, never the ride
 **Status:** active — LOG 2026-09-04, uncommitted
 **Decision:** (1) When nothing is owed (no lesson, nothing due) and a word is on the water, the hero card recommends catching it ("New words are drifting in · Catch the nearest"); Speak follows. `stream` may upgrade an already committed speak/discover hero because the library lands asynchronously and all three are "nothing owed" heroes. (2) Portuguese, Italian and Polish thematic recordings (present in `static_tts_playback` since the batch, never wired) now play everywhere the voice-profile table is consulted — the Word Stream, Library imports, Surf. Russian/Japanese have no recordings and keep the browser voice. (3) Pausing the stream (sheet open) freezes stream time only; the rAF keeps sampling the wave clock so words behind the sheet ride the swell — "never fight the wave" applies to the stream too. (4) Kept words store an absolute thumbnail URL (the iOS bundle strips /curriculum). (5) No UTC-midnight timer in the stream: rollover is detected on wake-up, the same rule as the visit (§4).
@@ -141,7 +148,7 @@ Wrong turns are part of the memory.
 **Rejected:** “Add everything everywhere” single-pass language additions; optimistic wiring of Speak/guided/category lists ahead of their content.
 
 ## 2026-07-06 — Lens beta exposure, placement, and quota (owner answers, Phase 2A kickoff)
-**Status:** active — recorded in `FABLE_VISUAL_LENS_MASTER_PLAN.md` §Owner answers
+**Status:** ⚠️ placement superseded by six-tab navigation a1068fc9 (2026-07-11); quota superseded by the 2026-07-28 tier decision. Exposure remains on; see 2026-09-07 clarification above.
 **Decision:** `VISUAL_LENS_ENABLED` ships ON for the first TestFlight testers (Lens is visible from day one). Placement stays a dashboard/home tile — owner leans against giving Lens a bottom-nav slot; revisit only if dogfooding demands it (any nav change still needs explicit owner approval). Free quota starts at 30 scans/day ("at least 30 is okay at the beginning"); can be raised later, cost permits. Working name Lens proceeds; final copy sign-off remains open until the 2F gate.
 **Why:** Owner wants testers exercising the wow feature immediately, and prefers home-surface discovery over fighting the hard six-slot nav grid during beta.
 **Rejected:** Flag-off-for-beta (Fable's earlier fewer-visible-systems recommendation — owner overrode); immediate tab promotion.
@@ -335,3 +342,12 @@ Spec rule 8 amendment (both new A1 specs): adjective blanks allowed when the adj
 - **Declined A-13** (auth before body in guided-transcribe): the contract test encodes body-before-auth deliberately and Content-Length bounds the cost.
 - **Deferred to the owner, not silently chosen:** PKCE on web (breaks password-reset links opened on another device), signup credits before email confirmation, dropping `admin_pin`, Stripe dispute clawback, classic-skin deletion, LFS for `public/`.
 - **The guided corpus split (D-01) is the next hardening session, not a side edit** — 29 importers over a 66k-line data module; the guided test chain (G3) must be green before touching it.
+
+## 2026-09-06 — Home refinement decisions
+- Retain the approved D-02 First Light visual direction and every wave-rendering file. Improve placement, semantic controls and task flow within it.
+- Valid word/lang Generate links default to an explicit Standard picture-card review. Automatic paid generation is rejected: price and intent remain visible before submission. Rename/style/Premium are optional below the primary action.
+- The picture door continues creating a separate word-named picture deck; disclose New deck in the review. In-place enrichment of the stream card would need a different server contract and is deferred.
+- A ready stream can substitute for a slow guided mission after 800ms, and replace a temporary Preparing fallback. A stream commitment expires when no word is usable. Lesson/recall commitments otherwise stay stable.
+- Desktop lanes use viewport-relative spread while sampling the unchanged wave at the displayed X. Phone world-lane math stays fixed. Hidden collision controls cannot be Next candidates.
+- Both Home sheets share modal focus/inert/restore behavior and own Cosmos theme tokens in their body portals. The previous absence of a focus trap is superseded by this accessibility fix.
+- First-run stream access, queue ordering, paid ru/ja voices, pearls/filter remain explicit product choices. Remote hardening setup stays unverified until evidence exists; source changes alone do not prove production configuration.
