@@ -1,11 +1,11 @@
 # Current State
 Last updated: 2026-09-07
 
-## Active release verification
-- Base-languages-brand implementation passes: 12 UI/explanation bases,144 guided editions/664,032 fields,12×1,727 UI keys, nine ScriptLab packs, per-card meaning provenance. B Ribbon current selected under owner delegation; six transparentWebPs59,052B. Browser27/27 plus finalpolish4/4; full guided/tsc/API/build/lint/i18n/iOS/FirstLight checks pass. Scoped commit/push and live verification next. See notes/base-languages-brand-2026-09-07.md.
+## Latest release
+- Base-languages-brand LIVE main36355fe3 (266 files): 12 UI/explanation bases,144 guided editions/664,032 fields,12×1,727 UI keys, nine ScriptLab packs and card provenance. B Ribbon current art59,052B. Vercel dpl_9WiWZyfMS2SaDexZzoDj84W2RE1R Ready on lingwave.ai/www; Railway458cd5fe-138f-4bfa-9306-70179a97705d success. Production144 edition assets/six art files/13 API probes pass. Signed-in Today open/Resume and all12 profile options verified without changing account preferences. See notes/base-languages-brand-2026-09-07.md.
 - Additive130000/131000/132000/133000 applied/recorded;2,700 private coordinates/32,400 meanings, exact digest and all four rollback suites pass with0residue.132 corrects one Italian meaning.133 accepts exact regional audio code or its exact primary subtag;2,501 links pass exact phrase identity. One wrong English usage is privately archived/unlinked, recording preserved; playback12,550. Missing20260517010000 history repaired after exact schema comparison; no live reset.
 
-## Current release
+## Earlier releases still included
 - Today/guided is LIVE: main58ac56bf, Vercel dpl_5BgBSedstJdU1jLxZNCAXDQ6VR4T Ready on lingwave.ai/www; Railway a08ba88b-98d2-4eb7-a3fb-280e42a82ee2 success. Signed-in Cebuano course shows10lessons; direct opening and return-to-Resume verified. All13 API probes pass. New120000 migration/history and rollback integration verified with no residue. Details: notes/today-guided-2026-09-07.md.
 - Hardening is LIVE: main commits c0192206 + d16e0bd2. Vercel dpl_AR6RjhD5WPw9KZHNF1N8YCCEiPhF Ready on lingwave.ai/www; Railway a856e9c6-19d9-4e78-a290-0833a208fcdf success. Production Home/Speak/Lens/Today/guided assets and 13 expected API responses verified.
 - The first c0192206 production probe caught Speak ERR_REQUIRE_ESM. Restored previous working deployment, fixed API-local generated persona catalog in d16e0bd2, verified candidate, promoted and re-probed. Automatic domain assignment is back ON. Do not import src/ ESM directly from API CommonJS.
@@ -25,13 +25,13 @@ Last updated: 2026-09-07
 - Password reset requires PASSWORD_RECOVERY; local sign-out clears state even on network failure. Compatible dependency updates resolve all npm audit findings.
 
 ## Database/configuration verified
-- Applied14 migrations: prior sixSept3 and sevenSept7 hardening files, plusSept7 120000guided_phrase_keep. All exact date-prefixed versions recorded in Supabase history. No blanket db push or certification of older manual migration drift.
+- Applied18 migrations across current hardening/Today passes: prior14 plusSept7 130000/131000/132000/133000. All exact date-prefixed versions recorded; historical20260517010000 repaired only after proven schema equivalence. No blanket db push or certification of the full historical chain.
 - Removed direct INSERT grants/policies, installed ten indexes and privileged field/profile/admin guards. Lens/Live/credits/Stripe/recall/thumbnail rollback-only integration suites passed remotely. Exact500 import +500 append passed; no test-deck residue.106000 installs a missing pure language-normalization helper without historical backfill.
 - Production Vercel CRON_SECRET and API_QUOTA_REQUIRE_ENFORCED=true added; APP_URL explicitly https://lingwave.ai. Current daily cron enabled 03:30 UTC; unauthenticated trigger 401. Actual scheduled execution not observed.
 - Supabase email confirmation already ON; Secure password change enabled and saved/read back ON. CAPTCHA remains OFF pending client/provider integration. Sensitive existing Vercel values are withheld, not presumed empty.
 
 ## Evidence and limits
-- Today final: full guided chain, frontend/API tsc, build, scoped lint0warnings/errors, i18n1726EN/DE/FR, browser14/14with77checks, FirstLight32 and iOSshell pass. Production Today/shared corpus assets200/immutable;13 API smoke checks pass. No paid calls or physical-device claim.
+- Latest base/brand: full guided chain, frontend/API tsc, clean Vercel build, scoped lint,12×1,727 i18n, all664,032 edition fields, ScriptLab/base/lane tests, FirstLight32 and iOSshell pass. Browser27/27with153checks pluspolish4/4with23. All fourSQL rollback suites and production assets/API checks pass. Machine translation native review and actualiPhone remain outstanding; paid offline text generation was about$9, not an invoice reconciliation.
 - Frontend/API tsc, build, i18n1696/1696 EN/DE/FR, complete guided suite and20 focused scripts pass. Final deadline13, persona78, Lens38+27, Speak31. Full lint zero errors/two unchanged stub warnings. npm audit zero vulnerabilities.
 - Browser matrix20/20 with84 checks at320/390/1440 EN/DE/FR. Combined Python180 passed; fixed two tests that leaked a manifest stub across the suite. Physical iPhone, paid generation and live voice quality were not tested.
 - Supabase outstanding-invoice warning requires owner billing action. Owner deferred physical iPhone/TestFlight checks until later.

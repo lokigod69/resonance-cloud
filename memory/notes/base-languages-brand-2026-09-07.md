@@ -1,6 +1,6 @@
 # Twelve base languages and Lingwave practice art
 
-Updated 2026-09-07. Implementation verified; release verification is the final step.
+Updated 2026-09-07. Released and production-verified as main `36355fe3` (266 files). Vercel `dpl_9WiWZyfMS2SaDexZzoDj84W2RE1R` Ready on lingwave.ai/www; Railway `458cd5fe-138f-4bfa-9306-70179a97705d` success. Production entry `index-R2Kj5XoE.js`, all144 edition assets, six exact-size WebPs and13 expected API responses pass. Signed-in Today opens and returns to Resume; live profile shows all12 base options. Account preferences and lesson completion counts were unchanged. Evidence: investigations/base-language-production-verification.json and base-language-release-36355fe3.json.
 
 ## Scope and behavior
 
@@ -43,7 +43,7 @@ A fresh database replay creates a disposable empty test database. It does not em
 - Full guided chain; frontend/API TypeScript; production build; changed-file ESLint; 12×1,727 i18n coverage and placeholder checks.
 - Guided runtime/field identity, 67 translation quality checks, all 664,032 edition fields, canonical catalog and locale SQL contracts.
 - Base-language contract 21, generation lane 153, ScriptLab 3,997 plus nine 276-tuple packs, First Light 32, iOS shell contract.
-- Real-component browser fixtures: 27/27, about 153 checks across all twelve bases, 320/390/1440 layouts, retry/reveal/completion/Keep, failed media, missing images and reduced motion. After final border/copy polish: 4/4, 23 checks. Physical iPhone/TestFlight remains owner-deferred.
+- Real-component browser fixtures: 27/27, 153 checks across all twelve bases, 320/390/1440 layouts, retry/reveal/completion/Keep, failed media, missing images and reduced motion. After final border/copy polish: 4/4, 23 checks. Physical iPhone/TestFlight remains owner-deferred.
 - Evidence: `D:/CODING/ResonanceTEST/investigations/base-language-brand-evidence/`, `base-language-*.log`, `base-language-generation-v3/publication-provenance.json`, and `BASE_LANGUAGES_BRAND_2026_09_07.md`.
 
 ## Later

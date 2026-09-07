@@ -2,6 +2,10 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-09-07 — Twelve-base release36355fe3 live and verified
+- Scoped266-file commit36355fe3 pushed; Vercel dpl_9WiWZyfMS2SaDexZzoDj84W2RE1R Ready onlingwave.ai/www and Railway458cd5fe-138f-4bfa-9306-70179a97705d success. Production144 edition assets/six art files/exact59,052bytes and13 API probes pass; liveentryindex-R2Kj5XoE.js. Signed-in Today open/return/Resume and all12 native-language options verified without changing profile or completing a lesson.
+- All four130/131/132/133 migrations/history/rollback suites verified,32,400-meaning digestcorrect,2,501 audio links valid, one wrongEnglish usage privatelyarchived and recordingpreserved, playback12,550/testresidue0. Five protectedhashes unchanged; only pre-existing WordTide/analytics/Chrome-profile leftovers remain outside scope. Delivery report and visual alternatives preserved; no owner SQL/reset needed. Native review/input, videos and realiPhone explicitly later. Brain saved before protocol close.
+
 ## 2026-09-07 — Twelve base languages and Ribbon current implemented and verified
 - Final SQL convergence applied/recorded132000/133000: corrected Italian core meaning;2,300 primary-code audio cases now compare correctly while exact phrase/region validation remains strict. One different English source usage archived privately then unlinked, recording preserved. All four130/131/132/133 rollback suites pass;2,501 audio links valid,32,400-meaning digest matches, playback12,550 andtestresidue0. This supersedes the intermediate12,551/no133 counts below.
 - 12×1,727 UI keys, nine ScriptLab explanation packs and 144 guided editions/664,032 fields. Source authoring and waves are hash-preserved. Selected B art under owner delegation; six true-alpha WebPs total59,052B. Explicit correct/retry/reveal behavior, lazy locale recovery and saved-card provenance verified.
