@@ -395,6 +395,8 @@ function checkpointLayoutFixture(viewport: { width: number; height: number }): F
       await waitFor('checkpoint pending type step', () => q<HTMLElement>('.today-checkpoint-page .today-checkpoint-prompt[data-result="pending"]'), 15000)
       const checkpointRoot = q<HTMLElement>('.today-checkpoint-page')!
       const prompt = q<HTMLElement>('.today-checkpoint-prompt')!
+      const clozeInput = prompt.querySelector<HTMLInputElement>('.today-checkpoint-input')
+      ctx.check('checkpoint asks for the same missing part that it grades', Boolean(clozeInput && prompt.querySelector('[data-empty-before]') && clozeInput.placeholder === 'Fehlenden Teil einsetzen' && textOf(checkpointRoot).includes('Setze den fehlenden Teil ein.')), textOf(prompt))
       const initialCurrent = q<HTMLElement>('.today-checkpoint-progressNode[data-node-state="current"]')!.getBoundingClientRect().left
       const initialAccessibleProgress = Number(q<HTMLElement>('[role="progressbar"]')?.getAttribute('aria-valuenow') ?? 0)
       ctx.check('pending checkpoint is one open prompt area', !hasDecorativeRim(prompt), `${getComputedStyle(prompt).border}/${getComputedStyle(prompt).boxShadow}`)
@@ -837,6 +839,28 @@ export const FIXTURES: Fixture[] = [
     },
   },
   {
+    id: 'today-draft-warning-390',
+    name: 'Successful local saving stays quiet; unavailable storage stays visible',
+    viewport: MOBILE,
+    scenario: { route: ROUTE, baseLanguage: 'German', activeLanguage: 'English', speech: 'unsupported' },
+    async run(ctx) {
+      await startFirstLesson()
+      await sleep(100)
+      ctx.check('ordinary saving adds no routine notice', !q('.today-session-saveNotice'), textOf(q('.today-session-footer')))
+      const originalSetItem = Storage.prototype.setItem
+      Storage.prototype.setItem = () => { throw new DOMException('Fixture storage denied', 'QuotaExceededError') }
+      try {
+        await advance()
+        const notice = await waitFor('storage warning', () => q<HTMLElement>('.today-session-saveNotice'))
+        ctx.check('a real draft write failure remains visible', textOf(notice).includes('nicht speichern'), textOf(notice))
+        checkNoOverflow(ctx)
+        await shot('unavailable-storage')
+      } finally {
+        Storage.prototype.setItem = originalSetItem
+      }
+    },
+  },
+  {
     id: 'today-draft-resume-390',
     name: 'Leaving and reopening a lesson resumes the saved task',
     viewport: MOBILE,
@@ -881,8 +905,8 @@ export const FIXTURES: Fixture[] = [
       ctx.check('ordinary Continue does not silently skip a wrong answer', Boolean(wrongState && q('[data-session-step="type"]')), bodyText().slice(0, 400))
       q<HTMLButtonElement>('.today-type-actions button:last-child')!.click()
       const revealed = await waitFor('revealed answer repair', () => q<HTMLElement>('[data-type-state="revealed"]'))
-      const answerLine = q<HTMLElement>('.today-type-answerLine')
-      ctx.check('explicit help reveals the answer and enables progress', textOf(answerLine).includes('speak') && !footerButton().disabled, `${textOf(revealed)} | ${textOf(answerLine)}`)
+      const revealedInput = q<HTMLInputElement>('.today-type-card input')
+      ctx.check('explicit help reveals the answer and enables progress', revealedInput?.value === 'speak' && !footerButton().disabled, `${textOf(revealed)} | ${revealedInput?.value}`)
       checkVisibleTextFitsViewport(ctx)
       await shot('revealed')
       checkNoOverflow(ctx)
@@ -917,7 +941,7 @@ export const FIXTURES: Fixture[] = [
       ctx.check('written retry feedback survives missing image', textOf(feedback).length > 10 && footerButton().disabled, textOf(feedback))
       q<HTMLButtonElement>('.today-type-actions button:last-child')!.click()
       await waitFor('answer reveal remains available', () => q('[data-type-state="revealed"]'))
-      ctx.check('ordinary text and controls still teach the answer', textOf(q('.today-type-answerLine')).includes('speak') && !footerButton().disabled, textOf(q('.today-type-answerLine')))
+      ctx.check('ordinary text and controls still teach the answer', q<HTMLInputElement>('.today-type-card input')?.value === 'speak' && !footerButton().disabled, q<HTMLInputElement>('.today-type-card input')?.value)
       checkVisibleTextFitsViewport(ctx)
       checkNoOverflow(ctx)
       await shot('missing-assets')
@@ -960,15 +984,28 @@ export const FIXTURES: Fixture[] = [
       await shot('trophy')
       const inputs = qa<HTMLInputElement>('.today-trophy-clozeInput')
       ctx.check('canonical reward has cloze inputs', inputs.length > 0, inputs.length)
+      const reference = q<HTMLDetailsElement>('.today-trophy-reference')!
+      ctx.check('song reference starts closed and contains the actual lyric answer', !reference.open && textOf(reference).toLocaleLowerCase('en').includes('delighted') && qa('.today-trophy-wordCard').length === 0, textOf(reference))
+      ctx.check('input accessible label does not reveal the missing answer', !inputs[0].getAttribute('aria-label')?.includes('delighted') && !textOf(inputs[0].closest('label')).includes('delighted'), inputs[0].outerHTML)
       for (const input of inputs) {
+        input.focus()
         typeInto(input, 'wrong')
-        input.dispatchEvent(new FocusEvent('blur', { bubbles: true }))
+        await sleep(60)
+        input.blur()
         await sleep(60)
       }
       await sleep(250)
+      ctx.check('every wrong answer is graded but earns no progress', qa('.today-trophy-lyricRow[data-result="wrong"]').length === inputs.length && q('[role="progressbar"]')?.getAttribute('aria-valuenow') === '0', textOf(q('[role="progressbar"]')))
       ctx.check('wrong attempts keep the trophy drill open', Boolean(q('.today-trophy-drill')) && (window as any).__location.startsWith('/today/checkpoint'), `${(window as any).__location}; drill=${Boolean(q('.today-trophy-drill'))}`)
       ctx.check('wrong inputs remain enabled for retry', qa<HTMLInputElement>('.today-trophy-clozeInput').every((input) => !input.disabled), qa<HTMLInputElement>('.today-trophy-clozeInput').map((input) => input.disabled).join(','))
+      inputs[0].focus()
+      typeInto(inputs[0], 'delighted')
+      await sleep(60)
+      inputs[0].blur()
+      await waitFor('corrected lyric earns one solved blank', () => inputs[0].disabled && q('[role="progressbar"]')?.getAttribute('aria-valuenow') === '1')
+      ctx.check('one solved blank still cannot complete the whole exercise', Boolean(drill.querySelector<HTMLButtonElement>('.today-checkpoint-primaryAction')?.disabled), textOf(q('[role="progressbar"]')))
       checkNoOverflow(ctx)
+      await shot('corrected-first-lyric')
     },
   },
 ]

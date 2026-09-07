@@ -25,7 +25,6 @@ type ClozePosition = {
 type TrophyLyricClozeDrillProps = {
   lyricsDisplay: string
   clozePositions: ClozePosition[]
-  trophyWords: string[]
   targetLanguage: string
   onComplete: (items: GuidedTrophyClozeItem[]) => boolean
 }
@@ -42,7 +41,6 @@ type LineAttempt = {
 export function TrophyLyricClozeDrill({
   lyricsDisplay,
   clozePositions,
-  trophyWords,
   targetLanguage,
   onComplete,
 }: TrophyLyricClozeDrillProps) {
@@ -52,7 +50,7 @@ export function TrophyLyricClozeDrill({
   const [completed, setCompleted] = useState(false)
   const completedRef = useRef(false)
   const inputComposition = useGuidedInputComposition()
-  const attemptedCount = Object.values(attempts).filter((attempt) => attempt.attempted).length
+  const correctCount = Object.values(attempts).filter((attempt) => attempt.correct).length
   const completeReady = isGuidedTrophyClozeComplete(
     clozePositions.map((position) => ({ correct: attempts[position.lineIndex]?.correct ?? false })),
     clozePositions.length,
@@ -129,14 +127,14 @@ export function TrophyLyricClozeDrill({
       <div className="mb-4 flex flex-wrap items-end justify-between gap-2">
         <div>
           <p className="text-sm font-semibold text-[var(--text-primary)]">
-            {t('today.trophy.drill.title')}
+            {t('music.lyrics')}
           </p>
           <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
-            {t('today.trophy.drill.body')}
+            {t('today.checkpoint.segmentTypePrompt')}
           </p>
         </div>
-        <span className="rounded-full border border-[var(--border-subtle)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
-          {attemptedCount}/{clozePositions.length}
+        <span role="progressbar" aria-label={t('music.lyrics')} aria-valuemin={0} aria-valuemax={clozePositions.length} aria-valuenow={correctCount} className="rounded-full border border-[var(--border-subtle)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
+          {correctCount}/{clozePositions.length}
         </span>
       </div>
 
@@ -151,10 +149,10 @@ export function TrophyLyricClozeDrill({
           return (
             <div
               key={`${position.lineIndex}:${position.word}`}
-              className="today-trophy-lyricRow rounded-lg border p-3"
+              className="today-trophy-lyricRow"
               data-result={status}
             >
-              <label className="flex flex-col gap-2 text-base leading-7 text-[var(--text-primary)] sm:flex-row sm:flex-wrap sm:items-center">
+              <label className="text-[var(--text-primary)]">
                 <span>{before}</span>
                 <Input
                   value={attempt?.value ?? ''}
@@ -164,7 +162,8 @@ export function TrophyLyricClozeDrill({
                   {...getGuidedInputMetadata(targetLanguage)}
                   {...inputComposition.compositionProps}
                   disabled={Boolean(attempt?.correct) || completed}
-                  aria-label={t('today.trophy.drill.inputLabel', { word: trophyWords[position.lineIndex] ?? position.word })}
+                  aria-label={before.trim() || after.trim() ? undefined : t('today.type.inputLabel')}
+                  aria-describedby={attempt?.attempted ? `today-trophy-feedback-${position.lineIndex}` : undefined}
                   className={cn(
                     'today-trophy-clozeInput h-11 min-w-28 text-center font-semibold',
                     position.word.length > 9 ? 'w-44' : 'w-32',
@@ -173,7 +172,7 @@ export function TrophyLyricClozeDrill({
                 />
                 <span>{after}</span>
               </label>
-              <div className="mt-2 min-h-6 text-sm text-[var(--text-secondary)]" aria-live="polite">
+              <div id={`today-trophy-feedback-${position.lineIndex}`} className="today-trophy-lineFeedback text-sm text-[var(--text-secondary)]" aria-live="polite">
                 {status === 'correct' && (
                   <span className="inline-flex items-center gap-1.5 text-[#34d399]">
                     <CheckCircle2 className="h-4 w-4" />
@@ -198,7 +197,7 @@ export function TrophyLyricClozeDrill({
       />
 
       <Button type="button" className="today-checkpoint-primaryAction mt-4" disabled={!completeReady} onClick={handleComplete}>
-        {completeReady ? t('today.trophy.drill.completed') : t('today.trophy.drill.completeHint')}
+        {t('today.trophy.drill.completed')}
       </Button>
     </section>
   )

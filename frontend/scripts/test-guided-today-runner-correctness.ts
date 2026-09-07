@@ -83,8 +83,9 @@ assert(
     && hasUnknownDraftState(sessionSource),
 )
 assert(
-  'the local-save success message is hidden while draft status is unknown',
-  hasConditionalSavedMessage(sessionSource),
+  'routine draft saves stay quiet while unavailable storage still has feedback',
+  !sessionSource.includes('today.practice.savedLocally')
+    && /draftSaveStatus\s*===\s*['"]unavailable['"][\s\S]{0,180}?today\.practice\.draftUnavailable/.test(sessionSource),
 )
 
 process.stdout.write('\n[assisted build integrity]\n')
@@ -175,15 +176,6 @@ function stateReportsPreserveField(source: string, callback: string, field: stri
 function hasUnknownDraftState(source: string) {
   return /useState<[^>]*(?:null|undefined|['"]?unknown['"]?)[^>]*>\((?:null|undefined|['"]unknown['"])\)/.test(source)
     || /useState\((?:null|undefined|['"]unknown['"])\)/.test(source)
-}
-
-function hasConditionalSavedMessage(source: string) {
-  return /draftSaveStatus\s*!==\s*['"]unknown['"][\s\S]{0,220}?draftSaveStatus\s*===\s*['"]saved['"][^\n]*today\.practice\.savedLocally/.test(source)
-    || /draftSaved\s*===\s*true[^\n]*today\.practice\.savedLocally/.test(source)
-    || (
-      /draftSaved\s*\?[^:\n]*today\.practice\.savedLocally/.test(source)
-      && /draftSaved\s*(?:!==|!=)\s*(?:null|undefined|['"]unknown['"])/.test(source)
-    )
 }
 
 function formatDetail(detail: unknown) {

@@ -241,6 +241,9 @@
 .today-journey-gem img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 
 .today-journey-gemFallback {
+  inset: 7%;
+  width: auto;
+  height: auto;
   border-radius: 50%;
   background: radial-gradient(circle at 34% 28%, #fff6ce 0 7%, var(--accent-2) 13%, var(--accent) 58%, color-mix(in srgb, var(--accent) 45%, #4b234e));
   box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 32%, transparent);
@@ -282,7 +285,8 @@
 .today-journey-lesson[data-journey-state='current'] .today-journey-gem { transform: translateY(-4px) scale(1.14); filter: brightness(1.12); }
 .today-journey-lesson[data-journey-state='current'] .today-journey-lessonCopy span { color: color-mix(in srgb, var(--accent-2) 82%, white); }
 .today-journey-lesson[data-journey-state='complete'] .today-journey-gem { filter: saturate(.78) brightness(.92); }
-.today-journey-lesson[data-journey-state='upcoming'] .today-journey-gem { opacity: .46; filter: grayscale(.45) saturate(.6); }
+.today-journey-lesson[data-journey-state='upcoming'] .today-journey-gemFallback { background: #241625; box-shadow: none; }
+.today-journey-lesson[data-journey-state='upcoming'] .today-journey-gem img { opacity: .66; filter: grayscale(.3) saturate(.65); }
 .today-journey-lesson[data-journey-state='upcoming'] .today-journey-lessonCopy strong { color: color-mix(in srgb, var(--journey-paper) 70%, transparent); }
 .today-journey-lesson:hover .today-journey-gem { transform: translateY(-4px) scale(1.06); }
 .today-journey-lesson[data-journey-state='current']:hover .today-journey-gem { transform: translateY(-6px) scale(1.16); }

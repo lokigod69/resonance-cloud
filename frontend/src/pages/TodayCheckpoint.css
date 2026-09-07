@@ -19,6 +19,15 @@
   width: 100%;
 }
 
+.today-trophy-references { border-top: 1px solid #55405c; }
+.today-trophy-reference { border-bottom: 1px solid #55405c; }
+.today-trophy-reference > summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.5rem; padding: .8rem 0; color: var(--text-secondary); cursor: pointer; list-style: none; }
+.today-trophy-reference > summary::-webkit-details-marker { display: none; }
+.today-trophy-reference > summary svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+.today-trophy-reference[open] > summary svg { transform: rotate(180deg); }
+.today-trophy-reference > summary:focus-visible { outline: 2px solid #ffd070; outline-offset: 3px; }
+.today-trophy-reference > :not(summary) { padding-block: .5rem 1.5rem; }
+
 .today-checkpoint-page::before {
   border-radius: 0;
   background: #0d0812;
@@ -121,7 +130,16 @@
   width: 1.5rem;
 }
 
-.today-checkpoint-progressNode[data-node-state="complete"] {
+.today-checkpoint-progressNode::before {
+  content: '';
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+  background: #0d0812;
+  z-index: -1;
+}
+
+.today-checkpoint-progressNode[data-node-state="complete"] .today-checkpoint-progressGem {
   opacity: 0.92;
 }
 
@@ -131,7 +149,7 @@
   transform: translate(-50%, -50%) scale(1.18);
 }
 
-.today-checkpoint-progressNode[data-node-state="upcoming"] {
+.today-checkpoint-progressNode[data-node-state="upcoming"] .today-checkpoint-progressGem {
   filter: saturate(0.18);
   opacity: 0.64;
 }
@@ -268,18 +286,24 @@
 
 /* Trophy pages keep the player and drill legible without nesting cards. */
 .today-trophy-page {
-  gap: clamp(1.75rem, 5vw, 3.25rem);
-  max-width: 64rem;
+  gap: 1.75rem;
+  max-width: 48rem;
 }
 
 .today-trophy-header {
+  position: relative;
+  isolation: isolate;
   display: grid;
   gap: clamp(1rem, 3vw, 1.5rem);
 }
 
 .today-trophy-title {
-  max-width: 48rem;
+  max-width: calc(100% - 5rem);
+  color: #ffe2a0;
+  font-weight: 400;
 }
+
+.today-trophy-corner { position: absolute; z-index: -1; top: -2rem; right: -1rem; width: 6rem; height: auto; opacity: .65; pointer-events: none; }
 
 .today-trophy-wordGrid {
   display: grid;
@@ -329,17 +353,34 @@
 }
 
 .today-trophy-lyricRow {
-  background: color-mix(in srgb, var(--surface-1) 48%, transparent) !important;
-  border-color: color-mix(in srgb, var(--border-subtle) 74%, transparent) !important;
-  border-radius: 1rem;
+  background: none !important;
+  border: 0 !important;
+  border-bottom: 1px solid #6e52744a !important;
+  border-radius: 0;
+  box-shadow: none !important;
+  padding: .2rem 0 1rem;
   overflow-wrap: anywhere;
 }
 
+.today-trophy-lyricRow > label { display: block; font-size: 1.1rem; line-height: 2.8; }
+.today-trophy-lineFeedback:not(:empty) { margin-top: .35rem; }
+.today-trophy-lyricRow[data-result="wrong"] .today-trophy-clozeInput { outline: 2px dashed #e8a5c6; outline-offset: 2px; }
+.today-trophy-lyricRow[data-result="correct"] .today-trophy-clozeInput { border-color: #c5a064; color: #ffe2a0; }
+
 .today-trophy-clozeInput {
+  display: inline-block;
+  vertical-align: middle;
+  margin: .25rem .4rem;
+  padding: .55rem .7rem;
+  border: 1px solid #9d74b2;
+  border-radius: .85rem;
+  background: #24152e;
+  color: #fff6fd;
   font-size: max(1rem, 1em);
   min-height: 2.75rem;
-  max-width: 100%;
+  max-width: calc(100% - .8rem);
 }
+.today-trophy-clozeInput:disabled { opacity: 1; }
 
 @media (max-width: 700px) {
   .today-checkpoint-page {
@@ -434,6 +475,7 @@
 }
 
 @media (forced-colors: active) {
+  .today-checkpoint-progressNode::before { display: none; }
   .today-checkpoint-progressLine,
   .today-checkpoint-progressNode,
   .today-checkpoint-input,

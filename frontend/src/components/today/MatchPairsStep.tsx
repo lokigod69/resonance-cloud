@@ -78,7 +78,7 @@ export function MatchPairsStep({
         <p className="today-step-prompt max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
           {t('today.matchPairs.subtitle')}
         </p>
-        <Button className="today-match-reset" type="button" variant="ghost" size="sm" onClick={handleReset} disabled={matchedPairIds.size === 0 && !selectedEnglishId}>
+        <Button className="today-match-reset" type="button" variant="ghost" size="sm" onClick={handleReset} hidden={matchedPairIds.size === 0 && !selectedEnglishId}>
           <RotateCcw className="h-4 w-4" />
           {t('today.reset')}
         </Button>

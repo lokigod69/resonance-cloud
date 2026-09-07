@@ -15,7 +15,6 @@ type TrophySongPlayerProps = {
   audioStatus: GuidedTrophySongAudioStatus
   audioCandidates: Partial<Record<GuidedTrophySongCandidateId, GuidedTrophySongAudioCandidate>>
   activeCandidateDefault: GuidedTrophySongCandidateId
-  caption: string
 }
 
 export function TrophySongPlayer({
@@ -23,7 +22,6 @@ export function TrophySongPlayer({
   audioStatus,
   audioCandidates,
   activeCandidateDefault,
-  caption,
 }: TrophySongPlayerProps) {
   const { t } = useTranslation()
   const audioRef = useRef<HTMLAudioElement | null>(null)
@@ -33,6 +31,7 @@ export function TrophySongPlayer({
   const [status, setStatus] = useState<'idle' | 'playing' | 'ended'>('idle')
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [playbackFailed, setPlaybackFailed] = useState(false)
   const audioUrl = selectedCandidate ? audioCandidates[selectedCandidate]?.publicUrl ?? null : null
   const hasAudio = audioStatus === 'ready' && Boolean(audioUrl)
 
@@ -45,6 +44,7 @@ export function TrophySongPlayer({
     setStatus('idle')
     setCurrentTime(0)
     setDuration(0)
+    setPlaybackFailed(false)
   }, [audioUrl])
 
   const handleToggle = async () => {
@@ -61,8 +61,16 @@ export function TrophySongPlayer({
       audio.currentTime = 0
     }
 
-    await audio.play()
-    setStatus('playing')
+    setPlaybackFailed(false)
+    try {
+      await audio.play()
+      if (audioRef.current === audio && !audio.paused) setStatus('playing')
+    } catch {
+      if (audioRef.current === audio) {
+        setStatus('idle')
+        setPlaybackFailed(true)
+      }
+    }
   }
 
   const handleCandidateChange = (candidate: GuidedTrophySongCandidateId) => {
@@ -78,18 +86,15 @@ export function TrophySongPlayer({
       : t('today.trophy.player.play')
 
   return (
-    <section className="today-trophy-player">
+    <section className="today-trophy-player" aria-label={t('today.trophy.player.title')}>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="min-w-0">
-          <p className="text-sm font-semibold text-[var(--text-primary)]">
-            {t('today.trophy.player.title')}
-          </p>
+        {!hasAudio && <div className="min-w-0">
           <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
-            {hasAudio ? caption : t('today.trophy.player.comingSoon')}
+            {t('today.trophy.player.comingSoon')}
           </p>
-        </div>
+        </div>}
         <div className="flex shrink-0 flex-wrap items-center gap-3">
-          <div
+          {Object.values(audioCandidates).filter(candidate => candidate?.publicUrl).length > 1 && <div
             className="today-trophy-candidateSelector inline-flex rounded-lg border border-[var(--border-subtle)] p-1"
             aria-label={t('today.trophy.player.candidateSelector')}
           >
@@ -111,7 +116,7 @@ export function TrophySongPlayer({
                 </button>
               )
             })}
-          </div>
+          </div>}
           <Button
             type="button"
             size="lg"
@@ -123,11 +128,12 @@ export function TrophySongPlayer({
             {status === 'playing' ? <Pause className="h-4 w-4" /> : status === 'ended' ? <RotateCcw className="h-4 w-4" /> : <Play className="h-4 w-4" />}
             {buttonLabel}
           </Button>
-          <span className="min-w-16 text-right text-sm tabular-nums text-[var(--text-secondary)]" aria-live="polite">
+          <span className="min-w-16 text-right text-sm tabular-nums text-[var(--text-secondary)]">
             {formatTimestamp(currentTime)} / {formatTimestamp(duration)}
           </span>
         </div>
       </div>
+      {playbackFailed && <p role="alert" className="text-sm text-[var(--text-secondary)]">{t('today.media.failedLabel')}</p>}
       {hasAudio && audioUrl && (
         <audio
           ref={audioRef}
@@ -136,6 +142,7 @@ export function TrophySongPlayer({
           onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
           onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)}
           onPause={() => setStatus((current) => (current === 'playing' ? 'idle' : current))}
+          onError={() => { setStatus('idle'); setPlaybackFailed(true) }}
           onEnded={(event) => {
             setCurrentTime(event.currentTarget.duration)
             setStatus('ended')

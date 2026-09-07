@@ -302,7 +302,7 @@ function LessonPathCard({
       </span>
       <span className="today-journey-lessonCopy">
         <strong>{title}</strong>
-        <span>{statusLabel}</span>
+        {visualState !== 'upcoming' && <span>{statusLabel}</span>}
       </span>
     </button>
   )

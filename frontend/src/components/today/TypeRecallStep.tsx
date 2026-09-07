@@ -125,7 +125,7 @@ export function TypeRecallStep({
         showScriptLab={status === 'wrong' || status === 'revealed'}
       />
 
-      <div className="today-type-actions flex flex-wrap items-center justify-center gap-3">
+      <div className="today-type-actions flex flex-wrap items-center justify-center gap-3" hidden={status === 'correct' || status === 'revealed'}>
         <Button className="today-type-checkButton" onClick={handleCheck} disabled={!answer.trim() || status === 'correct' || status === 'revealed'}>
           {t('today.checkAnswer')}
         </Button>
@@ -135,12 +135,6 @@ export function TypeRecallStep({
           </Button>
         )}
       </div>
-
-      {fallbackVisible && (
-        <p className="today-type-answerLine rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
-          {t('today.type.answerLine', { answer: lesson.typeRecall.answer })}
-        </p>
-      )}
 
       <GuidedFeedback id="today-type-feedback" status={status === 'correct' && usedFallback ? 'revealed' : status}>
         {status === 'wrong'

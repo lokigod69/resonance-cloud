@@ -339,7 +339,6 @@ export default function GuidedCheckpoint() {
           onSubmit={handleTypeSubmit}
           onAdvance={handleAdvanceToSpeak}
           isSegmentReviewMode={isSegmentReviewMode}
-          isPathCheckMode={isPathCheckMode}
           segmentScene={segmentScene}
         />
       )}
@@ -573,7 +572,6 @@ function CheckpointTypeStep({
   onSubmit,
   onAdvance,
   isSegmentReviewMode,
-  isPathCheckMode,
   segmentScene,
 }: {
   item: GuidedCheckpointPlanItem
@@ -583,7 +581,6 @@ function CheckpointTypeStep({
   onSubmit: (event: FormEvent<HTMLFormElement>) => void
   onAdvance: () => void
   isSegmentReviewMode: boolean
-  isPathCheckMode: boolean
   segmentScene?: string
 }) {
   const submitted = result !== undefined
@@ -593,10 +590,8 @@ function CheckpointTypeStep({
     preferredBaseLanguage: profile?.base_language,
     authoredBaseLanguage: item.lesson.baseLanguage,
   }).text
-  // B1 core phrases run 8–16 words; prompting with the whole translation while
-  // checking a single blank is wrong there — always render before/blank/after
-  // (design doc §4.5). A1/A2 path-check keeps the translation-prompt form.
-  const useBlankPhrase = isSegmentReviewMode || item.lesson.level === 'B1'
+  // Every checkpoint grades typeRecall.acceptedAnswers, so every level shows
+  // that exact missing part in context rather than asking for the whole phrase.
   const continueButtonRef = useRef<HTMLButtonElement | null>(null)
   const inputComposition = useGuidedInputComposition()
 
@@ -642,14 +637,9 @@ function CheckpointTypeStep({
         )}
 
         <p className="text-sm leading-6 text-[var(--text-secondary)]">
-          {isSegmentReviewMode
-            ? t('today.checkpoint.segmentTypePrompt')
-            : isPathCheckMode
-              ? t('today.checkpoint.pathCheckTypePrompt')
-              : t('today.checkpoint.typePrompt')}
+          {t('today.checkpoint.segmentTypePrompt')}
         </p>
 
-        {useBlankPhrase && (
           <div className="today-checkpoint-promptCard today-checkpoint-prompt" data-result={result ?? 'pending'}>
             <TypeRecallPhrase
               before={item.lesson.typeRecall.before}
@@ -660,7 +650,6 @@ function CheckpointTypeStep({
               onAnswerChange={onAnswerChange}
               targetLanguage={item.lesson.targetLanguage}
               compositionProps={inputComposition.compositionProps}
-              placeholderKey={isSegmentReviewMode ? 'today.checkpoint.segmentInputPlaceholder' : 'today.checkpoint.typePlaceholder'}
             />
             <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
               {t('today.checkpoint.baseCue')}
@@ -669,34 +658,8 @@ function CheckpointTypeStep({
               {resolvedBasePrompt}
             </p>
           </div>
-        )}
-
-        {!useBlankPhrase && (
-          <div className="today-checkpoint-promptCard today-checkpoint-prompt" data-result={result ?? 'pending'}>
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-              {t('today.checkpoint.basePrompt')}
-            </p>
-            <p className="mt-3 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-3xl">
-              {resolvedBasePrompt}
-            </p>
-          </div>
-        )}
 
         <div className="grid w-full max-w-xl justify-items-center gap-4">
-          {!useBlankPhrase && (
-            <Input
-              value={answer}
-              onChange={(event) => onAnswerChange(event.target.value)}
-              disabled={submitted}
-              placeholder={t('today.checkpoint.typePlaceholder')}
-              aria-label={t('today.checkpoint.answerLabel')}
-              aria-invalid={result === 'wrong'}
-              aria-describedby={submitted ? 'today-checkpoint-feedback' : undefined}
-              {...getGuidedInputMetadata(item.lesson.targetLanguage)}
-              {...inputComposition.compositionProps}
-              className="today-checkpoint-input h-12 text-center text-xl font-semibold sm:text-2xl"
-            />
-          )}
           {!submitted && (
             <Button type="submit" className="today-checkpoint-primaryAction" disabled={!answer.trim()}>
               {t('today.checkpoint.check')}
@@ -736,7 +699,6 @@ function TypeRecallPhrase({
   onAnswerChange,
   targetLanguage,
   compositionProps,
-  placeholderKey = 'today.checkpoint.typePlaceholder',
 }: {
   before: string
   after: string
@@ -746,7 +708,6 @@ function TypeRecallPhrase({
   onAnswerChange: (value: string) => void
   targetLanguage: string
   compositionProps: ReturnType<typeof useGuidedInputComposition>['compositionProps']
-  placeholderKey?: string
 }) {
   const { t } = useTranslation()
   const hasBefore = before.trim().length > 0
@@ -763,7 +724,7 @@ function TypeRecallPhrase({
         value={answer}
         onChange={(event) => onAnswerChange(event.target.value)}
         disabled={submitted}
-        placeholder={t(placeholderKey)}
+        placeholder={t('today.checkpoint.segmentInputPlaceholder')}
         aria-label={t('today.checkpoint.answerLabel')}
         aria-invalid={result === 'wrong'}
         aria-describedby={submitted ? 'today-checkpoint-feedback' : undefined}

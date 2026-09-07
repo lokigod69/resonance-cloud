@@ -109,10 +109,6 @@ export function BuildPhraseStep({
 
   return (
     <div className="today-build-step grid gap-5" data-tile-layout={targetChipCount <= 3 ? 'phrase' : 'flow'} data-build-result={status}>
-      <p className="today-step-prompt max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
-        {t('today.build.prompt')}
-      </p>
-
       {cueText && (
         <div className="today-build-cueCard">
           <GuidedBrand kind="listen-ribbon" className="today-cue-mark" />
@@ -167,7 +163,7 @@ export function BuildPhraseStep({
         ))}
       </div>
 
-      <div className="today-step-resetRow flex flex-wrap items-center justify-center gap-3" hidden={status === 'correct' || status === 'revealed'}>
+      <div className="today-step-resetRow flex flex-wrap items-center justify-center gap-3" hidden={selectedIndexes.length === 0 || status === 'correct' || status === 'revealed'}>
         <Button variant="ghost" onClick={handleClear} disabled={selectedIndexes.length === 0 || status === 'correct' || status === 'revealed'}>
           <RotateCcw className="h-4 w-4" />
           {t('today.clearAnswer')}

@@ -334,16 +334,16 @@ export function TodaySession({
       {step !== 'complete' && (
         <div className="today-session-footer">
           {saveFailed && <p role="alert" className="today-session-saveNotice">{t('today.practice.saveFailed')}</p>}
-          <Button className="today-session-footerButton" onClick={handleNext} disabled={!canContinue}>
+          <Button className="today-session-footerButton" onClick={handleNext} disabled={!canContinue} hidden={step === 'type' && !canContinue}>
             <GuidedBrand kind="cta-flow-v3" className="today-button-current" />
             <span>{saveFailed ? t('errors.route.retry') : t('today.continue')}</span>
           </Button>
           <Button className="today-session-previous" variant="ghost" onClick={() => stepIndex > 0 ? enterStep(stepIndex - 1) : onViewPath()}>
             <ChevronLeft className="h-4 w-4" />{t('today.practice.back')}
           </Button>
-          {draftSaveStatus !== 'unknown' && (
+          {draftSaveStatus === 'unavailable' && (
             <p className="today-session-saveNotice" role="status">
-              {t(draftSaveStatus === 'saved' ? 'today.practice.savedLocally' : 'today.practice.draftUnavailable')}
+              {t('today.practice.draftUnavailable')}
             </p>
           )}
         </div>
@@ -456,9 +456,6 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
     <div className="today-scene-step">
       <div className="today-scene-phraseCard today-scene-phraseCard--hero rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)]">
         <div className="today-scene-phraseTop">
-          <p className="today-scene-label">
-            {t('today.corePhrase')}
-          </p>
           <Button
             type="button"
             variant="outline"

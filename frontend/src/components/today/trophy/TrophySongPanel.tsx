@@ -1,11 +1,7 @@
-import { ChevronLeft } from 'lucide-react'
+import { ChevronDown, ChevronLeft } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  getGuidedPathMetadata,
-  getGuidedPathLessons,
-  resolveGuidedLessonVariant,
-} from '@/data/guidedLessons'
+import { getGuidedPathMetadata } from '@/data/guidedLessons'
 import type { TrophySongRow } from '@/lib/trophySongsClient'
 import {
   createGuidedTrophyClozeRecord,
@@ -17,7 +13,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { TrophyLyricClozeDrill } from '@/components/today/trophy/TrophyLyricClozeDrill'
 import { TrophySongPlayer } from '@/components/today/trophy/TrophySongPlayer'
-import { TrophyWordCard } from '@/components/today/trophy/TrophyWordCard'
+import { GuidedBrand } from '@/components/today/GuidedBrand'
 
 type TrophySongPanelProps = {
   row: TrophySongRow
@@ -30,13 +26,6 @@ export function TrophySongPanel({ row, userId, backToTodayHref, onComplete }: Tr
   const { t } = useTranslation()
   const [saveFailed, setSaveFailed] = useState(false)
   const pathMetadata = getGuidedPathMetadata(row.pathId)
-  const trophyWords = getGuidedPathLessons(row.pathId)
-    .filter((lesson) => (
-      row.segment === 1
-        ? lesson.lessonNumber >= 1 && lesson.lessonNumber <= 5
-        : lesson.lessonNumber >= 6 && lesson.lessonNumber <= 10
-    ))
-    .map((lesson) => resolveGuidedLessonVariant(lesson, row.vibe).trophyWord)
 
   const handleDrillComplete = (items: GuidedTrophyClozeItem[]) => {
     const result = writeGuidedTrophyClozeRecord(
@@ -57,6 +46,7 @@ export function TrophySongPanel({ row, userId, backToTodayHref, onComplete }: Tr
       data-guided-vibe={row.vibe}
     >
       <header className="today-trophy-header">
+        <GuidedBrand kind="corner-flow-v3" className="today-trophy-corner" />
         <Button asChild type="button" variant="ghost" size="sm" className="today-checkpoint-back">
           <Link to={backToTodayHref}>
             <ChevronLeft className="h-4 w-4" />
@@ -64,37 +54,20 @@ export function TrophySongPanel({ row, userId, backToTodayHref, onComplete }: Tr
           </Link>
         </Button>
         <h1 className="today-trophy-title">
-          {t('today.trophy.panelTitle')}
+          {t('today.trophy.tileTitle')}
         </h1>
       </header>
-
-      <section className="today-trophy-wordGrid">
-        {trophyWords.map((trophyWord) => (
-          <TrophyWordCard
-            key={trophyWord.word}
-            trophyWord={trophyWord}
-            authoredBaseLanguage={pathMetadata?.baseLanguage ?? 'German'}
-          />
-        ))}
-      </section>
 
       <TrophySongPlayer
         catalogId={row.id}
         audioStatus={row.audioStatus}
         audioCandidates={row.audioCandidates}
         activeCandidateDefault={row.activeCandidateDefault}
-        caption={row.musicCaption}
-      />
-
-      <TrophyLyricsReview
-        displayLyrics={row.displayLyrics}
-        lyricsTranslationDe={row.lyricsTranslationDe}
       />
 
       <TrophyLyricClozeDrill
         lyricsDisplay={row.lyricsDisplay}
         clozePositions={row.clozePositions}
-        trophyWords={row.trophyWords}
         targetLanguage={pathMetadata?.targetLanguage ?? ''}
         onComplete={handleDrillComplete}
       />
@@ -106,6 +79,13 @@ export function TrophySongPanel({ row, userId, backToTodayHref, onComplete }: Tr
           </Button>
         </section>
       )}
+
+      <div className="today-trophy-references">
+        <details className="today-trophy-reference">
+          <summary>{t('music.lyrics')}<ChevronDown aria-hidden="true" /></summary>
+          <TrophyLyricsReview displayLyrics={row.displayLyrics} lyricsTranslationDe={row.lyricsTranslationDe} />
+        </details>
+      </div>
     </main>
   )
 }
@@ -122,7 +102,7 @@ function TrophyLyricsReview({
   return (
     <section className="today-trophy-lyrics">
       <div className="grid gap-4 lg:grid-cols-2">
-        <LyricColumn title={t('today.trophy.lyrics.targetTitle')} body={displayLyrics} />
+        <LyricColumn title={t('music.lyrics.original')} body={displayLyrics} />
         <LyricColumn title={t('today.trophy.lyrics.baseTitle')} body={lyricsTranslationDe} />
       </div>
     </section>
