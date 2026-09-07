@@ -178,11 +178,11 @@ const translationsSource = readSource('../src/lib/translations.ts')
 const packageSource = readSource('../package.json')
 
 assert(
-  'overview renders SegmentTrophyTile beside existing review tiles',
-  overviewSource.includes('<SegmentReviewTile') &&
-    overviewSource.includes('<SegmentTrophyTile') &&
-    overviewSource.includes('today-path-mobileRewards') &&
-    overviewSource.includes('today-path-desktopRewardSlot'),
+  'overview keeps localized review and trophy destinations for each chapter',
+  overviewSource.includes('today-journey-rewards') &&
+    overviewSource.includes('today-journey-trophy') &&
+    overviewSource.includes('mode=trophy-cloze&path=${pathId}&segment=${segment}&vibe=${vibeId}') &&
+    overviewSource.includes('data-trophy-completed={isComplete}'),
 )
 assert('trophy tile uses trophy-cloze checkpoint route mode', trophyTileSource.includes('mode=trophy-cloze') && trophyTileSource.includes('segment=${segment}') && trophyTileSource.includes('vibe=${vibeId}'))
 assert('checkpoint route detects trophy-cloze mode without removing existing modes', checkpointSource.includes("checkpointMode === 'trophy-cloze'") && checkpointSource.includes("checkpointMode === 'segment-review'") && checkpointSource.includes("checkpointMode === 'path-check'"))

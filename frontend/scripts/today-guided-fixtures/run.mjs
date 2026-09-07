@@ -444,13 +444,14 @@ async function main() {
           }
           const requestedKey = parsed.key.key
           const enter = requestedKey === 'Enter'
+          const virtualKeyCode = parsed.key.virtualKeyCode ?? (enter ? 13 : undefined)
           const keyParams = {
             key: requestedKey,
             code: requestedKey,
-            windowsVirtualKeyCode: enter ? 13 : undefined,
-            nativeVirtualKeyCode: enter ? 13 : undefined,
-            text: enter ? '\r' : undefined,
-            unmodifiedText: enter ? '\r' : undefined,
+            windowsVirtualKeyCode: virtualKeyCode,
+            nativeVirtualKeyCode: virtualKeyCode,
+            text: enter && virtualKeyCode === 13 ? '\r' : undefined,
+            unmodifiedText: enter && virtualKeyCode === 13 ? '\r' : undefined,
           }
           await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', ...keyParams })
           await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', ...keyParams })

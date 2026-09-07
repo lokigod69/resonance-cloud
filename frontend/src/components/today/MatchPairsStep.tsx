@@ -1,4 +1,4 @@
-import { RotateCcw, Volume2 } from 'lucide-react'
+import { Check, RotateCcw, Volume2 } from 'lucide-react'
 import { useState } from 'react'
 import { getDeterministicMatchColumns, resolveGuidedBaseContent, type GuidedLesson, type GuidedMatchPair } from '@/data/guidedLessons'
 import { useAuth } from '@/hooks/useAuth'
@@ -6,7 +6,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { playGuidedAudio } from '@/lib/guidedAudio'
 import { cn } from '@/lib/utils'
-import { GuidedBrand, GuidedFeedback } from './GuidedBrand'
+import { GuidedFeedback } from './GuidedBrand'
 
 type MatchPairsStepProps = {
   lesson: GuidedLesson
@@ -163,6 +163,7 @@ function MatchChip({
         disabled={isMatched}
         aria-pressed={isSelected || isMatched}
         data-match-state={isMatched ? 'matched' : isWrong ? 'wrong' : isSelected ? 'selected' : 'idle'}
+        data-match-side={side}
         className={cn(
           'today-match-chip group flex min-h-10 min-w-[8rem] max-w-full flex-1 items-center justify-between gap-2 rounded-lg border px-3 py-2 text-left text-sm font-semibold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
           isMatched
@@ -173,8 +174,7 @@ function MatchChip({
         )}
       >
         <span className="min-w-0 whitespace-normal break-normal leading-snug">{text}</span>
-        {isMatched && <GuidedBrand kind="success-ribbon" className="today-match-resultArt" />}
-        {isWrong && !isMatched && <GuidedBrand kind="retry-ribbon" className="today-match-resultArt" />}
+        {isMatched && <Check className="today-match-resultIcon" aria-hidden="true" />}
       </button>
       {onListen && (
         <button

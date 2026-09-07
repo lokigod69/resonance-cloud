@@ -6,6 +6,10 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 import { GuidedFeedback } from './GuidedBrand'
+import {
+  GuidedNativeInputSupport,
+} from './GuidedNativeInput'
+import { getGuidedInputMetadata, useGuidedInputComposition } from './guidedInputComposition'
 
 export type TypeRecallCheckState = {
   status: 'idle' | 'correct' | 'wrong' | 'revealed'
@@ -38,6 +42,7 @@ export function TypeRecallStep({
   const [attempts, setAttempts] = useState(initialAttempts)
   const [fallbackVisible, setFallbackVisible] = useState(initialUsedFallback || initialStatus === 'revealed')
   const [usedFallback, setUsedFallback] = useState(initialUsedFallback)
+  const inputComposition = useGuidedInputComposition()
 
   const handleAnswerChange = (value: string) => {
     setAnswer(value)
@@ -61,7 +66,7 @@ export function TypeRecallStep({
   }
 
   const handleCheck = () => {
-    if (!answer.trim() || status === 'correct' || status === 'revealed') return
+    if (inputComposition.isComposing() || !answer.trim() || status === 'correct' || status === 'revealed') return
     applyCheck(answer, usedFallback)
   }
 
@@ -102,20 +107,23 @@ export function TypeRecallStep({
             aria-label={t('today.type.inputLabel')}
             aria-invalid={status === 'wrong'}
             aria-describedby="today-type-feedback"
-            autoComplete="off"
-            autoCapitalize="none"
-            spellCheck={false}
+            {...getGuidedInputMetadata(lesson.targetLanguage)}
+            {...inputComposition.compositionProps}
             onKeyDown={(event) => {
-              if (event.key === 'Enter' && !event.nativeEvent.isComposing) {
-                event.preventDefault()
-                handleCheck()
-              }
+              if (event.key !== 'Enter' || inputComposition.isComposingKeyboardEvent(event)) return
+              event.preventDefault()
+              handleCheck()
             }}
             className="h-12 w-full text-xl font-semibold sm:w-64 sm:text-2xl md:w-72"
           />
           <span>{lesson.typeRecall.after}</span>
         </div>
       </div>
+
+      <GuidedNativeInputSupport
+        targetLanguage={lesson.targetLanguage}
+        showScriptLab={status === 'wrong' || status === 'revealed'}
+      />
 
       <div className="today-type-actions flex flex-wrap items-center justify-center gap-3">
         <Button className="today-type-checkButton" onClick={handleCheck} disabled={!answer.trim() || status === 'correct' || status === 'revealed'}>

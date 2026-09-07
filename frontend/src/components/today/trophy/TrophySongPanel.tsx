@@ -53,31 +53,22 @@ export function TrophySongPanel({ row, userId, backToTodayHref, onComplete }: Tr
 
   return (
     <main
-      className="today-shell today-checkpoint-shell relative isolate mx-auto grid min-h-dvh w-full max-w-5xl content-start gap-5 px-4 py-4 sm:px-6 lg:py-8"
+      className="today-shell today-checkpoint-shell today-checkpoint-page today-trophy-page relative isolate mx-auto grid min-h-dvh w-full content-start"
       data-guided-vibe={row.vibe}
     >
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[360px] opacity-70"
-        style={{
-          background:
-            'radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--today-glow) 34%, transparent), transparent 58%), linear-gradient(180deg, color-mix(in srgb, var(--surface-glass) 42%, transparent), transparent)',
-        }}
-        aria-hidden="true"
-      />
-
-      <section className="theme-panel today-trophy-panel rounded-lg border p-4 sm:p-6">
-        <Button asChild type="button" variant="ghost" size="sm" className="-ml-2 mb-4">
+      <header className="today-trophy-header">
+        <Button asChild type="button" variant="ghost" size="sm" className="today-checkpoint-back">
           <Link to={backToTodayHref}>
             <ChevronLeft className="h-4 w-4" />
             {t('today.checkpoint.backToToday')}
           </Link>
         </Button>
-        <h1 className="break-words text-3xl font-semibold leading-tight text-[var(--text-primary)]">
+        <h1 className="today-trophy-title">
           {t('today.trophy.panelTitle')}
         </h1>
-      </section>
+      </header>
 
-      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <section className="today-trophy-wordGrid">
         {trophyWords.map((trophyWord) => (
           <TrophyWordCard
             key={trophyWord.word}
@@ -104,6 +95,7 @@ export function TrophySongPanel({ row, userId, backToTodayHref, onComplete }: Tr
         lyricsDisplay={row.lyricsDisplay}
         clozePositions={row.clozePositions}
         trophyWords={row.trophyWords}
+        targetLanguage={pathMetadata?.targetLanguage ?? ''}
         onComplete={handleDrillComplete}
       />
       {saveFailed && (
@@ -128,7 +120,7 @@ function TrophyLyricsReview({
   const { t } = useTranslation()
 
   return (
-    <section className="today-trophy-lyrics rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
+    <section className="today-trophy-lyrics">
       <div className="grid gap-4 lg:grid-cols-2">
         <LyricColumn title={t('today.trophy.lyrics.targetTitle')} body={displayLyrics} />
         <LyricColumn title={t('today.trophy.lyrics.baseTitle')} body={lyricsTranslationDe} />
@@ -139,7 +131,7 @@ function TrophyLyricsReview({
 
 function LyricColumn({ title, body }: { title: string; body: string }) {
   return (
-    <article className="min-w-0 rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_52%,transparent)] p-4">
+    <article className="today-trophy-lyricColumn">
       <h2 className="text-sm font-semibold text-[var(--text-primary)]">
         {title}
       </h2>

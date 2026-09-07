@@ -78,7 +78,7 @@ export function TrophySongPlayer({
       : t('today.trophy.player.play')
 
   return (
-    <section className="today-trophy-player rounded-lg border border-[var(--border-subtle)] p-4">
+    <section className="today-trophy-player">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
           <p className="text-sm font-semibold text-[var(--text-primary)]">
@@ -90,7 +90,7 @@ export function TrophySongPlayer({
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-3">
           <div
-            className="inline-flex rounded-lg border border-[var(--border-subtle)] p-1"
+            className="today-trophy-candidateSelector inline-flex rounded-lg border border-[var(--border-subtle)] p-1"
             aria-label={t('today.trophy.player.candidateSelector')}
           >
             {(['A', 'B'] as const).map((candidate) => {
@@ -103,7 +103,7 @@ export function TrophySongPlayer({
                   type="button"
                   disabled={!available}
                   onClick={() => handleCandidateChange(candidate)}
-                  className="min-h-9 min-w-10 rounded-md px-3 text-sm font-semibold text-[var(--text-secondary)] transition enabled:hover:bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] disabled:opacity-40 data-[selected=true]:bg-[var(--accent)] data-[selected=true]:text-[var(--button-primary-text)]"
+                  className="min-h-11 min-w-11 rounded-md px-3 text-sm font-semibold text-[var(--text-secondary)] transition enabled:hover:bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] disabled:opacity-40 data-[selected=true]:bg-[var(--accent)] data-[selected=true]:text-[var(--button-primary-text)]"
                   data-selected={selected}
                   aria-pressed={selected}
                 >

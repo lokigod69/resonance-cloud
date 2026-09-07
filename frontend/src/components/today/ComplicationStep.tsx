@@ -14,6 +14,10 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { PatternSpotlightCard } from '@/components/today/PatternStep'
 import { cn } from '@/lib/utils'
+import {
+  GuidedNativeInputSupport,
+} from './GuidedNativeInput'
+import { getGuidedInputMetadata, useGuidedInputComposition } from './guidedInputComposition'
 
 export type ComplicationCheckState = {
   status: 'idle' | 'correct' | 'wrong'
@@ -56,6 +60,7 @@ export function ComplicationStep({ lesson, onCheckStateChange }: ComplicationSte
   const blanks = cloze?.segments.filter((segment) => segment.type === 'blank') ?? []
   const [attempts, setAttempts] = useState(0)
   const [patternVisible, setPatternVisible] = useState(false)
+  const inputComposition = useGuidedInputComposition()
   const [blankStates, setBlankStates] = useState<BlankState[]>(() =>
     blanks.map((segment) => ({
       value: '',
@@ -120,6 +125,7 @@ export function ComplicationStep({ lesson, onCheckStateChange }: ComplicationSte
   }
 
   const handleCheck = () => {
+    if (inputComposition.isComposing()) return
     // typeAttempts equivalence is SUMMED per blank (design doc §4.4): one check
     // press evaluates every unresolved blank.
     const evaluatedCount = blankStates.filter((state) => state.status !== 'correct').length
@@ -218,6 +224,8 @@ export function ComplicationStep({ lesson, onCheckStateChange }: ComplicationSte
                 key={`blank-${segmentIndex}`}
                 blank={segment.blank}
                 state={state}
+                targetLanguage={lesson.targetLanguage}
+                compositionProps={inputComposition.compositionProps}
                 onValueChange={(value, viaChip) => setBlankValue(blankIndex, value, viaChip)}
               />
             )
@@ -226,6 +234,11 @@ export function ComplicationStep({ lesson, onCheckStateChange }: ComplicationSte
 
         <ClozeChipRows blanks={blanks} blankStates={blankStates} onPick={setBlankValue} />
       </div>
+
+      <GuidedNativeInputSupport
+        targetLanguage={lesson.targetLanguage}
+        showScriptLab={blankStates.some((state) => state.status === 'wrong')}
+      />
 
       <div className="today-complication-actions flex flex-wrap items-center justify-center gap-3">
         {!allCorrect && (
@@ -256,10 +269,14 @@ export function ComplicationStep({ lesson, onCheckStateChange }: ComplicationSte
 function ClozeBlankField({
   blank,
   state,
+  targetLanguage,
+  compositionProps,
   onValueChange,
 }: {
   blank: GuidedClozeBlank
   state: BlankState
+  targetLanguage: string
+  compositionProps: ReturnType<typeof useGuidedInputComposition>['compositionProps']
   onValueChange: (value: string, viaChip: boolean) => void
 }) {
   const { t } = useTranslation()
@@ -274,6 +291,8 @@ function ClozeBlankField({
         readOnly={isChoice || state.status === 'correct'}
         placeholder={isChoice ? t('today.complication.choicePlaceholder') : t('today.type.placeholder')}
         aria-label={t('today.complication.blankLabel')}
+        {...getGuidedInputMetadata(targetLanguage)}
+        {...compositionProps}
         style={{ width: `${widthCh}ch`, minWidth: '5.5rem' }}
         className={cn(
           'today-complication-blankInput h-11 text-center text-lg font-semibold sm:text-xl',

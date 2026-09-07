@@ -501,6 +501,8 @@ const messages = {
   "today.type.title": "기억해서 입력",
   "today.type.prompt": "기억해서 문장을 완성하세요.",
   "today.type.placeholder": "단어 입력",
+  "today.type.targetKeyboardHint": "{language} 키보드를 사용하세요.",
+  "today.type.openScriptLab": "Script Lab에서 {script} 쓰기를 연습하세요",
   "today.type.inputLabel": "빈칸 단어",
   "today.type.correct": "맞았습니다.",
   "today.type.wrong": "아쉽네요 — 다시 시도하거나 정답을 확인하세요.",

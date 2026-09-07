@@ -501,6 +501,8 @@ const messages = {
   "today.type.title": "記憶から入力",
   "today.type.prompt": "記憶から文を完成させよう。",
   "today.type.placeholder": "単語を入力",
+  "today.type.targetKeyboardHint": "{language}キーボードを使ってください。",
+  "today.type.openScriptLab": "Script Labで{script}を練習する",
   "today.type.inputLabel": "欠けている単語",
   "today.type.correct": "正解！",
   "today.type.wrong": "違うよ — もう一度試すか、答えを見てね。",

@@ -595,7 +595,7 @@ export function getGuidedClozeText(cloze: GuidedCloze): string {
 }
 
 export function normalizeGuidedAnswer(answer: string) {
-  return answer.trim().replace(/\s+/g, ' ').toLowerCase()
+  return answer.normalize('NFC').trim().replace(/\s+/g, ' ').toLowerCase()
 }
 
 export function guidedAnswerMatches(input: string, acceptedAnswers: string[]) {

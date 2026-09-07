@@ -126,8 +126,8 @@ export async function shot(label: string): Promise<void> {
 }
 
 /** Hands control to the node runner for a trusted browser keyboard event. */
-export async function pressKey(key: string, selector?: string): Promise<void> {
-  ;(window as any).__keyRequest = { key, selector }
+export async function pressKey(key: string, selector?: string, virtualKeyCode?: number): Promise<void> {
+  ;(window as any).__keyRequest = { key, selector, virtualKeyCode }
   await waitFor(`keyboard ${key}`, () => (window as any).__keyRequest === null, 60000)
 }
 

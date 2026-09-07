@@ -45,6 +45,7 @@ const pathIds = englishPathIds
 
 const directorySource = readSource('../src/components/today/GuidedPathDirectory.tsx')
 const overviewSource = readSource('../src/components/today/TodayPathOverview.tsx')
+const overviewMastheadSource = sliceBetween(overviewSource, '<header className="today-journey-masthead">', '</header>')
 const todaySource = readSource('../src/pages/Today.tsx')
 const checkpointSource = readSource('../src/pages/GuidedCheckpoint.tsx')
 const checkpointLibSource = readSource('../src/lib/guidedCheckpoint.ts')
@@ -139,8 +140,18 @@ assert('Today page reads selected path from validated query params', todaySource
 assert('Today page reads selected active vibe from query params', todaySource.includes("searchParams.get('vibe')") && todaySource.includes('resolveTodayVibeId'))
 assert('Today page writes path and vibe changes back to the URL so stale query params cannot force old language state', todaySource.includes('setSearchParams') && todaySource.includes('syncTodaySearchParams') && todaySource.includes('replace: true'), todaySource)
 assert('Quick Review checkpoint link preserves current path and vibe for back navigation', todaySource.includes('path=${selectedPathId}') && todaySource.includes('vibe=${selectedVibeId}'))
-assert('main Today header no longer renders Path Check as a visible action', !sliceBetween(overviewSource, '<div className="today-path-actions', '<GuidedPathDirectory').includes('today.path.pathCheck'))
-assert('Path Check is available as a path-level diagnostic action outside the options directory', overviewSource.includes('PathCheckTile') && overviewSource.includes('today-path-checkAction') && overviewSource.includes('pathCheckHref') && !directorySource.includes('pathCheckHref') && !directorySource.includes('today.path.pathCheck'), { overviewSource, directorySource })
+assert('main Today masthead keeps Path Check out of its compact controls', !overviewMastheadSource.includes('today.path.pathCheck') && !overviewMastheadSource.includes('PathCheckTile'), overviewMastheadSource)
+assert(
+  'Path Check is available as a path-level diagnostic action outside the options directory',
+  overviewSource.includes('<PathCheckTile href={pathCheckHref} />')
+    && overviewSource.indexOf('<PathCheckTile href={pathCheckHref} />') > overviewSource.indexOf('<GuidedPathDirectory')
+    && overviewSource.includes('className="today-journey-pathCheck"')
+    && overviewSource.includes("t('today.path.pathCheck')")
+    && overviewSource.includes("t('today.checkpoint.pathCheckDiagnostic')")
+    && !directorySource.includes('pathCheckHref')
+    && !directorySource.includes('today.path.pathCheck'),
+  { overviewSource, directorySource },
+)
 assert('path directory exposes the theme selector for every selected language instead of gating it to English content variants', directorySource.includes('GuidedVibePicker') && directorySource.includes('onSelectVibe={onSelectVibe}') && !directorySource.includes("selectedLanguage === 'English'") && !directorySource.includes('getPathVibesAvailable') && !directorySource.includes('shouldShowVibePicker'), directorySource)
 assert('path directory labels the selector as theme, not voice', translationsSource.includes("'today.vibePicker.compactLabel': 'Theme'") && translationsSource.includes("'today.vibePicker.title': 'Choose theme'") && !translationsSource.includes("'today.vibePicker.compactLabel': 'Voice'") && !translationsSource.includes("'today.vibePicker.title': 'Choose voice'"), translationsSource)
 assert('language persistence includes every guided Today language exposed in the directory', todayLanguageSource.includes("'Portuguese'") && todayLanguageSource.includes("'Polish'"), todayLanguageSource)

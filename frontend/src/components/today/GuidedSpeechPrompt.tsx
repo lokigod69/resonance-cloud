@@ -210,7 +210,6 @@ export function GuidedSpeechPrompt({
           </div>
         ) : (
           <>
-            <GuidedBrand kind="listen-ribbon" className="today-speech-micAsset" />
             {isSupported && (
               <div className="today-speak-recordingControl">
                 <button
@@ -232,7 +231,7 @@ export function GuidedSpeechPrompt({
                   ) : isRecording ? (
                     <Square className="h-3.5 w-3.5 fill-current" />
                   ) : (
-                    <span className="today-speech-buttonHotspot" aria-hidden="true" />
+                    <GuidedBrand kind="listen-ribbon" className="today-speech-micAsset" />
                   )}
                   <span className="sr-only">
                     {speech.status === 'requesting_permission'
@@ -251,7 +250,7 @@ export function GuidedSpeechPrompt({
                 <Mic className="h-5 w-5" />
               </span>
             )}
-            <p className="today-speech-actionHint">
+            {isSupported && <p className="today-speech-actionHint">
               {speech.status === 'requesting_permission'
                     ? t('today.speak.requestingPermission')
                     : speech.status === 'transcribing'
@@ -259,7 +258,7 @@ export function GuidedSpeechPrompt({
                       : isRecording
                         ? t('today.speak.stopRecording')
                         : t('today.speak.startRecording')}
-            </p>
+            </p>}
           </>
         )}
       </div>

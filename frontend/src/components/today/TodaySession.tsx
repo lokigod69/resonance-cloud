@@ -1,17 +1,10 @@
 import {
   ChevronLeft,
   ChevronRight,
-  Keyboard,
-  Lightbulb,
-  MessageSquare,
-  Mic,
-  MessageCircle,
-  Sparkles,
   Trophy,
   Volume2,
-  type LucideIcon,
 } from 'lucide-react'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getGuidedMatchPairs, resolveGuidedBaseContent, type GuidedDialogueTurn, type GuidedLesson } from '@/data/guidedLessons'
 import { clearTodayLessonDraft, readTodayLessonDraft, writeTodayLessonDraft, type TodayLessonResult } from '@/lib/todayProgress'
@@ -250,6 +243,7 @@ export function TodaySession({
   return (
     <section className="today-session-shell" data-session-step={step} data-step-state={stepVisualState}>
       <header className="today-session-header">
+        <GuidedBrand kind="corner-flow-v3" className="today-session-corner" />
         <div className="today-session-titleRow">
           <div className="min-w-0 flex-1">
             <p className="today-session-kicker">
@@ -286,7 +280,6 @@ export function TodaySession({
       <div key={step} className="today-session-taskCard today-step-stage" data-session-step={step} data-step-state={stepVisualState}>
         {step !== 'complete' && (
           <div className="today-session-taskHeader">
-            <TodayLessonStepIcon step={step} compact />
             <h3 ref={taskHeadingRef} tabIndex={-1} className="today-session-taskTitle outline-none">
               {t(getStepTitleKey(step, lesson))}
             </h3>
@@ -341,13 +334,12 @@ export function TodaySession({
       {step !== 'complete' && (
         <div className="today-session-footer">
           {saveFailed && <p role="alert" className="today-session-saveNotice">{t('today.practice.saveFailed')}</p>}
-          <Button variant="ghost" onClick={() => stepIndex > 0 ? enterStep(stepIndex - 1) : onViewPath()}>
-            <ChevronLeft className="h-4 w-4" />{t('today.practice.back')}
-          </Button>
           <Button className="today-session-footerButton" onClick={handleNext} disabled={!canContinue}>
-            <GuidedBrand kind="current-crest" className="today-button-current" />
-            {saveFailed ? t('errors.route.retry') : t('today.continue')}
-            <ChevronRight className="h-4 w-4" />
+            <GuidedBrand kind="cta-flow-v3" className="today-button-current" />
+            <span>{saveFailed ? t('errors.route.retry') : t('today.continue')}</span>
+          </Button>
+          <Button className="today-session-previous" variant="ghost" onClick={() => stepIndex > 0 ? enterStep(stepIndex - 1) : onViewPath()}>
+            <ChevronLeft className="h-4 w-4" />{t('today.practice.back')}
           </Button>
           {draftSaveStatus !== 'unknown' && (
             <p className="today-session-saveNotice" role="status">
@@ -360,43 +352,16 @@ export function TodaySession({
   )
 }
 
-const stepIconMap: Record<TodaySessionStep, LucideIcon> = {
-  scene: MessageCircle,
-  matchPairs: Sparkles,
-  pattern: Lightbulb,
-  build: Sparkles,
-  type: Keyboard,
-  complication: MessageSquare,
-  rolePlay: Mic,
-  speak: Mic,
-  complete: Trophy,
-}
-
-function TodayLessonStepIcon({
-  step,
-  compact = false,
-}: {
-  step: TodaySessionStep
-  compact?: boolean
-}) {
-  const Icon = stepIconMap[step]
-
-  return (
-    <span className={cn('today-session-iconBadge', compact && 'today-session-iconBadge--compact')} aria-hidden="true">
-      <span className="today-session-iconAura" />
-      <Icon className="today-session-icon" />
-    </span>
-  )
-}
-
 function TodayLessonProgressRail({ steps, stepIndex }: { steps: TodaySessionStep[]; stepIndex: number }) {
+  const gradientId = useId()
+  const progress = Math.min(1, stepIndex / Math.max(1, steps.length - 1))
   return (
-    <div className="today-session-progressRail" aria-hidden="true">
-      <GuidedBrand kind="current-crest" className="today-progress-current" />
-      <span
-        className="today-session-progressFill"
-        style={{ width: `${Math.min(1, stepIndex / Math.max(1, steps.length - 1)) * 100}%` }}
-      />
+    <div className="today-session-progressRail" aria-hidden="true" style={{ '--today-progress': progress } as React.CSSProperties}>
+      <svg className="today-progress-current" viewBox="0 0 1000 40" preserveAspectRatio="none">
+        <defs><linearGradient id={gradientId}><stop stopColor="#ffd070" /><stop offset=".45" stopColor="#ff69b2" /><stop offset="1" stopColor="#8d73a9" /></linearGradient></defs>
+        <path className="today-progress-track" d="M 0 20 Q 125 6 250 20 T 500 20 T 750 20 T 1000 20" />
+        <path className="today-session-progressFill" pathLength="1" stroke={`url(#${gradientId})`} strokeDasharray={`${progress} 1`} d="M 0 20 Q 125 6 250 20 T 500 20 T 750 20 T 1000 20" />
+      </svg>
       {steps.map((sessionStep, index) => (
         <span
           key={sessionStep}
@@ -404,7 +369,7 @@ function TodayLessonProgressRail({ steps, stepIndex }: { steps: TodaySessionStep
           data-node-state={index < stepIndex ? 'complete' : index === stepIndex ? 'current' : 'upcoming'}
           style={{ left: `${(index / (steps.length - 1)) * 100}%` }}
         >
-          {index <= stepIndex && <GuidedBrand kind="current-bead" className="today-session-progressBead" />}
+          <GuidedBrand kind={(['gem-amber-v3', 'gem-pink-v3', 'gem-violet-v3'] as const)[index % 3]} className="today-session-progressBead" />
         </span>
       ))}
     </div>
@@ -731,7 +696,7 @@ function CompleteStep({
           )}
         </div>
       </details>
-      <div className="flex flex-wrap justify-center gap-3">
+      <div className="today-completion-actions">
         {nextLesson ? (
           <Button onClick={onOpenNextLesson}>
             {t('today.nextLesson')}

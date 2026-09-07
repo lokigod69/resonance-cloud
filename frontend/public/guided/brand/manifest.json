@@ -34,5 +34,59 @@
     "height": 132,
     "bytes": 6738,
     "alpha": true
+  },
+  "tile-amber-v3": {
+    "width": 600,
+    "height": 200,
+    "bytes": 23536,
+    "alpha": true
+  },
+  "tile-pink-v3": {
+    "width": 600,
+    "height": 200,
+    "bytes": 23380,
+    "alpha": true
+  },
+  "gem-amber-v3": {
+    "width": 80,
+    "height": 79,
+    "bytes": 3226,
+    "alpha": true
+  },
+  "gem-pink-v3": {
+    "width": 80,
+    "height": 79,
+    "bytes": 3344,
+    "alpha": true
+  },
+  "gem-violet-v3": {
+    "width": 80,
+    "height": 81,
+    "bytes": 3612,
+    "alpha": true
+  },
+  "success-lw-v3": {
+    "width": 240,
+    "height": 137,
+    "bytes": 9554,
+    "alpha": true
+  },
+  "corner-flow-v3": {
+    "width": 240,
+    "height": 214,
+    "bytes": 9828,
+    "alpha": true
+  },
+  "cta-flow-v3": {
+    "width": 320,
+    "height": 75,
+    "bytes": 9106,
+    "alpha": true
+  },
+  "tile-violet-v3": {
+    "width": 600,
+    "height": 200,
+    "bytes": 21308,
+    "alpha": true
   }
 }

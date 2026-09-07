@@ -37,6 +37,7 @@ import { BETA_TARGET_LANGUAGES } from '@/lib/languages'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import '@/components/today/Today.css'
+import '@/components/today/TodayPractice.css'
 
 // Guided-space names of the beta target languages ('Bisaya' → 'Cebuano').
 const BETA_GUIDED_LANGUAGES = new Set(BETA_TARGET_LANGUAGES.map((lang) => toGuidedLanguageName(lang)))
@@ -317,7 +318,7 @@ export default function Today() {
       data-guided-vibe={selectedVibeId}
     >
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] opacity-70"
+        className="today-ambient-wash pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] opacity-70"
         style={{
           background:
             'radial-gradient(ellipse at 50% 0%, var(--accent-glow), transparent 56%), linear-gradient(180deg, color-mix(in srgb, var(--surface-glass) 42%, transparent), transparent)',

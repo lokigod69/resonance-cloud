@@ -5,7 +5,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { GuidedFeedback } from './GuidedBrand'
+import { GuidedBrand, GuidedFeedback } from './GuidedBrand'
 
 export type BuildPhraseCheckState = {
   status: 'idle' | 'correct' | 'wrong' | 'revealed'
@@ -108,17 +108,18 @@ export function BuildPhraseStep({
     : undefined
 
   return (
-    <div className="today-build-step grid gap-5">
+    <div className="today-build-step grid gap-5" data-tile-layout={targetChipCount <= 3 ? 'phrase' : 'flow'} data-build-result={status}>
       <p className="today-step-prompt max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
         {t('today.build.prompt')}
       </p>
 
       {cueText && (
-        <div className="today-build-cueCard rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+        <div className="today-build-cueCard">
+          <GuidedBrand kind="listen-ribbon" className="today-cue-mark" />
+          <p className="sr-only">
             {t('today.build.cueLabel')}
           </p>
-          <p className="mt-2 break-words text-xl font-semibold leading-snug text-[var(--text-primary)] sm:text-2xl">
+          <p className="today-build-cueText">
             {cueText}
           </p>
         </div>
@@ -126,21 +127,12 @@ export function BuildPhraseStep({
 
       <div
         data-build-state={status}
-        className={cn(
-          'today-build-answerSurface rounded-lg border bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-3 transition sm:p-4',
-          status === 'correct'
-            ? 'border-[color-mix(in_srgb,#34d399_54%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_28%,transparent)]'
-            : status === 'revealed'
-              ? 'border-[color-mix(in_srgb,var(--accent)_42%,transparent)]'
-            : status === 'wrong'
-              ? 'border-[color-mix(in_srgb,#f87171_58%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#f87171_24%,transparent)]'
-              : 'border-[var(--border-subtle)]',
-        )}
+        className="today-build-answerSurface"
       >
-        <p className="mb-3 text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+        <p className="sr-only">
           {t('today.build.answerLabel')}
         </p>
-        <div className="today-build-answerDrop flex min-h-16 flex-wrap items-center justify-center gap-2 rounded-lg border border-dashed border-[var(--border-strong)] bg-[color-mix(in_srgb,var(--app-bg)_28%,transparent)] p-3 text-center">
+        <div className="today-build-answerDrop" data-empty={selectedIndexes.length === 0}>
           {selectedIndexes.length === 0 ? (
             <span className="text-sm text-[var(--text-muted)]">{t('today.build.emptySelection')}</span>
           ) : (
@@ -150,38 +142,32 @@ export function BuildPhraseStep({
                 type="button"
                 disabled={status === 'correct' || status === 'revealed'}
                 onClick={() => handleRemove(position)}
-                className={cn(
-                  'today-word-piece theme-chip-active min-h-11 rounded-md px-3 py-2 text-sm font-semibold shadow-sm transition-transform hover:-translate-y-0.5',
-                  (status === 'correct' || status === 'wrong' || status === 'revealed') && 'cursor-default hover:translate-y-0',
-                  status === 'correct' && 'ring-1 ring-[#34d399]',
-                  status === 'wrong' && 'ring-1 ring-[#f87171]',
-                )}
+                data-glass-tone={getChipTone(shuffledChips.findIndex((chip) => chip.index === chipIndex))}
+                className={cn('today-word-piece theme-chip-active', status === 'wrong' && 'today-word-piece--retry')}
               >
-                {lesson.build.chips[chipIndex]}
+                <span className="today-tile-label">{lesson.build.chips[chipIndex]}</span>
               </button>
             ))
           )}
         </div>
       </div>
 
-      <div className="today-build-chipBank flex flex-wrap justify-center gap-2">
+      <div className="today-build-chipBank" hidden={status === 'correct' || status === 'revealed'}>
         {availableChips.map(({ chip, index }) => (
           <button
             key={`${chip}-${index}`}
             type="button"
             disabled={status === 'correct' || status === 'revealed'}
             onClick={() => handleSelect(index)}
-            className={cn(
-              'today-word-piece theme-chip min-h-11 rounded-md px-4 py-2 text-sm font-medium shadow-sm transition-transform hover:-translate-y-0.5',
-              (status === 'correct' || status === 'wrong' || status === 'revealed') && 'cursor-default opacity-70 hover:translate-y-0',
-            )}
+            data-glass-tone={getChipTone(shuffledChips.findIndex((item) => item.index === index))}
+            className="today-word-piece theme-chip"
           >
-            {chip}
+            <span className="today-tile-label">{chip}</span>
           </button>
         ))}
       </div>
 
-      <div className="today-step-resetRow flex flex-wrap items-center justify-center gap-3">
+      <div className="today-step-resetRow flex flex-wrap items-center justify-center gap-3" hidden={status === 'correct' || status === 'revealed'}>
         <Button variant="ghost" onClick={handleClear} disabled={selectedIndexes.length === 0 || status === 'correct' || status === 'revealed'}>
           <RotateCcw className="h-4 w-4" />
           {t('today.clearAnswer')}
@@ -200,6 +186,11 @@ export function BuildPhraseStep({
       </GuidedFeedback>
     </div>
   )
+}
+
+// Colour follows each shuffled piece when it moves; it never hints at answer order.
+function getChipTone(index: number) {
+  return (['amber', 'pink', 'violet'] as const)[index % 3]
 }
 
 function getTargetBuildChipCount(lesson: GuidedLesson) {

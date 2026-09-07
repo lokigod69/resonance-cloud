@@ -10,6 +10,10 @@ import {
   type GuidedTrophyClozeItem,
 } from '@/lib/guidedTrophy'
 import { cn } from '@/lib/utils'
+import {
+  GuidedNativeInputSupport,
+} from '@/components/today/GuidedNativeInput'
+import { getGuidedInputMetadata, useGuidedInputComposition } from '@/components/today/guidedInputComposition'
 
 type ClozePosition = {
   lineIndex: number
@@ -22,6 +26,7 @@ type TrophyLyricClozeDrillProps = {
   lyricsDisplay: string
   clozePositions: ClozePosition[]
   trophyWords: string[]
+  targetLanguage: string
   onComplete: (items: GuidedTrophyClozeItem[]) => boolean
 }
 
@@ -38,6 +43,7 @@ export function TrophyLyricClozeDrill({
   lyricsDisplay,
   clozePositions,
   trophyWords,
+  targetLanguage,
   onComplete,
 }: TrophyLyricClozeDrillProps) {
   const { t } = useTranslation()
@@ -45,6 +51,7 @@ export function TrophyLyricClozeDrill({
   const [attempts, setAttempts] = useState<Record<number, LineAttempt>>({})
   const [completed, setCompleted] = useState(false)
   const completedRef = useRef(false)
+  const inputComposition = useGuidedInputComposition()
   const attemptedCount = Object.values(attempts).filter((attempt) => attempt.attempted).length
   const completeReady = isGuidedTrophyClozeComplete(
     clozePositions.map((position) => ({ correct: attempts[position.lineIndex]?.correct ?? false })),
@@ -66,6 +73,7 @@ export function TrophyLyricClozeDrill({
   }
 
   const markAttempted = (position: ClozePosition) => {
+    if (inputComposition.isComposing()) return
     setAttempts((current) => {
       const currentAttempt = current[position.lineIndex]
       const value = currentAttempt?.value ?? ''
@@ -111,13 +119,13 @@ export function TrophyLyricClozeDrill({
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>, position: ClozePosition) => {
-    if (event.key !== 'Enter') return
+    if (event.key !== 'Enter' || inputComposition.isComposingKeyboardEvent(event)) return
     event.preventDefault()
     markAttempted(position)
   }
 
   return (
-    <section className="today-trophy-drill rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
+    <section className="today-trophy-drill">
       <div className="mb-4 flex flex-wrap items-end justify-between gap-2">
         <div>
           <p className="text-sm font-semibold text-[var(--text-primary)]">
@@ -153,6 +161,8 @@ export function TrophyLyricClozeDrill({
                   onChange={(event) => handleValueChange(position.lineIndex, event.target.value)}
                   onBlur={() => markAttempted(position)}
                   onKeyDown={(event) => handleKeyDown(event, position)}
+                  {...getGuidedInputMetadata(targetLanguage)}
+                  {...inputComposition.compositionProps}
                   disabled={Boolean(attempt?.correct) || completed}
                   aria-label={t('today.trophy.drill.inputLabel', { word: trophyWords[position.lineIndex] ?? position.word })}
                   className={cn(
@@ -182,7 +192,12 @@ export function TrophyLyricClozeDrill({
         })}
       </div>
 
-      <Button type="button" className="mt-4 min-h-11" disabled={!completeReady} onClick={handleComplete}>
+      <GuidedNativeInputSupport
+        targetLanguage={targetLanguage}
+        showScriptLab={Object.values(attempts).some((attempt) => attempt.attempted && !attempt.correct)}
+      />
+
+      <Button type="button" className="today-checkpoint-primaryAction mt-4" disabled={!completeReady} onClick={handleComplete}>
         {completeReady ? t('today.trophy.drill.completed') : t('today.trophy.drill.completeHint')}
       </Button>
     </section>

@@ -501,6 +501,8 @@ const messages = {
   "today.type.title": "Введите по памяти",
   "today.type.prompt": "Дополните предложение по памяти.",
   "today.type.placeholder": "Введите слово",
+  "today.type.targetKeyboardHint": "Используйте клавиатуру для языка {language}.",
+  "today.type.openScriptLab": "Практикуйте письмо {script} в Script Lab",
   "today.type.inputLabel": "Пропущенное слово",
   "today.type.correct": "Верно.",
   "today.type.wrong": "Не совсем — попробуйте ещё раз или покажите ответ для подсказки.",

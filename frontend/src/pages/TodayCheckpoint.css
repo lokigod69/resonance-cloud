@@ -1,0 +1,463 @@
+/* Route-scoped checkpoint and trophy presentation.
+   Learning state and controls remain owned by their React components. */
+
+.today-checkpoint-page {
+  box-sizing: border-box;
+  gap: clamp(2rem, 6vw, 4rem);
+  margin-inline: auto;
+  max-width: 52rem;
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 2rem) calc(2rem + env(safe-area-inset-bottom, 0px));
+  position: relative;
+  isolation: isolate;
+}
+
+.today-checkpoint-page--centered {
+  align-items: center;
+  display: grid;
+  justify-items: center;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+.today-checkpoint-page::before {
+  border-radius: 0;
+  background: #0d0812;
+  inset: 0 calc(50% - 50vw);
+  opacity: 1;
+}
+
+.today-checkpoint-page::after {
+  display: none;
+}
+
+.today-checkpoint-header,
+.today-checkpoint-step,
+.today-checkpoint-summary,
+.today-checkpoint-emptyState {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  min-width: 0;
+  width: 100%;
+}
+
+.today-checkpoint-header {
+  display: grid;
+  gap: clamp(1.15rem, 3vw, 1.75rem);
+}
+
+.today-checkpoint-topbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 2.75rem;
+}
+
+.today-checkpoint-back {
+  justify-content: flex-start;
+  margin-left: -0.75rem;
+  min-height: 2.75rem;
+  padding-inline: 0.75rem;
+}
+
+.today-checkpoint-count {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.today-checkpoint-headingBlock {
+  max-width: 44rem;
+}
+
+.today-checkpoint-kicker {
+  color: var(--today-accent-strong);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+
+.today-checkpoint-title,
+.today-trophy-title,
+.today-checkpoint-summary > h1,
+.today-checkpoint-emptyState > h1 {
+  color: var(--text-primary);
+  font-family: var(--today-font-display);
+  font-size: clamp(2rem, 7vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  margin: 0;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.today-checkpoint-progressRail {
+  height: 2rem;
+  margin-inline: 0.75rem;
+  position: relative;
+}
+
+.today-checkpoint-progressLine {
+  background: color-mix(in srgb, #8d7398 58%, transparent);
+  height: 1px;
+  inset: 50% 0 auto;
+  position: absolute;
+}
+
+.today-checkpoint-progressNode {
+  background: none;
+  border: 0;
+  height: 1.5rem;
+  outline: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: filter 180ms ease, opacity 180ms ease, transform 180ms ease;
+  width: 1.5rem;
+}
+
+.today-checkpoint-progressNode[data-node-state="complete"] {
+  opacity: 0.92;
+}
+
+.today-checkpoint-progressNode[data-node-state="current"] {
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--today-glow) 68%, transparent));
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.18);
+}
+
+.today-checkpoint-progressNode[data-node-state="upcoming"] {
+  filter: saturate(0.18);
+  opacity: 0.64;
+}
+
+.today-checkpoint-progressGem {
+  height: 100%;
+  width: 100%;
+}
+
+.today-checkpoint-step {
+  margin-inline: auto;
+  max-width: 46rem;
+}
+
+.today-checkpoint-step > form,
+.today-checkpoint-step > div {
+  gap: clamp(1.25rem, 4vw, 2rem);
+}
+
+.today-checkpoint-storyScene {
+  color: color-mix(in srgb, var(--text-primary) 86%, transparent);
+  font-family: var(--today-font-display);
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  line-height: 1.55;
+  text-wrap: balance;
+}
+
+.today-checkpoint-promptCard,
+.today-checkpoint-prompt {
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0;
+  box-shadow: none !important;
+  margin-inline: auto;
+  max-width: 42rem;
+  padding: 0;
+  width: 100%;
+}
+
+.today-checkpoint-prompt > p:last-child,
+.today-checkpoint-step .today-speech-cueCard > p:last-child {
+  color: color-mix(in srgb, var(--today-text-soft) 88%, var(--text-primary));
+  font-family: var(--today-font-display);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.today-checkpoint-input {
+  background: color-mix(in srgb, var(--surface-1) 76%, transparent) !important;
+  border-color: color-mix(in srgb, var(--today-accent-strong) 46%, var(--border-subtle)) !important;
+  border-radius: 1rem;
+  min-height: 3.5rem;
+  overflow-wrap: anywhere;
+}
+
+.today-checkpoint-input:focus-visible {
+  border-color: var(--today-accent-strong) !important;
+}
+
+.today-checkpoint-page [data-slot="button"].today-checkpoint-primaryAction {
+  height: auto;
+  justify-content: center;
+  min-height: 3.5rem !important;
+  width: min(100%, 36rem);
+  border: 0;
+  border-radius: 1rem;
+  padding: .9rem 1.4rem;
+  background: linear-gradient(110deg, #f4c167, #ffe397 60%, #ffc354);
+  color: #201209;
+  font-size: 1.1rem;
+  font-weight: 650;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.today-checkpoint-resultRow {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  max-width: 40rem;
+  width: 100%;
+}
+
+.today-checkpoint-resultRow .today-answer-feedback {
+  margin: 0;
+  max-width: 36rem;
+  min-height: 4rem;
+  width: 100%;
+}
+
+.today-checkpoint-saveError {
+  border-top: 1px solid color-mix(in srgb, #f59e0b 52%, var(--border-subtle));
+  margin-inline: auto;
+  max-width: 40rem;
+  padding: 1rem 0;
+  text-align: center;
+  width: 100%;
+}
+
+.today-checkpoint-step .today-speech-cueCard {
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+.today-checkpoint-step .today-speech-orbStage {
+  min-height: clamp(10rem, 28vw, 15rem);
+}
+
+.today-checkpoint-summary,
+.today-checkpoint-emptyState {
+  margin-inline: auto;
+  max-width: 42rem;
+  padding-block: clamp(1rem, 5vw, 3rem);
+  text-align: center;
+}
+
+.today-checkpoint-summary .today-completion-brandMark {
+  background: radial-gradient(circle, color-mix(in srgb, var(--today-glow) 58%, transparent), transparent 68%);
+  min-height: 4.5rem;
+}
+
+.today-checkpoint-reviewItem {
+  border-bottom: 1px solid color-mix(in srgb, var(--border-subtle) 72%, transparent);
+  overflow-wrap: anywhere;
+  padding: 0.75rem 0;
+}
+
+.today-checkpoint-reviewItem:last-child {
+  border-bottom: 0;
+}
+
+/* Trophy pages keep the player and drill legible without nesting cards. */
+.today-trophy-page {
+  gap: clamp(1.75rem, 5vw, 3.25rem);
+  max-width: 64rem;
+}
+
+.today-trophy-header {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+
+.today-trophy-title {
+  max-width: 48rem;
+}
+
+.today-trophy-wordGrid {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.today-trophy-wordCard {
+  background: none !important;
+  border: 0 !important;
+  border-right: 1px solid color-mix(in srgb, var(--border-subtle) 68%, transparent) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  padding: 0.75rem clamp(0.75rem, 2vw, 1.15rem) !important;
+}
+
+.today-trophy-wordCard:last-child {
+  border-right: 0 !important;
+}
+
+.today-trophy-player,
+.today-trophy-lyrics,
+.today-trophy-drill {
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-top: 1px solid color-mix(in srgb, var(--border-subtle) 72%, transparent) !important;
+  box-shadow: none !important;
+  padding: clamp(1.25rem, 3vw, 2rem) 0 0 !important;
+}
+
+.today-trophy-lyricColumn {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.today-trophy-lyricColumn + .today-trophy-lyricColumn {
+  border-top: 1px solid color-mix(in srgb, var(--border-subtle) 64%, transparent);
+  padding-top: 1rem;
+}
+
+.today-trophy-candidateSelector button {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+}
+
+.today-trophy-lyricRow {
+  background: color-mix(in srgb, var(--surface-1) 48%, transparent) !important;
+  border-color: color-mix(in srgb, var(--border-subtle) 74%, transparent) !important;
+  border-radius: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.today-trophy-clozeInput {
+  font-size: max(1rem, 1em);
+  min-height: 2.75rem;
+  max-width: 100%;
+}
+
+@media (max-width: 700px) {
+  .today-checkpoint-page {
+    gap: 1.75rem;
+    padding-inline: 1rem;
+  }
+
+  .today-checkpoint-headingBlock {
+    padding-inline: 0.15rem;
+  }
+
+  .today-checkpoint-title,
+  .today-trophy-title,
+  .today-checkpoint-summary > h1,
+  .today-checkpoint-emptyState > h1 {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  .today-checkpoint-step > form,
+  .today-checkpoint-step > div {
+    gap: 1.25rem;
+  }
+
+  .today-checkpoint-page [data-slot="button"].today-checkpoint-primaryAction {
+    width: 100%;
+  }
+
+  .today-trophy-wordGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .today-trophy-wordCard {
+    border-bottom: 1px solid color-mix(in srgb, var(--border-subtle) 68%, transparent) !important;
+    border-right: 0 !important;
+    padding: 0.9rem 0 !important;
+  }
+
+  .today-trophy-wordCard:last-child {
+    border-bottom: 0 !important;
+  }
+
+  .today-trophy-player > div,
+  .today-trophy-player > div > div:last-child {
+    align-items: stretch;
+  }
+
+  .today-trophy-player [data-slot="button"] {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .today-checkpoint-page {
+    padding-inline: 0.875rem;
+  }
+
+  .today-checkpoint-back {
+    margin-left: -0.5rem;
+    max-width: calc(100% - 3.75rem);
+  }
+
+  .today-checkpoint-back > a,
+  .today-checkpoint-back {
+    overflow-wrap: anywhere;
+  }
+
+  .today-checkpoint-progressRail {
+    margin-inline: 0.35rem;
+  }
+
+  .today-checkpoint-input {
+    width: 100% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .today-checkpoint-page,
+  .today-checkpoint-page *,
+  .today-checkpoint-page *::before,
+  .today-checkpoint-page *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .today-checkpoint-input,
+  .today-trophy-lyricRow {
+    background: var(--surface-1) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .today-checkpoint-progressLine,
+  .today-checkpoint-progressNode,
+  .today-checkpoint-input,
+  .today-trophy-candidateSelector,
+  .today-trophy-lyricRow {
+    border-color: CanvasText !important;
+  }
+
+  .today-checkpoint-progressNode {
+    background: Canvas !important;
+    border: 1px solid CanvasText !important;
+    border-radius: 999px;
+  }
+
+  .today-checkpoint-progressGem {
+    display: none;
+  }
+
+  .today-checkpoint-progressNode[data-node-state="complete"],
+  .today-checkpoint-progressNode[data-node-state="current"] {
+    background: Highlight;
+  }
+
+  .today-checkpoint-page [data-slot="button"].today-checkpoint-primaryAction {
+    border: 2px solid ButtonText !important;
+  }
+}

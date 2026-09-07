@@ -501,6 +501,8 @@ const messages = {
   "today.type.title": "Ketik dari ingatan",
   "today.type.prompt": "Lengkapi kalimat dari ingatan.",
   "today.type.placeholder": "Ketik kata",
+  "today.type.targetKeyboardHint": "Gunakan papan ketik {language}.",
+  "today.type.openScriptLab": "Latih {script} di Script Lab",
   "today.type.inputLabel": "Kata hilang",
   "today.type.correct": "Benar.",
   "today.type.wrong": "Belum tepat — coba lagi, atau tampilkan jawaban untuk bantuan.",

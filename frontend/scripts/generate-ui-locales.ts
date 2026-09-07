@@ -79,14 +79,46 @@ const pluralExtras: Partial<Record<LazyLocale, TranslationMessages>> = {
 }
 
 const manualKeyOverrides: Record<LazyLocale, TranslationMessages> = {
-  es: { 'decks.view.water': 'Agua' },
-  it: { 'decks.view.water': 'Acqua' },
-  pt: { 'decks.view.water': 'Água' },
-  id: { 'decks.view.water': 'Air' },
-  pl: { 'decks.view.water': 'Woda' },
-  ru: { 'decks.view.water': 'Вода' },
-  ko: { 'decks.view.water': '물' },
-  ja: { 'decks.view.water': '水' },
+  es: {
+    'decks.view.water': 'Agua',
+    'today.type.targetKeyboardHint': 'Usa tu teclado en {language}.',
+    'today.type.openScriptLab': 'Practica {script} en Script Lab',
+  },
+  it: {
+    'decks.view.water': 'Acqua',
+    'today.type.targetKeyboardHint': 'Usa la tastiera {language}.',
+    'today.type.openScriptLab': 'Esercitati con {script} in Script Lab',
+  },
+  pt: {
+    'decks.view.water': 'Água',
+    'today.type.targetKeyboardHint': 'Use o teclado de {language}.',
+    'today.type.openScriptLab': 'Pratique {script} no Script Lab',
+  },
+  id: {
+    'decks.view.water': 'Air',
+    'today.type.targetKeyboardHint': 'Gunakan papan ketik {language}.',
+    'today.type.openScriptLab': 'Latih {script} di Script Lab',
+  },
+  pl: {
+    'decks.view.water': 'Woda',
+    'today.type.targetKeyboardHint': 'Użyj klawiatury w języku {language}.',
+    'today.type.openScriptLab': 'Poćwicz pismo {script} w Script Lab',
+  },
+  ru: {
+    'decks.view.water': 'Вода',
+    'today.type.targetKeyboardHint': 'Используйте клавиатуру для языка {language}.',
+    'today.type.openScriptLab': 'Практикуйте письмо {script} в Script Lab',
+  },
+  ko: {
+    'decks.view.water': '물',
+    'today.type.targetKeyboardHint': '{language} 키보드를 사용하세요.',
+    'today.type.openScriptLab': 'Script Lab에서 {script} 쓰기를 연습하세요',
+  },
+  ja: {
+    'decks.view.water': '水',
+    'today.type.targetKeyboardHint': '{language}キーボードを使ってください。',
+    'today.type.openScriptLab': 'Script Labで{script}を練習する',
+  },
   ceb: {
     'decks.view.water': 'Tubig',
     'today.step.build': 'Han-aya ang mga pulong',
@@ -95,6 +127,8 @@ const manualKeyOverrides: Record<LazyLocale, TranslationMessages> = {
     'today.build.answerLabel': 'Imong pahayag',
     'today.path.backToPath': 'Balik sa kurso',
     'today.path.yourPath': 'Imong kurso',
+    'today.type.targetKeyboardHint': 'Gamita ang {language} nga keyboard.',
+    'today.type.openScriptLab': 'Pagpraktis sa {script} sa Script Lab',
     'today.checkpoint.cardBody': '8 ka buluhaton gikan sa {count} ka nahuman nga kurso',
     'today.checkpoint.backToToday': 'Balik sa kurso',
   },

@@ -28,6 +28,10 @@ for (const locale of locales) {
   const t = createT(locale, messages)
   assert.notEqual(t('nav.dashboard'), 'nav.dashboard', `${locale} resolves a loaded UI string`)
   assert.equal(t('today.language.Bisaya'), t('today.language.Cebuano'), `${locale} resolves the Bisaya target alias`)
+  assert.match(messages['today.type.targetKeyboardHint'] ?? '', /\{language\}/, `${locale} keeps the target keyboard language placeholder`)
+  assert.match(messages['today.type.openScriptLab'] ?? '', /\{script\}/, `${locale} keeps the Script Lab script placeholder`)
+  assert.ok(t('today.type.targetKeyboardHint', { language: '日本語' }).includes('日本語'), `${locale} interpolates the target language`)
+  assert.ok(t('today.type.openScriptLab', { script: 'かな' }).includes('かな'), `${locale} interpolates the script name`)
 }
 
 const destinationAnchors: Partial<Record<Locale, Record<string, string>>> = {

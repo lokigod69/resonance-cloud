@@ -6,14 +6,16 @@ export type GuidedBrandKind = keyof typeof dimensions
 
 /** Decoration only: readable labels and ordinary buttons carry every interaction. */
 export function GuidedBrand({ kind, className }: { kind: GuidedBrandKind; className?: string }) {
+  const asset = kind === 'success-ribbon' ? 'success-lw-v3' : kind
   return <img
-    src={`/guided/brand/${kind}.webp`}
-    width={dimensions[kind].width}
-    height={dimensions[kind].height}
+    src={`/guided/brand/${asset}.webp`}
+    width={dimensions[asset].width}
+    height={dimensions[asset].height}
     alt=""
     aria-hidden="true"
     draggable={false}
     decoding="async"
+    onError={(event) => { event.currentTarget.style.visibility = 'hidden' }}
     className={cn('today-brand-art', className)}
   />
 }

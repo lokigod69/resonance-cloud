@@ -501,6 +501,8 @@ const messages = {
   "today.type.title": "Type gikan sa memorya",
   "today.type.prompt": "Kompletoha ang sentence gikan sa memorya.",
   "today.type.placeholder": "I-type ang pulong",
+  "today.type.targetKeyboardHint": "Gamita ang {language} nga keyboard.",
+  "today.type.openScriptLab": "Pagpraktis sa {script} sa Script Lab",
   "today.type.inputLabel": "Nawala nga pulong",
   "today.type.correct": "Sakto.",
   "today.type.wrong": "Dili sakto — sulayi pag-usab, o ipakita ang tubag alang sa tabang.",

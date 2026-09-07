@@ -49,31 +49,22 @@ export function TrophyWordFallbackPanel({
 
   return (
     <main
-      className="today-shell today-checkpoint-shell relative isolate mx-auto grid min-h-dvh w-full max-w-5xl content-start gap-5 px-4 py-4 sm:px-6 lg:py-8"
+      className="today-shell today-checkpoint-shell today-checkpoint-page today-trophy-page relative isolate mx-auto grid min-h-dvh w-full content-start"
       data-guided-vibe={vibe}
     >
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[360px] opacity-70"
-        style={{
-          background:
-            'radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--today-glow) 34%, transparent), transparent 58%), linear-gradient(180deg, color-mix(in srgb, var(--surface-glass) 42%, transparent), transparent)',
-        }}
-        aria-hidden="true"
-      />
-
-      <section className="theme-panel today-trophy-panel rounded-lg border p-4 sm:p-6">
-        <Button asChild type="button" variant="ghost" size="sm" className="-ml-2 mb-4">
+      <header className="today-trophy-header">
+        <Button asChild type="button" variant="ghost" size="sm" className="today-checkpoint-back">
           <Link to={backToTodayHref}>
             <ChevronLeft className="h-4 w-4" />
             {t('today.checkpoint.backToToday')}
           </Link>
         </Button>
-        <h1 className="break-words text-3xl font-semibold leading-tight text-[var(--text-primary)]">
+        <h1 className="today-trophy-title">
           {t('today.trophy.fallbackTitle')}
         </h1>
-      </section>
+      </header>
 
-      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <section className="today-trophy-wordGrid">
         {trophyWords.map((trophyWord) => (
           <TrophyWordCard
             key={trophyWord.word}
@@ -83,14 +74,14 @@ export function TrophyWordFallbackPanel({
         ))}
       </section>
 
-      <section className="today-trophy-player rounded-lg border border-[var(--border-subtle)] p-4">
+      <section className="today-trophy-player">
         <p className="text-sm font-semibold text-[var(--text-primary)]">
           {t('today.trophy.player.comingSoon')}
         </p>
         <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
           {t('today.trophy.fallbackBody')}
         </p>
-        <Button type="button" className="mt-4" onClick={handleComplete}>
+        <Button type="button" className="today-checkpoint-primaryAction mt-4" onClick={handleComplete}>
           {t('today.checkpoint.done')}
         </Button>
         {saveFailed && (

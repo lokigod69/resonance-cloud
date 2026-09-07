@@ -501,6 +501,8 @@ const messages = {
   "today.type.title": "Wpisz z pamięci",
   "today.type.prompt": "Uzupełnij zdanie z pamięci.",
   "today.type.placeholder": "Wpisz słowo",
+  "today.type.targetKeyboardHint": "Użyj klawiatury w języku {language}.",
+  "today.type.openScriptLab": "Poćwicz pismo {script} w Script Lab",
   "today.type.inputLabel": "Brakujące słowo",
   "today.type.correct": "Poprawnie.",
   "today.type.wrong": "Prawie – spróbuj ponownie lub pokaż odpowiedź, aby uzyskać pomoc.",
