@@ -381,3 +381,13 @@ Spec rule 8 amendment (both new A1 specs): adjective blanks allowed when the adj
 - Compatible dependency updates resolve npm vulnerabilities. React Router7.18.3 removed unstable_useTransitions, so the unsupported BrowserRouter prop was removed; the complete Speak/Lens route fixture matrix passes. This supersedes the earlier explicit-prop instruction.
 - Durable IndexedDB recall receipts precede network delivery. Account switches, deadlines and skewed device clocks must not strand the queue or duplicate a result.
 - No automatic workspace deletion until a deck-level admission/deletion lease exists. No CAPTCHA dashboard-only activation without a working client integration. No blind repair of historical migration history and no automated Supabase invoice payment.
+
+## 2026-09-07 — Honor the Today critic cap and preserve the unmet visual target
+
+The owner requested fresh critics, an 8+ standard and at most three rounds.
+The independent scores are 7.0, 7.6 and 7.8. Ship the verified improvements under
+standing scoped release authorization, while recording that visual acceptance
+is still open. Do not round up, replace a critic to obtain a pass, or silently
+run a fourth round. Keep the remaining Trophy wording/wrapping/grouping and
+small-phone overview spacing issues as the concrete next design scope. No new
+raster assets are needed to solve these layout and clarity problems.

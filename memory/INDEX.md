@@ -16,6 +16,7 @@ Last updated: 2026-09-07
 | archive/ | Rolled-off log entries and retired notes | Almost never |
 
 ## Topic notes
+- [[notes/today-critic-loop-2026-09-07]] — three independent reviews, 7.0 → 7.6 → 7.8; shipped flow fixes and an explicitly unmet 8+ visual target.
 - [[notes/today-visual-input-round3-2026-09-07]] — selected café reference implemented, responsive glass/gem system, native-script composition safeguards and actual visual evidence.
 - [[notes/base-languages-brand-2026-09-07]] — twelve UI/explanation bases, static guided editions, card provenance, Ribbon current art, additive catalog SQL and verification limits.
 <!-- One line per page in notes/, added when created:
