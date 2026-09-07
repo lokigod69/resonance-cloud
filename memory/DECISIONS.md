@@ -2,7 +2,14 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-09-07 — Owner-selected café reference and native-script guided recall
+**Status:** active; owner explicitly selected the reference, delegated implementation and authorized native input after visual repair.
+**Decision:** Use one dark plane with separate proportional glass word pieces, clean gem progress and an L-to-wave success mark. Real HTML owns all text and actions. Keep a stable reading column, wrap long text, preserve independent versus assisted outcomes, and judge actual screenshots against the selected reference. Use nine small transparent assets with reduced-motion and missing-art fallbacks; preserve all waves and lesson identities.
+**Input policy:** Use the device's native target keyboard with quiet guidance and contextual Script Lab access. Suppress grading during composition, including WebKit229/default-form and trophy-blur paths. Add NFC equivalence only; authored accepted variants remain authoritative, with no transliteration/typo/whitespace expansion and no Study Type rollout change.
+**Supersedes:** The previous visual implementation and the deferral of guided native-script input. Twelve-base editions/catalog decisions remain active; native editorial review, videos and physical iPhone validation remain deferred. See [[notes/today-visual-input-round3-2026-09-07]].
+
 ## 2026-09-07 — Twelve base editions, restrained Ribbon current art, additive catalog repair
+**Visual/input status:** ⚠️ superseded → [[#2026-09-07 — Owner-selected café reference and native-script guided recall]]. Base editions and catalog repair remain active.
 **Status:** active; owner delegated selection, generation, implementation and scoped release.
 **Decision:** Support the twelve current language identities as interface and explanation bases without changing target beta rollout. Publish static, validated guided editions; never translate a lesson during study. Preserve authored target phrases, recordings and per-card meaning provenance. Select B Ribbon current with A spacing; six small transparent WebPs add feedback and progress character while real text and reduced-motion controls remain usable without images. Keep waves unchanged. Repair the missing Guided baseline only through proven history equivalence and additive catalog SQL; never reset production decks.
 **Quality boundary:** Machine-authored editions receive structural, protected-example, integration and sampled semantic checks, not a claim of native proofreading. The first deficient batch was quarantined. Videos, native-script typing and native editorial review are deferred by owner. Full Supabase scratch replay is separate from a live reset.
