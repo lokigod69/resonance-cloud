@@ -2657,7 +2657,7 @@ export const translations: Record<CoreLocale, TranslationMessages> = {
     'today.path.lessonProgressHero': 'Lektion {current} von {total}',
     'today.path.status.complete': 'Fertig',
     'today.path.status.current': 'Weiter',
-    'today.path.status.notStarted': 'Not started',
+    'today.path.status.notStarted': 'Noch nicht begonnen',
     'today.path.openLesson': "Lektion {sequence} öffnen: {title}",
     'today.path.trophyWord': 'Trophy: {word}',
     'today.path.viewPath': "Lernpfad ansehen",
