@@ -66,11 +66,11 @@ assert('review tile links use segment-review route mode', overviewSource.include
 assert('review tiles are always rendered as clickable links', sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('<Link') && !sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('if (!isAvailable)'))
 assert('review tiles no longer render visible progress text', !sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('/5'))
 assert('review tiles no longer render visible lock or not-ready state', !containsAny(sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel'), ['aria-disabled', 'today.path.notReadyYet', '<Lock', 'today.path.startReview']))
-assert('review assets are referenced by active vibe as WebPs', overviewSource.includes('${selectedVibeId}-review.webp') && overviewSource.includes('/guided/reviews/${assetName}'))
-assert('review tile references complete WebP asset from segment review completion state', overviewSource.includes('readGuidedSegmentReviewRecord') && overviewSource.includes('${selectedVibeId}-review-complete.webp') && overviewSource.includes('data-review-complete'))
+assert('review decoration keeps its localized label as real text', overviewSource.includes('today-segment-reviewArt') && overviewSource.includes('today-segment-reviewLabel">{displayLabel}'))
+assert('review completion decoration follows the saved segment review state', overviewSource.includes('readGuidedSegmentReviewRecord') && overviewSource.includes("isReviewComplete ? 'success-ribbon' : 'current-crest'") && overviewSource.includes('data-review-complete'))
 assert('review tiles no longer reference PNG review assets', !overviewSource.includes('-review.png'))
 assert('CSS defines separated segment review tile styling', cssSource.includes('.today-segment-reviewTile') && cssSource.includes('.today-path-segmentGrid'))
-assert('CSS constrains compact review banner size and keeps it object-contained', cssSource.includes('.today-segment-reviewImage') && cssSource.includes('max-height: 2.65rem') && cssSource.includes('max-width: min(100%, 16rem)') && cssSource.includes('object-fit: contain'))
+assert('review label keeps a compact accessible badge while decoration remains bounded', cssSource.includes('.today-segment-reviewArt') && cssSource.includes('width: min(100%, 8rem)') && cssSource.includes('min-height: 2.75rem') && cssSource.includes('object-fit: contain'))
 
 console.log('\n[assets]')
 for (const vibeId of ['bright', 'wistful', 'sharp'] as const) {

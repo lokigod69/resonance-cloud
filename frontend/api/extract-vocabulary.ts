@@ -10,6 +10,7 @@ import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
 import { writeUsageEvent } from './_shared/usageEvents'
 import { openRouterCost, type LlmUsage } from './_shared/usageCost'
+import { resolveApiBaseLanguage } from './_shared/baseLanguages'
 
 const OPENROUTER_MODEL = 'deepseek/deepseek-v4-flash'
 const EXTRACT_BODY_MAX_BYTES = 512 * 1024
@@ -108,13 +109,16 @@ function validateBody(raw: unknown): ExtractBody {
     throw new ApiError(400, 'At least one of include_words or include_phrases must be true')
   }
 
+  const baseLanguage = resolveApiBaseLanguage(raw.base_language)
+  if (!baseLanguage) throw new ApiError(400, 'Unsupported base_language')
+
   return {
     conversation_id: hasConversationId
       ? readTrimmedString(raw.conversation_id, 'conversation_id', 80)
       : undefined,
     messages: hasMessages ? validateMessages(raw.messages) : undefined,
     target_language: readTrimmedString(raw.target_language, 'target_language', MAX_LANGUAGE_LENGTH),
-    base_language: readTrimmedString(raw.base_language, 'base_language', MAX_LANGUAGE_LENGTH),
+    base_language: baseLanguage.value,
     max_items: maxItems,
     include_words: includeWords,
     include_phrases: includePhrases,

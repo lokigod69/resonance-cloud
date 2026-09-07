@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
 import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
 import { cn } from '@/lib/utils'
+import { GuidedBrand } from './GuidedBrand'
 
 const GUIDED_SEGMENT_REVIEWS = [
   {
@@ -122,6 +123,7 @@ export function TodayPathOverview({
   return (
     <div className="today-path-shell grid gap-4 sm:gap-5">
       <section className="today-path-hero theme-panel today-reveal rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
+        <GuidedBrand kind="current-crest" className="today-path-brandCurrent" />
         <div className="today-path-header">
           <div className="min-w-0">
             <p className="today-path-heroKicker">
@@ -404,6 +406,7 @@ function SegmentReviewTile({
       className="today-segment-reviewTile"
     >
       <span className="today-segment-reviewBadge">
+        <GuidedBrand kind={isReviewComplete ? 'success-ribbon' : 'current-crest'} className="today-segment-reviewArt" />
         <span className="today-segment-reviewLabel">{displayLabel}</span>
       </span>
     </TodaySegmentNode>
@@ -519,10 +522,11 @@ function RecommendedLessonPanel({
   onStartLesson: (lessonId?: string) => void
 }) {
   const { t } = useTranslation()
-  const title = resolveGuidedBaseContent(lesson.title, {
+  const resolvedTitle = resolveGuidedBaseContent(lesson.title, {
     preferredBaseLanguage,
     authoredBaseLanguage: lesson.baseLanguage,
-  }).text
+  })
+  const title = resolvedTitle.text
   const { user } = useAuth()
   const isResumable = Boolean(readTodayLessonDraft(user?.id, lesson))
   const actionLabel = isResumable ? t('today.practice.resume') : t('today.startLesson')
@@ -544,8 +548,8 @@ function RecommendedLessonPanel({
             {title}
           </h2>
           <p className="mt-2 text-sm text-[var(--text-secondary)]">{t('today.practice.lessonPreview')}</p>
-          {preferredBaseLanguage && !['English', 'German'].includes(preferredBaseLanguage) && (
-            <p className="mt-2 text-sm text-[var(--text-secondary)]">{t('today.practice.explanationsIn', { language: t(`today.language.${lesson.baseLanguage}`) })}</p>
+          {resolvedTitle.isFallback && (
+            <p className="mt-2 text-sm text-[var(--text-secondary)]">{t('today.practice.explanationsIn', { language: t(`today.language.${resolvedTitle.language}`) })}</p>
           )}
         </div>
         <Button size="lg" className="today-featuredLessonAction" onClick={() => onStartLesson(lesson.id)}>

@@ -56,6 +56,7 @@ import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
 import { getDeckLanguageLabel } from '@/lib/i18nDisplay'
 import { getCardFullUrl, getCardPreviewUrl } from '@/lib/imageUrls'
 import { deriveWordSource } from '@/lib/wordSource'
+import { getIntlLocale } from '@/lib/languages'
 
 type Deck = {
   id: string
@@ -502,7 +503,7 @@ export default function DeckViewPG() {
   const cardGenerationProgress = summarizeCardGenerationProgress(words)
   const deckLanguageLabel = getDeckLanguageLabel(deck.target_language, t)
   const displayName =
-    deck.name || `${t('generateGo.languageDeckName', { language: deckLanguageLabel })} — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US')}`
+    deck.name || `${t('generateGo.languageDeckName', { language: deckLanguageLabel })} — ${new Date(deck.created_at).toLocaleDateString(getIntlLocale(locale))}`
 
   async function handleRename() {
     if (!deck) return

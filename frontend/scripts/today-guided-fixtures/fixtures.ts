@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { getGuidedPathLessons, resolveGuidedLessonVariant } from '@/data/guidedLessons'
+import { getGuidedPathLessons, resolveGuidedLessonVariant, resolveGuidedBaseContent } from '@/data/guidedLessons'
 import type { TodayFixtureScenario } from './stubs/scenario'
 import { Ctx, bodyText, byText, pressKey, q, qa, shot, sleep, textOf, typeInto, waitFor, waitGone } from './utils'
 
@@ -8,6 +8,7 @@ type Fixture = {
   name: string
   viewport: { width: number; height: number }
   reduceMotion?: boolean
+  blockBrandAssets?: boolean
   scenario: TodayFixtureScenario
   localStorageSeed?: Record<string, string>
   run: (ctx: Ctx) => Promise<void>
@@ -147,6 +148,27 @@ function overviewFixture(id: string, viewport: { width: number; height: number }
 }
 
 export const FIXTURES: Fixture[] = [
+  ...(['English', 'German', 'French', 'Spanish', 'Italian', 'Portuguese', 'Indonesian', 'Polish', 'Russian', 'Korean', 'Japanese', 'Bisaya'] as const).map((baseLanguage, index): Fixture => ({
+    id: `today-base-${baseLanguage.toLowerCase()}-${index % 3 === 0 ? 320 : 390}`,
+    name: `${baseLanguage} base loads a full explanation edition and real practice`,
+    viewport: index % 3 === 0 ? SE : MOBILE,
+    scenario: { route: `${ROUTE}&start=1`, baseLanguage, activeLanguage: 'English', speech: 'unsupported' },
+    async run(ctx) {
+      const session = await waitFor('localized lesson', () => q<HTMLElement>('[data-session-step="scene"]'), 20000)
+      const lesson = resolveGuidedLessonVariant(getGuidedPathLessons('english-a1-practical-1')[0], 'bright')
+      const meaning = resolveGuidedBaseContent(lesson.corePhrase.baseText, { preferredBaseLanguage: baseLanguage, authoredBaseLanguage: lesson.baseLanguage })
+      ctx.check('requested base has a complete published meaning', !meaning.isFallback && meaning.language === baseLanguage && textOf(session).includes(meaning.text), `${meaning.language}: ${meaning.text}`)
+      ctx.check('target phrase remains unchanged', textOf(session).includes('Hi there, do you speak English?'), textOf(session).slice(0,500))
+      await advance(); await solveMatchPairs(); await advance()
+      await waitFor('build step', () => q('[data-session-step="build"]'))
+      await solveBuild()
+      await waitFor('miniature feedback asset decoded', () => qa<HTMLImageElement>('.today-brand-feedback img').some(img => img.complete && img.naturalWidth > 0), 5000)
+      ctx.check('correct phrase unlocks Continue and has visible text plus decorative feedback', !footerButton().disabled && textOf(q('.today-brand-feedback')).length > 0 && Boolean(q('.today-brand-feedback img[aria-hidden="true"]')), textOf(q('.today-brand-feedback')))
+      ctx.check('base shell has no untranslated keys', !/today\.[a-z]|common\.loading/i.test(bodyText()), bodyText().slice(-500))
+      checkNoOverflow(ctx)
+      await shot('localized-correct')
+    },
+  })),
   overviewFixture('today-overview-320', SE),
   overviewFixture('today-overview-390', MOBILE),
   overviewFixture('today-overview-1440', DESKTOP),
@@ -254,26 +276,27 @@ export const FIXTURES: Fixture[] = [
     },
   },
   {
-    id: 'today-french-fallback-390',
-    name: 'French-base cold start discloses the authored explanation language',
+    id: 'today-french-edition-390',
+    name: 'French-base cold start and media failure retain French explanations',
     viewport: MOBILE,
     scenario: { route: `${ROUTE}&start=1`, baseLanguage: 'French', activeLanguage: 'English', speech: 'unsupported' },
     async run(ctx) {
       const session = await waitFor('French-localized cold-start lesson', () => q<HTMLElement>('[data-session-step="scene"]'), 15000)
       await sleep(300)
       const page = bodyText()
-      const disclosure = byText('p', 'Explications de la leçon')
+      const lesson = resolveGuidedLessonVariant(getGuidedPathLessons('english-a1-practical-1')[0], 'bright')
+      const meaning = resolveGuidedBaseContent(lesson.corePhrase.baseText, { preferredBaseLanguage: 'French', authoredBaseLanguage: lesson.baseLanguage })
+      const caption = resolveGuidedBaseContent(lesson.lessonMedia.caption, { preferredBaseLanguage: 'French', authoredBaseLanguage: lesson.baseLanguage })
       const situation = q<HTMLElement>('.today-scene-situationStrip')
-      const situationUsesEnglishFallback = textOf(situation).includes('In a cafe')
-      ctx.check('missing French lesson explanations disclose every visible fallback language', textOf(disclosure).includes('allemand') && (!situationUsesEnglishFallback || textOf(disclosure).includes('anglais')), `${textOf(disclosure)} | ${textOf(situation)}`)
+      ctx.check('French edition replaces the authored explanation fallback', !meaning.isFallback && meaning.locale === 'fr' && !textOf(situation).includes('In a cafe'), `${meaning.text} | ${textOf(situation)}`)
       ctx.check('French shell has no untranslated Today keys', !/today\.[a-z]/i.test(page), page.slice(0, 700))
-      ctx.check('real target phrase remains attached to the disclosed explanation', textOf(session).includes('Hi there, do you speak English?') && textOf(session).includes('Hallo, sprechen Sie Englisch?'), textOf(session).slice(0, 700))
+      ctx.check('real target phrase remains attached to its French meaning', textOf(session).includes('Hi there, do you speak English?') && textOf(session).includes(meaning.text), textOf(session).slice(0, 700))
       const failedVideo = q<HTMLVideoElement>('.today-scene-step video')
       if (!failedVideo) throw new Error('authored lesson video missing')
       failedVideo.dispatchEvent(new Event('error'))
       const mediaAlert = await waitFor('localized media failure fallback', () => q<HTMLElement>('.today-scene-step [role="alert"]'))
       const fallbackFigure = mediaAlert.closest('figure')
-      ctx.check('media failure shows localized unavailable copy and authored caption', textOf(mediaAlert).includes('Média indisponible') && textOf(fallbackFigure).includes('Im Café beginnt die Begegnung'), textOf(fallbackFigure))
+      ctx.check('media failure shows localized unavailable copy and French caption', textOf(mediaAlert).includes('Média indisponible') && !caption.isFallback && textOf(fallbackFigure).includes(caption.text), textOf(fallbackFigure))
       ctx.check('media failure does not block the scene Continue action', !footerButton().disabled, `disabled=${footerButton().disabled}`)
       q<HTMLButtonElement>('.today-scene-step figure button')!.click()
       const retriedVideo = await waitFor('re-created lesson media after Retry', () => {
@@ -361,6 +384,28 @@ export const FIXTURES: Fixture[] = [
       ctx.check('explicit help reveals the answer and enables progress', textOf(answerLine).includes('speak') && !footerButton().disabled, `${textOf(revealed)} | ${textOf(answerLine)}`)
       await shot('revealed')
       checkNoOverflow(ctx)
+    },
+  },
+  {
+    id: 'today-missing-brand-assets-320',
+    name: 'Practice remains usable when decorative WebPs cannot load',
+    viewport: SE,
+    blockBrandAssets: true,
+    scenario: { route: ROUTE, baseLanguage: 'German', activeLanguage: 'English', speech: 'unsupported' },
+    async run(ctx) {
+      await reachTypeStep()
+      typeInto(q<HTMLInputElement>('.today-type-card input')!, 'wrong')
+      q<HTMLButtonElement>('.today-type-checkButton')!.click()
+      await waitFor('wrong recall with unavailable decoration', () => q('[data-type-state="wrong"]'))
+      const feedback = q<HTMLElement>('#today-type-feedback')!
+      const image = feedback.querySelector('img')!
+      await waitFor('blocked brand image', () => image.complete && image.naturalWidth === 0)
+      ctx.check('written retry feedback survives missing image', textOf(feedback).length > 10 && footerButton().disabled, textOf(feedback))
+      q<HTMLButtonElement>('.today-type-actions button:last-child')!.click()
+      await waitFor('answer reveal remains available', () => q('[data-type-state="revealed"]'))
+      ctx.check('ordinary text and controls still teach the answer', textOf(q('.today-type-answerLine')).includes('speak') && !footerButton().disabled, textOf(q('.today-type-answerLine')))
+      checkNoOverflow(ctx)
+      await shot('missing-assets')
     },
   },
   {

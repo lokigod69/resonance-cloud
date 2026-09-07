@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { ScriptDefinition, ScriptSymbol } from '@/lib/scriptlab/types'
 import { localizeScriptText } from '@/lib/scriptlab/types'
+import type { ScriptContentMessages } from '@/lib/scriptlab/contentLocales'
 import { markSymbolSeen } from '@/lib/scriptlab/progress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { ScriptAudioButton } from './ScriptAudioButton'
@@ -12,6 +13,7 @@ type SymbolDetailPanelProps = {
   symbols: ScriptSymbol[]
   activeIndex: number | null
   locale: string
+  contentMessages?: ScriptContentMessages
   onNavigate: (index: number) => void
   onClose: () => void
   onSeen?: (symbolId: string) => void
@@ -22,6 +24,7 @@ export function SymbolDetailPanel({
   symbols,
   activeIndex,
   locale,
+  contentMessages,
   onNavigate,
   onClose,
   onSeen,
@@ -158,7 +161,7 @@ export function SymbolDetailPanel({
             </div>
 
             <p className="mt-5 text-center text-[15px] leading-relaxed text-[var(--text-secondary)]">
-              {localizeScriptText(symbol.pronunciationNote, locale)}
+              {localizeScriptText(symbol.pronunciationNote, locale, contentMessages)}
             </p>
 
             <div className="pg-glass mt-5 divide-y divide-[var(--border-subtle)] rounded-2xl">
@@ -175,7 +178,7 @@ export function SymbolDetailPanel({
                 label={t('scriptlab.exampleWord')}
                 text={symbol.exampleWord.word}
                 romanization={symbol.exampleWord.romanization}
-                meaning={localizeScriptText(symbol.exampleWord.meaning, locale)}
+                meaning={localizeScriptText(symbol.exampleWord.meaning, locale, contentMessages)}
               >
                 <ScriptAudioButton script={script} spec={symbol.exampleWord.audio} size="sm" />
               </ExampleRow>

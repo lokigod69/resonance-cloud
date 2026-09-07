@@ -266,7 +266,9 @@ const todaySessionSource = readSource('../src/components/today/TodaySession.tsx'
 const todayHeroSource = readSource('../src/components/today/TodayHero.tsx')
 const todayPageSource = readSource('../src/pages/Today.tsx')
 const todayCssSource = readOptionalSource('../src/components/today/Today.css')
-const todaySpeechMicAsset = '../public/guided/today/speech-microphone-orb.png'
+const guidedBrandSource = readSource('../src/components/today/GuidedBrand.tsx')
+const guidedListenAsset = '../public/guided/brand/listen-ribbon.webp'
+const guidedSuccessAsset = '../public/guided/brand/success-ribbon.webp'
 const todayMobileRailAsset = '../public/guided/today/today-path-rail-mobile.png'
 const todayDesktopRailAsset = '../public/guided/today/today-path-rail-desktop.png'
 const buildPhraseSource = readSource('../src/components/today/BuildPhraseStep.tsx')
@@ -302,7 +304,6 @@ const sceneMediaContextCss = sliceBetween(todayCssSource, '.today-scene-mediaCon
 const speakRecordingButtonSource = sliceBetween(guidedSpeechPromptSource, "className={cn('today-speech-primaryAction'", '</button>')
 const speechSecondaryActionsSource = sliceBetween(guidedSpeechPromptSource, '<div className="today-speech-secondaryActions', '</div>')
 const speechMicAssetCss = sliceBetween(todayCssSource, '.today-speech-micAsset {', '}')
-const speechSuccessIconCss = sliceBetween(todayCssSource, '.today-speech-successIcon {', '}')
 const completionCorePhraseCss = sliceBetween(todayCssSource, '.today-completion-corePhrase {', '}')
 
 assert('overview lesson cards do not render trophy word labels', !containsAny(todayPathOverviewSource, ['today.path.trophyWord', 'lesson.trophyWord', '<Trophy']))
@@ -326,6 +327,7 @@ assert('Back to path handler only exits the session view', todayPageSource.inclu
 const progressBeforeBackToPath = JSON.stringify(completedTwo)
 assert('Back to path does not mutate progress', JSON.stringify(completedTwo) === progressBeforeBackToPath, completedTwo)
 assert('recommended panel label is next lesson, not internal recommendation copy', recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')") && !recommendedLessonPanelSource.includes("t('today.path.recommendedLabel')"))
+assert('recommended panel reports an authored-base fallback only when localized resolution actually falls back', recommendedLessonPanelSource.includes('resolvedTitle.isFallback') && recommendedLessonPanelSource.includes('resolvedTitle.language') && !recommendedLessonPanelSource.includes("!['English', 'German'].includes(preferredBaseLanguage)"), recommendedLessonPanelSource)
 assert('path overview prioritizes an explicitly selected lesson over the recommendation in the featured card', todayPathOverviewSource.includes('const pathLesson = overview.selectedLesson ?? overview.recommendedLesson'), todayPathOverviewSource)
 assert('Today page starts the tapped lesson directly and can launch the featured lesson', todayPageSource.includes('const handleSelectLesson = (lessonId: string)') && sliceBetween(todayPageSource, 'const handleSelectLesson', 'const handleStartSelectedLesson').includes('setSessionActive(true)') && todayPageSource.includes('const handleStartSelectedLesson = (lessonId?: string)'))
 assert('Today page scrolls to the lesson top when a session starts', todayPageSource.includes('scrollTodayToTop') && todayPageSource.includes('window.scrollTo({ top: 0') && sliceBetween(todayPageSource, 'const handleStartSelectedLesson', 'const handleOpenNextLesson').includes('scrollTodayToTop()'), todayPageSource)
@@ -428,23 +430,24 @@ assert('lesson session text surfaces force mobile-safe wrapping for long phrases
 assert('lesson session maps every step to a visual icon asset', todaySessionSource.includes('stepIconMap') && todaySessionSource.includes('matchPairs') && todaySessionSource.includes('build') && todaySessionSource.includes('type') && todaySessionSource.includes('speak'), todaySessionSource)
 assert('lesson task card receives stable status data alongside visible feedback', todaySessionSource.includes('getStepVisualState') && todaySessionSource.includes('data-step-state={stepVisualState}') && todaySessionSource.includes('data-session-step={step}'), todaySessionSource)
 assert(
-  'build and type steps render localized live wrong and correct feedback without exposing the answer',
+  'build and type steps render shared localized live feedback without exposing the answer',
   !containsAny(buildPhraseSource, ['<XCircle', 'today.build.expected'])
     && !containsAny(typeRecallSource, ['<XCircle', 'today.type.expected'])
-    && buildPhraseSource.includes('aria-live="polite"')
-    && typeRecallSource.includes('aria-live="polite"')
+    && buildPhraseSource.includes('<GuidedFeedback')
+    && typeRecallSource.includes('<GuidedFeedback')
+    && guidedBrandSource.includes('aria-live="polite"')
     && buildPhraseSource.includes("? t('today.build.wrong')")
     && typeRecallSource.includes("? t('today.type.wrong')")
-    && buildPhraseSource.includes("? t('today.practice.correct')")
-    && typeRecallSource.includes("? t('today.practice.correct')")
-    && buildPhraseSource.includes("? t('today.practice.answerShown')")
-    && typeRecallSource.includes("? t('today.practice.answerShown')"),
-  { buildPhraseSource, typeRecallSource },
+    && buildPhraseSource.includes("usedFallback ? 'today.practice.answerShown' : 'today.practice.correct'")
+    && typeRecallSource.includes("usedFallback ? 'today.practice.answerShown' : 'today.practice.correct'")
+    && buildPhraseSource.includes("status === 'revealed'")
+    && typeRecallSource.includes("status === 'revealed'"),
+  { buildPhraseSource, typeRecallSource, guidedBrandSource },
 )
-assert('speech prompt uses the generated transparent microphone asset instead of CSS waveform lines', guidedSpeechPromptSource.includes('TODAY_SPEECH_MIC_ASSET') && guidedSpeechPromptSource.includes('today-speech-micAsset') && assetHasBytes(todaySpeechMicAsset, 100000) && !guidedSpeechPromptSource.includes('today-speech-waveform') && !todayCssSource.includes('repeating-linear-gradient'), { guidedSpeechPromptSource, speechMicAssetCss })
+assert('speech prompt uses the guided listen brand asset instead of CSS waveform lines', guidedSpeechPromptSource.includes('<GuidedBrand kind="listen-ribbon"') && guidedSpeechPromptSource.includes('today-speech-micAsset') && guidedBrandSource.includes("src={`/guided/brand/${kind}.webp`}") && assetHasBytes(guidedListenAsset, 5000) && !guidedSpeechPromptSource.includes('today-speech-waveform') && !todayCssSource.includes('repeating-linear-gradient'), { guidedSpeechPromptSource, guidedBrandSource, speechMicAssetCss })
 assert('speech result replaces the microphone stage and offers retry in place', guidedSpeechPromptSource.includes('today-speech-resultStage') && guidedSpeechPromptSource.includes('handleTryAgain') && guidedSpeechPromptSource.includes('speech.reset()') && guidedSpeechPromptSource.includes("t('speak.tapRetry')") && !guidedSpeechPromptSource.includes("t('today.speak.expected'"), guidedSpeechPromptSource)
 assert('speech hint is a one-way inline reveal that does not add a second row', guidedSpeechPromptSource.includes('setHintVisible(true)') && !guidedSpeechPromptSource.includes('setHintVisible((current) => !current)') && speechSecondaryActionsSource.includes('today-speech-hint') && !guidedSpeechPromptSource.includes("t('today.speak.hideHint')"), speechSecondaryActionsSource)
-assert('speech success shows a green check and does not repeat the heard line', guidedSpeechPromptSource.includes('CheckCircle2') && guidedSpeechPromptSource.includes('today-speech-successIcon') && guidedSpeechPromptSource.includes("status === 'passed' &&") && guidedSpeechPromptSource.includes("status !== 'passed' &&") && speechSuccessIconCss.includes('#34d399'), { guidedSpeechPromptSource, speechSuccessIconCss })
+assert('speech success shows the success brand and does not repeat the heard line', guidedSpeechPromptSource.includes('<GuidedBrand kind="success-ribbon"') && assetHasBytes(guidedSuccessAsset, 5000) && guidedSpeechPromptSource.includes("status === 'passed' &&") && guidedSpeechPromptSource.includes("status !== 'passed' &&") && guidedSpeechPromptSource.indexOf("status !== 'passed' &&") < guidedSpeechPromptSource.indexOf("t('today.speak.heardLabel')"), guidedSpeechPromptSource)
 assert('speech success hides hints after a correct attempt', guidedSpeechPromptSource.includes("const shouldShowHint = showHintButton && status !== 'passed'") && speechSecondaryActionsSource.includes('shouldShowHint && !hintVisible') && speechSecondaryActionsSource.includes('shouldShowHint && hintVisible'), speechSecondaryActionsSource)
 assert('lesson session primary action is a full-width bottom bar button', todaySessionSource.includes('today-session-footerButton') && todayCssSource.includes('.today-session-footerButton'), todaySessionSource)
 
@@ -481,10 +484,10 @@ assert('lesson cards use whole-card button semantics', lessonPathCardSource.incl
 assert('lesson cards avoid tiny-only open actions', !containsAny(lessonPathCardSource, ['getCardActionLabel', 'today.path.openLessonAction']))
 assert('match feedback avoids verbose expected correction copy', !containsAny(matchPairsSource, ['expected', 'Expected', 'Erwartet', 'today.matchPairs.expected']))
 assert('type recall wrong feedback does not reveal the answer by default', !typeRecallSource.includes("t('today.type.wrong', { answer"))
-assert('type recall correct feedback is visible and localized', typeRecallSource.includes("status === 'correct'") && typeRecallSource.includes("? t('today.practice.correct')"))
+assert('type recall distinguishes an unaided correct answer from an assisted reveal', typeRecallSource.includes("status === 'correct'") && typeRecallSource.includes("usedFallback ? 'today.practice.answerShown' : 'today.practice.correct'") && typeRecallSource.includes("status === 'revealed'"))
 assert('type recall fallback is compact answer reveal, not choice chips', typeRecallSource.includes("t('today.type.answerLine'") && !containsAny(typeRecallSource, ['getGuidedTypeFallbackChoices', 'handleFallbackChoice', "t('today.type.fallbackLabel')", 'theme-chip']))
 assert('build feedback remains compact without expected correction copy', !containsAny(buildPhraseSource, ['expected', 'Expected', 'Erwartet', 'today.build.expected']))
-assert('build correct feedback is visible and localized', buildPhraseSource.includes("status === 'correct'") && buildPhraseSource.includes("? t('today.practice.correct')") && !buildPhraseSource.includes("t('today.build.correct')"))
+assert('build feedback distinguishes an unaided correct answer from an assisted reveal', buildPhraseSource.includes("status === 'correct'") && buildPhraseSource.includes("usedFallback ? 'today.practice.answerShown' : 'today.practice.correct'") && buildPhraseSource.includes("status === 'revealed'") && !buildPhraseSource.includes("t('today.build.correct')"))
 assert('build step auto-validates without an Antwort prüfen button', !containsAny(buildPhraseSource, ["t('today.checkAnswer')", 'handleCheck']))
 assert('Speak step uses the shared guided speech prompt', speakStepSource.includes('<GuidedSpeechPrompt') && guidedSpeechPromptSource.includes('useGuidedSpeechRecognition'), speakStepSource)
 assert('Speak step does not render a separate recording status chip', !containsAny(guidedSpeechPromptSource, ['today-speak-recordingStatus', "t('today.speak.recording')"]))
@@ -495,7 +498,7 @@ assert('completion can open the next lesson as primary action', completeStepSour
 assert('trophy completion avoids long why-it-matters copy', !completeStepSource.includes('whyThisWord'))
 assert('completion primes the learner with the completed core sentence and translation', completeStepSource.includes('today-completion-corePhrase') && completeStepSource.includes('lesson.corePhrase.targetText') && completeStepSource.includes('resolveGuidedBaseContent(lesson.corePhrase.baseText') && completionCorePhraseCss.includes('max-width'), { completeStepSource, completionCorePhraseCss })
 assert('scene placeholder uses lesson media caption as primary text', todayHeroSource.includes('today.media.placeholderLabel') && !todayHeroSource.includes("t('today.media.placeholderTitle')") && containsAny(todayHeroSource, ['{media.caption}', 'media.caption']), todayHeroSource)
-assert('completion screen renders selected vibe emblem badge without success check overlay', completeStepSource.includes('today-completion-vibeBadge') && completeStepSource.includes('guidedVibes[lesson.vibeId].emblem?.url') && !completeStepSource.includes('<CheckCircle2'), completeStepSource)
+assert('completion screen renders the shared success brand without a duplicate check overlay', completeStepSource.includes('today-completion-brandMark') && completeStepSource.includes('<GuidedBrand kind="success-ribbon"') && assetHasBytes(guidedSuccessAsset, 5000) && !completeStepSource.includes('<CheckCircle2'), completeStepSource)
 
 const deterministicBuildChips = getDeterministicBuildChips(firstLesson)
 assert(

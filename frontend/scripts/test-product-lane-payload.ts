@@ -577,7 +577,7 @@ console.log('\n[premium customize infographic UI wiring]')
   assert('customize step renders Infographic Style selector', customizationSource.includes('PremiumInfographicStyleSelector'))
   assert('customize step disables controls only for infographic', customizationSource.includes("presentation_form === 'infographic_card'"))
   assert('customize step explains inactive meaning/art controls through i18n', customizationSource.includes("t('premium.meaning.inactive')"))
-  assert('customize step localizes infographic helper through i18n', customizationSource.includes("t('premium.infographicStyle.helper')"))
+  assert('customize step localizes the concise infographic selector title', customizationSource.includes("title={t('premium.infographicStyle.title')}"))
   assert('classic skin wires infographic style selector', classicSource.includes('skin="classic"') && classicSource.includes('onInfographicStyleChange'))
   assert('glassy skin wires infographic style selector', glassySource.includes('skin="glassy"') && glassySource.includes('onInfographicStyleChange'))
   assert('classic payload path uses shared builder overrides', classicSource.includes('buildGeneratePayload') && classicSource.includes('premiumInfographicStyleOverride'))
@@ -613,9 +613,9 @@ console.log('\n[premium customize infographic UI source state]')
     PREMIUM_INFOGRAPHIC_STYLE_OPTIONS,
   )
   assert(
-    'infographic selector renders localized option labels and helpers',
+    'infographic selector renders localized option labels without verbose helper rows',
     selectorsSource.includes('label={t(option.labelKey)}')
-      && selectorsSource.includes('helper={t(option.helperKey)}'),
+      && !selectorsSource.includes('helper={t(option.helperKey)}'),
   )
   assert(
     'infographic mode compacts inactive Meaning Strategy options',
@@ -628,8 +628,8 @@ console.log('\n[premium customize infographic UI source state]')
       && customizationSource.includes("t('premium.artStyle.title')"),
   )
   assert(
-    'infographic render shows dedicated prompting helper through i18n',
-    customizationSource.includes("t('premium.infographicStyle.helper')"),
+    'infographic render keeps the dedicated prompting helper out of the concise picker',
+    !customizationSource.includes("t('premium.infographicStyle.helper')"),
   )
   assert(
     'switching away from Infographic hides Infographic Style',

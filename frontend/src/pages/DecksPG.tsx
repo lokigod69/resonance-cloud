@@ -36,6 +36,7 @@ import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 import { MediaSegments } from '@/components/media/MediaSegments'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
 import { getCardPreviewUrl } from '@/lib/imageUrls'
+import { getIntlLocale } from '@/lib/languages'
 
 type Deck = {
   id: string
@@ -122,7 +123,7 @@ export default function DecksPG() {
   const location = useLocation()
 
   const [decks, setDecks] = useState<Deck[]>([])
-  const { t, tp, locale } = useTranslation()
+  const { t, tp } = useTranslation()
 
   const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
   const [deckThumbnails, setDeckThumbnails] = useState<Record<string, string>>({})
@@ -294,7 +295,7 @@ export default function DecksPG() {
     )
   }
 
-  const waterLabel = locale === 'de' ? 'Wasser' : locale === 'fr' ? 'Eau' : 'Water'
+  const waterLabel = t('decks.view.water')
   const pageClassName =
     viewMode === 'water'
       ? 'water-decks-page px-6'
@@ -430,7 +431,7 @@ function getDeckMeta(
 ) {
   const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
   const progress = counts.total > 0 ? Math.round((counts.completed / counts.total) * 100) : 0
-  const dateLocale = locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US'
+  const dateLocale = getIntlLocale(locale)
   const languageLabel = getDeckLanguageLabel(deck.target_language, t)
   const displayName =
     deck.name || `${t('generateGo.languageDeckName', { language: languageLabel })} — ${new Date(deck.created_at).toLocaleDateString(dateLocale)}`

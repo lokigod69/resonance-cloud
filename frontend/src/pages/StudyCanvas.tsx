@@ -15,6 +15,7 @@ import type { CanvasAutoReveal, CanvasDirection, CanvasLanguagePair, CanvasMode 
 import { getCardFaces } from '@/lib/cardFaces'
 import { LANGUAGES } from '@/lib/languages'
 import { safeInternalPath } from '@/lib/safeInternalPath'
+import { resolveSharedWordBaseLanguage } from '@/lib/wordBaseLanguage'
 
 const PAGE_SIZE = 20
 const SESSION_STORAGE_PREFIX = 'resonance-canvas-session'
@@ -276,9 +277,8 @@ export default function StudyCanvas() {
   )
 
   const languagePair = useMemo<CanvasLanguagePair>(() => {
-    const languageWord = words.find((word) => word.target_language || word.base_language)
-    const deckTarget = languageWord?.target_language ?? null
-    const deckBase = languageWord?.base_language ?? null
+    const deckTarget = words.find((word) => word.target_language)?.target_language ?? null
+    const deckBase = resolveSharedWordBaseLanguage(words.map((word) => word.base_language))
     const target = deckTarget ?? studyLanguage ?? null
     const base = deckBase
 
@@ -298,12 +298,10 @@ export default function StudyCanvas() {
   const canToggleImages = deckType !== 'card_text'
 
   const hasCompleteDeckLanguagePair = useMemo(() => {
-    const languageWord = words.find((word) => word.target_language || word.base_language)
-    const deckTarget = languageWord?.target_language ?? null
-    const deckBase = languageWord?.base_language ?? null
-
-    return !!deckTarget && !!deckBase && normalizeLanguage(deckTarget) !== normalizeLanguage(deckBase)
-  }, [words])
+    return !!languagePair.target
+      && !!languagePair.base
+      && normalizeLanguage(languagePair.target) !== normalizeLanguage(languagePair.base)
+  }, [languagePair])
 
   // Empty pool → instant completion. Only flips to true; explicit handlers reset to false.
   useEffect(() => {

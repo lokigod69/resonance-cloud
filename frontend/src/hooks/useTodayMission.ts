@@ -165,7 +165,7 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled,
             allowGuidedLanguageFallback,
           )
           if (guidedLanguage) {
-            await lessonsModule.loadGuidedLessonsForLanguage(guidedLanguage)
+            await lessonsModule.loadGuidedLessonsForLanguage(guidedLanguage, baseLanguage)
           }
           if (cancelled) return
           const mission = buildTodayMission({ lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage, userId, allowGuidedLanguageFallback })

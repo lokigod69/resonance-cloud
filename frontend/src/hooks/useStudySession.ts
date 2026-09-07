@@ -6,6 +6,7 @@ import { getLanguageQueryValues } from '@/lib/languages'
 import { useWordStates, type LemmaState } from '@/hooks/useWordStates'
 import { trackLearningAction } from '@/lib/analytics'
 import { recallAttemptQueue } from '@/lib/recallAttemptQueue'
+import { resolveWordBaseLanguage } from '@/lib/wordBaseLanguage'
 
 export type StudyWord = {
   id: string
@@ -41,6 +42,7 @@ type RetryItem = { wordId: string; cardsSeen: number }
 type SessionStats = { remembered: number; reviewLater: number }
 
 type StudyWordRow = Omit<StudyWord, 'target_language' | 'base_language' | 'deck_type'> & {
+  metadata?: unknown
   decks?: { target_language?: string | null; deck_type?: 'video' | 'card' | 'card_text' | null } | null
 }
 
@@ -129,7 +131,7 @@ export function useStudySession(
   language?: string | null,
   queue?: StudyQueue | null,
 ) {
-  const { user, profile } = useAuth()
+  const { user } = useAuth()
   const userId = user?.id ?? null
   const [words, setWords] = useState<StudyWord[]>([])
   const [loading, setLoading] = useState(true)
@@ -192,7 +194,7 @@ export function useStudySession(
 
     let wordsQuery = supabase
       .from('words')
-      .select('id, word, translation, mnemonic, etymology, ipa, video_url, thumbnail_url, card_thumbnail_url, tts_audio_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language, deck_type)')
+      .select('id, word, translation, mnemonic, etymology, ipa, video_url, thumbnail_url, card_thumbnail_url, tts_audio_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, metadata, decks(target_language, deck_type)')
       .eq('user_id', userId)
       .eq('status', 'complete')
     if (deckId) {
@@ -206,12 +208,12 @@ export function useStudySession(
     if (isStale?.()) return
 
     let rawWords: StudyWord[] = ((wordsRes.data ?? []) as StudyWordRow[]).map((row) => {
-      const { decks, ...word } = row
+      const { decks, metadata, ...word } = row
       return {
         ...word,
         deck_type: decks?.deck_type ?? null,
         target_language: decks?.target_language ?? null,
-        base_language: profile?.base_language ?? null,
+        base_language: resolveWordBaseLanguage(metadata),
       }
     })
     // Audio mode: only include words that have a Suno audio URL
@@ -223,7 +225,7 @@ export function useStudySession(
     setWords(sortByHeat(rawWords, wordStatesRef.current, queueRef.current))
     setInitialLoadDone(true)
     setLoading(false)
-  }, [userId, profile?.base_language, deckId, studyMode, language])
+  }, [userId, deckId, studyMode, language])
 
   useEffect(() => {
     let stale = false

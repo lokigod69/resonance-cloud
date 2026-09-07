@@ -1,0 +1,38 @@
+{
+  "success-ribbon": {
+    "width": 196,
+    "height": 196,
+    "bytes": 8222,
+    "alpha": true
+  },
+  "retry-ribbon": {
+    "width": 196,
+    "height": 193,
+    "bytes": 12120,
+    "alpha": true
+  },
+  "word-rim": {
+    "width": 516,
+    "height": 160,
+    "bytes": 18218,
+    "alpha": true
+  },
+  "current-crest": {
+    "width": 516,
+    "height": 155,
+    "bytes": 12140,
+    "alpha": true
+  },
+  "current-bead": {
+    "width": 67,
+    "height": 68,
+    "bytes": 1614,
+    "alpha": true
+  },
+  "listen-ribbon": {
+    "width": 131,
+    "height": 132,
+    "bytes": 6738,
+    "alpha": true
+  }
+}

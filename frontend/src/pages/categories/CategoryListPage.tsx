@@ -21,6 +21,7 @@ import {
   staticLibraryRouteSuffix,
 } from '@/lib/staticLibraryLanguage'
 import { LibraryLanguageChooser } from './LibraryLanguageChooser'
+import { canUseLegacyGermanCurriculum } from '@/lib/languages'
 import { useCategoryScrollReset } from './useCategoryScrollReset'
 import styles from './Categories.module.css'
 
@@ -96,7 +97,7 @@ function thematicCategoryHref(category: StaticCategory) {
 
 export default function CategoryListPage() {
   const { t } = useTranslation()
-  const { user } = useAuth()
+  const { user, profile } = useAuth()
   const { activeLanguage, languageReady } = useLanguage()
   const [searchParams] = useSearchParams()
   useCategoryScrollReset()
@@ -256,6 +257,7 @@ export default function CategoryListPage() {
         </div>
       </section>
 
+      {canUseLegacyGermanCurriculum(profile?.base_language) ? (
       <section className={`${styles.categorySection} ${styles.basicVocabularySection}`} aria-labelledby="legacy-curriculum-categories">
         <div className={styles.sectionHeader}>
           <div>
@@ -297,6 +299,7 @@ export default function CategoryListPage() {
           })}
         </div>
       </section>
+      ) : null}
     </section>
   )
 }

@@ -9,6 +9,7 @@ import {
 import { playGuidedAudio, stopGuidedAudio } from '@/lib/guidedAudio'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
+import { GuidedFeedback } from './GuidedBrand'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { PatternSpotlightCard } from '@/components/today/PatternStep'
@@ -241,13 +242,13 @@ export function ComplicationStep({ lesson, onCheckStateChange }: ComplicationSte
         <PatternSpotlightCard lesson={lesson} pattern={lesson.pattern} />
       )}
 
-      <div aria-live="polite" className="sr-only">
+      <GuidedFeedback status={allCorrect ? (blankStates.some(state => state.usedFallback) ? 'revealed' : 'correct') : blankStates.some(state => state.status === 'wrong') ? 'wrong' : 'idle'}>
         {allCorrect
-          ? t('today.complication.correct')
+          ? t(blankStates.some(state => state.usedFallback) ? 'today.practice.answerShown' : 'today.complication.correct')
           : blankStates.some((state) => state.status === 'wrong')
             ? t('today.complication.wrong')
             : ''}
-      </div>
+      </GuidedFeedback>
     </div>
   )
 }

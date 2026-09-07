@@ -7,6 +7,7 @@ import { consumeFeatureAllowance, recordFeatureUsage, refundFeatureUsage, resolv
 import { geminiVisionCost } from './_shared/usageCost'
 import { writeUsageEvent, type UsageEventInput } from './_shared/usageEvents'
 import { analyticsPlatformFromRequest, trackServerCoreAction } from './_shared/analytics'
+import { resolveApiBaseLanguage } from './_shared/baseLanguages'
 import {
   createGeminiVisualScanProvider,
   GEMINI_VISION_MODEL,
@@ -133,10 +134,13 @@ function validateBody(raw: unknown): VisualScanRequest {
     hint = raw.hint
   }
 
+  const baseLanguage = resolveApiBaseLanguage(raw.baseLanguage)
+  if (!baseLanguage) throw new ApiError(400, 'Unsupported baseLanguage')
+
   return {
     image,
     targetLanguage: readString(raw.targetLanguage, 'targetLanguage', MAX_LANGUAGE_LENGTH),
-    baseLanguage: readString(raw.baseLanguage, 'baseLanguage', MAX_LANGUAGE_LENGTH),
+    baseLanguage: baseLanguage.value,
     level: readString(raw.level, 'level', MAX_LEVEL_LENGTH, false) || undefined,
     hint,
   }

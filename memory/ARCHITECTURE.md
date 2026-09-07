@@ -2,6 +2,7 @@
 Last verified: 2026-09-07 for the hardening additions below; older unchanged sections retain their original verification scope.
 
 ## September 7 architecture additions
+- Twelve-language UI and explanation architecture: [[notes/base-languages-brand-2026-09-07]]. Lazy UI/ScriptLab packs; 144 fingerprinted compact guided target/base editions; per-word meaning provenance; API-local base registry. Private canonical phrase catalog registers exact identities and 32,400 meanings for Keep; existing user words are not rewritten.
 - Guided practice contracts: [[notes/today-guided-2026-09-07]]. Account-scoped local lesson/checkpoint/trophy drafts and honest assisted outcomes; explicit `keep_guided_phrase` RPC saves a core phrase to a stable per-language card_text deck via `guided_phrase_decks`, attaching matching existing audio without generation/credits. Progress remains device-local; phrase decks are account-backed.
 - Server request scopes/deadlines: `frontend/api/_shared/requestDeadline.ts`; shared transports include auth, quotas, providers, bodies and bounded compensation. Client counterpart `frontend/src/lib/clientDeadline.ts` supports iOS15.
 - Canonical Speak personality authority: `api/_shared/speakPersona.ts` reads a generated API-local catalog, checked against picker registries by prebuild. Do not import src/ ESM from API CommonJS. New clients send IDs; exact legacy tuples remain compatible.

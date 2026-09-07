@@ -1,5 +1,4 @@
 import {
-  CheckCircle2,
   ChevronLeft,
   ChevronRight,
   Keyboard,
@@ -15,7 +14,6 @@ import {
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getGuidedMatchPairs, resolveGuidedBaseContent, type GuidedDialogueTurn, type GuidedLesson } from '@/data/guidedLessons'
-import { guidedVibes } from '@/data/guidedVibes'
 import { clearTodayLessonDraft, readTodayLessonDraft, writeTodayLessonDraft, type TodayLessonResult } from '@/lib/todayProgress'
 import { playGuidedAudio, stopGuidedAudio } from '@/lib/guidedAudio'
 import { keepGuidedPhrase } from '@/lib/guidedPhraseKeep'
@@ -34,6 +32,7 @@ import { canUseGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognitio
 import { getSessionSteps, type TodaySessionStep } from '@/components/today/sessionSteps'
 import { trackLearningAction } from '@/lib/analytics'
 import { cn } from '@/lib/utils'
+import { GuidedBrand } from './GuidedBrand'
 
 type TodaySessionProps = {
   lesson: GuidedLesson
@@ -279,7 +278,7 @@ export function TodaySession({
           </div>
         </div>
         <TodayLessonProgressRail steps={sessionSteps.filter((item) => item !== 'complete')} stepIndex={stepIndex} />
-        {profile?.base_language && !['English', 'German'].includes(profile.base_language) && (
+        {resolveGuidedBaseContent(lesson.corePhrase.baseText, { preferredBaseLanguage, authoredBaseLanguage: lesson.baseLanguage }).isFallback && (
           <p className="text-sm text-[var(--text-secondary)]">{t('today.practice.explanationsIn', { language: t(`today.language.${resolveGuidedBaseContent(lesson.corePhrase.baseText, { preferredBaseLanguage, authoredBaseLanguage: lesson.baseLanguage }).language}`) })}</p>
         )}
       </header>
@@ -346,6 +345,7 @@ export function TodaySession({
             <ChevronLeft className="h-4 w-4" />{t('today.practice.back')}
           </Button>
           <Button className="today-session-footerButton" onClick={handleNext} disabled={!canContinue}>
+            <GuidedBrand kind="current-crest" className="today-button-current" />
             {saveFailed ? t('errors.route.retry') : t('today.continue')}
             <ChevronRight className="h-4 w-4" />
           </Button>
@@ -392,6 +392,7 @@ function TodayLessonStepIcon({
 function TodayLessonProgressRail({ steps, stepIndex }: { steps: TodaySessionStep[]; stepIndex: number }) {
   return (
     <div className="today-session-progressRail" aria-hidden="true">
+      <GuidedBrand kind="current-crest" className="today-progress-current" />
       <span
         className="today-session-progressFill"
         style={{ width: `${Math.min(1, stepIndex / Math.max(1, steps.length - 1)) * 100}%` }}
@@ -403,7 +404,7 @@ function TodayLessonProgressRail({ steps, stepIndex }: { steps: TodaySessionStep
           data-node-state={index < stepIndex ? 'complete' : index === stepIndex ? 'current' : 'upcoming'}
           style={{ left: `${(index / (steps.length - 1)) * 100}%` }}
         >
-          {index < stepIndex && <CheckCircle2 className="today-session-progressCheck" />}
+          {index <= stepIndex && <GuidedBrand kind="current-bead" className="today-session-progressBead" />}
         </span>
       ))}
     </div>
@@ -541,7 +542,7 @@ function SceneStepB1({ lesson, themOne }: { lesson: GuidedLesson; themOne: Guide
   // Unlike the legacy scene (situation.de by convention), the B1 setup must be
   // comprehensible: resolve the situation to the learner's base language.
   const resolvedSituation = resolveGuidedBaseContent(
-    { en: lesson.situation.en, de: lesson.situation.de },
+    lesson.situation,
     { preferredBaseLanguage, authoredBaseLanguage: lesson.baseLanguage },
   ).text
   const handleListen = () => {
@@ -636,7 +637,6 @@ function CompleteStep({
       savingRef.current = false
     }
   }
-  const vibe = guidedVibes[lesson.vibeId]
   const trophyMeaning = resolveGuidedBaseContent(lesson.trophyWord.meaning, {
     preferredBaseLanguage,
     authoredBaseLanguage: lesson.baseLanguage,
@@ -659,15 +659,8 @@ function CompleteStep({
 
   return (
     <div className="today-completion-stage grid gap-5 text-center">
-      <div className="today-completion-vibeBadge mx-auto" aria-label={vibe.label}>
-        {guidedVibes[lesson.vibeId].emblem?.url && (
-          <img
-            src={guidedVibes[lesson.vibeId].emblem?.url}
-            alt=""
-            className="today-completion-vibeBadgeImage"
-            draggable={false}
-          />
-        )}
+      <div className="today-completion-brandMark mx-auto" aria-hidden="true">
+        <GuidedBrand kind="success-ribbon" />
       </div>
       <div>
         <h3 ref={titleRef} tabIndex={-1} className="text-3xl font-semibold text-[var(--text-primary)] outline-none">

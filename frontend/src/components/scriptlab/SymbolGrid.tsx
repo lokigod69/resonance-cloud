@@ -1,24 +1,26 @@
 import type { ScriptSection, ScriptSymbol } from '@/lib/scriptlab/types'
 import { localizeScriptText } from '@/lib/scriptlab/types'
+import type { ScriptContentMessages } from '@/lib/scriptlab/contentLocales'
 import { cn } from '@/lib/utils'
 
 type SymbolGridProps = {
   section: ScriptSection
   symbols: ScriptSymbol[]
   locale: string
+  contentMessages?: ScriptContentMessages
   seenSymbolIds: ReadonlySet<string>
   onSelect: (symbol: ScriptSymbol) => void
 }
 
-export function SymbolGrid({ section, symbols, locale, seenSymbolIds, onSelect }: SymbolGridProps) {
+export function SymbolGrid({ section, symbols, locale, contentMessages, seenSymbolIds, onSelect }: SymbolGridProps) {
   return (
     <section className="space-y-3">
       <div className="space-y-1">
         <h3 className="font-display text-lg font-semibold text-[var(--text-primary)]">
-          {localizeScriptText(section.title, locale)}
+          {localizeScriptText(section.title, locale, contentMessages)}
         </h3>
         <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
-          {localizeScriptText(section.description, locale)}
+          {localizeScriptText(section.description, locale, contentMessages)}
         </p>
       </div>
 

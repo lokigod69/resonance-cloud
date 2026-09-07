@@ -267,6 +267,7 @@ export function buildStaticCategoryImportPayload(
       target_language_code: targetLanguageCode,
       helper_language: item.helperLanguageName,
       helper_language_code: helperLanguageCode,
+      base_language: item.helperLanguageName,
     }
 
     if (staticAudio?.public_url) {

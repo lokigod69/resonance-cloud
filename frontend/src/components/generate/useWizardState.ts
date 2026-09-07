@@ -796,6 +796,8 @@ interface BuildPayloadOpts {
    *  the caller has a synchronously-flushed list that hasn't yet landed in
    *  state.words. */
   wordsOverride?: string[]
+  /** Snapshot of profiles.base_language at submit time. */
+  baseLanguage?: string
 }
 
 export function buildGeneratePayload({
@@ -806,6 +808,7 @@ export function buildGeneratePayload({
   premiumQuickModeOverride,
   premiumInfographicStyleOverride,
   wordsOverride,
+  baseLanguage = 'English',
 }: BuildPayloadOpts): GeneratePayload {
   const lane: ProductLane =
     state.productLane
@@ -939,6 +942,7 @@ export function buildGeneratePayload({
       movie_override: movieOverride ?? existingDeck?.movie_override ?? null,
       words_total: words.length,
       settings_override: {
+        base_language: baseLanguage,
         ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
         ...(genre ? { genre } : {}),
         ...(lyricMode ? { lyric_mode: lyricMode } : {}),

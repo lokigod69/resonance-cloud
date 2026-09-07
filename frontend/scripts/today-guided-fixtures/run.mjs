@@ -41,6 +41,7 @@ const MIME = {
   '.map': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
+  '.webp': 'image/webp',
   '.jpg': 'image/jpeg',
   '.woff2': 'font/woff2',
 }
@@ -400,6 +401,7 @@ async function main() {
     log(`── ${fixture.id} — ${fixture.name}`)
     const shots = []
     try {
+      await cdp.send('Network.setBlockedURLs', { urls: ['*fonts.googleapis.com*', '*fonts.gstatic.com*', ...(fixture.blockBrandAssets ? ['*/guided/brand/*.webp'] : [])] })
       await cdp.send('Emulation.setDeviceMetricsOverride', {
         width: fixture.viewport.width,
         height: fixture.viewport.height,

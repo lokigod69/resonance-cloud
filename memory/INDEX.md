@@ -16,6 +16,7 @@ Last updated: 2026-09-07
 | archive/ | Rolled-off log entries and retired notes | Almost never |
 
 ## Topic notes
+- [[notes/base-languages-brand-2026-09-07]] — twelve UI/explanation bases, static guided editions, card provenance, Ribbon current art, additive catalog SQL and verification limits.
 <!-- One line per page in notes/, added when created:
 - [[notes/some-topic]] — one-line description -->
 - [[notes/speak-lens]] — current providers, prompt rules, lifecycle contracts and remaining device/save/billing gates.

@@ -238,7 +238,7 @@ export function TodayHero({
     }).text
     : undefined
   const resolvedSituation = resolveGuidedBaseContent(
-    { en: lesson.situation.en, de: lesson.situation.de },
+    lesson.situation,
     { preferredBaseLanguage, authoredBaseLanguage: lesson.baseLanguage },
   ).text
 

@@ -5,6 +5,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { GuidedFeedback } from './GuidedBrand'
 
 export type BuildPhraseCheckState = {
   status: 'idle' | 'correct' | 'wrong' | 'revealed'
@@ -150,7 +151,7 @@ export function BuildPhraseStep({
                 disabled={status === 'correct' || status === 'revealed'}
                 onClick={() => handleRemove(position)}
                 className={cn(
-                  'theme-chip-active min-h-11 rounded-md px-3 py-2 text-sm font-semibold shadow-sm transition-transform hover:-translate-y-0.5',
+                  'today-word-piece theme-chip-active min-h-11 rounded-md px-3 py-2 text-sm font-semibold shadow-sm transition-transform hover:-translate-y-0.5',
                   (status === 'correct' || status === 'wrong' || status === 'revealed') && 'cursor-default hover:translate-y-0',
                   status === 'correct' && 'ring-1 ring-[#34d399]',
                   status === 'wrong' && 'ring-1 ring-[#f87171]',
@@ -171,7 +172,7 @@ export function BuildPhraseStep({
             disabled={status === 'correct' || status === 'revealed'}
             onClick={() => handleSelect(index)}
             className={cn(
-              'theme-chip min-h-11 rounded-md px-4 py-2 text-sm font-medium shadow-sm transition-transform hover:-translate-y-0.5',
+              'today-word-piece theme-chip min-h-11 rounded-md px-4 py-2 text-sm font-medium shadow-sm transition-transform hover:-translate-y-0.5',
               (status === 'correct' || status === 'wrong' || status === 'revealed') && 'cursor-default opacity-70 hover:translate-y-0',
             )}
           >
@@ -188,15 +189,15 @@ export function BuildPhraseStep({
         {status === 'wrong' && <Button variant="ghost" onClick={handleShowAnswer}>{t('today.type.showFallback')}</Button>}
       </div>
 
-      <div aria-live="polite" className="today-answer-feedback" data-feedback={status}>
+      <GuidedFeedback status={status === 'correct' && usedFallback ? 'revealed' : status}>
         {status === 'wrong'
           ? t('today.build.wrong')
           : status === 'correct'
-            ? t('today.practice.correct')
+            ? t(usedFallback ? 'today.practice.answerShown' : 'today.practice.correct')
             : status === 'revealed'
               ? t('today.practice.answerShown')
               : ''}
-      </div>
+      </GuidedFeedback>
     </div>
   )
 }

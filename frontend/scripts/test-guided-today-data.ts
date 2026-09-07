@@ -2496,7 +2496,7 @@ const unknownPreferred = resolveGuidedBaseContent(
   { preferredBaseLanguage: 'Spanish', authoredBaseLanguage: 'German' },
 )
 assert('unsupported preferred base language keeps the coherent authored edition and reports the visible fallback', unknownPreferred.text === 'Autorisierter deutscher Hinweis' && unknownPreferred.locale === 'de' && unknownPreferred.language === 'German' && unknownPreferred.isFallback, unknownPreferred)
-assert('base language to content locale map is intentionally limited', guidedBaseLanguageToContentLocale('English') === 'en' && guidedBaseLanguageToContentLocale('German') === 'de' && guidedBaseLanguageToContentLocale('Spanish') === undefined, guidedBaseLanguageToContentLocale('Spanish'))
+assert('base language to content locale map includes expanded base languages', guidedBaseLanguageToContentLocale('English') === 'en' && guidedBaseLanguageToContentLocale('German') === 'de' && guidedBaseLanguageToContentLocale('Spanish') === 'es' && guidedBaseLanguageToContentLocale('Japanese') === 'ja' && guidedBaseLanguageToContentLocale('Cebuano') === 'ceb', guidedBaseLanguageToContentLocale('Spanish'))
 assert('content locale maps back to display base language', guidedContentLocaleToBaseLanguage('en') === 'English' && guidedContentLocaleToBaseLanguage('de') === 'German', { en: guidedContentLocaleToBaseLanguage('en'), de: guidedContentLocaleToBaseLanguage('de') })
 
 console.log('\n[vibe resolution]')

@@ -11,18 +11,55 @@
 //   Use {variableName} for dynamic values — e.g., 'You have {count} credits'
 //   The t() function replaces these at runtime.
 
-export type Locale = 'en' | 'de' | 'fr';
+export type CoreLocale = 'en' | 'de' | 'fr';
+export type LazyLocale = 'es' | 'it' | 'pt' | 'id' | 'pl' | 'ru' | 'ko' | 'ja' | 'ceb';
+export type Locale = CoreLocale | LazyLocale;
 
-// Map from base_language profile values to locale codes.
-// Korean intentionally maps to 'en' — Korean users see the English UI
-// because we don't ship a Korean translation of the app interface.
+// Map canonical profile values to UI locale codes. Cebuano remains an accepted
+// alias for existing profiles while the product label stays Bisaya.
 export const LANGUAGE_TO_LOCALE: Record<string, Locale> = {
   English: 'en',
   German: 'de',
   French: 'fr',
-  Korean: 'en',
-  Spanish: 'en',
+  Spanish: 'es',
+  Italian: 'it',
+  Portuguese: 'pt',
+  Indonesian: 'id',
+  Polish: 'pl',
+  Russian: 'ru',
+  Korean: 'ko',
+  Japanese: 'ja',
+  Bisaya: 'ceb',
+  Cebuano: 'ceb',
 };
+
+export type TranslationMessages = Record<string, string>;
+
+const lazyLocaleLoaders: Record<LazyLocale, () => Promise<{ default: TranslationMessages }>> = {
+  es: () => import('./locales/es'),
+  it: () => import('./locales/it'),
+  pt: () => import('./locales/pt'),
+  id: () => import('./locales/id'),
+  pl: () => import('./locales/pl'),
+  ru: () => import('./locales/ru'),
+  ko: () => import('./locales/ko'),
+  ja: () => import('./locales/ja'),
+  ceb: () => import('./locales/ceb'),
+};
+
+const loadedLazyLocales: Partial<Record<LazyLocale, TranslationMessages>> = {};
+const localeLoadPromises: Partial<Record<LazyLocale, Promise<TranslationMessages>>> = {};
+const localeLoadStatus: Partial<Record<LazyLocale, 'idle' | 'loading' | 'ready' | 'error'>> = {};
+const localeListeners = new Set<() => void>();
+
+function notifyLocaleListeners() {
+  for (const listener of localeListeners) listener();
+}
+
+export function subscribeLocaleMessages(listener: () => void) {
+  localeListeners.add(listener);
+  return () => { localeListeners.delete(listener); };
+}
 
 const warnedFallbackKeys = new Set<string>();
 
@@ -37,13 +74,61 @@ function warnMissingLocaleKey(locale: Locale, key: string) {
 }
 
 // Shared translation function builder — used by useTranslation and useLandingLocale
-export function createT(locale: Locale) {
-  return (key: string, vars?: Record<string, string | number>): string => {
-    const localeString = translations[locale]?.[key];
-    const englishString = translations.en?.[key];
+function isCoreLocale(locale: Locale): locale is CoreLocale {
+  return locale === 'en' || locale === 'de' || locale === 'fr';
+}
 
-    if (localeString === undefined && englishString !== undefined) {
-      warnMissingLocaleKey(locale, key);
+export function getLoadedLocaleMessages(locale: Locale): TranslationMessages | undefined {
+  return isCoreLocale(locale) ? translations[locale] : loadedLazyLocales[locale];
+}
+
+export function getLocaleLoadStatus(locale: Locale): 'idle' | 'loading' | 'ready' | 'error' {
+  return isCoreLocale(locale) ? 'ready' : localeLoadStatus[locale] ?? 'idle';
+}
+
+export async function loadLocaleMessages(locale: Locale): Promise<TranslationMessages> {
+  if (isCoreLocale(locale)) return translations[locale];
+
+  const loaded = loadedLazyLocales[locale];
+  if (loaded) return loaded;
+
+  const existingRequest = localeLoadPromises[locale];
+  if (existingRequest) return existingRequest;
+
+  localeLoadStatus[locale] = 'loading';
+  notifyLocaleListeners();
+  const request = lazyLocaleLoaders[locale]().then(({ default: messages }) => {
+    loadedLazyLocales[locale] = messages;
+    localeLoadStatus[locale] = 'ready';
+    delete localeLoadPromises[locale];
+    notifyLocaleListeners();
+    return messages;
+  }, (error: unknown) => {
+    localeLoadStatus[locale] = 'error';
+    delete localeLoadPromises[locale];
+    notifyLocaleListeners();
+    throw error;
+  });
+  localeLoadPromises[locale] = request;
+  return request;
+}
+
+export function retryLocaleMessages(locale: Locale): Promise<TranslationMessages> {
+  if (!isCoreLocale(locale)) {
+    localeLoadStatus[locale] = 'idle';
+    notifyLocaleListeners();
+  }
+  return loadLocaleMessages(locale);
+}
+
+export function createT(locale: Locale, localeMessages = getLoadedLocaleMessages(locale)) {
+  return (key: string, vars?: Record<string, string | number>): string => {
+    const resolvedKey = key === 'today.language.Bisaya' ? 'today.language.Cebuano' : key;
+    const localeString = localeMessages?.[resolvedKey];
+    const englishString = translations.en?.[resolvedKey];
+
+    if (localeMessages !== undefined && localeString === undefined && englishString !== undefined) {
+      warnMissingLocaleKey(locale, resolvedKey);
     }
 
     let str = localeString ?? englishString ?? key;
@@ -54,6 +139,25 @@ export function createT(locale: Locale) {
     }
     return str;
   };
+}
+
+export function selectPluralTranslationKey(
+  locale: Locale,
+  keyBase: string,
+  count: number,
+  localeMessages = getLoadedLocaleMessages(locale) ?? translations.en,
+): string {
+  let category: Intl.LDMLPluralRule = 'other';
+  try {
+    category = new Intl.PluralRules(locale).select(count);
+  } catch {
+    // Older embedded WebViews may not carry data for every locale. English's
+    // one/other rule is a safe structural fallback; copy still comes from the
+    // requested locale pack.
+    category = count === 1 ? 'one' : 'other';
+  }
+  const categoryKey = `${keyBase}.${category}`;
+  return localeMessages[categoryKey] !== undefined ? categoryKey : `${keyBase}.other`;
 }
 
 export type TranslationFn = ReturnType<typeof createT>;
@@ -124,7 +228,10 @@ export function formatSpeakApiError(
   return getErrorText(payload?.detail) ?? getErrorText(payload?.error) ?? t(fallbackKey);
 }
 
-export const translations: Record<Locale, Record<string, string>> = {
+// These three established packs remain synchronous for the app shell, error
+// boundaries, and existing non-React helpers. New locales are loaded on demand
+// through loadLocaleMessages(), so adding them does not grow the startup chunk.
+export const translations: Record<CoreLocale, TranslationMessages> = {
   en: {
     'today.practice.answerShown': 'Answer shown. You can continue with help.',
     'today.practice.deckName': "Guided phrases — {language}",
@@ -1693,6 +1800,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── Decks ──
     'decks.title': 'Your Decks',
+    'decks.view.water': 'Water',
     'deck.status.draft': 'Draft',
     'deck.status.generating': 'Generating',
     'deck.status.pending': 'Queued',
@@ -3482,6 +3590,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── Decks ──
     'decks.title': 'Deine Decks',
+    'decks.view.water': 'Wasser',
     'deck.status.draft': 'Entwurf',
     'deck.status.generating': 'Wird erstellt',
     'deck.status.pending': 'Wartet',
@@ -5281,6 +5390,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── Decks ──
     'decks.title': 'Vos Decks',
+    'decks.view.water': 'Eau',
     'deck.status.draft': 'Brouillon',
     'deck.status.generating': 'Création',
     'deck.status.pending': 'En attente',

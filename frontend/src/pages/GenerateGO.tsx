@@ -65,7 +65,13 @@ import {
   type PremiumSummaryItem,
 } from '@/components/generate/shared/PremiumVisualSelectors'
 import { wordsEqual } from '@/lib/wordEquality'
-import { canonicalizeLanguageValue, getLanguageCode, isBetaTargetLanguage } from '@/lib/languages'
+import {
+  canonicalizeBaseLanguageValue,
+  canonicalizeLanguageValue,
+  getBaseLanguageCode,
+  getLanguageCode,
+  isBetaTargetLanguage,
+} from '@/lib/languages'
 import { totalCredits } from '@/lib/credits'
 import type { SelectedCategoryVocabularyItem } from '@/data/categories'
 
@@ -614,8 +620,8 @@ export default function GenerateGO() {
       if (effectiveProductLane === 'card_text') {
         const targetLanguageValue = canonicalizeLanguageValue(effectiveLanguage)
         const targetLanguageCode = getLanguageCode(targetLanguageValue)
-        const baseLanguageValue = canonicalizeLanguageValue(profile?.base_language ?? 'English')
-        const baseLanguageCode = getLanguageCode(baseLanguageValue)
+        const baseLanguageValue = canonicalizeBaseLanguageValue(profile?.base_language) ?? 'English'
+        const baseLanguageCode = getBaseLanguageCode(baseLanguageValue) ?? 'en'
         const items = await translateAndIpa({
           items: effectiveWords.map((word) => ({ word, is_phrase: /\s/.test(word.trim()) })),
           target_language: targetLanguageCode,
@@ -628,7 +634,7 @@ export default function GenerateGO() {
           targetDeckId = existingDeck.id
           const insertedCount = await appendImagelessCards({
             p_deck_id: existingDeck.id,
-            p_items: items,
+            p_items: items.map((item) => ({ ...item, base_language: baseLanguageValue })),
             p_origin: origin,
           })
           triggerImagelessTts(() => fetchLatestWordIds(existingDeck.id, insertedCount))
@@ -749,6 +755,7 @@ export default function GenerateGO() {
           movie_override: isCard ? null : movieOverride ?? existingDeck?.movie_override ?? null,
           words_total: effectiveWords.length,
           settings_override: {
+            base_language: canonicalizeBaseLanguageValue(profile?.base_language) ?? 'English',
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
             ...(genreValue ? { genre: genreValue } : {}),
             ...(!isCard && !isQuickGenerate && lyricMode ? { lyric_mode: lyricMode } : {}),

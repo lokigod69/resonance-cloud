@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation, useNavigat
 import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
 import type { AuthState } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
+import { resolvePageDocumentLocale } from '@/hooks/useLandingLocale'
 import { ThemeProvider } from '@/contexts/ThemeProvider'
 import { SkinProvider } from '@/contexts/SkinProvider'
 import { useSkin } from '@/contexts/SkinContext'
@@ -328,13 +329,53 @@ function AppRoutes() {
 }
 
 function DocumentLanguageSync() {
-  const { locale } = useTranslation()
+  const { locale, localeReady } = useTranslation()
+  const location = useLocation()
+  const documentLocale = resolvePageDocumentLocale({
+    pathname: location.pathname,
+    search: location.search,
+    browserLanguage: navigator.language,
+    appLocale: locale,
+  })
+  const documentLocaleReady = location.pathname === '/' || localeReady
 
   useEffect(() => {
-    document.documentElement.lang = locale
-  }, [locale])
+    if (!documentLocaleReady) return
+    document.documentElement.lang = documentLocale
+  }, [documentLocale, documentLocaleReady])
 
   return null
+}
+
+function LocaleReadyBoundary({ children }: { children: React.ReactNode }) {
+  const { t, localeReady, localeLoadFailed, retryLocale } = useTranslation()
+
+  if (!localeReady) {
+    if (localeLoadFailed) {
+      return (
+        <main className="flex min-h-dvh items-center justify-center bg-[var(--background)] px-5 text-center">
+          <div className="max-w-md rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-glass)] p-7">
+            <h1 className="font-display text-2xl font-semibold text-[var(--text-primary)]">
+              {t('errors.route.title')}
+            </h1>
+            <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+              {t('errors.route.body')}
+            </p>
+            <button
+              type="button"
+              onClick={() => { void retryLocale().catch(() => undefined) }}
+              className="mt-6 min-h-11 rounded-full bg-[var(--accent)] px-6 py-2.5 font-semibold text-[var(--on-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30"
+            >
+              {t('errors.route.retry')}
+            </button>
+          </div>
+        </main>
+      )
+    }
+    return <LingwaveLoader fullScreen />
+  }
+
+  return children
 }
 
 // Stripe Checkout returns to /dashboard?billing=success|cancelled, but nothing
@@ -447,11 +488,13 @@ export default function App() {
         <LanguageProvider>
           <DialogProvider>
             <DocumentLanguageSync />
-            <RecallQueueBridge />
-            <BillingReturnNotice />
-            <VisitPing />
-            <AppRoutes />
-            <AppShellDialogs />
+            <LocaleReadyBoundary>
+              <RecallQueueBridge />
+              <BillingReturnNotice />
+              <VisitPing />
+              <AppRoutes />
+              <AppShellDialogs />
+            </LocaleReadyBoundary>
           </DialogProvider>
         </LanguageProvider>
       </AuthProvider>

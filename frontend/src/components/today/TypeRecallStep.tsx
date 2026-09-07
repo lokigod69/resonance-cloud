@@ -5,6 +5,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
+import { GuidedFeedback } from './GuidedBrand'
 
 export type TypeRecallCheckState = {
   status: 'idle' | 'correct' | 'wrong' | 'revealed'
@@ -133,15 +134,15 @@ export function TypeRecallStep({
         </p>
       )}
 
-      <div id="today-type-feedback" aria-live="polite" className="today-answer-feedback" data-feedback={status}>
+      <GuidedFeedback id="today-type-feedback" status={status === 'correct' && usedFallback ? 'revealed' : status}>
         {status === 'wrong'
           ? t('today.type.wrong')
           : status === 'correct'
-            ? t('today.practice.correct')
+            ? t(usedFallback ? 'today.practice.answerShown' : 'today.practice.correct')
             : status === 'revealed'
               ? t('today.practice.answerShown')
               : ''}
-      </div>
+      </GuidedFeedback>
     </div>
   )
 }

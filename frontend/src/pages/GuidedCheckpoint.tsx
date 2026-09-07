@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, CheckCircle2, RotateCcw } from 'lucide-react'
+import { ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import {
@@ -8,7 +8,7 @@ import {
   resolveGuidedBaseContent,
   type GuidedPathMetadata,
 } from '@/data/guidedLessons'
-import { guidedVibes, isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
+import { isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import {
@@ -50,11 +50,12 @@ import {
   type GuidedSpeechPromptCheckState,
 } from '@/components/today/GuidedSpeechPrompt'
 import { canUseGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
+import { GuidedBrand } from '@/components/today/GuidedBrand'
 
 type CheckpointPhase = 'type' | 'speak' | 'summary'
 
 export default function GuidedCheckpoint() {
-  const { user } = useAuth()
+  const { user, profile } = useAuth()
   const { t } = useTranslation()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
@@ -88,7 +89,7 @@ export default function GuidedCheckpoint() {
   const draftStorageKey = guidedCheckpointDraftKey(draftScope)
   const progress = useMemo(() => readTodayProgressState(user?.id), [user?.id])
   const requiredLanguages = useMemo(() => [selectedTargetLanguage], [selectedTargetLanguage])
-  const lessonLoadKey = requiredLanguages.join('|')
+  const lessonLoadKey = `${requiredLanguages.join('|')}|${profile?.base_language ?? ''}`
   const [lessonLoad, setLessonLoad] = useState<{ key: string; status: 'loading' | 'ready' | 'error' }>({
     key: lessonLoadKey,
     status: 'loading',
@@ -96,7 +97,7 @@ export default function GuidedCheckpoint() {
   const lessonsState = lessonLoad.key === lessonLoadKey ? lessonLoad.status : 'loading'
   useEffect(() => {
     let active = true
-    void Promise.all(requiredLanguages.map((language) => loadGuidedLessonsForLanguage(language)))
+    void Promise.all(requiredLanguages.map((language) => loadGuidedLessonsForLanguage(language, profile?.base_language)))
       .then(() => {
         if (active) setLessonLoad({ key: lessonLoadKey, status: 'ready' })
       })
@@ -107,7 +108,7 @@ export default function GuidedCheckpoint() {
     return () => {
       active = false
     }
-  }, [lessonLoadKey, requiredLanguages])
+  }, [lessonLoadKey, requiredLanguages, profile?.base_language])
   const storedDraft = useMemo(() => (
     lessonsState === 'ready' && user?.id && !isTrophyClozeMode
       ? readGuidedCheckpointDraft(draftScope)
@@ -278,11 +279,13 @@ export default function GuidedCheckpoint() {
     return <CheckpointUnavailable selectedVibeId={selectedVibeId} backToTodayHref={backToTodayHref} />
   }
 
-  const segmentStory = isSegmentReviewMode && plan.segment
+  // This optional narrative was authored only in German. Other bases use the
+  // selected lesson's translated situation instead of an undisclosed German story.
+  const segmentStory = isSegmentReviewMode && plan.segment && profile?.base_language === 'German'
     ? getGuidedSegmentStory(selectedPathId, plan.segment)
     : undefined
   const segmentScene = isSegmentReviewMode && plan.segment
-    ? getGuidedSegmentSceneForLesson(selectedPathId, plan.segment, currentItem.lesson.lessonNumber)
+    ? (profile?.base_language === 'German' ? getGuidedSegmentSceneForLesson(selectedPathId, plan.segment, currentItem.lesson.lessonNumber) : resolveGuidedBaseContent(currentItem.lesson.situation, { preferredBaseLanguage: profile?.base_language, authoredBaseLanguage: currentItem.lesson.baseLanguage }).text)
     : undefined
 
   if (phase === 'summary' && summary) {
@@ -645,7 +648,7 @@ function CheckpointTypeStep({
         {submitted && (
           <div className="today-checkpoint-resultRow flex flex-wrap items-center justify-center gap-2">
             {result === 'correct' ? (
-              <CheckCircle2 className="h-5 w-5 text-[#34d399]" aria-hidden="true" />
+              <GuidedBrand kind="success-ribbon" className="today-match-resultArt" />
             ) : (
               <p className="today-checkpoint-resultPill inline-flex items-center rounded-full border px-3 py-1 text-sm text-[var(--text-secondary)]" aria-live="polite">
                 {t('today.checkpoint.correctAnswer', { answer: item.lesson.typeRecall.answer })}
@@ -774,22 +777,13 @@ function CheckpointSummary({
 }) {
   const { t } = useTranslation()
   const { profile } = useAuth()
-  const vibe = guidedVibes[selectedVibeId]
   const missedItems = getMissedSummaryItems(record, planItems, profile?.base_language)
 
   return (
     <main className="today-shell today-checkpoint-shell mx-auto grid min-h-dvh w-full max-w-3xl place-items-center px-4 py-8 sm:px-6" data-guided-vibe={selectedVibeId}>
       <section className="theme-panel today-checkpoint-summary w-full rounded-lg border border-[var(--border-subtle)] p-6 text-center sm:p-8">
-        <span className="today-completion-vibeBadge mx-auto" aria-hidden="true">
-          {vibe.emblem?.url && (
-            <img
-              src={vibe.emblem.url}
-              alt=""
-              className="today-completion-vibeBadgeImage"
-              draggable={false}
-            />
-          )}
-          <CheckCircle2 className="today-completion-vibeBadgeCheck" />
+        <span className="today-completion-brandMark mx-auto" aria-hidden="true">
+          <GuidedBrand kind="current-crest" />
         </span>
         <h1 className="mt-4 text-3xl font-semibold text-[var(--text-primary)]">
           {isPathCheckMode

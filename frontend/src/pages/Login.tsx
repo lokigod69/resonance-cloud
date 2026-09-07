@@ -12,6 +12,7 @@ import { LingwaveBrand } from '@/components/branding/LingwaveBrand'
 import { LingwaveWaves } from '@/components/branding/LingwaveWaves'
 import { handleLegalLinkClick } from '@/lib/legalLinks'
 import { getPublicWebUrl } from '@/lib/publicOrigins'
+import { localizeAuthProviderError } from '@/lib/authError'
 
 export default function Login() {
   const { t } = useLandingLocale()
@@ -53,7 +54,7 @@ export default function Login() {
       } else if (isSignUp) {
         const { error } = await signUpWithEmail(email, password)
         if (error) {
-          setError(error)
+          setError(localizeAuthProviderError(t, error))
           return
         }
         setMessage(t('auth.confirmEmail'))
@@ -61,7 +62,7 @@ export default function Login() {
       } else {
         const { error } = await signInWithEmail(email, password)
         if (error) {
-          setError(error)
+          setError(localizeAuthProviderError(t, error))
           return
         }
         navigate('/dashboard')
@@ -74,7 +75,7 @@ export default function Login() {
   async function handleGoogleLogin() {
     setError(null)
     const { error } = await signInWithGoogle()
-    if (error) setError(error)
+    if (error) setError(localizeAuthProviderError(t, error))
   }
 
   function showSignInMode() {

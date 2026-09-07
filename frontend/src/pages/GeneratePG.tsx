@@ -48,7 +48,13 @@ import { useAppendImagelessCards } from '@/hooks/useAppendImagelessCards'
 import { useGenerateImagelessTts } from '@/hooks/useGenerateImagelessTts'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
-import { canonicalizeLanguageValue, getLanguageCode, isBetaTargetLanguage } from '@/lib/languages'
+import {
+  canonicalizeBaseLanguageValue,
+  canonicalizeLanguageValue,
+  getBaseLanguageCode,
+  getLanguageCode,
+  isBetaTargetLanguage,
+} from '@/lib/languages'
 import { totalCredits } from '@/lib/credits'
 
 /* ─── Constants ─────────────────────────────────── */
@@ -256,8 +262,8 @@ export default function GeneratePG() {
         const targetLanguage = existingDeck?.target_language ?? state.language ?? ''
         const targetLanguageValue = canonicalizeLanguageValue(targetLanguage)
         const targetLanguageCode = getLanguageCode(targetLanguageValue)
-        const baseLanguageValue = canonicalizeLanguageValue(profile?.base_language ?? 'English')
-        const baseLanguageCode = getLanguageCode(baseLanguageValue)
+        const baseLanguageValue = canonicalizeBaseLanguageValue(profile?.base_language) ?? 'English'
+        const baseLanguageCode = getBaseLanguageCode(baseLanguageValue) ?? 'en'
         const items = await translateAndIpa({
           items: effectiveWords.map((word) => ({ word, is_phrase: /\s/.test(word.trim()) })),
           target_language: targetLanguageCode,
@@ -270,7 +276,7 @@ export default function GeneratePG() {
           targetDeckId = existingDeck.id
           const insertedCount = await appendImagelessCards({
             p_deck_id: existingDeck.id,
-            p_items: items,
+            p_items: items.map((item) => ({ ...item, base_language: baseLanguageValue })),
             p_origin: origin,
           })
           triggerImagelessTts(() => fetchLatestWordIds(existingDeck.id, insertedCount))
@@ -299,6 +305,7 @@ export default function GeneratePG() {
         premiumQuickModeOverride: options?.premiumQuickMode,
         premiumInfographicStyleOverride: options?.premiumInfographicStyle,
         wordsOverride: effectiveWords,
+        baseLanguage: canonicalizeBaseLanguageValue(profile?.base_language) ?? 'English',
       })
 
       const targetDeckId = await submitGeneration(

@@ -112,7 +112,7 @@ export default function PlansPage() {
         setCheckoutError(
           payload?.code === 'already_subscribed'
             ? t('plans.alreadySubscribed')
-            : payload?.error || t('plans.checkoutError'),
+            : t('plans.checkoutError'),
         )
         return
       }

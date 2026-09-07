@@ -8,7 +8,7 @@ import { FIXTURES } from './fixtures'
 import { Ctx } from './utils'
 
 const w = window as any
-w.__fixtureList = FIXTURES.map(({ id, name, viewport, reduceMotion }) => ({ id, name, viewport, reduceMotion: Boolean(reduceMotion) }))
+w.__fixtureList = FIXTURES.map(({ id, name, viewport, reduceMotion, blockBrandAssets }) => ({ id, name, viewport, reduceMotion: Boolean(reduceMotion), blockBrandAssets: Boolean(blockBrandAssets) }))
 w.__pageErrors = []
 window.addEventListener('error', (event) => w.__pageErrors.push(String(event.message ?? event)))
 window.addEventListener('unhandledrejection', (event: any) => w.__pageErrors.push(`unhandledrejection: ${String(event?.reason?.stack ?? event?.reason)}`))

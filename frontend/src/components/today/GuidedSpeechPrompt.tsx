@@ -1,4 +1,4 @@
-import { AlertCircle, CheckCircle2, Eye, Loader2, Mic, Square } from 'lucide-react'
+import { AlertCircle, Eye, Loader2, Mic, Square } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
@@ -6,8 +6,7 @@ import { cn } from '@/lib/utils'
 import { checkGuidedSpeechAnswer } from '@/lib/guidedSpeechCheck'
 import { canUseGuidedSpeechRecognition, useGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
 import type { GuidedSpeakLocale } from '@/data/guidedLessons'
-
-const TODAY_SPEECH_MIC_ASSET = '/guided/today/speech-microphone-orb.png'
+import { GuidedBrand } from './GuidedBrand'
 
 export type GuidedSpeechPromptCheckState = {
   status: 'idle' | 'requesting_permission' | 'recording' | 'transcribing' | 'passed' | 'close' | 'failed' | 'continued' | 'unsupported' | 'error'
@@ -190,7 +189,7 @@ export function GuidedSpeechPrompt({
         {resultVisible ? (
           <div className="today-speech-resultStage" aria-live="polite">
             {status === 'passed' && (
-              <CheckCircle2 className="today-speech-successIcon" aria-hidden="true" />
+              <GuidedBrand kind="success-ribbon" className="today-speech-successArt" />
             )}
             <p className="today-speech-resultLabel">
               {transcriptFeedbackLabel}
@@ -211,13 +210,7 @@ export function GuidedSpeechPrompt({
           </div>
         ) : (
           <>
-            <img
-              src={TODAY_SPEECH_MIC_ASSET}
-              alt=""
-              className="today-speech-micAsset"
-              draggable={false}
-              aria-hidden="true"
-            />
+            <GuidedBrand kind="listen-ribbon" className="today-speech-micAsset" />
             {isSupported && (
               <div className="today-speak-recordingControl">
                 <button

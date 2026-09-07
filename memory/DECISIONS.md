@@ -2,6 +2,12 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-09-07 — Twelve base editions, restrained Ribbon current art, additive catalog repair
+**Status:** active; owner delegated selection, generation, implementation and scoped release.
+**Decision:** Support the twelve current language identities as interface and explanation bases without changing target beta rollout. Publish static, validated guided editions; never translate a lesson during study. Preserve authored target phrases, recordings and per-card meaning provenance. Select B Ribbon current with A spacing; six small transparent WebPs add feedback and progress character while real text and reduced-motion controls remain usable without images. Keep waves unchanged. Repair the missing Guided baseline only through proven history equivalence and additive catalog SQL; never reset production decks.
+**Quality boundary:** Machine-authored editions receive structural, protected-example, integration and sampled semantic checks, not a claim of native proofreading. The first deficient batch was quarantined. Videos, native-script typing and native editorial review are deferred by owner. Full Supabase scratch replay is separate from a live reset.
+**Supersedes:** The earlier Today decision's French explanation fallback is replaced by complete French editions. Other practice, completion and phrase-retention rules remain active. See [[notes/base-languages-brand-2026-09-07]].
+
 ## 2026-09-07 — Guided Today favors explicit practice, truthful completion and phrase retention
 **Status:** active; owner delegated product/design judgment and scoped release.
 **Decision:** Refine the existing Cosmos course, keep waves unchanged. Direct lesson opening, local resume, visible correction and explicit assisted/no-microphone outcomes take priority over extra ceremony. Keep one useful core phrase to a stable account deck with its registered recording; never imply automatic import or a speech pass. Device-local guided progress remains explicit. Unsupported explanation languages use the authored edition consistently, with disclosure; French UI does not imply a French lesson corpus. Six exact existing trophy repetitions are retained pending coordinated editorial/audio review; validators must inspect the full corpus. Relevant cultural scenes merit a small verified video/caption pilot with delayed recall, not wholesale paid regeneration or arbitrary distracting details. See [[notes/today-guided-2026-09-07]].

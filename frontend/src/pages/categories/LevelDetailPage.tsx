@@ -53,6 +53,7 @@ import {
 import { generatedCategoryEntryImagePath } from '@/lib/generatedCategoryImages'
 import { curriculumEntryImagePath } from '@/lib/curriculumImagePath'
 import { totalCredits } from '@/lib/credits'
+import { canUseLegacyGermanCurriculum } from '@/lib/languages'
 import { useCategoryScrollReset } from './useCategoryScrollReset'
 import styles from './Categories.module.css'
 
@@ -111,9 +112,11 @@ export default function LevelDetailPage() {
   const [importedDeckId, setImportedDeckId] = useState<string | null>(null)
   const [deckLookupLoading, setDeckLookupLoading] = useState(true)
   const [importing, setImporting] = useState(false)
-  const category = getCurriculumCategoryBySlug(categorySlug)
-  const level = getCurriculumLevel(categorySlug, levelNumber)
-  const staticCategory = category ? null : getStaticCategoryById(categorySlug)
+  const legacyCategory = getCurriculumCategoryBySlug(categorySlug)
+  const canUseLegacyCategory = canUseLegacyGermanCurriculum(profile?.base_language)
+  const category = canUseLegacyCategory ? legacyCategory : undefined
+  const level = canUseLegacyCategory ? getCurriculumLevel(categorySlug, levelNumber) : undefined
+  const staticCategory = legacyCategory ? null : getStaticCategoryById(categorySlug)
   const targetLanguage = readStaticLibraryTargetLanguage(searchParams.get('targetLanguage'), activeLanguage)
   const helperLanguage = resolveVisibleStaticLanguage(profile?.base_language, 'German')
   useCategoryScrollReset()

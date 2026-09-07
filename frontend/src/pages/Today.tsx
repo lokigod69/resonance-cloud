@@ -50,7 +50,7 @@ function scrollTodayToTop() {
 }
 
 export default function Today() {
-  const { user } = useAuth()
+  const { user, profile } = useAuth()
   const { t } = useTranslation()
   const { activeLanguage, setActiveLanguage, languageReady } = useLanguage()
   const [searchParams, setSearchParams] = useSearchParams()
@@ -96,6 +96,7 @@ export default function Today() {
   ))
   const [failedLanguage, setFailedLanguage] = useState<GuidedTargetLanguage | null>(null)
   const [languageLoadAttempt, setLanguageLoadAttempt] = useState(0)
+  const [loadedBaseLanguage, setLoadedBaseLanguage] = useState<string | null>(null)
   const defaultPathId = useMemo(
     () => pickDefaultPathForLanguage(pathOptions, selectedLanguage),
     [pathOptions, selectedLanguage],
@@ -131,9 +132,9 @@ export default function Today() {
     let active = true
     if (!isGuidedLanguageLoaded(selectedLanguage)) setLoadedLanguage(null)
     setFailedLanguage(null)
-    void loadGuidedLessonsForLanguage(selectedLanguage)
+    void loadGuidedLessonsForLanguage(selectedLanguage, profile?.base_language)
       .then(() => {
-        if (active) setLoadedLanguage(selectedLanguage)
+        if (active) { setLoadedLanguage(selectedLanguage); setLoadedBaseLanguage(profile?.base_language ?? '') }
       })
       .catch(() => {
         if (active) setFailedLanguage(selectedLanguage)
@@ -141,7 +142,7 @@ export default function Today() {
     return () => {
       active = false
     }
-  }, [languageLoadAttempt, selectedLanguage])
+  }, [languageLoadAttempt, selectedLanguage, profile?.base_language])
 
   useEffect(() => {
 
@@ -332,7 +333,7 @@ export default function Today() {
               {t('errors.route.retry')}
             </Button>
           </div>
-        ) : loadedLanguage !== selectedLanguage ? (
+        ) : loadedLanguage !== selectedLanguage || loadedBaseLanguage !== (profile?.base_language ?? '') ? (
           <div className="grid min-h-[45vh] place-items-center" role="status" aria-live="polite">
             <p className="text-sm text-[var(--text-secondary)]">{t('common.loading')}</p>
           </div>
@@ -358,7 +359,7 @@ export default function Today() {
           />
         ) : null}
 
-        {loadedLanguage === selectedLanguage && sessionActive && lesson && (
+        {failedLanguage !== selectedLanguage && loadedLanguage === selectedLanguage && loadedBaseLanguage === (profile?.base_language ?? '') && sessionActive && lesson && (
           <TodaySession
             key={sessionKey}
             lesson={lesson}

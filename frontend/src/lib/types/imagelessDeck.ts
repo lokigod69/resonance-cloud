@@ -35,7 +35,10 @@ export interface ExtractVocabularyResponse {
 }
 
 // submit_imageless_import RPC payload shape (the jsonb passed as p_items)
-export type SubmitImagelessImportItem = ImagelessItem;
+export type SubmitImagelessImportItem = ImagelessItem & {
+  /** Canonical provenance used when appending to an existing deck. */
+  base_language?: string;
+};
 
 // append_imageless_cards RPC
 export interface AppendImagelessCardsParams {

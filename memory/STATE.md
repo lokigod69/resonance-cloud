@@ -1,6 +1,10 @@
 # Current State
 Last updated: 2026-09-07
 
+## Active release verification
+- Base-languages-brand implementation passes: 12 UI/explanation bases,144 guided editions/664,032 fields,12×1,727 UI keys, nine ScriptLab packs, per-card meaning provenance. B Ribbon current selected under owner delegation; six transparentWebPs59,052B. Browser27/27 plus finalpolish4/4; full guided/tsc/API/build/lint/i18n/iOS/FirstLight checks pass. Scoped commit/push and live verification next. See notes/base-languages-brand-2026-09-07.md.
+- Additive130000/131000/132000/133000 applied/recorded;2,700 private coordinates/32,400 meanings, exact digest and all four rollback suites pass with0residue.132 corrects one Italian meaning.133 accepts exact regional audio code or its exact primary subtag;2,501 links pass exact phrase identity. One wrong English usage is privately archived/unlinked, recording preserved; playback12,550. Missing20260517010000 history repaired after exact schema comparison; no live reset.
+
 ## Current release
 - Today/guided is LIVE: main58ac56bf, Vercel dpl_5BgBSedstJdU1jLxZNCAXDQ6VR4T Ready on lingwave.ai/www; Railway a08ba88b-98d2-4eb7-a3fb-280e42a82ee2 success. Signed-in Cebuano course shows10lessons; direct opening and return-to-Resume verified. All13 API probes pass. New120000 migration/history and rollback integration verified with no residue. Details: notes/today-guided-2026-09-07.md.
 - Hardening is LIVE: main commits c0192206 + d16e0bd2. Vercel dpl_AR6RjhD5WPw9KZHNF1N8YCCEiPhF Ready on lingwave.ai/www; Railway a856e9c6-19d9-4e78-a290-0833a208fcdf success. Production Home/Speak/Lens/Today/guided assets and 13 expected API responses verified.
@@ -33,10 +37,11 @@ Last updated: 2026-09-07
 - Supabase outstanding-invoice warning requires owner billing action. Owner deferred physical iPhone/TestFlight checks until later.
 - Live token expiry is not a trusted socket-cost ceiling; relay/revocation is still needed for that. Existing xAI model is deprecated; migration/live handshake/quality needs a real provider sample. No paid provider calls were run.
 - 27 historical ambiguous operations represent 147 charged credits, NOT proof that 147 credits are owed. Reconcile before manual refund. No automatic deck-workspace deletion without a real admission/deletion lease.
-- Today limits: physical iPhone/TestFlight pending; progress/drafts are device-local while kept phrases are account-backed. French interface uses disclosed English/German authored explanations. Structural corpus validation is not native proofreading; six exact existing trophy-repeat exceptions retained. No paid video batch or measured learning-superiority claim.
+- Today limits: physical iPhone/TestFlight pending; progress/drafts are device-local while kept phrases are account-backed. Twelve complete explanation editions supersede the prior French fallback, but machine-authored translations are not native-proofread. Six exact existing trophy-repeat exceptions retained. Videos/RTX5090 pilot and native keyboard/IME design explicitly deferred; no learning-superiority claim. Full historical Supabase scratch replay needs Docker; focused fresh PostgreSQL replay passes without touching live data.
 - Remaining platform work: CAPTCHA/leaked-password protection, CSP observation/enforcement, Suno callback routing, retention/baseline cleanup, broader query/performance audit and prior Home product choices. This batch does not certify every old audit item.
 
 ## Read next
+- protocol/workstreams/base-languages-brand/NEXT_STEP.md and notes/base-languages-brand-2026-09-07.md for current release and deferred work.
 - protocol/workstreams/today-guided/NEXT_STEP.md and investigations/TODAY_GUIDED_REFINEMENT_2026_09_07.md for Today changes, learning-science rationale and device checklist.
 - protocol/workstreams/speak-lens/NEXT_STEP.md and hardening/NEXT_STEP.md.
 - notes/hardening-2026-09-07.md for contracts; notes/speak-lens.md for providers.

@@ -9,6 +9,7 @@
 //   3. Fallback to English
 
 import { useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import { createT, type Locale } from '@/lib/translations';
 
 const BROWSER_LANG_TO_LOCALE: Record<string, Locale> = {
@@ -23,22 +24,36 @@ const BROWSER_LANG_TO_LOCALE: Record<string, Locale> = {
   'fr-CH': 'fr',
 };
 
+export function resolveLandingLocale(search: string, browserLanguage: string | null | undefined): Locale {
+  const langParam = new URLSearchParams(search).get('lang');
+  if (langParam === 'de' || langParam === 'fr') return langParam;
+
+  const browserLang = browserLanguage ?? '';
+  if (BROWSER_LANG_TO_LOCALE[browserLang]) return BROWSER_LANG_TO_LOCALE[browserLang];
+  const primary = browserLang.split('-')[0];
+  return BROWSER_LANG_TO_LOCALE[primary] ?? 'en';
+}
+
+export function resolvePageDocumentLocale({
+  pathname,
+  search,
+  browserLanguage,
+  appLocale,
+}: {
+  pathname: string
+  search: string
+  browserLanguage?: string | null
+  appLocale: Locale
+}): Locale {
+  return pathname === '/' ? resolveLandingLocale(search, browserLanguage) : appLocale
+}
+
 export function useLandingLocale() {
-  const locale = useMemo<Locale>(() => {
-    // 1. Check URL parameter: ?lang=de
-    const params = new URLSearchParams(window.location.search);
-    const langParam = params.get('lang');
-    if (langParam === 'de' || langParam === 'fr') return langParam;
-
-    // 2. Check browser language (full tag first, then primary subtag)
-    const browserLang = navigator.language;
-    if (BROWSER_LANG_TO_LOCALE[browserLang]) return BROWSER_LANG_TO_LOCALE[browserLang];
-    const primary = browserLang.split('-')[0];
-    if (BROWSER_LANG_TO_LOCALE[primary]) return BROWSER_LANG_TO_LOCALE[primary];
-
-    // 3. Fallback
-    return 'en';
-  }, []);
+  const location = useLocation()
+  const locale = useMemo<Locale>(
+    () => resolveLandingLocale(location.search, navigator.language),
+    [location.search],
+  );
 
   return { t: createT(locale), locale };
 }

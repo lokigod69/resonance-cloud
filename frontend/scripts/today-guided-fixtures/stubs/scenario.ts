@@ -1,6 +1,6 @@
 export type TodayFixtureScenario = {
   route: string
-  baseLanguage?: 'English' | 'German' | 'French'
+  baseLanguage?: string
   activeLanguage?: string
   speech?: 'unsupported' | 'error'
   phraseKeep?: 'success' | 'lost-response-once'

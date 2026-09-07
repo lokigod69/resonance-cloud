@@ -6,10 +6,12 @@
 // these shapes. To add a new writing system, see the registry in
 // lib/scriptlab/registry.ts — no UI changes should be required.
 
-/** Content-level localized text. UI chrome uses translations.ts via t(); symbol
- * meanings and pedagogy notes are content and live with the data, mirroring
- * staticCategoryTranslations.ts. All three app locales are required so a new
- * script can't ship with missing base-language coverage. */
+/** Authored content text. UI chrome uses translations.ts via t(); symbol
+ * meanings and pedagogy notes remain frozen here in the three original
+ * editions. Additional base languages load as whole, versioned overlays keyed
+ * by this tuple, so a script cannot render a partially translated edition. */
+import { scriptContentKey } from './contentLocales'
+
 export type LocalizedText = {
   en: string
   de: string
@@ -140,7 +142,14 @@ export function getScriptSymbol(script: ScriptDefinition, symbolId: string): Scr
 }
 
 /** Resolve content text for the app locale (useTranslation().locale). */
-export function localizeScriptText(text: LocalizedText, locale: string): string {
+export function localizeScriptText(
+  text: LocalizedText,
+  locale: string,
+  overlay?: Readonly<Record<string, string>>,
+): string {
   if (locale === 'de' || locale === 'fr') return text[locale] || text.en
+  if (locale !== 'en') {
+    return overlay?.[scriptContentKey(text)] || text.en
+  }
   return text.en
 }

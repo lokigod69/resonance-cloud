@@ -1,4 +1,4 @@
-import { CheckCircle2, ChevronRight, Volume2 } from 'lucide-react'
+import { ChevronRight, Volume2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import {
   resolveGuidedBaseContent,
@@ -16,6 +16,7 @@ import {
 } from '@/components/today/GuidedSpeechPrompt'
 import { canUseGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
 import { tokenizeGuidedSpeech } from '@/lib/guidedSpeechCheck'
+import { GuidedBrand } from './GuidedBrand'
 
 export type RolePlayCheckState = {
   status: GuidedSpeechPromptCheckState['status']
@@ -134,14 +135,14 @@ export function RolePlayStep({ lesson, onCheckStateChange }: RolePlayStepProps) 
           className="today-roleplay-turnPill inline-flex items-center gap-1 rounded-full border border-[var(--border-subtle)] px-3 py-1"
           data-turn-state={isTurnComplete(turnStates[0]) ? 'passed' : turnIndex === 0 ? 'current' : 'upcoming'}
         >
-          {isTurnComplete(turnStates[0]) && <CheckCircle2 className="h-3.5 w-3.5 text-[#34d399]" aria-hidden="true" />}
+          {isTurnComplete(turnStates[0]) && <GuidedBrand kind={turnStates[0].passed ? 'success-ribbon' : 'current-crest'} className="today-match-resultArt" />}
           {t('today.rolePlay.turnLabel', { turn: 1 })}
         </span>
         <span
           className="today-roleplay-turnPill inline-flex items-center gap-1 rounded-full border border-[var(--border-subtle)] px-3 py-1"
           data-turn-state={isTurnComplete(turnStates[1]) ? 'passed' : turnIndex === 1 ? 'current' : 'upcoming'}
         >
-          {isTurnComplete(turnStates[1]) && <CheckCircle2 className="h-3.5 w-3.5 text-[#34d399]" aria-hidden="true" />}
+          {isTurnComplete(turnStates[1]) && <GuidedBrand kind={turnStates[1].passed ? 'success-ribbon' : 'current-crest'} className="today-match-resultArt" />}
           {t('today.rolePlay.turnLabel', { turn: 2 })}
         </span>
       </div>

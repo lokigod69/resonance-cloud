@@ -26,6 +26,7 @@ import {
   resolveVisibleStaticLanguage,
 } from '@/lib/staticLibraryLanguage'
 import CurriculumEntryImage from '@/components/categories/CurriculumEntryImage'
+import { canUseLegacyGermanCurriculum } from '@/lib/languages'
 import { useCategoryScrollReset } from './useCategoryScrollReset'
 import styles from './Categories.module.css'
 
@@ -71,8 +72,9 @@ export default function CategoryDetailPage() {
   const { profile, user } = useAuth()
   const { activeLanguage } = useLanguage()
   const { t, tp, locale } = useTranslation()
-  const category = getCurriculumCategoryBySlug(categorySlug)
-  const staticCategory = category ? null : getStaticCategoryById(categorySlug)
+  const legacyCategory = getCurriculumCategoryBySlug(categorySlug)
+  const category = canUseLegacyGermanCurriculum(profile?.base_language) ? legacyCategory : undefined
+  const staticCategory = legacyCategory ? null : getStaticCategoryById(categorySlug)
   const targetLanguage = readStaticLibraryTargetLanguage(searchParams.get('targetLanguage'), activeLanguage)
   const helperLanguage = resolveVisibleStaticLanguage(profile?.base_language, 'German')
   const [importedLevels, setImportedLevels] = useState<Set<number>>(new Set())

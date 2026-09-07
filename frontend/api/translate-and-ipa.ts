@@ -9,6 +9,7 @@ import { consumeApiQuota } from './_shared/quota'
 import { withRequestDeadline } from './_shared/requestDeadline'
 import { writeUsageEvent } from './_shared/usageEvents'
 import { openRouterCost, type LlmUsage } from './_shared/usageCost'
+import { resolveApiBaseLanguage } from './_shared/baseLanguages'
 
 const TRANSLATE_MODEL = 'deepseek/deepseek-v4-flash'
 const MAX_TOKENS = 3000
@@ -68,9 +69,12 @@ function validateBody(raw: unknown): TranslateBody {
   if (raw.items.length === 0) throw new ApiError(400, 'items must contain at least one item')
   if (raw.items.length > MAX_ITEMS) throw new ApiError(400, `items must contain at most ${MAX_ITEMS} items`)
 
+  const baseLanguage = resolveApiBaseLanguage(raw.base_language)
+  if (!baseLanguage) throw new ApiError(400, 'Unsupported base_language')
+
   return {
     target_language: readTrimmedString(raw.target_language, 'target_language', MAX_LANGUAGE_LENGTH),
-    base_language: readTrimmedString(raw.base_language, 'base_language', MAX_LANGUAGE_LENGTH),
+    base_language: baseLanguage.code,
     items: raw.items.map((entry, index) => {
       if (!isObject(entry)) throw new ApiError(400, `items[${index}] must be an object`)
       const isPhrase = entry.is_phrase === undefined ? false : entry.is_phrase

@@ -1,11 +1,12 @@
-import { Check, RotateCcw, Volume2, X } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { RotateCcw, Volume2 } from 'lucide-react'
+import { useState } from 'react'
 import { getDeterministicMatchColumns, resolveGuidedBaseContent, type GuidedLesson, type GuidedMatchPair } from '@/data/guidedLessons'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { playGuidedAudio } from '@/lib/guidedAudio'
 import { cn } from '@/lib/utils'
+import { GuidedBrand, GuidedFeedback } from './GuidedBrand'
 
 type MatchPairsStepProps = {
   lesson: GuidedLesson
@@ -30,11 +31,6 @@ export function MatchPairsStep({
   const baseColumnLabel = t(`today.language.${effectiveBaseLanguage}`) || t('today.matchPairs.baseColumn')
   const [selectedEnglishId, setSelectedEnglishId] = useState<string | null>(null)
   const [wrongPairIds, setWrongPairIds] = useState<Set<string>>(() => new Set())
-  const wrongResetRef = useRef<number | undefined>(undefined)
-
-  useEffect(() => () => {
-    if (wrongResetRef.current !== undefined) window.clearTimeout(wrongResetRef.current)
-  }, [])
 
   const handleEnglishSelect = (pairId: string) => {
     if (matchedPairIds.has(pairId)) return
@@ -56,10 +52,6 @@ export function MatchPairsStep({
 
     setWrongPairIds(new Set([selectedEnglishId, pairId]))
     setSelectedEnglishId(null)
-    if (wrongResetRef.current !== undefined) window.clearTimeout(wrongResetRef.current)
-    wrongResetRef.current = window.setTimeout(() => {
-      setWrongPairIds(new Set())
-    }, 520)
   }
 
   const handleReset = () => {
@@ -133,9 +125,9 @@ export function MatchPairsStep({
           ))}
         </div>
       </div>
-      <div aria-live="polite" className="sr-only">
-        {wrongPairIds.size > 0 ? t('today.matchPairs.wrong') : ''}
-      </div>
+      <GuidedFeedback status={wrongPairIds.size > 0 ? 'wrong' : matchedPairIds.size === columns.english.length ? 'correct' : 'idle'}>
+        {wrongPairIds.size > 0 ? t('today.matchPairs.wrong') : matchedPairIds.size === columns.english.length ? t('today.practice.correct') : ''}
+      </GuidedFeedback>
     </div>
   )
 }
@@ -177,12 +169,12 @@ function MatchChip({
             ? 'border-[color-mix(in_srgb,#34d399_58%,transparent)] bg-[color-mix(in_srgb,#34d399_13%,transparent)] text-[var(--text-primary)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_24%,transparent)]'
             : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)] text-[var(--text-primary)] hover:-translate-y-0.5',
           isSelected && 'border-[color-mix(in_srgb,var(--accent)_62%,transparent)] bg-[color-mix(in_srgb,var(--accent-soft)_72%,transparent)]',
-          isWrong && 'animate-pulse border-[color-mix(in_srgb,#f87171_62%,transparent)] bg-[color-mix(in_srgb,#f87171_12%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#f87171_25%,transparent)]',
+          isWrong && 'border-[color-mix(in_srgb,var(--accent)_62%,transparent)] bg-[color-mix(in_srgb,var(--accent)_12%,transparent)]',
         )}
       >
         <span className="min-w-0 whitespace-normal break-normal leading-snug">{text}</span>
-        {isMatched && <Check className="h-4 w-4 shrink-0 text-[var(--accent)]" />}
-        {isWrong && !isMatched && <X className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />}
+        {isMatched && <GuidedBrand kind="success-ribbon" className="today-match-resultArt" />}
+        {isWrong && !isMatched && <GuidedBrand kind="retry-ribbon" className="today-match-resultArt" />}
       </button>
       {onListen && (
         <button

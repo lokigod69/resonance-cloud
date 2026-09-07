@@ -7,28 +7,29 @@ import {
 } from '@/data/guidedVibes'
 import type { TodayProgressState } from '@/lib/todayProgress'
 import { GUIDED_PATH_LESSON_IDS, GUIDED_PATH_OPTIONS } from './guided-runtime/pathIndex'
+import { GUIDED_BASE_LOCALES, loadGuidedBaseEdition, resolveGuidedExplanationLocale, type GuidedExplanationLanguage, type GuidedExplanationLocale } from '@/lib/guidedBaseEditions'
 
 export type LessonMediaType = 'image' | 'video' | 'music_video'
 
 export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese' | 'German' | 'Cebuano' | 'Indonesian' | 'Polish' | 'Korean' | 'Russian' | 'Japanese'
+// The immutable authored editions remain EN/DE; published explanations support all bases.
 export type GuidedBaseLanguage = 'German' | 'English'
-export type GuidedBaseContentLocale = 'en' | 'de'
+export type GuidedBaseContentLocale = GuidedExplanationLocale
 export type GuidedBaseContentText = Partial<Record<GuidedBaseContentLocale, string>>
 export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH' | 'id-ID' | 'pl-PL' | 'ko-KR' | 'ru-RU' | 'ja-JP'
 
 export const GUIDED_BASE_LANGUAGE_TO_CONTENT_LOCALE: Partial<Record<string, GuidedBaseContentLocale>> = {
-  English: 'en',
-  German: 'de',
+  ...GUIDED_BASE_LOCALES,
 } satisfies Partial<Record<string, GuidedBaseContentLocale>>
 
 export function guidedBaseLanguageToContentLocale(
   baseLanguage: string | null | undefined,
 ): GuidedBaseContentLocale | undefined {
-  return baseLanguage ? GUIDED_BASE_LANGUAGE_TO_CONTENT_LOCALE[baseLanguage] : undefined
+  return resolveGuidedExplanationLocale(baseLanguage)
 }
 
-export function guidedContentLocaleToBaseLanguage(locale: GuidedBaseContentLocale): GuidedBaseLanguage {
-  return locale === 'de' ? 'German' : 'English'
+export function guidedContentLocaleToBaseLanguage(locale: GuidedBaseContentLocale): GuidedExplanationLanguage {
+  return (Object.keys(GUIDED_BASE_LOCALES) as GuidedExplanationLanguage[]).find(language => GUIDED_BASE_LOCALES[language] === locale) ?? 'English'
 }
 
 export function isGuidedBaseContentText(value: unknown): value is GuidedBaseContentText {
@@ -44,7 +45,7 @@ export function resolveGuidedBaseContent(
 ): {
   text: string
   locale: GuidedBaseContentLocale
-  language: GuidedBaseLanguage
+  language: GuidedExplanationLanguage
   isFallback: boolean
 } {
   const authoredLocale = guidedBaseLanguageToContentLocale(options.authoredBaseLanguage) ?? 'en'
@@ -335,7 +336,7 @@ export type GuidedPathOverview = {
 export function resolveGuidedLessonEffectiveBaseLanguage(
   lesson: GuidedLesson,
   preferredBaseLanguage?: string | null,
-): GuidedBaseLanguage {
+): GuidedExplanationLanguage {
   return resolveGuidedBaseContent(lesson.corePhrase.baseText, {
     preferredBaseLanguage,
     authoredBaseLanguage: lesson.baseLanguage,
@@ -379,14 +380,16 @@ export function isGuidedLanguageLoaded(language: string | null | undefined): boo
   return resolved ? loadedGuidedLanguages.has(resolved) : false
 }
 
-export async function loadGuidedLessonsForLanguage(language: string | null | undefined): Promise<GuidedTargetLanguage> {
+export async function loadGuidedLessonsForLanguage(language: string | null | undefined, baseLanguage?: string | null): Promise<GuidedTargetLanguage> {
   const resolved = resolveGuidedTargetLanguage(language)
   if (!resolved) throw new Error(`Unsupported guided language: ${language ?? ''}`)
-  if (loadedGuidedLanguages.has(resolved)) return resolved
+  const loadBase = () => loadGuidedBaseEdition(resolved, baseLanguage, GUIDED_LESSONS.filter(lesson => lesson.targetLanguage === resolved), GUIDED_PATH_OPTIONS.filter(path => path.targetLanguage === resolved))
+  if (loadedGuidedLanguages.has(resolved)) { await loadBase(); return resolved }
 
   const inFlight = guidedLanguagePromises.get(resolved)
   if (inFlight) {
     await inFlight
+    await loadBase()
     return resolved
   }
 
@@ -401,6 +404,7 @@ export async function loadGuidedLessonsForLanguage(language: string | null | und
   })
   guidedLanguagePromises.set(resolved, request)
   await request
+  await loadBase()
   return resolved
 }
 

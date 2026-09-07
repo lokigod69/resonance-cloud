@@ -13,6 +13,7 @@ import { SymbolDetailPanel } from '@/components/scriptlab/SymbolDetailPanel'
 import { BuildMode } from '@/components/scriptlab/BuildMode'
 import { QuizMode } from '@/components/scriptlab/QuizMode'
 import { cn } from '@/lib/utils'
+import { useScriptContentLocale } from '@/hooks/useScriptContentLocale'
 
 type TabKey = 'learn' | 'build' | 'quiz'
 
@@ -25,6 +26,7 @@ export default function ScriptLab() {
   const { scriptId } = useParams()
   const { activeLanguage } = useLanguage()
   const { t, locale } = useTranslation()
+  const scriptContent = useScriptContentLocale(locale)
 
   const entry = useMemo(() => {
     if (scriptId) return getScriptEntry(scriptId)
@@ -130,14 +132,17 @@ export default function ScriptLab() {
     )
   }
 
-  if (!ready || !script) {
-    if (failedEntryId === entry.id) {
+  if (!ready || !script || !scriptContent.ready) {
+    if (failedEntryId === entry.id || scriptContent.failed) {
       return (
         <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-4 px-4 py-16 pb-24 text-center sm:px-6">
           <p className="text-[var(--text-secondary)]">{t('scriptlab.loadError')}</p>
           <button
             type="button"
-            onClick={() => window.location.reload()}
+            onClick={() => {
+              if (failedEntryId === entry.id) window.location.reload()
+              else void scriptContent.retry()
+            }}
             className="rounded-full bg-[var(--accent)] px-6 py-2.5 font-medium text-[var(--on-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30"
           >
             {t('scriptlab.reload')}
@@ -174,7 +179,7 @@ export default function ScriptLab() {
           {script.displayName}
         </h1>
         <p className="mx-auto mt-1 max-w-md text-sm leading-relaxed text-[var(--text-secondary)]">
-          {localizeScriptText(script.tagline, locale)}
+          {localizeScriptText(script.tagline, locale, scriptContent.messages)}
         </p>
         {seenCount > 0 && (
           <p className="mt-2 text-xs text-[var(--text-muted)]">
@@ -216,7 +221,7 @@ export default function ScriptLab() {
             </h2>
             {script.intro.map((paragraph) => (
               <p key={paragraph.en} className="text-sm leading-relaxed text-[var(--text-secondary)]">
-                {localizeScriptText(paragraph, locale)}
+                {localizeScriptText(paragraph, locale, scriptContent.messages)}
               </p>
             ))}
           </div>
@@ -228,6 +233,7 @@ export default function ScriptLab() {
                 section={resolved.section}
                 symbols={resolved.symbols}
                 locale={locale}
+                contentMessages={scriptContent.messages}
                 seenSymbolIds={seen}
                 onSelect={(symbol) =>
                   setDetail({ sectionIndex: index, symbolIndex: resolved.symbols.indexOf(symbol) })
@@ -253,6 +259,7 @@ export default function ScriptLab() {
                 section={resolved.section}
                 symbols={resolved.symbols}
                 locale={locale}
+                contentMessages={scriptContent.messages}
                 seenSymbolIds={seen}
                 onSelect={(symbol) =>
                   setDetail({ sectionIndex: index, symbolIndex: resolved.symbols.indexOf(symbol) })
@@ -272,6 +279,7 @@ export default function ScriptLab() {
         symbols={detail ? resolvedSections[detail.sectionIndex]?.symbols ?? [] : []}
         activeIndex={detail ? detail.symbolIndex : null}
         locale={locale}
+        contentMessages={scriptContent.messages}
         onNavigate={navigateDetail}
         onClose={closeDetail}
         onSeen={handleSeen}

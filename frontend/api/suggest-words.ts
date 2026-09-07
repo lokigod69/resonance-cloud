@@ -12,6 +12,7 @@ import { writeUsageEvent } from './_shared/usageEvents'
 import { openRouterCost, type LlmUsage } from './_shared/usageCost'
 import { createClient } from '@supabase/supabase-js'
 import { requestFetch, withRequestDeadline } from './_shared/requestDeadline'
+import { resolveApiBaseLanguage } from './_shared/baseLanguages'
 
 const SUGGEST_MODEL = 'deepseek/deepseek-v4-flash'
 const MAX_TOKENS = 1000
@@ -223,10 +224,14 @@ function validateBody(raw: unknown): SuggestWordsBody {
     throw new ApiError(400, `count must be between 1 and ${MAX_COUNT}`)
   }
 
+  const requestedBaseLanguage = raw.base_language ?? 'English'
+  const baseLanguage = resolveApiBaseLanguage(requestedBaseLanguage)
+  if (!baseLanguage) throw new ApiError(400, 'Unsupported base_language')
+
   return {
     category: readTrimmedString(raw.category, 'category', MAX_CATEGORY_LENGTH, true)!,
     target_language: readTrimmedString(raw.target_language, 'target_language', MAX_LANGUAGE_LENGTH, true)!,
-    base_language: readTrimmedString(raw.base_language, 'base_language', MAX_LANGUAGE_LENGTH, false) || 'English',
+    base_language: baseLanguage.value,
     count: count as number,
   }
 }
