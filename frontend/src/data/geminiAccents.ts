@@ -45,11 +45,11 @@ export const GEMINI_ACCENTS: readonly GeminiAccent[] = [
 
   // Theatrical / fictional accents (quality varies, that's intentional)
   { id: 'pirate',              name: 'Pirate',                 group: 'theatrical',  geminiPromptSuffix: 'Speak in heavy theatrical pirate dialect — exaggerated West Country English, rolling r-sounds, dropped g-endings, dragged "arr" vowels. Lean fully into camp.', version: 1 },
-  { id: 'shrek',               name: 'Shrek',                  group: 'theatrical',  geminiPromptSuffix: 'Speak with a thick Scottish accent in the style of the character Shrek — slightly gruff, working-class.', version: 1 },
+  { id: 'shrek',               name: 'Shrek',                  group: 'theatrical',  geminiPromptSuffix: 'Speak with a thick Scottish accent — a gruff, good-natured storybook-ogre voice, working-class.', version: 1 },
   { id: 'shakespeare',         name: 'Shakespearean',          group: 'theatrical',  geminiPromptSuffix: 'Speak with theatrical Shakespearean English delivery — Royal Shakespeare Company style.', version: 1 },
   { id: 'wild_west_cowboy',    name: 'Wild West Cowboy',       group: 'theatrical',  geminiPromptSuffix: 'Speak as a 19th-century Wild West cowboy — dusty, slow, full of "partner" and "much obliged" energy.', version: 1 },
   { id: 'surfer_dude',         name: 'Surfer Dude',            group: 'theatrical',  geminiPromptSuffix: 'Speak as a laid-back California surfer — "totally," "dude," "gnarly" energy.', version: 1 },
-  { id: 'french_pepe_le_pew',  name: 'Cartoon French',         group: 'theatrical',  geminiPromptSuffix: 'Speak with an exaggerated cartoon French accent — Pepé Le Pew style, theatrical.', version: 1 },
+  { id: 'french_pepe_le_pew',  name: 'Cartoon French',         group: 'theatrical',  geminiPromptSuffix: 'Speak with an exaggerated cartoon French accent — theatrical and playful.', version: 1 },
 ]
 
 export function getGeminiAccent(id: string): GeminiAccent | undefined {

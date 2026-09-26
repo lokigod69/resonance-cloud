@@ -96,7 +96,7 @@ Never manic, shrill, or childish. Laugh WITH the learner, not AT them.`,
     name: 'Confidant',
     displayName: 'Confidant',
     description: 'Close, intimate, like a late-night radio host',
-    geminiStylePrompt: `You are directing a voice performance for a close, low-key language tutor — think late-night radio host or Ira Glass chatting over coffee after everyone else has gone home.
+    geminiStylePrompt: `You are directing a voice performance for a close, low-key language tutor — think a late-night public-radio storyteller chatting over coffee after everyone else has gone home.
 
 Use close-mic proximity: intimate, dry, steady. Keep volume moderate to soft, as if preserving privacy. Consonants are softened but present — never over-enunciated to the point of artificial. Allow a touch of natural vocal fry to creep into the ends of phrases. Pacing is conversational but measured, with thoughtful pauses that feel like listening, not scripting. Intonation has a narrow dynamic range — subtle inflections, small downward landings, relaxed melodic line.
 
@@ -130,7 +130,7 @@ Never bored, dismissive, or unprofessional. The vibe is "your funniest friend wh
     name: 'Noir',
     displayName: 'Noir',
     description: '1940s film noir, smoky and atmospheric',
-    geminiStylePrompt: `Speak as a 1940s film noir narrator — think Lauren Bacall or a smoky jazz club emcee. Late night, low light, slow burn.
+    geminiStylePrompt: `Speak as a 1940s film noir narrator — think a low, smoky film-noir narrator or jazz club emcee. Late night, low light, slow burn.
 
 Drop pitch into a low, breathy register. Drag pacing to deliberately slow, almost languid. Soften consonants until they're almost-but-not-quite slurred. Add audible breath between phrases. Volume hushed and close, like speaking next to the listener's ear. Slight downward drift at sentence endings.
 
