@@ -18,6 +18,7 @@ export const geminiRules = `GENERAL RULES:
 - Keep responses SHORT: 1-3 sentences. This is spoken conversation, not a lecture.
 - At Level Zero, do not correct mistakes — confidence matters more than accuracy. At higher levels, model the correct form naturally in your next sentence rather than stopping to correct. Never lecture about grammar unless asked.
 - NEVER use "..." for dramatic pauses. The speech engine reads dots literally.
+- Write plain spoken text: no markdown, asterisks, bullet points or emoji.
 - Use ONLY the student's native language and the target language. Never mix in any other language, even for common words.`
 
 export interface GeminiSystemPromptInput {

@@ -35,7 +35,11 @@ import {
   type LlmUsage, type GeminiTtsUsageLike,
 } from './_shared/usageCost'
 
-const SPEAK_LLM_MODEL = 'llama-3.3-70b-versatile'
+// Groq shut down llama-3.3-70b-versatile on 2026-08-16 (console.groq.com/docs/deprecations);
+// gpt-oss-120b is its named replacement. It reasons before answering: reasoning
+// tokens count toward max_completion_tokens and arrive outside `content`.
+const SPEAK_LLM_MODEL = 'openai/gpt-oss-120b'
+const SPEAK_LLM_REASONING = { reasoning_effort: 'low' } as const
 const SPEAK_STT_MODEL = 'whisper-large-v3'
 const SPEAK_GEMINI_TTS_MODEL = 'gemini-3.1-flash-tts-preview'
 const SPEAK_VOXTRAL_TTS_MODEL = 'voxtral-mini-tts-2603'
@@ -315,14 +319,16 @@ const GEMINI_ACCENT_SUFFIXES: Record<string, string> = {
  */
 function sanitizeForTTS(text: string): string {
   return text
-    // Remove parenthetical stage directions: (slowly), (laughing), (whispering), etc.
-    .replace(/\([\w\s]+\)/gi, '')
-    // Remove bracketed stage directions: [slowly], [pause], etc.
-    .replace(/\[[\w\s]+\]/gi, '')
+    // Remove stage directions: (slowly), (laughing), [pause], etc. Only
+    // direction-like words match — a parenthesised gloss such as (pain frais)
+    // is teaching content and must still be spoken.
+    .replace(/[([]\s*(?:[a-z]{3,}ly|[a-z]{3,}ing|[Pp]ause|[Ss]ighs?|[Ss]miles?|[Ll]aughs?|[Ww]hispers?|[Gg]iggles?|[Cc]huckles?)\s*[)\]]/g, '')
     // Remove pacing ellipsis: "I... am..." → "I am"
     .replace(/\.{2,}/g, ' ')
-    // Remove asterisk emphasis: *slowly*, **pause**, etc.
-    .replace(/\*+[\w\s]+\*+/g, '')
+    // Drop emphasis markers but keep the word: the tutor bolds the very word
+    // it is teaching (**cansado**), so deleting the span removed it from audio.
+    .replace(/\*{1,3}([^*\n]+?)\*{1,3}/g, '$1')
+    .replace(/\*+/g, '')
     // Collapse multiple spaces left by removals
     .replace(/\s{2,}/g, ' ')
     .trim()
@@ -708,7 +714,8 @@ If no errors: {"corrections": []}`
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+        model: SPEAK_LLM_MODEL,
+        ...SPEAK_LLM_REASONING,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: JSON.stringify(transcript) },
@@ -1055,9 +1062,10 @@ async function handlePost(req: Request): Promise<Response> {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'llama-3.3-70b-versatile',
+      model: SPEAK_LLM_MODEL,
+      ...SPEAK_LLM_REASONING,
       messages,
-      max_tokens: 200,
+      max_completion_tokens: 400,
       // Greetings use a deliberately minimal prompt; raise temperature so the
       // LLM explores more varied openers instead of locking onto one phrasing
       // across every call. Non-greeting turns keep the Groq default.

@@ -26,9 +26,11 @@ const OPENROUTER_RATES_USD_PER_MTOKEN: Record<string, { in: number; out: number 
 // Conservative fallback for an unmapped OpenRouter model (over- not under-estimate).
 const OPENROUTER_DEFAULT_RATE_USD_PER_MTOKEN = { in: 0.5, out: 1.5 } // UNVERIFIED fallback
 
-// Groq LLM — USD per 1M tokens. llama-3.3-70b-versatile: $0.59 in / $0.79 out.
-// Source: groq.com/pricing — verified 2026-06-19.
+// Groq LLM — USD per 1M tokens. openai/gpt-oss-120b: $0.15 in / $0.60 out (Speak since
+// 2026-09-26). llama-3.3-70b-versatile ($0.59 / $0.79, verified 2026-06-19) was shut
+// down 2026-08-16 and stays listed for historical events.
 const GROQ_LLM_RATES_USD_PER_MTOKEN: Record<string, { in: number; out: number }> = {
+  'openai/gpt-oss-120b': { in: 0.15, out: 0.6 },
   'llama-3.3-70b-versatile': { in: 0.59, out: 0.79 },
 }
 const GROQ_LLM_DEFAULT_RATE_USD_PER_MTOKEN = { in: 0.59, out: 0.79 } // fallback = flagship rate
