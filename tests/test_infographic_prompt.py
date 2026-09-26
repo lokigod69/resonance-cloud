@@ -143,10 +143,12 @@ def test_compiler_output_has_infographic_requirements_without_internal_labels():
     lower = prompt.lower()
 
     assert "horizontal 16:9 educational infographic poster" in prompt
-    assert "All explanatory text, panel headers, captions, labels, and descriptions must be in German" in prompt
-    assert "Only the target word, target-language forms, and target-language example sentences may appear in English" in prompt
-    assert "Never invent mnemonics" in prompt
-    assert "supplied content is the source of truth" in prompt
+    assert "Every explanation, header, caption, label, warning, gloss and footer is in German." in prompt
+    assert "Only the headword, its forms, target-language examples and collocations appear in English." in prompt
+    assert "Render only the facts, examples and memory cues listed below" in prompt
+    assert "Use only the supplied content below" in prompt
+    assert "Never invent" not in prompt
+    assert prompt.count(" is in German.") == 1
     assert "Kernidee" in prompt
     assert "threshold" in prompt
     for term in BANNED_VISIBLE_TERMS:
@@ -195,8 +197,8 @@ def test_compiler_forces_target_word_headword_and_base_translation_subtitle_orie
         assert f"Translation/subtitle, spelled exactly: {translation}." in prompt
         assert f"Large title/headword, spelled exactly: {translation}." not in prompt
         assert f"Translation/subtitle, spelled exactly: {word}." not in prompt
-        assert "All explanatory text, panel headers, captions, labels, and descriptions must be in German" in prompt
-        assert "Only the target word, target-language forms, and target-language example sentences may appear in English" in prompt
+        assert "Every explanation, header, caption, label, warning, gloss and footer is in German." in prompt
+        assert "Only the headword, its forms, target-language examples and collocations appear in English." in prompt
 
         v3_prompt = compile_infographic_prompt(
             content=content,
@@ -307,7 +309,8 @@ def test_compiler_keeps_examples_from_planner_and_adds_natural_example_guard_wit
     assert "She was the clear winner of the race" in prompt
     assert "Hard work is often the winner in the end" not in prompt
     assert "always with article" not in prompt.lower()
-    assert "Im Singular meist mit Artikel: a winner / the winner. Im Plural auch ohne Artikel: winners." in prompt
+    assert "describe article use as a tendency" in prompt
+    assert "Im Singular" not in prompt
 
 
 def test_compiler_filters_internal_visual_dictionary_section_names_from_visible_headers():
@@ -422,7 +425,8 @@ def test_v3_compiler_includes_reference_text_and_content_safety_rules():
     assert "All visible text must come from the planner content." in prompt
     assert "All explanations, panel headers, captions, warnings, glosses, and footer text must be in German." in prompt
     assert "target word, target-language forms, target-language example sentences, and collocations may remain in English" in prompt
-    assert "Never invent fake facts. Never invent quotes. Never invent etymologies. Never invent mnemonics." in prompt
+    assert "Render only the facts, examples and memory cues listed below" in prompt
+    assert "Never invent" not in prompt
     assert "Do not copy text from the reference image." in prompt
     assert len(prompt) < 3500
     assert prompt.count("Use the attached reference image only as visual scaffolding.") == 1

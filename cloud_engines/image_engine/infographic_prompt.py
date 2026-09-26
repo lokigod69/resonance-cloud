@@ -91,7 +91,7 @@ VOCABULARY_FIRST_RULES = (
     "At most 30% may be world/topic knowledge, and only when it directly helps the learner understand or use the word.",
     "Examples must be idiomatic and common. Avoid unnatural examples created only to fit the word.",
     "Use planner-provided examples; the compiler must not invent new example sentences.",
-    "For singular countable nouns, avoid absolute article claims; use nuanced wording such as: Im Singular meist mit Artikel: a winner / the winner. Im Plural auch ohne Artikel: winners.",
+    "For singular countable nouns, describe article use as a tendency (usually with an article in the singular, often without in the plural), written in the base language.",
 )
 
 V4_BANNED_VISIBLE_STRINGS = (
@@ -934,18 +934,16 @@ def compile_infographic_prompt(
     hero = _clean(plan.get("hero_treatment"))
     lines = [
         "Create a horizontal 16:9 educational infographic poster for a vocabulary learner.",
-        "Use the supplied content is the source of truth; do not add unprovided facts to fill space.",
+        "Use only the supplied content below; leave space empty rather than adding facts.",
         "Allow designer freedom in composition, spacing, icons, arrows, callouts, and visual hierarchy.",
         "Use short readable text, not paragraphs. Keep hierarchy premium, editorial, and uncluttered.",
         f"Large title/headword, spelled exactly: {title}.",
         f"Translation/subtitle, spelled exactly: {translation}.",
         "Orientation rule: the title/headword is the target-language word; the subtitle is the base-language gloss.",
-        f"All explanatory text, panel headers, captions, labels, and descriptions must be in {base_language}.",
-        f"Only the target word, target-language forms, and target-language example sentences may appear in {target_language}.",
+        f"Every explanation, header, caption, label, warning, gloss and footer is in {base_language}.",
+        f"Only the headword, its forms, target-language examples and collocations appear in {target_language}.",
         *VOCABULARY_FIRST_RULES,
-        "Never invent fake facts. Never invent quotes. Never invent etymologies. Never invent mnemonics. If a mnemonic is weak, omit it.",
-        f"All explanations, panel headers, captions, warnings, glosses, and footer text must be in {base_language}.",
-        f"The target word, target-language forms, target-language example sentences, and collocations may remain in {target_language}.",
+        "Render only the facts, examples and memory cues listed below; drop a panel rather than filling it.",
         "Internal safety rules are instructions only and must not be rendered as card text.",
         "Do not render internal engineering labels, model names, backend names, enum values, prompt labels, version labels, or implementation terms in the visible image.",
         f"Visual anchor: {_clean(plan.get('visual_anchor')) or 'a central word-specific visual anchor'}.",
@@ -1449,8 +1447,7 @@ def _compile_v3_reference_prompt(
         "Bans:",
         "No internal labels.",
         "No backend/model/template names.",
-        "Never invent fake facts. Never invent quotes. Never invent etymologies. Never invent mnemonics.",
-        "No forced mnemonics.",
+        "Render only the facts, examples and memory cues listed below; drop a panel rather than filling it.",
         "Do not copy text from the reference image.",
         "",
         "The planner content is the source of truth.",
