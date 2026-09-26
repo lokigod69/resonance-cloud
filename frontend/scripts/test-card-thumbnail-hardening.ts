@@ -66,7 +66,9 @@ assert.match(orbDock, /getCardPreviewUrl\(word\.card_thumbnail_url, word\.thumbn
 
 const deleteAccount = read('api/delete-account.ts')
 assert.match(deleteAccount, /select\('id,video_url,thumbnail_url,card_thumbnail_url,/)
-assert.match(deleteAccount, /addStorageUrl\(objectsByBucket, 'videos', row\.card_thumbnail_url\)/)
+assert.match(deleteAccount, /addStorageUrl\(objectsByBucket, 'videos', row\.card_thumbnail_url, ownFolder\)/)
+// Word URLs can point anywhere; account deletion may only remove the user's own folder.
+assert.match(deleteAccount, /if \(!parsed\.objectPath\.startsWith\(ownFolder\)\) return/)
 
 for (const detailSurface of [
   'src/components/deck/CardWordViewerModal.tsx',

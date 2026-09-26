@@ -410,14 +410,18 @@ async function collectWordStorageObjects(
       .select('id,video_url,thumbnail_url,card_thumbnail_url,video_url_b,thumbnail_url_b,suno_storage_url,suno_storage_url_b')
       .eq('user_id', userId))
 
+    // A word's URL columns can hold any https URL (word-stream saves copy shared
+    // library thumbnails; a crafted save can name another user's file), so only
+    // objects inside this user's own folder are collected from them.
+    const ownFolder = `${userId}/`
     for (const row of rows) {
-      addStorageUrl(objectsByBucket, 'videos', row.video_url)
-      addStorageUrl(objectsByBucket, 'videos', row.thumbnail_url)
-      addStorageUrl(objectsByBucket, 'videos', row.card_thumbnail_url)
-      addStorageUrl(objectsByBucket, 'videos', row.video_url_b)
-      addStorageUrl(objectsByBucket, 'videos', row.thumbnail_url_b)
-      addStorageUrl(objectsByBucket, 'audio', row.suno_storage_url)
-      addStorageUrl(objectsByBucket, 'audio', row.suno_storage_url_b)
+      addStorageUrl(objectsByBucket, 'videos', row.video_url, ownFolder)
+      addStorageUrl(objectsByBucket, 'videos', row.thumbnail_url, ownFolder)
+      addStorageUrl(objectsByBucket, 'videos', row.card_thumbnail_url, ownFolder)
+      addStorageUrl(objectsByBucket, 'videos', row.video_url_b, ownFolder)
+      addStorageUrl(objectsByBucket, 'videos', row.thumbnail_url_b, ownFolder)
+      addStorageUrl(objectsByBucket, 'audio', row.suno_storage_url, ownFolder)
+      addStorageUrl(objectsByBucket, 'audio', row.suno_storage_url_b, ownFolder)
     }
 
     return rows
@@ -647,9 +651,11 @@ function addStorageUrl(
   objectsByBucket: Record<StorageBucket, Set<string>>,
   expectedBucket: StorageBucket,
   value: string | null,
+  ownFolder: string,
 ): void {
   const parsed = parseStorageObjectUrl(value)
   if (!parsed || parsed.bucket !== expectedBucket) return
+  if (!parsed.objectPath.startsWith(ownFolder)) return
   addStoragePath(objectsByBucket, parsed.bucket, parsed.objectPath)
 }
 
