@@ -11,6 +11,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Money: generation refunds are exact and idempotent; Stripe checkout survives lost responses and keeps event order; subscription billing proven end to end in sandbox (2026-07-31). `STRIPE_BILLING_ENABLED` stays off until launch.
 - Study recall attempts persist offline (IndexedDB) with stable receipts.
 - Database: all 18 hardening/Today/base migrations applied and recorded; direct client INSERT removed; worker-owned columns guarded. Daily maintenance cron runs at 03:30 UTC behind `CRON_SECRET` (first scheduled run not yet observed).
+- Config: quota and subscription checks fail closed in production (`API_QUOTA_REQUIRE_ENFORCED=true`). Supabase Auth has email confirmation and Secure password change ON, CAPTCHA OFF (needs client work). Password reset requires the PASSWORD_RECOVERY event; local sign-out clears state even when the network call fails. Sensitive Vercel env values are unreadable through the CLI — never presume they are empty.
 - Agent tooling (2026-09-25): one shared rules file `orchestrator/AGENTS.md`; `npm run verify` and `npm run test:local` (23 offline suites, 5 known-stale listed); ESLint blocks `export default` in `api/`; `.gitattributes` enforces LF. WordTide.tsx was preserved in `55e8729b` and removed in `5fe493c1`.
 
 ## In progress
@@ -23,11 +24,11 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Nothing has been tested on a physical iPhone since the September releases; real OS keyboards, TestFlight and Reduce Motion are unverified.
 - Live token expiry is not a socket-cost ceiling (needs a relay/revocation); the xAI voice model is deprecated and needs a paid sample before migrating.
 - 27 historical ambiguous generation operations (147 credits charged) need reconciliation before any manual refund.
-- Storage objects of deleted words pile up in `storage_cleanup_queue`; nothing drains it yet (agent-hygiene phase 7).
+- Storage objects of deleted words sit in `storage_cleanup_queue` (255 pending since 2026-05-02). The daily sweep ships in preview mode; deleting needs the owner's OK and `STORAGE_CLEANUP_MODE=delete` (agent-hygiene phase 7).
 - Platform follow-ups: CAPTCHA (needs client work), CSP still report-only, `SUNO_CALLBACK_BASE_URL` defaults to the dead resonanz.pro, full historical Supabase replay needs Docker.
 
 ## Next actions
-- Owner: rotate the credentials pasted into April–May Codex prompts; the iPhone pass and TestFlight steps on protocol/BOARD.md; the six hardening decisions; PostHog credentials to switch analytics on.
+- Owner: rotate the credentials pasted into April–May Codex prompts; the iPhone pass and TestFlight steps on protocol/BOARD.md; the six hardening decisions; PostHog credentials to switch analytics on; the Supabase outstanding-invoice warning.
 - Agents: continue agent-hygiene from its NEXT_STEP; the Today visual leftovers are the next product design scope.
 
 ## Read next

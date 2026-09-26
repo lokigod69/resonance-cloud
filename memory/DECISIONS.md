@@ -375,7 +375,7 @@ Spec rule 8 amendment (both new A1 specs): adjective blanks allowed when the adj
 - First-run stream access, queue ordering, paid ru/ja voices, pearls/filter remain explicit product choices. Remote hardening setup stays unverified until evidence exists; source changes alone do not prove production configuration.
 
 ## 2026-09-07 — Reliability and accounting hardening
-- Owner authorized direct implementation, SQL/config changes and commit/deploy for Lens identity/mixed receipts, Live reconnect billing and remaining hardening. Preserve waves and the unrelated WordTide diff.
+- Owner authorized direct implementation, SQL/config changes and commit/deploy for Lens identity/mixed receipts, Live reconnect billing and remaining hardening. Preserve waves and the unrelated WordTide diff. ⚠️ superseded 2026-09-26: the WordTide diff was preserved in `55e8729b` and the file removed in `5fe493c1`.
 - Separate identities from display names: Lens deck identity is user/language scoped; UI reconciles exact client-ID save outcomes, never count-based guesses.
 - Live retries reuse one stored encrypted credential/ten-minute reservation. No untrusted browser-connected attestation or refund. Refund abandoned no-secret blocks through authenticated maintenance. This does not create a trusted provider socket-duration ceiling.
 - Refund exact generation operations and original credit buckets once. Worker failures carry operation fences; expired plan credits remain expired. Ambiguous old accounting is flagged for reconciliation rather than guessed.

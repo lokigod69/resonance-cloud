@@ -5,6 +5,7 @@
 // Re-issues PostHog person deletion for analytics_deletion_queue rows older
 // than 24h (in-flight events can land after the first pass at account
 // deletion), removing each row once PostHog confirms the person is gone.
+// Also runs the storage-cleanup sweep (preview unless STORAGE_CLEANUP_MODE=delete).
 // Idempotent and harmless to re-run: it only ever erases analytics for
 // accounts that were already destroyed.
 
@@ -12,8 +13,19 @@ import { createAnalyticsAdminClient, eraseAnalyticsPerson } from './_shared/anal
 import { errorResponse, jsonResponse } from './_shared/http'
 import { cleanupAbandonedLiveReservations } from './_shared/liveSessionReservations'
 import { assertRequestActive, withRequestDeadline } from './_shared/requestDeadline'
+import {
+  createSupabaseCleanupClient,
+  planStorageCleanup,
+  processStorageCleanup,
+  type CleanupPlan,
+  type CleanupSummary,
+} from './_shared/storageCleanup'
 
 const SWEEP_BATCH_LIMIT = 100
+// Storage objects of deleted words (storage_cleanup_queue). Read-only preview
+// unless STORAGE_CLEANUP_MODE=delete; the first deleting run needs the owner's
+// explicit OK naming the preview counts.
+const STORAGE_CLEANUP_BATCH_LIMIT = 25
 const REQUEUE_AGE_MS = 24 * 60 * 60 * 1000
 
 export async function GET(req: Request): Promise<Response> {
@@ -49,6 +61,20 @@ async function handleGet(req: Request): Promise<Response> {
     return errorResponse(req, 500, 'Analytics deletion sweep is not configured')
   }
 
+  const storageMode = process.env.STORAGE_CLEANUP_MODE === 'delete' ? 'delete' : 'preview'
+  let storage: CleanupPlan | CleanupSummary | null = null
+  let storageCleanupFailed = false
+  try {
+    const cleanupClient = createSupabaseCleanupClient(admin)
+    storage = storageMode === 'delete'
+      ? await processStorageCleanup(cleanupClient, { limit: STORAGE_CLEANUP_BATCH_LIMIT })
+      : await planStorageCleanup(cleanupClient, { limit: STORAGE_CLEANUP_BATCH_LIMIT })
+  } catch (error) {
+    storageCleanupFailed = true
+    console.error('[maintenance] Storage cleanup failed', error instanceof Error ? error.message : String(error))
+  }
+  assertRequestActive()
+
   const cutoff = new Date(Date.now() - REQUEUE_AGE_MS).toISOString()
   const { data, error } = await admin
     .from('analytics_deletion_queue')
@@ -78,5 +104,12 @@ async function handleGet(req: Request): Promise<Response> {
     erased += 1
   }
 
-  return jsonResponse(req, { due: rows.length, erased, live_refunded: liveRefunded, live_cleanup_failed: liveCleanupFailed }, liveCleanupFailed ? 503 : 200)
+  return jsonResponse(req, {
+    due: rows.length,
+    erased,
+    live_refunded: liveRefunded,
+    live_cleanup_failed: liveCleanupFailed,
+    storage_cleanup: { mode: storageMode, ...storage },
+    storage_cleanup_failed: storageCleanupFailed,
+  }, liveCleanupFailed || storageCleanupFailed ? 503 : 200)
 }

@@ -3,8 +3,10 @@ import assert from 'node:assert/strict'
 import {
   type CleanupClient,
   type CleanupQueueRow,
+  KEPT_NOTE,
+  planStorageCleanup,
   processStorageCleanup,
-} from './process-storage-cleanup.ts'
+} from '../api/_shared/storageCleanup.ts'
 
 class FakeCleanupClient implements CleanupClient {
   rows: CleanupQueueRow[]
@@ -14,6 +16,8 @@ class FakeCleanupClient implements CleanupClient {
   audits: Array<{ row: CleanupQueueRow; message: string }> = []
   claims: string[] = []
   failRemovalsFor = new Set<string>()
+  referencedPaths = new Set<string>()
+  notes: Array<{ id: string; note: string | undefined }> = []
 
   constructor(rows: CleanupQueueRow[]) {
     this.rows = rows.map(row => ({ ...row }))
@@ -34,6 +38,10 @@ class FakeCleanupClient implements CleanupClient {
     return { ...row }
   }
 
+  async isObjectReferenced(queued: CleanupQueueRow) {
+    return this.referencedPaths.has(queued.object_path)
+  }
+
   async removeStorageObject(bucket: string, objectPath: string) {
     this.removed.push({ bucket, objectPath })
     if (this.failRemovalsFor.has(objectPath)) {
@@ -41,14 +49,15 @@ class FakeCleanupClient implements CleanupClient {
     }
   }
 
-  async markCleanupComplete(id: string) {
+  async markCleanupComplete(id: string, note?: string) {
     const row = this.rows.find(item => item.id === id)
     if (row) {
       row.status = 'complete'
-      row.error_message = null
+      row.error_message = note ?? null
       row.processed_at = 'now'
     }
     this.completed.push(id)
+    this.notes.push({ id, note })
   }
 
   async markCleanupFailed(id: string, message: string) {
@@ -92,7 +101,39 @@ await (async function deletesValidPendingRowsAndMarksComplete() {
   assert.deepEqual(client.removed, [{ bucket: 'videos', objectPath: 'user/deck/word/video.mp4' }])
   assert.deepEqual(client.completed, ['valid-row'])
   assert.equal(client.failed.length, 0)
-  assert.deepEqual(summary, { scanned: 1, claimed: 1, completed: 1, failed: 0, skipped: 0 })
+  assert.deepEqual(summary, { scanned: 1, claimed: 1, completed: 1, kept: 0, failed: 0, skipped: 0 })
+})()
+
+await (async function keepsObjectsALiveWordStillReferences() {
+  // A word deleted and re-created with the same text reuses the queued path.
+  const reused = row({ id: 'reused-path', object_path: 'user/deck/word/video.mp4' })
+  const orphan = row({ id: 'orphan', object_path: 'user/deck/gone/video.mp4' })
+  const client = new FakeCleanupClient([reused, orphan])
+  client.referencedPaths.add('user/deck/word/video.mp4')
+
+  const summary = await processStorageCleanup(client, { allowedBuckets: ['videos'], limit: 10 })
+
+  assert.deepEqual(client.removed, [{ bucket: 'videos', objectPath: 'user/deck/gone/video.mp4' }])
+  assert.deepEqual(client.notes, [{ id: 'reused-path', note: KEPT_NOTE }, { id: 'orphan', note: undefined }])
+  assert.equal(summary.kept, 1)
+  assert.equal(summary.completed, 1)
+})()
+
+await (async function previewWritesNothing() {
+  const deletable = row({ id: 'deletable', object_path: 'user/deck/a/video.mp4' })
+  const kept = row({ id: 'kept', object_path: 'user/deck/b/video.mp4' })
+  const invalid = row({ id: 'invalid', object_path: '../escape.mp4' })
+  const client = new FakeCleanupClient([deletable, kept, invalid])
+  client.referencedPaths.add('user/deck/b/video.mp4')
+
+  const plan = await planStorageCleanup(client, { allowedBuckets: ['videos'], limit: 10 })
+
+  assert.deepEqual(plan, { scanned: 3, deletable: 1, kept: 1, invalid: 1 })
+  assert.deepEqual(client.claims, [])
+  assert.deepEqual(client.removed, [])
+  assert.deepEqual(client.completed, [])
+  assert.deepEqual(client.failed, [])
+  assert.ok(client.rows.every(item => item.status === 'pending'))
 })()
 
 await (async function rejectsUnsafeRowsWithoutCallingStorage() {
