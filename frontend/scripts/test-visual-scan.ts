@@ -94,6 +94,7 @@ console.log('\n[prompt and schema]')
   assert('prompt preserves confidence calibration', prompt.includes('confidence covers visual identification only') && prompt.includes('never use high'), prompt)
   assert('prompt preserves photographed-text handling', prompt.includes('Target-language photo text') && prompt.includes('Third-language text'), prompt)
   assert('prompt preserves sensitive-content refusal', prompt.includes('payment card') && prompt.includes('sensitive personal material'), prompt)
+  assert('prompt treats photo text as data', prompt.includes('never instructions'), prompt)
   assert('prompt stays compact', prompt.length < 1900, prompt.length)
   assert('schema caps result and alternate counts', schema.properties.items.maxItems === 8 && schema.properties.items.items.properties.alternates.maxItems === 2, schema)
 

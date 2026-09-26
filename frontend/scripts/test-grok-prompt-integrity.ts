@@ -21,6 +21,9 @@ for (const [language, languageDisplay, nativeLanguageDisplay] of [
       assert.ok(!session.instructions.includes('use the web_search tool'))
       assert.ok(session.instructions.includes('Do not claim to search or invent current facts'))
       assert.ok(!/speech transcripts|Heute|Hund/.test(session.instructions))
+      // The tail defers to the level's language mix; advanced learners get no native glossing.
+      assert.ok(!session.instructions.includes("gloss new words in the learner's native language"))
+      assert.ok(session.instructions.includes('in the mix the level above sets'))
       if (level === 'zero' || level === 'beginner') {
         assert.ok(session.instructions.includes('You hear the learner directly'))
         if (languageDisplay !== nativeLanguageDisplay) {

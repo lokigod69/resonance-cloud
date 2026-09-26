@@ -77,9 +77,8 @@ the "exactly eight" pin in `frontend/scripts/test-base-language-contract.ts`, to
      `LEADING_ARTICLES` in `frontend/src/lib/typedAnswer.ts`; languages without
      articles need nothing.
    - Non-Latin script: add the value to `NON_LATIN_SCRIPT_LANGUAGES` in
-     `frontend/src/lib/languages.ts` (typed recall is Latin-only and hides behind it),
-     and check `visualScanProvider.ts` has a transliteration rule for it
-     (ko/ja/zh/ar/hi/ru/th are already covered).
+     `frontend/src/lib/languages.ts` (typed recall is Latin-only and hides behind it).
+     Lens transliterates every non-Latin script generically (`visualScanProvider.ts`).
 6. Verify (see Verification); then commit and push the task's files once checks pass,
    unless the owner said to hold (orchestrator/AGENTS.md). Paid runs and migrations
    need explicit owner OK.

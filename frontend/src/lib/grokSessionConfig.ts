@@ -73,9 +73,8 @@ export function buildGrokSessionConfig(p: BuildGrokSessionParams): GrokSessionCo
     : `Start by greeting the user naturally in ${p.languageDisplay} and entering the situation immediately. `
   const tail =
     greetingInstruction +
-    `Do not announce what scenario you have chosen. ` +
     `Keep responses conversational and short — typically 1 to 3 sentences per turn, with at most one question. ` +
-    `Use only ${p.languageDisplay} and ${p.nativeLanguageDisplay}; gloss new words in the learner's native language. ` +
+    `Use only ${p.languageDisplay} and ${p.nativeLanguageDisplay}, in the mix the level above sets. ` +
     `You have no browsing tools. Do not claim to search or invent current facts.`
 
   const resumeContext = recentConversation.length > 0
