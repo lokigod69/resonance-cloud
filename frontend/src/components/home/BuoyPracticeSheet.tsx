@@ -24,8 +24,8 @@ import type { HomeWordDetail } from '@/lib/homeWordDetails'
 // Next. Hearing a word once, mid-flight, is not enough to learn how it sounds
 // — the queue only moves on their say-so.
 //
-// Rebuild of the private TidePracticeSheet (WordTide.tsx:327 — that file is
-// frozen under wave-rider's diff and exports nothing).
+// Rebuild of the private TidePracticeSheet from the removed WordTide.tsx
+// (last version in `55e8729b`).
 
 // The resolution carries the card it belongs to. On the commit where `lemma`
 // swaps, the previous card's answer is still in state (its reset is a

@@ -14,9 +14,8 @@ import type { LemmaState } from '@/hooks/useWordStates'
 
 // Batched thumbnail/TTS lookup for words riding the Home water.
 //
-// This is a copy of the lookup inside WordTide.tsx (:150-242) — that file is
-// frozen under wave-rider's uncommitted diff, so the logic cannot be exported
-// from it. Temporary duplication, marked for post-wave-rider consolidation.
+// Originally copied from the lookup in the now-removed WordTide.tsx (last
+// version in `55e8729b`); this is the only copy.
 //
 // Audio resolves the way the importer and Surf do: any sibling row's
 // tts_audio_url first, then the curriculum metadata's static url, then a
