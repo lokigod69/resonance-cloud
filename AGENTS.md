@@ -32,7 +32,7 @@ This file is the single source of working rules for Claude Code and Codex. Claud
 
 ## Checking your work
 
-- From `orchestrator/frontend`: `npm run typecheck`, `npm run typecheck:api` (for `api/` changes), `npm run check:i18n` and `npm run lint`. Lint must stay at 0 errors and takes about 90 seconds. All four are read-only and safe in read-only tasks. Also run the `npm run test:*` scripts for the area you touched, and `npm run build` when app code changes.
+- From `orchestrator/frontend`: `npm run verify` runs typecheck, typecheck:api, check:i18n and lint in about two minutes; lint must stay at 0 errors. It is read-only and safe in read-only tasks. `npm run test:local` runs every offline contract suite (no Supabase, no paid calls) and must stay green; it lists known-stale suites it skips. Run `npm run build` when app code changes.
 - For visual or interaction changes, inspect the rendered UI at the affected viewport and locale before reporting done. Signed-in screens: from `orchestrator/frontend`, `node scripts/today-guided-fixtures/run.mjs` (also `first-light-fixtures`, `speak-lens-fixtures`) renders real components with stubbed auth and no paid calls; screenshots and a verdict go to the harness's `out/`. Report "Visually verified: yes (how)" or "no (why)".
 - If your sandbox cannot run tsx or Chrome, say so; typecheck alone does not verify runtime behaviour.
 - Report a failed or skipped check as failed or skipped. A self-review is not an independent review.
