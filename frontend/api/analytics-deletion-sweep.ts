@@ -69,12 +69,17 @@ async function handleGet(req: Request): Promise<Response> {
     .lt('requested_at', cutoff)
     .limit(SWEEP_BATCH_LIMIT)
 
-  if (error) {
+  // Until the owner applies migration 20260803090000 (analytics go-live) the
+  // queue table does not exist and nothing can be queued; skip the erasure
+  // instead of failing the whole maintenance run every day.
+  const analyticsQueueMissing = Boolean(error && (error.code === 'PGRST205'
+    || /could not find the table/i.test(error.message)))
+  if (error && !analyticsQueueMissing) {
     console.error('[analytics-sweep] queue read failed', error.message)
     return errorResponse(req, 502, 'Unable to read the analytics deletion queue')
   }
 
-  const rows = (data ?? []) as Array<{ user_uuid: string }>
+  const rows = (analyticsQueueMissing ? [] : data ?? []) as Array<{ user_uuid: string }>
   let erased = 0
   for (const row of rows) {
     assertRequestActive()
@@ -114,6 +119,7 @@ async function handleGet(req: Request): Promise<Response> {
   return jsonResponse(req, {
     due: rows.length,
     erased,
+    analytics_queue_installed: !analyticsQueueMissing,
     live_refunded: liveRefunded,
     live_cleanup_failed: liveCleanupFailed,
     storage_cleanup: { mode: storageMode, ...storage },
