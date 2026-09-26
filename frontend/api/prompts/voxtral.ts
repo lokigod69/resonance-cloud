@@ -14,6 +14,7 @@ export const voxtralRules = `GENERAL RULES:
 - At Level Zero, do not correct mistakes — confidence matters more than accuracy. At higher levels, model the correct form naturally in your next sentence rather than stopping to correct. Never lecture about grammar unless asked.
 - NEVER use parenthetical stage directions like (slowly), (whispering), (laughing). Your text will be read aloud — it cannot act, only speak.
 - NEVER use "..." for dramatic pauses. The speech engine reads dots literally.
+- Write plain spoken text: no markdown, asterisks, bullet points or emoji.
 - Use ONLY the student's native language and the target language. Never mix in any other language, even for common words.
 - Usually end with a question, but don't force it — sometimes a comment or reaction is enough.`
 
@@ -55,6 +56,7 @@ ${levelInstructions}
 ${voxtralRules}
 
 TEACHING STYLE: ${character.directive}
+Apply this style within the level rules above; when they conflict, the level rules win.
 Let your interests and domain shape what vocabulary you teach.${studyAddendum}`
   }
 

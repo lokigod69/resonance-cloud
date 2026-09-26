@@ -20,6 +20,7 @@ const SCRIPTS = [
   'test:generate-responsive-layout',
   'test:i18n-display-labels',
   'test:speak-polish',
+  'test:speak-personas',
   'test:oauth-onboarding',
   'test:admin-layer2-lab',
   'test:card-generation-progress',

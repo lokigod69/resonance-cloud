@@ -1,5 +1,6 @@
 import { CHARACTER_REGISTRY, GEMINI_CHARACTER_MODES } from './speakPersonaCatalog'
 import { ApiError } from './http'
+import { LEGACY_CHARACTER_TEXT } from './speakPersonaLegacy'
 
 /** Resolve server instructions from the build-checked projection of the picker registries. */
 export function resolveSpeakPersona(input: Record<string, unknown>) {
@@ -14,22 +15,25 @@ export function resolveSpeakPersona(input: Record<string, unknown>) {
   }
   const hasLegacyCharacter = Boolean(input.character_name || input.character_tier
     || input.character_identity || input.character_directive)
+  const matchesTuple = (entry: { name: string; tier: string; identity: string; directive: string }) =>
+    entry.name === input.character_name && entry.tier === input.character_tier
+    && entry.identity === (input.character_identity || '')
+    && entry.directive === input.character_directive
+  // A tuple carrying text from before a catalog edit still names its tutor.
+  const legacyId = hasLegacyCharacter ? LEGACY_CHARACTER_TEXT.find(matchesTuple)?.id : undefined
   const character = input.character_id
     ? CHARACTER_REGISTRY.find(entry => entry.id === input.character_id)
-    : hasLegacyCharacter ? CHARACTER_REGISTRY.find(entry =>
-      entry.name === input.character_name && entry.tier === input.character_tier
-      && entry.identity === (input.character_identity || '')
-      && entry.directive === input.character_directive) : undefined
+    : hasLegacyCharacter ? CHARACTER_REGISTRY.find(matchesTuple)
+      ?? CHARACTER_REGISTRY.find(entry => entry.id === legacyId) : undefined
   if ((input.character_id || hasLegacyCharacter) && !character) {
     throw new ApiError(400, 'Unknown tutor character')
   }
   // Already-installed clients may send the old tuple only when it matches
-  // the canonical entry exactly. Incoming strings never become instructions.
-  if (hasLegacyCharacter && character && (
-    character.name !== input.character_name || character.tier !== input.character_tier
-    || character.identity !== (input.character_identity || '')
-    || character.directive !== input.character_directive
-  )) throw new ApiError(400, 'Tutor instructions do not match the selected character')
+  // the canonical entry, or its frozen earlier text, exactly. Incoming
+  // strings never become instructions: the current catalog text is used.
+  if (hasLegacyCharacter && character && !matchesTuple(character) && legacyId !== character.id) {
+    throw new ApiError(400, 'Tutor instructions do not match the selected character')
+  }
 
   const mode = input.gemini_character_mode_id
     ? GEMINI_CHARACTER_MODES.find(entry => entry.id === input.gemini_character_mode_id)

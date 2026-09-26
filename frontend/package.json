@@ -36,6 +36,7 @@
     "test:dashboard-home-glass": "tsx scripts/test-dashboard-home-glass.ts",
     "test:i18n-display-labels": "tsx scripts/test-i18n-display-labels.ts",
     "test:speak-polish": "tsx scripts/test-speak-polish-contract.ts",
+    "test:speak-personas": "tsx scripts/test-speak-persona-authority.ts",
     "test:landing-polish": "tsx scripts/test-landing-first-session-polish.ts",
     "test:oauth-onboarding": "tsx scripts/test-oauth-onboarding-routing.ts",
     "test:admin-layer2-lab": "tsx scripts/test-admin-layer2-lab.ts",
