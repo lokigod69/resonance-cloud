@@ -10,6 +10,11 @@ from src.pipeline import STAGE_ORDER
 
 log = logging.getLogger(__name__)
 
+# Retries switch provider. x-ai/grok-4.1-fast was the fallback until it left
+# OpenRouter (checked 2026-09-26), which made every retry fail.
+PRIMARY_LLM_MODEL = "deepseek/deepseek-v4-flash"
+FALLBACK_LLM_MODEL = "openai/gpt-4.1-mini"
+
 
 def get_fallback_overrides(
     stage: str, attempt: int, current_settings: dict[str, Any] | None = None,
@@ -18,17 +23,17 @@ def get_fallback_overrides(
     if stage == "images" and attempt >= 1:
         current_model = (current_settings or {}).get("llm_model", "")
         fallback_model = (
-            "deepseek/deepseek-v4-flash"
-            if current_model == "x-ai/grok-4.1-fast"
-            else "x-ai/grok-4.1-fast"
+            PRIMARY_LLM_MODEL
+            if current_model == FALLBACK_LLM_MODEL
+            else FALLBACK_LLM_MODEL
         )
         return {"creative_direction": "literal", "llm_model": fallback_model}
     if stage == "concept" and attempt >= 1:
         current_model = (current_settings or {}).get("llm_model", "")
         fallback_model = (
-            "deepseek/deepseek-v4-flash"
-            if current_model == "x-ai/grok-4.1-fast"
-            else "x-ai/grok-4.1-fast"
+            PRIMARY_LLM_MODEL
+            if current_model == FALLBACK_LLM_MODEL
+            else FALLBACK_LLM_MODEL
         )
         return {"llm_model": fallback_model}
     if stage == "video" and attempt >= 1:

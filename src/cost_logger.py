@@ -140,6 +140,8 @@ FAL_Z_IMAGE_TURBO_COST_PER_IMAGE_FULL_HD: float = 0.010  # carried-over literal;
 # Source: https://openrouter.ai/deepseek/deepseek-v4-flash — verified 2026-06-19.
 OPENROUTER_RATES_USD_PER_MTOKEN: dict[str, dict[str, float]] = {
     "deepseek/deepseek-v4-flash": {"in": 0.09, "out": 0.18},
+    # Retry fallback (src/services/stage_helpers.py); OpenRouter list price 2026-09-26.
+    "openai/gpt-4.1-mini": {"in": 0.40, "out": 1.60},
 }
 # Fallback for any OpenRouter model not in the table above. Deliberately
 # conservative so an unmapped model over- rather than under-estimates.

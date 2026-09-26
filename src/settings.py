@@ -58,7 +58,7 @@ DEFAULT_SETTINGS = {
         "word_in_image": True,
         "use_color_palette": True,
         "image_model": "flux_pro",
-        "llm_model": "x-ai/grok-4.1-fast",
+        "llm_model": "deepseek/deepseek-v4-flash",
     },
     "video": {
         "video_mode": "ltx_fast",
