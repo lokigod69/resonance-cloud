@@ -44,7 +44,7 @@ The card_image_style value is one of:
 
 - "Editorial": magazine-style illustration. Clean, intentional composition; selective color palette; printed-page aesthetic; readable at small size. Encode in `composition`, `mood_palette`, and `style_medium_override`.
 
-- "Random": YOU choose ONE specific style that best serves THIS word. State your choice in `style_medium_override` (e.g. "watercolor on cold-press paper", "ink wash with limited palette", "1970s polaroid", "Studio Ghibli watercolor"). Pick a single style and commit. Do not mix.
+- "Random": YOU choose ONE specific style that best serves THIS word. State your choice in `style_medium_override` (e.g. "watercolor on cold-press paper", "ink wash with limited palette", "1970s polaroid", "hand-painted animation watercolor"). Pick a single style and commit. Do not mix.
 
 - Any other free-text string: this is a CUSTOM style supplied by the user. Honor it as-is. Encode the style description into `style_medium_override`. Do NOT substitute it for a preset; do NOT fall back to a vocabulary lookup.
 

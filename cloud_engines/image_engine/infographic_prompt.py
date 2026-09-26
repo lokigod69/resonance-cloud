@@ -1314,52 +1314,6 @@ def _parse_v4_editorial_prompt(raw_prompt: str) -> dict[str, Any]:
     return data
 
 
-def _compile_v4_dense_editorial_prompt_legacy_unused(
-    *,
-    content: CardImageContent,
-    plan: Mapping[str, Any],
-    base_language: str,
-    target_language: str,
-    title: str,
-    translation: str,
-) -> str:
-    writer_payload = _compact_json_preview_full(plan)
-    lines = [
-        "Dense Editorial V4 provider-ready prompt.",
-        "Create a horizontal 16:9 encyclopedia-style vocabulary infographic with maximum editorial information density.",
-        f"TITLE / HEADWORD: {title}",
-        f"SUBTITLE / GLOSS: {translation}",
-        f"Explanation language for visible panel text: {base_language}",
-        f"Target-language examples, collocations, forms, and quoted word forms may remain in {target_language}.",
-        "",
-        "Editorial density:",
-        "Use a premium natural-history / modern editorial knowledge-card layout: central visual anchor, rounded editorial boxes, icons, callouts, zoom/detail sections, practical learner panels, and visual scoring or summary modules where useful.",
-        "Use 8-12 visible modules if the word supports them. For simple words, use fewer and larger modules. For rich words, use more modules. High information density is desired, but keep the hierarchy uncluttered.",
-        "",
-        "Vocabulary-first:",
-        VOCABULARY_FIRST_RULES[0],
-        VOCABULARY_FIRST_RULES[1],
-        VOCABULARY_FIRST_RULES[2],
-        VOCABULARY_FIRST_RULES[3],
-        VOCABULARY_FIRST_RULES[4],
-        "For topic-like nouns such as chess, teach the target-language word first: play chess, chess board, chess piece, chess match, chess vs chest, pronunciation, and uncountable/singular usage before adding small topic context.",
-        "",
-        "Recommended visible modules:",
-        "Meaning / Bedeutung; Quick Profile / Kurzprofil; Pronunciation / Aussprache; Grammar & Forms / Grammatik & Formen; Example Sentences / Beispielsätze; Collocations / Kollokationen; Common Mistake / Häufiger Fehler; False Friends / Falsche Freunde; Synonyms & Contrasts / Synonyme & Kontraste; Word Family / Wortfamilie; Origin / Herkunft only if reliable; Register & Context / Register & Kontext; Memory Cue / Merkhilfe only if genuinely strong; Topic/Culture Note only if useful.",
-        "",
-        "Hard bans:",
-        "Never invent fake facts. Never invent fake etymologies. Never invent quotes. Never force mnemonics.",
-        "Never render internal labels, backend/model/template names, enum values, V1/V2/V3/V4, quick mode, renderer profile, or internal system labels.",
-        "Never render visible labels named Zielsprache, Basissprache, target language, or base language.",
-        "Do not render JSON keys such as type, style, composition, info_panels, visual_elements, or design_goals as visible text.",
-        "No filler panels. No generic AI-generated infographic or educational card footer.",
-        "",
-        "Writer content to follow. JSON keys are structural instructions only, not visible text:",
-        writer_payload,
-    ]
-    return _remove_internal_terms("\n".join(lines))
-
-
 def _compile_v4_dense_editorial_prompt(
     *,
     content: CardImageContent,

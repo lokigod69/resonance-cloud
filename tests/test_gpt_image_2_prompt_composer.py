@@ -301,13 +301,13 @@ def test_layer2_non_realistic_style_prompt_does_not_start_with_photorealistic():
 
     first_sentence = prompt.split(". ", 1)[0]
     assert not first_sentence.startswith("Photorealistic")
-    assert "Rick-and-Morty-inspired" in first_sentence
+    assert "Thick-outline adult-animation" in first_sentence
     assert "language-learning image" not in first_sentence
 
 
 def test_layer2_style_opening_tracks_selected_art_style():
     cases = [
-        ("pixar_3d", "Pixar-like polished 3D animated"),
+        ("pixar_3d", "Polished feature-film 3D animation"),
         ("pen_and_ink", "Pen-and-ink"),
         ("realistic", "Photorealistic"),
     ]

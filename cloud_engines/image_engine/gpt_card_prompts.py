@@ -50,9 +50,9 @@ STYLE_OPENINGS = {
     "chinese_ink_wash": "Chinese ink-wash 16:9 vocabulary memory image.",
     "art_deco": "Art Deco 16:9 vocabulary memory image.",
     "art_nouveau": "Art Nouveau 16:9 vocabulary memory image.",
-    "rick_and_morty_style": "Rick-and-Morty-inspired animated 16:9 vocabulary memory image.",
-    "south_park_style": "South-Park-inspired cutout-animation 16:9 vocabulary memory image.",
-    "pixar_3d": "Pixar-like polished 3D animated 16:9 vocabulary memory image.",
+    "rick_and_morty_style": "Thick-outline adult-animation sci-fi comedy 16:9 vocabulary memory image.",
+    "south_park_style": "Construction-paper cutout-animation 16:9 vocabulary memory image.",
+    "pixar_3d": "Polished feature-film 3D animation 16:9 vocabulary memory image.",
     "random": "Photorealistic 16:9 vocabulary memory image.",
 }
 

@@ -138,7 +138,7 @@ async def _resolve_creative_direction(manifest_data: Any, settings: dict) -> tup
         f"Pick the best creative direction."
     )
 
-    model = settings.get("llm_model", "deepseek/deepseek-v3.2")
+    model = settings.get("llm_model", "deepseek/deepseek-v4-flash")
 
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:

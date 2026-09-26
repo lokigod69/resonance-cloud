@@ -130,7 +130,7 @@ class ImageSettings(BaseModel):
     card_layer2: Optional[dict[str, Any]] = None
     word_in_image: bool = Field(default=True)
     use_color_palette: bool = Field(default=False)
-    llm_model: str = Field(default="deepseek/deepseek-v3.2")
+    llm_model: str = Field(default="deepseek/deepseek-v4-flash")
     image_model: str = Field(default="flux_pro")
     visual_reference: str = Field(default="none")
     movie_override: Optional[str] = None

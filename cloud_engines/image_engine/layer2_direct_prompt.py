@@ -130,7 +130,7 @@ def build_direct_prompt_system_prompt(template: str = DIRECT_PROMPT_TEMPLATE) ->
         "- Mini Story: 2-3 visible beats.\n"
         "- Split Panel: two contrasted states.\n"
         "- Word as Design: target word is the main visual object.\n\n"
-        "Art Style: Use the selected style strongly and early. Do not contradict it. If the style is anime, do not write photorealistic. If the style is Rick and Morty, South Park, Pixar, pixel art, or pen-and-ink, make the entire prompt match that style.\n\n"
+        "Art Style: Use the selected style strongly and early. Do not contradict it. If the style is anime, do not write photorealistic. If the style is a cartoon, cutout, 3D-animation, pixel-art or pen-and-ink look, make the entire prompt match that style.\n\n"
         "Answer policy: If presentation_form=word_object_design, the target word may be visible and central. Otherwise, do not render the target word as readable text. Never render the direct translation/answer unless explicitly allowed. Avoid labels, captions, flashcard text, or explanatory text unless the chosen form requires visible text."
     )
 
@@ -161,7 +161,7 @@ def build_direct_prompt_v2_system_prompt() -> str:
         "In Infographic, the target word and translation may appear as visible study-card text, along with short explanatory labels. "
         "In other forms, do not casually place the target word as a label unless it clearly helps the scene. "
         "Incidental environmental text is allowed when natural, such as signs, calendar, phone screen, book title, interface, warning label. "
-        "If any readable target word appears, spell it exactly. Never render the direct translation/answer unless a future explicit teaching/infographic mode asks for it."
+        "If any readable target word appears, spell it exactly. Never render the direct translation/answer except on Infographic cards."
     )
 
 

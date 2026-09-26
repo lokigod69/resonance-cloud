@@ -78,9 +78,9 @@ ART_STYLE_DIRECTIVES: dict[str, str] = {
     "chinese_ink_wash": "Style: ink-wash painting, restrained brushwork.",
     "art_deco": "Style: geometric luxury design, elegant symmetry.",
     "art_nouveau": "Style: flowing ornamental lines, organic forms.",
-    "south_park_style": "Style: South-Park-inspired cutout-animation look.",
-    "rick_and_morty_style": "Style: Rick-and-Morty-inspired animated sci-fi comedy look.",
-    "pixar_3d": "Style: Pixar-like polished 3D animated look.",
+    "south_park_style": "Style: construction-paper cutout animation, flat shapes and colors.",
+    "rick_and_morty_style": "Style: thick-outline adult-animation sci-fi comedy look, flat colors.",
+    "pixar_3d": "Style: polished feature-film 3D animation look.",
 }
 ART_STYLE_ALIASES = {
     "photorealistic": "realistic",

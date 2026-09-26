@@ -13,7 +13,7 @@ load_dotenv()
 
 # --- LLM Configuration (Step A) ---
 OPENROUTER_API_KEY: str = os.environ.get("OPENROUTER_API_KEY", "")
-IMAGE_LLM_DEFAULT: str = os.environ.get("IMAGE_LLM_DEFAULT", "deepseek/deepseek-v3.2")
+IMAGE_LLM_DEFAULT: str = os.environ.get("IMAGE_LLM_DEFAULT", "deepseek/deepseek-v4-flash")
 
 # --- Image Model Configuration (Step B) ---
 GOOGLE_AI_API_KEY: str = os.environ.get("GOOGLE_AI_API_KEY", "")

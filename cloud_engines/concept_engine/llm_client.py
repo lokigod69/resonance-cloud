@@ -60,7 +60,7 @@ class OpenRouterClient:
     def generate(
         self,
         prompt: str,
-        model: str = "deepseek/deepseek-v3.2",
+        model: str = "deepseek/deepseek-v4-flash",
         max_tokens: int | None = None,
     ) -> LLMCallResult:
         """Send a chat completion request and return content + usage.
