@@ -23,10 +23,13 @@ export default defineConfig([
   {
     // Vercel's Vite preset only routes named handlers; `export default` hangs every request.
     files: ['api/**/*.ts'],
-    ignores: ['api/_shared/**'],
+    ignores: ['api/**/_shared/**'],
     rules: {
       'no-restricted-syntax': ['error', {
         selector: 'ExportDefaultDeclaration',
+        message: 'Vercel functions need named exports (GET, POST, …), not export default.',
+      }, {
+        selector: "ExportSpecifier[exported.name='default']",
         message: 'Vercel functions need named exports (GET, POST, …), not export default.',
       }],
     },

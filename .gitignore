@@ -45,3 +45,6 @@ Thumbs.db
 
 # Vercel CLI link metadata (project/org ids) — never commit
 .vercel
+
+# Apple / App Store Connect signing keys — never commit
+*.p8

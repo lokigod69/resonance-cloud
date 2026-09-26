@@ -38,15 +38,20 @@ const SCRIPTS = [
 const KNOWN_STALE = {
   'test:dashboard-home-glass': 'asserts on the retired classic dashboard (dashboardLibraryHref)',
   'test:landing-polish': 'reads HeroSection.tsx, deleted by the Tide landing redesign (cccfef59)',
-  'test:study-flashcard-pronunciation': 'regex expects a flashcard play-button markup the Study page no longer has',
-  'test:generate-category-picker-flow': 'expects a Categories-page Generate entry point the page no longer shows',
-  'test:regressions': 'expects the DeckView video viewer; the video lane is off',
+  'test:study-flashcard-pronunciation': 'regexes predate the t() aria labels and the object feedbackPulse; features still exist',
+  'test:generate-category-picker-flow': 'expects a Categories-page Generate entry point removed in b31917e2',
+  'test:regressions': 'regex predates the DeckView isVideoDeck rename (118b0311); the viewer still exists',
 }
 
 const args = process.argv.slice(2)
 const runAll = args.includes('--all')
 const only = args.filter((arg) => !arg.startsWith('--'))
 const candidates = [...SCRIPTS, ...Object.keys(KNOWN_STALE)]
+const unknown = only.filter((name) => !candidates.includes(name))
+if (unknown.length) {
+  console.error(`Unknown suite(s): ${unknown.join(', ')}`)
+  process.exit(2)
+}
 const selected = only.length
   ? candidates.filter((name) => only.includes(name))
   : runAll ? candidates : SCRIPTS

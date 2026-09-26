@@ -336,7 +336,7 @@ export async function fetchWasteByFeatureModel(limit = 25): Promise<WasteByFeatu
   for (const event of events) {
     const feature = event.feature ?? event.stage ?? 'unknown'
     const model = event.model_name ?? 'unknown'
-    const key = `${feature} ${model}`
+    const key = `${feature}\u0000${model}`
     const current = byKey.get(key) ?? { feature, model, cost_usd: 0, success_count: 0 }
     current.cost_usd += event.cost_usd ?? 0
     if (event.status === 'success') current.success_count += 1
