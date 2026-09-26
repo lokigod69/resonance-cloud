@@ -1,6 +1,7 @@
 import { generateGeminiTtsFromPrompt } from './_shared/geminiTts'
 import { resolveSpeakPersona } from './_shared/speakPersona'
 import { buildCorrectionsSystemPrompt, filterCorrections } from './_shared/speakCorrections'
+import { sanitizeForTTS, trimToLastSentence } from './_shared/ttsText'
 import {
   LANGUAGE_CONFIG,
   NATIVE_LANGUAGE_NAMES,
@@ -313,27 +314,6 @@ const GEMINI_ACCENT_SUFFIXES: Record<string, string> = {
 // miss Voxtral traffic entirely.
 // ────────────────────────────────────────────────────────────────────────────
 
-/**
- * Clean LLM output for TTS consumption.
- * Removes stage directions, pacing dots, and other artifacts
- * that TTS engines would read literally.
- */
-function sanitizeForTTS(text: string): string {
-  return text
-    // Remove stage directions: (slowly), (laughing), [pause], etc. Only
-    // direction-like words match — a parenthesised gloss such as (pain frais)
-    // is teaching content and must still be spoken.
-    .replace(/[([]\s*(?:[a-z]{3,}ly|[a-z]{3,}ing|[Pp]ause|[Ss]ighs?|[Ss]miles?|[Ll]aughs?|[Ww]hispers?|[Gg]iggles?|[Cc]huckles?)\s*[)\]]/g, '')
-    // Remove pacing ellipsis: "I... am..." → "I am"
-    .replace(/\.{2,}/g, ' ')
-    // Drop emphasis markers but keep the word: the tutor bolds the very word
-    // it is teaching (**cansado**), so deleting the span removed it from audio.
-    .replace(/\*{1,3}([^*\n]+?)\*{1,3}/g, '$1')
-    .replace(/\*+/g, '')
-    // Collapse multiple spaces left by removals
-    .replace(/\s{2,}/g, ' ')
-    .trim()
-}
 
 interface TtsResult {
   audio: Buffer
@@ -728,7 +708,7 @@ async function handleCorrections(body: {
     } catch {
       parsed = []
     }
-    const corrections = filterCorrections(parsed)
+    const corrections = filterCorrections(parsed, language)
 
     return jsonResponse(req, { corrections }, 200)
   } catch (err) {
@@ -1045,7 +1025,7 @@ async function handlePost(req: Request): Promise<Response> {
       model: SPEAK_LLM_MODEL,
       ...SPEAK_LLM_REASONING,
       messages,
-      max_completion_tokens: 400,
+      max_completion_tokens: 600,
       // Greetings use a deliberately minimal prompt; raise temperature so the
       // LLM explores more varied openers instead of locking onto one phrasing
       // across every call. Non-greeting turns keep the Groq default.
@@ -1068,14 +1048,19 @@ async function handlePost(req: Request): Promise<Response> {
     return sanitizedProviderError(req, 'Voice chat service unavailable')
   }
 
-  let llmJson: { choices: Array<{ message: { content: string } }>; usage?: LlmUsage }
+  let llmJson: { choices: Array<{ message: { content: string }; finish_reason?: string }>; usage?: LlmUsage }
   try {
-    llmJson = await llmRes.json() as { choices: Array<{ message: { content: string } }>; usage?: LlmUsage }
+    llmJson = await llmRes.json() as { choices: Array<{ message: { content: string }; finish_reason?: string }>; usage?: LlmUsage }
   } finally {
     timedLlmRes.complete()
   }
   if (llmJson.usage) llmUsage = llmJson.usage
-  const ai_text = llmJson.choices?.[0]?.message?.content?.trim() ?? ''
+  const rawReply = llmJson.choices?.[0]?.message?.content?.trim() ?? ''
+  // Reasoning shares the completion budget; a cut-off reply is trimmed to its
+  // last complete sentence rather than spoken mid-word.
+  const truncated = llmJson.choices?.[0]?.finish_reason === 'length'
+  if (truncated) console.warn('[voice-chat] Speak reply hit the completion budget; trimmed to the last sentence')
+  const ai_text = truncated ? trimToLastSentence(rawReply) : rawReply
 
   if (!ai_text) {
     // LLM returned (and was billed) but produced no text — record STT + LLM spend.

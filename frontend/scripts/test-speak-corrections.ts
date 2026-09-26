@@ -29,12 +29,20 @@ assert.deepEqual(filterCorrections({ corrections: [
   null,
   'text',
 ] }), [valid])
-// Accent, case and punctuation-only "corrections" are transcriber noise.
-assert.deepEqual(filterCorrections({ corrections: [
-  { original: 'vimos una pelicula de accion', corrected: 'Vimos una película de acción.', explanation: 'Akzente' },
-  { original: 'ich trinke kaffee jeden morgen', corrected: 'Ich trinke Kaffee jeden Morgen.', explanation: 'Capitals' },
-  { original: 'ich habe gegessen ein apfel', corrected: 'Ich habe einen Apfel gegessen.', explanation: 'Word order, accusative' },
-] }).map(entry => entry.original), ['ich habe gegessen ein apfel'])
+// Case and punctuation-only "corrections" are transcriber noise, and so are
+// written accents in es/fr/pt/it; umlauts, tildes, dakuten and tones are speech.
+const kept = (language: string, pairs: Array<[string, string]>) => filterCorrections({
+  corrections: pairs.map(([original, corrected]) => ({ original, corrected, explanation: 'x' })),
+}, language).map(entry => entry.original)
+assert.deepEqual(kept('es', [['vimos una pelicula de accion', 'Vimos una película de acción.'], ['tengo diez anos', 'tengo diez años']]), ['tengo diez anos'])
+assert.deepEqual(kept('de', [
+  ['ich trinke kaffee jeden morgen', 'Ich trinke Kaffee jeden Morgen.'],
+  ['ich habe gegessen ein apfel', 'Ich habe einen Apfel gegessen.'],
+  ['ich wurde gern kommen', 'ich würde gern kommen'],
+  ['zwei apfel', 'zwei Äpfel'],
+]), ['ich habe gegessen ein apfel', 'ich wurde gern kommen', 'zwei apfel'])
+assert.deepEqual(kept('ja', [['かっこうにいきます', 'がっこうにいきます']]), ['かっこうにいきます'])
+assert.deepEqual(kept('fr', [['ou est la gare', 'Où est la gare ?']]), [])
 assert.deepEqual(filterCorrections('nope'), [])
 assert.deepEqual(filterCorrections({ corrections: 'nope' }), [])
 assert.equal(filterCorrections({ corrections: Array.from({ length: 25 }, () => valid) }).length, MAX_CORRECTIONS)

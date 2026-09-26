@@ -312,6 +312,22 @@ def test_combined_prompt_has_one_output_format(mode, language, word):
     assert "SYLLABLE COUNT" not in prompt
     assert "NEVER include translation or English words" not in prompt
     assert f"Write every sung line in {language}" in prompt
+    assert "Write nothing before CAPTION: or after the lyrics." in prompt
+
+
+def test_caption_prompts_with_their_own_format_block_drop_the_inner_line():
+    from cloud_engines.concept_engine import caption as caption_module
+
+    reliable = caption_module._build_reliable_prompt(
+        "Buch", "book", "German", ConceptSettings(lyric_mode="reliable", duration=30),
+    )
+    assert "Output one caption line only." not in reliable
+    assert reliable.count("Output format") == 1
+    hinted = caption_module._build_caption_prompt(
+        "Buch", "book", "German", ConceptSettings(lyric_mode="reliable", duration=30, visual_hint=True),
+    )
+    assert "Output one caption line only." not in hinted
+    assert "VISUAL: mood1, mood2, mood3" in hinted
 
 
 # ---------------------------------------------------------------------------

@@ -328,8 +328,11 @@ async function handlePost(req: Request): Promise<Response> {
       // The first pass returned too few usable entries (too few, invalid, or on the
       // avoid list); ask again without claiming a reason the server did not check.
       const accepted = filtered.map((entry) => entry.word).join(', ')
-      const retryReminder = `Return ${retryCount} entries. None may match the do-not-use list`
-        + (accepted ? ` or these already accepted words: ${accepted}.` : '.')
+      const excluded = [
+        avoidList.length > 0 ? 'the do-not-use list' : '',
+        accepted ? `these already accepted words: ${accepted}` : '',
+      ].filter(Boolean).join(' or ')
+      const retryReminder = `Return ${retryCount} unique entries.` + (excluded ? ` None may match ${excluded}.` : '')
       const retrySystemPrompt =
         buildSystemPrompt(retryCount, body.base_language, avoidList) +
         `\n\nIMPORTANT: ${retryReminder}`

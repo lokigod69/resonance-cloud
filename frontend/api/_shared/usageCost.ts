@@ -33,7 +33,7 @@ const GROQ_LLM_RATES_USD_PER_MTOKEN: Record<string, { in: number; out: number }>
   'openai/gpt-oss-120b': { in: 0.15, out: 0.6 },
   'llama-3.3-70b-versatile': { in: 0.59, out: 0.79 },
 }
-const GROQ_LLM_DEFAULT_RATE_USD_PER_MTOKEN = { in: 0.59, out: 0.79 } // fallback = flagship rate
+const GROQ_LLM_DEFAULT_RATE_USD_PER_MTOKEN = { in: 0.59, out: 0.79 } // unmapped model: over- rather than under-estimate
 
 // Groq Whisper STT — USD per hour of audio. whisper-large-v3: $0.111 / audio-hour.
 // Source: groq.com/pricing — verified 2026-06-19.

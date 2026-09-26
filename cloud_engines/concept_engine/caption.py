@@ -128,10 +128,7 @@ def build_caption_prompt_for_combined(
     """
     # The combined wrapper in lyrics.py owns the output format, so the
     # section's own "one caption line" instruction is dropped here.
-    prompt = _select_caption_prompt(word, translation, language, settings)
-    return "\n".join(
-        line for line in prompt.splitlines() if line.strip() != "Output one caption line only."
-    ).rstrip()
+    return _without_output_line(_select_caption_prompt(word, translation, language, settings))
 
 
 def generate_caption_with_article(
@@ -222,7 +219,7 @@ def _build_caption_prompt(
     prompt = _select_caption_prompt(word, translation, language, settings)
 
     if settings.visual_hint:
-        prompt += _visual_hint_extension()
+        prompt = _without_output_line(prompt) + _visual_hint_extension()
 
     return prompt
 
@@ -366,6 +363,13 @@ def _manual_genre_production_prompt(
     )
 
 
+def _without_output_line(prompt: str) -> str:
+    """Drop a section's own "one caption line" instruction when a wrapper owns the format."""
+    return "\n".join(
+        line for line in prompt.splitlines() if line.strip() != "Output one caption line only."
+    ).rstrip()
+
+
 def _visual_hint_extension() -> str:
     """Visual hint extension appended to caption prompt (Section 6.1)."""
     return (
@@ -479,7 +483,7 @@ def _build_reliable_prompt(
 ) -> str:
     """Build the reliable mode prompt: article question + existing caption prompt."""
     # Reuse the existing caption prompt as the core
-    caption_prompt = _select_caption_prompt(word, translation, language, settings)
+    caption_prompt = _without_output_line(_select_caption_prompt(word, translation, language, settings))
 
     article_section = (
         f'TASK 1 — ARTICLE\n'

@@ -40,7 +40,7 @@
     "test:i18n-display-labels": "tsx scripts/test-i18n-display-labels.ts",
     "test:speak-polish": "tsx scripts/test-speak-polish-contract.ts",
     "test:lens": "tsx scripts/test-visual-scan.ts",
-    "test:speak-personas": "tsx scripts/test-speak-persona-authority.ts && tsx scripts/test-speak-corrections.ts && tsx scripts/test-grok-prompt-integrity.ts",
+    "test:speak-personas": "tsx scripts/test-speak-persona-authority.ts && tsx scripts/test-speak-corrections.ts && tsx scripts/test-grok-prompt-integrity.ts && tsx scripts/test-tts-text.ts",
     "test:landing-polish": "tsx scripts/test-landing-first-session-polish.ts",
     "test:oauth-onboarding": "tsx scripts/test-oauth-onboarding-routing.ts",
     "test:admin-layer2-lab": "tsx scripts/test-admin-layer2-lab.ts",

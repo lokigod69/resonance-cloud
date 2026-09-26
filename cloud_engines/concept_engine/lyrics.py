@@ -297,7 +297,8 @@ def _build_combined_prompt(
             f"\n"
             f"Output format:\n"
             f"LYRICS:\n"
-            f"[your structured lyrics]"
+            f"[your structured lyrics]\n"
+            f"Write nothing before LYRICS: or after the lyrics."
         )
 
     caption_section = build_caption_prompt_for_combined(word, translation, language, settings)
@@ -312,7 +313,8 @@ def _build_combined_prompt(
         f"Output format:\n"
         f"CAPTION: [your single-line music caption]\n"
         f"LYRICS:\n"
-        f"[your structured lyrics]"
+        f"[your structured lyrics]\n"
+        f"Write nothing before CAPTION: or after the lyrics."
     )
 
     if settings.visual_hint:

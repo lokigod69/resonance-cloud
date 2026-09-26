@@ -19,18 +19,25 @@ Report errors that matter in real conversation: grammar, word choice, sentence s
 Return {"corrections": [{"original": "...", "corrected": "...", "explanation": "..."}]}; return {"corrections": []} when nothing matters.`
 }
 
-// Transcripts carry the transcriber's spelling, so a "correction" that only
-// changes accents, case or punctuation is noise; the model reports those
-// despite the prompt, so they are dropped here.
-function spokenForm(text: string) {
-  return text.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()
-    .replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim()
+// Transcripts carry the transcriber's casing and punctuation, so a
+// "correction" that only changes those is noise; the model reports them
+// despite the prompt, so they are dropped here. Only in Spanish, French,
+// Portuguese and Italian does the transcriber also drop written accents
+// (acute, grave, circumflex); a tilde, umlaut, dakuten or tone mark is part of
+// what was said (anos/años, wurde/würde, かっこう/がっこう) and always counts.
+const ACCENT_NOISE_LANGUAGES = new Set(['es', 'fr', 'pt', 'it'])
+
+function spokenForm(text: string, languageCode?: string) {
+  let form = text.normalize('NFD')
+  if (languageCode && ACCENT_NOISE_LANGUAGES.has(languageCode)) form = form.replace(/[̀-̂]/g, '')
+  return form.normalize('NFC').toLowerCase()
+    .replace(/[^\p{L}\p{M}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim()
 }
 
 // Accepts the model's parsed JSON (object or bare array) and keeps at most
 // MAX_CORRECTIONS entries whose three fields are non-empty strings and whose
 // correction changes what was said.
-export function filterCorrections(parsed: unknown): Correction[] {
+export function filterCorrections(parsed: unknown, languageCode?: string): Correction[] {
   const list = Array.isArray(parsed)
     ? parsed
     : parsed && typeof parsed === 'object'
@@ -43,7 +50,7 @@ export function filterCorrections(parsed: unknown): Correction[] {
     const { original, corrected, explanation } = entry as Record<string, unknown>
     if (typeof original !== 'string' || typeof corrected !== 'string' || typeof explanation !== 'string') continue
     if (!original.trim() || !corrected.trim() || !explanation.trim()) continue
-    if (spokenForm(original) === spokenForm(corrected)) continue
+    if (spokenForm(original, languageCode) === spokenForm(corrected, languageCode)) continue
     kept.push({ original: original.trim(), corrected: corrected.trim(), explanation: explanation.trim() })
     if (kept.length >= MAX_CORRECTIONS) break
   }
