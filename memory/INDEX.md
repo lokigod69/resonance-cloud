@@ -1,7 +1,7 @@
 # Lingwave Orchestrator — Memory Index
-Last updated: 2026-09-07
+Last updated: 2026-09-25
 
-> Lingwave (formerly Resonanz) is a cloud-first language-learning app: guided daily lessons, an SRS deck/card engine, AI music (level songs / song-only), a voice tutor, and a deprecated-for-users AI video pipeline. This repo (git root) holds both the live product — the `frontend/` React app on Vercel + Supabase — and the Python cloud generation backend (`job_runner.py`, `src/`, `cloud_engines/`) on Railway, plus legacy local-DAW paths. Phase: launch-readiness hardening for a TestFlight/private beta (July 2026).
+> Lingwave (formerly Resonanz) is a cloud-first language-learning app: guided daily lessons, an SRS deck/card engine, AI music (level songs / song-only), a voice tutor, and a deprecated-for-users AI video pipeline. This repo (git root) holds both the live product — the `frontend/` React app on Vercel + Supabase — and the Python cloud generation backend (`job_runner.py`, `src/`, `cloud_engines/`) on Railway. Phase: pre-beta hardening and polish toward a TestFlight/private beta; the July 2026 target passed and the owner sets the next one.
 
 ## Map
 
@@ -19,10 +19,11 @@ Last updated: 2026-09-07
 - [[notes/today-critic-loop-2026-09-07]] — three independent reviews, 7.0 → 7.6 → 7.8; shipped flow fixes and an explicitly unmet 8+ visual target.
 - [[notes/today-visual-input-round3-2026-09-07]] — selected café reference implemented, responsive glass/gem system, native-script composition safeguards and actual visual evidence.
 - [[notes/base-languages-brand-2026-09-07]] — twelve UI/explanation bases, static guided editions, card provenance, Ribbon current art, additive catalog SQL and verification limits.
+- [[notes/today-guided-2026-09-07]] — Today/guided release: direct start/resume, honest outcomes, phrase Keep, device-local progress.
 <!-- One line per page in notes/, added when created:
 - [[notes/some-topic]] — one-line description -->
 - [[notes/speak-lens]] — current providers, prompt rules, lifecycle contracts and remaining device/save/billing gates.
 - [[notes/hardening-2026-09-07]] — Lens receipts, Live/credit/Stripe invariants, whole-request deadlines, offline recall, guided split, applied SQL and remaining operational gates.
 
 ## Rules for agents
-Read [[STATE]] at session start; open the rest only when needed. After meaningful work: prepend [[LOG]], refresh [[STATE]], append decisions to [[DECISIONS]]. Update, don't duplicate. Date everything. Mark wrong things `⚠️ superseded` — never leave known-false statements looking current. Never edit raw/. Full protocol: SecondBrainOS/PROTOCOL.md.
+For implementation or a resume, read [[STATE]]; open the rest only when needed. After meaningful work: prepend [[LOG]], refresh [[STATE]], append decisions to [[DECISIONS]]. Update, don't duplicate. Date everything. Mark wrong things `⚠️ superseded` — never leave known-false statements looking current. Never edit raw/. The full contract is the "Project memory" section of `orchestrator/AGENTS.md`; the method is `D:/CODING/SecondBrainOS/PROTOCOL.md`.

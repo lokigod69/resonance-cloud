@@ -33,3 +33,5 @@ supabase/.temp/
 .vercel
 scripts/perf/results/*.json
 scripts/first-light-fixtures/out/
+# Headless Chrome profiles left by the screenshot harnesses (they hold cookies and login data)
+scripts/**/.chrome-profile-*/

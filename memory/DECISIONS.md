@@ -2,6 +2,11 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-09-25 — Agents push after checks; one shared rules file; one implementer at a time
+**Status:** active; owner decisions during the agent-hygiene workstream (project audit 2026-09-25).
+**Decision:** Agents commit and push their task's files to `main` once checks pass, unless the owner says to hold. Migrations, any production data write or deletion, and paid runs beyond an approved budget still need explicit OK in the current conversation. `orchestrator/AGENTS.md` is the single rules file for Claude and Codex; the root `CLAUDE.md` imports it. One agent implements in the checkout at a time, with an `In flight:` claim line on `protocol/BOARD.md`. The workspace root is versioned in a local-only git repository. Codex worktree/branch/PR workflow skills do not apply (project rule only, no global Codex change). Safety additions for the Speak content boundary and card image rules were deferred ("neither for now").
+**Supersedes:** the owner-only commit/push call in the July protocol. The standing decisions "Russian tier expansion" and "pause video generation, preserve decks" were dropped from PROTOCOL as settled: Russian A1+A2 ship, the video lane stays off (`VIDEO_LANE_ENABLED = false`), and data writes are approval-gated anyway. Plan: `investigations/project-audit-2026-09-25/IMPLEMENTATION_PLAN.md`.
+
 ## 2026-09-07 — Owner-selected café reference and native-script guided recall
 **Status:** active; owner explicitly selected the reference, delegated implementation and authorized native input after visual repair.
 **Decision:** Use one dark plane with separate proportional glass word pieces, clean gem progress and an L-to-wave success mark. Real HTML owns all text and actions. Keep a stable reading column, wrap long text, preserve independent versus assisted outcomes, and judge actual screenshots against the selected reference. Use nine small transparent assets with reduced-motion and missing-art fallbacks; preserve all waves and lesson identities.
