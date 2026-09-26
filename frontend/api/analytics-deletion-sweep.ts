@@ -26,6 +26,7 @@ const SWEEP_BATCH_LIMIT = 100
 // unless STORAGE_CLEANUP_MODE=delete; the first deleting run needs the owner's
 // explicit OK naming the preview counts.
 const STORAGE_CLEANUP_BATCH_LIMIT = 25
+const STORAGE_CLEANUP_BUDGET_MS = 15_000
 const REQUEUE_AGE_MS = 24 * 60 * 60 * 1000
 
 export async function GET(req: Request): Promise<Response> {
@@ -61,20 +62,6 @@ async function handleGet(req: Request): Promise<Response> {
     return errorResponse(req, 500, 'Analytics deletion sweep is not configured')
   }
 
-  const storageMode = process.env.STORAGE_CLEANUP_MODE === 'delete' ? 'delete' : 'preview'
-  let storage: CleanupPlan | CleanupSummary | null = null
-  let storageCleanupFailed = false
-  try {
-    const cleanupClient = createSupabaseCleanupClient(admin)
-    storage = storageMode === 'delete'
-      ? await processStorageCleanup(cleanupClient, { limit: STORAGE_CLEANUP_BATCH_LIMIT })
-      : await planStorageCleanup(cleanupClient, { limit: STORAGE_CLEANUP_BATCH_LIMIT })
-  } catch (error) {
-    storageCleanupFailed = true
-    console.error('[maintenance] Storage cleanup failed', error instanceof Error ? error.message : String(error))
-  }
-  assertRequestActive()
-
   const cutoff = new Date(Date.now() - REQUEUE_AGE_MS).toISOString()
   const { data, error } = await admin
     .from('analytics_deletion_queue')
@@ -104,6 +91,26 @@ async function handleGet(req: Request): Promise<Response> {
     erased += 1
   }
 
+  // Storage runs last, on its own time budget, so it can never crowd out the
+  // Art. 17 erasure above. Its failure is reported but does not fail the job.
+  const storageMode = process.env.STORAGE_CLEANUP_MODE === 'delete' ? 'delete' : 'preview'
+  let storage: CleanupPlan | CleanupSummary | null = null
+  let storageCleanupFailed = false
+  const storageStarted = Date.now()
+  const storageOptions = {
+    limit: STORAGE_CLEANUP_BATCH_LIMIT,
+    shouldContinue: () => Date.now() - storageStarted < STORAGE_CLEANUP_BUDGET_MS,
+  }
+  try {
+    const cleanupClient = createSupabaseCleanupClient(admin)
+    storage = storageMode === 'delete'
+      ? await processStorageCleanup(cleanupClient, storageOptions)
+      : await planStorageCleanup(cleanupClient, storageOptions)
+  } catch (error) {
+    storageCleanupFailed = true
+    console.error('[maintenance] Storage cleanup failed', error instanceof Error ? error.message : String(error))
+  }
+
   return jsonResponse(req, {
     due: rows.length,
     erased,
@@ -111,5 +118,5 @@ async function handleGet(req: Request): Promise<Response> {
     live_cleanup_failed: liveCleanupFailed,
     storage_cleanup: { mode: storageMode, ...storage },
     storage_cleanup_failed: storageCleanupFailed,
-  }, liveCleanupFailed || storageCleanupFailed ? 503 : 200)
+  }, liveCleanupFailed ? 503 : 200)
 }

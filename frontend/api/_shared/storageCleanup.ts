@@ -5,10 +5,14 @@
 // trigger). Shared by the daily maintenance cron (api/analytics-deletion-sweep.ts)
 // and the manual CLI (scripts/process-storage-cleanup.ts).
 //
-// Safety: only allow-listed buckets, only relative traversal-free paths, and
-// never an object a live `words` row still points at — paths are built from
-// user/deck/word text, so a word deleted and re-created with the same text
-// reuses the queued path for its new media.
+// An object is deleted only when every check passes:
+// - allow-listed bucket, relative traversal-free path;
+// - the path lives under the queue row's own user folder (a word can carry
+//   any https URL, so a deleted word may point at someone else's file);
+// - it is not a protected shared asset (landing showcase decks, guided-today);
+// - no live `words` row of ANY user references it, raw or URL-encoded;
+// - no live word of that user/deck/slug exists (a re-created word is being
+//   regenerated into the same folder).
 
 import type { SupabaseClient } from '@supabase/supabase-js'
 
@@ -34,6 +38,7 @@ export type CleanupSummary = {
   kept: number
   failed: number
   skipped: number
+  stopped_early: boolean
 }
 
 export type CleanupPlan = {
@@ -41,11 +46,14 @@ export type CleanupPlan = {
   deletable: number
   kept: number
   invalid: number
+  stopped_early: boolean
 }
 
+export type ListOptions = { statuses: CleanupStatus[]; limit: number; staleProcessingBefore: string }
+
 export type CleanupClient = {
-  listCleanupRows(options: { statuses: CleanupStatus[]; limit: number }): Promise<CleanupQueueRow[]>
-  claimCleanupRow(id: string, statuses: CleanupStatus[]): Promise<CleanupQueueRow | null>
+  listCleanupRows(options: ListOptions): Promise<CleanupQueueRow[]>
+  claimCleanupRow(id: string, options: ListOptions): Promise<CleanupQueueRow | null>
   isObjectReferenced(row: CleanupQueueRow): Promise<boolean>
   removeStorageObject(bucket: string, objectPath: string): Promise<void>
   markCleanupComplete(id: string, note?: string): Promise<void>
@@ -57,14 +65,35 @@ export type ProcessStorageCleanupOptions = {
   allowedBuckets?: string[]
   limit?: number
   statuses?: CleanupStatus[]
+  // Checked before each row; returning false ends the run early.
+  shouldContinue?: () => boolean
+  now?: () => number
 }
 
 export const DEFAULT_ALLOWED_BUCKETS = ['videos']
-export const DEFAULT_STATUSES: CleanupStatus[] = ['pending', 'failed']
+// Failed rows are terminal for the cron; review them and retry with the CLI.
+export const DEFAULT_STATUSES: CleanupStatus[] = ['pending']
 export const DEFAULT_LIMIT = 50
 export const KEPT_NOTE = 'kept: still referenced by a live word'
+export const STALE_PROCESSING_MS = 60 * 60 * 1000
 const MAX_ERROR_LENGTH = 500
 const WORD_MEDIA_COLUMNS = ['video_url', 'thumbnail_url', 'video_url_b', 'thumbnail_url_b', 'card_thumbnail_url'] as const
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
+// Shared files that must survive any single account deleting a word:
+// the anonymous landing's showcase decks (src/components/landing/landingData.ts,
+// kept in sync by scripts/test-storage-cleanup.ts) and the guided lesson media.
+export const PROTECTED_PATH_PREFIXES = [
+  'guided-today/',
+  '8e2a8380-8822-46a4-9190-9c34c6313fd1/5fb91369-c4cf-479a-b9ee-886dc6e2d093/',
+  '8e2a8380-8822-46a4-9190-9c34c6313fd1/80482d3e-b7f8-4844-8105-6827771427fc/',
+  '8e2a8380-8822-46a4-9190-9c34c6313fd1/5944c032-2c2d-4ed4-93ff-95db27a092a8/',
+  '8e2a8380-8822-46a4-9190-9c34c6313fd1/0437adf6-91ed-4d8f-9172-ae37e66c0a6a/',
+  'ef7a3c72-69cf-42a6-8c5f-2592f99c56f7/008ba7fd-65af-4730-9933-2e53ac072379/',
+  'ef7a3c72-69cf-42a6-8c5f-2592f99c56f7/631b2cea-66b5-4969-b7fc-7ed722ad1301/',
+  'ef7a3c72-69cf-42a6-8c5f-2592f99c56f7/8190dd5d-09f8-4728-bec0-eead7d6d6445/',
+  'ef7a3c72-69cf-42a6-8c5f-2592f99c56f7/3c060627-befa-4337-a51e-ceb127c9d284/',
+]
 
 export function cleanupErrorMessage(error: unknown) {
   const message = error instanceof Error ? error.message : String(error)
@@ -99,6 +128,7 @@ export function validateQueuedObject(row: CleanupQueueRow, allowedBuckets: Set<s
     || trimmedPath.includes('\0')
     || trimmedPath.includes('?')
     || trimmedPath.includes('#')
+    || trimmedPath.includes('"')
   ) {
     return 'Object path contains unsafe characters'
   }
@@ -120,6 +150,18 @@ export function validateQueuedObject(row: CleanupQueueRow, allowedBuckets: Set<s
     }
   }
 
+  if (!row.user_id || !UUID_RE.test(row.user_id)) {
+    return 'Queue row has no owning user'
+  }
+
+  if (segments[0] !== row.user_id) {
+    return 'Object path is outside the owning user folder'
+  }
+
+  if (PROTECTED_PATH_PREFIXES.some(prefix => trimmedPath.startsWith(prefix))) {
+    return 'Object path is a protected shared asset'
+  }
+
   return null
 }
 
@@ -133,14 +175,23 @@ async function failRow(client: CleanupClient, row: CleanupQueueRow, message: str
   }
 }
 
+function listOptions(options: ProcessStorageCleanupOptions): ListOptions {
+  const now = options.now ?? Date.now
+  return {
+    statuses: options.statuses ?? DEFAULT_STATUSES,
+    limit: normalizeLimit(options.limit),
+    staleProcessingBefore: new Date(now() - STALE_PROCESSING_MS).toISOString(),
+  }
+}
+
 export async function processStorageCleanup(
   client: CleanupClient,
   options: ProcessStorageCleanupOptions = {},
 ): Promise<CleanupSummary> {
   const allowedBuckets = new Set(options.allowedBuckets ?? DEFAULT_ALLOWED_BUCKETS)
-  const statuses = options.statuses ?? DEFAULT_STATUSES
-  const limit = normalizeLimit(options.limit)
-  const rows = await client.listCleanupRows({ statuses, limit })
+  const list = listOptions(options)
+  const shouldContinue = options.shouldContinue ?? (() => true)
+  const rows = await client.listCleanupRows(list)
   const summary: CleanupSummary = {
     scanned: rows.length,
     claimed: 0,
@@ -148,10 +199,16 @@ export async function processStorageCleanup(
     kept: 0,
     failed: 0,
     skipped: 0,
+    stopped_early: false,
   }
 
   for (const row of rows) {
-    const claimed = await client.claimCleanupRow(row.id, statuses)
+    if (!shouldContinue()) {
+      summary.stopped_early = true
+      break
+    }
+
+    const claimed = await client.claimCleanupRow(row.id, list)
     if (!claimed) {
       summary.skipped += 1
       continue
@@ -190,11 +247,15 @@ export async function planStorageCleanup(
   options: ProcessStorageCleanupOptions = {},
 ): Promise<CleanupPlan> {
   const allowedBuckets = new Set(options.allowedBuckets ?? DEFAULT_ALLOWED_BUCKETS)
-  const statuses = options.statuses ?? DEFAULT_STATUSES
-  const rows = await client.listCleanupRows({ statuses, limit: normalizeLimit(options.limit) })
-  const plan: CleanupPlan = { scanned: rows.length, deletable: 0, kept: 0, invalid: 0 }
+  const shouldContinue = options.shouldContinue ?? (() => true)
+  const rows = await client.listCleanupRows(listOptions(options))
+  const plan: CleanupPlan = { scanned: rows.length, deletable: 0, kept: 0, invalid: 0, stopped_early: false }
 
   for (const row of rows) {
+    if (!shouldContinue()) {
+      plan.stopped_early = true
+      break
+    }
     if (validateQueuedObject(row, allowedBuckets)) {
       plan.invalid += 1
     } else if (await client.isObjectReferenced(row)) {
@@ -207,8 +268,21 @@ export async function planStorageCleanup(
   return plan
 }
 
-function escapeLikePattern(value: string) {
-  return value.replace(/[\\%_]/g, match => `\\${match}`)
+// PostgREST `or` filter value: `*` is the LIKE wildcard; `_`/`%` in a path
+// only widen the match (the safe direction). Validation rejects `"` and `\`.
+function referenceFilter(bucket: string, objectPath: string) {
+  const variants = new Set([objectPath, encodeURI(objectPath)])
+  const clauses: string[] = []
+  for (const variant of variants) {
+    for (const column of WORD_MEDIA_COLUMNS) {
+      clauses.push(`${column}.like."*/${bucket}/${variant}*"`)
+    }
+  }
+  return clauses.join(',')
+}
+
+function statusFilter(options: ListOptions) {
+  return `status.in.(${options.statuses.join(',')}),and(status.eq.processing,processed_at.lt."${options.staleProcessingBefore}")`
 }
 
 export function createSupabaseCleanupClient(supabase: SupabaseClient): CleanupClient {
@@ -219,7 +293,7 @@ export function createSupabaseCleanupClient(supabase: SupabaseClient): CleanupCl
       const { data, error } = await supabase
         .from('storage_cleanup_queue')
         .select(columns)
-        .in('status', options.statuses)
+        .or(statusFilter(options))
         .order('created_at', { ascending: true })
         .limit(options.limit)
 
@@ -227,15 +301,18 @@ export function createSupabaseCleanupClient(supabase: SupabaseClient): CleanupCl
       return (data ?? []) as CleanupQueueRow[]
     },
 
-    async claimCleanupRow(id, statuses) {
+    async claimCleanupRow(id, options) {
+      // processed_at doubles as the claim time so a crashed run's rows are
+      // reclaimed after STALE_PROCESSING_MS.
       const { data, error } = await supabase
         .from('storage_cleanup_queue')
         .update({
           status: 'processing',
           error_message: null,
+          processed_at: new Date().toISOString(),
         })
         .eq('id', id)
-        .in('status', statuses)
+        .or(statusFilter(options))
         .select(columns)
         .maybeSingle()
 
@@ -244,17 +321,25 @@ export function createSupabaseCleanupClient(supabase: SupabaseClient): CleanupCl
     },
 
     async isObjectReferenced(row) {
-      // Public URLs end in /storage/v1/object/public/<bucket>/<path>.
-      const pattern = `%${escapeLikePattern(`/${row.bucket}/${row.object_path}`)}`
-      for (const column of WORD_MEDIA_COLUMNS) {
-        let query = supabase
+      const { count, error } = await supabase
+        .from('words')
+        .select('id', { count: 'exact', head: true })
+        .or(referenceFilter(row.bucket, row.object_path))
+      if (error) throw new Error(`Failed to check live references for ${row.id}: ${error.message}`)
+      if ((count ?? 0) > 0) return true
+
+      // A deleted word re-created with the same text regenerates into the
+      // same user/deck/slug folder before its URL columns are written.
+      const [userId, deckId, slug] = row.object_path.split('/')
+      if (userId === row.user_id && deckId && UUID_RE.test(deckId) && slug) {
+        const { count: sibling, error: siblingError } = await supabase
           .from('words')
           .select('id', { count: 'exact', head: true })
-          .like(column, pattern)
-        if (row.user_id) query = query.eq('user_id', row.user_id)
-        const { count, error } = await query
-        if (error) throw new Error(`Failed to check live references for ${row.id}: ${error.message}`)
-        if ((count ?? 0) > 0) return true
+          .eq('user_id', userId)
+          .eq('deck_id', deckId)
+          .eq('word_slug', slug)
+        if (siblingError) throw new Error(`Failed to check regenerating words for ${row.id}: ${siblingError.message}`)
+        if ((sibling ?? 0) > 0) return true
       }
       return false
     },

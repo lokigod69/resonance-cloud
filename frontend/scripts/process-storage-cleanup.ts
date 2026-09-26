@@ -3,6 +3,7 @@
 // STORAGE_CLEANUP_MODE=delete is set in Vercel.
 //   npx tsx scripts/process-storage-cleanup.ts            # read-only preview
 //   npx tsx scripts/process-storage-cleanup.ts --commit   # claim, delete, mark rows
+//   add --retry-failed to include rows a previous run marked failed
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -10,6 +11,7 @@ import { fileURLToPath } from 'node:url'
 import { createClient } from '@supabase/supabase-js'
 
 import {
+  type CleanupStatus,
   DEFAULT_ALLOWED_BUCKETS,
   DEFAULT_LIMIT,
   cleanupErrorMessage,
@@ -58,14 +60,15 @@ export async function runStorageCleanupCli() {
     auth: { autoRefreshToken: false, persistSession: false },
   })
   const client = createSupabaseCleanupClient(supabase)
+  const statuses: CleanupStatus[] = process.argv.includes('--retry-failed') ? ['pending', 'failed'] : ['pending']
 
   if (!process.argv.includes('--commit')) {
-    const plan = await planStorageCleanup(client, { allowedBuckets, limit })
+    const plan = await planStorageCleanup(client, { allowedBuckets, limit, statuses })
     console.log(`Storage cleanup preview (no changes) scanned=${plan.scanned} deletable=${plan.deletable} kept=${plan.kept} invalid=${plan.invalid}`)
     return
   }
 
-  const summary = await processStorageCleanup(client, { allowedBuckets, limit })
+  const summary = await processStorageCleanup(client, { allowedBuckets, limit, statuses })
   console.log(`Storage cleanup scanned=${summary.scanned} claimed=${summary.claimed} completed=${summary.completed} kept=${summary.kept} failed=${summary.failed} skipped=${summary.skipped}`)
 }
 
