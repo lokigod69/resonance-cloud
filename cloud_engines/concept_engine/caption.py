@@ -126,7 +126,12 @@ def build_caption_prompt_for_combined(
     Returns the caption prompt text without the visual hint extension —
     the combined prompt builder in lyrics.py handles that.
     """
-    return _select_caption_prompt(word, translation, language, settings)
+    # The combined wrapper in lyrics.py owns the output format, so the
+    # section's own "one caption line" instruction is dropped here.
+    prompt = _select_caption_prompt(word, translation, language, settings)
+    return "\n".join(
+        line for line in prompt.splitlines() if line.strip() != "Output one caption line only."
+    ).rstrip()
 
 
 def generate_caption_with_article(
@@ -290,7 +295,7 @@ def _manual_genre_prompt(
     else:
         word_line = f'Word: "{word}"\nDetermine the meaning of this word from its language context.'
     return (
-        f'You are a music production assistant generating a rich caption for Ace-Step AI music generation.\n'
+        f'You are a music production assistant generating a caption for a Suno music style field.\n'
         f'\n'
         f'Genre: {settings.genre}\n'
         f'Language: {language}\n'

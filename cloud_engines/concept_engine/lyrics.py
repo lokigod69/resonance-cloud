@@ -368,21 +368,19 @@ def _contextual_lyrics_prompt(
         f'\n'
         f'{word_info}\n'
         f'LANGUAGE: {language}\n'
-        f'SYLLABLE COUNT: {syllable_info.count}\n'
         f'{article_line}'
         f'\n'
         f'Write short, structured lyrics following these rules:\n'
         f'- The target word MUST appear {reps} times\n'
         f'- Add 1-2 very short phrases (3-5 words) in {language} that USE the target word naturally\n'
         f'- Phrases must use simple, high-frequency vocabulary — no rare words\n'
-        f'- Use Ace-Step section tags: [Verse], [Chorus], [Spoken Word], [Outro]\n'
+        f'- Use section tags: [Verse], [Chorus], [Spoken Word], [Outro]\n'
         f'- You may add one energy descriptor per tag (e.g., [Verse - Gentle])\n'
         f'- Keep lines short: 1-4 words per line\n'
         f'- Use "..." for pauses and "!" for emphasis\n'
-        f'- NEVER include translation or English words\n'
+        f'- Write every sung line in {language}; no translations and no words from other languages\n'
         f'- NEVER split the target word into parts\n'
-        f'- This is a {duration}-second song — keep it brief\n'
-        f'- Output ONLY the lyrics, no explanation'
+        f'- This is a {duration}-second song — keep it brief'
     )
 
 
@@ -410,7 +408,6 @@ def _creative_lyrics_prompt(
         f'\n'
         f'{word_info}\n'
         f'LANGUAGE: {language}\n'
-        f'SYLLABLE COUNT: {syllable_info.count}\n'
         f'{article_line}'
         f'\n'
         f'Write lyrics that follow these rules:\n'
@@ -419,15 +416,14 @@ def _creative_lyrics_prompt(
         f'- Use chorus-style repetition: the chorus or hook should repeat the target\n'
         f'  word multiple times to aid memorability. The repetition should feel like\n'
         f'  a song hook, not a drill.\n'
-        f'- Use Ace-Step section tags: [Verse], [Chorus], [Bridge], [Outro]\n'
+        f'- Use section tags: [Verse], [Chorus], [Bridge], [Outro]\n'
         f'- You may add one energy descriptor per tag\n'
         f'- The target word must appear at least {reps} times across the full lyrics\n'
         f'- Use natural sentences in {language}, with idiomatic flavor\n'
         f'- Keep lines short: 2-8 words per line\n'
-        f'- NEVER include translation or English words\n'
+        f'- Write every sung line in {language}; no translations and no words from other languages\n'
         f'- NEVER split the target word into parts\n'
-        f'- Prioritize musicality — these should feel like real song lyrics, not a language drill\n'
-        f'- Output ONLY the lyrics, no explanation'
+        f'- Prioritize musicality — these should feel like real song lyrics, not a language drill'
     )
 
 
@@ -483,7 +479,7 @@ def _dramatic_lyrics_prompt(
         f'   - Orchestral / cinematic / ambient: sparser lines, more breathing room.\n'
         f'   - Jazz / R&B: organic structure, hook-driven.\n'
         f'\n'
-        f'3. Use Ace-Step section tags appropriate to the structure: [Verse], [Chorus],\n'
+        f'3. Use section tags appropriate to the structure: [Verse], [Chorus],\n'
         f'   [Bridge], [Pre-Chorus], [Outro], etc.\n'
         f'\n'
         f'4. Duration density: {density_guidance}.\n'
@@ -492,10 +488,7 @@ def _dramatic_lyrics_prompt(
         f'\n'
         f'6. Use natural, song-like {language} lyrics.\n'
         f'\n'
-        f'7. NEVER include translation, English words (unless target language is English),\n'
-        f'   or words from any other language.\n'
-        f'\n'
-        f'8. Output ONLY the lyrics, no commentary.'
+        f'7. Write every sung line in {language}; no translations and no words from other languages.'
     )
 
 

@@ -296,6 +296,24 @@ def test_build_lyrics_prompt_routes_creative():
     assert "chorus-style repetition" in prompt or "memorability" in prompt
 
 
+@pytest.mark.parametrize("mode", ["contextual", "creative", "dramatic"])
+@pytest.mark.parametrize("language,word", [("German", "Buch"), ("English", "book")])
+def test_combined_prompt_has_one_output_format(mode, language, word):
+    # The wrapper's CAPTION/LYRICS block must be the only output instruction:
+    # an inner "Output ONLY the lyrics" turns a raw lyric line into the Suno style.
+    settings = ConceptSettings(lyric_mode=mode, duration=30)
+    prompt = lyrics_module._build_combined_prompt(
+        word, "", language, settings, _syl(), "",
+    )
+    assert prompt.count("Output format:") == 1
+    assert "Output ONLY" not in prompt
+    assert "Output one caption line only." not in prompt
+    assert "Ace-Step" not in prompt
+    assert "SYLLABLE COUNT" not in prompt
+    assert "NEVER include translation or English words" not in prompt
+    assert f"Write every sung line in {language}" in prompt
+
+
 # ---------------------------------------------------------------------------
 # Integration: generate_concept with mocked LLM
 # ---------------------------------------------------------------------------
