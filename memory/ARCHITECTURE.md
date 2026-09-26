@@ -38,5 +38,11 @@ Frontend submits work via Supabase RPCs (`submit_generation`, `request_word_retr
 - Paid providers: OpenAI/GPT-image, Fal, Kie, Suno, ElevenLabs, Gemini TTS, Grok realtime, Kling/LTX/RunPod (video-era, dormant).
 - Domains: lingwave.ai is the live domain (owner QA runs against it); resonanz.pro is dead (DEPLOYMENT_NOT_FOUND). CORS lives in `frontend/api/_shared/cors.ts` and allows only lingwave.ai + www (plus the preview suffix).
 
+## Environment (names only)
+`npm run env:check` (from `frontend/`) lists every variable the code reads, per component, and whether a local `.env` sets it; it never prints values. Production values live in Vercel (functions and browser bundle) and Railway (worker) and are not readable through the CLI.
+- Supabase: `SUPABASE_URL`, `SUPABASE_ANON_KEY` / `VITE_SUPABASE_*`, and the service key under two names — functions read `SUPABASE_SERVICE_ROLE_KEY` first and fall back to `SUPABASE_SERVICE_KEY`; the worker reads both plus `SUPABASE_KEY`. Keep them equal.
+- Providers: `GROQ_API_KEY` (Speak STT and LLM), `OPENROUTER_API_KEY` (suggestions, extraction, lyrics, enrichment), `GOOGLE_AI_API_KEY` (Lens, Gemini TTS), `MISTRAL_API_KEY` (Voxtral), `XAI_API_KEY` (Live), `ELEVENLABS_API_KEY`, `KIE_API_KEY`, `FAL_KEY`, `STRIPE_SECRET_KEY`.
+- Switches: `API_QUOTA_REQUIRE_ENFORCED`, `STRIPE_BILLING_ENABLED`, `CRON_SECRET`, `STORAGE_CLEANUP_MODE` (unset = preview), `AOS_*` / `VITE_AOS_*` (analytics, dark), `SUNO_CALLBACK_BASE_URL`.
+
 ## Conventions
 The working rules for every agent (git and pushing, approvals, checks, i18n, named exports, themes, waves, UTC day, guided chunk boundary, worker-owned columns) live in `orchestrator/AGENTS.md`; they are not repeated here. Versioned design docs go in `docs/`; reports go in `D:\CODING\ResonanceTEST\investigations\` (unversioned).

@@ -46,7 +46,7 @@ const Onboarding = lazyWithRetry(routeImports.onboarding, 'onboarding')
 const SharePage = lazyWithRetry(routeImports.sharePage, 'share-page')
 // The /a /b /landing/* experiment routes were unshipped 2026-07-27 (beta trim):
 // they carried the dead Sonanda brand and a "Not built" placeholder into prod.
-// The pages survive under src/landing-experiments/ for reference only.
+// The pages were deleted 2026-09-26; their last version is in git history.
 const Dashboard = lazyWithRetry(routeImports.dashboard, 'dashboard')
 const DashboardPG = lazyWithRetry(routeImports.dashboardPG, 'dashboard-pg')
 const Lens = lazyWithRetry(routeImports.lens, 'lens')

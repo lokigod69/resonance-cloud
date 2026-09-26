@@ -8,6 +8,8 @@ import { spawnSync } from 'node:child_process'
 const SCRIPTS = [
   'test',
   'check:i18n',
+  'check:skills',
+  'check:i18n-language',
   'test:ui-locales',
   'test:base-languages',
   'test:guided-today',
