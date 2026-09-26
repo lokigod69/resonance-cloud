@@ -29,7 +29,7 @@ const ACCENT_NOISE_LANGUAGES = new Set(['es', 'fr', 'pt', 'it'])
 
 function spokenForm(text: string, languageCode?: string) {
   let form = text.normalize('NFD')
-  if (languageCode && ACCENT_NOISE_LANGUAGES.has(languageCode)) form = form.replace(/[̀-̂]/g, '')
+  if (languageCode && ACCENT_NOISE_LANGUAGES.has(languageCode)) form = form.replace(/[\u0300-\u0302]/g, '')
   return form.normalize('NFC').toLowerCase()
     .replace(/[^\p{L}\p{M}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim()
 }
