@@ -36,6 +36,7 @@ This file is the single source of working rules for Claude Code and Codex. Claud
 - For visual or interaction changes, inspect the rendered UI at the affected viewport and locale before reporting done. Signed-in screens: from `orchestrator/frontend`, `node scripts/today-guided-fixtures/run.mjs` (also `first-light-fixtures`, `speak-lens-fixtures`) renders real components with stubbed auth and no paid calls; screenshots and a verdict go to the harness's `out/`. Report "Visually verified: yes (how)" or "no (why)".
 - If your sandbox cannot run tsx or Chrome, say so; typecheck alone does not verify runtime behaviour.
 - Report a failed or skipped check as failed or skipped. A self-review is not an independent review.
+- Independent review (a fresh agent that did not write the change) is required for auth, billing, data deletion, migrations, paid pipelines, provider/model changes and learner-facing content; it is optional for copy and CSS. Use the `independent-review` project skill for the brief and verdict format; re-review once after fixes, again only for a blocker.
 
 ## Rules the code must keep
 
