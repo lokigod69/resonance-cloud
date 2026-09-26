@@ -24,13 +24,21 @@ shapes before writing new ones.
   incomplete A1 (doc §6).
 - Owner has picked this language/phase. TTS is a paid owner decision (per phase,
   after content sign-off — never before review).
-- **TTS-frozen ids**: all shipped guided ids (es/fr/it/pt/de/en A2, all A1, ko A1)
-  must NEVER be renamed. Text changes to frozen lessons need scoped audio reruns.
+- **TTS-frozen ids**: treat every shipped guided id as frozen. As of 2026-09-25 all A1,
+  all A2 and German B1 have TTS (Japanese and Russian froze 2026-07-17, German B1
+  2026-07-18). Module `FROZEN` headers are not exhaustive (e.g. `englishA2.ts`,
+  `germanA2.ts`, `koreanA1.ts` lack one), so a missing header proves nothing. Never
+  rename a shipped id or slug. Text edits to shipped lessons need scoped audio reruns
+  plus catalog/base-edition convergence (Stage 7), each owner-approved.
+- **Baseline first:** before authoring anything, run `npm run test:guided-today` on
+  the clean tree. It was green at the 2026-09-07 release; any later failure is yours
+  until proven otherwise. Allowed exceptions live only in the allowlists of
+  `scripts/test-guided-trophy-word-uniqueness.ts`.
 
 ## Stage 0 — Evidence from A1 (before writing anything)
 
-Import/read the language's A1 module (`src/data/guided/{lang}A1.ts` or the
-guidedLessons sections) and extract:
+Import/read the language's A1 module (`src/data/guided/{lang}A1.ts` for ja/ru/ko, the
+other nine languages' A1 sections in `src/data/guidedLessonsAuthoring.ts`) and extract:
 - **Base locales**: which `GuidedBaseContentText` fields actually carry `.de`/`.en`.
   This varies! fr/it/pt carry both; German A1 is en-only (+ bilingual `situation`);
   English A1 is de-only; Korean A1 carries both (baseLanguage 'German'). The A2
@@ -176,26 +184,42 @@ directly. Re-run the validator + read the diff after.
 
 ## Stage 7 — Integration + suites
 
-Integrate into `src/data/guidedLessons.ts` after the language's A1 (import + spread,
-matching fr/it/pt/de/en A2 precedent). Respect the chunk boundary: dashboard code
-touches guided data ONLY via the dynamic import in useTodayMission. Then all green,
-from `orchestrator/frontend`:
-`npm run typecheck` · validator (24,700+ and growing, 0 failed) ·
-`npx tsx scripts/test-guided-today-data.ts` ·
-`npx tsx scripts/test-guided-trophy-fallback-matrix.ts` ·
-`npm run lint` (0 new) · `npm run check:i18n`.
-Known pre-existing failures (6 A1 trophy repeats en/es/it/pt; stale
-guided-today-path-overview asserts) are documented staleness — don't chase, don't
-worsen.
+Integrate into `src/data/guidedLessonsAuthoring.ts` after the language's A1 (import +
+spread, matching the existing A2 precedent); `guidedLessons.ts` is only the runtime
+facade. Never import `guidedLessonsAuthoring.ts` from `src/` app code. Then, from
+`orchestrator/frontend`:
+1. `npm run generate:guided-runtime` — regenerates `src/data/guided-runtime/*` (the
+   bodies the app loads per language through `GUIDED_LANGUAGE_LOADERS`).
+2. `npm run typecheck` · `npm run test:guided-today` (validators, runtime split,
+   data/trophy/path suites) · `npm run test:guided-base` · `npm run lint` (0 errors) ·
+   `npm run check:i18n`.
+3. Expect these to go red, and treat each fix as an explicit owner-approved step,
+   never a side effect:
+   - (a) New or edited authored base text changes the language's `corpusHash`, so its
+     12 base editions stop validating (`loadGuidedBaseEdition` throws "Guided
+     explanation edition mismatch" and users see a recovery state). Regenerate them
+     with `scripts/generate-guided-base-editions.ts` (paid OpenRouter, ledger cap) and
+     publish all twelve together.
+   - (b) The phrase catalog: `scripts/test-guided-phrase-catalog.ts` requires the
+     committed SQL to be byte-identical to its render, and
+     `scripts/test-guided-phrase-locale-migration.ts` pins the locale patches. New or
+     changed phrases need a catalog/locale migration and rollback test on the
+     `20260907130000`–`133000` pattern — production SQL, so it needs the owner's explicit OK in the current conversation
+     before anyone applies it.
+   - (c) Count pins (trophy cells, catalog rows, path-id lists such as
+     `germanB1PathIds`, `A2_LANGUAGES`): update deliberately in the same commit; never
+     loosen a check to get green.
 
 ## Stage 8 — TTS (owner-gated, per phase)
 
 Ask via AskUserQuestion, naming the cost forecast (chars ≈ sum of corePhrase +
 chunks + trophy word texts; ~12k chars/language cap; speakTarget deliberately not
-generated). On approval: `seed_guided_bright_rotation.py` (voice rotation continues
+generated). On approval: `seed_guided_bright_rotation.py` (dry-run by default;
+`--commit` writes production voice-profile rows, so it is covered by the same OK; voice rotation continues
 the A1 roster, one profile per path, `{lang}_a2_bright_p{n}_multiv2_v1`) then
-`python scripts/run_guided_bright_batch.py --level a2 --language {lang}` (dry-run
-first, expect exact clip count; idempotent — reruns fill only missing). Node
+`python scripts/run_guided_bright_batch.py --level a2 --languages {slug}` (lowercase slug, e.g. `japanese`; dry-run by
+default — expect the exact clip count; only `--commit` spends; character caps a1/a2
+12,000, b1 45,000; idempotent — reruns fill only missing). Node
 scripts hitting Supabase need `NODE_OPTIONS=--use-system-ca` on this machine.
 Verify: verify scripts green + audio spot-checks that actually serve audio.
 **After the batch, the language's ids are frozen.**
@@ -203,8 +227,14 @@ Verify: verify scripts green + audio spot-checks that actually serve audio.
 ## Stage 9 — Commit + checkpoint
 
 Scoped commit (never `git add -A` — the tree usually holds another workstream's
-files; stage exactly the module, guidedLessons.ts, validator, and any test-baseline
-files you changed). Push on owner call. Then the protocol closing ritual: brain
+files; stage exactly the module, guidedLessonsAuthoring.ts, the regenerated
+guided-runtime files, validator, any test-baseline files you changed, and — when
+their owner-approved steps ran — `src/data/guided-base/*` with `manifest.json`, the
+migrations and their `supabase/tests` files). A push deploys: never push lesson content
+whose regenerated editions are missing (users would get the edition-mismatch recovery
+state), and never push content that depends on a catalog migration before the owner
+has applied it or decided the order. Otherwise push once checks pass unless the owner
+said to hold; migrations and paid runs need the owner's explicit OK. Then the protocol closing ritual: brain
 save, NEXT_STEP, LOG. Add any NEW tripwires discovered this run to **this skill**
 — that's the whole point of it.
 
@@ -327,7 +357,8 @@ deltas:
 - **TTS:** two NEW surfaces — `dialogue` (`turn-1`/`turn-3`/`turn-4`; you₁ stays
   corePhrase `__self`) and `pattern` (`ex-1..3`). ~20–25k chars for a full
   B1 language (+60% vs A2). Seeder/batch-runner/verify scripts need the surface
-  enumeration extended BEFORE the first B1 batch run. Ids unfrozen until then.
+  enumeration extended BEFORE the first B1 batch run. (German B1 ran 2026-07-18; its
+  ids are frozen.)
 - **Engine note:** the session engine keys on `lesson.level`, not the authored
   `steps` array — a B1 module MUST set `level: 'B1'` in its path metadata or the
   lesson silently runs the A1/A2 5-step flow.
@@ -399,7 +430,7 @@ deltas:
 - **English**: base-DE only; AMERICAN variety (en-US); no will-future (going to;
   I'll as fixed chunk); no experiential present perfect ("have you ever" = B1);
   271-word forbidden-trophy list from the multi-vibe A1 corpus.
-- **Korean** (A1 evidence; A2 pending): base de+en both (baseLanguage 'German');
+- **Korean** (A1 + A2 shipped, TTS live, ids frozen): base de+en both (baseLanguage 'German');
   요-form polite + 죄송합니다/감사합니다 formal fixed phrases; romanized-Korean
   slugs (`cheoncheonhi-please`); Hangul accepted answers are identity (no
   case/accents); past 았/었어요 gender-free; speech check is Unicode-aware
@@ -433,7 +464,7 @@ deltas:
   throughout; TORFL-A1 scope; trophy-example containment needs declension
   stems + -ть/-ться/-ти/-чь infinitive exemptions in the validator. **A2
   requires the Polish-style per-path voice-gender PLAN BEFORE authoring**
-  (no TTS roster exists — content will dictate the roster's genders).
+  (the roster Maria/Alan/Nina/Mark now exists; ids frozen 2026-07-17).
   **A2 DONE under that plan** (tmp\A2_RUSSIAN_VOICE_GENDER_PLAN.md): odd paths
   FEMALE, even MALE (P3/P9 F past, P10 M Я приехал callback); `genderForms
   {voiced, other}` scaffold field generates swapped speak/type variants; бы
@@ -455,7 +486,7 @@ deltas:
   わかりました/助かりました as only past formulas; ja-JP ASR is unspaced —
   guidedSpeechCheck.ts CJK branch handles it (Hangul excluded); trophies
   particle-free; topic-particle chunk glosses must be natural noun phrases,
-  never "as for X" metalanguage; no TTS voices exist yet — ids unfrozen.
+  never "as for X" metalanguage; TTS live since 2026-07-17 — ids FROZEN, never rename.
 - **Cebuano** (A2 shipped): locale hygiene held clean this time but keeps
   extra review weight; aspect licensing (ni-/naka- + na, wala pa, mo-/mag- +
   time word) mirrors the Indonesian rule; Tagalog banned (po/opo/pakisuyo/

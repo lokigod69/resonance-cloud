@@ -1,6 +1,6 @@
 ---
 name: add-script-lab-language
-description: Add a new writing system (Cyrillic, Kana, Arabic, Thai, Hebrew, …) to the Script Lab / Alphabet module in frontend/. Use when asked to add alphabet/script learning for a language, e.g. "add Russian alphabet support" or "build the hiragana module". Covers data authoring, registry wiring, i18n, tests, and per-script-kind pedagogy rules.
+description: Add a new writing system (Cyrillic, Kana, Arabic, Thai, Hebrew, …) to the Script Lab / Alphabet module in frontend/. Use when asked to add alphabet/script learning for a language, e.g. "add katakana" or "add the Greek alphabet". Covers data authoring, registry wiring, base-locale overlays, i18n, tests, and per-script-kind pedagogy rules.
 ---
 
 # Add a writing system to Script Lab
@@ -8,9 +8,12 @@ description: Add a new writing system (Cyrillic, Kana, Arabic, Thai, Hebrew, …
 Script Lab is the generic "learn the alphabet" module. Korean/Hangul is the reference
 implementation. Adding a language is a **data authoring task** — the UI, quiz, audio
 resolution, progress, routing, and Study-hub tile all pick up a new script automatically
-from the registry. Read these before writing anything:
+from the registry. **Every new script also needs base-locale overlays in nine locale
+files (step 3); `npm run test:script-lab` fails without them, and production shows
+English to those locales.** Read these before writing anything:
 
 - `docs/Product/FABLE_SCRIPT_LAB_ARCHITECTURE.md` — the architecture and per-kind guidance
+  (its §4 predates the 2026-09-07 base-locale overlays, and hiragana has shipped)
 - `frontend/src/lib/scriptlab/types.ts` — the contract (treat as frozen; see "Type changes" below)
 - `frontend/src/data/scripts/koreanHangul.ts` — the reference data file
 - `docs/Product/FABLE_SCRIPT_AUDIO_PROVIDER_PLAN.md` — audio rules
@@ -25,14 +28,29 @@ from the registry. Read these before writing anything:
    `LANGUAGES[].value` from `frontend/src/lib/languages.ts` (add the language there first
    if it's missing, following that file's own header instructions). Pick a single
    representative `emblem` character for tiles.
-3. **Validate**: `npm run test:script-lab` (from `frontend/`). The suite checks every
-   registered script generically — unique ids, en/de/fr completeness on all content,
-   section/symbol referential integrity, unique audio itemIds, composition sanity. Add a
-   script-specific `validate<Name>()` block in `scripts/test-script-lab-data.ts` for
-   anything mechanical you can cross-check (like Hangul's Unicode composition round-trips).
-4. **Verify**: `npm run typecheck`, `npm run lint` (zero new errors), `npm run check:i18n`
-   (only needed if you touched `translations.ts`), `npm run test:script-lab`.
-5. **Document**: update the "next scripts" list in the architecture doc if you shipped one
+3. **Base-locale overlays**: authored text is `lt(en, de, fr)`; the nine other UI
+   locales read whole overlays in `frontend/src/lib/scriptlab/locales/<locale>.ts`,
+   keyed by `scriptContentKey` (a hash of each en/de/fr tuple). Every new or changed
+   `LocalizedText` tuple needs entries in all nine files — changing any en/de/fr string
+   orphans its nine overlay entries, and production then shows English for them. Update
+   the tuple-count pin in `scripts/test-script-content-locales.ts` deliberately in the
+   same change. Machine drafting uses `scripts/generate-script-content-locales.ts` (paid
+   OpenRouter, no total budget cap): get owner approval with an explicit call limit, and
+   sample the output with native-editorial care.
+4. **Validate**: `npm run test:script-lab` (from `frontend/`). It runs
+   `scripts/test-script-lab-data.ts` — unique ids, en/de/fr completeness,
+   section/symbol referential integrity, unique audio itemIds, composition sanity — and
+   `scripts/test-script-content-locales.ts` (tuple-count pin, whole-edition overlay
+   coverage for the nine locales, destination-script checks). Add a script-specific
+   `validate<Name>()` block in `scripts/test-script-lab-data.ts` for anything mechanical
+   you can cross-check (like Hangul's Unicode composition round-trips).
+5. **Verify**: `npm run typecheck`, `npm run lint` (0 errors), `npm run check:i18n`
+   (always, even when you think no UI key changed; any new `scriptlab.*` UI key goes into every UI locale — `translations.ts`
+   for en/de/fr plus `src/lib/locales/*.ts`), `npm run test:script-lab`. Then open
+   `/alphabet/<scriptId>` at 390 px and desktop, in `en` and one lazy locale (e.g. `ja`):
+   exercise Learn and Quiz (and Build if `composition` exists), confirm glyphs render and
+   explanations come from the overlay, not English.
+6. **Document**: update the "next scripts" list in the architecture doc if you shipped one
    of them, and record the session in `memory/` per the project protocol.
 
 ## Content rules (non-negotiable)
@@ -43,9 +61,10 @@ from the registry. Read these before writing anything:
   comment. Never invent pronunciation notes; if unsure of a detail, leave the optional
   field out.
 - **Romanization is helper text**, never the learning target. Notes are one sentence,
-  jargon-free, localized naturally in en/de/fr (German with real umlauts).
+  jargon-free, authored naturally in en/de/fr (German with real umlauts); the nine
+  overlay locales follow step 3.
 - **Example words**: common, beginner-relevant, contain the symbol prominently
-  (word-initial where possible). Meanings localized in all three locales. In languages
+  (word-initial where possible). Meanings authored in en/de/fr, overlays per step 3. In languages
   with stress-dependent vowel reduction (Russian: unstressed о sounds like [ɐ]), the
   symbol's position must also be STRESSED so the audible sound matches the taught one —
   осень, not окно.
@@ -83,6 +102,7 @@ from the registry. Read these before writing anything:
     `lowercase?: string` type extension with UI + tests (see "Type changes").
 - **syllabary (hiragana, katakana):** two separate registry entries sharing
   `language: 'Japanese'`; sections = gojūon rows, dakuten/handakuten and yōon as advanced.
+  Reference implementation: `frontend/src/data/scripts/japaneseHiragana.ts`.
 - **abjad (Arabic, Hebrew):** BLOCKED on two type extensions — contextual letterforms
   (`forms?: { isolated, initial, medial, final }` on `ScriptSymbol`) and
   `direction?: 'rtl'` on `ScriptDefinition` (UI must set `dir` on character containers).
@@ -101,8 +121,10 @@ doc. Existing scripts must pass the suite unchanged.
 ## Do not
 
 - Call ElevenLabs or any paid TTS during implementation (audio assets are a separate,
-  explicitly-approved batch step — see the audio plan doc).
+  explicitly-approved batch step — see the audio plan doc). Note:
+  `scripts/generate-script-lab-audio.ts` runs live by default; always pass `--dry-run`
+  first.
 - Hardcode a language or script id inside `components/scriptlab/` or `pages/ScriptLab.tsx`.
 - Add per-symbol Supabase progress rows or any schema.
-- Add a 7th item to the primary nav (`MobileBottomNav` is a hard 6-slot grid) — the
-  Study-hub tile is the entry point.
+- Add Script Lab to the primary nav (`components/layout/primaryNav.ts`) — the Study-hub
+  tile is the entry point.
