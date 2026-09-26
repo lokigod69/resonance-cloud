@@ -1,5 +1,6 @@
 import { generateGeminiTtsFromPrompt } from './_shared/geminiTts'
 import { resolveSpeakPersona } from './_shared/speakPersona'
+import { buildCorrectionsSystemPrompt, filterCorrections } from './_shared/speakCorrections'
 import {
   LANGUAGE_CONFIG,
   NATIVE_LANGUAGE_NAMES,
@@ -687,24 +688,7 @@ async function handleCorrections(body: {
   const langName = LANGUAGE_CONFIG[language]?.name || language
   const nativeName = LANGUAGE_CONFIG[native_language]?.name || NATIVE_LANGUAGE_NAMES[native_language] || 'English'
 
-  const systemPrompt = `You are a language teacher reviewing a student's ${langName} conversation practice. The student's native language is ${nativeName}.
-
-Analyze ONLY the student's messages (role: "user") for errors in:
-- Grammar
-- Word choice / vocabulary
-- Sentence structure
-- Common expressions (if they used an unnatural phrasing)
-
-For each error found, provide:
-- "original": what the student said (exact quote)
-- "corrected": the correct version
-- "explanation": brief explanation in ${nativeName} of what was wrong and why the correction is better
-
-If the student made no significant errors, return an empty array.
-Be encouraging but honest. Focus on errors that would matter in real conversation — ignore minor stylistic preferences.
-
-Respond with a JSON object of the form {"corrections": [{"original": "...", "corrected": "...", "explanation": "..."}]}.
-If no errors: {"corrections": []}`
+  const systemPrompt = buildCorrectionsSystemPrompt(langName, nativeName)
 
   try {
     const timedLlmRes = await fetchWithTimeout('https://api.groq.com/openai/v1/chat/completions', {
@@ -738,17 +722,13 @@ If no errors: {"corrections": []}`
     }
     const text = llmJson.choices?.[0]?.message?.content?.trim() || '[]'
 
-    let corrections: unknown
+    let parsed: unknown
     try {
-      corrections = JSON.parse(text)
+      parsed = JSON.parse(text)
     } catch {
-      corrections = []
+      parsed = []
     }
-    if (!Array.isArray(corrections)) {
-      const obj = corrections as Record<string, unknown>
-      corrections = obj.corrections || obj.errors || []
-    }
-    if (!Array.isArray(corrections)) corrections = []
+    const corrections = filterCorrections(parsed)
 
     return jsonResponse(req, { corrections }, 200)
   } catch (err) {
