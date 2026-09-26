@@ -8,6 +8,14 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { playPronunciation } from '@/hooks/usePronunciation'
 import { evaluateTypedAnswer } from '@/lib/typedAnswer'
 import { isLemmaDueNow, type LemmaState } from '@/hooks/useWordStates'
+import { readCurriculumMetadata } from '@/lib/curriculumDeckBridge'
+import { resolveStaticCategoryTargetLanguageCode } from '@/data/categories'
+import {
+  buildStaticThematicPlaybackQuery,
+  fetchStaticThematicPlayback,
+  getStaticThematicAudio,
+  getStaticThematicVoiceProfileKeys,
+} from '@/lib/staticThematicAudio'
 
 // The Word Tide: today's due words drift as tappable orbs over the wave.
 // Tap one → it opens into an inline practice card (image or translation as
@@ -19,7 +27,8 @@ import { isLemmaDueNow, type LemmaState } from '@/hooks/useWordStates'
 // with transform-only keyframes (or statically under reduced motion); word
 // text/translation ride in on the LemmaState rows the dashboard already
 // fetched — only thumbnails/TTS urls are looked up, one small batched query
-// per set of newly visible orbs.
+// per set of newly visible orbs (plus a static_tts_playback lookup for
+// curated words whose rows carry no url of their own).
 
 const MAX_ORBS = 8
 
@@ -36,7 +45,27 @@ const SLOTS: Array<{ x: number; y: number; scale: number; drift: number }> = [
   { x: 86, y: 76, scale: 0.84, drift: 6.6 },
 ]
 
-type WordDetail = { thumbnailUrl: string | null; ttsAudioUrl: string | null }
+type WordDetail = {
+  thumbnailUrl: string | null
+  ttsAudioUrl: string | null
+  // False while a static_tts_playback lookup may still fill ttsAudioUrl in —
+  // playing before it lands would wrongly fall back to browser speech.
+  ttsResolved: boolean
+}
+
+// One static_tts_playback query per (language, category, level) group of
+// curated words whose rows lack both tts_audio_url and a metadata static url.
+type StaticAudioRequest = {
+  targetLanguageCode: string
+  categorySlug: string
+  level: number
+  conceptIds: string[]
+  detailKeyByConceptId: Map<string, string>
+}
+
+function findString(...values: unknown[]): string | undefined {
+  return values.find((value): value is string => typeof value === 'string' && value.length > 0)
+}
 
 type WordTideProps = {
   userId: string
@@ -62,6 +91,9 @@ export default function WordTide({ userId, language, lemmas, loading, onGraded }
   const [details, setDetails] = useState<Map<string, WordDetail>>(new Map())
   const [active, setActive] = useState<LemmaState | null>(null)
   const [slotByKey, setSlotByKey] = useState<Map<string, number>>(new Map())
+  // Word ids already sent to the detail lookup — dedupes in-flight queries
+  // without retriggering the effect the way keying off `details` would.
+  const queriedIdsRef = useRef<Set<string>>(new Set())
 
   // Session-cleared orbs reset when the language changes.
   useEffect(() => {
@@ -107,33 +139,107 @@ export default function WordTide({ userId, language, lemmas, loading, onGraded }
     })
   }, [visible])
 
-  // Thumbnail/TTS lookup for newly visible words (batched, cached for the session).
+  // Thumbnail/TTS lookup for newly visible words (batched, cached for the
+  // session, keyed by the lemma's representative word id). Audio resolves the
+  // way the importer and Surf do: any sibling row's tts_audio_url first, then
+  // the curriculum metadata's static url, then a static_tts_playback lookup
+  // for curated concepts whose rows carry neither — only after all of that
+  // does playPronunciation fall back to browser speech. Not cancelled on
+  // re-run: entries are cached by globally-unique word id, so late writes
+  // stay correct even across a language switch.
   useEffect(() => {
-    const missing = visible
-      .map((lemma) => lemma.wordIds[0])
-      .filter((id) => !details.has(id))
+    const missing = visible.filter((lemma) => !queriedIdsRef.current.has(lemma.wordIds[0]))
     if (missing.length === 0) return
-    let cancelled = false
+    for (const lemma of missing) queriedIdsRef.current.add(lemma.wordIds[0])
+
     void supabase
       .from('words')
-      .select('id, thumbnail_url, tts_audio_url')
-      .in('id', missing)
+      .select('id, thumbnail_url, tts_audio_url, metadata')
+      .in('id', missing.flatMap((lemma) => lemma.wordIds))
       .then(({ data }) => {
-        if (cancelled || !data) return
+        const rowById = new Map(
+          ((data ?? []) as Array<{ id: string; thumbnail_url: string | null; tts_audio_url: string | null; metadata: unknown }>)
+            .map((row) => [row.id, row]),
+        )
+        const entries = new Map<string, WordDetail>()
+        const requests = new Map<string, StaticAudioRequest>()
+
+        for (const lemma of missing) {
+          const rows = lemma.wordIds.flatMap((id) => rowById.get(id) ?? [])
+          const curricula = rows.map((row) => readCurriculumMetadata(row.metadata))
+          const thumbnailUrl = rows.find((row) => row.thumbnail_url)?.thumbnail_url ?? null
+          const ttsAudioUrl = rows.find((row) => row.tts_audio_url)?.tts_audio_url
+            ?? findString(...curricula.map((curriculum) => curriculum.static_tts_public_url))
+            ?? null
+
+          let pendingStatic = false
+          if (!ttsAudioUrl) {
+            for (const curriculum of curricula) {
+              const conceptId = findString(curriculum.source_concept_id, curriculum.concept_id, curriculum.entry_id)
+              if (!conceptId) continue
+              const categorySlug = findString(curriculum.source_category_slug, curriculum.category_slug)
+                ?? (conceptId.includes('.') ? conceptId.slice(0, conceptId.indexOf('.')) : '')
+              if (!categorySlug) continue
+              const targetLanguageCode = findString(curriculum.source_target_language_code, curriculum.target_language_code)
+                ?? resolveStaticCategoryTargetLanguageCode(language)
+              const level = [curriculum.source_level_number, curriculum.level]
+                .find((value): value is number => typeof value === 'number' && Number.isFinite(value)) ?? 1
+              const key = `${targetLanguageCode}:${categorySlug}:${level}`
+              const request = requests.get(key)
+                ?? { targetLanguageCode, categorySlug, level, conceptIds: [], detailKeyByConceptId: new Map<string, string>() }
+              if (!request.detailKeyByConceptId.has(conceptId)) {
+                request.conceptIds.push(conceptId)
+                request.detailKeyByConceptId.set(conceptId, lemma.wordIds[0])
+              }
+              requests.set(key, request)
+              pendingStatic = true
+              break
+            }
+          }
+          entries.set(lemma.wordIds[0], { thumbnailUrl, ttsAudioUrl, ttsResolved: !pendingStatic })
+        }
+
         setDetails((prev) => {
           const next = new Map(prev)
-          for (const row of data as Array<{ id: string; thumbnail_url: string | null; tts_audio_url: string | null }>) {
-            next.set(row.id, { thumbnailUrl: row.thumbnail_url, ttsAudioUrl: row.tts_audio_url })
-          }
-          // Rows that came back empty still get an entry so we don't re-query them.
-          for (const id of missing) {
-            if (!next.has(id)) next.set(id, { thumbnailUrl: null, ttsAudioUrl: null })
-          }
+          entries.forEach((value, key) => next.set(key, value))
           return next
         })
+
+        requests.forEach((request) => {
+          const voiceProfileKeys = getStaticThematicVoiceProfileKeys({
+            targetLanguageCode: request.targetLanguageCode,
+            categorySlug: request.categorySlug,
+          })
+          const finish = (resolveUrl: (conceptId: string) => string | null) => {
+            setDetails((prev) => {
+              const next = new Map(prev)
+              request.detailKeyByConceptId.forEach((detailKey, conceptId) => {
+                const current = next.get(detailKey)
+                if (!current || current.ttsResolved) return
+                next.set(detailKey, { ...current, ttsAudioUrl: current.ttsAudioUrl ?? resolveUrl(conceptId), ttsResolved: true })
+              })
+              return next
+            })
+          }
+          fetchStaticThematicPlayback(supabase, buildStaticThematicPlaybackQuery({
+            targetLanguageCode: request.targetLanguageCode,
+            categorySlug: request.categorySlug,
+            levelNumber: request.level,
+            conceptIds: request.conceptIds,
+            voiceProfileKeys,
+          }))
+            .then((lookup) => finish((conceptId) => {
+              // Preferred-voice ordering, same as the importer's resolution.
+              for (const voiceProfileKey of voiceProfileKeys ?? [undefined]) {
+                const row = getStaticThematicAudio(lookup, conceptId, voiceProfileKey)
+                if (row?.public_url) return row.public_url
+              }
+              return null
+            }))
+            .catch(() => finish(() => null))
+        })
       })
-    return () => { cancelled = true }
-  }, [visible, details])
+  }, [visible, language])
 
   const grade = useCallback((lemma: LemmaState, knewIt: boolean) => {
     void supabase
@@ -238,6 +344,7 @@ function TidePracticeSheet({
   const [wrongFlash, setWrongFlash] = useState(false)
   const [successLabelKey, setSuccessLabelKey] = useState('study.typed.correct')
   const advanceTimerRef = useRef<number | null>(null)
+  const playedRef = useRef(false)
 
   // The home page must not scroll (or pan under the iOS keyboard) behind the
   // open sheet.
@@ -248,6 +355,7 @@ function TidePracticeSheet({
     setAnswer('')
     setResult(null)
     setWrongFlash(false)
+    playedRef.current = false
     if (advanceTimerRef.current !== null) {
       window.clearTimeout(advanceTimerRef.current)
       advanceTimerRef.current = null
@@ -257,6 +365,16 @@ function TidePracticeSheet({
   useEffect(() => () => {
     if (advanceTimerRef.current !== null) window.clearTimeout(advanceTimerRef.current)
   }, [])
+
+  // Speaks the word at most once per card. Called synchronously from the
+  // click handlers when the audio url is already resolved (keeps playback
+  // inside the user gesture for mobile autoplay policies); the effect below
+  // covers the race where grading lands before the lookup does.
+  const speak = useCallback(() => {
+    if (!lemma || playedRef.current) return
+    playedRef.current = true
+    void playPronunciation({ text: lemma.displayWord, audioUrl: detail?.ttsAudioUrl, lang: language })
+  }, [detail?.ttsAudioUrl, language, lemma])
 
   const submit = useCallback(() => {
     if (!lemma || result) return
@@ -268,18 +386,26 @@ function TidePracticeSheet({
     }
     setSuccessLabelKey(verdict === 'correct' ? 'study.typed.correct' : 'study.typed.almost')
     setResult('success')
-    void playPronunciation({ text: lemma.displayWord, audioUrl: detail?.ttsAudioUrl, lang: language })
+    if (detail?.ttsResolved) speak()
     advanceTimerRef.current = window.setTimeout(() => {
       advanceTimerRef.current = null
       onGrade(lemma, true)
     }, verdict === 'correct' ? 950 : 1700)
-  }, [answer, detail?.ttsAudioUrl, language, lemma, onGrade, result])
+  }, [answer, detail?.ttsResolved, lemma, onGrade, result, speak])
 
   const reveal = useCallback(() => {
     if (!lemma || result) return
     setResult('revealed')
-    void playPronunciation({ text: lemma.displayWord, audioUrl: detail?.ttsAudioUrl, lang: language })
-  }, [detail?.ttsAudioUrl, language, lemma, result])
+    if (detail?.ttsResolved) speak()
+  }, [detail?.ttsResolved, lemma, result, speak])
+
+  // Late-resolution path: the answer landed while the TTS lookup (row query
+  // or static-library fallback) was still in flight — speak once it settles
+  // instead of dropping to the browser voice.
+  useEffect(() => {
+    if (!result || !detail?.ttsResolved) return
+    speak()
+  }, [detail?.ttsResolved, result, speak])
 
   // Portalled to <body>: the layout's <main> is a z-10 stacking context that
   // sits UNDER the fixed z-50 bottom nav, so a sheet rendered in place could
