@@ -2,7 +2,7 @@
 
 Owner delegated the full journey refinement and authorized scoped commit/deploy. Existing Cosmos direction, Home wave code and unrelated WordTide diff remain protected. Design reference and owner-facing report live outside the repo under `design/today-guided/` and `investigations/TODAY_GUIDED_REFINEMENT_2026_09_07.md`.
 
-Released58ac56bf; Vercel dpl_5BgBSedstJdU1jLxZNCAXDQ6VR4T and Railway a08ba88b-98d2-4eb7-a3fb-280e42a82ee2 succeeded. Browser14/14(77checks), guided chain, scoped lint, frontend/API tsc, build, i18n1726, FirstLight32 and iOSshell pass. Production13smoke probes and signed-in ten-lesson course/direct opening/Resume verified. No owner progress completion or paid inference was used in the live smoke.
+Released58ac56bf; Vercel dpl_5BgBSedstJdU1jLxZNCAXDQ6VR4T and Railway a08ba88b-98d2-4eb7-a3fb-280e42a82ee2 succeeded. Browser 14/14(77 checks), guided chain, scoped lint, frontend/API tsc, build, i18n1726, FirstLight 32 and iOSshell pass. Production13smoke probes and signed-in ten-lesson course/direct opening/Resume verified. No owner progress completion or paid inference was used in the live smoke.
 
 - Lazy corpus registries are mutable: compute Today overview after selected-language import resolves. Do not memoize an empty cold-load result only on path/progress. Directory counts come from the lightweight index.
 - Lesson entries open directly; Start/Resume resolves a compact account/path/lesson/vibe local draft. Pin the active lesson when completion updates recommendation. Completion screen is excluded from the task count.

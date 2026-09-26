@@ -1,52 +1,36 @@
 # Current State
-Last updated: 2026-09-07
+Last updated: 2026-09-25
 
-## Latest release
-- Today critic refinements LIVE as main180f7102. Vercel dpl_Djvax7tPXTGr73iogGvBMMLYUCtX Ready on lingwave.ai/www; Railway5bfd3324-e877-471b-9ef1-f12c39c66a35 success. Three fresh critics: 7.0 → 7.6 → 7.8/10. The 8+ visual target remains UNMET; stop at the owner's three-round cap. Details: notes/today-critic-loop-2026-09-07.md.
-- Fixed gem connector bleed-through, routine save/status clutter, Type action hierarchy, checkpoint missing-word context, Trophy reference identity and solved-only progress. Final local code/build/i18n gates pass; 50 browser scenarios covered with one corrected test-only capitalization failure, independent Trophy15/15 and23 additional checks. Live seven route assets/15 brand images pass; signed-in overview/Resume preserves the owner's Match draft. No account lesson completion, paid calls or SQL. Remaining: Trophy wording/wrapping/grouping and small-phone overview spacing; physical iPhone still deferred.
-- Prior café/native-input release7a1aa2d3 +2fe938b8 remains included: one ink plane, adaptive glass pieces, gem progress, L-wave feedback and nine alpha WebPs106,894B. IME/Enter/blur guards and NFC normalization ship;1729 keys in all12 bases. Its implementation facts remain valid, but the newer critic verdict supersedes any implication of complete visual acceptance. See notes/today-visual-input-round3-2026-09-07.md.
-- Base-languages-brand LIVE main36355fe3 (266 files): 12 UI/explanation bases,144 guided editions/664,032 fields,12×1,727 UI keys, nine ScriptLab packs and card provenance. B Ribbon current art59,052B. Vercel dpl_9WiWZyfMS2SaDexZzoDj84W2RE1R Ready on lingwave.ai/www; Railway458cd5fe-138f-4bfa-9306-70179a97705d success. Production144 edition assets/six art files/13 API probes pass. Signed-in Today open/Resume and all12 profile options verified without changing account preferences. See notes/base-languages-brand-2026-09-07.md.
-- Additive130000/131000/132000/133000 applied/recorded;2,700 private coordinates/32,400 meanings, exact digest and all four rollback suites pass with0residue.132 corrects one Italian meaning.133 accepts exact regional audio code or its exact primary subtag;2,501 links pass exact phrase identity. One wrong English usage is privately archived/unlinked, recording preserved; playback12,550. Missing20260517010000 history repaired after exact schema comparison; no live reset.
+Current truth and next actions only. Deployment ids, check tallies and release evidence live in LOG.md and the notes; the full 2026-09-07 snapshot is [[archive/state-2026-09-07]].
 
-## Earlier releases still included
-- Today/guided is LIVE: main58ac56bf, Vercel dpl_5BgBSedstJdU1jLxZNCAXDQ6VR4T Ready on lingwave.ai/www; Railway a08ba88b-98d2-4eb7-a3fb-280e42a82ee2 success. Signed-in Cebuano course shows10lessons; direct opening and return-to-Resume verified. All13 API probes pass. New120000 migration/history and rollback integration verified with no residue. Details: notes/today-guided-2026-09-07.md.
-- Hardening is LIVE: main commits c0192206 + d16e0bd2. Vercel dpl_AR6RjhD5WPw9KZHNF1N8YCCEiPhF Ready on lingwave.ai/www; Railway a856e9c6-19d9-4e78-a290-0833a208fcdf success. Production Home/Speak/Lens/Today/guided assets and 13 expected API responses verified.
-- The first c0192206 production probe caught Speak ERR_REQUIRE_ESM. Restored previous working deployment, fixed API-local generated persona catalog in d16e0bd2, verified candidate, promoted and re-probed. Automatic domain assignment is back ON. Do not import src/ ESM directly from API CommonJS.
-- Home9535d7f8 and prior Speak/Lens e079e32b refinements remain included. Approved Cosmos/First Light direction and all waves are unchanged. The WordTide diff was preserved in `55e8729b` and the orphaned file removed in `5fe493c1` (2026-09-25).
+## Live on lingwave.ai
+- Everything through the 2026-09-07 releases is live: hardening (`c0192206` + `d16e0bd2`), Home and Speak/Lens (`9535d7f8`, `e079e32b`), Today/guided (`58ac56bf`), twelve base languages (`36355fe3`), the café visual and native-input round (`7a1aa2d3` + `2fe938b8`) and the Today critic fixes (`180f7102`). Waves are unchanged.
+- The UI speaks 12 locales (en/de/fr eager, nine lazy packs); guided lessons carry 12 explanation editions; the beta offers 8 target languages (`BETA_TARGET_LANGUAGES`).
+- Today: direct start and resume, honest wrong/reveal/no-microphone outcomes, scoped checkpoints and trophies, phrase Keep with its recording, native keyboard hints with IME/NFC handling. Guided bodies load per language by dynamic import.
+- Lens: stable per-language deck identity, exact save receipts, bounded scans. Live voice: one ten-minute reservation per session, refunded once on definitive failure. Server and client request deadlines everywhere; spending requests never auto-retry.
+- Money: generation refunds are exact and idempotent; Stripe checkout survives lost responses and keeps event order; subscription billing proven end to end in sandbox (2026-07-31). `STRIPE_BILLING_ENABLED` stays off until launch.
+- Study recall attempts persist offline (IndexedDB) with stable receipts.
+- Database: all 18 hardening/Today/base migrations applied and recorded; direct client INSERT removed; worker-owned columns guarded. Daily maintenance cron runs at 03:30 UTC behind `CRON_SECRET` (first scheduled run not yet observed).
+- Agent tooling (2026-09-25): one shared rules file `orchestrator/AGENTS.md`; `npm run verify` and `npm run test:local` (23 offline suites, 5 known-stale listed); ESLint blocks `export default` in `api/`; `.gitattributes` enforces LF. WordTide.tsx was preserved in `55e8729b` and removed in `5fe493c1`.
 
-## What now works
-- Today: cold loading/direct start/resume, wrong/reveal/Back/no-microphone outcomes, scoped checkpoint/trophy state, denied/failed local storage, audio/media recovery and explicit core-phrase Keep with matching recording. Desktop names/localized review labels, responsive tasks and reduced motion;841,669decorative PNG bytes and remote font removed. All wave hashes preserved.
-- Lens has stable user/language deck identity independent of name, safe legacy adoption, exact per-row mixed-save receipts, language-scoped duplicate hints and bounded save/scan operations.
-- Live retries/reconnects reuse one ten-minute reservation/charge and stored encrypted client credential. Definitive or abandoned no-secret failures refund once; existing authenticated daily maintenance covers abandoned reservations. Browser connection attestation cannot trigger refunds.
-- Server whole-operation deadlines cover auth/body/quota/providers/response parsing, with bounded fresh-signal cleanup. Client deadlines cover auth/fetch/body and use iOS15-compatible cancellation helpers. Spending requests are not automatically retried.
-- Speak personalities resolve canonical IDs; exact old tuples remain compatible. API-local generated catalog is checked at prebuild. Current providers: Live xAI grok-voice-think-fast-1.0; other voices Groq Whisper/Llama then Mistral Voxtral or Gemini TTS; Lens Gemini2.5Flash-Lite.
-- Generation refunds use exact operation amount/source bucket/current plan period, atomic failure transition and worker operation fences. Admin/worker overlap is idempotent. Paid retries get new operations; expired plan credits stay expired.
-- Stripe checkout/customer reservations survive lost responses. Subscription event ordering preserves newer status/periods while financial ledger entries still process once; canceled/expired allowance and its refund cannot alter unrelated credit balances.
-- Study/game recall attempts persist in IndexedDB before delivery; stable receipts, account-switch handoff, bounded retries, clock correction and visible persistence failure. Legacy direct INSERT remains compatible.
-- Guided facade remains about48KB compressed; selected-language bodies load dynamically. All2,500 lessons/250paths and target speech IDs preserved. Only French A2 English café crème gloss corrected to coffee with milk; generated runtime updated.
-- New card previews are 640x360 WebP; full PNG retained for study/detail/share. Active generation blocks deck deletion; imports/appends cap 500. Runner path confinement, bootstrap retries, engine failures, subprocess waits and worker death are hardened.
-- Password reset requires PASSWORD_RECOVERY; local sign-out clears state even on network failure. Compatible dependency updates resolve all npm audit findings.
+## In progress
+- agent-hygiene (2026-09-25 audit fixes): phases 1–4 done; next the checkpoint ritual, product prompt fixes, the storage-cleanup sweep and remaining improvements. Roadmap: `investigations/project-audit-2026-09-25/IMPLEMENTATION_PLAN.md`.
 
-## Database/configuration verified
-- Applied18 migrations across current hardening/Today passes: prior14 plusSept7 130000/131000/132000/133000. All exact date-prefixed versions recorded; historical20260517010000 repaired only after proven schema equivalence. No blanket db push or certification of the full historical chain.
-- Removed direct INSERT grants/policies, installed ten indexes and privileged field/profile/admin guards. Lens/Live/credits/Stripe/recall/thumbnail rollback-only integration suites passed remotely. Exact500 import +500 append passed; no test-deck residue.106000 installs a missing pure language-normalization helper without historical backfill.
-- Production Vercel CRON_SECRET and API_QUOTA_REQUIRE_ENFORCED=true added; APP_URL explicitly https://lingwave.ai. Current daily cron enabled 03:30 UTC; unauthenticated trigger 401. Actual scheduled execution not observed.
-- Supabase email confirmation already ON; Secure password change enabled and saved/read back ON. CAPTCHA remains OFF pending client/provider integration. Sensitive existing Vercel values are withheld, not presumed empty.
+## Known problems and limits
+- Today's visual target (8+/10) is unmet at 7.8 after the three-round cap: Trophy wording and wrapping, reward grouping, small-phone overview spacing.
+- Guided progress and drafts are device-local; kept phrases are account-backed.
+- The machine-authored guided explanation editions and the nine lazy UI packs are not native-proofread.
+- Nothing has been tested on a physical iPhone since the September releases; real OS keyboards, TestFlight and Reduce Motion are unverified.
+- Live token expiry is not a socket-cost ceiling (needs a relay/revocation); the xAI voice model is deprecated and needs a paid sample before migrating.
+- 27 historical ambiguous generation operations (147 credits charged) need reconciliation before any manual refund.
+- Storage objects of deleted words pile up in `storage_cleanup_queue`; nothing drains it yet (agent-hygiene phase 7).
+- Platform follow-ups: CAPTCHA (needs client work), CSP still report-only, `SUNO_CALLBACK_BASE_URL` defaults to the dead resonanz.pro, full historical Supabase replay needs Docker.
 
-## Evidence and limits
-- Latest visual/input: full real-component browser48/48,523 checks,130 screenshots; final targeted6/6,61checks,16screenshots; live-polish4/4,33checks. Complete guided chain, frontend/API tsc, production build, scoped lint,12×1729 i18n, FirstLight32 and iOS shell pass. Full lint0errors/two old stub warnings. Physical iPhone and real operating-system keyboards remain untested; no paid voice/video calls or SQL changes.
-- Earlier base/brand: full guided chain, frontend/API tsc, clean Vercel build, scoped lint,12×1,727 i18n, all664,032 edition fields, ScriptLab/base/lane tests, FirstLight32 and iOSshell pass. Browser27/27with153checks pluspolish4/4with23. All fourSQL rollback suites and production assets/API checks pass. Machine translation native review and actualiPhone remain outstanding; paid offline text generation was about$9, not an invoice reconciliation.
-- Frontend/API tsc, build, i18n1696/1696 EN/DE/FR, complete guided suite and20 focused scripts pass. Final deadline13, persona78, Lens38+27, Speak31. Full lint zero errors/two unchanged stub warnings. npm audit zero vulnerabilities.
-- Browser matrix20/20 with84 checks at320/390/1440 EN/DE/FR. Combined Python180 passed; fixed two tests that leaked a manifest stub across the suite. Physical iPhone, paid generation and live voice quality were not tested.
-- Supabase outstanding-invoice warning requires owner billing action. Owner deferred physical iPhone/TestFlight checks until later.
-- Live token expiry is not a trusted socket-cost ceiling; relay/revocation is still needed for that. Existing xAI model is deprecated; migration/live handshake/quality needs a real provider sample. No paid provider calls were run.
-- 27 historical ambiguous operations represent 147 charged credits, NOT proof that 147 credits are owed. Reconcile before manual refund. No automatic deck-workspace deletion without a real admission/deletion lease.
-- Today limits: physical iPhone/TestFlight pending; progress/drafts are device-local while kept phrases are account-backed. Twelve complete explanation editions supersede the prior French fallback, but machine-authored translations are not native-proofread. Six exact existing trophy-repeat exceptions retained. Videos/RTX5090 pilot remain deferred. Guided native keyboard/IME support is now implemented; physical-device validation, broader Study Type availability and Japanese whitespace policy remain separate; no learning-superiority claim. Full historical Supabase scratch replay needs Docker; focused fresh PostgreSQL replay passes without touching live data.
-- Remaining platform work: CAPTCHA/leaked-password protection, CSP observation/enforcement, Suno callback routing, retention/baseline cleanup, broader query/performance audit and prior Home product choices. This batch does not certify every old audit item.
+## Next actions
+- Owner: rotate the credentials pasted into April–May Codex prompts; the iPhone pass and TestFlight steps on protocol/BOARD.md; the six hardening decisions; PostHog credentials to switch analytics on.
+- Agents: continue agent-hygiene from its NEXT_STEP; the Today visual leftovers are the next product design scope.
 
 ## Read next
-- protocol/workstreams/base-languages-brand/NEXT_STEP.md and notes/today-critic-loop-2026-09-07.md for current release and unmet visual target; notes/base-languages-brand-2026-09-07.md for the preserved twelve-base/SQL release.
-- protocol/workstreams/today-guided/NEXT_STEP.md and investigations/TODAY_GUIDED_REFINEMENT_2026_09_07.md for Today changes, learning-science rationale and device checklist.
-- protocol/workstreams/speak-lens/NEXT_STEP.md and hardening/NEXT_STEP.md.
-- notes/hardening-2026-09-07.md for contracts; notes/speak-lens.md for providers.
-- D:/CODING/ResonanceTEST/investigations/HARDENING_DELIVERY_2026_09_07.md for short English explanation and exact owner actions; hardening-2026-09-07/ for evidence.
+- protocol/BOARD.md for everything waiting on the owner.
+- notes/today-critic-loop-2026-09-07.md, notes/base-languages-brand-2026-09-07.md, notes/today-guided-2026-09-07.md, notes/hardening-2026-09-07.md, notes/speak-lens.md for the releases.
+- `D:/CODING/ResonanceTEST/investigations/HARDENING_DELIVERY_2026_09_07.md` for the plain-English hardening summary and owner actions.
