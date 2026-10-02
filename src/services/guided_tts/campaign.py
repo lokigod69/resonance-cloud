@@ -254,8 +254,10 @@ class Campaign:
         self.directory = Path(directory)
         self.fingerprint = fingerprint
         self.directory.mkdir(parents=True, exist_ok=True)
-        self.db = sqlite3.connect(self.directory / "campaign.sqlite3", timeout=0)
+        self.db = sqlite3.connect(self.directory / "campaign.sqlite3", timeout=30)
         self.db.row_factory = sqlite3.Row
+        # Progress readers must not prevent persistence of an already-paid receipt.
+        self.db.execute("PRAGMA journal_mode=WAL")
         self.db.execute("PRAGMA synchronous=FULL")
         self.db.executescript("""
             CREATE TABLE IF NOT EXISTS campaign (id INTEGER PRIMARY KEY CHECK(id=1), cap INTEGER);

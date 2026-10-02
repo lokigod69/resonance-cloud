@@ -88,6 +88,35 @@ def test_sample_three_then_resume_all_deduplicates_and_preserves_cap(tmp_path):
     assert len(list((tmp_path / "campaign").glob("*.mp3"))) == 4
 
 
+def test_progress_reader_cannot_block_paid_receipt_persistence(tmp_path):
+    payload = plan("First.", "Second.")
+    ledger = c.Campaign(tmp_path / "campaign", FINGERPRINT)
+    assert ledger.db.execute("PRAGMA journal_mode").fetchone()[0] == "wal"
+    assert ledger.db.execute("PRAGMA synchronous").fetchone()[0] == 2
+    ledger.db.close()
+    reader = sqlite3.connect(f"file:{tmp_path.as_posix()}/campaign/campaign.sqlite3?mode=ro", uri=True)
+    provider = FakeProvider()
+    original = provider.synthesize
+
+    def synthesize(request):
+        if not provider.calls:
+            reader.execute("BEGIN")
+            assert reader.execute("SELECT state FROM requests").fetchone()[0] == "in_flight"
+        return original(request)
+
+    provider.synthesize = synthesize
+    try:
+        result = run(tmp_path, payload, provider)
+        assert result["ready"] == 2 and result["blocked"] == 0
+        assert result["committedCredits"] == "13"
+        assert len(provider.calls) == 2
+        # Reader still holds the original snapshot across receipt and ready writes.
+        assert reader.execute("SELECT state FROM requests").fetchall() == [("in_flight",)]
+        assert len(list((tmp_path / "campaign").glob("*.mp3"))) == 2
+    finally:
+        reader.close()
+
+
 def test_budget_reserved_before_request_and_next_request_refused(tmp_path):
     provider = FakeProvider(multiplier=100_000)
     with pytest.raises(c.CampaignError, match="campaign_cap_exceeded"):
