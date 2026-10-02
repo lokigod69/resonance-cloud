@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "status": "reviewed-staged",
+  "scope": "Twenty staged B1 P1 episodes; Italian and Brazilian Portuguese ten-path proposals",
+  "reviewedSourceSha256": {
+    "italian": "995980e6af4d4ee5d8adfe7b415af37062f06ee9b30874bb297089917823dcd8",
+    "portuguese": "172e1a9a8a87d70689cba24afea5858d5b7e6bdaa1e35085e5240a00b6fd1fa4"
+  },
+  "fableModel": "claude-fable-5-1",
+  "effort": "max",
+  "fableReadThrough": {
+    "inputSourceSha256": {
+      "italian": "5a99c6db768383c50fd89bc1991beb63fa65b919250f10bac8fe038bc39f8e98",
+      "portuguese": "14e1127290d12daedb405350ec09f11ab82424761ba0a0ccfd073df7693288c4"
+    },
+    "result": {
+      "verdict": "APPLY_EXACT_EDITS",
+      "readThrough": [
+        {
+          "language": "Italian",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "checks": "Every field read. Turn-1 word counts 10/11/13/13/12/12/11/10/11/12 and follow-ups 10/9/11/10/11/11/11/9/9/11 are in range; chunks, cloze and recall reconstruct exactly in all ten; terms 7 distinct each; one pattern example equals a learner turn in each; trophies dimenticato, aspettato, scoperto, mentre, cercavo, indirizzo, sentito, capito, finalmente, avventura are single turn-1 words, distinct, map finding (indirizzo) applied; speech tokens plain words of turn 1; scene captions quote the opening and never a later turn; register formal, Lei in all openings, German Sie throughout, no tu/voi; learner turns avere-only, no preceding clitic, no speaker adjective, no essere compound, no trapassato/remoto/congiuntivo/futuro; staging matches the per-lesson table (chiesto L2, scoperto/fatto/preso L3, mentre+imperfetto L4, cercavo/non sapevo L5, avevo…ma L6, all'improvviso + hanno aperto L7, diceva/dove ritirare L8, nessuno rispondeva/ha risolto L9, non trovavamo/abbiamo preso L10); every form blank has an explicit subject literal before it and all 20 blanks have exactly one valid choice; one explicit io max per learner turn. Deviations: L1 opening uses imperfetto cercava before L4; L4 German 'auf meine Reihe' non-idiomatic; L6 German 'Reparaturlabor' unnatural.",
+          "remainingConcerns": [
+            "L10 recall fallback 'trovare' after the colon is stilted rather than impossible (recall step currently inactive; no edit)",
+            "'Com'è andata …' openings in L3 and L10 are formulaic interlocutor essere 3sg; licensed here as the L1 'è successo' exception extended to formulaic openers",
+            "anchor still reads PROVISIONAL; rewrite at publication, not now"
+          ]
+        },
+        {
+          "language": "Portuguese",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "checks": "Every field read. Turn-1 counts 12/11/12/12/11/11/13/12/12/13 and follow-ups 10/10/10/10/10/9/10/10/10/10 in range; chunks, cloze and recall reconstruct exactly; terms 6–7 distinct; trophies mutirão, reencontro, convite, fila, chuva, engarrafamento, susto, coincidência, recado, alívio match the staging table and are single turn-1 words; speech tokens valid; scene captions quote openings only; register neutral with você/German du, no tu, no Ihnen, no European lexicon, no ter+particípio, no speaker adjective, no obrigado/a, desculpe-family only; staging honoured (perfeito L1–3, tinha/estava L4, chovia/estava chovendo/enquanto L5, ia+infinitivo L6, estávamos+gerúndio quando L7, nós imperfeito L8, descobri que + perfeito L9, não sabia/estava achando L10); all form blanks carry explicit subjects (eu, nós, ela, o grupo, o painel, o dono, todo mundo, o vizinho). Deviations: L7 blank 2 offers present 'ri' alongside 'riu'; L4 follow-up question is administrative in tone.",
+          "remainingConcerns": [
+            "German scene captions use “ ” instead of „ “ (consistent within the Portuguese draft; cosmetic, no edit)",
+            "L2 turn 1 'O reencontro foi na feira' is presentational but grammatical and anchors the approved trophy",
+            "noun-trophy recall fallbacks are story-memory distractors by design (see arbitration 5)"
+          ]
+        }
+      ],
+      "arbitration": [
+        {
+          "finding": 1,
+          "decision": "accept",
+          "reason": "todo mundo ri da situação is a valid present; riam is barred by singular agreement."
+        },
+        {
+          "finding": 2,
+          "decision": "accept",
+          "reason": "substring test lets 'recebeu' satisfy an (eu) tag and lets an earlier blank answer supply the subject; whole-word match on literal segments only, same-person exception kept. The suggested rejection tests live in files outside the supplied source; Codex should add them as a follow-up without changing this guard."
+        },
+        {
+          "finding": 3,
+          "decision": "accept",
+          "reason": "L1 bans imperfetto in every turn; 'che ha dimenticato ieri' stays inside L1 licensed forms and scaffolds ha→ho. Coupled: de/en gloss and both scene captions."
+        },
+        {
+          "finding": 4,
+          "decision": "adapt",
+          "reason": "'auf meine Reihe warten' is not German; use 'wartete, bis ich an der Reihe war' in turn and pattern, chunk 'bis ich an der Reihe war', term 'dass ich an der Reihe bin' (keeps the possessive sense)."
+        },
+        {
+          "finding": 5,
+          "decision": "reject",
+          "reason": "Settled interpretation: the one-valid-choice rule governs grammar blanks (all cloze, and recalls whose answer is a verb form). A noun-trophy recall is a story-memory checkpoint; its fallbacks must be same-class nouns compatible in gender/number that are not story-consistent alternatives, which all ten Portuguese sets already satisfy. Replacing three of ten would be inconsistent, and the agreement-trick sets turn recall into a gender check. Step is also inactive in the current B1 runtime."
+        },
+        {
+          "finding": 6,
+          "decision": "accept",
+          "reason": "'organizou a espera' is unnatural; 'soube que era a sua vez' is colloquial pt-BR and is answered exactly by the senha/painel follow-up; era is licensed from L4."
+        },
+        {
+          "finding": 7,
+          "decision": "reject",
+          "reason": "'o grupo terminou o jardim' is ordinary Brazilian metonymy for finishing garden work and the German gloss mirrors it; recycles L1 naturally."
+        },
+        {
+          "finding": 8,
+          "decision": "accept",
+          "reason": "'Reparaturlabor/Labor' reads as a laboratory; Werkstatt is the everyday term and matches the English 'workshop'. Seven German fields."
+        },
+        {
+          "finding": "self",
+          "decision": "no further edits",
+          "reason": "No additional active cloze ambiguity, gender leak, register slip or staging breach found; remaining items are cosmetic or inactive-step notes listed above."
+        }
+      ],
+      "edits": [
+        {
+          "language": "Italian",
+          "lessonNumber": 1,
+          "jsonPointer": "/lessons/0/dialogue/0/targetText",
+          "oldValue": "Ha ritrovato l'ombrello che cercava ieri?",
+          "newValue": "Ha ritrovato l'ombrello che ha dimenticato ieri?",
+          "reason": "Removes pre-L4 imperfetto from the L1 opening."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 1,
+          "jsonPointer": "/lessons/0/dialogue/0/baseText/de",
+          "oldValue": "Haben Sie den Regenschirm wiedergefunden, den Sie gestern gesucht haben?",
+          "newValue": "Haben Sie den Regenschirm wiedergefunden, den Sie gestern vergessen haben?",
+          "reason": "Gloss follows the new opening."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 1,
+          "jsonPointer": "/lessons/0/dialogue/0/baseText/en",
+          "oldValue": "Did you find the umbrella you were looking for yesterday?",
+          "newValue": "Did you find the umbrella you left behind yesterday?",
+          "reason": "Gloss follows the new opening."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 1,
+          "jsonPointer": "/lessons/0/sceneCaption/de",
+          "oldValue": "Im Hauseingang fragt eine Nachbarin: „Ha ritrovato l'ombrello che cercava ieri?“",
+          "newValue": "Im Hauseingang fragt eine Nachbarin: „Ha ritrovato l'ombrello che ha dimenticato ieri?“",
+          "reason": "Scene must quote the opening verbatim."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 1,
+          "jsonPointer": "/lessons/0/sceneCaption/en",
+          "oldValue": "In the entrance hall, a neighbor asks: “Ha ritrovato l'ombrello che cercava ieri?”",
+          "newValue": "In the entrance hall, a neighbor asks: “Ha ritrovato l'ombrello che ha dimenticato ieri?”",
+          "reason": "Scene must quote the opening verbatim."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 4,
+          "jsonPointer": "/lessons/3/dialogue/1/baseText/de",
+          "oldValue": "Während ich am Schalter auf meine Reihe wartete, hörte ich meinen Nachnamen aufrufen.",
+          "newValue": "Während ich am Schalter wartete, bis ich an der Reihe war, hörte ich meinen Nachnamen aufrufen.",
+          "reason": "Idiomatic German for il mio turno."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 4,
+          "jsonPointer": "/lessons/3/pattern/examples/0/baseText/de",
+          "oldValue": "Während ich am Schalter auf meine Reihe wartete, hörte ich meinen Nachnamen aufrufen.",
+          "newValue": "Während ich am Schalter wartete, bis ich an der Reihe war, hörte ich meinen Nachnamen aufrufen.",
+          "reason": "Same sentence as turn 1."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 4,
+          "jsonPointer": "/lessons/3/chunks/1/baseText/de",
+          "oldValue": "auf meine Reihe",
+          "newValue": "bis ich an der Reihe war",
+          "reason": "Chunk gloss harmonised with the turn gloss."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 4,
+          "jsonPointer": "/lessons/3/terms/2/baseText/de",
+          "oldValue": "meine Reihe",
+          "newValue": "dass ich an der Reihe bin",
+          "reason": "'meine Reihe' is not a German noun phrase for a turn."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 6,
+          "jsonPointer": "/lessons/5/situation/de",
+          "oldValue": "Nach einer geplanten Fahrt zum Reparaturlabor erzählen Sie einem Bekannten, warum ein vorheriger Anruf hilfreich war.",
+          "newValue": "Nach einer geplanten Fahrt zur Reparaturwerkstatt erzählen Sie einem Bekannten, warum ein vorheriger Anruf hilfreich war.",
+          "reason": "Werkstatt, not Labor."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 6,
+          "jsonPointer": "/lessons/5/dialogue/0/baseText/de",
+          "oldValue": "Haben Sie das Reparaturlabor ohne Probleme gefunden?",
+          "newValue": "Haben Sie die Reparaturwerkstatt ohne Probleme gefunden?",
+          "reason": "Werkstatt, not Labor."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 6,
+          "jsonPointer": "/lessons/5/dialogue/1/baseText/de",
+          "oldValue": "Ich hatte eine alte Adresse des Reparaturlabors, habe aber zum Glück vorher angerufen.",
+          "newValue": "Ich hatte eine alte Adresse der Reparaturwerkstatt, habe aber zum Glück vorher angerufen.",
+          "reason": "Werkstatt, not Labor."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 6,
+          "jsonPointer": "/lessons/5/dialogue/2/baseText/de",
+          "oldValue": "Das Labor ist jetzt in der Nähe der Brücke. Haben Sie sich den vergeblichen Weg erspart?",
+          "newValue": "Die Werkstatt ist jetzt in der Nähe der Brücke. Haben Sie sich den vergeblichen Weg erspart?",
+          "reason": "Werkstatt, not Labor."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 6,
+          "jsonPointer": "/lessons/5/pattern/examples/0/baseText/de",
+          "oldValue": "Ich hatte eine alte Adresse des Reparaturlabors, habe aber zum Glück vorher angerufen.",
+          "newValue": "Ich hatte eine alte Adresse der Reparaturwerkstatt, habe aber zum Glück vorher angerufen.",
+          "reason": "Same sentence as turn 1."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 6,
+          "jsonPointer": "/lessons/5/chunks/2/baseText/de",
+          "oldValue": "des Reparaturlabors,",
+          "newValue": "der Reparaturwerkstatt,",
+          "reason": "Chunk gloss harmonised."
+        },
+        {
+          "language": "Italian",
+          "lessonNumber": 6,
+          "jsonPointer": "/lessons/5/terms/1/baseText/de",
+          "oldValue": "das Reparaturlabor",
+          "newValue": "die Reparaturwerkstatt",
+          "reason": "Term gloss harmonised."
+        },
+        {
+          "language": "Portuguese",
+          "lessonNumber": 4,
+          "jsonPointer": "/lessons/3/dialogue/2/targetText",
+          "oldValue": "Com aquela fila? Como você organizou a espera?",
+          "newValue": "Com aquela fila? Como você soube que era a sua vez?",
+          "reason": "Natural listener question answered exactly by the senha/painel follow-up; era licensed from L4."
+        },
+        {
+          "language": "Portuguese",
+          "lessonNumber": 4,
+          "jsonPointer": "/lessons/3/dialogue/2/baseText/de",
+          "oldValue": "Bei dieser Schlange? Wie hast du das mit dem Warten organisiert?",
+          "newValue": "Bei dieser Schlange? Woher wusstest du, dass du an der Reihe warst?",
+          "reason": "Gloss follows the new question; du register kept."
+        },
+        {
+          "language": "Portuguese",
+          "lessonNumber": 4,
+          "jsonPointer": "/lessons/3/dialogue/2/baseText/en",
+          "oldValue": "With that line? How did you manage the wait?",
+          "newValue": "With that line? How did you know it was your turn?",
+          "reason": "Gloss follows the new question."
+        },
+        {
+          "language": "Portuguese",
+          "lessonNumber": 7,
+          "jsonPointer": "/lessons/6/cloze/3/choices",
+          "oldValue": [
+            "rimos",
+            "riu",
+            "riram",
+            "ri"
+          ],
+          "newValue": [
+            "rimos",
+            "riu",
+            "riram",
+            "riam"
+          ],
+          "reason": "Present 'ri' was a second valid choice; 'riam' fails singular agreement with todo mundo."
+        }
+      ],
+      "schemaEdits": [
+        {
+          "oldText": "        const before = lesson.cloze.slice(0, n).map(piece => typeof piece === 'string' ? piece : piece.answer).join('')\n        check(Boolean(match) && (samePerson || fold(before).includes(fold(tag))), `Form blank needs cue \"infinitive (explicit subject)\" with that subject before the blank, or a reviewer-signed same-person tag: ${part.answer}`)",
+          "newText": "        const literalBefore = lesson.cloze.slice(0, n).map(piece => typeof piece === 'string' ? piece : ' ').join('')\n        const subjectPattern = tag ? w(fold(tag).trim().replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&').replace(/\\s+/g, String.raw`\\s+`)) : null\n        check(Boolean(match) && (samePerson || Boolean(subjectPattern?.test(fold(literalBefore)))), `Form blank needs cue \"infinitive (explicit subject)\" with that subject as a whole word in the literal text before the blank (earlier blank answers do not count), or a reviewer-signed same-person tag: ${part.answer}`)",
+          "reason": "Finding 2: whole-word subject match on literal segments only, so 'recebeu' cannot satisfy (eu) and an earlier blank answer cannot supply the subject; same-person exception unchanged. All 20 current blanks still pass (verified tag by tag: io, il custode, il venditore, il ferramenta, la telefonata, un gatto, i vicini, il cartello, nessuno, l'amministratore, un pescatore, noi, eu, nós, ela, o grupo, o painel, o dono, todo mundo, o vizinho)."
+        }
+      ],
+      "finalChecks": [
+        "Re-run validateB1Draft on both drafts after the 20 edits and the guard change; expect zero errors, including the new whole-word subject guard.",
+        "Italian L1: sceneCaption.de and .en contain the new dialogue[0].targetText; chunks/cloze/recall untouched and still reconstruct; trophy dimenticato remains a turn-1 word.",
+        "Portuguese L7: cloze[3].choices has four fold-distinct values including 'riu'; youTwo reconstruction unchanged.",
+        "Portuguese L4: new dialogue[2] is not quoted in sceneCaption.de; no tu-form or missing-accent regex hit on 'Como você soube que era a sua vez?'.",
+        "Italian L4/L6: edited German fields contain no du-forms; en fields unchanged.",
+        "Trophy allocations unchanged (Italian indirizzo per map; Portuguese preferência/beat map findings belong to P3/P7, not these drafts); no shipped A1/A2 ID or text touched; this approval is content-only, not publication or spend."
+      ]
+    },
+    "allExactReplacementsApplied": true,
+    "appliedFieldEdits": 20,
+    "appliedSchemaEdits": 1
+  },
+  "independentReview": {
+    "reviewer": "Fresh Codex reviewer separate from both draft authors; one re-review after Fable arbitration",
+    "firstPass": "REWORK: Portuguese L7 two valid grammatical answers; substring/hidden-answer subject guard; staging/gloss/nativeness findings",
+    "fixes": "All 20 Fable exact JSON-pointer edits and exact subject-guard replacement applied; other findings explicitly arbitrated",
+    "finalVerdict": "PASS",
+    "unresolvedFindings": 0,
+    "finalSummary": "All 20 edits exactly match frozen originals plus Fable replacements, without extra content changes. Whole-word literal subject guard matches approved patch; regressions isolate both reported guard defects and gender bans. No unresolved HIGH findings.",
+    "acceptedCaveats": [
+      "Portuguese noun-trophy recalls are story-memory choices, not grammar-form blanks.",
+      "Italian L10 recall has a weak but inactive distractor; revisit before enabling the currently inactive recall step.",
+      "Verdict covers staged content/schema, not publication readiness."
+    ]
+  },
+  "checks": {
+    "frontendVerify": "PASS; zero errors, two existing fixture warnings",
+    "offlineSuites": "28/28 PASS; five known-stale suites skipped",
+    "postArbitrationDraftContract": "PASS; 50 lessons, 500 trophy allocations, 13 rejection cases; current snapshots/plans",
+    "pythonTests": "118 PASS plus 10 waveform subtests for existing pipeline and extended batch",
+    "visualVerification": "No new rendered interface or active course; no new visual/device claim"
+  },
+  "limitations": [
+    "Only P1 is fully authored; the other 180 Italian/Portuguese beats are proposals.",
+    "Machine-authored and machine-reviewed; no native-human proofreading claim.",
+    "Twelve explanation editions, runtime/catalog integration and production publication remain outstanding.",
+    "Audio generation and listening evidence are tracked separately from this content review."
+  ]
+}

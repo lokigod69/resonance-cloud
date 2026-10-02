@@ -1,0 +1,414 @@
+{
+  "verdict": "APPROVE-WITH-EDITS. Both proposals are collision-free against the frozen corpora (196 IT / 199 PT distinct forbidden strings) and internally unique; two trophy replacements and one beat replacement are required below, nothing else in the maps changes. This spec governs Codex drafting of P1 only; Fable reads each full P1 before any further path. No app/runtime change, paid generation, DB write or publication is authorized.",
+  "sharedContract": {
+    "shape": "10 paths x 10 episodes; dialogue = interlocutor opening, learner turn 1 (8-16 words), meaningful follow-up, learner turn 2 (6-12 words); chunks 4-7 reconstruct turn 1 exactly; terms 6-8 distinct; cloze 2-3 blanks reconstruct the follow-up exactly; recall answer and speech tokens are single words of turn 1 without apostrophe/hyphen; pattern 2-3 examples, one equals a learner turn; trophy = single word of turn 1, unique across the whole language corpus; de+en explanations everywhere; canonical text keeps diacritics; scene quotes the opening verbatim and never contains a later turn; frozen A1/A2 IDs and text untouched; B1 ids are {language}-b1-practical-{path}-{nnn}-{slug}.",
+    "proDropRule": "Italian and Portuguese drop subjects like Spanish. Every form blank carries cue 'infinitive (subject)'; the subject literal (io/eu, Lei/você, noi/a gente, or the noun phrase) must appear before the blank in the follow-up, or the tag is 'stessa persona'/'mesma pessoa' and all four choices share one person (reviewer-signed). Distractors must be syntactically impossible in context, never merely less idiomatic.",
+    "scopes": "'learner' = dialogue[1], dialogue[3], pattern examples, trophy example; 'all' adds dialogue[0], dialogue[2], chunks, terms. Structural bans are regexes in schemaEdits and throw; semantic checks are reviewer items and never regex.",
+    "registerField": "Italian: register 'formal' only, de uses Sie. Portuguese: 'formal' (você + de Sie, no te) or 'neutral' (você + de du); 'informal' banned for both.",
+    "progression": "P1 narration, P2 opinion, P3 conditional requests, P4 relatives, P5 indirect questions, P6 process/passive state, P7 purpose+future, P8 past habits vs now, P9 and P10 recycle only. Each path introduces its family in thirds (L1-3 core, L4-7 extension, L8-10 recycling with the next-nearest family), never A2 repetition."
+  },
+  "Italian": {
+    "targetLanguageCode": "it-IT",
+    "baseLocales": [
+      "de",
+      "en"
+    ],
+    "register": "Formal singular Lei in both directions in all 100 episodes (neighbours, amministratore, sportelli, tecnici, negozi, segreterie). No voi/avete plural address; availability is 'ha…?' or 'c'è…?'. Frozen A1 informal lines are never recycled.",
+    "genderSafety": "Learner compound past is avere-only, never with a preceding direct-object clitic (no l'ho, li ho, ne ho); first-person essere/reflexive compound forms and speaker adjectives (stanco, pronto, sicuro, libero, iscritto…) are banned; use ho sonno, ho fretta, avevo bisogno, mi fa piacere, mi dispiace, sono in ritardo, ho avuto. Imperfetto in any person is gender-free and licensed per staging. Third-person subjects keep ordinary agreement (la farmacista ha aiutato, la ricevuta viene rilasciata, è arrivato il tecnico); è/sono + participio with an explicit non-speaker noun subject in the same clause is reviewer-licensed in learner turns from P1 L3 but never a pattern example or blank before P6 L7.",
+    "exactP1StagingByLesson": [
+      {
+        "lesson": 1,
+        "trophy": "dimenticato",
+        "licensed": "ho/ha + participio regolare -ato/-uto/-ito; ieri, stamattina, poi; interlocutor may open with 'Che cosa è successo?' (essere 3sg in interlocutor turn only)",
+        "banned": "imperfetto, any essere compound in learner turns, preceding clitic"
+      },
+      {
+        "lesson": 2,
+        "trophy": "aspettato",
+        "licensed": "adds abbiamo; irregular chiesto, detto; prima/poi/alla fine; third person ha indicato",
+        "banned": "as L1"
+      },
+      {
+        "lesson": 3,
+        "trophy": "scoperto",
+        "licensed": "adds scoperto, fatto, preso; first reviewer-licensed third-person essere with explicit noun subject (è nata una conversazione) as lexical chunk only; abbiamo parlato",
+        "banned": "imperfetto; essere form in pattern/blank"
+      },
+      {
+        "lesson": 4,
+        "trophy": "mentre",
+        "licensed": "imperfetto introduced: 1sg -avo/-evo/-ivo, ero, avevo, era, c'era/c'erano; mentre + imperfetto, event in passato prossimo (Mentre aspettavo il mio turno, ho sentito chiamare il mio cognome)",
+        "banned": "quando as alternative in the same blank as mentre"
+      },
+      {
+        "lesson": 5,
+        "trophy": "cercavo",
+        "licensed": "imperfetto of intention/state: cercavo, volevo, non sapevo, avevo bisogno; event with avere (ha mostrato, ho preso)",
+        "banned": "trapassato (avevo già preso)"
+      },
+      {
+        "lesson": 6,
+        "trophy": "indirizzo",
+        "licensed": "contrast background vs event: avevo un vecchio indirizzo, ma/per fortuna ho telefonato prima; pensavo, sapevo; così, alla fine",
+        "banned": "as above"
+      },
+      {
+        "lesson": 7,
+        "trophy": "sentito",
+        "licensed": "mentre/quando + imperfetto + all'improvviso + passato prossimo; 3pl avere (i vicini hanno aperto le finestre); leggevo, dormivano",
+        "banned": "sono uscito/a; reflexive compound"
+      },
+      {
+        "lesson": 8,
+        "trophy": "capito",
+        "licensed": "recycle; solo al secondo tentativo; c'era un cartello che diceva (one subject-relative che, lexical); dove + infinito (dove ritirare)",
+        "banned": "new forms"
+      },
+      {
+        "lesson": 9,
+        "trophy": "finalmente",
+        "licensed": "two linked events + habitual negative imperfetto (non rispondeva mai); ho incontrato l'amministratore sulle scale (never l'ho incontrato); ha risolto",
+        "banned": "new forms"
+      },
+      {
+        "lesson": 10,
+        "trophy": "avventura",
+        "licensed": "1pl narration (abbiamo cercato, non trovavamo, un pescatore ha indicato, abbiamo preso); ho avuto una piccola avventura; consolidates L1-L9",
+        "banned": "new forms, passato remoto"
+      }
+    ],
+    "nativeGrammarScopeByPath": {
+      "P1": "as staged above",
+      "P2": "L1-3 secondo me/per me + indicativo + perché; L4-6 anche se + indicativo, però/comunque/invece; L7-10 penso che/credo che/mi sembra che + congiuntivo presente whitelist (sia, siano, abbia, ci sia, possa, debba, serva, funzioni, aiuti, convenga); no congiuntivo elsewhere, no 'penso che + indicativo' in pattern examples",
+      "P3": "L1-3 vorrei/preferirei + infinito/noun; L4-6 potrei/potrebbe/sarebbe possibile + infinito, mi andrebbe bene; L7-10 dovrebbe/dovrei advice, le andrebbe bene?; fixed chunk 'se possibile'; no se + congiuntivo imperfetto, no condizionale passato, no 'avrei bisogno di + che'",
+      "P4": "L1-4 che (subject/object); L5-7 dove; L8-10 in cui/con cui/a cui/di cui; max two relatives per turn; no il quale, no congiuntivo in relatives",
+      "P5": "L1-4 sa dove/quando/come + indicativo; L5-7 può dirmi + quale/quanto/che cosa (dirmi never blanked/trophied); L8-10 vorrei sapere se, non so se, mi può spiegare come; present indicative only, no inversion rules",
+      "P6": "L1-3 si impersonale/passivante (si prenota, si riceve, si può); L4-6 viene/vengono + participio with explicit noun subject; L7-10 è stato/è stata + participio with explicit noun subject (la richiesta è stata registrata); client never asserts the clerk's decision",
+      "P7": "L1-4 per/per non + infinito, in modo da; L5-7 così + presente, futuro semplice (avviserò, porterò, sarà, avrò, potrà, verrà); L8-10 se + presente, futuro in main clause; no congiuntivo, no affinché",
+      "P8": "imperfetto habits (andavo, facevo, abitavo, c'era, avevo + età); quando avevo dieci anni, da piccolo banned; adesso invece; comparatives più/meno … di/rispetto a; presente + da for ongoing duration; no passato prossimo + da",
+      "P9": "recycle P1/P3/P5/P6 frames: vorrei presentare un reclamo, ho già chiamato due volte, può dirmi come, viene rimborsato; no new family",
+      "P10": "recycle P1/P2/P4/P8 plus licensed congiuntivo after spero che/penso che; speaker forms stay gender-neutral"
+    },
+    "bannedPatternsForValidator": {
+      "structural": [
+        {
+          "id": "it-essere-1sg",
+          "scope": "learner",
+          "why": "sono/ero/sarei + gendered participle"
+        },
+        {
+          "id": "it-reflexive-compound",
+          "scope": "learner",
+          "why": "mi sono/ci siamo + participle"
+        },
+        {
+          "id": "it-essere-1pl",
+          "scope": "learner",
+          "why": "siamo stati/e reveals group gender"
+        },
+        {
+          "id": "it-speaker-adjective",
+          "scope": "learner",
+          "why": "sono stanco/a etc."
+        },
+        {
+          "id": "it-preceding-clitic",
+          "scope": "learner",
+          "why": "lo/la/li/ne/l' + avere"
+        },
+        {
+          "id": "it-trapassato-avere",
+          "scope": "all"
+        },
+        {
+          "id": "it-trapassato-essere",
+          "scope": "all"
+        },
+        {
+          "id": "it-passato-remoto",
+          "scope": "all"
+        },
+        {
+          "id": "it-congiuntivo-presente",
+          "scope": "learner",
+          "except": [
+            2,
+            10
+          ]
+        },
+        {
+          "id": "it-congiuntivo-imperfetto",
+          "scope": "all"
+        },
+        {
+          "id": "it-informal-plural-address",
+          "scope": "all",
+          "why": "scusa, ciao, hai, tu, ti, avete, voi…"
+        },
+        {
+          "id": "it-da-bambino",
+          "scope": "learner"
+        },
+        {
+          "id": "it-perfect-duration",
+          "scope": "learner",
+          "why": "ho abitato qui da due anni"
+        },
+        {
+          "id": "it-futuro",
+          "scope": "learner",
+          "except": [
+            7,
+            9,
+            10
+          ]
+        },
+        {
+          "id": "it-missing-accent",
+          "scope": "all",
+          "why": "perche, piu, gia, cosi, citta, puo, e'"
+        },
+        {
+          "id": "it-clitic-token",
+          "scope": "recall/trophy/speech"
+        },
+        {
+          "id": "it-register",
+          "scope": "lesson",
+          "why": "register must be formal; de must not contain du-forms"
+        }
+      ],
+      "semantic": [
+        "è/sono/erano + participio only with explicit non-speaker noun subject in the clause; sono stati/e only 3pl",
+        "le ho = indirect object only",
+        "era occupato/aperto/chiuso = adjective, never trapassato",
+        "congiuntivo first at P2 L7, futuro first at P7 L5, cui first at P4 L8, è stato/a passive first at P6 L7",
+        "max one explicit io per learner turn; prefer noun subjects or same-person blanks",
+        "cloze distractors impossible in context (mentre vs quando, però vs comunque never both offered)",
+        "interlocutor is an interested listener in P1, not a quiz; client never decides for the clerk in P6/P9",
+        "German Sie/Ihnen throughout; English stays neutral"
+      ]
+    },
+    "mapFindings": [
+      {
+        "path": 1,
+        "lesson": 6,
+        "field": "trophy",
+        "old": "avevo",
+        "new": "indirizzo",
+        "why": "Bare auxiliary carries no card meaning and duplicates the L4-5 focus; beat already contains indirizzo; no collision, 100 distinct trophies preserved"
+      }
+    ],
+    "knownAmbiguityTraps": [
+      "ho/ha/abbiamo and -avo/-ava blanks need a subject tag",
+      "mentre/quando both grammatical before imperfetto: never co-offer",
+      "però/comunque/ma/invece interchangeable: only one in choices",
+      "c'è, c'era, un po', l'ho: never recall/blank (apostrophe)",
+      "già/ancora/mai placement: both positions often valid, do not blank the adverb",
+      "da vs per duration: never blank both as choices without a finite verb cue",
+      "sono = 1sg or 3pl: pattern examples give explicit subject",
+      "scusi vs mi scusi both valid: not a blank",
+      "Lei capitalized: fold handles case; accent-stripped accepted answers mean e/è and da/dà must never be a blank pair",
+      "P8 passato (noun) vs ho passato (participle) share the string; trophy uniqueness is string-level only"
+    ]
+  },
+  "Portuguese": {
+    "targetLanguageCode": "pt-BR",
+    "baseLocales": [
+      "de",
+      "en"
+    ],
+    "register": "Brazilian você with third-person agreement in every episode, locked per episode: register 'formal' (clerks, administrator, technician) translates with Sie and forbids te in learner turns; 'neutral' (neighbours, friends) translates with du and allows te/a gente. 'informal' (tu) banned. o senhor/a senhora may appear only in interlocutor turns and is never blanked. desculpe, never desculpa; Brazilian lexicon only (ônibus, trem, banheiro, celular, metrô).",
+    "genderSafety": "No learner form agrees with the speaker: ban estou/fiquei/sou/fui + cansado/a, convidado/a, pronto/a, sozinho/a, obrigado/a, eu era pequeno/a; use estou com sono, recebi um convite, levei um susto, fiquei com vontade, agradeço, quando eu era criança. Ordinary agreement with named objects/places stays (a feira estava cheia, a confirmação foi enviada). Interlocutor turns may use a character-fixed obrigado/obrigada; learner turns never.",
+    "exactP1StagingByLesson": [
+      {
+        "lesson": 1,
+        "trophy": "mutirão",
+        "licensed": "perfeito regular -ar/-er/-ir 1sg/3sg/1pl + foi, fizemos, teve; a gente + 3sg; de manhã, depois, no fim",
+        "banned": "imperfeito, tenho + particípio"
+      },
+      {
+        "lesson": 2,
+        "trophy": "reencontro",
+        "licensed": "adds encontrei, vi/viu, disse, conversamos, comprei; interlocutor asks quem/onde",
+        "banned": "as L1"
+      },
+      {
+        "lesson": 3,
+        "trophy": "convite",
+        "licensed": "adds recebi, aceitei, fui, li, fiquei com (noun); recebi um convite, never fui convidado/a",
+        "banned": "as L1"
+      },
+      {
+        "lesson": 4,
+        "trophy": "fila",
+        "licensed": "imperfeito introduced: tinha/havia existential, era, estava; tinha uma fila enorme; next steps in perfeito (peguei a senha, esperei, resolvi)",
+        "banned": "tinha + particípio"
+      },
+      {
+        "lesson": 5,
+        "trophy": "chuva",
+        "licensed": "adds chovia, estava + gerúndio (estava chovendo), tinha pouca gente, enquanto; resolution in perfeito (esperei, voltei)",
+        "banned": "estou a + infinitivo"
+      },
+      {
+        "lesson": 6,
+        "trophy": "engarrafamento",
+        "licensed": "contrast quando + perfeito vs imperfeito background; ia + infinitivo for past intention (eu ia pegar o ônibus, mas…); resolvi, peguei, cheguei",
+        "banned": "new forms"
+      },
+      {
+        "lesson": 7,
+        "trophy": "susto",
+        "licensed": "estávamos + gerúndio quando + perfeito; levei um susto; third-person reactions (o dono pediu desculpas, todo mundo riu)",
+        "banned": "speaker participle (assustado/a)"
+      },
+      {
+        "lesson": 8,
+        "trophy": "coincidência",
+        "licensed": "two chained events; imperfeito 1pl (morávamos, conhecíamos); descobrimos que + perfeito; alguém que (lexical relative)",
+        "banned": "new forms"
+      },
+      {
+        "lesson": 9,
+        "trophy": "recado",
+        "licensed": "chain encontrei, desci, perguntei, descobri que o vizinho recebeu (reported perfeito replaces pluperfect); quem recebeu o pacote, never quem o recebeu",
+        "banned": "tinha recebido"
+      },
+      {
+        "lesson": 10,
+        "trophy": "alívio",
+        "licensed": "chain (recebi uma ligação, voltei, recuperei) + background (eu estava achando que, não sabia); que alívio; consolidates L1-L9",
+        "banned": "new forms"
+      }
+    ],
+    "nativeGrammarScopeByPath": {
+      "P1": "as staged above",
+      "P2": "L1-3 acho que/na minha opinião/para mim + indicativo, porque, por isso; L4-6 mas, mesmo assim, apesar de + noun/infinitivo; L7-10 concessive contrast with mas … também; no mesmo que + subjuntivo, no não acho que + subjuntivo (use acho que não)",
+      "P3": "L1-3 gostaria de, queria, eu preferia/prefiro; L4-6 poderia/podia, dava para, seria possível; L7-10 deveria/devia advice, se/quando + futuro do subjuntivo regular (abrir, mudar, chegar) plus tiver/puder/for/estiver/houver; no imperfeito do subjuntivo (se fosse), no preferiria",
+      "P4": "L1-4 noun + que; L5-7 onde; L8-10 em que/de que/com que with clear antecedent; max two relatives per turn; no cujo, no o qual, indicative only",
+      "P5": "você sabe/pode me dizer + onde/como/quando/qual/se; queria saber se; present indicative, no inversion; proclitic me in pode me dizer is standard and never blanked",
+      "P6": "L1-3 estar + particípio agreeing with explicit object (o pedido está pronto, a peça está em falta); L4-6 ser + particípio in perfeito with explicit noun subject (a confirmação foi enviada); L7-10 impersonal se (como se faz, se retira); no tem sido, no ter + particípio",
+      "P7": "L1-5 para/para não + infinitivo, assim + indicativo; L6-8 para que + presente do subjuntivo whitelist (funcione, participem, chegue, saiba, possa, consiga, fique, encontre); L9-10 recycle; no a fim de que",
+      "P8": "imperfeito habits (morava, ia, brincava, costumava + infinitivo), quando eu era criança, antes/naquela época/hoje em dia; contrast with perfeito events (mudou, abriram); L9-10 moro aqui faz/há dois anos; no tinha + particípio",
+      "P9": "recycle P1/P3/P5/P6/P7: o ventilador parou, poderia verificar, queria saber se, está em análise, para resolver; no new family",
+      "P10": "recycle P1/P2/P3/P8 plus licensed P7 subjunctive; gratitude without obrigado/a (agradeço, fico grato is banned, sou muito grato banned)"
+    },
+    "bannedPatternsForValidator": {
+      "structural": [
+        {
+          "id": "pt-ter-participle",
+          "scope": "learner",
+          "why": "tenho/tinha + particípio (present-perfect and pluperfect imports)"
+        },
+        {
+          "id": "pt-speaker-adjective",
+          "scope": "learner",
+          "why": "estou/fiquei/sou/fui + cansado/a etc. (1sg-only verbs)"
+        },
+        {
+          "id": "pt-obrigado",
+          "scope": "learner"
+        },
+        {
+          "id": "pt-eu-era-gendered",
+          "scope": "learner"
+        },
+        {
+          "id": "pt-tu-forms",
+          "scope": "all"
+        },
+        {
+          "id": "pt-european-and-slang-spelling",
+          "scope": "all",
+          "why": "autocarro, comboio, telemóvel, pra/pro, tá, tô, né"
+        },
+        {
+          "id": "pt-estar-a-infinitivo",
+          "scope": "all"
+        },
+        {
+          "id": "pt-present-subjunctive",
+          "scope": "learner",
+          "except": [
+            7,
+            9,
+            10
+          ],
+          "why": "includes para que"
+        },
+        {
+          "id": "pt-future-subjunctive-irregular",
+          "scope": "learner",
+          "except": [
+            3,
+            7,
+            9,
+            10
+          ]
+        },
+        {
+          "id": "pt-missing-accent",
+          "scope": "all",
+          "why": "nao, voce, tambem, ja, ate, cafe, manha, entao, amanha"
+        },
+        {
+          "id": "pt-clitic-token",
+          "scope": "recall/trophy/speech",
+          "why": "o/a/os/as/me/te/se/lhe/nos never a recall, trophy or speech token"
+        },
+        {
+          "id": "pt-register",
+          "scope": "lesson",
+          "why": "formal: no te in learner turns and no du in de; neutral: no Ihnen"
+        }
+      ],
+      "semantic": [
+        "tem/têm + particípio and estava/era + speaker adjective without eu are reviewer-caught",
+        "explicit noun subject for every ser/estar + particípio",
+        "a gente takes 3sg; nós takes 1pl; never both as choices",
+        "você vs o senhor/a senhora locked per episode, never blanked",
+        "subjunctive first at P7 L6; future subjunctive first at P3 L8; ia + infinitivo first at P1 L6",
+        "imperfeito de cortesia (queria, podia, preferia) is standard; never offer gostaria/queria as competing choices",
+        "P1 interlocutor is an interested listener; P6/P9 learner never announces the attendant's decision",
+        "German du/Sie matches the lesson register"
+      ]
+    },
+    "mapFindings": [
+      {
+        "path": 3,
+        "lesson": 2,
+        "field": "trophy",
+        "old": "preferiria",
+        "new": "preferência",
+        "why": "preferiria is rare in spoken pt-BR (speakers use eu preferia/prefiro); noun trophy keeps the beat and natural speech; no collision, 100 distinct trophies preserved"
+      },
+      {
+        "path": 3,
+        "lesson": 2,
+        "field": "beat",
+        "new": "Expressar, com eu preferia ou tenho preferência, o desejo de uma mesa longe da caixa de som; considerar outra opção oferecida pelo restaurante."
+      },
+      {
+        "path": 7,
+        "lesson": 5,
+        "field": "beat",
+        "old": "Combinar instruções mais claras para facilitar a chegada dos participantes; adaptar a mensagem para que outra pessoa encontre a entrada correta.",
+        "new": "Combinar instruções mais claras para facilitar a chegada dos participantes; adaptar a mensagem para ajudar quem chega pela primeira vez a achar a entrada correta.",
+        "why": "Removes an unlicensed subjunctive (encontre) from L5 so para que + subjuntivo first appears at L6"
+      }
+    ],
+    "knownAmbiguityTraps": [
+      "tinha/havia both valid existentials: never a blank pair",
+      "foi = ser or ir: subject tag required",
+      "estava/era with states (a feira estava/era cheia): do not blank the copula",
+      "queria/gostaria/podia/poderia all valid politeness: offer one",
+      "futuro do subjuntivo of regular verbs equals the infinitive: never blank it",
+      "faz/há duration both valid: not a blank",
+      "esta/está and e/é collide under accent-stripped accepted answers: never a blank pair",
+      "o/a article vs clitic: never a recall answer",
+      "perfeito 1sg/3sg of -er/-ir verbs (recebi/recebeu) differ, but -ar 1pl perfeito = presente (terminamos): tag tense or subject",
+      "desculpe (interlocutor and learner) vs frozen A1 desculpa: B1 uses desculpe only"
+    ]
+  }
+}

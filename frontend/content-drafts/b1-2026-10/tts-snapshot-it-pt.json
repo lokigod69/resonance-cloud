@@ -1,0 +1,1748 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "languages": [
+    {
+      "targetLanguage": "Italian",
+      "targetLanguageCode": "it-IT",
+      "sourceSha256": "995980e6af4d4ee5d8adfe7b415af37062f06ee9b30874bb297089917823dcd8",
+      "lessons": [
+        {
+          "id": "italian-b1-practical-1-001-ombrello-dimenticato-in-farmacia",
+          "pathId": "italian-b1-practical-1",
+          "lessonNumber": 1,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Ho dimenticato l'ombrello in farmacia e ho telefonato subito dopo."
+              },
+              "chunks": [
+                {
+                  "id": "ombrello-1",
+                  "targetText": "Ho dimenticato"
+                },
+                {
+                  "id": "ombrello-2",
+                  "targetText": "l'ombrello"
+                },
+                {
+                  "id": "ombrello-3",
+                  "targetText": "in farmacia"
+                },
+                {
+                  "id": "ombrello-4",
+                  "targetText": "e ho telefonato"
+                },
+                {
+                  "id": "ombrello-5",
+                  "targetText": "subito dopo."
+                },
+                {
+                  "id": "ombrello-item-1",
+                  "targetText": "dimenticato"
+                },
+                {
+                  "id": "ombrello-item-2",
+                  "targetText": "l'ombrello"
+                },
+                {
+                  "id": "ombrello-item-3",
+                  "targetText": "in farmacia"
+                },
+                {
+                  "id": "ombrello-item-4",
+                  "targetText": "telefonato"
+                },
+                {
+                  "id": "ombrello-item-5",
+                  "targetText": "subito dopo"
+                },
+                {
+                  "id": "ombrello-item-6",
+                  "targetText": "il retro"
+                },
+                {
+                  "id": "ombrello-item-7",
+                  "targetText": "ringraziato"
+                }
+              ],
+              "trophyWord": {
+                "word": "dimenticato"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Ha ritrovato l'ombrello che ha dimenticato ieri?"
+                },
+                {
+                  "targetText": "Ho dimenticato l'ombrello in farmacia e ho telefonato subito dopo."
+                },
+                {
+                  "targetText": "E sul retro della farmacia? Di solito mettono gli ombrelli lì."
+                },
+                {
+                  "targetText": "Sì, io ho controllato il retro, poi ho ringraziato la farmacista."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Ho dimenticato l'ombrello in farmacia e ho telefonato subito dopo."
+                  },
+                  {
+                    "targetText": "Ho cercato la borsa, poi ho controllato il banco."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "italian-b1-practical-1-002-attesa-davanti-all-ingresso",
+          "pathId": "italian-b1-practical-1",
+          "lessonNumber": 2,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Ho aspettato davanti all'ingresso chiuso, poi ho chiesto informazioni al custode."
+              },
+              "chunks": [
+                {
+                  "id": "attesa-1",
+                  "targetText": "Ho aspettato"
+                },
+                {
+                  "id": "attesa-2",
+                  "targetText": "davanti all'ingresso chiuso,"
+                },
+                {
+                  "id": "attesa-3",
+                  "targetText": "poi ho chiesto"
+                },
+                {
+                  "id": "attesa-4",
+                  "targetText": "informazioni"
+                },
+                {
+                  "id": "attesa-5",
+                  "targetText": "al custode."
+                },
+                {
+                  "id": "attesa-item-1",
+                  "targetText": "aspettato"
+                },
+                {
+                  "id": "attesa-item-2",
+                  "targetText": "l'ingresso"
+                },
+                {
+                  "id": "attesa-item-3",
+                  "targetText": "chiuso"
+                },
+                {
+                  "id": "attesa-item-4",
+                  "targetText": "chiesto informazioni"
+                },
+                {
+                  "id": "attesa-item-5",
+                  "targetText": "il custode"
+                },
+                {
+                  "id": "attesa-item-6",
+                  "targetText": "il cortile"
+                },
+                {
+                  "id": "attesa-item-7",
+                  "targetText": "indicato"
+                }
+              ],
+              "trophyWord": {
+                "word": "aspettato"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Come ha trovato l'ingresso per la conferenza?"
+                },
+                {
+                  "targetText": "Ho aspettato davanti all'ingresso chiuso, poi ho chiesto informazioni al custode."
+                },
+                {
+                  "targetText": "L'ingresso sul cortile è poco visibile. Ha ricevuto indicazioni precise?"
+                },
+                {
+                  "targetText": "Il custode ha indicato il cortile; io ho trovato l'ingresso."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Ho aspettato davanti all'ingresso chiuso, poi ho chiesto informazioni al custode."
+                  },
+                  {
+                    "targetText": "Abbiamo chiesto informazioni, poi abbiamo seguito il custode."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "italian-b1-practical-1-003-scoperta-al-banco-dei-formaggi",
+          "pathId": "italian-b1-practical-1",
+          "lessonNumber": 3,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Al mercato ho scoperto un banco di formaggi e ho chiesto un assaggio."
+              },
+              "chunks": [
+                {
+                  "id": "scoperta-1",
+                  "targetText": "Al mercato"
+                },
+                {
+                  "id": "scoperta-2",
+                  "targetText": "ho scoperto"
+                },
+                {
+                  "id": "scoperta-3",
+                  "targetText": "un banco di formaggi"
+                },
+                {
+                  "id": "scoperta-4",
+                  "targetText": "e ho chiesto"
+                },
+                {
+                  "id": "scoperta-5",
+                  "targetText": "un assaggio."
+                },
+                {
+                  "id": "scoperta-item-1",
+                  "targetText": "scoperto"
+                },
+                {
+                  "id": "scoperta-item-2",
+                  "targetText": "il banco"
+                },
+                {
+                  "id": "scoperta-item-3",
+                  "targetText": "i formaggi"
+                },
+                {
+                  "id": "scoperta-item-4",
+                  "targetText": "un assaggio"
+                },
+                {
+                  "id": "scoperta-item-5",
+                  "targetText": "il venditore"
+                },
+                {
+                  "id": "scoperta-item-6",
+                  "targetText": "raccontato"
+                },
+                {
+                  "id": "scoperta-item-7",
+                  "targetText": "preso"
+                }
+              ],
+              "trophyWord": {
+                "word": "scoperto"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Com'è andata la sua visita al mercato?"
+                },
+                {
+                  "targetText": "Al mercato ho scoperto un banco di formaggi e ho chiesto un assaggio."
+                },
+                {
+                  "targetText": "I formaggi raccontano un territorio. Il venditore ha spiegato da dove vengono?"
+                },
+                {
+                  "targetText": "Il venditore ha raccontato la storia; io ho preso due formaggi."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Al mercato ho scoperto un banco di formaggi e ho chiesto un assaggio."
+                  },
+                  {
+                    "targetText": "Abbiamo fatto due domande e abbiamo parlato del latte."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "italian-b1-practical-1-004-cognome-chiamato-allo-sportello",
+          "pathId": "italian-b1-practical-1",
+          "lessonNumber": 4,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Mentre aspettavo il mio turno allo sportello, ho sentito chiamare il mio cognome."
+              },
+              "chunks": [
+                {
+                  "id": "cognome-1",
+                  "targetText": "Mentre aspettavo"
+                },
+                {
+                  "id": "cognome-2",
+                  "targetText": "il mio turno"
+                },
+                {
+                  "id": "cognome-3",
+                  "targetText": "allo sportello,"
+                },
+                {
+                  "id": "cognome-4",
+                  "targetText": "ho sentito chiamare"
+                },
+                {
+                  "id": "cognome-5",
+                  "targetText": "il mio cognome."
+                },
+                {
+                  "id": "cognome-item-1",
+                  "targetText": "mentre"
+                },
+                {
+                  "id": "cognome-item-2",
+                  "targetText": "aspettavo"
+                },
+                {
+                  "id": "cognome-item-3",
+                  "targetText": "il mio turno"
+                },
+                {
+                  "id": "cognome-item-4",
+                  "targetText": "il cognome"
+                },
+                {
+                  "id": "cognome-item-5",
+                  "targetText": "chiamare"
+                },
+                {
+                  "id": "cognome-item-6",
+                  "targetText": "la chiamata"
+                },
+                {
+                  "id": "cognome-item-7",
+                  "targetText": "il biglietto"
+                }
+              ],
+              "trophyWord": {
+                "word": "mentre"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Ha aspettato molto allo sportello stamattina?"
+                },
+                {
+                  "targetText": "Mentre aspettavo il mio turno allo sportello, ho sentito chiamare il mio cognome."
+                },
+                {
+                  "targetText": "Forse era un'altra persona con lo stesso cognome. Era già il suo turno?"
+                },
+                {
+                  "targetText": "No, io aspettavo ancora; ho controllato il numero sul biglietto."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Mentre aspettavo il mio turno allo sportello, ho sentito chiamare il mio cognome."
+                  },
+                  {
+                    "targetText": "Mentre leggevo il giornale, ho sentito il telefono."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "italian-b1-practical-1-005-vite-giusta-dal-ferramenta",
+          "pathId": "italian-b1-practical-1",
+          "lessonNumber": 5,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Cercavo una vite della misura giusta, ma non sapevo spiegare il problema."
+              },
+              "chunks": [
+                {
+                  "id": "vite-1",
+                  "targetText": "Cercavo"
+                },
+                {
+                  "id": "vite-2",
+                  "targetText": "una vite"
+                },
+                {
+                  "id": "vite-3",
+                  "targetText": "della misura giusta,"
+                },
+                {
+                  "id": "vite-4",
+                  "targetText": "ma non sapevo"
+                },
+                {
+                  "id": "vite-5",
+                  "targetText": "spiegare il problema."
+                },
+                {
+                  "id": "vite-item-1",
+                  "targetText": "cercavo"
+                },
+                {
+                  "id": "vite-item-2",
+                  "targetText": "una vite"
+                },
+                {
+                  "id": "vite-item-3",
+                  "targetText": "la misura giusta"
+                },
+                {
+                  "id": "vite-item-4",
+                  "targetText": "non sapevo"
+                },
+                {
+                  "id": "vite-item-5",
+                  "targetText": "spiegare"
+                },
+                {
+                  "id": "vite-item-6",
+                  "targetText": "un campione"
+                },
+                {
+                  "id": "vite-item-7",
+                  "targetText": "il ferramenta"
+                }
+              ],
+              "trophyWord": {
+                "word": "cercavo"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Ha trovato la vite per la mensola?"
+                },
+                {
+                  "targetText": "Cercavo una vite della misura giusta, ma non sapevo spiegare il problema."
+                },
+                {
+                  "targetText": "Capisco, spiegare le misure è difficile. Ha portato un campione?"
+                },
+                {
+                  "targetText": "Io avevo un campione e il ferramenta ha trovato la vite."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Cercavo una vite della misura giusta, ma non sapevo spiegare il problema."
+                  },
+                  {
+                    "targetText": "Volevo riparare una sedia, poi ho comprato una vite."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "italian-b1-practical-1-006-vecchio-indirizzo-del-laboratorio",
+          "pathId": "italian-b1-practical-1",
+          "lessonNumber": 6,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Avevo un vecchio indirizzo del laboratorio, ma per fortuna ho telefonato prima."
+              },
+              "chunks": [
+                {
+                  "id": "vecchio-1",
+                  "targetText": "Avevo"
+                },
+                {
+                  "id": "vecchio-2",
+                  "targetText": "un vecchio indirizzo"
+                },
+                {
+                  "id": "vecchio-3",
+                  "targetText": "del laboratorio,"
+                },
+                {
+                  "id": "vecchio-4",
+                  "targetText": "ma per fortuna"
+                },
+                {
+                  "id": "vecchio-5",
+                  "targetText": "ho telefonato prima."
+                },
+                {
+                  "id": "vecchio-item-1",
+                  "targetText": "l'indirizzo"
+                },
+                {
+                  "id": "vecchio-item-2",
+                  "targetText": "il laboratorio"
+                },
+                {
+                  "id": "vecchio-item-3",
+                  "targetText": "per fortuna"
+                },
+                {
+                  "id": "vecchio-item-4",
+                  "targetText": "telefonare prima"
+                },
+                {
+                  "id": "vecchio-item-5",
+                  "targetText": "la vecchia sede"
+                },
+                {
+                  "id": "vecchio-item-6",
+                  "targetText": "un giro a vuoto"
+                },
+                {
+                  "id": "vecchio-item-7",
+                  "targetText": "chiarito"
+                }
+              ],
+              "trophyWord": {
+                "word": "indirizzo"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Ha trovato il laboratorio senza problemi?"
+                },
+                {
+                  "targetText": "Avevo un vecchio indirizzo del laboratorio, ma per fortuna ho telefonato prima."
+                },
+                {
+                  "targetText": "Il laboratorio ora è vicino al ponte. Ha evitato il giro a vuoto?"
+                },
+                {
+                  "targetText": "Sì, io pensavo alla vecchia sede; la telefonata ha chiarito tutto."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Avevo un vecchio indirizzo del laboratorio, ma per fortuna ho telefonato prima."
+                  },
+                  {
+                    "targetText": "Avevo bisogno di un orario preciso, così ho telefonato."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "italian-b1-practical-1-007-rumore-nel-cortile",
+          "pathId": "italian-b1-practical-1",
+          "lessonNumber": 7,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Mentre leggevo, ho sentito all'improvviso un rumore nel cortile sotto casa."
+              },
+              "chunks": [
+                {
+                  "id": "rumore-1",
+                  "targetText": "Mentre leggevo,"
+                },
+                {
+                  "id": "rumore-2",
+                  "targetText": "ho sentito"
+                },
+                {
+                  "id": "rumore-3",
+                  "targetText": "all'improvviso"
+                },
+                {
+                  "id": "rumore-4",
+                  "targetText": "un rumore"
+                },
+                {
+                  "id": "rumore-5",
+                  "targetText": "nel cortile sotto casa."
+                },
+                {
+                  "id": "rumore-item-1",
+                  "targetText": "sentito"
+                },
+                {
+                  "id": "rumore-item-2",
+                  "targetText": "leggevo"
+                },
+                {
+                  "id": "rumore-item-3",
+                  "targetText": "all'improvviso"
+                },
+                {
+                  "id": "rumore-item-4",
+                  "targetText": "un rumore"
+                },
+                {
+                  "id": "rumore-item-5",
+                  "targetText": "rovesciato"
+                },
+                {
+                  "id": "rumore-item-6",
+                  "targetText": "un vaso"
+                },
+                {
+                  "id": "rumore-item-7",
+                  "targetText": "i vicini"
+                }
+              ],
+              "trophyWord": {
+                "word": "sentito"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Che cosa è successo ieri nel cortile?"
+                },
+                {
+                  "targetText": "Mentre leggevo, ho sentito all'improvviso un rumore nel cortile sotto casa."
+                },
+                {
+                  "targetText": "Un rumore così forte? I vicini hanno aperto le finestre?"
+                },
+                {
+                  "targetText": "Un gatto ha rovesciato un vaso; i vicini hanno guardato fuori."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Mentre leggevo, ho sentito all'improvviso un rumore nel cortile sotto casa."
+                  },
+                  {
+                    "targetText": "Mentre aspettavo, i vicini hanno aperto le finestre."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "italian-b1-practical-1-008-secondo-tentativo-per-il-documento",
+          "pathId": "italian-b1-practical-1",
+          "lessonNumber": 8,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Ho capito solo al secondo tentativo dove ritirare il documento."
+              },
+              "chunks": [
+                {
+                  "id": "secondo-1",
+                  "targetText": "Ho capito"
+                },
+                {
+                  "id": "secondo-2",
+                  "targetText": "solo al secondo tentativo"
+                },
+                {
+                  "id": "secondo-3",
+                  "targetText": "dove ritirare"
+                },
+                {
+                  "id": "secondo-4",
+                  "targetText": "il documento."
+                },
+                {
+                  "id": "secondo-item-1",
+                  "targetText": "capito"
+                },
+                {
+                  "id": "secondo-item-2",
+                  "targetText": "al secondo tentativo"
+                },
+                {
+                  "id": "secondo-item-3",
+                  "targetText": "ritirare"
+                },
+                {
+                  "id": "secondo-item-4",
+                  "targetText": "il documento"
+                },
+                {
+                  "id": "secondo-item-5",
+                  "targetText": "il cartello"
+                },
+                {
+                  "id": "secondo-item-6",
+                  "targetText": "il piano terra"
+                },
+                {
+                  "id": "secondo-item-7",
+                  "targetText": "diceva"
+                }
+              ],
+              "trophyWord": {
+                "word": "capito"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Ha trovato subito il posto per ritirare il documento?"
+                },
+                {
+                  "targetText": "Ho capito solo al secondo tentativo dove ritirare il documento."
+                },
+                {
+                  "targetText": "Vicino alle scale c'è un secondo cartello. Ha guardato anche quello?"
+                },
+                {
+                  "targetText": "Il cartello diceva piano terra; io ho ritirato tutto."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Il cartello diceva piano terra; io ho ritirato tutto."
+                  },
+                  {
+                    "targetText": "C'era un cartello che diceva di aspettare al piano terra."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "italian-b1-practical-1-009-amministratore-incontrato-sulle-scale",
+          "pathId": "italian-b1-practical-1",
+          "lessonNumber": 9,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Finalmente ho incontrato l'amministratore sulle scale e abbiamo parlato della luce."
+              },
+              "chunks": [
+                {
+                  "id": "amministratore-1",
+                  "targetText": "Finalmente"
+                },
+                {
+                  "id": "amministratore-2",
+                  "targetText": "ho incontrato"
+                },
+                {
+                  "id": "amministratore-3",
+                  "targetText": "l'amministratore"
+                },
+                {
+                  "id": "amministratore-4",
+                  "targetText": "sulle scale"
+                },
+                {
+                  "id": "amministratore-5",
+                  "targetText": "e abbiamo parlato"
+                },
+                {
+                  "id": "amministratore-6",
+                  "targetText": "della luce."
+                },
+                {
+                  "id": "amministratore-item-1",
+                  "targetText": "finalmente"
+                },
+                {
+                  "id": "amministratore-item-2",
+                  "targetText": "incontrato"
+                },
+                {
+                  "id": "amministratore-item-3",
+                  "targetText": "l'amministratore"
+                },
+                {
+                  "id": "amministratore-item-4",
+                  "targetText": "sulle scale"
+                },
+                {
+                  "id": "amministratore-item-5",
+                  "targetText": "il pianerottolo"
+                },
+                {
+                  "id": "amministratore-item-6",
+                  "targetText": "rispondeva"
+                },
+                {
+                  "id": "amministratore-item-7",
+                  "targetText": "risolto"
+                }
+              ],
+              "trophyWord": {
+                "word": "finalmente"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Ha parlato con l'amministratore del palazzo?"
+                },
+                {
+                  "targetText": "Finalmente ho incontrato l'amministratore sulle scale e abbiamo parlato della luce."
+                },
+                {
+                  "targetText": "Che fortuna incontrarlo! E la luce del pianerottolo?"
+                },
+                {
+                  "targetText": "Nessuno rispondeva al telefono; l'amministratore ha risolto il problema."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Nessuno rispondeva al telefono; l'amministratore ha risolto il problema."
+                  },
+                  {
+                    "targetText": "L'amministratore non rispondeva mai, poi ha telefonato."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "italian-b1-practical-1-010-piccola-avventura-sul-lago",
+          "pathId": "italian-b1-practical-1",
+          "lessonNumber": 10,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Ho avuto una piccola avventura sul lago: non trovavamo il pontile giusto."
+              },
+              "chunks": [
+                {
+                  "id": "piccola-1",
+                  "targetText": "Ho avuto"
+                },
+                {
+                  "id": "piccola-2",
+                  "targetText": "una piccola avventura"
+                },
+                {
+                  "id": "piccola-3",
+                  "targetText": "sul lago:"
+                },
+                {
+                  "id": "piccola-4",
+                  "targetText": "non trovavamo"
+                },
+                {
+                  "id": "piccola-5",
+                  "targetText": "il pontile giusto."
+                },
+                {
+                  "id": "piccola-item-1",
+                  "targetText": "un'avventura"
+                },
+                {
+                  "id": "piccola-item-2",
+                  "targetText": "il lago"
+                },
+                {
+                  "id": "piccola-item-3",
+                  "targetText": "non trovavamo"
+                },
+                {
+                  "id": "piccola-item-4",
+                  "targetText": "il pontile"
+                },
+                {
+                  "id": "piccola-item-5",
+                  "targetText": "un pescatore"
+                },
+                {
+                  "id": "piccola-item-6",
+                  "targetText": "il battello"
+                },
+                {
+                  "id": "piccola-item-7",
+                  "targetText": "abbiamo preso"
+                }
+              ],
+              "trophyWord": {
+                "word": "avventura"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Com'è andata la gita in battello?"
+                },
+                {
+                  "targetText": "Ho avuto una piccola avventura sul lago: non trovavamo il pontile giusto."
+                },
+                {
+                  "targetText": "Con tutti quei pontili è facile sbagliare. Qualcuno ha indicato quello del battello?"
+                },
+                {
+                  "targetText": "Un pescatore ha indicato il pontile; noi abbiamo preso il battello."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Ho avuto una piccola avventura sul lago: non trovavamo il pontile giusto."
+                  },
+                  {
+                    "targetText": "Non trovavamo l'ingresso, poi abbiamo chiesto al custode."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "targetLanguage": "Portuguese",
+      "targetLanguageCode": "pt-BR",
+      "sourceSha256": "172e1a9a8a87d70689cba24afea5858d5b7e6bdaa1e35085e5240a00b6fd1fa4",
+      "lessons": [
+        {
+          "id": "portuguese-b1-practical-1-001-mutirao-no-jardim",
+          "pathId": "portuguese-b1-practical-1",
+          "lessonNumber": 1,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "No mutirão de sábado, a gente limpou o jardim e plantou flores."
+              },
+              "chunks": [
+                {
+                  "id": "mutirao-1",
+                  "targetText": "No mutirão de sábado,"
+                },
+                {
+                  "id": "mutirao-2",
+                  "targetText": "a gente limpou"
+                },
+                {
+                  "id": "mutirao-3",
+                  "targetText": "o jardim"
+                },
+                {
+                  "id": "mutirao-4",
+                  "targetText": "e plantou"
+                },
+                {
+                  "id": "mutirao-5",
+                  "targetText": "flores."
+                },
+                {
+                  "id": "mutirao-item-1",
+                  "targetText": "mutirão"
+                },
+                {
+                  "id": "mutirao-item-2",
+                  "targetText": "limpou"
+                },
+                {
+                  "id": "mutirao-item-3",
+                  "targetText": "jardim"
+                },
+                {
+                  "id": "mutirao-item-4",
+                  "targetText": "plantou"
+                },
+                {
+                  "id": "mutirao-item-5",
+                  "targetText": "flores"
+                },
+                {
+                  "id": "mutirao-item-6",
+                  "targetText": "ferramentas"
+                }
+              ],
+              "trophyWord": {
+                "word": "mutirão"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Como foi o mutirão no prédio no sábado?"
+                },
+                {
+                  "targetText": "No mutirão de sábado, a gente limpou o jardim e plantou flores."
+                },
+                {
+                  "targetText": "O jardim mudou bastante! Qual foi a última tarefa?"
+                },
+                {
+                  "targetText": "No fim, eu reguei as flores e guardei as ferramentas."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "No mutirão de sábado, a gente limpou o jardim e plantou flores."
+                  },
+                  {
+                    "targetText": "No fim, eu reguei as flores e guardei as ferramentas."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "portuguese-b1-practical-1-002-reencontro-na-feira",
+          "pathId": "portuguese-b1-practical-1",
+          "lessonNumber": 2,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "O reencontro foi na feira: encontrei uma colega e comprei frutas."
+              },
+              "chunks": [
+                {
+                  "id": "reencontro-1",
+                  "targetText": "O reencontro"
+                },
+                {
+                  "id": "reencontro-2",
+                  "targetText": "foi na feira:"
+                },
+                {
+                  "id": "reencontro-3",
+                  "targetText": "encontrei uma colega"
+                },
+                {
+                  "id": "reencontro-4",
+                  "targetText": "e comprei frutas."
+                },
+                {
+                  "id": "reencontro-item-1",
+                  "targetText": "reencontro"
+                },
+                {
+                  "id": "reencontro-item-2",
+                  "targetText": "feira"
+                },
+                {
+                  "id": "reencontro-item-3",
+                  "targetText": "encontrei"
+                },
+                {
+                  "id": "reencontro-item-4",
+                  "targetText": "colega"
+                },
+                {
+                  "id": "reencontro-item-5",
+                  "targetText": "comprei"
+                },
+                {
+                  "id": "reencontro-item-6",
+                  "targetText": "frutas"
+                },
+                {
+                  "id": "reencontro-item-7",
+                  "targetText": "novidade"
+                }
+              ],
+              "trophyWord": {
+                "word": "reencontro"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Você encontrou alguém conhecido na feira ontem?"
+                },
+                {
+                  "targetText": "O reencontro foi na feira: encontrei uma colega e comprei frutas."
+                },
+                {
+                  "targetText": "Uma colega do curso? Sobre o que você conversou com ela?"
+                },
+                {
+                  "targetText": "Nós conversamos sobre o curso, e ela contou uma novidade."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Nós conversamos sobre o curso, e ela contou uma novidade."
+                  },
+                  {
+                    "targetText": "Eu vi uma colega na feira e conversei com ela."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "portuguese-b1-practical-1-003-convite-para-leitura",
+          "pathId": "portuguese-b1-practical-1",
+          "lessonNumber": 3,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Recebi um convite para a roda de leitura e aceitei na hora."
+              },
+              "chunks": [
+                {
+                  "id": "convite-1",
+                  "targetText": "Recebi um convite"
+                },
+                {
+                  "id": "convite-2",
+                  "targetText": "para a roda de leitura"
+                },
+                {
+                  "id": "convite-3",
+                  "targetText": "e aceitei"
+                },
+                {
+                  "id": "convite-4",
+                  "targetText": "na hora."
+                },
+                {
+                  "id": "convite-item-1",
+                  "targetText": "recebi"
+                },
+                {
+                  "id": "convite-item-2",
+                  "targetText": "convite"
+                },
+                {
+                  "id": "convite-item-3",
+                  "targetText": "roda de leitura"
+                },
+                {
+                  "id": "convite-item-4",
+                  "targetText": "aceitei"
+                },
+                {
+                  "id": "convite-item-5",
+                  "targetText": "na hora"
+                },
+                {
+                  "id": "convite-item-6",
+                  "targetText": "poema"
+                }
+              ],
+              "trophyWord": {
+                "word": "convite"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Você foi à roda de leitura da biblioteca ontem?"
+                },
+                {
+                  "targetText": "Recebi um convite para a roda de leitura e aceitei na hora."
+                },
+                {
+                  "targetText": "E qual foi a sua participação na roda?"
+                },
+                {
+                  "targetText": "Eu li um poema, e o grupo comentou o final."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Recebi um convite para a roda de leitura e aceitei na hora."
+                  },
+                  {
+                    "targetText": "Eu li um poema, e o grupo comentou o final."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "portuguese-b1-practical-1-004-fila-no-banco",
+          "pathId": "portuguese-b1-practical-1",
+          "lessonNumber": 4,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Tinha uma fila enorme no banco, mas eu resolvi tudo de manhã."
+              },
+              "chunks": [
+                {
+                  "id": "fila-1",
+                  "targetText": "Tinha uma fila enorme"
+                },
+                {
+                  "id": "fila-2",
+                  "targetText": "no banco,"
+                },
+                {
+                  "id": "fila-3",
+                  "targetText": "mas eu resolvi tudo"
+                },
+                {
+                  "id": "fila-4",
+                  "targetText": "de manhã."
+                },
+                {
+                  "id": "fila-item-1",
+                  "targetText": "fila"
+                },
+                {
+                  "id": "fila-item-2",
+                  "targetText": "enorme"
+                },
+                {
+                  "id": "fila-item-3",
+                  "targetText": "banco"
+                },
+                {
+                  "id": "fila-item-4",
+                  "targetText": "resolvi"
+                },
+                {
+                  "id": "fila-item-5",
+                  "targetText": "senha"
+                },
+                {
+                  "id": "fila-item-6",
+                  "targetText": "painel"
+                }
+              ],
+              "trophyWord": {
+                "word": "fila"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Como foi o atendimento no banco ontem?"
+                },
+                {
+                  "targetText": "Tinha uma fila enorme no banco, mas eu resolvi tudo de manhã."
+                },
+                {
+                  "targetText": "Com aquela fila? Como você soube que era a sua vez?"
+                },
+                {
+                  "targetText": "Eu peguei uma senha, e o painel indicou meu número."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Tinha uma fila enorme no banco, mas eu resolvi tudo de manhã."
+                  },
+                  {
+                    "targetText": "O banco estava cheio, mas eu esperei perto da porta."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "portuguese-b1-practical-1-005-chuva-na-feira",
+          "pathId": "portuguese-b1-practical-1",
+          "lessonNumber": 5,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Enquanto chovia, eu esperei a chuva passar debaixo de uma lona."
+              },
+              "chunks": [
+                {
+                  "id": "chuva-1",
+                  "targetText": "Enquanto chovia,"
+                },
+                {
+                  "id": "chuva-2",
+                  "targetText": "eu esperei"
+                },
+                {
+                  "id": "chuva-3",
+                  "targetText": "a chuva passar"
+                },
+                {
+                  "id": "chuva-4",
+                  "targetText": "debaixo de uma lona."
+                },
+                {
+                  "id": "chuva-item-1",
+                  "targetText": "chuva"
+                },
+                {
+                  "id": "chuva-item-2",
+                  "targetText": "chovia"
+                },
+                {
+                  "id": "chuva-item-3",
+                  "targetText": "esperei"
+                },
+                {
+                  "id": "chuva-item-4",
+                  "targetText": "lona"
+                },
+                {
+                  "id": "chuva-item-5",
+                  "targetText": "barracas"
+                },
+                {
+                  "id": "chuva-item-6",
+                  "targetText": "verduras"
+                }
+              ],
+              "trophyWord": {
+                "word": "chuva"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Você conseguiu passear pela feira com a chuva de ontem?"
+                },
+                {
+                  "targetText": "Enquanto chovia, eu esperei a chuva passar debaixo de uma lona."
+                },
+                {
+                  "targetText": "E depois da chuva, como você continuou o passeio?"
+                },
+                {
+                  "targetText": "Eu voltei às barracas e comprei verduras para o almoço."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Enquanto chovia, eu esperei a chuva passar debaixo de uma lona."
+                  },
+                  {
+                    "targetText": "Estava chovendo, e eu esperei dentro da barraca."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "portuguese-b1-practical-1-006-engarrafamento-na-avenida",
+          "pathId": "portuguese-b1-practical-1",
+          "lessonNumber": 6,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Eu ia pegar o ônibus, mas havia um engarrafamento na avenida."
+              },
+              "chunks": [
+                {
+                  "id": "engarrafamento-1",
+                  "targetText": "Eu ia pegar"
+                },
+                {
+                  "id": "engarrafamento-2",
+                  "targetText": "o ônibus,"
+                },
+                {
+                  "id": "engarrafamento-3",
+                  "targetText": "mas havia um engarrafamento"
+                },
+                {
+                  "id": "engarrafamento-4",
+                  "targetText": "na avenida."
+                },
+                {
+                  "id": "engarrafamento-item-1",
+                  "targetText": "ia pegar"
+                },
+                {
+                  "id": "engarrafamento-item-2",
+                  "targetText": "ônibus"
+                },
+                {
+                  "id": "engarrafamento-item-3",
+                  "targetText": "engarrafamento"
+                },
+                {
+                  "id": "engarrafamento-item-4",
+                  "targetText": "avenida"
+                },
+                {
+                  "id": "engarrafamento-item-5",
+                  "targetText": "metrô"
+                },
+                {
+                  "id": "engarrafamento-item-6",
+                  "targetText": "início"
+                }
+              ],
+              "trophyWord": {
+                "word": "engarrafamento"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Você conseguiu chegar ao curso ontem?"
+                },
+                {
+                  "targetText": "Eu ia pegar o ônibus, mas havia um engarrafamento na avenida."
+                },
+                {
+                  "targetText": "A avenida estava parada. Como você chegou ao curso?"
+                },
+                {
+                  "targetText": "Eu peguei o metrô e cheguei antes do início."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Eu ia pegar o ônibus, mas havia um engarrafamento na avenida."
+                  },
+                  {
+                    "targetText": "Quando eu peguei o metrô, a avenida estava parada."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "portuguese-b1-practical-1-007-susto-no-piquenique",
+          "pathId": "portuguese-b1-practical-1",
+          "lessonNumber": 7,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Estávamos conversando no piquenique quando um cachorro pegou nosso pão; levei um susto."
+              },
+              "chunks": [
+                {
+                  "id": "susto-1",
+                  "targetText": "Estávamos conversando"
+                },
+                {
+                  "id": "susto-2",
+                  "targetText": "no piquenique"
+                },
+                {
+                  "id": "susto-3",
+                  "targetText": "quando um cachorro"
+                },
+                {
+                  "id": "susto-4",
+                  "targetText": "pegou nosso pão;"
+                },
+                {
+                  "id": "susto-5",
+                  "targetText": "levei um susto."
+                },
+                {
+                  "id": "susto-item-1",
+                  "targetText": "susto"
+                },
+                {
+                  "id": "susto-item-2",
+                  "targetText": "conversando"
+                },
+                {
+                  "id": "susto-item-3",
+                  "targetText": "piquenique"
+                },
+                {
+                  "id": "susto-item-4",
+                  "targetText": "cachorro"
+                },
+                {
+                  "id": "susto-item-5",
+                  "targetText": "pão"
+                },
+                {
+                  "id": "susto-item-6",
+                  "targetText": "pediu desculpas"
+                },
+                {
+                  "id": "susto-item-7",
+                  "targetText": "riu"
+                }
+              ],
+              "trophyWord": {
+                "word": "susto"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Como foi o piquenique de ontem no parque?"
+                },
+                {
+                  "targetText": "Estávamos conversando no piquenique quando um cachorro pegou nosso pão; levei um susto."
+                },
+                {
+                  "targetText": "O dono estava por perto? Como ele reagiu?"
+                },
+                {
+                  "targetText": "O dono pediu desculpas, e todo mundo riu da situação."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Estávamos conversando no piquenique quando um cachorro pegou nosso pão; levei um susto."
+                  },
+                  {
+                    "targetText": "Estávamos guardando as ferramentas quando o vizinho chegou."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "portuguese-b1-practical-1-008-coincidencia-no-onibus",
+          "pathId": "portuguese-b1-practical-1",
+          "lessonNumber": 8,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Que coincidência: conversei no ônibus com alguém que era da minha cidade!"
+              },
+              "chunks": [
+                {
+                  "id": "coincidencia-1",
+                  "targetText": "Que coincidência:"
+                },
+                {
+                  "id": "coincidencia-2",
+                  "targetText": "conversei no ônibus"
+                },
+                {
+                  "id": "coincidencia-3",
+                  "targetText": "com alguém"
+                },
+                {
+                  "id": "coincidencia-4",
+                  "targetText": "que era da minha cidade!"
+                },
+                {
+                  "id": "coincidencia-item-1",
+                  "targetText": "coincidência"
+                },
+                {
+                  "id": "coincidencia-item-2",
+                  "targetText": "alguém"
+                },
+                {
+                  "id": "coincidencia-item-3",
+                  "targetText": "minha cidade"
+                },
+                {
+                  "id": "coincidencia-item-4",
+                  "targetText": "morávamos"
+                },
+                {
+                  "id": "coincidencia-item-5",
+                  "targetText": "conhecíamos"
+                },
+                {
+                  "id": "coincidencia-item-6",
+                  "targetText": "padeiro"
+                }
+              ],
+              "trophyWord": {
+                "word": "coincidência"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Você conversou com alguém no ônibus ontem?"
+                },
+                {
+                  "targetText": "Que coincidência: conversei no ônibus com alguém que era da minha cidade!"
+                },
+                {
+                  "targetText": "Além da cidade, o que você descobriu em comum com essa pessoa?"
+                },
+                {
+                  "targetText": "Nós morávamos na mesma rua e conhecíamos o mesmo padeiro."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Nós morávamos na mesma rua e conhecíamos o mesmo padeiro."
+                  },
+                  {
+                    "targetText": "Nós conhecíamos a rua, mas conversamos sobre as mudanças."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "portuguese-b1-practical-1-009-recado-da-portaria",
+          "pathId": "portuguese-b1-practical-1",
+          "lessonNumber": 9,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Encontrei um recado da portaria sobre meu pacote e desci para perguntar."
+              },
+              "chunks": [
+                {
+                  "id": "recado-1",
+                  "targetText": "Encontrei um recado"
+                },
+                {
+                  "id": "recado-2",
+                  "targetText": "da portaria"
+                },
+                {
+                  "id": "recado-3",
+                  "targetText": "sobre meu pacote"
+                },
+                {
+                  "id": "recado-4",
+                  "targetText": "e desci"
+                },
+                {
+                  "id": "recado-5",
+                  "targetText": "para perguntar."
+                },
+                {
+                  "id": "recado-item-1",
+                  "targetText": "recado"
+                },
+                {
+                  "id": "recado-item-2",
+                  "targetText": "portaria"
+                },
+                {
+                  "id": "recado-item-3",
+                  "targetText": "pacote"
+                },
+                {
+                  "id": "recado-item-4",
+                  "targetText": "desci"
+                },
+                {
+                  "id": "recado-item-5",
+                  "targetText": "descobri"
+                },
+                {
+                  "id": "recado-item-6",
+                  "targetText": "vizinho"
+                },
+                {
+                  "id": "recado-item-7",
+                  "targetText": "guardou"
+                }
+              ],
+              "trophyWord": {
+                "word": "recado"
+              },
+              "dialogue": [
+                {
+                  "targetText": "Você conseguiu buscar a encomenda ontem?"
+                },
+                {
+                  "targetText": "Encontrei um recado da portaria sobre meu pacote e desci para perguntar."
+                },
+                {
+                  "targetText": "A portaria recebe muita coisa. Quem recebeu seu pacote dessa vez?"
+                },
+                {
+                  "targetText": "Eu descobri que o vizinho recebeu e guardou meu pacote."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Eu descobri que o vizinho recebeu e guardou meu pacote."
+                  },
+                  {
+                    "targetText": "Eu descobri que o grupo terminou o jardim de manhã."
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "portuguese-b1-practical-1-010-alivio-com-os-documentos",
+          "pathId": "portuguese-b1-practical-1",
+          "lessonNumber": 10,
+          "vibeVariants": {
+            "bright": {
+              "corePhrase": {
+                "targetText": "Que alívio! Eu recebi uma ligação sobre a pasta e voltei à biblioteca."
+              },
+              "chunks": [
+                {
+                  "id": "alivio-1",
+                  "targetText": "Que alívio!"
+                },
+                {
+                  "id": "alivio-2",
+                  "targetText": "Eu recebi uma ligação"
+                },
+                {
+                  "id": "alivio-3",
+                  "targetText": "sobre a pasta"
+                },
+                {
+                  "id": "alivio-4",
+                  "targetText": "e voltei à biblioteca."
+                },
+                {
+                  "id": "alivio-item-1",
+                  "targetText": "alívio"
+                },
+                {
+                  "id": "alivio-item-2",
+                  "targetText": "ligação"
+                },
+                {
+                  "id": "alivio-item-3",
+                  "targetText": "pasta"
+                },
+                {
+                  "id": "alivio-item-4",
+                  "targetText": "voltei"
+                },
+                {
+                  "id": "alivio-item-5",
+                  "targetText": "sabia"
+                },
+                {
+                  "id": "alivio-item-6",
+                  "targetText": "recuperei"
+                },
+                {
+                  "id": "alivio-item-7",
+                  "targetText": "documentos"
+                }
+              ],
+              "trophyWord": {
+                "word": "alívio"
+              },
+              "dialogue": [
+                {
+                  "targetText": "E a pasta de documentos que você perdeu ontem?"
+                },
+                {
+                  "targetText": "Que alívio! Eu recebi uma ligação sobre a pasta e voltei à biblioteca."
+                },
+                {
+                  "targetText": "Você sabia onde procurar antes dessa ligação?"
+                },
+                {
+                  "targetText": "Eu não sabia onde procurar, mas recuperei todos os documentos."
+                }
+              ],
+              "pattern": {
+                "examples": [
+                  {
+                    "targetText": "Eu não sabia onde procurar, mas recuperei todos os documentos."
+                  },
+                  {
+                    "targetText": "Eu estava achando que a pasta estava no ônibus."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

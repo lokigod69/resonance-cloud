@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": { "de": "Was passiert ist", "en": "What happened" },
+  "subtitle": { "de": "Erzählen Sie kleine Erlebnisse und führen Sie die Geschichte weiter.", "en": "Tell everyday stories and keep the conversation going." },
+  "anchor": "PROVISIONAL FULL EPISODES — pending Fable personal read-through. Governed by B1_IT_PT_FABLE_SPEC_20261003.json, Italian P1. Form B, interested listener; singular formal Lei throughout. L1 regular avere passato prossimo; L2 abbiamo, chiesto and detto; L3 scoperto, fatto and preso; L4 imperfetto background with mentre; L5 intention/state; L6 background versus event; L7 interrupted background and third-person plural avere; L8–10 connected narration recycling the licensed forms. No learner essere compound, preceding direct-object clitic, speaker-gender adjective, trapassato or passato remoto. Form blanks name an explicit subject. German and English explanations throughout.",
+  "lessons": [
+    {
+      "slug": "ombrello-dimenticato-in-farmacia",
+      "title": { "de": "Der vergessene Regenschirm", "en": "The forgotten umbrella" },
+      "situation": { "de": "Am nächsten Morgen erzählen Sie einer Nachbarin, was mit Ihrem Regenschirm in der Apotheke passiert ist.", "en": "The next morning, tell a neighbor what happened to your umbrella at the pharmacy." },
+      "pedagogicalGoal": "Ein kleines Missgeschick mit regelmäßigen Partizipien und avere erzählen und die Suche auf Nachfrage weiterführen.",
+      "register": "formal",
+      "dialogue": [
+        { "targetText": "Ha ritrovato l'ombrello che ha dimenticato ieri?", "baseText": { "de": "Haben Sie den Regenschirm wiedergefunden, den Sie gestern vergessen haben?", "en": "Did you find the umbrella you left behind yesterday?" } },
+        { "targetText": "Ho dimenticato l'ombrello in farmacia e ho telefonato subito dopo.", "baseText": { "de": "Ich habe den Regenschirm in der Apotheke vergessen und gleich danach angerufen.", "en": "I left my umbrella at the pharmacy and called right afterward." } },
+        { "targetText": "E sul retro della farmacia? Di solito mettono gli ombrelli lì.", "baseText": { "de": "Und hinten in der Apotheke? Dort stellen sie normalerweise die Regenschirme hin.", "en": "What about the back of the pharmacy? They usually put umbrellas there." } },
+        { "targetText": "Sì, io ho controllato il retro, poi ho ringraziato la farmacista.", "baseText": { "de": "Ja, ich habe hinten nachgesehen und dann der Apothekerin gedankt.", "en": "Yes, I checked the back, then thanked the pharmacist." } }
+      ],
+      "pattern": {
+        "label": "Il passato prossimo con avere",
+        "rule": { "de": "Mit avere im Präsens und einem Partizip erzählen Sie abgeschlossene Ereignisse; poi oder subito dopo zeigen die Reihenfolge.", "en": "Use present-tense avere and a past participle for completed events; poi or subito dopo shows their order." },
+        "examples": [
+          { "targetText": "Ho dimenticato l'ombrello in farmacia e ho telefonato subito dopo.", "baseText": { "de": "Ich habe den Regenschirm in der Apotheke vergessen und gleich danach angerufen.", "en": "I left my umbrella at the pharmacy and called right afterward." }, "highlight": "Ho dimenticato" },
+          { "targetText": "Ho cercato la borsa, poi ho controllato il banco.", "baseText": { "de": "Ich habe die Tasche gesucht und dann am Tresen nachgesehen.", "en": "I looked for the bag, then checked the counter." }, "highlight": "ho controllato" }
+        ]
+      },
+      "cloze": [
+        "Sì, io ho ", { "kind": "form", "answer": "controllato", "cue": "controllare (io)", "choices": ["controllato", "controllare", "controllando", "controllavo"] },
+        " il retro, poi ho ", { "kind": "form", "answer": "ringraziato", "cue": "ringraziare (io)", "choices": ["ringraziando", "ringraziavo", "ringraziato", "ringraziare"] }, " la farmacista."
+      ],
+      "chunks": [
+        { "targetText": "Ho dimenticato", "baseText": { "de": "Ich habe vergessen", "en": "I left behind" } },
+        { "targetText": "l'ombrello", "baseText": { "de": "den Regenschirm", "en": "my umbrella" } },
+        { "targetText": "in farmacia", "baseText": { "de": "in der Apotheke", "en": "at the pharmacy" } },
+        { "targetText": "e ho telefonato", "baseText": { "de": "und habe angerufen", "en": "and called" } },
+        { "targetText": "subito dopo.", "baseText": { "de": "gleich danach.", "en": "right afterward." } }
+      ],
+      "terms": [
+        { "targetText": "dimenticato", "baseText": { "de": "vergessen", "en": "forgotten; left behind" } },
+        { "targetText": "l'ombrello", "baseText": { "de": "der Regenschirm", "en": "the umbrella" } },
+        { "targetText": "in farmacia", "baseText": { "de": "in der Apotheke", "en": "at the pharmacy" } },
+        { "targetText": "telefonato", "baseText": { "de": "angerufen", "en": "called" } },
+        { "targetText": "subito dopo", "baseText": { "de": "gleich danach", "en": "right afterward" } },
+        { "targetText": "il retro", "baseText": { "de": "der hintere Bereich", "en": "the back" } },
+        { "targetText": "ringraziato", "baseText": { "de": "gedankt", "en": "thanked" } }
+      ],
+      "recall": { "before": "Ho ", "answer": "dimenticato", "after": " l'ombrello in farmacia e ho telefonato subito dopo.", "fallbackChoices": ["dimenticato", "dimenticare", "dimenticando", "dimenticavo"] },
+      "speakRequired": ["dimenticato", "farmacia", "telefonato"],
+      "sceneCaption": { "de": "Im Hauseingang fragt eine Nachbarin: „Ha ritrovato l'ombrello che ha dimenticato ieri?“", "en": "In the entrance hall, a neighbor asks: “Ha ritrovato l'ombrello che ha dimenticato ieri?”" },
+      "trophyWord": { "word": "dimenticato", "meaning": { "de": "vergessen", "en": "forgotten; left behind" }, "example": "Ho dimenticato il cappello in farmacia.", "whyThisWord": { "de": "Mit dimenticato benennen Sie ein kleines Missgeschick und eröffnen die Geschichte darüber, wie es weiterging.", "en": "Dimenticato names a small mishap and opens the story of what happened next." } },
+      "distractors": ["in biblioteca", "il cappello"],
+      "placeholderCaption": { "de": "Zwei Nachbarn unterhalten sich am Hauseingang.", "en": "Two neighbors talk in an entrance hall." },
+      "songMood": "light conversational Italian pop with a gently comic everyday mood",
+      "visualNotes": "Quiet apartment entrance, morning light, two adults chatting; no umbrella or pharmacy-back-room reveal."
+    },
+    {
+      "slug": "attesa-davanti-all-ingresso",
+      "title": { "de": "Vor dem falschen Eingang", "en": "At the wrong entrance" },
+      "situation": { "de": "Nach einer Veranstaltung erzählen Sie einem Bekannten, wie Sie trotz des geschlossenen Eingangs hineingefunden haben.", "en": "After an event, tell an acquaintance how you found your way in despite a closed entrance." },
+      "pedagogicalGoal": "Eine Folge abgeschlossener Handlungen mit poi erzählen und mit chiesto eine Nachfrage nach Informationen ausdrücken.",
+      "register": "formal",
+      "dialogue": [
+        { "targetText": "Come ha trovato l'ingresso per la conferenza?", "baseText": { "de": "Wie haben Sie den Eingang zur Veranstaltung gefunden?", "en": "How did you find the entrance for the talk?" } },
+        { "targetText": "Ho aspettato davanti all'ingresso chiuso, poi ho chiesto informazioni al custode.", "baseText": { "de": "Ich habe vor dem geschlossenen Eingang gewartet und dann den Hausmeister nach dem Weg gefragt.", "en": "I waited outside the closed entrance, then asked the caretaker for directions." } },
+        { "targetText": "L'ingresso sul cortile è poco visibile. Ha ricevuto indicazioni precise?", "baseText": { "de": "Der Eingang zum Innenhof ist schwer zu sehen. Haben Sie genaue Hinweise bekommen?", "en": "The courtyard entrance is hard to spot. Did you get clear directions?" } },
+        { "targetText": "Il custode ha indicato il cortile; io ho trovato l'ingresso.", "baseText": { "de": "Der Hausmeister hat auf den Innenhof gezeigt; ich habe den Eingang gefunden.", "en": "The caretaker pointed to the courtyard; I found the entrance." } }
+      ],
+      "pattern": {
+        "label": "Prima un evento, poi un altro",
+        "rule": { "de": "Poi verbindet zwei abgeschlossene Ereignisse; bei chiedere lautet das Partizip chiesto, auch nach abbiamo.", "en": "Poi links two completed events; the past participle of chiedere is chiesto, including after abbiamo." },
+        "examples": [
+          { "targetText": "Ho aspettato davanti all'ingresso chiuso, poi ho chiesto informazioni al custode.", "baseText": { "de": "Ich habe vor dem geschlossenen Eingang gewartet und dann den Hausmeister nach dem Weg gefragt.", "en": "I waited outside the closed entrance, then asked the caretaker for directions." }, "highlight": "poi ho chiesto" },
+          { "targetText": "Abbiamo chiesto informazioni, poi abbiamo seguito il custode.", "baseText": { "de": "Wir haben nach dem Weg gefragt und sind dann dem Hausmeister gefolgt.", "en": "We asked for directions, then followed the caretaker." }, "highlight": "Abbiamo chiesto" }
+        ]
+      },
+      "cloze": [
+        "Il custode ha ", { "kind": "form", "answer": "indicato", "cue": "indicare (il custode)", "choices": ["indicare", "indicando", "indicato", "indicava"] },
+        " il cortile; io ho ", { "kind": "form", "answer": "trovato", "cue": "trovare (io)", "choices": ["trovavo", "trovato", "trovare", "trovando"] }, " l'ingresso."
+      ],
+      "chunks": [
+        { "targetText": "Ho aspettato", "baseText": { "de": "Ich habe gewartet", "en": "I waited" } },
+        { "targetText": "davanti all'ingresso chiuso,", "baseText": { "de": "vor dem geschlossenen Eingang,", "en": "outside the closed entrance," } },
+        { "targetText": "poi ho chiesto", "baseText": { "de": "dann habe ich gefragt", "en": "then I asked for" } },
+        { "targetText": "informazioni", "baseText": { "de": "Informationen", "en": "directions" } },
+        { "targetText": "al custode.", "baseText": { "de": "beim Hausmeister.", "en": "from the caretaker." } }
+      ],
+      "terms": [
+        { "targetText": "aspettato", "baseText": { "de": "gewartet", "en": "waited" } },
+        { "targetText": "l'ingresso", "baseText": { "de": "der Eingang", "en": "the entrance" } },
+        { "targetText": "chiuso", "baseText": { "de": "geschlossen", "en": "closed" } },
+        { "targetText": "chiesto informazioni", "baseText": { "de": "nach Informationen gefragt", "en": "asked for information" } },
+        { "targetText": "il custode", "baseText": { "de": "der Hausmeister", "en": "the caretaker" } },
+        { "targetText": "il cortile", "baseText": { "de": "der Innenhof", "en": "the courtyard" } },
+        { "targetText": "indicato", "baseText": { "de": "gezeigt", "en": "pointed out" } }
+      ],
+      "recall": { "before": "Ho ", "answer": "aspettato", "after": " davanti all'ingresso chiuso, poi ho chiesto informazioni al custode.", "fallbackChoices": ["aspettando", "aspettato", "aspettare", "aspettavo"] },
+      "speakRequired": ["aspettato", "chiesto", "custode"],
+      "sceneCaption": { "de": "Nach der Veranstaltung fragt ein Bekannter: „Come ha trovato l'ingresso per la conferenza?“", "en": "After the talk, an acquaintance asks: “Come ha trovato l'ingresso per la conferenza?”" },
+      "trophyWord": { "word": "aspettato", "meaning": { "de": "gewartet", "en": "waited" }, "example": "Ho aspettato cinque minuti davanti al portone.", "whyThisWord": { "de": "Mit aspettato erzählen Sie von einer abgeschlossenen Wartezeit und können den nächsten Schritt anschließen.", "en": "Aspettato describes a completed wait and lets you move on to the next event." } },
+      "distractors": ["al vicino.", "davanti alla biblioteca,"],
+      "placeholderCaption": { "de": "Zwei Erwachsene sprechen nach einer Veranstaltung im Foyer.", "en": "Two adults talk in the foyer after an event." },
+      "songMood": "unhurried Italian acoustic pop with a small sense of discovery",
+      "visualNotes": "Public hall foyer after a talk, coats and soft light; do not show the courtyard route or caretaker."
+    },
+    {
+      "slug": "scoperta-al-banco-dei-formaggi",
+      "title": { "de": "Eine Entdeckung auf dem Markt", "en": "A discovery at the market" },
+      "situation": { "de": "Beim nächsten Treffen erzählen Sie einer Bekannten von einem Marktstand und dem Gespräch mit dem Verkäufer.", "en": "At your next meeting, tell an acquaintance about a market stall and your conversation with the seller." },
+      "pedagogicalGoal": "Mit scoperto und preso von einer neuen Entdeckung erzählen und ein Gespräch als Fortsetzung des Erlebnisses schildern.",
+      "register": "formal",
+      "dialogue": [
+        { "targetText": "Com'è andata la sua visita al mercato?", "baseText": { "de": "Wie war Ihr Marktbesuch?", "en": "How was your visit to the market?" } },
+        { "targetText": "Al mercato ho scoperto un banco di formaggi e ho chiesto un assaggio.", "baseText": { "de": "Auf dem Markt habe ich einen Käsestand entdeckt und um eine Kostprobe gebeten.", "en": "At the market, I discovered a cheese stall and asked for a taste." } },
+        { "targetText": "I formaggi raccontano un territorio. Il venditore ha spiegato da dove vengono?", "baseText": { "de": "Käse erzählt etwas über eine Region. Hat der Verkäufer erklärt, woher die Sorten kommen?", "en": "Cheese tells you about a region. Did the seller explain where the cheeses come from?" } },
+        { "targetText": "Il venditore ha raccontato la storia; io ho preso due formaggi.", "baseText": { "de": "Der Verkäufer hat die Geschichte erzählt; ich habe zwei Käsesorten gekauft.", "en": "The seller told the story; I bought two cheeses." } }
+      ],
+      "pattern": {
+        "label": "Scoperto, fatto, preso",
+        "rule": { "de": "Auch unregelmäßige Partizipien wie scoperto, fatto und preso stehen nach avere und erzählen von abgeschlossenen Handlungen.", "en": "Irregular participles such as scoperto, fatto, and preso also follow avere to describe completed actions." },
+        "examples": [
+          { "targetText": "Al mercato ho scoperto un banco di formaggi e ho chiesto un assaggio.", "baseText": { "de": "Auf dem Markt habe ich einen Käsestand entdeckt und um eine Kostprobe gebeten.", "en": "At the market, I discovered a cheese stall and asked for a taste." }, "highlight": "ho scoperto" },
+          { "targetText": "Abbiamo fatto due domande e abbiamo parlato del latte.", "baseText": { "de": "Wir haben zwei Fragen gestellt und über die Milch gesprochen.", "en": "We asked two questions and talked about the milk." }, "highlight": "Abbiamo fatto" }
+        ]
+      },
+      "cloze": [
+        "Il venditore ha ", { "kind": "form", "answer": "raccontato", "cue": "raccontare (il venditore)", "choices": ["raccontando", "raccontato", "raccontare", "raccontava"] },
+        " la storia; io ho ", { "kind": "form", "answer": "preso", "cue": "prendere (io)", "choices": ["prendere", "prendendo", "prendevo", "preso"] }, " due formaggi."
+      ],
+      "chunks": [
+        { "targetText": "Al mercato", "baseText": { "de": "Auf dem Markt", "en": "At the market" } },
+        { "targetText": "ho scoperto", "baseText": { "de": "habe ich entdeckt", "en": "I discovered" } },
+        { "targetText": "un banco di formaggi", "baseText": { "de": "einen Käsestand", "en": "a cheese stall" } },
+        { "targetText": "e ho chiesto", "baseText": { "de": "und habe gebeten um", "en": "and asked for" } },
+        { "targetText": "un assaggio.", "baseText": { "de": "eine Kostprobe.", "en": "a taste." } }
+      ],
+      "terms": [
+        { "targetText": "scoperto", "baseText": { "de": "entdeckt", "en": "discovered" } },
+        { "targetText": "il banco", "baseText": { "de": "der Marktstand", "en": "the stall" } },
+        { "targetText": "i formaggi", "baseText": { "de": "die Käsesorten", "en": "the cheeses" } },
+        { "targetText": "un assaggio", "baseText": { "de": "eine Kostprobe", "en": "a taste" } },
+        { "targetText": "il venditore", "baseText": { "de": "der Verkäufer", "en": "the seller" } },
+        { "targetText": "raccontato", "baseText": { "de": "erzählt", "en": "told" } },
+        { "targetText": "preso", "baseText": { "de": "genommen; hier: gekauft", "en": "taken; here: bought" } }
+      ],
+      "recall": { "before": "Al mercato ho ", "answer": "scoperto", "after": " un banco di formaggi e ho chiesto un assaggio.", "fallbackChoices": ["scoprire", "scoprendo", "scoperto", "scoprivo"] },
+      "speakRequired": ["mercato", "scoperto", "assaggio"],
+      "sceneCaption": { "de": "Bei einem späteren Treffen fragt eine Bekannte: „Com'è andata la sua visita al mercato?“", "en": "At a later meeting, an acquaintance asks: “Com'è andata la sua visita al mercato?”" },
+      "trophyWord": { "word": "scoperto", "meaning": { "de": "entdeckt", "en": "discovered" }, "example": "Ho scoperto un piccolo mercato vicino a casa.", "whyThisWord": { "de": "Scoperto macht aus einem gewöhnlichen Besuch die Geschichte einer neuen Entdeckung.", "en": "Scoperto turns an ordinary visit into a story about discovering something new." } },
+      "distractors": ["un banco di frutta", "una ricevuta."],
+      "placeholderCaption": { "de": "Zwei Bekannte sprechen auf einer Bank in der Nähe des Marktes.", "en": "Two acquaintances talk on a bench near the market." },
+      "songMood": "warm Italian folk pop with an open-air market atmosphere",
+      "visualNotes": "Two adults chatting near a neighborhood market, stalls softly blurred; no cheese purchase or tasting reveal."
+    },
+    {
+      "slug": "cognome-chiamato-allo-sportello",
+      "title": { "de": "Der gleiche Nachname", "en": "The same last name" },
+      "situation": { "de": "Nach dem Besuch eines Schalters erzählen Sie einem Bekannten von einer unerwarteten Namensgleichheit.", "en": "After visiting a service counter, tell an acquaintance about an unexpected shared last name." },
+      "pedagogicalGoal": "Mit mentre und dem imperfetto eine laufende Situation beschreiben und ein einzelnes Ereignis im passato prossimo anschließen.",
+      "register": "formal",
+      "dialogue": [
+        { "targetText": "Ha aspettato molto allo sportello stamattina?", "baseText": { "de": "Haben Sie heute Morgen lange am Schalter gewartet?", "en": "Did you wait long at the counter this morning?" } },
+        { "targetText": "Mentre aspettavo il mio turno allo sportello, ho sentito chiamare il mio cognome.", "baseText": { "de": "Während ich am Schalter wartete, bis ich an der Reihe war, hörte ich meinen Nachnamen aufrufen.", "en": "While I was waiting for my turn at the counter, I heard my last name called." } },
+        { "targetText": "Forse era un'altra persona con lo stesso cognome. Era già il suo turno?", "baseText": { "de": "Vielleicht war es eine andere Person mit demselben Nachnamen. Waren Sie schon an der Reihe?", "en": "Perhaps it was someone else with the same last name. Was it your turn already?" } },
+        { "targetText": "No, io aspettavo ancora; ho controllato il numero sul biglietto.", "baseText": { "de": "Nein, ich wartete noch; ich habe die Nummer auf dem Zettel überprüft.", "en": "No, I was still waiting; I checked the number on the ticket." } }
+      ],
+      "pattern": {
+        "label": "Mentre + imperfetto",
+        "rule": { "de": "Mentre mit dem imperfetto beschreibt, was gerade lief; das passato prossimo nennt das einzelne Ereignis dabei.", "en": "Mentre with the imperfetto describes what was in progress; the passato prossimo names the event that happened during it." },
+        "examples": [
+          { "targetText": "Mentre aspettavo il mio turno allo sportello, ho sentito chiamare il mio cognome.", "baseText": { "de": "Während ich am Schalter wartete, bis ich an der Reihe war, hörte ich meinen Nachnamen aufrufen.", "en": "While I was waiting for my turn at the counter, I heard my last name called." }, "highlight": "Mentre aspettavo" },
+          { "targetText": "Mentre leggevo il giornale, ho sentito il telefono.", "baseText": { "de": "Während ich die Zeitung las, hörte ich das Telefon.", "en": "While I was reading the newspaper, I heard the phone." }, "highlight": "Mentre leggevo" }
+        ]
+      },
+      "cloze": [
+        "No, io ", { "kind": "form", "answer": "aspettavo", "cue": "aspettare (io)", "choices": ["aspettava", "aspettavamo", "aspettavo", "aspettavano"] },
+        " ancora; ho ", { "kind": "form", "answer": "controllato", "cue": "controllare (io)", "choices": ["controllando", "controllare", "controllato", "controllavo"] }, " il numero sul biglietto."
+      ],
+      "chunks": [
+        { "targetText": "Mentre aspettavo", "baseText": { "de": "Während ich wartete", "en": "While I was waiting" } },
+        { "targetText": "il mio turno", "baseText": { "de": "bis ich an der Reihe war", "en": "for my turn" } },
+        { "targetText": "allo sportello,", "baseText": { "de": "am Schalter,", "en": "at the counter," } },
+        { "targetText": "ho sentito chiamare", "baseText": { "de": "hörte ich aufrufen", "en": "I heard someone call" } },
+        { "targetText": "il mio cognome.", "baseText": { "de": "meinen Nachnamen.", "en": "my last name." } }
+      ],
+      "terms": [
+        { "targetText": "mentre", "baseText": { "de": "während", "en": "while" } },
+        { "targetText": "aspettavo", "baseText": { "de": "ich wartete", "en": "I was waiting" } },
+        { "targetText": "il mio turno", "baseText": { "de": "dass ich an der Reihe bin", "en": "my turn" } },
+        { "targetText": "il cognome", "baseText": { "de": "der Nachname", "en": "the last name" } },
+        { "targetText": "chiamare", "baseText": { "de": "aufrufen", "en": "to call out" } },
+        { "targetText": "la chiamata", "baseText": { "de": "der Aufruf", "en": "the call" } },
+        { "targetText": "il biglietto", "baseText": { "de": "der Nummernzettel", "en": "the numbered ticket" } }
+      ],
+      "recall": { "before": "Mentre ", "answer": "aspettavo", "after": " il mio turno allo sportello, ho sentito chiamare il mio cognome.", "fallbackChoices": ["aspettare", "aspettando", "aspettato", "aspettavo"] },
+      "speakRequired": ["mentre", "aspettavo", "cognome"],
+      "sceneCaption": { "de": "Später fragt ein Bekannter nach dem Schalterbesuch: „Ha aspettato molto allo sportello stamattina?“", "en": "Later, an acquaintance asks about your visit: “Ha aspettato molto allo sportello stamattina?”" },
+      "trophyWord": { "word": "mentre", "meaning": { "de": "während", "en": "while" }, "example": "Ho sentito il telefono mentre aspettavo il mio turno.", "whyThisWord": { "de": "Mentre verbindet den Hintergrund einer Geschichte mit dem Ereignis, das sich dabei abspielt.", "en": "Mentre connects the background of a story with an event happening during it." } },
+      "distractors": ["il mio numero.", "in farmacia,"],
+      "placeholderCaption": { "de": "Zwei Bekannte sprechen vor einem öffentlichen Gebäude.", "en": "Two acquaintances talk outside a public building." },
+      "songMood": "light rhythmic Italian pop with a playful moment of mistaken identity",
+      "visualNotes": "A calm conversation outside a civic building; no duplicate surname, ticket number or second customer shown."
+    },
+    {
+      "slug": "vite-giusta-dal-ferramenta",
+      "title": { "de": "Die passende Schraube", "en": "The right screw" },
+      "situation": { "de": "Nach einem Besuch im Eisenwarenladen erzählen Sie dem Hausmeister, wie Sie die passende Schraube gefunden haben.", "en": "After visiting the hardware store, tell the caretaker how you found the right screw." },
+      "pedagogicalGoal": "Mit cercavo und non sapevo eine Absicht und ein Hindernis im Hintergrund beschreiben und eine abgeschlossene Lösung ergänzen.",
+      "register": "formal",
+      "dialogue": [
+        { "targetText": "Ha trovato la vite per la mensola?", "baseText": { "de": "Haben Sie die Schraube für das Regalbrett gefunden?", "en": "Did you find the screw for the shelf?" } },
+        { "targetText": "Cercavo una vite della misura giusta, ma non sapevo spiegare il problema.", "baseText": { "de": "Ich suchte eine Schraube in der richtigen Größe, konnte das Problem aber nicht erklären.", "en": "I was looking for a screw of the right size, but I didn't know how to explain the problem." } },
+        { "targetText": "Capisco, spiegare le misure è difficile. Ha portato un campione?", "baseText": { "de": "Verstehe, Maße zu erklären ist schwierig. Haben Sie ein Muster mitgebracht?", "en": "I see; explaining sizes is tricky. Did you bring a sample?" } },
+        { "targetText": "Io avevo un campione e il ferramenta ha trovato la vite.", "baseText": { "de": "Ich hatte ein Muster dabei, und der Eisenwarenhändler hat die Schraube gefunden.", "en": "I had a sample, and the hardware store owner found the screw." } }
+      ],
+      "pattern": {
+        "label": "Cercavo, volevo, avevo bisogno",
+        "rule": { "de": "Das imperfetto beschreibt eine damalige Absicht, einen Bedarf oder ein Hindernis; ein Ereignis im passato prossimo kann die Situation weiterführen.", "en": "The imperfetto describes a past intention, need, or obstacle; an event in the passato prossimo can move the situation forward." },
+        "examples": [
+          { "targetText": "Cercavo una vite della misura giusta, ma non sapevo spiegare il problema.", "baseText": { "de": "Ich suchte eine Schraube in der richtigen Größe, konnte das Problem aber nicht erklären.", "en": "I was looking for a screw of the right size, but I didn't know how to explain the problem." }, "highlight": "Cercavo" },
+          { "targetText": "Volevo riparare una sedia, poi ho comprato una vite.", "baseText": { "de": "Ich wollte einen Stuhl reparieren und habe dann eine Schraube gekauft.", "en": "I wanted to repair a chair, then I bought a screw." }, "highlight": "Volevo riparare" }
+        ]
+      },
+      "cloze": [
+        "Io ", { "kind": "form", "answer": "avevo", "cue": "avere (io)", "choices": ["avevamo", "aveva", "avevano", "avevo"] },
+        " un campione e il ferramenta ha ", { "kind": "form", "answer": "trovato", "cue": "trovare (il ferramenta)", "choices": ["trovato", "trovare", "trovando", "trovava"] }, " la vite."
+      ],
+      "chunks": [
+        { "targetText": "Cercavo", "baseText": { "de": "Ich suchte", "en": "I was looking for" } },
+        { "targetText": "una vite", "baseText": { "de": "eine Schraube", "en": "a screw" } },
+        { "targetText": "della misura giusta,", "baseText": { "de": "in der richtigen Größe,", "en": "of the right size," } },
+        { "targetText": "ma non sapevo", "baseText": { "de": "aber ich wusste nicht, wie ich", "en": "but I didn't know how to" } },
+        { "targetText": "spiegare il problema.", "baseText": { "de": "das Problem erklären sollte.", "en": "explain the problem." } }
+      ],
+      "terms": [
+        { "targetText": "cercavo", "baseText": { "de": "ich suchte", "en": "I was looking for" } },
+        { "targetText": "una vite", "baseText": { "de": "eine Schraube", "en": "a screw" } },
+        { "targetText": "la misura giusta", "baseText": { "de": "die richtige Größe", "en": "the right size" } },
+        { "targetText": "non sapevo", "baseText": { "de": "ich wusste nicht", "en": "I didn't know" } },
+        { "targetText": "spiegare", "baseText": { "de": "erklären", "en": "to explain" } },
+        { "targetText": "un campione", "baseText": { "de": "ein Muster", "en": "a sample" } },
+        { "targetText": "il ferramenta", "baseText": { "de": "der Eisenwarenhändler", "en": "the hardware store owner" } }
+      ],
+      "recall": { "before": "Cercavo una vite della misura giusta, ma non sapevo ", "answer": "spiegare", "after": " il problema.", "fallbackChoices": ["spiegato", "spiegare", "spiegando", "spiegavo"] },
+      "speakRequired": ["cercavo", "vite", "problema"],
+      "sceneCaption": { "de": "Der Hausmeister fragt nach dem Einkauf: „Ha trovato la vite per la mensola?“", "en": "The caretaker asks about your shopping trip: “Ha trovato la vite per la mensola?”" },
+      "trophyWord": { "word": "cercavo", "meaning": { "de": "ich suchte", "en": "I was looking for" }, "example": "Cercavo una vite per riparare la sedia.", "whyThisWord": { "de": "Cercavo beschreibt, wonach Sie damals suchten, und lässt Raum für die anschließende Lösung.", "en": "Cercavo describes what you were looking for and leaves room for the solution that followed." } },
+      "distractors": ["una maniglia", "della misura sbagliata,"],
+      "placeholderCaption": { "de": "Eine Person erzählt dem Hausmeister von einem Einkauf.", "en": "Someone tells the caretaker about a shopping trip." },
+      "songMood": "gentle Italian acoustic pop with the satisfaction of a practical discovery",
+      "visualNotes": "Apartment corridor conversation, a plain shelf in the background; do not show a sample screw or the hardware-store solution."
+    },
+    {
+      "slug": "vecchio-indirizzo-del-laboratorio",
+      "title": { "de": "Noch die alte Adresse", "en": "Still the old address" },
+      "situation": { "de": "Nach einer geplanten Fahrt zur Reparaturwerkstatt erzählen Sie einem Bekannten, warum ein vorheriger Anruf hilfreich war.", "en": "After planning a trip to a repair workshop, tell an acquaintance why calling ahead helped." },
+      "pedagogicalGoal": "Mit avevo einen vergangenen Ausgangszustand und mit ma und passato prossimo die entscheidende Handlung gegenüberstellen.",
+      "register": "formal",
+      "dialogue": [
+        { "targetText": "Ha trovato il laboratorio senza problemi?", "baseText": { "de": "Haben Sie die Reparaturwerkstatt ohne Probleme gefunden?", "en": "Did you find the repair workshop without any trouble?" } },
+        { "targetText": "Avevo un vecchio indirizzo del laboratorio, ma per fortuna ho telefonato prima.", "baseText": { "de": "Ich hatte eine alte Adresse der Reparaturwerkstatt, habe aber zum Glück vorher angerufen.", "en": "I had an old address for the workshop, but luckily I called first." } },
+        { "targetText": "Il laboratorio ora è vicino al ponte. Ha evitato il giro a vuoto?", "baseText": { "de": "Die Werkstatt ist jetzt in der Nähe der Brücke. Haben Sie sich den vergeblichen Weg erspart?", "en": "The workshop is near the bridge now. Did you avoid a wasted trip?" } },
+        { "targetText": "Sì, io pensavo alla vecchia sede; la telefonata ha chiarito tutto.", "baseText": { "de": "Ja, ich dachte an den alten Standort; der Anruf hat alles geklärt.", "en": "Yes, I was thinking of the old location; the call cleared everything up." } }
+      ],
+      "pattern": {
+        "label": "Lo sfondo e l'evento",
+        "rule": { "de": "Das imperfetto gibt die Ausgangslage an; mit ma oder così und dem passato prossimo erzählen Sie, was die Geschichte verändert hat.", "en": "The imperfetto gives the background; ma or così with the passato prossimo introduces what changed the story." },
+        "examples": [
+          { "targetText": "Avevo un vecchio indirizzo del laboratorio, ma per fortuna ho telefonato prima.", "baseText": { "de": "Ich hatte eine alte Adresse der Reparaturwerkstatt, habe aber zum Glück vorher angerufen.", "en": "I had an old address for the workshop, but luckily I called first." }, "highlight": "Avevo un vecchio indirizzo" },
+          { "targetText": "Avevo bisogno di un orario preciso, così ho telefonato.", "baseText": { "de": "Ich brauchte eine genaue Uhrzeit, also habe ich angerufen.", "en": "I needed an exact time, so I called." }, "highlight": "così ho telefonato" }
+        ]
+      },
+      "cloze": [
+        "Sì, io ", { "kind": "form", "answer": "pensavo", "cue": "pensare (io)", "choices": ["pensava", "pensavamo", "pensavo", "pensavano"] },
+        " alla vecchia sede; la telefonata ha ", { "kind": "form", "answer": "chiarito", "cue": "chiarire (la telefonata)", "choices": ["chiarire", "chiarito", "chiarendo", "chiariva"] }, " tutto."
+      ],
+      "chunks": [
+        { "targetText": "Avevo", "baseText": { "de": "Ich hatte", "en": "I had" } },
+        { "targetText": "un vecchio indirizzo", "baseText": { "de": "eine alte Adresse", "en": "an old address" } },
+        { "targetText": "del laboratorio,", "baseText": { "de": "der Reparaturwerkstatt,", "en": "for the workshop," } },
+        { "targetText": "ma per fortuna", "baseText": { "de": "aber zum Glück", "en": "but luckily" } },
+        { "targetText": "ho telefonato prima.", "baseText": { "de": "habe ich vorher angerufen.", "en": "I called first." } }
+      ],
+      "terms": [
+        { "targetText": "l'indirizzo", "baseText": { "de": "die Adresse", "en": "the address" } },
+        { "targetText": "il laboratorio", "baseText": { "de": "die Reparaturwerkstatt", "en": "the workshop" } },
+        { "targetText": "per fortuna", "baseText": { "de": "zum Glück", "en": "luckily" } },
+        { "targetText": "telefonare prima", "baseText": { "de": "vorher anrufen", "en": "to call ahead" } },
+        { "targetText": "la vecchia sede", "baseText": { "de": "der alte Standort", "en": "the old location" } },
+        { "targetText": "un giro a vuoto", "baseText": { "de": "ein vergeblicher Weg", "en": "a wasted trip" } },
+        { "targetText": "chiarito", "baseText": { "de": "geklärt", "en": "cleared up" } }
+      ],
+      "recall": { "before": "Avevo un vecchio indirizzo del laboratorio, ma per fortuna ho ", "answer": "telefonato", "after": " prima.", "fallbackChoices": ["telefonare", "telefonando", "telefonavo", "telefonato"] },
+      "speakRequired": ["indirizzo", "laboratorio", "telefonato"],
+      "sceneCaption": { "de": "Ein Bekannter erkundigt sich später: „Ha trovato il laboratorio senza problemi?“", "en": "An acquaintance asks later: “Ha trovato il laboratorio senza problemi?”" },
+      "trophyWord": { "word": "indirizzo", "meaning": { "de": "Adresse", "en": "address" }, "example": "Ho controllato l'indirizzo prima della visita.", "whyThisWord": { "de": "Indirizzo benennt das konkrete Detail, das eine Reise erleichtern oder zu einem Umweg führen kann.", "en": "Indirizzo names the practical detail that can make a trip easy or send you the wrong way." } },
+      "distractors": ["un vecchio numero", "ho telefonato dopo."],
+      "placeholderCaption": { "de": "Zwei Bekannte sprechen vor einem kleinen Geschäft.", "en": "Two acquaintances talk outside a small shop." },
+      "songMood": "easy Italian pop with a relieved conversational tone",
+      "visualNotes": "A neighborhood shopfront and two adults talking; no address sign, bridge or phone-call outcome shown."
+    },
+    {
+      "slug": "rumore-nel-cortile",
+      "title": { "de": "Ein Geräusch im Innenhof", "en": "A noise in the courtyard" },
+      "situation": { "de": "Am nächsten Tag erzählen Sie einer Nachbarin von einem plötzlichen Geräusch während Ihrer Lektüre.", "en": "The next day, tell a neighbor about a sudden noise while you were reading." },
+      "pedagogicalGoal": "Eine laufende Tätigkeit mit mentre beschreiben, ein plötzliches Ereignis nennen und die Reaktion mehrerer Personen ergänzen.",
+      "register": "formal",
+      "dialogue": [
+        { "targetText": "Che cosa è successo ieri nel cortile?", "baseText": { "de": "Was ist gestern im Innenhof passiert?", "en": "What happened in the courtyard yesterday?" } },
+        { "targetText": "Mentre leggevo, ho sentito all'improvviso un rumore nel cortile sotto casa.", "baseText": { "de": "Während ich las, hörte ich plötzlich ein Geräusch im Innenhof unter meiner Wohnung.", "en": "While I was reading, I suddenly heard a noise in the courtyard below my apartment." } },
+        { "targetText": "Un rumore così forte? I vicini hanno aperto le finestre?", "baseText": { "de": "So ein lautes Geräusch? Haben die Nachbarn die Fenster geöffnet?", "en": "A noise that loud? Did the neighbors open their windows?" } },
+        { "targetText": "Un gatto ha rovesciato un vaso; i vicini hanno guardato fuori.", "baseText": { "de": "Eine Katze hat einen Blumentopf umgeworfen; die Nachbarn haben hinausgeschaut.", "en": "A cat knocked over a flowerpot; the neighbors looked outside." } }
+      ],
+      "pattern": {
+        "label": "Mentre… all'improvviso…",
+        "rule": { "de": "Mentre und imperfetto setzen den Hintergrund; all'improvviso hebt ein plötzliches Ereignis im passato prossimo hervor.", "en": "Mentre and the imperfetto set the background; all'improvviso highlights a sudden event in the passato prossimo." },
+        "examples": [
+          { "targetText": "Mentre leggevo, ho sentito all'improvviso un rumore nel cortile sotto casa.", "baseText": { "de": "Während ich las, hörte ich plötzlich ein Geräusch im Innenhof unter meiner Wohnung.", "en": "While I was reading, I suddenly heard a noise in the courtyard below my apartment." }, "highlight": "Mentre leggevo" },
+          { "targetText": "Mentre aspettavo, i vicini hanno aperto le finestre.", "baseText": { "de": "Während ich wartete, haben die Nachbarn die Fenster geöffnet.", "en": "While I was waiting, the neighbors opened their windows." }, "highlight": "i vicini hanno aperto" }
+        ]
+      },
+      "cloze": [
+        "Un gatto ha ", { "kind": "form", "answer": "rovesciato", "cue": "rovesciare (un gatto)", "choices": ["rovesciava", "rovesciare", "rovesciato", "rovesciando"] },
+        " un vaso; i vicini hanno ", { "kind": "form", "answer": "guardato", "cue": "guardare (i vicini)", "choices": ["guardando", "guardavano", "guardare", "guardato"] }, " fuori."
+      ],
+      "chunks": [
+        { "targetText": "Mentre leggevo,", "baseText": { "de": "Während ich las,", "en": "While I was reading," } },
+        { "targetText": "ho sentito", "baseText": { "de": "hörte ich", "en": "I heard" } },
+        { "targetText": "all'improvviso", "baseText": { "de": "plötzlich", "en": "suddenly" } },
+        { "targetText": "un rumore", "baseText": { "de": "ein Geräusch", "en": "a noise" } },
+        { "targetText": "nel cortile sotto casa.", "baseText": { "de": "im Innenhof unter meiner Wohnung.", "en": "in the courtyard below my apartment." } }
+      ],
+      "terms": [
+        { "targetText": "sentito", "baseText": { "de": "gehört", "en": "heard" } },
+        { "targetText": "leggevo", "baseText": { "de": "ich las", "en": "I was reading" } },
+        { "targetText": "all'improvviso", "baseText": { "de": "plötzlich", "en": "suddenly" } },
+        { "targetText": "un rumore", "baseText": { "de": "ein Geräusch", "en": "a noise" } },
+        { "targetText": "rovesciato", "baseText": { "de": "umgeworfen", "en": "knocked over" } },
+        { "targetText": "un vaso", "baseText": { "de": "ein Blumentopf", "en": "a flowerpot" } },
+        { "targetText": "i vicini", "baseText": { "de": "die Nachbarn", "en": "the neighbors" } }
+      ],
+      "recall": { "before": "Mentre leggevo, ho ", "answer": "sentito", "after": " all'improvviso un rumore nel cortile sotto casa.", "fallbackChoices": ["sentito", "sentire", "sentendo", "sentivo"] },
+      "speakRequired": ["leggevo", "sentito", "rumore"],
+      "sceneCaption": { "de": "Am nächsten Tag fragt eine Nachbarin: „Che cosa è successo ieri nel cortile?“", "en": "The next day, a neighbor asks: “Che cosa è successo ieri nel cortile?”" },
+      "trophyWord": { "word": "sentito", "meaning": { "de": "gehört", "en": "heard" }, "example": "Ho sentito un rumore vicino alla finestra.", "whyThisWord": { "de": "Sentito führt ein Geräusch als Auslöser einer Geschichte ein, bevor Sie seine Ursache erklären.", "en": "Sentito introduces a sound that starts a story before you explain its cause." } },
+      "distractors": ["Mentre cucinavo,", "nel corridoio di casa."],
+      "placeholderCaption": { "de": "Zwei Nachbarn sprechen am Treppenabsatz über den vergangenen Tag.", "en": "Two neighbors talk on a landing about the previous day." },
+      "songMood": "playful Italian acoustic pop with a brief surprise and a gentle ending",
+      "visualNotes": "Apartment landing conversation, courtyard light through a window; do not reveal the cat, flowerpot or neighbors' reaction."
+    },
+    {
+      "slug": "secondo-tentativo-per-il-documento",
+      "title": { "de": "Beim zweiten Versuch", "en": "On the second try" },
+      "situation": { "de": "Nach einem Behördengang erzählen Sie einer Bekannten, wie Sie die richtige Abholstelle gefunden haben.", "en": "After visiting an office, tell an acquaintance how you found the right place to collect your document." },
+      "pedagogicalGoal": "Ein späteres Verstehen mit ho capito erzählen und die hilfreiche Beschilderung mit dem imperfetto beschreiben.",
+      "register": "formal",
+      "dialogue": [
+        { "targetText": "Ha trovato subito il posto per ritirare il documento?", "baseText": { "de": "Haben Sie die Stelle zur Abholung des Dokuments sofort gefunden?", "en": "Did you find the place to collect your document right away?" } },
+        { "targetText": "Ho capito solo al secondo tentativo dove ritirare il documento.", "baseText": { "de": "Ich habe erst beim zweiten Versuch verstanden, wo ich das Dokument abholen konnte.", "en": "I only understood where to collect the document on my second try." } },
+        { "targetText": "Vicino alle scale c'è un secondo cartello. Ha guardato anche quello?", "baseText": { "de": "Bei der Treppe gibt es ein zweites Schild. Haben Sie auch dort nachgesehen?", "en": "There's a second sign near the stairs. Did you look at that one too?" } },
+        { "targetText": "Il cartello diceva piano terra; io ho ritirato tutto.", "baseText": { "de": "Auf dem Schild stand Erdgeschoss; ich habe alles abgeholt.", "en": "The sign said ground floor; I collected everything." } }
+      ],
+      "pattern": {
+        "label": "Un'indicazione, poi un'azione",
+        "rule": { "de": "Das imperfetto beschreibt eine damalige Angabe auf einem Schild; das passato prossimo erzählt die anschließende Handlung.", "en": "The imperfetto describes what a sign said at the time; the passato prossimo tells the action that followed." },
+        "examples": [
+          { "targetText": "Il cartello diceva piano terra; io ho ritirato tutto.", "baseText": { "de": "Auf dem Schild stand Erdgeschoss; ich habe alles abgeholt.", "en": "The sign said ground floor; I collected everything." }, "highlight": "Il cartello diceva" },
+          { "targetText": "C'era un cartello che diceva di aspettare al piano terra.", "baseText": { "de": "Es gab ein Schild, auf dem stand, dass man im Erdgeschoss warten sollte.", "en": "There was a sign saying to wait on the ground floor." }, "highlight": "un cartello che diceva" }
+        ]
+      },
+      "cloze": [
+        "Il cartello ", { "kind": "form", "answer": "diceva", "cue": "dire (il cartello)", "choices": ["dicevo", "dicevamo", "dicevano", "diceva"] },
+        " piano terra; io ho ", { "kind": "form", "answer": "ritirato", "cue": "ritirare (io)", "choices": ["ritirare", "ritirato", "ritirando", "ritiravo"] }, " tutto."
+      ],
+      "chunks": [
+        { "targetText": "Ho capito", "baseText": { "de": "Ich habe verstanden", "en": "I understood" } },
+        { "targetText": "solo al secondo tentativo", "baseText": { "de": "erst beim zweiten Versuch", "en": "only on the second try" } },
+        { "targetText": "dove ritirare", "baseText": { "de": "wo ich abholen konnte", "en": "where to collect" } },
+        { "targetText": "il documento.", "baseText": { "de": "das Dokument.", "en": "the document." } }
+      ],
+      "terms": [
+        { "targetText": "capito", "baseText": { "de": "verstanden", "en": "understood" } },
+        { "targetText": "al secondo tentativo", "baseText": { "de": "beim zweiten Versuch", "en": "on the second try" } },
+        { "targetText": "ritirare", "baseText": { "de": "abholen", "en": "to collect" } },
+        { "targetText": "il documento", "baseText": { "de": "das Dokument", "en": "the document" } },
+        { "targetText": "il cartello", "baseText": { "de": "das Schild", "en": "the sign" } },
+        { "targetText": "il piano terra", "baseText": { "de": "das Erdgeschoss", "en": "the ground floor" } },
+        { "targetText": "diceva", "baseText": { "de": "sagte; hier: darauf stand", "en": "said; here: it read" } }
+      ],
+      "recall": { "before": "Ho ", "answer": "capito", "after": " solo al secondo tentativo dove ritirare il documento.", "fallbackChoices": ["capire", "capendo", "capito", "capivo"] },
+      "speakRequired": ["capito", "tentativo", "documento"],
+      "sceneCaption": { "de": "Nach dem Behördengang fragt eine Bekannte: „Ha trovato subito il posto per ritirare il documento?“", "en": "After your visit to the office, an acquaintance asks: “Ha trovato subito il posto per ritirare il documento?”" },
+      "trophyWord": { "word": "capito", "meaning": { "de": "verstanden", "en": "understood" }, "example": "Ho capito dove ritirare la ricevuta.", "whyThisWord": { "de": "Capito markiert den Moment, in dem eine unklare Situation verständlich wird.", "en": "Capito marks the point when an unclear situation finally makes sense." } },
+      "distractors": ["solo al primo tentativo", "il pacco."],
+      "placeholderCaption": { "de": "Zwei Bekannte unterhalten sich nach einem Bürobesuch.", "en": "Two acquaintances chat after an office visit." },
+      "songMood": "gentle Italian pop with a gradual sense of clarity",
+      "visualNotes": "Conversation outside an office building, neutral folder in hand; no sign text, stairs or correct-floor reveal."
+    },
+    {
+      "slug": "amministratore-incontrato-sulle-scale",
+      "title": { "de": "Ein Treffen auf der Treppe", "en": "A meeting on the stairs" },
+      "situation": { "de": "Sie erzählen einer Nachbarin, wie Sie den Hausverwalter nach mehreren erfolglosen Kontaktversuchen erreicht haben.", "en": "Tell a neighbor how you finally reached the building manager after several unsuccessful attempts." },
+      "pedagogicalGoal": "Mit finalmente eine Wendung erzählen und wiederholte frühere Schwierigkeiten im imperfetto von einer abgeschlossenen Lösung unterscheiden.",
+      "register": "formal",
+      "dialogue": [
+        { "targetText": "Ha parlato con l'amministratore del palazzo?", "baseText": { "de": "Haben Sie mit dem Hausverwalter gesprochen?", "en": "Did you speak with the building manager?" } },
+        { "targetText": "Finalmente ho incontrato l'amministratore sulle scale e abbiamo parlato della luce.", "baseText": { "de": "Endlich habe ich den Hausverwalter auf der Treppe getroffen, und wir haben über das Licht gesprochen.", "en": "I finally met the building manager on the stairs, and we talked about the light." } },
+        { "targetText": "Che fortuna incontrarlo! E la luce del pianerottolo?", "baseText": { "de": "Was für ein Glück, ihn zu treffen! Und das Licht auf dem Treppenabsatz?", "en": "How lucky to run into him! What about the light on the landing?" } },
+        { "targetText": "Nessuno rispondeva al telefono; l'amministratore ha risolto il problema.", "baseText": { "de": "Am Telefon ging niemand ran; der Hausverwalter hat das Problem gelöst.", "en": "Nobody was answering the phone; the building manager solved the problem." } }
+      ],
+      "pattern": {
+        "label": "Prima la difficoltà, poi la soluzione",
+        "rule": { "de": "Das imperfetto beschreibt eine wiederholte Schwierigkeit; das passato prossimo nennt die einzelne Handlung, die zur Lösung führte.", "en": "The imperfetto describes a repeated difficulty; the passato prossimo names the event that brought a solution." },
+        "examples": [
+          { "targetText": "Nessuno rispondeva al telefono; l'amministratore ha risolto il problema.", "baseText": { "de": "Am Telefon ging niemand ran; der Hausverwalter hat das Problem gelöst.", "en": "Nobody was answering the phone; the building manager solved the problem." }, "highlight": "Nessuno rispondeva" },
+          { "targetText": "L'amministratore non rispondeva mai, poi ha telefonato.", "baseText": { "de": "Der Hausverwalter ging nie ans Telefon, dann hat er angerufen.", "en": "The building manager never answered, then he called." }, "highlight": "non rispondeva mai" }
+        ]
+      },
+      "cloze": [
+        "Nessuno ", { "kind": "form", "answer": "rispondeva", "cue": "rispondere (nessuno)", "choices": ["rispondevo", "rispondevamo", "rispondeva", "rispondevano"] },
+        " al telefono; l'amministratore ha ", { "kind": "form", "answer": "risolto", "cue": "risolvere (l'amministratore)", "choices": ["risolto", "risolvere", "risolvendo", "risolveva"] }, " il problema."
+      ],
+      "chunks": [
+        { "targetText": "Finalmente", "baseText": { "de": "Endlich", "en": "Finally" } },
+        { "targetText": "ho incontrato", "baseText": { "de": "habe ich getroffen", "en": "I met" } },
+        { "targetText": "l'amministratore", "baseText": { "de": "den Hausverwalter", "en": "the building manager" } },
+        { "targetText": "sulle scale", "baseText": { "de": "auf der Treppe", "en": "on the stairs" } },
+        { "targetText": "e abbiamo parlato", "baseText": { "de": "und wir haben gesprochen", "en": "and we talked" } },
+        { "targetText": "della luce.", "baseText": { "de": "über das Licht.", "en": "about the light." } }
+      ],
+      "terms": [
+        { "targetText": "finalmente", "baseText": { "de": "endlich", "en": "finally" } },
+        { "targetText": "incontrato", "baseText": { "de": "getroffen", "en": "met" } },
+        { "targetText": "l'amministratore", "baseText": { "de": "der Hausverwalter", "en": "the building manager" } },
+        { "targetText": "sulle scale", "baseText": { "de": "auf der Treppe", "en": "on the stairs" } },
+        { "targetText": "il pianerottolo", "baseText": { "de": "der Treppenabsatz", "en": "the landing" } },
+        { "targetText": "rispondeva", "baseText": { "de": "antwortete; ging ans Telefon", "en": "answered; picked up the phone" } },
+        { "targetText": "risolto", "baseText": { "de": "gelöst", "en": "solved" } }
+      ],
+      "recall": { "before": "Finalmente ho ", "answer": "incontrato", "after": " l'amministratore sulle scale e abbiamo parlato della luce.", "fallbackChoices": ["incontrando", "incontrare", "incontravo", "incontrato"] },
+      "speakRequired": ["finalmente", "incontrato", "scale"],
+      "sceneCaption": { "de": "Eine Nachbarin fragt beim nächsten Treffen: „Ha parlato con l'amministratore del palazzo?“", "en": "At your next meeting, a neighbor asks: “Ha parlato con l'amministratore del palazzo?”" },
+      "trophyWord": { "word": "finalmente", "meaning": { "de": "endlich", "en": "finally" }, "example": "Finalmente ho parlato con il tecnico.", "whyThisWord": { "de": "Finalmente zeigt die Erleichterung, wenn nach mehreren Versuchen etwas klappt.", "en": "Finalmente expresses relief when something works out after several attempts." } },
+      "distractors": ["al mercato", "della porta."],
+      "placeholderCaption": { "de": "Zwei Nachbarn unterhalten sich vor den Briefkästen.", "en": "Two neighbors chat by the mailboxes." },
+      "songMood": "warm Italian pop with a small release of everyday frustration",
+      "visualNotes": "Apartment lobby near mailboxes, two neighbors chatting; no administrator, repaired light or resolved maintenance reveal."
+    },
+    {
+      "slug": "piccola-avventura-sul-lago",
+      "title": { "de": "Ein kleines Abenteuer am See", "en": "A little adventure at the lake" },
+      "situation": { "de": "Nach einem Ausflug erzählen Sie einem Bekannten von der Suche nach dem richtigen Anleger für das Ausflugsboot.", "en": "After a trip, tell an acquaintance about looking for the right pier for the sightseeing boat." },
+      "pedagogicalGoal": "Einen kurzen gemeinsamen Ausflug mit imperfetto als Hintergrund und mehreren Ereignissen im passato prossimo zusammenhängend erzählen.",
+      "register": "formal",
+      "dialogue": [
+        { "targetText": "Com'è andata la gita in battello?", "baseText": { "de": "Wie war der Ausflug mit dem Boot?", "en": "How was the boat trip?" } },
+        { "targetText": "Ho avuto una piccola avventura sul lago: non trovavamo il pontile giusto.", "baseText": { "de": "Ich habe am See ein kleines Abenteuer erlebt: Wir fanden den richtigen Anleger nicht.", "en": "I had a little adventure at the lake: we couldn't find the right pier." } },
+        { "targetText": "Con tutti quei pontili è facile sbagliare. Qualcuno ha indicato quello del battello?", "baseText": { "de": "Bei all den Anlegern kann man sich leicht irren. Hat jemand den Anleger für das Ausflugsboot gezeigt?", "en": "It's easy to get confused with all those piers. Did someone point out the one for the boat?" } },
+        { "targetText": "Un pescatore ha indicato il pontile; noi abbiamo preso il battello.", "baseText": { "de": "Ein Fischer hat den Anleger gezeigt; wir haben das Ausflugsboot genommen.", "en": "A fisherman pointed out the pier; we took the sightseeing boat." } }
+      ],
+      "pattern": {
+        "label": "Raccontare insieme",
+        "rule": { "de": "Mit non trovavamo beschreiben Sie eine gemeinsame Suche im Hintergrund; abbiamo mit einem Partizip erzählt, was die Gruppe danach getan hat.", "en": "Non trovavamo describes a shared search in the background; abbiamo with a past participle tells what the group did afterward." },
+        "examples": [
+          { "targetText": "Ho avuto una piccola avventura sul lago: non trovavamo il pontile giusto.", "baseText": { "de": "Ich habe am See ein kleines Abenteuer erlebt: Wir fanden den richtigen Anleger nicht.", "en": "I had a little adventure at the lake: we couldn't find the right pier." }, "highlight": "non trovavamo" },
+          { "targetText": "Non trovavamo l'ingresso, poi abbiamo chiesto al custode.", "baseText": { "de": "Wir fanden den Eingang nicht und haben dann den Hausmeister gefragt.", "en": "We couldn't find the entrance, then we asked the caretaker." }, "highlight": "abbiamo chiesto" }
+        ]
+      },
+      "cloze": [
+        "Un pescatore ha ", { "kind": "form", "answer": "indicato", "cue": "indicare (un pescatore)", "choices": ["indicando", "indicava", "indicato", "indicare"] },
+        " il pontile; noi abbiamo ", { "kind": "form", "answer": "preso", "cue": "prendere (noi)", "choices": ["prendere", "preso", "prendendo", "prendevamo"] }, " il battello."
+      ],
+      "chunks": [
+        { "targetText": "Ho avuto", "baseText": { "de": "Ich habe erlebt", "en": "I had" } },
+        { "targetText": "una piccola avventura", "baseText": { "de": "ein kleines Abenteuer", "en": "a little adventure" } },
+        { "targetText": "sul lago:", "baseText": { "de": "am See:", "en": "at the lake:" } },
+        { "targetText": "non trovavamo", "baseText": { "de": "wir fanden nicht", "en": "we couldn't find" } },
+        { "targetText": "il pontile giusto.", "baseText": { "de": "den richtigen Anleger.", "en": "the right pier." } }
+      ],
+      "terms": [
+        { "targetText": "un'avventura", "baseText": { "de": "ein Abenteuer", "en": "an adventure" } },
+        { "targetText": "il lago", "baseText": { "de": "der See", "en": "the lake" } },
+        { "targetText": "non trovavamo", "baseText": { "de": "wir fanden nicht", "en": "we couldn't find" } },
+        { "targetText": "il pontile", "baseText": { "de": "der Anleger", "en": "the pier" } },
+        { "targetText": "un pescatore", "baseText": { "de": "ein Fischer", "en": "a fisherman" } },
+        { "targetText": "il battello", "baseText": { "de": "das Ausflugsboot", "en": "the sightseeing boat" } },
+        { "targetText": "abbiamo preso", "baseText": { "de": "wir haben genommen", "en": "we took" } }
+      ],
+      "recall": { "before": "Ho avuto una piccola avventura sul lago: non ", "answer": "trovavamo", "after": " il pontile giusto.", "fallbackChoices": ["trovando", "trovato", "trovare", "trovavamo"] },
+      "speakRequired": ["avventura", "lago", "pontile"],
+      "sceneCaption": { "de": "Nach dem Ausflug fragt ein Bekannter: „Com'è andata la gita in battello?“", "en": "After the trip, an acquaintance asks: “Com'è andata la gita in battello?”" },
+      "trophyWord": { "word": "avventura", "meaning": { "de": "Abenteuer", "en": "adventure" }, "example": "Ho raccontato la nostra avventura sul lago.", "whyThisWord": { "de": "Avventura fasst ein unerwartetes Erlebnis zusammen und lädt dazu ein, die einzelnen Ereignisse zu erzählen.", "en": "Avventura sums up an unexpected experience and invites you to tell the events that made it memorable." } },
+      "distractors": ["in montagna:", "il sentiero giusto."],
+      "placeholderCaption": { "de": "Zwei Bekannte unterhalten sich nach einem Ausflug bei einem Kaffee.", "en": "Two acquaintances chat over coffee after a day trip." },
+      "songMood": "bright Italian acoustic pop with a small travel-story arc",
+      "visualNotes": "Relaxed conversation at a neighborhood café after a trip; no fisherman, pier signage or boat-boarding resolution shown."
+    }
+  ]
+}

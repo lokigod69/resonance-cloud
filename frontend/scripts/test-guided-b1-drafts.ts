@@ -6,18 +6,28 @@ import { draftTtsLessons, validateB1Draft, type B1Draft } from './lib/guidedB1Dr
 import { GUIDED_LESSONS } from '../src/data/guidedLessonsAuthoring'
 
 const root = resolve(import.meta.dirname, '../content-drafts/b1-2026-10')
-const sources = ['english', 'spanish', 'french'].map(slug => readFileSync(resolve(root, `${slug}.json`)))
-const drafts = sources.map(source => validateB1Draft(JSON.parse(source.toString('utf8'))))
-const snapshotBytes = readFileSync(resolve(root, 'tts-snapshot.json'))
-const snapshot = JSON.parse(snapshotBytes.toString('utf8'))
-assert.deepEqual(snapshot, { schemaVersion: 1, status: 'draft', languages: drafts.map((draft, index) => ({
-  targetLanguage: draft.targetLanguage,
-  targetLanguageCode: draft.targetLanguageCode,
-  sourceSha256: createHash('sha256').update(sources[index]).digest('hex'),
-  lessons: draftTtsLessons(draft),
-})) }, 'Saved audio snapshot must exactly match current lesson sources')
-const plan = JSON.parse(readFileSync(resolve(root, 'tts-plan.json'), 'utf8'))
-assert.equal(plan.snapshotSha256, createHash('sha256').update(snapshotBytes).digest('hex'), 'Audio plan fingerprint is stale')
+const batches = [
+  { slugs: ['english', 'spanish', 'french'], suffix: '' },
+  { slugs: ['italian', 'portuguese'], suffix: '-it-pt' },
+]
+const drafts: B1Draft[] = []
+for (const batch of batches) {
+  const sources = batch.slugs.map(slug => readFileSync(resolve(root, `${slug}.json`)))
+  const group = sources.map(source => validateB1Draft(JSON.parse(source.toString('utf8'))))
+  drafts.push(...group)
+  const snapshotBytes = readFileSync(resolve(root, `tts-snapshot${batch.suffix}.json`))
+  const snapshot = JSON.parse(snapshotBytes.toString('utf8'))
+  assert.deepEqual(snapshot, { schemaVersion: 1, status: 'draft', languages: group.map((draft, index) => ({
+    targetLanguage: draft.targetLanguage,
+    targetLanguageCode: draft.targetLanguageCode,
+    sourceSha256: createHash('sha256').update(sources[index]).digest('hex'),
+    lessons: draftTtsLessons(draft),
+  })) }, 'Saved audio snapshot must exactly match current lesson sources')
+  for (const model of ['', '-v4']) {
+    const plan = JSON.parse(readFileSync(resolve(root, `tts-plan${batch.suffix}${model}.json`), 'utf8'))
+    assert.equal(plan.snapshotSha256, createHash('sha256').update(snapshotBytes).digest('hex'), 'Audio plan fingerprint is stale')
+  }
+}
 for (const draft of drafts) {
   const proposal = JSON.parse(readFileSync(resolve(root, `${draft.targetLanguage.toLowerCase()}-plan.json`), 'utf8')) as {
     targetLanguage: string
@@ -69,4 +79,25 @@ rejects('missing base explanation', draft => { draft.lessons[0].title.de = '' })
 rejects('incorrect checkpoint reconstruction', draft => { draft.lessons[0].recall.after += ' extra' })
 rejects('duplicate fallback choice', draft => { draft.lessons[0].recall.fallbackChoices[1] = draft.lessons[0].recall.fallbackChoices[0] })
 rejects('later dialogue leaked in scene', draft => { draft.lessons[0].sceneCaption.de += draft.lessons[0].dialogue[2].targetText })
-console.log('PASS: 300 distinct trophy allocations, 30 staged B1 lessons, current audio snapshot/fingerprints, complete audio surfaces, and 9 rejection cases. No provider calls.')
+
+// A cue names a visible subject; a substring or a hidden answer cannot supply it.
+const portuguese = drafts.find(draft => draft.targetLanguage === 'Portuguese')!
+function rejectsSubject(change: (lesson: B1Draft['lessons'][number]) => void) {
+  const broken = structuredClone(portuguese)
+  const lesson = broken.lessons[0]
+  change(lesson)
+  lesson.dialogue[3].targetText = lesson.cloze.map(part => typeof part === 'string' ? part : part.answer).join('')
+  assert.throws(() => validateB1Draft(broken), /Form blank needs cue.*whole word in the literal text/)
+}
+rejectsSubject(lesson => { lesson.cloze[0] = 'Ele recebeu ' })
+rejectsSubject(lesson => {
+  lesson.cloze.unshift('No fim, ', { kind: 'choice', answer: 'eu', choices: ['eu', 'ela', 'nós', 'eles'] })
+  lesson.cloze[2] = ' '
+})
+const italian = drafts.find(draft => draft.targetLanguage === 'Italian')!
+for (const [source, replacement] of [[italian, 'Sono stanco.'], [portuguese, 'Estou cansada.']] as const) {
+  const broken = structuredClone(source)
+  broken.lessons[0].pattern.examples[1] = { ...broken.lessons[0].pattern.examples[1], targetText: replacement, highlight: replacement }
+  assert.throws(() => validateB1Draft(broken), /Banned learner pattern.*in: /, 'Unplanned learner gender must be rejected')
+}
+console.log('PASS: 500 distinct trophy allocations, 50 staged B1 lessons, current audio snapshots/fingerprints, complete audio surfaces, and 13 rejection cases. No provider calls.')

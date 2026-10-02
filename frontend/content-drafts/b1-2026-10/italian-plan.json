@@ -1,0 +1,585 @@
+{
+  "targetLanguage": "Italian",
+  "status": "proposal-not-approved",
+  "specification": "authoring-spec-it-pt.json supersedes the provisional grammar and register notes below. P1 is the current drafting scope; later paths remain proposals. Fable's exact trophy change is applied.",
+  "targetLanguageCode": "it-IT",
+  "authoredBaseLocales": [
+    "de",
+    "en"
+  ],
+  "registerProposal": "Formal singular Lei throughout; choose plausible adult-neighbor, civic and service relationships. Await Fable confirmation.",
+  "genderProposal": "Avere-only learner compound-past narration, no preceding direct-object clitic agreement, no gender-marked speaker adjectives. Imperfetto forms and fixed-noun agreement require the final staged spec.",
+  "note": "Native-Italian planning notes, not learner explanation fields or drafted lessons. Titles and beats are in Italian for content design; eventual lesson explanations must include both German and English. Grammar anchors are proposals pending Fable's Italian spec. Preserve all frozen A1/A2 IDs and text.",
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Che cosa è successo",
+      "anchor": "Forma B, interlocutore interessato. Proposta: passato prossimo con avere, poi imperfetto come sfondo con mentre/quando, infine contrasto tra sfondo ed evento. Solo narrazione neutra rispetto al genere del parlante; niente trapassato o passato remoto. Staging definitivo a cura di Fable.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "dimenticato",
+          "beat": "Raccontare di aver dimenticato un ombrello in farmacia e spiegare come la farmacista ha aiutato a ritrovarlo."
+        },
+        {
+          "number": 2,
+          "trophy": "aspettato",
+          "beat": "Spiegare di aver aspettato davanti a un ingresso chiuso e raccontare quale indicazione ha permesso di trovare quello aperto."
+        },
+        {
+          "number": 3,
+          "trophy": "scoperto",
+          "beat": "Raccontare di aver scoperto un banco di prodotti locali al mercato e spiegare come è nata una conversazione con il venditore."
+        },
+        {
+          "number": 4,
+          "trophy": "mentre",
+          "beat": "Raccontare che, mentre aspettavi il turno allo sportello, hai sentito chiamare il tuo cognome; spiegare il piccolo equivoco."
+        },
+        {
+          "number": 5,
+          "trophy": "cercavo",
+          "beat": "Spiegare al ferramenta che cercavo una vite della misura giusta; raccontare come un campione ha chiarito la richiesta."
+        },
+        {
+          "number": 6,
+          "trophy": "indirizzo",
+          "beat": "Raccontare che avevo un vecchio indirizzo del laboratorio; spiegare come una telefonata ha evitato un altro giro a vuoto."
+        },
+        {
+          "number": 7,
+          "trophy": "sentito",
+          "beat": "Raccontare di aver sentito un rumore nel cortile mentre leggevi; continuare con la scoperta della causa e la reazione dei vicini."
+        },
+        {
+          "number": 8,
+          "trophy": "capito",
+          "beat": "Spiegare di aver capito solo al secondo tentativo dove ritirare un documento; raccontare quale cartello ha risolto il dubbio."
+        },
+        {
+          "number": 9,
+          "trophy": "finalmente",
+          "beat": "Raccontare che finalmente hai parlato con l'amministratore del palazzo; spiegare come un incontro sulle scale ha risolto una piccola questione."
+        },
+        {
+          "number": 10,
+          "trophy": "avventura",
+          "beat": "Raccontare una piccola avventura durante una gita in battello, collegando la ricerca del pontile e l'aiuto ricevuto sul posto."
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Secondo me",
+      "anchor": "Forma B. Esprimere un punto di vista con secondo me/per me, sostenerlo con una ragione, concedere un punto con anche se + indicativo e ricollegare con però/comunque. Non introdurre liberamente penso che + congiuntivo prima della sua eventuale autorizzazione.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "opinione",
+          "beat": "Dare la propria opinione sugli orari del mercato rionale e spiegare chi trae vantaggio da una chiusura più tarda."
+        },
+        {
+          "number": 2,
+          "trophy": "motivo",
+          "beat": "Spiegare il motivo per cui una biblioteca di quartiere dovrebbe aprire anche una sera; aggiungere un esempio concreto."
+        },
+        {
+          "number": 3,
+          "trophy": "vantaggio",
+          "beat": "Indicare un vantaggio degli acquisti nei piccoli negozi e rispondere a una domanda sui prezzi senza idealizzare la scelta."
+        },
+        {
+          "number": 4,
+          "trophy": "traffico",
+          "beat": "Commentare una proposta per ridurre il traffico vicino alla scuola, riconoscendo una difficoltà per chi accompagna i figli."
+        },
+        {
+          "number": 5,
+          "trophy": "panchine",
+          "beat": "Sostenere la necessità di più panchine lungo una salita; spiegare perché servono anche a chi fa tragitti brevi."
+        },
+        {
+          "number": 6,
+          "trophy": "ambiente",
+          "beat": "Spiegare perché l'ambiente di una piccola sala di lettura piace, pur riconoscendo che gli orari sono limitati."
+        },
+        {
+          "number": 7,
+          "trophy": "comunque",
+          "beat": "Ammettere un inconveniente della raccolta differenziata e usare comunque per ribadire una ragione a favore."
+        },
+        {
+          "number": 8,
+          "trophy": "spazi",
+          "beat": "Esprimere un parere sugli spazi condivisi del condominio e spiegare quale uso rispetta meglio esigenze diverse."
+        },
+        {
+          "number": 9,
+          "trophy": "sicurezza",
+          "beat": "Discutere la sicurezza di un attraversamento vicino al mercato, distinguendo una preoccupazione reale da un'impressione."
+        },
+        {
+          "number": 10,
+          "trophy": "comunità",
+          "beat": "Spiegare come un orto condiviso aiuta la comunità; sviluppare il punto di vista con un'esperienza e una riserva pratica."
+        }
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Una possibilità diversa",
+      "anchor": "Forma A. Condizionale presente per preferenze, richieste attenuate e consigli: vorrei/preferirei, potrei/sarebbe, dovrebbe in progressione controllata. Non dare per autorizzato se + congiuntivo imperfetto; la mappatura definitiva è di Fable.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "preferirei",
+          "beat": "Dire preferirei per chiedere un tavolo in una zona meno rumorosa; scegliere un'altra sistemazione quando la prima non è disponibile."
+        },
+        {
+          "number": 2,
+          "trophy": "possibilità",
+          "beat": "Chiedere se ci sarebbe la possibilità di seguire una lezione in un altro orario; valutare la proposta della segreteria."
+        },
+        {
+          "number": 3,
+          "trophy": "alternativa",
+          "beat": "Chiedere un'alternativa a un abbonamento poco adatto alle proprie abitudini; chiarire quale condizione conta davvero."
+        },
+        {
+          "number": 4,
+          "trophy": "prestito",
+          "beat": "Chiedere in prestito una scala a un vicino con cui si usa il Lei; concordare un rientro compatibile con le sue esigenze."
+        },
+        {
+          "number": 5,
+          "trophy": "permesso",
+          "beat": "Chiedere il permesso di usare brevemente il cortile per una consegna; proporre una modifica dopo un'obiezione dell'amministratore."
+        },
+        {
+          "number": 6,
+          "trophy": "flessibile",
+          "beat": "Spiegare che sarebbe utile un orario più flessibile per un corso; reagire a un limite posto dall'organizzatore."
+        },
+        {
+          "number": 7,
+          "trophy": "spostare",
+          "beat": "Chiedere con cortesia di spostare una visita del tecnico; cercare un compromesso quando la prima data proposta non funziona."
+        },
+        {
+          "number": 8,
+          "trophy": "suggerimento",
+          "beat": "Chiedere un suggerimento per scegliere un corso adatto a chi lavora; rispondere a una domanda sul tempo disponibile."
+        },
+        {
+          "number": 9,
+          "trophy": "valutare",
+          "beat": "Dire che vorresti valutare una proposta prima di confermare; concordare quanto tempo serve dopo una richiesta di risposta rapida."
+        },
+        {
+          "number": 10,
+          "trophy": "rinunciare",
+          "beat": "Spiegare che preferiresti non rinunciare a un incontro già fissato; negoziare un piccolo cambiamento invece di annullare tutto."
+        }
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "Proprio quello",
+      "anchor": "Forma C. Relative determinative con che, poi dove e preposizione + cui se autorizzati. Identificare con precisione persone, oggetti e luoghi. Evitare il quale formale e accumuli di relative; nessun pronome nudo come richiamo mnemonico.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "scaffale",
+          "beat": "Descrivere lo scaffale che deve entrare in una nicchia; accettare un modello diverso mantenendo il limite di larghezza."
+        },
+        {
+          "number": 2,
+          "trophy": "balcone",
+          "beat": "Identificare l'appartamento che ha il balcone sul cortile; valutare un'altra proposta senza perdere il requisito essenziale."
+        },
+        {
+          "number": 3,
+          "trophy": "portone",
+          "beat": "Precisare quale portone si apre dalla strada principale; adattare il punto d'incontro quando l'altro ingresso è chiuso."
+        },
+        {
+          "number": 4,
+          "trophy": "cortile",
+          "beat": "Indicare il cortile che si vede dalla propria finestra; chiarire quale accesso usare dopo una proposta ambigua."
+        },
+        {
+          "number": 5,
+          "trophy": "interruttore",
+          "beat": "Descrivere l'interruttore che accende la luce delle scale; accettare una soluzione provvisoria proposta dal tecnico."
+        },
+        {
+          "number": 6,
+          "trophy": "rubinetto",
+          "beat": "Specificare quale rubinetto perde e quando succede; distinguere il problema da un altro controllo suggerito dall'idraulico."
+        },
+        {
+          "number": 7,
+          "trophy": "giacca",
+          "beat": "Descrivere la giacca lasciata al guardaroba di una sala; rifiutare con precisione un capo simile e aggiungere un dettaglio."
+        },
+        {
+          "number": 8,
+          "trophy": "valigia",
+          "beat": "Identificare la valigia con cui viaggiavi tramite un segno preciso; correggere un equivoco senza limitarsi a ripetere il colore."
+        },
+        {
+          "number": 9,
+          "trophy": "reparto",
+          "beat": "Chiedere il reparto che si occupa dei piccoli elettrodomestici; accettare un'indicazione diversa chiarendo il servizio cercato."
+        },
+        {
+          "number": 10,
+          "trophy": "maniglia",
+          "beat": "Descrivere la maniglia che si muove sulla porta del balcone; concordare con il tecnico quale pezzo verificare prima."
+        }
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Vorrei un'informazione",
+      "anchor": "Forma A. Domande indirette al presente con può dirmi/sa + dove, quando, come e vorrei sapere se. Sportelli italiani plausibili: anagrafe, biblioteca, banca, utenze, iscrizioni locali. Non trasformare le tracce in indicazioni legali o amministrative universali.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "modulo",
+          "beat": "Chiedere quale modulo serve per una richiesta allo sportello; chiarire la propria situazione quando vengono indicate due procedure."
+        },
+        {
+          "number": 2,
+          "trophy": "residenza",
+          "beat": "Chiedere dove trovare informazioni sulla residenza; domandare come prenotare dopo l'indicazione di un ufficio diverso."
+        },
+        {
+          "number": 3,
+          "trophy": "certificato",
+          "beat": "Chiedere come ritirare un certificato richiesto; chiarire quali dati presentare quando l'addetto non trova subito la pratica."
+        },
+        {
+          "number": 4,
+          "trophy": "scadenza",
+          "beat": "Chiedere la scadenza di un'iscrizione con una domanda indiretta; cercare un'alternativa dopo la chiusura delle iscrizioni."
+        },
+        {
+          "number": 5,
+          "trophy": "documento",
+          "beat": "Chiedere quale documento portare per attivare un servizio; verificare se una copia basta dopo una richiesta aggiuntiva."
+        },
+        {
+          "number": 6,
+          "trophy": "firma",
+          "beat": "Chiedere dove mettere la firma su una domanda; chiarire chi deve compilare una seconda parte del modulo."
+        },
+        {
+          "number": 7,
+          "trophy": "sportello",
+          "beat": "Chiedere se lo sportello che gestisce una richiesta è aperto nel pomeriggio; domandare come procedere durante una chiusura temporanea."
+        },
+        {
+          "number": 8,
+          "trophy": "tessera",
+          "beat": "Chiedere come rinnovare la tessera della biblioteca; verificare come usare il servizio mentre manca una conferma."
+        },
+        {
+          "number": 9,
+          "trophy": "codice",
+          "beat": "Chiedere dove riportare il codice della richiesta; chiarire la differenza fra il numero di prenotazione e quello della pratica."
+        },
+        {
+          "number": 10,
+          "trophy": "tariffa",
+          "beat": "Chiedere che cosa comprende una tariffa comunale o di un corso; distinguere la quota di base da un'opzione facoltativa."
+        }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "A che punto siamo",
+      "anchor": "Forma A. Descrivere procedimenti e stato delle richieste con si impersonale/passivante e cornici passive su oggetti a genere fisso, soltanto secondo le forme autorizzate da Fable. Non dichiarare dal ruolo del cliente un'azione che soltanto l'addetto può decidere.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "consegna",
+          "beat": "Chiedere come viene organizzata la consegna di un mobile; trovare un modo per riceverlo quando il portone resta chiuso."
+        },
+        {
+          "number": 2,
+          "trophy": "pratica",
+          "beat": "Chiedere a che punto è una pratica già presentata; chiarire quale informazione manca senza presumere l'approvazione."
+        },
+        {
+          "number": 3,
+          "trophy": "ricevuta",
+          "beat": "Chiedere quando viene rilasciata la ricevuta di una richiesta; concordare come riceverla se non può essere stampata subito."
+        },
+        {
+          "number": 4,
+          "trophy": "intervento",
+          "beat": "Chiedere come si prenota un intervento sul citofono; chiarire chi deve essere presente dopo la risposta del tecnico."
+        },
+        {
+          "number": 5,
+          "trophy": "guasto",
+          "beat": "Descrivere un guasto segnalato nell'androne e chiedere come viene verificato; fornire un dettaglio richiesto dall'amministratore."
+        },
+        {
+          "number": 6,
+          "trophy": "controllo",
+          "beat": "Chiedere se il controllo di un apparecchio è già previsto; reagire alla necessità di una verifica aggiuntiva."
+        },
+        {
+          "number": 7,
+          "trophy": "avviso",
+          "beat": "Chiedere dove viene pubblicato un avviso sulla sospensione dell'acqua; concordare un altro modo per ricevere l'informazione."
+        },
+        {
+          "number": 8,
+          "trophy": "conferma",
+          "beat": "Chiedere come si riceve la conferma di una prenotazione; chiarire il recapito quando il messaggio non risulta arrivato."
+        },
+        {
+          "number": 9,
+          "trophy": "assistenza",
+          "beat": "Chiedere come funziona l'assistenza per un elettrodomestico; cercare una soluzione praticabile quando il ritiro non è previsto."
+        },
+        {
+          "number": 10,
+          "trophy": "procedura",
+          "beat": "Chiedere quale procedura si segue per correggere un dato; precisare l'errore quando l'addetto propone il percorso sbagliato."
+        }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Per far funzionare le cose",
+      "anchor": "Forma C. Esplicitare uno scopo con per/per non + infinito e in modo da; collegare azioni e risultato con così. Eventuali futuro semplice e se + presente sono da introdurre solo nella progressione scelta da Fable, senza calcare strutture finali inglesi.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "organizzare",
+          "beat": "Proporre di organizzare uno scambio di libri nel condominio; accettare uno spazio più piccolo mantenendo lo scopo dell'incontro."
+        },
+        {
+          "number": 2,
+          "trophy": "dividere",
+          "beat": "Proporre di dividere i compiti per una cena condivisa; adattare la distribuzione quando manca una persona."
+        },
+        {
+          "number": 3,
+          "trophy": "preparativi",
+          "beat": "Spiegare quali preparativi servono prima di aprire una sala al pubblico; concordare una versione più semplice con il responsabile."
+        },
+        {
+          "number": 4,
+          "trophy": "materiale",
+          "beat": "Proporre un punto unico per il materiale di un laboratorio; modificare il piano per lasciare libero un passaggio."
+        },
+        {
+          "number": 5,
+          "trophy": "elenco",
+          "beat": "Proporre un elenco delle cose da portare per evitare acquisti doppi; accettare un foglio comune invece di un messaggio."
+        },
+        {
+          "number": 6,
+          "trophy": "avvertire",
+          "beat": "Offrirsi di avvertire i partecipanti di un cambio di sala; concordare quando farlo per non creare confusione."
+        },
+        {
+          "number": 7,
+          "trophy": "evitare",
+          "beat": "Proporre una fascia oraria per evitare rumore durante il riposo; adattarla alle esigenze di chi lavora fino a tardi."
+        },
+        {
+          "number": 8,
+          "trophy": "partecipare",
+          "beat": "Spiegare che cosa permetterebbe a più persone di partecipare a un incontro; accettare una diversa disposizione dei tavoli."
+        },
+        {
+          "number": 9,
+          "trophy": "volontariato",
+          "beat": "Proporre un'attività di volontariato adatta a chi ha poco tempo; concordare un compito concreto con il coordinatore."
+        },
+        {
+          "number": 10,
+          "trophy": "accordo",
+          "beat": "Riassumere un accordo sui turni di cura dell'orto condiviso; aggiungere una soluzione per le settimane in cui qualcuno manca."
+        }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Prima e adesso",
+      "anchor": "Forma B. Imperfetto per abitudini e situazioni del passato, quando avevo + età per evitare genere del parlante, contrasto con il presente e comparativi già autorizzati. Per durata ancora attuale, presente + da; non importare il present perfect inglese.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "infanzia",
+          "beat": "Raccontare un'abitudine dell'infanzia senza usare forme riferite al genere; continuare con un dettaglio concreto richiesto dall'interlocutore."
+        },
+        {
+          "number": 2,
+          "trophy": "abitudine",
+          "beat": "Descrivere un'abitudine dei fine settimana e spiegare come è cambiata vivendo in città."
+        },
+        {
+          "number": 3,
+          "trophy": "campagna",
+          "beat": "Raccontare che cosa si faceva durante le visite in campagna; spiegare quale attività manca oggi."
+        },
+        {
+          "number": 4,
+          "trophy": "scuola",
+          "beat": "Descrivere il percorso per andare a scuola a dieci anni; continuare con una differenza rispetto agli spostamenti di oggi."
+        },
+        {
+          "number": 5,
+          "trophy": "passato",
+          "beat": "Confrontare il tempo dedicato alla lettura in passato e adesso; spiegare la causa del cambiamento."
+        },
+        {
+          "number": 6,
+          "trophy": "attualmente",
+          "beat": "Spiegare come si fanno attualmente le piccole commissioni e confrontarle con la precedente routine."
+        },
+        {
+          "number": 7,
+          "trophy": "ritmo",
+          "beat": "Confrontare il ritmo delle giornate in due periodi della propria vita; rispondere a una domanda su ciò che è migliorato."
+        },
+        {
+          "number": 8,
+          "trophy": "autonomia",
+          "beat": "Descrivere la maggiore autonomia nelle commissioni quotidiane; raccontare una situazione in cui prima serviva aiuto."
+        },
+        {
+          "number": 9,
+          "trophy": "esperienza",
+          "beat": "Spiegare come l'esperienza di vivere nel quartiere ha cambiato una scelta abituale; indicare da quanto tempo dura la nuova abitudine."
+        },
+        {
+          "number": 10,
+          "trophy": "fiducia",
+          "beat": "Confrontare la fiducia nelle proprie capacità di prima e di oggi; continuare con un episodio che rende visibile il cambiamento."
+        }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Mettiamo le cose a posto",
+      "anchor": "Forma A, percorso conclusivo di reclamo e soluzione. Nessuna nuova famiglia grammaticale: riciclare narrazione, richieste attenuate, domande indirette e stato delle pratiche. Il cliente chiede e negozia; non promette interventi o rimborsi per conto dell'addetto.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "reclamo",
+          "beat": "Spiegare perché si vuole presentare un reclamo per due appuntamenti mancati; chiedere un passo concreto dopo una risposta vaga."
+        },
+        {
+          "number": 2,
+          "trophy": "rimborso",
+          "beat": "Chiedere come ottenere un rimborso per un servizio non utilizzato; chiarire il caso quando l'addetto propone invece un buono."
+        },
+        {
+          "number": 3,
+          "trophy": "garanzia",
+          "beat": "Chiedere se un difetto rientra nella garanzia di un piccolo elettrodomestico; spiegare quando è comparso il problema."
+        },
+        {
+          "number": 4,
+          "trophy": "addebito",
+          "beat": "Segnalare un doppio addebito per lo stesso acquisto; indicare le due operazioni quando il cassiere ne trova soltanto una."
+        },
+        {
+          "number": 5,
+          "trophy": "errore",
+          "beat": "Segnalare un errore nell'indirizzo di consegna e precisare il dato corretto dopo un equivoco con una via simile."
+        },
+        {
+          "number": 6,
+          "trophy": "responsabile",
+          "beat": "Chiedere di parlare con il responsabile di una richiesta irrisolta; concordare un richiamo quando non è disponibile."
+        },
+        {
+          "number": 7,
+          "trophy": "sostituzione",
+          "beat": "Chiedere una sostituzione per un articolo danneggiato; valutare un modello equivalente quando quello originale manca."
+        },
+        {
+          "number": 8,
+          "trophy": "prova",
+          "beat": "Offrire una foto come prova delle condizioni della consegna; chiedere come inviarla dopo una richiesta di maggiore dettaglio."
+        },
+        {
+          "number": 9,
+          "trophy": "difetto",
+          "beat": "Spiegare che un difetto ricompare dopo la riparazione; chiedere un nuovo controllo quando il tecnico cita una prova riuscita."
+        },
+        {
+          "number": 10,
+          "trophy": "soluzione",
+          "beat": "Proporre una soluzione realistica a una consegna rimandata; confermare un accordo preciso dopo una controproposta del negozio."
+        }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Un anno qui",
+      "anchor": "Forma B, racconto personale collegato. Nessuna nuova grammatica. Riprendere eventi con avere passato prossimo, sfondi e abitudini all'imperfetto, opinioni, relative e progetti già autorizzati. Tutte le forme riferite al parlante restano neutre rispetto al genere.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "obiettivo",
+          "beat": "Raccontare un obiettivo pratico del primo mese in città; spiegare al vicino quale difficoltà ha richiesto più tempo."
+        },
+        {
+          "number": 2,
+          "trophy": "risultato",
+          "beat": "Descrivere un risultato ottenuto dopo diversi tentativi; continuare con l'episodio che ha segnato il cambiamento."
+        },
+        {
+          "number": 3,
+          "trophy": "amicizia",
+          "beat": "Raccontare come è nata un'amicizia durante un'attività locale; spiegare quale gesto ha reso il rapporto più stabile."
+        },
+        {
+          "number": 4,
+          "trophy": "occasione",
+          "beat": "Descrivere un'occasione colta dopo un incontro casuale; rispondere a una domanda sul motivo della scelta."
+        },
+        {
+          "number": 5,
+          "trophy": "soddisfazione",
+          "beat": "Raccontare una piccola soddisfazione vissuta senza chiedere aiuto; collegarla a una difficoltà dei primi tempi."
+        },
+        {
+          "number": 6,
+          "trophy": "curiosità",
+          "beat": "Spiegare come la curiosità per una tradizione locale ha portato a nuove conoscenze; raccontare un incontro preciso."
+        },
+        {
+          "number": 7,
+          "trophy": "impegno",
+          "beat": "Descrivere l'impegno dedicato a una nuova abitudine; spiegare che cosa ha aiutato a mantenerla durante settimane difficili."
+        },
+        {
+          "number": 8,
+          "trophy": "ringraziare",
+          "beat": "Spiegare chi si desidera ringraziare per un aiuto ricevuto nei primi mesi; raccontare il gesto concreto senza formule astratte."
+        },
+        {
+          "number": 9,
+          "trophy": "futuro",
+          "beat": "Collegare un'esperienza positiva dell'anno a un'idea per il futuro; sviluppare una risposta prudente a una domanda sui prossimi passi."
+        },
+        {
+          "number": 10,
+          "trophy": "progetto",
+          "beat": "Presentare un piccolo progetto per il prossimo anno nel quartiere; spiegare come gli incontri e le difficoltà passate hanno orientato la scelta."
+        }
+      ]
+    }
+  ]
+}

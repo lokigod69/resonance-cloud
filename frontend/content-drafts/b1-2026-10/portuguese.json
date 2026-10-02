@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": {"de": "Was passiert ist", "en": "What happened"},
+  "subtitle": {"de": "Erzähle von kleinen Erlebnissen und führe die Geschichte weiter.", "en": "Tell everyday stories and keep the conversation going."},
+  "anchor": "Draft under Fable's 2026-10-03 Portuguese specification; pending Fable's personal read-through and independent review. Interested-listener episodes; neutral Brazilian você with German du throughout. L1–3 perfeito simples; L4 tinha/estava background; L5 chovia and estava + gerúndio; L6 ia + infinitivo and event/background contrast; L7 estávamos + gerúndio quando; L8 first-person plural imperfect; L9 chained events and reported perfeito; L10 consolidation. Explicit subjects precede every form blank. No ter + participle, speaker-gender adjectives, tu, or imported European usage.",
+  "lessons": [
+    {
+      "slug": "mutirao-no-jardim",
+      "title": {"de": "Gemeinsam im Garten", "en": "Working together in the garden"},
+      "situation": {"de": "Du erzählst einer Nachbarin von der gemeinsamen Gartenaktion am Samstag.", "en": "Tell a neighbor about Saturday's shared garden work."},
+      "pedagogicalGoal": "Abgeschlossene Tätigkeiten im perfeito simples erzählen und mit a gente die Verbform der dritten Person verwenden.",
+      "register": "neutral",
+      "dialogue": [
+        {"targetText": "Como foi o mutirão no prédio no sábado?", "baseText": {"de": "Wie war die gemeinsame Arbeitsaktion im Haus am Samstag?", "en": "How did Saturday's shared workday at the building go?"}},
+        {"targetText": "No mutirão de sábado, a gente limpou o jardim e plantou flores.", "baseText": {"de": "Bei der gemeinsamen Aktion am Samstag haben wir den Garten aufgeräumt und Blumen gepflanzt.", "en": "During Saturday's shared workday, we cleaned up the garden and planted flowers."}},
+        {"targetText": "O jardim mudou bastante! Qual foi a última tarefa?", "baseText": {"de": "Der Garten hat sich richtig verändert! Was war die letzte Aufgabe?", "en": "The garden looks quite different! What was the last task?"}},
+        {"targetText": "No fim, eu reguei as flores e guardei as ferramentas.", "baseText": {"de": "Zum Schluss habe ich die Blumen gegossen und das Werkzeug weggeräumt.", "en": "At the end, I watered the flowers and put away the tools."}}
+      ],
+      "pattern": {
+        "label": "A gente + perfeito simples",
+        "rule": {"de": "Mit dem perfeito simples erzählst du abgeschlossene Handlungen; a gente bedeutet wir, hat aber eine Verbform wie ele oder ela.", "en": "Use the perfeito simples for completed actions; a gente means we but takes a verb form like ele or ela."},
+        "examples": [
+          {"targetText": "No mutirão de sábado, a gente limpou o jardim e plantou flores.", "baseText": {"de": "Bei der gemeinsamen Aktion am Samstag haben wir den Garten aufgeräumt und Blumen gepflanzt.", "en": "During Saturday's shared workday, we cleaned up the garden and planted flowers."}, "highlight": "a gente limpou"},
+          {"targetText": "No fim, eu reguei as flores e guardei as ferramentas.", "baseText": {"de": "Zum Schluss habe ich die Blumen gegossen und das Werkzeug weggeräumt.", "en": "At the end, I watered the flowers and put away the tools."}, "highlight": "eu reguei"}
+        ]
+      },
+      "cloze": ["No fim, eu ", {"kind": "form", "answer": "reguei", "cue": "regar (eu)", "choices": ["regou", "regamos", "reguei", "regaram"]}, " as flores e ", {"kind": "form", "answer": "guardei", "cue": "guardar (eu)", "choices": ["guardei", "guardou", "guardaram", "guardamos"]}, " as ferramentas."],
+      "chunks": [
+        {"targetText": "No mutirão de sábado,", "baseText": {"de": "Bei der gemeinsamen Aktion am Samstag,", "en": "During Saturday's shared workday,"}},
+        {"targetText": "a gente limpou", "baseText": {"de": "haben wir aufgeräumt", "en": "we cleaned up"}},
+        {"targetText": "o jardim", "baseText": {"de": "den Garten", "en": "the garden"}},
+        {"targetText": "e plantou", "baseText": {"de": "und gepflanzt", "en": "and planted"}},
+        {"targetText": "flores.", "baseText": {"de": "Blumen.", "en": "flowers."}}
+      ],
+      "terms": [
+        {"targetText": "mutirão", "baseText": {"de": "gemeinsame Arbeitsaktion", "en": "shared workday; collective effort"}},
+        {"targetText": "limpou", "baseText": {"de": "hat aufgeräumt", "en": "cleaned up"}},
+        {"targetText": "jardim", "baseText": {"de": "Garten", "en": "garden"}},
+        {"targetText": "plantou", "baseText": {"de": "hat gepflanzt", "en": "planted"}},
+        {"targetText": "flores", "baseText": {"de": "Blumen", "en": "flowers"}},
+        {"targetText": "ferramentas", "baseText": {"de": "Werkzeug", "en": "tools"}}
+      ],
+      "recall": {"before": "No ", "answer": "mutirão", "after": " de sábado, a gente limpou o jardim e plantou flores.", "fallbackChoices": ["passeio", "mutirão", "almoço", "encontro"]},
+      "speakRequired": ["mutirão", "limpou", "jardim"],
+      "sceneCaption": {"de": "Eine Nachbarin spricht dich im Hausflur an: “Como foi o mutirão no prédio no sábado?”", "en": "A neighbor asks you in the hallway: “Como foi o mutirão no prédio no sábado?”"},
+      "trophyWord": {"word": "mutirão", "meaning": {"de": "gemeinsame Arbeitsaktion", "en": "shared workday; collective effort"}, "example": "No mutirão de sábado, a gente limpou o jardim e plantou flores.", "whyThisWord": {"de": "Mutirão bezeichnet eine praktische Aufgabe, die mehrere Menschen gemeinsam anpacken, etwa im Haus oder im Viertel.", "en": "Mutirão describes people joining forces on a practical task, for example in a building or neighborhood."}},
+      "distractors": ["na varanda", "plantou árvores"],
+      "placeholderCaption": {"de": "Ein Gespräch im Hausflur über den Gemeinschaftsgarten.", "en": "A hallway conversation about the shared garden."},
+      "songMood": "warm shared accomplishment",
+      "visualNotes": "A bright apartment hallway overlooking a modest shared garden; keep the final task unrevealed."
+    },
+    {
+      "slug": "reencontro-na-feira",
+      "title": {"de": "Wiedersehen auf dem Markt", "en": "Meeting again at the market"},
+      "situation": {"de": "Du erzählst einem Bekannten von einer überraschenden Begegnung auf dem Straßenmarkt.", "en": "Tell an acquaintance about an unexpected meeting at the street market."},
+      "pedagogicalGoal": "Eine Begegnung im perfeito simples erzählen und zwischen eu, nós und einer dritten Person wechseln.",
+      "register": "neutral",
+      "dialogue": [
+        {"targetText": "Você encontrou alguém conhecido na feira ontem?", "baseText": {"de": "Hast du gestern auf dem Markt jemanden getroffen, den du kennst?", "en": "Did you meet anyone you know at the market yesterday?"}},
+        {"targetText": "O reencontro foi na feira: encontrei uma colega e comprei frutas.", "baseText": {"de": "Das Wiedersehen war auf dem Markt: Ich habe eine Kurskollegin getroffen und Obst gekauft.", "en": "We met again at the market: I ran into a classmate and bought some fruit."}},
+        {"targetText": "Uma colega do curso? Sobre o que você conversou com ela?", "baseText": {"de": "Eine Kollegin aus dem Kurs? Worüber hast du mit ihr gesprochen?", "en": "A classmate from your course? What did you talk about with her?"}},
+        {"targetText": "Nós conversamos sobre o curso, e ela contou uma novidade.", "baseText": {"de": "Wir haben über den Kurs gesprochen, und sie hat etwas Neues erzählt.", "en": "We talked about the course, and she shared some news."}}
+      ],
+      "pattern": {
+        "label": "Quem fez o quê?",
+        "rule": {"de": "Auch beim Weitererzählen bleibt das Verb im perfeito simples und passt zur handelnden Person: eu encontrei, nós conversamos, ela contou.", "en": "As the story continues, keep completed actions in the perfeito simples and match the verb to the person: eu encontrei, nós conversamos, ela contou."},
+        "examples": [
+          {"targetText": "Nós conversamos sobre o curso, e ela contou uma novidade.", "baseText": {"de": "Wir haben über den Kurs gesprochen, und sie hat etwas Neues erzählt.", "en": "We talked about the course, and she shared some news."}, "highlight": "Nós conversamos"},
+          {"targetText": "Eu vi uma colega na feira e conversei com ela.", "baseText": {"de": "Ich habe eine Kurskollegin auf dem Markt gesehen und mit ihr gesprochen.", "en": "I saw a classmate at the market and talked to her."}, "highlight": "Eu vi"}
+        ]
+      },
+      "cloze": ["Nós ", {"kind": "form", "answer": "conversamos", "cue": "conversar (nós)", "choices": ["conversei", "conversou", "conversamos", "conversaram"]}, " sobre o curso, e ela ", {"kind": "form", "answer": "contou", "cue": "contar (ela)", "choices": ["contamos", "contaram", "contei", "contou"]}, " uma novidade."],
+      "chunks": [
+        {"targetText": "O reencontro", "baseText": {"de": "Das Wiedersehen", "en": "The reunion"}},
+        {"targetText": "foi na feira:", "baseText": {"de": "war auf dem Markt:", "en": "was at the market:"}},
+        {"targetText": "encontrei uma colega", "baseText": {"de": "Ich habe eine Kurskollegin getroffen", "en": "I ran into a classmate"}},
+        {"targetText": "e comprei frutas.", "baseText": {"de": "und Obst gekauft.", "en": "and bought some fruit."}}
+      ],
+      "terms": [
+        {"targetText": "reencontro", "baseText": {"de": "Wiedersehen", "en": "reunion; meeting again"}},
+        {"targetText": "feira", "baseText": {"de": "Straßenmarkt", "en": "street market"}},
+        {"targetText": "encontrei", "baseText": {"de": "ich habe getroffen", "en": "I met; I ran into"}},
+        {"targetText": "colega", "baseText": {"de": "Kurskollegin", "en": "classmate"}},
+        {"targetText": "comprei", "baseText": {"de": "ich habe gekauft", "en": "I bought"}},
+        {"targetText": "frutas", "baseText": {"de": "Obst", "en": "fruit"}},
+        {"targetText": "novidade", "baseText": {"de": "Neuigkeit", "en": "news; something new"}}
+      ],
+      "recall": {"before": "O ", "answer": "reencontro", "after": " foi na feira: encontrei uma colega e comprei frutas.", "fallbackChoices": ["almoço", "passeio", "reencontro", "trabalho"]},
+      "speakRequired": ["reencontro", "colega", "frutas"],
+      "sceneCaption": {"de": "Ein Bekannter fragt nach deinem Marktbesuch: “Você encontrou alguém conhecido na feira ontem?”", "en": "An acquaintance asks about your trip to the market: “Você encontrou alguém conhecido na feira ontem?”"},
+      "trophyWord": {"word": "reencontro", "meaning": {"de": "Wiedersehen", "en": "reunion; meeting again"}, "example": "O reencontro foi na feira: encontrei uma colega e comprei frutas.", "whyThisWord": {"de": "Mit reencontro sagst du, dass du jemanden wiedertriffst, den du schon kennst.", "en": "Reencontro tells the listener you are meeting someone you already know again."}},
+      "distractors": ["foi no parque:", "e comprei pão."],
+      "placeholderCaption": {"de": "Ein Gespräch über eine Begegnung zwischen Marktständen.", "en": "A conversation about meeting someone among the market stalls."},
+      "songMood": "pleasant unexpected reunion",
+      "visualNotes": "Colorful Brazilian street-market stalls; focus on recalling an encounter, without showing the later news."
+    },
+    {
+      "slug": "convite-para-leitura",
+      "title": {"de": "Eine Einladung zum Vorlesen", "en": "An invitation to read"},
+      "situation": {"de": "Eine Bekannte fragt dich nach deinem ersten Besuch bei einer Leserunde in der Bibliothek.", "en": "An acquaintance asks about your first visit to a reading circle at the library."},
+      "pedagogicalGoal": "Eine Einladung und ihre Annahme erzählen und die eigene Beteiligung mit der unregelmäßigen Vergangenheitsform li ergänzen.",
+      "register": "neutral",
+      "dialogue": [
+        {"targetText": "Você foi à roda de leitura da biblioteca ontem?", "baseText": {"de": "Warst du gestern bei der Leserunde in der Bibliothek?", "en": "Did you go to the library's reading circle yesterday?"}},
+        {"targetText": "Recebi um convite para a roda de leitura e aceitei na hora.", "baseText": {"de": "Ich habe eine Einladung zur Leserunde bekommen und sofort zugesagt.", "en": "I received an invitation to the reading circle and accepted right away."}},
+        {"targetText": "E qual foi a sua participação na roda?", "baseText": {"de": "Und wie hast du dich an der Runde beteiligt?", "en": "And how did you take part in the circle?"}},
+        {"targetText": "Eu li um poema, e o grupo comentou o final.", "baseText": {"de": "Ich habe ein Gedicht vorgelesen, und die Gruppe hat über das Ende gesprochen.", "en": "I read a poem aloud, and the group discussed the ending."}}
+      ],
+      "pattern": {
+        "label": "Recebi, aceitei, li",
+        "rule": {"de": "Abgeschlossene Ereignisse stehen im perfeito simples; neben regelmäßigen Formen wie recebi und aceitei hat ler die Form eu li.", "en": "Completed events use the perfeito simples; alongside regular forms such as recebi and aceitei, ler has the form eu li."},
+        "examples": [
+          {"targetText": "Recebi um convite para a roda de leitura e aceitei na hora.", "baseText": {"de": "Ich habe eine Einladung zur Leserunde bekommen und sofort zugesagt.", "en": "I received an invitation to the reading circle and accepted right away."}, "highlight": "Recebi"},
+          {"targetText": "Eu li um poema, e o grupo comentou o final.", "baseText": {"de": "Ich habe ein Gedicht vorgelesen, und die Gruppe hat über das Ende gesprochen.", "en": "I read a poem aloud, and the group discussed the ending."}, "highlight": "Eu li"}
+        ]
+      },
+      "cloze": ["Eu ", {"kind": "form", "answer": "li", "cue": "ler (eu)", "choices": ["leu", "leram", "li", "lemos"]}, " um poema, e o grupo ", {"kind": "form", "answer": "comentou", "cue": "comentar (o grupo)", "choices": ["comentei", "comentou", "comentamos", "comentaram"]}, " o final."],
+      "chunks": [
+        {"targetText": "Recebi um convite", "baseText": {"de": "Ich habe eine Einladung bekommen", "en": "I received an invitation"}},
+        {"targetText": "para a roda de leitura", "baseText": {"de": "zur Leserunde", "en": "to the reading circle"}},
+        {"targetText": "e aceitei", "baseText": {"de": "und zugesagt", "en": "and accepted"}},
+        {"targetText": "na hora.", "baseText": {"de": "sofort.", "en": "right away."}}
+      ],
+      "terms": [
+        {"targetText": "recebi", "baseText": {"de": "ich habe bekommen", "en": "I received"}},
+        {"targetText": "convite", "baseText": {"de": "Einladung", "en": "invitation"}},
+        {"targetText": "roda de leitura", "baseText": {"de": "Leserunde", "en": "reading circle"}},
+        {"targetText": "aceitei", "baseText": {"de": "ich habe zugesagt", "en": "I accepted"}},
+        {"targetText": "na hora", "baseText": {"de": "sofort", "en": "right away"}},
+        {"targetText": "poema", "baseText": {"de": "Gedicht", "en": "poem"}}
+      ],
+      "recall": {"before": "Recebi um ", "answer": "convite", "after": " para a roda de leitura e aceitei na hora.", "fallbackChoices": ["convite", "bilhete", "livro", "recado"]},
+      "speakRequired": ["recebi", "convite", "aceitei"],
+      "sceneCaption": {"de": "Eine Bekannte spricht dich auf die Veranstaltung an: “Você foi à roda de leitura da biblioteca ontem?”", "en": "An acquaintance asks you about the event: “Você foi à roda de leitura da biblioteca ontem?”"},
+      "trophyWord": {"word": "convite", "meaning": {"de": "Einladung", "en": "invitation"}, "example": "Recebi um convite para a roda de leitura e aceitei na hora.", "whyThisWord": {"de": "Recebi um convite ist eine natürliche Art, von einer Einladung zu erzählen, ohne dein Geschlecht sprachlich festzulegen.", "en": "Recebi um convite is a natural way to describe receiving an invitation without marking your gender."}},
+      "distractors": ["para a oficina de música", "e recusei"],
+      "placeholderCaption": {"de": "Vor der Bibliothek beginnt ein Gespräch über eine Leserunde.", "en": "Outside the library, a conversation begins about a reading circle."},
+      "songMood": "curious first participation",
+      "visualNotes": "Library entrance with a small reading-circle poster; no reveal of the poem or group response."
+    },
+    {
+      "slug": "fila-no-banco",
+      "title": {"de": "Eine lange Schlange", "en": "A long line"},
+      "situation": {"de": "Du erzählst einem Nachbarn von deinem gestrigen Bankbesuch und der Wartezeit.", "en": "Tell a neighbor about yesterday's bank visit and the wait."},
+      "pedagogicalGoal": "Mit dem existenziellen tinha den Hintergrund setzen und den weiteren Ablauf im perfeito simples erzählen.",
+      "register": "neutral",
+      "dialogue": [
+        {"targetText": "Como foi o atendimento no banco ontem?", "baseText": {"de": "Wie war der Service in der Bank gestern?", "en": "How was the service at the bank yesterday?"}},
+        {"targetText": "Tinha uma fila enorme no banco, mas eu resolvi tudo de manhã.", "baseText": {"de": "In der Bank gab es eine riesige Schlange, aber ich habe alles am Vormittag erledigt.", "en": "There was a huge line at the bank, but I got everything done in the morning."}},
+        {"targetText": "Com aquela fila? Como você soube que era a sua vez?", "baseText": {"de": "Bei dieser Schlange? Woher wusstest du, dass du an der Reihe warst?", "en": "With that line? How did you know it was your turn?"}},
+        {"targetText": "Eu peguei uma senha, e o painel indicou meu número.", "baseText": {"de": "Ich habe eine Wartenummer gezogen, und die Anzeige hat meine Nummer angezeigt.", "en": "I took a numbered ticket, and the display showed my number."}}
+      ],
+      "pattern": {
+        "label": "O contexto e o acontecimento",
+        "rule": {"de": "Im gesprochenen brasilianischen Portugiesisch setzt tinha im Sinn von es gab den Hintergrund; das perfeito simples erzählt, was dann geschah.", "en": "In spoken Brazilian Portuguese, tinha meaning there was sets the background; the perfeito simples tells what then happened."},
+        "examples": [
+          {"targetText": "Tinha uma fila enorme no banco, mas eu resolvi tudo de manhã.", "baseText": {"de": "In der Bank gab es eine riesige Schlange, aber ich habe alles am Vormittag erledigt.", "en": "There was a huge line at the bank, but I got everything done in the morning."}, "highlight": "Tinha uma fila enorme"},
+          {"targetText": "O banco estava cheio, mas eu esperei perto da porta.", "baseText": {"de": "Die Bank war voll, aber ich habe in der Nähe der Tür gewartet.", "en": "The bank was crowded, but I waited near the door."}, "highlight": "estava cheio"}
+        ]
+      },
+      "cloze": ["Eu ", {"kind": "form", "answer": "peguei", "cue": "pegar (eu)", "choices": ["pegamos", "peguei", "pegou", "pegaram"]}, " uma senha, e o painel ", {"kind": "form", "answer": "indicou", "cue": "indicar (o painel)", "choices": ["indicamos", "indiquei", "indicaram", "indicou"]}, " meu número."],
+      "chunks": [
+        {"targetText": "Tinha uma fila enorme", "baseText": {"de": "Es gab eine riesige Schlange", "en": "There was a huge line"}},
+        {"targetText": "no banco,", "baseText": {"de": "in der Bank,", "en": "at the bank,"}},
+        {"targetText": "mas eu resolvi tudo", "baseText": {"de": "aber ich habe alles erledigt", "en": "but I got everything done"}},
+        {"targetText": "de manhã.", "baseText": {"de": "am Vormittag.", "en": "in the morning."}}
+      ],
+      "terms": [
+        {"targetText": "fila", "baseText": {"de": "Warteschlange", "en": "line; queue"}},
+        {"targetText": "enorme", "baseText": {"de": "riesig", "en": "huge"}},
+        {"targetText": "banco", "baseText": {"de": "Bank", "en": "bank"}},
+        {"targetText": "resolvi", "baseText": {"de": "ich habe erledigt", "en": "I sorted out"}},
+        {"targetText": "senha", "baseText": {"de": "Wartenummer", "en": "numbered ticket"}},
+        {"targetText": "painel", "baseText": {"de": "Anzeigetafel", "en": "display board"}}
+      ],
+      "recall": {"before": "Tinha uma ", "answer": "fila", "after": " enorme no banco, mas eu resolvi tudo de manhã.", "fallbackChoices": ["porta", "sala", "fila", "mesa"]},
+      "speakRequired": ["fila", "banco", "resolvi"],
+      "sceneCaption": {"de": "Am nächsten Tag fragt dich ein Nachbar: “Como foi o atendimento no banco ontem?”", "en": "The next day, a neighbor asks: “Como foi o atendimento no banco ontem?”"},
+      "trophyWord": {"word": "fila", "meaning": {"de": "Warteschlange", "en": "line; queue"}, "example": "Tinha uma fila enorme no banco, mas eu resolvi tudo de manhã.", "whyThisWord": {"de": "Fila hilft dir, Wartezeiten im Alltag zu beschreiben; eine senha hält deinen Platz über eine Nummer fest.", "en": "Fila helps you describe everyday waits; a senha keeps your place with a number."}},
+      "distractors": ["na farmácia,", "à tarde."],
+      "placeholderCaption": {"de": "Ein Nachbar fragt nach einem Bankbesuch.", "en": "A neighbor asks about a visit to the bank."},
+      "songMood": "patient everyday storytelling",
+      "visualNotes": "A relaxed next-day conversation outside an apartment entrance; avoid depicting the numbered-ticket resolution."
+    },
+    {
+      "slug": "chuva-na-feira",
+      "title": {"de": "Regen auf dem Markt", "en": "Rain at the market"},
+      "situation": {"de": "Du erzählst einer Freundin, wie du gestern trotz Regen auf dem Markt geblieben bist.", "en": "Tell a friend how you stayed at the market despite yesterday's rain."},
+      "pedagogicalGoal": "Mit enquanto und chovia einen andauernden Hintergrund beschreiben und anschließend abgeschlossene Handlungen erzählen.",
+      "register": "neutral",
+      "dialogue": [
+        {"targetText": "Você conseguiu passear pela feira com a chuva de ontem?", "baseText": {"de": "Konntest du gestern trotz des Regens über den Markt bummeln?", "en": "Did you manage to look around the market despite yesterday's rain?"}},
+        {"targetText": "Enquanto chovia, eu esperei a chuva passar debaixo de uma lona.", "baseText": {"de": "Während es regnete, habe ich unter einer Plane gewartet, bis der Regen vorbei war.", "en": "While it was raining, I waited under a tarp for the rain to pass."}},
+        {"targetText": "E depois da chuva, como você continuou o passeio?", "baseText": {"de": "Und wie ging dein Bummel nach dem Regen weiter?", "en": "And after the rain, how did you continue your visit?"}},
+        {"targetText": "Eu voltei às barracas e comprei verduras para o almoço.", "baseText": {"de": "Ich bin zu den Ständen zurückgegangen und habe Gemüse fürs Mittagessen gekauft.", "en": "I went back to the stalls and bought vegetables for lunch."}}
+      ],
+      "pattern": {
+        "label": "Enquanto chovia…",
+        "rule": {"de": "Enquanto mit dem imperfeito beschreibt einen laufenden Hintergrund; im perfeito simples erzählst du deine Handlung in dieser Situation.", "en": "Enquanto with the imperfeito describes an ongoing background; use the perfeito simples for your action in that situation."},
+        "examples": [
+          {"targetText": "Enquanto chovia, eu esperei a chuva passar debaixo de uma lona.", "baseText": {"de": "Während es regnete, habe ich unter einer Plane gewartet, bis der Regen vorbei war.", "en": "While it was raining, I waited under a tarp for the rain to pass."}, "highlight": "Enquanto chovia"},
+          {"targetText": "Estava chovendo, e eu esperei dentro da barraca.", "baseText": {"de": "Es regnete gerade, und ich habe im Marktstand gewartet.", "en": "It was raining, and I waited inside the stall."}, "highlight": "Estava chovendo"}
+        ]
+      },
+      "cloze": ["Eu ", {"kind": "form", "answer": "voltei", "cue": "voltar (eu)", "choices": ["voltou", "voltei", "voltaram", "voltamos"]}, " às barracas e ", {"kind": "form", "answer": "comprei", "cue": "comprar (eu)", "choices": ["compraram", "comprou", "compramos", "comprei"]}, " verduras para o almoço."],
+      "chunks": [
+        {"targetText": "Enquanto chovia,", "baseText": {"de": "Während es regnete,", "en": "While it was raining,"}},
+        {"targetText": "eu esperei", "baseText": {"de": "habe ich gewartet", "en": "I waited"}},
+        {"targetText": "a chuva passar", "baseText": {"de": "bis der Regen vorbei war", "en": "for the rain to pass"}},
+        {"targetText": "debaixo de uma lona.", "baseText": {"de": "unter einer Plane.", "en": "under a tarp."}}
+      ],
+      "terms": [
+        {"targetText": "chuva", "baseText": {"de": "Regen", "en": "rain"}},
+        {"targetText": "chovia", "baseText": {"de": "es regnete", "en": "it was raining"}},
+        {"targetText": "esperei", "baseText": {"de": "ich habe gewartet", "en": "I waited"}},
+        {"targetText": "lona", "baseText": {"de": "Plane", "en": "tarp"}},
+        {"targetText": "barracas", "baseText": {"de": "Marktstände", "en": "market stalls"}},
+        {"targetText": "verduras", "baseText": {"de": "Gemüse", "en": "vegetables"}}
+      ],
+      "recall": {"before": "Enquanto chovia, eu esperei a ", "answer": "chuva", "after": " passar debaixo de uma lona.", "fallbackChoices": ["semana", "noite", "tarde", "chuva"]},
+      "speakRequired": ["chovia", "esperei", "chuva"],
+      "sceneCaption": {"de": "Eine Freundin fragt dich nach deinem Marktbesuch: “Você conseguiu passear pela feira com a chuva de ontem?”", "en": "A friend asks about your market visit: “Você conseguiu passear pela feira com a chuva de ontem?”"},
+      "trophyWord": {"word": "chuva", "meaning": {"de": "Regen", "en": "rain"}, "example": "Enquanto chovia, eu esperei a chuva passar debaixo de uma lona.", "whyThisWord": {"de": "Chuva ist das Nomen für Regen; mit chovia beschreibst du, dass es zu diesem Zeitpunkt regnete.", "en": "Chuva is the noun for rain; chovia describes rain continuing at that past moment."}},
+      "distractors": ["eu comprei frutas", "dentro de uma loja."],
+      "placeholderCaption": {"de": "Ein Gespräch über einen regnerischen Markttag.", "en": "A conversation about a rainy day at the market."},
+      "songMood": "gentle rain and patient curiosity",
+      "visualNotes": "Rain on a street-market awning; the opening conversation must not reveal the later purchase."
+    },
+    {
+      "slug": "engarrafamento-na-avenida",
+      "title": {"de": "Ein anderer Weg zum Kurs", "en": "Another way to class"},
+      "situation": {"de": "Ein Bekannter fragt dich nach deinem gestrigen Weg zum Kurs durch den dichten Verkehr.", "en": "An acquaintance asks about your trip to class through yesterday's heavy traffic."},
+      "pedagogicalGoal": "Mit ia und Infinitiv eine frühere Absicht ausdrücken und ihr die tatsächlich abgeschlossene Handlung gegenüberstellen.",
+      "register": "neutral",
+      "dialogue": [
+        {"targetText": "Você conseguiu chegar ao curso ontem?", "baseText": {"de": "Hast du es gestern zum Kurs geschafft?", "en": "Did you manage to get to class yesterday?"}},
+        {"targetText": "Eu ia pegar o ônibus, mas havia um engarrafamento na avenida.", "baseText": {"de": "Ich wollte den Bus nehmen, aber auf der Hauptstraße gab es einen Stau.", "en": "I was going to take the bus, but there was a traffic jam on the avenue."}},
+        {"targetText": "A avenida estava parada. Como você chegou ao curso?", "baseText": {"de": "Auf der Hauptstraße ging nichts mehr. Wie bist du zum Kurs gekommen?", "en": "Traffic on the avenue was at a standstill. How did you get to class?"}},
+        {"targetText": "Eu peguei o metrô e cheguei antes do início.", "baseText": {"de": "Ich habe die U-Bahn genommen und war vor Beginn da.", "en": "I took the subway and arrived before the start."}}
+      ],
+      "pattern": {
+        "label": "Eu ia…, mas…",
+        "rule": {"de": "Ia mit Infinitiv beschreibt, was du vorhattest; das perfeito simples erzählt, was du tatsächlich getan hast.", "en": "Ia with an infinitive describes what you intended to do; the perfeito simples tells what you actually did."},
+        "examples": [
+          {"targetText": "Eu ia pegar o ônibus, mas havia um engarrafamento na avenida.", "baseText": {"de": "Ich wollte den Bus nehmen, aber auf der Hauptstraße gab es einen Stau.", "en": "I was going to take the bus, but there was a traffic jam on the avenue."}, "highlight": "ia pegar"},
+          {"targetText": "Quando eu peguei o metrô, a avenida estava parada.", "baseText": {"de": "Als ich die U-Bahn genommen habe, ging auf der Hauptstraße nichts mehr.", "en": "When I took the subway, traffic on the avenue was at a standstill."}, "highlight": "peguei o metrô"}
+        ]
+      },
+      "cloze": ["Eu ", {"kind": "form", "answer": "peguei", "cue": "pegar (eu)", "choices": ["pegou", "pegamos", "pegaram", "peguei"]}, " o metrô e ", {"kind": "form", "answer": "cheguei", "cue": "chegar (eu)", "choices": ["chegamos", "cheguei", "chegaram", "chegou"]}, " antes do início."],
+      "chunks": [
+        {"targetText": "Eu ia pegar", "baseText": {"de": "Ich wollte nehmen", "en": "I was going to take"}},
+        {"targetText": "o ônibus,", "baseText": {"de": "den Bus,", "en": "the bus,"}},
+        {"targetText": "mas havia um engarrafamento", "baseText": {"de": "aber es gab einen Stau", "en": "but there was a traffic jam"}},
+        {"targetText": "na avenida.", "baseText": {"de": "auf der Hauptstraße.", "en": "on the avenue."}}
+      ],
+      "terms": [
+        {"targetText": "ia pegar", "baseText": {"de": "ich wollte nehmen", "en": "I was going to take"}},
+        {"targetText": "ônibus", "baseText": {"de": "Bus", "en": "bus"}},
+        {"targetText": "engarrafamento", "baseText": {"de": "Stau", "en": "traffic jam"}},
+        {"targetText": "avenida", "baseText": {"de": "Hauptstraße; breite Straße", "en": "avenue; major street"}},
+        {"targetText": "metrô", "baseText": {"de": "U-Bahn", "en": "subway"}},
+        {"targetText": "início", "baseText": {"de": "Beginn", "en": "start; beginning"}}
+      ],
+      "recall": {"before": "Eu ia pegar o ônibus, mas havia um ", "answer": "engarrafamento", "after": " na avenida.", "fallbackChoices": ["engarrafamento", "mercado", "evento", "cinema"]},
+      "speakRequired": ["ônibus", "engarrafamento", "avenida"],
+      "sceneCaption": {"de": "Ein Bekannter fragt dich nach deinem gestrigen Weg: “Você conseguiu chegar ao curso ontem?”", "en": "An acquaintance asks about yesterday's journey: “Você conseguiu chegar ao curso ontem?”"},
+      "trophyWord": {"word": "engarrafamento", "meaning": {"de": "Stau", "en": "traffic jam"}, "example": "Eu ia pegar o ônibus, mas havia um engarrafamento na avenida.", "whyThisWord": {"de": "Engarrafamento bezeichnet einen Verkehrsstau und liefert einen konkreten Grund für eine Planänderung.", "en": "Engarrafamento means a traffic jam and gives a concrete reason for changing a plan."}},
+      "distractors": ["o trem,", "perto da estação."],
+      "placeholderCaption": {"de": "Ein Gespräch über den gestrigen Weg zum Kurs.", "en": "A conversation about yesterday's journey to class."},
+      "songMood": "a plan changed by city traffic",
+      "visualNotes": "A city avenue in the background of a next-day conversation; do not reveal the chosen transport."
+    },
+    {
+      "slug": "susto-no-piquenique",
+      "title": {"de": "Ein unerwarteter Gast", "en": "An unexpected guest"},
+      "situation": {"de": "Du erzählst einem Freund von einem kleinen Zwischenfall beim Picknick.", "en": "Tell a friend about a small incident during a picnic."},
+      "pedagogicalGoal": "Eine laufende Gruppenaktivität mit estávamos und Gerundium schildern und ein plötzliches Ereignis mit quando anschließen.",
+      "register": "neutral",
+      "dialogue": [
+        {"targetText": "Como foi o piquenique de ontem no parque?", "baseText": {"de": "Wie war das Picknick gestern im Park?", "en": "How was yesterday's picnic in the park?"}},
+        {"targetText": "Estávamos conversando no piquenique quando um cachorro pegou nosso pão; levei um susto.", "baseText": {"de": "Wir haben uns gerade beim Picknick unterhalten, als ein Hund unser Brot schnappte; ich habe mich erschrocken.", "en": "We were chatting at the picnic when a dog grabbed our bread; it gave me a fright."}},
+        {"targetText": "O dono estava por perto? Como ele reagiu?", "baseText": {"de": "War der Besitzer in der Nähe? Wie hat er reagiert?", "en": "Was the owner nearby? How did he react?"}},
+        {"targetText": "O dono pediu desculpas, e todo mundo riu da situação.", "baseText": {"de": "Der Besitzer hat sich entschuldigt, und alle haben über die Situation gelacht.", "en": "The owner apologized, and everyone laughed at the situation."}}
+      ],
+      "pattern": {
+        "label": "Estávamos… quando…",
+        "rule": {"de": "Estávamos mit Gerundium beschreibt, was gerade lief; quando mit perfeito simples fügt das Ereignis hinzu, das dazwischenkam.", "en": "Estávamos with a gerund describes what was in progress; quando with the perfeito simples adds the event that interrupted it."},
+        "examples": [
+          {"targetText": "Estávamos conversando no piquenique quando um cachorro pegou nosso pão; levei um susto.", "baseText": {"de": "Wir haben uns gerade beim Picknick unterhalten, als ein Hund unser Brot schnappte; ich habe mich erschrocken.", "en": "We were chatting at the picnic when a dog grabbed our bread; it gave me a fright."}, "highlight": "Estávamos conversando"},
+          {"targetText": "Estávamos guardando as ferramentas quando o vizinho chegou.", "baseText": {"de": "Wir haben gerade das Werkzeug weggeräumt, als der Nachbar kam.", "en": "We were putting away the tools when the neighbor arrived."}, "highlight": "quando o vizinho chegou"}
+        ]
+      },
+      "cloze": ["O dono ", {"kind": "form", "answer": "pediu", "cue": "pedir (o dono)", "choices": ["pedi", "pediram", "pediu", "pedimos"]}, " desculpas, e todo mundo ", {"kind": "form", "answer": "riu", "cue": "rir (todo mundo)", "choices": ["rimos", "riu", "riram", "riam"]}, " da situação."],
+      "chunks": [
+        {"targetText": "Estávamos conversando", "baseText": {"de": "Wir haben uns gerade unterhalten", "en": "We were chatting"}},
+        {"targetText": "no piquenique", "baseText": {"de": "beim Picknick", "en": "at the picnic"}},
+        {"targetText": "quando um cachorro", "baseText": {"de": "als ein Hund", "en": "when a dog"}},
+        {"targetText": "pegou nosso pão;", "baseText": {"de": "unser Brot schnappte;", "en": "grabbed our bread;"}},
+        {"targetText": "levei um susto.", "baseText": {"de": "ich habe mich erschrocken.", "en": "it gave me a fright."}}
+      ],
+      "terms": [
+        {"targetText": "susto", "baseText": {"de": "Schreck", "en": "fright; scare"}},
+        {"targetText": "conversando", "baseText": {"de": "sich unterhaltend", "en": "chatting"}},
+        {"targetText": "piquenique", "baseText": {"de": "Picknick", "en": "picnic"}},
+        {"targetText": "cachorro", "baseText": {"de": "Hund", "en": "dog"}},
+        {"targetText": "pão", "baseText": {"de": "Brot", "en": "bread"}},
+        {"targetText": "pediu desculpas", "baseText": {"de": "hat sich entschuldigt", "en": "apologized"}},
+        {"targetText": "riu", "baseText": {"de": "hat gelacht", "en": "laughed"}}
+      ],
+      "recall": {"before": "Estávamos conversando no piquenique quando um cachorro pegou nosso pão; levei um ", "answer": "susto", "after": ".", "fallbackChoices": ["lanche", "guarda-chuva", "susto", "livro"]},
+      "speakRequired": ["piquenique", "cachorro", "susto"],
+      "sceneCaption": {"de": "Ein Freund fragt dich nach dem Ausflug: “Como foi o piquenique de ontem no parque?”", "en": "A friend asks about your outing: “Como foi o piquenique de ontem no parque?”"},
+      "trophyWord": {"word": "susto", "meaning": {"de": "Schreck", "en": "fright; scare"}, "example": "Estávamos conversando no piquenique quando um cachorro pegou nosso pão; levei um susto.", "whyThisWord": {"de": "Levei um susto drückt aus, dass du dich erschrocken hast, ohne eine geschlechtsspezifische Adjektivform zu brauchen.", "en": "Levei um susto expresses getting a fright without requiring a gendered adjective."}},
+      "distractors": ["na varanda", "pegou nossa bola;"],
+      "placeholderCaption": {"de": "Ein Gespräch über ein Picknick im Park.", "en": "A conversation about a picnic in the park."},
+      "songMood": "a brief surprise turning into laughter",
+      "visualNotes": "A picnic blanket and a park setting; the opening frame does not reveal the dog or the owner's reaction."
+    },
+    {
+      "slug": "coincidencia-no-onibus",
+      "title": {"de": "Die Welt ist klein", "en": "A small world"},
+      "situation": {"de": "Du erzählst einer Nachbarin von einer überraschenden Gemeinsamkeit mit einem Fahrgast.", "en": "Tell a neighbor about something unexpected you had in common with another passenger."},
+      "pedagogicalGoal": "Ein abgeschlossenes Gespräch mit gemeinsamem Hintergrund in der ersten Person Plural des imperfeito verbinden.",
+      "register": "neutral",
+      "dialogue": [
+        {"targetText": "Você conversou com alguém no ônibus ontem?", "baseText": {"de": "Hast du gestern im Bus mit jemandem gesprochen?", "en": "Did you talk to anyone on the bus yesterday?"}},
+        {"targetText": "Que coincidência: conversei no ônibus com alguém que era da minha cidade!", "baseText": {"de": "Was für ein Zufall: Ich habe im Bus mit jemandem aus meiner Heimatstadt gesprochen!", "en": "What a coincidence: I talked to someone on the bus who was from my hometown!"}},
+        {"targetText": "Além da cidade, o que você descobriu em comum com essa pessoa?", "baseText": {"de": "Was hattest du mit dieser Person außer der Stadt noch gemeinsam?", "en": "Apart from the town, what else did you discover you had in common with that person?"}},
+        {"targetText": "Nós morávamos na mesma rua e conhecíamos o mesmo padeiro.", "baseText": {"de": "Wir haben in derselben Straße gewohnt und kannten denselben Bäcker.", "en": "We used to live on the same street and knew the same baker."}}
+      ],
+      "pattern": {
+        "label": "Nós morávamos, nós conhecíamos",
+        "rule": {"de": "Mit nós und dem imperfeito beschreibst du gemeinsame frühere Umstände; ein einzelnes Gespräch darüber steht im perfeito simples.", "en": "Use nós with the imperfeito for shared past circumstances; a single conversation about them uses the perfeito simples."},
+        "examples": [
+          {"targetText": "Nós morávamos na mesma rua e conhecíamos o mesmo padeiro.", "baseText": {"de": "Wir haben in derselben Straße gewohnt und kannten denselben Bäcker.", "en": "We used to live on the same street and knew the same baker."}, "highlight": "Nós morávamos"},
+          {"targetText": "Nós conhecíamos a rua, mas conversamos sobre as mudanças.", "baseText": {"de": "Wir kannten die Straße, haben aber über die Veränderungen gesprochen.", "en": "We knew the street, but we talked about the changes."}, "highlight": "Nós conhecíamos"}
+        ]
+      },
+      "cloze": ["Nós ", {"kind": "form", "answer": "morávamos", "cue": "morar (nós)", "choices": ["moravam", "morava", "morávamos", "morou"]}, " na mesma rua e ", {"kind": "form", "answer": "conhecíamos", "cue": "conhecer (nós)", "choices": ["conhecia", "conhecíamos", "conheceu", "conheciam"]}, " o mesmo padeiro."],
+      "chunks": [
+        {"targetText": "Que coincidência:", "baseText": {"de": "Was für ein Zufall:", "en": "What a coincidence:"}},
+        {"targetText": "conversei no ônibus", "baseText": {"de": "Ich habe im Bus gesprochen", "en": "I talked on the bus"}},
+        {"targetText": "com alguém", "baseText": {"de": "mit jemandem", "en": "with someone"}},
+        {"targetText": "que era da minha cidade!", "baseText": {"de": "aus meiner Heimatstadt!", "en": "who was from my hometown!"}}
+      ],
+      "terms": [
+        {"targetText": "coincidência", "baseText": {"de": "Zufall", "en": "coincidence"}},
+        {"targetText": "alguém", "baseText": {"de": "jemand", "en": "someone"}},
+        {"targetText": "minha cidade", "baseText": {"de": "meine Heimatstadt", "en": "my hometown"}},
+        {"targetText": "morávamos", "baseText": {"de": "wir haben früher gewohnt", "en": "we used to live"}},
+        {"targetText": "conhecíamos", "baseText": {"de": "wir kannten", "en": "we knew"}},
+        {"targetText": "padeiro", "baseText": {"de": "Bäcker", "en": "baker"}}
+      ],
+      "recall": {"before": "Que ", "answer": "coincidência", "after": ": conversei no ônibus com alguém que era da minha cidade!", "fallbackChoices": ["coincidência", "alegria", "conversa", "viagem"]},
+      "speakRequired": ["coincidência", "ônibus", "cidade"],
+      "sceneCaption": {"de": "Eine Nachbarin fragt nach deiner Fahrt: “Você conversou com alguém no ônibus ontem?”", "en": "A neighbor asks about your journey: “Você conversou com alguém no ônibus ontem?”"},
+      "trophyWord": {"word": "coincidência", "meaning": {"de": "Zufall", "en": "coincidence"}, "example": "Que coincidência: conversei no ônibus com alguém que era da minha cidade!", "whyThisWord": {"de": "Mit que coincidência hebst du eine unerwartete Verbindung zwischen zwei Menschen oder Ereignissen hervor.", "en": "Que coincidência highlights an unexpected connection between people or events."}},
+      "distractors": ["conversei na feira", "que era do meu curso!"],
+      "placeholderCaption": {"de": "Eine Nachbarin fragt nach einer Busfahrt.", "en": "A neighbor asks about a bus ride."},
+      "songMood": "the warmth of an unexpected connection",
+      "visualNotes": "A quiet neighborhood conversation with a bus stop in the distance; do not reveal the shared street or baker."
+    },
+    {
+      "slug": "recado-da-portaria",
+      "title": {"de": "Eine Nachricht zum Paket", "en": "A message about a package"},
+      "situation": {"de": "Du erzählst einem Bekannten, wie du gestern deiner Lieferung nachgegangen bist.", "en": "Tell an acquaintance how you followed up on your delivery yesterday."},
+      "pedagogicalGoal": "Eine Reihe abgeschlossener Handlungen erzählen und mit descobri que eine neu erhaltene Information anschließen.",
+      "register": "neutral",
+      "dialogue": [
+        {"targetText": "Você conseguiu buscar a encomenda ontem?", "baseText": {"de": "Konntest du gestern deine Lieferung abholen?", "en": "Did you manage to pick up your delivery yesterday?"}},
+        {"targetText": "Encontrei um recado da portaria sobre meu pacote e desci para perguntar.", "baseText": {"de": "Ich habe eine Nachricht vom Empfang über mein Paket gefunden und bin zum Nachfragen hinuntergegangen.", "en": "I found a message from the building's front desk about my package and went downstairs to ask."}},
+        {"targetText": "A portaria recebe muita coisa. Quem recebeu seu pacote dessa vez?", "baseText": {"de": "Am Empfang kommt viel an. Wer hat dein Paket diesmal angenommen?", "en": "The front desk receives a lot of things. Who accepted your package this time?"}},
+        {"targetText": "Eu descobri que o vizinho recebeu e guardou meu pacote.", "baseText": {"de": "Ich habe erfahren, dass der Nachbar mein Paket angenommen und aufbewahrt hat.", "en": "I found out that the neighbor accepted my package and kept it for me."}}
+      ],
+      "pattern": {
+        "label": "Descobri que…",
+        "rule": {"de": "Nach descobri que kannst du eine neu erfahrene abgeschlossene Handlung ebenfalls im perfeito simples erzählen, ohne eine zusammengesetzte Vorvergangenheit zu brauchen.", "en": "After descobri que, you can report a completed action in the perfeito simples without needing a compound past perfect."},
+        "examples": [
+          {"targetText": "Eu descobri que o vizinho recebeu e guardou meu pacote.", "baseText": {"de": "Ich habe erfahren, dass der Nachbar mein Paket angenommen und aufbewahrt hat.", "en": "I found out that the neighbor accepted my package and kept it for me."}, "highlight": "descobri que o vizinho recebeu"},
+          {"targetText": "Eu descobri que o grupo terminou o jardim de manhã.", "baseText": {"de": "Ich habe erfahren, dass die Gruppe am Vormittag mit dem Garten fertig geworden ist.", "en": "I found out that the group finished the garden in the morning."}, "highlight": "descobri que o grupo terminou"}
+        ]
+      },
+      "cloze": ["Eu ", {"kind": "form", "answer": "descobri", "cue": "descobrir (eu)", "choices": ["descobriu", "descobriram", "descobri", "descobrimos"]}, " que o vizinho ", {"kind": "form", "answer": "recebeu", "cue": "receber (o vizinho)", "choices": ["recebemos", "recebeu", "receberam", "recebi"]}, " e guardou meu pacote."],
+      "chunks": [
+        {"targetText": "Encontrei um recado", "baseText": {"de": "Ich habe eine Nachricht gefunden", "en": "I found a message"}},
+        {"targetText": "da portaria", "baseText": {"de": "vom Empfang", "en": "from the building's front desk"}},
+        {"targetText": "sobre meu pacote", "baseText": {"de": "über mein Paket", "en": "about my package"}},
+        {"targetText": "e desci", "baseText": {"de": "und bin hinuntergegangen", "en": "and went downstairs"}},
+        {"targetText": "para perguntar.", "baseText": {"de": "zum Nachfragen.", "en": "to ask."}}
+      ],
+      "terms": [
+        {"targetText": "recado", "baseText": {"de": "Nachricht; kurze Mitteilung", "en": "message; short note"}},
+        {"targetText": "portaria", "baseText": {"de": "Empfang eines Wohnhauses", "en": "building's front desk"}},
+        {"targetText": "pacote", "baseText": {"de": "Paket", "en": "package"}},
+        {"targetText": "desci", "baseText": {"de": "ich bin hinuntergegangen", "en": "I went downstairs"}},
+        {"targetText": "descobri", "baseText": {"de": "ich habe herausgefunden", "en": "I found out"}},
+        {"targetText": "vizinho", "baseText": {"de": "Nachbar", "en": "neighbor"}},
+        {"targetText": "guardou", "baseText": {"de": "hat aufbewahrt", "en": "kept; put away"}}
+      ],
+      "recall": {"before": "Encontrei um ", "answer": "recado", "after": " da portaria sobre meu pacote e desci para perguntar.", "fallbackChoices": ["contrato", "formulário", "recado", "desenho"]},
+      "speakRequired": ["recado", "portaria", "desci"],
+      "sceneCaption": {"de": "Ein Bekannter fragt dich am nächsten Tag: “Você conseguiu buscar a encomenda ontem?”", "en": "An acquaintance asks you the next day: “Você conseguiu buscar a encomenda ontem?”"},
+      "trophyWord": {"word": "recado", "meaning": {"de": "Nachricht; kurze Mitteilung", "en": "message; short note"}, "example": "Encontrei um recado da portaria sobre meu pacote e desci para perguntar.", "whyThisWord": {"de": "Recado ist eine kurze Nachricht für jemanden, oft mit einer praktischen Information zum Weitergeben oder Nachfragen.", "en": "Recado is a short message for someone, often giving practical information to pass on or follow up."}},
+      "distractors": ["da biblioteca", "e telefonei"],
+      "placeholderCaption": {"de": "Ein Gespräch über eine erwartete Lieferung.", "en": "A conversation about an expected delivery."},
+      "songMood": "following a small everyday mystery",
+      "visualNotes": "A residential lobby seen during a conversation; keep the note and the package recipient out of the opening scene."
+    },
+    {
+      "slug": "alivio-com-os-documentos",
+      "title": {"de": "Die Unterlagen sind wieder da", "en": "The documents are back"},
+      "situation": {"de": "Du erzählst einer Freundin, wie du eine verlorene Dokumentenmappe wiedergefunden hast.", "en": "Tell a friend how you recovered a missing folder of documents."},
+      "pedagogicalGoal": "Mehrere abgeschlossene Ereignisse mit einem vorher bestehenden Wissensstand im imperfeito zu einer zusammenhängenden Geschichte verbinden.",
+      "register": "neutral",
+      "dialogue": [
+        {"targetText": "E a pasta de documentos que você perdeu ontem?", "baseText": {"de": "Und was ist mit der Dokumentenmappe, die du gestern verloren hast?", "en": "And what about the folder of documents you lost yesterday?"}},
+        {"targetText": "Que alívio! Eu recebi uma ligação sobre a pasta e voltei à biblioteca.", "baseText": {"de": "Was für eine Erleichterung! Ich habe einen Anruf wegen der Mappe bekommen und bin zur Bibliothek zurückgegangen.", "en": "What a relief! I received a call about the folder and went back to the library."}},
+        {"targetText": "Você sabia onde procurar antes dessa ligação?", "baseText": {"de": "Wusstest du vor diesem Anruf, wo du suchen solltest?", "en": "Did you know where to look before that call?"}},
+        {"targetText": "Eu não sabia onde procurar, mas recuperei todos os documentos.", "baseText": {"de": "Ich wusste nicht, wo ich suchen sollte, aber ich habe alle Unterlagen wiederbekommen.", "en": "I didn't know where to look, but I recovered all the documents."}}
+      ],
+      "pattern": {
+        "label": "Antes e depois da notícia",
+        "rule": {"de": "Das imperfeito beschreibt deinen damaligen Wissensstand oder Gedanken; das perfeito simples schließt das Ereignis mit seinem Ergebnis ab.", "en": "The imperfeito describes what you knew or thought at the time; the perfeito simples closes the event with its outcome."},
+        "examples": [
+          {"targetText": "Eu não sabia onde procurar, mas recuperei todos os documentos.", "baseText": {"de": "Ich wusste nicht, wo ich suchen sollte, aber ich habe alle Unterlagen wiederbekommen.", "en": "I didn't know where to look, but I recovered all the documents."}, "highlight": "não sabia"},
+          {"targetText": "Eu estava achando que a pasta estava no ônibus.", "baseText": {"de": "Ich dachte gerade, die Mappe wäre im Bus.", "en": "I was thinking the folder was on the bus."}, "highlight": "estava achando"}
+        ]
+      },
+      "cloze": ["Eu não ", {"kind": "form", "answer": "sabia", "cue": "saber (eu)", "choices": ["sabíamos", "sabiam", "sabia", "sabem"]}, " onde procurar, mas ", {"kind": "form", "answer": "recuperei", "cue": "recuperar (eu)", "choices": ["recuperou", "recuperamos", "recuperei", "recuperaram"]}, " todos os documentos."],
+      "chunks": [
+        {"targetText": "Que alívio!", "baseText": {"de": "Was für eine Erleichterung!", "en": "What a relief!"}},
+        {"targetText": "Eu recebi uma ligação", "baseText": {"de": "Ich habe einen Anruf bekommen", "en": "I received a call"}},
+        {"targetText": "sobre a pasta", "baseText": {"de": "wegen der Mappe", "en": "about the folder"}},
+        {"targetText": "e voltei à biblioteca.", "baseText": {"de": "und bin zur Bibliothek zurückgegangen.", "en": "and went back to the library."}}
+      ],
+      "terms": [
+        {"targetText": "alívio", "baseText": {"de": "Erleichterung", "en": "relief"}},
+        {"targetText": "ligação", "baseText": {"de": "Telefonanruf", "en": "phone call"}},
+        {"targetText": "pasta", "baseText": {"de": "Mappe", "en": "folder"}},
+        {"targetText": "voltei", "baseText": {"de": "ich bin zurückgegangen", "en": "I went back"}},
+        {"targetText": "sabia", "baseText": {"de": "ich wusste", "en": "I knew"}},
+        {"targetText": "recuperei", "baseText": {"de": "ich habe wiederbekommen", "en": "I recovered"}},
+        {"targetText": "documentos", "baseText": {"de": "Unterlagen; Dokumente", "en": "documents"}}
+      ],
+      "recall": {"before": "Que ", "answer": "alívio", "after": "! Eu recebi uma ligação sobre a pasta e voltei à biblioteca.", "fallbackChoices": ["barulho", "calor", "atraso", "alívio"]},
+      "speakRequired": ["alívio", "ligação", "pasta"],
+      "sceneCaption": {"de": "Eine Freundin erinnert sich an deine verlorenen Unterlagen: “E a pasta de documentos que você perdeu ontem?”", "en": "A friend remembers your missing documents: “E a pasta de documentos que você perdeu ontem?”"},
+      "trophyWord": {"word": "alívio", "meaning": {"de": "Erleichterung", "en": "relief"}, "example": "Que alívio! Eu recebi uma ligação sobre a pasta e voltei à biblioteca.", "whyThisWord": {"de": "Que alívio benennt die Erleichterung nach einer Sorge, ohne eine geschlechtsspezifische Form von aliviado zu brauchen.", "en": "Que alívio expresses relief after a worry without requiring a gendered form of aliviado."}},
+      "distractors": ["Eu recebi uma mensagem", "e voltei ao banco."],
+      "placeholderCaption": {"de": "Eine Freundin erkundigt sich nach verlorenen Unterlagen.", "en": "A friend asks about missing documents."},
+      "songMood": "relief after a small worry",
+      "visualNotes": "A calm conversation near a library; do not show the recovered folder before the learner tells the story."
+    }
+  ]
+}

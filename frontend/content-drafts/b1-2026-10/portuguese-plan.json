@@ -1,0 +1,187 @@
+{
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "status": "proposal_not_approved",
+  "specification": "authoring-spec-it-pt.json supersedes the provisional grammar and register notes below. P1 is the current drafting scope; later paths remain proposals. Fable's exact trophy and beat changes are applied.",
+  "notes": [
+    "Proposta de cem troféus e situações, ainda sem aprovação. A redação dos episódios completos depende da especificação de Fable; os ancoramentos gramaticais abaixo são provisórios.",
+    "Português brasileiro com você e concordância de terceira pessoa; tratamento constante em cada episódio. As futuras bases devem trazer alemão e inglês naturais, como o corpus existente.",
+    "Produção do aluno sem adjetivos ou particípios que revelem seu gênero. O gênero de objetos continua a exigir concordância normal. Preferir desculpe; não copiar expressões antigas com cansado ou obrigado.",
+    "P1 propõe perfeito simples para acontecimentos concluídos e imperfeito para contexto. Não usar tenho feito como equivalente de uma ação única já concluída. Fable ainda deve definir as formas e a progressão exatas.",
+    "P3 não pressupõe que a mesma construção condicional funcione em espanhol e português. As orações com se e qualquer forma de subjuntivo aguardam licença explícita de Fable. P7 reserva formas de subjuntivo para a etapa em que forem introduzidas.",
+    "Cada troféu deve aparecer na primeira fala do aluno. As situações são pontos de partida para episódios com quatro turnos; a cena inicial não revela a reação ou complicação do terceiro turno. P9 e P10 consolidam formas já ensinadas.",
+    "A unicidade será conferida contra todas as variantes de todo o corpus português, incluindo os 199 troféus distintos registrados na extração Stage 0."
+  ],
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "O que aconteceu",
+      "anchor": "Relato para um ouvinte interessado: L1–L3 ações concluídas no perfeito simples; L4–L5 contexto no imperfeito; L6–L7 contraste entre contexto e acontecimento; L8–L10 dois acontecimentos encadeados. Proposta de progressão, sujeita à especificação de Fable.",
+      "lessons": [
+        {"number": 1, "trophy": "mutirão", "beat": "Contar como foi o mutirão de sábado no jardim do prédio; depois explicar qual tarefa o grupo terminou junto."},
+        {"number": 2, "trophy": "reencontro", "beat": "Relatar um reencontro com alguém de um curso na feira de rua; continuar com a conversa que tiveram em uma barraca."},
+        {"number": 3, "trophy": "convite", "beat": "Contar que recebeu um convite para uma roda de leitura na biblioteca; acrescentar o que fez depois de aceitar."},
+        {"number": 4, "trophy": "fila", "beat": "Descrever a fila que havia no banco naquela manhã; contar qual foi o próximo passo para resolver a tarefa."},
+        {"number": 5, "trophy": "chuva", "beat": "Lembrar a chuva durante uma visita à feira e como estava o movimento; contar onde esperou até conseguir continuar o passeio."},
+        {"number": 6, "trophy": "engarrafamento", "beat": "Relatar uma saída que coincidiu com um engarrafamento; ligar o contexto da viagem à decisão de seguir de metrô."},
+        {"number": 7, "trophy": "susto", "beat": "Contar o susto quando um cachorro pegou um pão durante um piquenique; completar o relato com a reação do grupo e do dono."},
+        {"number": 8, "trophy": "coincidência", "beat": "Relatar a coincidência de conhecer no ônibus alguém da mesma cidade de origem; explicar como descobriram um conhecido em comum."},
+        {"number": 9, "trophy": "recado", "beat": "Contar que encontrou um recado da portaria sobre uma encomenda; seguir com a busca pelo pacote e a descoberta de quem o recebeu."},
+        {"number": 10, "trophy": "alívio", "beat": "Descrever o alívio ao recuperar uma pasta de documentos; encadear a ligação recebida, a volta ao local e a recuperação da pasta."}
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Do meu ponto de vista",
+      "anchor": "Opinião fundamentada com acho que, porque e por isso; depois reconhecimento de outra perspectiva com mas e mesmo assim. Concessivas que exijam subjuntivo aguardam a especificação. Ouvinte interessado, com uma objeção concreta no terceiro turno.",
+      "lessons": [
+        {"number": 1, "trophy": "opinião", "beat": "Dar uma opinião sobre abrir a biblioteca aos domingos; sustentar a ideia com a rotina de quem trabalha durante a semana."},
+        {"number": 2, "trophy": "vantagem", "beat": "Apontar a vantagem de comprar frutas na feira do bairro; explicar por que conversar com quem vende ajuda na escolha."},
+        {"number": 3, "trophy": "desvantagem", "beat": "Reconhecer uma desvantagem de morar perto de uma rua movimentada; explicar o que ainda torna o local conveniente."},
+        {"number": 4, "trophy": "trânsito", "beat": "Opinar sobre reduzir vagas de estacionamento perto de uma praça; responder a uma preocupação concreta com o trânsito."},
+        {"number": 5, "trophy": "transporte", "beat": "Defender a melhoria do transporte público; ponderar a demora de algumas linhas sem perder o argumento principal."},
+        {"number": 6, "trophy": "aluguel", "beat": "Avaliar dividir o aluguel com outra pessoa; reconhecer a perda de privacidade e explicar a economia possível."},
+        {"number": 7, "trophy": "convivência", "beat": "Dar uma opinião sobre regras para usar o salão do prédio; ligar a proposta à convivência entre vizinhos."},
+        {"number": 8, "trophy": "escolha", "beat": "Defender a escolha de um curso presencial; considerar o deslocamento e explicar o valor das conversas depois da aula."},
+        {"number": 9, "trophy": "costume", "beat": "Explicar um costume de reunir amigos para o almoço de domingo; reconhecer que nem todo mundo consegue participar sempre."},
+        {"number": 10, "trophy": "equilíbrio", "beat": "Propor equilíbrio entre atividades na praça e descanso dos moradores; responder a uma objeção sobre o horário dos eventos."}
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Outras possibilidades",
+      "anchor": "Pedidos e preferências com gostaria, preferiria e poderia, seguidos de conselho com deveria. Avaliar possibilidades e ajustar uma proposta diante de um limite real. Fable deve definir separadamente qualquer estrutura condicional com se; não importar o contrato espanhol.",
+      "lessons": [
+        {"number": 1, "trophy": "gostaria", "beat": "Pedir para participar de uma oficina de culinária; ajustar o pedido quando o grupo do primeiro horário já está completo."},
+        {"number": 2, "trophy": "preferência", "beat": "Expressar, com eu preferia ou tenho preferência, o desejo de uma mesa longe da caixa de som; considerar outra opção oferecida pelo restaurante."},
+        {"number": 3, "trophy": "poderia", "beat": "Pedir uma explicação mais detalhada de uma cobrança; indicar a parte que ainda precisa de esclarecimento."},
+        {"number": 4, "trophy": "deveria", "beat": "Perguntar qual etapa deveria fazer primeiro para entrar em um curso; adaptar a sequência ao saber que falta um documento."},
+        {"number": 5, "trophy": "possibilidade", "beat": "Consultar a possibilidade de visitar um apartamento em outro horário; ajustar a disponibilidade ao tempo de quem mostra o imóvel."},
+        {"number": 6, "trophy": "oportunidade", "beat": "Manifestar interesse em uma oportunidade de voluntariado; esclarecer a disponibilidade diante da duração mínima do compromisso."},
+        {"number": 7, "trophy": "condição", "beat": "Perguntar sobre uma condição para trocar o dia de uma atividade; reformular a proposta depois de conhecer a regra do grupo."},
+        {"number": 8, "trophy": "acordo", "beat": "Sugerir um acordo para usar um espaço compartilhado; ajustar um detalhe quando outra pessoa apresenta uma necessidade diferente."},
+        {"number": 9, "trophy": "alternativa", "beat": "Pedir uma alternativa a uma acomodação perto da rua; explicar qual mudança parcial já ajudaria."},
+        {"number": 10, "trophy": "prioridade", "beat": "Explicar a prioridade ao escolher um novo turno de curso; revisar a preferência depois de receber informações sobre as vagas."}
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "A opção de que preciso",
+      "anchor": "Descrever e distinguir referentes com nome + que, depois onde para lugares e o que/a que com antecedente claro. Negociação de uma escolha; favorecer relativas com indicativo e não introduzir subjuntivo por acidente.",
+      "lessons": [
+        {"number": 1, "trophy": "varanda", "beat": "Descrever a varanda de um apartamento visitado; negociar uma opção menor que recebe a mesma luz da manhã."},
+        {"number": 2, "trophy": "elevador", "beat": "Distinguir o elevador que atende o andar desejado; esclarecer a diferença entre a entrada principal e a de serviço."},
+        {"number": 3, "trophy": "tomada", "beat": "Identificar a tomada que fica perto da mesa; combinar outra disposição quando o cabo não alcança o lugar planejado."},
+        {"number": 4, "trophy": "prateleira", "beat": "Escolher a prateleira que suporta os livros maiores; ajustar a posição diante da largura disponível na parede."},
+        {"number": 5, "trophy": "tecido", "beat": "Distinguir o tecido que apareceu na amostra de uma cortina; considerar outra cor quando a primeira acabou."},
+        {"number": 6, "trophy": "tamanho", "beat": "Identificar o tamanho de uma mochila experimentada na loja; comparar com outro modelo que tem menos bolsos."},
+        {"number": 7, "trophy": "modelo", "beat": "Explicar qual modelo de ventilador fez menos ruído na demonstração; negociar a compra da última unidade disponível."},
+        {"number": 8, "trophy": "portaria", "beat": "Precisar qual portaria recebe as encomendas do prédio; combinar a retirada em outro acesso por causa de uma obra."},
+        {"number": 9, "trophy": "biblioteca", "beat": "Identificar a biblioteca onde acontece um clube de leitura; considerar outra unidade com o mesmo grupo em dia diferente."},
+        {"number": 10, "trophy": "associação", "beat": "Distinguir a associação que oferece atividades para moradores; escolher uma sede próxima depois de comparar os horários."}
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Queria uma informação",
+      "anchor": "Perguntas indiretas com você sabe/pode me dizer + onde, como, quando, qual e se. Retomar o que falta saber após uma resposta parcial; não importar regras de inversão ou ordem final de outras línguas.",
+      "lessons": [
+        {"number": 1, "trophy": "cadastro", "beat": "Perguntar onde se faz o cadastro de usuário de uma biblioteca; pedir a próxima etapa quando o balcão indicado atende outro serviço."},
+        {"number": 2, "trophy": "documento", "beat": "Consultar qual documento comprova o endereço; perguntar pela alternativa quando a conta está em nome de outra pessoa."},
+        {"number": 3, "trophy": "formulário", "beat": "Perguntar como enviar um formulário de inscrição; esclarecer o procedimento quando o botão de envio não aparece."},
+        {"number": 4, "trophy": "assinatura", "beat": "Consultar onde deve ficar a assinatura em uma autorização; resolver a dúvida sobre a segunda pessoa que também precisa assinar."},
+        {"number": 5, "trophy": "prazo", "beat": "Perguntar quando termina um prazo de entrega; confirmar se vale a data do envio ou a do recebimento."},
+        {"number": 6, "trophy": "comprovante", "beat": "Averiguar se um comprovante digital é aceito; pedir orientação quando parte do arquivo está ilegível."},
+        {"number": 7, "trophy": "agendamento", "beat": "Consultar se é necessário agendamento para um serviço; confirmar como marcar quando não há vaga na semana desejada."},
+        {"number": 8, "trophy": "inscrição", "beat": "Perguntar se a inscrição em um curso foi recebida; descobrir como acompanhar o pedido sem fazer uma nova inscrição."},
+        {"number": 9, "trophy": "atendimento", "beat": "Averiguar como funciona o atendimento durante uma mudança de endereço; esclarecer qual canal resolve a pendência específica."},
+        {"number": 10, "trophy": "requisito", "beat": "Confirmar qual requisito falta para concluir uma solicitação; perguntar se a complementação exige outra visita."}
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "Em andamento",
+      "anchor": "Estado de um processo com estar + particípio que concorda com um objeto explícito; descrição de procedimentos com se ou sujeito institucional, conforme Fable. O aluno consulta ou solicita a ação de quem atende, sem anunciar uma decisão que cabe à outra pessoa.",
+      "lessons": [
+        {"number": 1, "trophy": "entrega", "beat": "Consultar o estado de uma entrega que ainda não chegou; pedir a verificação depois de descobrir uma tentativa em outro endereço."},
+        {"number": 2, "trophy": "revisão", "beat": "Acompanhar a revisão de uma bicicleta; perguntar pela etapa seguinte quando a oficina identifica uma peça em falta."},
+        {"number": 3, "trophy": "manutenção", "beat": "Perguntar sobre a manutenção do elevador; pedir informação sobre acesso alternativo enquanto o serviço continua."},
+        {"number": 4, "trophy": "instalação", "beat": "Verificar como está a instalação da internet; consultar outra data quando a equipe precisa de acesso a uma área comum."},
+        {"number": 5, "trophy": "reparo", "beat": "Acompanhar o reparo de um eletrodoméstico; perguntar se o novo problema altera o prazo informado."},
+        {"number": 6, "trophy": "atualização", "beat": "Consultar a atualização de um cadastro; pedir conferência quando o endereço antigo ainda aparece na tela."},
+        {"number": 7, "trophy": "confirmação", "beat": "Perguntar se a confirmação de uma reserva já foi enviada; solicitar outro canal quando a mensagem não aparece."},
+        {"number": 8, "trophy": "retirada", "beat": "Verificar se um pedido está pronto para retirada; perguntar como autorizar outra pessoa após saber o horário disponível."},
+        {"number": 9, "trophy": "pendência", "beat": "Consultar a pendência que impede a conclusão de um cadastro; pedir que o setor responsável confira o documento já entregue."},
+        {"number": 10, "trophy": "conclusão", "beat": "Pedir previsão de conclusão de um serviço; combinar como receber a informação final sem afirmar que o serviço já terminou."}
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Para dar certo",
+      "anchor": "Finalidade com para + infinitivo quando o agente é o mesmo; depois para que + presente do subjuntivo com agentes distintos. L5–L8 reservam funcione, participem e chegue, sujeitas à licença de Fable. Negociação de meios e objetivos com concordância e sujeitos claros.",
+      "lessons": [
+        {"number": 1, "trophy": "organizar", "beat": "Propor uma lista para organizar a distribuição de tarefas em uma festa do prédio; ajustar a lista depois de uma mudança no número de participantes."},
+        {"number": 2, "trophy": "economizar", "beat": "Combinar compras em conjunto para economizar em materiais; aceitar uma quantidade menor quando o espaço para guardar é limitado."},
+        {"number": 3, "trophy": "aproveitar", "beat": "Planejar a saída mais cedo para aproveitar uma visita; ajustar a proposta ao horário de quem acompanha."},
+        {"number": 4, "trophy": "dividir", "beat": "Sugerir uma planilha para dividir despesas de uma atividade; aceitar outro meio quando alguém não consegue abrir o arquivo."},
+        {"number": 5, "trophy": "facilitar", "beat": "Combinar instruções mais claras para facilitar a chegada dos participantes; adaptar a mensagem para ajudar quem chega pela primeira vez a achar a entrada correta."},
+        {"number": 6, "trophy": "funcione", "beat": "Negociar um teste antecipado para que o equipamento de som funcione no encontro; acomodar a limitação do horário da sala."},
+        {"number": 7, "trophy": "participem", "beat": "Propor duas opções de horário para que mais moradores participem; ajustar a escolha diante de uma restrição do espaço."},
+        {"number": 8, "trophy": "chegue", "beat": "Combinar o envio do endereço para que uma visita chegue ao acesso correto; acrescentar uma referência depois de saber que há duas entradas."},
+        {"number": 9, "trophy": "prevenção", "beat": "Organizar uma conversa simples sobre prevenção de desperdício de água; adaptar a atividade para incluir quem chega depois do trabalho."},
+        {"number": 10, "trophy": "objetivo", "beat": "Retomar o objetivo de uma ação comunitária; negociar a divisão final de tarefas para que cada pessoa saiba o que fazer."}
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Naquela época",
+      "anchor": "Imperfeito para hábitos e contextos, com quando eu era, antes e naquela época; contraste com agora e com um acontecimento concluído. Ouvinte interessado: as duas falas do aluno formam uma lembrança conectada, sem qualificações que marquem seu gênero.",
+      "lessons": [
+        {"number": 1, "trophy": "infância", "beat": "Contar uma lembrança da infância ligada ao caminho de casa; acrescentar quem costumava acompanhar o percurso."},
+        {"number": 2, "trophy": "escola", "beat": "Descrever como era a escola de uma época anterior; explicar o que mudou depois de uma reforma."},
+        {"number": 3, "trophy": "quintal", "beat": "Recordar o quintal de uma casa conhecida; contar o que as pessoas costumavam fazer ali nas tardes livres."},
+        {"number": 4, "trophy": "recreio", "beat": "Lembrar uma atividade do recreio; continuar com a forma de organizar os grupos sem depender do gênero do aluno."},
+        {"number": 5, "trophy": "domingos", "beat": "Descrever como eram os domingos em família; acrescentar um acontecimento que alterou aquela rotina."},
+        {"number": 6, "trophy": "hábito", "beat": "Contar um hábito de ouvir rádio antes de sair; comparar com a maneira atual de acompanhar notícias."},
+        {"number": 7, "trophy": "brincadeira", "beat": "Explicar uma brincadeira que fazia parte das férias; relatar uma ocasião em que alguém ensinou uma regra nova."},
+        {"number": 8, "trophy": "diferença", "beat": "Apontar a diferença entre o antigo percurso de trabalho e o atual; ligar a mudança a uma nova linha de transporte."},
+        {"number": 9, "trophy": "distância", "beat": "Lembrar como a distância afetava o contato com amigos; comparar as visitas de antes com as conversas atuais."},
+        {"number": 10, "trophy": "fase", "beat": "Descrever uma fase de adaptação a uma cidade; fechar a lembrança com o acontecimento que ajudou a criar uma nova rotina."}
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Vamos resolver",
+      "anchor": "Consolidação em situações de reparo: narrar o problema, esclarecer uma condição e pedir uma ação possível. Mistura de passado, descrição, pedidos e finalidade já ensinados; sem família gramatical nova. A reação final respeita o poder de decisão de quem atende.",
+      "lessons": [
+        {"number": 1, "trophy": "defeito", "beat": "Explicar o defeito de um ventilador recém-comprado; responder a uma pergunta sobre como o problema começou."},
+        {"number": 2, "trophy": "garantia", "beat": "Consultar a garantia de um aparelho; pedir os próximos passos depois de saber qual comprovante falta."},
+        {"number": 3, "trophy": "orçamento", "beat": "Solicitar um orçamento antes de autorizar um conserto; esclarecer o que está incluído quando aparece uma taxa adicional."},
+        {"number": 4, "trophy": "técnico", "beat": "Pedir a visita de um técnico para verificar a internet; ajustar o agendamento à janela de atendimento apresentada."},
+        {"number": 5, "trophy": "peça", "beat": "Perguntar sobre uma peça que ainda não chegou à oficina; solicitar uma previsão sem afirmar que a entrega será antecipada."},
+        {"number": 6, "trophy": "solução", "beat": "Explicar por que a primeira solução não resolveu o ruído; pedir outra avaliação com base no que ocorreu depois do reparo."},
+        {"number": 7, "trophy": "reembolso", "beat": "Pedir informação sobre reembolso de um serviço cancelado; esclarecer o prazo e o meio de devolução oferecidos."},
+        {"number": 8, "trophy": "devolução", "beat": "Consultar como fazer a devolução de um produto entregue errado; combinar a coleta diante de uma limitação de horário."},
+        {"number": 9, "trophy": "compensação", "beat": "Perguntar se há alguma compensação por uma entrega muito atrasada; avaliar a proposta sem prometer uma decisão da empresa."},
+        {"number": 10, "trophy": "compromisso", "beat": "Retomar o compromisso de retorno assumido pelo atendimento; pedir um novo encaminhamento após relatar a falta de resposta."}
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Seu ano por aqui",
+      "anchor": "Relato pessoal e reflexão com as famílias já ensinadas: chegada, hábitos, acontecimentos, opinião e planos. Ouvinte interessado; as duas falas do aluno desenvolvem um mesmo ponto. Sem nova gramática nem gênero atribuído à pessoa que aprende.",
+      "lessons": [
+        {"number": 1, "trophy": "chegada", "beat": "Relembrar a chegada à cidade e uma primeira dificuldade prática; contar o que ajudou a entender o bairro."},
+        {"number": 2, "trophy": "esforço", "beat": "Descrever o esforço para manter o estudo de português; explicar uma mudança pequena que tornou a prática mais constante."},
+        {"number": 3, "trophy": "confiança", "beat": "Contar quando começou a falar com mais confiança; ligar a sensação a uma conversa que conseguiu conduzir."},
+        {"number": 4, "trophy": "amizade", "beat": "Relatar como surgiu uma amizade em uma atividade do bairro; acrescentar o que passou a fazer com essa pessoa."},
+        {"number": 5, "trophy": "aprendizado", "beat": "Comentar um aprendizado que veio de um pequeno mal-entendido; explicar como hoje lida com a mesma situação."},
+        {"number": 6, "trophy": "rotina", "beat": "Comparar a rotina do começo do ano com a atual; escolher uma mudança que pretende manter."},
+        {"number": 7, "trophy": "conselho", "beat": "Dar um conselho a alguém que acabou de chegar; justificar a sugestão com uma experiência concreta."},
+        {"number": 8, "trophy": "projeto", "beat": "Contar um projeto para os próximos meses; explicar como as experiências do ano ajudaram a definir o objetivo."},
+        {"number": 9, "trophy": "gratidão", "beat": "Expressar gratidão pela ajuda recebida em uma situação difícil; contar de que forma pretende retribuir sem usar obrigado ou obrigada."},
+        {"number": 10, "trophy": "experiência", "beat": "Escolher uma experiência que resume o ano; ligar o que aconteceu, o que mudou e a vontade de continuar participando da vida local."}
+      ]
+    }
+  ]
+}
