@@ -24,6 +24,7 @@ Verification: frontend `verify` passed with zero errors and two existing fixture
 - `*-plan.json`: proposed ten-path progression, 100 reserved trophies and lesson beats per language.
 - `tts-snapshot.json`: validated audio input, tied to each source file by SHA-256.
 - `tts-plan.json`: local inventory with proposed voices, exact playback coordinates, cache keys, recording counts and character forecasts. It cannot authorize or execute generation.
+- `tts-plan-v4.json`: the equivalent v4 inventory with separate cache identities and supported v4 settings.
 - `review-evidence.json`: source fingerprints, Fable's full read-through and arbitration, exact applied replacements, independent verdict and check results.
 - `OPUS_POLISH_HANDOFF.md`: the prepared brief for later interaction polish; no Opus implementation has run in this milestone.
 
@@ -38,13 +39,14 @@ Regenerate the immutable inputs after any approved content edit:
 npx tsx scripts/prepare-guided-b1-drafts.ts content-drafts/b1-2026-10/tts-snapshot.json
 # From orchestrator (offline):
 .\.venv\Scripts\python.exe scripts/plan_guided_b1_drafts.py frontend/content-drafts/b1-2026-10/tts-snapshot.json --output frontend/content-drafts/b1-2026-10/tts-plan.json
+.\.venv\Scripts\python.exe scripts/plan_guided_b1_drafts.py frontend/content-drafts/b1-2026-10/tts-snapshot.json --model eleven_v4 --output frontend/content-drafts/b1-2026-10/tts-plan-v4.json
 ```
 
 The manifest includes core phrases, phrase chunks, vocabulary-item clips, trophy words, dialogue turns 1/3/4 and pattern examples. Vocabulary matching uses the existing chunk surface with `*-item-*` keys. That coverage must also be preserved in the production lesson exporter when these drafts are integrated.
 
 ## Audio and spending
 
-Proposed P1 voices continue the existing rotation: Serafina for English, Lia for Spanish, Lilly for French. Multilingual v2 remains the reviewed integration. No v4 model swap is implied.
+P1 uses Serafina for English and Lilly for French. Spanish deliberately uses Emilio, a verified peninsular Spanish voice: the old provider ID labelled Lia now resolves to Marcela, a Colombian voice. This new B1 assignment does not alter existing recordings. The owner has also requested a v4 refresh; the offline planner accepts `--model eleven_v4`, with separate cache identities and only the supported stability and similarity settings. Live integration still uses its existing model until replacement audio has been checked and publication approved.
 
 The reviewed text produces this offline forecast. Playback locations can share one cached recording.
 
@@ -55,11 +57,19 @@ The reviewed text produces this offline forecast. Playback locations can share o
 | French | 10 | 181 | 158 | 4,089 |
 | Total | 30 | 542 | 469 | 11,435 |
 
-The historical runner's conservative one-run retry ceiling is 41,868 characters. Neither number is an invoice or a verified credit cost. No ElevenLabs credits were spent preparing this package.
+The owner clarified a combined 400,000-credit target: a maximum 200,000 through the API plus the separate 200,000 web promotion. Generate useful reviewed content; do not pad text or repeat recordings merely to consume the allowance. Permissions are now enabled. No key belongs in this package.
 
-The owner supplied a ceiling of 200,000 ElevenLabs credits. This is a ceiling, not a target. The plan estimates one credit per character for Multilingual v2 before any unverified voice multiplier. [Some library voices have custom rates](https://elevenlabs.io/docs/help-center/product/voices/voice-library/what-are-custom-rates-and-credit-multipliers), so the voice rates must be checked before treating character counts as credits. The plan reports unique first-attempt text separately from the conservative single-run ceiling under the old runner's three-attempt retry policy; failed duplicate usages may be attempted again. These are forecasts, not a durable spending limit. A paid executor still needs reservations for every attempt and must stop after an ambiguous charge rather than blindly resubmit.
+The first API batch is complete: **469 individual v4 MP3 files, 1,165 actual credits**, including three pilot requests. Each file passed ffmpeg decoding. This is technical validation, not a claim of listening review or publication. Provider receipts settle the charge; character forecasts and the legacy subscription counter are not invoices. The discounted actual charges are below the conservative standard-price reservation, and no exact discount formula is assumed.
 
-The [v4 Creative promotion](https://elevenlabs.io/pricing) is limited to the web and mobile apps. [API pricing](https://elevenlabs.io/pricing/api) is separate. The saved key is present and matches the owner's stated suffix. Account/model/voice GETs returned `missing_permissions` for `user_read`, `models_read` and `voices_read`; this is not evidence of an invalid key. The owner has been asked to enable those scopes on the same key. Synthesis has not been tested in this milestone. No key belongs in this package.
+`scripts/run_guided_audio_campaign.py` verifies the reviewed sources, reconstructs the complete saved plan and checks its rate-bound input fingerprint before opening a provider. Dry-run is the default. The local executor in `src/services/guided_tts/campaign.py` reserves each request against one durable SQLite ledger, makes one attempt, retains received audio and charge evidence, decodes it, then writes the file atomically. Ambiguous requests stop for reconciliation; they are never automatically retried. Every later manifest shares the same 200,000-credit cap and process lock. Never create a fresh ledger to reset that allowance.
+
+The fixed local output is `review-artifacts/guided-audio-20261003/api/`: `campaign.sqlite3` plus cache-key MP3 files. It is intentionally ignored by Git. Rate evidence and run results sit in its parent directory. The v4 plan remains an offline input; paid execution requires the owner's authorization and verified rate evidence as separate gates.
+
+For existing English A1/A2, `scripts/guided_refresh_api_adapter.py` imports current source modules and compares every spoken coordinate to the saved reference inventory before building a plan. `scripts/run_guided_refresh_campaign.py --plan <plan.json> --inventory <inventory.json> --rates <rates.json>` performs a fresh dry-run. Paid execution additionally requires `--commit --expected-input-sha256 <inspected fingerprint>` and `ELEVENLABS_API_KEY` loaded privately into the environment. The CLI, adapter, exporter, cache helpers and executor must match their committed versions. The refresh uses the same ledger and lock; it includes vocabulary items and preserves capitalization aliases for explicit publication resolution.
+
+The [v4 Creative promotion](https://elevenlabs.io/pricing) is for the web/mobile products; [API pricing](https://elevenlabs.io/pricing/api) is separate. Two retained web recordings contain 7,253 submitted characters and show zero regular-credit charge in their history receipts. The browser displayed about 192.7K promotional credits remaining. They are a four-turn B1 pilot and 200 existing English A1/A2 core phrases with Serafina. The full recordings and raw alignment receipts remain under `review-artifacts/guided-audio-20261003/web-v4/`.
+
+`scripts/analyze_guided_v4_cuts.py` matches exact source text and provider start alignment to decoded waveform gaps. It records source/audio hashes, preserves pauses, rejects ambiguous boundaries and reports timing anomalies without silently clamping speech. The 200-phrase compilation has 155 quiet-boundary candidates and 45 phrases requiring boundary review; **all 200 still require listening**. This analyzer produces candidate metadata only, not approved cuts. The provider's inconsistent end-time field is deliberately unused. Quiet gaps cannot prove correct alignment or pronunciation. The owner accepted this approach for later use of the promotion; individual API files remain the current production preparation workflow.
 
 ## Release sequence
 
@@ -67,7 +77,7 @@ The [v4 Creative promotion](https://elevenlabs.io/pricing) is limited to the web
 2. Integrate language-specific B1 builders, register handling, grammar validators and deliberate count pins. Keep every shipped ID and recorded text unchanged.
 3. Publish twelve complete explanation editions per changed target. The existing generator uses a separately budgeted translation provider; do not silently replace missing translations with English.
 4. Prepare additive phrase-catalog and locale migrations with rollback tests. Never rewrite the already-applied September migrations. Obtain approval naming the new rows before applying production SQL.
-5. Recheck the provider account and voices, approve the exact audio/profile/storage scope, then generate through a bounded executor and verify actual playback. The draft inventory is not an executable spending approval.
+5. Local v4 generation is complete for these thirty episodes. Check pronunciation and playback, prepare the exact profile/asset/usage/storage scope, then obtain approval for production publication. Local generation approval does not authorize database or storage writes.
 6. Regenerate the per-language runtime data and verify the B1 flow, accents, cloze input and both role-play turns at mobile and desktop sizes before activating paths. The owner’s physical-phone pass remains separate.
 
 No runtime import, active path, database row, storage object or explanation edition is changed merely by committing this directory. Content is machine-authored; it is not presented as native-human-proofread.

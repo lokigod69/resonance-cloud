@@ -1,8 +1,8 @@
 """Build a local B1 audio manifest. No credentials, network, provider, or DB writes.
 
 First export reviewed drafts from frontend/scripts/prepare-guided-b1-drafts.ts.
-This command cannot generate audio. Proposed profiles preserve the existing B1
-rotation; provider/account access must be rechecked before approving a paid run.
+This command cannot generate audio. Proposed profiles retain the B1 rotation
+except the verified es-ES voice correction; paid runs recheck provider access.
 """
 from __future__ import annotations
 
@@ -21,7 +21,9 @@ from src.services.guided_tts.inventory import (  # noqa: E402
 
 PROPOSALS = {
     "English": ("en-US", "Serafina", "4tRn1lSkEn13EVTuqb0g"),
-    "Spanish": ("es", "Lia", "86V9x9hrQds83qf7zaGn"),
+    # Verified 2026-10-03: the old Lia ID resolves to a Colombian voice.
+    # The new B1 text is es-ES, so use the saved peninsular educational voice.
+    "Spanish": ("es", "Emilio", "ZCh4e9eZSUf41K4cmCEL"),
     "French": ("fr", "Lilly", "z1rEShu1SmowIOAmbHl1"),
 }
 SURFACES = ["corePhrase", "chunks", "trophyWord", "dialogue", "pattern"]
@@ -46,7 +48,12 @@ def validate_audio_surfaces(lesson: dict) -> None:
         raise ValueError(f"{lesson.get('id')}: incomplete audio surfaces")
 
 
-def build_plan(snapshot: dict) -> dict:
+def build_plan(snapshot: dict, *, model: str = "eleven_multilingual_v2") -> dict:
+    if model not in {"eleven_multilingual_v2", "eleven_v4"}:
+        raise ValueError("Unsupported campaign model")
+    settings = ({"stability": 0.5, "similarity_boost": 0.75}
+                if model == "eleven_v4" else dict(DEFAULT_VOICE_SETTINGS))
+    model_label = "v4" if model == "eleven_v4" else "multiv2"
     if snapshot.get("schemaVersion") != 1 or snapshot.get("status") != "draft":
         raise ValueError("Expected a version 1 draft snapshot")
     languages = snapshot.get("languages", [])
@@ -73,11 +80,11 @@ def build_plan(snapshot: dict) -> dict:
         for lesson in lessons:
             validate_audio_surfaces(lesson)
         profile = VoiceProfile(
-            voice_profile_key=f"{slug}_b1_bright_p1_multiv2_v1",
+            voice_profile_key=f"{slug}_b1_bright_p1_{model_label}_v1",
             target_language_code=code, vibe="bright", scope_path_id=path_id,
-            provider_voice_id=voice_id, provider_model_id="eleven_multilingual_v2",
-            output_format=DEFAULT_OUTPUT_FORMAT, voice_settings=dict(DEFAULT_VOICE_SETTINGS),
-            voice_settings_hash=voice_settings_hash(DEFAULT_VOICE_SETTINGS),
+            provider_voice_id=voice_id, provider_model_id=model,
+            output_format=DEFAULT_OUTPUT_FORMAT, voice_settings=dict(settings),
+            voice_settings_hash=voice_settings_hash(settings),
             assignment_version=1, active=True, priority=90,
         )
         inventory = build_inventory(lessons=lessons, voice_profiles=[profile],
@@ -104,7 +111,7 @@ def build_plan(snapshot: dict) -> dict:
     retry_ceiling = sum(group["existingRunnerSingleRunCharacterCeiling"] for group in groups)
     return {
         "schemaVersion": 1, "status": "draft-not-authorized-for-generation",
-        "model": "eleven_multilingual_v2", "providerAccessVerified": False,
+        "model": model, "providerAccessVerified": False,
         "voiceCreditMultipliersVerified": False,
         "existingAssetsQueried": False, "creditAssumption": "1 credit per character before unverified voice multipliers; no v4 promotional quota assumed",
         "creditBudgetCeiling": 200_000, "firstAttemptCharacters": characters,
@@ -129,10 +136,11 @@ def build_plan(snapshot: dict) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("snapshot", type=Path)
+    parser.add_argument("--model", choices=["eleven_multilingual_v2", "eleven_v4"], default="eleven_multilingual_v2")
     parser.add_argument("--output", type=Path, help="Save the local manifest; otherwise print it")
     args = parser.parse_args()
     payload = args.snapshot.read_bytes()
-    plan = build_plan(json.loads(payload))
+    plan = build_plan(json.loads(payload), model=args.model)
     plan["snapshotSha256"] = hashlib.sha256(payload).hexdigest()
     rendered = json.dumps(plan, ensure_ascii=False, indent=2) + "\n"
     if args.output:

@@ -53,6 +53,20 @@ def test_saved_manifest_matches_current_snapshot_and_inventory():
     assert json.loads((directory / "tts-plan.json").read_text(encoding="utf-8")) == expected
 
 
+def test_v4_cache_and_settings_are_distinct_from_existing_audio():
+    old = build_plan(snapshot())
+    new = build_plan(snapshot(), model="eleven_v4")
+    old_keys = {item["cache_key"] for group in old["groups"] for item in group["items"]}
+    new_keys = {item["cache_key"] for group in new["groups"] for item in group["items"]}
+    assert not old_keys.intersection(new_keys)
+    assert new["firstAttemptCharacters"] == old["firstAttemptCharacters"]
+    for group in new["groups"]:
+        assert group["proposedVoiceProfile"]["voice_settings"] == {"stability": 0.5, "similarity_boost": 0.75}
+        assert all(item["provider_model_id"] == "eleven_v4" for item in group["items"])
+    with pytest.raises(ValueError, match="Unsupported campaign model"):
+        build_plan(snapshot(), model="unknown")
+
+
 @pytest.mark.parametrize("surface", ["corePhrase", "chunks", "trophyWord", "dialogue", "pattern", "all", "terms"])
 def test_plan_rejects_missing_audio_surfaces(surface):
     data = snapshot()

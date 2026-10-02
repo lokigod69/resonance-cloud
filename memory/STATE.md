@@ -16,7 +16,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Agent tooling: one shared rules file `orchestrator/AGENTS.md` with a review policy; project skills include `independent-review` and `ui-critic-loop`; `npm run verify`, `npm run test:local` (28 offline suites, 5 known-stale listed), `check:skills`, `check:i18n-language`, `env:check`; ESLint blocks `export default` in `api/`; `.gitattributes` enforces LF. Python tests run with `orchestrator/.venv/Scripts/python.exe -m pytest tests --ignore=tests/manual` (16 known failures at the September baseline).
 
 ## In progress
-- B1 expansion: `frontend/content-drafts/b1-2026-10/` holds thirty reviewed P1 episodes for English/Spanish/French and three proposed 100-lesson maps. The other 270 beats are outlines; no active courses or B2/C were added. Fable's exact corrections are applied; independent review passed. The 200,000 ElevenLabs-credit ceiling is approved; no synthesis has run. Next: provider rates/access, bounded generation, and runtime/catalog/twelve-base integration before production approval. README owns evidence and the Opus handoff.
+- B1 expansion: `frontend/content-drafts/b1-2026-10/` holds thirty reviewed P1 episodes for English/Spanish/French and three proposed 100-lesson maps. The other 270 beats are outlines; no active courses or B2/C were added. Their individual v4 recordings are generated locally. The owner authorized 400,000 credits including the 200,000 web promotion, requested existing-language refreshes (English: Serafina), and fixed provider/history permissions. Receipts/audio live in ignored `review-artifacts/guided-audio-20261003/`. Italian/Portuguese P1 drafting follows Fable's completed specification. Runtime/catalog/twelve-base integration and concrete production approval remain outstanding. README owns review evidence and the Opus handoff.
 - agent-hygiene: September audit implementation done; navigation/doc first pass added 2026-10-03. `frontend/README.md` maps features, skills and checks; AGENTS explains search roots. Waiting on owner calls (storage deletion OK, Speak live try, credential rotation). Deferred audit items remain in `investigations/project-audit-2026-09-25/IMPLEMENTATION_PLAN.md`.
 
 ## Known problems and limits
@@ -31,7 +31,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Platform follow-ups: CAPTCHA (needs client work), CSP still report-only, `SUNO_CALLBACK_BASE_URL` defaults to the dead resonanz.pro, full historical Supabase replay needs Docker.
 
 ## Next actions
-- B1 owner action: enable `user_read`, `models_read`, `voices_read` on the existing ElevenLabs key, then say saved. It is recognized; do not replace it because read permissions returned 401.
+- B1 agents: continue the local v4 campaign with its shared 200,000-credit API cap and recorded charges; do not create a fresh ledger to reset spending. API phrase files are preferred. The web promotion is separate; the owner accepts later batch cuts only with waveform and listening checks. Prepare production rows before requesting publication approval.
 - Owner: rotate the credentials pasted into April–May Codex prompts; the iPhone pass and TestFlight steps on protocol/BOARD.md; the six hardening decisions; PostHog credentials to switch analytics on; the Supabase outstanding-invoice warning.
 - Agents: after an owner OK, run the storage deletion; migrate the Gemini TTS and xAI Live models with a paid sample; the Today visual leftovers are the next product design scope (use `ui-critic-loop`).
 

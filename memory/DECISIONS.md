@@ -413,3 +413,10 @@ raster assets are needed to solve these layout and clarity problems.
 ## 2026-10-03 — Reuse entry docs for repository navigation
 
 Keep working rules in AGENTS and the feature/skill/check map in frontend/README.md. Link to source constants for changing provider and locale facts; mark historical investigations where readers enter them. This reduces duplicate authority and wrong-directory searches observed in the session retrospective without adding another mandatory startup document. The workspace/app repository boundary and its ignore rules remain intentional.
+
+## 2026-10-03 — Local v4 generation and separate promotional allowance
+
+- Supersedes the earlier proposed Multilingual v2 choice and permission block: the owner enabled provider/history reads, requested v4, selected Serafina for English refreshes, and clarified 400,000 credits including the separate 200,000 web promotion. The API campaign has a durable 200,000 cap shared across manifests; useful reviewed content takes priority over exhausting credits.
+- Generate individual API phrase files. Settle actual receipt charges, which can be discounted, while reserving a verified standard-price upper bound. Never fit a billing formula from a few samples, automatically retry an ambiguous request, or create another ledger to reset the cap. Local audio preparation does not approve production SQL or storage publication.
+- New Spanish B1 uses verified es-ES Emilio. The legacy ID labelled Lia resolves to Colombian Marcela, so copying that label would mismatch the Spain content. Frozen text and existing recordings remain unchanged.
+- The owner accepts later web-promotion compilations and careful cuts. Preserve exact text, original audio, history receipt and source coordinates; combine alignment with quiet waveform gaps and pause retention. Every cut still needs listening, including candidates with quiet boundaries. Uncertain timing stays flagged; no automatic replacement of lesson audio.
