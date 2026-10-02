@@ -1,0 +1,179 @@
+{
+  "targetLanguage": "English",
+  "status": "proposal-not-approved",
+  "targetVariety": "en-US",
+  "authoredExplanationLocale": "de",
+  "note": "Authoring proposal for Fable review. Titles are proposed German learner-facing titles; anchors and beats are English authoring notes, not lesson explanation fields. All eventual English-target lesson explanations must be authored in German only, following the existing situation-field exception. No full lessons are drafted here. Grammar staging and trophy allocation remain subject to Fable approval.",
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Was passiert ist",
+      "anchor": "Shape B, interested listener. Fable staging, 2026-10-03: L1-3 simple past; L4-5 past continuous with while/when; L6-7 present perfect for result and experience contrasted with simple past plus an explicit past time; L8-10 mixed two-event narration. Past perfect is banned in learner production.",
+      "lessons": [
+        { "number": 1, "trophy": "noticed", "beat": "Tell a neighbor that you noticed the wrong street name after getting off the bus; explain how you found your way home when they ask what happened next." },
+        { "number": 2, "trophy": "realized", "beat": "Explain that you realized your wallet was still on the kitchen table; continue the story with the trip back upstairs and the train you caught." },
+        { "number": 3, "trophy": "suddenly", "beat": "Describe how the lights suddenly went out during dinner; answer a friend's follow-up with what everyone did next." },
+        { "number": 4, "trophy": "while", "beat": "Explain that a neighbor called while you were carrying groceries upstairs; say why you could not answer and when you called back." },
+        { "number": 5, "trophy": "happened", "beat": "Explain that something nice happened while you were cleaning coffee off your shirt; continue with the new neighbor who was passing and stopped to help." },
+        { "number": 6, "trophy": "dropped", "beat": "Explain that you have just dropped your keys and cannot reach them; say that you have called a neighbor and that he arrived a minute ago." },
+        { "number": 7, "trophy": "stuck", "beat": "Explain that you have never been stuck in traffic like that before; contrast the exact time you left today with the fact that you have only just arrived." },
+        { "number": 8, "trophy": "rushed", "beat": "Tell a friend that you rushed back to a cafe for a forgotten notebook; explain what the barista was doing when you arrived." },
+        { "number": 9, "trophy": "eventually", "beat": "Describe a confusing building entrance and how you eventually found the right door; answer a follow-up about the person who gave you directions." },
+        { "number": 10, "trophy": "breath", "beat": "Retell the moment you stopped to catch your breath after running for a bus; explain why the driver waited and how the morning ended." }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Was ich darüber denke",
+      "anchor": "Shape B, interested listener. L1-3: state an opinion and support it with a specific reason, introducing although at L3. L4-7: concede one point while keeping a clear position. L8-10: link contrasting sentences with however and recycle earlier concession forms. No counterfactuals.",
+      "lessons": [
+        { "number": 1, "trophy": "opinion", "beat": "Give your opinion about keeping the neighborhood market open later; explain who would benefit when a friend asks for your reason." },
+        { "number": 2, "trophy": "reason", "beat": "Explain that your main reason for joining a community class is meeting people; respond when a friend asks why you chose that class." },
+        { "number": 3, "trophy": "although", "beat": "Say that you like the neighborhood although it gets noisy on weekends; explain what makes living there worthwhile." },
+        { "number": 4, "trophy": "useful", "beat": "Explain why you find the neighborhood message board useful although some posts are old; give a recent example when your friend asks." },
+        { "number": 5, "trophy": "expensive", "beat": "Discuss a local fitness class that is expensive but easy to reach; explain which benefit matters most to you." },
+        { "number": 6, "trophy": "public", "beat": "Say why you prefer public transportation although the trip takes longer; answer a friend's question about the part you enjoy." },
+        { "number": 7, "trophy": "traffic", "beat": "Support a proposal for a bike lane because of heavy traffic; acknowledge a neighbor's concern about parking before explaining your view." },
+        { "number": 8, "trophy": "crowded", "beat": "Explain that the weekend market is crowded; use however to add why you still think it is a good place to shop." },
+        { "number": 9, "trophy": "however", "beat": "Give one benefit of opening the community center on Sundays; use however to explain a practical concern when your friend asks for the other side." },
+        { "number": 10, "trophy": "community", "beat": "Explain how a shared garden helps the community although it takes work; develop your opinion with a specific neighborly experience." }
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Wenn ich könnte",
+      "anchor": "Shape A, complication. L1-3: would + base verb and second-conditional if + simple past in familiar hypothetical choices. L4-7: extend the same pattern to practical constraints and possible solutions. L8-10: polite would/could requests and conditional alternatives. No third conditional or past-perfect conditionals.",
+      "lessons": [
+        { "number": 1, "trophy": "would", "beat": "Say what you would do with an unexpected free afternoon; adjust the idea after a friend points out that the museum is closed." },
+        { "number": 2, "trophy": "if", "beat": "Explain that you would take a weekend class if you had more time; respond to a friend who offers a shorter evening option." },
+        { "number": 3, "trophy": "space", "beat": "Say that you would invite more people if your apartment had more space; suggest an alternative after your friend mentions the rain." },
+        { "number": 4, "trophy": "flexible", "beat": "Explain what you would change if your work hours were more flexible; respond to a coworker's question about one realistic change." },
+        { "number": 5, "trophy": "afford", "beat": "Say which apartment you would choose if you could afford it; respond when the agent explains that utilities cost extra." },
+        { "number": 6, "trophy": "distance", "beat": "Explain that you would walk to work if you lived within walking distance; suggest another option after a friend mentions the hills." },
+        { "number": 7, "trophy": "borrow", "beat": "Ask politely whether you could borrow a neighbor's folding chair; offer a different return time when they need it the next morning." },
+        { "number": 8, "trophy": "imagine", "beat": "Say that you can imagine living nearer the coast if your job allowed it; answer a friend's practical question with a hypothetical solution." },
+        { "number": 9, "trophy": "schedule", "beat": "Ask politely for a small change to the class schedule; propose a second option after the organizer explains the room is unavailable." },
+        { "number": 10, "trophy": "permission", "beat": "Ask for permission to use the shared courtyard for a small gathering; offer to finish earlier when the building manager raises a noise concern." }
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "Genau das meine ich",
+      "anchor": "Shape C, negotiation. L1-3: defining relative clauses with who/that/which. L4-6: identify places and people with a precise relative-clause detail. L7-10: distinguish objects using subject and object relative clauses. Accept natural who/that and which/that alternatives where valid; do not force a false single answer. No nondefining relatives or whose.",
+      "lessons": [
+        { "number": 1, "trophy": "who", "beat": "Identify the neighbor who helped you carry a desk; accept another neighbor's offer of help while explaining which person you wanted to thank." },
+        { "number": 2, "trophy": "that", "beat": "Describe the chair that fits under your desk; respond to a store clerk's alternative by keeping the size requirement." },
+        { "number": 3, "trophy": "which", "beat": "Describe a lamp which gives enough light for reading; accept the clerk's alternative if it meets the same practical need." },
+        { "number": 4, "trophy": "entrance", "beat": "Identify the entrance that faces the parking lot; accept a different meeting point but explain the access you need." },
+        { "number": 5, "trophy": "balcony", "beat": "Ask to see the apartment that has a balcony; consider another apartment while keeping your need for outdoor space clear." },
+        { "number": 6, "trophy": "roommate", "beat": "Describe a roommate who keeps shared spaces tidy; respond to a suggested candidate by adding a practical requirement about work hours." },
+        { "number": 7, "trophy": "charger", "beat": "Identify the charger that you left at the cafe yesterday; respond when the barista offers a similar one by naming a distinguishing detail." },
+        { "number": 8, "trophy": "jacket", "beat": "Describe the jacket that you tried on earlier; accept a different color while keeping the same fit." },
+        { "number": 9, "trophy": "suitcase", "beat": "Identify the suitcase that has a red ribbon on its handle; respond to an offered lookalike by giving another precise detail." },
+        { "number": 10, "trophy": "department", "beat": "Ask for the department that handles damaged deliveries; accept a transfer to another desk while explaining which problem needs attention." }
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Könnten Sie mir sagen …?",
+      "anchor": "Shape A, complication. L1-3: polite embedded yes/no questions with whether/if and embedded wh-questions using statement word order. L4-7: extend these frames across forms and appointments. L8-10: combine a short explanation with a precise indirect question. No reported-speech backshift.",
+      "lessons": [
+        { "number": 1, "trophy": "whether", "beat": "Ask whether you need an appointment to register for a community class; ask about another day after the clerk says today's session is full." },
+        { "number": 2, "trophy": "deadline", "beat": "Ask politely when the application deadline is; ask how to submit the form after the clerk says the office closes early." },
+        { "number": 3, "trophy": "form", "beat": "Ask which form you need for a change of address; clarify which section applies when the clerk mentions two different situations." },
+        { "number": 4, "trophy": "address", "beat": "Ask where your new address belongs on a form; clarify the mailing address when the clerk explains that the two fields serve different purposes." },
+        { "number": 5, "trophy": "application", "beat": "Ask how long the application usually takes; ask which missing information you can provide after the clerk identifies an incomplete section." },
+        { "number": 6, "trophy": "permit", "beat": "Ask where you can apply for a resident parking permit; ask about a temporary option when the clerk says processing takes several days." },
+        { "number": 7, "trophy": "registration", "beat": "Ask whether class registration is still open; ask how to join the waiting list after the administrator explains that the class is full." },
+        { "number": 8, "trophy": "document", "beat": "Ask which document counts as proof of your address; ask whether a digital copy is acceptable after the clerk requests an original." },
+        { "number": 9, "trophy": "signature", "beat": "Ask where your signature is needed on a rental form; ask whose approval is required when the clerk points to a second signature line." },
+        { "number": 10, "trophy": "fee", "beat": "Ask politely how much the registration fee is and what it covers; clarify an optional charge after the administrator explains it." }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "Es wird erledigt",
+      "anchor": "Shape A, complication. L1-3: present-simple passive for routine processes. L4-7: past-simple passive for completed actions and problems. L8-10: compare routine procedure with a specific past event. Avoid passive continuous, passive perfect, and unsupported claims that the learner controls a service decision.",
+      "lessons": [
+        { "number": 1, "trophy": "delivered", "beat": "Ask whether packages are delivered to the front desk; ask about a collection option when the receptionist explains that the desk closes early." },
+        { "number": 2, "trophy": "collected", "beat": "Ask when recycling is collected from the building; clarify what to do with extra boxes when the manager explains a size limit." },
+        { "number": 3, "trophy": "replaced", "beat": "Ask how a broken access card is replaced; ask about entering the building today after the manager explains the usual process." },
+        { "number": 4, "trophy": "approved", "beat": "Explain that your room request was approved yesterday; ask which detail is missing when the organizer cannot find the confirmation." },
+        { "number": 5, "trophy": "delayed", "beat": "Explain that your delivery was delayed twice; ask about the next step when the agent says the package is still at the depot." },
+        { "number": 6, "trophy": "damaged", "beat": "Report that a table was damaged during delivery; ask how to send photos after the store requests evidence." },
+        { "number": 7, "trophy": "installed", "beat": "Explain that your internet connection was installed yesterday; ask for a check after the technician mentions one more setup step." },
+        { "number": 8, "trophy": "canceled", "beat": "Explain that your class was canceled without a message; ask how changes are normally announced when the organizer mentions the notice board." },
+        { "number": 9, "trophy": "confirmed", "beat": "Say that your repair visit was confirmed for Monday; ask how appointments are recorded after the receptionist finds a different date." },
+        { "number": 10, "trophy": "stored", "beat": "Ask where unclaimed packages are stored and explain that yours was delivered last week; ask about access after the manager says the storage room is locked." }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Damit es klappt",
+      "anchor": "Shape C, negotiation. L1-3: purpose expressed with to + base verb. L4-6: so that + can for a stated practical result. L7-10: first conditional with if + present and will/can to arrange alternatives. These forms express purpose and achievable plans, distinct from P3's hypothetical choices.",
+      "lessons": [
+        { "number": 1, "trophy": "purpose", "beat": "Explain that the purpose of a building gathering is to meet new neighbors; accept a smaller event while keeping that aim clear." },
+        { "number": 2, "trophy": "organize", "beat": "Offer to organize a shared shopping list to avoid buying the same things twice; accept a paper list if everyone can reach it." },
+        { "number": 3, "trophy": "share", "beat": "Suggest meeting early to share the work for a community meal; agree to a later start while keeping time for setup." },
+        { "number": 4, "trophy": "prepare", "beat": "Offer to prepare labels so that guests can find the food they want; accept a simpler version after the organizer mentions limited supplies." },
+        { "number": 5, "trophy": "supplies", "beat": "Suggest putting cleaning supplies in one place so that everyone can help; adapt the plan when a neighbor raises a child-safety concern." },
+        { "number": 6, "trophy": "remind", "beat": "Offer to remind volunteers about the meeting so that they can arrive on time; agree to send the message earlier when the organizer asks." },
+        { "number": 7, "trophy": "attend", "beat": "Explain that you can attend the planning meeting if it starts after work; accept an earlier meeting if you can join the final part." },
+        { "number": 8, "trophy": "prevent", "beat": "Suggest a clear sign to prevent confusion at an event; agree to place someone at the entrance if the sign is difficult to see." },
+        { "number": 9, "trophy": "volunteer", "beat": "Offer to volunteer at an outdoor event if the organizer still needs help; accept an indoor task after the weather changes the plan." },
+        { "number": 10, "trophy": "arrange", "beat": "Offer to arrange rides so that everyone can reach the community picnic; negotiate a backup plan if one driver cannot come." }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Früher und heute",
+      "anchor": "Shape B, interested listener. L1-3: used to + base verb for past habits and states. L4-5: contrast those habits with the present. L6-8: present perfect for duration with since/for and recent change, building beyond A2's fixed perfect chunks. L9-10: connect past habits, present change, and earlier-attested comparisons. No present perfect continuous.",
+      "lessons": [
+        { "number": 1, "trophy": "routine", "beat": "Describe the morning routine you used to have before moving; answer a friend's question about what you do differently now." },
+        { "number": 2, "trophy": "childhood", "beat": "Tell a friend about an activity you used to enjoy during childhood; continue with a memory that explains why it mattered." },
+        { "number": 3, "trophy": "abroad", "beat": "Explain where you used to live abroad and how you spent your weekends; answer a friend's question about one habit you kept." },
+        { "number": 4, "trophy": "habit", "beat": "Describe a shopping habit you used to have and the one you have now; explain what caused the change." },
+        { "number": 5, "trophy": "nowadays", "beat": "Contrast how you used to travel to work with what you do nowadays; explain the practical difference when a friend asks." },
+        { "number": 6, "trophy": "since", "beat": "Say that you have lived in the same building since spring; answer a neighbor's follow-up about the first person you met there." },
+        { "number": 7, "trophy": "recently", "beat": "Explain something you have recently changed in your daily life; answer a friend by connecting the change to an older habit." },
+        { "number": 8, "trophy": "confidence", "beat": "Say that you have gained confidence since joining a local class; describe something you used to avoid and can do now." },
+        { "number": 9, "trophy": "independent", "beat": "Explain how you have become more independent during your time in town; continue with a task you used to need help with." },
+        { "number": 10, "trophy": "progress", "beat": "Describe the progress you have made over several months; answer a friend's question by comparing one past habit with your present routine." }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Wir finden eine Lösung",
+      "anchor": "Shape A, complication. No new grammar. A coherent complaint capstone across several everyday problems: recycle past narration, passive status, relative-clause identification, polite indirect questions, conditional alternatives, and a clear final agreement. Each lesson selects a manageable subset.",
+      "lessons": [
+        { "number": 1, "trophy": "charged", "beat": "Explain that you were charged twice for one purchase; ask for a check after the cashier says only one payment appears on screen." },
+        { "number": 2, "trophy": "receipt", "beat": "Explain that your receipt shows a different price from the shelf label; offer the exact item details when the cashier asks which product you mean." },
+        { "number": 3, "trophy": "guarantee", "beat": "Ask whether a broken kettle is still covered by the store's guarantee; explain when the fault appeared after the clerk asks how it was used." },
+        { "number": 4, "trophy": "complaint", "beat": "Explain why you want to make a complaint about repeated missed repair visits; ask for a workable next step when the agent offers another uncertain date." },
+        { "number": 5, "trophy": "manager", "beat": "Ask politely to speak with the manager about an unresolved delivery problem; arrange a callback after the assistant explains the manager is away." },
+        { "number": 6, "trophy": "warranty", "beat": "Explain that a recently purchased lamp is still under warranty; ask about another way to show the purchase date when the clerk requests the receipt." },
+        { "number": 7, "trophy": "evidence", "beat": "Offer photos as evidence that a package arrived damaged; ask where to send them after the agent requests a clear view of the label." },
+        { "number": 8, "trophy": "mistake", "beat": "Explain that there seems to be a mistake in your repair address; clarify the correct building after the dispatcher mentions a similar street name." },
+        { "number": 9, "trophy": "fault", "beat": "Describe a recurring fault in a repaired appliance; ask for another inspection after the technician says it worked during the previous test." },
+        { "number": 10, "trophy": "solution", "beat": "Propose a practical solution to a delayed furniture delivery; agree to a different time after the store confirms what it can actually offer." }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Dein Jahr hier",
+      "anchor": "Shape B, interested listener. No new grammar. Build a connected account of the year by recycling simple past and past continuous, present perfect, used to, opinion with concession, relative clauses, and realistic or hypothetical future plans. Each follow-up extends the learner's story rather than supplying its conclusion.",
+      "lessons": [
+        { "number": 1, "trophy": "experience", "beat": "Describe a memorable experience from your first month in town; answer a friend's follow-up by explaining how you felt at the time." },
+        { "number": 2, "trophy": "challenge", "beat": "Explain the biggest practical challenge you faced after moving; continue with the steps that helped you handle it." },
+        { "number": 3, "trophy": "achievement", "beat": "Describe a personal achievement from the year; explain why it mattered when a friend asks for more than the result." },
+        { "number": 4, "trophy": "friendship", "beat": "Tell the story of a friendship that began through an ordinary neighborhood encounter; explain how the relationship has grown." },
+        { "number": 5, "trophy": "opportunity", "beat": "Describe an opportunity you took after moving; answer a friend's question about what made you say yes." },
+        { "number": 6, "trophy": "improvement", "beat": "Explain an improvement you have noticed in your daily life; compare it with the way things used to be." },
+        { "number": 7, "trophy": "proud", "beat": "Say what you are proud of accomplishing on your own; continue with a specific moment that shows the change." },
+        { "number": 8, "trophy": "surprised", "beat": "Describe something that surprised you about living in town; explain how your opinion has changed since then." },
+        { "number": 9, "trophy": "grateful", "beat": "Explain why you are grateful to someone who helped during your first weeks; tell a friend what you did to thank that person." },
+        { "number": 10, "trophy": "belong", "beat": "Explain when you began to feel that you belong in the neighborhood; answer a friend's final follow-up with a realistic plan for the coming year." }
+      ]
+    }
+  ]
+}

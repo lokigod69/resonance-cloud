@@ -1,0 +1,11 @@
+# Opus 5.5 handoff: polish the existing B1 lesson interaction
+
+Use this brief only after the content and release gates in this directory's README are satisfied, or in an isolated fixture using the staged data. Read `orchestrator/AGENTS.md`, the active Today workstream and the current content review evidence first. Preserve other work and the existing design direction.
+
+The owner likes the dark Today overview, warm gold action, path gems and the three vibe choices in the supplied screenshots. Keep that visual direction. The remaining request is clearer selection and more fluid, rewarding interaction within the B1 lesson. A new visual direction is not requested. Do not alter curriculum text, correctness rules, recorded IDs, credit behavior, or the ocean.
+
+Work with the real components in `frontend/src/components/today/`: `TodaySession`, `PatternStep`, `ComplicationStep`, `RolePlayStep`, `GuidedSpeechPrompt` and the path/vibe selector. B1 has seven steps, a four-turn conversation, a delayed follow-up, two or three response blanks, and two spoken learner turns. Explanations come from the chosen base language. Keep the first answer and later turn hidden until their intended step.
+
+Make selected chips unmistakable without relying only on color. Give keyboard focus, pressed/selected state, wrong answers, retries and successful completion distinct treatments. Keep text stable while feedback animates, preserve typing focus and composition, avoid layout jumps, respect Reduce Motion, and use the existing theme variables. Keep the pattern reminder reachable during cloze work. Distinguish a correct answer from a revealed answer, skipped speech, or unavailable microphone. Both role-play turns must retain their honest individual results.
+
+Inspect at 320, 390 and 1440 pixels in German, English and French UI locales. Include accented Spanish input and French apostrophes. Extend the existing Today fixture harness to cover a complete B1 episode, wrong cloze then retry, chip fallback, denied microphone, resume, and Reduce Motion. Use silent/stubbed audio for fixtures; paid sound effects need a separate concrete proposal and budget. Report actual browser evidence and remaining physical-device limits. No catalog migration or paid provider call is authorized by this handoff.

@@ -263,9 +263,15 @@ def test_find_voices_by_name_skips_non_english_rows():
 # A1P1 dry-run (numbers stay pinned to the architecture report)
 # ---------------------------------------------------------------------------
 
-def test_a1p1_dry_run_pins_inventory_numbers_and_does_not_call_provider():
+def test_a1p1_dry_run_pins_inventory_numbers_and_does_not_call_provider(monkeypatch):
     sb = _make_sb_with_profiles()
     calls: list[dict[str, Any]] = []
+
+    def reject_write(*args, **kwargs):
+        raise AssertionError("Dry-run attempted a production write")
+
+    for name in ("create_run", "finalize_run", "upsert_usage", "upsert_voice_profile"):
+        monkeypatch.setattr(guided_db, name, reject_write)
 
     async def provider_stub(**kwargs):
         calls.append(kwargs)
@@ -300,11 +306,10 @@ def test_a1p1_dry_run_pins_inventory_numbers_and_does_not_call_provider():
     assert totals["estimated_provider_calls"] == 15
     assert totals["estimated_provider_characters"] == 236
 
-    # A run row was recorded.
-    runs = sb._tables["guided_tts_generation_runs"]
-    assert len(runs) == 1
-    assert runs[0]["dry_run"] is True
-    assert runs[0]["status"] == "completed"
+    assert result["run_id"] is None
+    assert sb._tables["guided_tts_generation_runs"] == []
+    assert sb._tables["guided_tts_assets"] == []
+    assert sb._tables["guided_tts_asset_usages"] == []
 
 
 # ---------------------------------------------------------------------------

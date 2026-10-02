@@ -1,0 +1,183 @@
+{
+  "targetLanguage": "Spanish",
+  "status": "proposal_not_approved",
+  "notes": [
+    "Propuesta de vocabulario y situaciones; pendiente de la especificación y la revisión de Fable 5.1 max. No son lecciones completas ni contenido aprobado.",
+    "Se conserva el español de España compatible con es-ES y el vocabulario ya usado: móvil, piso, billete. El corpus A2 mantiene usted incluso en escenas vecinales; esta propuesta no introduce tú ni vosotros. Cualquier cambio de tratamiento en B1 debe quedar autorizado y definido por Fable por episodio.",
+    "Los anclajes incorporan la arquitectura provisional de Fable del 2026-10-03 y siguen pendientes de arbitraje. Las situaciones se han redactado en español; las bases de las futuras lecciones deberán mantener de y en, como el corpus español existente.",
+    "Cada trofeo se reserva para la producción del alumno en su lección. P3 respeta la entrada escalonada del condicional y excluye el imperfecto de subjuntivo; P7 introduce para que desde L5 con las formas de alta frecuencia de la arquitectura. P9 y P10 no introducen gramática nueva.",
+    "La comprobación de unicidad debe cubrir todas las variantes de todo el corpus español, además de la lista de 197 trofeos prohibidos de la extracción Stage 0."
+  ],
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Lo que pasó",
+      "anchor": "Narración: L1–L3 indefinido regular y familias fui, tuve, hice, estuve, vine, pude, puse; L4–L5 contexto con estaba, había, era, hacía; L6–L7 contraste en una oración; L8–L10 relato de dos acontecimientos. Oyente interesado; usted singular constante en el piloto.",
+      "lessons": [
+        { "number": 1, "trophy": "encuentro", "beat": "Contar un encuentro inesperado con alguien del curso en el mercado; explicar después adónde fueron a charlar." },
+        { "number": 2, "trophy": "sorpresa", "beat": "Relatar la sorpresa de una visita sin avisar; añadir cómo improvisaron una merienda con lo que había en casa." },
+        { "number": 3, "trophy": "despiste", "beat": "Reconocer un despiste al bajarse del metro; continuar con la manera de encontrar el camino sin perder la cita." },
+        { "number": 4, "trophy": "mochila", "beat": "Explicar que la mochila se quedó en una terraza y estaba dentro al regresar; contar cómo una camarera la guardó por el mal tiempo." },
+        { "number": 5, "trophy": "cruce", "beat": "Recordar un cruce sin señales durante un paseo; aclarar qué indicación de un vecino permitió seguir." },
+        { "number": 6, "trophy": "apagón", "beat": "Narrar un apagón durante una cena; añadir cómo siguió la conversación a la luz de unas velas." },
+        { "number": 7, "trophy": "tormenta", "beat": "Contar cómo una tormenta cambió una excursión; explicar dónde encontraron refugio y qué hicieron allí." },
+        { "number": 8, "trophy": "casualidad", "beat": "Relatar una casualidad en la biblioteca al coincidir con una antigua compañera de clase; explicar qué noticia compartió." },
+        { "number": 9, "trophy": "aviso", "beat": "Explicar cuándo se recibió el aviso de un cambio de lugar; continuar con la decisión que evitó una espera inútil." },
+        { "number": 10, "trophy": "alivio", "beat": "Cerrar la historia de una cartera recuperada con la sensación de alivio; contar quién la encontró y cómo se devolvió." }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Desde mi punto de vista",
+      "anchor": "Opinión con razones y concesión: creo que y porque; después aunque con indicativo y sin embargo. El alumno reconoce una objeción sin abandonar su argumento.",
+      "lessons": [
+        { "number": 1, "trophy": "opinión", "beat": "Dar una opinión sobre ampliar el horario de la biblioteca; explicar a quién ayudaría abrir por la tarde." },
+        { "number": 2, "trophy": "ventaja", "beat": "Señalar la ventaja de comprar en comercios cercanos; justificarla con una experiencia de atención personal." },
+        { "number": 3, "trophy": "inconveniente", "beat": "Explicar el inconveniente de una calle peatonal para recibir compras; matizar por qué sigue siendo una buena medida." },
+        { "number": 4, "trophy": "tráfico", "beat": "Defender una ruta para ir en bicicleta aunque tenga tráfico; precisar qué tramo ofrece una alternativa segura." },
+        { "number": 5, "trophy": "transporte", "beat": "Valorar el transporte público aunque algunos trayectos sean lentos; añadir la importancia de llegar sin buscar aparcamiento." },
+        { "number": 6, "trophy": "alquiler", "beat": "Opinar sobre compartir un alquiler aunque reduzca la intimidad; explicar qué gastos se pueden repartir." },
+        { "number": 7, "trophy": "ambiente", "beat": "Reconocer que un local es pequeño y destacar, sin embargo, su ambiente; responder con un ejemplo de una visita reciente." },
+        { "number": 8, "trophy": "horario", "beat": "Defender un horario flexible pese a una dificultad de organización; explicar cómo coordinarse con otras personas." },
+        { "number": 9, "trophy": "costumbre", "beat": "Explicar una costumbre de comer tarde y reconocer sus límites; comparar su utilidad en días de trabajo y de descanso." },
+        { "number": 10, "trophy": "equilibrio", "beat": "Buscar un equilibrio entre las fiestas del barrio y el descanso; sostener la propuesta tras una pregunta sobre los vecinos." }
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Otras posibilidades",
+      "anchor": "L1–L3 me gustaría y preferiría; L4–L5 podría y debería; L6–L7 si con presente y presente o ir a; L8–L9 sería, tendría y haría; L10 mezcla. No se produce imperfecto de subjuntivo.",
+      "lessons": [
+        { "number": 1, "trophy": "gustaría", "beat": "Expresar el deseo de asistir a un taller de cocina; ajustar la petición cuando se informa de que el grupo está lleno." },
+        { "number": 2, "trophy": "preferiría", "beat": "Indicar una preferencia por una mesa interior; aceptar otra zona cuando la primera opción no está disponible." },
+        { "number": 3, "trophy": "oportunidad", "beat": "Expresar con me gustaría el interés por una oportunidad de voluntariado; concretar la disponibilidad ante una condición de asistencia." },
+        { "number": 4, "trophy": "podría", "beat": "Pedir con cortesía una explicación más detallada de una tarifa; concretar la duda cuando la persona pregunta qué parte no se entiende." },
+        { "number": 5, "trophy": "debería", "beat": "Preguntar qué se debería hacer para completar una inscripción; ajustar la petición cuando falta un dato." },
+        { "number": 6, "trophy": "permiso", "beat": "Solicitar permiso para salir antes de una actividad; explicar con si y presente cómo se recupera la parte pendiente." },
+        { "number": 7, "trophy": "cambio", "beat": "Proponer un cambio de fecha si queda una plaza libre; reajustar la petición cuando el grupo ya tiene otra reserva." },
+        { "number": 8, "trophy": "tendría", "beat": "Valorar cuánto tiempo libre se tendría con otro turno de trabajo; incorporar la nueva información sobre el transporte nocturno." },
+        { "number": 9, "trophy": "sería", "beat": "Explicar por qué sería útil recibir una confirmación por correo; proponer otra vía cuando el sistema no permite enviarla." },
+        { "number": 10, "trophy": "alternativa", "beat": "Pedir una alternativa a una habitación demasiado ruidosa; aceptar una solución parcial y precisar la necesidad principal." }
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "El que necesito",
+      "anchor": "Relativas especificativas: nombre y que; después donde y el que o la que con un referente claro. Negociación: describir la opción buscada y adaptarla ante una limitación.",
+      "lessons": [
+        { "number": 1, "trophy": "balcón", "beat": "Precisar qué balcón se busca al visitar un piso; aceptar uno más pequeño que dé a una calle tranquila." },
+        { "number": 2, "trophy": "ascensor", "beat": "Describir un edificio con ascensor que llegue a la planta necesaria; aclarar una limitación de acceso en la opción ofrecida." },
+        { "number": 3, "trophy": "enchufe", "beat": "Pedir un enchufe compatible con un cargador; escoger un adaptador cuando no hay una toma del tipo indicado." },
+        { "number": 4, "trophy": "escritorio", "beat": "Buscar un escritorio que quepa junto a la ventana; aceptar un modelo más estrecho con suficiente superficie." },
+        { "number": 5, "trophy": "estantería", "beat": "Describir una estantería que soporte libros grandes; negociar la colocación cuando la pared deja poco espacio." },
+        { "number": 6, "trophy": "abrigo", "beat": "Identificar el abrigo que se dejó en el guardarropa; aportar un detalle para distinguirlo de otro parecido." },
+        { "number": 7, "trophy": "cremallera", "beat": "Señalar la cremallera que falla en una prenda; aceptar una pieza de otro color si funciona igual." },
+        { "number": 8, "trophy": "batería", "beat": "Especificar la batería que necesita un dispositivo; comparar la opción disponible con la original." },
+        { "number": 9, "trophy": "entrada", "beat": "Identificar la entrada donde se reúne un grupo; aceptar un punto cercano cuando esa puerta está cerrada." },
+        { "number": 10, "trophy": "asociación", "beat": "Precisar qué asociación ofrece la actividad buscada; valorar otra sede que reúne las condiciones principales." }
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Quisiera saber",
+      "anchor": "Preguntas indirectas de información: saber o decir con qué, cómo, cuándo y dónde; después si para preguntas de respuesta sí o no. Mantener las tildes interrogativas; evitar trasladar reglas de orden alemanas al español.",
+      "lessons": [
+        { "number": 1, "trophy": "trámite", "beat": "Preguntar dónde se inicia un trámite municipal; pedir la vía correcta al saber que se atiende en otra oficina." },
+        { "number": 2, "trophy": "documento", "beat": "Consultar qué documento acredita el domicilio; pedir una alternativa cuando el recibo está a nombre de otra persona." },
+        { "number": 3, "trophy": "formulario", "beat": "Preguntar cómo se entrega un formulario; aclarar qué hacer cuando no aparece la opción de enviarlo." },
+        { "number": 4, "trophy": "firma", "beat": "Consultar dónde debe ir la firma; resolver la duda cuando otra persona debe firmar una segunda parte." },
+        { "number": 5, "trophy": "plazo", "beat": "Preguntar cuándo termina el plazo; precisar si cuenta la fecha de envío o la de recepción." },
+        { "number": 6, "trophy": "solicitud", "beat": "Averiguar si una solicitud se ha recibido; pedir cómo comprobarlo cuando todavía no hay respuesta." },
+        { "number": 7, "trophy": "justificante", "beat": "Consultar si sirve un justificante digital; preguntar cómo presentarlo cuando solo se acepta una copia legible." },
+        { "number": 8, "trophy": "certificado", "beat": "Preguntar si hace falta un certificado reciente; concretar su validez después de conocer un límite de fecha." },
+        { "number": 9, "trophy": "registro", "beat": "Averiguar cómo se corrige un dato del registro; solicitar los pasos siguientes al saber que la corrección tarda varios días." },
+        { "number": 10, "trophy": "requisito", "beat": "Confirmar qué requisito falta para completar la gestión; preguntar si puede entregarse sin pedir otra cita." }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "Cómo va la gestión",
+      "anchor": "Procesos y estado: se con tercera persona singular o plural; después estar con participio y contraste entre acción y resultado. Preferir los giros habituales del español a una pasiva con ser sistemática.",
+      "lessons": [
+        { "number": 1, "trophy": "entrega", "beat": "Consultar cómo se organiza la entrega de un mueble; pedir otra franja cuando no se puede estar en casa." },
+        { "number": 2, "trophy": "revisión", "beat": "Preguntar dónde se realiza la revisión de una bicicleta; aclarar cómo dejarla cuando hay varios días de espera." },
+        { "number": 3, "trophy": "mantenimiento", "beat": "Averiguar cuándo se hace el mantenimiento del ascensor; preguntar por el acceso mientras el servicio esté interrumpido." },
+        { "number": 4, "trophy": "instalación", "beat": "Consultar qué se incluye en una instalación de internet; pedir información sobre un coste adicional inesperado." },
+        { "number": 5, "trophy": "reparación", "beat": "Preguntar cómo se autoriza una reparación; solicitar el precio antes de permitir un trabajo adicional." },
+        { "number": 6, "trophy": "actualización", "beat": "Comprobar si una actualización está terminada; preguntar qué se puede usar mientras faltan algunos cambios." },
+        { "number": 7, "trophy": "confirmación", "beat": "Pedir el estado de una confirmación de matrícula; consultar cómo actuar cuando sigue faltando una comprobación." },
+        { "number": 8, "trophy": "recogida", "beat": "Comprobar si una compra está preparada para la recogida; pedir que se aclare qué parte todavía no ha llegado." },
+        { "number": 9, "trophy": "pendiente", "beat": "Preguntar por qué un cambio de dirección sigue pendiente; pedir una previsión cuando el expediente necesita revisión." },
+        { "number": 10, "trophy": "resuelto", "beat": "Comprobar si un problema de acceso está resuelto; solicitar una prueba concreta antes de dar la gestión por cerrada." }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Para que salga bien",
+      "anchor": "Finalidad: L1–L4 para con infinitivo; L5–L8 para que con presente de subjuntivo de las familias funcione, llegue, tenga, pueda, esté, haya; L9–L10 mezcla. No se introduce imperfecto de subjuntivo.",
+      "lessons": [
+        { "number": 1, "trophy": "organizar", "beat": "Proponer reunirse para organizar una comida vecinal; ajustar el lugar cuando el espacio previsto es insuficiente." },
+        { "number": 2, "trophy": "ahorrar", "beat": "Proponer compartir un trayecto para ahorrar; aceptar otra hora cuando alguien termina de trabajar más tarde." },
+        { "number": 3, "trophy": "aprovechar", "beat": "Adelantar una visita para aprovechar la mañana; adaptar el recorrido ante un horario de apertura distinto." },
+        { "number": 4, "trophy": "repartir", "beat": "Preparar una lista para repartir las tareas de una actividad; cambiar una responsabilidad cuando falta material." },
+        { "number": 5, "trophy": "funcione", "beat": "Proponer una prueba previa para que funcione el equipo de sonido; ajustar la prueba cuando falta una conexión." },
+        { "number": 6, "trophy": "llegue", "beat": "Enviar indicaciones para que llegue una persona nueva al punto de encuentro; adaptar el mensaje al saber que viene en autobús." },
+        { "number": 7, "trophy": "puedan", "beat": "Plantear una franja horaria para que puedan venir quienes trabajan; negociar una parte común y otra opcional." },
+        { "number": 8, "trophy": "tenga", "beat": "Reservar una mesa amplia para que el grupo tenga espacio; aceptar otra distribución cuando aumenta el número de personas." },
+        { "number": 9, "trophy": "facilitar", "beat": "Proponer un punto de encuentro para facilitar la llegada y para que haya menos esperas; aceptar uno cercano que sea más accesible." },
+        { "number": 10, "trophy": "acuerdo", "beat": "Resumir un acuerdo sobre el uso de un espacio común; explicar para qué sirve cada ajuste y aceptar una última modificación." }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Antes y ahora",
+      "anchor": "Hábitos y etapas pasadas: imperfecto con cuando y antes; después solía con infinitivo y comparación con ahora. Reciclar el contraste entre contexto y acontecimiento de P1 sin imponer el contraste alemán als o wenn.",
+      "lessons": [
+        { "number": 1, "trophy": "infancia", "beat": "Describir un recuerdo cotidiano de la infancia; añadir con quién se compartía esa actividad." },
+        { "number": 2, "trophy": "colegio", "beat": "Contar cómo era el trayecto al colegio; explicar qué se hacía durante el camino con otras personas." },
+        { "number": 3, "trophy": "pueblo", "beat": "Describir los veranos en un pueblo; continuar con una actividad que marcaba el ritmo del día." },
+        { "number": 4, "trophy": "huerto", "beat": "Recordar las tareas de un huerto familiar; explicar cómo se aprendía a distinguir lo que ya estaba listo." },
+        { "number": 5, "trophy": "recreo", "beat": "Contar a qué se jugaba en el recreo; añadir cómo se incorporaban quienes llegaban más tarde." },
+        { "number": 6, "trophy": "domingos", "beat": "Explicar qué se hacía los domingos en una etapa anterior; comparar esa rutina con la actual." },
+        { "number": 7, "trophy": "solía", "beat": "Describir una actividad que se solía hacer después de clase; contar por qué dejó de formar parte de la semana." },
+        { "number": 8, "trophy": "juegos", "beat": "Comparar los juegos de antes con los actuales; explicar qué aspecto se sigue disfrutando." },
+        { "number": 9, "trophy": "distinto", "beat": "Explicar por qué el ritmo de vida era distinto al llegar; añadir qué resulta más sencillo ahora." },
+        { "number": 10, "trophy": "etapa", "beat": "Cerrar el recuerdo de una etapa anterior; relacionar una costumbre de entonces con una decisión actual." }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Vamos a resolverlo",
+      "anchor": "Capstone de reclamación, sin gramática nueva: narración de P1, petición condicional de P3, consulta de estado de P6 y concesión de P2. Arco de una lavadora averiada; no prometer como cliente actuaciones que solo decide el servicio técnico.",
+      "lessons": [
+        { "number": 1, "trophy": "avería", "beat": "Explicar cuándo apareció la avería de la lavadora; responder a una pregunta sobre lo que ocurrió antes de que se detuviera." },
+        { "number": 2, "trophy": "garantía", "beat": "Situar la compra dentro del periodo de garantía; aclarar la fecha cuando la persona que atiende encuentra otro dato." },
+        { "number": 3, "trophy": "factura", "beat": "Solicitar una forma de enviar la factura; pedir una alternativa cuando el primer archivo no se puede abrir." },
+        { "number": 4, "trophy": "técnico", "beat": "Pedir una visita del técnico en una franja posible; ajustar la disponibilidad ante el primer hueco ofrecido." },
+        { "number": 5, "trophy": "pieza", "beat": "Consultar si la pieza necesaria ya está disponible; pedir una previsión cuando todavía debe llegar." },
+        { "number": 6, "trophy": "presupuesto", "beat": "Preguntar si el presupuesto está preparado; solicitar que se detalle un importe que no parece cubierto por la garantía." },
+        { "number": 7, "trophy": "solución", "beat": "Reconocer una dificultad del servicio y pedir una solución provisional; precisar la necesidad sin afirmar que la empresa ya la ha aceptado." },
+        { "number": 8, "trophy": "devolución", "beat": "Consultar la devolución tras una reparación sin resultado; responder a la condición de realizar una última comprobación." },
+        { "number": 9, "trophy": "compensación", "beat": "Pedir información sobre una compensación por la demora; negociar un gesto concreto ante una oferta limitada." },
+        { "number": 10, "trophy": "compromiso", "beat": "Pedir que quede por escrito el compromiso final; confirmar fecha y contacto cuando surge una última duda sobre el seguimiento." }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Un año aquí",
+      "anchor": "Consolidación sin gramática nueva: relato conectado del año, cambios, valoraciones, consejos y planes. La segunda intervención continúa la idea anterior y recicla las familias ya presentadas.",
+      "lessons": [
+        { "number": 1, "trophy": "llegada", "beat": "Recordar la llegada a la ciudad; añadir el primer gesto que hizo el lugar menos desconocido." },
+        { "number": 2, "trophy": "esfuerzo", "beat": "Explicar el esfuerzo de resolver una gestión al principio; continuar con el recurso que permitió terminarla." },
+        { "number": 3, "trophy": "confianza", "beat": "Contar qué conversación hizo ganar confianza; describir qué se empezó a hacer de otra manera después." },
+        { "number": 4, "trophy": "amistad", "beat": "Relatar cómo nació una amistad durante una actividad; explicar qué mantiene el contacto en la actualidad." },
+        { "number": 5, "trophy": "aprendizaje", "beat": "Valorar un aprendizaje práctico de la vida diaria; añadir una situación reciente en la que resultó útil." },
+        { "number": 6, "trophy": "rutina", "beat": "Comparar la rutina de los primeros meses con la de ahora; explicar qué cambio se quiere conservar." },
+        { "number": 7, "trophy": "consejo", "beat": "Dar un consejo a alguien que acaba de llegar; matizarlo cuando la persona cuenta una circunstancia diferente." },
+        { "number": 8, "trophy": "proyecto", "beat": "Describir un proyecto para los próximos meses; aclarar qué primer paso se va a dar y con qué finalidad." },
+        { "number": 9, "trophy": "agradecimiento", "beat": "Expresar agradecimiento por una ayuda concreta; contar cómo esa ayuda cambió una experiencia difícil." },
+        { "number": 10, "trophy": "experiencia", "beat": "Resumir la experiencia del año con una valoración y una razón; cerrar la historia con algo que se quiere repetir." }
+      ]
+    }
+  ]
+}

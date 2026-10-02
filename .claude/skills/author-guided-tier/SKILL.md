@@ -419,6 +419,13 @@ deltas:
 
 ## Per-language notes (accreting)
 
+2026-10-03 staged B1 tripwires:
+- A provider HTTP 401 can mean `missing_permissions`, not an invalid key. Inspect the structured status before requesting key replacement; account/model/voice reads have separate scopes. Never print keys.
+- B1 matching speaks vocabulary terms through `chunk` / `*-item-*` coordinates. The historical lesson dump omitted `lessonItems`; include these clips in every new B1 snapshot and preserve them when integrating the production exporter.
+- A saved audio manifest is evidence only when its source hashes, exported lessons, snapshot hash and rebuilt inventory all agree. Test freshness offline; reject absent surfaces instead of accepting an empty inventory.
+- A failed cache key may be retried again for another usage row by the historical runner. Unique characters times three is not a safe worst-case estimate. Use usage-row characters for that single-run forecast; durable per-attempt reservations are still needed for a real spending ceiling.
+- Spanish past-tense cloze slots with omitted subjects can accept another offered person form. Check the complete sentence: `un vecino ... y pudo orientarme` is valid beside intended `pude orientarme`. Pin the intended subject explicitly when the question does not disambiguate it.
+
 - **Spanish**: pilot language; preterite whitelist proved the model.
 - **French**: space before ?/! required; vous throughout; avoir-only past.
 - **Italian**: Lei; avere-only past; no `scusa`.

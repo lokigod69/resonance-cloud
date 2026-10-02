@@ -1,0 +1,1950 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": {
+    "de": "Was passiert ist"
+  },
+  "subtitle": {
+    "de": "Erzähle kleine Erlebnisse und führe die Geschichte weiter."
+  },
+  "anchor": "PROVISIONAL, pending Fable arbitration. Fable architecture, 2026-10-03: shape B, interested listener. L1-3 simple past; L4-5 past continuous with while/when; L6-7 present perfect for result and experience contrasted with simple past plus an explicit past time; L8-10 mixed two-event narration. No learner past perfect. The ten trophies follow the proposed English allocation.",
+  "lessons": [
+    {
+      "slug": "noticed-the-wrong-street-name",
+      "title": {
+        "de": "Eine unbekannte Straße"
+      },
+      "situation": {
+        "de": "Dein Nachbar fragt, warum du gestern erst so spät nach Hause gekommen bist. Erzähl ihm, was unterwegs passiert ist.",
+        "en": "Your neighbor asks why you got home so late yesterday. Tell him what happened on the way."
+      },
+      "pedagogicalGoal": "Zwei abgeschlossene Ereignisse mit regelmäßigen Vergangenheitsformen erzählen und auf eine Nachfrage eingehen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Hey, why were you so late getting home yesterday?",
+          "baseText": {
+            "de": "Hey, warum bist du gestern so spät nach Hause gekommen?"
+          }
+        },
+        {
+          "targetText": "I noticed the street name was wrong after I got off the bus.",
+          "baseText": {
+            "de": "Nachdem ich aus dem Bus gestiegen war, habe ich gemerkt, dass der Straßenname nicht stimmte."
+          }
+        },
+        {
+          "targetText": "Oh no! How did you find your way back?",
+          "baseText": {
+            "de": "Oh nein! Wie hast du den Weg zurückgefunden?"
+          }
+        },
+        {
+          "targetText": "I asked someone for directions and walked home.",
+          "baseText": {
+            "de": "Ich habe jemanden nach dem Weg gefragt und bin nach Hause gelaufen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Simple past",
+        "rule": {
+          "de": "Wenn du abgeschlossene Ereignisse erzählst, bekommen regelmäßige Verben die Endung -ed."
+        },
+        "examples": [
+          {
+            "targetText": "I asked someone for directions and walked home.",
+            "baseText": {
+              "de": "Ich habe jemanden nach dem Weg gefragt und bin nach Hause gelaufen."
+            },
+            "highlight": "asked"
+          },
+          {
+            "targetText": "We waited outside and talked for a few minutes.",
+            "baseText": {
+              "de": "Wir haben draußen gewartet und uns ein paar Minuten unterhalten."
+            },
+            "highlight": "waited"
+          }
+        ]
+      },
+      "cloze": [
+        "I ",
+        {
+          "kind": "form",
+          "answer": "asked",
+          "cue": "ask",
+          "choices": [
+            "asked",
+            "asks",
+            "asking",
+            "ask"
+          ]
+        },
+        " someone for directions and ",
+        {
+          "kind": "form",
+          "answer": "walked",
+          "cue": "walk",
+          "choices": [
+            "walking",
+            "walked",
+            "walk",
+            "walks"
+          ]
+        },
+        " home."
+      ],
+      "chunks": [
+        {
+          "targetText": "I noticed",
+          "baseText": {
+            "de": "Ich habe gemerkt,"
+          }
+        },
+        {
+          "targetText": "the street name was wrong",
+          "baseText": {
+            "de": "dass der Straßenname nicht stimmte,"
+          }
+        },
+        {
+          "targetText": "after I got off",
+          "baseText": {
+            "de": "nachdem ich ausgestiegen war"
+          }
+        },
+        {
+          "targetText": "the bus.",
+          "baseText": {
+            "de": "aus dem Bus."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "noticed",
+          "baseText": {
+            "de": "bemerkt"
+          }
+        },
+        {
+          "targetText": "street name",
+          "baseText": {
+            "de": "Straßenname"
+          }
+        },
+        {
+          "targetText": "got off the bus",
+          "baseText": {
+            "de": "aus dem Bus gestiegen"
+          }
+        },
+        {
+          "targetText": "directions",
+          "baseText": {
+            "de": "Wegbeschreibung"
+          }
+        },
+        {
+          "targetText": "asked",
+          "baseText": {
+            "de": "gefragt"
+          }
+        },
+        {
+          "targetText": "walked home",
+          "baseText": {
+            "de": "nach Hause gelaufen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I ",
+        "answer": "noticed",
+        "after": " the street name was wrong after I got off the bus.",
+        "fallbackChoices": [
+          "noticing",
+          "notice",
+          "noticed",
+          "notices"
+        ]
+      },
+      "speakRequired": [
+        "noticed",
+        "street",
+        "bus"
+      ],
+      "sceneCaption": {
+        "de": "Dein Nachbar begegnet dir im Hausflur und fragt: „Hey, why were you so late getting home yesterday?“"
+      },
+      "trophyWord": {
+        "word": "noticed",
+        "meaning": {
+          "de": "bemerkt"
+        },
+        "example": "I noticed the street name was wrong.",
+        "whyThisWord": {
+          "de": "Mit diesem Wort erzählst du, was dir in einem bestimmten Moment aufgefallen ist."
+        }
+      },
+      "distractors": [
+        "the house number was right",
+        "before I boarded"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn unterhalten sich im hellen Eingangsbereich eines Wohnhauses."
+      },
+      "songMood": "a wrong turn becoming a small neighborhood story",
+      "visualNotes": "A residential entryway in soft daylight, neighbors talking casually, with bus-stop signage visible through the glass door."
+    },
+    {
+      "slug": "realized-my-wallet-was-at-home",
+      "title": {
+        "de": "Das Portemonnaie zu Hause"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt nach deinem Termin von gestern. Erzähl ihr, warum die Fahrt dorthin nicht nach Plan lief.",
+        "en": "A friend asks about your appointment yesterday. Tell her why getting there did not go according to plan."
+      },
+      "pedagogicalGoal": "Eine Geschichte mit häufigen unregelmäßigen Vergangenheitsformen erzählen und das Ergebnis ergänzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Did you make it to your appointment yesterday?",
+          "baseText": {
+            "de": "Hast du es gestern zu deinem Termin geschafft?"
+          }
+        },
+        {
+          "targetText": "I realized my wallet was at home, so I went back.",
+          "baseText": {
+            "de": "Ich habe gemerkt, dass mein Portemonnaie zu Hause lag, also bin ich zurückgegangen."
+          }
+        },
+        {
+          "targetText": "That sounds stressful. Did you catch your train in the end?",
+          "baseText": {
+            "de": "Das klingt stressig. Hast du am Ende deinen Zug noch erwischt?"
+          }
+        },
+        {
+          "targetText": "I grabbed my wallet and caught the next train.",
+          "baseText": {
+            "de": "Ich habe mein Portemonnaie geschnappt und den nächsten Zug genommen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Simple past: irregular verbs",
+        "rule": {
+          "de": "Manche Verben haben eine eigene Vergangenheitsform, die du zusammen mit ihrer Grundform lernst."
+        },
+        "examples": [
+          {
+            "targetText": "I realized my wallet was at home, so I went back.",
+            "baseText": {
+              "de": "Ich habe gemerkt, dass mein Portemonnaie zu Hause lag, also bin ich zurückgegangen."
+            },
+            "highlight": "went"
+          },
+          {
+            "targetText": "She took the next train and got there on time.",
+            "baseText": {
+              "de": "Sie hat den nächsten Zug genommen und ist pünktlich angekommen."
+            },
+            "highlight": "took"
+          }
+        ]
+      },
+      "cloze": [
+        "I ",
+        {
+          "kind": "form",
+          "answer": "grabbed",
+          "cue": "grab",
+          "choices": [
+            "grab",
+            "grabbing",
+            "grabs",
+            "grabbed"
+          ]
+        },
+        " my wallet and ",
+        {
+          "kind": "form",
+          "answer": "caught",
+          "cue": "catch",
+          "choices": [
+            "caught",
+            "catches",
+            "catching",
+            "catch"
+          ]
+        },
+        " the next train."
+      ],
+      "chunks": [
+        {
+          "targetText": "I realized",
+          "baseText": {
+            "de": "Ich habe gemerkt,"
+          }
+        },
+        {
+          "targetText": "my wallet was",
+          "baseText": {
+            "de": "dass mein Portemonnaie"
+          }
+        },
+        {
+          "targetText": "at home,",
+          "baseText": {
+            "de": "zu Hause lag,"
+          }
+        },
+        {
+          "targetText": "so I went back.",
+          "baseText": {
+            "de": "also bin ich zurückgegangen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "realized",
+          "baseText": {
+            "de": "gemerkt"
+          }
+        },
+        {
+          "targetText": "wallet",
+          "baseText": {
+            "de": "Portemonnaie"
+          }
+        },
+        {
+          "targetText": "went back",
+          "baseText": {
+            "de": "zurückgegangen"
+          }
+        },
+        {
+          "targetText": "grabbed",
+          "baseText": {
+            "de": "geschnappt"
+          }
+        },
+        {
+          "targetText": "caught the next train",
+          "baseText": {
+            "de": "den nächsten Zug erwischt"
+          }
+        },
+        {
+          "targetText": "stressful",
+          "baseText": {
+            "de": "stressig"
+          }
+        },
+        {
+          "targetText": "in the end",
+          "baseText": {
+            "de": "am Ende"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I realized my wallet was at home, so I ",
+        "answer": "went",
+        "after": " back.",
+        "fallbackChoices": [
+          "goes",
+          "went",
+          "going",
+          "go"
+        ]
+      },
+      "speakRequired": [
+        "realized",
+        "wallet",
+        "back"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin fragt nach deinem gestrigen Termin: „Did you make it to your appointment yesterday?“"
+      },
+      "trophyWord": {
+        "word": "realized",
+        "meaning": {
+          "de": "gemerkt"
+        },
+        "example": "I realized my wallet was at home.",
+        "whyThisWord": {
+          "de": "Damit benennst du den Moment, in dem dir ein Problem bewusst geworden ist."
+        }
+      },
+      "distractors": [
+        "my phone was",
+        "so I stayed there."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freundinnen oder Freunde sprechen auf einer Bank über den vergangenen Tag."
+      },
+      "songMood": "a rushed return home ending with a train caught just in time",
+      "visualNotes": "A quiet neighborhood bench near a transit stop, an everyday conversation with a wallet resting beside a bag."
+    },
+    {
+      "slug": "lights-suddenly-went-out",
+      "title": {
+        "de": "Abendessen bei Kerzenlicht"
+      },
+      "situation": {
+        "de": "Du hast gestern mit deinen Nachbarn gegessen. Ein Freund möchte wissen, wie der Abend war.",
+        "en": "You had dinner with your neighbors yesterday. A friend wants to know how the evening went."
+      },
+      "pedagogicalGoal": "Ein plötzliches Ereignis und seine Folgen mit einfachen Vergangenheitsformen zu einer Geschichte verbinden.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "How was dinner with your neighbors last night?",
+          "baseText": {
+            "de": "Wie war gestern Abend das Essen mit deinen Nachbarn?"
+          }
+        },
+        {
+          "targetText": "The lights suddenly went out, so we ate our dinner by candlelight.",
+          "baseText": {
+            "de": "Plötzlich ging das Licht aus, also haben wir bei Kerzenlicht gegessen."
+          }
+        },
+        {
+          "targetText": "Wow! What did everyone do when the lights came back?",
+          "baseText": {
+            "de": "Wow! Was habt ihr gemacht, als das Licht wieder anging?"
+          }
+        },
+        {
+          "targetText": "We finished our food and laughed about the whole thing.",
+          "baseText": {
+            "de": "Wir haben aufgegessen und über die ganze Sache gelacht."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Simple past: a sequence of events",
+        "rule": {
+          "de": "Mit mehreren Verben in der Vergangenheit erzählst du, was nacheinander passiert ist."
+        },
+        "examples": [
+          {
+            "targetText": "The lights suddenly went out, so we ate our dinner by candlelight.",
+            "baseText": {
+              "de": "Plötzlich ging das Licht aus, also haben wir bei Kerzenlicht gegessen."
+            },
+            "highlight": "went out"
+          },
+          {
+            "targetText": "We found some candles and put them on the table.",
+            "baseText": {
+              "de": "Wir haben ein paar Kerzen gefunden und sie auf den Tisch gestellt."
+            },
+            "highlight": "found"
+          }
+        ]
+      },
+      "cloze": [
+        "We ",
+        {
+          "kind": "form",
+          "answer": "finished",
+          "cue": "finish",
+          "choices": [
+            "finishes",
+            "finish",
+            "finished",
+            "finishing"
+          ]
+        },
+        " our food and ",
+        {
+          "kind": "form",
+          "answer": "laughed",
+          "cue": "laugh",
+          "choices": [
+            "laughing",
+            "laugh",
+            "laughs",
+            "laughed"
+          ]
+        },
+        " about the whole thing."
+      ],
+      "chunks": [
+        {
+          "targetText": "The lights suddenly",
+          "baseText": {
+            "de": "Das Licht ging plötzlich"
+          }
+        },
+        {
+          "targetText": "went out,",
+          "baseText": {
+            "de": "aus,"
+          }
+        },
+        {
+          "targetText": "so we ate our dinner",
+          "baseText": {
+            "de": "also haben wir gegessen"
+          }
+        },
+        {
+          "targetText": "by candlelight.",
+          "baseText": {
+            "de": "bei Kerzenlicht."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "suddenly",
+          "baseText": {
+            "de": "plötzlich"
+          }
+        },
+        {
+          "targetText": "went out",
+          "baseText": {
+            "de": "ging aus"
+          }
+        },
+        {
+          "targetText": "ate",
+          "baseText": {
+            "de": "gegessen"
+          }
+        },
+        {
+          "targetText": "by candlelight",
+          "baseText": {
+            "de": "bei Kerzenlicht"
+          }
+        },
+        {
+          "targetText": "finished our food",
+          "baseText": {
+            "de": "aufgegessen"
+          }
+        },
+        {
+          "targetText": "laughed",
+          "baseText": {
+            "de": "gelacht"
+          }
+        },
+        {
+          "targetText": "the whole thing",
+          "baseText": {
+            "de": "die ganze Sache"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The lights suddenly went out, so we ",
+        "answer": "ate",
+        "after": " our dinner by candlelight.",
+        "fallbackChoices": [
+          "eating",
+          "eats",
+          "eat",
+          "ate"
+        ]
+      },
+      "speakRequired": [
+        "lights",
+        "suddenly",
+        "candlelight"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund erkundigt sich nach deinem Abend: „How was dinner with your neighbors last night?“"
+      },
+      "trophyWord": {
+        "word": "suddenly",
+        "meaning": {
+          "de": "plötzlich"
+        },
+        "example": "The lights suddenly went out during dinner.",
+        "whyThisWord": {
+          "de": "Dieses Wort zeigt, dass etwas unerwartet passiert, und gibt deiner Geschichte eine Wendung."
+        }
+      },
+      "distractors": [
+        "stayed on,",
+        "before our dinner."
+      ],
+      "placeholderCaption": {
+        "de": "Eine entspannte Unterhaltung am Tag nach einem gemeinsamen Abendessen."
+      },
+      "songMood": "an unexpected power outage remembered with laughter",
+      "visualNotes": "Two friends in a bright kitchen, with dinner dishes and a small candle on a shelf in the background."
+    },
+    {
+      "slug": "neighbor-called-while-i-was-carrying-groceries",
+      "title": {
+        "de": "Keine Hand frei"
+      },
+      "situation": {
+        "de": "Ein Freund fragt, ob du mit deinem großen Einkauf gut nach Hause gekommen bist. Erzähl ihm von einer kleinen Unterbrechung.",
+        "en": "A friend asks whether you got home easily with a large grocery load. Tell him about a small interruption."
+      },
+      "pedagogicalGoal": "Mit was und der -ing-Form eine laufende Handlung als Hintergrund für ein einzelnes Ereignis erzählen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Did you get home easily with all those groceries?",
+          "baseText": {
+            "de": "Bist du mit dem ganzen Einkauf gut nach Hause gekommen?"
+          }
+        },
+        {
+          "targetText": "My neighbor called while I was carrying heavy groceries up the stairs.",
+          "baseText": {
+            "de": "Meine Nachbarin hat angerufen, während ich gerade schwere Einkaufstaschen die Treppe hinaufgetragen habe."
+          }
+        },
+        {
+          "targetText": "Why didn't you answer her right away?",
+          "baseText": {
+            "de": "Warum bist du nicht gleich rangegangen?"
+          }
+        },
+        {
+          "targetText": "I was carrying everything, so I called her back later.",
+          "baseText": {
+            "de": "Ich hatte beide Hände voll und habe sie deshalb später zurückgerufen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past continuous with while",
+        "rule": {
+          "de": "Mit was und der -ing-Form beschreibst du, was gerade im Gange war; while verbindet diesen Hintergrund mit einem einzelnen Ereignis."
+        },
+        "examples": [
+          {
+            "targetText": "My neighbor called while I was carrying heavy groceries up the stairs.",
+            "baseText": {
+              "de": "Meine Nachbarin hat angerufen, während ich gerade schwere Einkaufstaschen die Treppe hinaufgetragen habe."
+            },
+            "highlight": "was carrying"
+          },
+          {
+            "targetText": "The phone rang while I was opening the door.",
+            "baseText": {
+              "de": "Das Telefon hat geklingelt, während ich gerade die Tür geöffnet habe."
+            },
+            "highlight": "was opening"
+          }
+        ]
+      },
+      "cloze": [
+        "I ",
+        {
+          "kind": "form",
+          "answer": "was carrying",
+          "cue": "carry",
+          "choices": [
+            "were carrying",
+            "was carrying",
+            "is carrying",
+            "be carrying"
+          ]
+        },
+        " everything, so I ",
+        {
+          "kind": "form",
+          "answer": "called",
+          "cue": "call",
+          "choices": [
+            "calls",
+            "calling",
+            "called",
+            "call"
+          ]
+        },
+        " her back later."
+      ],
+      "chunks": [
+        {
+          "targetText": "My neighbor called",
+          "baseText": {
+            "de": "Meine Nachbarin hat angerufen,"
+          }
+        },
+        {
+          "targetText": "while I was carrying",
+          "baseText": {
+            "de": "während ich gerade getragen habe:"
+          }
+        },
+        {
+          "targetText": "heavy groceries",
+          "baseText": {
+            "de": "schwere Einkaufstaschen"
+          }
+        },
+        {
+          "targetText": "up the stairs.",
+          "baseText": {
+            "de": "die Treppe hinauf."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "while",
+          "baseText": {
+            "de": "während"
+          }
+        },
+        {
+          "targetText": "was carrying",
+          "baseText": {
+            "de": "trug gerade"
+          }
+        },
+        {
+          "targetText": "up the stairs",
+          "baseText": {
+            "de": "die Treppe hinauf"
+          }
+        },
+        {
+          "targetText": "heavy groceries",
+          "baseText": {
+            "de": "schwere Einkäufe"
+          }
+        },
+        {
+          "targetText": "right away",
+          "baseText": {
+            "de": "sofort"
+          }
+        },
+        {
+          "targetText": "everything",
+          "baseText": {
+            "de": "alles"
+          }
+        },
+        {
+          "targetText": "called her back",
+          "baseText": {
+            "de": "sie zurückgerufen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "My neighbor called while I was ",
+        "answer": "carrying",
+        "after": " heavy groceries up the stairs.",
+        "fallbackChoices": [
+          "carry",
+          "carried",
+          "carrying",
+          "carries"
+        ]
+      },
+      "speakRequired": [
+        "called",
+        "while",
+        "groceries"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund denkt an deinen großen Einkauf und fragt: „Did you get home easily with all those groceries?“"
+      },
+      "trophyWord": {
+        "word": "while",
+        "meaning": {
+          "de": "während"
+        },
+        "example": "We talked while we waited for the elevator.",
+        "whyThisWord": {
+          "de": "Damit bringst du zwei Ereignisse zusammen, die zur gleichen Zeit stattfinden."
+        }
+      },
+      "distractors": [
+        "My brother waved",
+        "down the hallway."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde unterhalten sich neben abgestellten Einkaufstaschen."
+      },
+      "songMood": "a busy errand interrupted by a familiar voice",
+      "visualNotes": "Apartment lobby beside an elevator, full grocery bags set safely on the floor, an unhurried conversation."
+    },
+    {
+      "slug": "something-funny-happened-yesterday",
+      "title": {
+        "de": "Ein kleiner Kaffeefleck"
+      },
+      "situation": {
+        "de": "Dein Mitbewohner hat gestern einen Kaffeefleck auf deinem Hemd bemerkt. Jetzt fragt er nach der Geschichte dahinter.",
+        "en": "Your roommate noticed a coffee stain on your shirt yesterday. Now he asks for the story behind it."
+      },
+      "pedagogicalGoal": "Mit while einen laufenden Hintergrund beschreiben und die Geschichte mit einer zweiten Hintergrundhandlung fortsetzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What happened to your shirt yesterday morning?",
+          "baseText": {
+            "de": "Was ist gestern Morgen mit deinem Hemd passiert?"
+          }
+        },
+        {
+          "targetText": "Something nice happened while I was cleaning coffee off my shirt.",
+          "baseText": {
+            "de": "Etwas Nettes ist passiert, während ich gerade Kaffee von meinem Hemd gewischt habe."
+          }
+        },
+        {
+          "targetText": "Really? What happened while you were doing that?",
+          "baseText": {
+            "de": "Wirklich? Was ist passiert, während du damit beschäftigt warst?"
+          }
+        },
+        {
+          "targetText": "Our new neighbor was passing by, so she stopped to help.",
+          "baseText": {
+            "de": "Unsere neue Nachbarin kam gerade vorbei und ist stehen geblieben, um mir zu helfen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past continuous: background and event",
+        "rule": {
+          "de": "Die Form mit was und -ing zeigt eine laufende Handlung, die einfache Vergangenheit ein einzelnes Ereignis währenddessen."
+        },
+        "examples": [
+          {
+            "targetText": "Something nice happened while I was cleaning coffee off my shirt.",
+            "baseText": {
+              "de": "Etwas Nettes ist passiert, während ich gerade Kaffee von meinem Hemd gewischt habe."
+            },
+            "highlight": "was cleaning"
+          },
+          {
+            "targetText": "A neighbor was opening the door when I arrived.",
+            "baseText": {
+              "de": "Ein Nachbar hat gerade die Tür geöffnet, als ich angekommen bin."
+            },
+            "highlight": "was opening"
+          }
+        ]
+      },
+      "cloze": [
+        "Our new neighbor ",
+        {
+          "kind": "form",
+          "answer": "was passing",
+          "cue": "pass",
+          "choices": [
+            "were passing",
+            "be passing",
+            "was passing",
+            "is passing"
+          ]
+        },
+        " by, so she ",
+        {
+          "kind": "form",
+          "answer": "stopped",
+          "cue": "stop",
+          "choices": [
+            "stops",
+            "stop",
+            "stopping",
+            "stopped"
+          ]
+        },
+        " to help."
+      ],
+      "chunks": [
+        {
+          "targetText": "Something nice happened",
+          "baseText": {
+            "de": "Etwas Nettes ist passiert,"
+          }
+        },
+        {
+          "targetText": "while I was cleaning",
+          "baseText": {
+            "de": "während ich gerade weggewischt habe:"
+          }
+        },
+        {
+          "targetText": "coffee",
+          "baseText": {
+            "de": "Kaffee"
+          }
+        },
+        {
+          "targetText": "off my shirt.",
+          "baseText": {
+            "de": "von meinem Hemd."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "happened",
+          "baseText": {
+            "de": "passiert"
+          }
+        },
+        {
+          "targetText": "was cleaning",
+          "baseText": {
+            "de": "wischte gerade weg"
+          }
+        },
+        {
+          "targetText": "off my shirt",
+          "baseText": {
+            "de": "von meinem Hemd"
+          }
+        },
+        {
+          "targetText": "our new neighbor",
+          "baseText": {
+            "de": "unsere neue Nachbarin"
+          }
+        },
+        {
+          "targetText": "was passing by",
+          "baseText": {
+            "de": "kam gerade vorbei"
+          }
+        },
+        {
+          "targetText": "stopped to help",
+          "baseText": {
+            "de": "blieb stehen, um zu helfen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Something nice happened while I was ",
+        "answer": "cleaning",
+        "after": " coffee off my shirt.",
+        "fallbackChoices": [
+          "cleans",
+          "cleaning",
+          "cleaned",
+          "clean"
+        ]
+      },
+      "speakRequired": [
+        "happened",
+        "cleaning",
+        "shirt"
+      ],
+      "sceneCaption": {
+        "de": "Dein Mitbewohner erinnert sich an den Fleck auf deinem Hemd und fragt: „What happened to your shirt yesterday morning?“"
+      },
+      "trophyWord": {
+        "word": "happened",
+        "meaning": {
+          "de": "passiert"
+        },
+        "example": "Something nice happened yesterday morning.",
+        "whyThisWord": {
+          "de": "Damit leitest du ein Erlebnis ein und weckst die Neugier deines Gegenübers."
+        }
+      },
+      "distractors": [
+        "Something strange happened",
+        "off the floor."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Mitbewohner fragt beim Frühstück nach einer kleinen Panne vom Vortag."
+      },
+      "songMood": "a coffee spill that starts a friendly conversation",
+      "visualNotes": "Shared kitchen after breakfast, two roommates talking, a small faded coffee stain visible on a folded shirt."
+    },
+    {
+      "slug": "just-dropped-my-keys",
+      "title": {
+        "de": "Die Schlüssel am Briefkasten"
+      },
+      "situation": {
+        "de": "Eine Freundin trifft dich unten bei den Briefkästen. Sie fragt, warum du noch nicht nach oben gehst.",
+        "en": "A friend meets you downstairs by the mailboxes. She asks why you are not going upstairs yet."
+      },
+      "pedagogicalGoal": "Mit dem present perfect ein aktuelles Ergebnis benennen und ein vergangenes Ereignis mit einer genauen Zeitangabe abgrenzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Why are you waiting by the mailboxes instead of going upstairs?",
+          "baseText": {
+            "de": "Warum wartest du bei den Briefkästen, anstatt nach oben zu gehen?"
+          }
+        },
+        {
+          "targetText": "I've just dropped my keys, and I can't reach them.",
+          "baseText": {
+            "de": "Mir sind gerade die Schlüssel heruntergefallen, und ich komme nicht an sie heran."
+          }
+        },
+        {
+          "targetText": "Oh no! Have you found anyone who can help?",
+          "baseText": {
+            "de": "Oh nein! Hast du jemanden gefunden, der helfen kann?"
+          }
+        },
+        {
+          "targetText": "I've called a neighbor; he arrived a minute ago.",
+          "baseText": {
+            "de": "Ich habe einen Nachbarn angerufen; er ist vor einer Minute angekommen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Present perfect: a result now",
+        "rule": {
+          "de": "Mit have und der dritten Verbform verbindest du ein Ereignis mit seiner Folge jetzt; bei einer genauen vergangenen Zeit steht die einfache Vergangenheit."
+        },
+        "examples": [
+          {
+            "targetText": "I've just dropped my keys, and I can't reach them.",
+            "baseText": {
+              "de": "Mir sind gerade die Schlüssel heruntergefallen, und ich komme nicht an sie heran."
+            },
+            "highlight": "'ve just dropped"
+          },
+          {
+            "targetText": "I dropped my keys five minutes ago.",
+            "baseText": {
+              "de": "Mir sind vor fünf Minuten die Schlüssel heruntergefallen."
+            },
+            "highlight": "dropped"
+          }
+        ]
+      },
+      "cloze": [
+        "I've ",
+        {
+          "kind": "form",
+          "answer": "called",
+          "cue": "call",
+          "choices": [
+            "call",
+            "called",
+            "calling",
+            "calls"
+          ]
+        },
+        " a neighbor; he ",
+        {
+          "kind": "form",
+          "answer": "arrived",
+          "cue": "arrive",
+          "choices": [
+            "arrive",
+            "arriving",
+            "arrives",
+            "arrived"
+          ]
+        },
+        " a minute ago."
+      ],
+      "chunks": [
+        {
+          "targetText": "I've just dropped",
+          "baseText": {
+            "de": "Mir sind gerade heruntergefallen:"
+          }
+        },
+        {
+          "targetText": "my keys,",
+          "baseText": {
+            "de": "meine Schlüssel,"
+          }
+        },
+        {
+          "targetText": "and I can't",
+          "baseText": {
+            "de": "und ich kann nicht"
+          }
+        },
+        {
+          "targetText": "reach them.",
+          "baseText": {
+            "de": "an sie herankommen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "dropped",
+          "baseText": {
+            "de": "fallen gelassen"
+          }
+        },
+        {
+          "targetText": "keys",
+          "baseText": {
+            "de": "Schlüssel"
+          }
+        },
+        {
+          "targetText": "just",
+          "baseText": {
+            "de": "gerade eben"
+          }
+        },
+        {
+          "targetText": "reach them",
+          "baseText": {
+            "de": "an sie herankommen"
+          }
+        },
+        {
+          "targetText": "mailboxes",
+          "baseText": {
+            "de": "Briefkästen"
+          }
+        },
+        {
+          "targetText": "called a neighbor",
+          "baseText": {
+            "de": "einen Nachbarn angerufen"
+          }
+        },
+        {
+          "targetText": "a minute ago",
+          "baseText": {
+            "de": "vor einer Minute"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I've just ",
+        "answer": "dropped",
+        "after": " my keys, and I can't reach them.",
+        "fallbackChoices": [
+          "dropping",
+          "drops",
+          "drop",
+          "dropped"
+        ]
+      },
+      "speakRequired": [
+        "dropped",
+        "keys",
+        "reach"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin bleibt im Eingangsbereich stehen und fragt: „Why are you waiting by the mailboxes instead of going upstairs?“"
+      },
+      "trophyWord": {
+        "word": "dropped",
+        "meaning": {
+          "de": "fallen gelassen"
+        },
+        "example": "I've just dropped my keys outside the building.",
+        "whyThisWord": {
+          "de": "Damit erzählst du knapp, wie dir etwas aus der Hand gefallen ist."
+        }
+      },
+      "distractors": [
+        "I've just found",
+        "my wallet,"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin spricht dich im Eingangsbereich neben den Briefkästen an."
+      },
+      "songMood": "a small mishap and help arriving a moment later",
+      "visualNotes": "Residential entryway with individual mailboxes, warm natural light and two friends chatting beside the wall."
+    },
+    {
+      "slug": "stuck-in-traffic-across-town",
+      "title": {
+        "de": "Im Stau"
+      },
+      "situation": {
+        "de": "Du kommst nach Kursbeginn an. Ein anderer Teilnehmer spricht dich direkt nach deiner Ankunft auf den Verkehr an.",
+        "en": "You arrive after class begins. Another participant asks about the traffic as soon as you get there."
+      },
+      "pedagogicalGoal": "Eine Erfahrung bis jetzt mit dem present perfect beschreiben und von einer Abfahrt zu einer genauen Uhrzeit abgrenzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Was that your first bad traffic jam in town?",
+          "baseText": {
+            "de": "War das dein erster schlimmer Stau hier in der Stadt?"
+          }
+        },
+        {
+          "targetText": "I've never been stuck in traffic like that before.",
+          "baseText": {
+            "de": "Ich habe vorher noch nie so im Stau festgesteckt."
+          }
+        },
+        {
+          "targetText": "How long did it take you to get here today?",
+          "baseText": {
+            "de": "Wie lange hast du heute gebraucht, um herzukommen?"
+          }
+        },
+        {
+          "targetText": "I left at eight today, but I've only just arrived.",
+          "baseText": {
+            "de": "Ich bin heute um acht losgefahren, aber ich bin gerade erst angekommen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Present perfect: experience",
+        "rule": {
+          "de": "Mit have und der dritten Verbform erzählst du von Erfahrungen bis jetzt; eine genaue vergangene Uhrzeit braucht die einfache Vergangenheit."
+        },
+        "examples": [
+          {
+            "targetText": "I've never been stuck in traffic like that before.",
+            "baseText": {
+              "de": "Ich habe vorher noch nie so im Stau festgesteckt."
+            },
+            "highlight": "'ve never been"
+          },
+          {
+            "targetText": "I've taken this bus before.",
+            "baseText": {
+              "de": "Ich bin schon einmal mit diesem Bus gefahren."
+            },
+            "highlight": "'ve taken"
+          }
+        ]
+      },
+      "cloze": [
+        "I ",
+        {
+          "kind": "form",
+          "answer": "left",
+          "cue": "leave",
+          "choices": [
+            "leaving",
+            "leave",
+            "left",
+            "leaves"
+          ]
+        },
+        " at eight today, but I've only just ",
+        {
+          "kind": "form",
+          "answer": "arrived",
+          "cue": "arrive",
+          "choices": [
+            "arrives",
+            "arrive",
+            "arriving",
+            "arrived"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "I've never been stuck",
+          "baseText": {
+            "de": "Ich habe noch nie festgesteckt"
+          }
+        },
+        {
+          "targetText": "in traffic",
+          "baseText": {
+            "de": "im Stau,"
+          }
+        },
+        {
+          "targetText": "like that",
+          "baseText": {
+            "de": "auf diese Weise"
+          }
+        },
+        {
+          "targetText": "before.",
+          "baseText": {
+            "de": "vorher."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "been stuck",
+          "baseText": {
+            "de": "festgesteckt"
+          }
+        },
+        {
+          "targetText": "in traffic",
+          "baseText": {
+            "de": "im Stau"
+          }
+        },
+        {
+          "targetText": "never",
+          "baseText": {
+            "de": "noch nie"
+          }
+        },
+        {
+          "targetText": "like that before",
+          "baseText": {
+            "de": "vorher auf diese Weise"
+          }
+        },
+        {
+          "targetText": "left",
+          "baseText": {
+            "de": "losgefahren"
+          }
+        },
+        {
+          "targetText": "at eight",
+          "baseText": {
+            "de": "um acht"
+          }
+        },
+        {
+          "targetText": "only just arrived",
+          "baseText": {
+            "de": "gerade erst angekommen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I've never ",
+        "answer": "been",
+        "after": " stuck in traffic like that before.",
+        "fallbackChoices": [
+          "being",
+          "was",
+          "been",
+          "be"
+        ]
+      },
+      "speakRequired": [
+        "never",
+        "stuck",
+        "traffic"
+      ],
+      "sceneCaption": {
+        "de": "Du bist gerade beim Kurs angekommen. Ein anderer Teilnehmer fragt: „Was that your first bad traffic jam in town?“"
+      },
+      "trophyWord": {
+        "word": "stuck",
+        "meaning": {
+          "de": "festgesteckt"
+        },
+        "example": "I've never been stuck in traffic for so long.",
+        "whyThisWord": {
+          "de": "Damit erklärst du, dass du festsaßt und nicht weiterkonntest."
+        }
+      },
+      "distractors": [
+        "I've always been lucky",
+        "for that long"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Kursteilnehmer begrüßt dich bei deiner Ankunft im hellen Eingangsbereich."
+      },
+      "songMood": "a frustrating traffic delay told with an apologetic smile",
+      "visualNotes": "A community classroom entryway, coats and notebooks, one learner greeting another on arrival."
+    },
+    {
+      "slug": "rushed-back-for-my-notebook",
+      "title": {
+        "de": "Das vergessene Notizbuch"
+      },
+      "situation": {
+        "de": "Ein Freund hat gesehen, wie du gestern zum Café zurückgelaufen bist. Er fragt nach dem Grund.",
+        "en": "A friend saw you running back to the cafe yesterday. He asks why."
+      },
+      "pedagogicalGoal": "Eine Ereignisfolge beginnen und beim Weitererzählen eine laufende Handlung mit einem Fund verbinden.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Why did you run back to the cafe yesterday?",
+          "baseText": {
+            "de": "Warum bist du gestern zum Café zurückgerannt?"
+          }
+        },
+        {
+          "targetText": "I rushed back to the cafe and looked for my notebook.",
+          "baseText": {
+            "de": "Ich bin zum Café zurückgeeilt und habe mein Notizbuch gesucht."
+          }
+        },
+        {
+          "targetText": "Did anyone notice it after you left?",
+          "baseText": {
+            "de": "Hat es jemand bemerkt, nachdem du gegangen bist?"
+          }
+        },
+        {
+          "targetText": "The barista was cleaning when she found it under a chair.",
+          "baseText": {
+            "de": "Die Barista hat gerade sauber gemacht, als sie es unter einem Stuhl gefunden hat."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past continuous with when",
+        "rule": {
+          "de": "Nach einer laufenden Handlung mit was und -ing führt when das einzelne Ereignis ein, das in diesem Moment passiert ist."
+        },
+        "examples": [
+          {
+            "targetText": "The barista was cleaning when she found it under a chair.",
+            "baseText": {
+              "de": "Die Barista hat gerade sauber gemacht, als sie es unter einem Stuhl gefunden hat."
+            },
+            "highlight": "was cleaning"
+          },
+          {
+            "targetText": "I was looking for my phone when my friend called.",
+            "baseText": {
+              "de": "Ich habe gerade mein Handy gesucht, als mein Freund angerufen hat."
+            },
+            "highlight": "was looking"
+          }
+        ]
+      },
+      "cloze": [
+        "The barista ",
+        {
+          "kind": "form",
+          "answer": "was cleaning",
+          "cue": "clean",
+          "choices": [
+            "were cleaning",
+            "be cleaning",
+            "is cleaning",
+            "was cleaning"
+          ]
+        },
+        " when she ",
+        {
+          "kind": "form",
+          "answer": "found",
+          "cue": "find",
+          "choices": [
+            "finds",
+            "found",
+            "finding",
+            "find"
+          ]
+        },
+        " it under a chair."
+      ],
+      "chunks": [
+        {
+          "targetText": "I rushed back",
+          "baseText": {
+            "de": "Ich bin zurückgeeilt"
+          }
+        },
+        {
+          "targetText": "to the cafe",
+          "baseText": {
+            "de": "zum Café"
+          }
+        },
+        {
+          "targetText": "and looked",
+          "baseText": {
+            "de": "und habe gesucht:"
+          }
+        },
+        {
+          "targetText": "for my notebook.",
+          "baseText": {
+            "de": "mein Notizbuch."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "rushed back",
+          "baseText": {
+            "de": "zurückgeeilt"
+          }
+        },
+        {
+          "targetText": "looked for",
+          "baseText": {
+            "de": "gesucht"
+          }
+        },
+        {
+          "targetText": "notebook",
+          "baseText": {
+            "de": "Notizbuch"
+          }
+        },
+        {
+          "targetText": "barista",
+          "baseText": {
+            "de": "Barista"
+          }
+        },
+        {
+          "targetText": "was cleaning",
+          "baseText": {
+            "de": "machte gerade sauber"
+          }
+        },
+        {
+          "targetText": "found",
+          "baseText": {
+            "de": "gefunden"
+          }
+        },
+        {
+          "targetText": "under a chair",
+          "baseText": {
+            "de": "unter einem Stuhl"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I ",
+        "answer": "rushed",
+        "after": " back to the cafe and looked for my notebook.",
+        "fallbackChoices": [
+          "rushes",
+          "rushing",
+          "rushed",
+          "rush"
+        ]
+      },
+      "speakRequired": [
+        "rushed",
+        "cafe",
+        "notebook"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund spricht dich auf gestern an: „Why did you run back to the cafe yesterday?“"
+      },
+      "trophyWord": {
+        "word": "rushed",
+        "meaning": {
+          "de": "geeilt"
+        },
+        "example": "I rushed back to the cafe for my notebook.",
+        "whyThisWord": {
+          "de": "Damit machst du deutlich, dass du es in diesem Moment besonders eilig hattest."
+        }
+      },
+      "distractors": [
+        "I walked past",
+        "for my sunglasses."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde unterhalten sich an einem Tisch vor einem kleinen Café."
+      },
+      "songMood": "a hurried return and the relief of finding a familiar notebook",
+      "visualNotes": "Sidewalk cafe in afternoon light, friends seated with drinks, a closed notebook on the table."
+    },
+    {
+      "slug": "eventually-found-the-right-entrance",
+      "title": {
+        "de": "Der richtige Eingang"
+      },
+      "situation": {
+        "de": "Du warst gestern zum ersten Mal bei einem Treffen im Gemeindezentrum. Eine Nachbarin fragt, ob du den Ort gut gefunden hast.",
+        "en": "You attended a community meeting for the first time yesterday. A neighbor asks whether you found the place easily."
+      },
+      "pedagogicalGoal": "Den Ausgang einer Suche erzählen und anschließend mit einer Hintergrundhandlung erklären, wie es dazu kam.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Was it hard to find the community meeting yesterday?",
+          "baseText": {
+            "de": "War es gestern schwierig, das Nachbarschaftstreffen zu finden?"
+          }
+        },
+        {
+          "targetText": "I eventually found the right entrance after I walked around the building.",
+          "baseText": {
+            "de": "Ich habe schließlich den richtigen Eingang gefunden, nachdem ich um das Gebäude herumgelaufen war."
+          }
+        },
+        {
+          "targetText": "What helped you find it in the end?",
+          "baseText": {
+            "de": "Was hat dir am Ende geholfen, ihn zu finden?"
+          }
+        },
+        {
+          "targetText": "Someone was leaving when I asked about the meeting.",
+          "baseText": {
+            "de": "Jemand kam gerade heraus, als ich nach dem Treffen gefragt habe."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past continuous: the moment of contact",
+        "rule": {
+          "de": "Mit was und der -ing-Form zeigst du, was eine Person gerade tat, als ein weiteres Ereignis hinzukam."
+        },
+        "examples": [
+          {
+            "targetText": "Someone was leaving when I asked about the meeting.",
+            "baseText": {
+              "de": "Jemand kam gerade heraus, als ich nach dem Treffen gefragt habe."
+            },
+            "highlight": "was leaving"
+          },
+          {
+            "targetText": "A neighbor was opening the gate when I arrived.",
+            "baseText": {
+              "de": "Ein Nachbar hat gerade das Tor geöffnet, als ich angekommen bin."
+            },
+            "highlight": "was opening"
+          }
+        ]
+      },
+      "cloze": [
+        "Someone ",
+        {
+          "kind": "form",
+          "answer": "was leaving",
+          "cue": "leave",
+          "choices": [
+            "is leaving",
+            "were leaving",
+            "was leaving",
+            "be leaving"
+          ]
+        },
+        " when I ",
+        {
+          "kind": "form",
+          "answer": "asked",
+          "cue": "ask",
+          "choices": [
+            "asks",
+            "asked",
+            "asking",
+            "ask"
+          ]
+        },
+        " about the meeting."
+      ],
+      "chunks": [
+        {
+          "targetText": "I eventually found",
+          "baseText": {
+            "de": "Ich habe schließlich gefunden:"
+          }
+        },
+        {
+          "targetText": "the right entrance",
+          "baseText": {
+            "de": "den richtigen Eingang,"
+          }
+        },
+        {
+          "targetText": "after I walked",
+          "baseText": {
+            "de": "nachdem ich gelaufen war"
+          }
+        },
+        {
+          "targetText": "around the building.",
+          "baseText": {
+            "de": "um das Gebäude herum."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "eventually",
+          "baseText": {
+            "de": "schließlich"
+          }
+        },
+        {
+          "targetText": "entrance",
+          "baseText": {
+            "de": "Eingang"
+          }
+        },
+        {
+          "targetText": "around the building",
+          "baseText": {
+            "de": "um das Gebäude herum"
+          }
+        },
+        {
+          "targetText": "was leaving",
+          "baseText": {
+            "de": "ging gerade hinaus"
+          }
+        },
+        {
+          "targetText": "asked about",
+          "baseText": {
+            "de": "sich erkundigt nach"
+          }
+        },
+        {
+          "targetText": "community meeting",
+          "baseText": {
+            "de": "Nachbarschaftstreffen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I eventually ",
+        "answer": "found",
+        "after": " the right entrance after I walked around the building.",
+        "fallbackChoices": [
+          "finding",
+          "find",
+          "found",
+          "finds"
+        ]
+      },
+      "speakRequired": [
+        "eventually",
+        "entrance",
+        "building"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin fragt nach deinem ersten Besuch: „Was it hard to find the community meeting yesterday?“"
+      },
+      "trophyWord": {
+        "word": "eventually",
+        "meaning": {
+          "de": "schließlich"
+        },
+        "example": "I eventually found the right entrance.",
+        "whyThisWord": {
+          "de": "Damit zeigst du, dass etwas erst nach etwas Zeit oder mehreren Versuchen geklappt hat."
+        }
+      },
+      "distractors": [
+        "the main parking lot",
+        "across the street."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn sprechen vor einem Gemeindezentrum über das Treffen vom Vortag."
+      },
+      "songMood": "a confusing search turning into a welcome arrival",
+      "visualNotes": "Community-center courtyard with a few clearly marked doors, two neighbors chatting near a notice board."
+    },
+    {
+      "slug": "stopped-to-catch-my-breath",
+      "title": {
+        "de": "Gerade noch geschafft"
+      },
+      "situation": {
+        "de": "Ein Freund erinnert sich daran, wie außer Atem du gestern angekommen bist. Er möchte die ganze Geschichte hören.",
+        "en": "A friend remembers how out of breath you were when you arrived yesterday. He wants to hear the story."
+      },
+      "pedagogicalGoal": "Eine kurze Erzählung mit Ereignisfolge und laufender Hintergrundhandlung zusammenhängend abschließen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "You looked exhausted when you arrived. What happened?",
+          "baseText": {
+            "de": "Du sahst völlig erschöpft aus, als du angekommen bist. Was ist passiert?"
+          }
+        },
+        {
+          "targetText": "I stopped to catch my breath after I ran for the bus.",
+          "baseText": {
+            "de": "Ich habe angehalten, um wieder zu Atem zu kommen, nachdem ich zum Bus gerannt war."
+          }
+        },
+        {
+          "targetText": "Oh, did you catch it before the driver left?",
+          "baseText": {
+            "de": "Oh, hast du ihn noch erwischt, bevor der Fahrer losgefahren ist?"
+          }
+        },
+        {
+          "targetText": "He was waiting when I arrived, so I climbed on.",
+          "baseText": {
+            "de": "Er hat noch gewartet, als ich ankam, also bin ich eingestiegen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past narration: background and sequence",
+        "rule": {
+          "de": "Du verbindest den laufenden Hintergrund mit was und -ing mit einzelnen Ereignissen in der einfachen Vergangenheit."
+        },
+        "examples": [
+          {
+            "targetText": "He was waiting when I arrived, so I climbed on.",
+            "baseText": {
+              "de": "Er hat noch gewartet, als ich ankam, also bin ich eingestiegen."
+            },
+            "highlight": "was waiting"
+          },
+          {
+            "targetText": "I was standing by the door when my friend waved.",
+            "baseText": {
+              "de": "Ich stand gerade an der Tür, als mein Freund gewinkt hat."
+            },
+            "highlight": "was standing"
+          }
+        ]
+      },
+      "cloze": [
+        "He ",
+        {
+          "kind": "form",
+          "answer": "was waiting",
+          "cue": "wait",
+          "choices": [
+            "be waiting",
+            "was waiting",
+            "were waiting",
+            "is waiting"
+          ]
+        },
+        " when I arrived, so I ",
+        {
+          "kind": "form",
+          "answer": "climbed",
+          "cue": "climb",
+          "choices": [
+            "climbing",
+            "climbs",
+            "climbed",
+            "climb"
+          ]
+        },
+        " on."
+      ],
+      "chunks": [
+        {
+          "targetText": "I stopped",
+          "baseText": {
+            "de": "Ich habe angehalten,"
+          }
+        },
+        {
+          "targetText": "to catch my breath",
+          "baseText": {
+            "de": "um wieder zu Atem zu kommen,"
+          }
+        },
+        {
+          "targetText": "after I ran",
+          "baseText": {
+            "de": "nachdem ich gerannt war"
+          }
+        },
+        {
+          "targetText": "for the bus.",
+          "baseText": {
+            "de": "zum Bus."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "catch my breath",
+          "baseText": {
+            "de": "wieder zu Atem kommen"
+          }
+        },
+        {
+          "targetText": "ran for the bus",
+          "baseText": {
+            "de": "zum Bus gerannt"
+          }
+        },
+        {
+          "targetText": "exhausted",
+          "baseText": {
+            "de": "erschöpft"
+          }
+        },
+        {
+          "targetText": "was waiting",
+          "baseText": {
+            "de": "wartete gerade"
+          }
+        },
+        {
+          "targetText": "arrived",
+          "baseText": {
+            "de": "angekommen"
+          }
+        },
+        {
+          "targetText": "climbed on",
+          "baseText": {
+            "de": "eingestiegen"
+          }
+        },
+        {
+          "targetText": "driver",
+          "baseText": {
+            "de": "Fahrer"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I stopped to catch my breath after I ",
+        "answer": "ran",
+        "after": " for the bus.",
+        "fallbackChoices": [
+          "run",
+          "runs",
+          "running",
+          "ran"
+        ]
+      },
+      "speakRequired": [
+        "stopped",
+        "breath",
+        "bus"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund erinnert sich an deine Ankunft und fragt: „You looked exhausted when you arrived. What happened?“"
+      },
+      "trophyWord": {
+        "word": "breath",
+        "meaning": {
+          "de": "Atem"
+        },
+        "example": "I stopped to catch my breath after the run.",
+        "whyThisWord": {
+          "de": "In dieser festen Wendung erzählst du, dass du nach einer Anstrengung erst wieder ruhig atmen musstest."
+        }
+      },
+      "distractors": [
+        "I hurried",
+        "to check the schedule"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Freund hört dir zu, während du von deinem gestrigen Weg durch die Stadt erzählst."
+      },
+      "songMood": "a final dash for the bus ending with a grateful smile",
+      "visualNotes": "Two friends sitting on a low wall near a transit stop, relaxed after a busy day, with a city bus in the distance."
+    }
+  ]
+}

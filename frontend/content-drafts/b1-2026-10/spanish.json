@@ -1,0 +1,2228 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": {
+    "de": "Was passiert ist",
+    "en": "What happened"
+  },
+  "subtitle": {
+    "de": "Vergangene Erlebnisse erzählen und auf Nachfragen eingehen",
+    "en": "Tell a past story and respond to a follow-up question"
+  },
+  "anchor": "PROVISIONAL: pending Fable arbitration. L1–L3 indefinido regulars and the approved high-frequency irregular families; L4–L5 add imperfecto background with estaba, había, era, hacía; L6–L7 contrast background and event in one sentence; L8–L10 connect two past events. Formal singular usted throughout, es-ES, gender-neutral learner production.",
+  "lessons": [
+    {
+      "slug": "encuentro-junto-al-mercado",
+      "title": {
+        "de": "Eine unerwartete Begegnung",
+        "en": "An unexpected meeting"
+      },
+      "situation": {
+        "de": "Ein Nachbar fragt nach deinem gestrigen Nachmittag. Du erzählst von einer Begegnung am Markt und gehst auf seine Nachfrage ein.",
+        "en": "A neighbour asks about your afternoon yesterday. Tell him about meeting someone by the market and answer his follow-up question."
+      },
+      "pedagogicalGoal": "Mit dem indefinido ein abgeschlossenes Erlebnis einführen und die Geschichte mit einer weiteren Handlung fortsetzen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué hizo ayer después de salir del curso?",
+          "baseText": {
+            "de": "Was haben Sie gestern nach dem Kurs gemacht?",
+            "en": "What did you do yesterday after leaving the course?"
+          }
+        },
+        {
+          "targetText": "Ayer tuve un encuentro inesperado con una compañera y charlamos junto al mercado.",
+          "baseText": {
+            "de": "Gestern hatte ich eine unerwartete Begegnung mit einer Kurskollegin, und wir plauderten am Markt.",
+            "en": "Yesterday I unexpectedly met a classmate, and we chatted by the market."
+          }
+        },
+        {
+          "targetText": "¿Y qué hicieron después de charlar junto al mercado?",
+          "baseText": {
+            "de": "Und was haben Sie nach dem Gespräch am Markt gemacht?",
+            "en": "And what did you do after chatting by the market?"
+          }
+        },
+        {
+          "targetText": "Mi compañera y yo entramos en un bar y tomamos algo.",
+          "baseText": {
+            "de": "Meine Kurskollegin und ich gingen in eine Bar und tranken etwas.",
+            "en": "My classmate and I went into a bar and had a drink."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Indefinido: contar un hecho terminado",
+        "rule": {
+          "de": "Mit dem indefinido erzählst du abgeschlossene Ereignisse; tuve ist die Vergangenheitsform von tener für ich.",
+          "en": "Use the indefinido for completed events; tuve is the past form of tener for I."
+        },
+        "examples": [
+          {
+            "targetText": "Ayer tuve un encuentro inesperado con una compañera y charlamos junto al mercado.",
+            "baseText": {
+              "de": "Gestern hatte ich eine unerwartete Begegnung mit einer Kurskollegin, und wir plauderten am Markt.",
+              "en": "Yesterday I unexpectedly met a classmate, and we chatted by the market."
+            },
+            "highlight": "tuve"
+          },
+          {
+            "targetText": "Después tomamos un café en la terraza.",
+            "baseText": {
+              "de": "Danach tranken wir einen Kaffee auf der Terrasse.",
+              "en": "Afterwards we had a coffee on the terrace."
+            },
+            "highlight": "tomamos"
+          }
+        ]
+      },
+      "cloze": [
+        "Mi compañera y yo ",
+        {
+          "kind": "form",
+          "answer": "entramos",
+          "cue": "entrar",
+          "choices": [
+            "entré",
+            "entró",
+            "entramos",
+            "entraron"
+          ]
+        },
+        " en un bar y ",
+        {
+          "kind": "form",
+          "answer": "tomamos",
+          "cue": "tomar",
+          "choices": [
+            "tomaron",
+            "tomamos",
+            "tomó",
+            "tomé"
+          ]
+        },
+        " algo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ayer tuve",
+          "baseText": {
+            "de": "Gestern hatte ich",
+            "en": "Yesterday I had"
+          }
+        },
+        {
+          "targetText": "un encuentro inesperado",
+          "baseText": {
+            "de": "eine unerwartete Begegnung",
+            "en": "an unexpected meeting"
+          }
+        },
+        {
+          "targetText": "con una compañera",
+          "baseText": {
+            "de": "mit einer Kurskollegin",
+            "en": "with a classmate"
+          }
+        },
+        {
+          "targetText": "y charlamos",
+          "baseText": {
+            "de": "und wir plauderten",
+            "en": "and we chatted"
+          }
+        },
+        {
+          "targetText": "junto al mercado.",
+          "baseText": {
+            "de": "am Markt.",
+            "en": "by the market."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "encuentro",
+          "baseText": {
+            "de": "Begegnung",
+            "en": "meeting"
+          }
+        },
+        {
+          "targetText": "inesperado",
+          "baseText": {
+            "de": "unerwartet",
+            "en": "unexpected"
+          }
+        },
+        {
+          "targetText": "una compañera",
+          "baseText": {
+            "de": "eine Kurskollegin",
+            "en": "a classmate"
+          }
+        },
+        {
+          "targetText": "charlamos",
+          "baseText": {
+            "de": "wir plauderten",
+            "en": "we chatted"
+          }
+        },
+        {
+          "targetText": "junto al mercado",
+          "baseText": {
+            "de": "am Markt",
+            "en": "by the market"
+          }
+        },
+        {
+          "targetText": "entramos",
+          "baseText": {
+            "de": "wir gingen hinein",
+            "en": "we went in"
+          }
+        },
+        {
+          "targetText": "un bar",
+          "baseText": {
+            "de": "eine Bar",
+            "en": "a bar"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ayer ",
+        "answer": "tuve",
+        "after": " un encuentro inesperado con una compañera y charlamos junto al mercado.",
+        "fallbackChoices": [
+          "tuve",
+          "tuvo",
+          "tuvieron",
+          "tuviste"
+        ]
+      },
+      "speakRequired": [
+        "encuentro",
+        "compañera",
+        "mercado"
+      ],
+      "sceneCaption": {
+        "de": "Im Hausflur fragt dein Nachbar: „¿Qué hizo ayer después de salir del curso?“",
+        "en": "In the hallway, your neighbour asks: “¿Qué hizo ayer después de salir del curso?”"
+      },
+      "trophyWord": {
+        "word": "encuentro",
+        "meaning": {
+          "de": "Begegnung",
+          "en": "meeting"
+        },
+        "example": "El encuentro terminó con un café en la terraza.",
+        "whyThisWord": {
+          "de": "Mit encuentro machst du aus einem zufälligen Wiedersehen eine kleine Geschichte, die du weitererzählen kannst.",
+          "en": "Encuentro gives you a way to turn a chance meeting into a short story you can continue."
+        }
+      },
+      "distractors": [
+        "una conversación por teléfono",
+        "en la puerta del cine."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Menschen unterhalten sich im hellen Hausflur neben einem Fahrrad.",
+        "en": "Two people talk in a bright hallway beside a bicycle."
+      },
+      "songMood": "warm chance encounter",
+      "visualNotes": "Neighbourly hallway conversation; the opening establishes a listener without showing the later destination."
+    },
+    {
+      "slug": "sorpresa-sin-avisar",
+      "title": {
+        "de": "Besuch ohne Ankündigung",
+        "en": "An unannounced visit"
+      },
+      "situation": {
+        "de": "Eine Nachbarin fragt, ob du gestern Besuch hattest. Du erzählst von deiner Schwester und davon, was ihr zusammen vorbereitet habt.",
+        "en": "A neighbour asks whether you had a visitor yesterday. Tell her about your sister and what you prepared together."
+      },
+      "pedagogicalGoal": "Eine Überraschung mit tuve erzählen und zwei abgeschlossene Handlungen mit eindeutigem Handelnden verbinden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Recibió alguna visita ayer después de salir del trabajo?",
+          "baseText": {
+            "de": "Haben Sie gestern nach der Arbeit Besuch bekommen?",
+            "en": "Did you have a visitor yesterday after leaving work?"
+          }
+        },
+        {
+          "targetText": "Ayer tuve una sorpresa: mi hermana apareció en casa sin avisar.",
+          "baseText": {
+            "de": "Gestern erlebte ich eine Überraschung: Meine Schwester tauchte unangekündigt bei mir auf.",
+            "en": "I had a surprise yesterday: my sister turned up at my home without warning."
+          }
+        },
+        {
+          "targetText": "¿Qué preparó para compartir con su hermana durante la visita?",
+          "baseText": {
+            "de": "Was haben Sie vorbereitet, um es bei dem Besuch mit Ihrer Schwester zu teilen?",
+            "en": "What did you prepare to share with your sister during the visit?"
+          }
+        },
+        {
+          "targetText": "Mi hermana preparó café y yo corté un poco de fruta.",
+          "baseText": {
+            "de": "Meine Schwester machte Kaffee, und ich schnitt etwas Obst.",
+            "en": "My sister made coffee, and I cut up some fruit."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Indefinido: acciones de dos personas",
+        "rule": {
+          "de": "Im indefinido unterscheiden die Endungen, wer etwas getan hat, zum Beispiel preparó für sie und corté für ich.",
+          "en": "Indefinido endings show who did something, for example preparó for she and corté for I."
+        },
+        "examples": [
+          {
+            "targetText": "Mi hermana preparó café y yo corté un poco de fruta.",
+            "baseText": {
+              "de": "Meine Schwester machte Kaffee, und ich schnitt etwas Obst.",
+              "en": "My sister made coffee, and I cut up some fruit."
+            },
+            "highlight": "preparó café y yo corté"
+          },
+          {
+            "targetText": "Yo compré el pan y mi hermana preparó la mesa.",
+            "baseText": {
+              "de": "Ich kaufte das Brot, und meine Schwester deckte den Tisch.",
+              "en": "I bought the bread, and my sister set the table."
+            },
+            "highlight": "compré"
+          }
+        ]
+      },
+      "cloze": [
+        "Mi hermana ",
+        {
+          "kind": "form",
+          "answer": "preparó",
+          "cue": "preparar",
+          "choices": [
+            "preparé",
+            "prepararon",
+            "preparó",
+            "preparamos"
+          ]
+        },
+        " café y yo ",
+        {
+          "kind": "form",
+          "answer": "corté",
+          "cue": "cortar",
+          "choices": [
+            "cortaron",
+            "cortó",
+            "cortamos",
+            "corté"
+          ]
+        },
+        " un poco de fruta."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ayer tuve",
+          "baseText": {
+            "de": "Gestern erlebte ich",
+            "en": "Yesterday I had"
+          }
+        },
+        {
+          "targetText": "una sorpresa:",
+          "baseText": {
+            "de": "eine Überraschung:",
+            "en": "a surprise:"
+          }
+        },
+        {
+          "targetText": "mi hermana apareció",
+          "baseText": {
+            "de": "meine Schwester tauchte auf",
+            "en": "my sister turned up"
+          }
+        },
+        {
+          "targetText": "en casa",
+          "baseText": {
+            "de": "bei mir zu Hause",
+            "en": "at my home"
+          }
+        },
+        {
+          "targetText": "sin avisar.",
+          "baseText": {
+            "de": "ohne Ankündigung.",
+            "en": "without warning."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sorpresa",
+          "baseText": {
+            "de": "Überraschung",
+            "en": "surprise"
+          }
+        },
+        {
+          "targetText": "mi hermana",
+          "baseText": {
+            "de": "meine Schwester",
+            "en": "my sister"
+          }
+        },
+        {
+          "targetText": "apareció",
+          "baseText": {
+            "de": "sie tauchte auf",
+            "en": "she turned up"
+          }
+        },
+        {
+          "targetText": "sin avisar",
+          "baseText": {
+            "de": "ohne Ankündigung",
+            "en": "without warning"
+          }
+        },
+        {
+          "targetText": "preparó",
+          "baseText": {
+            "de": "sie bereitete zu",
+            "en": "she prepared"
+          }
+        },
+        {
+          "targetText": "corté",
+          "baseText": {
+            "de": "ich schnitt",
+            "en": "I cut"
+          }
+        },
+        {
+          "targetText": "fruta",
+          "baseText": {
+            "de": "Obst",
+            "en": "fruit"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ayer tuve una sorpresa: mi hermana ",
+        "answer": "apareció",
+        "after": " en casa sin avisar.",
+        "fallbackChoices": [
+          "aparecieron",
+          "aparecí",
+          "apareció",
+          "aparecimos"
+        ]
+      },
+      "speakRequired": [
+        "sorpresa",
+        "hermana",
+        "avisar"
+      ],
+      "sceneCaption": {
+        "de": "Vor dem Briefkasten fragt eine Nachbarin: „¿Recibió alguna visita ayer después de salir del trabajo?“",
+        "en": "By the letterboxes, a neighbour asks: “¿Recibió alguna visita ayer después de salir del trabajo?”"
+      },
+      "trophyWord": {
+        "word": "sorpresa",
+        "meaning": {
+          "de": "Überraschung",
+          "en": "surprise"
+        },
+        "example": "La visita de mi hermana fue una sorpresa.",
+        "whyThisWord": {
+          "de": "Sorpresa benennt das Unerwartete und gibt deinem Gegenüber einen Grund nachzufragen.",
+          "en": "Sorpresa names what was unexpected and gives your listener a reason to ask more."
+        }
+      },
+      "distractors": [
+        "una llamada inesperada:",
+        "después de cenar."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn stehen vor den Briefkästen und unterhalten sich.",
+        "en": "Two neighbours stand by the letterboxes and talk."
+      },
+      "songMood": "easy family surprise",
+      "visualNotes": "Everyday hallway, letterboxes and friendly curiosity; no food or visitor reveal in the scene."
+    },
+    {
+      "slug": "despiste-en-el-metro",
+      "title": {
+        "de": "An der falschen Station",
+        "en": "At the wrong station"
+      },
+      "situation": {
+        "de": "Am Tag nach einem Termin fragt die Empfangskraft nach deinem gestrigen Weg. Du erklärst dein Versehen und erzählst, wie du dennoch rechtzeitig ankamst.",
+        "en": "The day after an appointment, the receptionist asks about your journey yesterday. Explain your mistake and how you still arrived on time."
+      },
+      "pedagogicalGoal": "Ein vergangenes Missgeschick mit tuve und regelmäßigen Formen erzählen und anschließend seine Lösung beschreiben.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué le pasó ayer en el camino a su cita?",
+          "baseText": {
+            "de": "Was ist Ihnen gestern auf dem Weg zu Ihrem Termin passiert?",
+            "en": "What happened to you yesterday on the way to your appointment?"
+          }
+        },
+        {
+          "targetText": "Ayer tuve un despiste en el metro y bajé en otra estación.",
+          "baseText": {
+            "de": "Gestern war ich in der Metro kurz unaufmerksam und stieg an einer anderen Station aus.",
+            "en": "Yesterday I had a moment of inattention on the metro and got off at another station."
+          }
+        },
+        {
+          "targetText": "¿Cómo encontró el camino hasta nuestro edificio después?",
+          "baseText": {
+            "de": "Wie haben Sie danach den Weg zu unserem Gebäude gefunden?",
+            "en": "How did you find the way to our building afterwards?"
+          }
+        },
+        {
+          "targetText": "Una vecina me indicó la dirección y yo llegué a tiempo.",
+          "baseText": {
+            "de": "Eine Anwohnerin zeigte mir die Richtung, und ich kam rechtzeitig an.",
+            "en": "A local woman pointed me in the right direction, and I arrived on time."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Indefinido: explicar cómo se resolvió",
+        "rule": {
+          "de": "Mit dem indefinido erzählst du zuerst das Missgeschick und danach die abgeschlossenen Handlungen, die zur Lösung führten.",
+          "en": "Use the indefinido to tell the mishap first and then the completed actions that led to its solution."
+        },
+        "examples": [
+          {
+            "targetText": "Ayer tuve un despiste en el metro y bajé en otra estación.",
+            "baseText": {
+              "de": "Gestern war ich in der Metro kurz unaufmerksam und stieg an einer anderen Station aus.",
+              "en": "Yesterday I had a moment of inattention on the metro and got off at another station."
+            },
+            "highlight": "bajé"
+          },
+          {
+            "targetText": "Una vecina me indicó la dirección y yo llegué a tiempo.",
+            "baseText": {
+              "de": "Eine Anwohnerin zeigte mir die Richtung, und ich kam rechtzeitig an.",
+              "en": "A local woman pointed me in the right direction, and I arrived on time."
+            },
+            "highlight": "llegué"
+          }
+        ]
+      },
+      "cloze": [
+        "Una vecina me ",
+        {
+          "kind": "form",
+          "answer": "indicó",
+          "cue": "indicar",
+          "choices": [
+            "indicamos",
+            "indicó",
+            "indicaron",
+            "indiqué"
+          ]
+        },
+        " la dirección y yo ",
+        {
+          "kind": "form",
+          "answer": "llegué",
+          "cue": "llegar",
+          "choices": [
+            "llegó",
+            "llegamos",
+            "llegué",
+            "llegaron"
+          ]
+        },
+        " a tiempo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ayer tuve",
+          "baseText": {
+            "de": "Gestern hatte ich",
+            "en": "Yesterday I had"
+          }
+        },
+        {
+          "targetText": "un despiste",
+          "baseText": {
+            "de": "einen unaufmerksamen Moment",
+            "en": "a moment of inattention"
+          }
+        },
+        {
+          "targetText": "en el metro",
+          "baseText": {
+            "de": "in der Metro",
+            "en": "on the metro"
+          }
+        },
+        {
+          "targetText": "y bajé",
+          "baseText": {
+            "de": "und ich stieg aus",
+            "en": "and I got off"
+          }
+        },
+        {
+          "targetText": "en otra estación.",
+          "baseText": {
+            "de": "an einer anderen Station.",
+            "en": "at another station."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "despiste",
+          "baseText": {
+            "de": "Unachtsamkeit",
+            "en": "moment of inattention"
+          }
+        },
+        {
+          "targetText": "metro",
+          "baseText": {
+            "de": "U-Bahn",
+            "en": "metro"
+          }
+        },
+        {
+          "targetText": "bajé",
+          "baseText": {
+            "de": "ich stieg aus",
+            "en": "I got off"
+          }
+        },
+        {
+          "targetText": "otra estación",
+          "baseText": {
+            "de": "eine andere Station",
+            "en": "another station"
+          }
+        },
+        {
+          "targetText": "indicó",
+          "baseText": {
+            "de": "sie zeigte",
+            "en": "she pointed out"
+          }
+        },
+        {
+          "targetText": "dirección",
+          "baseText": {
+            "de": "Richtung",
+            "en": "direction"
+          }
+        },
+        {
+          "targetText": "a tiempo",
+          "baseText": {
+            "de": "rechtzeitig",
+            "en": "on time"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ayer tuve un despiste en el metro y ",
+        "answer": "bajé",
+        "after": " en otra estación.",
+        "fallbackChoices": [
+          "bajó",
+          "bajé",
+          "bajaste",
+          "bajaron"
+        ]
+      },
+      "speakRequired": [
+        "despiste",
+        "metro",
+        "estación"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang fragt dich die Mitarbeiterin rückblickend: „¿Qué le pasó ayer en el camino a su cita?“",
+        "en": "At reception, the assistant asks you about yesterday: “¿Qué le pasó ayer en el camino a su cita?”"
+      },
+      "trophyWord": {
+        "word": "despiste",
+        "meaning": {
+          "de": "Unachtsamkeit",
+          "en": "moment of inattention"
+        },
+        "example": "Por un despiste, bajé en otra estación.",
+        "whyThisWord": {
+          "de": "Despiste erklärt ein kleines Versehen freundlich, ohne daraus ein großes Problem zu machen.",
+          "en": "Despiste explains a small mistake without making it sound like a major problem."
+        }
+      },
+      "distractors": [
+        "un problema con el billete",
+        "en la última parada."
+      ],
+      "placeholderCaption": {
+        "de": "Ein ruhiger Empfangsbereich am Morgen nach einem Termin.",
+        "en": "A quiet reception area on the morning after an appointment."
+      },
+      "songMood": "small mistake and a kind direction",
+      "visualNotes": "Reception desk and appointment folder; the question is retrospective, not a demand about the live journey."
+    },
+    {
+      "slug": "mochila-en-la-terraza",
+      "title": {
+        "de": "Der vergessene Rucksack",
+        "en": "The forgotten backpack"
+      },
+      "situation": {
+        "de": "Am nächsten Tag fragt die Cafébesitzerin nach deiner vergessenen Tasche. Du erzählst, wo sie beim Zurückkommen war und wer sie in Sicherheit brachte.",
+        "en": "The next day, the café owner asks about your forgotten bag. Explain where it was when you returned and who brought it inside."
+      },
+      "pedagogicalGoal": "Eine abgeschlossene Handlung im indefinido von einer Hintergrundbeschreibung mit estaba und hacía unterscheiden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Recuperó la mochila después de la lluvia de ayer?",
+          "baseText": {
+            "de": "Haben Sie den Rucksack nach dem Regen gestern wiederbekommen?",
+            "en": "Did you get your backpack back after yesterday's rain?"
+          }
+        },
+        {
+          "targetText": "Olvidé la mochila en la terraza, pero estaba dentro cuando volví.",
+          "baseText": {
+            "de": "Ich vergaß den Rucksack auf der Terrasse, aber er war drinnen, als ich zurückkam.",
+            "en": "I forgot my backpack on the terrace, but it was inside when I came back."
+          }
+        },
+        {
+          "targetText": "¿Quién guardó su mochila durante aquella tarde de lluvia?",
+          "baseText": {
+            "de": "Wer hat Ihren Rucksack an dem verregneten Nachmittag hereingeholt?",
+            "en": "Who put your backpack away that rainy afternoon?"
+          }
+        },
+        {
+          "targetText": "La camarera la guardó porque hacía mal tiempo fuera.",
+          "baseText": {
+            "de": "Die Kellnerin brachte ihn herein, weil draußen schlechtes Wetter war.",
+            "en": "The waitress put it away because the weather was bad outside."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Imperfecto: describir el fondo",
+        "rule": {
+          "de": "Mit estaba oder hacía beschreibst du einen Zustand oder das Wetter als Hintergrund einer abgeschlossenen Handlung.",
+          "en": "Use estaba or hacía to describe a state or the weather as the background to a completed action."
+        },
+        "examples": [
+          {
+            "targetText": "Olvidé la mochila en la terraza, pero estaba dentro cuando volví.",
+            "baseText": {
+              "de": "Ich vergaß den Rucksack auf der Terrasse, aber er war drinnen, als ich zurückkam.",
+              "en": "I forgot my backpack on the terrace, but it was inside when I came back."
+            },
+            "highlight": "estaba dentro"
+          },
+          {
+            "targetText": "Hacía frío cuando salí del café.",
+            "baseText": {
+              "de": "Es war kalt, als ich das Café verließ.",
+              "en": "It was cold when I left the café."
+            },
+            "highlight": "Hacía frío"
+          }
+        ]
+      },
+      "cloze": [
+        "La camarera la ",
+        {
+          "kind": "form",
+          "answer": "guardó",
+          "cue": "guardar",
+          "choices": [
+            "guardé",
+            "guardaron",
+            "guardamos",
+            "guardó"
+          ]
+        },
+        " porque ",
+        {
+          "kind": "form",
+          "answer": "hacía",
+          "cue": "hacer",
+          "choices": [
+            "hacíamos",
+            "hacían",
+            "hacía",
+            "hacías"
+          ]
+        },
+        " mal tiempo fuera."
+      ],
+      "chunks": [
+        {
+          "targetText": "Olvidé la mochila",
+          "baseText": {
+            "de": "Ich vergaß den Rucksack",
+            "en": "I forgot my backpack"
+          }
+        },
+        {
+          "targetText": "en la terraza,",
+          "baseText": {
+            "de": "auf der Terrasse,",
+            "en": "on the terrace,"
+          }
+        },
+        {
+          "targetText": "pero estaba dentro",
+          "baseText": {
+            "de": "aber er war drinnen",
+            "en": "but it was inside"
+          }
+        },
+        {
+          "targetText": "cuando volví.",
+          "baseText": {
+            "de": "als ich zurückkam.",
+            "en": "when I came back."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mochila",
+          "baseText": {
+            "de": "Rucksack",
+            "en": "backpack"
+          }
+        },
+        {
+          "targetText": "olvidé",
+          "baseText": {
+            "de": "ich vergaß",
+            "en": "I forgot"
+          }
+        },
+        {
+          "targetText": "dentro",
+          "baseText": {
+            "de": "drinnen",
+            "en": "inside"
+          }
+        },
+        {
+          "targetText": "volví",
+          "baseText": {
+            "de": "ich kam zurück",
+            "en": "I came back"
+          }
+        },
+        {
+          "targetText": "camarera",
+          "baseText": {
+            "de": "Kellnerin",
+            "en": "waitress"
+          }
+        },
+        {
+          "targetText": "guardó",
+          "baseText": {
+            "de": "sie brachte in Sicherheit",
+            "en": "she put away safely"
+          }
+        },
+        {
+          "targetText": "hacía mal tiempo",
+          "baseText": {
+            "de": "es war schlechtes Wetter",
+            "en": "the weather was bad"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Olvidé la mochila en la terraza, pero ",
+        "answer": "estaba",
+        "after": " dentro cuando volví.",
+        "fallbackChoices": [
+          "estaban",
+          "estabas",
+          "estábamos",
+          "estaba"
+        ]
+      },
+      "speakRequired": [
+        "mochila",
+        "dentro",
+        "volví"
+      ],
+      "sceneCaption": {
+        "de": "Am nächsten Tag fragt die Cafébesitzerin: „¿Recuperó la mochila después de la lluvia de ayer?“",
+        "en": "The next day, the café owner asks: “¿Recuperó la mochila después de la lluvia de ayer?”"
+      },
+      "trophyWord": {
+        "word": "mochila",
+        "meaning": {
+          "de": "Rucksack",
+          "en": "backpack"
+        },
+        "example": "Mi mochila estaba dentro del café.",
+        "whyThisWord": {
+          "de": "Mochila gibt deiner Geschichte einen konkreten Gegenstand, dessen Lage du in der Vergangenheit beschreiben kannst.",
+          "en": "Mochila gives your story a concrete object whose location you can describe in the past."
+        }
+      },
+      "distractors": [
+        "en la estación,",
+        "pero estaba fuera"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Café am Morgen mit noch feuchten Stühlen auf der Terrasse.",
+        "en": "A café in the morning with terrace chairs still damp from the rain."
+      },
+      "songMood": "quiet relief after the rain",
+      "visualNotes": "Opening at a café after rain; no waitress or recovered backpack appears before the later explanation."
+    },
+    {
+      "slug": "cruce-sin-senales",
+      "title": {
+        "de": "Keine Schilder an der Kreuzung",
+        "en": "No signs at the junction"
+      },
+      "situation": {
+        "de": "Ein Nachbar fragt nach deinem gestrigen Spaziergang. Du beschreibst die unübersichtliche Kreuzung und erzählst, wie du den Weg nach Hause gefunden hast.",
+        "en": "A neighbour asks about your walk yesterday. Describe the confusing junction and explain how you found the way home."
+      },
+      "pedagogicalGoal": "Mit dem unpersönlichen había einen vergangenen Zustand beschreiben und die eigene Reaktion im indefinido erzählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Por qué se perdió ayer al volver del parque?",
+          "baseText": {
+            "de": "Warum haben Sie sich gestern auf dem Rückweg vom Park verlaufen?",
+            "en": "Why did you get lost yesterday on the way back from the park?"
+          }
+        },
+        {
+          "targetText": "En aquel cruce no había señales y caminé por la calle equivocada.",
+          "baseText": {
+            "de": "An der Kreuzung gab es keine Schilder, und ich ging die falsche Straße entlang.",
+            "en": "There were no signs at that junction, and I walked along the wrong street."
+          }
+        },
+        {
+          "targetText": "¿Cómo encontró después el camino de vuelta a casa?",
+          "baseText": {
+            "de": "Wie haben Sie danach den Weg nach Hause gefunden?",
+            "en": "How did you find the way back home afterwards?"
+          }
+        },
+        {
+          "targetText": "Un vecino me explicó la ruta y yo pude orientarme.",
+          "baseText": {
+            "de": "Ein Anwohner erklärte mir den Weg, und ich konnte mich orientieren.",
+            "en": "A local man explained the route, and I was able to find my bearings."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Había: el lugar antes de la acción",
+        "rule": {
+          "de": "Había bedeutet es gab und bleibt auch vor einem Wort in der Mehrzahl unverändert.",
+          "en": "Había means there was or there were and stays singular even before a plural noun."
+        },
+        "examples": [
+          {
+            "targetText": "En aquel cruce no había señales y caminé por la calle equivocada.",
+            "baseText": {
+              "de": "An der Kreuzung gab es keine Schilder, und ich ging die falsche Straße entlang.",
+              "en": "There were no signs at that junction, and I walked along the wrong street."
+            },
+            "highlight": "no había señales"
+          },
+          {
+            "targetText": "Había dos caminos, pero no había ningún cartel.",
+            "baseText": {
+              "de": "Es gab zwei Wege, aber kein Schild.",
+              "en": "There were two paths, but there was no sign."
+            },
+            "highlight": "Había dos caminos"
+          }
+        ]
+      },
+      "cloze": [
+        "Un vecino me ",
+        {
+          "kind": "form",
+          "answer": "explicó",
+          "cue": "explicar",
+          "choices": [
+            "explicaron",
+            "expliqué",
+            "explicó",
+            "explicamos"
+          ]
+        },
+        " la ruta y yo ",
+        {
+          "kind": "form",
+          "answer": "pude",
+          "cue": "poder",
+          "choices": [
+            "pudieron",
+            "pude",
+            "pudiste",
+            "pudo"
+          ]
+        },
+        " orientarme."
+      ],
+      "chunks": [
+        {
+          "targetText": "En aquel cruce",
+          "baseText": {
+            "de": "An der Kreuzung",
+            "en": "At that junction"
+          }
+        },
+        {
+          "targetText": "no había señales",
+          "baseText": {
+            "de": "gab es keine Schilder",
+            "en": "there were no signs"
+          }
+        },
+        {
+          "targetText": "y caminé",
+          "baseText": {
+            "de": "und ich ging",
+            "en": "and I walked"
+          }
+        },
+        {
+          "targetText": "por la calle equivocada.",
+          "baseText": {
+            "de": "die falsche Straße entlang.",
+            "en": "along the wrong street."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "cruce",
+          "baseText": {
+            "de": "Kreuzung",
+            "en": "junction"
+          }
+        },
+        {
+          "targetText": "señales",
+          "baseText": {
+            "de": "Schilder",
+            "en": "signs"
+          }
+        },
+        {
+          "targetText": "había",
+          "baseText": {
+            "de": "es gab",
+            "en": "there were"
+          }
+        },
+        {
+          "targetText": "equivocada",
+          "baseText": {
+            "de": "falsch",
+            "en": "wrong"
+          }
+        },
+        {
+          "targetText": "ruta",
+          "baseText": {
+            "de": "Weg",
+            "en": "route"
+          }
+        },
+        {
+          "targetText": "explicó",
+          "baseText": {
+            "de": "er erklärte",
+            "en": "he explained"
+          }
+        },
+        {
+          "targetText": "orientarme",
+          "baseText": {
+            "de": "mich orientieren",
+            "en": "find my bearings"
+          }
+        }
+      ],
+      "recall": {
+        "before": "En aquel cruce no ",
+        "answer": "había",
+        "after": " señales y caminé por la calle equivocada.",
+        "fallbackChoices": [
+          "habían",
+          "había",
+          "habías",
+          "habíamos"
+        ]
+      },
+      "speakRequired": [
+        "cruce",
+        "señales",
+        "equivocada"
+      ],
+      "sceneCaption": {
+        "de": "Vor der Haustür fragt dich ein Nachbar: „¿Por qué se perdió ayer al volver del parque?“",
+        "en": "Outside the front door, a neighbour asks you: “¿Por qué se perdió ayer al volver del parque?”"
+      },
+      "trophyWord": {
+        "word": "cruce",
+        "meaning": {
+          "de": "Kreuzung",
+          "en": "junction"
+        },
+        "example": "En ese cruce había un cartel pequeño.",
+        "whyThisWord": {
+          "de": "Cruce benennt den Punkt, an dem deine Geschichte die falsche Richtung nahm.",
+          "en": "Cruce names the point where your story took a wrong turn."
+        }
+      },
+      "distractors": [
+        "no había coches",
+        "por el camino del parque."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Hauseingang mit Blick auf die Straße am Rand eines Parks.",
+        "en": "A front doorway looking out onto a street near a park."
+      },
+      "songMood": "finding the way after a wrong turn",
+      "visualNotes": "Neighbour at the doorway; the junction and later helpful passer-by belong to the narrated past."
+    },
+    {
+      "slug": "apagon-durante-la-cena",
+      "title": {
+        "de": "Abendessen bei Kerzenschein",
+        "en": "Dinner by candlelight"
+      },
+      "situation": {
+        "de": "Im Aufzug fragt ein Nachbar nach dem gestrigen Abend. Du beschreibst, wo ihr wart, als der Strom ausfiel, und wie der Abend weiterging.",
+        "en": "In the lift, a neighbour asks about yesterday evening. Explain where you were when the power went out and how the evening continued."
+      },
+      "pedagogicalGoal": "In einem Satz den Hintergrund mit estábamos und ein eintretendes Ereignis im indefinido verbinden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué pasó ayer en su casa durante la cena?",
+          "baseText": {
+            "de": "Was ist gestern bei Ihnen während des Abendessens passiert?",
+            "en": "What happened at your home yesterday during dinner?"
+          }
+        },
+        {
+          "targetText": "Estábamos en casa cuando empezó un apagón y buscamos unas velas.",
+          "baseText": {
+            "de": "Wir waren zu Hause, als der Strom ausfiel, und suchten ein paar Kerzen.",
+            "en": "We were at home when a power cut started, and we looked for some candles."
+          }
+        },
+        {
+          "targetText": "¿Cómo siguió la cena sin luz en la casa?",
+          "baseText": {
+            "de": "Wie ging das Abendessen ohne Licht im Haus weiter?",
+            "en": "How did dinner continue without any light in the house?"
+          }
+        },
+        {
+          "targetText": "Mi vecina encendió las velas y yo conté una historia.",
+          "baseText": {
+            "de": "Meine Nachbarin zündete die Kerzen an, und ich erzählte eine Geschichte.",
+            "en": "My neighbour lit the candles, and I told a story."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Imperfecto e indefinido: fondo y acontecimiento",
+        "rule": {
+          "de": "Das imperfecto beschreibt die bestehende Situation, während das indefinido das Ereignis nennt, das dann eintrat.",
+          "en": "The imperfecto describes the existing situation, while the indefinido names the event that then happened."
+        },
+        "examples": [
+          {
+            "targetText": "Estábamos en casa cuando empezó un apagón y buscamos unas velas.",
+            "baseText": {
+              "de": "Wir waren zu Hause, als der Strom ausfiel, und suchten ein paar Kerzen.",
+              "en": "We were at home when a power cut started, and we looked for some candles."
+            },
+            "highlight": "Estábamos en casa cuando empezó"
+          },
+          {
+            "targetText": "Estaba en la cocina cuando sonó el teléfono.",
+            "baseText": {
+              "de": "Ich war in der Küche, als das Telefon klingelte.",
+              "en": "I was in the kitchen when the phone rang."
+            },
+            "highlight": "Estaba en la cocina cuando sonó"
+          }
+        ]
+      },
+      "cloze": [
+        "Mi vecina ",
+        {
+          "kind": "form",
+          "answer": "encendió",
+          "cue": "encender",
+          "choices": [
+            "encendieron",
+            "encendí",
+            "encendió",
+            "encendimos"
+          ]
+        },
+        " las velas y yo ",
+        {
+          "kind": "form",
+          "answer": "conté",
+          "cue": "contar",
+          "choices": [
+            "contó",
+            "contamos",
+            "contaron",
+            "conté"
+          ]
+        },
+        " una historia."
+      ],
+      "chunks": [
+        {
+          "targetText": "Estábamos en casa",
+          "baseText": {
+            "de": "Wir waren zu Hause",
+            "en": "We were at home"
+          }
+        },
+        {
+          "targetText": "cuando empezó un apagón",
+          "baseText": {
+            "de": "als der Strom ausfiel",
+            "en": "when a power cut started"
+          }
+        },
+        {
+          "targetText": "y buscamos",
+          "baseText": {
+            "de": "und wir suchten",
+            "en": "and we looked for"
+          }
+        },
+        {
+          "targetText": "unas velas.",
+          "baseText": {
+            "de": "ein paar Kerzen.",
+            "en": "some candles."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "apagón",
+          "baseText": {
+            "de": "Stromausfall",
+            "en": "power cut"
+          }
+        },
+        {
+          "targetText": "estábamos",
+          "baseText": {
+            "de": "wir waren",
+            "en": "we were"
+          }
+        },
+        {
+          "targetText": "empezó",
+          "baseText": {
+            "de": "es begann",
+            "en": "it started"
+          }
+        },
+        {
+          "targetText": "buscamos",
+          "baseText": {
+            "de": "wir suchten",
+            "en": "we looked for"
+          }
+        },
+        {
+          "targetText": "velas",
+          "baseText": {
+            "de": "Kerzen",
+            "en": "candles"
+          }
+        },
+        {
+          "targetText": "encendió",
+          "baseText": {
+            "de": "sie zündete an",
+            "en": "she lit"
+          }
+        },
+        {
+          "targetText": "conté una historia",
+          "baseText": {
+            "de": "ich erzählte eine Geschichte",
+            "en": "I told a story"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Estábamos en casa cuando ",
+        "answer": "empezó",
+        "after": " un apagón y buscamos unas velas.",
+        "fallbackChoices": [
+          "empezaron",
+          "empecé",
+          "empezamos",
+          "empezó"
+        ]
+      },
+      "speakRequired": [
+        "casa",
+        "apagón",
+        "velas"
+      ],
+      "sceneCaption": {
+        "de": "Im Aufzug fragt ein Nachbar: „¿Qué pasó ayer en su casa durante la cena?“",
+        "en": "In the lift, a neighbour asks: “¿Qué pasó ayer en su casa durante la cena?”"
+      },
+      "trophyWord": {
+        "word": "apagón",
+        "meaning": {
+          "de": "Stromausfall",
+          "en": "power cut"
+        },
+        "example": "El apagón terminó después de la cena.",
+        "whyThisWord": {
+          "de": "Apagón benennt ein Ereignis, das eine laufende Alltagsszene plötzlich verändert.",
+          "en": "Apagón names an event that suddenly changes an ordinary scene."
+        }
+      },
+      "distractors": [
+        "una película",
+        "unas linternas."
+      ],
+      "placeholderCaption": {
+        "de": "Ein heller Aufzug mit zwei Nachbarn im kurzen Gespräch.",
+        "en": "A well-lit lift with two neighbours having a short conversation."
+      },
+      "songMood": "candlelit story after a blackout",
+      "visualNotes": "Present-day lift conversation; keep the later candlelight scene out of the opening image."
+    },
+    {
+      "slug": "tormenta-junto-al-bosque",
+      "title": {
+        "de": "Ein Unterschlupf im Regen",
+        "en": "Shelter from the rain"
+      },
+      "situation": {
+        "de": "Nach einer Wanderung fragt die Pensionsbesitzerin, warum du früher zurückkamst. Du erzählst von einer Gewitterfront und davon, wo ihr Schutz fandet.",
+        "en": "After a walk, the guesthouse owner asks why you came back early. Tell her about a storm and where your group found shelter."
+      },
+      "pedagogicalGoal": "Mit estábamos den Ort als Hintergrund setzen und die folgenden Ereignisse im indefinido erzählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Por qué terminó tan pronto su excursión de ayer?",
+          "baseText": {
+            "de": "Warum endete Ihr Ausflug gestern so früh?",
+            "en": "Why did your trip yesterday end so early?"
+          }
+        },
+        {
+          "targetText": "Estábamos cerca del bosque cuando empezó una tormenta y buscamos un refugio.",
+          "baseText": {
+            "de": "Wir waren in der Nähe des Waldes, als ein Gewitter begann, und suchten einen Unterschlupf.",
+            "en": "We were near the forest when a storm started, and we looked for shelter."
+          }
+        },
+        {
+          "targetText": "¿Dónde encontró un lugar para esperar con su grupo?",
+          "baseText": {
+            "de": "Wo haben Sie mit Ihrer Gruppe einen Platz zum Warten gefunden?",
+            "en": "Where did you find a place to wait with your group?"
+          }
+        },
+        {
+          "targetText": "Un vecino abrió su garaje y nosotros esperamos allí una hora.",
+          "baseText": {
+            "de": "Ein Anwohner öffnete seine Garage, und wir warteten dort eine Stunde.",
+            "en": "A local man opened his garage, and we waited there for an hour."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Estábamos cuando ocurrió algo",
+        "rule": {
+          "de": "Mit estábamos beschreibst du den bisherigen Aufenthaltsort und mit dem indefinido das neue Ereignis.",
+          "en": "Use estábamos to describe where you were and the indefinido for the new event."
+        },
+        "examples": [
+          {
+            "targetText": "Estábamos cerca del bosque cuando empezó una tormenta y buscamos un refugio.",
+            "baseText": {
+              "de": "Wir waren in der Nähe des Waldes, als ein Gewitter begann, und suchten einen Unterschlupf.",
+              "en": "We were near the forest when a storm started, and we looked for shelter."
+            },
+            "highlight": "Estábamos cerca del bosque cuando empezó"
+          },
+          {
+            "targetText": "Estábamos en el parque cuando empezó la lluvia.",
+            "baseText": {
+              "de": "Wir waren im Park, als der Regen einsetzte.",
+              "en": "We were in the park when the rain started."
+            },
+            "highlight": "Estábamos en el parque cuando empezó"
+          }
+        ]
+      },
+      "cloze": [
+        "Un vecino ",
+        {
+          "kind": "form",
+          "answer": "abrió",
+          "cue": "abrir",
+          "choices": [
+            "abrió",
+            "abrimos",
+            "abrí",
+            "abrieron"
+          ]
+        },
+        " su garaje y nosotros ",
+        {
+          "kind": "form",
+          "answer": "esperamos",
+          "cue": "esperar",
+          "choices": [
+            "esperé",
+            "esperamos",
+            "esperó",
+            "esperaron"
+          ]
+        },
+        " allí una hora."
+      ],
+      "chunks": [
+        {
+          "targetText": "Estábamos cerca del bosque",
+          "baseText": {
+            "de": "Wir waren in der Nähe des Waldes",
+            "en": "We were near the forest"
+          }
+        },
+        {
+          "targetText": "cuando empezó una tormenta",
+          "baseText": {
+            "de": "als ein Gewitter begann",
+            "en": "when a storm started"
+          }
+        },
+        {
+          "targetText": "y buscamos",
+          "baseText": {
+            "de": "und wir suchten",
+            "en": "and we looked for"
+          }
+        },
+        {
+          "targetText": "un refugio.",
+          "baseText": {
+            "de": "einen Unterschlupf.",
+            "en": "shelter."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tormenta",
+          "baseText": {
+            "de": "Gewitter",
+            "en": "storm"
+          }
+        },
+        {
+          "targetText": "bosque",
+          "baseText": {
+            "de": "Wald",
+            "en": "forest"
+          }
+        },
+        {
+          "targetText": "refugio",
+          "baseText": {
+            "de": "Unterschlupf",
+            "en": "shelter"
+          }
+        },
+        {
+          "targetText": "un vecino",
+          "baseText": {
+            "de": "ein Anwohner",
+            "en": "a local man"
+          }
+        },
+        {
+          "targetText": "abrió",
+          "baseText": {
+            "de": "er öffnete",
+            "en": "he opened"
+          }
+        },
+        {
+          "targetText": "garaje",
+          "baseText": {
+            "de": "Garage",
+            "en": "garage"
+          }
+        },
+        {
+          "targetText": "esperamos",
+          "baseText": {
+            "de": "wir warteten",
+            "en": "we waited"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Estábamos cerca del bosque cuando ",
+        "answer": "empezó",
+        "after": " una tormenta y buscamos un refugio.",
+        "fallbackChoices": [
+          "empecé",
+          "empezaron",
+          "empezó",
+          "empezamos"
+        ]
+      },
+      "speakRequired": [
+        "bosque",
+        "tormenta",
+        "refugio"
+      ],
+      "sceneCaption": {
+        "de": "Die Pensionsbesitzerin fragt dich am nächsten Morgen: „¿Por qué terminó tan pronto su excursión de ayer?“",
+        "en": "The next morning, the guesthouse owner asks you: “¿Por qué terminó tan pronto su excursión de ayer?”"
+      },
+      "trophyWord": {
+        "word": "tormenta",
+        "meaning": {
+          "de": "Gewitter",
+          "en": "storm"
+        },
+        "example": "La tormenta empezó cerca del bosque.",
+        "whyThisWord": {
+          "de": "Tormenta macht deutlich, welches Ereignis eure Pläne änderte und eine Reaktion nötig machte.",
+          "en": "Tormenta makes clear which event changed your plans and called for a response."
+        }
+      },
+      "distractors": [
+        "cerca de la costa",
+        "una parada."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Frühstücksraum in einer Pension mit Wanderschuhen neben der Tür.",
+        "en": "A guesthouse breakfast room with walking boots beside the door."
+      },
+      "songMood": "shelter and neighbourly kindness",
+      "visualNotes": "Retrospective breakfast conversation; the garage and helpful neighbour remain part of the later turn."
+    },
+    {
+      "slug": "casualidad-en-la-biblioteca",
+      "title": {
+        "de": "Ein Zufall zwischen Büchern",
+        "en": "A coincidence among books"
+      },
+      "situation": {
+        "de": "Eine Bekannte fragt nach deinem gestrigen Bibliotheksbesuch. Du erzählst von einer früheren Kurskollegin und davon, was sie dir berichtet hat.",
+        "en": "An acquaintance asks about your library visit yesterday. Tell her about a former classmate and the news she shared."
+      },
+      "pedagogicalGoal": "Mit einem Hintergrund im imperfecto eine zufällige Begegnung einordnen und danach zwei abgeschlossene Handlungen erzählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Con quién se encontró ayer en la biblioteca?",
+          "baseText": {
+            "de": "Wem sind Sie gestern in der Bibliothek begegnet?",
+            "en": "Who did you meet at the library yesterday?"
+          }
+        },
+        {
+          "targetText": "Por casualidad, encontré a una antigua compañera de clase; yo estaba buscando un libro.",
+          "baseText": {
+            "de": "Zufällig traf ich eine frühere Kurskollegin; ich war gerade auf der Suche nach einem Buch.",
+            "en": "By chance, I met a former classmate; I was looking for a book."
+          }
+        },
+        {
+          "targetText": "¿Qué le contó ella sobre su vida de ahora?",
+          "baseText": {
+            "de": "Was hat sie Ihnen über ihr jetziges Leben erzählt?",
+            "en": "What did she tell you about her life now?"
+          }
+        },
+        {
+          "targetText": "Ella habló de su librería y yo apunté la dirección.",
+          "baseText": {
+            "de": "Sie erzählte von ihrer Buchhandlung, und ich schrieb mir die Adresse auf.",
+            "en": "She talked about her bookshop, and I wrote down the address."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un encuentro y lo que pasó después",
+        "rule": {
+          "de": "Der Hintergrund mit estaba ordnet die Begegnung ein, während die Formen im indefinido die Geschichte voranbringen.",
+          "en": "The background with estaba sets the scene for the meeting, while indefinido forms move the story forward."
+        },
+        "examples": [
+          {
+            "targetText": "Por casualidad, encontré a una antigua compañera de clase; yo estaba buscando un libro.",
+            "baseText": {
+              "de": "Zufällig traf ich eine frühere Kurskollegin; ich war gerade auf der Suche nach einem Buch.",
+              "en": "By chance, I met a former classmate; I was looking for a book."
+            },
+            "highlight": "yo estaba buscando un libro"
+          },
+          {
+            "targetText": "Ella habló de su librería y yo apunté la dirección.",
+            "baseText": {
+              "de": "Sie erzählte von ihrer Buchhandlung, und ich schrieb mir die Adresse auf.",
+              "en": "She talked about her bookshop, and I wrote down the address."
+            },
+            "highlight": "habló de su librería y yo apunté"
+          }
+        ]
+      },
+      "cloze": [
+        "Ella ",
+        {
+          "kind": "form",
+          "answer": "habló",
+          "cue": "hablar",
+          "choices": [
+            "hablamos",
+            "hablaron",
+            "hablé",
+            "habló"
+          ]
+        },
+        " de su librería y yo ",
+        {
+          "kind": "form",
+          "answer": "apunté",
+          "cue": "apuntar",
+          "choices": [
+            "apunté",
+            "apuntamos",
+            "apuntó",
+            "apuntaron"
+          ]
+        },
+        " la dirección."
+      ],
+      "chunks": [
+        {
+          "targetText": "Por casualidad,",
+          "baseText": {
+            "de": "Zufällig",
+            "en": "By chance,"
+          }
+        },
+        {
+          "targetText": "encontré",
+          "baseText": {
+            "de": "traf ich",
+            "en": "I met"
+          }
+        },
+        {
+          "targetText": "a una antigua compañera de clase;",
+          "baseText": {
+            "de": "eine frühere Kurskollegin;",
+            "en": "a former classmate;"
+          }
+        },
+        {
+          "targetText": "yo estaba buscando",
+          "baseText": {
+            "de": "ich suchte gerade",
+            "en": "I was looking for"
+          }
+        },
+        {
+          "targetText": "un libro.",
+          "baseText": {
+            "de": "ein Buch.",
+            "en": "a book."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "casualidad",
+          "baseText": {
+            "de": "Zufall",
+            "en": "coincidence"
+          }
+        },
+        {
+          "targetText": "antigua compañera",
+          "baseText": {
+            "de": "frühere Kurskollegin",
+            "en": "former classmate"
+          }
+        },
+        {
+          "targetText": "buscando",
+          "baseText": {
+            "de": "auf der Suche",
+            "en": "looking for"
+          }
+        },
+        {
+          "targetText": "biblioteca",
+          "baseText": {
+            "de": "Bibliothek",
+            "en": "library"
+          }
+        },
+        {
+          "targetText": "librería",
+          "baseText": {
+            "de": "Buchhandlung",
+            "en": "bookshop"
+          }
+        },
+        {
+          "targetText": "apunté",
+          "baseText": {
+            "de": "ich schrieb mir auf",
+            "en": "I wrote down"
+          }
+        },
+        {
+          "targetText": "dirección",
+          "baseText": {
+            "de": "Adresse",
+            "en": "address"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Por casualidad, ",
+        "answer": "encontré",
+        "after": " a una antigua compañera de clase; yo estaba buscando un libro.",
+        "fallbackChoices": [
+          "encontraron",
+          "encontré",
+          "encontraste",
+          "encontró"
+        ]
+      },
+      "speakRequired": [
+        "casualidad",
+        "compañera",
+        "libro"
+      ],
+      "sceneCaption": {
+        "de": "An der Bibliothekstür fragt eine Bekannte: „¿Con quién se encontró ayer en la biblioteca?“",
+        "en": "At the library door, an acquaintance asks: “¿Con quién se encontró ayer en la biblioteca?”"
+      },
+      "trophyWord": {
+        "word": "casualidad",
+        "meaning": {
+          "de": "Zufall",
+          "en": "coincidence"
+        },
+        "example": "Por casualidad, encontré el mismo libro en otra biblioteca.",
+        "whyThisWord": {
+          "de": "Mit por casualidad machst du deutlich, dass die Begegnung nicht geplant war.",
+          "en": "Por casualidad makes clear that the meeting was not planned."
+        }
+      },
+      "distractors": [
+        "encontré a una nueva vecina",
+        "un periódico."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Menschen unterhalten sich vor dem Eingang einer Bibliothek.",
+        "en": "Two people talk outside a library entrance."
+      },
+      "songMood": "chance reunion among books",
+      "visualNotes": "Library doorway in daylight; do not show the classmate's bookshop or its address in the opening."
+    },
+    {
+      "slug": "aviso-antes-de-salir",
+      "title": {
+        "de": "Die Nachricht kam rechtzeitig",
+        "en": "The message arrived in time"
+      },
+      "situation": {
+        "de": "Ein Organisator fragt rückblickend, wie du vom geänderten Treffpunkt erfahren hast. Du erzählst, wann die Nachricht ankam und wen du anschließend informiert hast.",
+        "en": "An organiser asks how you heard about the changed meeting place. Explain when the message arrived and whom you informed afterwards."
+      },
+      "pedagogicalGoal": "Eine Handlungskette im indefinido mit einem Hintergrundzustand im imperfecto verbinden und auf eine neue Nachfrage eingehen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Cómo supo que la reunión cambió de lugar ayer?",
+          "baseText": {
+            "de": "Wie haben Sie erfahren, dass das Treffen gestern an einem anderen Ort stattfand?",
+            "en": "How did you find out that yesterday's meeting had a different location?"
+          }
+        },
+        {
+          "targetText": "Recibí el aviso cuando todavía estaba en casa y cambié de ruta.",
+          "baseText": {
+            "de": "Ich bekam die Nachricht, als ich noch zu Hause war, und änderte meinen Weg.",
+            "en": "I received the notice while I was still at home and changed my route."
+          }
+        },
+        {
+          "targetText": "¿Tuvo que avisar a otra persona del cambio?",
+          "baseText": {
+            "de": "Mussten Sie noch jemanden über die Änderung informieren?",
+            "en": "Did you need to tell anyone else about the change?"
+          }
+        },
+        {
+          "targetText": "Yo llamé a una compañera y ella tomó otro autobús.",
+          "baseText": {
+            "de": "Ich rief eine Kollegin an, und sie nahm einen anderen Bus.",
+            "en": "I called a colleague, and she took a different bus."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Dos acciones con un fondo en imperfecto",
+        "rule": {
+          "de": "Recibí und cambié nennen aufeinanderfolgende Handlungen, während estaba beschreibt, wo du dich damals befandest.",
+          "en": "Recibí and cambié name successive actions, while estaba describes where you were at the time."
+        },
+        "examples": [
+          {
+            "targetText": "Recibí el aviso cuando todavía estaba en casa y cambié de ruta.",
+            "baseText": {
+              "de": "Ich bekam die Nachricht, als ich noch zu Hause war, und änderte meinen Weg.",
+              "en": "I received the notice while I was still at home and changed my route."
+            },
+            "highlight": "cuando todavía estaba en casa"
+          },
+          {
+            "targetText": "Llamé a mi hermana cuando estaba en casa y después salí.",
+            "baseText": {
+              "de": "Ich rief meine Schwester an, als ich zu Hause war, und ging danach los.",
+              "en": "I called my sister while I was at home and then went out."
+            },
+            "highlight": "Llamé"
+          }
+        ]
+      },
+      "cloze": [
+        "Yo ",
+        {
+          "kind": "form",
+          "answer": "llamé",
+          "cue": "llamar",
+          "choices": [
+            "llamó",
+            "llamamos",
+            "llamé",
+            "llamaron"
+          ]
+        },
+        " a una compañera y ella ",
+        {
+          "kind": "form",
+          "answer": "tomó",
+          "cue": "tomar",
+          "choices": [
+            "tomaron",
+            "tomé",
+            "tomamos",
+            "tomó"
+          ]
+        },
+        " otro autobús."
+      ],
+      "chunks": [
+        {
+          "targetText": "Recibí el aviso",
+          "baseText": {
+            "de": "Ich bekam die Nachricht",
+            "en": "I received the notice"
+          }
+        },
+        {
+          "targetText": "cuando todavía estaba",
+          "baseText": {
+            "de": "als ich noch war",
+            "en": "while I was still"
+          }
+        },
+        {
+          "targetText": "en casa",
+          "baseText": {
+            "de": "zu Hause",
+            "en": "at home"
+          }
+        },
+        {
+          "targetText": "y cambié de ruta.",
+          "baseText": {
+            "de": "und ich änderte meinen Weg.",
+            "en": "and I changed my route."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "aviso",
+          "baseText": {
+            "de": "Nachricht",
+            "en": "notice"
+          }
+        },
+        {
+          "targetText": "recibí",
+          "baseText": {
+            "de": "ich bekam",
+            "en": "I received"
+          }
+        },
+        {
+          "targetText": "todavía",
+          "baseText": {
+            "de": "noch",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "cambié de ruta",
+          "baseText": {
+            "de": "ich änderte meinen Weg",
+            "en": "I changed my route"
+          }
+        },
+        {
+          "targetText": "avisar",
+          "baseText": {
+            "de": "informieren",
+            "en": "to let someone know"
+          }
+        },
+        {
+          "targetText": "llamé",
+          "baseText": {
+            "de": "ich rief an",
+            "en": "I called"
+          }
+        },
+        {
+          "targetText": "otro autobús",
+          "baseText": {
+            "de": "ein anderer Bus",
+            "en": "a different bus"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Recibí el aviso cuando todavía estaba en casa y ",
+        "answer": "cambié",
+        "after": " de ruta.",
+        "fallbackChoices": [
+          "cambió",
+          "cambiaron",
+          "cambiaste",
+          "cambié"
+        ]
+      },
+      "speakRequired": [
+        "aviso",
+        "casa",
+        "ruta"
+      ],
+      "sceneCaption": {
+        "de": "Nach der Veranstaltung fragt dich ein Organisator: „¿Cómo supo que la reunión cambió de lugar ayer?“",
+        "en": "After the event, an organiser asks you: “¿Cómo supo que la reunión cambió de lugar ayer?”"
+      },
+      "trophyWord": {
+        "word": "aviso",
+        "meaning": {
+          "de": "Nachricht",
+          "en": "notice"
+        },
+        "example": "El aviso llegó antes de la reunión.",
+        "whyThisWord": {
+          "de": "Aviso bezeichnet eine kurze Nachricht, durch die du deine nächsten Schritte ändern konntest.",
+          "en": "Aviso names a short notice that let you change what you did next."
+        }
+      },
+      "distractors": [
+        "Recibí una invitación",
+        "y llamé al organizador."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Organisator spricht mit einem Gast am Ausgang eines Veranstaltungsraums.",
+        "en": "An organiser speaks with a guest at the exit of an event room."
+      },
+      "songMood": "a timely message and a helpful call",
+      "visualNotes": "Conversation after the event; neither the recipient's location nor the call to the colleague is shown."
+    },
+    {
+      "slug": "alivio-al-recuperar-la-cartera",
+      "title": {
+        "de": "Die Geldbörse ist wieder da",
+        "en": "The wallet is back"
+      },
+      "situation": {
+        "de": "Eine Nachbarin fragt nach deiner verschwundenen Geldbörse. Du erzählst erleichtert vom Wiederfinden und erklärst auf Nachfrage, wie sie zurückkam.",
+        "en": "A neighbour asks about your missing wallet. Tell her how relieved you were to find it and explain how it came back."
+      },
+      "pedagogicalGoal": "Einen vergangenen Ausgang mit fue bewerten und die dahinterliegende Folge von Handlungen im indefinido erklären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué pasó al final con la cartera desaparecida?",
+          "baseText": {
+            "de": "Was ist am Ende aus der verschwundenen Geldbörse geworden?",
+            "en": "What happened in the end with the missing wallet?"
+          }
+        },
+        {
+          "targetText": "Fue un gran alivio encontrar mi cartera al volver a casa.",
+          "baseText": {
+            "de": "Es war eine große Erleichterung, meine Geldbörse bei der Heimkehr wiederzufinden.",
+            "en": "It was a great relief to find my wallet when I got home."
+          }
+        },
+        {
+          "targetText": "¿Quién encontró su cartera y cómo llegó hasta casa?",
+          "baseText": {
+            "de": "Wer hat Ihre Geldbörse gefunden, und wie kam sie nach Hause?",
+            "en": "Who found your wallet, and how did it get back home?"
+          }
+        },
+        {
+          "targetText": "Un vecino encontró mi dirección y llevó la cartera a casa.",
+          "baseText": {
+            "de": "Ein Nachbar fand meine Adresse und brachte die Geldbörse nach Hause.",
+            "en": "A neighbour found my address and brought the wallet to my home."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Indefinido: cerrar y explicar una historia",
+        "rule": {
+          "de": "Mit fue bewertest du ein abgeschlossenes Erlebnis und ergänzt danach die einzelnen Handlungen im indefinido.",
+          "en": "Use fue to evaluate a completed experience and then add the individual actions in the indefinido."
+        },
+        "examples": [
+          {
+            "targetText": "Fue un gran alivio encontrar mi cartera al volver a casa.",
+            "baseText": {
+              "de": "Es war eine große Erleichterung, meine Geldbörse bei der Heimkehr wiederzufinden.",
+              "en": "It was a great relief to find my wallet when I got home."
+            },
+            "highlight": "Fue un gran alivio"
+          },
+          {
+            "targetText": "Un vecino encontró mi dirección y llevó la cartera a casa.",
+            "baseText": {
+              "de": "Ein Nachbar fand meine Adresse und brachte die Geldbörse nach Hause.",
+              "en": "A neighbour found my address and brought the wallet to my home."
+            },
+            "highlight": "encontró mi dirección y llevó"
+          }
+        ]
+      },
+      "cloze": [
+        "Un vecino ",
+        {
+          "kind": "form",
+          "answer": "encontró",
+          "cue": "encontrar",
+          "choices": [
+            "encontré",
+            "encontraron",
+            "encontramos",
+            "encontró"
+          ]
+        },
+        " mi dirección y ",
+        {
+          "kind": "form",
+          "answer": "llevó",
+          "cue": "llevar",
+          "choices": [
+            "llevó",
+            "llevamos",
+            "llevaron",
+            "llevé"
+          ]
+        },
+        " la cartera a casa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Fue un gran alivio",
+          "baseText": {
+            "de": "Es war eine große Erleichterung",
+            "en": "It was a great relief"
+          }
+        },
+        {
+          "targetText": "encontrar mi cartera",
+          "baseText": {
+            "de": "meine Geldbörse wiederzufinden",
+            "en": "to find my wallet"
+          }
+        },
+        {
+          "targetText": "al volver",
+          "baseText": {
+            "de": "bei der Rückkehr",
+            "en": "when I returned"
+          }
+        },
+        {
+          "targetText": "a casa.",
+          "baseText": {
+            "de": "nach Hause.",
+            "en": "home."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "alivio",
+          "baseText": {
+            "de": "Erleichterung",
+            "en": "relief"
+          }
+        },
+        {
+          "targetText": "cartera",
+          "baseText": {
+            "de": "Geldbörse",
+            "en": "wallet"
+          }
+        },
+        {
+          "targetText": "al volver",
+          "baseText": {
+            "de": "bei der Rückkehr",
+            "en": "when returning"
+          }
+        },
+        {
+          "targetText": "encontró",
+          "baseText": {
+            "de": "er fand",
+            "en": "he found"
+          }
+        },
+        {
+          "targetText": "dirección",
+          "baseText": {
+            "de": "Adresse",
+            "en": "address"
+          }
+        },
+        {
+          "targetText": "llevó",
+          "baseText": {
+            "de": "er brachte",
+            "en": "he brought"
+          }
+        },
+        {
+          "targetText": "al final",
+          "baseText": {
+            "de": "am Ende",
+            "en": "in the end"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "Fue",
+        "after": " un gran alivio encontrar mi cartera al volver a casa.",
+        "fallbackChoices": [
+          "Fueron",
+          "Fui",
+          "Fue",
+          "Fuimos"
+        ]
+      },
+      "speakRequired": [
+        "alivio",
+        "cartera",
+        "casa"
+      ],
+      "sceneCaption": {
+        "de": "Vor deiner Wohnung fragt eine Nachbarin: „¿Qué pasó al final con la cartera desaparecida?“",
+        "en": "Outside your flat, a neighbour asks: “¿Qué pasó al final con la cartera desaparecida?”"
+      },
+      "trophyWord": {
+        "word": "alivio",
+        "meaning": {
+          "de": "Erleichterung",
+          "en": "relief"
+        },
+        "example": "Recuperar la cartera fue un gran alivio.",
+        "whyThisWord": {
+          "de": "Alivio beschreibt deine Reaktion, ohne ein vom Geschlecht abhängiges Adjektiv zu brauchen.",
+          "en": "Alivio describes your reaction without needing an adjective that changes with the speaker's gender."
+        }
+      },
+      "distractors": [
+        "encontrar mi mochila",
+        "Fue una gran sorpresa"
+      ],
+      "placeholderCaption": {
+        "de": "Ein ruhiger Hausflur mit einer geöffneten Wohnungstür.",
+        "en": "A quiet hallway with an open flat door."
+      },
+      "songMood": "a lost wallet and a grateful ending",
+      "visualNotes": "Neighbour at an apartment doorway; no wallet, address card or returning neighbour is revealed in the opening."
+    }
+  ]
+}

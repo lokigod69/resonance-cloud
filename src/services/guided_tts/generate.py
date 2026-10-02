@@ -280,23 +280,12 @@ async def run_async(
     totals = inventory["totals"]
 
     if dry_run:
-        run_row = guided_db.create_run(sb, scope=scope, dry_run=True)
-        guided_db.finalize_run(
-            sb,
-            run_id=run_row["id"],
-            status="completed",
-            total_assets=totals["rows"],
-            missing_assets=totals["missing"],
-            generated_assets=0,
-            skipped_assets=totals["ready"],
-            failed_assets=0,
-            total_character_count=totals["total_character_count_all_voices"],
-            notes="dry-run",
-        )
+        # Planning must remain read-only, including the run ledger. A caller
+        # may save this inventory locally without approving production writes.
         return {
             "mode": "dry-run",
             "scope_key": scope_key,
-            "run_id": run_row["id"],
+            "run_id": None,
             "inventory": inventory,
             "generated_assets": 0,
             "failed_assets": 0,

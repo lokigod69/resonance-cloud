@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "status": "reviewed-staged",
+  "scope": "Thirty staged B1 P1 episodes; three proposed 100-lesson maps",
+  "reviewedSourceSha256": {
+    "english": "9e00819305d4bd3b187187b2de806e2b8589bba0d73334b65c30e6ab5dd8c4f5",
+    "spanish": "2742692a634b75049a5a85efdb7540634bfdbb97888f97e0aa196e61b0198aeb",
+    "french": "536aa4d6b945e5dc73fba67e30e4c7a0305dfdcdb555d6c61fbe640b665fea66"
+  },
+  "fableModel": "claude-fable-5-1",
+  "effort": "max",
+  "fableReadThrough": {
+    "inputSourceSha256": {
+      "english": "6406ad727e1fd589c95a66e0fac1e49f11df8a06936de7cf8dc161b975bb964a",
+      "spanish": "229154d06001a9d35b15fafdcef4d5c579f100359aad52d0856bd91e335b2d75",
+      "french": "1b2d8a221dcb1f2e3c16ad29c748c82af79b18045bd6ef685441838a19000c8f"
+    },
+    "result": {
+      "verdict": "PASS",
+      "reviewedLessons": 30,
+      "summary": "All 30 lessons read in full across EN, ES and FR. Staging, avoir-only French learner narration, usted/vous, gender-neutral learner production, trophy placement, pattern-example repetition, cloze design (no same-meaning alternatives, apostrophes outside blanks, four same-category chips), speech tokens and length bands all hold. German/English glosses and grammar rules are accurate. Six findings, none HIGH: three MEDIUM nativeness/logic fixes (EN L1 learner line, EN L5 follow-up contradiction, ES L1 entramos/terraza contradiction) and three LOW polish items, each with exact linked-field replacements. PASS is conditional on applying every replacement below and re-running the mechanical validator on the patched lessons (EN 1, 5, 10; ES 1, 4; FR 3). Variety note, no change required: EN L6 'I've just dropped' and L7 'I've only just arrived' are acceptable in US textbook English but lean British; record under register/variety metadata only.",
+      "findings": [
+        {
+          "severity": "MEDIUM",
+          "file": "B1_EN_P1_DRAFT_20261003.json",
+          "lesson": 1,
+          "reason": "'I noticed the wrong street name' is not how a native speaker reports realising they were on the wrong street; it reads as misreading a sign, and the German gloss ('dass ich in der falschen Straße war') says something else. 'I noticed the street name was wrong' is natural, keeps the trophy word in the first reply and keeps all three speech tokens.",
+          "replacements": [
+            {
+              "pointer": "/lessons/0/dialogue/1/targetText",
+              "value": "I noticed the street name was wrong after I got off the bus."
+            },
+            {
+              "pointer": "/lessons/0/dialogue/1/baseText",
+              "value": {
+                "de": "Nachdem ich aus dem Bus gestiegen war, habe ich gemerkt, dass der Straßenname nicht stimmte."
+              }
+            },
+            {
+              "pointer": "/lessons/0/chunks",
+              "value": [
+                {
+                  "targetText": "I noticed",
+                  "baseText": {
+                    "de": "Ich habe gemerkt,"
+                  }
+                },
+                {
+                  "targetText": "the street name was wrong",
+                  "baseText": {
+                    "de": "dass der Straßenname nicht stimmte,"
+                  }
+                },
+                {
+                  "targetText": "after I got off",
+                  "baseText": {
+                    "de": "nachdem ich ausgestiegen war"
+                  }
+                },
+                {
+                  "targetText": "the bus.",
+                  "baseText": {
+                    "de": "aus dem Bus."
+                  }
+                }
+              ]
+            },
+            {
+              "pointer": "/lessons/0/recall",
+              "value": {
+                "before": "I ",
+                "answer": "noticed",
+                "after": " the street name was wrong after I got off the bus.",
+                "fallbackChoices": [
+                  "noticing",
+                  "notice",
+                  "noticed",
+                  "notices"
+                ]
+              }
+            },
+            {
+              "pointer": "/lessons/0/trophyWord/example",
+              "value": "I noticed the street name was wrong."
+            },
+            {
+              "pointer": "/lessons/0/distractors",
+              "value": [
+                "the house number was right",
+                "before I boarded"
+              ]
+            }
+          ]
+        },
+        {
+          "severity": "MEDIUM",
+          "file": "B1_EN_P1_DRAFT_20261003.json",
+          "lesson": 5,
+          "reason": "Follow-up 'What happened next while you were doing that?' contradicts itself: 'next' asks for a later event while 'while you were doing that' asks about the same moment the learner just described. Dropping 'next' makes the question natural and keeps it adding something (it asks for the nice thing itself).",
+          "replacements": [
+            {
+              "pointer": "/lessons/4/dialogue/2/targetText",
+              "value": "Really? What happened while you were doing that?"
+            },
+            {
+              "pointer": "/lessons/4/dialogue/2/baseText",
+              "value": {
+                "de": "Wirklich? Was ist passiert, während du damit beschäftigt warst?"
+              }
+            }
+          ]
+        },
+        {
+          "severity": "LOW",
+          "file": "B1_EN_P1_DRAFT_20261003.json",
+          "lesson": 10,
+          "reason": "Gloss drift: 'exhausted' is rendered 'völlig außer Atem' while the terms list correctly gives 'erschöpft'. Align the dialogue gloss with the term.",
+          "replacements": [
+            {
+              "pointer": "/lessons/9/dialogue/0/baseText",
+              "value": {
+                "de": "Du sahst völlig erschöpft aus, als du angekommen bist. Was ist passiert?"
+              }
+            }
+          ]
+        },
+        {
+          "severity": "MEDIUM",
+          "file": "B1_ES_P1_DRAFT_20261003.json",
+          "lesson": 1,
+          "reason": "'entramos y tomamos algo en una terraza' is contradictory for a Spanish reader: entramos (we went inside, with no stated place) clashes with terraza (outdoor seating). 'entramos en un bar y tomamos algo' is natural es-ES, keeps both cloze targets and cues, and keeps the Spain-specific 'entrar en'. Pattern example 2 and the trophy example are standalone and stay.",
+          "replacements": [
+            {
+              "pointer": "/lessons/0/dialogue/3/targetText",
+              "value": "Mi compañera y yo entramos en un bar y tomamos algo."
+            },
+            {
+              "pointer": "/lessons/0/dialogue/3/baseText",
+              "value": {
+                "de": "Meine Kurskollegin und ich gingen in eine Bar und tranken etwas.",
+                "en": "My classmate and I went into a bar and had a drink."
+              }
+            },
+            {
+              "pointer": "/lessons/0/cloze",
+              "value": [
+                "Mi compañera y yo ",
+                {
+                  "kind": "form",
+                  "answer": "entramos",
+                  "cue": "entrar",
+                  "choices": [
+                    "entré",
+                    "entró",
+                    "entramos",
+                    "entraron"
+                  ]
+                },
+                " en un bar y ",
+                {
+                  "kind": "form",
+                  "answer": "tomamos",
+                  "cue": "tomar",
+                  "choices": [
+                    "tomaron",
+                    "tomamos",
+                    "tomó",
+                    "tomé"
+                  ]
+                },
+                " algo."
+              ]
+            },
+            {
+              "pointer": "/lessons/0/terms/6",
+              "value": {
+                "targetText": "un bar",
+                "baseText": {
+                  "de": "eine Bar",
+                  "en": "a bar"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "severity": "LOW",
+          "file": "B1_ES_P1_DRAFT_20261003.json",
+          "lesson": 4,
+          "reason": "Title says 'Tasche'/'bag' but the lesson, trophy and every gloss teach mochila = Rucksack/backpack. Align the title.",
+          "replacements": [
+            {
+              "pointer": "/lessons/3/title",
+              "value": {
+                "de": "Der vergessene Rucksack",
+                "en": "The forgotten backpack"
+              }
+            }
+          ]
+        },
+        {
+          "severity": "LOW",
+          "file": "B1_FR_P1_DRAFT_20261003.json",
+          "lesson": 3,
+          "reason": "The follow-up reply repeats 'trouvé' from the first reply ('finalement trouvé un abri' then 'trouvé un bar'), so the second turn adds little and reads flat. 'Nous avons pris un verre et écouté de la musique' answers 'le reste de la soirée' naturally, stays avoir-only passé composé, and keeps two cloze blanks and the sequencing goal. Production note updated so it no longer references a bar.",
+          "replacements": [
+            {
+              "pointer": "/lessons/2/dialogue/3/targetText",
+              "value": "Nous avons pris un verre et écouté de la musique."
+            },
+            {
+              "pointer": "/lessons/2/dialogue/3/baseText",
+              "value": {
+                "de": "Wir haben etwas getrunken und Musik gehört.",
+                "en": "We had a drink and listened to music."
+              }
+            },
+            {
+              "pointer": "/lessons/2/cloze",
+              "value": [
+                "Nous avons ",
+                {
+                  "kind": "form",
+                  "answer": "pris",
+                  "cue": "prendre",
+                  "choices": [
+                    "prenons",
+                    "prendre",
+                    "prenions",
+                    "pris"
+                  ]
+                },
+                " un verre et ",
+                {
+                  "kind": "form",
+                  "answer": "écouté",
+                  "cue": "écouter",
+                  "choices": [
+                    "écouté",
+                    "écoutons",
+                    "écouter",
+                    "écoutions"
+                  ]
+                },
+                " de la musique."
+              ]
+            },
+            {
+              "pointer": "/lessons/2/terms/5",
+              "value": {
+                "targetText": "pris un verre",
+                "baseText": {
+                  "de": "etwas getrunken",
+                  "en": "had a drink"
+                }
+              }
+            },
+            {
+              "pointer": "/lessons/2/visualNotes",
+              "value": "Daytime conversation beside a concert poster; keep the storm and the later drink out of the opening image."
+            }
+          ]
+        }
+      ]
+    },
+    "allExactReplacementsApplied": true
+  },
+  "fableArbitration": {
+    "inputSourceSha256": {
+      "english": "9e00819305d4bd3b187187b2de806e2b8589bba0d73334b65c30e6ab5dd8c4f5",
+      "spanish": "b077ca3b1b0e1f2094e920e4eefc97596c59a00907593ebebe834ee104bcd1fc",
+      "french": "e9dc480ddfb6f79970d029b9d67c84500cc98d6e7539607dc0aafc3c83742ec1"
+    },
+    "result": {
+      "verdict": "REWORK",
+      "summary": "Arbitrated the independent review and six author questions against the eight current lessons (EN 5; ES 1, 5, 7, 8, 10; FR 6, 10); the earlier applied replacements (EN L5 follow-up, ES L1 bar version) are confirmed present. Both independent Spanish findings are upheld: in ES L5 and ES L7 the second learner reply switches subject with pro-drop, so the default same-subject chip (pudo / esperó) and other person chips form grammatical sentences, breaking the one-valid-chip rule while the learner sees no gloss of the picked chip. Explicit 'yo' / 'nosotros' (the device ES L8 already uses in 'y yo apunté') fixes both inside the 6-12 word band; the German/English baseText already renders the pronoun, so only targetText and cloze change. One author question is adapted (FR L6 interlocutor now asks 'Il était tout seul ?' before the owner question, closing the lost-dog inference gap); four are accepted with no text change; the 'entramos en una terraza' phrasing is rejected in favour of the applied bar version. No new English or French substantive issues; remaining pro-drop clozes (ES L1, L8, L10) keep the intended answer as the default or pronoun-marked reading. Verdict REWORK only because HIGH cloze defects need patches: apply the three replacement sets below and re-run the validator on ES 5, ES 7 and FR 6. No spending or publication is approved.",
+      "arbitration": [
+        {
+          "finding": "Independent HIGH — ES L5 cloze pude/pudo",
+          "decision": "accept",
+          "reason": "After 'Un vecino me explicó la ruta', 'pudo orientarme' (the neighbour managed to point me the right way) is grammatical and is the default same-subject parse; the intended 'pude' needs an unstated subject switch. Explicit contrastive 'yo' leaves one agreeing chip and keeps the 10-word reply in band."
+        },
+        {
+          "finding": "Independent MEDIUM — ES L7 cloze esperamos",
+          "decision": "accept, severity raised to HIGH",
+          "reason": "Same defect class as L5: after 'Un vecino abrió su garaje', esperó (default continuation), esperé and esperaron are all grammatical and contextually plausible, with no learner gloss to disambiguate. Explicit 'nosotros' restores one valid chip; 11 words, within band."
+        },
+        {
+          "finding": "Independent — no further EN/FR substantive issues",
+          "decision": "accept",
+          "reason": "Confirmed on the eight current lessons. EN L5, FR L6 and FR L10 clozes each leave one agreeing chip; ES L1, L8 and L10 clozes keep the intended answer as the default same-subject or pronoun-marked reading, so distractor subject switches are unmotivated and not valid alternatives."
+        },
+        {
+          "finding": "Author Q — ES L1 'entramos en una terraza' naturalness",
+          "decision": "reject the terraza phrasing; keep applied 'entramos en un bar y tomamos algo'",
+          "reason": "'Entrar en una terraza' is odd in es-ES because a terraza is outdoor seating you sit down at, not a space you enter. The applied bar version is natural, keeps both cloze targets and 'entrar en'; pattern example 2 and the trophy example keep 'en la terraza' as a standalone venue, which is fine."
+        },
+        {
+          "finding": "Author Q — ES L8 'yo estaba buscando' progressive background",
+          "decision": "accept, no change",
+          "reason": "Estaba + gerundio is the imperfecto of estar, i.e. the L4-5 imperfect-background anchor in its progressive surface; L8 is a recycle lesson and the pattern rule already frames it as 'Hintergrund mit estaba'. 14-word reply, trophy in first reply, chunks and recall consistent."
+        },
+        {
+          "finding": "Author Q — ES L10 'fue' alongside fui-family chips",
+          "decision": "accept, no change",
+          "reason": "Fue is the indefinido of ser from the L1-3 completed-past anchor, recycled here as an evaluation of the outcome; Fui, Fueron and Fuimos cannot agree with singular 'un gran alivio', so the recall keeps exactly one valid chip. 'Alivio' also keeps learner production gender-neutral."
+        },
+        {
+          "finding": "Author Q — FR L6 owner-search inference",
+          "decision": "adapt",
+          "reason": "The acquaintance's third turn presupposes a lost dog and an owner search the learner never mentioned (only 'un chien a traversé la rue'). A short bridging question 'Il était tout seul ?' makes the inference explicit; interlocutor turns are exempt from length and tense constraints, 'le propriétaire' stays verbatim for the term list, and no tag or phone number leaks into the scene."
+        },
+        {
+          "finding": "Author Q — FR L10 phone-search narrative motivation",
+          "decision": "accept, no change",
+          "reason": "The chain is coherent: the guide's search (imparfait background) leaves the group unguided, the interlocutor asks what they did meanwhile, and the passer-by's advice is the reaction in passé composé with avoir. Stakes are modest but adequate for a B1 anecdote and the L8-10 recycle goal."
+        },
+        {
+          "finding": "Author Q — EN L5 'when' in example 2 vs 'while' in production",
+          "decision": "accept, no change",
+          "reason": "Past continuous interrupted by 'when + simple past' and 'while + past continuous' framing an event are the two canonical surfaces of the L4-5 continuous anchor; example 2 is standalone, the rule describes the form generally, and the contrast widens exposure without leaving the stage."
+        }
+      ],
+      "findings": [
+        {
+          "severity": "HIGH",
+          "file": "spanish",
+          "lesson": 5,
+          "reason": "Second reply switches subject with pro-drop: after 'Un vecino me explicó la ruta', the chip 'pudo' yields the grammatical, default same-subject sentence 'pudo orientarme', and the learner sees no gloss of the picked chip, so the second blank has two valid answers. Adding contrastive 'yo' (as L8 already does in 'y yo apunté') makes pude the only agreeing chip; 10 words, within the 6-12 band. baseText already renders 'ich'/'I' and stays; chunks, terms, trophy, examples and distractors are unaffected.",
+          "replacements": [
+            {
+              "pointer": "/lessons/4/dialogue/3/targetText",
+              "value": "Un vecino me explicó la ruta y yo pude orientarme."
+            },
+            {
+              "pointer": "/lessons/4/cloze",
+              "value": [
+                "Un vecino me ",
+                {
+                  "kind": "form",
+                  "answer": "explicó",
+                  "cue": "explicar",
+                  "choices": [
+                    "explicaron",
+                    "expliqué",
+                    "explicó",
+                    "explicamos"
+                  ]
+                },
+                " la ruta y yo ",
+                {
+                  "kind": "form",
+                  "answer": "pude",
+                  "cue": "poder",
+                  "choices": [
+                    "pudieron",
+                    "pude",
+                    "pudiste",
+                    "pudo"
+                  ]
+                },
+                " orientarme."
+              ]
+            }
+          ]
+        },
+        {
+          "severity": "HIGH",
+          "file": "spanish",
+          "lesson": 7,
+          "reason": "Same defect class: 'Un vecino abrió su garaje y ___ allí una hora' accepts esperó (default continuation of the neighbour), esperé and esperaron as grammatical, contextually plausible sentences, with no learner gloss to disambiguate, so the second blank has several valid answers. Explicit 'nosotros' leaves esperamos as the only agreeing chip; 11 words, within band. baseText already says 'wir'/'we' and stays; first reply, chunks, terms, trophy and examples are unaffected.",
+          "replacements": [
+            {
+              "pointer": "/lessons/6/dialogue/3/targetText",
+              "value": "Un vecino abrió su garaje y nosotros esperamos allí una hora."
+            },
+            {
+              "pointer": "/lessons/6/cloze",
+              "value": [
+                "Un vecino ",
+                {
+                  "kind": "form",
+                  "answer": "abrió",
+                  "cue": "abrir",
+                  "choices": [
+                    "abrió",
+                    "abrimos",
+                    "abrí",
+                    "abrieron"
+                  ]
+                },
+                " su garaje y nosotros ",
+                {
+                  "kind": "form",
+                  "answer": "esperamos",
+                  "cue": "esperar",
+                  "choices": [
+                    "esperé",
+                    "esperamos",
+                    "esperó",
+                    "esperaron"
+                  ]
+                },
+                " allí una hora."
+              ]
+            }
+          ]
+        },
+        {
+          "severity": "LOW",
+          "file": "french",
+          "lesson": 6,
+          "reason": "The acquaintance jumps from 'un chien a traversé la rue' to 'comment avez-vous retrouvé le propriétaire', presupposing a lost dog and an owner search the learner never mentioned. A short bridging question makes the inference explicit; interlocutor turns are exempt from the length and tense constraints, 'le propriétaire' remains verbatim for the term list, and no later detail (tag, number) leaks into the scene. Learner turns, cloze, chunks, recall and trophy are unchanged.",
+          "replacements": [
+            {
+              "pointer": "/lessons/5/dialogue/2/targetText",
+              "value": "Il était tout seul ? Et comment avez-vous retrouvé le propriétaire de ce chien ?"
+            },
+            {
+              "pointer": "/lessons/5/dialogue/2/baseText",
+              "value": {
+                "de": "War er ganz allein? Und wie haben Sie den Besitzer dieses Hundes gefunden?",
+                "en": "Was it all on its own? And how did you find that dog’s owner?"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "allExactReplacementsApplied": true
+  },
+  "independentReview": {
+    "reviewer": "Fresh Codex reviewer, separate from all three draft authors",
+    "firstPass": "REWORK: Spanish L5/L7 ambiguous person forms; stale manifest acceptance and missing audio surfaces",
+    "fixes": "Fable-arbitrated explicit yo/nosotros; full source/snapshot identity and rebuilt-plan checks; incomplete surfaces rejected",
+    "finalVerdict": "PASS",
+    "unresolvedFindings": 0,
+    "finalSummary": "Explicit Spanish subjects fix both ambiguous-answer defects. Fable wording corrections and linked fields are consistent. Source/snapshot hashes and independently recalculated inventory counts match. Freshness comparisons and missing-surface rejection pass. No provider/DB execution or active runtime/catalog imports introduced. Verdict covers staged content and offline manifest only."
+  },
+  "checks": {
+    "frontendVerify": "PASS; 0 errors and 2 existing fixture warnings",
+    "offlineSuites": "28/28 PASS; 5 known-stale suites skipped",
+    "frontendBuild": "PASS; existing bundle-size warnings",
+    "postArbitrationDraftContract": "PASS",
+    "pythonTests": "73 PASS: inventory, provider, generator and draft planner",
+    "visualVerification": "Not run: no rendered UI change or active lesson"
+  },
+  "limitations": [
+    "Machine-authored and machine-reviewed; no native-human proofreading claim",
+    "Only P1 has full lessons; other 270 beats are proposed outlines",
+    "No new ElevenLabs synthesis or production write",
+    "No new active paths or twelve-base editions",
+    "Character forecasts are not verified credit costs or a durable spending bound"
+  ]
+}

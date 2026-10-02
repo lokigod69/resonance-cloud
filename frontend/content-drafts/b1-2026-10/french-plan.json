@@ -1,0 +1,185 @@
+{
+  "targetLanguage": "French",
+  "status": "proposal-not-approved",
+  "notes": [
+    "Proposition de préallocation uniquement : ni spécification approuvée, ni leçons complètes. Les ancrages et leur progression restent soumis à la spécification Fable 5.1.",
+    "Les dix parcours reprennent les fonctions communes du B1 ; les situations et les formulations sont conçues directement en français.",
+    "Registre proposé : vous dans tous les échanges, conformément au contrat du français A2. Le corpus A1 contient aussi des échanges explicitement familiers avec tu en P5 L5–7 et P9 L2 ; un éventuel retour au tutoiement doit être fixé par la spécification, leçon par leçon.",
+    "Maintenir les bases de traduction de et en, les accents français et une espace avant ? et !. Les résumés ci-dessous sont des intentions de scène, pas des répliques à importer.",
+    "Production proposée sans accord dépendant du genre de la personne qui apprend : passé composé avec avoir, imparfait et conditionnel non genrés ; passifs de P6 portant sur un objet ou un dossier. La progression de P1 suit l’option avoir seul proposée par Fable ; pour que + subjonctif présent est introduit en P7 L5–8 selon son architecture.",
+    "Chaque trophée devra être repris littéralement dans une réplique de la personne qui apprend. Une relance doit apporter une information ou une contrainte nouvelle ; aucun résumé ne dispense de construire les quatre tours.",
+    "La vérification doit porter sur toutes les variantes de toutes les leçons françaises du corpus importé, et sur la liste interdite de Stage 0 ; les formes apparentées ne constituent pas une autorisation de recycler le même enseignement."
+  ],
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Ce qui s’est passé",
+      "anchor": "Récit suivi, forme B : L1–3 passé composé avec avoir ; L4–5 cadres il faisait, il y avait, c’était ; L6–7 contraste imparfait/passé composé ; L8–10 narration mixte. Option avoir seul et vous partout retenue parmi les propositions de Fable, sous réserve d’arbitrage final.",
+      "lessons": [
+        { "number": 1, "trophy": "oublié", "beat": "Raconter qu’on a oublié son portefeuille au café ; à la relance, préciser comment on a pu payer le trajet du retour." },
+        { "number": 2, "trophy": "retrouvé", "beat": "Raconter qu’on a retrouvé une écharpe au vestiaire ; expliquer ensuite quel détail a permis de la reconnaître." },
+        { "number": 3, "trophy": "finalement", "beat": "Raconter qu’un orage a interrompu un concert et qu’on a finalement trouvé un abri ; poursuivre avec le reste de la soirée." },
+        { "number": 4, "trophy": "pendant", "beat": "Situer une coupure de courant pendant un repas entre voisins ; à la relance, expliquer comment le repas a continué." },
+        { "number": 5, "trophy": "aperçu", "beat": "Poser le cadre avec il faisait froid devant une salle, puis raconter qu’on a aperçu une collègue ; expliquer comment on a attendu au chaud." },
+        { "number": 6, "trophy": "attendais", "beat": "Poser le cadre avec « j’attendais devant la boulangerie » ; raconter le passage d’un chien sans laisse, puis expliquer comment retrouver son propriétaire." },
+        { "number": 7, "trophy": "réussi", "beat": "Raconter qu’on poussait une porte quand on a réussi à tourner la clé ; expliquer ensuite le problème du mécanisme et le geste effectué." },
+        { "number": 8, "trophy": "soudain", "beat": "Décrire un sentier glissant, puis le tonnerre soudain pendant une randonnée ; expliquer le choix d’une route pour le retour." },
+        { "number": 9, "trophy": "raconté", "beat": "Rappeler ce qu’on a raconté à un voisin pendant une attente ; à sa question, ajouter le détail qui explique la fin de l’histoire." },
+        { "number": 10, "trophy": "imprévu", "beat": "Faire le récit d’un imprévu lors d’une sortie collective ; relier la difficulté de départ à une rencontre qui a changé la suite de la journée." }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "À mon avis",
+      "anchor": "Opinion développée, forme B : L1–3 opinion et justification déjà connues ; L4–6 concession avec même si et malgré suivi d’un nom ; L7–10 contraste avec pourtant ou cependant. Pas de bien que. Vous proposé.",
+      "lessons": [
+        { "number": 1, "trophy": "avis", "beat": "Donner son avis sur une rue rendue aux piétons ; à une relance concrète, expliquer l’effet sur les petits commerces." },
+        { "number": 2, "trophy": "plutôt", "beat": "Prendre position plutôt en faveur d’un petit cinéma de quartier ; développer une raison liée à l’ambiance." },
+        { "number": 3, "trophy": "utile", "beat": "Défendre une bibliothèque ouverte le dimanche en expliquant à qui elle est utile ; donner un exemple concret après la relance." },
+        { "number": 4, "trophy": "essentiel", "beat": "Dire qu’un espace calme est essentiel dans une bibliothèque, même si elle accueille aussi des activités ; préciser un aménagement concret." },
+        { "number": 5, "trophy": "malgré", "beat": "Défendre un marché en plein air malgré la pluie ; expliquer pourquoi les habitants continuent à le fréquenter." },
+        { "number": 6, "trophy": "argument", "beat": "Reprendre un argument en faveur du vélo, même si certaines rues sont difficiles ; répondre à une objection sur les courses lourdes." },
+        { "number": 7, "trophy": "pourtant", "beat": "Constater qu’un atelier gratuit reste peu fréquenté ; introduire avec pourtant ce qu’il apporte aux habitants, puis proposer une explication." },
+        { "number": 8, "trophy": "cependant", "beat": "Reconnaître l’intérêt des écrans dans les transports ; nuancer avec cependant à propos des annonces sonores et expliquer pourquoi elles restent nécessaires." },
+        { "number": 9, "trophy": "convaincant", "beat": "Dire qu’un argument sur les économies d’énergie est convaincant, même si une limite subsiste ; préciser cette limite après la relance." },
+        { "number": 10, "trophy": "équilibre", "beat": "Défendre un équilibre entre animations et tranquillité dans une résidence ; poursuivre en reconnaissant les besoins différents des voisins." }
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Si je pouvais",
+      "anchor": "Demande ou hypothèse avec complication, forme A : L1–3 demandes adoucies au conditionnel ; L4–6 pourrais, aurais et serais ; L7–10 si + imparfait, conditionnel présent. Pas de conditionnel passé. Vous proposé.",
+      "lessons": [
+        { "number": 1, "trophy": "possibilité", "beat": "Demander la possibilité de décaler un cours ; quand le créneau souhaité manque, proposer une seconde option sans la présenter comme acceptée." },
+        { "number": 2, "trophy": "souhaiterais", "beat": "Formuler « je souhaiterais » pour demander une visite d’atelier ; répondre à la condition d’un petit groupe en proposant une date commune." },
+        { "number": 3, "trophy": "volontiers", "beat": "Accepter volontiers de participer à une sortie tout en formulant une préférence polie ; adapter son choix quand le départ très matinal est annoncé." },
+        { "number": 4, "trophy": "pourrais", "beat": "Demander « est-ce que je pourrais » pour essayer un instrument ; face à une limite de durée, proposer un essai plus court." },
+        { "number": 5, "trophy": "aurais", "beat": "Dire « j’aurais besoin d’un peu plus de temps » pour finir un dossier ; face à une échéance fixe, demander une remise en deux étapes." },
+        { "number": 6, "trophy": "serais", "beat": "Dire « je serais sur place vers dix heures » pour proposer une visite ; ajuster cette heure quand la fermeture de l’accueil est annoncée." },
+        { "number": 7, "trophy": "choisirais", "beat": "Imaginer un autre quartier avec « je choisirais » et une condition sur le trajet ; face à un loyer élevé, proposer une zone voisine." },
+        { "number": 8, "trophy": "hésite", "beat": "Dire qu’on hésite entre deux formations et expliquer ce qu’on ferait avec davantage de temps ; adapter son projet quand les horaires se chevauchent." },
+        { "number": 9, "trophy": "compromis", "beat": "Proposer un compromis sur les horaires d’une salle partagée ; répondre à une nouvelle contrainte en formulant une condition réalisable." },
+        { "number": 10, "trophy": "idéal", "beat": "Décrire l’organisation idéale d’un petit séjour ; quand le logement visé manque, dire ce qu’on choisirait si une nuit supplémentaire était possible." }
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "Celui qui me convient",
+      "anchor": "Description précise et négociation, forme C : L1–5 relatives avec qui ; L6–8 relatives avec que ; L9–10 où pour un lieu et réemploi des relatives précédentes. Pas de dont ni de formes composées proposé. Vous proposé.",
+      "lessons": [
+        { "number": 1, "trophy": "modèle", "beat": "Décrire le modèle de lampe qui éclaire une table entière ; accepter une autre couleur à condition de garder la même puissance." },
+        { "number": 2, "trophy": "poche", "beat": "Chercher une veste avec une poche qui ferme bien ; accepter une coupe différente en maintenant cette exigence." },
+        { "number": 3, "trophy": "tissu", "beat": "Demander un tissu qui supporte des lavages fréquents ; accepter une autre couleur quand la matière souhaitée manque." },
+        { "number": 4, "trophy": "logement", "beat": "Décrire un logement qui reçoit beaucoup de lumière ; considérer une autre rue tout en gardant ce critère." },
+        { "number": 5, "trophy": "voisin", "beat": "Identifier le voisin qui s’occupe du jardin partagé ; accepter de transmettre un message à une autre personne en précisant le destinataire." },
+        { "number": 6, "trophy": "repère", "beat": "Décrire le repère que l’on voit depuis une fenêtre pour fixer un lieu de rencontre ; accepter un point voisin plus accessible." },
+        { "number": 7, "trophy": "détail", "beat": "Préciser le détail que l’on distingue sur une photo d’objet perdu ; accepter de regarder un autre objet sans abandonner ce critère." },
+        { "number": 8, "trophy": "description", "beat": "Comparer une chambre à la description que donne une annonce ; accepter une autre chambre en demandant la même exposition." },
+        { "number": 9, "trophy": "disponible", "beat": "Chercher un atelier où un établi est disponible le soir ; accepter un autre jour en conservant l’horaire tardif." },
+        { "number": 10, "trophy": "correspond", "beat": "Expliquer qu’un lieu où l’on peut répéter correspond au projet du groupe ; accepter une salle plus petite avec une modification des horaires." }
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Pourriez-vous me renseigner ?",
+      "anchor": "Questions indirectes dans une démarche, forme A : L1–3 savoir où, comment ou quand ; L4–7 savoir si ; L8–10 demander confirmation avec que et réemploi. Ordre déclaratif dans la subordonnée. Vous proposé.",
+      "lessons": [
+        { "number": 1, "trophy": "dossier", "beat": "Demander où déposer un dossier à l’accueil ; quand plusieurs services sont mentionnés, préciser l’objet de la demande." },
+        { "number": 2, "trophy": "formulaire", "beat": "Demander comment remplir une rubrique du formulaire ; répondre à une question sur sa situation avec seulement l’information nécessaire." },
+        { "number": 3, "trophy": "justificatif", "beat": "Demander quel justificatif convient pour prouver son adresse ; face à une exigence de date récente, demander quel document fournir à la place." },
+        { "number": 4, "trophy": "inscription", "beat": "Demander si une inscription est encore possible à un atelier municipal ; face à une liste d’attente, demander comment être prévenu." },
+        { "number": 5, "trophy": "délai", "beat": "Demander si le délai court à partir du dépôt ou de la réception ; face à un dossier incomplet, faire préciser le point de départ." },
+        { "number": 6, "trophy": "démarche", "beat": "Demander si la démarche peut se faire en ligne ; quand une présence sur place est exigée, demander quelle étape la nécessite." },
+        { "number": 7, "trophy": "signature", "beat": "Demander si une signature sur papier est nécessaire ; quand un original est demandé, préciser comment le faire parvenir." },
+        { "number": 8, "trophy": "pièce", "beat": "Demander confirmation que la pièce manquante est bien celle indiquée sur le courrier ; vérifier un détail lorsque deux documents portent un nom proche." },
+        { "number": 9, "trophy": "attestation", "beat": "Demander confirmation que l’attestation concerne la bonne période ; face à une période différente, expliquer la correction attendue." },
+        { "number": 10, "trophy": "confirmation", "beat": "Demander une confirmation écrite que le dossier est complet ; face à une réponse provisoire, demander quand la réponse définitive est prévue." }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "Où en est ma demande ?",
+      "anchor": "Suivi d’un processus avec complication, forme A : L1–5 cadres passifs au présent portant sur un objet ou un dossier ; L6–8 a été + participe passé ; L9–10 réemploi. Réception avant production, formes fixées ; ne jamais décider à la place du prestataire. Vous proposé.",
+      "lessons": [
+        { "number": 1, "trophy": "réparation", "beat": "Demander comment la réparation est organisée quand plusieurs pièces manquent ; proposer de laisser l’appareil plus longtemps sans présumer l’accord." },
+        { "number": 2, "trophy": "atelier", "beat": "Demander dans quel atelier le vélo est contrôlé ; lorsqu’un transfert est évoqué, demander comment suivre le dossier." },
+        { "number": 3, "trophy": "livraison", "beat": "Demander comment la livraison est préparée pour un immeuble sans ascenseur ; préciser l’étage après une question du transporteur." },
+        { "number": 4, "trophy": "suivi", "beat": "Demander comment le suivi du colis est mis à jour ; face à deux informations différentes, demander laquelle reflète la situation actuelle." },
+        { "number": 5, "trophy": "traitement", "beat": "Demander dans quel ordre le traitement des demandes est organisé ; face à une priorité spéciale, demander les conséquences pour son dossier." },
+        { "number": 6, "trophy": "reçu", "beat": "Demander si le dossier a été reçu après un envoi ; face à l’absence de trace, proposer de communiquer la référence du dépôt." },
+        { "number": 7, "trophy": "remplacé", "beat": "Demander si le câble défectueux a été remplacé ; quand un essai reste nécessaire, demander à quel moment rappeler." },
+        { "number": 8, "trophy": "transmis", "beat": "Demander à quel service le dossier a été transmis ; face à une nouvelle référence, vérifier comment l’utiliser lors du prochain appel." },
+        { "number": 9, "trophy": "intervention", "beat": "Demander comment l’intervention est planifiée après un premier contrôle ; quand une présence sur place est requise, proposer un créneau." },
+        { "number": 10, "trophy": "terminé", "beat": "Demander si le contrôle a été terminé après la réparation ; face à un dernier essai, demander une confirmation avant le déplacement." }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Pour que tout se passe bien",
+      "anchor": "But et organisation avec négociation, forme C : L1–4 pour + infinitif ; L5–8 pour que + subjonctif présent à haute fréquence avec changement de sujet, selon l’architecture Fable ; L9–10 réemploi contrasté. Détails et choix exacts des formes encore soumis à arbitrage. Vous proposé.",
+      "lessons": [
+        { "number": 1, "trophy": "objectif", "beat": "Fixer un objectif commun pour préparer une fête de rue ; accepter un programme plus court pour garder une activité accessible à tous." },
+        { "number": 2, "trophy": "prévoir", "beat": "Proposer de prévoir un abri pour protéger le matériel ; face au manque de place, accepter une tente plus petite en déplaçant les tables." },
+        { "number": 3, "trophy": "organiser", "beat": "Proposer une liste pour organiser les arrivées à une sortie ; accepter un autre outil à condition de garder les mêmes informations." },
+        { "number": 4, "trophy": "éviter", "beat": "Proposer de décaler le départ pour éviter les embouteillages ; accepter un départ intermédiaire quand une personne finit plus tard." },
+        { "number": 5, "trophy": "économiser", "beat": "Proposer de partager un véhicule pour que chacun puisse économiser ; accepter un autre trajet tout en fixant un point de rencontre simple." },
+        { "number": 6, "trophy": "permettre", "beat": "Expliquer ce que peut permettre un micro, puis demander un réglage pour que chacun entende ; accepter une baisse de volume face à une contrainte de voisinage." },
+        { "number": 7, "trophy": "répartir", "beat": "Proposer de répartir les tâches pour que chacun ait un rôle ; accepter une aide plus courte en confiant une tâche limitée." },
+        { "number": 8, "trophy": "répétition", "beat": "Proposer une répétition pour que tout le monde soit prêt ; accepter de la faire en ligne avec un essai du son avant le début." },
+        { "number": 9, "trophy": "ensemble", "beat": "Proposer de préparer ensemble les invitations afin de garder un message clair ; accepter deux groupes en fixant une dernière relecture commune." },
+        { "number": 10, "trophy": "priorité", "beat": "Donner la priorité à un accès simple pour accueillir tous les participants ; accepter un changement de salle en conservant cet objectif." }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Avant et maintenant",
+      "anchor": "Habitudes passées et évolution, forme B : L1–4 imparfait avec autrefois et quand ; L5–7 répétition avec chaque fois et comparaison ; L8–10 contraste explicite entre avant et aujourd’hui. Réemploi du récit de P1. Vous proposé.",
+      "lessons": [
+        { "number": 1, "trophy": "autrefois", "beat": "Décrire comment on faisait les courses autrefois ; à la relance, expliquer ce qui a changé dans les rencontres avec les commerçants." },
+        { "number": 2, "trophy": "enfance", "beat": "Évoquer un trajet habituel de son enfance ; poursuivre avec le détail du paysage qui reste le plus net." },
+        { "number": 3, "trophy": "habitude", "beat": "Décrire une habitude familiale du dimanche ; expliquer ensuite pourquoi elle tenait une place importante." },
+        { "number": 4, "trophy": "régulièrement", "beat": "Raconter une activité que l’on faisait régulièrement après les cours ; préciser avec qui on la pratiquait quand la question arrive." },
+        { "number": 5, "trophy": "jouais", "beat": "Décrire avec « je jouais » les rencontres de jeux entre voisins ; poursuivre sur ce qui se passait chaque fois qu’une nouvelle personne arrivait." },
+        { "number": 6, "trophy": "fréquentais", "beat": "Évoquer avec « je fréquentais » une petite salle de concert ; expliquer comment les habitudes ont changé après un déménagement." },
+        { "number": 7, "trophy": "davantage", "beat": "Comparer le temps passé dehors auparavant et maintenant ; expliquer pourquoi on marche davantage depuis un changement de trajet." },
+        { "number": 8, "trophy": "désormais", "beat": "Opposer les anciennes courses en voiture aux trajets désormais faits à pied ; développer un effet inattendu sur la vie quotidienne." },
+        { "number": 9, "trophy": "évolution", "beat": "Décrire l’évolution d’une relation de voisinage entre les premiers échanges et les habitudes actuelles ; donner un exemple concret à la relance." },
+        { "number": 10, "trophy": "souvenir", "beat": "Partir d’un souvenir de sa première semaine dans le quartier ; expliquer ce qui paraît aujourd’hui familier alors que tout semblait nouveau." }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Trouvons une solution",
+      "anchor": "Réclamation suivie, forme A : même lave-linge en panne tout au long du parcours ; L1–2 récit de P1, L3–4 demandes de P3, L5–6 suivi de P6, L7–8 concession de P2, L9–10 résolution. Aucun nouvel ancrage grammatical. Vous proposé.",
+      "lessons": [
+        { "number": 1, "trophy": "panne", "beat": "Signaler une panne du lave-linge en racontant ce qui s’est passé au milieu du cycle ; répondre à une question sur le voyant allumé." },
+        { "number": 2, "trophy": "défaut", "beat": "Expliquer quand le défaut est apparu pour la première fois ; face à une hypothèse de mauvaise utilisation, décrire les gestes effectués." },
+        { "number": 3, "trophy": "garantie", "beat": "Demander poliment si la garantie couvre cette panne ; lorsqu’un document est réclamé, proposer de fournir la facture." },
+        { "number": 4, "trophy": "réclamation", "beat": "Demander comment enregistrer une réclamation après un premier refus ; face à une procédure supplémentaire, demander une référence de suivi." },
+        { "number": 5, "trophy": "devis", "beat": "Demander si un devis a été préparé après le contrôle ; lorsqu’une pièce manque, demander un montant estimatif sans autoriser la réparation." },
+        { "number": 6, "trophy": "preuve", "beat": "Demander quelle preuve de dépôt a été enregistrée ; face à un dossier incomplet, proposer le reçu conservé lors de la remise de l’appareil." },
+        { "number": 7, "trophy": "échange", "beat": "Demander un échange malgré une proposition de réparation ; répondre à l’absence du même modèle en précisant les fonctions indispensables." },
+        { "number": 8, "trophy": "remboursement", "beat": "Expliquer pourquoi un remboursement reste préférable même si un autre modèle est proposé ; répondre à une retenue annoncée en demandant sa justification." },
+        { "number": 9, "trophy": "accord", "beat": "Résumer l’accord proposé sur le montant et le retour de l’appareil ; face à une réserve sur le transport, demander qui organise l’enlèvement." },
+        { "number": 10, "trophy": "résolu", "beat": "Après le versement annoncé, demander si le problème est bien résolu ; face à une dernière vérification, demander une confirmation écrite de clôture." }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Une année ici",
+      "anchor": "Récit personnel relié, forme B : une fonction dominante par leçon, bilan d’une année ; réemploi du récit, de l’opinion, des relatives, du but et des hypothèses de P1–8. Aucune nouvelle grammaire. Vous proposé.",
+      "lessons": [
+        { "number": 1, "trophy": "installation", "beat": "Raconter son installation dans la ville en reliant un premier souci à une aide reçue ; préciser ce qui a rendu les premiers jours plus simples." },
+        { "number": 2, "trophy": "obstacle", "beat": "Décrire le principal obstacle rencontré au début de l’année ; poursuivre avec la démarche qui a permis de le dépasser." },
+        { "number": 3, "trophy": "rencontre", "beat": "Raconter une rencontre inattendue qui a changé une habitude ; expliquer comment les échanges ont continué après ce premier moment." },
+        { "number": 4, "trophy": "autonomie", "beat": "Expliquer comment on a gagné en autonomie dans les démarches ; donner un exemple précis de ce que l’on sait faire sans aide." },
+        { "number": 5, "trophy": "lien", "beat": "Décrire le lien créé avec une personne du quartier ; raconter une attention concrète qui l’a renforcé." },
+        { "number": 6, "trophy": "routine", "beat": "Comparer une routine des premières semaines à celle d’aujourd’hui ; expliquer pourquoi un petit changement a amélioré les journées." },
+        { "number": 7, "trophy": "confiance", "beat": "Expliquer ce qui a donné confiance pour parler français ; à la relance, transmettre une astuce concrète à une personne qui débute." },
+        { "number": 8, "trophy": "projet", "beat": "Présenter un projet pour les mois à venir en expliquant son but ; développer une solution de rechange si le temps manque." },
+        { "number": 9, "trophy": "accueil", "beat": "Remercier pour l’accueil reçu en racontant un geste précis ; expliquer ensuite comment on souhaite accueillir une nouvelle personne à son tour." },
+        { "number": 10, "trophy": "bilan", "beat": "Faire le bilan de l’année en reliant une difficulté, une rencontre et un changement ; conclure par une intention concrète pour la suite." }
+      ]
+    }
+  ]
+}

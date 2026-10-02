@@ -12,6 +12,11 @@ Last verified: 2026-09-07 for the hardening additions below; 2026-09-25 for the 
 - Card list previews use `words.card_thumbnail_url` (640x360 WebP); study/detail retain `thumbnail_url` full PNG. SQL deletion/cleanup owns both URLs. Runner uses `src/path_safety.py`, bounded subprocess helpers and persisted bootstrap retry state.
 - Full invariants, rollout compatibility and remaining limits: [[notes/hardening-2026-09-07]].
 
+## October 3 staged B1 authoring
+- `frontend/content-drafts/b1-2026-10/` is an offline package, absent from runtime imports and catalog generators. JSON drafts hold complete P1 episodes; separate plans reserve 100 trophies per target.
+- `frontend/scripts/lib/guidedB1Drafts.ts` validates sources and exports existing B1 playback coordinates, including vocabulary terms as chunk/item keys. `prepare-guided-b1-drafts.ts` saves source fingerprints; `scripts/plan_guided_b1_drafts.py` creates a provider-free proposed inventory and character forecast. Neither can generate audio or publish courses.
+- Frontend contracts check source/snapshot identity, while Python contracts rebuild the saved audio plan. Guided TTS `generate.run_async(dry_run=True)` only reads Supabase; it no longer writes a generation-run ledger row.
+
 ## Overview
 Two production halves in one git repo (root: `orchestrator/`). (1) The user-facing app: React 19 + TypeScript + Vite + Tailwind v4 SPA in `frontend/`, deployed on Vercel with serverless functions in `frontend/api/`, auth/DB/storage on Supabase, iOS via a Capacitor shell. (2) The generation backend: a single Python worker process on Railway (`start_cloud.py` → `job_runner.py`) that polls Supabase for jobs and drives `src/orchestration/*` workers, calling engines in-process via `src/cloud_dispatcher.py` (`DISPATCH_MODE=direct`). The former local "DAW" (FastAPI routers + per-engine HTTP servers) was removed on 2026-07-11 (`be208ef6`); `STORAGE_MODE` survives only as a storage-path switch (`src/storage.py`).
 

@@ -14,6 +14,7 @@ const SCRIPTS = [
   'test:base-languages',
   'test:guided-today',
   'test:guided-base',
+  'test:guided-b1-drafts',
   'test:script-lab',
   'test:word-stream',
   'test:stripe-billing',

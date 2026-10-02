@@ -1,0 +1,2207 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": {
+    "de": "Was passiert ist",
+    "en": "What happened"
+  },
+  "subtitle": {
+    "de": "Erzähle kleine Erlebnisse und führe die Geschichte weiter.",
+    "en": "Tell everyday stories and keep the conversation going."
+  },
+  "anchor": "PROVISIONAL — pending Fable arbitration. Form B, interested listener; vous throughout. L1–3 passé composé with avoir and sequencers; L4–5 imparfait background in il faisait, il y avait and c’était frames; L6–7 quand with imparfait contrasted against passé composé; L8–10 mixed narration. Learner turns use the avoir-only gender-safe option. No plus-que-parfait, conditionnel passé or speaker-gender adjectives.",
+  "lessons": [
+    {
+      "slug": "portefeuille-oublie-au-cafe",
+      "title": {
+        "de": "Ohne Geldbeutel",
+        "en": "Without a wallet"
+      },
+      "situation": {
+        "de": "Du erzählst einer Bekannten von deinem gestrigen Cafébesuch und erklärst, wie du ohne Geldbeutel nach Hause gekommen bist.",
+        "en": "Tell an acquaintance about yesterday’s café visit and explain how you got home without your wallet."
+      },
+      "pedagogicalGoal": "Zwei abgeschlossene Ereignisse mit avoir im passé composé erzählen und auf eine konkrete Nachfrage eingehen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Comment s'est passée votre sortie au café hier ?",
+          "baseText": {
+            "de": "Wie war Ihr Cafébesuch gestern?",
+            "en": "How was your trip to the café yesterday?"
+          }
+        },
+        {
+          "targetText": "J'ai oublié mon portefeuille au café, puis j'ai appelé un voisin.",
+          "baseText": {
+            "de": "Ich habe meinen Geldbeutel im Café vergessen und dann einen Nachbarn angerufen.",
+            "en": "I left my wallet at the café, then I called a neighbor."
+          }
+        },
+        {
+          "targetText": "Et comment avez-vous payé votre trajet de retour ?",
+          "baseText": {
+            "de": "Und wie haben Sie Ihre Rückfahrt bezahlt?",
+            "en": "And how did you pay for your journey home?"
+          }
+        },
+        {
+          "targetText": "J'ai emprunté vingt euros, puis j'ai payé le chauffeur.",
+          "baseText": {
+            "de": "Ich habe mir zwanzig Euro geliehen und dann den Fahrer bezahlt.",
+            "en": "I borrowed twenty euros, then I paid the driver."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Le passé composé avec avoir",
+        "rule": {
+          "de": "Mit avoir im Präsens und dem Partizip erzählst du abgeschlossene Ereignisse; puis verbindet ihre Reihenfolge.",
+          "en": "Use present-tense avoir and a past participle for completed events; puis links them in order."
+        },
+        "examples": [
+          {
+            "targetText": "J'ai oublié mon portefeuille au café, puis j'ai appelé un voisin.",
+            "baseText": {
+              "de": "Ich habe meinen Geldbeutel im Café vergessen und dann einen Nachbarn angerufen.",
+              "en": "I left my wallet at the café, then I called a neighbor."
+            },
+            "highlight": "ai oublié"
+          },
+          {
+            "targetText": "J'ai rangé mon sac, puis j'ai fermé la porte.",
+            "baseText": {
+              "de": "Ich habe meine Tasche weggeräumt und dann die Tür geschlossen.",
+              "en": "I put my bag away, then I closed the door."
+            },
+            "highlight": "ai rangé"
+          }
+        ]
+      },
+      "cloze": [
+        "J'ai ",
+        {
+          "kind": "form",
+          "answer": "emprunté",
+          "cue": "emprunter",
+          "choices": [
+            "emprunté",
+            "empruntais",
+            "emprunte",
+            "emprunter"
+          ]
+        },
+        " vingt euros, puis j'ai ",
+        {
+          "kind": "form",
+          "answer": "payé",
+          "cue": "payer",
+          "choices": [
+            "payer",
+            "paie",
+            "payais",
+            "payé"
+          ]
+        },
+        " le chauffeur."
+      ],
+      "chunks": [
+        {
+          "targetText": "J'ai oublié",
+          "baseText": {
+            "de": "Ich habe vergessen",
+            "en": "I left behind"
+          }
+        },
+        {
+          "targetText": "mon portefeuille",
+          "baseText": {
+            "de": "meinen Geldbeutel",
+            "en": "my wallet"
+          }
+        },
+        {
+          "targetText": "au café,",
+          "baseText": {
+            "de": "im Café,",
+            "en": "at the café,"
+          }
+        },
+        {
+          "targetText": "puis j'ai appelé",
+          "baseText": {
+            "de": "dann rief ich",
+            "en": "then I called"
+          }
+        },
+        {
+          "targetText": "un voisin.",
+          "baseText": {
+            "de": "einen Nachbarn.",
+            "en": "a neighbor."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "oublié",
+          "baseText": {
+            "de": "vergessen",
+            "en": "left behind; forgotten"
+          }
+        },
+        {
+          "targetText": "le portefeuille",
+          "baseText": {
+            "de": "der Geldbeutel",
+            "en": "the wallet"
+          }
+        },
+        {
+          "targetText": "appelé",
+          "baseText": {
+            "de": "angerufen",
+            "en": "called"
+          }
+        },
+        {
+          "targetText": "un voisin",
+          "baseText": {
+            "de": "ein Nachbar",
+            "en": "a neighbor"
+          }
+        },
+        {
+          "targetText": "emprunté",
+          "baseText": {
+            "de": "geliehen",
+            "en": "borrowed"
+          }
+        },
+        {
+          "targetText": "payé",
+          "baseText": {
+            "de": "bezahlt",
+            "en": "paid"
+          }
+        },
+        {
+          "targetText": "le chauffeur",
+          "baseText": {
+            "de": "der Fahrer",
+            "en": "the driver"
+          }
+        }
+      ],
+      "recall": {
+        "before": "J'ai ",
+        "answer": "oublié",
+        "after": " mon portefeuille au café, puis j'ai appelé un voisin.",
+        "fallbackChoices": [
+          "oublié",
+          "oubliais",
+          "oublie",
+          "oublier"
+        ]
+      },
+      "speakRequired": [
+        "oublié",
+        "portefeuille",
+        "voisin"
+      ],
+      "sceneCaption": {
+        "de": "Eine Bekannte fragt beim nächsten Treffen: „Comment s'est passée votre sortie au café hier ?“",
+        "en": "At your next meeting, an acquaintance asks: “Comment s'est passée votre sortie au café hier ?”"
+      },
+      "trophyWord": {
+        "word": "oublié",
+        "meaning": {
+          "de": "vergessen",
+          "en": "left behind; forgotten"
+        },
+        "example": "J'ai oublié mon livre dans le bus.",
+        "whyThisWord": {
+          "de": "Mit oublié benennst du ein kleines Missgeschick und kannst erzählen, wie es danach weiterging.",
+          "en": "Oublié names a small mishap and gives you a starting point for the rest of the story."
+        }
+      },
+      "distractors": [
+        "mon parapluie",
+        "à la gare,"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Bekannte unterhalten sich an einem kleinen Cafétisch.",
+        "en": "Two acquaintances talk at a small café table."
+      },
+      "songMood": "a warm conversational chanson about an everyday mishap",
+      "visualNotes": "A quiet café table, two acquaintances talking, natural morning light; no wallet or taxi reveal."
+    },
+    {
+      "slug": "echarpe-retrouvee-au-vestiaire",
+      "title": {
+        "de": "Den Schal wiedergefunden",
+        "en": "Finding the right scarf"
+      },
+      "situation": {
+        "de": "Nach einem Theaterabend erzählst du einem Bekannten, wie du deinen Schal wiedergefunden und erkannt hast.",
+        "en": "After a night at the theater, tell an acquaintance how you found and recognized your scarf."
+      },
+      "pedagogicalGoal": "Eine abgeschlossene Suche im passé composé schildern und das entscheidende Erkennungsmerkmal erklären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous avez retrouvé votre écharpe après le spectacle ?",
+          "baseText": {
+            "de": "Haben Sie Ihren Schal nach der Vorstellung wiedergefunden?",
+            "en": "Did you find your scarf after the show?"
+          }
+        },
+        {
+          "targetText": "J'ai retrouvé mon écharpe au vestiaire grâce à une employée.",
+          "baseText": {
+            "de": "Ich habe meinen Schal dank einer Mitarbeiterin an der Garderobe wiedergefunden.",
+            "en": "I found my scarf at the coat check thanks to an employee."
+          }
+        },
+        {
+          "targetText": "Comment avez-vous reconnu la vôtre parmi toutes les autres ?",
+          "baseText": {
+            "de": "Wie haben Sie Ihren Schal zwischen all den anderen erkannt?",
+            "en": "How did you recognize yours among all the others?"
+          }
+        },
+        {
+          "targetText": "J'ai repéré une tache, puis j'ai vérifié la couleur.",
+          "baseText": {
+            "de": "Ich habe einen Fleck entdeckt und dann die Farbe überprüft.",
+            "en": "I spotted a stain, then I checked the color."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Raconter une action terminée",
+        "rule": {
+          "de": "Das passé composé nennt, was du bei einer Suche getan hast; Ort und Hilfsperson ergänzen das Ereignis.",
+          "en": "The passé composé tells what you did during a search; a place and a helper add detail to the event."
+        },
+        "examples": [
+          {
+            "targetText": "J'ai retrouvé mon écharpe au vestiaire grâce à une employée.",
+            "baseText": {
+              "de": "Ich habe meinen Schal dank einer Mitarbeiterin an der Garderobe wiedergefunden.",
+              "en": "I found my scarf at the coat check thanks to an employee."
+            },
+            "highlight": "ai retrouvé"
+          },
+          {
+            "targetText": "J'ai reconnu mon sac grâce à son étiquette.",
+            "baseText": {
+              "de": "Ich habe meine Tasche an ihrem Etikett erkannt.",
+              "en": "I recognized my bag by its label."
+            },
+            "highlight": "ai reconnu"
+          }
+        ]
+      },
+      "cloze": [
+        "J'ai ",
+        {
+          "kind": "form",
+          "answer": "repéré",
+          "cue": "repérer",
+          "choices": [
+            "repérais",
+            "repérer",
+            "repéré",
+            "repère"
+          ]
+        },
+        " une tache, puis j'ai ",
+        {
+          "kind": "form",
+          "answer": "vérifié",
+          "cue": "vérifier",
+          "choices": [
+            "vérifié",
+            "vérifie",
+            "vérifiais",
+            "vérifier"
+          ]
+        },
+        " la couleur."
+      ],
+      "chunks": [
+        {
+          "targetText": "J'ai retrouvé",
+          "baseText": {
+            "de": "Ich habe wiedergefunden",
+            "en": "I found again"
+          }
+        },
+        {
+          "targetText": "mon écharpe",
+          "baseText": {
+            "de": "meinen Schal",
+            "en": "my scarf"
+          }
+        },
+        {
+          "targetText": "au vestiaire",
+          "baseText": {
+            "de": "an der Garderobe",
+            "en": "at the coat check"
+          }
+        },
+        {
+          "targetText": "grâce à une employée.",
+          "baseText": {
+            "de": "dank einer Mitarbeiterin.",
+            "en": "thanks to an employee."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "retrouvé",
+          "baseText": {
+            "de": "wiedergefunden",
+            "en": "found again"
+          }
+        },
+        {
+          "targetText": "une écharpe",
+          "baseText": {
+            "de": "ein Schal",
+            "en": "a scarf"
+          }
+        },
+        {
+          "targetText": "le vestiaire",
+          "baseText": {
+            "de": "die Garderobe",
+            "en": "the coat check"
+          }
+        },
+        {
+          "targetText": "une employée",
+          "baseText": {
+            "de": "eine Mitarbeiterin",
+            "en": "an employee"
+          }
+        },
+        {
+          "targetText": "repéré",
+          "baseText": {
+            "de": "entdeckt",
+            "en": "spotted"
+          }
+        },
+        {
+          "targetText": "une tache",
+          "baseText": {
+            "de": "ein Fleck",
+            "en": "a stain"
+          }
+        },
+        {
+          "targetText": "la couleur",
+          "baseText": {
+            "de": "die Farbe",
+            "en": "the color"
+          }
+        }
+      ],
+      "recall": {
+        "before": "J'ai ",
+        "answer": "retrouvé",
+        "after": " mon écharpe au vestiaire grâce à une employée.",
+        "fallbackChoices": [
+          "retrouve",
+          "retrouvé",
+          "retrouvais",
+          "retrouver"
+        ]
+      },
+      "speakRequired": [
+        "retrouvé",
+        "écharpe",
+        "vestiaire"
+      ],
+      "sceneCaption": {
+        "de": "Ein Bekannter erkundigt sich nach dem Theaterabend: „Vous avez retrouvé votre écharpe après le spectacle ?“",
+        "en": "An acquaintance asks about your theater visit: “Vous avez retrouvé votre écharpe après le spectacle ?”"
+      },
+      "trophyWord": {
+        "word": "retrouvé",
+        "meaning": {
+          "de": "wiedergefunden",
+          "en": "found again"
+        },
+        "example": "J'ai retrouvé mes lunettes sur une chaise.",
+        "whyThisWord": {
+          "de": "Retrouvé erzählt, dass etwas Vermisstes wieder da ist, und lädt zur Geschichte der Suche ein.",
+          "en": "Retrouvé says that something missing has been found and invites the story of the search."
+        }
+      },
+      "distractors": [
+        "mon manteau",
+        "dans le métro"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Bekannte sprechen vor einem Theater über den vergangenen Abend.",
+        "en": "Two acquaintances talk outside a theater about the previous evening."
+      },
+      "songMood": "a gentle theatrical evening with a small reassuring discovery",
+      "visualNotes": "Theater entrance and a quiet pavement conversation; do not show the identifying stain."
+    },
+    {
+      "slug": "concert-interrompu-par-un-orage",
+      "title": {
+        "de": "Der Abend geht weiter",
+        "en": "The evening continues"
+      },
+      "situation": {
+        "de": "Du erzählst einer Bekannten, warum ein Konzert früh endete und was eure Gruppe anschließend gemacht hat.",
+        "en": "Tell an acquaintance why a concert ended early and what your group did afterward."
+      },
+      "pedagogicalGoal": "Mehrere Ereignisse mit passé composé, puis und finalement zu einem kurzen Bericht verbinden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Pourquoi le concert s'est-il terminé plus tôt hier soir ?",
+          "baseText": {
+            "de": "Warum ist das Konzert gestern Abend früher zu Ende gegangen?",
+            "en": "Why did the concert finish early last night?"
+          }
+        },
+        {
+          "targetText": "Un orage a interrompu le concert, puis nous avons finalement trouvé un abri.",
+          "baseText": {
+            "de": "Ein Gewitter hat das Konzert unterbrochen, dann haben wir schließlich einen Unterschlupf gefunden.",
+            "en": "A thunderstorm interrupted the concert, then we finally found shelter."
+          }
+        },
+        {
+          "targetText": "Et comment avez-vous occupé le reste de la soirée ?",
+          "baseText": {
+            "de": "Und wie haben Sie den Rest des Abends verbracht?",
+            "en": "And how did you spend the rest of the evening?"
+          }
+        },
+        {
+          "targetText": "Nous avons pris un verre et écouté de la musique.",
+          "baseText": {
+            "de": "Wir haben etwas getrunken und Musik gehört.",
+            "en": "We had a drink and listened to music."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Enchaîner les événements",
+        "rule": {
+          "de": "Puis führt zum nächsten Ereignis; finalement hebt hervor, wie die Suche oder die Situation ausgegangen ist.",
+          "en": "Puis introduces the next event; finalement highlights the eventual outcome of a search or situation."
+        },
+        "examples": [
+          {
+            "targetText": "Un orage a interrompu le concert, puis nous avons finalement trouvé un abri.",
+            "baseText": {
+              "de": "Ein Gewitter hat das Konzert unterbrochen, dann haben wir schließlich einen Unterschlupf gefunden.",
+              "en": "A thunderstorm interrupted the concert, then we finally found shelter."
+            },
+            "highlight": "puis nous avons finalement trouvé"
+          },
+          {
+            "targetText": "Nous avons cherché la salle, puis nous avons finalement trouvé l'entrée.",
+            "baseText": {
+              "de": "Wir haben nach dem Saal gesucht und schließlich den Eingang gefunden.",
+              "en": "We looked for the hall, then we finally found the entrance."
+            },
+            "highlight": "finalement trouvé"
+          }
+        ]
+      },
+      "cloze": [
+        "Nous avons ",
+        {
+          "kind": "form",
+          "answer": "pris",
+          "cue": "prendre",
+          "choices": [
+            "prenons",
+            "prendre",
+            "prenions",
+            "pris"
+          ]
+        },
+        " un verre et ",
+        {
+          "kind": "form",
+          "answer": "écouté",
+          "cue": "écouter",
+          "choices": [
+            "écouté",
+            "écoutons",
+            "écouter",
+            "écoutions"
+          ]
+        },
+        " de la musique."
+      ],
+      "chunks": [
+        {
+          "targetText": "Un orage",
+          "baseText": {
+            "de": "Ein Gewitter",
+            "en": "A thunderstorm"
+          }
+        },
+        {
+          "targetText": "a interrompu le concert,",
+          "baseText": {
+            "de": "hat das Konzert unterbrochen,",
+            "en": "interrupted the concert,"
+          }
+        },
+        {
+          "targetText": "puis nous avons finalement trouvé",
+          "baseText": {
+            "de": "dann fanden wir schließlich",
+            "en": "then we finally found"
+          }
+        },
+        {
+          "targetText": "un abri.",
+          "baseText": {
+            "de": "einen Unterschlupf.",
+            "en": "shelter."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un orage",
+          "baseText": {
+            "de": "ein Gewitter",
+            "en": "a thunderstorm"
+          }
+        },
+        {
+          "targetText": "interrompu",
+          "baseText": {
+            "de": "unterbrochen",
+            "en": "interrupted"
+          }
+        },
+        {
+          "targetText": "finalement",
+          "baseText": {
+            "de": "schließlich",
+            "en": "finally; in the end"
+          }
+        },
+        {
+          "targetText": "un abri",
+          "baseText": {
+            "de": "ein Unterschlupf",
+            "en": "shelter"
+          }
+        },
+        {
+          "targetText": "le reste de la soirée",
+          "baseText": {
+            "de": "der Rest des Abends",
+            "en": "the rest of the evening"
+          }
+        },
+        {
+          "targetText": "pris un verre",
+          "baseText": {
+            "de": "etwas getrunken",
+            "en": "had a drink"
+          }
+        },
+        {
+          "targetText": "écouté de la musique",
+          "baseText": {
+            "de": "Musik gehört",
+            "en": "listened to music"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Un orage a ",
+        "answer": "interrompu",
+        "after": " le concert, puis nous avons finalement trouvé un abri.",
+        "fallbackChoices": [
+          "interrompait",
+          "interrompre",
+          "interrompu",
+          "interrompt"
+        ]
+      },
+      "speakRequired": [
+        "orage",
+        "finalement",
+        "abri"
+      ],
+      "sceneCaption": {
+        "de": "Eine Bekannte fragt am nächsten Tag: „Pourquoi le concert s'est-il terminé plus tôt hier soir ?“",
+        "en": "The next day, an acquaintance asks: “Pourquoi le concert s'est-il terminé plus tôt hier soir ?”"
+      },
+      "trophyWord": {
+        "word": "finalement",
+        "meaning": {
+          "de": "schließlich; am Ende",
+          "en": "finally; in the end"
+        },
+        "example": "Nous avons finalement trouvé une table près de la fenêtre.",
+        "whyThisWord": {
+          "de": "Finalement zeigt, wie ein Ereignis nach einer Suche oder einem Umweg ausgegangen ist.",
+          "en": "Finalement shows how events turned out after a search or a change of plan."
+        }
+      },
+      "distractors": [
+        "Une panne",
+        "un restaurant."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Bekannte unterhalten sich vor einem Konzertplakat.",
+        "en": "Two acquaintances talk beside a concert poster."
+      },
+      "songMood": "an interrupted outdoor concert turning into a lively shared evening",
+      "visualNotes": "Daytime conversation beside a concert poster; keep the storm and the later drink out of the opening image."
+    },
+    {
+      "slug": "coupure-pendant-le-repas",
+      "title": {
+        "de": "Plötzlich ohne Strom",
+        "en": "The lights went out"
+      },
+      "situation": {
+        "de": "Du erzählst einem Bekannten von einem Essen unter Nachbarn und davon, wie ihr trotz Stromausfall weitergemacht habt.",
+        "en": "Tell an acquaintance about a meal with neighbors and how you carried on during a power outage."
+      },
+      "pedagogicalGoal": "Mit il y avait den Hintergrund setzen und ein Ereignis im passé composé anschließen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Comment s'est passé votre repas entre voisins hier soir ?",
+          "baseText": {
+            "de": "Wie war Ihr Essen mit den Nachbarn gestern Abend?",
+            "en": "How was your meal with the neighbors last night?"
+          }
+        },
+        {
+          "targetText": "Il y avait une bonne ambiance pendant le repas, puis le courant a sauté.",
+          "baseText": {
+            "de": "Beim Essen war die Stimmung gut, dann ist der Strom ausgefallen.",
+            "en": "There was a good atmosphere during the meal, then the power went out."
+          }
+        },
+        {
+          "targetText": "Comment avez-vous continué le repas sans lumière ?",
+          "baseText": {
+            "de": "Wie haben Sie das Essen ohne Licht fortgesetzt?",
+            "en": "How did you continue the meal without any light?"
+          }
+        },
+        {
+          "targetText": "Il y avait des bougies, alors nous avons continué.",
+          "baseText": {
+            "de": "Es gab Kerzen, also haben wir weitergemacht.",
+            "en": "There were candles, so we carried on."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Le décor à l’imparfait",
+        "rule": {
+          "de": "Il y avait beschreibt, was im Hintergrund vorhanden war; das passé composé erzählt, was dann passiert ist.",
+          "en": "Il y avait describes what was present in the background; the passé composé tells what happened next."
+        },
+        "examples": [
+          {
+            "targetText": "Il y avait une bonne ambiance pendant le repas, puis le courant a sauté.",
+            "baseText": {
+              "de": "Beim Essen war die Stimmung gut, dann ist der Strom ausgefallen.",
+              "en": "There was a good atmosphere during the meal, then the power went out."
+            },
+            "highlight": "Il y avait"
+          },
+          {
+            "targetText": "Il y avait du monde, alors nous avons attendu dehors.",
+            "baseText": {
+              "de": "Es waren viele Leute da, also haben wir draußen gewartet.",
+              "en": "There were a lot of people, so we waited outside."
+            },
+            "highlight": "Il y avait"
+          }
+        ]
+      },
+      "cloze": [
+        "Il y ",
+        {
+          "kind": "form",
+          "answer": "avait",
+          "cue": "avoir",
+          "choices": [
+            "avais",
+            "avaient",
+            "avait",
+            "avions"
+          ]
+        },
+        " des bougies, alors nous avons ",
+        {
+          "kind": "form",
+          "answer": "continué",
+          "cue": "continuer",
+          "choices": [
+            "continuer",
+            "continué",
+            "continuions",
+            "continuons"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Il y avait",
+          "baseText": {
+            "de": "Es gab",
+            "en": "There was"
+          }
+        },
+        {
+          "targetText": "une bonne ambiance",
+          "baseText": {
+            "de": "eine gute Stimmung",
+            "en": "a good atmosphere"
+          }
+        },
+        {
+          "targetText": "pendant le repas,",
+          "baseText": {
+            "de": "während des Essens,",
+            "en": "during the meal,"
+          }
+        },
+        {
+          "targetText": "puis le courant a sauté.",
+          "baseText": {
+            "de": "dann fiel der Strom aus.",
+            "en": "then the power went out."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "une bonne ambiance",
+          "baseText": {
+            "de": "eine gute Stimmung",
+            "en": "a good atmosphere"
+          }
+        },
+        {
+          "targetText": "pendant",
+          "baseText": {
+            "de": "während",
+            "en": "during"
+          }
+        },
+        {
+          "targetText": "le repas",
+          "baseText": {
+            "de": "das Essen; die Mahlzeit",
+            "en": "the meal"
+          }
+        },
+        {
+          "targetText": "le courant",
+          "baseText": {
+            "de": "der Strom",
+            "en": "the electrical power"
+          }
+        },
+        {
+          "targetText": "des bougies",
+          "baseText": {
+            "de": "Kerzen",
+            "en": "candles"
+          }
+        },
+        {
+          "targetText": "sans lumière",
+          "baseText": {
+            "de": "ohne Licht",
+            "en": "without light"
+          }
+        },
+        {
+          "targetText": "continué",
+          "baseText": {
+            "de": "weitergemacht",
+            "en": "carried on"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Il y ",
+        "answer": "avait",
+        "after": " une bonne ambiance pendant le repas, puis le courant a sauté.",
+        "fallbackChoices": [
+          "avait",
+          "avais",
+          "avions",
+          "avaient"
+        ]
+      },
+      "speakRequired": [
+        "ambiance",
+        "pendant",
+        "courant"
+      ],
+      "sceneCaption": {
+        "de": "Ein Bekannter fragt am nächsten Morgen: „Comment s'est passé votre repas entre voisins hier soir ?“",
+        "en": "The next morning, an acquaintance asks: “Comment s'est passé votre repas entre voisins hier soir ?”"
+      },
+      "trophyWord": {
+        "word": "pendant",
+        "meaning": {
+          "de": "während",
+          "en": "during"
+        },
+        "example": "Il y avait de la musique pendant le repas.",
+        "whyThisWord": {
+          "de": "Pendant verankert ein Ereignis in einer Tätigkeit und macht den zeitlichen Rahmen deiner Geschichte deutlich.",
+          "en": "Pendant places an event within an activity and makes the time frame of your story clear."
+        }
+      },
+      "distractors": [
+        "une ambiance étrange",
+        "pendant le concert,"
+      ],
+      "placeholderCaption": {
+        "de": "Ein ruhiges Gespräch im Flur eines Wohnhauses am nächsten Morgen.",
+        "en": "A quiet conversation in an apartment building hallway the next morning."
+      },
+      "songMood": "a neighborly dinner remembered with warmth and a small surprise",
+      "visualNotes": "Bright hallway conversation; do not reveal candles or darkness before the story begins."
+    },
+    {
+      "slug": "collegue-apercue-devant-la-salle",
+      "title": {
+        "de": "Warten im Warmen",
+        "en": "Waiting somewhere warm"
+      },
+      "situation": {
+        "de": "Vor Beginn einer Veranstaltung triffst du unerwartet eine Kollegin; später erzählst du einem Bekannten von der Wartezeit.",
+        "en": "You unexpectedly meet a colleague before an event; later, tell an acquaintance about the wait."
+      },
+      "pedagogicalGoal": "Mit il faisait die Temperatur als Hintergrund beschreiben und eine Begegnung im passé composé erzählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qu'avez-vous fait avant l'ouverture de la salle ?",
+          "baseText": {
+            "de": "Was haben Sie gemacht, bevor der Saal geöffnet wurde?",
+            "en": "What did you do before the hall opened?"
+          }
+        },
+        {
+          "targetText": "Il faisait froid devant la salle, puis j'ai aperçu une collègue.",
+          "baseText": {
+            "de": "Vor dem Saal war es kalt, dann habe ich eine Kollegin entdeckt.",
+            "en": "It was cold outside the hall, then I spotted a colleague."
+          }
+        },
+        {
+          "targetText": "Avez-vous attendu dehors malgré le froid ?",
+          "baseText": {
+            "de": "Haben Sie trotz der Kälte draußen gewartet?",
+            "en": "Did you wait outside despite the cold?"
+          }
+        },
+        {
+          "targetText": "Non, il faisait chaud au café, alors nous avons patienté.",
+          "baseText": {
+            "de": "Nein, im Café war es warm, also haben wir dort gewartet.",
+            "en": "No, it was warm in the café, so we waited there."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Il faisait : la météo en arrière-plan",
+        "rule": {
+          "de": "Il faisait chaud oder froid beschreibt die Temperatur im Hintergrund; das passé composé benennt das anschließende Ereignis.",
+          "en": "Il faisait chaud or froid gives the background temperature; the passé composé names the event that followed."
+        },
+        "examples": [
+          {
+            "targetText": "Il faisait froid devant la salle, puis j'ai aperçu une collègue.",
+            "baseText": {
+              "de": "Vor dem Saal war es kalt, dann habe ich eine Kollegin entdeckt.",
+              "en": "It was cold outside the hall, then I spotted a colleague."
+            },
+            "highlight": "Il faisait froid"
+          },
+          {
+            "targetText": "Il faisait chaud, alors nous avons acheté de l'eau.",
+            "baseText": {
+              "de": "Es war heiß, also haben wir Wasser gekauft.",
+              "en": "It was hot, so we bought some water."
+            },
+            "highlight": "Il faisait chaud"
+          }
+        ]
+      },
+      "cloze": [
+        "Non, il ",
+        {
+          "kind": "form",
+          "answer": "faisait",
+          "cue": "faire",
+          "choices": [
+            "faisions",
+            "faisais",
+            "faisaient",
+            "faisait"
+          ]
+        },
+        " chaud au café, alors nous avons ",
+        {
+          "kind": "form",
+          "answer": "patienté",
+          "cue": "patienter",
+          "choices": [
+            "patienté",
+            "patientons",
+            "patienter",
+            "patientions"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Il faisait froid",
+          "baseText": {
+            "de": "Es war kalt",
+            "en": "It was cold"
+          }
+        },
+        {
+          "targetText": "devant la salle,",
+          "baseText": {
+            "de": "vor dem Saal,",
+            "en": "outside the hall,"
+          }
+        },
+        {
+          "targetText": "puis j'ai aperçu",
+          "baseText": {
+            "de": "dann entdeckte ich",
+            "en": "then I spotted"
+          }
+        },
+        {
+          "targetText": "une collègue.",
+          "baseText": {
+            "de": "eine Kollegin.",
+            "en": "a colleague."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il faisait froid",
+          "baseText": {
+            "de": "es war kalt",
+            "en": "it was cold"
+          }
+        },
+        {
+          "targetText": "la salle",
+          "baseText": {
+            "de": "der Saal",
+            "en": "the hall"
+          }
+        },
+        {
+          "targetText": "aperçu",
+          "baseText": {
+            "de": "entdeckt; erblickt",
+            "en": "spotted; caught sight of"
+          }
+        },
+        {
+          "targetText": "une collègue",
+          "baseText": {
+            "de": "eine Kollegin",
+            "en": "a colleague"
+          }
+        },
+        {
+          "targetText": "dehors",
+          "baseText": {
+            "de": "draußen",
+            "en": "outside"
+          }
+        },
+        {
+          "targetText": "chaud",
+          "baseText": {
+            "de": "warm; heiß",
+            "en": "warm; hot"
+          }
+        },
+        {
+          "targetText": "patienté",
+          "baseText": {
+            "de": "gewartet",
+            "en": "waited patiently"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Il ",
+        "answer": "faisait",
+        "after": " froid devant la salle, puis j'ai aperçu une collègue.",
+        "fallbackChoices": [
+          "faisais",
+          "faisait",
+          "faisions",
+          "faisaient"
+        ]
+      },
+      "speakRequired": [
+        "froid",
+        "aperçu",
+        "collègue"
+      ],
+      "sceneCaption": {
+        "de": "Ein Bekannter erkundigt sich nach der Veranstaltung: „Qu'avez-vous fait avant l'ouverture de la salle ?“",
+        "en": "An acquaintance asks about the event: “Qu'avez-vous fait avant l'ouverture de la salle ?”"
+      },
+      "trophyWord": {
+        "word": "aperçu",
+        "meaning": {
+          "de": "entdeckt; erblickt",
+          "en": "spotted; caught sight of"
+        },
+        "example": "J'ai aperçu un ami près de la gare.",
+        "whyThisWord": {
+          "de": "Aperçu beschreibt den kurzen Moment des Entdeckens und bringt eine Begegnung in deine Geschichte.",
+          "en": "Aperçu captures the moment of spotting someone and brings an encounter into your story."
+        }
+      },
+      "distractors": [
+        "devant le théâtre,",
+        "un ancien voisin."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch vor einem Veranstaltungshaus nach der Vorstellung.",
+        "en": "A conversation outside a venue after the event."
+      },
+      "songMood": "a cold afternoon softened by an unexpected familiar face",
+      "visualNotes": "Venue exterior and an ordinary conversation; keep the café decision out of the opening scene."
+    },
+    {
+      "slug": "chien-devant-la-boulangerie",
+      "title": {
+        "de": "Ein Hund auf der Straße",
+        "en": "A dog in the street"
+      },
+      "situation": {
+        "de": "Du erzählst einer Bekannten von einem unerwarteten Zwischenfall beim Warten vor der Bäckerei.",
+        "en": "Tell an acquaintance about something unexpected that happened while you were waiting outside the bakery."
+      },
+      "pedagogicalGoal": "Eine laufende Handlung im imparfait mit einem Ereignis im passé composé durch quand verbinden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous avez eu une surprise devant la boulangerie ?",
+          "baseText": {
+            "de": "Haben Sie vor der Bäckerei etwas Unerwartetes erlebt?",
+            "en": "Did something unexpected happen outside the bakery?"
+          }
+        },
+        {
+          "targetText": "J'attendais devant la boulangerie quand un chien a traversé la rue.",
+          "baseText": {
+            "de": "Ich wartete vor der Bäckerei, als ein Hund über die Straße lief.",
+            "en": "I was waiting outside the bakery when a dog crossed the street."
+          }
+        },
+        {
+          "targetText": "Il était tout seul ? Et comment avez-vous retrouvé le propriétaire de ce chien ?",
+          "baseText": {
+            "de": "War er ganz allein? Und wie haben Sie den Besitzer dieses Hundes gefunden?",
+            "en": "Was it all on its own? And how did you find that dog’s owner?"
+          }
+        },
+        {
+          "targetText": "J'ai regardé sa médaille, puis appelé le numéro indiqué.",
+          "baseText": {
+            "de": "Ich habe auf seine Hundemarke geschaut und dann die angegebene Nummer angerufen.",
+            "en": "I looked at its tag, then called the number on it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Imparfait et passé composé avec quand",
+        "rule": {
+          "de": "Das imparfait zeigt, was gerade lief; quand leitet hier das abgeschlossene Ereignis im passé composé ein.",
+          "en": "The imparfait shows what was in progress; here, quand introduces the completed event in the passé composé."
+        },
+        "examples": [
+          {
+            "targetText": "J'attendais devant la boulangerie quand un chien a traversé la rue.",
+            "baseText": {
+              "de": "Ich wartete vor der Bäckerei, als ein Hund über die Straße lief.",
+              "en": "I was waiting outside the bakery when a dog crossed the street."
+            },
+            "highlight": "J'attendais"
+          },
+          {
+            "targetText": "Je lisais sur un banc quand mon téléphone a sonné.",
+            "baseText": {
+              "de": "Ich las auf einer Bank, als mein Telefon klingelte.",
+              "en": "I was reading on a bench when my phone rang."
+            },
+            "highlight": "Je lisais"
+          }
+        ]
+      },
+      "cloze": [
+        "J'ai ",
+        {
+          "kind": "form",
+          "answer": "regardé",
+          "cue": "regarder",
+          "choices": [
+            "regarder",
+            "regardais",
+            "regardé",
+            "regarde"
+          ]
+        },
+        " sa médaille, puis ",
+        {
+          "kind": "form",
+          "answer": "appelé",
+          "cue": "appeler",
+          "choices": [
+            "appelé",
+            "appeler",
+            "appelle",
+            "appelais"
+          ]
+        },
+        " le numéro indiqué."
+      ],
+      "chunks": [
+        {
+          "targetText": "J'attendais",
+          "baseText": {
+            "de": "Ich wartete",
+            "en": "I was waiting"
+          }
+        },
+        {
+          "targetText": "devant la boulangerie",
+          "baseText": {
+            "de": "vor der Bäckerei",
+            "en": "outside the bakery"
+          }
+        },
+        {
+          "targetText": "quand un chien",
+          "baseText": {
+            "de": "als ein Hund",
+            "en": "when a dog"
+          }
+        },
+        {
+          "targetText": "a traversé la rue.",
+          "baseText": {
+            "de": "über die Straße lief.",
+            "en": "crossed the street."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "attendais",
+          "baseText": {
+            "de": "wartete",
+            "en": "was waiting"
+          }
+        },
+        {
+          "targetText": "la boulangerie",
+          "baseText": {
+            "de": "die Bäckerei",
+            "en": "the bakery"
+          }
+        },
+        {
+          "targetText": "un chien",
+          "baseText": {
+            "de": "ein Hund",
+            "en": "a dog"
+          }
+        },
+        {
+          "targetText": "traversé la rue",
+          "baseText": {
+            "de": "die Straße überquert",
+            "en": "crossed the street"
+          }
+        },
+        {
+          "targetText": "le propriétaire",
+          "baseText": {
+            "de": "der Besitzer",
+            "en": "the owner"
+          }
+        },
+        {
+          "targetText": "sa médaille",
+          "baseText": {
+            "de": "seine Hundemarke",
+            "en": "its identification tag"
+          }
+        },
+        {
+          "targetText": "le numéro indiqué",
+          "baseText": {
+            "de": "die angegebene Nummer",
+            "en": "the number shown"
+          }
+        }
+      ],
+      "recall": {
+        "before": "J'",
+        "answer": "attendais",
+        "after": " devant la boulangerie quand un chien a traversé la rue.",
+        "fallbackChoices": [
+          "attendait",
+          "attendions",
+          "attendaient",
+          "attendais"
+        ]
+      },
+      "speakRequired": [
+        "boulangerie",
+        "chien",
+        "rue"
+      ],
+      "sceneCaption": {
+        "de": "Eine Bekannte fragt nach deinem Einkauf: „Vous avez eu une surprise devant la boulangerie ?“",
+        "en": "An acquaintance asks about your shopping trip: “Vous avez eu une surprise devant la boulangerie ?”"
+      },
+      "trophyWord": {
+        "word": "attendais",
+        "meaning": {
+          "de": "wartete",
+          "en": "was waiting"
+        },
+        "example": "J'attendais le bus quand mon voisin a appelé.",
+        "whyThisWord": {
+          "de": "Attendais setzt eine laufende Handlung in den Hintergrund, vor dem etwas Neues passiert.",
+          "en": "Attendais puts an ongoing action in the background so a new event can enter the story."
+        }
+      },
+      "distractors": [
+        "devant la pharmacie",
+        "quand un chat"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Unterhaltung auf dem Gehweg neben einer Bäckerei.",
+        "en": "A conversation on the sidewalk beside a bakery."
+      },
+      "songMood": "an ordinary bakery stop becoming a small neighborhood adventure",
+      "visualNotes": "Bakery frontage and two people talking; do not show the dog’s tag or phone number."
+    },
+    {
+      "slug": "cle-tournee-dans-la-serrure",
+      "title": {
+        "de": "Die klemmende Tür",
+        "en": "The stuck door"
+      },
+      "situation": {
+        "de": "Ein Bekannter fragt nach deiner klemmenden Kellertür; du beschreibst den entscheidenden Handgriff und erklärst die Ursache.",
+        "en": "An acquaintance asks about your stuck cellar door; describe the action that worked and explain the cause."
+      },
+      "pedagogicalGoal": "Mit imparfait und passé composé eine laufende Bewegung, ihren Erfolg und den Hintergrund des Problems schildern.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Comment avez-vous ouvert la porte de votre cave ?",
+          "baseText": {
+            "de": "Wie haben Sie Ihre Kellertür aufbekommen?",
+            "en": "How did you get your cellar door open?"
+          }
+        },
+        {
+          "targetText": "Je poussais doucement quand j'ai réussi à tourner la clé.",
+          "baseText": {
+            "de": "Ich drückte vorsichtig, als es mir gelang, den Schlüssel zu drehen.",
+            "en": "I was pushing gently when I managed to turn the key."
+          }
+        },
+        {
+          "targetText": "Et pourquoi la clé bloquait-elle dans la serrure ?",
+          "baseText": {
+            "de": "Und warum klemmte der Schlüssel im Schloss?",
+            "en": "And why was the key sticking in the lock?"
+          }
+        },
+        {
+          "targetText": "Le mécanisme manquait d'huile, alors j'ai ajouté quelques gouttes.",
+          "baseText": {
+            "de": "Dem Mechanismus fehlte Öl, also habe ich ein paar Tropfen dazugegeben.",
+            "en": "The mechanism needed oil, so I added a few drops."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "L’action en cours et le résultat",
+        "rule": {
+          "de": "Das imparfait zeigt die laufende Bewegung oder den Zustand; das passé composé nennt den erreichten Erfolg oder den nächsten Schritt.",
+          "en": "The imparfait shows an ongoing movement or state; the passé composé gives the achieved result or the next step."
+        },
+        "examples": [
+          {
+            "targetText": "Je poussais doucement quand j'ai réussi à tourner la clé.",
+            "baseText": {
+              "de": "Ich drückte vorsichtig, als es mir gelang, den Schlüssel zu drehen.",
+              "en": "I was pushing gently when I managed to turn the key."
+            },
+            "highlight": "poussais doucement quand j'ai réussi"
+          },
+          {
+            "targetText": "Je cherchais dans mon sac quand j'ai trouvé la clé.",
+            "baseText": {
+              "de": "Ich suchte in meiner Tasche, als ich den Schlüssel fand.",
+              "en": "I was searching my bag when I found the key."
+            },
+            "highlight": "cherchais dans mon sac quand j'ai trouvé"
+          }
+        ]
+      },
+      "cloze": [
+        "Le mécanisme ",
+        {
+          "kind": "form",
+          "answer": "manquait",
+          "cue": "manquer",
+          "choices": [
+            "manquaient",
+            "manquait",
+            "manquais",
+            "manquions"
+          ]
+        },
+        " d'huile, alors j'ai ",
+        {
+          "kind": "form",
+          "answer": "ajouté",
+          "cue": "ajouter",
+          "choices": [
+            "ajouter",
+            "ajoutais",
+            "ajoute",
+            "ajouté"
+          ]
+        },
+        " quelques gouttes."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je poussais doucement",
+          "baseText": {
+            "de": "Ich drückte vorsichtig",
+            "en": "I was pushing gently"
+          }
+        },
+        {
+          "targetText": "quand j'ai réussi",
+          "baseText": {
+            "de": "als es mir gelang",
+            "en": "when I managed"
+          }
+        },
+        {
+          "targetText": "à tourner",
+          "baseText": {
+            "de": "zu drehen",
+            "en": "to turn"
+          }
+        },
+        {
+          "targetText": "la clé.",
+          "baseText": {
+            "de": "den Schlüssel.",
+            "en": "the key."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "poussais",
+          "baseText": {
+            "de": "drückte",
+            "en": "was pushing"
+          }
+        },
+        {
+          "targetText": "doucement",
+          "baseText": {
+            "de": "vorsichtig; sanft",
+            "en": "gently"
+          }
+        },
+        {
+          "targetText": "réussi",
+          "baseText": {
+            "de": "geschafft",
+            "en": "managed; succeeded"
+          }
+        },
+        {
+          "targetText": "tourner la clé",
+          "baseText": {
+            "de": "den Schlüssel drehen",
+            "en": "turn the key"
+          }
+        },
+        {
+          "targetText": "la serrure",
+          "baseText": {
+            "de": "das Schloss",
+            "en": "the lock"
+          }
+        },
+        {
+          "targetText": "le mécanisme",
+          "baseText": {
+            "de": "der Mechanismus",
+            "en": "the mechanism"
+          }
+        },
+        {
+          "targetText": "quelques gouttes",
+          "baseText": {
+            "de": "ein paar Tropfen",
+            "en": "a few drops"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je ",
+        "answer": "poussais",
+        "after": " doucement quand j'ai réussi à tourner la clé.",
+        "fallbackChoices": [
+          "poussais",
+          "poussait",
+          "poussions",
+          "poussaient"
+        ]
+      },
+      "speakRequired": [
+        "doucement",
+        "réussi",
+        "clé"
+      ],
+      "sceneCaption": {
+        "de": "Ein Bekannter fragt im Hausflur: „Comment avez-vous ouvert la porte de votre cave ?“",
+        "en": "An acquaintance asks in the hallway: “Comment avez-vous ouvert la porte de votre cave ?”"
+      },
+      "trophyWord": {
+        "word": "réussi",
+        "meaning": {
+          "de": "geschafft; Erfolg gehabt",
+          "en": "managed; succeeded"
+        },
+        "example": "J'ai réussi à ouvrir la fenêtre sans forcer.",
+        "whyThisWord": {
+          "de": "Mit réussi à erzählst du, dass dir nach einer Schwierigkeit etwas gelungen ist.",
+          "en": "Réussi à lets you tell how you managed to do something after a difficulty."
+        }
+      },
+      "distractors": [
+        "Je tirais doucement",
+        "la poignée."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn sprechen im Flur vor dem Kellerabgang.",
+        "en": "Two neighbors talk in the hallway near the cellar stairs."
+      },
+      "songMood": "a patient small repair with a satisfying moment of success",
+      "visualNotes": "Apartment hallway and cellar entrance; no oil bottle or close-up of the solution in the opening image."
+    },
+    {
+      "slug": "tonnerre-sur-le-sentier",
+      "title": {
+        "de": "Donner auf dem Weg",
+        "en": "Thunder on the trail"
+      },
+      "situation": {
+        "de": "Du erzählst einer Bekannten von einer Wanderung und begründest, welchen Rückweg eure Gruppe gewählt hat.",
+        "en": "Tell an acquaintance about a hike and explain which route your group took back."
+      },
+      "pedagogicalGoal": "Eine Hintergrundbeschreibung und ein plötzliches Ereignis verbinden und danach die Reaktion erzählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Comment s'est passée votre randonnée en forêt hier ?",
+          "baseText": {
+            "de": "Wie war Ihre Wanderung im Wald gestern?",
+            "en": "How was your hike in the forest yesterday?"
+          }
+        },
+        {
+          "targetText": "Le sentier était glissant quand nous avons soudain entendu le tonnerre.",
+          "baseText": {
+            "de": "Der Weg war rutschig, als wir plötzlich Donner hörten.",
+            "en": "The trail was slippery when we suddenly heard thunder."
+          }
+        },
+        {
+          "targetText": "Et quel chemin avez-vous choisi pour le retour ?",
+          "baseText": {
+            "de": "Und welchen Weg haben Sie für den Rückweg gewählt?",
+            "en": "And which way did you choose to go back?"
+          }
+        },
+        {
+          "targetText": "Nous avons suivi la route et évité la forêt.",
+          "baseText": {
+            "de": "Wir sind der Straße gefolgt und haben den Wald gemieden.",
+            "en": "We followed the road and avoided the forest."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Le cadre et l’événement soudain",
+        "rule": {
+          "de": "Das imparfait beschreibt den Zustand vor dem Ereignis; soudain hebt den unerwarteten Moment im passé composé hervor.",
+          "en": "The imparfait describes the background state; soudain highlights the unexpected moment in the passé composé."
+        },
+        "examples": [
+          {
+            "targetText": "Le sentier était glissant quand nous avons soudain entendu le tonnerre.",
+            "baseText": {
+              "de": "Der Weg war rutschig, als wir plötzlich Donner hörten.",
+              "en": "The trail was slippery when we suddenly heard thunder."
+            },
+            "highlight": "avons soudain entendu"
+          },
+          {
+            "targetText": "La rue était calme quand nous avons soudain entendu une sirène.",
+            "baseText": {
+              "de": "Die Straße war ruhig, als wir plötzlich eine Sirene hörten.",
+              "en": "The street was quiet when we suddenly heard a siren."
+            },
+            "highlight": "avons soudain entendu"
+          }
+        ]
+      },
+      "cloze": [
+        "Nous avons ",
+        {
+          "kind": "form",
+          "answer": "suivi",
+          "cue": "suivre",
+          "choices": [
+            "suivons",
+            "suivre",
+            "suivi",
+            "suivions"
+          ]
+        },
+        " la route et ",
+        {
+          "kind": "form",
+          "answer": "évité",
+          "cue": "éviter",
+          "choices": [
+            "éviter",
+            "évitions",
+            "évitons",
+            "évité"
+          ]
+        },
+        " la forêt."
+      ],
+      "chunks": [
+        {
+          "targetText": "Le sentier",
+          "baseText": {
+            "de": "Der Weg",
+            "en": "The trail"
+          }
+        },
+        {
+          "targetText": "était glissant",
+          "baseText": {
+            "de": "war rutschig",
+            "en": "was slippery"
+          }
+        },
+        {
+          "targetText": "quand nous avons soudain entendu",
+          "baseText": {
+            "de": "als wir plötzlich hörten",
+            "en": "when we suddenly heard"
+          }
+        },
+        {
+          "targetText": "le tonnerre.",
+          "baseText": {
+            "de": "den Donner.",
+            "en": "thunder."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la randonnée",
+          "baseText": {
+            "de": "die Wanderung",
+            "en": "the hike"
+          }
+        },
+        {
+          "targetText": "le sentier",
+          "baseText": {
+            "de": "der Weg; der Pfad",
+            "en": "the trail; the path"
+          }
+        },
+        {
+          "targetText": "glissant",
+          "baseText": {
+            "de": "rutschig",
+            "en": "slippery"
+          }
+        },
+        {
+          "targetText": "soudain",
+          "baseText": {
+            "de": "plötzlich",
+            "en": "suddenly"
+          }
+        },
+        {
+          "targetText": "le tonnerre",
+          "baseText": {
+            "de": "der Donner",
+            "en": "thunder"
+          }
+        },
+        {
+          "targetText": "suivi la route",
+          "baseText": {
+            "de": "der Straße gefolgt",
+            "en": "followed the road"
+          }
+        },
+        {
+          "targetText": "évité la forêt",
+          "baseText": {
+            "de": "den Wald gemieden",
+            "en": "avoided the forest"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Le sentier ",
+        "answer": "était",
+        "after": " glissant quand nous avons soudain entendu le tonnerre.",
+        "fallbackChoices": [
+          "étais",
+          "étions",
+          "était",
+          "étaient"
+        ]
+      },
+      "speakRequired": [
+        "sentier",
+        "soudain",
+        "tonnerre"
+      ],
+      "sceneCaption": {
+        "de": "Eine Bekannte fragt am nächsten Tag: „Comment s'est passée votre randonnée en forêt hier ?“",
+        "en": "The next day, an acquaintance asks: “Comment s'est passée votre randonnée en forêt hier ?”"
+      },
+      "trophyWord": {
+        "word": "soudain",
+        "meaning": {
+          "de": "plötzlich",
+          "en": "suddenly"
+        },
+        "example": "Nous avons soudain entendu un bruit derrière la porte.",
+        "whyThisWord": {
+          "de": "Soudain markiert einen unerwarteten Wendepunkt, ohne dass du die ganze Geschichte neu beginnen musst.",
+          "en": "Soudain marks an unexpected turn while keeping your story moving."
+        }
+      },
+      "distractors": [
+        "Le pont",
+        "la pluie."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Unterhaltung neben einer Wanderkarte am Ortsrand.",
+        "en": "A conversation beside a hiking map at the edge of town."
+      },
+      "songMood": "a woodland memory with a sudden change in the weather",
+      "visualNotes": "Trail map and two people recalling a hike; keep thunder and route decisions out of the opening scene."
+    },
+    {
+      "slug": "histoire-de-mon-ancien-quartier",
+      "title": {
+        "de": "Eine Geschichte beim Warten",
+        "en": "A story while waiting"
+      },
+      "situation": {
+        "de": "Du berichtest einer Bekannten von einem Gespräch an der Bushaltestelle und gibst ein Stück der erzählten Geschichte wieder.",
+        "en": "Tell an acquaintance about a conversation at the bus stop, then share part of the story you told."
+      },
+      "pedagogicalGoal": "Den Rahmen eines Gesprächs im imparfait setzen und im passé composé zum Inhalt einer Erzählung überleiten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "De quoi avez-vous parlé avec votre voisin hier ?",
+          "baseText": {
+            "de": "Worüber haben Sie gestern mit Ihrem Nachbarn gesprochen?",
+            "en": "What did you talk about with your neighbor yesterday?"
+          }
+        },
+        {
+          "targetText": "Nous attendions le bus quand j'ai raconté une histoire sur mon ancien quartier.",
+          "baseText": {
+            "de": "Wir warteten auf den Bus, als ich eine Geschichte über mein früheres Viertel erzählte.",
+            "en": "We were waiting for the bus when I told a story about my old neighborhood."
+          }
+        },
+        {
+          "targetText": "Et quelle histoire lui avez-vous racontée exactement ?",
+          "baseText": {
+            "de": "Und welche Geschichte haben Sie ihm genau erzählt?",
+            "en": "And which story did you tell him exactly?"
+          }
+        },
+        {
+          "targetText": "Un voisin bricolait quand il a découvert une vieille lettre.",
+          "baseText": {
+            "de": "Ein Nachbar war am Werkeln, als er einen alten Brief entdeckte.",
+            "en": "A neighbor was doing some repairs when he discovered an old letter."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un récit dans la conversation",
+        "rule": {
+          "de": "Mit imparfait und quand beschreibst du, was gerade lief, als ein neues Ereignis oder eine Erzählung einsetzte.",
+          "en": "Use the imparfait with quand to show what was in progress when a new event or story began."
+        },
+        "examples": [
+          {
+            "targetText": "Nous attendions le bus quand j'ai raconté une histoire sur mon ancien quartier.",
+            "baseText": {
+              "de": "Wir warteten auf den Bus, als ich eine Geschichte über mein früheres Viertel erzählte.",
+              "en": "We were waiting for the bus when I told a story about my old neighborhood."
+            },
+            "highlight": "attendions le bus quand j'ai raconté"
+          },
+          {
+            "targetText": "Un voisin bricolait quand il a découvert une vieille lettre.",
+            "baseText": {
+              "de": "Ein Nachbar war am Werkeln, als er einen alten Brief entdeckte.",
+              "en": "A neighbor was doing some repairs when he discovered an old letter."
+            },
+            "highlight": "bricolait quand il a découvert"
+          }
+        ]
+      },
+      "cloze": [
+        "Un voisin ",
+        {
+          "kind": "form",
+          "answer": "bricolait",
+          "cue": "bricoler",
+          "choices": [
+            "bricolais",
+            "bricolait",
+            "bricolions",
+            "bricolaient"
+          ]
+        },
+        " quand il a ",
+        {
+          "kind": "form",
+          "answer": "découvert",
+          "cue": "découvrir",
+          "choices": [
+            "découvrir",
+            "découvrait",
+            "découvre",
+            "découvert"
+          ]
+        },
+        " une vieille lettre."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nous attendions le bus",
+          "baseText": {
+            "de": "Wir warteten auf den Bus",
+            "en": "We were waiting for the bus"
+          }
+        },
+        {
+          "targetText": "quand j'ai raconté",
+          "baseText": {
+            "de": "als ich erzählte",
+            "en": "when I told"
+          }
+        },
+        {
+          "targetText": "une histoire",
+          "baseText": {
+            "de": "eine Geschichte",
+            "en": "a story"
+          }
+        },
+        {
+          "targetText": "sur mon ancien quartier.",
+          "baseText": {
+            "de": "über mein früheres Viertel.",
+            "en": "about my old neighborhood."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "attendions",
+          "baseText": {
+            "de": "warteten",
+            "en": "were waiting"
+          }
+        },
+        {
+          "targetText": "raconté",
+          "baseText": {
+            "de": "erzählt",
+            "en": "told; recounted"
+          }
+        },
+        {
+          "targetText": "une histoire",
+          "baseText": {
+            "de": "eine Geschichte",
+            "en": "a story"
+          }
+        },
+        {
+          "targetText": "mon ancien quartier",
+          "baseText": {
+            "de": "mein früheres Viertel",
+            "en": "my old neighborhood"
+          }
+        },
+        {
+          "targetText": "bricolait",
+          "baseText": {
+            "de": "werkelte",
+            "en": "was doing repairs"
+          }
+        },
+        {
+          "targetText": "découvert",
+          "baseText": {
+            "de": "entdeckt",
+            "en": "discovered"
+          }
+        },
+        {
+          "targetText": "une vieille lettre",
+          "baseText": {
+            "de": "ein alter Brief",
+            "en": "an old letter"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nous ",
+        "answer": "attendions",
+        "after": " le bus quand j'ai raconté une histoire sur mon ancien quartier.",
+        "fallbackChoices": [
+          "attendiez",
+          "attendions",
+          "attendaient",
+          "attendait"
+        ]
+      },
+      "speakRequired": [
+        "raconté",
+        "histoire",
+        "quartier"
+      ],
+      "sceneCaption": {
+        "de": "Eine Bekannte spricht dich auf ein Gespräch an: „De quoi avez-vous parlé avec votre voisin hier ?“",
+        "en": "An acquaintance asks about a conversation: “De quoi avez-vous parlé avec votre voisin hier ?”"
+      },
+      "trophyWord": {
+        "word": "raconté",
+        "meaning": {
+          "de": "erzählt",
+          "en": "told; recounted"
+        },
+        "example": "J'ai raconté cette histoire pendant le trajet.",
+        "whyThisWord": {
+          "de": "Raconté verbindet das Gespräch von heute mit einem Erlebnis, von dem du anderen erzählt hast.",
+          "en": "Raconté links today’s conversation to an experience you have shared with someone else."
+        }
+      },
+      "distractors": [
+        "Nous attendions le train",
+        "sur mon premier emploi."
+      ],
+      "placeholderCaption": {
+        "de": "Eine ruhige Unterhaltung an einer Bushaltestelle im Wohnviertel.",
+        "en": "A relaxed conversation at a neighborhood bus stop."
+      },
+      "songMood": "a shared neighborhood memory unfolding during a quiet wait",
+      "visualNotes": "Residential bus stop and a conversation; no letter, repair scene or other later story detail."
+    },
+    {
+      "slug": "imprevu-pendant-la-visite",
+      "title": {
+        "de": "Ein anderer Tagesverlauf",
+        "en": "The day took a different turn"
+      },
+      "situation": {
+        "de": "Du erzählst einem Bekannten, wie eine Gruppenführung anders verlief als gedacht und was eure Gruppe daraus gemacht hat.",
+        "en": "Tell an acquaintance how a group tour took an unexpected turn and what your group did next."
+      },
+      "pedagogicalGoal": "Zum Abschluss Ereignis, Hintergrund und Reaktion in einem zusammenhängenden Bericht verknüpfen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Comment s'est passée votre sortie avec le groupe ?",
+          "baseText": {
+            "de": "Wie war Ihr Ausflug mit der Gruppe?",
+            "en": "How was your outing with the group?"
+          }
+        },
+        {
+          "targetText": "Un imprévu a changé notre journée : notre guide cherchait son téléphone.",
+          "baseText": {
+            "de": "Etwas Unerwartetes hat unseren Tagesverlauf verändert: Unser Stadtführer suchte sein Telefon.",
+            "en": "Something unexpected changed our day: our guide was looking for his phone."
+          }
+        },
+        {
+          "targetText": "Et qu'avez-vous fait pendant sa recherche ?",
+          "baseText": {
+            "de": "Und was haben Sie während seiner Suche gemacht?",
+            "en": "And what did you do while he was looking?"
+          }
+        },
+        {
+          "targetText": "Une passante connaissait le quartier, alors nous avons suivi ses conseils.",
+          "baseText": {
+            "de": "Eine Passantin kannte das Viertel, also sind wir ihren Empfehlungen gefolgt.",
+            "en": "A passerby knew the neighborhood, so we followed her advice."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Relier événement, contexte et réaction",
+        "rule": {
+          "de": "Imparfait und passé composé können im selben Bericht den Hintergrund, das Ereignis und die anschließende Reaktion zeigen.",
+          "en": "The imparfait and passé composé can show the background, the event and the reaction within one connected story."
+        },
+        "examples": [
+          {
+            "targetText": "Un imprévu a changé notre journée : notre guide cherchait son téléphone.",
+            "baseText": {
+              "de": "Etwas Unerwartetes hat unseren Tagesverlauf verändert: Unser Stadtführer suchte sein Telefon.",
+              "en": "Something unexpected changed our day: our guide was looking for his phone."
+            },
+            "highlight": "cherchait son téléphone"
+          },
+          {
+            "targetText": "Une passante connaissait le quartier, alors nous avons suivi ses conseils.",
+            "baseText": {
+              "de": "Eine Passantin kannte das Viertel, also sind wir ihren Empfehlungen gefolgt.",
+              "en": "A passerby knew the neighborhood, so we followed her advice."
+            },
+            "highlight": "connaissait le quartier, alors nous avons suivi"
+          }
+        ]
+      },
+      "cloze": [
+        "Une passante ",
+        {
+          "kind": "form",
+          "answer": "connaissait",
+          "cue": "connaître",
+          "choices": [
+            "connaissions",
+            "connaissais",
+            "connaissait",
+            "connaissaient"
+          ]
+        },
+        " le quartier, alors nous avons ",
+        {
+          "kind": "form",
+          "answer": "suivi",
+          "cue": "suivre",
+          "choices": [
+            "suivi",
+            "suivre",
+            "suivons",
+            "suivions"
+          ]
+        },
+        " ses conseils."
+      ],
+      "chunks": [
+        {
+          "targetText": "Un imprévu",
+          "baseText": {
+            "de": "Etwas Unerwartetes",
+            "en": "Something unexpected"
+          }
+        },
+        {
+          "targetText": "a changé notre journée :",
+          "baseText": {
+            "de": "hat unseren Tagesverlauf verändert:",
+            "en": "changed our day:"
+          }
+        },
+        {
+          "targetText": "notre guide cherchait",
+          "baseText": {
+            "de": "unser Stadtführer suchte",
+            "en": "our guide was looking for"
+          }
+        },
+        {
+          "targetText": "son téléphone.",
+          "baseText": {
+            "de": "sein Telefon.",
+            "en": "his phone."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un imprévu",
+          "baseText": {
+            "de": "etwas Unerwartetes",
+            "en": "an unexpected event"
+          }
+        },
+        {
+          "targetText": "notre guide",
+          "baseText": {
+            "de": "unser Stadtführer",
+            "en": "our guide"
+          }
+        },
+        {
+          "targetText": "cherchait",
+          "baseText": {
+            "de": "suchte",
+            "en": "was looking for"
+          }
+        },
+        {
+          "targetText": "une passante",
+          "baseText": {
+            "de": "eine Passantin",
+            "en": "a passerby"
+          }
+        },
+        {
+          "targetText": "connaissait",
+          "baseText": {
+            "de": "kannte",
+            "en": "knew; was familiar with"
+          }
+        },
+        {
+          "targetText": "suivi",
+          "baseText": {
+            "de": "befolgt; gefolgt",
+            "en": "followed"
+          }
+        },
+        {
+          "targetText": "ses conseils",
+          "baseText": {
+            "de": "ihre Empfehlungen",
+            "en": "her advice"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Un imprévu a changé notre journée : notre guide ",
+        "answer": "cherchait",
+        "after": " son téléphone.",
+        "fallbackChoices": [
+          "cherchait",
+          "cherchais",
+          "cherchions",
+          "cherchaient"
+        ]
+      },
+      "speakRequired": [
+        "imprévu",
+        "guide",
+        "téléphone"
+      ],
+      "sceneCaption": {
+        "de": "Ein Bekannter fragt nach deinem Ausflug: „Comment s'est passée votre sortie avec le groupe ?“",
+        "en": "An acquaintance asks about your outing: “Comment s'est passée votre sortie avec le groupe ?”"
+      },
+      "trophyWord": {
+        "word": "imprévu",
+        "meaning": {
+          "de": "etwas Unerwartetes; ein Zwischenfall",
+          "en": "an unexpected event; a setback"
+        },
+        "example": "Un imprévu a changé le programme de la journée.",
+        "whyThisWord": {
+          "de": "Imprévu gibt unerwarteten Wendungen einen Namen und hilft dir, ihren Einfluss auf den Tag zu erklären.",
+          "en": "Imprévu names an unexpected turn and helps you explain how it changed the day."
+        }
+      },
+      "distractors": [
+        "Un rendez-vous",
+        "notre guide préparait"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Bekannte sprechen auf einem Platz über einen Ausflug.",
+        "en": "Two acquaintances talk in a square about an outing."
+      },
+      "songMood": "a reflective end to a day that followed an unexpected route",
+      "visualNotes": "A city square and a conversation after an outing; no lost phone or helpful passerby in the opening scene."
+    }
+  ]
+}
