@@ -1,5 +1,5 @@
 # Lingwave Orchestrator — Memory Index
-Last updated: 2026-09-25
+Last updated: 2026-10-03
 
 > Lingwave (formerly Resonanz) is a cloud-first language-learning app: guided daily lessons, an SRS deck/card engine, AI music (level songs / song-only), a voice tutor, and a deprecated-for-users AI video pipeline. This repo (git root) holds both the live product — the `frontend/` React app on Vercel + Supabase — and the Python cloud generation backend (`job_runner.py`, `src/`, `cloud_engines/`) on Railway. Phase: pre-beta hardening and polish toward a TestFlight/private beta; the July 2026 target passed and the owner sets the next one.
 
@@ -7,7 +7,7 @@ Last updated: 2026-09-25
 
 | File | What it holds | Read when |
 |---|---|---|
-| [[STATE]] | Current truth: works / in progress / problems / next actions | Every session |
+| [[STATE]] | Current truth: works / in progress / problems / next actions | Implementation or a resume that needs project context |
 | [[DECISIONS]] | Why things are the way they are | Before changing direction |
 | [[ARCHITECTURE]] | How the system is built | Before touching structure |
 | [[LOG]] | Dated session journal, newest first | Catching up on recent work |
@@ -16,6 +16,9 @@ Last updated: 2026-09-25
 | archive/ | Rolled-off log entries and retired notes | Almost never |
 
 ## Topic notes
+
+For feature entry files, project skills and checks, use the [frontend map](../frontend/README.md). Search LOG and DECISIONS by topic/date; read only matching sections.
+
 - [[notes/today-critic-loop-2026-09-07]] — three independent reviews, 7.0 → 7.6 → 7.8; shipped flow fixes and an explicitly unmet 8+ visual target.
 - [[notes/today-visual-input-round3-2026-09-07]] — selected café reference implemented, responsive glass/gem system, native-script composition safeguards and actual visual evidence.
 - [[notes/base-languages-brand-2026-09-07]] — twelve UI/explanation bases, static guided editions, card provenance, Ribbon current art, additive catalog SQL and verification limits.

@@ -17,7 +17,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 
 ## In progress
 - B1 expansion: `frontend/content-drafts/b1-2026-10/` holds thirty reviewed P1 episodes for English/Spanish/French and three proposed 100-lesson maps. The other 270 beats are outlines; no active courses or B2/C were added. Fable's exact corrections are applied; independent review passed. The 200,000 ElevenLabs-credit ceiling is approved; no synthesis has run. Next: provider rates/access, bounded generation, and runtime/catalog/twelve-base integration before production approval. README owns evidence and the Opus handoff.
-- agent-hygiene (2026-09-25 audit fixes): implementation done 2026-09-26; waiting on owner calls (storage deletion OK, Speak live try, credential rotation). Deferred items with reasons are in `investigations/project-audit-2026-09-25/IMPLEMENTATION_PLAN.md`.
+- agent-hygiene: September audit implementation done; navigation/doc first pass added 2026-10-03. `frontend/README.md` maps features, skills and checks; AGENTS explains search roots. Waiting on owner calls (storage deletion OK, Speak live try, credential rotation). Deferred audit items remain in `investigations/project-audit-2026-09-25/IMPLEMENTATION_PLAN.md`.
 
 ## Known problems and limits
 - Today's visual target (8+/10) is unmet at 7.8 after the three-round cap: Trophy wording and wrapping, reward grouping, small-phone overview spacing.

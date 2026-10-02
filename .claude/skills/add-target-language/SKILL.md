@@ -9,8 +9,9 @@ A "target language" is what a user learns. Adding one is a **tiered rollout**, n
 change: Tier 0 is a few registry lines; each higher tier adds content/assets and
 more registries. Paths below are from `orchestrator/` unless they start with
 `frontend/`; commands run from `orchestrator/frontend`. Background:
-`orchestrator/docs/Product/FABLE_LANGUAGE_ARCHITECTURE.md` — its §2/§4/§7 predate the
-beta trim and the 2026-09-07 locale/guided split, so this skill wins where they differ.
+`orchestrator/docs/Product/FABLE_LANGUAGE_ARCHITECTURE.md` — its historical §2/§4 predate the
+beta trim and the 2026-09-07 locale/guided split, so this skill wins where they differ;
+§7 links to the current base-locale source map.
 Line numbers drift: re-grep for the symbols named here before editing.
 
 **Decide the tier with the owner before starting.** Default for a brand-new language is

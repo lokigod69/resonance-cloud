@@ -409,3 +409,7 @@ raster assets are needed to solve these layout and clarity problems.
 - Preserve Multilingual v2 and the existing voice rotation for the proposed batch. The v4 Creative promotion is for the web/mobile products, not a second API budget. The owner authorized at most 200,000 ElevenLabs credits; this is a ceiling, not a spending target. Voice multipliers and provider access remain unverified.
 - HTTP 401 `missing_permissions` is not an invalid key. The saved key matches the owner's stated suffix and needs account/model/voice read scopes for the cost check. Keep secrets out of chat and committed artifacts.
 - Audio planning must make no production writes, including generation-run ledger rows. Include vocabulary-item clips in the snapshot; they use chunk/item coordinates. Freeze source and snapshot hashes, reject missing surfaces, and test saved manifests against regenerated inventory. An eventual executor needs durable per-attempt budget reservations and no blind retry after an ambiguous charge.
+
+## 2026-10-03 — Reuse entry docs for repository navigation
+
+Keep working rules in AGENTS and the feature/skill/check map in frontend/README.md. Link to source constants for changing provider and locale facts; mark historical investigations where readers enter them. This reduces duplicate authority and wrong-directory searches observed in the session retrospective without adding another mandatory startup document. The workspace/app repository boundary and its ignore rules remain intentional.

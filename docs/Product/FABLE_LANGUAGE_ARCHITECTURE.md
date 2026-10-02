@@ -1,5 +1,16 @@
 # FABLE — Language Architecture
 
+> **Historical reference; implementation guidance superseded (2026-10-03).**
+> This is the July 2026 investigation, not a current registry or rollout checklist.
+> In particular, §2/§4 predate the beta trim and the September locale/guided split;
+> old counts, file locations and line numbers elsewhere below need source checks.
+> §7 now points to the current locale architecture. Start new work with
+> [add-target-language](../../.claude/skills/add-target-language/SKILL.md),
+> [add-base-locale](../../.claude/skills/add-base-locale/SKILL.md), or
+> [add-script-lab-language](../../.claude/skills/add-script-lab-language/SKILL.md).
+> [Current state](../../memory/STATE.md) owns rollout status; the
+> [frontend map](../../frontend/README.md) locates source and checks.
+
 What "a language" is in Lingwave: every touchpoint, required vs optional tiers, data
 flows, and known landmines. Written 2026-07-06 from a five-way investigation (four
 focused agent reports + a Codex full-repo sweep), with decision-critical files verified
@@ -188,41 +199,25 @@ Additional touchpoints from the Codex sweep (extend only when the language needs
 - `games/slicer/components/DeckPicker.tsx:106` — an `isGerman` special case; the only
   per-language branch in the games.
 
-## 7. Base/UI locale system (expansion B)
+## 7. Base/UI locale system (current source map, 2026-10-03)
 
-`Locale = 'en' | 'de' | 'fr'` (`translations.ts:14`); flat
-`Record<Locale, Record<string,string>>` with **1,469 en keys** (de 1,469; fr 1,464 —
-French is warn-only by policy). `createT` falls back locale → en → raw key;
-missing keys warn once in DEV, never throw.
+The former three-locale checklist is superseded by the September architecture.
+Use [add-base-locale](../../.claude/skills/add-base-locale/SKILL.md) for the complete
+procedure, scope boundaries and verification. This section only locates authority:
 
-Adding locale `xx` — the compile-blocking cascade:
-1. `Locale` union + full `xx` block in `translations.ts` (~1,469 strings) +
-   `LANGUAGE_TO_LOCALE` entry.
-2. `data/quotes.ts` — `QUOTES: Record<Locale, string[]>` forces an `xx` array.
-3. `lib/scriptlab/types.ts:13` — `LocalizedText = {en,de,fr}` forces a 4th arg on every
-   `lt()` call in every script data file (~100–150 strings per script) plus the
-   `localizeScriptText` switch (`types.ts:143-146`).
-4. Tooling: `scripts/check-i18n-coverage.ts:4-5` (`requiredLocales` /
-   `warnOnlyLocales` — unedited, the new locale is not validated at all);
-   optionally `scripts/test-i18n-display-labels.ts`.
-5. Hardcoded de/fr ternaries to extend: `useLandingLocale.ts` (URL `?lang=` allow-list
-   `:31` + browser-lang map `:14-24`), date-locale ternaries
-   (`DeckViewPG.tsx:503`, `DeckView.tsx:362`, `DecksPG.tsx:430`, water label `:295`),
-   landing copy (`VerbCycler.tsx:13` + `lib/spinnerVerbs.ts`, `CreatorRail.tsx:294,297`,
-   `LandingHero.tsx:79`, `TideStory.tsx:36`), optional
-   `staticLibraryLanguage.ts:60` level labels.
-6. API: add to `LANGUAGE_CONFIG`/`NATIVE_LANGUAGE_NAMES` in
-   `api/prompts/_shared/pedagogy.ts` only if absent.
+| Concern | Current source |
+|---|---|
+| Supported UI messages and loading | [translations.ts](../../frontend/src/lib/translations.ts): `CoreLocale`, `LazyLocale`, `LANGUAGE_TO_LOCALE`, lazy loaders; packs in [locales/](../../frontend/src/lib/locales/) |
+| Selection and persistence | [localePreference.ts](../../frontend/src/lib/localePreference.ts), [languages.ts](../../frontend/src/lib/languages.ts) and the separate [API base registry](../../frontend/api/_shared/baseLanguages.ts) |
+| Required keys and placeholders | [check-i18n-coverage.ts](../../frontend/scripts/check-i18n-coverage.ts): `requiredLocales`; French is required too |
+| Script Lab explanations | [contentLocales.ts](../../frontend/src/lib/scriptlab/contentLocales.ts): whole lazy overlays; retain the original authored `LocalizedText` tuples and `lt()` calls |
+| Guided explanation editions | [guidedBaseEditions.ts](../../frontend/src/lib/guidedBaseEditions.ts): `GUIDED_BASE_LOCALES` and fingerprinted edition validation, separate from the original authored base text |
 
-Content NOT gated on Locale: `staticCategoryTranslations.ts` already carries 10
-languages (es/pt/it/pl/id/ceb/ko beyond en/de/fr) — free if the new locale is one of
-them. **Guided lessons base text is en/de only** (`GuidedBaseContentText`,
-`guidedLessons.ts:13-21`) — not even French; extending it is ~30k content entries and a
-separate decision.
-
-**RTL is blocked.** No `dir` handling exists; fonts in `index.html:22` are Latin-only;
-canvas renderers and games assume LTR coordinates. An Arabic/Hebrew base locale needs a
-layout pass that does not exist yet. Do not attempt RTL as a first new locale.
+Keep new UI messages in the lazy-pack architecture; do not follow the former advice
+to add a large eager block or a positional field to every Script Lab string.
+Adding a UI locale does not itself add guided explanations or a learnable language.
+Paid generation and catalog migrations follow the shared approval rules. RTL and
+glyph coverage require the skill's explicit layout/readiness checks before exposure.
 
 ## 8. Known landmines
 

@@ -12,23 +12,20 @@ Two production halves live here:
 
 ## Frontend
 
+Start with the [shared working rules](AGENTS.md) and the
+[frontend feature map](frontend/README.md). The map includes project skills,
+focused checks and signed-in fixture previews. Command roots are explained in
+[AGENTS.md](AGENTS.md#command-and-search-roots).
+
 ```bash
 cd frontend
-npm install
+npm ci
 npm run dev        # local dev server
 ```
 
-Before claiming a change done:
-
-```bash
-npm run typecheck   # tsc -b --noEmit (excludes frontend/api — use tsc -p tsconfig.api.json for functions)
-npm run lint        # your changed lines must add zero new errors
-npm run check:i18n  # every user-facing string needs en/de/fr keys
-```
-
-Conventions: commits go directly to `main`; i18n via `useTranslation`/`t()` with keys in
-`src/lib/translations.ts`; Vercel functions use named exports (`GET`, `POST`), never
-`export default`; prefer theme CSS variables over hardcoded colors.
+Follow [Checking your work](AGENTS.md#checking-your-work) for the required checks;
+[package.json](frontend/package.json) owns the executable commands. Git, locale,
+API and theme rules are maintained in AGENTS.md rather than repeated here.
 
 ## Generation backend
 
@@ -37,12 +34,14 @@ One worker process polls Supabase for jobs and runs engines **in-process**
 
 ```bash
 uv sync                        # install Python deps
-uv run pytest tests/ -x -q     # test suite
+uv run pytest tests/ --ignore=tests/manual -x -q
 ```
 
 Cloud entry point is `start_cloud.py` (env pre-flight + health server + `job_runner.py`).
 The deploy image is `Dockerfile.cloud`; required env vars are listed in
 `.env.cloud.example` and checked at boot.
+For the existing Windows virtual environment and known test failures, consult
+[current state](memory/STATE.md) before interpreting a baseline result.
 
 Engines: concept, image, song, video, assembly, bookend under `cloud_engines/`.
 **Video is deprecated user-facing** but the pipeline stays for legacy decks and
@@ -57,10 +56,10 @@ servers, `start*.bat` launchers) was never part of any deployment and was delete
 
 ## Where to read more
 
-- `memory/` — living project memory (start with `INDEX.md` and `STATE.md`).
+- [memory/INDEX.md](memory/INDEX.md) — living project memory; read INDEX and STATE for implementation or a resume, then only relevant topic notes.
 - `docs/Stabilization/` — Phase 1 hardening program (roles/credits, atomic RPCs, quotas).
 - `docs/Refactors/` — cleanup audits and the video deprecation boundary.
-- `docs/Product/` — current product direction (guided Today missions, TestFlight prep).
+- `orchestrator/docs/Product/` — app-repository product references (guided Today missions, TestFlight prep); check each document's date and supersession notice. Workspace `D:/CODING/ResonanceTEST/docs/Product/` is a separate collection of coordination/design notes.
 - `docs/Infrastructure/` — GPU/LTX worker specs and the video-disable plan.
 - `docs/archive/` — historical docs (pipeline-era architecture, handoffs, investigations).
 - Investigation/audit reports for new work go one level up in

@@ -10,6 +10,18 @@ This file is the single source of working rules for Claude Code and Codex. Claud
 - Other folders under `D:\CODING` with similar names (`RESONANCE*`, `resonance-cloud`) are different projects.
 - Paths in this file are relative to `orchestrator/`, except that `src/…` in the rules below means `frontend/src/…` (the worker's `orchestrator/src` is always named in full).
 
+### Command and search roots
+
+| Task | Working directory | Example |
+|---|---|---|
+| Coordination and workspace product/design notes | `D:/CODING/ResonanceTEST` | `rg -n 'word-stream' protocol docs/Product` |
+| App git, source search, project skills | `D:/CODING/ResonanceTEST/orchestrator` | `rg -n 'SPEAK_LLM_MODEL' frontend/api` |
+| Frontend checks and previews | `D:/CODING/ResonanceTEST/orchestrator/frontend` | `npm run verify` |
+
+Set the working directory explicitly for each command. The workspace `.gitignore` intentionally excludes the nested app repository, so root-level `rg --files` omits app files; search from `orchestrator/` instead of disabling ignore rules globally. In PowerShell, pass file patterns through `rg -g`, for example `rg -n 'B1' frontend/src/data -g 'guided*.ts'`; wildcard path operands such as `frontend/src/data/guided*` can fail.
+
+[frontend/README.md](frontend/README.md) maps features to entry files, project skills, checks and fixture previews. Project skills live in `orchestrator/.claude/skills/` for both agents. Workspace `docs/Product/` and app `orchestrator/docs/Product/` are separate collections: qualify the root in handoffs. Search for the relevant symbol or heading, then read that section; split a truncated result into smaller reads before relying on it.
+
 ## Shipping
 
 - A push to `main` deploys production: lingwave.ai through Vercel and the worker through Railway.
