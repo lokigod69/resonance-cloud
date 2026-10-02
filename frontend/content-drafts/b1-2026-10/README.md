@@ -4,6 +4,8 @@ Prepared 2026-10-03. This is an authoring package, not a released course. The li
 
 The first milestone is Practical 1: ten complete B1 episodes in each of five languages. The accompanying plans allocate the full ten-path, 100-lesson progression per language. The remaining 450 beats are outlines, not authored lessons. B2 and C1/C2 are not part of this batch.
 
+This milestone prepares the Practical/Bright content and audio. Existing A1/A2 refresh counts below also cover Bright only; they do not claim replacement recordings for Wistful or Sharp.
+
 ## What a learner practices
 
 The existing seven-step B1 format is retained: hear the opening, match useful vocabulary, notice a grammar pattern, build the first reply, answer a new follow-up with two or three blanks, speak both replies, and review the episode. The later turn stays hidden until the learner needs to answer it. This reuses the approved Today design.
@@ -22,7 +24,7 @@ Review completed on 2026-10-03: Fable 5.1 at maximum effort personally read all 
 
 Italian/Portuguese review also completed on 2026-10-03: Fable read all twenty episodes and returned twenty exact field edits plus one subject-guard fix. The independent re-review returned **PASS** after checking every edit against the frozen originals. The Portuguese L7 second-valid-answer defect is fixed. Fable's accepted inactive-recall caveats are retained in `review-evidence-it-pt.json` and must be revisited if that step is enabled. Across both batches, fifty full episodes have been read and reviewed.
 
-Verification: frontend `verify` passed with zero errors and two existing fixture warnings; 28/28 offline suites passed with five known-stale suites skipped; the production build passed; the final draft contract and 73 focused Python tests passed after arbitration. No rendered interface changed, so no new visual or device verification is claimed.
+Verification: frontend `verify` passed with zero errors and two existing fixture warnings; 28/28 offline suites passed with five known-stale suites skipped; the production build passed. The final draft contract covers fifty lessons and thirteen rejection cases; 119 focused Python tests plus ten waveform subtests passed. No rendered interface changed, so no new visual or device verification is claimed.
 
 - `english.json`, `spanish.json`, `french.json`, `italian.json`, `portuguese.json`: complete, still-staged P1 lesson drafts.
 - `*-plan.json`: proposed ten-path progression, 100 reserved trophies and lesson beats per language.
@@ -55,6 +57,8 @@ For Italian/Portuguese use `--batch italian-portuguese` with the snapshot export
 
 P1 uses Serafina for English and Lilly for French. Spanish deliberately uses Emilio, a verified peninsular Spanish voice: the old provider ID labelled Lia now resolves to Marcela, a Colombian voice. This new B1 assignment does not alter existing recordings. The owner has also requested a v4 refresh; the offline planner accepts `--model eleven_v4`, with separate cache identities and only the supported stability and similarity settings. Live integration still uses its existing model until replacement audio has been checked and publication approved.
 
+Italian uses Sami, the native Italian voice currently behind the saved roster label Samanta; Brazilian Portuguese uses Carla. Authenticated voice reads and individual pilot receipts verify access before the full batch. Sharing rates are retained as evidence, not treated as a documented credit formula; the executor checks conservative upper bounds against actual receipts.
+
 The reviewed text produces this offline forecast. Playback locations can share one cached recording.
 
 | Target | Episodes | Playback locations | Unique clips | First-attempt characters |
@@ -68,11 +72,24 @@ The reviewed text produces this offline forecast. Playback locations can share o
 
 The owner clarified a combined 400,000-credit target: a maximum 200,000 through the API plus the separate 200,000 web promotion. Generate useful reviewed content; do not pad text or repeat recordings merely to consume the allowance. Permissions are now enabled. No key belongs in this package.
 
-The first API batch is complete: **469 individual v4 MP3 files, 1,165 actual credits**, including three pilot requests. Each file passed ffmpeg decoding. This is technical validation, not a claim of listening review or publication. Provider receipts settle the charge; character forecasts and the legacy subscription counter are not invoices. The discounted actual charges are below the conservative standard-price reservation, and no exact discount formula is assumed.
+The local API milestone is complete: **4,462 individual v4 MP3 files, 71,071 submitted characters and 7,142 actual credits**, including pilot requests. This is well below the combined 400,000-credit target; the allowance has not been exhausted. All files passed ffmpeg decoding and the final hash audit, with zero missing files, unplanned keys or unresolved requests. This is technical validation, not a claim of listening review or publication.
+
+| Completed local scope | Unique files | Actual API credits |
+|---|---:|---:|
+| English/Spanish/French B1 P1 | 469 | 1,165 |
+| Italian/Portuguese B1 P1 | 318 | 814 |
+| English A1/A2 Bright — Serafina | 1,252 | 1,788 |
+| Spanish A1/A2 Bright — Emilio | 1,175 | 1,476 |
+| French A1/A2 Bright — Lilly | 1,248 | 1,899 |
+| Total | 4,462 | 7,142 |
+
+Provider receipts settle the charge; character forecasts and the legacy subscription counter are not invoices. The discounted actual charges are below the conservative standard-price reservation, and no exact discount formula is assumed. `review-artifacts/guided-audio-20261003/campaign-summary.json` records the final per-batch totals and explicit listening/publication holds. Refreshes for other targets and Wistful/Sharp remain future work.
 
 `scripts/run_guided_audio_campaign.py` verifies the reviewed sources, reconstructs the complete saved plan and checks its rate-bound input fingerprint before opening a provider. Dry-run is the default. The local executor in `src/services/guided_tts/campaign.py` reserves each request against one durable SQLite ledger, makes one attempt, retains received audio and charge evidence, decodes it, then writes the file atomically. Ambiguous requests stop for reconciliation; they are never automatically retried. Every later manifest shares the same 200,000-credit cap and process lock. Never create a fresh ledger to reset that allowance.
 
 The fixed local output is `review-artifacts/guided-audio-20261003/api/`: `campaign.sqlite3` plus cache-key MP3 files. It is intentionally ignored by Git. Rate evidence and run results sit in its parent directory. The v4 plan remains an offline input; paid execution requires the owner's authorization and verified rate evidence as separate gates.
+
+One Spanish receipt save failed while a progress audit held a database read. The run stopped; an exact, unique provider-history match recovered the existing audio and its two-credit charge without regeneration. Independent review approved the local reconciliation and the fix: SQLite WAL with FULL synchronization, a bounded busy timeout and an open-reader regression test. Progress audits now release the database before hashing files. Preserve that reconciliation evidence when resuming this campaign.
 
 For existing English, Spanish and French A1/A2, `scripts/guided_refresh_api_adapter.py` imports current source modules and compares every spoken coordinate to the saved reference inventory before building a plan. `scripts/run_guided_refresh_campaign.py --plan <plan.json> --inventory <inventory.json> --rates <rates.json>` performs a fresh dry-run. Paid execution additionally requires `--commit --expected-input-sha256 <inspected fingerprint>` and `ELEVENLABS_API_KEY` loaded privately into the environment. The CLI, adapter, exporter, cache helpers and executor must match their committed versions. The refresh uses the same ledger and lock; it includes vocabulary items and preserves capitalization and edge-punctuation aliases with separate texts and cache keys for explicit publication resolution. Lexical, apostrophe and hyphen differences fail validation.
 
