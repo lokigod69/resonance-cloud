@@ -25,7 +25,13 @@ PROPOSALS = {
     # The new B1 text is es-ES, so use the saved peninsular educational voice.
     "Spanish": ("es", "Emilio", "ZCh4e9eZSUf41K4cmCEL"),
     "French": ("fr", "Lilly", "z1rEShu1SmowIOAmbHl1"),
+    # Roster label Samanta now resolves to Sami warm italian voice (GET 2026-10-03).
+    "Italian": ("it", "Sami", "fQmr8dTaOQq116mo2X7F"),
+    "Portuguese": ("pt", "Carla", "7eUAxNOneHxqfyRS77mW"),
 }
+SUPPORTED_SCOPES = (("English", "Spanish", "French"), ("Italian", "Portuguese"))
+SOURCE_CODES = {"English": "en-US", "Spanish": "es-ES", "French": "fr-FR",
+                "Italian": "it-IT", "Portuguese": "pt-BR"}
 SURFACES = ["corePhrase", "chunks", "trophyWord", "dialogue", "pattern"]
 
 
@@ -57,8 +63,9 @@ def build_plan(snapshot: dict, *, model: str = "eleven_multilingual_v2") -> dict
     if snapshot.get("schemaVersion") != 1 or snapshot.get("status") != "draft":
         raise ValueError("Expected a version 1 draft snapshot")
     languages = snapshot.get("languages", [])
-    if sorted(group.get("targetLanguage", "") for group in languages) != sorted(PROPOSALS):
-        raise ValueError("Expected exactly English, Spanish, and French")
+    selected = sorted(group.get("targetLanguage", "") for group in languages)
+    if not any(selected == sorted(scope) for scope in SUPPORTED_SCOPES):
+        raise ValueError("Expected exactly English, Spanish, and French or exactly Italian and Portuguese")
     groups = []
     for group in languages:
         target = group["targetLanguage"]
@@ -68,7 +75,7 @@ def build_plan(snapshot: dict, *, model: str = "eleven_multilingual_v2") -> dict
         lessons = group["lessons"]
         if not re.fullmatch(r"[a-f0-9]{64}", group.get("sourceSha256", "")):
             raise ValueError(f"{target}: missing source fingerprint")
-        expected_code = {"English": "en-US", "Spanish": "es-ES", "French": "fr-FR"}[target]
+        expected_code = SOURCE_CODES[target]
         if group.get("targetLanguageCode") != expected_code:
             raise ValueError(f"{target}: language code mismatch")
         if len(lessons) != 10 or {lesson["lessonNumber"] for lesson in lessons} != set(range(1, 11)):
@@ -117,7 +124,7 @@ def build_plan(snapshot: dict, *, model: str = "eleven_multilingual_v2") -> dict
         "creditBudgetCeiling": 200_000, "firstAttemptCharacters": characters,
         "existingRunnerSingleRunCharacterCeiling": retry_ceiling,
         "fitsBudgetAtOneCreditPerCharacterIncludingExistingRetries": retry_ceiling <= 200_000,
-        "phraseCatalogRows": 30,
+        "phraseCatalogRows": sum(group["phraseCatalogRows"] for group in groups),
         "usageRows": sum(group["usageRows"] for group in groups),
         "uniqueAudioFiles": sum(group["uniqueAudioFiles"] for group in groups),
         "groups": groups,

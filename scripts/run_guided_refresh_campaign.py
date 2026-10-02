@@ -1,4 +1,4 @@
-"""English A1/A2 refresh into the existing local campaign; dry-run by default.
+"""Reviewed A1/A2 refresh into the existing local campaign; dry-run by default.
 
 Supply the reviewed plan, reference inventory and rate evidence. A dry-run freshly
 imports the source modules and prints the fingerprint to inspect. Commit requires

@@ -22,6 +22,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.services.guided_tts import campaign
 from scripts.plan_guided_b1_drafts import build_plan
 
+BATCHES = {
+    "priority": {"languages": ("english", "spanish", "french"), "suffix": ""},
+    "italian-portuguese": {"languages": ("italian", "portuguese"), "suffix": "-it-pt"},
+}
+
 
 def project_audio(draft):
     """Exact data projection used by frontend/scripts/lib/guidedB1Drafts.ts."""
@@ -44,15 +49,19 @@ def project_audio(draft):
     return projected
 
 
-def load_reviewed_inputs(directory, rate_evidence, model=campaign.MODEL):
-    evidence_bytes = (directory / "review-evidence.json").read_bytes()
+def load_reviewed_inputs(directory, rate_evidence, model=campaign.MODEL, batch="priority"):
+    if batch not in BATCHES:
+        raise campaign.CampaignError("unsupported_batch")
+    selection = BATCHES[batch]
+    suffix = selection["suffix"]
+    evidence_bytes = (directory / f"review-evidence{suffix}.json").read_bytes()
     evidence = json.loads(evidence_bytes)
     if (evidence.get("status") != "reviewed-staged"
             or evidence.get("independentReview", {}).get("finalVerdict") != "PASS"
             or evidence.get("independentReview", {}).get("unresolvedFindings") != 0):
         raise campaign.CampaignError("content_review_incomplete")
     languages = []
-    for slug in ("english", "spanish", "french"):
+    for slug in selection["languages"]:
         source_bytes = (directory / f"{slug}.json").read_bytes()
         source_hash = campaign.digest(source_bytes)
         if evidence.get("reviewedSourceSha256", {}).get(slug) != source_hash:
@@ -65,11 +74,11 @@ def load_reviewed_inputs(directory, rate_evidence, model=campaign.MODEL):
         languages.append({"targetLanguage": source["targetLanguage"],
             "targetLanguageCode": source["targetLanguageCode"], "sourceSha256": source_hash,
             "lessons": project_audio(source)})
-    snapshot_bytes = (directory / "tts-snapshot.json").read_bytes()
+    snapshot_bytes = (directory / f"tts-snapshot{suffix}.json").read_bytes()
     snapshot = json.loads(snapshot_bytes)
     if snapshot != {"schemaVersion": 1, "status": "draft", "languages": languages}:
         raise campaign.CampaignError("snapshot_does_not_match_reviewed_sources")
-    name = "tts-plan-v4.json" if model == "eleven_v4" else "tts-plan.json"
+    name = f"tts-plan{suffix}-v4.json" if model == "eleven_v4" else f"tts-plan{suffix}.json"
     saved_plan = json.loads((directory / name).read_bytes())
     if saved_plan.get("model") != model:
         raise campaign.CampaignError("selected_model_mismatch")
@@ -86,6 +95,7 @@ def main(argv=None, *, repo_root=None, provider_factory=campaign.ElevenLabsTrans
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--rates", type=Path, help="Account-specific, verified voice rate evidence")
     parser.add_argument("--model", choices=sorted(campaign.MODELS), default=campaign.MODEL)
+    parser.add_argument("--batch", choices=sorted(BATCHES), default="priority")
     parser.add_argument("--commit", action="store_true")
     selection = parser.add_mutually_exclusive_group()
     selection.add_argument("--limit", type=int, help="Maximum NEW dispatches in manifest order")
@@ -96,7 +106,7 @@ def main(argv=None, *, repo_root=None, provider_factory=campaign.ElevenLabsTrans
     directory = root / "frontend/content-drafts/b1-2026-10"
     rates = json.loads(args.rates.read_bytes()) if args.rates else None
     # All freshness checks precede construction of a provider or any local write.
-    plan, fingerprint = load_reviewed_inputs(directory, rates, args.model)
+    plan, fingerprint = load_reviewed_inputs(directory, rates, args.model, args.batch)
     if args.commit and (rates is None or args.expected_input_sha256 != fingerprint):
         raise campaign.CampaignError("reviewed_input_fingerprint_required")
     output = root / "review-artifacts/guided-audio-20261003/api"

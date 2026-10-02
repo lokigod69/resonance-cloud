@@ -23,9 +23,21 @@ from src.services.guided_tts.inventory import (
     storage_path, text_hash, voice_settings_hash,
 )
 
-SCOPES = {"English": {"levels": ["A1", "A2"], "code": "en-US", "name": "Serafina",
-    "voice": "4tRn1lSkEn13EVTuqb0g", "profile": "english_bright_v4_v1"}}
+SCOPES = {
+    "English": {"levels": ["A1", "A2"], "code": "en-US", "name": "Serafina",
+        "voice": "4tRn1lSkEn13EVTuqb0g", "profile": "english_bright_v4_v1"},
+    "Spanish": {"levels": ["A1", "A2"], "code": "es", "sourceCode": "es-ES", "name": "Emilio",
+        "voice": "ZCh4e9eZSUf41K4cmCEL", "profile": "spanish_bright_v4_v1"},
+    "French": {"levels": ["A1", "A2"], "code": "fr", "sourceCode": "fr-FR", "name": "Lilly",
+        "voice": "z1rEShu1SmowIOAmbHl1", "profile": "french_bright_v4_v1"},
+}
 PROJECTION_VERSION = "guided-refresh-spoken-coordinates-v1"
+
+
+def formatting_identity(text):
+    # Used only to classify held aliases, never to normalize synthesis or merge files.
+    # Apostrophes and hyphens remain significant for elisions and word identity.
+    return text.strip(".,!?¿¡;:… ").casefold()
 
 
 def canonical(value):
@@ -75,7 +87,7 @@ def verify_source_inventory(projection, inventory, language):
                 saved.append({**{k: v for k, v in coordinate.items() if k != "ordinal"}, "text": entry["text"]})
     if Counter(map(canonical, rows)) != Counter(map(canonical, saved)):
         raise ValueError("saved_inventory_does_not_match_current_sources")
-    if any(row["targetLanguageCode"] != scope["code"] for row in rows):
+    if any(row["targetLanguageCode"] != scope.get("sourceCode", scope["code"]) for row in rows):
         raise ValueError("source_language_code_mismatch")
     return rows
 
@@ -130,7 +142,7 @@ def build_plan(projection, inventory, *, inventory_sha256, evidence, language="E
             raise ValueError("invalid_individual_utterance")
         usage = tuple(row[k] for k in ("pathId", "lessonId", "vibe", "playbackSurface", "playbackSurfaceKey"))
         variants = identity_texts.setdefault(usage, {})
-        if variants and next(iter(variants)).casefold() != text.casefold():
+        if variants and formatting_identity(next(iter(variants))) != formatting_identity(text):
             raise ValueError("conflicting_text_for_playback_coordinate")
         variants.setdefault(text, []).append(row["sourceField"])
         arguments = dict(provider="elevenlabs", target_language_code=spec["code"],
@@ -165,8 +177,11 @@ def build_plan(projection, inventory, *, inventory_sha256, evidence, language="E
         "normalizationChangedUsageRows": sum(item["source_text"] != item["normalized_text"] for item in items),
         "playbackCoordinateCaseVariants": [{"pathId": key[0], "lessonId": key[1], "vibe": key[2],
             "surface": key[3], "surfaceKey": key[4], "textVariants": variants}
-            for key, variants in identity_texts.items() if len(variants) > 1],
-        "publicationPolicy": "Resolve enumerated capitalization aliases before usage publication; never last-write-wins. Original source fields and texts are all retained.",
+            for key, variants in identity_texts.items() if len(variants) > 1 and len({v.casefold() for v in variants}) == 1],
+        "playbackCoordinatePunctuationVariants": [{"pathId": key[0], "lessonId": key[1], "vibe": key[2],
+            "surface": key[3], "surfaceKey": key[4], "textVariants": variants}
+            for key, variants in identity_texts.items() if len({v.casefold() for v in variants}) > 1],
+        "publicationPolicy": "Resolve enumerated capitalization and punctuation aliases before usage publication; never last-write-wins. Original source fields and texts are all retained with separate cache identities.",
         "creditAssumption": "No forecasted credit rate. Reuse authenticated rate evidence and actual receipts; never pad.",
         "speakTargetAliases": projection["speakTargetAliases"],
         "groups": [{"targetLanguage": language, "pathId": None,

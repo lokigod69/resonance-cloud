@@ -17,7 +17,7 @@ from scripts import run_guided_refresh_campaign as cli
 def inventory_from_projection(projection):
     entries = {}
     for ordinal, row in enumerate(projection["rows"]):
-        entry = entries.setdefault(row["text"], {"targetLanguage": "English", "text": row["text"],
+        entry = entries.setdefault(row["text"], {"targetLanguage": projection["scope"]["targetLanguage"], "text": row["text"],
             "textSha256": a.sha(row["text"]), "coordinates": []})
         entry["coordinates"].append({**{k: v for k, v in row.items() if k != "text"}, "ordinal": ordinal})
     return {"sourceCorpusSha256": projection["sourceProjectionSha256"], "entries": list(entries.values())}
@@ -109,6 +109,47 @@ def test_case_aliases_remain_explicit_separate_cache_keys(corpus):
     items = [x for x in plan["groups"][0]["items"]
              if x["lesson_id"] == case["lessonId"] and x["surface_key"] == case["surfaceKey"]]
     assert len({x["cache_key"] for x in items}) == 2
+
+
+@pytest.mark.parametrize("language,code,rows,clips,characters,cases,punctuation", [
+    ("Spanish", "es", 1881, 1175, 14813, 16, 87),
+    ("French", "fr", 1852, 1248, 18773, 47, 109),
+])
+def test_native_refresh_scopes_preserve_all_sources_and_hold_formatting_aliases(
+        corpus, language, code, rows, clips, characters, cases, punctuation):
+    projection = a.export_current_source(a.DEFAULT_REPO, corpus["exporter"], language)
+    inventory = inventory_from_projection(projection)
+    plan = a.build_plan(projection, inventory, inventory_sha256=a.sha(a.canonical(inventory)),
+                        evidence=corpus["evidence"], language=language)
+    assert (projection["lessonCount"], projection["pathCount"], plan["usageRows"]) == (200, 20, rows)
+    assert (plan["uniqueAudioFiles"], plan["firstAttemptCharacters"]) == (clips, characters)
+    assert plan["groups"][0]["proposedVoiceProfile"]["target_language_code"] == code
+    assert len(plan["playbackCoordinateCaseVariants"]) == cases
+    assert len(plan["playbackCoordinatePunctuationVariants"]) == punctuation
+    restored = [{**item["sourceCoordinate"], "text": item["source_text"]} for item in plan["groups"][0]["items"]]
+    assert Counter(map(a.canonical, restored)) == Counter(map(a.canonical, projection["rows"]))
+    alias = plan["playbackCoordinatePunctuationVariants"][0]
+    matching = [item for item in plan["groups"][0]["items"]
+                if item["lesson_id"] == alias["lessonId"] and item["surface_key"] == alias["surfaceKey"]]
+    assert len({item["cache_key"] for item in matching}) == len(alias["textVariants"])
+    assert "never last-write-wins" in plan["publicationPolicy"]
+    for row in projection["rows"]:
+        row["targetLanguageCode"] = "es-MX" if language == "Spanish" else "fr-CA"
+    projection["sourceProjectionSha256"] = a.sha(a.canonical(projection["rows"]))
+    with pytest.raises(ValueError, match="source_language_code_mismatch"):
+        a.build_plan(projection, inventory_from_projection(projection), inventory_sha256="a" * 64,
+                     evidence=corpus["evidence"], language=language)
+
+
+@pytest.mark.parametrize("replacement", ["Hello there", "Hi-there", "Hi there'"])
+def test_formatting_alias_rule_does_not_hide_lexical_apostrophe_or_hyphen_conflicts(corpus, replacement):
+    projection = copy.deepcopy(corpus["projection"])
+    row = next(row for row in projection["rows"] if row["text"] == "hi there" and row.get("vocabularyItem"))
+    row["text"] = replacement
+    projection["sourceProjectionSha256"] = a.sha(a.canonical(projection["rows"]))
+    with pytest.raises(ValueError, match="conflicting_text_for_playback_coordinate"):
+        a.build_plan(projection, inventory_from_projection(projection), inventory_sha256="a" * 64,
+                     evidence=corpus["evidence"])
 
 
 def test_paid_code_gate_rejects_outside_checkout(tmp_path):
