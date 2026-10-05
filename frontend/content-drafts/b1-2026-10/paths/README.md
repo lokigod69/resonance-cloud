@@ -1,5 +1,7 @@
 # Later B1 paths — local recording preparation
 
+Italian P2–P3 add twenty reviewed episodes, bringing staged B1 to 160. Fable personally read every field, issued nine exact corrections and explicitly licensed P3 L2's fixed politeness frame. The independent final review passed with no unresolved local TTS findings after checking actual visible person cues, exact edit replay and all changed surfaces. `it-p2-p3-manifest.json` binds both sources; `it-p2-p3-review-evidence.json` preserves the decisions. Its local v4 plan has 332 unique clips, 9,526 characters and 364 playback uses. Recording and publication are separate statuses.
+
 Second October 5 batch: English and Spanish P4–P5 plus French P2 add fifty reviewed four-turn episodes. Together with the forty episodes below and the original fifty P1 episodes, the package now contains 140 complete staged episodes. All fifty received Fable's personal full read, thirteen exact corrections, actual-validator checks and an independent re-review with no remaining content findings in this batch. The earlier English P2 publication finding remains separate.
 
 `en-es-p4-p5-fr-p2-manifest.json` and `en-es-p4-p5-fr-p2-review-evidence.json` bind these five sources and preserve both reviews. Their separate local plan forecasts 722 unique clips, 20,100 characters and 857 playback uses, using the already verified Serafina, Emilio and Lilly voices. The sealed plan is `review-artifacts/guided-audio-20261003/20261005-b1-en-es-p4-p5-fr-p2-plan.json`. This forecast is not a recording-completion or publication claim.

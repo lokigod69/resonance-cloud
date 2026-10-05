@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 2,
+  "status": "reviewed-staged",
+  "level": "B1",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/italian-p2.json",
+      "sha256": "9d5230e476d45938f4d65de273b77744137511ccce47f8ee3073feed0e48bd95",
+      "targetLanguage": "Italian",
+      "pathNumber": 2,
+      "reviewedVoiceId": "fQmr8dTaOQq116mo2X7F"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/italian-p3.json",
+      "sha256": "d483e614fe0b8a6fe749f7f3d76d520be367b1ac79bc62ce5bd9f790aff28e49",
+      "targetLanguage": "Italian",
+      "pathNumber": 3,
+      "reviewedVoiceId": "fQmr8dTaOQq116mo2X7F"
+    }
+  ],
+  "reviewScope": "Local staging and recording only; not publication approval.",
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/italian-p2.json",
+      "reviewedScratchSha256": "9d5230e476d45938f4d65de273b77744137511ccce47f8ee3073feed0e48bd95",
+      "stagedSha256": "9d5230e476d45938f4d65de273b77744137511ccce47f8ee3073feed0e48bd95",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/italian-p3.json",
+      "reviewedScratchSha256": "d483e614fe0b8a6fe749f7f3d76d520be367b1ac79bc62ce5bd9f790aff28e49",
+      "stagedSha256": "d483e614fe0b8a6fe749f7f3d76d520be367b1ac79bc62ce5bd9f790aff28e49",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    }
+  ],
+  "fableReview": {
+    "model": "claude-fable-5-1",
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "evidenceSha256": "00181417ff34e2cc4e9d3045f5ad97c01e6477348f6f250c46d7bdbd828d3023",
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/italian-p2.json": "9d5230e476d45938f4d65de273b77744137511ccce47f8ee3073feed0e48bd95",
+      "frontend/content-drafts/b1-2026-10/paths/italian-p3.json": "d483e614fe0b8a6fe749f7f3d76d520be367b1ac79bc62ce5bd9f790aff28e49"
+    },
+    "approvalBasis": "Personal 20-lesson read; all 9 exact edits applied and mechanically validated; final independent re-review passed local staging/TTS."
+  },
+  "independentReview": {
+    "reviewer": "Codex independent reviewer /root/italian_p2_p3_independent; final second review",
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "evidenceSha256": "7dac7f07e309461643ed95a3ee2d673e2f2efbc8835b340c47e7c04cac814b7b",
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/italian-p2.json": "9d5230e476d45938f4d65de273b77744137511ccce47f8ee3073feed0e48bd95",
+      "frontend/content-drafts/b1-2026-10/paths/italian-p3.json": "d483e614fe0b8a6fe749f7f3d76d520be367b1ac79bc62ce5bd9f790aff28e49"
+    },
+    "scope": "Zero unresolved local-TTS blockers only."
+  },
+  "unresolvedPublicationFindings": [],
+  "publicationStatus": "held",
+  "listeningStatus": "not-started"
+}

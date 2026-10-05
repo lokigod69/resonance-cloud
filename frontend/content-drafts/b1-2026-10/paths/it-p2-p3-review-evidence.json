@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local staging and recording only; not publication approval.",
+  "fable": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "italian-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Every field of all ten episodes read against the P2 scope (L1–3 secondo me/per me/la mia opinione + indicativo + perché; L4–6 anche se + indicativo, comunque; L7–10 penso/credo che + whitelisted congiuntivo sia/siano/possa/serva/aiuti). Formal Lei and German Sie throughout; no learner essere compounds, reflexives, preceding clitics or speaker adjectives (ho visto, ho conosciuto only). Chunks reconstruct turn 1 in every lesson and no chip rearrangement survives with identical orthography/casing; recall answers are single words with fallback forms that fail agreement in context; speech tokens all occur in turn 1; cloze blanks have literal subjects before them and one syntactically valid choice; pattern examples reuse an episode turn; scene captions quote the opening verbatim and reveal no later turn; situations and titles spoil nothing; trophies are the frozen words and appear in turn 1 and example. 'la strada è chiusa' (L4 example) is adjectival state, not a participial passive, so it does not breach the pre-P6 ban.",
+        "remainingConcerns": "L3 'il consiglio personale' is an acceptable but slightly stiff rendering of Beratung (consulenza personalizzata is more idiomatic); the interlocutor's 'La consulenza è utile' anchors the meaning, and changing it would cascade through recall/terms, so it is left as-is. L1 'La mia opinione è favorevole' is formal but native and explicitly scoped in the anchor."
+      },
+      {
+        "file": "italian-p3.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Every field read against P3 scope (L1–3 vorrei/preferirei + noun/infinitive; L4–6 potrei/potrebbe/sarebbe possibile, mi andrebbe bene; L7–10 dovrei/dovrebbe, Le andrebbe bene?, fixed se possibile). No se + congiuntivo imperfetto, no condizionale passato, no futuro, no avrei bisogno che. Formal Lei/Sie everywhere; interlocutor 'La uso' is present tense in a non-learner turn and is not a preceding-clitic compound. Client never decides for the manager/office (potrebbe suggestions, questions). Chunk reconstruction verified for all ten; L9 admits an alternative native ordering with identical chips (fixed below); L6 rearrangement would require a case change and is not a strict-equality trap. Cloze subjects (io, il furgone, il tecnico, il corso, Lei, una lezione breve) are literal and precede their blanks; recall/speech tokens valid; captions, situations and titles spoiler-free; trophies frozen and anchored.",
+        "remainingConcerns": "L2 teaches ci sarebbe la possibilità di in both pattern examples before productive sarebbe at L4–6; it is a fixed politeness frame tied to the frozen beat and is now explicitly licensed as a lexical chunk in the anchor and pedagogicalGoal (edits below). L6 'lezione breve' after 'only the start can change; room closes at nine' is coherent (later start = shorter lesson)."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "HIGH P2L2/L3/L4 second finite blanks (posso/compro/accompagnano) allow a different implicit subject after quindi/e",
+        "decision": "reject",
+        "reason": "The governing proDropRule defines disambiguation as cue 'infinitive (subject)' plus the subject literal visible before the blank; all three blanks satisfy both (Io/I genitori precede, cue names io/i genitori), and the validator enforces exactly this. With the cue naming the person, possiamo/compriamo/accompagno are not valid answers in the actual visible context; coordinated same-subject verbs are the standard same-person case the contract prefers. The proposed rewrites would alter approved learner turns (cerco di comprare, per accompagnare) without contract gain."
+      },
+      {
+        "finding": "HIGH P3L9 chips 'la proposta' + 'con calma' permit 'Vorrei valutare con calma la proposta …', a native ordering that fails strict equality",
+        "decision": "accept",
+        "reason": "Verified: identical orthography and casing, so a correct learner build would be marked wrong. Merge into 'la proposta con calma' (4 chunks, min satisfied; chips remain distinct from distractors)."
+      },
+      {
+        "finding": "MEDIUM P3L2 ci sarebbe la possibilità di ahead of L4–6 sarebbe",
+        "decision": "adapt",
+        "reason": "Fable explicitly licenses this narrow preview: the frame is a fixed, highly native politeness question tied to the frozen beat and trophy possibilità, taught as a lexical chunk, not as productive conditional; no other L1–3 surface uses sarebbe. The anchor and the lesson's pedagogicalGoal are revised to state the license instead of 'pending'; the reviewer's 'Vorrei avere la possibilità…' rewrite is not applied."
+      },
+      {
+        "finding": "MEDIUM P2L6 'il tempo passa comunque troppo presto'",
+        "decision": "accept",
+        "reason": "presto = early/soon; native phrasing for the speed of passing time is 'troppo in fretta'. Existing de/en already say 'viel zu schnell'/'far too quickly'. Dialogue[3] and cloze tail updated identically; 11 words, within limit; no pattern example or chunk affected."
+      },
+      {
+        "finding": "LOW P2L7 'Die Sammlung braucht Platz'",
+        "decision": "accept",
+        "reason": "'Sammlung' misreads la raccolta (differenziata); 'Die Mülltrennung' is the correct German referent. Applied to all three surfaces with the exact prefix."
+      },
+      {
+        "finding": "Author flags: P2 anchor 'L1 la mia opinione as native equivalent'; P3 anchor 'NARROW PREVIEW REQUIRING FABLE LICENSE'",
+        "decision": "accept / license",
+        "reason": "L1 'La mia opinione è favorevole' is native and gender-safe (favorevole invariant); kept. P3 L2 preview licensed as above; anchors updated to record the completed read-through and the explicit license so no stale 'pending' text remains."
+      },
+      {
+        "finding": "Reviewer noIssue items (register, gender safety, trophies, scene secrecy, P2 L7–10 subjunctive, build distractors with different meanings, P3L6 non-escalation)",
+        "decision": "accept",
+        "reason": "Independently confirmed on full read."
+      }
+    ],
+    "edits": [
+      {
+        "file": "italian-p2.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "DRAFT — Fable personal read-through pending. Italian P2 nativeGrammarScopeByPath in authoring-spec-it-pt.json; frozen trophy/beat allocation from italian-plan.json. L1–3 opinion with indicative and reasons (L1 la mia opinione as a native equivalent alongside secondo me in the pattern); L4–6 anche se + indicative and comunque; L7–10 penso che/credo che + licensed present subjunctive sia, siano, possa, serva, aiuti, with P1 evidence recycling. Four-turn interested-listener episodes; singular formal Lei and German Sie throughout. Learner past forms use avere only; no speaker-gender agreement. Explicit visible subjects for all form blanks. Not integrated, reviewed, or approved.",
+        "newValue": "DRAFT — Fable read-through complete 2026-10-05 (content arbitration only; not production-approved). Italian P2 nativeGrammarScopeByPath in authoring-spec-it-pt.json; frozen trophy/beat allocation from italian-plan.json. L1–3 opinion with indicative and reasons (L1 la mia opinione as a native equivalent alongside secondo me in the pattern); L4–6 anche se + indicative and comunque; L7–10 penso che/credo che + licensed present subjunctive sia, siano, possa, serva, aiuti, with P1 evidence recycling. Four-turn interested-listener episodes; singular formal Lei and German Sie throughout. Learner past forms use avere only; no speaker-gender agreement. Explicit visible subjects for all form blanks. Not integrated or production-approved.",
+        "reason": "Record completed Fable read-through; remove stale 'pending'."
+      },
+      {
+        "file": "italian-p2.json",
+        "jsonPointer": "/lessons/5/dialogue/3/targetText",
+        "oldValue": "Io leggo meglio, ma il tempo passa comunque troppo presto.",
+        "newValue": "Io leggo meglio, ma il tempo passa comunque troppo in fretta.",
+        "reason": "presto = early; native idiom for time passing quickly is in fretta; bases already match."
+      },
+      {
+        "file": "italian-p2.json",
+        "jsonPointer": "/lessons/5/cloze/4",
+        "oldValue": " comunque troppo presto.",
+        " newValue": " comunque troppo in fretta.",
+        "newValue": " comunque troppo in fretta.",
+        "reason": "Cloze must reconstruct the revised follow-up exactly."
+      },
+      {
+        "file": "italian-p2.json",
+        "jsonPointer": "/lessons/6/dialogue/1/baseText/de",
+        "oldValue": "Die Sammlung braucht Platz, aber ich denke, dass sie dem Viertel trotzdem nützt.",
+        "newValue": "Die Mülltrennung braucht Platz, aber ich denke, dass sie dem Viertel trotzdem nützt.",
+        "reason": "la raccolta (differenziata) = Mülltrennung; Sammlung misleads."
+      },
+      {
+        "file": "italian-p2.json",
+        "jsonPointer": "/lessons/6/pattern/examples/0/baseText/de",
+        "oldValue": "Die Sammlung braucht Platz, aber ich denke, dass sie dem Viertel trotzdem nützt.",
+        "newValue": "Die Mülltrennung braucht Platz, aber ich denke, dass sie dem Viertel trotzdem nützt.",
+        "reason": "Same correction on the pattern surface."
+      },
+      {
+        "file": "italian-p2.json",
+        "jsonPointer": "/lessons/6/chunks/0/baseText/de",
+        "oldValue": "Die Sammlung braucht Platz,",
+        "newValue": "Die Mülltrennung braucht Platz,",
+        "reason": "Same correction on the chunk surface."
+      },
+      {
+        "file": "italian-p3.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "DRAFT — Fable personal read-through pending. Italian P3 nativeGrammarScopeByPath in authoring-spec-it-pt.json; frozen trophy/beat allocation from italian-plan.json. L1–3 vorrei/preferirei + noun or infinitive; NARROW PREVIEW REQUIRING FABLE LICENSE: L2 fixed ci sarebbe la possibilità di + infinitive follows its frozen beat, ahead of productive sarebbe at L4–6. L4–6 potrei/potrebbe/sarebbe possibile and mi andrebbe bene; L7–10 dovrei/dovrebbe for obligations/advice, Le andrebbe bene?, and fixed se possibile, with earlier frames recycled. No imperfect subjunctive or past conditional. Four-turn request/compromise episodes; singular formal Lei and German Sie throughout. Explicit visible subjects in all form blanks. No learner speaker-gender agreement. Not integrated, reviewed, or approved.",
+        "newValue": "DRAFT — Fable read-through complete 2026-10-05 (content arbitration only; not production-approved). Italian P3 nativeGrammarScopeByPath in authoring-spec-it-pt.json; frozen trophy/beat allocation from italian-plan.json. L1–3 vorrei/preferirei + noun or infinitive; FABLE-LICENSED NARROW PREVIEW: L2 uses the fixed politeness frame ci sarebbe la possibilità di + infinitive as a lexical chunk per its frozen beat and trophy possibilità; sarebbe is not taught productively before L4–6 and no other L1–3 surface uses it. L4–6 potrei/potrebbe/sarebbe possibile and mi andrebbe bene; L7–10 dovrei/dovrebbe for obligations/advice, Le andrebbe bene?, and fixed se possibile, with earlier frames recycled. No imperfect subjunctive or past conditional. Four-turn request/compromise episodes; singular formal Lei and German Sie throughout. Explicit visible subjects in all form blanks. No learner speaker-gender agreement. Not integrated or production-approved.",
+        "reason": "Explicit Fable license for the L2 preview; record completed read-through."
+      },
+      {
+        "file": "italian-p3.json",
+        "jsonPointer": "/lessons/1/pedagogicalGoal",
+        "oldValue": "Mit ci sarebbe la possibilità eine vorsichtige Anfrage stellen und einen angebotenen Termin anhand einer eigenen Zeitgrenze prüfen; enge Vorwegnahme von sarebbe gemäß festem Themenplan, Fable-Freigabe ausstehend.",
+        "newValue": "Mit der festen Frage ci sarebbe la possibilità di eine vorsichtige Anfrage stellen und einen angebotenen Termin anhand einer eigenen Zeitgrenze prüfen.",
+        "reason": "License granted; remove the pending note and frame the preview as a fixed chunk."
+      },
+      {
+        "file": "italian-p3.json",
+        "jsonPointer": "/lessons/8/chunks",
+        "oldValue": [
+          {
+            "targetText": "Vorrei valutare",
+            "baseText": {
+              "de": "Ich würde gern prüfen",
+              "en": "I'd like to consider"
+            }
+          },
+          {
+            "targetText": "la proposta",
+            "baseText": {
+              "de": "das Angebot",
+              "en": "the offer"
+            }
+          },
+          {
+            "targetText": "con calma",
+            "baseText": {
+              "de": "in Ruhe",
+              "en": "carefully"
+            }
+          },
+          {
+            "targetText": "prima di confermare",
+            "baseText": {
+              "de": "bevor ich bestätige",
+              "en": "before confirming"
+            }
+          },
+          {
+            "targetText": "l'iscrizione al corso.",
+            "baseText": {
+              "de": "die Kursanmeldung.",
+              "en": "my course registration."
+            }
+          }
+        ],
+        "newValue": [
+          {
+            "targetText": "Vorrei valutare",
+            "baseText": {
+              "de": "Ich würde gern prüfen",
+              "en": "I'd like to consider"
+            }
+          },
+          {
+            "targetText": "la proposta con calma",
+            "baseText": {
+              "de": "das Angebot in Ruhe",
+              "en": "the offer carefully"
+            }
+          },
+          {
+            "targetText": "prima di confermare",
+            "baseText": {
+              "de": "bevor ich bestätige",
+              "en": "before confirming"
+            }
+          },
+          {
+            "targetText": "l'iscrizione al corso.",
+            "baseText": {
+              "de": "die Kursanmeldung.",
+              "en": "my course registration."
+            }
+          }
+        ],
+        "reason": "Separate 'con calma' chip allows a valid native alternative ordering that strict equality rejects; merged chunk removes the trap while still reconstructing turn 1 exactly."
+      }
+    ],
+    "finalChecks": "Note: the /lessons/5/cloze/4 edit object contains one accidental duplicate key ' newValue' (leading space); Codex must use the proper 'newValue' value ' comunque troppo in fretta.' and ignore the stray key. After edits: P2 L6 cloze join equals the new dialogue[3] (11 words); P3 L9 chunks join equals turn 1 and four chips remain distinct from both distractors; no trophy, recall, speech token, pattern example, scene caption or frozen ID changes; status stays 'draft'; validateB1Draft should pass unchanged (no regex interactions with in fretta, Mülltrennung, or the anchor text). Re-run validateB1Draft and the 100-trophy allocation check after applying. This is content approval only; no production approval, no app/runtime change, paid generation, DB write or publication is authorized; no human native review is claimed."
+  },
+  "independent": {
+    "verdict": "PASS",
+    "reviewer": "Codex independent reviewer /root/italian_p2_p3_independent; final second review",
+    "reviewedSources": {
+      "italian-p2.json": "9d5230e476d45938f4d65de273b77744137511ccce47f8ee3073feed0e48bd95",
+      "italian-p3.json": "d483e614fe0b8a6fe749f7f3d76d520be367b1ac79bc62ce5bd9f790aff28e49",
+      "B1_ITALIAN_P2_P3_FABLE_REVIEW_RAW.json": "00181417ff34e2cc4e9d3045f5ad97c01e6477348f6f250c46d7bdbd828d3023"
+    },
+    "sourceDirectory": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content",
+    "unresolvedLocalTtsBlockers": 0,
+    "remainingPublicationFindings": [],
+    "resolutions": [
+      {
+        "lesson": "P2L2/P2L3/P2L4",
+        "finding": "Different-person options in later coordinated cloze clauses",
+        "resolution": "Withdrawn as an exercise blocker after checking the actual UI and governing cue contract.",
+        "reason": "ComplicationStep.tsx renders the infinitive/person cue directly beneath every blank, including when fallback chips appear. The visible cues potere (io), comprare (io), and accompagnare (i genitori) exclude possiamo, compriamo, and accompagno. Each named subject also occurs literally before its blank, as the written proDropRule requires. The sentences alone permit subject shifts; the displayed exercise context does not. Thus the original linguistic observation remains true, but it does not establish multiple valid answers to the presented task. No rewrite is necessary."
+      },
+      {
+        "lesson": "P3L9",
+        "resolution": "Fixed. The four chunks reconstruct the unchanged first learner turn. Merging la proposta con calma removes the reported exact-chip alternate order; both merged base glosses are accurate. Distractors still differ in meaning."
+      },
+      {
+        "lesson": "P3L2",
+        "resolution": "Resolved by Fable's explicit narrow license. The anchor and pedagogical goal now record ci sarebbe la possibilità di as a fixed politeness frame. All L1–L3 occurrences of sarebbe remain within this L2 frame; the pattern does not introduce general conditional conjugation."
+      },
+      {
+        "lesson": "P2L6",
+        "resolution": "Fixed. Dialogue[3] and the cloze tail both use comunque troppo in fretta; the reconstructed response has eleven words. Existing German/English bases already express the corrected meaning."
+      },
+      {
+        "lesson": "P2L7",
+        "resolution": "Fixed. Mülltrennung replaces Sammlung in all three specified German surfaces: dialogue, reused pattern example, and chunk."
+      }
+    ],
+    "readCoverage": {
+      "initialReview": "All twenty complete episodes and every field read at the original frozen hashes.",
+      "secondReview": "Read Fable's complete arbitration and nine edit objects. Re-read every field of revised P2L6/P2L7/P3L2/P3L9; checked both revised anchors, disputed P2L2–L4 blanks, shared proDropRule, validator subject-prefix logic, and ComplicationStep cue rendering. Unchanged content is covered by exact replay against the originally reviewed files.",
+      "newIssues": "None found in the changed or coupled surfaces. No human native-speaker or rendered-device review is claimed.",
+      "validator": "Root reports validateB1Draft and unchanged-trophy checks PASS; not rerun by this reviewer. Independent reconstruction and replay assertions passed for all twenty episodes."
+    },
+    "replay": {
+      "patchCount": 9,
+      "italian-p2.json": 6,
+      "italian-p3.json": 3,
+      "allOldValuesMatched": true,
+      "allReplayedObjectsEqualReviewedFiles": true,
+      "canonicalPrettyPrintedReplayMatchesReviewedBytes": true,
+      "additionalChanges": 0,
+      "strayLeadingSpaceKey": "Ignored the literal ' newValue' property exactly as Fable finalChecks instructs; applied the proper newValue property. Both contained the same replacement string.",
+      "originalSourcesUnchanged": {
+        "italian-p2.json": "5df0eaa4e393706139375733ab412dcbeb3a7da94829472c70bfe9494ca563ba",
+        "italian-p3.json": "96e74c4de019b7cfc85b396470066ed2c313f491833058ef4b9d407a6cce08e8"
+      },
+      "allTwentyChecks": "Chunk join equals dialogue[1]; cloze join equals dialogue[3]; recall reconstructs dialogue[1]; every trophy string and slug is unchanged."
+    },
+    "localStagingAndTts": {
+      "contentReadiness": "PASS for these exact revised source hashes.",
+      "audioStatus": "Audio generation, manifests and listening quality were not evaluated. This content verdict does not itself authorize a paid run."
+    },
+    "productionPublication": {
+      "approvedByThisReview": false,
+      "status": "No unresolved content findings remain, but production publication is outside this review. App/runtime integration, audio/catalog/base-edition convergence and applicable release approvals remain separate gates."
+    },
+    "operations": "Read-only review except this requested scratch report. No app changes, database access, paid calls, commits or publication."
+  }
+}

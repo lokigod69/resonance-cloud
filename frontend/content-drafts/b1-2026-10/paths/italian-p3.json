@@ -1,0 +1,2207 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "baseLanguage": "German",
+  "pathNumber": 3,
+  "title": {
+    "de": "Eine andere Möglichkeit",
+    "en": "A different possibility"
+  },
+  "subtitle": {
+    "de": "Bitten Sie höflich, prüfen Sie Alternativen und handeln Sie einen passenden Kompromiss aus.",
+    "en": "Make polite requests, consider alternatives, and negotiate a workable compromise."
+  },
+  "anchor": "DRAFT — Fable read-through complete 2026-10-05 (content arbitration only; not production-approved). Italian P3 nativeGrammarScopeByPath in authoring-spec-it-pt.json; frozen trophy/beat allocation from italian-plan.json. L1–3 vorrei/preferirei + noun or infinitive; FABLE-LICENSED NARROW PREVIEW: L2 uses the fixed politeness frame ci sarebbe la possibilità di + infinitive as a lexical chunk per its frozen beat and trophy possibilità; sarebbe is not taught productively before L4–6 and no other L1–3 surface uses it. L4–6 potrei/potrebbe/sarebbe possibile and mi andrebbe bene; L7–10 dovrei/dovrebbe for obligations/advice, Le andrebbe bene?, and fixed se possibile, with earlier frames recycled. No imperfect subjunctive or past conditional. Four-turn request/compromise episodes; singular formal Lei and German Sie throughout. Explicit visible subjects in all form blanks. No learner speaker-gender agreement. Not integrated or production-approved.",
+  "lessons": [
+    {
+      "slug": "preferirei-un-tavolo-tranquillo",
+      "title": {
+        "de": "Ein Tisch im Restaurant",
+        "en": "A table at the restaurant"
+      },
+      "situation": {
+        "de": "Im Restaurant fragt die Bedienung, wo Sie sitzen möchten.",
+        "en": "At a restaurant, the server asks where you would like to sit."
+      },
+      "pedagogicalGoal": "Mit preferirei eine höfliche Präferenz nennen und nach einer Absage eine konkrete Alternative auswählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha una preferenza per il tavolo?",
+          "baseText": {
+            "de": "Haben Sie einen Wunsch, was den Tisch betrifft?",
+            "en": "Do you have a preference for the table?"
+          }
+        },
+        {
+          "targetText": "Preferirei un tavolo più tranquillo, perché vicino alla porta c'è troppo rumore.",
+          "baseText": {
+            "de": "Ich hätte lieber einen ruhigeren Tisch, weil es an der Tür zu laut ist.",
+            "en": "I'd prefer a quieter table, because there's too much noise near the door."
+          }
+        },
+        {
+          "targetText": "La sala interna è piena, ma c'è un tavolo in fondo alla terrazza.",
+          "baseText": {
+            "de": "Der Innenraum ist voll, aber hinten auf der Terrasse gibt es einen Tisch.",
+            "en": "The indoor dining room is full, but there's a table at the far end of the terrace."
+          }
+        },
+        {
+          "targetText": "Io vorrei mangiare in terrazza, lontano dal passaggio dei camerieri.",
+          "baseText": {
+            "de": "Ich würde gern auf der Terrasse essen, abseits des Laufwegs der Bedienung.",
+            "en": "I'd like to eat on the terrace, away from where the servers pass."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Preferirei e vorrei",
+        "rule": {
+          "de": "Preferirei mit einem Substantiv nennt eine höfliche Präferenz; vorrei mit Infinitiv drückt aus, was Sie gern tun möchten.",
+          "en": "Preferirei with a noun states a polite preference; vorrei with an infinitive expresses what you would like to do."
+        },
+        "examples": [
+          {
+            "targetText": "Preferirei un tavolo più tranquillo, perché vicino alla porta c'è troppo rumore.",
+            "baseText": {
+              "de": "Ich hätte lieber einen ruhigeren Tisch, weil es an der Tür zu laut ist.",
+              "en": "I'd prefer a quieter table, because there's too much noise near the door."
+            },
+            "highlight": "Preferirei un tavolo più tranquillo"
+          },
+          {
+            "targetText": "Vorrei mangiare vicino alla finestra, lontano dalla porta.",
+            "baseText": {
+              "de": "Ich würde gern am Fenster essen, weit von der Tür entfernt.",
+              "en": "I'd like to eat near the window, away from the door."
+            },
+            "highlight": "Vorrei mangiare"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "vorrei",
+          "cue": "volere (io)",
+          "choices": [
+            "vorrebbero",
+            "vorrei",
+            "vorrebbe",
+            "vorremmo"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "mangiare",
+          "cue": "mangiare (io)",
+          "choices": [
+            "mangiando",
+            "mangiavo",
+            "mangiare",
+            "mangiato"
+          ]
+        },
+        " in terrazza, lontano dal passaggio dei camerieri."
+      ],
+      "chunks": [
+        {
+          "targetText": "Preferirei un tavolo",
+          "baseText": {
+            "de": "Ich hätte lieber einen Tisch",
+            "en": "I'd prefer a table"
+          }
+        },
+        {
+          "targetText": "più tranquillo,",
+          "baseText": {
+            "de": "der ruhiger ist,",
+            "en": "that is quieter,"
+          }
+        },
+        {
+          "targetText": "perché vicino alla porta",
+          "baseText": {
+            "de": "weil es in der Nähe der Tür",
+            "en": "because near the door"
+          }
+        },
+        {
+          "targetText": "c'è troppo rumore.",
+          "baseText": {
+            "de": "zu laut ist.",
+            "en": "there's too much noise."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "preferirei",
+          "baseText": {
+            "de": "ich hätte lieber; ich würde vorziehen",
+            "en": "I would prefer"
+          }
+        },
+        {
+          "targetText": "un tavolo tranquillo",
+          "baseText": {
+            "de": "ein ruhiger Tisch",
+            "en": "a quiet table"
+          }
+        },
+        {
+          "targetText": "vicino alla porta",
+          "baseText": {
+            "de": "in der Nähe der Tür",
+            "en": "near the door"
+          }
+        },
+        {
+          "targetText": "troppo rumore",
+          "baseText": {
+            "de": "zu viel Lärm",
+            "en": "too much noise"
+          }
+        },
+        {
+          "targetText": "la sala interna",
+          "baseText": {
+            "de": "der Innenraum",
+            "en": "the indoor dining room"
+          }
+        },
+        {
+          "targetText": "in terrazza",
+          "baseText": {
+            "de": "auf der Terrasse",
+            "en": "on the terrace"
+          }
+        },
+        {
+          "targetText": "il passaggio dei camerieri",
+          "baseText": {
+            "de": "der Laufweg der Bedienung",
+            "en": "where the servers pass"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Preferirei un tavolo più ",
+        "answer": "tranquillo",
+        "after": ", perché vicino alla porta c'è troppo rumore.",
+        "fallbackChoices": [
+          "tranquilli",
+          "tranquilla",
+          "tranquillo",
+          "tranquille"
+        ]
+      },
+      "speakRequired": [
+        "preferirei",
+        "tavolo",
+        "rumore"
+      ],
+      "sceneCaption": {
+        "de": "Die Bedienung fragt am Eingang: „Ha una preferenza per il tavolo?“",
+        "en": "At the entrance, the server asks: “Ha una preferenza per il tavolo?”"
+      },
+      "trophyWord": {
+        "word": "preferirei",
+        "meaning": {
+          "de": "ich hätte lieber; ich würde vorziehen",
+          "en": "I would prefer"
+        },
+        "example": "Preferirei un tavolo vicino alla finestra.",
+        "whyThisWord": {
+          "de": "Preferirei nennt einen Wunsch als höfliche Präferenz und lässt Raum für einen Gegenvorschlag.",
+          "en": "Preferirei presents a wish as a polite preference and leaves room for another suggestion."
+        }
+      },
+      "distractors": [
+        "più grande,",
+        "c'è poca luce."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bedienung begrüßt einen Gast am Restauranteingang.",
+        "en": "A server welcomes a guest at the restaurant entrance."
+      },
+      "songMood": "gentle Italian bossa pop with a relaxed restaurant mood",
+      "visualNotes": "Restaurant host stand and softly lit dining space; no terrace table or final seating solution shown."
+    },
+    {
+      "slug": "possibilita-di-cambiare-orario",
+      "title": {
+        "de": "Eine andere Unterrichtszeit",
+        "en": "A different lesson time"
+      },
+      "situation": {
+        "de": "Sie erkundigen sich im Kurssekretariat nach einer anderen Zeit für Ihre Unterrichtsstunde.",
+        "en": "You ask the course office about taking your lesson at a different time."
+      },
+      "pedagogicalGoal": "Mit der festen Frage ci sarebbe la possibilità di eine vorsichtige Anfrage stellen und einen angebotenen Termin anhand einer eigenen Zeitgrenze prüfen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quale cambiamento desidera per la Sua lezione?",
+          "baseText": {
+            "de": "Was möchten Sie an Ihrer Unterrichtsstunde ändern?",
+            "en": "What change would you like to make to your lesson?"
+          }
+        },
+        {
+          "targetText": "Ci sarebbe la possibilità di seguire la lezione in un altro orario?",
+          "baseText": {
+            "de": "Gäbe es die Möglichkeit, die Unterrichtsstunde zu einer anderen Zeit zu besuchen?",
+            "en": "Would it be possible to take the lesson at another time?"
+          }
+        },
+        {
+          "targetText": "Solo il gruppo del giovedì ha un posto, dalle sei alle otto.",
+          "baseText": {
+            "de": "Nur in der Donnerstagsgruppe ist ein Platz frei, von sechs bis acht.",
+            "en": "Only the Thursday group has a place, from six to eight."
+          }
+        },
+        {
+          "targetText": "Io vorrei provare il giovedì; posso uscire alle sette?",
+          "baseText": {
+            "de": "Ich würde den Donnerstag gern ausprobieren; kann ich um sieben gehen?",
+            "en": "I'd like to try Thursday; can I leave at seven?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ci sarebbe la possibilità di…?",
+        "rule": {
+          "de": "Die feste Frage ci sarebbe la possibilità di mit Infinitiv erkundigt sich höflich nach einer Option. Vorrei beschreibt anschließend Ihren Wunsch.",
+          "en": "The fixed question ci sarebbe la possibilità di with an infinitive politely asks about an option. Vorrei then describes what you would like."
+        },
+        "examples": [
+          {
+            "targetText": "Ci sarebbe la possibilità di seguire la lezione in un altro orario?",
+            "baseText": {
+              "de": "Gäbe es die Möglichkeit, die Unterrichtsstunde zu einer anderen Zeit zu besuchen?",
+              "en": "Would it be possible to take the lesson at another time?"
+            },
+            "highlight": "Ci sarebbe la possibilità di seguire"
+          },
+          {
+            "targetText": "Ci sarebbe la possibilità di provare un altro gruppo?",
+            "baseText": {
+              "de": "Gäbe es die Möglichkeit, eine andere Gruppe auszuprobieren?",
+              "en": "Would it be possible to try another group?"
+            },
+            "highlight": "Ci sarebbe la possibilità di provare"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "vorrei",
+          "cue": "volere (io)",
+          "choices": [
+            "vorrebbe",
+            "vorrebbero",
+            "vorremmo",
+            "vorrei"
+          ]
+        },
+        " provare il giovedì; posso ",
+        {
+          "kind": "form",
+          "answer": "uscire",
+          "cue": "uscire (io)",
+          "choices": [
+            "uscivo",
+            "uscire",
+            "uscendo",
+            "uscito"
+          ]
+        },
+        " alle sette?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Ci sarebbe la possibilità",
+          "baseText": {
+            "de": "Gäbe es die Möglichkeit",
+            "en": "Would it be possible"
+          }
+        },
+        {
+          "targetText": "di seguire",
+          "baseText": {
+            "de": "teilzunehmen",
+            "en": "to take"
+          }
+        },
+        {
+          "targetText": "la lezione",
+          "baseText": {
+            "de": "an der Unterrichtsstunde",
+            "en": "the lesson"
+          }
+        },
+        {
+          "targetText": "in un altro orario?",
+          "baseText": {
+            "de": "zu einer anderen Zeit?",
+            "en": "at another time?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la possibilità",
+          "baseText": {
+            "de": "die Möglichkeit",
+            "en": "the possibility"
+          }
+        },
+        {
+          "targetText": "seguire la lezione",
+          "baseText": {
+            "de": "die Unterrichtsstunde besuchen",
+            "en": "to take the lesson"
+          }
+        },
+        {
+          "targetText": "un altro orario",
+          "baseText": {
+            "de": "eine andere Zeit",
+            "en": "another time"
+          }
+        },
+        {
+          "targetText": "il gruppo del giovedì",
+          "baseText": {
+            "de": "die Donnerstagsgruppe",
+            "en": "the Thursday group"
+          }
+        },
+        {
+          "targetText": "un posto",
+          "baseText": {
+            "de": "ein Platz",
+            "en": "a place"
+          }
+        },
+        {
+          "targetText": "provare",
+          "baseText": {
+            "de": "ausprobieren",
+            "en": "to try"
+          }
+        },
+        {
+          "targetText": "uscire",
+          "baseText": {
+            "de": "hinausgehen; gehen",
+            "en": "to leave"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ci sarebbe la possibilità di ",
+        "answer": "seguire",
+        "after": " la lezione in un altro orario?",
+        "fallbackChoices": [
+          "seguendo",
+          "seguito",
+          "seguire",
+          "seguivo"
+        ]
+      },
+      "speakRequired": [
+        "possibilità",
+        "lezione",
+        "orario"
+      ],
+      "sceneCaption": {
+        "de": "Im Kurssekretariat fragt die Mitarbeiterin: „Quale cambiamento desidera per la Sua lezione?“",
+        "en": "At the course office, the staff member asks: “Quale cambiamento desidera per la Sua lezione?”"
+      },
+      "trophyWord": {
+        "word": "possibilità",
+        "meaning": {
+          "de": "die Möglichkeit",
+          "en": "possibility"
+        },
+        "example": "Vorrei la possibilità di seguire una lezione di prova.",
+        "whyThisWord": {
+          "de": "Possibilità stellt eine gewünschte Option zur Diskussion, bevor Sie sich auf eine Lösung festlegen.",
+          "en": "Possibilità puts an option up for discussion before you commit to a solution."
+        }
+      },
+      "distractors": [
+        "di cancellare",
+        "in un'altra sede?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch am Empfang einer Sprachschule.",
+        "en": "A conversation at a language-school reception desk."
+      },
+      "songMood": "clear conversational Italian pop with a thoughtful pace",
+      "visualNotes": "Course reception desk with a blank timetable; no Thursday vacancy or seven-o'clock departure displayed."
+    },
+    {
+      "slug": "alternativa-all-abbonamento",
+      "title": {
+        "de": "Das passende Abo",
+        "en": "The right membership"
+      },
+      "situation": {
+        "de": "Am Empfang eines Sportzentrums besprechen Sie die angebotenen Abonnements.",
+        "en": "At a sports-center reception desk, you discuss the memberships on offer."
+      },
+      "pedagogicalGoal": "Mit vorrei eine Alternative erfragen und mit preferirei die entscheidende Bedingung nach einem Gegenvorschlag klarstellen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Questo abbonamento mensile corrisponde alle Sue esigenze?",
+          "baseText": {
+            "de": "Passt dieses Monatsabo zu Ihren Bedürfnissen?",
+            "en": "Does this monthly membership meet your needs?"
+          }
+        },
+        {
+          "targetText": "Vorrei un'alternativa a questo abbonamento, perché posso frequentare solo due volte al mese.",
+          "baseText": {
+            "de": "Ich hätte gern eine Alternative zu diesem Abo, weil ich nur zweimal im Monat kommen kann.",
+            "en": "I'd like an alternative to this membership, because I can only attend twice a month."
+          }
+        },
+        {
+          "targetText": "C'è un pacchetto di cinque ingressi, ma dura un mese.",
+          "baseText": {
+            "de": "Es gibt ein Paket mit fünf Eintritten, das aber nur einen Monat gültig ist.",
+            "en": "There's a pack of five visits, but it's only valid for a month."
+          }
+        },
+        {
+          "targetText": "Io preferirei pagare ogni ingresso, perché i miei turni cambiano.",
+          "baseText": {
+            "de": "Ich würde lieber jeden Eintritt einzeln bezahlen, weil meine Schichten wechseln.",
+            "en": "I'd prefer to pay for each visit, because my shifts change."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Vorrei un'alternativa; preferirei pagare",
+        "rule": {
+          "de": "Vorrei mit einer Sache eröffnet eine Anfrage; preferirei mit Infinitiv nennt die bevorzugte Handlung und perché erklärt den Grund.",
+          "en": "Vorrei with a noun opens a request; preferirei with an infinitive names the preferred action, and perché explains why."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei un'alternativa a questo abbonamento, perché posso frequentare solo due volte al mese.",
+            "baseText": {
+              "de": "Ich hätte gern eine Alternative zu diesem Abo, weil ich nur zweimal im Monat kommen kann.",
+              "en": "I'd like an alternative to this membership, because I can only attend twice a month."
+            },
+            "highlight": "Vorrei un'alternativa"
+          },
+          {
+            "targetText": "Preferirei pagare una lezione alla volta.",
+            "baseText": {
+              "de": "Ich würde lieber jede Unterrichtsstunde einzeln bezahlen.",
+              "en": "I'd prefer to pay for one lesson at a time."
+            },
+            "highlight": "Preferirei pagare"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "preferirei",
+          "cue": "preferire (io)",
+          "choices": [
+            "preferirebbe",
+            "preferiremmo",
+            "preferirei",
+            "preferirebbero"
+          ]
+        },
+        " pagare ogni ingresso, perché i miei turni ",
+        {
+          "kind": "form",
+          "answer": "cambiano",
+          "cue": "cambiare (i miei turni)",
+          "choices": [
+            "cambia",
+            "cambiamo",
+            "cambio",
+            "cambiano"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei un'alternativa",
+          "baseText": {
+            "de": "Ich hätte gern eine Alternative",
+            "en": "I'd like an alternative"
+          }
+        },
+        {
+          "targetText": "a questo abbonamento,",
+          "baseText": {
+            "de": "zu diesem Abo,",
+            "en": "to this membership,"
+          }
+        },
+        {
+          "targetText": "perché posso frequentare",
+          "baseText": {
+            "de": "weil ich kommen kann",
+            "en": "because I can attend"
+          }
+        },
+        {
+          "targetText": "solo due volte al mese.",
+          "baseText": {
+            "de": "nur zweimal im Monat.",
+            "en": "only twice a month."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un'alternativa",
+          "baseText": {
+            "de": "eine Alternative",
+            "en": "an alternative"
+          }
+        },
+        {
+          "targetText": "l'abbonamento mensile",
+          "baseText": {
+            "de": "das Monatsabo",
+            "en": "the monthly membership"
+          }
+        },
+        {
+          "targetText": "frequentare",
+          "baseText": {
+            "de": "regelmäßig besuchen",
+            "en": "to attend"
+          }
+        },
+        {
+          "targetText": "due volte al mese",
+          "baseText": {
+            "de": "zweimal im Monat",
+            "en": "twice a month"
+          }
+        },
+        {
+          "targetText": "un pacchetto di ingressi",
+          "baseText": {
+            "de": "ein Eintrittspaket",
+            "en": "a pack of visits"
+          }
+        },
+        {
+          "targetText": "pagare ogni ingresso",
+          "baseText": {
+            "de": "jeden Eintritt einzeln bezahlen",
+            "en": "to pay for each visit"
+          }
+        },
+        {
+          "targetText": "i miei turni",
+          "baseText": {
+            "de": "meine Schichten",
+            "en": "my shifts"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei un'alternativa a questo abbonamento, perché posso ",
+        "answer": "frequentare",
+        "after": " solo due volte al mese.",
+        "fallbackChoices": [
+          "frequentando",
+          "frequentavo",
+          "frequentare",
+          "frequentato"
+        ]
+      },
+      "speakRequired": [
+        "alternativa",
+        "abbonamento",
+        "mese"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang fragt ein Mitarbeiter: „Questo abbonamento mensile corrisponde alle Sue esigenze?“",
+        "en": "At reception, a staff member asks: “Questo abbonamento mensile corrisponde alle Sue esigenze?”"
+      },
+      "trophyWord": {
+        "word": "alternativa",
+        "meaning": {
+          "de": "die Alternative",
+          "en": "alternative"
+        },
+        "example": "Vorrei un'alternativa senza un impegno mensile.",
+        "whyThisWord": {
+          "de": "Alternativa öffnet die Suche nach einer anderen Lösung, wenn das erste Angebot nicht zu Ihrem Alltag passt.",
+          "en": "Alternativa opens the search for another solution when the first offer does not fit your routine."
+        }
+      },
+      "distractors": [
+        "a questo corso,",
+        "solo due volte alla settimana."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gast und ein Mitarbeiter sprechen am Empfang eines Sportzentrums.",
+        "en": "A visitor and a staff member talk at a sports-center reception desk."
+      },
+      "songMood": "practical Italian pop with a light steady beat",
+      "visualNotes": "Sports-center reception, neutral brochures; no single-entry tariff or five-visit package revealed."
+    },
+    {
+      "slug": "scala-in-prestito",
+      "title": {
+        "de": "Eine kleine Arbeit zu Hause",
+        "en": "A small job at home"
+      },
+      "situation": {
+        "de": "Sie sprechen einen Nachbarn höflich an, weil Sie zu Hause etwas erledigen möchten.",
+        "en": "You politely approach a neighbor because you need to do a small job at home."
+      },
+      "pedagogicalGoal": "Mit potrei eine Bitte um Erlaubnis abschwächen und die Rückgabe eines geliehenen Gegenstands verbindlich anbieten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha bisogno di qualcosa per il lavoro in casa?",
+          "baseText": {
+            "de": "Brauchen Sie etwas für die Arbeit zu Hause?",
+            "en": "Do you need anything for the job at home?"
+          }
+        },
+        {
+          "targetText": "Potrei prendere in prestito la Sua scala per sistemare una tenda?",
+          "baseText": {
+            "de": "Könnte ich Ihre Leiter ausleihen, um eine Gardine zu richten?",
+            "en": "Could I borrow your ladder to fix a curtain?"
+          }
+        },
+        {
+          "targetText": "La uso domani alle nove. Quando pensa di riportarla?",
+          "baseText": {
+            "de": "Ich brauche sie morgen um neun. Wann möchten Sie sie zurückbringen?",
+            "en": "I'm using it tomorrow at nine. When do you expect to return it?"
+          }
+        },
+        {
+          "targetText": "Io potrei riportare la scala stasera, prima di cena.",
+          "baseText": {
+            "de": "Ich könnte die Leiter heute Abend vor dem Abendessen zurückbringen.",
+            "en": "I could return the ladder this evening, before dinner."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Potrei per una richiesta e un'offerta",
+        "rule": {
+          "de": "Potrei mit Infinitiv formuliert eine höfliche Bitte oder ein vorsichtiges Angebot, ohne die Entscheidung des Gegenübers vorwegzunehmen.",
+          "en": "Potrei with an infinitive makes a polite request or a tentative offer without deciding for the other person."
+        },
+        "examples": [
+          {
+            "targetText": "Potrei prendere in prestito la Sua scala per sistemare una tenda?",
+            "baseText": {
+              "de": "Könnte ich Ihre Leiter ausleihen, um eine Gardine zu richten?",
+              "en": "Could I borrow your ladder to fix a curtain?"
+            },
+            "highlight": "Potrei prendere in prestito"
+          },
+          {
+            "targetText": "Potrei restituire la scala oggi, dopo il lavoro.",
+            "baseText": {
+              "de": "Ich könnte die Leiter heute nach der Arbeit zurückgeben.",
+              "en": "I could return the ladder today, after work."
+            },
+            "highlight": "Potrei restituire"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "potrei",
+          "cue": "potere (io)",
+          "choices": [
+            "potrebbero",
+            "potremmo",
+            "potrei",
+            "potrebbe"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "riportare",
+          "cue": "riportare (io)",
+          "choices": [
+            "riportavo",
+            "riportato",
+            "riportando",
+            "riportare"
+          ]
+        },
+        " la scala stasera, prima di cena."
+      ],
+      "chunks": [
+        {
+          "targetText": "Potrei prendere in prestito",
+          "baseText": {
+            "de": "Könnte ich ausleihen",
+            "en": "Could I borrow"
+          }
+        },
+        {
+          "targetText": "la Sua scala",
+          "baseText": {
+            "de": "Ihre Leiter",
+            "en": "your ladder"
+          }
+        },
+        {
+          "targetText": "per sistemare",
+          "baseText": {
+            "de": "um zu richten",
+            "en": "to fix"
+          }
+        },
+        {
+          "targetText": "una tenda?",
+          "baseText": {
+            "de": "eine Gardine?",
+            "en": "a curtain?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "prendere in prestito",
+          "baseText": {
+            "de": "ausleihen",
+            "en": "to borrow"
+          }
+        },
+        {
+          "targetText": "la scala",
+          "baseText": {
+            "de": "die Leiter",
+            "en": "the ladder"
+          }
+        },
+        {
+          "targetText": "sistemare una tenda",
+          "baseText": {
+            "de": "eine Gardine richten",
+            "en": "to fix a curtain"
+          }
+        },
+        {
+          "targetText": "riportare",
+          "baseText": {
+            "de": "zurückbringen",
+            "en": "to bring back"
+          }
+        },
+        {
+          "targetText": "stasera",
+          "baseText": {
+            "de": "heute Abend",
+            "en": "this evening"
+          }
+        },
+        {
+          "targetText": "prima di cena",
+          "baseText": {
+            "de": "vor dem Abendessen",
+            "en": "before dinner"
+          }
+        },
+        {
+          "targetText": "restituire",
+          "baseText": {
+            "de": "zurückgeben",
+            "en": "to return"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Potrei ",
+        "answer": "prendere",
+        "after": " in prestito la Sua scala per sistemare una tenda?",
+        "fallbackChoices": [
+          "prendendo",
+          "preso",
+          "prendere",
+          "prendevo"
+        ]
+      },
+      "speakRequired": [
+        "prestito",
+        "scala",
+        "tenda"
+      ],
+      "sceneCaption": {
+        "de": "Vor seiner Wohnung fragt ein Nachbar: „Ha bisogno di qualcosa per il lavoro in casa?“",
+        "en": "Outside his apartment, a neighbor asks: “Ha bisogno di qualcosa per il lavoro in casa?”"
+      },
+      "trophyWord": {
+        "word": "prestito",
+        "meaning": {
+          "de": "die Leihe; das Ausleihen",
+          "en": "loan; borrowing"
+        },
+        "example": "Potrei prendere in prestito la scala fino a stasera?",
+        "whyThisWord": {
+          "de": "Die Verbindung prendere in prestito macht deutlich, dass Sie einen Gegenstand nur vorübergehend benötigen.",
+          "en": "The phrase prendere in prestito makes clear that you need an item only temporarily."
+        }
+      },
+      "distractors": [
+        "la Sua sedia",
+        "un quadro?"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn sprechen vor einer Wohnungstür.",
+        "en": "Two neighbors talk outside an apartment door."
+      },
+      "songMood": "friendly Italian acoustic pop with an easy domestic mood",
+      "visualNotes": "Apartment landing and two adult neighbors; no ladder handover or return time pictured."
+    },
+    {
+      "slug": "permesso-per-una-consegna",
+      "title": {
+        "de": "Eine Lieferung im Haus",
+        "en": "A delivery to the building"
+      },
+      "situation": {
+        "de": "Sie besprechen mit der Hausverwaltung die Anlieferung eines größeren Gegenstands.",
+        "en": "You discuss delivery of a large item with the building manager."
+      },
+      "pedagogicalGoal": "Mit sarebbe possibile eine Erlaubnis erfragen und auf einen Einwand einen konkreten, noch offenen Gegenvorschlag machen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come pensa di organizzare la consegna?",
+          "baseText": {
+            "de": "Wie möchten Sie die Lieferung organisieren?",
+            "en": "How do you plan to arrange the delivery?"
+          }
+        },
+        {
+          "targetText": "Sarebbe possibile avere il permesso di usare il cortile per una consegna?",
+          "baseText": {
+            "de": "Wäre es möglich, die Erlaubnis zu bekommen, den Innenhof für eine Lieferung zu nutzen?",
+            "en": "Would it be possible to have permission to use the courtyard for a delivery?"
+          }
+        },
+        {
+          "targetText": "Al mattino passano i bambini; l'accesso deve restare libero.",
+          "baseText": {
+            "de": "Vormittags gehen dort die Kinder durch; der Zugang muss frei bleiben.",
+            "en": "Children pass through in the morning; access must remain clear."
+          }
+        },
+        {
+          "targetText": "Il furgone potrebbe arrivare dopo pranzo e lasciare libero il passaggio.",
+          "baseText": {
+            "de": "Der Lieferwagen könnte nach dem Mittagessen kommen und den Durchgang frei lassen.",
+            "en": "The van could arrive after lunch and leave the passage clear."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sarebbe possibile? Potrebbe…",
+        "rule": {
+          "de": "Sarebbe possibile mit Infinitiv fragt vorsichtig nach einer Möglichkeit; potrebbe mit einem genannten Subjekt bietet anschließend einen Vorschlag.",
+          "en": "Sarebbe possibile with an infinitive tentatively asks whether something is possible; potrebbe with a named subject then offers a suggestion."
+        },
+        "examples": [
+          {
+            "targetText": "Sarebbe possibile avere il permesso di usare il cortile per una consegna?",
+            "baseText": {
+              "de": "Wäre es möglich, die Erlaubnis zu bekommen, den Innenhof für eine Lieferung zu nutzen?",
+              "en": "Would it be possible to have permission to use the courtyard for a delivery?"
+            },
+            "highlight": "Sarebbe possibile avere"
+          },
+          {
+            "targetText": "Il corriere potrebbe usare l'ingresso laterale.",
+            "baseText": {
+              "de": "Der Kurier könnte den Seiteneingang benutzen.",
+              "en": "The courier could use the side entrance."
+            },
+            "highlight": "Il corriere potrebbe usare"
+          }
+        ]
+      },
+      "cloze": [
+        "Il furgone ",
+        {
+          "kind": "form",
+          "answer": "potrebbe",
+          "cue": "potere (il furgone)",
+          "choices": [
+            "potrei",
+            "potrebbero",
+            "potrebbe",
+            "potremmo"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "arrivare",
+          "cue": "arrivare (il furgone)",
+          "choices": [
+            "arrivando",
+            "arrivava",
+            "arrivato",
+            "arrivare"
+          ]
+        },
+        " dopo pranzo e lasciare libero il passaggio."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sarebbe possibile avere",
+          "baseText": {
+            "de": "Wäre es möglich zu bekommen",
+            "en": "Would it be possible to have"
+          }
+        },
+        {
+          "targetText": "il permesso",
+          "baseText": {
+            "de": "die Erlaubnis",
+            "en": "permission"
+          }
+        },
+        {
+          "targetText": "di usare il cortile",
+          "baseText": {
+            "de": "den Innenhof zu nutzen",
+            "en": "to use the courtyard"
+          }
+        },
+        {
+          "targetText": "per una consegna?",
+          "baseText": {
+            "de": "für eine Lieferung?",
+            "en": "for a delivery?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sarebbe possibile",
+          "baseText": {
+            "de": "wäre es möglich",
+            "en": "would it be possible"
+          }
+        },
+        {
+          "targetText": "il permesso",
+          "baseText": {
+            "de": "die Erlaubnis",
+            "en": "permission"
+          }
+        },
+        {
+          "targetText": "usare il cortile",
+          "baseText": {
+            "de": "den Innenhof nutzen",
+            "en": "to use the courtyard"
+          }
+        },
+        {
+          "targetText": "la consegna",
+          "baseText": {
+            "de": "die Lieferung",
+            "en": "the delivery"
+          }
+        },
+        {
+          "targetText": "il furgone",
+          "baseText": {
+            "de": "der Lieferwagen",
+            "en": "the van"
+          }
+        },
+        {
+          "targetText": "dopo pranzo",
+          "baseText": {
+            "de": "nach dem Mittagessen",
+            "en": "after lunch"
+          }
+        },
+        {
+          "targetText": "lasciare libero il passaggio",
+          "baseText": {
+            "de": "den Durchgang frei lassen",
+            "en": "to leave the passage clear"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sarebbe possibile avere il permesso di ",
+        "answer": "usare",
+        "after": " il cortile per una consegna?",
+        "fallbackChoices": [
+          "usando",
+          "usato",
+          "usare",
+          "usavo"
+        ]
+      },
+      "speakRequired": [
+        "permesso",
+        "cortile",
+        "consegna"
+      ],
+      "sceneCaption": {
+        "de": "Die Hausverwalterin fragt am Eingang: „Come pensa di organizzare la consegna?“",
+        "en": "The building manager asks at the entrance: “Come pensa di organizzare la consegna?”"
+      },
+      "trophyWord": {
+        "word": "permesso",
+        "meaning": {
+          "de": "die Erlaubnis",
+          "en": "permission"
+        },
+        "example": "Vorrei il permesso di usare il cortile per pochi minuti.",
+        "whyThisWord": {
+          "de": "Permesso macht deutlich, dass die Zustimmung einer anderen Person nötig ist.",
+          "en": "Permesso makes clear that another person's agreement is needed."
+        }
+      },
+      "distractors": [
+        "di usare il garage",
+        "per una riparazione?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bewohnerin oder ein Bewohner spricht mit der Hausverwaltung am Eingang.",
+        "en": "A resident speaks with the building manager at the entrance."
+      },
+      "songMood": "measured Italian pop with a practical negotiating rhythm",
+      "visualNotes": "Building entrance and manager holding a clipboard; no delivery van or accepted courtyard access."
+    },
+    {
+      "slug": "un-orario-piu-flessibile",
+      "title": {
+        "de": "Ein Kurs trotz Schichtarbeit",
+        "en": "A course around shift work"
+      },
+      "situation": {
+        "de": "Sie sprechen mit der Kursleitung darüber, wie sich der Unterricht mit Ihrer Arbeit vereinbaren lässt.",
+        "en": "You speak with the course organizer about fitting lessons around your work."
+      },
+      "pedagogicalGoal": "Mit sarebbe einen Bedarf vorsichtig benennen und mit mi andrebbe bene einen eingeschränkten Gegenvorschlag annehmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quale orario facilita la Sua partecipazione al corso?",
+          "baseText": {
+            "de": "Welche Zeit erleichtert Ihnen die Teilnahme am Kurs?",
+            "en": "What time would make it easier for you to attend the course?"
+          }
+        },
+        {
+          "targetText": "Per il corso sarebbe utile un orario più flessibile, perché lavoro a turni.",
+          "baseText": {
+            "de": "Für den Kurs wäre eine flexiblere Zeit hilfreich, weil ich im Schichtdienst arbeite.",
+            "en": "A more flexible schedule would help with the course, because I work shifts."
+          }
+        },
+        {
+          "targetText": "Possiamo cambiare solo l'inizio; la sala chiude sempre alle nove.",
+          "baseText": {
+            "de": "Wir können nur den Beginn ändern; der Raum schließt immer um neun.",
+            "en": "We can only change the start time; the room always closes at nine."
+          }
+        },
+        {
+          "targetText": "Una lezione breve mi andrebbe bene; io potrei iniziare alle sette.",
+          "baseText": {
+            "de": "Eine kurze Unterrichtsstunde wäre für mich in Ordnung; ich könnte um sieben anfangen.",
+            "en": "A short lesson would suit me; I could start at seven."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sarebbe utile; mi andrebbe bene",
+        "rule": {
+          "de": "Sarebbe utile benennt einen möglichen Nutzen. Bei mi andrebbe bene ist die vorgeschlagene Sache das Subjekt: una lezione breve mi andrebbe bene.",
+          "en": "Sarebbe utile describes a possible benefit. With mi andrebbe bene, the proposed arrangement is the subject: una lezione breve mi andrebbe bene."
+        },
+        "examples": [
+          {
+            "targetText": "Per il corso sarebbe utile un orario più flessibile, perché lavoro a turni.",
+            "baseText": {
+              "de": "Für den Kurs wäre eine flexiblere Zeit hilfreich, weil ich im Schichtdienst arbeite.",
+              "en": "A more flexible schedule would help with the course, because I work shifts."
+            },
+            "highlight": "sarebbe utile un orario più flessibile"
+          },
+          {
+            "targetText": "Una lezione breve mi andrebbe bene; io potrei iniziare alle sette.",
+            "baseText": {
+              "de": "Eine kurze Unterrichtsstunde wäre für mich in Ordnung; ich könnte um sieben anfangen.",
+              "en": "A short lesson would suit me; I could start at seven."
+            },
+            "highlight": "Una lezione breve mi andrebbe bene"
+          }
+        ]
+      },
+      "cloze": [
+        "Una lezione breve mi ",
+        {
+          "kind": "form",
+          "answer": "andrebbe",
+          "cue": "andare (una lezione breve)",
+          "choices": [
+            "andrebbero",
+            "andrei",
+            "andremmo",
+            "andrebbe"
+          ]
+        },
+        " bene; io ",
+        {
+          "kind": "form",
+          "answer": "potrei",
+          "cue": "potere (io)",
+          "choices": [
+            "potrebbe",
+            "potremmo",
+            "potrei",
+            "potrebbero"
+          ]
+        },
+        " iniziare alle sette."
+      ],
+      "chunks": [
+        {
+          "targetText": "Per il corso",
+          "baseText": {
+            "de": "Für den Kurs",
+            "en": "For the course"
+          }
+        },
+        {
+          "targetText": "sarebbe utile",
+          "baseText": {
+            "de": "wäre hilfreich",
+            "en": "it would help"
+          }
+        },
+        {
+          "targetText": "un orario più flessibile,",
+          "baseText": {
+            "de": "eine flexiblere Zeit,",
+            "en": "to have a more flexible schedule,"
+          }
+        },
+        {
+          "targetText": "perché lavoro a turni.",
+          "baseText": {
+            "de": "weil ich im Schichtdienst arbeite.",
+            "en": "because I work shifts."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sarebbe utile",
+          "baseText": {
+            "de": "wäre hilfreich",
+            "en": "would be helpful"
+          }
+        },
+        {
+          "targetText": "un orario flessibile",
+          "baseText": {
+            "de": "eine flexible Zeit",
+            "en": "a flexible schedule"
+          }
+        },
+        {
+          "targetText": "lavoro a turni",
+          "baseText": {
+            "de": "ich arbeite im Schichtdienst",
+            "en": "I work shifts"
+          }
+        },
+        {
+          "targetText": "l'inizio",
+          "baseText": {
+            "de": "der Beginn",
+            "en": "the start"
+          }
+        },
+        {
+          "targetText": "una lezione breve",
+          "baseText": {
+            "de": "eine kurze Unterrichtsstunde",
+            "en": "a short lesson"
+          }
+        },
+        {
+          "targetText": "mi andrebbe bene",
+          "baseText": {
+            "de": "wäre für mich in Ordnung",
+            "en": "would suit me"
+          }
+        },
+        {
+          "targetText": "iniziare",
+          "baseText": {
+            "de": "anfangen",
+            "en": "to start"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Per il corso sarebbe utile un orario più ",
+        "answer": "flessibile",
+        "after": ", perché lavoro a turni.",
+        "fallbackChoices": [
+          "flessibili",
+          "flessibilità",
+          "flessibile",
+          "flessibilmente"
+        ]
+      },
+      "speakRequired": [
+        "corso",
+        "orario",
+        "flessibile"
+      ],
+      "sceneCaption": {
+        "de": "Vor dem Unterricht fragt die Kursleiterin: „Quale orario facilita la Sua partecipazione al corso?“",
+        "en": "Before class, the course organizer asks: “Quale orario facilita la Sua partecipazione al corso?”"
+      },
+      "trophyWord": {
+        "word": "flessibile",
+        "meaning": {
+          "de": "flexibel",
+          "en": "flexible"
+        },
+        "example": "Un orario flessibile sarebbe utile per seguire il corso.",
+        "whyThisWord": {
+          "de": "Flessibile beschreibt einen Spielraum bei der Organisation, den Sie anschließend konkret aushandeln können.",
+          "en": "Flessibile describes flexibility in an arrangement that you can then negotiate in concrete terms."
+        }
+      },
+      "distractors": [
+        "un orario più regolare,",
+        "perché abito lontano."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch vor einem Kursraum über den Unterricht.",
+        "en": "A conversation outside a classroom about the lessons."
+      },
+      "songMood": "thoughtful Italian piano pop with a cooperative tone",
+      "visualNotes": "Classroom doorway, teacher and adult learner; no final start time or shortened lesson displayed."
+    },
+    {
+      "slug": "spostare-la-visita-del-tecnico",
+      "title": {
+        "de": "Der Besuch des Technikers",
+        "en": "The technician's visit"
+      },
+      "situation": {
+        "de": "Sie rufen an, um einen bereits vereinbarten Besuch des Technikers zu ändern.",
+        "en": "You call to change a technician's visit that has already been arranged."
+      },
+      "pedagogicalGoal": "Mit vorrei einen Terminwechsel erbitten und mit dovrei eine voraussichtliche Verpflichtung als Grenze für einen Kompromiss nennen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Chiama per l'appuntamento di martedì con il tecnico?",
+          "baseText": {
+            "de": "Rufen Sie wegen des Termins mit dem Techniker am Dienstag an?",
+            "en": "Are you calling about Tuesday's appointment with the technician?"
+          }
+        },
+        {
+          "targetText": "Vorrei spostare la visita del tecnico: martedì ho un impegno di lavoro.",
+          "baseText": {
+            "de": "Ich würde den Besuch des Technikers gern verschieben: Am Dienstag habe ich einen Arbeitstermin.",
+            "en": "I'd like to move the technician's visit: I have a work commitment on Tuesday."
+          }
+        },
+        {
+          "targetText": "L'unico appuntamento libero è mercoledì alle dieci.",
+          "baseText": {
+            "de": "Der einzige freie Termin ist am Mittwoch um zehn.",
+            "en": "The only available appointment is Wednesday at ten."
+          }
+        },
+        {
+          "targetText": "Io dovrei lavorare; il tecnico potrebbe passare dopo le quattro?",
+          "baseText": {
+            "de": "Ich müsste arbeiten; könnte der Techniker nach vier vorbeikommen?",
+            "en": "I would have to work; could the technician come after four?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Dovrei: una necessità prevista",
+        "rule": {
+          "de": "Dovrei mit Infinitiv beschreibt hier eine voraussichtliche Verpflichtung; potrebbe fragt nach einem möglichen Kompromiss.",
+          "en": "Dovrei with an infinitive describes an expected obligation here; potrebbe asks about a possible compromise."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei spostare la visita del tecnico: martedì ho un impegno di lavoro.",
+            "baseText": {
+              "de": "Ich würde den Besuch des Technikers gern verschieben: Am Dienstag habe ich einen Arbeitstermin.",
+              "en": "I'd like to move the technician's visit: I have a work commitment on Tuesday."
+            },
+            "highlight": "Vorrei spostare"
+          },
+          {
+            "targetText": "Io dovrei lavorare; il tecnico potrebbe passare dopo le quattro?",
+            "baseText": {
+              "de": "Ich müsste arbeiten; könnte der Techniker nach vier vorbeikommen?",
+              "en": "I would have to work; could the technician come after four?"
+            },
+            "highlight": "Io dovrei lavorare"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "dovrei",
+          "cue": "dovere (io)",
+          "choices": [
+            "dovrebbe",
+            "dovrebbero",
+            "dovrei",
+            "dovremmo"
+          ]
+        },
+        " lavorare; il tecnico ",
+        {
+          "kind": "form",
+          "answer": "potrebbe",
+          "cue": "potere (il tecnico)",
+          "choices": [
+            "potrebbero",
+            "potremmo",
+            "potrei",
+            "potrebbe"
+          ]
+        },
+        " passare dopo le quattro?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei spostare",
+          "baseText": {
+            "de": "Ich würde gern verschieben",
+            "en": "I'd like to move"
+          }
+        },
+        {
+          "targetText": "la visita del tecnico:",
+          "baseText": {
+            "de": "den Besuch des Technikers:",
+            "en": "the technician's visit:"
+          }
+        },
+        {
+          "targetText": "martedì ho",
+          "baseText": {
+            "de": "am Dienstag habe ich",
+            "en": "on Tuesday I have"
+          }
+        },
+        {
+          "targetText": "un impegno di lavoro.",
+          "baseText": {
+            "de": "einen Arbeitstermin.",
+            "en": "a work commitment."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "spostare la visita",
+          "baseText": {
+            "de": "den Besuch verschieben",
+            "en": "to move the visit"
+          }
+        },
+        {
+          "targetText": "il tecnico",
+          "baseText": {
+            "de": "der Techniker",
+            "en": "the technician"
+          }
+        },
+        {
+          "targetText": "un impegno di lavoro",
+          "baseText": {
+            "de": "ein Arbeitstermin",
+            "en": "a work commitment"
+          }
+        },
+        {
+          "targetText": "l'unico appuntamento",
+          "baseText": {
+            "de": "der einzige Termin",
+            "en": "the only appointment"
+          }
+        },
+        {
+          "targetText": "dovrei lavorare",
+          "baseText": {
+            "de": "ich müsste arbeiten",
+            "en": "I would have to work"
+          }
+        },
+        {
+          "targetText": "potrebbe passare",
+          "baseText": {
+            "de": "könnte vorbeikommen",
+            "en": "could come by"
+          }
+        },
+        {
+          "targetText": "dopo le quattro",
+          "baseText": {
+            "de": "nach vier",
+            "en": "after four"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei ",
+        "answer": "spostare",
+        "after": " la visita del tecnico: martedì ho un impegno di lavoro.",
+        "fallbackChoices": [
+          "spostando",
+          "spostato",
+          "spostare",
+          "spostavo"
+        ]
+      },
+      "speakRequired": [
+        "spostare",
+        "tecnico",
+        "lavoro"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon fragt die Mitarbeiterin: „Chiama per l'appuntamento di martedì con il tecnico?“",
+        "en": "On the phone, the staff member asks: “Chiama per l'appuntamento di martedì con il tecnico?”"
+      },
+      "trophyWord": {
+        "word": "spostare",
+        "meaning": {
+          "de": "verschieben",
+          "en": "to move; to reschedule"
+        },
+        "example": "Vorrei spostare la visita del tecnico a giovedì.",
+        "whyThisWord": {
+          "de": "Spostare hält den Termin als Vorhaben aufrecht und verändert nur seinen Zeitpunkt.",
+          "en": "Spostare keeps the appointment as a plan and changes only its timing."
+        }
+      },
+      "distractors": [
+        "la visita del medico:",
+        "un impegno familiare."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Person telefoniert neben einem Kalender ohne eingetragene Uhrzeiten.",
+        "en": "A person makes a phone call beside a calendar with no times entered."
+      },
+      "songMood": "steady Italian pop with a practical problem-solving tone",
+      "visualNotes": "Home phone conversation and unmarked calendar; no Wednesday slot or proposed afternoon visit displayed."
+    },
+    {
+      "slug": "suggerimento-per-un-corso",
+      "title": {
+        "de": "Einen Kurs auswählen",
+        "en": "Choosing a course"
+      },
+      "situation": {
+        "de": "Sie lassen sich in einem Bildungszentrum bei der Kurswahl beraten.",
+        "en": "You seek advice about choosing a course at an adult education center."
+      },
+      "pedagogicalGoal": "Mit dovrei eine Empfehlung erfragen und nach einer Rückfrage mit potrei und dovrebbe verfügbare Zeit und einen passenden Kursbedarf konkretisieren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Che tipo di corso cerca per il prossimo trimestre?",
+          "baseText": {
+            "de": "Welche Art von Kurs suchen Sie für das nächste Quartal?",
+            "en": "What kind of course are you looking for next term?"
+          }
+        },
+        {
+          "targetText": "Vorrei un suggerimento: quale corso dovrei scegliere con orari di lavoro variabili?",
+          "baseText": {
+            "de": "Ich hätte gern einen Tipp: Welchen Kurs sollte ich bei wechselnden Arbeitszeiten wählen?",
+            "en": "I'd like a suggestion: which course should I choose with variable working hours?"
+          }
+        },
+        {
+          "targetText": "Quante ore riesce a dedicare allo studio durante la settimana?",
+          "baseText": {
+            "de": "Wie viele Stunden können Sie in der Woche fürs Lernen aufbringen?",
+            "en": "How many hours can you spend studying during the week?"
+          }
+        },
+        {
+          "targetText": "Io potrei studiare due sere; il corso dovrebbe prevedere registrazioni.",
+          "baseText": {
+            "de": "Ich könnte an zwei Abenden lernen; der Kurs sollte Aufzeichnungen anbieten.",
+            "en": "I could study on two evenings; the course should include recordings."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Dovrei per chiedere un consiglio",
+        "rule": {
+          "de": "Dovrei mit Infinitiv fragt nach einer sinnvollen Wahl; dovrebbe mit einem genannten Subjekt beschreibt eine wünschenswerte Eigenschaft des Angebots.",
+          "en": "Dovrei with an infinitive asks what would be a sensible choice; dovrebbe with a named subject describes a desirable feature of the offer."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei un suggerimento: quale corso dovrei scegliere con orari di lavoro variabili?",
+            "baseText": {
+              "de": "Ich hätte gern einen Tipp: Welchen Kurs sollte ich bei wechselnden Arbeitszeiten wählen?",
+              "en": "I'd like a suggestion: which course should I choose with variable working hours?"
+            },
+            "highlight": "quale corso dovrei scegliere"
+          },
+          {
+            "targetText": "Il corso dovrebbe offrire lezioni registrate.",
+            "baseText": {
+              "de": "Der Kurs sollte aufgezeichnete Unterrichtsstunden anbieten.",
+              "en": "The course should offer recorded lessons."
+            },
+            "highlight": "Il corso dovrebbe offrire"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "potrei",
+          "cue": "potere (io)",
+          "choices": [
+            "potrebbero",
+            "potrei",
+            "potremmo",
+            "potrebbe"
+          ]
+        },
+        " studiare due sere; il corso ",
+        {
+          "kind": "form",
+          "answer": "dovrebbe",
+          "cue": "dovere (il corso)",
+          "choices": [
+            "dovremmo",
+            "dovrei",
+            "dovrebbe",
+            "dovrebbero"
+          ]
+        },
+        " prevedere registrazioni."
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei un suggerimento:",
+          "baseText": {
+            "de": "Ich hätte gern einen Tipp:",
+            "en": "I'd like a suggestion:"
+          }
+        },
+        {
+          "targetText": "quale corso",
+          "baseText": {
+            "de": "welchen Kurs",
+            "en": "which course"
+          }
+        },
+        {
+          "targetText": "dovrei scegliere",
+          "baseText": {
+            "de": "sollte ich wählen",
+            "en": "should I choose"
+          }
+        },
+        {
+          "targetText": "con orari di lavoro variabili?",
+          "baseText": {
+            "de": "bei wechselnden Arbeitszeiten?",
+            "en": "with variable working hours?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un suggerimento",
+          "baseText": {
+            "de": "ein Tipp; ein Vorschlag",
+            "en": "a suggestion"
+          }
+        },
+        {
+          "targetText": "dovrei scegliere",
+          "baseText": {
+            "de": "ich sollte wählen",
+            "en": "I should choose"
+          }
+        },
+        {
+          "targetText": "orari di lavoro variabili",
+          "baseText": {
+            "de": "wechselnde Arbeitszeiten",
+            "en": "variable working hours"
+          }
+        },
+        {
+          "targetText": "dedicare allo studio",
+          "baseText": {
+            "de": "fürs Lernen aufbringen",
+            "en": "to spend on studying"
+          }
+        },
+        {
+          "targetText": "due sere",
+          "baseText": {
+            "de": "zwei Abende",
+            "en": "two evenings"
+          }
+        },
+        {
+          "targetText": "prevedere registrazioni",
+          "baseText": {
+            "de": "Aufzeichnungen vorsehen",
+            "en": "to include recordings"
+          }
+        },
+        {
+          "targetText": "lezioni registrate",
+          "baseText": {
+            "de": "aufgezeichnete Unterrichtsstunden",
+            "en": "recorded lessons"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei un suggerimento: quale corso dovrei scegliere con orari di lavoro ",
+        "answer": "variabili",
+        "after": "?",
+        "fallbackChoices": [
+          "variabile",
+          "variabili",
+          "variabilità",
+          "variabilmente"
+        ]
+      },
+      "speakRequired": [
+        "suggerimento",
+        "corso",
+        "scegliere"
+      ],
+      "sceneCaption": {
+        "de": "Im Bildungszentrum fragt die Beraterin: „Che tipo di corso cerca per il prossimo trimestre?“",
+        "en": "At the adult education center, the adviser asks: “Che tipo di corso cerca per il prossimo trimestre?”"
+      },
+      "trophyWord": {
+        "word": "suggerimento",
+        "meaning": {
+          "de": "der Tipp; der Vorschlag",
+          "en": "suggestion"
+        },
+        "example": "Vorrei un suggerimento per scegliere un corso adatto ai miei orari.",
+        "whyThisWord": {
+          "de": "Suggerimento lädt Ihr Gegenüber zu einer Empfehlung ein, die Sie anhand Ihres Alltags genauer eingrenzen können.",
+          "en": "Suggerimento invites a recommendation that you can narrow down using details of your routine."
+        }
+      },
+      "distractors": [
+        "quale palestra",
+        "con orari di lavoro fissi?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine erwachsene Person spricht mit einer Kursberaterin.",
+        "en": "An adult speaks with a course adviser."
+      },
+      "songMood": "curious Italian acoustic pop with a calm advisory mood",
+      "visualNotes": "Adult education advice desk with unlabeled course brochures; no recording icon or evening schedule."
+    },
+    {
+      "slug": "valutare-prima-di-confermare",
+      "title": {
+        "de": "Vor der Kurszusage",
+        "en": "Before confirming the course"
+      },
+      "situation": {
+        "de": "Nach einem Beratungsgespräch werden Sie gefragt, ob Sie den Kurs buchen möchten.",
+        "en": "After an advice session, you are asked whether you would like to book the course."
+      },
+      "pedagogicalGoal": "Mit vorrei Zeit zum Prüfen erbitten und unter Zeitdruck mit dovrei und potrebbe eine konkrete Antwortfrist aushandeln.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vuole confermare oggi l'iscrizione al corso?",
+          "baseText": {
+            "de": "Möchten Sie die Kursanmeldung heute bestätigen?",
+            "en": "Would you like to confirm your course registration today?"
+          }
+        },
+        {
+          "targetText": "Vorrei valutare la proposta con calma prima di confermare l'iscrizione al corso.",
+          "baseText": {
+            "de": "Ich würde das Angebot gern in Ruhe prüfen, bevor ich die Kursanmeldung bestätige.",
+            "en": "I'd like to consider the offer carefully before confirming my course registration."
+          }
+        },
+        {
+          "targetText": "Serve una risposta entro stasera: c'è un'altra persona in attesa.",
+          "baseText": {
+            "de": "Wir brauchen bis heute Abend eine Antwort: Eine weitere Person wartet auf den Platz.",
+            "en": "We need an answer by this evening: another person is waiting for the place."
+          }
+        },
+        {
+          "targetText": "Io dovrei controllare gli orari; Lei potrebbe aspettare fino alle sei?",
+          "baseText": {
+            "de": "Ich müsste die Zeiten prüfen; könnten Sie bis sechs warten?",
+            "en": "I would need to check the times; could you wait until six?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Dovrei e potrebbe per trovare un termine",
+        "rule": {
+          "de": "Dovrei benennt einen noch nötigen Schritt; Lei potrebbe mit Infinitiv bittet die andere Person höflich um einen konkreten Spielraum.",
+          "en": "Dovrei names a step you still need to take; Lei potrebbe with an infinitive politely asks the other person for a specific allowance."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei valutare la proposta con calma prima di confermare l'iscrizione al corso.",
+            "baseText": {
+              "de": "Ich würde das Angebot gern in Ruhe prüfen, bevor ich die Kursanmeldung bestätige.",
+              "en": "I'd like to consider the offer carefully before confirming my course registration."
+            },
+            "highlight": "Vorrei valutare"
+          },
+          {
+            "targetText": "Io dovrei leggere il programma; Lei potrebbe aspettare un'ora?",
+            "baseText": {
+              "de": "Ich müsste das Programm lesen; könnten Sie eine Stunde warten?",
+              "en": "I would need to read the program; could you wait an hour?"
+            },
+            "highlight": "Lei potrebbe aspettare"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "dovrei",
+          "cue": "dovere (io)",
+          "choices": [
+            "dovremmo",
+            "dovrebbe",
+            "dovrei",
+            "dovrebbero"
+          ]
+        },
+        " controllare gli orari; Lei ",
+        {
+          "kind": "form",
+          "answer": "potrebbe",
+          "cue": "potere (Lei)",
+          "choices": [
+            "potrei",
+            "potrebbe",
+            "potremmo",
+            "potrebbero"
+          ]
+        },
+        " aspettare fino alle sei?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei valutare",
+          "baseText": {
+            "de": "Ich würde gern prüfen",
+            "en": "I'd like to consider"
+          }
+        },
+        {
+          "targetText": "la proposta con calma",
+          "baseText": {
+            "de": "das Angebot in Ruhe",
+            "en": "the offer carefully"
+          }
+        },
+        {
+          "targetText": "prima di confermare",
+          "baseText": {
+            "de": "bevor ich bestätige",
+            "en": "before confirming"
+          }
+        },
+        {
+          "targetText": "l'iscrizione al corso.",
+          "baseText": {
+            "de": "die Kursanmeldung.",
+            "en": "my course registration."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "valutare",
+          "baseText": {
+            "de": "prüfen; abwägen",
+            "en": "to consider; to assess"
+          }
+        },
+        {
+          "targetText": "la proposta",
+          "baseText": {
+            "de": "das Angebot; der Vorschlag",
+            "en": "the offer; the proposal"
+          }
+        },
+        {
+          "targetText": "con calma",
+          "baseText": {
+            "de": "in Ruhe",
+            "en": "carefully; without rushing"
+          }
+        },
+        {
+          "targetText": "confermare l'iscrizione",
+          "baseText": {
+            "de": "die Anmeldung bestätigen",
+            "en": "to confirm registration"
+          }
+        },
+        {
+          "targetText": "entro stasera",
+          "baseText": {
+            "de": "bis heute Abend",
+            "en": "by this evening"
+          }
+        },
+        {
+          "targetText": "in attesa",
+          "baseText": {
+            "de": "wartend; auf der Warteliste",
+            "en": "waiting; on a waiting list"
+          }
+        },
+        {
+          "targetText": "controllare gli orari",
+          "baseText": {
+            "de": "die Zeiten prüfen",
+            "en": "to check the times"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei ",
+        "answer": "valutare",
+        "after": " la proposta con calma prima di confermare l'iscrizione al corso.",
+        "fallbackChoices": [
+          "valutando",
+          "valutato",
+          "valutavo",
+          "valutare"
+        ]
+      },
+      "speakRequired": [
+        "valutare",
+        "proposta",
+        "confermare"
+      ],
+      "sceneCaption": {
+        "de": "Die Kursberaterin fragt am Ende des Gesprächs: „Vuole confermare oggi l'iscrizione al corso?“",
+        "en": "At the end of the conversation, the course adviser asks: “Vuole confermare oggi l'iscrizione al corso?”"
+      },
+      "trophyWord": {
+        "word": "valutare",
+        "meaning": {
+          "de": "prüfen; abwägen",
+          "en": "to consider; to assess"
+        },
+        "example": "Vorrei valutare la proposta prima di dare una risposta.",
+        "whyThisWord": {
+          "de": "Valutare vermittelt, dass Sie ein Angebot ernsthaft prüfen und dafür noch etwas Zeit brauchen.",
+          "en": "Valutare conveys that you are seriously considering an offer and need some more time."
+        }
+      },
+      "distractors": [
+        "il programma",
+        "l'iscrizione alla palestra."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Personen sprechen am Schreibtisch einer Kursberatung.",
+        "en": "Two people talk at a course adviser's desk."
+      },
+      "songMood": "reflective Italian pop with a gentle sense of time pressure",
+      "visualNotes": "Course consultation desk and neutral papers; no waiting-list revelation or six-o'clock deadline."
+    },
+    {
+      "slug": "non-rinunciare-all-incontro",
+      "title": {
+        "de": "Das vereinbarte Treffen",
+        "en": "The arranged meeting"
+      },
+      "situation": {
+        "de": "Vor einem vereinbarten Gespräch klären Sie mit der anderen Person die Uhrzeit.",
+        "en": "Before an arranged conversation, you check the time with the other person."
+      },
+      "pedagogicalGoal": "Mit preferirei und se possibile ein Treffen aufrechterhalten und nach einem Gegenvorschlag Dauer und Beginn konkret abstimmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Per il nostro incontro va ancora bene l'orario concordato?",
+          "baseText": {
+            "de": "Passt die vereinbarte Uhrzeit für unser Treffen noch?",
+            "en": "Does the agreed time still work for our meeting?"
+          }
+        },
+        {
+          "targetText": "Preferirei non rinunciare all'incontro; se possibile, vorrei anticipare di mezz'ora.",
+          "baseText": {
+            "de": "Ich würde auf das Treffen lieber nicht verzichten; wenn möglich, würde ich gern eine halbe Stunde früher anfangen.",
+            "en": "I'd prefer not to give up the meeting; if possible, I'd like to bring it forward by half an hour."
+          }
+        },
+        {
+          "targetText": "Prima non ho tempo. Le andrebbe bene una telefonata di mezz'ora?",
+          "baseText": {
+            "de": "Früher habe ich keine Zeit. Wäre ein halbstündiges Telefonat für Sie in Ordnung?",
+            "en": "I don't have time earlier. Would a half-hour phone call suit you?"
+          }
+        },
+        {
+          "targetText": "Io potrei parlare per venti minuti; Lei potrebbe chiamare alle cinque?",
+          "baseText": {
+            "de": "Ich könnte zwanzig Minuten sprechen; könnten Sie um fünf anrufen?",
+            "en": "I could talk for twenty minutes; could you call at five?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Se possibile e le andrebbe bene?",
+        "rule": {
+          "de": "Se possibile ist eine feste höfliche Einschränkung. Le andrebbe bene? prüft, ob ein Vorschlag passt; potrei und potrebbe helfen, die Einzelheiten abzustimmen.",
+          "en": "Se possibile is a fixed polite qualifier. Le andrebbe bene? checks whether a proposal suits someone; potrei and potrebbe help settle the details."
+        },
+        "examples": [
+          {
+            "targetText": "Preferirei non rinunciare all'incontro; se possibile, vorrei anticipare di mezz'ora.",
+            "baseText": {
+              "de": "Ich würde auf das Treffen lieber nicht verzichten; wenn möglich, würde ich gern eine halbe Stunde früher anfangen.",
+              "en": "I'd prefer not to give up the meeting; if possible, I'd like to bring it forward by half an hour."
+            },
+            "highlight": "se possibile, vorrei anticipare"
+          },
+          {
+            "targetText": "Una telefonata breve andrebbe bene; vorrei cominciare alle cinque.",
+            "baseText": {
+              "de": "Ein kurzes Telefonat wäre in Ordnung; ich würde gern um fünf beginnen.",
+              "en": "A short phone call would work; I'd like to start at five."
+            },
+            "highlight": "vorrei cominciare"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "potrei",
+          "cue": "potere (io)",
+          "choices": [
+            "potrebbe",
+            "potremmo",
+            "potrebbero",
+            "potrei"
+          ]
+        },
+        " parlare per venti minuti; Lei ",
+        {
+          "kind": "form",
+          "answer": "potrebbe",
+          "cue": "potere (Lei)",
+          "choices": [
+            "potrebbe",
+            "potrei",
+            "potrebbero",
+            "potremmo"
+          ]
+        },
+        " chiamare alle cinque?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Preferirei non rinunciare",
+          "baseText": {
+            "de": "Ich würde lieber nicht verzichten",
+            "en": "I'd prefer not to give up"
+          }
+        },
+        {
+          "targetText": "all'incontro;",
+          "baseText": {
+            "de": "auf das Treffen;",
+            "en": "the meeting;"
+          }
+        },
+        {
+          "targetText": "se possibile,",
+          "baseText": {
+            "de": "wenn möglich,",
+            "en": "if possible,"
+          }
+        },
+        {
+          "targetText": "vorrei anticipare",
+          "baseText": {
+            "de": "würde ich gern früher anfangen",
+            "en": "I'd like to bring it forward"
+          }
+        },
+        {
+          "targetText": "di mezz'ora.",
+          "baseText": {
+            "de": "um eine halbe Stunde.",
+            "en": "by half an hour."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "rinunciare all'incontro",
+          "baseText": {
+            "de": "auf das Treffen verzichten",
+            "en": "to give up the meeting"
+          }
+        },
+        {
+          "targetText": "l'orario concordato",
+          "baseText": {
+            "de": "die vereinbarte Uhrzeit",
+            "en": "the agreed time"
+          }
+        },
+        {
+          "targetText": "se possibile",
+          "baseText": {
+            "de": "wenn möglich",
+            "en": "if possible"
+          }
+        },
+        {
+          "targetText": "anticipare",
+          "baseText": {
+            "de": "vorverlegen; früher anfangen",
+            "en": "to bring forward; to start earlier"
+          }
+        },
+        {
+          "targetText": "di mezz'ora",
+          "baseText": {
+            "de": "um eine halbe Stunde",
+            "en": "by half an hour"
+          }
+        },
+        {
+          "targetText": "le andrebbe bene",
+          "baseText": {
+            "de": "wäre es für Sie in Ordnung",
+            "en": "would it suit you"
+          }
+        },
+        {
+          "targetText": "venti minuti",
+          "baseText": {
+            "de": "zwanzig Minuten",
+            "en": "twenty minutes"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Preferirei non ",
+        "answer": "rinunciare",
+        "after": " all'incontro; se possibile, vorrei anticipare di mezz'ora.",
+        "fallbackChoices": [
+          "rinunciato",
+          "rinunciando",
+          "rinunciare",
+          "rinunciavo"
+        ]
+      },
+      "speakRequired": [
+        "rinunciare",
+        "incontro",
+        "anticipare"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon fragt Ihr Gesprächspartner: „Per il nostro incontro va ancora bene l'orario concordato?“",
+        "en": "On the phone, the other person asks: “Per il nostro incontro va ancora bene l'orario concordato?”"
+      },
+      "trophyWord": {
+        "word": "rinunciare",
+        "meaning": {
+          "de": "verzichten; aufgeben",
+          "en": "to give up; to forgo"
+        },
+        "example": "Preferirei non rinunciare al nostro incontro.",
+        "whyThisWord": {
+          "de": "Rinunciare mit a benennt den Verzicht auf etwas; non rinunciare hält das gemeinsame Vorhaben im Gespräch.",
+          "en": "Rinunciare with a names giving something up; non rinunciare keeps the shared plan on the table."
+        }
+      },
+      "distractors": [
+        "vorrei ritardare",
+        "di un'ora."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Person telefoniert über ein bevorstehendes Treffen.",
+        "en": "A person talks on the phone about an upcoming meeting."
+      },
+      "songMood": "warm Italian acoustic pop with a conciliatory closing mood",
+      "visualNotes": "Quiet home phone conversation; no canceled meeting, call duration, or final time shown."
+    }
+  ]
+}

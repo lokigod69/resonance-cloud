@@ -1,0 +1,2221 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Meiner Meinung nach",
+    "en": "In my view"
+  },
+  "subtitle": {
+    "de": "Begründen Sie Ihre Meinung, erkennen Sie Einwände an und führen Sie den Gedanken weiter.",
+    "en": "Explain your view, acknowledge objections, and develop your point."
+  },
+  "anchor": "DRAFT — Fable read-through complete 2026-10-05 (content arbitration only; not production-approved). Italian P2 nativeGrammarScopeByPath in authoring-spec-it-pt.json; frozen trophy/beat allocation from italian-plan.json. L1–3 opinion with indicative and reasons (L1 la mia opinione as a native equivalent alongside secondo me in the pattern); L4–6 anche se + indicative and comunque; L7–10 penso che/credo che + licensed present subjunctive sia, siano, possa, serva, aiuti, with P1 evidence recycling. Four-turn interested-listener episodes; singular formal Lei and German Sie throughout. Learner past forms use avere only; no speaker-gender agreement. Explicit visible subjects for all form blanks. Not integrated or production-approved.",
+  "lessons": [
+    {
+      "slug": "mercato-orari-e-opinioni",
+      "title": {
+        "de": "Die Marktzeiten",
+        "en": "Market opening hours"
+      },
+      "situation": {
+        "de": "Bei einer Besprechung im Viertel werden Sie nach Ihrer Meinung zu neuen Marktzeiten gefragt.",
+        "en": "At a neighborhood meeting, you are asked for your view on proposed market hours."
+      },
+      "pedagogicalGoal": "Eine Meinung zu Marktzeiten mit einer Begründung verbinden und den Nutzen für eine konkrete Gruppe erläutern.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Che opinione ha della proposta di chiudere il mercato più tardi?",
+          "baseText": {
+            "de": "Was halten Sie von dem Vorschlag, den Markt später zu schließen?",
+            "en": "What do you think of the proposal to close the market later?"
+          }
+        },
+        {
+          "targetText": "La mia opinione è favorevole, perché il mercato resta aperto dopo il lavoro.",
+          "baseText": {
+            "de": "Ich bin dafür, weil der Markt nach Feierabend noch geöffnet bleibt.",
+            "en": "I'm in favor, because the market stays open after work."
+          }
+        },
+        {
+          "targetText": "Pensa soprattutto a chi lavora qui vicino o anche a chi prende il treno?",
+          "baseText": {
+            "de": "Denken Sie vor allem an Menschen, die hier in der Nähe arbeiten, oder auch an Zugpendler?",
+            "en": "Are you mainly thinking of people who work nearby, or train commuters too?"
+          }
+        },
+        {
+          "targetText": "I pendolari possono comprare la cena senza fare un'altra fermata.",
+          "baseText": {
+            "de": "Pendler können das Abendessen einkaufen, ohne einen zusätzlichen Halt einzulegen.",
+            "en": "Commuters can buy dinner without making another stop."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un'opinione con una ragione",
+        "rule": {
+          "de": "Mit la mia opinione è oder secondo me drücken Sie Ihre Meinung aus; perché leitet die Begründung im Indikativ ein.",
+          "en": "Use la mia opinione è or secondo me to give your opinion; perché introduces the reason in the indicative."
+        },
+        "examples": [
+          {
+            "targetText": "La mia opinione è favorevole, perché il mercato resta aperto dopo il lavoro.",
+            "baseText": {
+              "de": "Ich bin dafür, weil der Markt nach Feierabend noch geöffnet bleibt.",
+              "en": "I'm in favor, because the market stays open after work."
+            },
+            "highlight": "perché il mercato resta aperto"
+          },
+          {
+            "targetText": "Secondo me, questo orario è utile perché molte persone lavorano lontano.",
+            "baseText": {
+              "de": "Meiner Meinung nach ist diese Öffnungszeit sinnvoll, weil viele Menschen weit entfernt arbeiten.",
+              "en": "In my view, these hours are useful because many people work far away."
+            },
+            "highlight": "Secondo me"
+          }
+        ]
+      },
+      "cloze": [
+        "I pendolari ",
+        {
+          "kind": "form",
+          "answer": "possono",
+          "cue": "potere (i pendolari)",
+          "choices": [
+            "posso",
+            "possono",
+            "possiamo",
+            "potete"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "comprare",
+          "cue": "comprare (i pendolari)",
+          "choices": [
+            "comprano",
+            "comprando",
+            "comprare",
+            "compravano"
+          ]
+        },
+        " la cena senza fare un'altra fermata."
+      ],
+      "chunks": [
+        {
+          "targetText": "La mia opinione",
+          "baseText": {
+            "de": "Meine Meinung",
+            "en": "My opinion"
+          }
+        },
+        {
+          "targetText": "è favorevole,",
+          "baseText": {
+            "de": "ist positiv,",
+            "en": "is favorable,"
+          }
+        },
+        {
+          "targetText": "perché il mercato",
+          "baseText": {
+            "de": "weil der Markt",
+            "en": "because the market"
+          }
+        },
+        {
+          "targetText": "resta aperto",
+          "baseText": {
+            "de": "geöffnet bleibt",
+            "en": "stays open"
+          }
+        },
+        {
+          "targetText": "dopo il lavoro.",
+          "baseText": {
+            "de": "nach Feierabend.",
+            "en": "after work."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "l'opinione",
+          "baseText": {
+            "de": "die Meinung",
+            "en": "the opinion"
+          }
+        },
+        {
+          "targetText": "favorevole",
+          "baseText": {
+            "de": "dafür; positiv eingestellt",
+            "en": "in favor; favorable"
+          }
+        },
+        {
+          "targetText": "resta aperto",
+          "baseText": {
+            "de": "bleibt geöffnet",
+            "en": "stays open"
+          }
+        },
+        {
+          "targetText": "dopo il lavoro",
+          "baseText": {
+            "de": "nach Feierabend",
+            "en": "after work"
+          }
+        },
+        {
+          "targetText": "i pendolari",
+          "baseText": {
+            "de": "die Pendler",
+            "en": "commuters"
+          }
+        },
+        {
+          "targetText": "la cena",
+          "baseText": {
+            "de": "das Abendessen",
+            "en": "dinner"
+          }
+        },
+        {
+          "targetText": "un'altra fermata",
+          "baseText": {
+            "de": "ein weiterer Halt",
+            "en": "another stop"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La mia opinione è ",
+        "answer": "favorevole",
+        "after": ", perché il mercato resta aperto dopo il lavoro.",
+        "fallbackChoices": [
+          "favorevole",
+          "favorevoli",
+          "favorire",
+          "favorendo"
+        ]
+      },
+      "speakRequired": [
+        "opinione",
+        "mercato",
+        "lavoro"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Besprechung fragt ein Nachbar: „Che opinione ha della proposta di chiudere il mercato più tardi?“",
+        "en": "At the meeting, a neighbor asks: “Che opinione ha della proposta di chiudere il mercato più tardi?”"
+      },
+      "trophyWord": {
+        "word": "opinione",
+        "meaning": {
+          "de": "die Meinung",
+          "en": "opinion"
+        },
+        "example": "La mia opinione sugli orari del mercato è favorevole.",
+        "whyThisWord": {
+          "de": "Mit opinione können Sie Ihren Standpunkt ausdrücklich benennen und anschließend begründen.",
+          "en": "Opinione lets you name your point of view explicitly and then explain it."
+        }
+      },
+      "distractors": [
+        "è contraria,",
+        "prima del lavoro."
+      ],
+      "placeholderCaption": {
+        "de": "Menschen sprechen an einem Tisch über den Wochenmarkt.",
+        "en": "People discuss the neighborhood market around a table."
+      },
+      "songMood": "thoughtful Italian acoustic pop with a friendly civic conversation",
+      "visualNotes": "Neighborhood meeting table with a plain market map; no displayed closing times or commuter solution."
+    },
+    {
+      "slug": "biblioteca-un-motivo-concreto",
+      "title": {
+        "de": "Die Bibliothek am Abend",
+        "en": "The library in the evening"
+      },
+      "situation": {
+        "de": "Sie besprechen mit einer Mitarbeiterin, ob die Stadtteilbibliothek an einem Abend länger öffnen soll.",
+        "en": "You discuss with a staff member whether the neighborhood library should open later one evening."
+      },
+      "pedagogicalGoal": "Mit secondo me eine begründete Einschätzung geben und sie durch ein konkretes Alltagsbeispiel stützen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Che cosa pensa di un'apertura serale della biblioteca?",
+          "baseText": {
+            "de": "Was halten Sie von einer abendlichen Öffnung der Bibliothek?",
+            "en": "What do you think about opening the library in the evening?"
+          }
+        },
+        {
+          "targetText": "Secondo me, c'è un buon motivo per aprire la biblioteca anche la sera.",
+          "baseText": {
+            "de": "Meiner Meinung nach gibt es einen guten Grund, die Bibliothek auch abends zu öffnen.",
+            "en": "In my view, there's a good reason to open the library in the evening too."
+          }
+        },
+        {
+          "targetText": "Al mattino abbiamo già molti lettori. Chi usa la biblioteca dopo cena?",
+          "baseText": {
+            "de": "Vormittags haben wir schon viele Leser. Wer nutzt die Bibliothek nach dem Abendessen?",
+            "en": "We already have many readers in the morning. Who uses the library after dinner?"
+          }
+        },
+        {
+          "targetText": "Io lavoro fino alle sette, quindi posso leggere soltanto dopo cena.",
+          "baseText": {
+            "de": "Ich arbeite bis sieben und kann daher erst nach dem Abendessen lesen.",
+            "en": "I work until seven, so I can only read after dinner."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Secondo me e un esempio concreto",
+        "rule": {
+          "de": "Secondo me steht vor einer Einschätzung im Indikativ; mit einem konkreten Beispiel und quindi erklären Sie deren Grundlage.",
+          "en": "Secondo me introduces an assessment in the indicative; a concrete example with quindi explains its basis."
+        },
+        "examples": [
+          {
+            "targetText": "Secondo me, c'è un buon motivo per aprire la biblioteca anche la sera.",
+            "baseText": {
+              "de": "Meiner Meinung nach gibt es einen guten Grund, die Bibliothek auch abends zu öffnen.",
+              "en": "In my view, there's a good reason to open the library in the evening too."
+            },
+            "highlight": "Secondo me"
+          },
+          {
+            "targetText": "Per me, l'apertura serale è utile perché molti lavorano durante il giorno.",
+            "baseText": {
+              "de": "Für mich ist die abendliche Öffnung sinnvoll, weil viele tagsüber arbeiten.",
+              "en": "For me, evening opening is useful because many people work during the day."
+            },
+            "highlight": "perché molti lavorano"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "lavoro",
+          "cue": "lavorare (io)",
+          "choices": [
+            "lavorano",
+            "lavoriamo",
+            "lavoro",
+            "lavorate"
+          ]
+        },
+        " fino alle sette, quindi ",
+        {
+          "kind": "form",
+          "answer": "posso",
+          "cue": "potere (io)",
+          "choices": [
+            "possiamo",
+            "potete",
+            "possono",
+            "posso"
+          ]
+        },
+        " leggere soltanto dopo cena."
+      ],
+      "chunks": [
+        {
+          "targetText": "Secondo me,",
+          "baseText": {
+            "de": "Meiner Meinung nach,",
+            "en": "In my view,"
+          }
+        },
+        {
+          "targetText": "c'è un buon motivo",
+          "baseText": {
+            "de": "gibt es einen guten Grund",
+            "en": "there's a good reason"
+          }
+        },
+        {
+          "targetText": "per aprire la biblioteca",
+          "baseText": {
+            "de": "die Bibliothek zu öffnen",
+            "en": "to open the library"
+          }
+        },
+        {
+          "targetText": "anche la sera.",
+          "baseText": {
+            "de": "auch abends.",
+            "en": "in the evening too."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "secondo me",
+          "baseText": {
+            "de": "meiner Meinung nach",
+            "en": "in my view"
+          }
+        },
+        {
+          "targetText": "un buon motivo",
+          "baseText": {
+            "de": "ein guter Grund",
+            "en": "a good reason"
+          }
+        },
+        {
+          "targetText": "l'apertura serale",
+          "baseText": {
+            "de": "die abendliche Öffnung",
+            "en": "evening opening"
+          }
+        },
+        {
+          "targetText": "la biblioteca",
+          "baseText": {
+            "de": "die Bibliothek",
+            "en": "the library"
+          }
+        },
+        {
+          "targetText": "i lettori",
+          "baseText": {
+            "de": "die Leser",
+            "en": "readers"
+          }
+        },
+        {
+          "targetText": "dopo cena",
+          "baseText": {
+            "de": "nach dem Abendessen",
+            "en": "after dinner"
+          }
+        },
+        {
+          "targetText": "durante il giorno",
+          "baseText": {
+            "de": "tagsüber",
+            "en": "during the day"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Secondo me, c'è un ",
+        "answer": "buon",
+        "after": " motivo per aprire la biblioteca anche la sera.",
+        "fallbackChoices": [
+          "buon",
+          "buona",
+          "buoni",
+          "buone"
+        ]
+      },
+      "speakRequired": [
+        "motivo",
+        "aprire",
+        "biblioteca"
+      ],
+      "sceneCaption": {
+        "de": "Eine Mitarbeiterin der Bibliothek fragt: „Che cosa pensa di un'apertura serale della biblioteca?“",
+        "en": "A library staff member asks: “Che cosa pensa di un'apertura serale della biblioteca?”"
+      },
+      "trophyWord": {
+        "word": "motivo",
+        "meaning": {
+          "de": "der Grund",
+          "en": "reason"
+        },
+        "example": "C'è un buon motivo per aprire anche la sera.",
+        "whyThisWord": {
+          "de": "Mit motivo kündigen Sie eine Begründung an, die Sie mit einer Alltagssituation konkret machen können.",
+          "en": "Motivo introduces a reason that you can make concrete with an everyday example."
+        }
+      },
+      "distractors": [
+        "anche la domenica.",
+        "per chiudere la biblioteca"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch an der Information einer Stadtteilbibliothek.",
+        "en": "A conversation at a neighborhood library information desk."
+      },
+      "songMood": "warm reflective Italian pop with quiet piano",
+      "visualNotes": "Library information desk and shelves; no clock showing the learner's work schedule."
+    },
+    {
+      "slug": "negozi-e-consigli-personali",
+      "title": {
+        "de": "Einkaufen im Viertel",
+        "en": "Shopping locally"
+      },
+      "situation": {
+        "de": "Ein Nachbar fragt nach Ihren Erfahrungen mit den kleinen Geschäften im Viertel.",
+        "en": "A neighbor asks about your experience of the small shops in the neighborhood."
+      },
+      "pedagogicalGoal": "Mit per me einen Vorteil benennen und auf eine Nachfrage eine differenzierte eigene Gewohnheit erklären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come trova i piccoli negozi del quartiere?",
+          "baseText": {
+            "de": "Wie finden Sie die kleinen Geschäfte im Viertel?",
+            "en": "What do you think of the small shops in the neighborhood?"
+          }
+        },
+        {
+          "targetText": "Per me, il vantaggio dei piccoli negozi è il consiglio personale.",
+          "baseText": {
+            "de": "Für mich liegt der Vorteil der kleinen Geschäfte in der persönlichen Beratung.",
+            "en": "For me, the advantage of small shops is the personal advice."
+          }
+        },
+        {
+          "targetText": "La consulenza è utile, certo. E i prezzi non pesano troppo?",
+          "baseText": {
+            "de": "Die Beratung ist natürlich hilfreich. Fallen die Preise nicht zu sehr ins Gewicht?",
+            "en": "The advice is useful, of course. Aren't the prices a bit much?"
+          }
+        },
+        {
+          "targetText": "Io confronto i prezzi e compro soltanto il necessario.",
+          "baseText": {
+            "de": "Ich vergleiche die Preise und kaufe nur das Nötige.",
+            "en": "I compare prices and buy only what I need."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Per me: un vantaggio preciso",
+        "rule": {
+          "de": "Per me stellt Ihre Sicht vor; der anschließende Indikativ benennt einen konkreten Vorteil, den Sie im Gespräch genauer einordnen.",
+          "en": "Per me presents your view; the following indicative names a specific advantage that you can qualify as the conversation continues."
+        },
+        "examples": [
+          {
+            "targetText": "Per me, il vantaggio dei piccoli negozi è il consiglio personale.",
+            "baseText": {
+              "de": "Für mich liegt der Vorteil der kleinen Geschäfte in der persönlichen Beratung.",
+              "en": "For me, the advantage of small shops is the personal advice."
+            },
+            "highlight": "Per me"
+          },
+          {
+            "targetText": "Per me, questi negozi sono utili perché il personale conosce i prodotti.",
+            "baseText": {
+              "de": "Für mich sind diese Geschäfte hilfreich, weil das Personal die Produkte kennt.",
+              "en": "For me, these shops are useful because the staff know the products."
+            },
+            "highlight": "perché il personale conosce"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "confronto",
+          "cue": "confrontare (io)",
+          "choices": [
+            "confrontano",
+            "confronto",
+            "confrontiamo",
+            "confrontate"
+          ]
+        },
+        " i prezzi e ",
+        {
+          "kind": "form",
+          "answer": "compro",
+          "cue": "comprare (io)",
+          "choices": [
+            "compro",
+            "compriamo",
+            "comprano",
+            "comprate"
+          ]
+        },
+        " soltanto il necessario."
+      ],
+      "chunks": [
+        {
+          "targetText": "Per me,",
+          "baseText": {
+            "de": "Für mich,",
+            "en": "For me,"
+          }
+        },
+        {
+          "targetText": "il vantaggio",
+          "baseText": {
+            "de": "liegt der Vorteil",
+            "en": "the advantage"
+          }
+        },
+        {
+          "targetText": "dei piccoli negozi",
+          "baseText": {
+            "de": "der kleinen Geschäfte",
+            "en": "of small shops"
+          }
+        },
+        {
+          "targetText": "è il consiglio personale.",
+          "baseText": {
+            "de": "in der persönlichen Beratung.",
+            "en": "is the personal advice."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il vantaggio",
+          "baseText": {
+            "de": "der Vorteil",
+            "en": "the advantage"
+          }
+        },
+        {
+          "targetText": "i piccoli negozi",
+          "baseText": {
+            "de": "die kleinen Geschäfte",
+            "en": "small shops"
+          }
+        },
+        {
+          "targetText": "il consiglio personale",
+          "baseText": {
+            "de": "die persönliche Beratung",
+            "en": "personal advice"
+          }
+        },
+        {
+          "targetText": "la consulenza",
+          "baseText": {
+            "de": "die Beratung",
+            "en": "advice; consultation"
+          }
+        },
+        {
+          "targetText": "i prezzi",
+          "baseText": {
+            "de": "die Preise",
+            "en": "prices"
+          }
+        },
+        {
+          "targetText": "confronto",
+          "baseText": {
+            "de": "ich vergleiche",
+            "en": "I compare"
+          }
+        },
+        {
+          "targetText": "il necessario",
+          "baseText": {
+            "de": "das Nötige",
+            "en": "what is needed"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Per me, il vantaggio dei piccoli negozi è il consiglio ",
+        "answer": "personale",
+        "after": ".",
+        "fallbackChoices": [
+          "personale",
+          "personali",
+          "personalmente",
+          "personalizzare"
+        ]
+      },
+      "speakRequired": [
+        "vantaggio",
+        "negozi",
+        "consiglio"
+      ],
+      "sceneCaption": {
+        "de": "Im Hauseingang fragt ein Nachbar: „Come trova i piccoli negozi del quartiere?“",
+        "en": "In the entrance hall, a neighbor asks: “Come trova i piccoli negozi del quartiere?”"
+      },
+      "trophyWord": {
+        "word": "vantaggio",
+        "meaning": {
+          "de": "der Vorteil",
+          "en": "advantage"
+        },
+        "example": "Il consiglio del negoziante è un vantaggio concreto.",
+        "whyThisWord": {
+          "de": "Mit vantaggio benennen Sie einen konkreten Nutzen, ohne eine Wahl uneingeschränkt zu loben.",
+          "en": "Vantaggio names a concrete benefit without presenting a choice as perfect."
+        }
+      },
+      "distractors": [
+        "dei grandi supermercati",
+        "è la scelta dei prodotti."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn sprechen neben einer Einkaufstasche.",
+        "en": "Two neighbors talk beside a shopping bag."
+      },
+      "songMood": "easy conversational Italian pop with gentle rhythmic detail",
+      "visualNotes": "Apartment entry, two adults and an unbranded shopping bag; no prices or advice illustrated."
+    },
+    {
+      "slug": "traffico-intorno-alla-scuola",
+      "title": {
+        "de": "Rund um die Schule",
+        "en": "Around the school"
+      },
+      "situation": {
+        "de": "Bei einer Besprechung geht es um eine Straßensperrung zu Schulbeginn.",
+        "en": "At a meeting, people are discussing closing a street at the start of the school day."
+      },
+      "pedagogicalGoal": "Mit anche se einen Vorteil anerkennen und zugleich eine praktische Schwierigkeit benennen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Che cosa pensa della chiusura della strada davanti alla scuola?",
+          "baseText": {
+            "de": "Was halten Sie von der Sperrung der Straße vor der Schule?",
+            "en": "What do you think of closing the street outside the school?"
+          }
+        },
+        {
+          "targetText": "Anche se il traffico diminuisce, accompagnare i bambini resta difficile per alcune famiglie.",
+          "baseText": {
+            "de": "Auch wenn der Verkehr abnimmt, bleibt es für manche Familien schwierig, die Kinder zur Schule zu bringen.",
+            "en": "Even though traffic decreases, bringing the children remains difficult for some families."
+          }
+        },
+        {
+          "targetText": "C'è un parcheggio a cento metri. Può aiutare le famiglie, secondo Lei?",
+          "baseText": {
+            "de": "Es gibt einen Parkplatz hundert Meter entfernt. Kann er den Familien Ihrer Meinung nach helfen?",
+            "en": "There's a parking area a hundred meters away. Do you think it can help families?"
+          }
+        },
+        {
+          "targetText": "I genitori parcheggiano vicino e accompagnano i bambini a piedi.",
+          "baseText": {
+            "de": "Die Eltern parken in der Nähe und begleiten die Kinder zu Fuß.",
+            "en": "Parents park nearby and walk the children to school."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Anche se: riconoscere una difficoltà",
+        "rule": {
+          "de": "Anche se mit Indikativ erkennt einen Umstand an; der Hauptsatz zeigt, welche Schwierigkeit trotzdem bleibt.",
+          "en": "Anche se with the indicative acknowledges a circumstance; the main clause shows what difficulty remains."
+        },
+        "examples": [
+          {
+            "targetText": "Anche se il traffico diminuisce, accompagnare i bambini resta difficile per alcune famiglie.",
+            "baseText": {
+              "de": "Auch wenn der Verkehr abnimmt, bleibt es für manche Familien schwierig, die Kinder zur Schule zu bringen.",
+              "en": "Even though traffic decreases, bringing the children remains difficult for some families."
+            },
+            "highlight": "Anche se il traffico diminuisce"
+          },
+          {
+            "targetText": "Anche se la strada è chiusa, la scuola resta raggiungibile a piedi.",
+            "baseText": {
+              "de": "Auch wenn die Straße gesperrt ist, bleibt die Schule zu Fuß erreichbar.",
+              "en": "Even though the street is closed, the school can still be reached on foot."
+            },
+            "highlight": "Anche se la strada è chiusa"
+          }
+        ]
+      },
+      "cloze": [
+        "I genitori ",
+        {
+          "kind": "form",
+          "answer": "parcheggiano",
+          "cue": "parcheggiare (i genitori)",
+          "choices": [
+            "parcheggio",
+            "parcheggiamo",
+            "parcheggiano",
+            "parcheggiate"
+          ]
+        },
+        " vicino e ",
+        {
+          "kind": "form",
+          "answer": "accompagnano",
+          "cue": "accompagnare (i genitori)",
+          "choices": [
+            "accompagno",
+            "accompagnano",
+            "accompagniamo",
+            "accompagnate"
+          ]
+        },
+        " i bambini a piedi."
+      ],
+      "chunks": [
+        {
+          "targetText": "Anche se il traffico diminuisce,",
+          "baseText": {
+            "de": "Auch wenn der Verkehr abnimmt,",
+            "en": "Even though traffic decreases,"
+          }
+        },
+        {
+          "targetText": "accompagnare i bambini",
+          "baseText": {
+            "de": "die Kinder zur Schule zu bringen",
+            "en": "bringing the children"
+          }
+        },
+        {
+          "targetText": "resta difficile",
+          "baseText": {
+            "de": "bleibt schwierig",
+            "en": "remains difficult"
+          }
+        },
+        {
+          "targetText": "per alcune famiglie.",
+          "baseText": {
+            "de": "für manche Familien.",
+            "en": "for some families."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il traffico",
+          "baseText": {
+            "de": "der Verkehr",
+            "en": "traffic"
+          }
+        },
+        {
+          "targetText": "diminuisce",
+          "baseText": {
+            "de": "nimmt ab",
+            "en": "decreases"
+          }
+        },
+        {
+          "targetText": "accompagnare i bambini",
+          "baseText": {
+            "de": "die Kinder begleiten",
+            "en": "to accompany the children"
+          }
+        },
+        {
+          "targetText": "alcune famiglie",
+          "baseText": {
+            "de": "manche Familien",
+            "en": "some families"
+          }
+        },
+        {
+          "targetText": "il parcheggio",
+          "baseText": {
+            "de": "der Parkplatz",
+            "en": "the parking area"
+          }
+        },
+        {
+          "targetText": "i genitori",
+          "baseText": {
+            "de": "die Eltern",
+            "en": "parents"
+          }
+        },
+        {
+          "targetText": "a piedi",
+          "baseText": {
+            "de": "zu Fuß",
+            "en": "on foot"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Anche se il traffico diminuisce, accompagnare i bambini resta difficile per ",
+        "answer": "alcune",
+        "after": " famiglie.",
+        "fallbackChoices": [
+          "alcune",
+          "alcuni",
+          "alcuna",
+          "alcuno"
+        ]
+      },
+      "speakRequired": [
+        "traffico",
+        "bambini",
+        "famiglie"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Schulbesprechung fragt ein Anwohner: „Che cosa pensa della chiusura della strada davanti alla scuola?“",
+        "en": "At the school meeting, a resident asks: “Che cosa pensa della chiusura della strada davanti alla scuola?”"
+      },
+      "trophyWord": {
+        "word": "traffico",
+        "meaning": {
+          "de": "der Verkehr",
+          "en": "traffic"
+        },
+        "example": "Il traffico vicino alla scuola diminuisce al mattino.",
+        "whyThisWord": {
+          "de": "Traffico hilft Ihnen, über eine konkrete Veränderung im Straßenraum und ihre Folgen zu sprechen.",
+          "en": "Traffico helps you discuss a specific change on local streets and its effects."
+        }
+      },
+      "distractors": [
+        "per molte persone.",
+        "diventa più semplice"
+      ],
+      "placeholderCaption": {
+        "de": "Erwachsene sprechen über einen Plan der Schulumgebung.",
+        "en": "Adults discuss a map of the area around a school."
+      },
+      "songMood": "measured Italian pop with a thoughtful neighborhood discussion",
+      "visualNotes": "School meeting with generic street plan; do not mark parking or any accepted workaround."
+    },
+    {
+      "slug": "panchine-lungo-la-salita",
+      "title": {
+        "de": "Eine steile Straße",
+        "en": "A steep street"
+      },
+      "situation": {
+        "de": "Eine Nachbarin spricht mit Ihnen über die Ausstattung einer steilen Straße im Viertel.",
+        "en": "A neighbor talks with you about facilities on a steep neighborhood street."
+      },
+      "pedagogicalGoal": "Eine Forderung begründen und mit anche se erklären, weshalb ein scheinbarer Einwand sie nicht aufhebt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Che cosa manca lungo questa salita, secondo Lei?",
+          "baseText": {
+            "de": "Was fehlt Ihrer Meinung nach an dieser Steigung?",
+            "en": "What is missing along this hill, in your view?"
+          }
+        },
+        {
+          "targetText": "Servono più panchine lungo la salita, anche se il percorso sembra breve.",
+          "baseText": {
+            "de": "Entlang der Steigung werden mehr Bänke gebraucht, auch wenn der Weg kurz wirkt.",
+            "en": "More benches are needed along the hill, even though the route looks short."
+          }
+        },
+        {
+          "targetText": "Dal negozio al portone sono pochi passi. Anche lì serve una pausa?",
+          "baseText": {
+            "de": "Vom Laden bis zum Hauseingang sind es nur wenige Schritte. Braucht man auch dort eine Pause?",
+            "en": "It's only a few steps from the shop to the entrance. Is a break needed there too?"
+          }
+        },
+        {
+          "targetText": "Le borse pesano e alcune persone hanno bisogno di pause.",
+          "baseText": {
+            "de": "Die Taschen sind schwer, und manche Menschen brauchen Pausen.",
+            "en": "The bags are heavy, and some people need breaks."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Anche se: un'obiezione non basta",
+        "rule": {
+          "de": "Anche se mit Indikativ führt einen möglichen Einwand ein, während der andere Satzteil Ihre Einschätzung aufrechterhält.",
+          "en": "Anche se with the indicative introduces a possible objection while the other clause maintains your assessment."
+        },
+        "examples": [
+          {
+            "targetText": "Servono più panchine lungo la salita, anche se il percorso sembra breve.",
+            "baseText": {
+              "de": "Entlang der Steigung werden mehr Bänke gebraucht, auch wenn der Weg kurz wirkt.",
+              "en": "More benches are needed along the hill, even though the route looks short."
+            },
+            "highlight": "anche se il percorso sembra breve"
+          },
+          {
+            "targetText": "La salita è faticosa anche se dura pochi minuti.",
+            "baseText": {
+              "de": "Der Aufstieg ist anstrengend, auch wenn er nur wenige Minuten dauert.",
+              "en": "The climb is tiring even though it lasts only a few minutes."
+            },
+            "highlight": "anche se dura pochi minuti"
+          }
+        ]
+      },
+      "cloze": [
+        "Le borse ",
+        {
+          "kind": "form",
+          "answer": "pesano",
+          "cue": "pesare (le borse)",
+          "choices": [
+            "pesiamo",
+            "pesa",
+            "pesano",
+            "peso"
+          ]
+        },
+        " e alcune persone ",
+        {
+          "kind": "form",
+          "answer": "hanno",
+          "cue": "avere (alcune persone)",
+          "choices": [
+            "ho",
+            "abbiamo",
+            "ha",
+            "hanno"
+          ]
+        },
+        " bisogno di pause."
+      ],
+      "chunks": [
+        {
+          "targetText": "Servono più panchine",
+          "baseText": {
+            "de": "Es werden mehr Bänke gebraucht",
+            "en": "More benches are needed"
+          }
+        },
+        {
+          "targetText": "lungo la salita,",
+          "baseText": {
+            "de": "entlang der Steigung,",
+            "en": "along the hill,"
+          }
+        },
+        {
+          "targetText": "anche se il percorso",
+          "baseText": {
+            "de": "auch wenn der Weg",
+            "en": "even though the route"
+          }
+        },
+        {
+          "targetText": "sembra breve.",
+          "baseText": {
+            "de": "kurz wirkt.",
+            "en": "looks short."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le panchine",
+          "baseText": {
+            "de": "die Bänke",
+            "en": "benches"
+          }
+        },
+        {
+          "targetText": "la salita",
+          "baseText": {
+            "de": "die Steigung",
+            "en": "the hill; the uphill stretch"
+          }
+        },
+        {
+          "targetText": "il percorso",
+          "baseText": {
+            "de": "der Weg",
+            "en": "the route"
+          }
+        },
+        {
+          "targetText": "sembra breve",
+          "baseText": {
+            "de": "wirkt kurz",
+            "en": "looks short"
+          }
+        },
+        {
+          "targetText": "le borse",
+          "baseText": {
+            "de": "die Taschen",
+            "en": "bags"
+          }
+        },
+        {
+          "targetText": "pesano",
+          "baseText": {
+            "de": "sind schwer; wiegen viel",
+            "en": "are heavy"
+          }
+        },
+        {
+          "targetText": "avere bisogno di pause",
+          "baseText": {
+            "de": "Pausen brauchen",
+            "en": "to need breaks"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Servono più panchine lungo la salita, anche se il percorso sembra ",
+        "answer": "breve",
+        "after": ".",
+        "fallbackChoices": [
+          "breve",
+          "brevi",
+          "brevità",
+          "brevemente"
+        ]
+      },
+      "speakRequired": [
+        "panchine",
+        "salita",
+        "percorso"
+      ],
+      "sceneCaption": {
+        "de": "Am unteren Ende der Straße fragt eine Nachbarin: „Che cosa manca lungo questa salita, secondo Lei?“",
+        "en": "At the bottom of the street, a neighbor asks: “Che cosa manca lungo questa salita, secondo Lei?”"
+      },
+      "trophyWord": {
+        "word": "panchine",
+        "meaning": {
+          "de": "die Bänke",
+          "en": "benches"
+        },
+        "example": "Le panchine lungo la salita permettono una pausa.",
+        "whyThisWord": {
+          "de": "Mit panchine benennen Sie eine konkrete Einrichtung, deren Nutzen Sie für unterschiedliche Menschen begründen können.",
+          "en": "Panchine names a practical facility whose value you can explain for different people."
+        }
+      },
+      "distractors": [
+        "lungo il fiume,",
+        "sembra facile."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Erwachsene unterhalten sich am Beginn einer ansteigenden Straße.",
+        "en": "Two adults talk at the foot of an uphill street."
+      },
+      "songMood": "gentle Italian folk pop with patient phrasing",
+      "visualNotes": "Bottom of a residential hill, ordinary houses; no benches added and no heavy-bag reveal."
+    },
+    {
+      "slug": "ambiente-della-sala-di-lettura",
+      "title": {
+        "de": "Die kleine Lesehalle",
+        "en": "The small reading room"
+      },
+      "situation": {
+        "de": "Sie sprechen mit einem anderen Besucher über die kleine Lesehalle im Viertel.",
+        "en": "You talk with another visitor about the small neighborhood reading room."
+      },
+      "pedagogicalGoal": "Mit anche se eine Einschränkung anerkennen und mit comunque einen positiven Punkt trotz des Einwands bekräftigen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come trova questa piccola sala di lettura?",
+          "baseText": {
+            "de": "Wie finden Sie diese kleine Lesehalle?",
+            "en": "What do you think of this small reading room?"
+          }
+        },
+        {
+          "targetText": "Mi piace l'ambiente della sala, anche se posso andare soltanto il sabato.",
+          "baseText": {
+            "de": "Mir gefällt die Atmosphäre des Raums, auch wenn ich nur samstags hingehen kann.",
+            "en": "I like the atmosphere of the room, although I can only go on Saturdays."
+          }
+        },
+        {
+          "targetText": "Il sabato apre solo per due ore. Riesce a leggere con calma?",
+          "baseText": {
+            "de": "Samstags ist sie nur zwei Stunden geöffnet. Können Sie in Ruhe lesen?",
+            "en": "It only opens for two hours on Saturdays. Can you read at a relaxed pace?"
+          }
+        },
+        {
+          "targetText": "Io leggo meglio, ma il tempo passa comunque troppo in fretta.",
+          "baseText": {
+            "de": "Ich lese besser, aber die Zeit vergeht trotzdem viel zu schnell.",
+            "en": "I read better, but time still passes far too quickly."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un limite e un vantaggio",
+        "rule": {
+          "de": "Anche se mit Indikativ räumt eine Einschränkung ein; comunque hält eine Aussage trotz eines zuvor genannten Einwands aufrecht.",
+          "en": "Anche se with the indicative concedes a limitation; comunque maintains a statement despite an objection mentioned earlier."
+        },
+        "examples": [
+          {
+            "targetText": "Mi piace l'ambiente della sala, anche se posso andare soltanto il sabato.",
+            "baseText": {
+              "de": "Mir gefällt die Atmosphäre des Raums, auch wenn ich nur samstags hingehen kann.",
+              "en": "I like the atmosphere of the room, although I can only go on Saturdays."
+            },
+            "highlight": "anche se posso andare"
+          },
+          {
+            "targetText": "Gli orari sono limitati; il silenzio comunque aiuta a leggere.",
+            "baseText": {
+              "de": "Die Öffnungszeiten sind begrenzt; die Stille hilft dennoch beim Lesen.",
+              "en": "Opening hours are limited; the quiet still helps with reading."
+            },
+            "highlight": "comunque aiuta"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ",
+        {
+          "kind": "form",
+          "answer": "leggo",
+          "cue": "leggere (io)",
+          "choices": [
+            "leggiamo",
+            "legge",
+            "leggete",
+            "leggo"
+          ]
+        },
+        " meglio, ma il tempo ",
+        {
+          "kind": "form",
+          "answer": "passa",
+          "cue": "passare (il tempo)",
+          "choices": [
+            "passano",
+            "passiamo",
+            "passa",
+            "passo"
+          ]
+        },
+        " comunque troppo in fretta."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mi piace l'ambiente",
+          "baseText": {
+            "de": "Mir gefällt die Atmosphäre",
+            "en": "I like the atmosphere"
+          }
+        },
+        {
+          "targetText": "della sala,",
+          "baseText": {
+            "de": "des Raums,",
+            "en": "of the room,"
+          }
+        },
+        {
+          "targetText": "anche se posso andare",
+          "baseText": {
+            "de": "auch wenn ich hingehen kann",
+            "en": "although I can go"
+          }
+        },
+        {
+          "targetText": "soltanto il sabato.",
+          "baseText": {
+            "de": "nur samstags.",
+            "en": "only on Saturdays."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "l'ambiente",
+          "baseText": {
+            "de": "die Atmosphäre",
+            "en": "the atmosphere"
+          }
+        },
+        {
+          "targetText": "la sala di lettura",
+          "baseText": {
+            "de": "die Lesehalle",
+            "en": "the reading room"
+          }
+        },
+        {
+          "targetText": "soltanto il sabato",
+          "baseText": {
+            "de": "nur samstags",
+            "en": "only on Saturdays"
+          }
+        },
+        {
+          "targetText": "con calma",
+          "baseText": {
+            "de": "in Ruhe",
+            "en": "at a relaxed pace"
+          }
+        },
+        {
+          "targetText": "il silenzio",
+          "baseText": {
+            "de": "die Stille",
+            "en": "the quiet"
+          }
+        },
+        {
+          "targetText": "leggo meglio",
+          "baseText": {
+            "de": "ich lese besser",
+            "en": "I read better"
+          }
+        },
+        {
+          "targetText": "il tempo passa",
+          "baseText": {
+            "de": "die Zeit vergeht",
+            "en": "time passes"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mi piace l'ambiente della sala, anche se posso ",
+        "answer": "andare",
+        "after": " soltanto il sabato.",
+        "fallbackChoices": [
+          "andare",
+          "andando",
+          "andavo",
+          "andato"
+        ]
+      },
+      "speakRequired": [
+        "piace",
+        "ambiente",
+        "sabato"
+      ],
+      "sceneCaption": {
+        "de": "Zwischen den Regalen fragt ein Besucher: „Come trova questa piccola sala di lettura?“",
+        "en": "Between the shelves, a visitor asks: “Come trova questa piccola sala di lettura?”"
+      },
+      "trophyWord": {
+        "word": "ambiente",
+        "meaning": {
+          "de": "die Atmosphäre; das Umfeld",
+          "en": "atmosphere; surroundings"
+        },
+        "example": "L'ambiente della sala è tranquillo e piacevole.",
+        "whyThisWord": {
+          "de": "Ambiente beschreibt hier die Atmosphäre eines Orts und hilft Ihnen, Ihren persönlichen Eindruck genauer zu erklären.",
+          "en": "Ambiente describes a place's atmosphere here and helps you explain your personal impression."
+        }
+      },
+      "distractors": [
+        "della biblioteca,",
+        "soltanto il lunedì."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Erwachsene sprechen leise in einer kleinen Lesehalle.",
+        "en": "Two adults talk quietly in a small reading room."
+      },
+      "songMood": "intimate Italian piano pop with a calm reading-room atmosphere",
+      "visualNotes": "Small reading room and softly lit bookshelves; no opening-hours sign or completed reading shown."
+    },
+    {
+      "slug": "raccolta-differenziata-comunque-utile",
+      "title": {
+        "de": "Mülltrennung im Haus",
+        "en": "Sorting household waste"
+      },
+      "situation": {
+        "de": "Ein Nachbar spricht Sie auf die neue Mülltrennung im Haus an.",
+        "en": "A neighbor asks you about the new waste-sorting system in the building."
+      },
+      "pedagogicalGoal": "Mit penso che und einem erlaubten Konjunktiv eine Einschätzung äußern; comunque hält den positiven Standpunkt trotz eines Nachteils fest.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come trova il nuovo sistema di raccolta differenziata?",
+          "baseText": {
+            "de": "Wie finden Sie das neue System zur Mülltrennung?",
+            "en": "What do you think of the new waste-sorting system?"
+          }
+        },
+        {
+          "targetText": "La raccolta richiede spazio, ma penso che sia comunque utile al quartiere.",
+          "baseText": {
+            "de": "Die Mülltrennung braucht Platz, aber ich denke, dass sie dem Viertel trotzdem nützt.",
+            "en": "The collection takes up space, but I think it's still useful for the neighborhood."
+          }
+        },
+        {
+          "targetText": "I contenitori sono molti e qualcuno sbaglia. Che cosa può aiutare?",
+          "baseText": {
+            "de": "Es gibt viele Behälter, und manche machen Fehler. Was kann helfen?",
+            "en": "There are lots of containers, and some people make mistakes. What could help?"
+          }
+        },
+        {
+          "targetText": "Credo che un cartello aiuti, perché io confondo i contenitori.",
+          "baseText": {
+            "de": "Ich glaube, dass ein Schild hilft, denn ich verwechsle die Behälter.",
+            "en": "I think a sign helps, because I mix up the containers."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Penso che sia comunque utile",
+        "rule": {
+          "de": "Nach penso che oder credo che steht hier der presente congiuntivo: sia oder aiuti. Comunque bedeutet, dass Ihre Einschätzung trotz des genannten Nachteils gilt.",
+          "en": "After penso che or credo che, use the present subjunctive here: sia or aiuti. Comunque says that your assessment still holds despite the drawback."
+        },
+        "examples": [
+          {
+            "targetText": "La raccolta richiede spazio, ma penso che sia comunque utile al quartiere.",
+            "baseText": {
+              "de": "Die Mülltrennung braucht Platz, aber ich denke, dass sie dem Viertel trotzdem nützt.",
+              "en": "The collection takes up space, but I think it's still useful for the neighborhood."
+            },
+            "highlight": "penso che sia comunque utile"
+          },
+          {
+            "targetText": "Credo che un cartello aiuti a distinguere i contenitori.",
+            "baseText": {
+              "de": "Ich glaube, dass ein Schild hilft, die Behälter zu unterscheiden.",
+              "en": "I think a sign helps distinguish the containers."
+            },
+            "highlight": "Credo che un cartello aiuti"
+          }
+        ]
+      },
+      "cloze": [
+        "Credo che un cartello ",
+        {
+          "kind": "form",
+          "answer": "aiuti",
+          "cue": "aiutare (un cartello)",
+          "choices": [
+            "aiutino",
+            "aiutiamo",
+            "aiuti",
+            "aiutate"
+          ]
+        },
+        ", perché io ",
+        {
+          "kind": "form",
+          "answer": "confondo",
+          "cue": "confondere (io)",
+          "choices": [
+            "confondiamo",
+            "confondono",
+            "confondo",
+            "confondete"
+          ]
+        },
+        " i contenitori."
+      ],
+      "chunks": [
+        {
+          "targetText": "La raccolta richiede spazio,",
+          "baseText": {
+            "de": "Die Mülltrennung braucht Platz,",
+            "en": "The collection takes up space,"
+          }
+        },
+        {
+          "targetText": "ma penso che",
+          "baseText": {
+            "de": "aber ich denke, dass",
+            "en": "but I think"
+          }
+        },
+        {
+          "targetText": "sia comunque utile",
+          "baseText": {
+            "de": "sie trotzdem nützlich ist",
+            "en": "it's still useful"
+          }
+        },
+        {
+          "targetText": "al quartiere.",
+          "baseText": {
+            "de": "für das Viertel.",
+            "en": "for the neighborhood."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la raccolta differenziata",
+          "baseText": {
+            "de": "die Mülltrennung",
+            "en": "waste sorting"
+          }
+        },
+        {
+          "targetText": "richiede spazio",
+          "baseText": {
+            "de": "braucht Platz",
+            "en": "takes up space"
+          }
+        },
+        {
+          "targetText": "penso che sia utile",
+          "baseText": {
+            "de": "ich denke, dass es nützlich ist",
+            "en": "I think it is useful"
+          }
+        },
+        {
+          "targetText": "comunque utile",
+          "baseText": {
+            "de": "trotzdem nützlich",
+            "en": "still useful"
+          }
+        },
+        {
+          "targetText": "il cartello",
+          "baseText": {
+            "de": "das Schild",
+            "en": "the sign"
+          }
+        },
+        {
+          "targetText": "confondo",
+          "baseText": {
+            "de": "ich verwechsle",
+            "en": "I mix up"
+          }
+        },
+        {
+          "targetText": "i contenitori",
+          "baseText": {
+            "de": "die Behälter",
+            "en": "containers"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La raccolta richiede spazio, ma penso che sia comunque ",
+        "answer": "utile",
+        "after": " al quartiere.",
+        "fallbackChoices": [
+          "utile",
+          "utili",
+          "utilità",
+          "utilmente"
+        ]
+      },
+      "speakRequired": [
+        "raccolta",
+        "spazio",
+        "comunque"
+      ],
+      "sceneCaption": {
+        "de": "Im Hausflur fragt ein Nachbar: „Come trova il nuovo sistema di raccolta differenziata?“",
+        "en": "In the building's hallway, a neighbor asks: “Come trova il nuovo sistema di raccolta differenziata?”"
+      },
+      "trophyWord": {
+        "word": "comunque",
+        "meaning": {
+          "de": "trotzdem; dennoch",
+          "en": "still; nevertheless"
+        },
+        "example": "La raccolta richiede spazio, ma penso che sia comunque utile.",
+        "whyThisWord": {
+          "de": "Comunque hält eine Aussage auch nach einem eingeräumten Nachteil aufrecht.",
+          "en": "Comunque maintains a point even after you acknowledge a drawback."
+        }
+      },
+      "distractors": [
+        "al palazzo.",
+        "sia poco utile"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn sprechen im Hausflur über eine Mitteilung.",
+        "en": "Two neighbors discuss a notice in the hallway."
+      },
+      "songMood": "lightly reflective Italian pop with practical optimism",
+      "visualNotes": "Apartment hallway and neutral notice board; no labeled sorting containers or sign solution shown."
+    },
+    {
+      "slug": "spazi-comuni-e-regole",
+      "title": {
+        "de": "Gemeinsam genutzte Räume",
+        "en": "Shared spaces"
+      },
+      "situation": {
+        "de": "Im Haus wird darüber gesprochen, wie gemeinschaftliche Flächen genutzt werden können.",
+        "en": "Residents are discussing how to use the building's shared spaces."
+      },
+      "pedagogicalGoal": "Mit credo che und siano eine Einschätzung zu mehreren Dingen äußern und mit possa eine verträgliche Nutzung vorschlagen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Che cosa pensa degli spazi comuni del palazzo?",
+          "baseText": {
+            "de": "Was halten Sie von den Gemeinschaftsflächen des Hauses?",
+            "en": "What do you think of the building's shared spaces?"
+          }
+        },
+        {
+          "targetText": "Credo che gli spazi comuni siano utili, anche se richiedono qualche regola.",
+          "baseText": {
+            "de": "Ich glaube, dass die Gemeinschaftsflächen nützlich sind, auch wenn sie einige Regeln erfordern.",
+            "en": "I think shared spaces are useful, even though they need a few rules."
+          }
+        },
+        {
+          "targetText": "Qualcuno vuole organizzare feste, altri cercano tranquillità. Quale uso propone?",
+          "baseText": {
+            "de": "Einige möchten Feiern veranstalten, andere suchen Ruhe. Welche Nutzung schlagen Sie vor?",
+            "en": "Some people want to hold parties, while others want quiet. What use do you suggest?"
+          }
+        },
+        {
+          "targetText": "Penso che il cortile possa ospitare incontri senza musica amplificata.",
+          "baseText": {
+            "de": "Ich denke, dass im Innenhof Treffen ohne verstärkte Musik stattfinden können.",
+            "en": "I think the courtyard could host gatherings without amplified music."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Credo che siano; penso che possa",
+        "rule": {
+          "de": "Nach credo che richtet sich siano nach einem Subjekt im Plural; nach penso che passt possa zu einem Subjekt im Singular und einem folgenden Infinitiv.",
+          "en": "After credo che, siano agrees with a plural subject; after penso che, possa fits a singular subject and a following infinitive."
+        },
+        "examples": [
+          {
+            "targetText": "Credo che gli spazi comuni siano utili, anche se richiedono qualche regola.",
+            "baseText": {
+              "de": "Ich glaube, dass die Gemeinschaftsflächen nützlich sind, auch wenn sie einige Regeln erfordern.",
+              "en": "I think shared spaces are useful, even though they need a few rules."
+            },
+            "highlight": "gli spazi comuni siano utili"
+          },
+          {
+            "targetText": "Penso che la sala possa ospitare piccoli incontri.",
+            "baseText": {
+              "de": "Ich denke, dass der Raum für kleine Treffen geeignet ist.",
+              "en": "I think the room can host small gatherings."
+            },
+            "highlight": "la sala possa ospitare"
+          }
+        ]
+      },
+      "cloze": [
+        "Penso che il cortile ",
+        {
+          "kind": "form",
+          "answer": "possa",
+          "cue": "potere (il cortile)",
+          "choices": [
+            "possano",
+            "possa",
+            "possiamo",
+            "potete"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "ospitare",
+          "cue": "ospitare (il cortile)",
+          "choices": [
+            "ospitano",
+            "ospitare",
+            "ospitando",
+            "ospitava"
+          ]
+        },
+        " incontri senza musica amplificata."
+      ],
+      "chunks": [
+        {
+          "targetText": "Credo che",
+          "baseText": {
+            "de": "Ich glaube, dass",
+            "en": "I think"
+          }
+        },
+        {
+          "targetText": "gli spazi comuni",
+          "baseText": {
+            "de": "die Gemeinschaftsflächen",
+            "en": "shared spaces"
+          }
+        },
+        {
+          "targetText": "siano utili,",
+          "baseText": {
+            "de": "nützlich sind,",
+            "en": "are useful,"
+          }
+        },
+        {
+          "targetText": "anche se richiedono",
+          "baseText": {
+            "de": "auch wenn sie erfordern",
+            "en": "even though they need"
+          }
+        },
+        {
+          "targetText": "qualche regola.",
+          "baseText": {
+            "de": "einige Regeln.",
+            "en": "a few rules."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "gli spazi comuni",
+          "baseText": {
+            "de": "die Gemeinschaftsflächen",
+            "en": "shared spaces"
+          }
+        },
+        {
+          "targetText": "credo che siano utili",
+          "baseText": {
+            "de": "ich glaube, dass sie nützlich sind",
+            "en": "I think they are useful"
+          }
+        },
+        {
+          "targetText": "qualche regola",
+          "baseText": {
+            "de": "einige Regeln",
+            "en": "a few rules"
+          }
+        },
+        {
+          "targetText": "la tranquillità",
+          "baseText": {
+            "de": "die Ruhe",
+            "en": "peace and quiet"
+          }
+        },
+        {
+          "targetText": "ospitare incontri",
+          "baseText": {
+            "de": "Treffen beherbergen",
+            "en": "to host gatherings"
+          }
+        },
+        {
+          "targetText": "senza musica amplificata",
+          "baseText": {
+            "de": "ohne verstärkte Musik",
+            "en": "without amplified music"
+          }
+        },
+        {
+          "targetText": "il cortile",
+          "baseText": {
+            "de": "der Innenhof",
+            "en": "the courtyard"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Credo che gli spazi comuni siano ",
+        "answer": "utili",
+        "after": ", anche se richiedono qualche regola.",
+        "fallbackChoices": [
+          "utile",
+          "utili",
+          "utilità",
+          "utilmente"
+        ]
+      },
+      "speakRequired": [
+        "spazi",
+        "comuni",
+        "regola"
+      ],
+      "sceneCaption": {
+        "de": "Bei einer Hausbesprechung fragt die Verwalterin: „Che cosa pensa degli spazi comuni del palazzo?“",
+        "en": "At a residents' meeting, the building manager asks: “Che cosa pensa degli spazi comuni del palazzo?”"
+      },
+      "trophyWord": {
+        "word": "spazi",
+        "meaning": {
+          "de": "die Räume; die Flächen",
+          "en": "spaces; areas"
+        },
+        "example": "Credo che gli spazi comuni siano una risorsa per il palazzo.",
+        "whyThisWord": {
+          "de": "Spazi fasst mehrere gemeinsam genutzte Flächen zusammen und öffnet das Gespräch über unterschiedliche Bedürfnisse.",
+          "en": "Spazi brings shared areas together as a topic for discussing different needs."
+        }
+      },
+      "distractors": [
+        "gli spazi privati",
+        "siano scomodi,"
+      ],
+      "placeholderCaption": {
+        "de": "Bewohner sitzen bei einer Hausbesprechung an einem Tisch.",
+        "en": "Residents sit around a table at a building meeting."
+      },
+      "songMood": "balanced Italian pop with a cooperative conversational pulse",
+      "visualNotes": "Apartment residents at a table, generic floor plan; no party, courtyard meeting or noise resolution."
+    },
+    {
+      "slug": "sicurezza-all-attraversamento",
+      "title": {
+        "de": "Der Weg über die Straße",
+        "en": "Crossing the street"
+      },
+      "situation": {
+        "de": "Ein Nachbar fragt Sie nach dem Fußgängerüberweg am Markt.",
+        "en": "A neighbor asks you about the pedestrian crossing by the market."
+      },
+      "pedagogicalGoal": "Mit credo che und serva eine begründete Einschätzung äußern und eine bloße Vermutung durch eine konkrete Beobachtung ersetzen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come trova l'attraversamento vicino al mercato?",
+          "baseText": {
+            "de": "Wie finden Sie den Fußgängerüberweg am Markt?",
+            "en": "What do you think of the crossing by the market?"
+          }
+        },
+        {
+          "targetText": "Credo che per la sicurezza serva più luce, anche se qui sembra tranquillo.",
+          "baseText": {
+            "de": "Ich glaube, dass hier für die Sicherheit mehr Licht nötig ist, auch wenn es ruhig wirkt.",
+            "en": "I think more light is needed for safety, even though it seems quiet here."
+          }
+        },
+        {
+          "targetText": "È soltanto un'impressione o ha visto qualche situazione pericolosa?",
+          "baseText": {
+            "de": "Ist das nur ein Eindruck, oder haben Sie eine gefährliche Situation gesehen?",
+            "en": "Is that just an impression, or have you seen a dangerous situation?"
+          }
+        },
+        {
+          "targetText": "Io ho visto due auto frenare, quindi il rischio esiste.",
+          "baseText": {
+            "de": "Ich habe zwei Autos bremsen sehen, also besteht das Risiko.",
+            "en": "I saw two cars brake, so the risk is real."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Credo che serva: un parere motivato",
+        "rule": {
+          "de": "Nach credo che steht serva für etwas, das Ihrer Einschätzung nach nötig ist; eine Beobachtung im passato prossimo kann den Standpunkt stützen.",
+          "en": "After credo che, serva expresses something you think is needed; an observation in the passato prossimo can support your view."
+        },
+        "examples": [
+          {
+            "targetText": "Credo che per la sicurezza serva più luce, anche se qui sembra tranquillo.",
+            "baseText": {
+              "de": "Ich glaube, dass hier für die Sicherheit mehr Licht nötig ist, auch wenn es ruhig wirkt.",
+              "en": "I think more light is needed for safety, even though it seems quiet here."
+            },
+            "highlight": "Credo che per la sicurezza serva"
+          },
+          {
+            "targetText": "Credo che un lampione aiuti, perché la strada è buia.",
+            "baseText": {
+              "de": "Ich glaube, dass eine Straßenlaterne hilft, weil die Straße dunkel ist.",
+              "en": "I think a streetlight helps because the street is dark."
+            },
+            "highlight": "Credo che un lampione aiuti"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ho ",
+        {
+          "kind": "form",
+          "answer": "visto",
+          "cue": "vedere (io)",
+          "choices": [
+            "vedere",
+            "vedendo",
+            "visto",
+            "vedevo"
+          ]
+        },
+        " due auto frenare, quindi il rischio ",
+        {
+          "kind": "form",
+          "answer": "esiste",
+          "cue": "esistere (il rischio)",
+          "choices": [
+            "esistono",
+            "esistiamo",
+            "esisto",
+            "esiste"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Credo che",
+          "baseText": {
+            "de": "Ich glaube, dass",
+            "en": "I think"
+          }
+        },
+        {
+          "targetText": "per la sicurezza",
+          "baseText": {
+            "de": "für die Sicherheit",
+            "en": "for safety"
+          }
+        },
+        {
+          "targetText": "serva più luce,",
+          "baseText": {
+            "de": "mehr Licht nötig ist,",
+            "en": "more light is needed,"
+          }
+        },
+        {
+          "targetText": "anche se qui",
+          "baseText": {
+            "de": "auch wenn es hier",
+            "en": "even though here"
+          }
+        },
+        {
+          "targetText": "sembra tranquillo.",
+          "baseText": {
+            "de": "ruhig wirkt.",
+            "en": "it seems quiet."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la sicurezza",
+          "baseText": {
+            "de": "die Sicherheit",
+            "en": "safety"
+          }
+        },
+        {
+          "targetText": "l'attraversamento",
+          "baseText": {
+            "de": "der Fußgängerüberweg",
+            "en": "the crossing"
+          }
+        },
+        {
+          "targetText": "più luce",
+          "baseText": {
+            "de": "mehr Licht",
+            "en": "more light"
+          }
+        },
+        {
+          "targetText": "un'impressione",
+          "baseText": {
+            "de": "ein Eindruck",
+            "en": "an impression"
+          }
+        },
+        {
+          "targetText": "pericolosa",
+          "baseText": {
+            "de": "gefährlich",
+            "en": "dangerous"
+          }
+        },
+        {
+          "targetText": "frenare",
+          "baseText": {
+            "de": "bremsen",
+            "en": "to brake"
+          }
+        },
+        {
+          "targetText": "il rischio",
+          "baseText": {
+            "de": "das Risiko",
+            "en": "the risk"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Credo che per la sicurezza serva più ",
+        "answer": "luce",
+        "after": ", anche se qui sembra tranquillo.",
+        "fallbackChoices": [
+          "luce",
+          "luci",
+          "luminoso",
+          "illuminare"
+        ]
+      },
+      "speakRequired": [
+        "sicurezza",
+        "luce",
+        "tranquillo"
+      ],
+      "sceneCaption": {
+        "de": "Am Rand des Marktplatzes fragt ein Nachbar: „Come trova l'attraversamento vicino al mercato?“",
+        "en": "At the edge of the market square, a neighbor asks: “Come trova l'attraversamento vicino al mercato?”"
+      },
+      "trophyWord": {
+        "word": "sicurezza",
+        "meaning": {
+          "de": "die Sicherheit",
+          "en": "safety"
+        },
+        "example": "Credo che per la sicurezza serva un lampione vicino al mercato.",
+        "whyThisWord": {
+          "de": "Sicurezza benennt das gemeinsame Anliegen, das Sie mit einer konkreten Beobachtung begründen können.",
+          "en": "Sicurezza names the shared concern that you can support with a concrete observation."
+        }
+      },
+      "distractors": [
+        "serva meno luce,",
+        "sembra pericoloso."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Erwachsene sprechen am Rand eines Marktplatzes.",
+        "en": "Two adults talk at the edge of a market square."
+      },
+      "songMood": "serious but calm Italian acoustic pop with measured phrasing",
+      "visualNotes": "Daylight market edge and ordinary crosswalk; no braking cars, darkness, or new streetlight solution."
+    },
+    {
+      "slug": "orto-e-comunita",
+      "title": {
+        "de": "Das gemeinsame Beet",
+        "en": "The shared garden"
+      },
+      "situation": {
+        "de": "Bei einem Treffen im Viertel werden Sie nach dem Nutzen eines Gemeinschaftsgartens gefragt.",
+        "en": "At a neighborhood gathering, you are asked about the value of a shared garden."
+      },
+      "pedagogicalGoal": "Mit penso che und aiuti eine Meinung entwickeln und anschließend eine eigene Erfahrung samt praktischer Einschränkung nennen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Secondo Lei, che cosa offre al quartiere un orto condiviso?",
+          "baseText": {
+            "de": "Was bietet ein Gemeinschaftsgarten Ihrer Meinung nach dem Viertel?",
+            "en": "In your view, what does a shared garden offer the neighborhood?"
+          }
+        },
+        {
+          "targetText": "Penso che l'orto aiuti la comunità, anche se richiede un impegno costante.",
+          "baseText": {
+            "de": "Ich denke, dass der Garten der Gemeinschaft hilft, auch wenn er dauerhaft Einsatz verlangt.",
+            "en": "I think the garden helps the community, even though it requires ongoing effort."
+          }
+        },
+        {
+          "targetText": "Ha già qualche esperienza concreta con un orto condiviso?",
+          "baseText": {
+            "de": "Haben Sie schon konkrete Erfahrungen mit einem Gemeinschaftsgarten?",
+            "en": "Do you already have any practical experience of a shared garden?"
+          }
+        },
+        {
+          "targetText": "Io ho conosciuto due vicini, ma il lavoro richiede tempo.",
+          "baseText": {
+            "de": "Ich habe zwei Nachbarn kennengelernt, aber die Arbeit braucht Zeit.",
+            "en": "I got to know two neighbors, but the work takes time."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un parere, un'esperienza, una riserva",
+        "rule": {
+          "de": "Penso che mit aiuti formuliert Ihre Einschätzung; anche se oder ma ergänzt einen Vorbehalt, und der passato prossimo liefert ein konkretes Erlebnis.",
+          "en": "Penso che with aiuti states your assessment; anche se or ma adds a reservation, and the passato prossimo supplies a concrete experience."
+        },
+        "examples": [
+          {
+            "targetText": "Penso che l'orto aiuti la comunità, anche se richiede un impegno costante.",
+            "baseText": {
+              "de": "Ich denke, dass der Garten der Gemeinschaft hilft, auch wenn er dauerhaft Einsatz verlangt.",
+              "en": "I think the garden helps the community, even though it requires ongoing effort."
+            },
+            "highlight": "Penso che l'orto aiuti"
+          },
+          {
+            "targetText": "Credo che il giardino aiuti il quartiere, ma richiede cura.",
+            "baseText": {
+              "de": "Ich glaube, dass der Garten dem Viertel hilft, aber er braucht Pflege.",
+              "en": "I think the garden helps the neighborhood, but it needs care."
+            },
+            "highlight": "Credo che il giardino aiuti"
+          }
+        ]
+      },
+      "cloze": [
+        "Io ho ",
+        {
+          "kind": "form",
+          "answer": "conosciuto",
+          "cue": "conoscere (io)",
+          "choices": [
+            "conoscere",
+            "conosciuto",
+            "conoscevo",
+            "conoscendo"
+          ]
+        },
+        " due vicini, ma il lavoro ",
+        {
+          "kind": "form",
+          "answer": "richiede",
+          "cue": "richiedere (il lavoro)",
+          "choices": [
+            "richiedono",
+            "richiedo",
+            "richiediamo",
+            "richiede"
+          ]
+        },
+        " tempo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Penso che l'orto",
+          "baseText": {
+            "de": "Ich denke, dass der Garten",
+            "en": "I think the garden"
+          }
+        },
+        {
+          "targetText": "aiuti la comunità,",
+          "baseText": {
+            "de": "der Gemeinschaft hilft,",
+            "en": "helps the community,"
+          }
+        },
+        {
+          "targetText": "anche se richiede",
+          "baseText": {
+            "de": "auch wenn er verlangt",
+            "en": "even though it requires"
+          }
+        },
+        {
+          "targetText": "un impegno costante.",
+          "baseText": {
+            "de": "dauerhaften Einsatz.",
+            "en": "ongoing effort."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "l'orto condiviso",
+          "baseText": {
+            "de": "der Gemeinschaftsgarten",
+            "en": "the shared vegetable garden"
+          }
+        },
+        {
+          "targetText": "la comunità",
+          "baseText": {
+            "de": "die Gemeinschaft",
+            "en": "the community"
+          }
+        },
+        {
+          "targetText": "un impegno costante",
+          "baseText": {
+            "de": "dauerhafter Einsatz",
+            "en": "ongoing effort"
+          }
+        },
+        {
+          "targetText": "l'esperienza concreta",
+          "baseText": {
+            "de": "die konkrete Erfahrung",
+            "en": "practical experience"
+          }
+        },
+        {
+          "targetText": "conosciuto",
+          "baseText": {
+            "de": "kennengelernt",
+            "en": "got to know"
+          }
+        },
+        {
+          "targetText": "i vicini",
+          "baseText": {
+            "de": "die Nachbarn",
+            "en": "neighbors"
+          }
+        },
+        {
+          "targetText": "richiede tempo",
+          "baseText": {
+            "de": "braucht Zeit",
+            "en": "takes time"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Penso che l'orto aiuti la comunità, anche se richiede un impegno ",
+        "answer": "costante",
+        "after": ".",
+        "fallbackChoices": [
+          "costante",
+          "costanti",
+          "costanza",
+          "costantemente"
+        ]
+      },
+      "speakRequired": [
+        "orto",
+        "comunità",
+        "impegno"
+      ],
+      "sceneCaption": {
+        "de": "Bei einem Treffen im Viertel fragt ein Anwohner: „Secondo Lei, che cosa offre al quartiere un orto condiviso?“",
+        "en": "At a neighborhood gathering, a resident asks: “Secondo Lei, che cosa offre al quartiere un orto condiviso?”"
+      },
+      "trophyWord": {
+        "word": "comunità",
+        "meaning": {
+          "de": "die Gemeinschaft",
+          "en": "community"
+        },
+        "example": "Penso che il lavoro nell'orto aiuti la comunità.",
+        "whyThisWord": {
+          "de": "Comunità verbindet ein örtliches Projekt mit den Menschen, die gemeinsam davon profitieren.",
+          "en": "Comunità connects a local project with the people who benefit from it together."
+        }
+      },
+      "distractors": [
+        "aiuti la scuola,",
+        "un impegno occasionale."
+      ],
+      "placeholderCaption": {
+        "de": "Menschen unterhalten sich am Eingang eines Gemeinschaftsgartens.",
+        "en": "People talk at the entrance to a shared garden."
+      },
+      "songMood": "warm Italian folk pop with a reflective community feel",
+      "visualNotes": "Shared garden entrance, tools in background; no depiction of new friendships or labor outcome."
+    }
+  ]
+}
