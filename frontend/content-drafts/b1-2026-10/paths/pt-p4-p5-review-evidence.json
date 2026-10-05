@@ -1,0 +1,2179 @@
+{
+  "schemaVersion": 1,
+  "scope": "Zero unresolved local spoken-TTS blockers only; publication findings retained.",
+  "fable": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "portuguese-p4.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Every field read: metadata, situations, goals, registers, all 40 turns with de/en, pattern rules/examples/highlights, cloze cues/choices, chunks, terms, recall, speech tokens, captions, trophies, distractors, notes. Staging matches spec P4 (que L1-4, onde L5-7, em/de/com que L8-10), indicative only, max two relatives, trophies as planned and in turn 1, no spoilers in title/situation/sceneCaption, form cues carry visible eu, relative choices uniquely valid (quem/qual/quanto, de que/a quem/com quem impossible in slot), recall answers unique via noun subject, register formal/Sie except L3 neutral/du, no gendered learner forms, Brazilian lexicon, accents intact.",
+        "remainingConcerns": "L3 follow-up 'Eu aproximo a mesa' lacks a goal and reads unnatural; L5 follow-up moves the beige fabric to a different room than turn 1, breaking the beat; both fixed below. L2 chunk gloss 'Der Aufzug, der anfährt' is stiff but not wrong; L9 'o dia de que preciso' acceptable in context."
+      },
+      {
+        "file": "portuguese-p5.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Every field read. Carriers você sabe/pode me dizer + onde/como/quando/qual/se, queria saber se in L8/L10 only, present indicative embedded, no inversion, me never blanked, both form blanks per lesson have literal visible subjects (você/eu/qual declaração/qual campo/o prazo), choices uniquely valid, recall answers unique via subject, chunks reconstruct, terms attested (salvo/cópia/andamento via pattern), trophies as planned, Sie throughout, no spoilers in situation/sceneCaption, interlocutor-only 'Não envie' and 'está em análise' acceptable in L8 turn 2.",
+        "remainingConcerns": "L1 turn 2 'Aquele balcão' presupposes a counter the learner never pointed at; L3 follow-up 'como eu abro no computador' drops the object; L4/L9/L10 chunks split the fixed frame pode me dizer unhelpfully. All fixed below. L7 'como eu marco' with implied object is normal spoken pt-BR."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "PT45-AUTHORITY",
+        "decision": "accept",
+        "reason": "Trophy allocation and beats preserved exactly; native spec controls grammar."
+      },
+      {
+        "finding": "PT4-STAGING",
+        "decision": "accept",
+        "reason": "Thirds match nativeGrammarScopeByPath P4; onde attaches to places, not object trophies; indicative only."
+      },
+      {
+        "finding": "PT5-STAGING",
+        "decision": "accept",
+        "reason": "Within-path order (onde/qual/como core, qual/quando/se clarification, queria saber se late) is sound; licensed here as the P5 staging."
+      },
+      {
+        "finding": "PT5-CLOZE-DESIGN",
+        "decision": "accept",
+        "reason": "Two cued form blanks with visible subjects avoid synonym ambiguity between sabe/pode me dizer; spec P5 does not require a connector blank."
+      },
+      {
+        "finding": "PT45-REGISTER",
+        "decision": "accept",
+        "reason": "você + 3sg everywhere, Sie in formal, du only in P4 L3 neutral, no te, no gendered learner forms."
+      },
+      {
+        "finding": "PT45-EXERCISE-FAIRNESS",
+        "decision": "adapt",
+        "reason": "Choices are fair, but three P5 chunk sets split the fixed frame pode me dizer; replaced with meaningful boundaries."
+      },
+      {
+        "finding": "PT45-REVIEW-STATUS",
+        "decision": "accept",
+        "reason": "Content approval only after edits; no production or native-human approval claimed."
+      },
+      {
+        "finding": "Fable own: P4 L3 follow-up naturalness",
+        "decision": "edit",
+        "reason": "'Eu aproximo a mesa' needs a target; 'afasto a mesa que está junto da janela' resolves the cable problem naturally."
+      },
+      {
+        "finding": "Fable own: P4 L5 room switch",
+        "decision": "edit",
+        "reason": "Beat is accepting another colour for the same work room; follow-up now keeps a sala onde trabalho."
+      },
+      {
+        "finding": "Fable own: P5 L1 'Aquele balcão'",
+        "decision": "edit",
+        "reason": "Learner is at this counter; 'Este balcão' makes the redirection coherent."
+      },
+      {
+        "finding": "Fable own: P5 L3 missing object",
+        "decision": "edit",
+        "reason": "'como eu abro o formulário no computador' restores natural phrasing within 6-12 words."
+      }
+    ],
+    "edits": [
+      {
+        "file": "portuguese-p4.json",
+        "jsonPointer": "/lessons/2/dialogue/3",
+        "oldValue": {
+          "targetText": "Eu aproximo a mesa que está junto da janela.",
+          "baseText": {
+            "de": "Ich rücke den Tisch am Fenster näher heran.",
+            "en": "I'll move the desk by the window closer."
+          }
+        },
+        "newValue": {
+          "targetText": "Então eu afasto a mesa que está junto da janela.",
+          "baseText": {
+            "de": "Dann rücke ich den Tisch am Fenster weg.",
+            "en": "Then I'll move the desk by the window away."
+          }
+        },
+        "reason": "Natural resolution of the short-cable complication."
+      },
+      {
+        "file": "portuguese-p4.json",
+        "jsonPointer": "/lessons/2/cloze",
+        "oldValue": [
+          "Eu ",
+          {
+            "kind": "form",
+            "answer": "aproximo",
+            "cue": "aproximar (eu)",
+            "choices": [
+              "aproximam",
+              "aproxima",
+              "aproximamos",
+              "aproximo"
+            ]
+          },
+          " a mesa ",
+          {
+            "kind": "choice",
+            "answer": "que",
+            "choices": [
+              "que",
+              "qual",
+              "quem",
+              "quanto"
+            ]
+          },
+          " está junto da janela."
+        ],
+        "newValue": [
+          "Então eu ",
+          {
+            "kind": "form",
+            "answer": "afasto",
+            "cue": "afastar (eu)",
+            "choices": [
+              "afastam",
+              "afasta",
+              "afastamos",
+              "afasto"
+            ]
+          },
+          " a mesa ",
+          {
+            "kind": "choice",
+            "answer": "que",
+            "choices": [
+              "que",
+              "qual",
+              "quem",
+              "quanto"
+            ]
+          },
+          " está junto da janela."
+        ],
+        "reason": "Coupled cloze reconstruction; eu remains visible before the form blank."
+      },
+      {
+        "file": "portuguese-p4.json",
+        "jsonPointer": "/lessons/2/terms/5",
+        "oldValue": {
+          "targetText": "aproximo",
+          "baseText": {
+            "de": "ich rücke näher heran",
+            "en": "I move closer"
+          }
+        },
+        "newValue": {
+          "targetText": "afasto",
+          "baseText": {
+            "de": "ich rücke weg",
+            "en": "I move away"
+          }
+        },
+        "reason": "Coupled term attested in the new follow-up."
+      },
+      {
+        "file": "portuguese-p4.json",
+        "jsonPointer": "/lessons/4/dialogue/3",
+        "oldValue": {
+          "targetText": "Eu aceito bege na sala onde recebo minhas visitas.",
+          "baseText": {
+            "de": "Ich nehme Beige für das Zimmer, in dem ich Besuch empfange.",
+            "en": "I'll take beige for the room where I receive visitors."
+          }
+        },
+        "newValue": {
+          "targetText": "Eu aceito o bege para a sala onde trabalho.",
+          "baseText": {
+            "de": "Ich nehme das Beige für das Zimmer, in dem ich arbeite.",
+            "en": "I'll take the beige for the room where I work."
+          }
+        },
+        "reason": "Keeps the same room as turn 1; beat is accepting another colour, not another room."
+      },
+      {
+        "file": "portuguese-p4.json",
+        "jsonPointer": "/lessons/4/cloze",
+        "oldValue": [
+          "Eu ",
+          {
+            "kind": "form",
+            "answer": "aceito",
+            "cue": "aceitar (eu)",
+            "choices": [
+              "aceitam",
+              "aceitamos",
+              "aceita",
+              "aceito"
+            ]
+          },
+          " bege na sala ",
+          {
+            "kind": "choice",
+            "answer": "onde",
+            "choices": [
+              "quem",
+              "qual",
+              "onde",
+              "quanto"
+            ]
+          },
+          " recebo minhas visitas."
+        ],
+        "newValue": [
+          "Eu ",
+          {
+            "kind": "form",
+            "answer": "aceito",
+            "cue": "aceitar (eu)",
+            "choices": [
+              "aceitam",
+              "aceitamos",
+              "aceita",
+              "aceito"
+            ]
+          },
+          " o bege para a sala ",
+          {
+            "kind": "choice",
+            "answer": "onde",
+            "choices": [
+              "quem",
+              "qual",
+              "onde",
+              "quanto"
+            ]
+          },
+          " trabalho."
+        ],
+        "reason": "Coupled cloze reconstruction."
+      },
+      {
+        "file": "portuguese-p4.json",
+        "jsonPointer": "/lessons/4/terms/4",
+        "oldValue": {
+          "targetText": "recebo",
+          "baseText": {
+            "de": "ich empfange",
+            "en": "I receive"
+          }
+        },
+        "newValue": {
+          "targetText": "acabou",
+          "baseText": {
+            "de": "ist ausverkauft; ist ausgegangen",
+            "en": "is sold out; ran out"
+          }
+        },
+        "reason": "recebo no longer attested; acabou is in turn 2 and useful."
+      },
+      {
+        "file": "portuguese-p5.json",
+        "jsonPointer": "/lessons/0/dialogue/2",
+        "oldValue": {
+          "targetText": "Aquele balcão é só para empréstimos. O cadastro é pelo sistema no computador do saguão.",
+          "baseText": {
+            "de": "Der Schalter dort ist nur für Ausleihen. Die Anmeldung erfolgt über das System am Computer im Foyer.",
+            "en": "That counter is only for loans. Registration is through the system on the computer in the lobby."
+          }
+        },
+        "newValue": {
+          "targetText": "Este balcão é só para empréstimos. O cadastro é pelo sistema no computador do saguão.",
+          "baseText": {
+            "de": "Dieser Schalter ist nur für Ausleihen. Die Anmeldung erfolgt über das System am Computer im Foyer.",
+            "en": "This counter is only for loans. Registration is through the system on the computer in the lobby."
+          }
+        },
+        "reason": "Learner stands at this counter; deixis now coherent. sceneCaption unaffected."
+      },
+      {
+        "file": "portuguese-p5.json",
+        "jsonPointer": "/lessons/2/dialogue/3",
+        "oldValue": {
+          "targetText": "Você pode me dizer como eu abro no computador?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wie ich es am Computer öffne?",
+            "en": "Can you tell me how I open it on a computer?"
+          }
+        },
+        "newValue": {
+          "targetText": "Você pode me dizer como eu abro o formulário no computador?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wie ich das Formular am Computer öffne?",
+            "en": "Can you tell me how I open the form on a computer?"
+          }
+        },
+        "reason": "Restores the object; natural pt-BR, 11 words."
+      },
+      {
+        "file": "portuguese-p5.json",
+        "jsonPointer": "/lessons/2/cloze",
+        "oldValue": [
+          "Você ",
+          {
+            "kind": "form",
+            "answer": "pode",
+            "cue": "poder (você)",
+            "choices": [
+              "podemos",
+              "pode",
+              "posso",
+              "podem"
+            ]
+          },
+          " me dizer como eu ",
+          {
+            "kind": "form",
+            "answer": "abro",
+            "cue": "abrir (eu)",
+            "choices": [
+              "abre",
+              "abrimos",
+              "abrem",
+              "abro"
+            ]
+          },
+          " no computador?"
+        ],
+        "newValue": [
+          "Você ",
+          {
+            "kind": "form",
+            "answer": "pode",
+            "cue": "poder (você)",
+            "choices": [
+              "podemos",
+              "pode",
+              "posso",
+              "podem"
+            ]
+          },
+          " me dizer como eu ",
+          {
+            "kind": "form",
+            "answer": "abro",
+            "cue": "abrir (eu)",
+            "choices": [
+              "abre",
+              "abrimos",
+              "abrem",
+              "abro"
+            ]
+          },
+          " o formulário no computador?"
+        ],
+        "reason": "Coupled cloze reconstruction."
+      },
+      {
+        "file": "portuguese-p5.json",
+        "jsonPointer": "/lessons/3/chunks",
+        "oldValue": [
+          {
+            "targetText": "Você pode",
+            "baseText": {
+              "de": "Können Sie",
+              "en": "Can you"
+            }
+          },
+          {
+            "targetText": "me dizer onde",
+            "baseText": {
+              "de": "mir sagen, wo",
+              "en": "tell me where"
+            }
+          },
+          {
+            "targetText": "fica o espaço para",
+            "baseText": {
+              "de": "sich das Feld befindet für",
+              "en": "the space is for"
+            }
+          },
+          {
+            "targetText": "minha assinatura?",
+            "baseText": {
+              "de": "meine Unterschrift?",
+              "en": "my signature?"
+            }
+          }
+        ],
+        "newValue": [
+          {
+            "targetText": "Você pode me dizer",
+            "baseText": {
+              "de": "Können Sie mir sagen",
+              "en": "Can you tell me"
+            }
+          },
+          {
+            "targetText": "onde fica",
+            "baseText": {
+              "de": "wo sich befindet",
+              "en": "where is"
+            }
+          },
+          {
+            "targetText": "o espaço para",
+            "baseText": {
+              "de": "das Feld für",
+              "en": "the space for"
+            }
+          },
+          {
+            "targetText": "minha assinatura?",
+            "baseText": {
+              "de": "meine Unterschrift?",
+              "en": "my signature?"
+            }
+          }
+        ],
+        "reason": "Meaningful chunks: fixed frame pode me dizer kept whole; reconstruction unchanged; distractors remain distinct."
+      },
+      {
+        "file": "portuguese-p5.json",
+        "jsonPointer": "/lessons/8/chunks",
+        "oldValue": [
+          {
+            "targetText": "Você pode me dizer",
+            "baseText": {
+              "de": "Können Sie mir sagen",
+              "en": "Can you tell me"
+            }
+          },
+          {
+            "targetText": "como funciona o",
+            "baseText": {
+              "de": "wie ... funktioniert",
+              "en": "how ... works"
+            }
+          },
+          {
+            "targetText": "atendimento durante",
+            "baseText": {
+              "de": "der Service während",
+              "en": "the service during"
+            }
+          },
+          {
+            "targetText": "a mudança de endereço?",
+            "baseText": {
+              "de": "des Umzugs an eine neue Adresse?",
+              "en": "the move to a new address?"
+            }
+          }
+        ],
+        "newValue": [
+          {
+            "targetText": "Você pode me dizer",
+            "baseText": {
+              "de": "Können Sie mir sagen",
+              "en": "Can you tell me"
+            }
+          },
+          {
+            "targetText": "como funciona",
+            "baseText": {
+              "de": "wie funktioniert",
+              "en": "how works"
+            }
+          },
+          {
+            "targetText": "o atendimento",
+            "baseText": {
+              "de": "der Service",
+              "en": "the service"
+            }
+          },
+          {
+            "targetText": "durante a mudança de endereço?",
+            "baseText": {
+              "de": "während des Umzugs an eine neue Adresse?",
+              "en": "during the move to a new address?"
+            }
+          }
+        ],
+        "reason": "Chunk boundaries follow phrase units; reconstruction unchanged."
+      },
+      {
+        "file": "portuguese-p5.json",
+        "jsonPointer": "/lessons/8/distractors",
+        "oldValue": [
+          "pagamento durante",
+          "a reforma do prédio?"
+        ],
+        "newValue": [
+          "o pagamento",
+          "durante a reforma do prédio?"
+        ],
+        "reason": "Distractors parallel the new chunk shapes and stay distinct."
+      },
+      {
+        "file": "portuguese-p5.json",
+        "jsonPointer": "/lessons/9/chunks",
+        "oldValue": [
+          {
+            "targetText": "Você pode",
+            "baseText": {
+              "de": "Können Sie",
+              "en": "Can you"
+            }
+          },
+          {
+            "targetText": "me dizer qual",
+            "baseText": {
+              "de": "mir sagen, welche",
+              "en": "tell me which"
+            }
+          },
+          {
+            "targetText": "requisito falta para concluir",
+            "baseText": {
+              "de": "Voraussetzung noch fehlt für den Abschluss",
+              "en": "requirement is missing to complete"
+            }
+          },
+          {
+            "targetText": "minha solicitação?",
+            "baseText": {
+              "de": "meines Antrags?",
+              "en": "my application?"
+            }
+          }
+        ],
+        "newValue": [
+          {
+            "targetText": "Você pode me dizer",
+            "baseText": {
+              "de": "Können Sie mir sagen",
+              "en": "Can you tell me"
+            }
+          },
+          {
+            "targetText": "qual requisito falta",
+            "baseText": {
+              "de": "welche Voraussetzung noch fehlt",
+              "en": "which requirement is missing"
+            }
+          },
+          {
+            "targetText": "para concluir",
+            "baseText": {
+              "de": "für den Abschluss",
+              "en": "to complete"
+            }
+          },
+          {
+            "targetText": "minha solicitação?",
+            "baseText": {
+              "de": "meines Antrags?",
+              "en": "my application?"
+            }
+          }
+        ],
+        "reason": "Meaningful chunks; reconstruction unchanged; distractors remain distinct."
+      }
+    ],
+    "finalChecks": {
+      "reconstruction": "All edited cloze arrays and chunk arrays rejoin their turns exactly; word counts P4 L3 10, P4 L5 9, P5 L3 11.",
+      "cues": "Form cues keep literal eu/você before the blank; no clitic blanks; no equivalent relative offered.",
+      "staging": "No new grammar introduced; P4/P5 scopes unchanged; no subjunctive, pluperfect, tu, European lexicon or gendered learner forms.",
+      "trophies": "All 20 trophies preserved and still single words of turn 1; frozen A1/A2 untouched.",
+      "spoilers": "Titles, situations, sceneCaptions unchanged and reveal no complication.",
+      "status": "Content approval after exact edits; independent review still pending; no production approval; no human native review claimed."
+    }
+  },
+  "independent": {
+    "reviewer": {
+      "id": "codex-independent-portuguese-b1-p4-p5-full20-20261005",
+      "task": "/root/portuguese_p4_p5_fresh_review",
+      "role": "fresh independent content reviewer",
+      "date": "2026-10-05",
+      "scope": "App and source read-only; one authorized scratch JSON report. No provider calls, database access, source edits, git operations, or production approval.",
+      "skills": [
+        "orchestrator/.claude/skills/independent-review/SKILL.md",
+        "orchestrator/.claude/skills/author-guided-tier/SKILL.md"
+      ]
+    },
+    "verdict": "REWORK",
+    "localTtsContentVerdict": "PASS",
+    "unresolvedLocalTtsBlockers": [],
+    "publicationVerdict": "REWORK",
+    "reviewedSources": {
+      "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json": "a141ed032ca761feb1d93a6eb763b23fb1d4a5157b4ce3fc1eb402be6138b3ad",
+      "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json": "28bbfa7027fe2c1c62d3859fabbddaf6528707ccedfff3fe2460b0af9606660b",
+      "tmp/V4_EXPANSION_20261003/B1_PORTUGUESE_P4_P5_CONTROLLING_SPEC.json": "777370de3d1ec474cdeb47d17c65df878210b6ea3bc26f7398d9f98531a13e29",
+      "tmp/V4_EXPANSION_20261003/B1_PORTUGUESE_P4_P5_NATIVE_FABLE_REVIEW_RAW.json": "3d10066afb9286453b4d769979fdae7a0f01f26654da30fc604db7935b15d95c",
+      "tmp/V4_EXPANSION_20261003/B1_PORTUGUESE_P4_P5_NATIVE_REVIEWED_SOURCE_HASHES.json": "597429db34208ddcf74c3d01ae108788df7ef01c17f9554ce8352591a9baa3e7",
+      "tmp/V4_EXPANSION_20261003/B1_PORTUGUESE_P4_P5_NATIVE_APPLIED_HASHES.json": "31cda8478f8ca0672fe77d15e973674ffee30cfc2f68823c3ca0e6b4285c5cf5",
+      "tmp/V4_EXPANSION_20261003/new-content/portuguese-p4.json": "0cc0d97e44dec0943781731486e05968cbaf835b126f6d77c3396fb6b555ca8e",
+      "tmp/V4_EXPANSION_20261003/new-content/portuguese-p5.json": "4bed4efbec470608cf4c4a4f97d1ec0ab7f471bd1f177ad062b01a7607d4d0d1",
+      "orchestrator/frontend/scripts/lib/guidedB1Drafts.ts": "b04badcb7a3835e0faf352e7f9d09c2cd235052f5388dc42b3908f362b24e15e",
+      "orchestrator/frontend/src/components/today/BuildPhraseStep.tsx": "3fa4b962b91045d88ade7a435c1d1e016ef6b53484e2d746ac40544329e16bb9",
+      "orchestrator/frontend/src/components/today/ComplicationStep.tsx": "26dbba90f8d79bab3daa4a265481f4b58e85f337f2bc2e7af7ec5417f065f4d2",
+      "orchestrator/frontend/src/pages/GuidedCheckpoint.tsx": "11b42c57abf3dabc970cf6c9a84a198ec88a8a33d64b14888281c29016260153",
+      "orchestrator/frontend/src/data/guidedLessons.ts": "1011e892864751323bc403ca2ca8eb14e5890ea2dab75e52e2358bf2ee361472",
+      "orchestrator/frontend/src/data/guided/germanB1.ts": "0d74cf9c8af92b87cb46022657353977607cb14827db5ae901027ad0185fd1bf",
+      "orchestrator/frontend/src/data/guided/portugueseA2.ts": "1905fe47751439965a59de996713540995de67c359e5d3e9da42412dd6fd42ff",
+      "orchestrator/frontend/src/components/today/sessionSteps.ts": "c5054d10071d66bdf2bfc94456bd6214426f7b54cfb3e78f570c11711ef5d083",
+      "orchestrator/frontend/scripts/test-guided-b1-drafts.ts": "04ac0e2e389ca0fc5c4372873ce0df4f928e0597ec7f22fc3d9b14d7a3e1be22"
+    },
+    "fullCoverage": {
+      "personallyReadEveryField": true,
+      "allFieldsRead": true,
+      "lessonsRead": 20,
+      "files": [
+        {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "allFieldsRead": true
+        },
+        {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "allFieldsRead": true
+        }
+      ],
+      "fieldsRead": [
+        "All file metadata: schemaVersion, status, level, targetLanguage, targetLanguageCode, baseLanguage, pathNumber, title.de/en, subtitle.de/en, anchor.",
+        "Every lesson slug, title.de/en, situation.de/en, pedagogicalGoal and register.",
+        "Every dialogue targetText and both baseText.de/en fields, all four turns.",
+        "Every pattern label, rule.de/en, example.targetText, example.baseText.de/en and highlight.",
+        "Every cloze literal segment, kind, answer, cue and all four choices.",
+        "Every chunk and term targetText with both baseText.de/en fields.",
+        "Every recall before, answer, after and all four fallbackChoices.",
+        "Every speakRequired token, sceneCaption.de/en, trophyWord.word/meaning.de/en/example/whyThisWord.de/en.",
+        "Both distractors, placeholderCaption.de/en, songMood and visualNotes for every lesson."
+      ],
+      "actualCounts": {
+        "dialogueTurns": 80,
+        "learnerTurns": 40,
+        "patternExamples": 40,
+        "clozeBlanks": 40,
+        "formBlanks": 30,
+        "choiceBlanks": 10,
+        "chunks": 81,
+        "terms": 125,
+        "recalls": 20,
+        "recallFallbackChoices": 80,
+        "distractors": 40,
+        "speechRequiredTokens": 60,
+        "trophies": 20
+      },
+      "originalSourceCoverage": "The two new-content files match the definitive native REVIEWED_SOURCE_HASHES. Every oldValue in all 13 native edits was checked, and an in-memory replay exactly reproduces both complete final JSON objects. Thus the only original/final differences are those 13 fully read edits. The earlier provisional 11-edit review supplied no conclusions or authority.",
+      "exerciseCoverage": "Personally checked every offered cloze and recall fallback choice, every complete build chip set, and all form cues against the literal learner-visible sentence. Tested concrete open-answer alternatives through the exact-match helper using canonical/accent-folded acceptance. No claim of exhaustive proof over all possible natural-language alternatives.",
+      "lessonReadLedger": {
+        "P4": [
+          "L1 varanda-com-sol: morning light and smaller alternative coherent; que staging sound; recall pega is an unexpressed valid variant.",
+          "L2 elevador-do-oitavo: principal/service entrance correction coherent; singular subject disambiguates fallbacks; recall está remains valid.",
+          "L3 tomada-perto-da-mesa: neutral você/du consistent; the definitive afasto edit resolves the short cable; all coupled fields match.",
+          "L4 prateleira-para-livros: measurement changes proposed location; que, object agreement and cue subjects sound.",
+          "L5 tecido-para-a-sala: onde introduced at L5; definitive beige reply keeps the same workroom; acabou term attested.",
+          "L6 tamanho-da-mochila: storage-place onde and replacement with one pocket coherent; seven terms all grounded.",
+          "L7 modelo-para-a-sala: a gente and ninguém use 3sg; last display unit introduces a new constraint; recall vê valid.",
+          "L8 portaria-das-encomendas: em que introduced with locative antecedent; temporary collection access coherent; recebe poucas distractor malformed before as encomendas.",
+          "L9 biblioteca-do-clube: de que/falar de/precisar de aligned; two relatives maximum; Wednesday branch adds an option; formal relative retained as specified.",
+          "L10 associacao-do-bairro: com que collaboration and em que location aligned; evening premises option advances the beat."
+        ],
+        "P5": [
+          "L1 cadastro-na-biblioteca: definitive Este balcão deixis coherent; registration then access method; poder cue does not select tense; recall efetuo valid.",
+          "L2 documento-de-endereco: qual documento and alternative declaration coherent; qual declaração explicitly anchors substitui; recall vale valid.",
+          "L3 formulario-sem-botao: definitive object-restored reply coherent; salvo/cópia attested in pattern; poder cue ambiguity; recall mando valid.",
+          "L4 assinatura-na-autorizacao: second responsible person is new information; qual campo anchors corresponde; regrouped chunks leave one stale distractor and an inverted English gloss; recall está valid.",
+          "L5 prazo-dos-materiais: arrival rather than dispatch confirmation fits the deadline beat; se means whether; recall acaba valid.",
+          "L6 comprovante-no-arquivo: format accepted but unreadable name triggers another image; tense ambiguity in poder cue; recall serve valid.",
+          "L7 agendamento-da-semana: unavailable requested week leads to following-week booking question; implied object of marco natural; recall requer valid.",
+          "L8 inscricao-no-sistema: courtesy queria and present embedded clause licensed late; interlocutor-only Não envie/em análise allowed; recall consta valid.",
+          "L9 atendimento-na-mudanca: service-center move and different channels lead to concrete phone question; English how works fragment needs repair.",
+          "L10 requisito-que-falta: missing proof then return-visit question fits beat; querer cue omits courtesy tense; regrouped chunks leave one stale distractor."
+        ]
+      }
+    },
+    "checks": {
+      "authority": {
+        "status": "PASS",
+        "detail": "The controlling native Portuguese contract overrides provisional plan grammar. Exact P4/P5 trophies and story beats were checked. P4 follows que L1–4, onde L5–7, prepositional relatives L8–10; P5 follows the definitive native-review staging. No new subjunctive learner production or speaker-gender agreement found."
+      },
+      "sourceProvenance": {
+        "status": "PASS",
+        "detail": "Final SHA-256 values exactly match the review brief and native APPLIED_HASHES. Six P4 and seven P5 definitive edits apply with exact old-value checks and full-object equality after replay."
+      },
+      "frozenCorpusAndTrophies": {
+        "status": "PASS",
+        "detail": "Imported the real GUIDED_LESSONS registry: 200 frozen Portuguese A1/A2 lessons, all available vibe variants, 199 distinct trophy strings. All 100 reserved plan trophies are distinct and collision-free against that corpus; the 20 reviewed trophies match their allocated positions exactly. No frozen source was changed."
+      },
+      "nativeAndSpokenContent": {
+        "status": "PASS",
+        "detail": "Personally read all canonical dialogue, chunks, vocabulary terms, pattern examples and trophy text. Brazilian lexicon, accents, você/third-person agreement, speaker-gender safety and native P4/P5 staging hold. Formal German Sie is consistent; P4 L3 correctly uses neutral du. No canonical Portuguese change is required by these findings."
+      },
+      "baseFidelity": {
+        "status": "PASS_WITH_FINDING",
+        "detail": "Full dialogue, pattern-example and trophy meanings are faithful in de/en; no material spoken-content blocker found. Two small chunk glosses encourage wrong English word order (PT45-04)."
+      },
+      "fallbackChoices": {
+        "status": "PASS",
+        "detail": "All 40 cloze choice sets and 20 recall fallback sets checked. Visible eu/você/noun subjects disambiguate the offered form choices; all ten P4 relative choice sets have one valid offered answer. This does not establish uniqueness in the open typed field."
+      },
+      "openAnswers": {
+        "status": "REWORK",
+        "findingIds": [
+          "PT45-01",
+          "PT45-02"
+        ],
+        "detail": "Typed grading compares an accepted string list. Source schema has neither authored acceptedAnswers nor a recall grammar cue; existing compact builders generate spelling variants from the single answer. Concrete same-meaning recall synonyms and valid polite conjugations are not represented."
+      },
+      "buildExercises": {
+        "status": "REWORK",
+        "findingIds": [
+          "PT45-03"
+        ],
+        "detail": "BuildPhraseStep shows the base meaning and grades exact assembled text. Grammatical different-meaning distractors are legitimate and were not flagged. Three malformed or stale distractors need repair; no defensible same-meaning alternative assembly was found among the remaining offered chips."
+      },
+      "actualOfflineGate": {
+        "status": "PASS",
+        "command": "From orchestrator/frontend, node --import tsx --input-type=module invoked validateB1Draft on the two exact reviewed-content JSON files; no output file was requested.",
+        "results": [
+          {
+            "file": "portuguese-p4.json",
+            "lessons": 10,
+            "pathNumber": 4,
+            "status": "PASS",
+            "firstId": "portuguese-b1-practical-4-031-varanda-com-sol",
+            "lastId": "portuguese-b1-practical-4-040-associacao-do-bairro"
+          },
+          {
+            "file": "portuguese-p5.json",
+            "lessons": 10,
+            "pathNumber": 5,
+            "status": "PASS",
+            "firstId": "portuguese-b1-practical-5-041-cadastro-na-biblioteca",
+            "lastId": "portuguese-b1-practical-5-050-requisito-que-falta"
+          }
+        ],
+        "limitations": "The gate checks structure, reconstruction, lexical tripwires, subject presence and canonical choice membership. It does not prove native grammar, open-answer uniqueness or distractor sentence grammar. Semantic checks here were independent manual review."
+      },
+      "existingOfflineSuite": {
+        "status": "PASS",
+        "command": "node --import tsx scripts/test-guided-b1-drafts.ts",
+        "output": "PASS: 500 distinct trophy allocations, 50 staged B1 lessons, current audio snapshots/fingerprints, complete audio surfaces, and 13 rejection cases. No provider calls.",
+        "limitation": "This suite covers existing staged P1 sources, not the new P4/P5 sources. The separate direct gate run above covers these exact 20 lessons."
+      },
+      "frontendPaths": {
+        "status": "STATICALLY_REVIEWED",
+        "evidence": [
+          "sessionSteps.ts:23–40 selects the seven B1 steps by lesson.level; ordinary TypeRecallStep is not a B1 session step.",
+          "BuildPhraseStep.tsx:67 and 99–119 grades exact joined chips but supplies corePhrase.baseText as the meaning cue.",
+          "ComplicationStep.tsx:68–75 makes form blanks initially typed; choices appear after a miss. Lines 140, 192–235 and 303–305 grade acceptedAnswers, show the interlocutor meaning, and show the authored form cue; the learner-reply base is not shown.",
+          "GuidedCheckpoint.tsx:198 and 589–667 grades typeRecall.acceptedAnswers and shows the missing part plus corePhrase.baseText. Recall findings preserve that meaning cue.",
+          "guidedLessons.ts:597–605 normalizes NFC/case/space then compares accepted strings, without semantic synonym or conjugation inference.",
+          "germanB1.ts:99–109 and 171–175 are the existing B1 compact-builder convention: acceptance derived from one canonical answer; portugueseA2.ts:170–175/209 adds spelling/diacritic variants, not lexical alternatives.",
+          "draftTtsLessons includes canonical corePhrase, all phrase chunks and terms, trophy word, four dialogue targets and pattern examples. These source drafts remain absent from the runtime registry."
+        ],
+        "visuallyVerified": false,
+        "reason": "Read-only draft content review. No Portuguese B1 runtime materializer or rendered draft fixture was supplied or created; no claim that these unpublished sources were exercised in a rendered app."
+      },
+      "localTtsBoundary": {
+        "status": "PASS",
+        "detail": "Content-only permission to record the unchanged canonical spoken fields at the two pinned source hashes. All remaining findings concern unspoken acceptance/cues/distractors/base glosses. This is not a provider-budget approval, audio-quality verification, native-human attestation, flag change, runtime release or production approval."
+      }
+    },
+    "findings": [
+      {
+        "id": "PT45-01",
+        "severity": "HIGH",
+        "status": "unresolved",
+        "affectsLocalTts": false,
+        "title": "Open recall cannot represent valid same-meaning answers",
+        "location": {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+          "line": 396,
+          "jsonPointer": "/lessons/1/recall",
+          "additionalLocations": [
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+              "line": 186,
+              "jsonPointer": "/lessons/0/recall"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+              "line": 1467,
+              "jsonPointer": "/lessons/6/recall"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 616,
+              "jsonPointer": "/lessons/2/recall"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 1045,
+              "jsonPointer": "/lessons/4/recall"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 1467,
+              "jsonPointer": "/lessons/6/recall"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 1678,
+              "jsonPointer": "/lessons/7/recall"
+            }
+          ]
+        },
+        "evidence": "The checkpoint shows both the gapped Portuguese and the full base-language meaning, not an infinitive cue. An explicit subject rules out the offered other-person forms but not a same-meaning verb. The strict draft recall schema stores only answer/fallbackChoices, with no acceptance override. Existing compact builders derive only spelling variants; the runtime matcher cannot infer synonyms.",
+        "examples": [
+          {
+            "path": 4,
+            "lesson": 1,
+            "canonical": "recebe",
+            "validAlternative": "pega",
+            "completed": "Prefiro o apartamento com a varanda que pega sol pela manhã."
+          },
+          {
+            "path": 4,
+            "lesson": 2,
+            "canonical": "fica",
+            "validAlternative": "está",
+            "completed": "O elevador que atende o oitavo andar está na entrada principal?"
+          },
+          {
+            "path": 4,
+            "lesson": 7,
+            "canonical": "assiste",
+            "validAlternative": "vê",
+            "completed": "Prefiro o modelo silencioso para a sala onde a gente vê televisão."
+          },
+          {
+            "path": 5,
+            "lesson": 1,
+            "canonical": "faço",
+            "validAlternative": "efetuo",
+            "completed": "Você sabe onde eu efetuo o cadastro para usar esta biblioteca?"
+          },
+          {
+            "path": 5,
+            "lesson": 2,
+            "canonical": "serve",
+            "validAlternative": "vale",
+            "completed": "Você pode me dizer qual documento vale como comprovante de endereço?"
+          },
+          {
+            "path": 5,
+            "lesson": 3,
+            "canonical": "envio",
+            "validAlternative": "mando",
+            "completed": "Você sabe como eu mando este formulário de inscrição?"
+          },
+          {
+            "path": 5,
+            "lesson": 4,
+            "canonical": "fica",
+            "validAlternative": "está",
+            "completed": "Você pode me dizer onde está o espaço para minha assinatura?"
+          },
+          {
+            "path": 5,
+            "lesson": 5,
+            "canonical": "termina",
+            "validAlternative": "acaba",
+            "completed": "Você sabe quando acaba o prazo para entregar os materiais da oficina?"
+          },
+          {
+            "path": 5,
+            "lesson": 6,
+            "canonical": "vale",
+            "validAlternative": "serve",
+            "completed": "Você pode me dizer se este comprovante digital serve para o cadastro?"
+          },
+          {
+            "path": 5,
+            "lesson": 7,
+            "canonical": "exige",
+            "validAlternative": "requer",
+            "completed": "Você sabe se esse atendimento requer agendamento para a próxima semana?"
+          },
+          {
+            "path": 5,
+            "lesson": 8,
+            "canonical": "aparece",
+            "validAlternative": "consta",
+            "completed": "Queria saber se minha inscrição já consta no sistema do curso."
+          }
+        ],
+        "impact": "A canonical-only materialization would mark correct, meaning-preserving Portuguese wrong and lower checkpoint results. This is an unpublished-source contract gap, not a claim that these drafts are live.",
+        "concreteFix": "Before publication, extend the approved draft schema and Portuguese B1 materializer with reviewed recall acceptedAnswers, including these alternatives and accent-folded variants where needed, or add a visible lemma/grammar constraint that actually disambiguates the intended answer. Keep the canonical recall answer, target sentence and recorded Portuguese unchanged. Add targeted grading checks for the listed alternatives and reject genuinely different meanings.",
+        "verification": "All 11 alternatives returned false against canonical plus accent-folded acceptance in an offline guidedAnswerMatches probe. The real frontend checkpoint and matching implementation were read directly.",
+        "localTtsReason": "Only accepted strings or unspoken cue metadata/UI need change; the canonical Portuguese remains suitable for recording."
+      },
+      {
+        "id": "PT45-02",
+        "severity": "HIGH",
+        "status": "unresolved",
+        "affectsLocalTts": false,
+        "title": "Typed courtesy-form cues identify the person but not the required tense",
+        "location": {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+          "line": 90,
+          "jsonPointer": "/lessons/0/cloze/1",
+          "additionalLocations": [
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 512,
+              "jsonPointer": "/lessons/2/cloze/1"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 1159,
+              "jsonPointer": "/lessons/5/cloze/1"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 2003,
+              "jsonPointer": "/lessons/9/cloze/1"
+            }
+          ]
+        },
+        "evidence": "P5 L1/L3/L6 show Você ___ me dizer with cue poder (você). Poderia is the same-person form of the requested lemma, an appropriate polite question and already licensed in P3. Initially the learner sees no four-choice bank and no learner-answer translation; the cue does not say present. P5 L10 similarly supplies querer (eu), though the intended teaching point is specifically the courtesy imperfect queria.",
+        "examples": [
+          {
+            "path": 5,
+            "lesson": 1,
+            "canonical": "pode",
+            "validAlternative": "poderia",
+            "completed": "Você poderia me dizer como eu acesso aquele sistema?"
+          },
+          {
+            "path": 5,
+            "lesson": 3,
+            "canonical": "pode",
+            "validAlternative": "poderia",
+            "completed": "Você poderia me dizer como eu abro o formulário no computador?"
+          },
+          {
+            "path": 5,
+            "lesson": 6,
+            "canonical": "pode",
+            "validAlternative": "poderia",
+            "completed": "Você poderia me dizer como eu envio outra imagem?"
+          },
+          {
+            "path": 5,
+            "lesson": 10,
+            "canonical": "queria",
+            "unexcludedForm": "quero",
+            "completed": "Eu quero saber se preciso voltar aqui com esse comprovante.",
+            "qualification": "Quero is grammatically valid but lacks the intended courtesy imperfect; make that teaching constraint visible rather than automatically treating the forms as pragmatically identical."
+          }
+        ],
+        "impact": "The open field can penalize a correct polite conjugation before exposing choices that reveal the intended tense. Canonical choice uniqueness and literal-subject checks do not solve this.",
+        "concreteFix": "Keep all canonical spoken text. Either support reviewed cloze acceptedAnswers for equivalent polite carriers (at least poderia alongside pode), or add a visible tense/form qualifier such as present indicative or courtesy imperfect. If cue syntax is extended, adjust guidedB1Drafts.ts's cue parser deliberately so it still verifies the explicit subject, and ensure ComplicationStep renders the qualifier. For L10 retain queria as the target and explicitly cue the courtesy imperfect.",
+        "verification": "Offline probes reject poderia for all three pode blanks. ComplicationStep initializes form choices hidden, renders blank.cue verbatim, and grades only acceptedAnswers. No new source acceptance field currently exists.",
+        "localTtsReason": "Acceptance or visible cue changes do not require altering the recorded canonical sentence."
+      },
+      {
+        "id": "PT45-03",
+        "severity": "MEDIUM",
+        "status": "unresolved",
+        "affectsLocalTts": false,
+        "title": "Three build distractors produce malformed sentences",
+        "location": {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+          "line": 1711,
+          "jsonPointer": "/lessons/7/distractors/1",
+          "additionalLocations": [
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 860,
+              "jsonPointer": "/lessons/3/distractors/0"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 2133,
+              "jsonPointer": "/lessons/9/distractors/0"
+            }
+          ]
+        },
+        "evidence": "P4 L8 substitutes recebe poucas before the fixed as encomendas, yielding recebe poucas as encomendas. Native edits regrouped P5 L4 and L10 chips but left distractors shaped for the prior boundaries: fica o espaço sem no longer has an available onde to precede it, and requisito falta para cancelar no longer has the old separate qual prefix. These are not the legitimate grammatical different-meaning distractors used elsewhere.",
+        "examples": [
+          {
+            "path": 4,
+            "lesson": 8,
+            "current": "recebe poucas",
+            "malformed": "Esta é a portaria em que o prédio recebe poucas as encomendas.",
+            "proposed": "encaminha todas",
+            "result": "Esta é a portaria em que o prédio encaminha todas as encomendas."
+          },
+          {
+            "path": 5,
+            "lesson": 4,
+            "current": "fica o espaço sem",
+            "proposed": "o espaço sem",
+            "result": "Você pode me dizer onde fica o espaço sem minha assinatura?"
+          },
+          {
+            "path": 5,
+            "lesson": 10,
+            "current": "requisito falta para cancelar",
+            "proposed": "para cancelar",
+            "result": "Você pode me dizer qual requisito falta para cancelar minha solicitação?"
+          }
+        ],
+        "impact": "These chips violate the project rule that build distractors be grammatical alternatives with a different meaning, and let the learner eliminate them by broken syntax rather than the displayed meaning.",
+        "concreteFix": "Have Fable arbitrate the three exact distractor-only replacements shown above. Recheck four canonical chips plus two distractors for distinctness and grammatical substitution; preserve canonical chunks and target text.",
+        "verification": "Manually assembled each current and proposed sentence against the exact reviewed chip set. validateB1Draft passes the present defects because it checks distinctness and canonical reconstruction, not distractor grammar.",
+        "localTtsReason": "Build distractors are not part of draftTtsLessons' spoken inventory; no canonical clip changes are needed."
+      },
+      {
+        "id": "PT45-04",
+        "severity": "LOW",
+        "status": "unresolved",
+        "affectsLocalTts": false,
+        "title": "Two regrouped English chunk glosses imply the wrong embedded word order",
+        "location": {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+          "line": 765,
+          "jsonPointer": "/lessons/3/chunks/1/baseText/en",
+          "additionalLocations": [
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 1827,
+              "jsonPointer": "/lessons/8/chunks/1/baseText/en"
+            }
+          ]
+        },
+        "evidence": "The new onde fica chunk is glossed where is, and como funciona is glossed how works. In their enclosing indirect questions the English is where [the space] is and how [the service] works. The whole-sentence English is already correct; the broken fragments occur only in chunk explanations.",
+        "impact": "The explanation fragments undermine the very indirect-question word-order contrast being taught, even though Portuguese target text is sound. B1 matching uses terms, so this is lower severity than a visible grading defect.",
+        "concreteFix": "Use 'where … is' for P5 L4 and 'how … works' for P5 L9. Consistent German counterparts can be 'wo sich … befindet' and 'wie … funktioniert'. Keep the target chunks unchanged.",
+        "verification": "Read the new native chunk edits, their neighboring subjects and the full de/en sentence meanings.",
+        "localTtsReason": "Only base-language glosses change; Portuguese chunk audio text remains byte-identical."
+      }
+    ],
+    "remainingPublicationFindings": [
+      {
+        "id": "PT45-01",
+        "severity": "HIGH",
+        "status": "unresolved",
+        "affectsLocalTts": false,
+        "title": "Open recall cannot represent valid same-meaning answers",
+        "location": {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+          "line": 396,
+          "jsonPointer": "/lessons/1/recall",
+          "additionalLocations": [
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+              "line": 186,
+              "jsonPointer": "/lessons/0/recall"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+              "line": 1467,
+              "jsonPointer": "/lessons/6/recall"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 616,
+              "jsonPointer": "/lessons/2/recall"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 1045,
+              "jsonPointer": "/lessons/4/recall"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 1467,
+              "jsonPointer": "/lessons/6/recall"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 1678,
+              "jsonPointer": "/lessons/7/recall"
+            }
+          ]
+        },
+        "evidence": "The checkpoint shows both the gapped Portuguese and the full base-language meaning, not an infinitive cue. An explicit subject rules out the offered other-person forms but not a same-meaning verb. The strict draft recall schema stores only answer/fallbackChoices, with no acceptance override. Existing compact builders derive only spelling variants; the runtime matcher cannot infer synonyms.",
+        "examples": [
+          {
+            "path": 4,
+            "lesson": 1,
+            "canonical": "recebe",
+            "validAlternative": "pega",
+            "completed": "Prefiro o apartamento com a varanda que pega sol pela manhã."
+          },
+          {
+            "path": 4,
+            "lesson": 2,
+            "canonical": "fica",
+            "validAlternative": "está",
+            "completed": "O elevador que atende o oitavo andar está na entrada principal?"
+          },
+          {
+            "path": 4,
+            "lesson": 7,
+            "canonical": "assiste",
+            "validAlternative": "vê",
+            "completed": "Prefiro o modelo silencioso para a sala onde a gente vê televisão."
+          },
+          {
+            "path": 5,
+            "lesson": 1,
+            "canonical": "faço",
+            "validAlternative": "efetuo",
+            "completed": "Você sabe onde eu efetuo o cadastro para usar esta biblioteca?"
+          },
+          {
+            "path": 5,
+            "lesson": 2,
+            "canonical": "serve",
+            "validAlternative": "vale",
+            "completed": "Você pode me dizer qual documento vale como comprovante de endereço?"
+          },
+          {
+            "path": 5,
+            "lesson": 3,
+            "canonical": "envio",
+            "validAlternative": "mando",
+            "completed": "Você sabe como eu mando este formulário de inscrição?"
+          },
+          {
+            "path": 5,
+            "lesson": 4,
+            "canonical": "fica",
+            "validAlternative": "está",
+            "completed": "Você pode me dizer onde está o espaço para minha assinatura?"
+          },
+          {
+            "path": 5,
+            "lesson": 5,
+            "canonical": "termina",
+            "validAlternative": "acaba",
+            "completed": "Você sabe quando acaba o prazo para entregar os materiais da oficina?"
+          },
+          {
+            "path": 5,
+            "lesson": 6,
+            "canonical": "vale",
+            "validAlternative": "serve",
+            "completed": "Você pode me dizer se este comprovante digital serve para o cadastro?"
+          },
+          {
+            "path": 5,
+            "lesson": 7,
+            "canonical": "exige",
+            "validAlternative": "requer",
+            "completed": "Você sabe se esse atendimento requer agendamento para a próxima semana?"
+          },
+          {
+            "path": 5,
+            "lesson": 8,
+            "canonical": "aparece",
+            "validAlternative": "consta",
+            "completed": "Queria saber se minha inscrição já consta no sistema do curso."
+          }
+        ],
+        "impact": "A canonical-only materialization would mark correct, meaning-preserving Portuguese wrong and lower checkpoint results. This is an unpublished-source contract gap, not a claim that these drafts are live.",
+        "concreteFix": "Before publication, extend the approved draft schema and Portuguese B1 materializer with reviewed recall acceptedAnswers, including these alternatives and accent-folded variants where needed, or add a visible lemma/grammar constraint that actually disambiguates the intended answer. Keep the canonical recall answer, target sentence and recorded Portuguese unchanged. Add targeted grading checks for the listed alternatives and reject genuinely different meanings.",
+        "verification": "All 11 alternatives returned false against canonical plus accent-folded acceptance in an offline guidedAnswerMatches probe. The real frontend checkpoint and matching implementation were read directly.",
+        "localTtsReason": "Only accepted strings or unspoken cue metadata/UI need change; the canonical Portuguese remains suitable for recording."
+      },
+      {
+        "id": "PT45-02",
+        "severity": "HIGH",
+        "status": "unresolved",
+        "affectsLocalTts": false,
+        "title": "Typed courtesy-form cues identify the person but not the required tense",
+        "location": {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+          "line": 90,
+          "jsonPointer": "/lessons/0/cloze/1",
+          "additionalLocations": [
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 512,
+              "jsonPointer": "/lessons/2/cloze/1"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 1159,
+              "jsonPointer": "/lessons/5/cloze/1"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 2003,
+              "jsonPointer": "/lessons/9/cloze/1"
+            }
+          ]
+        },
+        "evidence": "P5 L1/L3/L6 show Você ___ me dizer with cue poder (você). Poderia is the same-person form of the requested lemma, an appropriate polite question and already licensed in P3. Initially the learner sees no four-choice bank and no learner-answer translation; the cue does not say present. P5 L10 similarly supplies querer (eu), though the intended teaching point is specifically the courtesy imperfect queria.",
+        "examples": [
+          {
+            "path": 5,
+            "lesson": 1,
+            "canonical": "pode",
+            "validAlternative": "poderia",
+            "completed": "Você poderia me dizer como eu acesso aquele sistema?"
+          },
+          {
+            "path": 5,
+            "lesson": 3,
+            "canonical": "pode",
+            "validAlternative": "poderia",
+            "completed": "Você poderia me dizer como eu abro o formulário no computador?"
+          },
+          {
+            "path": 5,
+            "lesson": 6,
+            "canonical": "pode",
+            "validAlternative": "poderia",
+            "completed": "Você poderia me dizer como eu envio outra imagem?"
+          },
+          {
+            "path": 5,
+            "lesson": 10,
+            "canonical": "queria",
+            "unexcludedForm": "quero",
+            "completed": "Eu quero saber se preciso voltar aqui com esse comprovante.",
+            "qualification": "Quero is grammatically valid but lacks the intended courtesy imperfect; make that teaching constraint visible rather than automatically treating the forms as pragmatically identical."
+          }
+        ],
+        "impact": "The open field can penalize a correct polite conjugation before exposing choices that reveal the intended tense. Canonical choice uniqueness and literal-subject checks do not solve this.",
+        "concreteFix": "Keep all canonical spoken text. Either support reviewed cloze acceptedAnswers for equivalent polite carriers (at least poderia alongside pode), or add a visible tense/form qualifier such as present indicative or courtesy imperfect. If cue syntax is extended, adjust guidedB1Drafts.ts's cue parser deliberately so it still verifies the explicit subject, and ensure ComplicationStep renders the qualifier. For L10 retain queria as the target and explicitly cue the courtesy imperfect.",
+        "verification": "Offline probes reject poderia for all three pode blanks. ComplicationStep initializes form choices hidden, renders blank.cue verbatim, and grades only acceptedAnswers. No new source acceptance field currently exists.",
+        "localTtsReason": "Acceptance or visible cue changes do not require altering the recorded canonical sentence."
+      },
+      {
+        "id": "PT45-03",
+        "severity": "MEDIUM",
+        "status": "unresolved",
+        "affectsLocalTts": false,
+        "title": "Three build distractors produce malformed sentences",
+        "location": {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+          "line": 1711,
+          "jsonPointer": "/lessons/7/distractors/1",
+          "additionalLocations": [
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 860,
+              "jsonPointer": "/lessons/3/distractors/0"
+            },
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 2133,
+              "jsonPointer": "/lessons/9/distractors/0"
+            }
+          ]
+        },
+        "evidence": "P4 L8 substitutes recebe poucas before the fixed as encomendas, yielding recebe poucas as encomendas. Native edits regrouped P5 L4 and L10 chips but left distractors shaped for the prior boundaries: fica o espaço sem no longer has an available onde to precede it, and requisito falta para cancelar no longer has the old separate qual prefix. These are not the legitimate grammatical different-meaning distractors used elsewhere.",
+        "examples": [
+          {
+            "path": 4,
+            "lesson": 8,
+            "current": "recebe poucas",
+            "malformed": "Esta é a portaria em que o prédio recebe poucas as encomendas.",
+            "proposed": "encaminha todas",
+            "result": "Esta é a portaria em que o prédio encaminha todas as encomendas."
+          },
+          {
+            "path": 5,
+            "lesson": 4,
+            "current": "fica o espaço sem",
+            "proposed": "o espaço sem",
+            "result": "Você pode me dizer onde fica o espaço sem minha assinatura?"
+          },
+          {
+            "path": 5,
+            "lesson": 10,
+            "current": "requisito falta para cancelar",
+            "proposed": "para cancelar",
+            "result": "Você pode me dizer qual requisito falta para cancelar minha solicitação?"
+          }
+        ],
+        "impact": "These chips violate the project rule that build distractors be grammatical alternatives with a different meaning, and let the learner eliminate them by broken syntax rather than the displayed meaning.",
+        "concreteFix": "Have Fable arbitrate the three exact distractor-only replacements shown above. Recheck four canonical chips plus two distractors for distinctness and grammatical substitution; preserve canonical chunks and target text.",
+        "verification": "Manually assembled each current and proposed sentence against the exact reviewed chip set. validateB1Draft passes the present defects because it checks distinctness and canonical reconstruction, not distractor grammar.",
+        "localTtsReason": "Build distractors are not part of draftTtsLessons' spoken inventory; no canonical clip changes are needed."
+      },
+      {
+        "id": "PT45-04",
+        "severity": "LOW",
+        "status": "unresolved",
+        "affectsLocalTts": false,
+        "title": "Two regrouped English chunk glosses imply the wrong embedded word order",
+        "location": {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+          "line": 765,
+          "jsonPointer": "/lessons/3/chunks/1/baseText/en",
+          "additionalLocations": [
+            {
+              "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+              "line": 1827,
+              "jsonPointer": "/lessons/8/chunks/1/baseText/en"
+            }
+          ]
+        },
+        "evidence": "The new onde fica chunk is glossed where is, and como funciona is glossed how works. In their enclosing indirect questions the English is where [the space] is and how [the service] works. The whole-sentence English is already correct; the broken fragments occur only in chunk explanations.",
+        "impact": "The explanation fragments undermine the very indirect-question word-order contrast being taught, even though Portuguese target text is sound. B1 matching uses terms, so this is lower severity than a visible grading defect.",
+        "concreteFix": "Use 'where … is' for P5 L4 and 'how … works' for P5 L9. Consistent German counterparts can be 'wo sich … befindet' and 'wie … funktioniert'. Keep the target chunks unchanged.",
+        "verification": "Read the new native chunk edits, their neighboring subjects and the full de/en sentence meanings.",
+        "localTtsReason": "Only base-language glosses change; Portuguese chunk audio text remains byte-identical."
+      }
+    ],
+    "summary": {
+      "totalFindings": 4,
+      "severityCounts": {
+        "BLOCKER": 0,
+        "HIGH": 2,
+        "MEDIUM": 1,
+        "LOW": 1
+      },
+      "canonicalSpokenBlockers": 0,
+      "localTtsContentVerdict": "PASS",
+      "publicationVerdict": "REWORK",
+      "reason": "All 20 lessons and authored fields personally read. Canonical Portuguese passes this independent content-only local TTS review at the pinned hashes. Publication still needs open-answer fairness, three distractor repairs and two chunk-gloss repairs. Every unresolved finding is preserved as a full object with affectsLocalTts=false.",
+      "publicationPrerequisites": "Sources remain draft/pending. Implement and re-review the nonspoken fixes before publication, and complete the normal runtime/base-edition/catalog/audio integration checks. No source flags or approvals were changed.",
+      "appRepository": "Committed no | Pushed no | Live not yet | Checks: exact-source offline B1 gate PASS; full100 Portuguese trophy allocation PASS; definitive 13-edit replay PASS; existing offline B1 suite PASS; frontend static review only."
+    }
+  },
+  "controllingSpecificationSha256": "777370de3d1ec474cdeb47d17c65df878210b6ea3bc26f7398d9f98531a13e29",
+  "controllingSpecification": {
+    "precedence": "Portuguese native specification controls grammar/register; plan controls exact100 trophies and story beats. Provisional plan notes must not override native staging.",
+    "sharedContract": {
+      "shape": "10 paths x 10 episodes; dialogue = interlocutor opening, learner turn 1 (8-16 words), meaningful follow-up, learner turn 2 (6-12 words); chunks 4-7 reconstruct turn 1 exactly; terms 6-8 distinct; cloze 2-3 blanks reconstruct the follow-up exactly; recall answer and speech tokens are single words of turn 1 without apostrophe/hyphen; pattern 2-3 examples, one equals a learner turn; trophy = single word of turn 1, unique across the whole language corpus; de+en explanations everywhere; canonical text keeps diacritics; scene quotes the opening verbatim and never contains a later turn; frozen A1/A2 IDs and text untouched; B1 ids are {language}-b1-practical-{path}-{nnn}-{slug}.",
+      "proDropRule": "Italian and Portuguese drop subjects like Spanish. Every form blank carries cue 'infinitive (subject)'; the subject literal (io/eu, Lei/você, noi/a gente, or the noun phrase) must appear before the blank in the follow-up, or the tag is 'stessa persona'/'mesma pessoa' and all four choices share one person (reviewer-signed). Distractors must be syntactically impossible in context, never merely less idiomatic.",
+      "scopes": "'learner' = dialogue[1], dialogue[3], pattern examples, trophy example; 'all' adds dialogue[0], dialogue[2], chunks, terms. Structural bans are regexes in schemaEdits and throw; semantic checks are reviewer items and never regex.",
+      "registerField": "Italian: register 'formal' only, de uses Sie. Portuguese: 'formal' (você + de Sie, no te) or 'neutral' (você + de du); 'informal' banned for both.",
+      "progression": "P1 narration, P2 opinion, P3 conditional requests, P4 relatives, P5 indirect questions, P6 process/passive state, P7 purpose+future, P8 past habits vs now, P9 and P10 recycle only. Each path introduces its family in thirds (L1-3 core, L4-7 extension, L8-10 recycling with the next-nearest family), never A2 repetition."
+    },
+    "Portuguese": {
+      "targetLanguageCode": "pt-BR",
+      "baseLocales": [
+        "de",
+        "en"
+      ],
+      "register": "Brazilian você with third-person agreement in every episode, locked per episode: register 'formal' (clerks, administrator, technician) translates with Sie and forbids te in learner turns; 'neutral' (neighbours, friends) translates with du and allows te/a gente. 'informal' (tu) banned. o senhor/a senhora may appear only in interlocutor turns and is never blanked. desculpe, never desculpa; Brazilian lexicon only (ônibus, trem, banheiro, celular, metrô).",
+      "genderSafety": "No learner form agrees with the speaker: ban estou/fiquei/sou/fui + cansado/a, convidado/a, pronto/a, sozinho/a, obrigado/a, eu era pequeno/a; use estou com sono, recebi um convite, levei um susto, fiquei com vontade, agradeço, quando eu era criança. Ordinary agreement with named objects/places stays (a feira estava cheia, a confirmação foi enviada). Interlocutor turns may use a character-fixed obrigado/obrigada; learner turns never.",
+      "exactP1StagingByLesson": [
+        {
+          "lesson": 1,
+          "trophy": "mutirão",
+          "licensed": "perfeito regular -ar/-er/-ir 1sg/3sg/1pl + foi, fizemos, teve; a gente + 3sg; de manhã, depois, no fim",
+          "banned": "imperfeito, tenho + particípio"
+        },
+        {
+          "lesson": 2,
+          "trophy": "reencontro",
+          "licensed": "adds encontrei, vi/viu, disse, conversamos, comprei; interlocutor asks quem/onde",
+          "banned": "as L1"
+        },
+        {
+          "lesson": 3,
+          "trophy": "convite",
+          "licensed": "adds recebi, aceitei, fui, li, fiquei com (noun); recebi um convite, never fui convidado/a",
+          "banned": "as L1"
+        },
+        {
+          "lesson": 4,
+          "trophy": "fila",
+          "licensed": "imperfeito introduced: tinha/havia existential, era, estava; tinha uma fila enorme; next steps in perfeito (peguei a senha, esperei, resolvi)",
+          "banned": "tinha + particípio"
+        },
+        {
+          "lesson": 5,
+          "trophy": "chuva",
+          "licensed": "adds chovia, estava + gerúndio (estava chovendo), tinha pouca gente, enquanto; resolution in perfeito (esperei, voltei)",
+          "banned": "estou a + infinitivo"
+        },
+        {
+          "lesson": 6,
+          "trophy": "engarrafamento",
+          "licensed": "contrast quando + perfeito vs imperfeito background; ia + infinitivo for past intention (eu ia pegar o ônibus, mas…); resolvi, peguei, cheguei",
+          "banned": "new forms"
+        },
+        {
+          "lesson": 7,
+          "trophy": "susto",
+          "licensed": "estávamos + gerúndio quando + perfeito; levei um susto; third-person reactions (o dono pediu desculpas, todo mundo riu)",
+          "banned": "speaker participle (assustado/a)"
+        },
+        {
+          "lesson": 8,
+          "trophy": "coincidência",
+          "licensed": "two chained events; imperfeito 1pl (morávamos, conhecíamos); descobrimos que + perfeito; alguém que (lexical relative)",
+          "banned": "new forms"
+        },
+        {
+          "lesson": 9,
+          "trophy": "recado",
+          "licensed": "chain encontrei, desci, perguntei, descobri que o vizinho recebeu (reported perfeito replaces pluperfect); quem recebeu o pacote, never quem o recebeu",
+          "banned": "tinha recebido"
+        },
+        {
+          "lesson": 10,
+          "trophy": "alívio",
+          "licensed": "chain (recebi uma ligação, voltei, recuperei) + background (eu estava achando que, não sabia); que alívio; consolidates L1-L9",
+          "banned": "new forms"
+        }
+      ],
+      "nativeGrammarScopeByPath": {
+        "P1": "as staged above",
+        "P2": "L1-3 acho que/na minha opinião/para mim + indicativo, porque, por isso; L4-6 mas, mesmo assim, apesar de + noun/infinitivo; L7-10 concessive contrast with mas … também; no mesmo que + subjuntivo, no não acho que + subjuntivo (use acho que não)",
+        "P3": "L1-3 gostaria de, queria, eu preferia/prefiro; L4-6 poderia/podia, dava para, seria possível; L7-10 deveria/devia advice, se/quando + futuro do subjuntivo regular (abrir, mudar, chegar) plus tiver/puder/for/estiver/houver; no imperfeito do subjuntivo (se fosse), no preferiria",
+        "P4": "L1-4 noun + que; L5-7 onde; L8-10 em que/de que/com que with clear antecedent; max two relatives per turn; no cujo, no o qual, indicative only",
+        "P5": "você sabe/pode me dizer + onde/como/quando/qual/se; queria saber se; present indicative, no inversion; proclitic me in pode me dizer is standard and never blanked",
+        "P6": "L1-3 estar + particípio agreeing with explicit object (o pedido está pronto, a peça está em falta); L4-6 ser + particípio in perfeito with explicit noun subject (a confirmação foi enviada); L7-10 impersonal se (como se faz, se retira); no tem sido, no ter + particípio",
+        "P7": "L1-5 para/para não + infinitivo, assim + indicativo; L6-8 para que + presente do subjuntivo whitelist (funcione, participem, chegue, saiba, possa, consiga, fique, encontre); L9-10 recycle; no a fim de que",
+        "P8": "imperfeito habits (morava, ia, brincava, costumava + infinitivo), quando eu era criança, antes/naquela época/hoje em dia; contrast with perfeito events (mudou, abriram); L9-10 moro aqui faz/há dois anos; no tinha + particípio",
+        "P9": "recycle P1/P3/P5/P6/P7: o ventilador parou, poderia verificar, queria saber se, está em análise, para resolver; no new family",
+        "P10": "recycle P1/P2/P3/P8 plus licensed P7 subjunctive; gratitude without obrigado/a (agradeço, fico grato is banned, sou muito grato banned)"
+      },
+      "bannedPatternsForValidator": {
+        "structural": [
+          {
+            "id": "pt-ter-participle",
+            "scope": "learner",
+            "why": "tenho/tinha + particípio (present-perfect and pluperfect imports)"
+          },
+          {
+            "id": "pt-speaker-adjective",
+            "scope": "learner",
+            "why": "estou/fiquei/sou/fui + cansado/a etc. (1sg-only verbs)"
+          },
+          {
+            "id": "pt-obrigado",
+            "scope": "learner"
+          },
+          {
+            "id": "pt-eu-era-gendered",
+            "scope": "learner"
+          },
+          {
+            "id": "pt-tu-forms",
+            "scope": "all"
+          },
+          {
+            "id": "pt-european-and-slang-spelling",
+            "scope": "all",
+            "why": "autocarro, comboio, telemóvel, pra/pro, tá, tô, né"
+          },
+          {
+            "id": "pt-estar-a-infinitivo",
+            "scope": "all"
+          },
+          {
+            "id": "pt-present-subjunctive",
+            "scope": "learner",
+            "except": [
+              7,
+              9,
+              10
+            ],
+            "why": "includes para que"
+          },
+          {
+            "id": "pt-future-subjunctive-irregular",
+            "scope": "learner",
+            "except": [
+              3,
+              7,
+              9,
+              10
+            ]
+          },
+          {
+            "id": "pt-missing-accent",
+            "scope": "all",
+            "why": "nao, voce, tambem, ja, ate, cafe, manha, entao, amanha"
+          },
+          {
+            "id": "pt-clitic-token",
+            "scope": "recall/trophy/speech",
+            "why": "o/a/os/as/me/te/se/lhe/nos never a recall, trophy or speech token"
+          },
+          {
+            "id": "pt-register",
+            "scope": "lesson",
+            "why": "formal: no te in learner turns and no du in de; neutral: no Ihnen"
+          }
+        ],
+        "semantic": [
+          "tem/têm + particípio and estava/era + speaker adjective without eu are reviewer-caught",
+          "explicit noun subject for every ser/estar + particípio",
+          "a gente takes 3sg; nós takes 1pl; never both as choices",
+          "você vs o senhor/a senhora locked per episode, never blanked",
+          "subjunctive first at P7 L6; future subjunctive first at P3 L8; ia + infinitivo first at P1 L6",
+          "imperfeito de cortesia (queria, podia, preferia) is standard; never offer gostaria/queria as competing choices",
+          "P1 interlocutor is an interested listener; P6/P9 learner never announces the attendant's decision",
+          "German du/Sie matches the lesson register"
+        ]
+      },
+      "mapFindings": [
+        {
+          "path": 3,
+          "lesson": 2,
+          "field": "trophy",
+          "old": "preferiria",
+          "new": "preferência",
+          "why": "preferiria is rare in spoken pt-BR (speakers use eu preferia/prefiro); noun trophy keeps the beat and natural speech; no collision, 100 distinct trophies preserved"
+        },
+        {
+          "path": 3,
+          "lesson": 2,
+          "field": "beat",
+          "new": "Expressar, com eu preferia ou tenho preferência, o desejo de uma mesa longe da caixa de som; considerar outra opção oferecida pelo restaurante."
+        },
+        {
+          "path": 7,
+          "lesson": 5,
+          "field": "beat",
+          "old": "Combinar instruções mais claras para facilitar a chegada dos participantes; adaptar a mensagem para que outra pessoa encontre a entrada correta.",
+          "new": "Combinar instruções mais claras para facilitar a chegada dos participantes; adaptar a mensagem para ajudar quem chega pela primeira vez a achar a entrada correta.",
+          "why": "Removes an unlicensed subjunctive (encontre) from L5 so para que + subjuntivo first appears at L6"
+        }
+      ],
+      "knownAmbiguityTraps": [
+        "tinha/havia both valid existentials: never a blank pair",
+        "foi = ser or ir: subject tag required",
+        "estava/era with states (a feira estava/era cheia): do not blank the copula",
+        "queria/gostaria/podia/poderia all valid politeness: offer one",
+        "futuro do subjuntivo of regular verbs equals the infinitive: never blank it",
+        "faz/há duration both valid: not a blank",
+        "esta/está and e/é collide under accent-stripped accepted answers: never a blank pair",
+        "o/a article vs clitic: never a recall answer",
+        "perfeito 1sg/3sg of -er/-ir verbs (recebi/recebeu) differ, but -ar 1pl perfeito = presente (terminamos): tag tense or subject",
+        "desculpe (interlocutor and learner) vs frozen A1 desculpa: B1 uses desculpe only"
+      ]
+    },
+    "fullTrophyAndStoryPlan": {
+      "targetLanguage": "Portuguese",
+      "targetLanguageCode": "pt-BR",
+      "status": "proposal_not_approved",
+      "specification": "authoring-spec-it-pt.json supersedes the provisional grammar and register notes below. P1 is the current drafting scope; later paths remain proposals. Fable's exact trophy and beat changes are applied.",
+      "notes": [
+        "Proposta de cem troféus e situações, ainda sem aprovação. A redação dos episódios completos depende da especificação de Fable; os ancoramentos gramaticais abaixo são provisórios.",
+        "Português brasileiro com você e concordância de terceira pessoa; tratamento constante em cada episódio. As futuras bases devem trazer alemão e inglês naturais, como o corpus existente.",
+        "Produção do aluno sem adjetivos ou particípios que revelem seu gênero. O gênero de objetos continua a exigir concordância normal. Preferir desculpe; não copiar expressões antigas com cansado ou obrigado.",
+        "P1 propõe perfeito simples para acontecimentos concluídos e imperfeito para contexto. Não usar tenho feito como equivalente de uma ação única já concluída. Fable ainda deve definir as formas e a progressão exatas.",
+        "P3 não pressupõe que a mesma construção condicional funcione em espanhol e português. As orações com se e qualquer forma de subjuntivo aguardam licença explícita de Fable. P7 reserva formas de subjuntivo para a etapa em que forem introduzidas.",
+        "Cada troféu deve aparecer na primeira fala do aluno. As situações são pontos de partida para episódios com quatro turnos; a cena inicial não revela a reação ou complicação do terceiro turno. P9 e P10 consolidam formas já ensinadas.",
+        "A unicidade será conferida contra todas as variantes de todo o corpus português, incluindo os 199 troféus distintos registrados na extração Stage 0."
+      ],
+      "paths": [
+        {
+          "pathNumber": 1,
+          "title": "O que aconteceu",
+          "anchor": "Relato para um ouvinte interessado: L1–L3 ações concluídas no perfeito simples; L4–L5 contexto no imperfeito; L6–L7 contraste entre contexto e acontecimento; L8–L10 dois acontecimentos encadeados. Proposta de progressão, sujeita à especificação de Fable.",
+          "lessons": [
+            {
+              "number": 1,
+              "trophy": "mutirão",
+              "beat": "Contar como foi o mutirão de sábado no jardim do prédio; depois explicar qual tarefa o grupo terminou junto."
+            },
+            {
+              "number": 2,
+              "trophy": "reencontro",
+              "beat": "Relatar um reencontro com alguém de um curso na feira de rua; continuar com a conversa que tiveram em uma barraca."
+            },
+            {
+              "number": 3,
+              "trophy": "convite",
+              "beat": "Contar que recebeu um convite para uma roda de leitura na biblioteca; acrescentar o que fez depois de aceitar."
+            },
+            {
+              "number": 4,
+              "trophy": "fila",
+              "beat": "Descrever a fila que havia no banco naquela manhã; contar qual foi o próximo passo para resolver a tarefa."
+            },
+            {
+              "number": 5,
+              "trophy": "chuva",
+              "beat": "Lembrar a chuva durante uma visita à feira e como estava o movimento; contar onde esperou até conseguir continuar o passeio."
+            },
+            {
+              "number": 6,
+              "trophy": "engarrafamento",
+              "beat": "Relatar uma saída que coincidiu com um engarrafamento; ligar o contexto da viagem à decisão de seguir de metrô."
+            },
+            {
+              "number": 7,
+              "trophy": "susto",
+              "beat": "Contar o susto quando um cachorro pegou um pão durante um piquenique; completar o relato com a reação do grupo e do dono."
+            },
+            {
+              "number": 8,
+              "trophy": "coincidência",
+              "beat": "Relatar a coincidência de conhecer no ônibus alguém da mesma cidade de origem; explicar como descobriram um conhecido em comum."
+            },
+            {
+              "number": 9,
+              "trophy": "recado",
+              "beat": "Contar que encontrou um recado da portaria sobre uma encomenda; seguir com a busca pelo pacote e a descoberta de quem o recebeu."
+            },
+            {
+              "number": 10,
+              "trophy": "alívio",
+              "beat": "Descrever o alívio ao recuperar uma pasta de documentos; encadear a ligação recebida, a volta ao local e a recuperação da pasta."
+            }
+          ]
+        },
+        {
+          "pathNumber": 2,
+          "title": "Do meu ponto de vista",
+          "anchor": "Opinião fundamentada com acho que, porque e por isso; depois reconhecimento de outra perspectiva com mas e mesmo assim. Concessivas que exijam subjuntivo aguardam a especificação. Ouvinte interessado, com uma objeção concreta no terceiro turno.",
+          "lessons": [
+            {
+              "number": 1,
+              "trophy": "opinião",
+              "beat": "Dar uma opinião sobre abrir a biblioteca aos domingos; sustentar a ideia com a rotina de quem trabalha durante a semana."
+            },
+            {
+              "number": 2,
+              "trophy": "vantagem",
+              "beat": "Apontar a vantagem de comprar frutas na feira do bairro; explicar por que conversar com quem vende ajuda na escolha."
+            },
+            {
+              "number": 3,
+              "trophy": "desvantagem",
+              "beat": "Reconhecer uma desvantagem de morar perto de uma rua movimentada; explicar o que ainda torna o local conveniente."
+            },
+            {
+              "number": 4,
+              "trophy": "trânsito",
+              "beat": "Opinar sobre reduzir vagas de estacionamento perto de uma praça; responder a uma preocupação concreta com o trânsito."
+            },
+            {
+              "number": 5,
+              "trophy": "transporte",
+              "beat": "Defender a melhoria do transporte público; ponderar a demora de algumas linhas sem perder o argumento principal."
+            },
+            {
+              "number": 6,
+              "trophy": "aluguel",
+              "beat": "Avaliar dividir o aluguel com outra pessoa; reconhecer a perda de privacidade e explicar a economia possível."
+            },
+            {
+              "number": 7,
+              "trophy": "convivência",
+              "beat": "Dar uma opinião sobre regras para usar o salão do prédio; ligar a proposta à convivência entre vizinhos."
+            },
+            {
+              "number": 8,
+              "trophy": "escolha",
+              "beat": "Defender a escolha de um curso presencial; considerar o deslocamento e explicar o valor das conversas depois da aula."
+            },
+            {
+              "number": 9,
+              "trophy": "costume",
+              "beat": "Explicar um costume de reunir amigos para o almoço de domingo; reconhecer que nem todo mundo consegue participar sempre."
+            },
+            {
+              "number": 10,
+              "trophy": "equilíbrio",
+              "beat": "Propor equilíbrio entre atividades na praça e descanso dos moradores; responder a uma objeção sobre o horário dos eventos."
+            }
+          ]
+        },
+        {
+          "pathNumber": 3,
+          "title": "Outras possibilidades",
+          "anchor": "Pedidos e preferências com gostaria, preferiria e poderia, seguidos de conselho com deveria. Avaliar possibilidades e ajustar uma proposta diante de um limite real. Fable deve definir separadamente qualquer estrutura condicional com se; não importar o contrato espanhol.",
+          "lessons": [
+            {
+              "number": 1,
+              "trophy": "gostaria",
+              "beat": "Pedir para participar de uma oficina de culinária; ajustar o pedido quando o grupo do primeiro horário já está completo."
+            },
+            {
+              "number": 2,
+              "trophy": "preferência",
+              "beat": "Expressar, com eu preferia ou tenho preferência, o desejo de uma mesa longe da caixa de som; considerar outra opção oferecida pelo restaurante."
+            },
+            {
+              "number": 3,
+              "trophy": "poderia",
+              "beat": "Pedir uma explicação mais detalhada de uma cobrança; indicar a parte que ainda precisa de esclarecimento."
+            },
+            {
+              "number": 4,
+              "trophy": "deveria",
+              "beat": "Perguntar qual etapa deveria fazer primeiro para entrar em um curso; adaptar a sequência ao saber que falta um documento."
+            },
+            {
+              "number": 5,
+              "trophy": "possibilidade",
+              "beat": "Consultar a possibilidade de visitar um apartamento em outro horário; ajustar a disponibilidade ao tempo de quem mostra o imóvel."
+            },
+            {
+              "number": 6,
+              "trophy": "oportunidade",
+              "beat": "Manifestar interesse em uma oportunidade de voluntariado; esclarecer a disponibilidade diante da duração mínima do compromisso."
+            },
+            {
+              "number": 7,
+              "trophy": "condição",
+              "beat": "Perguntar sobre uma condição para trocar o dia de uma atividade; reformular a proposta depois de conhecer a regra do grupo."
+            },
+            {
+              "number": 8,
+              "trophy": "acordo",
+              "beat": "Sugerir um acordo para usar um espaço compartilhado; ajustar um detalhe quando outra pessoa apresenta uma necessidade diferente."
+            },
+            {
+              "number": 9,
+              "trophy": "alternativa",
+              "beat": "Pedir uma alternativa a uma acomodação perto da rua; explicar qual mudança parcial já ajudaria."
+            },
+            {
+              "number": 10,
+              "trophy": "prioridade",
+              "beat": "Explicar a prioridade ao escolher um novo turno de curso; revisar a preferência depois de receber informações sobre as vagas."
+            }
+          ]
+        },
+        {
+          "pathNumber": 4,
+          "title": "A opção de que preciso",
+          "anchor": "Descrever e distinguir referentes com nome + que, depois onde para lugares e o que/a que com antecedente claro. Negociação de uma escolha; favorecer relativas com indicativo e não introduzir subjuntivo por acidente.",
+          "lessons": [
+            {
+              "number": 1,
+              "trophy": "varanda",
+              "beat": "Descrever a varanda de um apartamento visitado; negociar uma opção menor que recebe a mesma luz da manhã."
+            },
+            {
+              "number": 2,
+              "trophy": "elevador",
+              "beat": "Distinguir o elevador que atende o andar desejado; esclarecer a diferença entre a entrada principal e a de serviço."
+            },
+            {
+              "number": 3,
+              "trophy": "tomada",
+              "beat": "Identificar a tomada que fica perto da mesa; combinar outra disposição quando o cabo não alcança o lugar planejado."
+            },
+            {
+              "number": 4,
+              "trophy": "prateleira",
+              "beat": "Escolher a prateleira que suporta os livros maiores; ajustar a posição diante da largura disponível na parede."
+            },
+            {
+              "number": 5,
+              "trophy": "tecido",
+              "beat": "Distinguir o tecido que apareceu na amostra de uma cortina; considerar outra cor quando a primeira acabou."
+            },
+            {
+              "number": 6,
+              "trophy": "tamanho",
+              "beat": "Identificar o tamanho de uma mochila experimentada na loja; comparar com outro modelo que tem menos bolsos."
+            },
+            {
+              "number": 7,
+              "trophy": "modelo",
+              "beat": "Explicar qual modelo de ventilador fez menos ruído na demonstração; negociar a compra da última unidade disponível."
+            },
+            {
+              "number": 8,
+              "trophy": "portaria",
+              "beat": "Precisar qual portaria recebe as encomendas do prédio; combinar a retirada em outro acesso por causa de uma obra."
+            },
+            {
+              "number": 9,
+              "trophy": "biblioteca",
+              "beat": "Identificar a biblioteca onde acontece um clube de leitura; considerar outra unidade com o mesmo grupo em dia diferente."
+            },
+            {
+              "number": 10,
+              "trophy": "associação",
+              "beat": "Distinguir a associação que oferece atividades para moradores; escolher uma sede próxima depois de comparar os horários."
+            }
+          ]
+        },
+        {
+          "pathNumber": 5,
+          "title": "Queria uma informação",
+          "anchor": "Perguntas indiretas com você sabe/pode me dizer + onde, como, quando, qual e se. Retomar o que falta saber após uma resposta parcial; não importar regras de inversão ou ordem final de outras línguas.",
+          "lessons": [
+            {
+              "number": 1,
+              "trophy": "cadastro",
+              "beat": "Perguntar onde se faz o cadastro de usuário de uma biblioteca; pedir a próxima etapa quando o balcão indicado atende outro serviço."
+            },
+            {
+              "number": 2,
+              "trophy": "documento",
+              "beat": "Consultar qual documento comprova o endereço; perguntar pela alternativa quando a conta está em nome de outra pessoa."
+            },
+            {
+              "number": 3,
+              "trophy": "formulário",
+              "beat": "Perguntar como enviar um formulário de inscrição; esclarecer o procedimento quando o botão de envio não aparece."
+            },
+            {
+              "number": 4,
+              "trophy": "assinatura",
+              "beat": "Consultar onde deve ficar a assinatura em uma autorização; resolver a dúvida sobre a segunda pessoa que também precisa assinar."
+            },
+            {
+              "number": 5,
+              "trophy": "prazo",
+              "beat": "Perguntar quando termina um prazo de entrega; confirmar se vale a data do envio ou a do recebimento."
+            },
+            {
+              "number": 6,
+              "trophy": "comprovante",
+              "beat": "Averiguar se um comprovante digital é aceito; pedir orientação quando parte do arquivo está ilegível."
+            },
+            {
+              "number": 7,
+              "trophy": "agendamento",
+              "beat": "Consultar se é necessário agendamento para um serviço; confirmar como marcar quando não há vaga na semana desejada."
+            },
+            {
+              "number": 8,
+              "trophy": "inscrição",
+              "beat": "Perguntar se a inscrição em um curso foi recebida; descobrir como acompanhar o pedido sem fazer uma nova inscrição."
+            },
+            {
+              "number": 9,
+              "trophy": "atendimento",
+              "beat": "Averiguar como funciona o atendimento durante uma mudança de endereço; esclarecer qual canal resolve a pendência específica."
+            },
+            {
+              "number": 10,
+              "trophy": "requisito",
+              "beat": "Confirmar qual requisito falta para concluir uma solicitação; perguntar se a complementação exige outra visita."
+            }
+          ]
+        },
+        {
+          "pathNumber": 6,
+          "title": "Em andamento",
+          "anchor": "Estado de um processo com estar + particípio que concorda com um objeto explícito; descrição de procedimentos com se ou sujeito institucional, conforme Fable. O aluno consulta ou solicita a ação de quem atende, sem anunciar uma decisão que cabe à outra pessoa.",
+          "lessons": [
+            {
+              "number": 1,
+              "trophy": "entrega",
+              "beat": "Consultar o estado de uma entrega que ainda não chegou; pedir a verificação depois de descobrir uma tentativa em outro endereço."
+            },
+            {
+              "number": 2,
+              "trophy": "revisão",
+              "beat": "Acompanhar a revisão de uma bicicleta; perguntar pela etapa seguinte quando a oficina identifica uma peça em falta."
+            },
+            {
+              "number": 3,
+              "trophy": "manutenção",
+              "beat": "Perguntar sobre a manutenção do elevador; pedir informação sobre acesso alternativo enquanto o serviço continua."
+            },
+            {
+              "number": 4,
+              "trophy": "instalação",
+              "beat": "Verificar como está a instalação da internet; consultar outra data quando a equipe precisa de acesso a uma área comum."
+            },
+            {
+              "number": 5,
+              "trophy": "reparo",
+              "beat": "Acompanhar o reparo de um eletrodoméstico; perguntar se o novo problema altera o prazo informado."
+            },
+            {
+              "number": 6,
+              "trophy": "atualização",
+              "beat": "Consultar a atualização de um cadastro; pedir conferência quando o endereço antigo ainda aparece na tela."
+            },
+            {
+              "number": 7,
+              "trophy": "confirmação",
+              "beat": "Perguntar se a confirmação de uma reserva já foi enviada; solicitar outro canal quando a mensagem não aparece."
+            },
+            {
+              "number": 8,
+              "trophy": "retirada",
+              "beat": "Verificar se um pedido está pronto para retirada; perguntar como autorizar outra pessoa após saber o horário disponível."
+            },
+            {
+              "number": 9,
+              "trophy": "pendência",
+              "beat": "Consultar a pendência que impede a conclusão de um cadastro; pedir que o setor responsável confira o documento já entregue."
+            },
+            {
+              "number": 10,
+              "trophy": "conclusão",
+              "beat": "Pedir previsão de conclusão de um serviço; combinar como receber a informação final sem afirmar que o serviço já terminou."
+            }
+          ]
+        },
+        {
+          "pathNumber": 7,
+          "title": "Para dar certo",
+          "anchor": "Finalidade com para + infinitivo quando o agente é o mesmo; depois para que + presente do subjuntivo com agentes distintos. L5–L8 reservam funcione, participem e chegue, sujeitas à licença de Fable. Negociação de meios e objetivos com concordância e sujeitos claros.",
+          "lessons": [
+            {
+              "number": 1,
+              "trophy": "organizar",
+              "beat": "Propor uma lista para organizar a distribuição de tarefas em uma festa do prédio; ajustar a lista depois de uma mudança no número de participantes."
+            },
+            {
+              "number": 2,
+              "trophy": "economizar",
+              "beat": "Combinar compras em conjunto para economizar em materiais; aceitar uma quantidade menor quando o espaço para guardar é limitado."
+            },
+            {
+              "number": 3,
+              "trophy": "aproveitar",
+              "beat": "Planejar a saída mais cedo para aproveitar uma visita; ajustar a proposta ao horário de quem acompanha."
+            },
+            {
+              "number": 4,
+              "trophy": "dividir",
+              "beat": "Sugerir uma planilha para dividir despesas de uma atividade; aceitar outro meio quando alguém não consegue abrir o arquivo."
+            },
+            {
+              "number": 5,
+              "trophy": "facilitar",
+              "beat": "Combinar instruções mais claras para facilitar a chegada dos participantes; adaptar a mensagem para ajudar quem chega pela primeira vez a achar a entrada correta."
+            },
+            {
+              "number": 6,
+              "trophy": "funcione",
+              "beat": "Negociar um teste antecipado para que o equipamento de som funcione no encontro; acomodar a limitação do horário da sala."
+            },
+            {
+              "number": 7,
+              "trophy": "participem",
+              "beat": "Propor duas opções de horário para que mais moradores participem; ajustar a escolha diante de uma restrição do espaço."
+            },
+            {
+              "number": 8,
+              "trophy": "chegue",
+              "beat": "Combinar o envio do endereço para que uma visita chegue ao acesso correto; acrescentar uma referência depois de saber que há duas entradas."
+            },
+            {
+              "number": 9,
+              "trophy": "prevenção",
+              "beat": "Organizar uma conversa simples sobre prevenção de desperdício de água; adaptar a atividade para incluir quem chega depois do trabalho."
+            },
+            {
+              "number": 10,
+              "trophy": "objetivo",
+              "beat": "Retomar o objetivo de uma ação comunitária; negociar a divisão final de tarefas para que cada pessoa saiba o que fazer."
+            }
+          ]
+        },
+        {
+          "pathNumber": 8,
+          "title": "Naquela época",
+          "anchor": "Imperfeito para hábitos e contextos, com quando eu era, antes e naquela época; contraste com agora e com um acontecimento concluído. Ouvinte interessado: as duas falas do aluno formam uma lembrança conectada, sem qualificações que marquem seu gênero.",
+          "lessons": [
+            {
+              "number": 1,
+              "trophy": "infância",
+              "beat": "Contar uma lembrança da infância ligada ao caminho de casa; acrescentar quem costumava acompanhar o percurso."
+            },
+            {
+              "number": 2,
+              "trophy": "escola",
+              "beat": "Descrever como era a escola de uma época anterior; explicar o que mudou depois de uma reforma."
+            },
+            {
+              "number": 3,
+              "trophy": "quintal",
+              "beat": "Recordar o quintal de uma casa conhecida; contar o que as pessoas costumavam fazer ali nas tardes livres."
+            },
+            {
+              "number": 4,
+              "trophy": "recreio",
+              "beat": "Lembrar uma atividade do recreio; continuar com a forma de organizar os grupos sem depender do gênero do aluno."
+            },
+            {
+              "number": 5,
+              "trophy": "domingos",
+              "beat": "Descrever como eram os domingos em família; acrescentar um acontecimento que alterou aquela rotina."
+            },
+            {
+              "number": 6,
+              "trophy": "hábito",
+              "beat": "Contar um hábito de ouvir rádio antes de sair; comparar com a maneira atual de acompanhar notícias."
+            },
+            {
+              "number": 7,
+              "trophy": "brincadeira",
+              "beat": "Explicar uma brincadeira que fazia parte das férias; relatar uma ocasião em que alguém ensinou uma regra nova."
+            },
+            {
+              "number": 8,
+              "trophy": "diferença",
+              "beat": "Apontar a diferença entre o antigo percurso de trabalho e o atual; ligar a mudança a uma nova linha de transporte."
+            },
+            {
+              "number": 9,
+              "trophy": "distância",
+              "beat": "Lembrar como a distância afetava o contato com amigos; comparar as visitas de antes com as conversas atuais."
+            },
+            {
+              "number": 10,
+              "trophy": "fase",
+              "beat": "Descrever uma fase de adaptação a uma cidade; fechar a lembrança com o acontecimento que ajudou a criar uma nova rotina."
+            }
+          ]
+        },
+        {
+          "pathNumber": 9,
+          "title": "Vamos resolver",
+          "anchor": "Consolidação em situações de reparo: narrar o problema, esclarecer uma condição e pedir uma ação possível. Mistura de passado, descrição, pedidos e finalidade já ensinados; sem família gramatical nova. A reação final respeita o poder de decisão de quem atende.",
+          "lessons": [
+            {
+              "number": 1,
+              "trophy": "defeito",
+              "beat": "Explicar o defeito de um ventilador recém-comprado; responder a uma pergunta sobre como o problema começou."
+            },
+            {
+              "number": 2,
+              "trophy": "garantia",
+              "beat": "Consultar a garantia de um aparelho; pedir os próximos passos depois de saber qual comprovante falta."
+            },
+            {
+              "number": 3,
+              "trophy": "orçamento",
+              "beat": "Solicitar um orçamento antes de autorizar um conserto; esclarecer o que está incluído quando aparece uma taxa adicional."
+            },
+            {
+              "number": 4,
+              "trophy": "técnico",
+              "beat": "Pedir a visita de um técnico para verificar a internet; ajustar o agendamento à janela de atendimento apresentada."
+            },
+            {
+              "number": 5,
+              "trophy": "peça",
+              "beat": "Perguntar sobre uma peça que ainda não chegou à oficina; solicitar uma previsão sem afirmar que a entrega será antecipada."
+            },
+            {
+              "number": 6,
+              "trophy": "solução",
+              "beat": "Explicar por que a primeira solução não resolveu o ruído; pedir outra avaliação com base no que ocorreu depois do reparo."
+            },
+            {
+              "number": 7,
+              "trophy": "reembolso",
+              "beat": "Pedir informação sobre reembolso de um serviço cancelado; esclarecer o prazo e o meio de devolução oferecidos."
+            },
+            {
+              "number": 8,
+              "trophy": "devolução",
+              "beat": "Consultar como fazer a devolução de um produto entregue errado; combinar a coleta diante de uma limitação de horário."
+            },
+            {
+              "number": 9,
+              "trophy": "compensação",
+              "beat": "Perguntar se há alguma compensação por uma entrega muito atrasada; avaliar a proposta sem prometer uma decisão da empresa."
+            },
+            {
+              "number": 10,
+              "trophy": "compromisso",
+              "beat": "Retomar o compromisso de retorno assumido pelo atendimento; pedir um novo encaminhamento após relatar a falta de resposta."
+            }
+          ]
+        },
+        {
+          "pathNumber": 10,
+          "title": "Seu ano por aqui",
+          "anchor": "Relato pessoal e reflexão com as famílias já ensinadas: chegada, hábitos, acontecimentos, opinião e planos. Ouvinte interessado; as duas falas do aluno desenvolvem um mesmo ponto. Sem nova gramática nem gênero atribuído à pessoa que aprende.",
+          "lessons": [
+            {
+              "number": 1,
+              "trophy": "chegada",
+              "beat": "Relembrar a chegada à cidade e uma primeira dificuldade prática; contar o que ajudou a entender o bairro."
+            },
+            {
+              "number": 2,
+              "trophy": "esforço",
+              "beat": "Descrever o esforço para manter o estudo de português; explicar uma mudança pequena que tornou a prática mais constante."
+            },
+            {
+              "number": 3,
+              "trophy": "confiança",
+              "beat": "Contar quando começou a falar com mais confiança; ligar a sensação a uma conversa que conseguiu conduzir."
+            },
+            {
+              "number": 4,
+              "trophy": "amizade",
+              "beat": "Relatar como surgiu uma amizade em uma atividade do bairro; acrescentar o que passou a fazer com essa pessoa."
+            },
+            {
+              "number": 5,
+              "trophy": "aprendizado",
+              "beat": "Comentar um aprendizado que veio de um pequeno mal-entendido; explicar como hoje lida com a mesma situação."
+            },
+            {
+              "number": 6,
+              "trophy": "rotina",
+              "beat": "Comparar a rotina do começo do ano com a atual; escolher uma mudança que pretende manter."
+            },
+            {
+              "number": 7,
+              "trophy": "conselho",
+              "beat": "Dar um conselho a alguém que acabou de chegar; justificar a sugestão com uma experiência concreta."
+            },
+            {
+              "number": 8,
+              "trophy": "projeto",
+              "beat": "Contar um projeto para os próximos meses; explicar como as experiências do ano ajudaram a definir o objetivo."
+            },
+            {
+              "number": 9,
+              "trophy": "gratidão",
+              "beat": "Expressar gratidão pela ajuda recebida em uma situação difícil; contar de que forma pretende retribuir sem usar obrigado ou obrigada."
+            },
+            {
+              "number": 10,
+              "trophy": "experiência",
+              "beat": "Escolher uma experiência que resume o ano; ligar o que aconteceu, o que mudou e a vontade de continuar participando da vida local."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "exactEditsReplayed": 13
+}

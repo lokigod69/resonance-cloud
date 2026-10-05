@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 2,
+  "status": "reviewed-staged",
+  "level": "B1",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/portuguese-p4.json",
+      "sha256": "a141ed032ca761feb1d93a6eb763b23fb1d4a5157b4ce3fc1eb402be6138b3ad",
+      "targetLanguage": "Portuguese",
+      "pathNumber": 4,
+      "reviewedVoiceId": "7eUAxNOneHxqfyRS77mW"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/portuguese-p5.json",
+      "sha256": "28bbfa7027fe2c1c62d3859fabbddaf6528707ccedfff3fe2460b0af9606660b",
+      "targetLanguage": "Portuguese",
+      "pathNumber": 5,
+      "reviewedVoiceId": "7eUAxNOneHxqfyRS77mW"
+    }
+  ],
+  "reviewScope": "Zero unresolved local spoken-TTS blockers only; publication findings retained.",
+  "fableReview": {
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/portuguese-p4.json": "a141ed032ca761feb1d93a6eb763b23fb1d4a5157b4ce3fc1eb402be6138b3ad",
+      "frontend/content-drafts/b1-2026-10/paths/portuguese-p5.json": "28bbfa7027fe2c1c62d3859fabbddaf6528707ccedfff3fe2460b0af9606660b"
+    },
+    "scope": "Zero unresolved local spoken-TTS blockers only; publication findings retained.",
+    "localTtsContentVerdict": "PASS",
+    "unresolvedLocalTtsBlockers": [],
+    "publicationVerdict": "REWORK",
+    "model": "claude-fable-5-1",
+    "evidenceSha256": "3d10066afb9286453b4d769979fdae7a0f01f26654da30fc604db7935b15d95c",
+    "approvalBasis": "Complete twenty-lesson native-spec read; all thirteen exact changes replayed; independent canonical-spoken-text PASS."
+  },
+  "independentReview": {
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/portuguese-p4.json": "a141ed032ca761feb1d93a6eb763b23fb1d4a5157b4ce3fc1eb402be6138b3ad",
+      "frontend/content-drafts/b1-2026-10/paths/portuguese-p5.json": "28bbfa7027fe2c1c62d3859fabbddaf6528707ccedfff3fe2460b0af9606660b"
+    },
+    "scope": "Zero unresolved local spoken-TTS blockers only; publication findings retained.",
+    "localTtsContentVerdict": "PASS",
+    "unresolvedLocalTtsBlockers": [],
+    "publicationVerdict": "REWORK",
+    "reviewer": {
+      "id": "codex-independent-portuguese-b1-p4-p5-full20-20261005",
+      "task": "/root/portuguese_p4_p5_fresh_review",
+      "role": "fresh independent content reviewer",
+      "date": "2026-10-05",
+      "scope": "App and source read-only; one authorized scratch JSON report. No provider calls, database access, source edits, git operations, or production approval.",
+      "skills": [
+        "orchestrator/.claude/skills/independent-review/SKILL.md",
+        "orchestrator/.claude/skills/author-guided-tier/SKILL.md"
+      ]
+    },
+    "evidenceSha256": "bdacd9dc78c1dc1c831d22218728a19d975f63c45b04dc3223ffcc9262197090"
+  },
+  "reviewEvidence": {
+    "file": "frontend/content-drafts/b1-2026-10/paths/pt-p4-p5-review-evidence.json",
+    "sha256": "99ca0bec4cf1c25d22b42199a0d3dfbc61819517271682061aacd63e6af17939"
+  },
+  "unresolvedPublicationFindings": [
+    {
+      "id": "PT45-01",
+      "severity": "HIGH",
+      "status": "unresolved",
+      "affectsLocalTts": false,
+      "title": "Open recall cannot represent valid same-meaning answers",
+      "location": {
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+        "line": 396,
+        "jsonPointer": "/lessons/1/recall",
+        "additionalLocations": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+            "line": 186,
+            "jsonPointer": "/lessons/0/recall"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+            "line": 1467,
+            "jsonPointer": "/lessons/6/recall"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+            "line": 616,
+            "jsonPointer": "/lessons/2/recall"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+            "line": 1045,
+            "jsonPointer": "/lessons/4/recall"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+            "line": 1467,
+            "jsonPointer": "/lessons/6/recall"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+            "line": 1678,
+            "jsonPointer": "/lessons/7/recall"
+          }
+        ]
+      },
+      "evidence": "The checkpoint shows both the gapped Portuguese and the full base-language meaning, not an infinitive cue. An explicit subject rules out the offered other-person forms but not a same-meaning verb. The strict draft recall schema stores only answer/fallbackChoices, with no acceptance override. Existing compact builders derive only spelling variants; the runtime matcher cannot infer synonyms.",
+      "examples": [
+        {
+          "path": 4,
+          "lesson": 1,
+          "canonical": "recebe",
+          "validAlternative": "pega",
+          "completed": "Prefiro o apartamento com a varanda que pega sol pela manhã."
+        },
+        {
+          "path": 4,
+          "lesson": 2,
+          "canonical": "fica",
+          "validAlternative": "está",
+          "completed": "O elevador que atende o oitavo andar está na entrada principal?"
+        },
+        {
+          "path": 4,
+          "lesson": 7,
+          "canonical": "assiste",
+          "validAlternative": "vê",
+          "completed": "Prefiro o modelo silencioso para a sala onde a gente vê televisão."
+        },
+        {
+          "path": 5,
+          "lesson": 1,
+          "canonical": "faço",
+          "validAlternative": "efetuo",
+          "completed": "Você sabe onde eu efetuo o cadastro para usar esta biblioteca?"
+        },
+        {
+          "path": 5,
+          "lesson": 2,
+          "canonical": "serve",
+          "validAlternative": "vale",
+          "completed": "Você pode me dizer qual documento vale como comprovante de endereço?"
+        },
+        {
+          "path": 5,
+          "lesson": 3,
+          "canonical": "envio",
+          "validAlternative": "mando",
+          "completed": "Você sabe como eu mando este formulário de inscrição?"
+        },
+        {
+          "path": 5,
+          "lesson": 4,
+          "canonical": "fica",
+          "validAlternative": "está",
+          "completed": "Você pode me dizer onde está o espaço para minha assinatura?"
+        },
+        {
+          "path": 5,
+          "lesson": 5,
+          "canonical": "termina",
+          "validAlternative": "acaba",
+          "completed": "Você sabe quando acaba o prazo para entregar os materiais da oficina?"
+        },
+        {
+          "path": 5,
+          "lesson": 6,
+          "canonical": "vale",
+          "validAlternative": "serve",
+          "completed": "Você pode me dizer se este comprovante digital serve para o cadastro?"
+        },
+        {
+          "path": 5,
+          "lesson": 7,
+          "canonical": "exige",
+          "validAlternative": "requer",
+          "completed": "Você sabe se esse atendimento requer agendamento para a próxima semana?"
+        },
+        {
+          "path": 5,
+          "lesson": 8,
+          "canonical": "aparece",
+          "validAlternative": "consta",
+          "completed": "Queria saber se minha inscrição já consta no sistema do curso."
+        }
+      ],
+      "impact": "A canonical-only materialization would mark correct, meaning-preserving Portuguese wrong and lower checkpoint results. This is an unpublished-source contract gap, not a claim that these drafts are live.",
+      "concreteFix": "Before publication, extend the approved draft schema and Portuguese B1 materializer with reviewed recall acceptedAnswers, including these alternatives and accent-folded variants where needed, or add a visible lemma/grammar constraint that actually disambiguates the intended answer. Keep the canonical recall answer, target sentence and recorded Portuguese unchanged. Add targeted grading checks for the listed alternatives and reject genuinely different meanings.",
+      "verification": "All 11 alternatives returned false against canonical plus accent-folded acceptance in an offline guidedAnswerMatches probe. The real frontend checkpoint and matching implementation were read directly.",
+      "localTtsReason": "Only accepted strings or unspoken cue metadata/UI need change; the canonical Portuguese remains suitable for recording."
+    },
+    {
+      "id": "PT45-02",
+      "severity": "HIGH",
+      "status": "unresolved",
+      "affectsLocalTts": false,
+      "title": "Typed courtesy-form cues identify the person but not the required tense",
+      "location": {
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+        "line": 90,
+        "jsonPointer": "/lessons/0/cloze/1",
+        "additionalLocations": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+            "line": 512,
+            "jsonPointer": "/lessons/2/cloze/1"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+            "line": 1159,
+            "jsonPointer": "/lessons/5/cloze/1"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+            "line": 2003,
+            "jsonPointer": "/lessons/9/cloze/1"
+          }
+        ]
+      },
+      "evidence": "P5 L1/L3/L6 show Você ___ me dizer with cue poder (você). Poderia is the same-person form of the requested lemma, an appropriate polite question and already licensed in P3. Initially the learner sees no four-choice bank and no learner-answer translation; the cue does not say present. P5 L10 similarly supplies querer (eu), though the intended teaching point is specifically the courtesy imperfect queria.",
+      "examples": [
+        {
+          "path": 5,
+          "lesson": 1,
+          "canonical": "pode",
+          "validAlternative": "poderia",
+          "completed": "Você poderia me dizer como eu acesso aquele sistema?"
+        },
+        {
+          "path": 5,
+          "lesson": 3,
+          "canonical": "pode",
+          "validAlternative": "poderia",
+          "completed": "Você poderia me dizer como eu abro o formulário no computador?"
+        },
+        {
+          "path": 5,
+          "lesson": 6,
+          "canonical": "pode",
+          "validAlternative": "poderia",
+          "completed": "Você poderia me dizer como eu envio outra imagem?"
+        },
+        {
+          "path": 5,
+          "lesson": 10,
+          "canonical": "queria",
+          "unexcludedForm": "quero",
+          "completed": "Eu quero saber se preciso voltar aqui com esse comprovante.",
+          "qualification": "Quero is grammatically valid but lacks the intended courtesy imperfect; make that teaching constraint visible rather than automatically treating the forms as pragmatically identical."
+        }
+      ],
+      "impact": "The open field can penalize a correct polite conjugation before exposing choices that reveal the intended tense. Canonical choice uniqueness and literal-subject checks do not solve this.",
+      "concreteFix": "Keep all canonical spoken text. Either support reviewed cloze acceptedAnswers for equivalent polite carriers (at least poderia alongside pode), or add a visible tense/form qualifier such as present indicative or courtesy imperfect. If cue syntax is extended, adjust guidedB1Drafts.ts's cue parser deliberately so it still verifies the explicit subject, and ensure ComplicationStep renders the qualifier. For L10 retain queria as the target and explicitly cue the courtesy imperfect.",
+      "verification": "Offline probes reject poderia for all three pode blanks. ComplicationStep initializes form choices hidden, renders blank.cue verbatim, and grades only acceptedAnswers. No new source acceptance field currently exists.",
+      "localTtsReason": "Acceptance or visible cue changes do not require altering the recorded canonical sentence."
+    },
+    {
+      "id": "PT45-03",
+      "severity": "MEDIUM",
+      "status": "unresolved",
+      "affectsLocalTts": false,
+      "title": "Three build distractors produce malformed sentences",
+      "location": {
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p4.json",
+        "line": 1711,
+        "jsonPointer": "/lessons/7/distractors/1",
+        "additionalLocations": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+            "line": 860,
+            "jsonPointer": "/lessons/3/distractors/0"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+            "line": 2133,
+            "jsonPointer": "/lessons/9/distractors/0"
+          }
+        ]
+      },
+      "evidence": "P4 L8 substitutes recebe poucas before the fixed as encomendas, yielding recebe poucas as encomendas. Native edits regrouped P5 L4 and L10 chips but left distractors shaped for the prior boundaries: fica o espaço sem no longer has an available onde to precede it, and requisito falta para cancelar no longer has the old separate qual prefix. These are not the legitimate grammatical different-meaning distractors used elsewhere.",
+      "examples": [
+        {
+          "path": 4,
+          "lesson": 8,
+          "current": "recebe poucas",
+          "malformed": "Esta é a portaria em que o prédio recebe poucas as encomendas.",
+          "proposed": "encaminha todas",
+          "result": "Esta é a portaria em que o prédio encaminha todas as encomendas."
+        },
+        {
+          "path": 5,
+          "lesson": 4,
+          "current": "fica o espaço sem",
+          "proposed": "o espaço sem",
+          "result": "Você pode me dizer onde fica o espaço sem minha assinatura?"
+        },
+        {
+          "path": 5,
+          "lesson": 10,
+          "current": "requisito falta para cancelar",
+          "proposed": "para cancelar",
+          "result": "Você pode me dizer qual requisito falta para cancelar minha solicitação?"
+        }
+      ],
+      "impact": "These chips violate the project rule that build distractors be grammatical alternatives with a different meaning, and let the learner eliminate them by broken syntax rather than the displayed meaning.",
+      "concreteFix": "Have Fable arbitrate the three exact distractor-only replacements shown above. Recheck four canonical chips plus two distractors for distinctness and grammatical substitution; preserve canonical chunks and target text.",
+      "verification": "Manually assembled each current and proposed sentence against the exact reviewed chip set. validateB1Draft passes the present defects because it checks distinctness and canonical reconstruction, not distractor grammar.",
+      "localTtsReason": "Build distractors are not part of draftTtsLessons' spoken inventory; no canonical clip changes are needed."
+    },
+    {
+      "id": "PT45-04",
+      "severity": "LOW",
+      "status": "unresolved",
+      "affectsLocalTts": false,
+      "title": "Two regrouped English chunk glosses imply the wrong embedded word order",
+      "location": {
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+        "line": 765,
+        "jsonPointer": "/lessons/3/chunks/1/baseText/en",
+        "additionalLocations": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/portuguese-p5.json",
+            "line": 1827,
+            "jsonPointer": "/lessons/8/chunks/1/baseText/en"
+          }
+        ]
+      },
+      "evidence": "The new onde fica chunk is glossed where is, and como funciona is glossed how works. In their enclosing indirect questions the English is where [the space] is and how [the service] works. The whole-sentence English is already correct; the broken fragments occur only in chunk explanations.",
+      "impact": "The explanation fragments undermine the very indirect-question word-order contrast being taught, even though Portuguese target text is sound. B1 matching uses terms, so this is lower severity than a visible grading defect.",
+      "concreteFix": "Use 'where … is' for P5 L4 and 'how … works' for P5 L9. Consistent German counterparts can be 'wo sich … befindet' and 'wie … funktioniert'. Keep the target chunks unchanged.",
+      "verification": "Read the new native chunk edits, their neighboring subjects and the full de/en sentence meanings.",
+      "localTtsReason": "Only base-language glosses change; Portuguese chunk audio text remains byte-identical."
+    }
+  ],
+  "publicationStatus": "held",
+  "listeningStatus": "not-started"
+}

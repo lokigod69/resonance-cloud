@@ -1,0 +1,3801 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 1,
+  "slug": "sopesar-opciones",
+  "pathTitle": {
+    "de": "Optionen abwägen",
+    "en": "Weighing options"
+  },
+  "pathFunction": {
+    "de": "Optionen vergleichen und unter Einwänden eine begründete Entscheidung treffen",
+    "en": "Compare options and reach a reasoned decision under challenge"
+  },
+  "specRef": {
+    "pathSpec": "B2_SPANISH_P1_P2_SPEC.json",
+    "pathSpecSha256": "64a1eb47e5983ce9d0fd029cd4e37a1d2ff92aea4907efc7c64feed725609a2b",
+    "ledger": "B2_SPANISH_P1_P2_SPEC.json",
+    "ledgerSha256": "64a1eb47e5983ce9d0fd029cd4e37a1d2ff92aea4907efc7c64feed725609a2b"
+  },
+  "authoring": {
+    "source": "Codex GPT-6 xhigh",
+    "runId": "es-b2-p1-p2-author-20261005",
+    "date": "2026-10-05"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "piso-centrico-o-trayecto-largo",
+      "title": {
+        "de": "Miete gegen Fahrzeit",
+        "en": "Rent versus travel time"
+      },
+      "situation": {
+        "de": "Bei einer Besichtigung vergleichen Sie eine zentrale Wohnung mit einer günstigeren am Stadtrand.",
+        "en": "At a viewing, you compare a central flat with a cheaper one on the outskirts."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "usted",
+          "usted",
+          "usted"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "agente",
+          "role": {
+            "de": "Immobilienmakler",
+            "en": "letting agent"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Besichtigung erklärt der Makler: «Desde el otro piso son cincuenta minutos en tren. ¿Cómo valora este del centro?»",
+        "en": "At the viewing, the agent says: «Desde el otro piso son cincuenta minutos en tren. ¿Cómo valora este del centro?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "agente",
+          "targetText": "Desde el otro piso son cincuenta minutos en tren. ¿Cómo valora este del centro?",
+          "base": {
+            "de": "Von der anderen Wohnung sind es fünfzig Minuten mit dem Zug. Wie beurteilen Sie diese im Zentrum?",
+            "en": "The other flat is fifty minutes away by train. What do you think of this central one?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "usted",
+          "targetText": "Por un lado, el piso céntrico cuesta más; por otro lado, evita un trayecto que me quita casi dos horas diarias.",
+          "base": {
+            "de": "Einerseits kostet die zentrale Wohnung mehr, andererseits erspart sie mir einen Arbeitsweg, der mich täglich fast zwei Stunden kostet.",
+            "en": "On the one hand, the central flat costs more; on the other, it saves a commute that takes almost two hours daily."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "agente",
+          "targetText": "¿Le compensa pagar doscientos euros más al mes solo por reducir ese tiempo?",
+          "base": {
+            "de": "Lohnt es sich für Sie, allein für die kürzere Fahrzeit monatlich zweihundert Euro mehr zu zahlen?",
+            "en": "Is saving that time alone worth paying two hundred euros more a month?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "usted",
+          "targetText": "Es cierto que son doscientos euros, pero cuanto más tiempo paso viajando, menos energía me queda para disfrutar de la tarde.",
+          "base": {
+            "de": "Zweihundert Euro sind viel, das stimmt, aber je länger ich unterwegs bin, desto weniger Energie bleibt mir für den Feierabend.",
+            "en": "It is two hundred euros, admittedly, but the longer I spend traveling, the less energy I have to enjoy the evening."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "agente",
+          "targetText": "Entonces, ¿reservamos este piso del centro o prefiere que sigamos buscando otras opciones?",
+          "base": {
+            "de": "Reservieren wir also diese Wohnung im Zentrum, oder möchten Sie lieber weitersuchen?",
+            "en": "So, shall we reserve this central flat, or would you prefer to keep looking?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "usted",
+          "targetText": "En definitiva, para mí pesa más recuperar ese tiempo; me quedo con el piso del centro.",
+          "base": {
+            "de": "Letztlich wiegt für mich die gewonnene Zeit schwerer; ich nehme die Wohnung im Zentrum.",
+            "en": "Ultimately, getting that time back matters more to me; I'll take the central flat."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Por un lado, el piso céntrico cuesta más; por otro lado, ",
+        "chunks": [
+          "evita",
+          "un trayecto",
+          "que me quita",
+          "casi dos",
+          "horas diarias."
+        ],
+        "distractors": [
+          "me devuelve",
+          "no elimina"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " son doscientos euros, pero "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tiempo paso viajando, menos energía me queda para disfrutar de la tarde."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Es cierto que",
+            "acceptedAnswers": [
+              "Es cierto que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Es cierto que",
+              "A pesar de",
+              "En lugar de",
+              "Tanto como"
+            ]
+          },
+          {
+            "answer": "cuanto más",
+            "acceptedAnswers": [
+              "cuanto más",
+              "cuanto mas",
+              "mientras más",
+              "mientras mas"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", para mí pesa más recuperar ese tiempo; me quedo con el piso del centro."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En definitiva",
+            "acceptedAnswers": [
+              "En definitiva"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En definitiva",
+              "A pesar de",
+              "En lugar de",
+              "Debido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Por un lado, el piso céntrico cuesta más; por otro lado, evita un trayecto que me ",
+        "answer": "quita",
+        "acceptedAnswers": [
+          "quita",
+          "resta",
+          "roba",
+          "consume",
+          "cuesta",
+          "ocupa"
+        ],
+        "after": " casi dos horas diarias.",
+        "fallbackChoices": [
+          "quita",
+          "quitar",
+          "quitando",
+          "quitado"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Zwei Seiten einer Entscheidung",
+          "en": "Two sides of a decision"
+        },
+        "rule": {
+          "de": "Mit por un lado und por otro lado stellen Sie zwei Gesichtspunkte gegenüber, ohne schon einen davon zu verwerfen.",
+          "en": "Por un lado and por otro lado contrast two considerations without immediately dismissing either."
+        },
+        "examples": [
+          {
+            "targetText": "Por un lado, el piso céntrico cuesta más; por otro lado, evita un trayecto que me quita casi dos horas diarias.",
+            "base": {
+              "de": "Einerseits kostet die zentrale Wohnung mehr, andererseits erspart sie mir täglich fast zwei Stunden Arbeitsweg.",
+              "en": "The central flat costs more on the one hand, but saves almost two hours of commuting daily on the other."
+            },
+            "highlights": [
+              "Por un lado",
+              "por otro lado"
+            ]
+          },
+          {
+            "targetText": "Por un lado, gasto más en alquiler; por otro lado, reduzco el coste del transporte.",
+            "base": {
+              "de": "Einerseits gebe ich mehr für Miete aus, andererseits sinken meine Fahrtkosten.",
+              "en": "On the one hand, I spend more on rent; on the other, I reduce transport costs."
+            },
+            "highlights": [
+              "Por un lado",
+              "por otro lado"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "por un lado",
+          "kind": "connector",
+          "base": {
+            "de": "einerseits",
+            "en": "on the one hand"
+          }
+        },
+        {
+          "targetText": "por otro lado",
+          "kind": "connector",
+          "base": {
+            "de": "andererseits",
+            "en": "on the other hand"
+          }
+        },
+        {
+          "targetText": "trayecto",
+          "kind": "noun",
+          "base": {
+            "de": "Fahrtstrecke / Arbeitsweg",
+            "en": "journey / commute"
+          }
+        },
+        {
+          "targetText": "céntrico",
+          "kind": "adjective",
+          "base": {
+            "de": "zentral gelegen",
+            "en": "centrally located"
+          }
+        },
+        {
+          "targetText": "evita",
+          "lemma": "evitar",
+          "kind": "verb",
+          "base": {
+            "de": "erspart / vermeidet",
+            "en": "avoids / saves"
+          }
+        },
+        {
+          "targetText": "energía",
+          "kind": "noun",
+          "base": {
+            "de": "Energie",
+            "en": "energy"
+          }
+        },
+        {
+          "targetText": "cuanto más",
+          "kind": "connector",
+          "base": {
+            "de": "je mehr",
+            "en": "the more"
+          }
+        },
+        {
+          "targetText": "en definitiva",
+          "kind": "connector",
+          "base": {
+            "de": "letztlich",
+            "en": "ultimately"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "trayecto",
+            "evita",
+            "quita"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "doscientos",
+            "viajando",
+            "energía"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "definitiva",
+            "recuperar",
+            "centro"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "trayecto",
+        "familyKey": "trayecto",
+        "surface": "trayecto",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "El trayecto diario influye mucho en mi elección.",
+          "base": {
+            "de": "Der tägliche Arbeitsweg beeinflusst meine Wahl stark.",
+            "en": "The daily commute has a big influence on my choice."
+          }
+        },
+        "base": {
+          "de": "Fahrtstrecke / Arbeitsweg",
+          "en": "journey / commute"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "coche-o-cercanias-al-trabajo",
+      "title": {
+        "de": "Auto oder Nahverkehr",
+        "en": "Car or commuter train"
+      },
+      "situation": {
+        "de": "Ein Kollege fährt mit dem Auto zur Arbeit und fragt nach deiner Zugfahrt.",
+        "en": "A colleague drives to work and asks about your train journey."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tú",
+          "tú",
+          "tú"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "colega",
+          "role": {
+            "de": "Kollege",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Kollege fragt: «Yo vengo en coche. ¿Por qué prefieres pasar cuarenta minutos en el tren?»",
+        "en": "Your colleague asks: «Yo vengo en coche. ¿Por qué prefieres pasar cuarenta minutos en el tren?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "colega",
+          "targetText": "Yo vengo en coche. ¿Por qué prefieres pasar cuarenta minutos en el tren?",
+          "base": {
+            "de": "Ich komme mit dem Auto. Warum sitzt du lieber vierzig Minuten im Zug?",
+            "en": "I drive here. Why would you rather spend forty minutes on the train?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "tú",
+          "targetText": "En coche tardo media hora, mientras que el tren es la opción que mejor se adapta a mi horario diario, porque puedo leer.",
+          "base": {
+            "de": "Mit dem Auto brauche ich eine halbe Stunde, während der Zug besser zu meinem Tagesablauf passt, weil ich dabei lesen kann.",
+            "en": "Driving takes half an hour, whereas the train fits my daily routine best because I can read."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "colega",
+          "targetText": "Mi primo conduce todos los días y tarda la mitad que tú. ¿Cómo lo explicas?",
+          "base": {
+            "de": "Mein Cousin fährt täglich mit dem Auto und braucht halb so lange wie du. Wie erklärst du dir das?",
+            "en": "My cousin drives every day and takes half as long as you. How do you explain that?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "tú",
+          "targetText": "Tu primo seguramente sale antes, pero a las ocho tanto la autovía como el centro están colapsados; esa comparación no refleja mi horario.",
+          "base": {
+            "de": "Dein Cousin fährt vermutlich früher los, aber um acht sind Autobahn und Zentrum verstopft; der Vergleich passt nicht zu meiner Arbeitszeit.",
+            "en": "Your cousin probably leaves earlier, but at eight both the motorway and the centre are gridlocked; that comparison doesn't reflect my schedule."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "colega",
+          "targetText": "¿Y cuando salgas muy tarde o llueva a cántaros, también vas a elegir el tren?",
+          "base": {
+            "de": "Und wenn du sehr spät Feierabend hast oder es in Strömen regnet, nimmst du dann auch den Zug?",
+            "en": "And when you finish very late or it's pouring, will you still choose the train?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "tú",
+          "targetText": "En definitiva, combino ambos: tren a diario y coche cuando salga tarde; la lluvia por sí sola no cambia mi elección.",
+          "base": {
+            "de": "Letztlich kombiniere ich beides: normalerweise Zug, bei spätem Feierabend Auto; Regen allein ändert meine Wahl nicht.",
+            "en": "Ultimately, I'll combine both: the train daily and the car when I finish late; rain alone won't change my choice."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "En coche tardo media hora, mientras que el tren es ",
+        "chunks": [
+          "la opción",
+          "que mejor",
+          "se adapta",
+          "a mi horario",
+          "diario,"
+        ],
+        "distractors": [
+          "que peor",
+          "se opone"
+        ],
+        "frameSuffix": " porque puedo leer."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Tu primo seguramente sale antes, pero a las ocho "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " la autovía "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " el centro están colapsados; esa comparación no refleja mi horario."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "tanto",
+            "acceptedAnswers": [
+              "tanto"
+            ],
+            "kind": "connector",
+            "choices": [
+              "tanto",
+              "mientras",
+              "aunque",
+              "pese"
+            ]
+          },
+          {
+            "answer": "como",
+            "acceptedAnswers": [
+              "como"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", combino ambos: tren a diario y coche cuando salga tarde; la lluvia por sí sola no cambia mi elección."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En definitiva",
+            "acceptedAnswers": [
+              "En definitiva"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En definitiva",
+              "A pesar de",
+              "En lugar de",
+              "Debido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "En coche tardo media hora, mientras que el tren es la opción que mejor se ",
+        "answer": "adapta",
+        "acceptedAnswers": [
+          "adapta",
+          "ajusta",
+          "acomoda",
+          "amolda"
+        ],
+        "after": " a mi horario diario, porque puedo leer.",
+        "fallbackChoices": [
+          "adapta",
+          "adaptar",
+          "adaptado",
+          "adaptando"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Unterschiede und Gemeinsamkeiten",
+          "en": "Contrasts and shared features"
+        },
+        "rule": {
+          "de": "Während mientras que einen Unterschied zeigt, verbindet tanto und como zwei Dinge, für die dieselbe Aussage gilt.",
+          "en": "Mientras que marks a contrast, while tanto and como link two things that share the same description."
+        },
+        "examples": [
+          {
+            "targetText": "Tu primo seguramente sale antes, pero a las ocho tanto la autovía como el centro están colapsados; esa comparación no refleja mi horario.",
+            "base": {
+              "de": "Dein Cousin fährt vermutlich früher, aber um acht sind Autobahn und Zentrum verstopft; der Vergleich passt nicht zu meiner Arbeitszeit.",
+              "en": "Your cousin probably leaves earlier, but at eight both the motorway and the centre are gridlocked; that comparison doesn't fit my schedule."
+            },
+            "highlights": [
+              "tanto la autovía como el centro"
+            ]
+          },
+          {
+            "targetText": "Por un lado, el coche es directo; por otro lado, el tren evita buscar aparcamiento.",
+            "base": {
+              "de": "Einerseits fährt das Auto direkt, andererseits erspart der Zug die Parkplatzsuche.",
+              "en": "On the one hand, the car is direct; on the other, the train avoids searching for parking."
+            },
+            "highlights": [
+              "Por un lado",
+              "por otro lado"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "mientras que",
+          "kind": "connector",
+          "base": {
+            "de": "während hingegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "tanto",
+          "kind": "connector",
+          "base": {
+            "de": "sowohl",
+            "en": "both"
+          }
+        },
+        {
+          "targetText": "autovía",
+          "kind": "noun",
+          "base": {
+            "de": "Autobahn",
+            "en": "motorway"
+          }
+        },
+        {
+          "targetText": "colapsados",
+          "lemma": "colapsado",
+          "kind": "adjective",
+          "base": {
+            "de": "völlig verstopft",
+            "en": "gridlocked"
+          }
+        },
+        {
+          "targetText": "horario",
+          "kind": "noun",
+          "base": {
+            "de": "Zeitplan / Arbeitszeit",
+            "en": "schedule"
+          }
+        },
+        {
+          "targetText": "se adapta",
+          "lemma": "adaptarse",
+          "kind": "verb",
+          "base": {
+            "de": "passt sich an / passt zu",
+            "en": "fits / adapts"
+          }
+        },
+        {
+          "targetText": "a diario",
+          "kind": "adverb",
+          "base": {
+            "de": "täglich",
+            "en": "daily"
+          }
+        },
+        {
+          "targetText": "por sí sola",
+          "kind": "phrase",
+          "base": {
+            "de": "für sich allein",
+            "en": "on its own"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "mientras",
+            "opción",
+            "adapta"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "tanto",
+            "autovía",
+            "colapsados"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "combino",
+            "lluvia",
+            "elección"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "mientras",
+        "familyKey": "mientras",
+        "surface": "mientras",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "El coche requiere atención, mientras que en el tren puedo leer.",
+          "base": {
+            "de": "Das Autofahren verlangt Aufmerksamkeit, während ich im Zug lesen kann.",
+            "en": "Driving requires attention, whereas I can read on the train."
+          }
+        },
+        "base": {
+          "de": "während; hier mit que zum Vergleich",
+          "en": "while; here with que for contrast"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "teletrabajo-o-presencial",
+      "title": {
+        "de": "Wie viel Präsenz?",
+        "en": "How much office time?"
+      },
+      "situation": {
+        "de": "Ihre Führungskraft bespricht vor dem neuen Vertrag die Wahl zwischen Homeoffice und drei Bürotagen.",
+        "en": "Before drafting your new contract, your manager discusses remote work versus three office days."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "usted",
+          "usted",
+          "usted"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "responsable",
+          "role": {
+            "de": "Führungskraft",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihre Führungskraft fragt: «Antes de redactar el contrato, ¿prefiere teletrabajo completo o tres días semanales en la oficina?»",
+        "en": "Your manager asks: «Antes de redactar el contrato, ¿prefiere teletrabajo completo o tres días semanales en la oficina?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "responsable",
+          "targetText": "Antes de redactar el contrato, ¿prefiere teletrabajo completo o tres días semanales en la oficina?",
+          "base": {
+            "de": "Bevor wir den Vertrag aufsetzen: Bevorzugen Sie vollständiges Homeoffice oder drei Bürotage pro Woche?",
+            "en": "Before we draft the contract, would you prefer fully remote work or three days a week in the office?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "usted",
+          "targetText": "El teletrabajo es la opción más eficaz de las dos: ofrece la flexibilidad que permite mantener un nivel alto de concentración.",
+          "base": {
+            "de": "Homeoffice ist die effektivere der beiden Optionen: Seine Flexibilität ermöglicht mir ein hohes Maß an Konzentration.",
+            "en": "Remote work is the more effective of the two options: it offers flexibility that allows a high level of concentration."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "responsable",
+          "targetText": "Pero el equipo pierde cohesión cuando nadie coincide en la oficina. ¿No debería contar también eso?",
+          "base": {
+            "de": "Aber der Zusammenhalt leidet, wenn sich niemand im Büro trifft. Sollte das nicht ebenfalls zählen?",
+            "en": "But the team loses cohesion when nobody overlaps in the office. Shouldn't that count too?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "usted",
+          "targetText": "Es cierto que la cohesión importa, pero esa flexibilidad me permite trabajar en mis mejores horas sin renunciar al contacto con el equipo.",
+          "base": {
+            "de": "Zusammenhalt ist wichtig, das stimmt, aber diese Flexibilität lässt mich zu meinen produktivsten Zeiten arbeiten, ohne den Kontakt zum Team aufzugeben.",
+            "en": "Team cohesion matters, admittedly, but that flexibility lets me work during my best hours without giving up contact with the team."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "responsable",
+          "targetText": "Le propongo teletrabajo con dos días presenciales fijos para todo el equipo. ¿Acepta esa condición?",
+          "base": {
+            "de": "Ich schlage Homeoffice mit zwei festen Bürotagen für das ganze Team vor. Akzeptieren Sie diese Bedingung?",
+            "en": "I propose remote work with two fixed office days for the whole team. Do you accept that condition?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "usted",
+          "targetText": "En definitiva, me inclino por esa fórmula: dos días compartidos mantienen el contacto y el resto permite concentrarme.",
+          "base": {
+            "de": "Letztlich entscheide ich mich für dieses Modell: Zwei gemeinsame Tage sichern den Kontakt, die übrigen ermöglichen konzentriertes Arbeiten.",
+            "en": "Ultimately, I favor that arrangement: two shared days maintain contact, and the rest let me concentrate."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "El teletrabajo es la opción más eficaz de las dos: ofrece ",
+        "chunks": [
+          "la flexibilidad",
+          "que permite",
+          "mantener",
+          "un nivel alto",
+          "de concentración."
+        ],
+        "distractors": [
+          "que impide",
+          "una interrupción"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " la cohesión importa, pero esa flexibilidad me permite trabajar en mis mejores horas sin "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " al contacto con el equipo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Es cierto que",
+            "acceptedAnswers": [
+              "Es cierto que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Es cierto que",
+              "A pesar de",
+              "En lugar de",
+              "Tanto como"
+            ]
+          },
+          {
+            "answer": "renunciar",
+            "acceptedAnswers": [
+              "renunciar"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "renunciar, Infinitiv nach sin",
+              "en": "renunciar, infinitive after sin"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", me inclino por esa fórmula: dos días compartidos mantienen el contacto y el resto permite concentrarme."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En definitiva",
+            "acceptedAnswers": [
+              "En definitiva"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En definitiva",
+              "A pesar de",
+              "En lugar de",
+              "Debido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "El teletrabajo es la opción más eficaz de las dos: ofrece la flexibilidad que permite ",
+        "answer": "mantener",
+        "acceptedAnswers": [
+          "mantener",
+          "conservar",
+          "sostener",
+          "preservar"
+        ],
+        "after": " un nivel alto de concentración.",
+        "fallbackChoices": [
+          "mantener",
+          "mantenido",
+          "manteniendo",
+          "mantengo"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine begründete Präferenz",
+          "en": "A reasoned preference"
+        },
+        "rule": {
+          "de": "Mit la opción más und einer klaren Vergleichsgruppe ordnen Sie eine Möglichkeit ein und erklären dann ihren entscheidenden Vorteil.",
+          "en": "La opción más with a clear comparison group ranks an option before you explain its decisive benefit."
+        },
+        "examples": [
+          {
+            "targetText": "El teletrabajo es la opción más eficaz de las dos: ofrece la flexibilidad que permite mantener un nivel alto de concentración.",
+            "base": {
+              "de": "Homeoffice ist die effektivere der beiden Optionen: Die Flexibilität ermöglicht ein hohes Maß an Konzentration.",
+              "en": "Remote work is the more effective option: its flexibility enables a high level of concentration."
+            },
+            "highlights": [
+              "la opción más eficaz de las dos"
+            ]
+          },
+          {
+            "targetText": "Me inclino por la opción más práctica de las tres, porque facilita la coordinación del equipo.",
+            "base": {
+              "de": "Ich tendiere zur praktischsten der drei Optionen, weil sie die Abstimmung im Team erleichtert.",
+              "en": "I favor the most practical of the three options because it makes team coordination easier."
+            },
+            "highlights": [
+              "Me inclino por",
+              "la opción más práctica de las tres"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "me inclino por",
+          "kind": "frame",
+          "base": {
+            "de": "ich tendiere zu",
+            "en": "I favor / lean toward"
+          }
+        },
+        {
+          "targetText": "es cierto que",
+          "kind": "frame",
+          "base": {
+            "de": "es stimmt, dass",
+            "en": "it is true that"
+          }
+        },
+        {
+          "targetText": "flexibilidad",
+          "kind": "noun",
+          "base": {
+            "de": "Flexibilität",
+            "en": "flexibility"
+          }
+        },
+        {
+          "targetText": "cohesión",
+          "kind": "noun",
+          "base": {
+            "de": "Zusammenhalt",
+            "en": "cohesion"
+          }
+        },
+        {
+          "targetText": "concentración",
+          "kind": "noun",
+          "base": {
+            "de": "Konzentration",
+            "en": "concentration"
+          }
+        },
+        {
+          "targetText": "mantener",
+          "kind": "verb",
+          "base": {
+            "de": "aufrechterhalten",
+            "en": "maintain"
+          }
+        },
+        {
+          "targetText": "eficaz",
+          "kind": "adjective",
+          "base": {
+            "de": "effektiv",
+            "en": "effective"
+          }
+        },
+        {
+          "targetText": "sin renunciar",
+          "kind": "phrase",
+          "base": {
+            "de": "ohne aufzugeben",
+            "en": "without giving up"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "flexibilidad",
+            "permite",
+            "concentración"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "cohesión",
+            "flexibilidad",
+            "renunciar"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "inclino",
+            "compartidos",
+            "contacto"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "flexibilidad",
+        "familyKey": "flexibilidad",
+        "surface": "flexibilidad",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Necesito flexibilidad para adaptar mi jornada a las tareas.",
+          "base": {
+            "de": "Ich brauche Flexibilität, um meinen Arbeitstag an die Aufgaben anzupassen.",
+            "en": "I need flexibility to adapt my working day to the tasks."
+          }
+        },
+        "base": {
+          "de": "Flexibilität",
+          "en": "flexibility"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "comprar-o-alquilar-la-maquina",
+      "title": {
+        "de": "Kaffeemaschine kaufen oder mieten",
+        "en": "Buying or renting the coffee machine"
+      },
+      "situation": {
+        "de": "Sie vergleichen am Serviceschalter Kauf und Miete einer gewerblichen Kaffeemaschine anhand des Modellblatts.",
+        "en": "At a service desk, you compare buying and renting a commercial coffee machine using its product sheet."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "usted",
+          "usted",
+          "usted"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "asesoria",
+          "role": {
+            "de": "Beratung am Serviceschalter",
+            "en": "service adviser"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Am Schalter heißt es: «La ficha prevé diez años de uso. ¿Le interesa comprar la cafetera o alquilarla con mantenimiento?»",
+        "en": "At the desk, the adviser says: «La ficha prevé diez años de uso. ¿Le interesa comprar la cafetera o alquilarla con mantenimiento?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "asesoria",
+          "targetText": "La ficha prevé diez años de uso. ¿Le interesa comprar la cafetera o alquilarla con mantenimiento?",
+          "base": {
+            "de": "Das Modellblatt sieht zehn Jahre Nutzungsdauer vor. Möchten Sie die Kaffeemaschine kaufen oder mit Wartung mieten?",
+            "en": "The product sheet projects ten years of use. Would you like to buy the coffee machine or rent it with maintenance?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "usted",
+          "targetText": "Aunque alquilar cuesta menos al principio, comprar supone una inversión que se amortiza con el uso continuado de la máquina.",
+          "base": {
+            "de": "Obwohl Mieten anfangs günstiger ist, stellt der Kauf eine Investition dar, die sich durch die dauerhafte Nutzung der Maschine amortisiert.",
+            "en": "Although renting costs less initially, buying is an investment that pays for itself through continued use of the machine."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "asesoria",
+          "targetText": "¿Y si queda obsoleta en dos años? Entonces no habrá recuperado lo que ha pagado.",
+          "base": {
+            "de": "Und wenn sie in zwei Jahren überholt ist? Dann haben Sie den Kaufpreis noch nicht wieder hereingeholt.",
+            "en": "What if it becomes obsolete in two years? You won't have recovered the purchase price by then."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "usted",
+          "targetText": "No es que caduque tras dos años, sino que se cambian piezas; según la ficha, el cuerpo dura una década.",
+          "base": {
+            "de": "Es ist nicht so, dass sie nach zwei Jahren ausgedient hat; die Teile werden ausgetauscht. Laut Modellblatt hält der Grundkörper ein Jahrzehnt.",
+            "en": "It doesn't simply expire after two years; parts are replaced. According to the sheet, the main body lasts a decade."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "asesoria",
+          "targetText": "En esta oferta solo garantizamos mantenimiento para máquinas alquiladas. Si la compra, tendrá que contratarlo aparte.",
+          "base": {
+            "de": "Bei diesem Angebot garantieren wir Wartung nur für Mietgeräte. Beim Kauf müssen Sie sie separat vereinbaren.",
+            "en": "This offer guarantees maintenance only for rented machines. If you buy, you'll need a separate maintenance agreement."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "counteroffer",
+          "register": "usted",
+          "targetText": "A corto plazo, propongo alquilar un año con mantenimiento y opción de compra, sin comprometernos todavía a adquirirla.",
+          "base": {
+            "de": "Kurzfristig schlage ich ein Jahr Miete mit Wartung und Kaufoption vor, ohne uns schon zum Kauf zu verpflichten.",
+            "en": "In the short term, I propose renting for a year with maintenance and a purchase option, without committing to buy yet."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Aunque alquilar cuesta menos al principio, comprar ",
+        "chunks": [
+          "supone",
+          "una inversión",
+          "que se amortiza",
+          "con el uso",
+          "continuado"
+        ],
+        "distractors": [
+          "que se pierde",
+          "ocasional"
+        ],
+        "frameSuffix": " de la máquina."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tras dos años, sino que se cambian piezas; según la ficha, el cuerpo dura una década."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "No es que",
+            "acceptedAnswers": [
+              "No es que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "No es que",
+              "No es para",
+              "No es por",
+              "No es con"
+            ]
+          },
+          {
+            "answer": "caduque",
+            "acceptedAnswers": [
+              "caduque"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "caducar, dritte Person Singular, Präsens Konjunktiv nach no es que",
+              "en": "caducar, third-person singular present subjunctive after no es que"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", propongo alquilar un año con mantenimiento y opción de compra, sin comprometernos todavía a adquirirla."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "A corto plazo",
+            "acceptedAnswers": [
+              "A corto plazo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "A corto plazo",
+              "A pesar de",
+              "En caso de",
+              "Debido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Aunque alquilar cuesta menos al principio, comprar supone una ",
+        "answer": "inversión",
+        "acceptedAnswers": [
+          "inversión",
+          "inversion"
+        ],
+        "after": " que se amortiza con el uso continuado de la máquina.",
+        "fallbackChoices": [
+          "inversión",
+          "avería",
+          "interrupción",
+          "caducidad"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Eine falsche Deutung korrigieren",
+          "en": "Correcting a mistaken interpretation"
+        },
+        "rule": {
+          "de": "No es que mit Konjunktiv weist eine Deutung zurück, bevor sino que die tatsächliche Erklärung einführt.",
+          "en": "No es que with the subjunctive rejects an interpretation before sino que introduces the actual explanation."
+        },
+        "examples": [
+          {
+            "targetText": "No es que caduque tras dos años, sino que se cambian piezas; según la ficha, el cuerpo dura una década.",
+            "base": {
+              "de": "Sie hat nicht nach zwei Jahren ausgedient; die Teile werden ausgetauscht, und laut Modellblatt hält der Grundkörper ein Jahrzehnt.",
+              "en": "It doesn't expire after two years; parts are replaced, and the sheet gives the body a decade of use."
+            },
+            "highlights": [
+              "No es que caduque",
+              "sino que"
+            ]
+          },
+          {
+            "targetText": "Aunque la compra cuesta más al principio, a largo plazo reduce las cuotas mensuales.",
+            "base": {
+              "de": "Obwohl der Kauf anfangs mehr kostet, senkt er langfristig die monatlichen Raten.",
+              "en": "Although buying costs more initially, it reduces monthly payments in the long term."
+            },
+            "highlights": [
+              "Aunque la compra cuesta",
+              "a largo plazo"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "no es que",
+          "kind": "frame",
+          "base": {
+            "de": "es ist nicht so, dass",
+            "en": "it is not that"
+          }
+        },
+        {
+          "targetText": "sino que",
+          "kind": "connector",
+          "base": {
+            "de": "sondern vielmehr",
+            "en": "but rather"
+          }
+        },
+        {
+          "targetText": "inversión",
+          "kind": "noun",
+          "base": {
+            "de": "Investition",
+            "en": "investment"
+          }
+        },
+        {
+          "targetText": "se amortiza",
+          "lemma": "amortizarse",
+          "kind": "verb",
+          "base": {
+            "de": "amortisiert sich",
+            "en": "pays for itself"
+          }
+        },
+        {
+          "targetText": "obsoleta",
+          "lemma": "obsoleto",
+          "kind": "adjective",
+          "base": {
+            "de": "technisch überholt",
+            "en": "obsolete"
+          }
+        },
+        {
+          "targetText": "piezas",
+          "lemma": "pieza",
+          "kind": "noun",
+          "base": {
+            "de": "Bauteile",
+            "en": "parts"
+          }
+        },
+        {
+          "targetText": "a largo plazo",
+          "kind": "frame",
+          "base": {
+            "de": "langfristig",
+            "en": "in the long term"
+          }
+        },
+        {
+          "targetText": "opción de compra",
+          "kind": "noun",
+          "base": {
+            "de": "Kaufoption",
+            "en": "purchase option"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "inversión",
+            "amortiza",
+            "continuado"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "caduque",
+            "piezas",
+            "década"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "propongo",
+            "mantenimiento",
+            "compra"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "inversión",
+        "familyKey": "inversión",
+        "surface": "inversión",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "La inversión inicial se recupera con el uso.",
+          "base": {
+            "de": "Die anfängliche Investition wird durch die Nutzung wieder hereingeholt.",
+            "en": "The initial investment is recovered through use."
+          }
+        },
+        "base": {
+          "de": "Investition",
+          "en": "investment"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "dos-planes-de-vacaciones",
+      "title": {
+        "de": "Strand oder Wanderroute",
+        "en": "Beach or walking route"
+      },
+      "situation": {
+        "de": "Ihr plant eine gemeinsame Urlaubswoche und vergleicht ein Strandhotel mit einer Route durch Asturien.",
+        "en": "You plan a week away together, comparing a beach hotel with a route through Asturias."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tú",
+          "tú",
+          "tú"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "amistad",
+          "role": {
+            "de": "Freundin",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Deine Freundin fragt: «Yo voto por una semana de playa. ¿Tú prefieres la ruta por Asturias?»",
+        "en": "Your friend asks: «Yo voto por una semana de playa. ¿Tú prefieres la ruta por Asturias?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "amistad",
+          "targetText": "Yo voto por una semana de playa. ¿Tú prefieres la ruta por Asturias?",
+          "base": {
+            "de": "Ich bin für eine Woche am Strand. Bevorzugst du die Route durch Asturien?",
+            "en": "I'd vote for a week at the beach. Do you prefer the route through Asturias?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "tú",
+          "targetText": "He sopesado ambos planes y prefiero una ruta que combina descanso con visitas a pueblos pequeños.",
+          "base": {
+            "de": "Ich habe beide Pläne abgewogen und bevorzuge eine Route, die Erholung mit Besuchen in kleinen Dörfern verbindet.",
+            "en": "I've weighed both plans and prefer a route that combines relaxation with visits to small villages."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "amistad",
+          "targetText": "Pero cuesta casi el doble y allí llueve a menudo. ¿Sigue pareciéndote mejor que el hotel?",
+          "base": {
+            "de": "Aber sie kostet fast doppelt so viel, und dort regnet es oft. Findest du sie trotzdem besser als das Hotel?",
+            "en": "But it costs almost twice as much, and it rains there often. Do you still think it's better than the hotel?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "tú",
+          "targetText": "A pesar de que cuesta más, cambiar de pueblo cada noche me ayuda a desconectar; la lluvia obliga a adaptar las etapas.",
+          "base": {
+            "de": "Obwohl es mehr kostet, hilft mir der tägliche Ortswechsel beim Abschalten; bei Regen müssen wir die Etappen anpassen.",
+            "en": "Although it costs more, changing villages each night helps me switch off; rain means adapting the stages."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "amistad",
+          "targetText": "¿Y si viene tu hermana, que no puede caminar tanto? Necesitamos un plan que también le sirva.",
+          "base": {
+            "de": "Und wenn deine Schwester mitkommt, die nicht so weit laufen kann? Der Plan muss auch für sie passen.",
+            "en": "What if your sister comes and can't walk that far? We need a plan that works for her too."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "tú",
+          "targetText": "Lo que podríamos hacer es combinar tres días de rutas cortas con cuatro de playa en el mismo pueblo.",
+          "base": {
+            "de": "Wir könnten drei Tage mit kurzen Wanderungen und vier Strandtage am selben Ort kombinieren.",
+            "en": "What we could do is combine three days of short walks with four beach days in the same village."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "He sopesado ambos planes y prefiero ",
+        "chunks": [
+          "una ruta",
+          "que combina",
+          "descanso con",
+          "visitas a pueblos",
+          "pequeños."
+        ],
+        "distractors": [
+          "que excluye",
+          "largas caminatas"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " cuesta más, cambiar de pueblo cada noche me "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " a desconectar; la lluvia obliga a adaptar las etapas."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "A pesar de que",
+            "acceptedAnswers": [
+              "A pesar de que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "A pesar de que",
+              "A pesar de",
+              "En lugar de",
+              "Con respecto a"
+            ]
+          },
+          {
+            "answer": "ayuda",
+            "acceptedAnswers": [
+              "ayuda"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "ayudar, Präsens Indikativ, Subjekt cambiar de pueblo cada noche",
+              "en": "ayudar, present indicative, subject cambiar de pueblo cada noche"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " hacer es combinar tres días de rutas cortas con cuatro de playa en el mismo pueblo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Lo que podríamos",
+            "acceptedAnswers": [
+              "Lo que podríamos",
+              "Lo que podriamos"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Lo que podríamos",
+              "Aunque podríamos",
+              "Porque podríamos",
+              "Ya que podríamos"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "He ",
+        "answer": "sopesado",
+        "acceptedAnswers": [
+          "sopesado",
+          "valorado",
+          "considerado",
+          "evaluado",
+          "comparado"
+        ],
+        "after": " ambos planes y prefiero una ruta que combina descanso con visitas a pueblos pequeños.",
+        "fallbackChoices": [
+          "sopesado",
+          "sopesando",
+          "sopesamos",
+          "sopesan"
+        ]
+      },
+      "pattern": {
+        "moveType": "propose",
+        "label": {
+          "de": "Einen gemeinsamen Vorschlag öffnen",
+          "en": "Opening a shared proposal"
+        },
+        "rule": {
+          "de": "Lo que podríamos hacer es stellt einen möglichen gemeinsamen Plan vor und leitet danach die konkrete Handlung ein.",
+          "en": "Lo que podríamos hacer es presents a possible shared plan before naming the concrete action."
+        },
+        "examples": [
+          {
+            "targetText": "Lo que podríamos hacer es combinar tres días de rutas cortas con cuatro de playa en el mismo pueblo.",
+            "base": {
+              "de": "Wir könnten drei Tage mit kurzen Wanderungen und vier Strandtage am selben Ort kombinieren.",
+              "en": "We could combine three days of short walks with four beach days in the same village."
+            },
+            "highlights": [
+              "Lo que podríamos hacer es"
+            ]
+          },
+          {
+            "targetText": "Aunque llueva, lo que podríamos hacer es acortar la etapa y visitar el pueblo.",
+            "base": {
+              "de": "Auch wenn es regnet, könnten wir die Etappe verkürzen und das Dorf besichtigen.",
+              "en": "Even if it rains, we could shorten the stage and visit the village."
+            },
+            "highlights": [
+              "Aunque llueva",
+              "lo que podríamos hacer es"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "a pesar de que",
+          "kind": "connector",
+          "base": {
+            "de": "obwohl",
+            "en": "although"
+          }
+        },
+        {
+          "targetText": "lo que podríamos hacer es",
+          "kind": "frame",
+          "base": {
+            "de": "wir könnten Folgendes tun",
+            "en": "what we could do is"
+          }
+        },
+        {
+          "targetText": "sopesado",
+          "lemma": "sopesar",
+          "kind": "verb",
+          "base": {
+            "de": "abgewogen",
+            "en": "weighed up"
+          }
+        },
+        {
+          "targetText": "ruta",
+          "kind": "noun",
+          "base": {
+            "de": "Route",
+            "en": "route"
+          }
+        },
+        {
+          "targetText": "descanso",
+          "kind": "noun",
+          "base": {
+            "de": "Erholung",
+            "en": "rest"
+          }
+        },
+        {
+          "targetText": "desconectar",
+          "kind": "verb",
+          "base": {
+            "de": "abschalten",
+            "en": "switch off"
+          }
+        },
+        {
+          "targetText": "etapas",
+          "lemma": "etapa",
+          "kind": "noun",
+          "base": {
+            "de": "Etappen",
+            "en": "stages"
+          }
+        },
+        {
+          "targetText": "combinar",
+          "kind": "verb",
+          "base": {
+            "de": "kombinieren",
+            "en": "combine"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "sopesado",
+            "combina",
+            "pueblos"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "pesar",
+            "desconectar",
+            "etapas"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "podríamos",
+            "cortas",
+            "playa"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "sopesar",
+        "familyKey": "sopesar",
+        "surface": "sopesado",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Conviene sopesar el coste y el esfuerzo antes de elegir.",
+          "base": {
+            "de": "Vor der Entscheidung sollte man Kosten und Aufwand abwägen.",
+            "en": "It helps to weigh cost and effort before choosing."
+          }
+        },
+        "base": {
+          "de": "abwägen",
+          "en": "weigh up"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "efectivo-o-pago-con-el-movil",
+      "title": {
+        "de": "Barzahlung und Handyzahlung",
+        "en": "Cash and mobile payments"
+      },
+      "situation": {
+        "de": "Ein Ladeninhaber erwägt, wegen der Gebühren nur noch Bargeld anzunehmen.",
+        "en": "A shop owner is considering accepting only cash because of payment fees."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "usted",
+          "usted",
+          "usted"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "comerciante",
+          "role": {
+            "de": "Ladeninhaber",
+            "en": "shop owner"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Der Ladeninhaber sagt: «Estoy pensando en aceptar solo efectivo para dejar de pagar comisiones. ¿Cómo lo ve?»",
+        "en": "The shop owner says: «Estoy pensando en aceptar solo efectivo para dejar de pagar comisiones. ¿Cómo lo ve?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "comerciante",
+          "targetText": "Estoy pensando en aceptar solo efectivo para dejar de pagar comisiones. ¿Cómo lo ve?",
+          "base": {
+            "de": "Ich überlege, nur noch Bargeld anzunehmen, um keine Gebühren mehr zu zahlen. Wie sehen Sie das?",
+            "en": "I'm considering accepting only cash to stop paying fees. What do you think?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "usted",
+          "targetText": "Aunque le cobren una comisión por cada pago, el móvil permite atender a clientes que llegan sin efectivo y acabarían marchándose.",
+          "base": {
+            "de": "Auch wenn Sie für jede Zahlung eine Gebühr zahlen, können Sie per Handy Kunden bedienen, die ohne Bargeld sonst wieder gehen würden.",
+            "en": "Even though you're charged a fee for each payment, mobile payments serve customers who arrive without cash and would otherwise leave."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "comerciante",
+          "targetText": "Esa comisión se come el margen de los productos pequeños. ¿Sabe cuánto me cuesta al año?",
+          "base": {
+            "de": "Diese Gebühr frisst die Marge bei kleinen Artikeln auf. Wissen Sie, was mich das jährlich kostet?",
+            "en": "That fee eats up the margin on small items. Do you know how much it costs me annually?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "usted",
+          "targetText": "Sin embargo, compare esa comisión anual con las ventas perdidas por falta de efectivo; eliminarla no garantiza ganar más.",
+          "base": {
+            "de": "Vergleichen Sie die Jahresgebühr aber mit den wegen fehlenden Bargelds verlorenen Verkäufen; ohne Gebühr verdienen Sie nicht automatisch mehr.",
+            "en": "However, compare that annual fee with sales lost because customers lack cash; removing it doesn't guarantee higher earnings."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "comerciante",
+          "targetText": "Mis clientes mayores prefieren efectivo y no quieren aprender nada nuevo. La solución debe servirles también.",
+          "base": {
+            "de": "Meine älteren Kunden bevorzugen Bargeld und wollen nichts Neues lernen. Die Lösung muss auch für sie funktionieren.",
+            "en": "My older customers prefer cash and don't want to learn anything new. The solution must work for them too."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "usted",
+          "targetText": "En definitiva, mantenga ambos medios: efectivo para quien lo prefiera y pago móvil para no perder las demás ventas.",
+          "base": {
+            "de": "Letztlich sollten Sie beides behalten: Bargeld für diejenigen, die es bevorzugen, und Handyzahlung, damit Ihnen andere Verkäufe nicht entgehen.",
+            "en": "Ultimately, keep both: cash for those who prefer it, and mobile payments to avoid losing other sales."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Aunque le cobren una comisión por cada pago, el móvil permite ",
+        "chunks": [
+          "atender",
+          "a clientes",
+          "que llegan sin efectivo",
+          "y acabarían",
+          "marchándose."
+        ],
+        "distractors": [
+          "rechazar a compradores",
+          "con dinero suficiente"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", compare esa comisión anual con las ventas "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " por falta de efectivo; eliminarla no garantiza ganar más."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Sin embargo",
+            "acceptedAnswers": [
+              "Sin embargo"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Sin embargo",
+              "A pesar de",
+              "En lugar de",
+              "Tanto como"
+            ]
+          },
+          {
+            "answer": "perdidas",
+            "acceptedAnswers": [
+              "perdidas"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "perder, Partizip als Adjektiv zu las ventas",
+              "en": "perder, participle agreeing with las ventas"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", mantenga ambos medios: efectivo para quien lo prefiera y pago móvil para no perder las demás ventas."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En definitiva",
+            "acceptedAnswers": [
+              "En definitiva"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En definitiva",
+              "A pesar de",
+              "En vez de",
+              "Debido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Aunque le ",
+        "answer": "cobren",
+        "acceptedAnswers": [
+          "cobren",
+          "cobran"
+        ],
+        "after": " una comisión por cada pago, el móvil permite atender a clientes que llegan sin efectivo y acabarían marchándose.",
+        "fallbackChoices": [
+          "cobren",
+          "cobrando",
+          "cobrado",
+          "cobrar"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Einen bekannten Einwand nicht ausschlaggebend finden",
+          "en": "Treating a known objection as non-decisive"
+        },
+        "rule": {
+          "de": "Aunque mit Konjunktiv kann eine bekannte Tatsache einräumen, die für Ihre Schlussfolgerung nicht entscheidend ist.",
+          "en": "Aunque with the subjunctive can concede a known fact that is not decisive for your conclusion."
+        },
+        "examples": [
+          {
+            "targetText": "Aunque le cobren una comisión por cada pago, el móvil permite atender a clientes que llegan sin efectivo y acabarían marchándose.",
+            "base": {
+              "de": "Trotz der tatsächlichen Zahlungsgebühr erreichen Sie per Handy Kunden, die ohne Bargeld sonst wieder gehen würden.",
+              "en": "Despite the actual payment fee, mobile payments serve customers who would otherwise leave without cash."
+            },
+            "highlights": [
+              "Aunque le cobren"
+            ]
+          },
+          {
+            "targetText": "Aunque la comisión exista, no es el único coste que importa a largo plazo.",
+            "base": {
+              "de": "Auch wenn es die Gebühr gibt, ist sie langfristig nicht der einzige relevante Kostenfaktor.",
+              "en": "Even though the fee exists, it is not the only cost that matters in the long term."
+            },
+            "highlights": [
+              "Aunque la comisión exista",
+              "a largo plazo"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "aunque",
+          "kind": "connector",
+          "base": {
+            "de": "auch wenn / obwohl",
+            "en": "even though / although"
+          }
+        },
+        {
+          "targetText": "sin embargo",
+          "kind": "connector",
+          "base": {
+            "de": "jedoch",
+            "en": "however"
+          }
+        },
+        {
+          "targetText": "comisión",
+          "kind": "noun",
+          "base": {
+            "de": "Gebühr / Provision",
+            "en": "fee / commission"
+          }
+        },
+        {
+          "targetText": "efectivo",
+          "kind": "noun",
+          "base": {
+            "de": "Bargeld",
+            "en": "cash"
+          }
+        },
+        {
+          "targetText": "margen",
+          "kind": "noun",
+          "base": {
+            "de": "Gewinnspanne",
+            "en": "margin"
+          }
+        },
+        {
+          "targetText": "ventas perdidas",
+          "kind": "noun",
+          "base": {
+            "de": "entgangene Verkäufe",
+            "en": "lost sales"
+          }
+        },
+        {
+          "targetText": "mantenga",
+          "lemma": "mantener",
+          "kind": "verb",
+          "base": {
+            "de": "behalten Sie bei",
+            "en": "keep / retain"
+          }
+        },
+        {
+          "targetText": "marchándose",
+          "lemma": "marcharse",
+          "kind": "verb",
+          "base": {
+            "de": "weggehend",
+            "en": "leaving"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "comisión",
+            "clientes",
+            "efectivo"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "comisión",
+            "ventas",
+            "eliminarla"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "mantenga",
+            "efectivo",
+            "móvil"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "comisión",
+        "familyKey": "comisión",
+        "surface": "comisión",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "La comisión reduce el margen de cada venta.",
+          "base": {
+            "de": "Die Gebühr verringert die Marge jedes Verkaufs.",
+            "en": "The fee reduces the margin on each sale."
+          }
+        },
+        "base": {
+          "de": "Gebühr / Provision",
+          "en": "fee / commission"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "clase-presencial-o-aplicacion",
+      "title": {
+        "de": "Sprachkurs oder App",
+        "en": "Language class or app"
+      },
+      "situation": {
+        "de": "Ein Freund spricht dich auf die Kosten deines Sprachkurses am Abend an.",
+        "en": "A friend asks about the cost of your evening language class."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tú",
+          "tú",
+          "tú"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "amigo",
+          "role": {
+            "de": "Freund",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Freund fragt: «Con tantas aplicaciones gratuitas, ¿qué te aporta seguir pagando el curso de la tarde?»",
+        "en": "Your friend asks: «Con tantas aplicaciones gratuitas, ¿qué te aporta seguir pagando el curso de la tarde?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "amigo",
+          "targetText": "Con tantas aplicaciones gratuitas, ¿qué te aporta seguir pagando el curso de la tarde?",
+          "base": {
+            "de": "Bei so vielen kostenlosen Apps: Was bringt es dir, weiter für den Abendkurs zu bezahlen?",
+            "en": "With so many free apps, what do you get from continuing to pay for the evening class?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "tú",
+          "targetText": "En primer lugar, necesito una clase que me exija participar en conversaciones reales, sin depender de mi constancia; además, recibo correcciones que la aplicación omite.",
+          "base": {
+            "de": "Erstens brauche ich einen Kurs, der mich unabhängig von meiner Ausdauer zur Teilnahme an echten Gesprächen verpflichtet; außerdem erhalte ich Korrekturen, die die App auslässt.",
+            "en": "First, I need a class that requires real conversation without relying on my persistence; I also get corrections the app misses."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "amigo",
+          "targetText": "Yo aprendí italiano solo con la aplicación y me entiendo con cualquiera. ¿Para qué pagar entonces?",
+          "base": {
+            "de": "Ich habe Italienisch nur mit der App gelernt und kann mich mit jedem verständigen. Wozu also bezahlen?",
+            "en": "I learned Italian with just the app and can communicate with anyone. Why pay, then?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "tú",
+          "targetText": "En parte tienes razón, pero tú mantienes la constancia sin un horario fijo; yo necesito ese compromiso para practicar con regularidad.",
+          "base": {
+            "de": "Teilweise hast du recht, aber du bleibst auch ohne festen Termin dran; ich brauche diese Verbindlichkeit, um regelmäßig zu üben.",
+            "en": "You're partly right, but you stay consistent without a fixed schedule; I need that commitment to practice regularly."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "amigo",
+          "targetText": "Con cien euros al mes y sin poder pagar ambas cosas, ¿qué eliges al final?",
+          "base": {
+            "de": "Wenn du hundert Euro im Monat hast und nicht beides bezahlen kannst: Was wählst du letztlich?",
+            "en": "With a hundred euros a month and no way to pay for both, what do you choose in the end?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "tú",
+          "targetText": "Por último, destino esos cien euros al curso y uso la versión gratuita de la aplicación como apoyo entre clases.",
+          "base": {
+            "de": "Als letzten Punkt investiere ich die hundert Euro in den Kurs und nutze zwischen den Stunden die kostenlose App-Version zur Unterstützung.",
+            "en": "Finally, I'll put those hundred euros toward the class and use the free app version for support between lessons."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "En primer lugar, necesito ",
+        "chunks": [
+          "una clase",
+          "que me exija",
+          "participar",
+          "en conversaciones",
+          "reales,"
+        ],
+        "distractors": [
+          "que me impida",
+          "imaginarias"
+        ],
+        "frameSuffix": " sin depender de mi constancia; además, recibo correcciones que la aplicación omite."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " tienes razón, pero tú "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " la constancia sin un horario fijo; yo necesito ese compromiso para practicar con regularidad."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En parte",
+            "acceptedAnswers": [
+              "En parte"
+            ],
+            "kind": "frame",
+            "choices": [
+              "En parte",
+              "A pesar de",
+              "En lugar de",
+              "Tanto como"
+            ]
+          },
+          {
+            "answer": "mantienes",
+            "acceptedAnswers": [
+              "mantienes"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "mantener, tú, Präsens Indikativ",
+              "en": "mantener, tú, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", destino esos cien euros al curso y uso la versión gratuita de la aplicación como apoyo entre clases."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Por último",
+            "acceptedAnswers": [
+              "Por último",
+              "Por ultimo"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Por último",
+              "A pesar de",
+              "En vez de",
+              "Debido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "En primer lugar, necesito una clase que me exija participar en conversaciones reales, sin ",
+        "answer": "depender",
+        "acceptedAnswers": [
+          "depender"
+        ],
+        "after": " de mi constancia; además, recibo correcciones que la aplicación omite.",
+        "fallbackChoices": [
+          "depender",
+          "dependiendo",
+          "dependido",
+          "dependo"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Ein Argument geordnet aufbauen",
+          "en": "Building an ordered argument"
+        },
+        "rule": {
+          "de": "En primer lugar eröffnet einen Punkt, además ergänzt ihn und por último führt den abschließenden Punkt ein.",
+          "en": "En primer lugar opens a point, además adds to it, and por último introduces the final point."
+        },
+        "examples": [
+          {
+            "targetText": "En primer lugar, necesito una clase que me exija participar en conversaciones reales, sin depender de mi constancia; además, recibo correcciones que la aplicación omite.",
+            "base": {
+              "de": "Erstens brauche ich einen Kurs mit verbindlichen echten Gesprächen, unabhängig von meiner Ausdauer; außerdem erhalte ich Korrekturen, die die App auslässt.",
+              "en": "First, I need a class requiring real conversation, without depending on persistence; I also receive corrections the app misses."
+            },
+            "highlights": [
+              "En primer lugar",
+              "además"
+            ]
+          },
+          {
+            "targetText": "La clase es la opción más útil de las dos para hablar; por último, el horario me ayuda a mantener la constancia.",
+            "base": {
+              "de": "Zum Sprechen ist der Kurs die nützlichere Option; als letzten Punkt hilft mir der feste Termin, dranzubleiben.",
+              "en": "The class is the more useful option for speaking; finally, the schedule helps me stay consistent."
+            },
+            "highlights": [
+              "la opción más útil de las dos",
+              "por último"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "en primer lugar",
+          "kind": "connector",
+          "base": {
+            "de": "erstens / zunächst",
+            "en": "first / firstly"
+          }
+        },
+        {
+          "targetText": "además",
+          "kind": "connector",
+          "base": {
+            "de": "außerdem",
+            "en": "additionally"
+          }
+        },
+        {
+          "targetText": "constancia",
+          "kind": "noun",
+          "base": {
+            "de": "Ausdauer / Beständigkeit",
+            "en": "persistence / consistency"
+          }
+        },
+        {
+          "targetText": "correcciones",
+          "lemma": "corrección",
+          "kind": "noun",
+          "base": {
+            "de": "Korrekturen",
+            "en": "corrections"
+          }
+        },
+        {
+          "targetText": "omite",
+          "lemma": "omitir",
+          "kind": "verb",
+          "base": {
+            "de": "lässt aus",
+            "en": "omits"
+          }
+        },
+        {
+          "targetText": "compromiso",
+          "kind": "noun",
+          "base": {
+            "de": "Verbindlichkeit / Verpflichtung",
+            "en": "commitment"
+          }
+        },
+        {
+          "targetText": "con regularidad",
+          "kind": "adverb",
+          "base": {
+            "de": "regelmäßig",
+            "en": "regularly"
+          }
+        },
+        {
+          "targetText": "por último",
+          "kind": "connector",
+          "base": {
+            "de": "schließlich / als letzten Punkt",
+            "en": "finally / lastly"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "constancia",
+            "exija",
+            "participar"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "razón",
+            "constancia",
+            "compromiso"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "último",
+            "gratuita",
+            "apoyo"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "constancia",
+        "familyKey": "constancia",
+        "surface": "constancia",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "La constancia importa más que estudiar muchas horas una sola vez.",
+          "base": {
+            "de": "Beständigkeit ist wichtiger als einmalig viele Stunden zu lernen.",
+            "en": "Consistency matters more than studying for many hours just once."
+          }
+        },
+        "base": {
+          "de": "Ausdauer / Beständigkeit",
+          "en": "persistence / consistency"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "dos-ofertas-de-trabajo",
+      "title": {
+        "de": "Zwei Stellenangebote",
+        "en": "Two job offers"
+      },
+      "situation": {
+        "de": "Sie besprechen mit Ihrer Mentorin eine gut bezahlte befristete Stelle und eine schlechter bezahlte unbefristete Stelle.",
+        "en": "You discuss a well-paid fixed-term job and a lower-paid permanent post with your mentor."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "usted",
+          "usted",
+          "usted"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "mentoria",
+          "role": {
+            "de": "Mentorin",
+            "en": "mentor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihre Mentorin fragt: «La empresa emergente paga más, pero el organismo público ofrece estabilidad. ¿Qué le atrae de cada oferta?»",
+        "en": "Your mentor asks: «La empresa emergente paga más, pero el organismo público ofrece estabilidad. ¿Qué le atrae de cada oferta?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "mentoria",
+          "targetText": "La empresa emergente paga más, pero el organismo público ofrece estabilidad. ¿Qué le atrae de cada oferta?",
+          "base": {
+            "de": "Das Start-up zahlt mehr, aber die öffentliche Einrichtung bietet Stabilität. Was reizt Sie an den Angeboten?",
+            "en": "The start-up pays more, but the public body offers stability. What attracts you to each offer?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "usted",
+          "targetText": "Aunque el contrato es temporal, me atrae la primera oferta porque ofrece un proyecto que exige resolver problemas de complejidad creciente cada semana.",
+          "base": {
+            "de": "Obwohl der Vertrag befristet ist, reizt mich das erste Angebot, weil das Projekt jede Woche die Lösung zunehmend komplexer Probleme verlangt.",
+            "en": "Although the contract is temporary, the first offer appeals to me because the project requires solving increasingly complex problems every week."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "mentoria",
+          "targetText": "El sueldo no lo es todo. ¿Ha pensado en la incertidumbre cuando termine el contrato dentro de un año?",
+          "base": {
+            "de": "Das Gehalt ist nicht alles. Haben Sie an die Unsicherheit nach Vertragsende in einem Jahr gedacht?",
+            "en": "Salary isn't everything. Have you considered the uncertainty when the contract ends in a year?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "usted",
+          "targetText": "La primera implica incertidumbre, pero aprendo más, mientras que la segunda ofrece estabilidad y menos posibilidades de desarrollar nuevas capacidades.",
+          "base": {
+            "de": "Die erste bringt Unsicherheit, aber mehr Lernmöglichkeiten, während die zweite Stabilität und weniger Möglichkeiten zur Weiterentwicklung bietet.",
+            "en": "The first brings uncertainty but more learning, whereas the second offers stability and fewer opportunities to develop new skills."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "mentoria",
+          "targetText": "Resúmamelo en una frase, como se lo explicaría a su familia antes de firmar.",
+          "base": {
+            "de": "Fassen Sie es in einem Satz zusammen, so wie Sie es Ihrer Familie vor der Unterschrift erklären würden.",
+            "en": "Summarize it in one sentence, as you would explain it to your family before signing."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "usted",
+          "targetText": "Me gustaría que fuera fácil, pero ahora elijo aprender y acepto la incertidumbre de un contrato temporal.",
+          "base": {
+            "de": "Ich wünschte, es wäre einfach, aber jetzt entscheide ich mich fürs Lernen und nehme die Unsicherheit eines befristeten Vertrags in Kauf.",
+            "en": "I wish it were easy, but right now I choose to learn and accept the uncertainty of a temporary contract."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Aunque el contrato es temporal, me atrae la primera oferta porque ofrece ",
+        "chunks": [
+          "un proyecto",
+          "que exige",
+          "resolver problemas",
+          "de complejidad",
+          "creciente"
+        ],
+        "distractors": [
+          "que evita",
+          "de dificultad fija"
+        ],
+        "frameSuffix": " cada semana."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "La primera implica incertidumbre, pero aprendo más, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " la segunda "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " estabilidad y menos posibilidades de desarrollar nuevas capacidades."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "mientras que",
+            "acceptedAnswers": [
+              "mientras que"
+            ],
+            "kind": "connector",
+            "choices": [
+              "mientras que",
+              "en lugar de",
+              "a pesar de",
+              "con respecto a"
+            ]
+          },
+          {
+            "answer": "ofrece",
+            "acceptedAnswers": [
+              "ofrece"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "ofrecer, la segunda oferta, Präsens Indikativ",
+              "en": "ofrecer, la segunda oferta, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " fácil, pero ahora elijo aprender y acepto la incertidumbre de un contrato temporal."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Me gustaría que",
+            "acceptedAnswers": [
+              "Me gustaría que",
+              "Me gustaria que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Me gustaría que",
+              "Me gustaría de",
+              "Me gustaría para",
+              "Me gustaría por"
+            ]
+          },
+          {
+            "answer": "fuera",
+            "acceptedAnswers": [
+              "fuera",
+              "fuese"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "ser, die Entscheidung, Imperfekt Konjunktiv nach me gustaría que",
+              "en": "ser, the decision, imperfect subjunctive after me gustaría que"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Aunque el contrato es temporal, me atrae la primera oferta porque ofrece un proyecto que ",
+        "answer": "exige",
+        "acceptedAnswers": [
+          "exige",
+          "requiere",
+          "implica",
+          "supone"
+        ],
+        "after": " resolver problemas de complejidad creciente cada semana.",
+        "fallbackChoices": [
+          "exige",
+          "exigir",
+          "exigiendo",
+          "exigido"
+        ]
+      },
+      "pattern": {
+        "moveType": "summarize",
+        "label": {
+          "de": "Wunsch und tatsächliche Entscheidung",
+          "en": "A wish and the actual decision"
+        },
+        "rule": {
+          "de": "Me gustaría que mit Imperfekt Konjunktiv benennt einen Wunsch, den Sie anschließend Ihrer tatsächlichen Entscheidung gegenüberstellen können.",
+          "en": "Me gustaría que with the imperfect subjunctive expresses a wish that you can then contrast with your actual decision."
+        },
+        "examples": [
+          {
+            "targetText": "Me gustaría que fuera fácil, pero ahora elijo aprender y acepto la incertidumbre de un contrato temporal.",
+            "base": {
+              "de": "Ich wünschte, es wäre einfach, aber jetzt entscheide ich mich fürs Lernen und akzeptiere die Unsicherheit der Befristung.",
+              "en": "I wish it were easy, but right now I choose to learn and accept the uncertainty of a temporary contract."
+            },
+            "highlights": [
+              "Me gustaría que fuera"
+            ]
+          },
+          {
+            "targetText": "Aunque el contrato es temporal, me gustaría que la experiencia abriera otras puertas.",
+            "base": {
+              "de": "Obwohl der Vertrag befristet ist, wünsche ich mir, dass die Erfahrung neue Türen öffnet.",
+              "en": "Although the contract is temporary, I would like the experience to open other doors."
+            },
+            "highlights": [
+              "Aunque el contrato es",
+              "me gustaría que la experiencia abriera"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "mientras que",
+          "kind": "connector",
+          "base": {
+            "de": "während hingegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "me gustaría que",
+          "kind": "frame",
+          "base": {
+            "de": "ich wünschte, dass",
+            "en": "I would like / wish"
+          }
+        },
+        {
+          "targetText": "incertidumbre",
+          "kind": "noun",
+          "base": {
+            "de": "Unsicherheit",
+            "en": "uncertainty"
+          }
+        },
+        {
+          "targetText": "temporal",
+          "kind": "adjective",
+          "base": {
+            "de": "befristet",
+            "en": "temporary / fixed-term"
+          }
+        },
+        {
+          "targetText": "estabilidad",
+          "kind": "noun",
+          "base": {
+            "de": "Stabilität",
+            "en": "stability"
+          }
+        },
+        {
+          "targetText": "capacidades",
+          "lemma": "capacidad",
+          "kind": "noun",
+          "base": {
+            "de": "Fähigkeiten",
+            "en": "skills / abilities"
+          }
+        },
+        {
+          "targetText": "desarrollar",
+          "kind": "verb",
+          "base": {
+            "de": "entwickeln",
+            "en": "develop"
+          }
+        },
+        {
+          "targetText": "implica",
+          "lemma": "implicar",
+          "kind": "verb",
+          "base": {
+            "de": "bringt mit sich",
+            "en": "involves"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "proyecto",
+            "exige",
+            "resolver"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "incertidumbre",
+            "estabilidad",
+            "capacidades"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "gustaría",
+            "incertidumbre",
+            "temporal"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "incertidumbre",
+        "familyKey": "incertidumbre",
+        "surface": "incertidumbre",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "La incertidumbre pesa cuando el contrato termina pronto.",
+          "base": {
+            "de": "Die Unsicherheit fällt ins Gewicht, wenn der Vertrag bald endet.",
+            "en": "Uncertainty matters when the contract ends soon."
+          }
+        },
+        "base": {
+          "de": "Unsicherheit",
+          "en": "uncertainty"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "mudarse-o-quedarse-en-el-barrio",
+      "title": {
+        "de": "Umziehen oder bleiben",
+        "en": "Moving or staying"
+      },
+      "situation": {
+        "de": "Dein Nachbar hört, dass du für eine Stelle nach Valencia ziehen könntest, und spricht dich darauf an.",
+        "en": "Your neighbor hears you may move to Valencia for work and brings it up."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tú",
+          "tú",
+          "tú"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "vecino",
+          "role": {
+            "de": "Nachbar",
+            "en": "neighbor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Nachbar fragt: «Me han dicho que quizá te mudes a Valencia por trabajo. ¿Qué te ofrece frente a quedarte aquí?»",
+        "en": "Your neighbor asks: «Me han dicho que quizá te mudes a Valencia por trabajo. ¿Qué te ofrece frente a quedarte aquí?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "vecino",
+          "targetText": "Me han dicho que quizá te mudes a Valencia por trabajo. ¿Qué te ofrece frente a quedarte aquí?",
+          "base": {
+            "de": "Ich habe gehört, dass du vielleicht wegen der Arbeit nach Valencia ziehst. Was spricht dafür, statt hierzubleiben?",
+            "en": "I heard you might move to Valencia for work. What does it offer compared with staying here?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "tú",
+          "targetText": "Por un lado, Valencia ofrece mejor trabajo; por otro lado, aquí tengo un entorno que facilita mantener el contacto con mis amistades de siempre.",
+          "base": {
+            "de": "Einerseits bietet Valencia eine bessere Arbeit; andererseits habe ich hier ein Umfeld, das den Kontakt zu meinen langjährigen Freunden erleichtert.",
+            "en": "On the one hand, Valencia offers better work; on the other, my surroundings here make it easier to keep in touch with established friends."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "vecino",
+          "targetText": "Pero tus amigos y tu familia están aquí. ¿De verdad vas a tirar todo eso por un trabajo?",
+          "base": {
+            "de": "Aber deine Freunde und Familie sind hier. Willst du das wirklich alles für eine Stelle wegwerfen?",
+            "en": "But your friends and family are here. Are you really going to throw all that away for a job?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "tú",
+          "targetText": "Déjame terminar: no es que no valore ese entorno, sino que también puedo construir otro sin romper los vínculos que ya tengo.",
+          "base": {
+            "de": "Lass mich ausreden: Ich schätze mein Umfeld durchaus, kann mir aber ein neues aufbauen, ohne bestehende Bindungen abzubrechen.",
+            "en": "Let me finish: it's not that I don't value these surroundings, but I can build new ones without breaking existing ties."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "vecino",
+          "targetText": "¿Y qué le dirías a tu pareja, que prefiere quedarse? La decisión también le afecta.",
+          "base": {
+            "de": "Und was würdest du deinem Partner sagen, der lieber bleiben möchte? Die Entscheidung betrifft euch beide.",
+            "en": "What would you say to your partner, who prefers to stay? The decision affects them too."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "tú",
+          "targetText": "Le propondría probar un año y alquilar nuestro piso durante ese tiempo; si no funciona, volvemos sin perder nuestra base aquí.",
+          "base": {
+            "de": "Ich würde ein Probejahr vorschlagen und unsere Wohnung solange vermieten; klappt es nicht, kommen wir zurück und behalten hier unsere Basis.",
+            "en": "I'd suggest trying a year and renting out our flat meanwhile; if it doesn't work, we return without losing our base here."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Por un lado, Valencia ofrece mejor trabajo; por otro lado, aquí tengo ",
+        "chunks": [
+          "un entorno",
+          "que facilita",
+          "mantener",
+          "el contacto con",
+          "mis amistades"
+        ],
+        "distractors": [
+          "que impide",
+          "cortar"
+        ],
+        "frameSuffix": " de siempre."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": no es que no "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ese entorno, sino que también puedo construir otro sin romper los vínculos que ya tengo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Déjame terminar",
+            "acceptedAnswers": [
+              "Déjame terminar",
+              "Dejame terminar"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Déjame terminar",
+              "Déjame terminado",
+              "Déjame termine",
+              "Déjame terminando"
+            ]
+          },
+          {
+            "answer": "valore",
+            "acceptedAnswers": [
+              "valore"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "valorar, yo, Präsens Konjunktiv nach no es que",
+              "en": "valorar, yo, present subjunctive after no es que"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Le "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " un año y alquilar nuestro piso durante ese tiempo; si no funciona, volvemos sin perder nuestra base aquí."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "propondría probar",
+            "acceptedAnswers": [
+              "propondría probar",
+              "propondria probar"
+            ],
+            "kind": "frame",
+            "choices": [
+              "propondría probar",
+              "propondría probado",
+              "propondría pruebe",
+              "propondría prueba"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Por un lado, Valencia ofrece mejor trabajo; por otro lado, aquí tengo un entorno que facilita ",
+        "answer": "mantener",
+        "acceptedAnswers": [
+          "mantener",
+          "conservar",
+          "preservar"
+        ],
+        "after": " el contacto con mis amistades de siempre.",
+        "fallbackChoices": [
+          "mantener",
+          "mantenido",
+          "manteniendo",
+          "mantengo"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Ausreden und die eigene Position richtigstellen",
+          "en": "Finishing your point and correcting its interpretation"
+        },
+        "rule": {
+          "de": "Déjame terminar fordert bei einer Unterbrechung das Wort zurück, bevor no es que und sino que die eigene Haltung präzisieren.",
+          "en": "Déjame terminar reclaims the floor after an interruption before no es que and sino que clarify your position."
+        },
+        "examples": [
+          {
+            "targetText": "Déjame terminar: no es que no valore ese entorno, sino que también puedo construir otro sin romper los vínculos que ya tengo.",
+            "base": {
+              "de": "Lass mich ausreden: Ich schätze das Umfeld, kann aber ein neues aufbauen, ohne bestehende Bindungen zu lösen.",
+              "en": "Let me finish: I do value these surroundings, but can build new ones without breaking existing ties."
+            },
+            "highlights": [
+              "Déjame terminar",
+              "no es que no valore",
+              "sino que"
+            ]
+          },
+          {
+            "targetText": "No es que quiera alejarme de mi familia, sino que necesito probar esta oportunidad.",
+            "base": {
+              "de": "Ich will mich nicht von meiner Familie entfernen, sondern brauche die Chance, diese Möglichkeit auszuprobieren.",
+              "en": "It's not that I want distance from my family; I need to try this opportunity."
+            },
+            "highlights": [
+              "No es que quiera",
+              "sino que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "déjame terminar",
+          "kind": "frame",
+          "base": {
+            "de": "lass mich ausreden",
+            "en": "let me finish"
+          }
+        },
+        {
+          "targetText": "no es que",
+          "kind": "frame",
+          "base": {
+            "de": "es ist nicht so, dass",
+            "en": "it is not that"
+          }
+        },
+        {
+          "targetText": "entorno",
+          "kind": "noun",
+          "base": {
+            "de": "Umfeld",
+            "en": "surroundings / social environment"
+          }
+        },
+        {
+          "targetText": "vínculos",
+          "lemma": "vínculo",
+          "kind": "noun",
+          "base": {
+            "de": "Bindungen",
+            "en": "ties"
+          }
+        },
+        {
+          "targetText": "valore",
+          "lemma": "valorar",
+          "kind": "verb",
+          "base": {
+            "de": "ich schätze, im Konjunktiv",
+            "en": "I value, in the subjunctive"
+          }
+        },
+        {
+          "targetText": "amistades",
+          "lemma": "amistad",
+          "kind": "noun",
+          "base": {
+            "de": "Freundschaften",
+            "en": "friendships"
+          }
+        },
+        {
+          "targetText": "construir",
+          "kind": "verb",
+          "base": {
+            "de": "aufbauen",
+            "en": "build"
+          }
+        },
+        {
+          "targetText": "propondría",
+          "lemma": "proponer",
+          "kind": "verb",
+          "base": {
+            "de": "ich würde vorschlagen",
+            "en": "I would suggest"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "entorno",
+            "facilita",
+            "amistades"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Déjame",
+            "entorno",
+            "vínculos"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "propondría",
+            "probar",
+            "volvemos"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "entorno",
+        "familyKey": "entorno",
+        "surface": "entorno",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Cambiar de entorno no obliga a perder las amistades.",
+          "base": {
+            "de": "Ein neues Umfeld bedeutet nicht, seine Freundschaften aufzugeben.",
+            "en": "Changing your surroundings doesn't mean losing your friendships."
+          }
+        },
+        "base": {
+          "de": "Umfeld",
+          "en": "surroundings / social environment"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "recomendar-una-medida-a-la-comision",
+      "title": {
+        "de": "Eine Maßnahme gegen Lärm",
+        "en": "Choosing a measure against noise"
+      },
+      "situation": {
+        "de": "Ein Bewohnerausschuss vergleicht die nächtliche Schließung des Platzes, mehr Streifen und einen lärmdämpfenden Belag.",
+        "en": "A residents' committee compares closing the square at night, extra patrols and noise-reducing paving."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "usted",
+          "usted",
+          "usted"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "comite",
+          "role": {
+            "de": "Ausschussvorsitz",
+            "en": "committee chair"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Der Ausschussvorsitz fragt: «Tenemos tres propuestas contra el ruido: cerrar la plaza, aumentar patrullas o cambiar el pavimento. ¿Cómo las compara?»",
+        "en": "The chair asks: «Tenemos tres propuestas contra el ruido: cerrar la plaza, aumentar patrullas o cambiar el pavimento. ¿Cómo las compara?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "comite",
+          "targetText": "Tenemos tres propuestas contra el ruido: cerrar la plaza, aumentar patrullas o cambiar el pavimento. ¿Cómo las compara?",
+          "base": {
+            "de": "Wir haben drei Vorschläge gegen den Lärm: Platzschließung, mehr Streifen oder neuer Belag. Wie vergleichen Sie diese?",
+            "en": "We have three proposals against noise: close the square, increase patrols or change the paving. How do you compare them?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "usted",
+          "targetText": "En primer lugar, cerrar molesta; en segundo lugar, patrullar cuesta; por último, el pavimento ofrece una solución cuya duración justifica el coste inicial.",
+          "base": {
+            "de": "Erstens stört eine Schließung die Anwohner, zweitens kosten Streifen Geld; drittens bietet der Belag eine dauerhafte Lösung, die die Anfangskosten rechtfertigt.",
+            "en": "First, closing causes inconvenience; second, patrols cost money; finally, paving offers a solution whose durability justifies the initial cost."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "comite",
+          "targetText": "La tercera opción no entra en el presupuesto de este año. ¿Qué nos queda entonces?",
+          "base": {
+            "de": "Die dritte Option passt nicht ins diesjährige Budget. Was bleibt uns dann?",
+            "en": "The third option exceeds this year's budget. What does that leave us with?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "usted",
+          "targetText": "Es cierto que el pavimento no es viable este año, pero las patrullas solas no eliminan el origen del ruido.",
+          "base": {
+            "de": "Der Belag ist dieses Jahr tatsächlich nicht umsetzbar, aber Streifen allein beseitigen die Lärmursache nicht.",
+            "en": "The paving isn't feasible this year, admittedly, but patrols alone don't remove the source of the noise."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "comite",
+          "targetText": "La medida elegida debe ser reversible si los vecinos protestan. Formule su recomendación con esa condición.",
+          "base": {
+            "de": "Bei Protesten der Anwohner muss die Maßnahme rückgängig zu machen sein. Formulieren Sie Ihre Empfehlung unter dieser Bedingung.",
+            "en": "The chosen measure must be reversible if residents protest. Make your recommendation with that condition in mind."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "usted",
+          "targetText": "En definitiva, recomendaría probar el cierre nocturno durante tres meses: es viable y podemos retirarlo si genera rechazo.",
+          "base": {
+            "de": "Letztlich empfehle ich eine dreimonatige nächtliche Probeschließung: Sie ist umsetzbar und kann bei Ablehnung zurückgenommen werden.",
+            "en": "Ultimately, I'd recommend trying night-time closure for three months: it's feasible and we can withdraw it if people reject it."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "En primer lugar, cerrar molesta; en segundo lugar, patrullar cuesta; por último, el pavimento ",
+        "chunks": [
+          "ofrece",
+          "una solución",
+          "cuya duración",
+          "justifica",
+          "el coste inicial."
+        ],
+        "distractors": [
+          "cuyo precio",
+          "rechaza"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " el pavimento no es viable este año, pero las patrullas solas no "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " el origen del ruido."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Es cierto que",
+            "acceptedAnswers": [
+              "Es cierto que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Es cierto que",
+              "A pesar de",
+              "En lugar de",
+              "Tanto como"
+            ]
+          },
+          {
+            "answer": "eliminan",
+            "acceptedAnswers": [
+              "eliminan"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "eliminar, las patrullas, Präsens Indikativ",
+              "en": "eliminar, las patrullas, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", recomendaría probar el cierre nocturno durante tres meses: es viable y podemos retirarlo si "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " rechazo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En definitiva",
+            "acceptedAnswers": [
+              "En definitiva"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En definitiva",
+              "A pesar de",
+              "En lugar de",
+              "Debido a"
+            ]
+          },
+          {
+            "answer": "genera",
+            "acceptedAnswers": [
+              "genera"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "generar, el cierre, Präsens Indikativ",
+              "en": "generar, el cierre, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "En primer lugar, cerrar molesta; en segundo lugar, patrullar cuesta; por último, el pavimento ofrece una solución ",
+        "answer": "cuya duración",
+        "acceptedAnswers": [
+          "cuya duración",
+          "cuya duracion",
+          "cuya durabilidad"
+        ],
+        "after": " justifica el coste inicial.",
+        "fallbackChoices": [
+          "cuya duración",
+          "cuyo duración",
+          "cuyos duración",
+          "cuyas duración"
+        ]
+      },
+      "pattern": {
+        "moveType": "conclude",
+        "label": {
+          "de": "Eine Empfehlung begrenzen",
+          "en": "Qualifying a recommendation"
+        },
+        "rule": {
+          "de": "Recomendaría macht die Empfehlung höflich, während die Probezeit und die Rücknahmebedingung ihren Umfang klar begrenzen.",
+          "en": "Recomendaría makes the recommendation polite, while a trial period and a withdrawal condition clearly limit its scope."
+        },
+        "examples": [
+          {
+            "targetText": "En definitiva, recomendaría probar el cierre nocturno durante tres meses: es viable y podemos retirarlo si genera rechazo.",
+            "base": {
+              "de": "Ich empfehle eine dreimonatige nächtliche Probeschließung; sie ist umsetzbar und bei Ablehnung rückgängig zu machen.",
+              "en": "I'd recommend a three-month trial of night-time closure; it's feasible and can be withdrawn if rejected."
+            },
+            "highlights": [
+              "recomendaría probar",
+              "si genera rechazo"
+            ]
+          },
+          {
+            "targetText": "Recomendaría una prueba limitada antes de aplicar la medida de forma permanente.",
+            "base": {
+              "de": "Vor einer dauerhaften Einführung würde ich einen begrenzten Versuch empfehlen.",
+              "en": "I'd recommend a limited trial before making the measure permanent."
+            },
+            "highlights": [
+              "Recomendaría una prueba limitada"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "en segundo lugar",
+          "kind": "connector",
+          "base": {
+            "de": "zweitens",
+            "en": "secondly"
+          }
+        },
+        {
+          "targetText": "en definitiva",
+          "kind": "connector",
+          "base": {
+            "de": "letztlich",
+            "en": "ultimately"
+          }
+        },
+        {
+          "targetText": "viable",
+          "kind": "adjective",
+          "base": {
+            "de": "umsetzbar / machbar",
+            "en": "feasible"
+          }
+        },
+        {
+          "targetText": "pavimento",
+          "kind": "noun",
+          "base": {
+            "de": "Bodenbelag",
+            "en": "paving"
+          }
+        },
+        {
+          "targetText": "patrullas",
+          "lemma": "patrulla",
+          "kind": "noun",
+          "base": {
+            "de": "Streifen",
+            "en": "patrols"
+          }
+        },
+        {
+          "targetText": "reversible",
+          "kind": "adjective",
+          "base": {
+            "de": "rückgängig zu machen",
+            "en": "reversible"
+          }
+        },
+        {
+          "targetText": "rechazo",
+          "kind": "noun",
+          "base": {
+            "de": "Ablehnung",
+            "en": "rejection"
+          }
+        },
+        {
+          "targetText": "retirarlo",
+          "lemma": "retirar",
+          "kind": "verb",
+          "base": {
+            "de": "es zurücknehmen",
+            "en": "withdraw it"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "duración",
+            "justifica",
+            "inicial"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "viable",
+            "patrullas",
+            "origen"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "recomendaría",
+            "viable",
+            "retirarlo"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "viable",
+        "familyKey": "viable",
+        "surface": "viable",
+        "turnIndex": 3,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Una medida viable debe caber en el presupuesto disponible.",
+          "base": {
+            "de": "Eine umsetzbare Maßnahme muss ins verfügbare Budget passen.",
+            "en": "A feasible measure must fit the available budget."
+          }
+        },
+        "base": {
+          "de": "umsetzbar / machbar",
+          "en": "feasible"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

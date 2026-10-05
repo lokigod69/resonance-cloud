@@ -1,0 +1,446 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/spanish/p1.json": "1bd42900b06500ac2da60e57cd31a44e1151dcb339452f9267208deae4c691f5",
+    "frontend/content-drafts/b2-2026-10/spanish/p2.json": "f1e5306ad2f726eafa6bfdae22326968f76c3787fa8091be1f6c834c49063288"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/spanish/specification.json": "64a1eb47e5983ce9d0fd029cd4e37a1d2ff92aea4907efc7c64feed725609a2b",
+    "frontend/content-drafts/b2-2026-10/latin-prerequisites.json": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+    "frontend/content-drafts/b1-2026-10/spanish-plan.json": "f41a5887d0fde378ecf2f8a589ad720be67e1e31ae24f15d74985354ed2973a9"
+  },
+  "scope": "Reviewed canonical content for local TTS only; not listening, native-human or publication approval.",
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "ES-B2-IR-01",
+      "severity": "HIGH",
+      "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+      "jsonPointer": "/lessons/5/build/chunks",
+      "issue": "P2 L6 has a second grammatical, scenario-compatible order using every current chip once, with no punctuation change: [3,4,0,1,2] gives 'Según este papel, se presenta en plazo tu desacuerdo y se adjunta un escrito en el que explicas la prueba correspondiente.' Submitting the objection and attaching a statement explaining the evidence is a plausible reading of the visible task. The current chips therefore do not uniquely enforce the intended procedural sentence.",
+      "concreteFix": "Have Fable regroup the same canonical span with lexical anchors. Candidate for review: ['un escrito en','el que','explicas tu','desacuerdo','y se adjunta']. It preserves the eleven-token span, five chips, se+adjunta binding, both speech anchors and the canonical spoken line. Recheck permutations before accepting.",
+      "affectsLocalTts": false
+    },
+    {
+      "id": "ES-B2-IR-02",
+      "severity": "HIGH",
+      "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+      "jsonPointer": "/lessons/6/build/chunks",
+      "issue": "P2 L7 permits [0,4,1,2,3]: '...sin una clientela del puesto que cubriera los gastos básicos de funcionamiento.' This is a natural, meaning-preserving alternative. Moving the period attached to 'del puesto.' is the only obstacle; the controlling segmentation contract expressly prohibits punctuation as the sole order guard.",
+      "concreteFix": "Have Fable regroup without changing speech, for example ['una clientela que','cubriera los gastos','básicos de','funcionamiento del','puesto.']. Recheck every chip and permutation; the proposed span remains eleven tokens and includes clientela/gastos.",
+      "affectsLocalTts": false
+    },
+    {
+      "id": "ES-B2-IR-03",
+      "severity": "HIGH",
+      "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+      "jsonPointer": "/lessons/7/build/chunks",
+      "issue": "P2 L8 permits [0,4,1,2,3] after relocating the final period: '...se envía un mensaje al especialista que especifica cuándo hay que acudir.' The message-to-specialist construction is grammatical. The visible scene does not supply an exact recipient/order constraint; only the punctuation on 'al especialista.' forces the stored order. The spec requires a lexical anchor.",
+      "concreteFix": "Have Fable regroup the unchanged speech, for example ['un mensaje que','especifica cuándo','hay que','acudir al','especialista.']. Then recheck permutations, chunk sizes and the mensaje/especifica speech anchors. Do not claim the unseen process explanation fixes chip order.",
+      "affectsLocalTts": false
+    },
+    {
+      "id": "ES-B2-IR-04",
+      "severity": "MEDIUM",
+      "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json",
+      "jsonPointer": "/lessons/3/build/distractors/1",
+      "issue": "P1 L4 'ocasional' yields the grammatical sentence 'comprar supone una inversión que se amortiza con el uso ocasional de la máquina.' Neither the visible product-sheet claim of ten years nor the opening question establishes a usage frequency or break-even calculation that makes occasional use impossible. It is weaker than the intended argument, but defensible; difference from 'continuado' alone does not make it wrong.",
+      "concreteFix": "Replace this distractor with a form that is grammatically incompatible with the visible span, and check it against every insertion/order. This is a chip-pool change only; retain canonical continuado and the spoken line.",
+      "affectsLocalTts": false
+    },
+    {
+      "id": "ES-B2-IR-05",
+      "severity": "MEDIUM",
+      "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json",
+      "jsonPointer": "/lessons/6/build/distractors/1",
+      "issue": "P1 L7 'imaginarias' can produce 'necesito una clase que me exija participar en conversaciones imaginarias, sin depender de mi constancia; además, recibo correcciones que la aplicación omite.' Role-play conversations in a class can serve precisely that practice-and-correction argument. No visible exercise cue requires real rather than imagined scenarios.",
+      "concreteFix": "Replace imaginarias with a distractor that cannot form a valid response in the frame; a grammatical-form distractor such as 'que participo' is a candidate for Fable to check. Keep reales and all recorded speech unchanged.",
+      "affectsLocalTts": false
+    },
+    {
+      "id": "ES-B2-IR-06",
+      "severity": "HIGH",
+      "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+      "jsonPointer": "/lessons/4/build/distractors/1",
+      "issue": "P2 L5 'el importe anual' substitutes cleanly for 'la cuota mensual': 'Perdí la confianza en el proveedor que había decidido subir el importe anual del servicio dos veces sin previo aviso, de modo que cambié.' This gives the same loss-of-trust explanation. The neighbor's monthly bill does not establish how the learner's former provider priced its service; neither a hidden base gloss nor the desired canonical wording rules this out.",
+      "concreteFix": "Replace el importe anual with an unambiguously wrong grammatical-form chip, for example subido subject to Fable's full insertion/permutation check. Retain the recorded line and current answer chips.",
+      "affectsLocalTts": false
+    },
+    {
+      "id": "ES-B2-IR-07",
+      "severity": "HIGH",
+      "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+      "jsonPointer": "/lessons/8/build/distractors/1",
+      "issue": "P2 L9 'una economía' produces '...eso, a su vez, fomenta una economía que depende menos del vehículo particular.' Reduced car dependence can coherently be framed as an economic benefit in this debate. It is grammatical and consistent with the visible policy argument, so it is not a reliable wrong chip.",
+      "concreteFix": "Replace una economía with a form that cannot fit this singular relative clause, such as que dependan subject to Fable review of all uses. Do not change canonical movilidad or the audio text to solve the chip issue.",
+      "affectsLocalTts": false
+    },
+    {
+      "id": "ES-B2-IR-08",
+      "severity": "HIGH",
+      "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json",
+      "jsonPointer": "/lessons",
+      "issue": "Several P1 open recall slots omit direct, grammatical alternatives in their actual before/after context: L1 'un trayecto que me lleva casi dos horas diarias' (lleva); L5 'He analizado ambos planes...' (analizado); L6 'Aunque le carguen una comisión...' (carguen); L8 'un proyecto que demanda resolver problemas...' (demanda); L9 'facilita sostener el contacto...' (sostener); L10 'una solución cuya vida útil justifica el coste inicial' (cuya vida útil). None is listed in the corresponding recall.acceptedAnswers. The recall schema has no form/lexeme cue. A future exact-list implementation would incorrectly reject these unless an explicit, tested recall instruction constrains the learner to reproduce the heard text.",
+      "concreteFix": "Have Fable arbitrate and add these concrete alternatives at /lessons/0,4,5,7,8,9/recall/acceptedAnswers (including explicitly supported accent variants where applicable), or provide an actually rendered, tested instruction that makes exact recitation the task. Preserve one accepted fallback choice and the canonical reconstruction. Do not assume a hidden translation or requiredCarrier is such an instruction.",
+      "affectsLocalTts": false
+    },
+    {
+      "id": "ES-B2-IR-09",
+      "severity": "HIGH",
+      "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+      "jsonPointer": "/lessons",
+      "issue": "Several P2 open recall slots have the same missing-alternative class: L1 'un aumento que se debe a la revisión...' (se debe); L2 'los residuos que se asignan al color indicado...' (se asignan); L3 'fotos necesarias para ultimar el diseño definitivo...' (ultimar); L6 'y se incorpora la prueba correspondiente' (incorpora); L7 'una clientela que costeara/costease los gastos básicos...' (costeara, costease); L8 'cuándo hay que consultar al especialista' (consultar); L10 'nos dijeron que se había aceptado el proyecto' (aceptado). These fit the written slot and the argument, but are absent from acceptedAnswers. Current source offers no visible lexical cue for the open recall slot.",
+      "concreteFix": "Have Fable arbitrate and include these alternatives at /lessons/0,1,2,5,6,7,9/recall/acceptedAnswers, or constrain the exercise through an implemented and verified exact-recall instruction. Maintain the existing canonical utterances and exactly one accepted fallback choice. No claim is made about a B2 runtime currently rejecting them, because that runtime does not exist.",
+      "affectsLocalTts": false
+    },
+    {
+      "id": "ES-B2-IR-10",
+      "severity": "MEDIUM",
+      "file": "tmp/V4_EXPANSION_20261003/B2_SPANISH_P1_P2_SPEC.json",
+      "jsonPointer": "/acceptedInput/implementationStatus",
+      "issue": "Publication still lacks B2 renderer evidence. Twenty-five form blanks rely on their authored lemma/person/tense cues; those cues make their restricted lists defensible, but the present offline gate only requires cue data and cannot prove visibility. The future grading/normalization contract is also unverified. This is a publication hold, not evidence of a broken existing B2 renderer or of incorrect spoken content.",
+      "concreteFix": "Before publication, implement and inspect the actual B2 exercises in German and English, prove every form cue is visible before answering, and verify the authored acceptedAnswers and choice behavior. Treat leading ¿/¡ normalization as pending unless implemented. Do not import B1 display or normalization guarantees. Keep source review flags/nativeStatus pending.",
+      "affectsLocalTts": false
+    },
+    {
+      "id": "ES-B2-IR-11",
+      "severity": "LOW",
+      "file": "tmp/V4_EXPANSION_20261003/B2_SPANISH_P1_P2_SPEC.json",
+      "jsonPointer": "/semanticReviewRules/3",
+      "issue": "The generic rule requires at least one staged carrier in every learner turn, but P1 L5's authored opening ('He sopesado ambos planes y prefiero una ruta que combina...') contains none named in the staging tables. The controlling lesson's own openingMove prescribes essentially this sopesar/preference form without a named carrier, while its later turns correctly use a pesar de que and lo que podríamos hacer es. This is an internal specification tension, not an established Spanish error.",
+      "concreteFix": "Have Fable explicitly record that this lesson-specific opening is licensed, or align the staging rule/lesson specification. Do not automatically rewrite the canonical line from the generic rule alone. Any eventual speech edit requires a new content/hash review.",
+      "affectsLocalTts": false
+    }
+  ],
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "codex-independent-spanish-b2-p1-p2-full20-20261005",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "a024b59a835f3b24eb54b94318c2345656244ea5ee553143d0380ea5f54c1885",
+  "rawReview": {
+    "reviewer": {
+      "id": "codex-independent-spanish-b2-p1-p2-full20-20261005",
+      "task": "/root/spanish_b2_content_review",
+      "role": "fresh independent content reviewer",
+      "date": "2026-10-05",
+      "scope": "Read-only sources and app; one authorized scratch JSON report; no paid calls, database writes or git changes."
+    },
+    "verdict": "REWORK",
+    "localTtsContentVerdict": "PASS",
+    "unresolvedLocalTtsBlockers": [],
+    "publicationVerdict": "REWORK",
+    "reviewedSources": {
+      "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json": "1bd42900b06500ac2da60e57cd31a44e1151dcb339452f9267208deae4c691f5",
+      "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json": "f1e5306ad2f726eafa6bfdae22326968f76c3787fa8091be1f6c834c49063288",
+      "tmp/V4_EXPANSION_20261003/B2_SPANISH_P1_P2_SPEC.json": "64a1eb47e5983ce9d0fd029cd4e37a1d2ff92aea4907efc7c64feed725609a2b",
+      "tmp/V4_EXPANSION_20261003/B2_LATIN_PREREQUISITES.json": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+      "orchestrator/frontend/scripts/lib/guidedLatinB2Drafts.ts": "374fdad69e9468aee8429c08ac7f0c28d9401e1021874edb54943e023b5c0503",
+      "tmp/V4_EXPANSION_20261003/new-content/spanish-b2-p1.json": "0008f46ea69c144fd63b35b7680ed5dd42599aab9c7995cb1e2bbbd6100aea51",
+      "tmp/V4_EXPANSION_20261003/new-content/spanish-b2-p2.json": "8d30ba66338941d1fe3c31a2441de498a688706ac7f64f537e487111db0b7b7e",
+      "tmp/V4_EXPANSION_20261003/new-content/spanish-b2-author-report.md": "a18ee17c6472820d422b43aba288332cd919bc7bdd3f896f747523e4c185f39a",
+      "tmp/V4_EXPANSION_20261003/B2_SPANISH_P1_P2_FABLE_REVIEW_RAW.json": "fd0ff2b9e545db1d18c8be0b5164dd1b2a0f469fd30818b744a301366e6eab5a",
+      "tmp/V4_EXPANSION_20261003/B2_SPANISH_P1_P2_COVERAGE_REISSUE_FABLE_REVIEW_RAW.json": "fea6a9601b09e223405521fc7ef321ac41f50623bacba976e49b56c9c737c38d"
+    },
+    "fullCoverage": {
+      "personallyReadEveryField": true,
+      "lessonsRead": 20,
+      "files": [
+        {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        }
+      ],
+      "fieldsRead": [
+        "all file metadata and spec/ledger references",
+        "lessonNumber, slug, title, situation, episodeShape, registerPlan, interlocutors, speakerGender, sceneCaption",
+        "every dialogue targetText, base.de, base.en and role/move/register field",
+        "build framePrefix, every chunk and distractor, frameSuffix",
+        "every cloze and synthesis segment, blank, acceptedAnswer, choice, cue and moveBlankIndex",
+        "recall before, answer, every acceptedAnswer, after and fallbackChoice",
+        "pattern moveType, label, rule, every example/base/highlight",
+        "every term targetText, lemma, kind and de/en base",
+        "every speak turnIndex, requiredToken and profile",
+        "all trophy lemma/familyKey/surface/turnIndex/pos/example/base fields",
+        "all pending review flags, verdict, failingCriteria, reviewers, nativeStatus and acknowledgedWarnings"
+      ],
+      "actualCounts": {
+        "dialogueTurns": 120,
+        "learnerTurns": 60,
+        "builds": 20,
+        "chunks": 100,
+        "distractors": 40,
+        "clozeBlanks": 40,
+        "synthesisBlanks": 27,
+        "recalls": 20,
+        "patternExamples": 40,
+        "terms": 160,
+        "speechTargets": 60,
+        "trophies": 20,
+        "formCues": 25
+      },
+      "originalSourceCoverage": "Every unchanged original field was established byte-equivalent at parsed-value level to the fully read final files. Every changed original value was read in the raw Fable report and the recursive old/new diff. In-memory replay of all nine Fable edits exactly reproduced both final JSON objects.",
+      "chipReview": "Personally challenged the visible prefix/chunks/suffix and both distractors for all twenty builds; three concrete alternative orders and four also-correct distractors recorded. No claim of a machine linguistic proof over every hypothetical sentence.",
+      "blankReview": "All forty presented cloze/synthesis choice sets and all twenty recall fallback sets checked. Their offered wrong choices do not supply a defensible rival in the stated form context. All twenty-five form cues checked semantically as authored; their runtime visibility remains unverified. Both non-choice connector slots checked. Open recall omissions retained with concrete examples."
+    },
+    "checks": {
+      "nativeEsES": "No canonical spoken-language blocker found. Ordinary es-ES vocabulary, readable spelled-out numbers and paired interrogative punctuation; occasional stylistic awkwardness does not justify changing recording text.",
+      "genderAndRegister": "All sixty learner turns are speaker-gender neutral; constant usted/tú matches the per-lesson Spanish contract and de bases. No German-specific tense bans imported.",
+      "sixTurnArgument": "All twenty episodes have a genuine challenge/precision turn and a distinct final steer; learner replies answer the challenge and closing task. P1 L8's salary lead-in is loose but the new uncertainty challenge is answered; P1 L2's reading/schedule link is weak but understandable, not a spoken blocker.",
+      "staging": "First-turn whitelist and the separate answer/closing move sets checked correctly. Three learner moves differ in each episode. Required lesson grammar is present and used with truthful mood/tense readings; the P1 L5 generic-rule tension is retained as ES-B2-IR-11.",
+      "basesAndPatterns": "German and English bases preserve substance and address. Patterns describe the actual constructions without a material false rule. P2 L5 compares is a defensible volitional request reading; P2 L3 lo fijaremos has a recoverable formato referent. P2 L9 contabiliza remains accurately represented by verzeichnet/records.",
+      "trophies": "All twenty allocations, distinct families, single-token lemmas, surfaces, declared dialogue anchors and examples checked against the Spanish ledger/prerequisite record. Required speech tokens include the trophy surface where used. Did not invent a general ban on recycling every earlier-trophy word as a grammar form.",
+      "scenarioBoundaries": "Recycling, appeal procedure, centre waiting estimate, contract penalty and permit discussion remain bounded by fictional documents or interlocutor statements. No unbounded legal/medical guarantee found. Trust-critical replacements are not applied; final wording belongs to Fable.",
+      "sourceState": "All review flags remain false, verdict pending, reviewer arrays empty, nativeStatus unreviewed. This report does not authorize TTS provider calls, activation, publication or changes to those flags.",
+      "runtimeEvidence": "The actual Latin B2 gate was read in full. Targeted source search found B2 draft identifiers in offline gates, with no B2 renderer consumer in frontend/src. No B1 behavior was used to certify B2 cue visibility or normalization.",
+      "verification": "Exact requested SHA-256 fingerprints verified; nine-edit in-memory replay passed for both final objects; count audit passed. The already-reported actual gate PASS was not rerun, and no broad tests, browser checks, paid calls or database operations were run."
+    },
+    "findings": [
+      {
+        "id": "ES-B2-IR-01",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons/5/build/chunks",
+        "issue": "P2 L6 has a second grammatical, scenario-compatible order using every current chip once, with no punctuation change: [3,4,0,1,2] gives 'Según este papel, se presenta en plazo tu desacuerdo y se adjunta un escrito en el que explicas la prueba correspondiente.' Submitting the objection and attaching a statement explaining the evidence is a plausible reading of the visible task. The current chips therefore do not uniquely enforce the intended procedural sentence.",
+        "concreteFix": "Have Fable regroup the same canonical span with lexical anchors. Candidate for review: ['un escrito en','el que','explicas tu','desacuerdo','y se adjunta']. It preserves the eleven-token span, five chips, se+adjunta binding, both speech anchors and the canonical spoken line. Recheck permutations before accepting.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-02",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons/6/build/chunks",
+        "issue": "P2 L7 permits [0,4,1,2,3]: '...sin una clientela del puesto que cubriera los gastos básicos de funcionamiento.' This is a natural, meaning-preserving alternative. Moving the period attached to 'del puesto.' is the only obstacle; the controlling segmentation contract expressly prohibits punctuation as the sole order guard.",
+        "concreteFix": "Have Fable regroup without changing speech, for example ['una clientela que','cubriera los gastos','básicos de','funcionamiento del','puesto.']. Recheck every chip and permutation; the proposed span remains eleven tokens and includes clientela/gastos.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-03",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons/7/build/chunks",
+        "issue": "P2 L8 permits [0,4,1,2,3] after relocating the final period: '...se envía un mensaje al especialista que especifica cuándo hay que acudir.' The message-to-specialist construction is grammatical. The visible scene does not supply an exact recipient/order constraint; only the punctuation on 'al especialista.' forces the stored order. The spec requires a lexical anchor.",
+        "concreteFix": "Have Fable regroup the unchanged speech, for example ['un mensaje que','especifica cuándo','hay que','acudir al','especialista.']. Then recheck permutations, chunk sizes and the mensaje/especifica speech anchors. Do not claim the unseen process explanation fixes chip order.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-04",
+        "severity": "MEDIUM",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json",
+        "jsonPointer": "/lessons/3/build/distractors/1",
+        "issue": "P1 L4 'ocasional' yields the grammatical sentence 'comprar supone una inversión que se amortiza con el uso ocasional de la máquina.' Neither the visible product-sheet claim of ten years nor the opening question establishes a usage frequency or break-even calculation that makes occasional use impossible. It is weaker than the intended argument, but defensible; difference from 'continuado' alone does not make it wrong.",
+        "concreteFix": "Replace this distractor with a form that is grammatically incompatible with the visible span, and check it against every insertion/order. This is a chip-pool change only; retain canonical continuado and the spoken line.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-05",
+        "severity": "MEDIUM",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json",
+        "jsonPointer": "/lessons/6/build/distractors/1",
+        "issue": "P1 L7 'imaginarias' can produce 'necesito una clase que me exija participar en conversaciones imaginarias, sin depender de mi constancia; además, recibo correcciones que la aplicación omite.' Role-play conversations in a class can serve precisely that practice-and-correction argument. No visible exercise cue requires real rather than imagined scenarios.",
+        "concreteFix": "Replace imaginarias with a distractor that cannot form a valid response in the frame; a grammatical-form distractor such as 'que participo' is a candidate for Fable to check. Keep reales and all recorded speech unchanged.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-06",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons/4/build/distractors/1",
+        "issue": "P2 L5 'el importe anual' substitutes cleanly for 'la cuota mensual': 'Perdí la confianza en el proveedor que había decidido subir el importe anual del servicio dos veces sin previo aviso, de modo que cambié.' This gives the same loss-of-trust explanation. The neighbor's monthly bill does not establish how the learner's former provider priced its service; neither a hidden base gloss nor the desired canonical wording rules this out.",
+        "concreteFix": "Replace el importe anual with an unambiguously wrong grammatical-form chip, for example subido subject to Fable's full insertion/permutation check. Retain the recorded line and current answer chips.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-07",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons/8/build/distractors/1",
+        "issue": "P2 L9 'una economía' produces '...eso, a su vez, fomenta una economía que depende menos del vehículo particular.' Reduced car dependence can coherently be framed as an economic benefit in this debate. It is grammatical and consistent with the visible policy argument, so it is not a reliable wrong chip.",
+        "concreteFix": "Replace una economía with a form that cannot fit this singular relative clause, such as que dependan subject to Fable review of all uses. Do not change canonical movilidad or the audio text to solve the chip issue.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-08",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json",
+        "jsonPointer": "/lessons",
+        "issue": "Several P1 open recall slots omit direct, grammatical alternatives in their actual before/after context: L1 'un trayecto que me lleva casi dos horas diarias' (lleva); L5 'He analizado ambos planes...' (analizado); L6 'Aunque le carguen una comisión...' (carguen); L8 'un proyecto que demanda resolver problemas...' (demanda); L9 'facilita sostener el contacto...' (sostener); L10 'una solución cuya vida útil justifica el coste inicial' (cuya vida útil). None is listed in the corresponding recall.acceptedAnswers. The recall schema has no form/lexeme cue. A future exact-list implementation would incorrectly reject these unless an explicit, tested recall instruction constrains the learner to reproduce the heard text.",
+        "concreteFix": "Have Fable arbitrate and add these concrete alternatives at /lessons/0,4,5,7,8,9/recall/acceptedAnswers (including explicitly supported accent variants where applicable), or provide an actually rendered, tested instruction that makes exact recitation the task. Preserve one accepted fallback choice and the canonical reconstruction. Do not assume a hidden translation or requiredCarrier is such an instruction.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-09",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons",
+        "issue": "Several P2 open recall slots have the same missing-alternative class: L1 'un aumento que se debe a la revisión...' (se debe); L2 'los residuos que se asignan al color indicado...' (se asignan); L3 'fotos necesarias para ultimar el diseño definitivo...' (ultimar); L6 'y se incorpora la prueba correspondiente' (incorpora); L7 'una clientela que costeara/costease los gastos básicos...' (costeara, costease); L8 'cuándo hay que consultar al especialista' (consultar); L10 'nos dijeron que se había aceptado el proyecto' (aceptado). These fit the written slot and the argument, but are absent from acceptedAnswers. Current source offers no visible lexical cue for the open recall slot.",
+        "concreteFix": "Have Fable arbitrate and include these alternatives at /lessons/0,1,2,5,6,7,9/recall/acceptedAnswers, or constrain the exercise through an implemented and verified exact-recall instruction. Maintain the existing canonical utterances and exactly one accepted fallback choice. No claim is made about a B2 runtime currently rejecting them, because that runtime does not exist.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-10",
+        "severity": "MEDIUM",
+        "file": "tmp/V4_EXPANSION_20261003/B2_SPANISH_P1_P2_SPEC.json",
+        "jsonPointer": "/acceptedInput/implementationStatus",
+        "issue": "Publication still lacks B2 renderer evidence. Twenty-five form blanks rely on their authored lemma/person/tense cues; those cues make their restricted lists defensible, but the present offline gate only requires cue data and cannot prove visibility. The future grading/normalization contract is also unverified. This is a publication hold, not evidence of a broken existing B2 renderer or of incorrect spoken content.",
+        "concreteFix": "Before publication, implement and inspect the actual B2 exercises in German and English, prove every form cue is visible before answering, and verify the authored acceptedAnswers and choice behavior. Treat leading ¿/¡ normalization as pending unless implemented. Do not import B1 display or normalization guarantees. Keep source review flags/nativeStatus pending.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-11",
+        "severity": "LOW",
+        "file": "tmp/V4_EXPANSION_20261003/B2_SPANISH_P1_P2_SPEC.json",
+        "jsonPointer": "/semanticReviewRules/3",
+        "issue": "The generic rule requires at least one staged carrier in every learner turn, but P1 L5's authored opening ('He sopesado ambos planes y prefiero una ruta que combina...') contains none named in the staging tables. The controlling lesson's own openingMove prescribes essentially this sopesar/preference form without a named carrier, while its later turns correctly use a pesar de que and lo que podríamos hacer es. This is an internal specification tension, not an established Spanish error.",
+        "concreteFix": "Have Fable explicitly record that this lesson-specific opening is licensed, or align the staging rule/lesson specification. Do not automatically rewrite the canonical line from the generic rule alone. Any eventual speech edit requires a new content/hash review.",
+        "affectsLocalTts": false
+      }
+    ],
+    "remainingPublicationFindings": [
+      {
+        "id": "ES-B2-IR-01",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons/5/build/chunks",
+        "issue": "P2 L6 has a second grammatical, scenario-compatible order using every current chip once, with no punctuation change: [3,4,0,1,2] gives 'Según este papel, se presenta en plazo tu desacuerdo y se adjunta un escrito en el que explicas la prueba correspondiente.' Submitting the objection and attaching a statement explaining the evidence is a plausible reading of the visible task. The current chips therefore do not uniquely enforce the intended procedural sentence.",
+        "concreteFix": "Have Fable regroup the same canonical span with lexical anchors. Candidate for review: ['un escrito en','el que','explicas tu','desacuerdo','y se adjunta']. It preserves the eleven-token span, five chips, se+adjunta binding, both speech anchors and the canonical spoken line. Recheck permutations before accepting.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-02",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons/6/build/chunks",
+        "issue": "P2 L7 permits [0,4,1,2,3]: '...sin una clientela del puesto que cubriera los gastos básicos de funcionamiento.' This is a natural, meaning-preserving alternative. Moving the period attached to 'del puesto.' is the only obstacle; the controlling segmentation contract expressly prohibits punctuation as the sole order guard.",
+        "concreteFix": "Have Fable regroup without changing speech, for example ['una clientela que','cubriera los gastos','básicos de','funcionamiento del','puesto.']. Recheck every chip and permutation; the proposed span remains eleven tokens and includes clientela/gastos.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-03",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons/7/build/chunks",
+        "issue": "P2 L8 permits [0,4,1,2,3] after relocating the final period: '...se envía un mensaje al especialista que especifica cuándo hay que acudir.' The message-to-specialist construction is grammatical. The visible scene does not supply an exact recipient/order constraint; only the punctuation on 'al especialista.' forces the stored order. The spec requires a lexical anchor.",
+        "concreteFix": "Have Fable regroup the unchanged speech, for example ['un mensaje que','especifica cuándo','hay que','acudir al','especialista.']. Then recheck permutations, chunk sizes and the mensaje/especifica speech anchors. Do not claim the unseen process explanation fixes chip order.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-04",
+        "severity": "MEDIUM",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json",
+        "jsonPointer": "/lessons/3/build/distractors/1",
+        "issue": "P1 L4 'ocasional' yields the grammatical sentence 'comprar supone una inversión que se amortiza con el uso ocasional de la máquina.' Neither the visible product-sheet claim of ten years nor the opening question establishes a usage frequency or break-even calculation that makes occasional use impossible. It is weaker than the intended argument, but defensible; difference from 'continuado' alone does not make it wrong.",
+        "concreteFix": "Replace this distractor with a form that is grammatically incompatible with the visible span, and check it against every insertion/order. This is a chip-pool change only; retain canonical continuado and the spoken line.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-05",
+        "severity": "MEDIUM",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json",
+        "jsonPointer": "/lessons/6/build/distractors/1",
+        "issue": "P1 L7 'imaginarias' can produce 'necesito una clase que me exija participar en conversaciones imaginarias, sin depender de mi constancia; además, recibo correcciones que la aplicación omite.' Role-play conversations in a class can serve precisely that practice-and-correction argument. No visible exercise cue requires real rather than imagined scenarios.",
+        "concreteFix": "Replace imaginarias with a distractor that cannot form a valid response in the frame; a grammatical-form distractor such as 'que participo' is a candidate for Fable to check. Keep reales and all recorded speech unchanged.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-06",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons/4/build/distractors/1",
+        "issue": "P2 L5 'el importe anual' substitutes cleanly for 'la cuota mensual': 'Perdí la confianza en el proveedor que había decidido subir el importe anual del servicio dos veces sin previo aviso, de modo que cambié.' This gives the same loss-of-trust explanation. The neighbor's monthly bill does not establish how the learner's former provider priced its service; neither a hidden base gloss nor the desired canonical wording rules this out.",
+        "concreteFix": "Replace el importe anual with an unambiguously wrong grammatical-form chip, for example subido subject to Fable's full insertion/permutation check. Retain the recorded line and current answer chips.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-07",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons/8/build/distractors/1",
+        "issue": "P2 L9 'una economía' produces '...eso, a su vez, fomenta una economía que depende menos del vehículo particular.' Reduced car dependence can coherently be framed as an economic benefit in this debate. It is grammatical and consistent with the visible policy argument, so it is not a reliable wrong chip.",
+        "concreteFix": "Replace una economía with a form that cannot fit this singular relative clause, such as que dependan subject to Fable review of all uses. Do not change canonical movilidad or the audio text to solve the chip issue.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-08",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p1.json",
+        "jsonPointer": "/lessons",
+        "issue": "Several P1 open recall slots omit direct, grammatical alternatives in their actual before/after context: L1 'un trayecto que me lleva casi dos horas diarias' (lleva); L5 'He analizado ambos planes...' (analizado); L6 'Aunque le carguen una comisión...' (carguen); L8 'un proyecto que demanda resolver problemas...' (demanda); L9 'facilita sostener el contacto...' (sostener); L10 'una solución cuya vida útil justifica el coste inicial' (cuya vida útil). None is listed in the corresponding recall.acceptedAnswers. The recall schema has no form/lexeme cue. A future exact-list implementation would incorrectly reject these unless an explicit, tested recall instruction constrains the learner to reproduce the heard text.",
+        "concreteFix": "Have Fable arbitrate and add these concrete alternatives at /lessons/0,4,5,7,8,9/recall/acceptedAnswers (including explicitly supported accent variants where applicable), or provide an actually rendered, tested instruction that makes exact recitation the task. Preserve one accepted fallback choice and the canonical reconstruction. Do not assume a hidden translation or requiredCarrier is such an instruction.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-09",
+        "severity": "HIGH",
+        "file": "tmp/V4_EXPANSION_20261003/reviewed-content/spanish-b2-p2.json",
+        "jsonPointer": "/lessons",
+        "issue": "Several P2 open recall slots have the same missing-alternative class: L1 'un aumento que se debe a la revisión...' (se debe); L2 'los residuos que se asignan al color indicado...' (se asignan); L3 'fotos necesarias para ultimar el diseño definitivo...' (ultimar); L6 'y se incorpora la prueba correspondiente' (incorpora); L7 'una clientela que costeara/costease los gastos básicos...' (costeara, costease); L8 'cuándo hay que consultar al especialista' (consultar); L10 'nos dijeron que se había aceptado el proyecto' (aceptado). These fit the written slot and the argument, but are absent from acceptedAnswers. Current source offers no visible lexical cue for the open recall slot.",
+        "concreteFix": "Have Fable arbitrate and include these alternatives at /lessons/0,1,2,5,6,7,9/recall/acceptedAnswers, or constrain the exercise through an implemented and verified exact-recall instruction. Maintain the existing canonical utterances and exactly one accepted fallback choice. No claim is made about a B2 runtime currently rejecting them, because that runtime does not exist.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-10",
+        "severity": "MEDIUM",
+        "file": "tmp/V4_EXPANSION_20261003/B2_SPANISH_P1_P2_SPEC.json",
+        "jsonPointer": "/acceptedInput/implementationStatus",
+        "issue": "Publication still lacks B2 renderer evidence. Twenty-five form blanks rely on their authored lemma/person/tense cues; those cues make their restricted lists defensible, but the present offline gate only requires cue data and cannot prove visibility. The future grading/normalization contract is also unverified. This is a publication hold, not evidence of a broken existing B2 renderer or of incorrect spoken content.",
+        "concreteFix": "Before publication, implement and inspect the actual B2 exercises in German and English, prove every form cue is visible before answering, and verify the authored acceptedAnswers and choice behavior. Treat leading ¿/¡ normalization as pending unless implemented. Do not import B1 display or normalization guarantees. Keep source review flags/nativeStatus pending.",
+        "affectsLocalTts": false
+      },
+      {
+        "id": "ES-B2-IR-11",
+        "severity": "LOW",
+        "file": "tmp/V4_EXPANSION_20261003/B2_SPANISH_P1_P2_SPEC.json",
+        "jsonPointer": "/semanticReviewRules/3",
+        "issue": "The generic rule requires at least one staged carrier in every learner turn, but P1 L5's authored opening ('He sopesado ambos planes y prefiero una ruta que combina...') contains none named in the staging tables. The controlling lesson's own openingMove prescribes essentially this sopesar/preference form without a named carrier, while its later turns correctly use a pesar de que and lo que podríamos hacer es. This is an internal specification tension, not an established Spanish error.",
+        "concreteFix": "Have Fable explicitly record that this lesson-specific opening is licensed, or align the staging rule/lesson specification. Do not automatically rewrite the canonical line from the generic rule alone. Any eventual speech edit requires a new content/hash review.",
+        "affectsLocalTts": false
+      }
+    ],
+    "summary": {
+      "totalFindings": 11,
+      "severityCounts": {
+        "BLOCKER": 0,
+        "HIGH": 7,
+        "MEDIUM": 3,
+        "LOW": 1
+      },
+      "canonicalSpokenBlockers": 0,
+      "localTtsContentVerdict": "PASS",
+      "publicationVerdict": "REWORK",
+      "reason": "Canonical spoken content passes this independent local TTS content review. Publication needs exercise fairness fixes and B2 delivery evidence; all findings remain unresolved and are preserved as full objects. Chip regroupings and answer-list fixes can be made without altering canonical audio text."
+    }
+  }
+}

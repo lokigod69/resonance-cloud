@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "latin-b2-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b2-2026-10/spanish/p1.json",
+      "sha256": "1bd42900b06500ac2da60e57cd31a44e1151dcb339452f9267208deae4c691f5",
+      "targetLanguage": "Spanish",
+      "pathNumber": 1,
+      "reviewedVoiceId": "ZCh4e9eZSUf41K4cmCEL",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/spanish/specification.json",
+        "sha256": "64a1eb47e5983ce9d0fd029cd4e37a1d2ff92aea4907efc7c64feed725609a2b",
+        "referenceName": "B2_SPANISH_P1_P2_SPEC.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-2026-10/spanish-plan.json",
+        "sha256": "f41a5887d0fde378ecf2f8a589ad720be67e1e31ae24f15d74985354ed2973a9"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/spanish/p2.json",
+      "sha256": "f1e5306ad2f726eafa6bfdae22326968f76c3787fa8091be1f6c834c49063288",
+      "targetLanguage": "Spanish",
+      "pathNumber": 2,
+      "reviewedVoiceId": "ZCh4e9eZSUf41K4cmCEL",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/spanish/specification.json",
+        "sha256": "64a1eb47e5983ce9d0fd029cd4e37a1d2ff92aea4907efc7c64feed725609a2b",
+        "referenceName": "B2_SPANISH_P1_P2_SPEC.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-2026-10/spanish-plan.json",
+        "sha256": "f41a5887d0fde378ecf2f8a589ad720be67e1e31ae24f15d74985354ed2973a9"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Spanish": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b2-2026-10/spanish/fable-evidence.json",
+    "sha256": "991c50e61a56842b13b3e29b379fda6d2116f442609f9cf94ddda2c40535cc45"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b2-2026-10/spanish/independent-evidence.json",
+    "sha256": "707f120366d78f7477671ae72487cb09ace3a22fd21a8aef8f985ec0bdea5f30"
+  }
+}

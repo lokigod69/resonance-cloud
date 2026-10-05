@@ -1,0 +1,3885 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "explicar-como-y-por-que",
+  "pathTitle": {
+    "de": "Erklären, wie und warum",
+    "en": "Explaining how and why"
+  },
+  "pathFunction": {
+    "de": "Ursachen und Abläufe erklären und auf präzise Nachfragen eingehen",
+    "en": "Explain causes and processes and respond to requests for precision"
+  },
+  "specRef": {
+    "pathSpec": "B2_SPANISH_P1_P2_SPEC.json",
+    "pathSpecSha256": "64a1eb47e5983ce9d0fd029cd4e37a1d2ff92aea4907efc7c64feed725609a2b",
+    "ledger": "B2_SPANISH_P1_P2_SPEC.json",
+    "ledgerSha256": "64a1eb47e5983ce9d0fd029cd4e37a1d2ff92aea4907efc7c64feed725609a2b"
+  },
+  "authoring": {
+    "source": "Codex GPT-6 xhigh",
+    "runId": "es-b2-p1-p2-author-20261005",
+    "date": "2026-10-05"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "por-que-la-factura-no-cuadra",
+      "title": {
+        "de": "Eine höhere Stromrechnung",
+        "en": "A higher electricity bill"
+      },
+      "situation": {
+        "de": "Die Buchhaltung Ihres kleinen Betriebs bittet vor der Verbuchung um eine Erklärung der Stromrechnung.",
+        "en": "Your small firm's accountant asks you to explain an electricity bill before recording it."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "usted",
+          "usted",
+          "usted"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "contable",
+          "role": {
+            "de": "Buchhaltung",
+            "en": "accountant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Buchhaltung fragt: «Esta factura de luz supera en un tercio la del trimestre anterior. ¿A qué se debe?»",
+        "en": "The accountant asks: «Esta factura de luz supera en un tercio la del trimestre anterior. ¿A qué se debe?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "contable",
+          "targetText": "Esta factura de luz supera en un tercio la del trimestre anterior. ¿A qué se debe?",
+          "base": {
+            "de": "Diese Stromrechnung liegt ein Drittel über der des letzten Quartals. Woran liegt das?",
+            "en": "This electricity bill is a third higher than last quarter's. What caused it?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "usted",
+          "targetText": "Debido a la calefacción, consumimos más; además, se aplicó un aumento que responde a la revisión del precio contratado.",
+          "base": {
+            "de": "Wegen der Heizung haben wir mehr verbraucht; außerdem wurde der Preis aufgrund einer Anpassung des vereinbarten Tarifs erhöht.",
+            "en": "Heating increased our consumption; a price increase was also applied following a revision of the contracted rate."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "contable",
+          "targetText": "¿Qué partida subió exactamente: la potencia contratada o la energía consumida? Necesito distinguirlas para contabilizarlo.",
+          "base": {
+            "de": "Welcher Posten ist genau gestiegen: die Anschlussleistung oder der Energieverbrauch? Für die Buchung muss ich das unterscheiden.",
+            "en": "Which item rose exactly: contracted capacity or energy consumed? I need to distinguish them for the accounts."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "usted",
+          "targetText": "La potencia no cambió; el desglose muestra más energía nocturna, de modo que el aumento corresponde al consumo y a la tarifa.",
+          "base": {
+            "de": "Die Anschlussleistung blieb gleich; die Aufschlüsselung zeigt mehr nächtlichen Energieverbrauch. Der Anstieg liegt also an Verbrauch und Tarif.",
+            "en": "Capacity stayed unchanged; the breakdown shows more night-time energy use, so the increase comes from consumption and the rate."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "contable",
+          "targetText": "Resúmamelo en una línea para la nota al gerente, sin repetir todos los detalles técnicos.",
+          "base": {
+            "de": "Fassen Sie es für die Geschäftsleitung in einer Zeile zusammen, ohne alle technischen Einzelheiten zu wiederholen.",
+            "en": "Summarize it in one line for the manager's note, without repeating all the technical details."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "usted",
+          "targetText": "En resumen, la potencia sigue igual, pero la nueva tarifa y el mayor consumo nocturno elevan la factura un tercio.",
+          "base": {
+            "de": "Zusammengefasst bleibt die Anschlussleistung gleich; neuer Tarif und höherer Nachtverbrauch erhöhen die Rechnung um ein Drittel.",
+            "en": "In summary, capacity is unchanged, but the new rate and higher night-time use raise the bill by a third."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Debido a la calefacción, consumimos más; además, ",
+        "chunks": [
+          "se aplicó",
+          "un aumento",
+          "que responde",
+          "a la revisión",
+          "del precio"
+        ],
+        "distractors": [
+          "que contradice",
+          "una reducción"
+        ],
+        "frameSuffix": " contratado."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "La potencia no cambió; el desglose muestra más energía nocturna, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " el aumento "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " al consumo y a la tarifa."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "de modo que",
+            "acceptedAnswers": [
+              "de modo que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "de modo que",
+              "debido a",
+              "a pesar de",
+              "en lugar de"
+            ]
+          },
+          {
+            "answer": "corresponde",
+            "acceptedAnswers": [
+              "corresponde"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "corresponder, el aumento, Präsens Indikativ",
+              "en": "corresponder, el aumento, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", la potencia sigue igual, pero la nueva tarifa y el mayor consumo nocturno elevan la factura un tercio."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En resumen",
+            "acceptedAnswers": [
+              "En resumen",
+              "En definitiva"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En resumen",
+              "A pesar de",
+              "En lugar de",
+              "Debido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Debido a la calefacción, consumimos más; además, se aplicó un aumento que ",
+        "answer": "responde",
+        "acceptedAnswers": [
+          "responde",
+          "obedece",
+          "corresponde"
+        ],
+        "after": " a la revisión del precio contratado.",
+        "fallbackChoices": [
+          "responde",
+          "responder",
+          "respondido",
+          "respondiendo"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Ursache und Folge auseinanderhalten",
+          "en": "Separating cause and consequence"
+        },
+        "rule": {
+          "de": "Debido a nennt mit einer Nominalgruppe die Ursache, während de modo que anschließend die daraus folgende Aussage einführt.",
+          "en": "Debido a gives a cause as a noun phrase, while de modo que introduces the resulting statement."
+        },
+        "examples": [
+          {
+            "targetText": "Debido a la calefacción, consumimos más; además, se aplicó un aumento que responde a la revisión del precio contratado.",
+            "base": {
+              "de": "Durch die Heizung verbrauchten wir mehr; zusätzlich wurde der Preis entsprechend dem angepassten Vertragstarif erhöht.",
+              "en": "Heating increased consumption; a price increase was also applied in line with the revised contract rate."
+            },
+            "highlights": [
+              "Debido a la calefacción",
+              "se aplicó"
+            ]
+          },
+          {
+            "targetText": "Se aplicó una tarifa nueva en marzo, de modo que el mismo consumo cuesta más.",
+            "base": {
+              "de": "Im März wurde ein neuer Tarif angewendet, sodass derselbe Verbrauch jetzt mehr kostet.",
+              "en": "A new rate was applied in March, so the same consumption now costs more."
+            },
+            "highlights": [
+              "Se aplicó",
+              "de modo que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "debido a",
+          "kind": "connector",
+          "base": {
+            "de": "aufgrund / wegen",
+            "en": "due to"
+          }
+        },
+        {
+          "targetText": "de modo que",
+          "kind": "connector",
+          "base": {
+            "de": "sodass / also",
+            "en": "so / with the result that"
+          }
+        },
+        {
+          "targetText": "desglose",
+          "kind": "noun",
+          "base": {
+            "de": "Aufschlüsselung",
+            "en": "breakdown"
+          }
+        },
+        {
+          "targetText": "potencia contratada",
+          "kind": "noun",
+          "base": {
+            "de": "vertraglich vereinbarte Anschlussleistung",
+            "en": "contracted electrical capacity"
+          }
+        },
+        {
+          "targetText": "nocturna",
+          "lemma": "nocturno",
+          "kind": "adjective",
+          "base": {
+            "de": "nächtlich",
+            "en": "night-time"
+          }
+        },
+        {
+          "targetText": "consumo",
+          "kind": "noun",
+          "base": {
+            "de": "Verbrauch",
+            "en": "consumption"
+          }
+        },
+        {
+          "targetText": "se aplicó",
+          "lemma": "aplicar",
+          "kind": "verb",
+          "base": {
+            "de": "wurde angewendet",
+            "en": "was applied"
+          }
+        },
+        {
+          "targetText": "tarifa",
+          "kind": "noun",
+          "base": {
+            "de": "Tarif",
+            "en": "rate / tariff"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "aumento",
+            "revisión",
+            "precio"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "desglose",
+            "potencia",
+            "nocturna"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "resumen",
+            "tarifa",
+            "tercio"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "desglose",
+        "familyKey": "desglosar",
+        "surface": "desglose",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "El desglose permite distinguir el consumo de los costes fijos.",
+          "base": {
+            "de": "Die Aufschlüsselung trennt den Verbrauch von den Fixkosten.",
+            "en": "The breakdown distinguishes consumption from fixed costs."
+          }
+        },
+        "base": {
+          "de": "Aufschlüsselung",
+          "en": "breakdown"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "como-se-recicla-en-el-barrio",
+      "title": {
+        "de": "Die örtliche Mülltrennung erklären",
+        "en": "Explaining local recycling"
+      },
+      "situation": {
+        "de": "Du liest mit einer neuen Nachbarin das im Hausflur ausgehängte Merkblatt eines fiktiven Stadtviertels zur Mülltrennung.",
+        "en": "You read a fictional district's recycling leaflet with a new neighbor in your building's hallway."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tú",
+          "tú",
+          "tú"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "nueva-vecina",
+          "role": {
+            "de": "neue Nachbarin",
+            "en": "new neighbor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Vor dem Merkblatt fragt deine Nachbarin: «Acabo de mudarme. Según este folleto del ayuntamiento, ¿cómo se usan los cinco contenedores del barrio?»",
+        "en": "Beside the leaflet, your neighbor asks: «Acabo de mudarme. Según este folleto del ayuntamiento, ¿cómo se usan los cinco contenedores del barrio?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "nueva-vecina",
+          "targetText": "Acabo de mudarme. Según este folleto del ayuntamiento, ¿cómo se usan los cinco contenedores del barrio?",
+          "base": {
+            "de": "Ich bin gerade eingezogen. Wie benutzt man laut diesem städtischen Merkblatt die fünf Müllcontainer im Viertel?",
+            "en": "I've just moved in. According to this council leaflet, how do the neighborhood's five bins work?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "tú",
+          "targetText": "Según este folleto, se separa en casa y cada contenedor recibe los residuos que corresponden al color indicado en su etiqueta.",
+          "base": {
+            "de": "Laut diesem Merkblatt trennt man zu Hause; jeder Container nimmt die Abfälle auf, die der Farbe auf seinem Etikett zugeordnet sind.",
+            "en": "According to this leaflet, you sort at home, and each bin takes the waste assigned to the color on its label."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "nueva-vecina",
+          "targetText": "¿Y el aceite usado y las pilas dónde van? No veo ningún contenedor para eso.",
+          "base": {
+            "de": "Und wohin kommen altes Öl und Batterien? Dafür sehe ich keinen Container.",
+            "en": "Where do used oil and batteries go? I don't see a bin for those."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "tú",
+          "targetText": "El aceite se lleva embotellado al punto limpio, ya que contamina otros residuos; las pilas van al supermercado indicado en el folleto.",
+          "base": {
+            "de": "Öl bringt man in einer Flasche zum Wertstoffhof, weil es andere Abfälle verunreinigt; Batterien kommen zum im Merkblatt genannten Supermarkt.",
+            "en": "Oil goes bottled to the recycling centre because it contaminates other waste; batteries go to the supermarket named in the leaflet."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "nueva-vecina",
+          "targetText": "¿Y la lavadora vieja? El folleto menciona llamar a un número. ¿Puedo bajarla ya a la calle?",
+          "base": {
+            "de": "Und die alte Waschmaschine? Im Merkblatt steht eine Telefonnummer. Kann ich sie schon an die Straße stellen?",
+            "en": "What about the old washing machine? The leaflet mentions calling a number. Can I put it outside already?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "tú",
+          "targetText": "Llama al número del folleto para pedir recogida de enseres, de modo que solo la bajes cuando te confirmen el día.",
+          "base": {
+            "de": "Ruf für die Sperrmüllabholung die Nummer im Merkblatt an; stell sie erst hinaus, wenn der Tag bestätigt ist.",
+            "en": "Call the leaflet's number for bulky-waste collection, so you only put it outside once they confirm the day."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Según este folleto, se separa en casa y cada contenedor ",
+        "chunks": [
+          "recibe",
+          "los residuos",
+          "que corresponden",
+          "al color",
+          "indicado"
+        ],
+        "distractors": [
+          "que contradicen",
+          "prohibido"
+        ],
+        "frameSuffix": " en su etiqueta."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "El aceite se "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " embotellado al punto limpio, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " contamina otros residuos; las pilas van al supermercado indicado en el folleto."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "lleva",
+            "acceptedAnswers": [
+              "lleva"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "llevar, se-Passiv mit el aceite, Präsens",
+              "en": "llevar, se passive with el aceite, present tense"
+            }
+          },
+          {
+            "answer": "ya que",
+            "acceptedAnswers": [
+              "ya que"
+            ],
+            "kind": "connector",
+            "choices": [
+              "ya que",
+              "debido a",
+              "a pesar de",
+              "en vez de"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Llama al número del folleto para pedir recogida de enseres, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " solo la bajes cuando te confirmen el día."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "de modo que",
+            "acceptedAnswers": [
+              "de modo que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "de modo que",
+              "debido a",
+              "a pesar de",
+              "en lugar de"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Según este folleto, se separa en casa y cada contenedor recibe los residuos que ",
+        "answer": "corresponden",
+        "acceptedAnswers": [
+          "corresponden"
+        ],
+        "after": " al color indicado en su etiqueta.",
+        "fallbackChoices": [
+          "corresponden",
+          "corresponder",
+          "correspondido",
+          "correspondiendo"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen örtlichen Ablauf beschreiben",
+          "en": "Describing a local process"
+        },
+        "rule": {
+          "de": "Mit se beschreibst du im Rahmen des genannten Merkblatts, was allgemein getan wird, ohne eine bestimmte handelnde Person zu nennen.",
+          "en": "Se describes what people do under the named leaflet's instructions without naming a particular person carrying it out."
+        },
+        "examples": [
+          {
+            "targetText": "Según este folleto, se separa en casa y cada contenedor recibe los residuos que corresponden al color indicado en su etiqueta.",
+            "base": {
+              "de": "Laut diesem Merkblatt trennt man zu Hause; die Container nehmen die ihrer Etikettfarbe zugeordneten Abfälle auf.",
+              "en": "According to this leaflet, people sort at home and use each bin for the waste assigned to its label color."
+            },
+            "highlights": [
+              "se separa"
+            ]
+          },
+          {
+            "targetText": "Según el folleto, se deposita el papel en el azul, los envases en el amarillo y lo orgánico en el marrón.",
+            "base": {
+              "de": "Laut Merkblatt kommen Papier in Blau, Verpackungen in Gelb und Bioabfälle in Braun.",
+              "en": "The leaflet directs paper to blue, packaging to yellow and organic waste to brown."
+            },
+            "highlights": [
+              "se deposita"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "según este folleto",
+          "kind": "frame",
+          "base": {
+            "de": "laut diesem Merkblatt",
+            "en": "according to this leaflet"
+          }
+        },
+        {
+          "targetText": "ya que",
+          "kind": "connector",
+          "base": {
+            "de": "weil / da",
+            "en": "because / since"
+          }
+        },
+        {
+          "targetText": "contenedor",
+          "kind": "noun",
+          "base": {
+            "de": "Müllcontainer",
+            "en": "waste bin"
+          }
+        },
+        {
+          "targetText": "residuos",
+          "lemma": "residuo",
+          "kind": "noun",
+          "base": {
+            "de": "Abfälle",
+            "en": "waste"
+          }
+        },
+        {
+          "targetText": "punto limpio",
+          "kind": "noun",
+          "base": {
+            "de": "Wertstoffhof",
+            "en": "recycling centre"
+          }
+        },
+        {
+          "targetText": "embotellado",
+          "lemma": "embotellado",
+          "kind": "adjective",
+          "base": {
+            "de": "in einer Flasche",
+            "en": "bottled"
+          }
+        },
+        {
+          "targetText": "recogida de enseres",
+          "kind": "noun",
+          "base": {
+            "de": "Sperrmüllabholung",
+            "en": "bulky-waste collection"
+          }
+        },
+        {
+          "targetText": "contamina",
+          "lemma": "contaminar",
+          "kind": "verb",
+          "base": {
+            "de": "verunreinigt",
+            "en": "contaminates"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "contenedor",
+            "residuos",
+            "color"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "aceite",
+            "punto",
+            "pilas"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "folleto",
+            "enseres",
+            "confirmen"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "contenedor",
+        "familyKey": "contenedor",
+        "surface": "contenedor",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Este contenedor tiene una etiqueta con los residuos admitidos.",
+          "base": {
+            "de": "Dieser Container trägt ein Etikett mit den zulässigen Abfällen.",
+            "en": "This bin has a label showing the waste it accepts."
+          }
+        },
+        "base": {
+          "de": "Müllcontainer",
+          "en": "waste bin"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "por-que-se-alargo-el-proyecto",
+      "title": {
+        "de": "Der verspätete Start",
+        "en": "The delayed launch"
+      },
+      "situation": {
+        "de": "Ihre Projektleitung muss dem Kunden die Verzögerung des Website-Starts erklären und bittet um die Ursachen.",
+        "en": "Your project manager needs to explain the website launch delay to the client and asks for the causes."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "usted",
+          "usted",
+          "usted"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "direccion",
+          "role": {
+            "de": "Projektleitung",
+            "en": "project manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Projektleitung fragt: «El lanzamiento lleva cinco semanas de retraso. Antes de hablar con el cliente, explíqueme qué ocurrió.»",
+        "en": "Your manager asks: «El lanzamiento lleva cinco semanas de retraso. Antes de hablar con el cliente, explíqueme qué ocurrió.»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "direccion",
+          "targetText": "El lanzamiento lleva cinco semanas de retraso. Antes de hablar con el cliente, explíqueme qué ocurrió.",
+          "base": {
+            "de": "Der Start ist fünf Wochen verspätet. Erklären Sie mir vor dem Kundengespräch, was passiert ist.",
+            "en": "The launch is five weeks late. Before I speak to the client, explain what happened."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "usted",
+          "targetText": "El lanzamiento se aplazó puesto que recibimos tarde las fotos necesarias para cerrar el diseño definitivo de las páginas.",
+          "base": {
+            "de": "Der Start wurde verschoben, weil die für die endgültige Seitengestaltung nötigen Fotos zu spät ankamen.",
+            "en": "The launch was postponed because the photos needed to finalize the page designs arrived late."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "direccion",
+          "targetText": "Pero el proveedor avisó con tiempo, ¿no? Entonces no podemos atribuirle todo el retraso.",
+          "base": {
+            "de": "Aber der Lieferant hatte rechtzeitig Bescheid gesagt, oder? Dann können wir ihm nicht die ganze Verzögerung zuschreiben.",
+            "en": "But the supplier warned us in advance, didn't they? We can't attribute the whole delay to them, then."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "usted",
+          "targetText": "Avisó, sí, pero hubo un imprevisto de formato; acabamos rehaciendo media web, de modo que el aviso no evitó el retraso.",
+          "base": {
+            "de": "Ja, er hatte Bescheid gesagt, aber das Dateiformat brachte ein unerwartetes Problem; wir mussten die halbe Website neu machen, daher verhinderte die Warnung die Verzögerung nicht.",
+            "en": "They did warn us, but an unexpected format problem meant we ended up redoing half the site; the warning didn't prevent the delay."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "direccion",
+          "targetText": "¿Qué fecha le doy al cliente y cómo explico la causa sin culpar a nadie?",
+          "base": {
+            "de": "Welches Datum nenne ich dem Kunden, und wie erkläre ich die Ursache ohne Schuldzuweisung?",
+            "en": "What date should I give the client, and how do I explain the cause without blaming anyone?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "usted",
+          "targetText": "En resumen, comunique el quince de mayo y el problema del formato; lo fijaremos por escrito para no volver a rehacer páginas.",
+          "base": {
+            "de": "Nennen Sie zusammengefasst den fünfzehnten Mai und das Formatproblem; künftig legen wir das Format schriftlich fest, um nicht noch einmal Seiten neu machen zu müssen.",
+            "en": "In short, give the fifteenth of May and explain the format problem; we'll specify it in writing to avoid having to redo pages again."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "El lanzamiento se aplazó puesto que ",
+        "chunks": [
+          "recibimos tarde",
+          "las fotos",
+          "necesarias para",
+          "cerrar",
+          "el diseño definitivo"
+        ],
+        "distractors": [
+          "inútiles para",
+          "cancelar por completo"
+        ],
+        "frameSuffix": " de las páginas."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Avisó, sí, pero hubo un imprevisto de formato; acabamos "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " media web, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " el aviso no evitó el retraso."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "rehaciendo",
+            "acceptedAnswers": [
+              "rehaciendo"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "rehacer, Gerundium nach acabamos",
+              "en": "rehacer, gerund after acabamos"
+            }
+          },
+          {
+            "answer": "de modo que",
+            "acceptedAnswers": [
+              "de modo que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "de modo que",
+              "debido a",
+              "a pesar de",
+              "en lugar de"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", comunique el quince de mayo y el problema del formato; lo fijaremos por escrito para no volver a rehacer páginas."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En resumen",
+            "acceptedAnswers": [
+              "En resumen"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En resumen",
+              "A pesar de",
+              "En lugar de",
+              "Debido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "El lanzamiento se aplazó puesto que recibimos tarde las fotos necesarias para ",
+        "answer": "cerrar",
+        "acceptedAnswers": [
+          "cerrar",
+          "finalizar",
+          "completar",
+          "terminar"
+        ],
+        "after": " el diseño definitivo de las páginas.",
+        "fallbackChoices": [
+          "cerrar",
+          "cerrado",
+          "cerrando",
+          "cerramos"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Ein unerwartetes Ergebnis erklären",
+          "en": "Explaining an unexpected outcome"
+        },
+        "rule": {
+          "de": "Acabar mit Gerundium beschreibt, wozu es am Ende kommt, während de modo que die daraus entstehende Folge verknüpft.",
+          "en": "Acabar with a gerund describes what someone ends up doing, while de modo que links the resulting consequence."
+        },
+        "examples": [
+          {
+            "targetText": "Avisó, sí, pero hubo un imprevisto de formato; acabamos rehaciendo media web, de modo que el aviso no evitó el retraso.",
+            "base": {
+              "de": "Die Warnung kam, aber ein Formatproblem zwang uns, die halbe Website neu zu machen; deshalb blieb die Verzögerung bestehen.",
+              "en": "The warning came, but a format problem meant we ended up redoing half the site, so the delay remained."
+            },
+            "highlights": [
+              "acabamos rehaciendo",
+              "de modo que"
+            ]
+          },
+          {
+            "targetText": "Debido a un cambio de formato, acabamos revisando todas las imágenes antes de publicarlas.",
+            "base": {
+              "de": "Wegen einer Formatänderung mussten wir letztlich vor der Veröffentlichung alle Bilder prüfen.",
+              "en": "Because of a format change, we ended up checking every image before publishing it."
+            },
+            "highlights": [
+              "Debido a",
+              "acabamos revisando"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "puesto que",
+          "kind": "connector",
+          "base": {
+            "de": "da / weil",
+            "en": "since / because"
+          }
+        },
+        {
+          "targetText": "de modo que",
+          "kind": "connector",
+          "base": {
+            "de": "sodass / daher",
+            "en": "so / with the result that"
+          }
+        },
+        {
+          "targetText": "imprevisto",
+          "kind": "noun",
+          "base": {
+            "de": "unerwartetes Problem",
+            "en": "unforeseen problem"
+          }
+        },
+        {
+          "targetText": "lanzamiento",
+          "kind": "noun",
+          "base": {
+            "de": "Start / Veröffentlichung",
+            "en": "launch"
+          }
+        },
+        {
+          "targetText": "formato",
+          "kind": "noun",
+          "base": {
+            "de": "Format",
+            "en": "format"
+          }
+        },
+        {
+          "targetText": "rehaciendo",
+          "lemma": "rehacer",
+          "kind": "verb",
+          "base": {
+            "de": "neu machend / überarbeitend",
+            "en": "redoing"
+          }
+        },
+        {
+          "targetText": "definitivo",
+          "kind": "adjective",
+          "base": {
+            "de": "endgültig",
+            "en": "final"
+          }
+        },
+        {
+          "targetText": "por escrito",
+          "kind": "adverb",
+          "base": {
+            "de": "schriftlich",
+            "en": "in writing"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "fotos",
+            "cerrar",
+            "diseño"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "imprevisto",
+            "rehaciendo",
+            "aviso"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "resumen",
+            "formato",
+            "escrito"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "imprevisto",
+        "familyKey": "imprevisto",
+        "surface": "imprevisto",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "Ese imprevisto nos obligó a revisar el calendario.",
+          "base": {
+            "de": "Dieses unerwartete Problem zwang uns, den Zeitplan zu überarbeiten.",
+            "en": "That unforeseen problem forced us to revise the schedule."
+          }
+        },
+        "base": {
+          "de": "unerwartetes Problem",
+          "en": "unforeseen problem"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "como-funciona-el-programa-de-puntos",
+      "title": {
+        "de": "Was die Kundenkarte bringt",
+        "en": "What the loyalty card does"
+      },
+      "situation": {
+        "de": "Ein Freund sieht, wie du an der Supermarktkasse deine Kundenkarte scannst, und möchte das Punktesystem verstehen.",
+        "en": "A friend sees you scan a loyalty card at the supermarket checkout and wants to understand the points scheme."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tú",
+          "tú",
+          "tú"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "amigo",
+          "role": {
+            "de": "Freund",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "An der Kasse fragt dein Freund: «¿Para qué sirve esa tarjeta que acabas de pasar? No entiendo cómo funciona lo de los puntos.»",
+        "en": "At the checkout, your friend asks: «¿Para qué sirve esa tarjeta que acabas de pasar? No entiendo cómo funciona lo de los puntos.»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "amigo",
+          "targetText": "¿Para qué sirve esa tarjeta que acabas de pasar? No entiendo cómo funciona lo de los puntos.",
+          "base": {
+            "de": "Wozu ist die Karte, die du gerade gescannt hast? Ich verstehe dieses Punktesystem nicht.",
+            "en": "What is that card you just scanned for? I don't understand the points thing."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "tú",
+          "targetText": "Se trata de acumular puntos con cada compra y canjearlos por descuentos que reducen el importe de tu próxima compra.",
+          "base": {
+            "de": "Man sammelt bei jedem Einkauf Punkte und löst sie für Rabatte ein, die den Betrag des nächsten Einkaufs senken.",
+            "en": "You collect points with each purchase and redeem them for discounts that reduce the cost of your next shop."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "amigo",
+          "targetText": "O sea, que te regalan cosas gratis. ¿Seguro que no hay letra pequeña detrás de esos descuentos?",
+          "base": {
+            "de": "Du bekommst also einfach etwas geschenkt. Steckt hinter diesen Rabatten wirklich kein Kleingedrucktes?",
+            "en": "So they give you things for free. Are you sure there's no fine print behind those discounts?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "tú",
+          "targetText": "Gratis no: la tienda en la que compras guarda tus datos de consumo, con los que decide qué ofertas enviarte.",
+          "base": {
+            "de": "Kostenlos ist es nicht: Der Laden, in dem du einkaufst, speichert deine Einkaufsdaten und entscheidet damit, welche Angebote er dir schickt.",
+            "en": "Not for free: the store where you shop keeps your purchasing data and uses it to choose which offers to send you."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "amigo",
+          "targetText": "Explícaselo a mi abuela sin hablar de datos; quiere saber qué gana ella y qué gana la tienda.",
+          "base": {
+            "de": "Erklär es meiner Oma ohne das Wort Daten. Sie möchte wissen, was sie davon hat und was der Laden davon hat.",
+            "en": "Explain it to my grandmother without talking about data; she wants to know what she gains and what the store gains."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "tú",
+          "targetText": "Lo que quiero decir es que compras, ganas descuentos y la tienda aprende qué productos sueles elegir.",
+          "base": {
+            "de": "Ich meine damit: Du kaufst ein, bekommst Rabatte, und der Laden erfährt, welche Produkte du gewöhnlich auswählst.",
+            "en": "What I mean is that you shop, earn discounts, and the store learns which products you usually choose."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Se trata de acumular puntos con ",
+        "chunks": [
+          "cada compra",
+          "y canjearlos",
+          "por descuentos",
+          "que reducen",
+          "el importe"
+        ],
+        "distractors": [
+          "por recargos",
+          "que aumentan"
+        ],
+        "frameSuffix": " de tu próxima compra."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Gratis no: la tienda "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " compras guarda tus datos de consumo, con los que "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " qué ofertas enviarte."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "en la que",
+            "acceptedAnswers": [
+              "en la que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "en la que",
+              "en los que",
+              "con las que",
+              "por el que"
+            ]
+          },
+          {
+            "answer": "decide",
+            "acceptedAnswers": [
+              "decide"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "decidir, la tienda, Präsens Indikativ",
+              "en": "decidir, la tienda, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Lo que "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " es que compras, ganas descuentos y la tienda aprende qué productos sueles elegir."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "quiero decir",
+            "acceptedAnswers": [
+              "quiero decir"
+            ],
+            "kind": "frame",
+            "choices": [
+              "quiero decir",
+              "debido a",
+              "a pesar de",
+              "en lugar de"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Se trata de acumular puntos con cada compra y ",
+        "answer": "canjearlos",
+        "acceptedAnswers": [
+          "canjearlos",
+          "cambiarlos",
+          "intercambiarlos",
+          "trocarlos"
+        ],
+        "after": " por descuentos que reducen el importe de tu próxima compra.",
+        "fallbackChoices": [
+          "canjearlos",
+          "canjeándolos",
+          "canjeados",
+          "canjeamos"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Die Gegenleistung präzisieren",
+          "en": "Clarifying what is exchanged"
+        },
+        "rule": {
+          "de": "In Relativsätzen bleibt die zum Verb gehörende Präposition erhalten: compras en la tienda wird la tienda en la que compras; con los que bezieht sich hier auf die Daten.",
+          "en": "Relative clauses retain the verb's preposition: compras en la tienda becomes la tienda en la que compras; con los que refers here to the data."
+        },
+        "examples": [
+          {
+            "targetText": "Gratis no: la tienda en la que compras guarda tus datos de consumo, con los que decide qué ofertas enviarte.",
+            "base": {
+              "de": "Es ist nicht kostenlos: Der Laden, in dem du einkaufst, speichert deine Einkaufsdaten und wählt damit deine Angebote aus.",
+              "en": "It isn't free: the store where you shop keeps your purchasing data and uses it to select your offers."
+            },
+            "highlights": [
+              "en la que",
+              "con los que"
+            ]
+          },
+          {
+            "targetText": "Se trata de un programa con el que la tienda conoce tus hábitos de compra.",
+            "base": {
+              "de": "Es handelt sich um ein Programm, mit dem der Laden deine Einkaufsgewohnheiten kennenlernt.",
+              "en": "It's a scheme through which the store learns your shopping habits."
+            },
+            "highlights": [
+              "Se trata de",
+              "con el que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "se trata de",
+          "kind": "frame",
+          "base": {
+            "de": "es geht darum / es handelt sich um",
+            "en": "it involves / it is a matter of"
+          }
+        },
+        {
+          "targetText": "lo que quiero decir",
+          "kind": "frame",
+          "base": {
+            "de": "was ich sagen möchte",
+            "en": "what I mean"
+          }
+        },
+        {
+          "targetText": "canjearlos",
+          "lemma": "canjear",
+          "kind": "verb",
+          "base": {
+            "de": "sie einlösen",
+            "en": "redeem them"
+          }
+        },
+        {
+          "targetText": "importe",
+          "kind": "noun",
+          "base": {
+            "de": "Betrag",
+            "en": "amount / cost"
+          }
+        },
+        {
+          "targetText": "letra pequeña",
+          "kind": "noun",
+          "base": {
+            "de": "Kleingedrucktes",
+            "en": "fine print"
+          }
+        },
+        {
+          "targetText": "datos de consumo",
+          "kind": "noun",
+          "base": {
+            "de": "Einkaufsdaten",
+            "en": "purchasing data"
+          }
+        },
+        {
+          "targetText": "hábitos de compra",
+          "kind": "noun",
+          "base": {
+            "de": "Einkaufsgewohnheiten",
+            "en": "shopping habits"
+          }
+        },
+        {
+          "targetText": "acumular",
+          "kind": "verb",
+          "base": {
+            "de": "ansammeln",
+            "en": "accumulate / collect"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "canjearlos",
+            "descuentos",
+            "importe"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "tienda",
+            "consumo",
+            "ofertas"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "decir",
+            "aprende",
+            "elegir"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "canjear",
+        "familyKey": "canjear",
+        "surface": "canjearlos",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Puedes acumular puntos y canjearlos por descuentos en otra compra.",
+          "base": {
+            "de": "Du kannst Punkte sammeln und bei einem weiteren Einkauf für Rabatte einlösen.",
+            "en": "You can collect points and redeem them for discounts on another purchase."
+          }
+        },
+        "base": {
+          "de": "einlösen / eintauschen",
+          "en": "redeem / exchange"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "por-que-cambie-de-compania",
+      "title": {
+        "de": "Warum ich den Anbieter gewechselt habe",
+        "en": "Why I switched providers"
+      },
+      "situation": {
+        "de": "Dein Nachbar findet seine Internetrechnung zu hoch und fragt, warum du letztes Jahr den Anbieter gewechselt hast.",
+        "en": "Your neighbor thinks his internet bill is too high and asks why you changed providers last year."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tú",
+          "tú",
+          "tú"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "vecino",
+          "role": {
+            "de": "Nachbar",
+            "en": "neighbor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Nachbar fragt: «Cada mes pago más por internet. ¿Por qué cambiaste de compañía el año pasado?»",
+        "en": "Your neighbor asks: «Cada mes pago más por internet. ¿Por qué cambiaste de compañía el año pasado?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "vecino",
+          "targetText": "Cada mes pago más por internet. ¿Por qué cambiaste de compañía el año pasado?",
+          "base": {
+            "de": "Ich zahle jeden Monat mehr fürs Internet. Warum hast du letztes Jahr den Anbieter gewechselt?",
+            "en": "I pay more for internet every month. Why did you switch companies last year?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "tú",
+          "targetText": "Perdí la confianza en el proveedor que había decidido subir la cuota mensual del servicio dos veces sin previo aviso, de modo que cambié.",
+          "base": {
+            "de": "Ich verlor das Vertrauen in den Anbieter, der zweimal eine Erhöhung der Monatsgebühr ohne Vorankündigung beschlossen hatte; deshalb wechselte ich.",
+            "en": "I lost trust in the provider that had decided to raise the monthly service fee twice without prior notice, so I switched."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "vecino",
+          "targetText": "A mí me dijeron que son todos iguales y que cambiar no sirve de nada. ¿Tú notas diferencia?",
+          "base": {
+            "de": "Mir wurde gesagt, dass alle gleich sind und ein Wechsel nichts bringt. Merkst du einen Unterschied?",
+            "en": "I was told they're all the same and switching achieves nothing. Do you notice a difference?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "tú",
+          "targetText": "En cuanto al precio, son parecidos, mientras que la atención cambia mucho: ahora me cogen el teléfono y resuelven las dudas.",
+          "base": {
+            "de": "Preislich sind sie ähnlich, während sich der Service stark unterscheidet: Jetzt geht jemand ans Telefon und klärt meine Fragen.",
+            "en": "On price they're similar, whereas service differs a lot: now they answer the phone and clear up my questions."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "vecino",
+          "targetText": "Mi contrato dice que hasta enero pagaría una penalización de doscientos euros. Cambiando ahorraría solo veinte al mes.",
+          "base": {
+            "de": "Laut meinem Vertrag müsste ich bis Januar zweihundert Euro Vertragsstrafe zahlen. Durch einen Wechsel würde ich nur zwanzig im Monat sparen.",
+            "en": "My contract says I'd pay a two-hundred-euro penalty until January. Switching would save only twenty a month."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "tú",
+          "targetText": "Lo que quiero decir es que compares la penalización con el ahorro pendiente; si no la recuperas, espera hasta enero.",
+          "base": {
+            "de": "Ich meine, du solltest die Vertragsstrafe mit der bis dahin möglichen Ersparnis vergleichen; holst du sie nicht herein, warte bis Januar.",
+            "en": "What I mean is, compare the penalty with the savings possible before then; if you won't recoup it, wait until January."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Perdí ",
+        "chunks": [
+          "la confianza",
+          "en el proveedor",
+          "que había decidido",
+          "subir",
+          "la cuota mensual"
+        ],
+        "distractors": [
+          "bajar",
+          "el importe anual"
+        ],
+        "frameSuffix": " del servicio dos veces sin previo aviso, de modo que cambié."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " precio, son parecidos, mientras que la atención cambia mucho: ahora me "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " el teléfono y resuelven las dudas."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En cuanto al",
+            "acceptedAnswers": [
+              "En cuanto al"
+            ],
+            "kind": "frame",
+            "choices": [
+              "En cuanto al",
+              "Mientras que",
+              "Es decir",
+              "Se trata de que"
+            ]
+          },
+          {
+            "answer": "cogen",
+            "acceptedAnswers": [
+              "cogen"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "coger, ellos, Präsens Indikativ",
+              "en": "coger, ellos, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Lo que "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " es que "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " la penalización con el ahorro pendiente; si no la recuperas, espera hasta enero."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "quiero decir",
+            "acceptedAnswers": [
+              "quiero decir"
+            ],
+            "kind": "frame",
+            "choices": [
+              "quiero decir",
+              "debido a",
+              "a pesar de",
+              "en lugar de"
+            ]
+          },
+          {
+            "answer": "compares",
+            "acceptedAnswers": [
+              "compares"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "comparar, tú, Präsens Subjuntivo als Aufforderung",
+              "en": "comparar, tú, present subjunctive expressing a request"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Perdí la confianza en el proveedor que había decidido ",
+        "answer": "subir",
+        "acceptedAnswers": [
+          "subir",
+          "aumentar",
+          "elevar",
+          "incrementar"
+        ],
+        "after": " la cuota mensual del servicio dos veces sin previo aviso, de modo que cambié.",
+        "fallbackChoices": [
+          "subir",
+          "subido",
+          "subiendo",
+          "sube"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Den Vergleich eingrenzen",
+          "en": "Specifying the comparison"
+        },
+        "rule": {
+          "de": "En cuanto a grenzt den betrachteten Bereich ein; vor el wird a zu al. Mientras que stellt einen anderen Bereich oder Befund gegenüber.",
+          "en": "En cuanto a specifies the aspect being considered; a contracts with el to form al. Mientras que contrasts another aspect or finding."
+        },
+        "examples": [
+          {
+            "targetText": "En cuanto al precio, son parecidos, mientras que la atención cambia mucho: ahora me cogen el teléfono y resuelven las dudas.",
+            "base": {
+              "de": "Beim Preis sind sie ähnlich, beim Service gibt es hingegen große Unterschiede: Jetzt wird ans Telefon gegangen und meine Fragen werden geklärt.",
+              "en": "On price they're similar, while service differs greatly: now they answer the phone and resolve my questions."
+            },
+            "highlights": [
+              "En cuanto al precio",
+              "mientras que"
+            ]
+          },
+          {
+            "targetText": "En cuanto a la permanencia, conviene comprobar lo que dice tu contrato antes de decidir.",
+            "base": {
+              "de": "Bei der Mindestlaufzeit sollte man vor der Entscheidung nachsehen, was im eigenen Vertrag steht.",
+              "en": "Regarding the minimum term, it helps to check what your contract says before deciding."
+            },
+            "highlights": [
+              "En cuanto a la permanencia"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "en cuanto al",
+          "kind": "frame",
+          "base": {
+            "de": "was den ... betrifft",
+            "en": "regarding the ..."
+          }
+        },
+        {
+          "targetText": "mientras que",
+          "kind": "connector",
+          "base": {
+            "de": "während / wohingegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "proveedor",
+          "kind": "noun",
+          "base": {
+            "de": "Anbieter",
+            "en": "provider"
+          }
+        },
+        {
+          "targetText": "cuota",
+          "kind": "noun",
+          "base": {
+            "de": "monatlicher Beitrag / Gebühr",
+            "en": "fee / subscription charge"
+          }
+        },
+        {
+          "targetText": "previo",
+          "kind": "adjective",
+          "base": {
+            "de": "vorherig",
+            "en": "prior"
+          }
+        },
+        {
+          "targetText": "confianza",
+          "kind": "noun",
+          "base": {
+            "de": "Vertrauen",
+            "en": "trust"
+          }
+        },
+        {
+          "targetText": "penalización",
+          "kind": "noun",
+          "base": {
+            "de": "Vertragsstrafe",
+            "en": "penalty"
+          }
+        },
+        {
+          "targetText": "permanencia",
+          "kind": "noun",
+          "base": {
+            "de": "Mindestvertragslaufzeit",
+            "en": "minimum contract term"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "proveedor",
+            "cuota",
+            "aviso"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "precio",
+            "atención",
+            "cogen"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "penalización",
+            "ahorro",
+            "enero"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "proveedor",
+        "familyKey": "proveer",
+        "surface": "proveedor",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "El proveedor explica por escrito las condiciones de su servicio.",
+          "base": {
+            "de": "Der Anbieter erläutert seine Servicebedingungen schriftlich.",
+            "en": "The provider explains its service conditions in writing."
+          }
+        },
+        "base": {
+          "de": "Anbieter / Lieferant",
+          "en": "provider / supplier"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "como-recurrir-una-multa",
+      "title": {
+        "de": "Die Schritte auf dem Bußgeldbescheid",
+        "en": "The steps on the penalty notice"
+      },
+      "situation": {
+        "de": "Eine Kollegin hält ihr Parkbußgeld für falsch. Ihr lest gemeinsam die Verfahrenshinweise auf der Rückseite eines fiktiven Bescheids.",
+        "en": "A colleague believes her parking fine is wrong. You read the procedural instructions on the back of a fictional notice together."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tú",
+          "tú",
+          "tú"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "companera",
+          "role": {
+            "de": "Kollegin",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Deine Kollegin fragt beim Lesen: «Creo que esta multa está mal. ¿Me explicas los pasos que vienen detrás para presentar una reclamación?»",
+        "en": "While reading, your colleague asks: «Creo que esta multa está mal. ¿Me explicas los pasos que vienen detrás para presentar una reclamación?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "companera",
+          "targetText": "Creo que esta multa está mal. ¿Me explicas los pasos que vienen detrás para presentar una reclamación?",
+          "base": {
+            "de": "Ich glaube, dieses Bußgeld ist nicht berechtigt. Erklärst du mir die Schritte auf der Rückseite, um dagegen vorzugehen?",
+            "en": "I think this fine is wrong. Can you explain the steps on the back for challenging it?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "tú",
+          "targetText": "Según este papel, se presenta en plazo un escrito en el que explicas tu desacuerdo y se adjunta la prueba correspondiente.",
+          "base": {
+            "de": "Laut diesem Bescheid reicht man fristgerecht ein Schreiben ein, in dem man den Einwand erklärt, und fügt den entsprechenden Nachweis bei.",
+            "en": "According to this notice, you submit a statement explaining your objection within the deadline and attach the relevant evidence."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "companera",
+          "targetText": "¿Y si ya pasó ese plazo? Aquí pone recurso. ¿Puedo recurrir todavía o tengo que pagar?",
+          "base": {
+            "de": "Und wenn die Frist schon abgelaufen ist? Hier steht Rechtsbehelf. Kann ich noch dagegen vorgehen oder muss ich zahlen?",
+            "en": "What if that deadline has passed? It says appeal here. Can I still appeal, or do I have to pay?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "tú",
+          "targetText": "Según el reverso, después cabe recurrir la resolución; es decir, pasas al trámite siguiente, con el plazo que allí se indica.",
+          "base": {
+            "de": "Laut Rückseite kann man danach die Entscheidung anfechten; das heißt, es folgt der nächste Verfahrensschritt mit der dort angegebenen Frist.",
+            "en": "According to the back, you can then appeal the decision; that is, you move to the next step with the deadline stated there."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "companera",
+          "targetText": "Dime los pasos en orden, que me lo apunto junto a las fechas del papel.",
+          "base": {
+            "de": "Nenn mir die Schritte der Reihe nach; ich schreibe sie neben die Daten auf dem Bescheid.",
+            "en": "Tell me the steps in order so I can note them beside the dates on the notice."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "tú",
+          "targetText": "En resumen: según este papel, escrito en plazo, prueba adjunta y, si esa fase terminó, el recurso indicado al dorso.",
+          "base": {
+            "de": "Zusammengefasst steht hier: fristgerechtes Schreiben, Nachweis beifügen und nach Abschluss dieser Phase der auf der Rückseite genannte Rechtsbehelf.",
+            "en": "In summary, this notice says: a statement within the deadline, evidence attached and, once that stage ends, the appeal described on the back."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Según este papel, se presenta en plazo ",
+        "chunks": [
+          "un escrito",
+          "en el que",
+          "explicas",
+          "tu desacuerdo",
+          "y se adjunta"
+        ],
+        "distractors": [
+          "tu conformidad",
+          "y se omite"
+        ],
+        "frameSuffix": " la prueba correspondiente."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Según el reverso, después cabe "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " la resolución; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", pasas al trámite siguiente, con el plazo que allí se indica."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "recurrir",
+            "acceptedAnswers": [
+              "recurrir"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "recurrir, Infinitiv nach cabe",
+              "en": "recurrir, infinitive after cabe"
+            }
+          },
+          {
+            "answer": "es decir",
+            "acceptedAnswers": [
+              "es decir"
+            ],
+            "kind": "connector",
+            "choices": [
+              "es decir",
+              "debido a",
+              "en lugar de",
+              "a pesar de"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": según este papel, escrito en plazo, prueba adjunta y, si esa fase terminó, el recurso indicado al dorso."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En resumen",
+            "acceptedAnswers": [
+              "En resumen"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En resumen",
+              "Debido a",
+              "En lugar de",
+              "A pesar de"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Según este papel, se presenta en plazo un escrito en el que explicas tu desacuerdo y se ",
+        "answer": "adjunta",
+        "acceptedAnswers": [
+          "adjunta",
+          "aporta",
+          "añade",
+          "anade",
+          "presenta"
+        ],
+        "after": " la prueba correspondiente.",
+        "fallbackChoices": [
+          "adjunta",
+          "adjuntar",
+          "adjuntando",
+          "adjuntado"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Schriftstück und Begründung verbinden",
+          "en": "Linking a document to its reasoning"
+        },
+        "rule": {
+          "de": "En el que bedeutet hier in dem und bezieht sich auf escrito. Por la que verbindet eine razón mit dem Grund des Widerspruchs; Artikel und Relativbezug stimmen überein.",
+          "en": "En el que means in which here and refers to escrito. Por la que links a razón to the reason for the objection; the relative article agrees with its antecedent."
+        },
+        "examples": [
+          {
+            "targetText": "Según este papel, se presenta en plazo un escrito en el que explicas tu desacuerdo y se adjunta la prueba correspondiente.",
+            "base": {
+              "de": "Laut Bescheid reicht man fristgerecht ein Schreiben mit dem Einwand ein und fügt einen passenden Nachweis bei.",
+              "en": "The notice requires a statement explaining the objection within the deadline, with the relevant evidence attached."
+            },
+            "highlights": [
+              "un escrito en el que",
+              "se adjunta"
+            ]
+          },
+          {
+            "targetText": "Explica en el escrito la razón por la que consideras injusta esta multa.",
+            "base": {
+              "de": "Erkläre in dem Schreiben, warum du dieses Bußgeld für unberechtigt hältst.",
+              "en": "Explain in the statement why you consider this fine unjustified."
+            },
+            "highlights": [
+              "la razón por la que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "es decir",
+          "kind": "connector",
+          "base": {
+            "de": "das heißt",
+            "en": "that is / in other words"
+          }
+        },
+        {
+          "targetText": "según este papel",
+          "kind": "frame",
+          "base": {
+            "de": "laut diesem Bescheid",
+            "en": "according to this notice"
+          }
+        },
+        {
+          "targetText": "recurrir",
+          "kind": "verb",
+          "base": {
+            "de": "anfechten / Rechtsbehelf einlegen",
+            "en": "appeal / challenge a decision"
+          }
+        },
+        {
+          "targetText": "escrito",
+          "kind": "noun",
+          "base": {
+            "de": "Schreiben / schriftliche Stellungnahme",
+            "en": "written statement"
+          }
+        },
+        {
+          "targetText": "resolución",
+          "kind": "noun",
+          "base": {
+            "de": "amtliche Entscheidung",
+            "en": "official decision"
+          }
+        },
+        {
+          "targetText": "se adjunta",
+          "lemma": "adjuntar",
+          "kind": "verb",
+          "base": {
+            "de": "wird beigefügt",
+            "en": "is attached"
+          }
+        },
+        {
+          "targetText": "reverso",
+          "kind": "noun",
+          "base": {
+            "de": "Rückseite",
+            "en": "reverse / back"
+          }
+        },
+        {
+          "targetText": "trámite",
+          "kind": "noun",
+          "base": {
+            "de": "Verfahrensschritt",
+            "en": "procedural step"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "escrito",
+            "explicas",
+            "adjunta"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "recurrir",
+            "resolución",
+            "plazo"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "resumen",
+            "prueba",
+            "dorso"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "recurrir",
+        "familyKey": "recurrir",
+        "surface": "recurrir",
+        "turnIndex": 3,
+        "pos": "verb",
+        "example": {
+          "targetText": "El reverso de este documento indica cómo recurrir la resolución.",
+          "base": {
+            "de": "Auf der Rückseite dieses Dokuments steht, wie man die Entscheidung anfechten kann.",
+            "en": "The back of this document explains how to appeal the decision."
+          }
+        },
+        "base": {
+          "de": "anfechten / Rechtsbehelf einlegen",
+          "en": "appeal / challenge a decision"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "por-que-fracaso-el-plan",
+      "title": {
+        "de": "Warum der Marktstand scheiterte",
+        "en": "Why the market stall failed"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt, warum euer gemeinsamer Plan für einen Wochenendstand auf dem Markt nie umgesetzt wurde.",
+        "en": "A friend asks why your shared plan for a weekend market stall never got off the ground."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tú",
+          "tú",
+          "tú"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "amiga",
+          "role": {
+            "de": "Freundin",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Deine Freundin fragt: «Al final no abrimos el puesto del mercado. ¿Por qué se vino abajo aquel plan que teníamos?»",
+        "en": "Your friend asks: «Al final no abrimos el puesto del mercado. ¿Por qué se vino abajo aquel plan que teníamos?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "amiga",
+          "targetText": "Al final no abrimos el puesto del mercado. ¿Por qué se vino abajo aquel plan que teníamos?",
+          "base": {
+            "de": "Letztlich haben wir den Marktstand nicht eröffnet. Warum ist unser damaliger Plan gescheitert?",
+            "en": "We never opened the market stall in the end. Why did that plan of ours fall apart?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "tú",
+          "targetText": "El permiso llegó al terminar la temporada, lo que conllevaba abrir en invierno sin una clientela que cubriera los gastos básicos de funcionamiento del puesto.",
+          "base": {
+            "de": "Die Genehmigung kam erst zum Saisonende; wir hätten im Winter eröffnen müssen, ohne genug Kundschaft für die grundlegenden Betriebskosten des Standes.",
+            "en": "The permit arrived as the season ended, which meant opening in winter without enough customers to cover the stall's basic running costs."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "amiga",
+          "targetText": "Pues a Marta le salió bien con el mismo permiso. Entonces, ¿el problema no era solo la autorización?",
+          "base": {
+            "de": "Bei Marta hat es mit derselben Genehmigung aber geklappt. Dann lag es nicht nur an der Erlaubnis?",
+            "en": "Marta succeeded with the same permit, though. So the authorization wasn't the only problem?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "tú",
+          "targetText": "Si hubiéramos pedido el permiso en enero, como Marta, habríamos abierto en mayo; lo solicitamos en abril y perdimos la temporada.",
+          "base": {
+            "de": "Hätten wir die Genehmigung wie Marta im Januar beantragt, hätten wir im Mai eröffnet; wir beantragten sie im April und verpassten die Saison.",
+            "en": "If we'd applied for the permit in January like Marta, we'd have opened in May; we applied in April and missed the season."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "amiga",
+          "targetText": "¿Y qué harías distinto si lo volvieras a intentar, además de elegir otra fecha de apertura?",
+          "base": {
+            "de": "Was würdest du bei einem neuen Versuch anders machen, außer einen anderen Eröffnungstermin zu wählen?",
+            "en": "What would you do differently if you tried again, apart from choosing another opening date?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "tú",
+          "targetText": "En resumen, falló el calendario; la próxima vez pediría el permiso con seis meses de margen y reservaría el puesto antes.",
+          "base": {
+            "de": "Zusammengefasst scheiterte es am Zeitplan; nächstes Mal würde ich die Genehmigung mit sechs Monaten Vorlauf beantragen und den Stand früher reservieren.",
+            "en": "In summary, the timing went wrong; next time I'd apply six months ahead and reserve the stall earlier."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "El permiso llegó al terminar la temporada, lo que conllevaba abrir en invierno sin ",
+        "chunks": [
+          "una clientela",
+          "que cubriera",
+          "los gastos básicos",
+          "de funcionamiento",
+          "del puesto."
+        ],
+        "distractors": [
+          "que duplicara",
+          "los ingresos mínimos"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " pedido el permiso en enero, como Marta, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " en mayo; lo solicitamos en abril y perdimos la temporada."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Si hubiéramos",
+            "acceptedAnswers": [
+              "Si hubiéramos",
+              "Si hubieramos",
+              "Si hubiésemos",
+              "Si hubiesemos"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Si hubiéramos",
+              "En cuanto a",
+              "Debido a",
+              "A pesar de"
+            ]
+          },
+          {
+            "answer": "habríamos abierto",
+            "acceptedAnswers": [
+              "habríamos abierto",
+              "habriamos abierto"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "abrir, nosotros, Konditional II",
+              "en": "abrir, nosotros, conditional perfect"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", falló el calendario; la próxima vez "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " el permiso con seis meses de margen y reservaría el puesto antes."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En resumen",
+            "acceptedAnswers": [
+              "En resumen"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En resumen",
+              "A pesar de",
+              "En lugar de",
+              "Debido a"
+            ]
+          },
+          {
+            "answer": "pediría",
+            "acceptedAnswers": [
+              "pediría",
+              "pediria"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "pedir, yo, Konditional I",
+              "en": "pedir, yo, simple conditional"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "El permiso llegó al terminar la temporada, lo que conllevaba abrir en invierno sin una clientela que ",
+        "answer": "cubriera",
+        "acceptedAnswers": [
+          "cubriera",
+          "cubriese"
+        ],
+        "after": " los gastos básicos de funcionamiento del puesto.",
+        "fallbackChoices": [
+          "cubriera",
+          "cubrir",
+          "cubriendo",
+          "cubierto"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine verpasste Möglichkeit erklären",
+          "en": "Explaining a missed possibility"
+        },
+        "rule": {
+          "de": "Si mit Plusquamperfekt Subjuntivo nennt eine nicht erfüllte Bedingung in der Vergangenheit; das Konditional II beschreibt das gedachte damalige Ergebnis.",
+          "en": "Si with the pluperfect subjunctive states an unfulfilled past condition; the conditional perfect describes its imagined past result."
+        },
+        "examples": [
+          {
+            "targetText": "Si hubiéramos pedido el permiso en enero, como Marta, habríamos abierto en mayo; lo solicitamos en abril y perdimos la temporada.",
+            "base": {
+              "de": "Bei einem Antrag im Januar wie bei Marta hätten wir im Mai eröffnen können; unser Antrag im April kam für die Saison zu spät.",
+              "en": "Had we applied in January like Marta, we'd have opened in May; our April application was too late for the season."
+            },
+            "highlights": [
+              "Si hubiéramos pedido",
+              "habríamos abierto"
+            ]
+          },
+          {
+            "targetText": "Si hubiéramos reservado antes, habríamos conseguido un puesto junto a la entrada.",
+            "base": {
+              "de": "Hätten wir früher reserviert, hätten wir einen Stand am Eingang bekommen.",
+              "en": "If we'd reserved earlier, we'd have secured a stall beside the entrance."
+            },
+            "highlights": [
+              "Si hubiéramos reservado",
+              "habríamos conseguido"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "lo que conllevaba",
+          "kind": "frame",
+          "base": {
+            "de": "was zur Folge hatte",
+            "en": "which entailed"
+          }
+        },
+        {
+          "targetText": "en resumen",
+          "kind": "connector",
+          "base": {
+            "de": "zusammengefasst",
+            "en": "in summary"
+          }
+        },
+        {
+          "targetText": "conllevaba",
+          "lemma": "conllevar",
+          "kind": "verb",
+          "base": {
+            "de": "brachte mit sich / bedeutete",
+            "en": "entailed / meant"
+          }
+        },
+        {
+          "targetText": "clientela",
+          "kind": "noun",
+          "base": {
+            "de": "Kundschaft",
+            "en": "customers / clientele"
+          }
+        },
+        {
+          "targetText": "temporada",
+          "kind": "noun",
+          "base": {
+            "de": "Saison",
+            "en": "season"
+          }
+        },
+        {
+          "targetText": "funcionamiento",
+          "kind": "noun",
+          "base": {
+            "de": "Betrieb",
+            "en": "operation / running"
+          }
+        },
+        {
+          "targetText": "margen",
+          "kind": "noun",
+          "base": {
+            "de": "Spielraum / Vorlauf",
+            "en": "leeway / lead time"
+          }
+        },
+        {
+          "targetText": "reservaría",
+          "lemma": "reservar",
+          "kind": "verb",
+          "base": {
+            "de": "würde reservieren",
+            "en": "would reserve"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "conllevaba",
+            "clientela",
+            "gastos"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "pedido",
+            "abierto",
+            "abril"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "calendario",
+            "margen",
+            "reservaría"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "conllevar",
+        "familyKey": "conllevar",
+        "surface": "conllevaba",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Abrir fuera de temporada conllevaba un riesgo que no podíamos asumir.",
+          "base": {
+            "de": "Außerhalb der Saison zu eröffnen, brachte ein Risiko mit sich, das wir nicht tragen konnten.",
+            "en": "Opening out of season entailed a risk we couldn't take."
+          }
+        },
+        "base": {
+          "de": "mit sich bringen / zur Folge haben",
+          "en": "entail / involve"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "como-pedir-cita-con-el-especialista",
+      "title": {
+        "de": "Den Überweisungsablauf prüfen",
+        "en": "Checking the referral process"
+      },
+      "situation": {
+        "de": "Am Empfang eines fiktiven Gesundheitszentrums wiederholen Sie den dort erklärten Ablauf, bevor Sie einem älteren Familienmitglied helfen.",
+        "en": "At a fictional health centre's reception, you restate the process explained there before helping an older relative."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "usted",
+          "usted",
+          "usted"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "administrativa",
+          "role": {
+            "de": "Mitarbeiterin am Empfang",
+            "en": "reception administrator"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin fragt: «Ya le he explicado cómo gestionamos aquí las citas con especialistas. ¿Puede decirme qué pasos ha entendido?»",
+        "en": "The administrator asks: «Ya le he explicado cómo gestionamos aquí las citas con especialistas. ¿Puede decirme qué pasos ha entendido?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "administrativa",
+          "targetText": "Ya le he explicado cómo gestionamos aquí las citas con especialistas. ¿Puede decirme qué pasos ha entendido?",
+          "base": {
+            "de": "Ich habe Ihnen erklärt, wie wir hier Facharzttermine organisieren. Können Sie mir sagen, welche Schritte Sie verstanden haben?",
+            "en": "I've explained how we arrange specialist appointments here. Can you tell me which steps you've understood?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "usted",
+          "targetText": "Entiendo que se emite la derivación y luego se envía un mensaje que especifica cuándo hay que acudir al especialista.",
+          "base": {
+            "de": "Nach meinem Verständnis wird die Überweisung ausgestellt und danach eine Nachricht verschickt, die angibt, wann man zum Facharzt gehen soll.",
+            "en": "I understand that the referral is issued and a message then specifies when to see the specialist."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "administrativa",
+          "targetText": "Aquí calculamos un mes de espera. Si tarda más, ¿quién lo consulta: usted o su familiar?",
+          "base": {
+            "de": "Hier rechnen wir mit einem Monat Wartezeit. Wer fragt nach, wenn es länger dauert: Sie oder Ihr Familienmitglied?",
+            "en": "We estimate a month's wait here. If it takes longer, who checks: you or your relative?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "usted",
+          "targetText": "Tardará un mes, según su estimación; en caso de que se retrase, un familiar consultará por internet con el número de derivación.",
+          "base": {
+            "de": "Nach Ihrer Schätzung wird es wohl einen Monat dauern; bei einer Verzögerung fragt ein Familienmitglied mit der Überweisungsnummer online nach.",
+            "en": "It will probably take a month, judging by your estimate; if it's delayed, a relative will check online using the referral number."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "administrativa",
+          "targetText": "¿Y cómo lo consultará su familiar si no tiene internet ni un móvil con datos?",
+          "base": {
+            "de": "Wie fragt Ihr Familienmitglied dann nach, wenn es weder Internet noch ein Smartphone mit Datenzugang hat?",
+            "en": "How will your relative check if they have neither internet nor a phone with mobile data?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "usted",
+          "targetText": "Propongo que lo consultemos en el mostrador con su tarjeta sanitaria y solicitemos avisos al teléfono fijo.",
+          "base": {
+            "de": "Ich schlage vor, dass wir mit der Gesundheitskarte am Empfang nachfragen und um Benachrichtigungen auf dem Festnetz bitten.",
+            "en": "I suggest we check at the reception desk with their health card and ask for updates by landline."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Entiendo que se emite la derivación y luego se envía ",
+        "chunks": [
+          "un mensaje",
+          "que especifica",
+          "cuándo hay que",
+          "acudir",
+          "al especialista."
+        ],
+        "distractors": [
+          "que especifican",
+          "los especialistas"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Tardará un mes, según su estimación; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " se "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", un familiar consultará por internet con el número de derivación."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "en caso de que",
+            "acceptedAnswers": [
+              "en caso de que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "en caso de que",
+              "a pesar de",
+              "debido a",
+              "en lugar de"
+            ]
+          },
+          {
+            "answer": "retrase",
+            "acceptedAnswers": [
+              "retrase"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "retrasarse, la derivación, Präsens Subjuntivo",
+              "en": "retrasarse, la derivación, present subjunctive"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " lo consultemos en el mostrador con su tarjeta sanitaria y "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " avisos al teléfono fijo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Propongo que",
+            "acceptedAnswers": [
+              "Propongo que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Propongo que",
+              "Debido a",
+              "A pesar de",
+              "En lugar de"
+            ]
+          },
+          {
+            "answer": "solicitemos",
+            "acceptedAnswers": [
+              "solicitemos"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "solicitar, nosotros, Präsens Subjuntivo",
+              "en": "solicitar, nosotros, present subjunctive"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Entiendo que se emite la derivación y luego se envía un mensaje que especifica cuándo hay que ",
+        "answer": "acudir",
+        "acceptedAnswers": [
+          "acudir",
+          "ir",
+          "ver",
+          "visitar"
+        ],
+        "after": " al especialista.",
+        "fallbackChoices": [
+          "acudir",
+          "acudido",
+          "acudiendo",
+          "acude"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine mögliche Verzögerung berücksichtigen",
+          "en": "Allowing for a possible delay"
+        },
+        "rule": {
+          "de": "En caso de que verlangt für eine mögliche künftige Situation den Subjuntivo. Tardará gibt hier eine Schätzung wieder; es ist keine garantierte Wartezeit.",
+          "en": "En caso de que takes the subjunctive for a possible future situation. Tardará expresses an estimate here, not a guaranteed waiting time."
+        },
+        "examples": [
+          {
+            "targetText": "Tardará un mes, según su estimación; en caso de que se retrase, un familiar consultará por internet con el número de derivación.",
+            "base": {
+              "de": "Nach Ihrer Schätzung dauert es wohl einen Monat; bei einer Verzögerung fragt ein Familienmitglied mit der Überweisungsnummer online nach.",
+              "en": "Your estimate suggests about a month; if it is delayed, a relative will check online with the referral number."
+            },
+            "highlights": [
+              "Tardará",
+              "en caso de que se retrase"
+            ]
+          },
+          {
+            "targetText": "En caso de que cambie la fecha, podemos preguntar qué forma de aviso ofrece este centro.",
+            "base": {
+              "de": "Falls sich der Termin ändert, können wir fragen, welche Benachrichtigungsmöglichkeit dieses Zentrum anbietet.",
+              "en": "If the date changes, we can ask what kind of notification this centre offers."
+            },
+            "highlights": [
+              "En caso de que cambie"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "en caso de que",
+          "kind": "frame",
+          "base": {
+            "de": "falls / für den Fall, dass",
+            "en": "if / in the event that"
+          }
+        },
+        {
+          "targetText": "propongo que",
+          "kind": "frame",
+          "base": {
+            "de": "ich schlage vor, dass",
+            "en": "I suggest that"
+          }
+        },
+        {
+          "targetText": "derivación",
+          "kind": "noun",
+          "base": {
+            "de": "ärztliche Überweisung",
+            "en": "medical referral"
+          }
+        },
+        {
+          "targetText": "se emite",
+          "lemma": "emitir",
+          "kind": "verb",
+          "base": {
+            "de": "wird ausgestellt",
+            "en": "is issued"
+          }
+        },
+        {
+          "targetText": "estimación",
+          "kind": "noun",
+          "base": {
+            "de": "Schätzung",
+            "en": "estimate"
+          }
+        },
+        {
+          "targetText": "mostrador",
+          "kind": "noun",
+          "base": {
+            "de": "Empfangsschalter",
+            "en": "reception desk"
+          }
+        },
+        {
+          "targetText": "tarjeta sanitaria",
+          "kind": "noun",
+          "base": {
+            "de": "Gesundheitskarte",
+            "en": "health card"
+          }
+        },
+        {
+          "targetText": "teléfono fijo",
+          "kind": "noun",
+          "base": {
+            "de": "Festnetztelefon",
+            "en": "landline telephone"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "derivación",
+            "mensaje",
+            "especifica"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "derivación",
+            "estimación",
+            "retrase"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "propongo",
+            "mostrador",
+            "sanitaria"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "derivación",
+        "familyKey": "derivar",
+        "surface": "derivación",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "El mensaje menciona el número de la derivación al especialista.",
+          "base": {
+            "de": "In der Nachricht steht die Nummer der Überweisung zum Facharzt.",
+            "en": "The message mentions the number of the referral to the specialist."
+          }
+        },
+        "base": {
+          "de": "ärztliche Überweisung",
+          "en": "medical referral"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "por-que-importa-el-sistema-de-bicis",
+      "title": {
+        "de": "Wozu das Leihradsystem beiträgt",
+        "en": "What the bike-share scheme contributes"
+      },
+      "situation": {
+        "de": "Ein Freund hält das öffentliche Leihradsystem eurer fiktiven Stadt für Geldverschwendung. Ihr diskutiert den Nutzen und habt den diesjährigen Stadtbericht vor euch.",
+        "en": "A friend thinks your fictional city's bike-share scheme wastes money. You discuss its value with this year's municipal report in front of you."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tú",
+          "tú",
+          "tú"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "amigo-esceptico",
+          "role": {
+            "de": "skeptischer Freund",
+            "en": "skeptical friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Freund meint: «Me parece un despilfarro mantener tantas bicis públicas. ¿Por qué dices que ese sistema importa tanto?»",
+        "en": "Your friend says: «Me parece un despilfarro mantener tantas bicis públicas. ¿Por qué dices que ese sistema importa tanto?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "amigo-esceptico",
+          "targetText": "Me parece un despilfarro mantener tantas bicis públicas. ¿Por qué dices que ese sistema importa tanto?",
+          "base": {
+            "de": "So viele öffentliche Leihräder zu unterhalten, erscheint mir verschwenderisch. Warum findest du das System so wichtig?",
+            "en": "Keeping so many public bikes seems wasteful to me. Why do you say this scheme matters so much?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "tú",
+          "targetText": "Sustituir viajes en coche reduce el tráfico; eso, a su vez, fomenta una movilidad que depende menos del vehículo particular.",
+          "base": {
+            "de": "Autofahrten zu ersetzen, verringert den Verkehr; das fördert wiederum eine Mobilität, die weniger vom eigenen Fahrzeug abhängt.",
+            "en": "Replacing car journeys reduces traffic; that in turn encourages mobility that depends less on private vehicles."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "amigo-esceptico",
+          "targetText": "Yo veo las estaciones llenas de bicis sin tocar. Si nadie las usa, serán un gasto de puro lujo.",
+          "base": {
+            "de": "Ich sehe volle Stationen mit unbenutzten Rädern. Wenn niemand sie nutzt, ist das wohl reiner Luxus auf öffentliche Kosten.",
+            "en": "I see stations full of untouched bikes. If nobody uses them, they're probably just a luxury expense."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "tú",
+          "targetText": "En cuanto al uso, el primer año fue escaso, mientras que el informe municipal actual contabiliza miles de viajes diarios por el centro.",
+          "base": {
+            "de": "Zur Nutzung: Im ersten Jahr war sie gering, während der aktuelle Stadtbericht Tausende tägliche Fahrten durch das Zentrum verzeichnet.",
+            "en": "On usage, it was low in the first year, whereas the current municipal report records thousands of daily trips through the centre."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "amigo-esceptico",
+          "targetText": "Pero ese servicio cuesta dinero público. ¿Pagarías tú una tasa municipal más alta para mantenerlo?",
+          "base": {
+            "de": "Aber der Dienst kostet öffentliche Gelder. Würdest du selbst dafür eine höhere kommunale Abgabe zahlen?",
+            "en": "But the service costs public money. Would you pay a higher municipal charge to keep it running?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "tú",
+          "targetText": "En resumen, sí, aunque suba la tasa: fomenta hábitos que pueden reducir los atascos y el ruido a largo plazo.",
+          "base": {
+            "de": "Zusammengefasst ja, auch bei einer höheren Abgabe: Das System fördert Gewohnheiten, die langfristig Staus und Lärm verringern können.",
+            "en": "In summary, yes, even if the charge rises: it encourages habits that can reduce congestion and noise over time."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Sustituir viajes en coche reduce el tráfico; eso, a su vez, ",
+        "chunks": [
+          "fomenta",
+          "una movilidad",
+          "que depende",
+          "menos del",
+          "vehículo particular."
+        ],
+        "distractors": [
+          "más del",
+          "una economía"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "En cuanto al uso, el primer año fue escaso, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " el informe municipal actual "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " miles de viajes diarios por el centro."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "mientras que",
+            "acceptedAnswers": [
+              "mientras que"
+            ],
+            "kind": "connector",
+            "choices": [
+              "mientras que",
+              "debido a",
+              "a pesar de",
+              "en lugar de"
+            ]
+          },
+          {
+            "answer": "contabiliza",
+            "acceptedAnswers": [
+              "contabiliza"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "contabilizar, el informe, Präsens Indikativ",
+              "en": "contabilizar, el informe, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", sí, aunque "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " la tasa: fomenta hábitos que pueden reducir los atascos y el ruido a largo plazo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En resumen",
+            "acceptedAnswers": [
+              "En resumen"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En resumen",
+              "A pesar de",
+              "En lugar de",
+              "Debido a"
+            ]
+          },
+          {
+            "answer": "suba",
+            "acceptedAnswers": [
+              "suba"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "subir, la tasa, Präsens Subjuntivo für einen nicht entscheidenden Einwand",
+              "en": "subir, la tasa, present subjunctive for a concession treated as non-decisive"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Sustituir viajes en coche reduce el tráfico; eso, a su vez, fomenta una movilidad que ",
+        "answer": "depende",
+        "acceptedAnswers": [
+          "depende"
+        ],
+        "after": " menos del vehículo particular.",
+        "fallbackChoices": [
+          "depende",
+          "depender",
+          "dependiendo",
+          "dependido"
+        ]
+      },
+      "pattern": {
+        "moveType": "conclude",
+        "label": {
+          "de": "Einen Einwand als nicht entscheidend behandeln",
+          "en": "Treating a concession as non-decisive"
+        },
+        "rule": {
+          "de": "Aunque mit Subjuntivo kann einen Einwand aufgreifen, der die Entscheidung nicht ändert. Hier bleibt die Zustimmung bestehen, auch wenn die Abgabe steigt.",
+          "en": "Aunque with the subjunctive can introduce a concession that does not change the decision. Here support remains even if the charge rises."
+        },
+        "examples": [
+          {
+            "targetText": "En resumen, sí, aunque suba la tasa: fomenta hábitos que pueden reducir los atascos y el ruido a largo plazo.",
+            "base": {
+              "de": "Ja, auch bei einer höheren Abgabe: Die geförderten Gewohnheiten können Staus und Lärm langfristig verringern.",
+              "en": "Yes, even if the charge rises: the habits encouraged may reduce congestion and noise in the long term."
+            },
+            "highlights": [
+              "aunque suba"
+            ]
+          },
+          {
+            "targetText": "Aunque cueste más mantenerlo, apoyaría el sistema si demuestra que reduce los viajes en coche.",
+            "base": {
+              "de": "Auch wenn sein Unterhalt mehr kostet, würde ich das System unterstützen, sofern es nachweislich Autofahrten reduziert.",
+              "en": "Even if running it costs more, I'd support the scheme if it demonstrates that it reduces car journeys."
+            },
+            "highlights": [
+              "Aunque cueste"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "a su vez",
+          "kind": "connector",
+          "base": {
+            "de": "wiederum",
+            "en": "in turn"
+          }
+        },
+        {
+          "targetText": "mientras que",
+          "kind": "connector",
+          "base": {
+            "de": "während / wohingegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "fomenta",
+          "lemma": "fomentar",
+          "kind": "verb",
+          "base": {
+            "de": "fördert",
+            "en": "encourages / promotes"
+          }
+        },
+        {
+          "targetText": "movilidad",
+          "kind": "noun",
+          "base": {
+            "de": "Mobilität",
+            "en": "mobility"
+          }
+        },
+        {
+          "targetText": "particular",
+          "kind": "adjective",
+          "base": {
+            "de": "privat / eigen",
+            "en": "private / personal"
+          }
+        },
+        {
+          "targetText": "despilfarro",
+          "kind": "noun",
+          "base": {
+            "de": "Verschwendung",
+            "en": "wastefulness"
+          }
+        },
+        {
+          "targetText": "tasa",
+          "kind": "noun",
+          "base": {
+            "de": "kommunale Abgabe",
+            "en": "municipal charge"
+          }
+        },
+        {
+          "targetText": "atascos",
+          "lemma": "atasco",
+          "kind": "noun",
+          "base": {
+            "de": "Staus",
+            "en": "traffic jams / congestion"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "fomenta",
+            "movilidad",
+            "depende"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "uso",
+            "informe",
+            "diarios"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "fomenta",
+            "tasa",
+            "atascos"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "fomentar",
+        "familyKey": "fomentar",
+        "surface": "fomenta",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Un servicio accesible fomenta que más personas prueben la bicicleta.",
+          "base": {
+            "de": "Ein leicht zugängliches Angebot fördert, dass mehr Menschen das Fahrrad ausprobieren.",
+            "en": "An accessible service encourages more people to try cycling."
+          }
+        },
+        "base": {
+          "de": "fördern / unterstützen",
+          "en": "encourage / promote"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "trazar-la-cadena-de-una-decision",
+      "title": {
+        "de": "Eine Entscheidung rekonstruieren",
+        "en": "Reconstructing a decision"
+      },
+      "situation": {
+        "de": "In einem fiktiven Verwaltungsgespräch müssen Sie erklären, wie Ihr Verein eine Rampe einbauen ließ, bevor die schriftliche Genehmigung vorlag.",
+        "en": "In a fictional administrative meeting, you explain how your association had a ramp installed before the written permit arrived."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "usted",
+          "usted",
+          "usted"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "funcionaria",
+          "role": {
+            "de": "Sachbearbeiterin im Rathaus",
+            "en": "municipal official"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Sachbearbeiterin fragt: «La asociación instaló la rampa sin tener el permiso escrito. ¿Cómo llegaron a tomar esa decisión?»",
+        "en": "The official asks: «La asociación instaló la rampa sin tener el permiso escrito. ¿Cómo llegaron a tomar esa decisión?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "funcionaria",
+          "targetText": "La asociación instaló la rampa sin tener el permiso escrito. ¿Cómo llegaron a tomar esa decisión?",
+          "base": {
+            "de": "Der Verein hat die Rampe ohne schriftliche Genehmigung eingebaut. Wie kam es zu dieser Entscheidung?",
+            "en": "The association installed the ramp without the written permit. How did you arrive at that decision?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "usted",
+          "targetText": "Nuestro criterio fue confiar en la llamada: nos dijeron que se había aprobado el proyecto, de modo que encargamos la rampa en febrero.",
+          "base": {
+            "de": "Wir entschieden im Vertrauen auf den Anruf: Uns wurde gesagt, das Projekt sei genehmigt worden; deshalb beauftragten wir im Februar die Rampe.",
+            "en": "Our basis was trusting the phone call: we were told the project had been approved, so we ordered the ramp in February."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "funcionaria",
+          "targetText": "¿Quién le dijo exactamente eso, con qué palabras y en qué fecha? Necesito registrar la fuente.",
+          "base": {
+            "de": "Wer hat Ihnen das genau gesagt, mit welchen Worten und an welchem Tag? Ich muss die Quelle festhalten.",
+            "en": "Who exactly told you that, in what words and on what date? I need to record the source."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "usted",
+          "targetText": "El doce de febrero, el técnico de urbanismo dijo que el expediente estaba resuelto y que el permiso llegaría en dos semanas.",
+          "base": {
+            "de": "Der Mitarbeiter der Stadtplanung sagte am zwölften Februar, die Akte sei abgeschlossen und die Genehmigung werde in zwei Wochen eintreffen.",
+            "en": "The planning officer said on the twelfth of February that the case was settled and the permit would arrive within two weeks."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "funcionaria",
+          "targetText": "Resuma la cadena para el acta, sin interpretaciones: llamada, encargo, inicio de obra y recepción del permiso.",
+          "base": {
+            "de": "Fassen Sie den Ablauf ohne Deutung fürs Protokoll zusammen: Anruf, Auftrag, Baubeginn und Eingang der Genehmigung.",
+            "en": "Summarize the sequence for the record without interpretation: call, order, start of work and receipt of the permit."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "usted",
+          "targetText": "En resumen: llamada el doce de febrero, encargo el veinte, obras en marzo; el permiso escrito nunca llegó.",
+          "base": {
+            "de": "Zusammengefasst: Anruf am zwölften Februar, Auftrag am zwanzigsten, Bau im März; die schriftliche Genehmigung kam nie an.",
+            "en": "In summary: call on the twelfth of February, order on the twentieth, work in March; the written permit never arrived."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Nuestro ",
+        "chunks": [
+          "criterio",
+          "fue confiar en",
+          "la llamada:",
+          "nos dijeron",
+          "que se había aprobado"
+        ],
+        "distractors": [
+          "fue dudar",
+          "que se había rechazado"
+        ],
+        "frameSuffix": " el proyecto, de modo que encargamos la rampa en febrero."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "El doce de febrero, el técnico de urbanismo "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " el expediente estaba resuelto y que el permiso "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " en dos semanas."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "dijo que",
+            "acceptedAnswers": [
+              "dijo que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "dijo que",
+              "debido a",
+              "a pesar de",
+              "en lugar de"
+            ]
+          },
+          {
+            "answer": "llegaría",
+            "acceptedAnswers": [
+              "llegaría",
+              "llegaria"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "llegar, el permiso, Konditional als Zukunft aus damaliger Sicht",
+              "en": "llegar, el permiso, conditional for a future viewed from the past"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": llamada el doce de febrero, encargo el veinte, obras en marzo; el permiso escrito nunca "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En resumen",
+            "acceptedAnswers": [
+              "En resumen"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En resumen",
+              "A pesar de",
+              "En lugar de",
+              "Debido a"
+            ]
+          },
+          {
+            "answer": "llegó",
+            "acceptedAnswers": [
+              "llegó",
+              "llego"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "llegar, el permiso, Pretérito indefinido",
+              "en": "llegar, el permiso, preterite"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Nuestro criterio fue confiar en la llamada: nos dijeron que se había ",
+        "answer": "aprobado",
+        "acceptedAnswers": [
+          "aprobado",
+          "autorizado"
+        ],
+        "after": " el proyecto, de modo que encargamos la rampa en febrero.",
+        "fallbackChoices": [
+          "aprobado",
+          "aprobar",
+          "aprobando",
+          "aprueba"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine frühere Aussage wiedergeben",
+          "en": "Reporting an earlier statement"
+        },
+        "rule": {
+          "de": "Beim Bericht über eine frühere Aussage kann die Vorzeitigkeit mit había aprobado und die damalige Zukunft mit llegaría ausgedrückt werden. Die wiedergegebene Aussage ist noch kein Nachweis der Genehmigung.",
+          "en": "When reporting a past statement, había aprobado marks an earlier event and llegaría marks a future viewed from that past point. Reporting the statement does not itself prove approval."
+        },
+        "examples": [
+          {
+            "targetText": "El doce de febrero, el técnico de urbanismo dijo que el expediente estaba resuelto y que el permiso llegaría en dos semanas.",
+            "base": {
+              "de": "Der Stadtplanungsmitarbeiter sagte am zwölften Februar, der Vorgang sei abgeschlossen und die Genehmigung komme in zwei Wochen.",
+              "en": "The planning officer said on the twelfth of February that the case was settled and the permit would arrive in two weeks."
+            },
+            "highlights": [
+              "dijo",
+              "estaba resuelto",
+              "llegaría"
+            ]
+          },
+          {
+            "targetText": "Nos dijeron que se había aprobado el proyecto, pero no recibimos el documento con el que podíamos comprobarlo.",
+            "base": {
+              "de": "Uns wurde gesagt, das Projekt sei genehmigt worden, aber wir erhielten das Dokument zur Überprüfung nicht.",
+              "en": "We were told the project had been approved, but we did not receive the document with which we could verify it."
+            },
+            "highlights": [
+              "Nos dijeron que se había aprobado",
+              "con el que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "de modo que",
+          "kind": "connector",
+          "base": {
+            "de": "sodass / deshalb",
+            "en": "so / with the result that"
+          }
+        },
+        {
+          "targetText": "en resumen",
+          "kind": "connector",
+          "base": {
+            "de": "zusammengefasst",
+            "en": "in summary"
+          }
+        },
+        {
+          "targetText": "criterio",
+          "kind": "noun",
+          "base": {
+            "de": "Entscheidungsgrundlage / Maßstab",
+            "en": "basis for a decision / criterion"
+          }
+        },
+        {
+          "targetText": "expediente",
+          "kind": "noun",
+          "base": {
+            "de": "Akte / Vorgang",
+            "en": "case file / case"
+          }
+        },
+        {
+          "targetText": "urbanismo",
+          "kind": "noun",
+          "base": {
+            "de": "Stadtplanung",
+            "en": "urban planning"
+          }
+        },
+        {
+          "targetText": "acta",
+          "kind": "noun",
+          "base": {
+            "de": "Protokoll",
+            "en": "official record / minutes"
+          }
+        },
+        {
+          "targetText": "encargo",
+          "kind": "noun",
+          "base": {
+            "de": "Auftrag",
+            "en": "order / commission"
+          }
+        },
+        {
+          "targetText": "rampa",
+          "kind": "noun",
+          "base": {
+            "de": "Rampe",
+            "en": "ramp"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "criterio",
+            "dijeron",
+            "aprobado"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "técnico",
+            "expediente",
+            "llegaría"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "llamada",
+            "encargo",
+            "permiso"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "criterio",
+        "familyKey": "criterio",
+        "surface": "criterio",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Ese fue el criterio con el que decidimos encargar la rampa.",
+          "base": {
+            "de": "Auf dieser Grundlage entschieden wir, die Rampe in Auftrag zu geben.",
+            "en": "That was the basis on which we decided to order the ramp."
+          }
+        },
+        "base": {
+          "de": "Entscheidungsgrundlage / Maßstab",
+          "en": "basis for a decision / criterion"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

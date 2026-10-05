@@ -1,0 +1,2144 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "baseLanguage": "German",
+  "pathNumber": 5,
+  "title": {
+    "de": "Ich hätte eine Frage",
+    "en": "I'd like some information"
+  },
+  "subtitle": {
+    "de": "Frage höflich nach und kläre, was noch offen ist.",
+    "en": "Ask politely and clarify what is still unclear."
+  },
+  "anchor": "Controlling Fable authoring-spec-it-pt.json, Portuguese nativeGrammarScopeByPath P5: você sabe/pode me dizer + onde/como/quando/qual/se; fixed courtesy queria saber se; embedded clauses in present indicative, no imported inversion. All portuguese-plan.json P5 trophies and beats preserved. L1–3 core location/document/method questions; L4–7 clarification with qual/quando/se; L8–10 recycle and add fixed queria saber se. Formal Brazilian você with German Sie throughout. Two form blanks with literal subjects and infinitive (subject) cues; the indirect-question carrier stays visible. No clitic blanks, passive-production staging, speaker gender, compound perfect, or future-subjunctive production. Pending Fable full read and independent review.",
+  "lessons": [
+    {
+      "slug": "cadastro-na-biblioteca",
+      "title": {
+        "de": "Ein Bibliothekskonto eröffnen",
+        "en": "Registering at the library"
+      },
+      "situation": {
+        "de": "Du möchtest die Bibliothek zum ersten Mal nutzen und fragst am Empfang nach.",
+        "en": "You want to use the library for the first time and ask at reception."
+      },
+      "pedagogicalGoal": "Eine Ortsfrage mit você sabe onde einbetten und nach einer unerwarteten Zuständigkeit den nächsten Schritt erfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você já usa a biblioteca ou vem fazer o primeiro cadastro?",
+          "baseText": {
+            "de": "Nutzen Sie die Bibliothek bereits, oder möchten Sie sich zum ersten Mal anmelden?",
+            "en": "Do you already use the library, or are you here to register for the first time?"
+          }
+        },
+        {
+          "targetText": "Você sabe onde eu faço o cadastro para usar esta biblioteca?",
+          "baseText": {
+            "de": "Wissen Sie, wo ich mich anmelden kann, um diese Bibliothek zu nutzen?",
+            "en": "Do you know where I register to use this library?"
+          }
+        },
+        {
+          "targetText": "Este balcão é só para empréstimos. O cadastro é pelo sistema no computador do saguão.",
+          "baseText": {
+            "de": "Dieser Schalter ist nur für Ausleihen. Die Anmeldung erfolgt über das System am Computer im Foyer.",
+            "en": "This counter is only for loans. Registration is through the system on the computer in the lobby."
+          }
+        },
+        {
+          "targetText": "Você pode me dizer como eu acesso aquele sistema?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wie ich auf dieses System zugreife?",
+            "en": "Can you tell me how I access that system?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Você sabe onde…?",
+        "rule": {
+          "de": "Nach você sabe führt onde eine indirekte Ortsfrage ein; bei einem ausdrücklichen Subjekt bleibt die Reihenfolge wie in eu faço.",
+          "en": "After você sabe, onde introduces an indirect question about a place; with an explicit subject, keep the order used in eu faço."
+        },
+        "examples": [
+          {
+            "targetText": "Você sabe onde eu faço o cadastro para usar esta biblioteca?",
+            "baseText": {
+              "de": "Wissen Sie, wo ich mich anmelden kann, um diese Bibliothek zu nutzen?",
+              "en": "Do you know where I register to use this library?"
+            },
+            "highlight": "onde eu faço o cadastro"
+          },
+          {
+            "targetText": "Você sabe onde a biblioteca guarda os jornais?",
+            "baseText": {
+              "de": "Wissen Sie, wo die Bibliothek die Zeitungen aufbewahrt?",
+              "en": "Do you know where the library keeps the newspapers?"
+            },
+            "highlight": "onde a biblioteca guarda"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "pode",
+          "cue": "poder (você)",
+          "choices": [
+            "posso",
+            "podem",
+            "pode",
+            "podemos"
+          ]
+        },
+        " me dizer como eu ",
+        {
+          "kind": "form",
+          "answer": "acesso",
+          "cue": "acessar (eu)",
+          "choices": [
+            "acessamos",
+            "acesso",
+            "acessam",
+            "acessa"
+          ]
+        },
+        " aquele sistema?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Você sabe onde",
+          "baseText": {
+            "de": "Wissen Sie, wo",
+            "en": "Do you know where"
+          }
+        },
+        {
+          "targetText": "eu faço",
+          "baseText": {
+            "de": "ich erledige",
+            "en": "I complete"
+          }
+        },
+        {
+          "targetText": "o cadastro para usar",
+          "baseText": {
+            "de": "die Anmeldung zur Nutzung",
+            "en": "the registration to use"
+          }
+        },
+        {
+          "targetText": "esta biblioteca?",
+          "baseText": {
+            "de": "dieser Bibliothek?",
+            "en": "this library?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "cadastro",
+          "baseText": {
+            "de": "Registrierung; Anmeldung",
+            "en": "registration"
+          }
+        },
+        {
+          "targetText": "balcão",
+          "baseText": {
+            "de": "Schalter",
+            "en": "counter"
+          }
+        },
+        {
+          "targetText": "empréstimos",
+          "baseText": {
+            "de": "Ausleihen",
+            "en": "loans"
+          }
+        },
+        {
+          "targetText": "saguão",
+          "baseText": {
+            "de": "Foyer; Eingangshalle",
+            "en": "lobby"
+          }
+        },
+        {
+          "targetText": "sistema",
+          "baseText": {
+            "de": "System",
+            "en": "system"
+          }
+        },
+        {
+          "targetText": "acesso",
+          "baseText": {
+            "de": "ich greife zu",
+            "en": "I access"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Você sabe onde eu ",
+        "answer": "faço",
+        "after": " o cadastro para usar esta biblioteca?",
+        "fallbackChoices": [
+          "faz",
+          "fazemos",
+          "faço",
+          "fazem"
+        ]
+      },
+      "speakRequired": [
+        "cadastro",
+        "usar",
+        "biblioteca"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang fragt eine Mitarbeiterin: “Você já usa a biblioteca ou vem fazer o primeiro cadastro?”",
+        "en": "At reception, a staff member asks: “Você já usa a biblioteca ou vem fazer o primeiro cadastro?”"
+      },
+      "trophyWord": {
+        "word": "cadastro",
+        "meaning": {
+          "de": "Registrierung; Anmeldung",
+          "en": "registration"
+        },
+        "example": "Você sabe onde eu faço o cadastro para usar esta biblioteca?",
+        "whyThisWord": {
+          "de": "Cadastro bezeichnet die Aufnahme deiner Angaben in ein System; fazer o cadastro ist eine alltägliche Wendung für die Registrierung.",
+          "en": "Cadastro means entering your details into a system; fazer o cadastro is an everyday expression for registering."
+        }
+      },
+      "distractors": [
+        "o pagamento para usar",
+        "essa piscina?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine erste Frage am Bibliotheksempfang.",
+        "en": "A first inquiry at the library reception."
+      },
+      "songMood": "welcoming first steps",
+      "visualNotes": "Library reception with books nearby; no registration-terminal instructions or loan-only signage in the initial frame."
+    },
+    {
+      "slug": "documento-de-endereco",
+      "title": {
+        "de": "Den Wohnsitz nachweisen",
+        "en": "Showing proof of address"
+      },
+      "situation": {
+        "de": "Du fragst beim Bürgerservice nach den Unterlagen für deine Anmeldung.",
+        "en": "You ask at a public service counter about the paperwork for your registration."
+      },
+      "pedagogicalGoal": "Qual mit einem konkreten Nomen in eine höfliche Frage einbetten und eine Ersatzunterlage erfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qual é a sua dúvida sobre os documentos do cadastro?",
+          "baseText": {
+            "de": "Welche Frage haben Sie zu den Unterlagen für die Anmeldung?",
+            "en": "What would you like to know about the registration documents?"
+          }
+        },
+        {
+          "targetText": "Você pode me dizer qual documento serve como comprovante de endereço?",
+          "baseText": {
+            "de": "Können Sie mir sagen, welches Dokument als Adressnachweis dient?",
+            "en": "Can you tell me which document serves as proof of address?"
+          }
+        },
+        {
+          "targetText": "Uma conta recente, mas ela precisa estar no seu nome.",
+          "baseText": {
+            "de": "Eine aktuelle Rechnung; sie muss allerdings auf Ihren Namen ausgestellt sein.",
+            "en": "A recent bill, but it needs to be in your name."
+          }
+        },
+        {
+          "targetText": "Você sabe qual declaração substitui uma conta em outro nome?",
+          "baseText": {
+            "de": "Wissen Sie, welche Erklärung eine Rechnung auf einen anderen Namen ersetzt?",
+            "en": "Do you know which declaration can replace a bill in someone else's name?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Pode me dizer qual documento…?",
+        "rule": {
+          "de": "Qual steht vor dem Nomen, über das du mehr wissen möchtest; pode me dizer leitet die Frage höflich ein und bleibt zusammen.",
+          "en": "Qual comes before the noun you want information about; pode me dizer politely introduces the question and stays together."
+        },
+        "examples": [
+          {
+            "targetText": "Você pode me dizer qual documento serve como comprovante de endereço?",
+            "baseText": {
+              "de": "Können Sie mir sagen, welches Dokument als Adressnachweis dient?",
+              "en": "Can you tell me which document serves as proof of address?"
+            },
+            "highlight": "qual documento serve"
+          },
+          {
+            "targetText": "Você sabe qual conta vale para este cadastro?",
+            "baseText": {
+              "de": "Wissen Sie, welche Rechnung für diese Anmeldung gilt?",
+              "en": "Do you know which bill is valid for this registration?"
+            },
+            "highlight": "qual conta vale"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (você)",
+          "choices": [
+            "sabemos",
+            "sabem",
+            "sabe",
+            "sei"
+          ]
+        },
+        " qual declaração ",
+        {
+          "kind": "form",
+          "answer": "substitui",
+          "cue": "substituir (qual declaração)",
+          "choices": [
+            "substituo",
+            "substitui",
+            "substituem",
+            "substituímos"
+          ]
+        },
+        " uma conta em outro nome?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Você pode me dizer",
+          "baseText": {
+            "de": "Können Sie mir sagen",
+            "en": "Can you tell me"
+          }
+        },
+        {
+          "targetText": "qual documento serve",
+          "baseText": {
+            "de": "welches Dokument dient",
+            "en": "which document serves"
+          }
+        },
+        {
+          "targetText": "como comprovante",
+          "baseText": {
+            "de": "als Nachweis",
+            "en": "as proof"
+          }
+        },
+        {
+          "targetText": "de endereço?",
+          "baseText": {
+            "de": "der Adresse?",
+            "en": "of address?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "documento",
+          "baseText": {
+            "de": "Dokument; Unterlage",
+            "en": "document"
+          }
+        },
+        {
+          "targetText": "comprovante de endereço",
+          "baseText": {
+            "de": "Adressnachweis",
+            "en": "proof of address"
+          }
+        },
+        {
+          "targetText": "conta recente",
+          "baseText": {
+            "de": "aktuelle Rechnung",
+            "en": "recent bill"
+          }
+        },
+        {
+          "targetText": "em outro nome",
+          "baseText": {
+            "de": "auf einen anderen Namen",
+            "en": "in someone else's name"
+          }
+        },
+        {
+          "targetText": "declaração",
+          "baseText": {
+            "de": "Erklärung; Bescheinigung",
+            "en": "declaration; statement"
+          }
+        },
+        {
+          "targetText": "substitui",
+          "baseText": {
+            "de": "ersetzt",
+            "en": "replaces"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Você pode me dizer qual documento ",
+        "answer": "serve",
+        "after": " como comprovante de endereço?",
+        "fallbackChoices": [
+          "servimos",
+          "sirvo",
+          "servem",
+          "serve"
+        ]
+      },
+      "speakRequired": [
+        "documento",
+        "comprovante",
+        "endereço"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter fragt der Mitarbeiter: “Qual é a sua dúvida sobre os documentos do cadastro?”",
+        "en": "At the counter, the staff member asks: “Qual é a sua dúvida sobre os documentos do cadastro?”"
+      },
+      "trophyWord": {
+        "word": "documento",
+        "meaning": {
+          "de": "Dokument; Unterlage",
+          "en": "document"
+        },
+        "example": "Você pode me dizer qual documento serve como comprovante de endereço?",
+        "whyThisWord": {
+          "de": "Documento ist der Oberbegriff für eine benötigte Unterlage; mit qual documento fragst du nach der konkreten Art.",
+          "en": "Documento is a general word for a required document; qual documento asks which specific kind is needed."
+        }
+      },
+      "distractors": [
+        "qual cartão serve",
+        "de renda?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Frage zu Unterlagen am Bürgerschalter.",
+        "en": "A question about paperwork at a service counter."
+      },
+      "songMood": "patient clear inquiry",
+      "visualNotes": "Service counter with unlabelled paperwork; no visible name mismatch or replacement-document rule."
+    },
+    {
+      "slug": "formulario-sem-botao",
+      "title": {
+        "de": "Das Formular absenden",
+        "en": "Sending the form"
+      },
+      "situation": {
+        "de": "Du fragst am Empfang eines Kurszentrums nach der Online-Anmeldung auf deinem Handy.",
+        "en": "You ask at a course center's reception about online registration on your phone."
+      },
+      "pedagogicalGoal": "Como in einer indirekten Frage nach einem Verfahren verwenden und bei einem Anzeigeproblem gezielt weiterfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você já terminou de preencher a inscrição no celular?",
+          "baseText": {
+            "de": "Haben Sie die Anmeldung auf dem Handy bereits ausgefüllt?",
+            "en": "Have you finished filling out the registration on your phone?"
+          }
+        },
+        {
+          "targetText": "Você sabe como eu envio este formulário de inscrição?",
+          "baseText": {
+            "de": "Wissen Sie, wie ich dieses Anmeldeformular absende?",
+            "en": "Do you know how I send this registration form?"
+          }
+        },
+        {
+          "targetText": "Estou vendo que o botão não aparece no seu celular. No computador ele aparece normalmente.",
+          "baseText": {
+            "de": "Ich sehe, dass der Knopf auf Ihrem Handy nicht angezeigt wird. Am Computer ist er normalerweise sichtbar.",
+            "en": "I can see that the button isn't appearing on your phone. It normally appears on a computer."
+          }
+        },
+        {
+          "targetText": "Você pode me dizer como eu abro o formulário no computador?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wie ich das Formular am Computer öffne?",
+            "en": "Can you tell me how I open the form on a computer?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Você sabe como eu…?",
+        "rule": {
+          "de": "Como fragt nach dem Vorgehen; nach você sabe oder pode me dizer bleibt eu vor dem gebeugten Verb.",
+          "en": "Como asks about the method; after você sabe or pode me dizer, eu stays before the conjugated verb."
+        },
+        "examples": [
+          {
+            "targetText": "Você sabe como eu envio este formulário de inscrição?",
+            "baseText": {
+              "de": "Wissen Sie, wie ich dieses Anmeldeformular absende?",
+              "en": "Do you know how I send this registration form?"
+            },
+            "highlight": "como eu envio"
+          },
+          {
+            "targetText": "Você sabe como eu salvo uma cópia do formulário?",
+            "baseText": {
+              "de": "Wissen Sie, wie ich eine Kopie des Formulars speichere?",
+              "en": "Do you know how I save a copy of the form?"
+            },
+            "highlight": "como eu salvo"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "pode",
+          "cue": "poder (você)",
+          "choices": [
+            "podemos",
+            "pode",
+            "posso",
+            "podem"
+          ]
+        },
+        " me dizer como eu ",
+        {
+          "kind": "form",
+          "answer": "abro",
+          "cue": "abrir (eu)",
+          "choices": [
+            "abre",
+            "abrimos",
+            "abrem",
+            "abro"
+          ]
+        },
+        " o formulário no computador?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Você sabe como",
+          "baseText": {
+            "de": "Wissen Sie, wie",
+            "en": "Do you know how"
+          }
+        },
+        {
+          "targetText": "eu envio",
+          "baseText": {
+            "de": "ich absende",
+            "en": "I send"
+          }
+        },
+        {
+          "targetText": "este formulário",
+          "baseText": {
+            "de": "dieses Formular",
+            "en": "this form"
+          }
+        },
+        {
+          "targetText": "de inscrição?",
+          "baseText": {
+            "de": "zur Anmeldung?",
+            "en": "for registration?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "formulário",
+          "baseText": {
+            "de": "Formular",
+            "en": "form"
+          }
+        },
+        {
+          "targetText": "preencher",
+          "baseText": {
+            "de": "ausfüllen",
+            "en": "to fill out"
+          }
+        },
+        {
+          "targetText": "envio",
+          "baseText": {
+            "de": "ich sende ab",
+            "en": "I send"
+          }
+        },
+        {
+          "targetText": "botão",
+          "baseText": {
+            "de": "Knopf; Schaltfläche",
+            "en": "button"
+          }
+        },
+        {
+          "targetText": "aparece",
+          "baseText": {
+            "de": "erscheint",
+            "en": "appears"
+          }
+        },
+        {
+          "targetText": "salvo",
+          "baseText": {
+            "de": "ich speichere",
+            "en": "I save"
+          }
+        },
+        {
+          "targetText": "cópia",
+          "baseText": {
+            "de": "Kopie",
+            "en": "copy"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Você sabe como eu ",
+        "answer": "envio",
+        "after": " este formulário de inscrição?",
+        "fallbackChoices": [
+          "envia",
+          "envio",
+          "enviam",
+          "enviamos"
+        ]
+      },
+      "speakRequired": [
+        "envio",
+        "formulário",
+        "inscrição"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang fragt die Mitarbeiterin: “Você já terminou de preencher a inscrição no celular?”",
+        "en": "At reception, the staff member asks: “Você já terminou de preencher a inscrição no celular?”"
+      },
+      "trophyWord": {
+        "word": "formulário",
+        "meaning": {
+          "de": "Formular",
+          "en": "form"
+        },
+        "example": "Você sabe como eu envio este formulário de inscrição?",
+        "whyThisWord": {
+          "de": "Formulário bezeichnet das Dokument mit den auszufüllenden Feldern; inscrição benennt hier seinen Zweck.",
+          "en": "Formulário is the document containing fields to fill in; inscrição identifies its purpose here."
+        }
+      },
+      "distractors": [
+        "eu imprimo",
+        "de avaliação?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Anmeldung auf dem Handy besprechen.",
+        "en": "Discussing a registration form on a phone."
+      },
+      "songMood": "focused patient troubleshooting",
+      "visualNotes": "Phone held beside a course reception counter; do not show a missing submit button in the initial view."
+    },
+    {
+      "slug": "assinatura-na-autorizacao",
+      "title": {
+        "de": "An der richtigen Stelle unterschreiben",
+        "en": "Signing in the right place"
+      },
+      "situation": {
+        "de": "Du prüfst am Schalter eine Reisegenehmigung vor dem Unterschreiben.",
+        "en": "You check a travel authorization at a counter before signing it."
+      },
+      "pedagogicalGoal": "Eine Ortsfrage höflich einbetten und mit qual campo die Zuständigkeit einer zweiten Unterschrift klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você quer conferir a autorização antes de assinar?",
+          "baseText": {
+            "de": "Möchten Sie die Genehmigung vor dem Unterschreiben prüfen?",
+            "en": "Would you like to check the authorization before signing?"
+          }
+        },
+        {
+          "targetText": "Você pode me dizer onde fica o espaço para minha assinatura?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wo sich das Feld für meine Unterschrift befindet?",
+            "en": "Can you tell me where the space for my signature is?"
+          }
+        },
+        {
+          "targetText": "As duas pessoas responsáveis precisam assinar, cada uma em um campo separado.",
+          "baseText": {
+            "de": "Beide verantwortlichen Personen müssen unterschreiben, jeweils in einem eigenen Feld.",
+            "en": "Both responsible people need to sign, each in a separate field."
+          }
+        },
+        {
+          "targetText": "Você sabe qual campo corresponde à outra pessoa responsável?",
+          "baseText": {
+            "de": "Wissen Sie, welches Feld für die andere verantwortliche Person vorgesehen ist?",
+            "en": "Do you know which field is for the other responsible person?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Onde fica…? / Qual campo…?",
+        "rule": {
+          "de": "Onde fragt nach der Stelle, qual campo nach einem bestimmten Feld; beide Fragen können nach você sabe oder pode me dizer stehen.",
+          "en": "Onde asks for the location, while qual campo asks which particular field; both can follow você sabe or pode me dizer."
+        },
+        "examples": [
+          {
+            "targetText": "Você pode me dizer onde fica o espaço para minha assinatura?",
+            "baseText": {
+              "de": "Können Sie mir sagen, wo sich das Feld für meine Unterschrift befindet?",
+              "en": "Can you tell me where the space for my signature is?"
+            },
+            "highlight": "onde fica o espaço"
+          },
+          {
+            "targetText": "Você sabe qual campo corresponde à outra pessoa responsável?",
+            "baseText": {
+              "de": "Wissen Sie, welches Feld für die andere verantwortliche Person vorgesehen ist?",
+              "en": "Do you know which field is for the other responsible person?"
+            },
+            "highlight": "qual campo corresponde"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (você)",
+          "choices": [
+            "sei",
+            "sabe",
+            "sabemos",
+            "sabem"
+          ]
+        },
+        " qual campo ",
+        {
+          "kind": "form",
+          "answer": "corresponde",
+          "cue": "corresponder (qual campo)",
+          "choices": [
+            "correspondem",
+            "correspondo",
+            "corresponde",
+            "correspondemos"
+          ]
+        },
+        " à outra pessoa responsável?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Você pode me dizer",
+          "baseText": {
+            "de": "Können Sie mir sagen",
+            "en": "Can you tell me"
+          }
+        },
+        {
+          "targetText": "onde fica",
+          "baseText": {
+            "de": "wo sich befindet",
+            "en": "where is"
+          }
+        },
+        {
+          "targetText": "o espaço para",
+          "baseText": {
+            "de": "das Feld für",
+            "en": "the space for"
+          }
+        },
+        {
+          "targetText": "minha assinatura?",
+          "baseText": {
+            "de": "meine Unterschrift?",
+            "en": "my signature?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "assinatura",
+          "baseText": {
+            "de": "Unterschrift",
+            "en": "signature"
+          }
+        },
+        {
+          "targetText": "autorização",
+          "baseText": {
+            "de": "Genehmigung",
+            "en": "authorization"
+          }
+        },
+        {
+          "targetText": "assinar",
+          "baseText": {
+            "de": "unterschreiben",
+            "en": "to sign"
+          }
+        },
+        {
+          "targetText": "campo",
+          "baseText": {
+            "de": "Feld",
+            "en": "field"
+          }
+        },
+        {
+          "targetText": "pessoa responsável",
+          "baseText": {
+            "de": "verantwortliche Person",
+            "en": "responsible person"
+          }
+        },
+        {
+          "targetText": "separado",
+          "baseText": {
+            "de": "getrennt; einzeln",
+            "en": "separate"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Você pode me dizer onde ",
+        "answer": "fica",
+        "after": " o espaço para minha assinatura?",
+        "fallbackChoices": [
+          "ficamos",
+          "fico",
+          "ficam",
+          "fica"
+        ]
+      },
+      "speakRequired": [
+        "dizer",
+        "espaço",
+        "assinatura"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter fragt der Mitarbeiter: “Você quer conferir a autorização antes de assinar?”",
+        "en": "At the counter, the staff member asks: “Você quer conferir a autorização antes de assinar?”"
+      },
+      "trophyWord": {
+        "word": "assinatura",
+        "meaning": {
+          "de": "Unterschrift",
+          "en": "signature"
+        },
+        "example": "Você pode me dizer onde fica o espaço para minha assinatura?",
+        "whyThisWord": {
+          "de": "Assinatura bedeutet hier Unterschrift; das zugehörige Verb assinar bezeichnet die Handlung.",
+          "en": "Assinatura means signature here; the related verb assinar names the act of signing."
+        }
+      },
+      "distractors": [
+        "fica o espaço sem",
+        "meu endereço?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Genehmigung vor dem Unterschreiben prüfen.",
+        "en": "Checking an authorization before signing."
+      },
+      "songMood": "careful orderly clarification",
+      "visualNotes": "Paperwork at a counter; keep the second-signature requirement out of the initial scene."
+    },
+    {
+      "slug": "prazo-dos-materiais",
+      "title": {
+        "de": "Was zählt bei der Frist?",
+        "en": "What counts for the deadline?"
+      },
+      "situation": {
+        "de": "Du fragst im Kursbüro nach der Abgabefrist für die Materialien einer Werkstatt.",
+        "en": "You check with a course office about the deadline for submitting workshop materials."
+      },
+      "pedagogicalGoal": "Mit quando nach einer Frist fragen und mit einer eingebetteten se-Frage den entscheidenden Zeitpunkt bestätigen lassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você precisa de alguma informação sobre a entrega dos materiais?",
+          "baseText": {
+            "de": "Benötigen Sie Informationen zur Abgabe der Materialien?",
+            "en": "Do you need any information about submitting the materials?"
+          }
+        },
+        {
+          "targetText": "Você sabe quando termina o prazo para entregar os materiais da oficina?",
+          "baseText": {
+            "de": "Wissen Sie, wann die Frist für die Abgabe der Werkstattmaterialien endet?",
+            "en": "Do you know when the workshop materials need to be submitted?"
+          }
+        },
+        {
+          "targetText": "Termina na sexta, mas os materiais precisam chegar aqui até esse dia.",
+          "baseText": {
+            "de": "Sie endet am Freitag, aber die Materialien müssen bis dahin hier eintreffen.",
+            "en": "It ends on Friday, but the materials need to arrive here by then."
+          }
+        },
+        {
+          "targetText": "Você sabe se o prazo considera a chegada, não o envio?",
+          "baseText": {
+            "de": "Wissen Sie, ob für die Frist die Ankunft und nicht der Versand zählt?",
+            "en": "Do you know whether the deadline refers to arrival, not dispatch?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sabe quando…? / Sabe se…?",
+        "rule": {
+          "de": "Quando fragt nach einem Zeitpunkt; se leitet hier eine indirekte Ja-Nein-Frage ein und bedeutet ob, nicht falls.",
+          "en": "Quando asks about a time; se introduces an indirect yes-or-no question here and means whether, not a condition."
+        },
+        "examples": [
+          {
+            "targetText": "Você sabe quando termina o prazo para entregar os materiais da oficina?",
+            "baseText": {
+              "de": "Wissen Sie, wann die Frist für die Abgabe der Werkstattmaterialien endet?",
+              "en": "Do you know when the workshop materials need to be submitted?"
+            },
+            "highlight": "quando termina o prazo"
+          },
+          {
+            "targetText": "Você sabe se o prazo considera a chegada, não o envio?",
+            "baseText": {
+              "de": "Wissen Sie, ob für die Frist die Ankunft und nicht der Versand zählt?",
+              "en": "Do you know whether the deadline refers to arrival, not dispatch?"
+            },
+            "highlight": "se o prazo considera"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (você)",
+          "choices": [
+            "sabe",
+            "sabemos",
+            "sabem",
+            "sei"
+          ]
+        },
+        " se o prazo ",
+        {
+          "kind": "form",
+          "answer": "considera",
+          "cue": "considerar (o prazo)",
+          "choices": [
+            "consideramos",
+            "consideram",
+            "considero",
+            "considera"
+          ]
+        },
+        " a chegada, não o envio?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Você sabe quando",
+          "baseText": {
+            "de": "Wissen Sie, wann",
+            "en": "Do you know when"
+          }
+        },
+        {
+          "targetText": "termina o prazo para",
+          "baseText": {
+            "de": "die Frist endet für",
+            "en": "the deadline ends for"
+          }
+        },
+        {
+          "targetText": "entregar os materiais",
+          "baseText": {
+            "de": "die Abgabe der Materialien",
+            "en": "submitting the materials"
+          }
+        },
+        {
+          "targetText": "da oficina?",
+          "baseText": {
+            "de": "der Werkstatt?",
+            "en": "for the workshop?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "prazo",
+          "baseText": {
+            "de": "Frist",
+            "en": "deadline"
+          }
+        },
+        {
+          "targetText": "termina",
+          "baseText": {
+            "de": "endet",
+            "en": "ends"
+          }
+        },
+        {
+          "targetText": "entregar",
+          "baseText": {
+            "de": "abgeben; liefern",
+            "en": "to submit; to deliver"
+          }
+        },
+        {
+          "targetText": "materiais",
+          "baseText": {
+            "de": "Materialien",
+            "en": "materials"
+          }
+        },
+        {
+          "targetText": "considera",
+          "baseText": {
+            "de": "berücksichtigt; zählt",
+            "en": "takes into account; counts"
+          }
+        },
+        {
+          "targetText": "chegada",
+          "baseText": {
+            "de": "Ankunft; Eingang",
+            "en": "arrival"
+          }
+        },
+        {
+          "targetText": "envio",
+          "baseText": {
+            "de": "Versand",
+            "en": "dispatch"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Você sabe quando ",
+        "answer": "termina",
+        "after": " o prazo para entregar os materiais da oficina?",
+        "fallbackChoices": [
+          "terminam",
+          "terminamos",
+          "termina",
+          "termino"
+        ]
+      },
+      "speakRequired": [
+        "termina",
+        "prazo",
+        "materiais"
+      ],
+      "sceneCaption": {
+        "de": "Im Kursbüro fragt die Mitarbeiterin: “Você precisa de alguma informação sobre a entrega dos materiais?”",
+        "en": "At the course office, the staff member asks: “Você precisa de alguma informação sobre a entrega dos materiais?”"
+      },
+      "trophyWord": {
+        "word": "prazo",
+        "meaning": {
+          "de": "Frist",
+          "en": "deadline"
+        },
+        "example": "Você sabe quando termina o prazo para entregar os materiais da oficina?",
+        "whyThisWord": {
+          "de": "Prazo bezeichnet den verfügbaren Zeitraum oder dessen Ende; bei einer Abgabe lohnt es sich zu klären, welches Ereignis für die Frist zählt.",
+          "en": "Prazo names an allowed period or its deadline; for a submission, it helps to clarify which event must happen by that time."
+        }
+      },
+      "distractors": [
+        "começa o prazo para",
+        "da exposição?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Abgabefrist im Kursbüro klären.",
+        "en": "Checking a submission deadline with the course office."
+      },
+      "songMood": "steady precise planning",
+      "visualNotes": "Course desk with material samples and a calendar without a marked deadline."
+    },
+    {
+      "slug": "comprovante-no-arquivo",
+      "title": {
+        "de": "Der digitale Nachweis",
+        "en": "Digital proof"
+      },
+      "situation": {
+        "de": "Du zeigst am Schalter einen digitalen Nachweis auf deinem Handy.",
+        "en": "You show a digital proof document on your phone at a service counter."
+      },
+      "pedagogicalGoal": "Mit se eine Ja-Nein-Frage einbetten und nach einer konkreten Rückmeldung das weitere Vorgehen erfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você trouxe o comprovante para o cadastro?",
+          "baseText": {
+            "de": "Haben Sie den Nachweis für die Anmeldung mitgebracht?",
+            "en": "Did you bring the proof document for registration?"
+          }
+        },
+        {
+          "targetText": "Você pode me dizer se este comprovante digital vale para o cadastro?",
+          "baseText": {
+            "de": "Können Sie mir sagen, ob dieser digitale Nachweis für die Anmeldung gilt?",
+            "en": "Can you tell me whether this digital proof is valid for registration?"
+          }
+        },
+        {
+          "targetText": "Aceitamos o formato digital, mas seu nome está ilegível nessa imagem.",
+          "baseText": {
+            "de": "Wir akzeptieren das digitale Format, aber Ihr Name ist auf diesem Bild unleserlich.",
+            "en": "We accept the digital format, but your name is unreadable in this image."
+          }
+        },
+        {
+          "targetText": "Você pode me dizer como eu envio outra imagem?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wie ich ein anderes Bild sende?",
+            "en": "Can you tell me how I send another image?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Pode me dizer se…?",
+        "rule": {
+          "de": "Se verbindet die höfliche Einleitung mit einer Ja-Nein-Frage; das Verb der eingebetteten Frage steht hier im Präsens Indikativ.",
+          "en": "Se links the polite introduction to a yes-or-no question; the verb in the embedded question uses the present indicative here."
+        },
+        "examples": [
+          {
+            "targetText": "Você pode me dizer se este comprovante digital vale para o cadastro?",
+            "baseText": {
+              "de": "Können Sie mir sagen, ob dieser digitale Nachweis für die Anmeldung gilt?",
+              "en": "Can you tell me whether this digital proof is valid for registration?"
+            },
+            "highlight": "se este comprovante digital vale"
+          },
+          {
+            "targetText": "Você sabe se a imagem mostra o endereço completo?",
+            "baseText": {
+              "de": "Wissen Sie, ob das Bild die vollständige Adresse zeigt?",
+              "en": "Do you know whether the image shows the complete address?"
+            },
+            "highlight": "se a imagem mostra"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "pode",
+          "cue": "poder (você)",
+          "choices": [
+            "podem",
+            "posso",
+            "podemos",
+            "pode"
+          ]
+        },
+        " me dizer como eu ",
+        {
+          "kind": "form",
+          "answer": "envio",
+          "cue": "enviar (eu)",
+          "choices": [
+            "envia",
+            "enviamos",
+            "envio",
+            "enviam"
+          ]
+        },
+        " outra imagem?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Você pode me dizer",
+          "baseText": {
+            "de": "Können Sie mir sagen",
+            "en": "Can you tell me"
+          }
+        },
+        {
+          "targetText": "se este comprovante digital",
+          "baseText": {
+            "de": "ob dieser digitale Nachweis",
+            "en": "whether this digital proof"
+          }
+        },
+        {
+          "targetText": "vale para",
+          "baseText": {
+            "de": "gilt für",
+            "en": "is valid for"
+          }
+        },
+        {
+          "targetText": "o cadastro?",
+          "baseText": {
+            "de": "die Anmeldung?",
+            "en": "registration?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "comprovante",
+          "baseText": {
+            "de": "Nachweis; Beleg",
+            "en": "proof document; receipt"
+          }
+        },
+        {
+          "targetText": "digital",
+          "baseText": {
+            "de": "digital",
+            "en": "digital"
+          }
+        },
+        {
+          "targetText": "vale",
+          "baseText": {
+            "de": "gilt; ist gültig",
+            "en": "is valid"
+          }
+        },
+        {
+          "targetText": "formato",
+          "baseText": {
+            "de": "Format",
+            "en": "format"
+          }
+        },
+        {
+          "targetText": "ilegível",
+          "baseText": {
+            "de": "unleserlich",
+            "en": "unreadable"
+          }
+        },
+        {
+          "targetText": "imagem",
+          "baseText": {
+            "de": "Bild",
+            "en": "image"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Você pode me dizer se este comprovante digital ",
+        "answer": "vale",
+        "after": " para o cadastro?",
+        "fallbackChoices": [
+          "valemos",
+          "vale",
+          "valho",
+          "valem"
+        ]
+      },
+      "speakRequired": [
+        "comprovante",
+        "digital",
+        "cadastro"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin fragt am Schalter: “Você trouxe o comprovante para o cadastro?”",
+        "en": "The staff member asks at the counter: “Você trouxe o comprovante para o cadastro?”"
+      },
+      "trophyWord": {
+        "word": "comprovante",
+        "meaning": {
+          "de": "Nachweis; Beleg",
+          "en": "proof document; receipt"
+        },
+        "example": "Você pode me dizer se este comprovante digital vale para o cadastro?",
+        "whyThisWord": {
+          "de": "Comprovante bezeichnet etwas, das eine Angabe oder einen Vorgang belegt; hier geht es um einen Nachweis für die Anmeldung.",
+          "en": "Comprovante is something that verifies information or a transaction; here it is evidence required for registration."
+        }
+      },
+      "distractors": [
+        "se este contrato digital",
+        "o pagamento?"
+      ],
+      "placeholderCaption": {
+        "de": "Einen digitalen Nachweis am Schalter zeigen.",
+        "en": "Showing digital proof at a counter."
+      },
+      "songMood": "calm constructive follow-up",
+      "visualNotes": "Phone and reception counter; the initial image must not expose unreadable personal information."
+    },
+    {
+      "slug": "agendamento-da-semana",
+      "title": {
+        "de": "Einen Termin finden",
+        "en": "Finding an appointment"
+      },
+      "situation": {
+        "de": "Du fragst im Servicezentrum nach einem Termin für deinen Antrag.",
+        "en": "You ask at a service center about an appointment for your application."
+      },
+      "pedagogicalGoal": "Eine erforderliche Terminbuchung mit se erfragen und bei fehlenden Plätzen mit como den Buchungsweg klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você quer vir na próxima semana para entregar o pedido?",
+          "baseText": {
+            "de": "Möchten Sie nächste Woche kommen, um den Antrag abzugeben?",
+            "en": "Would you like to come next week to submit the application?"
+          }
+        },
+        {
+          "targetText": "Você sabe se esse atendimento exige agendamento para a próxima semana?",
+          "baseText": {
+            "de": "Wissen Sie, ob für diesen Service nächste Woche eine Terminbuchung nötig ist?",
+            "en": "Do you know whether this service requires an appointment for next week?"
+          }
+        },
+        {
+          "targetText": "Precisa agendar, mas não temos mais vagas nessa semana. Só na seguinte.",
+          "baseText": {
+            "de": "Sie müssen einen Termin buchen, aber in dieser Woche haben wir keine Plätze mehr. Erst in der darauffolgenden.",
+            "en": "You need to book, but we have no slots left that week. Only the following week."
+          }
+        },
+        {
+          "targetText": "Você sabe como eu marco para a semana seguinte?",
+          "baseText": {
+            "de": "Wissen Sie, wie ich einen Termin für die darauffolgende Woche vereinbare?",
+            "en": "Do you know how I book for the following week?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sabe se…? Depois, sabe como…?",
+        "rule": {
+          "de": "Mit se klärst du zuerst, ob etwas nötig ist; mit como fragst du anschließend nach dem Verfahren, ohne die Satzstellung umzudrehen.",
+          "en": "Use se first to find out whether something is required, then como to ask about the procedure without reversing the word order."
+        },
+        "examples": [
+          {
+            "targetText": "Você sabe se esse atendimento exige agendamento para a próxima semana?",
+            "baseText": {
+              "de": "Wissen Sie, ob für diesen Service nächste Woche eine Terminbuchung nötig ist?",
+              "en": "Do you know whether this service requires an appointment for next week?"
+            },
+            "highlight": "se esse atendimento exige agendamento"
+          },
+          {
+            "targetText": "Você sabe como eu marco para a semana seguinte?",
+            "baseText": {
+              "de": "Wissen Sie, wie ich einen Termin für die darauffolgende Woche vereinbare?",
+              "en": "Do you know how I book for the following week?"
+            },
+            "highlight": "como eu marco"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (você)",
+          "choices": [
+            "sabem",
+            "sei",
+            "sabe",
+            "sabemos"
+          ]
+        },
+        " como eu ",
+        {
+          "kind": "form",
+          "answer": "marco",
+          "cue": "marcar (eu)",
+          "choices": [
+            "marcamos",
+            "marcam",
+            "marca",
+            "marco"
+          ]
+        },
+        " para a semana seguinte?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Você sabe",
+          "baseText": {
+            "de": "Wissen Sie",
+            "en": "Do you know"
+          }
+        },
+        {
+          "targetText": "se esse atendimento",
+          "baseText": {
+            "de": "ob dieser Service",
+            "en": "whether this service"
+          }
+        },
+        {
+          "targetText": "exige agendamento para",
+          "baseText": {
+            "de": "eine Terminbuchung erfordert für",
+            "en": "requires an appointment for"
+          }
+        },
+        {
+          "targetText": "a próxima semana?",
+          "baseText": {
+            "de": "nächste Woche?",
+            "en": "next week?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "agendamento",
+          "baseText": {
+            "de": "Terminbuchung",
+            "en": "appointment booking"
+          }
+        },
+        {
+          "targetText": "atendimento",
+          "baseText": {
+            "de": "Service; Betreuung",
+            "en": "service; assistance"
+          }
+        },
+        {
+          "targetText": "exige",
+          "baseText": {
+            "de": "erfordert",
+            "en": "requires"
+          }
+        },
+        {
+          "targetText": "vagas",
+          "baseText": {
+            "de": "freie Plätze; freie Termine",
+            "en": "openings; available slots"
+          }
+        },
+        {
+          "targetText": "semana seguinte",
+          "baseText": {
+            "de": "darauffolgende Woche",
+            "en": "following week"
+          }
+        },
+        {
+          "targetText": "marco",
+          "baseText": {
+            "de": "ich vereinbare einen Termin",
+            "en": "I book an appointment"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Você sabe se esse atendimento ",
+        "answer": "exige",
+        "after": " agendamento para a próxima semana?",
+        "fallbackChoices": [
+          "exijo",
+          "exige",
+          "exigem",
+          "exigimos"
+        ]
+      },
+      "speakRequired": [
+        "atendimento",
+        "exige",
+        "agendamento"
+      ],
+      "sceneCaption": {
+        "de": "Im Servicezentrum fragt die Mitarbeiterin: “Você quer vir na próxima semana para entregar o pedido?”",
+        "en": "At the service center, the staff member asks: “Você quer vir na próxima semana para entregar o pedido?”"
+      },
+      "trophyWord": {
+        "word": "agendamento",
+        "meaning": {
+          "de": "Terminbuchung",
+          "en": "appointment booking"
+        },
+        "example": "Você sabe se esse atendimento exige agendamento para a próxima semana?",
+        "whyThisWord": {
+          "de": "Agendamento ist die Buchung eines Termins; mit exige agendamento fragst du, ob ein Besuch vorher vereinbart werden muss.",
+          "en": "Agendamento is arranging an appointment; exige agendamento asks whether a visit needs to be booked in advance."
+        }
+      },
+      "distractors": [
+        "dispensa agendamento para",
+        "o próximo mês?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über einen Termin im Servicezentrum.",
+        "en": "Discussing an appointment at a service center."
+      },
+      "songMood": "flexible practical planning",
+      "visualNotes": "Service desk with an unmarked weekly planner; do not reveal booked-out dates."
+    },
+    {
+      "slug": "inscricao-no-sistema",
+      "title": {
+        "de": "Die Anmeldung nachverfolgen",
+        "en": "Tracking a registration"
+      },
+      "situation": {
+        "de": "Du fragst im Kursbüro nach dem Stand deiner Anmeldung.",
+        "en": "You ask the course office about the status of your registration."
+      },
+      "pedagogicalGoal": "Queria saber se als höfliche Frage nach einem aktuellen Zustand verwenden und den Weg zur Statusabfrage klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você quer consultar sua inscrição no curso?",
+          "baseText": {
+            "de": "Möchten Sie sich nach Ihrer Kursanmeldung erkundigen?",
+            "en": "Would you like to check your course registration?"
+          }
+        },
+        {
+          "targetText": "Queria saber se minha inscrição já aparece no sistema do curso.",
+          "baseText": {
+            "de": "Ich würde gern wissen, ob meine Anmeldung schon im Kurssystem erscheint.",
+            "en": "I'd like to know whether my registration is already showing in the course system."
+          }
+        },
+        {
+          "targetText": "Ela está em análise. Não envie de novo, porque isso cria um pedido duplicado.",
+          "baseText": {
+            "de": "Sie wird gerade geprüft. Senden Sie sie nicht erneut, weil dadurch ein doppelter Antrag entsteht.",
+            "en": "It is under review. Don't send it again, because that creates a duplicate application."
+          }
+        },
+        {
+          "targetText": "Você sabe onde eu acompanho o pedido sem outra inscrição?",
+          "baseText": {
+            "de": "Wissen Sie, wo ich den Antrag ohne weitere Anmeldung nachverfolgen kann?",
+            "en": "Do you know where I track the application without registering again?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Queria saber se…",
+        "rule": {
+          "de": "Queria saber se ist hier eine höfliche Bitte um aktuelle Auskunft; queria verschiebt den Inhalt der Frage nicht in die Vergangenheit.",
+          "en": "Queria saber se is a polite request for current information here; queria does not move the content of the question into the past."
+        },
+        "examples": [
+          {
+            "targetText": "Queria saber se minha inscrição já aparece no sistema do curso.",
+            "baseText": {
+              "de": "Ich würde gern wissen, ob meine Anmeldung schon im Kurssystem erscheint.",
+              "en": "I'd like to know whether my registration is already showing in the course system."
+            },
+            "highlight": "Queria saber se"
+          },
+          {
+            "targetText": "Queria saber se o sistema mostra o andamento do pedido.",
+            "baseText": {
+              "de": "Ich würde gern wissen, ob das System den Bearbeitungsstand des Antrags zeigt.",
+              "en": "I'd like to know whether the system shows the progress of the application."
+            },
+            "highlight": "Queria saber se"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (você)",
+          "choices": [
+            "sabe",
+            "sabemos",
+            "sei",
+            "sabem"
+          ]
+        },
+        " onde eu ",
+        {
+          "kind": "form",
+          "answer": "acompanho",
+          "cue": "acompanhar (eu)",
+          "choices": [
+            "acompanham",
+            "acompanho",
+            "acompanha",
+            "acompanhamos"
+          ]
+        },
+        " o pedido sem outra inscrição?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Queria saber",
+          "baseText": {
+            "de": "Ich würde gern wissen",
+            "en": "I'd like to know"
+          }
+        },
+        {
+          "targetText": "se minha inscrição",
+          "baseText": {
+            "de": "ob meine Anmeldung",
+            "en": "whether my registration"
+          }
+        },
+        {
+          "targetText": "já aparece no",
+          "baseText": {
+            "de": "schon erscheint im",
+            "en": "is already showing in the"
+          }
+        },
+        {
+          "targetText": "sistema do curso.",
+          "baseText": {
+            "de": "Kurssystem.",
+            "en": "course system."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "inscrição",
+          "baseText": {
+            "de": "Anmeldung",
+            "en": "registration"
+          }
+        },
+        {
+          "targetText": "aparece",
+          "baseText": {
+            "de": "erscheint; wird angezeigt",
+            "en": "appears; shows up"
+          }
+        },
+        {
+          "targetText": "em análise",
+          "baseText": {
+            "de": "in Prüfung",
+            "en": "under review"
+          }
+        },
+        {
+          "targetText": "pedido duplicado",
+          "baseText": {
+            "de": "doppelter Antrag",
+            "en": "duplicate application"
+          }
+        },
+        {
+          "targetText": "acompanho",
+          "baseText": {
+            "de": "ich verfolge nach",
+            "en": "I track"
+          }
+        },
+        {
+          "targetText": "andamento",
+          "baseText": {
+            "de": "Bearbeitungsstand; Fortschritt",
+            "en": "progress; status"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Queria saber se minha inscrição já ",
+        "answer": "aparece",
+        "after": " no sistema do curso.",
+        "fallbackChoices": [
+          "apareço",
+          "aparecem",
+          "aparece",
+          "aparecemos"
+        ]
+      },
+      "speakRequired": [
+        "inscrição",
+        "aparece",
+        "sistema"
+      ],
+      "sceneCaption": {
+        "de": "Im Kursbüro lautet die Frage: “Você quer consultar sua inscrição no curso?”",
+        "en": "At the course office, you are asked: “Você quer consultar sua inscrição no curso?”"
+      },
+      "trophyWord": {
+        "word": "inscrição",
+        "meaning": {
+          "de": "Anmeldung",
+          "en": "registration"
+        },
+        "example": "Queria saber se minha inscrição já aparece no sistema do curso.",
+        "whyThisWord": {
+          "de": "Inscrição ist die Anmeldung zu einem bestimmten Angebot; du kannst nach ihrem Stand fragen, ohne dich nochmals anzumelden.",
+          "en": "Inscrição is registration for a specific activity; you can ask about its status without submitting it again."
+        }
+      },
+      "distractors": [
+        "não aparece no",
+        "sistema do estacionamento."
+      ],
+      "placeholderCaption": {
+        "de": "Nach dem Stand einer Kursanmeldung fragen.",
+        "en": "Asking about a course registration's status."
+      },
+      "songMood": "patient hopeful follow-through",
+      "visualNotes": "Course office desk and computer with a neutral screen; no pending or duplicate-status text visible."
+    },
+    {
+      "slug": "atendimento-na-mudanca",
+      "title": {
+        "de": "Den richtigen Kontakt finden",
+        "en": "Finding the right contact"
+      },
+      "situation": {
+        "de": "Du erkundigst dich beim Servicezentrum, das gerade in ein anderes Gebäude umzieht.",
+        "en": "You contact a service center that is moving to another building."
+      },
+      "pedagogicalGoal": "Mit como nach dem Ablauf fragen und mit qual número den passenden telefonischen Kontakt für ein konkretes Anliegen ermitteln.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você precisa falar com a equipe durante a mudança da nossa unidade?",
+          "baseText": {
+            "de": "Müssen Sie während des Umzugs unserer Dienststelle mit dem Team sprechen?",
+            "en": "Do you need to speak with the team while our office is moving?"
+          }
+        },
+        {
+          "targetText": "Você pode me dizer como funciona o atendimento durante a mudança de endereço?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wie der Service während des Umzugs an die neue Adresse funktioniert?",
+            "en": "Can you tell me how the service works while you move to the new address?"
+          }
+        },
+        {
+          "targetText": "Os documentos vão pelo portal, mas mudanças no endereço do cadastro são pelo telefone.",
+          "baseText": {
+            "de": "Dokumente reichen Sie über das Portal ein; Änderungen der registrierten Adresse erfolgen aber telefonisch.",
+            "en": "Documents go through the portal, but changes to the registered address are handled by phone."
+          }
+        },
+        {
+          "targetText": "Você sabe qual número eu uso para atualizar meu endereço?",
+          "baseText": {
+            "de": "Wissen Sie, unter welcher Nummer ich meine Adresse aktualisieren kann?",
+            "en": "Do you know which number I use to update my address?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Como funciona…? / Qual número…?",
+        "rule": {
+          "de": "Nach pode me dizer kannst du allgemein nach dem Ablauf fragen; mit qual und einem Nomen präzisierst du anschließend die fehlende Information.",
+          "en": "After pode me dizer, you can ask broadly about a procedure; qual followed by a noun then identifies the specific missing information."
+        },
+        "examples": [
+          {
+            "targetText": "Você pode me dizer como funciona o atendimento durante a mudança de endereço?",
+            "baseText": {
+              "de": "Können Sie mir sagen, wie der Service während des Umzugs an die neue Adresse funktioniert?",
+              "en": "Can you tell me how the service works while you move to the new address?"
+            },
+            "highlight": "como funciona o atendimento"
+          },
+          {
+            "targetText": "Você sabe qual número eu uso para atualizar meu endereço?",
+            "baseText": {
+              "de": "Wissen Sie, unter welcher Nummer ich meine Adresse aktualisieren kann?",
+              "en": "Do you know which number I use to update my address?"
+            },
+            "highlight": "qual número eu uso"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (você)",
+          "choices": [
+            "sabemos",
+            "sabe",
+            "sabem",
+            "sei"
+          ]
+        },
+        " qual número eu ",
+        {
+          "kind": "form",
+          "answer": "uso",
+          "cue": "usar (eu)",
+          "choices": [
+            "usam",
+            "usamos",
+            "usa",
+            "uso"
+          ]
+        },
+        " para atualizar meu endereço?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Você pode me dizer",
+          "baseText": {
+            "de": "Können Sie mir sagen",
+            "en": "Can you tell me"
+          }
+        },
+        {
+          "targetText": "como funciona",
+          "baseText": {
+            "de": "wie funktioniert",
+            "en": "how works"
+          }
+        },
+        {
+          "targetText": "o atendimento",
+          "baseText": {
+            "de": "der Service",
+            "en": "the service"
+          }
+        },
+        {
+          "targetText": "durante a mudança de endereço?",
+          "baseText": {
+            "de": "während des Umzugs an eine neue Adresse?",
+            "en": "during the move to a new address?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "atendimento",
+          "baseText": {
+            "de": "Service; Betreuung",
+            "en": "service; assistance"
+          }
+        },
+        {
+          "targetText": "funciona",
+          "baseText": {
+            "de": "funktioniert; läuft ab",
+            "en": "works; operates"
+          }
+        },
+        {
+          "targetText": "mudança de endereço",
+          "baseText": {
+            "de": "Adresswechsel",
+            "en": "change of address"
+          }
+        },
+        {
+          "targetText": "portal",
+          "baseText": {
+            "de": "Onlineportal",
+            "en": "online portal"
+          }
+        },
+        {
+          "targetText": "atualizar",
+          "baseText": {
+            "de": "aktualisieren",
+            "en": "to update"
+          }
+        },
+        {
+          "targetText": "pelo telefone",
+          "baseText": {
+            "de": "telefonisch",
+            "en": "by phone"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Você pode me dizer como ",
+        "answer": "funciona",
+        "after": " o atendimento durante a mudança de endereço?",
+        "fallbackChoices": [
+          "funcionamos",
+          "funcionam",
+          "funciona",
+          "funciono"
+        ]
+      },
+      "speakRequired": [
+        "funciona",
+        "atendimento",
+        "mudança"
+      ],
+      "sceneCaption": {
+        "de": "Eine Mitarbeiterin fragt: “Você precisa falar com a equipe durante a mudança da nossa unidade?”",
+        "en": "A staff member asks: “Você precisa falar com a equipe durante a mudança da nossa unidade?”"
+      },
+      "trophyWord": {
+        "word": "atendimento",
+        "meaning": {
+          "de": "Service; Betreuung",
+          "en": "service; assistance"
+        },
+        "example": "Você pode me dizer como funciona o atendimento durante a mudança de endereço?",
+        "whyThisWord": {
+          "de": "Atendimento bezeichnet den Service für Menschen mit einem Anliegen; das Wort legt noch nicht fest, ob er persönlich, telefonisch oder online erfolgt.",
+          "en": "Atendimento means assistance for people with an inquiry; the word alone does not specify whether it happens in person, by phone, or online."
+        }
+      },
+      "distractors": [
+        "o pagamento",
+        "durante a reforma do prédio?"
+      ],
+      "placeholderCaption": {
+        "de": "Kontakt zu einer umziehenden Dienststelle aufnehmen.",
+        "en": "Contacting an office that is moving."
+      },
+      "songMood": "clear adaptable coordination",
+      "visualNotes": "Service office with packed boxes; no channel-specific instructions or phone extension displayed."
+    },
+    {
+      "slug": "requisito-que-falta",
+      "title": {
+        "de": "Was noch fehlt",
+        "en": "What is still missing"
+      },
+      "situation": {
+        "de": "Du besprichst am Schalter, was zur Fertigstellung deines Antrags noch nötig ist.",
+        "en": "You discuss at a service counter what is still needed to complete your application."
+      },
+      "pedagogicalGoal": "Mit qual requisito die fehlende Voraussetzung erfragen und mit queria saber se die Notwendigkeit eines weiteren Besuchs klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você quer conferir o que falta na sua solicitação?",
+          "baseText": {
+            "de": "Möchten Sie prüfen, was bei Ihrem Antrag noch fehlt?",
+            "en": "Would you like to check what is still missing from your application?"
+          }
+        },
+        {
+          "targetText": "Você pode me dizer qual requisito falta para concluir minha solicitação?",
+          "baseText": {
+            "de": "Können Sie mir sagen, welche Voraussetzung für den Abschluss meines Antrags noch fehlt?",
+            "en": "Can you tell me which requirement is still missing to complete my application?"
+          }
+        },
+        {
+          "targetText": "Falta o comprovante de endereço; o restante está correto.",
+          "baseText": {
+            "de": "Der Adressnachweis fehlt; alles Übrige ist in Ordnung.",
+            "en": "The proof of address is missing; everything else is correct."
+          }
+        },
+        {
+          "targetText": "Eu queria saber se preciso voltar aqui com esse comprovante.",
+          "baseText": {
+            "de": "Ich würde gern wissen, ob ich mit diesem Nachweis noch einmal herkommen muss.",
+            "en": "I'd like to know whether I need to come back here with that proof."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Qual requisito…? / Queria saber se…",
+        "rule": {
+          "de": "Mit qual requisito grenzt du die Frage ein; queria saber se fragt höflich nach dem nächsten nötigen Schritt im Präsens.",
+          "en": "Qual requisito narrows down the question; queria saber se politely asks about the next required step in the present tense."
+        },
+        "examples": [
+          {
+            "targetText": "Você pode me dizer qual requisito falta para concluir minha solicitação?",
+            "baseText": {
+              "de": "Können Sie mir sagen, welche Voraussetzung für den Abschluss meines Antrags noch fehlt?",
+              "en": "Can you tell me which requirement is still missing to complete my application?"
+            },
+            "highlight": "qual requisito falta"
+          },
+          {
+            "targetText": "Eu queria saber se preciso voltar aqui com esse comprovante.",
+            "baseText": {
+              "de": "Ich würde gern wissen, ob ich mit diesem Nachweis noch einmal herkommen muss.",
+              "en": "I'd like to know whether I need to come back here with that proof."
+            },
+            "highlight": "queria saber se preciso"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "queria",
+          "cue": "querer (eu)",
+          "choices": [
+            "queriam",
+            "queremos",
+            "queria",
+            "querem"
+          ]
+        },
+        " saber se ",
+        {
+          "kind": "form",
+          "answer": "preciso",
+          "cue": "precisar (eu)",
+          "choices": [
+            "precisa",
+            "precisamos",
+            "precisam",
+            "preciso"
+          ]
+        },
+        " voltar aqui com esse comprovante."
+      ],
+      "chunks": [
+        {
+          "targetText": "Você pode me dizer",
+          "baseText": {
+            "de": "Können Sie mir sagen",
+            "en": "Can you tell me"
+          }
+        },
+        {
+          "targetText": "qual requisito falta",
+          "baseText": {
+            "de": "welche Voraussetzung noch fehlt",
+            "en": "which requirement is missing"
+          }
+        },
+        {
+          "targetText": "para concluir",
+          "baseText": {
+            "de": "für den Abschluss",
+            "en": "to complete"
+          }
+        },
+        {
+          "targetText": "minha solicitação?",
+          "baseText": {
+            "de": "meines Antrags?",
+            "en": "my application?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "requisito",
+          "baseText": {
+            "de": "Voraussetzung; Anforderung",
+            "en": "requirement"
+          }
+        },
+        {
+          "targetText": "falta",
+          "baseText": {
+            "de": "fehlt",
+            "en": "is missing"
+          }
+        },
+        {
+          "targetText": "concluir",
+          "baseText": {
+            "de": "abschließen",
+            "en": "to complete"
+          }
+        },
+        {
+          "targetText": "solicitação",
+          "baseText": {
+            "de": "Antrag; Anfrage",
+            "en": "application; request"
+          }
+        },
+        {
+          "targetText": "restante",
+          "baseText": {
+            "de": "Rest; Übriges",
+            "en": "remainder; everything else"
+          }
+        },
+        {
+          "targetText": "voltar",
+          "baseText": {
+            "de": "zurückkommen",
+            "en": "to return"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Você pode me dizer qual requisito ",
+        "answer": "falta",
+        "after": " para concluir minha solicitação?",
+        "fallbackChoices": [
+          "falto",
+          "faltam",
+          "falta",
+          "faltamos"
+        ]
+      },
+      "speakRequired": [
+        "requisito",
+        "concluir",
+        "solicitação"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter lautet die Frage: “Você quer conferir o que falta na sua solicitação?”",
+        "en": "At the counter, you are asked: “Você quer conferir o que falta na sua solicitação?”"
+      },
+      "trophyWord": {
+        "word": "requisito",
+        "meaning": {
+          "de": "Voraussetzung; Anforderung",
+          "en": "requirement"
+        },
+        "example": "Você pode me dizer qual requisito falta para concluir minha solicitação?",
+        "whyThisWord": {
+          "de": "Requisito bezeichnet eine Bedingung, die für einen Vorgang erfüllt sein muss; damit fragst du gezielt nach dem noch fehlenden Punkt.",
+          "en": "Requisito names a condition that must be met for a process; it lets you ask precisely which point is still missing."
+        }
+      },
+      "distractors": [
+        "requisito falta para cancelar",
+        "minha devolução?"
+      ],
+      "placeholderCaption": {
+        "de": "Die letzten offenen Punkte eines Antrags klären.",
+        "en": "Clarifying the remaining points in an application."
+      },
+      "songMood": "calm purposeful completion",
+      "visualNotes": "Service counter and application folder; do not mark a missing document or imply a completed application."
+    }
+  ]
+}

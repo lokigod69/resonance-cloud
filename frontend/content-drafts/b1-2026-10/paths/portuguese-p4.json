@@ -1,0 +1,2148 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "baseLanguage": "German",
+  "pathNumber": 4,
+  "title": {
+    "de": "Die passende Möglichkeit",
+    "en": "The option I need"
+  },
+  "subtitle": {
+    "de": "Beschreibe genau, was du meinst, und passe deine Wahl an.",
+    "en": "Describe exactly what you mean and adjust your choice."
+  },
+  "anchor": "Controlling Fable authoring-spec-it-pt.json, Portuguese nativeGrammarScopeByPath P4: noun + que L1–4; locative onde L5–7; em que/de que/com que L8–10. The complete portuguese-plan.json trophy allocation and beats are preserved. Indicative relatives only, at most two per learner turn. Formal Brazilian você/German Sie except neutral L3 with German du. Two cloze blanks: one explicitly cued person form and one relative choice, with no equivalent relative offered. Existing B1 build meaning cue is required for different-meaning distractors. Pending Fable full read and independent review; no approval claimed.",
+  "lessons": [
+    {
+      "slug": "varanda-com-sol",
+      "title": {
+        "de": "Morgensonne auf dem Balkon",
+        "en": "Morning sun on the balcony"
+      },
+      "situation": {
+        "de": "Du vergleichst mit einer Maklerin die Wohnungen, die ihr besichtigt habt.",
+        "en": "You compare the apartments you have viewed with a real estate agent."
+      },
+      "pedagogicalGoal": "Mit einem Relativsatz mit que einen Balkon unterscheiden und die eigene Wahl nach einem neuen Angebot anpassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qual detalhe chamou sua atenção no apartamento que visitamos?",
+          "baseText": {
+            "de": "Welches Detail ist Ihnen in der Wohnung aufgefallen, die wir besichtigt haben?",
+            "en": "What detail caught your attention in the apartment we visited?"
+          }
+        },
+        {
+          "targetText": "Prefiro o apartamento com a varanda que recebe sol pela manhã.",
+          "baseText": {
+            "de": "Ich bevorzuge die Wohnung mit dem Balkon, der morgens Sonne bekommt.",
+            "en": "I prefer the apartment with the balcony that gets morning sun."
+          }
+        },
+        {
+          "targetText": "Tenho outro apartamento menor, com uma varanda menor também, mas com a mesma luz.",
+          "baseText": {
+            "de": "Ich habe eine kleinere Wohnung, deren Balkon ebenfalls kleiner ist, aber genauso viel Licht bekommt.",
+            "en": "I have a smaller apartment with a smaller balcony too, but it gets the same light."
+          }
+        },
+        {
+          "targetText": "Eu aceito o menor que recebe a mesma luz.",
+          "baseText": {
+            "de": "Ich nehme die kleinere Wohnung, die genauso viel Licht bekommt.",
+            "en": "I'll take the smaller apartment that gets the same light."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "O apartamento que…",
+        "rule": {
+          "de": "Que verbindet ein genanntes Nomen mit einer genaueren Beschreibung; seine Form bleibt bei männlichen und weiblichen Nomen gleich.",
+          "en": "Que links a named noun to a more precise description; its form stays the same with masculine and feminine nouns."
+        },
+        "examples": [
+          {
+            "targetText": "Prefiro o apartamento com a varanda que recebe sol pela manhã.",
+            "baseText": {
+              "de": "Ich bevorzuge die Wohnung mit dem Balkon, der morgens Sonne bekommt.",
+              "en": "I prefer the apartment with the balcony that gets morning sun."
+            },
+            "highlight": "a varanda que recebe sol"
+          },
+          {
+            "targetText": "O apartamento que visitamos tem janelas grandes.",
+            "baseText": {
+              "de": "Die Wohnung, die wir besichtigt haben, hat große Fenster.",
+              "en": "The apartment we visited has large windows."
+            },
+            "highlight": "O apartamento que visitamos"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "aceito",
+          "cue": "aceitar (eu)",
+          "choices": [
+            "aceita",
+            "aceito",
+            "aceitam",
+            "aceitamos"
+          ]
+        },
+        " o menor ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "quem",
+            "qual",
+            "que",
+            "quanto"
+          ]
+        },
+        " recebe a mesma luz."
+      ],
+      "chunks": [
+        {
+          "targetText": "Prefiro o apartamento",
+          "baseText": {
+            "de": "Ich bevorzuge die Wohnung",
+            "en": "I prefer the apartment"
+          }
+        },
+        {
+          "targetText": "com a varanda",
+          "baseText": {
+            "de": "mit dem Balkon",
+            "en": "with the balcony"
+          }
+        },
+        {
+          "targetText": "que recebe sol",
+          "baseText": {
+            "de": "der Sonne bekommt",
+            "en": "that gets sunlight"
+          }
+        },
+        {
+          "targetText": "pela manhã.",
+          "baseText": {
+            "de": "am Morgen.",
+            "en": "in the morning."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "varanda",
+          "baseText": {
+            "de": "Balkon",
+            "en": "balcony"
+          }
+        },
+        {
+          "targetText": "apartamento",
+          "baseText": {
+            "de": "Wohnung",
+            "en": "apartment"
+          }
+        },
+        {
+          "targetText": "recebe sol",
+          "baseText": {
+            "de": "bekommt Sonne",
+            "en": "gets sunlight"
+          }
+        },
+        {
+          "targetText": "pela manhã",
+          "baseText": {
+            "de": "am Morgen",
+            "en": "in the morning"
+          }
+        },
+        {
+          "targetText": "menor",
+          "baseText": {
+            "de": "kleiner",
+            "en": "smaller"
+          }
+        },
+        {
+          "targetText": "mesma luz",
+          "baseText": {
+            "de": "dasselbe Licht",
+            "en": "the same light"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Prefiro o apartamento com a varanda que ",
+        "answer": "recebe",
+        "after": " sol pela manhã.",
+        "fallbackChoices": [
+          "recebem",
+          "recebo",
+          "recebe",
+          "recebemos"
+        ]
+      },
+      "speakRequired": [
+        "apartamento",
+        "varanda",
+        "recebe"
+      ],
+      "sceneCaption": {
+        "de": "Die Maklerin fragt nach der Besichtigung: “Qual detalhe chamou sua atenção no apartamento que visitamos?”",
+        "en": "After the viewing, the agent asks: “Qual detalhe chamou sua atenção no apartamento que visitamos?”"
+      },
+      "trophyWord": {
+        "word": "varanda",
+        "meaning": {
+          "de": "Balkon",
+          "en": "balcony"
+        },
+        "example": "Prefiro o apartamento com a varanda que recebe sol pela manhã.",
+        "whyThisWord": {
+          "de": "Mit varanda benennst du einen konkreten Teil der Wohnung und kannst anschließend beschreiben, welcher Balkon dir gefällt.",
+          "en": "Varanda names a specific part of an apartment, letting you describe which balcony you like."
+        }
+      },
+      "distractors": [
+        "sem a varanda",
+        "à tarde."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch nach einer Wohnungsbesichtigung.",
+        "en": "A conversation after an apartment viewing."
+      },
+      "songMood": "calm morning possibility",
+      "visualNotes": "Agent and visitor beside a floor plan; morning light on a balcony, without showing a second apartment."
+    },
+    {
+      "slug": "elevador-do-oitavo",
+      "title": {
+        "de": "Zum richtigen Stockwerk",
+        "en": "Reaching the right floor"
+      },
+      "situation": {
+        "de": "Du fragst am Empfang eines Bürogebäudes nach dem Weg zu einem Termin.",
+        "en": "You ask at an office building's reception desk how to get to an appointment."
+      },
+      "pedagogicalGoal": "Mit que den gesuchten Aufzug bestimmen und eine korrigierte Wegangabe aufgreifen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você vai para qual andar?",
+          "baseText": {
+            "de": "In welches Stockwerk möchten Sie?",
+            "en": "Which floor are you going to?"
+          }
+        },
+        {
+          "targetText": "O elevador que atende o oitavo andar fica na entrada principal?",
+          "baseText": {
+            "de": "Befindet sich der Aufzug zum achten Stockwerk am Haupteingang?",
+            "en": "Is the elevator that serves the eighth floor by the main entrance?"
+          }
+        },
+        {
+          "targetText": "O da entrada principal só vai até o sexto. Para o oitavo, use a entrada de serviço.",
+          "baseText": {
+            "de": "Der am Haupteingang fährt nur bis zum sechsten Stock. Zum achten nehmen Sie den Dienstzugang.",
+            "en": "The one by the main entrance only goes to the sixth. For the eighth, use the service entrance."
+          }
+        },
+        {
+          "targetText": "Então eu uso o elevador que fica na entrada de serviço.",
+          "baseText": {
+            "de": "Dann nehme ich den Aufzug am Dienstzugang.",
+            "en": "Then I'll use the elevator by the service entrance."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "O elevador que atende…",
+        "rule": {
+          "de": "Ein Relativsatz mit que sagt, welcher Gegenstand gemeint ist; das folgende Verb richtet sich nach diesem Gegenstand.",
+          "en": "A relative clause with que identifies the object you mean; the following verb agrees with that object."
+        },
+        "examples": [
+          {
+            "targetText": "O elevador que atende o oitavo andar fica na entrada principal?",
+            "baseText": {
+              "de": "Befindet sich der Aufzug zum achten Stockwerk am Haupteingang?",
+              "en": "Is the elevator that serves the eighth floor by the main entrance?"
+            },
+            "highlight": "O elevador que atende"
+          },
+          {
+            "targetText": "Os elevadores que atendem os consultórios ficam à direita.",
+            "baseText": {
+              "de": "Die Aufzüge zu den Sprechzimmern befinden sich rechts.",
+              "en": "The elevators serving the consulting rooms are on the right."
+            },
+            "highlight": "Os elevadores que atendem"
+          }
+        ]
+      },
+      "cloze": [
+        "Então eu ",
+        {
+          "kind": "form",
+          "answer": "uso",
+          "cue": "usar (eu)",
+          "choices": [
+            "usamos",
+            "usam",
+            "uso",
+            "usa"
+          ]
+        },
+        " o elevador ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "quanto",
+            "que",
+            "qual",
+            "quem"
+          ]
+        },
+        " fica na entrada de serviço."
+      ],
+      "chunks": [
+        {
+          "targetText": "O elevador que atende",
+          "baseText": {
+            "de": "Der Aufzug, der anfährt",
+            "en": "The elevator that serves"
+          }
+        },
+        {
+          "targetText": "o oitavo andar",
+          "baseText": {
+            "de": "das achte Stockwerk",
+            "en": "the eighth floor"
+          }
+        },
+        {
+          "targetText": "fica na",
+          "baseText": {
+            "de": "befindet sich am",
+            "en": "is by the"
+          }
+        },
+        {
+          "targetText": "entrada principal?",
+          "baseText": {
+            "de": "Haupteingang?",
+            "en": "main entrance?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "elevador",
+          "baseText": {
+            "de": "Aufzug",
+            "en": "elevator"
+          }
+        },
+        {
+          "targetText": "atende",
+          "baseText": {
+            "de": "fährt an; bedient",
+            "en": "serves"
+          }
+        },
+        {
+          "targetText": "oitavo andar",
+          "baseText": {
+            "de": "achtes Stockwerk",
+            "en": "eighth floor"
+          }
+        },
+        {
+          "targetText": "entrada principal",
+          "baseText": {
+            "de": "Haupteingang",
+            "en": "main entrance"
+          }
+        },
+        {
+          "targetText": "entrada de serviço",
+          "baseText": {
+            "de": "Dienstzugang",
+            "en": "service entrance"
+          }
+        },
+        {
+          "targetText": "à direita",
+          "baseText": {
+            "de": "rechts",
+            "en": "on the right"
+          }
+        }
+      ],
+      "recall": {
+        "before": "O elevador que atende o oitavo andar ",
+        "answer": "fica",
+        "after": " na entrada principal?",
+        "fallbackChoices": [
+          "fico",
+          "ficam",
+          "ficamos",
+          "fica"
+        ]
+      },
+      "speakRequired": [
+        "elevador",
+        "oitavo",
+        "principal"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang lautet die Frage: “Você vai para qual andar?”",
+        "en": "At reception, you are asked: “Você vai para qual andar?”"
+      },
+      "trophyWord": {
+        "word": "elevador",
+        "meaning": {
+          "de": "Aufzug",
+          "en": "elevator"
+        },
+        "example": "O elevador que atende o oitavo andar fica na entrada de serviço.",
+        "whyThisWord": {
+          "de": "Elevador ist das brasilianische Wort für einen Aufzug; ein Relativsatz hilft, mehrere Aufzüge auseinanderzuhalten.",
+          "en": "Elevador is the Brazilian Portuguese word for an elevator; a relative clause helps distinguish between several elevators."
+        }
+      },
+      "distractors": [
+        "o sexto andar",
+        "entrada lateral?"
+      ],
+      "placeholderCaption": {
+        "de": "Orientierung am Empfang eines Bürogebäudes.",
+        "en": "Finding your way at an office building's reception."
+      },
+      "songMood": "light purposeful movement",
+      "visualNotes": "Reception desk and elevator lobby; no floor restriction or service-entry direction visible."
+    },
+    {
+      "slug": "tomada-perto-da-mesa",
+      "title": {
+        "de": "Die Steckdose am Tisch",
+        "en": "The outlet near the desk"
+      },
+      "situation": {
+        "de": "Du richtest mit einer Kollegin einen Arbeitsplatz ein.",
+        "en": "You set up a workspace with a colleague."
+      },
+      "pedagogicalGoal": "Einen Gegenstand durch que mit einer Ortsbeschreibung verbinden und auf eine praktische Einschränkung reagieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Qual tomada você pretende usar para o computador?",
+          "baseText": {
+            "de": "Welche Steckdose willst du für den Computer benutzen?",
+            "en": "Which outlet are you planning to use for the computer?"
+          }
+        },
+        {
+          "targetText": "A tomada que fica perto da mesa serve para o computador.",
+          "baseText": {
+            "de": "Die Steckdose in der Nähe des Tisches eignet sich für den Computer.",
+            "en": "The outlet near the desk will work for the computer."
+          }
+        },
+        {
+          "targetText": "Mas o cabo não alcança com a mesa encostada na janela.",
+          "baseText": {
+            "de": "Aber das Kabel reicht nicht, wenn der Tisch direkt am Fenster steht.",
+            "en": "But the cord won't reach with the desk against the window."
+          }
+        },
+        {
+          "targetText": "Então eu afasto a mesa que está junto da janela.",
+          "baseText": {
+            "de": "Dann rücke ich den Tisch am Fenster weg.",
+            "en": "Then I'll move the desk by the window away."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A tomada que fica…",
+        "rule": {
+          "de": "Mit que fica und einer Ortsangabe beschreibst du, welcher Gegenstand gemeint ist; que selbst verändert sich nicht.",
+          "en": "Use que fica followed by a location to identify an object; que itself does not change."
+        },
+        "examples": [
+          {
+            "targetText": "A tomada que fica perto da mesa serve para o computador.",
+            "baseText": {
+              "de": "Die Steckdose in der Nähe des Tisches eignet sich für den Computer.",
+              "en": "The outlet near the desk will work for the computer."
+            },
+            "highlight": "A tomada que fica perto da mesa"
+          },
+          {
+            "targetText": "O cabo que passa atrás da mesa liga o monitor.",
+            "baseText": {
+              "de": "Das Kabel, das hinter dem Tisch verläuft, verbindet den Monitor.",
+              "en": "The cable running behind the desk connects the monitor."
+            },
+            "highlight": "O cabo que passa atrás da mesa"
+          }
+        ]
+      },
+      "cloze": [
+        "Então eu ",
+        {
+          "kind": "form",
+          "answer": "afasto",
+          "cue": "afastar (eu)",
+          "choices": [
+            "afastam",
+            "afasta",
+            "afastamos",
+            "afasto"
+          ]
+        },
+        " a mesa ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "que",
+            "qual",
+            "quem",
+            "quanto"
+          ]
+        },
+        " está junto da janela."
+      ],
+      "chunks": [
+        {
+          "targetText": "A tomada que",
+          "baseText": {
+            "de": "Die Steckdose, die",
+            "en": "The outlet that"
+          }
+        },
+        {
+          "targetText": "fica perto",
+          "baseText": {
+            "de": "sich in der Nähe befindet",
+            "en": "is near"
+          }
+        },
+        {
+          "targetText": "da mesa",
+          "baseText": {
+            "de": "des Tisches",
+            "en": "the desk"
+          }
+        },
+        {
+          "targetText": "serve para o computador.",
+          "baseText": {
+            "de": "eignet sich für den Computer.",
+            "en": "will work for the computer."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tomada",
+          "baseText": {
+            "de": "Steckdose",
+            "en": "outlet"
+          }
+        },
+        {
+          "targetText": "perto da mesa",
+          "baseText": {
+            "de": "in der Nähe des Tisches",
+            "en": "near the desk"
+          }
+        },
+        {
+          "targetText": "serve para",
+          "baseText": {
+            "de": "eignet sich für",
+            "en": "works for"
+          }
+        },
+        {
+          "targetText": "cabo",
+          "baseText": {
+            "de": "Kabel",
+            "en": "cord; cable"
+          }
+        },
+        {
+          "targetText": "alcança",
+          "baseText": {
+            "de": "reicht bis hin",
+            "en": "reaches"
+          }
+        },
+        {
+          "targetText": "afasto",
+          "baseText": {
+            "de": "ich rücke weg",
+            "en": "I move away"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A tomada que fica perto da mesa ",
+        "answer": "serve",
+        "after": " para o computador.",
+        "fallbackChoices": [
+          "servem",
+          "serve",
+          "sirvo",
+          "servimos"
+        ]
+      },
+      "speakRequired": [
+        "tomada",
+        "mesa",
+        "computador"
+      ],
+      "sceneCaption": {
+        "de": "Deine Kollegin fragt beim Einrichten: “Qual tomada você pretende usar para o computador?”",
+        "en": "Your colleague asks while setting up: “Qual tomada você pretende usar para o computador?”"
+      },
+      "trophyWord": {
+        "word": "tomada",
+        "meaning": {
+          "de": "Steckdose",
+          "en": "outlet"
+        },
+        "example": "A tomada que fica perto da mesa serve para o computador.",
+        "whyThisWord": {
+          "de": "Tomada brauchst du, wenn du Geräte anschließt; mit einer Ortsbeschreibung zeigst du, welche Steckdose du meinst.",
+          "en": "Use tomada when connecting equipment; a location description identifies the outlet you mean."
+        }
+      },
+      "distractors": [
+        "da porta",
+        "serve para o celular."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Tisch und ein Computer werden aufgestellt.",
+        "en": "Setting up a desk and a computer."
+      },
+      "songMood": "friendly practical collaboration",
+      "visualNotes": "Two colleagues setting up a desk near a window; do not depict a taut or visibly short cord."
+    },
+    {
+      "slug": "prateleira-para-livros",
+      "title": {
+        "de": "Ein Platz für große Bücher",
+        "en": "A place for large books"
+      },
+      "situation": {
+        "de": "Du besprichst mit einem Monteur, wo ein Bücherregal angebracht werden soll.",
+        "en": "You discuss with an installer where a bookshelf should go."
+      },
+      "pedagogicalGoal": "Mit que eine geeignete Ablage bestimmen und bei einer Platzbeschränkung eine andere Wand wählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qual prateleira você quer colocar nesta parede?",
+          "baseText": {
+            "de": "Welches Regalbrett möchten Sie an dieser Wand anbringen?",
+            "en": "Which shelf would you like to put on this wall?"
+          }
+        },
+        {
+          "targetText": "A prateleira que suporta os livros maiores cabe entre essas duas janelas.",
+          "baseText": {
+            "de": "Das Regalbrett, das die größeren Bücher trägt, passt zwischen diese beiden Fenster.",
+            "en": "The shelf that supports the larger books fits between these two windows."
+          }
+        },
+        {
+          "targetText": "Pela medida, não cabe ali. Acima da mesa há mais espaço.",
+          "baseText": {
+            "de": "Den Maßen nach passt es dort nicht. Über dem Tisch ist mehr Platz.",
+            "en": "According to the measurements, it doesn't fit there. There's more room above the desk."
+          }
+        },
+        {
+          "targetText": "Eu escolho a parede que fica atrás da mesa.",
+          "baseText": {
+            "de": "Ich wähle die Wand hinter dem Tisch.",
+            "en": "I'll choose the wall behind the desk."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A prateleira que suporta…",
+        "rule": {
+          "de": "Que kann die Funktion oder den Standort eines Gegenstands genauer beschreiben; der Relativsatz steht direkt hinter seinem Bezugswort.",
+          "en": "Que can describe an object's function or location more precisely; the relative clause follows the noun it refers to."
+        },
+        "examples": [
+          {
+            "targetText": "A prateleira que suporta os livros maiores cabe entre essas duas janelas.",
+            "baseText": {
+              "de": "Das Regalbrett, das die größeren Bücher trägt, passt zwischen diese beiden Fenster.",
+              "en": "The shelf that supports the larger books fits between these two windows."
+            },
+            "highlight": "A prateleira que suporta os livros maiores"
+          },
+          {
+            "targetText": "A parede que fica atrás da mesa tem espaço para os livros.",
+            "baseText": {
+              "de": "Die Wand hinter dem Tisch bietet Platz für die Bücher.",
+              "en": "The wall behind the desk has room for the books."
+            },
+            "highlight": "A parede que fica atrás da mesa"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "escolho",
+          "cue": "escolher (eu)",
+          "choices": [
+            "escolhe",
+            "escolhemos",
+            "escolho",
+            "escolhem"
+          ]
+        },
+        " a parede ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "quem",
+            "quanto",
+            "qual",
+            "que"
+          ]
+        },
+        " fica atrás da mesa."
+      ],
+      "chunks": [
+        {
+          "targetText": "A prateleira que suporta",
+          "baseText": {
+            "de": "Das Regalbrett, das trägt",
+            "en": "The shelf that supports"
+          }
+        },
+        {
+          "targetText": "os livros maiores",
+          "baseText": {
+            "de": "die größeren Bücher",
+            "en": "the larger books"
+          }
+        },
+        {
+          "targetText": "cabe entre",
+          "baseText": {
+            "de": "passt zwischen",
+            "en": "fits between"
+          }
+        },
+        {
+          "targetText": "essas duas janelas.",
+          "baseText": {
+            "de": "diese beiden Fenster.",
+            "en": "these two windows."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "prateleira",
+          "baseText": {
+            "de": "Regalbrett; Ablage",
+            "en": "shelf"
+          }
+        },
+        {
+          "targetText": "suporta",
+          "baseText": {
+            "de": "trägt; hält aus",
+            "en": "supports"
+          }
+        },
+        {
+          "targetText": "livros maiores",
+          "baseText": {
+            "de": "größere Bücher",
+            "en": "larger books"
+          }
+        },
+        {
+          "targetText": "cabe",
+          "baseText": {
+            "de": "passt hinein",
+            "en": "fits"
+          }
+        },
+        {
+          "targetText": "medida",
+          "baseText": {
+            "de": "Maß",
+            "en": "measurement"
+          }
+        },
+        {
+          "targetText": "parede",
+          "baseText": {
+            "de": "Wand",
+            "en": "wall"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A prateleira que suporta os livros maiores ",
+        "answer": "cabe",
+        "after": " entre essas duas janelas.",
+        "fallbackChoices": [
+          "cabemos",
+          "cabe",
+          "caibo",
+          "cabem"
+        ]
+      },
+      "speakRequired": [
+        "prateleira",
+        "suporta",
+        "livros"
+      ],
+      "sceneCaption": {
+        "de": "Der Monteur fragt vor dem Ausmessen: “Qual prateleira você quer colocar nesta parede?”",
+        "en": "Before measuring, the installer asks: “Qual prateleira você quer colocar nesta parede?”"
+      },
+      "trophyWord": {
+        "word": "prateleira",
+        "meaning": {
+          "de": "Regalbrett; Ablage",
+          "en": "shelf"
+        },
+        "example": "A prateleira que suporta os livros maiores cabe entre essas duas janelas.",
+        "whyThisWord": {
+          "de": "Prateleira bezeichnet die einzelne Ablage; du kannst sie anhand ihrer Tragfähigkeit oder ihres Platzes beschreiben.",
+          "en": "Prateleira refers to an individual shelf, which you can describe by what it supports or where it goes."
+        }
+      },
+      "distractors": [
+        "os livros menores",
+        "essas duas portas."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über ein Regalbrett an der Wand.",
+        "en": "Discussing a shelf on the wall."
+      },
+      "songMood": "measured practical adjustment",
+      "visualNotes": "Installer with a tape measure near a wall and books; avoid revealing a failed measurement."
+    },
+    {
+      "slug": "tecido-para-a-sala",
+      "title": {
+        "de": "Stoff für das Arbeitszimmer",
+        "en": "Fabric for the workroom"
+      },
+      "situation": {
+        "de": "Du zeigst in einem Gardinengeschäft eine Stoffprobe für dein Zimmer.",
+        "en": "You show a fabric sample for your room at a curtain shop."
+      },
+      "pedagogicalGoal": "Mit onde einen tatsächlich genannten Raum näher bestimmen und die Stoffwahl an eine andere Farbe anpassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qual tecido você escolheu na amostra?",
+          "baseText": {
+            "de": "Welchen Stoff haben Sie anhand der Probe ausgewählt?",
+            "en": "Which fabric did you choose from the sample?"
+          }
+        },
+        {
+          "targetText": "Eu prefiro o tecido da amostra para a sala onde trabalho.",
+          "baseText": {
+            "de": "Ich bevorzuge den Stoff der Probe für das Zimmer, in dem ich arbeite.",
+            "en": "I prefer the sample fabric for the room where I work."
+          }
+        },
+        {
+          "targetText": "Essa cor acabou, mas temos o mesmo tecido em bege.",
+          "baseText": {
+            "de": "Diese Farbe ist ausverkauft, aber wir haben denselben Stoff in Beige.",
+            "en": "That color is sold out, but we have the same fabric in beige."
+          }
+        },
+        {
+          "targetText": "Eu aceito o bege para a sala onde trabalho.",
+          "baseText": {
+            "de": "Ich nehme das Beige für das Zimmer, in dem ich arbeite.",
+            "en": "I'll take the beige for the room where I work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A sala onde trabalho",
+        "rule": {
+          "de": "Onde verbindet einen Ort mit dem, was dort geschieht; hier ist sala der konkrete Ort, auf den es sich bezieht.",
+          "en": "Onde links a place to what happens there; here sala is the specific place it refers to."
+        },
+        "examples": [
+          {
+            "targetText": "Eu prefiro o tecido da amostra para a sala onde trabalho.",
+            "baseText": {
+              "de": "Ich bevorzuge den Stoff der Probe für das Zimmer, in dem ich arbeite.",
+              "en": "I prefer the sample fabric for the room where I work."
+            },
+            "highlight": "a sala onde trabalho"
+          },
+          {
+            "targetText": "A loja onde comprei a cortina fica perto de casa.",
+            "baseText": {
+              "de": "Das Geschäft, in dem ich die Gardine gekauft habe, liegt in der Nähe meiner Wohnung.",
+              "en": "The shop where I bought the curtain is near my home."
+            },
+            "highlight": "A loja onde comprei a cortina"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "aceito",
+          "cue": "aceitar (eu)",
+          "choices": [
+            "aceitam",
+            "aceitamos",
+            "aceita",
+            "aceito"
+          ]
+        },
+        " o bege para a sala ",
+        {
+          "kind": "choice",
+          "answer": "onde",
+          "choices": [
+            "quem",
+            "qual",
+            "onde",
+            "quanto"
+          ]
+        },
+        " trabalho."
+      ],
+      "chunks": [
+        {
+          "targetText": "Eu prefiro o tecido",
+          "baseText": {
+            "de": "Ich bevorzuge den Stoff",
+            "en": "I prefer the fabric"
+          }
+        },
+        {
+          "targetText": "da amostra",
+          "baseText": {
+            "de": "der Probe",
+            "en": "from the sample"
+          }
+        },
+        {
+          "targetText": "para a sala",
+          "baseText": {
+            "de": "für das Zimmer",
+            "en": "for the room"
+          }
+        },
+        {
+          "targetText": "onde trabalho.",
+          "baseText": {
+            "de": "in dem ich arbeite.",
+            "en": "where I work."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tecido",
+          "baseText": {
+            "de": "Stoff",
+            "en": "fabric"
+          }
+        },
+        {
+          "targetText": "amostra",
+          "baseText": {
+            "de": "Probe; Muster",
+            "en": "sample"
+          }
+        },
+        {
+          "targetText": "sala",
+          "baseText": {
+            "de": "Zimmer; Raum",
+            "en": "room"
+          }
+        },
+        {
+          "targetText": "bege",
+          "baseText": {
+            "de": "beige",
+            "en": "beige"
+          }
+        },
+        {
+          "targetText": "acabou",
+          "baseText": {
+            "de": "ist ausverkauft; ist ausgegangen",
+            "en": "is sold out; ran out"
+          }
+        },
+        {
+          "targetText": "cortina",
+          "baseText": {
+            "de": "Gardine; Vorhang",
+            "en": "curtain"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Eu ",
+        "answer": "prefiro",
+        "after": " o tecido da amostra para a sala onde trabalho.",
+        "fallbackChoices": [
+          "preferimos",
+          "prefere",
+          "prefiro",
+          "preferem"
+        ]
+      },
+      "speakRequired": [
+        "tecido",
+        "amostra",
+        "trabalho"
+      ],
+      "sceneCaption": {
+        "de": "Die Verkäuferin schaut auf die Probe und fragt: “Qual tecido você escolheu na amostra?”",
+        "en": "The sales assistant looks at the sample and asks: “Qual tecido você escolheu na amostra?”"
+      },
+      "trophyWord": {
+        "word": "tecido",
+        "meaning": {
+          "de": "Stoff",
+          "en": "fabric"
+        },
+        "example": "Eu prefiro o tecido da amostra para a sala onde trabalho.",
+        "whyThisWord": {
+          "de": "Tecido bezeichnet das Material einer Gardine oder eines Kleidungsstücks; es lässt sich von seiner Farbe unterscheiden.",
+          "en": "Tecido names the material of a curtain or garment, separately from its color."
+        }
+      },
+      "distractors": [
+        "Eu prefiro a cortina",
+        "para a cozinha"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Stoffprobe auf dem Ladentisch.",
+        "en": "A fabric sample on the shop counter."
+      },
+      "songMood": "soft thoughtful selection",
+      "visualNotes": "Curtain fabric samples with no sold-out tags; keep alternative colors unmarked."
+    },
+    {
+      "slug": "tamanho-da-mochila",
+      "title": {
+        "de": "Eine passende Tasche",
+        "en": "A bag that fits"
+      },
+      "situation": {
+        "de": "Du vergleichst nach dem Anprobieren Rucksäcke im Geschäft.",
+        "en": "You compare backpacks in a shop after trying one on."
+      },
+      "pedagogicalGoal": "Mit onde einen Aufbewahrungsort beschreiben und eine Tasche mit anderer Aufteilung akzeptieren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Esse é o tamanho da mochila que você experimentou?",
+          "baseText": {
+            "de": "Ist das die Größe des Rucksacks, den Sie anprobiert haben?",
+            "en": "Is that the size of the backpack you tried on?"
+          }
+        },
+        {
+          "targetText": "Sim, a mochila desse tamanho cabe no armário onde guardo minhas coisas.",
+          "baseText": {
+            "de": "Ja, ein Rucksack dieser Größe passt in den Schrank, in dem ich meine Sachen aufbewahre.",
+            "en": "Yes, a backpack this size fits in the cabinet where I keep my things."
+          }
+        },
+        {
+          "targetText": "Esse modelo acabou. Tenho outro da mesma medida, mas só com um bolso grande.",
+          "baseText": {
+            "de": "Dieses Modell ist ausverkauft. Ich habe ein anderes mit denselben Maßen, aber nur einer großen Tasche.",
+            "en": "This model is sold out. I have another with the same measurements, but just one large pocket."
+          }
+        },
+        {
+          "targetText": "Eu levo essa; organizo tudo no bolso onde guardo meu caderno.",
+          "baseText": {
+            "de": "Ich nehme diesen Rucksack und ordne alles in der Tasche, in der ich mein Heft aufbewahre.",
+            "en": "I'll take this one and organize everything in the pocket where I keep my notebook."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "O armário onde guardo…",
+        "rule": {
+          "de": "Onde kann sich auch auf einen Aufbewahrungsort wie armário oder bolso beziehen; die folgende Aussage beschreibt, was dort liegt oder geschieht.",
+          "en": "Onde can also refer to a storage place such as armário or bolso; the following clause describes what is kept or happens there."
+        },
+        "examples": [
+          {
+            "targetText": "Sim, a mochila desse tamanho cabe no armário onde guardo minhas coisas.",
+            "baseText": {
+              "de": "Ja, ein Rucksack dieser Größe passt in den Schrank, in dem ich meine Sachen aufbewahre.",
+              "en": "Yes, a backpack this size fits in the cabinet where I keep my things."
+            },
+            "highlight": "no armário onde guardo minhas coisas"
+          },
+          {
+            "targetText": "O bolso onde guardo o caderno tem um zíper resistente.",
+            "baseText": {
+              "de": "Die Tasche, in der ich mein Heft aufbewahre, hat einen robusten Reißverschluss.",
+              "en": "The pocket where I keep my notebook has a strong zipper."
+            },
+            "highlight": "O bolso onde guardo o caderno"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "levo",
+          "cue": "levar (eu)",
+          "choices": [
+            "leva",
+            "levo",
+            "levamos",
+            "levam"
+          ]
+        },
+        " essa; organizo tudo no bolso ",
+        {
+          "kind": "choice",
+          "answer": "onde",
+          "choices": [
+            "quanto",
+            "onde",
+            "qual",
+            "quem"
+          ]
+        },
+        " guardo meu caderno."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sim, a mochila",
+          "baseText": {
+            "de": "Ja, der Rucksack",
+            "en": "Yes, the backpack"
+          }
+        },
+        {
+          "targetText": "desse tamanho",
+          "baseText": {
+            "de": "dieser Größe",
+            "en": "this size"
+          }
+        },
+        {
+          "targetText": "cabe no armário",
+          "baseText": {
+            "de": "passt in den Schrank",
+            "en": "fits in the cabinet"
+          }
+        },
+        {
+          "targetText": "onde guardo",
+          "baseText": {
+            "de": "in dem ich aufbewahre",
+            "en": "where I keep"
+          }
+        },
+        {
+          "targetText": "minhas coisas.",
+          "baseText": {
+            "de": "meine Sachen.",
+            "en": "my things."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tamanho",
+          "baseText": {
+            "de": "Größe",
+            "en": "size"
+          }
+        },
+        {
+          "targetText": "mochila",
+          "baseText": {
+            "de": "Rucksack",
+            "en": "backpack"
+          }
+        },
+        {
+          "targetText": "armário",
+          "baseText": {
+            "de": "Schrank",
+            "en": "cabinet"
+          }
+        },
+        {
+          "targetText": "guardo",
+          "baseText": {
+            "de": "ich bewahre auf",
+            "en": "I keep; I store"
+          }
+        },
+        {
+          "targetText": "bolso",
+          "baseText": {
+            "de": "Tasche; Fach",
+            "en": "pocket"
+          }
+        },
+        {
+          "targetText": "caderno",
+          "baseText": {
+            "de": "Heft",
+            "en": "notebook"
+          }
+        },
+        {
+          "targetText": "zíper",
+          "baseText": {
+            "de": "Reißverschluss",
+            "en": "zipper"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sim, a mochila desse tamanho ",
+        "answer": "cabe",
+        "after": " no armário onde guardo minhas coisas.",
+        "fallbackChoices": [
+          "cabem",
+          "cabemos",
+          "cabe",
+          "caibo"
+        ]
+      },
+      "speakRequired": [
+        "mochila",
+        "tamanho",
+        "armário"
+      ],
+      "sceneCaption": {
+        "de": "Der Verkäufer fragt nach dem Anprobieren: “Esse é o tamanho da mochila que você experimentou?”",
+        "en": "After you try it on, the sales assistant asks: “Esse é o tamanho da mochila que você experimentou?”"
+      },
+      "trophyWord": {
+        "word": "tamanho",
+        "meaning": {
+          "de": "Größe",
+          "en": "size"
+        },
+        "example": "A mochila desse tamanho cabe no armário onde guardo minhas coisas.",
+        "whyThisWord": {
+          "de": "Mit desse tamanho beziehst du dich auf eine gerade gezeigte oder ausprobierte Größe, ohne ein Maß nennen zu müssen.",
+          "en": "Desse tamanho refers to a size you have just seen or tried without needing to state a measurement."
+        }
+      },
+      "distractors": [
+        "cabe na gaveta",
+        "suas ferramentas."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Rucksack wird im Geschäft verglichen.",
+        "en": "Comparing a backpack in the shop."
+      },
+      "songMood": "easy practical decision",
+      "visualNotes": "Backpack display and an open sample bag; do not reveal which model is unavailable."
+    },
+    {
+      "slug": "modelo-para-a-sala",
+      "title": {
+        "de": "Leise beim Fernsehen",
+        "en": "Quiet while watching TV"
+      },
+      "situation": {
+        "de": "Du vergleichst nach einer Vorführung Ventilatoren im Geschäft.",
+        "en": "You compare fans in a store after a demonstration."
+      },
+      "pedagogicalGoal": "Mit onde die Nutzung eines Raums erklären und einen kleinen Mangel bei der verfügbaren Ware einordnen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qual dos ventiladores da demonstração você prefere?",
+          "baseText": {
+            "de": "Welchen der vorgeführten Ventilatoren bevorzugen Sie?",
+            "en": "Which of the fans in the demonstration do you prefer?"
+          }
+        },
+        {
+          "targetText": "Prefiro o modelo silencioso para a sala onde a gente assiste televisão.",
+          "baseText": {
+            "de": "Ich bevorzuge das leise Modell für das Zimmer, in dem wir fernsehen.",
+            "en": "I prefer the quiet model for the room where we watch television."
+          }
+        },
+        {
+          "targetText": "Só resta o da vitrine. Funciona normalmente, mas tem um risco na base.",
+          "baseText": {
+            "de": "Es ist nur noch das Ausstellungsstück da. Es funktioniert normal, hat aber einen Kratzer am Fuß.",
+            "en": "Only the display unit is left. It works normally but has a scratch on the base."
+          }
+        },
+        {
+          "targetText": "Eu aceito; a base fica no canto onde ninguém passa.",
+          "baseText": {
+            "de": "Ich nehme es; der Fuß steht in der Ecke, an der niemand vorbeigeht.",
+            "en": "I'll take it; the base will be in the corner where nobody walks past."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "O lugar onde…",
+        "rule": {
+          "de": "Mit onde beschreibst du einen Ort durch eine Tätigkeit; a gente und ninguém verlangen jeweils die dritte Person Singular.",
+          "en": "Use onde to describe a place through an activity; a gente and ninguém each take the third-person singular."
+        },
+        "examples": [
+          {
+            "targetText": "Prefiro o modelo silencioso para a sala onde a gente assiste televisão.",
+            "baseText": {
+              "de": "Ich bevorzuge das leise Modell für das Zimmer, in dem wir fernsehen.",
+              "en": "I prefer the quiet model for the room where we watch television."
+            },
+            "highlight": "a sala onde a gente assiste televisão"
+          },
+          {
+            "targetText": "O canto onde ninguém passa fica atrás do sofá.",
+            "baseText": {
+              "de": "Die Ecke, an der niemand vorbeigeht, liegt hinter dem Sofa.",
+              "en": "The corner where nobody walks past is behind the sofa."
+            },
+            "highlight": "O canto onde ninguém passa"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "aceito",
+          "cue": "aceitar (eu)",
+          "choices": [
+            "aceitamos",
+            "aceita",
+            "aceito",
+            "aceitam"
+          ]
+        },
+        "; a base fica no canto ",
+        {
+          "kind": "choice",
+          "answer": "onde",
+          "choices": [
+            "qual",
+            "quem",
+            "quanto",
+            "onde"
+          ]
+        },
+        " ninguém passa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Prefiro o modelo silencioso",
+          "baseText": {
+            "de": "Ich bevorzuge das leise Modell",
+            "en": "I prefer the quiet model"
+          }
+        },
+        {
+          "targetText": "para a sala",
+          "baseText": {
+            "de": "für das Zimmer",
+            "en": "for the room"
+          }
+        },
+        {
+          "targetText": "onde a gente",
+          "baseText": {
+            "de": "in dem wir",
+            "en": "where we"
+          }
+        },
+        {
+          "targetText": "assiste televisão.",
+          "baseText": {
+            "de": "fernsehen.",
+            "en": "watch television."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "modelo",
+          "baseText": {
+            "de": "Modell",
+            "en": "model"
+          }
+        },
+        {
+          "targetText": "silencioso",
+          "baseText": {
+            "de": "leise",
+            "en": "quiet"
+          }
+        },
+        {
+          "targetText": "assiste televisão",
+          "baseText": {
+            "de": "sieht fern",
+            "en": "watches television"
+          }
+        },
+        {
+          "targetText": "vitrine",
+          "baseText": {
+            "de": "Schaufenster; Auslage",
+            "en": "display window"
+          }
+        },
+        {
+          "targetText": "risco",
+          "baseText": {
+            "de": "Kratzer",
+            "en": "scratch"
+          }
+        },
+        {
+          "targetText": "base",
+          "baseText": {
+            "de": "Fuß; Sockel",
+            "en": "base"
+          }
+        },
+        {
+          "targetText": "canto",
+          "baseText": {
+            "de": "Ecke",
+            "en": "corner"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Prefiro o modelo silencioso para a sala onde a gente ",
+        "answer": "assiste",
+        "after": " televisão.",
+        "fallbackChoices": [
+          "assisto",
+          "assistimos",
+          "assiste",
+          "assistem"
+        ]
+      },
+      "speakRequired": [
+        "modelo",
+        "silencioso",
+        "televisão"
+      ],
+      "sceneCaption": {
+        "de": "Nach der Vorführung fragt der Verkäufer: “Qual dos ventiladores da demonstração você prefere?”",
+        "en": "After the demonstration, the sales assistant asks: “Qual dos ventiladores da demonstração você prefere?”"
+      },
+      "trophyWord": {
+        "word": "modelo",
+        "meaning": {
+          "de": "Modell",
+          "en": "model"
+        },
+        "example": "Prefiro o modelo silencioso para a sala onde a gente assiste televisão.",
+        "whyThisWord": {
+          "de": "Modelo unterscheidet eine Produktvariante von einem einzelnen Ausstellungsstück; hier bestimmst du die gewünschte Variante durch ihre Lautstärke.",
+          "en": "Modelo distinguishes a product version from an individual display unit; here you identify the version by its noise level."
+        }
+      },
+      "distractors": [
+        "Prefiro o modelo potente",
+        "para a cozinha"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Vergleich von Ventilatoren nach der Vorführung.",
+        "en": "Comparing fans after a demonstration."
+      },
+      "songMood": "quiet settled preference",
+      "visualNotes": "Fans on a showroom counter; no visible scratch or last-unit notice before the complication."
+    },
+    {
+      "slug": "portaria-das-encomendas",
+      "title": {
+        "de": "Die Paketannahme finden",
+        "en": "Finding the parcel entrance"
+      },
+      "situation": {
+        "de": "Du klärst am Empfang eines Wohngebäudes, wo du dein Paket abholen kannst.",
+        "en": "You check at a residential building's reception where you can collect your parcel."
+      },
+      "pedagogicalGoal": "Em que als Ortsbezug mit einem klaren Bezugswort verwenden und eine vorübergehende Zugangsänderung aufnehmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você costuma retirar suas encomendas nesta portaria?",
+          "baseText": {
+            "de": "Holen Sie Ihre Pakete normalerweise an diesem Empfang ab?",
+            "en": "Do you usually collect your parcels at this reception?"
+          }
+        },
+        {
+          "targetText": "Esta é a portaria em que o prédio recebe todas as encomendas.",
+          "baseText": {
+            "de": "Das ist der Empfang, an dem das Haus alle Pakete entgegennimmt.",
+            "en": "This is the reception where the building receives all its parcels."
+          }
+        },
+        {
+          "targetText": "Durante a obra, a retirada é na entrada lateral. Coloquei um aviso lá.",
+          "baseText": {
+            "de": "Während der Bauarbeiten erfolgt die Abholung am Seiteneingang. Ich habe dort einen Hinweis angebracht.",
+            "en": "During the construction work, collection is at the side entrance. I put a notice there."
+          }
+        },
+        {
+          "targetText": "Então eu uso a entrada em que está o aviso.",
+          "baseText": {
+            "de": "Dann nehme ich den Eingang, an dem der Hinweis hängt.",
+            "en": "Then I'll use the entrance where the notice is."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A portaria em que…",
+        "rule": {
+          "de": "Em que bezieht sich hier auf einen genannten Ort und kann in dieser Ortsbeschreibung onde ersetzen.",
+          "en": "Em que refers here to a named place and can replace onde in this location description."
+        },
+        "examples": [
+          {
+            "targetText": "Esta é a portaria em que o prédio recebe todas as encomendas.",
+            "baseText": {
+              "de": "Das ist der Empfang, an dem das Haus alle Pakete entgegennimmt.",
+              "en": "This is the reception where the building receives all its parcels."
+            },
+            "highlight": "a portaria em que"
+          },
+          {
+            "targetText": "A entrada em que está o aviso fica ao lado da garagem.",
+            "baseText": {
+              "de": "Der Eingang mit dem Hinweis liegt neben der Garage.",
+              "en": "The entrance where the notice is stands beside the garage."
+            },
+            "highlight": "A entrada em que está o aviso"
+          }
+        ]
+      },
+      "cloze": [
+        "Então eu ",
+        {
+          "kind": "form",
+          "answer": "uso",
+          "cue": "usar (eu)",
+          "choices": [
+            "usam",
+            "uso",
+            "usa",
+            "usamos"
+          ]
+        },
+        " a entrada ",
+        {
+          "kind": "choice",
+          "answer": "em que",
+          "choices": [
+            "de que",
+            "a quem",
+            "em que",
+            "com quem"
+          ]
+        },
+        " está o aviso."
+      ],
+      "chunks": [
+        {
+          "targetText": "Esta é a portaria",
+          "baseText": {
+            "de": "Das ist der Empfang",
+            "en": "This is the reception"
+          }
+        },
+        {
+          "targetText": "em que o prédio",
+          "baseText": {
+            "de": "an dem das Haus",
+            "en": "where the building"
+          }
+        },
+        {
+          "targetText": "recebe todas",
+          "baseText": {
+            "de": "alle entgegennimmt",
+            "en": "receives all"
+          }
+        },
+        {
+          "targetText": "as encomendas.",
+          "baseText": {
+            "de": "die Pakete.",
+            "en": "the parcels."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "portaria",
+          "baseText": {
+            "de": "Empfang im Wohngebäude",
+            "en": "building reception"
+          }
+        },
+        {
+          "targetText": "prédio",
+          "baseText": {
+            "de": "Gebäude",
+            "en": "building"
+          }
+        },
+        {
+          "targetText": "encomendas",
+          "baseText": {
+            "de": "Pakete; Sendungen",
+            "en": "parcels"
+          }
+        },
+        {
+          "targetText": "obra",
+          "baseText": {
+            "de": "Bauarbeiten",
+            "en": "construction work"
+          }
+        },
+        {
+          "targetText": "entrada lateral",
+          "baseText": {
+            "de": "Seiteneingang",
+            "en": "side entrance"
+          }
+        },
+        {
+          "targetText": "aviso",
+          "baseText": {
+            "de": "Hinweis",
+            "en": "notice"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Esta é a portaria em que o prédio ",
+        "answer": "recebe",
+        "after": " todas as encomendas.",
+        "fallbackChoices": [
+          "recebemos",
+          "recebem",
+          "recebe",
+          "recebo"
+        ]
+      },
+      "speakRequired": [
+        "portaria",
+        "prédio",
+        "encomendas"
+      ],
+      "sceneCaption": {
+        "de": "Die Empfangskraft fragt: “Você costuma retirar suas encomendas nesta portaria?”",
+        "en": "The receptionist asks: “Você costuma retirar suas encomendas nesta portaria?”"
+      },
+      "trophyWord": {
+        "word": "portaria",
+        "meaning": {
+          "de": "Empfang im Wohngebäude",
+          "en": "building reception"
+        },
+        "example": "Esta é a portaria em que o prédio recebe todas as encomendas.",
+        "whyThisWord": {
+          "de": "Portaria bezeichnet hier den Empfangsbereich eines Wohngebäudes, an dem häufig auch Sendungen angenommen werden.",
+          "en": "Portaria refers here to a residential building's reception area, where parcels are often accepted."
+        }
+      },
+      "distractors": [
+        "Esta é a garagem",
+        "recebe poucas"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch am Empfang eines Wohngebäudes.",
+        "en": "A conversation at a residential building's reception."
+      },
+      "songMood": "steady neighborhood exchange",
+      "visualNotes": "Building reception counter with parcels; no construction sign or side-door notice in the initial scene."
+    },
+    {
+      "slug": "biblioteca-do-clube",
+      "title": {
+        "de": "Den Lesekreis finden",
+        "en": "Finding the reading group"
+      },
+      "situation": {
+        "de": "Du erkundigst dich bei einer Bibliotheksmitarbeiterin nach dem empfohlenen Lesekreis.",
+        "en": "You ask a library staff member about the reading group she recommended."
+      },
+      "pedagogicalGoal": "De que nach falar de verwenden und beim Wechsel des Termins einen Bezug mit precisar de herstellen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você encontrou o clube de leitura de terça que eu indiquei?",
+          "baseText": {
+            "de": "Haben Sie den Lesekreis am Dienstag gefunden, den ich empfohlen habe?",
+            "en": "Did you find the Tuesday reading group I recommended?"
+          }
+        },
+        {
+          "targetText": "Frequento a biblioteca de que você falou, onde acontece o clube de leitura.",
+          "baseText": {
+            "de": "Ich besuche die Bibliothek, von der Sie gesprochen haben und in der der Lesekreis stattfindet.",
+            "en": "I go to the library you mentioned, where the reading group meets."
+          }
+        },
+        {
+          "targetText": "Esse grupo também se reúne às quartas na unidade do centro.",
+          "baseText": {
+            "de": "Dieselbe Gruppe trifft sich auch mittwochs in der Zweigstelle im Zentrum.",
+            "en": "The same group also meets on Wednesdays at the downtown branch."
+          }
+        },
+        {
+          "targetText": "Eu escolho quarta; é o dia de que preciso.",
+          "baseText": {
+            "de": "Ich wähle Mittwoch; das ist der Tag, den ich brauche.",
+            "en": "I'll choose Wednesday; that's the day I need."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A biblioteca de que você falou",
+        "rule": {
+          "de": "Bei falar de und precisar de bleibt de auch vor dem Relativwort que erhalten; das Bezugswort steht davor.",
+          "en": "With falar de and precisar de, keep de before the relative word que; the noun being described comes first."
+        },
+        "examples": [
+          {
+            "targetText": "Frequento a biblioteca de que você falou, onde acontece o clube de leitura.",
+            "baseText": {
+              "de": "Ich besuche die Bibliothek, von der Sie gesprochen haben und in der der Lesekreis stattfindet.",
+              "en": "I go to the library you mentioned, where the reading group meets."
+            },
+            "highlight": "a biblioteca de que você falou"
+          },
+          {
+            "targetText": "Esta é a informação de que preciso para escolher o grupo.",
+            "baseText": {
+              "de": "Das ist die Information, die ich brauche, um die Gruppe auszuwählen.",
+              "en": "This is the information I need to choose the group."
+            },
+            "highlight": "a informação de que preciso"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "escolho",
+          "cue": "escolher (eu)",
+          "choices": [
+            "escolhem",
+            "escolho",
+            "escolhe",
+            "escolhemos"
+          ]
+        },
+        " quarta; é o dia ",
+        {
+          "kind": "choice",
+          "answer": "de que",
+          "choices": [
+            "a que",
+            "com quem",
+            "a quem",
+            "de que"
+          ]
+        },
+        " preciso."
+      ],
+      "chunks": [
+        {
+          "targetText": "Frequento a biblioteca",
+          "baseText": {
+            "de": "Ich besuche die Bibliothek",
+            "en": "I go to the library"
+          }
+        },
+        {
+          "targetText": "de que você falou,",
+          "baseText": {
+            "de": "von der Sie gesprochen haben,",
+            "en": "that you mentioned,"
+          }
+        },
+        {
+          "targetText": "onde acontece",
+          "baseText": {
+            "de": "in der stattfindet",
+            "en": "where there is"
+          }
+        },
+        {
+          "targetText": "o clube de leitura.",
+          "baseText": {
+            "de": "der Lesekreis.",
+            "en": "the reading group."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "biblioteca",
+          "baseText": {
+            "de": "Bibliothek",
+            "en": "library"
+          }
+        },
+        {
+          "targetText": "frequento",
+          "baseText": {
+            "de": "ich besuche regelmäßig",
+            "en": "I go to regularly"
+          }
+        },
+        {
+          "targetText": "clube de leitura",
+          "baseText": {
+            "de": "Lesekreis",
+            "en": "reading group"
+          }
+        },
+        {
+          "targetText": "unidade",
+          "baseText": {
+            "de": "Zweigstelle",
+            "en": "branch"
+          }
+        },
+        {
+          "targetText": "às quartas",
+          "baseText": {
+            "de": "mittwochs",
+            "en": "on Wednesdays"
+          }
+        },
+        {
+          "targetText": "escolho",
+          "baseText": {
+            "de": "ich wähle",
+            "en": "I choose"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Frequento a biblioteca de que você ",
+        "answer": "falou",
+        "after": ", onde acontece o clube de leitura.",
+        "fallbackChoices": [
+          "falei",
+          "falamos",
+          "falaram",
+          "falou"
+        ]
+      },
+      "speakRequired": [
+        "biblioteca",
+        "falou",
+        "leitura"
+      ],
+      "sceneCaption": {
+        "de": "Die Bibliotheksmitarbeiterin fragt: “Você encontrou o clube de leitura de terça que eu indiquei?”",
+        "en": "The library staff member asks: “Você encontrou o clube de leitura de terça que eu indiquei?”"
+      },
+      "trophyWord": {
+        "word": "biblioteca",
+        "meaning": {
+          "de": "Bibliothek",
+          "en": "library"
+        },
+        "example": "Frequento a biblioteca de que você falou, onde acontece o clube de leitura.",
+        "whyThisWord": {
+          "de": "Biblioteca lässt sich mit de que auf eine frühere Erwähnung und mit onde auf eine dort stattfindende Tätigkeit beziehen.",
+          "en": "Biblioteca can connect to an earlier mention through de que and to an activity held there through onde."
+        }
+      },
+      "distractors": [
+        "Frequento a livraria",
+        "o curso de escrita."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über einen Lesekreis in der Bibliothek.",
+        "en": "Discussing a reading group at the library."
+      },
+      "songMood": "curious welcoming conversation",
+      "visualNotes": "Library information desk and book display; do not show the alternative branch or Wednesday schedule."
+    },
+    {
+      "slug": "associacao-do-bairro",
+      "title": {
+        "de": "Die Gruppe in der Nähe",
+        "en": "The nearby group"
+      },
+      "situation": {
+        "de": "Du vergleichst mit einer Mitarbeiterin des Stadtteilzentrums Angebote verschiedener Vereine.",
+        "en": "You compare activities from different associations with a neighborhood center staff member."
+      },
+      "pedagogicalGoal": "Com que für eine Zusammenarbeit verwenden und em que bei der Wahl eines passenden Veranstaltungsorts wiederholen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qual dessas associações oferece atividades para os moradores?",
+          "baseText": {
+            "de": "Welcher dieser Vereine bietet Aktivitäten für die Bewohner an?",
+            "en": "Which of these associations offers activities for residents?"
+          }
+        },
+        {
+          "targetText": "A associação com que colaboro oferece oficinas para os moradores do bairro.",
+          "baseText": {
+            "de": "Der Verein, mit dem ich zusammenarbeite, bietet Workshops für die Menschen im Viertel an.",
+            "en": "The association I work with offers workshops for neighborhood residents."
+          }
+        },
+        {
+          "targetText": "Esse grupo também ensina à noite na sede perto da estação, além das aulas de manhã aqui.",
+          "baseText": {
+            "de": "Diese Gruppe unterrichtet zusätzlich zu den Vormittagskursen hier auch abends im Vereinsgebäude am Bahnhof.",
+            "en": "Besides the morning classes here, that group also teaches in the evening at the branch near the station."
+          }
+        },
+        {
+          "targetText": "Eu escolho a sede em que esse grupo ensina à noite.",
+          "baseText": {
+            "de": "Ich wähle den Standort, an dem diese Gruppe abends unterrichtet.",
+            "en": "I'll choose the branch where that group teaches in the evening."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A associação com que colaboro",
+        "rule": {
+          "de": "Colaborar com behält com vor que; für den Ort einer Tätigkeit verwendest du dagegen em que.",
+          "en": "Colaborar com keeps com before que; use em que instead for the place where an activity happens."
+        },
+        "examples": [
+          {
+            "targetText": "A associação com que colaboro oferece oficinas para os moradores do bairro.",
+            "baseText": {
+              "de": "Der Verein, mit dem ich zusammenarbeite, bietet Workshops für die Menschen im Viertel an.",
+              "en": "The association I work with offers workshops for neighborhood residents."
+            },
+            "highlight": "A associação com que colaboro"
+          },
+          {
+            "targetText": "O grupo com que trabalho organiza as oficinas do bairro.",
+            "baseText": {
+              "de": "Die Gruppe, mit der ich zusammenarbeite, organisiert die Workshops im Viertel.",
+              "en": "The group I work with organizes the neighborhood workshops."
+            },
+            "highlight": "O grupo com que trabalho"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "escolho",
+          "cue": "escolher (eu)",
+          "choices": [
+            "escolhemos",
+            "escolhe",
+            "escolhem",
+            "escolho"
+          ]
+        },
+        " a sede ",
+        {
+          "kind": "choice",
+          "answer": "em que",
+          "choices": [
+            "a quem",
+            "de que",
+            "em que",
+            "com quem"
+          ]
+        },
+        " esse grupo ensina à noite."
+      ],
+      "chunks": [
+        {
+          "targetText": "A associação",
+          "baseText": {
+            "de": "Der Verein",
+            "en": "The association"
+          }
+        },
+        {
+          "targetText": "com que colaboro",
+          "baseText": {
+            "de": "mit dem ich zusammenarbeite",
+            "en": "that I work with"
+          }
+        },
+        {
+          "targetText": "oferece oficinas",
+          "baseText": {
+            "de": "bietet Workshops an",
+            "en": "offers workshops"
+          }
+        },
+        {
+          "targetText": "para os moradores do bairro.",
+          "baseText": {
+            "de": "für die Menschen im Viertel.",
+            "en": "for neighborhood residents."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "associação",
+          "baseText": {
+            "de": "Verein; Vereinigung",
+            "en": "association"
+          }
+        },
+        {
+          "targetText": "colaboro",
+          "baseText": {
+            "de": "ich arbeite zusammen",
+            "en": "I collaborate"
+          }
+        },
+        {
+          "targetText": "oficinas",
+          "baseText": {
+            "de": "Workshops",
+            "en": "workshops"
+          }
+        },
+        {
+          "targetText": "moradores",
+          "baseText": {
+            "de": "Bewohnerinnen und Bewohner",
+            "en": "residents"
+          }
+        },
+        {
+          "targetText": "sede",
+          "baseText": {
+            "de": "Vereinsgebäude; Standort",
+            "en": "association premises; branch"
+          }
+        },
+        {
+          "targetText": "ensina",
+          "baseText": {
+            "de": "unterrichtet",
+            "en": "teaches"
+          }
+        },
+        {
+          "targetText": "à noite",
+          "baseText": {
+            "de": "abends",
+            "en": "in the evening"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A associação com que colaboro ",
+        "answer": "oferece",
+        "after": " oficinas para os moradores do bairro.",
+        "fallbackChoices": [
+          "ofereço",
+          "oferece",
+          "oferecemos",
+          "oferecem"
+        ]
+      },
+      "speakRequired": [
+        "associação",
+        "oficinas",
+        "moradores"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin schaut auf die Angebote: “Qual dessas associações oferece atividades para os moradores?”",
+        "en": "The staff member looks at the activities: “Qual dessas associações oferece atividades para os moradores?”"
+      },
+      "trophyWord": {
+        "word": "associação",
+        "meaning": {
+          "de": "Verein; Vereinigung",
+          "en": "association"
+        },
+        "example": "A associação com que colaboro oferece oficinas para os moradores do bairro.",
+        "whyThisWord": {
+          "de": "Associação benennt eine organisierte Gemeinschaft; mit com que kannst du deine Zusammenarbeit mit ihr erläutern.",
+          "en": "Associação names an organized community group; com que lets you explain your collaboration with it."
+        }
+      },
+      "distractors": [
+        "oferece passeios",
+        "para os visitantes da cidade."
+      ],
+      "placeholderCaption": {
+        "de": "Vereinsangebote im Stadtteilzentrum vergleichen.",
+        "en": "Comparing association activities at a neighborhood center."
+      },
+      "songMood": "warm community connection",
+      "visualNotes": "Community center information desk with activity flyers; hide branch schedules until the third turn."
+    }
+  ]
+}

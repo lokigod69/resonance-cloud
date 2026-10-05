@@ -1,0 +1,830 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "Spanish",
+  "code": "es-ES",
+  "level": "B2",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": {
+    "registers": [
+      "usted",
+      "tú"
+    ],
+    "rule": "usted with letting agent, manager, service desk, shop owner, mentor, committee, accountant, expert, official; tú with colleague, friend, neighbor, newcomer, skeptic friend",
+    "stability": "registerPlan.mode constant in all 20 lessons; registers array repeats one value; no relay in P1/P2 (shiftAtTurn absent)",
+    "mechanical": "usted lesson you turns: tú/te/ti/contigo as address → error; tu/tus/vosotros/os → warning (may refer to a third-party group, reviewer confirms); tú lesson you turns: usted/ustedes as address → error; le/su/sus are never flagged (object clitic or 3rd person is normal Spanish); register of clitics and of every them turn is semantic review, not detection",
+    "native": "usted lessons keep Spanish directness: no over-stacked courtesy; one condicional de cortesía per turn at most; them turns may use usted or tú symmetrically"
+  },
+  "genderSafety": {
+    "policy": "speakerGender neutral in all 20 lessons; canonicalGender and alternates absent",
+    "rewrites": "forbid speaker-agreeing participles/adjectives in you turns: encantado/a, seguro/a, convencido/a, dispuesto/a, cansado/a, consciente ok (invariable); use me parece, tengo claro que, estoy de acuerdo, me inclino por, lo tengo decidido, me consta",
+    "objectAgreement": "adjectives agreeing with a non-speaker noun are allowed (la opción más rentable, el piso céntrico)",
+    "detector": "warning on /\\b(encantad|segur|convencid|dispuest|content|cansad|preparad|decidid)[oa]s?\\b/ inside you turns; manual confirm it is not speaker-referential"
+  },
+  "orthography": {
+    "inverted": "¿ and ¡ paired in every canonical interrogative/exclamative clause; them challenge ending with ? must open with ¿",
+    "accents": "accents canonical and mandatory in targetText, chunks, blanks, trophies; accent-stripped learner forms are accepted only where the author lists them explicitly in acceptedAnswers (no automatic stripping exists yet); nothing is written back",
+    "lexis": "es-ES: coche, ordenador, piso, móvil ok, billete, cercanías, ayuntamiento, nómina; banned: carro, computadora, celular, departamento (flat), boleto, manejar (drive), vos/ustedes-as-informal",
+    "digits": "no digits in voiced text: doscientos euros, cuarenta minutos, dos mil veinte",
+    "typography": "straight quotes avoided in dialogue; «» allowed only inside sceneCaption; no ellipsis in canonical turns (TTS pauses)"
+  },
+  "segmentation": {
+    "unit": "token = maximal run of letters/digits with internal apostrophes or hyphens; joiner single space",
+    "chunkRule": "chunks 1–4 tokens, punctuation attached (\"opción,\"), clitics never split from verb (\"se lo explico\" stays together), negation stays with verb (\"no compensa\"), ¿/¡ attach to first chunk of the clause, two-part connectors por un lado / por otro lado each a whole chunk",
+    "frame": "framePrefix carries trailing space, frameSuffix carries leading space; reconstruction NFC(prefix+chunks.join(' ')+suffix)===dialogue[1].targetText",
+    "orderUniqueness": "build chunks must admit exactly one grammatical order given the frame; never rely on a comma or capital to force order; add a lexical anchor (preposition inside chunk, agreement, clause-final period chunk) when two orders are plausible"
+  },
+  "acceptedInput": {
+    "normalization": "NFC, trim, collapse spaces, locale lowercase (es), strip terminal . ? !; planned, not implemented: strip leading ¿ ¡ as a per-language rule",
+    "variants": "no automatic variants exist: the author lists every accepted form explicitly in acceptedAnswers (accent-stripped forms, quizá/quizás, lo/le only where both are native in that slot); nothing is auto-added",
+    "blanks": "acceptedAnswers include answer plus listed synonyms only when still grammatical and register-correct in that slot (por otro lado / por otra parte); choices-blanks exactly one accepted after normalization",
+    "implementationStatus": "planned contract for a future reviewed Spanish gate; no current runtime accepts this B2; the gate later checks structure (counts, boundaries, reconstruction, explicit lists) while grammatical order, chunk plausibility and choice correctness remain semantic review"
+  },
+  "carriersStaged": {
+    "P1": {
+      "L1-3": {
+        "productive": [
+          "por un lado … por otro lado",
+          "mientras que",
+          "tanto … como",
+          "superlativo relativo (la opción más … de las dos)",
+          "es cierto que …, pero",
+          "cuanto más …, menos/más",
+          "en definitiva"
+        ],
+        "recognitionOnly": [
+          "ya que",
+          "puesto que (them turns)"
+        ]
+      },
+      "L4-6": {
+        "productive": [
+          "aunque + indicativo",
+          "aunque + subjuntivo",
+          "a pesar de que",
+          "sin embargo",
+          "no es que + subj, sino que",
+          "a largo plazo / a corto plazo",
+          "lo que podríamos hacer es (first taught L5)"
+        ],
+        "recognitionOnly": [
+          "si hubiera …, habría (them)"
+        ]
+      },
+      "L7-10": {
+        "productive": [
+          "en primer lugar, además, por último",
+          "en parte tiene(s) razón, pero",
+          "déjeme/déjame terminar",
+          "me gustaría que + subj",
+          "condicional de cortesía (recomendaría, optaría)",
+          "lo que podríamos hacer es (recycled from L5)"
+        ],
+        "recognitionOnly": [
+          "en caso de que (them)"
+        ]
+      }
+    },
+    "P2": {
+      "L1-3": {
+        "productive": [
+          "debido a + noun",
+          "ya que / puesto que",
+          "de modo que",
+          "pasiva refleja (se aplicó, se cobra)",
+          "impersonal se (se separa, se lleva)",
+          "perífrasis: acabar + gerundio, ir + gerundio, volver a + inf",
+          "en resumen (closing frame, first taught L1)"
+        ],
+        "recognitionOnly": [
+          "mientras que (P1)",
+          "aunque + ind (P1)"
+        ]
+      },
+      "L4-6": {
+        "productive": [
+          "se trata de",
+          "lo que quiero decir es que",
+          "relativos con preposición (en la que, con quien, por el que)",
+          "en cuanto a",
+          "es decir / o sea (clarify)"
+        ],
+        "recognitionOnly": [
+          "estilo indirecto (them)"
+        ]
+      },
+      "L7-10": {
+        "productive": [
+          "si hubiera …, habría",
+          "futuro de probabilidad (tardará, serán)",
+          "en caso de que + subj",
+          "estilo indirecto con cambio temporal (me dijeron que se había aprobado)",
+          "en resumidas cuentas (variant of en resumen, taught L1)"
+        ],
+        "recognitionOnly": [
+          "aunque + subj (P1 L6)"
+        ]
+      }
+    }
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": {
+        "de": "Optionen abwägen",
+        "en": "Weighing options"
+      },
+      "function": {
+        "de": "Vor- und Nachteile von zwei oder drei Optionen vergleichen und eine begründet empfehlen",
+        "en": "Compare two or three options and give a qualified recommendation"
+      },
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "registerPolicy": "constant per lesson; usted L1,L3,L4,L6,L8,L10; tú L2,L5,L7,L9",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "por un lado/por otro, mientras que, tanto…como, superlativo relativo, es cierto que…pero, cuanto más…, en definitiva",
+          "recognitionOnly": "ya que, puesto que in them turns"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "aunque+ind/subj, a pesar de que, sin embargo, no es que+subj sino que, a largo/corto plazo, lo que podríamos hacer es (first taught L5)",
+          "recognitionOnly": "si hubiera…habría in them turns"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "en primer lugar/además/por último, en parte tiene razón pero, déjeme terminar, me gustaría que+subj, condicional de cortesía, lo que podríamos hacer es (recycled from L5)",
+          "recognitionOnly": "en caso de que in them turns"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "piso-centrico-o-trayecto-largo",
+          "scene": "Viewing a pricier flat in the centre; the agent compares it with a cheaper one on the outskirts with a fifty-minute train commute",
+          "interlocutor": "letting agent (agente inmobiliario)",
+          "register": "usted",
+          "openingMove": "compare — por un lado el piso céntrico sale más caro, por otro lado me ahorro casi dos horas de trayecto al día",
+          "challenge": "objection with figure: ¿De verdad le compensa pagar doscientos euros más al mes por ese trayecto?",
+          "answerMove": "concede — es cierto que la diferencia es grande, pero cuanto más tiempo paso en el cercanías, menos energía me queda por la tarde",
+          "steer": "bottom line: ¿se queda con el céntrico o seguimos buscando?",
+          "closingMove": "conclude — en definitiva, el tiempo pesa más que el dinero, así que me quedo con el piso del centro",
+          "trophyLemma": "trayecto",
+          "trophySurface": "trayecto",
+          "trophyFamilyKey": "trayecto",
+          "pos": "noun",
+          "requiredCarrier": "por un lado … por otro lado; es cierto que …, pero; en definitiva",
+          "recycles": "B1: alquiler, barrio, cerca/lejos, tarda (as vocabulary, not trophies)"
+        },
+        {
+          "number": 2,
+          "slug": "coche-o-cercanias-al-trabajo",
+          "scene": "A colleague drives to the office and cannot see why you take the train",
+          "interlocutor": "colleague (compañero de trabajo)",
+          "register": "tú",
+          "openingMove": "compare — en coche tardo media hora, mientras que en tren tardo cuarenta minutos pero puedo leer y no busco aparcamiento",
+          "challenge": "counter-example: Pues mi primo va en coche todos los días y tarda la mitad que tú, ¿cómo lo explicas?",
+          "answerMove": "rebut — tu primo seguramente sale a las seis, pero a las ocho tanto la autovía como el centro están colapsados",
+          "steer": "edge case: y los días de lluvia o cuando sales tarde, ¿también tren?",
+          "closingMove": "propose — lo razonable es combinar: tren a diario y coche solo cuando salga tarde",
+          "trophyLemma": "mientras",
+          "trophySurface": "mientras",
+          "trophyFamilyKey": "mientras",
+          "pos": "connector",
+          "requiredCarrier": "mientras que; tanto … como (no futuro de probabilidad in you turns: that carrier stays recognition-only until P2 L7-10)",
+          "recycles": "P1 L1: por un lado/por otro recycled in recall; B1: tráfico, transporte, temprano as vocabulary"
+        },
+        {
+          "number": 3,
+          "slug": "teletrabajo-o-presencial",
+          "scene": "Your manager asks you to choose between full remote work and three days on site before the new contract is drafted",
+          "interlocutor": "manager (jefa de equipo)",
+          "register": "usted",
+          "openingMove": "position — me inclino por el teletrabajo porque es la opción más eficaz de las dos para el trabajo de concentración",
+          "challenge": "objection: Pero el equipo pierde cohesión cuando no coinciden en la oficina, ¿eso no cuenta?",
+          "answerMove": "concede — es cierto que la cohesión se resiente, pero la flexibilidad me permite rendir en mis mejores horas de concentración",
+          "steer": "final condition: le ofrezco teletrabajo con dos días presenciales fijos; ¿lo acepta así?",
+          "closingMove": "conclude — con dos días fijos me parece la fórmula más equilibrada, así que la acepto",
+          "trophyLemma": "flexibilidad",
+          "trophySurface": "flexibilidad",
+          "trophyFamilyKey": "flexibilidad",
+          "pos": "noun",
+          "requiredCarrier": "superlativo relativo (la opción más … de las dos); es cierto que …, pero; me inclino por (no relativo con preposición in you turns: first taught P2 L4)",
+          "recycles": "P1 L1 es cierto que…pero; B1: horario, oficina, equilibrio as vocabulary (equilibrado is a forbidden-family word: allowed as text, never as trophy or blank)"
+        },
+        {
+          "number": 4,
+          "slug": "comprar-o-alquilar-la-maquina",
+          "scene": "At a service desk deciding whether your small business buys a professional coffee machine or rents it with maintenance included",
+          "interlocutor": "service advisor (asesora comercial)",
+          "register": "usted",
+          "openingMove": "compare — aunque alquilar sale más barato al principio, a largo plazo la compra es una inversión que se amortiza",
+          "challenge": "constraint: ¿Y si la máquina se queda obsoleta en dos años? Entonces la inversión no vale nada.",
+          "answerMove": "rebut — no es que la máquina caduque en dos años, sino que las piezas de desgaste se cambian y el cuerpo dura una década",
+          "steer": "final condition: solo garantizamos mantenimiento en las máquinas alquiladas, no en las compradas",
+          "closingMove": "counteroffer — entonces propongo alquilar un año con opción de compra y mantenimiento incluido ese año",
+          "trophyLemma": "inversión",
+          "trophySurface": "inversión",
+          "trophyFamilyKey": "inversión",
+          "pos": "noun",
+          "requiredCarrier": "aunque + indicativo; no es que + subj, sino que; a largo plazo",
+          "recycles": "P1 L2 tanto…como in cloze distractor pool; B1: mantenimiento, garantía, pieza as vocabulary"
+        },
+        {
+          "number": 5,
+          "slug": "dos-planes-de-vacaciones",
+          "scene": "A friend wants a beach week in a resort; you prefer a hiking route through villages in Asturias",
+          "interlocutor": "friend (amiga)",
+          "register": "tú",
+          "openingMove": "position — he sopesado los dos planes y me quedo con la ruta, porque desconectar de verdad solo se consigue andando",
+          "challenge": "objection: Pero la ruta sale casi el doble y encima llueve la mitad de los días.",
+          "answerMove": "concede — a pesar de que el presupuesto se dispara, cada noche dormimos en un sitio nuevo y eso ningún hotel lo da",
+          "steer": "audience change: y si se viene tu hermana, que no puede andar tanto, ¿qué hacemos?",
+          "closingMove": "propose — lo que podríamos hacer es tres días de ruta corta y cuatro de playa en el mismo pueblo",
+          "trophyLemma": "sopesar",
+          "trophySurface": "sopesado",
+          "trophyFamilyKey": "sopesar",
+          "pos": "verb",
+          "requiredCarrier": "a pesar de que; lo que podríamos hacer es (first productive teaching here, staged P1 L4-6, recycled from L7)",
+          "recycles": "P1 L4 aunque in pattern example 2; B1: presupuesto, pueblo, lloviendo as vocabulary"
+        },
+        {
+          "number": 6,
+          "slug": "efectivo-o-pago-con-el-movil",
+          "scene": "A small shop owner wants to stop accepting card and app payments because of fees; you argue for keeping them",
+          "interlocutor": "shop owner (dueño de la tienda)",
+          "register": "usted",
+          "openingMove": "compare — aunque le cobren una comisión por cada pago, el cliente que no lleva efectivo se va sin comprar",
+          "challenge": "objection: Esa comisión se come el margen de los productos pequeños, ¿sabe cuánto me cuesta al año?",
+          "answerMove": "rebut — sin embargo, lo que pierde en comisiones lo recupera en ventas que de otro modo no haría",
+          "steer": "edge case: mis clientes mayores pagan en efectivo y no quieren aprender nada nuevo",
+          "closingMove": "conclude — en definitiva, mantenga ambos: efectivo para quien lo prefiera y app para el resto",
+          "trophyLemma": "comisión",
+          "trophySurface": "comisión",
+          "trophyFamilyKey": "comisión",
+          "pos": "noun",
+          "requiredCarrier": "aunque + subjuntivo (conceded-irrelevant known fact: the fee is real, the subjunctive marks it as not decisive, not as hypothetical); sin embargo",
+          "recycles": "P1 L1 en definitiva; P1 L4 a largo plazo; B1: tarjeta, cuenta, cliente as vocabulary"
+        },
+        {
+          "number": 7,
+          "slug": "clase-presencial-o-aplicacion",
+          "scene": "A friend learned Italian with an app alone and tells you to drop your evening class",
+          "interlocutor": "friend (amigo)",
+          "register": "tú",
+          "openingMove": "compare — en primer lugar la clase me obliga a hablar, además el profesor corrige lo que la aplicación deja pasar",
+          "challenge": "counter-example: Yo aprendí solo con la aplicación y me entiendo con cualquiera, ¿para qué pagar?",
+          "answerMove": "concede — en parte tienes razón, pero tú tienes una constancia que yo no tengo sin un horario fijo",
+          "steer": "bottom line: con cien euros al mes, ¿clase o aplicación?",
+          "closingMove": "conclude — por último, con ese dinero me quedo con la clase y uso la aplicación gratis de apoyo",
+          "trophyLemma": "constancia",
+          "trophySurface": "constancia",
+          "trophyFamilyKey": "constancia",
+          "pos": "noun",
+          "requiredCarrier": "en primer lugar / además / por último; en parte tienes razón, pero",
+          "recycles": "P1 L3 superlativo relativo in pattern example; B1: aprendizaje, horario, gratis as vocabulary"
+        },
+        {
+          "number": 8,
+          "slug": "dos-ofertas-de-trabajo",
+          "scene": "A mentor helps you choose between a well-paid fixed-term post in a start-up and a lower-paid permanent post in a public body",
+          "interlocutor": "mentor (mentora)",
+          "register": "usted",
+          "openingMove": "reason — me atrae la primera oferta porque el sueldo es mayor y el proyecto crece, aunque el contrato es temporal",
+          "challenge": "objection: El sueldo no lo es todo. ¿Ha pensado en la incertidumbre de un contrato que termina en un año?",
+          "answerMove": "compare — la primera supone incertidumbre pero aprendo más, mientras que la segunda me da seguridad y menos recorrido",
+          "steer": "summary demand: resúmamelo en una frase, como se lo diría a su familia",
+          "closingMove": "summarize — me gustaría que fuera una decisión fácil, pero no lo es: ahora elijo aprender y asumo la incertidumbre",
+          "trophyLemma": "incertidumbre",
+          "trophySurface": "incertidumbre",
+          "trophyFamilyKey": "incertidumbre",
+          "pos": "noun",
+          "requiredCarrier": "me gustaría que + subj; mientras que (recycled from L2); aunque + indicativo (recycled from L4); no si tuviera and no condicional de cortesía here (condicional is produced in L9 propondría and L10 recomendaría)",
+          "recycles": "P1 L2 mientras que; P1 L4 aunque + indicativo; B1: compromiso, plazo as vocabulary"
+        },
+        {
+          "number": 9,
+          "slug": "mudarse-o-quedarse-en-el-barrio",
+          "scene": "A neighbor hears you may move to Valencia for work and argues you should stay",
+          "interlocutor": "neighbor (vecino)",
+          "register": "tú",
+          "openingMove": "compare — por un lado en Valencia el alquiler es más bajo y el trabajo mejor, por otro lado aquí tengo mi entorno de siempre",
+          "challenge": "objection, interrupting: Pero tus amigos, tu familia, todo está aquí, ¿de verdad vas a tirar eso?",
+          "answerMove": "rebut — déjame terminar: no es que no valore el entorno, sino que un entorno también se construye en dos años",
+          "steer": "audience change: ¿y qué le dirías a tu pareja, que no quiere irse?",
+          "closingMove": "propose — le propondría probar un año con el piso de aquí alquilado, y si no funciona volvemos",
+          "trophyLemma": "entorno",
+          "trophySurface": "entorno",
+          "trophyFamilyKey": "entorno",
+          "pos": "noun",
+          "requiredCarrier": "déjame terminar; no es que + subj, sino que (recycled productive); condicional propondría",
+          "recycles": "P1 L1 por un lado/por otro; P1 L4 no es que…sino que; B1: alquilar, familia, volver as vocabulary"
+        },
+        {
+          "number": 10,
+          "slug": "recomendar-una-medida-a-la-comision",
+          "scene": "A residents' committee must pick one of three measures against noise: closing the square at night, more patrols, or rubber paving",
+          "interlocutor": "committee chair (presidenta de la comisión)",
+          "register": "usted",
+          "openingMove": "compare — en primer lugar el cierre es barato pero genera conflicto, en segundo lugar las patrullas cuestan, por último el pavimento es caro pero duradero",
+          "challenge": "constraint: La tercera opción no entra en el presupuesto de este año. ¿Qué nos queda?",
+          "answerMove": "concede — es cierto que el pavimento no es viable este año, pero las patrullas solas no resuelven el origen del ruido",
+          "steer": "final condition: la medida tiene que ser reversible si los vecinos protestan",
+          "closingMove": "conclude — en definitiva, recomendaría el cierre nocturno a prueba durante tres meses, porque es viable y reversible",
+          "trophyLemma": "viable",
+          "trophySurface": "viable",
+          "trophyFamilyKey": "viable",
+          "pos": "adjective",
+          "requiredCarrier": "en primer lugar / en segundo lugar / por último; condicional de cortesía recomendaría; en definitiva",
+          "recycles": "P1 L1 es cierto que…pero; P1 L7 ordering frames; B1: ruido, medida (not in forbidden list but kept as plain vocabulary), vecinos"
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": {
+        "de": "Erklären, wie und warum",
+        "en": "Explaining how and why"
+      },
+      "function": {
+        "de": "Ursachen, Folgen oder einen Ablauf ausführlich erklären und unter Nachfragen präzisieren",
+        "en": "Explain causes, consequences or a process in detail and hold the explanation under requests for precision"
+      },
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "registerPolicy": "constant per lesson; usted L1,L3,L8,L10; tú L2,L4,L5,L6,L7,L9",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "debido a, ya que/puesto que, de modo que, pasiva refleja, impersonal se, perífrasis acabar/ir + gerundio, en resumen (closing frame, first taught L1)",
+          "recognitionOnly": "mientras que, aunque + ind (from P1)"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "se trata de, lo que quiero decir es que, relativos con preposición, en cuanto a, es decir/o sea",
+          "recognitionOnly": "estilo indirecto in them turns"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "si hubiera…habría, futuro de probabilidad, en caso de que, estilo indirecto con cambio temporal, en resumidas cuentas (variant of en resumen, taught L1)",
+          "recognitionOnly": "aunque + subj (P1 L6)"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "por-que-la-factura-no-cuadra",
+          "scene": "The accountant of your small firm asks why the electricity invoice is a third higher than last quarter before she books it",
+          "interlocutor": "accountant (contable)",
+          "register": "usted",
+          "openingMove": "explain — la factura ha subido debido a dos cosas: se aplicó la tarifa nueva en marzo y el consumo subió con la calefacción",
+          "challenge": "precision request: ¿Qué partida exactamente ha subido, la potencia contratada o la energía consumida?",
+          "answerMove": "clarify — la potencia no se ha tocado; lo que sube es la energía, de modo que el desglose muestra el doble de kilovatios de noche",
+          "steer": "audience/summary: resúmamelo en una línea para la nota que va al gerente",
+          "closingMove": "summarize — en resumen, misma potencia, nueva tarifa y más consumo nocturno, por eso la factura sube un tercio",
+          "trophyLemma": "desglose",
+          "trophySurface": "desglose",
+          "trophyFamilyKey": "desglosar",
+          "pos": "noun",
+          "requiredCarrier": "debido a; pasiva refleja se aplicó; de modo que; en resumen (introduced here as closing frame)",
+          "recycles": "B1: factura, consumo, tarifa as vocabulary; P1 L1 en definitiva accepted as alternative closing in synthesis acceptedAnswers"
+        },
+        {
+          "number": 2,
+          "slug": "como-se-recicla-en-el-barrio",
+          "scene": "A newcomer in your building asks you how the five bins and the clean point work; both of you read from the fictional district leaflet (folleto del ayuntamiento) pinned in the hallway",
+          "interlocutor": "newcomer neighbor (vecina nueva)",
+          "register": "tú",
+          "openingMove": "explain — según el folleto del portal, aquí se separa en casa y se deposita en el contenedor de su color: amarillo para envases, azul para papel, marrón para orgánico",
+          "challenge": "precision request: Vale, ¿y el aceite usado y las pilas dónde van? No veo contenedor para eso.",
+          "answerMove": "clarify — el aceite se lleva en una botella cerrada al punto limpio, ya que en el contenedor contamina el resto; las pilas, al cubo pequeño que el folleto sitúa en el supermercado",
+          "steer": "edge case: ¿y si tiro una lavadora vieja? En el folleto pone algo de llamar a un número, ¿la bajo a la calle o no?",
+          "closingMove": "propose — llama al número del folleto y pide día de recogida de enseres, de modo que no la bajes a la calle hasta que te lo confirmen",
+          "trophyLemma": "contenedor",
+          "trophySurface": "contenedor",
+          "trophyFamilyKey": "contenedor",
+          "pos": "noun",
+          "requiredCarrier": "impersonal se (se separa, se deposita, se lleva); ya que; de modo que",
+          "recycles": "P2 L1 de modo que; B1: envase, botella, tienda, calle as vocabulary"
+        },
+        {
+          "number": 3,
+          "slug": "por-que-se-alargo-el-proyecto",
+          "scene": "Your manager wants to know why the website launch slipped by five weeks before he reports to the client",
+          "interlocutor": "manager (director de proyecto)",
+          "register": "usted",
+          "openingMove": "reason — el proyecto se alargó puesto que el proveedor entregó las fotos tarde, de modo que el diseño empezó con tres semanas de retraso",
+          "challenge": "precision/objection: Pero el proveedor avisó con tiempo, ¿no? Entonces el retraso no fue solo suyo.",
+          "answerMove": "explain — avisó, sí, pero el imprevisto fue que las fotos llegaron en otro formato y acabamos rehaciendo la mitad de las páginas",
+          "steer": "bottom line: ¿qué fecha le doy al cliente y qué le digo de las causas?",
+          "closingMove": "conclude — dele el quince de mayo y explique el imprevisto del formato; para que no vuelva a pasar, el próximo encargo fija el formato por escrito",
+          "trophyLemma": "imprevisto",
+          "trophySurface": "imprevisto",
+          "trophyFamilyKey": "imprevisto",
+          "pos": "noun",
+          "requiredCarrier": "puesto que / ya que; de modo que; perífrasis acabar + gerundio; volver a + inf",
+          "recycles": "P2 L1 debido a in pattern example; B1: retraso, entrega, proveedor as vocabulary (proveedor becomes trophy only in L5)"
+        },
+        {
+          "number": 4,
+          "slug": "como-funciona-el-programa-de-puntos",
+          "scene": "A friend sees you scan a card at the supermarket and asks how the points scheme works and whether it is a trap",
+          "interlocutor": "friend (amigo)",
+          "register": "tú",
+          "openingMove": "explain — se trata de acumular puntos con cada compra y canjearlos por descuentos; lo que quiero decir es que pagas igual pero te devuelven una parte",
+          "challenge": "precision/counter: O sea, que te regalan cosas gratis, ¿seguro que no hay letra pequeña?",
+          "answerMove": "clarify — gratis no: la tienda en la que compras se queda con tus datos de consumo, con los que decide qué ofertas enviarte",
+          "steer": "audience change: explícaselo a mi abuela, que no entiende de datos",
+          "closingMove": "summarize — en resumen: compras, sumas puntos, los cambias por descuento, y la tienda aprende qué compras; nada más",
+          "trophyLemma": "canjear",
+          "trophySurface": "canjearlos",
+          "trophyFamilyKey": "canjear",
+          "pos": "verb",
+          "requiredCarrier": "se trata de; lo que quiero decir es que; relativos con preposición (en la que, con los que)",
+          "recycles": "P2 L1 en resumen; B1: tarjeta, descuento, tienda as vocabulary"
+        },
+        {
+          "number": 5,
+          "slug": "por-que-cambie-de-compania",
+          "scene": "A neighbor pays too much for internet and asks why you switched provider last year",
+          "interlocutor": "neighbor (vecino)",
+          "register": "tú",
+          "openingMove": "reason — cambié porque el proveedor anterior subió la cuota dos veces en un año sin avisar, de modo que dejé de confiar en ellos",
+          "challenge": "objection/generalization: A mí me dijeron que son todos iguales y que cambiar no sirve de nada.",
+          "answerMove": "compare — en cuanto al precio son parecidos, mientras que en atención al cliente la diferencia es enorme: ahora me cogen el teléfono",
+          "steer": "edge case: ¿y la permanencia? Mi contrato dice que hasta el año que viene me cobran penalización si me voy.",
+          "closingMove": "conclude — lo que quiero decir es que, si tu contrato lo dice así, esperes al final de la permanencia y cambies entonces; antes no te sale a cuenta",
+          "trophyLemma": "proveedor",
+          "trophySurface": "proveedor",
+          "trophyFamilyKey": "proveer",
+          "pos": "noun",
+          "requiredCarrier": "en cuanto a; lo que quiero decir es que; estilo indirecto me dijeron que (recognition, them turn)",
+          "recycles": "P1 L2 mientras que; P2 L2 de modo que; B1: cambiar, llamar, cuenta as vocabulary"
+        },
+        {
+          "number": 6,
+          "slug": "como-recurrir-una-multa",
+          "scene": "A colleague got a parking fine she thinks is wrong; the fictional notice prints the appeal steps on the back and she asks you to read them with her and explain how they work",
+          "interlocutor": "colleague (compañera)",
+          "register": "tú",
+          "openingMove": "explain — primero se presenta un escrito de alegaciones en el plazo en el que indica la multa, y se adjunta la prueba por la que la consideras injusta",
+          "challenge": "precision request: ¿Y si ya ha pasado ese plazo? Aquí detrás pone algo de un recurso, ¿se puede recurrir igual o lo pago y punto?",
+          "answerMove": "clarify — según lo que pone ahí, pasado el plazo ya no se alega, pero sí se puede recurrir la resolución ante el ayuntamiento como indica el papel, es decir, un escalón más arriba",
+          "steer": "summary demand: dime los pasos en orden, que me lo apunto",
+          "closingMove": "summarize — en resumen, según tu multa: escrito en plazo, prueba adjunta, y si el plazo ya pasó, el recurso que indica el papel",
+          "trophyLemma": "recurrir",
+          "trophySurface": "recurrir",
+          "trophyFamilyKey": "recurrir",
+          "pos": "verb",
+          "requiredCarrier": "relativos con preposición (en el que, por la que); pasiva refleja se presenta/se adjunta; es decir",
+          "recycles": "P2 L4 relativos con preposición; P2 L1 en resumen; B1: plazo, documento, justificante as vocabulary"
+        },
+        {
+          "number": 7,
+          "slug": "por-que-fracaso-el-plan",
+          "scene": "A friend asks why your shared plan to open a weekend market stall never took off",
+          "interlocutor": "friend (amiga)",
+          "register": "tú",
+          "openingMove": "explain — fracasó porque el permiso del ayuntamiento llegó tarde y la temporada ya había pasado, lo que conllevaba vender en invierno sin público",
+          "challenge": "counter-example: Pues a Marta le salió bien con el mismo permiso, ¿entonces el problema no era el permiso?",
+          "answerMove": "clarify — si hubiéramos pedido el permiso en enero, como Marta, habríamos abierto en mayo; lo pedimos en abril",
+          "steer": "lesson learned: ¿y qué harías distinto si lo volvieras a intentar?",
+          "closingMove": "conclude — en resumen, el error fue el calendario; la próxima vez pido el permiso con seis meses y reservo el puesto antes",
+          "trophyLemma": "conllevar",
+          "trophySurface": "conllevaba",
+          "trophyFamilyKey": "conllevar",
+          "pos": "verb",
+          "requiredCarrier": "si hubiéramos …, habríamos; lo que + verb (relative lo que conllevaba)",
+          "recycles": "P2 L3 puesto que/porque chain; P2 L5 en cuanto a in distractor pool; B1: permiso, error as vocabulary"
+        },
+        {
+          "number": 8,
+          "slug": "como-pedir-cita-con-el-especialista",
+          "scene": "A health-centre administrator explains referral steps; you restate the process to check you understood before helping an elderly relative",
+          "interlocutor": "health-centre expert (administrativa del centro de salud)",
+          "register": "usted",
+          "openingMove": "explain — si lo he entendido, primero el médico de cabecera emite la derivación, luego se recibe un mensaje con la fecha y en caso de que no llegue se llama al centro",
+          "challenge": "precision request: ¿Y si la derivación tarda más de un mes? ¿Quién la reclama, usted o el paciente?",
+          "answerMove": "clarify — la reclama el paciente o un familiar con el número de la derivación; según me dice, tardará alrededor de un mes por la lista de este centro, pero se puede consultar en línea",
+          "steer": "audience change: mi tía no tiene internet ni móvil con datos",
+          "closingMove": "propose — entonces propongo que lo consultemos aquí en mostrador con su tarjeta sanitaria, y que la llamen al fijo si cambia la fecha",
+          "trophyLemma": "derivación",
+          "trophySurface": "derivación",
+          "trophyFamilyKey": "derivar",
+          "pos": "noun",
+          "requiredCarrier": "en caso de que + subj; futuro de probabilidad tardará; propongo que + subj",
+          "recycles": "P2 L2 impersonal se; P2 L6 pasiva refleja; B1: cita, médico, tarjeta as vocabulary"
+        },
+        {
+          "number": 9,
+          "slug": "por-que-importa-el-sistema-de-bicis",
+          "scene": "A skeptical friend says the public bike scheme is a waste of money; you explain why it matters",
+          "interlocutor": "skeptical friend (amigo escéptico)",
+          "register": "tú",
+          "openingMove": "reason — importa porque cada bici sustituye trayectos en coche, de modo que baja el tráfico, y eso a su vez fomenta que más gente se anime",
+          "challenge": "objection: Pero yo veo las estaciones llenas de bicis sin tocar; si nadie las usa, serán un gasto de puro lujo.",
+          "answerMove": "compare — en cuanto al uso, aquí el primer año fue bajo, mientras que ahora, según el informe municipal de este año, se hacen miles de viajes diarios en el centro",
+          "steer": "bottom line: ¿pagarías tú una tasa municipal más alta para mantenerlo?",
+          "closingMove": "conclude — en resumen sí, aunque suba la tasa, porque fomenta un cambio que a largo plazo nos ahorra atascos y ruido",
+          "trophyLemma": "fomentar",
+          "trophySurface": "fomenta",
+          "trophyFamilyKey": "fomentar",
+          "pos": "verb",
+          "requiredCarrier": "aunque + subj (recycled productive, conceded-irrelevant: the fee rise is accepted as not decisive); a su vez; mientras que; futuro de probabilidad serán stays in the them turn (recognition)",
+          "recycles": "P1 L6 aunque + subj; P1 L2 mientras que; P2 L5 en cuanto a; B1: tráfico, ruido, estación as vocabulary"
+        },
+        {
+          "number": 10,
+          "slug": "trazar-la-cadena-de-una-decision",
+          "scene": "A municipal official asks you to reconstruct how your association ended up installing a ramp without the final permit",
+          "interlocutor": "municipal official (funcionaria municipal)",
+          "register": "usted",
+          "openingMove": "explain — en febrero nos dijeron por teléfono que la obra se había aprobado, de modo que encargamos la rampa y la empresa empezó en marzo",
+          "challenge": "precision request: ¿Quién le dijo exactamente eso, con qué palabras y en qué fecha?",
+          "answerMove": "clarify — fue un técnico de urbanismo el doce de febrero; dijo que el expediente estaba resuelto y que el papel llegaría en dos semanas",
+          "steer": "summary for the written record: resúmame la cadena para el acta, sin interpretaciones",
+          "closingMove": "summarize — en resumen: llamada del doce de febrero, aviso oral de aprobación, encargo el veinte, obra en marzo, papel nunca recibido; ese es el criterio con el que actuamos",
+          "trophyLemma": "criterio",
+          "trophySurface": "criterio",
+          "trophyFamilyKey": "criterio",
+          "pos": "noun",
+          "requiredCarrier": "estilo indirecto con cambio temporal (nos dijeron que se había aprobado; dijo que llegaría); en resumen",
+          "recycles": "P2 L1 de modo que; P2 L6 relativos con preposición (con el que); B1: permiso, técnico, aviso as vocabulary"
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "trayecto",
+        "familyKey": "trayecto",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "mientras",
+        "familyKey": "mientras",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "flexibilidad",
+        "familyKey": "flexibilidad",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "inversión",
+        "familyKey": "inversión",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "sopesar",
+        "familyKey": "sopesar",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "comisión",
+        "familyKey": "comisión",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "constancia",
+        "familyKey": "constancia",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "incertidumbre",
+        "familyKey": "incertidumbre",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "entorno",
+        "familyKey": "entorno",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "viable",
+        "familyKey": "viable",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "desglose",
+        "familyKey": "desglosar",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "contenedor",
+        "familyKey": "contenedor",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "imprevisto",
+        "familyKey": "imprevisto",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "canjear",
+        "familyKey": "canjear",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "proveedor",
+        "familyKey": "proveer",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "recurrir",
+        "familyKey": "recurrir",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "conllevar",
+        "familyKey": "conllevar",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "derivación",
+        "familyKey": "derivar",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "fomentar",
+        "familyKey": "fomentar",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "criterio",
+        "familyKey": "criterio",
+        "pos": "noun"
+      }
+    ],
+    "forbiddenCheck": "20 lemmas and 20 familyKeys checked against the frozen A1/A2 corpus (activeCorpusSha256 c20c2f74…) plus the 100 reserved B1 trophies (b1AllocationSha256 f41a5887…): zero exact hits; zero inflectional hits (no lemma whose A1/A2/B1 surface differs only by number, gender, tense or participle); all 20 lemmas pairwise distinct; all 20 familyKeys pairwise distinct; no two trophies share a familyKey across P1 and P2; the derivational family check is lemma-based, so flexibilidad, fomentar, desglose, derivación, proveedor and criterio are confirmed clear",
+    "nearFamilyDecisions": [
+      {
+        "candidate": "desventaja / ventajoso",
+        "decision": "excluded",
+        "reason": "compound/derivation of forbidden ventaja; desventaja is used freely in dialogue text but never as trophy or blank answer"
+      },
+      {
+        "candidate": "recomendación / recomendar",
+        "decision": "excluded",
+        "reason": "recomienda is reserved B1; the P1 conclude frame uses recomendaría as text only; trophy family avoided"
+      },
+      {
+        "candidate": "conveniente / convenir / compensar",
+        "decision": "excluded",
+        "reason": "inconveniente and compensación are forbidden; convenir and compensar share the family; compensa appears only in them turns"
+      },
+      {
+        "candidate": "debido (connector)",
+        "decision": "excluded as trophy, taught as carrier",
+        "reason": "debido is a participle of deber (debo, debería forbidden); it is a P2 L1 productive connector and term, not a trophy"
+      },
+      {
+        "candidate": "retrasar / demora",
+        "decision": "retrasar excluded, demora allowed but unused",
+        "reason": "retraso forbidden blocks the whole retrasar family; demora is a different family, kept in reserve; L3 uses alargarse in text and imprevisto as trophy"
+      },
+      {
+        "candidate": "fiable / fiabilidad",
+        "decision": "excluded",
+        "reason": "confianza (forbidden) and fiable both descend from fiar; treated as one family to avoid an evasion argument"
+      },
+      {
+        "candidate": "ahorro / aconsejable / mejora / resolver / funcionamiento / tramitar / registrar / confirmar",
+        "decision": "excluded",
+        "reason": "direct derivations of forbidden ahorrar, consejo, mejor, resuelto/solución, funciona, trámite, registro, confirmación"
+      },
+      {
+        "candidate": "proyección / ascenso",
+        "decision": "excluded",
+        "reason": "proyección shares the proyectar root with forbidden proyecto; ascenso shares ascender with forbidden ascensor; L8 trophy is incertidumbre instead"
+      },
+      {
+        "candidate": "entorno vs ambiente, contenedor vs envase, trayecto vs transporte",
+        "decision": "allowed",
+        "reason": "near-synonyms from unrelated families are not evasions; they are the B2 lexical step the path teaches"
+      },
+      {
+        "candidate": "desglose → familyKey desglosar, proveedor → proveer, derivación → derivar",
+        "decision": "familyKey set to the verb base",
+        "reason": "ledger families are keyed on the derivational base so a later path cannot add desglosar, proveer or derivar as a second trophy"
+      },
+      {
+        "candidate": "mientras (trophy) vs mientras que (term)",
+        "decision": "single-token trophy, two-token term",
+        "reason": "contract rule: trophies are one token; mientras que is the term and pattern highlight in P1 L2"
+      }
+    ]
+  },
+  "mechanicalValidationRules": [
+    "turns exactly 6; speakers them,you,them,you,them,you; interlocutorId on every them turn and present in interlocutors; move and register on every you turn",
+    "token lengths (space-split tokens after NFC): them 6–20, you1 14–26, you2 12–24, you3 10–22; build focus span 7–12 tokens; chunks 5–8 each 1–4 tokens; distractors exactly 2, each a plausible chunk that is not a substring of any chunk",
+    "reconstruction byte-equal after NFC: build prefix+chunks.join(' ')+suffix; cloze/synthesis segments+blank answers; recall before+answer+after",
+    "registerPlan.mode constant; registers three identical values in {usted, tú}; usted lesson you turns: tú te ti contigo as address → error, tu tus vosotros os → warning (may be third-party reference, reviewer confirms); tú lesson you turns: usted ustedes as address → error; le/su/sus in tú lessons are not flagged; clitic register and them-turn register are semantic review",
+    "orthography: every ? sentence has a ¿ opener in the same clause; every ! has ¡; accents required (detector: common unaccented errors mas/que/como/esta/si at clause-initial interrogative or stress positions → warning); digits in any voiced string → error",
+    "es-ES lexis: Latin American list (carro, computadora, celular, departamento, boleto, manejar, vos, platicar, ahorita, chamba) → warning in any Spanish string",
+    "gender: speakerGender neutral for all P1/P2 lessons; speaker-agreeing adjective regex in you turns → warning requiring acknowledged reason",
+    "trophy: lemma single token, equals ledger row by pathNumber+lessonNumber; surface whole token of dialogue[turnIndex]; lemma and familyKey absent from forbidden set (exact) and from the derivational family list of forbidden lemmas, compared at lemma/family level and never by bare prefix (ventaja/ventajoso, recomendar, convenir/conveniente, compensar, deber/debido, retrasar, fiar/fiable, ahorrar/ahorro, aconsejar/consejo, mejorar/mejora, resolver/solución, funcionar/funcionamiento, tramitar, registrar, confirmar, proyectar/proyección, ascender/ascenso) → error; unrelated lemmas sharing letters (flexibilidad, fomentar, desglose, derivación, proveedor, criterio) are not hits",
+    "blanks 2–4 in cloze, 1–2 in synthesis; blank answer never on the stop-list (que, de, la, el, y, a, en, no, se); at most one choices blank per cloze; choices 4 distinct after normalization with exactly one accepted; kind form requires cue",
+    "build order uniqueness: authoring rule, not yet a tool — until the reviewed Spanish gate exists the reviewer lists alternative grammatical orders of the chunks manually; any second order that differs only by comma or capitalization position → fix; author adds a lexical anchor",
+    "speak requiredTokens 2–4 distinct whole tokens of that turn, no stop-list tokens, trophy surface included when it sits in that turn",
+    "terms 8–10, each targetText occurs folded (accent/case) in dialogue or pattern examples; connector terms may be multi-token (mientras que, por otro lado)",
+    "pattern.moveType ∈ the three you moves; ≥1 example equals a you turn verbatim; highlights contiguous substrings",
+    "the three you moves pairwise distinct; you1 ∈ path whitelist; you2 ∈ {concede,rebut,clarify,explain,compare,counteroffer}; you3 ∈ {conclude,propose,summarize,counteroffer,relay,request}; relay forbidden in P1/P2",
+    "slug ASCII kebab unique in spanish B2; base objects {de,en} on every base field; situation {de,en}; no additional keys anywhere"
+  ],
+  "semanticReviewRules": [
+    "argumentCoherent: you2 answers the exact challenge content (figure, counter-example, constraint); you3 answers the steer (bottom line, edge case, condition, audience, record) rather than restating you1",
+    "challengeGenuine: them turn 2 must change the state of the argument (new figure, counter-example, constraint, precision request); a pure echo or agreement fails",
+    "steerGenuine: them turn 4 must change the task (summary demand, new audience, final condition, edge case); a second objection is a fail",
+    "b2NotInflatedB1: at least one staged carrier per you turn used with its real function; a lesson whose difficulty rests only on rarer nouns fails",
+    "subjunctive truthfulness: aunque + subj only where the fact is hypothetical or conceded-irrelevant; no es que + subj; propongo que / me gustaría que / en caso de que + subj; indicative after porque/ya que/puesto que/mientras que in the asserted-cause and real-contrast readings these paths teach; other truthful native readings (no porque + subj, temporal mientras + subj) are allowed when the sentence means it, judged by semantic review, not as a blanket mood rule",
+    "usted naturalness: usted turns must sound like a Spanish adult, not a translated formality; one condicional de cortesía per turn max; no vos; no ustedes as plural informal",
+    "regional neutrality within Spain: lexis acceptable Madrid to Sevilla to Bilbao; avoid markedly Andalusian/Catalan-contact items (ni, plegar, enchegar)",
+    "also-correct chips and choices: every distractor and wrong choice must be ungrammatical or argumentatively wrong in that slot; a reviewer who can defend a distractor as acceptable marks fix",
+    "pattern truthfulness: rule sentence describes exactly what the examples show (e.g. aunque + indicativo for known facts), no overgeneralization",
+    "explanation accuracy (P2): causal chains must be real-world plausible for Spain and clearly scenario-specific; every municipal, legal, medical or contractual detail (bin rules, recogida de enseres, plazos de alegación y recurso, derivación, permanencia y penalización) is quoted from or supplied by the interlocutor or a named fictional document in the scene and never asserted as a universal rule, guarantee or advice; the material stays language learning, not jurisdiction-specific legal or medical guidance",
+    "base texts: German and English bases translate meaning and register, not word order; de base uses Sie/du matching usted/tú",
+    "ttsReadable: no abbreviations (ayto., pág.), no digits, no bare symbols; euros, por ciento spelled out",
+    "gender claim: reviewer confirms no speaker-referential agreement in any you turn of every neutral lesson",
+    "noFiller: no bueno/pues/vamos a ver as turn openers in you turns unless load-bearing; them turns may use one filler for naturalness"
+  ],
+  "unresolvedDecisions": [
+    {
+      "id": "ES-B2-01",
+      "question": "tooling hold: the cross-language ledger tool must compare familyKey, not lemma (desglose→desglosar, proveedor→proveer, derivación→derivar) when a future path proposes the verb; decided here, verified when the tool runs",
+      "blocking": "ledger tooling, not drafting"
+    },
+    {
+      "id": "ES-B2-02",
+      "question": "tooling hold: the reviewed Spanish gate reads the path-local staging tables (carriersStaged and paths[].staging, now consistent: lo que podríamos hacer es first taught P1 L5, en resumen first taught P2 L1, condicional de cortesía produced from P1 L9) as the staging source of truth; no owner question",
+      "blocking": "new target gate, structural checks only; grammatical and chunk truth stay semantic review"
+    },
+    {
+      "id": "ES-B2-03",
+      "question": "tooling hold: leading ¿ ¡ strip is a planned per-language normalization step; until it lands, authors list the needed learner forms explicitly in acceptedAnswers",
+      "blocking": "runtime normalization change outside this spec"
+    },
+    {
+      "id": "ES-B2-04",
+      "question": "tooling hold: demora goes on the ledger's forbidden-adjacent watch list so a later Spanish path cannot pick it without an explicit ledger decision; reversible, no owner question",
+      "blocking": "ledger tooling"
+    }
+  ]
+}
