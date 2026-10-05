@@ -1,0 +1,2138 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "baseLanguage": "German",
+  "pathNumber": 3,
+  "title": {
+    "de": "Wenn ich könnte",
+    "en": "If I could"
+  },
+  "subtitle": {
+    "de": "Äußere Wünsche höflich und entwickle Alternativen bei neuen Hindernissen.",
+    "en": "Express wishes politely and develop alternatives when obstacles appear."
+  },
+  "anchor": "DRAFT under the original Fable B1 architecture: shape A, polite request or hypothesis followed by a new complication. L1–3 voudrais/aimerais/préférerais; L4–5 pourrais/pourriez, ce serait, il faudrait; L6–8 si + imparfait with conditionnel; L9 serait-il possible de; L10 consolidation. Native staging supersedes the provisional plan's L7 start for si + imparfait. Fable-licensed narrow uses: immutable trophy souhaiterais at L2 appears only in the fixed je souhaiterais + infinitif request, a wish conditional alongside voudrais/aimerais; aurais at L5 only in j'aurais besoin de as a polite-need upgrade, no hypothetical avoir. Formal vous in L1–2/L4–6, informal tu with one friend in L3/L7–10. Gender-neutral learner production; no être/reflexive compound past, speaker adjectives, plus-que-parfait or conditionnel passé. French punctuation spaces, de/en bases, explicit form cues naming the tense where si-clauses and conditionals compete. Fable full-field read complete 2026-10-05; independent review pending.",
+  "lessons": [
+    {
+      "slug": "possibilite-de-changer-de-cours",
+      "title": {
+        "de": "Ein anderer Kurstag",
+        "en": "A different class day"
+      },
+      "situation": {
+        "de": "Du fragst im Kursbüro nach einem anderen Wochentag für deinen Kurs.",
+        "en": "You ask the course office about moving your class to another weekday."
+      },
+      "pedagogicalGoal": "Mit j'aimerais und je voudrais höflich einen Wunsch äußern und nach einer neuen Terminangabe um Bestätigung bitten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quel changement souhaitez-vous pour votre cours ?",
+          "baseText": {
+            "de": "Welche Änderung wünschen Sie sich für Ihren Kurs?",
+            "en": "What change would you like for your class?"
+          }
+        },
+        {
+          "targetText": "J'aimerais avoir la possibilité de suivre mon cours le vendredi.",
+          "baseText": {
+            "de": "Ich hätte gern die Möglichkeit, meinen Kurs freitags zu besuchen.",
+            "en": "I would like the possibility of taking my class on Fridays."
+          }
+        },
+        {
+          "targetText": "Le vendredi est complet, mais il reste un créneau le jeudi à dix-huit heures.",
+          "baseText": {
+            "de": "Freitags ist alles voll, aber donnerstags um achtzehn Uhr ist noch ein Termin frei.",
+            "en": "Friday is full, but there is still a slot on Thursday at six."
+          }
+        },
+        {
+          "targetText": "Alors, je voudrais changer pour le jeudi. Vous confirmez cette possibilité ?",
+          "baseText": {
+            "de": "Dann möchte ich auf Donnerstag wechseln. Können Sie diese Möglichkeit bestätigen?",
+            "en": "Then I would like to switch to Thursday. Can you confirm that option?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "J'aimerais; je voudrais",
+        "rule": {
+          "de": "J'aimerais und je voudrais mit einem Infinitiv formulieren einen Wunsch höflich und lassen der anderen Person Raum für eine Antwort.",
+          "en": "J'aimerais and je voudrais followed by an infinitive express a wish politely and leave room for the other person's response."
+        },
+        "examples": [
+          {
+            "targetText": "J'aimerais avoir la possibilité de suivre mon cours le vendredi.",
+            "baseText": {
+              "de": "Ich hätte gern die Möglichkeit, meinen Kurs freitags zu besuchen.",
+              "en": "I would like the possibility of taking my class on Fridays."
+            },
+            "highlight": "J'aimerais avoir"
+          },
+          {
+            "targetText": "Alors, je voudrais changer pour le jeudi. Vous confirmez cette possibilité ?",
+            "baseText": {
+              "de": "Dann möchte ich auf Donnerstag wechseln. Können Sie diese Möglichkeit bestätigen?",
+              "en": "Then I would like to switch to Thursday. Can you confirm that option?"
+            },
+            "highlight": "je voudrais changer"
+          }
+        ]
+      },
+      "cloze": [
+        "Alors, je ",
+        {
+          "kind": "form",
+          "answer": "voudrais",
+          "cue": "vouloir (je)",
+          "choices": [
+            "voudrait",
+            "voudrais",
+            "voudriez",
+            "voudraient"
+          ]
+        },
+        " changer pour le jeudi. Vous ",
+        {
+          "kind": "form",
+          "answer": "confirmez",
+          "cue": "confirmer (vous)",
+          "choices": [
+            "confirme",
+            "confirmons",
+            "confirment",
+            "confirmez"
+          ]
+        },
+        " cette possibilité ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "J'aimerais avoir",
+          "baseText": {
+            "de": "Ich hätte gern",
+            "en": "I would like to have"
+          }
+        },
+        {
+          "targetText": "la possibilité",
+          "baseText": {
+            "de": "die Möglichkeit",
+            "en": "the possibility"
+          }
+        },
+        {
+          "targetText": "de suivre mon cours",
+          "baseText": {
+            "de": "meinen Kurs zu besuchen",
+            "en": "of taking my class"
+          }
+        },
+        {
+          "targetText": "le vendredi.",
+          "baseText": {
+            "de": "freitags.",
+            "en": "on Fridays."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la possibilité",
+          "baseText": {
+            "de": "die Möglichkeit",
+            "en": "the possibility"
+          }
+        },
+        {
+          "targetText": "suivre un cours",
+          "baseText": {
+            "de": "einen Kurs besuchen",
+            "en": "to take a class"
+          }
+        },
+        {
+          "targetText": "un changement",
+          "baseText": {
+            "de": "eine Änderung",
+            "en": "a change"
+          }
+        },
+        {
+          "targetText": "complet",
+          "baseText": {
+            "de": "voll; ausgebucht",
+            "en": "full; fully booked"
+          }
+        },
+        {
+          "targetText": "un créneau",
+          "baseText": {
+            "de": "ein Zeitfenster; ein Termin",
+            "en": "a time slot"
+          }
+        },
+        {
+          "targetText": "confirmer",
+          "baseText": {
+            "de": "bestätigen",
+            "en": "to confirm"
+          }
+        }
+      ],
+      "recall": {
+        "before": "J'aimerais avoir la ",
+        "answer": "possibilité",
+        "after": " de suivre mon cours le vendredi.",
+        "fallbackChoices": [
+          "preuve",
+          "possibilité",
+          "responsabilité",
+          "permission"
+        ]
+      },
+      "speakRequired": [
+        "possibilité",
+        "cours",
+        "vendredi"
+      ],
+      "sceneCaption": {
+        "de": "Im Kursbüro fragt ein Mitarbeiter: „Quel changement souhaitez-vous pour votre cours ?“",
+        "en": "A course office staff member asks: “Quel changement souhaitez-vous pour votre cours ?”"
+      },
+      "trophyWord": {
+        "word": "possibilité",
+        "meaning": {
+          "de": "Möglichkeit",
+          "en": "possibility"
+        },
+        "example": "J'aimerais avoir la possibilité de suivre mon cours le vendredi.",
+        "whyThisWord": {
+          "de": "Avoir la possibilité de benennt eine Möglichkeit, die du nutzen möchtest, ohne ihre Verfügbarkeit vorauszusetzen.",
+          "en": "Avoir la possibilité de names an option you would like without assuming it is available."
+        }
+      },
+      "distractors": [
+        "de quitter mon cours",
+        "le samedi."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über einen Kurstermin.",
+        "en": "A conversation about a class time."
+      },
+      "songMood": "gentle practical optimism",
+      "visualNotes": "Course office desk with an unreadable weekly planner; no availability or Thursday slot shown."
+    },
+    {
+      "slug": "souhaiterais-visiter-un-atelier",
+      "title": {
+        "de": "Die Werkstatt besichtigen",
+        "en": "Visiting the workshop"
+      },
+      "situation": {
+        "de": "Du erkundigst dich bei einem Handwerker nach einer Werkstattbesichtigung mit Freunden.",
+        "en": "You ask a craftsperson about visiting the workshop with friends."
+      },
+      "pedagogicalGoal": "Je souhaiterais als feste höfliche Bitte verwenden und ein gemeinsames Datum anbieten, nachdem eine Gruppengröße genannt wurde.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qu'est-ce qui vous intéresse dans notre atelier ?",
+          "baseText": {
+            "de": "Was interessiert Sie an unserer Werkstatt?",
+            "en": "What interests you about our workshop?"
+          }
+        },
+        {
+          "targetText": "Je souhaiterais visiter votre atelier avec quelques amis pendant les vacances.",
+          "baseText": {
+            "de": "Ich würde Ihre Werkstatt gern in den Ferien mit einigen Freunden besichtigen.",
+            "en": "I would like to visit your workshop with a few friends during the holidays."
+          }
+        },
+        {
+          "targetText": "Nous organisons les visites pour quatre personnes minimum, toutes au même créneau.",
+          "baseText": {
+            "de": "Wir bieten Besichtigungen ab vier Personen an, alle zum selben Termin.",
+            "en": "We arrange visits for at least four people, all in the same time slot."
+          }
+        },
+        {
+          "targetText": "Je souhaiterais proposer samedi ; mes trois amis peuvent venir ensemble.",
+          "baseText": {
+            "de": "Ich würde gern Samstag vorschlagen; meine drei Freunde können gemeinsam kommen.",
+            "en": "I would like to suggest Saturday; my three friends can come together."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Je souhaiterais + infinitif",
+        "rule": {
+          "de": "Die feste Wendung je souhaiterais mit Infinitiv formuliert einen höflichen Wunsch, besonders in einer Anfrage.",
+          "en": "The fixed phrase je souhaiterais followed by an infinitive expresses a polite wish, especially in an inquiry."
+        },
+        "examples": [
+          {
+            "targetText": "Je souhaiterais visiter votre atelier avec quelques amis pendant les vacances.",
+            "baseText": {
+              "de": "Ich würde Ihre Werkstatt gern in den Ferien mit einigen Freunden besichtigen.",
+              "en": "I would like to visit your workshop with a few friends during the holidays."
+            },
+            "highlight": "Je souhaiterais visiter"
+          },
+          {
+            "targetText": "Je souhaiterais proposer samedi ; mes trois amis peuvent venir ensemble.",
+            "baseText": {
+              "de": "Ich würde gern Samstag vorschlagen; meine drei Freunde können gemeinsam kommen.",
+              "en": "I would like to suggest Saturday; my three friends can come together."
+            },
+            "highlight": "Je souhaiterais proposer"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "souhaiterais",
+          "cue": "souhaiter (je)",
+          "choices": [
+            "souhaiteriez",
+            "souhaiteraient",
+            "souhaiterais",
+            "souhaiterait"
+          ]
+        },
+        " proposer samedi ; mes trois amis ",
+        {
+          "kind": "form",
+          "answer": "peuvent",
+          "cue": "pouvoir (mes trois amis)",
+          "choices": [
+            "peuvent",
+            "pouvons",
+            "peut",
+            "pouvez"
+          ]
+        },
+        " venir ensemble."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je souhaiterais visiter",
+          "baseText": {
+            "de": "Ich würde gern besichtigen",
+            "en": "I would like to visit"
+          }
+        },
+        {
+          "targetText": "votre atelier",
+          "baseText": {
+            "de": "Ihre Werkstatt",
+            "en": "your workshop"
+          }
+        },
+        {
+          "targetText": "avec quelques amis",
+          "baseText": {
+            "de": "mit einigen Freunden",
+            "en": "with a few friends"
+          }
+        },
+        {
+          "targetText": "pendant les vacances.",
+          "baseText": {
+            "de": "in den Ferien.",
+            "en": "during the holidays."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "souhaiterais",
+          "baseText": {
+            "de": "ich würde gern",
+            "en": "I would like"
+          }
+        },
+        {
+          "targetText": "visiter",
+          "baseText": {
+            "de": "besichtigen",
+            "en": "to visit"
+          }
+        },
+        {
+          "targetText": "un atelier",
+          "baseText": {
+            "de": "eine Werkstatt",
+            "en": "a workshop"
+          }
+        },
+        {
+          "targetText": "quelques amis",
+          "baseText": {
+            "de": "einige Freunde",
+            "en": "a few friends"
+          }
+        },
+        {
+          "targetText": "au même créneau",
+          "baseText": {
+            "de": "zum selben Termin",
+            "en": "in the same time slot"
+          }
+        },
+        {
+          "targetText": "proposer",
+          "baseText": {
+            "de": "vorschlagen",
+            "en": "to suggest"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je ",
+        "answer": "souhaiterais",
+        "after": " visiter votre atelier avec quelques amis pendant les vacances.",
+        "fallbackChoices": [
+          "souhaiterait",
+          "souhaiteriez",
+          "souhaiteraient",
+          "souhaiterais"
+        ]
+      },
+      "speakRequired": [
+        "souhaiterais",
+        "atelier",
+        "vacances"
+      ],
+      "sceneCaption": {
+        "de": "Der Handwerker fragt nach deinem Interesse: „Qu'est-ce qui vous intéresse dans notre atelier ?“",
+        "en": "The craftsperson asks about your interest: “Qu'est-ce qui vous intéresse dans notre atelier ?”"
+      },
+      "trophyWord": {
+        "word": "souhaiterais",
+        "meaning": {
+          "de": "ich würde gern",
+          "en": "I would like"
+        },
+        "example": "Je souhaiterais visiter votre atelier avec quelques amis pendant les vacances.",
+        "whyThisWord": {
+          "de": "Je souhaiterais ist eine höfliche Form, um deinen Wunsch in einer Anfrage klar zu benennen.",
+          "en": "Je souhaiterais is a polite way to state your wish clearly in an inquiry."
+        }
+      },
+      "distractors": [
+        "votre exposition",
+        "pendant le week-end."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Anfrage zu einer Werkstattbesichtigung.",
+        "en": "An inquiry about visiting a workshop."
+      },
+      "songMood": "curious warm craftsmanship",
+      "visualNotes": "Workshop doorway and craft tools; no minimum group size or booking calendar visible."
+    },
+    {
+      "slug": "volontiers-pour-la-sortie",
+      "title": {
+        "de": "Gern mitkommen",
+        "en": "Happy to join"
+      },
+      "situation": {
+        "de": "Eine Freundin lädt dich zu einer gemeinsamen Bootsfahrt ein.",
+        "en": "A friend invites you to join a boat trip."
+      },
+      "pedagogicalGoal": "Mit volontiers zusagen und mit j'aimerais oder je préférerais einen Wunsch äußern, der nach einer neuen Abfahrtszeit angepasst wird.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu veux participer à notre sortie en bateau samedi ?",
+          "baseText": {
+            "de": "Möchtest du am Samstag bei unserer Bootsfahrt mitkommen?",
+            "en": "Would you like to join our boat trip on Saturday?"
+          }
+        },
+        {
+          "targetText": "Volontiers, j'aimerais participer à la sortie, mais je préférerais partir après le petit déjeuner.",
+          "baseText": {
+            "de": "Gern, ich möchte bei der Fahrt mitmachen, würde aber lieber nach dem Frühstück losfahren.",
+            "en": "Gladly, I'd like to join the outing, but I'd prefer to leave after breakfast."
+          }
+        },
+        {
+          "targetText": "Le départ est à six heures pour prendre le premier bateau.",
+          "baseText": {
+            "de": "Wir fahren um sechs los, um das erste Boot zu erreichen.",
+            "en": "Departure is at six so we can catch the first boat."
+          }
+        },
+        {
+          "targetText": "Je préférerais emporter un sandwich ; tu prépares du café ?",
+          "baseText": {
+            "de": "Dann würde ich lieber ein Sandwich mitnehmen; machst du Kaffee?",
+            "en": "I'd prefer to bring a sandwich; are you making coffee?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Je préférerais + infinitif",
+        "rule": {
+          "de": "Je préférerais mit einem Infinitiv äußert eine Vorliebe höflich; so kannst du eine Einladung annehmen und trotzdem deinen Wunsch nennen.",
+          "en": "Je préférerais followed by an infinitive expresses a preference politely, allowing you to accept an invitation while stating your wish."
+        },
+        "examples": [
+          {
+            "targetText": "Volontiers, j'aimerais participer à la sortie, mais je préférerais partir après le petit déjeuner.",
+            "baseText": {
+              "de": "Gern, ich möchte bei der Fahrt mitmachen, würde aber lieber nach dem Frühstück losfahren.",
+              "en": "Gladly, I'd like to join the outing, but I'd prefer to leave after breakfast."
+            },
+            "highlight": "je préférerais partir"
+          },
+          {
+            "targetText": "Je préférerais emporter un sandwich ; tu prépares du café ?",
+            "baseText": {
+              "de": "Dann würde ich lieber ein Sandwich mitnehmen; machst du Kaffee?",
+              "en": "I'd prefer to bring a sandwich; are you making coffee?"
+            },
+            "highlight": "Je préférerais emporter"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "préférerais",
+          "cue": "préférer (je)",
+          "choices": [
+            "préféreriez",
+            "préférerait",
+            "préféreraient",
+            "préférerais"
+          ]
+        },
+        " emporter un sandwich ; tu ",
+        {
+          "kind": "form",
+          "answer": "prépares",
+          "cue": "préparer (tu)",
+          "choices": [
+            "préparent",
+            "prépares",
+            "préparons",
+            "préparez"
+          ]
+        },
+        " du café ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Volontiers, j'aimerais participer",
+          "baseText": {
+            "de": "Gern, ich möchte mitmachen",
+            "en": "Gladly, I'd like to join"
+          }
+        },
+        {
+          "targetText": "à la sortie,",
+          "baseText": {
+            "de": "bei der Fahrt,",
+            "en": "the outing,"
+          }
+        },
+        {
+          "targetText": "mais je préférerais partir",
+          "baseText": {
+            "de": "würde aber lieber losfahren",
+            "en": "but I'd prefer to leave"
+          }
+        },
+        {
+          "targetText": "après le petit déjeuner.",
+          "baseText": {
+            "de": "nach dem Frühstück.",
+            "en": "after breakfast."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "volontiers",
+          "baseText": {
+            "de": "gern",
+            "en": "gladly"
+          }
+        },
+        {
+          "targetText": "une sortie",
+          "baseText": {
+            "de": "ein Ausflug",
+            "en": "an outing"
+          }
+        },
+        {
+          "targetText": "le départ",
+          "baseText": {
+            "de": "die Abfahrt",
+            "en": "departure"
+          }
+        },
+        {
+          "targetText": "le petit déjeuner",
+          "baseText": {
+            "de": "das Frühstück",
+            "en": "breakfast"
+          }
+        },
+        {
+          "targetText": "emporter",
+          "baseText": {
+            "de": "mitnehmen",
+            "en": "to bring along"
+          }
+        },
+        {
+          "targetText": "le premier bateau",
+          "baseText": {
+            "de": "das erste Boot",
+            "en": "the first boat"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Volontiers, j'aimerais participer à la sortie, mais je ",
+        "answer": "préférerais",
+        "after": " partir après le petit déjeuner.",
+        "fallbackChoices": [
+          "préférerais",
+          "préférerait",
+          "préféreriez",
+          "préféreraient"
+        ]
+      },
+      "speakRequired": [
+        "volontiers",
+        "sortie",
+        "déjeuner"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin lädt dich ein: „Tu veux participer à notre sortie en bateau samedi ?“",
+        "en": "A friend invites you: “Tu veux participer à notre sortie en bateau samedi ?”"
+      },
+      "trophyWord": {
+        "word": "volontiers",
+        "meaning": {
+          "de": "gern",
+          "en": "gladly"
+        },
+        "example": "Volontiers, j'aimerais participer à la sortie, mais je préférerais partir après le petit déjeuner.",
+        "whyThisWord": {
+          "de": "Volontiers sagt freundlich zu und kann direkt vor einer höflich formulierten Vorliebe stehen.",
+          "en": "Volontiers accepts warmly and can come before a politely expressed preference."
+        }
+      },
+      "distractors": [
+        "à la réunion,",
+        "avant le petit déjeuner."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde planen einen Ausflug mit dem Boot.",
+        "en": "Two friends plan a boat outing."
+      },
+      "songMood": "bright easygoing anticipation",
+      "visualNotes": "Friends discussing a boat brochure; no early departure time or packed breakfast shown."
+    },
+    {
+      "slug": "pourrais-essayer-le-violon",
+      "title": {
+        "de": "Ein kurzer Versuch",
+        "en": "A short trial"
+      },
+      "situation": {
+        "de": "Du möchtest in einem Musikgeschäft ein Instrument ausprobieren.",
+        "en": "You would like to try an instrument in a music shop."
+      },
+      "pedagogicalGoal": "Mit est-ce que je pourrais um Erlaubnis bitten und die Dauer des Versuchs an eine neue Begrenzung anpassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous hésitez encore entre ces deux violons ?",
+          "baseText": {
+            "de": "Schwanken Sie noch zwischen diesen beiden Geigen?",
+            "en": "Are you still deciding between these two violins?"
+          }
+        },
+        {
+          "targetText": "Est-ce que je pourrais essayer ce violon avant de choisir un modèle ?",
+          "baseText": {
+            "de": "Könnte ich diese Geige ausprobieren, bevor ich ein Modell auswähle?",
+            "en": "Could I try this violin before choosing a model?"
+          }
+        },
+        {
+          "targetText": "Il faut le rendre dans dix minutes, car un cours commence juste après.",
+          "baseText": {
+            "de": "Sie müssen sie in zehn Minuten zurückgeben, weil direkt danach ein Kurs beginnt.",
+            "en": "You need to return it in ten minutes because a class starts right afterward."
+          }
+        },
+        {
+          "targetText": "Je pourrais essayer cinq minutes ; vous récupérez le violon ensuite ?",
+          "baseText": {
+            "de": "Ich könnte sie fünf Minuten ausprobieren; nehmen Sie die Geige danach zurück?",
+            "en": "I could try it for five minutes; will you take the violin back afterward?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Je pourrais; ce serait",
+        "rule": {
+          "de": "Je pourrais bittet höflich um eine Möglichkeit oder schlägt sie vor; ce serait beschreibt, wie dieser Vorschlag aussehen würde.",
+          "en": "Je pourrais politely asks about or proposes a possibility; ce serait describes what that proposal would be like."
+        },
+        "examples": [
+          {
+            "targetText": "Est-ce que je pourrais essayer ce violon avant de choisir un modèle ?",
+            "baseText": {
+              "de": "Könnte ich diese Geige ausprobieren, bevor ich ein Modell auswähle?",
+              "en": "Could I try this violin before choosing a model?"
+            },
+            "highlight": "je pourrais essayer"
+          },
+          {
+            "targetText": "Ce serait un essai très court.",
+            "baseText": {
+              "de": "Es wäre ein sehr kurzer Versuch.",
+              "en": "It would be a very short trial."
+            },
+            "highlight": "Ce serait"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "pourrais",
+          "cue": "pouvoir (je)",
+          "choices": [
+            "pourrait",
+            "pourrais",
+            "pourrions",
+            "pourriez"
+          ]
+        },
+        " essayer cinq minutes ; vous ",
+        {
+          "kind": "form",
+          "answer": "récupérez",
+          "cue": "récupérer (vous)",
+          "choices": [
+            "récupère",
+            "récupèrent",
+            "récupérez",
+            "récupérons"
+          ]
+        },
+        " le violon ensuite ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Est-ce que je pourrais essayer",
+          "baseText": {
+            "de": "Könnte ich ausprobieren",
+            "en": "Could I try"
+          }
+        },
+        {
+          "targetText": "ce violon",
+          "baseText": {
+            "de": "diese Geige",
+            "en": "this violin"
+          }
+        },
+        {
+          "targetText": "avant de choisir",
+          "baseText": {
+            "de": "bevor ich auswähle",
+            "en": "before choosing"
+          }
+        },
+        {
+          "targetText": "un modèle ?",
+          "baseText": {
+            "de": "ein Modell?",
+            "en": "a model?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pourrais",
+          "baseText": {
+            "de": "ich könnte",
+            "en": "I could"
+          }
+        },
+        {
+          "targetText": "essayer",
+          "baseText": {
+            "de": "ausprobieren",
+            "en": "to try"
+          }
+        },
+        {
+          "targetText": "un violon",
+          "baseText": {
+            "de": "eine Geige",
+            "en": "a violin"
+          }
+        },
+        {
+          "targetText": "choisir",
+          "baseText": {
+            "de": "auswählen",
+            "en": "to choose"
+          }
+        },
+        {
+          "targetText": "rendre",
+          "baseText": {
+            "de": "zurückgeben",
+            "en": "to return"
+          }
+        },
+        {
+          "targetText": "récupérer",
+          "baseText": {
+            "de": "zurücknehmen; abholen",
+            "en": "to take back; to collect"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Est-ce que je ",
+        "answer": "pourrais",
+        "after": " essayer ce violon avant de choisir un modèle ?",
+        "fallbackChoices": [
+          "pourrions",
+          "pourrais",
+          "pourrait",
+          "pourriez"
+        ]
+      },
+      "speakRequired": [
+        "pourrais",
+        "violon",
+        "modèle"
+      ],
+      "sceneCaption": {
+        "de": "Im Musikgeschäft fragt der Verkäufer: „Vous hésitez encore entre ces deux violons ?“",
+        "en": "In the music shop, the assistant asks: “Vous hésitez encore entre ces deux violons ?”"
+      },
+      "trophyWord": {
+        "word": "pourrais",
+        "meaning": {
+          "de": "ich könnte",
+          "en": "I could"
+        },
+        "example": "Est-ce que je pourrais essayer ce violon avant de choisir un modèle ?",
+        "whyThisWord": {
+          "de": "Je pourrais macht aus einer direkten Bitte eine höfliche Frage nach einer Möglichkeit.",
+          "en": "Je pourrais turns a direct request into a polite question about a possibility."
+        }
+      },
+      "distractors": [
+        "ce piano",
+        "avant de louer"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Instrument ausprobieren im Musikgeschäft.",
+        "en": "Trying an instrument in a music shop."
+      },
+      "songMood": "delicate inquisitive strings",
+      "visualNotes": "Customer and assistant beside two violins; no clock countdown or upcoming lesson group visible."
+    },
+    {
+      "slug": "aurais-besoin-de-temps",
+      "title": {
+        "de": "Die Unterlagen fertigstellen",
+        "en": "Finishing the paperwork"
+      },
+      "situation": {
+        "de": "Du besprichst die Abgabe deiner Unterlagen mit einer Mitarbeiterin.",
+        "en": "You discuss submitting your paperwork with a staff member."
+      },
+      "pedagogicalGoal": "J'aurais besoin de als höflichen Bedarfsrahmen verwenden und mit pourriez-vous beziehungsweise vous pourriez eine gestaffelte Abgabe vorschlagen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Avez-vous toutes les pièces pour terminer votre dossier ?",
+          "baseText": {
+            "de": "Haben Sie alle Unterlagen, um Ihren Antrag fertigzustellen?",
+            "en": "Do you have all the documents needed to finish your application?"
+          }
+        },
+        {
+          "targetText": "J'aurais besoin d'un peu plus de temps pour terminer mon dossier.",
+          "baseText": {
+            "de": "Ich bräuchte etwas mehr Zeit, um meine Unterlagen fertigzustellen.",
+            "en": "I would need a little more time to finish my paperwork."
+          }
+        },
+        {
+          "targetText": "La date limite reste vendredi, mais seules les pièces principales sont indispensables au départ.",
+          "baseText": {
+            "de": "Die Frist bleibt Freitag, aber zunächst sind nur die wichtigsten Unterlagen erforderlich.",
+            "en": "The deadline is still Friday, but only the main documents are essential initially."
+          }
+        },
+        {
+          "targetText": "Vous pourriez accepter l'essentiel vendredi ; je complète le dossier lundi ?",
+          "baseText": {
+            "de": "Könnten Sie das Wichtigste am Freitag annehmen und ich ergänze die Unterlagen am Montag?",
+            "en": "Could you accept the essentials on Friday, and I complete the paperwork on Monday?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un besoin et une proposition polie",
+        "rule": {
+          "de": "J'aurais besoin de äußert einen Bedarf höflich; vous pourriez schlägt eine mögliche Handlung vor und il faudrait benennt eine notwendige Bedingung.",
+          "en": "J'aurais besoin de expresses a need politely; vous pourriez proposes a possible action and il faudrait names a necessary condition."
+        },
+        "examples": [
+          {
+            "targetText": "J'aurais besoin d'un peu plus de temps pour terminer mon dossier.",
+            "baseText": {
+              "de": "Ich bräuchte etwas mehr Zeit, um meine Unterlagen fertigzustellen.",
+              "en": "I would need a little more time to finish my paperwork."
+            },
+            "highlight": "J'aurais besoin"
+          },
+          {
+            "targetText": "Vous pourriez accepter l'essentiel vendredi ; je complète le dossier lundi ?",
+            "baseText": {
+              "de": "Könnten Sie das Wichtigste am Freitag annehmen und ich ergänze die Unterlagen am Montag?",
+              "en": "Could you accept the essentials on Friday, and I complete the paperwork on Monday?"
+            },
+            "highlight": "Vous pourriez accepter"
+          },
+          {
+            "targetText": "Il faudrait envoyer les pièces principales vendredi.",
+            "baseText": {
+              "de": "Die wichtigsten Unterlagen müssten am Freitag abgeschickt werden.",
+              "en": "It would be necessary to send the main documents on Friday."
+            },
+            "highlight": "Il faudrait envoyer"
+          }
+        ]
+      },
+      "cloze": [
+        "Vous ",
+        {
+          "kind": "form",
+          "answer": "pourriez",
+          "cue": "pouvoir (vous)",
+          "choices": [
+            "pourrais",
+            "pourrait",
+            "pourriez",
+            "pourraient"
+          ]
+        },
+        " accepter l'essentiel vendredi ; je ",
+        {
+          "kind": "form",
+          "answer": "complète",
+          "cue": "compléter (je)",
+          "choices": [
+            "complète",
+            "complètent",
+            "complétons",
+            "complétez"
+          ]
+        },
+        " le dossier lundi ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "J'aurais besoin",
+          "baseText": {
+            "de": "Ich bräuchte",
+            "en": "I would need"
+          }
+        },
+        {
+          "targetText": "d'un peu plus de temps",
+          "baseText": {
+            "de": "etwas mehr Zeit",
+            "en": "a little more time"
+          }
+        },
+        {
+          "targetText": "pour terminer",
+          "baseText": {
+            "de": "um fertigzustellen",
+            "en": "to finish"
+          }
+        },
+        {
+          "targetText": "mon dossier.",
+          "baseText": {
+            "de": "meine Unterlagen.",
+            "en": "my paperwork."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "aurais",
+          "baseText": {
+            "de": "ich hätte",
+            "en": "I would have"
+          }
+        },
+        {
+          "targetText": "avoir besoin de",
+          "baseText": {
+            "de": "brauchen",
+            "en": "to need"
+          }
+        },
+        {
+          "targetText": "un dossier",
+          "baseText": {
+            "de": "Unterlagen; eine Antragsmappe",
+            "en": "paperwork; an application file"
+          }
+        },
+        {
+          "targetText": "la date limite",
+          "baseText": {
+            "de": "die Frist",
+            "en": "the deadline"
+          }
+        },
+        {
+          "targetText": "les pièces principales",
+          "baseText": {
+            "de": "die wichtigsten Unterlagen",
+            "en": "the main documents"
+          }
+        },
+        {
+          "targetText": "compléter",
+          "baseText": {
+            "de": "ergänzen; vervollständigen",
+            "en": "to complete; to add to"
+          }
+        }
+      ],
+      "recall": {
+        "before": "J'",
+        "answer": "aurais",
+        "after": " besoin d'un peu plus de temps pour terminer mon dossier.",
+        "fallbackChoices": [
+          "aurait",
+          "aurions",
+          "aurais",
+          "auriez"
+        ]
+      },
+      "speakRequired": [
+        "aurais",
+        "temps",
+        "dossier"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin fragt nach deinen Unterlagen: „Avez-vous toutes les pièces pour terminer votre dossier ?“",
+        "en": "The staff member asks about your paperwork: “Avez-vous toutes les pièces pour terminer votre dossier ?”"
+      },
+      "trophyWord": {
+        "word": "aurais",
+        "meaning": {
+          "de": "ich hätte",
+          "en": "I would have"
+        },
+        "example": "J'aurais besoin d'un peu plus de temps pour terminer mon dossier.",
+        "whyThisWord": {
+          "de": "In j'aurais besoin de schwächt aurais eine direkte Bedarfsmeldung ab und macht daraus eine höfliche Bitte.",
+          "en": "In j'aurais besoin de, aurais softens a direct statement of need into a polite request."
+        }
+      },
+      "distractors": [
+        "d'un peu plus d'argent",
+        "mon inscription."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über die Abgabe von Unterlagen.",
+        "en": "A conversation about submitting documents."
+      },
+      "songMood": "measured supportive negotiation",
+      "visualNotes": "Staff desk with a closed paperwork folder; no deadline or staged-submission information displayed."
+    },
+    {
+      "slug": "serais-sur-place-a-dix-heures",
+      "title": {
+        "de": "Die Ankunft zur Besichtigung",
+        "en": "Arriving for the visit"
+      },
+      "situation": {
+        "de": "Du klärst mit dem Empfang einer Ausstellung deine geplante Ankunft.",
+        "en": "You discuss your planned arrival with an exhibition's reception desk."
+      },
+      "pedagogicalGoal": "Eine mögliche Ankunft mit si plus imparfait und conditionnel beschreiben und die Bedingung nach einer neuen Öffnungszeit anpassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "À quelle heure pensez-vous arriver pour la visite ?",
+          "baseText": {
+            "de": "Um wie viel Uhr möchten Sie zur Besichtigung ankommen?",
+            "en": "What time do you expect to arrive for the visit?"
+          }
+        },
+        {
+          "targetText": "Si je prenais le train de neuf heures, je serais sur place vers dix heures.",
+          "baseText": {
+            "de": "Wenn ich den Zug um neun nähme, wäre ich gegen zehn vor Ort.",
+            "en": "If I took the nine o'clock train, I would be there around ten."
+          }
+        },
+        {
+          "targetText": "L'accueil ferme à dix heures, même si la visite commence à dix heures et demie.",
+          "baseText": {
+            "de": "Der Empfang schließt um zehn, auch wenn die Besichtigung erst um halb elf beginnt.",
+            "en": "Reception closes at ten, even though the visit starts at half past ten."
+          }
+        },
+        {
+          "targetText": "Si je prenais le train précédent, je pourrais passer avant.",
+          "baseText": {
+            "de": "Wenn ich den vorherigen Zug nähme, könnte ich vorher vorbeikommen.",
+            "en": "If I took the earlier train, I could stop by before then."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Si + imparfait, conditionnel",
+        "rule": {
+          "de": "Si mit imparfait stellt eine Möglichkeit vor; der conditionnel im Hauptsatz beschreibt, was dann möglich wäre.",
+          "en": "Si with the imparfait presents a hypothetical possibility; the conditional in the main clause describes what would then be possible."
+        },
+        "examples": [
+          {
+            "targetText": "Si je prenais le train de neuf heures, je serais sur place vers dix heures.",
+            "baseText": {
+              "de": "Wenn ich den Zug um neun nähme, wäre ich gegen zehn vor Ort.",
+              "en": "If I took the nine o'clock train, I would be there around ten."
+            },
+            "highlight": "Si je prenais"
+          },
+          {
+            "targetText": "Si je prenais le train précédent, je pourrais passer avant.",
+            "baseText": {
+              "de": "Wenn ich den vorherigen Zug nähme, könnte ich vorher vorbeikommen.",
+              "en": "If I took the earlier train, I could stop by before then."
+            },
+            "highlight": "je pourrais passer"
+          }
+        ]
+      },
+      "cloze": [
+        "Si je ",
+        {
+          "kind": "form",
+          "answer": "prenais",
+          "cue": "prendre (je, imparfait)",
+          "choices": [
+            "prenions",
+            "prenais",
+            "preniez",
+            "prenaient"
+          ]
+        },
+        " le train précédent, je ",
+        {
+          "kind": "form",
+          "answer": "pourrais",
+          "cue": "pouvoir (je, conditionnel)",
+          "choices": [
+            "pourrait",
+            "pourriez",
+            "pourrions",
+            "pourrais"
+          ]
+        },
+        " passer avant."
+      ],
+      "chunks": [
+        {
+          "targetText": "Si je prenais",
+          "baseText": {
+            "de": "Wenn ich nähme",
+            "en": "If I took"
+          }
+        },
+        {
+          "targetText": "le train de neuf heures,",
+          "baseText": {
+            "de": "den Zug um neun,",
+            "en": "the nine o'clock train,"
+          }
+        },
+        {
+          "targetText": "je serais sur place",
+          "baseText": {
+            "de": "wäre ich vor Ort",
+            "en": "I would be there"
+          }
+        },
+        {
+          "targetText": "vers dix heures.",
+          "baseText": {
+            "de": "gegen zehn Uhr.",
+            "en": "around ten."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "serais",
+          "baseText": {
+            "de": "ich wäre",
+            "en": "I would be"
+          }
+        },
+        {
+          "targetText": "sur place",
+          "baseText": {
+            "de": "vor Ort",
+            "en": "there; on site"
+          }
+        },
+        {
+          "targetText": "le train précédent",
+          "baseText": {
+            "de": "der vorherige Zug",
+            "en": "the earlier train"
+          }
+        },
+        {
+          "targetText": "l'accueil",
+          "baseText": {
+            "de": "der Empfang",
+            "en": "reception"
+          }
+        },
+        {
+          "targetText": "la visite",
+          "baseText": {
+            "de": "die Besichtigung",
+            "en": "the visit; tour"
+          }
+        },
+        {
+          "targetText": "passer avant",
+          "baseText": {
+            "de": "vorher vorbeikommen",
+            "en": "to stop by beforehand"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Si je prenais le train de neuf heures, je ",
+        "answer": "serais",
+        "after": " sur place vers dix heures.",
+        "fallbackChoices": [
+          "serions",
+          "serait",
+          "serais",
+          "seriez"
+        ]
+      },
+      "speakRequired": [
+        "train",
+        "serais",
+        "place"
+      ],
+      "sceneCaption": {
+        "de": "Der Empfang fragt nach deiner Ankunft: „À quelle heure pensez-vous arriver pour la visite ?“",
+        "en": "Reception asks about your arrival: “À quelle heure pensez-vous arriver pour la visite ?”"
+      },
+      "trophyWord": {
+        "word": "serais",
+        "meaning": {
+          "de": "ich wäre",
+          "en": "I would be"
+        },
+        "example": "Si je prenais le train de neuf heures, je serais sur place vers dix heures.",
+        "whyThisWord": {
+          "de": "Je serais sur place beschreibt, wann du unter einer bestimmten Voraussetzung vor Ort wärst.",
+          "en": "Je serais sur place describes when you would be there under a particular condition."
+        }
+      },
+      "distractors": [
+        "le train de huit heures,",
+        "vers onze heures."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Ankunftsplan für eine Besichtigung.",
+        "en": "An arrival plan for a visit."
+      },
+      "songMood": "thoughtful travel planning",
+      "visualNotes": "Exhibition brochure beside a train ticket; reception closing time stays out of view."
+    },
+    {
+      "slug": "choisirais-un-autre-quartier",
+      "title": {
+        "de": "Ein Viertel zum Wohnen",
+        "en": "Choosing a neighborhood"
+      },
+      "situation": {
+        "de": "Du vergleichst mit einem Freund Wohnviertel und den Weg zur Arbeit.",
+        "en": "You compare neighborhoods and commuting routes with a friend."
+      },
+      "pedagogicalGoal": "Mit si plus imparfait und conditionnel eine Wohnentscheidung an eine Bedingung knüpfen und nach einer Kosteninformation neu abwägen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu chercherais un appartement dans ce quartier ?",
+          "baseText": {
+            "de": "Würdest du in diesem Viertel eine Wohnung suchen?",
+            "en": "Would you look for an apartment in this neighborhood?"
+          }
+        },
+        {
+          "targetText": "Si le trajet était plus court, je choisirais ce quartier pour chercher un appartement.",
+          "baseText": {
+            "de": "Wenn der Weg kürzer wäre, würde ich dieses Viertel für die Wohnungssuche wählen.",
+            "en": "If the commute were shorter, I would choose this neighborhood to look for an apartment."
+          }
+        },
+        {
+          "targetText": "Les loyers y sont très élevés ; le quartier voisin coûte moins cher.",
+          "baseText": {
+            "de": "Die Mieten sind dort sehr hoch; das Nachbarviertel ist günstiger.",
+            "en": "The rents there are very high; the neighboring area is cheaper."
+          }
+        },
+        {
+          "targetText": "Si le bus desservait aussi le quartier voisin, je choisirais cette option.",
+          "baseText": {
+            "de": "Wenn der Bus auch das Nachbarviertel anfahren würde, würde ich diese Möglichkeit wählen.",
+            "en": "If the bus also served the neighboring area, I would choose that option."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Une condition pour choisir",
+        "rule": {
+          "de": "Nach si steht das imparfait der Bedingung; je choisirais im Hauptsatz beschreibt deine davon abhängige Wahl.",
+          "en": "After si, use the imparfait for the condition; je choisirais in the main clause describes the choice that depends on it."
+        },
+        "examples": [
+          {
+            "targetText": "Si le trajet était plus court, je choisirais ce quartier pour chercher un appartement.",
+            "baseText": {
+              "de": "Wenn der Weg kürzer wäre, würde ich dieses Viertel für die Wohnungssuche wählen.",
+              "en": "If the commute were shorter, I would choose this neighborhood to look for an apartment."
+            },
+            "highlight": "je choisirais ce quartier"
+          },
+          {
+            "targetText": "Si le bus desservait aussi le quartier voisin, je choisirais cette option.",
+            "baseText": {
+              "de": "Wenn der Bus auch das Nachbarviertel anfahren würde, würde ich diese Möglichkeit wählen.",
+              "en": "If the bus also served the neighboring area, I would choose that option."
+            },
+            "highlight": "Si le bus desservait"
+          }
+        ]
+      },
+      "cloze": [
+        "Si le bus ",
+        {
+          "kind": "form",
+          "answer": "desservait",
+          "cue": "desservir (le bus, imparfait)",
+          "choices": [
+            "desservais",
+            "desservions",
+            "desservait",
+            "desserviez"
+          ]
+        },
+        " aussi le quartier voisin, je ",
+        {
+          "kind": "form",
+          "answer": "choisirais",
+          "cue": "choisir (je, conditionnel)",
+          "choices": [
+            "choisirais",
+            "choisirait",
+            "choisirions",
+            "choisiraient"
+          ]
+        },
+        " cette option."
+      ],
+      "chunks": [
+        {
+          "targetText": "Si le trajet était plus court,",
+          "baseText": {
+            "de": "Wenn der Weg kürzer wäre,",
+            "en": "If the commute were shorter,"
+          }
+        },
+        {
+          "targetText": "je choisirais ce quartier",
+          "baseText": {
+            "de": "würde ich dieses Viertel wählen",
+            "en": "I would choose this neighborhood"
+          }
+        },
+        {
+          "targetText": "pour chercher",
+          "baseText": {
+            "de": "um zu suchen",
+            "en": "to look for"
+          }
+        },
+        {
+          "targetText": "un appartement.",
+          "baseText": {
+            "de": "eine Wohnung.",
+            "en": "an apartment."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "choisirais",
+          "baseText": {
+            "de": "ich würde wählen",
+            "en": "I would choose"
+          }
+        },
+        {
+          "targetText": "le trajet",
+          "baseText": {
+            "de": "der Weg; die Strecke",
+            "en": "the journey; commute"
+          }
+        },
+        {
+          "targetText": "un quartier",
+          "baseText": {
+            "de": "ein Viertel",
+            "en": "a neighborhood"
+          }
+        },
+        {
+          "targetText": "les loyers",
+          "baseText": {
+            "de": "die Mieten",
+            "en": "rents"
+          }
+        },
+        {
+          "targetText": "desservir",
+          "baseText": {
+            "de": "anfahren; verkehrlich anbinden",
+            "en": "to serve a place by transport"
+          }
+        },
+        {
+          "targetText": "une option",
+          "baseText": {
+            "de": "eine Möglichkeit",
+            "en": "an option"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Si le trajet était plus court, je ",
+        "answer": "choisirais",
+        "after": " ce quartier pour chercher un appartement.",
+        "fallbackChoices": [
+          "choisirions",
+          "choisirais",
+          "choisiraient",
+          "choisirait"
+        ]
+      },
+      "speakRequired": [
+        "trajet",
+        "choisirais",
+        "quartier"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund zeigt auf ein Viertel im Stadtplan: „Tu chercherais un appartement dans ce quartier ?“",
+        "en": "A friend points to a neighborhood on a map: “Tu chercherais un appartement dans ce quartier ?”"
+      },
+      "trophyWord": {
+        "word": "choisirais",
+        "meaning": {
+          "de": "ich würde wählen",
+          "en": "I would choose"
+        },
+        "example": "Si le trajet était plus court, je choisirais ce quartier pour chercher un appartement.",
+        "whyThisWord": {
+          "de": "Je choisirais beschreibt eine mögliche Entscheidung, die von einer noch offenen Bedingung abhängt.",
+          "en": "Je choisirais describes a possible decision that depends on a condition that is not yet settled."
+        }
+      },
+      "distractors": [
+        "Si le trajet était plus long,",
+        "une boutique."
+      ],
+      "placeholderCaption": {
+        "de": "Freunde vergleichen Wohnviertel auf einem Stadtplan.",
+        "en": "Friends compare residential areas on a map."
+      },
+      "songMood": "reflective open-ended city walk",
+      "visualNotes": "Friends with a neighborhood map; rent figures and cheaper neighboring area remain unrevealed."
+    },
+    {
+      "slug": "hesite-entre-deux-formations",
+      "title": {
+        "de": "Zwei interessante Kurse",
+        "en": "Two appealing courses"
+      },
+      "situation": {
+        "de": "Du besprichst mit einer Freundin zwei Fortbildungen, die dich interessieren.",
+        "en": "You discuss two courses that interest you with a friend."
+      },
+      "pedagogicalGoal": "Eine unsichere Wahl mit hésiter ausdrücken und mithilfe von si plus imparfait und conditionnel einen veränderten Lernplan entwickeln.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu veux suivre la formation photo ou celle de dessin ?",
+          "baseText": {
+            "de": "Möchtest du den Fotokurs oder den Zeichenkurs besuchen?",
+            "en": "Do you want to take the photography course or the drawing course?"
+          }
+        },
+        {
+          "targetText": "J'hésite entre ces deux formations ; si j'avais davantage de temps, je suivrais les deux.",
+          "baseText": {
+            "de": "Ich schwanke zwischen diesen beiden Kursen; wenn ich mehr Zeit hätte, würde ich beide besuchen.",
+            "en": "I'm hesitating between these two courses; if I had more time, I would take both."
+          }
+        },
+        {
+          "targetText": "Mais les deux cours ont lieu le même soir, à la même heure.",
+          "baseText": {
+            "de": "Aber beide Kurse finden am selben Abend zur selben Uhrzeit statt.",
+            "en": "But both courses take place on the same evening at the same time."
+          }
+        },
+        {
+          "targetText": "Si je choisissais l'atelier photo, je reporterais l'autre formation.",
+          "baseText": {
+            "de": "Wenn ich den Fotokurs wählte, würde ich den anderen Kurs verschieben.",
+            "en": "If I chose the photography workshop, I would postpone the other course."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Si j'avais davantage de temps…",
+        "rule": {
+          "de": "Si mit imparfait beschreibt hier eine vorgestellte Voraussetzung; der conditionnel erklärt, was du unter dieser Voraussetzung tun würdest.",
+          "en": "Si with the imparfait describes an imagined requirement here; the conditional explains what you would do under that condition."
+        },
+        "examples": [
+          {
+            "targetText": "J'hésite entre ces deux formations ; si j'avais davantage de temps, je suivrais les deux.",
+            "baseText": {
+              "de": "Ich schwanke zwischen diesen beiden Kursen; wenn ich mehr Zeit hätte, würde ich beide besuchen.",
+              "en": "I'm hesitating between these two courses; if I had more time, I would take both."
+            },
+            "highlight": "si j'avais davantage de temps"
+          },
+          {
+            "targetText": "Si je choisissais l'atelier photo, je reporterais l'autre formation.",
+            "baseText": {
+              "de": "Wenn ich den Fotokurs wählte, würde ich den anderen Kurs verschieben.",
+              "en": "If I chose the photography workshop, I would postpone the other course."
+            },
+            "highlight": "je reporterais l'autre formation"
+          }
+        ]
+      },
+      "cloze": [
+        "Si je ",
+        {
+          "kind": "form",
+          "answer": "choisissais",
+          "cue": "choisir (je, imparfait)",
+          "choices": [
+            "choisissait",
+            "choisissions",
+            "choisissiez",
+            "choisissais"
+          ]
+        },
+        " l'atelier photo, je ",
+        {
+          "kind": "form",
+          "answer": "reporterais",
+          "cue": "reporter (je, conditionnel)",
+          "choices": [
+            "reporterait",
+            "reporterais",
+            "reporterions",
+            "reporteraient"
+          ]
+        },
+        " l'autre formation."
+      ],
+      "chunks": [
+        {
+          "targetText": "J'hésite entre ces deux formations ;",
+          "baseText": {
+            "de": "Ich schwanke zwischen diesen beiden Kursen;",
+            "en": "I'm hesitating between these two courses;"
+          }
+        },
+        {
+          "targetText": "si j'avais",
+          "baseText": {
+            "de": "wenn ich hätte",
+            "en": "if I had"
+          }
+        },
+        {
+          "targetText": "davantage de temps,",
+          "baseText": {
+            "de": "mehr Zeit,",
+            "en": "more time,"
+          }
+        },
+        {
+          "targetText": "je suivrais les deux.",
+          "baseText": {
+            "de": "würde ich beide besuchen.",
+            "en": "I would take both."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "hésite",
+          "baseText": {
+            "de": "ich schwanke; ich zögere",
+            "en": "I hesitate; I am undecided"
+          }
+        },
+        {
+          "targetText": "une formation",
+          "baseText": {
+            "de": "eine Fortbildung; ein Kurs",
+            "en": "a training course"
+          }
+        },
+        {
+          "targetText": "le dessin",
+          "baseText": {
+            "de": "das Zeichnen",
+            "en": "drawing"
+          }
+        },
+        {
+          "targetText": "avoir lieu",
+          "baseText": {
+            "de": "stattfinden",
+            "en": "to take place"
+          }
+        },
+        {
+          "targetText": "davantage de temps",
+          "baseText": {
+            "de": "mehr Zeit",
+            "en": "more time"
+          }
+        },
+        {
+          "targetText": "reporter",
+          "baseText": {
+            "de": "verschieben",
+            "en": "to postpone"
+          }
+        }
+      ],
+      "recall": {
+        "before": "J'",
+        "answer": "hésite",
+        "after": " entre ces deux formations ; si j'avais davantage de temps, je suivrais les deux.",
+        "fallbackChoices": [
+          "hésitons",
+          "hésitez",
+          "hésite",
+          "hésitent"
+        ]
+      },
+      "speakRequired": [
+        "hésite",
+        "formations",
+        "temps"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin schaut mit dir ins Kursprogramm: „Tu veux suivre la formation photo ou celle de dessin ?“",
+        "en": "A friend looks at the course program with you: “Tu veux suivre la formation photo ou celle de dessin ?”"
+      },
+      "trophyWord": {
+        "word": "hésite",
+        "meaning": {
+          "de": "ich schwanke; ich zögere",
+          "en": "I hesitate; I am undecided"
+        },
+        "example": "J'hésite entre ces deux formations ; si j'avais davantage de temps, je suivrais les deux.",
+        "whyThisWord": {
+          "de": "J'hésite entre benennt offen, zwischen welchen Möglichkeiten du noch abwägst.",
+          "en": "J'hésite entre openly names the options you are still weighing up."
+        }
+      },
+      "distractors": [
+        "davantage d'argent,",
+        "je suivrais la première."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über Foto- und Zeichenkurse.",
+        "en": "A conversation about photography and drawing courses."
+      },
+      "songMood": "curious thoughtful choices",
+      "visualNotes": "Friends with course descriptions; schedules are not visible before the overlap is announced."
+    },
+    {
+      "slug": "compromis-pour-la-salle",
+      "title": {
+        "de": "Die Raumnutzung abstimmen",
+        "en": "Agreeing on room hours"
+      },
+      "situation": {
+        "de": "Du suchst mit einer Bekannten eine Vereinbarung über einen gemeinsamen Raum.",
+        "en": "You work with an acquaintance on an agreement for a shared room."
+      },
+      "pedagogicalGoal": "Mit serait-il possible de höflich eine Lösung anregen und sie mit einer erfüllbaren Bedingung im imparfait und conditionnel konkretisieren.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Comment veux-tu partager les horaires de la salle ?",
+          "baseText": {
+            "de": "Wie möchtest du die Nutzungszeiten für den Raum aufteilen?",
+            "en": "How would you like to divide up the room's hours?"
+          }
+        },
+        {
+          "targetText": "Serait-il possible de trouver un compromis sur les horaires de notre salle commune ?",
+          "baseText": {
+            "de": "Wäre ein Kompromiss bei den Nutzungszeiten unseres Gemeinschaftsraums möglich?",
+            "en": "Would it be possible to find a compromise on our shared room's hours?"
+          }
+        },
+        {
+          "targetText": "L'équipe de ménage doit entrer à dix-huit heures, sans exception.",
+          "baseText": {
+            "de": "Das Reinigungsteam muss um achtzehn Uhr hinein, ohne Ausnahme.",
+            "en": "The cleaning team needs access at six, without exception."
+          }
+        },
+        {
+          "targetText": "Si nous terminions avant, le ménage pourrait commencer à dix-huit heures.",
+          "baseText": {
+            "de": "Wenn wir vorher aufhörten, könnte die Reinigung um achtzehn Uhr beginnen.",
+            "en": "If we finished earlier, cleaning could begin at six."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Serait-il possible de…",
+        "rule": {
+          "de": "Serait-il possible de mit Infinitiv fragt höflich nach einer Lösung; eine si-Bedingung kann danach erläutern, wie sie umsetzbar wäre.",
+          "en": "Serait-il possible de followed by an infinitive politely asks about a solution; a si-condition can then explain how it would work."
+        },
+        "examples": [
+          {
+            "targetText": "Serait-il possible de trouver un compromis sur les horaires de notre salle commune ?",
+            "baseText": {
+              "de": "Wäre ein Kompromiss bei den Nutzungszeiten unseres Gemeinschaftsraums möglich?",
+              "en": "Would it be possible to find a compromise on our shared room's hours?"
+            },
+            "highlight": "Serait-il possible de trouver"
+          },
+          {
+            "targetText": "Si nous terminions avant, le ménage pourrait commencer à dix-huit heures.",
+            "baseText": {
+              "de": "Wenn wir vorher aufhörten, könnte die Reinigung um achtzehn Uhr beginnen.",
+              "en": "If we finished earlier, cleaning could begin at six."
+            },
+            "highlight": "Si nous terminions avant"
+          }
+        ]
+      },
+      "cloze": [
+        "Si nous ",
+        {
+          "kind": "form",
+          "answer": "terminions",
+          "cue": "terminer (nous, imparfait)",
+          "choices": [
+            "terminais",
+            "terminiez",
+            "terminions",
+            "terminaient"
+          ]
+        },
+        " avant, le ménage ",
+        {
+          "kind": "form",
+          "answer": "pourrait",
+          "cue": "pouvoir (le ménage, conditionnel)",
+          "choices": [
+            "pourrait",
+            "pourrais",
+            "pourrions",
+            "pourraient"
+          ]
+        },
+        " commencer à dix-huit heures."
+      ],
+      "chunks": [
+        {
+          "targetText": "Serait-il possible de trouver",
+          "baseText": {
+            "de": "Wäre es möglich zu finden",
+            "en": "Would it be possible to find"
+          }
+        },
+        {
+          "targetText": "un compromis",
+          "baseText": {
+            "de": "einen Kompromiss",
+            "en": "a compromise"
+          }
+        },
+        {
+          "targetText": "sur les horaires",
+          "baseText": {
+            "de": "bei den Nutzungszeiten",
+            "en": "on the hours"
+          }
+        },
+        {
+          "targetText": "de notre salle commune ?",
+          "baseText": {
+            "de": "unseres Gemeinschaftsraums?",
+            "en": "of our shared room?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un compromis",
+          "baseText": {
+            "de": "ein Kompromiss",
+            "en": "a compromise"
+          }
+        },
+        {
+          "targetText": "les horaires",
+          "baseText": {
+            "de": "die Nutzungszeiten",
+            "en": "the hours"
+          }
+        },
+        {
+          "targetText": "la salle commune",
+          "baseText": {
+            "de": "der Gemeinschaftsraum",
+            "en": "the shared room"
+          }
+        },
+        {
+          "targetText": "le ménage",
+          "baseText": {
+            "de": "die Reinigung",
+            "en": "cleaning"
+          }
+        },
+        {
+          "targetText": "sans exception",
+          "baseText": {
+            "de": "ohne Ausnahme",
+            "en": "without exception"
+          }
+        },
+        {
+          "targetText": "terminer",
+          "baseText": {
+            "de": "aufhören; beenden",
+            "en": "to finish"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Serait-il possible de trouver un ",
+        "answer": "compromis",
+        "after": " sur les horaires de notre salle commune ?",
+        "fallbackChoices": [
+          "renseignement",
+          "compromis",
+          "document",
+          "témoignage"
+        ]
+      },
+      "speakRequired": [
+        "possible",
+        "compromis",
+        "horaires"
+      ],
+      "sceneCaption": {
+        "de": "Eine Bekannte fragt zur Raumplanung: „Comment veux-tu partager les horaires de la salle ?“",
+        "en": "An acquaintance asks about planning the room's use: “Comment veux-tu partager les horaires de la salle ?”"
+      },
+      "trophyWord": {
+        "word": "compromis",
+        "meaning": {
+          "de": "Kompromiss",
+          "en": "compromise"
+        },
+        "example": "Serait-il possible de trouver un compromis sur les horaires de notre salle commune ?",
+        "whyThisWord": {
+          "de": "Trouver un compromis bezeichnet eine Lösung, bei der verschiedene Bedürfnisse miteinander vereinbart werden.",
+          "en": "Trouver un compromis describes finding a solution that accommodates different needs."
+        }
+      },
+      "distractors": [
+        "sur les tarifs",
+        "de notre jardin commun ?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Absprache über einen gemeinsamen Raum.",
+        "en": "An agreement about a shared room."
+      },
+      "songMood": "calm cooperative resolution",
+      "visualNotes": "Two acquaintances talking beside a shared room; no cleaner or cleaning deadline shown."
+    },
+    {
+      "slug": "ideal-pour-un-sejour",
+      "title": {
+        "de": "Ein paar Tage am See",
+        "en": "A few days by the lake"
+      },
+      "situation": {
+        "de": "Du planst mit einem Freund einen kurzen Aufenthalt am See.",
+        "en": "You plan a short stay by a lake with a friend."
+      },
+      "pedagogicalGoal": "Mit l'idéal serait eine Wunschvorstellung beschreiben und nach einer neuen Buchungsbedingung eine Alternative mit si plus imparfait entwickeln.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu imagines quel séjour pour notre pause au bord du lac ?",
+          "baseText": {
+            "de": "Was für einen Aufenthalt stellst du dir für unsere Auszeit am See vor?",
+            "en": "What kind of stay do you imagine for our break by the lake?"
+          }
+        },
+        {
+          "targetText": "L'idéal serait de passer trois nuits au bord du lac, dans le petit chalet.",
+          "baseText": {
+            "de": "Ideal wären drei Nächte am See in dem kleinen Chalet.",
+            "en": "The ideal plan would be three nights by the lake in the small chalet."
+          }
+        },
+        {
+          "targetText": "Le chalet est complet, mais le gîte voisin se loue pour quatre nuits minimum.",
+          "baseText": {
+            "de": "Das Chalet ist ausgebucht, aber das benachbarte Ferienhaus wird ab vier Nächten vermietet.",
+            "en": "The chalet is booked up, but the neighboring cottage can be rented for at least four nights."
+          }
+        },
+        {
+          "targetText": "Si nous ajoutions une nuit, je choisirais ce gîte.",
+          "baseText": {
+            "de": "Wenn wir eine Nacht dranhängten, würde ich dieses Ferienhaus wählen.",
+            "en": "If we added one night, I would choose that cottage."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "L'idéal serait…; si nous…",
+        "rule": {
+          "de": "L'idéal serait beschreibt deine Wunschlösung; mit si plus imparfait und conditionnel zeigst du, welche Änderung eine Alternative ermöglichen würde.",
+          "en": "L'idéal serait describes your ideal solution; si with the imparfait and conditional shows what change would make an alternative possible."
+        },
+        "examples": [
+          {
+            "targetText": "L'idéal serait de passer trois nuits au bord du lac, dans le petit chalet.",
+            "baseText": {
+              "de": "Ideal wären drei Nächte am See in dem kleinen Chalet.",
+              "en": "The ideal plan would be three nights by the lake in the small chalet."
+            },
+            "highlight": "L'idéal serait"
+          },
+          {
+            "targetText": "Si nous ajoutions une nuit, je choisirais ce gîte.",
+            "baseText": {
+              "de": "Wenn wir eine Nacht dranhängten, würde ich dieses Ferienhaus wählen.",
+              "en": "If we added one night, I would choose that cottage."
+            },
+            "highlight": "Si nous ajoutions une nuit"
+          }
+        ]
+      },
+      "cloze": [
+        "Si nous ",
+        {
+          "kind": "form",
+          "answer": "ajoutions",
+          "cue": "ajouter (nous, imparfait)",
+          "choices": [
+            "ajoutais",
+            "ajoutiez",
+            "ajoutaient",
+            "ajoutions"
+          ]
+        },
+        " une nuit, je ",
+        {
+          "kind": "form",
+          "answer": "choisirais",
+          "cue": "choisir (je, conditionnel)",
+          "choices": [
+            "choisirait",
+            "choisirais",
+            "choisirions",
+            "choisiraient"
+          ]
+        },
+        " ce gîte."
+      ],
+      "chunks": [
+        {
+          "targetText": "L'idéal serait de passer",
+          "baseText": {
+            "de": "Ideal wäre ein Aufenthalt von",
+            "en": "The ideal plan would be to spend"
+          }
+        },
+        {
+          "targetText": "trois nuits",
+          "baseText": {
+            "de": "drei Nächten",
+            "en": "three nights"
+          }
+        },
+        {
+          "targetText": "au bord du lac,",
+          "baseText": {
+            "de": "am See,",
+            "en": "by the lake,"
+          }
+        },
+        {
+          "targetText": "dans le petit chalet.",
+          "baseText": {
+            "de": "in dem kleinen Chalet.",
+            "en": "in the small chalet."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "l'idéal",
+          "baseText": {
+            "de": "das Ideal; die Wunschlösung",
+            "en": "the ideal; the ideal solution"
+          }
+        },
+        {
+          "targetText": "un séjour",
+          "baseText": {
+            "de": "ein Aufenthalt",
+            "en": "a stay"
+          }
+        },
+        {
+          "targetText": "au bord du lac",
+          "baseText": {
+            "de": "am See",
+            "en": "by the lake"
+          }
+        },
+        {
+          "targetText": "un chalet",
+          "baseText": {
+            "de": "ein Chalet; ein Ferienhäuschen",
+            "en": "a chalet"
+          }
+        },
+        {
+          "targetText": "un gîte",
+          "baseText": {
+            "de": "ein Ferienhaus",
+            "en": "a vacation cottage"
+          }
+        },
+        {
+          "targetText": "ajouter une nuit",
+          "baseText": {
+            "de": "eine Nacht dranhängen",
+            "en": "to add one night"
+          }
+        }
+      ],
+      "recall": {
+        "before": "L'",
+        "answer": "idéal",
+        "after": " serait de passer trois nuits au bord du lac, dans le petit chalet.",
+        "fallbackChoices": [
+          "objectif",
+          "essentiel",
+          "idéal",
+          "intérêt"
+        ]
+      },
+      "speakRequired": [
+        "idéal",
+        "nuits",
+        "lac"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund fragt nach deiner Vorstellung: „Tu imagines quel séjour pour notre pause au bord du lac ?“",
+        "en": "A friend asks what you have in mind: “Tu imagines quel séjour pour notre pause au bord du lac ?”"
+      },
+      "trophyWord": {
+        "word": "idéal",
+        "meaning": {
+          "de": "Ideal; Wunschlösung",
+          "en": "ideal; ideal solution"
+        },
+        "example": "L'idéal serait de passer trois nuits au bord du lac, dans le petit chalet.",
+        "whyThisWord": {
+          "de": "L'idéal serait nennt deine Wunschlösung, die du danach mit den tatsächlich verfügbaren Möglichkeiten vergleichen kannst.",
+          "en": "L'idéal serait names your ideal solution so you can compare it with the options actually available."
+        }
+      },
+      "distractors": [
+        "deux nuits",
+        "dans le grand hôtel."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde planen einen Aufenthalt am See.",
+        "en": "Two friends plan a lakeside stay."
+      },
+      "songMood": "relaxed lakeside possibility",
+      "visualNotes": "Friends looking at a lakeside landscape brochure; no booking status or minimum-stay condition visible."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 2,
+  "status": "reviewed-staged",
+  "level": "B1",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/french-p3.json",
+      "sha256": "a9b44b54b9c1bc2aa9096e042858cfedcf35f4a43a75228013abbdab223ae7e5",
+      "targetLanguage": "French",
+      "pathNumber": 3,
+      "reviewedVoiceId": "z1rEShu1SmowIOAmbHl1"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/french-p4.json",
+      "sha256": "f8e9d38be6d9ae485ca69f6320f51817a0eab86a75bc1780ba534033c5058029",
+      "targetLanguage": "French",
+      "pathNumber": 4,
+      "reviewedVoiceId": "z1rEShu1SmowIOAmbHl1"
+    }
+  ],
+  "reviewScope": "Local staging and recording only; not publication approval.",
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/french-p3.json",
+      "reviewedScratchSha256": "a9b44b54b9c1bc2aa9096e042858cfedcf35f4a43a75228013abbdab223ae7e5",
+      "stagedSha256": "a9b44b54b9c1bc2aa9096e042858cfedcf35f4a43a75228013abbdab223ae7e5",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/french-p4.json",
+      "reviewedScratchSha256": "f8e9d38be6d9ae485ca69f6320f51817a0eab86a75bc1780ba534033c5058029",
+      "stagedSha256": "f8e9d38be6d9ae485ca69f6320f51817a0eab86a75bc1780ba534033c5058029",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    }
+  ],
+  "fableReview": {
+    "model": "claude-fable-5-1",
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "evidenceSha256": "d3262cabc4578ebe6622cc0a3837aa8b4cdd0f715df59451c0d20c96dfc9556b",
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/french-p3.json": "a9b44b54b9c1bc2aa9096e042858cfedcf35f4a43a75228013abbdab223ae7e5",
+      "frontend/content-drafts/b1-2026-10/paths/french-p4.json": "f8e9d38be6d9ae485ca69f6320f51817a0eab86a75bc1780ba534033c5058029"
+    },
+    "approvalBasis": "Personal 20-lesson read; all 13 exact edits applied and mechanically validated; final independent re-review passed local staging/TTS."
+  },
+  "independentReview": {
+    "reviewer": "/root/latin_b2_gate_review — independent agent; did not author these lessons or Fable edits",
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "evidenceSha256": "c9f591d708a4a80eac2b3bf8ae1cade942752bc3aa1a8532a3c7b7bd8c172dad",
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/french-p3.json": "a9b44b54b9c1bc2aa9096e042858cfedcf35f4a43a75228013abbdab223ae7e5",
+      "frontend/content-drafts/b1-2026-10/paths/french-p4.json": "f8e9d38be6d9ae485ca69f6320f51817a0eab86a75bc1780ba534033c5058029"
+    },
+    "scope": "Zero unresolved local-TTS blockers only."
+  },
+  "unresolvedPublicationFindings": [],
+  "publicationStatus": "held",
+  "listeningStatus": "not-started"
+}

@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local staging and recording only; not publication approval.",
+  "fable": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "french-p3.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All four turns, de/en bases, pattern rules/examples/highlights, cloze concat and cues, chunk concat, recall concat and choices, speak tokens in turn 1, trophy presence in turn 1 and example, scene caption quotes turn 1 only, situation/caption/visualNotes free of them2 and learner reply, register per anchor, gender safety (no être/reflexive participles, no speaker adjectives in learner lines), staging L1-3 wish conditionals, L4-5 pourrais/pourriez/ce serait/il faudrait, L6-8 si+imparfait, L9 serait-il possible, L10 mix. Word counts within rails. Trophies possibilité, souhaiterais, volontiers, pourrais, aurais, serais, choisirais, hésite, compromis, idéal all anchored and preserved.",
+        "remainingConcerns": "Form cues carry a tense tag after the subject (e.g. prendre (je, imparfait)); the shared validator's cue regex would reject that tag once French LANGUAGE_RULES are added, and its blanket 'never informal' check must be gated off for French. Content keeps the tense tags because si-clauses and conditionals compete on typed blanks; validator side must accept 'subject, tense'. L8 switches la formation photo to l'atelier photo in the reply; tolerated as natural variation. L9 uses tu with an acquaintance rather than a friend; tolerated."
+      },
+      {
+        "file": "french-p4.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Same full-field pass. Every relative choice blank is uniquely valid in its visible slot (qui before a verb, que before vous/nous subject, où after jardin/café, dont after détail with parler); every form blank has its explicit subject in the literal text before it. Chunk and cloze reconstruction exact in all ten. Avoir-only learner past (dont je vous ai parlé); object agreement only (lavés, exposée). Register L1-5/L7-9 vous, L6/L10 tu. Trophies modèle, poche, tissu, logement, voisin, repère, détail, description, disponible, correspond preserved.",
+        "remainingConcerns": "L5 'sa collègue' for a garden caretaker's stand-in is slightly odd but harmless. L7 learner accepts looking at a bag with a different fastening while calling the star essential; acceptable as 'accept with modification'. Same validator cue/register coupling as P3 for the two conditionnel cues."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "Author flag P3L2 souhaiterais restricted to fixed je souhaiterais + infinitif",
+        "decision": "accept",
+        "reason": "souhaiterais is a wish conditional of the same family as voudrais/aimerais staged at L1-3; licensed in the anchor as a fixed request form with no paradigm."
+      },
+      {
+        "finding": "Author flag P3L5 aurais only in j'aurais besoin de",
+        "decision": "accept",
+        "reason": "Fits the L4-5 polite-upgrade window with il faudrait and vous pourriez; no hypothetical avoir; licensed in the anchor."
+      },
+      {
+        "finding": "Author: si + imparfait starts at P3L6, où at P4L5, dont at P4L7 superseding the provisional plan",
+        "decision": "accept",
+        "reason": "Matches the original native staging tables (P3 L6-8, P4 L5-6 où, L7-8 dont)."
+      },
+      {
+        "finding": "Author: que vous proposez in P4L8 reply to avoid a competing où reading",
+        "decision": "accept",
+        "reason": "Reply blank is uniquely que; dont stays the first-reply and pattern target."
+      },
+      {
+        "finding": "Author: validator PASS is structural only for French",
+        "decision": "accept with caveat",
+        "reason": "True; no French rails exist. The tense-tagged cues and informal registers will need a French config that accepts them before integration."
+      },
+      {
+        "finding": "Fable: P3L1 'changer pour jeudi' vs le vendredi / le jeudi elsewhere",
+        "decision": "adapt",
+        "reason": "Weekly course day takes the article; 'changer pour le jeudi' keeps the reply at 12 words."
+      },
+      {
+        "finding": "Fable: P3L4 'vous vérifiez le violon ensuite' does not answer 'il faut le rendre'",
+        "decision": "adapt",
+        "reason": "'vous récupérez le violon ensuite ?' makes the five-minute offer cohere with the return constraint; term and cloze updated."
+      },
+      {
+        "finding": "Fable: P3L7 reply 'ce quartier' is ambiguous after 'le quartier voisin'",
+        "decision": "adapt",
+        "reason": "'le quartier voisin' makes the alternative explicit; cloze literal and pattern example updated, 12 words."
+      },
+      {
+        "finding": "Fable: P4L3 staff names blue cotton the learner never mentioned",
+        "decision": "adapt",
+        "reason": "Them-turn now ties the recommended cotton to the blue stock-out."
+      },
+      {
+        "finding": "Fable: P4L6 learner invokes the friend's breakfast café unprompted",
+        "decision": "adapt",
+        "reason": "Them-turn now mentions the café where the friend has breakfast, so the où reply builds on visible context."
+      }
+    ],
+    "edits": [
+      {
+        "file": "french-p3.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "DRAFT under the original Fable B1 architecture: shape A, polite request or hypothesis followed by a new complication. L1–3 voudrais/aimerais/préférerais; L4–5 pourrais/pourriez, ce serait, il faudrait; L6–8 si + imparfait with conditionnel; L9 serait-il possible de; L10 consolidation. Native staging supersedes the provisional plan's L7 start for si + imparfait. Narrow author flags for Fable: immutable trophy souhaiterais at L2 is used only in the fixed je souhaiterais request; aurais at L5 only in j'aurais besoin de. Formal vous in L1–2/L4–6, informal tu with one friend in L3/L7–10. Gender-neutral learner production; no être/reflexive compound past, speaker adjectives, plus-que-parfait or conditionnel passé. French punctuation spaces, de/en bases, explicit form cues. Pending independent and Fable full-field review.",
+        "newValue": "DRAFT under the original Fable B1 architecture: shape A, polite request or hypothesis followed by a new complication. L1–3 voudrais/aimerais/préférerais; L4–5 pourrais/pourriez, ce serait, il faudrait; L6–8 si + imparfait with conditionnel; L9 serait-il possible de; L10 consolidation. Native staging supersedes the provisional plan's L7 start for si + imparfait. Fable-licensed narrow uses: immutable trophy souhaiterais at L2 appears only in the fixed je souhaiterais + infinitif request, a wish conditional alongside voudrais/aimerais; aurais at L5 only in j'aurais besoin de as a polite-need upgrade, no hypothetical avoir. Formal vous in L1–2/L4–6, informal tu with one friend in L3/L7–10. Gender-neutral learner production; no être/reflexive compound past, speaker adjectives, plus-que-parfait or conditionnel passé. French punctuation spaces, de/en bases, explicit form cues naming the tense where si-clauses and conditionals compete. Fable full-field read complete 2026-10-05; independent review pending.",
+        "reason": "License the two flagged trophies explicitly and record the read."
+      },
+      {
+        "file": "french-p3.json",
+        "jsonPointer": "/lessons/0/dialogue/3/targetText",
+        "oldValue": "Alors, je voudrais changer pour jeudi. Vous confirmez cette possibilité ?",
+        "newValue": "Alors, je voudrais changer pour le jeudi. Vous confirmez cette possibilité ?",
+        "reason": "Weekly course day takes the article, matching le vendredi / le jeudi in the other turns."
+      },
+      {
+        "file": "french-p3.json",
+        "jsonPointer": "/lessons/0/pattern/examples/1/targetText",
+        "oldValue": "Alors, je voudrais changer pour jeudi. Vous confirmez cette possibilité ?",
+        "newValue": "Alors, je voudrais changer pour le jeudi. Vous confirmez cette possibilité ?",
+        "reason": "Coupled pattern example."
+      },
+      {
+        "file": "french-p3.json",
+        "jsonPointer": "/lessons/0/cloze/2",
+        "oldValue": " changer pour jeudi. Vous ",
+        "newValue": " changer pour le jeudi. Vous ",
+        "reason": "Coupled cloze literal; concat identity preserved."
+      },
+      {
+        "file": "french-p3.json",
+        "jsonPointer": "/lessons/3/dialogue/3",
+        "oldValue": {
+          "targetText": "Je pourrais essayer cinq minutes ; vous vérifiez le violon ensuite ?",
+          "baseText": {
+            "de": "Ich könnte sie fünf Minuten ausprobieren; prüfen Sie die Geige danach?",
+            "en": "I could try it for five minutes; can you check the violin afterward?"
+          }
+        },
+        "newValue": {
+          "targetText": "Je pourrais essayer cinq minutes ; vous récupérez le violon ensuite ?",
+          "baseText": {
+            "de": "Ich könnte sie fünf Minuten ausprobieren; nehmen Sie die Geige danach zurück?",
+            "en": "I could try it for five minutes; will you take the violin back afterward?"
+          }
+        },
+        "reason": "Reply must answer the return constraint, not ask the shop to inspect the violin."
+      },
+      {
+        "file": "french-p3.json",
+        "jsonPointer": "/lessons/3/cloze/3",
+        "oldValue": {
+          "kind": "form",
+          "answer": "vérifiez",
+          "cue": "vérifier (vous)",
+          "choices": [
+            "vérifie",
+            "vérifient",
+            "vérifiez",
+            "vérifions"
+          ]
+        },
+        "newValue": {
+          "kind": "form",
+          "answer": "récupérez",
+          "cue": "récupérer (vous)",
+          "choices": [
+            "récupère",
+            "récupèrent",
+            "récupérez",
+            "récupérons"
+          ]
+        },
+        "reason": "Coupled cloze blank; concat identity preserved."
+      },
+      {
+        "file": "french-p3.json",
+        "jsonPointer": "/lessons/3/terms/5",
+        "oldValue": {
+          "targetText": "vérifier",
+          "baseText": {
+            "de": "prüfen",
+            "en": "to check"
+          }
+        },
+        "newValue": {
+          "targetText": "récupérer",
+          "baseText": {
+            "de": "zurücknehmen; abholen",
+            "en": "to take back; to collect"
+          }
+        },
+        "reason": "Coupled vocabulary item."
+      },
+      {
+        "file": "french-p3.json",
+        "jsonPointer": "/lessons/6/dialogue/3",
+        "oldValue": {
+          "targetText": "Si le bus desservait aussi ce quartier, je choisirais cette option.",
+          "baseText": {
+            "de": "Wenn der Bus auch dieses Viertel anfahren würde, würde ich diese Möglichkeit wählen.",
+            "en": "If the bus also served that neighborhood, I would choose that option."
+          }
+        },
+        "newValue": {
+          "targetText": "Si le bus desservait aussi le quartier voisin, je choisirais cette option.",
+          "baseText": {
+            "de": "Wenn der Bus auch das Nachbarviertel anfahren würde, würde ich diese Möglichkeit wählen.",
+            "en": "If the bus also served the neighboring area, I would choose that option."
+          }
+        },
+        "reason": "'ce quartier' was used for the first neighborhood in turn 2; the reply must point to the cheaper neighboring one."
+      },
+      {
+        "file": "french-p3.json",
+        "jsonPointer": "/lessons/6/pattern/examples/1",
+        "oldValue": {
+          "targetText": "Si le bus desservait aussi ce quartier, je choisirais cette option.",
+          "baseText": {
+            "de": "Wenn der Bus auch dieses Viertel anfahren würde, würde ich diese Möglichkeit wählen.",
+            "en": "If the bus also served that neighborhood, I would choose that option."
+          },
+          "highlight": "Si le bus desservait"
+        },
+        "newValue": {
+          "targetText": "Si le bus desservait aussi le quartier voisin, je choisirais cette option.",
+          "baseText": {
+            "de": "Wenn der Bus auch das Nachbarviertel anfahren würde, würde ich diese Möglichkeit wählen.",
+            "en": "If the bus also served the neighboring area, I would choose that option."
+          },
+          "highlight": "Si le bus desservait"
+        },
+        "reason": "Coupled pattern example."
+      },
+      {
+        "file": "french-p3.json",
+        "jsonPointer": "/lessons/6/cloze/2",
+        "oldValue": " aussi ce quartier, je ",
+        "newValue": " aussi le quartier voisin, je ",
+        "reason": "Coupled cloze literal; concat identity preserved, 12 words."
+      },
+      {
+        "file": "french-p4.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "DRAFT under the original Fable B1 architecture: shape C, precise description followed by a new constraint and acceptance with modification. L1–4 qui/que; L5–6 où; L7–8 dont; L9 ce qui/ce que; L10 mixed recycling. This native staging supersedes the provisional plan's later où and proposed dont ban; all ten allocated trophies and native beats remain. Formal vous in L1–5/L7–9; informal tu with one friend in L6/L10. Gender-neutral production with avoir-only learner past and ordinary object agreement. Two blanks per cloze, a relative choice plus a subject-cued verb form. No new subjunctive or complex relative forms. Pending independent and Fable full-field review.",
+        "newValue": "DRAFT under the original Fable B1 architecture: shape C, precise description followed by a new constraint and acceptance with modification. L1–4 qui/que; L5–6 où; L7–8 dont; L9 ce qui/ce que; L10 mixed recycling. This native staging supersedes the provisional plan's later où and proposed dont ban; all ten allocated trophies and native beats remain. Formal vous in L1–5/L7–9; informal tu with one friend in L6/L10. Gender-neutral production with avoir-only learner past and ordinary object agreement. Two blanks per cloze, a relative choice plus a subject-cued verb form. No new subjunctive or complex relative forms. Fable full-field read complete 2026-10-05; independent review pending.",
+        "reason": "Record the read; staging confirmed against the native table."
+      },
+      {
+        "file": "french-p4.json",
+        "jsonPointer": "/lessons/2/dialogue/2",
+        "oldValue": {
+          "targetText": "Le coton bleu est épuisé ; il reste le même tissu en vert.",
+          "baseText": {
+            "de": "Die blaue Baumwolle ist ausverkauft; denselben Stoff gibt es noch in Grün.",
+            "en": "The blue cotton is sold out; the same fabric is still available in green."
+          }
+        },
+        "newValue": {
+          "targetText": "Le coton que je conseille est épuisé en bleu ; il reste le même tissu en vert.",
+          "baseText": {
+            "de": "Die Baumwolle, die ich empfehle, ist in Blau ausverkauft; denselben Stoff gibt es noch in Grün.",
+            "en": "The cotton I recommend is sold out in blue; the same fabric is still available in green."
+          }
+        },
+        "reason": "Learner asked for the recommended fabric without naming blue; the complication must tie the stock-out to that recommendation. Them-turn only; no coupled learner fields."
+      },
+      {
+        "file": "french-p4.json",
+        "jsonPointer": "/lessons/5/dialogue/2",
+        "oldValue": {
+          "targetText": "Cette place a beaucoup de marches ; le café juste à côté est plus accessible.",
+          "baseText": {
+            "de": "Auf diesem Platz gibt es viele Stufen; das Café direkt daneben ist leichter zugänglich.",
+            "en": "That square has a lot of steps; the café right next to it is easier to access."
+          }
+        },
+        "newValue": {
+          "targetText": "Cette place a beaucoup de marches ; le café juste à côté, où je prends mon petit déjeuner, est plus accessible.",
+          "baseText": {
+            "de": "Auf diesem Platz gibt es viele Stufen; das Café direkt daneben, in dem ich frühstücke, ist leichter zugänglich.",
+            "en": "That square has a lot of steps; the café right next to it, where I have breakfast, is easier to access."
+          }
+        },
+        "reason": "The learner's où reply refers to the friend's breakfast café; that fact must be visible in turn 3. Them-turn only; scene caption and visualNotes still hide it."
+      }
+    ],
+    "finalChecks": "After edits: P3L1 cloze concat = turn 4 (12 words); P3L4 cloze concat = turn 4 (12 words), terms distinct, speak tokens unchanged; P3L7 cloze concat = turn 4 (12 words), pattern example 1 = turn 4; P4L3/L6 them-turn edits do not touch chunks, cloze, recall, speak or scene. All 20 trophies unchanged. Before integration the French validator config must (a) accept cue tags of the form 'subject, imparfait|conditionnel' by matching only the part before the comma, (b) not apply the Lei/você 'never informal' check to French, (c) add register pair vous/tu mid-sentence checks. Content approval only; independent review still required; no production approval, no edition regeneration, catalog SQL or TTS spend implied; author report hashes will change after these edits."
+  },
+  "independent": {
+    "schemaVersion": 1,
+    "reviewDate": "2026-10-05",
+    "verdict": "PASS",
+    "reviewer": "/root/latin_b2_gate_review — independent agent; did not author these lessons or Fable edits",
+    "findingCount": 0,
+    "severityCounts": {
+      "BLOCKER": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0
+    },
+    "reviewedSources": {
+      "french-p3.json": "a9b44b54b9c1bc2aa9096e042858cfedcf35f4a43a75228013abbdab223ae7e5",
+      "french-p4.json": "f8e9d38be6d9ae485ca69f6320f51817a0eab86a75bc1780ba534033c5058029",
+      "B1_FRENCH_P3_P4_FABLE_REVIEW_RAW.json": "d3262cabc4578ebe6622cc0a3837aa8b4cdd0f715df59451c0d20c96dfc9556b"
+    },
+    "additionalBindings": {
+      "new-content/french-p3.json": "247ff0b03989060b375425030b9687200048d905065fb9b733556c2e41f96436",
+      "new-content/french-p4.json": "dc126bbca55c387fbb1d50e483abe26dc901263939f3338621c9864faf2b60ec",
+      "new-content/french-p3-p4-author-report.json": "4a3c4b19fd58a9a9a6b347b17a088f87b88a342afb598d6ae23d02140d8b7507",
+      "B1_FRENCH_P3_P4_APPLIED_HASHES.json": "9f6c10d285d67a3fad6b1a7f494412c4feff0bf7a099b05fafaa4afa02130a57",
+      "tmp/B1_EXPANSION_FABLE_ARCHITECT_20261003.json": "4edc28ddc0a96aeefd838a721d99164ef8c7d83f0c4a727da94554d25445bde8",
+      "orchestrator/frontend/content-drafts/b1-2026-10/french-plan.json": "07f7ee247ffe0babec3ae5d01a5115cba60b48c7ace0175e04048d8b85843380",
+      "orchestrator/frontend/scripts/lib/guidedB1Drafts.ts": "b04badcb7a3835e0faf352e7f9d09c2cd235052f5388dc42b3908f362b24e15e",
+      "orchestrator/frontend/src/components/today/ComplicationStep.tsx": "26dbba90f8d79bab3daa4a265481f4b58e85f337f2bc2e7af7ec5417f065f4d2",
+      "orchestrator/frontend/src/components/today/BuildPhraseStep.tsx": "3fa4b962b91045d88ade7a435c1d1e016ef6b53484e2d746ac40544329e16bb9",
+      "orchestrator/frontend/src/components/today/TypeRecallStep.tsx": "a0a738b243c005a51154dde621d8edcfb049f64a7e849241c3bce36b8312d218"
+    },
+    "completeReadCoverage": {
+      "personallyReadEveryField": true,
+      "french-p3.json": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "french-p4.json": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "fields": "Both path headers and all lesson fields: titles, situations, goals, registers, four turns and both translations, pattern labels/rules/examples/highlights, every cloze literal/answer/cue/choice, chunk text/glosses, terms, recall fields, speech tokens, trophy fields, scene captions, distractors, placeholder captions, song moods and visual notes.",
+      "counts": {
+        "lessons": 20,
+        "dialogueTurns": 80,
+        "chunks": 80,
+        "terms": 120,
+        "patternExamples": 41,
+        "clozeBlanks": 40,
+        "recallTargets": 20,
+        "speechTokens": 60
+      }
+    },
+    "replay": {
+      "edits": 13,
+      "exactOldValuesMatched": 13,
+      "unexpectedChanges": 0,
+      "finalObjectsEqualExactReplay": true,
+      "appliedHashesMatch": true,
+      "result": "PASS. Independently replayed every raw Fable edit against the original author files in memory. The final parsed objects match exactly; changed dialogue, pattern, cloze and vocabulary couplings remain consistent."
+    },
+    "validation": {
+      "actualValidateB1Draft": "PASS for both final files, 20 lessons. Executed through Node/tsx without writing app files.",
+      "trophies": {
+        "fullAllocation": 100,
+        "uniqueAllocated": 100,
+        "importedAllVibeFrozen": 197,
+        "collisions": 0,
+        "allTwentyMatchTheirAllocatedRows": true,
+        "firstReplyPatternAndExampleAnchors": true
+      },
+      "supplementalChecks": "PASS: exact final hashes, French/fr-FR identity, de/en scene quotations without delayed-turn leakage, NFC/control/orthography checks across spoken and choice surfaces, and per-lesson vous/tu consistency. Shared gate verifies coupled reconstruction and token/choice structure."
+    },
+    "independentAssessment": [
+      "No issue: French is natural and coherent across requests, constraints and revised proposals. P3 develops workable alternatives; P4 preserves a criterion when considering an alternative. Openings and scene descriptions do not disclose the later complication.",
+      "No issue: the original architecture controls staging. Fixed souhaiterais at P3L2 and j'aurais besoin de at P3L5 stay within Fable's explicit licenses. Hypothetical si begins at P3L6; où at P4L5, dont at P4L7, and ce qui/ce que at P4L9. Earlier wrong-answer chips do not constitute productive teaching of those forms.",
+      "No issue: learner production is gender-neutral; object agreement and references to other people are correctly distinguished from speaker agreement. Formal service exchanges and informal friend exchanges retain matching German address forms.",
+      "No issue: German/English bases preserve the intended meaning and provide usable build cues. Chunks have meaningful glosses; build distractors change the stated meaning. No clear equivalent complete alternate chip ordering was identified.",
+      "No issue: all forty cloze blanks have one valid offered answer in the actual visible slot. Form cues identify the literal subject and later hypothetical exercises name the tense; relative slots distinguish qui/que/où/dont by syntax. Recall is explicitly from memory; its unused fallback data must not be mistaken for visible multiple-choice grammar testing."
+    ],
+    "findings": [],
+    "unresolvedLocalTtsBlockers": [],
+    "remainingPublicationFindings": [],
+    "scopeLimits": [
+      "The generic gate has no French production-rail configuration. This semantic PASS covers the exact twenty fully read lessons; it does not certify that future French drafts receive equivalent automated checks.",
+      "Fable's conclusions were evidence to verify, not a substitute for the independent full read. No production integration, paid-run binding, voice/accent/device/listening, edition or catalog approval is claimed.",
+      "No app, git, provider or database writes; only this authorized scratch report was created."
+    ],
+    "repositoryStatus": "Committed no · Pushed no · Live not yet · Checks: full twenty-lesson independent read, thirteen-edit exact replay, actual gate and trophy checks PASS."
+  }
+}

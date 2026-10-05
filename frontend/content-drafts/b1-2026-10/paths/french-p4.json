@@ -1,0 +1,2120 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "baseLanguage": "German",
+  "pathNumber": 4,
+  "title": {
+    "de": "Das Passende genauer beschreiben",
+    "en": "Describing the right one"
+  },
+  "subtitle": {
+    "de": "Benenne deine Kriterien und handle eine passende Alternative aus.",
+    "en": "State your criteria and negotiate a suitable alternative."
+  },
+  "anchor": "DRAFT under the original Fable B1 architecture: shape C, precise description followed by a new constraint and acceptance with modification. L1–4 qui/que; L5–6 où; L7–8 dont; L9 ce qui/ce que; L10 mixed recycling. This native staging supersedes the provisional plan's later où and proposed dont ban; all ten allocated trophies and native beats remain. Formal vous in L1–5/L7–9; informal tu with one friend in L6/L10. Gender-neutral production with avoir-only learner past and ordinary object agreement. Two blanks per cloze, a relative choice plus a subject-cued verb form. No new subjunctive or complex relative forms. Fable full-field read complete 2026-10-05; independent review pending.",
+  "lessons": [
+    {
+      "slug": "modele-qui-eclaire",
+      "title": {
+        "de": "Licht für den ganzen Tisch",
+        "en": "Light for the whole table"
+      },
+      "situation": {
+        "de": "Du beschreibst in einem Geschäft, welche Tischlampe du suchst.",
+        "en": "You describe the table lamp you are looking for in a shop."
+      },
+      "pedagogicalGoal": "Mit qui eine Lampe über ihre Funktion bestimmen und beim Wechsel der Farbe am wichtigen Kriterium festhalten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quel type de lampe cherchez-vous pour votre table ?",
+          "baseText": {
+            "de": "Welche Art Lampe suchen Sie für Ihren Tisch?",
+            "en": "What kind of lamp are you looking for for your table?"
+          }
+        },
+        {
+          "targetText": "Je cherche le modèle de lampe qui éclaire toute la table sans éblouir.",
+          "baseText": {
+            "de": "Ich suche das Lampenmodell, das den ganzen Tisch beleuchtet, ohne zu blenden.",
+            "en": "I'm looking for the lamp model that lights the whole table without glare."
+          }
+        },
+        {
+          "targetText": "Il ne reste que ce modèle en rouge, avec la même puissance.",
+          "baseText": {
+            "de": "Dieses Modell gibt es nur noch in Rot, mit derselben Leistung.",
+            "en": "This model is only left in red, with the same power."
+          }
+        },
+        {
+          "targetText": "La lampe qui éclaire autant me convient, même en rouge.",
+          "baseText": {
+            "de": "Die Lampe, die genauso hell leuchtet, passt für mich, auch in Rot.",
+            "en": "The lamp that gives as much light works for me, even in red."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Qui décrit le sujet",
+        "rule": {
+          "de": "Qui ersetzt das Subjekt im Relativsatz: Die Lampe selbst beleuchtet den Tisch.",
+          "en": "Qui replaces the subject in the relative clause: the lamp itself lights the table."
+        },
+        "examples": [
+          {
+            "targetText": "Je cherche le modèle de lampe qui éclaire toute la table sans éblouir.",
+            "baseText": {
+              "de": "Ich suche das Lampenmodell, das den ganzen Tisch beleuchtet, ohne zu blenden.",
+              "en": "I'm looking for the lamp model that lights the whole table without glare."
+            },
+            "highlight": "qui éclaire toute la table"
+          },
+          {
+            "targetText": "La lampe qui éclaire autant me convient, même en rouge.",
+            "baseText": {
+              "de": "Die Lampe, die genauso hell leuchtet, passt für mich, auch in Rot.",
+              "en": "The lamp that gives as much light works for me, even in red."
+            },
+            "highlight": "qui éclaire autant"
+          }
+        ]
+      },
+      "cloze": [
+        "La lampe ",
+        {
+          "kind": "choice",
+          "answer": "qui",
+          "choices": [
+            "que",
+            "qui",
+            "où",
+            "dont"
+          ]
+        },
+        " éclaire autant me ",
+        {
+          "kind": "form",
+          "answer": "convient",
+          "cue": "convenir (la lampe)",
+          "choices": [
+            "conviennent",
+            "convenons",
+            "convenez",
+            "convient"
+          ]
+        },
+        ", même en rouge."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je cherche le modèle de lampe",
+          "baseText": {
+            "de": "Ich suche das Lampenmodell",
+            "en": "I'm looking for the lamp model"
+          }
+        },
+        {
+          "targetText": "qui éclaire",
+          "baseText": {
+            "de": "das beleuchtet",
+            "en": "that lights"
+          }
+        },
+        {
+          "targetText": "toute la table",
+          "baseText": {
+            "de": "den ganzen Tisch",
+            "en": "the whole table"
+          }
+        },
+        {
+          "targetText": "sans éblouir.",
+          "baseText": {
+            "de": "ohne zu blenden.",
+            "en": "without glare."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un modèle",
+          "baseText": {
+            "de": "ein Modell",
+            "en": "a model"
+          }
+        },
+        {
+          "targetText": "une lampe",
+          "baseText": {
+            "de": "eine Lampe",
+            "en": "a lamp"
+          }
+        },
+        {
+          "targetText": "éclairer",
+          "baseText": {
+            "de": "beleuchten",
+            "en": "to light"
+          }
+        },
+        {
+          "targetText": "éblouir",
+          "baseText": {
+            "de": "blenden",
+            "en": "to dazzle; to cause glare"
+          }
+        },
+        {
+          "targetText": "la puissance",
+          "baseText": {
+            "de": "die Leistung",
+            "en": "power"
+          }
+        },
+        {
+          "targetText": "autant",
+          "baseText": {
+            "de": "genauso viel",
+            "en": "as much"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je cherche le ",
+        "answer": "modèle",
+        "after": " de lampe qui éclaire toute la table sans éblouir.",
+        "fallbackChoices": [
+          "modèle",
+          "pied",
+          "prix",
+          "fabricant"
+        ]
+      },
+      "speakRequired": [
+        "modèle",
+        "lampe",
+        "table"
+      ],
+      "sceneCaption": {
+        "de": "Im Geschäft fragt die Verkäuferin: „Quel type de lampe cherchez-vous pour votre table ?“",
+        "en": "In the shop, the assistant asks: “Quel type de lampe cherchez-vous pour votre table ?”"
+      },
+      "trophyWord": {
+        "word": "modèle",
+        "meaning": {
+          "de": "Modell",
+          "en": "model"
+        },
+        "example": "Je cherche le modèle de lampe qui éclaire toute la table sans éblouir.",
+        "whyThisWord": {
+          "de": "Modèle benennt eine bestimmte Ausführung, die du anschließend mit einem Relativsatz genau beschreiben kannst.",
+          "en": "Modèle identifies a particular design that you can then describe precisely with a relative clause."
+        }
+      },
+      "distractors": [
+        "qui chauffe",
+        "toute la pièce"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Beratung zu einer Tischlampe.",
+        "en": "Advice about a table lamp."
+      },
+      "songMood": "soft focused shop conversation",
+      "visualNotes": "Customer and assistant beside a display table; do not reveal the available color."
+    },
+    {
+      "slug": "poche-qui-ferme",
+      "title": {
+        "de": "Eine sichere Tasche",
+        "en": "A secure pocket"
+      },
+      "situation": {
+        "de": "Du suchst in einem Bekleidungsgeschäft eine passende Jacke.",
+        "en": "You are looking for a suitable jacket in a clothing shop."
+      },
+      "pedagogicalGoal": "Mit qui ein unverzichtbares Merkmal einer Jacke beschreiben und bei einer anderen Schnittform daran festhalten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quel détail compte le plus pour votre nouvelle veste ?",
+          "baseText": {
+            "de": "Welches Detail ist Ihnen bei Ihrer neuen Jacke am wichtigsten?",
+            "en": "Which detail matters most to you in your new jacket?"
+          }
+        },
+        {
+          "targetText": "Je cherche une veste avec une poche qui ferme complètement pour protéger mon téléphone.",
+          "baseText": {
+            "de": "Ich suche eine Jacke mit einer Tasche, die vollständig schließt, um mein Telefon zu schützen.",
+            "en": "I'm looking for a jacket with a pocket that closes fully to protect my phone."
+          }
+        },
+        {
+          "targetText": "Ce modèle est épuisé ; cette veste plus courte a la même fermeture.",
+          "baseText": {
+            "de": "Dieses Modell ist ausverkauft; diese kürzere Jacke hat denselben Verschluss.",
+            "en": "This model is sold out; this shorter jacket has the same fastening."
+          }
+        },
+        {
+          "targetText": "La poche qui ferme bien reste indispensable ; cette coupe me convient.",
+          "baseText": {
+            "de": "Eine gut schließende Tasche bleibt unverzichtbar; dieser Schnitt passt für mich.",
+            "en": "A pocket that closes securely is still essential; this cut works for me."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Une poche qui ferme",
+        "rule": {
+          "de": "Mit qui verbindest du ein Nomen mit einer Eigenschaft, bei der es selbst Subjekt des Verbs ist.",
+          "en": "Use qui to connect a noun to a feature in which that noun is the subject of the verb."
+        },
+        "examples": [
+          {
+            "targetText": "Je cherche une veste avec une poche qui ferme complètement pour protéger mon téléphone.",
+            "baseText": {
+              "de": "Ich suche eine Jacke mit einer Tasche, die vollständig schließt, um mein Telefon zu schützen.",
+              "en": "I'm looking for a jacket with a pocket that closes fully to protect my phone."
+            },
+            "highlight": "une poche qui ferme complètement"
+          },
+          {
+            "targetText": "La poche qui ferme bien reste indispensable ; cette coupe me convient.",
+            "baseText": {
+              "de": "Eine gut schließende Tasche bleibt unverzichtbar; dieser Schnitt passt für mich.",
+              "en": "A pocket that closes securely is still essential; this cut works for me."
+            },
+            "highlight": "La poche qui ferme bien"
+          }
+        ]
+      },
+      "cloze": [
+        "La poche ",
+        {
+          "kind": "choice",
+          "answer": "qui",
+          "choices": [
+            "où",
+            "dont",
+            "qui",
+            "que"
+          ]
+        },
+        " ferme bien reste indispensable ; cette coupe me ",
+        {
+          "kind": "form",
+          "answer": "convient",
+          "cue": "convenir (cette coupe)",
+          "choices": [
+            "convient",
+            "convenez",
+            "conviennent",
+            "convenons"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je cherche une veste",
+          "baseText": {
+            "de": "Ich suche eine Jacke",
+            "en": "I'm looking for a jacket"
+          }
+        },
+        {
+          "targetText": "avec une poche",
+          "baseText": {
+            "de": "mit einer Tasche",
+            "en": "with a pocket"
+          }
+        },
+        {
+          "targetText": "qui ferme complètement",
+          "baseText": {
+            "de": "die vollständig schließt",
+            "en": "that closes fully"
+          }
+        },
+        {
+          "targetText": "pour protéger mon téléphone.",
+          "baseText": {
+            "de": "um mein Telefon zu schützen.",
+            "en": "to protect my phone."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "une poche",
+          "baseText": {
+            "de": "eine Jackentasche",
+            "en": "a pocket"
+          }
+        },
+        {
+          "targetText": "une veste",
+          "baseText": {
+            "de": "eine Jacke",
+            "en": "a jacket"
+          }
+        },
+        {
+          "targetText": "complètement",
+          "baseText": {
+            "de": "vollständig",
+            "en": "fully"
+          }
+        },
+        {
+          "targetText": "protéger",
+          "baseText": {
+            "de": "schützen",
+            "en": "to protect"
+          }
+        },
+        {
+          "targetText": "une fermeture",
+          "baseText": {
+            "de": "ein Verschluss",
+            "en": "a fastening"
+          }
+        },
+        {
+          "targetText": "une coupe",
+          "baseText": {
+            "de": "ein Schnitt",
+            "en": "a cut; a style"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je cherche une veste avec une ",
+        "answer": "poche",
+        "after": " qui ferme complètement pour protéger mon téléphone.",
+        "fallbackChoices": [
+          "manche",
+          "poche",
+          "capuche",
+          "doublure"
+        ]
+      },
+      "speakRequired": [
+        "veste",
+        "poche",
+        "téléphone"
+      ],
+      "sceneCaption": {
+        "de": "Eine Verkäuferin fragt nach deinem wichtigsten Kriterium: „Quel détail compte le plus pour votre nouvelle veste ?“",
+        "en": "An assistant asks about your main criterion: “Quel détail compte le plus pour votre nouvelle veste ?”"
+      },
+      "trophyWord": {
+        "word": "poche",
+        "meaning": {
+          "de": "Tasche an einem Kleidungsstück",
+          "en": "pocket"
+        },
+        "example": "Je cherche une veste avec une poche qui ferme complètement pour protéger mon téléphone.",
+        "whyThisWord": {
+          "de": "Poche bezeichnet eine Tasche am Kleidungsstück; der Relativsatz erklärt, welche Funktion sie erfüllen soll.",
+          "en": "Poche means a pocket in clothing; the relative clause explains what it needs to do."
+        }
+      },
+      "distractors": [
+        "Je cherche un manteau",
+        "pour protéger mes lunettes."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Jacke nach praktischen Kriterien auswählen.",
+        "en": "Choosing a jacket for its practical features."
+      },
+      "songMood": "light practical shopping",
+      "visualNotes": "Customer discussing jacket features at a clothing rack; no sold-out label or shorter substitute highlighted."
+    },
+    {
+      "slug": "tissu-que-vous-conseillez",
+      "title": {
+        "de": "Stoff für häufiges Waschen",
+        "en": "Fabric for frequent washing"
+      },
+      "situation": {
+        "de": "Du suchst in einem Stoffgeschäft Material für pflegeleichte Vorhänge.",
+        "en": "You look for material for easy-care curtains in a fabric shop."
+      },
+      "pedagogicalGoal": "Mit que das direkte Objekt eines Relativsatzes bestimmen und eine andere Farbe bei gleicher Materialqualität annehmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quel tissu souhaitez-vous pour vos nouveaux rideaux ?",
+          "baseText": {
+            "de": "Welchen Stoff möchten Sie für Ihre neuen Vorhänge?",
+            "en": "Which fabric would you like for your new curtains?"
+          }
+        },
+        {
+          "targetText": "Je voudrais le tissu que vous conseillez pour des rideaux lavés très souvent.",
+          "baseText": {
+            "de": "Ich möchte den Stoff, den Sie für sehr häufig gewaschene Vorhänge empfehlen.",
+            "en": "I'd like the fabric you recommend for curtains that are washed very often."
+          }
+        },
+        {
+          "targetText": "Le coton que je conseille est épuisé en bleu ; il reste le même tissu en vert.",
+          "baseText": {
+            "de": "Die Baumwolle, die ich empfehle, ist in Blau ausverkauft; denselben Stoff gibt es noch in Grün.",
+            "en": "The cotton I recommend is sold out in blue; the same fabric is still available in green."
+          }
+        },
+        {
+          "targetText": "Le vert que vous proposez convient ; je garde cette matière.",
+          "baseText": {
+            "de": "Das Grün, das Sie anbieten, passt; ich bleibe bei diesem Material.",
+            "en": "The green you offer works; I'll keep this material."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Que reprend l'objet",
+        "rule": {
+          "de": "Que ersetzt das direkte Objekt: In le tissu que vous conseillez ist vous das Subjekt und der Stoff das Empfohlene.",
+          "en": "Que replaces the direct object: in le tissu que vous conseillez, vous is the subject and the fabric is what is recommended."
+        },
+        "examples": [
+          {
+            "targetText": "Je voudrais le tissu que vous conseillez pour des rideaux lavés très souvent.",
+            "baseText": {
+              "de": "Ich möchte den Stoff, den Sie für sehr häufig gewaschene Vorhänge empfehlen.",
+              "en": "I'd like the fabric you recommend for curtains that are washed very often."
+            },
+            "highlight": "le tissu que vous conseillez"
+          },
+          {
+            "targetText": "Le vert que vous proposez convient ; je garde cette matière.",
+            "baseText": {
+              "de": "Das Grün, das Sie anbieten, passt; ich bleibe bei diesem Material.",
+              "en": "The green you offer works; I'll keep this material."
+            },
+            "highlight": "Le vert que vous proposez"
+          }
+        ]
+      },
+      "cloze": [
+        "Le vert ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "qui",
+            "dont",
+            "où",
+            "que"
+          ]
+        },
+        " vous proposez convient ; je ",
+        {
+          "kind": "form",
+          "answer": "garde",
+          "cue": "garder (je)",
+          "choices": [
+            "gardent",
+            "garde",
+            "gardons",
+            "gardez"
+          ]
+        },
+        " cette matière."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je voudrais le tissu",
+          "baseText": {
+            "de": "Ich möchte den Stoff",
+            "en": "I'd like the fabric"
+          }
+        },
+        {
+          "targetText": "que vous conseillez",
+          "baseText": {
+            "de": "den Sie empfehlen",
+            "en": "you recommend"
+          }
+        },
+        {
+          "targetText": "pour des rideaux",
+          "baseText": {
+            "de": "für Vorhänge",
+            "en": "for curtains"
+          }
+        },
+        {
+          "targetText": "lavés très souvent.",
+          "baseText": {
+            "de": "die sehr oft gewaschen werden.",
+            "en": "that are washed very often."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le tissu",
+          "baseText": {
+            "de": "der Stoff",
+            "en": "the fabric"
+          }
+        },
+        {
+          "targetText": "conseiller",
+          "baseText": {
+            "de": "empfehlen",
+            "en": "to recommend"
+          }
+        },
+        {
+          "targetText": "des rideaux",
+          "baseText": {
+            "de": "Vorhänge",
+            "en": "curtains"
+          }
+        },
+        {
+          "targetText": "le coton",
+          "baseText": {
+            "de": "die Baumwolle",
+            "en": "cotton"
+          }
+        },
+        {
+          "targetText": "épuisé",
+          "baseText": {
+            "de": "ausverkauft",
+            "en": "sold out"
+          }
+        },
+        {
+          "targetText": "la matière",
+          "baseText": {
+            "de": "das Material",
+            "en": "the material"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je voudrais le ",
+        "answer": "tissu",
+        "after": " que vous conseillez pour des rideaux lavés très souvent.",
+        "fallbackChoices": [
+          "produit",
+          "programme",
+          "tissu",
+          "traitement"
+        ]
+      },
+      "speakRequired": [
+        "tissu",
+        "rideaux",
+        "souvent"
+      ],
+      "sceneCaption": {
+        "de": "Im Stoffgeschäft fragt ein Verkäufer: „Quel tissu souhaitez-vous pour vos nouveaux rideaux ?“",
+        "en": "In the fabric shop, an assistant asks: “Quel tissu souhaitez-vous pour vos nouveaux rideaux ?”"
+      },
+      "trophyWord": {
+        "word": "tissu",
+        "meaning": {
+          "de": "Stoff",
+          "en": "fabric"
+        },
+        "example": "Je voudrais le tissu que vous conseillez pour des rideaux lavés très souvent.",
+        "whyThisWord": {
+          "de": "Tissu benennt das Material, dessen Pflegeeigenschaften du bei Vorhängen oder Kleidung genauer beschreiben kannst.",
+          "en": "Tissu names the fabric whose care properties you can describe for curtains or clothing."
+        }
+      },
+      "distractors": [
+        "que vous vendez",
+        "lavés très rarement."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Beratung zu pflegeleichtem Vorhangstoff.",
+        "en": "Advice about easy-care curtain fabric."
+      },
+      "songMood": "calm tactile shop atmosphere",
+      "visualNotes": "Fabric swatches and curtain samples; no missing blue roll or green replacement singled out."
+    },
+    {
+      "slug": "logement-qui-recoit-la-lumiere",
+      "title": {
+        "de": "Eine helle Wohnung",
+        "en": "A bright home"
+      },
+      "situation": {
+        "de": "Du erläuterst einer Immobilienmaklerin dein wichtigstes Wohnungskriterium.",
+        "en": "You explain your main housing criterion to an estate agent."
+      },
+      "pedagogicalGoal": "Mit qui eine gesuchte Wohnung eingrenzen und bei einer anderen Lage am Licht als Auswahlkriterium festhalten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qu'est-ce qui compte le plus dans votre recherche de logement ?",
+          "baseText": {
+            "de": "Was ist bei Ihrer Wohnungssuche am wichtigsten?",
+            "en": "What matters most in your search for a home?"
+          }
+        },
+        {
+          "targetText": "Je cherche un logement qui reçoit beaucoup de lumière, surtout dans la pièce principale.",
+          "baseText": {
+            "de": "Ich suche eine Wohnung, die viel Licht bekommt, besonders im Hauptraum.",
+            "en": "I'm looking for a home that gets plenty of light, especially in the main room."
+          }
+        },
+        {
+          "targetText": "Celui de cette rue est sombre, mais j'en ai un autre dans la rue voisine.",
+          "baseText": {
+            "de": "Die Wohnung in dieser Straße ist dunkel, aber ich habe eine andere in der Nachbarstraße.",
+            "en": "The one on this street is dark, but I have another on the next street."
+          }
+        },
+        {
+          "targetText": "La rue importe moins ; je préfère un logement qui reste lumineux.",
+          "baseText": {
+            "de": "Die Straße ist weniger wichtig; ich bevorzuge eine Wohnung, die hell bleibt.",
+            "en": "The street matters less; I prefer a home that stays bright."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Qui précise un critère",
+        "rule": {
+          "de": "Ein Relativsatz mit qui beschreibt, was der gesuchte Gegenstand oder Ort selbst tut oder wie er ist.",
+          "en": "A relative clause with qui describes what the object or place you seek does or what it is like."
+        },
+        "examples": [
+          {
+            "targetText": "Je cherche un logement qui reçoit beaucoup de lumière, surtout dans la pièce principale.",
+            "baseText": {
+              "de": "Ich suche eine Wohnung, die viel Licht bekommt, besonders im Hauptraum.",
+              "en": "I'm looking for a home that gets plenty of light, especially in the main room."
+            },
+            "highlight": "qui reçoit beaucoup de lumière"
+          },
+          {
+            "targetText": "La rue importe moins ; je préfère un logement qui reste lumineux.",
+            "baseText": {
+              "de": "Die Straße ist weniger wichtig; ich bevorzuge eine Wohnung, die hell bleibt.",
+              "en": "The street matters less; I prefer a home that stays bright."
+            },
+            "highlight": "qui reste lumineux"
+          }
+        ]
+      },
+      "cloze": [
+        "La rue importe moins ; je ",
+        {
+          "kind": "form",
+          "answer": "préfère",
+          "cue": "préférer (je)",
+          "choices": [
+            "préférez",
+            "préfèrent",
+            "préfère",
+            "préférons"
+          ]
+        },
+        " un logement ",
+        {
+          "kind": "choice",
+          "answer": "qui",
+          "choices": [
+            "qui",
+            "que",
+            "dont",
+            "où"
+          ]
+        },
+        " reste lumineux."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je cherche un logement",
+          "baseText": {
+            "de": "Ich suche eine Wohnung",
+            "en": "I'm looking for a home"
+          }
+        },
+        {
+          "targetText": "qui reçoit",
+          "baseText": {
+            "de": "die bekommt",
+            "en": "that gets"
+          }
+        },
+        {
+          "targetText": "beaucoup de lumière,",
+          "baseText": {
+            "de": "viel Licht,",
+            "en": "plenty of light,"
+          }
+        },
+        {
+          "targetText": "surtout dans la pièce principale.",
+          "baseText": {
+            "de": "besonders im Hauptraum.",
+            "en": "especially in the main room."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un logement",
+          "baseText": {
+            "de": "eine Wohnung; eine Unterkunft",
+            "en": "a home; accommodation"
+          }
+        },
+        {
+          "targetText": "la lumière",
+          "baseText": {
+            "de": "das Licht",
+            "en": "light"
+          }
+        },
+        {
+          "targetText": "la pièce principale",
+          "baseText": {
+            "de": "der Hauptraum",
+            "en": "the main room"
+          }
+        },
+        {
+          "targetText": "sombre",
+          "baseText": {
+            "de": "dunkel",
+            "en": "dark"
+          }
+        },
+        {
+          "targetText": "la rue voisine",
+          "baseText": {
+            "de": "die Nachbarstraße",
+            "en": "the next street"
+          }
+        },
+        {
+          "targetText": "lumineux",
+          "baseText": {
+            "de": "hell; lichtdurchflutet",
+            "en": "bright; full of light"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je cherche un ",
+        "answer": "logement",
+        "after": " qui reçoit beaucoup de lumière, surtout dans la pièce principale.",
+        "fallbackChoices": [
+          "magasin",
+          "bureau",
+          "logement",
+          "atelier"
+        ]
+      },
+      "speakRequired": [
+        "logement",
+        "lumière",
+        "principale"
+      ],
+      "sceneCaption": {
+        "de": "Die Maklerin fragt nach deinen Kriterien: „Qu'est-ce qui compte le plus dans votre recherche de logement ?“",
+        "en": "The estate agent asks about your criteria: “Qu'est-ce qui compte le plus dans votre recherche de logement ?”"
+      },
+      "trophyWord": {
+        "word": "logement",
+        "meaning": {
+          "de": "Wohnung; Unterkunft",
+          "en": "home; accommodation"
+        },
+        "example": "Je cherche un logement qui reçoit beaucoup de lumière, surtout dans la pièce principale.",
+        "whyThisWord": {
+          "de": "Logement ist ein allgemeines Wort für einen Ort zum Wohnen und lässt sich durch genaue Merkmale eingrenzen.",
+          "en": "Logement is a general word for a place to live that you can narrow down with specific features."
+        }
+      },
+      "distractors": [
+        "qui reflète",
+        "surtout dans la petite cuisine."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Wohnungssuche mit klaren Kriterien.",
+        "en": "A housing search with clear criteria."
+      },
+      "songMood": "hopeful quiet housing search",
+      "visualNotes": "Customer and agent discussing a floor plan; no dark room or alternative street revealed."
+    },
+    {
+      "slug": "voisin-du-jardin",
+      "title": {
+        "de": "Den richtigen Nachbarn finden",
+        "en": "Finding the right neighbor"
+      },
+      "situation": {
+        "de": "Du suchst am Gemeinschaftsgarten einen bestimmten Nachbarn und sprichst eine andere Person an.",
+        "en": "You look for a particular neighbor at the shared garden and speak to someone there."
+      },
+      "pedagogicalGoal": "Mit qui eine Person und mit où einen Ort genauer bestimmen, damit eine Nachricht den richtigen Empfänger erreicht.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous cherchez quelqu'un dans le jardin partagé ?",
+          "baseText": {
+            "de": "Suchen Sie jemanden im Gemeinschaftsgarten?",
+            "en": "Are you looking for someone in the shared garden?"
+          }
+        },
+        {
+          "targetText": "Je cherche le voisin qui s'occupe du jardin où nous déjeunons le samedi.",
+          "baseText": {
+            "de": "Ich suche den Nachbarn, der sich um den Garten kümmert, in dem wir samstags zu Mittag essen.",
+            "en": "I'm looking for the neighbor who looks after the garden where we have lunch on Saturdays."
+          }
+        },
+        {
+          "targetText": "Il n'est pas là aujourd'hui ; je peux transmettre votre message à sa collègue.",
+          "baseText": {
+            "de": "Er ist heute nicht da; ich kann Ihre Nachricht an seine Kollegin weitergeben.",
+            "en": "He isn't here today; I can pass your message to his colleague."
+          }
+        },
+        {
+          "targetText": "Oui, elle peut prévenir le voisin du jardin où nous déjeunons.",
+          "baseText": {
+            "de": "Ja, sie kann dem Nachbarn aus dem Garten, in dem wir zu Mittag essen, Bescheid geben.",
+            "en": "Yes, she can let the neighbor from the garden where we have lunch know."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Où reprend un lieu",
+        "rule": {
+          "de": "Où verbindet einen Ort mit dem, was dort passiert; qui kann im selben Satz eine Person über ihre Tätigkeit bestimmen.",
+          "en": "Où connects a place to what happens there; qui can identify a person by their activity in the same sentence."
+        },
+        "examples": [
+          {
+            "targetText": "Je cherche le voisin qui s'occupe du jardin où nous déjeunons le samedi.",
+            "baseText": {
+              "de": "Ich suche den Nachbarn, der sich um den Garten kümmert, in dem wir samstags zu Mittag essen.",
+              "en": "I'm looking for the neighbor who looks after the garden where we have lunch on Saturdays."
+            },
+            "highlight": "du jardin où nous déjeunons"
+          },
+          {
+            "targetText": "Oui, elle peut prévenir le voisin du jardin où nous déjeunons.",
+            "baseText": {
+              "de": "Ja, sie kann dem Nachbarn aus dem Garten, in dem wir zu Mittag essen, Bescheid geben.",
+              "en": "Yes, she can let the neighbor from the garden where we have lunch know."
+            },
+            "highlight": "du jardin où nous déjeunons"
+          }
+        ]
+      },
+      "cloze": [
+        "Oui, elle ",
+        {
+          "kind": "form",
+          "answer": "peut",
+          "cue": "pouvoir (elle)",
+          "choices": [
+            "peut",
+            "peuvent",
+            "pouvons",
+            "pouvez"
+          ]
+        },
+        " prévenir le voisin du jardin ",
+        {
+          "kind": "choice",
+          "answer": "où",
+          "choices": [
+            "dont",
+            "que",
+            "où",
+            "qui"
+          ]
+        },
+        " nous déjeunons."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je cherche le voisin",
+          "baseText": {
+            "de": "Ich suche den Nachbarn",
+            "en": "I'm looking for the neighbor"
+          }
+        },
+        {
+          "targetText": "qui s'occupe du jardin",
+          "baseText": {
+            "de": "der sich um den Garten kümmert",
+            "en": "who looks after the garden"
+          }
+        },
+        {
+          "targetText": "où nous déjeunons",
+          "baseText": {
+            "de": "in dem wir zu Mittag essen",
+            "en": "where we have lunch"
+          }
+        },
+        {
+          "targetText": "le samedi.",
+          "baseText": {
+            "de": "samstags.",
+            "en": "on Saturdays."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un voisin",
+          "baseText": {
+            "de": "ein Nachbar",
+            "en": "a neighbor"
+          }
+        },
+        {
+          "targetText": "s'occuper du jardin",
+          "baseText": {
+            "de": "sich um den Garten kümmern",
+            "en": "to look after the garden"
+          }
+        },
+        {
+          "targetText": "déjeuner",
+          "baseText": {
+            "de": "zu Mittag essen",
+            "en": "to have lunch"
+          }
+        },
+        {
+          "targetText": "transmettre",
+          "baseText": {
+            "de": "weitergeben",
+            "en": "to pass on"
+          }
+        },
+        {
+          "targetText": "une collègue",
+          "baseText": {
+            "de": "eine Kollegin",
+            "en": "a colleague"
+          }
+        },
+        {
+          "targetText": "prévenir",
+          "baseText": {
+            "de": "Bescheid geben; informieren",
+            "en": "to let someone know; to inform"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je cherche le ",
+        "answer": "voisin",
+        "after": " qui s'occupe du jardin où nous déjeunons le samedi.",
+        "fallbackChoices": [
+          "responsable",
+          "voisin",
+          "propriétaire",
+          "bénévole"
+        ]
+      },
+      "speakRequired": [
+        "voisin",
+        "jardin",
+        "samedi"
+      ],
+      "sceneCaption": {
+        "de": "Eine Person am Gartentor fragt: „Vous cherchez quelqu'un dans le jardin partagé ?“",
+        "en": "Someone at the garden gate asks: “Vous cherchez quelqu'un dans le jardin partagé ?”"
+      },
+      "trophyWord": {
+        "word": "voisin",
+        "meaning": {
+          "de": "Nachbar",
+          "en": "neighbor"
+        },
+        "example": "Je cherche le voisin qui s'occupe du jardin où nous déjeunons le samedi.",
+        "whyThisWord": {
+          "de": "Voisin benennt hier eine andere Person aus der Nachbarschaft; mit einem Relativsatz erklärst du, wen du genau meinst.",
+          "en": "Voisin names another person from the neighborhood here; a relative clause explains exactly whom you mean."
+        }
+      },
+      "distractors": [
+        "qui s'occupe du garage",
+        "le dimanche."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Nachfrage am Tor des Gemeinschaftsgartens.",
+        "en": "An inquiry at the shared garden gate."
+      },
+      "songMood": "warm neighborhood recognition",
+      "visualNotes": "A conversation at a shared garden gate; no absent-neighbor sign or colleague shown."
+    },
+    {
+      "slug": "repere-pour-le-rendez-vous",
+      "title": {
+        "de": "Ein gut erkennbarer Treffpunkt",
+        "en": "An easy landmark"
+      },
+      "situation": {
+        "de": "Du suchst mit einem Freund einen Treffpunkt, der von seinem Fenster aus zu sehen ist.",
+        "en": "You choose a meeting point with a friend using a landmark visible from their window."
+      },
+      "pedagogicalGoal": "Mit où einen Treffpunkt räumlich bestimmen und nach einem Hinweis zur Zugänglichkeit einen nahe gelegenen Ort annehmen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu vois le clocher depuis ma fenêtre ? On se retrouve où ?",
+          "baseText": {
+            "de": "Siehst du den Kirchturm von meinem Fenster aus? Wo treffen wir uns?",
+            "en": "Can you see the church tower from my window? Where shall we meet?"
+          }
+        },
+        {
+          "targetText": "Le clocher est mon repère : je t'attends sur la place où passe le bus.",
+          "baseText": {
+            "de": "Der Kirchturm ist mein Orientierungspunkt: Ich warte auf dem Platz auf dich, über den der Bus fährt.",
+            "en": "The church tower is my landmark: I'll wait for you in the square where the bus passes."
+          }
+        },
+        {
+          "targetText": "Cette place a beaucoup de marches ; le café juste à côté, où je prends mon petit déjeuner, est plus accessible.",
+          "baseText": {
+            "de": "Auf diesem Platz gibt es viele Stufen; das Café direkt daneben, in dem ich frühstücke, ist leichter zugänglich.",
+            "en": "That square has a lot of steps; the café right next to it, where I have breakfast, is easier to access."
+          }
+        },
+        {
+          "targetText": "Le café où tu prends ton petit déjeuner me convient.",
+          "baseText": {
+            "de": "Das Café, in dem du frühstückst, passt für mich.",
+            "en": "The café where you have breakfast works for me."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Le lieu où…",
+        "rule": {
+          "de": "Où ersetzt eine Ortsangabe und erklärt genauer, welchen Platz oder welches Café du meinst.",
+          "en": "Où replaces a location phrase and specifies which square or café you mean."
+        },
+        "examples": [
+          {
+            "targetText": "Le clocher est mon repère : je t'attends sur la place où passe le bus.",
+            "baseText": {
+              "de": "Der Kirchturm ist mein Orientierungspunkt: Ich warte auf dem Platz auf dich, über den der Bus fährt.",
+              "en": "The church tower is my landmark: I'll wait for you in the square where the bus passes."
+            },
+            "highlight": "la place où passe le bus"
+          },
+          {
+            "targetText": "Le café où tu prends ton petit déjeuner me convient.",
+            "baseText": {
+              "de": "Das Café, in dem du frühstückst, passt für mich.",
+              "en": "The café where you have breakfast works for me."
+            },
+            "highlight": "Le café où tu prends ton petit déjeuner"
+          }
+        ]
+      },
+      "cloze": [
+        "Le café ",
+        {
+          "kind": "choice",
+          "answer": "où",
+          "choices": [
+            "qui",
+            "que",
+            "dont",
+            "où"
+          ]
+        },
+        " tu prends ton petit déjeuner me ",
+        {
+          "kind": "form",
+          "answer": "convient",
+          "cue": "convenir (le café)",
+          "choices": [
+            "conviennent",
+            "convient",
+            "convenez",
+            "convenons"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Le clocher est mon repère :",
+          "baseText": {
+            "de": "Der Kirchturm ist mein Orientierungspunkt:",
+            "en": "The church tower is my landmark:"
+          }
+        },
+        {
+          "targetText": "je t'attends",
+          "baseText": {
+            "de": "ich warte auf dich",
+            "en": "I'll wait for you"
+          }
+        },
+        {
+          "targetText": "sur la place",
+          "baseText": {
+            "de": "auf dem Platz",
+            "en": "in the square"
+          }
+        },
+        {
+          "targetText": "où passe le bus.",
+          "baseText": {
+            "de": "über den der Bus fährt.",
+            "en": "where the bus passes."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un repère",
+          "baseText": {
+            "de": "ein Orientierungspunkt",
+            "en": "a landmark"
+          }
+        },
+        {
+          "targetText": "le clocher",
+          "baseText": {
+            "de": "der Kirchturm",
+            "en": "the church tower"
+          }
+        },
+        {
+          "targetText": "une fenêtre",
+          "baseText": {
+            "de": "ein Fenster",
+            "en": "a window"
+          }
+        },
+        {
+          "targetText": "la place",
+          "baseText": {
+            "de": "der Platz",
+            "en": "the square"
+          }
+        },
+        {
+          "targetText": "des marches",
+          "baseText": {
+            "de": "Stufen",
+            "en": "steps"
+          }
+        },
+        {
+          "targetText": "accessible",
+          "baseText": {
+            "de": "zugänglich",
+            "en": "accessible"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Le clocher est mon ",
+        "answer": "repère",
+        "after": " : je t'attends sur la place où passe le bus.",
+        "fallbackChoices": [
+          "repère",
+          "souvenir",
+          "sujet",
+          "exemple"
+        ]
+      },
+      "speakRequired": [
+        "clocher",
+        "repère",
+        "place"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund schaut mit dir aus dem Fenster: „Tu vois le clocher depuis ma fenêtre ? On se retrouve où ?“",
+        "en": "A friend looks out of the window with you: “Tu vois le clocher depuis ma fenêtre ? On se retrouve où ?”"
+      },
+      "trophyWord": {
+        "word": "repère",
+        "meaning": {
+          "de": "Orientierungspunkt",
+          "en": "landmark"
+        },
+        "example": "Le clocher est mon repère : je t'attends sur la place où passe le bus.",
+        "whyThisWord": {
+          "de": "Repère bezeichnet etwas leicht Erkennbares, an dem du dich orientierst oder einen Treffpunkt erklärst.",
+          "en": "Repère names something easy to recognize that helps you find your way or explain a meeting point."
+        }
+      },
+      "distractors": [
+        "je t'appelle",
+        "où passe le tramway."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Treffpunkt mit Blick auf einen Kirchturm.",
+        "en": "A meeting point using a church tower as a landmark."
+      },
+      "songMood": "easy friendly town stroll",
+      "visualNotes": "Friends looking toward a church tower through a window; steps and alternative café not shown yet."
+    },
+    {
+      "slug": "detail-dont-je-parle",
+      "title": {
+        "de": "Das entscheidende Detail",
+        "en": "The identifying detail"
+      },
+      "situation": {
+        "de": "Du zeigst im Fundbüro ein Foto deiner verlorenen Tasche.",
+        "en": "You show the lost property office a photo of your missing bag."
+      },
+      "pedagogicalGoal": "Dont mit parler de verwenden, um ein Erkennungsmerkmal präzise zu benennen und beim Vergleich eines anderen Gegenstands beizubehalten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quel détail permet de reconnaître votre sac sur cette photo ?",
+          "baseText": {
+            "de": "An welchem Detail erkennt man Ihre Tasche auf diesem Foto?",
+            "en": "Which detail identifies your bag in this photo?"
+          }
+        },
+        {
+          "targetText": "Le détail dont je parle est la petite étoile sur cette fermeture.",
+          "baseText": {
+            "de": "Das Detail, von dem ich spreche, ist der kleine Stern auf diesem Verschluss.",
+            "en": "The detail I'm talking about is the small star on this fastening."
+          }
+        },
+        {
+          "targetText": "Ce sac n'est pas ici, mais nous avons reçu un modèle avec une fermeture différente.",
+          "baseText": {
+            "de": "Diese Tasche ist nicht hier, aber wir haben ein Modell mit einem anderen Verschluss bekommen.",
+            "en": "That bag isn't here, but we received a model with a different fastening."
+          }
+        },
+        {
+          "targetText": "Le détail dont je parle reste essentiel ; je regarde ce modèle.",
+          "baseText": {
+            "de": "Das Detail, von dem ich spreche, bleibt entscheidend; ich schaue mir dieses Modell an.",
+            "en": "The detail I'm talking about is still essential; I'll look at that model."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Dont remplace de + un nom",
+        "rule": {
+          "de": "Für über etwas sprechen verwendet man parler de; dont nimmt dieses de mit dem genannten Gegenstand wieder auf, ohne de zu wiederholen.",
+          "en": "To talk about something, use parler de; dont refers back to de plus the named thing without repeating de."
+        },
+        "examples": [
+          {
+            "targetText": "Le détail dont je parle est la petite étoile sur cette fermeture.",
+            "baseText": {
+              "de": "Das Detail, von dem ich spreche, ist der kleine Stern auf diesem Verschluss.",
+              "en": "The detail I'm talking about is the small star on this fastening."
+            },
+            "highlight": "Le détail dont je parle"
+          },
+          {
+            "targetText": "Le détail dont je parle reste essentiel ; je regarde ce modèle.",
+            "baseText": {
+              "de": "Das Detail, von dem ich spreche, bleibt entscheidend; ich schaue mir dieses Modell an.",
+              "en": "The detail I'm talking about is still essential; I'll look at that model."
+            },
+            "highlight": "dont je parle"
+          }
+        ]
+      },
+      "cloze": [
+        "Le détail ",
+        {
+          "kind": "choice",
+          "answer": "dont",
+          "choices": [
+            "qui",
+            "dont",
+            "que",
+            "où"
+          ]
+        },
+        " je parle reste essentiel ; je ",
+        {
+          "kind": "form",
+          "answer": "regarde",
+          "cue": "regarder (je)",
+          "choices": [
+            "regardez",
+            "regardons",
+            "regardent",
+            "regarde"
+          ]
+        },
+        " ce modèle."
+      ],
+      "chunks": [
+        {
+          "targetText": "Le détail",
+          "baseText": {
+            "de": "Das Detail",
+            "en": "The detail"
+          }
+        },
+        {
+          "targetText": "dont je parle",
+          "baseText": {
+            "de": "von dem ich spreche",
+            "en": "I'm talking about"
+          }
+        },
+        {
+          "targetText": "est la petite étoile",
+          "baseText": {
+            "de": "ist der kleine Stern",
+            "en": "is the small star"
+          }
+        },
+        {
+          "targetText": "sur cette fermeture.",
+          "baseText": {
+            "de": "auf diesem Verschluss.",
+            "en": "on this fastening."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un détail",
+          "baseText": {
+            "de": "ein Detail; ein Merkmal",
+            "en": "a detail; a feature"
+          }
+        },
+        {
+          "targetText": "reconnaître",
+          "baseText": {
+            "de": "wiedererkennen",
+            "en": "to recognize"
+          }
+        },
+        {
+          "targetText": "une étoile",
+          "baseText": {
+            "de": "ein Stern",
+            "en": "a star"
+          }
+        },
+        {
+          "targetText": "une fermeture",
+          "baseText": {
+            "de": "ein Verschluss",
+            "en": "a fastening"
+          }
+        },
+        {
+          "targetText": "différente",
+          "baseText": {
+            "de": "anders; unterschiedlich",
+            "en": "different"
+          }
+        },
+        {
+          "targetText": "essentiel",
+          "baseText": {
+            "de": "entscheidend; wesentlich",
+            "en": "essential"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Le ",
+        "answer": "détail",
+        "after": " dont je parle est la petite étoile sur cette fermeture.",
+        "fallbackChoices": [
+          "défaut",
+          "motif",
+          "détail",
+          "symbole"
+        ]
+      },
+      "speakRequired": [
+        "détail",
+        "étoile",
+        "fermeture"
+      ],
+      "sceneCaption": {
+        "de": "Im Fundbüro fragt eine Mitarbeiterin: „Quel détail permet de reconnaître votre sac sur cette photo ?“",
+        "en": "At lost property, a staff member asks: “Quel détail permet de reconnaître votre sac sur cette photo ?”"
+      },
+      "trophyWord": {
+        "word": "détail",
+        "meaning": {
+          "de": "Detail; Merkmal",
+          "en": "detail; feature"
+        },
+        "example": "Le détail dont je parle est la petite étoile sur cette fermeture.",
+        "whyThisWord": {
+          "de": "Détail hilft dir, ein kleines, aber wichtiges Erkennungsmerkmal von einem Gegenstand hervorzuheben.",
+          "en": "Détail helps you point out a small but important identifying feature of an object."
+        }
+      },
+      "distractors": [
+        "est la grande rayure",
+        "sur cette poignée."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Foto zur Identifizierung einer verlorenen Tasche.",
+        "en": "A photo used to identify a missing bag."
+      },
+      "songMood": "attentive patient search",
+      "visualNotes": "Lost property desk with the customer's bag photo; no replacement bag or alternate fastening visible."
+    },
+    {
+      "slug": "description-de-la-chambre",
+      "title": {
+        "de": "Die Beschreibung der Unterkunft",
+        "en": "The room description"
+      },
+      "situation": {
+        "de": "Du besprichst mit einer Vermieterin die Beschreibung eines Zimmers in einer Anzeige.",
+        "en": "You discuss a room's listing description with the host."
+      },
+      "pedagogicalGoal": "Mit dont auf parler de zurückverweisen und vor der Annahme eines anderen Zimmers dieselbe Ausrichtung erfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quel point de notre annonce souhaitez-vous vérifier ?",
+          "baseText": {
+            "de": "Welchen Punkt unserer Anzeige möchten Sie überprüfen?",
+            "en": "Which point in our listing would you like to check?"
+          }
+        },
+        {
+          "targetText": "La description dont je vous ai parlé indique une chambre exposée au sud.",
+          "baseText": {
+            "de": "Die Beschreibung, von der ich Ihnen erzählt habe, nennt ein nach Süden ausgerichtetes Zimmer.",
+            "en": "The description I mentioned to you states that the room faces south."
+          }
+        },
+        {
+          "targetText": "Cette chambre n'est plus libre, mais une autre donne sur la cour.",
+          "baseText": {
+            "de": "Dieses Zimmer ist nicht mehr frei, aber ein anderes liegt zum Hof.",
+            "en": "That room is no longer available, but another overlooks the courtyard."
+          }
+        },
+        {
+          "targetText": "La chambre que vous proposez reçoit aussi le soleil du sud ?",
+          "baseText": {
+            "de": "Bekommt das Zimmer, das Sie anbieten, auch Sonne von Süden?",
+            "en": "Does the room you offer also get sunlight from the south?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Dont je vous ai parlé",
+        "rule": {
+          "de": "Dont ersetzt de mit dem Bezugsnomen bei parler de, auch im passé composé. Zum Vergleich: Bei proposer quelque chose ersetzt que das direkte Objekt.",
+          "en": "Dont replaces de plus the referring noun with parler de, including in the passé composé. By comparison, que replaces the direct object in proposer quelque chose."
+        },
+        "examples": [
+          {
+            "targetText": "La description dont je vous ai parlé indique une chambre exposée au sud.",
+            "baseText": {
+              "de": "Die Beschreibung, von der ich Ihnen erzählt habe, nennt ein nach Süden ausgerichtetes Zimmer.",
+              "en": "The description I mentioned to you states that the room faces south."
+            },
+            "highlight": "dont je vous ai parlé"
+          },
+          {
+            "targetText": "La chambre que vous proposez reçoit aussi le soleil du sud ?",
+            "baseText": {
+              "de": "Bekommt das Zimmer, das Sie anbieten, auch Sonne von Süden?",
+              "en": "Does the room you offer also get sunlight from the south?"
+            },
+            "highlight": "que vous proposez"
+          }
+        ]
+      },
+      "cloze": [
+        "La chambre ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "où",
+            "qui",
+            "dont",
+            "que"
+          ]
+        },
+        " vous proposez ",
+        {
+          "kind": "form",
+          "answer": "reçoit",
+          "cue": "recevoir (la chambre)",
+          "choices": [
+            "reçoit",
+            "reçoivent",
+            "recevons",
+            "recevez"
+          ]
+        },
+        " aussi le soleil du sud ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "La description",
+          "baseText": {
+            "de": "Die Beschreibung",
+            "en": "The description"
+          }
+        },
+        {
+          "targetText": "dont je vous ai parlé",
+          "baseText": {
+            "de": "von der ich Ihnen erzählt habe",
+            "en": "I mentioned to you"
+          }
+        },
+        {
+          "targetText": "indique une chambre",
+          "baseText": {
+            "de": "nennt ein Zimmer",
+            "en": "states that the room is"
+          }
+        },
+        {
+          "targetText": "exposée au sud.",
+          "baseText": {
+            "de": "mit Südausrichtung.",
+            "en": "south-facing."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la description",
+          "baseText": {
+            "de": "die Beschreibung",
+            "en": "the description"
+          }
+        },
+        {
+          "targetText": "une annonce",
+          "baseText": {
+            "de": "eine Anzeige",
+            "en": "a listing; an advertisement"
+          }
+        },
+        {
+          "targetText": "indiquer",
+          "baseText": {
+            "de": "angeben; nennen",
+            "en": "to state; to indicate"
+          }
+        },
+        {
+          "targetText": "exposée au sud",
+          "baseText": {
+            "de": "nach Süden ausgerichtet",
+            "en": "south-facing"
+          }
+        },
+        {
+          "targetText": "donner sur la cour",
+          "baseText": {
+            "de": "zum Hof liegen",
+            "en": "to overlook the courtyard"
+          }
+        },
+        {
+          "targetText": "le soleil",
+          "baseText": {
+            "de": "die Sonne",
+            "en": "sunlight; the sun"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La ",
+        "answer": "description",
+        "after": " dont je vous ai parlé indique une chambre exposée au sud.",
+        "fallbackChoices": [
+          "description",
+          "facture",
+          "réservation",
+          "photographie"
+        ]
+      },
+      "speakRequired": [
+        "description",
+        "chambre",
+        "sud"
+      ],
+      "sceneCaption": {
+        "de": "Die Vermieterin fragt zur Anzeige: „Quel point de notre annonce souhaitez-vous vérifier ?“",
+        "en": "The host asks about the listing: “Quel point de notre annonce souhaitez-vous vérifier ?”"
+      },
+      "trophyWord": {
+        "word": "description",
+        "meaning": {
+          "de": "Beschreibung",
+          "en": "description"
+        },
+        "example": "La description dont je vous ai parlé indique une chambre exposée au sud.",
+        "whyThisWord": {
+          "de": "Description benennt die Angaben, mit denen du ein Angebot vergleichst und konkrete Eigenschaften nachprüfst.",
+          "en": "Description names the information you use to compare an offer and check specific features."
+        }
+      },
+      "distractors": [
+        "indique une terrasse",
+        "exposée au nord."
+      ],
+      "placeholderCaption": {
+        "de": "Die Angaben zu einem Zimmer besprechen.",
+        "en": "Discussing a room's listed features."
+      },
+      "songMood": "calm careful comparison",
+      "visualNotes": "Host and guest looking at a room description; vacancy status and the courtyard alternative stay hidden."
+    },
+    {
+      "slug": "etabli-disponible-le-soir",
+      "title": {
+        "de": "Nach Feierabend an die Werkbank",
+        "en": "A workbench in the evening"
+      },
+      "situation": {
+        "de": "Du fragst bei einer offenen Werkstatt nach einer abendlichen Nutzungsmöglichkeit.",
+        "en": "You ask a shared workshop about using a workbench in the evening."
+      },
+      "pedagogicalGoal": "Mit ce qui ein wichtiges Kriterium und mit ce que ein angebotenes Ganzes aufgreifen, während où den gesuchten Ort beschreibt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Pour mercredi soir, quel type d'accès cherchez-vous dans notre atelier ?",
+          "baseText": {
+            "de": "Welche Nutzungsmöglichkeit suchen Sie am Mittwochabend in unserer Werkstatt?",
+            "en": "What kind of access are you looking for at our workshop on Wednesday evening?"
+          }
+        },
+        {
+          "targetText": "Ce qui compte, c'est un atelier où un établi reste disponible le soir.",
+          "baseText": {
+            "de": "Wichtig ist eine Werkstatt, in der abends eine Werkbank verfügbar bleibt.",
+            "en": "What matters is a workshop where a workbench remains available in the evening."
+          }
+        },
+        {
+          "targetText": "Le mercredi soir est complet ; il reste une place le vendredi après dix-neuf heures.",
+          "baseText": {
+            "de": "Mittwochabend ist alles voll; am Freitag nach neunzehn Uhr ist noch ein Platz frei.",
+            "en": "Wednesday evening is full; there is still a place on Friday after seven."
+          }
+        },
+        {
+          "targetText": "Ce que vous proposez convient ; je choisis donc le vendredi soir.",
+          "baseText": {
+            "de": "Was Sie vorschlagen, passt; dann wähle ich Freitagabend.",
+            "en": "What you propose works; I'll choose Friday evening, then."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ce qui; ce que",
+        "rule": {
+          "de": "Ce qui bedeutet das, was als Subjekt handelt; ce que bezeichnet das direkte Objekt, auf das ein anderes Subjekt wie vous einwirkt.",
+          "en": "Ce qui means what when it is the subject; ce que refers to the direct object acted on by another subject such as vous."
+        },
+        "examples": [
+          {
+            "targetText": "Ce qui compte, c'est un atelier où un établi reste disponible le soir.",
+            "baseText": {
+              "de": "Wichtig ist eine Werkstatt, in der abends eine Werkbank verfügbar bleibt.",
+              "en": "What matters is a workshop where a workbench remains available in the evening."
+            },
+            "highlight": "Ce qui compte"
+          },
+          {
+            "targetText": "Ce que vous proposez convient ; je choisis donc le vendredi soir.",
+            "baseText": {
+              "de": "Was Sie vorschlagen, passt; dann wähle ich Freitagabend.",
+              "en": "What you propose works; I'll choose Friday evening, then."
+            },
+            "highlight": "Ce que vous proposez"
+          }
+        ]
+      },
+      "cloze": [
+        "Ce ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "qui",
+            "où",
+            "dont",
+            "que"
+          ]
+        },
+        " vous proposez convient ; je ",
+        {
+          "kind": "form",
+          "answer": "choisis",
+          "cue": "choisir (je)",
+          "choices": [
+            "choisissez",
+            "choisis",
+            "choisissent",
+            "choisissons"
+          ]
+        },
+        " donc le vendredi soir."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ce qui compte,",
+          "baseText": {
+            "de": "Was zählt,",
+            "en": "What matters"
+          }
+        },
+        {
+          "targetText": "c'est un atelier",
+          "baseText": {
+            "de": "ist eine Werkstatt",
+            "en": "is a workshop"
+          }
+        },
+        {
+          "targetText": "où un établi",
+          "baseText": {
+            "de": "in der eine Werkbank",
+            "en": "where a workbench"
+          }
+        },
+        {
+          "targetText": "reste disponible le soir.",
+          "baseText": {
+            "de": "abends verfügbar bleibt.",
+            "en": "remains available in the evening."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "disponible",
+          "baseText": {
+            "de": "verfügbar",
+            "en": "available"
+          }
+        },
+        {
+          "targetText": "un établi",
+          "baseText": {
+            "de": "eine Werkbank",
+            "en": "a workbench"
+          }
+        },
+        {
+          "targetText": "un accès",
+          "baseText": {
+            "de": "ein Zugang; eine Nutzungsmöglichkeit",
+            "en": "access"
+          }
+        },
+        {
+          "targetText": "le soir",
+          "baseText": {
+            "de": "abends",
+            "en": "in the evening"
+          }
+        },
+        {
+          "targetText": "une place",
+          "baseText": {
+            "de": "ein Platz",
+            "en": "a place"
+          }
+        },
+        {
+          "targetText": "proposer",
+          "baseText": {
+            "de": "vorschlagen; anbieten",
+            "en": "to propose; to offer"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ce qui compte, c'est un atelier où un établi reste ",
+        "answer": "disponible",
+        "after": " le soir.",
+        "fallbackChoices": [
+          "propre",
+          "visible",
+          "disponible",
+          "stable"
+        ]
+      },
+      "speakRequired": [
+        "atelier",
+        "établi",
+        "disponible"
+      ],
+      "sceneCaption": {
+        "de": "Am Werkstattempfang fragt ein Mitarbeiter: „Pour mercredi soir, quel type d'accès cherchez-vous dans notre atelier ?“",
+        "en": "At the workshop reception desk, a staff member asks: “Pour mercredi soir, quel type d'accès cherchez-vous dans notre atelier ?”"
+      },
+      "trophyWord": {
+        "word": "disponible",
+        "meaning": {
+          "de": "verfügbar",
+          "en": "available"
+        },
+        "example": "Ce qui compte, c'est un atelier où un établi reste disponible le soir.",
+        "whyThisWord": {
+          "de": "Disponible beschreibt hier eine Werkbank, die zur gewünschten Zeit genutzt werden kann.",
+          "en": "Disponible describes a workbench that can be used at the time you need."
+        }
+      },
+      "distractors": [
+        "où une machine",
+        "reste disponible le matin."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Anfrage zur abendlichen Werkstattnutzung.",
+        "en": "An inquiry about evening workshop access."
+      },
+      "songMood": "practical creative anticipation",
+      "visualNotes": "Shared workshop reception and workbenches; no Wednesday or Friday availability posted."
+    },
+    {
+      "slug": "salle-qui-correspond-au-projet",
+      "title": {
+        "de": "Ein Raum für die Probe",
+        "en": "A room for rehearsal"
+      },
+      "situation": {
+        "de": "Du suchst mit einem Freund aus deiner Gruppe einen Raum zum Proben.",
+        "en": "You look for a rehearsal room with a friend from your group."
+      },
+      "pedagogicalGoal": "Relativsätze mit où, que und qui wiederverwenden, um die Eignung eines Raums zu beschreiben und eine kleinere Alternative mit anderer Zeit anzunehmen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu penses que cette salle convient à notre groupe ?",
+          "baseText": {
+            "de": "Glaubst du, dass dieser Raum zu unserer Gruppe passt?",
+            "en": "Do you think this room suits our group?"
+          }
+        },
+        {
+          "targetText": "La salle où nous pouvons répéter correspond au projet que nous préparons ensemble.",
+          "baseText": {
+            "de": "Der Raum, in dem wir proben können, passt zu dem Projekt, das wir gemeinsam vorbereiten.",
+            "en": "The room where we can rehearse suits the project we are preparing together."
+          }
+        },
+        {
+          "targetText": "Cette salle est prise ; la petite salle reste libre, mais seulement après vingt heures.",
+          "baseText": {
+            "de": "Dieser Raum ist belegt; der kleine Raum ist noch frei, aber erst nach zwanzig Uhr.",
+            "en": "This room is taken; the small room is still free, but only after eight."
+          }
+        },
+        {
+          "targetText": "La salle qui reste libre convient ; nous commencerions après vingt heures.",
+          "baseText": {
+            "de": "Der noch freie Raum passt; wir würden nach zwanzig Uhr anfangen.",
+            "en": "The room that is still free works; we would start after eight."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Où, que et qui pour préciser",
+        "rule": {
+          "de": "Où beschreibt den Ort einer Handlung, que ersetzt ihr direktes Objekt und qui ihr Subjekt; so unterscheidest du die passenden Räume und Projekte.",
+          "en": "Où describes where an action happens, que replaces its direct object, and qui its subject, helping you distinguish suitable rooms and projects."
+        },
+        "examples": [
+          {
+            "targetText": "La salle où nous pouvons répéter correspond au projet que nous préparons ensemble.",
+            "baseText": {
+              "de": "Der Raum, in dem wir proben können, passt zu dem Projekt, das wir gemeinsam vorbereiten.",
+              "en": "The room where we can rehearse suits the project we are preparing together."
+            },
+            "highlight": "au projet que nous préparons ensemble"
+          },
+          {
+            "targetText": "La salle qui reste libre convient ; nous commencerions après vingt heures.",
+            "baseText": {
+              "de": "Der noch freie Raum passt; wir würden nach zwanzig Uhr anfangen.",
+              "en": "The room that is still free works; we would start after eight."
+            },
+            "highlight": "La salle qui reste libre"
+          }
+        ]
+      },
+      "cloze": [
+        "La salle ",
+        {
+          "kind": "choice",
+          "answer": "qui",
+          "choices": [
+            "que",
+            "qui",
+            "dont",
+            "où"
+          ]
+        },
+        " reste libre convient ; nous ",
+        {
+          "kind": "form",
+          "answer": "commencerions",
+          "cue": "commencer (nous, conditionnel)",
+          "choices": [
+            "commencerait",
+            "commencerais",
+            "commencerions",
+            "commenceraient"
+          ]
+        },
+        " après vingt heures."
+      ],
+      "chunks": [
+        {
+          "targetText": "La salle",
+          "baseText": {
+            "de": "Der Raum",
+            "en": "The room"
+          }
+        },
+        {
+          "targetText": "où nous pouvons répéter",
+          "baseText": {
+            "de": "in dem wir proben können",
+            "en": "where we can rehearse"
+          }
+        },
+        {
+          "targetText": "correspond au projet",
+          "baseText": {
+            "de": "passt zu dem Projekt",
+            "en": "suits the project"
+          }
+        },
+        {
+          "targetText": "que nous préparons ensemble.",
+          "baseText": {
+            "de": "das wir gemeinsam vorbereiten.",
+            "en": "we are preparing together."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "correspond",
+          "baseText": {
+            "de": "passt; entspricht",
+            "en": "suits; matches"
+          }
+        },
+        {
+          "targetText": "répéter",
+          "baseText": {
+            "de": "proben",
+            "en": "to rehearse"
+          }
+        },
+        {
+          "targetText": "un projet",
+          "baseText": {
+            "de": "ein Projekt",
+            "en": "a project"
+          }
+        },
+        {
+          "targetText": "préparer",
+          "baseText": {
+            "de": "vorbereiten",
+            "en": "to prepare"
+          }
+        },
+        {
+          "targetText": "libre",
+          "baseText": {
+            "de": "frei; verfügbar",
+            "en": "free; available"
+          }
+        },
+        {
+          "targetText": "commencer",
+          "baseText": {
+            "de": "anfangen",
+            "en": "to begin"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La salle où nous pouvons répéter ",
+        "answer": "correspond",
+        "after": " au projet que nous préparons ensemble.",
+        "fallbackChoices": [
+          "correspondons",
+          "correspondent",
+          "correspondez",
+          "correspond"
+        ]
+      },
+      "speakRequired": [
+        "salle",
+        "correspond",
+        "projet"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund aus der Gruppe fragt: „Tu penses que cette salle convient à notre groupe ?“",
+        "en": "A friend from the group asks: “Tu penses que cette salle convient à notre groupe ?”"
+      },
+      "trophyWord": {
+        "word": "correspond",
+        "meaning": {
+          "de": "passt; entspricht",
+          "en": "suits; matches"
+        },
+        "example": "La salle où nous pouvons répéter correspond au projet que nous préparons ensemble.",
+        "whyThisWord": {
+          "de": "Correspond à verbindet ein Angebot mit dem Vorhaben oder Bedürfnis, zu dem es passt.",
+          "en": "Correspond à connects an option to the project or need it suits."
+        }
+      },
+      "distractors": [
+        "correspond au budget",
+        "que nous présentons demain."
+      ],
+      "placeholderCaption": {
+        "de": "Die Suche nach einem passenden Proberaum.",
+        "en": "Looking for a suitable rehearsal room."
+      },
+      "songMood": "hopeful collaborative rehearsal planning",
+      "visualNotes": "Two group members discussing a rehearsal room; no occupied sign or late-night availability shown."
+    }
+  ]
+}
