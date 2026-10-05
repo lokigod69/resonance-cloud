@@ -1,0 +1,992 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "Korean",
+  "code": "ko-KR",
+  "level": "B2",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": {
+    "learnerRegister": "해요체 constant in all three you turns of every P1/P2 lesson; registerPlan {mode:constant, registers:[haeyo,haeyo,haeyo]}; no shift, no relay shape in P1/P2",
+    "interlocutorRegister": "해요체 default; 합쇼체 recognition-only in them turns of P1 L10 (committee chair) and P2 L10 (building manager); elsewhere only the fixed chunks 안녕하세요/죄송합니다/감사합니다/알겠습니다 are 습니다 forms; 반말 appears in no turn of either path",
+    "moveSets": "you1 ∈ path moveWhitelist; you2 ∈ {concede,rebut,clarify,explain,compare,counteroffer}; you3 ∈ {conclude,propose,summarize,counteroffer,request} (relay excluded: no relay shape in P1/P2); the three learner moves pairwise distinct; whitelist governs you1 only; you2/you3 sets are independent of the whitelist by contract",
+    "honorificDirection": "learner lowers own action with 드리다/말씀드리다 (말씀드릴게요, 전해 드릴게요); learner raises the other person with -(으)시-/주시- only when that person is subject (전해 주시겠어요?, 관심 있으시면); never -(으)시- on learner subject; interlocutors may use -(으)시- toward the learner (계산하셨어요?); 손님들께 honorific dative allowed; learner never asserts a decision the interlocutor owns (contract, committee vote, fee cancellation): learner recommends, concedes, proposes, the interlocutor decides",
+    "argumentStance": "stance frames staged as carriers, not vocabulary: 저는 …쪽이 좋아요 / 제 생각에는 … / 그래서 저는 …을 권하고 싶어요 / 결론은 …-(으)면 좋겠어요; opinion always qualified with one concession or condition in you2 or you3"
+  },
+  "genderSafety": "Korean carries no speaker-gender agreement; all 20 lessons speakerGender neutral, no alternates. Address stays role-neutral in all six turns: 동료분, 소장님, 중개사님, 사장님, 선배, 이웃분, 신입분, 손님; banned address tokens 오빠/언니/누나/형/아저씨/아줌마 checked exact-eojeol (token or token+아/야/는/은/이/가/도/한테/들 after edge-punctuation strip), never substring, so 형태/유형 pass. Kinship referents in narration (아이, 어르신) are referents, not address.",
+  "orthography": "Standard 띄어쓰기 (것 같아요, 수 있어요, 안 돼요, 한 번, 두 번째, 육 개월 spaced; month names one word: 삼월, 유월, 시월; -는데, -더라도, -(으)ㅁ으로써 attached). Digit ban is an authoring policy for this B2 spec, not a Korean rule: all numbers in Hangul (십만 원, 육십 퍼센트, 열두 시, 삼월); 퍼센트 spelled, no %; no Latin letters in targetText (options named 첫 번째 회사/두 번째 안, never A/B). Loanwords per 외래어 표기법 (앱, 포인트, 서버, 테스트, 카메라). Target punctuation . ? , only; 즉, and 네, carry the comma attached. sceneCaption quotes dialogue[0].targetText verbatim in German „…“ and English “…”.",
+  "segmentation": {
+    "unit": "eojeol = whitespace-delimited Hangul block with attached punctuation; ko lengthScale 0.75 → them 5–15, you1 11–20, focus span 5–9, you2 9–18, you3 8–17 eojeol",
+    "build": "framePrefix may be empty; chunks 5–8, each 1–3 eojeol and each containing at least one content eojeol (a chunk that is only a particle, only 것/수/데/거/건, or only 네/저/그 is an error); particles and endings never split from host; chunks joined with U+0020 plus frames equal dialogue[1].targetText NFC; exactly 2 distractor chunks that are grammatical eojeol groups but wrong in argument (e.g. 더 비싸서 vs 더 비싸지만); whether a second chunk order is also grammatical is manual review, not a validator check",
+    "cloze": "2–4 blanks on dialogue[3], 1–2 on dialogue[5]; every answer a whole inflected eojeol or 1–3 eojeol phrase (아깝기는 하지만, 끊겼기 때문에, 그렇다고 해서); excluded answers are checked exact-eojeol: an answer equal to a bare particle, to 것/수/데/거/건, to a stem without ending or to a detached ending is an error, while whole lexical eojeol containing those syllables (수수료, 데이터, 거예요 inside a phrase) pass; at most one blank per cloze carries 4 choices; form blanks carry de+en cue; whether a distractor is also acceptable in slot is manual review",
+    "recall": "before + answer + after === dialogue[1].targetText; answer 1–3 eojeol content span containing or adjacent to the trophy surface; 4 fallbackChoices distinct whole eojeol",
+    "speak": "turnIndex 1,3,5; requiredTokens 2–4 distinct whole eojeol of that turn after stripping edge .?, (즉 from 즉,); Hangul only; never 네/저/그/좀; matching whole-eojeol only",
+    "trophyAnchor": "lemma single unit; surface is a whole eojeol of the declared turn after edge-punctuation strip; surface minus lemma must be empty or in the per-lesson remainder list (particles 이/가/은/는/을/를/에/에서/으로/으로는, copula 이에요/이고, 하다-noun 되다 passive 됐어요, 적/적으로); verb and adjective trophies declare the exact attested inflected surface (비해, 고려하면, 권하고, 줄임으로써) and the validator matches it verbatim, never derives from the stem, never substring; the surface eojeol must also occur in trophy.example",
+    "alternatesPolicy": "none in P1/P2"
+  },
+  "acceptedInput": "This section specifies the intended future comparison; no Korean B2 runtime, normalization or acceptance code exists today and nothing here is implemented. Intended comparison: NFC, trim, collapse internal whitespace to one space, strip edge punctuation .?, from each eojeol, then whole-eojeol comparison. Whether spacing-only differences (할 수 있어요 / 할수있어요) are accepted is a rail/runtime decision pending implementation and is not promised by this spec. The only guaranteed tolerance is authored rows (acceptedPhraseVariants): 것/거 contractions (하는 것 같아요 / 하는 거 같아요), 그것/그거, Hangul numeral vs learner-typed digit (십만 원 / 10만 원) accepted inbound only and never written back. Decided: no 저는/전 rows anywhere in B2 because 전(前)/전(全) readings occur in argument contexts. No particle tolerance, no synonym substitution, no stem matching, no invisible autocorrection; chip-order equivalence and second-valid-choice checks are manual full-content review tasks.",
+  "carriersStaged": {
+    "P1": [
+      {
+        "lessons": "1-3",
+        "productive": "-에 비해, -는 반면(에), -지만 contrast inside comparison, 저는 …쪽이 좋아요, -(으)면 어떨까요 proposal frame, -(으)니까 reason clause and sentence-final -니까요 (first productive anywhere in B2 at P1 L1 you3 중요하니까요; not in frozen A1/A2; B1 exposure only recognition -(으)ㄹ 테니까 in B1 P3/P10 L9-10, so introduced explicitly here, not assumed); B1 recycled: -기는 하지만/하네요 concession, -(으)ㄹ 것 같아요",
+        "recognitionOnly": "한편으로는…다른 한편으로는, -더라도"
+      },
+      {
+        "lessons": "4-6",
+        "productive": "한편으로는…다른 한편으로는, 차라리 …-는 게 나아요, 정리하면 closing frame",
+        "recognitionOnly": "-더라도, 그렇다고 해서 …는 아니에요"
+      },
+      {
+        "lessons": "7-8",
+        "productive": "-더라도, -(으)ㄴ/는 편이에요 hedge",
+        "recognitionOnly": "그렇다고 해서 …는 아니에요, 제 생각에는"
+      },
+      {
+        "lessons": "9-10",
+        "productive": "그렇다고 해서 …는 아니에요, 제 생각에는, 결론은 …-(으)면 좋겠어요, full compare-concede-conclude chain",
+        "recognitionOnly": "합쇼체 in committee turns (-ㅂ니다/-습니까)"
+      }
+    ],
+    "P2": [
+      {
+        "lessons": "1-3",
+        "productive": "-기 때문에 (clause cause), -아/어서 vs -(으)니까 contrast as deeper practice (-(으)니까 itself first productive P1 L1; 그러니까 connector first productive P2 L5), -(으)ㄴ 게 아니라 …-(으)ㄴ 거예요, 먼저/그다음에 sequencing, -(으)ㄹ 줄 알았어요 (B1 P8 L9-10 recognition → first productive here, L3)",
+        "recognitionOnly": "-되다 passive (noun 반송/처리 free, verb form only in them turns), 결과적으로, -았/었더니 (them turns, L2 내놨더니; B1 P1 L9-10 recognition evidence)"
+      },
+      {
+        "lessons": "4-6",
+        "productive": "-되다 passive (적립돼요, 기록되는데, 취소돼요), lexical passives 끊기다/찍히다/깎이다, 원래는 …-는데 contrast, 첫째/둘째/셋째 enumeration frame (first productive L5)",
+        "recognitionOnly": "-(으)ㅁ으로써"
+      },
+      {
+        "lessons": "7-8",
+        "productive": "-(으)ㅁ으로써, 결과적으로, 그 결과",
+        "recognitionOnly": "즉, -다는 의견/-다는 것은"
+      },
+      {
+        "lessons": "9-10",
+        "productive": "즉, -다는 의견/-다는 것은 …라는 뜻이에요, 정리하면 (P1 L6 recycled) + 첫째/둘째/셋째 (P2 L5 recycled), 제 생각에는 (P1 L9 recycled)",
+        "recognitionOnly": "합쇼체 in official turns"
+      }
+    ]
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Abwägen und empfehlen / Weighing options",
+      "function": "compare advantages and disadvantages of two options, concede one point and give a qualified recommendation",
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "registerPolicy": "constant haeyo; them turns haeyo except L10 chair in hapsyo (recognition)",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "-에 비해, -는 반면에, -(으)면 어떨까요, -(으)니까/-니까요 reason (first productive, L1)",
+          "recognitionOnly": "한편으로는…다른 한편으로는, -더라도"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "한편으로는…다른 한편으로는, 차라리, 정리하면",
+          "recognitionOnly": "-더라도, 그렇다고 해서"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-더라도, -(으)ㄴ/는 편이에요",
+          "recognitionOnly": "그렇다고 해서, 제 생각에는"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "그렇다고 해서 …는 아니에요, 제 생각에는, 결론은 …-(으)면 좋겠어요",
+          "recognitionOnly": "합쇼체 them turns"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "wolse-vs-chultoegeun",
+          "scene": "letting agent shows two flats: near station, expensive; suburb, cheap",
+          "interlocutor": "중개사님",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "두 집 중에 고민되시죠? 역 근처 집은 월세가 비싸고, 외곽 집은 출퇴근이 길어요.",
+            "you1": "두 집 다 장단점이 있어요. 역 근처는 월세가 비싸지만 출퇴근이 삼십 분이고, 외곽 집은 싸지만 매일 한 시간 넘게 걸려요.",
+            "move": "compare"
+          },
+          "challenge": {
+            "them": "그런데 외곽 집은 월세가 싸도 교통비가 매달 팔만 원쯤 들어요. 그걸 계산하셨어요?"
+          },
+          "answerMove": {
+            "you2": "교통비까지 생각하면 차이가 생각보다 작기는 하네요. 그래도 시간은 돈으로 못 사요.",
+            "move": "concede"
+          },
+          "steer": {
+            "them": "계약은 이번 주에 하셔야 돼요. 둘 중 하나만 고르신다면요?"
+          },
+          "closingMove": {
+            "you3": "그러면 역 근처 집으로 할게요. 돈보다 시간이 저한테는 더 중요하니까요.",
+            "move": "conclude"
+          },
+          "trophyLemma": "장단점",
+          "trophySurface": "장단점이",
+          "trophyFamilyKey": "장단점",
+          "pos": "noun",
+          "requiredCarrier": "-지만 contrast pair inside comparison; you2 -기는 하네요; you3 sentence-final -니까요 (중요하니까요) as the first productive -(으)니까, taught as the reason-for-a-stated-decision closer and tagged productive in carrierTags",
+          "recycles": "B1 P2 -기는 하네요, B1 P3 그러면, A2 prices"
+        },
+        {
+          "number": 2,
+          "slug": "cha-vs-jihacheol",
+          "scene": "colleague debates driving versus subway for the commute",
+          "interlocutor": "동료분",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "출퇴근 차로 하세요, 지하철로 하세요? 저는 요즘 차가 편해서요.",
+            "you1": "차는 편한 반면에 주차비와 기름값이 많이 들어요. 지하철은 시간이 정확하고 그동안 책도 읽을 수 있어서 저는 지하철이 더 나아요.",
+            "move": "compare"
+          },
+          "challenge": {
+            "them": "그래도 비 오는 날은요? 그리고 야근하면 막차가 끊기잖아요."
+          },
+          "answerMove": {
+            "you2": "택시를 한 달에 두세 번 타도 사만 원쯤이라서 차 유지비보다 훨씬 싸요. 제 노선은 막차가 열두 시 반이고요.",
+            "move": "rebut"
+          },
+          "steer": {
+            "them": "그럼 차 팔까 생각 중인데, 솔직히 어떻게 하는 게 좋을까요?"
+          },
+          "closingMove": {
+            "you3": "바로 팔지 말고 한 달만 지하철로 다녀 보세요. 그러고 나서 결정해도 늦지 않아요.",
+            "move": "propose"
+          },
+          "trophyLemma": "반면",
+          "trophySurface": "반면에",
+          "trophyFamilyKey": "반면",
+          "pos": "connector",
+          "requiredCarrier": "-(으)ㄴ 반면에",
+          "recycles": "B1 P2 훨씬, B1 P1 -고 나서, A2 transport"
+        },
+        {
+          "number": 3,
+          "slug": "jaetaek-vs-samusil",
+          "scene": "team manager collects opinions on two-day remote work",
+          "interlocutor": "팀장님",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "다음 달부터 재택근무를 주 이틀 할지 계속 사무실에 나올지 팀 의견을 듣고 있어요.",
+            "you1": "저는 재택근무를 이틀 하는 쪽이 좋아요. 사무실에 비해 집중이 잘 되고, 출퇴근 시간이 줄어서 일을 더 할 수 있어요.",
+            "move": "position"
+          },
+          "challenge": {
+            "them": "그런데 재택을 하면 회의 때 소통이 느려진다는 의견도 있어요. 그건 어떻게 보세요?"
+          },
+          "answerMove": {
+            "you2": "소통 문제는 재택 자체보다 회의 방식 문제인 것 같아요. 아침마다 짧게 화상 회의를 하면 돼요.",
+            "move": "clarify"
+          },
+          "steer": {
+            "them": "팀원 전체 기준으로는 어떻게 정하면 될까요? 신입은 적응 중이라서요."
+          },
+          "closingMove": {
+            "you3": "신입분들은 첫 세 달은 사무실에 나오고, 그 후에 이틀 재택으로 하면 어떨까요?",
+            "move": "propose"
+          },
+          "trophyLemma": "비하다",
+          "trophySurface": "비해",
+          "trophyFamilyKey": "비하",
+          "pos": "verb",
+          "requiredCarrier": "-에 비해; closing -(으)면 어떨까요",
+          "recycles": "B1 P2 -(으)ㄴ 것 같아요, B1 P5 -(으)ㄹ지"
+        },
+        {
+          "number": 4,
+          "slug": "sagi-vs-billigi",
+          "scene": "bike shop offers purchase or monthly rental",
+          "interlocutor": "사장님",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "자전거를 사시면 사십만 원이고, 월 삼만 원에 빌려 드릴 수도 있어요. 어느 쪽이 나으세요?",
+            "you1": "한편으로는 사는 게 길게 보면 싸지만, 다른 한편으로는 한 번에 사십만 원은 부담이 커요. 일단 석 달만 빌려 보고 싶어요.",
+            "move": "reason"
+          },
+          "challenge": {
+            "them": "빌리시면 석 달이면 구만 원이고, 그 뒤에 사셔도 그 돈은 안 돌려 드려요."
+          },
+          "answerMove": {
+            "you2": "그 돈이 없어지기는 하지만, 제가 자전거를 꾸준히 탈지 아직 몰라서요.",
+            "move": "concede"
+          },
+          "steer": {
+            "them": "그러면 조건을 하나 드릴게요. 빌린 지 석 달 안에 사시면 빌린 돈의 반은 빼 드려요."
+          },
+          "closingMove": {
+            "you3": "그 조건이면 좋아요. 빌리는 걸로 시작하고, 잘 타면 석 달 안에 살게요.",
+            "move": "conclude"
+          },
+          "trophyLemma": "부담",
+          "trophySurface": "부담이",
+          "trophyFamilyKey": "부담",
+          "pos": "noun",
+          "requiredCarrier": "한편으로는 …-지만, 다른 한편으로는 …",
+          "recycles": "B1 P2 -기는 하지만, B1 P8 -(으)ㄴ 지, A2 counting"
+        },
+        {
+          "number": 5,
+          "slug": "jeju-vs-busan",
+          "scene": "friend weighs four days in Jeju against two in Busan",
+          "interlocutor": "친구",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "휴가 때 제주도 나흘 갈까요, 아니면 부산 이틀 하고 집에서 쉴까요?",
+            "you1": "제주도는 가는 데 시간이 걸리는 반면에 한 번 가면 볼 게 많아요. 부산은 가깝지만 이틀은 짧아서 저는 제주도가 더 효율적이에요.",
+            "move": "compare"
+          },
+          "challenge": {
+            "them": "근데 제주도는 비행기값이 둘이 삼십만 원이에요. 그 돈이면 부산 두 번 가요."
+          },
+          "answerMove": {
+            "you2": "두 번 가는 것보다 한 번 길게 가는 게 덜 피곤해요. 어제 본 표는 둘이 십육만 원이었고요.",
+            "move": "rebut"
+          },
+          "steer": {
+            "them": "좋아요, 제주도로 해요. 근데 저는 나흘은 휴가를 못 내요. 사흘이면요?"
+          },
+          "closingMove": {
+            "you3": "사흘도 괜찮아요. 대신 첫날 아침 비행기로 가서 하루를 꽉 채워요.",
+            "move": "counteroffer"
+          },
+          "trophyLemma": "효율적",
+          "trophySurface": "효율적이에요",
+          "trophyFamilyKey": "효율",
+          "pos": "adjective",
+          "requiredCarrier": "-는 반면에 with 가는 데 시간이 걸리다",
+          "recycles": "B1 P3 대신, B1 P3 미리, A2 travel"
+        },
+        {
+          "number": 6,
+          "slug": "hyeongeum-vs-aep",
+          "scene": "small shop owner resists app payment because of fees",
+          "interlocutor": "사장님",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "요즘 손님들이 앱 결제를 많이 물어보시는데, 수수료가 아까워서 아직 현금이랑 카드만 받아요.",
+            "you1": "수수료가 아깝기는 하지만, 손님이 그것 때문에 다른 가게로 가면 손해가 더 커요. 차라리 수수료를 내고 앱을 받는 게 나아요.",
+            "move": "position"
+          },
+          "challenge": {
+            "them": "앱이 그렇게 중요해요? 우리 손님은 대부분 동네 어르신들이에요."
+          },
+          "answerMove": {
+            "you2": "지금 손님들께는 안 중요하죠. 그런데 근처에 회사가 생겨서 젊은 손님들이 늘고 있잖아요.",
+            "move": "clarify"
+          },
+          "steer": {
+            "them": "그럼 둘 다 받으면 수수료가 얼마나 나갈지 계산이 안 돼요. 간단하게 말해 주세요."
+          },
+          "closingMove": {
+            "you3": "정리하면, 수수료는 매출의 삼 퍼센트 정도예요. 한 달만 해 보고 새 손님이 열 명 늘면 계속하시면 돼요.",
+            "move": "propose"
+          },
+          "trophyLemma": "차라리",
+          "trophySurface": "차라리",
+          "trophyFamilyKey": "차라리",
+          "pos": "adverb",
+          "requiredCarrier": "차라리 …-는 게 나아요; 정리하면 (first productive)",
+          "recycles": "B1 P2 -기는 하지만, B1 P2 -아/어도, A2 shop"
+        },
+        {
+          "number": 7,
+          "slug": "hagwon-vs-aep",
+          "scene": "friend chooses between a Korean academy and a study app",
+          "interlocutor": "친구",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "한국어 학원을 다닐지 앱으로만 할지 고민이에요. 앱이 훨씬 싸거든요.",
+            "you1": "앱은 싸고 편한 반면에 저한테는 말하기 연습이 부족해요. 학원은 비싸더라도 장기적으로는 선생님이 바로 고쳐 주시니까 훨씬 빨라요.",
+            "move": "compare"
+          },
+          "challenge": {
+            "them": "그런데 학원은 시간이 정해져 있어서 야근하면 못 가요. 돈만 날리는 거 아니에요?"
+          },
+          "answerMove": {
+            "you2": "그러면 주말 반을 들으면 돼요. 야근하는 평일에는 앱으로 조금씩 하고요.",
+            "move": "counteroffer"
+          },
+          "steer": {
+            "them": "결국 둘 다 하라는 거예요? 한 달에 얼마나 들어요?"
+          },
+          "closingMove": {
+            "you3": "네, 둘 다요. 학원 주말 반이 십오만 원, 앱은 만 원이니까 한 달에 십육만 원이에요.",
+            "move": "summarize"
+          },
+          "trophyLemma": "장기적",
+          "trophySurface": "장기적으로는",
+          "trophyFamilyKey": "장기",
+          "pos": "adjective",
+          "requiredCarrier": "-더라도 (first productive)",
+          "recycles": "B1 P7 -(으)려면 recognized, A2 prices, B1 P3 그러면, P1 L1 -(으)니까 (주시니까, 원이니까)"
+        },
+        {
+          "number": 8,
+          "slug": "du-hoesa-jeian",
+          "scene": "mentor compares two job offers with the learner",
+          "interlocutor": "선배",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "두 회사에서 다 연락이 왔다면서요? 조건이 어떻게 달라요?",
+            "you1": "첫 번째는 연봉이 높은 편이고, 두 번째 회사는 연봉은 낮아도 가깝고 야근이 없어요. 생활까지 고려하면 두 번째 회사가 더 끌려요.",
+            "move": "reason"
+          },
+          "challenge": {
+            "them": "근데 연봉 차이가 오 년이면 천오백만 원이에요. 그걸 정말 포기할 수 있어요?"
+          },
+          "answerMove": {
+            "you2": "큰돈이기는 하죠. 그런데 야근을 계속하면 건강이 나빠질 수도 있고, 그 돈이 병원비로 나갈 수도 있어요.",
+            "move": "concede"
+          },
+          "steer": {
+            "them": "좋아요. 그럼 면접관한테 뭐라고 할지 한 문장으로 정리해 봐요."
+          },
+          "closingMove": {
+            "you3": "정리하면, 저한테는 연봉보다 오래 일할 수 있는 조건이 더 중요해서 두 번째 회사를 택했어요.",
+            "move": "summarize"
+          },
+          "trophyLemma": "고려하다",
+          "trophySurface": "고려하면",
+          "trophyFamilyKey": "고려",
+          "pos": "verb",
+          "requiredCarrier": "-(으)ㄴ 편이에요, -(으)면 condition on 고려하다",
+          "recycles": "B1 P6 -(으)면서, B1 P7 면접 vocabulary, B1 P2 -아/어도"
+        },
+        {
+          "number": 9,
+          "slug": "sejong-gagi-vs-namgi",
+          "scene": "neighbor asks whether the learner follows the company to Sejong",
+          "interlocutor": "이웃분",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "회사가 세종으로 옮긴다면서요? 같이 가세요, 아니면 서울에 남으세요?",
+            "you1": "제 생각에는 따라가는 게 맞아요. 지금 자리는 안정적이고 집값도 서울보다 싸요. 그렇다고 해서 서울 친구들이 안 그립다는 건 아니에요.",
+            "move": "position"
+          },
+          "challenge": {
+            "them": "근데 아이 학교는요? 전학시키면 애가 힘들어할까 봐 걱정되지 않으세요?"
+          },
+          "answerMove": {
+            "you2": "저도 그게 걱정이라서 삼월 새 학기에 맞춰 가려고요. 아이한테는 이미 설명했고, 새 학교도 같이 가 봤어요.",
+            "move": "explain"
+          },
+          "steer": {
+            "them": "그럼 이 집은 파세요? 아니면 세를 놓으세요? 저희가 아는 분이 찾고 있어서요."
+          },
+          "closingMove": {
+            "you3": "일단은 세를 놓으려고요. 그분이 관심 있으시면 연락처 좀 전해 주시겠어요?",
+            "move": "request"
+          },
+          "trophyLemma": "안정적",
+          "trophySurface": "안정적이고",
+          "trophyFamilyKey": "안정",
+          "pos": "adjective",
+          "requiredCarrier": "제 생각에는, 그렇다고 해서 …는 아니에요 (first productive)",
+          "recycles": "B1 P7 -(으)려고요, B1 P3 -아/어 주시겠어요, B1 P7 이사"
+        },
+        {
+          "number": 10,
+          "slug": "jucha-an-gwonhada",
+          "scene": "residents' committee of the learner's complex votes between two parking rules (fictional local notice)",
+          "interlocutor": "회의 진행자 (them turns 합쇼체, recognition-only)",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "주차 안은 둘입니다. 세대당 한 대 제한, 아니면 둘째 차부터 월 오만 원입니다. 의견 부탁드립니다.",
+            "you1": "두 안을 비교하면 저는 두 번째 안을 권하고 싶어요. 첫 번째 안은 간단한 반면에 차가 꼭 필요한 집에는 너무 엄격해요.",
+            "move": "position"
+          },
+          "challenge": {
+            "them": "그런데 오만 원이면 그냥 내고 계속 두 대 세우는 집이 많을 겁니다. 효과가 있겠습니까?"
+          },
+          "answerMove": {
+            "you2": "그렇다고 해서 효과가 없는 건 아니에요. 요금이 있으면 거의 안 쓰는 차는 빼는 집도 생길 거예요.",
+            "move": "rebut"
+          },
+          "steer": {
+            "them": "회의 시간이 다 됐습니다. 결론만 한 문장으로 말씀해 주시겠습니까?"
+          },
+          "closingMove": {
+            "you3": "결론은, 둘째 차부터 요금을 받고, 육 개월 뒤에 효과를 보고 다시 정하면 좋겠어요.",
+            "move": "conclude"
+          },
+          "trophyLemma": "권하다",
+          "trophySurface": "권하고",
+          "trophyFamilyKey": "권하",
+          "pos": "verb",
+          "requiredCarrier": "저는 …을 권하고 싶어요; 결론은 …-(으)면 좋겠어요",
+          "recycles": "P1 L2 반면에, P1 L9 그렇다고 해서, B1 P3 요금"
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Ursachen, Folgen, Abläufe erklären / Explaining how and why",
+      "function": "explain causes, consequences or a process in detail and hold the explanation under requests for precision",
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "registerPolicy": "constant haeyo; them turns haeyo except L10 manager in hapsyo (recognition)",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "-기 때문에, -아/어서 vs -(으)니까 contrast (-(으)니까 recycled from P1 L1), -(으)ㄴ 게 아니라 …-(으)ㄴ 거예요, 먼저/그다음에, -(으)ㄹ 줄 알았어요",
+          "recognitionOnly": "-되다 passive, 결과적으로, -았/었더니"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-되다 passive, 끊기다/찍히다/깎이다, 원래는 …-는데, 첫째/둘째/셋째",
+          "recognitionOnly": "-(으)ㅁ으로써"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-(으)ㅁ으로써, 결과적으로",
+          "recognitionOnly": "즉, -다는 의견"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "즉, -다는 의견, 정리하면 + 첫째/둘째/셋째 (recycled)",
+          "recognitionOnly": "합쇼체 them turns"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "cheongguseo-chai",
+          "scene": "accountant asks why the learner's workshop invoice exceeds the estimate",
+          "interlocutor": "회계 담당자",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "이번 달 청구서가 견적보다 십이만 원 많아요. 이유를 설명해 주시겠어요?",
+            "you1": "차이가 난 원인은 두 가지예요. 재료값이 삼월에 올랐기 때문에 팔만 원이 늘었고, 배송비가 사만 원 더 들었어요.",
+            "move": "explain"
+          },
+          "challenge": {
+            "them": "재료값은 알겠는데, 배송을 왜 두 번 했어요? 견적에는 한 번이었잖아요."
+          },
+          "answerMove": {
+            "you2": "첫 배송 때 손님이 부재중이어서 물건이 그대로 돌아왔어요. 그래서 다음 날 다시 보내야 했어요.",
+            "move": "clarify"
+          },
+          "steer": {
+            "them": "그럼 반송 비용은 손님 책임 아니에요? 청구서에는 어떻게 적을까요?"
+          },
+          "closingMove": {
+            "you3": "주문 조건상 부재중 반송비는 손님 부담이니까 손님께 먼저 확인하고, 이 청구서에는 재료값 인상분만 넣으면 돼요.",
+            "move": "propose"
+          },
+          "trophyLemma": "원인",
+          "trophySurface": "원인은",
+          "trophyFamilyKey": "원인",
+          "pos": "noun",
+          "requiredCarrier": "-았/었기 때문에 (first productive); you2 uses active 돌아왔어요, no learner -되다 before the L4 range; 반송 appears only as a noun",
+          "recycles": "B1 P6 재료, B1 P1 -아/어서, A2 prices"
+        },
+        {
+          "number": 2,
+          "slug": "bunrisugeo-jeolcha",
+          "scene": "newcomer asks how recycling works in this building (fictional building notice)",
+          "interlocutor": "새 이웃분",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "이 아파트는 분리수거가 어떻게 돼요? 어제 밖에 내놨더니 경비실에서 다시 가져가라고 하셨어요.",
+            "you1": "여기는 절차가 좀 달라요. 화요일과 금요일 저녁에만 지하에 내놓을 수 있어요. 병, 캔, 종이는 따로 나누니까 봉투가 세 개 필요해요.",
+            "move": "explain"
+          },
+          "challenge": {
+            "them": "음식물 쓰레기는요? 그건 매일 나오잖아요."
+          },
+          "answerMove": {
+            "you2": "음식물은 날짜가 없어요. 일 층 입구 옆 전용 통에 아무 때나 버려도 돼요. 카드를 찍고 열어요.",
+            "move": "clarify"
+          },
+          "steer": {
+            "them": "카드요? 저는 카드를 못 받았는데, 그럼 어떻게 해야 돼요?"
+          },
+          "closingMove": {
+            "you3": "경비실에 가서 세대 카드를 신청하시면 돼요. 안내문을 보면 동 호수를 확인하고 다음 날 주는 걸로 되어 있어요.",
+            "move": "propose"
+          },
+          "trophyLemma": "절차",
+          "trophySurface": "절차가",
+          "trophyFamilyKey": "절차",
+          "pos": "noun",
+          "requiredCarrier": "-(으)니까 reason (나누니까; recycled from P1 L1, here as known-information cause before an instruction) + ordering by weekday",
+          "recycles": "B1 P4 입구, B1 P5 신청, B1 P2 -아/어도"
+        },
+        {
+          "number": 3,
+          "slug": "iljeong-neujeun-wonin",
+          "scene": "manager asks why the project slipped two weeks",
+          "interlocutor": "팀장님",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "일정이 왜 두 주나 늦어졌어요? 지난 회의 때는 문제가 없다고 하셨잖아요.",
+            "you1": "테스트 단계에서 문제가 생겼어요. 데이터가 많아서 서버가 느려졌고 고치는 데 열흘이 걸렸어요. 개발이 늦은 게 아니라 테스트가 늦은 거예요.",
+            "move": "reason"
+          },
+          "challenge": {
+            "them": "서버 문제는 지난주에 이미 알았다면서요? 왜 그때 바로 보고 안 했어요?"
+          },
+          "answerMove": {
+            "you2": "그때는 하루면 고칠 줄 알았어요. 그런데 고치니까 다른 부분에서 또 문제가 나와서 그때 보고했어요.",
+            "move": "explain"
+          },
+          "steer": {
+            "them": "알겠어요. 고객한테는 뭐라고 설명하죠? 짧게요."
+          },
+          "closingMove": {
+            "you3": "데이터가 늘어서 테스트 중에 서버 문제가 생겼고, 열흘 동안 고쳐서 지금은 정상이에요. 이 두 가지만 말씀하시면 돼요.",
+            "move": "summarize"
+          },
+          "trophyLemma": "단계",
+          "trophySurface": "단계에서",
+          "trophyFamilyKey": "단계",
+          "pos": "noun",
+          "requiredCarrier": "-(으)ㄴ 게 아니라 …-(으)ㄴ 거예요; -아/어서 vs -(으)니까 contrast across you1/you2",
+          "recycles": "B1 P5 일정, B1 P8 L9-10 -(으)ㄹ 줄 몰랐어요 recognition → -(으)ㄹ 줄 알았어요 first productive here (staged P2 L1-3), B1 P6 -아/어지다"
+        },
+        {
+          "number": 4,
+          "slug": "pointeu-jeongnip",
+          "scene": "friend cannot understand the cafe app loyalty scheme (fictional app rules)",
+          "interlocutor": "친구",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "그 카페 앱 포인트가 어떻게 되는 거예요? 저도 깔았는데 뭐가 뭔지 모르겠어요.",
+            "you1": "먼저 결제할 때 백 원마다 오 점이 포인트로 적립돼요. 그다음에 포인트가 만 점이 넘으면 등급이 올라가고, 등급이 할인에 영향을 줘요.",
+            "move": "explain"
+          },
+          "challenge": {
+            "them": "근데 저는 지난달에 많이 샀는데 포인트가 거의 없어요. 왜 그래요?"
+          },
+          "answerMove": {
+            "you2": "아마 현금으로 내셨을 거예요. 포인트는 앱으로 결제했을 때만 적립되고, 현금은 포함이 안 돼요.",
+            "move": "clarify"
+          },
+          "steer": {
+            "them": "아, 그럼 등급이 올라가면 정확히 뭐가 달라져요? 숫자로 말해 줘요."
+          },
+          "closingMove": {
+            "you3": "일반 등급은 할인이 없고, 만 점이 넘으면 음료마다 오백 원, 삼만 점이 넘으면 천 원이 깎여요.",
+            "move": "summarize"
+          },
+          "trophyLemma": "영향",
+          "trophySurface": "영향을",
+          "trophyFamilyKey": "영향",
+          "pos": "noun",
+          "requiredCarrier": "-되다 passive (적립돼요) first productive; 먼저/그다음에",
+          "recycles": "B1 P3 할인, B1 P2 아마, A2 money"
+        },
+        {
+          "number": 5,
+          "slug": "inteonet-bakkun-gijun",
+          "scene": "neighbor with dropouts asks why the learner switched internet providers",
+          "interlocutor": "이웃분",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "인터넷 회사를 바꾸셨다면서요? 저도 요즘 자주 끊겨서 고민이에요.",
+            "you1": "바꾼 기준이 세 가지였어요. 저녁마다 끊겼기 때문에 첫째는 저녁 속도, 둘째는 요금, 셋째는 고장 났을 때 얼마나 빨리 고쳐 주는지였어요.",
+            "move": "reason"
+          },
+          "challenge": {
+            "them": "속도는 어느 회사나 비슷하다고 하던데요. 정말 차이가 있어요?"
+          },
+          "answerMove": {
+            "you2": "광고는 비슷해도 저희 집에서 저녁 여덟 시에 재 보면 달라요. 예전 회사는 반으로 떨어졌는데 지금 회사는 그대로예요.",
+            "move": "rebut"
+          },
+          "steer": {
+            "them": "그럼 저도 바꾸려면 위약금이 있을 텐데, 그건 어떻게 하셨어요?"
+          },
+          "closingMove": {
+            "you3": "제 경우에는 위약금을 새 회사가 대신 내 줬어요. 그러니까 바꾸기 전에 그 조건부터 확인해 보세요.",
+            "move": "propose"
+          },
+          "trophyLemma": "기준",
+          "trophySurface": "기준이",
+          "trophyFamilyKey": "기준",
+          "pos": "noun",
+          "requiredCarrier": "lexical passive 끊기다 + -았/었기 때문에; 첫째/둘째/셋째 enumeration frame (first productive, staged P2 L4-6)",
+          "recycles": "B1 P5 -는지, B1 P9 고장, B1 P5 요금"
+        },
+        {
+          "number": 6,
+          "slug": "yeonchero-iui-sincheong",
+          "scene": "colleague got a late fee for shared equipment under the company's internal rule (fictional policy)",
+          "interlocutor": "동료분",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "사내 장비 연체료 삼만 원이 나왔는데, 저는 제때 반납했어요. 이의 신청은 어떻게 해요?",
+            "you1": "원래는 반납 시간이 반납함에 넣은 시간으로 기록되는데, 직원이 다음 날 확인하면 그날로 찍혀요. 안내문대로면 넣은 날짜를 증명하면 취소돼요.",
+            "move": "explain"
+          },
+          "challenge": {
+            "them": "증명이요? 반납함에 넣은 걸 누가 봤어야 되는 거예요?"
+          },
+          "answerMove": {
+            "you2": "사람이 아니라 사진이면 돼요. 반납함 앞에 카메라가 있어서 총무팀에 물어보면 시간을 확인해 주는 걸로 알아요.",
+            "move": "clarify"
+          },
+          "steer": {
+            "them": "총무팀에 뭐라고 쓰죠? 메일을 짧게 어떻게 시작하면 좋을까요?"
+          },
+          "closingMove": {
+            "you3": "제목에 연체료 이의 신청이라고 쓰고, 본문에는 반납한 날짜와 시간, 그리고 카메라 확인 요청만 쓰면 돼요.",
+            "move": "propose"
+          },
+          "trophyLemma": "원래",
+          "trophySurface": "원래는",
+          "trophyFamilyKey": "원래",
+          "pos": "adverb",
+          "requiredCarrier": "원래는 …-는데; -되다/-히- passives (기록되는데, 찍혀요, 취소돼요)",
+          "recycles": "B1 P4 -(으)ㄴ N, B1 P6 확인, B1 P3 -(으)면 좋을까요"
+        },
+        {
+          "number": 7,
+          "slug": "jeochuk-gyehoek-silpae",
+          "scene": "friend asks why the monthly saving plan failed",
+          "interlocutor": "친구",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "한 달에 삼십만 원 모으겠다던 계획은 어떻게 됐어요? 성공했어요?",
+            "you1": "실패했어요. 외식을 줄임으로써 돈을 모으려고 했는데, 원래 요리를 안 하던 사람이라 장을 많이 봤고 반은 버렸어요. 결과적으로 외식보다 더 썼어요.",
+            "move": "reason"
+          },
+          "challenge": {
+            "them": "그건 계획이 아니라 장보기 문제 아니에요? 계획 자체는 괜찮았잖아요."
+          },
+          "answerMove": {
+            "you2": "계획이 틀린 건 아니었죠. 그런데 한 번에 다 바꾸려고 한 게 문제였어요.",
+            "move": "concede"
+          },
+          "steer": {
+            "them": "그럼 다음 달에는 뭘 다르게 할 거예요? 딱 하나만요."
+          },
+          "closingMove": {
+            "you3": "주 이틀만 요리하고 그날 먹을 만큼만 사려고요. 그러면 지난달 식비 기준으로 십만 원은 모을 것 같아요.",
+            "move": "propose"
+          },
+          "trophyLemma": "줄이다",
+          "trophySurface": "줄임으로써",
+          "trophyFamilyKey": "줄이",
+          "pos": "verb",
+          "requiredCarrier": "-(으)ㅁ으로써 (first productive), 결과적으로 (first productive)",
+          "recycles": "B1 P7 저축, B1 P8 -던, B1 P7 -(으)려고"
+        },
+        {
+          "number": 8,
+          "slug": "geulsseugi-sangdam-yeyak",
+          "scene": "learner, a student assistant, explains the writing center booking process to a new student (fictional center rule)",
+          "interlocutor": "신입생",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "글쓰기 센터 상담은 어떻게 잡아요? 홈페이지에서 눌렀는데 아무 날짜도 안 열려요.",
+            "you1": "먼저 글을 올려야 그 주 상담 날짜가 보이고, 날짜를 고름으로써 시간이 확정돼요. 결과적으로 글을 안 올리면 날짜도 안 열려요.",
+            "move": "explain"
+          },
+          "challenge": {
+            "them": "그런데 저는 글이 아직 반밖에 안 됐어요. 그래도 올려야 돼요?"
+          },
+          "answerMove": {
+            "you2": "반이어도 괜찮아요. 완성된 글이 아니라 질문이 있는 부분만 있으면 돼요.",
+            "move": "clarify"
+          },
+          "steer": {
+            "them": "이번 주 자리가 다 찼으면요? 그러면 어떻게 되는 거예요?"
+          },
+          "closingMove": {
+            "you3": "그러면 대기 명단에 올려 두세요. 취소가 나면 문자가 오지만 꼭 나는 건 아니니까 다음 주에 다시 신청하세요.",
+            "move": "propose"
+          },
+          "trophyLemma": "결과",
+          "trophySurface": "결과적으로",
+          "trophyFamilyKey": "결과",
+          "pos": "noun",
+          "requiredCarrier": "-(으)ㅁ으로써 + -되다 (확정되는데); 결과적으로 as closing cause-result frame",
+          "recycles": "B1 P6 완성, B1 P3 -(으)ㄹ 수 있어요, B1 P5 순서"
+        },
+        {
+          "number": 9,
+          "slug": "gongyu-jajeongeo-jjeuk",
+          "scene": "skeptical neighbor opposes a complex-run shared bike scheme (fictional committee proposal)",
+          "interlocutor": "이웃분",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "단지에서 공유 자전거를 하자는데 저는 반대예요. 아무도 안 타고 고장만 날 거예요.",
+            "you1": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 아침에 차 안 쓰는 집이 늘면 주차도 나아질 거예요.",
+            "move": "reason"
+          },
+          "challenge": {
+            "them": "고장 나면요? 누가 고쳐요? 결국 관리비로 나가는 거잖아요."
+          },
+          "answerMove": {
+            "you2": "제안서대로면 고장은 업체가 고쳐요. 앱으로 신고하면 하루 안에 고치고, 비용은 월 이용료에 포함이에요.",
+            "move": "explain"
+          },
+          "steer": {
+            "them": "그래서 결국 우리가 내는 돈은 얼마라는 거예요? 그것만 말해요."
+          },
+          "closingMove": {
+            "you3": "정리하면, 제안서대로면 관리비는 안 오르고, 타는 사람만 한 달에 오천 원을 내요.",
+            "move": "summarize"
+          },
+          "trophyLemma": "즉",
+          "trophySurface": "즉",
+          "trophyFamilyKey": "즉",
+          "pos": "connector",
+          "requiredCarrier": "즉, (first productive, comma attached and stripped for matching); 제 생각에는 recycled from P1 L9",
+          "recycles": "P1 L6 정리하면, B1 P6 -아/어 있어요, B1 P9 고장"
+        },
+        {
+          "number": 10,
+          "slug": "seolmun-gyeoljeong-cheori",
+          "scene": "building manager asks the learner, a resident representative, to trace how the survey led to a different decision (fictional complex process)",
+          "interlocutor": "관리소장님 (them turns 합쇼체, recognition-only)",
+          "register": "haeyo",
+          "openingMove": {
+            "them": "주민 설문 결과가 왜 이렇게 처리됐는지 설명이 필요합니다. 처음 안과 결론이 다릅니다.",
+            "you1": "처음 안은 지하였는데 설문에서 반대가 육십 퍼센트였어요. 이유는 어둡다는 의견이 많았어요. 즉, 대표 회의에서 조명 공사를 조건으로 지하 안이 처리됐어요.",
+            "move": "explain"
+          },
+          "challenge": {
+            "them": "조명 공사비는 누가 결정했습니까? 회의록에는 그 내용이 없습니다."
+          },
+          "answerMove": {
+            "you2": "회의록에는 없지만 설문 마지막 문항에 있었고, 그 결과를 대표 회의에서 확정했어요. 공사비 이백만 원에 칠십 퍼센트가 찬성했어요.",
+            "move": "clarify"
+          },
+          "steer": {
+            "them": "알겠습니다. 다음 주 게시판에 올릴 안내문을 세 줄로 정리해 주시겠습니까?"
+          },
+          "closingMove": {
+            "you3": "첫째, 자전거 보관소는 지하 주차장으로 정했어요. 둘째, 조명 공사를 먼저 해요. 셋째, 공사비는 설문 결과대로 관리비에서 나가요.",
+            "move": "summarize"
+          },
+          "trophyLemma": "처리",
+          "trophySurface": "처리됐어요",
+          "trophyFamilyKey": "처리",
+          "pos": "noun",
+          "requiredCarrier": "-다는 의견, 즉, 첫째/둘째/셋째 list closing; them hapsyo recognition",
+          "recycles": "P2 L9 즉, P2 L5 첫째/둘째/셋째, B1 P9 공사, B1 P5 이유"
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "장단점",
+        "familyKey": "장단점",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "반면",
+        "familyKey": "반면",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "비하다",
+        "familyKey": "비하",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "부담",
+        "familyKey": "부담",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "효율적",
+        "familyKey": "효율",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "차라리",
+        "familyKey": "차라리",
+        "pos": "adverb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "장기적",
+        "familyKey": "장기",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "고려하다",
+        "familyKey": "고려",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "안정적",
+        "familyKey": "안정",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "권하다",
+        "familyKey": "권하",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "원인",
+        "familyKey": "원인",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "절차",
+        "familyKey": "절차",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "단계",
+        "familyKey": "단계",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "영향",
+        "familyKey": "영향",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "기준",
+        "familyKey": "기준",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "원래",
+        "familyKey": "원래",
+        "pos": "adverb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "줄이다",
+        "familyKey": "줄이",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "결과",
+        "familyKey": "결과",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "즉",
+        "familyKey": "즉",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "처리",
+        "familyKey": "처리",
+        "pos": "noun"
+      }
+    ],
+    "forbiddenCheck": "All 20 lemmas and 20 familyKeys compared under NFC+casefold against the full forbidden list (A1+A2+all 100 reserved B1 allocations, allocation sha256 5e2ebf52…) and against each other: zero collisions, zero duplicates. The 100 B1 rows stay reserved untouched; B2 recycles their words only as free vocabulary (장단점 lesson uses 교통, 요금, 고장, 이유 etc. as text, never as trophies). Binding to the future lesson draft: ledger row (pathNumber, lessonNumber, lemma, familyKey, pos) → trophy.lemma/familyKey/pos; the lesson's trophySurface in this spec → trophy.surface with turnIndex 1; trophy.remainder and trophy.surfaceMode are not existing columns anywhere, they are the future draft fields named in requiredSchemaExtensions and are written at drafting time as surface minus lemma. Actual per-lesson remainders: 장단점이 이; 반면에 에; 부담이 이; 원인은 은; 절차가 가; 단계에서 에서; 영향을 을; 기준이 이; 원래는 는; 결과적으로 적으로; 처리됐어요 됐어요; 차라리 and 즉 bare; attested (surfaceMode attested, matched verbatim): 비해, 효율적이에요, 장기적으로는, 고려하면, 안정적이고, 권하고, 줄임으로써.",
+    "nearFamilyDecisions": [
+      "권하다 vs B1 추천: distinct lexeme and family (권하 vs 추천); allowed",
+      "원인 vs B1 이유, 결과 vs B1 결국, 처리 vs B1 조치/해결, 단계 vs B1 순서, 절차 vs B1 방법: distinct lexemes, allowed; review must teach the contrasting sense",
+      "효율적/장기적/안정적: family keys are the Sino-Korean bases 효율/장기/안정; the bare bases and -되다 derivatives (안정되다) are reserved to these rows and may not become later trophies; 장기 is unrelated to B1 기간",
+      "줄이다 family 줄이: intransitive 줄다/줄어들다 are separate lexemes reserved as vocabulary, not future trophies; the ㅁ-nominalized surface is declared, not derived",
+      "비하다 family 비하: surface 비해 cannot be stem-matched (비하→비해 vowel contraction), hence verbatim surface rule; 비교 is a separate family left free",
+      "바뀌다 was rejected as a near-derivation of forbidden B1 surface 바꿔 (same root 바꾸-); it appears only as free vocabulary in P2 L5",
+      "즉 and 반면 are single-eojeol connectors; 반면 is anchored by its attested surface 반면에, 즉 by 즉 after comma strip"
+    ]
+  },
+  "mechanicalValidationRules": [
+    "Exactly 2 paths numbered 1,2 with slugs weighing-options, explaining-how-and-why; exactly 10 lessons each; dialogue exactly 6 turns alternating them/you; every you turn carries move and register haeyo; them turns carry interlocutorId.",
+    "Eojeol bounds after 0.75 scale: them 5–15, you1 11–20, you2 9–18, you3 8–17; eojeol split on single U+0020 with punctuation attached; U+0020 inside an eojeol is impossible by definition, a doubled space is an error.",
+    "Build: 5–8 chunks of 1–3 eojeol, 2 distractors, NFC(framePrefix+chunks.join(' ')+frameSuffix) === NFC(dialogue[1].targetText); recall before+answer+after exact; cloze and synthesis segment concatenation exact; no whitespace tolerance on reconstruction.",
+    "Trophy: lemma equals the ledger row for this path/lesson; surface equals the lesson's trophySurface in this spec and is a whole eojeol of dialogue[1] after edge .?, strip (turnIndex 1 in all 20 lessons); when the draft carries trophy.remainder, surface minus lemma must be empty or listed there; when the draft carries trophy.surfaceMode attested, the surface is compared verbatim and the remainder rule is skipped; no stem derivation, no substring; the surface eojeol must occur in trophy.example.targetText. Both fields are future draft fields (requiredSchemaExtensions), not existing columns.",
+    "Speak: 3 targets at turnIndex 1,3,5; 2–4 requiredTokens each a whole eojeol of that turn (edge punctuation stripped), Hangul only, not in stop list 네/저/그/좀/그런데/그래서.",
+    "Register check (string-level, not grammatical analysis): split each turn into sentences at . or ?, strip edge punctuation .?, from the sentence-final eojeol e. Formal-ending predicate F(e) is defined on NFC precomposed syllables, never on the grammar notation ㅂ니다: F(e) is true when e endsWith 습니다 or 습니까, or when the last two syllables of e are 니다 or 니까 and the syllable immediately before them is a Hangul syllable U+AC00–U+D7A3 whose jongseong index ((codepoint − 0xAC00) mod 28) equals 17 (ㅂ); this accepts 둘입니다, 원입니다, 부탁드립니다, 겁니다, 필요합니다, 다릅니다, 합니다, 됩니까 and rejects 니다/니까 without a preceding ㅂ-final syllable. Every sentence-final eojeol of a you turn must end in 요 or 죠 (covers -네요/-거든요/-잖아요/-고요/-는데요/-니까요/-다면요/-하죠) or equal, as a whole eojeol, one of the fixed chunks 안녕하세요/죄송합니다/감사합니다/알겠습니다; them turns pass the same test, and in P1 L10 and P2 L10 additionally when F(e) is true; sentence-final 반말 endings (last syllable 어/아/야/지/니/자 directly before . or ?) banned on all six turns; -십시오 (literal syllables 십시오) banned everywhere; outside the two L10 lessons any sentence-final eojeol with F(e) true that is not one of the four fixed chunks is an error. F proves string shape only; register coherence, honorific direction and naturalness remain semantic review.",
+    "Honorific direction is semantic review (flag registerNative), not a mechanical check: grammatical-subject detection is not implemented. The only mechanical aid is an advisory warning when a you turn contains the eojeol 제가 or 저는 and a sentence-final eojeol of the same sentence ends in 세요/셨어요/십니다 (literal patterns, never a block); learner lines with -(으)시-/-아/어 주시- on the interlocutor or a third person as subject (관심 있으시면, 전해 주시겠어요, 말씀하시면, 계속하시면) are expected; them turns unconstrained.",
+    "Digit ban: any ASCII digit or Latin letter in targetText is an error; % is an error (퍼센트).",
+    "Gender address check exact-eojeol per genderSafety; speakerGender must be neutral and alternates absent in P1/P2.",
+    "Carrier-range gate is a declaration check, not grammar parsing: the future lesson draft lists its carriers as literal attested surfaces (future field carrierTags, see requiredSchemaExtensions); the validator checks that every tag marked productive is listed in the staging table for that lesson range, an earlier range of the same path, an earlier B2 path or the B1 staging tables, and that every tag marked recognition-only is a substring of some them turn and of no you turn; untagged forms are not detected mechanically, so 그렇다고 해서 in a you turn before P1 L9 or -(으)ㅁ으로써 before P2 L7 is caught only if tagged or found in semantic review (flag carriersStaged).",
+    "Cloze answers and chip choices are whole eojeol or 1–3 eojeol phrases; an answer that is exactly a particle, exactly 것/수/데/거/건, or a suffix without stem is an error (exact-eojeol comparison, so 수수료 or 데이터 pass); every build chunk contains at least one content eojeol; exactly 4 choices on at most one blank per cloze, exactly one accepted after rail normalization; whether a distractor is also acceptable is semantic review.",
+    "sceneCaption contains dialogue[0].targetText verbatim; situation carries de and en; every base object carries de and en; pathTitle/pathFunction base objects present.",
+    "Lemma and familyKey uniqueness checked NFC+casefold against the computed forbidden set and the B1 ledger rows, never against live B1 content."
+  ],
+  "semanticReviewRules": [
+    "Challenge genuineness: turn 2 must introduce a figure, counter-example or constraint absent from turn 0 (교통비 팔만 원, 막차, 비행기값 삼십만 원, 회의록 누락); a restated opening is a fix.",
+    "Steer genuineness: turn 4 must change the task (deadline, forced single choice, one-sentence summary for a third audience, edge case); review marks steerGenuine false otherwise.",
+    "Move truthfulness: the declared move must match the rhetorical act (concede contains an admitted point plus 그래도/그런데; rebut reverses the objection with a reason; clarify narrows a misunderstanding; summarize compresses prior turns, adds no new argument).",
+    "P1 recommendations are qualified at lesson level: in each lesson, you2 or you3 carries a condition, trial or trade-off (한 달만 …해 보세요, 석 달 안에, 육 개월 뒤에, 주말 반 + 평일 앱); a lesson whose learner turns give an unconditional verdict with no concession anywhere is a fix; a closing need not repeat a condition already stated in you2.",
+    "P2 explanations are causal/procedural, not narrative: each you1 names at least one cause-marker or ordering-marker carrier and one consequence; B1-style event narration (-다가, 그때) is b2NotInflatedB1 false.",
+    "Particle and honorific correctness line by line; 손님께/선생님께 dative honorific; -(으)니까 vs -아/어서 chosen by discourse (known reason vs new information); -기 때문에 only for clause causes, not after a noun where 때문에 suffices.",
+    "Numbers, fees, percentages and waiting times plausible for Korea in 2026; fictional notices (parking rule, recycling days, late fee, writing center booking, bike scheme, order terms) stay explicitly local to the scene in both base texts and are attributed in the Korean line (안내문대로면, 제안서대로면, 주문 조건상, 제 경우에는); no sentence claims a general law, municipal rule or universal fact; causal and financial predictions are hedged or scoped to the speaker's own figures (수도 있어요, 생길 거예요, 지난달 식비 기준으로); unconditional guarantees are fixes.",
+    "Base texts render concessive and causal structure idiomatically (반면에 → während/wohingegen, whereas; -(으)ㅁ으로써 → indem/by -ing; 즉 → das heißt/that is; 그렇다고 해서 … 아니에요 → das heißt aber nicht, dass / that doesn't mean); no gloss word order.",
+    "Interlocutor consistency across all six turns; 합쇼체 chair/manager lines sound like a real meeting, not textbook.",
+    "Distractor and chip review: no second chunk order yields a grammatical equally valid you1; no cloze distractor is also acceptable in slot; recall fallbacks are same-POS but contextually wrong.",
+    "Trophy sense taught equals the sense in the line (기준 as decision criterion, 결과 adverbial 결과적으로, 처리 as administrative handling); trophy.whyThisWord {de,en} (declared native extension, see requiredSchemaExtensions) explains the argument reuse value of the word in both base languages; trophy.base stays the meaning gloss and is never used for this explanation.",
+    "TTS readability: Hangul numerals read naturally (십오만 원, 열두 시); 즉, pause acceptable; no romanization."
+  ],
+  "requiredSchemaExtensions": [
+    "trophy.remainder (optional, [S], future draft field, not implemented): allowed surface-minus-lemma strings for this lesson, written at drafting time from the ledger binding; absent means exact bare form; needed for 장단점이, 반면에, 부담이, 원인은, 절차가, 단계에서, 영향을, 기준이, 원래는, 결과적으로, 처리됐어요.",
+    "trophy.surfaceMode (optional, E[attested], future draft field, not implemented): when present the validator matches trophy.surface verbatim as a whole eojeol and skips the remainder rule; required for 비해, 효율적이에요, 장기적으로는, 고려하면, 안정적이고, 권하고, 줄임으로써.",
+    "interlocutors[].register (optional, S rail register, future draft field): declared them-turn register; validator checks them turns against it instead of the lesson's you-register; set hapsyo only on P1 L10 and P2 L10 interlocutors; the lesson register value itself stays the enum value haeyo.",
+    "carrierTags (optional, [{surface:S, status:E[productive,recognition]}], future draft field): literal attested carrier surfaces per lesson that the carrier-range gate checks against the staging tables; absent means no mechanical carrier check for that lesson.",
+    "acceptedPhraseVariants (optional, [S], future draft field): explicit alternative first-reply strings (것/거, 그것/그거, numeral) per lesson; no generated variants; no 저는/전 rows in B2.",
+    "ko-KR validator config (not lesson schema, not implemented): unit eojeol, lengthScale 0.75, digitBan true, latinBan true, fixedHapsyoChunks [안녕하세요,죄송합니다,감사합니다,알겠습니다], haeyoFinals [요,죠], formalEndingTest {literalSuffixes:[습니다,습니까], composedRule:{lastSyllables:[니다,니까], precedingJongseongIndex:17}} evaluated on NFC precomposed syllables per mechanicalValidationRules[5], banmalFinalSyllables [어,아,야,지,니,자], bannedSuffix [십시오], edgePunctuation [.,?], speakStopList [네,저,그,좀,그런데,그래서].",
+    "trophy.whyThisWord (optional, {de:S, en:S}, future draft field, not implemented): one to two sentences per base language explaining why this word is worth reusing in argument (e.g. 반면에 as the standard whereas-hinge, 즉 as the restatement connector); required by semanticReviewRules[10] for all 20 P1/P2 lessons at drafting time; semantically distinct from trophy.base (meaning gloss), which keeps its existing contract; no other trophy key is added.",
+    "No other root, lesson or trophy keys; staging table and carrier gate live in the path spec file referenced by specRef, not in the lesson draft."
+  ],
+  "unresolvedDecisions": [
+    "Architectural pending (no owner approval needed): the path in which 합쇼체 becomes learner-productive; P1/P2 keep it recognition-only in them turns of L10, so a later path spec must stage it explicitly.",
+    "Runtime pending: whether ko answer comparison tolerates spacing-only differences is a rail/runtime decision at implementation time; this spec promises only authored variant rows.",
+    "Speak profile assignment (b2-long vs b2-short) per turn and the 15 s window for 20-eojeol you1 turns await measured pilot durations."
+  ]
+}

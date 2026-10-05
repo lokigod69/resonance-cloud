@@ -1,0 +1,3828 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "explaining-how-and-why",
+  "pathTitle": {
+    "de": "Ursachen, Folgen und Abläufe erklären",
+    "en": "Explaining how and why"
+  },
+  "pathFunction": {
+    "de": "Erkläre Ursachen, Folgen oder Abläufe und präzisiere deine Erklärung auf Nachfrage.",
+    "en": "Explain causes, consequences or procedures and refine your explanation when asked."
+  },
+  "specRef": {
+    "pathSpec": "B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json",
+    "pathSpecSha256": "771a5732eb71f43a52b83499cf69cc902bdc37f074045170e47a9209467531db",
+    "ledger": "B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json#/trophyLedger/rows",
+    "ledgerSha256": "771a5732eb71f43a52b83499cf69cc902bdc37f074045170e47a9209467531db"
+  },
+  "authoring": {
+    "source": "codex-scratch-authoring",
+    "runId": "korean-b2-p1-p2-20261006-v2",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "cheongguseo-chai",
+      "title": {
+        "de": "Die höhere Rechnung erklären",
+        "en": "Explain the higher invoice"
+      },
+      "situation": {
+        "de": "Die Buchhaltung fragt nach einer höheren Werkstattrechnung. Alle besprochenen Bedingungen gelten nur für diesen fiktiven Auftrag.",
+        "en": "An accountant asks about a higher workshop invoice. All terms discussed belong only to this fictional order."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Buchhaltung",
+            "en": "Accountant"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Buchhaltung fragt nach einer höheren Werkstattrechnung. Alle besprochenen Bedingungen gelten nur für diesen fiktiven Auftrag. Die andere Person sagt: „이번 달 청구서가 견적보다 십이만 원 많아요. 이유를 설명해 주시겠어요?“",
+        "en": "An accountant asks about a higher workshop invoice. All terms discussed belong only to this fictional order. The other person says: “이번 달 청구서가 견적보다 십이만 원 많아요. 이유를 설명해 주시겠어요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "이번 달 청구서가 견적보다 십이만 원 많아요. 이유를 설명해 주시겠어요?",
+          "base": {
+            "de": "Die Rechnung diesen Monat liegt hundertzwanzigtausend Won über dem Kostenvoranschlag. Können Sie erklären, warum?",
+            "en": "This month’s invoice is a hundred and twenty thousand won above the estimate. Could you explain why?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "차이가 난 원인은 두 가지예요. 재료값이 삼월에 올랐기 때문에 팔만 원이 늘었고, 배송비가 사만 원 더 들었어요.",
+          "base": {
+            "de": "Die Differenz hat zwei Ursachen. Weil die Materialpreise im März gestiegen sind, kamen achtzigtausend Won dazu; außerdem kostete die Lieferung vierzigtausend Won mehr.",
+            "en": "There are two causes of the difference. Material prices rose in March, adding eighty thousand won, and delivery cost forty thousand won more."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "재료값은 알겠는데, 배송을 왜 두 번 했어요? 견적에는 한 번이었잖아요.",
+          "base": {
+            "de": "Die Materialkosten verstehe ich. Aber warum gab es zwei Lieferungen? Im Voranschlag stand nur eine.",
+            "en": "I understand the materials, but why did you deliver twice? The estimate only included one delivery."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "첫 배송 때 손님이 부재중이어서 물건이 그대로 돌아왔어요. 그래서 다음 날 다시 보내야 했어요.",
+          "base": {
+            "de": "Bei der ersten Lieferung war der Kunde nicht da, deshalb kam die Ware unverändert zurück. Wir mussten sie am nächsten Tag erneut schicken.",
+            "en": "The customer was absent for the first delivery, so the goods came straight back. We had to send them again the next day."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 반송 비용은 손님 책임 아니에요? 청구서에는 어떻게 적을까요?",
+          "base": {
+            "de": "Müsste der Kunde dann nicht die Rücksendekosten tragen? Wie schreiben wir das auf die Rechnung?",
+            "en": "Would the customer not be responsible for the return cost, then? How should we enter it on the invoice?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "주문 조건상 부재중 반송비는 손님 부담이니까 손님께 먼저 확인하고, 이 청구서에는 재료값 인상분만 넣으면 돼요.",
+          "base": {
+            "de": "Laut Auftragsbedingungen trägt der Kunde Rücksendekosten bei Abwesenheit. Klären wir das zuerst mit ihm und nehmen nur den Materialaufschlag in diese Rechnung auf.",
+            "en": "Under the order terms, the customer pays for a return caused by absence. We should confirm that with them first and put only the material-price increase on this invoice."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "차이가 난 원인은 두 가지예요. ",
+        "chunks": [
+          "재료값이 삼월에",
+          "올랐기",
+          "때문에 팔만",
+          "원이",
+          "늘었고,"
+        ],
+        "distractors": [
+          "때문에 사만",
+          "줄었고,"
+        ],
+        "frameSuffix": " 배송비가 사만 원 더 들었어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "첫 배송 때 손님이 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 물건이 그대로 돌아왔어요. 그래서 다음 날 다시 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "부재중이어서",
+            "acceptedAnswers": [
+              "부재중이어서"
+            ],
+            "kind": "frame",
+            "choices": [
+              "부재중이어서",
+              "부재중이지만",
+              "부재중이면",
+              "부재중인데도"
+            ]
+          },
+          {
+            "answer": "보내야 했어요",
+            "acceptedAnswers": [
+              "보내야 했어요",
+              "보내야 됐어요",
+              "보냈어요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "주문 조건상 부재중 반송비는 손님 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 손님께 먼저 확인하고, 이 청구서에는 재료값 인상분만 넣으면 돼요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "부담이니까",
+            "acceptedAnswers": [
+              "부담이니까",
+              "부담이라서",
+              "책임이니까"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "차이가 난 ",
+        "answer": "원인은",
+        "acceptedAnswers": [
+          "원인은"
+        ],
+        "after": " 두 가지예요. 재료값이 삼월에 올랐기 때문에 팔만 원이 늘었고, 배송비가 사만 원 더 들었어요.",
+        "fallbackChoices": [
+          "원인은",
+          "장소는",
+          "날씨는",
+          "색깔은"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Ursache und Mehrkosten verbinden",
+          "en": "Connect cause and extra cost"
+        },
+        "rule": {
+          "de": "-기 때문에 verbindet einen vollständigen Sachverhalt mit seiner Folge. -아/어서 nennt im nächsten Schritt den Grund für die erneute Lieferung.",
+          "en": "-기 때문에 connects a complete clause to its consequence. -아/어서 then gives the reason for sending the delivery again."
+        },
+        "examples": [
+          {
+            "targetText": "차이가 난 원인은 두 가지예요. 재료값이 삼월에 올랐기 때문에 팔만 원이 늘었고, 배송비가 사만 원 더 들었어요.",
+            "base": {
+              "de": "Die Differenz hat zwei Ursachen. Weil die Materialpreise im März gestiegen sind, kamen achtzigtausend Won dazu; außerdem kostete die Lieferung vierzigtausend Won mehr.",
+              "en": "There are two causes of the difference. Material prices rose in March, adding eighty thousand won, and delivery cost forty thousand won more."
+            },
+            "highlights": [
+              "올랐기 때문에"
+            ]
+          },
+          {
+            "targetText": "첫 배송 때 손님이 부재중이어서 물건이 그대로 돌아왔어요. 그래서 다음 날 다시 보내야 했어요.",
+            "base": {
+              "de": "Bei der ersten Lieferung war der Kunde nicht da, deshalb kam die Ware unverändert zurück. Wir mussten sie am nächsten Tag erneut schicken.",
+              "en": "The customer was absent for the first delivery, so the goods came straight back. We had to send them again the next day."
+            },
+            "highlights": [
+              "부재중이어서"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "원인은",
+          "kind": "noun",
+          "base": {
+            "de": "die Ursache ist",
+            "en": "the cause is"
+          }
+        },
+        {
+          "targetText": "재료값이",
+          "kind": "noun",
+          "base": {
+            "de": "die Materialkosten",
+            "en": "material costs"
+          }
+        },
+        {
+          "targetText": "올랐기 때문에",
+          "kind": "frame",
+          "base": {
+            "de": "weil sie gestiegen sind",
+            "en": "because they rose"
+          }
+        },
+        {
+          "targetText": "배송비가",
+          "kind": "noun",
+          "base": {
+            "de": "die Versandkosten",
+            "en": "delivery costs"
+          }
+        },
+        {
+          "targetText": "부재중이어서",
+          "kind": "frame",
+          "base": {
+            "de": "weil niemand da war",
+            "en": "because they were absent"
+          }
+        },
+        {
+          "targetText": "그래서",
+          "kind": "connector",
+          "base": {
+            "de": "deshalb",
+            "en": "so"
+          }
+        },
+        {
+          "targetText": "주문 조건상",
+          "kind": "frame",
+          "base": {
+            "de": "laut Auftragsbedingungen",
+            "en": "under the order terms"
+          }
+        },
+        {
+          "targetText": "인상분만",
+          "kind": "noun",
+          "base": {
+            "de": "nur den Aufschlag",
+            "en": "only the increase"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "재료값이",
+            "삼월에",
+            "올랐기"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "부재중이어서",
+            "돌아왔어요",
+            "보내야"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "조건상",
+            "부담이니까",
+            "인상분만"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "원인",
+        "familyKey": "원인",
+        "surface": "원인은",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "차이가 난 원인은 두 가지예요. 재료값이 삼월에 올랐기 때문에 팔만 원이 늘었고, 배송비가 사만 원 더 들었어요.",
+          "base": {
+            "de": "Die Differenz hat zwei Ursachen. Weil die Materialpreise im März gestiegen sind, kamen achtzigtausend Won dazu; außerdem kostete die Lieferung vierzigtausend Won mehr.",
+            "en": "There are two causes of the difference. Material prices rose in March, adding eighty thousand won, and delivery cost forty thousand won more."
+          }
+        },
+        "base": {
+          "de": "Ursache",
+          "en": "cause"
+        },
+        "whyThisWord": {
+          "de": "원인 bezeichnet den auslösenden Sachverhalt, nicht nur einen persönlichen Beweggrund. Es hilft, eine Erklärung nach konkreten Ursachen zu gliedern.",
+          "en": "원인 names the cause of an outcome rather than merely a personal reason, helping structure an explanation around concrete causes."
+        },
+        "remainder": [
+          "은"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "acceptedPhraseVariants": [
+        "차이가 난 원인은 두 가지예요. 재료값이 3월에 올랐기 때문에 8만 원이 늘었고, 배송비가 4만 원 더 들었어요."
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "bunrisugeo-jeolcha",
+      "title": {
+        "de": "Die Regeln dieses Hauses",
+        "en": "This building’s recycling procedure"
+      },
+      "situation": {
+        "de": "Ein neuer Nachbar fragt nach der Mülltrennung. Der Ablauf folgt einem fiktiven Aushang genau dieses Hauses.",
+        "en": "A new neighbour asks about recycling. The procedure follows a fictional notice for this building only."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Neuer Nachbar",
+            "en": "New neighbour"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ein neuer Nachbar fragt nach der Mülltrennung. Der Ablauf folgt einem fiktiven Aushang genau dieses Hauses. Die andere Person sagt: „이 아파트는 분리수거가 어떻게 돼요? 어제 밖에 내놨더니 경비실에서 다시 가져가라고 하셨어요.“",
+        "en": "A new neighbour asks about recycling. The procedure follows a fictional notice for this building only. The other person says: “이 아파트는 분리수거가 어떻게 돼요? 어제 밖에 내놨더니 경비실에서 다시 가져가라고 하셨어요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "이 아파트는 분리수거가 어떻게 돼요? 어제 밖에 내놨더니 경비실에서 다시 가져가라고 하셨어요.",
+          "base": {
+            "de": "Wie läuft die Mülltrennung in diesem Haus? Ich habe gestern etwas rausgestellt, und der Hausdienst sagte, ich soll es wieder mitnehmen.",
+            "en": "How does recycling work in this building? I put it outside yesterday, and the security office told me to take it back."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "안내문대로면 여기는 절차가 달라요. 화요일과 금요일 저녁에만 지하에 내놓을 수 있어요. 병, 캔, 종이는 따로 나누니까 봉투가 세 개 필요해요.",
+          "base": {
+            "de": "Laut Aushang ist das Verfahren hier anders. Man darf es nur dienstags und freitags abends in den Keller stellen. Flaschen, Dosen und Papier werden getrennt, deshalb braucht man drei Beutel.",
+            "en": "According to the notice, the procedure is different here. You can put it in the basement only on Tuesday and Friday evenings. Bottles, cans and paper are separated, so you need three bags."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "음식물 쓰레기는요? 그건 매일 나오잖아요.",
+          "base": {
+            "de": "Und die Essensreste? Die fallen doch jeden Tag an.",
+            "en": "What about food waste? That comes up every day."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "음식물은 날짜가 없어요. 일 층 입구 옆 전용 통에 아무 때나 버려도 돼요. 카드를 찍고 열어요.",
+          "base": {
+            "de": "Für Essensreste gibt es keine festen Tage. Sie können sie jederzeit in den eigenen Behälter neben dem Eingang im Erdgeschoss werfen. Zum Öffnen halten Sie die Karte dran.",
+            "en": "Food waste has no set days. You can put it in the dedicated bin beside the ground-floor entrance at any time. Tap the card to open it."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "카드요? 저는 카드를 못 받았는데, 그럼 어떻게 해야 돼요?",
+          "base": {
+            "de": "Eine Karte? Ich habe keine bekommen. Was soll ich dann machen?",
+            "en": "A card? I have not received one. What should I do?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "경비실에 가서 세대 카드를 신청하시면 돼요. 안내문대로 경비실에서 동 호수를 확인하고 다음 날 카드를 줘요.",
+          "base": {
+            "de": "Beantragen Sie im Hausdienstbüro eine Haushaltskarte. Laut Aushang prüft der Hausdienst Gebäude- und Wohnungsnummer und gibt die Karte am nächsten Tag aus.",
+            "en": "Apply for a household card at the security office. Under the notice, the office checks the building and flat numbers and gives you the card the following day."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "안내문대로면 여기는 절차가 달라요. 화요일과 금요일 저녁에만 지하에 내놓을 수 있어요. 병, 캔, ",
+        "chunks": [
+          "종이는 따로",
+          "나누니까",
+          "봉투가",
+          "세 개",
+          "필요해요."
+        ],
+        "distractors": [
+          "네 개",
+          "두 개"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "음식물은 날짜가 없어요. 일 층 입구 옆 전용 통에 아무 때나 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 카드를 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 열어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "버려도 돼요",
+            "acceptedAnswers": [
+              "버려도 돼요"
+            ],
+            "kind": "frame",
+            "choices": [
+              "버려도 돼요",
+              "버리면 안 돼요",
+              "버리지 마세요",
+              "버려야 돼요"
+            ]
+          },
+          {
+            "answer": "찍고",
+            "acceptedAnswers": [
+              "찍고"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "찍다: verbindende Form mit -고; erst die Karte vorhalten, dann öffnen.",
+              "en": "찍다: linking form with -고; tap the card, then open."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "경비실에 가서 세대 카드를 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 안내문대로 경비실에서 동 호수를 확인하고 다음 날 카드를 줘요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "신청하시면 돼요",
+            "acceptedAnswers": [
+              "신청하시면 돼요"
+            ],
+            "kind": "frame",
+            "choices": [
+              "신청하시면 돼요",
+              "신청하시면 안 돼요",
+              "신청하지 마세요",
+              "신청하셨어요"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "안내문대로면 여기는 ",
+        "answer": "절차가",
+        "acceptedAnswers": [
+          "절차가"
+        ],
+        "after": " 달라요. 화요일과 금요일 저녁에만 지하에 내놓을 수 있어요. 병, 캔, 종이는 따로 나누니까 봉투가 세 개 필요해요.",
+        "fallbackChoices": [
+          "절차가",
+          "계절이",
+          "색깔이",
+          "고향이"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen Ablauf mit seinem Grund erklären",
+          "en": "Explain a procedure and its reason"
+        },
+        "rule": {
+          "de": "-니까 verbindet hier die bekannte Trennung der Stoffe mit der benötigten Anzahl Beutel. -아/어도 돼요 nennt anschließend, was erlaubt ist.",
+          "en": "-니까 links the separation of materials to the number of bags needed. -아/어도 돼요 then states what is permitted."
+        },
+        "examples": [
+          {
+            "targetText": "안내문대로면 여기는 절차가 달라요. 화요일과 금요일 저녁에만 지하에 내놓을 수 있어요. 병, 캔, 종이는 따로 나누니까 봉투가 세 개 필요해요.",
+            "base": {
+              "de": "Laut Aushang ist das Verfahren hier anders. Man darf es nur dienstags und freitags abends in den Keller stellen. Flaschen, Dosen und Papier werden getrennt, deshalb braucht man drei Beutel.",
+              "en": "According to the notice, the procedure is different here. You can put it in the basement only on Tuesday and Friday evenings. Bottles, cans and paper are separated, so you need three bags."
+            },
+            "highlights": [
+              "나누니까"
+            ]
+          },
+          {
+            "targetText": "음식물은 날짜가 없어요. 일 층 입구 옆 전용 통에 아무 때나 버려도 돼요. 카드를 찍고 열어요.",
+            "base": {
+              "de": "Für Essensreste gibt es keine festen Tage. Sie können sie jederzeit in den eigenen Behälter neben dem Eingang im Erdgeschoss werfen. Zum Öffnen halten Sie die Karte dran.",
+              "en": "Food waste has no set days. You can put it in the dedicated bin beside the ground-floor entrance at any time. Tap the card to open it."
+            },
+            "highlights": [
+              "버려도 돼요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "절차가",
+          "kind": "noun",
+          "base": {
+            "de": "das Verfahren",
+            "en": "the procedure"
+          }
+        },
+        {
+          "targetText": "안내문대로면",
+          "kind": "frame",
+          "base": {
+            "de": "laut dem Aushang",
+            "en": "according to the notice"
+          }
+        },
+        {
+          "targetText": "나누니까",
+          "kind": "frame",
+          "base": {
+            "de": "weil man trennt",
+            "en": "because they are separated"
+          }
+        },
+        {
+          "targetText": "봉투가",
+          "kind": "noun",
+          "base": {
+            "de": "die Beutel",
+            "en": "the bags"
+          }
+        },
+        {
+          "targetText": "전용 통에",
+          "kind": "noun",
+          "base": {
+            "de": "in den dafür vorgesehenen Behälter",
+            "en": "in the dedicated bin"
+          }
+        },
+        {
+          "targetText": "아무 때나",
+          "kind": "phrase",
+          "base": {
+            "de": "jederzeit",
+            "en": "at any time"
+          }
+        },
+        {
+          "targetText": "버려도 돼요",
+          "kind": "frame",
+          "base": {
+            "de": "man darf entsorgen",
+            "en": "you may dispose of it"
+          }
+        },
+        {
+          "targetText": "신청하시면 돼요",
+          "kind": "frame",
+          "base": {
+            "de": "Sie können beantragen",
+            "en": "you can apply"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "나누니까",
+            "봉투가",
+            "필요해요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "음식물은",
+            "전용",
+            "카드를"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "경비실에",
+            "신청하시면",
+            "안내문대로"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "절차",
+        "familyKey": "절차",
+        "surface": "절차가",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "안내문대로면 여기는 절차가 달라요. 화요일과 금요일 저녁에만 지하에 내놓을 수 있어요. 병, 캔, 종이는 따로 나누니까 봉투가 세 개 필요해요.",
+          "base": {
+            "de": "Laut Aushang ist das Verfahren hier anders. Man darf es nur dienstags und freitags abends in den Keller stellen. Flaschen, Dosen und Papier werden getrennt, deshalb braucht man drei Beutel.",
+            "en": "According to the notice, the procedure is different here. You can put it in the basement only on Tuesday and Friday evenings. Bottles, cans and paper are separated, so you need three bags."
+          }
+        },
+        "base": {
+          "de": "Verfahren; Ablauf",
+          "en": "procedure"
+        },
+        "whyThisWord": {
+          "de": "절차 meint die zusammenhängende Vorgehensweise mit ihren Regeln. Damit erklärst du mehr als einen einzelnen Handlungsschritt.",
+          "en": "절차 names a procedure with its rules, letting you explain more than a single action."
+        },
+        "remainder": [
+          "가"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "iljeong-neujeun-wonin",
+      "title": {
+        "de": "Den Projektverzug einordnen",
+        "en": "Explain the project delay"
+      },
+      "situation": {
+        "de": "Deine Teamleitung fragt nach zwei Wochen Verzögerung. Erkläre nachvollziehbar, wie sie zustande kam.",
+        "en": "Your manager asks about a two-week delay. Explain clearly what caused it."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Teamleitung",
+            "en": "Team manager"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Deine Teamleitung fragt nach zwei Wochen Verzögerung. Erkläre nachvollziehbar, wie sie zustande kam. Die andere Person sagt: „일정이 왜 두 주나 늦어졌어요? 지난 회의 때는 문제가 없다고 하셨잖아요.“",
+        "en": "Your manager asks about a two-week delay. Explain clearly what caused it. The other person says: “일정이 왜 두 주나 늦어졌어요? 지난 회의 때는 문제가 없다고 하셨잖아요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "일정이 왜 두 주나 늦어졌어요? 지난 회의 때는 문제가 없다고 하셨잖아요.",
+          "base": {
+            "de": "Warum hat sich der Zeitplan um ganze zwei Wochen verschoben? Beim letzten Treffen sagten Sie doch, es gebe keine Probleme.",
+            "en": "Why has the schedule slipped by two whole weeks? At the last meeting you said there were no problems."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "테스트 단계에서 문제가 생겼어요. 데이터가 많아서 서버가 느려졌고 고치는 데 열흘이 걸렸어요. 개발이 늦은 게 아니라 테스트가 늦은 거예요.",
+          "base": {
+            "de": "Das Problem trat in der Testphase auf. Wegen der vielen Daten wurde der Server langsam; die Behebung dauerte zehn Tage. Nicht die Entwicklung, sondern das Testen hat sich verzögert.",
+            "en": "The problem arose at the testing stage. The large amount of data slowed the server, and fixing it took ten days. Development was not late; testing was."
+          },
+          "move": "reason",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "서버 문제는 지난주에 이미 알았다면서요? 왜 그때 바로 보고 안 했어요?",
+          "base": {
+            "de": "Sie wussten aber schon letzte Woche vom Serverproblem? Warum haben Sie es nicht gleich gemeldet?",
+            "en": "But you already knew about the server issue last week? Why did you not report it straight away?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그때는 하루면 고칠 줄 알았어요. 그런데 고치니까 다른 부분에서 또 문제가 나와서 그때 보고했어요.",
+          "base": {
+            "de": "Ich dachte damals, wir könnten es in einem Tag beheben. Beim Beheben zeigte sich dann ein weiteres Problem an anderer Stelle, und da habe ich es gemeldet.",
+            "en": "At the time, I thought we could fix it in a day. But fixing it revealed another issue elsewhere, and that was when I reported it."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "알겠어요. 고객한테는 뭐라고 설명하죠? 짧게요.",
+          "base": {
+            "de": "Verstanden. Was sagen wir dem Kunden? Kurz, bitte.",
+            "en": "Understood. What should we tell the customer? Briefly, please."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "데이터가 늘어서 테스트 중에 서버 문제가 생겼고, 열흘 동안 고쳐서 지금은 정상이에요. 이 두 가지만 말씀하시면 돼요.",
+          "base": {
+            "de": "Durch die größere Datenmenge gab es beim Testen ein Serverproblem; nach zehn Tagen Behebung läuft jetzt alles normal. Diese beiden Punkte reichen.",
+            "en": "The increased data caused a server problem during testing; after ten days of fixes, it is now running normally. Those are the two points to mention."
+          },
+          "move": "summarize",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "테스트 단계에서 문제가 생겼어요. 데이터가 많아서 서버가 느려졌고 고치는 데 열흘이 걸렸어요. ",
+        "chunks": [
+          "개발이 늦은",
+          "게 아니라",
+          "테스트가",
+          "늦은",
+          "거예요."
+        ],
+        "distractors": [
+          "게 맞고",
+          "개발이 빠른"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그때는 하루면 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 그런데 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 다른 부분에서 또 문제가 나와서 그때 보고했어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "고칠 줄 알았어요",
+            "acceptedAnswers": [
+              "고칠 줄 알았어요"
+            ],
+            "kind": "frame",
+            "choices": [
+              "고칠 줄 알았어요",
+              "고칠 줄 몰랐어요",
+              "고치면 안 돼요",
+              "고쳐야 했어요"
+            ]
+          },
+          {
+            "answer": "고치니까",
+            "acceptedAnswers": [
+              "고치니까",
+              "고쳐 보니까",
+              "고치다 보니까"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "데이터가 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 테스트 중에 서버 문제가 생겼고, 열흘 동안 고쳐서 지금은 정상이에요. 이 두 가지만 말씀하시면 돼요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "늘어서",
+            "acceptedAnswers": [
+              "늘어서"
+            ],
+            "kind": "frame",
+            "choices": [
+              "늘어서",
+              "줄어서",
+              "없어서",
+              "늘면"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "테스트 ",
+        "answer": "단계에서",
+        "acceptedAnswers": [
+          "단계에서"
+        ],
+        "after": " 문제가 생겼어요. 데이터가 많아서 서버가 느려졌고 고치는 데 열흘이 걸렸어요. 개발이 늦은 게 아니라 테스트가 늦은 거예요.",
+        "fallbackChoices": [
+          "단계에서",
+          "회의실에서",
+          "휴가지에서",
+          "주차장에서"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Die Ursache präzise abgrenzen",
+          "en": "Identify the cause precisely"
+        },
+        "rule": {
+          "de": "-ㄴ 게 아니라 …-ㄴ 거예요 korrigiert eine Zuordnung. -(으)ㄹ 줄 알았어요 benennt danach eine frühere Erwartung, die sich nicht erfüllt hat.",
+          "en": "-ㄴ 게 아니라 …-ㄴ 거예요 corrects an attribution. -(으)ㄹ 줄 알았어요 then names an earlier expectation that was not met."
+        },
+        "examples": [
+          {
+            "targetText": "테스트 단계에서 문제가 생겼어요. 데이터가 많아서 서버가 느려졌고 고치는 데 열흘이 걸렸어요. 개발이 늦은 게 아니라 테스트가 늦은 거예요.",
+            "base": {
+              "de": "Das Problem trat in der Testphase auf. Wegen der vielen Daten wurde der Server langsam; die Behebung dauerte zehn Tage. Nicht die Entwicklung, sondern das Testen hat sich verzögert.",
+              "en": "The problem arose at the testing stage. The large amount of data slowed the server, and fixing it took ten days. Development was not late; testing was."
+            },
+            "highlights": [
+              "늦은 게 아니라",
+              "늦은 거예요"
+            ]
+          },
+          {
+            "targetText": "그때는 하루면 고칠 줄 알았어요. 그런데 고치니까 다른 부분에서 또 문제가 나와서 그때 보고했어요.",
+            "base": {
+              "de": "Ich dachte damals, wir könnten es in einem Tag beheben. Beim Beheben zeigte sich dann ein weiteres Problem an anderer Stelle, und da habe ich es gemeldet.",
+              "en": "At the time, I thought we could fix it in a day. But fixing it revealed another issue elsewhere, and that was when I reported it."
+            },
+            "highlights": [
+              "고칠 줄 알았어요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "단계에서",
+          "kind": "noun",
+          "base": {
+            "de": "in der Phase",
+            "en": "at the stage"
+          }
+        },
+        {
+          "targetText": "데이터가",
+          "kind": "noun",
+          "base": {
+            "de": "die Daten",
+            "en": "the data"
+          }
+        },
+        {
+          "targetText": "서버가",
+          "kind": "noun",
+          "base": {
+            "de": "der Server",
+            "en": "the server"
+          }
+        },
+        {
+          "targetText": "고치는 데",
+          "kind": "frame",
+          "base": {
+            "de": "für die Behebung",
+            "en": "to fix it"
+          }
+        },
+        {
+          "targetText": "게 아니라",
+          "kind": "frame",
+          "base": {
+            "de": "nicht das, sondern",
+            "en": "not that, but"
+          }
+        },
+        {
+          "targetText": "고칠 줄 알았어요",
+          "kind": "frame",
+          "base": {
+            "de": "ich dachte, wir könnten es beheben",
+            "en": "I thought we could fix it"
+          }
+        },
+        {
+          "targetText": "보고했어요",
+          "kind": "verb",
+          "base": {
+            "de": "habe es gemeldet",
+            "en": "reported it"
+          }
+        },
+        {
+          "targetText": "정상이에요",
+          "kind": "adjective",
+          "base": {
+            "de": "funktioniert normal",
+            "en": "is running normally"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "개발이",
+            "테스트가",
+            "늦은"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "고칠",
+            "고치니까",
+            "보고했어요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "데이터가",
+            "테스트",
+            "정상이에요"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "단계",
+        "familyKey": "단계",
+        "surface": "단계에서",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "테스트 단계에서 문제가 생겼어요. 데이터가 많아서 서버가 느려졌고 고치는 데 열흘이 걸렸어요. 개발이 늦은 게 아니라 테스트가 늦은 거예요.",
+          "base": {
+            "de": "Das Problem trat in der Testphase auf. Wegen der vielen Daten wurde der Server langsam; die Behebung dauerte zehn Tage. Nicht die Entwicklung, sondern das Testen hat sich verzögert.",
+            "en": "The problem arose at the testing stage. The large amount of data slowed the server, and fixing it took ten days. Development was not late; testing was."
+          }
+        },
+        "base": {
+          "de": "Phase; Stufe",
+          "en": "stage"
+        },
+        "whyThisWord": {
+          "de": "단계 benennt eine Phase innerhalb eines Ablaufs. Damit kannst du ein Problem verorten, statt den gesamten Prozess pauschal verantwortlich zu machen.",
+          "en": "단계 names a stage within a process, locating a problem rather than blaming the whole process."
+        },
+        "remainder": [
+          "에서"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "pointeu-jeongnip",
+      "title": {
+        "de": "Punkte und Rabatte erklären",
+        "en": "Explain points and discounts"
+      },
+      "situation": {
+        "de": "Eine befreundete Person versteht das Punktesystem einer Café-App nicht. Alle Schwellen und Rabatte gelten nur für diese fiktive App.",
+        "en": "A friend does not understand a café app’s points scheme. All thresholds and discounts apply only to this fictional app."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Befreundete Person",
+            "en": "Friend"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person versteht das Punktesystem einer Café-App nicht. Alle Schwellen und Rabatte gelten nur für diese fiktive App. Die andere Person sagt: „그 카페 앱 포인트가 어떻게 되는 거예요? 저도 깔았는데 뭐가 뭔지 모르겠어요.“",
+        "en": "A friend does not understand a café app’s points scheme. All thresholds and discounts apply only to this fictional app. The other person says: “그 카페 앱 포인트가 어떻게 되는 거예요? 저도 깔았는데 뭐가 뭔지 모르겠어요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "그 카페 앱 포인트가 어떻게 되는 거예요? 저도 깔았는데 뭐가 뭔지 모르겠어요.",
+          "base": {
+            "de": "Wie funktionieren die Punkte in dieser Café-App? Ich habe sie auch installiert, aber ich blicke überhaupt nicht durch.",
+            "en": "How do the points in that café app work? I installed it too, but I cannot make sense of it."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "앱 안내대로 먼저 백 원마다 오 점이 적립돼요. 그다음에 포인트가 만 점이 넘으면 등급이 올라가고, 등급이 할인에 영향을 줘요.",
+          "base": {
+            "de": "Laut App-Anleitung bekommt man zuerst für je hundert Won fünf Punkte. Wenn man dann über zehntausend Punkte kommt, steigt die Stufe, und diese beeinflusst den Rabatt.",
+            "en": "Under the app instructions, you first earn five points per hundred won. Once your points exceed ten thousand, your tier rises, and the tier affects the discount."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "근데 저는 지난달에 많이 샀는데 포인트가 거의 없어요. 왜 그래요?",
+          "base": {
+            "de": "Aber ich habe letzten Monat viel gekauft und habe fast keine Punkte. Warum?",
+            "en": "But I bought a lot last month and have hardly any points. Why?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "아마 현금으로 내셨을 거예요. 포인트는 앱으로 결제했을 때만 적립되고, 현금은 포함이 안 돼요.",
+          "base": {
+            "de": "Du hast vermutlich bar bezahlt. Punkte werden nur bei App-Zahlungen gutgeschrieben; Barzahlungen zählen nicht dazu.",
+            "en": "You probably paid cash. Points are credited only when you pay through the app; cash payments are not included."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "아, 그럼 등급이 올라가면 정확히 뭐가 달라져요? 숫자로 말해 줘요.",
+          "base": {
+            "de": "Was ändert sich dann genau mit der höheren Stufe? Nenn mir die Zahlen.",
+            "en": "What exactly changes when the tier goes up, then? Give me the figures."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "일반 등급은 할인이 없고, 만 점이 넘으면 음료마다 오백 원, 삼만 점이 넘으면 천 원이 깎여요.",
+          "base": {
+            "de": "Die normale Stufe hat keinen Rabatt. Über zehntausend Punkte werden pro Getränk fünfhundert Won abgezogen, über dreißigtausend Punkte tausend Won.",
+            "en": "The regular tier has no discount. Above ten thousand points, each drink is discounted by five hundred won; above thirty thousand points, by a thousand."
+          },
+          "move": "summarize",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "앱 안내대로 먼저 백 원마다 오 점이 적립돼요. 그다음에 포인트가 만 ",
+        "chunks": [
+          "점이",
+          "넘으면 등급이",
+          "올라가고,",
+          "등급이 할인에",
+          "영향을 줘요."
+        ],
+        "distractors": [
+          "내려가고,",
+          "할인이 등급에"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "아마 현금으로 내셨을 거예요. 포인트는 앱으로 결제했을 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", 현금은 포함이 안 돼요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "때만",
+            "acceptedAnswers": [
+              "때만",
+              "때에만",
+              "경우에만"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "적립되고",
+            "acceptedAnswers": [
+              "적립되고"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "적립되다: Passiv mit verbindendem -고, „werden gutgeschrieben, und“.",
+              "en": "적립되다: passive with linking -고, “are credited, and”."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "일반 등급은 할인이 없고, 만 점이 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 음료마다 오백 원, 삼만 점이 넘으면 천 원이 깎여요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "넘으면",
+            "acceptedAnswers": [
+              "넘으면",
+              "넘어가면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "앱 안내대로 먼저 백 원마다 오 점이 적립돼요. 그다음에 포인트가 만 점이 넘으면 등급이 올라가고, 등급이 할인에 ",
+        "answer": "영향을",
+        "acceptedAnswers": [
+          "영향을"
+        ],
+        "after": " 줘요.",
+        "fallbackChoices": [
+          "영향을",
+          "수건을",
+          "주소를",
+          "열쇠를"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Regel mit Folgen erklären",
+          "en": "Explain a rule and its consequences"
+        },
+        "rule": {
+          "de": "먼저 und 그다음에 ordnen die Erklärung. Das Passiv -되다 beschreibt, was automatisch mit den Punkten geschieht.",
+          "en": "먼저 and 그다음에 order the explanation. The passive -되다 describes what happens automatically to the points."
+        },
+        "examples": [
+          {
+            "targetText": "앱 안내대로 먼저 백 원마다 오 점이 적립돼요. 그다음에 포인트가 만 점이 넘으면 등급이 올라가고, 등급이 할인에 영향을 줘요.",
+            "base": {
+              "de": "Laut App-Anleitung bekommt man zuerst für je hundert Won fünf Punkte. Wenn man dann über zehntausend Punkte kommt, steigt die Stufe, und diese beeinflusst den Rabatt.",
+              "en": "Under the app instructions, you first earn five points per hundred won. Once your points exceed ten thousand, your tier rises, and the tier affects the discount."
+            },
+            "highlights": [
+              "먼저",
+              "그다음에",
+              "적립돼요"
+            ]
+          },
+          {
+            "targetText": "아마 현금으로 내셨을 거예요. 포인트는 앱으로 결제했을 때만 적립되고, 현금은 포함이 안 돼요.",
+            "base": {
+              "de": "Du hast vermutlich bar bezahlt. Punkte werden nur bei App-Zahlungen gutgeschrieben; Barzahlungen zählen nicht dazu.",
+              "en": "You probably paid cash. Points are credited only when you pay through the app; cash payments are not included."
+            },
+            "highlights": [
+              "적립되고"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "영향을",
+          "kind": "noun",
+          "base": {
+            "de": "Einfluss",
+            "en": "influence"
+          }
+        },
+        {
+          "targetText": "먼저",
+          "kind": "connector",
+          "base": {
+            "de": "zuerst",
+            "en": "first"
+          }
+        },
+        {
+          "targetText": "그다음에",
+          "kind": "connector",
+          "base": {
+            "de": "danach",
+            "en": "then"
+          }
+        },
+        {
+          "targetText": "적립돼요",
+          "kind": "verb",
+          "base": {
+            "de": "werden gutgeschrieben",
+            "en": "are credited"
+          }
+        },
+        {
+          "targetText": "등급이",
+          "kind": "noun",
+          "base": {
+            "de": "die Stufe",
+            "en": "the tier"
+          }
+        },
+        {
+          "targetText": "포인트가",
+          "kind": "noun",
+          "base": {
+            "de": "die Punkte",
+            "en": "the points"
+          }
+        },
+        {
+          "targetText": "때만",
+          "kind": "frame",
+          "base": {
+            "de": "nur dann, wenn",
+            "en": "only when"
+          }
+        },
+        {
+          "targetText": "깎여요",
+          "kind": "verb",
+          "base": {
+            "de": "wird abgezogen",
+            "en": "is deducted"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "넘으면",
+            "등급이",
+            "영향을"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "현금으로",
+            "적립되고",
+            "포함이"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "등급은",
+            "오백",
+            "깎여요"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "영향",
+        "familyKey": "영향",
+        "surface": "영향을",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "앱 안내대로 먼저 백 원마다 오 점이 적립돼요. 그다음에 포인트가 만 점이 넘으면 등급이 올라가고, 등급이 할인에 영향을 줘요.",
+          "base": {
+            "de": "Laut App-Anleitung bekommt man zuerst für je hundert Won fünf Punkte. Wenn man dann über zehntausend Punkte kommt, steigt die Stufe, und diese beeinflusst den Rabatt.",
+            "en": "Under the app instructions, you first earn five points per hundred won. Once your points exceed ten thousand, your tier rises, and the tier affects the discount."
+          }
+        },
+        "base": {
+          "de": "Einfluss",
+          "en": "influence"
+        },
+        "whyThisWord": {
+          "de": "영향을 주다 verbindet eine Größe mit ihrer Auswirkung auf eine andere. So erklärst du den Zusammenhang statt nur zwei Regeln aufzuzählen.",
+          "en": "영향을 주다 connects one factor to its effect on another, explaining the relationship rather than merely listing rules."
+        },
+        "remainder": [
+          "을"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "inteonet-bakkun-gijun",
+      "title": {
+        "de": "Die Wahl des Internetanbieters",
+        "en": "Explain your choice of internet provider"
+      },
+      "situation": {
+        "de": "Eine Person aus der Nachbarschaft hat Verbindungsprobleme. Erkläre deine eigenen Messungen und Vertragsbedingungen, ohne sie als allgemeines Angebot auszugeben.",
+        "en": "A neighbour has connection problems. Explain your own measurements and contract terms without presenting them as a general offer."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Nachbar",
+            "en": "Neighbour"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Person aus der Nachbarschaft hat Verbindungsprobleme. Erkläre deine eigenen Messungen und Vertragsbedingungen, ohne sie als allgemeines Angebot auszugeben. Die andere Person sagt: „인터넷 회사를 바꾸셨다면서요? 저도 요즘 자주 끊겨서 고민이에요.“",
+        "en": "A neighbour has connection problems. Explain your own measurements and contract terms without presenting them as a general offer. The other person says: “인터넷 회사를 바꾸셨다면서요? 저도 요즘 자주 끊겨서 고민이에요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "인터넷 회사를 바꾸셨다면서요? 저도 요즘 자주 끊겨서 고민이에요.",
+          "base": {
+            "de": "Sie haben den Internetanbieter gewechselt? Bei mir bricht die Verbindung auch oft ab, deshalb überlege ich.",
+            "en": "You changed internet providers? Mine often drops out too, so I am considering it."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "바꾼 기준이 세 가지였어요. 저녁마다 끊겼기 때문에 첫째는 저녁 속도, 둘째는 요금, 셋째는 고장 났을 때 얼마나 빨리 고쳐 주는지였어요.",
+          "base": {
+            "de": "Ich habe nach drei Kriterien gewechselt. Weil die Verbindung jeden Abend abbrach, waren das erstens die Geschwindigkeit am Abend, zweitens der Preis und drittens die Reparaturgeschwindigkeit bei einer Störung.",
+            "en": "I changed based on three criteria. Because the connection dropped out every evening, they were first evening speed, second price, and third how quickly they fix faults."
+          },
+          "move": "reason",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "속도는 어느 회사나 비슷하다고 하던데요. 정말 차이가 있어요?",
+          "base": {
+            "de": "Man sagt doch, die Geschwindigkeit sei bei allen ähnlich. Gibt es wirklich einen Unterschied?",
+            "en": "People say the speeds are similar with every provider. Is there really a difference?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "광고는 비슷해도 저희 집에서 저녁 여덟 시에 재 보면 달라요. 예전 회사는 반으로 떨어졌는데 지금 회사는 그대로예요.",
+          "base": {
+            "de": "Die Werbung ist ähnlich, aber bei mir zu Hause zeigen Messungen um acht Uhr abends Unterschiede. Beim früheren Anbieter fiel sie auf die Hälfte; beim jetzigen bleibt sie gleich.",
+            "en": "The adverts are similar, but measurements at my home at eight in the evening differ. The previous provider’s speed dropped to half; the current one’s stays the same."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 저도 바꾸려면 위약금이 있을 텐데, 그건 어떻게 하셨어요?",
+          "base": {
+            "de": "Beim Wechsel müsste ich vermutlich eine Vertragsstrafe zahlen. Wie haben Sie das gemacht?",
+            "en": "I would probably have an early termination fee if I switched. How did you handle that?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제 경우에는 위약금을 새 회사가 대신 내 줬어요. 그러니까 바꾸기 전에 그 조건부터 확인해 보세요.",
+          "base": {
+            "de": "In meinem Fall hat der neue Anbieter die Vertragsstrafe übernommen. Prüfen Sie deshalb genau diese Bedingung vor dem Wechsel.",
+            "en": "In my case, the new provider paid the termination fee. So check that condition before switching."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "바꾼 기준이 세 가지였어요. 저녁마다 끊겼기 때문에 첫째는 저녁 속도, 둘째는 요금, ",
+        "chunks": [
+          "셋째는 고장",
+          "났을",
+          "때 얼마나",
+          "빨리 고쳐",
+          "주는지였어요."
+        ],
+        "distractors": [
+          "늦게 고쳐",
+          "때 누가"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "광고는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 저희 집에서 저녁 여덟 시에 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 달라요. 예전 회사는 반으로 떨어졌는데 지금 회사는 그대로예요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "비슷해도",
+            "acceptedAnswers": [
+              "비슷해도"
+            ],
+            "kind": "frame",
+            "choices": [
+              "비슷해도",
+              "비슷해서",
+              "비슷하니까",
+              "비슷하면"
+            ]
+          },
+          {
+            "answer": "재 보면",
+            "acceptedAnswers": [
+              "재 보면",
+              "재면",
+              "측정하면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 위약금을 새 회사가 대신 내 줬어요. 그러니까 바꾸기 전에 그 조건부터 확인해 보세요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "제 경우에는",
+            "acceptedAnswers": [
+              "제 경우에는",
+              "제 경우는",
+              "저 같은 경우에는"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "바꾼 ",
+        "answer": "기준이",
+        "acceptedAnswers": [
+          "기준이"
+        ],
+        "after": " 세 가지였어요. 저녁마다 끊겼기 때문에 첫째는 저녁 속도, 둘째는 요금, 셋째는 고장 났을 때 얼마나 빨리 고쳐 주는지였어요.",
+        "fallbackChoices": [
+          "기준이",
+          "주문이",
+          "주소가",
+          "직업이"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Kriterien nummeriert erklären",
+          "en": "Explain numbered criteria"
+        },
+        "rule": {
+          "de": "첫째, 둘째 und 셋째 gliedern mehrere Kriterien. -아/어도 hält den beobachteten Unterschied trotz einer Gemeinsamkeit fest.",
+          "en": "첫째, 둘째 and 셋째 organize several criteria. -아/어도 maintains an observed difference despite a similarity."
+        },
+        "examples": [
+          {
+            "targetText": "바꾼 기준이 세 가지였어요. 저녁마다 끊겼기 때문에 첫째는 저녁 속도, 둘째는 요금, 셋째는 고장 났을 때 얼마나 빨리 고쳐 주는지였어요.",
+            "base": {
+              "de": "Ich habe nach drei Kriterien gewechselt. Weil die Verbindung jeden Abend abbrach, waren das erstens die Geschwindigkeit am Abend, zweitens der Preis und drittens die Reparaturgeschwindigkeit bei einer Störung.",
+              "en": "I changed based on three criteria. Because the connection dropped out every evening, they were first evening speed, second price, and third how quickly they fix faults."
+            },
+            "highlights": [
+              "첫째는",
+              "둘째는",
+              "셋째는"
+            ]
+          },
+          {
+            "targetText": "광고는 비슷해도 저희 집에서 저녁 여덟 시에 재 보면 달라요. 예전 회사는 반으로 떨어졌는데 지금 회사는 그대로예요.",
+            "base": {
+              "de": "Die Werbung ist ähnlich, aber bei mir zu Hause zeigen Messungen um acht Uhr abends Unterschiede. Beim früheren Anbieter fiel sie auf die Hälfte; beim jetzigen bleibt sie gleich.",
+              "en": "The adverts are similar, but measurements at my home at eight in the evening differ. The previous provider’s speed dropped to half; the current one’s stays the same."
+            },
+            "highlights": [
+              "비슷해도"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "기준이",
+          "kind": "noun",
+          "base": {
+            "de": "die Kriterien",
+            "en": "the criteria"
+          }
+        },
+        {
+          "targetText": "끊겼기 때문에",
+          "kind": "frame",
+          "base": {
+            "de": "weil die Verbindung abbrach",
+            "en": "because the connection dropped"
+          }
+        },
+        {
+          "targetText": "첫째는",
+          "kind": "connector",
+          "base": {
+            "de": "erstens",
+            "en": "first"
+          }
+        },
+        {
+          "targetText": "둘째는",
+          "kind": "connector",
+          "base": {
+            "de": "zweitens",
+            "en": "second"
+          }
+        },
+        {
+          "targetText": "셋째는",
+          "kind": "connector",
+          "base": {
+            "de": "drittens",
+            "en": "third"
+          }
+        },
+        {
+          "targetText": "저녁 속도",
+          "kind": "noun",
+          "base": {
+            "de": "die Geschwindigkeit am Abend",
+            "en": "evening speed"
+          }
+        },
+        {
+          "targetText": "위약금이",
+          "kind": "noun",
+          "base": {
+            "de": "die Vertragsstrafe",
+            "en": "the termination fee"
+          }
+        },
+        {
+          "targetText": "제 경우에는",
+          "kind": "frame",
+          "base": {
+            "de": "in meinem Fall",
+            "en": "in my case"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "셋째는",
+            "고쳐",
+            "주는지였어요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "광고는",
+            "떨어졌는데",
+            "그대로예요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "경우에는",
+            "위약금을",
+            "조건부터"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "기준",
+        "familyKey": "기준",
+        "surface": "기준이",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "바꾼 기준이 세 가지였어요. 저녁마다 끊겼기 때문에 첫째는 저녁 속도, 둘째는 요금, 셋째는 고장 났을 때 얼마나 빨리 고쳐 주는지였어요.",
+          "base": {
+            "de": "Ich habe nach drei Kriterien gewechselt. Weil die Verbindung jeden Abend abbrach, waren das erstens die Geschwindigkeit am Abend, zweitens der Preis und drittens die Reparaturgeschwindigkeit bei einer Störung.",
+            "en": "I changed based on three criteria. Because the connection dropped out every evening, they were first evening speed, second price, and third how quickly they fix faults."
+          }
+        },
+        "base": {
+          "de": "Kriterium; Maßstab",
+          "en": "criterion; standard"
+        },
+        "whyThisWord": {
+          "de": "기준 benennt den Maßstab, nach dem du wählst oder bewertest. Es unterscheidet Auswahlkriterien von bloßen Gründen für ein Ereignis.",
+          "en": "기준 names the standard used to choose or evaluate, distinguishing selection criteria from the causes of an event."
+        },
+        "remainder": [
+          "이"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "yeonchero-iui-sincheong",
+      "title": {
+        "de": "Eine falsche Verspätungsgebühr",
+        "en": "Dispute a mistaken late fee"
+      },
+      "situation": {
+        "de": "Eine Kollegin oder ein Kollege hat für Firmenausrüstung eine Verspätungsgebühr erhalten. Erkläre das Vorgehen laut einer fiktiven internen Regel.",
+        "en": "A colleague received a late fee for company equipment. Explain the process under a fictional internal policy."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Kollege",
+            "en": "Colleague"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Kollegin oder ein Kollege hat für Firmenausrüstung eine Verspätungsgebühr erhalten. Erkläre das Vorgehen laut einer fiktiven internen Regel. Die andere Person sagt: „사내 장비 연체료 삼만 원이 나왔는데, 저는 제때 반납했어요. 이의 신청은 어떻게 해요?“",
+        "en": "A colleague received a late fee for company equipment. Explain the process under a fictional internal policy. The other person says: “사내 장비 연체료 삼만 원이 나왔는데, 저는 제때 반납했어요. 이의 신청은 어떻게 해요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "사내 장비 연체료 삼만 원이 나왔는데, 저는 제때 반납했어요. 이의 신청은 어떻게 해요?",
+          "base": {
+            "de": "Für die Firmenausrüstung wurden mir dreißigtausend Won Verspätungsgebühr berechnet, obwohl ich sie rechtzeitig abgegeben habe. Wie lege ich Widerspruch ein?",
+            "en": "I received a thirty-thousand-won late fee for company equipment, but I returned it on time. How do I dispute it?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "원래는 반납 시간이 반납함에 넣은 시간으로 기록되는데, 직원이 다음 날 확인하면 그날로 찍혀요. 안내문대로면 넣은 날짜를 증명하면 취소돼요.",
+          "base": {
+            "de": "Eigentlich wird die Einwurfzeit als Rückgabezeit erfasst. Prüft das Personal aber erst am nächsten Tag, wird dieser Tag eingetragen. Laut Hinweis wird die Gebühr gestrichen, wenn man den Einwurftag nachweist.",
+            "en": "Normally, the time an item goes into the return box is recorded as the return time. But if staff check it the next day, that day is stamped. The notice says the fee is cancelled if you prove the drop-off date."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "증명이요? 반납함에 넣은 걸 누가 봤어야 되는 거예요?",
+          "base": {
+            "de": "Nachweisen? Muss jemand gesehen haben, wie ich es eingeworfen habe?",
+            "en": "Prove it? Does someone need to have seen me put it in the box?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "사람이 아니라 사진이면 돼요. 반납함 앞에 카메라가 있어서 총무팀에 물어보면 시간을 확인해 주는 걸로 알아요.",
+          "base": {
+            "de": "Es muss keine Person sein, ein Bild reicht. Vor der Box ist eine Kamera; soweit ich weiß, kann die Verwaltung damit die Zeit prüfen, wenn man fragt.",
+            "en": "It need not be a person; an image is enough. There is a camera in front of the box, and as far as I know, the administration team can check the time if you ask."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "총무팀에 뭐라고 쓰죠? 메일을 짧게 어떻게 시작하면 좋을까요?",
+          "base": {
+            "de": "Was schreibe ich der Verwaltung? Wie kann ich die Mail kurz anfangen?",
+            "en": "What should I write to the administration team? How can I start a short email?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제목에 연체료 이의 신청이라고 쓰고, 본문에는 반납한 날짜와 시간, 그리고 카메라 확인 요청만 쓰면 돼요.",
+          "base": {
+            "de": "Schreib „Widerspruch gegen Verspätungsgebühr“ in den Betreff. Im Text reichen Rückgabedatum und -zeit sowie die Bitte, die Kameraaufnahmen zu prüfen.",
+            "en": "Put “Late fee dispute” in the subject. In the body, just give the return date and time and ask them to check the camera recording."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "원래는 반납",
+          "시간이 반납함에",
+          "넣은",
+          "시간으로",
+          "기록되는데,"
+        ],
+        "distractors": [
+          "장소로",
+          "빌린"
+        ],
+        "frameSuffix": " 직원이 다음 날 확인하면 그날로 찍혀요. 안내문대로면 넣은 날짜를 증명하면 취소돼요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "사람이 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 사진이면 돼요. 반납함 앞에 카메라가 있어서 총무팀에 물어보면 시간을 확인해 주는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "아니라",
+            "acceptedAnswers": [
+              "아니라"
+            ],
+            "kind": "frame",
+            "choices": [
+              "아니라",
+              "아니면",
+              "아니지만",
+              "아니니까"
+            ]
+          },
+          {
+            "answer": "걸로 알아요",
+            "acceptedAnswers": [
+              "걸로 알아요",
+              "것으로 알아요",
+              "걸로 알고 있어요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "제목에 연체료 이의 신청이라고 쓰고, 본문에는 반납한 날짜와 시간, 그리고 카메라 확인 요청만 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "쓰면 돼요",
+            "acceptedAnswers": [
+              "쓰면 돼요"
+            ],
+            "kind": "frame",
+            "choices": [
+              "쓰면 돼요",
+              "쓰면 안 돼요",
+              "쓰지 마세요",
+              "써야 했어요"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "원래는",
+        "acceptedAnswers": [
+          "원래는"
+        ],
+        "after": " 반납 시간이 반납함에 넣은 시간으로 기록되는데, 직원이 다음 날 확인하면 그날로 찍혀요. 안내문대로면 넣은 날짜를 증명하면 취소돼요.",
+        "fallbackChoices": [
+          "원래는",
+          "드디어",
+          "우연히",
+          "몰래"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Vorgesehenen und tatsächlichen Ablauf trennen",
+          "en": "Separate the intended and actual process"
+        },
+        "rule": {
+          "de": "원래는 …-는데 stellt den vorgesehenen Ablauf dem tatsächlichen gegenüber. -는 걸로 알아요 kennzeichnet anschließend den eigenen Kenntnisstand.",
+          "en": "원래는 …-는데 contrasts the intended procedure with what actually happens. -는 걸로 알아요 then marks the limits of what you know."
+        },
+        "examples": [
+          {
+            "targetText": "원래는 반납 시간이 반납함에 넣은 시간으로 기록되는데, 직원이 다음 날 확인하면 그날로 찍혀요. 안내문대로면 넣은 날짜를 증명하면 취소돼요.",
+            "base": {
+              "de": "Eigentlich wird die Einwurfzeit als Rückgabezeit erfasst. Prüft das Personal aber erst am nächsten Tag, wird dieser Tag eingetragen. Laut Hinweis wird die Gebühr gestrichen, wenn man den Einwurftag nachweist.",
+              "en": "Normally, the time an item goes into the return box is recorded as the return time. But if staff check it the next day, that day is stamped. The notice says the fee is cancelled if you prove the drop-off date."
+            },
+            "highlights": [
+              "원래는",
+              "기록되는데"
+            ]
+          },
+          {
+            "targetText": "사람이 아니라 사진이면 돼요. 반납함 앞에 카메라가 있어서 총무팀에 물어보면 시간을 확인해 주는 걸로 알아요.",
+            "base": {
+              "de": "Es muss keine Person sein, ein Bild reicht. Vor der Box ist eine Kamera; soweit ich weiß, kann die Verwaltung damit die Zeit prüfen, wenn man fragt.",
+              "en": "It need not be a person; an image is enough. There is a camera in front of the box, and as far as I know, the administration team can check the time if you ask."
+            },
+            "highlights": [
+              "걸로 알아요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "원래는",
+          "kind": "adverb",
+          "base": {
+            "de": "eigentlich; normalerweise",
+            "en": "originally; normally"
+          }
+        },
+        {
+          "targetText": "기록되는데",
+          "kind": "verb",
+          "base": {
+            "de": "wird erfasst, aber",
+            "en": "is recorded, but"
+          }
+        },
+        {
+          "targetText": "반납함에",
+          "kind": "noun",
+          "base": {
+            "de": "in die Rückgabebox",
+            "en": "into the return box"
+          }
+        },
+        {
+          "targetText": "안내문대로면",
+          "kind": "frame",
+          "base": {
+            "de": "laut dem Hinweis",
+            "en": "according to the notice"
+          }
+        },
+        {
+          "targetText": "취소돼요",
+          "kind": "verb",
+          "base": {
+            "de": "wird gestrichen",
+            "en": "is cancelled"
+          }
+        },
+        {
+          "targetText": "아니라",
+          "kind": "frame",
+          "base": {
+            "de": "nicht, sondern",
+            "en": "not, but"
+          }
+        },
+        {
+          "targetText": "카메라가",
+          "kind": "noun",
+          "base": {
+            "de": "die Kamera",
+            "en": "the camera"
+          }
+        },
+        {
+          "targetText": "걸로 알아요",
+          "kind": "frame",
+          "base": {
+            "de": "soweit ich weiß",
+            "en": "as far as I know"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "반납",
+            "시간이",
+            "기록되는데"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "사진이면",
+            "카메라가",
+            "총무팀에"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "제목에",
+            "본문에는",
+            "요청만"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "원래",
+        "familyKey": "원래",
+        "surface": "원래는",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "원래는 반납 시간이 반납함에 넣은 시간으로 기록되는데, 직원이 다음 날 확인하면 그날로 찍혀요. 안내문대로면 넣은 날짜를 증명하면 취소돼요.",
+          "base": {
+            "de": "Eigentlich wird die Einwurfzeit als Rückgabezeit erfasst. Prüft das Personal aber erst am nächsten Tag, wird dieser Tag eingetragen. Laut Hinweis wird die Gebühr gestrichen, wenn man den Einwurftag nachweist.",
+            "en": "Normally, the time an item goes into the return box is recorded as the return time. But if staff check it the next day, that day is stamped. The notice says the fee is cancelled if you prove the drop-off date."
+          }
+        },
+        "base": {
+          "de": "ursprünglich; eigentlich",
+          "en": "originally; normally"
+        },
+        "whyThisWord": {
+          "de": "원래는 macht einen Unterschied zwischen dem vorgesehenen oder üblichen Zustand und einer Abweichung deutlich. Das hilft besonders beim Erklären von Fehlern im Ablauf.",
+          "en": "원래는 distinguishes the intended or usual state from a departure, especially useful when explaining a procedural error."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "jeochuk-gyehoek-silpae",
+      "title": {
+        "de": "Warum der Sparplan scheiterte",
+        "en": "Why the saving plan failed"
+      },
+      "situation": {
+        "de": "Eine befreundete Person fragt nach deinem Sparplan. Erkläre den unerwarteten Effekt und leite eine begrenzte Änderung daraus ab.",
+        "en": "A friend asks about your savings plan. Explain the unexpected effect and derive a limited change from it."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Befreundete Person",
+            "en": "Friend"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person fragt nach deinem Sparplan. Erkläre den unerwarteten Effekt und leite eine begrenzte Änderung daraus ab. Die andere Person sagt: „한 달에 삼십만 원 모으겠다던 계획은 어떻게 됐어요? 성공했어요?“",
+        "en": "A friend asks about your savings plan. Explain the unexpected effect and derive a limited change from it. The other person says: “한 달에 삼십만 원 모으겠다던 계획은 어떻게 됐어요? 성공했어요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "한 달에 삼십만 원 모으겠다던 계획은 어떻게 됐어요? 성공했어요?",
+          "base": {
+            "de": "Was wurde aus deinem Plan, monatlich dreihunderttausend Won zu sparen? Hat es geklappt?",
+            "en": "What happened to your plan to save three hundred thousand won a month? Did it work?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "실패했어요. 외식을 줄임으로써 돈을 모으려고 했는데, 원래 요리를 안 하던 사람이라 장을 많이 봤고 반은 버렸어요. 결과적으로 외식보다 더 썼어요.",
+          "base": {
+            "de": "Es hat nicht geklappt. Ich wollte durch weniger Restaurantbesuche sparen, war das Kochen aber nicht gewohnt, habe zu viel eingekauft und die Hälfte weggeworfen. Im Ergebnis habe ich mehr ausgegeben als beim Auswärtsessen.",
+            "en": "It failed. I planned to save by eating out less, but I was not used to cooking, bought too much and threw half away. As a result, I spent more than I did eating out."
+          },
+          "move": "reason",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그건 계획이 아니라 장보기 문제 아니에요? 계획 자체는 괜찮았잖아요.",
+          "base": {
+            "de": "War dann nicht der Einkauf das Problem und nicht der Plan? Der Plan selbst war doch gut.",
+            "en": "Was that not a shopping problem rather than a problem with the plan? The plan itself was fine."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "계획이 틀린 건 아니었죠. 그런데 한 번에 다 바꾸려고 한 게 문제였어요.",
+          "base": {
+            "de": "Der Plan war tatsächlich nicht falsch. Das Problem war, dass ich alles auf einmal ändern wollte.",
+            "en": "The plan was not wrong. The problem was trying to change everything at once."
+          },
+          "move": "concede",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 다음 달에는 뭘 다르게 할 거예요? 딱 하나만요.",
+          "base": {
+            "de": "Was machst du nächsten Monat anders? Nenn genau eine Sache.",
+            "en": "What will you do differently next month? Just one thing."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "주 이틀만 요리하고 그날 먹을 만큼만 사려고요. 그러면 지난달 식비 기준으로 십만 원은 모을 것 같아요.",
+          "base": {
+            "de": "Ich will nur an zwei Tagen pro Woche kochen und jeweils nur so viel kaufen, wie ich dann esse. Gemessen an den Essenskosten des letzten Monats könnte ich so hunderttausend Won sparen.",
+            "en": "I will cook only two days a week and buy only what I will eat that day. Based on last month’s food spending, I think I could save a hundred thousand won that way."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "실패했어요. 외식을 줄임으로써 돈을 모으려고 했는데, 원래 요리를 ",
+        "chunks": [
+          "안 하던",
+          "사람이라",
+          "장을 많이",
+          "봤고 반은",
+          "버렸어요."
+        ],
+        "distractors": [
+          "봤고 전부",
+          "장을 조금"
+        ],
+        "frameSuffix": " 결과적으로 외식보다 더 썼어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "계획이 틀린 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 한 번에 다 바꾸려고 한 게 문제였어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "건 아니었죠",
+            "acceptedAnswers": [
+              "건 아니었죠"
+            ],
+            "kind": "frame",
+            "choices": [
+              "건 아니었죠",
+              "게 맞았죠",
+              "건 사실이죠",
+              "게 문제였죠"
+            ]
+          },
+          {
+            "answer": "그런데",
+            "acceptedAnswers": [
+              "그런데",
+              "하지만",
+              "다만",
+              "그렇지만"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "주 이틀만 요리하고 그날 먹을 만큼만 사려고요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 지난달 식비 기준으로 십만 원은 모을 것 같아요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그러면",
+            "acceptedAnswers": [
+              "그러면",
+              "그럼",
+              "그렇게 하면",
+              "그렇다면"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "실패했어요. 외식을 ",
+        "answer": "줄임으로써",
+        "acceptedAnswers": [
+          "줄임으로써"
+        ],
+        "after": " 돈을 모으려고 했는데, 원래 요리를 안 하던 사람이라 장을 많이 봤고 반은 버렸어요. 결과적으로 외식보다 더 썼어요.",
+        "fallbackChoices": [
+          "줄임으로써",
+          "늘림으로써",
+          "즐김으로써",
+          "반복함으로써"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Mittel und unerwartetes Ergebnis",
+          "en": "A method and its unexpected result"
+        },
+        "rule": {
+          "de": "-(으)ㅁ으로써 bezeichnet das eingesetzte Mittel. 결과적으로 leitet das tatsächliche Ergebnis ein, das auch von der Absicht abweichen kann.",
+          "en": "-(으)ㅁ으로써 identifies the means used. 결과적으로 introduces the actual result, which may differ from the intention."
+        },
+        "examples": [
+          {
+            "targetText": "실패했어요. 외식을 줄임으로써 돈을 모으려고 했는데, 원래 요리를 안 하던 사람이라 장을 많이 봤고 반은 버렸어요. 결과적으로 외식보다 더 썼어요.",
+            "base": {
+              "de": "Es hat nicht geklappt. Ich wollte durch weniger Restaurantbesuche sparen, war das Kochen aber nicht gewohnt, habe zu viel eingekauft und die Hälfte weggeworfen. Im Ergebnis habe ich mehr ausgegeben als beim Auswärtsessen.",
+              "en": "It failed. I planned to save by eating out less, but I was not used to cooking, bought too much and threw half away. As a result, I spent more than I did eating out."
+            },
+            "highlights": [
+              "줄임으로써",
+              "결과적으로"
+            ]
+          },
+          {
+            "targetText": "계획이 틀린 건 아니었죠. 그런데 한 번에 다 바꾸려고 한 게 문제였어요.",
+            "base": {
+              "de": "Der Plan war tatsächlich nicht falsch. Das Problem war, dass ich alles auf einmal ändern wollte.",
+              "en": "The plan was not wrong. The problem was trying to change everything at once."
+            },
+            "highlights": [
+              "건 아니었죠",
+              "그런데"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "줄임으로써",
+          "kind": "verb",
+          "base": {
+            "de": "indem man verringert",
+            "en": "by reducing"
+          }
+        },
+        {
+          "targetText": "결과적으로",
+          "kind": "connector",
+          "base": {
+            "de": "im Ergebnis",
+            "en": "as a result"
+          }
+        },
+        {
+          "targetText": "외식을",
+          "kind": "noun",
+          "base": {
+            "de": "Auswärtsessen",
+            "en": "eating out"
+          }
+        },
+        {
+          "targetText": "모으려고",
+          "kind": "frame",
+          "base": {
+            "de": "in der Absicht zu sparen",
+            "en": "intending to save"
+          }
+        },
+        {
+          "targetText": "반은",
+          "kind": "noun",
+          "base": {
+            "de": "die Hälfte",
+            "en": "half"
+          }
+        },
+        {
+          "targetText": "문제였어요",
+          "kind": "noun",
+          "base": {
+            "de": "war das Problem",
+            "en": "was the problem"
+          }
+        },
+        {
+          "targetText": "기준으로",
+          "kind": "frame",
+          "base": {
+            "de": "gemessen an",
+            "en": "based on"
+          }
+        },
+        {
+          "targetText": "모을 것 같아요",
+          "kind": "frame",
+          "base": {
+            "de": "ich glaube, sparen zu können",
+            "en": "I think I could save"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "하던",
+            "많이",
+            "버렸어요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "계획이",
+            "바꾸려고",
+            "문제였어요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "요리하고",
+            "식비",
+            "모을"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "줄이다",
+        "familyKey": "줄이",
+        "surface": "줄임으로써",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "실패했어요. 외식을 줄임으로써 돈을 모으려고 했는데, 원래 요리를 안 하던 사람이라 장을 많이 봤고 반은 버렸어요. 결과적으로 외식보다 더 썼어요.",
+          "base": {
+            "de": "Es hat nicht geklappt. Ich wollte durch weniger Restaurantbesuche sparen, war das Kochen aber nicht gewohnt, habe zu viel eingekauft und die Hälfte weggeworfen. Im Ergebnis habe ich mehr ausgegeben als beim Auswärtsessen.",
+            "en": "It failed. I planned to save by eating out less, but I was not used to cooking, bought too much and threw half away. As a result, I spent more than I did eating out."
+          }
+        },
+        "base": {
+          "de": "verringern",
+          "en": "reduce"
+        },
+        "whyThisWord": {
+          "de": "줄이다 ist transitiv: Du verringerst etwas. Die Form 줄임으로써 macht diese Verringerung zum Mittel für ein weiteres Ziel.",
+          "en": "줄이다 is transitive: you reduce something. 줄임으로써 presents that reduction as the means to another goal."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "geulsseugi-sangdam-yeyak",
+      "title": {
+        "de": "Erst hochladen, dann buchen",
+        "en": "Upload first, then book"
+      },
+      "situation": {
+        "de": "Du hilfst einer neuen Studentin oder einem neuen Studenten bei der Schreibberatung. Erkläre die Buchung nach den fiktiven Regeln dieses Zentrums.",
+        "en": "You help a new student book writing support. Explain the booking process under this centre’s fictional rules."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Neuer Studierender",
+            "en": "New student"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du hilfst einer neuen Studentin oder einem neuen Studenten bei der Schreibberatung. Erkläre die Buchung nach den fiktiven Regeln dieses Zentrums. Die andere Person sagt: „글쓰기 센터 상담은 어떻게 잡아요? 홈페이지에서 눌렀는데 아무 날짜도 안 열려요.“",
+        "en": "You help a new student book writing support. Explain the booking process under this centre’s fictional rules. The other person says: “글쓰기 센터 상담은 어떻게 잡아요? 홈페이지에서 눌렀는데 아무 날짜도 안 열려요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "글쓰기 센터 상담은 어떻게 잡아요? 홈페이지에서 눌렀는데 아무 날짜도 안 열려요.",
+          "base": {
+            "de": "Wie buche ich eine Beratung im Schreibzentrum? Ich habe auf der Website geklickt, aber es werden keine Termine angezeigt.",
+            "en": "How do I book a writing-centre consultation? I clicked on the website, but no dates appeared."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "센터 안내대로 먼저 글을 올려야 상담 날짜가 보이고, 날짜를 고름으로써 시간이 확정돼요. 결과적으로 글을 안 올리면 날짜도 안 열려요.",
+          "base": {
+            "de": "Laut Zentrumsanleitung musst du zuerst deinen Text hochladen; dann erscheinen Beratungstermine, und durch die Terminauswahl wird die Zeit festgelegt. Ohne hochgeladenen Text werden folglich auch keine Termine angezeigt.",
+            "en": "Under the centre’s instructions, you must upload your text first to see consultation dates, and selecting a date confirms the time. Consequently, no dates appear without an uploaded text."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그런데 저는 글이 아직 반밖에 안 됐어요. 그래도 올려야 돼요?",
+          "base": {
+            "de": "Aber mein Text ist erst halb fertig. Muss ich ihn trotzdem hochladen?",
+            "en": "But my text is only half finished. Do I still need to upload it?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "반이어도 괜찮아요. 완성된 글이 아니라 질문이 있는 부분만 있으면 돼요.",
+          "base": {
+            "de": "Halbfertig ist in Ordnung. Es muss kein fertiger Text sein; der Abschnitt, zu dem du Fragen hast, reicht.",
+            "en": "Half finished is fine. It need not be a finished text; the part you have questions about is enough."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "이번 주 자리가 다 찼으면요? 그러면 어떻게 되는 거예요?",
+          "base": {
+            "de": "Und wenn diese Woche alles voll ist? Was passiert dann?",
+            "en": "What if every slot this week is full? What happens then?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그러면 대기 명단에 올려 두세요. 취소가 나면 문자가 오지만 꼭 나는 건 아니니까 다음 주에 다시 신청하세요.",
+          "base": {
+            "de": "Setz dich dann auf die Warteliste. Bei einer Absage kommt eine Nachricht, aber darauf ist kein Verlass; melde dich deshalb nächste Woche erneut an.",
+            "en": "Then join the waiting list. You get a text if someone cancels, but a cancellation is not guaranteed, so try booking again next week."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "센터 안내대로 먼저 글을 ",
+        "chunks": [
+          "올려야",
+          "상담 날짜가",
+          "보이고, 날짜를",
+          "고름으로써",
+          "시간이 확정돼요."
+        ],
+        "distractors": [
+          "장소가 확정돼요.",
+          "취소함으로써"
+        ],
+        "frameSuffix": " 결과적으로 글을 안 올리면 날짜도 안 열려요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 괜찮아요. 완성된 글이 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 질문이 있는 부분만 있으면 돼요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "반이어도",
+            "acceptedAnswers": [
+              "반이어도"
+            ],
+            "kind": "frame",
+            "choices": [
+              "반이어도",
+              "반이니까",
+              "반이라서",
+              "반이 아니면"
+            ]
+          },
+          {
+            "answer": "아니라",
+            "acceptedAnswers": [
+              "아니라",
+              "아니어도",
+              "아니고"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그러면 대기 명단에 올려 두세요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 문자가 오지만 꼭 나는 건 아니니까 다음 주에 다시 신청하세요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "취소가 나면",
+            "acceptedAnswers": [
+              "취소가 나면",
+              "취소가 생기면",
+              "취소되면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "센터 안내대로 먼저 글을 올려야 상담 날짜가 보이고, 날짜를 고름으로써 시간이 확정돼요. ",
+        "answer": "결과적으로",
+        "acceptedAnswers": [
+          "결과적으로"
+        ],
+        "after": " 글을 안 올리면 날짜도 안 열려요.",
+        "fallbackChoices": [
+          "결과적으로",
+          "감정적으로",
+          "개인적으로",
+          "직접적으로"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen notwendigen Schritt erklären",
+          "en": "Explain a necessary step"
+        },
+        "rule": {
+          "de": "-아/어야 nennt die Voraussetzung für den nächsten Schritt. -(으)ㅁ으로써 beschreibt die Handlung, durch die etwas festgelegt wird; 결과적으로 fasst die Folge zusammen.",
+          "en": "-아/어야 states a prerequisite for the next step. -(으)ㅁ으로써 identifies the action that establishes something, while 결과적으로 sums up the consequence."
+        },
+        "examples": [
+          {
+            "targetText": "센터 안내대로 먼저 글을 올려야 상담 날짜가 보이고, 날짜를 고름으로써 시간이 확정돼요. 결과적으로 글을 안 올리면 날짜도 안 열려요.",
+            "base": {
+              "de": "Laut Zentrumsanleitung musst du zuerst deinen Text hochladen; dann erscheinen Beratungstermine, und durch die Terminauswahl wird die Zeit festgelegt. Ohne hochgeladenen Text werden folglich auch keine Termine angezeigt.",
+              "en": "Under the centre’s instructions, you must upload your text first to see consultation dates, and selecting a date confirms the time. Consequently, no dates appear without an uploaded text."
+            },
+            "highlights": [
+              "올려야",
+              "고름으로써",
+              "결과적으로"
+            ]
+          },
+          {
+            "targetText": "반이어도 괜찮아요. 완성된 글이 아니라 질문이 있는 부분만 있으면 돼요.",
+            "base": {
+              "de": "Halbfertig ist in Ordnung. Es muss kein fertiger Text sein; der Abschnitt, zu dem du Fragen hast, reicht.",
+              "en": "Half finished is fine. It need not be a finished text; the part you have questions about is enough."
+            },
+            "highlights": [
+              "반이어도",
+              "아니라"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "결과적으로",
+          "kind": "connector",
+          "base": {
+            "de": "folglich; im Ergebnis",
+            "en": "consequently; as a result"
+          }
+        },
+        {
+          "targetText": "올려야",
+          "kind": "frame",
+          "base": {
+            "de": "erst wenn man hochlädt",
+            "en": "only after uploading"
+          }
+        },
+        {
+          "targetText": "고름으로써",
+          "kind": "frame",
+          "base": {
+            "de": "durch die Auswahl",
+            "en": "by selecting"
+          }
+        },
+        {
+          "targetText": "확정돼요",
+          "kind": "verb",
+          "base": {
+            "de": "wird festgelegt",
+            "en": "is confirmed"
+          }
+        },
+        {
+          "targetText": "상담",
+          "kind": "noun",
+          "base": {
+            "de": "Beratung",
+            "en": "consultation"
+          }
+        },
+        {
+          "targetText": "부분만",
+          "kind": "noun",
+          "base": {
+            "de": "nur der Abschnitt",
+            "en": "only the part"
+          }
+        },
+        {
+          "targetText": "대기 명단에",
+          "kind": "noun",
+          "base": {
+            "de": "auf die Warteliste",
+            "en": "on the waiting list"
+          }
+        },
+        {
+          "targetText": "문자가",
+          "kind": "noun",
+          "base": {
+            "de": "die Textnachricht",
+            "en": "the text message"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "올려야",
+            "상담",
+            "고름으로써"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "반이어도",
+            "완성된",
+            "부분만"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "대기",
+            "취소가",
+            "신청하세요"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "결과",
+        "familyKey": "결과",
+        "surface": "결과적으로",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "센터 안내대로 먼저 글을 올려야 상담 날짜가 보이고, 날짜를 고름으로써 시간이 확정돼요. 결과적으로 글을 안 올리면 날짜도 안 열려요.",
+          "base": {
+            "de": "Laut Zentrumsanleitung musst du zuerst deinen Text hochladen; dann erscheinen Beratungstermine, und durch die Terminauswahl wird die Zeit festgelegt. Ohne hochgeladenen Text werden folglich auch keine Termine angezeigt.",
+            "en": "Under the centre’s instructions, you must upload your text first to see consultation dates, and selecting a date confirms the time. Consequently, no dates appear without an uploaded text."
+          }
+        },
+        "base": {
+          "de": "Ergebnis; Folge",
+          "en": "result; consequence"
+        },
+        "whyThisWord": {
+          "de": "결과 wird hier in 결과적으로 als Folgerahmen verwendet. Das verbindet die zuvor erklärte Bedingung mit ihrer praktischen Auswirkung.",
+          "en": "결과 appears here in 결과적으로, a result frame linking the condition just explained to its practical effect."
+        },
+        "remainder": [
+          "적으로"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "gongyu-jajeongeo-jjeuk",
+      "title": {
+        "de": "Eine Fahrradinitiative erläutern",
+        "en": "Explain a shared-bike proposal"
+      },
+      "situation": {
+        "de": "Eine skeptische Person aus der Nachbarschaft lehnt Leihfahrräder in der Wohnanlage ab. Alle Leistungen und Preise beziehen sich auf den fiktiven örtlichen Vorschlag.",
+        "en": "A sceptical neighbour opposes shared bikes in the complex. All services and prices refer to the fictional local proposal."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Nachbar",
+            "en": "Neighbour"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine skeptische Person aus der Nachbarschaft lehnt Leihfahrräder in der Wohnanlage ab. Alle Leistungen und Preise beziehen sich auf den fiktiven örtlichen Vorschlag. Die andere Person sagt: „단지에서 공유 자전거를 하자는데 저는 반대예요. 아무도 안 타고 고장만 날 거예요.“",
+        "en": "A sceptical neighbour opposes shared bikes in the complex. All services and prices refer to the fictional local proposal. The other person says: “단지에서 공유 자전거를 하자는데 저는 반대예요. 아무도 안 타고 고장만 날 거예요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "단지에서 공유 자전거를 하자는데 저는 반대예요. 아무도 안 타고 고장만 날 거예요.",
+          "base": {
+            "de": "Die Wohnanlage will Gemeinschaftsfahrräder anbieten, aber ich bin dagegen. Niemand wird sie nutzen, und sie gehen nur kaputt.",
+            "en": "The complex wants to introduce shared bikes, but I am against it. Nobody will use them, and they will just break."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 역까지 차로 가는 집이 줄면 역 주차장도 나아질 거예요.",
+          "base": {
+            "de": "Ich bin dafür. Zum Bahnhof läuft man fünfzehn Minuten; mit dem Fahrrad sind es fünf. Das heißt, wenn weniger Haushalte mit dem Auto zum Bahnhof fahren, dürfte sich auch der Parkplatz am Bahnhof entspannen.",
+            "en": "I am in favour. Walking to the station takes fifteen minutes; cycling takes five. That is, if fewer households drive to the station, the station car park should improve too."
+          },
+          "move": "reason",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "고장 나면요? 누가 고쳐요? 결국 관리비로 나가는 거잖아요.",
+          "base": {
+            "de": "Und wenn etwas kaputtgeht? Wer repariert es? Das zahlen wir am Ende doch über die Nebenkosten.",
+            "en": "What if they break? Who fixes them? It will come out of our service charges in the end."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제안서대로면 고장은 업체가 고쳐요. 앱으로 신고하면 하루 안에 고치고, 비용은 월 이용료에 포함이에요.",
+          "base": {
+            "de": "Laut Vorschlag repariert der Anbieter Schäden. Meldet man sie über die App, werden sie innerhalb eines Tages behoben; die Kosten sind in der Monatsgebühr enthalten.",
+            "en": "Under the proposal, the provider fixes faults. Report them through the app and they are repaired within a day; the cost is included in the monthly usage fee."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그래서 결국 우리가 내는 돈은 얼마라는 거예요? 그것만 말해요.",
+          "base": {
+            "de": "Was zahlen wir also am Ende? Sagen Sie nur das.",
+            "en": "So what do we actually pay in the end? Just tell me that."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "정리하면, 제안서대로면 관리비는 안 오르고, 타는 사람만 한 달에 오천 원을 내요.",
+          "base": {
+            "de": "Kurz gesagt steigen laut Vorschlag die Nebenkosten nicht. Nur wer die Fahrräder nutzt, zahlt monatlich fünftausend Won.",
+            "en": "In short, under the proposal the service charges do not rise. Only users pay five thousand won a month."
+          },
+          "move": "summarize",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, ",
+        "chunks": [
+          "역까지 차로",
+          "가는 집이",
+          "줄면",
+          "역 주차장도",
+          "나아질 거예요."
+        ],
+        "distractors": [
+          "늘면",
+          "나빠질 거예요."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 고장은 업체가 고쳐요. 앱으로 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 하루 안에 고치고, 비용은 월 이용료에 포함이에요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "제안서대로면",
+            "acceptedAnswers": [
+              "제안서대로면",
+              "제안서에 따르면",
+              "제안서를 보면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "신고하면",
+            "acceptedAnswers": [
+              "신고하면"
+            ],
+            "kind": "frame",
+            "choices": [
+              "신고하면",
+              "신고해도",
+              "신고하려면",
+              "신고하지만"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", 제안서대로면 관리비는 안 오르고, 타는 사람만 한 달에 오천 원을 내요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "정리하면",
+            "acceptedAnswers": [
+              "정리하면",
+              "결론은",
+              "요약하면",
+              "한마디로"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 ",
+        "answer": "분이에요",
+        "acceptedAnswers": [
+          "분이에요"
+        ],
+        "after": ". 즉, 역까지 차로 가는 집이 줄면 역 주차장도 나아질 거예요.",
+        "fallbackChoices": [
+          "분이에요",
+          "시간이에요",
+          "일이에요",
+          "달이에요"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Eine Folgerung für den Alltag",
+          "en": "Spell out a practical implication"
+        },
+        "rule": {
+          "de": "즉 formuliert hier die praktische Folgerung aus dem kürzeren Weg. Eine Bedingung mit -면 macht deutlich, wovon die erwartete Verbesserung abhängt.",
+          "en": "즉 spells out the practical implication of the shorter journey. A condition with -면 makes clear what the expected improvement depends on."
+        },
+        "examples": [
+          {
+            "targetText": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 역까지 차로 가는 집이 줄면 역 주차장도 나아질 거예요.",
+            "base": {
+              "de": "Ich bin dafür. Zum Bahnhof läuft man fünfzehn Minuten; mit dem Fahrrad sind es fünf. Das heißt, wenn weniger Haushalte mit dem Auto zum Bahnhof fahren, dürfte sich auch der Parkplatz am Bahnhof entspannen.",
+              "en": "I am in favour. Walking to the station takes fifteen minutes; cycling takes five. That is, if fewer households drive to the station, the station car park should improve too."
+            },
+            "highlights": [
+              "즉,",
+              "줄면"
+            ]
+          },
+          {
+            "targetText": "정리하면, 제안서대로면 관리비는 안 오르고, 타는 사람만 한 달에 오천 원을 내요.",
+            "base": {
+              "de": "Kurz gesagt steigen laut Vorschlag die Nebenkosten nicht. Nur wer die Fahrräder nutzt, zahlt monatlich fünftausend Won.",
+              "en": "In short, under the proposal the service charges do not rise. Only users pay five thousand won a month."
+            },
+            "highlights": [
+              "정리하면",
+              "제안서대로면"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "즉",
+          "kind": "connector",
+          "base": {
+            "de": "das heißt",
+            "en": "that is"
+          }
+        },
+        {
+          "targetText": "제 생각에는",
+          "kind": "frame",
+          "base": {
+            "de": "meiner Meinung nach",
+            "en": "in my view"
+          }
+        },
+        {
+          "targetText": "제안서대로면",
+          "kind": "frame",
+          "base": {
+            "de": "laut dem Vorschlag",
+            "en": "under the proposal"
+          }
+        },
+        {
+          "targetText": "역까지",
+          "kind": "noun",
+          "base": {
+            "de": "bis zum Bahnhof",
+            "en": "to the station"
+          }
+        },
+        {
+          "targetText": "주차장도",
+          "kind": "noun",
+          "base": {
+            "de": "auch der Parkplatz",
+            "en": "the car park too"
+          }
+        },
+        {
+          "targetText": "업체가",
+          "kind": "noun",
+          "base": {
+            "de": "der Anbieter",
+            "en": "the provider"
+          }
+        },
+        {
+          "targetText": "신고하면",
+          "kind": "verb",
+          "base": {
+            "de": "wenn man meldet",
+            "en": "if you report it"
+          }
+        },
+        {
+          "targetText": "이용료에",
+          "kind": "noun",
+          "base": {
+            "de": "in der Nutzungsgebühr",
+            "en": "in the usage fee"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "집이",
+            "줄면",
+            "나아질"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "제안서대로면",
+            "고장은",
+            "포함이에요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "관리비는",
+            "사람만",
+            "오천"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "즉",
+        "familyKey": "즉",
+        "surface": "즉",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 역까지 차로 가는 집이 줄면 역 주차장도 나아질 거예요.",
+          "base": {
+            "de": "Ich bin dafür. Zum Bahnhof läuft man fünfzehn Minuten; mit dem Fahrrad sind es fünf. Das heißt, wenn weniger Haushalte mit dem Auto zum Bahnhof fahren, dürfte sich auch der Parkplatz am Bahnhof entspannen.",
+            "en": "I am in favour. Walking to the station takes fifteen minutes; cycling takes five. That is, if fewer households drive to the station, the station car park should improve too."
+          }
+        },
+        "base": {
+          "de": "das heißt",
+          "en": "that is"
+        },
+        "whyThisWord": {
+          "de": "즉 kündigt eine verdeutlichende Folgerung oder Umformulierung an. Es hilft, aus Zahlen die Bedeutung für die Gesprächspartnerin oder den Gesprächspartner abzuleiten.",
+          "en": "즉 signals a clarifying implication or reformulation, helping explain what figures mean for the other person."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "acceptedPhraseVariants": [
+        "제 생각에는 찬성이에요. 역까지 걸으면 15 분인데 자전거면 5 분이에요. 즉, 역까지 차로 가는 집이 줄면 역 주차장도 나아질 거예요."
+      ]
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "seolmun-gyeoljeong-cheori",
+      "title": {
+        "de": "Von der Befragung zum Beschluss",
+        "en": "From survey to decision"
+      },
+      "situation": {
+        "de": "Als Vertretung der Bewohnerschaft erklärst du einen fiktiven Beschluss über einen Fahrradraum im Keller. Befragung und örtliche Finanzierung sind Teil dieser Szene.",
+        "en": "As a residents’ representative, you explain a fictional decision about basement bike storage. The survey and local funding arrangement belong to this scene."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Hausverwaltung",
+            "en": "Building manager"
+          },
+          "voiceRole": "A",
+          "register": "hapsyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Als Vertretung der Bewohnerschaft erklärst du einen fiktiven Beschluss über einen Fahrradraum im Keller. Befragung und örtliche Finanzierung sind Teil dieser Szene. Die andere Person sagt: „주민 설문 결과가 왜 이렇게 처리됐는지 설명이 필요합니다. 처음 안과 결론이 다릅니다.“",
+        "en": "As a residents’ representative, you explain a fictional decision about basement bike storage. The survey and local funding arrangement belong to this scene. The other person says: “주민 설문 결과가 왜 이렇게 처리됐는지 설명이 필요합니다. 처음 안과 결론이 다릅니다.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "주민 설문 결과가 왜 이렇게 처리됐는지 설명이 필요합니다. 처음 안과 결론이 다릅니다.",
+          "base": {
+            "de": "Wir brauchen eine Erklärung, wie das Ergebnis der Bewohnerbefragung so bearbeitet wurde. Der ursprüngliche Vorschlag und der Beschluss unterscheiden sich.",
+            "en": "We need an explanation of how the residents’ survey result was handled this way. The original proposal and the conclusion differ."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "처음 안은 지하였는데 설문에서 반대가 육십 퍼센트였어요. 어둡다는 의견이 많아서 조명을 보강하는 조건으로 처리됐어요. 즉, 장소는 그대로예요.",
+          "base": {
+            "de": "Ursprünglich war der Keller vorgesehen, aber in der Umfrage waren sechzig Prozent dagegen. Weil viele die Dunkelheit bemängelten, wurde der Vorschlag unter der Bedingung besserer Beleuchtung bearbeitet. Das heißt, der Ort bleibt gleich.",
+            "en": "The original proposal was the basement, but sixty percent opposed it in the survey. Many said it was dark, so the proposal was processed on condition that the lighting be improved. That is, the location stays the same."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "조명 공사비는 누가 결정했습니까? 회의록에는 그 내용이 없습니다.",
+          "base": {
+            "de": "Wer hat die Kosten der Beleuchtungsarbeiten beschlossen? Dazu steht nichts im Protokoll.",
+            "en": "Who decided on the lighting costs? That is not in the meeting minutes."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "회의록에는 없지만 설문 마지막 문항에 있었고, 그 결과를 대표 회의에서 확정했어요. 공사비 이백만 원에 칠십 퍼센트가 찬성했어요.",
+          "base": {
+            "de": "Es steht nicht im Protokoll, war aber die letzte Frage in der Umfrage; die Vertretung hat deren Ergebnis bestätigt. Siebzig Prozent waren für Baukosten von zwei Millionen Won.",
+            "en": "It is not in the minutes, but it was the survey’s final question, and the representatives confirmed that result. Seventy percent approved a two-million-won construction budget."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "알겠습니다. 다음 주 게시판에 올릴 안내문을 세 줄로 정리해 주시겠습니까?",
+          "base": {
+            "de": "Verstanden. Können Sie den Aushang für nächste Woche in drei Zeilen zusammenfassen?",
+            "en": "Understood. Could you summarize next week’s noticeboard announcement in three lines?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "첫째, 자전거 보관소는 지하 주차장으로 정했어요. 둘째, 조명 공사를 먼저 해요. 셋째, 공사비는 설문 결과대로 관리비에서 나가요.",
+          "base": {
+            "de": "Erstens wird der Fahrradraum in der Tiefgarage eingerichtet. Zweitens wird vorher die Beleuchtung verbessert. Drittens werden die Baukosten gemäß der Umfrage aus den Nebenkosten bezahlt.",
+            "en": "First, the bike storage area will be in the basement car park. Second, the lighting work comes first. Third, construction costs are paid from service charges as the survey determined."
+          },
+          "move": "summarize",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "처음 안은 지하였는데 설문에서 반대가 육십 퍼센트였어요. ",
+        "chunks": [
+          "어둡다는 의견이",
+          "많아서 조명을",
+          "보강하는",
+          "조건으로",
+          "처리됐어요."
+        ],
+        "distractors": [
+          "철거하는",
+          "적어서 조명을"
+        ],
+        "frameSuffix": " 즉, 장소는 그대로예요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "회의록에는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 설문 마지막 문항에 있었고, 그 결과를 대표 회의에서 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 공사비 이백만 원에 칠십 퍼센트가 찬성했어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "없지만",
+            "acceptedAnswers": [
+              "없지만"
+            ],
+            "kind": "frame",
+            "choices": [
+              "없지만",
+              "없어서",
+              "없으니까",
+              "없으면"
+            ]
+          },
+          {
+            "answer": "확정했어요",
+            "acceptedAnswers": [
+              "확정했어요"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "확정하다: höfliche Vergangenheitsform auf -했어요 für den bereits gefassten Beschluss.",
+              "en": "확정하다: polite past form ending -했어요 for the decision already confirmed."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "첫째, 자전거 보관소는 지하 주차장으로 정했어요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", 조명 공사를 먼저 해요. 셋째, 공사비는 설문 결과대로 관리비에서 나가요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "둘째",
+            "acceptedAnswers": [
+              "둘째"
+            ],
+            "kind": "connector",
+            "choices": [
+              "둘째",
+              "첫째",
+              "셋째",
+              "넷째"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "처음 안은 지하였는데 설문에서 반대가 육십 퍼센트였어요. 어둡다는 의견이 많아서 조명을 보강하는 조건으로 ",
+        "answer": "처리됐어요",
+        "acceptedAnswers": [
+          "처리됐어요"
+        ],
+        "after": ". 즉, 장소는 그대로예요.",
+        "fallbackChoices": [
+          "처리됐어요",
+          "취소됐어요",
+          "누락됐어요",
+          "분실됐어요"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Entscheidungsweg und Ergebnis",
+          "en": "Explain the route to a decision"
+        },
+        "rule": {
+          "de": "-다는 의견 gibt den Inhalt einer geäußerten Meinung wieder. 즉 verdeutlicht das Ergebnis; 첫째, 둘째 und 셋째 gliedern die anschließende Mitteilung.",
+          "en": "-다는 의견 reports the content of an opinion. 즉 clarifies the outcome; 첫째, 둘째 and 셋째 organize the announcement that follows."
+        },
+        "examples": [
+          {
+            "targetText": "처음 안은 지하였는데 설문에서 반대가 육십 퍼센트였어요. 어둡다는 의견이 많아서 조명을 보강하는 조건으로 처리됐어요. 즉, 장소는 그대로예요.",
+            "base": {
+              "de": "Ursprünglich war der Keller vorgesehen, aber in der Umfrage waren sechzig Prozent dagegen. Weil viele die Dunkelheit bemängelten, wurde der Vorschlag unter der Bedingung besserer Beleuchtung bearbeitet. Das heißt, der Ort bleibt gleich.",
+              "en": "The original proposal was the basement, but sixty percent opposed it in the survey. Many said it was dark, so the proposal was processed on condition that the lighting be improved. That is, the location stays the same."
+            },
+            "highlights": [
+              "어둡다는 의견이",
+              "즉,"
+            ]
+          },
+          {
+            "targetText": "첫째, 자전거 보관소는 지하 주차장으로 정했어요. 둘째, 조명 공사를 먼저 해요. 셋째, 공사비는 설문 결과대로 관리비에서 나가요.",
+            "base": {
+              "de": "Erstens wird der Fahrradraum in der Tiefgarage eingerichtet. Zweitens wird vorher die Beleuchtung verbessert. Drittens werden die Baukosten gemäß der Umfrage aus den Nebenkosten bezahlt.",
+              "en": "First, the bike storage area will be in the basement car park. Second, the lighting work comes first. Third, construction costs are paid from service charges as the survey determined."
+            },
+            "highlights": [
+              "첫째,",
+              "둘째,",
+              "셋째,"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "처리됐어요",
+          "kind": "verb",
+          "base": {
+            "de": "wurde bearbeitet",
+            "en": "was processed"
+          }
+        },
+        {
+          "targetText": "어둡다는 의견이",
+          "kind": "frame",
+          "base": {
+            "de": "die Meinung, es sei dunkel",
+            "en": "the opinion that it was dark"
+          }
+        },
+        {
+          "targetText": "즉",
+          "kind": "connector",
+          "base": {
+            "de": "das heißt",
+            "en": "that is"
+          }
+        },
+        {
+          "targetText": "설문에서",
+          "kind": "noun",
+          "base": {
+            "de": "in der Umfrage",
+            "en": "in the survey"
+          }
+        },
+        {
+          "targetText": "조명을",
+          "kind": "noun",
+          "base": {
+            "de": "die Beleuchtung",
+            "en": "the lighting"
+          }
+        },
+        {
+          "targetText": "회의록에는",
+          "kind": "noun",
+          "base": {
+            "de": "im Protokoll",
+            "en": "in the minutes"
+          }
+        },
+        {
+          "targetText": "조건으로",
+          "kind": "frame",
+          "base": {
+            "de": "unter der Bedingung",
+            "en": "on condition"
+          }
+        },
+        {
+          "targetText": "관리비에서",
+          "kind": "noun",
+          "base": {
+            "de": "aus den Nebenkosten",
+            "en": "from service charges"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "어둡다는",
+            "보강하는",
+            "처리됐어요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "회의록에는",
+            "이백만",
+            "찬성했어요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "보관소는",
+            "공사를",
+            "관리비에서"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "처리",
+        "familyKey": "처리",
+        "surface": "처리됐어요",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "처음 안은 지하였는데 설문에서 반대가 육십 퍼센트였어요. 어둡다는 의견이 많아서 조명을 보강하는 조건으로 처리됐어요. 즉, 장소는 그대로예요.",
+          "base": {
+            "de": "Ursprünglich war der Keller vorgesehen, aber in der Umfrage waren sechzig Prozent dagegen. Weil viele die Dunkelheit bemängelten, wurde der Vorschlag unter der Bedingung besserer Beleuchtung bearbeitet. Das heißt, der Ort bleibt gleich.",
+            "en": "The original proposal was the basement, but sixty percent opposed it in the survey. Many said it was dark, so the proposal was processed on condition that the lighting be improved. That is, the location stays the same."
+          }
+        },
+        "base": {
+          "de": "Bearbeitung; Abwicklung",
+          "en": "processing; handling"
+        },
+        "whyThisWord": {
+          "de": "처리 beschreibt die administrative Bearbeitung einer Sache. Hier erklärst du, welche Bedingung bei der Bearbeitung des Vorschlags berücksichtigt wurde.",
+          "en": "처리 describes administrative handling. Here you explain the condition considered when handling the proposal."
+        },
+        "remainder": [
+          "됐어요"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

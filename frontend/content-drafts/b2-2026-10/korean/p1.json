@@ -1,0 +1,3809 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 1,
+  "slug": "weighing-options",
+  "pathTitle": {
+    "de": "Abwägen und empfehlen",
+    "en": "Weighing options"
+  },
+  "pathFunction": {
+    "de": "Vergleiche zwei Möglichkeiten, räume einen Einwand ein und gib eine begründete Empfehlung.",
+    "en": "Compare two options, concede a point and give a qualified recommendation."
+  },
+  "specRef": {
+    "pathSpec": "B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json",
+    "pathSpecSha256": "771a5732eb71f43a52b83499cf69cc902bdc37f074045170e47a9209467531db",
+    "ledger": "B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json#/trophyLedger/rows",
+    "ledgerSha256": "771a5732eb71f43a52b83499cf69cc902bdc37f074045170e47a9209467531db"
+  },
+  "authoring": {
+    "source": "codex-scratch-authoring",
+    "runId": "korean-b2-p1-p2-20261006-v2",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "wolse-vs-chultoegeun",
+      "title": {
+        "de": "Miete oder Zeit?",
+        "en": "Rent or time?"
+      },
+      "situation": {
+        "de": "Du vergleichst mit einer Immobilienmaklerin oder einem Immobilienmakler zwei Wohnungen. Entscheide, welche Wohnung zu deinem Alltag passt.",
+        "en": "You compare two flats with a letting agent. Weigh the trade-off against your daily routine."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Immobilienmakler",
+            "en": "Letting agent"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du vergleichst mit einer Immobilienmaklerin oder einem Immobilienmakler zwei Wohnungen. Entscheide, welche Wohnung zu deinem Alltag passt. Die andere Person sagt: „두 집 중에 고민되시죠? 역 근처 집은 월세가 비싸고, 외곽 집은 출퇴근이 길어요.“",
+        "en": "You compare two flats with a letting agent. Weigh the trade-off against your daily routine. The other person says: “두 집 중에 고민되시죠? 역 근처 집은 월세가 비싸고, 외곽 집은 출퇴근이 길어요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "두 집 중에 고민되시죠? 역 근처 집은 월세가 비싸고, 외곽 집은 출퇴근이 길어요.",
+          "base": {
+            "de": "Sie überlegen noch zwischen den beiden Wohnungen? Die am Bahnhof hat eine hohe Miete, bei der am Stadtrand ist der Arbeitsweg lang.",
+            "en": "Still choosing between the two flats? The one near the station has high rent; the one on the outskirts has a long commute."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "두 집 다 장단점이 있어요. 역 근처는 월세가 비싸지만 출퇴근이 삼십 분이고, 외곽 집은 싸지만 매일 한 시간 넘게 걸려요.",
+          "base": {
+            "de": "Beide Wohnungen haben Vor- und Nachteile. Am Bahnhof ist die Miete hoch, aber der Arbeitsweg dauert dreißig Minuten; am Stadtrand ist es günstig, aber man braucht jeden Tag über eine Stunde.",
+            "en": "Both flats have advantages and disadvantages. Near the station, rent is high but the commute takes thirty minutes; the outskirts are cheap, but the journey takes over an hour every day."
+          },
+          "move": "compare",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그런데 외곽 집은 월세가 싸도 교통비가 매달 팔만 원쯤 들어요. 그걸 계산하셨어요?",
+          "base": {
+            "de": "Aber auch bei der günstigen Wohnung am Stadtrand kommen jeden Monat etwa achtzigtausend Won Fahrtkosten dazu. Haben Sie das eingerechnet?",
+            "en": "But even with the cheap flat on the outskirts, transport costs about eighty thousand won a month. Have you included that?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "교통비까지 생각하면 차이가 생각보다 작기는 하네요. 그래도 시간은 돈으로 못 사요.",
+          "base": {
+            "de": "Mit den Fahrtkosten ist der Unterschied tatsächlich kleiner als gedacht. Aber Zeit kann man nicht kaufen.",
+            "en": "Including transport, the difference really is smaller than I thought. Still, money cannot buy time."
+          },
+          "move": "concede",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "계약은 이번 주에 하셔야 돼요. 둘 중 하나만 고르신다면요?",
+          "base": {
+            "de": "Sie müssen diese Woche unterschreiben. Wenn Sie sich für eine entscheiden müssten?",
+            "en": "You need to sign this week. If you had to choose just one?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그러면 역 근처 집으로 할게요. 돈보다 시간이 저한테는 더 중요하니까요.",
+          "base": {
+            "de": "Dann nehme ich die Wohnung am Bahnhof. Für mich ist Zeit eben wichtiger als Geld.",
+            "en": "Then I will take the flat near the station. Time matters more to me than money."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "두 집 다 장단점이 있어요. 역 근처는 월세가 비싸지만 출퇴근이 삼십 분이고, ",
+        "chunks": [
+          "외곽 집은",
+          "싸지만 매일",
+          "한 시간",
+          "넘게",
+          "걸려요."
+        ],
+        "distractors": [
+          "비싸지만 매일",
+          "한 달"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "교통비까지 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 차이가 생각보다 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 그래도 시간은 돈으로 못 사요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "생각하면",
+            "acceptedAnswers": [
+              "생각하면",
+              "계산하면",
+              "따지면",
+              "포함하면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "작기는 하네요",
+            "acceptedAnswers": [
+              "작기는 하네요"
+            ],
+            "kind": "frame",
+            "choices": [
+              "작기는 하네요",
+              "크기는 하네요",
+              "작지는 않네요",
+              "작을 리가 없네요"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그러면 역 근처 집으로 할게요. 돈보다 시간이 저한테는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "더 중요하니까요",
+            "acceptedAnswers": [
+              "더 중요하니까요"
+            ],
+            "kind": "frame",
+            "choices": [
+              "더 중요하니까요",
+              "더 중요하지만",
+              "더 중요하면",
+              "덜 중요하니까요"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "두 집 다 ",
+        "answer": "장단점이",
+        "acceptedAnswers": [
+          "장단점이"
+        ],
+        "after": " 있어요. 역 근처는 월세가 비싸지만 출퇴근이 삼십 분이고, 외곽 집은 싸지만 매일 한 시간 넘게 걸려요.",
+        "fallbackChoices": [
+          "장단점이",
+          "영수증이",
+          "알레르기가",
+          "생일이"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Vergleichen und begründen",
+          "en": "Compare and give a reason"
+        },
+        "rule": {
+          "de": "-지만 verbindet gegensätzliche Eigenschaften; -니까요 kann am Satzende den Grund für eine gerade getroffene Entscheidung nennen.",
+          "en": "-지만 links contrasting features; sentence-final -니까요 can give the reason for a decision just stated."
+        },
+        "examples": [
+          {
+            "targetText": "두 집 다 장단점이 있어요. 역 근처는 월세가 비싸지만 출퇴근이 삼십 분이고, 외곽 집은 싸지만 매일 한 시간 넘게 걸려요.",
+            "base": {
+              "de": "Beide Wohnungen haben Vor- und Nachteile. Am Bahnhof ist die Miete hoch, aber der Arbeitsweg dauert dreißig Minuten; am Stadtrand ist es günstig, aber man braucht jeden Tag über eine Stunde.",
+              "en": "Both flats have advantages and disadvantages. Near the station, rent is high but the commute takes thirty minutes; the outskirts are cheap, but the journey takes over an hour every day."
+            },
+            "highlights": [
+              "비싸지만",
+              "싸지만"
+            ]
+          },
+          {
+            "targetText": "그러면 역 근처 집으로 할게요. 돈보다 시간이 저한테는 더 중요하니까요.",
+            "base": {
+              "de": "Dann nehme ich die Wohnung am Bahnhof. Für mich ist Zeit eben wichtiger als Geld.",
+              "en": "Then I will take the flat near the station. Time matters more to me than money."
+            },
+            "highlights": [
+              "중요하니까요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "장단점이",
+          "kind": "noun",
+          "base": {
+            "de": "Vor- und Nachteile",
+            "en": "advantages and disadvantages"
+          }
+        },
+        {
+          "targetText": "월세가",
+          "kind": "noun",
+          "base": {
+            "de": "die Monatsmiete",
+            "en": "monthly rent"
+          }
+        },
+        {
+          "targetText": "출퇴근이",
+          "kind": "noun",
+          "base": {
+            "de": "der Arbeitsweg",
+            "en": "the commute"
+          }
+        },
+        {
+          "targetText": "교통비까지",
+          "kind": "noun",
+          "base": {
+            "de": "auch die Fahrtkosten",
+            "en": "transport costs too"
+          }
+        },
+        {
+          "targetText": "작기는 하네요",
+          "kind": "frame",
+          "base": {
+            "de": "ist tatsächlich kleiner",
+            "en": "is indeed smaller"
+          }
+        },
+        {
+          "targetText": "그래도",
+          "kind": "connector",
+          "base": {
+            "de": "trotzdem",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "그러면",
+          "kind": "connector",
+          "base": {
+            "de": "dann",
+            "en": "then"
+          }
+        },
+        {
+          "targetText": "더 중요하니까요",
+          "kind": "frame",
+          "base": {
+            "de": "weil es wichtiger ist",
+            "en": "because it matters more"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "외곽",
+            "싸지만",
+            "시간",
+            "걸려요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "교통비까지",
+            "작기는",
+            "돈으로"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "근처",
+            "돈보다",
+            "중요하니까요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "장단점",
+        "familyKey": "장단점",
+        "surface": "장단점이",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "두 집 다 장단점이 있어요. 역 근처는 월세가 비싸지만 출퇴근이 삼십 분이고, 외곽 집은 싸지만 매일 한 시간 넘게 걸려요.",
+          "base": {
+            "de": "Beide Wohnungen haben Vor- und Nachteile. Am Bahnhof ist die Miete hoch, aber der Arbeitsweg dauert dreißig Minuten; am Stadtrand ist es günstig, aber man braucht jeden Tag über eine Stunde.",
+            "en": "Both flats have advantages and disadvantages. Near the station, rent is high but the commute takes thirty minutes; the outskirts are cheap, but the journey takes over an hour every day."
+          }
+        },
+        "base": {
+          "de": "Vor- und Nachteile",
+          "en": "advantages and disadvantages"
+        },
+        "whyThisWord": {
+          "de": "장단점 bündelt beide Seiten eines Vergleichs. So leitest du eine Abwägung ein, bevor du dich festlegst.",
+          "en": "장단점 names both sides of a comparison, letting you weigh them before deciding."
+        },
+        "remainder": [
+          "이"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "중요하니까요",
+          "status": "productive"
+        }
+      ],
+      "acceptedPhraseVariants": [
+        "두 집 다 장단점이 있어요. 역 근처는 월세가 비싸지만 출퇴근이 30 분이고, 외곽 집은 싸지만 매일 1 시간 넘게 걸려요."
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "cha-vs-jihacheol",
+      "title": {
+        "de": "Auto oder U-Bahn?",
+        "en": "Car or subway?"
+      },
+      "situation": {
+        "de": "Eine Kollegin oder ein Kollege überlegt, mit dem Auto oder der U-Bahn zur Arbeit zu fahren. Tauscht eure Erfahrungen aus.",
+        "en": "A colleague is weighing driving against taking the subway to work. Compare your experiences."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Kollege",
+            "en": "Colleague"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Kollegin oder ein Kollege überlegt, mit dem Auto oder der U-Bahn zur Arbeit zu fahren. Tauscht eure Erfahrungen aus. Die andere Person sagt: „출퇴근 차로 하세요, 지하철로 하세요? 저는 요즘 차가 편해서요.“",
+        "en": "A colleague is weighing driving against taking the subway to work. Compare your experiences. The other person says: “출퇴근 차로 하세요, 지하철로 하세요? 저는 요즘 차가 편해서요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "출퇴근 차로 하세요, 지하철로 하세요? 저는 요즘 차가 편해서요.",
+          "base": {
+            "de": "Fahren Sie mit dem Auto oder der U-Bahn zur Arbeit? Ich finde das Auto in letzter Zeit bequem.",
+            "en": "Do you commute by car or subway? I have been finding the car convenient lately."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "차는 편한 반면에 주차비와 기름값이 많이 들어요. 지하철은 시간이 정확하고 그동안 책도 읽을 수 있어서 저는 지하철이 더 나아요.",
+          "base": {
+            "de": "Das Auto ist bequem, während Parken und Benzin viel kosten. Die U-Bahn ist pünktlich, und unterwegs kann ich lesen; deshalb finde ich sie besser.",
+            "en": "The car is convenient, whereas parking and fuel cost a lot. The subway is punctual, and I can read on the way, so I prefer it."
+          },
+          "move": "compare",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그래도 비 오는 날은요? 그리고 야근하면 막차가 끊기잖아요.",
+          "base": {
+            "de": "Aber was ist bei Regen? Und nach Überstunden fährt doch die letzte Bahn nicht mehr.",
+            "en": "But what about rainy days? And if you work late, the last train has already gone."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "택시를 한 달에 두세 번 타도 사만 원쯤이라서 차 유지비보다 훨씬 싸요. 제 노선은 막차가 열두 시 반이고요.",
+          "base": {
+            "de": "Selbst zwei oder drei Taxifahrten im Monat kosten etwa vierzigtausend Won und damit viel weniger als der Unterhalt eines Autos. Auf meiner Linie fährt die letzte Bahn außerdem um halb eins.",
+            "en": "Even two or three taxis a month cost about forty thousand won, far less than running a car. The last train on my line is at half past midnight, too."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 차 팔까 생각 중인데, 솔직히 어떻게 하는 게 좋을까요?",
+          "base": {
+            "de": "Ich denke darüber nach, das Auto zu verkaufen. Was würden Sie mir ehrlich raten?",
+            "en": "I am thinking of selling the car, then. What would you honestly advise?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "바로 팔지 말고 한 달만 지하철로 다녀 보세요. 그러고 나서 결정해도 늦지 않아요.",
+          "base": {
+            "de": "Verkaufen Sie es nicht sofort, sondern fahren Sie erst einen Monat mit der U-Bahn. Danach können Sie immer noch entscheiden.",
+            "en": "Do not sell it straight away; try commuting by subway for a month. It will not be too late to decide afterwards."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "차는 편한 반면에 주차비와 기름값이 많이 들어요. 지하철은 시간이 ",
+        "chunks": [
+          "정확하고",
+          "그동안 책도",
+          "읽을 수",
+          "있어서 저는",
+          "지하철이"
+        ],
+        "distractors": [
+          "그동안 운전도",
+          "없어서 저는"
+        ],
+        "frameSuffix": " 더 나아요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "택시를 한 달에 두세 번 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 사만 원쯤이라서 차 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 훨씬 싸요. 제 노선은 막차가 열두 시 반이고요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "타도",
+            "acceptedAnswers": [
+              "타도"
+            ],
+            "kind": "frame",
+            "choices": [
+              "타도",
+              "타지 말고",
+              "타고 나서",
+              "타기 전에"
+            ]
+          },
+          {
+            "answer": "유지비보다",
+            "acceptedAnswers": [
+              "유지비보다",
+              "유지비보다는"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "바로 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 한 달만 지하철로 다녀 보세요. 그러고 나서 결정해도 늦지 않아요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "팔지 말고",
+            "acceptedAnswers": [
+              "팔지 말고",
+              "팔지 마시고"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "차는 편한 반면에 ",
+        "answer": "주차비와",
+        "acceptedAnswers": [
+          "주차비와"
+        ],
+        "after": " 기름값이 많이 들어요. 지하철은 시간이 정확하고 그동안 책도 읽을 수 있어서 저는 지하철이 더 나아요.",
+        "fallbackChoices": [
+          "주차비와",
+          "숙박비와",
+          "수업료와",
+          "입장료와"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Zwei Seiten gegenüberstellen",
+          "en": "Set two sides against each other"
+        },
+        "rule": {
+          "de": "-ㄴ 반면에 stellt einen Vorteil einem Nachteil gegenüber. Mit -아/어도 gibst du an, dass dein Gegenargument sogar unter einer zusätzlichen Bedingung gilt.",
+          "en": "-ㄴ 반면에 contrasts an advantage with a disadvantage. -아/어도 shows that your counterargument holds even under an added condition."
+        },
+        "examples": [
+          {
+            "targetText": "차는 편한 반면에 주차비와 기름값이 많이 들어요. 지하철은 시간이 정확하고 그동안 책도 읽을 수 있어서 저는 지하철이 더 나아요.",
+            "base": {
+              "de": "Das Auto ist bequem, während Parken und Benzin viel kosten. Die U-Bahn ist pünktlich, und unterwegs kann ich lesen; deshalb finde ich sie besser.",
+              "en": "The car is convenient, whereas parking and fuel cost a lot. The subway is punctual, and I can read on the way, so I prefer it."
+            },
+            "highlights": [
+              "편한 반면에"
+            ]
+          },
+          {
+            "targetText": "택시를 한 달에 두세 번 타도 사만 원쯤이라서 차 유지비보다 훨씬 싸요. 제 노선은 막차가 열두 시 반이고요.",
+            "base": {
+              "de": "Selbst zwei oder drei Taxifahrten im Monat kosten etwa vierzigtausend Won und damit viel weniger als der Unterhalt eines Autos. Auf meiner Linie fährt die letzte Bahn außerdem um halb eins.",
+              "en": "Even two or three taxis a month cost about forty thousand won, far less than running a car. The last train on my line is at half past midnight, too."
+            },
+            "highlights": [
+              "타도"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "반면에",
+          "kind": "connector",
+          "base": {
+            "de": "während dagegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "주차비와",
+          "kind": "noun",
+          "base": {
+            "de": "Parkgebühren und",
+            "en": "parking fees and"
+          }
+        },
+        {
+          "targetText": "기름값이",
+          "kind": "noun",
+          "base": {
+            "de": "die Benzinkosten",
+            "en": "fuel costs"
+          }
+        },
+        {
+          "targetText": "읽을 수 있어서",
+          "kind": "frame",
+          "base": {
+            "de": "weil ich lesen kann",
+            "en": "because I can read"
+          }
+        },
+        {
+          "targetText": "막차가",
+          "kind": "noun",
+          "base": {
+            "de": "die letzte Bahn",
+            "en": "the last train"
+          }
+        },
+        {
+          "targetText": "유지비보다",
+          "kind": "frame",
+          "base": {
+            "de": "als die Unterhaltskosten",
+            "en": "than the running costs"
+          }
+        },
+        {
+          "targetText": "바로",
+          "kind": "adverb",
+          "base": {
+            "de": "sofort",
+            "en": "straight away"
+          }
+        },
+        {
+          "targetText": "결정해도",
+          "kind": "verb",
+          "base": {
+            "de": "auch wenn man entscheidet",
+            "en": "even if you decide"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "정확하고",
+            "책도",
+            "있어서"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "택시를",
+            "유지비보다",
+            "막차가"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "팔지",
+            "달만",
+            "결정해도"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "반면",
+        "familyKey": "반면",
+        "surface": "반면에",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "차는 편한 반면에 주차비와 기름값이 많이 들어요. 지하철은 시간이 정확하고 그동안 책도 읽을 수 있어서 저는 지하철이 더 나아요.",
+          "base": {
+            "de": "Das Auto ist bequem, während Parken und Benzin viel kosten. Die U-Bahn ist pünktlich, und unterwegs kann ich lesen; deshalb finde ich sie besser.",
+            "en": "The car is convenient, whereas parking and fuel cost a lot. The subway is punctual, and I can read on the way, so I prefer it."
+          }
+        },
+        "base": {
+          "de": "während dagegen",
+          "en": "whereas"
+        },
+        "whyThisWord": {
+          "de": "반면에 macht einen Gegensatz innerhalb derselben Abwägung sichtbar. Es verbindet die beiden Seiten ohne einen neuen Satzanfang.",
+          "en": "반면에 makes a contrast within one comparison clear, linking the two sides within a sentence."
+        },
+        "remainder": [
+          "에"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "jaetaek-vs-samusil",
+      "title": {
+        "de": "Zwei Tage im Homeoffice",
+        "en": "Two days working from home"
+      },
+      "situation": {
+        "de": "Deine Teamleitung sammelt Meinungen zur Arbeit von zu Hause. Begründe deine bevorzugte Regelung.",
+        "en": "Your manager is collecting views on working from home. Explain which arrangement you prefer."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Teamleitung",
+            "en": "Team manager"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Deine Teamleitung sammelt Meinungen zur Arbeit von zu Hause. Begründe deine bevorzugte Regelung. Die andere Person sagt: „다음 달부터 재택근무를 주 이틀 할지 계속 사무실에 나올지 팀 의견을 듣고 있어요.“",
+        "en": "Your manager is collecting views on working from home. Explain which arrangement you prefer. The other person says: “다음 달부터 재택근무를 주 이틀 할지 계속 사무실에 나올지 팀 의견을 듣고 있어요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "다음 달부터 재택근무를 주 이틀 할지 계속 사무실에 나올지 팀 의견을 듣고 있어요.",
+          "base": {
+            "de": "Wir sammeln im Team Meinungen dazu, ob wir ab nächsten Monat zwei Tage pro Woche von zu Hause arbeiten oder weiter ins Büro kommen.",
+            "en": "We are gathering the team’s views on working from home two days a week from next month or continuing to come into the office."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "저는 재택근무를 이틀 하는 쪽이 좋아요. 사무실에 비해 집중이 잘 되고, 출퇴근 시간이 줄어서 일을 더 할 수 있어요.",
+          "base": {
+            "de": "Ich wäre für zwei Tage im Homeoffice. Im Vergleich zum Büro kann ich mich besser konzentrieren, und durch den kürzeren Arbeitsweg schaffe ich mehr.",
+            "en": "I favour two days working from home. Compared with the office, I can concentrate better, and less commuting means I can get more done."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그런데 재택을 하면 회의 때 소통이 느려진다는 의견도 있어요. 그건 어떻게 보세요?",
+          "base": {
+            "de": "Manche sagen aber, dass die Kommunikation in Besprechungen von zu Hause langsamer wird. Wie sehen Sie das?",
+            "en": "Some people say communication in meetings is slower when working remotely. How do you see that?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "소통 문제는 재택 자체보다 회의 방식 문제인 것 같아요. 아침마다 짧게 화상 회의를 하면 돼요.",
+          "base": {
+            "de": "Ich glaube, das Problem liegt eher an der Besprechungsform als an der Arbeit von zu Hause selbst. Eine kurze Videobesprechung jeden Morgen würde helfen.",
+            "en": "I think the communication issue is more about how meetings are run than remote work itself. We could have a short video meeting every morning."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "팀원 전체 기준으로는 어떻게 정하면 될까요? 신입은 적응 중이라서요.",
+          "base": {
+            "de": "Welche Regelung passt für das ganze Team? Die neuen Mitarbeitenden gewöhnen sich noch ein.",
+            "en": "What arrangement should we use for the whole team? The new starters are still settling in."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "신입분들은 첫 세 달은 사무실에 나오고, 그 후에 이틀 재택으로 하면 어떨까요?",
+          "base": {
+            "de": "Wie wäre es, wenn neue Mitarbeitende die ersten drei Monate ins Büro kommen und danach zwei Tage von zu Hause arbeiten?",
+            "en": "How about having new starters come into the office for the first three months, then work from home two days a week?"
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "저는 재택근무를 이틀 하는 쪽이 ",
+        "chunks": [
+          "좋아요. 사무실에",
+          "비해 집중이",
+          "잘 되고,",
+          "출퇴근 시간이",
+          "줄어서"
+        ],
+        "distractors": [
+          "안 되고,",
+          "늘어서"
+        ],
+        "frameSuffix": " 일을 더 할 수 있어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "소통 문제는 재택 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 회의 방식 문제인 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 아침마다 짧게 화상 회의를 하면 돼요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "자체보다",
+            "acceptedAnswers": [
+              "자체보다",
+              "자체보다는"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "것 같아요",
+            "acceptedAnswers": [
+              "것 같아요",
+              "거 같아요",
+              "것 같은데요",
+              "듯해요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "신입분들은 첫 세 달은 사무실에 나오고, 그 후에 이틀 재택으로 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "하면 어떨까요",
+            "acceptedAnswers": [
+              "하면 어떨까요",
+              "하는 게 어떨까요",
+              "하면 어떠세요",
+              "하면 어때요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "저는 재택근무를 이틀 하는 쪽이 좋아요. 사무실에 ",
+        "answer": "비해",
+        "acceptedAnswers": [
+          "비해"
+        ],
+        "after": " 집중이 잘 되고, 출퇴근 시간이 줄어서 일을 더 할 수 있어요.",
+        "fallbackChoices": [
+          "비해",
+          "갔다가",
+          "도착해",
+          "들어가"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Einen Vergleich als Grund nennen",
+          "en": "Use a comparison as a reason"
+        },
+        "rule": {
+          "de": "-에 비해 nennt den Bezugspunkt eines Vergleichs. Mit -(으)면 어떨까요 wird daraus ein offener Vorschlag statt einer Anweisung.",
+          "en": "-에 비해 names the reference point for a comparison. -(으)면 어떨까요 turns a proposal into an open suggestion rather than an instruction."
+        },
+        "examples": [
+          {
+            "targetText": "저는 재택근무를 이틀 하는 쪽이 좋아요. 사무실에 비해 집중이 잘 되고, 출퇴근 시간이 줄어서 일을 더 할 수 있어요.",
+            "base": {
+              "de": "Ich wäre für zwei Tage im Homeoffice. Im Vergleich zum Büro kann ich mich besser konzentrieren, und durch den kürzeren Arbeitsweg schaffe ich mehr.",
+              "en": "I favour two days working from home. Compared with the office, I can concentrate better, and less commuting means I can get more done."
+            },
+            "highlights": [
+              "사무실에 비해"
+            ]
+          },
+          {
+            "targetText": "신입분들은 첫 세 달은 사무실에 나오고, 그 후에 이틀 재택으로 하면 어떨까요?",
+            "base": {
+              "de": "Wie wäre es, wenn neue Mitarbeitende die ersten drei Monate ins Büro kommen und danach zwei Tage von zu Hause arbeiten?",
+              "en": "How about having new starters come into the office for the first three months, then work from home two days a week?"
+            },
+            "highlights": [
+              "하면 어떨까요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "비해",
+          "kind": "verb",
+          "base": {
+            "de": "verglichen mit",
+            "en": "compared with"
+          }
+        },
+        {
+          "targetText": "재택근무를",
+          "kind": "noun",
+          "base": {
+            "de": "Arbeit von zu Hause",
+            "en": "working from home"
+          }
+        },
+        {
+          "targetText": "집중이",
+          "kind": "noun",
+          "base": {
+            "de": "die Konzentration",
+            "en": "concentration"
+          }
+        },
+        {
+          "targetText": "소통이",
+          "kind": "noun",
+          "base": {
+            "de": "die Kommunikation",
+            "en": "communication"
+          }
+        },
+        {
+          "targetText": "자체보다",
+          "kind": "frame",
+          "base": {
+            "de": "eher als an der Sache selbst",
+            "en": "rather than the thing itself"
+          }
+        },
+        {
+          "targetText": "것 같아요",
+          "kind": "frame",
+          "base": {
+            "de": "ich glaube",
+            "en": "I think"
+          }
+        },
+        {
+          "targetText": "화상 회의를",
+          "kind": "noun",
+          "base": {
+            "de": "eine Videobesprechung",
+            "en": "a video meeting"
+          }
+        },
+        {
+          "targetText": "하면 어떨까요",
+          "kind": "frame",
+          "base": {
+            "de": "wie wäre es, wenn",
+            "en": "how about"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "사무실에",
+            "집중이",
+            "줄어서"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "소통",
+            "회의",
+            "화상"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "신입분들은",
+            "재택으로",
+            "어떨까요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "비하다",
+        "familyKey": "비하",
+        "surface": "비해",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "저는 재택근무를 이틀 하는 쪽이 좋아요. 사무실에 비해 집중이 잘 되고, 출퇴근 시간이 줄어서 일을 더 할 수 있어요.",
+          "base": {
+            "de": "Ich wäre für zwei Tage im Homeoffice. Im Vergleich zum Büro kann ich mich besser konzentrieren, und durch den kürzeren Arbeitsweg schaffe ich mehr.",
+            "en": "I favour two days working from home. Compared with the office, I can concentrate better, and less commuting means I can get more done."
+          }
+        },
+        "base": {
+          "de": "vergleichen mit",
+          "en": "compare with"
+        },
+        "whyThisWord": {
+          "de": "비해 benennt ausdrücklich, womit du etwas vergleichst. Der Rahmen -에 비해 macht deine Begründung nachvollziehbar.",
+          "en": "비해 explicitly identifies what you are comparing something with; -에 비해 makes the basis of your reasoning clear."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "sagi-vs-billigi",
+      "title": {
+        "de": "Kaufen oder mieten?",
+        "en": "Buy or rent?"
+      },
+      "situation": {
+        "de": "Ein Fahrradgeschäft bietet dir in diesem fiktiven Gespräch Kauf oder Monatsmiete an. Wäge Kosten und Nutzungsrisiko ab.",
+        "en": "In this fictional shop offer, you can buy a bike or rent it monthly. Weigh the cost against the risk of not using it."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Ladeninhaber",
+            "en": "Shop owner"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ein Fahrradgeschäft bietet dir in diesem fiktiven Gespräch Kauf oder Monatsmiete an. Wäge Kosten und Nutzungsrisiko ab. Die andere Person sagt: „자전거를 사시면 사십만 원이고, 월 삼만 원에 빌려 드릴 수도 있어요. 어느 쪽이 나으세요?“",
+        "en": "In this fictional shop offer, you can buy a bike or rent it monthly. Weigh the cost against the risk of not using it. The other person says: “자전거를 사시면 사십만 원이고, 월 삼만 원에 빌려 드릴 수도 있어요. 어느 쪽이 나으세요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "자전거를 사시면 사십만 원이고, 월 삼만 원에 빌려 드릴 수도 있어요. 어느 쪽이 나으세요?",
+          "base": {
+            "de": "Beim Kauf kostet das Fahrrad vierhunderttausend Won; Sie können es auch für dreißigtausend Won im Monat mieten. Was passt Ihnen besser?",
+            "en": "The bike costs four hundred thousand won to buy, or you can rent it for thirty thousand won a month. Which suits you better?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "한편으로는 사는 게 길게 보면 싸지만, 다른 한편으로는 한 번에 사십만 원은 부담이 커요. 일단 석 달만 빌려 보고 싶어요.",
+          "base": {
+            "de": "Einerseits ist Kaufen auf Dauer günstiger, andererseits sind vierhunderttausend Won auf einmal eine große Belastung. Ich möchte es erst drei Monate mieten.",
+            "en": "On the one hand, buying is cheaper in the long run; on the other, four hundred thousand won at once is a big burden. I would like to rent it for three months first."
+          },
+          "move": "reason",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "빌리시면 석 달이면 구만 원이고, 그 뒤에 사셔도 그 돈은 안 돌려 드려요.",
+          "base": {
+            "de": "Drei Monate Miete kosten neunzigtausend Won. Auch wenn Sie danach kaufen, erstatten wir das Geld nicht.",
+            "en": "Three months’ rent comes to ninety thousand won. We do not refund that even if you buy afterwards."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그 돈이 없어지기는 하지만, 제가 자전거를 꾸준히 탈지 아직 몰라서요.",
+          "base": {
+            "de": "Das Geld ist dann zwar weg, aber ich weiß noch nicht, ob ich regelmäßig Fahrrad fahren werde.",
+            "en": "I do lose that money, but I do not yet know whether I will cycle regularly."
+          },
+          "move": "concede",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그러면 조건을 하나 드릴게요. 빌린 지 석 달 안에 사시면 빌린 돈의 반은 빼 드려요.",
+          "base": {
+            "de": "Dann biete ich Ihnen Folgendes an: Kaufen Sie innerhalb von drei Monaten nach Mietbeginn, rechne ich die Hälfte der Miete an.",
+            "en": "Then I can offer this: buy within three months of starting the rental, and I will deduct half the rent."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그 조건이면 좋아요. 빌리는 걸로 시작하고, 잘 타면 석 달 안에 살게요.",
+          "base": {
+            "de": "Mit der Bedingung passt es. Ich fange mit der Miete an und kaufe innerhalb von drei Monaten, wenn ich regelmäßig fahre.",
+            "en": "That condition works for me. I will start by renting and buy within three months if I use it regularly."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "한편으로는 사는 게 길게 보면 ",
+        "chunks": [
+          "싸지만, 다른",
+          "한편으로는 한",
+          "번에 사십만",
+          "원은 부담이",
+          "커요."
+        ],
+        "distractors": [
+          "작아요.",
+          "번에 팔십만"
+        ],
+        "frameSuffix": " 일단 석 달만 빌려 보고 싶어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그 돈이 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", 제가 자전거를 꾸준히 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 아직 몰라서요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "없어지기는 하지만",
+            "acceptedAnswers": [
+              "없어지기는 하지만"
+            ],
+            "kind": "frame",
+            "choices": [
+              "없어지기는 하지만",
+              "없어지지 않지만",
+              "없어지기 때문에",
+              "없어진 다음에"
+            ]
+          },
+          {
+            "answer": "탈지",
+            "acceptedAnswers": [
+              "탈지",
+              "탈 건지"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "타다: indirekte Frage „ob ich fahren werde“, vor 아직 몰라서요.",
+              "en": "타다: indirect question “whether I will ride”, before 아직 몰라서요."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 좋아요. 빌리는 걸로 시작하고, 잘 타면 석 달 안에 살게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그 조건이면",
+            "acceptedAnswers": [
+              "그 조건이면",
+              "그 조건이라면",
+              "그러면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "한편으로는 사는 게 길게 보면 싸지만, 다른 한편으로는 한 번에 사십만 원은 ",
+        "answer": "부담이",
+        "acceptedAnswers": [
+          "부담이"
+        ],
+        "after": " 커요. 일단 석 달만 빌려 보고 싶어요.",
+        "fallbackChoices": [
+          "부담이",
+          "습관이",
+          "추억이",
+          "색깔이"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Einerseits und andererseits",
+          "en": "On the one hand and the other"
+        },
+        "rule": {
+          "de": "한편으로는 und 다른 한편으로는 stellen zwei Gesichtspunkte derselben Entscheidung gegenüber. -기는 하지만 räumt anschließend einen Einwand ein.",
+          "en": "한편으로는 and 다른 한편으로는 set two aspects of a decision against each other. -기는 하지만 then concedes an objection."
+        },
+        "examples": [
+          {
+            "targetText": "한편으로는 사는 게 길게 보면 싸지만, 다른 한편으로는 한 번에 사십만 원은 부담이 커요. 일단 석 달만 빌려 보고 싶어요.",
+            "base": {
+              "de": "Einerseits ist Kaufen auf Dauer günstiger, andererseits sind vierhunderttausend Won auf einmal eine große Belastung. Ich möchte es erst drei Monate mieten.",
+              "en": "On the one hand, buying is cheaper in the long run; on the other, four hundred thousand won at once is a big burden. I would like to rent it for three months first."
+            },
+            "highlights": [
+              "한편으로는",
+              "다른 한편으로는"
+            ]
+          },
+          {
+            "targetText": "그 돈이 없어지기는 하지만, 제가 자전거를 꾸준히 탈지 아직 몰라서요.",
+            "base": {
+              "de": "Das Geld ist dann zwar weg, aber ich weiß noch nicht, ob ich regelmäßig Fahrrad fahren werde.",
+              "en": "I do lose that money, but I do not yet know whether I will cycle regularly."
+            },
+            "highlights": [
+              "없어지기는 하지만"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "부담이",
+          "kind": "noun",
+          "base": {
+            "de": "die Belastung",
+            "en": "the burden"
+          }
+        },
+        {
+          "targetText": "한편으로는",
+          "kind": "connector",
+          "base": {
+            "de": "einerseits",
+            "en": "on the one hand"
+          }
+        },
+        {
+          "targetText": "다른 한편으로는",
+          "kind": "connector",
+          "base": {
+            "de": "andererseits",
+            "en": "on the other hand"
+          }
+        },
+        {
+          "targetText": "석 달만",
+          "kind": "phrase",
+          "base": {
+            "de": "nur drei Monate",
+            "en": "just three months"
+          }
+        },
+        {
+          "targetText": "돌려 드려요",
+          "kind": "verb",
+          "base": {
+            "de": "erstatte ich Ihnen",
+            "en": "I refund you"
+          }
+        },
+        {
+          "targetText": "꾸준히",
+          "kind": "adverb",
+          "base": {
+            "de": "regelmäßig",
+            "en": "consistently"
+          }
+        },
+        {
+          "targetText": "탈지",
+          "kind": "verb",
+          "base": {
+            "de": "ob ich fahren werde",
+            "en": "whether I will ride"
+          }
+        },
+        {
+          "targetText": "그 조건이면",
+          "kind": "frame",
+          "base": {
+            "de": "unter dieser Bedingung",
+            "en": "on that condition"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "싸지만",
+            "한편으로는",
+            "부담이"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "돈이",
+            "없어지기는",
+            "꾸준히"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "조건이면",
+            "시작하고",
+            "살게요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "부담",
+        "familyKey": "부담",
+        "surface": "부담이",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "한편으로는 사는 게 길게 보면 싸지만, 다른 한편으로는 한 번에 사십만 원은 부담이 커요. 일단 석 달만 빌려 보고 싶어요.",
+          "base": {
+            "de": "Einerseits ist Kaufen auf Dauer günstiger, andererseits sind vierhunderttausend Won auf einmal eine große Belastung. Ich möchte es erst drei Monate mieten.",
+            "en": "On the one hand, buying is cheaper in the long run; on the other, four hundred thousand won at once is a big burden. I would like to rent it for three months first."
+          }
+        },
+        "base": {
+          "de": "Belastung",
+          "en": "burden"
+        },
+        "whyThisWord": {
+          "de": "부담 beschreibt, was eine Entscheidung für dich schwer tragbar macht. Du kannst damit finanzielle wie persönliche Grenzen in eine Abwägung einbringen.",
+          "en": "부담 names what makes a choice difficult to bear, bringing financial or personal constraints into a comparison."
+        },
+        "remainder": [
+          "이"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "jeju-vs-busan",
+      "title": {
+        "de": "Eine Reise länger genießen",
+        "en": "Make one trip count"
+      },
+      "situation": {
+        "de": "Du planst mit einer befreundeten Person den Urlaub: vier Tage Jeju oder zwei Tage Busan und danach Ruhe zu Hause.",
+        "en": "You and a friend are planning a holiday: four days in Jeju, or two in Busan followed by rest at home."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Befreundete Person",
+            "en": "Friend"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du planst mit einer befreundeten Person den Urlaub: vier Tage Jeju oder zwei Tage Busan und danach Ruhe zu Hause. Die andere Person sagt: „휴가 때 제주도 나흘 갈까요, 아니면 부산 이틀 하고 집에서 쉴까요?“",
+        "en": "You and a friend are planning a holiday: four days in Jeju, or two in Busan followed by rest at home. The other person says: “휴가 때 제주도 나흘 갈까요, 아니면 부산 이틀 하고 집에서 쉴까요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "휴가 때 제주도 나흘 갈까요, 아니면 부산 이틀 하고 집에서 쉴까요?",
+          "base": {
+            "de": "Sollen wir im Urlaub vier Tage nach Jeju oder zwei nach Busan fahren und dann zu Hause ausruhen?",
+            "en": "Shall we go to Jeju for four days, or to Busan for two and then rest at home?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제주도는 가는 데 시간이 걸리는 반면에 한 번 가면 볼 게 많아요. 부산은 가깝지만 이틀은 짧아서 저는 제주도가 더 효율적이에요.",
+          "base": {
+            "de": "Die Anreise nach Jeju dauert zwar, dafür gibt es viel zu sehen, wenn man einmal dort ist. Busan liegt näher, aber zwei Tage sind kurz; für mich nutzen wir mit Jeju die Reise besser.",
+            "en": "Getting to Jeju takes time, whereas once we are there, there is a lot to see. Busan is closer, but two days are short, so Jeju makes better use of the trip for me."
+          },
+          "move": "compare",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "근데 제주도는 비행기값이 둘이 삼십만 원이에요. 그 돈이면 부산 두 번 가요.",
+          "base": {
+            "de": "Aber die Flüge nach Jeju kosten für uns beide dreihunderttausend Won. Dafür können wir zweimal nach Busan.",
+            "en": "But flights to Jeju cost three hundred thousand won for both of us. That would pay for two trips to Busan."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "두 번 가는 것보다 한 번 길게 가는 게 덜 피곤해요. 어제 본 표는 둘이 십육만 원이었고요.",
+          "base": {
+            "de": "Eine längere Reise ist weniger anstrengend als zwei kurze. Die Tickets, die ich gestern gesehen habe, kosteten für beide hundertsechzigtausend Won.",
+            "en": "One longer trip is less tiring than going twice. The tickets I saw yesterday were a hundred and sixty thousand won for both of us."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "좋아요, 제주도로 해요. 근데 저는 나흘은 휴가를 못 내요. 사흘이면요?",
+          "base": {
+            "de": "Gut, dann Jeju. Aber ich kann keine vier Tage Urlaub nehmen. Wie wäre es mit drei?",
+            "en": "All right, Jeju it is. But I cannot take four days off. What about three?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "사흘도 괜찮아요. 대신 첫날 아침 비행기로 가서 하루를 꽉 채워요.",
+          "base": {
+            "de": "Drei Tage passen auch. Dann nehmen wir aber am ersten Tag den Morgenflug, damit wir den Tag voll nutzen.",
+            "en": "Three days works too. In that case, let us take a morning flight on the first day and make it a full day."
+          },
+          "move": "counteroffer",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "제주도는 가는 데 ",
+        "chunks": [
+          "시간이 걸리는",
+          "반면에 한",
+          "번 가면",
+          "볼 게",
+          "많아요."
+        ],
+        "distractors": [
+          "잃을 게",
+          "반면에 두"
+        ],
+        "frameSuffix": " 부산은 가깝지만 이틀은 짧아서 저는 제주도가 더 효율적이에요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "두 번 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 한 번 길게 가는 게 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 어제 본 표는 둘이 십육만 원이었고요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "가는 것보다",
+            "acceptedAnswers": [
+              "가는 것보다",
+              "가는 거보다",
+              "가는 것보다는",
+              "가느니"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "덜 피곤해요",
+            "acceptedAnswers": [
+              "덜 피곤해요"
+            ],
+            "kind": "frame",
+            "choices": [
+              "덜 피곤해요",
+              "더 피곤해요",
+              "덜 재미있어요",
+              "더 비싸요"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "사흘도 괜찮아요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 첫날 아침 비행기로 가서 하루를 꽉 채워요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "대신",
+            "acceptedAnswers": [
+              "대신",
+              "대신에",
+              "그 대신",
+              "그러면"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "제주도는 가는 데 시간이 걸리는 반면에 한 번 가면 볼 게 많아요. 부산은 가깝지만 이틀은 짧아서 저는 제주도가 더 ",
+        "answer": "효율적이에요",
+        "acceptedAnswers": [
+          "효율적이에요"
+        ],
+        "after": ".",
+        "fallbackChoices": [
+          "효율적이에요",
+          "안정적이에요",
+          "일상적이에요",
+          "비관적이에요"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Reisezeit und Nutzen vergleichen",
+          "en": "Compare travel time and value"
+        },
+        "rule": {
+          "de": "-는 반면에 verbindet gegensätzliche Seiten. -는 것보다 vergleicht anschließend zwei Handlungen, hier eine lange mit zwei kurzen Reisen.",
+          "en": "-는 반면에 links contrasting sides. -는 것보다 then compares two actions, here one longer trip with going twice."
+        },
+        "examples": [
+          {
+            "targetText": "제주도는 가는 데 시간이 걸리는 반면에 한 번 가면 볼 게 많아요. 부산은 가깝지만 이틀은 짧아서 저는 제주도가 더 효율적이에요.",
+            "base": {
+              "de": "Die Anreise nach Jeju dauert zwar, dafür gibt es viel zu sehen, wenn man einmal dort ist. Busan liegt näher, aber zwei Tage sind kurz; für mich nutzen wir mit Jeju die Reise besser.",
+              "en": "Getting to Jeju takes time, whereas once we are there, there is a lot to see. Busan is closer, but two days are short, so Jeju makes better use of the trip for me."
+            },
+            "highlights": [
+              "걸리는 반면에"
+            ]
+          },
+          {
+            "targetText": "두 번 가는 것보다 한 번 길게 가는 게 덜 피곤해요. 어제 본 표는 둘이 십육만 원이었고요.",
+            "base": {
+              "de": "Eine längere Reise ist weniger anstrengend als zwei kurze. Die Tickets, die ich gestern gesehen habe, kosteten für beide hundertsechzigtausend Won.",
+              "en": "One longer trip is less tiring than going twice. The tickets I saw yesterday were a hundred and sixty thousand won for both of us."
+            },
+            "highlights": [
+              "가는 것보다"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "효율적이에요",
+          "kind": "adjective",
+          "base": {
+            "de": "ist effizient; nutzt die Reise gut",
+            "en": "is efficient; makes good use of the trip"
+          }
+        },
+        {
+          "targetText": "걸리는 반면에",
+          "kind": "frame",
+          "base": {
+            "de": "während es Zeit kostet",
+            "en": "whereas it takes time"
+          }
+        },
+        {
+          "targetText": "가는 것보다",
+          "kind": "frame",
+          "base": {
+            "de": "als zu fahren",
+            "en": "than going"
+          }
+        },
+        {
+          "targetText": "비행기값이",
+          "kind": "noun",
+          "base": {
+            "de": "der Flugpreis",
+            "en": "the airfare"
+          }
+        },
+        {
+          "targetText": "휴가를",
+          "kind": "noun",
+          "base": {
+            "de": "Urlaub",
+            "en": "time off"
+          }
+        },
+        {
+          "targetText": "덜",
+          "kind": "adverb",
+          "base": {
+            "de": "weniger",
+            "en": "less"
+          }
+        },
+        {
+          "targetText": "대신",
+          "kind": "connector",
+          "base": {
+            "de": "dafür; stattdessen",
+            "en": "in return; instead"
+          }
+        },
+        {
+          "targetText": "첫날",
+          "kind": "noun",
+          "base": {
+            "de": "am ersten Tag",
+            "en": "on the first day"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "시간이",
+            "걸리는",
+            "많아요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "것보다",
+            "피곤해요",
+            "십육만"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "사흘도",
+            "첫날",
+            "비행기로"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "효율적",
+        "familyKey": "효율",
+        "surface": "효율적이에요",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "제주도는 가는 데 시간이 걸리는 반면에 한 번 가면 볼 게 많아요. 부산은 가깝지만 이틀은 짧아서 저는 제주도가 더 효율적이에요.",
+          "base": {
+            "de": "Die Anreise nach Jeju dauert zwar, dafür gibt es viel zu sehen, wenn man einmal dort ist. Busan liegt näher, aber zwei Tage sind kurz; für mich nutzen wir mit Jeju die Reise besser.",
+            "en": "Getting to Jeju takes time, whereas once we are there, there is a lot to see. Busan is closer, but two days are short, so Jeju makes better use of the trip for me."
+          }
+        },
+        "base": {
+          "de": "effizient",
+          "en": "efficient"
+        },
+        "whyThisWord": {
+          "de": "효율적 beurteilt das Verhältnis von Aufwand und Nutzen. Hier geht es um die Nutzung der Reisezeit, nicht um eine allgemeine Rangliste der Orte.",
+          "en": "효율적 evaluates effort against benefit. Here it concerns the use of travel time, not a general ranking of the destinations."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "hyeongeum-vs-aep",
+      "title": {
+        "de": "Neue Kundschaft erreichen",
+        "en": "Reach new customers"
+      },
+      "situation": {
+        "de": "Ein Ladeninhaber zögert bei App-Zahlungen. Die im Gespräch genannten Gebühren sind Teil eines fiktiven Angebots für diesen Laden.",
+        "en": "A shop owner is hesitant about app payments. The fees discussed belong to a fictional offer for this shop."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Ladeninhaber",
+            "en": "Shop owner"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ein Ladeninhaber zögert bei App-Zahlungen. Die im Gespräch genannten Gebühren sind Teil eines fiktiven Angebots für diesen Laden. Die andere Person sagt: „요즘 손님들이 앱 결제를 많이 물어보시는데, 수수료가 아까워서 아직 현금이랑 카드만 받아요.“",
+        "en": "A shop owner is hesitant about app payments. The fees discussed belong to a fictional offer for this shop. The other person says: “요즘 손님들이 앱 결제를 많이 물어보시는데, 수수료가 아까워서 아직 현금이랑 카드만 받아요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "요즘 손님들이 앱 결제를 많이 물어보시는데, 수수료가 아까워서 아직 현금이랑 카드만 받아요.",
+          "base": {
+            "de": "Viele Kunden fragen neuerdings nach App-Zahlungen, aber wegen der Gebühren nehme ich bisher nur Bargeld und Karten.",
+            "en": "Customers often ask about app payments lately, but I still only take cash and cards because I dislike paying the fees."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "수수료가 아깝기는 하지만, 손님이 그것 때문에 다른 가게로 가면 손해가 더 커요. 차라리 수수료를 내고 앱 결제를 받는 게 나아요.",
+          "base": {
+            "de": "Die Gebühren sind zwar ärgerlich, aber wenn Kunden deshalb woanders kaufen, ist der Verlust größer. Da ist es besser, die Gebühr zu zahlen und App-Zahlungen anzunehmen.",
+            "en": "The fees are frustrating, but losing customers to another shop costs more. It is better to pay the fee and accept app payments."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "앱이 그렇게 중요해요? 우리 손님은 대부분 동네 어르신들이에요.",
+          "base": {
+            "de": "Ist die App wirklich so wichtig? Unsere Kunden sind größtenteils ältere Leute aus der Nachbarschaft.",
+            "en": "Is the app really that important? Most of our customers are older people from the neighbourhood."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "지금 손님들께는 안 중요하죠. 그런데 근처에 회사가 생겨서 젊은 손님들이 늘고 있잖아요.",
+          "base": {
+            "de": "Für die jetzigen Kunden ist sie nicht wichtig. Aber in der Nähe hat eine Firma eröffnet, und es kommen zunehmend jüngere Kunden.",
+            "en": "It is not important for your current customers. But a company has opened nearby, and younger customers are becoming more numerous."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 둘 다 받으면 수수료가 얼마나 나갈지 계산이 안 돼요. 간단하게 말해 주세요.",
+          "base": {
+            "de": "Ich kann nicht abschätzen, wie hoch die Gebühren werden, wenn ich beides annehme. Erklären Sie es einfach.",
+            "en": "I cannot work out how much the fees will be if I accept both. Put it simply for me."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "정리하면, 제가 알아본 앱은 수수료가 매출의 삼 퍼센트예요. 한 달만 해 보고 손님이 늘면 계속하시면 돼요.",
+          "base": {
+            "de": "Zusammengefasst nimmt die App, die ich mir angesehen habe, eine Gebühr von drei Prozent des Umsatzes. Probieren Sie es einen Monat; wenn die Kundschaft zunimmt, können Sie weitermachen.",
+            "en": "In short, the app I looked into charges a fee of three percent of sales. Try it for a month, and keep going if customers increase."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "수수료가 아깝기는 하지만, 손님이 그것 때문에 다른 가게로 가면 손해가 더 ",
+        "chunks": [
+          "커요. 차라리",
+          "수수료를",
+          "내고 앱",
+          "결제를 받는",
+          "게 나아요."
+        ],
+        "distractors": [
+          "세금을",
+          "내고 현금"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "지금 손님들께는 안 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 근처에 회사가 생겨서 젊은 손님들이 늘고 있잖아요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "중요하죠",
+            "acceptedAnswers": [
+              "중요하죠",
+              "중요하지요"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "중요하다: höfliche bestätigende Endung -죠 nach 안.",
+              "en": "중요하다: polite confirming ending -죠 after 안."
+            }
+          },
+          {
+            "answer": "그런데",
+            "acceptedAnswers": [
+              "그런데",
+              "하지만",
+              "그렇지만",
+              "다만"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "정리하면, 제가 알아본 앱은 수수료가 매출의 삼 퍼센트예요. 한 달만 해 보고 손님이 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 계속하시면 돼요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "늘면",
+            "acceptedAnswers": [
+              "늘면",
+              "늘어나면",
+              "생기면",
+              "오면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "수수료가 아깝기는 하지만, 손님이 그것 때문에 다른 가게로 가면 손해가 더 커요. ",
+        "answer": "차라리",
+        "acceptedAnswers": [
+          "차라리"
+        ],
+        "after": " 수수료를 내고 앱 결제를 받는 게 나아요.",
+        "fallbackChoices": [
+          "차라리",
+          "몰래",
+          "드디어",
+          "우연히"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Das kleinere Übel empfehlen",
+          "en": "Recommend the less costly option"
+        },
+        "rule": {
+          "de": "차라리 …-는 게 나아요 empfiehlt eine Alternative trotz ihres Nachteils. 정리하면 leitet anschließend die knappe Zusammenfassung ein.",
+          "en": "차라리 …-는 게 나아요 recommends an alternative despite its drawback. 정리하면 then introduces a concise summary."
+        },
+        "examples": [
+          {
+            "targetText": "수수료가 아깝기는 하지만, 손님이 그것 때문에 다른 가게로 가면 손해가 더 커요. 차라리 수수료를 내고 앱 결제를 받는 게 나아요.",
+            "base": {
+              "de": "Die Gebühren sind zwar ärgerlich, aber wenn Kunden deshalb woanders kaufen, ist der Verlust größer. Da ist es besser, die Gebühr zu zahlen und App-Zahlungen anzunehmen.",
+              "en": "The fees are frustrating, but losing customers to another shop costs more. It is better to pay the fee and accept app payments."
+            },
+            "highlights": [
+              "아깝기는 하지만",
+              "차라리"
+            ]
+          },
+          {
+            "targetText": "정리하면, 제가 알아본 앱은 수수료가 매출의 삼 퍼센트예요. 한 달만 해 보고 손님이 늘면 계속하시면 돼요.",
+            "base": {
+              "de": "Zusammengefasst nimmt die App, die ich mir angesehen habe, eine Gebühr von drei Prozent des Umsatzes. Probieren Sie es einen Monat; wenn die Kundschaft zunimmt, können Sie weitermachen.",
+              "en": "In short, the app I looked into charges a fee of three percent of sales. Try it for a month, and keep going if customers increase."
+            },
+            "highlights": [
+              "정리하면"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "차라리",
+          "kind": "adverb",
+          "base": {
+            "de": "lieber; eher noch",
+            "en": "rather; better to"
+          }
+        },
+        {
+          "targetText": "수수료가",
+          "kind": "noun",
+          "base": {
+            "de": "die Gebühr",
+            "en": "the fee"
+          }
+        },
+        {
+          "targetText": "아깝기는 하지만",
+          "kind": "frame",
+          "base": {
+            "de": "ist zwar ärgerlich auszugeben, aber",
+            "en": "is frustrating to spend, but"
+          }
+        },
+        {
+          "targetText": "손해가",
+          "kind": "noun",
+          "base": {
+            "de": "der Verlust",
+            "en": "the loss"
+          }
+        },
+        {
+          "targetText": "그런데",
+          "kind": "connector",
+          "base": {
+            "de": "allerdings; aber",
+            "en": "however; but"
+          }
+        },
+        {
+          "targetText": "손님들께는",
+          "kind": "noun",
+          "base": {
+            "de": "für die Kunden",
+            "en": "for the customers"
+          }
+        },
+        {
+          "targetText": "매출의",
+          "kind": "noun",
+          "base": {
+            "de": "des Umsatzes",
+            "en": "of sales"
+          }
+        },
+        {
+          "targetText": "정리하면",
+          "kind": "connector",
+          "base": {
+            "de": "zusammengefasst",
+            "en": "in short"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "차라리",
+            "수수료를",
+            "결제를"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "손님들께는",
+            "회사가",
+            "늘고"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "알아본",
+            "퍼센트예요",
+            "늘면"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "차라리",
+        "familyKey": "차라리",
+        "surface": "차라리",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "수수료가 아깝기는 하지만, 손님이 그것 때문에 다른 가게로 가면 손해가 더 커요. 차라리 수수료를 내고 앱 결제를 받는 게 나아요.",
+          "base": {
+            "de": "Die Gebühren sind zwar ärgerlich, aber wenn Kunden deshalb woanders kaufen, ist der Verlust größer. Da ist es besser, die Gebühr zu zahlen und App-Zahlungen anzunehmen.",
+            "en": "The fees are frustrating, but losing customers to another shop costs more. It is better to pay the fee and accept app payments."
+          }
+        },
+        "base": {
+          "de": "lieber; eher noch",
+          "en": "rather; better to"
+        },
+        "whyThisWord": {
+          "de": "차라리 kennzeichnet die bevorzugte Alternative, obwohl sie einen Nachteil hat. Es eignet sich besonders für Empfehlungen zwischen zwei unvollkommenen Lösungen.",
+          "en": "차라리 marks the preferred alternative despite a drawback, useful when recommending one of two imperfect solutions."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "acceptedPhraseVariants": [
+        "수수료가 아깝기는 하지만, 손님이 그거 때문에 다른 가게로 가면 손해가 더 커요. 차라리 수수료를 내고 앱 결제를 받는 게 나아요."
+      ]
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "hagwon-vs-aep",
+      "title": {
+        "de": "Kurs oder App?",
+        "en": "Classes or an app?"
+      },
+      "situation": {
+        "de": "Eine befreundete Person vergleicht einen Koreanischkurs mit einer Lern-App. Beziehe Zeit und Lernfortschritt ein.",
+        "en": "A friend is comparing Korean classes with a study app. Consider both scheduling and progress."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Befreundete Person",
+            "en": "Friend"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person vergleicht einen Koreanischkurs mit einer Lern-App. Beziehe Zeit und Lernfortschritt ein. Die andere Person sagt: „한국어 학원을 다닐지 앱으로만 할지 고민이에요. 앱이 훨씬 싸거든요.“",
+        "en": "A friend is comparing Korean classes with a study app. Consider both scheduling and progress. The other person says: “한국어 학원을 다닐지 앱으로만 할지 고민이에요. 앱이 훨씬 싸거든요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "한국어 학원을 다닐지 앱으로만 할지 고민이에요. 앱이 훨씬 싸거든요.",
+          "base": {
+            "de": "Ich überlege, einen Koreanischkurs zu besuchen oder nur mit der App zu lernen. Die App ist viel günstiger.",
+            "en": "I am deciding between Korean classes and just using an app. The app is much cheaper."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "앱은 싸고 편한 반면에 저한테는 말하기 연습이 부족해요. 학원은 비싸더라도 장기적으로는 선생님이 바로 고쳐 주시니까 훨씬 빨라요.",
+          "base": {
+            "de": "Die App ist günstig und bequem, mir fehlt dabei aber die Sprechübung. Auch wenn der Kurs teuer ist, geht es langfristig viel schneller, weil die Lehrkraft sofort korrigiert.",
+            "en": "The app is cheap and convenient, whereas it does not give me enough speaking practice. Even if classes are expensive, progress is much faster in the long run because the teacher corrects me immediately."
+          },
+          "move": "compare",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그런데 학원은 시간이 정해져 있어서 야근하면 못 가요. 돈만 날리는 거 아니에요?",
+          "base": {
+            "de": "Aber der Kurs hat feste Zeiten. Bei Überstunden kann man nicht hin. Ist das Geld dann nicht verschwendet?",
+            "en": "But classes have fixed times, so you cannot go if you work late. Is that not money wasted?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그러면 주말 반을 들으면 돼요. 야근하는 평일에는 앱으로 조금씩 하고요.",
+          "base": {
+            "de": "Dann nimm einen Wochenendkurs. An den Arbeitstagen mit Überstunden kannst du jeweils ein wenig mit der App üben.",
+            "en": "Then take a weekend class. On weekdays when you work late, you can do a little with the app."
+          },
+          "move": "counteroffer",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "결국 둘 다 하라는 거예요? 한 달에 얼마나 들어요?",
+          "base": {
+            "de": "Du meinst also beides? Was kostet das im Monat?",
+            "en": "So you mean doing both? How much is that a month?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "네, 둘 다요. 학원 주말 반이 십오만 원, 앱은 만 원이니까 한 달에 십육만 원이에요.",
+          "base": {
+            "de": "Ja, beides. Der Wochenendkurs kostet hundertfünfzigtausend Won und die App zehntausend, also insgesamt hundertsechzigtausend Won im Monat.",
+            "en": "Yes, both. The weekend class is a hundred and fifty thousand won and the app is ten thousand, so it is a hundred and sixty thousand won a month."
+          },
+          "move": "summarize",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "앱은 싸고 편한 반면에 저한테는 말하기 연습이 부족해요. 학원은 ",
+        "chunks": [
+          "비싸더라도",
+          "장기적으로는 선생님이",
+          "바로 고쳐",
+          "주시니까 훨씬",
+          "빨라요."
+        ],
+        "distractors": [
+          "주셔도 훨씬",
+          "느려요."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 주말 반을 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 야근하는 평일에는 앱으로 조금씩 하고요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그러면",
+            "acceptedAnswers": [
+              "그러면",
+              "그럼",
+              "그렇다면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "들으면 돼요",
+            "acceptedAnswers": [
+              "들으면 돼요"
+            ],
+            "kind": "frame",
+            "choices": [
+              "들으면 돼요",
+              "들으면 안 돼요",
+              "듣지 마세요",
+              "들어야 했어요"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "네, 둘 다요. 학원 주말 반이 십오만 원, 앱은 만 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 한 달에 십육만 원이에요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "원이니까",
+            "acceptedAnswers": [
+              "원이니까"
+            ],
+            "kind": "frame",
+            "choices": [
+              "원이니까",
+              "원이지만",
+              "원이라도",
+              "원인데도"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "앱은 싸고 편한 반면에 저한테는 말하기 연습이 부족해요. 학원은 비싸더라도 ",
+        "answer": "장기적으로는",
+        "acceptedAnswers": [
+          "장기적으로는"
+        ],
+        "after": " 선생님이 바로 고쳐 주시니까 훨씬 빨라요.",
+        "fallbackChoices": [
+          "장기적으로는",
+          "법적으로는",
+          "지리적으로는",
+          "정치적으로는"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Auch bei einem Nachteil",
+          "en": "Even with a disadvantage"
+        },
+        "rule": {
+          "de": "-더라도 hält die Empfehlung trotz eines möglichen Nachteils aufrecht. -니까 nennt hier den Grund; 주시니까 bezieht sich respektvoll auf die Handlung der Lehrkraft.",
+          "en": "-더라도 maintains the recommendation despite a possible drawback. -니까 gives the reason; 주시니까 respectfully refers to the teacher’s action."
+        },
+        "examples": [
+          {
+            "targetText": "앱은 싸고 편한 반면에 저한테는 말하기 연습이 부족해요. 학원은 비싸더라도 장기적으로는 선생님이 바로 고쳐 주시니까 훨씬 빨라요.",
+            "base": {
+              "de": "Die App ist günstig und bequem, mir fehlt dabei aber die Sprechübung. Auch wenn der Kurs teuer ist, geht es langfristig viel schneller, weil die Lehrkraft sofort korrigiert.",
+              "en": "The app is cheap and convenient, whereas it does not give me enough speaking practice. Even if classes are expensive, progress is much faster in the long run because the teacher corrects me immediately."
+            },
+            "highlights": [
+              "비싸더라도",
+              "주시니까"
+            ]
+          },
+          {
+            "targetText": "네, 둘 다요. 학원 주말 반이 십오만 원, 앱은 만 원이니까 한 달에 십육만 원이에요.",
+            "base": {
+              "de": "Ja, beides. Der Wochenendkurs kostet hundertfünfzigtausend Won und die App zehntausend, also insgesamt hundertsechzigtausend Won im Monat.",
+              "en": "Yes, both. The weekend class is a hundred and fifty thousand won and the app is ten thousand, so it is a hundred and sixty thousand won a month."
+            },
+            "highlights": [
+              "원이니까"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "장기적으로는",
+          "kind": "adjective",
+          "base": {
+            "de": "langfristig betrachtet",
+            "en": "in the long term"
+          }
+        },
+        {
+          "targetText": "반면에",
+          "kind": "connector",
+          "base": {
+            "de": "während dagegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "비싸더라도",
+          "kind": "frame",
+          "base": {
+            "de": "auch wenn es teuer ist",
+            "en": "even if it is expensive"
+          }
+        },
+        {
+          "targetText": "말하기 연습이",
+          "kind": "noun",
+          "base": {
+            "de": "die Sprechübung",
+            "en": "speaking practice"
+          }
+        },
+        {
+          "targetText": "선생님이",
+          "kind": "noun",
+          "base": {
+            "de": "die Lehrkraft",
+            "en": "the teacher"
+          }
+        },
+        {
+          "targetText": "야근하면",
+          "kind": "verb",
+          "base": {
+            "de": "wenn man Überstunden macht",
+            "en": "if you work late"
+          }
+        },
+        {
+          "targetText": "주말 반을",
+          "kind": "noun",
+          "base": {
+            "de": "einen Wochenendkurs",
+            "en": "a weekend class"
+          }
+        },
+        {
+          "targetText": "들으면 돼요",
+          "kind": "frame",
+          "base": {
+            "de": "du kannst den Kurs besuchen",
+            "en": "you can take the class"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "비싸더라도",
+            "장기적으로는",
+            "주시니까"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "주말",
+            "평일에는",
+            "앱으로"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "십오만",
+            "원이니까",
+            "십육만"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "장기적",
+        "familyKey": "장기",
+        "surface": "장기적으로는",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "앱은 싸고 편한 반면에 저한테는 말하기 연습이 부족해요. 학원은 비싸더라도 장기적으로는 선생님이 바로 고쳐 주시니까 훨씬 빨라요.",
+          "base": {
+            "de": "Die App ist günstig und bequem, mir fehlt dabei aber die Sprechübung. Auch wenn der Kurs teuer ist, geht es langfristig viel schneller, weil die Lehrkraft sofort korrigiert.",
+            "en": "The app is cheap and convenient, whereas it does not give me enough speaking practice. Even if classes are expensive, progress is much faster in the long run because the teacher corrects me immediately."
+          }
+        },
+        "base": {
+          "de": "langfristig",
+          "en": "long-term"
+        },
+        "whyThisWord": {
+          "de": "장기적으로는 lenkt den Vergleich vom sofortigen Preis auf spätere Wirkungen. Damit kannst du kurzfristige Nachteile gegen nachhaltigen Nutzen abwägen.",
+          "en": "장기적으로는 shifts the comparison from immediate price to later effects, weighing short-term drawbacks against lasting benefits."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "du-hoesa-jeian",
+      "title": {
+        "de": "Gehalt und Lebensqualität",
+        "en": "Salary and quality of life"
+      },
+      "situation": {
+        "de": "Mit einer erfahrenen Person besprichst du zwei Stellenangebote. Begründe, welche Bedingungen für dich wichtiger sind.",
+        "en": "You discuss two job offers with a more experienced colleague. Explain which conditions matter most to you."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Erfahrener Kollege",
+            "en": "More experienced colleague"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Mit einer erfahrenen Person besprichst du zwei Stellenangebote. Begründe, welche Bedingungen für dich wichtiger sind. Die andere Person sagt: „두 회사에서 다 연락이 왔다면서요? 조건이 어떻게 달라요?“",
+        "en": "You discuss two job offers with a more experienced colleague. Explain which conditions matter most to you. The other person says: “두 회사에서 다 연락이 왔다면서요? 조건이 어떻게 달라요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "두 회사에서 다 연락이 왔다면서요? 조건이 어떻게 달라요?",
+          "base": {
+            "de": "Beide Firmen haben sich bei Ihnen gemeldet? Worin unterscheiden sich die Bedingungen?",
+            "en": "Both companies contacted you? How do their conditions differ?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "첫 번째는 연봉이 높은 편이고, 두 번째 회사는 연봉은 낮아도 가깝고 야근이 없어요. 생활까지 고려하면 두 번째 회사가 더 끌려요.",
+          "base": {
+            "de": "Das erste Angebot hat ein eher hohes Jahresgehalt; bei der zweiten Firma ist es niedriger, dafür ist sie nah und hat keine Überstunden. Wenn ich mein Leben mitbedenke, reizt mich die zweite Firma mehr.",
+            "en": "The first offer has a fairly high annual salary; the second pays less but is close and has no overtime. Taking my life outside work into account, the second company appeals to me more."
+          },
+          "move": "reason",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "근데 연봉 차이가 오 년이면 천오백만 원이에요. 그걸 정말 포기할 수 있어요?",
+          "base": {
+            "de": "Aber über fünf Jahre beträgt der Gehaltsunterschied fünfzehn Millionen Won. Können Sie wirklich darauf verzichten?",
+            "en": "But over five years, the salary difference is fifteen million won. Can you really give that up?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "큰돈이기는 하죠. 그런데 야근을 계속하면 건강이 나빠질 수도 있고, 그 돈이 병원비로 나갈 수도 있어요.",
+          "base": {
+            "de": "Das ist tatsächlich viel Geld. Aber ständige Überstunden können der Gesundheit schaden, und das Geld könnte für Arztkosten draufgehen.",
+            "en": "That is a lot of money. But constant overtime could damage my health, and the money might go on medical bills."
+          },
+          "move": "concede",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "좋아요. 그럼 면접관한테 뭐라고 할지 한 문장으로 정리해 봐요.",
+          "base": {
+            "de": "Gut. Fassen Sie in einem Satz zusammen, was Sie der Person im Bewerbungsgespräch sagen wollen.",
+            "en": "All right. Sum up in one sentence what you will tell the interviewer."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "정리하면, 저한테는 연봉보다 오래 일할 수 있는 조건이 더 중요해서 두 번째 회사를 택했어요.",
+          "base": {
+            "de": "Zusammengefasst sind mir Bedingungen, unter denen ich langfristig arbeiten kann, wichtiger als das Gehalt; deshalb habe ich die zweite Firma gewählt.",
+            "en": "In short, conditions that let me work there for a long time matter more to me than salary, so I chose the second company."
+          },
+          "move": "summarize",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "첫 번째는 연봉이 높은 편이고, 두 번째 회사는 연봉은 낮아도 가깝고 ",
+        "chunks": [
+          "야근이 없어요.",
+          "생활까지 고려하면",
+          "두 번째",
+          "회사가 더",
+          "끌려요."
+        ],
+        "distractors": [
+          "회사가 덜",
+          "망설여져요."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 그런데 야근을 계속하면 건강이 나빠질 수도 있고, 그 돈이 병원비로 나갈 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "큰돈이기는 하죠",
+            "acceptedAnswers": [
+              "큰돈이기는 하죠"
+            ],
+            "kind": "frame",
+            "choices": [
+              "큰돈이기는 하죠",
+              "큰돈은 아니죠",
+              "큰돈이 아니기는 하죠",
+              "큰돈이면 좋겠죠"
+            ]
+          },
+          {
+            "answer": "수도 있어요",
+            "acceptedAnswers": [
+              "수도 있어요",
+              "수 있어요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", 저한테는 연봉보다 오래 일할 수 있는 조건이 더 중요해서 두 번째 회사를 택했어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "정리하면",
+            "acceptedAnswers": [
+              "정리하면",
+              "결론은",
+              "요약하면",
+              "한마디로"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "첫 번째는 연봉이 높은 편이고, 두 번째 회사는 연봉은 낮아도 가깝고 야근이 없어요. 생활까지 ",
+        "answer": "고려하면",
+        "acceptedAnswers": [
+          "고려하면"
+        ],
+        "after": " 두 번째 회사가 더 끌려요.",
+        "fallbackChoices": [
+          "고려하면",
+          "무시하면",
+          "후회하면",
+          "포기하면"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Mehr als das Gehalt betrachten",
+          "en": "Consider more than salary"
+        },
+        "rule": {
+          "de": "고려하면 macht den berücksichtigten Gesichtspunkt zum Maßstab der Entscheidung. -기는 하죠 räumt den Gegenpunkt ein, ohne die eigene Abwägung aufzugeben.",
+          "en": "고려하면 makes a factor you consider the basis of a choice. -기는 하죠 acknowledges the opposing point without abandoning your reasoning."
+        },
+        "examples": [
+          {
+            "targetText": "첫 번째는 연봉이 높은 편이고, 두 번째 회사는 연봉은 낮아도 가깝고 야근이 없어요. 생활까지 고려하면 두 번째 회사가 더 끌려요.",
+            "base": {
+              "de": "Das erste Angebot hat ein eher hohes Jahresgehalt; bei der zweiten Firma ist es niedriger, dafür ist sie nah und hat keine Überstunden. Wenn ich mein Leben mitbedenke, reizt mich die zweite Firma mehr.",
+              "en": "The first offer has a fairly high annual salary; the second pays less but is close and has no overtime. Taking my life outside work into account, the second company appeals to me more."
+            },
+            "highlights": [
+              "생활까지 고려하면"
+            ]
+          },
+          {
+            "targetText": "큰돈이기는 하죠. 그런데 야근을 계속하면 건강이 나빠질 수도 있고, 그 돈이 병원비로 나갈 수도 있어요.",
+            "base": {
+              "de": "Das ist tatsächlich viel Geld. Aber ständige Überstunden können der Gesundheit schaden, und das Geld könnte für Arztkosten draufgehen.",
+              "en": "That is a lot of money. But constant overtime could damage my health, and the money might go on medical bills."
+            },
+            "highlights": [
+              "큰돈이기는 하죠"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "고려하면",
+          "kind": "verb",
+          "base": {
+            "de": "wenn man berücksichtigt",
+            "en": "taking into account"
+          }
+        },
+        {
+          "targetText": "높은 편이고",
+          "kind": "frame",
+          "base": {
+            "de": "ist eher hoch, und",
+            "en": "is on the high side, and"
+          }
+        },
+        {
+          "targetText": "연봉이",
+          "kind": "noun",
+          "base": {
+            "de": "das Jahresgehalt",
+            "en": "annual salary"
+          }
+        },
+        {
+          "targetText": "야근이",
+          "kind": "noun",
+          "base": {
+            "de": "die Überstunden",
+            "en": "overtime"
+          }
+        },
+        {
+          "targetText": "끌려요",
+          "kind": "verb",
+          "base": {
+            "de": "reizt mich",
+            "en": "appeals to me"
+          }
+        },
+        {
+          "targetText": "큰돈이기는 하죠",
+          "kind": "frame",
+          "base": {
+            "de": "es ist tatsächlich viel Geld",
+            "en": "it is indeed a lot of money"
+          }
+        },
+        {
+          "targetText": "병원비로",
+          "kind": "noun",
+          "base": {
+            "de": "für Arztkosten",
+            "en": "on medical bills"
+          }
+        },
+        {
+          "targetText": "정리하면",
+          "kind": "connector",
+          "base": {
+            "de": "zusammengefasst",
+            "en": "in short"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "고려하면",
+            "회사가",
+            "끌려요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "큰돈이기는",
+            "건강이",
+            "병원비로"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "연봉보다",
+            "조건이",
+            "택했어요"
+          ],
+          "profile": "b2-long"
+        }
+      ],
+      "trophy": {
+        "lemma": "고려하다",
+        "familyKey": "고려",
+        "surface": "고려하면",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "첫 번째는 연봉이 높은 편이고, 두 번째 회사는 연봉은 낮아도 가깝고 야근이 없어요. 생활까지 고려하면 두 번째 회사가 더 끌려요.",
+          "base": {
+            "de": "Das erste Angebot hat ein eher hohes Jahresgehalt; bei der zweiten Firma ist es niedriger, dafür ist sie nah und hat keine Überstunden. Wenn ich mein Leben mitbedenke, reizt mich die zweite Firma mehr.",
+            "en": "The first offer has a fairly high annual salary; the second pays less but is close and has no overtime. Taking my life outside work into account, the second company appeals to me more."
+          }
+        },
+        "base": {
+          "de": "berücksichtigen",
+          "en": "consider; take into account"
+        },
+        "whyThisWord": {
+          "de": "고려하면 zeigt ausdrücklich, welchen zusätzlichen Faktor du einbeziehst. Es verhindert, dass eine Empfehlung nur auf einer einzigen Zahl beruht.",
+          "en": "고려하면 explicitly introduces an additional factor you consider, so a recommendation does not rest on just one number."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "sejong-gagi-vs-namgi",
+      "title": {
+        "de": "Mit der Firma umziehen",
+        "en": "Move with the company"
+      },
+      "situation": {
+        "de": "Deine Firma zieht nach Sejong. Eine Person aus der Nachbarschaft fragt nach deinen Plänen.",
+        "en": "Your company is moving to Sejong. A neighbour asks about your plans."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Nachbar",
+            "en": "Neighbour"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Deine Firma zieht nach Sejong. Eine Person aus der Nachbarschaft fragt nach deinen Plänen. Die andere Person sagt: „회사가 세종으로 옮긴다면서요? 같이 가세요, 아니면 서울에 남으세요?“",
+        "en": "Your company is moving to Sejong. A neighbour asks about your plans. The other person says: “회사가 세종으로 옮긴다면서요? 같이 가세요, 아니면 서울에 남으세요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "회사가 세종으로 옮긴다면서요? 같이 가세요, 아니면 서울에 남으세요?",
+          "base": {
+            "de": "Ihre Firma zieht nach Sejong? Gehen Sie mit oder bleiben Sie in Seoul?",
+            "en": "Your company is moving to Sejong? Are you going with it or staying in Seoul?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제 생각에는 따라가는 게 맞아요. 지금 자리는 안정적이고 집값도 서울보다 싸요. 그렇다고 해서 서울 친구들이 안 그립다는 건 아니에요.",
+          "base": {
+            "de": "Ich denke, Mitgehen ist richtig. Meine jetzige Stelle ist sicher, und die Wohnungen sind günstiger als in Seoul. Das heißt aber nicht, dass mir meine Freunde in Seoul nicht fehlen werden.",
+            "en": "I think going with it is the right choice. My current job is stable, and housing is cheaper than in Seoul. That does not mean I will not miss my friends in Seoul."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "근데 아이 학교는요? 전학시키면 애가 힘들어할까 봐 걱정되지 않으세요?",
+          "base": {
+            "de": "Und die Schule Ihres Kindes? Sorgen Sie sich nicht, dass der Schulwechsel schwierig wird?",
+            "en": "What about your child’s school? Are you not worried that changing schools will be hard?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "저도 그게 걱정이라서 삼월 새 학기에 맞춰 가려고요. 아이한테는 이미 설명했고, 새 학교도 같이 가 봤어요.",
+          "base": {
+            "de": "Darüber mache ich mir auch Sorgen, deshalb will ich zum neuen Schuljahr im März umziehen. Ich habe es meinem Kind schon erklärt, und wir haben die neue Schule zusammen besucht.",
+            "en": "I worry about that too, so I plan to move for the new school year in March. I have already explained it to my child, and we visited the new school together."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 이 집은 파세요? 아니면 세를 놓으세요? 저희가 아는 분이 찾고 있어서요.",
+          "base": {
+            "de": "Verkaufen Sie dann dieses Haus oder vermieten Sie es? Wir kennen jemanden, der eines sucht.",
+            "en": "Will you sell this house or rent it out? We know someone who is looking."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "일단은 세를 놓으려고요. 그분이 관심 있으시면 연락처 좀 전해 주시겠어요?",
+          "base": {
+            "de": "Erst einmal will ich es vermieten. Falls die Person Interesse hat, könnten Sie meine Kontaktdaten weitergeben?",
+            "en": "I plan to rent it out for now. If they are interested, could you pass on my contact details?"
+          },
+          "move": "request",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "제 생각에는 따라가는 게 맞아요. 지금 자리는 안정적이고 집값도 서울보다 싸요. ",
+        "chunks": [
+          "그렇다고",
+          "해서 서울",
+          "친구들이 안",
+          "그립다는 건",
+          "아니에요."
+        ],
+        "distractors": [
+          "친구들이 못",
+          "싫다는 건"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "저도 그게 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 삼월 새 학기에 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 아이한테는 이미 설명했고, 새 학교도 같이 가 봤어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "걱정이라서",
+            "acceptedAnswers": [
+              "걱정이라서"
+            ],
+            "kind": "frame",
+            "choices": [
+              "걱정이라서",
+              "걱정이 아니라서",
+              "걱정이 없어서",
+              "걱정이면"
+            ]
+          },
+          {
+            "answer": "맞춰 가려고요",
+            "acceptedAnswers": [
+              "맞춰 가려고요",
+              "맞춰서 가려고요",
+              "맞춰 가려고 해요",
+              "맞춰 갈 거예요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "일단은 세를 놓으려고요. 그분이 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 연락처 좀 전해 주시겠어요?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "관심 있으시면",
+            "acceptedAnswers": [
+              "관심 있으시면",
+              "관심이 있으시면",
+              "관심 있다고 하시면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "제 생각에는 따라가는 게 맞아요. 지금 자리는 ",
+        "answer": "안정적이고",
+        "acceptedAnswers": [
+          "안정적이고"
+        ],
+        "after": " 집값도 서울보다 싸요. 그렇다고 해서 서울 친구들이 안 그립다는 건 아니에요.",
+        "fallbackChoices": [
+          "안정적이고",
+          "일시적이고",
+          "충동적이고",
+          "비현실적이고"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine Schlussfolgerung begrenzen",
+          "en": "Limit an inference"
+        },
+        "rule": {
+          "de": "그렇다고 해서 …는 아니에요 weist eine zu weit gehende Schlussfolgerung zurück. Eine Bedingung mit -(으)시면 erlaubt anschließend eine höfliche Bitte.",
+          "en": "그렇다고 해서 …는 아니에요 rejects an overextended inference. A condition with -(으)시면 can then support a polite request."
+        },
+        "examples": [
+          {
+            "targetText": "제 생각에는 따라가는 게 맞아요. 지금 자리는 안정적이고 집값도 서울보다 싸요. 그렇다고 해서 서울 친구들이 안 그립다는 건 아니에요.",
+            "base": {
+              "de": "Ich denke, Mitgehen ist richtig. Meine jetzige Stelle ist sicher, und die Wohnungen sind günstiger als in Seoul. Das heißt aber nicht, dass mir meine Freunde in Seoul nicht fehlen werden.",
+              "en": "I think going with it is the right choice. My current job is stable, and housing is cheaper than in Seoul. That does not mean I will not miss my friends in Seoul."
+            },
+            "highlights": [
+              "그렇다고 해서",
+              "건 아니에요"
+            ]
+          },
+          {
+            "targetText": "일단은 세를 놓으려고요. 그분이 관심 있으시면 연락처 좀 전해 주시겠어요?",
+            "base": {
+              "de": "Erst einmal will ich es vermieten. Falls die Person Interesse hat, könnten Sie meine Kontaktdaten weitergeben?",
+              "en": "I plan to rent it out for now. If they are interested, could you pass on my contact details?"
+            },
+            "highlights": [
+              "관심 있으시면"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "안정적이고",
+          "kind": "adjective",
+          "base": {
+            "de": "ist stabil, und",
+            "en": "is stable, and"
+          }
+        },
+        {
+          "targetText": "제 생각에는",
+          "kind": "frame",
+          "base": {
+            "de": "meiner Meinung nach",
+            "en": "in my view"
+          }
+        },
+        {
+          "targetText": "그렇다고 해서",
+          "kind": "connector",
+          "base": {
+            "de": "das heißt aber nicht",
+            "en": "that does not mean"
+          }
+        },
+        {
+          "targetText": "집값도",
+          "kind": "noun",
+          "base": {
+            "de": "auch die Immobilienpreise",
+            "en": "housing prices too"
+          }
+        },
+        {
+          "targetText": "새 학기에",
+          "kind": "noun",
+          "base": {
+            "de": "zum neuen Schuljahr",
+            "en": "for the new school year"
+          }
+        },
+        {
+          "targetText": "세를",
+          "kind": "noun",
+          "base": {
+            "de": "Miete; Vermietung",
+            "en": "rent; letting"
+          }
+        },
+        {
+          "targetText": "연락처",
+          "kind": "noun",
+          "base": {
+            "de": "Kontaktdaten",
+            "en": "contact details"
+          }
+        },
+        {
+          "targetText": "전해 주시겠어요",
+          "kind": "frame",
+          "base": {
+            "de": "könnten Sie weitergeben",
+            "en": "could you pass on"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "그렇다고",
+            "친구들이",
+            "그립다는"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "걱정이라서",
+            "삼월",
+            "학기에"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "세를",
+            "관심",
+            "주시겠어요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "안정적",
+        "familyKey": "안정",
+        "surface": "안정적이고",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "제 생각에는 따라가는 게 맞아요. 지금 자리는 안정적이고 집값도 서울보다 싸요. 그렇다고 해서 서울 친구들이 안 그립다는 건 아니에요.",
+          "base": {
+            "de": "Ich denke, Mitgehen ist richtig. Meine jetzige Stelle ist sicher, und die Wohnungen sind günstiger als in Seoul. Das heißt aber nicht, dass mir meine Freunde in Seoul nicht fehlen werden.",
+            "en": "I think going with it is the right choice. My current job is stable, and housing is cheaper than in Seoul. That does not mean I will not miss my friends in Seoul."
+          }
+        },
+        "base": {
+          "de": "stabil; verlässlich",
+          "en": "stable; reliable"
+        },
+        "whyThisWord": {
+          "de": "안정적 beschreibt Verlässlichkeit als Entscheidungsgrund. Es lässt sich von Preis und persönlichen Bindungen abgrenzen, ohne diese abzuwerten.",
+          "en": "안정적 describes stability as a reason for a choice, distinct from price and personal ties without dismissing them."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "jucha-an-gwonhada",
+      "title": {
+        "de": "Eine Parkregel empfehlen",
+        "en": "Recommend a parking rule"
+      },
+      "situation": {
+        "de": "In einer fiktiven Sitzung deiner Wohnanlage stehen zwei örtliche Parkregeln zur Wahl. Du empfiehlst eine davon; beschlossen wird sie erst in der Sitzung.",
+        "en": "At a fictional residents’ meeting, two local parking rules are being considered. Recommend one; the meeting has yet to decide."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Sitzungsleitung",
+            "en": "Meeting chair"
+          },
+          "voiceRole": "A",
+          "register": "hapsyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In einer fiktiven Sitzung deiner Wohnanlage stehen zwei örtliche Parkregeln zur Wahl. Du empfiehlst eine davon; beschlossen wird sie erst in der Sitzung. Die andere Person sagt: „주차 안은 둘입니다. 세대당 한 대 제한, 아니면 둘째 차부터 월 오만 원입니다. 의견 부탁드립니다.“",
+        "en": "At a fictional residents’ meeting, two local parking rules are being considered. Recommend one; the meeting has yet to decide. The other person says: “주차 안은 둘입니다. 세대당 한 대 제한, 아니면 둘째 차부터 월 오만 원입니다. 의견 부탁드립니다.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "주차 안은 둘입니다. 세대당 한 대 제한, 아니면 둘째 차부터 월 오만 원입니다. 의견 부탁드립니다.",
+          "base": {
+            "de": "Es gibt zwei Parkmodelle: höchstens ein Auto pro Haushalt oder fünfzigtausend Won im Monat ab dem zweiten Auto. Bitte äußern Sie sich.",
+            "en": "There are two parking proposals: one car per household, or fifty thousand won per month from the second car. Please give your views."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "두 안을 비교하면 저는 두 번째 안을 권하고 싶어요. 첫 번째 안은 간단한 반면에 차가 꼭 필요한 집에는 너무 엄격해요.",
+          "base": {
+            "de": "Wenn ich beide vergleiche, möchte ich das zweite Modell empfehlen. Das erste ist einfach, aber für Haushalte, die das Auto unbedingt brauchen, zu streng.",
+            "en": "Comparing the two proposals, I would recommend the second. The first is simple, whereas it is too strict for households that really need their cars."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그런데 오만 원이면 그냥 내고 계속 두 대 세우는 집이 많을 겁니다. 효과가 있겠습니까?",
+          "base": {
+            "de": "Bei fünfzigtausend Won werden viele Haushalte einfach zahlen und weiter zwei Autos abstellen. Wird das etwas bringen?",
+            "en": "At fifty thousand won, many households will simply pay and keep parking two cars. Will it have an effect?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그렇다고 해서 효과가 없는 건 아니에요. 요금이 있으면 거의 안 쓰는 차는 빼는 집도 생길 거예요.",
+          "base": {
+            "de": "Das heißt nicht, dass es wirkungslos ist. Mit einer Gebühr werden manche Haushalte wohl kaum genutzte Autos abziehen.",
+            "en": "That does not mean it will have no effect. With a fee, some households will probably remove cars they hardly use."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "회의 시간이 다 됐습니다. 결론만 한 문장으로 말씀해 주시겠습니까?",
+          "base": {
+            "de": "Unsere Sitzungszeit ist um. Können Sie Ihre Schlussfolgerung in einem Satz nennen?",
+            "en": "Our meeting time is up. Could you give your conclusion in one sentence?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "결론은, 둘째 차부터 요금을 받고, 육 개월 뒤에 효과를 보고 다시 정하면 좋겠어요.",
+          "base": {
+            "de": "Mein Fazit wäre, ab dem zweiten Auto eine Gebühr zu verlangen und nach sechs Monaten anhand der Wirkung neu zu entscheiden.",
+            "en": "My conclusion is to charge from the second car and decide again after reviewing the effect in six months."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "두 안을 비교하면 저는 두 번째 안을 권하고 싶어요. 첫 번째 안은 ",
+        "chunks": [
+          "간단한 반면에",
+          "차가 꼭",
+          "필요한",
+          "집에는 너무",
+          "엄격해요."
+        ],
+        "distractors": [
+          "집에는 전혀",
+          "느슨해요."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 효과가 없는 건 아니에요. 요금이 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 거의 안 쓰는 차는 빼는 집도 생길 거예요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그렇다고 해서",
+            "acceptedAnswers": [
+              "그렇다고 해서"
+            ],
+            "kind": "connector",
+            "choices": [
+              "그렇다고 해서",
+              "그러니까",
+              "그래서",
+              "그러면"
+            ]
+          },
+          {
+            "answer": "있으면",
+            "acceptedAnswers": [
+              "있으면",
+              "있다면",
+              "생기면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "결론은, 둘째 차부터 요금을 받고, 육 개월 뒤에 효과를 보고 다시 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "정하면 좋겠어요",
+            "acceptedAnswers": [
+              "정하면 좋겠어요"
+            ],
+            "kind": "frame",
+            "choices": [
+              "정하면 좋겠어요",
+              "정하면 안 돼요",
+              "정할 리가 없어요",
+              "정하지 마세요"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "두 안을 비교하면 저는 두 번째 안을 ",
+        "answer": "권하고",
+        "acceptedAnswers": [
+          "권하고"
+        ],
+        "after": " 싶어요. 첫 번째 안은 간단한 반면에 차가 꼭 필요한 집에는 너무 엄격해요.",
+        "fallbackChoices": [
+          "권하고",
+          "금지하고",
+          "취소하고",
+          "숨기고"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine Empfehlung mit Überprüfung",
+          "en": "Recommend and schedule a review"
+        },
+        "rule": {
+          "de": "-을 권하고 싶어요 formuliert eine Empfehlung. -면 좋겠어요 schlägt am Ende eine Entscheidung vor, die mit einer späteren Prüfung verbunden werden kann.",
+          "en": "-을 권하고 싶어요 expresses a recommendation. -면 좋겠어요 proposes a decision that can be tied to a later review."
+        },
+        "examples": [
+          {
+            "targetText": "두 안을 비교하면 저는 두 번째 안을 권하고 싶어요. 첫 번째 안은 간단한 반면에 차가 꼭 필요한 집에는 너무 엄격해요.",
+            "base": {
+              "de": "Wenn ich beide vergleiche, möchte ich das zweite Modell empfehlen. Das erste ist einfach, aber für Haushalte, die das Auto unbedingt brauchen, zu streng.",
+              "en": "Comparing the two proposals, I would recommend the second. The first is simple, whereas it is too strict for households that really need their cars."
+            },
+            "highlights": [
+              "권하고 싶어요"
+            ]
+          },
+          {
+            "targetText": "결론은, 둘째 차부터 요금을 받고, 육 개월 뒤에 효과를 보고 다시 정하면 좋겠어요.",
+            "base": {
+              "de": "Mein Fazit wäre, ab dem zweiten Auto eine Gebühr zu verlangen und nach sechs Monaten anhand der Wirkung neu zu entscheiden.",
+              "en": "My conclusion is to charge from the second car and decide again after reviewing the effect in six months."
+            },
+            "highlights": [
+              "정하면 좋겠어요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "권하고",
+          "kind": "verb",
+          "base": {
+            "de": "empfehlen",
+            "en": "recommend"
+          }
+        },
+        {
+          "targetText": "반면에",
+          "kind": "connector",
+          "base": {
+            "de": "während dagegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "그렇다고 해서",
+          "kind": "connector",
+          "base": {
+            "de": "das heißt aber nicht",
+            "en": "that does not mean"
+          }
+        },
+        {
+          "targetText": "세대당",
+          "kind": "noun",
+          "base": {
+            "de": "pro Haushalt",
+            "en": "per household"
+          }
+        },
+        {
+          "targetText": "제한",
+          "kind": "noun",
+          "base": {
+            "de": "Begrenzung",
+            "en": "limit"
+          }
+        },
+        {
+          "targetText": "엄격해요",
+          "kind": "adjective",
+          "base": {
+            "de": "ist streng",
+            "en": "is strict"
+          }
+        },
+        {
+          "targetText": "효과가",
+          "kind": "noun",
+          "base": {
+            "de": "die Wirkung",
+            "en": "the effect"
+          }
+        },
+        {
+          "targetText": "좋겠어요",
+          "kind": "frame",
+          "base": {
+            "de": "ich fände es gut",
+            "en": "I would like it"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "반면에",
+            "필요한",
+            "엄격해요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "효과가",
+            "요금이",
+            "생길"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "요금을",
+            "개월",
+            "정하면"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "권하다",
+        "familyKey": "권하",
+        "surface": "권하고",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "두 안을 비교하면 저는 두 번째 안을 권하고 싶어요. 첫 번째 안은 간단한 반면에 차가 꼭 필요한 집에는 너무 엄격해요.",
+          "base": {
+            "de": "Wenn ich beide vergleiche, möchte ich das zweite Modell empfehlen. Das erste ist einfach, aber für Haushalte, die das Auto unbedingt brauchen, zu streng.",
+            "en": "Comparing the two proposals, I would recommend the second. The first is simple, whereas it is too strict for households that really need their cars."
+          }
+        },
+        "base": {
+          "de": "empfehlen",
+          "en": "recommend"
+        },
+        "whyThisWord": {
+          "de": "권하다 ist ein Verb für das Empfehlen einer konkreten Option. Mit -고 싶어요 kannst du deine Empfehlung höflich als eigenen Beitrag zur Entscheidung markieren.",
+          "en": "권하다 recommends a specific option. -고 싶어요 politely marks the recommendation as your contribution to the decision."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

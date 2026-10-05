@@ -1,0 +1,1963 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/korean/p1.json": "b50d66144d8cfb89e4fa02abe1cc2cafe948390028aacaf4d6db1df20e780ac5",
+    "frontend/content-drafts/b2-2026-10/korean/p2.json": "a2a3628c339847a1c1950480b8e458e5cf86ff781c72b55cd14abe40461be531"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/korean/specification.json": "771a5732eb71f43a52b83499cf69cc902bdc37f074045170e47a9209467531db",
+    "frontend/content-drafts/b2-2026-10/native-prerequisites.json": "6685bba9897ddd1c1f72308204dd6c056108f32aea332e2ee9a1402cf4e74f2e",
+    "frontend/content-drafts/b1-native-2026-10/korean/specification.json": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd"
+  },
+  "sourceCanonicalizations": [],
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "KO-B2-PUB-06",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "scope": "publication-runtime-and-audio",
+      "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json",
+      "jsonPointers": [
+        "/acceptedInput",
+        "/unresolvedDecisions"
+      ],
+      "title": "Korean B2 rendering, answer acceptance and recorded-speech behavior remain unimplemented/unverified",
+      "evidence": "The bound authority describes future Korean B2 input handling. All 20 final lessons remain draft/pending/unreviewed with false flags and empty reviewers. This rereview did not inspect a rendered Korean B2 runtime, execute answer acceptance, listen to recordings or measure audio. Four authored first-reply variants, 24 fixed-choice sets, de/en form cues and 60 speaking exercises need faithful integration. Spacing-only tolerance remains unresolved.",
+      "impact": "Even after canonical content repairs, this report cannot authorize learner publication or promise free-input synonym completeness, spacing acceptance, correct choice/cue visibility, speech duration, provider execution or v4 release.",
+      "requestedFix": "Preserve this hold through packaging. Implement and independently verify the exact canonical/variant separation, visible cues and choices, de/en editions, all 60 speaking exercises and recording profiles, then obtain the required recording/listening/execution evidence. Clarify that explicit authored acceptedAnswers do not authorize automatic synonym or particle normalization.",
+      "blockingLocalTts": false
+    },
+    {
+      "id": "KO-B2-PUB-07",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "scope": "publication-exercise",
+      "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json",
+      "line": 3169,
+      "jsonPointers": [
+        "/lessons/8/build/chunks",
+        "/lessons/8/build/distractors"
+      ],
+      "title": "Both build distractors together produce a coherent alternative argument",
+      "evidence": "With the unchanged frame and chips 역까지 차로 / 가는 집이 / 역 주차장도, selecting the two supplied distractors 늘면 and 나빠질 거예요. yields “즉, 역까지 차로 가는 집이 늘면 역 주차장도 나빠질 거예요.” More households driving to the station worsening its parking is a coherent conditional argument in support of shared bikes. It uses the same five positions and nine-eojeol focus as the canonical decrease/improvement formulation.",
+      "impact": "An exact build checker can reject a grammatical, contextually defensible argument. The correct canonical spoken reply is unaffected. The visible opener does not force the positive formulation; hidden base glosses and intended carrier metadata cannot do so.",
+      "requestedFix": "Before learner publication, redesign at least one distractor or the visible task so the combined alternative is decidable. Review combinations as well as single substitutions. Preserve the coherent canonical recording line.",
+      "blockingLocalTts": false
+    },
+    {
+      "id": "KO-B2-PUB-08",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "scope": "publication-exercise",
+      "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json",
+      "line": 2411,
+      "jsonPointers": [
+        "/lessons/6/build/distractors/0"
+      ],
+      "title": "The savings build tests an unstated quantity of discarded groceries",
+      "evidence": "Substituting supplied 봤고 전부 for 봤고 반은 yields “원래 요리를 안 하던 사람이라 장을 많이 봤고 전부 버렸어요. 결과적으로 외식보다 더 썼어요.” This is a grammatical explanation of the failed savings plan. The opener asks whether the plan succeeded; neither it nor the fixed frame establishes that precisely half rather than all the groceries were discarded.",
+      "impact": "A learner can give a plausible explanation and be marked wrong for a detail not fixed by the visible task. Canonical spoken content remains sound.",
+      "requestedFix": "Before publication, replace the quantity-only distractor or introduce an appropriate visible fact/cue. A hidden translation is not that cue. This is a newly documented exercise hold, not a request for another broad canonical review.",
+      "blockingLocalTts": false
+    }
+  ],
+  "scope": "Exact canonical spoken content for local TTS only; all publication findings retained. No native-human, listening or production approval.",
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "/root/german_b2_p2_author",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "9ace04ba6d96fabb88381c20b59a89704368bcfd096c7b19d37ac8795ca6122d",
+  "rawReview": {
+    "kind": "korean-b2-content-independent-rereview",
+    "reviewRound": "single-post-fix-full-content-rereview",
+    "date": "2026-10-06",
+    "reviewer": {
+      "id": "/root/german_b2_p2_author",
+      "type": "independent-agent",
+      "authorOfReviewedB2Content": false,
+      "authorOfReviewedB2Specification": false,
+      "authorOfReviewedB2Gate": false,
+      "nativeHuman": false,
+      "priorRelatedWork": "Authored an earlier Korean B1 batch; did not author these Korean B2 lessons, specifications, gate or tests. B1 is used here only as frozen prerequisite evidence."
+    },
+    "verdict": "REWORK",
+    "localTtsContentVerdict": "PASS",
+    "publicationVerdict": "REWORK",
+    "unresolvedLocalTtsBlockers": [],
+    "remainingPublicationFindings": [
+      {
+        "id": "KO-B2-PUB-06",
+        "severity": "HIGH",
+        "status": "OPEN",
+        "scope": "publication-runtime-and-audio",
+        "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json",
+        "jsonPointers": [
+          "/acceptedInput",
+          "/unresolvedDecisions"
+        ],
+        "title": "Korean B2 rendering, answer acceptance and recorded-speech behavior remain unimplemented/unverified",
+        "evidence": "The bound authority describes future Korean B2 input handling. All 20 final lessons remain draft/pending/unreviewed with false flags and empty reviewers. This rereview did not inspect a rendered Korean B2 runtime, execute answer acceptance, listen to recordings or measure audio. Four authored first-reply variants, 24 fixed-choice sets, de/en form cues and 60 speaking exercises need faithful integration. Spacing-only tolerance remains unresolved.",
+        "impact": "Even after canonical content repairs, this report cannot authorize learner publication or promise free-input synonym completeness, spacing acceptance, correct choice/cue visibility, speech duration, provider execution or v4 release.",
+        "requestedFix": "Preserve this hold through packaging. Implement and independently verify the exact canonical/variant separation, visible cues and choices, de/en editions, all 60 speaking exercises and recording profiles, then obtain the required recording/listening/execution evidence. Clarify that explicit authored acceptedAnswers do not authorize automatic synonym or particle normalization.",
+        "blockingLocalTts": false
+      },
+      {
+        "id": "KO-B2-PUB-07",
+        "severity": "HIGH",
+        "status": "OPEN",
+        "scope": "publication-exercise",
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json",
+        "line": 3169,
+        "jsonPointers": [
+          "/lessons/8/build/chunks",
+          "/lessons/8/build/distractors"
+        ],
+        "title": "Both build distractors together produce a coherent alternative argument",
+        "evidence": "With the unchanged frame and chips 역까지 차로 / 가는 집이 / 역 주차장도, selecting the two supplied distractors 늘면 and 나빠질 거예요. yields “즉, 역까지 차로 가는 집이 늘면 역 주차장도 나빠질 거예요.” More households driving to the station worsening its parking is a coherent conditional argument in support of shared bikes. It uses the same five positions and nine-eojeol focus as the canonical decrease/improvement formulation.",
+        "impact": "An exact build checker can reject a grammatical, contextually defensible argument. The correct canonical spoken reply is unaffected. The visible opener does not force the positive formulation; hidden base glosses and intended carrier metadata cannot do so.",
+        "requestedFix": "Before learner publication, redesign at least one distractor or the visible task so the combined alternative is decidable. Review combinations as well as single substitutions. Preserve the coherent canonical recording line.",
+        "blockingLocalTts": false
+      },
+      {
+        "id": "KO-B2-PUB-08",
+        "severity": "HIGH",
+        "status": "OPEN",
+        "scope": "publication-exercise",
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json",
+        "line": 2411,
+        "jsonPointers": [
+          "/lessons/6/build/distractors/0"
+        ],
+        "title": "The savings build tests an unstated quantity of discarded groceries",
+        "evidence": "Substituting supplied 봤고 전부 for 봤고 반은 yields “원래 요리를 안 하던 사람이라 장을 많이 봤고 전부 버렸어요. 결과적으로 외식보다 더 썼어요.” This is a grammatical explanation of the failed savings plan. The opener asks whether the plan succeeded; neither it nor the fixed frame establishes that precisely half rather than all the groceries were discarded.",
+        "impact": "A learner can give a plausible explanation and be marked wrong for a detail not fixed by the visible task. Canonical spoken content remains sound.",
+        "requestedFix": "Before publication, replace the quantity-only distractor or introduce an appropriate visible fact/cue. A hidden translation is not that cue. This is a newly documented exercise hold, not a request for another broad canonical review.",
+        "blockingLocalTts": false
+      }
+    ],
+    "reviewedSources": {
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json": "b50d66144d8cfb89e4fa02abe1cc2cafe948390028aacaf4d6db1df20e780ac5",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json": "a2a3628c339847a1c1950480b8e458e5cf86ff781c72b55cd14abe40461be531"
+    },
+    "sourceHashes": {
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json": "b50d66144d8cfb89e4fa02abe1cc2cafe948390028aacaf4d6db1df20e780ac5",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json": "a2a3628c339847a1c1950480b8e458e5cf86ff781c72b55cd14abe40461be531",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts": "286cc75ff8eef27c89118533a4bfba0dd5098453074b6664f6c95540b05cc0cb",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/test-guided-korean-b2-drafts.ts": "78b08b9045733e2c0ef92633c7f1db4eabc3061897fa2b0637942e34d4b1e396",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_CONTENT_GATE_REPAIR_FABLE_STREAM.jsonl": "4fb4b1721d9a6481be0073286dea5b8c9e5a72f1b7cba0a693920cc96da27ea0",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_CONTENT_GATE_REPAIR_FABLE_RECOVERED.json": "f50ea83e06c78160ad6e02166c229c0218ee382886321d163694212348e71d3b",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_CONTENT_GATE_REPAIR_FABLE_SOURCE_HASHES.json": "619978f70a596677dea76c142f0031b0f1c7d04433865dbbdd2bcb88bfa49cdb",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_CONTENT_GATE_REPAIR_APPLIED_HASHES.json": "5f0d59b029fadaa20750f93b9d41328c14f97e0f77b26452e56779f7e60693cf",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json": "771a5732eb71f43a52b83499cf69cc902bdc37f074045170e47a9209467531db",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_P1_P2_INDEPENDENT_REVIEW.json": "36e6a2321a9db10684f3c9246c425a576aacfeab44575a64fae58084d1d5f414",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_GATE_INDEPENDENT_REVIEW.json": "850ef55f9f3c8581f0dd6c7756f28b1024cbc3c414edc1b9b37d08ae8eab769a",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_NATIVE_PREREQUISITES.json": "6685bba9897ddd1c1f72308204dd6c056108f32aea332e2ee9a1402cf4e74f2e",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B1_NATIVE_KOREAN_SPEC.json": "5e2ebf52d4fee320839b49c8426d29c81db7af5bbb1d5d3b59f4d1aa962c8bf3",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_GATE_PROPOSAL_FABLE_RECOVERED.json": "66b4c3601ee9db4efc500f44f1a47b5ff7ad757445671d567414a0c58e71aeec",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_GATE_TESTS_FABLE_RECOVERED.json": "ab30a5045019a65808071134dfd32e61211aa8a8c856f11c1468088971c31685",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/korean-b2-p1.json": "c4cb08dd8073f82bfad91c9e1441ebc7441352047bda67c34291e0759c4bac0e",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json": "2fb5e2ffbf81dd18743021d8bcb990ca61ffc6e69e5d3cc0300f4ff979cfc1fb",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/recording-ready-content/korean-b2-p1.json": "b50d66144d8cfb89e4fa02abe1cc2cafe948390028aacaf4d6db1df20e780ac5",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/korean-b2-p2.json": "bcffbb7bf001b71881ff0c92a566245d5096428241fb59119ae38c48f2e3d4e1",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json": "2eaaa39b8b6ddc0a3e9e577f614d52df15ef10b1036a9c440b60b72f1090ff9c",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/recording-ready-content/korean-b2-p2.json": "a2a3628c339847a1c1950480b8e458e5cf86ff781c72b55cd14abe40461be531"
+    },
+    "scope": {
+      "paths": [
+        1,
+        2
+      ],
+      "targetLanguage": "Korean",
+      "targetLanguageCode": "ko-KR",
+      "baseLocales": [
+        "de",
+        "en"
+      ],
+      "appReadOnly": true,
+      "onlyWrites": "The requested scratch content/gate rereview reports and separately authorized narrow numeric-guard check report.",
+      "providerCalls": 0,
+      "databaseWrites": 0,
+      "sourceEdits": 0,
+      "gitWrites": 0,
+      "notExecutionApproval": true,
+      "canonicalApprovalBoundary": "PASS is canonical source-content readiness for a separately authorized local recording step. It is not engineering, provider/rate/plan, audio, runtime or publication approval."
+    },
+    "coverage": {
+      "lessons": 20,
+      "turns": 120,
+      "terms": 160,
+      "patterns": 40,
+      "speaks": 60,
+      "speechTokens": 181,
+      "recalls": 20,
+      "clozeBlanks": 40,
+      "synthesisBlanks": 20,
+      "choiceSets": 24,
+      "phraseVariants": 4,
+      "fullSavedObjectRead": true,
+      "fieldsRead": [
+        "root identity, pathTitle, pathFunction, specRef, authoring and draft status",
+        "all lesson metadata, title, situation, sceneCaption, interlocutor roles/register and speakerGender",
+        "all 120 target dialogue turns and both base renderings",
+        "all build frames, chunks and distractors in visible context",
+        "all cloze/synthesis segments, answers, acceptedAnswers, choices, kinds, cues and move indices",
+        "all recall edges, canonical answers, acceptedAnswers and fallback choices",
+        "all pattern labels/rules, examples, both bases and highlights",
+        "all 160 terms including kinds, lemmas, bases and optional accepted answers",
+        "all 60 speak entries, required whole-eojeol tokens and profiles",
+        "all trophies, explicit surfaces/remainders/modes, examples, bases and whyThisWord",
+        "all review fields, carrier tags and accepted first-reply variants"
+      ],
+      "choiceAndChipMethod": "Every final saved field reread, including all choices/accepted lists in full Korean context and chunk grouping/order. Bounded manual review, not exhaustive linguistic proof. Combined distractors and quantity-only alternatives retained as full findings. Hidden bases/carrier metadata never counted as visible exact-answer cues.",
+      "prerequisiteRead": "Read full B1 policy/staging sections and all 100 ordered award rows, independently imported the actual 200 A1/A2 rows and compared the exact 300-word union. This is not a fresh full-content review of all earlier lessons."
+    },
+    "lineage": {
+      "initialVerifiedLineage": {
+        "verdict": "PASS",
+        "originalRawParsesToPreRepair": true,
+        "repairRawEqualsSavedRepair": true,
+        "repairPatchCount": 61,
+        "repairEveryOldValueAsserted": true,
+        "repairReplayEqualsSavedSpec": true,
+        "preflightPatchCount": 13,
+        "preflightEveryOldValueAsserted": true,
+        "preflightReplayEqualsV2": true,
+        "appendedExtensionAtExistingArrayLengthExplicitlyHandled": true,
+        "allTwentyLedgerRowsUnchangedAcrossSpecRevisions": true,
+        "contentPatchCount": 72,
+        "contentEveryOldValueAsserted": true,
+        "absentNullChoiceKeysHandledAsExplicitAdditions": true,
+        "contentReplayEqualsReviewedBothPaths": true,
+        "reviewedAppCopiesByteIdentical": true,
+        "streamRecovery": [
+          {
+            "name": "B2_KOREAN_P1_P2_FABLE_REVIEW",
+            "events": 307,
+            "assistantTextChars": 21967,
+            "recoveredJsonEqual": true
+          },
+          {
+            "name": "B2_KOREAN_GATE_PROPOSAL_FABLE",
+            "events": 109,
+            "assistantTextChars": 41057,
+            "recoveredJsonEqual": true
+          },
+          {
+            "name": "B2_KOREAN_GATE_TESTS_FABLE",
+            "events": 70,
+            "assistantTextChars": 21033,
+            "recoveredJsonEqual": true
+          }
+        ],
+        "genuineFableReviewIsEvidenceNotIndependentApproval": true
+      },
+      "initialArtifactsUnchanged": true,
+      "finalRawSuccess": true,
+      "finalRawResultEqualsRecovered": true,
+      "finalContentPatchCount": 33,
+      "finalEveryOldValueAsserted": true,
+      "finalContentReplayEqualsFinalAppObjects": true,
+      "finalRecordingReadyCopiesByteIdentical": true,
+      "finalSpecPatchCount": 0,
+      "finalCodePatchCount": 20,
+      "finalCodeEveryOldValueUniqueAndAsserted": true,
+      "finalCodeReplayEqualsReviewedAppBytes": true
+    },
+    "prerequisites": {
+      "frozenLessonCount": 200,
+      "a1Count": 100,
+      "a2Count": 100,
+      "actualFrozenJsonSha256": "9b41c66f4133f86831d05a08e7a92468af798fe25f80dc09371ed58f23724848",
+      "b1ReservedCount": 100,
+      "earlierDistinct": 300,
+      "actualUnionEqualsPrerequisiteForbiddenList": true,
+      "b1OriginalCrlfSha256": "5e2ebf52d4fee320839b49c8426d29c81db7af5bbb1d5d3b59f4d1aa962c8bf3",
+      "b1AppLfSha256": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd",
+      "lfCrlfRestorationVerifiedByExecutedTest": true,
+      "allTwentyAllocations": [
+        {
+          "pathNumber": 1,
+          "lessonNumber": 1,
+          "lemma": "장단점",
+          "familyKey": "장단점",
+          "pos": "noun"
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 2,
+          "lemma": "반면",
+          "familyKey": "반면",
+          "pos": "connector"
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 3,
+          "lemma": "비하다",
+          "familyKey": "비하",
+          "pos": "verb"
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 4,
+          "lemma": "부담",
+          "familyKey": "부담",
+          "pos": "noun"
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 5,
+          "lemma": "효율적",
+          "familyKey": "효율",
+          "pos": "adjective"
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 6,
+          "lemma": "차라리",
+          "familyKey": "차라리",
+          "pos": "adverb"
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 7,
+          "lemma": "장기적",
+          "familyKey": "장기",
+          "pos": "adjective"
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 8,
+          "lemma": "고려하다",
+          "familyKey": "고려",
+          "pos": "verb"
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 9,
+          "lemma": "안정적",
+          "familyKey": "안정",
+          "pos": "adjective"
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 10,
+          "lemma": "권하다",
+          "familyKey": "권하",
+          "pos": "verb"
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 1,
+          "lemma": "원인",
+          "familyKey": "원인",
+          "pos": "noun"
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 2,
+          "lemma": "절차",
+          "familyKey": "절차",
+          "pos": "noun"
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 3,
+          "lemma": "단계",
+          "familyKey": "단계",
+          "pos": "noun"
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 4,
+          "lemma": "영향",
+          "familyKey": "영향",
+          "pos": "noun"
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 5,
+          "lemma": "기준",
+          "familyKey": "기준",
+          "pos": "noun"
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 6,
+          "lemma": "원래",
+          "familyKey": "원래",
+          "pos": "adverb"
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 7,
+          "lemma": "줄이다",
+          "familyKey": "줄이",
+          "pos": "verb"
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 8,
+          "lemma": "결과",
+          "familyKey": "결과",
+          "pos": "noun"
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 9,
+          "lemma": "즉",
+          "familyKey": "즉",
+          "pos": "connector"
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 10,
+          "lemma": "처리",
+          "familyKey": "처리",
+          "pos": "noun"
+        }
+      ],
+      "allTwentyLemmaFamilySurfaceAllocationsChecked": true,
+      "noEarlierAwardCollisions": true,
+      "allEarlierTrophies": [
+        "영어",
+        "단어",
+        "지하철역",
+        "아메리카노",
+        "삼각김밥",
+        "출구",
+        "물",
+        "카페",
+        "시계",
+        "집",
+        "돕다",
+        "적다",
+        "지도",
+        "어느",
+        "다른",
+        "카드",
+        "봉투",
+        "예약",
+        "맞다",
+        "잠깐",
+        "오른쪽",
+        "멀다",
+        "영업",
+        "버스",
+        "정거장",
+        "티머니",
+        "닫다",
+        "횡단보도",
+        "택시",
+        "내리다",
+        "자리",
+        "메뉴판",
+        "라떼",
+        "달다",
+        "맵다",
+        "이것",
+        "포장",
+        "먹다",
+        "날씨",
+        "계산서",
+        "늦다",
+        "기억",
+        "성함",
+        "만나다",
+        "나라",
+        "근처",
+        "저녁",
+        "거기",
+        "오후",
+        "보다",
+        "몸",
+        "약국",
+        "감기약",
+        "여기",
+        "머리",
+        "컵",
+        "의사",
+        "알레르기",
+        "사람",
+        "괜찮다",
+        "표",
+        "역",
+        "출발",
+        "승강장",
+        "필요하다",
+        "가다",
+        "기사님",
+        "부산",
+        "걸리다",
+        "도착",
+        "방",
+        "밤",
+        "층",
+        "열쇠",
+        "비밀번호",
+        "화장실",
+        "수건",
+        "자다",
+        "식사",
+        "체크아웃",
+        "다시",
+        "오늘",
+        "이따가",
+        "좋다",
+        "우리",
+        "밖",
+        "조금",
+        "계획",
+        "내일",
+        "푹",
+        "날",
+        "곳",
+        "감사",
+        "배우다",
+        "피곤",
+        "돌아가다",
+        "곧",
+        "아침",
+        "여러분",
+        "먼저",
+        "오늘도",
+        "얼마예요",
+        "유심",
+        "걸어서",
+        "맛있어요",
+        "이름",
+        "전부",
+        "끝에",
+        "레몬도",
+        "동네",
+        "싸서",
+        "더워서",
+        "파란색",
+        "가벼워서",
+        "따뜻해서",
+        "빨라서",
+        "조용한",
+        "신발",
+        "물병",
+        "가깝고",
+        "벌써",
+        "어제",
+        "주문했어요",
+        "과일",
+        "시장에서",
+        "잤어요",
+        "비빔밥",
+        "경복궁",
+        "박물관",
+        "많이",
+        "오후에",
+        "미술관",
+        "같이",
+        "여덟",
+        "토요일",
+        "일",
+        "함께",
+        "늦을",
+        "그럼",
+        "주말",
+        "차",
+        "교환",
+        "탄산수",
+        "말고",
+        "너무",
+        "하나만",
+        "계산",
+        "더",
+        "시내",
+        "어려워요",
+        "세탁",
+        "화면",
+        "충전",
+        "목요일",
+        "복사",
+        "소포",
+        "자전거",
+        "가게",
+        "수리",
+        "금요일",
+        "추천",
+        "정말",
+        "산책",
+        "강",
+        "인기",
+        "선물",
+        "음식점",
+        "광장",
+        "어울려요",
+        "최고예요",
+        "기뻐요",
+        "여름",
+        "늦게",
+        "바빠요",
+        "우산",
+        "아쉬워요",
+        "요즘",
+        "소식",
+        "추워요",
+        "하루",
+        "샤워기",
+        "삼십",
+        "와이파이",
+        "지갑",
+        "아직",
+        "모자라요",
+        "바꿔",
+        "차가워요",
+        "옆방",
+        "이제",
+        "독일",
+        "사무실",
+        "음악",
+        "지",
+        "가족",
+        "요리",
+        "공부",
+        "천천히",
+        "내년",
+        "또",
+        "갑자기",
+        "그동안",
+        "처음",
+        "마지막",
+        "결국",
+        "다행히",
+        "혼자",
+        "금방",
+        "오래",
+        "계속",
+        "아마",
+        "사실",
+        "솔직히",
+        "별로",
+        "훨씬",
+        "물론",
+        "오히려",
+        "그래도",
+        "역시",
+        "특히",
+        "혹시",
+        "만약",
+        "가능",
+        "대신",
+        "미리",
+        "잠시",
+        "연장",
+        "할인",
+        "환불",
+        "연락",
+        "안경",
+        "가방",
+        "창문",
+        "위치",
+        "교통",
+        "분위기",
+        "입구",
+        "건물",
+        "모양",
+        "색깔",
+        "방법",
+        "이유",
+        "일정",
+        "마감",
+        "신청",
+        "서류",
+        "요금",
+        "기간",
+        "조건",
+        "순서",
+        "재료",
+        "준비",
+        "설치",
+        "조립",
+        "정리",
+        "설정",
+        "확인",
+        "저장",
+        "완성",
+        "마무리",
+        "목표",
+        "건강",
+        "자격증",
+        "면접",
+        "저축",
+        "휴가",
+        "이사",
+        "등록",
+        "열심히",
+        "일찍",
+        "예전",
+        "옛날",
+        "고향",
+        "추억",
+        "가끔",
+        "자주",
+        "거의",
+        "최근",
+        "습관",
+        "방학",
+        "소음",
+        "고장",
+        "공사",
+        "냄새",
+        "불편",
+        "실수",
+        "해결",
+        "점검",
+        "교체",
+        "조치",
+        "올해",
+        "작년",
+        "가을",
+        "겨울",
+        "경험",
+        "변화",
+        "도전",
+        "보람",
+        "다음",
+        "새해"
+      ]
+    },
+    "checksActuallyRun": [
+      {
+        "check": "Exact stream/recovered parity and old/new replay",
+        "result": "PASS",
+        "contentEdits": 33,
+        "specEdits": 0,
+        "codeAndTestEdits": 20
+      },
+      {
+        "check": "Final saved-source reconstruction",
+        "result": "PASS",
+        "equalities": 80
+      },
+      {
+        "check": "Final turn and focus bounds",
+        "result": "PASS",
+        "turns": 120,
+        "lessons": 20,
+        "changedCounts": {
+          "P1L6You3": 16,
+          "P2L9You1": 20,
+          "P2L9Focus": 9
+        }
+      },
+      {
+        "check": "Actual frozen A1/A2 + bound B1 reconstruction in independently executed suite/probe",
+        "result": "PASS",
+        "frozen": 200,
+        "reserved": 100,
+        "distinct": 300
+      },
+      {
+        "check": "Full final source gate at hash 286cc75f",
+        "result": "PASS",
+        "paths": [
+          1,
+          2
+        ],
+        "lessons": 20,
+        "warnings": []
+      },
+      {
+        "check": "Native tests at hash 78b08b90",
+        "result": "PASS",
+        "tests": 70,
+        "passed": 70,
+        "failed": 0
+      },
+      {
+        "check": "Scoped strict TypeScript and ESLint",
+        "result": "PASS"
+      },
+      {
+        "check": "Extra malformed variant probes against gate 286cc75f",
+        "result": "REWORK",
+        "detail": "Accepted 0월세가 and 100000000월세가; actual four authored variants remain sound. Separate gate report and narrow guard follow-up own this finding."
+      }
+    ],
+    "readThrough": [
+      {
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json",
+        "sha256": "b50d66144d8cfb89e4fa02abe1cc2cafe948390028aacaf4d6db1df20e780ac5",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "fieldsRead": [
+          "root identity, pathTitle, pathFunction, specRef, authoring and draft status",
+          "all lesson metadata, title, situation, sceneCaption, interlocutor roles/register and speakerGender",
+          "all 120 target dialogue turns and both base renderings",
+          "all build frames, chunks and distractors in visible context",
+          "all cloze/synthesis segments, answers, acceptedAnswers, choices, kinds, cues and move indices",
+          "all recall edges, canonical answers, acceptedAnswers and fallback choices",
+          "all pattern labels/rules, examples, both bases and highlights",
+          "all 160 terms including kinds, lemmas, bases and optional accepted answers",
+          "all 60 speak entries, required whole-eojeol tokens and profiles",
+          "all trophies, explicit surfaces/remainders/modes, examples, bases and whyThisWord",
+          "all review fields, carrier tags and accepted first-reply variants"
+        ]
+      },
+      {
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json",
+        "sha256": "a2a3628c339847a1c1950480b8e458e5cf86ff781c72b55cd14abe40461be531",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "fieldsRead": [
+          "root identity, pathTitle, pathFunction, specRef, authoring and draft status",
+          "all lesson metadata, title, situation, sceneCaption, interlocutor roles/register and speakerGender",
+          "all 120 target dialogue turns and both base renderings",
+          "all build frames, chunks and distractors in visible context",
+          "all cloze/synthesis segments, answers, acceptedAnswers, choices, kinds, cues and move indices",
+          "all recall edges, canonical answers, acceptedAnswers and fallback choices",
+          "all pattern labels/rules, examples, both bases and highlights",
+          "all 160 terms including kinds, lemmas, bases and optional accepted answers",
+          "all 60 speak entries, required whole-eojeol tokens and profiles",
+          "all trophies, explicit surfaces/remainders/modes, examples, bases and whyThisWord",
+          "all review fields, carrier tags and accepted first-reply variants"
+        ]
+      }
+    ],
+    "consideredIssues": [
+      {
+        "id": "KO-B2-NOTE-01",
+        "lesson": "P1L4",
+        "decision": "No separate canonical blocker",
+        "detail": "The reply compares two sides to give a reason for a trial rental. reason is defensible for the overall rhetorical act; comparison is the surface frame. Preserve Fable’s marginal classification note for explicit arbitration rather than pretending the schema proves rhetoric.",
+        "finalArbitration": "Final genuine Fable arbitration read; no additional canonical blocker. Model-based judgment, not human/native certification."
+      },
+      {
+        "id": "KO-B2-NOTE-02",
+        "lesson": "P1L5",
+        "decision": "Marginal collocation, not independently proven ungrammatical",
+        "detail": "저는 제주도가 더 효율적이에요 uses the destination as a metonym for the travel option. It is understandable in the stated itinerary comparison, though 제주도 여행/일정 would be more explicit. Fable may improve this while preserving allocation and lengths; this report does not invent a hard ban on the metonym.",
+        "finalArbitration": "Final genuine Fable arbitration read; no additional canonical blocker. Model-based judgment, not human/native certification."
+      },
+      {
+        "id": "KO-B2-NOTE-03",
+        "lesson": "P1L8",
+        "decision": "Count correction only",
+        "detail": "Final focus 야근이 없어요. 생활까지 고려하면 두 번째 회사가 더 끌려요. is 9 eojeol, not Fable’s reported 8, and remains within 5–9.",
+        "finalArbitration": "Final genuine Fable arbitration read; no additional canonical blocker. Model-based judgment, not human/native certification."
+      },
+      {
+        "id": "KO-B2-NOTE-04",
+        "lesson": "P2L7/P2L8",
+        "decision": "No later-complication leak established",
+        "detail": "Titles mention the initial topic/outcome/procedure; the later shopping objection, half-written draft and full calendar remain delayed. No separate spoiler defect is asserted solely from these titles.",
+        "finalArbitration": "Final genuine Fable arbitration read; no additional canonical blocker. Model-based judgment, not human/native certification."
+      }
+    ],
+    "reviewFlagsPreserved": true,
+    "limitations": [
+      "Independent model-based review, not native-human certification or listening.",
+      "PASS covers canonical spoken linguistic/contextual readiness. New bounded variant gate defect remains separately reported; the later narrow repair does not alter this content verdict.",
+      "No rendered lesson, runtime comparison, provider configuration/rate, execution plan, audio file or duration reviewed. No paid action authorized by this report.",
+      "Publication remains REWORK until all remaining full finding objects are resolved. Synonym completeness and all theoretical chip permutations are not mechanically certified."
+    ],
+    "originalReport": {
+      "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_P1_P2_INDEPENDENT_REVIEW.json",
+      "sha256": "36e6a2321a9db10684f3c9246c425a576aacfeab44575a64fae58084d1d5f414",
+      "preserved": true
+    },
+    "priorFindingResolutions": [
+      {
+        "id": "KO-B2-CONTENT-01",
+        "severity": "HIGH",
+        "status": "RESOLVED",
+        "scope": "canonical-local-tts",
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json",
+        "line": 2009,
+        "jsonPointers": [
+          "/lessons/5/dialogue/5/targetText",
+          "/lessons/5/pattern/examples/1/targetText",
+          "/lessons/5/synthesis/segments/0/text"
+        ],
+        "title": "The reverted fee statement loses the Korean scene-specific attribution required by the authority",
+        "evidence": "Final P1L6 says “정리하면, 수수료는 매출의 삼 퍼센트 정도예요.” Only the de/en situation identifies a fictional offer. V2 semanticReviewRules[6] requires fictional fees/policies to be locally attributed in the Korean line. Fable edit 20 deliberately removed 제안대로면 because no proposal had been introduced in Korean; the old phrase should therefore not simply be restored.",
+        "impact": "The spoken line now sounds like an unqualified statement of the app fee, and the final source conflicts with the explicit authority. A canonical spoken repair or an explicit authority arbitration is required before freezing these recording inputs.",
+        "requestedFix": "Fable should supply a natural in-range Korean attribution with a genuine referent, adjusting the earlier Korean scene if needed, and update all coupled fields; alternatively adjudicate this precise authority conflict explicitly. Retain the trial condition and avoid an earnings guarantee.",
+        "blockingLocalTts": true,
+        "resolution": "RESOLVED: 제가 알아본 앱은 supplies an actual Korean referent for the three-percent fee. Sixteen eojeol; one-month trial and increase condition retained. Both bases, example, synthesis and speech tokens coupled."
+      },
+      {
+        "id": "KO-B2-CONTENT-02",
+        "severity": "MEDIUM",
+        "status": "RESOLVED",
+        "scope": "canonical-local-tts",
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json",
+        "line": 3113,
+        "jsonPointers": [
+          "/lessons/8/dialogue/1/targetText",
+          "/lessons/8/pattern/examples",
+          "/lessons/8/trophy/example",
+          "/lessons/8/acceptedPhraseVariants"
+        ],
+        "title": "The shared-bike argument needs a stated link between leaving cars unused and better parking",
+        "evidence": "P2L9 concludes “즉, 아침에 차 안 쓰는 집이 늘면 주차도 나아질 거예요.” The scene concerns the apartment complex’s shared-bike proposal. The stated facts are only a fifteen-minute walk versus a five-minute ride to the station. Cars being left unused does not by itself explain reduced parking demand at the complex; parking at the station could improve, but that location is not stated.",
+        "impact": "The restatement introduced by 즉 contains an ambiguous causal inference in an argument lesson. This is a request to clarify the intended parking location/mechanism, not a claim that cycling can never improve parking.",
+        "requestedFix": "Fable should clarify the relevant parking location or provide the missing causal bridge, or conclude with a benefit established by the preceding comparison. Keep the supportive stance, whole trophy 즉, turn bounds and coupled exercises/variants intact.",
+        "blockingLocalTts": true,
+        "resolution": "RESOLVED: 역까지 차로 가는 집이 줄면 역 주차장도 explicitly names mechanism and location. Twenty-eojeol first reply, nine-eojeol focus; all bases/build/recall/example/trophy/term/speech/variant fields coupled."
+      },
+      {
+        "id": "KO-B2-PUB-01",
+        "severity": "HIGH",
+        "status": "RESOLVED",
+        "scope": "publication-exercise",
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json",
+        "line": 3160,
+        "jsonPointers": [
+          "/lessons/8/build/distractors/1"
+        ],
+        "title": "A build distractor already occurs in the fixed first reply",
+        "evidence": "P1L9 includes 맞아요. as a distractor, while the fixed prefix is “제 생각에는 따라가는 게 맞아요.” The actual native gate rejects this as DISTRACTOR_PRESENT.",
+        "impact": "The whole-line distractor absence contract fails. This is a content defect, not a reason to relax the validator.",
+        "requestedFix": "Replace this distractor with a grammatical, contextually wrong and whole-eojeol-absent option; independently review the replacement in the actual build focus.",
+        "blockingLocalTts": false,
+        "resolution": "RESOLVED: 맞아요. removed from P1L9 distractors; replacements are whole-eojeol-absent."
+      },
+      {
+        "id": "KO-B2-PUB-02",
+        "severity": "HIGH",
+        "status": "RESOLVED",
+        "scope": "publication-exercise",
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json",
+        "line": 527,
+        "jsonPointers": [
+          "/lessons/1/build/distractors/0",
+          "/lessons/4/build/distractors/0",
+          "/lessons/6/build/distractors/0",
+          "/lessons/9/build/distractors/0"
+        ],
+        "title": "Several detail or degree distractors remain valid arguments under the visible opener",
+        "examples": [
+          {
+            "lesson": "P1L2",
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json",
+            "line": 527,
+            "replacement": "그동안 광고도",
+            "result": "지하철은 시간이 정확하고 그동안 광고도 읽을 수 있어서 저는 지하철이 더 나아요.",
+            "reason": "Reading advertisements is a possible activity/benefit; the opener supplies no fact that makes it false."
+          },
+          {
+            "lesson": "P1L5",
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json",
+            "line": 1652,
+            "replacement": "살 게",
+            "result": "제주도는 가는 데 시간이 걸리는 반면에 한 번 가면 살 게 많아요.",
+            "reason": "Shopping opportunities are a coherent benefit of the destination and are not excluded by the opener."
+          },
+          {
+            "lesson": "P1L7",
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json",
+            "line": 2406,
+            "replacement": "주시니까 조금",
+            "result": "학원은 비싸더라도 장기적으로는 선생님이 바로 고쳐 주시니까 조금 빨라요.",
+            "reason": "The weaker degree still supports the same preference and concession; no visible fact fixes 훨씬."
+          },
+          {
+            "lesson": "P1L10",
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json",
+            "line": 3535,
+            "replacement": "집에는 조금",
+            "result": "첫 번째 안은 간단한 반면에 차가 꼭 필요한 집에는 조금 엄격해요.",
+            "reason": "The weaker degree remains a coherent reason for preferring the second proposal."
+          }
+        ],
+        "impact": "A learner can assemble a grammatical, contextually defensible argument and be marked wrong. Hidden de/en glosses and intended carrier labels do not supply an exact-answer cue.",
+        "requestedFix": "Replace these distractors with contextually incompatible options or redesign the visible task to make the distinction decidable. Review P2L6 날짜로 similarly: the late-fee conversation concerns dates as well as times, so it is not obviously wrong solely because the canonical says 시간으로.",
+        "blockingLocalTts": false,
+        "resolution": "RESOLVED for enumerated original cases: advertising/shopping/weak-degree choices and P2L6 date/arrival choices replaced; each reread in slot. New PUB-07/08 retain separate combined/detail ambiguities."
+      },
+      {
+        "id": "KO-B2-PUB-03",
+        "severity": "HIGH",
+        "status": "RESOLVED",
+        "scope": "publication-exercise",
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p1.json",
+        "line": 3197,
+        "jsonPointers": [
+          "/lessons/8/cloze/blanks/0/choices/2"
+        ],
+        "title": "The new fixed-choice set still admits a natural concessive answer",
+        "evidence": "P1L9 permits only 걱정이라서, but supplied 걱정이지만 gives “저도 그게 걱정이지만 삼월 새 학기에 맞춰 가려고요. 아이한테는 이미 설명했고, 새 학교도 같이 가 봤어요.” This acknowledges the worry and continues with a plan despite it, a coherent answer to the child-transfer objection. No visible form cue forces a cause ending.",
+        "impact": "A native, contextually suitable response is one of the rejected choices.",
+        "requestedFix": "Replace the concessive distractor with an option genuinely incompatible with the displayed context, or provide an explicit visible form constraint consistent with the exercise contract. Also adjudicate P2L9 신고하니까 versus 신고하면 in the stated proposal procedure: the causal habitual reading remains plausible, so the new set should not be assumed unique merely from the intended conditional carrier.",
+        "blockingLocalTts": false,
+        "resolution": "RESOLVED for original choices: 걱정이지만/걱정이라도 and 신고하니까 removed; replacements read against full displayed sentences and prompts."
+      },
+      {
+        "id": "KO-B2-PUB-04",
+        "severity": "HIGH",
+        "status": "RESOLVED",
+        "scope": "publication-acceptance",
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json",
+        "line": 1350,
+        "jsonPointers": [
+          "/lessons/3/synthesis/blanks/0/acceptedAnswers/2"
+        ],
+        "title": "An accepted synonym changes the exact points threshold",
+        "evidence": "P2L4 consistently specifies 만 점이 넘으면 in you1 and you3, translated as above/über ten thousand. Fable edit 54 adds 되면, which makes 만 점이 되면 and includes reaching exactly ten thousand instead of exceeding it.",
+        "impact": "The acceptance list certifies a different fictional policy from the one taught in the canonical dialogue.",
+        "requestedFix": "Remove the non-equivalent acceptance row, or have Fable explicitly revise the threshold and every coupled Korean/base field consistently. Do not treat > and >= as interchangeable.",
+        "blockingLocalTts": false,
+        "resolution": "RESOLVED: 되면 removed; 넘으면/넘어가면 preserve the strictly-above threshold."
+      },
+      {
+        "id": "KO-B2-PUB-05",
+        "severity": "MEDIUM",
+        "status": "RESOLVED",
+        "scope": "publication-staging",
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json",
+        "line": 1701,
+        "jsonPointers": [
+          "/lessons/4/cloze/blanks/1/acceptedAnswers/3"
+        ],
+        "title": "The added 재 봤더니 answer makes a recognition-only family learner-productive",
+        "evidence": "Fable edit 56 adds 재 봤더니 at P2L5. B1 P1L9-10 reserves -더니 for recognition, B1 P8 keeps -더라고요 recognition-only, and B2 P2L1-3 explicitly puts -았/었더니 in them turns. No later B2 P2 productive range promotes that family. The canonical answer 재 보면 is properly staged.",
+        "impact": "The new accepted input row crosses the declared learner grammar progression. It also changes a conditional measurement instruction into a past observation and should not be labeled an unqualified equivalent without review.",
+        "requestedFix": "Remove that acceptance row or have Fable explicitly authorize and stage this family; do not silently broaden the production gate based on an added synonym.",
+        "blockingLocalTts": false,
+        "resolution": "RESOLVED: 재 봤더니 removed; retained measurement alternatives do not introduce the recognition-only past-observation family."
+      },
+      {
+        "id": "KO-B2-PUB-06",
+        "severity": "HIGH",
+        "status": "OPEN",
+        "scope": "publication-runtime-and-audio",
+        "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json",
+        "jsonPointers": [
+          "/acceptedInput",
+          "/unresolvedDecisions"
+        ],
+        "title": "Korean B2 rendering, answer acceptance and recorded-speech behavior remain unimplemented/unverified",
+        "evidence": "The authority explicitly describes future Korean B2 input handling. All 20 lessons remain draft/pending/unreviewed with false flags and empty reviewers; no independent human/native listening review or measured audio durations occurred. Four accepted first-reply variant rows, 24 fixed-choice sets and the de/en form cues require faithful rendering and input integration. Spacing-only tolerance is undecided.",
+        "impact": "Even after canonical content repairs, this report cannot authorize learner publication or promise free-input synonym completeness, spacing acceptance, correct choice/cue visibility, speech duration, provider execution or v4 release.",
+        "requestedFix": "Preserve this hold through packaging. Implement and independently verify the exact canonical/variant separation, visible cues and choices, de/en editions, all 60 speaking exercises and recording profiles, then obtain the required recording/listening/execution evidence. Clarify that explicit authored acceptedAnswers do not authorize automatic synonym or particle normalization.",
+        "blockingLocalTts": false,
+        "resolution": "RETAINED: runtime, input acceptance, recording/listening and execution evidence remain outside source-content approval."
+      }
+    ],
+    "lessonReadEvidence": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "slug": "wolse-vs-chultoegeun",
+        "trophy": {
+          "lemma": "장단점",
+          "familyKey": "장단점",
+          "surface": "장단점이",
+          "turnIndex": 1,
+          "pos": "noun"
+        },
+        "learnerMoves": [
+          "compare",
+          "concede",
+          "conclude"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          13,
+          20,
+          12,
+          11,
+          9,
+          10
+        ],
+        "focusEojeolCount": 8,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Genuine transport-cost challenge and signing steer; compares costs against time; no additional canonical defect found.",
+        "findings": []
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "slug": "cha-vs-jihacheol",
+        "trophy": {
+          "lemma": "반면",
+          "familyKey": "반면",
+          "surface": "반면에",
+          "turnIndex": 1,
+          "pos": "connector"
+        },
+        "learnerMoves": [
+          "compare",
+          "rebut",
+          "propose"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          9,
+          19,
+          8,
+          18,
+          10,
+          13
+        ],
+        "focusEojeolCount": 8,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Rain/last-train objection answered with scoped taxi use and own timetable; driving/reading distractor is incompatible in its slot.",
+        "findings": []
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "slug": "jaetaek-vs-samusil",
+        "trophy": {
+          "lemma": "비하다",
+          "familyKey": "비하",
+          "surface": "비해",
+          "turnIndex": 1,
+          "pos": "verb"
+        },
+        "learnerMoves": [
+          "position",
+          "clarify",
+          "propose"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          13,
+          19,
+          12,
+          15,
+          9,
+          12
+        ],
+        "focusEojeolCount": 9,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Communication objection is answered with meeting design; new staff changes the closing plan; native hedges preserved.",
+        "findings": []
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "slug": "sagi-vs-billigi",
+        "trophy": {
+          "lemma": "부담",
+          "familyKey": "부담",
+          "surface": "부담이",
+          "turnIndex": 1,
+          "pos": "noun"
+        },
+        "learnerMoves": [
+          "reason",
+          "concede",
+          "conclude"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          14,
+          20,
+          13,
+          10,
+          15,
+          12
+        ],
+        "focusEojeolCount": 9,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Rental sunk-cost challenge and three-month discount steer are meaningful. Declared reason is defensible as the whole reply gives reasons for renting, though its paired viewpoint carrier also performs comparison; see consideredIssues.",
+        "findings": []
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "slug": "jeju-vs-busan",
+        "trophy": {
+          "lemma": "효율적",
+          "familyKey": "효율",
+          "surface": "효율적이에요",
+          "turnIndex": 1,
+          "pos": "adjective"
+        },
+        "learnerMoves": [
+          "compare",
+          "rebut",
+          "counteroffer"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          11,
+          20,
+          12,
+          17,
+          10,
+          10
+        ],
+        "focusEojeolCount": 9,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Fare objection and three-day limit meaningful; observed ticket price scopes response. Destination metonym remains a considered issue, not a proven canonical error.",
+        "findings": []
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "slug": "hyeongeum-vs-aep",
+        "trophy": {
+          "lemma": "차라리",
+          "familyKey": "차라리",
+          "surface": "차라리",
+          "turnIndex": 1,
+          "pos": "adverb"
+        },
+        "learnerMoves": [
+          "position",
+          "clarify",
+          "propose"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          12,
+          20,
+          8,
+          12,
+          13,
+          16
+        ],
+        "focusEojeolCount": 9,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Fee attributed to the app the learner investigated; trial conditional; honorific direction correct. All changed fields coupled.",
+        "findings": []
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "slug": "hagwon-vs-aep",
+        "trophy": {
+          "lemma": "장기적",
+          "familyKey": "장기",
+          "surface": "장기적으로는",
+          "turnIndex": 1,
+          "pos": "adjective"
+        },
+        "learnerMoves": [
+          "compare",
+          "counteroffer",
+          "summarize"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          9,
+          17,
+          12,
+          10,
+          9,
+          15
+        ],
+        "focusEojeolCount": 8,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Weekend class plus weekday app addresses overtime and combined price is correct; revised chip no longer merely changes degree.",
+        "findings": []
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "slug": "du-hoesa-jeian",
+        "trophy": {
+          "lemma": "고려하다",
+          "familyKey": "고려",
+          "surface": "고려하면",
+          "turnIndex": 1,
+          "pos": "verb"
+        },
+        "learnerMoves": [
+          "reason",
+          "concede",
+          "summarize"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          8,
+          20,
+          12,
+          15,
+          9,
+          14
+        ],
+        "focusEojeolCount": 9,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Salary trade-off is conceded and health risk hedged; one-sentence summary is a genuine steer. Repaired focus is nine eojeol, within range.",
+        "findings": []
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "slug": "sejong-gagi-vs-namgi",
+        "trophy": {
+          "lemma": "안정적",
+          "familyKey": "안정",
+          "surface": "안정적이고",
+          "turnIndex": 1,
+          "pos": "adjective"
+        },
+        "learnerMoves": [
+          "position",
+          "explain",
+          "request"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          8,
+          19,
+          9,
+          16,
+          12,
+          10
+        ],
+        "focusEojeolCount": 8,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "School worry and property/contact steer delayed; whole-present distractor and old concessive choices removed.",
+        "findings": []
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "slug": "jucha-an-gwonhada",
+        "trophy": {
+          "lemma": "권하다",
+          "familyKey": "권하",
+          "surface": "권하고",
+          "turnIndex": 1,
+          "pos": "verb"
+        },
+        "learnerMoves": [
+          "position",
+          "rebut",
+          "conclude"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "hapsyo",
+        "turnEojeolCounts": [
+          15,
+          20,
+          14,
+          16,
+          9,
+          13
+        ],
+        "focusEojeolCount": 8,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Formal chair/haeyo learner distinct; effects hedged, six-month review retained, weak-degree distractor removed.",
+        "findings": []
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "slug": "cheongguseo-chai",
+        "trophy": {
+          "lemma": "원인",
+          "familyKey": "원인",
+          "surface": "원인은",
+          "turnIndex": 1,
+          "pos": "noun"
+        },
+        "learnerMoves": [
+          "explain",
+          "clarify",
+          "propose"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          10,
+          17,
+          10,
+          14,
+          9,
+          15
+        ],
+        "focusEojeolCount": 7,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Invoice components sum to the difference; absence causes return shipment; order terms scope responsibility.",
+        "findings": []
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "slug": "bunrisugeo-jeolcha",
+        "trophy": {
+          "lemma": "절차",
+          "familyKey": "절차",
+          "surface": "절차가",
+          "turnIndex": 1,
+          "pos": "noun"
+        },
+        "learnerMoves": [
+          "explain",
+          "clarify",
+          "propose"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          12,
+          20,
+          5,
+          16,
+          9,
+          15
+        ],
+        "focusEojeolCount": 7,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Recycling procedure is attributed to this building’s notice; food waste and missing card are separate delayed questions.",
+        "findings": []
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "slug": "iljeong-neujeun-wonin",
+        "trophy": {
+          "lemma": "단계",
+          "familyKey": "단계",
+          "surface": "단계에서",
+          "turnIndex": 1,
+          "pos": "noun"
+        },
+        "learnerMoves": [
+          "reason",
+          "explain",
+          "summarize"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          11,
+          19,
+          11,
+          14,
+          5,
+          17
+        ],
+        "focusEojeolCount": 7,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Testing/server problem explains delay; mistaken one-day expectation answers late reporting; closing supplies two customer-facing facts.",
+        "findings": []
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "slug": "pointeu-jeongnip",
+        "trophy": {
+          "lemma": "영향",
+          "familyKey": "영향",
+          "surface": "영향을",
+          "turnIndex": 1,
+          "pos": "noun"
+        },
+        "learnerMoves": [
+          "explain",
+          "clarify",
+          "summarize"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          12,
+          19,
+          10,
+          13,
+          10,
+          16
+        ],
+        "focusEojeolCount": 8,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Thresholds consistent in canonical dialogue and retained accepted answers.",
+        "findings": []
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "slug": "inteonet-bakkun-gijun",
+        "trophy": {
+          "lemma": "기준",
+          "familyKey": "기준",
+          "surface": "기준이",
+          "turnIndex": 1,
+          "pos": "noun"
+        },
+        "learnerMoves": [
+          "reason",
+          "rebut",
+          "propose"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          8,
+          20,
+          8,
+          17,
+          9,
+          15
+        ],
+        "focusEojeolCount": 8,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Own measurements and termination-fee experience scoped; recognition-only accepted past observation removed.",
+        "findings": []
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "slug": "yeonchero-iui-sincheong",
+        "trophy": {
+          "lemma": "원래",
+          "familyKey": "원래",
+          "surface": "원래는",
+          "turnIndex": 1,
+          "pos": "adverb"
+        },
+        "learnerMoves": [
+          "explain",
+          "clarify",
+          "propose"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          13,
+          18,
+          8,
+          15,
+          8,
+          15
+        ],
+        "focusEojeolCount": 7,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Notice scopes cancellation; knowledge hedge scopes camera evidence; place/borrowed distractors conflict with return-time process.",
+        "findings": []
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "slug": "jeochuk-gyehoek-silpae",
+        "trophy": {
+          "lemma": "줄이다",
+          "familyKey": "줄이",
+          "surface": "줄임으로써",
+          "turnIndex": 1,
+          "pos": "verb"
+        },
+        "learnerMoves": [
+          "reason",
+          "concede",
+          "propose"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          9,
+          20,
+          9,
+          12,
+          9,
+          16
+        ],
+        "focusEojeolCount": 8,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Canonical explanation/concession/limited plan coherent; quantity-only build distractor remains PUB-08.",
+        "findings": [
+          "KO-B2-PUB-08"
+        ]
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "slug": "geulsseugi-sangdam-yeyak",
+        "trophy": {
+          "lemma": "결과",
+          "familyKey": "결과",
+          "surface": "결과적으로",
+          "turnIndex": 1,
+          "pos": "noun"
+        },
+        "learnerMoves": [
+          "explain",
+          "clarify",
+          "propose"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          11,
+          19,
+          10,
+          10,
+          9,
+          17
+        ],
+        "focusEojeolCount": 8,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Upload/select/confirm sequence is locally attributed; half-written text and full calendar are meaningful challenges; cancellation is expressly not guaranteed.",
+        "findings": []
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "slug": "gongyu-jajeongeo-jjeuk",
+        "trophy": {
+          "lemma": "즉",
+          "familyKey": "즉",
+          "surface": "즉",
+          "turnIndex": 1,
+          "pos": "connector"
+        },
+        "learnerMoves": [
+          "reason",
+          "explain",
+          "summarize"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "haeyo",
+        "turnEojeolCounts": [
+          12,
+          20,
+          8,
+          13,
+          9,
+          12
+        ],
+        "focusEojeolCount": 9,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Explicit station-car-park causal bridge resolves canonical hold; combined distractors remain PUB-07.",
+        "findings": [
+          "KO-B2-PUB-07"
+        ]
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "slug": "seolmun-gyeoljeong-cheori",
+        "trophy": {
+          "lemma": "처리",
+          "familyKey": "처리",
+          "surface": "처리됐어요",
+          "turnIndex": 1,
+          "pos": "noun"
+        },
+        "learnerMoves": [
+          "explain",
+          "clarify",
+          "summarize"
+        ],
+        "learnerRegisters": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ],
+        "interlocutorRegister": "hapsyo",
+        "turnEojeolCounts": [
+          12,
+          17,
+          8,
+          17,
+          10,
+          17
+        ],
+        "focusEojeolCount": 7,
+        "chunks": 5,
+        "terms": 8,
+        "flagsAllFalse": true,
+        "reviewPending": true,
+        "everySavedFieldPersonallyRead": true,
+        "baseLocalesRead": [
+          "de",
+          "en"
+        ],
+        "nativeReviewNote": "Formal meeting prompts and haeyo explanation are consistent; lighting condition reconciles location with objections; cost approval and final enumeration are distinct.",
+        "findings": []
+      }
+    ],
+    "finalCounts": {
+      "lessons": 20,
+      "turns": 120,
+      "terms": 160,
+      "patternExamples": 40,
+      "speaks": 60,
+      "speechTokens": 181,
+      "clozeBlanks": 40,
+      "synthesisBlanks": 20,
+      "fixedChoiceSets": 24,
+      "recalls": 20,
+      "variants": 4,
+      "reconstructions": 80
+    },
+    "subsequentNarrowEngineeringRepair": "While this report was being frozen, root reported a separate numeric-guard repair. This report preserves its reviewed engineering snapshot; B2_KOREAN_VARIANT_GUARD_INDEPENDENT_REVIEW.json covers only that subsequent repair."
+  }
+}

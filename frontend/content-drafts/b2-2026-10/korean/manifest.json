@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "korean-b2-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b2-2026-10/korean/p1.json",
+      "sha256": "b50d66144d8cfb89e4fa02abe1cc2cafe948390028aacaf4d6db1df20e780ac5",
+      "targetLanguage": "Korean",
+      "pathNumber": 1,
+      "reviewedVoiceId": "0oqpliV6dVSr9XomngOW",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/korean/specification.json",
+        "sha256": "771a5732eb71f43a52b83499cf69cc902bdc37f074045170e47a9209467531db",
+        "referenceName": "B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/native-prerequisites.json",
+        "sha256": "6685bba9897ddd1c1f72308204dd6c056108f32aea332e2ee9a1402cf4e74f2e"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-native-2026-10/korean/specification.json",
+        "sha256": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/korean/p2.json",
+      "sha256": "a2a3628c339847a1c1950480b8e458e5cf86ff781c72b55cd14abe40461be531",
+      "targetLanguage": "Korean",
+      "pathNumber": 2,
+      "reviewedVoiceId": "0oqpliV6dVSr9XomngOW",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/korean/specification.json",
+        "sha256": "771a5732eb71f43a52b83499cf69cc902bdc37f074045170e47a9209467531db",
+        "referenceName": "B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/native-prerequisites.json",
+        "sha256": "6685bba9897ddd1c1f72308204dd6c056108f32aea332e2ee9a1402cf4e74f2e"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-native-2026-10/korean/specification.json",
+        "sha256": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Korean": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b2-2026-10/korean/fable-evidence.json",
+    "sha256": "6f4308263d1232596482a7a84428e0506d38b51a8433e02f027d5c6e4b6f5720"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b2-2026-10/korean/independent-evidence.json",
+    "sha256": "3b4c7dbd8cc7bed3ba1e5f6328cb9b01672936550c5e48d7be1a6bcf6781fdd0"
+  }
+}

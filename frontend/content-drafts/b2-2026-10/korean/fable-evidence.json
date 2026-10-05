@@ -1,0 +1,1692 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/korean/p1.json": "b50d66144d8cfb89e4fa02abe1cc2cafe948390028aacaf4d6db1df20e780ac5",
+    "frontend/content-drafts/b2-2026-10/korean/p2.json": "a2a3628c339847a1c1950480b8e458e5cf86ff781c72b55cd14abe40461be531"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/korean/specification.json": "771a5732eb71f43a52b83499cf69cc902bdc37f074045170e47a9209467531db",
+    "frontend/content-drafts/b2-2026-10/native-prerequisites.json": "6685bba9897ddd1c1f72308204dd6c056108f32aea332e2ee9a1402cf4e74f2e",
+    "frontend/content-drafts/b1-native-2026-10/korean/specification.json": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd"
+  },
+  "sourceCanonicalizations": [],
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "KO-B2-PUB-06",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "scope": "publication-runtime-and-audio",
+      "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_KOREAN_P1_P2_AUTHORING_SPEC_V2.json",
+      "jsonPointers": [
+        "/acceptedInput",
+        "/unresolvedDecisions"
+      ],
+      "title": "Korean B2 rendering, answer acceptance and recorded-speech behavior remain unimplemented/unverified",
+      "evidence": "The bound authority describes future Korean B2 input handling. All 20 final lessons remain draft/pending/unreviewed with false flags and empty reviewers. This rereview did not inspect a rendered Korean B2 runtime, execute answer acceptance, listen to recordings or measure audio. Four authored first-reply variants, 24 fixed-choice sets, de/en form cues and 60 speaking exercises need faithful integration. Spacing-only tolerance remains unresolved.",
+      "impact": "Even after canonical content repairs, this report cannot authorize learner publication or promise free-input synonym completeness, spacing acceptance, correct choice/cue visibility, speech duration, provider execution or v4 release.",
+      "requestedFix": "Preserve this hold through packaging. Implement and independently verify the exact canonical/variant separation, visible cues and choices, de/en editions, all 60 speaking exercises and recording profiles, then obtain the required recording/listening/execution evidence. Clarify that explicit authored acceptedAnswers do not authorize automatic synonym or particle normalization.",
+      "blockingLocalTts": false
+    },
+    {
+      "id": "KO-B2-PUB-07",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "scope": "publication-exercise",
+      "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json",
+      "line": 3169,
+      "jsonPointers": [
+        "/lessons/8/build/chunks",
+        "/lessons/8/build/distractors"
+      ],
+      "title": "Both build distractors together produce a coherent alternative argument",
+      "evidence": "With the unchanged frame and chips 역까지 차로 / 가는 집이 / 역 주차장도, selecting the two supplied distractors 늘면 and 나빠질 거예요. yields “즉, 역까지 차로 가는 집이 늘면 역 주차장도 나빠질 거예요.” More households driving to the station worsening its parking is a coherent conditional argument in support of shared bikes. It uses the same five positions and nine-eojeol focus as the canonical decrease/improvement formulation.",
+      "impact": "An exact build checker can reject a grammatical, contextually defensible argument. The correct canonical spoken reply is unaffected. The visible opener does not force the positive formulation; hidden base glosses and intended carrier metadata cannot do so.",
+      "requestedFix": "Before learner publication, redesign at least one distractor or the visible task so the combined alternative is decidable. Review combinations as well as single substitutions. Preserve the coherent canonical recording line.",
+      "blockingLocalTts": false
+    },
+    {
+      "id": "KO-B2-PUB-08",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "scope": "publication-exercise",
+      "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/korean/p2.json",
+      "line": 2411,
+      "jsonPointers": [
+        "/lessons/6/build/distractors/0"
+      ],
+      "title": "The savings build tests an unstated quantity of discarded groceries",
+      "evidence": "Substituting supplied 봤고 전부 for 봤고 반은 yields “원래 요리를 안 하던 사람이라 장을 많이 봤고 전부 버렸어요. 결과적으로 외식보다 더 썼어요.” This is a grammatical explanation of the failed savings plan. The opener asks whether the plan succeeded; neither it nor the fixed frame establishes that precisely half rather than all the groceries were discarded.",
+      "impact": "A learner can give a plausible explanation and be marked wrong for a detail not fixed by the visible task. Canonical spoken content remains sound.",
+      "requestedFix": "Before publication, replace the quantity-only distractor or introduce an appropriate visible fact/cue. A hidden translation is not that cue. This is a newly documented exercise hold, not a request for another broad canonical review.",
+      "blockingLocalTts": false
+    }
+  ],
+  "scope": "Exact canonical spoken content for local TTS only; all publication findings retained. No native-human, listening or production approval.",
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 full twenty-lesson reads and exact arbitration"
+  },
+  "reviewChain": [
+    {
+      "batch": "B2_KOREAN_P1_P2_FABLE_REVIEW",
+      "rawProviderReviewSha256": "cb3489a37d28ffebc79b5c8920fef9a35edd560b7581f63132184433123325e8",
+      "exactEdits": 72,
+      "exactSpecificationEdits": 0,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "korean-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Read every field of all ten lessons: roots, situation/title/sceneCaption, six turns with de/en bases, build frames+chunks+distractors (reconstruction equality verified), cloze/synthesis segments and blanks (reconstruction and boundaries verified), recall before/answer/after, pattern, 8 terms each, 3 speak targets, trophy incl. remainder/surfaceMode/whyThisWord, review blocks, carrierTags, acceptedPhraseVariants. All you turns end 요/죠; them turns haeyo except L10 hapsyo (둘입니다/겁니다/있겠습니까/됐습니다/주시겠습니까 pass F(e)); no 반말, no digits/Latin/%, no gendered address; trophies match ledger rows and spec surfaces; moves pairwise distinct and within slot sets; challenge at turn 2 and steer at turn 4 genuine in all ten; captions quote dialogue[0] only. Defects found: P1 L6 you3 authored 제안대로면 has no proposal referent in the dialogue (unnatural), reverted to spec hedge 정도; three titles disclose the delayed solution (L2, L4, L7); L1 German situation „welches Abwägen“ unidiomatic; L1 cloze moveBlankIndex points at 생각하면 though the concede carrier is 작기는 하네요; L8 build has a lone movable 더 chip (…생활까지 더 고려하면 두 번째 회사가 끌려요 is grammatical), regrouped; most open frame blanks admit equally valid taught synonyms (계산하면, 타면, 팔지 마시고, 거 같아요, 가느니, 더 나아요, 그럼, 고쳐 보니까 …) with no visible cue, so acceptedAnswers were extended or one 4-choice set per exercise added.",
+            "remainingConcerns": [
+              "L4 you1 declared move reason is rhetorically a compare (한편으로는…다른 한편으로는); kept because spec fixes it",
+              "L5 저는 제주도가 더 효율적이에요 is marginal natural usage (place as efficient); spec-frozen, native review",
+              "chip-order review is manual; only the clearly grammatical L8 permutation was repaired",
+              "no B2 renderer exists: cue/choice visibility unverified at runtime",
+              "speak profiles provisional; no native-model or native-human review claimed"
+            ]
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Read every field of all ten lessons as above. Build/cloze/synthesis/recall reconstructions verified; chunk groupings bind clause order (no grammatical same-meaning permutation found); them turns haeyo except L10 hapsyo (필요합니다/다릅니다/결정했습니까/없습니다/알겠습니다/주시겠습니까 pass F(e)); you turns all 요/죠; fictional policies attributed in the Korean line (주문 조건상, 안내문대로면, 앱 안내대로, 센터 안내대로, 제안서대로면, 제 경우에는, 설문 결과대로); -되다 passives first productive at L4, -(으)ㄹ 줄 알았어요 at L3, 첫째/둘째/셋째 at L5, -(으)ㅁ으로써/결과적으로 at L7, 즉 at L9; trophies and remainders match ledger (결과적으로 remainder 적으로, 처리됐어요 remainder 됐어요, 줄임으로써 attested). Authored deviations L2/L4/L8/L10 accepted as natural and within bounds (L10 you1 17 eojeol). Defects: open frame blanks admit equally valid answers (손님이 없어서, 보냈어요, 고쳐 보니까, 때에만, 되면, 재 봤더니, 아니어도, 취소되면, 제안서에 따르면, 그럼 …); extended acceptedAnswers or added one 4-choice set per exercise. L6 recall before is the empty string (allowed by contract). L9 recall answer 분이에요 adjacent to trophy 즉 per spec rule.",
+            "remainingConcerns": [
+              "form-cue blanks (찍고, 적립되고, 확정했어요) depend on cue rendering not yet implemented",
+              "chip-order equivalence remains manual review beyond groupings checked",
+              "speak profiles provisional; accepted input rows await runtime"
+            ]
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "Independent findings: none supplied",
+            "decision": "none to arbitrate",
+            "reason": "No independent review exists; this is the full Fable read only; no approval invented, all review flags stay false/pending/unreviewed"
+          },
+          {
+            "finding": "Author deviation P1 L6 you3 제안대로면",
+            "decision": "reject",
+            "reason": "No 제안 is mentioned anywhere in the dialogue, so the attribution has no referent and reads unnaturally; reverted to the spec line with the hedge 정도 (17 eojeol) and all coupled synthesis/pattern/speak/base fields corrected"
+          },
+          {
+            "finding": "Author deviations P1 L6 you1 앱 결제를, P2 L2 you1/you3, P2 L4 you1, P2 L8 you1, P2 L10 you1",
+            "decision": "accept",
+            "reason": "Natural, inside eojeol bounds, keep trophy surfaces, carriers and scene scoping; P2 L2 you3 keeps the office action active before the L4 passive range"
+          },
+          {
+            "finding": "Author claim that zero choice blanks plus context suffice for uniqueness",
+            "decision": "reject",
+            "reason": "Open frame blanks without a visible cue accept any grammatical equivalent; a hidden base translation never selects an answer; either taught synonyms are accepted explicitly or one authored 4-choice set is added per exercise"
+          },
+          {
+            "finding": "Author claim chip orders constrained in every lesson",
+            "decision": "adapt",
+            "reason": "P1 L8 lone chip 더 yields 생활까지 더 고려하면 두 번째 회사가 끌려요, grammatical; regrouped with 회사가 더 bound and focus extended to 5 chunks; other groupings verified"
+          },
+          {
+            "finding": "Titles P1 L2/L4/L7",
+            "decision": "reject",
+            "reason": "Try before selling, Rent the bike first, Combine classes and an app disclose the closing solution; replaced by neutral option titles"
+          },
+          {
+            "finding": "P1 L1 cloze moveBlankIndex 0",
+            "decision": "adapt",
+            "reason": "Concede carrier is 작기는 하네요 (blank 1), not 생각하면; index moved to 1 and that blank given choices"
+          },
+          {
+            "finding": "Author checker PASS 5,173 checks",
+            "decision": "accept as structural evidence only",
+            "reason": "Bounded author self-check; not engineering gate, not native review, not publication approval"
+          }
+        ],
+        "edits": [
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/0/situation/de",
+            "oldValue": "Du vergleichst mit einer Immobilienmaklerin oder einem Immobilienmakler zwei Wohnungen. Entscheide, welches Abwägen zu deinem Alltag passt.",
+            "newValue": "Du vergleichst mit einer Immobilienmaklerin oder einem Immobilienmakler zwei Wohnungen. Entscheide, welche Wohnung zu deinem Alltag passt.",
+            "reason": "unidiomatic German"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/0/sceneCaption/de",
+            "oldValue": "Du vergleichst mit einer Immobilienmaklerin oder einem Immobilienmakler zwei Wohnungen. Entscheide, welches Abwägen zu deinem Alltag passt. Die andere Person sagt: „두 집 중에 고민되시죠? 역 근처 집은 월세가 비싸고, 외곽 집은 출퇴근이 길어요.“",
+            "newValue": "Du vergleichst mit einer Immobilienmaklerin oder einem Immobilienmakler zwei Wohnungen. Entscheide, welche Wohnung zu deinem Alltag passt. Die andere Person sagt: „두 집 중에 고민되시죠? 역 근처 집은 월세가 비싸고, 외곽 집은 출퇴근이 길어요.“",
+            "reason": "coupled caption"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/0/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "생각하면"
+            ],
+            "newValue": [
+              "생각하면",
+              "계산하면",
+              "따지면",
+              "포함하면"
+            ],
+            "reason": "open blank; 계산하면 taught in turn 2"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/0/cloze/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "작기는 하네요",
+              "크기는 하네요",
+              "작지는 않네요",
+              "작을 리가 없네요"
+            ],
+            "reason": "constrain concede carrier"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/0/cloze/moveBlankIndex",
+            "oldValue": 0,
+            "newValue": 1,
+            "reason": "concede carrier is blank 1"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/0/synthesis/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "더 중요하니까요",
+              "더 중요하지만",
+              "더 중요하면",
+              "덜 중요하니까요"
+            ],
+            "reason": "first productive -니까요; 더 중요해요 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/1/title",
+            "oldValue": {
+              "de": "Das Auto erst später verkaufen",
+              "en": "Try before selling the car"
+            },
+            "newValue": {
+              "de": "Auto oder U-Bahn?",
+              "en": "Car or subway?"
+            },
+            "reason": "title disclosed solution"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/1/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "타도",
+              "타지 말고",
+              "타고 나서",
+              "타기 전에"
+            ],
+            "reason": "타면 otherwise equally valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/1/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "유지비보다"
+            ],
+            "newValue": [
+              "유지비보다",
+              "유지비보다는"
+            ],
+            "reason": "valid particle variant"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/1/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "팔지 말고"
+            ],
+            "newValue": [
+              "팔지 말고",
+              "팔지 마시고"
+            ],
+            "reason": "honorific variant valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/2/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "자체보다"
+            ],
+            "newValue": [
+              "자체보다",
+              "자체보다는"
+            ],
+            "reason": "valid variant"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/2/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "것 같아요"
+            ],
+            "newValue": [
+              "것 같아요",
+              "거 같아요",
+              "것 같은데요",
+              "듯해요"
+            ],
+            "reason": "것/거 contraction and valid hedges"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/2/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "하면 어떨까요"
+            ],
+            "newValue": [
+              "하면 어떨까요",
+              "하는 게 어떨까요",
+              "하면 어떠세요",
+              "하면 어때요"
+            ],
+            "reason": "equivalent proposal frames"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/3/title",
+            "oldValue": {
+              "de": "Das Fahrrad erst mieten",
+              "en": "Rent the bike first"
+            },
+            "newValue": {
+              "de": "Kaufen oder mieten?",
+              "en": "Buy or rent?"
+            },
+            "reason": "title pre-empts conclusion"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/3/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "없어지기는 하지만",
+              "없어지지 않지만",
+              "없어지기 때문에",
+              "없어진 다음에"
+            ],
+            "reason": "아깝기는 하지만/없어지지만 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/3/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "탈지"
+            ],
+            "newValue": [
+              "탈지",
+              "탈 건지"
+            ],
+            "reason": "cue „ob ich fahren werde“ also fits 탈 건지"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/3/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "그 조건이면"
+            ],
+            "newValue": [
+              "그 조건이면",
+              "그 조건이라면",
+              "그러면"
+            ],
+            "reason": "equally valid openers"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/4/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "가는 것보다"
+            ],
+            "newValue": [
+              "가는 것보다",
+              "가는 거보다",
+              "가는 것보다는",
+              "가느니"
+            ],
+            "reason": "contraction and valid comparatives"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/4/cloze/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "덜 피곤해요",
+              "더 피곤해요",
+              "덜 재미있어요",
+              "더 비싸요"
+            ],
+            "reason": "더 나아요/덜 힘들어요 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/4/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "대신"
+            ],
+            "newValue": [
+              "대신",
+              "대신에",
+              "그 대신",
+              "그러면"
+            ],
+            "reason": "equivalent connectors"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/dialogue/5/targetText",
+            "oldValue": "정리하면, 제안대로면 수수료는 매출의 삼 퍼센트예요. 한 달만 해 보고 새 손님이 열 명 늘면 계속하시면 돼요.",
+            "newValue": "정리하면, 수수료는 매출의 삼 퍼센트 정도예요. 한 달만 해 보고 새 손님이 열 명 늘면 계속하시면 돼요.",
+            "reason": "제안대로면 has no referent; spec hedge 정도 restored, 17 eojeol"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/dialogue/5/base",
+            "oldValue": {
+              "de": "Zusammengefasst betragen die Gebühren laut Angebot drei Prozent des Umsatzes. Probieren Sie es einen Monat; wenn zehn neue Kunden dazukommen, können Sie weitermachen.",
+              "en": "In short, under the offer, fees are three percent of sales. Try it for a month, and keep going if ten new customers come in."
+            },
+            "newValue": {
+              "de": "Zusammengefasst betragen die Gebühren etwa drei Prozent des Umsatzes. Probieren Sie es einen Monat; wenn zehn neue Kunden dazukommen, können Sie weitermachen.",
+              "en": "In short, the fees are about three percent of sales. Try it for a month, and keep going if ten new customers come in."
+            },
+            "reason": "coupled base"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/synthesis/segments/0/text",
+            "oldValue": "정리하면, 제안대로면 수수료는 매출의 삼 퍼센트예요. 한 달만 해 보고 새 손님이 열 명 ",
+            "newValue": "정리하면, 수수료는 매출의 삼 퍼센트 정도예요. 한 달만 해 보고 새 손님이 열 명 ",
+            "reason": "coupled synthesis reconstruction"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/pattern/examples/1/targetText",
+            "oldValue": "정리하면, 제안대로면 수수료는 매출의 삼 퍼센트예요. 한 달만 해 보고 새 손님이 열 명 늘면 계속하시면 돼요.",
+            "newValue": "정리하면, 수수료는 매출의 삼 퍼센트 정도예요. 한 달만 해 보고 새 손님이 열 명 늘면 계속하시면 돼요.",
+            "reason": "coupled pattern example"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/pattern/examples/1/base",
+            "oldValue": {
+              "de": "Zusammengefasst betragen die Gebühren laut Angebot drei Prozent des Umsatzes. Probieren Sie es einen Monat; wenn zehn neue Kunden dazukommen, können Sie weitermachen.",
+              "en": "In short, under the offer, fees are three percent of sales. Try it for a month, and keep going if ten new customers come in."
+            },
+            "newValue": {
+              "de": "Zusammengefasst betragen die Gebühren etwa drei Prozent des Umsatzes. Probieren Sie es einen Monat; wenn zehn neue Kunden dazukommen, können Sie weitermachen.",
+              "en": "In short, the fees are about three percent of sales. Try it for a month, and keep going if ten new customers come in."
+            },
+            "reason": "coupled base"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/speak/2/requiredTokens",
+            "oldValue": [
+              "제안대로면",
+              "퍼센트예요",
+              "늘면"
+            ],
+            "newValue": [
+              "수수료는",
+              "정도예요",
+              "늘면"
+            ],
+            "reason": "tokens must be whole eojeol of new turn"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "중요하죠"
+            ],
+            "newValue": [
+              "중요하죠",
+              "중요하지요"
+            ],
+            "reason": "full -지요 form fits the cue"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "그런데"
+            ],
+            "newValue": [
+              "그런데",
+              "하지만",
+              "그렇지만",
+              "다만"
+            ],
+            "reason": "equivalent adversative connectors"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "늘면"
+            ],
+            "newValue": [
+              "늘면",
+              "늘어나면",
+              "생기면",
+              "오면"
+            ],
+            "reason": "equally valid verbs"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/6/title",
+            "oldValue": {
+              "de": "Kurs und App verbinden",
+              "en": "Combine classes and an app"
+            },
+            "newValue": {
+              "de": "Kurs oder App?",
+              "en": "Classes or an app?"
+            },
+            "reason": "title disclosed solution"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/6/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "그러면"
+            ],
+            "newValue": [
+              "그러면",
+              "그럼",
+              "그렇다면"
+            ],
+            "reason": "equivalent connectors"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/6/cloze/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "들으면 돼요",
+              "들으면 안 돼요",
+              "듣지 마세요",
+              "들어야 했어요"
+            ],
+            "reason": "들으세요/다니면 돼요 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/6/synthesis/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "원이니까",
+              "원이지만",
+              "원이라도",
+              "원인데도"
+            ],
+            "reason": "원이라서/원이고 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/7/build/framePrefix",
+            "oldValue": "첫 번째는 연봉이 높은 편이고, 두 번째 회사는 연봉은 낮아도 가깝고 야근이 없어요. 생활까지 ",
+            "newValue": "첫 번째는 연봉이 높은 편이고, 두 번째 회사는 연봉은 낮아도 가깝고 ",
+            "reason": "regroup to bind 더 to predicate"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/7/build/chunks",
+            "oldValue": [
+              "고려하면 두",
+              "번째",
+              "회사가",
+              "더",
+              "끌려요."
+            ],
+            "newValue": [
+              "야근이 없어요.",
+              "생활까지 고려하면",
+              "두 번째",
+              "회사가 더",
+              "끌려요."
+            ],
+            "reason": "lone 더 chip permitted 생활까지 더 고려하면 … 끌려요; new grouping has one grammatical order, focus 8 eojeol, reconstruction unchanged"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/7/build/distractors",
+            "oldValue": [
+              "덜",
+              "망설여져요."
+            ],
+            "newValue": [
+              "회사가 덜",
+              "망설여져요."
+            ],
+            "reason": "distractor matches new chunk shape"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/7/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "큰돈이기는 하죠",
+              "큰돈은 아니죠",
+              "큰돈이 아니기는 하죠",
+              "큰돈이면 좋겠죠"
+            ],
+            "reason": "큰돈이죠/큰돈이긴 하죠 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/7/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "수도 있어요"
+            ],
+            "newValue": [
+              "수도 있어요",
+              "수 있어요"
+            ],
+            "reason": "plain possibility valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/7/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "정리하면"
+            ],
+            "newValue": [
+              "정리하면",
+              "결론은",
+              "요약하면",
+              "한마디로"
+            ],
+            "reason": "equivalent summary frames"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "걱정이라서",
+              "걱정이 아니라서",
+              "걱정이지만",
+              "걱정이라도"
+            ],
+            "reason": "걱정돼서/걱정이니까 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "맞춰 가려고요"
+            ],
+            "newValue": [
+              "맞춰 가려고요",
+              "맞춰서 가려고요",
+              "맞춰 가려고 해요",
+              "맞춰 갈 거예요"
+            ],
+            "reason": "equivalent intention forms"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/8/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "관심 있으시면"
+            ],
+            "newValue": [
+              "관심 있으시면",
+              "관심이 있으시면",
+              "관심 있다고 하시면"
+            ],
+            "reason": "honorific equivalents"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/9/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "그렇다고 해서",
+              "그러니까",
+              "그래서",
+              "그러면"
+            ],
+            "reason": "그렇다고/그래도 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/9/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "있으면"
+            ],
+            "newValue": [
+              "있으면",
+              "있다면",
+              "생기면"
+            ],
+            "reason": "equivalent conditions"
+          },
+          {
+            "file": "korean-b2-p1.json",
+            "jsonPointer": "/lessons/9/synthesis/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "정하면 좋겠어요",
+              "정하면 안 돼요",
+              "정할 리가 없어요",
+              "정하지 마세요"
+            ],
+            "reason": "정했으면 좋겠어요/정하면 어떨까요 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/0/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "부재중이어서",
+              "부재중이지만",
+              "부재중이면",
+              "부재중인데도"
+            ],
+            "reason": "손님이 없어서 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/0/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "보내야 했어요"
+            ],
+            "newValue": [
+              "보내야 했어요",
+              "보내야 됐어요",
+              "보냈어요"
+            ],
+            "reason": "equivalent past forms"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/0/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "부담이니까"
+            ],
+            "newValue": [
+              "부담이니까",
+              "부담이라서",
+              "책임이니까"
+            ],
+            "reason": "책임 used in turn 4"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/1/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "버려도 돼요",
+              "버리면 안 돼요",
+              "버리지 마세요",
+              "버려야 돼요"
+            ],
+            "reason": "버리면 돼요/버릴 수 있어요 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/1/synthesis/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "신청하시면 돼요",
+              "신청하시면 안 돼요",
+              "신청하지 마세요",
+              "신청하셨어요"
+            ],
+            "reason": "신청하세요 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/2/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "고칠 줄 알았어요",
+              "고칠 줄 몰랐어요",
+              "고치면 안 돼요",
+              "고쳐야 했어요"
+            ],
+            "reason": "될 줄 알았어요 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/2/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "고치니까"
+            ],
+            "newValue": [
+              "고치니까",
+              "고쳐 보니까",
+              "고치다 보니까"
+            ],
+            "reason": "natural -니까 variants"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/2/synthesis/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "늘어서",
+              "줄어서",
+              "없어서",
+              "늘면"
+            ],
+            "reason": "많아서/늘어나서 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/3/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "때만"
+            ],
+            "newValue": [
+              "때만",
+              "때에만",
+              "경우에만"
+            ],
+            "reason": "equivalent restriction"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/3/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "넘으면"
+            ],
+            "newValue": [
+              "넘으면",
+              "넘어가면",
+              "되면"
+            ],
+            "reason": "만 점이 되면 equally valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/4/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "비슷해도",
+              "비슷해서",
+              "비슷하니까",
+              "비슷하면"
+            ],
+            "reason": "비슷하지만 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/4/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "재 보면"
+            ],
+            "newValue": [
+              "재 보면",
+              "재면",
+              "측정하면",
+              "재 봤더니"
+            ],
+            "reason": "equivalent measurement forms"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/4/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "제 경우에는"
+            ],
+            "newValue": [
+              "제 경우에는",
+              "제 경우는",
+              "저 같은 경우에는"
+            ],
+            "reason": "equivalent scoping frames; no 저는/전 row"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/5/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "아니라",
+              "아니면",
+              "아니지만",
+              "아니니까"
+            ],
+            "reason": "아니어도/아니고 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/5/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "걸로 알아요"
+            ],
+            "newValue": [
+              "걸로 알아요",
+              "것으로 알아요",
+              "걸로 알고 있어요"
+            ],
+            "reason": "것/거 and aspect variants"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/5/synthesis/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "쓰면 돼요",
+              "쓰면 안 돼요",
+              "쓰지 마세요",
+              "써야 했어요"
+            ],
+            "reason": "쓰세요/적으면 돼요 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/6/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "건 아니었죠",
+              "게 맞았죠",
+              "건 사실이죠",
+              "게 문제였죠"
+            ],
+            "reason": "건 아니죠/건 아니에요 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/6/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "그런데"
+            ],
+            "newValue": [
+              "그런데",
+              "하지만",
+              "다만",
+              "그렇지만"
+            ],
+            "reason": "equivalent connectors"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/6/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "그러면"
+            ],
+            "newValue": [
+              "그러면",
+              "그럼",
+              "그렇게 하면",
+              "그렇다면"
+            ],
+            "reason": "equivalent connectors"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/7/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "반이어도",
+              "반이니까",
+              "반이라서",
+              "반이 아니면"
+            ],
+            "reason": "반이라도/반만 있어도 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/7/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "아니라"
+            ],
+            "newValue": [
+              "아니라",
+              "아니어도",
+              "아니고"
+            ],
+            "reason": "아니어도 equally valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/7/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "취소가 나면"
+            ],
+            "newValue": [
+              "취소가 나면",
+              "취소가 생기면",
+              "취소되면"
+            ],
+            "reason": "equivalent"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "제안서대로면"
+            ],
+            "newValue": [
+              "제안서대로면",
+              "제안서에 따르면",
+              "제안서를 보면"
+            ],
+            "reason": "equivalent attribution"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "신고하면",
+              "신고해도",
+              "신고하니까",
+              "신고하지만"
+            ],
+            "reason": "신고만 하면/알리면 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "정리하면"
+            ],
+            "newValue": [
+              "정리하면",
+              "결론은",
+              "요약하면",
+              "한마디로"
+            ],
+            "reason": "equivalent summary frames"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/9/cloze/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "없지만",
+              "없어서",
+              "없으니까",
+              "없으면"
+            ],
+            "reason": "없는데/없어도 otherwise valid"
+          },
+          {
+            "file": "korean-b2-p2.json",
+            "jsonPointer": "/lessons/9/synthesis/blanks/0/choices",
+            "oldValue": null,
+            "newValue": [
+              "둘째",
+              "첫째",
+              "셋째",
+              "넷째"
+            ],
+            "reason": "두 번째/다음으로 otherwise valid; 첫째…셋째 context selects 둘째"
+          }
+        ],
+        "finalChecks": {
+          "afterEdits": "P1 L6 you3 17 eojeol; synthesis segment+blank equals new turn; pattern example 1 equals you3; speak tokens 수수료는/정도예요/늘면 whole eojeol of turn 5; P1 L8 build prefix+chunks reconstruct dialogue[1] exactly, 5 chunks of 1–3 eojeol each with content, focus 8 eojeol, 2 distractors distinct, speak turn-1 tokens 고려하면/회사가/끌려요 still ≥2 inside focus; every cloze and synthesis carries at most one choices blank, each choices set has 4 distinct values with exactly one in acceptedAnswers; all acceptedAnswers include answer and are distinct; no edit touches dialogue text except P1 L6 you3 revert to spec; trophies, ledger rows, surfaces, remainders, frozen A1/A2/B1 untouched; review flags stay false, verdict pending, nativeStatus unreviewed, reviewers empty",
+          "unresolved": [
+            "KO-PUB-01 independent full-content and native review pending",
+            "KO-PUB-02 real B2 validator/gate not implemented",
+            "KO-PUB-03 B2 renderer not implemented; cue/choice visibility unverified",
+            "KO-PUB-04 accepted-input runtime absent; added acceptedAnswers are authored rows only",
+            "KO-PUB-05 speak profiles provisional; no TTS run",
+            "manual chip-permutation and distractor review remains a native task beyond the cases repaired"
+          ],
+          "noClaims": "no provider, production, TTS or publication authorization; no human or native-model review asserted"
+        }
+      }
+    },
+    {
+      "batch": "B2_KOREAN_CONTENT_GATE_REPAIR_FABLE",
+      "rawProviderReviewSha256": "4fb4b1721d9a6481be0073286dea5b8c9e5a72f1b7cba0a693920cc96da27ea0",
+      "exactEdits": 33,
+      "exactSpecificationEdits": 0,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "all 60 turns, 10 builds/clozes/syntheses/recalls, 80 terms, 30 speak sets, 10 trophies vs ledger, carrierTags, variants, register finals, eojeol bounds re-counted for every edited turn (L6 you3 17→16)",
+            "remainingConcerns": "L5 효율적이에요 metonymy retained (allocation surface, 20-eojeol cap); native-human/listening review still absent"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "same full coupled read; L9 you1 recomposed at exactly 20 eojeol, focus 9, trophy 즉 adjacency to recall span preserved, variant row re-aligned token by token",
+            "remainingConcerns": "none canonical; publication holds listed below"
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "KO-B2-CONTENT-01",
+            "decision": "FIX",
+            "reason": "Attribute the fee to a referent the learner owns (제가 알아본 앱은), drop 정도/열 명 to stay in 8–17, keep one-month trial and 손님이 늘면 condition; no earnings guarantee"
+          },
+          {
+            "finding": "KO-B2-CONTENT-02",
+            "decision": "FIX",
+            "reason": "State the mechanism and location: fewer households driving to the station → station car park improves; 즉 restatement now follows from the walk/cycle comparison"
+          },
+          {
+            "finding": "KO-B2-PUB-01",
+            "decision": "FIX",
+            "reason": "맞아요. replaced by 싫다는 건 (안 싫다 non-native, absent whole); gate rejection retained"
+          },
+          {
+            "finding": "KO-B2-PUB-02",
+            "decision": "FIX",
+            "reason": "L2 운전도, L5 잃을 게, L7 주셔도 훨씬, L9 친구들이 못, L10 집에는 전혀, P2L6 장소로 and 빌린: grammatical chips, incompatible in slot"
+          },
+          {
+            "finding": "KO-B2-PUB-03",
+            "decision": "FIX",
+            "reason": "걱정이지만/걱정이라도 → 걱정이 없어서/걱정이면 (incoherent after 저도 그게); P2L9 신고하니까 → 신고하려면"
+          },
+          {
+            "finding": "KO-B2-PUB-04",
+            "decision": "FIX",
+            "reason": "되면 removed; > and ≥ are different policies"
+          },
+          {
+            "finding": "KO-B2-PUB-05",
+            "decision": "FIX",
+            "reason": "재 봤더니 removed; -더니 stays recognition-only in B2 P2"
+          },
+          {
+            "finding": "KO-B2-PUB-06",
+            "decision": "RETAIN_HOLD",
+            "reason": "Runtime/acceptance/audio unimplemented and unverified; authored acceptedAnswers never authorize synonym or particle normalization"
+          },
+          {
+            "finding": "KO-B2-NOTE-01",
+            "decision": "RETAIN",
+            "reason": "reason is the overall act; comparison is its surface frame"
+          },
+          {
+            "finding": "KO-B2-NOTE-02",
+            "decision": "RETAIN",
+            "reason": "destination metonym comprehensible; attested surface and 20-eojeol cap leave no room"
+          },
+          {
+            "finding": "KO-B2-NOTE-03",
+            "decision": "ACCEPT_CORRECTION",
+            "reason": "L8 focus is 9 eojeol, in range"
+          },
+          {
+            "finding": "KO-B2-NOTE-04",
+            "decision": "RETAIN",
+            "reason": "titles leak no later complication"
+          },
+          {
+            "finding": "KO-B2-GATE-01",
+            "decision": "FIX",
+            "reason": "ban only token-aligned 전 where canonical token is not 전; 자전거/전용/전해 unaffected"
+          },
+          {
+            "finding": "KO-B2-GATE-02",
+            "decision": "FIX",
+            "reason": "CHOICE_UNIT: every offered choice 1–3 eojeol and not an excluded bare unit; address ban stays dialogue-scoped per authority"
+          },
+          {
+            "finding": "KO-B2-GATE-03",
+            "decision": "FIX",
+            "reason": "십시오 ban moved into target(), covering every canonical Hangul field"
+          },
+          {
+            "finding": "KO-B2-GATE-04",
+            "decision": "FIX",
+            "reason": "non-blocking warnings collector; same-sentence whole-eojeol 제가/저는 + 세요/셨어요/십니다 trigger"
+          },
+          {
+            "finding": "KO-B2-GATE-05",
+            "decision": "FIX",
+            "reason": "staging binding extended to earlier lessons' requiredCarrier+recycles of the path and a bounded B1 productive literal list from the B1 staging tables; recognition leaks and untabled forms still reject"
+          },
+          {
+            "finding": "KO-B2-GATE-06",
+            "decision": "FIX",
+            "reason": "leading punctuation measured directly, not by length difference"
+          },
+          {
+            "finding": "KO-B2-GATE-07",
+            "decision": "FIX",
+            "reason": "중요하지. hits BANMAL_FINAL; 은 chunk keeps reconstruction; 매일 한 is present whole and not a chip"
+          },
+          {
+            "finding": "KO-B2-GATE-08",
+            "decision": "FIX",
+            "reason": "captions coupled, doesNotThrow against passing baseline"
+          }
+        ],
+        "edits": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/dialogue/5/targetText",
+            "oldValue": "정리하면, 수수료는 매출의 삼 퍼센트 정도예요. 한 달만 해 보고 새 손님이 열 명 늘면 계속하시면 돼요.",
+            "newValue": "정리하면, 제가 알아본 앱은 수수료가 매출의 삼 퍼센트예요. 한 달만 해 보고 손님이 늘면 계속하시면 돼요.",
+            "reason": "CONTENT-01 attribution"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/dialogue/5/base/de",
+            "oldValue": "Zusammengefasst betragen die Gebühren etwa drei Prozent des Umsatzes. Probieren Sie es einen Monat; wenn zehn neue Kunden dazukommen, können Sie weitermachen.",
+            "newValue": "Zusammengefasst nimmt die App, die ich mir angesehen habe, eine Gebühr von drei Prozent des Umsatzes. Probieren Sie es einen Monat; wenn die Kundschaft zunimmt, können Sie weitermachen.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/dialogue/5/base/en",
+            "oldValue": "In short, the fees are about three percent of sales. Try it for a month, and keep going if ten new customers come in.",
+            "newValue": "In short, the app I looked into charges a fee of three percent of sales. Try it for a month, and keep going if customers increase.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/pattern/examples/1/targetText",
+            "oldValue": "정리하면, 수수료는 매출의 삼 퍼센트 정도예요. 한 달만 해 보고 새 손님이 열 명 늘면 계속하시면 돼요.",
+            "newValue": "정리하면, 제가 알아본 앱은 수수료가 매출의 삼 퍼센트예요. 한 달만 해 보고 손님이 늘면 계속하시면 돼요.",
+            "reason": "coupled example"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/pattern/examples/1/base/de",
+            "oldValue": "Zusammengefasst betragen die Gebühren etwa drei Prozent des Umsatzes. Probieren Sie es einen Monat; wenn zehn neue Kunden dazukommen, können Sie weitermachen.",
+            "newValue": "Zusammengefasst nimmt die App, die ich mir angesehen habe, eine Gebühr von drei Prozent des Umsatzes. Probieren Sie es einen Monat; wenn die Kundschaft zunimmt, können Sie weitermachen.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/pattern/examples/1/base/en",
+            "oldValue": "In short, the fees are about three percent of sales. Try it for a month, and keep going if ten new customers come in.",
+            "newValue": "In short, the app I looked into charges a fee of three percent of sales. Try it for a month, and keep going if customers increase.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/synthesis/segments/0/text",
+            "oldValue": "정리하면, 수수료는 매출의 삼 퍼센트 정도예요. 한 달만 해 보고 새 손님이 열 명 ",
+            "newValue": "정리하면, 제가 알아본 앱은 수수료가 매출의 삼 퍼센트예요. 한 달만 해 보고 손님이 ",
+            "reason": "synthesis reconstruction"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/5/speak/2/requiredTokens",
+            "oldValue": [
+              "수수료는",
+              "정도예요",
+              "늘면"
+            ],
+            "newValue": [
+              "알아본",
+              "퍼센트예요",
+              "늘면"
+            ],
+            "reason": "whole eojeol of new turn"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/8/build/distractors",
+            "oldValue": [
+              "친구들이 다",
+              "맞아요."
+            ],
+            "newValue": [
+              "친구들이 못",
+              "싫다는 건"
+            ],
+            "reason": "PUB-01/PUB-02"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/0/choices",
+            "oldValue": [
+              "걱정이라서",
+              "걱정이 아니라서",
+              "걱정이지만",
+              "걱정이라도"
+            ],
+            "newValue": [
+              "걱정이라서",
+              "걱정이 아니라서",
+              "걱정이 없어서",
+              "걱정이면"
+            ],
+            "reason": "PUB-03"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/1/build/distractors/0",
+            "oldValue": "그동안 광고도",
+            "newValue": "그동안 운전도",
+            "reason": "PUB-02"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/4/build/distractors/0",
+            "oldValue": "살 게",
+            "newValue": "잃을 게",
+            "reason": "PUB-02"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/6/build/distractors/0",
+            "oldValue": "주시니까 조금",
+            "newValue": "주셔도 훨씬",
+            "reason": "PUB-02"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p1.json",
+            "jsonPointer": "/lessons/9/build/distractors/0",
+            "oldValue": "집에는 조금",
+            "newValue": "집에는 전혀",
+            "reason": "PUB-02"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/dialogue/1/targetText",
+            "oldValue": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 아침에 차 안 쓰는 집이 늘면 주차도 나아질 거예요.",
+            "newValue": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 역까지 차로 가는 집이 줄면 역 주차장도 나아질 거예요.",
+            "reason": "CONTENT-02 causal bridge, 20 eojeol"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/dialogue/1/base/de",
+            "oldValue": "Ich bin dafür. Zum Bahnhof läuft man fünfzehn Minuten; mit dem Fahrrad sind es fünf. Das heißt, wenn morgens mehr Haushalte das Auto stehen lassen, wird sich wohl auch die Parksituation verbessern.",
+            "newValue": "Ich bin dafür. Zum Bahnhof läuft man fünfzehn Minuten; mit dem Fahrrad sind es fünf. Das heißt, wenn weniger Haushalte mit dem Auto zum Bahnhof fahren, dürfte sich auch der Parkplatz am Bahnhof entspannen.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/dialogue/1/base/en",
+            "oldValue": "I am in favour. Walking to the station takes fifteen minutes; cycling takes five. That is, if more households leave the car at home in the morning, parking should improve too.",
+            "newValue": "I am in favour. Walking to the station takes fifteen minutes; cycling takes five. That is, if fewer households drive to the station, the station car park should improve too.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/build",
+            "oldValue": {
+              "framePrefix": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 아침에 ",
+              "chunks": [
+                "차 안",
+                "쓰는 집이",
+                "늘면",
+                "주차도 나아질",
+                "거예요."
+              ],
+              "distractors": [
+                "줄면",
+                "주차도 나빠질"
+              ],
+              "frameSuffix": ""
+            },
+            "newValue": {
+              "framePrefix": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, ",
+              "chunks": [
+                "역까지 차로",
+                "가는 집이",
+                "줄면",
+                "역 주차장도",
+                "나아질 거예요."
+              ],
+              "distractors": [
+                "늘면",
+                "나빠질 거예요."
+              ],
+              "frameSuffix": ""
+            },
+            "reason": "build reconstruction, focus 9"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/recall/after",
+            "oldValue": ". 즉, 아침에 차 안 쓰는 집이 늘면 주차도 나아질 거예요.",
+            "newValue": ". 즉, 역까지 차로 가는 집이 줄면 역 주차장도 나아질 거예요.",
+            "reason": "recall reconstruction"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/pattern/examples/0/targetText",
+            "oldValue": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 아침에 차 안 쓰는 집이 늘면 주차도 나아질 거예요.",
+            "newValue": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 역까지 차로 가는 집이 줄면 역 주차장도 나아질 거예요.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/pattern/examples/0/base/de",
+            "oldValue": "Ich bin dafür. Zum Bahnhof läuft man fünfzehn Minuten; mit dem Fahrrad sind es fünf. Das heißt, wenn morgens mehr Haushalte das Auto stehen lassen, wird sich wohl auch die Parksituation verbessern.",
+            "newValue": "Ich bin dafür. Zum Bahnhof läuft man fünfzehn Minuten; mit dem Fahrrad sind es fünf. Das heißt, wenn weniger Haushalte mit dem Auto zum Bahnhof fahren, dürfte sich auch der Parkplatz am Bahnhof entspannen.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/pattern/examples/0/base/en",
+            "oldValue": "I am in favour. Walking to the station takes fifteen minutes; cycling takes five. That is, if more households leave the car at home in the morning, parking should improve too.",
+            "newValue": "I am in favour. Walking to the station takes fifteen minutes; cycling takes five. That is, if fewer households drive to the station, the station car park should improve too.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/pattern/examples/0/highlights",
+            "oldValue": [
+              "즉,",
+              "늘면"
+            ],
+            "newValue": [
+              "즉,",
+              "줄면"
+            ],
+            "reason": "highlight present"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/trophy/example/targetText",
+            "oldValue": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 아침에 차 안 쓰는 집이 늘면 주차도 나아질 거예요.",
+            "newValue": "제 생각에는 찬성이에요. 역까지 걸으면 십오 분인데 자전거면 오 분이에요. 즉, 역까지 차로 가는 집이 줄면 역 주차장도 나아질 거예요.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/trophy/example/base/de",
+            "oldValue": "Ich bin dafür. Zum Bahnhof läuft man fünfzehn Minuten; mit dem Fahrrad sind es fünf. Das heißt, wenn morgens mehr Haushalte das Auto stehen lassen, wird sich wohl auch die Parksituation verbessern.",
+            "newValue": "Ich bin dafür. Zum Bahnhof läuft man fünfzehn Minuten; mit dem Fahrrad sind es fünf. Das heißt, wenn weniger Haushalte mit dem Auto zum Bahnhof fahren, dürfte sich auch der Parkplatz am Bahnhof entspannen.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/trophy/example/base/en",
+            "oldValue": "I am in favour. Walking to the station takes fifteen minutes; cycling takes five. That is, if more households leave the car at home in the morning, parking should improve too.",
+            "newValue": "I am in favour. Walking to the station takes fifteen minutes; cycling takes five. That is, if fewer households drive to the station, the station car park should improve too.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/terms/4",
+            "oldValue": {
+              "targetText": "주차도",
+              "kind": "noun",
+              "base": {
+                "de": "auch das Parken",
+                "en": "parking too"
+              }
+            },
+            "newValue": {
+              "targetText": "주차장도",
+              "kind": "noun",
+              "base": {
+                "de": "auch der Parkplatz",
+                "en": "the car park too"
+              }
+            },
+            "reason": "term attestation"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/speak/0/requiredTokens",
+            "oldValue": [
+              "집이",
+              "늘면",
+              "나아질"
+            ],
+            "newValue": [
+              "집이",
+              "줄면",
+              "나아질"
+            ],
+            "reason": "whole eojeol, 3 in focus"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/acceptedPhraseVariants/0",
+            "oldValue": "제 생각에는 찬성이에요. 역까지 걸으면 15 분인데 자전거면 5 분이에요. 즉, 아침에 차 안 쓰는 집이 늘면 주차도 나아질 거예요.",
+            "newValue": "제 생각에는 찬성이에요. 역까지 걸으면 15 분인데 자전거면 5 분이에요. 즉, 역까지 차로 가는 집이 줄면 역 주차장도 나아질 거예요.",
+            "reason": "token-aligned inbound numeral row"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/1/choices/2",
+            "oldValue": "신고하니까",
+            "newValue": "신고하려면",
+            "reason": "PUB-03 habitual-causal reading removed"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/3/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "넘으면",
+              "넘어가면",
+              "되면"
+            ],
+            "newValue": [
+              "넘으면",
+              "넘어가면"
+            ],
+            "reason": "PUB-04"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/4/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "재 보면",
+              "재면",
+              "측정하면",
+              "재 봤더니"
+            ],
+            "newValue": [
+              "재 보면",
+              "재면",
+              "측정하면"
+            ],
+            "reason": "PUB-05"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/korean-b2-p2.json",
+            "jsonPointer": "/lessons/5/build/distractors",
+            "oldValue": [
+              "날짜로",
+              "도착한"
+            ],
+            "newValue": [
+              "장소로",
+              "빌린"
+            ],
+            "reason": "PUB-02 date/arrival readings were defensible"
+          }
+        ],
+        "specEdits": [],
+        "codeEdits": [
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "export interface KoreanB2Allocation {",
+            "newValue": "export interface KoreanB2Warning {\n  code: 'SELF_HONORIFIC_ADVISORY';\n  detail: string;\n}\n\nexport interface KoreanB2Allocation {",
+            "reason": "GATE-04 warning type"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "// Bounded numeral readings for the inbound digit tolerance of acceptedPhraseVariants only.",
+            "newValue": "// Bounded B1 productive literal surfaces taken from the B1_NATIVE_KOREAN_SPEC staging tables (connectors and frames); not morphology.\nconst B1_PRODUCTIVE_LITERALS: readonly string[] = ['그런데', '그래서', '그래도', '역시', '그러면', '대신', '그리고', '그다음에', '그때는', '지금은', '것 같아요', '거 같아요', '수 있어요', '-기는 하지만', '-기는 한데', '-아/어도', '-는데도', '-(으)ㄹ 것 같아요'];\n\n// Bounded numeral readings for the inbound digit tolerance of acceptedPhraseVariants only.",
+            "reason": "GATE-05 bounded B1 binding"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "function variantTokenEquivalent(canonical: string, variant: string): boolean {",
+            "newValue": "export function variantTokenEquivalent(canonical: string, variant: string): boolean {",
+            "reason": "GATE-06 testable"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "  if (canonical.slice(c.length) !== variant.slice(v.length) || canonical.slice(0, canonical.length - c.length) !== variant.slice(0, variant.length - v.length)) return false;",
+            "newValue": "  const cl = /^[.?,]*/.exec(canonical)?.[0] ?? '';\n  const vl = /^[.?,]*/.exec(variant)?.[0] ?? '';\n  if (cl !== vl || canonical.slice(cl.length + c.length) !== variant.slice(vl.length + v.length)) return false;",
+            "reason": "GATE-06 leading/trailing punctuation measured directly"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "  requiredCarrier: z.string(),\n}).passthrough();",
+            "newValue": "  requiredCarrier: z.string(),\n  recycles: z.string(),\n}).passthrough();",
+            "reason": "GATE-05 recycles row is part of the bound staging evidence"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "  cleanText(value, code);\n  demand(HANGUL_LINE.test(value)",
+            "newValue": "  cleanText(value, code);\n  demand(!value.includes('십시오'), 'SIPSIO_BANNED', value);\n  demand(HANGUL_LINE.test(value)",
+            "reason": "GATE-03 global ban on every canonical Hangul field"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "  for (const v of values) target(v, 'CHOICE_HYGIENE');",
+            "newValue": "  for (const v of values) target(v, 'CHOICE_HYGIENE');\n  demand(values.every((v) => eojeolCount(v) >= 1 && eojeolCount(v) <= 3 && !EMPTY.has(norm(v))), 'CHOICE_UNIT', answer);",
+            "reason": "GATE-02 size and excluded bare unit on every offered choice"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "seen: { firsts: Set<string>; lemmas: Set<string>; families: Set<string> }): void {",
+            "newValue": "seen: { firsts: Set<string>; lemmas: Set<string>; families: Set<string> }, warnings: KoreanB2Warning[]): void {",
+            "reason": "GATE-04"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "      moves.push(turn.move);\n      checkRegister(turn.targetText, false, 'LEARNER_FINAL_REGISTER');",
+            "newValue": "      moves.push(turn.move);\n      checkRegister(turn.targetText, false, 'LEARNER_FINAL_REGISTER');\n      for (const sentence of turn.targetText.split(/[.?]/).map((s) => s.trim()).filter((s) => s.length > 0)) {\n        const ts = token(sentence);\n        const last = ts[ts.length - 1];\n        if ((ts.includes('제가') || ts.includes('저는')) && (last.endsWith('세요') || last.endsWith('셨어요') || last.endsWith('십니다'))) warnings.push({ code: 'SELF_HONORIFIC_ADVISORY', detail: where + ': ' + sentence });\n      }",
+            "reason": "GATE-04 non-blocking same-sentence whole-eojeol tripwire"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "    beat.requiredCarrier,\n  ].join('\\n');",
+            "newValue": "    ...path.lessons.slice(0, n).flatMap((l) => [l.requiredCarrier, l.recycles]),\n    B1_PRODUCTIVE_LITERALS.join(' '),\n  ].join('\\n');",
+            "reason": "GATE-05 earlier lessons of the path, their recycles rows and B1 literals"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "    demand(VARIANT_LINE.test(v) && !v.includes('전'), 'VARIANT_HYGIENE', v);\n    const vt = v.split(' ');",
+            "newValue": "    const vt = v.split(' ');\n    demand(VARIANT_LINE.test(v) && !vt.some((t, i) => strip(t) === '전' && strip(canonicalTokens[i] ?? '') !== '전'), 'VARIANT_HYGIENE', v);",
+            "reason": "GATE-01 token-aligned pronoun ban only"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "export function validateKoreanB2Draft(value: unknown, evidence: KoreanB2Evidence): KoreanB2Draft {",
+            "newValue": "export function validateKoreanB2Draft(value: unknown, evidence: KoreanB2Evidence, warnings: KoreanB2Warning[] = []): KoreanB2Draft {",
+            "reason": "GATE-04 observable channel"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedKoreanB2Drafts.ts",
+            "oldValue": "checkLesson(lesson, doc.pathNumber, verified, seen);",
+            "newValue": "checkLesson(lesson, doc.pathNumber, verified, seen, warnings);",
+            "reason": "GATE-04"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/test-guided-korean-b2-drafts.ts",
+            "oldValue": "  validateKoreanB2Draft,\n  verifyKoreanB2Evidence,",
+            "newValue": "  validateKoreanB2Draft,\n  variantTokenEquivalent,\n  verifyKoreanB2Evidence,",
+            "reason": "GATE-06 test import"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/test-guided-korean-b2-drafts.ts",
+            "oldValue": "  type KoreanB2Evidence,\n} from './lib/guidedKoreanB2Drafts';",
+            "newValue": "  type KoreanB2Evidence,\n  type KoreanB2Warning,\n} from './lib/guidedKoreanB2Drafts';",
+            "reason": "GATE-04 test import"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/test-guided-korean-b2-drafts.ts",
+            "oldValue": "mutation('register: banmal final -> BANMAL_FINAL', p1, (d) => { L(d, 1).dialogue[5].targetText = '그러면 역 근처 집으로 할게요. 돈보다 시간이 저한테는 더 중요해.'; }, 'BANMAL_FINAL');",
+            "newValue": "mutation('register: banmal final -> BANMAL_FINAL', p1, (d) => { L(d, 1).dialogue[5].targetText = '그러면 역 근처 집으로 할게요. 돈보다 시간이 저한테는 더 중요하지.'; }, 'BANMAL_FINAL');\nmutation('register: banmal 해 final is caught by the general learner check -> LEARNER_FINAL_REGISTER', p1, (d) => { L(d, 1).dialogue[5].targetText = '그러면 역 근처 집으로 할게요. 돈보다 시간이 저한테는 더 중요해.'; }, 'LEARNER_FINAL_REGISTER');",
+            "reason": "GATE-07 exact banned syllable; original line kept with its true code"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/test-guided-korean-b2-drafts.ts",
+            "oldValue": "test('gender: 유형이 (contains 형) is not a gendered-address hit', () => {\n  const c = structuredClone(p1);\n  L(c, 1).dialogue[0].targetText = '두 집 유형이 다르죠? 역 근처 집은 월세가 비싸고, 외곽 집은 출퇴근이 길어요.';\n  try { validate(c); } catch (e) { assert.ok(e instanceof KoreanB2GateError); assert.notEqual(e.code, 'GENDERED_ADDRESS'); }\n});",
+            "newValue": "test('gender: 유형이 (contains 형) validates in a fully coupled path', () => {\n  assert.doesNotThrow(() => validate(p1));\n  const c = structuredClone(p1);\n  const lesson = c.lessons[0];\n  const opener = '두 집 유형이 다르죠? 역 근처 집은 월세가 비싸고, 외곽 집은 출퇴근이 길어요.';\n  lesson.dialogue[0].targetText = opener;\n  lesson.sceneCaption = { de: lesson.situation.de + ' Die andere Person sagt: „' + opener + '“', en: lesson.situation.en + ' The other person says: “' + opener + '”' };\n  assert.doesNotThrow(() => validate(c));\n});",
+            "reason": "GATE-08 coupled captions, real positive"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/test-guided-korean-b2-drafts.ts",
+            "oldValue": "mutation('build: particle-only chunk -> WHOLE_CONTENT_CHUNK', p1, (d) => { L(d, 1).build.chunks[0] = '는'; L(d, 1).build.framePrefix = L(d, 1).build.framePrefix + '외곽 집'; }, 'WHOLE_CONTENT_CHUNK');",
+            "newValue": "mutation('build: particle-only chunk -> WHOLE_CONTENT_CHUNK', p1, (d) => { L(d, 1).build.chunks[0] = '은'; L(d, 1).build.framePrefix = L(d, 1).build.framePrefix + '외곽 집'; }, 'WHOLE_CONTENT_CHUNK');",
+            "reason": "GATE-07 reconstruction intact (집 + 은 = 집은)"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/test-guided-korean-b2-drafts.ts",
+            "oldValue": "mutation('build: distractor present whole in you1 -> DISTRACTOR_PRESENT', p1, (d) => { L(d, 1).build.distractors[1] = '한 시간'; L(d, 1).build.chunks[2] = '한 시간쯤'; L(d, 1).dialogue[1].targetText = L(d, 1).dialogue[1].targetText.replace('한 시간 넘게', '한 시간쯤 넘게'); }, 'DISTRACTOR_PRESENT');",
+            "newValue": "mutation('build: distractor present whole in you1 -> DISTRACTOR_PRESENT', p1, (d) => { L(d, 1).build.distractors[1] = '매일 한'; }, 'DISTRACTOR_PRESENT');",
+            "reason": "GATE-07 witness kept, no coupled fields touched"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/test-guided-korean-b2-drafts.ts",
+            "oldValue": "mutation('variants: row equal to canonical -> DISTINCT_VARIANT_ROWS', p1, (d) => { L(d, 1).acceptedPhraseVariants = [L(d, 1).dialogue[1].targetText]; }, 'DISTINCT_VARIANT_ROWS');",
+            "newValue": "mutation('variants: row equal to canonical -> DISTINCT_VARIANT_ROWS', p1, (d) => { L(d, 1).acceptedPhraseVariants = [L(d, 1).dialogue[1].targetText]; }, 'DISTINCT_VARIANT_ROWS');\nmutation('variants: 저는 -> 전 pronoun row -> VARIANT_HYGIENE', p1, (d) => { L(d, 2).acceptedPhraseVariants = ['차는 편한 반면에 주차비와 기름값이 많이 들어요. 지하철은 시간이 정확하고 그동안 책도 읽을 수 있어서 전 지하철이 더 나아요.']; }, 'VARIANT_HYGIENE');\nmutation('cloze: four-eojeol choice -> CHOICE_UNIT', p1, (d) => { L(d, 1).cloze.blanks[1].choices = ['작기는 하네요', '이 집도 아주 좋아요', '작지는 않네요', '작을 리가 없네요']; }, 'CHOICE_UNIT');\nmutation('cloze: bare bound noun choice 것 -> CHOICE_UNIT', p1, (d) => { L(d, 1).cloze.blanks[1].choices = ['작기는 하네요', '것', '작지는 않네요', '작을 리가 없네요']; }, 'CHOICE_UNIT');\nmutation('pattern: 십시오 in example -> SIPSIO_BANNED', p1, (d) => { L(d, 1).pattern.examples[1] = { targetText: '집을 보고 결정하십시오.', base: { de: 'Sehen Sie die Wohnung an und entscheiden Sie.', en: 'View the flat and decide.' }, highlights: ['결정하십시오'] }; }, 'SIPSIO_BANNED');\nmutation('trophy: 십시오 in trophy example -> SIPSIO_BANNED', p1, (d) => { L(d, 1).trophy.example.targetText = '두 집 다 장단점이 있으니 비교하십시오.'; }, 'SIPSIO_BANNED');\nmutation('carriers: untabled productive 덜 피곤해요 at P1 L5 -> CARRIER_STAGE_TABLE', p1, (d) => { L(d, 5).carrierTags = [{ surface: '덜 피곤해요', status: 'productive' }]; }, 'CARRIER_STAGE_TABLE');\ntest('carriers: B1 productive 그래도 (P1 L1) and recycled 주시니까 (P1 L7) productive tags pass', () => {\n  assert.doesNotThrow(() => validate(p1));\n  const c = structuredClone(p1);\n  c.lessons[0].carrierTags = [...(c.lessons[0].carrierTags ?? []), { surface: '그래도', status: 'productive' }];\n  c.lessons[6].carrierTags = [{ surface: '주시니까', status: 'productive' }];\n  assert.doesNotThrow(() => validate(c));\n});\ntest('variantTokenEquivalent: identical edge punctuation, licensed readings only', () => {\n  assert.equal(variantTokenEquivalent('삼십,', '30,'), true);\n  assert.equal(variantTokenEquivalent('분이에요.', '분이에요.'), true);\n  assert.equal(variantTokenEquivalent('그것', '그거'), true);\n  assert.equal(variantTokenEquivalent('삼십,', '30.'), false);\n  assert.equal(variantTokenEquivalent('삼십', '31'), false);\n  assert.equal(variantTokenEquivalent('저는', '전'), false);\n});\ntest('advisory: 제가 with -세요 in the same learner sentence emits SELF_HONORIFIC_ADVISORY without blocking', () => {\n  const clean: KoreanB2Warning[] = [];\n  assert.doesNotThrow(() => validateKoreanB2Draft(p1, evidence, clean));\n  assert.equal(clean.length, 0);\n  const c = structuredClone(p1);\n  const lesson = c.lessons[0];\n  lesson.dialogue[5].targetText = '그러면 제가 역 근처 집을 보세요. 돈보다 시간이 저한테는 더 중요하니까요.';\n  const seg = lesson.synthesis.segments[0];\n  if (seg.kind === 'text') seg.text = '그러면 제가 역 근처 집을 보세요. 돈보다 시간이 저한테는 ';\n  const warnings: KoreanB2Warning[] = [];\n  assert.doesNotThrow(() => validateKoreanB2Draft(c, evidence, warnings));\n  assert.equal(warnings.length, 1);\n  assert.equal(warnings[0].code, 'SELF_HONORIFIC_ADVISORY');\n});",
+            "reason": "GATE-01/02/03/04/05/06 reason-specific regressions and real positives"
+          }
+        ],
+        "finalChecks": [
+          "Root: apply content edits to fresh copies of both reviewed sources (and app p1/p2 copies), verify every oldValue byte-exact, keep raw streams/review unchanged, all 20 review blocks draft/pending/unreviewed/false.",
+          "Root: run scoped tsc + eslint on both TS files, then node --import tsx scripts/test-guided-korean-b2-drafts.ts; expected: both full paths PASS, all mutations fail for their named code, zero warnings on real paths.",
+          "Root: re-run independent reconstruction (80 equalities) and eojeol counts; P1L6 you3 = 16, P2L9 you1 = 20, P2L9 focus = 9.",
+          "No spec edit required: V2 already licenses the attribution rule, token-aligned 전 ban, choice unit rule, global 십시오 ban, advisory, and recycles rows; specRef hashes unchanged.",
+          "Request the single post-fix independent rereview; PUB-06 and listening/native-human holds remain."
+        ],
+        "limitations": [
+          "Model-based native arbitration, not native-human certification; no audio, runtime or provider verified.",
+          "B1_PRODUCTIVE_LITERALS is a bounded literal list derived from the B1 staging tables, not a morphology model; untagged carriers remain semantic review.",
+          "Chip-permutation uniqueness and synonym completeness remain manual; the new distractors were checked in slot by reading, not exhaustively."
+        ]
+      }
+    }
+  ],
+  "approvalBasis": "All exact old/new values replayed with deep copies; complete raw reviews preserved and final source objects equal independently reviewed bytes."
+}
