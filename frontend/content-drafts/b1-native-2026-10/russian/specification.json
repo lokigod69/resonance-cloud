@@ -1,0 +1,862 @@
+{
+  "status": "architect-spec",
+  "targetLanguage": "Russian",
+  "targetLanguageCode": "ru-RU",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "baseLanguage": "German",
+  "registerPolicy": "вы in every interlocutor and learner line across all 10 paths; no ты-forms, no youth slang, no imperatives without пожалуйста toward strangers; friends remain on вы (consistent with A1/A2); service staff use neutral polite Russian (скажите, пожалуйста / к сожалению / давайте).",
+  "genderSafety": "Voice plan continues A2 by path parity: odd paths female canonical (Nina/Maria roster), even paths male (Mark/Alan); parity is read by the TTS roster script, not stored as a lesson field. Design learner turns gender-free wherever the staged goal allows (мы-narration, у меня было, мне бы хотелось, можно было бы, мне удалось + infinitive, neuter short participles, present/future). Where a beat requires speaker-agreeing forms, canonical text follows the path gender and a COMPLETE opposite-gender alternative string of the whole turn is authored (lesson.genderAlternatives) and accepted for typed and spoken input; never suffix-guessed. Gender audit is semantic, not regex: a past -л/-ла or short-form token is unsafe only when its subject is the speaker (я). Third-person forms about others (она сказала, поезд ушёл, касса закрылась), мы-forms (мы ездили — any mixed or same-gender group), neuter impersonals (сделано, стало холоднее) and nouns ending in -л/-ла (стол, школа, дела) are safe. Mechanical denylist is a closed exact-token list: хотел, хотела, рад, рада, должен, должна, привык, привыкла, готов, готова, смог, смогла, забыл, забыла, решил, решила, сам, сама. In addition each lesson's author note lists the exact reviewed speaker-agreeing tokens in dialogue[1]/[3]; expected per path: P1 L4-10 я-past (приехала/приехал, увидела/увидел, села/сел), P3 L7-10 если бы я знала/знал, P8 L1-3 ездила/ездил, ела/ел, летала/летал, P8 L7 перестала/перестал, P10 L1-3 переехала/переехал, нашла/нашёл. None of these tokens may be speakRequired, recall answer, cloze answer or trophy.",
+  "orthography": "Cyrillic only; ё written wherever it belongs in all target text (ещё, всё, идёт, счёт); every accepted answer also lists the е-spelling fold; numbers as words with numeral-case review (два дня, пять минут); native punctuation (« » optional, en-dash for ranges); no digits, no Latin letters, no transliteration in target text.",
+  "segmentation": {
+    "dialogue0": "Interlocutor opening (dialogue[0]) 8-16 Cyrillic words, natural spoken Russian, may contain one aside; quoted verbatim in sceneCaption.de and .en.",
+    "dialogue1": "Learner first reply (dialogue[1]) 8-16 words; exactly the join of the chunks; carries the trophy; source of speakRequired tokens and the recall blank; gender-free where the staged goal allows.",
+    "dialogue2": "Interlocutor complication (dialogue[2]) 6-14 words; adds information turn 0 could not anticipate; never quoted in captions.",
+    "dialogue3": "Learner closing (dialogue[3]) 6-12 words; target of the cloze; shape A workable next step, shape B continues the mini-narrative, shape C accepts the counter-offer with one explicit change.",
+    "chunks": "4-7 meaningful phrase chunks (discourse marker | verb phrase | object/complement | subordinate clause); chunks.join(' ') === dialogue[1].targetText byte-for-byte; no chunk ends inside a word; punctuation stays attached to the preceding chunk.",
+    "speechTokens": "Three distinct Cyrillic surface tokens from dialogue[1], ≥4 letters each, not pronouns, not да/нет, not on the speaker-agreeing denylist (see genderSafety), ё/е fold applied; optional tokens cover remaining content words.",
+    "trophyAnchoring": "Trophy is the exact surface form appearing in dialogue[1].targetText and in trophyWord.example (NFC + casefold, whole token after stripping punctuation); adverbs, conjunctions, prepositions, nominative nouns, infinitives, neuter short participles and fixed first-person forms (собираюсь) are chosen so no inflection is needed; never a substring inside another word.",
+    "acceptedInput": "Where the runtime exposes accepted answers for a learner turn, the set is: canonical + ё→е fold + the reviewed full-string opposite-gender alternative from lesson.genderAlternatives (when present) + at most one reviewed full-string word-order variant; each entry is a complete turn, never a partial string, never suffix-generated; recall and cloze accept canonical and е-fold only."
+  },
+  "knownTraps": [
+    "Aspect choice in narration: imperfective for background/duration (ждали, шёл дождь), perfective for sequenced events (пришли, увидели); distractors must not create a second valid reading.",
+    "бы never combines with a finite present or future form (*я бы иду, *я бы поеду). It combines with the past-tense form in conditional and polite-request clauses (вы не могли бы, если бы было, мне бы хотелось) and with a bare infinitive in wish/possibility frames (Можно бы поехать. Мне бы отдохнуть. Поехать бы на море!). Productive scope in this spec: бы + past form, мне бы хотелось + infinitive, можно было бы + infinitive; bare infinitive + бы (Поехать бы) is recognition-only in interlocutor lines. хотел бы / хотела бы is gendered — prefer мне бы хотелось in canonical learner lines.",
+    "который agrees in gender/number with antecedent but takes case from its own clause (сумка, которую; поезд, на котором); never calque German der/die/das.",
+    "ли attaches after the focused word (не знаете ли вы / работает ли касса); embedded question-word clauses never add ли.",
+    "Short passive participles (закрыто, сделано, оформлен/оформлена) agree with the thing, not the speaker; neuter impersonal forms are gender-safe, nominal subjects are not.",
+    "чтобы + infinitive only with same subject; different subject requires чтобы + past form.",
+    "Deictics здесь/сейчас/теперь/уже/ещё are forbidden trophies but remain free in dialogue text; do not avoid them in sentences.",
+    "раньше (formerly) vs ранее (earlier, formal); перестать + imperfective infinitive only.",
+    "Numeral case after два/три/четыре (genitive singular) vs пять+ (genitive plural) in all cost/time follow-ups.",
+    "ё/е homographs (все/всё) must be disambiguated by context in cloze and recall; never a blank that е-fold makes ambiguous.",
+    "German base must not over-formalise (Sie) into archaic Russian; English base must not shorten Russian hedges (пожалуй, впрочем) into nothing."
+  ],
+  "mechanicalValidationRules": [
+    "Exactly 10 paths × 10 lessons; 100 trophies pairwise distinct and absent from forbiddenTrophies under NFC + casefold.",
+    "Trophy surface token occurs in dialogue[1].targetText and in trophyWord.example (string), tokenised on whitespace, punctuation stripped.",
+    "dialogue is exactly 4 tuples {targetText, baseText:{de,en}} all non-empty; turns 0 and 2 are the interlocutor, 1 and 3 the learner.",
+    "Word counts: dialogue[0] and dialogue[1] 8-16 Cyrillic words; dialogue[2] 6-14; dialogue[3] 6-12.",
+    "chunks: array of {targetText, baseText:{de,en}}, length 4-7; chunk targetTexts joined by a single ASCII space === dialogue[1].targetText.",
+    "speakRequired has 3 distinct tokens, each present in dialogue[1].targetText after ё/е fold, length ≥4, not a pronoun, not да/нет, not in the closed exact-token denylist in genderSafety and not in the lesson's reviewed speaker-agreeing list; no suffix regex is applied.",
+    "cloze is an array of strings and blank objects {kind, answer, cue?, choices}; concatenating strings and answers in order === dialogue[3].targetText; 2-3 blank objects per lesson drawn from the path clozeSchema as a menu (not every blank class in every lesson) and only for constructions staged at or before that lesson; choices.length === 4 with answer present exactly once; kind in form|connector|choice; cue present iff kind === 'form'; no choice is a speaker-agreeing gendered form; no answer is a bare pronoun or single-letter word.",
+    "recall.before + recall.answer + recall.after === dialogue[1].targetText; fallbackChoices.length === 4 containing answer exactly once; answer is a content word of ≥4 letters, not on the denylist.",
+    "pattern = {label:string, rule:{de,en}, examples:[{targetText, baseText:{de,en}, highlight}]}; examples.length 2-3; each highlight is a contiguous substring of its targetText; exactly one example targetText equals dialogue[1].targetText or dialogue[3].targetText.",
+    "trophyWord = {word, meaning:{de,en}, example:string, whyThisWord:{de,en}}; whyThisWord names the surface form chosen (adverb, infinitive, neuter participle) in one clause — no separate surfaceNote field.",
+    "pedagogicalGoal is a single German string; no English mirror field exists.",
+    "Every target text matches /^[А-Яа-яЁё\\s.,!?;:«»()—-]+$/ (no digits, no Latin letters); words of the curated ё-lexicon (ещё, всё, идёт, счёт, её, партнёр, насчёт) always carry ё.",
+    "sceneCaption.de and .en each contain dialogue[0].targetText verbatim inside quotation marks; neither contains dialogue[2].targetText in full nor any contiguous run of 4 or more consecutive tokens of it; whether a caption hints at the complication is semantic review, not a token test.",
+    "Where accepted answers exist for a learner turn: entry 0 === targetText; every other entry equals canonical with ё→е applied, or equals the authored lesson.genderAlternatives string for that turn (or its ё→е fold), or equals the single reviewed word-order variant (or its fold); all entries are complete turns.",
+    "Staged-form gate: constructions introduced at B1 (бы, который-forms, ли, чтобы + past, short participles, -ся process verbs, раньше/перестать frames, если … то) may appear in learner turns only from the lesson range that stages them in path.staging; the gate table lives in validator config, not in lesson JSON. A2-inherited constructions (gendered past, future буду + infinitive and perfective future, давайте, можно, comparatives, потому что) are globally licensed in every learner turn, including future closings in dialogue[3]."
+  ],
+  "semanticReviewRules": [
+    "Turn 2 must add new information or a complication that turn 1 could not have anticipated; captions must not hint at it.",
+    "Learner never asserts staff-only decisions (refund approved, room changed) — learner requests, proposes, accepts with modification.",
+    "Shape A ends with a workable next step; shape B replies form one connected mini-narrative across turns 1 and 3; shape C turn 3 accepts the counter-offer with one explicit change.",
+    "Cloze distractors are grammatical Russian words but produce a wrong aspect, case, connector or meaning; no near-synonym (also acceptable) among choices.",
+    "Concession pairs (хотя/зато/однако/впрочем) must contrast real content, not restate it.",
+    "Narration aspect reads naturally to a native reviewer: no perfective for ongoing background, no imperfective for a single completed event in sequence.",
+    "Gender audit: every speaker-agreeing form in canonical learner lines matches path gender; genderAlternative is a complete, natural sentence, not a swapped suffix.",
+    "Register audit: no ты, no diminutives of address, no slang (чё, ваще, короче), no bureaucratic calques (осуществить, являться) in spoken turns.",
+    "Trophy whyThisWord explains real reuse value and the form chosen (why nominative/infinitive/adverb).",
+    "German and English bases are idiomatic renderings of the same Russian meaning, not of each other.",
+    "Cultural plausibility: prices, hours, institutions (МФЦ, поликлиника, пункт выдачи) are realistic for a Russian-speaking city without naming a specific one."
+  ],
+  "requiredSchemaExtensions": [
+    "Base shapes are unchanged: dialogue tuple of 4, chunks/terms arrays, cloze array, recall, pattern, trophyWord, German pedagogicalGoal string.",
+    "Proposed (optional, no runtime support claimed): lesson.genderAlternatives — optional object keyed '1' and/or '3' whose values are complete reviewed opposite-gender strings of that learner turn, placed as a sibling of dialogue; absent when the turn is gender-free; the validator (not the app) merges them into any accepted-answer set and never generates suffixes.",
+    "Speak: no new runtime config or pilot setting; B1 lessons use the existing B1 scaffold (threshold 0.65, 15-second recording). The gendered-choice cloze check and the per-lesson speaker-agreeing token list are validator rules only; no new JSON fields.",
+    "Captions: validator quotes dialogue[0].targetText for B1 (no separate interlocutor line field).",
+    "Staging gate table is validator configuration keyed by pathNumber and lesson range, derived from path.staging; no stagedConstructions field is added to paths.",
+    "ё→е acceptance is hand-listed as in A2 until a loader fold is approved (see unresolvedDecisions)."
+  ],
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Как это было",
+      "anchor": "Telling a listener what happened: background, sequence, surprise",
+      "register": "friends and colleagues on вы, warm, narrative",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "imperfective past for background/duration with мы or у нас было; sequencers сначала, потом; present-tense frame for setting",
+          "recognitionOnly": "perfective sequence verbs in the interlocutor's follow-up"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "perfective event chains with затем, наконец, вдруг; completed-action contrast with imperfective background; genderAlternative for я-forms",
+          "recognitionOnly": "когда-clauses combining both aspects"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "когда + imperfective background vs perfective event; пока; однажды frames; time adverbs рано, поздно, случайно",
+          "recognitionOnly": "past gerund (-в: приехав) in the interlocutor's lines"
+        }
+      ],
+      "clozeSchema": "form blanks on verb aspect (cue: 'завершённое действие' / 'длительное'), connector blanks on сначала/потом/затем/вдруг/когда; third blank optional choice of time adverb; never a pronoun blank",
+      "recycles": "A2 past tense (gendered, now mostly мы-based); A2 future (буду + infinitive, perfective future) explicitly licensed in dialogue[3] closings from L1 (e.g. L10 Да, занятия будут продолжаться); feeds P9 L1-3 and P10 L1-3",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "сначала",
+          "beat": "Colleague asks about your trip; first flight, then hotel; she asks what you saw."
+        },
+        {
+          "number": 2,
+          "trophy": "потом",
+          "beat": "Friend asks about Sunday; market first, then park; he asks whom you met there."
+        },
+        {
+          "number": 3,
+          "trophy": "долго",
+          "beat": "Neighbour asks about post office queue; you waited long; she asks if parcel arrived."
+        },
+        {
+          "number": 4,
+          "trophy": "затем",
+          "beat": "Host asks about city day; three stops in sequence; she asks which was best."
+        },
+        {
+          "number": 5,
+          "trophy": "вдруг",
+          "beat": "Friend asks why late; rain started suddenly on walk; she asks where you sheltered."
+        },
+        {
+          "number": 6,
+          "trophy": "наконец",
+          "beat": "Colleague asks about flat search; finally found one after months; she asks the district."
+        },
+        {
+          "number": 7,
+          "trophy": "однажды",
+          "beat": "Teacher asks for a mistake story; once took wrong train; she asks how you returned."
+        },
+        {
+          "number": 8,
+          "trophy": "рано",
+          "beat": "Friend asks about morning; got up early, café closed; she asks what you did."
+        },
+        {
+          "number": 9,
+          "trophy": "поздно",
+          "beat": "Host asks about concert; ended late, metro closed; she asks how you got home."
+        },
+        {
+          "number": 10,
+          "trophy": "случайно",
+          "beat": "Friend asks how you met your teacher; by chance in library; she asks if lessons continue."
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "С одной стороны",
+      "anchor": "Giving an opinion and conceding a point without losing it",
+      "register": "colleagues, club acquaintances on вы, discursive but friendly",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "мне кажется, что / я думаю, что; reason with потому что; evaluative adverbs (интересно, дорого, полезно) in impersonal frames",
+          "recognitionOnly": "по-моему, на мой взгляд in interlocutor lines"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "concession with хотя and зато; contrast а / но; comparative adjectives already known",
+          "recognitionOnly": "несмотря на + accusative"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "однако, впрочем, пожалуй, наоборот as discourse pivots; с одной стороны … с другой стороны",
+          "recognitionOnly": "всё-таки and всё же as emphatic concessions"
+        }
+      ],
+      "clozeSchema": "connector blank (хотя/зато/однако/впрочем) with contrast-breaking distractors; form blank on predicate adverb vs adjective (cue 'безличное'); optional choice blank on evaluative word",
+      "recycles": "A2 потому что and comparatives; P1 narration in examples; feeds P9 L4-6 and P10 L4-6",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "кажется",
+          "beat": "Colleague asks if new schedule works; seems fine, mornings hard; she asks why."
+        },
+        {
+          "number": 2,
+          "trophy": "мнение",
+          "beat": "Club host asks your opinion of film; good but long; he asks about ending."
+        },
+        {
+          "number": 3,
+          "trophy": "смысл",
+          "beat": "Friend doubts evening classes; you see the sense for speaking; he asks about cost."
+        },
+        {
+          "number": 4,
+          "trophy": "хотя",
+          "beat": "Coworker asks about winter here; cold though beautiful; she asks whether you still walk."
+        },
+        {
+          "number": 5,
+          "trophy": "зато",
+          "beat": "Friend asks about small flat; tiny but central; he asks about noise."
+        },
+        {
+          "number": 6,
+          "trophy": "разница",
+          "beat": "Barista asks if you taste difference between beans; slight; she asks preference."
+        },
+        {
+          "number": 7,
+          "trophy": "однако",
+          "beat": "Colleague praises new app; you agree, however it crashes; she asks when."
+        },
+        {
+          "number": 8,
+          "trophy": "впрочем",
+          "beat": "Friend asks about restaurant; pricey, though worth it; he asks what to order."
+        },
+        {
+          "number": 9,
+          "trophy": "пожалуй",
+          "beat": "Host asks whether to extend meeting; perhaps shorter is better; she asks your reason."
+        },
+        {
+          "number": 10,
+          "trophy": "наоборот",
+          "beat": "Friend assumes you dislike remote work; on the contrary; he asks why."
+        }
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Если бы можно было",
+      "anchor": "Softened requests and hypotheticals at counters and with landlords",
+      "register": "service staff and landlords on вы, polite-cautious",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "вы не могли бы + infinitive; можно было бы + infinitive; у меня просьба",
+          "recognitionOnly": "хотел бы / хотела бы displayed in both forms in pattern notes"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "мне бы хотелось + infinitive/accusative; было бы лучше/удобнее + infinitive; вместо + genitive; заранее",
+          "recognitionOnly": "если бы clauses in interlocutor counter-offers"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "если бы + past, (то) + бы + past; genderAlternative mandatory where я + past appears; иначе as consequence marker",
+          "recognitionOnly": "subjunctive wishes (хоть бы) and разрешите in staff lines"
+        }
+      ],
+      "clozeSchema": "form blank on бы + past (cue 'условное'), connector blank если/иначе/вместо; third blank choice of politeness verb (уточнить/попробовать/разрешить); distractors break бы agreement",
+      "recycles": "A2 давайте and future offers; P2 concession in acceptance lines; feeds P9 L4-10",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "просьба",
+          "beat": "Hotel desk; request to change room; clerk offers higher floor; you accept wanting quiet side."
+        },
+        {
+          "number": 2,
+          "trophy": "уточнить",
+          "beat": "Bank clerk; could she clarify the fee; she quotes yearly; you ask monthly option."
+        },
+        {
+          "number": 3,
+          "trophy": "попробовать",
+          "beat": "Gym desk; could you try a trial class; staff offers Thursday; you ask evening slot."
+        },
+        {
+          "number": 4,
+          "trophy": "возможно",
+          "beat": "Landlord; possibly repair on Friday; he proposes Saturday; you accept morning only."
+        },
+        {
+          "number": 5,
+          "trophy": "вместо",
+          "beat": "Café; you'd like tea instead of coffee in set; waiter checks; you accept with lemon."
+        },
+        {
+          "number": 6,
+          "trophy": "заранее",
+          "beat": "Dentist desk; you'd like booking in advance; receptionist offers March; you ask earlier date."
+        },
+        {
+          "number": 7,
+          "trophy": "разрешить",
+          "beat": "Office; could they allow bike inside; manager offers courtyard; you accept if locked."
+        },
+        {
+          "number": 8,
+          "trophy": "иначе",
+          "beat": "Courier; if earlier, otherwise you miss it; he proposes neighbour; you suggest workplace."
+        },
+        {
+          "number": 9,
+          "trophy": "наверное",
+          "beat": "Tailor; probably shorter sleeve would suit; she suggests two centimetres; you settle on one."
+        },
+        {
+          "number": 10,
+          "trophy": "скидка",
+          "beat": "Shop; if you took two, would discount apply; clerk offers five percent; you ask ten."
+        }
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "Тот, который",
+      "anchor": "Identifying and describing things and people precisely",
+      "register": "lost-and-found, shops, colleagues on вы, neutral-helpful",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "который in nominative (сумка, которая; рюкзак, который); colour and size with у + genitive",
+          "recognitionOnly": "который in oblique cases in staff lines"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "который in accusative and prepositional (которую, в котором); descriptive instrumental (с ремнём)",
+          "recognitionOnly": "long passive participle (сделанный, оставленный) as adjective"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "выглядит как / похоже на; тот самый; relative chains with genitive (у которого); потерять with object",
+          "recognitionOnly": "active present participle (лежащий, стоящий) in interlocutor descriptions"
+        }
+      ],
+      "clozeSchema": "form blank on который case (cue 'падеж по роли в придаточном'), choice blank on colour/size/material adjective agreement; optional connector blank (в котором/у которого)",
+      "recycles": "A2 adjectives and prepositions of place; P1 past for 'where I left it'; feeds P9 descriptions of faulty items",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "который",
+          "beat": "Lost-and-found asks which bag; the one that has blue strap; she asks what's inside."
+        },
+        {
+          "number": 2,
+          "trophy": "описание",
+          "beat": "Police desk asks for bike description; you give it; officer asks about frame sticker."
+        },
+        {
+          "number": 3,
+          "trophy": "цвет",
+          "beat": "Assistant asks which jacket; the dark green colour; she asks your size."
+        },
+        {
+          "number": 4,
+          "trophy": "размер",
+          "beat": "Returns desk asks which size arrived; the one that's too small; clerk asks about replacement."
+        },
+        {
+          "number": 5,
+          "trophy": "куртка",
+          "beat": "Café staff ask about jacket; the jacket you hung by the window; they ask pockets."
+        },
+        {
+          "number": 6,
+          "trophy": "рюкзак",
+          "beat": "Train attendant asks which backpack; the one with charger inside; she asks seat number."
+        },
+        {
+          "number": 7,
+          "trophy": "очки",
+          "beat": "Friend asks which glasses; the ones the man by door wears; he asks the brand."
+        },
+        {
+          "number": 8,
+          "trophy": "внутри",
+          "beat": "Hostel desk asks about box; inside is notebook with notes; she asks cover colour."
+        },
+        {
+          "number": 9,
+          "trophy": "выглядит",
+          "beat": "Colleague asks what new manager looks like; tall, looks friendly; she asks which office."
+        },
+        {
+          "number": 10,
+          "trophy": "потерять",
+          "beat": "Friend asks what you lost; scarf bought last winter; he asks where you last had it."
+        }
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Не подскажете",
+      "anchor": "Asking indirectly at desks where the answer is never simple",
+      "register": "receptions, info points, HR on вы, formal-polite",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "скажите, пожалуйста / не подскажете + question-word clause (где, когда, сколько); хотелось бы узнать",
+          "recognitionOnly": "ли-questions in staff replies"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "embedded ли-questions (не знаете ли вы, есть ли, можно ли); точно as focus",
+          "recognitionOnly": "или нет tails"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "насчёт + genitive; подробнее о + prepositional; chained inquiries with а также / и ещё; conditions and deadlines (условия, срок)",
+          "recognitionOnly": "reported speech with что (мне сказали, что)"
+        }
+      ],
+      "clozeSchema": "connector blank on ли placement vs question word; form blank on genitive after насчёт/условия (cue 'родительный'); choice blank on inquiry verb (узнать/уточнить/подсказать)",
+      "recycles": "A2 где/когда questions and можно; P3 бы in softened inquiries; feeds P9 L1-3 and P6 result checks",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "узнать",
+          "beat": "Clinic desk; you want to know when results ready; doctor away; you ask alternative."
+        },
+        {
+          "number": 2,
+          "trophy": "подскажите",
+          "beat": "Station info; could they say where lost property is; it's closed; you ask hours."
+        },
+        {
+          "number": 3,
+          "trophy": "расписание",
+          "beat": "Pool desk; you ask whether schedule changed; summer hours now; you ask weekend."
+        },
+        {
+          "number": 4,
+          "trophy": "точно",
+          "beat": "Pharmacy; whether they know exactly if item in stock; tomorrow only; you reserve."
+        },
+        {
+          "number": 5,
+          "trophy": "очередь",
+          "beat": "Post office; whether this queue is for parcels; wrong window; you ask number."
+        },
+        {
+          "number": 6,
+          "trophy": "справка",
+          "beat": "HR desk; whether certificate can be issued today; stamp needed; you ask when."
+        },
+        {
+          "number": 7,
+          "trophy": "насчёт",
+          "beat": "Landlord; you ask regarding heating start; inspection first; you ask the date."
+        },
+        {
+          "number": 8,
+          "trophy": "подробнее",
+          "beat": "Course office; more detail on exam; registration closed; you ask waitlist."
+        },
+        {
+          "number": 9,
+          "trophy": "условия",
+          "beat": "Gym; conditions for freezing membership; one month minimum; you ask the fee."
+        },
+        {
+          "number": 10,
+          "trophy": "срок",
+          "beat": "Visa centre; how long processing takes; photo missing; you ask format."
+        }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "Уже сделано",
+      "anchor": "Reporting what is done, underway and still pending",
+      "register": "workshops, offices, neighbours on вы, matter-of-fact",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "neuter short passive participles as results (сделано, закрыто, открыто) with уже / ещё не; impersonal frames (всё готово-type)",
+          "recognitionOnly": "-ся process verbs in staff replies"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-ся process verbs (ремонтируется, проверяется, оформляется); нужно/надо + infinitive; занято/свободно",
+          "recognitionOnly": "instrumental agent (мастером)"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "participle agreeing with noun (заказ оформлен, заявка получена — agreement with thing, not speaker); результат with получен/готов; доставка назначена",
+          "recognitionOnly": "long participles (оформленный заказ) and будет сделано"
+        }
+      ],
+      "clozeSchema": "form blank on short participle agreement with noun (cue 'род существительного'), connector blank уже/ещё не/пока; choice blank on process verb -ся; distractors use wrong voice or aspect",
+      "recycles": "A2 готово/заплачено phrases; P5 inquiry frames for checking status; feeds P9 L1-6 problem statements",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "сделано",
+          "beat": "Workshop; translation already done; wrong file sent; you promise resend by evening."
+        },
+        {
+          "number": 2,
+          "trophy": "закрыто",
+          "beat": "Neighbour asks about shop; closed for renovation; opens next month; you suggest other."
+        },
+        {
+          "number": 3,
+          "trophy": "открыто",
+          "beat": "Friend asks about museum; open until eight; tickets online only; you offer to buy."
+        },
+        {
+          "number": 4,
+          "trophy": "ремонт",
+          "beat": "Landlord asks about tap; repair underway; part missing; you ask timing."
+        },
+        {
+          "number": 5,
+          "trophy": "проверить",
+          "beat": "IT desk; you ask them to check laptop; backup needed first; you agree to copy."
+        },
+        {
+          "number": 6,
+          "trophy": "занято",
+          "beat": "Café; you say table already taken; reservation expired; you offer to move."
+        },
+        {
+          "number": 7,
+          "trophy": "оформлено",
+          "beat": "Pickup point; your return paperwork is processed — заявление на возврат уже оформлено, всё оформлено (neuter agreement with заявление/всё, never возврат оформлен); refund takes a week; you ask tracking."
+        },
+        {
+          "number": 8,
+          "trophy": "починить",
+          "beat": "Bike shop; you ask whether brake fixed; wheel also needs; you accept extra cost."
+        },
+        {
+          "number": 9,
+          "trophy": "результат",
+          "beat": "Lab; you ask whether result came; sample must repeat; you book slot."
+        },
+        {
+          "number": 10,
+          "trophy": "доставка",
+          "beat": "Shop; your delivery set for Tuesday; courier ill; you ask pickup instead."
+        }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Чтобы успеть",
+      "anchor": "Purposes, plans and conditions while agreeing on details",
+      "register": "teachers, trainers, HR, friends on вы, planning tone",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "чтобы + infinitive (same subject); цель with чтобы; успеть + infinitive; собираюсь + infinitive",
+          "recognitionOnly": "для того чтобы"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "если …, то …; planning with планирую / собираюсь; подготовить by deadline (к + dative); вовремя",
+          "recognitionOnly": "чтобы + past clause in interlocutor lines"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "чтобы + past with different subject (чтобы коллеги понимали); если не …, (то) …; обязательно; отпуск/курс planning vocabulary",
+          "recognitionOnly": "в случае если; при условии что"
+        }
+      ],
+      "clozeSchema": "form blank on чтобы + infinitive vs past (cue 'один субъект / разные субъекты'), connector blank если/то/чтобы; choice blank on plan verb (собираюсь/успею/подготовлю)",
+      "recycles": "A2 future буду + infinitive and perfective future (globally licensed); P3 soft requests in negotiation; feeds P10 L7-10",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "чтобы",
+          "beat": "Teacher asks why you study; to speak with colleagues; she offers club; you accept weekly."
+        },
+        {
+          "number": 2,
+          "trophy": "собираюсь",
+          "beat": "Friend asks summer plans; going to Baikal; he suggests July; you prefer August."
+        },
+        {
+          "number": 3,
+          "trophy": "успеть",
+          "beat": "Colleague asks about report; leaving early to catch train; she proposes Friday; you agree."
+        },
+        {
+          "number": 4,
+          "trophy": "цель",
+          "beat": "Trainer asks your goal; ten kilometres; he proposes plan; you accept slower start."
+        },
+        {
+          "number": 5,
+          "trophy": "если",
+          "beat": "Host plans picnic; if rain, café; she proposes her flat; you accept bringing dessert."
+        },
+        {
+          "number": 6,
+          "trophy": "подготовить",
+          "beat": "Boss asks you to prepare slides for Monday; you negotiate Tuesday noon."
+        },
+        {
+          "number": 7,
+          "trophy": "вовремя",
+          "beat": "Friend plans airport; leave at six to be on time; he proposes taxi; you choose train."
+        },
+        {
+          "number": 8,
+          "trophy": "обязательно",
+          "beat": "Doctor asks your plan; you'll definitely rest; she asks sport pause; you negotiate walking."
+        },
+        {
+          "number": 9,
+          "trophy": "отпуск",
+          "beat": "HR asks vacation dates; two weeks so family visits; she offers split; you accept."
+        },
+        {
+          "number": 10,
+          "trophy": "курс",
+          "beat": "Course office; course so team understands you; they offer intensive; you choose evening."
+        }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Раньше и сейчас",
+      "anchor": "Past habits contrasted with the present",
+      "register": "friends, doctor, trainer on вы, reflective",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "раньше + imperfective past habit (male canonical, full female alternative), а сейчас/теперь + present; frequency adverbs обычно, часто",
+          "recognitionOnly": "бывало in interlocutor lines"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "редко/иногда; привычка + infinitive; больше не + present; всё ещё",
+          "recognitionOnly": "перестать/начать + imperfective in questions"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "перестать/начать + imperfective infinitive; детство frames (в детстве мы); стало/изменилось + comparative (neuter, gender-free); с тех пор",
+          "recognitionOnly": "привык/привыкла (both forms shown, never required)"
+        }
+      ],
+      "clozeSchema": "form blank on imperfective past vs present (cue 'раньше / сейчас'), connector blank а/но/с тех пор; choice blank on frequency adverb; no gendered answer — blanks fall on adverbs, мы-forms or present verbs",
+      "recycles": "P1 narration aspects; P2 contrast connectors; feeds P10 L1-6",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "раньше",
+          "beat": "Friend asks about commute; before by car, now metro; he asks why you changed."
+        },
+        {
+          "number": 2,
+          "trophy": "обычно",
+          "beat": "Colleague asks about breakfast; usually ate out, now cook; she asks what."
+        },
+        {
+          "number": 3,
+          "trophy": "часто",
+          "beat": "Neighbour asks about trips; often flew, now rarely; he asks the reason."
+        },
+        {
+          "number": 4,
+          "trophy": "редко",
+          "beat": "Friend asks about cinema; rarely went, now monthly; he asks last film."
+        },
+        {
+          "number": 5,
+          "trophy": "иногда",
+          "beat": "Club host asks about reading; sometimes read Russian now; he asks which book."
+        },
+        {
+          "number": 6,
+          "trophy": "привычка",
+          "beat": "Doctor asks habits; morning coffee habit became water; she asks about sleep."
+        },
+        {
+          "number": 7,
+          "trophy": "перестать",
+          "beat": "Friend asks about smoking; stopped two years ago — canonical gender-free Мне удалось перестать курить два года назад; if я перестал is used instead, full female alternative required; he asks how."
+        },
+        {
+          "number": 8,
+          "trophy": "детство",
+          "beat": "Colleague asks childhood summers; village with grandmother; she asks if you still visit."
+        },
+        {
+          "number": 9,
+          "trophy": "спорт",
+          "beat": "Trainer asks sport history; football then, swimming now; he asks how often."
+        },
+        {
+          "number": 10,
+          "trophy": "изменилось",
+          "beat": "Old friend asks what changed; job and city, friends same; he asks if happier."
+        }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Это не то",
+      "anchor": "Complaining calmly and reaching a resolution (capstone)",
+      "register": "service staff, landlords, airline on вы, firm but polite",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "state the problem with neuter results and ли-checks (recycles P6 participles, P5 inquiry); неправильно + participle",
+          "recognitionOnly": "staff apology formulas (приносим извинения)"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "soft request with бы + concession (recycles P3, P2): мне бы хотелось вернуть, хотя …; замена/возврат nouns with genitive",
+          "recognitionOnly": "по гарантии, в течение + genitive"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "negotiated outcomes: если …, то …; решение/компенсация; который for faulty item (recycles P4, P7)",
+          "recognitionOnly": "formal written-complaint register in staff lines"
+        }
+      ],
+      "clozeSchema": "connector blank хотя/если/иначе, form blank on бы + past or participle agreement (cue given), choice blank on remedy noun (замена/возврат/компенсация); distractors are wrong remedy or wrong case",
+      "recycles": "P2 concession, P3 бы requests, P4 который, P5 ли, P6 results, P7 conditions",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "проблема",
+          "beat": "Café; wrong dish served; kitchen closing; you accept takeaway of right one."
+        },
+        {
+          "number": 2,
+          "trophy": "ошибка",
+          "beat": "Pharmacy; error on receipt; manager away; you ask written note."
+        },
+        {
+          "number": 3,
+          "trophy": "неправильно",
+          "beat": "Delivery; address written wrong; parcel already returning; you redirect to pickup."
+        },
+        {
+          "number": 4,
+          "trophy": "жалоба",
+          "beat": "Hotel; complaint about noise; hotel full; you ask earplugs and discount."
+        },
+        {
+          "number": 5,
+          "trophy": "вернуть",
+          "beat": "Shop; you'd like to return shoes; they look worn; you accept exchange."
+        },
+        {
+          "number": 6,
+          "trophy": "замена",
+          "beat": "Phone shop; replacement screen; part next week; you request loaner."
+        },
+        {
+          "number": 7,
+          "trophy": "возврат",
+          "beat": "Airline desk; refund request; voucher only; you ask its validity."
+        },
+        {
+          "number": 8,
+          "trophy": "качество",
+          "beat": "Tailor; seam quality poor; she's busy; you accept Friday redo."
+        },
+        {
+          "number": 9,
+          "trophy": "решение",
+          "beat": "Landlord; you propose heating solution; cost issue; you offer to split."
+        },
+        {
+          "number": 10,
+          "trophy": "компенсация",
+          "beat": "Train; three hours late, compensation; online form only; you ask help filling."
+        }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Мой год",
+      "anchor": "Telling the story of a year and what comes next (capstone)",
+      "register": "friends, teacher, mentor on вы, reflective-warm",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "year narration recycling P1 aspects and P8 раньше/сейчас (male canonical, full female alternatives); событие/переезд frames",
+          "recognitionOnly": "в прошлом году / в этом году variants"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "evaluation recycling P2 concession (хотя/зато) and P2 opinion frames; lexical items впечатление, достижение, итог; благодаря as a lexical preposition with the A2 dative (благодаря клубу) — no new grammar family",
+          "recognitionOnly": "самое главное, что"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "plans recycling P7 and P3: мечта + infinitive, в будущем, впереди, если …, то …, собираюсь продолжать",
+          "recognitionOnly": "надеюсь, что in interlocutor lines"
+        }
+      ],
+      "clozeSchema": "form blank on aspect in narration or чтобы clause (cue given), connector blank благодаря/хотя/если; choice blank on time frame (в прошлом/в этом/в следующем); no gendered answers",
+      "recycles": "P1 narration, P2 opinion, P3 wishes, P7 plans, P8 then/now",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "событие",
+          "beat": "Friend asks year's main event; move and new job; he asks hardest part."
+        },
+        {
+          "number": 2,
+          "trophy": "переезд",
+          "beat": "Colleague asks about the move; spring, chaotic; she asks how city feels."
+        },
+        {
+          "number": 3,
+          "trophy": "впечатление",
+          "beat": "Club host asks strongest impression; first Russian winter; he asks what surprised."
+        },
+        {
+          "number": 4,
+          "trophy": "достижение",
+          "beat": "Teacher asks achievement; passed level, speaking easier; she asks next step."
+        },
+        {
+          "number": 5,
+          "trophy": "благодаря",
+          "beat": "Friend asks how you improved; thanks to club; he asks if he may join."
+        },
+        {
+          "number": 6,
+          "trophy": "итог",
+          "beat": "Mentor asks year summary; good overall despite stress; she asks lesson learned."
+        },
+        {
+          "number": 7,
+          "trophy": "мечта",
+          "beat": "Friend asks your dream; trip to Vladivostok; he asks when."
+        },
+        {
+          "number": 8,
+          "trophy": "будущее",
+          "beat": "Colleague asks about future; staying another year; she asks about flat."
+        },
+        {
+          "number": 9,
+          "trophy": "впереди",
+          "beat": "Friend asks what lies ahead; exam then holiday; he asks the order."
+        },
+        {
+          "number": 10,
+          "trophy": "продолжать",
+          "beat": "Teacher asks if you continue; yes, to reach B2; she asks your schedule."
+        }
+      ]
+    }
+  ],
+  "unresolvedDecisions": [
+    "Whether P8 L1-3 canonical chunks may carry male past -л (frozen TTS) or must be rewritten мы-based before TTS batch; recommendation: мы/present where natural, male canonical only where the beat needs я.",
+    "Whether the existing B1 speak scaffold (0.65 threshold, 15-second recording) is tuned after pilot measurement; no runtime change proposed by this spec.",
+    "Roster assignment for B1 (Nina/Maria odd, Mark/Alan even) pending TTS regeneration plan approval.",
+    "Whether ё-fold is loader-generated (proposed) or hand-listed as in A2 acceptedAnswers."
+  ]
+}

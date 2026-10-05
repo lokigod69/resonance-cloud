@@ -1,0 +1,2151 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Russian",
+  "targetLanguageCode": "ru-RU",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": {
+    "de": "Wie es passiert ist",
+    "en": "How it happened"
+  },
+  "subtitle": {
+    "de": "Hintergrund, Reihenfolge und Überraschungen erzählen",
+    "en": "Tell the background, sequence and surprises"
+  },
+  "anchor": "Вы throughout: connected Russian narration with colleagues, neighbours and teachers; interested-listener episodes.",
+  "lessons": [
+    {
+      "slug": "snachala-flight-hotel",
+      "title": {
+        "de": "Die ersten Stunden der Reise",
+        "en": "The first hours of the trip"
+      },
+      "situation": {
+        "de": "Eine Kollegin fragt dich in der Büroküche nach deiner Reise.",
+        "en": "A colleague asks about your trip in the office kitchen."
+      },
+      "pedagogicalGoal": "Mit сначала und потом eine Reise ordnen und mit unvollendeten Verben den Verlauf beschreiben.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Как прошла ваша поездка? Вы долго добирались до гостиницы?",
+          "baseText": {
+            "de": "Wie war Ihre Reise? Haben Sie lange bis zum Hotel gebraucht?",
+            "en": "How was your trip? Did it take you long to reach the hotel?"
+          }
+        },
+        {
+          "targetText": "Сначала мы летели два часа, потом ехали в гостиницу на автобусе.",
+          "baseText": {
+            "de": "Zuerst sind wir zwei Stunden geflogen, dann mit dem Bus zum Hotel gefahren.",
+            "en": "First we flew for two hours, then travelled to the hotel by bus."
+          }
+        },
+        {
+          "targetText": "В центре недавно открыли музей. Вы осматривали город пешком?",
+          "baseText": {
+            "de": "Im Zentrum hat kürzlich ein Museum eröffnet. Haben Sie die Stadt zu Fuß erkundet?",
+            "en": "A museum recently opened in the centre. Did you explore the city on foot?"
+          }
+        },
+        {
+          "targetText": "Мы гуляли по центру и весь вечер любовались старыми домами.",
+          "baseText": {
+            "de": "Wir sind durch das Zentrum spaziert und haben den ganzen Abend die alten Häuser bewundert.",
+            "en": "We walked around the centre and admired the old houses all evening."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "сначала → потом",
+        "rule": {
+          "de": "Сначала und потом ordnen Abschnitte; летели und ехали beschreiben den Verlauf der Fahrt.",
+          "en": "Сначала and потом put stages in order; летели and ехали describe the journey as an ongoing activity."
+        },
+        "examples": [
+          {
+            "targetText": "Сначала мы летели два часа, потом ехали в гостиницу на автобусе.",
+            "baseText": {
+              "de": "Zuerst sind wir zwei Stunden geflogen, dann mit dem Bus zum Hotel gefahren.",
+              "en": "First we flew for two hours, then travelled to the hotel by bus."
+            },
+            "highlight": "Сначала мы летели"
+          },
+          {
+            "targetText": "Сначала мы ехали на поезде, потом долго шли пешком.",
+            "baseText": {
+              "de": "Zuerst fuhren wir mit dem Zug, dann gingen wir lange zu Fuß.",
+              "en": "First we travelled by train, then walked for a long time."
+            },
+            "highlight": "Сначала мы ехали"
+          }
+        ]
+      },
+      "cloze": [
+        "Мы ",
+        {
+          "kind": "form",
+          "answer": "гуляли",
+          "cue": "гулять — мы, длительное действие в прошлом",
+          "choices": [
+            "гуляли",
+            "гуляем",
+            "гуляете",
+            "гуляет"
+          ]
+        },
+        " по центру и весь вечер ",
+        {
+          "kind": "form",
+          "answer": "любовались",
+          "cue": "любоваться — мы, длительное действие в прошлом",
+          "choices": [
+            "любовались",
+            "любуемся",
+            "любуетесь",
+            "любуется"
+          ]
+        },
+        " старыми домами."
+      ],
+      "chunks": [
+        {
+          "targetText": "Сначала мы летели",
+          "baseText": {
+            "de": "zuerst sind wir geflogen",
+            "en": "first we flew"
+          }
+        },
+        {
+          "targetText": "два часа,",
+          "baseText": {
+            "de": "zwei Stunden lang",
+            "en": "for two hours"
+          }
+        },
+        {
+          "targetText": "потом ехали",
+          "baseText": {
+            "de": "dann sind wir gefahren",
+            "en": "then we travelled"
+          }
+        },
+        {
+          "targetText": "в гостиницу на автобусе.",
+          "baseText": {
+            "de": "mit dem Bus zum Hotel",
+            "en": "to the hotel by bus"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "сначала",
+          "baseText": {
+            "de": "zuerst",
+            "en": "first"
+          }
+        },
+        {
+          "targetText": "летели",
+          "baseText": {
+            "de": "wir flogen",
+            "en": "we flew"
+          }
+        },
+        {
+          "targetText": "два часа",
+          "baseText": {
+            "de": "zwei Stunden",
+            "en": "two hours"
+          }
+        },
+        {
+          "targetText": "гостиница",
+          "baseText": {
+            "de": "Hotel",
+            "en": "hotel"
+          }
+        },
+        {
+          "targetText": "пешком",
+          "baseText": {
+            "de": "zu Fuß",
+            "en": "on foot"
+          }
+        },
+        {
+          "targetText": "любовались",
+          "baseText": {
+            "de": "wir bewunderten",
+            "en": "we admired"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Сначала мы ",
+        "answer": "летели",
+        "after": " два часа, потом ехали в гостиницу на автобусе.",
+        "fallbackChoices": [
+          "летели",
+          "летим",
+          "летите",
+          "летит"
+        ]
+      },
+      "speakRequired": [
+        "сначала",
+        "летели",
+        "гостиницу"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Как прошла ваша поездка? Вы долго добирались до гостиницы?“",
+        "en": "The conversation opens with this question: “Как прошла ваша поездка? Вы долго добирались до гостиницы?”"
+      },
+      "trophyWord": {
+        "word": "сначала",
+        "meaning": {
+          "de": "zuerst",
+          "en": "first"
+        },
+        "example": "Сначала мы летели два часа.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb сначала markiert den ersten Abschnitt einer Erzählung.",
+          "en": "The unchanging adverb сначала marks the first stage of a story."
+        }
+      },
+      "distractors": [
+        "в гостиницу на велосипеде.",
+        "три дня,"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kollegin fragt dich in der Büroküche nach deiner Reise.",
+        "en": "A colleague asks about your trip in the office kitchen."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Office kitchen with two colleagues; no museum, walking route or old houses in the opening image."
+    },
+    {
+      "slug": "potom-sunday-park",
+      "title": {
+        "de": "Ein Sonntag draußen",
+        "en": "A Sunday outdoors"
+      },
+      "situation": {
+        "de": "Bei einer Tasse Tee erzählt ihr euch vom Sonntag.",
+        "en": "Over a cup of tea, you talk about Sunday."
+      },
+      "pedagogicalGoal": "Mit потом vom ersten zum nächsten Abschnitt eines vergangenen Tages übergehen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Как вы провели воскресенье? Всё время были дома или гуляли?",
+          "baseText": {
+            "de": "Wie haben Sie den Sonntag verbracht? Waren Sie die ganze Zeit zu Hause oder unterwegs?",
+            "en": "How did you spend Sunday? Were you at home all day or out for a walk?"
+          }
+        },
+        {
+          "targetText": "Утром мы ходили на рынок, а потом весь день гуляли в парке.",
+          "baseText": {
+            "de": "Morgens waren wir auf dem Markt und danach den ganzen Tag im Park spazieren.",
+            "en": "In the morning we went to the market, and then walked in the park all day."
+          }
+        },
+        {
+          "targetText": "В парке в воскресенье выступали музыканты. С кем вы там общались?",
+          "baseText": {
+            "de": "Am Sonntag sind im Park Musiker aufgetreten. Mit wem haben Sie sich dort unterhalten?",
+            "en": "Musicians performed in the park on Sunday. Who did you talk to there?"
+          }
+        },
+        {
+          "targetText": "Мы слушали музыку и весь вечер разговаривали с соседями.",
+          "baseText": {
+            "de": "Wir hörten Musik und unterhielten uns den ganzen Abend mit Nachbarn.",
+            "en": "We listened to music and talked with neighbours all evening."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ein Tag in zwei Abschnitten",
+        "rule": {
+          "de": "Потом verbindet zwei zeitlich aufeinanderfolgende Abschnitte; весь день hebt die Dauer hervor.",
+          "en": "Потом links successive parts of a day; весь день emphasises duration."
+        },
+        "examples": [
+          {
+            "targetText": "Утром мы ходили на рынок, а потом весь день гуляли в парке.",
+            "baseText": {
+              "de": "Morgens waren wir auf dem Markt und danach den ganzen Tag im Park spazieren.",
+              "en": "In the morning we went to the market, and then walked in the park all day."
+            },
+            "highlight": "а потом весь день"
+          },
+          {
+            "targetText": "Сначала мы выбирали овощи, а потом пили чай дома.",
+            "baseText": {
+              "de": "Zuerst suchten wir Gemüse aus, danach tranken wir zu Hause Tee.",
+              "en": "First we chose vegetables, and then had tea at home."
+            },
+            "highlight": "а потом пили"
+          }
+        ]
+      },
+      "cloze": [
+        "Мы ",
+        {
+          "kind": "form",
+          "answer": "слушали",
+          "cue": "слушать — мы, длительное действие в прошлом",
+          "choices": [
+            "слушали",
+            "слушаем",
+            "слушаете",
+            "слушает"
+          ]
+        },
+        " музыку и весь вечер ",
+        {
+          "kind": "form",
+          "answer": "разговаривали",
+          "cue": "разговаривать — мы, длительное действие в прошлом",
+          "choices": [
+            "разговаривали",
+            "разговариваем",
+            "разговариваете",
+            "разговаривает"
+          ]
+        },
+        " с соседями."
+      ],
+      "chunks": [
+        {
+          "targetText": "Утром мы ходили",
+          "baseText": {
+            "de": "morgens waren wir",
+            "en": "in the morning we went"
+          }
+        },
+        {
+          "targetText": "на рынок,",
+          "baseText": {
+            "de": "auf dem Markt",
+            "en": "to the market"
+          }
+        },
+        {
+          "targetText": "а потом весь день",
+          "baseText": {
+            "de": "und danach den ganzen Tag",
+            "en": "and then all day"
+          }
+        },
+        {
+          "targetText": "гуляли в парке.",
+          "baseText": {
+            "de": "im Park spazieren",
+            "en": "walked in the park"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "потом",
+          "baseText": {
+            "de": "danach",
+            "en": "then"
+          }
+        },
+        {
+          "targetText": "утром",
+          "baseText": {
+            "de": "morgens",
+            "en": "in the morning"
+          }
+        },
+        {
+          "targetText": "рынок",
+          "baseText": {
+            "de": "Markt",
+            "en": "market"
+          }
+        },
+        {
+          "targetText": "весь день",
+          "baseText": {
+            "de": "den ganzen Tag",
+            "en": "all day"
+          }
+        },
+        {
+          "targetText": "выступали",
+          "baseText": {
+            "de": "sie traten auf",
+            "en": "they performed"
+          }
+        },
+        {
+          "targetText": "разговаривали",
+          "baseText": {
+            "de": "wir unterhielten uns",
+            "en": "we talked"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Утром мы ходили на ",
+        "answer": "рынок",
+        "after": ", а потом весь день гуляли в парке.",
+        "fallbackChoices": [
+          "рынок",
+          "рынка",
+          "рынке",
+          "рынком"
+        ]
+      },
+      "speakRequired": [
+        "потом",
+        "ходили",
+        "гуляли"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Как вы провели воскресенье? Всё время были дома или гуляли?“",
+        "en": "The conversation opens with this question: “Как вы провели воскресенье? Всё время были дома или гуляли?”"
+      },
+      "trophyWord": {
+        "word": "потом",
+        "meaning": {
+          "de": "danach",
+          "en": "then"
+        },
+        "example": "Мы ходили на рынок, а потом гуляли.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb потом führt die Erzählung zum nächsten Abschnitt weiter.",
+          "en": "The unchanging adverb потом moves a story on to its next stage."
+        }
+      },
+      "distractors": [
+        "в театре.",
+        "Утром мы плавали"
+      ],
+      "placeholderCaption": {
+        "de": "Bei einer Tasse Tee erzählt ihr euch vom Sonntag.",
+        "en": "Over a cup of tea, you talk about Sunday."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Two adults talking over tea; do not show musicians or neighbours before the follow-up."
+    },
+    {
+      "slug": "dolgo-post-office",
+      "title": {
+        "de": "Warten auf der Post",
+        "en": "Waiting at the post office"
+      },
+      "situation": {
+        "de": "Eine Nachbarin fragt dich später nach deinem Besuch auf der Post.",
+        "en": "A neighbour later asks about your visit to the post office."
+      },
+      "pedagogicalGoal": "Mit долго eine Wartezeit beschreiben und unvollendete Verben für den Verlauf verwenden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Вы сегодня были на почте? Пришлось долго ждать своей очереди?",
+          "baseText": {
+            "de": "Waren Sie heute auf der Post? Mussten Sie lange warten, bis Sie dran waren?",
+            "en": "Were you at the post office today? Did you have to wait long for your turn?"
+          }
+        },
+        {
+          "targetText": "Мы долго ждали на почте, потому что перед нами стояла большая очередь.",
+          "baseText": {
+            "de": "Wir warteten lange auf der Post, weil vor uns eine lange Schlange stand.",
+            "en": "We waited a long time at the post office because there was a long queue ahead of us."
+          }
+        },
+        {
+          "targetText": "Посылки теперь выдают у другого окна. Ваша посылка уже пришла?",
+          "baseText": {
+            "de": "Pakete gibt es jetzt an einem anderen Schalter. Ist Ihr Paket schon angekommen?",
+            "en": "Parcels are now handed out at a different counter. Has your parcel arrived yet?"
+          }
+        },
+        {
+          "targetText": "Да, она уже дома; мы долго ждали и искали нужное окно.",
+          "baseText": {
+            "de": "Ja, es ist schon zu Hause; wir warteten lange und suchten den richtigen Schalter.",
+            "en": "Yes, it is already at home; we waited a long time and looked for the right counter."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "долго + unvollendete Vergangenheit",
+        "rule": {
+          "de": "Долго betont die Dauer; ждали beschreibt das Warten ohne seinen Abschluss hervorzuheben.",
+          "en": "Долго stresses duration; ждали describes waiting without highlighting its completion."
+        },
+        "examples": [
+          {
+            "targetText": "Мы долго ждали на почте, потому что перед нами стояла большая очередь.",
+            "baseText": {
+              "de": "Wir warteten lange auf der Post, weil vor uns eine lange Schlange stand.",
+              "en": "We waited a long time at the post office because there was a long queue ahead of us."
+            },
+            "highlight": "долго ждали"
+          },
+          {
+            "targetText": "Мы долго искали нужный адрес и спрашивали прохожих.",
+            "baseText": {
+              "de": "Wir suchten lange nach der richtigen Adresse und fragten Passanten.",
+              "en": "We looked for the right address for a long time and asked passers-by."
+            },
+            "highlight": "долго искали"
+          }
+        ]
+      },
+      "cloze": [
+        "Да, она уже дома; мы долго ",
+        {
+          "kind": "form",
+          "answer": "ждали",
+          "cue": "ждать — мы, длительное действие в прошлом",
+          "choices": [
+            "ждали",
+            "ждём",
+            "ждёте",
+            "ждёт"
+          ]
+        },
+        " и ",
+        {
+          "kind": "form",
+          "answer": "искали",
+          "cue": "искать — мы, длительное действие в прошлом",
+          "choices": [
+            "искали",
+            "ищем",
+            "ищете",
+            "ищет"
+          ]
+        },
+        " нужное окно."
+      ],
+      "chunks": [
+        {
+          "targetText": "Мы долго ждали",
+          "baseText": {
+            "de": "wir warteten lange",
+            "en": "we waited a long time"
+          }
+        },
+        {
+          "targetText": "на почте,",
+          "baseText": {
+            "de": "auf der Post",
+            "en": "at the post office"
+          }
+        },
+        {
+          "targetText": "потому что перед нами",
+          "baseText": {
+            "de": "weil vor uns",
+            "en": "because ahead of us"
+          }
+        },
+        {
+          "targetText": "стояла большая очередь.",
+          "baseText": {
+            "de": "eine lange Schlange stand",
+            "en": "there was a long queue"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "долго",
+          "baseText": {
+            "de": "lange",
+            "en": "for a long time"
+          }
+        },
+        {
+          "targetText": "ждали",
+          "baseText": {
+            "de": "wir warteten",
+            "en": "we waited"
+          }
+        },
+        {
+          "targetText": "перед нами",
+          "baseText": {
+            "de": "vor uns",
+            "en": "ahead of us"
+          }
+        },
+        {
+          "targetText": "очередь",
+          "baseText": {
+            "de": "Warteschlange",
+            "en": "queue"
+          }
+        },
+        {
+          "targetText": "посылка",
+          "baseText": {
+            "de": "Paket",
+            "en": "parcel"
+          }
+        },
+        {
+          "targetText": "нужное окно",
+          "baseText": {
+            "de": "der richtige Schalter",
+            "en": "the right counter"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Мы долго ",
+        "answer": "ждали",
+        "after": " на почте, потому что перед нами стояла большая очередь.",
+        "fallbackChoices": [
+          "ждали",
+          "пели",
+          "спали",
+          "ели"
+        ]
+      },
+      "speakRequired": [
+        "долго",
+        "ждали",
+        "почте"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Вы сегодня были на почте? Пришлось долго ждать своей очереди?“",
+        "en": "The conversation opens with this question: “Вы сегодня были на почте? Пришлось долго ждать своей очереди?”"
+      },
+      "trophyWord": {
+        "word": "долго",
+        "meaning": {
+          "de": "lange",
+          "en": "for a long time"
+        },
+        "example": "Мы долго ждали на почте.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb долго beschreibt die Dauer vieler alltäglicher Tätigkeiten.",
+          "en": "The unchanging adverb долго describes how long many everyday activities last."
+        }
+      },
+      "distractors": [
+        "за нами",
+        "на пляже,"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Nachbarin fragt dich später nach deinem Besuch auf der Post.",
+        "en": "A neighbour later asks about your visit to the post office."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Apartment hallway after the errand; no parcel counter or changed-window signage in the opening."
+    },
+    {
+      "slug": "zatem-city-stops",
+      "title": {
+        "de": "Drei Stationen in der Stadt",
+        "en": "Three stops around town"
+      },
+      "situation": {
+        "de": "Beim Abendessen fragt deine Gastgeberin nach deinem Tag in der Stadt.",
+        "en": "At dinner your host asks about your day in the city."
+      },
+      "pedagogicalGoal": "Mit затем abgeschlossene Ereignisse verbinden und die weibliche Erzählform als vollständigen Satz auch männlich anbieten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Что вы сегодня успели посмотреть в городе? Расскажите, пожалуйста, по порядку.",
+          "baseText": {
+            "de": "Was haben Sie heute in der Stadt besichtigen können? Erzählen Sie bitte der Reihe nach.",
+            "en": "What did you manage to see in the city today? Please tell me in order."
+          }
+        },
+        {
+          "targetText": "Сначала я приехала в центр, затем посетила музей и поднялась на башню.",
+          "baseText": {
+            "de": "Zuerst kam ich ins Zentrum, dann besuchte ich das Museum und stieg auf den Turm.",
+            "en": "First I arrived in the centre, then visited the museum and climbed the tower."
+          }
+        },
+        {
+          "targetText": "С башни видна река за городом. Что вам понравилось больше всего?",
+          "baseText": {
+            "de": "Vom Turm sieht man den Fluss außerhalb der Stadt. Was hat Ihnen am besten gefallen?",
+            "en": "You can see the river outside the city from the tower. What did you like best?"
+          }
+        },
+        {
+          "targetText": "Больше всего понравилась башня: оттуда открывался вид на реку.",
+          "baseText": {
+            "de": "Am besten gefiel mir der Turm: Von dort hatte man einen Blick auf den Fluss.",
+            "en": "I liked the tower best: from there you had a view of the river."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "затем + abgeschlossene Schritte",
+        "rule": {
+          "de": "Затем setzt die Reihenfolge fort; die vollendeten Verben benennen einzelne abgeschlossene Schritte.",
+          "en": "Затем continues the sequence; the perfective verbs name individual completed steps."
+        },
+        "examples": [
+          {
+            "targetText": "Сначала я приехала в центр, затем посетила музей и поднялась на башню.",
+            "baseText": {
+              "de": "Zuerst kam ich ins Zentrum, dann besuchte ich das Museum und stieg auf den Turm.",
+              "en": "First I arrived in the centre, then visited the museum and climbed the tower."
+            },
+            "highlight": "затем посетила музей"
+          },
+          {
+            "targetText": "Мы приехали в центр, затем посетили старую крепость.",
+            "baseText": {
+              "de": "Wir kamen ins Zentrum und besuchten anschließend die alte Festung.",
+              "en": "We arrived in the centre, then visited the old fortress."
+            },
+            "highlight": "затем посетили"
+          }
+        ]
+      },
+      "cloze": [
+        "Больше всего ",
+        {
+          "kind": "form",
+          "answer": "понравилась",
+          "cue": "понравиться — башня, завершённая оценка в прошлом",
+          "choices": [
+            "понравилась",
+            "понравились",
+            "нравится",
+            "понравится"
+          ]
+        },
+        " башня: оттуда ",
+        {
+          "kind": "form",
+          "answer": "открывался",
+          "cue": "открываться — вид, длительное состояние в прошлом",
+          "choices": [
+            "открывался",
+            "открывается",
+            "откроется",
+            "открывалась"
+          ]
+        },
+        " вид на реку."
+      ],
+      "chunks": [
+        {
+          "targetText": "Сначала я приехала",
+          "baseText": {
+            "de": "zuerst kam ich an",
+            "en": "first I arrived"
+          }
+        },
+        {
+          "targetText": "в центр,",
+          "baseText": {
+            "de": "ins Zentrum",
+            "en": "to the centre"
+          }
+        },
+        {
+          "targetText": "затем посетила музей",
+          "baseText": {
+            "de": "dann besuchte ich das Museum",
+            "en": "then I visited the museum"
+          }
+        },
+        {
+          "targetText": "и поднялась на башню.",
+          "baseText": {
+            "de": "und stieg auf den Turm",
+            "en": "and climbed the tower"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "затем",
+          "baseText": {
+            "de": "dann",
+            "en": "then"
+          }
+        },
+        {
+          "targetText": "приехать",
+          "baseText": {
+            "de": "ankommen",
+            "en": "arrive"
+          }
+        },
+        {
+          "targetText": "посетить",
+          "baseText": {
+            "de": "besuchen",
+            "en": "visit"
+          }
+        },
+        {
+          "targetText": "подняться",
+          "baseText": {
+            "de": "hinaufsteigen",
+            "en": "climb up"
+          }
+        },
+        {
+          "targetText": "башня",
+          "baseText": {
+            "de": "Turm",
+            "en": "tower"
+          }
+        },
+        {
+          "targetText": "оттуда",
+          "baseText": {
+            "de": "von dort",
+            "en": "from there"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Сначала я приехала в центр, затем посетила ",
+        "answer": "музей",
+        "after": " и поднялась на башню.",
+        "fallbackChoices": [
+          "музей",
+          "магазин",
+          "гараж",
+          "рынок"
+        ]
+      },
+      "speakRequired": [
+        "затем",
+        "центр",
+        "музей"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Что вы сегодня успели посмотреть в городе? Расскажите, пожалуйста, по порядку.“",
+        "en": "The conversation opens with this question: “Что вы сегодня успели посмотреть в городе? Расскажите, пожалуйста, по порядку.”"
+      },
+      "trophyWord": {
+        "word": "затем",
+        "meaning": {
+          "de": "dann; anschließend",
+          "en": "then; next"
+        },
+        "example": "Мы посетили музей, затем поднялись на башню.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb затем macht die Reihenfolge abgeschlossener Ereignisse klar.",
+          "en": "The unchanging adverb затем makes the order of completed events clear."
+        }
+      },
+      "distractors": [
+        "в деревню,",
+        "и спустилась в подвал."
+      ],
+      "placeholderCaption": {
+        "de": "Beim Abendessen fragt deine Gastgeberin nach deinem Tag in der Stadt.",
+        "en": "At dinner your host asks about your day in the city."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Dinner table and city map; keep the river view and favourite stop out of the opening image.",
+      "genderAlternatives": {
+        "1": "Сначала я приехал в центр, затем посетил музей и поднялся на башню."
+      }
+    },
+    {
+      "slug": "vdrug-rain-walk",
+      "title": {
+        "de": "Plötzlich Regen",
+        "en": "Sudden rain"
+      },
+      "situation": {
+        "de": "Am nächsten Morgen fragt dich eine Bekannte nach deiner Verspätung am Vortag.",
+        "en": "The next morning, an acquaintance asks why you were late the day before."
+      },
+      "pedagogicalGoal": "Mit unvollendetem Hintergrund und вдруг + vollendetem Ereignis eine Unterbrechung erzählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Почему вы вчера так поздно пришли? По дороге что-нибудь случилось?",
+          "baseText": {
+            "de": "Warum kamen Sie gestern so spät? Ist unterwegs etwas passiert?",
+            "en": "Why did you arrive so late yesterday? Did something happen on the way?"
+          }
+        },
+        {
+          "targetText": "Я шла по набережной, и вдруг начался дождь без всякого предупреждения.",
+          "baseText": {
+            "de": "Ich ging am Ufer entlang, als es plötzlich ohne jede Vorwarnung zu regnen begann.",
+            "en": "I was walking along the embankment when it suddenly started raining without any warning."
+          }
+        },
+        {
+          "targetText": "Там ведь почти нет навесов. Где вы переждали этот дождь?",
+          "baseText": {
+            "de": "Dort gibt es doch kaum Überdachungen. Wo haben Sie den Regen abgewartet?",
+            "en": "There is hardly any shelter there. Where did you wait out the rain?"
+          }
+        },
+        {
+          "targetText": "В кафе на углу: дождь скоро закончился, и прогулка продолжилась.",
+          "baseText": {
+            "de": "In einem Café an der Ecke: Der Regen hörte bald auf, und der Spaziergang ging weiter.",
+            "en": "In a café on the corner: the rain soon stopped, and the walk continued."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Hintergrund → вдруг",
+        "rule": {
+          "de": "Шла beschreibt die laufende Bewegung; вдруг начался markiert das plötzlich eintretende Ereignis.",
+          "en": "Шла describes movement already in progress; вдруг начался marks the sudden event."
+        },
+        "examples": [
+          {
+            "targetText": "Я шла по набережной, и вдруг начался дождь без всякого предупреждения.",
+            "baseText": {
+              "de": "Ich ging am Ufer entlang, als es plötzlich ohne jede Vorwarnung zu regnen begann.",
+              "en": "I was walking along the embankment when it suddenly started raining without any warning."
+            },
+            "highlight": "и вдруг начался дождь"
+          },
+          {
+            "targetText": "Мы гуляли у реки, и вдруг подул сильный ветер.",
+            "baseText": {
+              "de": "Wir spazierten am Fluss, als plötzlich ein starker Wind aufkam.",
+              "en": "We were walking by the river when a strong wind suddenly sprang up."
+            },
+            "highlight": "и вдруг подул"
+          }
+        ]
+      },
+      "cloze": [
+        "В кафе на углу: дождь скоро ",
+        {
+          "kind": "form",
+          "answer": "закончился",
+          "cue": "закончиться — дождь, завершённое действие в прошлом",
+          "choices": [
+            "закончился",
+            "закончится",
+            "заканчивается",
+            "закончилась"
+          ]
+        },
+        ", и прогулка ",
+        {
+          "kind": "form",
+          "answer": "продолжилась",
+          "cue": "продолжиться — прогулка, завершённое действие в прошлом",
+          "choices": [
+            "продолжилась",
+            "продолжится",
+            "продолжается",
+            "продолжился"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Я шла по набережной,",
+          "baseText": {
+            "de": "ich ging am Ufer entlang",
+            "en": "I was walking along the embankment"
+          }
+        },
+        {
+          "targetText": "и вдруг",
+          "baseText": {
+            "de": "und plötzlich",
+            "en": "and suddenly"
+          }
+        },
+        {
+          "targetText": "начался дождь",
+          "baseText": {
+            "de": "begann es zu regnen",
+            "en": "it started raining"
+          }
+        },
+        {
+          "targetText": "без всякого предупреждения.",
+          "baseText": {
+            "de": "ohne jede Vorwarnung",
+            "en": "without any warning"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "вдруг",
+          "baseText": {
+            "de": "plötzlich",
+            "en": "suddenly"
+          }
+        },
+        {
+          "targetText": "набережная",
+          "baseText": {
+            "de": "Uferpromenade",
+            "en": "embankment"
+          }
+        },
+        {
+          "targetText": "начался дождь",
+          "baseText": {
+            "de": "es begann zu regnen",
+            "en": "it started raining"
+          }
+        },
+        {
+          "targetText": "без предупреждения",
+          "baseText": {
+            "de": "ohne Vorwarnung",
+            "en": "without warning"
+          }
+        },
+        {
+          "targetText": "переждать",
+          "baseText": {
+            "de": "abwarten, bis etwas vorbei ist",
+            "en": "wait something out"
+          }
+        },
+        {
+          "targetText": "продолжиться",
+          "baseText": {
+            "de": "weitergehen",
+            "en": "continue; resume"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Я шла по набережной, и вдруг начался ",
+        "answer": "дождь",
+        "after": " без всякого предупреждения.",
+        "fallbackChoices": [
+          "дождь",
+          "снег",
+          "град",
+          "ветер"
+        ]
+      },
+      "speakRequired": [
+        "набережной",
+        "вдруг",
+        "дождь"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Почему вы вчера так поздно пришли? По дороге что-нибудь случилось?“",
+        "en": "The conversation opens with this question: “Почему вы вчера так поздно пришли? По дороге что-нибудь случилось?”"
+      },
+      "trophyWord": {
+        "word": "вдруг",
+        "meaning": {
+          "de": "plötzlich",
+          "en": "suddenly"
+        },
+        "example": "Мы гуляли, и вдруг начался дождь.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb вдруг führt eine unerwartete Wendung in einer Geschichte ein.",
+          "en": "The unchanging adverb вдруг introduces an unexpected turn in a story."
+        }
+      },
+      "distractors": [
+        "без единого звука.",
+        "Я шла по коридору,"
+      ],
+      "placeholderCaption": {
+        "de": "Am nächsten Morgen fragt dich eine Bekannte nach deiner Verspätung am Vortag.",
+        "en": "The next morning, an acquaintance asks why you were late the day before."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Next-day conversation indoors; do not show a cafe or a shelter solution in advance.",
+      "genderAlternatives": {
+        "1": "Я шёл по набережной, и вдруг начался дождь без всякого предупреждения."
+      }
+    },
+    {
+      "slug": "nakonets-flat-search",
+      "title": {
+        "de": "Endlich eine Wohnung",
+        "en": "Finally a flat"
+      },
+      "situation": {
+        "de": "Eine Kollegin erkundigt sich in der Mittagspause nach deiner Wohnungssuche.",
+        "en": "A colleague asks about your flat search during lunch."
+      },
+      "pedagogicalGoal": "Längere Suche und abgeschlossenes Ergebnis mit наконец gegeneinander absetzen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Как идут поиски квартиры? Вы уже нашли подходящее жильё поближе к работе?",
+          "baseText": {
+            "de": "Wie läuft die Wohnungssuche? Haben Sie schon etwas Passendes näher an der Arbeit gefunden?",
+            "en": "How is the flat search going? Have you found a suitable place closer to work yet?"
+          }
+        },
+        {
+          "targetText": "Мы несколько месяцев смотрели квартиры, и я наконец нашла жильё рядом с работой.",
+          "baseText": {
+            "de": "Wir besichtigten mehrere Monate lang Wohnungen, und endlich fand ich eine Unterkunft nahe der Arbeit.",
+            "en": "We viewed flats for several months, and I finally found a place near work."
+          }
+        },
+        {
+          "targetText": "В новых районах сейчас много квартир. Вы выбрали старый район или новый?",
+          "baseText": {
+            "de": "In den neuen Vierteln gibt es gerade viele Wohnungen. Haben Sie ein altes oder neues Viertel gewählt?",
+            "en": "There are lots of flats in the new districts now. Did you choose an old district or a new one?"
+          }
+        },
+        {
+          "targetText": "В новом районе мы сняли квартиру и сразу перевезли вещи.",
+          "baseText": {
+            "de": "Wir mieteten eine Wohnung im neuen Viertel und brachten sofort unsere Sachen dorthin.",
+            "en": "We rented a flat in the new district and moved our things there straight away."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Lange Suche, erreichtes Ergebnis",
+        "rule": {
+          "de": "Смотрели benennt die längere Suche; наконец нашла hebt das schließlich erreichte Ergebnis hervor.",
+          "en": "Смотрели describes the extended search; наконец нашла highlights the result finally achieved."
+        },
+        "examples": [
+          {
+            "targetText": "Мы несколько месяцев смотрели квартиры, и я наконец нашла жильё рядом с работой.",
+            "baseText": {
+              "de": "Wir besichtigten mehrere Monate lang Wohnungen, und endlich fand ich eine Unterkunft nahe der Arbeit.",
+              "en": "We viewed flats for several months, and I finally found a place near work."
+            },
+            "highlight": "наконец нашла"
+          },
+          {
+            "targetText": "Мы долго выбирали район и наконец сняли квартиру у парка.",
+            "baseText": {
+              "de": "Wir suchten lange nach einem Viertel und mieteten schließlich eine Wohnung am Park.",
+              "en": "We spent a long time choosing a district and finally rented a flat by the park."
+            },
+            "highlight": "наконец сняли"
+          }
+        ]
+      },
+      "cloze": [
+        "В новом районе мы ",
+        {
+          "kind": "form",
+          "answer": "сняли",
+          "cue": "снять — мы, завершённая аренда в прошлом",
+          "choices": [
+            "сняли",
+            "снимаем",
+            "снимем",
+            "снимете"
+          ]
+        },
+        " квартиру и сразу ",
+        {
+          "kind": "form",
+          "answer": "перевезли",
+          "cue": "перевезти — мы, завершённый переезд вещей в прошлом",
+          "choices": [
+            "перевезли",
+            "перевозим",
+            "перевезём",
+            "перевезёте"
+          ]
+        },
+        " вещи."
+      ],
+      "chunks": [
+        {
+          "targetText": "Мы несколько месяцев",
+          "baseText": {
+            "de": "wir mehrere Monate lang",
+            "en": "we, for several months"
+          }
+        },
+        {
+          "targetText": "смотрели квартиры,",
+          "baseText": {
+            "de": "besichtigten Wohnungen",
+            "en": "viewed flats"
+          }
+        },
+        {
+          "targetText": "и я наконец нашла жильё",
+          "baseText": {
+            "de": "und endlich fand ich eine Unterkunft",
+            "en": "and I finally found a place"
+          }
+        },
+        {
+          "targetText": "рядом с работой.",
+          "baseText": {
+            "de": "nahe der Arbeit",
+            "en": "near work"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "наконец",
+          "baseText": {
+            "de": "endlich",
+            "en": "finally"
+          }
+        },
+        {
+          "targetText": "несколько месяцев",
+          "baseText": {
+            "de": "mehrere Monate",
+            "en": "several months"
+          }
+        },
+        {
+          "targetText": "смотреть квартиры",
+          "baseText": {
+            "de": "Wohnungen besichtigen",
+            "en": "view flats"
+          }
+        },
+        {
+          "targetText": "жильё",
+          "baseText": {
+            "de": "Unterkunft; Wohnraum",
+            "en": "a place to live"
+          }
+        },
+        {
+          "targetText": "снять квартиру",
+          "baseText": {
+            "de": "eine Wohnung mieten",
+            "en": "rent a flat"
+          }
+        },
+        {
+          "targetText": "перевезти вещи",
+          "baseText": {
+            "de": "Sachen an einen anderen Ort bringen",
+            "en": "move belongings"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Мы несколько месяцев смотрели квартиры, и я наконец нашла ",
+        "answer": "жильё",
+        "after": " рядом с работой.",
+        "fallbackChoices": [
+          "жильё",
+          "платье",
+          "ружьё",
+          "печенье"
+        ]
+      },
+      "speakRequired": [
+        "месяцев",
+        "наконец",
+        "жильё"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Как идут поиски квартиры? Вы уже нашли подходящее жильё поближе к работе?“",
+        "en": "The conversation opens with this question: “Как идут поиски квартиры? Вы уже нашли подходящее жильё поближе к работе?”"
+      },
+      "trophyWord": {
+        "word": "наконец",
+        "meaning": {
+          "de": "endlich",
+          "en": "finally"
+        },
+        "example": "После долгих поисков мы наконец сняли квартиру.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb наконец betont ein Ergebnis nach längerem Warten oder Suchen.",
+          "en": "The unchanging adverb наконец highlights a result after a long wait or search."
+        }
+      },
+      "distractors": [
+        "далеко от работы.",
+        "смотрели фильмы,"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kollegin erkundigt sich in der Mittagspause nach deiner Wohnungssuche.",
+        "en": "A colleague asks about your flat search during lunch."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Colleagues at lunch; do not reveal the chosen district or moving boxes before the follow-up.",
+      "genderAlternatives": {
+        "1": "Мы несколько месяцев смотрели квартиры, и я наконец нашёл жильё рядом с работой."
+      }
+    },
+    {
+      "slug": "odnazhdy-wrong-train",
+      "title": {
+        "de": "Einmal im falschen Zug",
+        "en": "Once on the wrong train"
+      },
+      "situation": {
+        "de": "Im Sprachunterricht bittet dich die Lehrerin um eine kleine Geschichte über ein Missgeschick.",
+        "en": "In language class, the teacher asks for a short story about a mishap."
+      },
+      "pedagogicalGoal": "Mit однажды einen einmaligen Vorfall eröffnen und когда + Hintergrund mit einem abgeschlossenen Schritt verbinden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Вспомните, пожалуйста, случай из поездки. Вы когда-нибудь садились не в тот поезд?",
+          "baseText": {
+            "de": "Erinnern Sie sich bitte an ein Reiseerlebnis. Sind Sie schon einmal in den falschen Zug gestiegen?",
+            "en": "Please think of an incident from a trip. Have you ever boarded the wrong train?"
+          }
+        },
+        {
+          "targetText": "Однажды, когда я спешила на встречу, я села в поезд до другого города.",
+          "baseText": {
+            "de": "Einmal, als ich zu einer Verabredung eilte, stieg ich in einen Zug in eine andere Stadt.",
+            "en": "Once, when I was rushing to meet someone, I boarded a train to a different city."
+          }
+        },
+        {
+          "targetText": "На той линии станции далеко друг от друга. Как вы вернулись?",
+          "baseText": {
+            "de": "Auf dieser Strecke liegen die Stationen weit auseinander. Wie sind Sie zurückgekommen?",
+            "en": "Stations on that line are far apart. How did you get back?"
+          }
+        },
+        {
+          "targetText": "Обратный поезд пришёл быстро, и друзья встретили меня на вокзале.",
+          "baseText": {
+            "de": "Der Zug zurück kam schnell, und Freunde holten mich am Bahnhof ab.",
+            "en": "The train back arrived quickly, and friends met me at the station."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "однажды + когда",
+        "rule": {
+          "de": "Однажды führt einen einzelnen Vorfall ein; когда я спешила bildet den Hintergrund zu я села.",
+          "en": "Однажды introduces a one-off incident; когда я спешила provides the background to я села."
+        },
+        "examples": [
+          {
+            "targetText": "Однажды, когда я спешила на встречу, я села в поезд до другого города.",
+            "baseText": {
+              "de": "Einmal, als ich zu einer Verabredung eilte, stieg ich in einen Zug in eine andere Stadt.",
+              "en": "Once, when I was rushing to meet someone, I boarded a train to a different city."
+            },
+            "highlight": "когда я спешила на встречу"
+          },
+          {
+            "targetText": "Однажды, когда мы спешили домой, мы перепутали автобусы.",
+            "baseText": {
+              "de": "Einmal, als wir schnell nach Hause wollten, verwechselten wir die Busse.",
+              "en": "Once, when we were hurrying home, we mixed up the buses."
+            },
+            "highlight": "когда мы спешили домой"
+          }
+        ]
+      },
+      "cloze": [
+        "Обратный поезд ",
+        {
+          "kind": "form",
+          "answer": "пришёл",
+          "cue": "прийти — поезд, завершённое прибытие в прошлом",
+          "choices": [
+            "пришёл",
+            "идёт",
+            "придёт",
+            "придут"
+          ]
+        },
+        " быстро, и друзья ",
+        {
+          "kind": "form",
+          "answer": "встретили",
+          "cue": "встретить — друзья, завершённое действие в прошлом",
+          "choices": [
+            "встретили",
+            "встречают",
+            "встретят",
+            "встретит"
+          ]
+        },
+        " меня на вокзале."
+      ],
+      "chunks": [
+        {
+          "targetText": "Однажды, когда я спешила",
+          "baseText": {
+            "de": "einmal, als ich es eilig hatte",
+            "en": "once, when I was rushing"
+          }
+        },
+        {
+          "targetText": "на встречу,",
+          "baseText": {
+            "de": "zu einer Verabredung",
+            "en": "to meet someone"
+          }
+        },
+        {
+          "targetText": "я села в поезд",
+          "baseText": {
+            "de": "stieg ich in einen Zug",
+            "en": "I boarded a train"
+          }
+        },
+        {
+          "targetText": "до другого города.",
+          "baseText": {
+            "de": "in eine andere Stadt",
+            "en": "to a different city"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "однажды",
+          "baseText": {
+            "de": "einmal",
+            "en": "once"
+          }
+        },
+        {
+          "targetText": "спешить",
+          "baseText": {
+            "de": "es eilig haben",
+            "en": "be in a hurry"
+          }
+        },
+        {
+          "targetText": "сесть в поезд",
+          "baseText": {
+            "de": "in einen Zug steigen",
+            "en": "board a train"
+          }
+        },
+        {
+          "targetText": "другой город",
+          "baseText": {
+            "de": "eine andere Stadt",
+            "en": "a different city"
+          }
+        },
+        {
+          "targetText": "обратный поезд",
+          "baseText": {
+            "de": "Zug zurück",
+            "en": "train back"
+          }
+        },
+        {
+          "targetText": "встретить",
+          "baseText": {
+            "de": "abholen; treffen",
+            "en": "meet; collect someone"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Однажды, когда я спешила на встречу, я села в ",
+        "answer": "поезд",
+        "after": " до другого города.",
+        "fallbackChoices": [
+          "поезд",
+          "трамвай",
+          "самолёт",
+          "автобус"
+        ]
+      },
+      "speakRequired": [
+        "однажды",
+        "встречу",
+        "города"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Вспомните, пожалуйста, случай из поездки. Вы когда-нибудь садились не в тот поезд?“",
+        "en": "The conversation opens with this question: “Вспомните, пожалуйста, случай из поездки. Вы когда-нибудь садились не в тот поезд?”"
+      },
+      "trophyWord": {
+        "word": "однажды",
+        "meaning": {
+          "de": "einmal",
+          "en": "once"
+        },
+        "example": "Однажды мы перепутали поезда.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb однажды eröffnet eine Geschichte über ein einzelnes vergangenes Erlebnis.",
+          "en": "The unchanging adverb однажды opens a story about one particular past experience."
+        }
+      },
+      "distractors": [
+        "до соседней деревни.",
+        "я села в автобус"
+      ],
+      "placeholderCaption": {
+        "de": "Im Sprachunterricht bittet dich die Lehrerin um eine kleine Geschichte über ein Missgeschick.",
+        "en": "In language class, the teacher asks for a short story about a mishap."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Quiet language classroom; no return timetable or friends waiting at a station in the opening.",
+      "genderAlternatives": {
+        "1": "Однажды, когда я спешил на встречу, я сел в поезд до другого города."
+      }
+    },
+    {
+      "slug": "rano-morning-coffee",
+      "title": {
+        "de": "Zu früh für Kaffee",
+        "en": "Too early for coffee"
+      },
+      "situation": {
+        "de": "Am Nachmittag fragt dich eine Bekannte nach deinem frühen Start in den Tag.",
+        "en": "In the afternoon an acquaintance asks about your early start."
+      },
+      "pedagogicalGoal": "Mit рано den Zeitpunkt nennen und mit пока gleichzeitig verlaufende Handlungen beschreiben.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Как началось ваше утро? Вы сегодня рано вышли из дома?",
+          "baseText": {
+            "de": "Wie begann Ihr Morgen? Sind Sie heute früh aus dem Haus gegangen?",
+            "en": "How did your morning start? Did you leave home early today?"
+          }
+        },
+        {
+          "targetText": "Я встала рано и пошла за кофе, но кафе ещё не работало.",
+          "baseText": {
+            "de": "Ich stand früh auf und ging einen Kaffee holen, aber das Café war noch nicht geöffnet.",
+            "en": "I got up early and went out for coffee, but the cafe was not open yet."
+          }
+        },
+        {
+          "targetText": "Рядом есть пекарня, она открывается рано. Где вы всё же позавтракали?",
+          "baseText": {
+            "de": "In der Nähe gibt es eine Bäckerei, die früh öffnet. Wo haben Sie schließlich gefrühstückt?",
+            "en": "There is a bakery nearby that opens early. Where did you end up having breakfast?"
+          }
+        },
+        {
+          "targetText": "В пекарне рядом: пока пекарь готовил кофе, на витрине лежали свежие булочки.",
+          "baseText": {
+            "de": "In der Bäckerei nebenan: Während der Bäcker Kaffee zubereitete, lagen frische Brötchen in der Auslage.",
+            "en": "In the bakery next door: while the baker made coffee, fresh rolls lay in the display case."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "пока + laufende Vergangenheit",
+        "rule": {
+          "de": "Пока verbindet hier zwei gleichzeitig laufende Handlungen; готовил und лежали stehen im unvollendeten Aspekt.",
+          "en": "Пока links two activities in progress at the same time; готовил and лежали are imperfective."
+        },
+        "examples": [
+          {
+            "targetText": "В пекарне рядом: пока пекарь готовил кофе, на витрине лежали свежие булочки.",
+            "baseText": {
+              "de": "In der Bäckerei nebenan: Während der Bäcker Kaffee zubereitete, lagen frische Brötchen in der Auslage.",
+              "en": "In the bakery next door: while the baker made coffee, fresh rolls lay in the display case."
+            },
+            "highlight": "пока пекарь готовил кофе"
+          },
+          {
+            "targetText": "Пока мы завтракали, за окном шёл снег.",
+            "baseText": {
+              "de": "Während wir frühstückten, schneite es draußen.",
+              "en": "While we were having breakfast, it was snowing outside."
+            },
+            "highlight": "Пока мы завтракали"
+          }
+        ]
+      },
+      "cloze": [
+        "В пекарне рядом: пока пекарь ",
+        {
+          "kind": "form",
+          "answer": "готовил",
+          "cue": "готовить — пекарь, длительное действие в прошлом",
+          "choices": [
+            "готовил",
+            "готовит",
+            "приготовит",
+            "приготовили"
+          ]
+        },
+        " кофе, на витрине ",
+        {
+          "kind": "form",
+          "answer": "лежали",
+          "cue": "лежать — булочки, длительное состояние в прошлом",
+          "choices": [
+            "лежали",
+            "лежат",
+            "лежит",
+            "лежала"
+          ]
+        },
+        " свежие булочки."
+      ],
+      "chunks": [
+        {
+          "targetText": "Я встала рано",
+          "baseText": {
+            "de": "ich stand früh auf",
+            "en": "I got up early"
+          }
+        },
+        {
+          "targetText": "и пошла за кофе,",
+          "baseText": {
+            "de": "und ging Kaffee holen",
+            "en": "and went out for coffee"
+          }
+        },
+        {
+          "targetText": "но кафе",
+          "baseText": {
+            "de": "aber das Café",
+            "en": "but the cafe"
+          }
+        },
+        {
+          "targetText": "ещё не работало.",
+          "baseText": {
+            "de": "war noch nicht geöffnet",
+            "en": "was not open yet"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "рано",
+          "baseText": {
+            "de": "früh",
+            "en": "early"
+          }
+        },
+        {
+          "targetText": "встать",
+          "baseText": {
+            "de": "aufstehen",
+            "en": "get up"
+          }
+        },
+        {
+          "targetText": "за кофе",
+          "baseText": {
+            "de": "um Kaffee zu holen",
+            "en": "to get coffee"
+          }
+        },
+        {
+          "targetText": "пока",
+          "baseText": {
+            "de": "während",
+            "en": "while"
+          }
+        },
+        {
+          "targetText": "пекарь",
+          "baseText": {
+            "de": "Bäcker",
+            "en": "baker"
+          }
+        },
+        {
+          "targetText": "булочки",
+          "baseText": {
+            "de": "Brötchen",
+            "en": "rolls"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Я встала рано и пошла за ",
+        "answer": "кофе",
+        "after": ", но кафе ещё не работало.",
+        "fallbackChoices": [
+          "кофе",
+          "соль",
+          "сахар",
+          "рис"
+        ]
+      },
+      "speakRequired": [
+        "рано",
+        "кофе",
+        "работало"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Как началось ваше утро? Вы сегодня рано вышли из дома?“",
+        "en": "The conversation opens with this question: “Как началось ваше утро? Вы сегодня рано вышли из дома?”"
+      },
+      "trophyWord": {
+        "word": "рано",
+        "meaning": {
+          "de": "früh",
+          "en": "early"
+        },
+        "example": "Сегодня мы встали рано.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb рано nennt einen frühen Zeitpunkt, ohne sich dem Sprecher anzupassen.",
+          "en": "The unchanging adverb рано gives an early time without agreeing with the speaker."
+        }
+      },
+      "distractors": [
+        "и пошла за молоком,",
+        "Я встала в полдень"
+      ],
+      "placeholderCaption": {
+        "de": "Am Nachmittag fragt dich eine Bekannte nach deinem frühen Start in den Tag.",
+        "en": "In the afternoon an acquaintance asks about your early start."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Afternoon conversation; keep bakery, baker and breakfast details out of the first image.",
+      "genderAlternatives": {
+        "1": "Я встал рано и пошёл за кофе, но кафе ещё не работало."
+      }
+    },
+    {
+      "slug": "pozdno-after-concert",
+      "title": {
+        "de": "Nach dem späten Konzert",
+        "en": "After the late concert"
+      },
+      "situation": {
+        "de": "Deine Gastgeberin fragt am nächsten Tag nach deinem Konzertabend.",
+        "en": "Your host asks about the concert the next day."
+      },
+      "pedagogicalGoal": "Mit поздно und когда den Konzertschluss mit der folgenden Situation verbinden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Как прошёл вчерашний концерт? После него вы успели на метро?",
+          "baseText": {
+            "de": "Wie war das Konzert gestern? Haben Sie danach noch die Metro erreicht?",
+            "en": "How was yesterday’s concert? Did you make it to the metro afterwards?"
+          }
+        },
+        {
+          "targetText": "Концерт закончился поздно, и, когда я вышла на улицу, метро уже не работало.",
+          "baseText": {
+            "de": "Das Konzert endete spät, und als ich auf die Straße ging, fuhr die Metro schon nicht mehr.",
+            "en": "The concert ended late, and when I went outside, the metro was no longer running."
+          }
+        },
+        {
+          "targetText": "Ночью оттуда ходит автобус. Как вы добрались до дома?",
+          "baseText": {
+            "de": "Nachts fährt dort ein Bus. Wie sind Sie nach Hause gekommen?",
+            "en": "A bus runs from there at night. How did you get home?"
+          }
+        },
+        {
+          "targetText": "Ночной автобус пришёл быстро и через час довёз меня до дома.",
+          "baseText": {
+            "de": "Der Nachtbus kam schnell und brachte mich in einer Stunde nach Hause.",
+            "en": "The night bus came quickly and got me home within an hour."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "когда: Ereignis und Situation",
+        "rule": {
+          "de": "Когда я вышла nennt einen abgeschlossenen Moment; не работало beschreibt die zu diesem Zeitpunkt bestehende Situation.",
+          "en": "Когда я вышла gives a completed moment; не работало describes the situation at that time."
+        },
+        "examples": [
+          {
+            "targetText": "Концерт закончился поздно, и, когда я вышла на улицу, метро уже не работало.",
+            "baseText": {
+              "de": "Das Konzert endete spät, und als ich auf die Straße ging, fuhr die Metro schon nicht mehr.",
+              "en": "The concert ended late, and when I went outside, the metro was no longer running."
+            },
+            "highlight": "когда я вышла на улицу"
+          },
+          {
+            "targetText": "Когда мы вышли из театра, автобусы уже не ходили.",
+            "baseText": {
+              "de": "Als wir aus dem Theater kamen, fuhren keine Busse mehr.",
+              "en": "When we left the theatre, buses were no longer running."
+            },
+            "highlight": "Когда мы вышли из театра"
+          }
+        ]
+      },
+      "cloze": [
+        "Ночной автобус ",
+        {
+          "kind": "form",
+          "answer": "пришёл",
+          "cue": "прийти — автобус, завершённое прибытие в прошлом",
+          "choices": [
+            "пришёл",
+            "идёт",
+            "придёт",
+            "пришли"
+          ]
+        },
+        " быстро и через час ",
+        {
+          "kind": "form",
+          "answer": "довёз",
+          "cue": "довезти — автобус, завершённое действие в прошлом",
+          "choices": [
+            "довёз",
+            "везёт",
+            "довезёт",
+            "довезли"
+          ]
+        },
+        " меня до дома."
+      ],
+      "chunks": [
+        {
+          "targetText": "Концерт закончился поздно,",
+          "baseText": {
+            "de": "das Konzert endete spät",
+            "en": "the concert ended late"
+          }
+        },
+        {
+          "targetText": "и, когда я вышла",
+          "baseText": {
+            "de": "und als ich hinausging",
+            "en": "and when I went out"
+          }
+        },
+        {
+          "targetText": "на улицу,",
+          "baseText": {
+            "de": "auf die Straße",
+            "en": "onto the street"
+          }
+        },
+        {
+          "targetText": "метро уже не работало.",
+          "baseText": {
+            "de": "fuhr die Metro schon nicht mehr",
+            "en": "the metro was no longer running"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "поздно",
+          "baseText": {
+            "de": "spät",
+            "en": "late"
+          }
+        },
+        {
+          "targetText": "закончиться",
+          "baseText": {
+            "de": "zu Ende gehen",
+            "en": "end"
+          }
+        },
+        {
+          "targetText": "выйти на улицу",
+          "baseText": {
+            "de": "auf die Straße gehen",
+            "en": "go outside"
+          }
+        },
+        {
+          "targetText": "уже не работало",
+          "baseText": {
+            "de": "war nicht mehr in Betrieb",
+            "en": "was no longer running"
+          }
+        },
+        {
+          "targetText": "довезти до дома",
+          "baseText": {
+            "de": "bis nach Hause bringen",
+            "en": "take home (by vehicle)"
+          }
+        },
+        {
+          "targetText": "через час",
+          "baseText": {
+            "de": "eine Stunde später",
+            "en": "an hour later"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Концерт закончился ",
+        "answer": "поздно",
+        "after": ", и, когда я вышла на улицу, метро уже не работало.",
+        "fallbackChoices": [
+          "поздно",
+          "рано",
+          "зимой",
+          "утром"
+        ]
+      },
+      "speakRequired": [
+        "концерт",
+        "поздно",
+        "метро"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Как прошёл вчерашний концерт? После него вы успели на метро?“",
+        "en": "The conversation opens with this question: “Как прошёл вчерашний концерт? После него вы успели на метро?”"
+      },
+      "trophyWord": {
+        "word": "поздно",
+        "meaning": {
+          "de": "spät",
+          "en": "late"
+        },
+        "example": "Наш концерт закончился поздно.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb поздно erklärt einen späten Zeitpunkt und daraus entstehende Schwierigkeiten.",
+          "en": "The unchanging adverb поздно explains a late time and the difficulties it can cause."
+        }
+      },
+      "distractors": [
+        "метро ещё работало.",
+        "на балкон,"
+      ],
+      "placeholderCaption": {
+        "de": "Deine Gastgeberin fragt am nächsten Tag nach deinem Konzertabend.",
+        "en": "Your host asks about the concert the next day."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Morning at a host’s table; no night-bus route or arrival at home in the opening image.",
+      "genderAlternatives": {
+        "1": "Концерт закончился поздно, и, когда я вышел на улицу, метро уже не работало."
+      }
+    },
+    {
+      "slug": "sluchayno-library-teacher",
+      "title": {
+        "de": "Eine zufällige Begegnung",
+        "en": "A chance encounter"
+      },
+      "situation": {
+        "de": "Eine Bekannte fragt, wie du deinen Sprachlehrer kennengelernt hast.",
+        "en": "An acquaintance asks how you met your language teacher."
+      },
+      "pedagogicalGoal": "Mit случайно eine zufällige Begegnung erzählen und auf eine Frage zur Fortsetzung mit A2-Zukunftsformen antworten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Как вы познакомились со своим преподавателем? Вас кто-нибудь познакомил или помог найти занятия?",
+          "baseText": {
+            "de": "Wie haben Sie Ihren Lehrer kennengelernt? Hat Sie jemand bekannt gemacht oder Ihnen bei der Kurssuche geholfen?",
+            "en": "How did you meet your teacher? Did someone introduce you or help you find lessons?"
+          }
+        },
+        {
+          "targetText": "Я случайно встретила преподавателя в библиотеке, когда искала книгу по истории.",
+          "baseText": {
+            "de": "Ich begegnete meinem Lehrer zufällig in der Bibliothek, als ich nach einem Geschichtsbuch suchte.",
+            "en": "I met my teacher by chance in the library while I was looking for a history book."
+          }
+        },
+        {
+          "targetText": "Он теперь ведёт ещё и литературный клуб. Вы продолжаете с ним заниматься?",
+          "baseText": {
+            "de": "Er leitet jetzt auch einen Literaturclub. Lernen Sie weiter bei ihm?",
+            "en": "He now runs a literature club as well. Are you continuing your lessons with him?"
+          }
+        },
+        {
+          "targetText": "Да, мы будем заниматься дальше и скоро начнём читать рассказы.",
+          "baseText": {
+            "de": "Ja, wir lernen weiter zusammen und fangen bald an, Erzählungen zu lesen.",
+            "en": "Yes, we will keep studying together and will soon start reading short stories."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Zufall und Hintergrund",
+        "rule": {
+          "de": "Случайно kennzeichnet die ungeplante Begegnung; когда искала gibt die damals laufende Tätigkeit an.",
+          "en": "Случайно marks the unplanned encounter; когда искала gives the activity that was in progress."
+        },
+        "examples": [
+          {
+            "targetText": "Я случайно встретила преподавателя в библиотеке, когда искала книгу по истории.",
+            "baseText": {
+              "de": "Ich begegnete meinem Lehrer zufällig in der Bibliothek, als ich nach einem Geschichtsbuch suchte.",
+              "en": "I met my teacher by chance in the library while I was looking for a history book."
+            },
+            "highlight": "когда искала книгу"
+          },
+          {
+            "targetText": "Мы случайно встретили соседей, когда выбирали книги.",
+            "baseText": {
+              "de": "Wir trafen zufällig unsere Nachbarn, als wir Bücher aussuchten.",
+              "en": "We met our neighbours by chance while we were choosing books."
+            },
+            "highlight": "когда выбирали книги"
+          }
+        ]
+      },
+      "cloze": [
+        "Да, мы ",
+        {
+          "kind": "form",
+          "answer": "будем",
+          "cue": "быть — мы, будущее время перед заниматься",
+          "choices": [
+            "будем",
+            "будут",
+            "будете",
+            "будет"
+          ]
+        },
+        " заниматься дальше и скоро ",
+        {
+          "kind": "form",
+          "answer": "начнём",
+          "cue": "начать — мы, завершённый первый шаг в будущем",
+          "choices": [
+            "начнём",
+            "начали",
+            "начнёте",
+            "начнёт"
+          ]
+        },
+        " читать рассказы."
+      ],
+      "chunks": [
+        {
+          "targetText": "Я случайно встретила преподавателя",
+          "baseText": {
+            "de": "ich begegnete dem Lehrer zufällig",
+            "en": "I met the teacher by chance"
+          }
+        },
+        {
+          "targetText": "в библиотеке,",
+          "baseText": {
+            "de": "in der Bibliothek",
+            "en": "in the library"
+          }
+        },
+        {
+          "targetText": "когда искала книгу",
+          "baseText": {
+            "de": "als ich nach einem Buch suchte",
+            "en": "while I was looking for a book"
+          }
+        },
+        {
+          "targetText": "по истории.",
+          "baseText": {
+            "de": "über Geschichte",
+            "en": "on history"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "случайно",
+          "baseText": {
+            "de": "zufällig",
+            "en": "by chance"
+          }
+        },
+        {
+          "targetText": "познакомиться",
+          "baseText": {
+            "de": "jemanden kennenlernen",
+            "en": "meet someone for the first time"
+          }
+        },
+        {
+          "targetText": "преподаватель",
+          "baseText": {
+            "de": "Lehrer; Dozent",
+            "en": "teacher"
+          }
+        },
+        {
+          "targetText": "библиотека",
+          "baseText": {
+            "de": "Bibliothek",
+            "en": "library"
+          }
+        },
+        {
+          "targetText": "по истории",
+          "baseText": {
+            "de": "über Geschichte",
+            "en": "on history"
+          }
+        },
+        {
+          "targetText": "рассказы",
+          "baseText": {
+            "de": "Erzählungen",
+            "en": "short stories"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Я случайно встретила преподавателя в ",
+        "answer": "библиотеке",
+        "after": ", когда искала книгу по истории.",
+        "fallbackChoices": [
+          "библиотеке",
+          "аптеке",
+          "булочной",
+          "парикмахерской"
+        ]
+      },
+      "speakRequired": [
+        "случайно",
+        "преподавателя",
+        "истории"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Как вы познакомились со своим преподавателем? Вас кто-нибудь познакомил или помог найти занятия?“",
+        "en": "The conversation opens with this question: “Как вы познакомились со своим преподавателем? Вас кто-нибудь познакомил или помог найти занятия?”"
+      },
+      "trophyWord": {
+        "word": "случайно",
+        "meaning": {
+          "de": "zufällig",
+          "en": "by chance"
+        },
+        "example": "Мы случайно встретили преподавателя в библиотеке.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb случайно erklärt, dass eine Begegnung ungeplant war.",
+          "en": "The unchanging adverb случайно explains that an encounter was unplanned."
+        }
+      },
+      "distractors": [
+        "в поликлинике,",
+        "по биологии."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bekannte fragt, wie du deinen Sprachlehrer kennengelernt hast.",
+        "en": "An acquaintance asks how you met your language teacher."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Two acquaintances talking; no literary club or future reading materials in the first scene.",
+      "genderAlternatives": {
+        "1": "Я случайно встретил преподавателя в библиотеке, когда искал книгу по истории."
+      }
+    }
+  ]
+}

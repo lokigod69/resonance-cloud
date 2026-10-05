@@ -1,0 +1,2130 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Russian",
+  "targetLanguageCode": "ru-RU",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Von mehreren Seiten betrachtet",
+    "en": "Looking at both sides"
+  },
+  "subtitle": {
+    "de": "Meinungen begründen und Einwände einräumen",
+    "en": "Explain opinions and acknowledge objections"
+  },
+  "anchor": "Вы throughout: collegial Russian opinions, concrete reasons and concessions; interested-listener episodes.",
+  "lessons": [
+    {
+      "slug": "kazhetsya-new-schedule",
+      "title": {
+        "de": "Der neue Dienstplan",
+        "en": "The new work schedule"
+      },
+      "situation": {
+        "de": "In einer ruhigen Pause fragt eine Kollegin nach deinem neuen Dienstplan.",
+        "en": "During a quiet break a colleague asks about your new work schedule."
+      },
+      "pedagogicalGoal": "Mit мне кажется, что eine persönliche Einschätzung geben und eine Schwierigkeit unpersönlich ausdrücken.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Вам подходит новый график работы? Как вы себя чувствуете по утрам?",
+          "baseText": {
+            "de": "Passt Ihnen der neue Dienstplan? Wie fühlen Sie sich morgens?",
+            "en": "Does the new work schedule suit you? How do you feel in the mornings?"
+          }
+        },
+        {
+          "targetText": "Мне кажется, что новый график удобный, но по утрам тяжело вставать.",
+          "baseText": {
+            "de": "Ich finde, der neue Dienstplan ist praktisch, aber morgens fällt das Aufstehen schwer.",
+            "en": "It seems to me that the new schedule is convenient, but getting up in the mornings is hard."
+          }
+        },
+        {
+          "targetText": "Теперь смена начинается на час раньше. Что мешает вам по утрам?",
+          "baseText": {
+            "de": "Die Schicht beginnt jetzt eine Stunde früher. Was macht Ihnen morgens Schwierigkeiten?",
+            "en": "The shift now starts an hour earlier. What makes mornings difficult for you?"
+          }
+        },
+        {
+          "targetText": "Мне трудно просыпаться рано, потому что вечером дома шумно.",
+          "baseText": {
+            "de": "Mir fällt das frühe Aufwachen schwer, weil es abends zu Hause laut ist.",
+            "en": "I find it hard to wake up early because it is noisy at home in the evening."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "мне кажется, что",
+        "rule": {
+          "de": "Мне кажется, что leitet eine persönliche, vorsichtig formulierte Einschätzung ein.",
+          "en": "Мне кажется, что introduces a personal opinion expressed cautiously."
+        },
+        "examples": [
+          {
+            "targetText": "Мне кажется, что новый график удобный, но по утрам тяжело вставать.",
+            "baseText": {
+              "de": "Ich finde, der neue Dienstplan ist praktisch, aber morgens fällt das Aufstehen schwer.",
+              "en": "It seems to me that the new schedule is convenient, but getting up in the mornings is hard."
+            },
+            "highlight": "Мне кажется, что"
+          },
+          {
+            "targetText": "Мне кажется, что начинать работу позже удобнее.",
+            "baseText": {
+              "de": "Ich finde, ein späterer Arbeitsbeginn wäre praktischer.",
+              "en": "It seems to me that starting work later is more convenient."
+            },
+            "highlight": "Мне кажется, что"
+          }
+        ]
+      },
+      "cloze": [
+        "Мне ",
+        {
+          "kind": "form",
+          "answer": "трудно",
+          "cue": "трудный — безличная оценка трудности",
+          "choices": [
+            "трудно",
+            "трудный",
+            "трудная",
+            "трудные"
+          ]
+        },
+        " просыпаться рано, потому что вечером дома ",
+        {
+          "kind": "form",
+          "answer": "шумно",
+          "cue": "шумный — безличное описание обстановки",
+          "choices": [
+            "шумно",
+            "шумный",
+            "шумная",
+            "шумные"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Мне кажется,",
+          "baseText": {
+            "de": "mir scheint",
+            "en": "it seems to me"
+          }
+        },
+        {
+          "targetText": "что новый график удобный,",
+          "baseText": {
+            "de": "dass der neue Dienstplan praktisch ist",
+            "en": "that the new schedule is convenient"
+          }
+        },
+        {
+          "targetText": "но по утрам",
+          "baseText": {
+            "de": "aber morgens",
+            "en": "but in the mornings"
+          }
+        },
+        {
+          "targetText": "тяжело вставать.",
+          "baseText": {
+            "de": "fällt das Aufstehen schwer",
+            "en": "getting up is hard"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "кажется",
+          "baseText": {
+            "de": "es scheint",
+            "en": "it seems"
+          }
+        },
+        {
+          "targetText": "график работы",
+          "baseText": {
+            "de": "Dienstplan",
+            "en": "work schedule"
+          }
+        },
+        {
+          "targetText": "удобный",
+          "baseText": {
+            "de": "praktisch",
+            "en": "convenient"
+          }
+        },
+        {
+          "targetText": "по утрам",
+          "baseText": {
+            "de": "morgens",
+            "en": "in the mornings"
+          }
+        },
+        {
+          "targetText": "просыпаться",
+          "baseText": {
+            "de": "aufwachen",
+            "en": "wake up"
+          }
+        },
+        {
+          "targetText": "шумно",
+          "baseText": {
+            "de": "laut",
+            "en": "noisy"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Мне кажется, что новый ",
+        "answer": "график",
+        "after": " удобный, но по утрам тяжело вставать.",
+        "fallbackChoices": [
+          "график",
+          "чайник",
+          "рюкзак",
+          "десерт"
+        ]
+      },
+      "speakRequired": [
+        "кажется",
+        "график",
+        "удобный"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Вам подходит новый график работы? Как вы себя чувствуете по утрам?“",
+        "en": "The conversation opens with this question: “Вам подходит новый график работы? Как вы себя чувствуете по утрам?”"
+      },
+      "trophyWord": {
+        "word": "кажется",
+        "meaning": {
+          "de": "es scheint",
+          "en": "it seems"
+        },
+        "example": "Мне кажется, что новый график удобный.",
+        "whyThisWord": {
+          "de": "Die feste Form кажется in мне кажется macht eine persönliche Einschätzung weniger kategorisch.",
+          "en": "The fixed form кажется in мне кажется makes a personal opinion less categorical."
+        }
+      },
+      "distractors": [
+        "что новый график неудобный,",
+        "легко вставать."
+      ],
+      "placeholderCaption": {
+        "de": "In einer ruhigen Pause fragt eine Kollegin nach deinem neuen Dienstplan.",
+        "en": "During a quiet break a colleague asks about your new work schedule."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Colleagues during a quiet break; do not reveal the earlier shift time or noise at home in the opening."
+    },
+    {
+      "slug": "mnenie-long-film",
+      "title": {
+        "de": "Ein guter, langer Film",
+        "en": "A good but long film"
+      },
+      "situation": {
+        "de": "Nach einer Filmvorführung bittet dich der Leiter des Filmclubs um deine Einschätzung.",
+        "en": "After a screening, the film-club host asks for your opinion."
+      },
+      "pedagogicalGoal": "Mit мнение eine eigene Einschätzung einleiten und mit unpersönlichen Bewertungen auf eine Nachfrage antworten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Как вам сегодняшний фильм? Какое у вас мнение после просмотра?",
+          "baseText": {
+            "de": "Wie fanden Sie den Film heute? Was halten Sie nach der Vorführung davon?",
+            "en": "How did you like today’s film? What is your opinion after watching it?"
+          }
+        },
+        {
+          "targetText": "Моё мнение такое: фильм хороший, но он слишком длинный для вечернего сеанса.",
+          "baseText": {
+            "de": "Meine Meinung ist: Der Film ist gut, aber für eine Abendvorstellung zu lang.",
+            "en": "My opinion is this: the film is good, but it is too long for an evening screening."
+          }
+        },
+        {
+          "targetText": "Режиссёр оставил финал без объяснений. Вам было понятно, что произошло?",
+          "baseText": {
+            "de": "Der Regisseur hat das Ende nicht erklärt. War Ihnen klar, was passiert ist?",
+            "en": "The director left the ending unexplained. Was it clear to you what happened?"
+          }
+        },
+        {
+          "targetText": "Да, понять финал легко, и мне было интересно до конца.",
+          "baseText": {
+            "de": "Ja, das Ende ist leicht zu verstehen, und ich fand es bis zum Schluss spannend.",
+            "en": "Yes, the ending is easy to understand, and I was interested right to the end."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "мнение + persönliche Bewertung",
+        "rule": {
+          "de": "Моё мнение такое kündigt deine Einschätzung an; ein unpersönliches интересно bewertet das Erleben ohne Sprecher-Geschlecht.",
+          "en": "Моё мнение такое introduces your opinion; impersonal интересно evaluates the experience without marking the speaker’s gender."
+        },
+        "examples": [
+          {
+            "targetText": "Моё мнение такое: фильм хороший, но он слишком длинный для вечернего сеанса.",
+            "baseText": {
+              "de": "Meine Meinung ist: Der Film ist gut, aber für eine Abendvorstellung zu lang.",
+              "en": "My opinion is this: the film is good, but it is too long for an evening screening."
+            },
+            "highlight": "Моё мнение такое"
+          },
+          {
+            "targetText": "Моё мнение такое: фильм интересный, но начало слишком медленное.",
+            "baseText": {
+              "de": "Meine Meinung ist: Der Film ist interessant, aber der Anfang ist zu langsam.",
+              "en": "My opinion is this: the film is interesting, but the beginning is too slow."
+            },
+            "highlight": "Моё мнение такое"
+          }
+        ]
+      },
+      "cloze": [
+        "Да, понять финал ",
+        {
+          "kind": "form",
+          "answer": "легко",
+          "cue": "лёгкий — безличная оценка сложности",
+          "choices": [
+            "легко",
+            "лёгкий",
+            "лёгкая",
+            "лёгкие"
+          ]
+        },
+        ", и мне было ",
+        {
+          "kind": "form",
+          "answer": "интересно",
+          "cue": "интересный — безличная оценка впечатления",
+          "choices": [
+            "интересно",
+            "интересный",
+            "интересная",
+            "интересные"
+          ]
+        },
+        " до конца."
+      ],
+      "chunks": [
+        {
+          "targetText": "Моё мнение такое:",
+          "baseText": {
+            "de": "meine Meinung ist",
+            "en": "my opinion is this"
+          }
+        },
+        {
+          "targetText": "фильм хороший,",
+          "baseText": {
+            "de": "der Film ist gut",
+            "en": "the film is good"
+          }
+        },
+        {
+          "targetText": "но он слишком длинный",
+          "baseText": {
+            "de": "aber er ist zu lang",
+            "en": "but it is too long"
+          }
+        },
+        {
+          "targetText": "для вечернего сеанса.",
+          "baseText": {
+            "de": "für eine Abendvorstellung",
+            "en": "for an evening screening"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "мнение",
+          "baseText": {
+            "de": "Meinung",
+            "en": "opinion"
+          }
+        },
+        {
+          "targetText": "после просмотра",
+          "baseText": {
+            "de": "nach dem Anschauen",
+            "en": "after watching"
+          }
+        },
+        {
+          "targetText": "слишком длинный",
+          "baseText": {
+            "de": "zu lang",
+            "en": "too long"
+          }
+        },
+        {
+          "targetText": "сеанс",
+          "baseText": {
+            "de": "Vorstellung",
+            "en": "screening"
+          }
+        },
+        {
+          "targetText": "финал",
+          "baseText": {
+            "de": "Ende",
+            "en": "ending"
+          }
+        },
+        {
+          "targetText": "понять",
+          "baseText": {
+            "de": "verstehen",
+            "en": "understand"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Моё мнение такое: фильм хороший, но он слишком ",
+        "answer": "длинный",
+        "after": " для вечернего сеанса.",
+        "fallbackChoices": [
+          "длинный",
+          "длинная",
+          "длинное",
+          "длинные"
+        ]
+      },
+      "speakRequired": [
+        "мнение",
+        "фильм",
+        "длинный"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Как вам сегодняшний фильм? Какое у вас мнение после просмотра?“",
+        "en": "The conversation opens with this question: “Как вам сегодняшний фильм? Какое у вас мнение после просмотра?”"
+      },
+      "trophyWord": {
+        "word": "мнение",
+        "meaning": {
+          "de": "Meinung",
+          "en": "opinion"
+        },
+        "example": "Моё мнение такое: фильм хороший.",
+        "whyThisWord": {
+          "de": "Das Nomen мнение steht hier im Nominativ und benennt ausdrücklich deine eigene Einschätzung.",
+          "en": "The noun мнение is in the nominative here and explicitly names your own opinion."
+        }
+      },
+      "distractors": [
+        "для утреннего сеанса.",
+        "но он слишком короткий"
+      ],
+      "placeholderCaption": {
+        "de": "Nach einer Filmvorführung bittet dich der Leiter des Filmclubs um deine Einschätzung.",
+        "en": "After a screening, the film-club host asks for your opinion."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Film-club discussion with a blank screen; do not illustrate or explain the film ending."
+    },
+    {
+      "slug": "smysl-evening-classes",
+      "title": {
+        "de": "Wozu der Abendkurs gut ist",
+        "en": "Why the evening course helps"
+      },
+      "situation": {
+        "de": "Eine Bekannte ist unsicher, ob sich ein Sprachkurs am Abend lohnt.",
+        "en": "An acquaintance is unsure whether an evening language course is worthwhile."
+      },
+      "pedagogicalGoal": "Mit есть смысл und потому что den Nutzen einer Aktivität begründen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Есть ли смысл ходить на вечерние занятия после работы? Что вы думаете?",
+          "baseText": {
+            "de": "Lohnt es sich, nach der Arbeit zum Abendkurs zu gehen? Was meinen Sie?",
+            "en": "Is there any point in attending evening classes after work? What do you think?"
+          }
+        },
+        {
+          "targetText": "В этих занятиях есть смысл, потому что мы весь вечер говорим по-русски.",
+          "baseText": {
+            "de": "Diese Kurse sind sinnvoll, weil wir den ganzen Abend Russisch sprechen.",
+            "en": "There is a point to these classes because we speak Russian all evening."
+          }
+        },
+        {
+          "targetText": "Но сейчас за месяц просят вдвое больше. Это для вас дорого?",
+          "baseText": {
+            "de": "Aber jetzt kostet ein Monat doppelt so viel. Ist das für Sie teuer?",
+            "en": "But they now charge twice as much per month. Is that expensive for you?"
+          }
+        },
+        {
+          "targetText": "Да, учиться там дорого, но для разговорной практики это полезно.",
+          "baseText": {
+            "de": "Ja, der Unterricht dort ist teuer, aber für die Sprechpraxis ist er nützlich.",
+            "en": "Yes, studying there is expensive, but it is useful for speaking practice."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "есть смысл, потому что",
+        "rule": {
+          "de": "Есть смысл benennt den Nutzen; потому что liefert den konkreten Grund dafür.",
+          "en": "Есть смысл states that something has a purpose; потому что supplies the concrete reason."
+        },
+        "examples": [
+          {
+            "targetText": "В этих занятиях есть смысл, потому что мы весь вечер говорим по-русски.",
+            "baseText": {
+              "de": "Diese Kurse sind sinnvoll, weil wir den ganzen Abend Russisch sprechen.",
+              "en": "There is a point to these classes because we speak Russian all evening."
+            },
+            "highlight": "есть смысл, потому что"
+          },
+          {
+            "targetText": "В этих встречах есть смысл, потому что мы много говорим.",
+            "baseText": {
+              "de": "Diese Treffen sind sinnvoll, weil wir viel sprechen.",
+              "en": "These meetings have a point because we speak a lot."
+            },
+            "highlight": "есть смысл, потому что"
+          }
+        ]
+      },
+      "cloze": [
+        "Да, учиться там ",
+        {
+          "kind": "form",
+          "answer": "дорого",
+          "cue": "дорогой — безличная оценка стоимости",
+          "choices": [
+            "дорого",
+            "дорогой",
+            "дорогая",
+            "дорогие"
+          ]
+        },
+        ", но для разговорной практики это ",
+        {
+          "kind": "form",
+          "answer": "полезно",
+          "cue": "полезный — безличная оценка пользы",
+          "choices": [
+            "полезно",
+            "полезный",
+            "полезная",
+            "полезные"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "В этих занятиях",
+          "baseText": {
+            "de": "in diesen Kursen",
+            "en": "in these classes"
+          }
+        },
+        {
+          "targetText": "есть смысл,",
+          "baseText": {
+            "de": "liegt ein Nutzen",
+            "en": "there is a point"
+          }
+        },
+        {
+          "targetText": "потому что мы весь вечер",
+          "baseText": {
+            "de": "weil wir den ganzen Abend",
+            "en": "because all evening we"
+          }
+        },
+        {
+          "targetText": "говорим по-русски.",
+          "baseText": {
+            "de": "Russisch sprechen",
+            "en": "speak Russian"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "смысл",
+          "baseText": {
+            "de": "Sinn; Nutzen",
+            "en": "point; purpose"
+          }
+        },
+        {
+          "targetText": "вечерние занятия",
+          "baseText": {
+            "de": "Abendunterricht",
+            "en": "evening classes"
+          }
+        },
+        {
+          "targetText": "после работы",
+          "baseText": {
+            "de": "nach der Arbeit",
+            "en": "after work"
+          }
+        },
+        {
+          "targetText": "весь вечер",
+          "baseText": {
+            "de": "den ganzen Abend",
+            "en": "all evening"
+          }
+        },
+        {
+          "targetText": "вдвое больше",
+          "baseText": {
+            "de": "doppelt so viel",
+            "en": "twice as much"
+          }
+        },
+        {
+          "targetText": "разговорная практика",
+          "baseText": {
+            "de": "Sprechpraxis",
+            "en": "speaking practice"
+          }
+        }
+      ],
+      "recall": {
+        "before": "В этих занятиях есть ",
+        "answer": "смысл",
+        "after": ", потому что мы весь вечер говорим по-русски.",
+        "fallbackChoices": [
+          "смысл",
+          "шум",
+          "запах",
+          "вкус"
+        ]
+      },
+      "speakRequired": [
+        "занятиях",
+        "смысл",
+        "говорим"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Есть ли смысл ходить на вечерние занятия после работы? Что вы думаете?“",
+        "en": "The conversation opens with this question: “Есть ли смысл ходить на вечерние занятия после работы? Что вы думаете?”"
+      },
+      "trophyWord": {
+        "word": "смысл",
+        "meaning": {
+          "de": "Sinn; Nutzen",
+          "en": "point; purpose"
+        },
+        "example": "В этих занятиях есть смысл.",
+        "whyThisWord": {
+          "de": "Das Nomen смысл steht in есть смысл im Nominativ und hilft, den Nutzen einer Aktivität zu erklären.",
+          "en": "The noun смысл is nominative in есть смысл and helps explain why an activity is worthwhile."
+        }
+      },
+      "distractors": [
+        "говорим по-немецки.",
+        "В этих покупках"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bekannte ist unsicher, ob sich ein Sprachkurs am Abend lohnt.",
+        "en": "An acquaintance is unsure whether an evening language course is worthwhile."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Adults talking after work; keep the higher course price out of the opening scene."
+    },
+    {
+      "slug": "khotya-winter-walks",
+      "title": {
+        "de": "Kalt und trotzdem schön",
+        "en": "Cold but still beautiful"
+      },
+      "situation": {
+        "de": "Eine Kollegin fragt, wie dir der Winter in der Stadt gefällt.",
+        "en": "A colleague asks how you like winter in the city."
+      },
+      "pedagogicalGoal": "Mit хотя einen echten Gegensatz zwischen Kälte und Freude am Spaziergang ausdrücken.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Как вам наша зима? Вам нравится город в такую холодную погоду?",
+          "baseText": {
+            "de": "Wie gefällt Ihnen unser Winter? Mögen Sie die Stadt bei so kaltem Wetter?",
+            "en": "How do you like our winter? Do you like the city in such cold weather?"
+          }
+        },
+        {
+          "targetText": "Хотя зимой здесь холодно, мне нравится гулять по набережной среди заснеженных деревьев.",
+          "baseText": {
+            "de": "Obwohl es hier im Winter kalt ist, gehe ich gern zwischen den verschneiten Bäumen am Ufer spazieren.",
+            "en": "Although it is cold here in winter, I enjoy walking along the embankment among the snow-covered trees."
+          }
+        },
+        {
+          "targetText": "Сегодня на набережной особенно сильный ветер. Вы всё равно идёте гулять?",
+          "baseText": {
+            "de": "Heute weht am Ufer ein besonders starker Wind. Gehen Sie trotzdem spazieren?",
+            "en": "It is especially windy along the embankment today. Are you still going for a walk?"
+          }
+        },
+        {
+          "targetText": "Да, гулять приятно, хотя без тёплого шарфа на улице холодно.",
+          "baseText": {
+            "de": "Ja, Spazierengehen ist schön, obwohl es draußen ohne warmen Schal kalt ist.",
+            "en": "Yes, walking is pleasant, although it is cold outside without a warm scarf."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "хотя: einräumen und weiterführen",
+        "rule": {
+          "de": "Хотя nennt einen Umstand, der normalerweise dagegen spricht, ohne die positive Hauptaussage aufzuheben.",
+          "en": "Хотя introduces a circumstance that normally counts against something without cancelling the positive main point."
+        },
+        "examples": [
+          {
+            "targetText": "Хотя зимой здесь холодно, мне нравится гулять по набережной среди заснеженных деревьев.",
+            "baseText": {
+              "de": "Obwohl es hier im Winter kalt ist, gehe ich gern zwischen den verschneiten Bäumen am Ufer spazieren.",
+              "en": "Although it is cold here in winter, I enjoy walking along the embankment among the snow-covered trees."
+            },
+            "highlight": "Хотя зимой здесь холодно"
+          },
+          {
+            "targetText": "Хотя на улице мороз, в парке много людей.",
+            "baseText": {
+              "de": "Obwohl es draußen friert, sind viele Menschen im Park.",
+              "en": "Although it is freezing outside, there are many people in the park."
+            },
+            "highlight": "Хотя на улице мороз"
+          }
+        ]
+      },
+      "cloze": [
+        "Да, гулять ",
+        {
+          "kind": "form",
+          "answer": "приятно",
+          "cue": "приятный — безличная оценка прогулки",
+          "choices": [
+            "приятно",
+            "приятный",
+            "приятная",
+            "приятные"
+          ]
+        },
+        ", хотя без тёплого шарфа на улице ",
+        {
+          "kind": "form",
+          "answer": "холодно",
+          "cue": "холодный — безличное описание погоды",
+          "choices": [
+            "холодно",
+            "холодный",
+            "холодная",
+            "холодные"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Хотя зимой здесь холодно,",
+          "baseText": {
+            "de": "obwohl es hier im Winter kalt ist",
+            "en": "although it is cold here in winter"
+          }
+        },
+        {
+          "targetText": "мне нравится гулять",
+          "baseText": {
+            "de": "gehe ich gern spazieren",
+            "en": "I enjoy walking"
+          }
+        },
+        {
+          "targetText": "по набережной",
+          "baseText": {
+            "de": "am Ufer entlang",
+            "en": "along the embankment"
+          }
+        },
+        {
+          "targetText": "среди заснеженных деревьев.",
+          "baseText": {
+            "de": "zwischen verschneiten Bäumen",
+            "en": "among snow-covered trees"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "хотя",
+          "baseText": {
+            "de": "obwohl",
+            "en": "although"
+          }
+        },
+        {
+          "targetText": "зимой",
+          "baseText": {
+            "de": "im Winter",
+            "en": "in winter"
+          }
+        },
+        {
+          "targetText": "заснеженные деревья",
+          "baseText": {
+            "de": "verschneite Bäume",
+            "en": "snow-covered trees"
+          }
+        },
+        {
+          "targetText": "сильный ветер",
+          "baseText": {
+            "de": "starker Wind",
+            "en": "strong wind"
+          }
+        },
+        {
+          "targetText": "всё равно",
+          "baseText": {
+            "de": "trotzdem",
+            "en": "anyway"
+          }
+        },
+        {
+          "targetText": "тёплый шарф",
+          "baseText": {
+            "de": "warmer Schal",
+            "en": "warm scarf"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Хотя зимой здесь холодно, мне нравится гулять по ",
+        "answer": "набережной",
+        "after": " среди заснеженных деревьев.",
+        "fallbackChoices": [
+          "набережной",
+          "лестнице",
+          "кухне",
+          "сцене"
+        ]
+      },
+      "speakRequired": [
+        "хотя",
+        "зимой",
+        "холодно"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Как вам наша зима? Вам нравится город в такую холодную погоду?“",
+        "en": "The conversation opens with this question: “Как вам наша зима? Вам нравится город в такую холодную погоду?”"
+      },
+      "trophyWord": {
+        "word": "хотя",
+        "meaning": {
+          "de": "obwohl",
+          "en": "although"
+        },
+        "example": "Хотя зимой холодно, мы любим гулять.",
+        "whyThisWord": {
+          "de": "Die unveränderliche Konjunktion хотя verbindet einen Einwand mit einer trotzdem gültigen Aussage.",
+          "en": "The unchanging conjunction хотя links an objection to a statement that remains true despite it."
+        }
+      },
+      "distractors": [
+        "по коридору",
+        "среди высоких шкафов."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kollegin fragt, wie dir der Winter in der Stadt gefällt.",
+        "en": "A colleague asks how you like winter in the city."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Office window on a winter city; no scarf advice or unusually strong wind in the opening."
+    },
+    {
+      "slug": "zato-small-central-flat",
+      "title": {
+        "de": "Klein, dafür zentral",
+        "en": "Small, but central"
+      },
+      "situation": {
+        "de": "Eine Bekannte fragt nach deiner kleinen Wohnung im Zentrum.",
+        "en": "An acquaintance asks about your small flat in the centre."
+      },
+      "pedagogicalGoal": "Mit зато einen konkreten Vorteil als Ausgleich für einen Nachteil nennen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Как вам новая квартира в центре? Там хватает места для ваших вещей?",
+          "baseText": {
+            "de": "Wie gefällt Ihnen die neue Wohnung im Zentrum? Gibt es genug Platz für Ihre Sachen?",
+            "en": "How do you like your new flat in the centre? Is there enough room for your things?"
+          }
+        },
+        {
+          "targetText": "Квартира маленькая, зато прямо в центре, и до работы всего десять минут.",
+          "baseText": {
+            "de": "Die Wohnung ist klein, dafür liegt sie mitten im Zentrum, und zur Arbeit brauche ich nur zehn Minuten.",
+            "en": "The flat is small, but it is right in the centre, and work is only ten minutes away."
+          }
+        },
+        {
+          "targetText": "Под окнами вечером играет музыка. Она мешает вам спать?",
+          "baseText": {
+            "de": "Abends spielt unter den Fenstern Musik. Stört Sie das beim Schlafen?",
+            "en": "Music plays below the windows in the evening. Does it disturb your sleep?"
+          }
+        },
+        {
+          "targetText": "Да, ночью там шумно, зато утром добираться до работы удобно.",
+          "baseText": {
+            "de": "Ja, nachts ist es dort laut, dafür ist morgens der Weg zur Arbeit bequem.",
+            "en": "Yes, it is noisy there at night, but getting to work in the morning is convenient."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nachteil, зато Vorteil",
+        "rule": {
+          "de": "Зато führt einen positiven Ausgleich ein, etwa eine gute Lage trotz wenig Platz.",
+          "en": "Зато introduces a compensating advantage, such as a good location despite limited space."
+        },
+        "examples": [
+          {
+            "targetText": "Квартира маленькая, зато прямо в центре, и до работы всего десять минут.",
+            "baseText": {
+              "de": "Die Wohnung ist klein, dafür liegt sie mitten im Zentrum, und zur Arbeit brauche ich nur zehn Minuten.",
+              "en": "The flat is small, but it is right in the centre, and work is only ten minutes away."
+            },
+            "highlight": "зато прямо в центре"
+          },
+          {
+            "targetText": "Комната небольшая, зато из окна виден парк.",
+            "baseText": {
+              "de": "Das Zimmer ist klein, dafür sieht man vom Fenster den Park.",
+              "en": "The room is small, but you can see the park from the window."
+            },
+            "highlight": "зато из окна виден парк"
+          }
+        ]
+      },
+      "cloze": [
+        "Да, ночью там ",
+        {
+          "kind": "form",
+          "answer": "шумно",
+          "cue": "шумный — безличная оценка обстановки",
+          "choices": [
+            "шумно",
+            "шумный",
+            "шумная",
+            "шумные"
+          ]
+        },
+        ", зато утром добираться до работы ",
+        {
+          "kind": "form",
+          "answer": "удобно",
+          "cue": "удобный — безличная оценка дороги",
+          "choices": [
+            "удобно",
+            "удобный",
+            "удобная",
+            "удобные"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Квартира маленькая,",
+          "baseText": {
+            "de": "die Wohnung ist klein",
+            "en": "the flat is small"
+          }
+        },
+        {
+          "targetText": "зато прямо в центре,",
+          "baseText": {
+            "de": "dafür mitten im Zentrum",
+            "en": "but right in the centre"
+          }
+        },
+        {
+          "targetText": "и до работы",
+          "baseText": {
+            "de": "und bis zur Arbeit",
+            "en": "and to work"
+          }
+        },
+        {
+          "targetText": "всего десять минут.",
+          "baseText": {
+            "de": "nur zehn Minuten",
+            "en": "only ten minutes"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "зато",
+          "baseText": {
+            "de": "dafür",
+            "en": "but on the plus side"
+          }
+        },
+        {
+          "targetText": "маленькая квартира",
+          "baseText": {
+            "de": "kleine Wohnung",
+            "en": "small flat"
+          }
+        },
+        {
+          "targetText": "прямо в центре",
+          "baseText": {
+            "de": "mitten im Zentrum",
+            "en": "right in the centre"
+          }
+        },
+        {
+          "targetText": "всего",
+          "baseText": {
+            "de": "nur; lediglich",
+            "en": "only"
+          }
+        },
+        {
+          "targetText": "мешать спать",
+          "baseText": {
+            "de": "beim Schlafen stören",
+            "en": "disturb sleep"
+          }
+        },
+        {
+          "targetText": "добираться",
+          "baseText": {
+            "de": "an einen Ort gelangen",
+            "en": "get to a place"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Квартира маленькая, зато прямо в ",
+        "answer": "центре",
+        "after": ", и до работы всего десять минут.",
+        "fallbackChoices": [
+          "центре",
+          "лесу",
+          "подвале",
+          "гараже"
+        ]
+      },
+      "speakRequired": [
+        "квартира",
+        "зато",
+        "центре"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Как вам новая квартира в центре? Там хватает места для ваших вещей?“",
+        "en": "The conversation opens with this question: “Как вам новая квартира в центре? Там хватает места для ваших вещей?”"
+      },
+      "trophyWord": {
+        "word": "зато",
+        "meaning": {
+          "de": "dafür; aber dafür",
+          "en": "but on the plus side"
+        },
+        "example": "Квартира маленькая, зато рядом с работой.",
+        "whyThisWord": {
+          "de": "Die unveränderliche Konjunktion зато hebt einen ausgleichenden Vorteil hervor.",
+          "en": "The unchanging conjunction зато highlights a compensating advantage."
+        }
+      },
+      "distractors": [
+        "всего сорок минут.",
+        "зато далеко от центра,"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bekannte fragt nach deiner kleinen Wohnung im Zentrum.",
+        "en": "An acquaintance asks about your small flat in the centre."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Conversation near a simple flat entrance; no music source or night scene before the follow-up."
+    },
+    {
+      "slug": "raznitsa-coffee-beans",
+      "title": {
+        "de": "Zwei Kaffees vergleichen",
+        "en": "Comparing two coffees"
+      },
+      "situation": {
+        "de": "Bei einer kleinen Verkostung fragt die Barista nach dem Unterschied zwischen zwei Kaffees.",
+        "en": "During a tasting, the barista asks about the difference between two coffees."
+      },
+      "pedagogicalGoal": "Mit разница einen Unterschied benennen und Geschmack sowie Preis gegeneinander abwägen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Вы попробовали оба сорта кофе? Чувствуете разницу во вкусе и аромате?",
+          "baseText": {
+            "de": "Haben Sie beide Kaffeesorten probiert? Merken Sie einen Unterschied in Geschmack und Aroma?",
+            "en": "Have you tried both coffees? Can you notice a difference in taste and aroma?"
+          }
+        },
+        {
+          "targetText": "Разница небольшая: этот кофе мягче, хотя второй пахнет заметно сильнее.",
+          "baseText": {
+            "de": "Der Unterschied ist klein: Dieser Kaffee ist milder, obwohl der zweite deutlich stärker duftet.",
+            "en": "The difference is small: this coffee is milder, although the second smells noticeably stronger."
+          }
+        },
+        {
+          "targetText": "Второй сорт сегодня со скидкой. Какой всё-таки вам больше нравится?",
+          "baseText": {
+            "de": "Die zweite Sorte ist heute im Angebot. Welche gefällt Ihnen denn besser?",
+            "en": "The second variety is discounted today. Which one do you prefer after all?"
+          }
+        },
+        {
+          "targetText": "Мне приятнее пить первый без сахара, хотя покупать второй дешевле.",
+          "baseText": {
+            "de": "Mir schmeckt der erste ohne Zucker besser, obwohl der zweite günstiger ist.",
+            "en": "I prefer drinking the first without sugar, although the second is cheaper to buy."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "разница + Vergleich",
+        "rule": {
+          "de": "Разница небольшая bewertet die Größe des Unterschieds; мягче und сильнее vergleichen konkrete Eigenschaften.",
+          "en": "Разница небольшая assesses how big the difference is; мягче and сильнее compare specific qualities."
+        },
+        "examples": [
+          {
+            "targetText": "Разница небольшая: этот кофе мягче, хотя второй пахнет заметно сильнее.",
+            "baseText": {
+              "de": "Der Unterschied ist klein: Dieser Kaffee ist milder, obwohl der zweite deutlich stärker duftet.",
+              "en": "The difference is small: this coffee is milder, although the second smells noticeably stronger."
+            },
+            "highlight": "Разница небольшая"
+          },
+          {
+            "targetText": "Разница заметная: этот чай крепче, хотя стоит дешевле.",
+            "baseText": {
+              "de": "Der Unterschied ist deutlich: Dieser Tee ist stärker, obwohl er weniger kostet.",
+              "en": "The difference is noticeable: this tea is stronger, although it costs less."
+            },
+            "highlight": "Разница заметная"
+          }
+        ]
+      },
+      "cloze": [
+        "Мне ",
+        {
+          "kind": "form",
+          "answer": "приятнее",
+          "cue": "приятный — безличное сравнение, сравнительная степень",
+          "choices": [
+            "приятнее",
+            "приятный",
+            "приятного",
+            "приятными"
+          ]
+        },
+        " пить первый без сахара, хотя покупать второй ",
+        {
+          "kind": "form",
+          "answer": "дешевле",
+          "cue": "дешёвый — безличное сравнение стоимости, сравнительная степень",
+          "choices": [
+            "дешевле",
+            "дешёвый",
+            "дешёвого",
+            "дешёвыми"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Разница небольшая:",
+          "baseText": {
+            "de": "der Unterschied ist klein",
+            "en": "the difference is small"
+          }
+        },
+        {
+          "targetText": "этот кофе мягче,",
+          "baseText": {
+            "de": "dieser Kaffee ist milder",
+            "en": "this coffee is milder"
+          }
+        },
+        {
+          "targetText": "хотя второй пахнет",
+          "baseText": {
+            "de": "obwohl der zweite duftet",
+            "en": "although the second smells"
+          }
+        },
+        {
+          "targetText": "заметно сильнее.",
+          "baseText": {
+            "de": "deutlich stärker",
+            "en": "noticeably stronger"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "разница",
+          "baseText": {
+            "de": "Unterschied",
+            "en": "difference"
+          }
+        },
+        {
+          "targetText": "сорт кофе",
+          "baseText": {
+            "de": "Kaffeesorte",
+            "en": "coffee variety"
+          }
+        },
+        {
+          "targetText": "мягче",
+          "baseText": {
+            "de": "milder",
+            "en": "milder"
+          }
+        },
+        {
+          "targetText": "аромат",
+          "baseText": {
+            "de": "Aroma",
+            "en": "aroma"
+          }
+        },
+        {
+          "targetText": "заметно сильнее",
+          "baseText": {
+            "de": "deutlich stärker",
+            "en": "noticeably stronger"
+          }
+        },
+        {
+          "targetText": "без сахара",
+          "baseText": {
+            "de": "ohne Zucker",
+            "en": "without sugar"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Разница небольшая: этот ",
+        "answer": "кофе",
+        "after": " мягче, хотя второй пахнет заметно сильнее.",
+        "fallbackChoices": [
+          "кофе",
+          "шарф",
+          "стул",
+          "шкаф"
+        ]
+      },
+      "speakRequired": [
+        "разница",
+        "кофе",
+        "сильнее"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Вы попробовали оба сорта кофе? Чувствуете разницу во вкусе и аромате?“",
+        "en": "The conversation opens with this question: “Вы попробовали оба сорта кофе? Чувствуете разницу во вкусе и аромате?”"
+      },
+      "trophyWord": {
+        "word": "разница",
+        "meaning": {
+          "de": "Unterschied",
+          "en": "difference"
+        },
+        "example": "Разница небольшая, но этот кофе мягче.",
+        "whyThisWord": {
+          "de": "Das Nomen разница steht hier im Nominativ und benennt den Unterschied zwischen zwei Angeboten.",
+          "en": "The noun разница is nominative here and names the difference between two options."
+        }
+      },
+      "distractors": [
+        "этот кофе крепче,",
+        "заметно слабее."
+      ],
+      "placeholderCaption": {
+        "de": "Bei einer kleinen Verkostung fragt die Barista nach dem Unterschied zwischen zwei Kaffees.",
+        "en": "During a tasting, the barista asks about the difference between two coffees."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Cafe counter with two small tasting cups; do not show a discount label before the complication."
+    },
+    {
+      "slug": "odnako-app-crashes",
+      "title": {
+        "de": "Praktisch, aber instabil",
+        "en": "Useful, but unreliable"
+      },
+      "situation": {
+        "de": "Eine Kollegin empfiehlt dir eine neue App für die gemeinsame Planung.",
+        "en": "A colleague recommends a new app for shared planning."
+      },
+      "pedagogicalGoal": "Mit однако Zustimmung einschränken und eine konkrete Schwäche erläutern.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Новое приложение такое удобное, правда? Как вам работа с заметками и расписанием?",
+          "baseText": {
+            "de": "Die neue App ist doch praktisch, oder? Wie kommen Sie mit Notizen und Terminplan zurecht?",
+            "en": "The new app is so convenient, isn’t it? How do you find working with notes and the schedule?"
+          }
+        },
+        {
+          "targetText": "Приложение удобное, однако оно часто зависает, и я теряю важные заметки.",
+          "baseText": {
+            "de": "Die App ist praktisch, sie hängt sich allerdings oft auf, und ich verliere wichtige Notizen.",
+            "en": "The app is convenient; however, it often freezes and I lose important notes."
+          }
+        },
+        {
+          "targetText": "После обновления длинные заметки иногда исчезают. У вас это бывает при сохранении?",
+          "baseText": {
+            "de": "Seit dem Update verschwinden manchmal lange Notizen. Passiert Ihnen das beim Speichern?",
+            "en": "Since the update, long notes sometimes disappear. Does that happen to you when saving?"
+          }
+        },
+        {
+          "targetText": "Даже короткую заметку сохранять трудно, а писать всё заново неприятно.",
+          "baseText": {
+            "de": "Schon eine kurze Notiz lässt sich schwer speichern, und alles neu zu schreiben ist lästig.",
+            "en": "Even saving a short note is difficult, and writing everything out again is unpleasant."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "однако: eine Einschränkung",
+        "rule": {
+          "de": "Однако setzt nach einer positiven Aussage einen begründeten Einwand, ohne die Zustimmung ganz zurückzunehmen.",
+          "en": "Однако adds a reasoned objection after a positive statement without withdrawing the agreement entirely."
+        },
+        "examples": [
+          {
+            "targetText": "Приложение удобное, однако оно часто зависает, и я теряю важные заметки.",
+            "baseText": {
+              "de": "Die App ist praktisch, sie hängt sich allerdings oft auf, und ich verliere wichtige Notizen.",
+              "en": "The app is convenient; however, it often freezes and I lose important notes."
+            },
+            "highlight": "однако оно часто зависает"
+          },
+          {
+            "targetText": "Экран яркий, однако батарея быстро садится.",
+            "baseText": {
+              "de": "Das Display ist hell, allerdings wird der Akku schnell leer.",
+              "en": "The screen is bright; however, the battery runs down quickly."
+            },
+            "highlight": "однако батарея быстро садится"
+          }
+        ]
+      },
+      "cloze": [
+        "Даже короткую заметку сохранять ",
+        {
+          "kind": "form",
+          "answer": "трудно",
+          "cue": "трудный — безличная оценка сложности",
+          "choices": [
+            "трудно",
+            "трудный",
+            "трудная",
+            "трудные"
+          ]
+        },
+        ", а писать всё заново ",
+        {
+          "kind": "form",
+          "answer": "неприятно",
+          "cue": "неприятный — безличная оценка ощущения",
+          "choices": [
+            "неприятно",
+            "неприятный",
+            "неприятная",
+            "неприятные"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Приложение удобное,",
+          "baseText": {
+            "de": "die App ist praktisch",
+            "en": "the app is convenient"
+          }
+        },
+        {
+          "targetText": "однако оно часто зависает,",
+          "baseText": {
+            "de": "allerdings hängt sie sich oft auf",
+            "en": "however, it often freezes"
+          }
+        },
+        {
+          "targetText": "и я теряю",
+          "baseText": {
+            "de": "und ich verliere",
+            "en": "and I lose"
+          }
+        },
+        {
+          "targetText": "важные заметки.",
+          "baseText": {
+            "de": "wichtige Notizen",
+            "en": "important notes"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "однако",
+          "baseText": {
+            "de": "allerdings; jedoch",
+            "en": "however"
+          }
+        },
+        {
+          "targetText": "приложение",
+          "baseText": {
+            "de": "App",
+            "en": "app"
+          }
+        },
+        {
+          "targetText": "зависать",
+          "baseText": {
+            "de": "sich aufhängen",
+            "en": "freeze"
+          }
+        },
+        {
+          "targetText": "важные заметки",
+          "baseText": {
+            "de": "wichtige Notizen",
+            "en": "important notes"
+          }
+        },
+        {
+          "targetText": "обновление",
+          "baseText": {
+            "de": "Update",
+            "en": "update"
+          }
+        },
+        {
+          "targetText": "заново",
+          "baseText": {
+            "de": "von vorn",
+            "en": "from scratch"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Приложение удобное, однако оно часто зависает, и я ",
+        "answer": "теряю",
+        "after": " важные заметки.",
+        "fallbackChoices": [
+          "теряю",
+          "читаю",
+          "пишу",
+          "считаю"
+        ]
+      },
+      "speakRequired": [
+        "приложение",
+        "однако",
+        "заметки"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Новое приложение такое удобное, правда? Как вам работа с заметками и расписанием?“",
+        "en": "The conversation opens with this question: “Новое приложение такое удобное, правда? Как вам работа с заметками и расписанием?”"
+      },
+      "trophyWord": {
+        "word": "однако",
+        "meaning": {
+          "de": "allerdings; jedoch",
+          "en": "however"
+        },
+        "example": "Приложение удобное, однако оно часто зависает.",
+        "whyThisWord": {
+          "de": "Die unveränderliche Konjunktion однако leitet einen sachlichen Einwand zu einer positiven Einschätzung ein.",
+          "en": "The unchanging conjunction однако introduces a factual objection to a positive assessment."
+        }
+      },
+      "distractors": [
+        "старые фотографии.",
+        "и я нахожу"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kollegin empfiehlt dir eine neue App für die gemeinsame Planung.",
+        "en": "A colleague recommends a new app for shared planning."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Office conversation beside a phone with a generic blank screen; no lost-note or update details in the opening."
+    },
+    {
+      "slug": "vprochem-restaurant-value",
+      "title": {
+        "de": "Teuer, aber seinen Preis wert",
+        "en": "Expensive, but worth it"
+      },
+      "situation": {
+        "de": "Eine Bekannte fragt nach deinem Eindruck von einem Restaurant.",
+        "en": "An acquaintance asks for your impression of a restaurant."
+      },
+      "pedagogicalGoal": "Mit впрочем eine erste Bewertung nachträglich einschränken und eine konkrete Empfehlung anschließen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Как вам тот ресторан у реки? Цены там соответствуют качеству еды?",
+          "baseText": {
+            "de": "Wie fanden Sie das Restaurant am Fluss? Passen die Preise zur Qualität des Essens?",
+            "en": "How did you like that restaurant by the river? Do the prices match the quality of the food?"
+          }
+        },
+        {
+          "targetText": "В ресторане дорого, впрочем, за такие свежие продукты можно немного переплатить.",
+          "baseText": {
+            "de": "Das Restaurant ist teuer; allerdings kann man für so frische Zutaten ruhig etwas mehr bezahlen.",
+            "en": "The restaurant is expensive; then again, it is worth paying a little extra for ingredients that fresh."
+          }
+        },
+        {
+          "targetText": "Там сегодня новое рыбное меню. Что вы советуете попробовать?",
+          "baseText": {
+            "de": "Heute gibt es dort eine neue Fischkarte. Was empfehlen Sie zum Probieren?",
+            "en": "They have a new fish menu today. What would you recommend trying?"
+          }
+        },
+        {
+          "targetText": "Рыбный суп заказывать выгодно: порция большая, и вдвоём съесть её легко.",
+          "baseText": {
+            "de": "Die Fischsuppe lohnt sich: Die Portion ist groß, und zu zweit isst man sie leicht auf.",
+            "en": "The fish soup is good value: the portion is large, and two people can easily finish it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "впрочем: die erste Bewertung ergänzen",
+        "rule": {
+          "de": "Впрочем ergänzt hier ein ausgleichendes Argument, das die anfänglich kritische Bewertung abschwächt.",
+          "en": "Впрочем adds a balancing point that softens the initial criticism."
+        },
+        "examples": [
+          {
+            "targetText": "В ресторане дорого, впрочем, за такие свежие продукты можно немного переплатить.",
+            "baseText": {
+              "de": "Das Restaurant ist teuer; allerdings kann man für so frische Zutaten ruhig etwas mehr bezahlen.",
+              "en": "The restaurant is expensive; then again, it is worth paying a little extra for ingredients that fresh."
+            },
+            "highlight": "впрочем, за такие свежие продукты"
+          },
+          {
+            "targetText": "Это кафе далеко, впрочем, туда удобно ехать на трамвае.",
+            "baseText": {
+              "de": "Dieses Café liegt weit weg; allerdings kommt man bequem mit der Straßenbahn hin.",
+              "en": "This cafe is far away; then again, it is easy to get there by tram."
+            },
+            "highlight": "впрочем, туда удобно"
+          }
+        ]
+      },
+      "cloze": [
+        "Рыбный суп заказывать ",
+        {
+          "kind": "form",
+          "answer": "выгодно",
+          "cue": "выгодный — безличная оценка цены",
+          "choices": [
+            "выгодно",
+            "выгодный",
+            "выгодная",
+            "выгодные"
+          ]
+        },
+        ": порция большая, и вдвоём съесть её ",
+        {
+          "kind": "form",
+          "answer": "легко",
+          "cue": "лёгкий — безличная оценка сложности",
+          "choices": [
+            "легко",
+            "лёгкий",
+            "лёгкая",
+            "лёгкие"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "В ресторане дорого,",
+          "baseText": {
+            "de": "das Restaurant ist teuer",
+            "en": "the restaurant is expensive"
+          }
+        },
+        {
+          "targetText": "впрочем,",
+          "baseText": {
+            "de": "allerdings",
+            "en": "then again"
+          }
+        },
+        {
+          "targetText": "за такие свежие продукты",
+          "baseText": {
+            "de": "für so frische Zutaten",
+            "en": "for ingredients that fresh"
+          }
+        },
+        {
+          "targetText": "можно немного переплатить.",
+          "baseText": {
+            "de": "kann man etwas mehr bezahlen",
+            "en": "it is worth paying a little extra"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "впрочем",
+          "baseText": {
+            "de": "allerdings; andererseits",
+            "en": "then again"
+          }
+        },
+        {
+          "targetText": "свежие продукты",
+          "baseText": {
+            "de": "frische Zutaten",
+            "en": "fresh ingredients"
+          }
+        },
+        {
+          "targetText": "переплатить",
+          "baseText": {
+            "de": "etwas mehr bezahlen",
+            "en": "pay extra"
+          }
+        },
+        {
+          "targetText": "рыбное меню",
+          "baseText": {
+            "de": "Fischkarte",
+            "en": "fish menu"
+          }
+        },
+        {
+          "targetText": "выгодно",
+          "baseText": {
+            "de": "preislich lohnend",
+            "en": "good value"
+          }
+        },
+        {
+          "targetText": "вдвоём",
+          "baseText": {
+            "de": "zu zweit",
+            "en": "as two people"
+          }
+        }
+      ],
+      "recall": {
+        "before": "В ресторане дорого, впрочем, за такие свежие ",
+        "answer": "продукты",
+        "after": " можно немного переплатить.",
+        "fallbackChoices": [
+          "продукты",
+          "приборы",
+          "тарелки",
+          "салфетки"
+        ]
+      },
+      "speakRequired": [
+        "ресторане",
+        "впрочем",
+        "продукты"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Как вам тот ресторан у реки? Цены там соответствуют качеству еды?“",
+        "en": "The conversation opens with this question: “Как вам тот ресторан у реки? Цены там соответствуют качеству еды?”"
+      },
+      "trophyWord": {
+        "word": "впрочем",
+        "meaning": {
+          "de": "allerdings; andererseits",
+          "en": "then again"
+        },
+        "example": "Там дорого, впрочем, продукты всегда свежие.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Einleitungswort впрочем erlaubt dir, eine erste Bewertung durch einen weiteren Gesichtspunkt abzuschwächen.",
+          "en": "The unchanging discourse word впрочем lets you soften an initial judgement with another consideration."
+        }
+      },
+      "distractors": [
+        "за такие старые приборы",
+        "можно совсем не платить."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bekannte fragt nach deinem Eindruck von einem Restaurant.",
+        "en": "An acquaintance asks for your impression of a restaurant."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Conversation with a generic restaurant frontage; no fish menu, soup or portion size before the follow-up."
+    },
+    {
+      "slug": "pozhaluy-shorten-meeting",
+      "title": {
+        "de": "Lieber eine Pause",
+        "en": "Better to take a break"
+      },
+      "situation": {
+        "de": "Nach einer längeren Besprechung fragt die Leitung, ob ihr weitermachen sollt.",
+        "en": "After a long meeting, the host asks whether to continue."
+      },
+      "pedagogicalGoal": "Mit пожалуй eine abgewogene Empfehlung geben und mit однако eine bessere Alternative hervorheben.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "У нас ещё есть немного времени. Продолжим встречу или на сегодня хватит?",
+          "baseText": {
+            "de": "Wir haben noch etwas Zeit. Machen wir weiter, oder reicht es für heute?",
+            "en": "We still have a little time. Shall we continue the meeting, or is that enough for today?"
+          }
+        },
+        {
+          "targetText": "Пожалуй, лучше закончить встречу сейчас, потому что без перерыва уже трудно обсуждать детали.",
+          "baseText": {
+            "de": "Vielleicht sollten wir die Besprechung jetzt beenden, denn ohne Pause fällt es inzwischen schwer, Details zu besprechen.",
+            "en": "On balance, it is better to end the meeting now, because it is getting hard to discuss details without a break."
+          }
+        },
+        {
+          "targetText": "Но у нас остался ещё один вопрос. Почему нельзя продолжить?",
+          "baseText": {
+            "de": "Aber wir haben noch einen Punkt offen. Warum können wir nicht weitermachen?",
+            "en": "But we still have one question left. Why can’t we continue?"
+          }
+        },
+        {
+          "targetText": "Сейчас сосредоточиться сложно, однако завтра решить этот вопрос будет легче.",
+          "baseText": {
+            "de": "Gerade fällt die Konzentration schwer; morgen lässt sich dieser Punkt jedoch leichter klären.",
+            "en": "It is hard to concentrate now; however, it will be easier to resolve this question tomorrow."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "пожалуй + Empfehlung",
+        "rule": {
+          "de": "Пожалуй signalisiert eine abgewogene Entscheidung; потому что erklärt den Grund der Empfehlung.",
+          "en": "Пожалуй signals a considered decision; потому что explains the reason for the recommendation."
+        },
+        "examples": [
+          {
+            "targetText": "Пожалуй, лучше закончить встречу сейчас, потому что без перерыва уже трудно обсуждать детали.",
+            "baseText": {
+              "de": "Vielleicht sollten wir die Besprechung jetzt beenden, denn ohne Pause fällt es inzwischen schwer, Details zu besprechen.",
+              "en": "On balance, it is better to end the meeting now, because it is getting hard to discuss details without a break."
+            },
+            "highlight": "Пожалуй, лучше закончить"
+          },
+          {
+            "targetText": "Пожалуй, лучше обсудить это утром, потому что сейчас все устали.",
+            "baseText": {
+              "de": "Vielleicht besprechen wir das besser morgens, denn jetzt sind alle müde.",
+              "en": "On balance, it is better to discuss this in the morning because everyone is tired now."
+            },
+            "highlight": "Пожалуй, лучше обсудить"
+          }
+        ]
+      },
+      "cloze": [
+        "Сейчас сосредоточиться ",
+        {
+          "kind": "form",
+          "answer": "сложно",
+          "cue": "сложный — безличная оценка сложности",
+          "choices": [
+            "сложно",
+            "сложный",
+            "сложная",
+            "сложные"
+          ]
+        },
+        ", однако завтра решить этот вопрос будет ",
+        {
+          "kind": "form",
+          "answer": "легче",
+          "cue": "лёгкий — безличное сравнение, сравнительная степень",
+          "choices": [
+            "легче",
+            "лёгкий",
+            "лёгкого",
+            "лёгкими"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Пожалуй, лучше закончить встречу сейчас,",
+          "baseText": {
+            "de": "vielleicht sollten wir die Besprechung jetzt beenden",
+            "en": "on balance, it is better to end the meeting now"
+          }
+        },
+        {
+          "targetText": "потому что без перерыва",
+          "baseText": {
+            "de": "denn ohne Pause",
+            "en": "because without a break"
+          }
+        },
+        {
+          "targetText": "уже трудно",
+          "baseText": {
+            "de": "fällt es inzwischen schwer",
+            "en": "it is getting hard"
+          }
+        },
+        {
+          "targetText": "обсуждать детали.",
+          "baseText": {
+            "de": "Details zu besprechen",
+            "en": "to discuss details"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "пожалуй",
+          "baseText": {
+            "de": "wohl; nach Abwägung",
+            "en": "on balance; perhaps"
+          }
+        },
+        {
+          "targetText": "закончить встречу",
+          "baseText": {
+            "de": "die Besprechung beenden",
+            "en": "end the meeting"
+          }
+        },
+        {
+          "targetText": "перерыв",
+          "baseText": {
+            "de": "Pause",
+            "en": "break"
+          }
+        },
+        {
+          "targetText": "обсуждать детали",
+          "baseText": {
+            "de": "Details besprechen",
+            "en": "discuss details"
+          }
+        },
+        {
+          "targetText": "сосредоточиться",
+          "baseText": {
+            "de": "sich konzentrieren",
+            "en": "concentrate"
+          }
+        },
+        {
+          "targetText": "решить вопрос",
+          "baseText": {
+            "de": "einen Punkt klären",
+            "en": "resolve an issue"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Пожалуй, лучше закончить встречу сейчас, потому что без ",
+        "answer": "перерыва",
+        "after": " уже трудно обсуждать детали.",
+        "fallbackChoices": [
+          "перерыва",
+          "переводчика",
+          "микрофона",
+          "директора"
+        ]
+      },
+      "speakRequired": [
+        "пожалуй",
+        "закончить",
+        "обсуждать"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „У нас ещё есть немного времени. Продолжим встречу или на сегодня хватит?“",
+        "en": "The conversation opens with this question: “У нас ещё есть немного времени. Продолжим встречу или на сегодня хватит?”"
+      },
+      "trophyWord": {
+        "word": "пожалуй",
+        "meaning": {
+          "de": "wohl; nach Abwägung",
+          "en": "on balance; perhaps"
+        },
+        "example": "Пожалуй, лучше закончить встречу сейчас.",
+        "whyThisWord": {
+          "de": "Die unveränderliche Modalpartikel пожалуй stellt eine Empfehlung als abgewogene persönliche Entscheidung dar.",
+          "en": "The unchanging modal particle пожалуй presents a recommendation as a considered personal decision."
+        }
+      },
+      "distractors": [
+        "обсуждать цены.",
+        "потому что после перерыва"
+      ],
+      "placeholderCaption": {
+        "de": "Nach einer längeren Besprechung fragt die Leitung, ob ihr weitermachen sollt.",
+        "en": "After a long meeting, the host asks whether to continue."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Meeting room with participants considering the time; do not show an outstanding agenda item or a tomorrow plan."
+    },
+    {
+      "slug": "naoborot-remote-work",
+      "title": {
+        "de": "Eigentlich genau andersherum",
+        "en": "Actually, the opposite"
+      },
+      "situation": {
+        "de": "Eine Bekannte vermutet, dass dir die Arbeit von zu Hause nicht gefällt.",
+        "en": "An acquaintance assumes you dislike working from home."
+      },
+      "pedagogicalGoal": "Mit наоборот einer Annahme widersprechen und die gegenteilige persönliche Erfahrung begründen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Наверное, вам не нравится работать дома без коллег рядом? Там трудно сосредоточиться?",
+          "baseText": {
+            "de": "Wahrscheinlich arbeiten Sie ungern ohne Kollegen zu Hause, oder? Ist es dort schwer, sich zu konzentrieren?",
+            "en": "You probably dislike working at home without colleagues nearby, don’t you? Is it hard to concentrate there?"
+          }
+        },
+        {
+          "targetText": "Наоборот, мне нравится работать дома, потому что в тишине гораздо проще сосредоточиться.",
+          "baseText": {
+            "de": "Im Gegenteil, ich arbeite gern zu Hause, weil ich mich in der Ruhe viel leichter konzentrieren kann.",
+            "en": "On the contrary, I enjoy working at home because it is much easier to concentrate in the quiet."
+          }
+        },
+        {
+          "targetText": "Но коллеги не всегда сразу отвечают. Вам удобно обсуждать с ними задачи?",
+          "baseText": {
+            "de": "Aber die Kollegen antworten nicht immer sofort. Können Sie Aufgaben gut mit ihnen besprechen?",
+            "en": "But colleagues do not always reply immediately. Is it convenient to discuss tasks with them?"
+          }
+        },
+        {
+          "targetText": "С одной стороны, общаться сложнее, с другой стороны, дома спокойнее.",
+          "baseText": {
+            "de": "Einerseits ist die Kommunikation schwieriger, andererseits ist es zu Hause ruhiger.",
+            "en": "On the one hand, communication is harder; on the other hand, it is calmer at home."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "наоборот: eine Annahme umkehren",
+        "rule": {
+          "de": "Наоборот weist die vorherige Annahme zurück und führt die gegenteilige Erfahrung ein.",
+          "en": "Наоборот rejects the previous assumption and introduces the opposite experience."
+        },
+        "examples": [
+          {
+            "targetText": "Наоборот, мне нравится работать дома, потому что в тишине гораздо проще сосредоточиться.",
+            "baseText": {
+              "de": "Im Gegenteil, ich arbeite gern zu Hause, weil ich mich in der Ruhe viel leichter konzentrieren kann.",
+              "en": "On the contrary, I enjoy working at home because it is much easier to concentrate in the quiet."
+            },
+            "highlight": "Наоборот, мне нравится"
+          },
+          {
+            "targetText": "Наоборот, дома тихо, а в офисе постоянно звонят телефоны.",
+            "baseText": {
+              "de": "Im Gegenteil, zu Hause ist es ruhig, während im Büro ständig Telefone klingeln.",
+              "en": "On the contrary, it is quiet at home, while phones ring constantly in the office."
+            },
+            "highlight": "Наоборот, дома тихо"
+          }
+        ]
+      },
+      "cloze": [
+        "С одной стороны, общаться ",
+        {
+          "kind": "form",
+          "answer": "сложнее",
+          "cue": "сложный — безличное сравнение, сравнительная степень",
+          "choices": [
+            "сложнее",
+            "сложный",
+            "сложного",
+            "сложными"
+          ]
+        },
+        ", с другой стороны, дома ",
+        {
+          "kind": "form",
+          "answer": "спокойнее",
+          "cue": "спокойный — безличное сравнение, сравнительная степень",
+          "choices": [
+            "спокойнее",
+            "спокойный",
+            "спокойного",
+            "спокойными"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Наоборот, мне нравится",
+          "baseText": {
+            "de": "im Gegenteil, ich mag es",
+            "en": "on the contrary, I enjoy"
+          }
+        },
+        {
+          "targetText": "работать дома,",
+          "baseText": {
+            "de": "zu Hause zu arbeiten",
+            "en": "working at home"
+          }
+        },
+        {
+          "targetText": "потому что в тишине",
+          "baseText": {
+            "de": "weil in der Ruhe",
+            "en": "because in the quiet"
+          }
+        },
+        {
+          "targetText": "гораздо проще сосредоточиться.",
+          "baseText": {
+            "de": "die Konzentration viel leichter fällt",
+            "en": "it is much easier to concentrate"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "наоборот",
+          "baseText": {
+            "de": "im Gegenteil",
+            "en": "on the contrary"
+          }
+        },
+        {
+          "targetText": "работать дома",
+          "baseText": {
+            "de": "von zu Hause arbeiten",
+            "en": "work from home"
+          }
+        },
+        {
+          "targetText": "в тишине",
+          "baseText": {
+            "de": "in der Ruhe",
+            "en": "in the quiet"
+          }
+        },
+        {
+          "targetText": "гораздо проще",
+          "baseText": {
+            "de": "viel leichter",
+            "en": "much easier"
+          }
+        },
+        {
+          "targetText": "обсуждать задачи",
+          "baseText": {
+            "de": "Aufgaben besprechen",
+            "en": "discuss tasks"
+          }
+        },
+        {
+          "targetText": "с одной стороны",
+          "baseText": {
+            "de": "einerseits",
+            "en": "on the one hand"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Наоборот, мне нравится работать дома, потому что в ",
+        "answer": "тишине",
+        "after": " гораздо проще сосредоточиться.",
+        "fallbackChoices": [
+          "тишине",
+          "темноте",
+          "очереди",
+          "толпе"
+        ]
+      },
+      "speakRequired": [
+        "наоборот",
+        "работать",
+        "сосредоточиться"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „Наверное, вам не нравится работать дома без коллег рядом? Там трудно сосредоточиться?“",
+        "en": "The conversation opens with this question: “Наверное, вам не нравится работать дома без коллег рядом? Там трудно сосредоточиться?”"
+      },
+      "trophyWord": {
+        "word": "наоборот",
+        "meaning": {
+          "de": "im Gegenteil",
+          "en": "on the contrary"
+        },
+        "example": "Наоборот, мне нравится работать дома.",
+        "whyThisWord": {
+          "de": "Das unveränderliche Adverb наоборот korrigiert eine Annahme durch ihre ausdrückliche Umkehrung.",
+          "en": "The unchanging adverb наоборот corrects an assumption by explicitly reversing it."
+        }
+      },
+      "distractors": [
+        "работать в офисе,",
+        "потому что в шуме"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bekannte vermutet, dass dir die Arbeit von zu Hause nicht gefällt.",
+        "en": "An acquaintance assumes you dislike working from home."
+      },
+      "songMood": "Warm acoustic storytelling with unhurried, clearly separated Russian phrases.",
+      "visualNotes": "Acquaintances talking in a neutral room; no delayed-message notification or phone solution in advance."
+    }
+  ]
+}

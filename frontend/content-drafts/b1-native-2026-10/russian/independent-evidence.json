@@ -1,0 +1,1802 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b1-native-2026-10/russian/p1.json": "42aea398f3a11b3bde78e03a6791aa436be6ea04130b463ba9610edc2f64a96e",
+    "frontend/content-drafts/b1-native-2026-10/russian/p2.json": "6c5d9525ac1ad086e8b95dadb7019fed3801c85428c390c630d9a6a47d6cc7e2"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b1-native-2026-10/russian/specification.json": "3a8c316ba1740077df8ca9a1f62c630cd2aece89e8eba075b18e7d2e41023139"
+  },
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "RU-B1-PUB-01",
+      "severity": "HIGH",
+      "category": "publication-integration",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": true,
+      "title": "Russian B1 has no current schema and runtime path for the reviewed full gender alternatives",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+          "line": 15
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+          "line": 19
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 175
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 597
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guided-runtime/russian.ts",
+          "line": 4
+        }
+      ],
+      "evidence": "The actual shared B1 schema only permits English/Spanish/French/Italian/Portuguese and strict lesson objects omit genderAlternatives. The current Russian runtime contains 100 A1 and 100 A2 lessons and zero B1 lessons. No genderAlternatives consumer is present in frontend/src or frontend/scripts. normalizeGuidedAnswer performs NFC, whitespace and case normalization, not ё→е folding. Thus the seven reviewed complete male alternatives and explicit е-spellings are not yet implemented acceptance evidence.",
+      "impact": "Publishing through the current path would either reject the draft shape or omit the reviewed alternative input. A correct learner may be penalized for a male form or normal е spelling.",
+      "requiredAction": "Implement and independently review a true Russian B1 extension with Russian/ru-RU identity and strict optional lesson.genderAlternatives keys '1'/'3' only. Map complete reviewed strings plus explicit е folds to the actual typed/spoken surfaces, preserving canonical target text; never generate suffix replacements or mutate frozen A1/A2. Confirm the B1 0.65/15-second scaffold and voice roster in the eventual integrated path.",
+      "verification": "Re-run the exact final Russian sources through the Russian gate and inspect real rendered Russian B1 fixtures and acceptance behavior. The later scratch gate under construction is outside this review."
+    },
+    {
+      "id": "RU-B1-PUB-02",
+      "severity": "MEDIUM",
+      "category": "stale-acceptance-evidence",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": true,
+      "title": "Nine author acceptance proposals still describe pre-Fable content",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+          "line": 233
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+          "line": 657
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+          "line": 1019
+        }
+      ],
+      "evidence": "proposedAcceptanceOnly differs from the bound reviewed content at P1 L3/L4/L5/L8/L9 and P2 L5/L6/L7/L8. The report hashes bind the original files. P1 L9 still proposes the old plural closing and old cloze answers, omitting the new complete closing's е fold and пришёл/пришел, довёз/довез. P2 L5 still proposes recall десять instead of центре.",
+      "impact": "The old report cannot be used as a current accepted-answer manifest or current mechanical/content PASS. Reusing it would accept obsolete answers and reject reviewed current answers.",
+      "requiredAction": "Regenerate a reviewable acceptance manifest bound to the reviewed sources, using only complete canonical turns, their full е folds, the seven supplied full male alternatives and their folds, and any independently arbitrated complete word-order variant. Recall/cloze permit canonical plus е fold only. Preserve the old author report as historical evidence instead of silently treating it as current.",
+      "verification": "All nine stale rows and their exact old/current expected values are retained in acceptanceAudit.staleRows. Rebind counts and hashes and test the final integrated acceptance sets."
+    },
+    {
+      "id": "RU-B1-PUB-03",
+      "severity": "MEDIUM",
+      "category": "build-answer-ambiguity",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": true,
+      "title": "P2 L4 has a valid alternative chip order that the current build check rejects",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p2.json",
+          "line": 748,
+          "jsonPointer": "/lessons/3/chunks"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/BuildPhraseStep.tsx",
+          "line": 69
+        }
+      ],
+      "evidence": {
+        "canonical": "Хотя зимой здесь холодно, мне нравится гулять по набережной среди заснеженных деревьев.",
+        "chips": [
+          "Хотя зимой здесь холодно,",
+          "мне нравится гулять",
+          "по набережной",
+          "среди заснеженных деревьев."
+        ],
+        "alternativeZeroBasedOrder": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "alternative": "Хотя зимой здесь холодно, по набережной мне нравится гулять среди заснеженных деревьев.",
+        "visibleMeaning": "Both orders state that the learner likes walking along the embankment among snow-covered trees despite the winter cold. All displayed chip spelling, punctuation and capitalisation survive the alternative order.",
+        "currentCheck": "nextPhrase === lesson.build.targetText"
+      },
+      "impact": "A grammatical, same-meaning construction using all four correct visible chips is marked wrong. The source has no accepted-build-order field and the author's wordOrderVariants array is empty.",
+      "requiredAction": "Arbitrate and either group chips so this valid reordering is not offered, or implement and test explicitly reviewed build-answer acceptance. Merely adding a spoken accepted answer will not alter the existing build equality check.",
+      "verification": "A fixture must exercise this exact alternative and the canonical order against the eventual rendered build surface."
+    },
+    {
+      "id": "RU-B1-PUB-04",
+      "severity": "LOW",
+      "category": "base-translation-precision",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": false,
+      "title": "P1 L9 English closing changes 'an hour later' to 'within an hour'",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p1.json",
+          "line": 1757,
+          "jsonPointer": "/lessons/8/dialogue/3"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p1.json",
+          "line": 1760,
+          "jsonPointer": "/lessons/8/dialogue/3/baseText/en"
+        }
+      ],
+      "evidence": {
+        "target": "Ночной автобус пришёл быстро и через час довёз меня до дома.",
+        "en": "The night bus came quickly and got me home within an hour.",
+        "de": "Der Nachtbus kam schnell und brachte mich in einer Stunde nach Hause."
+      },
+      "impact": "The Russian locates arrival one hour later; 'within an hour' specifies an upper limit instead. This is a base-language precision issue, not a defect in the canonical Russian recording text.",
+      "requiredAction": "Use 'The night bus came quickly and got me home an hour later.' Consider 'Der Nachtbus kam schnell und brachte mich eine Stunde später nach Hause.' for equally clear timing, or explicitly record the current translation as an accepted approximation.",
+      "verification": "Review the base-only amendment against the unchanged Russian closing; no audio regeneration is implied by a base-only correction."
+    }
+  ],
+  "sourceCanonicalization": {
+    "originalSpecificationSha256": "ff031e74d764c15e23ef54d6fe9094a23a3ad0a19c13aaf2980fdffb9146ea6f",
+    "stagedSpecificationSha256": "3a8c316ba1740077df8ca9a1f62c630cd2aece89e8eba075b18e7d2e41023139",
+    "transformation": "Specification CRLF to LF only, exact forward/reverse equality. Lesson bytes unchanged."
+  },
+  "scope": "Exact canonical spoken content for local TTS only; four complete publication findings retained. No native-human, listening or production approval.",
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "Independent Codex reviewer /root/french_b2_content_gate_independent",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "31aa0d6ebaa0a735ba8006cd2cad2da2ceee34723334fc4e1af8fb9c21302056",
+  "rawReview": {
+    "schemaVersion": 1,
+    "reviewId": "B1_RUSSIAN_P1_P2_INDEPENDENT_REVIEW",
+    "reviewDate": "2026-10-06",
+    "reviewStartedDate": "2026-10-05",
+    "round": 1,
+    "reviewer": "Independent Codex reviewer /root/french_b2_content_gate_independent",
+    "independence": {
+      "authoredRussianSources": false,
+      "authoredRussianGate": false,
+      "readOnlyApp": true,
+      "paidCalls": 0,
+      "databaseWrites": 0,
+      "sourceEdits": 0,
+      "humanNativeSpeakerReviewClaimed": false,
+      "statement": "Independent model review of Russian P1/P2; no Russian authorship context beyond the review brief and inspected artifacts. The prior French review is a separate change set."
+    },
+    "scope": {
+      "targetLanguage": "Russian",
+      "targetLanguageCode": "ru-RU",
+      "level": "B1",
+      "paths": [
+        1,
+        2
+      ],
+      "lessons": 20,
+      "canonicalTtsTextOnlyForLocalVerdict": true,
+      "engineeringGateApprovalRequested": false,
+      "engineeringGateApprovalGranted": false
+    },
+    "localTtsContentVerdict": "PASS",
+    "localTtsContentRationale": "After personally reading every field in all 20 final lesson objects and both complete path headers, no concrete canonical Russian spoken-text blocker remains. The canonical target text, terms, chunks, examples and four-turn episodes are suitable to proceed through a separately approved local TTS preparation gate. This is a content verdict, not permission to make paid calls, a generated-audio quality verdict, or publication approval.",
+    "unresolvedLocalTtsBlockers": [],
+    "publicationVerdict": "REWORK",
+    "remainingPublicationFindings": [
+      {
+        "id": "RU-B1-PUB-01",
+        "severity": "HIGH",
+        "category": "publication-integration",
+        "status": "OPEN",
+        "blocksLocalTtsContent": false,
+        "blocksPublication": true,
+        "title": "Russian B1 has no current schema and runtime path for the reviewed full gender alternatives",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+            "line": 15
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+            "line": 19
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+            "line": 175
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+            "line": 597
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guided-runtime/russian.ts",
+            "line": 4
+          }
+        ],
+        "evidence": "The actual shared B1 schema only permits English/Spanish/French/Italian/Portuguese and strict lesson objects omit genderAlternatives. The current Russian runtime contains 100 A1 and 100 A2 lessons and zero B1 lessons. No genderAlternatives consumer is present in frontend/src or frontend/scripts. normalizeGuidedAnswer performs NFC, whitespace and case normalization, not ё→е folding. Thus the seven reviewed complete male alternatives and explicit е-spellings are not yet implemented acceptance evidence.",
+        "impact": "Publishing through the current path would either reject the draft shape or omit the reviewed alternative input. A correct learner may be penalized for a male form or normal е spelling.",
+        "requiredAction": "Implement and independently review a true Russian B1 extension with Russian/ru-RU identity and strict optional lesson.genderAlternatives keys '1'/'3' only. Map complete reviewed strings plus explicit е folds to the actual typed/spoken surfaces, preserving canonical target text; never generate suffix replacements or mutate frozen A1/A2. Confirm the B1 0.65/15-second scaffold and voice roster in the eventual integrated path.",
+        "verification": "Re-run the exact final Russian sources through the Russian gate and inspect real rendered Russian B1 fixtures and acceptance behavior. The later scratch gate under construction is outside this review."
+      },
+      {
+        "id": "RU-B1-PUB-02",
+        "severity": "MEDIUM",
+        "category": "stale-acceptance-evidence",
+        "status": "OPEN",
+        "blocksLocalTtsContent": false,
+        "blocksPublication": true,
+        "title": "Nine author acceptance proposals still describe pre-Fable content",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+            "line": 233
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+            "line": 657
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+            "line": 1019
+          }
+        ],
+        "evidence": "proposedAcceptanceOnly differs from the bound reviewed content at P1 L3/L4/L5/L8/L9 and P2 L5/L6/L7/L8. The report hashes bind the original files. P1 L9 still proposes the old plural closing and old cloze answers, omitting the new complete closing's е fold and пришёл/пришел, довёз/довез. P2 L5 still proposes recall десять instead of центре.",
+        "impact": "The old report cannot be used as a current accepted-answer manifest or current mechanical/content PASS. Reusing it would accept obsolete answers and reject reviewed current answers.",
+        "requiredAction": "Regenerate a reviewable acceptance manifest bound to the reviewed sources, using only complete canonical turns, their full е folds, the seven supplied full male alternatives and their folds, and any independently arbitrated complete word-order variant. Recall/cloze permit canonical plus е fold only. Preserve the old author report as historical evidence instead of silently treating it as current.",
+        "verification": "All nine stale rows and their exact old/current expected values are retained in acceptanceAudit.staleRows. Rebind counts and hashes and test the final integrated acceptance sets."
+      },
+      {
+        "id": "RU-B1-PUB-03",
+        "severity": "MEDIUM",
+        "category": "build-answer-ambiguity",
+        "status": "OPEN",
+        "blocksLocalTtsContent": false,
+        "blocksPublication": true,
+        "title": "P2 L4 has a valid alternative chip order that the current build check rejects",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p2.json",
+            "line": 748,
+            "jsonPointer": "/lessons/3/chunks"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/BuildPhraseStep.tsx",
+            "line": 69
+          }
+        ],
+        "evidence": {
+          "canonical": "Хотя зимой здесь холодно, мне нравится гулять по набережной среди заснеженных деревьев.",
+          "chips": [
+            "Хотя зимой здесь холодно,",
+            "мне нравится гулять",
+            "по набережной",
+            "среди заснеженных деревьев."
+          ],
+          "alternativeZeroBasedOrder": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "alternative": "Хотя зимой здесь холодно, по набережной мне нравится гулять среди заснеженных деревьев.",
+          "visibleMeaning": "Both orders state that the learner likes walking along the embankment among snow-covered trees despite the winter cold. All displayed chip spelling, punctuation and capitalisation survive the alternative order.",
+          "currentCheck": "nextPhrase === lesson.build.targetText"
+        },
+        "impact": "A grammatical, same-meaning construction using all four correct visible chips is marked wrong. The source has no accepted-build-order field and the author's wordOrderVariants array is empty.",
+        "requiredAction": "Arbitrate and either group chips so this valid reordering is not offered, or implement and test explicitly reviewed build-answer acceptance. Merely adding a spoken accepted answer will not alter the existing build equality check.",
+        "verification": "A fixture must exercise this exact alternative and the canonical order against the eventual rendered build surface."
+      },
+      {
+        "id": "RU-B1-PUB-04",
+        "severity": "LOW",
+        "category": "base-translation-precision",
+        "status": "OPEN",
+        "blocksLocalTtsContent": false,
+        "blocksPublication": false,
+        "title": "P1 L9 English closing changes 'an hour later' to 'within an hour'",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p1.json",
+            "line": 1757,
+            "jsonPointer": "/lessons/8/dialogue/3"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p1.json",
+            "line": 1760,
+            "jsonPointer": "/lessons/8/dialogue/3/baseText/en"
+          }
+        ],
+        "evidence": {
+          "target": "Ночной автобус пришёл быстро и через час довёз меня до дома.",
+          "en": "The night bus came quickly and got me home within an hour.",
+          "de": "Der Nachtbus kam schnell und brachte mich in einer Stunde nach Hause."
+        },
+        "impact": "The Russian locates arrival one hour later; 'within an hour' specifies an upper limit instead. This is a base-language precision issue, not a defect in the canonical Russian recording text.",
+        "requiredAction": "Use 'The night bus came quickly and got me home an hour later.' Consider 'Der Nachtbus kam schnell und brachte mich eine Stunde später nach Hause.' for equally clear timing, or explicitly record the current translation as an accepted approximation.",
+        "verification": "Review the base-only amendment against the unchanged Russian closing; no audio regeneration is implied by a base-only correction."
+      }
+    ],
+    "findings": [
+      {
+        "id": "RU-B1-PUB-01",
+        "severity": "HIGH",
+        "category": "publication-integration",
+        "status": "OPEN",
+        "blocksLocalTtsContent": false,
+        "blocksPublication": true,
+        "title": "Russian B1 has no current schema and runtime path for the reviewed full gender alternatives",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+            "line": 15
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+            "line": 19
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+            "line": 175
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+            "line": 597
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guided-runtime/russian.ts",
+            "line": 4
+          }
+        ],
+        "evidence": "The actual shared B1 schema only permits English/Spanish/French/Italian/Portuguese and strict lesson objects omit genderAlternatives. The current Russian runtime contains 100 A1 and 100 A2 lessons and zero B1 lessons. No genderAlternatives consumer is present in frontend/src or frontend/scripts. normalizeGuidedAnswer performs NFC, whitespace and case normalization, not ё→е folding. Thus the seven reviewed complete male alternatives and explicit е-spellings are not yet implemented acceptance evidence.",
+        "impact": "Publishing through the current path would either reject the draft shape or omit the reviewed alternative input. A correct learner may be penalized for a male form or normal е spelling.",
+        "requiredAction": "Implement and independently review a true Russian B1 extension with Russian/ru-RU identity and strict optional lesson.genderAlternatives keys '1'/'3' only. Map complete reviewed strings plus explicit е folds to the actual typed/spoken surfaces, preserving canonical target text; never generate suffix replacements or mutate frozen A1/A2. Confirm the B1 0.65/15-second scaffold and voice roster in the eventual integrated path.",
+        "verification": "Re-run the exact final Russian sources through the Russian gate and inspect real rendered Russian B1 fixtures and acceptance behavior. The later scratch gate under construction is outside this review."
+      },
+      {
+        "id": "RU-B1-PUB-02",
+        "severity": "MEDIUM",
+        "category": "stale-acceptance-evidence",
+        "status": "OPEN",
+        "blocksLocalTtsContent": false,
+        "blocksPublication": true,
+        "title": "Nine author acceptance proposals still describe pre-Fable content",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+            "line": 233
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+            "line": 657
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+            "line": 1019
+          }
+        ],
+        "evidence": "proposedAcceptanceOnly differs from the bound reviewed content at P1 L3/L4/L5/L8/L9 and P2 L5/L6/L7/L8. The report hashes bind the original files. P1 L9 still proposes the old plural closing and old cloze answers, omitting the new complete closing's е fold and пришёл/пришел, довёз/довез. P2 L5 still proposes recall десять instead of центре.",
+        "impact": "The old report cannot be used as a current accepted-answer manifest or current mechanical/content PASS. Reusing it would accept obsolete answers and reject reviewed current answers.",
+        "requiredAction": "Regenerate a reviewable acceptance manifest bound to the reviewed sources, using only complete canonical turns, their full е folds, the seven supplied full male alternatives and their folds, and any independently arbitrated complete word-order variant. Recall/cloze permit canonical plus е fold only. Preserve the old author report as historical evidence instead of silently treating it as current.",
+        "verification": "All nine stale rows and their exact old/current expected values are retained in acceptanceAudit.staleRows. Rebind counts and hashes and test the final integrated acceptance sets."
+      },
+      {
+        "id": "RU-B1-PUB-03",
+        "severity": "MEDIUM",
+        "category": "build-answer-ambiguity",
+        "status": "OPEN",
+        "blocksLocalTtsContent": false,
+        "blocksPublication": true,
+        "title": "P2 L4 has a valid alternative chip order that the current build check rejects",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p2.json",
+            "line": 748,
+            "jsonPointer": "/lessons/3/chunks"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/BuildPhraseStep.tsx",
+            "line": 69
+          }
+        ],
+        "evidence": {
+          "canonical": "Хотя зимой здесь холодно, мне нравится гулять по набережной среди заснеженных деревьев.",
+          "chips": [
+            "Хотя зимой здесь холодно,",
+            "мне нравится гулять",
+            "по набережной",
+            "среди заснеженных деревьев."
+          ],
+          "alternativeZeroBasedOrder": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "alternative": "Хотя зимой здесь холодно, по набережной мне нравится гулять среди заснеженных деревьев.",
+          "visibleMeaning": "Both orders state that the learner likes walking along the embankment among snow-covered trees despite the winter cold. All displayed chip spelling, punctuation and capitalisation survive the alternative order.",
+          "currentCheck": "nextPhrase === lesson.build.targetText"
+        },
+        "impact": "A grammatical, same-meaning construction using all four correct visible chips is marked wrong. The source has no accepted-build-order field and the author's wordOrderVariants array is empty.",
+        "requiredAction": "Arbitrate and either group chips so this valid reordering is not offered, or implement and test explicitly reviewed build-answer acceptance. Merely adding a spoken accepted answer will not alter the existing build equality check.",
+        "verification": "A fixture must exercise this exact alternative and the canonical order against the eventual rendered build surface."
+      },
+      {
+        "id": "RU-B1-PUB-04",
+        "severity": "LOW",
+        "category": "base-translation-precision",
+        "status": "OPEN",
+        "blocksLocalTtsContent": false,
+        "blocksPublication": false,
+        "title": "P1 L9 English closing changes 'an hour later' to 'within an hour'",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p1.json",
+            "line": 1757,
+            "jsonPointer": "/lessons/8/dialogue/3"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p1.json",
+            "line": 1760,
+            "jsonPointer": "/lessons/8/dialogue/3/baseText/en"
+          }
+        ],
+        "evidence": {
+          "target": "Ночной автобус пришёл быстро и через час довёз меня до дома.",
+          "en": "The night bus came quickly and got me home within an hour.",
+          "de": "Der Nachtbus kam schnell und brachte mich in einer Stunde nach Hause."
+        },
+        "impact": "The Russian locates arrival one hour later; 'within an hour' specifies an upper limit instead. This is a base-language precision issue, not a defect in the canonical Russian recording text.",
+        "requiredAction": "Use 'The night bus came quickly and got me home an hour later.' Consider 'Der Nachtbus kam schnell und brachte mich eine Stunde später nach Hause.' for equally clear timing, or explicitly record the current translation as an accepted approximation.",
+        "verification": "Review the base-only amendment against the unchanged Russian closing; no audio regeneration is implied by a base-only correction."
+      }
+    ],
+    "reviewedSources": [
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p1.json",
+        "sha256": "42aea398f3a11b3bde78e03a6791aa436be6ea04130b463ba9610edc2f64a96e",
+        "inspectionScope": "Complete personal content read plus independent mechanical checks"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p2.json",
+        "sha256": "6c5d9525ac1ad086e8b95dadb7019fed3801c85428c390c630d9a6a47d6cc7e2",
+        "inspectionScope": "Complete personal content read plus independent mechanical checks"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1.json",
+        "sha256": "73df0d4a4d6c18251bbd4687c699301241dd7fd354aa7865501764878e98a6b0",
+        "inspectionScope": "Relevant renderer/types/normalization code; static inspection only"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p2.json",
+        "sha256": "5d0106470520f6f46077d1d047dcedffa29f31b887e1bfe57b349f558e12f3b1",
+        "inspectionScope": "Relevant renderer/types/normalization code; static inspection only"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+        "sha256": "c2de16ed5b1b4872ba1e4f2e478fe0f5b9dd25adf648394087c7a899548a33b8",
+        "inspectionScope": "Metadata, acceptance proposals and coverage evidence; historical source-bound report, not current approval"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B1_NATIVE_RUSSIAN_SPEC.json",
+        "sha256": "ff031e74d764c15e23ef54d6fe9094a23a3ad0a19c13aaf2980fdffb9146ea6f",
+        "inspectionScope": "Global rules and complete P1/P2; all 100 trophy allocations"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B1_RUSSIAN_P1_P2_FABLE_REVIEW_RAW.json",
+        "sha256": "8eae9332adfc064f443755567c78a7e18048411c7a5c1d02c3e88740ce024388",
+        "inspectionScope": "Complete review result and all 28 exact edits"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/curriculum/RUSSIAN_STAGE0.json",
+        "sha256": "d20d5b54ca55baeb199b659fb2a282d48191aecb37cd4e120938d8b792a28f53",
+        "inspectionScope": "Frozen-corpus identity, counts, trophy rows and allocation baseline"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+        "sha256": "b04badcb7a3835e0faf352e7f9d09c2cd235052f5388dc42b3908f362b24e15e",
+        "inspectionScope": "Complete actual shared schema and validation implementation"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+        "sha256": "1011e892864751323bc403ca2ca8eb14e5890ea2dab75e52e2358bf2ee361472",
+        "inspectionScope": "Relevant renderer/types/normalization code; static inspection only"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/BuildPhraseStep.tsx",
+        "sha256": "3fa4b962b91045d88ade7a435c1d1e016ef6b53484e2d746ac40544329e16bb9",
+        "inspectionScope": "Relevant renderer/types/normalization code; static inspection only"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/TypeRecallStep.tsx",
+        "sha256": "a0a738b243c005a51154dde621d8edcfb049f64a7e849241c3bce36b8312d218",
+        "inspectionScope": "Relevant renderer/types/normalization code; static inspection only"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/ComplicationStep.tsx",
+        "sha256": "26dbba90f8d79bab3daa4a265481f4b58e85f337f2bc2e7af7ec5417f065f4d2",
+        "inspectionScope": "Relevant renderer/types/normalization code; static inspection only"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/RolePlayStep.tsx",
+        "sha256": "1f74d6353aacbd602822b10ab5ec8d14f393a6cbfc1aa5ad254826ce49e6a91f",
+        "inspectionScope": "Relevant renderer/types/normalization code; static inspection only"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guided/russianA1.ts",
+        "sha256": "aa8a345434baaebd32ed33183f201031d7df009edc84022e3a74946bcaa6576a",
+        "inspectionScope": "Frozen source headers and all 100 literal trophy rows in each file"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guided/russianA2.ts",
+        "sha256": "c527208d7dc7bc486c84eb1cc3f1a597ba6549bcd89568c6875baabbf3c9a8dc",
+        "inspectionScope": "Frozen source headers and all 100 literal trophy rows in each file"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guided-runtime/russian.ts",
+        "sha256": "5af7ea95f746e07fa96081807bdcbc3ffeecec599beb6ea1142577f32d22f196",
+        "inspectionScope": "Read-only JSON extraction of all 200 runtime lesson rows; level/trophy audit"
+      }
+    ],
+    "exactReplay": {
+      "verdict": "PASS",
+      "editCount": 28,
+      "editsByFile": {
+        "russian-p1.json": 20,
+        "russian-p2.json": 8
+      },
+      "everyOldValueAssertedBeforeReplacement": true,
+      "parsedOriginalPlusEditsEqualsParsedReviewedSource": true,
+      "reviewedFilesHaveExactRequestedSha256": true,
+      "additionalUnexplainedContentChanges": 0,
+      "note": "Replay is exact structural JSON equality. Raw original/reviewed bytes differ due the requested edits and formatting, so no false byte-identical-file assertion is made. Fable's broad 'untouched recall' final-check wording is not relied on; the actual edit list includes recall changes."
+    },
+    "fullCoverage": {
+      "personallyReadEveryField": true,
+      "pathHeadersRead": 2,
+      "lessonsPersonallyRead": 20,
+      "stringLeaves": 2047,
+      "bilingualObjects": 464,
+      "dialogueTurns": 80,
+      "patternExamples": 40,
+      "clozeBlanks": 40,
+      "chunks": 80,
+      "terms": 120,
+      "recalls": 20,
+      "speechTokens": 60,
+      "trophies": 20,
+      "distractors": 40,
+      "completeGenderAlternatives": 7,
+      "lessonFieldsRead": [
+        "slug",
+        "title.de/en",
+        "situation.de/en",
+        "pedagogicalGoal",
+        "register",
+        "dialogue[0..3].targetText/baseText.de/en",
+        "pattern.label/rule.de/en/examples.targetText/baseText.de/en/highlight",
+        "cloze strings and every blank kind/answer/cue/choice",
+        "chunks.targetText/baseText.de/en",
+        "terms.targetText/baseText.de/en",
+        "recall.before/answer/after/fallbackChoices",
+        "speakRequired",
+        "sceneCaption.de/en",
+        "trophyWord.word/meaning.de/en/example/whyThisWord.de/en",
+        "distractors",
+        "placeholderCaption.de/en",
+        "songMood",
+        "visualNotes",
+        "genderAlternatives where present"
+      ],
+      "lessonCoverage": [
+        {
+          "pathNumber": 1,
+          "lessonNumber": 1,
+          "slug": "snachala-flight-hotel",
+          "trophy": "сначала",
+          "dialogueWordCounts": [
+            9,
+            11,
+            9,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "Imperfective duration is coherent across flying, bus travel, walking and admiring; осматривали in the complication is now natural. Recall uses finite-form contrasts rather than a plausible alternative journey.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 2,
+          "slug": "potom-sunday-park",
+          "trophy": "потом",
+          "dialogueWordCounts": [
+            10,
+            12,
+            11,
+            9
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "The Sunday timing is now consistent. Both learner turns use the established plural narrator; the рынок/рынка/рынке/рынком case contrast fixes the recall choice.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 3,
+          "slug": "dolgo-post-office",
+          "trophy": "долго",
+          "dialogueWordCounts": [
+            10,
+            12,
+            10,
+            11
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "The parcel is already home, so the completed post-office story and the follow-up agree. ждали/искали are safe plural subjects; no new speaker gender form.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 4,
+          "slug": "zatem-city-stops",
+          "trophy": "затем",
+          "dialogueWordCounts": [
+            11,
+            12,
+            11,
+            9
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {
+            "1": "Сначала я приехал в центр, затем посетил музей и поднялся на башню."
+          },
+          "semanticAudit": "Completed singular female event chain has a complete three-verb male counterpart. The closing now uses tower/view subjects; no unexplained switch to мы.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 5,
+          "slug": "vdrug-rain-walk",
+          "trophy": "вдруг",
+          "dialogueWordCounts": [
+            10,
+            11,
+            10,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {
+            "1": "Я шёл по набережной, и вдруг начался дождь без всякого предупреждения."
+          },
+          "semanticAudit": "Walking is imperfective background and rain is the completed interrupting event. The closing's rain/walk subjects preserve the solo narrator and the cloze stays gender-safe.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 6,
+          "slug": "nakonets-flat-search",
+          "trophy": "наконец",
+          "dialogueWordCounts": [
+            12,
+            13,
+            12,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {
+            "1": "Мы несколько месяцев смотрели квартиры, и я наконец нашёл жильё рядом с работой."
+          },
+          "semanticAudit": "Мы is already established for the joint flat search; я нашла names the individual result, and the plural closing is coherent. нашёл and жильё need their explicit full е variants at acceptance time.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 7,
+          "slug": "odnazhdy-wrong-train",
+          "trophy": "однажды",
+          "dialogueWordCounts": [
+            12,
+            13,
+            11,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {
+            "1": "Однажды, когда я спешил на встречу, я сел в поезд до другого города."
+          },
+          "semanticAudit": "Когда combines the ongoing hurry with the completed boarding. The full alternative uses спешил/сел. Train/friends subjects make the closing's past forms safe.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 8,
+          "slug": "rano-morning-coffee",
+          "trophy": "рано",
+          "dialogueWordCounts": [
+            10,
+            12,
+            11,
+            12
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {
+            "1": "Я встал рано и пошёл за кофе, но кафе ещё не работало."
+          },
+          "semanticAudit": "Early coffee, a closed cafe and a nearby bakery form a coherent scene. Пока links the baker's action and the displayed rolls; no unexplained learner-group switch remains.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 9,
+          "slug": "pozdno-after-concert",
+          "trophy": "поздно",
+          "dialogueWordCounts": [
+            10,
+            13,
+            9,
+            11
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {
+            "1": "Концерт закончился поздно, и, когда я вышел на улицу, метро уже не работало."
+          },
+          "semanticAudit": "The solo concert story remains solo through the night-bus closing. The cloze's пришёл/довёз agree with автобус; its new е variants must be regenerated. Base timing precision remains RU-B1-PUB-04.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": [
+            "RU-B1-PUB-04"
+          ]
+        },
+        {
+          "pathNumber": 1,
+          "lessonNumber": 10,
+          "slug": "sluchayno-library-teacher",
+          "trophy": "случайно",
+          "dialogueWordCounts": [
+            13,
+            11,
+            12,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {
+            "1": "Я случайно встретил преподавателя в библиотеке, когда искал книгу по истории."
+          },
+          "semanticAudit": "The chance encounter leads naturally to ongoing study with the teacher; closing мы includes the previously named teacher, so it is not an unexplained narrator switch. A2 future is explicitly licensed.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 1,
+          "slug": "kazhetsya-new-schedule",
+          "trophy": "кажется",
+          "dialogueWordCounts": [
+            11,
+            11,
+            11,
+            9
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "Мне кажется introduces an opinion; the morning difficulty receives a causal explanation. All learner forms are gender-free and impersonal cloze cues choose the correct adverbs.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 2,
+          "slug": "mnenie-long-film",
+          "trophy": "мнение",
+          "dialogueWordCounts": [
+            10,
+            12,
+            10,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "The film opinion and understandable, engaging ending are coherent. The finite/adjectival contrasts in recall and impersonal cloze have one cued canonical answer.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 3,
+          "slug": "smysl-evening-classes",
+          "trophy": "смысл",
+          "dialogueWordCounts": [
+            12,
+            12,
+            11,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "The classes' value is justified by speaking practice, and the price increase leads to a clear cost/value concession. The interlocutor's ли is recognition-only, not new learner production.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 4,
+          "slug": "khotya-winter-walks",
+          "trophy": "хотя",
+          "dialogueWordCounts": [
+            11,
+            12,
+            11,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "Хотя introduces a real cold-versus-enjoyment concession; the scarf closing addresses the wind. Cloze cues are sound. Valid build reordering remains RU-B1-PUB-03.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": [
+            "RU-B1-PUB-03"
+          ]
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 5,
+          "slug": "zato-small-central-flat",
+          "trophy": "зато",
+          "dialogueWordCounts": [
+            12,
+            12,
+            9,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "The small flat is contrasted with its location; noise is contrasted with easy commuting. New recall центре is semantically fixed by the opening and the remembered first turn.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 6,
+          "slug": "raznitsa-coffee-beans",
+          "trophy": "разница",
+          "dialogueWordCounts": [
+            11,
+            10,
+            10,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "Coffee softness and aroma strength are distinct properties; the price complication is answered by a preference despite cheaper cost. The reviewed приятнее is a cued comparative.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 7,
+          "slug": "odnako-app-crashes",
+          "trophy": "однако",
+          "dialogueWordCounts": [
+            12,
+            11,
+            12,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "An otherwise convenient freezing app leads to lost notes; saving even short notes and writing them again continues the problem. The edited писать всё заново is idiomatic.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 8,
+          "slug": "vprochem-restaurant-value",
+          "trophy": "впрочем",
+          "dialogueWordCounts": [
+            11,
+            11,
+            9,
+            11
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "The restaurant's price/ingredient tradeoff leads to a concrete fish-soup recommendation, sharing a large portion. The edited съесть is natural and the cloze reproduces it.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 9,
+          "slug": "pozhaluy-shorten-meeting",
+          "trophy": "пожалуй",
+          "dialogueWordCounts": [
+            12,
+            13,
+            10,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "Пожалуй softens ending the meeting; fatigue and the remaining question lead to dealing with it tomorrow. Gender-free impersonal comparisons are staged.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        },
+        {
+          "pathNumber": 2,
+          "lessonNumber": 10,
+          "slug": "naoborot-remote-work",
+          "trophy": "наоборот",
+          "dialogueWordCounts": [
+            12,
+            12,
+            12,
+            10
+          ],
+          "personallyReadEveryField": true,
+          "genderAlternatives": {},
+          "semanticAudit": "Наоборот corrects the premise about remote work; concentration at home and harder communication are real opposing considerations. The balanced closing and two comparatives are coherent.",
+          "canonicalSpokenVerdict": "PASS",
+          "structuralCouplings": "PASS",
+          "publicationFindingIds": []
+        }
+      ]
+    },
+    "mechanicalChecks": {
+      "verdict": "PASS",
+      "independentInMemoryAssertions": 2039,
+      "failures": [],
+      "method": "Read-only Python assertions over bound JSON and actual frozen Russian source trophy literals. No author generator/validator was executed and no shared Latin-language validator was portrayed as Russian validation.",
+      "checked": [
+        "Russian/ru-RU/B1/German identity; 10 lessons per path; complete de/en objects",
+        "All four dialogue bounds 8–16/8–16/6–14/6–12",
+        "Chunks join first learner turn exactly; canonical chips plus distractors distinct",
+        "Two cloze blanks per lesson; exact closing reconstruction; four distinct ё-folded choices with canonical once; form cue present iff required",
+        "Recall exact first-turn reconstruction and four distinct ё-folded fallback choices",
+        "Three distinct complete Cyrillic speech tokens of at least four letters, present after ё fold and off the explicit denylist/pronoun list",
+        "Exactly one pattern example equals a learner turn; every highlight contiguous",
+        "Whole-token trophy anchoring in first reply and trophy example; all allocations match the spec",
+        "Seven genderAlternatives objects on P1 L4–10, key '1' only; no P2 alternatives",
+        "Target script/characters; exact opening in both captions; no complete complication or four-token complication leak"
+      ],
+      "limitations": "These checks establish source mechanics, not complete Russian-language gate correctness or rendered runtime behavior. Context-dependent ё, grammar, gender and staging were separately read semantically."
+    },
+    "languageAudit": {
+      "verdict": "PASS_FOR_CANONICAL_SPOKEN_CONTENT",
+      "register": "Formal вы throughout both paths; no ты/slang or bureaucratic calque found in spoken turns. German dialogue bases maintain the corresponding formal address.",
+      "gender": {
+        "p1Canonical": "female where the singular speaker agrees; otherwise gender-free/plural/third-person",
+        "p2Canonical": "all learner turns gender-free despite the even-path male roster plan",
+        "completeMaleAlternatives": 7,
+        "affectedTurns": "P1 L4–10 dialogue[1] only",
+        "speakerPairsByLesson": {
+          "P1L4": [
+            [
+              "приехала",
+              "приехал"
+            ],
+            [
+              "посетила",
+              "посетил"
+            ],
+            [
+              "поднялась",
+              "поднялся"
+            ]
+          ],
+          "P1L5": [
+            [
+              "шла",
+              "шёл"
+            ]
+          ],
+          "P1L6": [
+            [
+              "нашла",
+              "нашёл"
+            ]
+          ],
+          "P1L7": [
+            [
+              "спешила",
+              "спешил"
+            ],
+            [
+              "села",
+              "сел"
+            ]
+          ],
+          "P1L8": [
+            [
+              "встала",
+              "встал"
+            ],
+            [
+              "пошла",
+              "пошёл"
+            ]
+          ],
+          "P1L9": [
+            [
+              "вышла",
+              "вышел"
+            ]
+          ],
+          "P1L10": [
+            [
+              "встретила",
+              "встретил"
+            ],
+            [
+              "искала",
+              "искал"
+            ]
+          ]
+        },
+        "speakerFormsUsedAsSpeechRecallClozeTrophyTargets": false,
+        "thirdPersonFormsAreNotBlanketBanned": [
+          "понравилась (башня)",
+          "открывался (вид)",
+          "закончился (дождь)",
+          "продолжилась (прогулка)",
+          "готовил (пекарь)",
+          "лежали (булочки)",
+          "пришёл/довёз (автобус)"
+        ],
+        "unexplainedYaToMySwitchesRemaining": 0
+      },
+      "staging": "P1 L1–3 maintain imperfective background, L4–6 completed events against background, L7–10 когда/пока/time sequencing. P2 progresses from impersonal opinion to concession and then however/on-the-other-hand framing. A2-inherited future/comparatives/можно/потому что remain licensed. Recognition-only interlocutor forms are not mistaken for early learner production.",
+      "clozeChoiceReview": "All 40 blanks use the permitted form menu and meaningful subject/tense/aspect or impersonal/comparative cues. Choices are real Russian forms; canonical selection is unique under the displayed cue and sentence. A third optional blank or a connector in every lesson is not required.",
+      "recallChoiceReview": "All 20 canonical recall answers are content words, not gender-agreeing speaker forms. Fallbacks are source-recall alternatives, not new free-completion accepted answers. No ё/е pair collides within one four-choice set. Current TypeRecallStep reveals the canonical answer rather than displaying these fallback choices.",
+      "chipReview": "All 20 chip sets and both distractors were read for meaning as visible with the first-turn base cue. Distractors change the intended meaning. The P2 L4 same-meaning alternate order is retained as RU-B1-PUB-03; no source rewrite was performed.",
+      "orthography": "Canonical target text is Cyrillic with written ё in the reviewed forms; numerals are written as words. Standard full ё→е acceptance folds are content-safe only as explicit accepted variants, never canonical spelling replacement.",
+      "baseReview": "German and English bases were personally read. One timing nuance is retained as RU-B1-PUB-04; it does not change Russian canonical audio text."
+    },
+    "acceptanceAudit": {
+      "runtimeImplemented": false,
+      "authorReportIsCurrent": false,
+      "staleRowCount": 9,
+      "staleRows": [
+        {
+          "lesson": "P1L3",
+          "oldProposedAcceptanceOnly": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Мы долго ждали на почте, потому что перед нами стояла большая очередь."
+              ],
+              "3": [
+                "Да, она на почте; мы долго ждали и искали нужное окно."
+              ]
+            },
+            "recall": [
+              "ждали"
+            ],
+            "cloze": [
+              [
+                "ждали"
+              ],
+              [
+                "искали"
+              ]
+            ],
+            "wordOrderVariants": []
+          },
+          "currentRequiredProposalBeforeWordOrderArbitration": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Мы долго ждали на почте, потому что перед нами стояла большая очередь."
+              ],
+              "3": [
+                "Да, она уже дома; мы долго ждали и искали нужное окно."
+              ]
+            },
+            "recall": [
+              "ждали"
+            ],
+            "cloze": [
+              [
+                "ждали"
+              ],
+              [
+                "искали"
+              ]
+            ],
+            "wordOrderVariants": []
+          }
+        },
+        {
+          "lesson": "P1L4",
+          "oldProposedAcceptanceOnly": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Сначала я приехала в центр, затем посетила музей и поднялась на башню.",
+                "Сначала я приехал в центр, затем посетил музей и поднялся на башню."
+              ],
+              "3": [
+                "Больше всего понравилась башня: оттуда мы сразу увидели реку."
+              ]
+            },
+            "recall": [
+              "музей"
+            ],
+            "cloze": [
+              [
+                "понравилась"
+              ],
+              [
+                "увидели"
+              ]
+            ],
+            "wordOrderVariants": []
+          },
+          "currentRequiredProposalBeforeWordOrderArbitration": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Сначала я приехала в центр, затем посетила музей и поднялась на башню.",
+                "Сначала я приехал в центр, затем посетил музей и поднялся на башню."
+              ],
+              "3": [
+                "Больше всего понравилась башня: оттуда открывался вид на реку."
+              ]
+            },
+            "recall": [
+              "музей"
+            ],
+            "cloze": [
+              [
+                "понравилась"
+              ],
+              [
+                "открывался"
+              ]
+            ],
+            "wordOrderVariants": []
+          }
+        },
+        {
+          "lesson": "P1L5",
+          "oldProposedAcceptanceOnly": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Я шла по набережной, и вдруг начался дождь без всякого предупреждения.",
+                "Я шёл по набережной, и вдруг начался дождь без всякого предупреждения.",
+                "Я шел по набережной, и вдруг начался дождь без всякого предупреждения."
+              ],
+              "3": [
+                "В кафе мы выпили чай, а потом продолжили прогулку."
+              ]
+            },
+            "recall": [
+              "дождь"
+            ],
+            "cloze": [
+              [
+                "выпили"
+              ],
+              [
+                "продолжили"
+              ]
+            ],
+            "wordOrderVariants": []
+          },
+          "currentRequiredProposalBeforeWordOrderArbitration": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Я шла по набережной, и вдруг начался дождь без всякого предупреждения.",
+                "Я шёл по набережной, и вдруг начался дождь без всякого предупреждения.",
+                "Я шел по набережной, и вдруг начался дождь без всякого предупреждения."
+              ],
+              "3": [
+                "В кафе на углу: дождь скоро закончился, и прогулка продолжилась."
+              ]
+            },
+            "recall": [
+              "дождь"
+            ],
+            "cloze": [
+              [
+                "закончился"
+              ],
+              [
+                "продолжилась"
+              ]
+            ],
+            "wordOrderVariants": []
+          }
+        },
+        {
+          "lesson": "P1L8",
+          "oldProposedAcceptanceOnly": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Я встала рано и пошла за кофе, но кафе ещё не работало.",
+                "Я встала рано и пошла за кофе, но кафе еще не работало.",
+                "Я встал рано и пошёл за кофе, но кафе ещё не работало.",
+                "Я встал рано и пошел за кофе, но кафе еще не работало."
+              ],
+              "3": [
+                "Пока пекарь готовил кофе, мы ели булочки в соседней пекарне."
+              ]
+            },
+            "recall": [
+              "кофе"
+            ],
+            "cloze": [
+              [
+                "готовил"
+              ],
+              [
+                "ели"
+              ]
+            ],
+            "wordOrderVariants": []
+          },
+          "currentRequiredProposalBeforeWordOrderArbitration": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Я встала рано и пошла за кофе, но кафе ещё не работало.",
+                "Я встала рано и пошла за кофе, но кафе еще не работало.",
+                "Я встал рано и пошёл за кофе, но кафе ещё не работало.",
+                "Я встал рано и пошел за кофе, но кафе еще не работало."
+              ],
+              "3": [
+                "В пекарне рядом: пока пекарь готовил кофе, на витрине лежали свежие булочки."
+              ]
+            },
+            "recall": [
+              "кофе"
+            ],
+            "cloze": [
+              [
+                "готовил"
+              ],
+              [
+                "лежали"
+              ]
+            ],
+            "wordOrderVariants": []
+          }
+        },
+        {
+          "lesson": "P1L9",
+          "oldProposedAcceptanceOnly": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Концерт закончился поздно, и, когда я вышла на улицу, метро уже не работало.",
+                "Концерт закончился поздно, и, когда я вышел на улицу, метро уже не работало."
+              ],
+              "3": [
+                "Мы дождались автобуса и через час уже приехали домой."
+              ]
+            },
+            "recall": [
+              "поздно"
+            ],
+            "cloze": [
+              [
+                "дождались"
+              ],
+              [
+                "приехали"
+              ]
+            ],
+            "wordOrderVariants": []
+          },
+          "currentRequiredProposalBeforeWordOrderArbitration": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Концерт закончился поздно, и, когда я вышла на улицу, метро уже не работало.",
+                "Концерт закончился поздно, и, когда я вышел на улицу, метро уже не работало."
+              ],
+              "3": [
+                "Ночной автобус пришёл быстро и через час довёз меня до дома.",
+                "Ночной автобус пришел быстро и через час довез меня до дома."
+              ]
+            },
+            "recall": [
+              "поздно"
+            ],
+            "cloze": [
+              [
+                "пришёл",
+                "пришел"
+              ],
+              [
+                "довёз",
+                "довез"
+              ]
+            ],
+            "wordOrderVariants": []
+          }
+        },
+        {
+          "lesson": "P2L5",
+          "oldProposedAcceptanceOnly": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Квартира маленькая, зато прямо в центре, и до работы всего десять минут."
+              ],
+              "3": [
+                "Да, ночью там шумно, зато утром добираться до работы удобно."
+              ]
+            },
+            "recall": [
+              "десять"
+            ],
+            "cloze": [
+              [
+                "шумно"
+              ],
+              [
+                "удобно"
+              ]
+            ],
+            "wordOrderVariants": []
+          },
+          "currentRequiredProposalBeforeWordOrderArbitration": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Квартира маленькая, зато прямо в центре, и до работы всего десять минут."
+              ],
+              "3": [
+                "Да, ночью там шумно, зато утром добираться до работы удобно."
+              ]
+            },
+            "recall": [
+              "центре"
+            ],
+            "cloze": [
+              [
+                "шумно"
+              ],
+              [
+                "удобно"
+              ]
+            ],
+            "wordOrderVariants": []
+          }
+        },
+        {
+          "lesson": "P2L6",
+          "oldProposedAcceptanceOnly": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Разница небольшая: этот кофе мягче, хотя второй пахнет заметно сильнее."
+              ],
+              "3": [
+                "Мне приятно пить первый без сахара, хотя покупать второй дешевле."
+              ]
+            },
+            "recall": [
+              "кофе"
+            ],
+            "cloze": [
+              [
+                "приятно"
+              ],
+              [
+                "дешевле"
+              ]
+            ],
+            "wordOrderVariants": []
+          },
+          "currentRequiredProposalBeforeWordOrderArbitration": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Разница небольшая: этот кофе мягче, хотя второй пахнет заметно сильнее."
+              ],
+              "3": [
+                "Мне приятнее пить первый без сахара, хотя покупать второй дешевле."
+              ]
+            },
+            "recall": [
+              "кофе"
+            ],
+            "cloze": [
+              [
+                "приятнее"
+              ],
+              [
+                "дешевле"
+              ]
+            ],
+            "wordOrderVariants": []
+          }
+        },
+        {
+          "lesson": "P2L7",
+          "oldProposedAcceptanceOnly": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Приложение удобное, однако оно часто зависает, и я теряю важные заметки."
+              ],
+              "3": [
+                "Даже короткую заметку сохранять трудно, а повторять всё заново неприятно.",
+                "Даже короткую заметку сохранять трудно, а повторять все заново неприятно."
+              ]
+            },
+            "recall": [
+              "теряю"
+            ],
+            "cloze": [
+              [
+                "трудно"
+              ],
+              [
+                "неприятно"
+              ]
+            ],
+            "wordOrderVariants": []
+          },
+          "currentRequiredProposalBeforeWordOrderArbitration": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "Приложение удобное, однако оно часто зависает, и я теряю важные заметки."
+              ],
+              "3": [
+                "Даже короткую заметку сохранять трудно, а писать всё заново неприятно.",
+                "Даже короткую заметку сохранять трудно, а писать все заново неприятно."
+              ]
+            },
+            "recall": [
+              "теряю"
+            ],
+            "cloze": [
+              [
+                "трудно"
+              ],
+              [
+                "неприятно"
+              ]
+            ],
+            "wordOrderVariants": []
+          }
+        },
+        {
+          "lesson": "P2L8",
+          "oldProposedAcceptanceOnly": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "В ресторане дорого, впрочем, за такие свежие продукты можно немного переплатить."
+              ],
+              "3": [
+                "Заказывать суп выгодно: порция большая, и вдвоём доедать её легко.",
+                "Заказывать суп выгодно: порция большая, и вдвоем доедать ее легко."
+              ]
+            },
+            "recall": [
+              "продукты"
+            ],
+            "cloze": [
+              [
+                "выгодно"
+              ],
+              [
+                "легко"
+              ]
+            ],
+            "wordOrderVariants": []
+          },
+          "currentRequiredProposalBeforeWordOrderArbitration": {
+            "runtimeImplemented": false,
+            "learnerTurns": {
+              "1": [
+                "В ресторане дорого, впрочем, за такие свежие продукты можно немного переплатить."
+              ],
+              "3": [
+                "Рыбный суп заказывать выгодно: порция большая, и вдвоём съесть её легко.",
+                "Рыбный суп заказывать выгодно: порция большая, и вдвоем съесть ее легко."
+              ]
+            },
+            "recall": [
+              "продукты"
+            ],
+            "cloze": [
+              [
+                "выгодно"
+              ],
+              [
+                "легко"
+              ]
+            ],
+            "wordOrderVariants": []
+          }
+        }
+      ],
+      "requiredYoFolds": [
+        {
+          "lesson": "P1L5",
+          "surface": "learnerTurns",
+          "expected": {
+            "1": [
+              "Я шла по набережной, и вдруг начался дождь без всякого предупреждения.",
+              "Я шёл по набережной, и вдруг начался дождь без всякого предупреждения.",
+              "Я шел по набережной, и вдруг начался дождь без всякого предупреждения."
+            ],
+            "3": [
+              "В кафе на углу: дождь скоро закончился, и прогулка продолжилась."
+            ]
+          }
+        },
+        {
+          "lesson": "P1L6",
+          "surface": "learnerTurns",
+          "expected": {
+            "1": [
+              "Мы несколько месяцев смотрели квартиры, и я наконец нашла жильё рядом с работой.",
+              "Мы несколько месяцев смотрели квартиры, и я наконец нашла жилье рядом с работой.",
+              "Мы несколько месяцев смотрели квартиры, и я наконец нашёл жильё рядом с работой.",
+              "Мы несколько месяцев смотрели квартиры, и я наконец нашел жилье рядом с работой."
+            ],
+            "3": [
+              "В новом районе мы сняли квартиру и сразу перевезли вещи."
+            ]
+          }
+        },
+        {
+          "lesson": "P1L6",
+          "surface": "recall",
+          "expected": [
+            "жильё",
+            "жилье"
+          ]
+        },
+        {
+          "lesson": "P1L7",
+          "surface": "learnerTurns",
+          "expected": {
+            "1": [
+              "Однажды, когда я спешила на встречу, я села в поезд до другого города.",
+              "Однажды, когда я спешил на встречу, я сел в поезд до другого города."
+            ],
+            "3": [
+              "Обратный поезд пришёл быстро, и друзья встретили меня на вокзале.",
+              "Обратный поезд пришел быстро, и друзья встретили меня на вокзале."
+            ]
+          }
+        },
+        {
+          "lesson": "P1L7",
+          "surface": "cloze",
+          "expected": [
+            [
+              "пришёл",
+              "пришел"
+            ],
+            [
+              "встретили"
+            ]
+          ]
+        },
+        {
+          "lesson": "P1L8",
+          "surface": "learnerTurns",
+          "expected": {
+            "1": [
+              "Я встала рано и пошла за кофе, но кафе ещё не работало.",
+              "Я встала рано и пошла за кофе, но кафе еще не работало.",
+              "Я встал рано и пошёл за кофе, но кафе ещё не работало.",
+              "Я встал рано и пошел за кофе, но кафе еще не работало."
+            ],
+            "3": [
+              "В пекарне рядом: пока пекарь готовил кофе, на витрине лежали свежие булочки."
+            ]
+          }
+        },
+        {
+          "lesson": "P1L9",
+          "surface": "learnerTurns",
+          "expected": {
+            "1": [
+              "Концерт закончился поздно, и, когда я вышла на улицу, метро уже не работало.",
+              "Концерт закончился поздно, и, когда я вышел на улицу, метро уже не работало."
+            ],
+            "3": [
+              "Ночной автобус пришёл быстро и через час довёз меня до дома.",
+              "Ночной автобус пришел быстро и через час довез меня до дома."
+            ]
+          }
+        },
+        {
+          "lesson": "P1L9",
+          "surface": "cloze",
+          "expected": [
+            [
+              "пришёл",
+              "пришел"
+            ],
+            [
+              "довёз",
+              "довез"
+            ]
+          ]
+        },
+        {
+          "lesson": "P1L10",
+          "surface": "learnerTurns",
+          "expected": {
+            "1": [
+              "Я случайно встретила преподавателя в библиотеке, когда искала книгу по истории.",
+              "Я случайно встретил преподавателя в библиотеке, когда искал книгу по истории."
+            ],
+            "3": [
+              "Да, мы будем заниматься дальше и скоро начнём читать рассказы.",
+              "Да, мы будем заниматься дальше и скоро начнем читать рассказы."
+            ]
+          }
+        },
+        {
+          "lesson": "P1L10",
+          "surface": "cloze",
+          "expected": [
+            [
+              "будем"
+            ],
+            [
+              "начнём",
+              "начнем"
+            ]
+          ]
+        },
+        {
+          "lesson": "P2L2",
+          "surface": "learnerTurns",
+          "expected": {
+            "1": [
+              "Моё мнение такое: фильм хороший, но он слишком длинный для вечернего сеанса.",
+              "Мое мнение такое: фильм хороший, но он слишком длинный для вечернего сеанса."
+            ],
+            "3": [
+              "Да, понять финал легко, и мне было интересно до конца."
+            ]
+          }
+        },
+        {
+          "lesson": "P2L4",
+          "surface": "learnerTurns",
+          "expected": {
+            "1": [
+              "Хотя зимой здесь холодно, мне нравится гулять по набережной среди заснеженных деревьев."
+            ],
+            "3": [
+              "Да, гулять приятно, хотя без тёплого шарфа на улице холодно.",
+              "Да, гулять приятно, хотя без теплого шарфа на улице холодно."
+            ]
+          }
+        },
+        {
+          "lesson": "P2L7",
+          "surface": "learnerTurns",
+          "expected": {
+            "1": [
+              "Приложение удобное, однако оно часто зависает, и я теряю важные заметки."
+            ],
+            "3": [
+              "Даже короткую заметку сохранять трудно, а писать всё заново неприятно.",
+              "Даже короткую заметку сохранять трудно, а писать все заново неприятно."
+            ]
+          }
+        },
+        {
+          "lesson": "P2L8",
+          "surface": "learnerTurns",
+          "expected": {
+            "1": [
+              "В ресторане дорого, впрочем, за такие свежие продукты можно немного переплатить."
+            ],
+            "3": [
+              "Рыбный суп заказывать выгодно: порция большая, и вдвоём съесть её легко.",
+              "Рыбный суп заказывать выгодно: порция большая, и вдвоем съесть ее легко."
+            ]
+          }
+        }
+      ],
+      "wordOrderVariantStatus": "P2 L4 candidate requires arbitration and actual build handling; the current required proposals in staleRows intentionally do not claim it is implemented.",
+      "allAlternativesMustBeComplete": true,
+      "suffixGenerationPermitted": false
+    },
+    "trophyAudit": {
+      "verdict": "PASS",
+      "actualFrozenSourceRows": {
+        "A1": 100,
+        "A2": 100
+      },
+      "actualFrozenDistinctTrophies": 200,
+      "actualSourceTrophiesEqualStage0": true,
+      "runtimeCorpus": {
+        "source": {
+          "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guided-runtime/russian.ts",
+          "sha256": "5af7ea95f746e07fa96081807bdcbc3ffeecec599beb6ea1142577f32d22f196"
+        },
+        "lessons": 200,
+        "levels": {
+          "A1": 100,
+          "A2": 100,
+          "B1": 0
+        },
+        "trophiesUnique": 200
+      },
+      "specAllocatedB1Trophies": 100,
+      "specAllocationsPairwiseDistinct": 100,
+      "specAllocationCollisionsWithFrozen200": [],
+      "reviewed20FollowExactAllocations": true,
+      "reviewed20TrophiesAnchoredAsWholeSurfaceTokens": true,
+      "frozenSourcesModifiedByReviewer": false,
+      "scopeLimit": "The remaining 80 B1 lesson bodies were not reviewed; their 80 reserved trophy allocations were checked as part of all 100 allocations."
+    },
+    "visibleSurfaceAudit": {
+      "method": "Static source inspection; reviewed drafts are not integrated and no Russian B1 fixture was rendered.",
+      "formCueDisplayPresent": true,
+      "formCueEvidence": "ComplicationStep.tsx:303–305 displays blank.cue and :332 maps the choice chips when revealed.",
+      "buildBaseCuePresent": true,
+      "buildComparison": "Exact target equality at BuildPhraseStep.tsx:69",
+      "recallSurface": "TypeRecallStep shows before/after and checks explicit acceptedAnswers; fallback reveals answer at line 74. It does not currently render the source's four fallback choices.",
+      "genderAlternativeSupportPresent": false,
+      "visualVerification": "No — no integrated Russian B1 fixture exists in the reviewed runtime.",
+      "audioVerification": "No generated audio was created or listened to."
+    },
+    "limits": [
+      "No paid provider, database, publication, commit or push action was performed.",
+      "Only this requested scratch report was written for the Russian task; source files, shared EN/ES code and frozen A1/A2 content were left untouched.",
+      "This report does not grant independent engineering approval for a future Russian gate, the local TTS executor, or an integration adapter.",
+      "No fabricated human or native-speaker certification is claimed. Local content PASS and publication REWORK are intentionally separate.",
+      "Independent exact replay and mechanical evidence replace reliance on the stale author's acceptance/count evidence. Existing unresolved publication findings must remain visible through arbitration."
+    ],
+    "finalVerdict": "REWORK_FOR_PUBLICATION; PASS_FOR_BOUND_CANONICAL_LOCAL_TTS_CONTENT"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "kind": "russian-b1-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/russian/p1.json",
+      "sha256": "42aea398f3a11b3bde78e03a6791aa436be6ea04130b463ba9610edc2f64a96e",
+      "targetLanguage": "Russian",
+      "pathNumber": 1,
+      "reviewedVoiceId": "N8lIVPsFkvOoqev5Csxo",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/russian/specification.json",
+        "sha256": "3a8c316ba1740077df8ca9a1f62c630cd2aece89e8eba075b18e7d2e41023139"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/russian/p2.json",
+      "sha256": "6c5d9525ac1ad086e8b95dadb7019fed3801c85428c390c630d9a6a47d6cc7e2",
+      "targetLanguage": "Russian",
+      "pathNumber": 2,
+      "reviewedVoiceId": "OwKgYRjZnJnXyWDEgF1J",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/russian/specification.json",
+        "sha256": "3a8c316ba1740077df8ca9a1f62c630cd2aece89e8eba075b18e7d2e41023139"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Russian": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/russian/fable-evidence.json",
+    "sha256": "f0021eec23f91247848652a8e362a6a957304fa8c8a4271f7ec48d6e9ee6e6d5"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/russian/independent-evidence.json",
+    "sha256": "86c6ed9fca655eee18b0fdcad5034724dc88d59dd47c28d9660a5a19d9d5d2c2"
+  }
+}

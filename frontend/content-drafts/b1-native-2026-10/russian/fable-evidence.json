@@ -1,0 +1,944 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b1-native-2026-10/russian/p1.json": "42aea398f3a11b3bde78e03a6791aa436be6ea04130b463ba9610edc2f64a96e",
+    "frontend/content-drafts/b1-native-2026-10/russian/p2.json": "6c5d9525ac1ad086e8b95dadb7019fed3801c85428c390c630d9a6a47d6cc7e2"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b1-native-2026-10/russian/specification.json": "3a8c316ba1740077df8ca9a1f62c630cd2aece89e8eba075b18e7d2e41023139"
+  },
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "RU-B1-PUB-01",
+      "severity": "HIGH",
+      "category": "publication-integration",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": true,
+      "title": "Russian B1 has no current schema and runtime path for the reviewed full gender alternatives",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+          "line": 15
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+          "line": 19
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 175
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 597
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guided-runtime/russian.ts",
+          "line": 4
+        }
+      ],
+      "evidence": "The actual shared B1 schema only permits English/Spanish/French/Italian/Portuguese and strict lesson objects omit genderAlternatives. The current Russian runtime contains 100 A1 and 100 A2 lessons and zero B1 lessons. No genderAlternatives consumer is present in frontend/src or frontend/scripts. normalizeGuidedAnswer performs NFC, whitespace and case normalization, not ё→е folding. Thus the seven reviewed complete male alternatives and explicit е-spellings are not yet implemented acceptance evidence.",
+      "impact": "Publishing through the current path would either reject the draft shape or omit the reviewed alternative input. A correct learner may be penalized for a male form or normal е spelling.",
+      "requiredAction": "Implement and independently review a true Russian B1 extension with Russian/ru-RU identity and strict optional lesson.genderAlternatives keys '1'/'3' only. Map complete reviewed strings plus explicit е folds to the actual typed/spoken surfaces, preserving canonical target text; never generate suffix replacements or mutate frozen A1/A2. Confirm the B1 0.65/15-second scaffold and voice roster in the eventual integrated path.",
+      "verification": "Re-run the exact final Russian sources through the Russian gate and inspect real rendered Russian B1 fixtures and acceptance behavior. The later scratch gate under construction is outside this review."
+    },
+    {
+      "id": "RU-B1-PUB-02",
+      "severity": "MEDIUM",
+      "category": "stale-acceptance-evidence",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": true,
+      "title": "Nine author acceptance proposals still describe pre-Fable content",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+          "line": 233
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+          "line": 657
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/russian-p1-p2-author-report.json",
+          "line": 1019
+        }
+      ],
+      "evidence": "proposedAcceptanceOnly differs from the bound reviewed content at P1 L3/L4/L5/L8/L9 and P2 L5/L6/L7/L8. The report hashes bind the original files. P1 L9 still proposes the old plural closing and old cloze answers, omitting the new complete closing's е fold and пришёл/пришел, довёз/довез. P2 L5 still proposes recall десять instead of центре.",
+      "impact": "The old report cannot be used as a current accepted-answer manifest or current mechanical/content PASS. Reusing it would accept obsolete answers and reject reviewed current answers.",
+      "requiredAction": "Regenerate a reviewable acceptance manifest bound to the reviewed sources, using only complete canonical turns, their full е folds, the seven supplied full male alternatives and their folds, and any independently arbitrated complete word-order variant. Recall/cloze permit canonical plus е fold only. Preserve the old author report as historical evidence instead of silently treating it as current.",
+      "verification": "All nine stale rows and their exact old/current expected values are retained in acceptanceAudit.staleRows. Rebind counts and hashes and test the final integrated acceptance sets."
+    },
+    {
+      "id": "RU-B1-PUB-03",
+      "severity": "MEDIUM",
+      "category": "build-answer-ambiguity",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": true,
+      "title": "P2 L4 has a valid alternative chip order that the current build check rejects",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p2.json",
+          "line": 748,
+          "jsonPointer": "/lessons/3/chunks"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/BuildPhraseStep.tsx",
+          "line": 69
+        }
+      ],
+      "evidence": {
+        "canonical": "Хотя зимой здесь холодно, мне нравится гулять по набережной среди заснеженных деревьев.",
+        "chips": [
+          "Хотя зимой здесь холодно,",
+          "мне нравится гулять",
+          "по набережной",
+          "среди заснеженных деревьев."
+        ],
+        "alternativeZeroBasedOrder": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "alternative": "Хотя зимой здесь холодно, по набережной мне нравится гулять среди заснеженных деревьев.",
+        "visibleMeaning": "Both orders state that the learner likes walking along the embankment among snow-covered trees despite the winter cold. All displayed chip spelling, punctuation and capitalisation survive the alternative order.",
+        "currentCheck": "nextPhrase === lesson.build.targetText"
+      },
+      "impact": "A grammatical, same-meaning construction using all four correct visible chips is marked wrong. The source has no accepted-build-order field and the author's wordOrderVariants array is empty.",
+      "requiredAction": "Arbitrate and either group chips so this valid reordering is not offered, or implement and test explicitly reviewed build-answer acceptance. Merely adding a spoken accepted answer will not alter the existing build equality check.",
+      "verification": "A fixture must exercise this exact alternative and the canonical order against the eventual rendered build surface."
+    },
+    {
+      "id": "RU-B1-PUB-04",
+      "severity": "LOW",
+      "category": "base-translation-precision",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": false,
+      "title": "P1 L9 English closing changes 'an hour later' to 'within an hour'",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p1.json",
+          "line": 1757,
+          "jsonPointer": "/lessons/8/dialogue/3"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/russian-p1.json",
+          "line": 1760,
+          "jsonPointer": "/lessons/8/dialogue/3/baseText/en"
+        }
+      ],
+      "evidence": {
+        "target": "Ночной автобус пришёл быстро и через час довёз меня до дома.",
+        "en": "The night bus came quickly and got me home within an hour.",
+        "de": "Der Nachtbus kam schnell und brachte mich in einer Stunde nach Hause."
+      },
+      "impact": "The Russian locates arrival one hour later; 'within an hour' specifies an upper limit instead. This is a base-language precision issue, not a defect in the canonical Russian recording text.",
+      "requiredAction": "Use 'The night bus came quickly and got me home an hour later.' Consider 'Der Nachtbus kam schnell und brachte mich eine Stunde später nach Hause.' for equally clear timing, or explicitly record the current translation as an accepted approximation.",
+      "verification": "Review the base-only amendment against the unchanged Russian closing; no audio regeneration is implied by a base-only correction."
+    }
+  ],
+  "sourceCanonicalization": {
+    "originalSpecificationSha256": "ff031e74d764c15e23ef54d6fe9094a23a3ad0a19c13aaf2980fdffb9146ea6f",
+    "stagedSpecificationSha256": "3a8c316ba1740077df8ca9a1f62c630cd2aece89e8eba075b18e7d2e41023139",
+    "transformation": "Specification CRLF to LF only, exact forward/reverse equality. Lesson bytes unchanged."
+  },
+  "scope": "Exact canonical spoken content for local TTS only; four complete publication findings retained. No native-human, listening or production approval.",
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 full twenty-lesson review and exact edit replay"
+  },
+  "exactReplayEdits": 28,
+  "rawProviderReviewSha256": "8eae9332adfc064f443755567c78a7e18048411c7a5c1d02c3e88740ce024388",
+  "rawReview": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "russian-p1.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All 10 lessons read field by field: dialogue (word counts 8-16/8-16/6-14/6-12 hold), chunk joins byte-exact, recall and cloze reconstructions exact, 2 blanks each with visible cues, speakRequired tokens present and off the denylist, trophies in d1 and example, captions quote d0 only, no d2 leakage, ё present (ещё, всё, пришёл, ведёт, жильё), no Latin/digits, staging (L1-3 imperfective мы, L4-6 perfective chains with genderAlternatives, L7-10 когда/пока/однажды, L10 licensed future) respected, 7 genderAlternatives complete and natural.",
+        "remainingConcerns": "Systemic coherence flaw found: in L4, L5, L8, L9 the learner narrates alone with я in dialogue[1] but closes with мы in dialogue[3]; edits below make those closings gender-free third-person narration. L2 d2 'вчера' tied to Sunday, fixed. L3 closing implied parcel still at the post office; fixed. Recall fallbacks that formed alternative valid sentences (L1 плыли, L2 пляж/вокзал) replaced with form distractors. Author batch report proposedAcceptanceOnly lists and word counts must be regenerated after edits."
+      },
+      {
+        "file": "russian-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All 10 lessons read: opinion frames L1-3 (мне кажется/мнение/есть смысл + потому что), concession L4-6 (хотя/зато/разница with real contrast), pivots L7-10 (однако/впрочем/пожалуй/наоборот + с одной стороны); all learner turns gender-free; impersonal-predicate cloze blanks with adjective-form distractors are uniquely valid; chunk joins, recall, cloze reconstructions exact; captions quote d0 only; ли only in interlocutor L3 opening; всё-таки recognition-only L6 d2; ё kept (Моё, Режиссёр, тёплого, вдвоём, её).",
+        "remainingConcerns": "L6 d3 'Мне приятно пить первый' flat as a preference answer → приятнее. L7 'повторять всё заново' is a semantic miss for re-entering text → писать. L8 d3 'вдвоём доедать её легко' unidiomatic and ignores the fish-menu cue → рыбный суп / съесть. L5 recall on a numeral had equally valid alternatives → blank центре (uniquely fixed by visible d0). L2 recall старый/новый were alternative valid readings → form distractors. L2 d0 'Какое у вас мнение после просмотра?' slightly stiff but acceptable."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "Author: all P1 closings and P2 learner turns are gender-free; no speaker-agreeing token in speak/recall/cloze/trophy",
+        "decision": "accept with correction",
+        "reason": "Token claim verified true, but gender-freedom in P1 L4/L5/L8/L9 was bought by switching from я (d1) to мы (d3), breaking the single-narrator story; replaced with third-person/impersonal closings that stay gender-free."
+      },
+      {
+        "finding": "Author: seven complete male alternatives for P1 L4-10 dialogue[1]",
+        "decision": "accept",
+        "reason": "Each alternative is a complete natural sentence (приехал/посетил/поднялся, шёл, нашёл, спешил/сел, встал/пошёл, вышел, встретил/искал) matching the spec's expected token list."
+      },
+      {
+        "finding": "Author: proposed ё/е folds and genderAlternatives acceptance lists, runtimeImplemented:false",
+        "decision": "accept as proposal only",
+        "reason": "Consistent with spec acceptedInput; no runtime claim; lists for edited turns must be regenerated to match new text."
+      },
+      {
+        "finding": "Author: cloze cues name the subject explicitly for every form blank",
+        "decision": "accept",
+        "reason": "Cue style makes each blank uniquely valid; new blanks follow the same cue pattern."
+      },
+      {
+        "finding": "Author: P1 L10 d3 uses A2-inherited будем + infinitive and perfective начнём",
+        "decision": "accept",
+        "reason": "Spec explicitly licenses A2 future in dialogue[3] closings from L1."
+      },
+      {
+        "finding": "Author: ли only in P2 L3 interlocutor opening",
+        "decision": "accept",
+        "reason": "Recognition-only placement; learner turns never use ли in P2."
+      },
+      {
+        "finding": "Independent review absent",
+        "decision": "noted",
+        "reason": "No findings to arbitrate; this verdict is content review only, not native certification or production approval."
+      }
+    ],
+    "edits": [
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/0/dialogue/2/targetText",
+        "oldValue": "В центре недавно открыли музей. Вы смотрели город пешком?",
+        "newValue": "В центре недавно открыли музей. Вы осматривали город пешком?",
+        "reason": "смотрели город is unidiomatic; осматривали is the native collocation for exploring a city."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/0/recall/fallbackChoices",
+        "oldValue": [
+          "летели",
+          "плыли",
+          "бежали",
+          "пели"
+        ],
+        "newValue": [
+          "летели",
+          "летим",
+          "летите",
+          "летит"
+        ],
+        "reason": "плыли два часа, потом ехали was an equally valid reconstruction; form distractors leave one valid answer."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/1/dialogue/2",
+        "oldValue": {
+          "targetText": "В парке вчера выступали музыканты. С кем вы там общались?",
+          "baseText": {
+            "de": "Gestern sind im Park Musiker aufgetreten. Mit wem haben Sie sich dort unterhalten?",
+            "en": "Musicians performed in the park yesterday. Who did you talk to there?"
+          }
+        },
+        "newValue": {
+          "targetText": "В парке в воскресенье выступали музыканты. С кем вы там общались?",
+          "baseText": {
+            "de": "Am Sonntag sind im Park Musiker aufgetreten. Mit wem haben Sie sich dort unterhalten?",
+            "en": "Musicians performed in the park on Sunday. Who did you talk to there?"
+          }
+        },
+        "reason": "вчера pins the conversation to Monday; в воскресенье keeps it coherent with d0 whenever the chat happens."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/1/recall/fallbackChoices",
+        "oldValue": [
+          "рынок",
+          "вокзал",
+          "пляж",
+          "склад"
+        ],
+        "newValue": [
+          "рынок",
+          "рынка",
+          "рынке",
+          "рынком"
+        ],
+        "reason": "ходили на пляж/вокзал were alternative valid readings; case distractors make the answer uniquely valid."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/2/dialogue/3",
+        "oldValue": {
+          "targetText": "Да, она на почте; мы долго ждали и искали нужное окно.",
+          "baseText": {
+            "de": "Ja, es liegt auf der Post; wir warteten lange und suchten den richtigen Schalter.",
+            "en": "Yes, it is at the post office; we waited a long time and looked for the right counter."
+          }
+        },
+        "newValue": {
+          "targetText": "Да, она уже дома; мы долго ждали и искали нужное окно.",
+          "baseText": {
+            "de": "Ja, es ist schon zu Hause; wir warteten lange und suchten den richtigen Schalter.",
+            "en": "Yes, it is already at home; we waited a long time and looked for the right counter."
+          }
+        },
+        "reason": "'она на почте' implies the parcel was never collected, contradicting the completed visit; уже дома closes the mini-narrative."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/2/cloze/0",
+        "oldValue": "Да, она на почте; мы долго ",
+        "newValue": "Да, она уже дома; мы долго ",
+        "reason": "Keep cloze reconstruction exact after the d3 edit."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/3/dialogue/3",
+        "oldValue": {
+          "targetText": "Больше всего понравилась башня: оттуда мы сразу увидели реку.",
+          "baseText": {
+            "de": "Am besten gefiel mir der Turm: Von dort sahen wir sofort den Fluss.",
+            "en": "I liked the tower best: from there we immediately saw the river."
+          }
+        },
+        "newValue": {
+          "targetText": "Больше всего понравилась башня: оттуда открывался вид на реку.",
+          "baseText": {
+            "de": "Am besten gefiel mir der Turm: Von dort hatte man einen Blick auf den Fluss.",
+            "en": "I liked the tower best: from there you had a view of the river."
+          }
+        },
+        "reason": "d1 narrates alone with я; a sudden мы in d3 breaks the story. Third-person открывался keeps the closing gender-free and natural."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/3/cloze",
+        "oldValue": [
+          "Больше всего ",
+          {
+            "kind": "form",
+            "answer": "понравилась",
+            "cue": "понравиться — башня, завершённая оценка в прошлом",
+            "choices": [
+              "понравилась",
+              "понравились",
+              "нравится",
+              "понравится"
+            ]
+          },
+          " башня: оттуда мы сразу ",
+          {
+            "kind": "form",
+            "answer": "увидели",
+            "cue": "увидеть — мы, завершённое действие в прошлом",
+            "choices": [
+              "увидели",
+              "видим",
+              "увидим",
+              "увидите"
+            ]
+          },
+          " реку."
+        ],
+        "newValue": [
+          "Больше всего ",
+          {
+            "kind": "form",
+            "answer": "понравилась",
+            "cue": "понравиться — башня, завершённая оценка в прошлом",
+            "choices": [
+              "понравилась",
+              "понравились",
+              "нравится",
+              "понравится"
+            ]
+          },
+          " башня: оттуда ",
+          {
+            "kind": "form",
+            "answer": "открывался",
+            "cue": "открываться — вид, длительное состояние в прошлом",
+            "choices": [
+              "открывался",
+              "открывается",
+              "откроется",
+              "открывалась"
+            ]
+          },
+          " вид на реку."
+        ],
+        "reason": "Coupled cloze for the new d3; second blank contrasts imperfective background with the perfective chain of d1."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/3/chunks/1/baseText",
+        "oldValue": {
+          "de": "im Zentrum",
+          "en": "in the centre"
+        },
+        "newValue": {
+          "de": "ins Zentrum",
+          "en": "to the centre"
+        },
+        "reason": "в центр after приехала is directional; German/English gloss must show motion."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/4/dialogue/3",
+        "oldValue": {
+          "targetText": "В кафе мы выпили чай, а потом продолжили прогулку.",
+          "baseText": {
+            "de": "Wir tranken im Café einen Tee und setzten danach den Spaziergang fort.",
+            "en": "We had tea in a cafe and then continued our walk."
+          }
+        },
+        "newValue": {
+          "targetText": "В кафе на углу: дождь скоро закончился, и прогулка продолжилась.",
+          "baseText": {
+            "de": "In einem Café an der Ecke: Der Regen hörte bald auf, und der Spaziergang ging weiter.",
+            "en": "In a café on the corner: the rain soon stopped, and the walk continued."
+          }
+        },
+        "reason": "d1 'Я шла' is a solo walk; мы in d3 contradicts it. Third-person perfective closing answers 'где переждали' and stays gender-free."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/4/cloze",
+        "oldValue": [
+          "В кафе мы ",
+          {
+            "kind": "form",
+            "answer": "выпили",
+            "cue": "выпить — мы, завершённое действие в прошлом",
+            "choices": [
+              "выпили",
+              "пьём",
+              "выпьем",
+              "выпьете"
+            ]
+          },
+          " чай, а потом ",
+          {
+            "kind": "form",
+            "answer": "продолжили",
+            "cue": "продолжить — мы, следующий завершённый шаг в прошлом",
+            "choices": [
+              "продолжили",
+              "продолжаем",
+              "продолжим",
+              "продолжите"
+            ]
+          },
+          " прогулку."
+        ],
+        "newValue": [
+          "В кафе на углу: дождь скоро ",
+          {
+            "kind": "form",
+            "answer": "закончился",
+            "cue": "закончиться — дождь, завершённое действие в прошлом",
+            "choices": [
+              "закончился",
+              "закончится",
+              "заканчивается",
+              "закончилась"
+            ]
+          },
+          ", и прогулка ",
+          {
+            "kind": "form",
+            "answer": "продолжилась",
+            "cue": "продолжиться — прогулка, завершённое действие в прошлом",
+            "choices": [
+              "продолжилась",
+              "продолжится",
+              "продолжается",
+              "продолжился"
+            ]
+          },
+          "."
+        ],
+        "reason": "Coupled cloze; both answers agree with nouns, never the speaker."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/4/terms/5",
+        "oldValue": {
+          "targetText": "продолжить",
+          "baseText": {
+            "de": "fortsetzen",
+            "en": "continue"
+          }
+        },
+        "newValue": {
+          "targetText": "продолжиться",
+          "baseText": {
+            "de": "weitergehen",
+            "en": "continue; resume"
+          }
+        },
+        "reason": "Term must match the verb now used in d3."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/7/dialogue/2",
+        "oldValue": {
+          "targetText": "По утрам рядом открывают пекарню. Где вы всё же позавтракали?",
+          "baseText": {
+            "de": "Morgens öffnet in der Nähe eine Bäckerei. Wo haben Sie schließlich gefrühstückt?",
+            "en": "A bakery nearby opens in the mornings. Where did you end up having breakfast?"
+          }
+        },
+        "newValue": {
+          "targetText": "Рядом есть пекарня, она открывается рано. Где вы всё же позавтракали?",
+          "baseText": {
+            "de": "In der Nähe gibt es eine Bäckerei, die früh öffnet. Wo haben Sie schließlich gefrühstückt?",
+            "en": "There is a bakery nearby that opens early. Where did you end up having breakfast?"
+          }
+        },
+        "reason": "'открывают пекарню' reads as 'a bakery is being launched'; открывается рано is the native sense (recognition-only -ся in interlocutor line)."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/7/dialogue/3",
+        "oldValue": {
+          "targetText": "Пока пекарь готовил кофе, мы ели булочки в соседней пекарне.",
+          "baseText": {
+            "de": "Während der Bäcker Kaffee zubereitete, aßen wir Brötchen in der Bäckerei nebenan.",
+            "en": "While the baker made coffee, we ate rolls in the bakery next door."
+          }
+        },
+        "newValue": {
+          "targetText": "В пекарне рядом: пока пекарь готовил кофе, на витрине лежали свежие булочки.",
+          "baseText": {
+            "de": "In der Bäckerei nebenan: Während der Bäcker Kaffee zubereitete, lagen frische Brötchen in der Auslage.",
+            "en": "In the bakery next door: while the baker made coffee, fresh rolls lay in the display case."
+          }
+        },
+        "reason": "d1 is a solo morning (я встала, пошла); мы ели contradicts it. Keeps пока with two imperfective simultaneous actions, gender-free."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/7/pattern/rule",
+        "oldValue": {
+          "de": "Пока verbindet hier zwei gleichzeitig laufende Handlungen; готовил und ели stehen im unvollendeten Aspekt.",
+          "en": "Пока links two activities in progress at the same time; готовил and ели are imperfective."
+        },
+        "newValue": {
+          "de": "Пока verbindet hier zwei gleichzeitig laufende Handlungen; готовил und лежали stehen im unvollendeten Aspekt.",
+          "en": "Пока links two activities in progress at the same time; готовил and лежали are imperfective."
+        },
+        "reason": "Rule must cite the verbs now in the example."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/7/pattern/examples/0",
+        "oldValue": {
+          "targetText": "Пока пекарь готовил кофе, мы ели булочки в соседней пекарне.",
+          "baseText": {
+            "de": "Während der Bäcker Kaffee zubereitete, aßen wir Brötchen in der Bäckerei nebenan.",
+            "en": "While the baker made coffee, we ate rolls in the bakery next door."
+          },
+          "highlight": "Пока пекарь готовил кофе"
+        },
+        "newValue": {
+          "targetText": "В пекарне рядом: пока пекарь готовил кофе, на витрине лежали свежие булочки.",
+          "baseText": {
+            "de": "In der Bäckerei nebenan: Während der Bäcker Kaffee zubereitete, lagen frische Brötchen in der Auslage.",
+            "en": "In the bakery next door: while the baker made coffee, fresh rolls lay in the display case."
+          },
+          "highlight": "пока пекарь готовил кофе"
+        },
+        "reason": "Exactly one example must equal a dialogue turn; highlight stays a contiguous substring."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/7/cloze",
+        "oldValue": [
+          "Пока пекарь ",
+          {
+            "kind": "form",
+            "answer": "готовил",
+            "cue": "готовить — пекарь, длительное действие в прошлом",
+            "choices": [
+              "готовил",
+              "готовит",
+              "приготовит",
+              "приготовили"
+            ]
+          },
+          " кофе, мы ",
+          {
+            "kind": "form",
+            "answer": "ели",
+            "cue": "есть — мы, длительное действие в прошлом",
+            "choices": [
+              "ели",
+              "едим",
+              "едите",
+              "ест"
+            ]
+          },
+          " булочки в соседней пекарне."
+        ],
+        "newValue": [
+          "В пекарне рядом: пока пекарь ",
+          {
+            "kind": "form",
+            "answer": "готовил",
+            "cue": "готовить — пекарь, длительное действие в прошлом",
+            "choices": [
+              "готовил",
+              "готовит",
+              "приготовит",
+              "приготовили"
+            ]
+          },
+          " кофе, на витрине ",
+          {
+            "kind": "form",
+            "answer": "лежали",
+            "cue": "лежать — булочки, длительное состояние в прошлом",
+            "choices": [
+              "лежали",
+              "лежат",
+              "лежит",
+              "лежала"
+            ]
+          },
+          " свежие булочки."
+        ],
+        "reason": "Coupled cloze; answers agree with пекарь/булочки, not the speaker."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/8/dialogue/3",
+        "oldValue": {
+          "targetText": "Мы дождались автобуса и через час уже приехали домой.",
+          "baseText": {
+            "de": "Wir warteten auf den Bus und kamen eine Stunde später zu Hause an.",
+            "en": "We waited for the bus and arrived home an hour later."
+          }
+        },
+        "newValue": {
+          "targetText": "Ночной автобус пришёл быстро и через час довёз меня до дома.",
+          "baseText": {
+            "de": "Der Nachtbus kam schnell und brachte mich in einer Stunde nach Hause.",
+            "en": "The night bus came quickly and got me home within an hour."
+          }
+        },
+        "reason": "d1 'когда я вышла' is solo; мы in d3 breaks the narrator. Bus-subject perfectives keep it gender-free and answer 'как добрались'."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/8/cloze",
+        "oldValue": [
+          "Мы ",
+          {
+            "kind": "form",
+            "answer": "дождались",
+            "cue": "дождаться — мы, ожидание с достигнутым результатом в прошлом",
+            "choices": [
+              "дождались",
+              "ждём",
+              "дождёмся",
+              "дождётесь"
+            ]
+          },
+          " автобуса и через час уже ",
+          {
+            "kind": "form",
+            "answer": "приехали",
+            "cue": "приехать — мы, завершённое прибытие в прошлом",
+            "choices": [
+              "приехали",
+              "едем",
+              "приедем",
+              "приедете"
+            ]
+          },
+          " домой."
+        ],
+        "newValue": [
+          "Ночной автобус ",
+          {
+            "kind": "form",
+            "answer": "пришёл",
+            "cue": "прийти — автобус, завершённое прибытие в прошлом",
+            "choices": [
+              "пришёл",
+              "идёт",
+              "придёт",
+              "пришли"
+            ]
+          },
+          " быстро и через час ",
+          {
+            "kind": "form",
+            "answer": "довёз",
+            "cue": "довезти — автобус, завершённое действие в прошлом",
+            "choices": [
+              "довёз",
+              "везёт",
+              "довезёт",
+              "довезли"
+            ]
+          },
+          " меня до дома."
+        ],
+        "reason": "Coupled cloze; е-folds пришел/довез to be listed in acceptance."
+      },
+      {
+        "file": "russian-p1.json",
+        "jsonPointer": "/lessons/8/terms/4",
+        "oldValue": {
+          "targetText": "дождаться",
+          "baseText": {
+            "de": "warten, bis etwas eintrifft",
+            "en": "wait until something arrives"
+          }
+        },
+        "newValue": {
+          "targetText": "довезти до дома",
+          "baseText": {
+            "de": "bis nach Hause bringen",
+            "en": "take home (by vehicle)"
+          }
+        },
+        "reason": "Term should reflect the verb now taught in d3."
+      },
+      {
+        "file": "russian-p2.json",
+        "jsonPointer": "/lessons/1/recall/fallbackChoices",
+        "oldValue": [
+          "длинный",
+          "короткий",
+          "старый",
+          "новый"
+        ],
+        "newValue": [
+          "длинный",
+          "длинная",
+          "длинное",
+          "длинные"
+        ],
+        "reason": "старый/новый/короткий formed grammatical alternative sentences; agreement distractors make длинный uniquely valid."
+      },
+      {
+        "file": "russian-p2.json",
+        "jsonPointer": "/lessons/4/recall",
+        "oldValue": {
+          "before": "Квартира маленькая, зато прямо в центре, и до работы всего ",
+          "answer": "десять",
+          "after": " минут.",
+          "fallbackChoices": [
+            "десять",
+            "сорок",
+            "восемь",
+            "двадцать"
+          ]
+        },
+        "newValue": {
+          "before": "Квартира маленькая, зато прямо в ",
+          "answer": "центре",
+          "after": ", и до работы всего десять минут.",
+          "fallbackChoices": [
+            "центре",
+            "лесу",
+            "подвале",
+            "гараже"
+          ]
+        },
+        "reason": "Any numeral was equally valid; центре is fixed by the visible opening 'квартира в центре' and is a content word."
+      },
+      {
+        "file": "russian-p2.json",
+        "jsonPointer": "/lessons/5/dialogue/3",
+        "oldValue": {
+          "targetText": "Мне приятно пить первый без сахара, хотя покупать второй дешевле.",
+          "baseText": {
+            "de": "Ich trinke den ersten gern ohne Zucker, obwohl der zweite günstiger ist.",
+            "en": "I enjoy drinking the first without sugar, although the second is cheaper to buy."
+          }
+        },
+        "newValue": {
+          "targetText": "Мне приятнее пить первый без сахара, хотя покупать второй дешевле.",
+          "baseText": {
+            "de": "Mir schmeckt der erste ohne Zucker besser, obwohl der zweite günstiger ist.",
+            "en": "I prefer drinking the first without sugar, although the second is cheaper to buy."
+          }
+        },
+        "reason": "The question is which you prefer; comparative приятнее is the native answer and comparatives are licensed in L4-6."
+      },
+      {
+        "file": "russian-p2.json",
+        "jsonPointer": "/lessons/5/cloze/1",
+        "oldValue": {
+          "kind": "form",
+          "answer": "приятно",
+          "cue": "приятный — безличная оценка вкусового впечатления",
+          "choices": [
+            "приятно",
+            "приятный",
+            "приятная",
+            "приятные"
+          ]
+        },
+        "newValue": {
+          "kind": "form",
+          "answer": "приятнее",
+          "cue": "приятный — безличное сравнение, сравнительная степень",
+          "choices": [
+            "приятнее",
+            "приятный",
+            "приятного",
+            "приятными"
+          ]
+        },
+        "reason": "Coupled cloze for the comparative."
+      },
+      {
+        "file": "russian-p2.json",
+        "jsonPointer": "/lessons/6/dialogue/3",
+        "oldValue": {
+          "targetText": "Даже короткую заметку сохранять трудно, а повторять всё заново неприятно.",
+          "baseText": {
+            "de": "Schon eine kurze Notiz lässt sich schwer speichern, und alles erneut einzugeben ist lästig.",
+            "en": "Even saving a short note is difficult, and repeating everything from scratch is unpleasant."
+          }
+        },
+        "newValue": {
+          "targetText": "Даже короткую заметку сохранять трудно, а писать всё заново неприятно.",
+          "baseText": {
+            "de": "Schon eine kurze Notiz lässt sich schwer speichern, und alles neu zu schreiben ist lästig.",
+            "en": "Even saving a short note is difficult, and writing everything out again is unpleasant."
+          }
+        },
+        "reason": "повторять means to repeat aloud; re-entering lost text is писать/набирать заново."
+      },
+      {
+        "file": "russian-p2.json",
+        "jsonPointer": "/lessons/6/cloze/2",
+        "oldValue": ", а повторять всё заново ",
+        "newValue": ", а писать всё заново ",
+        "reason": "Keep cloze reconstruction exact."
+      },
+      {
+        "file": "russian-p2.json",
+        "jsonPointer": "/lessons/7/dialogue/3",
+        "oldValue": {
+          "targetText": "Заказывать суп выгодно: порция большая, и вдвоём доедать её легко.",
+          "baseText": {
+            "de": "Die Suppe lohnt sich: Die Portion ist groß, und zu zweit schafft man sie leicht.",
+            "en": "Ordering the soup is good value: the portion is large, and two people can easily finish it."
+          }
+        },
+        "newValue": {
+          "targetText": "Рыбный суп заказывать выгодно: порция большая, и вдвоём съесть её легко.",
+          "baseText": {
+            "de": "Die Fischsuppe lohnt sich: Die Portion ist groß, und zu zweit isst man sie leicht auf.",
+            "en": "The fish soup is good value: the portion is large, and two people can easily finish it."
+          }
+        },
+        "reason": "'вдвоём доедать её легко' is unidiomatic; съесть is natural, and рыбный суп answers the new fish-menu cue in d2."
+      },
+      {
+        "file": "russian-p2.json",
+        "jsonPointer": "/lessons/7/cloze",
+        "oldValue": [
+          "Заказывать суп ",
+          {
+            "kind": "form",
+            "answer": "выгодно",
+            "cue": "выгодный — безличная оценка цены",
+            "choices": [
+              "выгодно",
+              "выгодный",
+              "выгодная",
+              "выгодные"
+            ]
+          },
+          ": порция большая, и вдвоём доедать её ",
+          {
+            "kind": "form",
+            "answer": "легко",
+            "cue": "лёгкий — безличная оценка сложности",
+            "choices": [
+              "легко",
+              "лёгкий",
+              "лёгкая",
+              "лёгкие"
+            ]
+          },
+          "."
+        ],
+        "newValue": [
+          "Рыбный суп заказывать ",
+          {
+            "kind": "form",
+            "answer": "выгодно",
+            "cue": "выгодный — безличная оценка цены",
+            "choices": [
+              "выгодно",
+              "выгодный",
+              "выгодная",
+              "выгодные"
+            ]
+          },
+          ": порция большая, и вдвоём съесть её ",
+          {
+            "kind": "form",
+            "answer": "легко",
+            "cue": "лёгкий — безличная оценка сложности",
+            "choices": [
+              "легко",
+              "лёгкий",
+              "лёгкая",
+              "лёгкие"
+            ]
+          },
+          "."
+        ],
+        "reason": "Coupled cloze; blanks unchanged, strings updated."
+      }
+    ],
+    "finalChecks": [
+      "After edits: all dialogue word counts remain in range (new d3: P1 L3 11, L4 8, L5 10, L8 12, L9 11; P2 L6 10, L7 10, L8 11; P1 L8 d2 11).",
+      "Every edited cloze concatenates byte-exact to its new dialogue[3]; every form blank keeps a visible cue; no answer/choice is a speaker-agreeing form (subjects: вид, дождь, прогулка, пекарь, булочки, автобус).",
+      "Chunks, recall, speakRequired, trophies, captions and dialogue[1] are untouched in P1 and P2; 20 trophies unchanged and anchored.",
+      "P1 L8 pattern still has exactly one example equal to a dialogue turn; highlight contiguous.",
+      "Codex must regenerate the author batch report (word counts, proposedAcceptanceOnly for edited turns incl. folds пришел/довез/приятнее, file hashes) and rerun the scratch validator; no production approval is implied."
+    ]
+  }
+}
