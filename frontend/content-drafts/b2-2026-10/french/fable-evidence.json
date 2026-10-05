@@ -338,19 +338,19 @@
               "frameSuffix": " dès la première difficulté."
             },
             "newValue": {
-              "framePrefix": "Je te conseillerais le cours parce ",
+              "framePrefix": "Je te conseillerais le cours parce qu’on t’oblige à parler, ",
               "chunks": [
-                "qu’on t’oblige",
-                "à parler,",
                 "tandis que",
                 "l’appli",
-                "te laisse tranquille"
+                "te laisse tranquille",
+                "dès que",
+                "c’est difficile."
               ],
               "distractors": [
                 "tandis qu’elle",
-                "dont on t’oblige"
+                "dès qu’il"
               ],
-              "frameSuffix": " dès que c’est difficile."
+              "frameSuffix": ""
             },
             "reason": "reconstructs new turn 1; focus 10 tokens; 5 chunks ≤4 tokens; order fixed by connector position and sentence-final period; distractors distinct after normalization and cannot replace a required chunk"
           },
@@ -592,7 +592,7 @@
               "fallbackChoices": [
                 "propose",
                 "proposer",
-                "proposent",
+                "proposé",
                 "proposant"
               ]
             },
@@ -721,9 +721,9 @@
               "chunks": [
                 "de sorte que",
                 "les places",
-                "de la",
-                "semaine",
-                "partent souvent avant midi."
+                "de la semaine",
+                "partent souvent",
+                "avant midi."
               ],
               "distractors": [
                 "de sorte qu’elles",
