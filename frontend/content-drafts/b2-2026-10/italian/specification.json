@@ -1,0 +1,959 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "Italian",
+  "code": "it-IT",
+  "level": "B2",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": {
+    "registers": [
+      "Lei",
+      "tu"
+    ],
+    "default": "Lei",
+    "tuLicense": "tu only with friends, only P1 L5 and L7 (P2 has no tu license; the spine's P2 friend scenes are recast as acquaintances addressed with Lei)",
+    "constancy": "mode constant in all 20 lessons; registers triple identical; no relay, no shift",
+    "plural": "committee (P1 L10) addressed via its chairperson with Lei; voi appears only in them turns",
+    "contractionNote": "neutral everyday forms (però, insomma, anzi) are instructional choices per episode, not a rule tied to register; Lei turns may still be relaxed, tu turns may still be careful; 'mica' is standard colloquial Italian but deferred as an instructional choice: it never appears in P1/P2 canonical lines (see orthography)"
+  },
+  "genderSafety": {
+    "policy": "all 20 lessons speakerGender neutral; no alternates authored",
+    "authoringRules": [
+      "learner never uses essere + participle with speaker subject (no 'sono andato/a', 'mi sono trovato/a'); use avere-compounds, present, or non-speaker subjects ('il collaudo è slittato' is allowed: subject is not the speaker)",
+      "no speaker-referring adjectives/participles (convinto/a, sicuro/a, contento/a, stanco/a); use agreement-free frames ('mi convince', 'ho la certezza', 'mi va bene', 'a mio avviso', 'ritengo' + indicative); causal and concessive language (poiché, dato che, è vero che … ma, in parte sì, ma) is unaffected because it carries no agreement",
+      "agreement with non-speaker nouns is fine and expected ('entrambe le proposte', 'le fatture emesse')",
+      "B1 detector regexes run as warnings; a native reviewer confirms every hit is non-speaker agreement before acknowledging"
+    ]
+  },
+  "orthography": [
+    "accents required in canonical text (perché, più, città, poiché, già, è); authored acceptedAnswers list the stripped variant explicitly for every blank/recall answer that carries an accent; no runtime normalization is assumed",
+    "elision apostrophes (dall'altro, l'opzione, un'ora) are never blank boundaries; the elided article stays inside the chunk/answer with its host",
+    "passato remoto excluded from all turns (warning on detection)",
+    "digits forbidden in voiced text: 'duecento euro', 'quattromila euro', 'tre giorni'",
+    "no regional lexis (no 'tipo' as filler, no northern/southern-only verbs); 'mica' is standard colloquial Italian, not regional, but is deferred as an instructional choice: absent from every canonical line in P1/P2, them and you turns alike"
+  ],
+  "segmentation": "space-joined, token = letters/digits with internal apostrophes or hyphens; clitics and non stay with the verb chunk ('non lo compro', 'si ammortizza', 'ce la facciamo'); prepositional articles stay with their noun ('nel complesso'); each half of a two-part carrier is one unsplittable unit kept whole inside a single chip ('da un lato' | … | 'dall'altro'; 'tanto' | … | 'quanto'); the two halves and the clause between them are never forced into one chip (max four tokens) and the pair is never covered by one blank: either half may be blanked, each as its own blank",
+  "acceptedInput": {
+    "rule": "explicit acceptedAnswers only: canonical plus the accent-stripped variant of every accented answer; no apostrophe-free variants are authored or accepted (dallaltro and dall altro both rejected); an answer containing an elision apostrophe additionally lists its typographic-apostrophe twin (dall’altro) by hand and nothing else; synonymous answers are never accepted silently: if a second form is correct, it is either added to acceptedAnswers by the native reviewer or the blank is redesigned; no runtime normalization or auto-added variant exists until the it-IT gate is implemented, so authors list every variant explicitly",
+    "choices": "4 choices per choice-bearing blank must differ semantically after normalization; connector choices never include two coherent connectors for the same slot (e.g. never 'quindi' and 'perciò' together)",
+    "laterIntegration": "record: once the it-IT rail implements accent unification, the authored stripped variants become redundant but stay harmless; no draft may depend on it"
+  },
+  "carriersStaged": {
+    "P1": [
+      {
+        "lessons": "1-3",
+        "productive": [
+          "da un lato … dall'altro",
+          "è vero che … ma",
+          "tutto sommato",
+          "mentre (contrastive)",
+          "conviene + infinito",
+          "quindi",
+          "tanto … quanto",
+          "potremmo invece",
+          "propongo di + infinito"
+        ],
+        "recognitionOnly": [
+          "vale la pena",
+          "sul lungo periodo",
+          "più … che"
+        ]
+      },
+      {
+        "lessons": "4-6",
+        "productive": [
+          "superlativo relativo (la scelta più sensata, il più caro dei due)",
+          "vale la pena solo se",
+          "ammortizzarsi in + tempo",
+          "piuttosto che",
+          "entrambi/e",
+          "a differenza di",
+          "nel complesso",
+          "mi serve un preventivo con",
+          "rispetto a"
+        ],
+        "recognitionOnly": [
+          "a parità di"
+        ]
+      },
+      {
+        "lessons": "7-10",
+        "productive": [
+          "alla fine",
+          "in definitiva",
+          "più … che",
+          "in ogni caso",
+          "sul lungo periodo",
+          "a parità di",
+          "raccomando + sostantivo/di + infinito",
+          "hai ragione … però (tu) / ha ragione … però (Lei)"
+        ],
+        "recognitionOnly": []
+      }
+    ],
+    "P2": [
+      {
+        "lessons": "1-3",
+        "productive": [
+          "poiché",
+          "dato che",
+          "nello specifico",
+          "per essere precisi",
+          "in breve",
+          "andare + participio (vanno portati)",
+          "prima … poi … infine"
+        ],
+        "recognitionOnly": [
+          "di conseguenza",
+          "si passivante (si accumulano)",
+          "il che significa che"
+        ]
+      },
+      {
+        "lessons": "4-6",
+        "productive": [
+          "si passivante",
+          "di conseguenza",
+          "il che significa che",
+          "in base a",
+          "entro il termine indicato",
+          "non comporta + sostantivo",
+          "riassumo (forma verbale; riassumendo resta per 7-10)"
+        ],
+        "recognitionOnly": [
+          "nominalizzazione (la mancata verifica)",
+          "a seconda di"
+        ]
+      },
+      {
+        "lessons": "7-10",
+        "productive": [
+          "nominalizzazione (la mancata X, il ritardo nella X, l'aumento di X)",
+          "in parte sì, ma",
+          "a seconda di",
+          "a lungo termine",
+          "a monte / a valle",
+          "pertanto",
+          "riassumendo"
+        ],
+        "recognitionOnly": []
+      }
+    ],
+    "excludedUntilLater": [
+      "anche se, benché/sebbene + cong., non è che + cong., verbi di opinione + cong. (P3)",
+      "se avessi … avrei (P4)",
+      "condizionale di cortesia as required carrier, a meno che non, altrimenti (P5)",
+      "cioè, si tratta di (P8)",
+      "in parte è vero, mi lasci finire (P9)",
+      "innanzitutto, inoltre, in conclusione (P10)"
+    ]
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Soppesare le opzioni",
+      "function": "compare the advantages and disadvantages of two or three options and recommend one",
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "registerPolicy": "Lei in L1-4, L6, L8-10; tu in L5, L7 (friends); constant within every lesson",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": [
+            "da un lato … dall'altro",
+            "è vero che … ma",
+            "tutto sommato",
+            "mentre",
+            "conviene",
+            "quindi",
+            "tanto … quanto",
+            "potremmo invece",
+            "propongo di"
+          ],
+          "recognitionOnly": [
+            "vale la pena",
+            "sul lungo periodo",
+            "più … che"
+          ]
+        },
+        {
+          "lessons": "4-6",
+          "productive": [
+            "superlativo relativo",
+            "vale la pena solo se",
+            "ammortizzarsi",
+            "piuttosto che",
+            "entrambi/e",
+            "a differenza di",
+            "nel complesso",
+            "mi serve un preventivo con",
+            "rispetto a"
+          ],
+          "recognitionOnly": [
+            "a parità di"
+          ]
+        },
+        {
+          "lessons": "7-10",
+          "productive": [
+            "alla fine",
+            "in definitiva",
+            "più … che",
+            "in ogni caso",
+            "sul lungo periodo",
+            "a parità di",
+            "raccomando",
+            "hai ragione … però"
+          ],
+          "recognitionOnly": []
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "affitto-contro-pendolarismo",
+          "scene": "Agenzia Bellini (fictional) shows a flat in the centre at two hundred euros more per month than a flat on the outskirts that costs fifty minutes each way; the contract must be signed within the week.",
+          "interlocutor": "agente immobiliare",
+          "register": "Lei",
+          "openingMove": "compare: da un lato il centro costa di più, dall'altro guadagno un'ora al giorno che oggi passo in treno",
+          "challenge": "objection: is an hour really worth two hundred euros when the other flat has a garden?",
+          "answerMove": "concede: è vero che il sovrapprezzo pesa, ma più tempo passo in viaggio, meno energie mi restano la sera",
+          "steer": "bottom line: sign now or keep looking, given the agency's one-week option notice",
+          "closingMove": "conclude: tutto sommato prevale il tempo guadagnato; la spesa, tuttavia, rimane sostenibile per il mio bilancio",
+          "trophyLemma": "tuttavia",
+          "trophySurface": "tuttavia",
+          "trophyFamilyKey": "tuttavia",
+          "pos": "connector",
+          "requiredCarrier": "da un lato … dall'altro in the build focus; è vero che … ma in cloze; tutto sommato in synthesis",
+          "recycles": [
+            "vantaggio",
+            "viaggio",
+            "comunque"
+          ]
+        },
+        {
+          "number": 2,
+          "slug": "auto-o-mezzi",
+          "scene": "A colleague drives every day; the learner compares car and train for the same commute after the company circulated a fictional notice introducing a paid staff car park.",
+          "interlocutor": "collega",
+          "register": "Lei",
+          "openingMove": "position: a mio avviso conviene il treno, mentre l'auto costa di più e stanca di più",
+          "challenge": "counter-example: last month a strike left the colleague stranded for three hours",
+          "answerMove": "rebut: capita di rado, e comunque il parcheggio a pagamento cambia i conti, anzi li ribalta",
+          "steer": "final condition: suppose the company pays half the parking, what then?",
+          "closingMove": "conclude: quindi anche con metà parcheggio il treno resta la scelta che conviene di più, soprattutto d'inverno",
+          "trophyLemma": "convenire",
+          "trophySurface": "conviene",
+          "trophyFamilyKey": "convenire",
+          "pos": "verb",
+          "requiredCarrier": "mentre contrastive in build focus; conviene + infinito blank in cloze; quindi in synthesis",
+          "recycles": [
+            "traffico",
+            "tariffa",
+            "treno"
+          ]
+        },
+        {
+          "number": 3,
+          "slug": "smart-working-o-ufficio",
+          "scene": "Annual review: the manager wants five days on site, the learner has worked two days remote for a year and shows the same output.",
+          "interlocutor": "responsabile del team",
+          "register": "Lei",
+          "openingMove": "compare: da casa lavoro tanto bene quanto in ufficio, mentre in presenza perdo due ore di viaggio",
+          "challenge": "objection: the team loses cohesion and the newcomers learn less",
+          "answerMove": "counteroffer: potremmo invece fissare tre giorni in sede, con i nuovi colleghi presenti negli stessi giorni",
+          "steer": "edge case: during product launches the manager wants everyone on site",
+          "closingMove": "propose: propongo di tenere tre giorni in sede come regola e cinque nelle settimane di lancio: un compromesso che regge",
+          "trophyLemma": "compromesso",
+          "trophySurface": "compromesso",
+          "trophyFamilyKey": "compromesso",
+          "pos": "noun",
+          "requiredCarrier": "tanto … quanto in build focus; potremmo invece in cloze; propongo di in synthesis",
+          "recycles": [
+            "flessibile",
+            "autonomia",
+            "progetto"
+          ]
+        },
+        {
+          "number": 4,
+          "slug": "comprare-o-noleggiare",
+          "scene": "Noleggio Verdi (fictional) hires a professional steam cleaner at sixty euros a week; buying costs nine hundred; the learner needs it about one week a month for a small cleaning business.",
+          "interlocutor": "addetto al noleggio",
+          "register": "Lei",
+          "openingMove": "reason: nel complesso comprare è la scelta più sensata, perché quindici settimane di noleggio costano quanto la macchina",
+          "challenge": "constraint: the machine ages and the supplied price sheet shows repairs outside warranty at two hundred euros",
+          "answerMove": "explain: si ammortizza in poco più di un anno, e vale la pena solo se il lavoro continua: nel mio caso continua",
+          "steer": "audience: the clerk offers a third option, rent-to-buy, and asks what the learner needs to decide",
+          "closingMove": "request: mi serve un preventivo con manutenzione inclusa per tutte e tre le formule, così confronto le cifre sullo stesso numero di settimane",
+          "trophyLemma": "ammortizzare",
+          "trophySurface": "ammortizza",
+          "trophyFamilyKey": "ammortizzare",
+          "pos": "verb",
+          "requiredCarrier": "superlativo relativo in build focus; vale la pena solo se in cloze; mi serve un preventivo con in synthesis",
+          "recycles": [
+            "garanzia",
+            "noleggiare",
+            "materiale"
+          ]
+        },
+        {
+          "number": 5,
+          "slug": "due-piani-vacanza",
+          "scene": "A friend proposes a week in a mountain rental, the learner has a coast plan; budget is fixed at eight hundred euros for two.",
+          "interlocutor": "amico/a",
+          "register": "tu",
+          "openingMove": "compare: entrambe le proposte mi piacciono: la montagna costa meno sulla carta, il mare ci fa riposare davvero",
+          "challenge": "objection: the mountain plan is cheaper only on paper, the friend says, you always add trips",
+          "answerMove": "clarify: intendo dire che con affitto, auto e funivia arriviamo alla stessa cifra, piuttosto che risparmiare",
+          "steer": "summary: the friend asks for one plan for this summer and one for later",
+          "closingMove": "propose: propongo il mare adesso e la montagna in autunno, quando costa meno e nessuno dei due rinuncia",
+          "trophyLemma": "entrambi",
+          "trophySurface": "entrambe",
+          "trophyFamilyKey": "entrambi",
+          "pos": "adjective",
+          "requiredCarrier": "entrambi/e in build focus; piuttosto che in cloze; propongo in synthesis (recycled from L3)",
+          "recycles": [
+            "gita",
+            "dividere",
+            "organizzare"
+          ]
+        },
+        {
+          "number": 6,
+          "slug": "contanti-o-app",
+          "scene": "The owner of a small bakery asks the learner, a regular who also runs a weekend market stall, whether to accept app payments; the supplied app leaflet (fictional 'PagoQui') quotes a one-point-five percent fee.",
+          "interlocutor": "titolare del negozio",
+          "register": "Lei",
+          "openingMove": "compare: a differenza dei contanti, l'app costa una commissione, ma elimina resto, errori e la fila alla cassa",
+          "challenge": "objection: that fee eats the margin on a one-euro coffee",
+          "answerMove": "rebut: la commissione pesa poco rispetto al tempo per contare la cassa e alle spese di versamento in banca",
+          "steer": "audience: the owner asks what to tell the older customers who distrust phones",
+          "closingMove": "conclude: nel complesso conviene accettare entrambi i metodi e dire ai clienti che nulla cambia per chi paga in contanti",
+          "trophyLemma": "commissione",
+          "trophySurface": "commissione",
+          "trophyFamilyKey": "commissione",
+          "pos": "noun",
+          "requiredCarrier": "a differenza di in build focus; rispetto a in cloze (first productive use, staged productive in band 4-6); nel complesso in synthesis",
+          "recycles": [
+            "pagare",
+            "scontrino",
+            "conto"
+          ]
+        },
+        {
+          "number": 7,
+          "slug": "corso-o-app",
+          "scene": "A friend learns Spanish with a free app and asks whether the learner's evening course at three hundred euros is worth it.",
+          "interlocutor": "amico/a",
+          "register": "tu",
+          "openingMove": "reason: rispetto all'app, il corso mi obbliga a parlare, e parlare è quello che mi manca di più",
+          "challenge": "objection: three hundred euros against zero, and the app is always in your pocket",
+          "answerMove": "concede: hai ragione sul prezzo, però la costanza la trovo solo con un orario fisso e un gruppo",
+          "steer": "bottom line: the friend asks for a recommendation for someone who has no evenings free",
+          "closingMove": "summarize: alla fine dipende dalla costanza: chi ha orari fissi sceglie il corso, chi non li ha usa l'app e cerca un tandem",
+          "trophyLemma": "costanza",
+          "trophySurface": "costanza",
+          "trophyFamilyKey": "costanza",
+          "pos": "noun",
+          "requiredCarrier": "rispetto a in build focus; hai ragione … però in cloze; alla fine in synthesis",
+          "recycles": [
+            "imparando",
+            "pratica",
+            "ritmo"
+          ]
+        },
+        {
+          "number": 8,
+          "slug": "due-offerte-di-lavoro",
+          "scene": "A mentor reviews two offers with the learner: a higher salary at a small firm versus a lower one at a larger company with a training programme (fictional 'Programma Ponte').",
+          "interlocutor": "mentore",
+          "register": "Lei",
+          "openingMove": "compare: la prima paga tanto quanto mi serve ora, la seconda offre prospettive di crescita che oggi non ho",
+          "challenge": "precision: which of the two will still matter in five years?",
+          "answerMove": "explain: in cinque anni lo stipendio si livella, mentre la formazione apre ruoli che la piccola azienda non può offrire",
+          "steer": "edge case: the mentor notes the big company may cancel the programme after a year",
+          "closingMove": "conclude: in definitiva scelgo la seconda, a condizione che il programma sia scritto nel contratto",
+          "trophyLemma": "prospettiva",
+          "trophySurface": "prospettive",
+          "trophyFamilyKey": "prospettiva",
+          "pos": "noun",
+          "requiredCarrier": "tanto quanto recycled in build focus; mentre in cloze; in definitiva in synthesis",
+          "recycles": [
+            "obiettivo",
+            "futuro",
+            "impegno"
+          ]
+        },
+        {
+          "number": 9,
+          "slug": "trasferirsi-o-restare",
+          "scene": "A neighbour hears the learner may move to Bologna for work and argues for staying; the learner weighs career against the stability of the current flat and network.",
+          "interlocutor": "vicino/a di casa",
+          "register": "Lei",
+          "openingMove": "position: per me il lavoro pesa più che la comodità di restare, in ogni caso la decisione non è ancora presa",
+          "challenge": "counter-example: the neighbour's niece moved for a job and came back after a year, unhappy",
+          "answerMove": "rebut: un caso non fa la regola: la stabilità si costruisce anche altrove, e qui il contratto scade comunque",
+          "steer": "final condition: what if the employer allows a one-year trial with the flat kept on?",
+          "closingMove": "propose: propongo di provare un anno a Bologna tenendo questa casa, e di decidere a parità di informazioni fra dodici mesi",
+          "trophyLemma": "stabilità",
+          "trophySurface": "stabilità",
+          "trophyFamilyKey": "stabilità",
+          "pos": "noun",
+          "requiredCarrier": "più … che in build focus; in ogni caso in cloze; a parità di in synthesis",
+          "recycles": [
+            "quartiere",
+            "vicini",
+            "residenza"
+          ]
+        },
+        {
+          "number": 10,
+          "slug": "raccomandare-un-opzione",
+          "scene": "The committee of a fictional residents' association ('Associazione Via dei Tigli') has four thousand euros and three options: bike racks, courtyard lighting, or a shared garden; the learner presents.",
+          "interlocutor": "presidente del comitato",
+          "register": "Lei",
+          "openingMove": "compare: delle tre, l'illuminazione è la più utile per tutti, i portabici la soluzione più economica, l'orto il più amato dai residenti",
+          "challenge": "objection from the chair: the supplied quote shows lighting alone costs more than racks and garden together, so the budget covers nothing else",
+          "answerMove": "concede: è vero che costa di più, ma sul lungo periodo riduce i danni nel cortile e serve anche a chi non va in bici",
+          "steer": "summary: the chair asks for one recommendation in a sentence for the minutes",
+          "closingMove": "conclude: raccomando l'illuminazione quest'anno e i portabici con l'avanzo, rinviando l'orto al prossimo bilancio",
+          "trophyLemma": "raccomandare",
+          "trophySurface": "raccomando",
+          "trophyFamilyKey": "raccomandare",
+          "pos": "verb",
+          "requiredCarrier": "superlativo relativo (la più utile / il più amato) in build focus; sul lungo periodo in cloze; raccomando in synthesis",
+          "recycles": [
+            "cortile",
+            "sicurezza",
+            "valutare"
+          ]
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "slug": "spiegare-come-e-perche",
+      "title": "Spiegare come e perché",
+      "function": "give a detailed explanation of causes, consequences or a process and sustain it under requests for precision",
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "registerPolicy": "Lei in all ten lessons (no tu license in P2); the spine's friend scenes L14 and L17 are recast as acquaintances (new colleague, neighbour's relative) addressed with Lei",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": [
+            "poiché",
+            "dato che",
+            "nello specifico",
+            "per essere precisi",
+            "in breve",
+            "andare + participio",
+            "prima … poi … infine"
+          ],
+          "recognitionOnly": [
+            "di conseguenza",
+            "si passivante",
+            "il che significa che"
+          ]
+        },
+        {
+          "lessons": "4-6",
+          "productive": [
+            "si passivante",
+            "di conseguenza",
+            "il che significa che",
+            "in base a",
+            "entro il termine indicato",
+            "non comporta",
+            "riassumo"
+          ],
+          "recognitionOnly": [
+            "nominalizzazione",
+            "a seconda di"
+          ]
+        },
+        {
+          "lessons": "7-10",
+          "productive": [
+            "nominalizzazione",
+            "in parte sì, ma",
+            "a seconda di",
+            "a lungo termine",
+            "a monte / a valle",
+            "pertanto",
+            "riassumendo"
+          ],
+          "recognitionOnly": []
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "fattura-diversa-dal-preventivo",
+          "scene": "The learner, a freelance translator, explains to the accountant why the invoice to a client is one hundred eighty euros above the quote (extra pages plus an urgency supplement listed in the supplied job sheet).",
+          "interlocutor": "commercialista",
+          "register": "Lei",
+          "openingMove": "explain: la fattura è più alta poiché il cliente ha aggiunto trenta pagine e ha chiesto la consegna in tre giorni",
+          "challenge": "precision: which line exactly is the difference, and where is it in the job sheet?",
+          "answerMove": "clarify: nello specifico sono due righe: un conguaglio sulle pagine in più e un supplemento urgenza già concordato per iscritto",
+          "steer": "audience: the accountant asks for one sentence for the client's email",
+          "closingMove": "summarize: in breve, la differenza nasce da pagine aggiuntive e urgenza, entrambe richieste dal cliente e documentate",
+          "trophyLemma": "conguaglio",
+          "trophySurface": "conguaglio",
+          "trophyFamilyKey": "conguaglio",
+          "pos": "noun",
+          "requiredCarrier": "poiché in build focus; nello specifico in cloze; in breve in synthesis",
+          "recycles": [
+            "tuttavia",
+            "entrambi",
+            "ricevuta"
+          ]
+        },
+        {
+          "number": 2,
+          "slug": "come-funziona-la-differenziata",
+          "scene": "A newcomer to the building asks how separate waste collection works; the supplied notice of the fictional 'Condominio Via dei Tigli' lists organic on Tuesday and Friday, paper on Monday, glass in the courtyard bins, bulky items free of charge at the collection centre; these rules hold only inside that notice.",
+          "interlocutor": "nuovo inquilino",
+          "register": "Lei",
+          "openingMove": "explain: dato che, secondo l'avviso, il ritiro cambia ogni giorno, prima separa in casa, poi espone la sera, infine ritira il bidone vuoto",
+          "challenge": "edge case: what about things not on the list, like an old pan or a broken chair?",
+          "answerMove": "clarify: per essere precisi, quelli non vanno nei bidoni: vanno portati al centro di raccolta indicato nell'avviso, dove secondo l'avviso non costa nulla",
+          "steer": "summary: the newcomer asks what to remember if they forget everything else",
+          "closingMove": "conclude: in breve: organico martedì e venerdì, carta lunedì, vetro in cortile, tutto il resto da smaltire al centro",
+          "trophyLemma": "smaltire",
+          "trophySurface": "smaltire",
+          "trophyFamilyKey": "smaltire",
+          "pos": "verb",
+          "requiredCarrier": "dato che in build frame (framePrefix of the build turn); prima … poi … infine in build focus (chips); andare + participio (vanno portati) in cloze; in breve in synthesis",
+          "recycles": [
+            "ambiente",
+            "cortile",
+            "quartiere"
+          ]
+        },
+        {
+          "number": 3,
+          "slug": "perche-il-progetto-e-slittato",
+          "scene": "The manager asks why the website relaunch is late; the supplied timeline shows the supplier delivered the template two weeks late and testing started afterwards.",
+          "interlocutor": "responsabile",
+          "register": "Lei",
+          "openingMove": "reason: il progetto è in ritardo poiché il fornitore ha consegnato tardi, e senza il modello il collaudo non poteva partire",
+          "challenge": "precision: was it the supplier or the team, and by how much?",
+          "answerMove": "clarify: per essere precisi, il collaudo è slittato di due settimane per il fornitore; il team ha perso tre giorni, non di più",
+          "steer": "final condition: the manager wants a date they can defend on Friday",
+          "closingMove": "propose: propongo di chiudere il collaudo entro due settimane e di avvisare i clienti ora, nello specifico quelli con contratti attivi",
+          "trophyLemma": "slittare",
+          "trophySurface": "slittato",
+          "trophyFamilyKey": "slittare",
+          "pos": "verb",
+          "requiredCarrier": "poiché in build focus; per essere precisi in cloze; propongo di (P1 recycled) in synthesis",
+          "recycles": [
+            "compromesso",
+            "ritardo",
+            "scadenza"
+          ]
+        },
+        {
+          "number": 4,
+          "slug": "come-funziona-la-carta-fedelta",
+          "scene": "A new colleague asks how the supermarket's 'Carta Insieme' (fictional) works; the supplied leaflet says one point per euro, two hundred points equal a five-euro voucher, points expire after a year.",
+          "interlocutor": "nuovo collega",
+          "register": "Lei",
+          "openingMove": "explain: i punti si accumulano a ogni spesa, uno per euro, e si trasformano in buono da cinque euro ogni duecento",
+          "challenge": "objection: it sounds like a trick to make people spend more",
+          "answerMove": "rebut: non è un trucco se si compra quello che si comprava già: di conseguenza il buono è un ritorno, non un costo",
+          "steer": "edge case: what if the colleague shops there only in summer?",
+          "closingMove": "summarize: riassumo: un punto per euro, buono ogni duecento, scadenza a un anno; chi spende poco guadagna poco, ma non perde nulla",
+          "trophyLemma": "accumulare",
+          "trophySurface": "accumulano",
+          "trophyFamilyKey": "accumulare",
+          "pos": "verb",
+          "requiredCarrier": "si passivante in build focus; di conseguenza in cloze; riassumo (verb form; 'riassumendo' stays recognition until 7-10) in synthesis",
+          "recycles": [
+            "conguaglio",
+            "vantaggio",
+            "scadenza"
+          ]
+        },
+        {
+          "number": 5,
+          "slug": "perche-ho-cambiato-fornitore",
+          "scene": "A neighbour asks why the learner switched electricity supplier; the supplied contract from 'Luce Sud' (fictional) shows a fixed price for a year and no exit fee.",
+          "interlocutor": "vicino/a di casa",
+          "register": "Lei",
+          "openingMove": "reason: ho cambiato poiché il vecchio contratto era a prezzo variabile, e in un anno la bolletta era salita del trenta per cento",
+          "challenge": "objection: switching always has hidden costs and paperwork",
+          "answerMove": "explain: il passaggio non comporta costi di uscita e il contratto fissa il prezzo per un anno; di conseguenza la spesa resta prevedibile",
+          "steer": "summary: the neighbour asks whether they should switch too, with a similar bill",
+          "closingMove": "conclude: confronti prima le tariffe: col variabile il cambio può convenire; col fisso aspetterei la fine, in base alla scadenza del contratto",
+          "trophyLemma": "poiché",
+          "trophySurface": "poiché",
+          "trophyFamilyKey": "poiché",
+          "pos": "connector",
+          "requiredCarrier": "poiché in build focus; non comporta + di conseguenza in cloze; in base a in synthesis",
+          "recycles": [
+            "convenire",
+            "tariffa",
+            "interruttore"
+          ]
+        },
+        {
+          "number": 6,
+          "slug": "come-fare-ricorso-contro-una-multa",
+          "scene": "A colleague received a parking fine notice from the fictional 'Comune di Valfiore'; the supplied notice explains the ricorso steps, the office address and that the deadline is printed on the notice itself.",
+          "interlocutor": "collega",
+          "register": "Lei",
+          "openingMove": "explain: il ricorso si presenta all'ufficio indicato sull'avviso entro il termine indicato: prima la domanda, poi le prove, infine la ricevuta",
+          "challenge": "precision: and if the ricorso is rejected, what does the notice say happens?",
+          "answerMove": "clarify: l'avviso dice che si paga l'importo riportato sul verbale, il che significa che, stando all'avviso, il ricorso non aggiunge costi",
+          "steer": "final condition: the colleague has only a photo of the sign, no receipt",
+          "closingMove": "propose: propongo di scrivere insieme la domanda stasera, allegando la foto e chiedendo all'ufficio quali altre prove accettano",
+          "trophyLemma": "ricorso",
+          "trophySurface": "ricorso",
+          "trophyFamilyKey": "ricorso",
+          "pos": "noun",
+          "requiredCarrier": "prima … poi … infine in build focus; il che significa che in cloze; propongo di in synthesis",
+          "recycles": [
+            "modulo",
+            "documento",
+            "procedura"
+          ]
+        },
+        {
+          "number": 7,
+          "slug": "perche-il-piano-non-ha-funzionato",
+          "scene": "The neighbour's adult son, met twice, asks why the learner's online shop for homemade jam closed after six months.",
+          "interlocutor": "conoscente",
+          "register": "Lei",
+          "openingMove": "explain: il piano partiva da un presupposto sbagliato: pensavo che la spedizione costasse la metà, e la mancata verifica ha pesato",
+          "challenge": "objection: wasn't it just bad luck with the season?",
+          "answerMove": "concede: in parte sì, ma la stagione spiega un mese; l'aumento dei costi di spedizione spiega gli altri cinque",
+          "steer": "audience: the acquaintance asks what lesson to pass on to a friend starting a similar shop",
+          "closingMove": "conclude: pertanto, prima di aprire, verificare ogni costo con un preventivo reale: un presupposto controllato vale più di un buon prodotto",
+          "trophyLemma": "presupposto",
+          "trophySurface": "presupposto",
+          "trophyFamilyKey": "presupporre",
+          "pos": "noun",
+          "requiredCarrier": "nominalizzazione (la mancata verifica, l'aumento dei costi) in build focus and cloze; in parte sì, ma in cloze; pertanto in synthesis",
+          "recycles": [
+            "errore",
+            "risultato",
+            "motivo"
+          ]
+        },
+        {
+          "number": 8,
+          "slug": "come-funzionano-gli-appuntamenti",
+          "scene": "The learner works at reception of 'Studio Fisio Alba' (fictional); a visiting quality consultant asks how appointments are allocated; the supplied internal rulebook lists criteria: referral type, waiting time, availability.",
+          "interlocutor": "consulente esterno",
+          "register": "Lei",
+          "openingMove": "explain: le richieste si registrano in ordine di arrivo, poi si assegnano in base a tre criteri scritti nel regolamento interno",
+          "challenge": "precision: who decides priority, and what does the rulebook actually say?",
+          "answerMove": "clarify: la priorità dipende dal tipo di richiesta e dal tempo di attesa, a seconda del criterio che il regolamento mette per primo",
+          "steer": "edge case: and if two requests have identical priority?",
+          "closingMove": "summarize: riassumendo: ordine di arrivo, criteri del regolamento, e a parità di priorità decide la data della richiesta",
+          "trophyLemma": "priorità",
+          "trophySurface": "priorità",
+          "trophyFamilyKey": "priorità",
+          "pos": "noun",
+          "requiredCarrier": "si passivante + in base a in build focus; a seconda di in cloze; riassumendo in synthesis",
+          "recycles": [
+            "appuntamento",
+            "procedura",
+            "disponibile"
+          ]
+        },
+        {
+          "number": 9,
+          "slug": "perche-conta-il-bike-sharing",
+          "scene": "A sceptical acquaintance says the town's bike-sharing is a waste; the learner argues from the supplied operator report of 'BiciValfiore' (fictional): winter use at forty percent of summer use, use doubled compared with five years ago, cost per resident described as low.",
+          "interlocutor": "scettico/a",
+          "register": "Lei",
+          "openingMove": "reason: il servizio conta perché incentiva viaggi brevi senza auto, e a lungo termine riduce il traffico che tutti lamentano",
+          "challenge": "counter-example: in winter nobody uses those bikes",
+          "answerMove": "compare: d'inverno l'uso scende al quaranta per cento rispetto all'estate, ma rispetto a cinque anni fa è comunque raddoppiato",
+          "steer": "bottom line: the sceptic asks whether they would keep funding it with their own money",
+          "closingMove": "conclude: sì: il costo per abitante è basso, pertanto rinunciarci farebbe perdere più di quanto si risparmia",
+          "trophyLemma": "incentivare",
+          "trophySurface": "incentiva",
+          "trophyFamilyKey": "incentivare",
+          "pos": "verb",
+          "requiredCarrier": "a lungo termine in build focus; rispetto a in cloze; pertanto in synthesis",
+          "recycles": [
+            "traffico",
+            "ambiente",
+            "vantaggio"
+          ]
+        },
+        {
+          "number": 10,
+          "slug": "ricostruire-una-catena-di-decisioni",
+          "scene": "An official of the fictional 'Ufficio Eventi di Valfiore' asks the learner, secretary of a market association, to trace why the association chose site B for its market.",
+          "interlocutor": "funzionario",
+          "register": "Lei",
+          "openingMove": "explain: a monte c'era la chiusura della piazza; da lì la ricerca di un'area con parcheggio, e a valle il voto dei soci per il sito B",
+          "challenge": "precision: which single step was decisive, and who took it?",
+          "answerMove": "clarify: il passaggio decisivo è stato il sopralluogo: dato che il sito A non aveva accesso per i furgoni, la scelta si è ristretta a uno",
+          "steer": "audience: the official asks for a three-line summary for the file",
+          "closingMove": "conclude: pertanto: chiusura della piazza, sopralluogo che escludeva il sito A, voto dei soci; riassumendo, una scelta obbligata ma condivisa",
+          "trophyLemma": "pertanto",
+          "trophySurface": "pertanto",
+          "trophyFamilyKey": "pertanto",
+          "pos": "connector",
+          "requiredCarrier": "a monte / a valle in build focus; dato che in cloze; pertanto + riassumendo in synthesis",
+          "recycles": [
+            "priorità",
+            "presupposto",
+            "piazza"
+          ]
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "tuttavia",
+        "familyKey": "tuttavia",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "convenire",
+        "familyKey": "convenire",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "compromesso",
+        "familyKey": "compromesso",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "ammortizzare",
+        "familyKey": "ammortizzare",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "entrambi",
+        "familyKey": "entrambi",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "commissione",
+        "familyKey": "commissione",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "costanza",
+        "familyKey": "costanza",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "prospettiva",
+        "familyKey": "prospettiva",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "stabilità",
+        "familyKey": "stabilità",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "raccomandare",
+        "familyKey": "raccomandare",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "conguaglio",
+        "familyKey": "conguaglio",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "smaltire",
+        "familyKey": "smaltire",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "slittare",
+        "familyKey": "slittare",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "accumulare",
+        "familyKey": "accumulare",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "poiché",
+        "familyKey": "poiché",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "ricorso",
+        "familyKey": "ricorso",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "presupposto",
+        "familyKey": "presupporre",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "priorità",
+        "familyKey": "priorità",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "incentivare",
+        "familyKey": "incentivare",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "pertanto",
+        "familyKey": "pertanto",
+        "pos": "connector"
+      }
+    ],
+    "forbiddenCheck": "all 20 lemmas and all 20 familyKeys checked against the 300-entry forbidden set (A1/A2 frozen + reserved B1, b1AllocationSha256 647cb01e…): zero exact matches, zero shared familyKeys; 20/20 lemmas unique, 20/20 familyKeys unique; poiché carries its accent in lemma, surface and familyKey",
+    "nearFamilyDecisions": [
+      {
+        "candidate": "svantaggio",
+        "decision": "rejected: prefixed compound of forbidden vantaggio, same familyKey; appears only as a term"
+      },
+      {
+        "candidate": "sottovalutare",
+        "decision": "rejected: prefixed compound of forbidden valutare; replaced by presupposto"
+      },
+      {
+        "candidate": "preferibile",
+        "decision": "rejected: derivation of preferire (forbidden surface preferirei)"
+      },
+      {
+        "candidate": "contante",
+        "decision": "rejected as trophy: shares the contare root with forbidden conto; contanti appears only in dialogue/terms; commissione chosen instead"
+      },
+      {
+        "candidate": "presupposto",
+        "decision": "accepted: familyKey presupporre; forbidden posto (place) is a different lexical family despite the shared Latin root; not an inflection or transparent derivation"
+      },
+      {
+        "candidate": "ricorso",
+        "decision": "accepted: distinct from forbidden ricordo (orthographic neighbour only); familyKey ricorso, not ricorrere, because the legal noun is the taught unit"
+      },
+      {
+        "candidate": "convenire",
+        "decision": "accepted: conveniente/convenienza not in forbidden set; familyKey convenire covers them so a later path cannot re-trophy convenienza"
+      },
+      {
+        "candidate": "stabilità",
+        "decision": "accepted: stabile/stabilire not forbidden; familyKey stabilità kept narrow (stabilire would be a separate family: different meaning)"
+      },
+      {
+        "candidate": "pertanto",
+        "decision": "accepted: not an inflection of tanto; distinct connector lemma"
+      },
+      {
+        "candidate": "raccomandare",
+        "decision": "accepted: forbidden consiglia/consiglio is a different family; raccomandazione reserved under the same familyKey"
+      },
+      {
+        "candidate": "entrambi",
+        "decision": "accepted as adjective pos; surface entrambe agrees with proposte (non-speaker noun), no gender flag"
+      }
+    ]
+  },
+  "mechanicalValidationRules": [
+    "six turns, speakers them/you/them/you/them/you; them turns carry interlocutorId; you turns carry move and register",
+    "token bounds (scale 1): them 6–20, you1 14–26, build focus span 7–12, you2 12–24, you3 10–22; token = letters/digits with internal apostrophes/hyphens",
+    "you1 move ∈ path whitelist; you2 ∈ {concede,rebut,clarify,explain,compare,counteroffer}; you3 ∈ {conclude,propose,summarize,counteroffer,relay,request}; three you moves pairwise distinct; relay forbidden in P1/P2",
+    "registerPlan constant; Lei lessons: no tu/ti/te/tuo/tua/tuoi as address; tu lessons: no Lei/Le/La/Suo as address (object clitics 'le' lowercase referring to things are not address: detector is case-sensitive and warns, reviewer decides)",
+    "speakerGender neutral in all 20 lessons; B1 essere-participle and speaker-adjective regexes run as warnings on you turns only",
+    "digits anywhere in voiced text → error; passato remoto forms → warning; congiuntivo imperfetto → warning",
+    "build: 5–8 chunks of 1–4 tokens, exactly 2 distractors, framePrefix + chunks.join(' ') + frameSuffix === NFC(dialogue[1].targetText) character for character; chunks have no edge whitespace; no chunk splits a token or separates an elided article from its host",
+    "cloze 2–4 blanks, synthesis 1–2 blanks, segments reconstruct exactly; blank indices in order; at most one choice-bearing blank per cloze; 4 choices distinct after normalization with exactly one accepted",
+    "recall answer 1–3 tokens; before + answer + after === dialogue[1].targetText; fallbackChoices 4",
+    "acceptedAnswers contains answer; every accented answer also lists its stripped variant explicitly (checked by regex on vowels àèéìòù); no other automatic variants",
+    "terms 8–10, each targetText occurs folded in dialogue or a pattern example; speak 3 targets at turnIndex 1/3/5 with 2–4 distinct whole tokens of that turn",
+    "trophy lemma equals ledger row; surface is a whole token of dialogue[trophy.turnIndex]; lemma and familyKey absent from forbidden set and unique across the language B2 ledger",
+    "requiredCarrier presence: the carrier strings named per lesson (table above) occur folded in the named turn; a carrier whose final word is the preposition di or a also matches its articulated forms (del/dello/della/dei/degli/delle/dell', al/allo/alla/ai/agli/alle/all'); no other variant matching; a carrier used productively in a lesson earlier than its staging band → error; a recognition-only carrier appearing in a you turn → error",
+    "recycles: every listed lemma is either a frozen A1/A2 trophy lemma (an exact lemma entry of the frozen A1/A2 part of the forbidden set, matched as a lemma, never as a familyKey or near-family), a B1 ledger row (reserved rows count) or the trophy lemma (never a surface form, never a carrier) of an earlier B2 lesson: any P1 lesson for P2, or an earlier lesson of the same path; P1 may not recycle P2; nothing from a later B2 lesson, from a non-reserved B1 entry or from outside these three sources qualifies",
+    "base objects: every B field has both de and en; situation has both; authoredBaseLanguage German",
+    "no additional keys at any object; status draft until review rows exist; this spec's status is architecture only, no runtime support claim",
+    "carrier placement terms: 'in build focus' means the carrier string occurs folded inside the joined chunks (framePrefix/frameSuffix excluded); 'in build frame' or 'in build turn' means it occurs folded anywhere in dialogue[1].targetText; a carrier named 'in build focus' that is only present in the frame → error"
+  ],
+  "semanticReviewRules": [
+    "argument coherence: you2 answers the actual challenge; you3 answers the actual steer; concessions concede something real and then still hold a line",
+    "challenge and steer genuine: them turn 2 is an objection, counter-example, precision request or constraint; turn 4 changes the task (bottom line, edge case, final condition, summary, audience)",
+    "chip-order uniqueness: a native reviewer confirms exactly one chunk order is grammatical and coherent; commas or capitals alone never carry the uniqueness; if two orders are coherent the build is redesigned (not a validator claim)",
+    "distractors and choices: no also-correct option; synonymous connectors (quindi/perciò/pertanto) never compete in one choice set; a second correct form is either added to acceptedAnswers or the blank is redesigned",
+    "congiuntivo: not required by any P1/P2 carrier; if a canonical line contains it (e.g. after 'a condizione che' in P1 L8, 'pensavo che … costasse' in P2 L7) the reviewer confirms nativeness; such lines are never blanked on the subjunctive form",
+    "Lei naturalness: pronoun Lei/Le used sparingly as natives do; no over-insertion; capitalisation consistent within a lesson",
+    "regional neutrality and register: everyday neutral Italian; relaxed markers (però, insomma, anzi) are per-episode instructional choices and must read natural for that interlocutor; 'mica' is deferred for P1/P2 (standard colloquial, not regional)",
+    "fictional facts stay inside the scene: prices, fees, notices, criteria, collection days, appeal steps and contract clauses come from the supplied scene document named in the scene field and are quoted or attributed to it in the line ('l'avviso dice', 'è scritto nel contratto'); no claims about real municipal, legal, medical, waste or contractual rules and no universal process rule taught as fact; no appeal deadlines, fine doubling or guaranteed urgent slots",
+    "carriersStaged: each lesson's productive carriers are licensed by the band table; the two staging tables and every requiredCarrier field must agree; closing frames used from L1 (tutto sommato, in breve) are in the table, not an exception; carriers that are B1 trophies or B1 vocabulary (mentre, quindi, comunque, anzi) are earlier-B1 recycling, not first teaching; first productive teaching of any other carrier is the lowest band that lists it productive, and it may not be used productively before that band even once",
+    "B2 not inflated B1: every you turn gives a reason, implication or negotiation, not just a harder noun; terms favour argument nouns, connectors, stance verbs",
+    "explanation accuracy: pattern rule is one sentence, truthful for the examples, with no metalanguage beyond the label; base texts (de and en) are accurate, not literal",
+    "gender claim: neutral verified line by line; any essere-participle has a non-speaker subject",
+    "ttsReadable: no digits, no abbreviations, numbers spelled out, no symbols; noFiller: no empty hedges padding a turn to length",
+    "condizionale: condizionale di cortesia (vorrei, potrebbe, sarebbe possibile as request softeners) is excluded only as a required carrier until P5 and is never a taught move in P1/P2; the single licensed conditional-form carrier in P1/P2 is the proposal carrier 'potremmo invece' (P1 L3, productive in band 1-3, blanked in cloze as its requiredCarrier field allocates): it is a counteroffer carrier, not courtesy, and its blank, chip or term use follows the allocation and staging tables like any other carrier; any other conditional in a canonical line is incidental and agreement-free (P2 L5 'aspetterei'), is reviewed for nativeness and is never blanked, never a chip, never a recall answer and never a term; conditional forms are not banned from canonical text"
+  ],
+  "unresolvedDecisions": [
+    "Italian target validator gate does not exist yet (offline validator is German-only); until the independent it-IT gate is reviewed, the mechanical rules above are applied by review only and no draft may be marked reviewed on validator evidence",
+    "B1 Italian maturity for recycling: resolution b2BeforeB1 lets reserved ledger rows count; if the owner later wants 'mature' to mean 'in an activated B1 lesson', the recycles lists in P1 L1–L10 need re-checking against activated lessons, not rows"
+  ]
+}

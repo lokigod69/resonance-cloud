@@ -1,0 +1,3807 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "spiegare-come-e-perche",
+  "pathTitle": {
+    "de": "Abläufe und Ursachen erklären",
+    "en": "Explaining processes and causes"
+  },
+  "pathFunction": {
+    "de": "Ursachen und Abläufe erklären und auf genaue Nachfragen eingehen.",
+    "en": "Explain causes and processes and respond to requests for precision."
+  },
+  "specRef": {
+    "pathSpec": "B2_ITALIAN_P1_P2_AUTHORING_SPEC_V4.json",
+    "pathSpecSha256": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b",
+    "ledger": "B2_ITALIAN_P1_P2_AUTHORING_SPEC_V4.json",
+    "ledgerSha256": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b"
+  },
+  "authoring": {
+    "source": "Codex native Italian authoring; independent review pending",
+    "runId": "V4_EXPANSION_20261003-italian-b2",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "fattura-diversa-dal-preventivo",
+      "title": {
+        "de": "Eine höhere Rechnung erläutern",
+        "en": "Explaining a higher invoice"
+      },
+      "situation": {
+        "de": "Sie arbeiten freiberuflich im Übersetzungsbereich. Mit der Buchhaltung prüfen Sie eine Rechnung und den zugehörigen fiktiven Auftragsschein.",
+        "en": "You work as a freelance translator. You review an invoice and its fictional job sheet with your accountant."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Buchhaltung",
+            "en": "accountant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Buchhaltung fragt: «La fattura supera il preventivo di centottanta euro. Quali cambiamenti del cliente spiegano la differenza rispetto al foglio iniziale?»",
+        "en": "The accountant asks: «La fattura supera il preventivo di centottanta euro. Quali cambiamenti del cliente spiegano la differenza rispetto al foglio iniziale?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "La fattura supera il preventivo di centottanta euro. Quali cambiamenti del cliente spiegano la differenza rispetto al foglio iniziale?",
+          "base": {
+            "de": "Die Rechnung liegt hundertachtzig Euro über dem Angebot. Welche Kundenänderungen erklären den Unterschied zum ursprünglichen Blatt?",
+            "en": "The invoice exceeds the quote by one hundred and eighty euros. Which client changes explain the difference from the original sheet?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "La fattura è più alta poiché il cliente ha aggiunto trenta pagine e ha richiesto la consegna urgente entro tre giorni.",
+          "base": {
+            "de": "Die Rechnung ist höher, weil der Kunde dreißig Seiten ergänzt und eine Eillieferung innerhalb von drei Tagen verlangt hat.",
+            "en": "The invoice is higher because the client added thirty pages and requested urgent delivery within three days."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Mi indichi le voci precise: quale importo riguarda le pagine e dove risulta concordata la maggiorazione per urgenza?",
+          "base": {
+            "de": "Nennen Sie die genauen Posten: Welcher Betrag betrifft die Seiten, und wo ist der Eilzuschlag vereinbart?",
+            "en": "Please identify the exact items: which amount covers the pages, and where was the urgency supplement agreed?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Nello specifico, il foglio riporta centoventi euro di conguaglio per le pagine e sessanta di supplemento urgenza, concordato per iscritto.",
+          "base": {
+            "de": "Im Einzelnen nennt das Blatt hundertzwanzig Euro Nachberechnung für die Seiten und sechzig Euro schriftlich vereinbarten Eilzuschlag.",
+            "en": "Specifically, the sheet lists a one-hundred-and-twenty-euro adjustment for the pages and a sixty-euro urgency supplement agreed in writing."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Ora lo spieghi al cliente in una sola frase, senza il dettaglio contabile delle due voci.",
+          "base": {
+            "de": "Erklären Sie es nun dem Kunden in einem Satz, ohne die buchhalterischen Einzelheiten der zwei Posten.",
+            "en": "Now explain it to the client in one sentence, without the accounting detail of the two items."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "In breve, la differenza deriva da pagine aggiuntive e urgenza: entrambe le modifiche sono documentate nel foglio approvato dal cliente.",
+          "base": {
+            "de": "Kurz gesagt entsteht die Differenz durch Zusatzseiten und Eile: Beide Änderungen sind im vom Kunden bestätigten Blatt dokumentiert.",
+            "en": "In brief, the difference comes from extra pages and urgency: both changes are documented in the sheet approved by the client."
+          },
+          "speaker": "you",
+          "move": "summarize",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "La fattura è più alta ",
+        "chunks": [
+          "poiché il cliente",
+          "ha aggiunto",
+          "trenta pagine",
+          "e ha richiesto",
+          "la consegna"
+        ],
+        "distractors": [
+          "hanno aggiunto",
+          "ai clienti"
+        ],
+        "frameSuffix": " urgente entro tre giorni."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", il foglio "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " centoventi euro di conguaglio per le pagine e sessanta di supplemento urgenza, concordato per iscritto."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Nello specifico",
+            "acceptedAnswers": [
+              "Nello specifico"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Nello specifico",
+              "Nonostante",
+              "Invece di",
+              "A causa di"
+            ]
+          },
+          {
+            "answer": "riporta",
+            "acceptedAnswers": [
+              "riporta"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "riportare, 3. Person Singular, Präsens Indikativ",
+              "en": "riportare, third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", la differenza deriva da pagine aggiuntive e urgenza: entrambe le modifiche sono documentate nel foglio approvato dal cliente."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "In breve",
+            "acceptedAnswers": [
+              "In breve"
+            ],
+            "kind": "connector",
+            "choices": [
+              "In breve",
+              "Nonostante",
+              "Invece di",
+              "A causa di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "La fattura è più alta ",
+        "answer": "poiché",
+        "acceptedAnswers": [
+          "poiché",
+          "poiche",
+          "perché",
+          "perche",
+          "dato che",
+          "visto che"
+        ],
+        "fallbackChoices": [
+          "poiché",
+          "nonostante",
+          "invece di",
+          "a causa di"
+        ],
+        "after": " il cliente ha aggiunto trenta pagine e ha richiesto la consegna urgente entro tre giorni."
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Die einzelnen Ursachen belegen",
+          "en": "Documenting the individual causes"
+        },
+        "rule": {
+          "de": "Nello specifico führt die Einzelheiten ein, die eine zuvor genannte Ursache überprüfbar machen.",
+          "en": "Nello specifico introduces details that make a previously stated cause verifiable."
+        },
+        "examples": [
+          {
+            "targetText": "Nello specifico, il foglio riporta centoventi euro di conguaglio per le pagine e sessanta di supplemento urgenza, concordato per iscritto.",
+            "base": {
+              "de": "Im Einzelnen nennt das Blatt hundertzwanzig Euro Nachberechnung für die Seiten und sechzig Euro schriftlich vereinbarten Eilzuschlag.",
+              "en": "Specifically, the sheet lists a one-hundred-and-twenty-euro adjustment for the pages and a sixty-euro urgency supplement agreed in writing."
+            },
+            "highlights": [
+              "Nello specifico",
+              "per iscritto"
+            ]
+          },
+          {
+            "targetText": "Nello specifico, la conferma del cliente elenca le pagine aggiunte e la nuova data di consegna.",
+            "base": {
+              "de": "Im Einzelnen nennt die Kundenbestätigung die ergänzten Seiten und den neuen Liefertermin.",
+              "en": "Specifically, the client’s confirmation lists the added pages and the new delivery date."
+            },
+            "highlights": [
+              "Nello specifico"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "poiché",
+          "kind": "connector",
+          "base": {
+            "de": "weil / da",
+            "en": "because / since"
+          }
+        },
+        {
+          "targetText": "nello specifico",
+          "kind": "frame",
+          "base": {
+            "de": "im Einzelnen",
+            "en": "specifically"
+          }
+        },
+        {
+          "targetText": "conguaglio",
+          "kind": "noun",
+          "base": {
+            "de": "Nachberechnung / Ausgleich",
+            "en": "adjustment"
+          }
+        },
+        {
+          "targetText": "fattura",
+          "kind": "noun",
+          "base": {
+            "de": "Rechnung",
+            "en": "invoice"
+          }
+        },
+        {
+          "targetText": "supplemento",
+          "kind": "noun",
+          "base": {
+            "de": "Zuschlag",
+            "en": "supplement"
+          }
+        },
+        {
+          "targetText": "urgenza",
+          "kind": "noun",
+          "base": {
+            "de": "Dringlichkeit",
+            "en": "urgency"
+          }
+        },
+        {
+          "targetText": "aggiuntive",
+          "kind": "adjective",
+          "base": {
+            "de": "zusätzlich",
+            "en": "additional"
+          },
+          "lemma": "aggiuntivo"
+        },
+        {
+          "targetText": "documentate",
+          "kind": "adjective",
+          "base": {
+            "de": "dokumentiert",
+            "en": "documented"
+          },
+          "lemma": "documentato"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "cliente",
+            "aggiunto",
+            "pagine"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "specifico",
+            "conguaglio",
+            "supplemento"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "breve",
+            "differenza",
+            "documentate"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "conguaglio",
+        "familyKey": "conguaglio",
+        "surface": "conguaglio",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "Il conguaglio copre soltanto le pagine aggiunte dopo il preventivo.",
+          "base": {
+            "de": "Die Nachberechnung deckt nur die nach dem Angebot ergänzten Seiten ab.",
+            "en": "The adjustment covers only the pages added after the quote."
+          }
+        },
+        "base": {
+          "de": "Nachberechnung / Ausgleichsbetrag",
+          "en": "adjustment / balancing amount"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "come-funziona-la-differenziata",
+      "title": {
+        "de": "Den Aushang zur Abfallsammlung erklären",
+        "en": "Explaining the waste-collection notice"
+      },
+      "situation": {
+        "de": "Im fiktiven Condominio Via dei Tigli erläutern Sie einer neu eingezogenen Person den Haus-Aushang zur Abfallsammlung. Die Regeln gelten nur in dieser Szene.",
+        "en": "In the fictional Condominio Via dei Tigli, you explain the building’s waste-collection notice to a new resident. These rules apply only in this scene."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "neu eingezogene Person",
+            "en": "new resident"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Person fragt: «Ho letto l'avviso del Condominio Via dei Tigli, ma non capisco la sequenza. Da che cosa comincio?»",
+        "en": "The resident asks: «Ho letto l'avviso del Condominio Via dei Tigli, ma non capisco la sequenza. Da che cosa comincio?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Ho letto l'avviso del Condominio Via dei Tigli, ma non capisco la sequenza. Da che cosa comincio?",
+          "base": {
+            "de": "Ich habe den Aushang des Condominio Via dei Tigli gelesen, verstehe aber die Reihenfolge nicht. Womit fange ich an?",
+            "en": "I read the Condominio Via dei Tigli notice, but I don’t understand the sequence. What do I start with?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Dato che, secondo l'avviso, il ritiro cambia ogni giorno, prima separa in casa, poi espone la sera, infine ritira il bidone vuoto.",
+          "base": {
+            "de": "Da sich die Abholung laut Aushang täglich ändert, sortieren Sie zuerst zu Hause, stellen abends hinaus und holen zuletzt den leeren Behälter zurück.",
+            "en": "Since collection changes each day according to the notice, first sort at home, then put it out in the evening, and finally retrieve the empty bin."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "Lei"
+        },
+        {
+          "targetText": "E una vecchia pentola oppure una sedia rotta? Non vedo queste cose nell'elenco dei bidoni.",
+          "base": {
+            "de": "Und ein alter Topf oder ein kaputter Stuhl? Diese Dinge sehe ich nicht in der Behälterliste.",
+            "en": "And an old pan or a broken chair? I don’t see those things on the bin list."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Per essere precisi, secondo l'avviso questi oggetti vanno portati al centro di raccolta: la nota specifica che il conferimento è gratuito.",
+          "base": {
+            "de": "Genauer gesagt müssen diese Gegenstände laut Aushang zum Sammelzentrum gebracht werden: Die Notiz nennt eine kostenlose Abgabe.",
+            "en": "To be precise, the notice says these objects must be taken to the collection centre: the note states that dropping them off is free."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Se dimentico tutte queste spiegazioni, quali giorni devo ricordare e dove verifico gli oggetti da portare al centro?",
+          "base": {
+            "de": "Wenn ich diese Erklärungen vergesse: Welche Tage muss ich mir merken, und wo prüfe ich die Gegenstände fürs Sammelzentrum?",
+            "en": "If I forget these explanations, which days should I remember, and where do I check which objects go to the centre?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "In breve: organico martedì e venerdì, carta lunedì, vetro in cortile; per gli oggetti da smaltire al centro consulti l'avviso.",
+          "base": {
+            "de": "Kurz: Bioabfall dienstags und freitags, Papier montags, Glas im Hof; für die im Zentrum zu entsorgenden Gegenstände lesen Sie den Aushang.",
+            "en": "In brief: organic waste Tuesday and Friday, paper Monday, glass in the courtyard; check the notice for objects to dispose of at the centre."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "Dato che, secondo l'avviso, il ritiro cambia ogni giorno, ",
+        "chunks": [
+          "prima separa",
+          "in casa, poi",
+          "espone la sera,",
+          "infine ritira",
+          "il bidone"
+        ],
+        "distractors": [
+          "esponiamo",
+          "i bidoni"
+        ],
+        "frameSuffix": " vuoto."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", secondo l'avviso questi oggetti vanno "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " al centro di raccolta: la nota specifica che il conferimento è gratuito."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Per essere precisi",
+            "acceptedAnswers": [
+              "Per essere precisi"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Per essere precisi",
+              "Nonostante",
+              "Invece di",
+              "A causa di"
+            ]
+          },
+          {
+            "answer": "portati",
+            "acceptedAnswers": [
+              "portati"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "portare, Partizip nach vanno, Plural maskulin zu questi oggetti",
+              "en": "portare, participle after vanno, masculine plural agreeing with questi oggetti"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": organico martedì e venerdì, carta lunedì, vetro in cortile; per gli oggetti da smaltire al centro consulti l'avviso."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "In breve",
+            "acceptedAnswers": [
+              "In breve"
+            ],
+            "kind": "connector",
+            "choices": [
+              "In breve",
+              "Nonostante",
+              "Invece di",
+              "A causa di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Dato che, secondo l'avviso, il ritiro cambia ogni giorno, prima separa in casa, poi espone la sera, ",
+        "answer": "infine",
+        "acceptedAnswers": [
+          "infine",
+          "poi",
+          "successivamente",
+          "quindi",
+          "alla fine"
+        ],
+        "fallbackChoices": [
+          "infine",
+          "invece di",
+          "benché",
+          "nonostante"
+        ],
+        "after": " ritira il bidone vuoto."
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine im Aushang genannte Pflicht präzisieren",
+          "en": "Clarifying a requirement in the notice"
+        },
+        "rule": {
+          "de": "Vanno portati drückt hier eine im Aushang festgelegte Pflicht aus; portati stimmt mit oggetti überein.",
+          "en": "Vanno portati expresses a requirement established by this notice; portati agrees with oggetti."
+        },
+        "examples": [
+          {
+            "targetText": "Per essere precisi, secondo l'avviso questi oggetti vanno portati al centro di raccolta: la nota specifica che il conferimento è gratuito.",
+            "base": {
+              "de": "Genauer gesagt müssen diese Gegenstände laut Aushang zum Sammelzentrum gebracht werden: Die Notiz nennt eine kostenlose Abgabe.",
+              "en": "To be precise, the notice says these objects must be taken to the collection centre: the note states that dropping them off is free."
+            },
+            "highlights": [
+              "Per essere precisi",
+              "vanno portati"
+            ]
+          },
+          {
+            "targetText": "Secondo questo avviso, i contenitori vanno chiusi prima del ritiro per tenere la carta al riparo dal vento.",
+            "base": {
+              "de": "Laut diesem Aushang müssen die Behälter vor der Abholung geschlossen werden, um das Papier vor dem Wind zu schützen.",
+              "en": "According to this notice, the containers must be closed before collection to shelter the paper from the wind."
+            },
+            "highlights": [
+              "Secondo questo avviso",
+              "vanno chiusi"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "dato che",
+          "kind": "connector",
+          "base": {
+            "de": "da / weil",
+            "en": "since / because"
+          }
+        },
+        {
+          "targetText": "per essere precisi",
+          "kind": "frame",
+          "base": {
+            "de": "genauer gesagt",
+            "en": "to be precise"
+          }
+        },
+        {
+          "targetText": "smaltire",
+          "kind": "verb",
+          "base": {
+            "de": "entsorgen",
+            "en": "dispose of"
+          }
+        },
+        {
+          "targetText": "ritiro",
+          "kind": "noun",
+          "base": {
+            "de": "Abholung",
+            "en": "collection"
+          }
+        },
+        {
+          "targetText": "bidone",
+          "kind": "noun",
+          "base": {
+            "de": "Abfallbehälter",
+            "en": "bin"
+          }
+        },
+        {
+          "targetText": "conferimento",
+          "kind": "noun",
+          "base": {
+            "de": "Abgabe an einer Sammelstelle",
+            "en": "drop-off at a collection point"
+          }
+        },
+        {
+          "targetText": "gratuito",
+          "kind": "adjective",
+          "base": {
+            "de": "kostenlos",
+            "en": "free of charge"
+          }
+        },
+        {
+          "targetText": "organico",
+          "kind": "noun",
+          "base": {
+            "de": "Bioabfall",
+            "en": "organic waste"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "separa",
+            "espone",
+            "bidone"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "portati",
+            "raccolta",
+            "gratuito"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "breve",
+            "smaltire",
+            "consulti"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "smaltire",
+        "familyKey": "smaltire",
+        "surface": "smaltire",
+        "turnIndex": 5,
+        "pos": "verb",
+        "example": {
+          "targetText": "L'avviso spiega dove smaltire gli oggetti non ammessi nei bidoni del condominio.",
+          "base": {
+            "de": "Der Aushang erklärt, wo Gegenstände entsorgt werden, die nicht in die Hausbehälter dürfen.",
+            "en": "The notice explains where to dispose of objects not allowed in the building’s bins."
+          }
+        },
+        "base": {
+          "de": "entsorgen",
+          "en": "dispose of"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "perche-il-progetto-e-slittato",
+      "title": {
+        "de": "Die Verzögerung nachvollziehbar erklären",
+        "en": "Explaining the delay clearly"
+      },
+      "situation": {
+        "de": "Mit Ihrer Führungskraft prüfen Sie den Zeitplan für den Neustart einer Website. Die Übersicht zeigt die Abhängigkeit zwischen Vorlage und Tests.",
+        "en": "You review a website relaunch timeline with your manager. The schedule shows the dependency between the template and testing."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Führungskraft",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Führungskraft fragt: «Il rilancio del sito è in ritardo. Mi spieghi la causa seguendo il calendario delle consegne e dei test.»",
+        "en": "The manager asks: «Il rilancio del sito è in ritardo. Mi spieghi la causa seguendo il calendario delle consegne e dei test.»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Il rilancio del sito è in ritardo. Mi spieghi la causa seguendo il calendario delle consegne e dei test.",
+          "base": {
+            "de": "Der Website-Neustart verspätet sich. Erklären Sie mir die Ursache anhand des Liefer- und Testplans.",
+            "en": "The website relaunch is late. Explain the cause using the delivery and testing schedule."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Il progetto non rispetta il calendario poiché il fornitore ha consegnato in ritardo il modello senza il quale non potevamo avviare il collaudo.",
+          "base": {
+            "de": "Das Projekt hält den Zeitplan nicht ein, weil der Lieferant die Vorlage verspätet lieferte, ohne die wir die Tests nicht beginnen konnten.",
+            "en": "The project misses the schedule because the supplier delivered late the template without which we could not start testing."
+          },
+          "speaker": "you",
+          "move": "reason",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Quanto dipende dal fornitore e quanto dal nostro gruppo? Mi servono due durate distinte, non una responsabilità generica.",
+          "base": {
+            "de": "Wie viel liegt am Lieferanten, wie viel am Team? Ich brauche zwei getrennte Zeitangaben, keine pauschale Schuldzuweisung.",
+            "en": "How much is down to the supplier and how much to our team? I need two separate durations, not a vague attribution of blame."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Per essere precisi, il collaudo è slittato di due settimane per il fornitore; il gruppo ha perso altri tre giorni.",
+          "base": {
+            "de": "Genauer gesagt hat sich der Test wegen des Lieferanten um zwei Wochen verschoben; das Team hat weitere drei Tage verloren.",
+            "en": "To be precise, testing slipped by two weeks because of the supplier; the team lost a further three days."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Venerdì devo comunicare una scadenza difendibile ai clienti. Quale impegno concreto propone e chi avvertiamo subito?",
+          "base": {
+            "de": "Am Freitag muss ich den Kunden einen vertretbaren Termin nennen. Welche konkrete Zusage schlagen Sie vor, und wen informieren wir sofort?",
+            "en": "On Friday I need to give clients a defensible deadline. What concrete commitment do you propose, and whom do we notify now?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Propongo di completare il collaudo entro due settimane e avvertire subito i clienti con contratti attivi, indicando questa scadenza come obiettivo.",
+          "base": {
+            "de": "Ich schlage vor, die Tests innerhalb von zwei Wochen abzuschließen und Kunden mit laufenden Verträgen sofort über dieses Terminziel zu informieren.",
+            "en": "I propose completing testing within two weeks and immediately telling clients with active contracts that this deadline is our target."
+          },
+          "speaker": "you",
+          "move": "propose",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "Il progetto non rispetta il calendario ",
+        "chunks": [
+          "poiché",
+          "il fornitore",
+          "ha consegnato",
+          "in ritardo il modello",
+          "senza il quale"
+        ],
+        "distractors": [
+          "hanno consegnato",
+          "i modelli senza"
+        ],
+        "frameSuffix": " non potevamo avviare il collaudo."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", il collaudo è "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " di due settimane per il fornitore; il gruppo ha perso altri tre giorni."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Per essere precisi",
+            "acceptedAnswers": [
+              "Per essere precisi"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Per essere precisi",
+              "Nonostante",
+              "Invece di",
+              "A causa di"
+            ]
+          },
+          {
+            "answer": "slittato",
+            "acceptedAnswers": [
+              "slittato"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "slittare, Partizip mit Subjekt il collaudo",
+              "en": "slittare, past participle with subject il collaudo"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " completare il collaudo entro due settimane e avvertire subito i clienti con contratti attivi, indicando questa scadenza come obiettivo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Propongo di",
+            "acceptedAnswers": [
+              "Propongo di"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Propongo di",
+              "Nonostante",
+              "A causa di",
+              "Per quanto"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Il progetto non rispetta il calendario ",
+        "answer": "poiché",
+        "acceptedAnswers": [
+          "poiché",
+          "poiche",
+          "perché",
+          "perche",
+          "dato che",
+          "visto che"
+        ],
+        "fallbackChoices": [
+          "poiché",
+          "nonostante",
+          "invece di",
+          "a causa di"
+        ],
+        "after": " il fornitore ha consegnato in ritardo il modello senza il quale non potevamo avviare il collaudo."
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine Verzögerung genau beziffern",
+          "en": "Stating a delay precisely"
+        },
+        "rule": {
+          "de": "È slittato di nennt die Verschiebung des Termins; slittato bezieht sich hier auf il collaudo, nicht auf die sprechende Person.",
+          "en": "È slittato di states how far a date slipped; slittato agrees here with il collaudo, not with the speaker."
+        },
+        "examples": [
+          {
+            "targetText": "Per essere precisi, il collaudo è slittato di due settimane per il fornitore; il gruppo ha perso altri tre giorni.",
+            "base": {
+              "de": "Genauer gesagt hat sich der Test wegen des Lieferanten um zwei Wochen verschoben; das Team hat weitere drei Tage verloren.",
+              "en": "To be precise, testing slipped by two weeks because of the supplier; the team lost a further three days."
+            },
+            "highlights": [
+              "Per essere precisi",
+              "è slittato di due settimane"
+            ]
+          },
+          {
+            "targetText": "Per essere precisi, il controllo è slittato di una settimana perché il materiale non era ancora disponibile.",
+            "base": {
+              "de": "Genauer gesagt wurde die Prüfung um eine Woche verschoben, weil das Material noch nicht verfügbar war.",
+              "en": "To be precise, the check slipped by a week because the material was not yet available."
+            },
+            "highlights": [
+              "Per essere precisi",
+              "è slittato di"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "poiché",
+          "kind": "connector",
+          "base": {
+            "de": "weil / da",
+            "en": "because / since"
+          }
+        },
+        {
+          "targetText": "per essere precisi",
+          "kind": "frame",
+          "base": {
+            "de": "genauer gesagt",
+            "en": "to be precise"
+          }
+        },
+        {
+          "targetText": "slittato",
+          "kind": "verb",
+          "base": {
+            "de": "verschoben / später geworden",
+            "en": "slipped / been delayed"
+          },
+          "lemma": "slittare"
+        },
+        {
+          "targetText": "collaudo",
+          "kind": "noun",
+          "base": {
+            "de": "Funktionsprüfung / Test",
+            "en": "testing"
+          }
+        },
+        {
+          "targetText": "fornitore",
+          "kind": "noun",
+          "base": {
+            "de": "Lieferant",
+            "en": "supplier"
+          }
+        },
+        {
+          "targetText": "modello",
+          "kind": "noun",
+          "base": {
+            "de": "Vorlage",
+            "en": "template"
+          }
+        },
+        {
+          "targetText": "difendibile",
+          "kind": "adjective",
+          "base": {
+            "de": "begründbar / vertretbar",
+            "en": "defensible"
+          }
+        },
+        {
+          "targetText": "responsabilità",
+          "kind": "noun",
+          "base": {
+            "de": "Verantwortung",
+            "en": "responsibility"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "fornitore",
+            "consegnato",
+            "modello"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "collaudo",
+            "slittato",
+            "settimane"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "completare",
+            "avvertire",
+            "obiettivo"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "slittare",
+        "familyKey": "slittare",
+        "surface": "slittato",
+        "turnIndex": 3,
+        "pos": "verb",
+        "example": {
+          "targetText": "Il collaudo è slittato perché la consegna ha richiesto più tempo del previsto.",
+          "base": {
+            "de": "Der Test hat sich verschoben, weil die Lieferung länger dauerte als vorgesehen.",
+            "en": "Testing slipped because delivery took longer than expected."
+          }
+        },
+        "base": {
+          "de": "sich verschieben / später stattfinden",
+          "en": "slip / be delayed"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "come-funziona-la-carta-fedelta",
+      "title": {
+        "de": "Eine Kundenkarte sachlich erklären",
+        "en": "Explaining a loyalty card"
+      },
+      "situation": {
+        "de": "Ein neuer Arbeitskontakt fragt nach der fiktiven Carta Insieme. Gemeinsam sehen Sie sich das Merkblatt mit Punktesystem und Ablaufregel an.",
+        "en": "A new colleague asks about the fictional Carta Insieme. Together you consult its leaflet on points and expiry."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "neuer Arbeitskontakt",
+            "en": "new colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Gegenüber fragt: «Nel foglietto della Carta Insieme vedo punti e buoni. Mi spiega il meccanismo con un esempio semplice?»",
+        "en": "Your colleague asks: «Nel foglietto della Carta Insieme vedo punti e buoni. Mi spiega il meccanismo con un esempio semplice?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Nel foglietto della Carta Insieme vedo punti e buoni. Mi spiega il meccanismo con un esempio semplice?",
+          "base": {
+            "de": "Im Merkblatt der Carta Insieme sehe ich Punkte und Gutscheine. Erklären Sie mir das System mit einem einfachen Beispiel?",
+            "en": "The Carta Insieme leaflet mentions points and vouchers. Could you explain the mechanism with a simple example?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Secondo il foglietto, i punti si accumulano con la spesa che Lei fa normalmente: uno per euro, poi duecento valgono un buono da cinque.",
+          "base": {
+            "de": "Laut Merkblatt sammeln sich bei Ihren normalen Einkäufen Punkte: einer pro Euro; zweihundert ergeben dann einen Gutschein über fünf Euro.",
+            "en": "According to the leaflet, points accumulate through your normal shopping: one per euro, then two hundred earn a five-euro voucher."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Mi sembra un modo per far comprare più del necessario. Il buono non rischia di costare parecchio?",
+          "base": {
+            "de": "Das scheint mir ein Mittel, mehr als nötig zu verkaufen. Könnte der Gutschein nicht teuer werden?",
+            "en": "It seems a way to make people buy more than necessary. Could the voucher end up costing a lot?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Se compra soltanto ciò che comprava già, la spesa non aumenta; di conseguenza il buono restituisce qualcosa senza richiedere acquisti aggiuntivi.",
+          "base": {
+            "de": "Wenn Sie nur wie bisher einkaufen, steigt die Ausgabe nicht; folglich gibt der Gutschein etwas zurück, ohne zusätzliche Käufe zu verlangen.",
+            "en": "If you buy only what you bought before, spending does not rise; consequently, the voucher returns something without requiring additional purchases."
+          },
+          "speaker": "you",
+          "move": "rebut",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Io compro qui solo in estate. Il foglietto dice che i punti scadono dopo un anno: mi conviene comunque?",
+          "base": {
+            "de": "Ich kaufe hier nur im Sommer. Laut Merkblatt verfallen die Punkte nach einem Jahr: Lohnt es sich trotzdem?",
+            "en": "I shop here only in summer. The leaflet says points expire after a year: is it still worthwhile?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Riassumo: scadenza annuale; con la sola spesa estiva il buono arriva se raggiunge duecento punti, senza acquisti aggiuntivi.",
+          "base": {
+            "de": "Zusammengefasst: jährlicher Verfall; mit den Sommereinkäufen allein gibt es den Gutschein, wenn Sie zweihundert Punkte erreichen, ohne zusätzlich einzukaufen.",
+            "en": "To summarize: annual expiry; summer shopping alone earns the voucher if you reach two hundred points, without extra purchases."
+          },
+          "speaker": "you",
+          "move": "summarize",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "Secondo il foglietto, ",
+        "chunks": [
+          "i punti",
+          "si accumulano con",
+          "la spesa",
+          "che Lei",
+          "fa normalmente:"
+        ],
+        "distractors": [
+          "si accumula",
+          "con le spese"
+        ],
+        "frameSuffix": " uno per euro, poi duecento valgono un buono da cinque."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Se compra soltanto ciò che comprava già, la spesa non aumenta; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " il buono "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " qualcosa senza richiedere acquisti aggiuntivi."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "di conseguenza",
+            "acceptedAnswers": [
+              "di conseguenza"
+            ],
+            "kind": "connector",
+            "choices": [
+              "di conseguenza",
+              "senza",
+              "invece di",
+              "a causa di"
+            ]
+          },
+          {
+            "answer": "restituisce",
+            "acceptedAnswers": [
+              "restituisce"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "restituire, 3. Person Singular, Präsens Indikativ",
+              "en": "restituire, third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": scadenza annuale; con la sola spesa estiva il buono arriva se raggiunge duecento punti, senza acquisti aggiuntivi."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Riassumo",
+            "acceptedAnswers": [
+              "Riassumo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Riassumo",
+              "Nonostante",
+              "A causa di",
+              "Invece di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Secondo il foglietto, i punti si ",
+        "answer": "accumulano",
+        "acceptedAnswers": [
+          "accumulano",
+          "raccolgono",
+          "sommano",
+          "guadagnano",
+          "ottengono"
+        ],
+        "fallbackChoices": [
+          "accumulano",
+          "accumula",
+          "accumulate",
+          "accumuli"
+        ],
+        "after": " con la spesa che Lei fa normalmente: uno per euro, poi duecento valgono un buono da cinque."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Beschreiben, was mit den Punkten geschieht",
+          "en": "Describing what happens to the points"
+        },
+        "rule": {
+          "de": "Bei i punti si accumulano steht das Verb im Plural passend zu i punti, ohne eine handelnde Person zu nennen.",
+          "en": "In i punti si accumulano, the verb is plural to agree with i punti, without naming the person carrying out the action."
+        },
+        "examples": [
+          {
+            "targetText": "Secondo il foglietto, i punti si accumulano con la spesa che Lei fa normalmente: uno per euro, poi duecento valgono un buono da cinque.",
+            "base": {
+              "de": "Laut Merkblatt sammeln sich bei Ihren normalen Einkäufen Punkte: einer pro Euro; zweihundert ergeben dann einen Gutschein über fünf Euro.",
+              "en": "According to the leaflet, points accumulate through your normal shopping: one per euro, then two hundred earn a five-euro voucher."
+            },
+            "highlights": [
+              "i punti si accumulano"
+            ]
+          },
+          {
+            "targetText": "Nel regolamento della Carta Insieme, i punti si trasformano in buoni quando raggiungono la soglia prevista.",
+            "base": {
+              "de": "Nach den Regeln der Carta Insieme werden Punkte beim Erreichen der vorgesehenen Schwelle in Gutscheine umgewandelt.",
+              "en": "Under the Carta Insieme rules, points turn into vouchers when they reach the specified threshold."
+            },
+            "highlights": [
+              "i punti si trasformano"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "di conseguenza",
+          "kind": "connector",
+          "base": {
+            "de": "folglich",
+            "en": "consequently"
+          }
+        },
+        {
+          "targetText": "riassumo",
+          "kind": "frame",
+          "base": {
+            "de": "ich fasse zusammen",
+            "en": "I sum up"
+          }
+        },
+        {
+          "targetText": "si accumulano",
+          "kind": "verb",
+          "base": {
+            "de": "werden angesammelt",
+            "en": "are accumulated"
+          },
+          "lemma": "accumulare"
+        },
+        {
+          "targetText": "buono",
+          "kind": "noun",
+          "base": {
+            "de": "Gutschein",
+            "en": "voucher"
+          }
+        },
+        {
+          "targetText": "soglia",
+          "kind": "noun",
+          "base": {
+            "de": "Schwelle",
+            "en": "threshold"
+          }
+        },
+        {
+          "targetText": "scadenza",
+          "kind": "noun",
+          "base": {
+            "de": "Ablauf / Verfall",
+            "en": "expiry"
+          }
+        },
+        {
+          "targetText": "restituisce",
+          "kind": "verb",
+          "base": {
+            "de": "gibt zurück",
+            "en": "returns"
+          },
+          "lemma": "restituire"
+        },
+        {
+          "targetText": "aggiuntivi",
+          "kind": "adjective",
+          "base": {
+            "de": "zusätzlich",
+            "en": "additional"
+          },
+          "lemma": "aggiuntivo"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "punti",
+            "accumulano",
+            "spesa"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "conseguenza",
+            "restituisce",
+            "aggiuntivi"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "riassumo",
+            "annuale",
+            "duecento"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "accumulare",
+        "familyKey": "accumulare",
+        "surface": "accumulano",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "I punti si accumulano soltanto sugli acquisti previsti da questo regolamento.",
+          "base": {
+            "de": "Punkte sammeln sich nur für die in diesem Regelwerk vorgesehenen Einkäufe.",
+            "en": "Points accumulate only on purchases covered by these rules."
+          }
+        },
+        "base": {
+          "de": "ansammeln",
+          "en": "accumulate"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "perche-ho-cambiato-fornitore",
+      "title": {
+        "de": "Den Anbieterwechsel begründen",
+        "en": "Explaining a supplier switch"
+      },
+      "situation": {
+        "de": "Mit einer Person aus der Nachbarschaft besprechen Sie Ihren Stromanbieterwechsel. Der fiktive Vertrag von Luce Sud liegt zum Nachlesen bereit.",
+        "en": "You discuss changing electricity supplier with a neighbour. The fictional Luce Sud contract is available to consult."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Gegenüber fragt: «Ho notato il contratto Luce Sud sul tavolo. Per quale motivo ha cambiato fornitore dopo tanti anni?»",
+        "en": "Your neighbour asks: «Ho notato il contratto Luce Sud sul tavolo. Per quale motivo ha cambiato fornitore dopo tanti anni?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Ho notato il contratto Luce Sud sul tavolo. Per quale motivo ha cambiato fornitore dopo tanti anni?",
+          "base": {
+            "de": "Ich habe den Luce-Sud-Vertrag auf dem Tisch gesehen. Warum haben Sie nach so vielen Jahren den Anbieter gewechselt?",
+            "en": "I noticed the Luce Sud contract on the table. Why did you change supplier after so many years?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Ho cambiato poiché il vecchio contratto prevedeva un prezzo variabile che aveva fatto salire la bolletta del trenta per cento in un anno.",
+          "base": {
+            "de": "Ich habe gewechselt, weil der alte Vertrag einen variablen Preis vorsah, durch den die Rechnung binnen eines Jahres um dreißig Prozent stieg.",
+            "en": "I switched because the old contract had a variable price that had raised the bill by thirty percent in a year."
+          },
+          "speaker": "you",
+          "move": "reason",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Cambiare fornitore significa sempre costi nascosti e moduli da compilare. Ha controllato davvero quanto le costa uscire?",
+          "base": {
+            "de": "Ein Anbieterwechsel bedeutet doch immer versteckte Kosten und Formulare. Haben Sie wirklich geprüft, was der Ausstieg kostet?",
+            "en": "Changing supplier always means hidden costs and forms. Have you really checked how much leaving costs?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Il passaggio non comporta costi di uscita e il contratto fissa il prezzo per un anno; di conseguenza la spesa resta prevedibile.",
+          "base": {
+            "de": "Der Wechsel verursacht keine Ausstiegskosten, und der Vertrag legt den Preis für ein Jahr fest; folglich bleibt meine Ausgabe vorhersehbar.",
+            "en": "The switch entails no exit fees, and the contract fixes the price for a year; consequently, my spending stays predictable."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "Lei"
+        },
+        {
+          "targetText": "La mia bolletta è simile alla sua. Mi suggerisce di cambiare subito oppure devo controllare prima un altro dato?",
+          "base": {
+            "de": "Meine Rechnung ist ähnlich hoch. Raten Sie zum sofortigen Wechsel, oder muss ich vorher noch etwas anderes prüfen?",
+            "en": "My bill is similar to yours. Do you suggest switching now, or should I check another detail first?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Confronti prima le tariffe: col variabile il cambio può convenire; col fisso aspetterei la fine, in base alla scadenza del contratto.",
+          "base": {
+            "de": "Vergleichen Sie zuerst die Tarife: Beim variablen Preis kann sich der Wechsel lohnen; beim festen würde ich anhand des Vertragsenddatums bis zum Ablauf warten.",
+            "en": "Compare the tariffs first: with a variable price, switching may be worthwhile; with a fixed one, I would wait until the end, based on the contract's expiry date."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "Ho cambiato ",
+        "chunks": [
+          "poiché il vecchio contratto",
+          "prevedeva",
+          "un prezzo",
+          "variabile che",
+          "aveva fatto"
+        ],
+        "distractors": [
+          "prevedevano",
+          "i vecchi contratti"
+        ],
+        "frameSuffix": " salire la bolletta del trenta per cento in un anno."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Il passaggio "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " costi di uscita e il contratto "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " il prezzo per un anno; di conseguenza la spesa resta prevedibile."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "non comporta",
+            "acceptedAnswers": [
+              "non comporta"
+            ],
+            "kind": "frame",
+            "choices": [
+              "non comporta",
+              "non comportano",
+              "nonostante",
+              "invece di"
+            ]
+          },
+          {
+            "answer": "fissa",
+            "acceptedAnswers": [
+              "fissa"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "fissare, 3. Person Singular, Präsens Indikativ",
+              "en": "fissare, third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Confronti prima le tariffe: col variabile il cambio può convenire; col fisso aspetterei la fine, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " scadenza del contratto."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "in base alla",
+            "acceptedAnswers": [
+              "in base alla"
+            ],
+            "kind": "frame",
+            "choices": [
+              "in base alla",
+              "benché la",
+              "purché la",
+              "mentre la"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ho cambiato ",
+        "answer": "poiché",
+        "acceptedAnswers": [
+          "poiché",
+          "poiche",
+          "perché",
+          "perche",
+          "dato che",
+          "visto che"
+        ],
+        "fallbackChoices": [
+          "poiché",
+          "nonostante",
+          "invece di",
+          "a causa di"
+        ],
+        "after": " il vecchio contratto prevedeva un prezzo variabile che aveva fatto salire la bolletta del trenta per cento in un anno."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Vertragsfolge aus dem Text ableiten",
+          "en": "Deriving a consequence from the contract"
+        },
+        "rule": {
+          "de": "Non comporta verneint eine Folge; di conseguenza leitet das ein, was aus den beiden genannten Vertragsklauseln tatsächlich folgt.",
+          "en": "Non comporta rules out a consequence; di conseguenza introduces what genuinely follows from the two stated contract clauses."
+        },
+        "examples": [
+          {
+            "targetText": "Il passaggio non comporta costi di uscita e il contratto fissa il prezzo per un anno; di conseguenza la spesa resta prevedibile.",
+            "base": {
+              "de": "Der Wechsel verursacht keine Ausstiegskosten, und der Vertrag legt den Preis für ein Jahr fest; folglich bleibt meine Ausgabe vorhersehbar.",
+              "en": "The switch entails no exit fees, and the contract fixes the price for a year; consequently, my spending stays predictable."
+            },
+            "highlights": [
+              "non comporta",
+              "di conseguenza"
+            ]
+          },
+          {
+            "targetText": "Questo contratto non comporta una quota di attivazione; di conseguenza confronto soltanto il prezzo mensile e la durata.",
+            "base": {
+              "de": "Dieser Vertrag enthält keine Aktivierungsgebühr; folglich vergleiche ich nur den Monatspreis und die Laufzeit.",
+              "en": "This contract entails no activation fee; consequently, I compare only the monthly price and the duration."
+            },
+            "highlights": [
+              "non comporta",
+              "di conseguenza"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "poiché",
+          "kind": "connector",
+          "base": {
+            "de": "weil / da",
+            "en": "because / since"
+          }
+        },
+        {
+          "targetText": "di conseguenza",
+          "kind": "connector",
+          "base": {
+            "de": "folglich",
+            "en": "consequently"
+          }
+        },
+        {
+          "targetText": "variabile",
+          "kind": "adjective",
+          "base": {
+            "de": "variabel",
+            "en": "variable"
+          }
+        },
+        {
+          "targetText": "fisso",
+          "kind": "adjective",
+          "base": {
+            "de": "fest",
+            "en": "fixed"
+          }
+        },
+        {
+          "targetText": "bolletta",
+          "kind": "noun",
+          "base": {
+            "de": "Versorgerrechnung",
+            "en": "utility bill"
+          }
+        },
+        {
+          "targetText": "passaggio",
+          "kind": "noun",
+          "base": {
+            "de": "Wechsel",
+            "en": "switch"
+          }
+        },
+        {
+          "targetText": "uscita",
+          "kind": "noun",
+          "base": {
+            "de": "Ausstieg",
+            "en": "exit"
+          }
+        },
+        {
+          "targetText": "durata",
+          "kind": "noun",
+          "base": {
+            "de": "Laufzeit / Dauer",
+            "en": "duration"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "poiché",
+            "contratto",
+            "variabile"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "comporta",
+            "contratto",
+            "prevedibile"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "cambio",
+            "scadenza",
+            "contratto"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "poiché",
+        "familyKey": "poiché",
+        "surface": "poiché",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Ho scelto questa tariffa poiché il prezzo resta fisso per un anno.",
+          "base": {
+            "de": "Ich habe diesen Tarif gewählt, weil der Preis ein Jahr lang fest bleibt.",
+            "en": "I chose this tariff because the price stays fixed for a year."
+          }
+        },
+        "base": {
+          "de": "weil / da",
+          "en": "because / since"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "come-fare-ricorso-contro-una-multa",
+      "title": {
+        "de": "Den Einspruch aus dem Bescheid erklären",
+        "en": "Explaining the appeal described in a notice"
+      },
+      "situation": {
+        "de": "Ein Arbeitskontakt zeigt Ihnen einen fiktiven Parkbescheid des Comune di Valfiore. Sie lesen gemeinsam die dort beschriebenen Einspruchsschritte.",
+        "en": "A colleague shows you a fictional parking notice from the Comune di Valfiore. You read the appeal steps described in that notice together."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Arbeitskontakt",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Gegenüber fragt: «Nell'avviso del Comune di Valfiore c'è una sezione sul ricorso. Può aiutarmi a capire come procedere?»",
+        "en": "Your colleague asks: «Nell'avviso del Comune di Valfiore c'è una sezione sul ricorso. Può aiutarmi a capire come procedere?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Nell'avviso del Comune di Valfiore c'è una sezione sul ricorso. Può aiutarmi a capire come procedere?",
+          "base": {
+            "de": "Der Bescheid des Comune di Valfiore enthält einen Abschnitt zum Einspruch. Helfen Sie mir, das Vorgehen zu verstehen?",
+            "en": "The Comune di Valfiore notice has an appeal section. Can you help me understand how to proceed?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "L'avviso indica questa sequenza: prima compila la domanda, poi allega le prove, infine conserva la ricevuta del ricorso presentato entro il termine indicato.",
+          "base": {
+            "de": "Der Bescheid nennt diese Reihenfolge: zuerst Antrag ausfüllen, dann Belege beifügen, zuletzt die Quittung des fristgerecht eingereichten Einspruchs aufbewahren.",
+            "en": "The notice gives this sequence: first complete the application, then attach evidence, finally retain the receipt for the appeal submitted by the stated deadline."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "Lei"
+        },
+        {
+          "targetText": "E se respingono il ricorso, che cosa succede all'importo? Mi interessa quello che dice questo avviso.",
+          "base": {
+            "de": "Was passiert mit dem Betrag, wenn der Einspruch abgelehnt wird? Mich interessiert, was dieser Bescheid sagt.",
+            "en": "And if they reject the appeal, what happens to the amount? I want to know what this notice says."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "L'avviso prevede solo l'importo del verbale, il che significa che, stando a questo testo, il ricorso non aggiunge altri costi.",
+          "base": {
+            "de": "Der Bescheid sieht nur den genannten Betrag vor, was bedeutet, dass der Einspruch nach diesem Text keine weiteren Kosten verursacht.",
+            "en": "The notice provides only for the amount on the ticket, which means that, according to this text, the appeal adds no further costs."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Ho soltanto una foto del cartello, senza ricevute. Come posso preparare la domanda senza inventare prove che non ho?",
+          "base": {
+            "de": "Ich habe nur ein Foto des Schildes, keine Belege. Wie kann ich den Antrag ohne erfundene Nachweise vorbereiten?",
+            "en": "I only have a photo of the sign, with no receipts. How can I prepare the application without inventing evidence I do not have?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Propongo di scrivere insieme la domanda stasera, allegando la foto e chiedendo all'ufficio quali altre prove può accettare nel suo caso.",
+          "base": {
+            "de": "Ich schlage vor, den Antrag heute Abend gemeinsam zu schreiben, das Foto beizulegen und beim Amt nach weiteren zulässigen Nachweisen für Ihren Fall zu fragen.",
+            "en": "I suggest writing the application together tonight, attaching the photo and asking the office what other evidence it can accept in your case."
+          },
+          "speaker": "you",
+          "move": "propose",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "L'avviso indica questa sequenza: ",
+        "chunks": [
+          "prima compila",
+          "la domanda, poi",
+          "allega le prove,",
+          "infine conserva",
+          "la ricevuta"
+        ],
+        "distractors": [
+          "alleghiamo",
+          "i ricevimenti"
+        ],
+        "frameSuffix": " del ricorso presentato entro il termine indicato."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "L'avviso prevede solo l'importo del verbale, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", stando a questo testo, il ricorso non "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " altri costi."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "il che significa che",
+            "acceptedAnswers": [
+              "il che significa che"
+            ],
+            "kind": "frame",
+            "choices": [
+              "il che significa che",
+              "a differenza di",
+              "invece di",
+              "senza"
+            ]
+          },
+          {
+            "answer": "aggiunge",
+            "acceptedAnswers": [
+              "aggiunge"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "aggiungere, 3. Person Singular, Präsens Indikativ",
+              "en": "aggiungere, third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " scrivere insieme la domanda stasera, allegando la foto e chiedendo all'ufficio quali altre prove può accettare nel suo caso."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Propongo di",
+            "acceptedAnswers": [
+              "Propongo di"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Propongo di",
+              "Nonostante",
+              "A causa di",
+              "Per quanto"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "L'avviso indica questa sequenza: prima compila la domanda, poi allega le prove, ",
+        "answer": "infine",
+        "acceptedAnswers": [
+          "infine",
+          "poi",
+          "successivamente",
+          "quindi",
+          "alla fine"
+        ],
+        "fallbackChoices": [
+          "infine",
+          "nonostante",
+          "invece di",
+          "benché"
+        ],
+        "after": " conserva la ricevuta del ricorso presentato entro il termine indicato."
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Die Bedeutung einer Bescheidangabe erläutern",
+          "en": "Explaining what a statement in a notice means"
+        },
+        "rule": {
+          "de": "Il che significa che greift die ganze vorherige Aussage auf und erklärt ihre Bedeutung innerhalb des genannten Textes.",
+          "en": "Il che significa che refers back to the whole preceding statement and explains its meaning within the cited text."
+        },
+        "examples": [
+          {
+            "targetText": "L'avviso prevede solo l'importo del verbale, il che significa che, stando a questo testo, il ricorso non aggiunge altri costi.",
+            "base": {
+              "de": "Der Bescheid sieht nur den genannten Betrag vor, was bedeutet, dass der Einspruch nach diesem Text keine weiteren Kosten verursacht.",
+              "en": "The notice provides only for the amount on the ticket, which means that, according to this text, the appeal adds no further costs."
+            },
+            "highlights": [
+              "il che significa che",
+              "stando a questo testo"
+            ]
+          },
+          {
+            "targetText": "L'avviso chiede una copia, il che significa che, per questa domanda, posso conservare il documento originale.",
+            "base": {
+              "de": "Der Bescheid verlangt eine Kopie; das bedeutet, dass ich für diesen Antrag das Original behalten kann.",
+              "en": "The notice asks for a copy, which means that for this application I can keep the original document."
+            },
+            "highlights": [
+              "il che significa che"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "il che significa che",
+          "kind": "frame",
+          "base": {
+            "de": "was bedeutet, dass",
+            "en": "which means that"
+          }
+        },
+        {
+          "targetText": "stando a",
+          "kind": "frame",
+          "base": {
+            "de": "laut / nach",
+            "en": "according to"
+          }
+        },
+        {
+          "targetText": "ricorso",
+          "kind": "noun",
+          "base": {
+            "de": "Einspruch",
+            "en": "appeal"
+          }
+        },
+        {
+          "targetText": "allega",
+          "kind": "verb",
+          "base": {
+            "de": "fügt bei",
+            "en": "attaches"
+          },
+          "lemma": "allegare"
+        },
+        {
+          "targetText": "prove",
+          "kind": "noun",
+          "base": {
+            "de": "Nachweise",
+            "en": "evidence"
+          },
+          "lemma": "prova"
+        },
+        {
+          "targetText": "verbale",
+          "kind": "noun",
+          "base": {
+            "de": "amtlicher Bescheid / Protokoll",
+            "en": "official notice / record"
+          }
+        },
+        {
+          "targetText": "termine",
+          "kind": "noun",
+          "base": {
+            "de": "Frist",
+            "en": "deadline"
+          }
+        },
+        {
+          "targetText": "originale",
+          "kind": "adjective",
+          "base": {
+            "de": "original",
+            "en": "original"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "compila",
+            "allega",
+            "ricevuta"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "l'importo",
+            "ricorso",
+            "costi"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "scrivere",
+            "foto",
+            "prove"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "ricorso",
+        "familyKey": "ricorso",
+        "surface": "ricorso",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Questo avviso indica dove presentare il ricorso e quali documenti allegare.",
+          "base": {
+            "de": "Dieser Bescheid nennt die Einreichungsstelle für den Einspruch und die erforderlichen Anlagen.",
+            "en": "This notice states where to submit the appeal and which documents to attach."
+          }
+        },
+        "base": {
+          "de": "Einspruch",
+          "en": "appeal"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "perche-il-piano-non-ha-funzionato",
+      "title": {
+        "de": "Eine gescheiterte Planung erklären",
+        "en": "Explaining a plan that failed"
+      },
+      "situation": {
+        "de": "Eine flüchtig bekannte Person fragt nach Ihrem früheren Onlineverkauf selbst gekochter Marmelade. Der Laden schloss nach sechs Monaten.",
+        "en": "An acquaintance asks about your former online shop selling homemade jam. The shop closed after six months."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "bekannte Person",
+            "en": "acquaintance"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Person fragt: «Mio padre mi ha parlato del suo negozio di marmellate, chiuso dopo sei mesi. Che cosa non ha funzionato?»",
+        "en": "The acquaintance asks: «Mio padre mi ha parlato del suo negozio di marmellate, chiuso dopo sei mesi. Che cosa non ha funzionato?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Mio padre mi ha parlato del suo negozio di marmellate, chiuso dopo sei mesi. Che cosa non ha funzionato?",
+          "base": {
+            "de": "Mein Vater hat mir von Ihrem Marmeladenladen erzählt, der nach sechs Monaten schloss. Was hat nicht funktioniert?",
+            "en": "My father told me about your jam shop, which closed after six months. What went wrong?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Il presupposto era sbagliato: la mancata verifica del costo di spedizione ha compromesso il piano; pensavo che spedire costasse la metà.",
+          "base": {
+            "de": "Die Annahme war falsch: Die fehlende Prüfung der Versandkosten brachte den Plan zum Scheitern; ich dachte, Versand koste halb so viel.",
+            "en": "The assumption was wrong: failing to check shipping costs undermined the plan; I thought shipping would cost half as much."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Ma in quella stagione nessuno comprava regali. Non è stata soprattutto sfortuna, più che un errore di calcolo?",
+          "base": {
+            "de": "In dieser Saison kaufte aber niemand Geschenke. War es nicht vor allem Pech statt eines Rechenfehlers?",
+            "en": "But nobody was buying gifts that season. Wasn’t it mainly bad luck rather than a calculation error?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "In parte sì, ma la stagione spiega un mese; l'aumento dei costi di spedizione spiega gli altri cinque e riduce il margine.",
+          "base": {
+            "de": "Teilweise ja, aber die Saison erklärt einen Monat; höhere Versandkosten erklären die übrigen fünf und schmälern die Marge.",
+            "en": "Partly yes, but the season explains one month; higher shipping costs explain the other five and reduce the margin."
+          },
+          "speaker": "you",
+          "move": "concede",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Un'amica vuole aprire un negozio simile. Quale lezione concreta posso passarle senza scoraggiarla dal suo progetto?",
+          "base": {
+            "de": "Eine Freundin möchte einen ähnlichen Laden eröffnen. Welche konkrete Lehre kann ich weitergeben, ohne sie vom Projekt abzubringen?",
+            "en": "A friend wants to open a similar shop. What concrete lesson can I pass on without discouraging her from the project?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Pertanto, prima di aprire, bisogna chiedere preventivi reali: un presupposto verificato sui costi conta più delle sole vendite previste.",
+          "base": {
+            "de": "Deshalb muss man vor der Eröffnung echte Angebote einholen: Eine geprüfte Kostenannahme zählt mehr als die erwarteten Verkäufe allein.",
+            "en": "Therefore, before opening, one needs real quotes: a verified cost assumption counts for more than projected sales alone."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "Il presupposto era sbagliato: ",
+        "chunks": [
+          "la mancata verifica",
+          "del costo",
+          "di spedizione",
+          "ha compromesso",
+          "il piano;"
+        ],
+        "distractors": [
+          "hanno compromesso",
+          "le mancate verifiche"
+        ],
+        "frameSuffix": " pensavo che spedire costasse la metà."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", ma la stagione spiega un mese; l'aumento dei costi di spedizione spiega gli altri cinque e "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " il margine."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "In parte sì",
+            "acceptedAnswers": [
+              "In parte sì",
+              "In parte si"
+            ],
+            "kind": "frame",
+            "choices": [
+              "In parte sì",
+              "Nonostante",
+              "Invece di",
+              "A differenza di"
+            ]
+          },
+          {
+            "answer": "riduce",
+            "acceptedAnswers": [
+              "riduce"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "ridurre, 3. Person Singular, Präsens Indikativ",
+              "en": "ridurre, third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", prima di aprire, bisogna chiedere preventivi reali: un presupposto verificato sui costi conta più delle sole vendite previste."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Pertanto",
+            "acceptedAnswers": [
+              "Pertanto"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Pertanto",
+              "Nonostante",
+              "Invece di",
+              "A causa di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Il presupposto era sbagliato: la ",
+        "answer": "mancata",
+        "acceptedAnswers": [
+          "mancata",
+          "omessa"
+        ],
+        "fallbackChoices": [
+          "mancata",
+          "mancato",
+          "mancati",
+          "mancate"
+        ],
+        "after": " verifica del costo di spedizione ha compromesso il piano; pensavo che spedire costasse la metà."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine unterlassene Handlung als Ursache nennen",
+          "en": "Naming an omitted action as a cause"
+        },
+        "rule": {
+          "de": "La mancata verifica bezeichnet die nicht erfolgte Prüfung als Ursache; mancata stimmt dabei mit verifica überein.",
+          "en": "La mancata verifica names the check that did not happen as a cause; mancata agrees with verifica."
+        },
+        "examples": [
+          {
+            "targetText": "Il presupposto era sbagliato: la mancata verifica del costo di spedizione ha compromesso il piano; pensavo che spedire costasse la metà.",
+            "base": {
+              "de": "Die Annahme war falsch: Die fehlende Prüfung der Versandkosten brachte den Plan zum Scheitern; ich dachte, Versand koste halb so viel.",
+              "en": "The assumption was wrong: failing to check shipping costs undermined the plan; I thought shipping would cost half as much."
+            },
+            "highlights": [
+              "la mancata verifica del costo di spedizione"
+            ]
+          },
+          {
+            "targetText": "La mancata verifica delle spese ha nascosto il rischio, mentre l'aumento degli ordini sembrava un buon risultato.",
+            "base": {
+              "de": "Die unterlassene Kostenprüfung verdeckte das Risiko, während die wachsende Bestellzahl wie ein gutes Ergebnis wirkte.",
+              "en": "The failure to check expenses concealed the risk, while the increase in orders seemed a good result."
+            },
+            "highlights": [
+              "La mancata verifica",
+              "l'aumento degli ordini"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "in parte sì",
+          "kind": "frame",
+          "base": {
+            "de": "teilweise ja",
+            "en": "partly yes"
+          }
+        },
+        {
+          "targetText": "pertanto",
+          "kind": "connector",
+          "base": {
+            "de": "daher",
+            "en": "therefore"
+          }
+        },
+        {
+          "targetText": "presupposto",
+          "kind": "noun",
+          "base": {
+            "de": "Annahme / Voraussetzung",
+            "en": "assumption / premise"
+          }
+        },
+        {
+          "targetText": "verifica",
+          "kind": "noun",
+          "base": {
+            "de": "Prüfung",
+            "en": "check"
+          }
+        },
+        {
+          "targetText": "spedizione",
+          "kind": "noun",
+          "base": {
+            "de": "Versand",
+            "en": "shipping"
+          }
+        },
+        {
+          "targetText": "l'aumento",
+          "kind": "noun",
+          "base": {
+            "de": "die Erhöhung / Zunahme",
+            "en": "the increase"
+          },
+          "lemma": "aumento"
+        },
+        {
+          "targetText": "compromesso",
+          "kind": "verb",
+          "base": {
+            "de": "gefährdet / beeinträchtigt",
+            "en": "undermined"
+          },
+          "lemma": "compromettere"
+        },
+        {
+          "targetText": "margine",
+          "kind": "noun",
+          "base": {
+            "de": "Gewinnspanne",
+            "en": "margin"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "mancata",
+            "verifica",
+            "compromesso"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "stagione",
+            "spedizione",
+            "margine"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "pertanto",
+            "presupposto",
+            "preventivi"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "presupposto",
+        "familyKey": "presupporre",
+        "surface": "presupposto",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Un presupposto sbagliato sui costi può rendere fragile tutto il piano.",
+          "base": {
+            "de": "Eine falsche Kostenannahme kann den ganzen Plan anfällig machen.",
+            "en": "A wrong assumption about costs can undermine the whole plan."
+          }
+        },
+        "base": {
+          "de": "Annahme / Voraussetzung",
+          "en": "assumption / premise"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "come-funzionano-gli-appuntamenti",
+      "title": {
+        "de": "Kriterien für Termine erklären",
+        "en": "Explaining appointment criteria"
+      },
+      "situation": {
+        "de": "Sie arbeiten am Empfang des fiktiven Studio Fisio Alba. Einer externen Beratung erklären Sie das vorliegende interne Regelwerk zur Terminvergabe.",
+        "en": "You work at reception at the fictional Studio Fisio Alba. You explain its supplied internal appointment rules to an external consultant."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "externe Beratung",
+            "en": "external consultant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Beratung fragt: «Sto verificando il vostro regolamento interno. Come passa una richiesta appena ricevuta dalla registrazione alla scelta del primo appuntamento?»",
+        "en": "The consultant asks: «Sto verificando il vostro regolamento interno. Come passa una richiesta appena ricevuta dalla registrazione alla scelta del primo appuntamento?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Sto verificando il vostro regolamento interno. Come passa una richiesta appena ricevuta dalla registrazione alla scelta del primo appuntamento?",
+          "base": {
+            "de": "Ich prüfe Ihr internes Regelwerk. Wie gelangt eine neue Anfrage von der Erfassung zur Auswahl des ersten Termins?",
+            "en": "I am reviewing your internal rules. How does a new request move from registration to the choice of a first appointment?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Le richieste si registrano all'arrivo e si valutano in base ai criteri che il regolamento descrive per assegnare gli appuntamenti.",
+          "base": {
+            "de": "Anfragen werden bei Eingang erfasst und anhand der Kriterien bewertet, die das Regelwerk für die Terminvergabe beschreibt.",
+            "en": "Requests are recorded on arrival and assessed using the criteria the rules describe for allocating appointments."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Chi stabilisce la priorità fra due richieste, e quale criterio viene prima? Mi indichi il riferimento scritto.",
+          "base": {
+            "de": "Wer legt die Priorität zweier Anfragen fest, und welches Kriterium kommt zuerst? Zeigen Sie mir die schriftliche Grundlage.",
+            "en": "Who determines priority between two requests, and which criterion comes first? Please point me to the written rule."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Il regolamento stabilisce la priorità a seconda del tipo di richiesta; il tempo di attesa distingue i casi della stessa categoria.",
+          "base": {
+            "de": "Das Regelwerk legt die Priorität je nach Anfrageart fest; die Wartezeit unterscheidet Fälle derselben Kategorie.",
+            "en": "The rules determine priority according to request type; waiting time distinguishes cases in the same category."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Se due richieste hanno identica priorità e trovano lo stesso spazio disponibile, quale elemento decide senza discrezionalità?",
+          "base": {
+            "de": "Wenn zwei Anfragen dieselbe Priorität haben und denselben freien Termin finden: Was entscheidet ohne Ermessensspielraum?",
+            "en": "If two requests have identical priority and the same available slot, which factor decides without discretion?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Riassumendo, applico i criteri scritti; a parità di priorità decide la data della richiesta, come indica il regolamento dello studio.",
+          "base": {
+            "de": "Zusammengefasst wende ich die schriftlichen Kriterien an; bei gleicher Priorität entscheidet gemäß Praxisregelwerk das Anfragedatum.",
+            "en": "To summarize, I apply the written criteria; with equal priority, the request date decides, as the practice rules state."
+          },
+          "speaker": "you",
+          "move": "summarize",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "Le richieste si registrano all'arrivo e ",
+        "chunks": [
+          "si valutano",
+          "in base",
+          "ai criteri",
+          "che il regolamento",
+          "descrive"
+        ],
+        "distractors": [
+          "si valuta",
+          "alle categorie"
+        ],
+        "frameSuffix": " per assegnare gli appuntamenti."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Il regolamento "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " la priorità "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tipo di richiesta; il tempo di attesa distingue i casi della stessa categoria."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "stabilisce",
+            "acceptedAnswers": [
+              "stabilisce"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "stabilire, 3. Person Singular, Präsens Indikativ",
+              "en": "stabilire, third-person singular, present indicative"
+            }
+          },
+          {
+            "answer": "a seconda del",
+            "acceptedAnswers": [
+              "a seconda del"
+            ],
+            "kind": "frame",
+            "choices": [
+              "a seconda del",
+              "benché il",
+              "purché il",
+              "mentre il"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", applico i criteri scritti; a parità di priorità decide la data della richiesta, come indica il regolamento dello studio."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Riassumendo",
+            "acceptedAnswers": [
+              "Riassumendo"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Riassumendo",
+              "Nonostante",
+              "Invece di",
+              "A causa di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Le richieste si ",
+        "answer": "registrano",
+        "acceptedAnswers": [
+          "registrano",
+          "annotano",
+          "ordinano",
+          "classificano"
+        ],
+        "fallbackChoices": [
+          "registrano",
+          "registra",
+          "registri",
+          "registrate"
+        ],
+        "after": " all'arrivo e si valutano in base ai criteri che il regolamento descrive per assegnare gli appuntamenti."
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine Entscheidung an Kriterien binden",
+          "en": "Linking a decision to criteria"
+        },
+        "rule": {
+          "de": "A seconda di nennt das Merkmal, von dem die Einordnung abhängt; di und il werden hier zu del.",
+          "en": "A seconda di names the feature that determines the classification; di and il combine as del here."
+        },
+        "examples": [
+          {
+            "targetText": "Il regolamento stabilisce la priorità a seconda del tipo di richiesta; il tempo di attesa distingue i casi della stessa categoria.",
+            "base": {
+              "de": "Das Regelwerk legt die Priorität je nach Anfrageart fest; die Wartezeit unterscheidet Fälle derselben Kategorie.",
+              "en": "The rules determine priority according to request type; waiting time distinguishes cases in the same category."
+            },
+            "highlights": [
+              "a seconda del tipo di richiesta"
+            ]
+          },
+          {
+            "targetText": "Secondo questo regolamento, la disponibilità cambia a seconda del trattamento richiesto, mentre la data distingue le richieste equivalenti.",
+            "base": {
+              "de": "Laut diesem Regelwerk hängt die Verfügbarkeit von der gewünschten Behandlung ab, während das Datum gleichwertige Anfragen unterscheidet.",
+              "en": "Under these rules, availability varies according to the requested treatment, while the date distinguishes equivalent requests."
+            },
+            "highlights": [
+              "a seconda del trattamento richiesto"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "in base ai",
+          "kind": "frame",
+          "base": {
+            "de": "anhand der",
+            "en": "based on the"
+          }
+        },
+        {
+          "targetText": "a seconda del",
+          "kind": "frame",
+          "base": {
+            "de": "je nach dem",
+            "en": "depending on the"
+          }
+        },
+        {
+          "targetText": "priorità",
+          "kind": "noun",
+          "base": {
+            "de": "Priorität",
+            "en": "priority"
+          }
+        },
+        {
+          "targetText": "criteri",
+          "kind": "noun",
+          "base": {
+            "de": "Kriterien",
+            "en": "criteria"
+          },
+          "lemma": "criterio"
+        },
+        {
+          "targetText": "disponibilità",
+          "kind": "noun",
+          "base": {
+            "de": "Verfügbarkeit",
+            "en": "availability"
+          }
+        },
+        {
+          "targetText": "categoria",
+          "kind": "noun",
+          "base": {
+            "de": "Kategorie",
+            "en": "category"
+          }
+        },
+        {
+          "targetText": "discrezionalità",
+          "kind": "noun",
+          "base": {
+            "de": "Ermessensspielraum",
+            "en": "discretion"
+          }
+        },
+        {
+          "targetText": "equivalenti",
+          "kind": "adjective",
+          "base": {
+            "de": "gleichwertig",
+            "en": "equivalent"
+          },
+          "lemma": "equivalente"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "valutano",
+            "criteri",
+            "regolamento"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "regolamento",
+            "priorità",
+            "categoria"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "riassumendo",
+            "priorità",
+            "data"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "priorità",
+        "familyKey": "priorità",
+        "surface": "priorità",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "In questo regolamento la priorità segue criteri scritti e verificabili.",
+          "base": {
+            "de": "In diesem Regelwerk folgt die Priorität schriftlichen, überprüfbaren Kriterien.",
+            "en": "In these rules, priority follows written, verifiable criteria."
+          }
+        },
+        "base": {
+          "de": "Priorität / Vorrang",
+          "en": "priority"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "perche-conta-il-bike-sharing",
+      "title": {
+        "de": "Den Nutzen gemeinsamer Fahrräder begründen",
+        "en": "Explaining the value of bike sharing"
+      },
+      "situation": {
+        "de": "Mit einer skeptischen bekannten Person besprechen Sie den fiktiven Betreiberbericht von BiciValfiore. Sie begründen, warum der Dienst für den Ort nützlich ist.",
+        "en": "You discuss the fictional BiciValfiore operator report with a sceptical acquaintance. You explain why the service is useful to the town."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "skeptische bekannte Person",
+            "en": "sceptical acquaintance"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Person wendet ein: «Ho letto il rapporto BiciValfiore, ma continuo a vedere una spesa inutile. Perché dovremmo sostenere ancora questo servizio?»",
+        "en": "The acquaintance objects: «Ho letto il rapporto BiciValfiore, ma continuo a vedere una spesa inutile. Perché dovremmo sostenere ancora questo servizio?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Ho letto il rapporto BiciValfiore, ma continuo a vedere una spesa inutile. Perché dovremmo sostenere ancora questo servizio?",
+          "base": {
+            "de": "Ich habe den BiciValfiore-Bericht gelesen, sehe aber weiterhin eine unnötige Ausgabe. Warum sollten wir den Dienst weiter finanzieren?",
+            "en": "I read the BiciValfiore report, but still see an unnecessary expense. Why should we keep supporting this service?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Il servizio incentiva un cambiamento che a lungo termine riduce il traffico di cui tutti si lamentano: viaggi brevi senza auto.",
+          "base": {
+            "de": "Der Dienst fördert eine Veränderung, die langfristig den allseits beklagten Verkehr verringert: kurze Wege ohne Auto.",
+            "en": "The service encourages a change that reduces the traffic everyone complains about over the long term: short trips without cars."
+          },
+          "speaker": "you",
+          "move": "reason",
+          "register": "Lei"
+        },
+        {
+          "targetText": "D'inverno però quelle biciclette rimangono ferme. Se nessuno le usa, il beneficio non esiste per metà anno.",
+          "base": {
+            "de": "Im Winter stehen diese Fahrräder aber ungenutzt. Wenn niemand sie nutzt, gibt es ein halbes Jahr keinen Nutzen.",
+            "en": "But in winter those bikes stand idle. If nobody uses them, there is no benefit for half the year."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Dal rapporto: d'inverno l'uso è al quaranta per cento rispetto all'estate; quello totale è raddoppiato rispetto a cinque anni fa.",
+          "base": {
+            "de": "Laut Bericht beträgt die Winternutzung vierzig Prozent des Sommerwerts; die Gesamtnutzung hat sich gegenüber vor fünf Jahren verdoppelt.",
+            "en": "The report shows winter use at forty percent of summer use; total use has doubled compared with five years ago."
+          },
+          "speaker": "you",
+          "move": "compare",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Lasciamo le percentuali: se il contributo uscisse direttamente dalle sue tasche, continuerebbe davvero a pagare per questo servizio?",
+          "base": {
+            "de": "Lassen wir die Prozente: Würden Sie weiterhin zahlen, wenn der Beitrag direkt aus Ihrer Tasche käme?",
+            "en": "Leaving percentages aside, if the contribution came directly out of your pocket, would you really keep paying for this service?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Sì, il rapporto indica un costo basso per abitante; pertanto continuerei a contribuire, perché rinunciare cancellerebbe benefici ormai documentati.",
+          "base": {
+            "de": "Ja, der Bericht nennt geringe Kosten je Einwohner; daher würde ich weiter beitragen, denn ein Verzicht beseitigte inzwischen belegte Vorteile.",
+            "en": "Yes, the report indicates a low cost per resident; therefore I would keep contributing, because giving it up would remove benefits already documented."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "Il servizio incentiva un cambiamento ",
+        "chunks": [
+          "che a lungo termine",
+          "riduce",
+          "il traffico",
+          "di cui",
+          "tutti si lamentano:"
+        ],
+        "distractors": [
+          "riducono",
+          "dei quali"
+        ],
+        "frameSuffix": " viaggi brevi senza auto."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Dal rapporto: d'inverno l'uso è al quaranta per cento "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "; quello totale è "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " rispetto a cinque anni fa."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "rispetto all'estate",
+            "acceptedAnswers": [
+              "rispetto all'estate",
+              "rispetto all’estate"
+            ],
+            "kind": "frame",
+            "choices": [
+              "rispetto all'estate",
+              "benché l'estate",
+              "purché l'estate",
+              "mentre l'estate"
+            ]
+          },
+          {
+            "answer": "raddoppiato",
+            "acceptedAnswers": [
+              "raddoppiato"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "raddoppiare, Partizip mit Subjekt l’uso",
+              "en": "raddoppiare, past participle with subject l’uso"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Sì, il rapporto indica un costo basso per abitante; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " continuerei a contribuire, perché rinunciare cancellerebbe benefici ormai documentati."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "pertanto",
+            "acceptedAnswers": [
+              "pertanto"
+            ],
+            "kind": "connector",
+            "choices": [
+              "pertanto",
+              "nonostante",
+              "invece di",
+              "a causa di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Il servizio incentiva un cambiamento che a lungo ",
+        "answer": "termine",
+        "acceptedAnswers": [
+          "termine",
+          "andare"
+        ],
+        "fallbackChoices": [
+          "termine",
+          "termini",
+          "terminato",
+          "terminare"
+        ],
+        "after": " riduce il traffico di cui tutti si lamentano: viaggi brevi senza auto."
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Den Vergleichsmaßstab deutlich machen",
+          "en": "Making the comparison baseline clear"
+        },
+        "rule": {
+          "de": "Rispetto a nennt den Maßstab des Vergleichs, der hier einmal eine Jahreszeit und einmal einen früheren Zeitpunkt bezeichnet.",
+          "en": "Rispetto a identifies the comparison baseline, here a season in one case and an earlier point in time in the other."
+        },
+        "examples": [
+          {
+            "targetText": "Dal rapporto: d'inverno l'uso è al quaranta per cento rispetto all'estate; quello totale è raddoppiato rispetto a cinque anni fa.",
+            "base": {
+              "de": "Laut Bericht beträgt die Winternutzung vierzig Prozent des Sommerwerts; die Gesamtnutzung hat sich gegenüber vor fünf Jahren verdoppelt.",
+              "en": "The report shows winter use at forty percent of summer use; total use has doubled compared with five years ago."
+            },
+            "highlights": [
+              "rispetto all'estate",
+              "rispetto a cinque anni fa"
+            ]
+          },
+          {
+            "targetText": "Nel rapporto, gli abbonamenti crescono rispetto al primo anno, mentre i viaggi invernali diminuiscono rispetto ai mesi estivi.",
+            "base": {
+              "de": "Im Bericht steigen die Abonnements gegenüber dem ersten Jahr, während Winterfahrten gegenüber Sommermonaten abnehmen.",
+              "en": "In the report, subscriptions grow compared with the first year, while winter trips decline compared with the summer months."
+            },
+            "highlights": [
+              "rispetto al primo anno",
+              "rispetto ai mesi estivi"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "a lungo termine",
+          "kind": "frame",
+          "base": {
+            "de": "langfristig",
+            "en": "over the long term"
+          }
+        },
+        {
+          "targetText": "pertanto",
+          "kind": "connector",
+          "base": {
+            "de": "daher",
+            "en": "therefore"
+          }
+        },
+        {
+          "targetText": "incentiva",
+          "kind": "verb",
+          "base": {
+            "de": "fördert / schafft einen Anreiz",
+            "en": "encourages / provides an incentive"
+          },
+          "lemma": "incentivare"
+        },
+        {
+          "targetText": "cambiamento",
+          "kind": "noun",
+          "base": {
+            "de": "Veränderung",
+            "en": "change"
+          }
+        },
+        {
+          "targetText": "traffico",
+          "kind": "noun",
+          "base": {
+            "de": "Verkehr",
+            "en": "traffic"
+          }
+        },
+        {
+          "targetText": "abitante",
+          "kind": "noun",
+          "base": {
+            "de": "Einwohner / Einwohnerin",
+            "en": "resident"
+          }
+        },
+        {
+          "targetText": "raddoppiato",
+          "kind": "verb",
+          "base": {
+            "de": "verdoppelt",
+            "en": "doubled"
+          },
+          "lemma": "raddoppiare"
+        },
+        {
+          "targetText": "documentati",
+          "kind": "adjective",
+          "base": {
+            "de": "belegt",
+            "en": "documented"
+          },
+          "lemma": "documentato"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "riduce",
+            "traffico",
+            "lamentano"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "rapporto",
+            "l'uso",
+            "raddoppiato"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "costo",
+            "pertanto",
+            "benefici"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "incentivare",
+        "familyKey": "incentivare",
+        "surface": "incentiva",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Un servizio affidabile incentiva gli spostamenti brevi senza automobile.",
+          "base": {
+            "de": "Ein zuverlässiger Dienst fördert kurze Wege ohne Auto.",
+            "en": "A reliable service encourages short trips without a car."
+          }
+        },
+        "base": {
+          "de": "fördern / Anreize schaffen",
+          "en": "encourage / provide incentives"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "ricostruire-una-catena-di-decisioni",
+      "title": {
+        "de": "Eine Entscheidungskette rekonstruieren",
+        "en": "Reconstructing a chain of decisions"
+      },
+      "situation": {
+        "de": "Sie führen das Protokoll eines Marktvereins. Beim fiktiven Ufficio Eventi di Valfiore erklären Sie anhand der Unterlagen, wie die Wahl des Marktstandorts zustande kam.",
+        "en": "You keep the minutes for a market association. At the fictional Ufficio Eventi di Valfiore, you use the records to explain how the market site was chosen."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Sachbearbeitung für Veranstaltungen",
+            "en": "events officer"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Sachbearbeitung fragt: «Nel fascicolo vedo il sito B come scelta finale. Può ricostruire la sequenza che ha portato a quella decisione?»",
+        "en": "The officer asks: «Nel fascicolo vedo il sito B come scelta finale. Può ricostruire la sequenza che ha portato a quella decisione?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Nel fascicolo vedo il sito B come scelta finale. Può ricostruire la sequenza che ha portato a quella decisione?",
+          "base": {
+            "de": "In der Akte sehe ich Standort B als endgültige Wahl. Können Sie den Ablauf bis zu dieser Entscheidung rekonstruieren?",
+            "en": "The file shows site B as the final choice. Can you reconstruct the sequence that led to that decision?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "A monte c'era la chiusura della piazza, a valle il voto dei soci che ha confermato il sito con parcheggio dopo la ricerca.",
+          "base": {
+            "de": "Am Anfang stand die Platzsperrung, am Ende die Mitgliederabstimmung, die nach der Suche den Standort mit Parkplatz bestätigte.",
+            "en": "At the start was the square’s closure; at the end, the members’ vote confirmed the site with parking after the search."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Quale singolo passaggio ha escluso le altre possibilità e chi ha raccolto le informazioni decisive per il voto?",
+          "base": {
+            "de": "Welcher einzelne Schritt schloss die anderen Möglichkeiten aus, und wer sammelte die entscheidenden Informationen für die Abstimmung?",
+            "en": "Which single step ruled out the other options, and who gathered the decisive information for the vote?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Il gruppo ha svolto il sopralluogo: dato che il sito A non consentiva l'accesso ai furgoni, restava soltanto il sito B.",
+          "base": {
+            "de": "Die Gruppe nahm die Besichtigung vor: Da Standort A keine Transporterzufahrt erlaubte, blieb nur B übrig.",
+            "en": "The group carried out the site visit: since site A did not allow van access, only site B remained."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Per il fascicolo mi servono tre punti brevi: causa iniziale, verifica concreta e decisione condivisa, senza altri dettagli.",
+          "base": {
+            "de": "Für die Akte brauche ich drei kurze Punkte: Ausgangsursache, konkrete Prüfung und gemeinsame Entscheidung, ohne weitere Einzelheiten.",
+            "en": "For the file, I need three short points: initial cause, practical check and collective decision, with no further detail."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Pertanto: chiusura della piazza, sopralluogo che escludeva il sito A, voto dei soci; riassumendo, una scelta obbligata ma condivisa.",
+          "base": {
+            "de": "Daher: Platzsperrung, Besichtigung mit Ausschluss von Standort A, Mitgliederabstimmung; zusammengefasst eine notwendige, aber gemeinsam getragene Wahl.",
+            "en": "Therefore: closure of the square, a site visit that ruled out site A, and the members’ vote; in summary, a necessary but collective choice."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "A monte c'era",
+          "la chiusura",
+          "della piazza,",
+          "a valle",
+          "il voto"
+        ],
+        "distractors": [
+          "c'erano le chiusure",
+          "alle valli"
+        ],
+        "frameSuffix": " dei soci che ha confermato il sito con parcheggio dopo la ricerca."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Il gruppo ha svolto il sopralluogo: "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " il sito A non "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " l'accesso ai furgoni, restava soltanto il sito B."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "dato che",
+            "acceptedAnswers": [
+              "dato che"
+            ],
+            "kind": "connector",
+            "choices": [
+              "dato che",
+              "senza",
+              "invece di",
+              "a causa di"
+            ]
+          },
+          {
+            "answer": "consentiva",
+            "acceptedAnswers": [
+              "consentiva"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "consentire, 3. Person Singular, Imperfekt Indikativ",
+              "en": "consentire, third-person singular, imperfect indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": chiusura della piazza, sopralluogo che escludeva il sito A, voto dei soci; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", una scelta obbligata ma condivisa."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Pertanto",
+            "acceptedAnswers": [
+              "Pertanto"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Pertanto",
+              "Nonostante",
+              "Invece di",
+              "A causa di"
+            ]
+          },
+          {
+            "answer": "riassumendo",
+            "acceptedAnswers": [
+              "riassumendo"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "riassumere, Gerundium Präsens",
+              "en": "riassumere, present gerund"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "A ",
+        "answer": "monte",
+        "acceptedAnswers": [
+          "monte"
+        ],
+        "fallbackChoices": [
+          "monte",
+          "monti",
+          "montagna",
+          "montano"
+        ],
+        "after": " c'era la chiusura della piazza, a valle il voto dei soci che ha confermato il sito con parcheggio dopo la ricerca."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Ausgangspunkt und Ergebnis unterscheiden",
+          "en": "Distinguishing the starting point from the result"
+        },
+        "rule": {
+          "de": "A monte bezeichnet hier den Ausgangspunkt der Entscheidungskette, a valle das daraus folgende Ergebnis.",
+          "en": "A monte marks the starting point of the decision chain here, while a valle marks the resulting outcome."
+        },
+        "examples": [
+          {
+            "targetText": "A monte c'era la chiusura della piazza, a valle il voto dei soci che ha confermato il sito con parcheggio dopo la ricerca.",
+            "base": {
+              "de": "Am Anfang stand die Platzsperrung, am Ende die Mitgliederabstimmung, die nach der Suche den Standort mit Parkplatz bestätigte.",
+              "en": "At the start was the square’s closure; at the end, the members’ vote confirmed the site with parking after the search."
+            },
+            "highlights": [
+              "A monte",
+              "a valle"
+            ]
+          },
+          {
+            "targetText": "A monte c'è un problema di accesso, a valle una scelta limitata ai luoghi che permettono lo scarico dei furgoni.",
+            "base": {
+              "de": "Am Anfang steht ein Zufahrtsproblem, am Ende eine auf Standorte mit Entlademöglichkeit für Transporter begrenzte Wahl.",
+              "en": "At the start is an access problem; at the end, a choice limited to places where vans can unload."
+            },
+            "highlights": [
+              "A monte",
+              "a valle"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "a monte",
+          "kind": "frame",
+          "base": {
+            "de": "am Anfang / vorgelagert",
+            "en": "at the start / upstream"
+          }
+        },
+        {
+          "targetText": "a valle",
+          "kind": "frame",
+          "base": {
+            "de": "als Folge / nachgelagert",
+            "en": "as a result / downstream"
+          }
+        },
+        {
+          "targetText": "pertanto",
+          "kind": "connector",
+          "base": {
+            "de": "daher / folglich",
+            "en": "therefore"
+          }
+        },
+        {
+          "targetText": "sopralluogo",
+          "kind": "noun",
+          "base": {
+            "de": "Ortsbesichtigung",
+            "en": "site visit"
+          }
+        },
+        {
+          "targetText": "accesso",
+          "kind": "noun",
+          "base": {
+            "de": "Zugang / Zufahrt",
+            "en": "access"
+          }
+        },
+        {
+          "targetText": "furgoni",
+          "kind": "noun",
+          "base": {
+            "de": "Transporter",
+            "en": "vans"
+          },
+          "lemma": "furgone"
+        },
+        {
+          "targetText": "soci",
+          "kind": "noun",
+          "base": {
+            "de": "Mitglieder",
+            "en": "members"
+          },
+          "lemma": "socio"
+        },
+        {
+          "targetText": "condivisa",
+          "kind": "adjective",
+          "base": {
+            "de": "gemeinsam getragen",
+            "en": "shared / collectively supported"
+          },
+          "lemma": "condiviso"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "monte",
+            "chiusura",
+            "voto"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "sopralluogo",
+            "consentiva",
+            "furgoni"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "pertanto",
+            "riassumendo",
+            "condivisa"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "pertanto",
+        "familyKey": "pertanto",
+        "surface": "pertanto",
+        "turnIndex": 5,
+        "pos": "connector",
+        "example": {
+          "targetText": "Il primo sito non ha accesso per i furgoni; pertanto la scelta ricade sul secondo.",
+          "base": {
+            "de": "Der erste Standort hat keine Transporterzufahrt; daher fällt die Wahl auf den zweiten.",
+            "en": "The first site has no van access; therefore, the choice falls on the second."
+          }
+        },
+        "base": {
+          "de": "daher / folglich",
+          "en": "therefore"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

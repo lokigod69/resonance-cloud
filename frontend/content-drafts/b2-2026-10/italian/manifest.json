@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "italian-b2-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b2-2026-10/italian/p1.json",
+      "sha256": "0af24ebf43670e8f93b50e1ab6e3f7d90a30cba5e51c828a12cc4c06cab51e8b",
+      "targetLanguage": "Italian",
+      "pathNumber": 1,
+      "reviewedVoiceId": "MuTiG4dbrEGYEy3XP4iP",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/italian/specification.json",
+        "sha256": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b",
+        "referenceName": "B2_ITALIAN_P1_P2_AUTHORING_SPEC_V4.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-2026-10/italian-plan.json",
+        "sha256": "647cb01e9961d219a8cd2ad829bd737a61c94c2dfba861dc3cf5bc3361073079"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/italian/p2.json",
+      "sha256": "fa57be6d972d8431fdcc691586c1f9aef3d2f95ebf3bf6fdad1b95a87d7b046b",
+      "targetLanguage": "Italian",
+      "pathNumber": 2,
+      "reviewedVoiceId": "MuTiG4dbrEGYEy3XP4iP",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/italian/specification.json",
+        "sha256": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b",
+        "referenceName": "B2_ITALIAN_P1_P2_AUTHORING_SPEC_V4.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-2026-10/italian-plan.json",
+        "sha256": "647cb01e9961d219a8cd2ad829bd737a61c94c2dfba861dc3cf5bc3361073079"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Italian": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b2-2026-10/italian/fable-evidence.json",
+    "sha256": "1aa219eaabde45e7ce18f4dc9361ed51ba04a82965c231d829849074a6230291"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b2-2026-10/italian/independent-evidence.json",
+    "sha256": "e60f829039918c78c1eb1da36d2b03296401e9b9eb94c113fe363daf1ee009c0"
+  }
+}

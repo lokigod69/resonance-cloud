@@ -1,0 +1,843 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/italian/p1.json": "0af24ebf43670e8f93b50e1ab6e3f7d90a30cba5e51c828a12cc4c06cab51e8b",
+    "frontend/content-drafts/b2-2026-10/italian/p2.json": "fa57be6d972d8431fdcc691586c1f9aef3d2f95ebf3bf6fdad1b95a87d7b046b"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/italian/specification.json": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b",
+    "frontend/content-drafts/b2-2026-10/latin-prerequisites.json": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+    "frontend/content-drafts/b1-2026-10/italian-plan.json": "647cb01e9961d219a8cd2ad829bd737a61c94c2dfba861dc3cf5bc3361073079"
+  },
+  "sourceCanonicalization": {
+    "originalSpecificationSha256": "3340c9348003e5a8396151438a8699522050f384ed72f07ae9a05a0c85d43bbc",
+    "finalSpecificationSha256": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b",
+    "transformation": "Two exact Fable spec field edits, then computed V4 filename/SHA metadata only. Original raw reviews unchanged."
+  },
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "IT-B2-PUB04",
+      "severity": "HIGH",
+      "status": "open",
+      "category": "runtime-renderer",
+      "localTtsBlocking": false,
+      "publicationBlocking": true,
+      "title": "No demonstrated runtime path for the six-turn Italian B2 contract",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 92
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 171
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 196
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 259
+        }
+      ],
+      "evidence": "The current runtime level union is A1 | A2 | B1. Its documented episode is four turns, its cloze contract targets dialogue[3], and it has no B2 synthesis field. The draft's bilingual cue objects, frame blanks, moveBlankIndex and separate synthesis structure are a distinct contract. No Italian B2 renderer or visual fixture was supplied or observed.",
+      "why": "The linguistic judgments use the authored displayed choices and explicit de/en form cues. They do not demonstrate that learners actually see those cues, choices and all three learner moves in the app.",
+      "fix": "Implement and independently review the actual B2 adapter/renderer, show all authored cues and relevant choices at the right steps, consume all three speech targets and synthesis, and exercise the real components with every locale before publication.",
+      "verification": "Rechecked current runtime level union at guidedLessons.ts:92, cloze cue at 204 and absence of B2 synthesis/moveBlankIndex in the scoped runtime surfaces. All final authored cues personally read. No runtime or visual fixture proof supplied; no publication approval.",
+      "reReviewStatus": "Still open after the single post-fix rereview; unchanged canonical text may receive local TTS content approval independently."
+    },
+    {
+      "id": "IT-B2-PUB06",
+      "severity": "MEDIUM",
+      "status": "open",
+      "category": "input-acceptance",
+      "localTtsBlocking": false,
+      "publicationBlocking": true,
+      "title": "Authored recall alternatives and orthographic variants still need runtime acceptance proof",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 597
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/TypeRecallStep.tsx",
+          "line": 55
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p1.json",
+          "line": 1,
+          "jsonPointer": "/lessons/*/recall"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+          "line": 1,
+          "jsonPointer": "/lessons/*/recall"
+        }
+      ],
+      "evidence": {
+        "retainedFableConcern": "Recall synonym lists in P1 L2/L4/L5/L6/L9 and P2 L2/L4/L6/L8 are authored candidates, not an exhaustive acceptance certificate; the author IT-B2-AUTH-PUB-3 remains open.",
+        "concreteContexts": [
+          "P1 L6 accepts evita/elimina/previene in l'app ___ errori di resto.",
+          "P2 L8 accepts registrano/annotano/ordinano/classificano in Le richieste si ___ all'arrivo.",
+          "P2 L2/L6 infine also accepts poi, successivamente, quindi and alla fine; repeated poi is grammatical and not a canonical-spoken defect."
+        ],
+        "currentRuntime": "normalizeGuidedAnswer performs NFC/trim/space collapse/lowercase; matching is exact membership after that normalization. It does not infer synonyms, strip accents or normalize apostrophes automatically."
+      },
+      "why": "All authored canonical answer, accent-stripped and apostrophe alternatives were read and mechanically checked, and displayed fallback sets have one authored accepted answer. That does not prove exhaustive free-input semantics or that the future B2 adapter will retain every alternative. No current B2 learner input flow exists to test.",
+      "fix": "Preserve every approved authored variant through the B2 adapter; test exact positives and meaningful negatives in the real input flow. Where open contexts allow many legitimate completions, supply a visible constraint or a genuinely reviewed acceptance policy. Keep semantic acceptance approval separate from simple normalized membership.",
+      "verification": "Personally reread every acceptedAnswers, fallback set and cue in all final twenty lessons. Current TypeRecallStep.tsx:57 still calls guidedAnswerMatches; guidedLessons.ts:597–604 still uses NFC/trim/space collapse/lowercase and explicit list membership. No B2 adapter or exhaustive free-input acceptance proof.",
+      "reReviewStatus": "Still open after the single post-fix rereview; unchanged canonical text may receive local TTS content approval independently."
+    },
+    {
+      "id": "IT-B2-PUB07",
+      "severity": "LOW",
+      "status": "open",
+      "category": "review-state-and-certification",
+      "localTtsBlocking": false,
+      "publicationBlocking": true,
+      "title": "Draft publication review state is still pending and must not be fabricated",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p1.json",
+          "line": 382,
+          "jsonPointer": "/lessons/*/review"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+          "line": 1,
+          "jsonPointer": "/lessons/*/review"
+        }
+      ],
+      "evidence": "Both sources remain status draft. All twenty review verdicts are pending, reviewers arrays are empty, nativeStatus is unreviewed and all twelve flags are false. The genuine Fable review explicitly says it must not be fabricated into native-model/native-human source rows. No native-human review or listening evidence was supplied.",
+      "why": "This report is an independent model content review of exact text bytes. It does not create source review rows, human certification, voice-quality approval or publication authorization. The absence of human certification alone is not being labelled a spoken-text defect.",
+      "fix": "After actual defects and runtime/gate holds are resolved, record only genuine applicable review evidence through the authorized publication process. Preserve the distinction between model review, any real human review and any future audio listening review.",
+      "verification": "Personally reread all twenty final review objects: draft, pending, unreviewed, empty reviewers/failingCriteria/acknowledgedWarnings, and all twelve flags false. No source record was upgraded by this report.",
+      "reReviewStatus": "Still open after the single post-fix rereview; unchanged canonical text may receive local TTS content approval independently."
+    }
+  ],
+  "scope": "Exact canonical spoken content for local TTS only. Publication findings retained; no native-human, listening or production approval.",
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "/root/french_b2_content_gate_independent",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "213cc826dead0f64f5d68034302ef79cb23db343fade343ad36eca45ebcfe43d",
+  "rawReview": {
+    "schemaVersion": 1,
+    "reviewType": "independent-single-post-fix-full-content-rereview",
+    "reviewer": "/root/french_b2_content_gate_independent",
+    "reviewDate": "2026-10-06",
+    "independentOfAuthorship": true,
+    "scope": "All fields of the exact final Italian B2 P1/P2 lessons and controlling V4 arbitration; read-only application/content. This is the authorized single post-fix review.",
+    "verdict": "PASS",
+    "verdictScope": "Final canonical spoken content and repaired authored structures. Publication remains REWORK.",
+    "localTtsContentVerdict": "PASS",
+    "localTtsContentSummary": "All twenty final lessons personally reread in full. C01 is resolved and no concrete canonical spoken-text blocker remains. This approves exact text content for local TTS preparation, not provider execution, voice quality, runtime or publication.",
+    "unresolvedLocalTtsBlockers": [],
+    "publicationVerdict": "REWORK",
+    "publicationSummary": "PUB01–PUB03 and PUB05 are resolved. PUB04, PUB06 and PUB07 remain open in full below; no publication authorization follows from the content or gate PASS.",
+    "remainingPublicationFindings": [
+      {
+        "id": "IT-B2-PUB04",
+        "severity": "HIGH",
+        "status": "open",
+        "category": "runtime-renderer",
+        "localTtsBlocking": false,
+        "publicationBlocking": true,
+        "title": "No demonstrated runtime path for the six-turn Italian B2 contract",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+            "line": 92
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+            "line": 171
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+            "line": 196
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+            "line": 259
+          }
+        ],
+        "evidence": "The current runtime level union is A1 | A2 | B1. Its documented episode is four turns, its cloze contract targets dialogue[3], and it has no B2 synthesis field. The draft's bilingual cue objects, frame blanks, moveBlankIndex and separate synthesis structure are a distinct contract. No Italian B2 renderer or visual fixture was supplied or observed.",
+        "why": "The linguistic judgments use the authored displayed choices and explicit de/en form cues. They do not demonstrate that learners actually see those cues, choices and all three learner moves in the app.",
+        "fix": "Implement and independently review the actual B2 adapter/renderer, show all authored cues and relevant choices at the right steps, consume all three speech targets and synthesis, and exercise the real components with every locale before publication.",
+        "verification": "Rechecked current runtime level union at guidedLessons.ts:92, cloze cue at 204 and absence of B2 synthesis/moveBlankIndex in the scoped runtime surfaces. All final authored cues personally read. No runtime or visual fixture proof supplied; no publication approval.",
+        "reReviewStatus": "Still open after the single post-fix rereview; unchanged canonical text may receive local TTS content approval independently."
+      },
+      {
+        "id": "IT-B2-PUB06",
+        "severity": "MEDIUM",
+        "status": "open",
+        "category": "input-acceptance",
+        "localTtsBlocking": false,
+        "publicationBlocking": true,
+        "title": "Authored recall alternatives and orthographic variants still need runtime acceptance proof",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+            "line": 597
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/TypeRecallStep.tsx",
+            "line": 55
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p1.json",
+            "line": 1,
+            "jsonPointer": "/lessons/*/recall"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+            "line": 1,
+            "jsonPointer": "/lessons/*/recall"
+          }
+        ],
+        "evidence": {
+          "retainedFableConcern": "Recall synonym lists in P1 L2/L4/L5/L6/L9 and P2 L2/L4/L6/L8 are authored candidates, not an exhaustive acceptance certificate; the author IT-B2-AUTH-PUB-3 remains open.",
+          "concreteContexts": [
+            "P1 L6 accepts evita/elimina/previene in l'app ___ errori di resto.",
+            "P2 L8 accepts registrano/annotano/ordinano/classificano in Le richieste si ___ all'arrivo.",
+            "P2 L2/L6 infine also accepts poi, successivamente, quindi and alla fine; repeated poi is grammatical and not a canonical-spoken defect."
+          ],
+          "currentRuntime": "normalizeGuidedAnswer performs NFC/trim/space collapse/lowercase; matching is exact membership after that normalization. It does not infer synonyms, strip accents or normalize apostrophes automatically."
+        },
+        "why": "All authored canonical answer, accent-stripped and apostrophe alternatives were read and mechanically checked, and displayed fallback sets have one authored accepted answer. That does not prove exhaustive free-input semantics or that the future B2 adapter will retain every alternative. No current B2 learner input flow exists to test.",
+        "fix": "Preserve every approved authored variant through the B2 adapter; test exact positives and meaningful negatives in the real input flow. Where open contexts allow many legitimate completions, supply a visible constraint or a genuinely reviewed acceptance policy. Keep semantic acceptance approval separate from simple normalized membership.",
+        "verification": "Personally reread every acceptedAnswers, fallback set and cue in all final twenty lessons. Current TypeRecallStep.tsx:57 still calls guidedAnswerMatches; guidedLessons.ts:597–604 still uses NFC/trim/space collapse/lowercase and explicit list membership. No B2 adapter or exhaustive free-input acceptance proof.",
+        "reReviewStatus": "Still open after the single post-fix rereview; unchanged canonical text may receive local TTS content approval independently."
+      },
+      {
+        "id": "IT-B2-PUB07",
+        "severity": "LOW",
+        "status": "open",
+        "category": "review-state-and-certification",
+        "localTtsBlocking": false,
+        "publicationBlocking": true,
+        "title": "Draft publication review state is still pending and must not be fabricated",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p1.json",
+            "line": 382,
+            "jsonPointer": "/lessons/*/review"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+            "line": 1,
+            "jsonPointer": "/lessons/*/review"
+          }
+        ],
+        "evidence": "Both sources remain status draft. All twenty review verdicts are pending, reviewers arrays are empty, nativeStatus is unreviewed and all twelve flags are false. The genuine Fable review explicitly says it must not be fabricated into native-model/native-human source rows. No native-human review or listening evidence was supplied.",
+        "why": "This report is an independent model content review of exact text bytes. It does not create source review rows, human certification, voice-quality approval or publication authorization. The absence of human certification alone is not being labelled a spoken-text defect.",
+        "fix": "After actual defects and runtime/gate holds are resolved, record only genuine applicable review evidence through the authorized publication process. Preserve the distinction between model review, any real human review and any future audio listening review.",
+        "verification": "Personally reread all twenty final review objects: draft, pending, unreviewed, empty reviewers/failingCriteria/acknowledgedWarnings, and all twelve flags false. No source record was upgraded by this report.",
+        "reReviewStatus": "Still open after the single post-fix rereview; unchanged canonical text may receive local TTS content approval independently."
+      }
+    ],
+    "resolvedFindings": [
+      {
+        "id": "IT-B2-C01",
+        "severity": "MEDIUM",
+        "status": "resolved",
+        "category": "canonical-spoken-coherence",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/dialogue/3/targetText"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/dialogue/5/targetText"
+          }
+        ],
+        "evidence": {
+          "explanation": "Il passaggio non comporta costi di uscita e il contratto fissa il prezzo per un anno; di conseguenza la spesa resta prevedibile.",
+          "closing": "Confronti prima le tariffe: col variabile il cambio può convenire; col fisso aspetterei la fine, in base alla scadenza del contratto.",
+          "specification": "The two exact V4 scaffold edits match these revised explanation and conclusion premises."
+        },
+        "verification": "The unsupported no-exit-fee → fixed-year commitment inference is removed. The final recommendation explicitly starts with tariff comparison and is conditional. Both 21-token turns meet their bounds; cloze/synthesis, bilingual cues/bases, pattern example/rule, attested terms and speech tokens were read and tested as coupled final values."
+      },
+      {
+        "id": "IT-B2-PUB01",
+        "severity": "MEDIUM",
+        "status": "resolved",
+        "category": "build-contract",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p1.json",
+            "jsonPointer": "/lessons/9/build"
+          }
+        ],
+        "evidence": {
+          "chunks": [
+            "più utile per tutti,",
+            "mentre",
+            "i portabici",
+            "sono i più",
+            "economici"
+          ],
+          "focusTokenCount": 11,
+          "chunkTokenCounts": [
+            4,
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "verification": "Existing 7–12 focus cap retained. Relative superlative and two speech anchors remain in focus; exact reconstruction passes. The per tutti displacement is bound inside one chip."
+      },
+      {
+        "id": "IT-B2-PUB02",
+        "severity": "MEDIUM",
+        "status": "resolved",
+        "category": "build-contract",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/0/build"
+          }
+        ],
+        "evidence": {
+          "chunks": [
+            "poiché il cliente",
+            "ha aggiunto",
+            "trenta pagine",
+            "e ha richiesto",
+            "la consegna"
+          ],
+          "focusTokenCount": 12,
+          "chunkTokenCounts": [
+            3,
+            2,
+            2,
+            3,
+            2
+          ]
+        },
+        "verification": "Existing cap retained, carrier and speech anchors in focus, exact suffix urgente entro tre giorni. preserved. A verb/object swap creates trenta pagine urgente; conjunction placement precludes the simple reversed-clause order."
+      },
+      {
+        "id": "IT-B2-PUB03",
+        "severity": "MEDIUM",
+        "status": "resolved",
+        "category": "chip-order-ambiguity",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/9/build"
+          }
+        ],
+        "evidence": {
+          "chunks": [
+            "A monte c'era",
+            "la chiusura",
+            "della piazza,",
+            "a valle",
+            "il voto"
+          ],
+          "focusTokenCount": 11,
+          "chunkTokenCounts": [
+            3,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        "verification": "The old c’era-before-a-monte counterexample cannot be assembled from the new bound chip. Both rhetorical halves remain in focus. Plausible residual locative placements do not preserve the intended cause-to-decision reading; this is a semantic judgment, not an algorithmic uniqueness certificate."
+      },
+      {
+        "id": "IT-B2-PUB05",
+        "severity": "MEDIUM",
+        "status": "resolved",
+        "category": "native-validator",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedItalianB2Drafts.ts",
+            "line": 161
+          }
+        ],
+        "evidence": {
+          "gateSha256": "171c646ce539df1ea74098839c713b9bfc2b7f6598450e3e98adb276f7466512",
+          "testSha256": "534cd7e4fca39084141043f7c5461a0b900b32313c573f68a1c850a5dfae6a98",
+          "engineeringVerdict": "PASS",
+          "report": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ITALIAN_GATE_INDEPENDENT_REREVIEW.json"
+        },
+        "verification": "The true it-IT offline gate is staged and independently reviewed. All four original engineering findings are resolved in the declared bounded scope, 106 actual final-source probes pass, strict TS/lint pass. This resolves absence of an approved native gate, not runtime rendering, acceptance or a paid pipeline."
+      }
+    ],
+    "fullCoverage": {
+      "personallyReadEveryField": true,
+      "finalSourcesReadAfterHashesWereSupplied": true,
+      "paths": 2,
+      "lessons": 20,
+      "rootLeafValues": 38,
+      "lessonLeafValues": 3869,
+      "lessonStringValues": 3427,
+      "dialogueTurns": 120,
+      "learnerTurns": 60,
+      "patternExamples": 40,
+      "termRows": 160,
+      "trophyRowsAndExamples": 20,
+      "builds": 20,
+      "clozeBlanks": 40,
+      "synthesisBlanks": 22,
+      "recalls": 20,
+      "speechTargets": 60,
+      "formCues": 22,
+      "fields": "Every root field and every field of all twenty lessons: IDs/slugs/titles/situations/captions, episode/register/interlocutor/gender metadata, all target turns and de/en bases, build frames/chunks/distractors, cloze and synthesis segments/answers/acceptedAnswers/choices/cues/moveBlankIndex, recall context/alternatives/fallbacks, pattern labels/rules/examples/bases/highlights, terms/lemmas/glosses, speak tokens/profiles, trophies/examples/bases and every review field.",
+      "method": "Personally read every root and lesson field in the new final sources after receiving their supplied hashes, using eight untruncated complete compact JSON batches (P1 1–2/3–5/6–8/9–10; P2 1–3/4–6/7–8/9–10). No diff-only or sampled read. The current machine inventory independently confirms the field counts.",
+      "perLesson": [
+        {
+          "id": "P1L1",
+          "leafValues": 193,
+          "strings": 171,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Concrete garden/time challenge and budget-constrained conclusion; paired contrast and concession native, neutral speaker; choice and form cue coherent."
+        },
+        {
+          "id": "P1L2",
+          "leafValues": 195,
+          "strings": 173,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Strike becomes un'eccezione with cloze/base coupling; subsidy changes the final calculation; no learner-gender agreement. The colleague's bloccati is a group form, not a gendered learner self-description."
+        },
+        {
+          "id": "P1L3",
+          "leafValues": 189,
+          "strings": 167,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Corrected scene describes an existing remote arrangement; team support and launch-week constraint motivate the compromise. Licensed potremmo invece is the required carrier; incidental alternatives follow the stated contract."
+        },
+        {
+          "id": "P1L4",
+          "leafValues": 199,
+          "strings": 176,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 2,
+          "speechTargets": 3,
+          "formCues": 2,
+          "personallyReadEveryField": true,
+          "assessment": "Fifteen rental weeks equals nine hundred at sixty per week; repair gives about eighteen months with one week per month. Machine/manutenzione agreement has explicit non-speaker subjects; userei remains incidental in the frame."
+        },
+        {
+          "id": "P1L5",
+          "leafValues": 192,
+          "strings": 170,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Tu matches the friend scene; entrambe agrees with proposte, not the learner. Summer decision clarified and title no longer reveals the two-season proposal."
+        },
+        {
+          "id": "P1L6",
+          "leafValues": 190,
+          "strings": 168,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Cash/app trade-off, small-ticket challenge and optional dual payment conclusion cohere; fictional fee attributed to PagoQui. Explicit articulated-preposition comparison preserved."
+        },
+        {
+          "id": "P1L7",
+          "leafValues": 191,
+          "strings": 169,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Tu, fixed appointments and learner consistency lead to an adapted recommendation; recall now targets rispetto. No learner agreement forced."
+        },
+        {
+          "id": "P1L8",
+          "leafValues": 189,
+          "strings": 167,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Salary/development comparison and written-training condition cohere. sia scritta refers to formazione; subjunctive is not a blank or speech requirement. Tanto...quanto halves stay inside the focus."
+        },
+        {
+          "id": "P1L9",
+          "leafValues": 197,
+          "strings": 175,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Job stability and retained-home trial respond to the counterexample; illustrative niece has feminine agreement without gendering the learner. Earlier carrier and accent variants preserved."
+        },
+        {
+          "id": "P1L10",
+          "leafValues": 194,
+          "strings": 172,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Full final reread: eleven-token focus, with più utile per tutti bound and economici in focus. Exact reconstruction and utile/portabici speech coverage pass; no coherent second order found. Budget challenge and deferred-project closing remain sound."
+        },
+        {
+          "id": "P2L1",
+          "leafValues": 193,
+          "strings": 171,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Full final reread: twelve-token focus, urgent singular delivery phrase in suffix. Object-swap alternative would attach urgente to trenta pagine and fails agreement; poiché and required speech anchors remain in focus. Invoice arithmetic and written attribution remain coherent."
+        },
+        {
+          "id": "P2L2",
+          "leafValues": 191,
+          "strings": 169,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "All procedure and disposal claims are attributed to a fictional notice. Third-person singular indicative separa/espone/ritira can describe the addressee's sequence under Lei; later consulti is a direct formal instruction, not a switch to tu."
+        },
+        {
+          "id": "P2L3",
+          "leafValues": 193,
+          "strings": 171,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Supplier/team delays are distinguished and closing offers a target rather than a guarantee; corrected German base matches the causal wording. slittato agrees with il collaudo. Original isolated in ritardo reorder is removed."
+        },
+        {
+          "id": "P2L4",
+          "leafValues": 194,
+          "strings": 172,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Fictional point/expiry terms are explicit; buying only planned items answers overspending; seasonal limit qualifies the benefit. si accumulano is plural; revised riassumo gloss is accurate."
+        },
+        {
+          "id": "P2L5",
+          "leafValues": 196,
+          "strings": 174,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Full final reread: explicit fixed-price-for-a-year premise supports predictable spending, and the closing first requests tariff comparison and says può convenire. Cloze fissa with its bilingual form cue, both bases, synthesis, exact pattern example and speech tokens are coupled. Aspetterei is incidental and unblanked."
+        },
+        {
+          "id": "P2L6",
+          "leafValues": 194,
+          "strings": 172,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Legal procedure is strictly attributed to this fictional notice; no universal deadline or automatic increased fine is asserted. compila/allega/conserva are acceptable descriptive Lei indicatives in this explanatory context; existing evidence is not invented."
+        },
+        {
+          "id": "P2L7",
+          "leafValues": 190,
+          "strings": 168,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Nominalisation and partial concession are licensed in the late band; costasse is incidental and unblanked. mancata agrees with verifica and sbagliato with presupposto. Presupposto family is presupporre."
+        },
+        {
+          "id": "P2L8",
+          "leafValues": 192,
+          "strings": 170,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Clinic criteria are fictionally attributed; no guaranteed urgent slot. si valutano/in base ai and a seconda del carriers occur in allocated surfaces. Request date supplies the final operational rule."
+        },
+        {
+          "id": "P2L9",
+          "leafValues": 196,
+          "strings": 174,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 1,
+          "speechTargets": 3,
+          "formCues": 1,
+          "personallyReadEveryField": true,
+          "assessment": "Usage percentages are fictional report claims, not outside statistics. Incidental conditionals and the interlocutor's uscisse are not taught blanks; raddoppiato agrees with l'uso."
+        },
+        {
+          "id": "P2L10",
+          "leafValues": 201,
+          "strings": 178,
+          "dialogueTurns": 6,
+          "patternExamples": 2,
+          "terms": 8,
+          "clozeBlanks": 2,
+          "synthesisBlanks": 2,
+          "speechTargets": 3,
+          "formCues": 2,
+          "personallyReadEveryField": true,
+          "assessment": "Full final reread: A monte c’era is bound in a single chip. Both carrier halves and monte/chiusura/voto are in eleven-token focus; the previous verb-first permutation is unavailable. Tested plausible residual orders change the meaning to spatial relations or break the decision-chain reading. No coherent equivalent order found."
+        }
+      ],
+      "currentFinalRootAndLessonStringValues": 3461
+    },
+    "sourceProvenance": {
+      "verdict": "PASS",
+      "firstReviewReport": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ITALIAN_P1_P2_INDEPENDENT_REVIEW.json",
+      "earlierSpecificationChain": "The independently reviewed V3 history is retained in the first report; this rereview verifies V3 → V4 as exactly two genuine Fable edits, with no ledger or other curriculum drift.",
+      "arbitrationSessionId": "d927a094-bce4-48db-9ffa-d940ef832242",
+      "firstContentEdits": 45,
+      "additionalContentEdits": 18,
+      "additionalContentNoOpEdits": 1,
+      "additionalNetContentReplacements": 17,
+      "specEdits": 2,
+      "codeEdits": 10,
+      "allBoundInputHashesMatched": true,
+      "allOldValuesMatched": true,
+      "allCodeOldStringsUnique": true,
+      "rawReviewObjectUnchanged": true,
+      "method": "Independently replayed both content rounds from original author objects using deep-copy replacements and exact old-value assertions, then compared complete final encoded UTF-8 bytes. Applied the two spec changes to V3 and computed V4 hash. Only the specified V4 reference-name/hash metadata was then replaced. Independently replayed all ten unique code edits and the same metadata changes, comparing whole files.",
+      "finalScratchAndAppCopiesByteIdentical": true,
+      "trophiesLedgerRecyclesAndReviewFlagsUnchanged": true
+    },
+    "prerequisites": {
+      "verdict": "PASS",
+      "actualFrozenItalianA1Lessons": 100,
+      "actualFrozenItalianA2Lessons": 100,
+      "actualFrozenItalianCorpusJsonSha256": "3ef8a97988417036f33d572a2d69e035d78eba88d3aa377facca38da6f26ae09",
+      "actualB1ReservedRows": 100,
+      "b1AllocationFileSha256": "647cb01e9961d219a8cd2ad829bd737a61c94c2dfba861dc3cf5bc3361073079",
+      "uniqueForbiddenStrings": 296,
+      "exactForbiddenSetMatchesPrerequisiteSnapshot": true,
+      "orderedB2AllocationRows": 20,
+      "allTrophyLemmasFamiliesSurfacesAndTurnsVerified": true,
+      "recycleReferences": 60,
+      "allRecycleReferencesResolveToFrozenA1A2OrReservedB1OrEarlierB2": true,
+      "clarification": "imparando and vicini are exact frozen A1/A2 trophy entries, verified against the real corpus; they are not substituted dictionary lemma guesses. All twenty allocated B2 trophies and families remain noncolliding with the exact frozen/reserved set.",
+      "frozenA1A2AndB1DataEdited": false,
+      "currentReverification": "Actual frozen corpus and B1 source hashes, all 300 supplied trophy strings and the exact 296-string distinct set were independently verified again through the final suite and targeted reproductions; V4 leaves all 20 ordered allocations and all 60 recycle references unchanged."
+    },
+    "checks": [
+      {
+        "name": "Full final-field native and bilingual read",
+        "result": "PASS",
+        "detail": "Every displayed choice, explicit form cue, pattern, base text and acceptance list read, along with the complete six-turn stories. Lei/tu allocation, neutral learner agreement, attributed scene facts and staged carriers reviewed."
+      },
+      {
+        "name": "Coupling and whole-token checks on actual final twenty",
+        "result": "PASS",
+        "detail": "Exact build/cloze/synthesis/recall reconstruction, term attestation, target accents/elisions, three speech targets, trophy anchors and immutable allocation evidence pass the actual native gate."
+      },
+      {
+        "name": "Native chip-order and displayed-choice review",
+        "result": "PASS_WITH_RUNTIME_ACCEPTANCE_HOLDS",
+        "detail": "Reconsidered all final builds and displayed options using the authored visible cues. In particular the three repaired focuses meet the existing cap and remove the known equivalent permutations. This does not certify exhaustive free-input synonyms or future runtime cue rendering."
+      },
+      {
+        "name": "Native Lei procedural descriptions",
+        "result": "PASS",
+        "detail": "P2 L2 separa/espone/ritira and P2 L6 compila/allega/conserva are legitimate descriptive third-person indicatives in the explanatory context; later consulti is a direct formal instruction. No generic absence of human review is reclassified as a spoken defect."
+      },
+      {
+        "name": "Actual final gate suite",
+        "result": "PASS",
+        "detail": "8 positive controls plus 98 cause-asserted rejections; both genuine final ten-lesson paths pass. Strict scoped TypeScript zero diagnostics and scoped ESLint zero errors independently reproduced."
+      }
+    ],
+    "reviewedSources": [
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ITALIAN_P1_P2_ARBITRATION_FABLE_REVIEW_RAW.json",
+        "sha256": "ad0983390fe261155bc031924445c51f5f0e4939a04636451e92087db961d200"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ITALIAN_P1_P2_ARBITRATION_FABLE_REVIEWED_SOURCE_HASHES.json",
+        "sha256": "cff4ea4f5e3a9942ff603921907243609e3274347c3fb245f75b6e9506a0d699"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ITALIAN_ARBITRATION_APPLIED_HASHES.json",
+        "sha256": "f2aec4cc9704157220d50d06e4e517375c116c18742b33490f4490155a80a7c4"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ITALIAN_P1_P2_AUTHORING_SPEC_V4.json",
+        "sha256": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ITALIAN_P1_P2_FABLE_REVIEW_RAW.json",
+        "sha256": "f8c089fd7c807b7d979c2df6af381dc14c9f98ea5b6d5a0587004a29872b55e7"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ITALIAN_P1_P2_INDEPENDENT_REVIEW.json",
+        "sha256": "fb37c6f2d391ed470f82bccf1d47426e8145887305384c023502d9d0e7c8f18c"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ITALIAN_GATE_INDEPENDENT_REVIEW.json",
+        "sha256": "880cec18611cda26816406bd725424c61e7fdd0b4bb25d72af78f720231da4db"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/apply-italian-b2-arbitration.py",
+        "sha256": "1334a1acb3ab48862bf84f31459c19d4de2136209afb16b18eece4f34b2c95c6"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p1.json",
+        "sha256": "0af24ebf43670e8f93b50e1ab6e3f7d90a30cba5e51c828a12cc4c06cab51e8b"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+        "sha256": "fa57be6d972d8431fdcc691586c1f9aef3d2f95ebf3bf6fdad1b95a87d7b046b"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedItalianB2Drafts.ts",
+        "sha256": "171c646ce539df1ea74098839c713b9bfc2b7f6598450e3e98adb276f7466512"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/test-guided-italian-b2-drafts.ts",
+        "sha256": "534cd7e4fca39084141043f7c5461a0b900b32313c573f68a1c850a5dfae6a98"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/italian/specification.json",
+        "sha256": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/italian/p1.json",
+        "sha256": "0af24ebf43670e8f93b50e1ab6e3f7d90a30cba5e51c828a12cc4c06cab51e8b"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/italian/p2.json",
+        "sha256": "fa57be6d972d8431fdcc691586c1f9aef3d2f95ebf3bf6fdad1b95a87d7b046b"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b1-2026-10/italian-plan.json",
+        "sha256": "647cb01e9961d219a8cd2ad829bd737a61c94c2dfba861dc3cf5bc3361073079"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+        "sha256": "1011e892864751323bc403ca2ca8eb14e5890ea2dab75e52e2358bf2ee361472"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/TypeRecallStep.tsx",
+        "sha256": "a0a738b243c005a51154dde621d8edcfb049f64a7e849241c3bce36b8312d218"
+      }
+    ],
+    "permissionsAndLimits": {
+      "appEdits": 0,
+      "contentEdits": 0,
+      "specificationEdits": 0,
+      "providerCalls": 0,
+      "databaseCalls": 0,
+      "visualVerification": false,
+      "nativeHumanCertification": false,
+      "listeningCertification": false,
+      "paidExecutionApproval": false,
+      "publicationApproval": false,
+      "writeScope": "This content rereview report and the separately requested gate rereview report only."
+    },
+    "completion": "Committed no · Pushed no · Live not yet · Checks: full final read and exact replay PASS; local spoken content PASS; native gate 106/106, strict TS and lint PASS; publication REWORK."
+  }
+}

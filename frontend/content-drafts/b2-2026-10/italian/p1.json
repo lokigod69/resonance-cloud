@@ -1,0 +1,3796 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 1,
+  "slug": "soppesare-le-opzioni",
+  "pathTitle": {
+    "de": "Möglichkeiten abwägen",
+    "en": "Weighing options"
+  },
+  "pathFunction": {
+    "de": "Vor- und Nachteile vergleichen und eine begründete Wahl treffen.",
+    "en": "Compare advantages and disadvantages and make a reasoned choice."
+  },
+  "specRef": {
+    "pathSpec": "B2_ITALIAN_P1_P2_AUTHORING_SPEC_V4.json",
+    "pathSpecSha256": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b",
+    "ledger": "B2_ITALIAN_P1_P2_AUTHORING_SPEC_V4.json",
+    "ledgerSha256": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b"
+  },
+  "authoring": {
+    "source": "Codex native Italian authoring; independent review pending",
+    "runId": "V4_EXPANSION_20261003-italian-b2",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "affitto-contro-pendolarismo",
+      "title": {
+        "de": "Miete gegen Fahrzeit",
+        "en": "Rent versus travel time"
+      },
+      "situation": {
+        "de": "Sie vergleichen bei der fiktiven Agenzia Bellini eine Wohnung im Zentrum mit einem günstigeren Angebot am Stadtrand. Ein Angebotsblatt liegt vor.",
+        "en": "At the fictional Agenzia Bellini, you compare a central flat with a cheaper one on the outskirts, using an offer sheet."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Immobilienberatung",
+            "en": "letting agent"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Beratung fragt: «Dal nostro prospetto: duecento euro in più in centro, cinquanta minuti di viaggio dalla periferia. Come valuta le offerte?»",
+        "en": "The agent asks: «Dal nostro prospetto: duecento euro in più in centro, cinquanta minuti di viaggio dalla periferia. Come valuta le offerte?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Dal nostro prospetto: duecento euro in più in centro, cinquanta minuti di viaggio dalla periferia. Come valuta le offerte?",
+          "base": {
+            "de": "Laut unserem Angebotsblatt: zweihundert Euro mehr im Zentrum, fünfzig Minuten Fahrt vom Stadtrand. Wie beurteilen Sie die Angebote?",
+            "en": "Our sheet shows two hundred euros more in the centre and fifty minutes travelling from the outskirts. How do you assess the offers?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Da un lato pago di più, dall'altro recupero un'ora che posso dedicare ogni giorno alla vita fuori dal lavoro.",
+          "base": {
+            "de": "Einerseits zahle ich mehr, andererseits gewinne ich täglich eine Stunde, die ich meinem Leben außerhalb der Arbeit widmen kann.",
+            "en": "On the one hand I pay more; on the other, I gain an hour each day that I can devote to life outside work."
+          },
+          "speaker": "you",
+          "move": "compare",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Ma quell'ora vale duecento euro al mese? L'altro appartamento ha anche un giardino privato.",
+          "base": {
+            "de": "Aber ist diese Stunde zweihundert Euro monatlich wert? Die andere Wohnung hat auch einen eigenen Garten.",
+            "en": "But is that hour worth two hundred euros a month? The other flat also has a private garden."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "È vero che il giardino offre spazio, ma più tempo passo in viaggio, meno energie mi restano per godermelo.",
+          "base": {
+            "de": "Der Garten bietet tatsächlich Platz, aber je länger ich unterwegs bin, desto weniger Energie bleibt mir, ihn zu genießen.",
+            "en": "The garden does offer space, but the longer I spend travelling, the less energy I have left to enjoy it."
+          },
+          "speaker": "you",
+          "move": "concede",
+          "register": "Lei"
+        },
+        {
+          "targetText": "La nostra opzione dura una settimana. Vuole confermare il centro oppure continuare la ricerca?",
+          "base": {
+            "de": "Unsere Reservierung gilt eine Woche. Möchten Sie das Zentrum bestätigen oder weitersuchen?",
+            "en": "Our reservation lasts a week. Would you like to confirm the central flat or keep looking?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Tutto sommato scelgo il centro per il tempo guadagnato; tuttavia devo mantenere questa spesa entro il mio bilancio mensile.",
+          "base": {
+            "de": "Alles in allem wähle ich das Zentrum wegen der gewonnenen Zeit; diese Ausgabe muss jedoch in mein Monatsbudget passen.",
+            "en": "Overall, I choose the centre for the time gained; however, this expense must stay within my monthly budget."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Da un lato",
+          "pago",
+          "di più,",
+          "dall'altro",
+          "recupero",
+          "un'ora che"
+        ],
+        "distractors": [
+          "pagano",
+          "recuperare"
+        ],
+        "frameSuffix": " posso dedicare ogni giorno alla vita fuori dal lavoro."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " il giardino offre spazio, ma più tempo passo in viaggio, meno energie mi "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " per godermelo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "È vero che",
+            "acceptedAnswers": [
+              "È vero che",
+              "E vero che"
+            ],
+            "kind": "frame",
+            "choices": [
+              "È vero che",
+              "Nonostante",
+              "A differenza di",
+              "Invece di"
+            ]
+          },
+          {
+            "answer": "restano",
+            "acceptedAnswers": [
+              "restano"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "restare, 3. Person Plural, Präsens Indikativ",
+              "en": "restare, third-person plural, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " scelgo il centro per il tempo guadagnato; tuttavia devo mantenere questa spesa entro il mio bilancio mensile."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Tutto sommato",
+            "acceptedAnswers": [
+              "Tutto sommato"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Tutto sommato",
+              "A causa di",
+              "Invece di",
+              "Nonostante"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Da un ",
+        "answer": "lato",
+        "acceptedAnswers": [
+          "lato"
+        ],
+        "fallbackChoices": [
+          "lato",
+          "lati",
+          "latitudine",
+          "laterale"
+        ],
+        "after": " pago di più, dall'altro recupero un'ora che posso dedicare ogni giorno alla vita fuori dal lavoro."
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen Vorteil anerkennen und abwägen",
+          "en": "Acknowledging and weighing an advantage"
+        },
+        "rule": {
+          "de": "È vero che erkennt einen Punkt an; ma leitet die Einschränkung ein, die hier mit più … meno gewichtet wird.",
+          "en": "È vero che acknowledges a point; ma introduces the qualification, here weighed through più … meno."
+        },
+        "examples": [
+          {
+            "targetText": "È vero che il giardino offre spazio, ma più tempo passo in viaggio, meno energie mi restano per godermelo.",
+            "base": {
+              "de": "Der Garten bietet tatsächlich Platz, aber je länger ich unterwegs bin, desto weniger Energie bleibt mir, ihn zu genießen.",
+              "en": "The garden does offer space, but the longer I spend travelling, the less energy I have left to enjoy it."
+            },
+            "highlights": [
+              "È vero che",
+              "ma più",
+              "meno"
+            ]
+          },
+          {
+            "targetText": "È vero che risparmio sul canone, ma più mi allontano dal lavoro, meno tempo ho per riposare.",
+            "base": {
+              "de": "Ich spare zwar Miete, aber je weiter ich von der Arbeit wegziehe, desto weniger Zeit habe ich zum Ausruhen.",
+              "en": "I do save on rent, but the farther I move from work, the less time I have to rest."
+            },
+            "highlights": [
+              "È vero che",
+              "ma più",
+              "meno"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "da un lato",
+          "kind": "connector",
+          "base": {
+            "de": "einerseits",
+            "en": "on the one hand"
+          }
+        },
+        {
+          "targetText": "dall'altro",
+          "kind": "connector",
+          "base": {
+            "de": "andererseits",
+            "en": "on the other hand"
+          }
+        },
+        {
+          "targetText": "tuttavia",
+          "kind": "connector",
+          "base": {
+            "de": "jedoch",
+            "en": "however"
+          }
+        },
+        {
+          "targetText": "prospetto",
+          "kind": "noun",
+          "base": {
+            "de": "Übersicht / Angebotsblatt",
+            "en": "summary / offer sheet"
+          }
+        },
+        {
+          "targetText": "recupero",
+          "kind": "verb",
+          "base": {
+            "de": "ich gewinne zurück",
+            "en": "I regain"
+          },
+          "lemma": "recuperare"
+        },
+        {
+          "targetText": "bilancio",
+          "kind": "noun",
+          "base": {
+            "de": "Budget",
+            "en": "budget"
+          }
+        },
+        {
+          "targetText": "energie",
+          "kind": "noun",
+          "base": {
+            "de": "Kräfte / Energie",
+            "en": "energy"
+          },
+          "lemma": "energia"
+        },
+        {
+          "targetText": "canone",
+          "kind": "noun",
+          "base": {
+            "de": "Mietbetrag",
+            "en": "rent payment"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "pago",
+            "recupero",
+            "un'ora"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "giardino",
+            "viaggio",
+            "restano"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "sommato",
+            "tuttavia",
+            "bilancio"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "tuttavia",
+        "familyKey": "tuttavia",
+        "surface": "tuttavia",
+        "turnIndex": 5,
+        "pos": "connector",
+        "example": {
+          "targetText": "La casa costa di più; tuttavia il tragitto quotidiano si accorcia.",
+          "base": {
+            "de": "Die Wohnung kostet mehr; der tägliche Weg wird jedoch kürzer.",
+            "en": "The flat costs more; however, the daily journey becomes shorter."
+          }
+        },
+        "base": {
+          "de": "jedoch",
+          "en": "however"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "auto-o-mezzi",
+      "title": {
+        "de": "Auto oder Bahn",
+        "en": "Car or train"
+      },
+      "situation": {
+        "de": "In der Pause besprechen Sie mit einem Arbeitskontakt die Fahrt ins Büro. Eine fiktive Firmenmitteilung kündigt kostenpflichtiges Parken an.",
+        "en": "During a break, you discuss commuting with a colleague. A fictional company notice announces paid parking."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Arbeitskontakt",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Gegenüber fragt: «La comunicazione aziendale annuncia il parcheggio a pagamento. Per venire in ufficio preferisce ancora la macchina?»",
+        "en": "Your colleague asks: «La comunicazione aziendale annuncia il parcheggio a pagamento. Per venire in ufficio preferisce ancora la macchina?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "La comunicazione aziendale annuncia il parcheggio a pagamento. Per venire in ufficio preferisce ancora la macchina?",
+          "base": {
+            "de": "Die Firmenmitteilung kündigt kostenpflichtiges Parken an. Fahren Sie weiterhin lieber mit dem Auto ins Büro?",
+            "en": "The company notice announces paid parking. Do you still prefer driving to the office?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "A mio avviso il treno conviene, mentre la macchina comporta spese che aumentano con il traffico e il parcheggio.",
+          "base": {
+            "de": "Meiner Ansicht nach lohnt sich die Bahn, während das Auto Kosten verursacht, die mit Verkehr und Parkgebühren steigen.",
+            "en": "In my view the train is worthwhile, whereas the car brings expenses that grow with traffic and parking."
+          },
+          "speaker": "you",
+          "move": "position",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Però lo sciopero del mese scorso ci ha bloccati per tre ore. Non conta anche l'affidabilità?",
+          "base": {
+            "de": "Aber der Streik letzten Monat hat uns drei Stunden aufgehalten. Zählt nicht auch die Zuverlässigkeit?",
+            "en": "But last month’s strike held us up for three hours. Doesn’t reliability matter too?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Quello sciopero è stato un'eccezione; conviene prendere il treno nei giorni normali, anzi il nuovo parcheggio rende il confronto ancora più favorevole.",
+          "base": {
+            "de": "Dieser Streik war eine Ausnahme; an normalen Tagen lohnt sich die Bahn, und das neue Parkentgelt macht den Vergleich sogar noch günstiger.",
+            "en": "That strike was an exception; taking the train pays on ordinary days, and the new parking charge actually strengthens the comparison."
+          },
+          "speaker": "you",
+          "move": "rebut",
+          "register": "Lei"
+        },
+        {
+          "targetText": "L'azienda però copre metà della tariffa del parcheggio. Con questo contributo, mantiene la stessa scelta?",
+          "base": {
+            "de": "Die Firma übernimmt aber die Hälfte der Parkgebühr. Bleiben Sie mit diesem Zuschuss bei Ihrer Wahl?",
+            "en": "But the company covers half the parking fee. With that contribution, do you keep the same choice?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Quindi scelgo ancora il treno: anche pagando metà parcheggio, la macchina mi costa di più, soprattutto d'inverno.",
+          "base": {
+            "de": "Also wähle ich weiterhin die Bahn: Selbst mit halber Parkgebühr kostet mich das Auto mehr, besonders im Winter.",
+            "en": "So I still choose the train: even paying half the parking charge, the car costs me more, especially in winter."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "A mio avviso il treno conviene, ",
+        "chunks": [
+          "mentre la macchina",
+          "comporta",
+          "spese",
+          "che aumentano",
+          "con il traffico"
+        ],
+        "distractors": [
+          "comportano",
+          "aumenta"
+        ],
+        "frameSuffix": " e il parcheggio."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Quello sciopero è stato un'eccezione; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " prendere il treno nei giorni normali, anzi il nuovo parcheggio "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " il confronto ancora più favorevole."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "conviene",
+            "acceptedAnswers": [
+              "conviene"
+            ],
+            "kind": "frame",
+            "choices": [
+              "conviene",
+              "convieni",
+              "conveniamo",
+              "convenite"
+            ]
+          },
+          {
+            "answer": "rende",
+            "acceptedAnswers": [
+              "rende"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "rendere, 3. Person Singular, Präsens Indikativ",
+              "en": "rendere, third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " scelgo ancora il treno: anche pagando metà parcheggio, la macchina mi costa di più, soprattutto d'inverno."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Quindi",
+            "acceptedAnswers": [
+              "Quindi"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Quindi",
+              "Nonostante",
+              "A causa di",
+              "Invece di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "A mio ",
+        "answer": "avviso",
+        "acceptedAnswers": [
+          "avviso",
+          "parere",
+          "giudizio",
+          "modo di vedere"
+        ],
+        "fallbackChoices": [
+          "avviso",
+          "avvisi",
+          "avvisare",
+          "avvisato"
+        ],
+        "after": " il treno conviene, mentre la macchina comporta spese che aumentano con il traffico e il parcheggio."
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Den Nutzen zweier Möglichkeiten vergleichen",
+          "en": "Comparing the value of two options"
+        },
+        "rule": {
+          "de": "Conviene bewertet den Nutzen, während mentre hier zwei gegensätzliche Eigenschaften verbindet.",
+          "en": "Conviene evaluates what is worthwhile, while mentre links two contrasting features here."
+        },
+        "examples": [
+          {
+            "targetText": "A mio avviso il treno conviene, mentre la macchina comporta spese che aumentano con il traffico e il parcheggio.",
+            "base": {
+              "de": "Meiner Ansicht nach lohnt sich die Bahn, während das Auto Kosten verursacht, die mit Verkehr und Parkgebühren steigen.",
+              "en": "In my view the train is worthwhile, whereas the car brings expenses that grow with traffic and parking."
+            },
+            "highlights": [
+              "conviene",
+              "mentre"
+            ]
+          },
+          {
+            "targetText": "Il biglietto mensile conviene, mentre i biglietti singoli comportano una spesa maggiore per chi viaggia ogni giorno.",
+            "base": {
+              "de": "Die Monatskarte lohnt sich, während Einzeltickets für tägliche Fahrten höhere Kosten bedeuten.",
+              "en": "The monthly ticket is worthwhile, whereas single tickets mean a greater expense for daily travellers."
+            },
+            "highlights": [
+              "conviene",
+              "mentre"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "a mio avviso",
+          "kind": "frame",
+          "base": {
+            "de": "meiner Ansicht nach",
+            "en": "in my view"
+          }
+        },
+        {
+          "targetText": "mentre",
+          "kind": "connector",
+          "base": {
+            "de": "während / wohingegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "conviene",
+          "kind": "verb",
+          "base": {
+            "de": "es lohnt sich",
+            "en": "it is worthwhile"
+          },
+          "lemma": "convenire"
+        },
+        {
+          "targetText": "comporta",
+          "kind": "verb",
+          "base": {
+            "de": "bringt mit sich",
+            "en": "entails"
+          },
+          "lemma": "comportare"
+        },
+        {
+          "targetText": "l'affidabilità",
+          "kind": "noun",
+          "base": {
+            "de": "die Zuverlässigkeit",
+            "en": "reliability"
+          },
+          "lemma": "affidabilità"
+        },
+        {
+          "targetText": "sciopero",
+          "kind": "noun",
+          "base": {
+            "de": "Streik",
+            "en": "strike"
+          }
+        },
+        {
+          "targetText": "contributo",
+          "kind": "noun",
+          "base": {
+            "de": "Zuschuss",
+            "en": "contribution"
+          }
+        },
+        {
+          "targetText": "confronto",
+          "kind": "noun",
+          "base": {
+            "de": "Vergleich",
+            "en": "comparison"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "conviene",
+            "macchina",
+            "comporta"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "conviene",
+            "treno",
+            "rende"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "scelgo",
+            "parcheggio",
+            "costa"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "convenire",
+        "familyKey": "convenire",
+        "surface": "conviene",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Per chi viaggia ogni giorno conviene acquistare un abbonamento.",
+          "base": {
+            "de": "Wer täglich fährt, für den lohnt sich eine Zeitkarte.",
+            "en": "For daily travellers, buying a season ticket is worthwhile."
+          }
+        },
+        "base": {
+          "de": "sich lohnen",
+          "en": "be worthwhile"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "smart-working-o-ufficio",
+      "title": {
+        "de": "Heimarbeit oder Büro",
+        "en": "Remote or office"
+      },
+      "situation": {
+        "de": "Im Jahresgespräch verhandeln Sie mit Ihrer Führungskraft über Ihre zwei Tage Heimarbeit. Seit einem Jahr arbeiten Sie so, mit gleichen Ergebnissen wie im Büro.",
+        "en": "In an annual review, you negotiate your two remote days with your manager. You have worked this way for a year with the same results as in the office."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Führungskraft",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Führungskraft eröffnet das Thema: «Per il prossimo anno prevedo cinque giorni in ufficio. Quali ragioni sostengono la sua richiesta di lavorare da casa?»",
+        "en": "The manager opens the discussion: «Per il prossimo anno prevedo cinque giorni in ufficio. Quali ragioni sostengono la sua richiesta di lavorare da casa?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Per il prossimo anno prevedo cinque giorni in ufficio. Quali ragioni sostengono la sua richiesta di lavorare da casa?",
+          "base": {
+            "de": "Für das nächste Jahr plane ich fünf Bürotage. Welche Gründe sprechen für Ihren Wunsch nach Heimarbeit?",
+            "en": "I envisage five office days next year. What reasons support your request to work from home?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Da casa lavoro tanto bene quanto in ufficio, ma evito due ore di viaggio che posso dedicare al progetto.",
+          "base": {
+            "de": "Zu Hause arbeite ich genauso gut wie im Büro, vermeide aber zwei Stunden Fahrt, die ich dem Projekt widmen kann.",
+            "en": "I work as well at home as in the office, but avoid two hours of travel that I can devote to the project."
+          },
+          "speaker": "you",
+          "move": "compare",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Il risultato individuale non basta: come mantiene la coesione del gruppo e aiuta chi comincia adesso?",
+          "base": {
+            "de": "Die individuelle Leistung reicht nicht: Wie erhalten Sie den Zusammenhalt und helfen neu Hinzugekommenen?",
+            "en": "Individual results are not enough: how do you maintain team cohesion and help people who are just starting?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Potremmo invece concordare tre giorni comuni: dedichiamo quelle giornate al gruppo e affianchiamo chi deve ancora conoscere il progetto.",
+          "base": {
+            "de": "Wir könnten stattdessen drei gemeinsame Tage vereinbaren: Diese widmen wir dem Team und begleiten alle, die das Projekt noch kennenlernen.",
+            "en": "We could instead agree on three shared days: we devote those days to the team and support people still getting to know the project."
+          },
+          "speaker": "you",
+          "move": "counteroffer",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Durante il lancio del prodotto, però, mi serve la presenza di tutti per cinque giorni. Quale accordo propone?",
+          "base": {
+            "de": "Während der Produkteinführung brauche ich aber alle an fünf Tagen vor Ort. Welche Vereinbarung schlagen Sie vor?",
+            "en": "During the product launch, however, I need everyone present for five days. What agreement do you propose?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Propongo di fissare tre giorni comuni, con cinque durante il lancio: questo compromesso tutela sia il gruppo sia il lavoro individuale.",
+          "base": {
+            "de": "Ich schlage drei gemeinsame Tage und fünf während der Einführung vor: Dieser Kompromiss schützt Teamarbeit und individuelle Arbeit.",
+            "en": "I propose three shared days and five during the launch: this compromise protects both teamwork and individual work."
+          },
+          "speaker": "you",
+          "move": "propose",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "Da casa ",
+        "chunks": [
+          "lavoro",
+          "tanto bene",
+          "quanto",
+          "in ufficio, ma",
+          "evito due ore"
+        ],
+        "distractors": [
+          "lavorando",
+          "dagli uffici"
+        ],
+        "frameSuffix": " di viaggio che posso dedicare al progetto."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " concordare tre giorni comuni: dedichiamo quelle giornate al gruppo e "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " chi deve ancora conoscere il progetto."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Potremmo invece",
+            "acceptedAnswers": [
+              "Potremmo invece"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Potremmo invece",
+              "Per quanto",
+              "Nonostante",
+              "A causa di"
+            ]
+          },
+          {
+            "answer": "affianchiamo",
+            "acceptedAnswers": [
+              "affianchiamo"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "affiancare, wir, Präsens Indikativ",
+              "en": "affiancare, we, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " fissare tre giorni comuni, con cinque durante il lancio: questo compromesso tutela sia il gruppo sia il lavoro individuale."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Propongo di",
+            "acceptedAnswers": [
+              "Propongo di"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Propongo di",
+              "Nonostante",
+              "Per quanto",
+              "A causa di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Da casa lavoro tanto bene ",
+        "answer": "quanto",
+        "acceptedAnswers": [
+          "quanto",
+          "come"
+        ],
+        "fallbackChoices": [
+          "quanto",
+          "quanta",
+          "quanti",
+          "quante"
+        ],
+        "after": " in ufficio, ma evito due ore di viaggio che posso dedicare al progetto."
+      },
+      "pattern": {
+        "moveType": "counteroffer",
+        "label": {
+          "de": "Eine begründete Gegenlösung anbieten",
+          "en": "Offering a reasoned alternative"
+        },
+        "rule": {
+          "de": "Potremmo invece bietet eine andere gemeinsame Handlung an, deren praktischen Nutzen der folgende Satzteil erklärt.",
+          "en": "Potremmo invece offers a different shared action, whose practical value the following clause explains."
+        },
+        "examples": [
+          {
+            "targetText": "Potremmo invece concordare tre giorni comuni: dedichiamo quelle giornate al gruppo e affianchiamo chi deve ancora conoscere il progetto.",
+            "base": {
+              "de": "Wir könnten stattdessen drei gemeinsame Tage vereinbaren: Diese widmen wir dem Team und begleiten alle, die das Projekt noch kennenlernen.",
+              "en": "We could instead agree on three shared days: we devote those days to the team and support people still getting to know the project."
+            },
+            "highlights": [
+              "Potremmo invece",
+              "tre giorni comuni"
+            ]
+          },
+          {
+            "targetText": "Potremmo invece fissare un incontro comune: risolviamo insieme i dubbi e poi ciascuno continua il proprio lavoro.",
+            "base": {
+              "de": "Wir könnten stattdessen ein gemeinsames Treffen festlegen: Wir klären Fragen zusammen und dann arbeitet jede Person weiter.",
+              "en": "We could instead arrange a shared meeting: we resolve questions together and then each person continues their work."
+            },
+            "highlights": [
+              "Potremmo invece"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "tanto",
+          "kind": "connector",
+          "base": {
+            "de": "ebenso / genauso",
+            "en": "as much / equally"
+          }
+        },
+        {
+          "targetText": "quanto",
+          "kind": "connector",
+          "base": {
+            "de": "wie, im Vergleich",
+            "en": "as, in a comparison"
+          }
+        },
+        {
+          "targetText": "compromesso",
+          "kind": "noun",
+          "base": {
+            "de": "Kompromiss",
+            "en": "compromise"
+          }
+        },
+        {
+          "targetText": "coesione",
+          "kind": "noun",
+          "base": {
+            "de": "Zusammenhalt",
+            "en": "cohesion"
+          }
+        },
+        {
+          "targetText": "affianchiamo",
+          "kind": "verb",
+          "base": {
+            "de": "wir begleiten unterstützend",
+            "en": "we work alongside"
+          },
+          "lemma": "affiancare"
+        },
+        {
+          "targetText": "lancio",
+          "kind": "noun",
+          "base": {
+            "de": "Einführung / Marktstart",
+            "en": "launch"
+          }
+        },
+        {
+          "targetText": "tutela",
+          "kind": "verb",
+          "base": {
+            "de": "schützt",
+            "en": "protects"
+          },
+          "lemma": "tutelare"
+        },
+        {
+          "targetText": "individuale",
+          "kind": "adjective",
+          "base": {
+            "de": "individuell",
+            "en": "individual"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "lavoro",
+            "bene",
+            "ufficio"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "concordare",
+            "giornate",
+            "affianchiamo"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "propongo",
+            "compromesso",
+            "tutela"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "compromesso",
+        "familyKey": "compromesso",
+        "surface": "compromesso",
+        "turnIndex": 5,
+        "pos": "noun",
+        "example": {
+          "targetText": "Il compromesso conserva i vantaggi delle due proposte.",
+          "base": {
+            "de": "Der Kompromiss erhält die Vorteile beider Vorschläge.",
+            "en": "The compromise retains the advantages of both proposals."
+          }
+        },
+        "base": {
+          "de": "Kompromiss",
+          "en": "compromise"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "comprare-o-noleggiare",
+      "title": {
+        "de": "Eine Maschine kaufen oder mieten",
+        "en": "Buying or renting a machine"
+      },
+      "situation": {
+        "de": "Bei der fiktiven Firma Noleggio Verdi vergleichen Sie einen Dampfreiniger für Ihren Betrieb: sechzig Euro Wochenmiete oder neunhundert Euro Kaufpreis.",
+        "en": "At the fictional Noleggio Verdi, you compare a steam cleaner for your business: sixty euros a week to rent or nine hundred euros to buy."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Vermietungsberatung",
+            "en": "rental adviser"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Beratung fragt: «Il listino indica sessanta euro a settimana oppure novecento per acquistare. Una settimana al mese: quale formula preferisce?»",
+        "en": "The adviser asks: «Il listino indica sessanta euro a settimana oppure novecento per acquistare. Una settimana al mese: quale formula preferisce?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Il listino indica sessanta euro a settimana oppure novecento per acquistare. Una settimana al mese: quale formula preferisce?",
+          "base": {
+            "de": "Die Preisliste nennt sechzig Euro pro Woche oder neunhundert zum Kauf. Bei einer Woche monatlich: Welche Variante bevorzugen Sie?",
+            "en": "The price list says sixty euros a week or nine hundred to buy. For one week a month, which arrangement do you prefer?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Nel complesso comprare è la scelta più sensata: quindici settimane di noleggio costano quanto la macchina, che userei ogni mese.",
+          "base": {
+            "de": "Alles in allem ist der Kauf am sinnvollsten: Fünfzehn Mietwochen kosten so viel wie die Maschine, die ich monatlich nutzen würde.",
+            "en": "Overall, buying makes the most sense: fifteen rental weeks cost as much as the machine, which I would use every month."
+          },
+          "speaker": "you",
+          "move": "reason",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Il listino prevede però duecento euro per una riparazione fuori garanzia. Ha incluso questo rischio nel calcolo?",
+          "base": {
+            "de": "Die Preisliste sieht allerdings zweihundert Euro für eine Reparatur außerhalb der Garantie vor. Haben Sie dieses Risiko eingerechnet?",
+            "en": "But the price list specifies two hundred euros for an out-of-warranty repair. Have you included that risk?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Con quella riparazione si ammortizza in circa diciotto mesi; vale la pena solo se il lavoro continua, come prevedo.",
+          "base": {
+            "de": "Mit dieser Reparatur amortisiert sie sich in etwa achtzehn Monaten; es lohnt sich nur, wenn die Arbeit wie erwartet weiterläuft.",
+            "en": "With that repair, it pays for itself in about eighteen months; it is worthwhile only if the work continues, as I expect."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Offriamo anche il noleggio con riscatto. Che cosa le serve per confrontare seriamente tutte e tre le formule?",
+          "base": {
+            "de": "Wir bieten auch Mietkauf an. Was benötigen Sie, um alle drei Varianten gründlich zu vergleichen?",
+            "en": "We also offer rent-to-buy. What do you need to compare all three arrangements properly?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Mi serve un preventivo con manutenzione inclusa per tutte le formule, calcolato sulle stesse settimane: così confronto il costo effettivo.",
+          "base": {
+            "de": "Ich brauche ein Angebot mit Wartung für alle Varianten, berechnet auf dieselben Wochen: So kann ich die tatsächlichen Kosten vergleichen.",
+            "en": "I need a quote including maintenance for every arrangement, calculated for the same weeks, so I can compare the actual cost."
+          },
+          "speaker": "you",
+          "move": "request",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "Nel complesso ",
+        "chunks": [
+          "comprare",
+          "è la scelta",
+          "più sensata:",
+          "quindici settimane",
+          "di noleggio"
+        ],
+        "distractors": [
+          "sono le scelte",
+          "più sensate"
+        ],
+        "frameSuffix": " costano quanto la macchina, che userei ogni mese."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Con quella riparazione si "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " in circa diciotto mesi; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " solo se il lavoro continua, come prevedo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "ammortizza",
+            "acceptedAnswers": [
+              "ammortizza"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "ammortizzarsi, 3. Person Singular, Präsens Indikativ; si ist vorgegeben",
+              "en": "ammortizzarsi, third-person singular, present indicative; si is supplied"
+            }
+          },
+          {
+            "answer": "vale la pena",
+            "acceptedAnswers": [
+              "vale la pena"
+            ],
+            "kind": "frame",
+            "choices": [
+              "vale la pena",
+              "nonostante",
+              "a differenza di",
+              "invece di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " un preventivo con manutenzione "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " per tutte le formule, calcolato sulle stesse settimane: così confronto il costo effettivo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mi serve",
+            "acceptedAnswers": [
+              "Mi serve"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mi serve",
+              "Mi servono",
+              "Nonostante",
+              "Invece di"
+            ]
+          },
+          {
+            "answer": "inclusa",
+            "acceptedAnswers": [
+              "inclusa"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "includere, Partizip als Adjektiv zu manutenzione, Singular feminin",
+              "en": "includere, participle used as an adjective agreeing with manutenzione, feminine singular"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Nel complesso comprare è la scelta più sensata: quindici settimane di noleggio costano ",
+        "answer": "quanto",
+        "acceptedAnswers": [
+          "quanto",
+          "come"
+        ],
+        "fallbackChoices": [
+          "quanto",
+          "quanta",
+          "quanti",
+          "quante"
+        ],
+        "after": " la macchina, che userei ogni mese."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Den Nutzen an eine Bedingung knüpfen",
+          "en": "Making value conditional"
+        },
+        "rule": {
+          "de": "Vale la pena solo se nennt eine notwendige Bedingung dafür, dass sich die Ausgabe lohnt.",
+          "en": "Vale la pena solo se states a necessary condition for an expense to be worthwhile."
+        },
+        "examples": [
+          {
+            "targetText": "Con quella riparazione si ammortizza in circa diciotto mesi; vale la pena solo se il lavoro continua, come prevedo.",
+            "base": {
+              "de": "Mit dieser Reparatur amortisiert sie sich in etwa achtzehn Monaten; es lohnt sich nur, wenn die Arbeit wie erwartet weiterläuft.",
+              "en": "With that repair, it pays for itself in about eighteen months; it is worthwhile only if the work continues, as I expect."
+            },
+            "highlights": [
+              "si ammortizza in",
+              "vale la pena solo se"
+            ]
+          },
+          {
+            "targetText": "La manutenzione inclusa vale la pena solo se utilizzo la macchina abbastanza spesso da giustificare la quota.",
+            "base": {
+              "de": "Die enthaltene Wartung lohnt sich nur, wenn ich die Maschine oft genug nutze, um den Beitrag zu rechtfertigen.",
+              "en": "Included maintenance is worthwhile only if I use the machine often enough to justify the charge."
+            },
+            "highlights": [
+              "vale la pena solo se"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "nel complesso",
+          "kind": "connector",
+          "base": {
+            "de": "insgesamt",
+            "en": "overall"
+          }
+        },
+        {
+          "targetText": "vale la pena",
+          "kind": "frame",
+          "base": {
+            "de": "es lohnt sich",
+            "en": "it is worthwhile"
+          }
+        },
+        {
+          "targetText": "si ammortizza",
+          "kind": "verb",
+          "base": {
+            "de": "amortisiert sich",
+            "en": "pays for itself"
+          },
+          "lemma": "ammortizzare"
+        },
+        {
+          "targetText": "preventivo",
+          "kind": "noun",
+          "base": {
+            "de": "Kostenvoranschlag",
+            "en": "quote"
+          }
+        },
+        {
+          "targetText": "manutenzione",
+          "kind": "noun",
+          "base": {
+            "de": "Wartung",
+            "en": "maintenance"
+          }
+        },
+        {
+          "targetText": "riscatto",
+          "kind": "noun",
+          "base": {
+            "de": "Kaufübernahme am Mietende",
+            "en": "buyout at the end of a rental"
+          }
+        },
+        {
+          "targetText": "effettivo",
+          "kind": "adjective",
+          "base": {
+            "de": "tatsächlich",
+            "en": "actual"
+          }
+        },
+        {
+          "targetText": "giustificare",
+          "kind": "verb",
+          "base": {
+            "de": "rechtfertigen",
+            "en": "justify"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "comprare",
+            "scelta",
+            "sensata"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "ammortizza",
+            "pena",
+            "continua"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "preventivo",
+            "manutenzione",
+            "effettivo"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "ammortizzare",
+        "familyKey": "ammortizzare",
+        "surface": "ammortizza",
+        "turnIndex": 3,
+        "pos": "verb",
+        "example": {
+          "targetText": "La macchina si ammortizza in quindici settimane di utilizzo senza spese impreviste.",
+          "base": {
+            "de": "Die Maschine amortisiert sich bei fünfzehn Nutzungswochen ohne unvorhergesehene Kosten.",
+            "en": "The machine pays for itself in fifteen weeks of use without unexpected expenses."
+          }
+        },
+        "base": {
+          "de": "amortisieren / Kosten wieder einspielen",
+          "en": "amortize / recover the cost"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "due-piani-vacanza",
+      "title": {
+        "de": "Zwei Urlaubspläne",
+        "en": "Two holiday plans"
+      },
+      "situation": {
+        "de": "Mit einer befreundeten Person vergleichen Sie ein Ferienhaus in den Bergen und eine Reise ans Meer. Gemeinsam stehen achthundert Euro zur Verfügung.",
+        "en": "You compare a mountain rental and a seaside trip with a friend. You have eight hundred euros between you."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tu",
+          "tu",
+          "tu"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die befreundete Person fragt: «Abbiamo ottocento euro in due: una casa in montagna oppure qualche giorno al mare. Quale proposta ti convince?»",
+        "en": "Your friend asks: «Abbiamo ottocento euro in due: una casa in montagna oppure qualche giorno al mare. Quale proposta ti convince?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Abbiamo ottocento euro in due: una casa in montagna oppure qualche giorno al mare. Quale proposta ti convince?",
+          "base": {
+            "de": "Wir haben zusammen achthundert Euro: ein Haus in den Bergen oder ein paar Tage am Meer. Was überzeugt dich?",
+            "en": "We have eight hundred euros between us: a mountain house or a few days by the sea. Which idea convinces you?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Mi piacciono entrambe le proposte che abbiamo trovato, perché la montagna costa meno sulla carta, mentre il mare offre più riposo.",
+          "base": {
+            "de": "Mir gefallen beide gefundenen Vorschläge, denn die Berge kosten auf dem Papier weniger, während das Meer mehr Erholung bietet.",
+            "en": "I like both options we found, because the mountains cost less on paper, whereas the seaside offers more rest."
+          },
+          "speaker": "you",
+          "move": "compare",
+          "register": "tu"
+        },
+        {
+          "targetText": "In montagna però aggiungiamo sempre escursioni e spostamenti. Il conto finale è davvero più basso?",
+          "base": {
+            "de": "In den Bergen kommen aber immer Ausflüge und Fahrten dazu. Ist die Endsumme wirklich niedriger?",
+            "en": "But in the mountains we always add excursions and transport. Is the final bill really lower?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Con auto a noleggio e funivia spendiamo quasi uguale; piuttosto che risparmiare, in montagna scegliamo un modo diverso di divertirci.",
+          "base": {
+            "de": "Mit Mietauto und Seilbahn geben wir fast gleich viel aus; statt zu sparen, wählen wir in den Bergen eine andere Art von Vergnügen.",
+            "en": "With a rental car and cable car, we spend almost the same; rather than saving, in the mountains we choose a different way to enjoy ourselves."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "tu"
+        },
+        {
+          "targetText": "Allora decidiamo per questa estate, ma teniamo aperta anche l'altra possibilità. Come distribuiamo le due vacanze?",
+          "base": {
+            "de": "Dann entscheiden wir über diesen Sommer, behalten aber auch die andere Möglichkeit. Wie verteilen wir die beiden Urlaube?",
+            "en": "Then let’s decide on this summer but keep the other option open too. How shall we spread out the two holidays?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Propongo il mare adesso e la montagna in autunno, quando costa meno: possiamo dividere la spesa senza rinunciare a nessuna proposta.",
+          "base": {
+            "de": "Ich schlage jetzt das Meer und im Herbst die günstigeren Berge vor: So verteilen wir die Kosten, ohne eine Idee aufzugeben.",
+            "en": "I suggest the seaside now and the cheaper mountains in autumn: we can spread the cost without giving up either idea."
+          },
+          "speaker": "you",
+          "move": "propose",
+          "register": "tu"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Mi piacciono",
+          "entrambe",
+          "le proposte",
+          "che abbiamo",
+          "trovato, perché"
+        ],
+        "distractors": [
+          "entrambi",
+          "mi piace"
+        ],
+        "frameSuffix": " la montagna costa meno sulla carta, mentre il mare offre più riposo."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Con auto a noleggio e funivia "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " quasi uguale; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " risparmiare, in montagna scegliamo un modo diverso di divertirci."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "spendiamo",
+            "acceptedAnswers": [
+              "spendiamo"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "spendere, wir, Präsens Indikativ",
+              "en": "spendere, we, present indicative"
+            }
+          },
+          {
+            "answer": "piuttosto che",
+            "acceptedAnswers": [
+              "piuttosto che"
+            ],
+            "kind": "frame",
+            "choices": [
+              "piuttosto che",
+              "nonostante",
+              "dato che",
+              "mentre"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " il mare adesso e la montagna in autunno, quando costa meno: possiamo dividere la spesa senza rinunciare a nessuna proposta."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Propongo",
+            "acceptedAnswers": [
+              "Propongo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Propongo",
+              "Propongo di",
+              "Per quanto",
+              "Invece di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Mi piacciono ",
+        "answer": "entrambe",
+        "acceptedAnswers": [
+          "entrambe",
+          "tutte e due",
+          "ambedue"
+        ],
+        "fallbackChoices": [
+          "entrambe",
+          "entrambi",
+          "entrambi due",
+          "entrambi i"
+        ],
+        "after": " le proposte che abbiamo trovato, perché la montagna costa meno sulla carta, mentre il mare offre più riposo."
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Ein Ziel neu einordnen",
+          "en": "Reframing the aim"
+        },
+        "rule": {
+          "de": "Piuttosto che bedeutet hier „anstatt“ und stellt die tatsächliche Wahl dem verworfenen Ziel gegenüber.",
+          "en": "Piuttosto che means “rather than” here and contrasts the real choice with the rejected aim."
+        },
+        "examples": [
+          {
+            "targetText": "Con auto a noleggio e funivia spendiamo quasi uguale; piuttosto che risparmiare, in montagna scegliamo un modo diverso di divertirci.",
+            "base": {
+              "de": "Mit Mietauto und Seilbahn geben wir fast gleich viel aus; statt zu sparen, wählen wir in den Bergen eine andere Art von Vergnügen.",
+              "en": "With a rental car and cable car, we spend almost the same; rather than saving, in the mountains we choose a different way to enjoy ourselves."
+            },
+            "highlights": [
+              "piuttosto che risparmiare"
+            ]
+          },
+          {
+            "targetText": "Piuttosto che risparmiare pochi euro, scegliamo una gita che possiamo fare senza correre.",
+            "base": {
+              "de": "Statt ein paar Euro zu sparen, wählen wir einen Ausflug, den wir ohne Hetze machen können.",
+              "en": "Rather than saving a few euros, we choose a trip we can enjoy without rushing."
+            },
+            "highlights": [
+              "Piuttosto che"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "sulla carta",
+          "kind": "frame",
+          "base": {
+            "de": "auf dem Papier",
+            "en": "on paper"
+          }
+        },
+        {
+          "targetText": "piuttosto che",
+          "kind": "connector",
+          "base": {
+            "de": "anstatt",
+            "en": "rather than"
+          }
+        },
+        {
+          "targetText": "entrambe",
+          "kind": "adjective",
+          "base": {
+            "de": "beide, feminin",
+            "en": "both, feminine"
+          },
+          "lemma": "entrambi"
+        },
+        {
+          "targetText": "riposo",
+          "kind": "noun",
+          "base": {
+            "de": "Erholung",
+            "en": "rest"
+          }
+        },
+        {
+          "targetText": "escursioni",
+          "kind": "noun",
+          "base": {
+            "de": "Ausflüge / Wanderungen",
+            "en": "excursions"
+          },
+          "lemma": "escursione"
+        },
+        {
+          "targetText": "funivia",
+          "kind": "noun",
+          "base": {
+            "de": "Seilbahn",
+            "en": "cable car"
+          }
+        },
+        {
+          "targetText": "distribuiamo",
+          "kind": "verb",
+          "base": {
+            "de": "wir verteilen",
+            "en": "we distribute"
+          },
+          "lemma": "distribuire"
+        },
+        {
+          "targetText": "rinunciare",
+          "kind": "verb",
+          "base": {
+            "de": "verzichten",
+            "en": "give up"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "piacciono",
+            "entrambe",
+            "proposte"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "funivia",
+            "spendiamo",
+            "risparmiare"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "propongo",
+            "autunno",
+            "dividere"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "entrambi",
+        "familyKey": "entrambi",
+        "surface": "entrambe",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Entrambe le proposte rispettano il nostro limite di spesa.",
+          "base": {
+            "de": "Beide Vorschläge halten unser Ausgabenlimit ein.",
+            "en": "Both proposals stay within our spending limit."
+          }
+        },
+        "base": {
+          "de": "beide",
+          "en": "both"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "contanti-o-app",
+      "title": {
+        "de": "Barzahlung und App vergleichen",
+        "en": "Comparing cash and app payments"
+      },
+      "situation": {
+        "de": "Sie betreiben am Wochenende einen Marktstand und vergleichen mit einer Ladeninhaberin Zahlungsarten. Der fiktive PagoQui-Prospekt nennt eine Gebühr von anderthalb Prozent.",
+        "en": "You run a weekend market stall and compare payment methods with a shop owner. A fictional PagoQui leaflet lists a fee of one and a half percent."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Ladeninhaberin",
+            "en": "shop owner"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Ladeninhaberin fragt: «Il prospetto PagoQui indica una commissione dell'uno e mezzo per cento. Al suo banco preferisce i contanti?»",
+        "en": "The shop owner asks: «Il prospetto PagoQui indica una commissione dell'uno e mezzo per cento. Al suo banco preferisce i contanti?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Il prospetto PagoQui indica una commissione dell'uno e mezzo per cento. Al suo banco preferisce i contanti?",
+          "base": {
+            "de": "Der PagoQui-Prospekt nennt anderthalb Prozent Gebühr. Bevorzugen Sie an Ihrem Stand Bargeld?",
+            "en": "The PagoQui leaflet lists a one-and-a-half-percent fee. Do you prefer cash at your stall?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "A differenza dei contanti, l'app evita errori di resto, ma richiede una commissione per ogni pagamento effettuato al banco.",
+          "base": {
+            "de": "Anders als Bargeld vermeidet die App Fehler beim Wechselgeld, verlangt aber für jede Zahlung am Stand eine Gebühr.",
+            "en": "Unlike cash, the app avoids errors in giving change, but charges a fee for every payment made at the stall."
+          },
+          "speaker": "you",
+          "move": "compare",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Su un caffè da un euro, però, ogni costo riduce il margine. Come giustifica quella trattenuta?",
+          "base": {
+            "de": "Bei einem Kaffee für einen Euro schmälert aber jede Ausgabe die Marge. Wie rechtfertigen Sie diesen Abzug?",
+            "en": "But on a one-euro coffee, every cost cuts the margin. How do you justify that deduction?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "La commissione pesa poco rispetto al tempo necessario per contare i contanti; evito anche le spese del mio versamento in banca.",
+          "base": {
+            "de": "Die Gebühr fällt gegenüber der Zeit zum Bargeldzählen wenig ins Gewicht; außerdem spare ich die Gebühren meiner Bankeinzahlung.",
+            "en": "The fee is small compared with the time needed to count cash; I also avoid the cost of my bank deposit."
+          },
+          "speaker": "you",
+          "move": "rebut",
+          "register": "Lei"
+        },
+        {
+          "targetText": "E alle persone anziane che non si fidano del telefono, quale messaggio darebbe per non allontanarle?",
+          "base": {
+            "de": "Was würden Sie älteren Menschen sagen, die dem Handy misstrauen, damit sie nicht wegbleiben?",
+            "en": "And what would you say to older people who distrust phones so you do not drive them away?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Nel complesso accetto entrambe le modalità: spiego che l'app è facoltativa e che possono continuare a pagare in contanti come prima.",
+          "base": {
+            "de": "Insgesamt akzeptiere ich beide Arten: Ich erkläre, dass die App freiwillig ist und sie weiterhin wie bisher bar zahlen können.",
+            "en": "Overall, I accept both methods: I explain that the app is optional and they can keep paying cash as before."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "A differenza",
+          "dei contanti, l'app",
+          "evita errori",
+          "di resto, ma",
+          "richiede"
+        ],
+        "distractors": [
+          "evitano errori",
+          "dalle banconote"
+        ],
+        "frameSuffix": " una commissione per ogni pagamento effettuato al banco."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "La commissione pesa poco "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " tempo necessario per "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " i contanti; evito anche le spese del mio versamento in banca."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "rispetto al",
+            "acceptedAnswers": [
+              "rispetto al"
+            ],
+            "kind": "frame",
+            "choices": [
+              "rispetto al",
+              "benché il",
+              "purché il",
+              "mentre il"
+            ]
+          },
+          {
+            "answer": "contare",
+            "acceptedAnswers": [
+              "contare"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "contare, Infinitiv nach per",
+              "en": "contare, infinitive after per"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " accetto entrambe le modalità: spiego che l'app è facoltativa e che possono continuare a pagare in contanti come prima."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Nel complesso",
+            "acceptedAnswers": [
+              "Nel complesso"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Nel complesso",
+              "Nonostante",
+              "A causa di",
+              "Invece di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "A differenza dei contanti, l'app ",
+        "answer": "evita",
+        "acceptedAnswers": [
+          "evita",
+          "elimina",
+          "previene"
+        ],
+        "fallbackChoices": [
+          "evita",
+          "evitano",
+          "eviti",
+          "evitare"
+        ],
+        "after": " errori di resto, ma richiede una commissione per ogni pagamento effettuato al banco."
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Einen Unterschied benennen",
+          "en": "Naming a difference"
+        },
+        "rule": {
+          "de": "A differenza di leitet den Vergleich ein; vor einem bestimmten Artikel wird di hier zu dei.",
+          "en": "A differenza di introduces the comparison; before a definite article, di becomes dei here."
+        },
+        "examples": [
+          {
+            "targetText": "A differenza dei contanti, l'app evita errori di resto, ma richiede una commissione per ogni pagamento effettuato al banco.",
+            "base": {
+              "de": "Anders als Bargeld vermeidet die App Fehler beim Wechselgeld, verlangt aber für jede Zahlung am Stand eine Gebühr.",
+              "en": "Unlike cash, the app avoids errors in giving change, but charges a fee for every payment made at the stall."
+            },
+            "highlights": [
+              "A differenza dei contanti"
+            ]
+          },
+          {
+            "targetText": "A differenza delle monete, il pagamento digitale lascia una registrazione che posso controllare a fine giornata.",
+            "base": {
+              "de": "Anders als Münzen hinterlässt die digitale Zahlung einen Eintrag, den ich am Tagesende prüfen kann.",
+              "en": "Unlike coins, a digital payment leaves a record I can check at the end of the day."
+            },
+            "highlights": [
+              "A differenza delle monete"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "a differenza dei",
+          "kind": "frame",
+          "base": {
+            "de": "anders als die",
+            "en": "unlike the"
+          }
+        },
+        {
+          "targetText": "rispetto al",
+          "kind": "connector",
+          "base": {
+            "de": "verglichen mit dem",
+            "en": "compared with the"
+          }
+        },
+        {
+          "targetText": "commissione",
+          "kind": "noun",
+          "base": {
+            "de": "Zahlungsgebühr",
+            "en": "transaction fee"
+          }
+        },
+        {
+          "targetText": "margine",
+          "kind": "noun",
+          "base": {
+            "de": "Gewinnspanne",
+            "en": "margin"
+          }
+        },
+        {
+          "targetText": "trattenuta",
+          "kind": "noun",
+          "base": {
+            "de": "Abzug",
+            "en": "deduction"
+          }
+        },
+        {
+          "targetText": "versamento",
+          "kind": "noun",
+          "base": {
+            "de": "Einzahlung",
+            "en": "deposit"
+          }
+        },
+        {
+          "targetText": "facoltativa",
+          "kind": "adjective",
+          "base": {
+            "de": "freiwillig",
+            "en": "optional"
+          },
+          "lemma": "facoltativo"
+        },
+        {
+          "targetText": "registrazione",
+          "kind": "noun",
+          "base": {
+            "de": "Aufzeichnung",
+            "en": "record"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "contanti",
+            "l'app",
+            "evita"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "commissione",
+            "tempo",
+            "contare"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "complesso",
+            "modalità",
+            "facoltativa"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "commissione",
+        "familyKey": "commissione",
+        "surface": "commissione",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "La commissione si applica soltanto ai pagamenti effettuati con questa app.",
+          "base": {
+            "de": "Die Gebühr fällt nur für Zahlungen mit dieser App an.",
+            "en": "The fee applies only to payments made with this app."
+          }
+        },
+        "base": {
+          "de": "Gebühr / Provision",
+          "en": "fee / commission"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "corso-o-app",
+      "title": {
+        "de": "Kurs oder Lern-App",
+        "en": "Course or learning app"
+      },
+      "situation": {
+        "de": "Mit einer befreundeten Person vergleichen Sie einen Spanisch-Abendkurs für dreihundert Euro mit einer kostenlosen App.",
+        "en": "With a friend, you compare a three-hundred-euro evening Spanish course with a free app."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tu",
+          "tu",
+          "tu"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die befreundete Person fragt: «Il corso serale costa trecento euro, l'app è gratuita. Perché pensi che il corso faccia più al caso tuo?»",
+        "en": "Your friend asks: «Il corso serale costa trecento euro, l'app è gratuita. Perché pensi che il corso faccia più al caso tuo?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Il corso serale costa trecento euro, l'app è gratuita. Perché pensi che il corso faccia più al caso tuo?",
+          "base": {
+            "de": "Der Abendkurs kostet dreihundert Euro, die App ist kostenlos. Warum passt der Kurs deiner Meinung nach besser zu dir?",
+            "en": "The evening course costs three hundred euros; the app is free. Why do you think the course suits you better?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Il vantaggio del corso rispetto all'app è la pratica regolare che mi manca quando studio senza un gruppo a orari fissi.",
+          "base": {
+            "de": "Der Vorteil des Kurses gegenüber der App ist die regelmäßige Praxis, die mir ohne eine Gruppe mit festen Zeiten fehlt.",
+            "en": "The course’s advantage over the app is the regular practice I lack when studying without a group at fixed times."
+          },
+          "speaker": "you",
+          "move": "reason",
+          "register": "tu"
+        },
+        {
+          "targetText": "Ma sono trecento euro contro zero, e l'app è sempre in tasca. Non basta usarla ogni giorno?",
+          "base": {
+            "de": "Aber es sind dreihundert Euro gegenüber null, und die App ist immer dabei. Reicht es nicht, sie täglich zu nutzen?",
+            "en": "But that is three hundred euros versus zero, and the app is always in your pocket. Isn’t using it daily enough?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Hai ragione sul prezzo, però mantengo la costanza solo con appuntamenti fissi: il gruppo mi aiuta a rispettarli.",
+          "base": {
+            "de": "Beim Preis hast du recht, aber ich bleibe nur mit festen Terminen beständig dabei: Die Gruppe hilft mir, sie einzuhalten.",
+            "en": "You are right about the price, but I manage consistency only with fixed appointments: the group helps me keep them."
+          },
+          "speaker": "you",
+          "move": "concede",
+          "register": "tu"
+        },
+        {
+          "targetText": "E a chi non ha mai una sera libera, che cosa consiglieresti per mantenere comunque un ritmo?",
+          "base": {
+            "de": "Und was würdest du jemandem empfehlen, der nie einen freien Abend hat, um trotzdem einen Rhythmus zu halten?",
+            "en": "And what would you recommend to someone who never has a free evening, so they still maintain a routine?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Alla fine conta la costanza: corso per chi ha serate libere, app con un incontro di conversazione per chi cambia spesso orario.",
+          "base": {
+            "de": "Letztlich zählt Beständigkeit: ein Kurs bei freien Abenden, eine App mit Gesprächstermin bei häufig wechselnden Arbeitszeiten.",
+            "en": "In the end, consistency matters: a course for free evenings, an app plus a conversation meeting for frequently changing schedules."
+          },
+          "speaker": "you",
+          "move": "summarize",
+          "register": "tu"
+        }
+      ],
+      "build": {
+        "framePrefix": "Il vantaggio del corso ",
+        "chunks": [
+          "rispetto all'app è",
+          "la pratica",
+          "regolare",
+          "che mi manca",
+          "quando studio"
+        ],
+        "distractors": [
+          "rispetto all'app sono",
+          "che mi mancano"
+        ],
+        "frameSuffix": " senza un gruppo a orari fissi."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " sul prezzo, però "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " la costanza solo con appuntamenti fissi: il gruppo mi aiuta a rispettarli."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Hai ragione",
+            "acceptedAnswers": [
+              "Hai ragione"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Hai ragione",
+              "Nonostante",
+              "A differenza di",
+              "Invece di"
+            ]
+          },
+          {
+            "answer": "mantengo",
+            "acceptedAnswers": [
+              "mantengo"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "mantenere, ich, Präsens Indikativ",
+              "en": "mantenere, I, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " conta la costanza: corso per chi ha serate libere, app con un incontro di conversazione per chi cambia spesso orario."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Alla fine",
+            "acceptedAnswers": [
+              "Alla fine"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Alla fine",
+              "Nonostante",
+              "Invece di",
+              "A causa di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Il vantaggio del corso ",
+        "answer": "rispetto",
+        "acceptedAnswers": [
+          "rispetto",
+          "in confronto"
+        ],
+        "fallbackChoices": [
+          "rispetto",
+          "rispetta",
+          "rispettato",
+          "rispettivo"
+        ],
+        "after": " all'app è la pratica regolare che mi manca quando studio senza un gruppo a orari fissi."
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Zustimmen und am entscheidenden Punkt festhalten",
+          "en": "Agreeing while keeping the decisive point"
+        },
+        "rule": {
+          "de": "Hai ragione erkennt im Gespräch mit tu einen Punkt an; però führt den für die Entscheidung wichtigeren Gesichtspunkt ein.",
+          "en": "Hai ragione acknowledges a point when addressing someone as tu; però introduces the factor that matters more for the decision."
+        },
+        "examples": [
+          {
+            "targetText": "Hai ragione sul prezzo, però mantengo la costanza solo con appuntamenti fissi: il gruppo mi aiuta a rispettarli.",
+            "base": {
+              "de": "Beim Preis hast du recht, aber ich bleibe nur mit festen Terminen beständig dabei: Die Gruppe hilft mir, sie einzuhalten.",
+              "en": "You are right about the price, but I manage consistency only with fixed appointments: the group helps me keep them."
+            },
+            "highlights": [
+              "Hai ragione",
+              "però"
+            ]
+          },
+          {
+            "targetText": "Hai ragione sulla comodità, però senza un appuntamento rimando sempre lo studio a domani.",
+            "base": {
+              "de": "Bei der Bequemlichkeit hast du recht, aber ohne Termin verschiebe ich das Lernen immer auf morgen.",
+              "en": "You are right about convenience, but without an appointment I always put studying off until tomorrow."
+            },
+            "highlights": [
+              "Hai ragione",
+              "però"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "hai ragione",
+          "kind": "frame",
+          "base": {
+            "de": "du hast recht",
+            "en": "you are right"
+          }
+        },
+        {
+          "targetText": "alla fine",
+          "kind": "connector",
+          "base": {
+            "de": "letztlich",
+            "en": "in the end"
+          }
+        },
+        {
+          "targetText": "costanza",
+          "kind": "noun",
+          "base": {
+            "de": "Beständigkeit",
+            "en": "consistency"
+          }
+        },
+        {
+          "targetText": "regolare",
+          "kind": "adjective",
+          "base": {
+            "de": "regelmäßig",
+            "en": "regular"
+          }
+        },
+        {
+          "targetText": "appuntamenti",
+          "kind": "noun",
+          "base": {
+            "de": "Termine",
+            "en": "appointments"
+          },
+          "lemma": "appuntamento"
+        },
+        {
+          "targetText": "rispettarli",
+          "kind": "verb",
+          "base": {
+            "de": "sie einhalten",
+            "en": "keep them"
+          },
+          "lemma": "rispettare"
+        },
+        {
+          "targetText": "comodità",
+          "kind": "noun",
+          "base": {
+            "de": "Bequemlichkeit",
+            "en": "convenience"
+          }
+        },
+        {
+          "targetText": "rimando",
+          "kind": "verb",
+          "base": {
+            "de": "ich verschiebe",
+            "en": "I postpone"
+          },
+          "lemma": "rimandare"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "pratica",
+            "regolare",
+            "manca"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "ragione",
+            "costanza",
+            "mantengo"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "fine",
+            "costanza",
+            "conversazione"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "costanza",
+        "familyKey": "costanza",
+        "surface": "costanza",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "La costanza conta più della durata di una singola sessione.",
+          "base": {
+            "de": "Beständigkeit zählt mehr als die Länge einer einzelnen Lerneinheit.",
+            "en": "Consistency matters more than the length of a single session."
+          }
+        },
+        "base": {
+          "de": "Beständigkeit / Ausdauer",
+          "en": "consistency / perseverance"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "due-offerte-di-lavoro",
+      "title": {
+        "de": "Gehalt und Entwicklungschancen",
+        "en": "Pay and development prospects"
+      },
+      "situation": {
+        "de": "Sie besprechen zwei Stellenangebote mit einer beratenden Person: mehr Gehalt bei einer kleinen Firma oder Weiterbildung im fiktiven Programma Ponte einer größeren Firma.",
+        "en": "You discuss two job offers with an adviser: higher pay at a small company or training through a larger company’s fictional Programma Ponte."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "beratende Person",
+            "en": "career adviser"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Beratung fragt: «Una proposta offre più stipendio, la seconda il Programma Ponte di formazione. Quali aspetti pesano nella sua scelta?»",
+        "en": "The adviser asks: «Una proposta offre più stipendio, la seconda il Programma Ponte di formazione. Quali aspetti pesano nella sua scelta?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Una proposta offre più stipendio, la seconda il Programma Ponte di formazione. Quali aspetti pesano nella sua scelta?",
+          "base": {
+            "de": "Ein Angebot bietet mehr Gehalt, das zweite das Weiterbildungsprogramm Ponte. Welche Aspekte wiegen bei Ihrer Wahl schwer?",
+            "en": "One offer provides more pay, the other the Ponte training programme. Which aspects weigh in your choice?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "La prima offerta garantisce tanto denaro quanto occorre per coprire le spese attuali, mentre la seconda apre prospettive di crescita.",
+          "base": {
+            "de": "Das erste Angebot garantiert genug Geld für die aktuellen Ausgaben, während das zweite Entwicklungschancen eröffnet.",
+            "en": "The first offer guarantees as much money as is needed for current expenses, whereas the second opens development prospects."
+          },
+          "speaker": "you",
+          "move": "compare",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Il denaro serve adesso, ma fra cinque anni quale differenza pensa che peserà di più sul suo percorso?",
+          "base": {
+            "de": "Das Geld brauchen Sie jetzt, aber welcher Unterschied wird in fünf Jahren für Ihren Weg stärker zählen?",
+            "en": "You need money now, but five years from now, which difference will matter more for your career?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Gli stipendi tendono ad avvicinarsi, mentre la formazione apre ruoli diversi: le prospettive della seconda offerta possono quindi compensare il divario iniziale.",
+          "base": {
+            "de": "Die Gehälter nähern sich eher an, während Weiterbildung andere Rollen eröffnet: Die Chancen des zweiten Angebots können den anfänglichen Abstand ausgleichen.",
+            "en": "Salaries tend to converge, whereas training opens different roles: the second offer’s prospects can therefore offset the initial gap."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Il programma però potrebbe chiudere dopo un anno. Quale condizione renderebbe difendibile la sua scelta della seconda offerta?",
+          "base": {
+            "de": "Das Programm könnte aber nach einem Jahr enden. Unter welcher Bedingung wäre Ihre Wahl des zweiten Angebots vertretbar?",
+            "en": "But the programme might close after a year. What condition would make choosing the second offer defensible?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "In definitiva scelgo la seconda offerta, a condizione che la formazione sia scritta nel contratto e non resti una promessa.",
+          "base": {
+            "de": "Letztlich wähle ich das zweite Angebot, sofern die Weiterbildung im Vertrag steht und nicht nur ein Versprechen bleibt.",
+            "en": "Ultimately, I choose the second offer, provided the training is written into the contract and does not remain a promise."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "La prima offerta garantisce ",
+        "chunks": [
+          "tanto denaro",
+          "quanto",
+          "occorre",
+          "per coprire",
+          "le spese"
+        ],
+        "distractors": [
+          "tanta",
+          "occorrono"
+        ],
+        "frameSuffix": " attuali, mentre la seconda apre prospettive di crescita."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Gli stipendi tendono ad avvicinarsi, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " la formazione apre ruoli diversi: le prospettive della seconda offerta possono quindi "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " il divario iniziale."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "mentre",
+            "acceptedAnswers": [
+              "mentre"
+            ],
+            "kind": "connector",
+            "choices": [
+              "mentre",
+              "senza",
+              "a differenza di",
+              "invece di"
+            ]
+          },
+          {
+            "answer": "compensare",
+            "acceptedAnswers": [
+              "compensare"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "compensare, Infinitiv nach possono",
+              "en": "compensare, infinitive after possono"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " scelgo la seconda offerta, a condizione che la formazione sia scritta nel contratto e non resti una promessa."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "In definitiva",
+            "acceptedAnswers": [
+              "In definitiva"
+            ],
+            "kind": "connector",
+            "choices": [
+              "In definitiva",
+              "Nonostante",
+              "A causa di",
+              "Invece di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "La prima offerta garantisce tanto denaro ",
+        "answer": "quanto",
+        "acceptedAnswers": [
+          "quanto"
+        ],
+        "fallbackChoices": [
+          "quanto",
+          "quanta",
+          "quanti",
+          "quante"
+        ],
+        "after": " occorre per coprire le spese attuali, mentre la seconda apre prospettive di crescita."
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Eine Menge am Bedarf messen",
+          "en": "Measuring an amount against a need"
+        },
+        "rule": {
+          "de": "Tanto … quanto verbindet eine Menge mit einem Vergleichsmaßstab, hier dem Geldbedarf für die laufenden Ausgaben.",
+          "en": "Tanto … quanto links an amount to a benchmark, here the money required for current expenses."
+        },
+        "examples": [
+          {
+            "targetText": "La prima offerta garantisce tanto denaro quanto occorre per coprire le spese attuali, mentre la seconda apre prospettive di crescita.",
+            "base": {
+              "de": "Das erste Angebot garantiert genug Geld für die aktuellen Ausgaben, während das zweite Entwicklungschancen eröffnet.",
+              "en": "The first offer guarantees as much money as is needed for current expenses, whereas the second opens development prospects."
+            },
+            "highlights": [
+              "tanto denaro quanto"
+            ]
+          },
+          {
+            "targetText": "La borsa copre tanto tempo di studio quanto serve per completare il corso senza ridurre le ore di pratica.",
+            "base": {
+              "de": "Das Stipendium deckt so viel Lernzeit ab, wie zum Kursabschluss ohne weniger Praxisstunden nötig ist.",
+              "en": "The grant covers as much study time as is needed to finish the course without reducing practice hours."
+            },
+            "highlights": [
+              "tanto tempo di studio quanto"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "tanto",
+          "kind": "connector",
+          "base": {
+            "de": "so viel",
+            "en": "as much"
+          }
+        },
+        {
+          "targetText": "in definitiva",
+          "kind": "connector",
+          "base": {
+            "de": "letztlich",
+            "en": "ultimately"
+          }
+        },
+        {
+          "targetText": "prospettive",
+          "kind": "noun",
+          "base": {
+            "de": "Perspektiven / Aussichten",
+            "en": "prospects"
+          },
+          "lemma": "prospettiva"
+        },
+        {
+          "targetText": "crescita",
+          "kind": "noun",
+          "base": {
+            "de": "Entwicklung / Wachstum",
+            "en": "growth"
+          }
+        },
+        {
+          "targetText": "divario",
+          "kind": "noun",
+          "base": {
+            "de": "Abstand / Gefälle",
+            "en": "gap"
+          }
+        },
+        {
+          "targetText": "compensare",
+          "kind": "verb",
+          "base": {
+            "de": "ausgleichen",
+            "en": "offset"
+          }
+        },
+        {
+          "targetText": "garantisce",
+          "kind": "verb",
+          "base": {
+            "de": "garantiert",
+            "en": "guarantees"
+          },
+          "lemma": "garantire"
+        },
+        {
+          "targetText": "promessa",
+          "kind": "noun",
+          "base": {
+            "de": "Versprechen",
+            "en": "promise"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "denaro",
+            "occorre",
+            "spese"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "formazione",
+            "prospettive",
+            "divario"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "definitiva",
+            "contratto",
+            "promessa"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "prospettiva",
+        "familyKey": "prospettiva",
+        "surface": "prospettive",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "La formazione apre prospettive che il solo stipendio non offre.",
+          "base": {
+            "de": "Weiterbildung eröffnet Perspektiven, die das Gehalt allein nicht bietet.",
+            "en": "Training opens prospects that pay alone does not offer."
+          }
+        },
+        "base": {
+          "de": "Perspektive / Aussicht",
+          "en": "prospect / outlook"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "trasferirsi-o-restare",
+      "title": {
+        "de": "Umziehen oder bleiben",
+        "en": "Moving or staying"
+      },
+      "situation": {
+        "de": "Sie besprechen mit einer Person aus der Nachbarschaft ein Stellenangebot in Bologna. In Ihrer jetzigen Stadt haben Sie eine Wohnung und ein soziales Netz.",
+        "en": "You discuss a job offer in Bologna with a neighbour. In your current city, you have a flat and a social network."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Gegenüber fragt: «Qui ha una casa e persone che conosce. Il lavoro a Bologna basta davvero a giustificare un trasferimento?»",
+        "en": "Your neighbour asks: «Qui ha una casa e persone che conosce. Il lavoro a Bologna basta davvero a giustificare un trasferimento?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Qui ha una casa e persone che conosce. Il lavoro a Bologna basta davvero a giustificare un trasferimento?",
+          "base": {
+            "de": "Hier haben Sie eine Wohnung und vertraute Menschen. Reicht die Arbeit in Bologna wirklich als Grund für einen Umzug?",
+            "en": "You have a home and people you know here. Is the job in Bologna really enough to justify moving?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Per me conta più la possibilità di lavorare che la comodità di restare, ma devo ancora valutare la stabilità del nuovo impiego.",
+          "base": {
+            "de": "Für mich zählt die Arbeitsmöglichkeit mehr als die Bequemlichkeit des Bleibens, aber ich muss die Sicherheit der neuen Stelle noch prüfen.",
+            "en": "The chance to work matters more to me than the comfort of staying, but I still need to assess the new job’s stability."
+          },
+          "speaker": "you",
+          "move": "position",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Mia nipote aveva fatto lo stesso ragionamento, poi è tornata dopo un anno. Non rischia una delusione simile?",
+          "base": {
+            "de": "Meine Nichte dachte genauso und kam nach einem Jahr zurück. Riskieren Sie nicht eine ähnliche Enttäuschung?",
+            "en": "My niece reasoned the same way, then came back after a year. Aren’t you risking a similar disappointment?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Un caso non fa una regola; in ogni caso il mio contratto qui scade, quindi restare non garantisce automaticamente stabilità.",
+          "base": {
+            "de": "Ein Einzelfall macht keine Regel; jedenfalls läuft mein Vertrag hier aus, also garantiert Bleiben nicht automatisch Sicherheit.",
+            "en": "One case does not make a rule; in any case, my contract here expires, so staying does not automatically guarantee stability."
+          },
+          "speaker": "you",
+          "move": "rebut",
+          "register": "Lei"
+        },
+        {
+          "targetText": "L'azienda accetta un anno di prova; Lei può mantenere questa casa. Come sfrutterebbe questa possibilità?",
+          "base": {
+            "de": "Die Firma akzeptiert ein Probejahr, und Sie können die Wohnung behalten. Wie würden Sie diese konkrete Möglichkeit nutzen?",
+            "en": "The company accepts a trial year, and you can keep this flat. How would you use that concrete opportunity?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Propongo un anno a Bologna mantenendo la casa: a parità di informazioni potrò confrontare le due città prima di decidere definitivamente.",
+          "base": {
+            "de": "Ich schlage ein Jahr in Bologna mit beibehaltener Wohnung vor: Mit gleichwertigen Informationen kann ich beide Städte vor der endgültigen Entscheidung vergleichen.",
+            "en": "I propose a year in Bologna while keeping the flat: with equivalent information, I can compare both cities before deciding for good."
+          },
+          "speaker": "you",
+          "move": "propose",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "Per me conta ",
+        "chunks": [
+          "più la possibilità",
+          "di lavorare",
+          "che",
+          "la comodità",
+          "di restare, ma"
+        ],
+        "distractors": [
+          "piuttosto che",
+          "della possibilità"
+        ],
+        "frameSuffix": " devo ancora valutare la stabilità del nuovo impiego."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Un caso non fa una regola; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " il mio contratto qui scade, quindi restare non "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " automaticamente stabilità."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "in ogni caso",
+            "acceptedAnswers": [
+              "in ogni caso"
+            ],
+            "kind": "connector",
+            "choices": [
+              "in ogni caso",
+              "senza",
+              "invece di",
+              "a causa di"
+            ]
+          },
+          {
+            "answer": "garantisce",
+            "acceptedAnswers": [
+              "garantisce"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "garantire, 3. Person Singular, Präsens Indikativ",
+              "en": "garantire, third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Propongo un anno a Bologna mantenendo la casa: "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " informazioni potrò confrontare le due città prima di decidere definitivamente."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "a parità di",
+            "acceptedAnswers": [
+              "a parità di",
+              "a parita di"
+            ],
+            "kind": "frame",
+            "choices": [
+              "a parità di",
+              "benché",
+              "purché",
+              "mentre"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Per me conta più la ",
+        "answer": "possibilità",
+        "acceptedAnswers": [
+          "possibilità",
+          "possibilita",
+          "opportunità",
+          "opportunita",
+          "prospettiva"
+        ],
+        "fallbackChoices": [
+          "possibilità",
+          "possibile",
+          "possibilmente",
+          "possibili"
+        ],
+        "after": " di lavorare che la comodità di restare, ma devo ancora valutare la stabilità del nuovo impiego."
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Den entscheidenden Umstand wieder aufnehmen",
+          "en": "Returning to the decisive circumstance"
+        },
+        "rule": {
+          "de": "In ogni caso hebt einen Umstand hervor, der unabhängig vom vorherigen Beispiel für die Entscheidung gilt.",
+          "en": "In ogni caso highlights a circumstance that remains relevant to the decision regardless of the preceding example."
+        },
+        "examples": [
+          {
+            "targetText": "Un caso non fa una regola; in ogni caso il mio contratto qui scade, quindi restare non garantisce automaticamente stabilità.",
+            "base": {
+              "de": "Ein Einzelfall macht keine Regel; jedenfalls läuft mein Vertrag hier aus, also garantiert Bleiben nicht automatisch Sicherheit.",
+              "en": "One case does not make a rule; in any case, my contract here expires, so staying does not automatically guarantee stability."
+            },
+            "highlights": [
+              "in ogni caso",
+              "quindi"
+            ]
+          },
+          {
+            "targetText": "Il trasferimento comporta dei rischi; in ogni caso il posto attuale finisce a giugno, quindi devo cercare una soluzione.",
+            "base": {
+              "de": "Der Umzug bringt Risiken mit sich; jedenfalls endet die jetzige Stelle im Juni, also brauche ich eine Lösung.",
+              "en": "Moving involves risks; in any case, the current job ends in June, so I need to find a solution."
+            },
+            "highlights": [
+              "in ogni caso",
+              "quindi"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "in ogni caso",
+          "kind": "connector",
+          "base": {
+            "de": "jedenfalls",
+            "en": "in any case"
+          }
+        },
+        {
+          "targetText": "a parità di",
+          "kind": "frame",
+          "base": {
+            "de": "bei gleichen",
+            "en": "with equal"
+          }
+        },
+        {
+          "targetText": "stabilità",
+          "kind": "noun",
+          "base": {
+            "de": "Stabilität / Sicherheit",
+            "en": "stability"
+          }
+        },
+        {
+          "targetText": "impiego",
+          "kind": "noun",
+          "base": {
+            "de": "Beschäftigung / Stelle",
+            "en": "employment / job"
+          }
+        },
+        {
+          "targetText": "trasferimento",
+          "kind": "noun",
+          "base": {
+            "de": "Umzug",
+            "en": "move"
+          }
+        },
+        {
+          "targetText": "delusione",
+          "kind": "noun",
+          "base": {
+            "de": "Enttäuschung",
+            "en": "disappointment"
+          }
+        },
+        {
+          "targetText": "scade",
+          "kind": "verb",
+          "base": {
+            "de": "läuft aus",
+            "en": "expires"
+          },
+          "lemma": "scadere"
+        },
+        {
+          "targetText": "definitivamente",
+          "kind": "adverb",
+          "base": {
+            "de": "endgültig",
+            "en": "for good"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "possibilità",
+            "lavorare",
+            "comodità"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "contratto",
+            "garantisce",
+            "stabilità"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "bologna",
+            "informazioni",
+            "confrontare"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "stabilità",
+        "familyKey": "stabilità",
+        "surface": "stabilità",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "La stabilità dipende dalle condizioni del lavoro, non soltanto dalla città.",
+          "base": {
+            "de": "Sicherheit hängt von den Arbeitsbedingungen ab, nicht nur von der Stadt.",
+            "en": "Stability depends on working conditions, not just on the city."
+          }
+        },
+        "base": {
+          "de": "Stabilität / Sicherheit",
+          "en": "stability"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "raccomandare-un-opzione",
+      "title": {
+        "de": "Eine gemeinsame Investition empfehlen",
+        "en": "Recommending a shared investment"
+      },
+      "situation": {
+        "de": "Die fiktive Associazione Via dei Tigli hat viertausend Euro. Mit dem Vorsitz vergleichen Sie Fahrradständer, Hofbeleuchtung und einen Gemeinschaftsgarten.",
+        "en": "The fictional Associazione Via dei Tigli has four thousand euros. You discuss bike racks, courtyard lighting and a shared garden with its chair."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Lei",
+          "Lei",
+          "Lei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutore",
+          "role": {
+            "de": "Vereinsvorsitz",
+            "en": "association chair"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Der Vorsitz fragt: «Abbiamo quattromila euro per portabici, illuminazione oppure orto. Quale progetto ritiene più utile per l'associazione?»",
+        "en": "The chair asks: «Abbiamo quattromila euro per portabici, illuminazione oppure orto. Quale progetto ritiene più utile per l'associazione?»"
+      },
+      "dialogue": [
+        {
+          "targetText": "Abbiamo quattromila euro per portabici, illuminazione oppure orto. Quale progetto ritiene più utile per l'associazione?",
+          "base": {
+            "de": "Wir haben viertausend Euro für Fahrradständer, Beleuchtung oder Garten. Welches Projekt halten Sie für den Verein am sinnvollsten?",
+            "en": "We have four thousand euros for bike racks, lighting or a garden. Which project do you consider most useful for the association?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "L'illuminazione è la soluzione più utile per tutti, mentre i portabici sono i più economici e l'orto il più amato dai residenti.",
+          "base": {
+            "de": "Die Beleuchtung ist für alle am nützlichsten, während Fahrradständer am günstigsten und der Garten bei den Bewohnern am beliebtesten sind.",
+            "en": "Lighting is the most useful option for everyone, while bike racks are the cheapest and the garden is the residents’ favourite."
+          },
+          "speaker": "you",
+          "move": "compare",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Il preventivo però supera il costo degli altri due progetti insieme: con l'illuminazione non possiamo finanziare altro.",
+          "base": {
+            "de": "Der Kostenvoranschlag liegt aber über den beiden anderen Projekten zusammen: Mit der Beleuchtung können wir nichts anderes finanzieren.",
+            "en": "But the quote exceeds the cost of the other two projects combined: with lighting, we cannot fund anything else."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "È vero che costa di più, ma sul lungo periodo riduce i danni nel cortile e aiuta anche chi non usa biciclette.",
+          "base": {
+            "de": "Es kostet tatsächlich mehr, aber langfristig verringert es Schäden im Hof und hilft auch Menschen ohne Fahrrad.",
+            "en": "It does cost more, but over the long term it reduces damage in the courtyard and also helps people who do not cycle."
+          },
+          "speaker": "you",
+          "move": "concede",
+          "register": "Lei"
+        },
+        {
+          "targetText": "Per il verbale mi serve una sola frase, con una priorità chiara e il destino degli altri progetti.",
+          "base": {
+            "de": "Für das Protokoll brauche ich einen Satz mit einer klaren Priorität und dem weiteren Umgang mit den anderen Projekten.",
+            "en": "For the minutes, I need one sentence with a clear priority and what happens to the other projects."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutore"
+        },
+        {
+          "targetText": "Raccomando l'illuminazione per quest'anno; portabici e orto restano progetti successivi, da finanziare soltanto quando avremo nuove risorse disponibili.",
+          "base": {
+            "de": "Ich empfehle dieses Jahr die Beleuchtung; Fahrradständer und Garten folgen erst, wenn neue Mittel zur Verfügung stehen.",
+            "en": "I recommend lighting this year; bike racks and the garden remain later projects, to be funded only when new resources are available."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Lei"
+        }
+      ],
+      "build": {
+        "framePrefix": "L'illuminazione è la soluzione ",
+        "chunks": [
+          "più utile per tutti,",
+          "mentre",
+          "i portabici",
+          "sono i più",
+          "economici"
+        ],
+        "distractors": [
+          "sono le soluzioni",
+          "più utili"
+        ],
+        "frameSuffix": " e l'orto il più amato dai residenti."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "È vero che costa di più, ma "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " i danni nel cortile e aiuta anche chi non usa biciclette."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "sul lungo periodo",
+            "acceptedAnswers": [
+              "sul lungo periodo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "sul lungo periodo",
+              "benché",
+              "purché",
+              "invece di"
+            ]
+          },
+          {
+            "answer": "riduce",
+            "acceptedAnswers": [
+              "riduce"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "ridurre, 3. Person Singular, Präsens Indikativ",
+              "en": "ridurre, third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " l'illuminazione per quest'anno; portabici e orto restano progetti successivi, da finanziare soltanto quando avremo nuove risorse disponibili."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Raccomando",
+            "acceptedAnswers": [
+              "Raccomando"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Raccomando",
+              "Raccomando di",
+              "Per quanto",
+              "Invece di"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "L'illuminazione è la soluzione ",
+        "answer": "più",
+        "acceptedAnswers": [
+          "più",
+          "piu"
+        ],
+        "fallbackChoices": [
+          "più",
+          "più di",
+          "meno di",
+          "che"
+        ],
+        "after": " utile per tutti, mentre i portabici sono i più economici e l'orto il più amato dai residenti."
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Anschaffungskosten langfristig einordnen",
+          "en": "Putting initial cost in a longer perspective"
+        },
+        "rule": {
+          "de": "Sul lungo periodo legt den Zeithorizont fest, über den der Nutzen trotz höherer Anfangskosten beurteilt wird.",
+          "en": "Sul lungo periodo sets the time horizon over which value is assessed despite a higher initial cost."
+        },
+        "examples": [
+          {
+            "targetText": "È vero che costa di più, ma sul lungo periodo riduce i danni nel cortile e aiuta anche chi non usa biciclette.",
+            "base": {
+              "de": "Es kostet tatsächlich mehr, aber langfristig verringert es Schäden im Hof und hilft auch Menschen ohne Fahrrad.",
+              "en": "It does cost more, but over the long term it reduces damage in the courtyard and also helps people who do not cycle."
+            },
+            "highlights": [
+              "È vero che",
+              "sul lungo periodo"
+            ]
+          },
+          {
+            "targetText": "È vero che la riparazione costa, ma sul lungo periodo evita interventi ripetuti e rende più sicuro il passaggio.",
+            "base": {
+              "de": "Die Reparatur kostet zwar, verhindert langfristig aber wiederholte Eingriffe und macht den Durchgang sicherer.",
+              "en": "The repair does cost money, but over the long term it avoids repeated work and makes the passage safer."
+            },
+            "highlights": [
+              "È vero che",
+              "sul lungo periodo"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "è vero che",
+          "kind": "frame",
+          "base": {
+            "de": "es stimmt, dass",
+            "en": "it is true that"
+          }
+        },
+        {
+          "targetText": "sul lungo periodo",
+          "kind": "frame",
+          "base": {
+            "de": "auf lange Sicht",
+            "en": "over the long term"
+          }
+        },
+        {
+          "targetText": "raccomando",
+          "kind": "verb",
+          "base": {
+            "de": "ich empfehle",
+            "en": "I recommend"
+          },
+          "lemma": "raccomandare"
+        },
+        {
+          "targetText": "l'illuminazione",
+          "kind": "noun",
+          "base": {
+            "de": "die Beleuchtung",
+            "en": "the lighting"
+          },
+          "lemma": "illuminazione"
+        },
+        {
+          "targetText": "portabici",
+          "kind": "noun",
+          "base": {
+            "de": "Fahrradständer",
+            "en": "bike racks"
+          }
+        },
+        {
+          "targetText": "l'orto",
+          "kind": "noun",
+          "base": {
+            "de": "der Gemüsegarten",
+            "en": "the vegetable garden"
+          },
+          "lemma": "orto"
+        },
+        {
+          "targetText": "verbale",
+          "kind": "noun",
+          "base": {
+            "de": "Protokoll",
+            "en": "minutes"
+          }
+        },
+        {
+          "targetText": "risorse",
+          "kind": "noun",
+          "base": {
+            "de": "Mittel / Ressourcen",
+            "en": "resources"
+          },
+          "lemma": "risorsa"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "soluzione",
+            "utile",
+            "portabici"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "costa",
+            "periodo",
+            "riduce"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "raccomando",
+            "progetti",
+            "risorse"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "raccomandare",
+        "familyKey": "raccomandare",
+        "surface": "raccomando",
+        "turnIndex": 5,
+        "pos": "verb",
+        "example": {
+          "targetText": "Raccomando questa scelta perché rende il cortile migliore per tutti.",
+          "base": {
+            "de": "Ich empfehle diese Wahl, weil sie den Hof für alle verbessert.",
+            "en": "I recommend this choice because it makes the courtyard better for everyone."
+          }
+        },
+        "base": {
+          "de": "empfehlen",
+          "en": "recommend"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

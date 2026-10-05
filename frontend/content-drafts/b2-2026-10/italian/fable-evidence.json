@@ -1,0 +1,1330 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/italian/p1.json": "0af24ebf43670e8f93b50e1ab6e3f7d90a30cba5e51c828a12cc4c06cab51e8b",
+    "frontend/content-drafts/b2-2026-10/italian/p2.json": "fa57be6d972d8431fdcc691586c1f9aef3d2f95ebf3bf6fdad1b95a87d7b046b"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/italian/specification.json": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b",
+    "frontend/content-drafts/b2-2026-10/latin-prerequisites.json": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+    "frontend/content-drafts/b1-2026-10/italian-plan.json": "647cb01e9961d219a8cd2ad829bd737a61c94c2dfba861dc3cf5bc3361073079"
+  },
+  "sourceCanonicalization": {
+    "originalSpecificationSha256": "3340c9348003e5a8396151438a8699522050f384ed72f07ae9a05a0c85d43bbc",
+    "finalSpecificationSha256": "b4d73db175e66d7bcbe970c98760a9d1f49f4bbb0e6ccfbe414eb555eb26d25b",
+    "transformation": "Two exact Fable spec field edits, then computed V4 filename/SHA metadata only. Original raw reviews unchanged."
+  },
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "IT-B2-PUB04",
+      "severity": "HIGH",
+      "status": "open",
+      "category": "runtime-renderer",
+      "localTtsBlocking": false,
+      "publicationBlocking": true,
+      "title": "No demonstrated runtime path for the six-turn Italian B2 contract",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 92
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 171
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 196
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 259
+        }
+      ],
+      "evidence": "The current runtime level union is A1 | A2 | B1. Its documented episode is four turns, its cloze contract targets dialogue[3], and it has no B2 synthesis field. The draft's bilingual cue objects, frame blanks, moveBlankIndex and separate synthesis structure are a distinct contract. No Italian B2 renderer or visual fixture was supplied or observed.",
+      "why": "The linguistic judgments use the authored displayed choices and explicit de/en form cues. They do not demonstrate that learners actually see those cues, choices and all three learner moves in the app.",
+      "fix": "Implement and independently review the actual B2 adapter/renderer, show all authored cues and relevant choices at the right steps, consume all three speech targets and synthesis, and exercise the real components with every locale before publication.",
+      "verification": "Rechecked current runtime level union at guidedLessons.ts:92, cloze cue at 204 and absence of B2 synthesis/moveBlankIndex in the scoped runtime surfaces. All final authored cues personally read. No runtime or visual fixture proof supplied; no publication approval.",
+      "reReviewStatus": "Still open after the single post-fix rereview; unchanged canonical text may receive local TTS content approval independently."
+    },
+    {
+      "id": "IT-B2-PUB06",
+      "severity": "MEDIUM",
+      "status": "open",
+      "category": "input-acceptance",
+      "localTtsBlocking": false,
+      "publicationBlocking": true,
+      "title": "Authored recall alternatives and orthographic variants still need runtime acceptance proof",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 597
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/TypeRecallStep.tsx",
+          "line": 55
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p1.json",
+          "line": 1,
+          "jsonPointer": "/lessons/*/recall"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+          "line": 1,
+          "jsonPointer": "/lessons/*/recall"
+        }
+      ],
+      "evidence": {
+        "retainedFableConcern": "Recall synonym lists in P1 L2/L4/L5/L6/L9 and P2 L2/L4/L6/L8 are authored candidates, not an exhaustive acceptance certificate; the author IT-B2-AUTH-PUB-3 remains open.",
+        "concreteContexts": [
+          "P1 L6 accepts evita/elimina/previene in l'app ___ errori di resto.",
+          "P2 L8 accepts registrano/annotano/ordinano/classificano in Le richieste si ___ all'arrivo.",
+          "P2 L2/L6 infine also accepts poi, successivamente, quindi and alla fine; repeated poi is grammatical and not a canonical-spoken defect."
+        ],
+        "currentRuntime": "normalizeGuidedAnswer performs NFC/trim/space collapse/lowercase; matching is exact membership after that normalization. It does not infer synonyms, strip accents or normalize apostrophes automatically."
+      },
+      "why": "All authored canonical answer, accent-stripped and apostrophe alternatives were read and mechanically checked, and displayed fallback sets have one authored accepted answer. That does not prove exhaustive free-input semantics or that the future B2 adapter will retain every alternative. No current B2 learner input flow exists to test.",
+      "fix": "Preserve every approved authored variant through the B2 adapter; test exact positives and meaningful negatives in the real input flow. Where open contexts allow many legitimate completions, supply a visible constraint or a genuinely reviewed acceptance policy. Keep semantic acceptance approval separate from simple normalized membership.",
+      "verification": "Personally reread every acceptedAnswers, fallback set and cue in all final twenty lessons. Current TypeRecallStep.tsx:57 still calls guidedAnswerMatches; guidedLessons.ts:597–604 still uses NFC/trim/space collapse/lowercase and explicit list membership. No B2 adapter or exhaustive free-input acceptance proof.",
+      "reReviewStatus": "Still open after the single post-fix rereview; unchanged canonical text may receive local TTS content approval independently."
+    },
+    {
+      "id": "IT-B2-PUB07",
+      "severity": "LOW",
+      "status": "open",
+      "category": "review-state-and-certification",
+      "localTtsBlocking": false,
+      "publicationBlocking": true,
+      "title": "Draft publication review state is still pending and must not be fabricated",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p1.json",
+          "line": 382,
+          "jsonPointer": "/lessons/*/review"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/italian-b2-p2.json",
+          "line": 1,
+          "jsonPointer": "/lessons/*/review"
+        }
+      ],
+      "evidence": "Both sources remain status draft. All twenty review verdicts are pending, reviewers arrays are empty, nativeStatus is unreviewed and all twelve flags are false. The genuine Fable review explicitly says it must not be fabricated into native-model/native-human source rows. No native-human review or listening evidence was supplied.",
+      "why": "This report is an independent model content review of exact text bytes. It does not create source review rows, human certification, voice-quality approval or publication authorization. The absence of human certification alone is not being labelled a spoken-text defect.",
+      "fix": "After actual defects and runtime/gate holds are resolved, record only genuine applicable review evidence through the authorized publication process. Preserve the distinction between model review, any real human review and any future audio listening review.",
+      "verification": "Personally reread all twenty final review objects: draft, pending, unreviewed, empty reviewers/failingCriteria/acknowledgedWarnings, and all twelve flags false. No source record was upgraded by this report.",
+      "reReviewStatus": "Still open after the single post-fix rereview; unchanged canonical text may receive local TTS content approval independently."
+    }
+  ],
+  "scope": "Exact canonical spoken content for local TTS only. Publication findings retained; no native-human, listening or production approval.",
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 complete twenty-lesson reads and exact arbitration"
+  },
+  "reviewChain": [
+    {
+      "batch": "B2_ITALIAN_P1_P2",
+      "rawProviderReviewSha256": "f8c089fd7c807b7d979c2df6af381dc14c9f98ea5b6d5a0587004a29872b55e7",
+      "exactEdits": 45,
+      "exactSpecificationEdits": 0,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "italian-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Every field read: titles, situations, captions, all six turns with de/en bases, build, cloze, synthesis, recall, pattern, terms, speak, trophy, review. Reconstructions hold; token bounds hold; moves distinct and whitelisted; registers constant (tu only L5/L7); no digits; no speaker essere-participle or speaker adjective; trophies match ledger; carriers in named slots and staged bands; form cues visible; accented answers list stripped variants. Defects found: three competing coherent chip orders not covered by the author holds (L3 'lavoro bene tanto quanto', L7 'è la pratica regolare che mi manca rispetto all'app', L9 'la possibilità di lavorare più che la comodità di'), plus author hold L10 and L8 'denaro tanto quanto'; five choice/cloze sets where nonostante or Nonostante + a full indicative clause or bare NP reads as a competing (nonstandard but intelligible) option; L3 cloze 'Invece di + infinitive' intelligible; L2 'è stato raro' unidiomatic; L3 situation contradicts the lesson's own argument; L3 and L5 titles disclose the solution; L7 recall an open 8-synonym blank; L10 trophy example base inaccurate.",
+            "remainingConcerns": "Native-human review still absent for every line; synonyms in recall acceptedAnswers (L2, L4, L5, L6, L9) are authored candidates, not an exhaustive native-reviewed list; no B2 renderer exists, so visibility of form cues and choices is a contract assumption; it-IT gate not implemented (offline gate shown is en/es only)."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Every field read as above. All Lei; fictional sources attributed in-line (avviso, foglietto, contratto, regolamento, rapporto, fascicolo); subjunctives (costasse, uscisse) never blanked; incidental conditionals (aspetterei, continuerei) never blanked/chipped; riassumo in L4, riassumendo only L8/L10; nominalisation in L7; trophies match ledger (presupposto→presupporre). Defects found: author hold L3 chip order and a further coherent alternative in L1 ('ha richiesto trenta pagine e ha aggiunto la consegna'); L10 'a valle della piazza' grammatical PP reading; four nonostante + indicative-clause choice sets; recall acceptedAnswers 'siccome' in postposed position (nonstandard) in L1/L3/L5; L2 you2 'nell'avviso … vanno portati' reads oddly beside 'secondo l'avviso'; L3 de base attributes the slip to the supplier acting; L4 term gloss 'riassumo' = 'to summarize' wrong person.",
+            "remainingConcerns": "L2 and L6 you1 give the prima…poi…infine sequence with 3sg indicative forms (separa/espone/ritira, compila/allega/conserva) as Lei instruction; spec-literal and attested as descriptive procedure, but a native reviewer must confirm against the formal imperative or si-impersonal, and L2 you3 'consulti' already uses the imperative; L2 recall accepts a repeated 'poi'; L4 recall remains an open blank with authored synonyms."
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "IT-B2-AUTH-PUB-1 (P2 L3 build order in ritardo before ha consegnato)",
+            "decision": "accepted",
+            "reason": "Fronted 'in ritardo' is coherent Italian; regroup 'in ritardo il modello' and 'senza il quale' into fixed chips (edit below) instead of punctuation reliance."
+          },
+          {
+            "finding": "IT-B2-AUTH-PUB-2 (P1 L10 'la soluzione per tutti più utile')",
+            "decision": "accepted",
+            "reason": "Marked but grammatical; merge 'più utile per tutti,' and extend focus with 'sono i più' so the order is pinned by the suffix."
+          },
+          {
+            "finding": "IT-B2-AUTH-PUB-3 (cues/variants/synonyms not native-exhaustive)",
+            "decision": "accepted and kept open",
+            "reason": "Form cues and choice sets are authored and visible per contract; recall synonym lists stay authored candidates; no runtime normalization exists; hold remains until native review and the it-IT gate."
+          },
+          {
+            "finding": "Author claim: all recycles pass earlier-corpus membership (imparando/vicini preserved as frozen surfaces)",
+            "decision": "accepted as reported, unverified here",
+            "reason": "No recycles field exists in the drafts and the frozen corpus is not supplied; the terminological note is honest and nothing in the drafts depends on it."
+          },
+          {
+            "finding": "Author claim: no competing synonymous connector in any choice set",
+            "decision": "adapted",
+            "reason": "True for quindi/perciò-type pairs, but nonostante followed by a full indicative clause (P1 L8, L9; P2 L4, L6, L10) or a bare NP (P1 L5, L10 synthesis) yields an intelligible, non-standard competing reading; replaced with ungrammatical fillers (senza, Per quanto)."
+          },
+          {
+            "finding": "Author claim: build orders checked, native permutation review pending",
+            "decision": "adapted",
+            "reason": "Found additional coherent permutations in P1 L3, L7, L8, L9 and P2 L1, L10; regrouped within 5–8 chunks, 1–4 tokens, carriers whole in single chips, reconstruction preserved."
+          },
+          {
+            "finding": "Author gender claim: neutral in all 20 lessons",
+            "decision": "accepted",
+            "reason": "Line-by-line: every participle/adjective with the learner as speaker is avoided; agreeing forms (sbagliato, mancata, inclusa, slittato, raddoppiato, condivisa, entrambe) have non-speaker subjects."
+          },
+          {
+            "finding": "Author staging claim (carriersStaged)",
+            "decision": "accepted",
+            "reason": "Each requiredCarrier found folded in the named slot; no recognition-only carrier in a you turn; no excluded carrier present; potremmo invece the only conditional carrier."
+          }
+        ],
+        "edits": [
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/3/targetText",
+            "oldValue": "Quello sciopero è stato raro; conviene prendere il treno nei giorni normali, anzi il nuovo parcheggio rende il confronto ancora più favorevole.",
+            "newValue": "Quello sciopero è stato un'eccezione; conviene prendere il treno nei giorni normali, anzi il nuovo parcheggio rende il confronto ancora più favorevole.",
+            "reason": "'è stato raro' is unidiomatic for a single strike; 23 tokens within bound."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/3/base/de",
+            "oldValue": "Dieser Streik war selten; an normalen Tagen lohnt sich die Bahn, und das neue Parkentgelt macht den Vergleich sogar noch günstiger.",
+            "newValue": "Dieser Streik war eine Ausnahme; an normalen Tagen lohnt sich die Bahn, und das neue Parkentgelt macht den Vergleich sogar noch günstiger.",
+            "reason": "Coupled base."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/3/base/en",
+            "oldValue": "That strike was unusual; taking the train pays on ordinary days, and the new parking charge actually strengthens the comparison.",
+            "newValue": "That strike was an exception; taking the train pays on ordinary days, and the new parking charge actually strengthens the comparison.",
+            "reason": "Coupled base."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/1/cloze/segments/0/text",
+            "oldValue": "Quello sciopero è stato raro; ",
+            "newValue": "Quello sciopero è stato un'eccezione; ",
+            "reason": "Cloze reconstruction of edited turn."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/1/recall/acceptedAnswers",
+            "oldValue": [
+              "avviso",
+              "parere",
+              "giudizio"
+            ],
+            "newValue": [
+              "avviso",
+              "parere",
+              "giudizio",
+              "modo di vedere"
+            ],
+            "reason": "'A mio modo di vedere' is a valid completion of the visible context."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/2/title",
+            "oldValue": {
+              "de": "Präsenz und Heimarbeit verbinden",
+              "en": "Combining office and remote work"
+            },
+            "newValue": {
+              "de": "Heimarbeit oder Büro",
+              "en": "Remote or office"
+            },
+            "reason": "Title disclosed the compromise solution."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/2/situation",
+            "oldValue": {
+              "de": "Im Jahresgespräch verhandeln Sie mit Ihrer Führungskraft über zwei Tage Heimarbeit. Bisher arbeiten Sie an fünf Tagen im Büro.",
+              "en": "In an annual review, you discuss two remote days with your manager. You currently work in the office five days a week."
+            },
+            "newValue": {
+              "de": "Im Jahresgespräch verhandeln Sie mit Ihrer Führungskraft über Ihre zwei Tage Heimarbeit. Seit einem Jahr arbeiten Sie so, mit gleichen Ergebnissen wie im Büro.",
+              "en": "In an annual review, you negotiate your two remote days with your manager. You have worked this way for a year with the same results as in the office."
+            },
+            "newValueNote": null,
+            "reason": "Draft situation contradicted the learner's claim 'da casa lavoro tanto bene quanto in ufficio' and the spec scene (one year of remote days, same output); no challenge or solution disclosed."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/2/build/chunks",
+            "oldValue": [
+              "lavoro",
+              "tanto",
+              "bene",
+              "quanto",
+              "in ufficio, ma"
+            ],
+            "newValue": [
+              "lavoro",
+              "tanto bene",
+              "quanto",
+              "in ufficio, ma",
+              "evito due ore"
+            ],
+            "reason": "'lavoro bene tanto quanto in ufficio' was a second coherent order; half 'tanto' kept whole in one chip; focus 10 tokens; speak tokens remain in focus."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/2/build/frameSuffix",
+            "oldValue": " evito due ore di viaggio che posso dedicare al progetto.",
+            "newValue": " di viaggio che posso dedicare al progetto.",
+            "reason": "Reconstruction after regroup."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/2/cloze/blanks/0/choices",
+            "oldValue": [
+              "Potremmo invece",
+              "Invece di",
+              "Nonostante",
+              "A causa di"
+            ],
+            "newValue": [
+              "Potremmo invece",
+              "Per quanto",
+              "Nonostante",
+              "A causa di"
+            ],
+            "reason": "'Invece di concordare tre giorni comuni: dedichiamo…' is an intelligible reading; colon alone may not carry uniqueness."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/2/recall/acceptedAnswers",
+            "oldValue": [
+              "quanto"
+            ],
+            "newValue": [
+              "quanto",
+              "come"
+            ],
+            "reason": "'tanto bene come in ufficio' is an accepted comparative; L4 already accepts come."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/4/title",
+            "oldValue": {
+              "de": "Zwei Urlaubspläne verbinden",
+              "en": "Combining two holiday plans"
+            },
+            "newValue": {
+              "de": "Zwei Urlaubspläne",
+              "en": "Two holiday plans"
+            },
+            "reason": "Title disclosed the both-plans solution."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/4/dialogue/4/targetText",
+            "oldValue": "Allora decidiamo questa estate, ma teniamo aperta anche l'altra possibilità. Come distribuiamo le due vacanze?",
+            "newValue": "Allora decidiamo per questa estate, ma teniamo aperta anche l'altra possibilità. Come distribuiamo le due vacanze?",
+            "reason": "'decidiamo questa estate' reads as 'decide this summer'; bases already say 'über diesen Sommer / on this summer'; 16 tokens."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/4/synthesis/blanks/0/choices",
+            "oldValue": [
+              "Propongo",
+              "Propongo di",
+              "Nonostante",
+              "Invece di"
+            ],
+            "newValue": [
+              "Propongo",
+              "Propongo di",
+              "Per quanto",
+              "Invece di"
+            ],
+            "reason": "'Nonostante il mare adesso e la montagna in autunno' is a grammatical NP reading; replaced by a filler that cannot take the NP."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/6/build/chunks",
+            "oldValue": [
+              "rispetto all'app",
+              "è",
+              "la pratica",
+              "regolare che",
+              "mi manca"
+            ],
+            "newValue": [
+              "rispetto all'app è",
+              "la pratica",
+              "regolare",
+              "che mi manca",
+              "quando studio"
+            ],
+            "reason": "'è la pratica regolare che mi manca rispetto all'app' was a second coherent order; binding è to the carrier pins it; carrier stays in focus; 11 tokens."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/6/build/distractors",
+            "oldValue": [
+              "sono",
+              "mi mancano"
+            ],
+            "newValue": [
+              "rispetto all'app sono",
+              "che mi mancano"
+            ],
+            "reason": "Distractors must still contrast with the regrouped chips."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/6/build/frameSuffix",
+            "oldValue": " quando studio senza un gruppo a orari fissi.",
+            "newValue": " senza un gruppo a orari fissi.",
+            "reason": "Reconstruction after regroup."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/6/recall",
+            "oldValue": {
+              "before": "Il vantaggio del corso rispetto all'app è la pratica ",
+              "answer": "regolare",
+              "acceptedAnswers": [
+                "regolare",
+                "costante",
+                "quotidiana",
+                "continua",
+                "frequente",
+                "ripetuta",
+                "sistematica",
+                "assidua"
+              ],
+              "fallbackChoices": [
+                "regolare",
+                "regolari",
+                "regolarmente",
+                "regolarità"
+              ],
+              "after": " che mi manca quando studio senza un gruppo a orari fissi."
+            },
+            "newValue": {
+              "before": "Il vantaggio del corso ",
+              "answer": "rispetto",
+              "acceptedAnswers": [
+                "rispetto",
+                "in confronto"
+              ],
+              "fallbackChoices": [
+                "rispetto",
+                "rispetta",
+                "rispettato",
+                "rispettivo"
+              ],
+              "after": " all'app è la pratica regolare che mi manca quando studio senza un gruppo a orari fissi."
+            },
+            "reason": "Open adjective blank with eight authored synonyms was unconstrained; recall now targets the lesson carrier 'rispetto a', constrained by 'all'app'; reconstruction preserved."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/7/build/chunks",
+            "oldValue": [
+              "tanto",
+              "denaro",
+              "quanto",
+              "occorre",
+              "per coprire",
+              "le spese"
+            ],
+            "newValue": [
+              "tanto denaro",
+              "quanto",
+              "occorre",
+              "per coprire",
+              "le spese"
+            ],
+            "reason": "'garantisce denaro tanto quanto occorre' was a grammatical alternative; half 'tanto' kept whole in one chip; 5 chunks."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/7/cloze/blanks/0/choices",
+            "oldValue": [
+              "mentre",
+              "nonostante",
+              "a differenza di",
+              "invece di"
+            ],
+            "newValue": [
+              "mentre",
+              "senza",
+              "a differenza di",
+              "invece di"
+            ],
+            "reason": "'nonostante la formazione apre ruoli diversi' is an intelligible nonstandard reading; 'senza' + clause is ungrammatical."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/8/build/chunks",
+            "oldValue": [
+              "più",
+              "la possibilità",
+              "di lavorare",
+              "che",
+              "la comodità di"
+            ],
+            "newValue": [
+              "più la possibilità",
+              "di lavorare",
+              "che",
+              "la comodità",
+              "di restare, ma"
+            ],
+            "reason": "'conta la possibilità di lavorare più che la comodità di restare' was a coherent alternative; 'più' now bound; 10 tokens; 'di restare, ma' pinned by suffix."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/8/build/frameSuffix",
+            "oldValue": " restare, ma devo ancora valutare la stabilità del nuovo impiego.",
+            "newValue": " devo ancora valutare la stabilità del nuovo impiego.",
+            "reason": "Reconstruction after regroup."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/0/choices",
+            "oldValue": [
+              "in ogni caso",
+              "nonostante",
+              "invece di",
+              "a causa di"
+            ],
+            "newValue": [
+              "in ogni caso",
+              "senza",
+              "invece di",
+              "a causa di"
+            ],
+            "reason": "nonostante + indicative clause competing reading removed."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/9/build/chunks",
+            "oldValue": [
+              "è la soluzione",
+              "più utile",
+              "per tutti,",
+              "mentre",
+              "i portabici"
+            ],
+            "newValue": [
+              "è la soluzione",
+              "più utile per tutti,",
+              "mentre",
+              "i portabici",
+              "sono i più"
+            ],
+            "reason": "Resolves IT-B2-AUTH-PUB-2; 'sono i più' pinned before 'economici'; 11 tokens; speak tokens in focus."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/9/build/frameSuffix",
+            "oldValue": " sono i più economici e l'orto il più amato dai residenti.",
+            "newValue": " economici e l'orto il più amato dai residenti.",
+            "reason": "Reconstruction after regroup."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/9/synthesis/blanks/0/choices",
+            "oldValue": [
+              "Raccomando",
+              "Raccomando di",
+              "Nonostante",
+              "Invece di"
+            ],
+            "newValue": [
+              "Raccomando",
+              "Raccomando di",
+              "Per quanto",
+              "Invece di"
+            ],
+            "reason": "'Nonostante l'illuminazione per quest'anno' is a grammatical NP reading."
+          },
+          {
+            "file": "italian-b2-p1.json",
+            "jsonPointer": "/lessons/9/trophy/example/base",
+            "oldValue": {
+              "de": "Ich empfehle eine Wahl, die den Hof für alle verbessert.",
+              "en": "I recommend a choice that improves the courtyard for everyone."
+            },
+            "newValue": {
+              "de": "Ich empfehle diese Wahl, weil sie den Hof für alle verbessert.",
+              "en": "I recommend this choice because it makes the courtyard better for everyone."
+            },
+            "reason": "Base did not match 'questa scelta perché'."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/0/build/chunks",
+            "oldValue": [
+              "poiché il cliente",
+              "ha aggiunto",
+              "trenta pagine",
+              "e ha richiesto",
+              "la consegna"
+            ],
+            "newValue": [
+              "poiché il cliente",
+              "ha aggiunto trenta pagine",
+              "e ha richiesto",
+              "la consegna",
+              "urgente entro"
+            ],
+            "reason": "'ha richiesto trenta pagine e ha aggiunto la consegna' was a coherent swap; 12 tokens; speak tokens in focus."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/0/build/frameSuffix",
+            "oldValue": " urgente entro tre giorni.",
+            "newValue": " tre giorni.",
+            "reason": "Reconstruction after regroup."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/0/recall/acceptedAnswers",
+            "oldValue": [
+              "poiché",
+              "poiche",
+              "perché",
+              "perche",
+              "dato che",
+              "visto che",
+              "siccome"
+            ],
+            "newValue": [
+              "poiché",
+              "poiche",
+              "perché",
+              "perche",
+              "dato che",
+              "visto che"
+            ],
+            "reason": "Postposed 'siccome' after the main clause is nonstandard; do not accept it."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/1/dialogue/3/targetText",
+            "oldValue": "Per essere precisi, nell'avviso questi oggetti vanno portati al centro di raccolta: la nota specifica che il conferimento è gratuito.",
+            "newValue": "Per essere precisi, secondo l'avviso questi oggetti vanno portati al centro di raccolta: la nota specifica che il conferimento è gratuito.",
+            "reason": "'nell'avviso … vanno portati' reads as location, not attribution; bases already say laut Aushang / the notice says; 21 tokens."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/1/cloze/segments/1/text",
+            "oldValue": ", nell'avviso questi oggetti vanno ",
+            "newValue": ", secondo l'avviso questi oggetti vanno ",
+            "reason": "Cloze reconstruction."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/1/pattern/examples/0/targetText",
+            "oldValue": "Per essere precisi, nell'avviso questi oggetti vanno portati al centro di raccolta: la nota specifica che il conferimento è gratuito.",
+            "newValue": "Per essere precisi, secondo l'avviso questi oggetti vanno portati al centro di raccolta: la nota specifica che il conferimento è gratuito.",
+            "reason": "Pattern example must equal the learner turn."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/2/build/chunks",
+            "oldValue": [
+              "poiché",
+              "il fornitore",
+              "ha consegnato",
+              "in ritardo",
+              "il modello senza"
+            ],
+            "newValue": [
+              "poiché",
+              "il fornitore",
+              "ha consegnato",
+              "in ritardo il modello",
+              "senza il quale"
+            ],
+            "reason": "Resolves IT-B2-AUTH-PUB-1: 'in ritardo' can no longer be fronted; 11 tokens."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/2/build/frameSuffix",
+            "oldValue": " il quale non potevamo avviare il collaudo.",
+            "newValue": " non potevamo avviare il collaudo.",
+            "reason": "Reconstruction after regroup."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/2/recall/acceptedAnswers",
+            "oldValue": [
+              "poiché",
+              "poiche",
+              "perché",
+              "perche",
+              "dato che",
+              "visto che",
+              "siccome"
+            ],
+            "newValue": [
+              "poiché",
+              "poiche",
+              "perché",
+              "perche",
+              "dato che",
+              "visto che"
+            ],
+            "reason": "Postposed 'siccome' nonstandard."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/2/dialogue/3/base/de",
+            "oldValue": "Genauer gesagt hat der Lieferant die Tests um zwei Wochen verschoben; das Team hat weitere drei Tage verloren.",
+            "newValue": "Genauer gesagt hat sich der Test wegen des Lieferanten um zwei Wochen verschoben; das Team hat weitere drei Tage verloren.",
+            "reason": "Italian says testing slipped because of the supplier, not that the supplier moved it."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/2/pattern/examples/0/base/de",
+            "oldValue": "Genauer gesagt hat der Lieferant die Tests um zwei Wochen verschoben; das Team hat weitere drei Tage verloren.",
+            "newValue": "Genauer gesagt hat sich der Test wegen des Lieferanten um zwei Wochen verschoben; das Team hat weitere drei Tage verloren.",
+            "reason": "Coupled pattern base."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/3/cloze/blanks/0/choices",
+            "oldValue": [
+              "di conseguenza",
+              "nonostante",
+              "invece di",
+              "a causa di"
+            ],
+            "newValue": [
+              "di conseguenza",
+              "senza",
+              "invece di",
+              "a causa di"
+            ],
+            "reason": "nonostante + indicative clause competing reading removed."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/3/recall/acceptedAnswers",
+            "oldValue": [
+              "accumulano",
+              "raccolgono",
+              "sommano"
+            ],
+            "newValue": [
+              "accumulano",
+              "raccolgono",
+              "sommano",
+              "guadagnano",
+              "ottengono"
+            ],
+            "reason": "'i punti si guadagnano / si ottengono con la spesa' are valid completions of the visible context."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/3/terms/1/base/en",
+            "oldValue": "to summarize",
+            "newValue": "I sum up",
+            "reason": "riassumo is first person; de gloss already 'ich fasse zusammen'."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/recall/acceptedAnswers",
+            "oldValue": [
+              "poiché",
+              "poiche",
+              "perché",
+              "perche",
+              "dato che",
+              "visto che",
+              "siccome"
+            ],
+            "newValue": [
+              "poiché",
+              "poiche",
+              "perché",
+              "perche",
+              "dato che",
+              "visto che"
+            ],
+            "reason": "Postposed 'siccome' nonstandard."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/5/cloze/blanks/0/choices",
+            "oldValue": [
+              "il che significa che",
+              "a differenza di",
+              "invece di",
+              "nonostante"
+            ],
+            "newValue": [
+              "il che significa che",
+              "a differenza di",
+              "invece di",
+              "senza"
+            ],
+            "reason": "'nonostante, stando a questo testo, il ricorso non aggiunge' intelligible nonstandard reading removed."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/9/build/chunks",
+            "oldValue": [
+              "A monte",
+              "c'era la chiusura",
+              "della piazza,",
+              "a valle",
+              "il voto"
+            ],
+            "newValue": [
+              "A monte",
+              "c'era",
+              "la chiusura",
+              "della piazza, a valle",
+              "il voto"
+            ],
+            "reason": "'la chiusura a valle della piazza' is a grammatical PP reading; binding 'a valle' after 'della piazza,' removes it; half kept whole in one chip; 11 tokens."
+          },
+          {
+            "file": "italian-b2-p2.json",
+            "jsonPointer": "/lessons/9/cloze/blanks/0/choices",
+            "oldValue": [
+              "dato che",
+              "nonostante",
+              "invece di",
+              "a causa di"
+            ],
+            "newValue": [
+              "dato che",
+              "senza",
+              "invece di",
+              "a causa di"
+            ],
+            "reason": "nonostante + indicative clause competing reading removed."
+          }
+        ],
+        "finalChecks": {
+          "postEditReconstruction": "Every edited build, cloze and recall reconstructs character for character to its NFC targetText; chunk counts 5–8, chunks 1–4 tokens, focus 7–12 tokens, exactly 2 distinct distractors; speak turn-1 tokens remain in focus (P1 L3, L7, L8, L9, L10; P2 L1, L3, L10); choice sets remain 4 distinct with exactly one accepted.",
+          "carriersAndTrophies": "All 20 trophies, lemmas, familyKeys, surfaces and turnIndexes unchanged; every requiredCarrier still in its named slot after regrouping; no frozen A1/A2/B1 id or text touched; no staging change.",
+          "registerGender": "Unchanged: Lei everywhere except P1 L5/L7 tu; all 20 lessons remain speakerGender neutral.",
+          "reviewState": "review.flags all false, verdict pending, reviewers empty, nativeStatus unreviewed preserved; this arbitration is not a native-model or native-human reviewer row and must not be recorded as one.",
+          "unresolvedHolds": [
+            "No it-IT validator gate exists; the offline gate shown accepts only English/Spanish; mechanical rules applied by read only.",
+            "Native-human review absent for all canonical speech; P2 L2 and L6 Lei-indicative sequence instructions (separa/espone/ritira, compila/allega/conserva) need native confirmation versus formal imperative, especially beside L2 'consulti'.",
+            "Recall synonym lists (P1 L2, L4, L5, L6, L9; P2 L2, L4, L6, L8) are authored candidates, not exhaustive native acceptance.",
+            "No B2 renderer exists; visibility of form cues and choice sets is assumed from the field contract, not demonstrated.",
+            "IT-B2-AUTH-PUB-3 remains open until runtime consumes visible cues and authored variants."
+          ],
+          "noAuthorizationClaims": "No provider, TTS, database, git or activation action implied; Codex applies the exact edits above and re-runs the scratch structural check; publication still not approved."
+        }
+      }
+    },
+    {
+      "batch": "B2_ITALIAN_P1_P2_ARBITRATION_FABLE",
+      "rawProviderReviewSha256": "ad0983390fe261155bc031924445c51f5f0e4939a04636451e92087db961d200",
+      "exactEdits": 18,
+      "exactSpecificationEdits": 2,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "reviewed-content/italian-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "All six turns, bases, build/cloze/synthesis/recall couplings, pattern rules/examples, terms, speak anchors, trophies and review objects reread. Registers Lei except L5/L7 tu; speakers neutral; all agreement on non-speaker nouns. Only L10 fails the focus cap (13 tokens as independently counted; my earlier 11 was wrong). No other concrete defect found; review state untouched.",
+            "remainingConcerns": "Chip-order uniqueness is a native-reviewer judgment, not algorithmic certainty; PUB04/05/06/07 holds stay open."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Same full coupled read. L1 focus is 14 tokens (my earlier 12 was wrong). L5 reasoning defect confirmed: 'no exit fee' cannot yield 'one-year fixed commitment', and the closing recommends switching from variable pricing without any comparison. L10 permutation [1,0,2,3,4] confirmed grammatical. L2/L6 third-person indicatives reread in context: descriptive procedural Lei, legitimate.",
+            "remainingConcerns": "Recall synonym lists remain authored candidates (PUB06); incidental conditionals (aspetterei, continuerei, cancellerebbe) stay unblanked."
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "IT-B2-C01",
+            "decision": "ACCEPT and repair",
+            "reason": "Both the draft and the pinned V3 scaffold derive an unsupported consequence and give a categorical recommendation. Repaired with an explicit second premise (the contract fixes the price for a year) whose consequence (predictable spending) genuinely follows, and a conditional closing that first asks to compare tariffs, uses 'può convenire', and ties waiting to the contract's expiry. Carriers non comporta / di conseguenza / in base alla, Lei, neutral speaker, moves explain/conclude, token bounds preserved; fullspec answerMove/closingMove reconciled via specEdits rather than silently overridden."
+          },
+          {
+            "finding": "IT-B2-PUB01",
+            "decision": "ACCEPT",
+            "reason": "Independent count of 13 is correct. Repartitioned to an 11-token focus of five chunks keeping 'più utile' and speech anchors utile/portabici in focus; 'più utile per tutti,' is one 4-token chip so neither 'per tutti' nor 'economici' can relocate coherently."
+          },
+          {
+            "finding": "IT-B2-PUB02",
+            "decision": "ACCEPT",
+            "reason": "Independent count of 14 is correct. Moved 'urgente' into the frame; 12-token focus of five chunks keeps 'poiché il cliente' bound, all three speech anchors in focus, and leaves no coherent verb/object permutation ('e ha richiesto' carries the conjunction; 'trenta pagine urgente' fails agreement)."
+          },
+          {
+            "finding": "IT-B2-PUB03",
+            "decision": "ACCEPT",
+            "reason": "Capitalisation cannot carry uniqueness. 'A monte c'era' is now one chip, binding the existential to the locative; 'a valle' stays a separate chip; 11-token focus; speech anchors monte/chiusura/voto in focus. Other orders checked ('la chiusura a valle della piazza', 'il voto a valle dei soci') are spatial or incoherent; this is a reviewer judgment, not algorithmic certainty."
+          },
+          {
+            "finding": "P2 L2/L6 Lei procedural indicatives",
+            "decision": "NO EDIT; not a TTS veto",
+            "reason": "prima separa/espone/ritira and prima compila/allega/conserva are legitimate third-person descriptive indicatives under Lei introduced by explanatory lead-ins; later 'consulti' is a direct formal instruction. Absent native-human certification remains under PUB07, not a canonical defect."
+          },
+          {
+            "finding": "IT-B2-PUB04/PUB05/PUB06/PUB07",
+            "decision": "PRESERVE as open holds",
+            "reason": "Runtime renderer, approved native gate, input-acceptance proof and genuine review rows are outside this arbitration; no status is upgraded."
+          },
+          {
+            "finding": "IT-B2-GATE-01",
+            "decision": "ACCEPT with bounded check",
+            "reason": "Added a surface-only tripwire for first/third-person present-conditional endings on chips, blank answers, recall answers and terms, with the single exact 'potremmo invece' exception; reason-asserted negatives for term and form-blank promotion of the actual P2 L5 aspetterei. Explicitly not a morphology parser."
+          },
+          {
+            "finding": "IT-B2-GATE-02",
+            "decision": "ACCEPT",
+            "reason": "Address tripwires now cover both participants; formal detection treats capital Le/La as address only mid-sentence, leaving sentence-initial articles to the reviewer; informal detection uses whole-token lookarounds. Added interlocutor-Tu negative and two sentence-initial La/Le positives; corrected the inaccurate learner-only test label."
+          },
+          {
+            "finding": "IT-B2-GATE-03",
+            "decision": "ACCEPT",
+            "reason": "Added an explicit voiced-text character policy (letters, marks, spaces, ordinary punctuation, apostrophes, guillemets, dashes) to the shared canonical helper with five distinct symbol negatives; letters A/B remain valid."
+          },
+          {
+            "finding": "IT-B2-GATE-04",
+            "decision": "ACCEPT",
+            "reason": "Replaced the uncoupled themLei positive with term-preserving controls and matched the real 'Tutto sommato' casing so the mutation reaches the carrier diagnostic."
+          }
+        ],
+        "edits": [
+          {
+            "file": "reviewed-content/italian-b2-p1.json",
+            "jsonPointer": "/lessons/9/build/chunks",
+            "oldValue": [
+              "è la soluzione",
+              "più utile per tutti,",
+              "mentre",
+              "i portabici",
+              "sono i più"
+            ],
+            "newValue": [
+              "più utile per tutti,",
+              "mentre",
+              "i portabici",
+              "sono i più",
+              "economici"
+            ],
+            "reason": "PUB01: 11-token focus, 5 chunks of 1–4 tokens, superlative carrier and two speech anchors in focus; 4-token first chip binds per tutti."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p1.json",
+            "jsonPointer": "/lessons/9/build/framePrefix",
+            "oldValue": "L'illuminazione ",
+            "newValue": "L'illuminazione è la soluzione ",
+            "reason": "PUB01: exact reconstruction with the regrouped focus."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p1.json",
+            "jsonPointer": "/lessons/9/build/frameSuffix",
+            "oldValue": " economici e l'orto il più amato dai residenti.",
+            "newValue": " e l'orto il più amato dai residenti.",
+            "reason": "PUB01: economici moved into focus; reconstruction exact."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/0/build/chunks",
+            "oldValue": [
+              "poiché il cliente",
+              "ha aggiunto trenta pagine",
+              "e ha richiesto",
+              "la consegna",
+              "urgente entro"
+            ],
+            "newValue": [
+              "poiché il cliente",
+              "ha aggiunto",
+              "trenta pagine",
+              "e ha richiesto",
+              "la consegna"
+            ],
+            "reason": "PUB02: 12-token focus, poiché bound to its subject, speech anchors cliente/aggiunto/pagine in focus."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/0/build/frameSuffix",
+            "oldValue": " tre giorni.",
+            "newValue": " urgente entro tre giorni.",
+            "reason": "PUB02: exact reconstruction."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/dialogue/3/targetText",
+            "oldValue": "Il passaggio non comporta costi di uscita, come specifica questo contratto; di conseguenza il mio impegno è un anno a prezzo fisso.",
+            "newValue": "Il passaggio non comporta costi di uscita e il contratto fissa il prezzo per un anno; di conseguenza la spesa resta prevedibile.",
+            "reason": "C01: explicit second premise (fixed price for a year) and a consequence that follows; carriers preserved; 21 tokens."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/dialogue/3/base",
+            "oldValue": {
+              "de": "Der Wechsel verursacht laut diesem Vertrag keine Ausstiegskosten; folglich verpflichte ich mich für ein Jahr zu einem festen Preis.",
+              "en": "The switch entails no exit fees, as this contract states; consequently, my commitment is one year at a fixed price."
+            },
+            "newValue": {
+              "de": "Der Wechsel verursacht keine Ausstiegskosten, und der Vertrag legt den Preis für ein Jahr fest; folglich bleibt meine Ausgabe vorhersehbar.",
+              "en": "The switch entails no exit fees, and the contract fixes the price for a year; consequently, my spending stays predictable."
+            },
+            "reason": "C01: bases follow the repaired line."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/dialogue/5/targetText",
+            "oldValue": "Col prezzo variabile il cambio conviene; col fisso aspetterei la fine, in base alla scadenza scritta nel suo contratto.",
+            "newValue": "Confronti prima le tariffe: col variabile il cambio può convenire; col fisso aspetterei la fine, in base alla scadenza del contratto.",
+            "reason": "C01: recommendation conditioned on comparing the actual tariffs; 'può convenire' replaces the categorical claim; in base alla preserved; aspetterei stays incidental and unblanked; 21 tokens."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/dialogue/5/base",
+            "oldValue": {
+              "de": "Beim variablen Preis lohnt sich der Wechsel; beim festen würde ich anhand des im Vertrag genannten Enddatums bis zum Ablauf warten.",
+              "en": "With a variable price, switching is worthwhile; with a fixed one, I would wait until the end, based on the expiry written in your contract."
+            },
+            "newValue": {
+              "de": "Vergleichen Sie zuerst die Tarife: Beim variablen Preis kann sich der Wechsel lohnen; beim festen würde ich anhand des Vertragsenddatums bis zum Ablauf warten.",
+              "en": "Compare the tariffs first: with a variable price, switching may be worthwhile; with a fixed one, I would wait until the end, based on the contract's expiry date."
+            },
+            "reason": "C01: bases follow the repaired closing."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/cloze/segments",
+            "oldValue": [
+              {
+                "kind": "text",
+                "text": "Il passaggio "
+              },
+              {
+                "kind": "blank",
+                "index": 0
+              },
+              {
+                "kind": "text",
+                "text": " costi di uscita, come "
+              },
+              {
+                "kind": "blank",
+                "index": 1
+              },
+              {
+                "kind": "text",
+                "text": " questo contratto; di conseguenza il mio impegno è un anno a prezzo fisso."
+              }
+            ],
+            "newValue": [
+              {
+                "kind": "text",
+                "text": "Il passaggio "
+              },
+              {
+                "kind": "blank",
+                "index": 0
+              },
+              {
+                "kind": "text",
+                "text": " costi di uscita e il contratto "
+              },
+              {
+                "kind": "blank",
+                "index": 1
+              },
+              {
+                "kind": "text",
+                "text": " il prezzo per un anno; di conseguenza la spesa resta prevedibile."
+              }
+            ],
+            "reason": "C01: cloze reconstructs the repaired turn exactly."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/cloze/blanks/1",
+            "oldValue": {
+              "answer": "specifica",
+              "acceptedAnswers": [
+                "specifica"
+              ],
+              "kind": "form",
+              "cue": {
+                "de": "specificare, 3. Person Singular, Präsens Indikativ",
+                "en": "specificare, third-person singular, present indicative"
+              }
+            },
+            "newValue": {
+              "answer": "fissa",
+              "acceptedAnswers": [
+                "fissa"
+              ],
+              "kind": "form",
+              "cue": {
+                "de": "fissare, 3. Person Singular, Präsens Indikativ",
+                "en": "fissare, third-person singular, present indicative"
+              }
+            },
+            "reason": "C01: form blank follows the repaired verb."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/synthesis/segments",
+            "oldValue": [
+              {
+                "kind": "text",
+                "text": "Col prezzo variabile il cambio conviene; col fisso aspetterei la fine, "
+              },
+              {
+                "kind": "blank",
+                "index": 0
+              },
+              {
+                "kind": "text",
+                "text": " scadenza scritta nel suo contratto."
+              }
+            ],
+            "newValue": [
+              {
+                "kind": "text",
+                "text": "Confronti prima le tariffe: col variabile il cambio può convenire; col fisso aspetterei la fine, "
+              },
+              {
+                "kind": "blank",
+                "index": 0
+              },
+              {
+                "kind": "text",
+                "text": " scadenza del contratto."
+              }
+            ],
+            "reason": "C01: synthesis reconstructs the repaired closing; blank and choices unchanged."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/pattern/rule",
+            "oldValue": {
+              "de": "Non comporta verneint eine Folge, und di conseguenza verbindet den genannten Vertragsinhalt mit der daraus abgeleiteten Bindung.",
+              "en": "Non comporta rules out a consequence, and di conseguenza links the stated contract provision to the commitment that follows."
+            },
+            "newValue": {
+              "de": "Non comporta verneint eine Folge; di conseguenza leitet das ein, was aus den beiden genannten Vertragsklauseln tatsächlich folgt.",
+              "en": "Non comporta rules out a consequence; di conseguenza introduces what genuinely follows from the two stated contract clauses."
+            },
+            "reason": "C01: rule now truthful for both examples."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/pattern/examples/0/targetText",
+            "oldValue": "Il passaggio non comporta costi di uscita, come specifica questo contratto; di conseguenza il mio impegno è un anno a prezzo fisso.",
+            "newValue": "Il passaggio non comporta costi di uscita e il contratto fissa il prezzo per un anno; di conseguenza la spesa resta prevedibile.",
+            "reason": "C01: pattern must reuse the exact learner turn; highlights still present."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/pattern/examples/0/base",
+            "oldValue": {
+              "de": "Der Wechsel verursacht laut diesem Vertrag keine Ausstiegskosten; folglich verpflichte ich mich für ein Jahr zu einem festen Preis.",
+              "en": "The switch entails no exit fees, as this contract states; consequently, my commitment is one year at a fixed price."
+            },
+            "newValue": {
+              "de": "Der Wechsel verursacht keine Ausstiegskosten, und der Vertrag legt den Preis für ein Jahr fest; folglich bleibt meine Ausgabe vorhersehbar.",
+              "en": "The switch entails no exit fees, and the contract fixes the price for a year; consequently, my spending stays predictable."
+            },
+            "reason": "C01: example base matches the turn base."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/4/speak/1/requiredTokens",
+            "oldValue": [
+              "comporta",
+              "contratto",
+              "impegno"
+            ],
+            "newValue": [
+              "comporta",
+              "contratto",
+              "prevedibile"
+            ],
+            "reason": "C01: impegno no longer in the turn; all three are whole tokens of the repaired turn."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/9/build/chunks",
+            "oldValue": [
+              "A monte",
+              "c'era",
+              "la chiusura",
+              "della piazza, a valle",
+              "il voto"
+            ],
+            "newValue": [
+              "A monte c'era",
+              "la chiusura",
+              "della piazza,",
+              "a valle",
+              "il voto"
+            ],
+            "reason": "PUB03: existential bound to the locative; both carrier halves in focus; 11 tokens; speech anchors monte/chiusura/voto in focus."
+          },
+          {
+            "file": "reviewed-content/italian-b2-p2.json",
+            "jsonPointer": "/lessons/9/build/frameSuffix",
+            "oldValue": " dei soci che ha confermato il sito con parcheggio dopo la ricerca.",
+            "newValue": " dei soci che ha confermato il sito con parcheggio dopo la ricerca.",
+            "reason": "PUB03: unchanged value restated to assert exact reconstruction with the regrouped focus (framePrefix stays empty)."
+          }
+        ],
+        "specEdits": [
+          {
+            "file": "B2_ITALIAN_P1_P2_AUTHORING_SPEC_V3.json",
+            "jsonPointer": "/paths/1/lessons/4/answerMove",
+            "oldValue": "explain: il passaggio non comporta costi di uscita, è scritto nel contratto; di conseguenza l'unico impegno è un anno a prezzo fisso",
+            "newValue": "explain: il passaggio non comporta costi di uscita e il contratto fissa il prezzo per un anno; di conseguenza la spesa resta prevedibile",
+            "reason": "C01 reconciliation: the scaffold carried the invalid inference; the consequence now follows from the explicit fixed-price premise named in the scene."
+          },
+          {
+            "file": "B2_ITALIAN_P1_P2_AUTHORING_SPEC_V3.json",
+            "jsonPointer": "/paths/1/lessons/4/closingMove",
+            "oldValue": "conclude: dipende dal contratto che ha ora: se è variabile, il cambio conviene; se è fisso, in base alla scadenza scritta nel contratto aspetterei la fine",
+            "newValue": "conclude: confronti prima le tariffe: col variabile il cambio può convenire; col fisso aspetterei la fine, in base alla scadenza del contratto",
+            "reason": "C01 reconciliation: recommendation conditioned on comparing actual tariffs and expiry; in base a and the incidental aspetterei retained."
+          }
+        ],
+        "codeEdits": [
+          {
+            "file": "italian-b2-gate/guidedItalianB2Drafts.ts",
+            "oldValue": "const isolatedChip = /^(?:non|si|ci|mi|ti|vi|ne)$/u",
+            "newValue": "const isolatedChip = /^(?:non|si|ci|mi|ti|vi|ne)$/u\n// Bounded incidental-conditional tripwire for exercise surfaces (chips, blank answers, recall answer, terms): first/third-person present-conditional\n// endings only; the single licensed conditional carrier is the allocated P1 L3 'potremmo invece'. Not Italian morphology: a noun such as 'ebrei' would need redesign.\nconst conditionalEnding = /(?:rei|rebbe|remmo|rebbero)$/u\nconst promotedConditional = (surface: string) => normalized(surface) !== 'potremmo invece' && tokens(fold(surface)).some(t => conditionalEnding.test(t))\n// Address tripwires for both participants. Informal: tu/ti/te/tuo forms as whole tokens. Formal: Lei/Suo/Sua/Suoi/Sue anywhere, plus capital Le/La only\n// mid-sentence; sentence-initial Le/La may be a plain article and stays a reviewer decision. Lowercase object clitics are never address here.\nconst informalAddress = /(?<![\\p{L}'\\u2019])(?:[Tt]u|[Tt]i|[Tt]e|[Tt]uo|[Tt]ua|[Tt]uoi|[Tt]ue)(?![\\p{L}])/u\nconst formalAddress = (t: string) => /(?<![\\p{L}'\\u2019])(?:Lei|Suo|Sua|Suoi|Sue)(?![\\p{L}])/u.test(t)\n  || [...t.matchAll(/(?<![\\p{L}'\\u2019])(?:Le|La)(?![\\p{L}])/gu)].some(m => { const before = t.slice(0, m.index).trimEnd(); return before.length > 0 && !/[.!?:;«»\"(]$/u.test(before) })",
+            "reason": "GATE-01/GATE-02: bounded helpers for conditional promotion and two-participant address."
+          },
+          {
+            "file": "italian-b2-gate/guidedItalianB2Drafts.ts",
+            "oldValue": "    check(!whole(t, 'mica'), `${label}: deferred mica in canonical text`)",
+            "newValue": "    check(!/[^\\p{L}\\p{M}\\s.,;:!?…'\\u2019«»\"()\\u2013\\u2014-]/u.test(t), `${label}: character outside the Italian voiced-text symbol policy`)\n    check(!whole(t, 'mica'), `${label}: deferred mica in canonical text`)",
+            "reason": "GATE-03: explicit voiced-text character policy; letters (incl. A/B labels), marks, spaces, ordinary punctuation, apostrophes, guillemets and dashes allowed; €, %, +, =, & rejected."
+          },
+          {
+            "file": "italian-b2-gate/guidedItalianB2Drafts.ts",
+            "oldValue": "      canonical(turn.targetText, `${label} turn ${n}`)\n      if (!isYou) continue\n      const t = turn.targetText, lower = fold(t)\n      // Address tripwires on learner turns only; lowercase object clitics referring to things stay a reviewer decision.\n      if (specLesson.register === 'Lei') expect(!/\\b(?:[Tt]u|[Tt]i|[Tt]e|tuo|tua|tuoi|tue)\\b/u.test(t), 'Informal address token in Lei episode')\n      else expect(!/\\b(?:Lei|Le|La|Suo|Sua)\\b/u.test(t), 'Formal address token in tu episode')",
+            "newValue": "      canonical(turn.targetText, `${label} turn ${n}`)\n      const t = turn.targetText, lower = fold(t)\n      if (specLesson.register === 'Lei') expect(!informalAddress.test(t), `Informal address token in Lei episode (turn ${n})`)\n      else expect(!formalAddress(t), `Formal address token in tu episode (turn ${n})`)\n      if (!isYou) continue",
+            "reason": "GATE-02: address checks run on interlocutor and learner turns; speaker-gender and staging checks remain learner-only."
+          },
+          {
+            "file": "italian-b2-gate/guidedItalianB2Drafts.ts",
+            "oldValue": "    for (const chip of [...lesson.build.chunks, ...lesson.build.distractors]) canonical(chip, `${label} build chip`)",
+            "newValue": "    for (const chip of [...lesson.build.chunks, ...lesson.build.distractors]) { canonical(chip, `${label} build chip`); expect(!promotedConditional(chip), `Incidental conditional promoted to a build chip: ${chip}`) }",
+            "reason": "GATE-01: chips may not carry an incidental conditional."
+          },
+          {
+            "file": "italian-b2-gate/guidedItalianB2Drafts.ts",
+            "oldValue": "        canonical(b.answer, `${label} ${name} answer`)",
+            "newValue": "        canonical(b.answer, `${label} ${name} answer`)\n        expect(!promotedConditional(b.answer), `${name}: incidental conditional promoted to a blank answer`)",
+            "reason": "GATE-01: cloze/synthesis blanks may not carry an incidental conditional."
+          },
+          {
+            "file": "italian-b2-gate/guidedItalianB2Drafts.ts",
+            "oldValue": "    canonical(recall.answer, `${label} recall answer`)",
+            "newValue": "    canonical(recall.answer, `${label} recall answer`)\n    expect(!promotedConditional(recall.answer), 'Incidental conditional promoted to a recall answer')",
+            "reason": "GATE-01: recall answers may not carry an incidental conditional."
+          },
+          {
+            "file": "italian-b2-gate/guidedItalianB2Drafts.ts",
+            "oldValue": "      canonical(term.targetText, `${label} term`); if (term.lemma) canonical(term.lemma, `${label} term lemma`)",
+            "newValue": "      canonical(term.targetText, `${label} term`); if (term.lemma) canonical(term.lemma, `${label} term lemma`)\n      expect(!promotedConditional(term.targetText), `Incidental conditional promoted to a term: ${term.targetText}`)",
+            "reason": "GATE-01: terms may not carry an incidental conditional."
+          },
+          {
+            "file": "italian-b2-gate/test-guided-italian-b2-drafts.ts",
+            "oldValue": "const themLei = fixture(1)\nthemLei.draft.lessons[4].dialogue[2].targetText = 'Lei chi? Scherzo: dico solo che i tuoi piani costano sempre di più, come la mettiamo?'\npasses('Address tripwires inspect learner turns only, as the specification states', themLei)",
+            "newValue": "const articleThem = fixture(1)\narticleThem.draft.lessons[4].dialogue[2].targetText = 'La montagna aggiunge sempre escursioni e spostamenti. Le spese finali sono davvero più basse?'\npasses('Sentence-initial La/Le articles in a tu interlocutor turn are not formal address', articleThem)\nconst articleYou = fixture(1)\nreplaceInTurn(articleYou.draft.lessons[4], 3, 'Con auto a noleggio e funivia', \"La funivia e l'auto a noleggio costano;\")\npasses('Sentence-initial La article in a tu learner turn is not formal address', articleYou)",
+            "reason": "GATE-02/GATE-04: replaces the inaccurate learner-only positive that dropped the attested term escursioni; both controls preserve every term and coupling."
+          },
+          {
+            "file": "italian-b2-gate/test-guided-italian-b2-drafts.ts",
+            "oldValue": "rejects('No missing synthesis carrier', x => { replaceInTurn(x.draft.lessons[0], 5, 'tutto sommato', 'insomma') }, /Required carrier absent from synthesis turn: tutto sommato/)",
+            "newValue": "rejects('No missing synthesis carrier', x => { replaceInTurn(x.draft.lessons[0], 5, 'Tutto sommato', 'Insomma') }, /Required carrier absent from synthesis turn: tutto sommato/)",
+            "reason": "GATE-04: real casing so the mutation reaches the carrier diagnostic instead of failing its precondition."
+          },
+          {
+            "file": "italian-b2-gate/test-guided-italian-b2-drafts.ts",
+            "oldValue": "console.log(`PASS: Italian B2 offline structure; ${positives} positive controls and ${negatives} reason-asserted rejection probes.`)",
+            "newValue": "rejects('No interlocutor informal address in a Lei episode', x => { x.draft.lessons[0].dialogue[2].targetText = \"Tu sai se quell'ora vale duecento euro al mese? L'altro appartamento ha anche un giardino privato.\" }, /Informal address/)\nrejects('No incidental conditional promoted to a term', x => { x.draft.lessons[4].terms.push({ targetText: 'aspetterei', lemma: 'aspettare', kind: 'verb', base: { de: 'ich würde warten', en: 'I would wait' } }) }, /conditional/, 2)\nrejects('No incidental conditional promoted to a form blank', x => {\n  const l = x.draft.lessons[4], t = l.dialogue[5].targetText, at = t.indexOf('aspetterei'), frame = l.synthesis.blanks[0], frameAt = t.indexOf(frame.answer)\n  assert.ok(at > 0 && frameAt > at, 'P2 L5 closing carries aspetterei before in base alla')\n  l.synthesis = { segments: [{ kind: 'text', text: t.slice(0, at) }, { kind: 'blank', index: 0 }, { kind: 'text', text: t.slice(at + 'aspetterei'.length, frameAt) }, { kind: 'blank', index: 1 }, { kind: 'text', text: t.slice(frameAt + frame.answer.length) }], blanks: [{ answer: 'aspetterei', acceptedAnswers: ['aspetterei'], kind: 'form', cue: { de: 'aspettare, ich, Konditional Präsens', en: 'aspettare, I, present conditional' } }, frame], moveBlankIndex: 1 }\n}, /conditional/, 2)\nfor (const symbol of ['€', '%', '+', '=', '&']) rejects(`No non-spoken symbol ${symbol} in a voiced trophy example`, x => { x.draft.lessons[0].trophy.example.targetText += ` ${symbol}` }, /symbol policy/)\n\nconsole.log(`PASS: Italian B2 offline structure; ${positives} positive controls and ${negatives} reason-asserted rejection probes.`)",
+            "reason": "GATE-01/02/03: reason-asserted negatives for interlocutor Tu, term and fully coupled form-blank promotion of the actual P2 L5 aspetterei, and five distinct voiced-symbol probes."
+          }
+        ],
+        "finalChecks": "Token counts (letters/digits with internal apostrophes/hyphens). P1 L10 focus: più(1) utile(2) per(3) tutti(4) mentre(5) i(6) portabici(7) sono(8) i(9) più(10) economici(11) = 11; chunks 4/1/2/3/1; reconstruction 'L'illuminazione è la soluzione ' + focus + ' e l'orto il più amato dai residenti.' exact; distractors 'sono le soluzioni','più utili' distinct and not also-correct (feminine soluzione, masculine economici). P2 L1 focus: poiché(1) il(2) cliente(3) ha(4) aggiunto(5) trenta(6) pagine(7) e(8) ha(9) richiesto(10) la(11) consegna(12) = 12; chunks 3/2/2/3/2; reconstruction with ' urgente entro tre giorni.' exact; permutations 'ha aggiunto la consegna e ha richiesto trenta pagine urgente' fail agreement, 'e ha richiesto' cannot lead. P2 L10 focus: A(1) monte(2) c'era(3) la(4) chiusura(5) della(6) piazza(7) a(8) valle(9) il(10) voto(11) = 11; chunks 3/2/2/2/2; reconstruction exact with empty prefix; [1,0,...] now impossible since c'era is bound; residual orders ('la chiusura a valle della piazza', 'il voto a valle dei soci') judged spatial/incoherent by me, not certified algorithmically. P2 L5 dialogue[3] = 21 tokens (12–24), dialogue[5] = 21 tokens (10–22); cloze and synthesis segments reconstruct the new turns exactly; blank0 'non comporta' frame with original choices; blank1 'fissa' form with cue; synthesis blank 'in base alla' with original choices; carriers non comporta, di conseguenza (cloze turn) and in base alla (synthesis turn) present; speak anchors comporta/contratto/prevedibile and cambio/scadenza/contratto are whole tokens; terms poiché, di conseguenza, variabile, fisso (col fisso), bolletta, passaggio, uscita, durata (pattern example 2) all attested; aspetterei remains unblanked, unchipped, no term; staging band 4–6 respected, no band-7 carrier introduced; Lei, neutral speaker, moves explain/conclude distinct. Trophies: all 20 lemmas/families/surfaces/turnIndexes untouched; recycles untouched. Fullspec bytes change through specEdits: I do NOT invent a new SHA; root creates V4, computes its exact UTF-8 SHA-256 and mechanically replaces the V3 filename/hash in content specRef, ITALIAN_B2_AUTHORITY, test paths and exporter metadata; all V3 literals in my code/content edits are left unchanged on purpose. Gate edits add only bounded reason-asserted controls (conditional surfaces, two-participant address, symbol policy) and fix two tests; no runtime, shared authority, paid runner, existing lesson or provider file is edited; no curriculum rewrite beyond the four content findings. Review objects, status draft and all pending flags remain untouched.",
+        "limitations": [
+          "No tool execution: token counts, reconstructions, strict-TS/lint cleanliness and test outcomes are hand-verified reasoning, not executed checks; root must run the suite after creating V4.",
+          "Chip-order uniqueness for P1 L10, P2 L1 and P2 L10 is my native judgment of coherence, not algorithmic semantic certainty.",
+          "The conditional tripwire is suffix-based on four endings and may false-positive on rare nouns ending in -rei (e.g. ebrei) or miss second-person forms; it is a bounded counter to GATE-01, not Italian morphology.",
+          "Formal-address detection cannot distinguish a mid-sentence proper noun such as 'La Spezia' from address; sentence-initial Le/La articles are deliberately left to the reviewer.",
+          "No native-human review, listening, runtime rendering, input-acceptance or publication approval is claimed; PUB04–PUB07 remain open."
+        ]
+      }
+    }
+  ],
+  "approvalBasis": "Every old/new edit replayed across both full-content reads; final objects equal independently reviewed bytes."
+}
