@@ -1,0 +1,4014 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "expliquer-comment-et-pourquoi",
+  "pathTitle": {
+    "de": "Wie und warum erklären",
+    "en": "Explaining how and why"
+  },
+  "pathFunction": {
+    "de": "Ursachen, Folgen und Abläufe ausführlich erklären und auf Nachfragen präzisieren",
+    "en": "Explain causes, consequences, and processes in detail and clarify them under questioning"
+  },
+  "specRef": {
+    "pathSpec": "B2_FRENCH_P1_P2_AUTHORING_SPEC.json",
+    "pathSpecSha256": "d01d7f24143ade1107c8dbe1f93dc49b91f94ed853df7b312d85da3b9833a51d",
+    "ledger": "B2_FRENCH_P1_P2_AUTHORING_SPEC.json",
+    "ledgerSha256": "d01d7f24143ade1107c8dbe1f93dc49b91f94ed853df7b312d85da3b9833a51d"
+  },
+  "authoring": {
+    "source": "Codex GPT-6 xhigh",
+    "runId": "fr-b2-p1-p2-author-20261005",
+    "date": "2026-10-05"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "facture-qui-differe",
+      "title": {
+        "de": "Die Abweichung auf einer Rechnung erklären",
+        "en": "Explaining an invoice difference"
+      },
+      "situation": {
+        "de": "Sie erläutern einem Kunden eine fiktive Rechnung für eine Website, deren zweite Version er nach dem Angebot bestellt hat.",
+        "en": "You explain a fictional website invoice to a client who requested a second version after receiving the quote."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "client",
+          "role": {
+            "de": "Kunde",
+            "en": "client"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Kunde fragt: «J’ai demandé une seconde version, oui. Mais pourquoi votre facture indique-t-elle dix-sept heures, contre douze sur le devis ?»",
+        "en": "Your client asks: «J’ai demandé une seconde version, oui. Mais pourquoi votre facture indique-t-elle dix-sept heures, contre douze sur le devis ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "client",
+          "targetText": "J’ai demandé une seconde version, oui. Mais pourquoi votre facture indique-t-elle dix-sept heures, contre douze sur le devis ?",
+          "base": {
+            "de": "Ja, ich habe eine zweite Version bestellt. Aber warum stehen auf Ihrer Rechnung siebzehn Stunden gegenüber zwölf im Angebot?",
+            "en": "Yes, I requested a second version. But why does your invoice show seventeen hours, compared with twelve on the quote?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "vous",
+          "targetText": "Puisque vous avez ajouté cette seconde version, la facture présente un écart qui correspond aux cinq heures nécessaires pour adapter le site.",
+          "base": {
+            "de": "Da Sie diese zweite Version hinzugefügt haben, weist die Rechnung eine Differenz auf, die den fünf erforderlichen Anpassungsstunden entspricht.",
+            "en": "Since you added that second version, the invoice shows a difference corresponding to the five hours needed to adapt the site."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "client",
+          "targetText": "Vous avez donc recalculé tout le travail au nouveau tarif, ou seulement ajouté ces cinq heures ?",
+          "base": {
+            "de": "Haben Sie also die ganze Arbeit zum neuen Preis neu berechnet oder nur diese fünf Stunden ergänzt?",
+            "en": "So did you recalculate all the work at the new rate, or just add those five hours?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "vous",
+          "targetText": "Autrement dit, les douze heures restent au tarif du devis ; seules les cinq heures supplémentaires concernent la seconde version que vous avez demandée.",
+          "base": {
+            "de": "Anders gesagt bleiben die zwölf Stunden zum Angebotspreis; nur die fünf zusätzlichen Stunden betreffen die von Ihnen bestellte zweite Version.",
+            "en": "In other words, the twelve hours stay at the quoted rate; only the five extra hours concern the second version you requested."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "client",
+          "targetText": "Comment éviter ce genre de surprise la prochaine fois, avant de vous demander une nouvelle modification ?",
+          "base": {
+            "de": "Wie vermeiden wir beim nächsten Änderungswunsch eine solche Überraschung?",
+            "en": "How can we avoid that kind of surprise next time, before I request another change?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "vous",
+          "targetText": "En résumé, cet ajout dépasse le devis initial ; la prochaine fois, je vous ferai signer un avenant avant toute modification.",
+          "base": {
+            "de": "Zusammengefasst geht diese Ergänzung über das ursprüngliche Angebot hinaus; künftig lasse ich Sie vor jeder Änderung einen Nachtrag unterschreiben.",
+            "en": "In summary, this addition exceeds the original quote; next time, I'll have you sign an amendment before any changes."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Puisque vous avez ajouté cette seconde version, la facture ",
+        "chunks": [
+          "présente",
+          "un écart",
+          "qui correspond",
+          "aux cinq heures",
+          "nécessaires"
+        ],
+        "distractors": [
+          "dont le montant",
+          "des cinq heures"
+        ],
+        "frameSuffix": " pour adapter le site."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", les douze heures "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " au tarif du devis ; seules les cinq heures supplémentaires concernent la seconde version que vous avez demandée."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Autrement dit",
+            "acceptedAnswers": [
+              "Autrement dit"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Autrement dit",
+              "À cause de",
+              "Au lieu de",
+              "Contrairement à"
+            ]
+          },
+          {
+            "answer": "restent",
+            "acceptedAnswers": [
+              "restent"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "rester, les douze heures, Präsens Indikativ",
+              "en": "rester, les douze heures, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", cet ajout dépasse le devis initial ; la prochaine fois, je vous "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " signer un avenant avant toute modification."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En résumé",
+            "acceptedAnswers": [
+              "En résumé",
+              "En resume"
+            ],
+            "kind": "frame",
+            "choices": [
+              "En résumé",
+              "À cause de",
+              "Au lieu de",
+              "Contrairement à"
+            ]
+          },
+          {
+            "answer": "ferai",
+            "acceptedAnswers": [
+              "ferai"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "faire, je, Futur simple",
+              "en": "faire, je, simple future"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Puisque vous avez ajouté cette seconde version, la facture présente un écart qui ",
+        "answer": "correspond",
+        "acceptedAnswers": [
+          "correspond",
+          "équivaut",
+          "equivaut"
+        ],
+        "after": " aux cinq heures nécessaires pour adapter le site.",
+        "fallbackChoices": [
+          "correspond",
+          "correspondant",
+          "correspondre",
+          "correspondu"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "An eine bereits bekannte Ursache anknüpfen",
+          "en": "Building on a cause already known"
+        },
+        "rule": {
+          "de": "Puisque knüpft hier an die bereits bestätigte Zusatzbestellung an, während parce que einen dem Gegenüber noch unbekannten Grund liefern kann.",
+          "en": "Puisque here builds on the additional order already acknowledged, whereas parce que can introduce a reason the listener does not yet know."
+        },
+        "examples": [
+          {
+            "targetText": "Puisque vous avez ajouté cette seconde version, la facture présente un écart qui correspond aux cinq heures nécessaires pour adapter le site.",
+            "base": {
+              "de": "Die bereits bestätigte Zusatzversion erklärt die Differenz von fünf Anpassungsstunden auf der Rechnung.",
+              "en": "The acknowledged extra version explains the invoice difference of five hours for adapting the site."
+            },
+            "highlights": [
+              "Puisque vous avez ajouté",
+              "qui correspond"
+            ]
+          },
+          {
+            "targetText": "Le total augmente parce que la seconde version demande cinq heures de travail supplémentaires.",
+            "base": {
+              "de": "Die Summe steigt, weil die zweite Version fünf zusätzliche Arbeitsstunden erfordert.",
+              "en": "The total increases because the second version needs five extra hours of work."
+            },
+            "highlights": [
+              "parce que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "puisque",
+          "kind": "connector",
+          "base": {
+            "de": "da, bei bereits bekanntem Grund",
+            "en": "since, for a known reason"
+          }
+        },
+        {
+          "targetText": "autrement dit",
+          "kind": "frame",
+          "base": {
+            "de": "anders gesagt",
+            "en": "in other words"
+          }
+        },
+        {
+          "targetText": "écart",
+          "kind": "noun",
+          "base": {
+            "de": "Differenz / Abweichung",
+            "en": "difference / discrepancy"
+          }
+        },
+        {
+          "targetText": "devis",
+          "kind": "noun",
+          "base": {
+            "de": "Angebot / Kostenvoranschlag",
+            "en": "quote / estimate"
+          }
+        },
+        {
+          "targetText": "avenant",
+          "kind": "noun",
+          "base": {
+            "de": "Vertragsnachtrag",
+            "en": "contract amendment"
+          }
+        },
+        {
+          "targetText": "adapter",
+          "kind": "verb",
+          "base": {
+            "de": "anpassen",
+            "en": "adapt"
+          }
+        },
+        {
+          "targetText": "supplémentaires",
+          "lemma": "supplémentaire",
+          "kind": "adjective",
+          "base": {
+            "de": "zusätzlich",
+            "en": "additional"
+          }
+        },
+        {
+          "targetText": "modification",
+          "kind": "noun",
+          "base": {
+            "de": "Änderung",
+            "en": "change"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "écart",
+            "correspond",
+            "heures"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "douze",
+            "tarif",
+            "supplémentaires"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "initial",
+            "avenant",
+            "modification"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "écart",
+        "familyKey": "écart",
+        "surface": "écart",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Cet écart correspond au travail ajouté après le devis.",
+          "base": {
+            "de": "Diese Differenz entspricht der nach dem Angebot hinzugekommenen Arbeit.",
+            "en": "This difference corresponds to the work added after the quote."
+          }
+        },
+        "base": {
+          "de": "Differenz / Abweichung",
+          "en": "difference / discrepancy"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "tri-des-dechets",
+      "title": {
+        "de": "Die Sortierregeln im Haus erklären",
+        "en": "Explaining the building's sorting rules"
+      },
+      "situation": {
+        "de": "Sie erklären einem neuen Nachbarn den fiktiven Aushang im Müllraum Ihres Hauses.",
+        "en": "You explain the fictional notice in your building's bin room to a new neighbor."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "voisin",
+          "role": {
+            "de": "Neuer Nachbar",
+            "en": "new neighbor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Der Nachbar fragt: «L’affiche distingue trois bacs par couleur. Vous pouvez m’expliquer comment suivre ces consignes dans notre immeuble ?»",
+        "en": "The neighbor asks: «L’affiche distingue trois bacs par couleur. Vous pouvez m’expliquer comment suivre ces consignes dans notre immeuble ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "L’affiche distingue trois bacs par couleur. Vous pouvez m’expliquer comment suivre ces consignes dans notre immeuble ?",
+          "base": {
+            "de": "Der Aushang unterscheidet drei Behälter nach Farben. Können Sie mir erklären, wie diese Hinweise in unserem Haus anzuwenden sind?",
+            "en": "The notice distinguishes three bins by color. Can you explain how to follow those instructions in our building?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "vous",
+          "targetText": "Puisque notre affiche distingue trois bacs, le tri commence par les emballages qui vont dans le jaune ; les aliments vont au brun, le reste au gris.",
+          "base": {
+            "de": "Da unser Aushang drei Behälter unterscheidet, beginnt die Sortierung mit Verpackungen im gelben; Lebensmittel kommen in den braunen, der Rest in den grauen.",
+            "en": "Since our notice distinguishes three bins, sorting starts with packaging in the yellow one; food goes in the brown one, the rest in the gray."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Une bouteille en verre est aussi un emballage. Elle va donc dans le bac jaune ?",
+          "base": {
+            "de": "Eine Glasflasche ist auch eine Verpackung. Gehört sie also in den gelben Behälter?",
+            "en": "A glass bottle is packaging too. So does it go in the yellow bin?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "vous",
+          "targetText": "Non, justement : selon cette affiche, le verre va à la colonne du coin, parce que le jaune concerne uniquement carton, plastique et métal.",
+          "base": {
+            "de": "Nein, genau das nicht: Laut diesem Aushang gehört Glas zum Container an der Ecke, weil Gelb ausschließlich für Pappe, Kunststoff und Metall vorgesehen ist.",
+            "en": "No, that's the distinction: according to this notice, glass goes to the corner collection point because yellow covers only cardboard, plastic, and metal."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Et si je mélange les déchets dans le mauvais bac, que prévoit exactement cette affiche ?",
+          "base": {
+            "de": "Und wenn ich Abfälle im falschen Behälter vermische, was sieht genau dieser Aushang vor?",
+            "en": "And if I mix waste in the wrong bin, what exactly does this notice say happens?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Selon cette affiche, le service laisse le bac sur place ; c’est pour cette raison que je vérifie avant de descendre mes déchets.",
+          "base": {
+            "de": "Laut diesem Aushang lässt der Abholdienst den Behälter stehen; deshalb kontrolliere ich, bevor ich meinen Müll hinunterbringe.",
+            "en": "According to this notice, the collection service leaves the bin there; that's why I check before taking my waste downstairs."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Puisque notre affiche distingue trois bacs, le tri ",
+        "chunks": [
+          "commence",
+          "par les emballages",
+          "qui vont",
+          "dans le jaune ;",
+          "les aliments"
+        ],
+        "distractors": [
+          "dont la couleur",
+          "du bac jaune"
+        ],
+        "frameSuffix": " vont au brun, le reste au gris."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Non, justement : selon cette affiche, le verre "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " à la colonne du coin, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " le jaune concerne uniquement carton, plastique et métal."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "va",
+            "acceptedAnswers": [
+              "va"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "aller, le verre, Präsens Indikativ",
+              "en": "aller, le verre, present indicative"
+            }
+          },
+          {
+            "answer": "parce que",
+            "acceptedAnswers": [
+              "parce que"
+            ],
+            "kind": "connector",
+            "choices": [
+              "parce que",
+              "en raison de",
+              "au lieu de",
+              "contrairement à"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Selon cette affiche, le service laisse le bac sur place ; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " je "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " avant de descendre mes déchets."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "c’est pour cette raison que",
+            "acceptedAnswers": [
+              "c’est pour cette raison que",
+              "c'est pour cette raison que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "c’est pour cette raison que",
+              "en raison de",
+              "au lieu de",
+              "contrairement à"
+            ]
+          },
+          {
+            "answer": "vérifie",
+            "acceptedAnswers": [
+              "vérifie",
+              "verifie"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "vérifier, je, Präsens Indikativ",
+              "en": "vérifier, je, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Puisque notre affiche distingue trois bacs, le tri ",
+        "answer": "commence",
+        "acceptedAnswers": [
+          "commence",
+          "débute",
+          "debute"
+        ],
+        "after": " par les emballages qui vont dans le jaune ; les aliments vont au brun, le reste au gris.",
+        "fallbackChoices": [
+          "commence",
+          "commencer",
+          "commencent",
+          "commençant"
+        ]
+      },
+      "pattern": {
+        "moveType": "conclude",
+        "label": {
+          "de": "Aus einer örtlichen Regel eine Handlung ableiten",
+          "en": "Deriving an action from a local rule"
+        },
+        "rule": {
+          "de": "C’est pour cette raison que verbindet eine zuvor belegte Folge mit der daraus abgeleiteten eigenen Handlung.",
+          "en": "C’est pour cette raison que connects a consequence already supported by evidence with the speaker's resulting action."
+        },
+        "examples": [
+          {
+            "targetText": "Selon cette affiche, le service laisse le bac sur place ; c’est pour cette raison que je vérifie avant de descendre mes déchets.",
+            "base": {
+              "de": "Laut Aushang bleibt der Behälter stehen; deshalb kontrolliere ich vor dem Hinunterbringen meinen Müll.",
+              "en": "The notice says the bin stays there; that is why I check my waste before taking it down."
+            },
+            "highlights": [
+              "Selon cette affiche",
+              "c’est pour cette raison que"
+            ]
+          },
+          {
+            "targetText": "Cette affiche réserve la colonne au verre ; c’est pour cette raison que je garde les bouteilles à part.",
+            "base": {
+              "de": "Dieser Aushang bestimmt den Container für Glas; deshalb halte ich Flaschen getrennt.",
+              "en": "This notice reserves the collection point for glass; that's why I keep bottles separate."
+            },
+            "highlights": [
+              "Cette affiche",
+              "c’est pour cette raison que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "puisque",
+          "kind": "connector",
+          "base": {
+            "de": "da",
+            "en": "since"
+          }
+        },
+        {
+          "targetText": "c’est pour cette raison que",
+          "kind": "frame",
+          "base": {
+            "de": "aus diesem Grund",
+            "en": "that is why"
+          }
+        },
+        {
+          "targetText": "tri",
+          "kind": "noun",
+          "base": {
+            "de": "Sortierung / Mülltrennung",
+            "en": "sorting / waste separation"
+          }
+        },
+        {
+          "targetText": "emballages",
+          "lemma": "emballage",
+          "kind": "noun",
+          "base": {
+            "de": "Verpackungen",
+            "en": "packaging"
+          }
+        },
+        {
+          "targetText": "colonne",
+          "kind": "noun",
+          "base": {
+            "de": "Sammelcontainer",
+            "en": "collection container"
+          }
+        },
+        {
+          "targetText": "déchets",
+          "lemma": "déchet",
+          "kind": "noun",
+          "base": {
+            "de": "Abfälle",
+            "en": "waste"
+          }
+        },
+        {
+          "targetText": "mélange",
+          "lemma": "mélanger",
+          "kind": "verb",
+          "base": {
+            "de": "vermische",
+            "en": "mix"
+          }
+        },
+        {
+          "targetText": "vérifie",
+          "lemma": "vérifier",
+          "kind": "verb",
+          "base": {
+            "de": "kontrolliere",
+            "en": "check"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "tri",
+            "emballages",
+            "jaune"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "verre",
+            "colonne",
+            "uniquement"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "service",
+            "vérifie",
+            "déchets"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "tri",
+        "familyKey": "trier",
+        "surface": "tri",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Le tri suit les consignes indiquées sur cette affiche.",
+          "base": {
+            "de": "Die Sortierung richtet sich nach den Hinweisen auf diesem Aushang.",
+            "en": "Sorting follows the instructions on this notice."
+          }
+        },
+        "base": {
+          "de": "Sortierung / Mülltrennung",
+          "en": "sorting / waste separation"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "projet-qui-a-glisse",
+      "title": {
+        "de": "Eine Verzögerung nachvollziehbar erklären",
+        "en": "Explaining a project delay"
+      },
+      "situation": {
+        "de": "Ihre Führungskraft möchte die Ursachen einer Projektverzögerung genauer verstehen.",
+        "en": "Your manager wants to understand the causes of a project delay in more detail."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "direction",
+          "role": {
+            "de": "Führungskraft",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihre Führungskraft fragt: «Les plans ont dix jours de retard, je le sais. Mais comment expliquer trois semaines de décalage au total ?»",
+        "en": "Your manager asks: «Les plans ont dix jours de retard, je le sais. Mais comment expliquer trois semaines de décalage au total ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "direction",
+          "targetText": "Les plans ont dix jours de retard, je le sais. Mais comment expliquer trois semaines de décalage au total ?",
+          "base": {
+            "de": "Die Pläne waren zehn Tage verspätet, das weiß ich. Aber wie erklären sich insgesamt drei Wochen Verschiebung?",
+            "en": "The plans were ten days late, I know. But how does that explain a three-week delay overall?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "vous",
+          "targetText": "Puisque le prestataire a livré les plans en retard, nous avons perdu le créneau de montage qui dépendait de cette livraison.",
+          "base": {
+            "de": "Da der Dienstleister die Pläne zu spät geliefert hat, haben wir das davon abhängige Montagezeitfenster verloren.",
+            "en": "Since the provider delivered the plans late, we lost the assembly slot that depended on that delivery."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "direction",
+          "targetText": "C’est pourtant vous qui avez choisi ce prestataire. Quelle part de responsabilité prenez-vous dans cette situation ?",
+          "base": {
+            "de": "Sie haben diesen Dienstleister aber selbst ausgewählt. Welche Verantwortung übernehmen Sie für diese Situation?",
+            "en": "But you chose that provider. What responsibility do you take for this situation?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "vous",
+          "targetText": "Oui, c’est pour cette raison que j’ai renégocié le contrat : il prévoit maintenant des dates fermes et un contrôle hebdomadaire des livraisons.",
+          "base": {
+            "de": "Ja, deshalb habe ich den Vertrag neu verhandelt: Er sieht jetzt verbindliche Termine und eine wöchentliche Kontrolle der Lieferungen vor.",
+            "en": "Yes, that's why I renegotiated the contract: it now provides firm dates and a weekly check on deliveries."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "direction",
+          "targetText": "La direction veut une explication en deux phrases, avec la cause et la mesure que vous avez prise.",
+          "base": {
+            "de": "Die Geschäftsführung möchte eine Erklärung in zwei Sätzen mit der Ursache und Ihrer Gegenmaßnahme.",
+            "en": "Management wants a two-sentence explanation with the cause and the action you've taken."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "vous",
+          "targetText": "En résumé, la livraison tardive a décalé le montage. Le contrat fixe désormais des dates et un contrôle hebdomadaire.",
+          "base": {
+            "de": "Zusammengefasst hat die verspätete Lieferung die Montage verschoben. Der Vertrag legt jetzt Termine und eine wöchentliche Kontrolle fest.",
+            "en": "In summary, the late delivery delayed assembly. The contract now sets dates and a weekly check."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Puisque le prestataire a livré les plans en retard, nous ",
+        "chunks": [
+          "avons perdu",
+          "le créneau",
+          "de montage",
+          "qui dépendait",
+          "de cette livraison."
+        ],
+        "distractors": [
+          "dont le montage",
+          "à cette livraison"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Oui, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " j’ai "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " le contrat : il prévoit maintenant des dates fermes et un contrôle hebdomadaire des livraisons."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "c’est pour cette raison que",
+            "acceptedAnswers": [
+              "c’est pour cette raison que",
+              "c'est pour cette raison que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "c’est pour cette raison que",
+              "en raison de",
+              "au lieu de",
+              "contrairement à"
+            ]
+          },
+          {
+            "answer": "renégocié",
+            "acceptedAnswers": [
+              "renégocié",
+              "renegocie"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "renégocier, Partizip Perfekt nach j’ai",
+              "en": "renégocier, past participle after j’ai"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", la livraison tardive a décalé le montage. Le contrat "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " désormais des dates et un contrôle hebdomadaire."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En résumé",
+            "acceptedAnswers": [
+              "En résumé",
+              "En resume"
+            ],
+            "kind": "frame",
+            "choices": [
+              "En résumé",
+              "À cause de",
+              "Au lieu de",
+              "Contrairement à"
+            ]
+          },
+          {
+            "answer": "fixe",
+            "acceptedAnswers": [
+              "fixe"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "fixer, le contrat, Präsens Indikativ",
+              "en": "fixer, le contrat, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Puisque le prestataire a livré les plans en retard, nous avons ",
+        "answer": "perdu",
+        "acceptedAnswers": [
+          "perdu",
+          "manqué",
+          "manque",
+          "raté",
+          "rate"
+        ],
+        "after": " le créneau de montage qui dépendait de cette livraison.",
+        "fallbackChoices": [
+          "perdu",
+          "perdre",
+          "perdant",
+          "perdons"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Verzögerungskette erklären",
+          "en": "Explaining a chain of delays"
+        },
+        "rule": {
+          "de": "Puisque greift die bereits bekannte Verspätung auf, und qui dépendait de benennt die Abhängigkeit, durch die ein größerer Folgeschaden entstand.",
+          "en": "Puisque picks up the already known delay, and qui dépendait de identifies the dependency that produced a larger consequence."
+        },
+        "examples": [
+          {
+            "targetText": "Puisque le prestataire a livré les plans en retard, nous avons perdu le créneau de montage qui dépendait de cette livraison.",
+            "base": {
+              "de": "Wegen der bekannten verspäteten Planlieferung entfiel das davon abhängige Montagezeitfenster.",
+              "en": "The known delay in delivering the plans caused us to lose the assembly slot that depended on them."
+            },
+            "highlights": [
+              "Puisque",
+              "qui dépendait de"
+            ]
+          },
+          {
+            "targetText": "Puisque la livraison a pris du retard, le montage a glissé, puis les essais ont commencé plus tard.",
+            "base": {
+              "de": "Da sich die Lieferung verspätet hat, verschob sich die Montage, und anschließend begannen die Tests später.",
+              "en": "Since delivery was delayed, assembly slipped and the tests then began later."
+            },
+            "highlights": [
+              "Puisque",
+              "puis"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "puisque",
+          "kind": "connector",
+          "base": {
+            "de": "da",
+            "en": "since"
+          }
+        },
+        {
+          "targetText": "en résumé",
+          "kind": "frame",
+          "base": {
+            "de": "zusammengefasst",
+            "en": "in summary"
+          }
+        },
+        {
+          "targetText": "prestataire",
+          "kind": "noun",
+          "base": {
+            "de": "Dienstleister",
+            "en": "service provider"
+          }
+        },
+        {
+          "targetText": "montage",
+          "kind": "noun",
+          "base": {
+            "de": "Montage",
+            "en": "assembly"
+          }
+        },
+        {
+          "targetText": "dépendait",
+          "lemma": "dépendre",
+          "kind": "verb",
+          "base": {
+            "de": "hing ab",
+            "en": "depended"
+          }
+        },
+        {
+          "targetText": "renégocié",
+          "lemma": "renégocier",
+          "kind": "verb",
+          "base": {
+            "de": "neu verhandelt",
+            "en": "renegotiated"
+          }
+        },
+        {
+          "targetText": "fermes",
+          "lemma": "ferme",
+          "kind": "adjective",
+          "base": {
+            "de": "verbindlich",
+            "en": "firm"
+          }
+        },
+        {
+          "targetText": "hebdomadaire",
+          "kind": "adjective",
+          "base": {
+            "de": "wöchentlich",
+            "en": "weekly"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "prestataire",
+            "montage",
+            "dépendait"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "renégocié",
+            "fermes",
+            "hebdomadaire"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "tardive",
+            "décalé",
+            "contrôle"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "prestataire",
+        "familyKey": "prestataire",
+        "surface": "prestataire",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Le prestataire confirme désormais ses dates de livraison chaque semaine.",
+          "base": {
+            "de": "Der Dienstleister bestätigt nun jede Woche seine Liefertermine.",
+            "en": "The provider now confirms delivery dates every week."
+          }
+        },
+        "base": {
+          "de": "Dienstleister",
+          "en": "service provider"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "programme-de-fidelite",
+      "title": {
+        "de": "Eine Kundenkarte erklären",
+        "en": "Explaining a loyalty card"
+      },
+      "situation": {
+        "de": "Du erklärst einem Freund die fiktiven Bedingungen der Karte Horizon einer Buchhandlung.",
+        "en": "You explain a bookshop's fictional Horizon loyalty-card rules to a friend."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tu",
+          "tu",
+          "tu"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "ami",
+          "role": {
+            "de": "Freund",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Freund fragt: «J’ai le règlement de la carte Horizon sous les yeux. Tu peux m’expliquer comment les points donnent des bons ?»",
+        "en": "Your friend asks: «J’ai le règlement de la carte Horizon sous les yeux. Tu peux m’expliquer comment les points donnent des bons ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "J’ai le règlement de la carte Horizon sous les yeux. Tu peux m’expliquer comment les points donnent des bons ?",
+          "base": {
+            "de": "Ich habe die Bedingungen der Karte Horizon vor mir. Kannst du erklären, wie aus Punkten Gutscheine werden?",
+            "en": "I have the Horizon card rules in front of me. Can you explain how points turn into vouchers?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "tu",
+          "targetText": "Tu cumules un point par euro dépensé, de sorte qu’à deux cents points, tu reçois un bon qui vaut dix euros.",
+          "base": {
+            "de": "Du sammelst einen Punkt je ausgegebenem Euro; bei zweihundert Punkten bekommst du dadurch einen Gutschein im Wert von zehn Euro.",
+            "en": "You collect one point per euro spent, so at two hundred points you receive a voucher worth ten euros."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "Mais ces points restent valables combien de temps ? Je n’achète pas forcément un livre tous les mois.",
+          "base": {
+            "de": "Wie lange gelten die Punkte denn? Ich kaufe nicht unbedingt jeden Monat ein Buch.",
+            "en": "But how long do those points stay valid? I don't necessarily buy a book every month."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "tu",
+          "targetText": "D’après le règlement, ils restent valables douze mois après le dernier achat, étant donné que chaque achat repousse leur date d’expiration.",
+          "base": {
+            "de": "Laut den Bedingungen gelten sie zwölf Monate ab dem letzten Einkauf, da jeder Einkauf ihr Ablaufdatum nach hinten verschiebt.",
+            "en": "According to the rules, they remain valid for twelve months after the last purchase, since each purchase pushes their expiry date back."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "En clair, si je passe à la librairie deux fois par mois, cette carte me servirait vraiment ?",
+          "base": {
+            "de": "Klar gesagt: Wenn ich zweimal im Monat in die Buchhandlung gehe, würde mir die Karte wirklich etwas bringen?",
+            "en": "So, if I visit the bookshop twice a month, would this card actually be useful?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "tu",
+          "targetText": "D’où mon conseil : si tu y vas déjà régulièrement, prends la carte ; même de petits achats te rapprochent du bon.",
+          "base": {
+            "de": "Daher mein Rat: Wenn du ohnehin regelmäßig dort einkaufst, nimm die Karte; auch kleine Käufe bringen dich dem Gutschein näher.",
+            "en": "Hence my advice: if you already go there regularly, get the card; even small purchases bring you closer to the voucher."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Tu cumules un point par euro dépensé, de sorte ",
+        "chunks": [
+          "qu’à deux cents points,",
+          "tu reçois",
+          "un bon",
+          "qui vaut",
+          "dix euros."
+        ],
+        "distractors": [
+          "dont la valeur",
+          "de dix euros"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "D’après le règlement, ils restent valables douze mois après le dernier achat, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " chaque achat "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " leur date d’expiration."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "étant donné que",
+            "acceptedAnswers": [
+              "étant donné que",
+              "etant donne que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "étant donné que",
+              "en raison de",
+              "au lieu de",
+              "contrairement à"
+            ]
+          },
+          {
+            "answer": "repousse",
+            "acceptedAnswers": [
+              "repousse"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "repousser, chaque achat, Präsens Indikativ",
+              "en": "repousser, chaque achat, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " mon conseil : si tu y vas déjà régulièrement, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " la carte ; même de petits achats te rapprochent du bon."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "D’où",
+            "acceptedAnswers": [
+              "D’où",
+              "D'où",
+              "D’ou",
+              "D'ou"
+            ],
+            "kind": "connector",
+            "choices": [
+              "D’où",
+              "Parce que",
+              "De sorte que",
+              "Étant donné que"
+            ]
+          },
+          {
+            "answer": "prends",
+            "acceptedAnswers": [
+              "prends"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "prendre, tu, Imperativ bejahend",
+              "en": "prendre, tu, affirmative imperative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Tu ",
+        "answer": "cumules",
+        "acceptedAnswers": [
+          "cumules",
+          "accumules",
+          "gagnes",
+          "obtiens",
+          "reçois",
+          "recois"
+        ],
+        "after": " un point par euro dépensé, de sorte qu’à deux cents points, tu reçois un bon qui vaut dix euros.",
+        "fallbackChoices": [
+          "cumules",
+          "cumuler",
+          "cumulé",
+          "cumulant"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine rechnerische Folge ausdrücken",
+          "en": "Expressing a numerical consequence"
+        },
+        "rule": {
+          "de": "De sorte que mit Indikativ beschreibt hier die im vorliegenden Regelwerk vorgesehene Folge des Punktesammelns.",
+          "en": "De sorte que with the indicative describes the consequence of collecting points under the rules being discussed."
+        },
+        "examples": [
+          {
+            "targetText": "Tu cumules un point par euro dépensé, de sorte qu’à deux cents points, tu reçois un bon qui vaut dix euros.",
+            "base": {
+              "de": "Du sammelst einen Punkt pro ausgegebenem Euro; bei zweihundert Punkten erhältst du einen Zehn-Euro-Gutschein.",
+              "en": "You collect one point per euro spent, so two hundred points earn a ten-euro voucher."
+            },
+            "highlights": [
+              "de sorte qu’à",
+              "tu reçois"
+            ]
+          },
+          {
+            "targetText": "Selon ce règlement, chaque achat repousse la date, de sorte que des achats réguliers prolongent la validité des points.",
+            "base": {
+              "de": "Laut diesen Bedingungen verschiebt jeder Einkauf das Datum, sodass regelmäßige Einkäufe die Gültigkeit der Punkte verlängern.",
+              "en": "Under these rules, each purchase pushes the date back, so regular purchases extend the points' validity."
+            },
+            "highlights": [
+              "de sorte que",
+              "prolongent"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "de sorte que",
+          "kind": "connector",
+          "base": {
+            "de": "sodass, als Folge",
+            "en": "so that, as a result"
+          }
+        },
+        {
+          "targetText": "étant donné que",
+          "kind": "frame",
+          "base": {
+            "de": "da / angesichts der Tatsache, dass",
+            "en": "given that"
+          }
+        },
+        {
+          "targetText": "cumules",
+          "lemma": "cumuler",
+          "kind": "verb",
+          "base": {
+            "de": "sammelst / häufst an",
+            "en": "collect / accumulate"
+          }
+        },
+        {
+          "targetText": "bon",
+          "kind": "noun",
+          "base": {
+            "de": "Gutschein",
+            "en": "voucher"
+          }
+        },
+        {
+          "targetText": "valables",
+          "lemma": "valable",
+          "kind": "adjective",
+          "base": {
+            "de": "gültig",
+            "en": "valid"
+          }
+        },
+        {
+          "targetText": "repousse",
+          "lemma": "repousser",
+          "kind": "verb",
+          "base": {
+            "de": "verschiebt nach hinten",
+            "en": "pushes back"
+          }
+        },
+        {
+          "targetText": "validité",
+          "kind": "noun",
+          "base": {
+            "de": "Gültigkeit",
+            "en": "validity"
+          }
+        },
+        {
+          "targetText": "règlement",
+          "kind": "noun",
+          "base": {
+            "de": "Regelwerk / Bedingungen",
+            "en": "rules / terms"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "cumules",
+            "reçois",
+            "bon"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "valables",
+            "douze",
+            "repousse"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "conseil",
+            "achats",
+            "rapprochent"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "cumuler",
+        "familyKey": "cumuler",
+        "surface": "cumules",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Avec cette carte, tu cumules des points à chaque achat.",
+          "base": {
+            "de": "Mit dieser Karte sammelst du bei jedem Einkauf Punkte.",
+            "en": "With this card, you collect points on each purchase."
+          }
+        },
+        "base": {
+          "de": "sammeln / anhäufen",
+          "en": "collect / accumulate"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "changement-de-fournisseur",
+      "title": {
+        "de": "Den Anbieterwechsel erklären",
+        "en": "Explaining a supplier switch"
+      },
+      "situation": {
+        "de": "Sie erklären einem Nachbarn Ihren Wechsel zwischen zwei fiktiven Stromtarifen.",
+        "en": "You explain your switch between two fictional electricity plans to a neighbor."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "voisin",
+          "role": {
+            "de": "Nachbar",
+            "en": "neighbor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Nachbar fragt: «Vous avez changé de fournisseur d’électricité récemment. Pourquoi avoir quitté votre ancien contrat ?»",
+        "en": "Your neighbor asks: «Vous avez changé de fournisseur d’électricité récemment. Pourquoi avoir quitté votre ancien contrat ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Vous avez changé de fournisseur d’électricité récemment. Pourquoi avoir quitté votre ancien contrat ?",
+          "base": {
+            "de": "Sie haben kürzlich den Stromanbieter gewechselt. Warum haben Sie Ihren alten Vertrag beendet?",
+            "en": "You recently changed electricity suppliers. Why did you leave your old contract?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "vous",
+          "targetText": "J’ai résilié mon contrat, étant donné que mon tarif a subi deux hausses cette année, alors que cette nouvelle offre garantit un prix fixe.",
+          "base": {
+            "de": "Ich habe meinen Vertrag gekündigt, da mein Tarif dieses Jahr zweimal erhöht wurde, während dieses neue Angebot einen Festpreis garantiert.",
+            "en": "I cancelled my contract because my rate had two increases this year, whereas this new offer guarantees a fixed price."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Mais quitter le contrat, c’est facile ? Je crains surtout les démarches entre les deux entreprises.",
+          "base": {
+            "de": "Aber lässt sich der Vertrag einfach beenden? Ich fürchte vor allem den Aufwand zwischen den beiden Unternehmen.",
+            "en": "But is leaving the contract easy? I'm mainly worried about the paperwork between the two companies."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "vous",
+          "targetText": "Leur site annonce dix minutes : ça se fait en ligne, de sorte que le nouveau fournisseur prévient lui-même mon ancien fournisseur.",
+          "base": {
+            "de": "Ihre Website nennt zehn Minuten: Es wird online erledigt, sodass der neue Anbieter meinen bisherigen Anbieter selbst informiert.",
+            "en": "Their site estimates ten minutes: it's done online, so the new supplier notifies my previous supplier itself."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Et sur votre facture, vous avez déjà une estimation concrète de ce que ce changement vous fera économiser ?",
+          "base": {
+            "de": "Und haben Sie schon eine konkrete Schätzung, wie viel Sie mit dem Wechsel auf Ihrer Rechnung sparen werden?",
+            "en": "And do you already have a concrete estimate of how much this switch will save on your bill?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "vous",
+          "targetText": "Pour résumer : prix fixe, démarche en ligne et environ quinze euros de moins par mois selon mon estimation, d’où ce changement.",
+          "base": {
+            "de": "Zusammengefasst: Festpreis, Onlineabwicklung und nach meiner Schätzung etwa fünfzehn Euro weniger pro Monat; daher der Wechsel.",
+            "en": "To sum up: a fixed price, an online process, and around fifteen euros less per month by my estimate, hence the switch."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "J’ai résilié mon contrat, étant donné que mon tarif a ",
+        "chunks": [
+          "subi",
+          "deux hausses cette année,",
+          "alors que",
+          "cette nouvelle offre",
+          "garantit"
+        ],
+        "distractors": [
+          "dont les hausses",
+          "à cette année"
+        ],
+        "frameSuffix": " un prix fixe."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Leur site annonce dix minutes : ça se "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " en ligne, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " le nouveau fournisseur prévient lui-même mon ancien fournisseur."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "fait",
+            "acceptedAnswers": [
+              "fait"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "faire, ça, Präsens Indikativ nach se",
+              "en": "faire, ça, present indicative after se"
+            }
+          },
+          {
+            "answer": "de sorte que",
+            "acceptedAnswers": [
+              "de sorte que"
+            ],
+            "kind": "connector",
+            "choices": [
+              "de sorte que",
+              "en raison de",
+              "au lieu de",
+              "contrairement à"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " : prix fixe, démarche en ligne et environ quinze euros de moins par mois selon mon estimation, d’où ce changement."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Pour résumer",
+            "acceptedAnswers": [
+              "Pour résumer",
+              "Pour resumer"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Pour résumer",
+              "Parce que",
+              "De sorte que",
+              "Étant donné que"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "J’ai ",
+        "answer": "résilié",
+        "acceptedAnswers": [
+          "résilié",
+          "resilie",
+          "rompu",
+          "annulé",
+          "annule",
+          "quitté",
+          "quitte"
+        ],
+        "after": " mon contrat, étant donné que mon tarif a subi deux hausses cette année, alors que cette nouvelle offre garantit un prix fixe.",
+        "fallbackChoices": [
+          "résilié",
+          "résilier",
+          "résiliant",
+          "résilient"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Entscheidung durch veränderte Bedingungen erklären",
+          "en": "Explaining a decision through changing conditions"
+        },
+        "rule": {
+          "de": "Étant donné que benennt den ausschlaggebenden Umstand, und alors que stellt ihm die konkrete Alternative gegenüber.",
+          "en": "Étant donné que identifies the decisive circumstance, and alors que contrasts it with the specific alternative."
+        },
+        "examples": [
+          {
+            "targetText": "J’ai résilié mon contrat, étant donné que mon tarif a subi deux hausses cette année, alors que cette nouvelle offre garantit un prix fixe.",
+            "base": {
+              "de": "Ich habe wegen zweier Tariferhöhungen gekündigt, während das neue Angebot einen Festpreis zusichert.",
+              "en": "I cancelled because of two rate increases, while the new offer guarantees a fixed price."
+            },
+            "highlights": [
+              "étant donné que",
+              "alors que"
+            ]
+          },
+          {
+            "targetText": "Je change de formule, étant donné que mes besoins ont diminué, alors que mon ancien forfait reste aussi cher.",
+            "base": {
+              "de": "Ich wechsle die Variante, da mein Bedarf gesunken ist, während mein alter Tarif genauso teuer bleibt.",
+              "en": "I'm changing plans because my needs have decreased, while my old plan remains just as expensive."
+            },
+            "highlights": [
+              "étant donné que",
+              "alors que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "étant donné que",
+          "kind": "frame",
+          "base": {
+            "de": "da / angesichts der Tatsache, dass",
+            "en": "given that"
+          }
+        },
+        {
+          "targetText": "de sorte que",
+          "kind": "connector",
+          "base": {
+            "de": "sodass, als Folge",
+            "en": "so that, as a result"
+          }
+        },
+        {
+          "targetText": "résilié",
+          "lemma": "résilier",
+          "kind": "verb",
+          "base": {
+            "de": "gekündigt",
+            "en": "cancelled / terminated"
+          }
+        },
+        {
+          "targetText": "hausses",
+          "lemma": "hausse",
+          "kind": "noun",
+          "base": {
+            "de": "Erhöhungen",
+            "en": "increases"
+          }
+        },
+        {
+          "targetText": "garantit",
+          "lemma": "garantir",
+          "kind": "verb",
+          "base": {
+            "de": "garantiert",
+            "en": "guarantees"
+          }
+        },
+        {
+          "targetText": "fournisseur",
+          "kind": "noun",
+          "base": {
+            "de": "Anbieter / Versorger",
+            "en": "supplier"
+          }
+        },
+        {
+          "targetText": "démarche",
+          "kind": "noun",
+          "base": {
+            "de": "Abwicklung / notwendiger Schritt",
+            "en": "process / administrative step"
+          }
+        },
+        {
+          "targetText": "estimation",
+          "kind": "noun",
+          "base": {
+            "de": "Schätzung",
+            "en": "estimate"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "résilié",
+            "subi",
+            "hausses"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "site",
+            "ligne",
+            "prévient"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "fixe",
+            "quinze",
+            "estimation"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "résilier",
+        "familyKey": "résilier",
+        "surface": "résilié",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "J’ai résilié ce contrat après avoir comparé les deux offres.",
+          "base": {
+            "de": "Ich habe diesen Vertrag nach einem Vergleich beider Angebote gekündigt.",
+            "en": "I cancelled this contract after comparing the two offers."
+          }
+        },
+        "base": {
+          "de": "kündigen / einen Vertrag beenden",
+          "en": "cancel / terminate a contract"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "contester-un-avis-de-stationnement",
+      "title": {
+        "de": "Ein Parkentgelt beanstanden",
+        "en": "Challenging a parking notice"
+      },
+      "situation": {
+        "de": "Sie lesen mit einer Kollegin einen fiktiven Zahlungsbescheid des privaten Parkplatzes Parc Lumière und erklären das dort beschriebene Verfahren.",
+        "en": "You read a fictional payment notice from the private Parc Lumière car park with a colleague and explain its stated procedure."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "collegue",
+          "role": {
+            "de": "Kollegin",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihre Kollegin fragt: «Cet avis de Parc Lumière réclame un paiement. Vous voyez une procédure pour signaler que j’ai déjà payé ?»",
+        "en": "Your colleague asks: «Cet avis de Parc Lumière réclame un paiement. Vous voyez une procédure pour signaler que j’ai déjà payé ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "collegue",
+          "targetText": "Cet avis de Parc Lumière réclame un paiement. Vous voyez une procédure pour signaler que j’ai déjà payé ?",
+          "base": {
+            "de": "Dieser Bescheid von Parc Lumière fordert eine Zahlung. Sehen Sie eine Möglichkeit, mitzuteilen, dass ich schon bezahlt habe?",
+            "en": "This Parc Lumière notice requests payment. Do you see a procedure for reporting that I've already paid?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "vous",
+          "targetText": "D’après cet avis, ça se conteste en ligne, étant donné que leur site propose un formulaire qui demande un ticket et une photo.",
+          "base": {
+            "de": "Laut diesem Bescheid lässt sich das online beanstanden, da ihre Website ein Formular anbietet, das ein Ticket und ein Foto verlangt.",
+            "en": "According to this notice, it can be challenged online, since their site offers a form that asks for a ticket and a photo."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "collegue",
+          "targetText": "J’ai mon ticket d’entrée et mon reçu. Quelles pièces faut-il joindre exactement, selon ce formulaire ?",
+          "base": {
+            "de": "Ich habe mein Einfahrtsticket und meinen Beleg. Welche Unterlagen muss ich laut diesem Formular genau beifügen?",
+            "en": "I have my entry ticket and receipt. What exactly does this form say I should attach?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "vous",
+          "targetText": "Autrement dit : ticket d’entrée, photo de l’horodateur et votre reçu, de sorte que les dates et le paiement apparaissent dans le même dossier.",
+          "base": {
+            "de": "Anders gesagt: Einfahrtsticket, Foto des Parkscheinautomaten und Ihr Beleg, sodass Zeiten und Zahlung in derselben Akte erscheinen.",
+            "en": "In other words: the entry ticket, a photo of the payment machine, and your receipt, so the dates and payment appear in the same file."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "collegue",
+          "targetText": "Et si je ne réponds pas du tout, est-ce que cet avis précise ce qui peut arriver ?",
+          "base": {
+            "de": "Und wenn ich überhaupt nicht antworte, steht in diesem Bescheid, was dann passieren kann?",
+            "en": "And if I don't reply at all, does this notice specify what might happen?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Cet avis ne le précise pas ; c’est pour cette raison que je contesterais avec les justificatifs, sans supposer la suite.",
+          "base": {
+            "de": "Dieser Bescheid präzisiert das nicht; deshalb würde ich ihn mit den Belegen beanstanden, ohne den weiteren Verlauf vorauszusetzen.",
+            "en": "This notice doesn't specify that; that's why I'd challenge it with the evidence rather than assume what happens next."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "D’après cet avis, ça se conteste en ligne, étant donné que leur site ",
+        "chunks": [
+          "propose",
+          "un formulaire",
+          "qui demande",
+          "un ticket",
+          "et une photo."
+        ],
+        "distractors": [
+          "dont la date",
+          "à un ticket"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Autrement dit : ticket d’entrée, photo de l’horodateur et votre reçu, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " les dates et le paiement "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " dans le même dossier."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "de sorte que",
+            "acceptedAnswers": [
+              "de sorte que"
+            ],
+            "kind": "connector",
+            "choices": [
+              "de sorte que",
+              "en raison de",
+              "au lieu de",
+              "contrairement à"
+            ]
+          },
+          {
+            "answer": "apparaissent",
+            "acceptedAnswers": [
+              "apparaissent"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "apparaître, les dates et le paiement, Präsens Indikativ",
+              "en": "apparaître, les dates et le paiement, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Cet avis ne le précise pas ; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " je "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " avec les justificatifs, sans supposer la suite."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "c’est pour cette raison que",
+            "acceptedAnswers": [
+              "c’est pour cette raison que",
+              "c'est pour cette raison que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "c’est pour cette raison que",
+              "en raison de",
+              "au lieu de",
+              "contrairement à"
+            ]
+          },
+          {
+            "answer": "contesterais",
+            "acceptedAnswers": [
+              "contesterais"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "contester, je, Konditional Präsens",
+              "en": "contester, je, present conditional"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "D’après cet avis, ça se conteste en ligne, étant donné que leur site ",
+        "answer": "propose",
+        "acceptedAnswers": [
+          "propose",
+          "contient",
+          "comporte",
+          "fournit",
+          "offre"
+        ],
+        "after": " un formulaire qui demande un ticket et une photo.",
+        "fallbackChoices": [
+          "propose",
+          "proposer",
+          "proposent",
+          "proposant"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Ein Verfahren mit se beschreiben",
+          "en": "Describing a process with se"
+        },
+        "rule": {
+          "de": "Ça se conteste beschreibt ein mögliches Verfahren, während d’après cet avis die Aussage ausdrücklich auf das vorliegende Dokument begrenzt.",
+          "en": "Ça se conteste describes an available procedure, while d’après cet avis explicitly limits the statement to the document being discussed."
+        },
+        "examples": [
+          {
+            "targetText": "D’après cet avis, ça se conteste en ligne, étant donné que leur site propose un formulaire qui demande un ticket et une photo.",
+            "base": {
+              "de": "Laut diesem Bescheid kann man online widersprechen; die Website bietet ein Formular, das ein Ticket und ein Foto verlangt.",
+              "en": "This notice allows an online challenge; the site offers a form asking for a ticket and a photo."
+            },
+            "highlights": [
+              "D’après cet avis",
+              "ça se conteste"
+            ]
+          },
+          {
+            "targetText": "D’après ce formulaire, la demande se complète en ligne avec les pièces qui expliquent votre situation.",
+            "base": {
+              "de": "Laut diesem Formular lässt sich der Antrag online mit Unterlagen ergänzen, die Ihre Situation erläutern.",
+              "en": "According to this form, the request is completed online with documents explaining your situation."
+            },
+            "highlights": [
+              "D’après ce formulaire",
+              "se complète"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "étant donné que",
+          "kind": "frame",
+          "base": {
+            "de": "da / angesichts der Tatsache, dass",
+            "en": "given that"
+          }
+        },
+        {
+          "targetText": "de sorte que",
+          "kind": "connector",
+          "base": {
+            "de": "sodass, als Folge",
+            "en": "so that, as a result"
+          }
+        },
+        {
+          "targetText": "conteste",
+          "lemma": "contester",
+          "kind": "verb",
+          "base": {
+            "de": "beanstandet / anficht",
+            "en": "challenges / disputes"
+          }
+        },
+        {
+          "targetText": "avis",
+          "kind": "noun",
+          "base": {
+            "de": "Bescheid / Mitteilung",
+            "en": "notice"
+          }
+        },
+        {
+          "targetText": "formulaire",
+          "kind": "noun",
+          "base": {
+            "de": "Formular",
+            "en": "form"
+          }
+        },
+        {
+          "targetText": "reçu",
+          "kind": "noun",
+          "base": {
+            "de": "Beleg / Quittung",
+            "en": "receipt"
+          }
+        },
+        {
+          "targetText": "justificatifs",
+          "lemma": "justificatif",
+          "kind": "noun",
+          "base": {
+            "de": "Belege / Nachweise",
+            "en": "supporting documents"
+          }
+        },
+        {
+          "targetText": "dossier",
+          "kind": "noun",
+          "base": {
+            "de": "Akte / Unterlagen",
+            "en": "file / case documents"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "conteste",
+            "formulaire",
+            "ticket"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "reçu",
+            "paiement",
+            "dossier"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "précise",
+            "justificatifs",
+            "supposer"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "contester",
+        "familyKey": "contester",
+        "surface": "conteste",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Selon cet avis, une demande de paiement se conteste avec des justificatifs.",
+          "base": {
+            "de": "Laut diesem Bescheid lässt sich eine Zahlungsforderung mit Belegen beanstanden.",
+            "en": "According to this notice, a payment request can be challenged with supporting documents."
+          }
+        },
+        "base": {
+          "de": "beanstanden / anfechten",
+          "en": "challenge / dispute"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "pourquoi-le-plan-a-echoue",
+      "title": {
+        "de": "Warum der Kochclub scheiterte",
+        "en": "Why the cooking club fell through"
+      },
+      "situation": {
+        "de": "Du besprichst mit einem Freund, warum euer gemeinsamer Kochclub nicht zustande kam.",
+        "en": "You discuss with a friend why your shared cooking-club plan fell through."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tu",
+          "tu",
+          "tu"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "ami",
+          "role": {
+            "de": "Freund",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Freund fragt: «On avait tous envie de lancer ce club de cuisine. Comment tu expliques que le projet soit tombé à l’eau ?»",
+        "en": "Your friend asks: «On avait tous envie de lancer ce club de cuisine. Comment tu expliques que le projet soit tombé à l’eau ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "On avait tous envie de lancer ce club de cuisine. Comment tu expliques que le projet soit tombé à l’eau ?",
+          "base": {
+            "de": "Wir wollten doch alle diesen Kochclub gründen. Wie erklärst du, dass das Projekt ins Wasser gefallen ist?",
+            "en": "We all wanted to start that cooking club. How do you explain the plan falling through?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "tu",
+          "targetText": "Le projet a été abandonné parce qu’un retard s’est répercuté sur toute la préparation : sans salle, pas de date, donc pas d’achats.",
+          "base": {
+            "de": "Das Projekt wurde aufgegeben, weil sich eine Verzögerung auf die gesamte Vorbereitung auswirkte: Ohne Raum kein Termin und folglich keine Einkäufe.",
+            "en": "The plan was abandoned because one delay affected all the preparation: no room meant no date, and therefore no purchases."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "Tu ne crois pas plutôt que plus personne n’y croyait vraiment, au fond, après les premières discussions ?",
+          "base": {
+            "de": "Glaubst du nicht eher, dass nach den ersten Gesprächen eigentlich niemand mehr wirklich daran glaubte?",
+            "en": "Don't you think that, deep down, no one really believed in it anymore after the initial discussions?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "tu",
+          "targetText": "D’un côté, l’enthousiasme a baissé ; de l’autre, deux personnes avaient déjà préparé leurs recettes, donc le manque d’intérêt n’explique pas tout.",
+          "base": {
+            "de": "Einerseits ließ die Begeisterung nach; andererseits hatten zwei Personen bereits ihre Rezepte vorbereitet, fehlendes Interesse erklärt also nicht alles.",
+            "en": "On one hand, enthusiasm declined; on the other, two people had already prepared recipes, so lack of interest doesn't explain everything."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "Et si on recommençait, qu’est-ce que tu changerais pour éviter qu’un seul retard bloque tout le groupe ?",
+          "base": {
+            "de": "Und wenn wir es noch einmal versuchen, was würdest du ändern, damit eine einzige Verzögerung nicht die ganze Gruppe blockiert?",
+            "en": "And if we started again, what would you change to prevent one delay from blocking the whole group?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "tu",
+          "targetText": "En clair, la salle serait réservée d’abord, puis chacun aurait une tâche avec une échéance ; je relancerais seulement avec ces engagements.",
+          "base": {
+            "de": "Klar gesagt würde zuerst der Raum reserviert, dann bekäme jede Person eine Aufgabe mit Termin; nur mit diesen Zusagen würde ich neu starten.",
+            "en": "Put plainly, the room would be booked first, then everyone would get a task with a deadline; I'd restart only with those commitments."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Le projet a été ",
+        "chunks": [
+          "abandonné",
+          "parce qu’un retard",
+          "s’est répercuté",
+          "sur toute",
+          "la préparation :"
+        ],
+        "distractors": [
+          "dont la préparation",
+          "de la préparation"
+        ],
+        "frameSuffix": " sans salle, pas de date, donc pas d’achats."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", l’enthousiasme a baissé ; de l’autre, deux personnes avaient déjà "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " leurs recettes, donc le manque d’intérêt n’explique pas tout."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "D’un côté",
+            "acceptedAnswers": [
+              "D’un côté",
+              "D'un côté",
+              "D’un cote",
+              "D'un cote"
+            ],
+            "kind": "connector",
+            "choices": [
+              "D’un côté",
+              "Malgré",
+              "Au lieu de",
+              "Contrairement à"
+            ]
+          },
+          {
+            "answer": "préparé",
+            "acceptedAnswers": [
+              "préparé",
+              "prepare"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "préparer, Partizip Perfekt nach avaient déjà",
+              "en": "préparer, past participle after avaient déjà"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", la salle serait "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " d’abord, puis chacun aurait une tâche avec une échéance ; je relancerais seulement avec ces engagements."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En clair",
+            "acceptedAnswers": [
+              "En clair"
+            ],
+            "kind": "frame",
+            "choices": [
+              "En clair",
+              "Malgré",
+              "Au lieu de",
+              "Contrairement à"
+            ]
+          },
+          {
+            "answer": "réservée",
+            "acceptedAnswers": [
+              "réservée",
+              "reservee"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "réserver, Partizip Perfekt mit Angleichung an la salle",
+              "en": "réserver, past participle agreeing with la salle"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Le projet a été abandonné parce qu’un retard s’est ",
+        "answer": "répercuté",
+        "acceptedAnswers": [
+          "répercuté",
+          "repercute",
+          "propagé",
+          "propage"
+        ],
+        "after": " sur toute la préparation : sans salle, pas de date, donc pas d’achats.",
+        "fallbackChoices": [
+          "répercuté",
+          "répercuter",
+          "répercutant",
+          "répercutent"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Kettenreaktion erklären",
+          "en": "Explaining a chain reaction"
+        },
+        "rule": {
+          "de": "Se répercuter sur benennt die Weiterwirkung einer Ursache, und sans … pas de … donc macht die einzelnen Abhängigkeiten sichtbar.",
+          "en": "Se répercuter sur identifies a cause's knock-on effect, and sans … pas de … donc makes the individual dependencies explicit."
+        },
+        "examples": [
+          {
+            "targetText": "Le projet a été abandonné parce qu’un retard s’est répercuté sur toute la préparation : sans salle, pas de date, donc pas d’achats.",
+            "base": {
+              "de": "Die Verzögerung wirkte auf die ganze Vorbereitung: Ohne Raum fehlte ein Termin und damit die Grundlage für Einkäufe.",
+              "en": "The delay affected all the preparation: without a room there was no date and therefore no basis for purchases."
+            },
+            "highlights": [
+              "s’est répercuté sur",
+              "sans salle, pas de date, donc pas d’achats"
+            ]
+          },
+          {
+            "targetText": "Le retard s’est répercuté sur le budget : sans date précise, pas de réservation, donc un tarif plus élevé.",
+            "base": {
+              "de": "Die Verzögerung wirkte sich auf das Budget aus: Ohne festes Datum keine Reservierung und deshalb ein höherer Preis.",
+              "en": "The delay affected the budget: without a firm date there was no booking, and therefore a higher price."
+            },
+            "highlights": [
+              "s’est répercuté sur",
+              "sans date précise, pas de réservation, donc"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "d’un côté",
+          "kind": "connector",
+          "base": {
+            "de": "einerseits",
+            "en": "on one hand"
+          }
+        },
+        {
+          "targetText": "en clair",
+          "kind": "frame",
+          "base": {
+            "de": "klar gesagt",
+            "en": "put plainly"
+          }
+        },
+        {
+          "targetText": "répercuté",
+          "lemma": "répercuter",
+          "kind": "verb",
+          "base": {
+            "de": "weiter ausgewirkt",
+            "en": "had a knock-on effect"
+          }
+        },
+        {
+          "targetText": "préparation",
+          "kind": "noun",
+          "base": {
+            "de": "Vorbereitung",
+            "en": "preparation"
+          }
+        },
+        {
+          "targetText": "abandonné",
+          "lemma": "abandonner",
+          "kind": "verb",
+          "base": {
+            "de": "aufgegeben",
+            "en": "abandoned"
+          }
+        },
+        {
+          "targetText": "recettes",
+          "lemma": "recette",
+          "kind": "noun",
+          "base": {
+            "de": "Rezepte",
+            "en": "recipes"
+          }
+        },
+        {
+          "targetText": "tâche",
+          "kind": "noun",
+          "base": {
+            "de": "Aufgabe",
+            "en": "task"
+          }
+        },
+        {
+          "targetText": "engagements",
+          "lemma": "engagement",
+          "kind": "noun",
+          "base": {
+            "de": "verbindliche Zusagen",
+            "en": "commitments"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "répercuté",
+            "préparation",
+            "salle"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "baissé",
+            "recettes",
+            "manque"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "réservée",
+            "tâche",
+            "engagements"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "répercuter",
+        "familyKey": "répercuter",
+        "surface": "répercuté",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Ce retard s’est répercuté sur toutes les étapes suivantes.",
+          "base": {
+            "de": "Diese Verzögerung wirkte sich auf alle folgenden Schritte aus.",
+            "en": "This delay had a knock-on effect on all subsequent stages."
+          }
+        },
+        "base": {
+          "de": "weiterwirken / sich auswirken auf",
+          "en": "have a knock-on effect on"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "prise-de-rendez-vous",
+      "title": {
+        "de": "Das Terminverfahren erklären",
+        "en": "Explaining the appointment process"
+      },
+      "situation": {
+        "de": "Sie erklären einer Gastforscherin den fiktiven Aushang zum Terminverfahren im Centre Oriel.",
+        "en": "You explain the fictional appointment notice at Centre Oriel to a visiting researcher."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "visiteuse",
+          "role": {
+            "de": "Gastforscherin",
+            "en": "visiting researcher"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Gastforscherin fragt: «Cette affiche du Centre Oriel parle de créneaux sur le site. Comment expliquez-vous qu’il en reste si peu ?»",
+        "en": "The researcher asks: «Cette affiche du Centre Oriel parle de créneaux sur le site. Comment expliquez-vous qu’il en reste si peu ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "visiteuse",
+          "targetText": "Cette affiche du Centre Oriel parle de créneaux sur le site. Comment expliquez-vous qu’il en reste si peu ?",
+          "base": {
+            "de": "Dieser Aushang des Centre Oriel erwähnt Termine auf der Website. Wie erklären Sie sich, dass so wenige übrig sind?",
+            "en": "This Centre Oriel notice mentions appointment slots on the website. Why are so few left?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "vous",
+          "targetText": "D’après cette affiche, les créneaux sont publiés le lundi à huit heures, de sorte que les places de la semaine partent souvent avant midi.",
+          "base": {
+            "de": "Laut diesem Aushang werden die Termine montags um acht Uhr veröffentlicht, sodass die Plätze der Woche oft vor Mittag weg sind.",
+            "en": "According to this notice, the slots are published on Mondays at eight, so the week's places are often gone before noon."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "visiteuse",
+          "targetText": "Et pour une demande urgente, est-ce que cet affichage garantit vraiment un rendez-vous le jour même ?",
+          "base": {
+            "de": "Und garantiert dieser Aushang bei einer dringenden Anfrage wirklich einen Termin am selben Tag?",
+            "en": "And for an urgent request, does this notice actually guarantee a same-day appointment?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "vous",
+          "targetText": "Non, rien n’est garanti : cette affiche indique seulement que les urgences sont traitées par téléphone, selon les disponibilités du centre.",
+          "base": {
+            "de": "Nein, nichts wird garantiert: Der Aushang sagt nur, dass dringende Fälle je nach Verfügbarkeit des Zentrums telefonisch bearbeitet werden.",
+            "en": "No, nothing is guaranteed: the notice only says urgent requests are handled by phone, subject to the center's availability."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "visiteuse",
+          "targetText": "Vous pouvez résumer les étapes dans l’ordre, avec une solution si les autres moyens ne fonctionnent pas ?",
+          "base": {
+            "de": "Können Sie die Schritte der Reihe nach zusammenfassen, einschließlich einer Lösung, falls die anderen Wege nicht funktionieren?",
+            "en": "Can you summarize the steps in order, including an option if the other methods don't work?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "vous",
+          "targetText": "Pour résumer : d’abord le site lundi, ensuite le téléphone pour une urgence, enfin l’accueil si les autres moyens ne fonctionnent pas.",
+          "base": {
+            "de": "Zusammengefasst: zuerst montags die Website, dann bei Dringlichkeit das Telefon, schließlich der Empfang, falls die anderen Wege nicht funktionieren.",
+            "en": "To sum up: first the website on Monday, then the phone for an urgent request, finally reception if the other methods don't work."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "D’après cette affiche, les créneaux sont publiés le lundi à huit heures, ",
+        "chunks": [
+          "de sorte que",
+          "les places",
+          "de la",
+          "semaine",
+          "partent souvent avant midi."
+        ],
+        "distractors": [
+          "de sorte qu’elles",
+          "aux places"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", rien n’est garanti : cette affiche indique seulement que les urgences sont "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " par téléphone, selon les disponibilités du centre."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Non",
+            "acceptedAnswers": [
+              "Non"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Non",
+              "Grâce à",
+              "Au lieu de",
+              "Malgré"
+            ]
+          },
+          {
+            "answer": "traitées",
+            "acceptedAnswers": [
+              "traitées",
+              "traitees"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "traiter, Partizip Perfekt mit Angleichung an les urgences",
+              "en": "traiter, past participle agreeing with les urgences"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " : d’abord le site lundi, ensuite le téléphone pour une urgence, enfin l’accueil si les autres moyens ne "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " pas."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Pour résumer",
+            "acceptedAnswers": [
+              "Pour résumer",
+              "Pour resumer"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Pour résumer",
+              "Parce que",
+              "De sorte que",
+              "Étant donné que"
+            ]
+          },
+          {
+            "answer": "fonctionnent",
+            "acceptedAnswers": [
+              "fonctionnent"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "fonctionner, les autres moyens, Präsens Indikativ",
+              "en": "fonctionner, les autres moyens, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "D’après cette affiche, les créneaux sont publiés le lundi à huit heures, de sorte que les places de la semaine ",
+        "answer": "partent",
+        "acceptedAnswers": [
+          "partent",
+          "disparaissent",
+          "s’envolent",
+          "s'envolent"
+        ],
+        "after": " souvent avant midi.",
+        "fallbackChoices": [
+          "partent",
+          "partir",
+          "parti",
+          "partant"
+        ]
+      },
+      "pattern": {
+        "moveType": "summarize",
+        "label": {
+          "de": "Einen Ablauf samt Ausweichmöglichkeit ordnen",
+          "en": "Ordering a process and its fallback"
+        },
+        "rule": {
+          "de": "D’abord, ensuite und enfin ordnen die Schritte, während si die letzte Möglichkeit auf den Fall beschränkt, dass die anderen Wege nicht funktionieren.",
+          "en": "D’abord, ensuite, and enfin order the steps, while si limits the final option to cases where the other methods do not work."
+        },
+        "examples": [
+          {
+            "targetText": "Pour résumer : d’abord le site lundi, ensuite le téléphone pour une urgence, enfin l’accueil si les autres moyens ne fonctionnent pas.",
+            "base": {
+              "de": "Zuerst die Website, dann bei Dringlichkeit das Telefon und zuletzt gegebenenfalls der Empfang.",
+              "en": "First the website, then the phone for urgency, and finally reception if needed."
+            },
+            "highlights": [
+              "d’abord",
+              "ensuite",
+              "enfin",
+              "si les autres moyens ne fonctionnent pas"
+            ]
+          },
+          {
+            "targetText": "D’abord, je consulte les créneaux ; ensuite, je prépare ma demande ; enfin, je contacte l’accueil si le site ne fonctionne pas.",
+            "base": {
+              "de": "Zuerst sehe ich die Termine an, dann bereite ich meine Anfrage vor; schließlich kontaktiere ich den Empfang, falls die Website nicht funktioniert.",
+              "en": "First I check the slots, then prepare my request; finally I contact reception if the website isn't working."
+            },
+            "highlights": [
+              "D’abord",
+              "ensuite",
+              "enfin"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "de sorte que",
+          "kind": "connector",
+          "base": {
+            "de": "sodass, als Folge",
+            "en": "so that, as a result"
+          }
+        },
+        {
+          "targetText": "pour résumer",
+          "kind": "frame",
+          "base": {
+            "de": "zusammenfassend",
+            "en": "to sum up"
+          }
+        },
+        {
+          "targetText": "créneaux",
+          "lemma": "créneau",
+          "kind": "noun",
+          "base": {
+            "de": "Zeitfenster / Termine",
+            "en": "time slots / appointments"
+          }
+        },
+        {
+          "targetText": "publiés",
+          "lemma": "publier",
+          "kind": "verb",
+          "base": {
+            "de": "veröffentlicht",
+            "en": "published"
+          }
+        },
+        {
+          "targetText": "l’accueil",
+          "lemma": "accueil",
+          "kind": "noun",
+          "base": {
+            "de": "der Empfang",
+            "en": "the reception desk"
+          }
+        },
+        {
+          "targetText": "téléphone",
+          "kind": "noun",
+          "base": {
+            "de": "Telefon",
+            "en": "phone"
+          }
+        },
+        {
+          "targetText": "urgences",
+          "lemma": "urgence",
+          "kind": "noun",
+          "base": {
+            "de": "dringende Fälle",
+            "en": "urgent requests"
+          }
+        },
+        {
+          "targetText": "disponibilités",
+          "lemma": "disponibilité",
+          "kind": "noun",
+          "base": {
+            "de": "freie Kapazitäten",
+            "en": "availability"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "créneaux",
+            "places",
+            "semaine"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "garanti",
+            "traitées",
+            "disponibilités"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "lundi",
+            "téléphone",
+            "moyens"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "créneau",
+        "familyKey": "créneau",
+        "surface": "créneaux",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Les créneaux disponibles apparaissent sur le site du centre.",
+          "base": {
+            "de": "Die verfügbaren Zeitfenster erscheinen auf der Website des Zentrums.",
+            "en": "Available time slots appear on the center's website."
+          }
+        },
+        "base": {
+          "de": "Zeitfenster / Termin",
+          "en": "time slot / appointment"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "velos-en-libre-service",
+      "title": {
+        "de": "Den Zweck eines Fahrradprogramms erklären",
+        "en": "Explaining a shared-bike scheme's purpose"
+      },
+      "situation": {
+        "de": "Sie erläutern einem skeptischen Nachbarn eine fiktive Broschüre über ein Fahrradprogramm gegen die Staus im Zentrum.",
+        "en": "You explain a fictional shared-bike scheme brochure to a skeptical neighbor concerned about city-center congestion."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "voisin",
+          "role": {
+            "de": "Nachbar",
+            "en": "neighbor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Nachbar fragt: «Les petits trajets encombrent déjà notre centre. Mais comment les vélos de cette brochure changeraient-ils vraiment la circulation ?»",
+        "en": "Your neighbor asks: «Les petits trajets encombrent déjà notre centre. Mais comment les vélos de cette brochure changeraient-ils vraiment la circulation ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Les petits trajets encombrent déjà notre centre. Mais comment les vélos de cette brochure changeraient-ils vraiment la circulation ?",
+          "base": {
+            "de": "Kurze Fahrten verstopfen schon jetzt unser Zentrum. Aber wie würden die Fahrräder aus dieser Broschüre den Verkehr wirklich verändern?",
+            "en": "Short trips already clog our center. But how would the bikes in this brochure actually change traffic?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "vous",
+          "targetText": "Le report des trajets courts vers le vélo réduirait les files qui bloquent notre centre, puisque ces déplacements aggravent déjà les bouchons.",
+          "base": {
+            "de": "Die Verlagerung kurzer Wege aufs Fahrrad würde die Schlangen verkürzen, die unser Zentrum blockieren, da diese Fahrten die Staus bereits verschärfen.",
+            "en": "Shifting short trips to bikes would reduce the queues blocking our center, since those journeys already worsen congestion."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Vous n’allez quand même pas demander aux gens de vendre leur voiture pour aller travailler à vélo ?",
+          "base": {
+            "de": "Sie wollen die Leute doch wohl nicht auffordern, ihr Auto zu verkaufen und mit dem Fahrrad zur Arbeit zu fahren?",
+            "en": "Surely you aren't going to ask people to sell their cars and cycle to work?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "vous",
+          "targetText": "Je nuancerais : l’objectif n’est pas que vous vendiez votre voiture, mais qu’un trajet sur dix se fasse à vélo, selon la brochure.",
+          "base": {
+            "de": "Ich würde das differenzieren: Laut Broschüre geht es nicht darum, dass Sie Ihr Auto verkaufen, sondern dass jeder zehnte Weg per Fahrrad erfolgt.",
+            "en": "I'd qualify that: according to the brochure, the aim isn't for you to sell your car, but for one journey in ten to be by bike."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Et moi qui ne fais jamais de vélo, quel avantage concret pourrais-je en tirer dans mes déplacements ?",
+          "base": {
+            "de": "Und welchen konkreten Vorteil könnte ich bei meinen Fahrten davon haben, obwohl ich nie Rad fahre?",
+            "en": "And what concrete benefit could I get on my journeys if I never cycle?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Voilà pourquoi vous pourriez en profiter aussi : si cet objectif se réalise, moins de voitures signifieraient moins d’attente aux feux.",
+          "base": {
+            "de": "Deshalb könnten auch Sie profitieren: Wird dieses Ziel erreicht, würden weniger Autos weniger Wartezeit an den Ampeln bedeuten.",
+            "en": "That's why you could benefit too: if that target is met, fewer cars would mean less waiting at traffic lights."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Le report des trajets courts vers le vélo ",
+        "chunks": [
+          "réduirait",
+          "les files",
+          "qui bloquent",
+          "notre centre,",
+          "puisque"
+        ],
+        "distractors": [
+          "dont le trajet",
+          "aux files"
+        ],
+        "frameSuffix": " ces déplacements aggravent déjà les bouchons."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " : l’objectif n’est pas que vous "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " votre voiture, mais qu’un trajet sur dix se fasse à vélo, selon la brochure."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Je nuancerais",
+            "acceptedAnswers": [
+              "Je nuancerais"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Je nuancerais",
+              "Malgré",
+              "Au lieu de",
+              "Contrairement à"
+            ]
+          },
+          {
+            "answer": "vendiez",
+            "acceptedAnswers": [
+              "vendiez"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "vendre, vous, Subjonctif présent nach l’objectif n’est pas que",
+              "en": "vendre, vous, present subjunctive after l’objectif n’est pas que"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " vous pourriez en profiter aussi : si cet objectif se réalise, moins de voitures "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " moins d’attente aux feux."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Voilà pourquoi",
+            "acceptedAnswers": [
+              "Voilà pourquoi",
+              "Voila pourquoi"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Voilà pourquoi",
+              "À cause de",
+              "Au lieu de",
+              "Contrairement à"
+            ]
+          },
+          {
+            "answer": "signifieraient",
+            "acceptedAnswers": [
+              "signifieraient"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "signifier, moins de voitures, Konditional Präsens Plural",
+              "en": "signifier, moins de voitures, plural present conditional"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Le report des trajets courts vers le vélo ",
+        "answer": "réduirait",
+        "acceptedAnswers": [
+          "réduirait",
+          "reduirait",
+          "raccourcirait",
+          "diminuerait",
+          "limiterait"
+        ],
+        "after": " les files qui bloquent notre centre, puisque ces déplacements aggravent déjà les bouchons.",
+        "fallbackChoices": [
+          "réduirait",
+          "réduire",
+          "réduisent",
+          "réduisant"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Ein Ziel präzisieren, ohne es zu übertreiben",
+          "en": "Clarifying a goal without overstating it"
+        },
+        "rule": {
+          "de": "L’objectif n’est pas que … mais que grenzt mit dem Subjonctif das abgelehnte Ziel vom tatsächlich gemeinten Ziel ab.",
+          "en": "L’objectif n’est pas que … mais que uses the subjunctive to distinguish the rejected goal from the actual goal."
+        },
+        "examples": [
+          {
+            "targetText": "Je nuancerais : l’objectif n’est pas que vous vendiez votre voiture, mais qu’un trajet sur dix se fasse à vélo, selon la brochure.",
+            "base": {
+              "de": "Laut Broschüre ist das Ziel nicht der Autoverkauf, sondern ein Fahrradanteil von einem Weg unter zehn.",
+              "en": "The brochure's aim is not selling the car, but making one trip in ten by bike."
+            },
+            "highlights": [
+              "l’objectif n’est pas que",
+              "vendiez",
+              "mais qu’un trajet sur dix se fasse"
+            ]
+          },
+          {
+            "targetText": "Je nuancerais : l’objectif n’est pas que vous vendiez votre voiture, mais que vous choisissiez parfois le vélo pour un court trajet.",
+            "base": {
+              "de": "Das Ziel ist nicht, dass Sie Ihr Auto verkaufen, sondern gelegentlich bei einem kurzen Weg das Fahrrad wählen.",
+              "en": "The aim isn't for you to sell your car, but for you sometimes to choose a bike for a short trip."
+            },
+            "highlights": [
+              "l’objectif n’est pas que",
+              "vendiez",
+              "mais que",
+              "choisissiez"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "puisque",
+          "kind": "connector",
+          "base": {
+            "de": "da",
+            "en": "since"
+          }
+        },
+        {
+          "targetText": "voilà pourquoi",
+          "kind": "frame",
+          "base": {
+            "de": "deshalb / daher",
+            "en": "that is why"
+          }
+        },
+        {
+          "targetText": "nuancerais",
+          "lemma": "nuancer",
+          "kind": "verb",
+          "base": {
+            "de": "würde differenzieren / einschränken",
+            "en": "would qualify / add nuance"
+          }
+        },
+        {
+          "targetText": "report",
+          "kind": "noun",
+          "base": {
+            "de": "Verlagerung",
+            "en": "shift / transfer"
+          }
+        },
+        {
+          "targetText": "trajets",
+          "lemma": "trajet",
+          "kind": "noun",
+          "base": {
+            "de": "Wege / Fahrten",
+            "en": "journeys / trips"
+          }
+        },
+        {
+          "targetText": "files",
+          "lemma": "file",
+          "kind": "noun",
+          "base": {
+            "de": "Warteschlangen / Autoschlangen",
+            "en": "queues / lines of traffic"
+          }
+        },
+        {
+          "targetText": "encombrent",
+          "lemma": "encombrer",
+          "kind": "verb",
+          "base": {
+            "de": "verstopfen / überlasten",
+            "en": "clog / congest"
+          }
+        },
+        {
+          "targetText": "feux",
+          "lemma": "feu",
+          "kind": "noun",
+          "base": {
+            "de": "Ampeln",
+            "en": "traffic lights"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "vélo",
+            "réduirait",
+            "files"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "nuancerais",
+            "vendiez",
+            "trajet"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "objectif",
+            "voitures",
+            "feux"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "nuancer",
+        "familyKey": "nuancer",
+        "surface": "nuancerais",
+        "turnIndex": 3,
+        "pos": "verb",
+        "example": {
+          "targetText": "Je nuancerais cette affirmation avant de juger les effets du programme.",
+          "base": {
+            "de": "Ich würde diese Aussage differenzieren, bevor ich die Auswirkungen des Programms beurteile.",
+            "en": "I'd qualify that statement before judging the program's effects."
+          }
+        },
+        "base": {
+          "de": "differenzieren / eine Aussage einschränken",
+          "en": "qualify / add nuance"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "chaine-de-decision",
+      "title": {
+        "de": "Den Entscheidungsweg nachzeichnen",
+        "en": "Tracing how a decision was made"
+      },
+      "situation": {
+        "de": "Sie erklären dem Sekretär eines fiktiven Bewohnervereins den dokumentierten Weg zu einer nächtlichen Hofschließung.",
+        "en": "You explain the documented process behind a nighttime courtyard closure to the secretary of a fictional residents' association."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "secretariat",
+          "role": {
+            "de": "Vereinssekretär",
+            "en": "association secretary"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Der Sekretär fragt: «Je reprends le dossier de la cour. Pouvez-vous expliquer comment nous en sommes arrivés à cette fermeture nocturne ?»",
+        "en": "The secretary asks: «Je reprends le dossier de la cour. Pouvez-vous expliquer comment nous en sommes arrivés à cette fermeture nocturne ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "secretariat",
+          "targetText": "Je reprends le dossier de la cour. Pouvez-vous expliquer comment nous en sommes arrivés à cette fermeture nocturne ?",
+          "base": {
+            "de": "Ich übernehme die Hofakte. Können Sie erklären, wie es zu dieser nächtlichen Schließung gekommen ist?",
+            "en": "I'm taking over the courtyard file. Can you explain how we reached this nighttime closure decision?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "vous",
+          "targetText": "Tout découle d’une plainte pour bruit en mars : le bureau a demandé un relevé dont les résultats ont été présentés à l’assemblée.",
+          "base": {
+            "de": "Alles geht auf eine Lärmbeschwerde im März zurück: Der Vorstand verlangte eine Erfassung, deren Ergebnisse der Versammlung vorgestellt wurden.",
+            "en": "It all stems from a noise complaint in March: the committee requested a record whose results were presented to the assembly."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "secretariat",
+          "targetText": "Mais qui a choisi de fermer à vingt-trois heures, le bureau ou les habitants réunis en assemblée ?",
+          "base": {
+            "de": "Aber wer beschloss die Schließung um dreiundzwanzig Uhr: der Vorstand oder die versammelten Bewohner?",
+            "en": "But who chose the eleven o'clock closure: the committee or the residents at the assembly?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "vous",
+          "targetText": "D’abord, le bureau a proposé vingt-trois heures ; ensuite, l’assemblée a voté ; autrement dit, les habitants ont décidé, pas le bureau seul.",
+          "base": {
+            "de": "Zuerst schlug der Vorstand dreiundzwanzig Uhr vor, dann stimmte die Versammlung ab; anders gesagt entschieden die Bewohner, nicht allein der Vorstand.",
+            "en": "First the committee proposed eleven o'clock, then the assembly voted; in other words, the residents decided, not the committee alone."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "secretariat",
+          "targetText": "Et le règlement final, qui l’a rédigé puis validé, et quand les habitants ont-ils pu le consulter ?",
+          "base": {
+            "de": "Und wer hat die endgültige Regelung verfasst und bestätigt, und wann konnten die Bewohner sie einsehen?",
+            "en": "And who drafted and approved the final rule, and when could residents read it?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "vous",
+          "targetText": "En clair, le règlement a été rédigé par le bureau, validé par l’assemblée, puis affiché le premier juin.",
+          "base": {
+            "de": "Klar gesagt wurde die Regelung vom Vorstand verfasst, von der Versammlung bestätigt und dann am ersten Juni ausgehängt.",
+            "en": "Put plainly, the rule was drafted by the committee, approved by the assembly, and posted on the first of June."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Tout découle d’une plainte pour bruit en mars : le bureau ",
+        "chunks": [
+          "a demandé",
+          "un relevé",
+          "dont les résultats",
+          "ont été",
+          "présentés à l’assemblée."
+        ],
+        "distractors": [
+          "aux résultats",
+          "de l’assemblée"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "D’abord, le bureau a proposé vingt-trois heures ; ensuite, l’assemblée a "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", les habitants ont décidé, pas le bureau seul."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "voté",
+            "acceptedAnswers": [
+              "voté",
+              "vote"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "voter, Partizip Perfekt nach a",
+              "en": "voter, past participle after a"
+            }
+          },
+          {
+            "answer": "autrement dit",
+            "acceptedAnswers": [
+              "autrement dit"
+            ],
+            "kind": "frame",
+            "choices": [
+              "autrement dit",
+              "en raison de",
+              "au lieu de",
+              "contrairement à"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", le règlement a été "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " par le bureau, validé par l’assemblée, puis affiché le premier juin."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En clair",
+            "acceptedAnswers": [
+              "En clair"
+            ],
+            "kind": "frame",
+            "choices": [
+              "En clair",
+              "En raison de",
+              "Au lieu de",
+              "Contrairement à"
+            ]
+          },
+          {
+            "answer": "rédigé",
+            "acceptedAnswers": [
+              "rédigé",
+              "redige"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "rédiger, Partizip Perfekt mit Angleichung an le règlement",
+              "en": "rédiger, past participle agreeing with le règlement"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Tout ",
+        "answer": "découle",
+        "acceptedAnswers": [
+          "découle",
+          "decoule",
+          "part",
+          "provient",
+          "résulte",
+          "resulte",
+          "vient"
+        ],
+        "after": " d’une plainte pour bruit en mars : le bureau a demandé un relevé dont les résultats ont été présentés à l’assemblée.",
+        "fallbackChoices": [
+          "découle",
+          "découler",
+          "découlant",
+          "découlent"
+        ]
+      },
+      "pattern": {
+        "moveType": "summarize",
+        "label": {
+          "de": "Verantwortlichkeiten im Passiv zuordnen",
+          "en": "Identifying responsibilities in the passive"
+        },
+        "rule": {
+          "de": "Ein unbelebtes Subjekt mit a été und Partizip stellt das Ergebnis in den Vordergrund, während par die jeweils verantwortliche Stelle nennt.",
+          "en": "An inanimate subject with a été and a participle foregrounds the result, while par names the body responsible for each action."
+        },
+        "examples": [
+          {
+            "targetText": "En clair, le règlement a été rédigé par le bureau, validé par l’assemblée, puis affiché le premier juin.",
+            "base": {
+              "de": "Die Regelung wurde vom Vorstand verfasst, von der Versammlung bestätigt und am ersten Juni ausgehängt.",
+              "en": "The rule was drafted by the committee, approved by the assembly, and posted on the first of June."
+            },
+            "highlights": [
+              "a été rédigé par le bureau",
+              "validé par l’assemblée"
+            ]
+          },
+          {
+            "targetText": "Le relevé a été demandé par le bureau, puis présenté à l’assemblée avant le vote.",
+            "base": {
+              "de": "Die Erfassung wurde vom Vorstand angefordert und der Versammlung vor der Abstimmung vorgestellt.",
+              "en": "The record was requested by the committee, then presented to the assembly before the vote."
+            },
+            "highlights": [
+              "a été demandé par le bureau",
+              "présenté à l’assemblée"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "autrement dit",
+          "kind": "frame",
+          "base": {
+            "de": "anders gesagt",
+            "en": "in other words"
+          }
+        },
+        {
+          "targetText": "en clair",
+          "kind": "frame",
+          "base": {
+            "de": "klar gesagt",
+            "en": "put plainly"
+          }
+        },
+        {
+          "targetText": "découle",
+          "lemma": "découler",
+          "kind": "verb",
+          "base": {
+            "de": "geht zurück auf / ergibt sich",
+            "en": "stems from / follows"
+          }
+        },
+        {
+          "targetText": "plainte",
+          "kind": "noun",
+          "base": {
+            "de": "Beschwerde",
+            "en": "complaint"
+          }
+        },
+        {
+          "targetText": "relevé",
+          "kind": "noun",
+          "base": {
+            "de": "Erfassung / Aufzeichnung",
+            "en": "record / survey"
+          }
+        },
+        {
+          "targetText": "résultats",
+          "lemma": "résultat",
+          "kind": "noun",
+          "base": {
+            "de": "Ergebnisse",
+            "en": "results"
+          }
+        },
+        {
+          "targetText": "rédigé",
+          "lemma": "rédiger",
+          "kind": "verb",
+          "base": {
+            "de": "verfasst",
+            "en": "drafted"
+          }
+        },
+        {
+          "targetText": "validé",
+          "lemma": "valider",
+          "kind": "verb",
+          "base": {
+            "de": "bestätigt / genehmigt",
+            "en": "approved"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "découle",
+            "relevé",
+            "résultats"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "proposé",
+            "voté",
+            "décidé"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "rédigé",
+            "validé",
+            "affiché"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "découler",
+        "familyKey": "découler",
+        "surface": "découle",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Cette décision découle des résultats présentés à la dernière assemblée.",
+          "base": {
+            "de": "Diese Entscheidung ergibt sich aus den Ergebnissen, die der letzten Versammlung vorgestellt wurden.",
+            "en": "This decision follows from the results presented at the last assembly."
+          }
+        },
+        "base": {
+          "de": "sich ergeben aus / zurückgehen auf",
+          "en": "stem from / follow from"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

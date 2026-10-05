@@ -1,0 +1,943 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "French",
+  "code": "fr-FR",
+  "level": "B2",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": {
+    "railRegisters": [
+      "vous",
+      "tu"
+    ],
+    "default": "vous",
+    "tuOnly": "friends and flatmates; colleague, neighbor, mentor, manager, officials, service staff, committee stay vous",
+    "perEpisode": "registerPlan.mode constant, registers identical for all three you turns; no relay/shift in P1 or P2",
+    "naturalness": "contraction choices (t’as / tu as, on / nous in tu scenes, dropped ne in friend speech) are per-lesson instructional choices recorded in the draft, never a rule that vous speakers never drop ne or that friends always do",
+    "themTurns": "interlocutor may use tu or vous consistently with the learner register; a them turn never switches register mid-episode"
+  },
+  "genderSafety": {
+    "policy": "P1 and P2 are speakerGender neutral in every lesson; no alternates",
+    "forbiddenInLearnerLines": [
+      "je suis + adjective agreeing with speaker (sûr/sûre, content/contente, convaincu/convaincue)",
+      "être-participles whose subject is the speaker (je suis parti, je me suis trompé)",
+      "seul/seule, tout seul/toute seule agreeing with speaker (moi-même is invariable and allowed; lui-même/elle-même agreeing with an inanimate or third-party noun is allowed)"
+    ],
+    "allowed": [
+      "avoir-participles (j’ai résilié, j’ai choisi)",
+      "inanimate passives with fixed agreement (la facture a été corrigée)",
+      "pronominal passives with inanimate subject (le retard s’est répercuté)",
+      "stance frames: je trouve que, il me semble que, à mon sens, je penche pour, ce qui compte pour moi"
+    ],
+    "themTurns": "unconstrained; interlocutor gender may be marked in their lines"
+  },
+  "orthography": {
+    "canonical": "accents and cedilla required in every targetText; elision apostrophe U+2019; œ written œ (cœur, sœur) in canonical text; before ?, !, : and ; the canonical text writes exactly one U+0020 (as every line of this spec does), never U+00A0 or U+202F; no space before , or .",
+    "acceptedAnswersAuthoring": "every blank and recall answer lists acceptedAnswers explicitly: the canonical form plus every combination of the applicable substitutions (accents stripped; straight apostrophe U+0027; oe for œ; pre-punctuation space removed before ? ! : ;), at most sixteen forms; blank answers never end in punctuation (punctuation stays in the frame), so the spacing variant arises only inside multi-clause recall answers; nothing is auto-added and no runtime fr normalization exists or is claimed, the list is authored data",
+    "digits": "all numbers in words in voiced text (cent quatre-vingts euros, un pour cent et demi); digits are an error",
+    "hyphenNumerals": "quatre-vingts, dix-huit count as one token by the shared token rule",
+    "neverBlanked": [
+      "elided forms alone (l’, d’, j’, qu’, n’)",
+      "ne or pas alone",
+      "clitic pronouns alone"
+    ]
+  },
+  "segmentation": {
+    "unit": "token (shared rule), scale 1, joiner U+0020",
+    "chunkRule": "5–8 chips, 1–4 tokens each, punctuation attached; a negated clitic group ne + clitic + verb + pas forms one chip only when the whole group fits in four tokens (je ne sais pas, on ne l’achète pas = one chip each); when it runs to five or more tokens (je ne le prends pas) the subject + ne + clitic + verb stay together (je ne le prends) and pas joins the following material (pas cette fois); if nothing follows, the author shortens or rewrites the focus sentence rather than isolating pas; elided form attaches to its host (d’un côté = one chip, qu’il faut = one chip)",
+    "frame": "framePrefix carries its trailing space; chips never carry edge whitespace",
+    "orderUniqueness": "an opening connector does not by itself fix chip order (D’un côté … de l’autre leaves clause-internal order free); the author makes one order the only coherent one through agreement, clitic placement or scope, and semantic review confirms it; punctuation alone never licenses a uniqueness claim"
+  },
+  "acceptedInput": {
+    "normalization": "shared rail: NFC, trim, collapse spaces, locale lowercase (fr), strip terminal punctuation",
+    "frenchUnification": "authored variants only: accent-stripped, straight apostrophe, oe for œ; recorded per answer in acceptedAnswers; later integration note: if a runtime fr folder is added it must not widen beyond these authored lists",
+    "choices": "four choices distinct after rail normalization and after the authored substitutions (two choices differing only by accents, apostrophe shape, œ/oe or pre-punctuation space are the same choice and may not be co-offered), exactly one accepted; near-synonymous connectors with the same truth value (ainsi/donc, toutefois/néanmoins, puisque/étant donné que) are never offered as the three wrong choices against the one right one"
+  },
+  "carriersStaged": {
+    "P1": {
+      "productiveOverall": [
+        "d’un côté … de l’autre",
+        "alors que",
+        "tandis que",
+        "le plus / le moins … de",
+        "plus … plus / plus … moins",
+        "je penche pour",
+        "c’est vrai que … mais",
+        "je reconnais que … mais",
+        "en revanche",
+        "au contraire",
+        "c’est ce qui … le plus",
+        "cela dit",
+        "autant … autant",
+        "par rapport à",
+        "ce qui compte le plus pour moi",
+        "au final … donc",
+        "pour ces raisons",
+        "tout bien pesé",
+        "toutefois"
+      ],
+      "recognitionOnlyOverall": [
+        "même si",
+        "bien que + subjonctif",
+        "quitte à",
+        "certes … mais"
+      ],
+      "note": "staging is cumulative: a carrier productive in a range stays productive in every later range of the path; c’est vrai que … mais is productive from lesson 1 because you2 concede appears from lesson 1; je reconnais que … mais is first taught productively in lesson 4 (range 4–6) and recycled from P1-4 onward; au final … donc is productive from lesson 1 and pour ces raisons from lesson 4, both by the staging table, not by lesson-level exception; plus … plus / plus … moins (P1-1), au contraire and c’est ce qui … le plus (P1-5) are staged in the range of their first use; toutefois is staged productive in range 7–10 as the P1-9 concessive connector that is also the P1-9 trophy, so the required L9 lexical carrier is licensed by the latest productive stage, not by a lesson-level exception (toutefois and néanmoins remain never co-offered as choices); recognition-only entries are permissions for them turns and flagged non-blanked you clauses, never requirements; subjunctive concessives stay recognition-only (reserved for P3)"
+    },
+    "P2": {
+      "productiveOverall": [
+        "puisque",
+        "c’est pour cette raison que",
+        "autrement dit",
+        "en résumé",
+        "étant donné que",
+        "de sorte que",
+        "se + verbe (ça se résilie en ligne)",
+        "d’où",
+        "pour résumer",
+        "passif être + participe avec sujet inanimé (les créneaux sont mis en ligne)",
+        "nominalisation (le report de, la hausse de, la mise en ligne de)",
+        "voilà pourquoi",
+        "en clair",
+        "d’abord … ensuite … enfin"
+      ],
+      "recycledFromP1": [
+        "alors que",
+        "d’un côté … de l’autre",
+        "tandis que",
+        "je reconnais que … mais"
+      ],
+      "recognitionOnlyOverall": [
+        "c’est-à-dire",
+        "il s’agit de",
+        "et si on + imparfait",
+        "bien que + subjonctif"
+      ],
+      "note": "staging is cumulative as in P1; parce que remains available at all stages as mature B1 cause marker; puisque is taught as known-cause marker and distinguished from parce que in the lesson 1 pattern; en clair is recognition-only in range 4–6 (them turn of P2-4) and productive from lesson 7; c’est-à-dire, il s’agit de and et si on + imparfait are never required of the learner in P2"
+    }
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Peser le pour et le contre",
+      "function": "compare two or three options with their advantages and drawbacks and give a qualified recommendation",
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "registerPolicy": "vous in lessons 1,2,3,4,6,8,9,10; tu in lessons 5 and 7 (friend); constant mode everywhere; moveWhitelist governs you1 only; you2 comes from the contract set {concede,rebut,clarify,explain,compare,counteroffer} and you3 from {conclude,propose,summarize,counteroffer,request} (relay and shift excluded in P1), the three moves pairwise distinct; this path’s authored pattern is you2 ∈ {concede,rebut,compare} and you3 = conclude, a routine authoring choice, not a restriction of the contract sets",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": [
+            "d’un côté … de l’autre",
+            "alors que",
+            "je penche pour",
+            "c’est vrai que … mais",
+            "en revanche",
+            "au final … donc",
+            "parce que",
+            "plus … plus / plus … moins"
+          ],
+          "recognitionOnly": [
+            "tandis que",
+            "le plus … de",
+            "cela dit",
+            "tout bien pesé"
+          ]
+        },
+        {
+          "lessons": "4-6",
+          "productive": [
+            "tandis que",
+            "le plus / le moins … de",
+            "je reconnais que … mais",
+            "par rapport à",
+            "pour ces raisons",
+            "au contraire",
+            "c’est ce qui … le plus"
+          ],
+          "recognitionOnly": [
+            "autant … autant",
+            "quitte à",
+            "tout bien pesé",
+            "même si"
+          ]
+        },
+        {
+          "lessons": "7-10",
+          "productive": [
+            "cela dit",
+            "autant … autant",
+            "ce qui compte le plus pour moi",
+            "tout bien pesé",
+            "toutefois"
+          ],
+          "recognitionOnly": [
+            "même si",
+            "bien que + subjonctif",
+            "certes … mais"
+          ]
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "loyer-contre-trajet",
+          "scene": "Viewing a central flat; the letting agent compares it with a cheaper one on the outskirts; her fictional sheet shows cent quatre-vingts euros more per month and one hour of daily commute saved",
+          "interlocutor": "agente immobilière",
+          "register": "vous",
+          "openingMove": "compare: D’un côté, l’appartement du centre coûte plus cher, de l’autre je garde chaque jour une heure que je perdrais dans le train",
+          "challenge": "Mais cette heure, elle vaut vraiment cent quatre-vingts euros par mois pour vous ?",
+          "answerMove": "concede: C’est vrai que le loyer est l’inconvénient principal, mais plus le trajet est long, moins il me reste d’énergie le soir",
+          "steer": "Alors, au final, vous le prenez ou vous continuez à chercher ?",
+          "closingMove": "conclude: Au final, le temps gagné pèse plus lourd que le loyer, donc je prends l’appartement du centre",
+          "trophyLemma": "inconvénient",
+          "trophySurface": "inconvénient",
+          "trophyFamilyKey": "inconvénient",
+          "pos": "noun",
+          "requiredCarrier": "you1 d’un côté … de l’autre; you2 c’est vrai que … mais; you3 au final … donc",
+          "recycles": [
+            "B1 louer",
+            "B1 délai",
+            "B1 plutôt"
+          ]
+        },
+        {
+          "number": 2,
+          "slug": "voiture-ou-transports",
+          "scene": "A colleague insists the car is faster for the commute to the new site; you argue for the train",
+          "interlocutor": "collègue",
+          "register": "vous",
+          "openingMove": "position: Je penche pour le train, alors qu’en voiture le temps de trajet dépend entièrement des bouchons",
+          "challenge": "Sauf qu’en voiture vous partez quand vous voulez, non ?",
+          "answerMove": "rebut: En revanche, chercher une place tous les matins est plus contraignant qu’un horaire fixe que je connais",
+          "steer": "Et les jours de grève, vous faites comment ?",
+          "closingMove": "conclude: Au final, je garde le train et je ne prends la voiture que les jours de grève, donc le choix reste souple",
+          "trophyLemma": "contraignant",
+          "trophySurface": "contraignant",
+          "trophyFamilyKey": "contraindre",
+          "pos": "adjective",
+          "requiredCarrier": "you1 je penche pour … alors que; you2 en revanche + comparative plus … que; you3 au final … donc",
+          "recycles": [
+            "B1 retard (them turn only)",
+            "B1 plutôt",
+            "P1-1 d’un côté"
+          ]
+        },
+        {
+          "number": 3,
+          "slug": "teletravail-ou-presentiel",
+          "scene": "Your manager proposes four days on site; you weigh two days of présentiel against four",
+          "interlocutor": "responsable d’équipe",
+          "register": "vous",
+          "openingMove": "reason: Je penche pour deux jours sur place parce que les réunions importantes tiennent sur deux jours, alors que le travail de fond avance mieux au calme",
+          "challenge": "Mais l’équipe se parle moins quand chacun reste chez soi, vous ne trouvez pas ?",
+          "answerMove": "compare: Deux jours de présentiel suffisent pour se voir et décider ensemble, alors que quatre jours ajoutent surtout des trajets",
+          "steer": "Disons que je dois trancher pour toute l’équipe : vous proposez quoi ?",
+          "closingMove": "conclude: Au final, trois jours sur place avec un jour commun fixe me semblent le meilleur équilibre, donc c’est ce que je défendrais",
+          "trophyLemma": "présentiel",
+          "trophySurface": "présentiel",
+          "trophyFamilyKey": "présentiel",
+          "pos": "noun",
+          "requiredCarrier": "you1 je penche pour … parce que … alors que; you2 alors que; you3 au final … donc",
+          "recycles": [
+            "B1 équilibre",
+            "B1 ensemble",
+            "P1-1 alors que"
+          ]
+        },
+        {
+          "number": 4,
+          "slug": "acheter-ou-louer-le-materiel",
+          "scene": "At a tool-hire counter; the clerk’s fictional price card shows quarante euros per week to hire a floor sander versus six cents euros to buy, and states that a hired machine that breaks down is exchanged free of charge the same day",
+          "interlocutor": "employé du comptoir de location",
+          "register": "vous",
+          "openingMove": "compare: La solution la moins chère tout de suite, c’est la location, tandis que l’achat ne vaut le coup qu’à partir de quinze semaines d’usage",
+          "challenge": "Mais vous allez vous en servir combien de fois dans l’année, honnêtement ?",
+          "answerMove": "concede: Je reconnais que deux fois par an, l’achat n’est pas rentable, mais je préfère louer un appareil récent plutôt qu’entretenir le mien",
+          "steer": "Et si l’appareil loué tombe en panne pendant les travaux, qui paie ?",
+          "closingMove": "conclude: Pour ces raisons, je loue : votre fiche prévoit l’échange gratuit en cas de panne, et j’achèterais seulement pour plusieurs mois de travaux",
+          "trophyLemma": "rentable",
+          "trophySurface": "rentable",
+          "trophyFamilyKey": "rentable",
+          "pos": "adjective",
+          "requiredCarrier": "you1 la moins … c’est … tandis que; you2 je reconnais que … mais; you3 pour ces raisons",
+          "recycles": [
+            "B1 louer",
+            "B1 panne",
+            "P1-2 plus … que"
+          ]
+        },
+        {
+          "number": 5,
+          "slug": "deux-plans-de-vacances",
+          "scene": "A friend wants a city week; you weigh a cabin in the hills against it",
+          "interlocutor": "ami",
+          "register": "tu",
+          "openingMove": "position: Moi je pencherais pour la cabane, tandis que la ville, on la connaît déjà et on y court toute la semaine",
+          "challenge": "Sauf qu’à la campagne, au bout de deux jours, on s’ennuie, non ?",
+          "answerMove": "rebut: Au contraire, le dépaysement vient justement de ce qu’on ne court plus, et c’est ce qui nous manque le plus",
+          "steer": "Bon, et le budget, tu le mets où dans la balance ?",
+          "closingMove": "conclude: Pour ces raisons, je choisirais la cabane : une semaine là-bas revient moins cher, et la ville attendra un week-end plus tard",
+          "trophyLemma": "dépaysement",
+          "trophySurface": "dépaysement",
+          "trophyFamilyKey": "dépaysement",
+          "pos": "noun",
+          "requiredCarrier": "you1 je pencherais pour … tandis que; you2 au contraire + c’est ce qui … le plus; you3 pour ces raisons + conditionnel",
+          "recycles": [
+            "B1 habitude",
+            "B1 plus tard",
+            "P1-4 tandis que"
+          ]
+        },
+        {
+          "number": 6,
+          "slug": "especes-ou-application",
+          "scene": "The owner of the fictional Épicerie du Port asks whether to accept app payments; the fictional provider leaflet states a fee of un pour cent et demi per sale",
+          "interlocutor": "commerçante",
+          "register": "vous",
+          "openingMove": "compare: D’un côté, l’application attire les clients qui n’ont jamais d’espèces, de l’autre chaque vente vous coûte une petite commission",
+          "challenge": "Mais mes clients âgés, ils vont faire comment sans espèces ?",
+          "answerMove": "concede: Je reconnais que beaucoup d’entre eux paient en liquide, mais rien ne vous empêche d’encaisser les deux",
+          "steer": "Et par rapport aux frais, un pour cent et demi sur chaque vente, ça vaut le coup ?",
+          "closingMove": "conclude: Pour ces raisons, je garderais les deux moyens de paiement et je comparerais les frais après trois mois",
+          "trophyLemma": "encaisser",
+          "trophySurface": "encaisser",
+          "trophyFamilyKey": "encaisser",
+          "pos": "verb",
+          "requiredCarrier": "you1 d’un côté … de l’autre; you2 je reconnais que … mais rien n’empêche de; you3 pour ces raisons + conditionnel",
+          "recycles": [
+            "B1 clients",
+            "B1 frais (them turn)",
+            "P1-1 d’un côté"
+          ]
+        },
+        {
+          "number": 7,
+          "slug": "cours-ou-application-pour-apprendre",
+          "scene": "A friend learning Italian asks whether to take an evening class or use an app",
+          "interlocutor": "amie",
+          "register": "tu",
+          "openingMove": "reason: Je te conseillerais le cours parce qu’on t’oblige à parler, tandis que l’appli te laisse tranquille dès que c’est difficile",
+          "challenge": "Sauf que le cours, c’est le mardi soir fixe, et moi je finis tard",
+          "answerMove": "compare: Autant l’appli a pour elle la souplesse des horaires, autant le cours te donne quelqu’un qui corrige tes erreurs",
+          "steer": "Et si je fais les deux, je perds pas mon temps ?",
+          "closingMove": "conclude: Tout bien pesé, commence par l’appli ce trimestre, et le cours au printemps quand tes horaires changent",
+          "trophyLemma": "souplesse",
+          "trophySurface": "souplesse",
+          "trophyFamilyKey": "souple",
+          "pos": "noun",
+          "requiredCarrier": "you1 je te conseillerais … parce que … tandis que; you2 autant … autant; you3 tout bien pesé",
+          "recycles": [
+            "B1 erreur",
+            "B1 progrès",
+            "P1-3 parce que + alors que contrast"
+          ]
+        },
+        {
+          "number": 8,
+          "slug": "deux-offres-d-emploi",
+          "scene": "Your mentor hears you out: offer A pays more, offer B gives you a small team and a project of your own",
+          "interlocutor": "mentor",
+          "register": "vous",
+          "openingMove": "compare: D’un côté, l’offre A paie mieux dès maintenant, de l’autre l’offre B me confie une équipe, ce qui compte le plus pour moi",
+          "challenge": "Mais à ce stade de votre carrière, le salaire ne règle pas la question ?",
+          "answerMove": "rebut: Cela dit, l’enjeu n’est pas le salaire de cette année mais le poste que j’aurai dans cinq ans",
+          "steer": "Et si le projet de l’offre B s’arrête dans deux ans, vous aurez tout perdu ?",
+          "closingMove": "conclude: Tout bien pesé, je choisis l’offre B, parce que même un projet arrêté m’aura appris à diriger une équipe",
+          "trophyLemma": "enjeu",
+          "trophySurface": "enjeu",
+          "trophyFamilyKey": "enjeu",
+          "pos": "noun",
+          "requiredCarrier": "you1 d’un côté … de l’autre + ce qui compte le plus pour moi; you2 cela dit + n’est pas … mais; you3 tout bien pesé … parce que",
+          "recycles": [
+            "B1 objectif",
+            "B1 évolution",
+            "P1-6 d’un côté"
+          ]
+        },
+        {
+          "number": 9,
+          "slug": "demenager-ou-rester",
+          "scene": "A neighbor asks whether you will accept the job in another city or stay",
+          "interlocutor": "voisine",
+          "register": "vous",
+          "openingMove": "position: Je penche pour le départ, parce que par rapport à ce que je fais ici, le poste là-bas correspond enfin à ma formation",
+          "challenge": "Mais vos amis, votre quartier, tout ça, vous le laissez derrière vous ?",
+          "answerMove": "concede: Je reconnais que c’est ce qui me coûte le plus ; toutefois, deux heures de train, ce n’est pas le bout du monde",
+          "steer": "Et si vous le regrettez au bout d’un an, vous reviendrez ?",
+          "closingMove": "conclude: Au final, je pars en gardant mon appartement en location un an, donc le retour reste possible",
+          "trophyLemma": "toutefois",
+          "trophySurface": "toutefois",
+          "trophyFamilyKey": "toutefois",
+          "pos": "connector",
+          "requiredCarrier": "you1 je penche pour … par rapport à; you2 je reconnais que … ; toutefois; you3 au final … donc",
+          "recycles": [
+            "B1 quartier",
+            "B1 correspond",
+            "P1-2 je penche pour"
+          ]
+        },
+        {
+          "number": 10,
+          "slug": "recommander-une-option",
+          "scene": "The residents’ committee of your building weighs three uses for the courtyard: parking, a shared garden, a bike shelter; the fictional cost sheet puts the shelter cheapest",
+          "interlocutor": "présidente du comité des habitants",
+          "register": "vous",
+          "openingMove": "compare: La moins coûteuse des trois options est l’abri à vélos, tandis que le parking est la plus chère et le jardin demande le plus d’entretien",
+          "challenge": "Mais la majorité des habitants a une voiture, vous en tenez compte ?",
+          "answerMove": "rebut: Cela dit, un parking de six places ne règle rien pour quarante foyers, alors qu’un abri sert à ceux qui n’ont pas de garage",
+          "steer": "Concrètement, le comité attend une seule recommandation : laquelle ?",
+          "closingMove": "conclude: Pour ces raisons, je préconise l’abri à vélos, avec une partie du budget restant pour quelques bacs de plantation",
+          "trophyLemma": "préconiser",
+          "trophySurface": "préconise",
+          "trophyFamilyKey": "préconiser",
+          "pos": "verb",
+          "requiredCarrier": "you1 la moins … des trois … tandis que … la plus; you2 cela dit … alors que; you3 pour ces raisons",
+          "recycles": [
+            "B1 montant",
+            "B1 priorité",
+            "P1-4 superlative"
+          ]
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Expliquer comment et pourquoi",
+      "function": "give a detailed explanation of causes, consequences or a process and hold it together under requests for precision",
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "registerPolicy": "vous in lessons 1,2,3,5,6,8,9,10; tu in lessons 4 and 7 (friend); constant mode; moveWhitelist governs you1 only; you2 comes from the contract set {concede,rebut,clarify,explain,compare,counteroffer} and you3 from {conclude,propose,summarize,counteroffer,request} (relay and shift excluded in P2), the three moves pairwise distinct; this path’s authored pattern is you2 ∈ {clarify,explain,compare} and you3 ∈ {summarize,conclude}, a routine authoring choice, not a restriction of the contract sets",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": [
+            "puisque",
+            "parce que",
+            "c’est pour cette raison que",
+            "autrement dit",
+            "en résumé",
+            "alors que (recycled)"
+          ],
+          "recognitionOnly": [
+            "étant donné que",
+            "de sorte que",
+            "se + verbe",
+            "d’où"
+          ]
+        },
+        {
+          "lessons": "4-6",
+          "productive": [
+            "étant donné que",
+            "de sorte que",
+            "se + verbe",
+            "d’où",
+            "pour résumer"
+          ],
+          "recognitionOnly": [
+            "passif être + participe",
+            "nominalisation",
+            "c’est-à-dire",
+            "en clair"
+          ]
+        },
+        {
+          "lessons": "7-10",
+          "productive": [
+            "passif être + participe (sujet inanimé)",
+            "nominalisation",
+            "voilà pourquoi",
+            "en clair",
+            "d’abord … ensuite … enfin",
+            "d’un côté … de l’autre (recycled)"
+          ],
+          "recognitionOnly": [
+            "c’est-à-dire",
+            "il s’agit de",
+            "et si on + imparfait"
+          ]
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "facture-qui-differe",
+          "scene": "The client’s accountant asks why your invoice is higher than your quote; the fictional quote covered twelve hours, the invoice shows seventeen",
+          "interlocutor": "comptable du client",
+          "register": "vous",
+          "openingMove": "explain: L’écart vient de cinq heures supplémentaires, puisque le client a demandé une deuxième version du site après validation du devis",
+          "challenge": "Précisément, quelles heures n’étaient pas dans le devis ?",
+          "answerMove": "clarify: Autrement dit, les douze heures prévues sont facturées au prix du devis, et seules les cinq heures de la deuxième version s’ajoutent",
+          "steer": "Et pour la prochaine fois, comment on évite cette surprise ?",
+          "closingMove": "summarize: En résumé, l’écart tient à une demande ajoutée après coup, et la prochaine fois je ferai signer un avenant avant tout ajout",
+          "trophyLemma": "écart",
+          "trophySurface": "écart",
+          "trophyFamilyKey": "écart",
+          "pos": "noun",
+          "requiredCarrier": "you1 puisque; you2 autrement dit; you3 en résumé",
+          "recycles": [
+            "B1 devis",
+            "B1 total",
+            "P1-9 par rapport à"
+          ]
+        },
+        {
+          "number": 2,
+          "slug": "tri-des-dechets",
+          "scene": "A newcomer in your building asks how sorting works; the fictional building notice lists a yellow bin for packaging, a brown bin for food scraps, a grey bin for the rest",
+          "interlocutor": "nouveau voisin",
+          "register": "vous",
+          "openingMove": "explain: Le tri repose sur trois bacs, puisque l’immeuble suit l’affiche de l’entrée : jaune pour les emballages, marron pour les restes, gris pour le reste",
+          "challenge": "Et le verre, il va dans le jaune, puisque c’est un emballage ?",
+          "answerMove": "clarify: Non, justement : d’après l’affiche, le verre va à la colonne du coin, parce que le jaune n’accepte que carton, plastique et métal",
+          "steer": "Et si je me trompe de bac, qu’est-ce qui se passe ?",
+          "closingMove": "conclude: D’après l’affiche, le bac mal trié n’est tout simplement pas ramassé, c’est pour cette raison que je vérifie avant de descendre",
+          "trophyLemma": "tri",
+          "trophySurface": "tri",
+          "trophyFamilyKey": "trier",
+          "pos": "noun",
+          "requiredCarrier": "you1 puisque + enumeration; you2 non, justement … parce que; you3 c’est pour cette raison que",
+          "recycles": [
+            "B1 vérifier",
+            "B1 coin",
+            "P1-1 alors que (pattern example)"
+          ]
+        },
+        {
+          "number": 3,
+          "slug": "projet-qui-a-glisse",
+          "scene": "Your manager wants to know why the project slipped three weeks; a fictional external prestataire delivered the plans late",
+          "interlocutor": "responsable de service",
+          "register": "vous",
+          "openingMove": "reason: Le projet a glissé de trois semaines puisque le prestataire a livré les plans avec dix jours de retard, et chaque étape dépendait de ces plans",
+          "challenge": "Mais le prestataire, c’est vous qui l’avez choisi, non ?",
+          "answerMove": "explain: Oui, et c’est pour cette raison que j’ai renégocié son contrat : les prochaines livraisons comportent une date ferme avec contrôle hebdomadaire",
+          "steer": "Résumez-moi ça en deux phrases pour la direction",
+          "closingMove": "summarize: En résumé, le retard vient d’une livraison externe tardive, et le nouveau contrat impose des dates fermes pour les prochaines livraisons",
+          "trophyLemma": "prestataire",
+          "trophySurface": "prestataire",
+          "trophyFamilyKey": "prestataire",
+          "pos": "noun",
+          "requiredCarrier": "you1 puisque … et; you2 c’est pour cette raison que; you3 en résumé",
+          "recycles": [
+            "B1 dossier",
+            "B1 suivi",
+            "P2-1 puisque"
+          ]
+        },
+        {
+          "number": 4,
+          "slug": "programme-de-fidelite",
+          "scene": "A friend asks how the fictional carte Horizon of the local bookshop works; the posted rules give one point per euro, valid twelve months",
+          "interlocutor": "ami",
+          "register": "tu",
+          "openingMove": "explain: Tu cumules un point par euro dépensé, de sorte qu’à deux cents points tu obtiens un bon de dix euros",
+          "challenge": "Et les points, ils expirent quand ?",
+          "answerMove": "clarify: D’après le règlement en caisse, ils restent valables douze mois après le dernier achat, étant donné que chaque achat repousse leur date d’expiration",
+          "steer": "Donc en clair, ça vaut le coup pour quelqu’un qui y va deux fois par mois ?",
+          "closingMove": "conclude: D’où mon conseil : si tu y vas déjà régulièrement, prends la carte : même de petits achats te rapprochent du bon",
+          "trophyLemma": "cumuler",
+          "trophySurface": "cumules",
+          "trophyFamilyKey": "cumuler",
+          "pos": "verb",
+          "requiredCarrier": "you1 de sorte que; you2 étant donné que; you3 d’où",
+          "recycles": [
+            "B1 carte",
+            "B1 économiser",
+            "P2-1 autrement dit (pattern example)"
+          ]
+        },
+        {
+          "number": 5,
+          "slug": "changement-de-fournisseur",
+          "scene": "A neighbor asks why you switched electricity provider; your fictional old tariff rose twice in a year",
+          "interlocutor": "voisine",
+          "register": "vous",
+          "openingMove": "reason: J’ai résilié mon contrat étant donné que le tarif avait augmenté deux fois en un an, alors que l’offre voisine restait fixe",
+          "challenge": "Mais ça se résilie facilement, un contrat comme ça ?",
+          "answerMove": "explain: Oui, d’après leur site, ça se fait en ligne en dix minutes, de sorte que le nouveau fournisseur prévient lui-même l’ancien",
+          "steer": "Et concrètement, vous économisez combien ?",
+          "closingMove": "summarize: Pour résumer, un prix fixe, une démarche en ligne et environ quinze euros de moins par mois, d’où mon changement",
+          "trophyLemma": "résilier",
+          "trophySurface": "résilié",
+          "trophyFamilyKey": "résilier",
+          "pos": "verb",
+          "requiredCarrier": "you1 étant donné que … alors que; you2 ça se + verbe … de sorte que; you3 pour résumer … d’où",
+          "recycles": [
+            "B1 démarche",
+            "B1 économiser",
+            "P1-2 alors que"
+          ]
+        },
+        {
+          "number": 6,
+          "slug": "contester-un-avis-de-stationnement",
+          "scene": "A colleague received a parking charge from the fictional private car park Parc Lumière; the notice on the ticket says a contest form exists on their website with the ticket and a photo",
+          "interlocutor": "collègue",
+          "register": "vous",
+          "openingMove": "explain: D’après l’avis, ça se conteste en ligne, étant donné que le formulaire se trouve sur leur site et qu’il demande seulement le ticket et une photo",
+          "challenge": "Précisément, qu’est-ce que je dois joindre comme pièces ?",
+          "answerMove": "clarify: Autrement dit : le ticket d’entrée, la photo de l’horodateur et, en plus, votre reçu de paiement, de sorte qu’ils voient que vous aviez payé",
+          "steer": "Et si je laisse tomber, qu’est-ce que je risque, d’après vous ?",
+          "closingMove": "conclude: L’avis ne précise rien sur ce point, c’est pour cette raison que je contesterais tout de suite plutôt que de deviner",
+          "trophyLemma": "contester",
+          "trophySurface": "conteste",
+          "trophyFamilyKey": "contester",
+          "pos": "verb",
+          "requiredCarrier": "you1 ça se + verbe … étant donné que; you2 autrement dit … de sorte que; you3 c’est pour cette raison que + conditionnel",
+          "recycles": [
+            "B1 reçu",
+            "B1 justificatif",
+            "P2-4 étant donné que"
+          ]
+        },
+        {
+          "number": 7,
+          "slug": "pourquoi-le-plan-a-echoue",
+          "scene": "A friend asks why the shared cooking-club plan fell through",
+          "interlocutor": "amie",
+          "register": "tu",
+          "openingMove": "explain: Le plan a été abandonné parce que le retard d’une seule personne s’est répercuté sur tout : sans salle réservée, pas de date ; sans date, pas d’achats",
+          "challenge": "Franchement, c’est pas plutôt parce que personne n’y croyait ?",
+          "answerMove": "compare: D’un côté, c’est vrai que l’envie baissait, de l’autre deux personnes avaient déjà prévu les recettes, donc ce n’est pas l’envie qui manquait",
+          "steer": "Et si on recommençait, qu’est-ce que tu changerais ?",
+          "closingMove": "summarize: En clair, une seule chose : la salle est réservée avant tout le reste, et chacun a une tâche avec une date",
+          "trophyLemma": "répercuter",
+          "trophySurface": "répercuté",
+          "trophyFamilyKey": "répercuter",
+          "pos": "verb",
+          "requiredCarrier": "you1 passif inanimé + se répercuter sur; you2 d’un côté … de l’autre; you3 en clair",
+          "recycles": [
+            "B1 organiser",
+            "B1 imprévu",
+            "P1-1 d’un côté"
+          ]
+        },
+        {
+          "number": 8,
+          "slug": "prise-de-rendez-vous",
+          "scene": "A visiting researcher asks how booking works at the fictional Centre Oriel; its posted notice says slots go online every Monday at eight and urgent cases are handled by phone without any promised same-day slot",
+          "interlocutor": "chercheuse en visite",
+          "register": "vous",
+          "openingMove": "explain: D’après l’affiche, les créneaux sont mis en ligne chaque lundi à huit heures, de sorte que les places de la semaine partent souvent avant midi",
+          "challenge": "Et en cas d’urgence, on obtient forcément un créneau le jour même ?",
+          "answerMove": "clarify: Non, rien n’est garanti : l’affiche dit seulement que les urgences passent par le téléphone et sont traitées selon la place disponible",
+          "steer": "Résumez-moi la marche à suivre, étape par étape",
+          "closingMove": "summarize: Pour résumer : d’abord le site le lundi matin, ensuite le téléphone pour une urgence, enfin l’accueil sur place si rien ne marche",
+          "trophyLemma": "créneau",
+          "trophySurface": "créneaux",
+          "trophyFamilyKey": "créneau",
+          "pos": "noun",
+          "requiredCarrier": "you1 passif inanimé … de sorte que; you2 non, rien n’est garanti : … seulement que; you3 pour résumer : d’abord … ensuite … enfin",
+          "recycles": [
+            "B1 disponible",
+            "B1 accueil",
+            "P2-4 de sorte que"
+          ]
+        },
+        {
+          "number": 9,
+          "slug": "velos-en-libre-service",
+          "scene": "A skeptical neighbor dismisses the town’s new bike-share scheme; the town’s fictional leaflet states a target of ten short trips in a hundred shifted to the bike",
+          "interlocutor": "voisin sceptique",
+          "register": "vous",
+          "openingMove": "reason: Ce qui compte, c’est le report d’une partie des trajets courts vers le vélo, puisque ce sont ces trajets qui bouchent le centre le matin",
+          "challenge": "Mais personne ne va lâcher sa voiture pour un vélo, soyons sérieux",
+          "answerMove": "clarify: Je nuancerais : l’objectif n’est pas que vous vendiez votre voiture, mais que dix personnes sur cent choisissent le vélo pour aller à la gare",
+          "steer": "Et ça change quoi pour quelqu’un qui n’en fera jamais ?",
+          "closingMove": "conclude: Voilà pourquoi même vous y gagnez : moins de voitures le matin, c’est aussi moins de temps au feu pour la vôtre",
+          "trophyLemma": "nuancer",
+          "trophySurface": "nuancerais",
+          "trophyFamilyKey": "nuancer",
+          "pos": "verb",
+          "requiredCarrier": "you1 nominalisation (le report de) + puisque; you2 je nuancerais : … n’est pas que … mais que; you3 voilà pourquoi",
+          "recycles": [
+            "B1 gare",
+            "B1 objectif",
+            "P1-10 cela dit (pattern example)"
+          ]
+        },
+        {
+          "number": 10,
+          "slug": "chaine-de-decision",
+          "scene": "The registrar of your residents’ association asks you to trace how the decision to close the courtyard at night came about",
+          "interlocutor": "secrétaire de l’association",
+          "register": "vous",
+          "openingMove": "explain: Tout découle d’une plainte déposée en mars : à cause du bruit nocturne, le bureau a demandé un comptage, puis les résultats ont été présentés en assemblée",
+          "challenge": "Précisément, qui a décidé quoi, et dans quel ordre ?",
+          "answerMove": "clarify: D’abord le bureau a proposé la fermeture à vingt-trois heures, ensuite l’assemblée a voté, autrement dit la décision vient des habitants, pas du bureau",
+          "steer": "Et le document final, il a été validé par qui ?",
+          "closingMove": "summarize: En clair, le règlement a été rédigé par le bureau, validé par l’assemblée et affiché le premier juin",
+          "trophyLemma": "découler",
+          "trophySurface": "découle",
+          "trophyFamilyKey": "découler",
+          "pos": "verb",
+          "requiredCarrier": "you1 tout découle de + puis; you2 d’abord … ensuite … autrement dit; you3 en clair + passif inanimé chain",
+          "recycles": [
+            "B1 bruit",
+            "B1 réclamation",
+            "P2-8 d’abord … ensuite"
+          ]
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "inconvénient",
+        "familyKey": "inconvénient",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "contraignant",
+        "familyKey": "contraindre",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "présentiel",
+        "familyKey": "présentiel",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "rentable",
+        "familyKey": "rentable",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "dépaysement",
+        "familyKey": "dépaysement",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "encaisser",
+        "familyKey": "encaisser",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "souplesse",
+        "familyKey": "souple",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "enjeu",
+        "familyKey": "enjeu",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "toutefois",
+        "familyKey": "toutefois",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "préconiser",
+        "familyKey": "préconiser",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "écart",
+        "familyKey": "écart",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "tri",
+        "familyKey": "trier",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "prestataire",
+        "familyKey": "prestataire",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "cumuler",
+        "familyKey": "cumuler",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "résilier",
+        "familyKey": "résilier",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "contester",
+        "familyKey": "contester",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "répercuter",
+        "familyKey": "répercuter",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "créneau",
+        "familyKey": "créneau",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "nuancer",
+        "familyKey": "nuancer",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "découler",
+        "familyKey": "découler",
+        "pos": "verb"
+      }
+    ],
+    "forbiddenCheck": "all twenty lemmas and all twenty familyKeys checked against the supplied forbidden list (A1/A2 frozen + one hundred reserved B1): no exact match; no inflection of a forbidden lemma; no transparent derivation of a forbidden lemma (rejected during drafting for that reason: coûteux ← coûte, régularité ← régulièrement, économique ← économiser, retard, garantie, panne, frais, délai, avis); twenty distinct familyKeys; no familyKey repeated between P1 and P2",
+    "nearFamilyDecisions": [
+      {
+        "lemma": "toutefois",
+        "decision": "familyKey toutefois, not tout: lexicalized connector with no compositional meaning; forbidden tout is a determiner/pronoun"
+      },
+      {
+        "lemma": "enjeu",
+        "decision": "familyKey enjeu, not jouer: forbidden jouais belongs to jouer (play); enjeu (what is at stake) is a separate B2 argument noun"
+      },
+      {
+        "lemma": "contraignant",
+        "decision": "familyKey contraindre; contrainte is thereby consumed and must not be a later trophy; recorded as family-level reservation"
+      },
+      {
+        "lemma": "souplesse",
+        "decision": "familyKey souple; souple/assouplir blocked as later trophies"
+      },
+      {
+        "lemma": "tri",
+        "decision": "familyKey trier; trier blocked as later trophy; tri chosen over trier because the noun is the surface newcomers read on bins"
+      },
+      {
+        "lemma": "encaisser",
+        "decision": "familyKey encaisser, distinct from caisse (A2-level noun, not forbidden, not a trophy); caisse remains usable as a term"
+      },
+      {
+        "lemma": "résilier",
+        "decision": "familyKey résilier; résiliation blocked as later trophy (nominalisation may appear as a P2 term)"
+      },
+      {
+        "lemma": "contester",
+        "decision": "familyKey contester; contestation blocked; réclamation (forbidden) is a different family and only appears recycled as a term"
+      },
+      {
+        "lemma": "découler",
+        "decision": "familyKey découler, distinct from couler; no overlap with forbidden list"
+      },
+      {
+        "lemma": "prestataire",
+        "decision": "familyKey prestataire, distinct from prêter/prestation; prestation blocked as later trophy by family extension"
+      },
+      {
+        "lemma": "présentiel",
+        "decision": "familyKey présentiel, distinct from présent/présenter; présenter remains usable as a term"
+      },
+      {
+        "lemma": "rentable",
+        "decision": "familyKey rentable; rentabilité blocked; remboursement (forbidden) unrelated family"
+      }
+    ]
+  },
+  "mechanicalValidationRules": [
+    "six turns 0..5 with speaker pattern them/you/them/you/them/you; them turns carry interlocutorId; you turns carry move and register",
+    "token bounds (scale 1): them 6–20, you1 14–26, build focus 7–12, you2 12–24, you3 10–22; token = maximal run of letters/digits with internal apostrophes or hyphens",
+    "build: framePrefix + chunks joined by U+0020 + frameSuffix equals dialogue[1].targetText after NFC; 5–8 chunks of 1–4 tokens; exactly 2 distractors; no chunk equal to a bare elided form, ne, pas or clitic",
+    "cloze/synthesis/recall reconstruct exactly as contract; blanks 2–4 (synthesis 1–2); choices exactly 4 distinct after rail normalization with exactly one accepted; at most one choice-bearing blank per cloze",
+    "acceptedAnswers lists are authored: must contain the answer and every combination of the applicable substitutions (accent-stripped; straight apostrophe when an apostrophe is present; oe when œ is present; no space before ? ! : ; when such a space is present); the validator checks presence of these authored variants and that no two choices collapse under them, it adds none",
+    "digits in any targetText, pattern example or trophy example → error",
+    "register token checks: vous lessons forbid tu, te, t’, ton, ta, tes, toi in you turns; tu lessons forbid vous/votre/vos addressed to the interlocutor in you turns (warning when vous appears in a tu lesson because it may be a generic vous → human check); on-for-nous in a vous you turn → warning",
+    "the three you moves pairwise distinct; you1 ∈ path whitelist; you2 ∈ {concede,rebut,clarify,explain,compare,counteroffer}; you3 ∈ {conclude,propose,summarize,counteroffer,relay,request}; relay and shift forbidden in P1/P2",
+    "registerPlan.mode constant and three identical registers in every P1/P2 lesson; speakerGender neutral and no alternates in every P1/P2 lesson",
+    "gender detectors as warnings: je suis + adjective ending in consonant or -é, je suis + past participle, seul/seule or tout seul/toute seule after je or moi; moi-même is invariable and never flagged; each warning must be acknowledged with the neutral rewrite reason or the line rewritten",
+    "trophy lemma, familyKey and surface single tokens; surface a whole token of dialogue[turnIndex]; lemma and familyKey match the ledger row; lemma and familyKey absent from the forbidden list and unique across all B2 rows",
+    "carrier staging is cumulative: a lesson may require (requiredCarrier, blank answers, recall answer, pattern rule) only carriers marked productive for its lesson range or an earlier range of the same path; recognition-only carriers may appear in them turns and at most in a non-blanked you clause flagged in review; a carrier absent from both lists of a range (and from every earlier productive list) may not appear in that lesson",
+    "terms 8–10 each occurring verbatim folded in dialogue or a pattern example; speak targets turnIndex 1,3,5 with 2–4 distinct whole tokens of that turn",
+    "the validator makes no claim about permutation uniqueness of chunks or about grammatical acceptability of alternative orders; it flags only duplicate chunks and distractors identical to a chunk"
+  ],
+  "semanticReviewRules": [
+    "argument coherence: you2 answers the actual objection or precision request; you3 answers the steer, not the opener",
+    "challenge genuine: turn 2 contains an objection, counter-example, precision request or constraint and would not accept a repetition of you1 as answer",
+    "steer genuine: turn 4 changes the task (bottom line, edge case, final condition, summary, audience) rather than re-asking turn 2",
+    "P1 recommendations are qualified (conditions, timeframe, hedged conditionnel) and compare at least two options with a stated disadvantage of the chosen one; P2 explanations carry at least one causal chain of two links and respond to a precision request with more precise content, not restatement",
+    "B2 not inflated B1: difficulty comes from reasoning, concession, causal linkage and nominalisation, not from rarer nouns; reviewer rejects lines that are B1 sentences with a B2 noun swapped in",
+    "chip order uniqueness: for every build, the reviewer attempts a second coherent order of the same chips; if one exists the chips are regrouped (merge the mobile pieces) before pass; punctuation on a chip is not accepted as the only cue",
+    "choices and distractors not also correct: for each choice set and distractor pair the reviewer reads the sentence with every wrong option and rejects any that yields a grammatical, coherent French sentence (toutefois vs néanmoins, puisque vs étant donné que never co-offered; the wrong options must break meaning or syntax)",
+    "idiomaticity and regional neutrality: standard metropolitan French usable in Belgium, Switzerland and Québec; no slang bound to one region; friend-register contractions only where the lesson notes them as the chosen style",
+    "register native: vous lessons natural vous French (inversion or est-ce que per register and scene, no over-formal inversion in friend turns, no tu leakage); tu lessons may drop ne where the lesson chose that style, consistently within the episode",
+    "grammar correctness per rail: puisque vs parce que use (known cause vs new information), de sorte que + indicatif for result, étant donné que + indicatif, pronominal passive only with inanimate subjects, passive agreement with inanimate subject correct, subjonctif only in recognized them-turn carriers in P1/P2 except the licensed nuance frame in P2-9 (l’objectif n’est pas que vous vendiez)",
+    "base texts (de and en) accurate and natural, including de and en situation; connectors rendered by function not word-for-word (puisque → da/since; de sorte que → sodass/so that)",
+    "scene facts: every number, fee, rule or notice in a lesson is attributed to a fictional supplied document within the scene (affiche, règlement affiché, avis, fiche de prix); no line states a universal legal, medical, municipal, recycling or contractual rule; P2-6 and P2-8 explicitly refuse to promise outcomes",
+    "pattern truthfulness: the pattern rule states only what the examples show; no example contradicts the rule; at least one example equals a you turn",
+    "trophy example natural, contains surface or lemma, and the trophy carries the argumentative weight of its turn",
+    "noFiller: no bon, alors, euh, hein padding used to reach token bounds; discourse markers appear only where native and purposeful"
+  ],
+  "unresolvedDecisions": [
+    {
+      "id": "FR-B2-U1",
+      "blocker": "the offline validator is German-only; the French register token lists, orthography detectors (accent/apostrophe/œ) and digit ban need a fr-FR rule table before any French B2 draft can reach reviewed; this spec defines the rules, it does not implement or claim them"
+    },
+    {
+      "id": "FR-B2-U2",
+      "blocker": "B1 French ledger: the one hundred reserved B1 trophies are allocated (b1AllocationSha256 supplied) but not all B1 lessons are drafted; if a later B1 draft needs one of these twenty B2 families (contrainte, trier, souple, résiliation, contestation, rentabilité, prestation), the B1 draft must choose another lemma, since B2 rows are now reserved after B1 rows under the b2BeforeB1 resolution"
+    },
+    {
+      "id": "FR-B2-U3",
+      "blocker": "independent native review of the chip-order uniqueness rule for French builds (free clitic and adverb placement makes two coherent orders more likely than in German); the spec requires merging mobile pieces, the reviewer gate that enforces it does not yet exist"
+    }
+  ]
+}

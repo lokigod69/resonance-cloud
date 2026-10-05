@@ -1,0 +1,778 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/french/p1.json": "418a42996466b2241dfcda3e8caa62c8444d59d66671de96311c8596b20d475e",
+    "frontend/content-drafts/b2-2026-10/french/p2.json": "c54dfc2ad4b5dd6021df6a7da19bb58bf6a2959543513b1099a9a64a99178f5c"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/french/specification.json": "36d5048813a42f0d8017d0be33259d78d24c47e857d0344346bb3c4a271cdacf",
+    "frontend/content-drafts/b2-2026-10/latin-prerequisites.json": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+    "frontend/content-drafts/b1-2026-10/french-plan.json": "07f7ee247ffe0babec3ae5d01a5115cba60b48c7ace0175e04048d8b85843380"
+  },
+  "sourceCanonicalization": {
+    "specificationOriginalSha256": "d01d7f24143ade1107c8dbe1f93dc49b91f94ed853df7b312d85da3b9833a51d",
+    "specificationStagedSha256": "36d5048813a42f0d8017d0be33259d78d24c47e857d0344346bb3c4a271cdacf",
+    "transformation": "CRLF to LF only; exact forward and reverse byte equality asserted. Lesson bytes unchanged."
+  },
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "FR-B2-C06",
+      "severity": "BLOCKER",
+      "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+      "line": 92,
+      "category": "runtime-publication",
+      "canonicalSpokenBlocker": false,
+      "finding": "No six-turn B2 runtime integration is present. GuidedLessonLevel remains A1/A2/B1 and the existing episode types remain four-turn B1. The reviewed French B2 source cannot yet be published as a verified learner flow.",
+      "evidence": "Confirmed again in guidedLessons.ts:92. Existing B1 ComplicationStep.tsx:303–305 displays blank.cue; this report does not claim B1 hides cues. No rendered B2 evidence demonstrates the 38 bilingual form cues, 60 fixed choice sets, synthesis, three speech turns or their accepted-answer behavior.",
+      "fix": "Implement and visually verify the actual six-turn B2 flow in de and en, including every form cue, fixed choice set, authored acceptance list, synthesis and all three speech turns, before publication. Retain canonical content approval separately.",
+      "status": "OPEN"
+    }
+  ],
+  "scope": "Exact canonical spoken content for local TTS only. Publication findings retained; no native-human, listening or production approval.",
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "Independent Codex reviewer /root/french_b2_content_gate_independent",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "4677f86afa22c06572cd0df22813de7d1779d61f99497e5a84c856c239263c99",
+  "rawReview": {
+    "schemaVersion": 1,
+    "reviewDate": "2026-10-06",
+    "reviewRound": 2,
+    "reviewer": "Independent Codex reviewer /root/french_b2_content_gate_independent",
+    "independence": {
+      "authoredSources": false,
+      "authoredGate": false,
+      "appReadOnly": true,
+      "noPaidCalls": true,
+      "noDatabaseWrites": true,
+      "humanNativeReviewClaimed": false,
+      "reviewProtocol": "Single post-fix re-review of the same French change set. No third review and no source edits."
+    },
+    "localTtsContentVerdict": "PASS",
+    "unresolvedLocalTtsBlockers": [],
+    "publicationVerdict": "REWORK",
+    "verdictScope": "PASS covers the bound canonical French content after a complete personal read. Publication remains blocked by C06. The separate gate passes its scoped engineering re-review, but no paid exporter/executor, generated audio or rendered B2 flow is approved here.",
+    "reviewedSources": [
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/french-b2-p1.json",
+        "sha256": "418a42996466b2241dfcda3e8caa62c8444d59d66671de96311c8596b20d475e"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/french-b2-p2.json",
+        "sha256": "c54dfc2ad4b5dd6021df6a7da19bb58bf6a2959543513b1099a9a64a99178f5c"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/french-b2-p1.json",
+        "sha256": "f237be58ee661a15112a815a3b9625d2795e94d7a7021a0e050d20bd50c09179"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/french-b2-p2.json",
+        "sha256": "474db1473a33712c94188c7f526b81e0904407e6df90892f5c581956aaa61b16"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/french-b2-p1.json",
+        "sha256": "a8c2395ecef8819be976353e63d64fa38372958caa4b2f4242b60f6827dffbe7"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/french-b2-p2.json",
+        "sha256": "e8791eb118e7dadeee114b48f9783fe06e49f62b6432606f4afb48169a8184f3"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_FRENCH_P1_P2_AUTHORING_SPEC.json",
+        "sha256": "d01d7f24143ade1107c8dbe1f93dc49b91f94ed853df7b312d85da3b9833a51d"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_LATIN_PREREQUISITES.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_FRENCH_P1_P2_ARBITRATION_FABLE_REVIEW_RAW.json",
+        "sha256": "d483e87c48df8b9b84844392d7736c2c4746113188955ca14e39c11062f79fa3"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_FRENCH_P1_P2_FABLE_REVIEW_RAW.json",
+        "sha256": "a0a3487746887d9cf213cf8542211bdda9ab5ae46c2a4744a720eb01c4b36346"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_FRENCH_P1_P2_INDEPENDENT_REVIEW.json",
+        "sha256": "30fc4d42b046cb1245f0a26593609457c18ab2b8bbf3f5d40412ca524dab5e2d"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_FRENCH_GATE_INDEPENDENT_REVIEW.json",
+        "sha256": "70c0edcc477ac41123741cb2c1e98256e915d86a4dec702f54c1ad63b68718f9"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/french-b2-gate/guidedFrenchB2Drafts.ts",
+        "sha256": "393570a45688fcdd00aded24b26305c04a757bba75c5c8630197e30861fc64ca"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/french-b2-gate/test-guided-french-b2-drafts.ts",
+        "sha256": "7fc1880daf135334a5dad7e31f82815e37f7bfab0495b38ef191cb73b5cc568d"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/tsconfig-french-check.json",
+        "sha256": "bf326fba0f00a143289a00eef9b2606bca80c66df78b771dca0eba92f1ca0ac8"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedFrenchB2Drafts.ts",
+        "sha256": "bb956e0fce053be741f14732dfddd0c2f60c74706d5374d86ac4d8343faf1346"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/test-guided-french-b2-drafts.ts",
+        "sha256": "106fc23898259a4f8988a52b0f62cce2b3a612041ceff64c7443e7e8bda619c1"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedLatinB2Drafts.ts",
+        "sha256": "374fdad69e9468aee8429c08ac7f0c28d9401e1021874edb54943e023b5c0503"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/french/p1.json",
+        "sha256": "418a42996466b2241dfcda3e8caa62c8444d59d66671de96311c8596b20d475e"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/french/p2.json",
+        "sha256": "c54dfc2ad4b5dd6021df6a7da19bb58bf6a2959543513b1099a9a64a99178f5c"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/french/specification.json",
+        "sha256": "36d5048813a42f0d8017d0be33259d78d24c47e857d0344346bb3c4a271cdacf"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+        "sha256": "1011e892864751323bc403ca2ca8eb14e5890ea2dab75e52e2358bf2ee361472"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/ComplicationStep.tsx",
+        "sha256": "26dbba90f8d79bab3daa4a265481f4b58e85f337f2bc2e7af7ec5417f065f4d2"
+      }
+    ],
+    "exactReplay": {
+      "verdict": "PASS",
+      "originalRoundEdits": 45,
+      "arbitrationContentEdits": 18,
+      "arbitrationEditsByPath": {
+        "P1": 15,
+        "P2": 3
+      },
+      "everyOldValueAsserted": true,
+      "originalToFirstReviewedParsedEquality": true,
+      "firstReviewedToFinalParsedEquality": true,
+      "finalRequestedHashesVerified": true,
+      "appPathBytesEqualFinalScratch": true,
+      "unexplainedContentChanges": 0,
+      "arbitrationCodeEdits": 7,
+      "codeEditsReviewedSeparately": true
+    },
+    "fullCoverage": {
+      "personallyReadEveryField": true,
+      "readAllTwentyLessons": true,
+      "pathHeadersRead": 2,
+      "method": "Freshly printed and personally read both full final path headers and all 20 complete final lesson objects in ten two-lesson batches without truncation. Also read the full arbitration result and all 18 content/7 code edits. Mechanical output supplements this read; it does not replace it.",
+      "fields": [
+        "path metadata",
+        "specRef",
+        "authoring",
+        "lesson identity",
+        "title de/en",
+        "situation de/en",
+        "episodeShape",
+        "registerPlan",
+        "interlocutors",
+        "speakerGender",
+        "sceneCaption de/en",
+        "all dialogue targetText/base/roles/moves/registers",
+        "build frames/chunks/distractors",
+        "cloze segments/answers/variants/kinds/cues/choices/move index",
+        "synthesis segments/answers/variants/kinds/cues/choices/move index",
+        "recall frame/answer/variants/fallback choices",
+        "pattern move/label/rule/examples/bases/highlights",
+        "terms/surfaces/lemmas/kinds/bases",
+        "speech turns/tokens/profiles",
+        "trophy lemma/family/surface/turn/POS/example/bases",
+        "all review fields"
+      ],
+      "counts": {
+        "paths": 2,
+        "lessons": 20,
+        "dialogueTurns": 120,
+        "learnerTurns": 60,
+        "patternExamples": 40,
+        "trophyExamples": 20,
+        "terms": 160,
+        "speechSteps": 60,
+        "speechRequiredTokens": 180,
+        "buildChunks": 100,
+        "buildDistractors": 40,
+        "clozeBlanks": 40,
+        "synthesisBlanks": 38,
+        "formCues": 38,
+        "recalls": 20,
+        "choiceSets": 60
+      },
+      "choicesActuallyVisible": "Read each of the 60 choice sets in its reconstructed French frame; all wrong choices break syntax or the required meaning. The P2L6 normalization collision is fixed. Form-answer judgments assume the 38 authored de/en cues are actually displayed; that display is retained in C06 rather than presumed.",
+      "alternativeChipOrders": "Attempted a second coherent order for all 20 final builds without treating punctuation as the sole cue. Regrouping resolves the concrete P1L7/P2L8 findings. The two-token de la chip is small but has a clear dependency on semaine; no new coherent full alternative was identified.",
+      "perLesson": [
+        {
+          "path": 1,
+          "lesson": 1,
+          "slug": "loyer-contre-trajet",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            18,
+            20,
+            16,
+            19,
+            14,
+            19
+          ],
+          "buildFocusTokenCount": 11,
+          "note": "Rent drawback, evening-time concession and final decision cohere; relative-clause focus; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 1,
+          "lesson": 2,
+          "slug": "voiture-ou-transports",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            15,
+            21,
+            15,
+            21,
+            15,
+            17
+          ],
+          "buildFocusTokenCount": 11,
+          "note": "Timetable objection answered by parking burden; strike exception qualifies decision; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 1,
+          "lesson": 3,
+          "slug": "teletravail-ou-presentiel",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            16,
+            24,
+            18,
+            20,
+            15,
+            19
+          ],
+          "buildFocusTokenCount": 10,
+          "note": "Two versus four office days, shared decisions and three-day compromise form a genuine negotiation; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 1,
+          "lesson": 4,
+          "slug": "acheter-ou-louer-le-materiel",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            18,
+            23,
+            17,
+            21,
+            17,
+            20
+          ],
+          "buildFocusTokenCount": 9,
+          "note": "Tool-use story re-read: natural par an wording, exact cloze/example/highlight coupling, attested louer term and speech anchor; C07 resolved.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 1,
+          "lesson": 5,
+          "slug": "deux-plans-de-vacances",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            15,
+            19,
+            15,
+            19,
+            17,
+            20
+          ],
+          "buildFocusTokenCount": 10,
+          "note": "Friend tu, deliberate nous perspective, response to boredom and cabin quote; all coupled edits agree; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 1,
+          "lesson": 6,
+          "slug": "especes-ou-application",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            17,
+            23,
+            15,
+            23,
+            16,
+            19
+          ],
+          "buildFocusTokenCount": 11,
+          "note": "Cash/app tradeoff, older customers and trial cost comparison cohere; corrected ne paie plus group kept intact; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 1,
+          "lesson": 7,
+          "slug": "cours-ou-application-pour-apprendre",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            14,
+            20,
+            16,
+            23,
+            15,
+            20
+          ],
+          "buildFocusTokenCount": 10,
+          "note": "Course/app story re-read: horaires is attested and the revised focus removes the prior movable clause; C01/C03 resolved. Advice changes coherently after the friend's future schedule constraint.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 1,
+          "lesson": 8,
+          "slug": "deux-offres-d-emploi",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            18,
+            22,
+            16,
+            23,
+            16,
+            20
+          ],
+          "buildFocusTokenCount": 12,
+          "note": "Career tradeoff and project-ending edge case remain clear; explicit parce qu’un now carries the cause and reconstructs in synthesis; C08 resolved.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 1,
+          "lesson": 9,
+          "slug": "demenager-ou-rester",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            17,
+            24,
+            18,
+            23,
+            16,
+            21
+          ],
+          "buildFocusTokenCount": 11,
+          "note": "Social cost, two-hour visits and retained lease answer different challenges; toutefois licensed in 7–10; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 1,
+          "lesson": 10,
+          "slug": "recommander-une-option",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            19,
+            25,
+            16,
+            23,
+            16,
+            21
+          ],
+          "buildFocusTokenCount": 11,
+          "note": "Costs, limited car spaces and remaining planter budget make a reasoned committee recommendation; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 2,
+          "lesson": 1,
+          "slug": "facture-qui-differe",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            18,
+            22,
+            16,
+            23,
+            16,
+            20
+          ],
+          "buildFocusTokenCount": 9,
+          "note": "Known second-version request justifies puisque; twelve versus five hours clarified; future amendment responds to steer; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 2,
+          "lesson": 2,
+          "slug": "tri-des-dechets",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            16,
+            26,
+            15,
+            23,
+            15,
+            22
+          ],
+          "buildFocusTokenCount": 11,
+          "note": "All sorting rules tied to fictional notice, glass exception and collection consequence; licensed five-token frame; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 2,
+          "lesson": 3,
+          "slug": "projet-qui-a-glisse",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            19,
+            21,
+            16,
+            22,
+            18,
+            19
+          ],
+          "buildFocusTokenCount": 11,
+          "note": "Late plans lose assembly slot; responsibility answered by contract change; exact two-sentence summary; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 2,
+          "lesson": 4,
+          "slug": "programme-de-fidelite",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            19,
+            21,
+            17,
+            21,
+            17,
+            20
+          ],
+          "buildFocusTokenCount": 12,
+          "note": "Fictional points math, last-purchase expiry and conditional recommendation cohere; en clair confined to interlocutor; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 2,
+          "lesson": 5,
+          "slug": "changement-de-fournisseur",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            13,
+            24,
+            15,
+            21,
+            18,
+            21
+          ],
+          "buildFocusTokenCount": 11,
+          "note": "Rate rises, online procedure and estimated savings form detailed explanation; repeated fournisseur is heavy but valid; no blocker.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 2,
+          "lesson": 6,
+          "slug": "contester-un-avis-de-stationnement",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            18,
+            23,
+            15,
+            23,
+            17,
+            20
+          ],
+          "buildFocusTokenCount": 10,
+          "note": "Parking-notice explanation remains document-limited and promises no outcome; all four revised fallback forms are distinct and exactly one fits leur site; C02 resolved.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 2,
+          "lesson": 7,
+          "slug": "pourquoi-le-plan-a-echoue",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            20,
+            22,
+            17,
+            21,
+            17,
+            21
+          ],
+          "buildFocusTokenCount": 10,
+          "note": "Room/date/purchases chain, recipe counterevidence and deadline commitments; inanimate agreement neutral; revised focus resolves old sans/pas mobility; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 2,
+          "lesson": 8,
+          "slug": "prise-de-rendez-vous",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            18,
+            24,
+            16,
+            20,
+            17,
+            21
+          ],
+          "buildFocusTokenCount": 12,
+          "note": "Appointment process is explicitly attributed and makes no same-day guarantee; avant midi is fused into the verb chip and l’accueil is the attested complete term; C04/C05 resolved.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 2,
+          "lesson": 9,
+          "slug": "velos-en-libre-service",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            18,
+            22,
+            17,
+            22,
+            17,
+            20
+          ],
+          "buildFocusTokenCount": 8,
+          "note": "Modal-shift explanation, licensed goal subjunctive and conditional benefit avoid overpromise; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        },
+        {
+          "path": 2,
+          "lesson": 10,
+          "slug": "chaine-de-decision",
+          "allFieldsRead": true,
+          "dialogueTokenCounts": [
+            18,
+            22,
+            17,
+            21,
+            17,
+            18
+          ],
+          "buildFocusTokenCount": 12,
+          "note": "Complaint, evidence, committee proposal, resident vote and publication chain clear; passive agreements and bases accurate; no issue.",
+          "canonicalSpokenVerdict": "PASS"
+        }
+      ]
+    },
+    "resolvedFindings": [
+      {
+        "id": "FR-B2-C01",
+        "severity": "HIGH",
+        "category": "term-attestation",
+        "priorFinding": "The term difficulté is absent from every dialogue turn and both pattern examples after the you1 rewrite to difficile.",
+        "canonicalSpokenBlocker": false,
+        "result": "RESOLVED",
+        "evidence": "P1L7 terms[4] is horaires (lemma horaire), attested whole in the second and final learner turns. The real staged gate accepts the final path.",
+        "locations": [
+          {
+            "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/6/terms/4"
+          }
+        ]
+      },
+      {
+        "id": "FR-B2-C02",
+        "severity": "HIGH",
+        "category": "normalized-choice-collision",
+        "priorFinding": "Fallbacks co-offer propose and proposé. Required accent folding maps both to propose, so the set is not four distinct choices and has two matches under the mandated equivalence.",
+        "canonicalSpokenBlocker": false,
+        "result": "RESOLVED",
+        "evidence": "P2L6 fallbacks are propose/proposer/proposent/proposant. They remain distinct under accent/apostrophe/ligature/spacing equivalence; only propose fits the singular subject leur site in the visible frame.",
+        "locations": [
+          {
+            "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/french-b2-p2.json",
+            "jsonPointer": "/lessons/5/recall/fallbackChoices"
+          }
+        ]
+      },
+      {
+        "id": "FR-B2-C03",
+        "severity": "HIGH",
+        "category": "alternative-chip-order",
+        "priorFinding": "The new build has a second coherent clause order; its uniqueness depends on the period attached to c’est difficile.",
+        "canonicalSpokenBlocker": false,
+        "result": "RESOLVED",
+        "evidence": "P1L7 moves dès que c’est difficile into the fixed suffix. The five chips qu’on t’oblige | à parler, | tandis que | l’appli | te laisse tranquille have a ten-token focus; parce binds the first clause, obliger à binds its complement, and the clitic/subject order fixes the contrast clause. The old second order can no longer be built. A contrived interrupted-clause parenthesis is not a comparably coherent natural alternative. parler/tranquille remain in focus and all first-turn couplings are exact.",
+        "locations": [
+          {
+            "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/6/build"
+          }
+        ]
+      },
+      {
+        "id": "FR-B2-C04",
+        "severity": "HIGH",
+        "category": "alternative-chip-order",
+        "priorFinding": "The final avant midi chip is a movable time phrase, so the order is fixed only by its terminal period.",
+        "canonicalSpokenBlocker": false,
+        "result": "RESOLVED",
+        "evidence": "P2L8 fuses partent souvent avant midi into one chip. de la | semaine is fixed by determiner/noun dependency and cannot naturally be attached after the verb phrase. The old fronted avant midi order is unavailable. The focus actually has twelve tokens, within the 7–12 bound; Fable's statement of eleven was a counting error, not a content failure. Both places and semaine remain whole speech anchors in focus.",
+        "locations": [
+          {
+            "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/french-b2-p2.json",
+            "jsonPointer": "/lessons/7/build/chunks"
+          }
+        ]
+      },
+      {
+        "id": "FR-B2-C05",
+        "severity": "MEDIUM",
+        "category": "term-surface-contract",
+        "priorFinding": "The term accueil occurs in dialogue/patterns only inside the complete token l’accueil. The French gate inherits the existing B2 wholePhrase rule and rejects this bare term.",
+        "canonicalSpokenBlocker": false,
+        "result": "RESOLVED",
+        "evidence": "P2L8 now authors l’accueil as the complete term with lemma accueil and matching de/en glosses. It is attested in you3 and the pattern. No substring or lexical-boundary relaxation was introduced.",
+        "locations": [
+          {
+            "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/french-b2-p2.json",
+            "jsonPointer": "/lessons/7/terms/4"
+          }
+        ]
+      },
+      {
+        "id": "FR-B2-C07",
+        "severity": "MEDIUM",
+        "category": "native-style",
+        "priorFinding": "«pour mes deux journées annuelles» is understandable but unusually bureaucratic and underspecified for two days of tool use each year; Fable explicitly left this unresolved.",
+        "canonicalSpokenBlocker": false,
+        "result": "RESOLVED",
+        "evidence": "P1L4 now uses pour mes deux journées par an. The closing cloze, reused example, highlight and bases agree; louer replaces the obsolete annuelles term and speech token. The actual learner turn has twenty-one tokens and reads naturally in the stated occasional-use context.",
+        "locations": [
+          {
+            "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/3"
+          }
+        ]
+      },
+      {
+        "id": "FR-B2-C08",
+        "severity": "MEDIUM",
+        "category": "explicit-carrier-compliance",
+        "priorFinding": "P1L8 you3 expresses its cause with a colon, while its requiredCarrier names «tout bien pesé … parce que». The reasoning and French remain clear, but literal carrier compliance is unresolved and was explicitly noted by Fable.",
+        "canonicalSpokenBlocker": false,
+        "result": "RESOLVED",
+        "evidence": "P1L8 you3 explicitly includes parce qu’un projet arrêté… after tout bien pesé. The complete line, both bases and synthesis reconstruction agree. The causal carrier is cumulatively licensed and the twenty-token turn stays within its bound.",
+        "locations": [
+          {
+            "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/7/dialogue/5"
+          }
+        ]
+      },
+      {
+        "id": "FR-B2-C09",
+        "severity": "HIGH",
+        "category": "gate-integration-and-evidence",
+        "priorFinding": "The genuine French gate remains a scratch candidate, its exact reviewed-source run fails, and the independent engineering review identifies two still-open specification checks. Typecheck has not passed.",
+        "canonicalSpokenBlocker": false,
+        "result": "RESOLVED_FOR_REVIEWED_GATE_SCOPE",
+        "evidence": "The gate is now placed in the app scripts directory with true French/fr-FR identity. Both first-round engineering findings are fixed; the exact app suite passes 10 positives and 100 reason-asserted negatives plus both final paths; independent strict scoped TypeScript and ESLint pass. Direct use of the staged gate also accepts both immutable original paths. The explicit strict shape equals the Latin base after only the intended identity/register changes. This closes the prior gate/typecheck defect; no approval of the separate paid exporter or runtime is implied.",
+        "locations": [
+          {
+            "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedFrenchB2Drafts.ts"
+          },
+          {
+            "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/test-guided-french-b2-drafts.ts"
+          },
+          {
+            "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_FRENCH_GATE_INDEPENDENT_REREVIEW.json"
+          }
+        ]
+      }
+    ],
+    "remainingPublicationFindings": [
+      {
+        "id": "FR-B2-C06",
+        "severity": "BLOCKER",
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+        "line": 92,
+        "category": "runtime-publication",
+        "canonicalSpokenBlocker": false,
+        "finding": "No six-turn B2 runtime integration is present. GuidedLessonLevel remains A1/A2/B1 and the existing episode types remain four-turn B1. The reviewed French B2 source cannot yet be published as a verified learner flow.",
+        "evidence": "Confirmed again in guidedLessons.ts:92. Existing B1 ComplicationStep.tsx:303–305 displays blank.cue; this report does not claim B1 hides cues. No rendered B2 evidence demonstrates the 38 bilingual form cues, 60 fixed choice sets, synthesis, three speech turns or their accepted-answer behavior.",
+        "fix": "Implement and visually verify the actual six-turn B2 flow in de and en, including every form cue, fixed choice set, authored acceptance list, synthesis and all three speech turns, before publication. Retain canonical content approval separately.",
+        "status": "OPEN"
+      }
+    ],
+    "contentChecks": {
+      "sixTurnStories": "All twenty maintain their opening, substantive challenge/precision request and changed final task. P1 decisions compare real tradeoffs and remain qualified; P2 causal/process explanations answer precision requests and final steers.",
+      "genderAndRegister": "All learner speech stays neutral with consistent per-lesson vous/tu. Inanimate passive/participle agreement is valid. No new speaker-gender claim or register drift introduced.",
+      "staging": "Read against the unchanged controlling ranges. P1 toutefois is in L7–10; P1L8 parce que is inherited productively. P2 en clair stays out of early learner production and the goal subjunctive is confined to the licensed P2L9 frame.",
+      "couplings": "All first-turn build/recall, you2 cloze, you3 synthesis, pattern reuse/highlights, complete term attestation and speech/trophy anchors pass the actual final-source gate.",
+      "orthography": "Canonical U+2019 and single U+0020 before ? ! : ; remain intact. NBSP is not licensed. Explicit authored accent/apostrophe/œ/spacing variants remain complete and lists remain within sixteen; no runtime normalization is assumed.",
+      "fiveTokenFrame": "Only the exact c’est pour cette raison que exception remains licensed; no general length-cap relaxation.",
+      "trophies": "All twenty exact lemma/family/surface allocations remain unchanged, whole-token anchored and clear of the pinned actual French 297 prerequisites, including all hundred reserved B1 trophies. No source review of the undrafted remaining B1 bodies is claimed.",
+      "nativeStyleResiduals": "P2L5 repeats fournisseur, but is idiomatic and clear; the repetition is retained. The P1L7 contrived parenthetical clause-interposition and P2L8 small de la chip are recorded as reviewed style limits, not erased failures or canonical spoken blockers.",
+      "reviewTruthfulness": "All author-source flags stay false, verdict pending, reviewers empty and nativeStatus unreviewed. This external report supplies the independent verdict without fabricating a human reviewer."
+    },
+    "actualChecks": [
+      {
+        "name": "App offline French suite",
+        "command": "node --import ./node_modules/tsx/dist/loader.mjs scripts/test-guided-french-b2-drafts.ts",
+        "cwd": "D:/CODING/ResonanceTEST/orchestrator/frontend",
+        "exitCode": 0,
+        "result": "10 synthetic positive probes, 100 reason-asserted rejection probes, exact final P1 and P2 sources PASS.",
+        "performedByIndependentReviewer": true
+      },
+      {
+        "name": "Scoped strict TypeScript",
+        "command": "node node_modules/typescript/bin/tsc -p ../../tmp/V4_EXPANSION_20261003/tsconfig-french-check.json --noEmit",
+        "cwd": "D:/CODING/ResonanceTEST/orchestrator/frontend",
+        "exitCode": 0,
+        "result": "PASS; no output.",
+        "performedByIndependentReviewer": true
+      },
+      {
+        "name": "Scoped ESLint",
+        "command": "node node_modules/eslint/bin/eslint.js scripts/lib/guidedFrenchB2Drafts.ts scripts/test-guided-french-b2-drafts.ts",
+        "cwd": "D:/CODING/ResonanceTEST/orchestrator/frontend",
+        "exitCode": 0,
+        "result": "PASS; no output.",
+        "performedByIndependentReviewer": true
+      },
+      {
+        "name": "Direct staged real-gate calls and independent mutation probes",
+        "method": "In-memory Node import of the real app gate with pinned original spec/prerequisite bytes; no mock, paid call or filesystem mutation.",
+        "exitCode": 0,
+        "result": "Both immutable new-content originals and both final-reviewed paths PASS. Over-cap recall and synthesis lists reject for more than sixteen; fully coupled on choisit in a vous turn rejects for FR-B2-ON-VOUS; an explicit generic-on acknowledgment passes.",
+        "performedByIndependentReviewer": true
+      }
+    ],
+    "sourceAuthority": {
+      "controllingSpecificationSha256": "d01d7f24143ade1107c8dbe1f93dc49b91f94ed853df7b312d85da3b9833a51d",
+      "appSpecificationSha256": "36d5048813a42f0d8017d0be33259d78d24c47e857d0344346bb3c4a271cdacf",
+      "appDifference": "CRLF to LF only. Independently reconstructed CRLF bytes equal the original authority byte-for-byte; parsed JSON equal. Both hashes are explicitly retained.",
+      "prerequisiteSha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+      "frenchReservations": 297
+    },
+    "preservation": {
+      "sourceEditsByReviewer": 0,
+      "appEditsByReviewer": 0,
+      "paidCalls": 0,
+      "databaseWrites": 0,
+      "sharedLatinHashUnchanged": true,
+      "frozenFrenchA1A2B1TrackedDiff": "empty",
+      "onlyRequestedReportsWritten": true
+    },
+    "limitations": [
+      "No generated-audio listening check or paid provider execution occurred.",
+      "No B2 UI exists in the reviewed runtime; visual verification was not possible and C06 remains a full publication blocker.",
+      "This is independent model language judgment, not human native-speaker certification.",
+      "C09 is resolved for the exact app gate/test hashes only. The separate exporter/batch executor and their approval are outside scope.",
+      "The report preserves remaining findings as full objects once; no duplicate findings summary is presented as another review."
+    ]
+  }
+}

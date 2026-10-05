@@ -1,0 +1,3949 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 1,
+  "slug": "peser-le-pour-et-le-contre",
+  "pathTitle": {
+    "de": "Vor- und Nachteile abwägen",
+    "en": "Weighing advantages and drawbacks"
+  },
+  "pathFunction": {
+    "de": "Möglichkeiten vergleichen und eine begründete, eingeschränkte Empfehlung geben",
+    "en": "Compare options and give a reasoned, qualified recommendation"
+  },
+  "specRef": {
+    "pathSpec": "B2_FRENCH_P1_P2_AUTHORING_SPEC.json",
+    "pathSpecSha256": "d01d7f24143ade1107c8dbe1f93dc49b91f94ed853df7b312d85da3b9833a51d",
+    "ledger": "B2_FRENCH_P1_P2_AUTHORING_SPEC.json",
+    "ledgerSha256": "d01d7f24143ade1107c8dbe1f93dc49b91f94ed853df7b312d85da3b9833a51d"
+  },
+  "authoring": {
+    "source": "Codex GPT-6 xhigh",
+    "runId": "fr-b2-p1-p2-author-20261005",
+    "date": "2026-10-05"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "loyer-contre-trajet",
+      "title": {
+        "de": "Miete oder gewonnene Zeit",
+        "en": "Rent or time gained"
+      },
+      "situation": {
+        "de": "Bei einer Wohnungsbesichtigung vergleichen Sie anhand eines fiktiven Angebotsblatts eine zentrale Wohnung mit einer günstigeren am Stadtrand.",
+        "en": "At a flat viewing, you use a fictional offer sheet to compare a central flat with a cheaper one on the outskirts."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "agente",
+          "role": {
+            "de": "Immobilienmaklerin",
+            "en": "letting agent"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Maklerin erklärt: «Cette fiche compare le centre et la périphérie : ici, vous gagnez une heure de trajet quotidien. Qu’en pensez-vous ?»",
+        "en": "The agent explains: «Cette fiche compare le centre et la périphérie : ici, vous gagnez une heure de trajet quotidien. Qu’en pensez-vous ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "agente",
+          "targetText": "Cette fiche compare le centre et la périphérie : ici, vous gagnez une heure de trajet quotidien. Qu’en pensez-vous ?",
+          "base": {
+            "de": "Dieses Blatt vergleicht Zentrum und Stadtrand: Hier sparen Sie täglich eine Stunde Fahrzeit. Was halten Sie davon?",
+            "en": "This sheet compares the centre and outskirts: here, you save an hour of travel each day. What do you think?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "vous",
+          "targetText": "D’un côté, le logement coûte plus cher ; de l’autre, il libère une heure que je pourrais consacrer à mes proches.",
+          "base": {
+            "de": "Einerseits kostet die Wohnung mehr; andererseits gewinne ich eine Stunde, die ich meinen Angehörigen widmen könnte.",
+            "en": "On the one hand, the flat costs more; on the other, it frees an hour I could spend with those close to me."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "agente",
+          "targetText": "Mais cette heure vaut-elle vraiment les cent quatre-vingts euros de loyer supplémentaires indiqués sur la fiche ?",
+          "base": {
+            "de": "Ist Ihnen diese Stunde wirklich die im Blatt genannten hundertachtzig Euro zusätzliche Miete wert?",
+            "en": "But is that hour really worth the extra hundred and eighty euros in rent shown on the sheet?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "vous",
+          "targetText": "C’est vrai que le loyer représente un inconvénient, mais plus le trajet s’allonge, moins je profite de ma soirée.",
+          "base": {
+            "de": "Die Miete ist tatsächlich ein Nachteil, aber je länger die Fahrt dauert, desto weniger habe ich von meinem Abend.",
+            "en": "The rent is a drawback, admittedly, but the longer the journey gets, the less I enjoy my evening."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "agente",
+          "targetText": "Alors, au final, vous prenez celui du centre ou vous préférez continuer à chercher ?",
+          "base": {
+            "de": "Nehmen Sie nun die Wohnung im Zentrum, oder möchten Sie lieber weitersuchen?",
+            "en": "So, in the end, will you take the central one or keep looking?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Au final, le temps gagné compte davantage ; je choisis donc le centre, avec le loyer indiqué sur votre fiche.",
+          "base": {
+            "de": "Letztlich wiegt die gewonnene Zeit schwerer; ich nehme daher die Wohnung im Zentrum zu der auf Ihrem Blatt angegebenen Miete.",
+            "en": "Ultimately, the time gained matters more; I'll take the central flat at the rent shown on your sheet."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "D’un côté, le logement coûte plus cher ; de l’autre, ",
+        "chunks": [
+          "il libère",
+          "une heure",
+          "que je pourrais",
+          "consacrer",
+          "à mes proches."
+        ],
+        "distractors": [
+          "qui me prend",
+          "de mes proches"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " le loyer représente un inconvénient, mais plus le trajet s’allonge, moins je "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " de ma soirée."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "C’est vrai que",
+            "acceptedAnswers": [
+              "C’est vrai que",
+              "C'est vrai que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "C’est vrai que",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "profite",
+            "acceptedAnswers": [
+              "profite"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "profiter, je, Präsens Indikativ",
+              "en": "profiter, je, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", le temps gagné compte davantage ; je choisis donc le centre, avec le loyer indiqué sur votre fiche."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Au final",
+            "acceptedAnswers": [
+              "Au final"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Au final",
+              "Malgré",
+              "Par rapport à",
+              "Au lieu de"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "D’un côté, le logement coûte plus cher ; de l’autre, il libère une heure que je pourrais ",
+        "answer": "consacrer",
+        "acceptedAnswers": [
+          "consacrer",
+          "dédier",
+          "dedier",
+          "réserver",
+          "reserver",
+          "accorder",
+          "offrir",
+          "donner"
+        ],
+        "after": " à mes proches.",
+        "fallbackChoices": [
+          "consacrer",
+          "consacré",
+          "consacrons",
+          "consacrant"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen Nachteil einräumen und gewichten",
+          "en": "Conceding and weighing a drawback"
+        },
+        "rule": {
+          "de": "C’est vrai que erkennt den Nachteil an, während mais mit plus … moins erklärt, warum ein anderer Gesichtspunkt stärker wiegt.",
+          "en": "C’est vrai que acknowledges the drawback, while mais with plus … moins explains why another consideration matters more."
+        },
+        "examples": [
+          {
+            "targetText": "C’est vrai que le loyer représente un inconvénient, mais plus le trajet s’allonge, moins je profite de ma soirée.",
+            "base": {
+              "de": "Die Miete ist ein Nachteil, aber mit längerer Fahrzeit bleibt weniger von meinem Abend.",
+              "en": "The rent is a drawback, but a longer journey leaves me less of my evening."
+            },
+            "highlights": [
+              "C’est vrai que",
+              "plus le trajet s’allonge, moins"
+            ]
+          },
+          {
+            "targetText": "C’est vrai que je paie davantage, mais plus je me rapproche du bureau, plus je récupère du temps.",
+            "base": {
+              "de": "Ich zahle tatsächlich mehr, aber je näher ich am Büro wohne, desto mehr Zeit gewinne ich zurück.",
+              "en": "I do pay more, but the closer I live to the office, the more time I get back."
+            },
+            "highlights": [
+              "C’est vrai que",
+              "plus je me rapproche du bureau, plus"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "d’un côté",
+          "kind": "connector",
+          "base": {
+            "de": "einerseits",
+            "en": "on the one hand"
+          }
+        },
+        {
+          "targetText": "de l’autre",
+          "kind": "connector",
+          "base": {
+            "de": "andererseits",
+            "en": "on the other hand"
+          }
+        },
+        {
+          "targetText": "inconvénient",
+          "kind": "noun",
+          "base": {
+            "de": "Nachteil",
+            "en": "drawback"
+          }
+        },
+        {
+          "targetText": "loyer",
+          "kind": "noun",
+          "base": {
+            "de": "Miete",
+            "en": "rent"
+          }
+        },
+        {
+          "targetText": "trajet",
+          "kind": "noun",
+          "base": {
+            "de": "Fahrt / Arbeitsweg",
+            "en": "journey / commute"
+          }
+        },
+        {
+          "targetText": "consacrer",
+          "kind": "verb",
+          "base": {
+            "de": "widmen",
+            "en": "devote"
+          }
+        },
+        {
+          "targetText": "proches",
+          "lemma": "proche",
+          "kind": "noun",
+          "base": {
+            "de": "nahestehende Menschen",
+            "en": "people close to you"
+          }
+        },
+        {
+          "targetText": "soirée",
+          "kind": "noun",
+          "base": {
+            "de": "Abend",
+            "en": "evening"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "libère",
+            "heure",
+            "consacrer"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "inconvénient",
+            "trajet",
+            "soirée"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "final",
+            "gagné",
+            "choisis"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "inconvénient",
+        "familyKey": "inconvénient",
+        "surface": "inconvénient",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "Un loyer élevé reste un inconvénient à prendre en compte.",
+          "base": {
+            "de": "Eine hohe Miete bleibt ein Nachteil, den man berücksichtigen muss.",
+            "en": "High rent remains a drawback to take into account."
+          }
+        },
+        "base": {
+          "de": "Nachteil",
+          "en": "drawback"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "voiture-ou-transports",
+      "title": {
+        "de": "Auto oder Zug zur Arbeit",
+        "en": "Driving or taking the train to work"
+      },
+      "situation": {
+        "de": "Ein Kollege hält das Auto für den schnelleren Weg zum neuen Standort und fragt nach Ihrer Wahl.",
+        "en": "A colleague considers driving the faster way to the new site and asks about your choice."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "collegue",
+          "role": {
+            "de": "Kollege",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Kollege fragt: «Pour rejoindre le nouveau site, la voiture me paraît plus rapide. Pourquoi choisiriez-vous les transports ?»",
+        "en": "Your colleague asks: «Pour rejoindre le nouveau site, la voiture me paraît plus rapide. Pourquoi choisiriez-vous les transports ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "collegue",
+          "targetText": "Pour rejoindre le nouveau site, la voiture me paraît plus rapide. Pourquoi choisiriez-vous les transports ?",
+          "base": {
+            "de": "Zum neuen Standort erscheint mir das Auto schneller. Warum würden Sie öffentliche Verkehrsmittel wählen?",
+            "en": "Driving seems faster for reaching the new site. Why would you choose public transport?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "vous",
+          "targetText": "Je penche pour le train, alors qu’en voiture les bouchons risquent de bouleverser un horaire que je dois respecter au travail.",
+          "base": {
+            "de": "Ich tendiere zum Zug, während Staus im Auto einen Zeitplan durcheinanderbringen können, den ich bei der Arbeit einhalten muss.",
+            "en": "I favor the train, whereas traffic jams when driving could disrupt a schedule I need to keep at work."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "collegue",
+          "targetText": "Sauf qu’en voiture, vous partez quand vous voulez. Vous ne dépendez pas des horaires, non ?",
+          "base": {
+            "de": "Mit dem Auto fahren Sie aber los, wann Sie wollen. Sie sind nicht an Fahrpläne gebunden, oder?",
+            "en": "But in a car you leave whenever you want. You're not tied to a timetable, are you?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "vous",
+          "targetText": "En revanche, chercher une place chaque matin est plus contraignant qu’un horaire fixe ; je peux organiser ma journée autour du train.",
+          "base": {
+            "de": "Dagegen ist die tägliche Parkplatzsuche aufwendiger als ein fester Fahrplan; um den Zug herum kann ich meinen Tag planen.",
+            "en": "On the other hand, finding parking every morning is more restrictive than a fixed timetable; I can plan my day around the train."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "collegue",
+          "targetText": "Et les jours de grève, vous faites comment pour arriver à la réunion du matin ?",
+          "base": {
+            "de": "Und wie kommen Sie an Streiktagen rechtzeitig zur Besprechung am Morgen?",
+            "en": "And on strike days, how will you get to the morning meeting?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Au final, je prends donc le train au quotidien et réserve la voiture aux jours de grève.",
+          "base": {
+            "de": "Letztlich nehme ich also im Alltag den Zug und behalte das Auto für Streiktage vor.",
+            "en": "Ultimately, I'll take the train day to day and reserve the car for strike days."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Je penche pour le train, alors qu’en voiture ",
+        "chunks": [
+          "les bouchons",
+          "risquent de bouleverser",
+          "un horaire",
+          "que je dois",
+          "respecter"
+        ],
+        "distractors": [
+          "qui me doit",
+          "d’un horaire"
+        ],
+        "frameSuffix": " au travail."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", chercher une place chaque matin est plus contraignant qu’un horaire fixe ; je peux "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ma journée autour du train."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "En revanche",
+            "acceptedAnswers": [
+              "En revanche"
+            ],
+            "kind": "connector",
+            "choices": [
+              "En revanche",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "organiser",
+            "acceptedAnswers": [
+              "organiser"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "organiser, Infinitiv nach peux",
+              "en": "organiser, infinitive after peux"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", je prends donc le train au quotidien et "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " la voiture aux jours de grève."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Au final",
+            "acceptedAnswers": [
+              "Au final"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Au final",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "réserve",
+            "acceptedAnswers": [
+              "réserve",
+              "reserve"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "réserver, je, Präsens Indikativ",
+              "en": "réserver, je, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Je penche pour le train, alors qu’en voiture les bouchons risquent de ",
+        "answer": "bouleverser",
+        "acceptedAnswers": [
+          "bouleverser",
+          "perturber",
+          "désorganiser",
+          "desorganiser",
+          "compromettre"
+        ],
+        "after": " un horaire que je dois respecter au travail.",
+        "fallbackChoices": [
+          "bouleverser",
+          "bouleversé",
+          "bouleversant",
+          "bouleversent"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Eine vermeintliche Freiheit relativieren",
+          "en": "Qualifying an apparent freedom"
+        },
+        "rule": {
+          "de": "En revanche stellt der genannten Freiheit eine andere Belastung gegenüber, deren Gewicht plus contraignant que ausdrücklich vergleicht.",
+          "en": "En revanche counters the stated freedom with another burden, whose weight plus contraignant que explicitly compares."
+        },
+        "examples": [
+          {
+            "targetText": "En revanche, chercher une place chaque matin est plus contraignant qu’un horaire fixe ; je peux organiser ma journée autour du train.",
+            "base": {
+              "de": "Die tägliche Parkplatzsuche ist dagegen belastender als ein fester Fahrplan, um den herum ich meinen Tag planen kann.",
+              "en": "Finding parking daily is more restrictive than a fixed timetable around which I can plan my day."
+            },
+            "highlights": [
+              "En revanche",
+              "plus contraignant qu’un horaire fixe"
+            ]
+          },
+          {
+            "targetText": "En revanche, attendre une place est plus contraignant que marcher quelques minutes depuis la gare.",
+            "base": {
+              "de": "Auf einen Parkplatz zu warten, ist dagegen aufwendiger, als vom Bahnhof einige Minuten zu Fuß zu gehen.",
+              "en": "Waiting for a parking space, on the other hand, is more restrictive than walking a few minutes from the station."
+            },
+            "highlights": [
+              "En revanche",
+              "plus contraignant que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "je penche pour",
+          "kind": "frame",
+          "base": {
+            "de": "ich tendiere zu",
+            "en": "I lean toward"
+          }
+        },
+        {
+          "targetText": "en revanche",
+          "kind": "connector",
+          "base": {
+            "de": "dagegen / andererseits",
+            "en": "on the other hand"
+          }
+        },
+        {
+          "targetText": "contraignant",
+          "kind": "adjective",
+          "base": {
+            "de": "einschränkend / aufwendig",
+            "en": "restrictive / demanding"
+          }
+        },
+        {
+          "targetText": "bouchons",
+          "lemma": "bouchon",
+          "kind": "noun",
+          "base": {
+            "de": "Staus",
+            "en": "traffic jams"
+          }
+        },
+        {
+          "targetText": "horaire",
+          "kind": "noun",
+          "base": {
+            "de": "Zeitplan / Fahrplan",
+            "en": "schedule / timetable"
+          }
+        },
+        {
+          "targetText": "bouleverser",
+          "kind": "verb",
+          "base": {
+            "de": "durcheinanderbringen",
+            "en": "disrupt"
+          }
+        },
+        {
+          "targetText": "organiser",
+          "kind": "verb",
+          "base": {
+            "de": "organisieren / planen",
+            "en": "organize / plan"
+          }
+        },
+        {
+          "targetText": "grève",
+          "kind": "noun",
+          "base": {
+            "de": "Streik",
+            "en": "strike"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "bouchons",
+            "horaire",
+            "respecter"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "contraignant",
+            "place",
+            "organiser"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "quotidien",
+            "voiture",
+            "grève"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "contraignant",
+        "familyKey": "contraindre",
+        "surface": "contraignant",
+        "turnIndex": 3,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Un changement imprévisible est parfois plus contraignant qu’un horaire fixe.",
+          "base": {
+            "de": "Eine unvorhersehbare Änderung schränkt manchmal stärker ein als ein fester Zeitplan.",
+            "en": "An unpredictable change can be more restrictive than a fixed schedule."
+          }
+        },
+        "base": {
+          "de": "einschränkend / aufwendig",
+          "en": "restrictive / demanding"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "teletravail-ou-presentiel",
+      "title": {
+        "de": "Wie viele Tage vor Ort?",
+        "en": "How many days on site?"
+      },
+      "situation": {
+        "de": "Ihre Teamleitung schlägt vier Bürotage pro Woche vor. Sie besprechen die Arbeitsorganisation vor der Entscheidung.",
+        "en": "Your team manager proposes four office days a week. You discuss how to organize the work before a decision is made."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "responsable",
+          "role": {
+            "de": "Teamleitung",
+            "en": "team manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihre Teamleitung fragt: «Je propose quatre jours sur place par semaine. Quel rythme vous semblerait préférable pour notre travail ?»",
+        "en": "Your manager asks: «Je propose quatre jours sur place par semaine. Quel rythme vous semblerait préférable pour notre travail ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "responsable",
+          "targetText": "Je propose quatre jours sur place par semaine. Quel rythme vous semblerait préférable pour notre travail ?",
+          "base": {
+            "de": "Ich schlage vier Tage pro Woche vor Ort vor. Welcher Rhythmus wäre für unsere Arbeit aus Ihrer Sicht besser?",
+            "en": "I propose four days a week on site. What pattern would you consider better for our work?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "vous",
+          "targetText": "Je penche pour deux jours, parce que les réunions occupent un créneau qui suffit aux décisions communes, alors que le reste demande du calme.",
+          "base": {
+            "de": "Ich tendiere zu zwei Tagen, weil die Besprechungszeit für gemeinsame Entscheidungen reicht, während die übrige Arbeit Ruhe erfordert.",
+            "en": "I favor two days because the meeting time is enough for shared decisions, whereas the remaining work needs quiet."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "responsable",
+          "targetText": "Mais les membres de notre équipe se parlent moins quand chacun reste chez soi, vous ne trouvez pas ?",
+          "base": {
+            "de": "Aber unser Team spricht weniger miteinander, wenn alle zu Hause bleiben. Finden Sie nicht?",
+            "en": "But our team members talk to each other less when everyone stays at home, don't you think?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "vous",
+          "targetText": "Deux jours de présentiel permettent de décider ensemble, alors que quatre ajoutent surtout des trajets sans améliorer les échanges importants.",
+          "base": {
+            "de": "Zwei Präsenztage ermöglichen gemeinsame Entscheidungen, während vier vor allem zusätzliche Fahrten bringen, ohne wichtige Gespräche zu verbessern.",
+            "en": "Two days on site allow shared decisions, whereas four mostly add commuting without improving the important exchanges."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "responsable",
+          "targetText": "Je dois pourtant choisir un rythme pour toute notre équipe. Quelle solution commune pourriez-vous défendre ?",
+          "base": {
+            "de": "Ich muss aber einen Rhythmus für das ganze Team wählen. Welche gemeinsame Lösung könnten Sie vertreten?",
+            "en": "I do need one pattern for the whole team. What shared solution could you support?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Au final, je propose donc trois jours sur place, avec une journée commune fixe pour préserver les échanges essentiels.",
+          "base": {
+            "de": "Letztlich schlage ich daher drei Tage vor Ort vor, darunter einen festen gemeinsamen Tag für die wesentlichen Gespräche.",
+            "en": "Ultimately, I propose three days on site, including one fixed shared day to preserve essential exchanges."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Je penche pour deux jours, parce que ",
+        "chunks": [
+          "les réunions",
+          "occupent",
+          "un créneau",
+          "qui suffit",
+          "aux décisions communes,"
+        ],
+        "distractors": [
+          "dont je parle",
+          "des décisions communes"
+        ],
+        "frameSuffix": " alors que le reste demande du calme."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Deux jours de présentiel "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " de décider ensemble, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " quatre ajoutent surtout des trajets sans améliorer les échanges importants."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "permettent",
+            "acceptedAnswers": [
+              "permettent"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "permettre, deux jours, Präsens Indikativ",
+              "en": "permettre, deux jours, present indicative"
+            }
+          },
+          {
+            "answer": "alors que",
+            "acceptedAnswers": [
+              "alors que"
+            ],
+            "kind": "connector",
+            "choices": [
+              "alors que",
+              "malgré",
+              "au lieu de",
+              "par rapport à"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", je propose donc trois jours sur place, avec une journée commune fixe pour "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " les échanges essentiels."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Au final",
+            "acceptedAnswers": [
+              "Au final"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Au final",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "préserver",
+            "acceptedAnswers": [
+              "préserver",
+              "preserver"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "préserver, Infinitiv nach pour",
+              "en": "préserver, infinitive after pour"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Je penche pour deux jours, parce que les réunions ",
+        "answer": "occupent",
+        "acceptedAnswers": [
+          "occupent",
+          "prennent"
+        ],
+        "after": " un créneau qui suffit aux décisions communes, alors que le reste demande du calme.",
+        "fallbackChoices": [
+          "occupent",
+          "occuper",
+          "occupé",
+          "occupant"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Nutzen und Mehraufwand vergleichen",
+          "en": "Comparing benefit and extra effort"
+        },
+        "rule": {
+          "de": "Alors que stellt hier dem ausreichenden gemeinsamen Nutzen den zusätzlichen Aufwand einer anderen Möglichkeit gegenüber.",
+          "en": "Alors que contrasts the sufficient shared benefit with the extra effort of another option."
+        },
+        "examples": [
+          {
+            "targetText": "Deux jours de présentiel permettent de décider ensemble, alors que quatre ajoutent surtout des trajets sans améliorer les échanges importants.",
+            "base": {
+              "de": "Zwei Präsenztage reichen für gemeinsame Entscheidungen; vier bringen dagegen vor allem zusätzliche Wege ohne bessere wichtige Gespräche.",
+              "en": "Two days on site enable shared decisions; four mostly add journeys without improving the important exchanges."
+            },
+            "highlights": [
+              "Deux jours de présentiel",
+              "alors que quatre"
+            ]
+          },
+          {
+            "targetText": "Une journée commune facilite les échanges, alors que des présences dispersées compliquent les décisions.",
+            "base": {
+              "de": "Ein gemeinsamer Tag erleichtert Gespräche, während verstreute Anwesenheiten Entscheidungen erschweren.",
+              "en": "A shared day makes exchanges easier, whereas scattered attendance complicates decisions."
+            },
+            "highlights": [
+              "alors que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "je penche pour",
+          "kind": "frame",
+          "base": {
+            "de": "ich tendiere zu",
+            "en": "I favor / lean toward"
+          }
+        },
+        {
+          "targetText": "alors que",
+          "kind": "connector",
+          "base": {
+            "de": "während hingegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "présentiel",
+          "kind": "noun",
+          "base": {
+            "de": "Präsenz vor Ort",
+            "en": "in-person attendance"
+          }
+        },
+        {
+          "targetText": "réunions",
+          "lemma": "réunion",
+          "kind": "noun",
+          "base": {
+            "de": "Besprechungen",
+            "en": "meetings"
+          }
+        },
+        {
+          "targetText": "décisions",
+          "lemma": "décision",
+          "kind": "noun",
+          "base": {
+            "de": "Entscheidungen",
+            "en": "decisions"
+          }
+        },
+        {
+          "targetText": "communes",
+          "lemma": "commun",
+          "kind": "adjective",
+          "base": {
+            "de": "gemeinsam",
+            "en": "shared"
+          }
+        },
+        {
+          "targetText": "calme",
+          "kind": "noun",
+          "base": {
+            "de": "Ruhe",
+            "en": "quiet"
+          }
+        },
+        {
+          "targetText": "préserver",
+          "kind": "verb",
+          "base": {
+            "de": "bewahren / erhalten",
+            "en": "preserve"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "réunions",
+            "créneau",
+            "décisions"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "présentiel",
+            "ensemble",
+            "trajets"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "trois",
+            "commune",
+            "préserver"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "présentiel",
+        "familyKey": "présentiel",
+        "surface": "présentiel",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "Le présentiel facilite les discussions qui demandent une décision commune.",
+          "base": {
+            "de": "Präsenz erleichtert Gespräche, die eine gemeinsame Entscheidung erfordern.",
+            "en": "In-person attendance helps discussions that need a shared decision."
+          }
+        },
+        "base": {
+          "de": "Präsenz vor Ort",
+          "en": "in-person attendance"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "acheter-ou-louer-le-materiel",
+      "title": {
+        "de": "Eine Schleifmaschine kaufen oder mieten",
+        "en": "Buying or hiring a sander"
+      },
+      "situation": {
+        "de": "Am Werkzeugverleih vergleichen Sie anhand einer fiktiven Preiskarte Kauf und Miete einer Bodenschleifmaschine.",
+        "en": "At a tool-hire counter, you compare buying and hiring a floor sander using a fictional price card."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "comptoir",
+          "role": {
+            "de": "Mitarbeiter am Verleihschalter",
+            "en": "hire-counter employee"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Am Schalter heißt es: «Notre fiche indique quarante euros par semaine de location, contre six cents euros à l’achat. Quelle formule préférez-vous ?»",
+        "en": "The employee says: «Notre fiche indique quarante euros par semaine de location, contre six cents euros à l’achat. Quelle formule préférez-vous ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "comptoir",
+          "targetText": "Notre fiche indique quarante euros par semaine de location, contre six cents euros à l’achat. Quelle formule préférez-vous ?",
+          "base": {
+            "de": "Auf unserer Karte stehen vierzig Euro Wochenmiete gegenüber sechshundert Euro Kaufpreis. Welche Variante bevorzugen Sie?",
+            "en": "Our card lists forty euros a week to hire it versus six hundred to buy. Which option do you prefer?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "vous",
+          "targetText": "La moins chère au départ, c’est la location, tandis que quinze semaines d’utilisation correspondent au prix qu’il faudrait payer pour acquérir cette ponceuse.",
+          "base": {
+            "de": "Anfangs ist Mieten am günstigsten; fünfzehn Nutzungswochen entsprechen dagegen dem Preis, den man für diese Schleifmaschine beim Kauf zahlen müsste.",
+            "en": "Hiring is cheapest initially, whereas fifteen weeks of use equal the price needed to buy this sander."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "comptoir",
+          "targetText": "Mais vous allez vraiment vous en servir combien de fois dans l’année, en dehors de ces travaux ?",
+          "base": {
+            "de": "Wie oft im Jahr werden Sie sie außerhalb dieser Arbeiten wirklich benutzen?",
+            "en": "But how many times a year will you really use it apart from this job?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "vous",
+          "targetText": "Je reconnais que l’achat évite de réserver, mais pour mes deux journées par an, louer est plus rentable et m’épargne l’entretien.",
+          "base": {
+            "de": "Ich gebe zu, dass ein Kauf das Reservieren erspart; aber für meine zwei Nutzungstage im Jahr lohnt sich Mieten mehr und erspart mir die Wartung.",
+            "en": "I admit buying avoids having to book, but for my two days of use a year, hiring is more cost-effective and saves me the maintenance."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "comptoir",
+          "targetText": "Et si la machine louée tombe en panne pendant vos travaux, qui prend les frais en charge ?",
+          "base": {
+            "de": "Und wenn das Mietgerät während der Arbeiten ausfällt, wer übernimmt die Kosten?",
+            "en": "And if the hired machine breaks down during your work, who covers the costs?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Pour ces raisons, je loue : votre fiche prévoit un échange gratuit le jour même ; j’achèterais pour plusieurs mois de travaux.",
+          "base": {
+            "de": "Deshalb miete ich: Ihr Blatt sieht bei einem Defekt einen kostenlosen Austausch am selben Tag vor; kaufen würde ich bei monatelangen Arbeiten.",
+            "en": "For those reasons, I'll hire: your sheet provides a free same-day exchange; I'd buy for several months of work."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "La moins chère au départ, c’est la location, tandis que quinze semaines d’utilisation correspondent ",
+        "chunks": [
+          "au prix",
+          "qu’il faudrait",
+          "payer",
+          "pour acquérir",
+          "cette ponceuse."
+        ],
+        "distractors": [
+          "dont je parle",
+          "de cette ponceuse"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " l’achat "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " de réserver, mais pour mes deux journées par an, louer est plus rentable et m’épargne l’entretien."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Je reconnais que",
+            "acceptedAnswers": [
+              "Je reconnais que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Je reconnais que",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "évite",
+            "acceptedAnswers": [
+              "évite",
+              "evite"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "éviter, l’achat, Präsens Indikativ",
+              "en": "éviter, l’achat, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", je loue : votre fiche prévoit un échange gratuit le jour même ; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " pour plusieurs mois de travaux."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Pour ces raisons",
+            "acceptedAnswers": [
+              "Pour ces raisons"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Pour ces raisons",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "j’achèterais",
+            "acceptedAnswers": [
+              "j’achèterais",
+              "j'achèterais",
+              "j’acheterais",
+              "j'acheterais"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "acheter, je mit ausgeschriebenem Subjekt, Konditional Präsens",
+              "en": "acheter, include je, present conditional"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "La moins chère au départ, c’est la location, tandis que quinze semaines d’utilisation correspondent au prix qu’il faudrait payer pour ",
+        "answer": "acquérir",
+        "acceptedAnswers": [
+          "acquérir",
+          "acquerir",
+          "acheter",
+          "obtenir",
+          "posséder",
+          "posseder"
+        ],
+        "after": " cette ponceuse.",
+        "fallbackChoices": [
+          "acquérir",
+          "acquis",
+          "acquiert",
+          "acquérant"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Nutzung und Kosten gegeneinander abwägen",
+          "en": "Weighing use against cost"
+        },
+        "rule": {
+          "de": "Je reconnais que nennt einen Vorteil des Kaufs, bevor mais die eigene geringe Nutzung als Grund für die Miete nennt.",
+          "en": "Je reconnais que acknowledges an advantage of buying before mais gives the speaker's limited use as a reason for hiring."
+        },
+        "examples": [
+          {
+            "targetText": "Je reconnais que l’achat évite de réserver, mais pour mes deux journées par an, louer est plus rentable et m’épargne l’entretien.",
+            "base": {
+              "de": "Kaufen erspart das Reservieren, aber für zwei Tage im Jahr lohnt sich Mieten mehr und erspart die Wartung.",
+              "en": "Buying avoids booking, but hiring is more cost-effective for two days a year and avoids maintenance."
+            },
+            "highlights": [
+              "Je reconnais que",
+              "mais pour mes deux journées par an"
+            ]
+          },
+          {
+            "targetText": "Je reconnais que posséder l’appareil offre plus de liberté, mais louer convient mieux à un usage occasionnel.",
+            "base": {
+              "de": "Ein eigenes Gerät bietet mehr Freiheit, aber Mieten passt besser zu gelegentlicher Nutzung.",
+              "en": "Owning the machine offers more freedom, but hiring better suits occasional use."
+            },
+            "highlights": [
+              "Je reconnais que",
+              "mais louer"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "tandis que",
+          "kind": "connector",
+          "base": {
+            "de": "während hingegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "je reconnais que",
+          "kind": "frame",
+          "base": {
+            "de": "ich gebe zu, dass",
+            "en": "I acknowledge that"
+          }
+        },
+        {
+          "targetText": "rentable",
+          "kind": "adjective",
+          "base": {
+            "de": "wirtschaftlich lohnend",
+            "en": "cost-effective / worthwhile"
+          }
+        },
+        {
+          "targetText": "location",
+          "kind": "noun",
+          "base": {
+            "de": "Miete / Vermietung",
+            "en": "hire / rental"
+          }
+        },
+        {
+          "targetText": "ponceuse",
+          "kind": "noun",
+          "base": {
+            "de": "Schleifmaschine",
+            "en": "sander"
+          }
+        },
+        {
+          "targetText": "acquérir",
+          "kind": "verb",
+          "base": {
+            "de": "erwerben",
+            "en": "acquire / buy"
+          }
+        },
+        {
+          "targetText": "réserver",
+          "kind": "verb",
+          "base": {
+            "de": "reservieren / vorbestellen",
+            "en": "book / reserve"
+          }
+        },
+        {
+          "targetText": "louer",
+          "kind": "verb",
+          "base": {
+            "de": "mieten",
+            "en": "hire / rent"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "prix",
+            "payer",
+            "ponceuse"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "rentable",
+            "louer",
+            "réserver"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "raisons",
+            "gratuit",
+            "travaux"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "rentable",
+        "familyKey": "rentable",
+        "surface": "rentable",
+        "turnIndex": 3,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Un achat rentable suppose une utilisation suffisamment fréquente.",
+          "base": {
+            "de": "Ein wirtschaftlich sinnvoller Kauf setzt ausreichend häufige Nutzung voraus.",
+            "en": "A cost-effective purchase requires sufficiently frequent use."
+          }
+        },
+        "base": {
+          "de": "wirtschaftlich lohnend",
+          "en": "cost-effective / worthwhile"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "deux-plans-de-vacances",
+      "title": {
+        "de": "Stadturlaub oder Hütte",
+        "en": "A city break or a cabin"
+      },
+      "situation": {
+        "de": "Du vergleichst mit einem Freund zwei fiktive Urlaubsangebote: eine Woche in der Stadt oder in einer Hütte in den Hügeln.",
+        "en": "You and a friend compare two fictional holiday quotes: a week in the city or a cabin in the hills."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tu",
+          "tu",
+          "tu"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "ami",
+          "role": {
+            "de": "Freund",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Freund fragt: «Une semaine en ville me tente bien. Tu préfères vraiment la cabane dans les collines ?»",
+        "en": "Your friend asks: «Une semaine en ville me tente bien. Tu préfères vraiment la cabane dans les collines ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "Une semaine en ville me tente bien. Tu préfères vraiment la cabane dans les collines ?",
+          "base": {
+            "de": "Eine Woche in der Stadt reizt mich. Bevorzugst du wirklich die Hütte in den Hügeln?",
+            "en": "A week in the city appeals to me. Do you really prefer the cabin in the hills?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "tu",
+          "targetText": "Je pencherais pour la cabane, tandis que la ville nous impose un rythme qui ressemble à celui du bureau.",
+          "base": {
+            "de": "Ich würde zur Hütte tendieren, während uns die Stadt einen Rhythmus auferlegt, der dem im Büro ähnelt.",
+            "en": "I'd lean toward the cabin, whereas the city imposes a pace similar to the office."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "Sauf qu’à la campagne, au bout de deux jours, on s’ennuie. Tu ne trouves pas ?",
+          "base": {
+            "de": "Aber auf dem Land langweilt man sich doch nach zwei Tagen. Findest du nicht?",
+            "en": "But in the countryside you get bored after two days. Don't you think?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "tu",
+          "targetText": "Au contraire, le dépaysement vient du temps que nous retrouvons pour ralentir ; c’est ce qui nous manque le plus.",
+          "base": {
+            "de": "Im Gegenteil, der Tapetenwechsel entsteht durch die Zeit, die wir zum Entschleunigen zurückgewinnen; genau das fehlt uns am meisten.",
+            "en": "On the contrary, the change of scene comes from regaining time to slow down; that's what we miss most."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "Et notre budget, tu le mets où dans la balance ? Il faut aussi comparer les deux devis.",
+          "base": {
+            "de": "Und wie gewichtest du unser Budget? Wir müssen auch die beiden Angebote vergleichen.",
+            "en": "And where does our budget fit in the balance? We need to compare the two quotes too."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "tu",
+          "targetText": "Pour ces raisons, je choisirais la cabane : son devis reste moins cher ; je garderais la ville pour un autre week-end.",
+          "base": {
+            "de": "Deshalb würde ich die Hütte wählen: Ihr Angebot ist günstiger; die Stadt würde ich für ein anderes Wochenende aufheben.",
+            "en": "For those reasons, I'd choose the cabin: its quote is cheaper; I'd save the city for another weekend."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Je pencherais pour la cabane, tandis que la ville ",
+        "chunks": [
+          "nous impose",
+          "un rythme",
+          "qui ressemble",
+          "à celui",
+          "du bureau."
+        ],
+        "distractors": [
+          "dont je parle",
+          "de celui"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", le dépaysement vient du temps que nous "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " pour ralentir ; c’est ce qui nous manque le plus."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Au contraire",
+            "acceptedAnswers": [
+              "Au contraire"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Au contraire",
+              "Malgré",
+              "En raison de",
+              "Au lieu de"
+            ]
+          },
+          {
+            "answer": "retrouvons",
+            "acceptedAnswers": [
+              "retrouvons"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "retrouver, nous, Präsens Indikativ",
+              "en": "retrouver, nous, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", je "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " la cabane : son devis reste moins cher ; je garderais la ville pour un autre week-end."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Pour ces raisons",
+            "acceptedAnswers": [
+              "Pour ces raisons"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Pour ces raisons",
+              "Malgré",
+              "En raison de",
+              "Au lieu de"
+            ]
+          },
+          {
+            "answer": "choisirais",
+            "acceptedAnswers": [
+              "choisirais"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "choisir, je, Konditional Präsens",
+              "en": "choisir, je, present conditional"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Je pencherais pour la cabane, tandis que la ville nous impose un rythme qui ",
+        "answer": "ressemble",
+        "acceptedAnswers": [
+          "ressemble",
+          "correspond",
+          "s’apparente",
+          "s'apparente"
+        ],
+        "after": " à celui du bureau.",
+        "fallbackChoices": [
+          "ressemble",
+          "ressemblant",
+          "ressembler",
+          "ressemblent"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Eine gegenteilige Bewertung begründen",
+          "en": "Explaining the opposite assessment"
+        },
+        "rule": {
+          "de": "Au contraire weist die Bewertung zurück, während c’est ce qui … le plus erklärt, warum gerade dieser Unterschied den größten Wert hat.",
+          "en": "Au contraire rejects the assessment, while c’est ce qui … le plus explains why that very difference has the greatest value."
+        },
+        "examples": [
+          {
+            "targetText": "Au contraire, le dépaysement vient du temps que nous retrouvons pour ralentir ; c’est ce qui nous manque le plus.",
+            "base": {
+              "de": "Gerade die wiedergewonnene Zeit zum Entschleunigen schafft den Tapetenwechsel, den wir am meisten brauchen.",
+              "en": "On the contrary, regaining time to slow down creates the change of scene we miss most."
+            },
+            "highlights": [
+              "Au contraire",
+              "c’est ce qui nous manque le plus"
+            ]
+          },
+          {
+            "targetText": "Au contraire, rester dans un lieu calme nous change du quotidien ; c’est ce qui me plaît le plus.",
+            "base": {
+              "de": "Im Gegenteil, an einem ruhigen Ort zu bleiben, bringt Abwechslung zum Alltag; gerade das gefällt mir am besten.",
+              "en": "On the contrary, staying somewhere quiet changes our routine; that's what appeals to me most."
+            },
+            "highlights": [
+              "Au contraire",
+              "c’est ce qui me plaît le plus"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "au contraire",
+          "kind": "connector",
+          "base": {
+            "de": "im Gegenteil",
+            "en": "on the contrary"
+          }
+        },
+        {
+          "targetText": "pour ces raisons",
+          "kind": "frame",
+          "base": {
+            "de": "aus diesen Gründen",
+            "en": "for these reasons"
+          }
+        },
+        {
+          "targetText": "dépaysement",
+          "kind": "noun",
+          "base": {
+            "de": "Tapetenwechsel / neue Umgebung",
+            "en": "change of scene"
+          }
+        },
+        {
+          "targetText": "rythme",
+          "kind": "noun",
+          "base": {
+            "de": "Rhythmus / Tempo",
+            "en": "pace / rhythm"
+          }
+        },
+        {
+          "targetText": "ralentir",
+          "kind": "verb",
+          "base": {
+            "de": "langsamer werden / entschleunigen",
+            "en": "slow down"
+          }
+        },
+        {
+          "targetText": "cabane",
+          "kind": "noun",
+          "base": {
+            "de": "Hütte",
+            "en": "cabin"
+          }
+        },
+        {
+          "targetText": "devis",
+          "kind": "noun",
+          "base": {
+            "de": "Preisangebot",
+            "en": "quote / estimate"
+          }
+        },
+        {
+          "targetText": "bureau",
+          "kind": "noun",
+          "base": {
+            "de": "Büro",
+            "en": "office"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "impose",
+            "rythme",
+            "ressemble"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "dépaysement",
+            "ralentir",
+            "manque"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "choisirais",
+            "devis",
+            "garderais"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "dépaysement",
+        "familyKey": "dépaysement",
+        "surface": "dépaysement",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "Le dépaysement ne demande pas toujours de partir très loin.",
+          "base": {
+            "de": "Für einen Tapetenwechsel muss man nicht immer weit wegfahren.",
+            "en": "A change of scene doesn't always require traveling far."
+          }
+        },
+        "base": {
+          "de": "Tapetenwechsel / neue Umgebung",
+          "en": "change of scene"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "especes-ou-application",
+      "title": {
+        "de": "Barzahlung und Zahlungsapp",
+        "en": "Cash and a payment app"
+      },
+      "situation": {
+        "de": "Sie besprechen im fiktiven Épicerie du Port zwei Zahlungsarten mit der Geschäftsleitung.",
+        "en": "You discuss two payment methods with the owner of the fictional Épicerie du Port."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "commerce",
+          "role": {
+            "de": "Geschäftsleitung",
+            "en": "shop owner"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Geschäftsleitung fragt: «Cette application permettrait aux clients sans espèces de payer chez nous. Vous me conseillez de la proposer ?»",
+        "en": "The owner asks: «Cette application permettrait aux clients sans espèces de payer chez nous. Vous me conseillez de la proposer ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "commerce",
+          "targetText": "Cette application permettrait aux clients sans espèces de payer chez nous. Vous me conseillez de la proposer ?",
+          "base": {
+            "de": "Mit dieser App könnten auch Kunden ohne Bargeld bei uns bezahlen. Raten Sie mir, sie anzubieten?",
+            "en": "This app would let customers without cash pay here. Would you recommend offering it?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "vous",
+          "targetText": "D’un côté, vous attirez une clientèle qui ne paie plus en espèces ; de l’autre, chaque paiement entraîne des frais qui réduisent votre marge.",
+          "base": {
+            "de": "Einerseits gewinnen Sie Kundschaft, die nicht mehr bar bezahlt; andererseits verursacht jede Zahlung Gebühren, die Ihre Marge verringern.",
+            "en": "On one hand, you attract customers who no longer pay in cash; on the other, each payment brings fees that reduce your margin."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "commerce",
+          "targetText": "Mais ma clientèle plus âgée tient au liquide. Je ne veux pas compliquer ses achats.",
+          "base": {
+            "de": "Meine ältere Kundschaft legt aber Wert auf Bargeld. Ich möchte ihre Einkäufe nicht erschweren.",
+            "en": "But my older customers value cash. I don't want to complicate their shopping."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "vous",
+          "targetText": "Je reconnais que le liquide compte pour eux, mais rien ne vous empêche de tout encaisser en proposant les deux moyens de paiement.",
+          "base": {
+            "de": "Ich erkenne an, dass ihnen Bargeld wichtig ist; aber Sie können weiterhin alle Zahlungen annehmen, indem Sie beide Zahlungsarten anbieten.",
+            "en": "I acknowledge that cash matters to them, but nothing prevents you from taking every payment by offering both methods."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "commerce",
+          "targetText": "Leur brochure annonce un pour cent et demi par paiement. Ce coût mérite vraiment un essai ?",
+          "base": {
+            "de": "In deren Broschüre stehen eineinhalb Prozent pro Zahlung. Lohnt sich bei diesen Kosten wirklich ein Versuch?",
+            "en": "Their brochure lists one and a half percent per payment. Is a trial really worthwhile at that cost?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Pour ces raisons, je garderais les deux moyens et comparerais les frais aux ventes supplémentaires après trois mois d’essai.",
+          "base": {
+            "de": "Deshalb würde ich beide Zahlungsarten beibehalten und die Gebühren nach drei Probemonaten mit den zusätzlichen Verkäufen vergleichen.",
+            "en": "For those reasons, I'd keep both methods and compare the fees with additional sales after a three-month trial."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "D’un côté, vous ",
+        "chunks": [
+          "attirez",
+          "une clientèle",
+          "qui ne paie plus",
+          "en espèces ;",
+          "de l’autre,"
+        ],
+        "distractors": [
+          "dont les achats",
+          "aux espèces"
+        ],
+        "frameSuffix": " chaque paiement entraîne des frais qui réduisent votre marge."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " le liquide compte pour eux, mais rien ne vous "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " de tout encaisser en proposant les deux moyens de paiement."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Je reconnais que",
+            "acceptedAnswers": [
+              "Je reconnais que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Je reconnais que",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "empêche",
+            "acceptedAnswers": [
+              "empêche",
+              "empeche"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "empêcher, rien, Präsens Indikativ",
+              "en": "empêcher, rien, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", je garderais les deux moyens et "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " les frais aux ventes supplémentaires après trois mois d’essai."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Pour ces raisons",
+            "acceptedAnswers": [
+              "Pour ces raisons"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Pour ces raisons",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "comparerais",
+            "acceptedAnswers": [
+              "comparerais"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "comparer, je, Konditional Präsens",
+              "en": "comparer, je, present conditional"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "D’un côté, vous ",
+        "answer": "attirez",
+        "acceptedAnswers": [
+          "attirez",
+          "séduisez",
+          "seduisez",
+          "gagnez",
+          "touchez"
+        ],
+        "after": " une clientèle qui ne paie plus en espèces ; de l’autre, chaque paiement entraîne des frais qui réduisent votre marge.",
+        "fallbackChoices": [
+          "attirez",
+          "attirer",
+          "attiré",
+          "attirant"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen Einwand durch Kombination lösen",
+          "en": "Addressing an objection by combining options"
+        },
+        "rule": {
+          "de": "Je reconnais que nimmt den Einwand ernst, bevor mais rien ne vous empêche de zeigt, dass beide Lösungen zusammen möglich sind.",
+          "en": "Je reconnais que acknowledges the objection before mais rien ne vous empêche de shows that both options can coexist."
+        },
+        "examples": [
+          {
+            "targetText": "Je reconnais que le liquide compte pour eux, mais rien ne vous empêche de tout encaisser en proposant les deux moyens de paiement.",
+            "base": {
+              "de": "Bargeld ist ihnen wichtig, aber mit beiden Zahlungsarten können Sie trotzdem jede Zahlung annehmen.",
+              "en": "Cash matters to them, but offering both methods still lets you accept every payment."
+            },
+            "highlights": [
+              "Je reconnais que",
+              "mais rien ne vous empêche de"
+            ]
+          },
+          {
+            "targetText": "Je reconnais que cette formule coûte plus cher, mais rien ne vous empêche de limiter la durée de l’essai.",
+            "base": {
+              "de": "Diese Variante ist teurer, aber Sie können die Testdauer begrenzen.",
+              "en": "This option costs more, but nothing prevents you from limiting the trial period."
+            },
+            "highlights": [
+              "Je reconnais que",
+              "mais rien ne vous empêche de"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "d’un côté",
+          "kind": "connector",
+          "base": {
+            "de": "einerseits",
+            "en": "on one hand"
+          }
+        },
+        {
+          "targetText": "de l’autre",
+          "kind": "connector",
+          "base": {
+            "de": "andererseits",
+            "en": "on the other"
+          }
+        },
+        {
+          "targetText": "encaisser",
+          "kind": "verb",
+          "base": {
+            "de": "Zahlungen entgegennehmen",
+            "en": "take payments"
+          }
+        },
+        {
+          "targetText": "clientèle",
+          "kind": "noun",
+          "base": {
+            "de": "Kundschaft",
+            "en": "customer base"
+          }
+        },
+        {
+          "targetText": "marge",
+          "kind": "noun",
+          "base": {
+            "de": "Gewinnspanne",
+            "en": "margin"
+          }
+        },
+        {
+          "targetText": "liquide",
+          "kind": "noun",
+          "base": {
+            "de": "Bargeld",
+            "en": "cash"
+          }
+        },
+        {
+          "targetText": "frais",
+          "kind": "noun",
+          "base": {
+            "de": "Gebühren",
+            "en": "fees"
+          }
+        },
+        {
+          "targetText": "supplémentaires",
+          "lemma": "supplémentaire",
+          "kind": "adjective",
+          "base": {
+            "de": "zusätzlich",
+            "en": "additional"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "attirez",
+            "clientèle",
+            "espèces"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "encaisser",
+            "liquide",
+            "moyens"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "comparerais",
+            "frais",
+            "ventes"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "encaisser",
+        "familyKey": "encaisser",
+        "surface": "encaisser",
+        "turnIndex": 3,
+        "pos": "verb",
+        "example": {
+          "targetText": "Je peux tout encaisser avec les deux moyens de paiement.",
+          "base": {
+            "de": "Mit den beiden Zahlungsarten kann ich alle Zahlungen annehmen.",
+            "en": "I can take every payment using the two payment methods."
+          }
+        },
+        "base": {
+          "de": "Zahlungen entgegennehmen",
+          "en": "take payments"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "cours-ou-application-pour-apprendre",
+      "title": {
+        "de": "Sprachkurs oder App",
+        "en": "A language course or an app"
+      },
+      "situation": {
+        "de": "Du berätst einen Freund, der Italienisch lernen und zwischen einem Kurs und einer App wählen möchte.",
+        "en": "You advise a friend who wants to learn Italian and is choosing between a course and an app."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "tu",
+          "tu",
+          "tu"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "ami",
+          "role": {
+            "de": "Freund",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Freund fragt: «Pour apprendre l’italien, tu me conseillerais plutôt un cours du soir ou une application ?»",
+        "en": "Your friend asks: «Pour apprendre l’italien, tu me conseillerais plutôt un cours du soir ou une application ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "Pour apprendre l’italien, tu me conseillerais plutôt un cours du soir ou une application ?",
+          "base": {
+            "de": "Würdest du mir zum Italienischlernen eher einen Abendkurs oder eine App empfehlen?",
+            "en": "Would you recommend an evening course or an app for learning Italian?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "tu",
+          "targetText": "Je te conseillerais le cours parce qu’on t’oblige à parler, tandis que l’appli te laisse tranquille dès que c’est difficile.",
+          "base": {
+            "de": "Ich würde dir den Kurs empfehlen, weil man dich dort zum Sprechen zwingt, während die App dich in Ruhe lässt, sobald es schwierig wird.",
+            "en": "I'd recommend the course because it makes you speak, whereas the app leaves you alone as soon as it gets difficult."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "Le cours a lieu le mardi soir, et je finis souvent tard. Ça risque de coincer.",
+          "base": {
+            "de": "Der Kurs ist dienstagabends, und ich bin oft erst spät fertig. Das könnte schwierig werden.",
+            "en": "The course is on Tuesday evenings, and I often finish late. That could be a problem."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "tu",
+          "targetText": "Autant une application offre la souplesse des horaires, autant un cours te donne une personne qui corrige tes réponses et relance la discussion.",
+          "base": {
+            "de": "So flexibel eine App zeitlich ist, so bietet dir ein Kurs jemanden, der deine Antworten korrigiert und das Gespräch weiterführt.",
+            "en": "An app offers flexibility with timing, while a course gives you someone who corrects your answers and keeps the discussion going."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "ami",
+          "targetText": "Mes horaires changent au printemps. Et faire les deux maintenant, ce serait perdre du temps ?",
+          "base": {
+            "de": "Meine Arbeitszeiten ändern sich im Frühling. Wäre es Zeitverschwendung, jetzt beides zu machen?",
+            "en": "My working hours change in spring. Would doing both now be a waste of time?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "tu",
+          "targetText": "Tout bien pesé, commence par une application ce trimestre ; tu pourras ajouter le cours au printemps, avec tes nouveaux horaires.",
+          "base": {
+            "de": "Alles abgewogen, fang dieses Quartal mit einer App an; im Frühling kannst du mit deinen neuen Arbeitszeiten den Kurs ergänzen.",
+            "en": "All things considered, start with an app this term; you can add the course in spring with your new working hours."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Je te conseillerais le cours parce ",
+        "chunks": [
+          "qu’on t’oblige",
+          "à parler,",
+          "tandis que",
+          "l’appli",
+          "te laisse tranquille"
+        ],
+        "distractors": [
+          "tandis qu’elle",
+          "dont on t’oblige"
+        ],
+        "frameSuffix": " dès que c’est difficile."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " une application offre la souplesse des horaires, autant un cours te donne une personne qui "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tes réponses et relance la discussion."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Autant",
+            "acceptedAnswers": [
+              "Autant"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Autant",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "corrige",
+            "acceptedAnswers": [
+              "corrige"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "corriger, une personne, Präsens Indikativ",
+              "en": "corriger, une personne, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", commence par une application ce trimestre ; tu "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ajouter le cours au printemps, avec tes nouveaux horaires."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Tout bien pesé",
+            "acceptedAnswers": [
+              "Tout bien pesé",
+              "Tout bien pese"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Tout bien pesé",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "pourras",
+            "acceptedAnswers": [
+              "pourras"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "pouvoir, tu, Futur simple",
+              "en": "pouvoir, tu, simple future"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Je te conseillerais le cours parce qu’on t’oblige à ",
+        "answer": "parler",
+        "acceptedAnswers": [
+          "parler",
+          "répondre",
+          "repondre",
+          "participer",
+          "t’exprimer",
+          "t'exprimer"
+        ],
+        "after": ", tandis que l’appli te laisse tranquille dès que c’est difficile.",
+        "fallbackChoices": [
+          "parler",
+          "parlé",
+          "parlant",
+          "parlons"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Zwei unterschiedliche Stärken hervorheben",
+          "en": "Highlighting two different strengths"
+        },
+        "rule": {
+          "de": "Autant … autant stellt zwei unterschiedliche Stärken parallel dar, ohne sie als gleichwertig zu bewerten.",
+          "en": "Autant … autant places two different strengths in parallel without judging them equally valuable."
+        },
+        "examples": [
+          {
+            "targetText": "Autant une application offre la souplesse des horaires, autant un cours te donne une personne qui corrige tes réponses et relance la discussion.",
+            "base": {
+              "de": "Die App bietet flexible Zeiten, der Kurs dagegen jemanden, der Antworten korrigiert und das Gespräch fortführt.",
+              "en": "The app offers flexible timing, while the course provides someone who corrects answers and continues the conversation."
+            },
+            "highlights": [
+              "Autant une application",
+              "autant un cours"
+            ]
+          },
+          {
+            "targetText": "Autant ce livre explique bien les règles, autant le cours permet de les appliquer avec une autre personne.",
+            "base": {
+              "de": "Das Buch erklärt die Regeln gut, während der Kurs es ermöglicht, sie mit einer anderen Person anzuwenden.",
+              "en": "The book explains the rules well, while the course lets you apply them with another person."
+            },
+            "highlights": [
+              "Autant ce livre",
+              "autant le cours"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "autant",
+          "kind": "connector",
+          "base": {
+            "de": "so sehr / ebenso sehr, im Vergleichspaar",
+            "en": "as much, in a paired comparison"
+          }
+        },
+        {
+          "targetText": "tout bien pesé",
+          "kind": "frame",
+          "base": {
+            "de": "alles abgewogen",
+            "en": "all things considered"
+          }
+        },
+        {
+          "targetText": "souplesse",
+          "kind": "noun",
+          "base": {
+            "de": "Flexibilität",
+            "en": "flexibility"
+          }
+        },
+        {
+          "targetText": "tandis que",
+          "kind": "connector",
+          "base": {
+            "de": "während hingegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "horaires",
+          "lemma": "horaire",
+          "kind": "noun",
+          "base": {
+            "de": "Arbeitszeiten / Stundenplan",
+            "en": "schedule / working hours"
+          }
+        },
+        {
+          "targetText": "corrige",
+          "lemma": "corriger",
+          "kind": "verb",
+          "base": {
+            "de": "korrigiert",
+            "en": "corrects"
+          }
+        },
+        {
+          "targetText": "relance",
+          "lemma": "relancer",
+          "kind": "verb",
+          "base": {
+            "de": "bringt wieder in Gang",
+            "en": "keeps going / restarts"
+          }
+        },
+        {
+          "targetText": "trimestre",
+          "kind": "noun",
+          "base": {
+            "de": "Quartal / Trimester",
+            "en": "term / quarter"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "parler",
+            "tranquille",
+            "difficile"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "souplesse",
+            "corrige",
+            "discussion"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "trimestre",
+            "printemps",
+            "horaires"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "souplesse",
+        "familyKey": "souple",
+        "surface": "souplesse",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "Cette formule offre une souplesse qui convient aux horaires variables.",
+          "base": {
+            "de": "Diese Variante bietet eine Flexibilität, die zu wechselnden Arbeitszeiten passt.",
+            "en": "This option offers flexibility that suits changing work schedules."
+          }
+        },
+        "base": {
+          "de": "Flexibilität",
+          "en": "flexibility"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "deux-offres-d-emploi",
+      "title": {
+        "de": "Zwei Stellenangebote abwägen",
+        "en": "Weighing two job offers"
+      },
+      "situation": {
+        "de": "Sie vergleichen mit einer Mentorin zwei Stellenangebote: eines mit höherem Gehalt, eines mit einem kleinen Team und einem eigenen Projekt.",
+        "en": "You compare two job offers with a mentor: one pays more, while the other offers a small team and a project of your own."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "mentorat",
+          "role": {
+            "de": "Mentorin",
+            "en": "mentor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihre Mentorin fragt: «Entre le salaire de la première offre et le projet de la seconde, qu’est-ce qui pèse le plus ?»",
+        "en": "Your mentor asks: «Entre le salaire de la première offre et le projet de la seconde, qu’est-ce qui pèse le plus ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "mentorat",
+          "targetText": "Entre le salaire de la première offre et le projet de la seconde, qu’est-ce qui pèse le plus ?",
+          "base": {
+            "de": "Was wiegt schwerer: das Gehalt im ersten Angebot oder das Projekt im zweiten?",
+            "en": "Which carries more weight: the first offer's salary or the second offer's project?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "vous",
+          "targetText": "D’un côté, le salaire rassure ; de l’autre, le projet donne une autonomie qui correspond à ce qui compte le plus pour moi.",
+          "base": {
+            "de": "Einerseits gibt das Gehalt Sicherheit; andererseits bietet das Projekt eine Selbstständigkeit, die dem entspricht, was mir am wichtigsten ist.",
+            "en": "On one hand, the salary is reassuring; on the other, the project offers autonomy that matches what matters most to me."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "mentorat",
+          "targetText": "À ce stade de votre carrière, un meilleur salaire ne devrait-il pas passer avant le reste ?",
+          "base": {
+            "de": "Sollte in dieser Phase Ihrer Laufbahn ein besseres Gehalt nicht Vorrang haben?",
+            "en": "At this stage in your career, shouldn't a better salary take priority?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "vous",
+          "targetText": "Cela dit, le vrai enjeu n’est pas mon salaire de cette année, mais le poste que cette expérience rendra accessible dans cinq ans.",
+          "base": {
+            "de": "Allerdings geht es eigentlich nicht um mein diesjähriges Gehalt, sondern um die Stelle, die mir diese Erfahrung in fünf Jahren ermöglichen wird.",
+            "en": "That said, what's really at stake isn't this year's salary, but the role this experience will make accessible in five years."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "mentorat",
+          "targetText": "Et si ce projet s’arrête au bout de deux ans, que vous restera-t-il de cette expérience ?",
+          "base": {
+            "de": "Und wenn dieses Projekt nach zwei Jahren endet, was bleibt Ihnen dann von dieser Erfahrung?",
+            "en": "And if that project ends after two years, what will you have gained from the experience?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Tout bien pesé, je choisis la seconde offre, parce qu’un projet arrêté m’aura quand même appris à diriger une équipe.",
+          "base": {
+            "de": "Alles abgewogen, wähle ich das zweite Angebot, weil mich auch ein eingestelltes Projekt gelehrt haben wird, ein Team zu führen.",
+            "en": "All things considered, I'll choose the second offer, because even a discontinued project will have taught me to lead a team."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "D’un côté, le salaire rassure ; de l’autre, le projet donne ",
+        "chunks": [
+          "une autonomie",
+          "qui correspond",
+          "à ce",
+          "qui compte",
+          "le plus pour moi."
+        ],
+        "distractors": [
+          "dont je parle",
+          "de ce qui compte"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", le vrai enjeu n’est pas mon salaire de cette année, mais le poste que cette expérience "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " accessible dans cinq ans."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Cela dit",
+            "acceptedAnswers": [
+              "Cela dit"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Cela dit",
+              "Malgré",
+              "Par rapport à",
+              "Au lieu de"
+            ]
+          },
+          {
+            "answer": "rendra",
+            "acceptedAnswers": [
+              "rendra"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "rendre, cette expérience, Futur simple",
+              "en": "rendre, cette expérience, simple future"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", je choisis la seconde offre, parce qu’un projet arrêté m’aura quand même "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " à diriger une équipe."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Tout bien pesé",
+            "acceptedAnswers": [
+              "Tout bien pesé",
+              "Tout bien pese"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Tout bien pesé",
+              "Malgré",
+              "Par rapport à",
+              "Au lieu de"
+            ]
+          },
+          {
+            "answer": "appris",
+            "acceptedAnswers": [
+              "appris"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "apprendre, Partizip Perfekt nach m’aura",
+              "en": "apprendre, past participle after m’aura"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "D’un côté, le salaire rassure ; de l’autre, le projet donne une autonomie qui ",
+        "answer": "correspond",
+        "acceptedAnswers": [
+          "correspond",
+          "répond",
+          "repond"
+        ],
+        "after": " à ce qui compte le plus pour moi.",
+        "fallbackChoices": [
+          "correspond",
+          "correspondre",
+          "correspondant",
+          "correspondu"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Das entscheidende Kriterium neu bestimmen",
+          "en": "Reframing the decisive criterion"
+        },
+        "rule": {
+          "de": "Cela dit leitet eine Einschränkung ein, und n’est pas … mais verschiebt den Vergleich auf das wirklich entscheidende Kriterium.",
+          "en": "Cela dit introduces a qualification, and n’est pas … mais shifts the comparison to the decisive criterion."
+        },
+        "examples": [
+          {
+            "targetText": "Cela dit, le vrai enjeu n’est pas mon salaire de cette année, mais le poste que cette expérience rendra accessible dans cinq ans.",
+            "base": {
+              "de": "Entscheidend ist nicht das diesjährige Gehalt, sondern die berufliche Perspektive in fünf Jahren.",
+              "en": "The real issue is not this year's salary but the career opportunity five years from now."
+            },
+            "highlights": [
+              "Cela dit",
+              "n’est pas",
+              "mais le poste"
+            ]
+          },
+          {
+            "targetText": "Cela dit, le vrai enjeu n’est pas la taille du bureau, mais la possibilité de mener un projet jusqu’au bout.",
+            "base": {
+              "de": "Entscheidend ist nicht die Bürogröße, sondern die Möglichkeit, ein Projekt bis zum Ende zu führen.",
+              "en": "That said, the real issue is not office size but the opportunity to see a project through."
+            },
+            "highlights": [
+              "Cela dit",
+              "n’est pas",
+              "mais la possibilité"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "cela dit",
+          "kind": "connector",
+          "base": {
+            "de": "allerdings / dabei ist zu bedenken",
+            "en": "that said"
+          }
+        },
+        {
+          "targetText": "tout bien pesé",
+          "kind": "frame",
+          "base": {
+            "de": "alles abgewogen",
+            "en": "all things considered"
+          }
+        },
+        {
+          "targetText": "enjeu",
+          "kind": "noun",
+          "base": {
+            "de": "entscheidende Frage / was auf dem Spiel steht",
+            "en": "what is at stake / central issue"
+          }
+        },
+        {
+          "targetText": "autonomie",
+          "kind": "noun",
+          "base": {
+            "de": "Selbstständigkeit",
+            "en": "autonomy"
+          }
+        },
+        {
+          "targetText": "accessible",
+          "kind": "adjective",
+          "base": {
+            "de": "erreichbar",
+            "en": "accessible / attainable"
+          }
+        },
+        {
+          "targetText": "diriger",
+          "kind": "verb",
+          "base": {
+            "de": "leiten",
+            "en": "lead / manage"
+          }
+        },
+        {
+          "targetText": "salaire",
+          "kind": "noun",
+          "base": {
+            "de": "Gehalt",
+            "en": "salary"
+          }
+        },
+        {
+          "targetText": "expérience",
+          "kind": "noun",
+          "base": {
+            "de": "Erfahrung",
+            "en": "experience"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "autonomie",
+            "correspond",
+            "compte"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "enjeu",
+            "poste",
+            "accessible"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "seconde",
+            "appris",
+            "diriger"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "enjeu",
+        "familyKey": "enjeu",
+        "surface": "enjeu",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "Le vrai enjeu dépasse le salaire proposé cette année.",
+          "base": {
+            "de": "Die entscheidende Frage geht über das in diesem Jahr angebotene Gehalt hinaus.",
+            "en": "The central issue goes beyond the salary offered this year."
+          }
+        },
+        "base": {
+          "de": "entscheidende Frage / was auf dem Spiel steht",
+          "en": "what is at stake / central issue"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "demenager-ou-rester",
+      "title": {
+        "de": "Für eine Stelle umziehen",
+        "en": "Moving for a job"
+      },
+      "situation": {
+        "de": "Sie erzählen einem Nachbarn von einem Stellenangebot in einer anderen Stadt und wägen einen Umzug ab.",
+        "en": "You tell a neighbor about a job offer in another city and consider moving."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "voisin",
+          "role": {
+            "de": "Nachbar",
+            "en": "neighbor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Nachbar fragt: «Cette nouvelle offre vous ferait changer de ville. Vous penchez pour le départ ou vous hésitez encore ?»",
+        "en": "Your neighbor asks: «Cette nouvelle offre vous ferait changer de ville. Vous penchez pour le départ ou vous hésitez encore ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Cette nouvelle offre vous ferait changer de ville. Vous penchez pour le départ ou vous hésitez encore ?",
+          "base": {
+            "de": "Für dieses neue Angebot müssten Sie die Stadt wechseln. Tendieren Sie zum Umzug oder zögern Sie noch?",
+            "en": "This new offer would mean moving cities. Are you leaning toward leaving or still hesitating?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "vous",
+          "targetText": "Je penche pour le départ : par rapport à mon poste actuel, cette offre correspond à une formation que je voudrais enfin mettre en pratique.",
+          "base": {
+            "de": "Ich tendiere zum Umzug: Im Vergleich zu meiner jetzigen Stelle passt dieses Angebot zu einer Ausbildung, die ich endlich praktisch nutzen möchte.",
+            "en": "I'm leaning toward leaving: compared with my current job, this offer matches training I'd finally like to put into practice."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Et vos amis, vos habitudes dans le quartier ? Ce n’est pas rien de laisser tout cela derrière vous.",
+          "base": {
+            "de": "Und Ihre Freunde, Ihre Gewohnheiten im Viertel? Das alles zurückzulassen ist keine Kleinigkeit.",
+            "en": "And your friends and neighborhood routines? Leaving all that behind isn't a small thing."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "vous",
+          "targetText": "Je reconnais que c’est ce qui me coûte le plus ; toutefois, deux heures de train me permettraient de revenir régulièrement voir mes proches.",
+          "base": {
+            "de": "Ich gebe zu, dass mir genau das am schwersten fällt; allerdings könnte ich mit zwei Stunden Zugfahrt regelmäßig meine Nahestehenden besuchen.",
+            "en": "I admit that's the hardest part; however, a two-hour train trip would let me return regularly to see those close to me."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "voisin",
+          "targetText": "Et si vous regrettez ce choix dans un an, aurez-vous vraiment une possibilité de revenir ici ?",
+          "base": {
+            "de": "Und wenn Sie diese Wahl in einem Jahr bereuen, könnten Sie dann wirklich hierher zurückkehren?",
+            "en": "And if you regret that choice in a year, will you really have a way to return here?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Au final, je pars, mais je garde mon bail actuel un an ; je pourrai donc revenir si ce poste me déçoit.",
+          "base": {
+            "de": "Letztlich ziehe ich um, behalte meinen jetzigen Mietvertrag aber ein Jahr; so kann ich zurückkommen, wenn mich die Stelle enttäuscht.",
+            "en": "In the end, I'll go, but I'll keep my current lease for a year so I can return if the job disappoints me."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Je penche pour le départ : par rapport à mon poste actuel, cette offre ",
+        "chunks": [
+          "correspond",
+          "à une formation",
+          "que je voudrais",
+          "enfin mettre",
+          "en pratique."
+        ],
+        "distractors": [
+          "dont je parle",
+          "une formation"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Je reconnais que c’est ce qui me coûte le plus ; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", deux heures de train me "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " de revenir régulièrement voir mes proches."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "toutefois",
+            "acceptedAnswers": [
+              "toutefois"
+            ],
+            "kind": "connector",
+            "choices": [
+              "toutefois",
+              "malgré",
+              "au lieu de",
+              "par rapport à"
+            ]
+          },
+          {
+            "answer": "permettraient",
+            "acceptedAnswers": [
+              "permettraient"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "permettre, deux heures de train, Konditional Präsens",
+              "en": "permettre, deux heures de train, present conditional"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", je pars, mais je garde mon bail actuel un an ; je pourrai donc revenir si ce poste me "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Au final",
+            "acceptedAnswers": [
+              "Au final"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Au final",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "déçoit",
+            "acceptedAnswers": [
+              "déçoit",
+              "decoit"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "décevoir, ce poste, Präsens Indikativ",
+              "en": "décevoir, ce poste, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Je penche pour le départ : par rapport à mon poste actuel, cette offre correspond à une formation que je voudrais enfin ",
+        "answer": "mettre",
+        "acceptedAnswers": [
+          "mettre"
+        ],
+        "after": " en pratique.",
+        "fallbackChoices": [
+          "mettre",
+          "mis",
+          "mettant",
+          "mets"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Eine reale Belastung begrenzen",
+          "en": "Qualifying a real difficulty"
+        },
+        "rule": {
+          "de": "Toutefois folgt auf eine eingeräumte Schwierigkeit und führt einen konkreten Umstand ein, der ihre Auswirkungen begrenzt.",
+          "en": "Toutefois follows an acknowledged difficulty and introduces a concrete circumstance that limits its effects."
+        },
+        "examples": [
+          {
+            "targetText": "Je reconnais que c’est ce qui me coûte le plus ; toutefois, deux heures de train me permettraient de revenir régulièrement voir mes proches.",
+            "base": {
+              "de": "Das fällt mir am schwersten; die zweistündige Zugfahrt würde aber regelmäßige Besuche ermöglichen.",
+              "en": "That's the hardest part, but the two-hour train journey would allow regular visits."
+            },
+            "highlights": [
+              "Je reconnais que",
+              "toutefois"
+            ]
+          },
+          {
+            "targetText": "Je reconnais que ce trajet prend du temps ; toutefois, il permet de garder un lien régulier avec mes proches.",
+            "base": {
+              "de": "Die Fahrt kostet Zeit; allerdings ermöglicht sie regelmäßigen Kontakt zu meinen Nahestehenden.",
+              "en": "I admit the journey takes time; however, it allows regular contact with those close to me."
+            },
+            "highlights": [
+              "Je reconnais que",
+              "toutefois"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "toutefois",
+          "kind": "connector",
+          "base": {
+            "de": "allerdings / jedoch",
+            "en": "however"
+          }
+        },
+        {
+          "targetText": "par rapport à",
+          "kind": "frame",
+          "base": {
+            "de": "im Vergleich zu",
+            "en": "compared with"
+          }
+        },
+        {
+          "targetText": "départ",
+          "kind": "noun",
+          "base": {
+            "de": "Weggang / Aufbruch",
+            "en": "departure / leaving"
+          }
+        },
+        {
+          "targetText": "formation",
+          "kind": "noun",
+          "base": {
+            "de": "Ausbildung",
+            "en": "training"
+          }
+        },
+        {
+          "targetText": "mettre en pratique",
+          "kind": "phrase",
+          "base": {
+            "de": "praktisch anwenden",
+            "en": "put into practice"
+          }
+        },
+        {
+          "targetText": "bail",
+          "kind": "noun",
+          "base": {
+            "de": "Mietvertrag",
+            "en": "lease"
+          }
+        },
+        {
+          "targetText": "proches",
+          "kind": "noun",
+          "base": {
+            "de": "nahestehende Menschen",
+            "en": "people close to you"
+          }
+        },
+        {
+          "targetText": "déçoit",
+          "lemma": "décevoir",
+          "kind": "verb",
+          "base": {
+            "de": "enttäuscht",
+            "en": "disappoints"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "formation",
+            "mettre",
+            "pratique"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "toutefois",
+            "train",
+            "proches"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "bail",
+            "revenir",
+            "déçoit"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "toutefois",
+        "familyKey": "toutefois",
+        "surface": "toutefois",
+        "turnIndex": 3,
+        "pos": "connector",
+        "example": {
+          "targetText": "Le trajet est long ; toutefois, il reste compatible avec des visites régulières.",
+          "base": {
+            "de": "Die Fahrt ist lang; allerdings bleibt sie mit regelmäßigen Besuchen vereinbar.",
+            "en": "The journey is long; however, regular visits are still feasible."
+          }
+        },
+        "base": {
+          "de": "allerdings / jedoch",
+          "en": "however"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "recommander-une-option",
+      "title": {
+        "de": "Eine Hofgestaltung empfehlen",
+        "en": "Recommending a courtyard plan"
+      },
+      "situation": {
+        "de": "Im Bewohnerbeirat vergleichen Sie anhand einer fiktiven Kostenübersicht Parkplätze, einen Garten und einen Fahrradunterstand für den Hof.",
+        "en": "At a residents' committee meeting, you use a fictional cost sheet to compare parking, a garden, and a bicycle shelter for the courtyard."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "vous",
+          "vous",
+          "vous"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "conseil",
+          "role": {
+            "de": "Beiratsmitglied",
+            "en": "committee member"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ein Beiratsmitglied fragt: «Notre tableau compare parking, jardin et abri pour vélos. Quelle option vous paraît la plus raisonnable pour la cour ?»",
+        "en": "A committee member asks: «Notre tableau compare parking, jardin et abri pour vélos. Quelle option vous paraît la plus raisonnable pour la cour ?»"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "conseil",
+          "targetText": "Notre tableau compare parking, jardin et abri pour vélos. Quelle option vous paraît la plus raisonnable pour la cour ?",
+          "base": {
+            "de": "Unsere Tabelle vergleicht Parkplätze, Garten und Fahrradunterstand. Welche Variante erscheint Ihnen für den Hof am vernünftigsten?",
+            "en": "Our table compares parking, a garden, and a bicycle shelter. Which option seems most sensible for the courtyard?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "vous",
+          "targetText": "La moins chère des trois options prévoit un abri qui protège les vélos des habitants, tandis que celle du parking demande le plus gros investissement.",
+          "base": {
+            "de": "Die günstigste der drei Varianten sieht einen Unterstand vor, der die Fahrräder der Bewohner schützt; die Parkplatzvariante erfordert dagegen die größte Investition.",
+            "en": "The cheapest of the three options provides a shelter that protects residents' bicycles, whereas the parking option requires the largest investment."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "conseil",
+          "targetText": "La majorité des foyers possède pourtant une voiture. Pourquoi ne pas répondre d’abord à ce besoin ?",
+          "base": {
+            "de": "Die Mehrheit der Haushalte besitzt aber ein Auto. Warum sollten wir nicht zuerst diesen Bedarf decken?",
+            "en": "Most households own a car, though. Why not address that need first?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "vous",
+          "targetText": "Cela dit, le tableau ne prévoit que six places pour quarante foyers, alors que le local à vélos profiterait à davantage de personnes.",
+          "base": {
+            "de": "Allerdings sieht die Tabelle nur sechs Stellplätze für vierzig Haushalte vor, während der Fahrradbereich mehr Menschen zugutekäme.",
+            "en": "That said, the table provides only six spaces for forty households, whereas the bicycle area would benefit more people."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "conseil",
+          "targetText": "Il nous faut maintenant une recommandation précise, avec une proposition pour le budget qui restera disponible.",
+          "base": {
+            "de": "Wir brauchen jetzt eine konkrete Empfehlung und einen Vorschlag für das verbleibende Budget.",
+            "en": "We now need a specific recommendation and a proposal for the remaining budget."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "vous",
+          "targetText": "Pour ces raisons, je préconise un abri pour vélos ; le budget restant permettrait aussi quelques bacs de plantation, selon notre tableau.",
+          "base": {
+            "de": "Deshalb empfehle ich einen Fahrradunterstand; laut unserer Tabelle würde das übrige Budget auch für einige Pflanzkübel reichen.",
+            "en": "For those reasons, I recommend a bicycle shelter; our table shows that the remaining budget could also cover a few planters."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "La moins chère des trois options ",
+        "chunks": [
+          "prévoit",
+          "un abri",
+          "qui protège",
+          "les vélos des habitants,",
+          "tandis que"
+        ],
+        "distractors": [
+          "dont la toiture",
+          "aux vélos des habitants"
+        ],
+        "frameSuffix": " celle du parking demande le plus gros investissement."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", le tableau ne prévoit que six places pour quarante foyers, alors que le local à vélos "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " à davantage de personnes."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Cela dit",
+            "acceptedAnswers": [
+              "Cela dit"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Cela dit",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "profiterait",
+            "acceptedAnswers": [
+              "profiterait"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "profiter, le local à vélos, Konditional Präsens",
+              "en": "profiter, le local à vélos, present conditional"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", je "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " un abri pour vélos ; le budget restant permettrait aussi quelques bacs de plantation, selon notre tableau."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Pour ces raisons",
+            "acceptedAnswers": [
+              "Pour ces raisons"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Pour ces raisons",
+              "Malgré",
+              "Au lieu de",
+              "Par rapport à"
+            ]
+          },
+          {
+            "answer": "préconise",
+            "acceptedAnswers": [
+              "préconise",
+              "preconise"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "préconiser, je, Präsens Indikativ",
+              "en": "préconiser, je, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "La moins chère des trois options prévoit un abri qui ",
+        "answer": "protège",
+        "acceptedAnswers": [
+          "protège",
+          "protege",
+          "abrite"
+        ],
+        "after": " les vélos des habitants, tandis que celle du parking demande le plus gros investissement.",
+        "fallbackChoices": [
+          "protège",
+          "protéger",
+          "protégeons",
+          "protégeant"
+        ]
+      },
+      "pattern": {
+        "moveType": "conclude",
+        "label": {
+          "de": "Eine Empfehlung an die Abwägung anbinden",
+          "en": "Linking a recommendation to the comparison"
+        },
+        "rule": {
+          "de": "Pour ces raisons verknüpft die Abwägung mit je préconise, das eine begründete Empfehlung ausdrückt, ohne eine Entscheidung für alle zu behaupten.",
+          "en": "Pour ces raisons links the comparison to je préconise, which gives a reasoned recommendation without claiming to decide for everyone."
+        },
+        "examples": [
+          {
+            "targetText": "Pour ces raisons, je préconise un abri pour vélos ; le budget restant permettrait aussi quelques bacs de plantation, selon notre tableau.",
+            "base": {
+              "de": "Deshalb empfehle ich einen Fahrradunterstand; laut unserer Tabelle bliebe auch Geld für einige Pflanzkübel.",
+              "en": "For those reasons, I recommend a bicycle shelter; according to our table, some money would remain for planters."
+            },
+            "highlights": [
+              "Pour ces raisons",
+              "je préconise"
+            ]
+          },
+          {
+            "targetText": "Pour ces raisons, je préconise la solution la moins coûteuse, avec une réserve pour son entretien.",
+            "base": {
+              "de": "Deshalb empfehle ich die günstigste Lösung mit einer Rücklage für ihre Wartung.",
+              "en": "For those reasons, I recommend the least expensive solution, with a reserve for its upkeep."
+            },
+            "highlights": [
+              "Pour ces raisons",
+              "je préconise"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "tandis que",
+          "kind": "connector",
+          "base": {
+            "de": "während hingegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "pour ces raisons",
+          "kind": "frame",
+          "base": {
+            "de": "aus diesen Gründen",
+            "en": "for these reasons"
+          }
+        },
+        {
+          "targetText": "préconise",
+          "lemma": "préconiser",
+          "kind": "verb",
+          "base": {
+            "de": "empfehle / befürworte",
+            "en": "recommend / advocate"
+          }
+        },
+        {
+          "targetText": "abri",
+          "kind": "noun",
+          "base": {
+            "de": "Unterstand",
+            "en": "shelter"
+          }
+        },
+        {
+          "targetText": "investissement",
+          "kind": "noun",
+          "base": {
+            "de": "Investition",
+            "en": "investment"
+          }
+        },
+        {
+          "targetText": "foyers",
+          "lemma": "foyer",
+          "kind": "noun",
+          "base": {
+            "de": "Haushalte",
+            "en": "households"
+          }
+        },
+        {
+          "targetText": "bacs",
+          "lemma": "bac",
+          "kind": "noun",
+          "base": {
+            "de": "Kübel / Behälter",
+            "en": "containers / planters"
+          }
+        },
+        {
+          "targetText": "plantation",
+          "kind": "noun",
+          "base": {
+            "de": "Bepflanzung",
+            "en": "planting"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "abri",
+            "protège",
+            "vélos"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "six",
+            "foyers",
+            "profiterait"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "préconise",
+            "budget",
+            "bacs"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "préconiser",
+        "familyKey": "préconiser",
+        "surface": "préconise",
+        "turnIndex": 5,
+        "pos": "verb",
+        "example": {
+          "targetText": "Je préconise une solution qui garde une réserve pour les dépenses imprévues.",
+          "base": {
+            "de": "Ich empfehle eine Lösung, die eine Rücklage für unerwartete Ausgaben lässt.",
+            "en": "I recommend an option that keeps a reserve for unexpected expenses."
+          }
+        },
+        "base": {
+          "de": "empfehlen / befürworten",
+          "en": "recommend / advocate"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

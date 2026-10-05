@@ -1,0 +1,1265 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/french/p1.json": "418a42996466b2241dfcda3e8caa62c8444d59d66671de96311c8596b20d475e",
+    "frontend/content-drafts/b2-2026-10/french/p2.json": "c54dfc2ad4b5dd6021df6a7da19bb58bf6a2959543513b1099a9a64a99178f5c"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/french/specification.json": "36d5048813a42f0d8017d0be33259d78d24c47e857d0344346bb3c4a271cdacf",
+    "frontend/content-drafts/b2-2026-10/latin-prerequisites.json": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+    "frontend/content-drafts/b1-2026-10/french-plan.json": "07f7ee247ffe0babec3ae5d01a5115cba60b48c7ace0175e04048d8b85843380"
+  },
+  "sourceCanonicalization": {
+    "specificationOriginalSha256": "d01d7f24143ade1107c8dbe1f93dc49b91f94ed853df7b312d85da3b9833a51d",
+    "specificationStagedSha256": "36d5048813a42f0d8017d0be33259d78d24c47e857d0344346bb3c4a271cdacf",
+    "transformation": "CRLF to LF only; exact forward and reverse byte equality asserted. Lesson bytes unchanged."
+  },
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "FR-B2-C06",
+      "severity": "BLOCKER",
+      "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+      "line": 92,
+      "category": "runtime-publication",
+      "canonicalSpokenBlocker": false,
+      "finding": "No six-turn B2 runtime integration is present. GuidedLessonLevel remains A1/A2/B1 and the existing episode types remain four-turn B1. The reviewed French B2 source cannot yet be published as a verified learner flow.",
+      "evidence": "Confirmed again in guidedLessons.ts:92. Existing B1 ComplicationStep.tsx:303–305 displays blank.cue; this report does not claim B1 hides cues. No rendered B2 evidence demonstrates the 38 bilingual form cues, 60 fixed choice sets, synthesis, three speech turns or their accepted-answer behavior.",
+      "fix": "Implement and visually verify the actual six-turn B2 flow in de and en, including every form cue, fixed choice set, authored acceptance list, synthesis and all three speech turns, before publication. Retain canonical content approval separately.",
+      "status": "OPEN"
+    }
+  ],
+  "scope": "Exact canonical spoken content for local TTS only. Publication findings retained; no native-human, listening or production approval.",
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 complete twenty-lesson reads and exact arbitration"
+  },
+  "reviewChain": [
+    {
+      "batch": "B2_FRENCH_P1_P2",
+      "rawProviderReviewSha256": "a0a3487746887d9cf213cf8542211bdda9ab5ae46c2a4744a720eb01c4b36346",
+      "exactEdits": 45,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "french-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "all six turns per lesson read with both bases; token bounds (them 6–20, you1 14–26, you2 12–24, you3 10–22) hold in every lesson; build/cloze/synthesis/recall reconstruct; every choice set tested in its visible frame (Malgré/Au lieu de/Par rapport à/En raison de wrong options all break syntax); form blanks carry visible cues; chip orders re-tried (punctuation never the sole cue); register constant (tu only L5/L7, no leakage either way); learner lines gender-neutral (no je suis+adj, no être-participle on speaker); numbers in words; trophies on declared you turns, ledger match, single tokens; pattern examples reuse a you turn and rules state only what examples show; staging cumulative (toutefois L9 licensed by 7–10 range); captions quote only turn 0",
+            "remainingConcerns": "L4 you2 ‘mes deux journées annuelles’ is comprehensible but unidiomatic (natural: ‘deux journées par an’), left for native review since it sits in a non-blank cloze segment and a pattern example; L6 interlocutor and L9/L10 roles differ in gender/title from the spec sheet (no rule breach); L8 you3 links with ‘:’ not the requiredCarrier ‘parce que’ (causal link still present); nativeStatus stays unreviewed, verdict pending, flags false; no fr-FR offline gate exists, author structural pass is scratch-only"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "same full-field read; puisque used only for causes the interlocutor has just acknowledged (L1, L2, L3, L9); de sorte que/étant donné que + indicatif; pronominal passive and être-passives only with inanimate subjects; the only learner subjunctive is the licensed L9 ‘l’objectif n’est pas que vous vendiez … mais que … se fasse’; every scene fact attributed to affiche/règlement/avis/brochure/site; L6 and L8 refuse to promise outcomes; precision requests answered with more precise content; terms attested in dialogue or pattern examples; speak tokens whole tokens of their turn; trophies match ledger",
+            "remainingConcerns": "three frame blanks (L2 synthesis, L3 cloze, L6 synthesis) are the 5-token carrier ‘c’est pour cette raison que’; the contract sets no blank-token cap but the existing EN/ES gate caps frame blanks at 4 tokens, so the fr-FR rule table (FR-B2-U1) must either raise the cap or these blanks must be shortened before any gate run; L8 cloze move blank ‘Non’ is structurally valid but trivially easy; L5 you2 repeats ‘fournisseur’ twice (natural but heavy); L2 ‘aliments/brun’ acceptable regional-neutral variants of the spec’s ‘restes/marron’; nativeStatus unreviewed"
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "No independent findings supplied (pre-review Fable read)",
+            "decision": "none to arbitrate",
+            "reason": "independent review has not run; nothing here is an independent approval"
+          },
+          {
+            "finding": "Author report: STRUCTURAL_PASS_FRENCH_SCRATCH_ONLY with zero errors",
+            "decision": "accepted as structural only",
+            "reason": "the helper extends the EN/ES Latin schema; it certifies reconstruction, bounds and authored variants, not idiom, staging, chip uniqueness or choice validity; note it evidently did not apply the Latin 4-token frame-blank cap to ‘c’est pour cette raison que’ (5 tokens), which an fr gate must decide"
+          },
+          {
+            "finding": "Author flag: cues and choice sets are visible exercise requirements; publication needs a renderer showing them",
+            "decision": "accepted",
+            "reason": "no B2 renderer exists; every form blank here is accepted only on the premise that its authored cue is displayed; this stays a publication hold, not a text defect"
+          },
+          {
+            "finding": "Author flag: reviewers must attempt alternate chip orders; scratch checks do not prove uniqueness",
+            "decision": "accepted and acted on",
+            "reason": "P2 L7 had a mobile pair (‘sans salle,’ / ‘pas de date,’ swap yields a grammatical sentence with only punctuation as cue); focus regrouped; all other builds re-tried and found order-fixed by agreement, clitics or clause scope"
+          },
+          {
+            "finding": "Author flag: ‘toutefois’ productive in P1 7–10 per Fable amendment",
+            "decision": "accepted",
+            "reason": "spec staging table lists toutefois productive in range 7–10; L9 blank is licensed by stage, not by lesson exception; toutefois/néanmoins never co-offered"
+          },
+          {
+            "finding": "Author flag: open recall blanks accept listed synonyms only",
+            "decision": "adapted",
+            "reason": "several open recall blanks omitted common taught-level synonyms that fit the visible frame (offrir/donner, reçois, quitté, vient, etc.); added explicitly with authored variants rather than relying on hidden base translations"
+          }
+        ],
+        "edits": [
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/0/recall/acceptedAnswers",
+            "oldValue": [
+              "consacrer",
+              "dédier",
+              "dedier",
+              "réserver",
+              "reserver",
+              "accorder"
+            ],
+            "newValue": [
+              "consacrer",
+              "dédier",
+              "dedier",
+              "réserver",
+              "reserver",
+              "accorder",
+              "offrir",
+              "donner"
+            ],
+            "reason": "‘une heure que je pourrais offrir/donner à mes proches’ is equally valid in the visible frame"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/1/recall/acceptedAnswers",
+            "oldValue": [
+              "bouleverser",
+              "perturber",
+              "désorganiser",
+              "desorganiser"
+            ],
+            "newValue": [
+              "bouleverser",
+              "perturber",
+              "désorganiser",
+              "desorganiser",
+              "compromettre"
+            ],
+            "reason": "‘risquent de compromettre un horaire’ valid in frame"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/3/recall/acceptedAnswers",
+            "oldValue": [
+              "acquérir",
+              "acquerir",
+              "acheter",
+              "obtenir"
+            ],
+            "newValue": [
+              "acquérir",
+              "acquerir",
+              "acheter",
+              "obtenir",
+              "posséder",
+              "posseder"
+            ],
+            "reason": "‘payer pour posséder cette ponceuse’ valid"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/4/recall/acceptedAnswers",
+            "oldValue": [
+              "ressemble",
+              "correspond"
+            ],
+            "newValue": [
+              "ressemble",
+              "correspond",
+              "s’apparente",
+              "s'apparente"
+            ],
+            "reason": "‘qui s’apparente à celui du bureau’ valid; apostrophe variant authored"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/4/dialogue/5/targetText",
+            "oldValue": "Pour ces raisons, je choisirais la cabane : notre devis reste moins cher ; je garderais la ville pour un autre week-end.",
+            "newValue": "Pour ces raisons, je choisirais la cabane : son devis reste moins cher ; je garderais la ville pour un autre week-end.",
+            "reason": "turn 4 says both quotes must be compared; ‘notre devis’ does not say which; ‘son devis’ anchors the cabin’s quote; 20 tokens"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/4/dialogue/5/base/de",
+            "oldValue": "Deshalb würde ich die Hütte wählen: Unser Angebot ist günstiger; die Stadt würde ich für ein anderes Wochenende aufheben.",
+            "newValue": "Deshalb würde ich die Hütte wählen: Ihr Angebot ist günstiger; die Stadt würde ich für ein anderes Wochenende aufheben.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/4/dialogue/5/base/en",
+            "oldValue": "For those reasons, I'd choose the cabin: our quote is cheaper; I'd save the city for another weekend.",
+            "newValue": "For those reasons, I'd choose the cabin: its quote is cheaper; I'd save the city for another weekend.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/4/synthesis/segments/3/text",
+            "oldValue": " la cabane : notre devis reste moins cher ; je garderais la ville pour un autre week-end.",
+            "newValue": " la cabane : son devis reste moins cher ; je garderais la ville pour un autre week-end.",
+            "reason": "synthesis must reconstruct dialogue[5]"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/5/dialogue/1/targetText",
+            "oldValue": "D’un côté, vous attirez une clientèle qui ne porte plus d’espèces ; de l’autre, chaque paiement entraîne des frais qui réduisent votre marge.",
+            "newValue": "D’un côté, vous attirez une clientèle qui ne paie plus en espèces ; de l’autre, chaque paiement entraîne des frais qui réduisent votre marge.",
+            "reason": "‘porter des espèces’ without ‘sur soi’ is unidiomatic; ‘ne paie plus en espèces’ is natural and keeps the contrast; 23 tokens"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/5/dialogue/1/base/de",
+            "oldValue": "Einerseits gewinnen Sie Kundschaft, die kein Bargeld mehr mitführt; andererseits verursacht jede Zahlung Gebühren, die Ihre Marge verringern.",
+            "newValue": "Einerseits gewinnen Sie Kundschaft, die nicht mehr bar bezahlt; andererseits verursacht jede Zahlung Gebühren, die Ihre Marge verringern.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/5/dialogue/1/base/en",
+            "oldValue": "On one hand, you attract customers who no longer carry cash; on the other, each payment brings fees that reduce your margin.",
+            "newValue": "On one hand, you attract customers who no longer pay in cash; on the other, each payment brings fees that reduce your margin.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/5/build/chunks",
+            "oldValue": [
+              "attirez",
+              "une clientèle",
+              "qui ne porte plus",
+              "d’espèces ;",
+              "de l’autre,"
+            ],
+            "newValue": [
+              "attirez",
+              "une clientèle",
+              "qui ne paie plus",
+              "en espèces ;",
+              "de l’autre,"
+            ],
+            "reason": "build reconstruction; focus 9 tokens, 5 chunks of ≤4 tokens, order fixed (‘de l’autre,’ must precede the suffix clause)"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/5/recall/after",
+            "oldValue": " une clientèle qui ne porte plus d’espèces ; de l’autre, chaque paiement entraîne des frais qui réduisent votre marge.",
+            "newValue": " une clientèle qui ne paie plus en espèces ; de l’autre, chaque paiement entraîne des frais qui réduisent votre marge.",
+            "reason": "recall reconstruction"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/5/recall/acceptedAnswers",
+            "oldValue": [
+              "attirez",
+              "séduisez",
+              "seduisez"
+            ],
+            "newValue": [
+              "attirez",
+              "séduisez",
+              "seduisez",
+              "gagnez",
+              "touchez"
+            ],
+            "reason": "‘vous gagnez/touchez une clientèle’ valid in frame"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/5/speak/0/requiredTokens",
+            "oldValue": [
+              "attirez",
+              "clientèle",
+              "porte"
+            ],
+            "newValue": [
+              "attirez",
+              "clientèle",
+              "espèces"
+            ],
+            "reason": "‘porte’ no longer a token of turn 1; two tokens stay inside the build focus"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/6/dialogue/1/targetText",
+            "oldValue": "Je te conseillerais le cours parce qu’on t’oblige à formuler une réponse que tu dois construire sans abandonner dès la première difficulté.",
+            "newValue": "Je te conseillerais le cours parce qu’on t’oblige à parler, tandis que l’appli te laisse tranquille dès que c’est difficile.",
+            "reason": "original is redundant (‘formuler une réponse que tu dois construire’) and drops the spec requiredCarrier ‘parce que … tandis que’ (recycle of P1-3 contrast); rewrite restores the carrier in natural friend register; 20 tokens"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/6/dialogue/1/base/de",
+            "oldValue": "Ich würde dir den Kurs empfehlen, weil du dort eine Antwort formulieren musst, ohne bei der ersten Schwierigkeit aufzugeben.",
+            "newValue": "Ich würde dir den Kurs empfehlen, weil man dich dort zum Sprechen zwingt, während die App dich in Ruhe lässt, sobald es schwierig wird.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/6/dialogue/1/base/en",
+            "oldValue": "I'd recommend the course because it makes you formulate a response you have to construct without giving up at the first difficulty.",
+            "newValue": "I'd recommend the course because it makes you speak, whereas the app leaves you alone as soon as it gets difficult.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/6/build",
+            "oldValue": {
+              "framePrefix": "Je te conseillerais le cours parce ",
+              "chunks": [
+                "qu’on t’oblige",
+                "à formuler",
+                "une réponse",
+                "que tu dois",
+                "construire sans abandonner"
+              ],
+              "distractors": [
+                "dont tu parles",
+                "à une réponse"
+              ],
+              "frameSuffix": " dès la première difficulté."
+            },
+            "newValue": {
+              "framePrefix": "Je te conseillerais le cours parce ",
+              "chunks": [
+                "qu’on t’oblige",
+                "à parler,",
+                "tandis que",
+                "l’appli",
+                "te laisse tranquille"
+              ],
+              "distractors": [
+                "tandis qu’elle",
+                "dont on t’oblige"
+              ],
+              "frameSuffix": " dès que c’est difficile."
+            },
+            "reason": "reconstructs new turn 1; focus 10 tokens; 5 chunks ≤4 tokens; order fixed by connector position and sentence-final period; distractors distinct after normalization and cannot replace a required chunk"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/6/recall",
+            "oldValue": {
+              "before": "Je te conseillerais le cours parce qu’on t’oblige à ",
+              "answer": "formuler",
+              "acceptedAnswers": [
+                "formuler",
+                "préparer",
+                "preparer",
+                "élaborer",
+                "elaborer"
+              ],
+              "after": " une réponse que tu dois construire sans abandonner dès la première difficulté.",
+              "fallbackChoices": [
+                "formuler",
+                "formulé",
+                "formulant",
+                "formules"
+              ]
+            },
+            "newValue": {
+              "before": "Je te conseillerais le cours parce qu’on t’oblige à ",
+              "answer": "parler",
+              "acceptedAnswers": [
+                "parler",
+                "répondre",
+                "repondre",
+                "participer",
+                "t’exprimer",
+                "t'exprimer"
+              ],
+              "after": ", tandis que l’appli te laisse tranquille dès que c’est difficile.",
+              "fallbackChoices": [
+                "parler",
+                "parlé",
+                "parlant",
+                "parlons"
+              ]
+            },
+            "reason": "recall reconstructs new turn 1; synonyms valid after ‘on t’oblige à’; only ‘parler’ fits among fallbacks"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/6/speak/0",
+            "oldValue": {
+              "turnIndex": 1,
+              "requiredTokens": [
+                "formuler",
+                "réponse",
+                "construire"
+              ],
+              "profile": "b2-long"
+            },
+            "newValue": {
+              "turnIndex": 1,
+              "requiredTokens": [
+                "parler",
+                "tranquille",
+                "difficile"
+              ],
+              "profile": "b2-long"
+            },
+            "reason": "whole tokens of new turn 1 (‘l’appli’ is one token, so ‘appli’ is not used); two inside focus"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/6/terms/3",
+            "oldValue": {
+              "targetText": "formuler",
+              "kind": "verb",
+              "base": {
+                "de": "formulieren",
+                "en": "formulate"
+              }
+            },
+            "newValue": {
+              "targetText": "tandis que",
+              "kind": "connector",
+              "base": {
+                "de": "während hingegen",
+                "en": "whereas"
+              }
+            },
+            "reason": "‘formuler’ no longer attested; restored carrier is attested in turn 1"
+          },
+          {
+            "file": "french-b2-p1.json",
+            "jsonPointer": "/lessons/6/terms/4",
+            "oldValue": {
+              "targetText": "abandonner",
+              "kind": "verb",
+              "base": {
+                "de": "aufgeben",
+                "en": "give up"
+              }
+            },
+            "newValue": {
+              "targetText": "difficulté",
+              "kind": "noun",
+              "base": {
+                "de": "Schwierigkeit",
+                "en": "difficulty"
+              }
+            },
+            "reason": "‘abandonner’ no longer attested; ‘difficulté’ attested in them turn 2; lexical term count stays ≥3"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/3/recall/acceptedAnswers",
+            "oldValue": [
+              "cumules",
+              "accumules",
+              "gagnes",
+              "obtiens"
+            ],
+            "newValue": [
+              "cumules",
+              "accumules",
+              "gagnes",
+              "obtiens",
+              "reçois",
+              "recois"
+            ],
+            "reason": "‘Tu reçois un point par euro dépensé’ valid; cedilla-stripped variant authored"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/4/recall/acceptedAnswers",
+            "oldValue": [
+              "résilié",
+              "resilie",
+              "rompu",
+              "annulé",
+              "annule"
+            ],
+            "newValue": [
+              "résilié",
+              "resilie",
+              "rompu",
+              "annulé",
+              "annule",
+              "quitté",
+              "quitte"
+            ],
+            "reason": "turn 0 itself uses ‘quitté votre ancien contrat’; valid in frame"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/5/dialogue/1/targetText",
+            "oldValue": "D’après cet avis, ça se conteste en ligne, étant donné que leur formulaire demande un ticket qui permet de retrouver votre passage.",
+            "newValue": "D’après cet avis, ça se conteste en ligne, étant donné que leur site propose un formulaire qui demande un ticket et une photo.",
+            "reason": "original cause (form asks for a ticket) does not explain the conclusion (contested online); spec causal chain restored: online because the site hosts the form; 23 tokens; stays attributed to the avis"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/5/dialogue/1/base/de",
+            "oldValue": "Laut diesem Bescheid lässt sich das online beanstanden, da ihr Formular nach einem Ticket fragt, mit dem sich Ihr Besuch nachvollziehen lässt.",
+            "newValue": "Laut diesem Bescheid lässt sich das online beanstanden, da ihre Website ein Formular anbietet, das ein Ticket und ein Foto verlangt.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/5/dialogue/1/base/en",
+            "oldValue": "According to this notice, it can be challenged online, since their form asks for a ticket that lets them locate your visit.",
+            "newValue": "According to this notice, it can be challenged online, since their site offers a form that asks for a ticket and a photo.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/5/build",
+            "oldValue": {
+              "framePrefix": "D’après cet avis, ça se conteste en ligne, étant donné que leur formulaire ",
+              "chunks": [
+                "demande",
+                "un ticket",
+                "qui permet",
+                "de retrouver",
+                "votre passage."
+              ],
+              "distractors": [
+                "dont la date",
+                "à votre passage"
+              ],
+              "frameSuffix": ""
+            },
+            "newValue": {
+              "framePrefix": "D’après cet avis, ça se conteste en ligne, étant donné que leur site ",
+              "chunks": [
+                "propose",
+                "un formulaire",
+                "qui demande",
+                "un ticket",
+                "et une photo."
+              ],
+              "distractors": [
+                "dont la date",
+                "à un ticket"
+              ],
+              "frameSuffix": ""
+            },
+            "reason": "reconstructs new turn 1; focus 9 tokens; the only grammatical permutation (‘un ticket qui demande un formulaire’) is semantically incoherent; distractors break syntax"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/5/recall",
+            "oldValue": {
+              "before": "D’après cet avis, ça se conteste en ligne, étant donné que leur formulaire demande un ticket qui permet de ",
+              "answer": "retrouver",
+              "acceptedAnswers": [
+                "retrouver",
+                "vérifier",
+                "verifier",
+                "confirmer",
+                "identifier"
+              ],
+              "after": " votre passage.",
+              "fallbackChoices": [
+                "retrouver",
+                "retrouvé",
+                "retrouvent",
+                "retrouvant"
+              ]
+            },
+            "newValue": {
+              "before": "D’après cet avis, ça se conteste en ligne, étant donné que leur site ",
+              "answer": "propose",
+              "acceptedAnswers": [
+                "propose",
+                "contient",
+                "comporte",
+                "fournit",
+                "offre"
+              ],
+              "after": " un formulaire qui demande un ticket et une photo.",
+              "fallbackChoices": [
+                "propose",
+                "proposer",
+                "proposent",
+                "proposant"
+              ]
+            },
+            "reason": "recall reconstructs new turn 1; synonyms valid with ‘leur site … un formulaire’"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/5/speak/0",
+            "oldValue": {
+              "turnIndex": 1,
+              "requiredTokens": [
+                "conteste",
+                "ticket",
+                "retrouver"
+              ],
+              "profile": "b2-long"
+            },
+            "newValue": {
+              "turnIndex": 1,
+              "requiredTokens": [
+                "conteste",
+                "formulaire",
+                "ticket"
+              ],
+              "profile": "b2-long"
+            },
+            "reason": "whole tokens of new turn 1; two inside focus; trophy surface kept"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/5/pattern/examples/0/targetText",
+            "oldValue": "D’après cet avis, ça se conteste en ligne, étant donné que leur formulaire demande un ticket qui permet de retrouver votre passage.",
+            "newValue": "D’après cet avis, ça se conteste en ligne, étant donné que leur site propose un formulaire qui demande un ticket et une photo.",
+            "reason": "pattern example must equal the you turn; highlights ‘D’après cet avis’ and ‘ça se conteste’ unchanged"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/5/pattern/examples/0/base/de",
+            "oldValue": "Laut diesem Bescheid kann man online widersprechen; das Formular verlangt ein Ticket zur Zuordnung des Besuchs.",
+            "newValue": "Laut diesem Bescheid kann man online widersprechen; die Website bietet ein Formular, das ein Ticket und ein Foto verlangt.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/5/pattern/examples/0/base/en",
+            "oldValue": "This notice allows an online challenge; its form asks for a ticket to identify the visit.",
+            "newValue": "This notice allows an online challenge; the site offers a form asking for a ticket and a photo.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/6/build",
+            "oldValue": {
+              "framePrefix": "Le projet a été abandonné parce qu’un ",
+              "chunks": [
+                "retard",
+                "s’est répercuté",
+                "sur toute la préparation :",
+                "sans salle,",
+                "pas de date,"
+              ],
+              "distractors": [
+                "dont la préparation",
+                "de la préparation"
+              ],
+              "frameSuffix": " donc pas d’achats."
+            },
+            "newValue": {
+              "framePrefix": "Le projet a été ",
+              "chunks": [
+                "abandonné",
+                "parce qu’un retard",
+                "s’est répercuté",
+                "sur toute",
+                "la préparation :"
+              ],
+              "distractors": [
+                "dont la préparation",
+                "de la préparation"
+              ],
+              "frameSuffix": " sans salle, pas de date, donc pas d’achats."
+            },
+            "reason": "‘sans salle,’ / ‘pas de date,’ were mobile (swap yields a grammatical sentence, only commas cue order); the chain moves into the frame suffix; new focus 10 tokens, order fixed by clause structure; turn 1 text unchanged; speak tokens ‘répercuté’, ‘préparation’ remain in focus"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/7/dialogue/1/targetText",
+            "oldValue": "Les créneaux sont publiés le lundi à huit heures, de sorte que la demande dépasse souvent avant midi les places qui restent disponibles.",
+            "newValue": "D’après cette affiche, les créneaux sont publiés le lundi à huit heures, de sorte que les places de la semaine partent souvent avant midi.",
+            "reason": "original result clause is awkward (‘dépasse souvent avant midi les places qui restent’) and states the Monday rule unattributed; rewrite attributes it to the affiche and uses the spec’s natural result; 23 tokens; passive inanimate + de sorte que kept; trophy surface ‘créneaux’ kept"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/7/dialogue/1/base/de",
+            "oldValue": "Die Termine werden montags um acht Uhr veröffentlicht; deshalb übersteigt die Nachfrage oft vor Mittag die noch verfügbaren Plätze.",
+            "newValue": "Laut diesem Aushang werden die Termine montags um acht Uhr veröffentlicht, sodass die Plätze der Woche oft vor Mittag weg sind.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/7/dialogue/1/base/en",
+            "oldValue": "The slots are published on Mondays at eight, so demand often exceeds the remaining places before noon.",
+            "newValue": "According to this notice, the slots are published on Mondays at eight, so the week's places are often gone before noon.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/7/build",
+            "oldValue": {
+              "framePrefix": "Les créneaux sont publiés le lundi à huit heures, de sorte que ",
+              "chunks": [
+                "la demande",
+                "dépasse souvent avant midi",
+                "les places",
+                "qui restent",
+                "disponibles."
+              ],
+              "distractors": [
+                "dont la demande",
+                "aux places"
+              ],
+              "frameSuffix": ""
+            },
+            "newValue": {
+              "framePrefix": "D’après cette affiche, les créneaux sont publiés le lundi à huit heures, ",
+              "chunks": [
+                "de sorte que",
+                "les places",
+                "de la",
+                "semaine",
+                "partent souvent avant midi."
+              ],
+              "distractors": [
+                "de sorte qu’elles",
+                "aux places"
+              ],
+              "frameSuffix": ""
+            },
+            "reason": "reconstructs new turn 1; focus 11 tokens; order fixed by connector position, noun-complement adjacency and final period; distractors distinct after normalization and break syntax"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/7/recall",
+            "oldValue": {
+              "before": "Les créneaux sont publiés le lundi à huit heures, de sorte que la demande ",
+              "answer": "dépasse",
+              "acceptedAnswers": [
+                "dépasse",
+                "depasse",
+                "excède",
+                "excede"
+              ],
+              "after": " souvent avant midi les places qui restent disponibles.",
+              "fallbackChoices": [
+                "dépasse",
+                "dépasser",
+                "dépassant",
+                "dépassent"
+              ]
+            },
+            "newValue": {
+              "before": "D’après cette affiche, les créneaux sont publiés le lundi à huit heures, de sorte que les places de la semaine ",
+              "answer": "partent",
+              "acceptedAnswers": [
+                "partent",
+                "disparaissent",
+                "s’envolent",
+                "s'envolent"
+              ],
+              "after": " souvent avant midi.",
+              "fallbackChoices": [
+                "partent",
+                "partir",
+                "parti",
+                "partant"
+              ]
+            },
+            "reason": "recall reconstructs new turn 1; synonyms valid with ‘les places … souvent avant midi’; apostrophe variant authored"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/7/speak/0",
+            "oldValue": {
+              "turnIndex": 1,
+              "requiredTokens": [
+                "créneaux",
+                "demande",
+                "disponibles"
+              ],
+              "profile": "b2-long"
+            },
+            "newValue": {
+              "turnIndex": 1,
+              "requiredTokens": [
+                "créneaux",
+                "places",
+                "semaine"
+              ],
+              "profile": "b2-long"
+            },
+            "reason": "whole tokens of new turn 1; two inside focus; trophy surface kept"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/7/terms/4",
+            "oldValue": {
+              "targetText": "dépasse",
+              "lemma": "dépasser",
+              "kind": "verb",
+              "base": {
+                "de": "übersteigt",
+                "en": "exceeds"
+              }
+            },
+            "newValue": {
+              "targetText": "accueil",
+              "kind": "noun",
+              "base": {
+                "de": "Empfang",
+                "en": "reception"
+              }
+            },
+            "reason": "‘dépasse’ no longer attested; ‘accueil’ attested in turn 5 and pattern example 2"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/7/terms/5",
+            "oldValue": {
+              "targetText": "disponibles",
+              "lemma": "disponible",
+              "kind": "adjective",
+              "base": {
+                "de": "verfügbar",
+                "en": "available"
+              }
+            },
+            "newValue": {
+              "targetText": "téléphone",
+              "kind": "noun",
+              "base": {
+                "de": "Telefon",
+                "en": "phone"
+              }
+            },
+            "reason": "‘disponibles’ no longer attested in dialogue or pattern examples (trophy example does not count); ‘téléphone’ attested in turns 3 and 5"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/8/recall/acceptedAnswers",
+            "oldValue": [
+              "réduirait",
+              "reduirait",
+              "raccourcirait",
+              "diminuerait"
+            ],
+            "newValue": [
+              "réduirait",
+              "reduirait",
+              "raccourcirait",
+              "diminuerait",
+              "limiterait"
+            ],
+            "reason": "‘limiterait les files’ valid in frame"
+          },
+          {
+            "file": "french-b2-p2.json",
+            "jsonPointer": "/lessons/9/recall/acceptedAnswers",
+            "oldValue": [
+              "découle",
+              "decoule",
+              "part",
+              "provient",
+              "résulte",
+              "resulte"
+            ],
+            "newValue": [
+              "découle",
+              "decoule",
+              "part",
+              "provient",
+              "résulte",
+              "resulte",
+              "vient"
+            ],
+            "reason": "‘Tout vient d’une plainte’ is the most common equivalent in the frame"
+          }
+        ],
+        "finalChecks": {
+          "reconstruction": "after edits: P1L5 synthesis = dialogue[5]; P1L6 build/recall = dialogue[1] (23 tokens, focus 9); P1L7 build/recall = dialogue[1] (20 tokens, focus 10); P2L6 build/recall/pattern example 0 = dialogue[1] (23 tokens, focus 9); P2L7 build = unchanged dialogue[1] (focus 10, suffix carries the sans/pas/donc chain); P2L8 build/recall = dialogue[1] (23 tokens, focus 11); all other exercises untouched and verified reconstructing",
+          "turnBounds": "every them turn 13–20 tokens (P2L2 you1 sits exactly at 26, P2L7 them0 exactly at 20); every you1 14–26, you2 12–24, you3 10–22",
+          "speakAndTerms": "all speak tokens are whole tokens of their turn, turn-1 sets keep ≥2 tokens in the build focus; all 160 terms attested in dialogue or a pattern example after the four term swaps; each lesson keeps ≥2 connector/frame and ≥3 lexical terms",
+          "trophies": "twenty allocations untouched; every surface a whole token of its declared you turn (P1L6 ‘encaisser’ turn 3, P1L7 ‘souplesse’ turn 3, P2L6 ‘conteste’ turn 1, P2L8 ‘créneaux’ turn 1 all preserved by the rewrites)",
+          "choicesAndDistractors": "every wrong choice re-read in its visible frame breaks syntax or meaning; toutefois/néanmoins, puisque/étant donné que, ainsi/donc never co-offered; no two choices collapse under accent/apostrophe/œ/spacing substitutions; no distractor equals a chunk after normalization",
+          "registerGender": "no tu-forms in vous you turns, no vous in tu you turns, constant plans; no je suis+adjective, no speaker être-participle, no seul(e) on the speaker; lui-même/seul agree only with inanimate or third-party nouns",
+          "orthographyNumbers": "no digits in any voiced text; all canonical lines use U+2019 elision and single U+0020 before ? ! : ; (byte-level NBSP check left to the fr gate)",
+          "reviewState": "all 20 lessons remain status draft, flags false, verdict pending, reviewers [], nativeStatus unreviewed; nothing here is an independent or native review",
+          "holds": "(1) fr-FR gate not implemented (FR-B2-U1): register token lists, accent/apostrophe/œ detectors, digit ban, and a frame-blank token cap decision for the three 5-token ‘c’est pour cette raison que’ blanks; (2) no B2 renderer: form cues and fixed choice sets must be displayed for the cue-dependent blanks to be constraining; (3) native-model/native-human review pending, including P1L4 ‘deux journées annuelles’ and the free clitic/adverb chip-order concern (FR-B2-U3); (4) source hashes a8c2…ffbe7 and e879…84f3 are superseded once these edits land and must be re-recorded; (5) no provider, TTS, git, or activation action is authorized by this read"
+        }
+      }
+    },
+    {
+      "batch": "B2_FRENCH_P1_P2_ARBITRATION_FABLE",
+      "rawProviderReviewSha256": "d483e87c48df8b9b84844392d7736c2c4746113188955ca14e39c11062f79fa3",
+      "exactEdits": 18,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Re-read all ten lessons end to end: dialogue couplings (build/recall vs you1, cloze vs you2, synthesis vs you3), pattern exact-turn reuse, term attestation under whole-token boundaries, speech tokens whole in their turns with ≥2 in build focus, trophy surfaces vs ledger, staging (toutefois 7–10, parce que productive from 1–3), register and gender safety, digits, U+2019, single U+0020 before ? : ;. Only L4 (style), L7 (term + chip order) and L8 (carrier) need edits; all other lessons confirmed clean.",
+            "remainingConcerns": "L7 regrouped build still admits only a clause-interposition reading that no native would produce without parenthetical commas; recorded as low residual, not a defect. Publication holds C06/C09 untouched."
+          },
+          {
+            "file": "reviewed-content/french-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Same full coupling and boundary read. Five-token c’est pour cette raison que verified in L2/L3/L6 only. L6 fallback collision and L8 time-adjunct mobility plus accueil boundary are the only defects; L5 double fournisseur judged heavy but correct French, retained.",
+            "remainingConcerns": "L8 chips now include the small chip de la (precedent: P1L8 à ce); acceptable under chunkRule, flagged for the native human reviewer’s taste only."
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "FR-B2-C01 difficulté unattested",
+            "decision": "ACCEPT; exact term correction",
+            "reason": "difficulté appears nowhere in dialogue or examples; replaced by horaires (lemma horaire), attested whole in you2 and you3 and central to the lesson’s flexibility argument; lexical term count stays ≥3."
+          },
+          {
+            "finding": "FR-B2-C02 propose/proposé collision",
+            "decision": "ACCEPT",
+            "reason": "Accent folding merges them; proposé replaced by proposent, distinct under all authored substitutions and ungrammatical after singular leur site."
+          },
+          {
+            "finding": "FR-B2-C03 P1L7 alternative clause order",
+            "decision": "ACCEPT; regroup, temporal clause into frame",
+            "reason": "dès que c’est difficile is intrinsically mobile, so it moves into frameSuffix. Prefix ends in parce (precedent P2L4 de sorte + qu’à…), chip qu’on t’oblige binds subject to verb, à parler is forced by obliger à, te laisse tranquille is glued, and the clitic te blocks postposed l’appli. 10 focus tokens, 5 chips, speech parler/tranquille in focus."
+          },
+          {
+            "finding": "FR-B2-C04 P2L8 movable avant midi",
+            "decision": "ACCEPT; regroup",
+            "reason": "avant midi fused into the 4-token verb chip; de la / semaine split keeps five chips and is fixed by determiner–noun dependency; no coherent alternative order remains without punctuation. 11 focus tokens, speech places/semaine in focus."
+          },
+          {
+            "finding": "FR-B2-C05 accueil inside l’accueil",
+            "decision": "ACCEPT; exact term correction, no gate rule change",
+            "reason": "Spec term rule says verbatim folded; the shared boundary contract treats l’accueil as one token and the gate fixture already models targetText l’hôtel with lemma hôtel. Term becomes l’accueil with lemma accueil; no substring matching introduced."
+          },
+          {
+            "finding": "FR-B2-C07 deux journées annuelles",
+            "decision": "ACCEPT; rewrite to par an",
+            "reason": "Native judgment: journées annuelles is administrative and odd for personal use; pour mes deux journées par an is the natural phrasing. All couplings edited (cloze text, pattern example and highlight, term annuelles→louer, speech token). Bases already say im Jahr / a year."
+          },
+          {
+            "finding": "FR-B2-C08 missing explicit parce que in P1L8 you3",
+            "decision": "ACCEPT; restore carrier",
+            "reason": "requiredCarrier names tout bien pesé … parce que; parce que is productive from range 1–3. Colon replaced by , parce qu’un …; synthesis segment and de/en bases edited; 20 tokens within 10–22."
+          },
+          {
+            "finding": "FR-B2-C06 no B2 runtime/cue/choice integration",
+            "decision": "PRESERVED as publication BLOCKER",
+            "reason": "Not a canonical speech defect; cannot be resolved by content edits. Remains open."
+          },
+          {
+            "finding": "FR-B2-C09 gate integration/typecheck evidence",
+            "decision": "PRESERVED as HIGH",
+            "reason": "Strict TS still unexecuted; nothing here claims a check ran."
+          },
+          {
+            "finding": "FR-B2-G01 answer-list ceiling",
+            "decision": "IMPLEMENT; scope = per authored acceptedAnswers list",
+            "reason": "Spec orthography text already states at most sixteen forms per blank/recall list; no spec amendment needed. Actual maxima: P1L1 recall 8, P2L5/L10 recall 7; all lists keep required accent/apostrophe variants, nothing truncated."
+          },
+          {
+            "finding": "FR-B2-G02 on-for-nous warning",
+            "decision": "IMPLEMENT as review warning FR-B2-ON-VOUS",
+            "reason": "Learner on (including qu’on/l’on) in a vous episode raises a warning requiring an acknowledgment that states a generic or nous referent; no regex claims semantics. No current vous learner turn contains on, so no source acknowledgment is added."
+          }
+        ],
+        "edits": [
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/6/terms/4",
+            "oldValue": {
+              "targetText": "difficulté",
+              "kind": "noun",
+              "base": {
+                "de": "Schwierigkeit",
+                "en": "difficulty"
+              }
+            },
+            "newValue": {
+              "targetText": "horaires",
+              "lemma": "horaire",
+              "kind": "noun",
+              "base": {
+                "de": "Arbeitszeiten / Stundenplan",
+                "en": "schedule / working hours"
+              }
+            },
+            "reason": "C01: attested whole in you2 and you3."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/6/build/framePrefix",
+            "oldValue": "Je te conseillerais le cours parce qu’on t’oblige à parler, ",
+            "newValue": "Je te conseillerais le cours parce ",
+            "reason": "C03 regroup."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/6/build/chunks",
+            "oldValue": [
+              "tandis que",
+              "l’appli",
+              "te laisse tranquille",
+              "dès que",
+              "c’est difficile."
+            ],
+            "newValue": [
+              "qu’on t’oblige",
+              "à parler,",
+              "tandis que",
+              "l’appli",
+              "te laisse tranquille"
+            ],
+            "reason": "C03: order fixed by subject–verb binding, obliger à, clitic placement; 10 focus tokens."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/6/build/distractors",
+            "oldValue": [
+              "tandis qu’elle",
+              "dès qu’il"
+            ],
+            "newValue": [
+              "tandis qu’elle",
+              "dont on t’oblige"
+            ],
+            "reason": "C03: distractor relevant to new focus and ungrammatical in frame."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/6/build/frameSuffix",
+            "oldValue": "",
+            "newValue": " dès que c’est difficile.",
+            "reason": "C03: mobile temporal clause moved into fixed frame."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/3/dialogue/3/targetText",
+            "oldValue": "Je reconnais que l’achat évite de réserver, mais pour mes deux journées annuelles, louer est plus rentable et m’épargne l’entretien.",
+            "newValue": "Je reconnais que l’achat évite de réserver, mais pour mes deux journées par an, louer est plus rentable et m’épargne l’entretien.",
+            "reason": "C07 native style; 21 tokens."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/3/cloze/segments/3/text",
+            "oldValue": " de réserver, mais pour mes deux journées annuelles, louer est plus rentable et m’épargne l’entretien.",
+            "newValue": " de réserver, mais pour mes deux journées par an, louer est plus rentable et m’épargne l’entretien.",
+            "reason": "C07 coupling."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/3/pattern/examples/0/targetText",
+            "oldValue": "Je reconnais que l’achat évite de réserver, mais pour mes deux journées annuelles, louer est plus rentable et m’épargne l’entretien.",
+            "newValue": "Je reconnais que l’achat évite de réserver, mais pour mes deux journées par an, louer est plus rentable et m’épargne l’entretien.",
+            "reason": "C07 exact learner-turn reuse."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/3/pattern/examples/0/highlights/1",
+            "oldValue": "mais pour mes deux journées annuelles",
+            "newValue": "mais pour mes deux journées par an",
+            "reason": "C07 highlight coupling."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/3/terms/7",
+            "oldValue": {
+              "targetText": "annuelles",
+              "lemma": "annuel",
+              "kind": "adjective",
+              "base": {
+                "de": "jährlich",
+                "en": "annual"
+              }
+            },
+            "newValue": {
+              "targetText": "louer",
+              "kind": "verb",
+              "base": {
+                "de": "mieten",
+                "en": "hire / rent"
+              }
+            },
+            "reason": "C07: annuelles no longer attested; louer attested whole in you2."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/3/speak/1/requiredTokens/1",
+            "oldValue": "annuelles",
+            "newValue": "louer",
+            "reason": "C07 speech coupling; whole token of turn 3."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/7/dialogue/5/targetText",
+            "oldValue": "Tout bien pesé, je choisis la seconde offre : un projet arrêté m’aura quand même appris à diriger une équipe.",
+            "newValue": "Tout bien pesé, je choisis la seconde offre, parce qu’un projet arrêté m’aura quand même appris à diriger une équipe.",
+            "reason": "C08 explicit carrier; 20 tokens."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/7/dialogue/5/base/de",
+            "oldValue": "Alles abgewogen, wähle ich das zweite Angebot: Auch ein eingestelltes Projekt wird mich gelehrt haben, ein Team zu führen.",
+            "newValue": "Alles abgewogen, wähle ich das zweite Angebot, weil mich auch ein eingestelltes Projekt gelehrt haben wird, ein Team zu führen.",
+            "reason": "C08 base coupling."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/7/dialogue/5/base/en",
+            "oldValue": "All things considered, I'll choose the second offer: even a discontinued project will have taught me to lead a team.",
+            "newValue": "All things considered, I'll choose the second offer, because even a discontinued project will have taught me to lead a team.",
+            "reason": "C08 base coupling."
+          },
+          {
+            "file": "reviewed-content/french-b2-p1.json",
+            "jsonPointer": "/lessons/7/synthesis/segments/1/text",
+            "oldValue": ", je choisis la seconde offre : un projet arrêté m’aura quand même ",
+            "newValue": ", je choisis la seconde offre, parce qu’un projet arrêté m’aura quand même ",
+            "reason": "C08 synthesis reconstruction."
+          },
+          {
+            "file": "reviewed-content/french-b2-p2.json",
+            "jsonPointer": "/lessons/5/recall/fallbackChoices/2",
+            "oldValue": "proposé",
+            "newValue": "proposent",
+            "reason": "C02: distinct after folding, wrong agreement with leur site."
+          },
+          {
+            "file": "reviewed-content/french-b2-p2.json",
+            "jsonPointer": "/lessons/7/build/chunks",
+            "oldValue": [
+              "de sorte que",
+              "les places",
+              "de la semaine",
+              "partent souvent",
+              "avant midi."
+            ],
+            "newValue": [
+              "de sorte que",
+              "les places",
+              "de la",
+              "semaine",
+              "partent souvent avant midi."
+            ],
+            "reason": "C04: time adjunct fused into verb chip; order fixed without punctuation; 11 focus tokens."
+          },
+          {
+            "file": "reviewed-content/french-b2-p2.json",
+            "jsonPointer": "/lessons/7/terms/4",
+            "oldValue": {
+              "targetText": "accueil",
+              "kind": "noun",
+              "base": {
+                "de": "Empfang",
+                "en": "reception"
+              }
+            },
+            "newValue": {
+              "targetText": "l’accueil",
+              "lemma": "accueil",
+              "kind": "noun",
+              "base": {
+                "de": "der Empfang",
+                "en": "the reception desk"
+              }
+            },
+            "reason": "C05: whole-token attestation in you3 and pattern examples; lemma carries the lexeme."
+          }
+        ],
+        "codeEdits": [
+          {
+            "file": "french-b2-gate/guidedFrenchB2Drafts.ts",
+            "oldValue": "const namedLongFrame = 'c’est pour cette raison que'",
+            "newValue": "const namedLongFrame = 'c’est pour cette raison que'\nconst warningNotes: Record<string, string> = {\n  'FR-B2-GROUP-VOUS': 'group vous needs human inspection',\n  'FR-B2-ON-VOUS': 'learner on in a vous episode needs a stated generic or nous referent',\n}",
+            "reason": "G02: per-code acknowledgment guidance."
+          },
+          {
+            "file": "french-b2-gate/guidedFrenchB2Drafts.ts",
+            "oldValue": "    check(accepted.includes(answer) && new Set(accepted).size === accepted.length, `${label}: invalid accepted answers`)",
+            "newValue": "    check(accepted.includes(answer) && new Set(accepted).size === accepted.length, `${label}: invalid accepted answers`)\n    check(accepted.length <= 16, `${label}: more than sixteen authored answers`)",
+            "reason": "G01: controlling ceiling per authored list."
+          },
+          {
+            "file": "french-b2-gate/guidedFrenchB2Drafts.ts",
+            "oldValue": "      else if (tokens(lower).some(t => ['vous','votre','vos'].includes(t))) warningCodes.add('FR-B2-GROUP-VOUS')",
+            "newValue": "      else if (tokens(lower).some(t => ['vous','votre','vos'].includes(t))) warningCodes.add('FR-B2-GROUP-VOUS')\n      // Learner on may be generic or stand for nous; this only raises the question for content review.\n      if (isYou && specLesson.register === 'vous' && tokens(lower).some(t => t === 'on' || t.endsWith('’on'))) warningCodes.add('FR-B2-ON-VOUS')",
+            "reason": "G02: explicit review warning."
+          },
+          {
+            "file": "french-b2-gate/guidedFrenchB2Drafts.ts",
+            "oldValue": "    for (const code of warningCodes) expect(lesson.review.acknowledgedWarnings.some(w => w.code === code && w.reason.trim().length >= 12), `Unacknowledged ${code}: group vous needs human inspection`)",
+            "newValue": "    for (const code of warningCodes) expect(lesson.review.acknowledgedWarnings.some(w => w.code === code && w.reason.trim().length >= 12\n      && (code !== 'FR-B2-ON-VOUS' || /(?:^|[^\\p{L}])(?:générique|generique|generic|nous)(?=$|[^\\p{L}])/iu.test(w.reason))), `Unacknowledged ${code}: ${warningNotes[code] ?? 'needs human inspection'}`)",
+            "reason": "G02: meaningful acknowledgment must name the referent reading."
+          },
+          {
+            "file": "french-b2-gate/test-guided-french-b2-drafts.ts",
+            "oldValue": "rejects('No unsupported warning claims', x => { x.draft.lessons[0].review.acknowledgedWarnings.push({ code: 'FAKE-PASS', reason: 'Claimed approval is not source evidence.' }) }, /Unsupported warning/)",
+            "newValue": "rejects('No unsupported warning claims', x => { x.draft.lessons[0].review.acknowledgedWarnings.push({ code: 'FAKE-PASS', reason: 'Claimed approval is not source evidence.' }) }, /Unsupported warning/)\nconst learnerOn = (x: Fixture, verb: string) => {\n  const l = x.draft.lessons[0]\n  l.dialogue[5].targetText = l.dialogue[5].targetText.replace('je conclus', verb)\n  const s = l.synthesis.segments[1]; if (s.kind === 'text') s.text = s.text.replace('je conclus', verb)\n}\nrejects('No silent learner on in a vous episode', x => learnerOn(x, 'on conclut'), /FR-B2-ON-VOUS/)\nrejects('No silent elided learner on in a vous episode', x => learnerOn(x, 'dès qu’on conclut'), /FR-B2-ON-VOUS/)\nrejects('No learner on acknowledgement without a stated referent', x => { learnerOn(x, 'on conclut'); x.draft.lessons[0].review.acknowledgedWarnings.push({ code: 'FR-B2-ON-VOUS', reason: 'Reviewed and considered acceptable.' }) }, /FR-B2-ON-VOUS/)\nconst genericOn = fixture(1)\nlearnerOn(genericOn, 'on conclut')\ngenericOn.draft.lessons[0].review.acknowledgedWarnings.push({ code: 'FR-B2-ON-VOUS', reason: 'Synthetic generic on: impersonal subject, not the learner group as nous; referent judged by content review.' })\npasses('Learner on in a vous episode passes only with a stated generic/nous referent', genericOn)",
+            "reason": "G02 reason-asserted coverage."
+          },
+          {
+            "file": "french-b2-gate/test-guided-french-b2-drafts.ts",
+            "oldValue": "rejects('No two accepted choices', x => { x.draft.lessons[0].recall.acceptedAnswers.push('hôtelier','hotelier') }, /exactly one accepted/)",
+            "newValue": "rejects('No two accepted choices', x => { x.draft.lessons[0].recall.acceptedAnswers.push('hôtelier','hotelier') }, /exactly one accepted/)\nconst extra = (n: number) => Array.from({ length: n }, (_, i) => `extra${String.fromCharCode(97 + i)}`)\nconst sixteen = fixture(1)\nsixteen.draft.lessons[0].recall.acceptedAnswers.push(...extra(12))\npasses('Sixteen authored recall answers stay within the controlling ceiling', sixteen)\nrejects('No seventeenth authored recall answer', x => { x.draft.lessons[0].recall.acceptedAnswers.push(...extra(13)) }, /more than sixteen/)\nrejects('No oversized cloze answer list', x => { x.draft.lessons[0].cloze.blanks[0].acceptedAnswers.push(...extra(16)) }, /more than sixteen/)",
+            "reason": "G01 reason-asserted coverage for recall and cloze lists."
+          },
+          {
+            "file": "french-b2-gate/test-guided-french-b2-drafts.ts",
+            "oldValue": "  l.terms[2].targetText = 'détail'; l.terms[3].targetText = 'choix'; l.terms[4].targetText = long ? 'prends' : 'l’achète'; l.terms[4].kind = 'verb'; delete l.terms[4].lemma",
+            "newValue": "  l.terms[2].targetText = 'détail'; l.terms[3].targetText = 'choix'; l.terms[4].targetText = long ? 'prends' : 'l’achète'; l.terms[4].kind = 'verb'; delete l.terms[4].lemma\n  if (!long) l.review.acknowledgedWarnings.push({ code: 'FR-B2-ON-VOUS', reason: 'Synthetic generic on in the negation probe, not a nous group reference.' })",
+            "reason": "Negation probe uses on in the vous L1 fixture; acknowledgment keeps it a pure negation test."
+          }
+        ],
+        "finalChecks": [
+          "P1L7 build: 'Je te conseillerais le cours parce ' + 'qu’on t’oblige à parler, tandis que l’appli te laisse tranquille' + ' dès que c’est difficile.' = you1; 5 chips 2/2/2/1/3 tokens; focus 10; speech parler, tranquille in focus; recall unchanged and valid.",
+          "P2L8 build: focus 'de sorte que les places de la semaine partent souvent avant midi.' = 11 tokens, chips 2/2/2/1/4; speech places, semaine in focus; chips distinct from distractors.",
+          "P1L4: you2 21 tokens; cloze reconstructs; pattern example 0 equals you2; highlight present; terms louer/location/ponceuse… 8 terms, ≥3 lexical; speech rentable/louer/réserver whole tokens of turn 3.",
+          "P1L8: you3 20 tokens; synthesis reconstructs with appris; parce que licensed cumulatively; speech seconde/appris/diriger intact.",
+          "P2L6 fallbacks propose/proposer/proposent/proposant distinct under choiceIdentity, one accepted.",
+          "P2L8 term l’accueil attested whole in you3 and both pattern examples; lemma accueil single token.",
+          "All acceptedAnswers lists ≤16 (max 8); no truncation; variants intact.",
+          "No vous-lesson learner turn contains on/qu’on/l’on in either reviewed path, so no source acknowledgment is triggered.",
+          "Spec bytes unchanged; no SHA invention. 297 forbidden + 20 trophies, aliases, negation grouping, shared Latin module untouched.",
+          "Verdict is content/gate edits only; review flags stay false, nativeStatus unreviewed."
+        ],
+        "limitations": [
+          "No tool execution: gate tests and strict TypeScript were not run; claims above are by reading.",
+          "Root must mechanically recompute the two reviewed-source SHA constants in test-guided-french-b2-drafts.ts after applying the JSON edits.",
+          "Frozen new-content originals were not supplied; if a vous learner turn there contains on, the new FR-B2-ON-VOUS warning will fail the frozen-original assertion and root must report it rather than edit frozen files.",
+          "Publication findings C06 and C09 remain open and are not resolved by these edits.",
+          "This is a model native-architect judgment, not human native sign-off."
+        ]
+      }
+    }
+  ],
+  "approvalBasis": "Every old/new edit replayed across both full-content reads; final objects equal independently reviewed bytes."
+}

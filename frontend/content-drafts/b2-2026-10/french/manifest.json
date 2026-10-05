@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "french-b2-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b2-2026-10/french/p1.json",
+      "sha256": "418a42996466b2241dfcda3e8caa62c8444d59d66671de96311c8596b20d475e",
+      "targetLanguage": "French",
+      "pathNumber": 1,
+      "reviewedVoiceId": "z1rEShu1SmowIOAmbHl1",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/french/specification.json",
+        "sha256": "36d5048813a42f0d8017d0be33259d78d24c47e857d0344346bb3c4a271cdacf",
+        "referenceName": "B2_FRENCH_P1_P2_AUTHORING_SPEC.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-2026-10/french-plan.json",
+        "sha256": "07f7ee247ffe0babec3ae5d01a5115cba60b48c7ace0175e04048d8b85843380"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/french/p2.json",
+      "sha256": "c54dfc2ad4b5dd6021df6a7da19bb58bf6a2959543513b1099a9a64a99178f5c",
+      "targetLanguage": "French",
+      "pathNumber": 2,
+      "reviewedVoiceId": "z1rEShu1SmowIOAmbHl1",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/french/specification.json",
+        "sha256": "36d5048813a42f0d8017d0be33259d78d24c47e857d0344346bb3c4a271cdacf",
+        "referenceName": "B2_FRENCH_P1_P2_AUTHORING_SPEC.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-2026-10/french-plan.json",
+        "sha256": "07f7ee247ffe0babec3ae5d01a5115cba60b48c7ace0175e04048d8b85843380"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "French": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b2-2026-10/french/fable-evidence.json",
+    "sha256": "132a82c3139b01d8986348a11ccfd902356eeb837bdbdff22f124e2c2ae463af"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b2-2026-10/french/independent-evidence.json",
+    "sha256": "b6fac0f4bffbbe50fa3d178abe13a90e4f6c7bb34e6c99af5cdead35659eb087"
+  }
+}
