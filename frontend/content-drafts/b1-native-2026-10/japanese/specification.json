@@ -1,0 +1,859 @@
+{
+  "status": "architect-spec",
+  "targetLanguage": "Japanese",
+  "targetLanguageCode": "ja-JP",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "baseLanguage": "German",
+  "registerPolicy": "です/ます on every main clause of every turn for both speakers, including friend and neighbor paths (continues A1/A2; adults keep polite forms). B1 licenses PLAIN forms only inside subordinate positions: noun-modifying clauses (昨日 買った かばん), quoted thought/hearsay before と思います/そうです/と聞きました, conditionals (〜たら/〜ば/〜と/〜なら), reason/concession clauses before ので/のに/けど, and 〜たり/〜ながら/〜前に/〜後で. A plain form may never end a sentence or precede か as a question; sentence-final plain = casual speech (タメ口) and remains out of scope. Keigo stays limited to fixed B1 request chunks (〜ていただけますか/〜ていただけませんか, お願いします, ありがとうございます); no 〜させていただきます, no humble/honorific verb substitution (伺う/いらっしゃる) in learner lines. Staff/landlord/doctor speak polite service register; friends speak plain-polite です/ます with ね/よ allowed.",
+  "genderSafety": "Japanese verb morphology never marks speaker gender, so canonical learner lines are gender-neutral by default. Ban gendered sentence-final particles (わ, かしら, ぞ, ぜ, な as command) and gendered first-person pronouns (僕, 俺, あたし, うち); use 私 or drop the subject. Interlocutor roles are described gender-neutrally in situation text where possible (Vermieter:in avoided: use 'die Verwaltung'/'the landlord office' or alternate roles across lessons). No speech token, recall answer or trophy may be a gender-marked word.",
+  "orthography": "Canonical target = standard kanji+kana at B1 level (jōyō kanji common in N3 material; keep rare kanji in kana: たとえば, ところ, ちょっと). Kanji numerals only (三時, 二週間, 十キロ), never Arabic digits. Wakachigaki carried from A1/A2: single ASCII spaces at word boundaries, particles (を が は に で の と も へ から まで より か ね よ) and copula (です/でした) attached to their host, 。/、 attached to the preceding unit, no space before punctuation, no double or trailing spaces. Every target sentence field carries one explicitly reviewed all-kana reading variant as accepted input; no romaji in any target field. Length is counted in native units: characters (excluding spaces/punctuation) and wakachigaki units, never 'words'.",
+  "segmentation": {
+    "youOne": "dialogue[0] = interlocutor opening (speaker: staff/friend/neighbor/professional, never the learner): 1-2 sentences, 15-32 characters (excluding spaces and punctuation), 4-9 wakachigaki units. This is the ONLY target text quoted verbatim in both caption locales (de and en); the caption may add a neutral scene framing but no translation of later turns, no hint of the complication, concession or resolution. Opening must not foreshadow dialogue[2] content.",
+    "youTwo": "dialogue[2] = interlocutor follow-up: 1-2 sentences, 12-28 characters (excluding spaces and punctuation), 3-8 wakachigaki units; must add new information or a genuine question (never a bare echo/acknowledgement) so the learner's second turn dialogue[3] is a continuation, not a repeat. Never quoted in captions. Learner turns are dialogue[1] (first reply: source of chunks, speakRequired, recall, trophy surface) and dialogue[3] (second reply: 12-32 characters, source of cloze).",
+    "chunks": "Learner first reply = dialogue[1]: 1-2 sentences, 20-38 characters (excluding spaces and punctuation), split into 4-7 chunks that are whole wakachigaki units or adjacent unit groups; chunks joined by single ASCII space reproduce dialogue[1].targetText exactly; a chunk never splits a particle from its host or a て-form from its verb; 6-8 useful terms = the lesson's new content words plus its staged form, each glossed de+en (existing translated-array shape, no new fields).",
+    "speechTokens": "Three distinct wakachigaki units of dialogue[1], each ≥2 characters, Hiragana/Katakana/CJK only (no Latin, digits, punctuation), none a bare particle/copula/filler (はい, ええ, あの excluded), none gender-marked; the trophy surface unit is preferred as one token. Each required token is authored as a pair {canonical, kana} where kana is the exact corresponding unit of the reviewed all-kana variant row (e.g. 引っ越し/ひっこし, 空港/くうこう, 途中/とちゅう); the reviewer additionally lists any common alternative ASR kanji rendering (e.g. 友達/友だち) as an accepted token spelling. No claim is made that three canonical kanji tokens alone pass kana-only ASR output. FUTURE INTEGRATION (not required for this content batch): speak scoring consults the token pairs/oracle list per lesson so kana or alternative-kanji recognitions of a required token count as hits; until then, lesson TTS and scoring remain on the canonical string with the existing CJK space-insensitive matching and the existing B1 settings (threshold 0.65, 15 s recording). Nothing in runtime changes before a measured pilot.",
+    "trophyAnchoring": "Trophy = trophyWord.word, the canonical kanji+kana dictionary surface, particle-free, no hyphen/apostrophe, no inflected form. 'Lemma' means exactly this string; the validator performs no dictionary lemmatization or kana conversion. Honest surface rule: dialogue[1].targetText and trophyWord.example must each contain a whole wakachigaki unit U (space-delimited, trailing 。、 stripped) such that U starts with the trophy string and the remainder U[len(trophy):] is EXACTLY one entry of the closed tail allowlist (empty remainder allowed). Allowlist (global, closed): (a) single particles を が は に で の と も へ から まで より か ね よ; (b) stacked tails には では とは からは までは にも でも とも のは のが のも; (c) copula/ending tails です でした ですか ですね ですよ ですが でしたか なんです なんですが; (d) only for lessons whose trophySurface.tailKind is 'suru' (suruNoun trophies: 相談, 延長, 連絡, 確認, 準備, 参加, 挑戦, 故障, 返金, 解決, 納得, 保存, 片付け, 成功, 失敗, 完成, 変更, 変化, 成長, 感謝, 対応, 期待, 反対, 賛成, 貯金, 旅行, 練習, 説明, 手続き, 引っ越し, 出張): する します しました しません して した しています していました しましたか してしまって してしまいました. Each lesson records the exact reviewed U and tail actually used in dialogue[1] and in example (trophySurface, see schema extensions); a general substring search is never performed. Consequences: 夏休み (unit starts with 夏) never matches 休み; 道路 (remainder 路) never matches 道; 色々 (remainder 々) never matches 色; 自分で (remainder で) matches 自分 via (a); 久しぶりです matches via (c); 連絡しましたか matches via (d). Where natural, author the unit particle-free; never detach, insert or drop a particle to satisfy the validator — if the natural line needs a tail not in the allowlist, extend the allowlist in this spec, do not bend the sentence. Lexicalized adverbs with frozen に (急に, 確かに) are whole trophies, not particle-attached words.",
+    "acceptedInput": "Per target sentence: canonical string plus one reviewed all-kana variant (and, where a common alternative kanji/kana split exists, e.g. 子供/子ども, one extra reviewed variant). Cloze and recall accept the canonical answer and its listed kana variant only; no automatic kana conversion, no synonym acceptance, no particle dropping. Speech: existing acceptedPhraseVariant rows extended with the kana variant per B1 lesson."
+  },
+  "knownTraps": [
+    "〜ている is ambiguous (progressive vs resultative state: 結婚している, 知っている); every cloze using it needs a context cue so only one reading is grammatical/contextual.",
+    "〜たら, 〜ば, 〜と, 〜なら are not interchangeable: 〜と cannot take volitional/request main clauses, 〜なら presupposes a mentioned topic; cloze distractors across these must be truly ungrammatical in context, not merely less common.",
+    "Scope of the trailing-off ban: a sentence may not end in PLAIN form + けど/のに/し (高いけど。/来たのに。/安いし。) nor in のに/し after a polite form; these are casual trailing-off. Clause-medial use with a polite main clause is the norm (高いですけど、便利だと 思います。). Explicitly ALLOWED sentence finals: the polite-stem softener 〜んですが。/〜ですが。/〜ますが。 as a service opener (すみません、エアコンが 動かないんですが。 / 先週 予約したんですが。) and fixed keigo requests 〜ていただけませんか。/〜てもらえますか。. 〜んですけど。 as a final is review-flagged (friend register only), never in staff scenes.",
+    "〜のに carries reproach; in P9 it stays clause-medial and the sentence closes politely, typically with the softener 〜んですが。 (新しいのに、暖房が 動かないんですが。) or a polite main clause (新しいのに、部屋が 寒いです。); never 〜のに。 as a final. Complaints end with a request chunk or an agreed next step.",
+    "思います vs 思っています (opinion vs held intention); ようと思っています is intention only (P10).",
+    "Hearsay ladder: 〜そうです (reported), 〜らしい (indirect), 〜みたい/〜ようだ (judgement), 〜そう (appearance) — distinct lessons, never mixed in one cloze.",
+    "Counting: length targets are characters and wakachigaki units; English word targets never apply.",
+    "Kanji numerals: 十キロ, 二十分, 三回; never '10km'.",
+    "ASR returns unspaced text with its own kanji choices (and sometimes kana-only output); required tokens must be stable common words, each authored with its kana counterpart taken from the reviewed kana variant row (see segmentation.speechTokens). Current scoring matches canonical text only, so a kana-only recognition of a kanji token may miss; this is a known limitation pending the token-pair/oracle integration, not a reason to alter runtime now.",
+    "Relative clauses put the plain form before the noun; validators must not flag plain forms inside noun-modifying position as register violations.",
+    "Loanwords stay katakana (エアコン, ジョギング, スライド); do not force kanji.",
+    "Two 変 words (変更 P3 planned change, 変化 P8 observed change) and 期限/期待, 成功/成長 are distinct lexemes; glosses must separate them in both locales."
+  ],
+  "mechanicalValidationRules": [
+    "Exactly 10 paths × 10 lessons; 100 trophies unique under NFC+casefold against A1+A2 trophies and one another.",
+    "Every target sentence field: single ASCII spaces between units, none leading/trailing/doubled, punctuation attached to preceding unit, no Latin letters or Arabic digits.",
+    "Dialogue is exactly four turns [interlocutor, learner, interlocutor, learner] with the existing tuple shape {targetText, baseText:{de,en}}; caption.de and caption.en each contain dialogue[0].targetText verbatim exactly once and no other Japanese text (no dialogue[2], no learner lines, no partial quotes). Caption prose must not reveal the complication, concession or resolution of turns 2-4.",
+    "Learner first reply: 20-38 characters, 4-7 chunks whose space-join equals targetText exactly; second reply 12-32 characters.",
+    "speakRequired: exactly 3 distinct units of the first reply, each ≥2 chars, Hiragana/Katakana/CJK only, not in the banned particle/filler/gendered list.",
+    "Trophy surface rule: a whole wakachigaki unit U of dialogue[1].targetText AND a whole unit of trophyWord.example (trailing 。、 stripped) each start with trophyWord.word and have a remainder that is exactly one entry of the closed tail allowlist in segmentation.trophyAnchoring (empty allowed; suru tails only when the lesson's trophySurface.tailKind is 'suru'); the recorded trophySurface.surfaceUnit must equal the matched U; start-anchored exact-remainder match only, never a general substring search.",
+    "Cloze: 2-3 blanks on dialogue[3]; each blank is either a plain string or {kind ∈ {form, connector, choice}, answer, cue?: string, choices: string[4]}; choices are plain strings (no reading objects), exactly 4 distinct, answer ∈ choices, cue present iff kind==form, no blank is a bare particle/pronoun/copula, each blank ≤3 spaced units; reconstructed sentence equals dialogue[3].targetText. The path clozeSchema is a MENU: a lesson uses only blank kinds and forms that are productive at or before its own staging range; not every listed kind must appear in every lesson.",
+    "Recall: before+answer+after equals first-reply targetText, answer is a content unit (not particle/copula/filler), 4 distinct fallbackChoices including answer.",
+    "Pattern: 2-3 examples, each highlight a contiguous substring of its targetText, at least one example equals a learner line of the lesson.",
+    "Every base-content field has both de and en strings; pedagogicalGoal is German.",
+    "Staged-form check: each lesson's forms appear only at or after their path lesson range (table-driven).",
+    "Kana variant present for every target sentence and speak target; variant has identical spacing and punctuation.",
+    "Length of interlocutor turns: dialogue[0] 15-32 chars, dialogue[2] 12-28 chars (excluding spaces/punctuation). Politeness check (conservative flag, not a parser): for every sentence of every turn, strip trailing 。？！ and check the final string against the reviewed polite-final list: です ですか ですね ですよ ですが でした でしたか でしょう でしょうか ます ますか ますね ますよ ますが ました ましたか ません ませんか ましょう ましょうか ください くださいませんか いただけますか いただけませんか もらえますか もらえませんか たいです たいんです たいんですが んです んですか んですが んですね かもしれません かもしれませんね (そうです/ようです/らしいです/みたいです/はずです are covered by the です entries). A final not on this list is FLAGGED for human review, never auto-rejected; only sentence-final plain verb/adjective/だ and the gendered particles are hard rejects. The check inspects the main-clause ending only; plain forms inside embedded or subordinate clauses are not inspected."
+  ],
+  "semanticReviewRules": [
+    "Follow-up turn adds new information or a genuine question; learner second turn depends on it (connected discourse for B, complication for A, modification for C).",
+    "Learner never asserts a staff-only decision (refund granted, room upgraded, deadline extended); learner asks, proposes, accepts with modification.",
+    "Cloze distractors: for form blanks, distractors are ungrammatical in context or change meaning so the base translation excludes them; no two choices both fit; for choice blanks, distractors are semantically excluded by the scene (checked against de and en baseText).",
+    "Recall fallback distractors are same-category content words that break the scene's meaning, never synonyms.",
+    "Register audit: no sentence-final plain form, no banned particles/pronouns, keigo limited to the fixed chunk list; interlocutor politeness matches role.",
+    "Natural Japanese, not calque: avoid overusing 私は, avoid literal 'I think that' chains, prefer topic drop; concession uses 確かに〜けど/〜し rather than stacked でも.",
+    "Each lesson uses its path's central family at least once in a learner turn and stays within its staging range; recycled forms are marked as recycle in notes.",
+    "Trophy word appears naturally (not shoehorned) in first reply and example; whyThisWord explains reuse value in de+en.",
+    "P9 complaints are framed softly (〜んですが, すみません) and end with an agreed next step; P10 narrations reuse at least two earlier paths' families per lesson.",
+    "Kanji level: reviewer flags kanji outside common N3 inventory and converts to kana unless the trophy requires it."
+  ],
+  "requiredSchemaExtensions": [
+    "Lesson bodies use ONLY the existing staged B1 shape: dialogue tuple of 4 {targetText, baseText:{de,en}}; chunks and terms as translated arrays; pattern {label:string, rule:{de,en}, examples: translated + highlight}; cloze array of strings or {kind, answer, cue?: string, choices: string[4]}; recall {before, answer, after, fallbackChoices}; trophyWord {word, meaning, example:string, whyThisWord}; pedagogicalGoal German string. No new required per-lesson fields.",
+    "OPTIONAL extension, runtime pending (lesson stays valid without it): targetVariants — per dialogue turn and per trophyWord.example an array of reviewed accepted strings (canonical first, then all-kana, plus any reviewed alternative kanji split such as 子供/子ども); when present it feeds speak acceptedPhraseVariant rows, cloze and recall acceptance; no generated conversions. Until consumed, the kana variants are delivered as acceptedPhraseVariant rows in the existing speak table.",
+    "OPTIONAL extension, runtime pending: trophySurface — {canonical, surfaceUnit, tail, tailKind: 'none'|'particle'|'copula'|'suru'} recorded per lesson in the review sheet (not in the lesson body until the schema accepts it) so the validator checks honest anchoring by exact remainder instead of substring search.",
+    "Review tooling, OFF-schema: the staging ranges, episode shape (A/B/C) and interlocutor role of each lesson are read from this spec's per-path staging tables and beat lines (path number + lesson number determine the range; role is inferred from the beat's first noun), not from new lesson metadata fields. The staged-form range check and the register audit run on that derived table.",
+    "Speech configuration: B1 rows stay exactly as currently deployed (thresholdsByLevel.B1=[0.65], recordingSecondsByLevel.B1=15); no change before a measured pilot.",
+    "Cloze choices remain plain strings; a kana reading for display or audio is out of scope for this batch (no choice object extension exists)."
+  ],
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Was passiert ist / What happened",
+      "anchor": "Colleagues, neighbors and friends ask how something went; the learner narrates a short chain of past events with background.",
+      "register": "です/ます main clauses; plain forms only in て-chains, 〜時 and 〜たら clauses",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "て-form chaining of past events (〜て、〜て、〜ました); sequencing connectors それから/その後/最後に; A2 〜ました/〜でした recycled",
+          "recognitionOnly": "〜時 (when-clause); 〜ていました"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜ていました (ongoing past background); 〜たら (when/then discovery); 〜時 productive",
+          "recognitionOnly": "〜てから; 〜ところ"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜ので (background reason); 〜てから; 〜時 and 〜たら recycled in longer chains",
+          "recognitionOnly": "〜てしまいました (fully staged in P6)"
+        }
+      ],
+      "clozeSchema": "2-3 blanks: form (て-form/〜ていました/〜たら with cue 'Verbform'), connector (それから/でも/だから/その後), optional choice (time or place noun); reconstructs second reply",
+      "recycles": "A2 past tense, time words, から reason, 〜ませんか invitations in follow-ups",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "引っ越し",
+          "beat": "Colleague asks why absent; you moved flats, hauled boxes all day; asks new place; you describe."
+        },
+        {
+          "number": 2,
+          "trophy": "出張",
+          "beat": "Neighbor asks about trip; business trip, meetings then dinner; asks the food; you answer."
+        },
+        {
+          "number": 3,
+          "trophy": "友達",
+          "beat": "Coworker asks weekend; met a friend, ate, walked around; asks where; you continue."
+        },
+        {
+          "number": 4,
+          "trophy": "途中",
+          "beat": "Friend asks why late; train stopped on the way, you waited; asks how long; reply."
+        },
+        {
+          "number": 5,
+          "trophy": "急に",
+          "beat": "Colleague asks yesterday; it suddenly rained while shopping; asks whether soaked; you finish story."
+        },
+        {
+          "number": 6,
+          "trophy": "結局",
+          "beat": "Neighbor asks the restaurant; full, so in the end you cooked; asks what; you say."
+        },
+        {
+          "number": 7,
+          "trophy": "空港",
+          "beat": "Friend asks your guests; met parents at airport, took hotel; asks tired; you reply."
+        },
+        {
+          "number": 8,
+          "trophy": "道",
+          "beat": "Colleague asks hike; lost the road, phone died, asked locals; asks scary; you reply."
+        },
+        {
+          "number": 9,
+          "trophy": "久しぶり",
+          "beat": "Friend asks reunion; saw classmate after years, talked hours; asks changed; you reply."
+        },
+        {
+          "number": 10,
+          "trophy": "無事",
+          "beat": "Neighbor asks typhoon night; got home safely before trains stopped; asks family; reply."
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Meine Meinung / Weighing in",
+      "anchor": "Someone asks the learner's opinion on a choice; the learner states a view, concedes a point, and holds or adjusts.",
+      "register": "です/ます; plain form only before と思います and inside けど/し/ても clauses",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "〜と思います (plain form + と思います); clause-medial 〜けど; 〜方が いいと思います; 確かに〜けど lexical concession frame (productive from lesson 3 only, anchored to the 確かに trophy: 確かに + evaluative predicate + けど + polite main clause; lessons 1-2 keep it recognition-only; 〜し and 〜ても remain out of range)",
+          "recognitionOnly": "〜し〜し; 確かに concession frame in lessons 1-2 only (lesson 3 makes the lexical 確かに〜けど frame productive, see productive)"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜し〜し (listing reasons); 〜ても (even if); 確かに〜けど concession generalized (recycle of the lesson-3 lexical frame; now combinable with 〜し/〜ても)",
+          "recognitionOnly": "〜かもしれません"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜かもしれません (hedge); 〜と思いますが、〜 (opinion then reservation); 〜と思います recycled with 〜ても/〜し in longer turns (〜なら is NOT used in P2; it is staged in P3 7-10)",
+          "recognitionOnly": "〜のに (staged in P9); 〜んじゃないでしょうか"
+        }
+      ],
+      "clozeSchema": "form blank (と思います/ても/し with cue 'Meinungs-/Konzessivform'), connector (確かに/でも/それに/だから), choice (evaluative adjective fitting scene); reconstructs second reply",
+      "recycles": "A2 comparison 〜の方が, 〜から reason, 〜ですね agreement, P1 て-chains in background",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "意見",
+          "beat": "Coworker asks view on new shift plan; you give opinion; asks why; you concede partly."
+        },
+        {
+          "number": 2,
+          "trophy": "便利",
+          "beat": "Friend wonders buying car; convenient but costly, you think; asks parking; you weigh."
+        },
+        {
+          "number": 3,
+          "trophy": "確かに",
+          "beat": "Colleague praises new cafe; certainly tasty but far, you say; asks alternative; you suggest."
+        },
+        {
+          "number": 4,
+          "trophy": "値段",
+          "beat": "Friend compares two flats; price matters but light too; asks which; you choose."
+        },
+        {
+          "number": 5,
+          "trophy": "静か",
+          "beat": "Neighbor considers suburb; quiet and cheap but long commute; asks family; you reply."
+        },
+        {
+          "number": 6,
+          "trophy": "反対",
+          "beat": "Coworker proposes weekend overtime; you are against, explain; asks compromise; you concede partly."
+        },
+        {
+          "number": 7,
+          "trophy": "賛成",
+          "beat": "Friend suggests group trip; you agree but worry cost; asks budget; you propose."
+        },
+        {
+          "number": 8,
+          "trophy": "問題",
+          "beat": "Colleague asks if plan works; one problem, timing; asks solution; you suggest change."
+        },
+        {
+          "number": 9,
+          "trophy": "必要",
+          "beat": "Friend asks whether test is needed; probably necessary for jobs; asks when; you reply."
+        },
+        {
+          "number": 10,
+          "trophy": "無理",
+          "beat": "Coworker asks finishing Friday; impossible alone, maybe with help; asks who; you reply."
+        }
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Wäre es möglich / Could we possibly",
+      "anchor": "Service, office and landlord scenes where the learner makes a soft request and negotiates an offer.",
+      "register": "Polite service register; fixed request chunks 〜ていただけますか/〜てもらえますか; plain form only in たら/ば/なら clauses",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "〜たいんですが (soft opener); 〜てもいいですか; 〜たら (hypothetical if)",
+          "recognitionOnly": "〜ていただけますか; 〜場合"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜ていただけますか/〜ていただけませんか; 〜場合は; 〜ば (hypothetical)",
+          "recognitionOnly": "〜なら; 〜てもらえますか"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜なら (topic conditional); 〜てもらえますか; 〜方が 助かります (preference); たら/ば recycled",
+          "recognitionOnly": "〜ことにします/〜ことにしました (family staged productive in P7 7-10; P9 recycles the present form)"
+        }
+      ],
+      "clozeSchema": "form blank (たら/ば/ていただけますか with cue 'Bedingungs-/Bittform'), connector (もし/それなら/では/じゃ), choice (time/quantity noun); reconstructs second reply (acceptance with modification)",
+      "recycles": "A2 お願いします, 〜ませんか, time words, counting units; P2 けど for softening",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "相談",
+          "beat": "Landlord office greets; you want to consult about repair timing; offers Tuesday; you propose afternoon."
+        },
+        {
+          "number": 2,
+          "trophy": "都合",
+          "beat": "Clinic offers slot; conflicts with your schedule, ask afternoon; offers Thursday; accept with time tweak."
+        },
+        {
+          "number": 3,
+          "trophy": "延長",
+          "beat": "Librarian states due date; ask if extension possible; offers one week; you accept, ask two."
+        },
+        {
+          "number": 4,
+          "trophy": "代わり",
+          "beat": "Shop lacks item; ask whether substitute could be ordered; offers similar; accept if same price."
+        },
+        {
+          "number": 5,
+          "trophy": "午前",
+          "beat": "Courier proposes evening; ask morning if possible; offers Saturday morning; accept with time window."
+        },
+        {
+          "number": 6,
+          "trophy": "期限",
+          "beat": "Office states deadline; ask what if documents arrive late; explains; propose partial submission."
+        },
+        {
+          "number": 7,
+          "trophy": "手数料",
+          "beat": "Bank mentions fee; ask whether waived with account; conditional; accept transfer option instead."
+        },
+        {
+          "number": 8,
+          "trophy": "可能",
+          "beat": "Hotel offers standard room; ask if upgrade possible; offers at extra cost; negotiate breakfast."
+        },
+        {
+          "number": 9,
+          "trophy": "変更",
+          "beat": "Travel desk confirms booking; ask changing date; offers with fee; accept modified date."
+        },
+        {
+          "number": 10,
+          "trophy": "半分",
+          "beat": "Caterer quotes full set; ask about half portion; offers smaller set; accept with change."
+        }
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "Welches meinst du / Which one do you mean",
+      "anchor": "Describing objects, people and places precisely when a first description is not enough.",
+      "register": "です/ます; plain forms licensed in noun-modifying clauses and before そう/みたい/らしい",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "noun-modifying plain clauses present/past (昨日 買った かばん, 窓の 近くに いる 人); 〜という (named as)",
+          "recognitionOnly": "〜そうです (appearance); 〜ている in descriptions"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜ている descriptions (眼鏡を かけている); 〜そう (appearance); 〜みたいな/〜ような",
+          "recognitionOnly": "〜らしい; 〜ところ"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜らしい (hearsay/typical); 〜ような 〜; 〜ところ (place where); relative clauses stacked with 〜て",
+          "recognitionOnly": "〜はずです (staged in P5)"
+        }
+      ],
+      "clozeSchema": "form blank (relative-clause verb form / そう / ている with cue 'Beschreibungsform'), choice (color/shape/material noun), connector (つまり/でも/それから); reconstructs second reply",
+      "recycles": "A2 colors/sizes/positions, 〜の方が, P1 past narration for 'the one I bought yesterday'",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "特徴",
+          "beat": "Lost-and-found asks bag details; describe features; staff finds two bags; you specify yours."
+        },
+        {
+          "number": 2,
+          "trophy": "形",
+          "beat": "Shop asks which cup; describe shape bought last week; wrong one shown; you clarify."
+        },
+        {
+          "number": 3,
+          "trophy": "色",
+          "beat": "Friend asks which jacket; color you wore yesterday; two match; you distinguish."
+        },
+        {
+          "number": 4,
+          "trophy": "眼鏡",
+          "beat": "Receptionist asks whom to call; person with glasses who helped; they left; describe colleague."
+        },
+        {
+          "number": 5,
+          "trophy": "髪",
+          "beat": "Teacher asks which student; short hair, sits by window; two fit; you add detail."
+        },
+        {
+          "number": 6,
+          "trophy": "模様",
+          "beat": "Cleaner asks which shirt; striped pattern, blue buttons; it is damaged; describe the damage."
+        },
+        {
+          "number": 7,
+          "trophy": "材料",
+          "beat": "Chef asks which dish; describe ingredients, looked spicy; menu changed; you pick alternative."
+        },
+        {
+          "number": 8,
+          "trophy": "雰囲気",
+          "beat": "Friend asks restaurant you mentioned; calm atmosphere near river; closed now; propose similar."
+        },
+        {
+          "number": 9,
+          "trophy": "種類",
+          "beat": "Pharmacist asks which kind; small tablets doctor mentioned; unavailable; ask equivalent."
+        },
+        {
+          "number": 10,
+          "trophy": "普通",
+          "beat": "Realtor asks wishes; ordinary two rooms with light; budget mismatch; you adjust wishes."
+        }
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Nur zur Sicherheit / Just checking",
+      "anchor": "Indirect, polite information-seeking with offices, clinics, shops and colleagues, followed by a second clarifying question.",
+      "register": "Polite inquiry register; embedded questions take plain form; 〜んですが opener",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "〜か どうか (whether) + 確認したいんですが; 〜か 知っていますか/わかりますか with plain embedded question",
+          "recognitionOnly": "〜かもしれません; 〜そうです (hearsay)"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "embedded wh-questions (いつ 来るか, どこに 出すか); 〜そうです (hearsay); 〜と 聞きました",
+          "recognitionOnly": "〜はずです; 〜らしい"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜はずです (expectation); 〜らしい (indirect); 〜かどうか わからないんですが",
+          "recognitionOnly": "〜ように 言われました"
+        }
+      ],
+      "clozeSchema": "form blank (かどうか / embedded か / そうです / はずです with cue 'Indirekte Frage/Vermutung'), connector (それで/では/ところで), choice (day/office noun); reconstructs second reply",
+      "recycles": "A2 〜はありますか, 〜はどこですか; P3 soft openers; P4 descriptive clauses",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "確認",
+          "beat": "Reception greets; confirm whether reservation went through; checks, asks name spelling; you clarify."
+        },
+        {
+          "number": 2,
+          "trophy": "詳しく",
+          "beat": "Colleague mentions new rule; ask if they know details; explains partly; ask whom else."
+        },
+        {
+          "number": 3,
+          "trophy": "連絡",
+          "beat": "Nurse greets; ask whether contact came about results; not yet; you ask when."
+        },
+        {
+          "number": 4,
+          "trophy": "手続き",
+          "beat": "City office greets; ask what procedure is needed; lists steps; ask where documents go."
+        },
+        {
+          "number": 5,
+          "trophy": "条件",
+          "beat": "Landlord office mentions renewal; ask the conditions; explains rent; ask if negotiable later."
+        },
+        {
+          "number": 6,
+          "trophy": "担当",
+          "beat": "Phone shop greets; ask who handles repairs; absent today; ask about leaving message."
+        },
+        {
+          "number": 7,
+          "trophy": "返事",
+          "beat": "Coworker asks client; no reply yet, due Monday supposedly; suggests calling; you agree."
+        },
+        {
+          "number": 8,
+          "trophy": "原因",
+          "beat": "Mechanic greets; ask if noise cause known; maybe brakes, they say; ask duration."
+        },
+        {
+          "number": 9,
+          "trophy": "説明",
+          "beat": "Bank clerk greets; ask explanation whether fee applies; explains; you ask exception."
+        },
+        {
+          "number": 10,
+          "trophy": "様子",
+          "beat": "Neighbor asks elderly neighbor; heard hospitalized, unsure; asks visiting; you reply."
+        }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "Schritt für Schritt / Step by step",
+      "anchor": "Reporting a process and its result (cooking, setup, moving, paperwork) when something goes wrong mid-way.",
+      "register": "です/ます; plain forms inside 〜た後で, 〜前に, 〜てから chains",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "〜てから (after doing); 〜た 後で; 〜前に recycled; sequencing まず/次に/最後に",
+          "recognitionOnly": "〜ておきます; 〜てしまいました"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜ておきます (preparatory); 〜てしまいました (completion/regret)",
+          "recognitionOnly": "〜てあります; 〜ように なります"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜てあります (resultative state); 〜ように なります (change of state); 〜ことができます recycled",
+          "recognitionOnly": "〜たばかり (staged productive in P9 4-6)"
+        }
+      ],
+      "clozeSchema": "form blank (てから/ておきます/てしまいました/てあります with cue 'Prozess-/Resultatform'), connector (まず/それから/最後に/でも), choice (tool/document noun); reconstructs second reply",
+      "recycles": "P1 て-chains and 〜たら discovery; A2 〜前に, counting; P3 requests when asking for help",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "準備",
+          "beat": "Cooking teacher asks progress; preparation done, vegetables cut after washing; pot missing; you adapt."
+        },
+        {
+          "number": 2,
+          "trophy": "順番",
+          "beat": "IT colleague asks setup; followed order, password then login; error appears; report step."
+        },
+        {
+          "number": 3,
+          "trophy": "最初",
+          "beat": "Neighbor asks moving in; first unpacked kitchen, then bedroom; elevator broke; you adjust."
+        },
+        {
+          "number": 4,
+          "trophy": "最後",
+          "beat": "Teacher asks assignment; wrote, checked, submitted last; file missing; explain resend."
+        },
+        {
+          "number": 5,
+          "trophy": "完成",
+          "beat": "Boss asks report; completion tomorrow after review; data changed; propose update."
+        },
+        {
+          "number": 6,
+          "trophy": "結果",
+          "beat": "Doctor greets; results arrived after test; medicine ran out; ask refill before trip."
+        },
+        {
+          "number": 7,
+          "trophy": "失敗",
+          "beat": "Friend asks cake; failed, burned after forgetting timer; party tomorrow; plan again."
+        },
+        {
+          "number": 8,
+          "trophy": "成功",
+          "beat": "Colleague asks talk; success, slides prepared beforehand; printer broke; you find alternative."
+        },
+        {
+          "number": 9,
+          "trophy": "保存",
+          "beat": "Coworker asks document; saved after editing to shared folder; version wrong; fix plan."
+        },
+        {
+          "number": 10,
+          "trophy": "片付け",
+          "beat": "Roommate asks kitchen; cleanup done, trash sorted; collection day changed; you adjust."
+        }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Damit es klappt / In order to",
+      "anchor": "Stating goals, intentions and conditions with trainers, teachers, advisors and bosses, then agreeing a modified plan.",
+      "register": "です/ます; plain forms before ために/ように/つもり and in conditional clauses",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "〜ために (purpose: noun の/verb plain); 〜つもりです (intention)",
+          "recognitionOnly": "〜ように (so that); 〜と conditional"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜ように (aim); 〜と (natural-result conditional); 〜ば (if) with plans",
+          "recognitionOnly": "〜なら; 〜ことにしました"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜なら (given that); 〜ことにしました (decision taken); 〜ば/〜たら recycled in negotiated conditions",
+          "recognitionOnly": "〜ようと 思っています (staged in P10)"
+        }
+      ],
+      "clozeSchema": "form blank (ために/ように/ば/と/つもり with cue 'Zweck-/Bedingungsform'), connector (そのために/それなら/でも), choice (frequency or month word); reconstructs second reply",
+      "recycles": "P3 soft acceptance with modification; P2 けど concession; A2 time and frequency words",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "目標",
+          "beat": "Trainer asks goal; run ten kilometers for health; suggests daily; negotiate three weekly."
+        },
+        {
+          "number": 2,
+          "trophy": "試験",
+          "beat": "Teacher asks plan; exam in December to find work; suggests intensive course; accept partially."
+        },
+        {
+          "number": 3,
+          "trophy": "経験",
+          "beat": "Interviewer asks why; want experience abroad; offers Tokyo branch; accept with start condition."
+        },
+        {
+          "number": 4,
+          "trophy": "貯金",
+          "beat": "Advisor asks purpose; saving for travel next year; suggests monthly amount; you adjust amount."
+        },
+        {
+          "number": 5,
+          "trophy": "旅行",
+          "beat": "Agent proposes package; want flexible trip if weather bad; offers insurance; accept with insurance."
+        },
+        {
+          "number": 6,
+          "trophy": "計画",
+          "beat": "Boss asks project plan; if approved, start spring; proposes earlier; you negotiate."
+        },
+        {
+          "number": 7,
+          "trophy": "参加",
+          "beat": "Club leader invites; participate if practice is evenings; offers Saturday; accept alternating."
+        },
+        {
+          "number": 8,
+          "trophy": "将来",
+          "beat": "Advisor asks future; if possible, work in Japan; suggests qualification; accept timeline."
+        },
+        {
+          "number": 9,
+          "trophy": "健康",
+          "beat": "Doctor advises exercise; you will walk if knee allows; suggests swimming; you accept."
+        },
+        {
+          "number": 10,
+          "trophy": "練習",
+          "beat": "Teacher proposes extra practice; daily so speaking improves; suggests partner; accept twice weekly."
+        }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Früher und heute / Then and now",
+      "anchor": "Friends and colleagues ask about the past; the learner contrasts old habits with the present.",
+      "register": "です/ます throughout, friend register stays polite; plain forms only in 〜ことがあります and 〜ようになりました stems",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "〜ていました (habitual past); 昔は〜ましたが、今は〜ます contrast",
+          "recognitionOnly": "〜ことがあります; 〜ようになりました"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜ことがあります (experience); 〜ようになりました (acquired habit/ability)",
+          "recognitionOnly": "〜なくなりました; 〜ようにしています"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜なくなりました (no longer); 〜ようにしています (current effort); contrast frames recycled",
+          "recognitionOnly": "〜たものです (nostalgic past)"
+        }
+      ],
+      "clozeSchema": "form blank (ていました/ことがあります/ようになりました/なくなりました with cue 'Gewohnheits-/Veränderungsform'), connector (昔は/今は/でも/それで), choice (place/activity noun); reconstructs second reply",
+      "recycles": "P1 narration chains, P2 opinions with けど, A2 frequency words and 〜から",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "昔",
+          "beat": "Friend asks hometown; long ago lived by sea, swam daily; asks still; you reply."
+        },
+        {
+          "number": 2,
+          "trophy": "子供",
+          "beat": "Colleague asks childhood; as child played outside until dark; asks now; you reply."
+        },
+        {
+          "number": 3,
+          "trophy": "毎朝",
+          "beat": "Neighbor asks routine; every morning jogged before school; asks still; you reply."
+        },
+        {
+          "number": 4,
+          "trophy": "習慣",
+          "beat": "Friend asks habits; tried meditation, became habit; asks how started; you explain."
+        },
+        {
+          "number": 5,
+          "trophy": "自転車",
+          "beat": "Coworker asks commute; used bicycle before, now train; asks why; you explain."
+        },
+        {
+          "number": 6,
+          "trophy": "生活",
+          "beat": "Friend asks life abroad; life changed, cook more now; asks missing anything; reply."
+        },
+        {
+          "number": 7,
+          "trophy": "田舎",
+          "beat": "Neighbor asks origin; grew up in countryside, now city; asks preference; you reply."
+        },
+        {
+          "number": 8,
+          "trophy": "都会",
+          "beat": "Colleague asks city living; got used to city noise; asks sleep; you reply."
+        },
+        {
+          "number": 9,
+          "trophy": "自分",
+          "beat": "Friend asks change; decide things myself now, asked parents before; asks example; give one."
+        },
+        {
+          "number": 10,
+          "trophy": "変化",
+          "beat": "Coworker asks biggest change; cooking and no late nights; asks next step; you reply."
+        }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Da stimmt etwas nicht / Something's not right",
+      "anchor": "Capstone: polite complaint to staff or neighbors, a complication, then an agreed resolution with modification.",
+      "register": "Soft complaint register: すみません + 〜んですが framing, 〜のに kept clause-medial; fixed request chunks; staff decides outcomes",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "〜のに (contrary to expectation, clause-medial); 〜てしまって (recycled P6, as cause); 〜ていただけませんか (recycled P3)",
+          "recognitionOnly": "〜はずです; 〜ばかり"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜はずです (recycled P5: it should have…); 〜ばかり (just/only); 〜てもらえますか",
+          "recognitionOnly": "〜ことにします; 〜ようにしてください"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜ことにします (decision; recycle of the ことにする family staged P7 7-10 as 〜ことにしました, present form new surface here); 〜なら (recycled P7 7-10) in resolutions; 〜ように お願いします (new, fixed request chunk)",
+          "recognitionOnly": "〜ようにしてください; 〜させていただきます (staff only, never learner)"
+        }
+      ],
+      "clozeSchema": "form blank (のに/てしまって/ていただけませんか/ことにします with cue 'Beschwerde-/Entscheidungsform'), connector (それでは/ただ/それなら), choice (object/service noun); reconstructs second reply (accepted resolution)",
+      "recycles": "P3 negotiation shape, P5 はずです, P6 てしまいました, P7 なら/ことにしました, P4 descriptions of the faulty item",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "故障",
+          "beat": "Landlord office asks problem; heater broke although new, flat cold; offers next week; ask sooner, accept."
+        },
+        {
+          "number": 2,
+          "trophy": "返金",
+          "beat": "Shop asks issue; product broken, want refund; offers exchange only; accept exchange plus discount."
+        },
+        {
+          "number": 3,
+          "trophy": "間違い",
+          "beat": "Waiter brings dish; wrong order, you chose fish; offers remake; accept, ask quick."
+        },
+        {
+          "number": 4,
+          "trophy": "保証",
+          "beat": "Repair desk asks; screen cracked within warranty; says not covered; negotiate partial payment."
+        },
+        {
+          "number": 5,
+          "trophy": "騒音",
+          "beat": "Neighbor greets; nightly noise disturbs sleep; apologizes, explains baby; propose quiet hours."
+        },
+        {
+          "number": 6,
+          "trophy": "対応",
+          "beat": "Hotel asks feedback; slow handling despite reservation; offers apology; you ask breakfast voucher."
+        },
+        {
+          "number": 7,
+          "trophy": "期待",
+          "beat": "Guide asks; expectation unmet, museum closed; offers alternative; accept with partial refund."
+        },
+        {
+          "number": 8,
+          "trophy": "迷惑",
+          "beat": "Courier asks; repeated wrong deliveries cause trouble; promises care; ask confirmation calls."
+        },
+        {
+          "number": 9,
+          "trophy": "解決",
+          "beat": "Support asks; still unresolved after reset; suggests technician; accept, ask date."
+        },
+        {
+          "number": 10,
+          "trophy": "納得",
+          "beat": "Manager asks; not convinced, bill doubled; offers review; accept with deadline."
+        }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Mein Jahr / My year",
+      "anchor": "Capstone: friends, teachers and colleagues ask about the past year and plans; connected narration plus intentions.",
+      "register": "です/ます; plain forms inside たり/ながら/ようと思っています/ことになりました; no sentence-final plain even with friends",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "〜たり〜たり します/しました (representative activities); 〜し〜し (recycled P2); て-chains (recycled P1)",
+          "recognitionOnly": "〜ことになりました; 〜ながら"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜ことになりました (arranged outcome); 〜ながら (while); 〜ようになりました (recycled P8)",
+          "recognitionOnly": "〜ようと 思っています"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜ようと 思っています (intention; NEW in P10 7-10, the capstone's only new family at this range — not a recycle, P7 7-10 lists it recognition-only); 〜ば/〜たら and 〜ために recycled (P7/P1) in plans; 〜たばかり recycled (P9 4-6)",
+          "recognitionOnly": "〜つもりでした"
+        }
+      ],
+      "clozeSchema": "form blank (たり/ながら/ことになりました/ようと思っています with cue 'Rückblick-/Absichtsform'), connector (それから/だから/でも), choice (season/month/activity noun); reconstructs second reply",
+      "recycles": "Every earlier path: P1 narration, P2 opinion, P6 results, P7 purpose/conditions, P8 habits; at least two families per lesson",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "今年",
+          "beat": "Friend asks your year; this year worked, traveled, studied; asks best part; you reply."
+        },
+        {
+          "number": 2,
+          "trophy": "挑戦",
+          "beat": "Teacher asks progress; challenge was speaking, practiced daily; asks hardest part; reply."
+        },
+        {
+          "number": 3,
+          "trophy": "季節",
+          "beat": "Colleague asks favorite season; autumn, hiking and festivals; asks why; you explain."
+        },
+        {
+          "number": 4,
+          "trophy": "思い出",
+          "beat": "Friend asks memory; best memory was hot spring trip; asks with whom; reply."
+        },
+        {
+          "number": 5,
+          "trophy": "成長",
+          "beat": "Mentor asks growth; grew in confidence, speak at meetings; asks example; you give."
+        },
+        {
+          "number": 6,
+          "trophy": "感謝",
+          "beat": "Host asks feelings; gratitude to colleagues who helped; asks how you thank; plan."
+        },
+        {
+          "number": 7,
+          "trophy": "夢",
+          "beat": "Friend asks dream; open small cafe someday, saving now; asks where; you reply."
+        },
+        {
+          "number": 8,
+          "trophy": "春",
+          "beat": "Coworker asks spring; transfer decided for spring, moving; asks nervous; you reply."
+        },
+        {
+          "number": 9,
+          "trophy": "家族",
+          "beat": "Neighbor asks family; family visits May, showing Kyoto; asks plans; you detail."
+        },
+        {
+          "number": 10,
+          "trophy": "休み",
+          "beat": "Teacher asks holiday; intend to rest then study; asks balance; you reply."
+        }
+      ]
+    }
+  ],
+  "unresolvedDecisions": [
+    "RESOLVED for this batch: B1 runtime already uses recordingSecondsByLevel.B1=15 and threshold 0.65 (not the historical A2 value 12); keep both and the existing ASR behavior unchanged. A pilot measuring median utterance length for 30-38 character replies may later revisit, but no runtime change is part of this spec.",
+    "RESOLVED: suru tails are accepted via the closed allowlist in segmentation.trophyAnchoring, but only when the lesson's recorded trophySurface.tailKind is 'suru' and the exact remainder (する/します/しました/しています/しましたか/して/してしまって etc.) is on the list. Authors may freely choose the noun surface (故障です, 連絡が) instead; validator owner sign-off is only needed on the allowlist text itself, not per lesson.",
+    "Interlocutor gender wording in German situation text (Vermieter/Vermieterin): adopt role nouns like 'die Hausverwaltung' or alternate genders per lesson.",
+    "Kanji inventory cutoff for canonical text (N3-common list vs. jōyō frequency) to be fixed before authoring.",
+    "RESOLVED for this batch: cloze choices are plain strings only (no reading objects exist in the staged schema); kana display and choice audio are out of scope until a TTS regeneration plan and a schema change exist."
+  ]
+}

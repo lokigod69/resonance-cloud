@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "reviewedSources": {
+    "frontend/content-drafts/b1-native-2026-10/japanese/p1.json": "d347cfcf251d7cbc7b04db8429b7cb8c28daebd22d8e7d63164e87f05b7d4bb9",
+    "frontend/content-drafts/b1-native-2026-10/japanese/p2.json": "2409ccee00d6608ce317300378d5016097fa74989be17cfd97a4d19307592d18"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b1-native-2026-10/japanese/specification.json": "a7c2090f6b393ea02cbfd6b82200ca76cb47c2fb98610ed41752c5d4e1c49f4e"
+  },
+  "reviewedReadingSheets": {
+    "frontend/content-drafts/b1-native-2026-10/japanese/reading-sheet.json": "ff1a62863e289e10383bd7f376b96def047bd1f4d0f44f9ed0121d41180e8e8e"
+  },
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/japanese/specification.json",
+      "sha256": "a7c2090f6b393ea02cbfd6b82200ca76cb47c2fb98610ed41752c5d4e1c49f4e",
+      "reviewedScratchSha256": "7da6136e2791a6c99e763baed4bd089d397c33979863ef6d6dd8a75c21b73ea8",
+      "transformation": "CRLF to LF only; complete byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/japanese/reading-sheet.json",
+      "sha256": "ff1a62863e289e10383bd7f376b96def047bd1f4d0f44f9ed0121d41180e8e8e",
+      "reviewedScratchSha256": "ff1a62863e289e10383bd7f376b96def047bd1f4d0f44f9ed0121d41180e8e8e",
+      "transformation": "CRLF to LF only; complete byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/japanese/p1.json",
+      "sha256": "d347cfcf251d7cbc7b04db8429b7cb8c28daebd22d8e7d63164e87f05b7d4bb9",
+      "reviewedScratchSha256": "d347cfcf251d7cbc7b04db8429b7cb8c28daebd22d8e7d63164e87f05b7d4bb9",
+      "transformation": "CRLF to LF only; complete byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/japanese/p2.json",
+      "sha256": "2409ccee00d6608ce317300378d5016097fa74989be17cfd97a4d19307592d18",
+      "reviewedScratchSha256": "2409ccee00d6608ce317300378d5016097fa74989be17cfd97a4d19307592d18",
+      "transformation": "CRLF to LF only; complete byte equality asserted after normalization."
+    }
+  ],
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "JA-B1-PUB-1",
+      "severity": "HIGH",
+      "affectsLocalTts": false,
+      "file": "../../orchestrator/frontend/src/components/today/RolePlayStep.tsx",
+      "line": 172,
+      "title": "Reviewed kana evidence is not yet consumed by both speech turns and typed answers",
+      "current": "The reviewed reading sheet is off-schema. RolePlayStep passes acceptedAnswers only for turn one, and its second-turn required tokens come only from canonical cloze answers. ComplicationStep and TypeRecallStep accept only explicitly integrated acceptedAnswers; the CJK checker removes spaces but cannot convert kanji/kana.",
+      "impact": "If these drafts were published with a canonical-only adapter, correct kana-only input or ASR could be rejected, including the second spoken reply. Text-level reading approval alone does not prove runtime acceptance.",
+      "concreteFix": "Before publication, implement and independently test a reviewed-sidecar adapter for canonical plus exact authored kana cloze/recall answers and both spoken replies, and honor reviewed token-pair alternatives where token scoring is used. Keep canonical TTS surfaces single-counted and keep current recording/scoring settings pending the measured pilot. This is deferred integration work, not a change requested to the approved canonical audio text.",
+      "verification": "Exercise canonical, unspaced kana and reviewed alternative-kanji input on both role-play turns and every typed answer in the real Japanese B1 fixture."
+    },
+    {
+      "id": "JA-B1-PUB-2",
+      "severity": "MEDIUM",
+      "affectsLocalTts": false,
+      "file": "reviewed-content/japanese-p1.json",
+      "jsonPointer": "/lessons/0/pattern/label",
+      "relatedLocation": "../../orchestrator/frontend/src/components/today/PatternStep.tsx:62; ../../orchestrator/frontend/src/lib/guidedBaseFields.ts:6",
+      "title": "German-only pattern headings remain visible to English-base learners",
+      "current": "All 20 pattern.label values contain German explanatory headings. PatternStep prints pattern.label directly, and collectGuidedBaseFields visits only objects, so a bare string label is not localized by a generated base edition.",
+      "impact": "English-base learners receive an untranslated German heading even though rule and example translations are available in English.",
+      "concreteFix": "Before publication, supply an approved locale-aware pattern-label mapping, or exact bilingual labels in the existing string field as already done for form cues. Keep source status draft until the chosen publication path is tested.",
+      "verification": "Render all pattern labels with German and English base preferences and confirm each heading is understandable. Label edits do not alter the canonical spoken surfaces."
+    }
+  ],
+  "scope": "Exact canonical spoken text for local TTS only. Full kana sidecar is review evidence, never additional synthesized inventory. Complete nonspoken findings remain publication holds; no human-native, listening or publication approval.",
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "/root/japanese_b1_content_gate_review",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "b6ff9177ba567f10b95ba2b4657f2587a9e679a82831a1493876912e4e637c46",
+  "rawReview": {
+    "kind": "japanese-b1-p1-p2-independent-content-review",
+    "date": "2026-10-05",
+    "reviewRound": 1,
+    "reviewer": "/root/japanese_b1_content_gate_review",
+    "independentReview": true,
+    "authorOfContent": false,
+    "humanNativeReview": false,
+    "scope": "Personally read every authored field of the exact reviewed P1/P2 files and every reading-sheet field. App read-only; only the two assigned scratch reports written. No database, provider, paid call, git operation, audio generation or publication.",
+    "verdict": "PASS",
+    "localTtsContentVerdict": "PASS",
+    "unresolvedLocalTtsBlockers": [],
+    "publicationVerdict": "REWORK",
+    "publicationAuthorized": false,
+    "sourceFlagsRemainPending": true,
+    "reviewedReadingSheetSha256": "ff1a62863e289e10383bd7f376b96def047bd1f4d0f44f9ed0121d41180e8e8e",
+    "readingSheetCoverage": {
+      "personallyReadEveryRow": true,
+      "readings": 460,
+      "tokens": 60,
+      "surfaces": 40,
+      "allReviewNotesRead": true,
+      "allDistractorReadingsRead": true,
+      "pathNumbers": [
+        1,
+        2
+      ],
+      "lessonsReadByPath": {
+        "1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "2": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    "fullCoverage": {
+      "personallyReadEveryField": true,
+      "files": [
+        {
+          "file": "reviewed-content/japanese-p1.json",
+          "pathNumber": 1,
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "allFieldsRead": true
+        },
+        {
+          "file": "reviewed-content/japanese-p2.json",
+          "pathNumber": 2,
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "allFieldsRead": true
+        }
+      ],
+      "fields": "Path metadata; all lesson titles, situations, pedagogical goals, register, 80 dialogue turns and both base texts, pattern labels/rules/40 examples/highlights, all cloze text/answers/cues/choices, 80 chunks, 120 terms, recall pieces/fallbacks, 60 speakRequired units, both scene and placeholder captions, trophy word/meaning/example/whyThisWord, 40 build distractors, songMood and visualNotes. All 460 sidecar canonical/kana/pointer rows, 60 token pairs, 40 exact trophy surfaces and all reviewNotes read."
+    },
+    "reviewedSources": [
+      {
+        "path": "reviewed-content/japanese-p1.json",
+        "sha256": "d347cfcf251d7cbc7b04db8429b7cb8c28daebd22d8e7d63164e87f05b7d4bb9",
+        "coverage": "Every field, lessons 1-10"
+      },
+      {
+        "path": "reviewed-content/japanese-p2.json",
+        "sha256": "2409ccee00d6608ce317300378d5016097fa74989be17cfd97a4d19307592d18",
+        "coverage": "Every field, lessons 1-10"
+      },
+      {
+        "path": "reviewed-content/japanese-p1-p2-reading-review.json",
+        "sha256": "ff1a62863e289e10383bd7f376b96def047bd1f4d0f44f9ed0121d41180e8e8e",
+        "coverage": "Entire sidecar including reviewNotes and both distractor readings per lesson"
+      },
+      {
+        "path": "B1_NATIVE_JAPANESE_AUTHORING_SPEC.json",
+        "sha256": "7da6136e2791a6c99e763baed4bd089d397c33979863ef6d6dd8a75c21b73ea8",
+        "coverage": "Controlling full native specification; global rules, P1/P2 stages and beats, all 100 allocations"
+      },
+      {
+        "path": "B1_JAPANESE_P1_P2_FABLE_REVIEW_RAW.json",
+        "sha256": "fb5631d5ba29735b2f60719057c9f9f86db366b27a579067bb7bf9efe7cdb593",
+        "coverage": "Full result, read-through, arbitration and all 14 exact edits; not substituted for personal review"
+      },
+      {
+        "path": "B1_JAPANESE_P1_P2_REVIEWED_SOURCE_HASHES.json",
+        "sha256": "120ac1a6ac0be79496a5b1f1bc498b52f5136344c39d163983db0a12b9daf089",
+        "coverage": "Original-source hashes checked against bytes"
+      },
+      {
+        "path": "B1_JAPANESE_P1_P2_APPLIED_HASHES.json",
+        "sha256": "88eb1eeb59bfcbbb54c99130fe539a7b008ec7679706c9791c44b701e36c2fcf",
+        "coverage": "Applied hashes checked against bytes"
+      },
+      {
+        "path": "new-content/japanese-p1.json",
+        "sha256": "e5d87bd887185536a327a5badd154599aa8b1ebeeb775c63c274b3fd3e2a0c4f",
+        "coverage": "Original loaded and exact replay checked"
+      },
+      {
+        "path": "new-content/japanese-p2.json",
+        "sha256": "2dc99eaa4ba28ec22f30f339f2f2a49fa0c111f7758aba5d310f0b881ac3308c",
+        "coverage": "Original loaded and exact replay checked"
+      },
+      {
+        "path": "new-content/japanese-p1-p2-reading-review.json",
+        "sha256": "ce0e76d32059c8c143a84997cdfe96fa5107243aad5d319a9a3d005d6a134f65",
+        "coverage": "Original loaded and exact replay checked"
+      },
+      {
+        "path": "new-content/japanese-p1-p2-author-report.json",
+        "sha256": "2d53f2af817b7346e824404fb2e506238295105c2986ee6b157c81735816e283",
+        "coverage": "Full self-review report read; limitations independently assessed"
+      },
+      {
+        "path": "../../orchestrator/frontend/src/data/guided/japaneseA1.ts",
+        "sha256": "9b8f5911a4d269a360e0ca0078fe3c0c37549da8a472fc4f8eac68b2be975919",
+        "coverage": "Imported frozen corpus trophy inventory"
+      },
+      {
+        "path": "../../orchestrator/frontend/src/data/guided/japaneseA2.ts",
+        "sha256": "6ddf4a8054d068f2dfdd65c8df9ffc2fff81e73abda89e068edf15ba2667a835",
+        "coverage": "Imported frozen corpus trophy inventory"
+      },
+      {
+        "path": "../../orchestrator/frontend/src/components/today/ComplicationStep.tsx",
+        "sha256": "26dbba90f8d79bab3daa4a265481f4b58e85f337f2bc2e7af7ec5417f065f4d2",
+        "coverage": "Full renderer: follow-up base visible, second-reply base hidden, authored form cues visible"
+      },
+      {
+        "path": "../../orchestrator/frontend/src/components/today/BuildPhraseStep.tsx",
+        "sha256": "3fa4b962b91045d88ade7a435c1d1e016ef6b53484e2d746ac40544329e16bb9",
+        "coverage": "Exact order comparison and visible first-reply translation"
+      },
+      {
+        "path": "../../orchestrator/frontend/src/components/today/TypeRecallStep.tsx",
+        "sha256": "a0a738b243c005a51154dde621d8edcfb049f64a7e849241c3bce36b8312d218",
+        "coverage": "Recall context and accepted-answer behavior"
+      },
+      {
+        "path": "../../orchestrator/frontend/src/components/today/PatternStep.tsx",
+        "sha256": "dc022f13d68ac6ed7c15866ec5a9e1b4cb7e6f5abe04edf28cad8da7abb259b6",
+        "coverage": "Full pattern renderer and direct label display"
+      },
+      {
+        "path": "../../orchestrator/frontend/src/components/today/RolePlayStep.tsx",
+        "sha256": "1f74d6353aacbd602822b10ab5ec8d14f393a6cbfc1aa5ad254826ce49e6a91f",
+        "coverage": "Both-turn speech props and second-turn token derivation"
+      },
+      {
+        "path": "../../orchestrator/frontend/src/lib/guidedSpeechCheck.ts",
+        "sha256": "17e56b56bb1164f27eff6c1bc34e9f341b3c3a3864d75ccc397eb573b7fef19a",
+        "coverage": "CJK space-insensitive exact/variant/token matching; no kana conversion"
+      },
+      {
+        "path": "../../orchestrator/frontend/src/lib/guidedBaseFields.ts",
+        "sha256": "dba533e9be31560e8a29dcb3cc2ab0155503429bb4fcd344876fbe6800cced49",
+        "coverage": "Full collector; only locale objects enter base editions, string labels do not"
+      }
+    ],
+    "checks": {
+      "exactReplay": {
+        "result": "PASS",
+        "edits": 14,
+        "method": "Loaded original JSON; asserted every oldValue, applied each newValue in memory, deep-compared all three complete resulting objects to reviewed files. Original and applied hash ledgers match actual bytes."
+      },
+      "frozenBoundaries": {
+        "result": "PASS",
+        "actualFrozenLessons": 200,
+        "actualDistinctFrozenTrophies": 200,
+        "reservedAllocations": 100,
+        "distinctAllocations": 100,
+        "collisions": [],
+        "method": "Imported actual GUIDED_LESSONS and compared all Japanese trophies under NFC/casefold with the full spec."
+      },
+      "actualOfflineGate": {
+        "result": "PASS_FOR_THESE_20_LESSONS",
+        "command": "node --import tsx D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/validate-japanese-actual-gate.mjs",
+        "warnings": "Ten manual-staging warnings per path only; engineering approval is separately REWORK."
+      },
+      "nativeJapanese": "No issue: natural polite adult-peer main clauses, licensed subordinate plain forms, attached particles/copulas, kanji numerals and complete native units. P2 L2's revised concession and P1 L7's revised timeline are coherent.",
+      "fourTurnEpisodes": "No issue: all follow-ups add a question or constraint, and all second replies continue it. P1 L9 answers the change question through いいえ and their familiar shared laughter; compressed but coherent. No staff-only outcome asserted by a learner.",
+      "staging": "No issue: P1 L1-3 te chains, L4-6 past ongoing/toki/tara, L7-10 node/te-kara; P2 L1-2 opinion/concession, exact amended tashikani frame in L3, shi/temo/demo L4-6, hedge/opinion reservation L7-10. Recognition-only interlocutor material was not misclassified as learner production.",
+      "visibleConstraints": "No issue for offered alternatives: ComplicationStep shows both the follow-up translation and every bilingual form cue. Those cues expressly require kedo, ga, kamoshiremasen, te-link or affirmative/past forms, so otherwise grammatical different forms are excluded without relying on hidden dialogue[3].baseText. Build shows the first-reply translation and uses exact string order. Personally checked every offered distractor/fallback and the four-chip groupings for a same-meaning alternative; none found.",
+      "baseTexts": "No issue in German/English sentence meanings and explanations. German-only pattern labels are a publication finding below.",
+      "readings": "No issue in all 460 rows: lexical readings, particles は/へ, katakana loanwords, gemination, number readings, correspondence, spacing and punctuation checked personally. All 60 token pairs match their first-reply unit; all 40 trophy surfaces obey exact closed tails. No automatic kana generation or human accent certification claimed.",
+      "trophies": "No issue: lexical trophies are naturally anchored by the recorded exact whole unit and permitted remainder; 急に and 確かに are intact lexicalized adverbs. Frozen A1/A2 content untouched.",
+      "visualVerification": "Not run: this is a scratch-content and static renderer review, with no integrated Japanese B1 runtime lesson."
+    },
+    "remainingPublicationFindings": [
+      {
+        "id": "JA-B1-PUB-1",
+        "severity": "HIGH",
+        "affectsLocalTts": false,
+        "file": "../../orchestrator/frontend/src/components/today/RolePlayStep.tsx",
+        "line": 172,
+        "title": "Reviewed kana evidence is not yet consumed by both speech turns and typed answers",
+        "current": "The reviewed reading sheet is off-schema. RolePlayStep passes acceptedAnswers only for turn one, and its second-turn required tokens come only from canonical cloze answers. ComplicationStep and TypeRecallStep accept only explicitly integrated acceptedAnswers; the CJK checker removes spaces but cannot convert kanji/kana.",
+        "impact": "If these drafts were published with a canonical-only adapter, correct kana-only input or ASR could be rejected, including the second spoken reply. Text-level reading approval alone does not prove runtime acceptance.",
+        "concreteFix": "Before publication, implement and independently test a reviewed-sidecar adapter for canonical plus exact authored kana cloze/recall answers and both spoken replies, and honor reviewed token-pair alternatives where token scoring is used. Keep canonical TTS surfaces single-counted and keep current recording/scoring settings pending the measured pilot. This is deferred integration work, not a change requested to the approved canonical audio text.",
+        "verification": "Exercise canonical, unspaced kana and reviewed alternative-kanji input on both role-play turns and every typed answer in the real Japanese B1 fixture."
+      },
+      {
+        "id": "JA-B1-PUB-2",
+        "severity": "MEDIUM",
+        "affectsLocalTts": false,
+        "file": "reviewed-content/japanese-p1.json",
+        "jsonPointer": "/lessons/0/pattern/label",
+        "relatedLocation": "../../orchestrator/frontend/src/components/today/PatternStep.tsx:62; ../../orchestrator/frontend/src/lib/guidedBaseFields.ts:6",
+        "title": "German-only pattern headings remain visible to English-base learners",
+        "current": "All 20 pattern.label values contain German explanatory headings. PatternStep prints pattern.label directly, and collectGuidedBaseFields visits only objects, so a bare string label is not localized by a generated base edition.",
+        "impact": "English-base learners receive an untranslated German heading even though rule and example translations are available in English.",
+        "concreteFix": "Before publication, supply an approved locale-aware pattern-label mapping, or exact bilingual labels in the existing string field as already done for form cues. Keep source status draft until the chosen publication path is tested.",
+        "verification": "Render all pattern labels with German and English base preferences and confirm each heading is understandable. Label edits do not alter the canonical spoken surfaces."
+      }
+    ],
+    "contentFindingsAffectingLocalTts": [],
+    "limitations": [
+      "This approves the exact text for a separately authorized local TTS process; it authorizes no paid call or publication and proves no audio or ASR quality.",
+      "The whole reading sidecar is hash-bound evidence, not additional TTS inventory.",
+      "No human-native-review claim is made. Canonical source flags remain pending.",
+      "The engineering gate verdict and its two required fixes are in B1_JAPANESE_GATE_INDEPENDENT_REVIEW.json."
+    ]
+  }
+}

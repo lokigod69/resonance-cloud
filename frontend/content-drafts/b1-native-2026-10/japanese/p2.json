@@ -1,0 +1,2130 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Japanese",
+  "targetLanguageCode": "ja-JP",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Meine Meinung",
+    "en": "Weighing in"
+  },
+  "subtitle": {
+    "de": "Eine Ansicht begründen, abwägen und anpassen",
+    "en": "Explain, weigh and adjust a point of view"
+  },
+  "anchor": "Polite Japanese opinions with an interested listener and a meaningful follow-up.",
+  "lessons": [
+    {
+      "slug": "iken-shift-plan",
+      "title": {
+        "de": "Zum neuen Schichtplan",
+        "en": "The new shift plan"
+      },
+      "situation": {
+        "de": "Bei der Arbeit besprecht ihr einen neuen Schichtplan.",
+        "en": "At work, you discuss a proposed shift schedule."
+      },
+      "pedagogicalGoal": "Eine eigene Meinung mit 〜と思います äußern und einen Einwand mit けど abwägen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "新しい シフトの 案を 見ましたか。 どう 思いますか。",
+          "baseText": {
+            "de": "Hast du den neuen Vorschlag für den Schichtplan gesehen? Was denkst du darüber?",
+            "en": "Have you seen the new shift proposal? What do you think?"
+          }
+        },
+        {
+          "targetText": "私の 意見ですが、 早い シフトの 方が いいと 思います。",
+          "baseText": {
+            "de": "Meiner Meinung nach ist die frühe Schicht besser.",
+            "en": "In my opinion, the early shift is better."
+          }
+        },
+        {
+          "targetText": "遅い シフトも 選べますよ。 朝が いいのは なぜですか。",
+          "baseText": {
+            "de": "Du kannst auch die späte Schicht wählen. Warum ist dir morgens lieber?",
+            "en": "You can choose the late shift too. Why do you prefer mornings?"
+          }
+        },
+        {
+          "targetText": "遅い シフトも 便利ですけど、 朝の 方が 元気だと 思います。",
+          "baseText": {
+            "de": "Die späte Schicht ist auch praktisch, aber ich glaube, morgens bin ich fitter.",
+            "en": "The late shift is convenient too, but I think I have more energy in the morning."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜と思います: eine Ansicht äußern",
+        "rule": {
+          "de": "Vor と思います steht eine einfache Form; bei einem な-Adjektiv wie 元気 steht dabei だ.",
+          "en": "A plain form precedes と思います; a な-adjective such as 元気 takes だ here."
+        },
+        "examples": [
+          {
+            "targetText": "私の 意見ですが、 早い シフトの 方が いいと 思います。",
+            "baseText": {
+              "de": "Meiner Meinung nach ist die frühe Schicht besser.",
+              "en": "In my opinion, the early shift is better."
+            },
+            "highlight": "いいと 思います"
+          },
+          {
+            "targetText": "この 案は 便利だと 思います。",
+            "baseText": {
+              "de": "Ich halte diesen Vorschlag für praktisch.",
+              "en": "I think this proposal is convenient."
+            },
+            "highlight": "便利だと 思います"
+          }
+        ]
+      },
+      "cloze": [
+        "遅い シフトも ",
+        {
+          "kind": "form",
+          "answer": "便利ですけど",
+          "cue": "便利だ → höflicher Einwand mit けど / polite concession with けど",
+          "choices": [
+            "便利ですけど",
+            "便利だ",
+            "便利な",
+            "便利で"
+          ]
+        },
+        "、 朝の 方が ",
+        {
+          "kind": "form",
+          "answer": "元気だと",
+          "cue": "元気だ → einfache Aussage vor 思います / plain statement before 思います",
+          "choices": [
+            "元気だと",
+            "元気な",
+            "元気に",
+            "元気で"
+          ]
+        },
+        " 思います。"
+      ],
+      "chunks": [
+        {
+          "targetText": "私の 意見ですが、",
+          "baseText": {
+            "de": "meiner Meinung nach",
+            "en": "in my opinion"
+          }
+        },
+        {
+          "targetText": "早い シフトの",
+          "baseText": {
+            "de": "die frühe Schicht",
+            "en": "the early shift"
+          }
+        },
+        {
+          "targetText": "方が いいと",
+          "baseText": {
+            "de": "ist die bessere Wahl",
+            "en": "is the better option"
+          }
+        },
+        {
+          "targetText": "思います。",
+          "baseText": {
+            "de": "finde ich",
+            "en": "I think"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "意見",
+          "baseText": {
+            "de": "Meinung",
+            "en": "opinion"
+          }
+        },
+        {
+          "targetText": "シフト",
+          "baseText": {
+            "de": "Arbeitsschicht",
+            "en": "work shift"
+          }
+        },
+        {
+          "targetText": "案",
+          "baseText": {
+            "de": "Vorschlag; Entwurf",
+            "en": "proposal; draft"
+          }
+        },
+        {
+          "targetText": "早い",
+          "baseText": {
+            "de": "früh",
+            "en": "early"
+          }
+        },
+        {
+          "targetText": "いいと 思います",
+          "baseText": {
+            "de": "ich halte es für gut",
+            "en": "I think it is good"
+          }
+        },
+        {
+          "targetText": "元気だと",
+          "baseText": {
+            "de": "dass ich fit bin",
+            "en": "that I have energy"
+          }
+        }
+      ],
+      "recall": {
+        "before": "私の 意見ですが、 ",
+        "answer": "早い",
+        "after": " シフトの 方が いいと 思います。",
+        "fallbackChoices": [
+          "早い",
+          "早く",
+          "早くて",
+          "早さ"
+        ]
+      },
+      "speakRequired": [
+        "意見ですが",
+        "シフトの",
+        "思います"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „新しい シフトの 案を 見ましたか。 どう 思いますか。“",
+        "en": "The conversation opens with this question: “新しい シフトの 案を 見ましたか。 どう 思いますか。”"
+      },
+      "trophyWord": {
+        "word": "意見",
+        "meaning": {
+          "de": "Meinung",
+          "en": "opinion"
+        },
+        "example": "私の 意見も 聞いて ください。",
+        "whyThisWord": {
+          "de": "Damit kennzeichnest du einen persönlichen Standpunkt, ohne ihn als Tatsache auszugeben.",
+          "en": "It labels a personal view without presenting it as a fact."
+        }
+      },
+      "distractors": [
+        "遅い シフトの",
+        "方が 忙しいと"
+      ],
+      "placeholderCaption": {
+        "de": "Bei der Arbeit besprecht ihr einen neuen Schichtplan.",
+        "en": "At work, you discuss a proposed shift schedule."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Colleagues with a simple draft schedule; no preference or reason shown before the reply."
+    },
+    {
+      "slug": "benri-car-costs",
+      "title": {
+        "de": "Ein Auto abwägen",
+        "en": "Weighing up a car"
+      },
+      "situation": {
+        "de": "Eine befreundete Person überlegt, ein Auto zu kaufen, und fragt dich nach deiner Sicht.",
+        "en": "A friend is considering buying a car and asks for your view."
+      },
+      "pedagogicalGoal": "Praktischen Nutzen und laufende Kosten mit einer höflichen Meinung gegeneinander abwägen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "車を 買おうか 迷っています。 どう 思いますか。",
+          "baseText": {
+            "de": "Ich überlege, ob ich ein Auto kaufen soll. Was denkst du?",
+            "en": "I am wondering whether to buy a car. What do you think?"
+          }
+        },
+        {
+          "targetText": "車は とても 便利ですが、 毎月の 出費が 多いと 思います。",
+          "baseText": {
+            "de": "Ein Auto ist sehr praktisch, aber ich glaube, die monatlichen Ausgaben sind hoch.",
+            "en": "A car is very convenient, but I think the monthly expenses are high."
+          }
+        },
+        {
+          "targetText": "家の 近くに 駐車場が ありますが、 月に 二万円です。",
+          "baseText": {
+            "de": "Es gibt einen Parkplatz in der Nähe meiner Wohnung, aber er kostet zwanzigtausend Yen im Monat.",
+            "en": "There is parking near my home, but it costs twenty thousand yen a month."
+          }
+        },
+        {
+          "targetText": "駐車場も 高いですけど、 車は 役に 立つと 思います。",
+          "baseText": {
+            "de": "Auch der Parkplatz ist teuer, aber ich glaube, ein Auto ist nützlich.",
+            "en": "Parking is expensive too, but I think a car is useful."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜ですけど、〜と思います",
+        "rule": {
+          "de": "Mit ですけど oder dem etwas förmlicheren ですが räumst du einen Nachteil ein und führst danach deine höflich formulierte Einschätzung weiter.",
+          "en": "ですけど, or the slightly more formal ですが, concedes a disadvantage before you continue with a politely expressed view."
+        },
+        "examples": [
+          {
+            "targetText": "車は とても 便利ですが、 毎月の 出費が 多いと 思います。",
+            "baseText": {
+              "de": "Ein Auto ist sehr praktisch, aber ich glaube, die monatlichen Ausgaben sind hoch.",
+              "en": "A car is very convenient, but I think the monthly expenses are high."
+            },
+            "highlight": "多いと 思います"
+          },
+          {
+            "targetText": "店は 遠いですけど、 料理は おいしいと 思います。",
+            "baseText": {
+              "de": "Das Lokal ist weit weg, aber ich finde das Essen lecker.",
+              "en": "The restaurant is far away, but I think the food is delicious."
+            },
+            "highlight": "遠いですけど"
+          }
+        ]
+      },
+      "cloze": [
+        "駐車場も ",
+        {
+          "kind": "form",
+          "answer": "高いですけど",
+          "cue": "高い → höflicher Einwand mit けど / polite concession with けど",
+          "choices": [
+            "高いですけど",
+            "高い",
+            "高く",
+            "高さ"
+          ]
+        },
+        "、 車は 役に ",
+        {
+          "kind": "form",
+          "answer": "立つと",
+          "cue": "立つ → einfache Aussage vor 思います / plain statement before 思います",
+          "choices": [
+            "立つと",
+            "立って",
+            "立てば",
+            "立ったら"
+          ]
+        },
+        " 思います。"
+      ],
+      "chunks": [
+        {
+          "targetText": "車は",
+          "baseText": {
+            "de": "ein Auto",
+            "en": "a car"
+          }
+        },
+        {
+          "targetText": "とても 便利ですが、 毎月の",
+          "baseText": {
+            "de": "ist sehr praktisch, aber die monatlichen",
+            "en": "is very convenient, but the monthly"
+          }
+        },
+        {
+          "targetText": "出費が 多いと",
+          "baseText": {
+            "de": "Ausgaben sind hoch",
+            "en": "expenses are high"
+          }
+        },
+        {
+          "targetText": "思います。",
+          "baseText": {
+            "de": "denke ich",
+            "en": "I think"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "便利",
+          "baseText": {
+            "de": "praktisch; bequem",
+            "en": "convenient"
+          }
+        },
+        {
+          "targetText": "毎月",
+          "baseText": {
+            "de": "jeden Monat",
+            "en": "every month"
+          }
+        },
+        {
+          "targetText": "出費",
+          "baseText": {
+            "de": "Ausgaben",
+            "en": "expenses"
+          }
+        },
+        {
+          "targetText": "多いと 思います",
+          "baseText": {
+            "de": "ich halte es für viel",
+            "en": "I think there is a lot"
+          }
+        },
+        {
+          "targetText": "駐車場",
+          "baseText": {
+            "de": "Parkplatz",
+            "en": "parking area"
+          }
+        },
+        {
+          "targetText": "役に 立つ",
+          "baseText": {
+            "de": "nützlich sein",
+            "en": "be useful"
+          }
+        }
+      ],
+      "recall": {
+        "before": "車は とても 便利ですが、 ",
+        "answer": "毎月の",
+        "after": " 出費が 多いと 思います。",
+        "fallbackChoices": [
+          "毎月の",
+          "毎月に",
+          "毎月を",
+          "毎月で"
+        ]
+      },
+      "speakRequired": [
+        "車は",
+        "便利ですが",
+        "出費が"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „車を 買おうか 迷っています。 どう 思いますか。“",
+        "en": "The conversation opens with this question: “車を 買おうか 迷っています。 どう 思いますか。”"
+      },
+      "trophyWord": {
+        "word": "便利",
+        "meaning": {
+          "de": "praktisch; bequem",
+          "en": "convenient"
+        },
+        "example": "この 地図は とても 便利です。",
+        "whyThisWord": {
+          "de": "Damit bewertest du, ob etwas deinen Alltag einfacher macht.",
+          "en": "Use it to say whether something makes everyday life easier."
+        }
+      },
+      "distractors": [
+        "出費が 少ないと",
+        "不便です。 毎月の"
+      ],
+      "placeholderCaption": {
+        "de": "Eine befreundete Person überlegt, ein Auto zu kaufen, und fragt dich nach deiner Sicht.",
+        "en": "A friend is considering buying a car and asks for your view."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Friends discussing a possible purchase; no parking price or confirmed purchase pictured."
+    },
+    {
+      "slug": "tashikani-cafe",
+      "title": {
+        "de": "Gut, aber weit weg",
+        "en": "Good, but far away"
+      },
+      "situation": {
+        "de": "Bei einem Gespräch geht es um ein neu eröffnetes Café.",
+        "en": "You discuss a newly opened cafe."
+      },
+      "pedagogicalGoal": "Den ausdrücklich freigegebenen festen Rahmen 確かに〜けど verwenden und eine Alternative vorschlagen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "新しい カフェの ケーキは おいしいですね。 どう 思いますか。",
+          "baseText": {
+            "de": "Der Kuchen im neuen Café ist lecker, oder? Was meinst du?",
+            "en": "The cake at the new cafe is delicious, isn’t it? What do you think?"
+          }
+        },
+        {
+          "targetText": "確かに おいしいですけど、 駅から かなり 遠いと 思います。",
+          "baseText": {
+            "de": "Er ist wirklich lecker, aber ich finde das Café ziemlich weit vom Bahnhof entfernt.",
+            "en": "It certainly is delicious, but I think the cafe is quite far from the station."
+          }
+        },
+        {
+          "targetText": "もっと 近い お店は ありますか。 どこが いいですか。",
+          "baseText": {
+            "de": "Gibt es ein näheres Lokal? Welches wäre gut?",
+            "en": "Is there a closer place? Which one would be good?"
+          }
+        },
+        {
+          "targetText": "駅前の 店で 食べる 方が いいと 思います。",
+          "baseText": {
+            "de": "Ich finde, wir sollten lieber im Lokal vor dem Bahnhof essen.",
+            "en": "I think it would be better to eat at the place in front of the station."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "確かに〜けど: einen Punkt zugestehen",
+        "rule": {
+          "de": "確かに bestätigt hier eine Bewertung; mit けど und einem höflichen Hauptsatz schließt du deinen Vorbehalt an.",
+          "en": "Here 確かに acknowledges an evaluation; けど and a polite main clause introduce your reservation."
+        },
+        "examples": [
+          {
+            "targetText": "確かに おいしいですけど、 駅から かなり 遠いと 思います。",
+            "baseText": {
+              "de": "Er ist wirklich lecker, aber ich finde das Café ziemlich weit vom Bahnhof entfernt.",
+              "en": "It certainly is delicious, but I think the cafe is quite far from the station."
+            },
+            "highlight": "確かに おいしいですけど"
+          },
+          {
+            "targetText": "確かに 高いですけど、 とても 丈夫です。",
+            "baseText": {
+              "de": "Es ist zwar teuer, aber sehr robust.",
+              "en": "It certainly is expensive, but it is very sturdy."
+            },
+            "highlight": "確かに 高いですけど"
+          }
+        ]
+      },
+      "cloze": [
+        "駅前の 店で ",
+        {
+          "kind": "form",
+          "answer": "食べる",
+          "cue": "食べる → Grundform vor 方が / dictionary form before 方が",
+          "choices": [
+            "食べる",
+            "食べて",
+            "食べます",
+            "食べれば"
+          ]
+        },
+        " 方が いいと ",
+        {
+          "kind": "form",
+          "answer": "思います",
+          "cue": "思う → bejahte höfliche Gegenwart / affirmative polite non-past",
+          "choices": [
+            "思います",
+            "思いました",
+            "思いません",
+            "思う"
+          ]
+        },
+        "。"
+      ],
+      "chunks": [
+        {
+          "targetText": "確かに おいしいですけど、",
+          "baseText": {
+            "de": "es ist wirklich lecker, aber",
+            "en": "it certainly is delicious, but"
+          }
+        },
+        {
+          "targetText": "駅から かなり",
+          "baseText": {
+            "de": "vom Bahnhof ziemlich",
+            "en": "quite a way from the station"
+          }
+        },
+        {
+          "targetText": "遠いと",
+          "baseText": {
+            "de": "ist es weit weg",
+            "en": "it is far"
+          }
+        },
+        {
+          "targetText": "思います。",
+          "baseText": {
+            "de": "finde ich",
+            "en": "I think"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "確かに",
+          "baseText": {
+            "de": "tatsächlich; zugegeben",
+            "en": "certainly; admittedly"
+          }
+        },
+        {
+          "targetText": "おいしいですけど",
+          "baseText": {
+            "de": "es schmeckt gut, aber",
+            "en": "it is delicious, but"
+          }
+        },
+        {
+          "targetText": "駅から",
+          "baseText": {
+            "de": "vom Bahnhof aus",
+            "en": "from the station"
+          }
+        },
+        {
+          "targetText": "遠い",
+          "baseText": {
+            "de": "weit entfernt",
+            "en": "far away"
+          }
+        },
+        {
+          "targetText": "駅前",
+          "baseText": {
+            "de": "vor dem Bahnhof",
+            "en": "in front of the station"
+          }
+        },
+        {
+          "targetText": "食べる 方が いい",
+          "baseText": {
+            "de": "es ist besser, dort zu essen",
+            "en": "eating there is better"
+          }
+        }
+      ],
+      "recall": {
+        "before": "確かに おいしいですけど、 駅から かなり ",
+        "answer": "遠いと",
+        "after": " 思います。",
+        "fallbackChoices": [
+          "遠いと",
+          "遠く",
+          "遠さ",
+          "遠くて"
+        ]
+      },
+      "speakRequired": [
+        "確かに",
+        "おいしいですけど",
+        "駅から"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „新しい カフェの ケーキは おいしいですね。 どう 思いますか。“",
+        "en": "The conversation opens with this question: “新しい カフェの ケーキは おいしいですね。 どう 思いますか。”"
+      },
+      "trophyWord": {
+        "word": "確かに",
+        "meaning": {
+          "de": "tatsächlich; zugegeben",
+          "en": "certainly; admittedly"
+        },
+        "example": "確かに 安いですけど、 少し 遠いです。",
+        "whyThisWord": {
+          "de": "Damit gestehst du einen guten Punkt zu, bevor du deinen Vorbehalt nennst.",
+          "en": "Use it to acknowledge a good point before adding a reservation."
+        }
+      },
+      "distractors": [
+        "家から",
+        "近いと"
+      ],
+      "placeholderCaption": {
+        "de": "Bei einem Gespräch geht es um ein neu eröffnetes Café.",
+        "en": "You discuss a newly opened cafe."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Conversation about a cafe; no alternative shop or distance comparison illustrated before the learner reply."
+    },
+    {
+      "slug": "nedan-bright-flat",
+      "title": {
+        "de": "Preis und Tageslicht",
+        "en": "Price and daylight"
+      },
+      "situation": {
+        "de": "Eine befreundete Person vergleicht zwei Wohnungen und bittet dich um eine Einschätzung.",
+        "en": "A friend compares two apartments and asks for your view."
+      },
+      "pedagogicalGoal": "Eine Wahl mit 〜ても trotz eines Nachteils und mit 〜し anhand mehrerer Gründe begründen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "この 二つの 部屋は どうですか。 どちらも 良さそうですね。",
+          "baseText": {
+            "de": "Was hältst du von diesen beiden Wohnungen? Beide sehen gut aus, oder?",
+            "en": "What do you think of these two apartments? Both look good, don’t they?"
+          }
+        },
+        {
+          "targetText": "値段は 大事ですけど、 日当たりも 大切だと 思います。",
+          "baseText": {
+            "de": "Der Preis ist wichtig, aber ich finde, Tageslicht ist ebenfalls wichtig.",
+            "en": "Price matters, but I think good natural light is important too."
+          }
+        },
+        {
+          "targetText": "家賃の 差は 一万円です。 どちらに しますか。",
+          "baseText": {
+            "de": "Der Mietunterschied beträgt zehntausend Yen. Welche würdest du nehmen?",
+            "en": "The rent differs by ten thousand yen. Which would you choose?"
+          }
+        },
+        {
+          "targetText": "高くても、 明るいし 広いし こちらが いいです。",
+          "baseText": {
+            "de": "Auch wenn sie teurer ist: Diese ist hell und geräumig, deshalb gefällt sie mir besser.",
+            "en": "Even if it costs more, this one is bright and spacious, so I prefer it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜ても und 〜し: trotz eines Nachteils",
+        "rule": {
+          "de": "〜ても gesteht einen Nachteil zu; wiederholtes し führt mehrere Gründe für die anschließende Wahl auf.",
+          "en": "〜ても concedes a disadvantage; repeated し lists several reasons for the choice that follows."
+        },
+        "examples": [
+          {
+            "targetText": "値段は 大事ですけど、 日当たりも 大切だと 思います。",
+            "baseText": {
+              "de": "Der Preis ist wichtig, aber ich finde, Tageslicht ist ebenfalls wichtig.",
+              "en": "Price matters, but I think good natural light is important too."
+            },
+            "highlight": "大切だと 思います"
+          },
+          {
+            "targetText": "小さくても、 軽いし 安いし この かばんが いいです。",
+            "baseText": {
+              "de": "Auch wenn sie klein ist: Diese Tasche ist leicht und günstig, deshalb gefällt sie mir.",
+              "en": "Even if it is small, this bag is light and inexpensive, so I like it."
+            },
+            "highlight": "小さくても、 軽いし 安いし"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "高くても",
+          "cue": "高い → auch wenn / even if: ても",
+          "choices": [
+            "高くても",
+            "高い",
+            "高かった",
+            "高さ"
+          ]
+        },
+        "、 明るいし ",
+        {
+          "kind": "form",
+          "answer": "広いし",
+          "cue": "広い → weiterer Grund / another reason: し",
+          "choices": [
+            "広いし",
+            "広い",
+            "広く",
+            "広さ"
+          ]
+        },
+        " こちらが いいです。"
+      ],
+      "chunks": [
+        {
+          "targetText": "値段は 大事ですけど、",
+          "baseText": {
+            "de": "der Preis ist wichtig, aber",
+            "en": "price matters, but"
+          }
+        },
+        {
+          "targetText": "日当たりも",
+          "baseText": {
+            "de": "auch das Tageslicht",
+            "en": "good natural light too"
+          }
+        },
+        {
+          "targetText": "大切だと",
+          "baseText": {
+            "de": "ist wichtig",
+            "en": "is important"
+          }
+        },
+        {
+          "targetText": "思います。",
+          "baseText": {
+            "de": "finde ich",
+            "en": "I think"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "値段",
+          "baseText": {
+            "de": "Preis",
+            "en": "price"
+          }
+        },
+        {
+          "targetText": "日当たり",
+          "baseText": {
+            "de": "Sonneneinfall; Tageslicht",
+            "en": "sunlight; natural light"
+          }
+        },
+        {
+          "targetText": "大切",
+          "baseText": {
+            "de": "wichtig",
+            "en": "important"
+          }
+        },
+        {
+          "targetText": "家賃",
+          "baseText": {
+            "de": "Miete",
+            "en": "rent"
+          }
+        },
+        {
+          "targetText": "高くても",
+          "baseText": {
+            "de": "auch wenn es teuer ist",
+            "en": "even if it is expensive"
+          }
+        },
+        {
+          "targetText": "広いし",
+          "baseText": {
+            "de": "es ist geräumig, und außerdem",
+            "en": "it is spacious, and also"
+          }
+        }
+      ],
+      "recall": {
+        "before": "値段は 大事ですけど、 日当たりも ",
+        "answer": "大切だと",
+        "after": " 思います。",
+        "fallbackChoices": [
+          "大切だと",
+          "大切な",
+          "大切に",
+          "大切で"
+        ]
+      },
+      "speakRequired": [
+        "値段は",
+        "日当たりも",
+        "大切だと"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „この 二つの 部屋は どうですか。 どちらも 良さそうですね。“",
+        "en": "The conversation opens with this question: “この 二つの 部屋は どうですか。 どちらも 良さそうですね。”"
+      },
+      "trophyWord": {
+        "word": "値段",
+        "meaning": {
+          "de": "Preis",
+          "en": "price"
+        },
+        "example": "値段は 高いですけど、 丈夫です。",
+        "whyThisWord": {
+          "de": "Damit kannst du Kosten gegen andere Vorteile abwägen.",
+          "en": "Use it to weigh cost against other advantages."
+        }
+      },
+      "distractors": [
+        "日当たりだけ",
+        "無駄だと"
+      ],
+      "placeholderCaption": {
+        "de": "Eine befreundete Person vergleicht zwei Wohnungen und bittet dich um eine Einschätzung.",
+        "en": "A friend compares two apartments and asks for your view."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Two simple apartment listings; no marked preferred listing or price gap in the opening."
+    },
+    {
+      "slug": "shizuka-suburb",
+      "title": {
+        "de": "Ruhiger wohnen",
+        "en": "A quieter place to live"
+      },
+      "situation": {
+        "de": "Im Hausflur sprecht ihr über einen möglichen Umzug in einen Vorort.",
+        "en": "In the hallway, you discuss a possible move to a suburb."
+      },
+      "pedagogicalGoal": "Mit 〜し Vorteile aufzählen und mit 〜ても auf eine neue Schwierigkeit reagieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "郊外の 生活は どう 思いますか。 今より 楽でしょうか。",
+          "baseText": {
+            "de": "Was hältst du vom Leben im Vorort? Wäre es leichter als jetzt?",
+            "en": "What do you think of suburban life? Would it be easier than now?"
+          }
+        },
+        {
+          "targetText": "郊外は 静かです。 家賃も 安いし、 引っ越す 方が いいと 思います。",
+          "baseText": {
+            "de": "Im Vorort ist es ruhig. Die Mieten sind auch niedrig, und ich finde, ein Umzug wäre besser.",
+            "en": "The suburb is quiet. The rent is low too, and I think moving would be better."
+          }
+        },
+        {
+          "targetText": "通勤に 一時間 かかりますが、 ご家族は 大丈夫ですか。",
+          "baseText": {
+            "de": "Der Arbeitsweg dauert aber eine Stunde. Ist das für deine Familie in Ordnung?",
+            "en": "The commute takes an hour, though. Is your family okay with that?"
+          }
+        },
+        {
+          "targetText": "遠くても、 家族も 賛成ですし ここに します。",
+          "baseText": {
+            "de": "Auch wenn es weit ist: Meine Familie ist ebenfalls dafür, deshalb entscheide ich mich für diesen Ort.",
+            "en": "Even if it is far, my family agrees too, so I will choose this place."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜し: einen weiteren Grund nennen",
+        "rule": {
+          "de": "し kann nach einer einfachen oder höflichen Aussage stehen und fügt einen Grund hinzu; ても lässt einen Einwand bestehen.",
+          "en": "し can follow a plain or polite statement and adds a reason; ても acknowledges an objection without removing it."
+        },
+        "examples": [
+          {
+            "targetText": "郊外は 静かです。 家賃も 安いし、 引っ越す 方が いいと 思います。",
+            "baseText": {
+              "de": "Im Vorort ist es ruhig. Die Mieten sind auch niedrig, und ich finde, ein Umzug wäre besser.",
+              "en": "The suburb is quiet. The rent is low too, and I think moving would be better."
+            },
+            "highlight": "安いし"
+          },
+          {
+            "targetText": "この 店は 安いし、 駅にも 近いです。",
+            "baseText": {
+              "de": "Dieser Laden ist günstig und liegt außerdem nah am Bahnhof.",
+              "en": "This shop is inexpensive and also close to the station."
+            },
+            "highlight": "安いし"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "遠くても",
+          "cue": "遠い → auch wenn / even if: ても",
+          "choices": [
+            "遠くても",
+            "遠い",
+            "遠かった",
+            "遠さ"
+          ]
+        },
+        "、 家族も ",
+        {
+          "kind": "form",
+          "answer": "賛成ですし",
+          "cue": "賛成だ → höflicher weiterer Grund / polite additional reason: し",
+          "choices": [
+            "賛成ですし",
+            "賛成だ",
+            "賛成に",
+            "賛成の"
+          ]
+        },
+        " ここに します。"
+      ],
+      "chunks": [
+        {
+          "targetText": "郊外は",
+          "baseText": {
+            "de": "im Vorort",
+            "en": "the suburb"
+          }
+        },
+        {
+          "targetText": "静かです。 家賃も 安いし、",
+          "baseText": {
+            "de": "ist es ruhig, und die Miete ist ebenfalls niedrig",
+            "en": "is quiet, and the rent is low too"
+          }
+        },
+        {
+          "targetText": "引っ越す 方が いいと",
+          "baseText": {
+            "de": "ein Umzug wäre besser",
+            "en": "moving would be better"
+          }
+        },
+        {
+          "targetText": "思います。",
+          "baseText": {
+            "de": "finde ich",
+            "en": "I think"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "静か",
+          "baseText": {
+            "de": "ruhig",
+            "en": "quiet"
+          }
+        },
+        {
+          "targetText": "郊外",
+          "baseText": {
+            "de": "Vorort; Stadtrand",
+            "en": "suburb; outskirts"
+          }
+        },
+        {
+          "targetText": "安いし",
+          "baseText": {
+            "de": "es ist günstig, und außerdem",
+            "en": "it is inexpensive, and also"
+          }
+        },
+        {
+          "targetText": "引っ越す",
+          "baseText": {
+            "de": "umziehen",
+            "en": "move home"
+          }
+        },
+        {
+          "targetText": "通勤",
+          "baseText": {
+            "de": "Arbeitsweg; Pendeln",
+            "en": "commuting"
+          }
+        },
+        {
+          "targetText": "遠くても",
+          "baseText": {
+            "de": "auch wenn es weit ist",
+            "en": "even if it is far"
+          }
+        }
+      ],
+      "recall": {
+        "before": "郊外は 静かです。 家賃も 安いし、 ",
+        "answer": "引っ越す",
+        "after": " 方が いいと 思います。",
+        "fallbackChoices": [
+          "引っ越す",
+          "引っ越して",
+          "引っ越します",
+          "引っ越せば"
+        ]
+      },
+      "speakRequired": [
+        "郊外は",
+        "静かです",
+        "安いし"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „郊外の 生活は どう 思いますか。 今より 楽でしょうか。“",
+        "en": "The conversation opens with this question: “郊外の 生活は どう 思いますか。 今より 楽でしょうか。”"
+      },
+      "trophyWord": {
+        "word": "静か",
+        "meaning": {
+          "de": "ruhig",
+          "en": "quiet"
+        },
+        "example": "この 図書館は とても 静かです。",
+        "whyThisWord": {
+          "de": "Damit beschreibst du Orte, an denen wenig Lärm ist.",
+          "en": "Use it to describe places with little noise."
+        }
+      },
+      "distractors": [
+        "にぎやかです。 家賃も 安いし、",
+        "引っ越さない 方が いいと"
+      ],
+      "placeholderCaption": {
+        "de": "Im Hausflur sprecht ihr über einen möglichen Umzug in einen Vorort.",
+        "en": "In the hallway, you discuss a possible move to a suburb."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Apartment hallway conversation; do not show commute time or family agreement before the follow-up."
+    },
+    {
+      "slug": "hantai-weekend-overtime",
+      "title": {
+        "de": "Das Wochenende schützen",
+        "en": "Protecting the weekend"
+      },
+      "situation": {
+        "de": "Bei der Arbeit geht es um freiwillige Überstunden am Wochenende.",
+        "en": "At work, you discuss voluntary overtime at the weekend."
+      },
+      "pedagogicalGoal": "Mit 反対 eine begründete Ablehnung ausdrücken und auf einen Kompromiss mit einer eigenen Alternative reagieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "週末も 少し 働きませんか。 今週は 仕事が 多いですね。",
+          "baseText": {
+            "de": "Wollen wir am Wochenende ein wenig arbeiten? Diese Woche ist viel zu tun.",
+            "en": "Shall we work a little at the weekend too? There is a lot to do this week."
+          }
+        },
+        {
+          "targetText": "週末の 残業には 反対です。 休みも 大切だと 思います。",
+          "baseText": {
+            "de": "Ich bin gegen Überstunden am Wochenende. Ich finde, Erholung ist auch wichtig.",
+            "en": "I am against weekend overtime. I think time off matters too."
+          }
+        },
+        {
+          "targetText": "土曜日の 午前だけでも、 来て もらえませんか。",
+          "baseText": {
+            "de": "Könntest du nicht wenigstens am Samstagvormittag kommen?",
+            "en": "Could you come in just for Saturday morning?"
+          }
+        },
+        {
+          "targetText": "午前だけでも 難しいですけど、 月曜は 早く 来ます。",
+          "baseText": {
+            "de": "Selbst nur am Vormittag ist es schwierig, aber am Montag komme ich früh.",
+            "en": "Even just the morning is difficult, but I will come in early on Monday."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜でも: ein begrenztes Angebot abwägen",
+        "rule": {
+          "de": "だけでも bedeutet hier „auch nur“; mit einem höflichen けど-Satz lehnst du ab und bietest eine eigene Alternative.",
+          "en": "Here だけでも means “even just”; a polite けど-clause lets you decline and offer an alternative of your own."
+        },
+        "examples": [
+          {
+            "targetText": "週末の 残業には 反対です。 休みも 大切だと 思います。",
+            "baseText": {
+              "de": "Ich bin gegen Überstunden am Wochenende. Ich finde, Erholung ist auch wichtig.",
+              "en": "I am against weekend overtime. I think time off matters too."
+            },
+            "highlight": "大切だと 思います"
+          },
+          {
+            "targetText": "少しだけでも 難しいですけど、 明日は 大丈夫です。",
+            "baseText": {
+              "de": "Selbst ein wenig ist schwierig, aber morgen geht es.",
+              "en": "Even a little is difficult, but tomorrow is fine."
+            },
+            "highlight": "少しだけでも 難しいですけど"
+          }
+        ]
+      },
+      "cloze": [
+        "午前だけでも ",
+        {
+          "kind": "form",
+          "answer": "難しいですけど",
+          "cue": "難しい → höflicher Einwand mit けど / polite concession with けど",
+          "choices": [
+            "難しいですけど",
+            "難しい",
+            "難しく",
+            "難しさ"
+          ]
+        },
+        "、 月曜は 早く ",
+        {
+          "kind": "form",
+          "answer": "来ます",
+          "cue": "来る → bejahte höfliche Gegenwart/Zukunft / affirmative polite non-past",
+          "choices": [
+            "来ます",
+            "来ました",
+            "来ません",
+            "来る"
+          ]
+        },
+        "。"
+      ],
+      "chunks": [
+        {
+          "targetText": "週末の 残業には",
+          "baseText": {
+            "de": "Überstunden am Wochenende",
+            "en": "weekend overtime"
+          }
+        },
+        {
+          "targetText": "反対です。 休みも",
+          "baseText": {
+            "de": "dagegen bin ich; auch Erholung",
+            "en": "I oppose it; time off too"
+          }
+        },
+        {
+          "targetText": "大切だと",
+          "baseText": {
+            "de": "ist wichtig",
+            "en": "is important"
+          }
+        },
+        {
+          "targetText": "思います。",
+          "baseText": {
+            "de": "finde ich",
+            "en": "I think"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "反対",
+          "baseText": {
+            "de": "dagegen; Ablehnung",
+            "en": "opposition; being against"
+          }
+        },
+        {
+          "targetText": "残業",
+          "baseText": {
+            "de": "Überstunden",
+            "en": "overtime"
+          }
+        },
+        {
+          "targetText": "休み",
+          "baseText": {
+            "de": "freie Zeit; Ruhetag",
+            "en": "time off; a rest day"
+          }
+        },
+        {
+          "targetText": "午前だけでも",
+          "baseText": {
+            "de": "auch nur am Vormittag",
+            "en": "even just the morning"
+          }
+        },
+        {
+          "targetText": "難しいですけど",
+          "baseText": {
+            "de": "es ist schwierig, aber",
+            "en": "it is difficult, but"
+          }
+        },
+        {
+          "targetText": "月曜",
+          "baseText": {
+            "de": "Montag",
+            "en": "Monday"
+          }
+        }
+      ],
+      "recall": {
+        "before": "週末の 残業には 反対です。 休みも ",
+        "answer": "大切だと",
+        "after": " 思います。",
+        "fallbackChoices": [
+          "大切だと",
+          "大切な",
+          "大切に",
+          "大切で"
+        ]
+      },
+      "speakRequired": [
+        "残業には",
+        "反対です",
+        "大切だと"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „週末も 少し 働きませんか。 今週は 仕事が 多いですね。“",
+        "en": "The conversation opens with this question: “週末も 少し 働きませんか。 今週は 仕事が 多いですね。”"
+      },
+      "trophyWord": {
+        "word": "反対",
+        "meaning": {
+          "de": "dagegen; Ablehnung",
+          "en": "opposition; being against"
+        },
+        "example": "その 案には 反対ですが、 話は 聞きます。",
+        "whyThisWord": {
+          "de": "Damit lehnst du eine Idee ab, ohne den Gesprächsfaden abzubrechen.",
+          "en": "Use it to oppose an idea while keeping the conversation open."
+        }
+      },
+      "distractors": [
+        "賛成です。 休みも",
+        "無駄だと"
+      ],
+      "placeholderCaption": {
+        "de": "Bei der Arbeit geht es um freiwillige Überstunden am Wochenende.",
+        "en": "At work, you discuss voluntary overtime at the weekend."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Workplace discussion with neutral expressions; no Saturday-only proposal or Monday resolution in the opening."
+    },
+    {
+      "slug": "sansei-group-trip",
+      "title": {
+        "de": "Ja zur Reise, aber …",
+        "en": "Yes to the trip, but …"
+      },
+      "situation": {
+        "de": "Eine befreundete Person schlägt eine gemeinsame Gruppenreise vor.",
+        "en": "A friend suggests taking a trip as a group."
+      },
+      "pedagogicalGoal": "Zustimmung mit einer Vermutung auf 〜かもしれません verbinden und eine eigene Preisgrenze vorschlagen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "来月は 皆で 旅行しませんか。 一緒だと 楽しそうですね。",
+          "baseText": {
+            "de": "Wollen wir nächsten Monat alle zusammen verreisen? Gemeinsam wäre es bestimmt schön.",
+            "en": "Shall we all take a trip next month? It sounds fun to go together."
+          }
+        },
+        {
+          "targetText": "旅行には 賛成ですが、 費用が 高いかもしれません。",
+          "baseText": {
+            "de": "Ich bin für die Reise, aber die Kosten könnten hoch sein.",
+            "en": "I am in favor of the trip, but the cost might be high."
+          }
+        },
+        {
+          "targetText": "一人 三万円で どうですか。 もう 少し 出せますか。",
+          "baseText": {
+            "de": "Wie wäre es mit dreißigtausend Yen pro Person? Könntest du etwas mehr bezahlen?",
+            "en": "How about thirty thousand yen per person? Could you pay a little more?"
+          }
+        },
+        {
+          "targetText": "三万円でも 高いと 思いますが、 二万円で どうですか。",
+          "baseText": {
+            "de": "Ich finde selbst dreißigtausend Yen teuer. Wie wäre es mit zwanzigtausend?",
+            "en": "I think even thirty thousand yen is expensive. How about twenty thousand?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜かもしれません: vorsichtig einschätzen",
+        "rule": {
+          "de": "かもしれません markiert eine Möglichkeit; と思いますが lässt nach einer Einschätzung Raum für einen Gegenvorschlag.",
+          "en": "かもしれません marks a possibility; と思いますが leaves room for a counterproposal after an opinion."
+        },
+        "examples": [
+          {
+            "targetText": "旅行には 賛成ですが、 費用が 高いかもしれません。",
+            "baseText": {
+              "de": "Ich bin für die Reise, aber die Kosten könnten hoch sein.",
+              "en": "I am in favor of the trip, but the cost might be high."
+            },
+            "highlight": "高いかもしれません"
+          },
+          {
+            "targetText": "この 店は いいと 思いますが、 高いかもしれません。",
+            "baseText": {
+              "de": "Ich halte dieses Geschäft für gut, aber es könnte teuer sein.",
+              "en": "I think this shop is good, but it might be expensive."
+            },
+            "highlight": "いいと 思いますが"
+          }
+        ]
+      },
+      "cloze": [
+        "三万円でも ",
+        {
+          "kind": "form",
+          "answer": "高いと",
+          "cue": "高い → einfache Aussage vor 思います / plain statement before 思います",
+          "choices": [
+            "高いと",
+            "高く",
+            "高さ",
+            "高くて"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "思いますが",
+          "cue": "思う → höfliche Meinung + が / polite opinion + が",
+          "choices": [
+            "思いますが",
+            "思う",
+            "思って",
+            "思った"
+          ]
+        },
+        "、 二万円で どうですか。"
+      ],
+      "chunks": [
+        {
+          "targetText": "旅行には",
+          "baseText": {
+            "de": "zur Reise",
+            "en": "the trip"
+          }
+        },
+        {
+          "targetText": "賛成ですが、",
+          "baseText": {
+            "de": "dafür bin ich, aber",
+            "en": "I am in favor, but"
+          }
+        },
+        {
+          "targetText": "費用が",
+          "baseText": {
+            "de": "die Kosten",
+            "en": "the cost"
+          }
+        },
+        {
+          "targetText": "高いかもしれません。",
+          "baseText": {
+            "de": "könnten hoch sein",
+            "en": "might be high"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "賛成",
+          "baseText": {
+            "de": "Zustimmung; dafür",
+            "en": "agreement; being in favor"
+          }
+        },
+        {
+          "targetText": "費用",
+          "baseText": {
+            "de": "Kosten",
+            "en": "cost"
+          }
+        },
+        {
+          "targetText": "高いかもしれません",
+          "baseText": {
+            "de": "es könnte teuer sein",
+            "en": "it might be expensive"
+          }
+        },
+        {
+          "targetText": "一人",
+          "baseText": {
+            "de": "pro Person; eine Person",
+            "en": "per person; one person"
+          }
+        },
+        {
+          "targetText": "三万円",
+          "baseText": {
+            "de": "dreißigtausend Yen",
+            "en": "thirty thousand yen"
+          }
+        },
+        {
+          "targetText": "どうですか",
+          "baseText": {
+            "de": "wie wäre es damit?",
+            "en": "how about it?"
+          }
+        }
+      ],
+      "recall": {
+        "before": "旅行には ",
+        "answer": "賛成ですが",
+        "after": "、 費用が 高いかもしれません。",
+        "fallbackChoices": [
+          "賛成ですが",
+          "賛成の",
+          "賛成を",
+          "賛成に"
+        ]
+      },
+      "speakRequired": [
+        "旅行には",
+        "賛成ですが",
+        "費用が"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „来月は 皆で 旅行しませんか。 一緒だと 楽しそうですね。“",
+        "en": "The conversation opens with this question: “来月は 皆で 旅行しませんか。 一緒だと 楽しそうですね。”"
+      },
+      "trophyWord": {
+        "word": "賛成",
+        "meaning": {
+          "de": "Zustimmung; dafür",
+          "en": "agreement; being in favor"
+        },
+        "example": "その 計画には 賛成です。",
+        "whyThisWord": {
+          "de": "Damit sagst du klar, welchen Vorschlag du unterstützt.",
+          "en": "Use it to say clearly which proposal you support."
+        }
+      },
+      "distractors": [
+        "反対ですが、",
+        "安いかもしれません。"
+      ],
+      "placeholderCaption": {
+        "de": "Eine befreundete Person schlägt eine gemeinsame Gruppenreise vor.",
+        "en": "A friend suggests taking a trip as a group."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Friends planning a possible trip; no prices or bookings visible before the follow-up."
+    },
+    {
+      "slug": "mondai-start-time",
+      "title": {
+        "de": "Der Beginn ist das Problem",
+        "en": "The start time is the problem"
+      },
+      "situation": {
+        "de": "Bei der Arbeit besprecht ihr den Zeitplan für ein gemeinsames Treffen.",
+        "en": "At work, you discuss the timetable for a group meeting."
+      },
+      "pedagogicalGoal": "Ein zeitliches Problem vorsichtig benennen und einen konkreten Änderungsvorschlag als Meinung formulieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "この 日程で 大丈夫ですか。 皆で 朝から 始めますか。",
+          "baseText": {
+            "de": "Passt dieser Zeitplan? Fangen wir alle am Morgen an?",
+            "en": "Does this schedule work? Shall we all start in the morning?"
+          }
+        },
+        {
+          "targetText": "問題は 開始の 時間です。 朝は 皆が 間に合わないかもしれません。",
+          "baseText": {
+            "de": "Das Problem ist die Anfangszeit. Vielleicht kommen morgens alle zu spät.",
+            "en": "The problem is the start time. Everyone may be late in the morning."
+          }
+        },
+        {
+          "targetText": "電車は 九時に 着きます。 開始を 遅く しますか。",
+          "baseText": {
+            "de": "Der Zug kommt um neun an. Sollen wir später anfangen?",
+            "en": "The train arrives at nine. Shall we move the start later?"
+          }
+        },
+        {
+          "targetText": "十時に 始める 方が いいと 思いますが、 どうですか。",
+          "baseText": {
+            "de": "Ich finde, wir sollten lieber um zehn anfangen. Was meinst du?",
+            "en": "I think it would be better to start at ten. What do you think?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜と思いますが: einen Vorschlag öffnen",
+        "rule": {
+          "de": "Mit と思いますが äußerst du eine Einschätzung und lädst im anschließenden höflichen Satz zu einer Antwort ein.",
+          "en": "と思いますが states a view and leaves the following polite clause open for a response."
+        },
+        "examples": [
+          {
+            "targetText": "問題は 開始の 時間です。 朝は 皆が 間に合わないかもしれません。",
+            "baseText": {
+              "de": "Das Problem ist die Anfangszeit. Vielleicht kommen morgens alle zu spät.",
+              "en": "The problem is the start time. Everyone may be late in the morning."
+            },
+            "highlight": "間に合わないかもしれません"
+          },
+          {
+            "targetText": "この 案は いいと 思いますが、 どうですか。",
+            "baseText": {
+              "de": "Ich finde diesen Vorschlag gut. Was meinst du?",
+              "en": "I think this proposal is good. What do you think?"
+            },
+            "highlight": "いいと 思いますが"
+          }
+        ]
+      },
+      "cloze": [
+        "十時に ",
+        {
+          "kind": "form",
+          "answer": "始める",
+          "cue": "始める → Grundform vor 方が / dictionary form before 方が",
+          "choices": [
+            "始める",
+            "始めて",
+            "始めます",
+            "始めれば"
+          ]
+        },
+        " 方が いいと ",
+        {
+          "kind": "form",
+          "answer": "思いますが",
+          "cue": "思う → höfliche Meinung + が / polite opinion + が",
+          "choices": [
+            "思いますが",
+            "思う",
+            "思って",
+            "思った"
+          ]
+        },
+        "、 どうですか。"
+      ],
+      "chunks": [
+        {
+          "targetText": "問題は",
+          "baseText": {
+            "de": "das Problem",
+            "en": "the problem"
+          }
+        },
+        {
+          "targetText": "開始の 時間です。 朝は",
+          "baseText": {
+            "de": "ist die Anfangszeit; morgens",
+            "en": "is the start time; in the morning"
+          }
+        },
+        {
+          "targetText": "皆が",
+          "baseText": {
+            "de": "alle",
+            "en": "everyone"
+          }
+        },
+        {
+          "targetText": "間に合わないかもしれません。",
+          "baseText": {
+            "de": "schaffen es vielleicht nicht rechtzeitig",
+            "en": "may not make it on time"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "問題",
+          "baseText": {
+            "de": "Problem",
+            "en": "problem"
+          }
+        },
+        {
+          "targetText": "開始",
+          "baseText": {
+            "de": "Beginn",
+            "en": "start"
+          }
+        },
+        {
+          "targetText": "日程",
+          "baseText": {
+            "de": "Zeitplan; Terminplan",
+            "en": "schedule"
+          }
+        },
+        {
+          "targetText": "間に合わない",
+          "baseText": {
+            "de": "es nicht rechtzeitig schaffen",
+            "en": "not make it in time"
+          }
+        },
+        {
+          "targetText": "九時",
+          "baseText": {
+            "de": "neun Uhr",
+            "en": "nine o’clock"
+          }
+        },
+        {
+          "targetText": "始める",
+          "baseText": {
+            "de": "beginnen; anfangen",
+            "en": "start something"
+          }
+        }
+      ],
+      "recall": {
+        "before": "問題は ",
+        "answer": "開始の",
+        "after": " 時間です。 朝は 皆が 間に合わないかもしれません。",
+        "fallbackChoices": [
+          "開始の",
+          "開始を",
+          "開始に",
+          "開始で"
+        ]
+      },
+      "speakRequired": [
+        "問題は",
+        "開始の",
+        "時間です"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „この 日程で 大丈夫ですか。 皆で 朝から 始めますか。“",
+        "en": "The conversation opens with this question: “この 日程で 大丈夫ですか。 皆で 朝から 始めますか。”"
+      },
+      "trophyWord": {
+        "word": "問題",
+        "meaning": {
+          "de": "Problem",
+          "en": "problem"
+        },
+        "example": "問題は 時間だと 思います。",
+        "whyThisWord": {
+          "de": "Damit benennst du gezielt den Punkt, den ein Plan noch nicht löst.",
+          "en": "Use it to identify the specific point a plan has not yet solved."
+        }
+      },
+      "distractors": [
+        "場所です。 朝は",
+        "間に合うかもしれません。"
+      ],
+      "placeholderCaption": {
+        "de": "Bei der Arbeit besprecht ihr den Zeitplan für ein gemeinsames Treffen.",
+        "en": "At work, you discuss the timetable for a group meeting."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Colleagues with a neutral timetable; no nine-o’clock arrival or ten-o’clock change shown early."
+    },
+    {
+      "slug": "hitsuyou-job-test",
+      "title": {
+        "de": "Eine Prüfung für die Arbeit",
+        "en": "A test for work"
+      },
+      "situation": {
+        "de": "Eine befreundete Person fragt dich nach einer Prüfung, die bei der Jobsuche helfen könnte.",
+        "en": "A friend asks about a test that could help with your job search."
+      },
+      "pedagogicalGoal": "Die Notwendigkeit einer Qualifikation begründen und einen unsicheren Zeitplan mit 〜かもしれません nennen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "その 試験を 受けますか。 仕事の ために 役立ちますか。",
+          "baseText": {
+            "de": "Machst du diese Prüfung? Ist sie für die Arbeit hilfreich?",
+            "en": "Will you take that test? Is it useful for work?"
+          }
+        },
+        {
+          "targetText": "仕事には 資格が 必要です。 試験を 受ける 方が いいと 思います。",
+          "baseText": {
+            "de": "Für die Arbeit braucht man eine Qualifikation. Ich finde, ich sollte die Prüfung machen.",
+            "en": "The job requires a qualification. I think it would be better to take the test."
+          }
+        },
+        {
+          "targetText": "今月は 忙しいですよね。 試験は いつ 受けますか。",
+          "baseText": {
+            "de": "Diesen Monat hast du viel zu tun, oder? Wann machst du die Prüfung?",
+            "en": "You are busy this month, aren’t you? When will you take the test?"
+          }
+        },
+        {
+          "targetText": "来月は 時間が あるかもしれません。 今から 勉強します。",
+          "baseText": {
+            "de": "Nächsten Monat habe ich vielleicht Zeit. Ich fange jetzt an zu lernen.",
+            "en": "I may have time next month. I will start studying now."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Empfehlung und einen unsicheren Termin trennen",
+        "rule": {
+          "de": "方が いいと思います formuliert eine Empfehlung; かもしれません hält eine Aussage über den Termin ausdrücklich offen.",
+          "en": "方が いいと思います expresses a recommendation; かもしれません keeps the statement about timing explicitly uncertain."
+        },
+        "examples": [
+          {
+            "targetText": "仕事には 資格が 必要です。 試験を 受ける 方が いいと 思います。",
+            "baseText": {
+              "de": "Für die Arbeit braucht man eine Qualifikation. Ich finde, ich sollte die Prüfung machen.",
+              "en": "The job requires a qualification. I think it would be better to take the test."
+            },
+            "highlight": "受ける 方が いいと 思います"
+          },
+          {
+            "targetText": "来週は 少し 暇かもしれません。",
+            "baseText": {
+              "de": "Nächste Woche habe ich vielleicht etwas freie Zeit.",
+              "en": "I may have a little free time next week."
+            },
+            "highlight": "暇かもしれません"
+          }
+        ]
+      },
+      "cloze": [
+        "来月は 時間が ",
+        {
+          "kind": "form",
+          "answer": "あるかもしれません",
+          "cue": "ある → Möglichkeit mit かもしれません / possibility with かもしれません",
+          "choices": [
+            "あるかもしれません",
+            "あります",
+            "あった",
+            "あって"
+          ]
+        },
+        "。 今から ",
+        {
+          "kind": "form",
+          "answer": "勉強します",
+          "cue": "勉強する → bejahte höfliche Gegenwart/Zukunft / affirmative polite non-past",
+          "choices": [
+            "勉強します",
+            "勉強しました",
+            "勉強しません",
+            "勉強する"
+          ]
+        },
+        "。"
+      ],
+      "chunks": [
+        {
+          "targetText": "仕事には 資格が",
+          "baseText": {
+            "de": "für die Arbeit eine Qualifikation",
+            "en": "a qualification for the job"
+          }
+        },
+        {
+          "targetText": "必要です。 試験を",
+          "baseText": {
+            "de": "ist nötig; die Prüfung",
+            "en": "is needed; the test"
+          }
+        },
+        {
+          "targetText": "受ける 方が いいと",
+          "baseText": {
+            "de": "sollte ich lieber machen",
+            "en": "would be better to take"
+          }
+        },
+        {
+          "targetText": "思います。",
+          "baseText": {
+            "de": "finde ich",
+            "en": "I think"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "必要",
+          "baseText": {
+            "de": "notwendig",
+            "en": "necessary"
+          }
+        },
+        {
+          "targetText": "資格",
+          "baseText": {
+            "de": "Qualifikation; Befähigungsnachweis",
+            "en": "qualification; certification"
+          }
+        },
+        {
+          "targetText": "試験を 受ける",
+          "baseText": {
+            "de": "eine Prüfung ablegen",
+            "en": "take a test"
+          }
+        },
+        {
+          "targetText": "今月",
+          "baseText": {
+            "de": "diesen Monat",
+            "en": "this month"
+          }
+        },
+        {
+          "targetText": "来月",
+          "baseText": {
+            "de": "nächsten Monat",
+            "en": "next month"
+          }
+        },
+        {
+          "targetText": "あるかもしれません",
+          "baseText": {
+            "de": "es könnte vorhanden sein",
+            "en": "there may be some"
+          }
+        }
+      ],
+      "recall": {
+        "before": "仕事には 資格が 必要です。 試験を ",
+        "answer": "受ける",
+        "after": " 方が いいと 思います。",
+        "fallbackChoices": [
+          "受ける",
+          "受けて",
+          "受けます",
+          "受ければ"
+        ]
+      },
+      "speakRequired": [
+        "資格が",
+        "必要です",
+        "受ける"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „その 試験を 受けますか。 仕事の ために 役立ちますか。“",
+        "en": "The conversation opens with this question: “その 試験を 受けますか。 仕事の ために 役立ちますか。”"
+      },
+      "trophyWord": {
+        "word": "必要",
+        "meaning": {
+          "de": "notwendig",
+          "en": "necessary"
+        },
+        "example": "この 仕事には 日本語が 必要です。",
+        "whyThisWord": {
+          "de": "Damit erklärst du eine Voraussetzung, ohne schon einen Erfolg zu versprechen.",
+          "en": "Use it to explain a requirement without promising success."
+        }
+      },
+      "distractors": [
+        "受けない 方が いいと",
+        "不要です。 試験を"
+      ],
+      "placeholderCaption": {
+        "de": "Eine befreundete Person fragt dich nach einer Prüfung, die bei der Jobsuche helfen könnte.",
+        "en": "A friend asks about a test that could help with your job search."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Friends talking about a study leaflet; no certificate awarded or successful test outcome implied."
+    },
+    {
+      "slug": "muri-friday-deadline",
+      "title": {
+        "de": "Nicht allein bis Freitag",
+        "en": "Not alone by Friday"
+      },
+      "situation": {
+        "de": "Bei der Arbeit prüft ihr, ob eine Aufgabe bis Freitag fertig wird.",
+        "en": "At work, you consider whether a task can be finished by Friday."
+      },
+      "pedagogicalGoal": "Eine persönliche Grenze mit 無理 benennen und eine mögliche Lösung vorsichtig einschätzen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "この 仕事は 金曜までに 終わりますか。 一人で できますか。",
+          "baseText": {
+            "de": "Wird diese Arbeit bis Freitag fertig? Schaffst du sie allein?",
+            "en": "Will this work be finished by Friday? Can you do it alone?"
+          }
+        },
+        {
+          "targetText": "一人では 無理ですが、 二人で 終わるかもしれません。",
+          "baseText": {
+            "de": "Allein schaffe ich es nicht, aber zu zweit werden wir vielleicht fertig.",
+            "en": "I cannot manage it alone, but two of us might finish it."
+          }
+        },
+        {
+          "targetText": "誰と 一緒に 進めますか。 仕事を 分けますか。",
+          "baseText": {
+            "de": "Mit wem möchtest du daran arbeiten? Teilt ihr die Arbeit auf?",
+            "en": "Who will you work on it with? Will you divide up the work?"
+          }
+        },
+        {
+          "targetText": "田中さんが いいと 思いますが、 忙しいかもしれません。",
+          "baseText": {
+            "de": "Ich halte Tanaka für eine gute Wahl, aber vielleicht hat Tanaka viel zu tun.",
+            "en": "I think Tanaka would be a good choice, but they may be busy."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜かもしれません: eine Lösung offenlassen",
+        "rule": {
+          "de": "Mit かもしれません stellst du eine mögliche Lösung dar, ohne die Hilfe oder das Ergebnis als sicher zu versprechen.",
+          "en": "かもしれません presents a possible solution without promising that help or the outcome is certain."
+        },
+        "examples": [
+          {
+            "targetText": "一人では 無理ですが、 二人で 終わるかもしれません。",
+            "baseText": {
+              "de": "Allein schaffe ich es nicht, aber zu zweit werden wir vielleicht fertig.",
+              "en": "I cannot manage it alone, but two of us might finish it."
+            },
+            "highlight": "終わるかもしれません"
+          },
+          {
+            "targetText": "明日は 雨かもしれません。",
+            "baseText": {
+              "de": "Morgen regnet es vielleicht.",
+              "en": "It might rain tomorrow."
+            },
+            "highlight": "雨かもしれません"
+          }
+        ]
+      },
+      "cloze": [
+        "田中さんが ",
+        {
+          "kind": "form",
+          "answer": "いいと",
+          "cue": "いい → einfache Aussage vor 思います / plain statement before 思います",
+          "choices": [
+            "いいと",
+            "よく",
+            "よさ",
+            "よくて"
+          ]
+        },
+        " 思いますが、 ",
+        {
+          "kind": "form",
+          "answer": "忙しいかもしれません",
+          "cue": "忙しい → Möglichkeit mit かもしれません / possibility with かもしれません",
+          "choices": [
+            "忙しいかもしれません",
+            "忙しいです",
+            "忙しかった",
+            "忙しくて"
+          ]
+        },
+        "。"
+      ],
+      "chunks": [
+        {
+          "targetText": "一人では",
+          "baseText": {
+            "de": "allein",
+            "en": "alone"
+          }
+        },
+        {
+          "targetText": "無理ですが、",
+          "baseText": {
+            "de": "schaffe ich es nicht, aber",
+            "en": "I cannot manage it, but"
+          }
+        },
+        {
+          "targetText": "二人で",
+          "baseText": {
+            "de": "zu zweit",
+            "en": "with two people"
+          }
+        },
+        {
+          "targetText": "終わるかもしれません。",
+          "baseText": {
+            "de": "werden wir vielleicht fertig",
+            "en": "we might finish"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "無理",
+          "baseText": {
+            "de": "nicht machbar; zu viel verlangt",
+            "en": "unmanageable; too much to ask"
+          }
+        },
+        {
+          "targetText": "一人では",
+          "baseText": {
+            "de": "allein unter diesen Umständen",
+            "en": "alone in these circumstances"
+          }
+        },
+        {
+          "targetText": "二人で",
+          "baseText": {
+            "de": "zu zweit",
+            "en": "with two people"
+          }
+        },
+        {
+          "targetText": "終わるかもしれません",
+          "baseText": {
+            "de": "es könnte fertig werden",
+            "en": "it might be finished"
+          }
+        },
+        {
+          "targetText": "分けます",
+          "baseText": {
+            "de": "aufteilen",
+            "en": "divide up"
+          }
+        },
+        {
+          "targetText": "忙しいかもしれません",
+          "baseText": {
+            "de": "die Person könnte beschäftigt sein",
+            "en": "they might be busy"
+          }
+        }
+      ],
+      "recall": {
+        "before": "一人では ",
+        "answer": "無理ですが",
+        "after": "、 二人で 終わるかもしれません。",
+        "fallbackChoices": [
+          "無理ですが",
+          "無理な",
+          "無理に",
+          "無理の"
+        ]
+      },
+      "speakRequired": [
+        "一人では",
+        "無理ですが",
+        "終わるかもしれません"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „この 仕事は 金曜までに 終わりますか。 一人で できますか。“",
+        "en": "The conversation opens with this question: “この 仕事は 金曜までに 終わりますか。 一人で できますか。”"
+      },
+      "trophyWord": {
+        "word": "無理",
+        "meaning": {
+          "de": "nicht machbar; zu viel verlangt",
+          "en": "unmanageable; too much to ask"
+        },
+        "example": "今日中は 無理ですが、 明日は できます。",
+        "whyThisWord": {
+          "de": "Damit benennst du eine Grenze und kannst anschließend eine Alternative anbieten.",
+          "en": "Use it to state a limit and then offer an alternative."
+        }
+      },
+      "distractors": [
+        "可能ですが、",
+        "三人で"
+      ],
+      "placeholderCaption": {
+        "de": "Bei der Arbeit prüft ihr, ob eine Aufgabe bis Freitag fertig wird.",
+        "en": "At work, you consider whether a task can be finished by Friday."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Workplace task discussion; no guaranteed completion, assigned helper or accepted request pictured."
+    }
+  ]
+}

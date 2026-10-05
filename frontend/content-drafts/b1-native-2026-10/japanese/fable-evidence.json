@@ -1,0 +1,446 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "reviewedSources": {
+    "frontend/content-drafts/b1-native-2026-10/japanese/p1.json": "d347cfcf251d7cbc7b04db8429b7cb8c28daebd22d8e7d63164e87f05b7d4bb9",
+    "frontend/content-drafts/b1-native-2026-10/japanese/p2.json": "2409ccee00d6608ce317300378d5016097fa74989be17cfd97a4d19307592d18"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b1-native-2026-10/japanese/specification.json": "a7c2090f6b393ea02cbfd6b82200ca76cb47c2fb98610ed41752c5d4e1c49f4e"
+  },
+  "reviewedReadingSheets": {
+    "frontend/content-drafts/b1-native-2026-10/japanese/reading-sheet.json": "ff1a62863e289e10383bd7f376b96def047bd1f4d0f44f9ed0121d41180e8e8e"
+  },
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/japanese/specification.json",
+      "sha256": "a7c2090f6b393ea02cbfd6b82200ca76cb47c2fb98610ed41752c5d4e1c49f4e",
+      "reviewedScratchSha256": "7da6136e2791a6c99e763baed4bd089d397c33979863ef6d6dd8a75c21b73ea8",
+      "transformation": "CRLF to LF only; complete byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/japanese/reading-sheet.json",
+      "sha256": "ff1a62863e289e10383bd7f376b96def047bd1f4d0f44f9ed0121d41180e8e8e",
+      "reviewedScratchSha256": "ff1a62863e289e10383bd7f376b96def047bd1f4d0f44f9ed0121d41180e8e8e",
+      "transformation": "CRLF to LF only; complete byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/japanese/p1.json",
+      "sha256": "d347cfcf251d7cbc7b04db8429b7cb8c28daebd22d8e7d63164e87f05b7d4bb9",
+      "reviewedScratchSha256": "d347cfcf251d7cbc7b04db8429b7cb8c28daebd22d8e7d63164e87f05b7d4bb9",
+      "transformation": "CRLF to LF only; complete byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/japanese/p2.json",
+      "sha256": "2409ccee00d6608ce317300378d5016097fa74989be17cfd97a4d19307592d18",
+      "reviewedScratchSha256": "2409ccee00d6608ce317300378d5016097fa74989be17cfd97a4d19307592d18",
+      "transformation": "CRLF to LF only; complete byte equality asserted after normalization."
+    }
+  ],
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "JA-B1-PUB-1",
+      "severity": "HIGH",
+      "affectsLocalTts": false,
+      "file": "../../orchestrator/frontend/src/components/today/RolePlayStep.tsx",
+      "line": 172,
+      "title": "Reviewed kana evidence is not yet consumed by both speech turns and typed answers",
+      "current": "The reviewed reading sheet is off-schema. RolePlayStep passes acceptedAnswers only for turn one, and its second-turn required tokens come only from canonical cloze answers. ComplicationStep and TypeRecallStep accept only explicitly integrated acceptedAnswers; the CJK checker removes spaces but cannot convert kanji/kana.",
+      "impact": "If these drafts were published with a canonical-only adapter, correct kana-only input or ASR could be rejected, including the second spoken reply. Text-level reading approval alone does not prove runtime acceptance.",
+      "concreteFix": "Before publication, implement and independently test a reviewed-sidecar adapter for canonical plus exact authored kana cloze/recall answers and both spoken replies, and honor reviewed token-pair alternatives where token scoring is used. Keep canonical TTS surfaces single-counted and keep current recording/scoring settings pending the measured pilot. This is deferred integration work, not a change requested to the approved canonical audio text.",
+      "verification": "Exercise canonical, unspaced kana and reviewed alternative-kanji input on both role-play turns and every typed answer in the real Japanese B1 fixture."
+    },
+    {
+      "id": "JA-B1-PUB-2",
+      "severity": "MEDIUM",
+      "affectsLocalTts": false,
+      "file": "reviewed-content/japanese-p1.json",
+      "jsonPointer": "/lessons/0/pattern/label",
+      "relatedLocation": "../../orchestrator/frontend/src/components/today/PatternStep.tsx:62; ../../orchestrator/frontend/src/lib/guidedBaseFields.ts:6",
+      "title": "German-only pattern headings remain visible to English-base learners",
+      "current": "All 20 pattern.label values contain German explanatory headings. PatternStep prints pattern.label directly, and collectGuidedBaseFields visits only objects, so a bare string label is not localized by a generated base edition.",
+      "impact": "English-base learners receive an untranslated German heading even though rule and example translations are available in English.",
+      "concreteFix": "Before publication, supply an approved locale-aware pattern-label mapping, or exact bilingual labels in the existing string field as already done for form cues. Keep source status draft until the chosen publication path is tested.",
+      "verification": "Render all pattern labels with German and English base preferences and confirm each heading is understandable. Label edits do not alter the canonical spoken surfaces."
+    }
+  ],
+  "scope": "Exact canonical spoken text for local TTS only. Full kana sidecar is review evidence, never additional synthesized inventory. Complete nonspoken findings remain publication holds; no human-native, listening or publication approval.",
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 full twenty-lesson and full authored kana read"
+  },
+  "rawProviderReviewSha256": "fb5631d5ba29735b2f60719057c9f9f86db366b27a579067bb7bf9efe7cdb593",
+  "originalSourceSha256": {
+    "japanese-p1.json": "e5d87bd887185536a327a5badd154599aa8b1ebeeb775c63c274b3fd3e2a0c4f",
+    "japanese-p2.json": "2dc99eaa4ba28ec22f30f339f2f2a49fa0c111f7758aba5d310f0b881ac3308c",
+    "japanese-p1-p2-reading-review.json": "ce0e76d32059c8c143a84997cdfe96fa5107243aad5d319a9a3d005d6a134f65"
+  },
+  "rawReview": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "japanese-p1.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Every field of all ten lessons read against the spec: four-turn tuple shape; dialogue[0] 19–26 chars/4–6 units, dialogue[2] 18–23 chars, dialogue[1] 21–28 chars with 4 chunks whose space-join reproduces targetText, dialogue[3] 16–25 chars; cloze reconstructs dialogue[3] with 2 form blanks each carrying a visible bilingual cue, 4 distinct choices, answer ≤3 units; recall before+answer+after reproduces dialogue[1], answers are content units, 4 distinct fallbacks; speakRequired are three distinct whole units ≥2 chars, kana/CJK only, no particles/fillers/gendered words; trophy surface units verified by start-anchored exact remainder (で/と/に/が/は/でした/empty) in dialogue[1] and example; pattern highlights contiguous, example 0 = learner line; captions quote dialogue[0] exactly once, no other Japanese, no spoiler in situation/caption; staging: L1–3 て-chains + sequencers only, L4 first ていました/時/たら, L5 ていた時+たら, L6 discovery たら, L7+ てから/ので; ていました in L1 opener and 作ったんですね are interlocutor-only; no sentence-final plain, no gendered particles, kanji numerals only (二十分), wakachigaki clean; German pedagogicalGoal and de+en on every base field.",
+        "remainingConcerns": "L7 opener contradicted its own timeline (asks whether parents have arrived yet, then where you met them yesterday) — fixed below. L3 dialogue[3] 川まで 歩いて 帰りました is acceptable but mildly compressed (walked to the river, then home); L9 dialogue[3] answers the change question only implicitly (いいえ + shared laughter); both kept. Trophy uniqueness against A1/A2 relies on the author's import of the frozen modules; not re-verifiable here."
+      },
+      {
+        "file": "japanese-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All ten lessons read field by field: lengths in range (dialogue[1] 21–26 chars, dialogue[3] 17–24), chunk joins exact, cloze and recall reconstructions exact, speakRequired valid whole units, trophy surfaces honest (ですが/です/は/も/empty remainders), captions clean, no spoilers. Staging: L1–2 と思います + clause-medial けど only; L3 the licensed fixed 確かに+evaluative+けど+polite main clause frame; L4–6 ても/だけでも and し (polite 賛成ですし accepted); L7–10 かもしれません and と思いますが; no なら/ば/たら in any learner line; 買おう, 良さそう, 一緒だと, ために, てもらえませんか occur only in interlocutor turns. Form blanks whose distractors are grammatical in isolation (L1 便利で, L2 高く, L6 難しく, L7 思って, L9 あります, L10 忙しいです) are disambiguated by the authored visible cue naming けど/かもしれません/が, which the spec permits for form blanks. Register: polite throughout, 私 only in L1 opener, no gendered forms.",
+        "remainingConcerns": "L2 learner line stated 便利です。 and 出費が 多い as two unlinked sentences, which reads choppy and non-native for a weighing turn — fixed with the A2-recycled ですが concession so the trophy tail stays on the allowlist. L5 uses 賛成 as ordinary vocabulary two lessons before its trophy lesson (accepted, no award). L9 opener 仕事の ために 役立ちますか is acceptable (cf. 将来のために役立つ). L2 pattern label keeps ですけど while example 0 now uses ですが; rule text adjusted."
+      }
+    ],
+    "readingSheetRead": {
+      "file": "japanese-p1-p2-reading-review.json",
+      "pathNumbers": [
+        1,
+        2
+      ],
+      "lessonsReadByPath": {
+        "1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "2": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "readingsCount": 460,
+      "speakTokenPairsCount": 60,
+      "trophySurfaceRecordsCount": 40,
+      "checks": "All 460 canonical/kana rows read; each kana row matches its canonical pointer's spacing and punctuation, keeps topic は (きのうは, しごとには) and directional へ (いえへ), and gives the correct lexical reading (ひっこし, しゅっちょう, かわぞい, しゃない, にじゅっぷん, あまやどり, とりにく, にました, おふたり, でんち, どうきゅうせい, ぶじ, しゅっぴ, ちゅうしゃじょう, ひあたり, やちん, こうがい, らく, ざんぎょう, ひよう, にってい, まにあわない, しかく, きょうじゅう). All 60 speak token pairs align with the kana row unit. All 40 trophy surface records use exact start-anchored remainders on the allowlist (particle で/と/に/が/は/も, copula です/でした/ですが, none). Readings are reviewed as text only; no accent certification.",
+      "remainingConcerns": "The sidecar has no slot for alternative ASR spellings the spec asks the reviewer to list (友達/友だち for P1 L3, 皆/みんな for P2 L7–8); add when the token-pair schema gains that field. Three sidecar rows plus one token and one surface record change with the edits below, so the sidecar hash will move."
+    },
+    "arbitration": [
+      {
+        "finding": "Author politeness flag P1 L1 turn 0 休みましたね",
+        "decision": "accept-as-valid",
+        "reason": "ました + ね is a polite final with a licensed particle; not casual."
+      },
+      {
+        "finding": "Author politeness flag P1 L2 turn 0 留守でしたね",
+        "decision": "accept-as-valid",
+        "reason": "でした + ね, polite."
+      },
+      {
+        "finding": "Author politeness flag P1 L4 turn 2 大変でしたね",
+        "decision": "accept-as-valid",
+        "reason": "でした + ね, polite sympathy; natural friend register."
+      },
+      {
+        "finding": "Author politeness flag P1 L7 turn 2 旅でしたね",
+        "decision": "accept-as-valid",
+        "reason": "Noun + でした + ね, polite."
+      },
+      {
+        "finding": "Author politeness flag P1 L8 turn 2 困りましたね",
+        "decision": "accept-as-valid",
+        "reason": "ました + ね, polite."
+      },
+      {
+        "finding": "Author politeness flag P1 L10 turn 0 大変でしたね",
+        "decision": "accept-as-valid",
+        "reason": "でした + ね, polite."
+      },
+      {
+        "finding": "Author politeness flag P2 L9 turn 2 忙しいですよね",
+        "decision": "accept-as-valid",
+        "reason": "です + よね is polite confirmation-seeking; add ですよね/ましたね/でしたね to the reviewed polite-final list for the gate."
+      },
+      {
+        "finding": "Author note: interlocutor-only forms (していました P1 L1, 買おう P2 L2, 良さそう P2 L4, てもらえませんか P2 L6, 一緒だと P2 L7, ために P2 L9)",
+        "decision": "accept",
+        "reason": "Staging restricts learner production; interlocutor turns may use recognition-only or earlier-tier forms."
+      },
+      {
+        "finding": "Author note: 賛成 used as plain vocabulary in P2 L5 before its L7 trophy lesson",
+        "decision": "accept",
+        "reason": "No trophy award, uniqueness intact; L5's 賛成ですし is a natural polite し surface."
+      },
+      {
+        "finding": "Author claim knownUnresolvedAuthorContentIssues = []",
+        "decision": "reject in part",
+        "reason": "Two native-phrasing/coherence defects found (P1 L7 opener timeline, P2 L2 choppy weighing turn); exact edits supplied."
+      },
+      {
+        "finding": "Form-blank distractors that are grammatical in isolation (P2 L1 便利で, L2 高く, L6 難しく, L7/L8 思って, L9 あります, L10 忙しいです)",
+        "decision": "accept with cue",
+        "reason": "Each blank's visible cue names the required form (けど / が / かもしれません); spec licenses explicit cues to constrain form. No reliance on offscreen baseText."
+      },
+      {
+        "finding": "Author structural validator is an in-memory Latin-schema adaptation; shared offline schema enum has no Japanese entry",
+        "decision": "accept as limitation",
+        "reason": "Not a content defect; the separate Japanese gate must consume the spec's native-unit rules (character/unit counts, tail allowlist) rather than the Latin word-count rails."
+      },
+      {
+        "finding": "Independent review",
+        "decision": "none",
+        "reason": "None supplied; no findings invented."
+      }
+    ],
+    "edits": [
+      {
+        "file": "japanese-p1.json",
+        "jsonPointer": "/lessons/6/dialogue/0",
+        "oldValue": {
+          "targetText": "ご両親は もう 着きましたか。 昨日は どこで 会いましたか。",
+          "baseText": {
+            "de": "Sind deine Eltern schon angekommen? Wo hast du sie gestern getroffen?",
+            "en": "Have your parents arrived yet? Where did you meet them yesterday?"
+          }
+        },
+        "newValue": {
+          "targetText": "ご両親は 昨日 着きましたね。 どこで 会いましたか。",
+          "baseText": {
+            "de": "Deine Eltern sind gestern angekommen, oder? Wo hast du sie getroffen?",
+            "en": "Your parents arrived yesterday, didn’t they? Where did you meet them?"
+          }
+        },
+        "reason": "Opener asked whether the parents had arrived yet and then where you met them yesterday — self-contradictory timeline; new opener 21 chars/5 units, polite ましたね, still no hint of airport or tiredness."
+      },
+      {
+        "file": "japanese-p1.json",
+        "jsonPointer": "/lessons/6/sceneCaption",
+        "oldValue": {
+          "de": "Das Gespräch beginnt mit der Frage: „ご両親は もう 着きましたか。 昨日は どこで 会いましたか。“",
+          "en": "The conversation opens with this question: “ご両親は もう 着きましたか。 昨日は どこで 会いましたか。”"
+        },
+        "newValue": {
+          "de": "Das Gespräch beginnt mit der Frage: „ご両親は 昨日 着きましたね。 どこで 会いましたか。“",
+          "en": "The conversation opens with this question: “ご両親は 昨日 着きましたね。 どこで 会いましたか。”"
+        },
+        "reason": "Caption must quote the revised dialogue[0] verbatim exactly once."
+      },
+      {
+        "file": "japanese-p1-p2-reading-review.json",
+        "jsonPointer": "/paths/0/lessons/6/readings/0",
+        "oldValue": {
+          "jsonPointer": "/dialogue/0/targetText",
+          "canonical": "ご両親は もう 着きましたか。 昨日は どこで 会いましたか。",
+          "kana": "ごりょうしんは もう つきましたか。 きのうは どこで あいましたか。"
+        },
+        "newValue": {
+          "jsonPointer": "/dialogue/0/targetText",
+          "canonical": "ご両親は 昨日 着きましたね。 どこで 会いましたか。",
+          "kana": "ごりょうしんは きのう つきましたね。 どこで あいましたか。"
+        },
+        "reason": "Coupled kana row for the revised opener; unit and punctuation alignment preserved."
+      },
+      {
+        "file": "japanese-p2.json",
+        "jsonPointer": "/lessons/1/dialogue/1",
+        "oldValue": {
+          "targetText": "車は とても 便利です。 毎月の 出費が 多いと 思います。",
+          "baseText": {
+            "de": "Ein Auto ist sehr praktisch. Ich glaube, die monatlichen Ausgaben sind hoch.",
+            "en": "A car is very convenient. I think the monthly expenses are high."
+          }
+        },
+        "newValue": {
+          "targetText": "車は とても 便利ですが、 毎月の 出費が 多いと 思います。",
+          "baseText": {
+            "de": "Ein Auto ist sehr praktisch, aber ich glaube, die monatlichen Ausgaben sind hoch.",
+            "en": "A car is very convenient, but I think the monthly expenses are high."
+          }
+        },
+        "reason": "Two unlinked sentences read as a non-native, unweighed turn for a 'convenient but costly' beat; clause-medial polite ですが is A2-recycled (already used in P2 L1 意見ですが), keeps L1–2 staging (no 確かに/し/ても), 23 chars, and keeps the trophy tail ですが on the closed allowlist (ですけど is not listed)."
+      },
+      {
+        "file": "japanese-p2.json",
+        "jsonPointer": "/lessons/1/chunks/1",
+        "oldValue": {
+          "targetText": "とても 便利です。 毎月の",
+          "baseText": {
+            "de": "ist sehr praktisch; die monatlichen",
+            "en": "is very convenient; the monthly"
+          }
+        },
+        "newValue": {
+          "targetText": "とても 便利ですが、 毎月の",
+          "baseText": {
+            "de": "ist sehr praktisch, aber die monatlichen",
+            "en": "is very convenient, but the monthly"
+          }
+        },
+        "reason": "Chunk join must reproduce the revised dialogue[1] exactly."
+      },
+      {
+        "file": "japanese-p2.json",
+        "jsonPointer": "/lessons/1/pattern/examples/0",
+        "oldValue": {
+          "targetText": "車は とても 便利です。 毎月の 出費が 多いと 思います。",
+          "baseText": {
+            "de": "Ein Auto ist sehr praktisch. Ich glaube, die monatlichen Ausgaben sind hoch.",
+            "en": "A car is very convenient. I think the monthly expenses are high."
+          },
+          "highlight": "多いと 思います"
+        },
+        "newValue": {
+          "targetText": "車は とても 便利ですが、 毎月の 出費が 多いと 思います。",
+          "baseText": {
+            "de": "Ein Auto ist sehr praktisch, aber ich glaube, die monatlichen Ausgaben sind hoch.",
+            "en": "A car is very convenient, but I think the monthly expenses are high."
+          },
+          "highlight": "多いと 思います"
+        },
+        "reason": "Example 0 must equal the learner line; highlight remains contiguous."
+      },
+      {
+        "file": "japanese-p2.json",
+        "jsonPointer": "/lessons/1/pattern/rule",
+        "oldValue": {
+          "de": "Mit ですけど räumst du einen Nachteil ein und führst danach deine höflich formulierte Einschätzung weiter.",
+          "en": "ですけど concedes a disadvantage before you continue with a politely expressed view."
+        },
+        "newValue": {
+          "de": "Mit ですけど oder dem etwas förmlicheren ですが räumst du einen Nachteil ein und führst danach deine höflich formulierte Einschätzung weiter.",
+          "en": "ですけど, or the slightly more formal ですが, concedes a disadvantage before you continue with a politely expressed view."
+        },
+        "reason": "Example 0 now shows ですが while example 1 and the second reply show ですけど; rule names both."
+      },
+      {
+        "file": "japanese-p2.json",
+        "jsonPointer": "/lessons/1/recall/before",
+        "oldValue": "車は とても 便利です。 ",
+        "newValue": "車は とても 便利ですが、 ",
+        "reason": "Recall before+answer+after must reproduce the revised dialogue[1]."
+      },
+      {
+        "file": "japanese-p2.json",
+        "jsonPointer": "/lessons/1/speakRequired/1",
+        "oldValue": "便利です",
+        "newValue": "便利ですが",
+        "reason": "Speech token must be a whole unit of the revised dialogue[1]; trophy surface unit preferred."
+      },
+      {
+        "file": "japanese-p1-p2-reading-review.json",
+        "jsonPointer": "/paths/1/lessons/1/readings/1",
+        "oldValue": {
+          "jsonPointer": "/dialogue/1/targetText",
+          "canonical": "車は とても 便利です。 毎月の 出費が 多いと 思います。",
+          "kana": "くるまは とても べんりです。 まいつきの しゅっぴが おおいと おもいます。"
+        },
+        "newValue": {
+          "jsonPointer": "/dialogue/1/targetText",
+          "canonical": "車は とても 便利ですが、 毎月の 出費が 多いと 思います。",
+          "kana": "くるまは とても べんりですが、 まいつきの しゅっぴが おおいと おもいます。"
+        },
+        "reason": "Coupled kana row for the revised learner line."
+      },
+      {
+        "file": "japanese-p1-p2-reading-review.json",
+        "jsonPointer": "/paths/1/lessons/1/readings/5",
+        "oldValue": {
+          "jsonPointer": "/chunks/1/targetText",
+          "canonical": "とても 便利です。 毎月の",
+          "kana": "とても べんりです。 まいつきの"
+        },
+        "newValue": {
+          "jsonPointer": "/chunks/1/targetText",
+          "canonical": "とても 便利ですが、 毎月の",
+          "kana": "とても べんりですが、 まいつきの"
+        },
+        "reason": "Coupled kana row for the revised chunk."
+      },
+      {
+        "file": "japanese-p1-p2-reading-review.json",
+        "jsonPointer": "/paths/1/lessons/1/readings/8",
+        "oldValue": {
+          "jsonPointer": "/pattern/examples/0/targetText",
+          "canonical": "車は とても 便利です。 毎月の 出費が 多いと 思います。",
+          "kana": "くるまは とても べんりです。 まいつきの しゅっぴが おおいと おもいます。"
+        },
+        "newValue": {
+          "jsonPointer": "/pattern/examples/0/targetText",
+          "canonical": "車は とても 便利ですが、 毎月の 出費が 多いと 思います。",
+          "kana": "くるまは とても べんりですが、 まいつきの しゅっぴが おおいと おもいます。"
+        },
+        "reason": "Coupled kana row for the revised pattern example."
+      },
+      {
+        "file": "japanese-p1-p2-reading-review.json",
+        "jsonPointer": "/paths/1/lessons/1/speakTokens/1",
+        "oldValue": {
+          "canonical": "便利です",
+          "kana": "べんりです"
+        },
+        "newValue": {
+          "canonical": "便利ですが",
+          "kana": "べんりですが"
+        },
+        "reason": "Token pair must match the revised speakRequired unit."
+      },
+      {
+        "file": "japanese-p1-p2-reading-review.json",
+        "jsonPointer": "/paths/1/lessons/1/trophySurfaces/firstReply",
+        "oldValue": {
+          "canonical": "便利",
+          "surfaceUnit": "便利です",
+          "tail": "です",
+          "tailKind": "copula"
+        },
+        "newValue": {
+          "canonical": "便利",
+          "surfaceUnit": "便利ですが",
+          "tail": "ですが",
+          "tailKind": "copula"
+        },
+        "reason": "Surface record must equal the matched unit; remainder ですが is on the closed copula tail list."
+      }
+    ],
+    "finalChecks": {
+      "afterEdits": "P1 L7 dialogue[0] = 21 chars/5 units, caption quotes it once; P2 L2 dialogue[1] = 23 chars, chunks 車は + とても 便利ですが、 毎月の + 出費が 多いと + 思います。 join exactly, recall reconstructs, speakRequired 車は/便利ですが/出費が distinct whole units, trophy 便利 anchored by exact remainder ですが in dialogue[1] and です in the example, distractors 出費が 少ないと / 不便です。 毎月の remain distinct chips. No other target text changed; trophies, cloze, terms untouched.",
+      "hashes": "japanese-p1.json, japanese-p2.json and the sidecar hashes will change after these edits; re-run the author structural check and refresh sourceHashes in the batch report.",
+      "politeFinalList": "Add ましたね, でしたね, ですよね to the gate's polite-final list so the seven conservative flags stop firing.",
+      "scope": "Content approval of staged language only after exact edits; no production, publication, TTS, ASR or paid approval; no claim of human native review; independent reviewer pass still required."
+    }
+  },
+  "exactReplayEdits": 14,
+  "approvalBasis": "Every exact old/new edit replayed against hash-checked original lesson and reading objects; complete final objects equal independently reviewed bytes."
+}

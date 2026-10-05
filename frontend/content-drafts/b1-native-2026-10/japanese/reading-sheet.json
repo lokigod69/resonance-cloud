@@ -1,0 +1,3056 @@
+{
+  "schemaVersion": 1,
+  "targetLanguage": "Japanese",
+  "paths": [
+    {
+      "pathNumber": 1,
+      "lessons": [
+        {
+          "slug": "hikkoshi-boxes",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "昨日は 会社を 休みましたね。 何を していましたか。",
+              "kana": "きのうは かいしゃを やすみましたね。 なにを していましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "昨日は 引っ越しで 箱を 運んで、 新しい 部屋を 片付けました。",
+              "kana": "きのうは ひっこしで はこを はこんで、 あたらしい へやを かたづけました。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "新しい 部屋は どうですか。 駅から 近いですか。",
+              "kana": "あたらしい へやは どうですか。 えきから ちかいですか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "駅に 近くて、 部屋も 明るくて 快適です。",
+              "kana": "えきに ちかくて、 へやも あかるくて かいてきです。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "昨日は 引っ越しで 箱を",
+              "kana": "きのうは ひっこしで はこを"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "運んで、",
+              "kana": "はこんで、"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "新しい 部屋を",
+              "kana": "あたらしい へやを"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "片付けました。",
+              "kana": "かたづけました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "昨日は 引っ越しで 箱を 運んで、 新しい 部屋を 片付けました。",
+              "kana": "きのうは ひっこしで はこを はこんで、 あたらしい へやを かたづけました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "この 道は 広くて、 明るくて 安全です。",
+              "kana": "この みちは ひろくて、 あかるくて あんぜんです。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "近くて",
+              "kana": "ちかくて"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "明るくて",
+              "kana": "あかるくて"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "運んで",
+              "kana": "はこんで"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "引っ越しで 荷物を 運びました。",
+              "kana": "ひっこしで にもつを はこびました。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "引っ越し",
+              "kana": "ひっこし"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "引っ越し",
+              "kana": "ひっこし"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "箱",
+              "kana": "はこ"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "運んで",
+              "kana": "はこんで"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "片付けました",
+              "kana": "かたづけました"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "近くて",
+              "kana": "ちかくて"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "明るくて",
+              "kana": "あかるくて"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "古い 部屋を",
+              "kana": "ふるい へやを"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "片付けませんでした。",
+              "kana": "かたづけませんでした。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "引っ越しで",
+              "kana": "ひっこしで"
+            },
+            {
+              "canonical": "運んで",
+              "kana": "はこんで"
+            },
+            {
+              "canonical": "片付けました",
+              "kana": "かたづけました"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "引っ越し",
+              "surfaceUnit": "引っ越しで",
+              "tail": "で",
+              "tailKind": "particle"
+            },
+            "example": {
+              "canonical": "引っ越し",
+              "surfaceUnit": "引っ越しで",
+              "tail": "で",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "A2 polite past, adjective て-linking; interlocutor-only していました.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "shucchou-dinner",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "昨日まで 留守でしたね。 旅行は どうでしたか。",
+              "kana": "きのうまで るすでしたね。 りょこうは どうでしたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "出張で 会議に 出て、 その後 同僚と 夕飯を 食べました。",
+              "kana": "しゅっちょうで かいぎに でて、 そのあと どうりょうと ゆうはんを たべました。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "夕飯は どうでしたか。 地元の 料理を 食べましたか。",
+              "kana": "ゆうはんは どうでしたか。 じもとの りょうりを たべましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "魚を 食べて、 地元の お茶も 飲んで 満足しました。",
+              "kana": "さかなを たべて、 じもとの おちゃも のんで まんぞくしました。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "出張で 会議に",
+              "kana": "しゅっちょうで かいぎに"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "出て、",
+              "kana": "でて、"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "その後 同僚と 夕飯を",
+              "kana": "そのあと どうりょうと ゆうはんを"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "食べました。",
+              "kana": "たべました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "出張で 会議に 出て、 その後 同僚と 夕飯を 食べました。",
+              "kana": "しゅっちょうで かいぎに でて、 そのあと どうりょうと ゆうはんを たべました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "会議に 出て、 その後 資料を 読みました。",
+              "kana": "かいぎに でて、 そのあと しりょうを よみました。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "食べて",
+              "kana": "たべて"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "飲んで",
+              "kana": "のんで"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "出て",
+              "kana": "でて"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "来週は 出張で 大阪に 行きます。",
+              "kana": "らいしゅうは しゅっちょうで おおさかに いきます。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "出張",
+              "kana": "しゅっちょう"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "出張",
+              "kana": "しゅっちょう"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "会議",
+              "kana": "かいぎ"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "その後",
+              "kana": "そのあと"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "同僚",
+              "kana": "どうりょう"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "夕飯",
+              "kana": "ゆうはん"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "飲んで",
+              "kana": "のんで"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "一人で 朝ごはんを",
+              "kana": "ひとりで あさごはんを"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "食べませんでした。",
+              "kana": "たべませんでした。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "出張で",
+              "kana": "しゅっちょうで"
+            },
+            {
+              "canonical": "会議に",
+              "kana": "かいぎに"
+            },
+            {
+              "canonical": "食べました",
+              "kana": "たべました"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "出張",
+              "surfaceUnit": "出張で",
+              "tail": "で",
+              "tailKind": "particle"
+            },
+            "example": {
+              "canonical": "出張",
+              "surfaceUnit": "出張で",
+              "tail": "で",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "A2 polite past and time sequencing.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "tomodachi-riverside",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "週末は 何を しましたか。 どこかへ 出かけましたか。",
+              "kana": "しゅうまつは なにを しましたか。 どこかへ でかけましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "友達と ご飯を 食べて、 それから 川沿いを 歩きました。",
+              "kana": "ともだちと ごはんを たべて、 それから かわぞいを あるきました。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "どの辺を 歩きましたか。 そこは 駅から 近いですか。",
+              "kana": "どのへんを あるきましたか。 そこは えきから ちかいですか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "駅で 会って、 近くの 川まで 歩いて 帰りました。",
+              "kana": "えきで あって、 ちかくの かわまで あるいて かえりました。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "友達と ご飯を",
+              "kana": "ともだちと ごはんを"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "食べて、",
+              "kana": "たべて、"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "それから 川沿いを",
+              "kana": "それから かわぞいを"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "歩きました。",
+              "kana": "あるきました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "友達と ご飯を 食べて、 それから 川沿いを 歩きました。",
+              "kana": "ともだちと ごはんを たべて、 それから かわぞいを あるきました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "朝ごはんを 食べて、 それから 仕事に 行きました。",
+              "kana": "あさごはんを たべて、 それから しごとに いきました。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "会って",
+              "kana": "あって"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "歩いて",
+              "kana": "あるいて"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "食べて",
+              "kana": "たべて"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "友達と 駅で 会いました。",
+              "kana": "ともだちと えきで あいました。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "友達",
+              "kana": "ともだち"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "友達",
+              "kana": "ともだち"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "ご飯",
+              "kana": "ごはん"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "それから",
+              "kana": "それから"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "川沿い",
+              "kana": "かわぞい"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "会って",
+              "kana": "あって"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "歩いて",
+              "kana": "あるいて"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "それから 山道を",
+              "kana": "それから やまみちを"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "走りました。",
+              "kana": "はしりました。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "友達と",
+              "kana": "ともだちと"
+            },
+            {
+              "canonical": "川沿いを",
+              "kana": "かわぞいを"
+            },
+            {
+              "canonical": "歩きました",
+              "kana": "あるきました"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "友達",
+              "surfaceUnit": "友達と",
+              "tail": "と",
+              "tailKind": "particle"
+            },
+            "example": {
+              "canonical": "友達",
+              "surfaceUnit": "友達と",
+              "tail": "と",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "A2 past; P1 L1–2 event chaining.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "tochuu-stopped-train",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "少し 遅かったですね。 ここまで 来るのは 大変でしたか。",
+              "kana": "すこし おそかったですね。 ここまで くるのは たいへんでしたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "途中で 電車が 止まった 時、 車内で ずっと 待っていました。",
+              "kana": "とちゅうで でんしゃが とまった とき、 しゃないで ずっと まっていました。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "それは 大変でしたね。 どのくらい 待ちましたか。",
+              "kana": "それは たいへんでしたね。 どのくらい まちましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "二十分 待っていたら、 電車が やっと 動きました。",
+              "kana": "にじゅっぷん まっていたら、 でんしゃが やっと うごきました。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "途中で 電車が",
+              "kana": "とちゅうで でんしゃが"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "止まった 時、",
+              "kana": "とまった とき、"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "車内で ずっと",
+              "kana": "しゃないで ずっと"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "待っていました。",
+              "kana": "まっていました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "途中で 電車が 止まった 時、 車内で ずっと 待っていました。",
+              "kana": "とちゅうで でんしゃが とまった とき、 しゃないで ずっと まっていました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "駅で 待っていたら、 友達が 来ました。",
+              "kana": "えきで まっていたら、 ともだちが きました。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "待っていたら",
+              "kana": "まっていたら"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "動きました",
+              "kana": "うごきました"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "止まった",
+              "kana": "とまった"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "途中で バスを 降りました。",
+              "kana": "とちゅうで バスを おりました。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "途中",
+              "kana": "とちゅう"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "途中",
+              "kana": "とちゅう"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "止まった 時",
+              "kana": "とまった とき"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "車内",
+              "kana": "しゃない"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "待っていました",
+              "kana": "まっていました"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "二十分",
+              "kana": "にじゅっぷん"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "動きました",
+              "kana": "うごきました"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "駅前で 少しだけ",
+              "kana": "えきまえで すこしだけ"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "歩いていました。",
+              "kana": "あるいていました。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "途中で",
+              "kana": "とちゅうで"
+            },
+            {
+              "canonical": "車内で",
+              "kana": "しゃないで"
+            },
+            {
+              "canonical": "待っていました",
+              "kana": "まっていました"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "途中",
+              "surfaceUnit": "途中で",
+              "tail": "で",
+              "tailKind": "particle"
+            },
+            "example": {
+              "canonical": "途中",
+              "surfaceUnit": "途中で",
+              "tail": "で",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "A2 polite past; P1 te-chains. New 時, past ongoing, discovery たら.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "kyuuni-rain",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "昨日の 午後は 何を していましたか。 外に いましたか。",
+              "kana": "きのうの ごごは なにを していましたか。 そとに いましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "店で 買い物を していた 時、 急に 大雨が 降りました。",
+              "kana": "みせで かいものを していた とき、 きゅうに おおあめが ふりました。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "外に 出た 時、 服や 靴は ぬれませんでしたか。",
+              "kana": "そとに でた とき、 ふくや くつは ぬれませんでしたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "店で 雨宿りを して、 雨が やんだら 外に 出ました。",
+              "kana": "みせで あまやどりを して、 あめが やんだら そとに でました。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "店で 買い物を",
+              "kana": "みせで かいものを"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "していた 時、",
+              "kana": "していた とき、"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "急に 大雨が",
+              "kana": "きゅうに おおあめが"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "降りました。",
+              "kana": "ふりました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "店で 買い物を していた 時、 急に 大雨が 降りました。",
+              "kana": "みせで かいものを していた とき、 きゅうに おおあめが ふりました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "料理を していた 時、 電話が 鳴りました。",
+              "kana": "りょうりを していた とき、 でんわが なりました。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "して",
+              "kana": "して"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "やんだら",
+              "kana": "やんだら"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "していた",
+              "kana": "していた"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "急に 電話が 鳴りました。",
+              "kana": "きゅうに でんわが なりました。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "急に",
+              "kana": "きゅうに"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "急に",
+              "kana": "きゅうに"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "していた 時",
+              "kana": "していた とき"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "大雨",
+              "kana": "おおあめ"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "降りました",
+              "kana": "ふりました"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "雨宿り",
+              "kana": "あまやどり"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "やんだら",
+              "kana": "やんだら"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "ゆっくり 雪が",
+              "kana": "ゆっくり ゆきが"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "やみました。",
+              "kana": "やみました。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "買い物を",
+              "kana": "かいものを"
+            },
+            {
+              "canonical": "急に",
+              "kana": "きゅうに"
+            },
+            {
+              "canonical": "大雨が",
+              "kana": "おおあめが"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "急に",
+              "surfaceUnit": "急に",
+              "tail": "",
+              "tailKind": "none"
+            },
+            "example": {
+              "canonical": "急に",
+              "surfaceUnit": "急に",
+              "tail": "",
+              "tailKind": "none"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P1 L4 past ongoing and 時; te-chaining; when たら.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "kekkyoku-home-curry",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "昨日の レストランは どうでしたか。 そこで 食べましたか。",
+              "kana": "きのうの レストランは どうでしたか。 そこで たべましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "店に 入ったら 満席でした。 結局 家で カレーを 作りました。",
+              "kana": "みせに はいったら まんせきでした。 けっきょく いえで カレーを つくりました。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "家で 作ったんですね。 何を 入れて 作りましたか。",
+              "kana": "いえで つくったんですね。 なにを いれて つくりましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "野菜を 切って、 鶏肉も 入れて ゆっくり 煮ました。",
+              "kana": "やさいを きって、 とりにくも いれて ゆっくり にました。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "店に 入ったら",
+              "kana": "みせに はいったら"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "満席でした。 結局",
+              "kana": "まんせきでした。 けっきょく"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "家で カレーを",
+              "kana": "いえで カレーを"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "作りました。",
+              "kana": "つくりました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "店に 入ったら 満席でした。 結局 家で カレーを 作りました。",
+              "kana": "みせに はいったら まんせきでした。 けっきょく いえで カレーを つくりました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "店に 入ったら、 友達が いました。",
+              "kana": "みせに はいったら、 ともだちが いました。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "切って",
+              "kana": "きって"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "入れて",
+              "kana": "いれて"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "入ったら",
+              "kana": "はいったら"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "結局 バスで 帰りました。",
+              "kana": "けっきょく バスで かえりました。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "結局",
+              "kana": "けっきょく"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "結局",
+              "kana": "けっきょく"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "入ったら",
+              "kana": "はいったら"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "満席",
+              "kana": "まんせき"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "カレー",
+              "kana": "カレー"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "鶏肉",
+              "kana": "とりにく"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "煮ました",
+              "kana": "にました"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "家で サラダを",
+              "kana": "いえで サラダを"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "食べました。",
+              "kana": "たべました。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "入ったら",
+              "kana": "はいったら"
+            },
+            {
+              "canonical": "満席でした",
+              "kana": "まんせきでした"
+            },
+            {
+              "canonical": "結局",
+              "kana": "けっきょく"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "結局",
+              "surfaceUnit": "結局",
+              "tail": "",
+              "tailKind": "none"
+            },
+            "example": {
+              "canonical": "結局",
+              "surfaceUnit": "結局",
+              "tail": "",
+              "tailKind": "none"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P1 L1–3 te-chains; L4–6 discovery たら.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "kuukou-parents",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "ご両親は 昨日 着きましたね。 どこで 会いましたか。",
+              "kana": "ごりょうしんは きのう つきましたね。 どこで あいましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "空港で 両親に 会ってから、 ホテルまで 一緒に 行きました。",
+              "kana": "くうこうで りょうしんに あってから、 ホテルまで いっしょに いきました。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "長い 飛行機の 旅でしたね。 お二人は 疲れていましたか。",
+              "kana": "ながい ひこうきの たびでしたね。 おふたりは つかれていましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "二人とも 疲れていたので、 ホテルに 着いて すぐ 休みました。",
+              "kana": "ふたりとも つかれていたので、 ホテルに ついて すぐ やすみました。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "空港で 両親に",
+              "kana": "くうこうで りょうしんに"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "会ってから、",
+              "kana": "あってから、"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "ホテルまで 一緒に",
+              "kana": "ホテルまで いっしょに"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "行きました。",
+              "kana": "いきました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "空港で 両親に 会ってから、 ホテルまで 一緒に 行きました。",
+              "kana": "くうこうで りょうしんに あってから、 ホテルまで いっしょに いきました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "雨が 降っていたので、 家で 休みました。",
+              "kana": "あめが ふっていたので、 いえで やすみました。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "疲れていたので",
+              "kana": "つかれていたので"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "着いて",
+              "kana": "ついて"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "会ってから",
+              "kana": "あってから"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "空港で 両親を 待ちました。",
+              "kana": "くうこうで りょうしんを まちました。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "空港",
+              "kana": "くうこう"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "空港",
+              "kana": "くうこう"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "両親",
+              "kana": "りょうしん"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "会ってから",
+              "kana": "あってから"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "二人とも",
+              "kana": "ふたりとも"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "疲れていたので",
+              "kana": "つかれていたので"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "着いて",
+              "kana": "ついて"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "一人で 駅まで",
+              "kana": "ひとりで えきまで"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "歩きました。",
+              "kana": "あるきました。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "空港で",
+              "kana": "くうこうで"
+            },
+            {
+              "canonical": "両親に",
+              "kana": "りょうしんに"
+            },
+            {
+              "canonical": "会ってから",
+              "kana": "あってから"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "空港",
+              "surfaceUnit": "空港で",
+              "tail": "で",
+              "tailKind": "particle"
+            },
+            "example": {
+              "canonical": "空港",
+              "surfaceUnit": "空港で",
+              "tail": "で",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P1 L4–6 past state; new てから and ので.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "michi-hike",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "山歩きは どうでしたか。 最後まで 楽しく 歩けましたか。",
+              "kana": "やまあるきは どうでしたか。 さいごまで たのしく あるけましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "山で 道が わからなくて、 電池も 切れたので 人に 聞きました。",
+              "kana": "やまで みちが わからなくて、 でんちも きれたので ひとに ききました。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "山の 中で 困りましたね。 その時は 怖かったですか。",
+              "kana": "やまの なかで こまりましたね。 そのときは こわかったですか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "人に 聞いてから、 地図を 見て 安心しました。",
+              "kana": "ひとに きいてから、 ちずを みて あんしんしました。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "山で 道が わからなくて、",
+              "kana": "やまで みちが わからなくて、"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "電池も 切れたので",
+              "kana": "でんちも きれたので"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "人に",
+              "kana": "ひとに"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "聞きました。",
+              "kana": "ききました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "山で 道が わからなくて、 電池も 切れたので 人に 聞きました。",
+              "kana": "やまで みちが わからなくて、 でんちも きれたので ひとに ききました。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "電車が 遅れたので、 バスで 帰りました。",
+              "kana": "でんしゃが おくれたので、 バスで かえりました。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "聞いてから",
+              "kana": "きいてから"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "見て",
+              "kana": "みて"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "わからなくて",
+              "kana": "わからなくて"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "この 道は 駅まで 続いています。",
+              "kana": "この みちは えきまで つづいています。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "道",
+              "kana": "みち"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "道",
+              "kana": "みち"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "わからなくて",
+              "kana": "わからなくて"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "電池",
+              "kana": "でんち"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "切れたので",
+              "kana": "きれたので"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "聞いてから",
+              "kana": "きいてから"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "安心しました",
+              "kana": "あんしんしました"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "電池も あったので",
+              "kana": "でんちも あったので"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "会いました。",
+              "kana": "あいました。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "道が",
+              "kana": "みちが"
+            },
+            {
+              "canonical": "電池も",
+              "kana": "でんちも"
+            },
+            {
+              "canonical": "聞きました",
+              "kana": "ききました"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "道",
+              "surfaceUnit": "道が",
+              "tail": "が",
+              "tailKind": "particle"
+            },
+            "example": {
+              "canonical": "道",
+              "surfaceUnit": "道は",
+              "tail": "は",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P1 negative て-link, ので and てから; trophy example uses A2 state ています.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "hisashiburi-reunion",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "昨日の 集まりは どうでしたか。 昔の 知り合いに 会いましたか。",
+              "kana": "きのうの あつまりは どうでしたか。 むかしの しりあいに あいましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "久しぶりに 同級生に 会ったので、 何時間も 話して 楽しかったです。",
+              "kana": "ひさしぶりに どうきゅうせいに あったので、 なんじかんも はなして たのしかったです。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "昔と 比べて、 話し方や 性格は 変わっていましたか。",
+              "kana": "むかしと くらべて、 はなしかたや せいかくは かわっていましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "いいえ、 昔の 話を 始めたら 二人で 笑っていました。",
+              "kana": "いいえ、 むかしの はなしを はじめたら ふたりで わらっていました。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "久しぶりに 同級生に 会ったので、",
+              "kana": "ひさしぶりに どうきゅうせいに あったので、"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "何時間も",
+              "kana": "なんじかんも"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "話して",
+              "kana": "はなして"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "楽しかったです。",
+              "kana": "たのしかったです。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "久しぶりに 同級生に 会ったので、 何時間も 話して 楽しかったです。",
+              "kana": "ひさしぶりに どうきゅうせいに あったので、 なんじかんも はなして たのしかったです。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "家に 着いたら、 電話が 鳴りました。",
+              "kana": "いえに ついたら、 でんわが なりました。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "始めたら",
+              "kana": "はじめたら"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "笑っていました",
+              "kana": "わらっていました"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "話して",
+              "kana": "はなして"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "久しぶりに 友達と 会いました。",
+              "kana": "ひさしぶりに ともだちと あいました。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "久しぶり",
+              "kana": "ひさしぶり"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "久しぶり",
+              "kana": "ひさしぶり"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "同級生",
+              "kana": "どうきゅうせい"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "何時間も",
+              "kana": "なんじかんも"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "話し方",
+              "kana": "はなしかた"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "性格",
+              "kana": "せいかく"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "笑っていました",
+              "kana": "わらっていました"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "数分だけ",
+              "kana": "すうふんだけ"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "悲しかったです。",
+              "kana": "かなしかったです。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "久しぶりに",
+              "kana": "ひさしぶりに"
+            },
+            {
+              "canonical": "同級生に",
+              "kana": "どうきゅうせいに"
+            },
+            {
+              "canonical": "楽しかったです",
+              "kana": "たのしかったです"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "久しぶり",
+              "surfaceUnit": "久しぶりに",
+              "tail": "に",
+              "tailKind": "particle"
+            },
+            "example": {
+              "canonical": "久しぶり",
+              "surfaceUnit": "久しぶりに",
+              "tail": "に",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P1 ので, たら and past ongoing; A2 polite adjective past.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "buji-typhoon",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "昨日の 台風は 大変でしたね。 家まで 帰れましたか。",
+              "kana": "きのうの たいふうは たいへんでしたね。 いえまで かえれましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "電車が 止まる 前に 帰ったので、 台風の 夜も 無事でした。",
+              "kana": "でんしゃが とまる まえに かえったので、 たいふうの よるも ぶじでした。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "ご家族は どうでしたか。 皆さんも 無事に 帰れましたか。",
+              "kana": "ごかぞくは どうでしたか。 みなさんも ぶじに かえれましたか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "家族も 早く 帰ったので、 一緒に ご飯を 食べて 休みました。",
+              "kana": "かぞくも はやく かえったので、 いっしょに ごはんを たべて やすみました。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "電車が 止まる",
+              "kana": "でんしゃが とまる"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "前に 帰ったので、",
+              "kana": "まえに かえったので、"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "台風の 夜も",
+              "kana": "たいふうの よるも"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "無事でした。",
+              "kana": "ぶじでした。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "電車が 止まる 前に 帰ったので、 台風の 夜も 無事でした。",
+              "kana": "でんしゃが とまる まえに かえったので、 たいふうの よるも ぶじでした。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "雨が やんだので、 外に 出ました。",
+              "kana": "あめが やんだので、 そとに でました。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "帰ったので",
+              "kana": "かえったので"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "食べて",
+              "kana": "たべて"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "止まる",
+              "kana": "とまる"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "昨日は 無事に 家へ 帰りました。",
+              "kana": "きのうは ぶじに いえへ かえりました。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "無事",
+              "kana": "ぶじ"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "無事",
+              "kana": "ぶじ"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "台風",
+              "kana": "たいふう"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "止まる 前に",
+              "kana": "とまる まえに"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "帰ったので",
+              "kana": "かえったので"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "早く",
+              "kana": "はやく"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "休みました",
+              "kana": "やすみました"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "晴れた 夜も",
+              "kana": "はれた よるも"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "心配でした。",
+              "kana": "しんぱいでした。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "帰ったので",
+              "kana": "かえったので"
+            },
+            {
+              "canonical": "台風の",
+              "kana": "たいふうの"
+            },
+            {
+              "canonical": "無事でした",
+              "kana": "ぶじでした"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "無事",
+              "surfaceUnit": "無事でした",
+              "tail": "でした",
+              "tailKind": "copula"
+            },
+            "example": {
+              "canonical": "無事",
+              "surfaceUnit": "無事に",
+              "tail": "に",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "A2 前に and polite past; P1 ので and te-chains.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "lessons": [
+        {
+          "slug": "iken-shift-plan",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "新しい シフトの 案を 見ましたか。 どう 思いますか。",
+              "kana": "あたらしい シフトの あんを みましたか。 どう おもいますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "私の 意見ですが、 早い シフトの 方が いいと 思います。",
+              "kana": "わたしの いけんですが、 はやい シフトの ほうが いいと おもいます。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "遅い シフトも 選べますよ。 朝が いいのは なぜですか。",
+              "kana": "おそい シフトも えらべますよ。 あさが いいのは なぜですか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "遅い シフトも 便利ですけど、 朝の 方が 元気だと 思います。",
+              "kana": "おそい シフトも べんりですけど、 あさの ほうが げんきだと おもいます。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "私の 意見ですが、",
+              "kana": "わたしの いけんですが、"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "早い シフトの",
+              "kana": "はやい シフトの"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "方が いいと",
+              "kana": "ほうが いいと"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "思います。",
+              "kana": "おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "私の 意見ですが、 早い シフトの 方が いいと 思います。",
+              "kana": "わたしの いけんですが、 はやい シフトの ほうが いいと おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "この 案は 便利だと 思います。",
+              "kana": "この あんは べんりだと おもいます。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "便利ですけど",
+              "kana": "べんりですけど"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "元気だと",
+              "kana": "げんきだと"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "早い",
+              "kana": "はやい"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "私の 意見も 聞いて ください。",
+              "kana": "わたしの いけんも きいて ください。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "意見",
+              "kana": "いけん"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "意見",
+              "kana": "いけん"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "シフト",
+              "kana": "シフト"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "案",
+              "kana": "あん"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "早い",
+              "kana": "はやい"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "いいと 思います",
+              "kana": "いいと おもいます"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "元気だと",
+              "kana": "げんきだと"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "遅い シフトの",
+              "kana": "おそい シフトの"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "方が 忙しいと",
+              "kana": "ほうが いそがしいと"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "意見ですが",
+              "kana": "いけんですが"
+            },
+            {
+              "canonical": "シフトの",
+              "kana": "シフトの"
+            },
+            {
+              "canonical": "思います",
+              "kana": "おもいます"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "意見",
+              "surfaceUnit": "意見ですが",
+              "tail": "ですが",
+              "tailKind": "copula"
+            },
+            "example": {
+              "canonical": "意見",
+              "surfaceUnit": "意見も",
+              "tail": "も",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "A2 comparisons; new opinion frame. No productive 確かに, し, ても or hedge.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "benri-car-costs",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "車を 買おうか 迷っています。 どう 思いますか。",
+              "kana": "くるまを かおうか まよっています。 どう おもいますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "車は とても 便利ですが、 毎月の 出費が 多いと 思います。",
+              "kana": "くるまは とても べんりですが、 まいつきの しゅっぴが おおいと おもいます。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "家の 近くに 駐車場が ありますが、 月に 二万円です。",
+              "kana": "いえの ちかくに ちゅうしゃじょうが ありますが、 つきに にまんえんです。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "駐車場も 高いですけど、 車は 役に 立つと 思います。",
+              "kana": "ちゅうしゃじょうも たかいですけど、 くるまは やくに たつと おもいます。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "車は",
+              "kana": "くるまは"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "とても 便利ですが、 毎月の",
+              "kana": "とても べんりですが、 まいつきの"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "出費が 多いと",
+              "kana": "しゅっぴが おおいと"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "思います。",
+              "kana": "おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "車は とても 便利ですが、 毎月の 出費が 多いと 思います。",
+              "kana": "くるまは とても べんりですが、 まいつきの しゅっぴが おおいと おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "店は 遠いですけど、 料理は おいしいと 思います。",
+              "kana": "みせは とおいですけど、 りょうりは おいしいと おもいます。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "高いですけど",
+              "kana": "たかいですけど"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "立つと",
+              "kana": "たつと"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "毎月の",
+              "kana": "まいつきの"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "この 地図は とても 便利です。",
+              "kana": "この ちずは とても べんりです。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "便利",
+              "kana": "べんり"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "便利",
+              "kana": "べんり"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "毎月",
+              "kana": "まいつき"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "出費",
+              "kana": "しゅっぴ"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "多いと 思います",
+              "kana": "おおいと おもいます"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "駐車場",
+              "kana": "ちゅうしゃじょう"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "役に 立つ",
+              "kana": "やくに たつ"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "出費が 少ないと",
+              "kana": "しゅっぴが すくないと"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "不便です。 毎月の",
+              "kana": "ふべんです。 まいつきの"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "車は",
+              "kana": "くるまは"
+            },
+            {
+              "canonical": "便利ですが",
+              "kana": "べんりですが"
+            },
+            {
+              "canonical": "出費が",
+              "kana": "しゅっぴが"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "便利",
+              "surfaceUnit": "便利ですが",
+              "tail": "ですが",
+              "tailKind": "copula"
+            },
+            "example": {
+              "canonical": "便利",
+              "surfaceUnit": "便利です",
+              "tail": "です",
+              "tailKind": "copula"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "A2 adjectives and monthly time expressions; P2 L1 opinion frame. Volitional 買おう is interlocutor-only.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "tashikani-cafe",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "新しい カフェの ケーキは おいしいですね。 どう 思いますか。",
+              "kana": "あたらしい カフェの ケーキは おいしいですね。 どう おもいますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "確かに おいしいですけど、 駅から かなり 遠いと 思います。",
+              "kana": "たしかに おいしいですけど、 えきから かなり とおいと おもいます。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "もっと 近い お店は ありますか。 どこが いいですか。",
+              "kana": "もっと ちかい おみせは ありますか。 どこが いいですか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "駅前の 店で 食べる 方が いいと 思います。",
+              "kana": "えきまえの みせで たべる ほうが いいと おもいます。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "確かに おいしいですけど、",
+              "kana": "たしかに おいしいですけど、"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "駅から かなり",
+              "kana": "えきから かなり"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "遠いと",
+              "kana": "とおいと"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "思います。",
+              "kana": "おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "確かに おいしいですけど、 駅から かなり 遠いと 思います。",
+              "kana": "たしかに おいしいですけど、 えきから かなり とおいと おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "確かに 高いですけど、 とても 丈夫です。",
+              "kana": "たしかに たかいですけど、 とても じょうぶです。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "食べる",
+              "kana": "たべる"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "思います",
+              "kana": "おもいます"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "遠いと",
+              "kana": "とおいと"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "確かに 安いですけど、 少し 遠いです。",
+              "kana": "たしかに やすいですけど、 すこし とおいです。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "確かに",
+              "kana": "たしかに"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "確かに",
+              "kana": "たしかに"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "おいしいですけど",
+              "kana": "おいしいですけど"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "駅から",
+              "kana": "えきから"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "遠い",
+              "kana": "とおい"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "駅前",
+              "kana": "えきまえ"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "食べる 方が いい",
+              "kana": "たべる ほうが いい"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "家から",
+              "kana": "いえから"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "近いと",
+              "kana": "ちかいと"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "確かに",
+              "kana": "たしかに"
+            },
+            {
+              "canonical": "おいしいですけど",
+              "kana": "おいしいですけど"
+            },
+            {
+              "canonical": "駅から",
+              "kana": "えきから"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "確かに",
+              "surfaceUnit": "確かに",
+              "tail": "",
+              "tailKind": "none"
+            },
+            "example": {
+              "canonical": "確かに",
+              "surfaceUnit": "確かに",
+              "tail": "",
+              "tailKind": "none"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "A2 adjective predicates; P2 L1–2 opinions. Exact Fable amendment licenses fixed 確かに frame here only; no し or ても.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "nedan-bright-flat",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "この 二つの 部屋は どうですか。 どちらも 良さそうですね。",
+              "kana": "この ふたつの へやは どうですか。 どちらも よさそうですね。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "値段は 大事ですけど、 日当たりも 大切だと 思います。",
+              "kana": "ねだんは だいじですけど、 ひあたりも たいせつだと おもいます。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "家賃の 差は 一万円です。 どちらに しますか。",
+              "kana": "やちんの さは いちまんえんです。 どちらに しますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "高くても、 明るいし 広いし こちらが いいです。",
+              "kana": "たかくても、 あかるいし ひろいし こちらが いいです。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "値段は 大事ですけど、",
+              "kana": "ねだんは だいじですけど、"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "日当たりも",
+              "kana": "ひあたりも"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "大切だと",
+              "kana": "たいせつだと"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "思います。",
+              "kana": "おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "値段は 大事ですけど、 日当たりも 大切だと 思います。",
+              "kana": "ねだんは だいじですけど、 ひあたりも たいせつだと おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "小さくても、 軽いし 安いし この かばんが いいです。",
+              "kana": "ちいさくても、 かるいし やすいし この かばんが いいです。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "高くても",
+              "kana": "たかくても"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "広いし",
+              "kana": "ひろいし"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "大切だと",
+              "kana": "たいせつだと"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "値段は 高いですけど、 丈夫です。",
+              "kana": "ねだんは たかいですけど、 じょうぶです。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "値段",
+              "kana": "ねだん"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "値段",
+              "kana": "ねだん"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "日当たり",
+              "kana": "ひあたり"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "大切",
+              "kana": "たいせつ"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "家賃",
+              "kana": "やちん"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "高くても",
+              "kana": "たかくても"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "広いし",
+              "kana": "ひろいし"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "日当たりだけ",
+              "kana": "ひあたりだけ"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "無駄だと",
+              "kana": "むだだと"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "値段は",
+              "kana": "ねだんは"
+            },
+            {
+              "canonical": "日当たりも",
+              "kana": "ひあたりも"
+            },
+            {
+              "canonical": "大切だと",
+              "kana": "たいせつだと"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "値段",
+              "surfaceUnit": "値段は",
+              "tail": "は",
+              "tailKind": "particle"
+            },
+            "example": {
+              "canonical": "値段",
+              "surfaceUnit": "値段は",
+              "tail": "は",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P2 L1–3 polite opinion/concession; new ても and reason-listing し. Appearance 良さそう is interlocutor-only.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "shizuka-suburb",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "郊外の 生活は どう 思いますか。 今より 楽でしょうか。",
+              "kana": "こうがいの せいかつは どう おもいますか。 いまより らくでしょうか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "郊外は 静かです。 家賃も 安いし、 引っ越す 方が いいと 思います。",
+              "kana": "こうがいは しずかです。 やちんも やすいし、 ひっこす ほうが いいと おもいます。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "通勤に 一時間 かかりますが、 ご家族は 大丈夫ですか。",
+              "kana": "つうきんに いちじかん かかりますが、 ごかぞくは だいじょうぶですか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "遠くても、 家族も 賛成ですし ここに します。",
+              "kana": "とおくても、 かぞくも さんせいですし ここに します。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "郊外は",
+              "kana": "こうがいは"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "静かです。 家賃も 安いし、",
+              "kana": "しずかです。 やちんも やすいし、"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "引っ越す 方が いいと",
+              "kana": "ひっこす ほうが いいと"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "思います。",
+              "kana": "おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "郊外は 静かです。 家賃も 安いし、 引っ越す 方が いいと 思います。",
+              "kana": "こうがいは しずかです。 やちんも やすいし、 ひっこす ほうが いいと おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "この 店は 安いし、 駅にも 近いです。",
+              "kana": "この みせは やすいし、 えきにも ちかいです。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "遠くても",
+              "kana": "とおくても"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "賛成ですし",
+              "kana": "さんせいですし"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "引っ越す",
+              "kana": "ひっこす"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "この 図書館は とても 静かです。",
+              "kana": "この としょかんは とても しずかです。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "静か",
+              "kana": "しずか"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "静か",
+              "kana": "しずか"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "郊外",
+              "kana": "こうがい"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "安いし",
+              "kana": "やすいし"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "引っ越す",
+              "kana": "ひっこす"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "通勤",
+              "kana": "つうきん"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "遠くても",
+              "kana": "とおくても"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "にぎやかです。 家賃も 安いし、",
+              "kana": "にぎやかです。 やちんも やすいし、"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "引っ越さない 方が いいと",
+              "kana": "ひっこさない ほうが いいと"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "郊外は",
+              "kana": "こうがいは"
+            },
+            {
+              "canonical": "静かです",
+              "kana": "しずかです"
+            },
+            {
+              "canonical": "安いし",
+              "kana": "やすいし"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "静か",
+              "surfaceUnit": "静かです",
+              "tail": "です",
+              "tailKind": "copula"
+            },
+            "example": {
+              "canonical": "静か",
+              "surfaceUnit": "静かです",
+              "tail": "です",
+              "tailKind": "copula"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P2 opinion frame and L4 し/ても; 賛成 is ordinary vocabulary here, not a new trophy award.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "hantai-weekend-overtime",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "週末も 少し 働きませんか。 今週は 仕事が 多いですね。",
+              "kana": "しゅうまつも すこし はたらきませんか。 こんしゅうは しごとが おおいですね。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "週末の 残業には 反対です。 休みも 大切だと 思います。",
+              "kana": "しゅうまつの ざんぎょうには はんたいです。 やすみも たいせつだと おもいます。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "土曜日の 午前だけでも、 来て もらえませんか。",
+              "kana": "どようびの ごぜんだけでも、 きて もらえませんか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "午前だけでも 難しいですけど、 月曜は 早く 来ます。",
+              "kana": "ごぜんだけでも むずかしいですけど、 げつようは はやく きます。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "週末の 残業には",
+              "kana": "しゅうまつの ざんぎょうには"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "反対です。 休みも",
+              "kana": "はんたいです。 やすみも"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "大切だと",
+              "kana": "たいせつだと"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "思います。",
+              "kana": "おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "週末の 残業には 反対です。 休みも 大切だと 思います。",
+              "kana": "しゅうまつの ざんぎょうには はんたいです。 やすみも たいせつだと おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "少しだけでも 難しいですけど、 明日は 大丈夫です。",
+              "kana": "すこしだけでも むずかしいですけど、 あしたは だいじょうぶです。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "難しいですけど",
+              "kana": "むずかしいですけど"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "来ます",
+              "kana": "きます"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "大切だと",
+              "kana": "たいせつだと"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "その 案には 反対ですが、 話は 聞きます。",
+              "kana": "その あんには はんたいですが、 はなしは ききます。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "反対",
+              "kana": "はんたい"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "反対",
+              "kana": "はんたい"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "残業",
+              "kana": "ざんぎょう"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "休み",
+              "kana": "やすみ"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "午前だけでも",
+              "kana": "ごぜんだけでも"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "難しいですけど",
+              "kana": "むずかしいですけど"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "月曜",
+              "kana": "げつよう"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "賛成です。 休みも",
+              "kana": "さんせいです。 やすみも"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "無駄だと",
+              "kana": "むだだと"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "残業には",
+              "kana": "ざんぎょうには"
+            },
+            {
+              "canonical": "反対です",
+              "kana": "はんたいです"
+            },
+            {
+              "canonical": "大切だと",
+              "kana": "たいせつだと"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "反対",
+              "surfaceUnit": "反対です",
+              "tail": "です",
+              "tailKind": "copula"
+            },
+            "example": {
+              "canonical": "反対",
+              "surfaceUnit": "反対ですが",
+              "tail": "ですが",
+              "tailKind": "copula"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P2 opinion/concession; L4–6 concessive ても/でも. Fixed てもらえませんか is interlocutor-only.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "sansei-group-trip",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "来月は 皆で 旅行しませんか。 一緒だと 楽しそうですね。",
+              "kana": "らいげつは みんなで りょこうしませんか。 いっしょだと たのしそうですね。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "旅行には 賛成ですが、 費用が 高いかもしれません。",
+              "kana": "りょこうには さんせいですが、 ひようが たかいかもしれません。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "一人 三万円で どうですか。 もう 少し 出せますか。",
+              "kana": "ひとり さんまんえんで どうですか。 もう すこし だせますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "三万円でも 高いと 思いますが、 二万円で どうですか。",
+              "kana": "さんまんえんでも たかいと おもいますが、 にまんえんで どうですか。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "旅行には",
+              "kana": "りょこうには"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "賛成ですが、",
+              "kana": "さんせいですが、"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "費用が",
+              "kana": "ひようが"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "高いかもしれません。",
+              "kana": "たかいかもしれません。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "旅行には 賛成ですが、 費用が 高いかもしれません。",
+              "kana": "りょこうには さんせいですが、 ひようが たかいかもしれません。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "この 店は いいと 思いますが、 高いかもしれません。",
+              "kana": "この みせは いいと おもいますが、 たかいかもしれません。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "高いと",
+              "kana": "たかいと"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "思いますが",
+              "kana": "おもいますが"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "賛成ですが",
+              "kana": "さんせいですが"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "その 計画には 賛成です。",
+              "kana": "その けいかくには さんせいです。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "賛成",
+              "kana": "さんせい"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "賛成",
+              "kana": "さんせい"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "費用",
+              "kana": "ひよう"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "高いかもしれません",
+              "kana": "たかいかもしれません"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "一人",
+              "kana": "ひとり"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "三万円",
+              "kana": "さんまんえん"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "どうですか",
+              "kana": "どうですか"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "反対ですが、",
+              "kana": "はんたいですが、"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "安いかもしれません。",
+              "kana": "やすいかもしれません。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "旅行には",
+              "kana": "りょこうには"
+            },
+            {
+              "canonical": "賛成ですが",
+              "kana": "さんせいですが"
+            },
+            {
+              "canonical": "費用が",
+              "kana": "ひようが"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "賛成",
+              "surfaceUnit": "賛成ですが",
+              "tail": "ですが",
+              "tailKind": "copula"
+            },
+            "example": {
+              "canonical": "賛成",
+              "surfaceUnit": "賛成です",
+              "tail": "です",
+              "tailKind": "copula"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P2 concession and ても/でも; new hedge and opinion-plus-reservation.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "mondai-start-time",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "この 日程で 大丈夫ですか。 皆で 朝から 始めますか。",
+              "kana": "この にっていで だいじょうぶですか。 みんなで あさから はじめますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "問題は 開始の 時間です。 朝は 皆が 間に合わないかもしれません。",
+              "kana": "もんだいは かいしの じかんです。 あさは みんなが まにあわないかもしれません。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "電車は 九時に 着きます。 開始を 遅く しますか。",
+              "kana": "でんしゃは くじに つきます。 かいしを おそく しますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "十時に 始める 方が いいと 思いますが、 どうですか。",
+              "kana": "じゅうじに はじめる ほうが いいと おもいますが、 どうですか。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "問題は",
+              "kana": "もんだいは"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "開始の 時間です。 朝は",
+              "kana": "かいしの じかんです。 あさは"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "皆が",
+              "kana": "みんなが"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "間に合わないかもしれません。",
+              "kana": "まにあわないかもしれません。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "問題は 開始の 時間です。 朝は 皆が 間に合わないかもしれません。",
+              "kana": "もんだいは かいしの じかんです。 あさは みんなが まにあわないかもしれません。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "この 案は いいと 思いますが、 どうですか。",
+              "kana": "この あんは いいと おもいますが、 どうですか。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "始める",
+              "kana": "はじめる"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "思いますが",
+              "kana": "おもいますが"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "開始の",
+              "kana": "かいしの"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "問題は 時間だと 思います。",
+              "kana": "もんだいは じかんだと おもいます。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "問題",
+              "kana": "もんだい"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "問題",
+              "kana": "もんだい"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "開始",
+              "kana": "かいし"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "日程",
+              "kana": "にってい"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "間に合わない",
+              "kana": "まにあわない"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "九時",
+              "kana": "くじ"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "始める",
+              "kana": "はじめる"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "場所です。 朝は",
+              "kana": "ばしょです。 あさは"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "間に合うかもしれません。",
+              "kana": "まにあうかもしれません。"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "問題は",
+              "kana": "もんだいは"
+            },
+            {
+              "canonical": "開始の",
+              "kana": "かいしの"
+            },
+            {
+              "canonical": "時間です",
+              "kana": "じかんです"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "問題",
+              "surfaceUnit": "問題は",
+              "tail": "は",
+              "tailKind": "particle"
+            },
+            "example": {
+              "canonical": "問題",
+              "surfaceUnit": "問題は",
+              "tail": "は",
+              "tailKind": "particle"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P2 comparisons, late hedge and opinion-plus-reservation; no なら.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "hitsuyou-job-test",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "その 試験を 受けますか。 仕事の ために 役立ちますか。",
+              "kana": "その しけんを うけますか。 しごとの ために やくだちますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "仕事には 資格が 必要です。 試験を 受ける 方が いいと 思います。",
+              "kana": "しごとには しかくが ひつようです。 しけんを うける ほうが いいと おもいます。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "今月は 忙しいですよね。 試験は いつ 受けますか。",
+              "kana": "こんげつは いそがしいですよね。 しけんは いつ うけますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "来月は 時間が あるかもしれません。 今から 勉強します。",
+              "kana": "らいげつは じかんが あるかもしれません。 いまから べんきょうします。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "仕事には 資格が",
+              "kana": "しごとには しかくが"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "必要です。 試験を",
+              "kana": "ひつようです。 しけんを"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "受ける 方が いいと",
+              "kana": "うける ほうが いいと"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "思います。",
+              "kana": "おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "仕事には 資格が 必要です。 試験を 受ける 方が いいと 思います。",
+              "kana": "しごとには しかくが ひつようです。 しけんを うける ほうが いいと おもいます。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "来週は 少し 暇かもしれません。",
+              "kana": "らいしゅうは すこし ひまかもしれません。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "あるかもしれません",
+              "kana": "あるかもしれません"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "勉強します",
+              "kana": "べんきょうします"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "受ける",
+              "kana": "うける"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "この 仕事には 日本語が 必要です。",
+              "kana": "この しごとには にほんごが ひつようです。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "必要",
+              "kana": "ひつよう"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "必要",
+              "kana": "ひつよう"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "資格",
+              "kana": "しかく"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "試験を 受ける",
+              "kana": "しけんを うける"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "今月",
+              "kana": "こんげつ"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "来月",
+              "kana": "らいげつ"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "あるかもしれません",
+              "kana": "あるかもしれません"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "受けない 方が いいと",
+              "kana": "うけない ほうが いいと"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "不要です。 試験を",
+              "kana": "ふようです。 しけんを"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "資格が",
+              "kana": "しかくが"
+            },
+            {
+              "canonical": "必要です",
+              "kana": "ひつようです"
+            },
+            {
+              "canonical": "受ける",
+              "kana": "うける"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "必要",
+              "surfaceUnit": "必要です",
+              "tail": "です",
+              "tailKind": "copula"
+            },
+            "example": {
+              "canonical": "必要",
+              "surfaceUnit": "必要です",
+              "tail": "です",
+              "tailKind": "copula"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P2 opinion and hedge; ために occurs only in the interlocutor question, not learner production.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        },
+        {
+          "slug": "muri-friday-deadline",
+          "readings": [
+            {
+              "jsonPointer": "/dialogue/0/targetText",
+              "canonical": "この 仕事は 金曜までに 終わりますか。 一人で できますか。",
+              "kana": "この しごとは きんようまでに おわりますか。 ひとりで できますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/1/targetText",
+              "canonical": "一人では 無理ですが、 二人で 終わるかもしれません。",
+              "kana": "ひとりでは むりですが、 ふたりで おわるかもしれません。"
+            },
+            {
+              "jsonPointer": "/dialogue/2/targetText",
+              "canonical": "誰と 一緒に 進めますか。 仕事を 分けますか。",
+              "kana": "だれと いっしょに すすめますか。 しごとを わけますか。"
+            },
+            {
+              "jsonPointer": "/dialogue/3/targetText",
+              "canonical": "田中さんが いいと 思いますが、 忙しいかもしれません。",
+              "kana": "たなかさんが いいと おもいますが、 いそがしいかもしれません。"
+            },
+            {
+              "jsonPointer": "/chunks/0/targetText",
+              "canonical": "一人では",
+              "kana": "ひとりでは"
+            },
+            {
+              "jsonPointer": "/chunks/1/targetText",
+              "canonical": "無理ですが、",
+              "kana": "むりですが、"
+            },
+            {
+              "jsonPointer": "/chunks/2/targetText",
+              "canonical": "二人で",
+              "kana": "ふたりで"
+            },
+            {
+              "jsonPointer": "/chunks/3/targetText",
+              "canonical": "終わるかもしれません。",
+              "kana": "おわるかもしれません。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/0/targetText",
+              "canonical": "一人では 無理ですが、 二人で 終わるかもしれません。",
+              "kana": "ひとりでは むりですが、 ふたりで おわるかもしれません。"
+            },
+            {
+              "jsonPointer": "/pattern/examples/1/targetText",
+              "canonical": "明日は 雨かもしれません。",
+              "kana": "あしたは あめかもしれません。"
+            },
+            {
+              "jsonPointer": "/cloze/1/answer",
+              "canonical": "いいと",
+              "kana": "いいと"
+            },
+            {
+              "jsonPointer": "/cloze/3/answer",
+              "canonical": "忙しいかもしれません",
+              "kana": "いそがしいかもしれません"
+            },
+            {
+              "jsonPointer": "/recall/answer",
+              "canonical": "無理ですが",
+              "kana": "むりですが"
+            },
+            {
+              "jsonPointer": "/trophyWord/example",
+              "canonical": "今日中は 無理ですが、 明日は できます。",
+              "kana": "きょうじゅうは むりですが、 あしたは できます。"
+            },
+            {
+              "jsonPointer": "/trophyWord/word",
+              "canonical": "無理",
+              "kana": "むり"
+            },
+            {
+              "jsonPointer": "/terms/0/targetText",
+              "canonical": "無理",
+              "kana": "むり"
+            },
+            {
+              "jsonPointer": "/terms/1/targetText",
+              "canonical": "一人では",
+              "kana": "ひとりでは"
+            },
+            {
+              "jsonPointer": "/terms/2/targetText",
+              "canonical": "二人で",
+              "kana": "ふたりで"
+            },
+            {
+              "jsonPointer": "/terms/3/targetText",
+              "canonical": "終わるかもしれません",
+              "kana": "おわるかもしれません"
+            },
+            {
+              "jsonPointer": "/terms/4/targetText",
+              "canonical": "分けます",
+              "kana": "わけます"
+            },
+            {
+              "jsonPointer": "/terms/5/targetText",
+              "canonical": "忙しいかもしれません",
+              "kana": "いそがしいかもしれません"
+            },
+            {
+              "jsonPointer": "/distractors/0",
+              "canonical": "可能ですが、",
+              "kana": "かのうですが、"
+            },
+            {
+              "jsonPointer": "/distractors/1",
+              "canonical": "三人で",
+              "kana": "さんにんで"
+            }
+          ],
+          "speakTokens": [
+            {
+              "canonical": "一人では",
+              "kana": "ひとりでは"
+            },
+            {
+              "canonical": "無理ですが",
+              "kana": "むりですが"
+            },
+            {
+              "canonical": "終わるかもしれません",
+              "kana": "おわるかもしれません"
+            }
+          ],
+          "trophySurfaces": {
+            "firstReply": {
+              "canonical": "無理",
+              "surfaceUnit": "無理ですが",
+              "tail": "ですが",
+              "tailKind": "copula"
+            },
+            "example": {
+              "canonical": "無理",
+              "surfaceUnit": "無理ですが",
+              "tail": "ですが",
+              "tailKind": "copula"
+            }
+          },
+          "reviewNotes": {
+            "recycledForms": "P2 concession, polite opinion and hedge; no productive なら, ば, たら or purpose clause.",
+            "exerciseBasis": "Form cues are visible and bilingual. Cloze choices are conjugations of the named lexeme; no hidden reply translation is used as a constraint. Build chunks keep movable adjuncts with their predicate or object phrase."
+          }
+        }
+      ]
+    }
+  ]
+}

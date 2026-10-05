@@ -1,0 +1,2130 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Japanese",
+  "targetLanguageCode": "ja-JP",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": {
+    "de": "Was passiert ist",
+    "en": "What happened"
+  },
+  "subtitle": {
+    "de": "Erlebnisse verbinden und auf Nachfragen eingehen",
+    "en": "Link experiences and respond to follow-up questions"
+  },
+  "anchor": "Polite Japanese connected narration with an interested listener.",
+  "lessons": [
+    {
+      "slug": "hikkoshi-boxes",
+      "title": {
+        "de": "Ein Umzugstag",
+        "en": "A day of moving"
+      },
+      "situation": {
+        "de": "In der Büroküche fragt dich jemand nach deinem freien Tag.",
+        "en": "In the office kitchen, a colleague asks about your day off."
+      },
+      "pedagogicalGoal": "Abgeschlossene Handlungen mit der て-Form verbinden und eine neue Wohnung beschreiben.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "昨日は 会社を 休みましたね。 何を していましたか。",
+          "baseText": {
+            "de": "Du warst gestern nicht bei der Arbeit. Was hast du gemacht?",
+            "en": "You were off work yesterday. What were you doing?"
+          }
+        },
+        {
+          "targetText": "昨日は 引っ越しで 箱を 運んで、 新しい 部屋を 片付けました。",
+          "baseText": {
+            "de": "Gestern habe ich beim Umzug Kartons getragen und die neue Wohnung aufgeräumt.",
+            "en": "Yesterday I carried boxes during my move and tidied the new apartment."
+          }
+        },
+        {
+          "targetText": "新しい 部屋は どうですか。 駅から 近いですか。",
+          "baseText": {
+            "de": "Wie ist die neue Wohnung? Ist sie nah am Bahnhof?",
+            "en": "How is the new apartment? Is it close to the station?"
+          }
+        },
+        {
+          "targetText": "駅に 近くて、 部屋も 明るくて 快適です。",
+          "baseText": {
+            "de": "Sie ist nah am Bahnhof, die Räume sind hell, und es ist angenehm dort.",
+            "en": "It is close to the station, the rooms are bright, and it is comfortable."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "て-Form: Ereignisse und Eigenschaften verbinden",
+        "rule": {
+          "de": "Bei einer Handlungskette trägt die letzte Verbform die Vergangenheit; bei い-Adjektiven verbindet -くて Eigenschaften.",
+          "en": "In an action sequence the final verb carries the past tense; -くて links properties expressed by い-adjectives."
+        },
+        "examples": [
+          {
+            "targetText": "昨日は 引っ越しで 箱を 運んで、 新しい 部屋を 片付けました。",
+            "baseText": {
+              "de": "Gestern habe ich beim Umzug Kartons getragen und die neue Wohnung aufgeräumt.",
+              "en": "Yesterday I carried boxes during my move and tidied the new apartment."
+            },
+            "highlight": "運んで"
+          },
+          {
+            "targetText": "この 道は 広くて、 明るくて 安全です。",
+            "baseText": {
+              "de": "Dieser Weg ist breit, hell und sicher.",
+              "en": "This path is wide, bright and safe."
+            },
+            "highlight": "広くて"
+          }
+        ]
+      },
+      "cloze": [
+        "駅に ",
+        {
+          "kind": "form",
+          "answer": "近くて",
+          "cue": "近い → て-Verbindung / て-link",
+          "choices": [
+            "近くて",
+            "近い",
+            "近かった",
+            "近くない"
+          ]
+        },
+        "、 部屋も ",
+        {
+          "kind": "form",
+          "answer": "明るくて",
+          "cue": "明るい → て-Verbindung / て-link",
+          "choices": [
+            "明るくて",
+            "明るい",
+            "明るかった",
+            "明るくない"
+          ]
+        },
+        " 快適です。"
+      ],
+      "chunks": [
+        {
+          "targetText": "昨日は 引っ越しで 箱を",
+          "baseText": {
+            "de": "gestern beim Umzug die Kartons",
+            "en": "the boxes during yesterday’s move"
+          }
+        },
+        {
+          "targetText": "運んで、",
+          "baseText": {
+            "de": "getragen und",
+            "en": "carried, and"
+          }
+        },
+        {
+          "targetText": "新しい 部屋を",
+          "baseText": {
+            "de": "die neue Wohnung",
+            "en": "the new apartment"
+          }
+        },
+        {
+          "targetText": "片付けました。",
+          "baseText": {
+            "de": "aufgeräumt",
+            "en": "tidied"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "引っ越し",
+          "baseText": {
+            "de": "Umzug",
+            "en": "move of home"
+          }
+        },
+        {
+          "targetText": "箱",
+          "baseText": {
+            "de": "Karton",
+            "en": "box"
+          }
+        },
+        {
+          "targetText": "運んで",
+          "baseText": {
+            "de": "tragen und",
+            "en": "carry and"
+          }
+        },
+        {
+          "targetText": "片付けました",
+          "baseText": {
+            "de": "ich habe aufgeräumt",
+            "en": "I tidied up"
+          }
+        },
+        {
+          "targetText": "近くて",
+          "baseText": {
+            "de": "nah und",
+            "en": "close and"
+          }
+        },
+        {
+          "targetText": "明るくて",
+          "baseText": {
+            "de": "hell und",
+            "en": "bright and"
+          }
+        }
+      ],
+      "recall": {
+        "before": "昨日は 引っ越しで 箱を ",
+        "answer": "運んで",
+        "after": "、 新しい 部屋を 片付けました。",
+        "fallbackChoices": [
+          "運んで",
+          "運ぶ",
+          "運んだ",
+          "運ばない"
+        ]
+      },
+      "speakRequired": [
+        "引っ越しで",
+        "運んで",
+        "片付けました"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „昨日は 会社を 休みましたね。 何を していましたか。“",
+        "en": "The conversation opens with this question: “昨日は 会社を 休みましたね。 何を していましたか。”"
+      },
+      "trophyWord": {
+        "word": "引っ越し",
+        "meaning": {
+          "de": "Umzug",
+          "en": "move of home"
+        },
+        "example": "引っ越しで 荷物を 運びました。",
+        "whyThisWord": {
+          "de": "Damit erklärst du einen Wohnungswechsel und den Aufwand dabei.",
+          "en": "Use it to talk about moving home and the work involved."
+        }
+      },
+      "distractors": [
+        "古い 部屋を",
+        "片付けませんでした。"
+      ],
+      "placeholderCaption": {
+        "de": "In der Büroküche fragt dich jemand nach deinem freien Tag.",
+        "en": "In the office kitchen, a colleague asks about your day off."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Office kitchen; ordinary morning conversation; no boxes or new-home details before the learner speaks."
+    },
+    {
+      "slug": "shucchou-dinner",
+      "title": {
+        "de": "Nach der Dienstreise",
+        "en": "After the business trip"
+      },
+      "situation": {
+        "de": "Im Hausflur fragt dich eine Person aus der Nachbarschaft nach deiner Reise.",
+        "en": "A neighbor asks about your trip in the hallway."
+      },
+      "pedagogicalGoal": "Eine Dienstreise mit て-Verbindungen und その後 zeitlich ordnen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "昨日まで 留守でしたね。 旅行は どうでしたか。",
+          "baseText": {
+            "de": "Du warst bis gestern weg. Wie war die Reise?",
+            "en": "You were away until yesterday. How was your trip?"
+          }
+        },
+        {
+          "targetText": "出張で 会議に 出て、 その後 同僚と 夕飯を 食べました。",
+          "baseText": {
+            "de": "Auf der Dienstreise habe ich an einer Besprechung teilgenommen und danach mit Kollegen zu Abend gegessen.",
+            "en": "On the business trip I attended a meeting and then had dinner with colleagues."
+          }
+        },
+        {
+          "targetText": "夕飯は どうでしたか。 地元の 料理を 食べましたか。",
+          "baseText": {
+            "de": "Wie war das Abendessen? Hast du etwas aus der Region gegessen?",
+            "en": "How was dinner? Did you try the local food?"
+          }
+        },
+        {
+          "targetText": "魚を 食べて、 地元の お茶も 飲んで 満足しました。",
+          "baseText": {
+            "de": "Ich habe Fisch gegessen und auch Tee aus der Region getrunken; ich war sehr zufrieden.",
+            "en": "I ate fish and also drank local tea; I was very satisfied."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜て、その後: eine Folge erzählen",
+        "rule": {
+          "de": "Die て-Form verbindet die erste Handlung mit der nächsten; その後 macht die Reihenfolge ausdrücklich.",
+          "en": "The て-form connects one action with the next; その後 makes the sequence explicit."
+        },
+        "examples": [
+          {
+            "targetText": "出張で 会議に 出て、 その後 同僚と 夕飯を 食べました。",
+            "baseText": {
+              "de": "Auf der Dienstreise habe ich an einer Besprechung teilgenommen und danach mit Kollegen zu Abend gegessen.",
+              "en": "On the business trip I attended a meeting and then had dinner with colleagues."
+            },
+            "highlight": "出て、 その後"
+          },
+          {
+            "targetText": "会議に 出て、 その後 資料を 読みました。",
+            "baseText": {
+              "de": "Ich habe an einer Besprechung teilgenommen und danach die Unterlagen gelesen.",
+              "en": "I attended a meeting and then read the documents."
+            },
+            "highlight": "出て、 その後"
+          }
+        ]
+      },
+      "cloze": [
+        "魚を ",
+        {
+          "kind": "form",
+          "answer": "食べて",
+          "cue": "食べる → て-Verbindung / て-link",
+          "choices": [
+            "食べて",
+            "食べる",
+            "食べた",
+            "食べない"
+          ]
+        },
+        "、 地元の お茶も ",
+        {
+          "kind": "form",
+          "answer": "飲んで",
+          "cue": "飲む → て-Verbindung / て-link",
+          "choices": [
+            "飲んで",
+            "飲む",
+            "飲んだ",
+            "飲まない"
+          ]
+        },
+        " 満足しました。"
+      ],
+      "chunks": [
+        {
+          "targetText": "出張で 会議に",
+          "baseText": {
+            "de": "auf der Dienstreise an einer Besprechung",
+            "en": "a meeting during the business trip"
+          }
+        },
+        {
+          "targetText": "出て、",
+          "baseText": {
+            "de": "teilgenommen und",
+            "en": "attended, and"
+          }
+        },
+        {
+          "targetText": "その後 同僚と 夕飯を",
+          "baseText": {
+            "de": "danach mit Kollegen zu Abend",
+            "en": "then dinner with colleagues"
+          }
+        },
+        {
+          "targetText": "食べました。",
+          "baseText": {
+            "de": "gegessen",
+            "en": "ate"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "出張",
+          "baseText": {
+            "de": "Dienstreise",
+            "en": "business trip"
+          }
+        },
+        {
+          "targetText": "会議",
+          "baseText": {
+            "de": "Besprechung",
+            "en": "meeting"
+          }
+        },
+        {
+          "targetText": "その後",
+          "baseText": {
+            "de": "danach",
+            "en": "after that"
+          }
+        },
+        {
+          "targetText": "同僚",
+          "baseText": {
+            "de": "Kollegin oder Kollege",
+            "en": "colleague"
+          }
+        },
+        {
+          "targetText": "夕飯",
+          "baseText": {
+            "de": "Abendessen",
+            "en": "dinner"
+          }
+        },
+        {
+          "targetText": "飲んで",
+          "baseText": {
+            "de": "trinken und",
+            "en": "drink and"
+          }
+        }
+      ],
+      "recall": {
+        "before": "出張で 会議に ",
+        "answer": "出て",
+        "after": "、 その後 同僚と 夕飯を 食べました。",
+        "fallbackChoices": [
+          "出て",
+          "出る",
+          "出た",
+          "出ない"
+        ]
+      },
+      "speakRequired": [
+        "出張で",
+        "会議に",
+        "食べました"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „昨日まで 留守でしたね。 旅行は どうでしたか。“",
+        "en": "The conversation opens with this question: “昨日まで 留守でしたね。 旅行は どうでしたか。”"
+      },
+      "trophyWord": {
+        "word": "出張",
+        "meaning": {
+          "de": "Dienstreise",
+          "en": "business trip"
+        },
+        "example": "来週は 出張で 大阪に 行きます。",
+        "whyThisWord": {
+          "de": "Das Wort trennt eine berufliche Reise klar von einem Urlaub.",
+          "en": "It distinguishes a work trip from a vacation."
+        }
+      },
+      "distractors": [
+        "一人で 朝ごはんを",
+        "食べませんでした。"
+      ],
+      "placeholderCaption": {
+        "de": "Im Hausflur fragt dich eine Person aus der Nachbarschaft nach deiner Reise.",
+        "en": "A neighbor asks about your trip in the hallway."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Apartment hallway; returning traveler with a small bag; no meeting or dinner imagery."
+    },
+    {
+      "slug": "tomodachi-riverside",
+      "title": {
+        "de": "Ein Spaziergang nach dem Essen",
+        "en": "A walk after a meal"
+      },
+      "situation": {
+        "de": "Bei der Arbeit erzählt ihr euch am Montag vom Wochenende.",
+        "en": "At work on Monday, you catch up about the weekend."
+      },
+      "pedagogicalGoal": "Ein Treffen mit て-Formen und それから als kleine Ereigniskette erzählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "週末は 何を しましたか。 どこかへ 出かけましたか。",
+          "baseText": {
+            "de": "Was hast du am Wochenende gemacht? Warst du unterwegs?",
+            "en": "What did you do over the weekend? Did you go anywhere?"
+          }
+        },
+        {
+          "targetText": "友達と ご飯を 食べて、 それから 川沿いを 歩きました。",
+          "baseText": {
+            "de": "Ich habe mit einer befreundeten Person gegessen und bin danach am Fluss entlang spaziert.",
+            "en": "I ate with a friend and then walked along the river."
+          }
+        },
+        {
+          "targetText": "どの辺を 歩きましたか。 そこは 駅から 近いですか。",
+          "baseText": {
+            "de": "Wo ungefähr seid ihr spazieren gegangen? Ist das nah am Bahnhof?",
+            "en": "Whereabouts did you walk? Is it near the station?"
+          }
+        },
+        {
+          "targetText": "駅で 会って、 近くの 川まで 歩いて 帰りました。",
+          "baseText": {
+            "de": "Wir haben uns am Bahnhof getroffen, sind zum nahen Fluss gegangen und dann nach Hause.",
+            "en": "We met at the station, walked to the nearby river and then went home."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜て、それから: weiter erzählen",
+        "rule": {
+          "de": "Mit それから gehst du zum nächsten Ereignis über; mehrere て-Formen können vor der höflichen Schlussform stehen.",
+          "en": "それから moves the story to the next event; several て-forms can precede the final polite verb."
+        },
+        "examples": [
+          {
+            "targetText": "友達と ご飯を 食べて、 それから 川沿いを 歩きました。",
+            "baseText": {
+              "de": "Ich habe mit einer befreundeten Person gegessen und bin danach am Fluss entlang spaziert.",
+              "en": "I ate with a friend and then walked along the river."
+            },
+            "highlight": "食べて、 それから"
+          },
+          {
+            "targetText": "朝ごはんを 食べて、 それから 仕事に 行きました。",
+            "baseText": {
+              "de": "Ich habe gefrühstückt und bin danach zur Arbeit gegangen.",
+              "en": "I had breakfast and then went to work."
+            },
+            "highlight": "食べて、 それから"
+          }
+        ]
+      },
+      "cloze": [
+        "駅で ",
+        {
+          "kind": "form",
+          "answer": "会って",
+          "cue": "会う → て-Verbindung / て-link",
+          "choices": [
+            "会って",
+            "会う",
+            "会った",
+            "会わない"
+          ]
+        },
+        "、 近くの 川まで ",
+        {
+          "kind": "form",
+          "answer": "歩いて",
+          "cue": "歩く → て-Verbindung / て-link",
+          "choices": [
+            "歩いて",
+            "歩く",
+            "歩いた",
+            "歩かない"
+          ]
+        },
+        " 帰りました。"
+      ],
+      "chunks": [
+        {
+          "targetText": "友達と ご飯を",
+          "baseText": {
+            "de": "eine Mahlzeit mit einer befreundeten Person",
+            "en": "a meal with a friend"
+          }
+        },
+        {
+          "targetText": "食べて、",
+          "baseText": {
+            "de": "gegessen und",
+            "en": "ate, and"
+          }
+        },
+        {
+          "targetText": "それから 川沿いを",
+          "baseText": {
+            "de": "danach am Fluss entlang",
+            "en": "then along the river"
+          }
+        },
+        {
+          "targetText": "歩きました。",
+          "baseText": {
+            "de": "spaziert",
+            "en": "walked"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "友達",
+          "baseText": {
+            "de": "Freundin oder Freund",
+            "en": "friend"
+          }
+        },
+        {
+          "targetText": "ご飯",
+          "baseText": {
+            "de": "Mahlzeit; Reis",
+            "en": "meal; rice"
+          }
+        },
+        {
+          "targetText": "それから",
+          "baseText": {
+            "de": "danach",
+            "en": "then"
+          }
+        },
+        {
+          "targetText": "川沿い",
+          "baseText": {
+            "de": "am Fluss entlang",
+            "en": "along the river"
+          }
+        },
+        {
+          "targetText": "会って",
+          "baseText": {
+            "de": "sich treffen und",
+            "en": "meet and"
+          }
+        },
+        {
+          "targetText": "歩いて",
+          "baseText": {
+            "de": "zu Fuß gehen und",
+            "en": "walk and"
+          }
+        }
+      ],
+      "recall": {
+        "before": "友達と ご飯を ",
+        "answer": "食べて",
+        "after": "、 それから 川沿いを 歩きました。",
+        "fallbackChoices": [
+          "食べて",
+          "食べる",
+          "食べた",
+          "食べない"
+        ]
+      },
+      "speakRequired": [
+        "友達と",
+        "川沿いを",
+        "歩きました"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „週末は 何を しましたか。 どこかへ 出かけましたか。“",
+        "en": "The conversation opens with this question: “週末は 何を しましたか。 どこかへ 出かけましたか。”"
+      },
+      "trophyWord": {
+        "word": "友達",
+        "meaning": {
+          "de": "Freundin oder Freund",
+          "en": "friend"
+        },
+        "example": "友達と 駅で 会いました。",
+        "whyThisWord": {
+          "de": "Damit verknüpfst du Erlebnisse mit den Menschen, die dabei waren.",
+          "en": "Use it to connect an experience with the people who were there."
+        }
+      },
+      "distractors": [
+        "それから 山道を",
+        "走りました。"
+      ],
+      "placeholderCaption": {
+        "de": "Bei der Arbeit erzählt ihr euch am Montag vom Wochenende.",
+        "en": "At work on Monday, you catch up about the weekend."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Office break area on Monday; no river, meal or companion shown before the first reply."
+    },
+    {
+      "slug": "tochuu-stopped-train",
+      "title": {
+        "de": "Im stehenden Zug",
+        "en": "On a stopped train"
+      },
+      "situation": {
+        "de": "Du kommst zu einem Treffen mit einer befreundeten Person etwas später.",
+        "en": "You arrive a little late to meet a friend."
+      },
+      "pedagogicalGoal": "Mit 〜時 und 〜ていました den Hintergrund schildern und mit 〜たら eine neue Entwicklung anschließen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "少し 遅かったですね。 ここまで 来るのは 大変でしたか。",
+          "baseText": {
+            "de": "Du bist etwas spät dran. War der Weg hierher schwierig?",
+            "en": "You are a little late. Was it difficult getting here?"
+          }
+        },
+        {
+          "targetText": "途中で 電車が 止まった 時、 車内で ずっと 待っていました。",
+          "baseText": {
+            "de": "Als der Zug unterwegs anhielt, habe ich die ganze Zeit im Wagen gewartet.",
+            "en": "When the train stopped on the way, I was waiting in the carriage the whole time."
+          }
+        },
+        {
+          "targetText": "それは 大変でしたね。 どのくらい 待ちましたか。",
+          "baseText": {
+            "de": "Das war bestimmt mühsam. Wie lange hast du gewartet?",
+            "en": "That must have been difficult. How long did you wait?"
+          }
+        },
+        {
+          "targetText": "二十分 待っていたら、 電車が やっと 動きました。",
+          "baseText": {
+            "de": "Nachdem ich zwanzig Minuten gewartet hatte, fuhr der Zug endlich wieder.",
+            "en": "After I had been waiting for twenty minutes, the train finally moved again."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜ていました und 〜たら: Hintergrund und Entdeckung",
+        "rule": {
+          "de": "〜ていました beschreibt den laufenden Hintergrund; mit 〜たら erzählst du, was danach unerwartet geschah.",
+          "en": "〜ていました describes an ongoing background; 〜たら introduces what happened next as a new development."
+        },
+        "examples": [
+          {
+            "targetText": "途中で 電車が 止まった 時、 車内で ずっと 待っていました。",
+            "baseText": {
+              "de": "Als der Zug unterwegs anhielt, habe ich die ganze Zeit im Wagen gewartet.",
+              "en": "When the train stopped on the way, I was waiting in the carriage the whole time."
+            },
+            "highlight": "待っていました"
+          },
+          {
+            "targetText": "駅で 待っていたら、 友達が 来ました。",
+            "baseText": {
+              "de": "Als ich am Bahnhof wartete, kam jemand aus meinem Freundeskreis.",
+              "en": "While I was waiting at the station, a friend arrived."
+            },
+            "highlight": "待っていたら"
+          }
+        ]
+      },
+      "cloze": [
+        "二十分 ",
+        {
+          "kind": "form",
+          "answer": "待っていたら",
+          "cue": "待つ → laufender Hintergrund + たら / ongoing background + たら",
+          "choices": [
+            "待っていたら",
+            "待っています",
+            "待っていた",
+            "待つ"
+          ]
+        },
+        "、 電車が やっと ",
+        {
+          "kind": "form",
+          "answer": "動きました",
+          "cue": "動く → höfliche Vergangenheit / polite past",
+          "choices": [
+            "動きました",
+            "動きます",
+            "動きません",
+            "動く"
+          ]
+        },
+        "。"
+      ],
+      "chunks": [
+        {
+          "targetText": "途中で 電車が",
+          "baseText": {
+            "de": "der Zug unterwegs",
+            "en": "the train on the way"
+          }
+        },
+        {
+          "targetText": "止まった 時、",
+          "baseText": {
+            "de": "als er anhielt",
+            "en": "when it stopped"
+          }
+        },
+        {
+          "targetText": "車内で ずっと",
+          "baseText": {
+            "de": "die ganze Zeit im Wagen",
+            "en": "in the carriage the whole time"
+          }
+        },
+        {
+          "targetText": "待っていました。",
+          "baseText": {
+            "de": "habe ich gewartet",
+            "en": "I was waiting"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "途中",
+          "baseText": {
+            "de": "unterwegs; mittendrin",
+            "en": "on the way; partway through"
+          }
+        },
+        {
+          "targetText": "止まった 時",
+          "baseText": {
+            "de": "als es anhielt",
+            "en": "when it stopped"
+          }
+        },
+        {
+          "targetText": "車内",
+          "baseText": {
+            "de": "im Fahrzeug",
+            "en": "inside the vehicle"
+          }
+        },
+        {
+          "targetText": "待っていました",
+          "baseText": {
+            "de": "ich habe gerade gewartet",
+            "en": "I was waiting"
+          }
+        },
+        {
+          "targetText": "二十分",
+          "baseText": {
+            "de": "zwanzig Minuten",
+            "en": "twenty minutes"
+          }
+        },
+        {
+          "targetText": "動きました",
+          "baseText": {
+            "de": "es bewegte sich",
+            "en": "it moved"
+          }
+        }
+      ],
+      "recall": {
+        "before": "途中で 電車が ",
+        "answer": "止まった",
+        "after": " 時、 車内で ずっと 待っていました。",
+        "fallbackChoices": [
+          "止まった",
+          "止まって",
+          "止まります",
+          "止まり"
+        ]
+      },
+      "speakRequired": [
+        "途中で",
+        "車内で",
+        "待っていました"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „少し 遅かったですね。 ここまで 来るのは 大変でしたか。“",
+        "en": "The conversation opens with this question: “少し 遅かったですね。 ここまで 来るのは 大変でしたか。”"
+      },
+      "trophyWord": {
+        "word": "途中",
+        "meaning": {
+          "de": "unterwegs; mittendrin",
+          "en": "on the way; partway through"
+        },
+        "example": "途中で バスを 降りました。",
+        "whyThisWord": {
+          "de": "Damit verortest du eine Unterbrechung auf einem Weg oder in einem Ablauf.",
+          "en": "Use it to locate an interruption during a journey or activity."
+        }
+      },
+      "distractors": [
+        "駅前で 少しだけ",
+        "歩いていました。"
+      ],
+      "placeholderCaption": {
+        "de": "Du kommst zu einem Treffen mit einer befreundeten Person etwas später.",
+        "en": "You arrive a little late to meet a friend."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Meeting place with a waiting friend; no stopped train or clock duration in the opening."
+    },
+    {
+      "slug": "kyuuni-rain",
+      "title": {
+        "de": "Ein plötzlicher Schauer",
+        "en": "A sudden downpour"
+      },
+      "situation": {
+        "de": "In einer Pause fragt dich jemand nach deinem gestrigen Nachmittag.",
+        "en": "During a break, someone asks about your afternoon yesterday."
+      },
+      "pedagogicalGoal": "Mit 〜ていた 時 eine laufende Handlung rahmen und mit 急に eine plötzliche Wendung erzählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "昨日の 午後は 何を していましたか。 外に いましたか。",
+          "baseText": {
+            "de": "Was hast du gestern Nachmittag gemacht? Warst du draußen?",
+            "en": "What were you doing yesterday afternoon? Were you outside?"
+          }
+        },
+        {
+          "targetText": "店で 買い物を していた 時、 急に 大雨が 降りました。",
+          "baseText": {
+            "de": "Als ich gerade im Laden eingekauft habe, fing es plötzlich stark an zu regnen.",
+            "en": "While I was shopping in a store, it suddenly started pouring."
+          }
+        },
+        {
+          "targetText": "外に 出た 時、 服や 靴は ぬれませんでしたか。",
+          "baseText": {
+            "de": "Sind deine Kleidung und Schuhe nicht nass geworden, als du hinausgegangen bist?",
+            "en": "Did your clothes and shoes get wet when you went outside?"
+          }
+        },
+        {
+          "targetText": "店で 雨宿りを して、 雨が やんだら 外に 出ました。",
+          "baseText": {
+            "de": "Ich habe mich im Laden untergestellt und bin hinausgegangen, als der Regen aufgehört hatte.",
+            "en": "I sheltered in the store and went outside when the rain stopped."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜ていた 時: während etwas lief",
+        "rule": {
+          "de": "Vor 時 steht die einfache Form; der letzte Satzteil bleibt höflich, und たら kann den nächsten Zeitpunkt markieren.",
+          "en": "The plain form precedes 時; the final clause stays polite, and たら can mark the next point in time."
+        },
+        "examples": [
+          {
+            "targetText": "店で 買い物を していた 時、 急に 大雨が 降りました。",
+            "baseText": {
+              "de": "Als ich gerade im Laden eingekauft habe, fing es plötzlich stark an zu regnen.",
+              "en": "While I was shopping in a store, it suddenly started pouring."
+            },
+            "highlight": "していた 時"
+          },
+          {
+            "targetText": "料理を していた 時、 電話が 鳴りました。",
+            "baseText": {
+              "de": "Als ich gerade gekocht habe, klingelte das Telefon.",
+              "en": "While I was cooking, the phone rang."
+            },
+            "highlight": "していた 時"
+          }
+        ]
+      },
+      "cloze": [
+        "店で 雨宿りを ",
+        {
+          "kind": "form",
+          "answer": "して",
+          "cue": "する → て-Verbindung / て-link",
+          "choices": [
+            "して",
+            "する",
+            "した",
+            "しない"
+          ]
+        },
+        "、 雨が ",
+        {
+          "kind": "form",
+          "answer": "やんだら",
+          "cue": "やむ → Zeitpunkt mit たら / when-clause with たら",
+          "choices": [
+            "やんだら",
+            "やみます",
+            "やんだ",
+            "やむ"
+          ]
+        },
+        " 外に 出ました。"
+      ],
+      "chunks": [
+        {
+          "targetText": "店で 買い物を",
+          "baseText": {
+            "de": "im Laden einkaufen",
+            "en": "shopping in the store"
+          }
+        },
+        {
+          "targetText": "していた 時、",
+          "baseText": {
+            "de": "als ich gerade dabei war",
+            "en": "while I was doing that"
+          }
+        },
+        {
+          "targetText": "急に 大雨が",
+          "baseText": {
+            "de": "plötzlich starker Regen",
+            "en": "suddenly heavy rain"
+          }
+        },
+        {
+          "targetText": "降りました。",
+          "baseText": {
+            "de": "fiel",
+            "en": "fell"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "急に",
+          "baseText": {
+            "de": "plötzlich",
+            "en": "suddenly"
+          }
+        },
+        {
+          "targetText": "していた 時",
+          "baseText": {
+            "de": "während ich gerade etwas tat",
+            "en": "while I was doing something"
+          }
+        },
+        {
+          "targetText": "大雨",
+          "baseText": {
+            "de": "starker Regen",
+            "en": "heavy rain"
+          }
+        },
+        {
+          "targetText": "降りました",
+          "baseText": {
+            "de": "es regnete",
+            "en": "it rained"
+          }
+        },
+        {
+          "targetText": "雨宿り",
+          "baseText": {
+            "de": "Schutz vor dem Regen suchen",
+            "en": "sheltering from rain"
+          }
+        },
+        {
+          "targetText": "やんだら",
+          "baseText": {
+            "de": "als es aufgehört hatte",
+            "en": "when it had stopped"
+          }
+        }
+      ],
+      "recall": {
+        "before": "店で 買い物を ",
+        "answer": "していた",
+        "after": " 時、 急に 大雨が 降りました。",
+        "fallbackChoices": [
+          "していた",
+          "していて",
+          "しています",
+          "しまして"
+        ]
+      },
+      "speakRequired": [
+        "買い物を",
+        "急に",
+        "大雨が"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „昨日の 午後は 何を していましたか。 外に いましたか。“",
+        "en": "The conversation opens with this question: “昨日の 午後は 何を していましたか。 外に いましたか。”"
+      },
+      "trophyWord": {
+        "word": "急に",
+        "meaning": {
+          "de": "plötzlich",
+          "en": "suddenly"
+        },
+        "example": "急に 電話が 鳴りました。",
+        "whyThisWord": {
+          "de": "Damit markierst du eine Wendung, mit der vorher niemand gerechnet hat.",
+          "en": "It marks a turn of events that nobody expected."
+        }
+      },
+      "distractors": [
+        "ゆっくり 雪が",
+        "やみました。"
+      ],
+      "placeholderCaption": {
+        "de": "In einer Pause fragt dich jemand nach deinem gestrigen Nachmittag.",
+        "en": "During a break, someone asks about your afternoon yesterday."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Workplace break area; no rain, wet clothes or shop shelter in the opening image."
+    },
+    {
+      "slug": "kekkyoku-home-curry",
+      "title": {
+        "de": "Am Ende doch zu Hause",
+        "en": "Home in the end"
+      },
+      "situation": {
+        "de": "Im Treppenhaus fragt eine Person aus der Nachbarschaft nach deinem Restaurantbesuch.",
+        "en": "In the stairwell, a neighbor asks about your restaurant visit."
+      },
+      "pedagogicalGoal": "Mit 〜たら eine Entdeckung und mit 結局 den tatsächlichen Ausgang erzählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "昨日の レストランは どうでしたか。 そこで 食べましたか。",
+          "baseText": {
+            "de": "Wie war das Restaurant gestern? Hast du dort gegessen?",
+            "en": "How was the restaurant yesterday? Did you eat there?"
+          }
+        },
+        {
+          "targetText": "店に 入ったら 満席でした。 結局 家で カレーを 作りました。",
+          "baseText": {
+            "de": "Als ich hineinging, war alles besetzt. Am Ende habe ich zu Hause Curry gekocht.",
+            "en": "When I went in, every seat was taken. In the end I cooked curry at home."
+          }
+        },
+        {
+          "targetText": "家で 作ったんですね。 何を 入れて 作りましたか。",
+          "baseText": {
+            "de": "Du hast also zu Hause gekocht. Welche Zutaten hast du genommen?",
+            "en": "So you cooked at home. What ingredients did you use?"
+          }
+        },
+        {
+          "targetText": "野菜を 切って、 鶏肉も 入れて ゆっくり 煮ました。",
+          "baseText": {
+            "de": "Ich habe Gemüse geschnitten, auch Hühnerfleisch dazugegeben und alles langsam gegart.",
+            "en": "I cut vegetables, added chicken too and simmered it slowly."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜たら: eine Situation vorfinden",
+        "rule": {
+          "de": "Die Form auf たら kann eine Entdeckung beim Eintreten einer Handlung einleiten; 結局 nennt den endgültigen Ausgang.",
+          "en": "A たら-clause can introduce what you discovered when an action occurred; 結局 names the eventual outcome."
+        },
+        "examples": [
+          {
+            "targetText": "店に 入ったら 満席でした。 結局 家で カレーを 作りました。",
+            "baseText": {
+              "de": "Als ich hineinging, war alles besetzt. Am Ende habe ich zu Hause Curry gekocht.",
+              "en": "When I went in, every seat was taken. In the end I cooked curry at home."
+            },
+            "highlight": "入ったら 満席でした"
+          },
+          {
+            "targetText": "店に 入ったら、 友達が いました。",
+            "baseText": {
+              "de": "Als ich in den Laden kam, war jemand aus meinem Freundeskreis dort.",
+              "en": "When I entered the shop, a friend was there."
+            },
+            "highlight": "入ったら"
+          }
+        ]
+      },
+      "cloze": [
+        "野菜を ",
+        {
+          "kind": "form",
+          "answer": "切って",
+          "cue": "切る → て-Verbindung / て-link",
+          "choices": [
+            "切って",
+            "切る",
+            "切った",
+            "切らない"
+          ]
+        },
+        "、 鶏肉も ",
+        {
+          "kind": "form",
+          "answer": "入れて",
+          "cue": "入れる → て-Verbindung / て-link",
+          "choices": [
+            "入れて",
+            "入れる",
+            "入れた",
+            "入れない"
+          ]
+        },
+        " ゆっくり 煮ました。"
+      ],
+      "chunks": [
+        {
+          "targetText": "店に 入ったら",
+          "baseText": {
+            "de": "als ich ins Lokal kam",
+            "en": "when I entered the restaurant"
+          }
+        },
+        {
+          "targetText": "満席でした。 結局",
+          "baseText": {
+            "de": "war alles besetzt; am Ende",
+            "en": "every seat was taken; in the end"
+          }
+        },
+        {
+          "targetText": "家で カレーを",
+          "baseText": {
+            "de": "zu Hause Curry",
+            "en": "curry at home"
+          }
+        },
+        {
+          "targetText": "作りました。",
+          "baseText": {
+            "de": "habe ich gekocht",
+            "en": "I cooked"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "結局",
+          "baseText": {
+            "de": "am Ende; letztlich",
+            "en": "in the end; ultimately"
+          }
+        },
+        {
+          "targetText": "入ったら",
+          "baseText": {
+            "de": "als ich hineinging",
+            "en": "when I went in"
+          }
+        },
+        {
+          "targetText": "満席",
+          "baseText": {
+            "de": "alle Plätze besetzt",
+            "en": "all seats taken"
+          }
+        },
+        {
+          "targetText": "カレー",
+          "baseText": {
+            "de": "Curry",
+            "en": "curry"
+          }
+        },
+        {
+          "targetText": "鶏肉",
+          "baseText": {
+            "de": "Hühnerfleisch",
+            "en": "chicken"
+          }
+        },
+        {
+          "targetText": "煮ました",
+          "baseText": {
+            "de": "ich habe es gekocht; gegart",
+            "en": "I boiled or simmered it"
+          }
+        }
+      ],
+      "recall": {
+        "before": "店に ",
+        "answer": "入ったら",
+        "after": " 満席でした。 結局 家で カレーを 作りました。",
+        "fallbackChoices": [
+          "入ったら",
+          "入る",
+          "入った",
+          "入らない"
+        ]
+      },
+      "speakRequired": [
+        "入ったら",
+        "満席でした",
+        "結局"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „昨日の レストランは どうでしたか。 そこで 食べましたか。“",
+        "en": "The conversation opens with this question: “昨日の レストランは どうでしたか。 そこで 食べましたか。”"
+      },
+      "trophyWord": {
+        "word": "結局",
+        "meaning": {
+          "de": "am Ende; letztlich",
+          "en": "in the end; ultimately"
+        },
+        "example": "結局 バスで 帰りました。",
+        "whyThisWord": {
+          "de": "Damit erzählst du, wie etwas nach einer Änderung tatsächlich ausgegangen ist.",
+          "en": "Use it to say how something actually turned out after a change."
+        }
+      },
+      "distractors": [
+        "家で サラダを",
+        "食べました。"
+      ],
+      "placeholderCaption": {
+        "de": "Im Treppenhaus fragt eine Person aus der Nachbarschaft nach deinem Restaurantbesuch.",
+        "en": "In the stairwell, a neighbor asks about your restaurant visit."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Apartment stairwell; relaxed conversation, no full restaurant or cooking outcome shown."
+    },
+    {
+      "slug": "kuukou-parents",
+      "title": {
+        "de": "Die Eltern abholen",
+        "en": "Meeting my parents"
+      },
+      "situation": {
+        "de": "Bei einem Treffen fragt dich eine befreundete Person nach dem Besuch deiner Eltern.",
+        "en": "At a get-together, a friend asks about your parents’ visit."
+      },
+      "pedagogicalGoal": "Mit 〜てから eine klare Reihenfolge und mit 〜ので einen Hintergrundgrund nennen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "ご両親は 昨日 着きましたね。 どこで 会いましたか。",
+          "baseText": {
+            "de": "Deine Eltern sind gestern angekommen, oder? Wo hast du sie getroffen?",
+            "en": "Your parents arrived yesterday, didn’t they? Where did you meet them?"
+          }
+        },
+        {
+          "targetText": "空港で 両親に 会ってから、 ホテルまで 一緒に 行きました。",
+          "baseText": {
+            "de": "Nach dem Treffen mit meinen Eltern am Flughafen ging es gemeinsam weiter zum Hotel.",
+            "en": "After meeting my parents at the airport, we went to the hotel together."
+          }
+        },
+        {
+          "targetText": "長い 飛行機の 旅でしたね。 お二人は 疲れていましたか。",
+          "baseText": {
+            "de": "Das war ein langer Flug. Waren die beiden müde?",
+            "en": "That was a long flight. Were they tired?"
+          }
+        },
+        {
+          "targetText": "二人とも 疲れていたので、 ホテルに 着いて すぐ 休みました。",
+          "baseText": {
+            "de": "Beide waren müde und haben sich deshalb gleich nach der Ankunft im Hotel ausgeruht.",
+            "en": "They were both tired, so they rested as soon as they reached the hotel."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜てから und 〜ので",
+        "rule": {
+          "de": "〜てから ordnet Handlungen ausdrücklich; 〜ので verbindet einen Hintergrundgrund mit seiner Folge.",
+          "en": "〜てから explicitly orders actions; 〜ので connects a background reason with its consequence."
+        },
+        "examples": [
+          {
+            "targetText": "空港で 両親に 会ってから、 ホテルまで 一緒に 行きました。",
+            "baseText": {
+              "de": "Nach dem Treffen mit meinen Eltern am Flughafen ging es gemeinsam weiter zum Hotel.",
+              "en": "After meeting my parents at the airport, we went to the hotel together."
+            },
+            "highlight": "会ってから"
+          },
+          {
+            "targetText": "雨が 降っていたので、 家で 休みました。",
+            "baseText": {
+              "de": "Weil es regnete, habe ich mich zu Hause ausgeruht.",
+              "en": "Because it was raining, I rested at home."
+            },
+            "highlight": "降っていたので"
+          }
+        ]
+      },
+      "cloze": [
+        "二人とも ",
+        {
+          "kind": "form",
+          "answer": "疲れていたので",
+          "cue": "疲れる → vergangener Zustand + ので / past state + ので",
+          "choices": [
+            "疲れていたので",
+            "疲れています",
+            "疲れていた",
+            "疲れる"
+          ]
+        },
+        "、 ホテルに ",
+        {
+          "kind": "form",
+          "answer": "着いて",
+          "cue": "着く → て-Verbindung / て-link",
+          "choices": [
+            "着いて",
+            "着く",
+            "着いた",
+            "着かない"
+          ]
+        },
+        " すぐ 休みました。"
+      ],
+      "chunks": [
+        {
+          "targetText": "空港で 両親に",
+          "baseText": {
+            "de": "meine Eltern am Flughafen",
+            "en": "my parents at the airport"
+          }
+        },
+        {
+          "targetText": "会ってから、",
+          "baseText": {
+            "de": "nachdem ich sie getroffen hatte",
+            "en": "after meeting them"
+          }
+        },
+        {
+          "targetText": "ホテルまで 一緒に",
+          "baseText": {
+            "de": "zusammen zum Hotel",
+            "en": "to the hotel together"
+          }
+        },
+        {
+          "targetText": "行きました。",
+          "baseText": {
+            "de": "ging es weiter",
+            "en": "we went"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "空港",
+          "baseText": {
+            "de": "Flughafen",
+            "en": "airport"
+          }
+        },
+        {
+          "targetText": "両親",
+          "baseText": {
+            "de": "Eltern",
+            "en": "parents"
+          }
+        },
+        {
+          "targetText": "会ってから",
+          "baseText": {
+            "de": "nach dem Treffen",
+            "en": "after meeting"
+          }
+        },
+        {
+          "targetText": "二人とも",
+          "baseText": {
+            "de": "beide Personen",
+            "en": "both people"
+          }
+        },
+        {
+          "targetText": "疲れていたので",
+          "baseText": {
+            "de": "weil sie müde waren",
+            "en": "because they were tired"
+          }
+        },
+        {
+          "targetText": "着いて",
+          "baseText": {
+            "de": "ankommen und",
+            "en": "arrive and"
+          }
+        }
+      ],
+      "recall": {
+        "before": "空港で 両親に ",
+        "answer": "会ってから",
+        "after": "、 ホテルまで 一緒に 行きました。",
+        "fallbackChoices": [
+          "会ってから",
+          "会う",
+          "会った",
+          "会わない"
+        ]
+      },
+      "speakRequired": [
+        "空港で",
+        "両親に",
+        "会ってから"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „ご両親は 昨日 着きましたね。 どこで 会いましたか。“",
+        "en": "The conversation opens with this question: “ご両親は 昨日 着きましたね。 どこで 会いましたか。”"
+      },
+      "trophyWord": {
+        "word": "空港",
+        "meaning": {
+          "de": "Flughafen",
+          "en": "airport"
+        },
+        "example": "空港で 両親を 待ちました。",
+        "whyThisWord": {
+          "de": "Das Wort hilft dir, Ankunft, Abholung und Weiterreise zu beschreiben.",
+          "en": "Use it to describe arrivals, meeting travelers and onward journeys."
+        }
+      },
+      "distractors": [
+        "一人で 駅まで",
+        "歩きました。"
+      ],
+      "placeholderCaption": {
+        "de": "Bei einem Treffen fragt dich eine befreundete Person nach dem Besuch deiner Eltern.",
+        "en": "At a get-together, a friend asks about your parents’ visit."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Friends talking at a table; no parents resting or hotel room in the opening visual."
+    },
+    {
+      "slug": "michi-hike",
+      "title": {
+        "de": "Den Weg wiederfinden",
+        "en": "Finding the way again"
+      },
+      "situation": {
+        "de": "Nach einem Wanderausflug erzählst du bei der Arbeit von deinem Tag.",
+        "en": "Back at work after a hike, you talk about your day."
+      },
+      "pedagogicalGoal": "Eine Schwierigkeit mit 〜ので erklären und die Hilfe danach mit 〜てから einordnen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "山歩きは どうでしたか。 最後まで 楽しく 歩けましたか。",
+          "baseText": {
+            "de": "Wie war die Wanderung? Konntest du sie bis zum Ende genießen?",
+            "en": "How was the hike? Were you able to enjoy the whole walk?"
+          }
+        },
+        {
+          "targetText": "山で 道が わからなくて、 電池も 切れたので 人に 聞きました。",
+          "baseText": {
+            "de": "In den Bergen wusste ich den Weg nicht, und weil auch der Akku leer war, habe ich jemanden gefragt.",
+            "en": "In the mountains I did not know the way, and because the battery was dead too, I asked someone."
+          }
+        },
+        {
+          "targetText": "山の 中で 困りましたね。 その時は 怖かったですか。",
+          "baseText": {
+            "de": "Da warst du mitten in den Bergen in Schwierigkeiten. Hattest du Angst?",
+            "en": "That put you in a difficult spot in the mountains. Were you scared?"
+          }
+        },
+        {
+          "targetText": "人に 聞いてから、 地図を 見て 安心しました。",
+          "baseText": {
+            "de": "Nachdem ich jemanden gefragt hatte, habe ich auf die Karte geschaut und war beruhigt.",
+            "en": "After asking someone, I looked at the map and felt relieved."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜ので: den Hintergrund erklären",
+        "rule": {
+          "de": "ので nennt den Grund für die folgende Handlung; てから erzählt, was danach kommt.",
+          "en": "ので gives the reason for the following action; てから tells what comes after an action."
+        },
+        "examples": [
+          {
+            "targetText": "山で 道が わからなくて、 電池も 切れたので 人に 聞きました。",
+            "baseText": {
+              "de": "In den Bergen wusste ich den Weg nicht, und weil auch der Akku leer war, habe ich jemanden gefragt.",
+              "en": "In the mountains I did not know the way, and because the battery was dead too, I asked someone."
+            },
+            "highlight": "切れたので"
+          },
+          {
+            "targetText": "電車が 遅れたので、 バスで 帰りました。",
+            "baseText": {
+              "de": "Weil der Zug Verspätung hatte, bin ich mit dem Bus nach Hause gefahren.",
+              "en": "Because the train was delayed, I went home by bus."
+            },
+            "highlight": "遅れたので"
+          }
+        ]
+      },
+      "cloze": [
+        "人に ",
+        {
+          "kind": "form",
+          "answer": "聞いてから",
+          "cue": "聞く → erst tun, dann / do first, then: てから",
+          "choices": [
+            "聞いてから",
+            "聞く",
+            "聞いた",
+            "聞かない"
+          ]
+        },
+        "、 地図を ",
+        {
+          "kind": "form",
+          "answer": "見て",
+          "cue": "見る → て-Verbindung / て-link",
+          "choices": [
+            "見て",
+            "見る",
+            "見た",
+            "見ない"
+          ]
+        },
+        " 安心しました。"
+      ],
+      "chunks": [
+        {
+          "targetText": "山で 道が わからなくて、",
+          "baseText": {
+            "de": "in den Bergen wusste ich den Weg nicht, und",
+            "en": "in the mountains I did not know the way, and"
+          }
+        },
+        {
+          "targetText": "電池も 切れたので",
+          "baseText": {
+            "de": "weil auch der Akku leer war",
+            "en": "because the battery was dead too"
+          }
+        },
+        {
+          "targetText": "人に",
+          "baseText": {
+            "de": "jemanden",
+            "en": "someone"
+          }
+        },
+        {
+          "targetText": "聞きました。",
+          "baseText": {
+            "de": "habe ich gefragt",
+            "en": "I asked"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "道",
+          "baseText": {
+            "de": "Weg; Straße",
+            "en": "way; road"
+          }
+        },
+        {
+          "targetText": "わからなくて",
+          "baseText": {
+            "de": "nicht wissen und",
+            "en": "not know and"
+          }
+        },
+        {
+          "targetText": "電池",
+          "baseText": {
+            "de": "Batterie; Akku",
+            "en": "battery"
+          }
+        },
+        {
+          "targetText": "切れたので",
+          "baseText": {
+            "de": "weil es leer war; weil es ausging",
+            "en": "because it ran out"
+          }
+        },
+        {
+          "targetText": "聞いてから",
+          "baseText": {
+            "de": "nachdem ich gefragt hatte",
+            "en": "after asking"
+          }
+        },
+        {
+          "targetText": "安心しました",
+          "baseText": {
+            "de": "ich war beruhigt",
+            "en": "I felt relieved"
+          }
+        }
+      ],
+      "recall": {
+        "before": "山で 道が ",
+        "answer": "わからなくて",
+        "after": "、 電池も 切れたので 人に 聞きました。",
+        "fallbackChoices": [
+          "わからなくて",
+          "わかる",
+          "わかった",
+          "わからない"
+        ]
+      },
+      "speakRequired": [
+        "道が",
+        "電池も",
+        "聞きました"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „山歩きは どうでしたか。 最後まで 楽しく 歩けましたか。“",
+        "en": "The conversation opens with this question: “山歩きは どうでしたか。 最後まで 楽しく 歩けましたか。”"
+      },
+      "trophyWord": {
+        "word": "道",
+        "meaning": {
+          "de": "Weg; Straße",
+          "en": "way; road"
+        },
+        "example": "この 道は 駅まで 続いています。",
+        "whyThisWord": {
+          "de": "Damit sprichst du über Orientierung und eine konkrete Strecke.",
+          "en": "Use it for directions and a specific route."
+        }
+      },
+      "distractors": [
+        "電池も あったので",
+        "会いました。"
+      ],
+      "placeholderCaption": {
+        "de": "Nach einem Wanderausflug erzählst du bei der Arbeit von deinem Tag.",
+        "en": "Back at work after a hike, you talk about your day."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Office conversation after a hike; no dead phone, map or frightened expression before the opening reply."
+    },
+    {
+      "slug": "hisashiburi-reunion",
+      "title": {
+        "de": "Nach langer Zeit",
+        "en": "After a long time"
+      },
+      "situation": {
+        "de": "Du erzählst einer befreundeten Person von einem Wiedersehen.",
+        "en": "You tell a friend about a reunion."
+      },
+      "pedagogicalGoal": "Mit 久しぶりに den zeitlichen Abstand markieren und mit 〜ので eine längere Erzählung verbinden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "昨日の 集まりは どうでしたか。 昔の 知り合いに 会いましたか。",
+          "baseText": {
+            "de": "Wie war das Treffen gestern? Hast du Leute von früher getroffen?",
+            "en": "How was yesterday’s gathering? Did you meet people you used to know?"
+          }
+        },
+        {
+          "targetText": "久しぶりに 同級生に 会ったので、 何時間も 話して 楽しかったです。",
+          "baseText": {
+            "de": "Weil ich nach langer Zeit jemanden aus meiner früheren Klasse wiedersah, haben wir stundenlang geredet; das war schön.",
+            "en": "Since I met an old classmate after a long time, we talked for hours; it was lovely."
+          }
+        },
+        {
+          "targetText": "昔と 比べて、 話し方や 性格は 変わっていましたか。",
+          "baseText": {
+            "de": "Hatten sich die Art zu sprechen oder der Charakter im Vergleich zu früher verändert?",
+            "en": "Compared with before, had their way of speaking or personality changed?"
+          }
+        },
+        {
+          "targetText": "いいえ、 昔の 話を 始めたら 二人で 笑っていました。",
+          "baseText": {
+            "de": "Nein, sobald wir von früher anfingen, haben wir beide gelacht.",
+            "en": "No; once we started talking about old times, we were both laughing."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Grund und Erinnerung verbinden",
+        "rule": {
+          "de": "Mit ので verbindest du den Anlass mit dem Erlebnis; たら kann den Moment markieren, ab dem etwas geschah.",
+          "en": "ので links the occasion with the experience; たら can mark the moment when something began to happen."
+        },
+        "examples": [
+          {
+            "targetText": "久しぶりに 同級生に 会ったので、 何時間も 話して 楽しかったです。",
+            "baseText": {
+              "de": "Weil ich nach langer Zeit jemanden aus meiner früheren Klasse wiedersah, haben wir stundenlang geredet; das war schön.",
+              "en": "Since I met an old classmate after a long time, we talked for hours; it was lovely."
+            },
+            "highlight": "会ったので"
+          },
+          {
+            "targetText": "家に 着いたら、 電話が 鳴りました。",
+            "baseText": {
+              "de": "Als ich zu Hause ankam, klingelte das Telefon.",
+              "en": "When I arrived home, the phone rang."
+            },
+            "highlight": "着いたら"
+          }
+        ]
+      },
+      "cloze": [
+        "いいえ、 昔の 話を ",
+        {
+          "kind": "form",
+          "answer": "始めたら",
+          "cue": "始める → Zeitpunkt mit たら / when-clause with たら",
+          "choices": [
+            "始めたら",
+            "始めます",
+            "始めた",
+            "始める"
+          ]
+        },
+        " 二人で ",
+        {
+          "kind": "form",
+          "answer": "笑っていました",
+          "cue": "笑う → laufende Vergangenheit / ongoing past",
+          "choices": [
+            "笑っていました",
+            "笑っています",
+            "笑います",
+            "笑う"
+          ]
+        },
+        "。"
+      ],
+      "chunks": [
+        {
+          "targetText": "久しぶりに 同級生に 会ったので、",
+          "baseText": {
+            "de": "weil ich nach langer Zeit jemanden aus meiner früheren Klasse wiedersah",
+            "en": "since I met an old classmate after a long time"
+          }
+        },
+        {
+          "targetText": "何時間も",
+          "baseText": {
+            "de": "stundenlang",
+            "en": "for hours"
+          }
+        },
+        {
+          "targetText": "話して",
+          "baseText": {
+            "de": "haben wir geredet, und",
+            "en": "we talked, and"
+          }
+        },
+        {
+          "targetText": "楽しかったです。",
+          "baseText": {
+            "de": "es war schön",
+            "en": "it was lovely"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "久しぶり",
+          "baseText": {
+            "de": "nach langer Zeit",
+            "en": "after a long time"
+          }
+        },
+        {
+          "targetText": "同級生",
+          "baseText": {
+            "de": "Person aus derselben Schulklasse",
+            "en": "classmate"
+          }
+        },
+        {
+          "targetText": "何時間も",
+          "baseText": {
+            "de": "stundenlang",
+            "en": "for hours"
+          }
+        },
+        {
+          "targetText": "話し方",
+          "baseText": {
+            "de": "Art zu sprechen",
+            "en": "way of speaking"
+          }
+        },
+        {
+          "targetText": "性格",
+          "baseText": {
+            "de": "Charakter",
+            "en": "personality"
+          }
+        },
+        {
+          "targetText": "笑っていました",
+          "baseText": {
+            "de": "wir haben gerade gelacht",
+            "en": "we were laughing"
+          }
+        }
+      ],
+      "recall": {
+        "before": "久しぶりに 同級生に 会ったので、 何時間も ",
+        "answer": "話して",
+        "after": " 楽しかったです。",
+        "fallbackChoices": [
+          "話して",
+          "話す",
+          "話した",
+          "話さない"
+        ]
+      },
+      "speakRequired": [
+        "久しぶりに",
+        "同級生に",
+        "楽しかったです"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „昨日の 集まりは どうでしたか。 昔の 知り合いに 会いましたか。“",
+        "en": "The conversation opens with this question: “昨日の 集まりは どうでしたか。 昔の 知り合いに 会いましたか。”"
+      },
+      "trophyWord": {
+        "word": "久しぶり",
+        "meaning": {
+          "de": "nach langer Zeit",
+          "en": "after a long time"
+        },
+        "example": "久しぶりに 友達と 会いました。",
+        "whyThisWord": {
+          "de": "Das Wort macht verständlich, warum ein Wiedersehen besonders ist.",
+          "en": "It explains why seeing someone again feels special."
+        }
+      },
+      "distractors": [
+        "数分だけ",
+        "悲しかったです。"
+      ],
+      "placeholderCaption": {
+        "de": "Du erzählst einer befreundeten Person von einem Wiedersehen.",
+        "en": "You tell a friend about a reunion."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Friends catching up in a cafe; do not show the classmate, long conversation or laughter in the opening."
+    },
+    {
+      "slug": "buji-typhoon",
+      "title": {
+        "de": "Gut zu Hause angekommen",
+        "en": "Safely home"
+      },
+      "situation": {
+        "de": "Am nächsten Morgen begegnet dir eine Person aus der Nachbarschaft nach einem Sturm.",
+        "en": "The morning after a storm, you meet a neighbor."
+      },
+      "pedagogicalGoal": "Mit 〜ので den glücklichen Ausgang erklären und mit て-Formen den Abend fortsetzen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "昨日の 台風は 大変でしたね。 家まで 帰れましたか。",
+          "baseText": {
+            "de": "Der Taifun gestern war heftig. Bist du nach Hause gekommen?",
+            "en": "Yesterday’s typhoon was severe. Were you able to get home?"
+          }
+        },
+        {
+          "targetText": "電車が 止まる 前に 帰ったので、 台風の 夜も 無事でした。",
+          "baseText": {
+            "de": "Weil ich vor dem Stillstand der Züge nach Hause kam, habe ich auch die Taifunnacht gut überstanden.",
+            "en": "Because I got home before the trains stopped, I was safe through the typhoon that night."
+          }
+        },
+        {
+          "targetText": "ご家族は どうでしたか。 皆さんも 無事に 帰れましたか。",
+          "baseText": {
+            "de": "Wie ging es deiner Familie? Sind auch alle gut nach Hause gekommen?",
+            "en": "How was your family? Did everyone get home safely too?"
+          }
+        },
+        {
+          "targetText": "家族も 早く 帰ったので、 一緒に ご飯を 食べて 休みました。",
+          "baseText": {
+            "de": "Auch meine Familie kam früh heim; deshalb haben wir zusammen gegessen und uns ausgeruht.",
+            "en": "My family got home early too, so we ate together and rested."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "〜前に und 〜ので im Rückblick",
+        "rule": {
+          "de": "Vor 前に steht die Grundform, auch in einer vergangenen Erzählung; ので verbindet den Grund mit der Folge.",
+          "en": "The dictionary form precedes 前に even in a past narrative; ので connects the reason with the result."
+        },
+        "examples": [
+          {
+            "targetText": "電車が 止まる 前に 帰ったので、 台風の 夜も 無事でした。",
+            "baseText": {
+              "de": "Weil ich vor dem Stillstand der Züge nach Hause kam, habe ich auch die Taifunnacht gut überstanden.",
+              "en": "Because I got home before the trains stopped, I was safe through the typhoon that night."
+            },
+            "highlight": "止まる 前に"
+          },
+          {
+            "targetText": "雨が やんだので、 外に 出ました。",
+            "baseText": {
+              "de": "Weil der Regen aufgehört hatte, bin ich hinausgegangen.",
+              "en": "Because the rain had stopped, I went outside."
+            },
+            "highlight": "やんだので"
+          }
+        ]
+      },
+      "cloze": [
+        "家族も 早く ",
+        {
+          "kind": "form",
+          "answer": "帰ったので",
+          "cue": "帰る → vergangener Grund mit ので / past reason with ので",
+          "choices": [
+            "帰ったので",
+            "帰ります",
+            "帰った",
+            "帰る"
+          ]
+        },
+        "、 一緒に ご飯を ",
+        {
+          "kind": "form",
+          "answer": "食べて",
+          "cue": "食べる → て-Verbindung / て-link",
+          "choices": [
+            "食べて",
+            "食べる",
+            "食べた",
+            "食べない"
+          ]
+        },
+        " 休みました。"
+      ],
+      "chunks": [
+        {
+          "targetText": "電車が 止まる",
+          "baseText": {
+            "de": "die Züge anhalten",
+            "en": "the trains stop"
+          }
+        },
+        {
+          "targetText": "前に 帰ったので、",
+          "baseText": {
+            "de": "weil ich davor nach Hause kam",
+            "en": "because I got home before that"
+          }
+        },
+        {
+          "targetText": "台風の 夜も",
+          "baseText": {
+            "de": "auch in der Taifunnacht",
+            "en": "through the typhoon that night too"
+          }
+        },
+        {
+          "targetText": "無事でした。",
+          "baseText": {
+            "de": "war ich in Sicherheit",
+            "en": "I was safe"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "無事",
+          "baseText": {
+            "de": "wohlbehalten; ohne Schaden",
+            "en": "safe; unharmed"
+          }
+        },
+        {
+          "targetText": "台風",
+          "baseText": {
+            "de": "Taifun",
+            "en": "typhoon"
+          }
+        },
+        {
+          "targetText": "止まる 前に",
+          "baseText": {
+            "de": "bevor es anhält",
+            "en": "before it stops"
+          }
+        },
+        {
+          "targetText": "帰ったので",
+          "baseText": {
+            "de": "weil ich zurückkam",
+            "en": "because I got home"
+          }
+        },
+        {
+          "targetText": "早く",
+          "baseText": {
+            "de": "früh",
+            "en": "early"
+          }
+        },
+        {
+          "targetText": "休みました",
+          "baseText": {
+            "de": "wir haben uns ausgeruht",
+            "en": "we rested"
+          }
+        }
+      ],
+      "recall": {
+        "before": "電車が ",
+        "answer": "止まる",
+        "after": " 前に 帰ったので、 台風の 夜も 無事でした。",
+        "fallbackChoices": [
+          "止まる",
+          "止まって",
+          "止まりました",
+          "止まったら"
+        ]
+      },
+      "speakRequired": [
+        "帰ったので",
+        "台風の",
+        "無事でした"
+      ],
+      "sceneCaption": {
+        "de": "Das Gespräch beginnt mit der Frage: „昨日の 台風は 大変でしたね。 家まで 帰れましたか。“",
+        "en": "The conversation opens with this question: “昨日の 台風は 大変でしたね。 家まで 帰れましたか。”"
+      },
+      "trophyWord": {
+        "word": "無事",
+        "meaning": {
+          "de": "wohlbehalten; ohne Schaden",
+          "en": "safe; unharmed"
+        },
+        "example": "昨日は 無事に 家へ 帰りました。",
+        "whyThisWord": {
+          "de": "Damit kannst du nach einer schwierigen Situation Entwarnung geben.",
+          "en": "Use it to reassure someone after a difficult situation."
+        }
+      },
+      "distractors": [
+        "晴れた 夜も",
+        "心配でした。"
+      ],
+      "placeholderCaption": {
+        "de": "Am nächsten Morgen begegnet dir eine Person aus der Nachbarschaft nach einem Sturm.",
+        "en": "The morning after a storm, you meet a neighbor."
+      },
+      "songMood": "Warm acoustic conversation with clear phrasing and gentle forward movement.",
+      "visualNotes": "Apartment entrance the morning after a storm; avoid showing family outcomes before the follow-up."
+    }
+  ]
+}

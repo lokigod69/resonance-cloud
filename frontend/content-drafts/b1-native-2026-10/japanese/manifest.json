@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "kind": "japanese-b1-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/japanese/p1.json",
+      "sha256": "d347cfcf251d7cbc7b04db8429b7cb8c28daebd22d8e7d63164e87f05b7d4bb9",
+      "targetLanguage": "Japanese",
+      "pathNumber": 1,
+      "reviewedVoiceId": "3321Alera3fXjEWjjbAX",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/japanese/specification.json",
+        "sha256": "a7c2090f6b393ea02cbfd6b82200ca76cb47c2fb98610ed41752c5d4e1c49f4e"
+      },
+      "readingSheet": {
+        "file": "frontend/content-drafts/b1-native-2026-10/japanese/reading-sheet.json",
+        "sha256": "ff1a62863e289e10383bd7f376b96def047bd1f4d0f44f9ed0121d41180e8e8e"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/japanese/p2.json",
+      "sha256": "2409ccee00d6608ce317300378d5016097fa74989be17cfd97a4d19307592d18",
+      "targetLanguage": "Japanese",
+      "pathNumber": 2,
+      "reviewedVoiceId": "3321Alera3fXjEWjjbAX",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/japanese/specification.json",
+        "sha256": "a7c2090f6b393ea02cbfd6b82200ca76cb47c2fb98610ed41752c5d4e1c49f4e"
+      },
+      "readingSheet": {
+        "file": "frontend/content-drafts/b1-native-2026-10/japanese/reading-sheet.json",
+        "sha256": "ff1a62863e289e10383bd7f376b96def047bd1f4d0f44f9ed0121d41180e8e8e"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Japanese": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/japanese/fable-evidence.json",
+    "sha256": "c89a131063f2f6a14b520f2eba1724897a208823a25ec8a80da401f41abba9ad"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/japanese/independent-evidence.json",
+    "sha256": "3efdbb263ddcee665d6ca21b33bc6818c2fb697d482422809ea453094ae156a3"
+  }
+}
