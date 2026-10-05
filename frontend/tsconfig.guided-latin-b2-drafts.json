@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "types": ["vite/client", "node"],
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.guided-latin-b2-drafts.tsbuildinfo"
+  },
+  "include": ["scripts/lib/guidedLatinB2Drafts.ts", "scripts/test-guided-latin-b2-drafts.ts"]
+}
