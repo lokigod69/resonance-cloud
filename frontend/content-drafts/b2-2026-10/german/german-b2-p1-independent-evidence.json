@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/german/german-b2-p1.json": "2e80dcbc015063d2baac21873de7146b0136ebcc83a6d69bdaafb3b14a12fbe3"
+  },
+  "scope": "Exact offline content and local TTS preparation only; not native-human certification or publication approval.",
+  "kind": "independentReview",
+  "report": {
+    "schemaVersion": 1,
+    "reviewer": "codex-independent-review",
+    "reviewRound": 2,
+    "date": "2026-10-05",
+    "verdict": "PASS",
+    "findingCount": 0,
+    "severityCounts": {
+      "BLOCKER": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0
+    },
+    "findings": [],
+    "source": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/german-b2-p1.json",
+    "sourceSha256": "2e80dcbc015063d2baac21873de7146b0136ebcc83a6d69bdaafb3b14a12fbe3",
+    "originalSourceSha256": "392e965841661fc407471e620775bd76fe8b2222b95099457b04a70dc7c83cdb",
+    "readThrough": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "scope": "Final independent re-review after Fable arbitration. Every field of all ten changed lessons reread. Read-only app; no git, paid calls, database calls, content fixes, or publication. Only this scratch report written.",
+    "replay": {
+      "verdict": "PASS",
+      "chains": [
+        {
+          "file": "B2_GERMAN_P1_FABLE_REVIEW_RAW.json",
+          "editCount": 27,
+          "allOldValuesMatched": true
+        },
+        {
+          "file": "B2_GERMAN_P1_L9_REPAIR_RAW.json",
+          "editCount": 2,
+          "allOldValuesMatched": true
+        }
+      ],
+      "orderedReplayExactlyEqualsFinalJson": true,
+      "unexpectedChanges": 0,
+      "rootFieldsUnchanged": true,
+      "changedLessons": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "priorFindings": [
+      {
+        "id": "P1-IR-01",
+        "lessonNumber": 2,
+        "result": "RESOLVED",
+        "evidence": "The relative clause is bound by comma-bearing chunks; mit dem Auto is no longer independently movable. The five chunks reconstruct the revised target. New distractors do not express the visible English intent."
+      },
+      {
+        "id": "P1-IR-02",
+        "lessonNumber": 3,
+        "result": "RESOLVED",
+        "evidence": "konzentriertes Arbeiten zu Hause is one chip. The former unmarked locative-fronting alternative is unavailable; the remaining chips preserve the subordinate clause and comparison."
+      },
+      {
+        "id": "P1-IR-03",
+        "lessonNumber": 6,
+        "result": "RESOLVED",
+        "evidence": "zumal die App is one chip, binding the subject to the connector. The previously valid object-before-subject order is unavailable."
+      },
+      {
+        "id": "P1-IR-04",
+        "lessonNumber": 7,
+        "result": "RESOLVED",
+        "evidence": "spontan auf andere Menschen is one chip, preventing the formerly equivalent adverb-position permutation."
+      },
+      {
+        "id": "P1-IR-05",
+        "lessonNumber": 9,
+        "result": "RESOLVED",
+        "evidence": "wäre die Entfernung binds the copula and subject. andererseits is in the fixed frame; the remaining five chips contain twelve lexical tokens. Entfernung and Einschränkung remain in the focus. No unmarked meaning-preserving alternative found."
+      },
+      {
+        "id": "P1-IR-06",
+        "lessonNumber": 6,
+        "result": "CLOSED BY ARBITRATION",
+        "evidence": "Fable clarified that the visible base defines the intended meaning. Lockangebot does not mean additional option; retaining this grammatical but semantically different distractor is valid under the adopted standard."
+      }
+    ],
+    "arbitration": {
+      "choices": "Applied the explicit standard: one option must express the visible base intent; grammar alone does not establish an accepted answer.",
+      "buildOrder": "Rechecked meaning-preserving, unmarked orders in the five affected build exercises, including the final L9 repair. No remaining HIGH ambiguity found.",
+      "longCarrier": "L8's complete five-token rebuttal frame remains in pattern, highlight, and term. The move blank uses the already-licensed Dennoch, consistent with B2-10 as arbitrated.",
+      "firstPathRecycling": "Accepted Fable's explicit P1 boundary: German B1 rows plus earlier P1 lessons. Existing recycling satisfies this interpretation.",
+      "instructionalAddress": "Situation Du is instructional address; interlocutor Sie/du remains consistent."
+    },
+    "regressionChecks": [
+      "No introduced issue in German naturalness, English meaning, pattern explanations, or term glosses.",
+      "All six-turn arguments, objections, steers, distinct move labels, register plans, and neutral learner claims remain coherent.",
+      "No introduced early spoiler in title, situation, or caption.",
+      "L2's ebenfalls/auch blank expresses the intended too; other choices do not. Its organise-a-carpool change reconstructs correctly.",
+      "L4/L9 comma-less accepted input variants do not alter canonical voiced text.",
+      "L5 gloss, L8 term casing, and L10 regional wording changes preserve meaning and required occurrences.",
+      "Trophy allocations, families, surfaces, examples, and speaking targets remain valid.",
+      "Draft status and pending/unreviewed metadata remain unchanged; review evidence is external to the content file."
+    ],
+    "validation": {
+      "verdict": "PASS",
+      "command": "./node_modules/.bin/tsx.cmd ../../tmp/V4_EXPANSION_20261003/validate-reviewed-german-b2.mjs",
+      "workingDirectory": "D:/CODING/ResonanceTEST/orchestrator/frontend",
+      "validator": "validateGermanB2Draft",
+      "lessons": 10,
+      "turns": 60,
+      "reportedSha256": "2e80dcbc015063d2baac21873de7146b0136ebcc83a6d69bdaafb3b14a12fbe3",
+      "invocationNote": "Direct node invocation initially failed because native Node could not resolve an extensionless TypeScript import. The existing local tsx runner then executed the actual validator successfully; no code or dependencies were changed."
+    },
+    "limits": "PASS covers this exact content hash and the scoped independent re-review. It is model review evidence, not native-human certification, runtime/audio verification, or publication approval."
+  }
+}

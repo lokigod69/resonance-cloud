@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "status": "fable-authoring-spec",
+  "targetLanguage": "German",
+  "level": "B2",
+  "contract": "b2-authoring-contract-1",
+  "germanB2": {
+    "register": "Sie unless the interlocutor is a friend; neutral learner text throughout P1–P2 (no agent nouns about the speaker, no Partizip-als-Adjektiv about the speaker); every lesson speakerGender neutral",
+    "carriersStaged": {
+      "P1": {
+        "compare": [
+          "einerseits … andererseits (L1)",
+          "je … desto (L1)",
+          "zwar … aber (L2)",
+          "Komparativ + als (L3)",
+          "im Vergleich zu (L5)",
+          "während (L7)"
+        ],
+        "position": [
+          "ich tendiere zu (L2)",
+          "aus meiner Sicht (L4)"
+        ],
+        "reason": [
+          "da (L3)",
+          "zumal (L6)"
+        ],
+        "concede": [
+          "zugegeben (L1)",
+          "zwar … aber (L2)",
+          "das stimmt, aber (L4)"
+        ],
+        "rebut": [
+          "dennoch (L5)",
+          "das ändert nichts daran, dass (L8)"
+        ],
+        "conclude": [
+          "insgesamt (L1)",
+          "unterm Strich (L2)",
+          "deshalb empfehle ich (L3)",
+          "alles in allem (L6)"
+        ]
+      },
+      "P2": {
+        "explain": [
+          "da (L1)",
+          "sodass (L1)",
+          "deshalb (L1)",
+          "Passiv mit Modalverb (L2)",
+          "Nominalisierung eine Entscheidung treffen (L3)",
+          "infolge (L5)",
+          "dadurch, dass (L7)"
+        ],
+        "reason": [
+          "weil … nämlich (L2)",
+          "aufgrund (L4)"
+        ],
+        "clarify": [
+          "das heißt (L1)",
+          "genauer gesagt (L3)",
+          "um es kurz zu machen (L6)"
+        ],
+        "compare": [
+          "im Gegensatz zu (L4)"
+        ],
+        "summarize": [
+          "kurz gesagt (L2)",
+          "zusammengefasst (L5)"
+        ],
+        "conclude": [
+          "daraus folgt (L1)",
+          "letztlich (L4)"
+        ]
+      }
+    },
+    "P1": {
+      "slug": "abwaegen",
+      "lessons": [
+        {
+          "n": 1,
+          "slug": "miete-gegen-pendelzeit",
+          "them": "Makler",
+          "reg": "Sie",
+          "function": "Miete gegen Pendelzeit abwägen und sich entscheiden",
+          "trophy": "überwiegen",
+          "pos": "verb"
+        },
+        {
+          "n": 2,
+          "slug": "auto-oder-bahn",
+          "them": "Kollegin",
+          "reg": "Sie",
+          "function": "Auto gegen Bahn für den Arbeitsweg vergleichen",
+          "trophy": "Zeitersparnis",
+          "pos": "noun"
+        },
+        {
+          "n": 3,
+          "slug": "homeoffice-oder-buero",
+          "them": "Vorgesetzte",
+          "reg": "Sie",
+          "function": "Homeoffice gegen Präsenz abwägen und eine Regelung empfehlen",
+          "trophy": "Spielraum",
+          "pos": "noun"
+        },
+        {
+          "n": 4,
+          "slug": "kaufen-oder-leihen",
+          "them": "Verleihservice",
+          "reg": "Sie",
+          "function": "Kauf gegen Miete eines Geräts abwägen",
+          "trophy": "Verzicht",
+          "pos": "noun"
+        },
+        {
+          "n": 5,
+          "slug": "zwei-urlaubsplaene",
+          "them": "Freund",
+          "reg": "du",
+          "function": "Zwei Urlaubspläne gegeneinander abwägen",
+          "trophy": "Vorzug",
+          "pos": "noun"
+        },
+        {
+          "n": 6,
+          "slug": "bar-oder-app",
+          "them": "Ladeninhaberin",
+          "reg": "Sie",
+          "function": "Barzahlung gegen App-Zahlung vergleichen",
+          "trophy": "Mehrwert",
+          "pos": "noun"
+        },
+        {
+          "n": 7,
+          "slug": "kurs-oder-app",
+          "them": "Freundin",
+          "reg": "du",
+          "function": "Sprachkurs gegen Lern-App abwägen",
+          "trophy": "gegenüberstellen",
+          "pos": "verb"
+        },
+        {
+          "n": 8,
+          "slug": "zwei-jobangebote",
+          "them": "Mentor",
+          "reg": "Sie",
+          "function": "Zwei Stellenangebote vergleichen und eines wählen",
+          "trophy": "ausschlaggebend",
+          "pos": "adjective"
+        },
+        {
+          "n": 9,
+          "slug": "umziehen-oder-bleiben",
+          "them": "Nachbarin",
+          "reg": "Sie",
+          "function": "Stadtwechsel gegen Bleiben abwägen",
+          "trophy": "Einschränkung",
+          "pos": "noun"
+        },
+        {
+          "n": 10,
+          "slug": "eine-option-empfehlen",
+          "them": "Ausschuss",
+          "reg": "Sie",
+          "function": "Drei Optionen vergleichen und eine empfehlen",
+          "trophy": "Abwägung",
+          "pos": "noun",
+          "familyKey": "abwägen"
+        }
+      ]
+    },
+    "P2": {
+      "slug": "erklaeren-warum",
+      "lessons": [
+        {
+          "n": 1,
+          "slug": "rechnung-weicht-ab",
+          "them": "Steuerberaterin",
+          "reg": "Sie",
+          "function": "Erklären, warum eine Rechnung vom Angebot abweicht",
+          "trophy": "Abweichung",
+          "pos": "noun"
+        },
+        {
+          "n": 2,
+          "slug": "muelltrennung-erklaeren",
+          "them": "Neuzugezogener",
+          "reg": "Sie",
+          "function": "Die örtliche Mülltrennung Schritt für Schritt erklären",
+          "trophy": "aufschlüsseln",
+          "pos": "verb"
+        },
+        {
+          "n": 3,
+          "slug": "projekt-verzoegert",
+          "them": "Vorgesetzter",
+          "reg": "Sie",
+          "function": "Erklären, warum ein Projekt sich verzögert hat",
+          "trophy": "verzögern",
+          "pos": "verb"
+        },
+        {
+          "n": 4,
+          "slug": "bonusprogramm",
+          "them": "Freund",
+          "reg": "du",
+          "function": "Erklären, wie ein Bonusprogramm funktioniert",
+          "trophy": "nachvollziehen",
+          "pos": "verb"
+        },
+        {
+          "n": 5,
+          "slug": "anbieter-gewechselt",
+          "them": "Nachbar",
+          "reg": "Sie",
+          "function": "Begründen, warum man den Anbieter gewechselt hat",
+          "trophy": "Beweggrund",
+          "pos": "noun"
+        },
+        {
+          "n": 6,
+          "slug": "bussgeld-einspruch",
+          "them": "Kollegin",
+          "reg": "du",
+          "function": "Erklären, wie man gegen ein Bußgeld Einspruch einlegt",
+          "trophy": "Widerspruch",
+          "pos": "noun"
+        },
+        {
+          "n": 7,
+          "slug": "plan-gescheitert",
+          "them": "Freundin",
+          "reg": "du",
+          "function": "Erklären, warum ein Plan gescheitert ist",
+          "trophy": "Fehleinschätzung",
+          "pos": "noun"
+        },
+        {
+          "n": 8,
+          "slug": "terminvergabe",
+          "them": "Fachärztin",
+          "reg": "Sie",
+          "function": "Den Ablauf einer Terminvergabe erklären und präzisieren",
+          "trophy": "Abwicklung",
+          "pos": "noun"
+        },
+        {
+          "n": 9,
+          "slug": "leihrad-system",
+          "them": "Skeptiker",
+          "reg": "Sie",
+          "function": "Erklären, warum ein Leihradsystem sinnvoll ist",
+          "trophy": "Auswirkung",
+          "pos": "noun"
+        },
+        {
+          "n": 10,
+          "slug": "entscheidungskette",
+          "them": "Sachbearbeiter",
+          "reg": "Sie",
+          "function": "Eine Entscheidungskette nachzeichnen und begründen",
+          "trophy": "zurückführen",
+          "pos": "verb"
+        }
+      ]
+    },
+    "trophyLedgerStatus": {
+      "uniqueness": "20 lemmas distinct; familyKeys distinct (Abwägung keyed abwägen, no other abwägen family member used); none is an article, pronoun, Abtönungspartikel or auxiliary",
+      "forbiddenCheck": "VERIFIED 2026-10-05 against the 300 actual German A1/A2/B1 trophy surfaces supplied by root: 0 lemma collisions, 0 familyKey collisions for all 20 allocations (mechanical result []). Nearest neighbours reviewed and kept as distinct lemmas: Zeitersparnis vs forbidden Zeit (compound head), Vorzug/Verzicht vs Vorschlag, Abweichung vs none. No swap performed. Step 2 (check-ledger.ts) re-runs the same check against the live registry at freeze and remains binding",
+      "reserve": [
+        "Rentabilität",
+        "Gegenüberstellung",
+        "Aufwand",
+        "Auslöser",
+        "Zusammenhang",
+        "Voraussetzung",
+        "erheblich",
+        "beruhen"
+      ],
+      "likelyCollisions": "Auswirkung, Spielraum and the reserve rows Zusammenhang, Voraussetzung were checked against the 300 trophies: none present. Terms insgesamt and deshalb do appear as B1 trophies; they are recycled as terms/blanks only, never as B2 trophies"
+    }
+  }
+}

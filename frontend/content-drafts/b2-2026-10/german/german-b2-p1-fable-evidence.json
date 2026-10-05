@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/german/german-b2-p1.json": "2e80dcbc015063d2baac21873de7146b0136ebcc83a6d69bdaafb3b14a12fbe3"
+  },
+  "scope": "Exact offline content and local TTS preparation only; not native-human certification or publication approval.",
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "approvalBasis": "Resolved conditional approval: Fable personally read every field of all ten episodes and required 27 exact edits, then two exact L9 bound corrections. All 29 applied without discretion. Independent replay, full reread and actual structural validation passed on these final bytes. Raw model verdicts below remain APPLY_EXACT_EDITS.",
+  "originalSourceSha256": "392e965841661fc407471e620775bd76fe8b2222b95099457b04a70dc7c83cdb",
+  "chains": [
+    {
+      "rawEvidenceFile": "B2_GERMAN_P1_FABLE_REVIEW_RAW.json",
+      "rawEvidenceSha256": "7863ff050db31674d7763b28d6aaf9acde9a53d02ad9953bfc49bac77c84ab3b",
+      "review": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "german-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Read every root and lesson field: situation/title/caption spoiler check, all six turns for natural German and token bounds (them 14–18, you1 16–21, you2 17–20, you3 14–17, focus 8–12), you2 answers them2 specifically and you3 performs the closing move after a real steer in all ten; moves pairwise distinct and whitelisted, pattern.moveType in-episode; registers Sie/du consistent with no cross-register pronouns in you turns; neutral learner text everywhere; carriers staged per corrected P1 table (L1 einerseits/andererseits, je…desto, zugegeben, insgesamt; L2 ich tendiere zu, zwar…aber, unterm Strich; L3 da, Komparativ+als, deshalb empfehle ich; L4 aus meiner Sicht, das stimmt aber; L5 im Vergleich zu, dennoch; L6 zumal, alles in allem; L7 während; L8 das ändert nichts daran dass; nothing from P2 or later lessons in learner turns); every build/cloze/synthesis/recall reconstruction verified character by character; every choice set and fallback set tested in full visible context (one option expresses the shown intent; other grammatical options contradict it); every term found verbatim folded in dialogue or pattern example; speak tokens whole tokens with ≥2 inside focus; all ten trophies equal the ledger allocation, surfaces whole tokens of the declared turn, examples contain the surface; no digits/URLs/emoji in voiced text; review blocks all pending/false/unreviewed.",
+            "remainingConcerns": "Form blanks on everyday verbs (brauche, übe, bezahle, gebe, bleibe, prüfen) are reconstruction checks, not the B2 load; licensed because the move blank carries the carrier in every lesson, but L2's copula blank was replaced. Situation texts address the learner with Du in all ten lessons (exemplar used Sie); licensed as instructional address, not interlocutor register, and must stay outside the Sie/du detector. L1 them3 'Welche Grenze setzen Sie Ihrer Entscheidung?' and L8 'mit meiner Betreuung vereinbar' are acceptable but slightly formal; no edit. abwägen appears as a plain verb in L9 before the L10 trophy Abwägung; not a trophy collision, kept as pre-exposure."
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "P1-IR-01 L2 build order (mit dem Auto can lead the denn clause)",
+            "decision": "accept-adapted",
+            "reason": "The alternative is unmarked and meaning-preserving, so the item is a false rejection. No ≥5-chunk regrouping of the existing text closes it, so the reviewer's relative-clause text is adopted (better B2 German, keeps trophy surface, speak tokens, term 'Ich tendiere zu' and lengths 17/10). Distractors replaced: the reviewer's plural-form pair is a bare agreement trap; 'die der Zug verspricht,' and 'wächst durch Parkplatzsuche' are grammatical but contradict the shown intent."
+          },
+          {
+            "finding": "P1-IR-02 L3 build order (zu Hause before the subject)",
+            "decision": "accept",
+            "reason": "Equally natural order; regrouping to ['Da','konzentriertes Arbeiten zu Hause','leichter','fällt','als im Großraumbüro,'] keeps five chunks, no voiced text change; leichter cannot move because the comma chunk is final and V-final binds fällt."
+          },
+          {
+            "finding": "P1-IR-03 L6 build order (object before subject)",
+            "decision": "accept-adapted",
+            "reason": "'zumal meine Ausgaben die App erfasst' is grammatical but contrastively marked; closing it is cheap. The reviewer's merge creates an unnatural subject+object chip; ['zumal die App','meine Ausgaben','erfasst','und keine zusätzlichen Gebühren','verlangt.'] fixes the subject after the connector, keeps five meaningful chunks and all speak tokens inside the focus."
+          },
+          {
+            "finding": "P1-IR-04 L7 build order (adverb position)",
+            "decision": "accept",
+            "reason": "Both adverb positions are native and identical in meaning; grouping 'spontan auf andere Menschen' (four tokens) removes the ambiguity with five chunks left."
+          },
+          {
+            "finding": "P1-IR-05 L9 build order (predicate nominative fronting) and brächte…mit sich rewrite",
+            "decision": "accept-adapted",
+            "reason": "The reversal is marked but grammatical, so the chip set must bind wäre to its subject. The brächte rewrite is rejected: Konjunktiv II brächte is stilted in speech and would not close the order anyway. Fix without touching voiced text: bind 'wäre die Entfernung', move 'im Alltag.' into the chips (frameSuffix empty, focus 12 tokens, period fixes it last), and replace the now-useless distractor 'die Nähe' with 'wäre die Nähe'. 'eine spürbare Einschränkung zu meinem vertrauten Umfeld' is not a plausible German reading (Einschränkung takes no zu-complement), so it is not an ambiguity."
+          },
+          {
+            "finding": "P1-IR-06 L6 synthesis Lockangebot also coherent",
+            "decision": "reject",
+            "reason": "The visible base says 'as an additional option'; Lockangebot (loss leader) does not express that intent and shifts the recommendation into marketing. Grammatical-but-wrong-in-context options are legitimate choices; moving the blank to empfehle would replace a meaning test with an A2 form test."
+          },
+          {
+            "finding": "P1-AR-01 and author flag: L8 carrier 'das ändert nichts daran, dass' has five tokens, Dennoch is blanked",
+            "decision": "license",
+            "reason": "B2-10 requires the move blank to be a carrier staged at or before the lesson, not the newly staged one. Rule for the German P1 spec: a carrier longer than the four-token frame cap is introduced through a pattern example, a highlight and a term; the move blank then uses an already-staged carrier of the same move. L8 implements exactly that; no contract change, record this sentence in the path spec notes."
+          },
+          {
+            "finding": "P1-AR-02 and author flag: B2-22 earlier-path recycling has no earlier B2 path for P1",
+            "decision": "license",
+            "reason": "For pathNumber 1 the 'earlier path carrier list' is defined as the German B1 carrier/trophy rows plus this path's earlier lessons (consistent with the b2BeforeB1 resolution that recycling checks use ledger rows). P1 L6–L10 satisfy it (L6 zugegeben, L7 zwar/unterm Strich, L8 aus meiner Sicht/dennoch/insgesamt, L9 einerseits…andererseits/das stimmt aber/unterm Strich, L10 da/dennoch/alles in allem, plus B1 weil/denn/wenn/trotzdem/jedoch). If the validator still emits B2-22 for P1, Codex acknowledges it with this reason; no fabricated earlier path."
+          },
+          {
+            "finding": "P1-AR-03 governing standard for choices, distractors and build order",
+            "decision": "define",
+            "reason": "Standard: exactly one option may express the intent shown in the visible base; other options may be grammatical if they contradict or distort that meaning; an option that plausibly expresses the same intent makes the item ambiguous and must be repaired. Build: any grammatical, meaning-preserving and unmarked permutation must be excluded by chunk grouping, attached punctuation or the frame; marked permutations (contrastive fronting) are closed when a 5–8-chunk regrouping exists. Per-lesson application above; no blanket grammar-only rewrite."
+          },
+          {
+            "finding": "Author/exemplar divergence: situation texts use Du (exemplar Sie)",
+            "decision": "accept",
+            "reason": "Situation is unvoiced instructional address to the learner, consistent across all ten lessons and matching the app's learner-facing tone; the Sie/du detector applies to dialogue turns only. Judge by corrected P1 staging, not by the exemplar's address."
+          },
+          {
+            "finding": "Fable: L2 cloze blank 'sind' is copula filler",
+            "decision": "edit",
+            "reason": "A copula form is an A1 reconstruction check (criterion 12); 'ebenfalls' is the hinge of the concession (traffic jams are unpredictable too). Lexical blank with choices ebenfalls/keineswegs/selten/angeblich: only ebenfalls expresses the shown 'too'; 'auch' accepted for typed input. Other simple form blanks stay as licensed reconstruction checks."
+          },
+          {
+            "finding": "Fable: L2 you3 'eine Fahrgemeinschaft verabreden' is not a native collocation",
+            "decision": "edit",
+            "reason": "One verabredet a meeting, not a carpool; 'organisiere ich rechtzeitig eine Fahrgemeinschaft' is what a native says. Coupled synthesis form blank, cue and choices updated; speak tokens and term Fahrgemeinschaft unchanged; 14 tokens."
+          },
+          {
+            "finding": "Fable: L10 'vor dem Schulhaus' is regional (south/CH/AT)",
+            "decision": "edit",
+            "reason": "Rail requires regional neutrality; 'vor der Schule' is neutral, same token count, base already says 'outside the school'. Coupled frameSuffix, recall.after and pattern example 0 updated."
+          },
+          {
+            "finding": "Fable: L1 you1 base 'it removes the long commute' misrenders intransitive entfällt",
+            "decision": "edit",
+            "reason": "English base precision: the commute falls away; 'so much of my time' overstates viel. Pattern example 0 base coupled."
+          },
+          {
+            "finding": "Fable: L5 term gloss 'advantage; preference in den Vorzug geben' is garbled",
+            "decision": "edit",
+            "reason": "Gloss must explain; rewritten to name the construction and its meaning."
+          },
+          {
+            "finding": "Fable: L8 term 'Dennoch' capitalised while L5/L10 use 'dennoch'",
+            "decision": "edit",
+            "reason": "Term rows dedupe by NFC text hash; lowercase lemma form avoids a duplicate TTS row and matches the other lessons."
+          },
+          {
+            "finding": "Fable: 'Das stimmt, aber' frame blank requires the learner to type the comma",
+            "decision": "edit",
+            "reason": "Normalization keeps internal commas; add 'Das stimmt aber' as accepted variant in L4 and L9 so a comma-less typed answer passes; choices unaffected."
+          },
+          {
+            "finding": "Fable: trophies, ids, status",
+            "decision": "preserve",
+            "reason": "All ten trophies equal the ledger (überwiegen, Zeitersparnis, Spielraum, Verzicht, Vorzug, Mehrwert, gegenüberstellen, ausschlaggebend, Einschränkung, Abwägung/abwägen) and are untouched by every edit; no pathId/lessonId exists; status stays draft, review flags false, nativeStatus unreviewed; this arbitration is evidence outside the file, not a reviewer row."
+          }
+        ],
+        "edits": [
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/0/dialogue/1/base/en",
+            "oldValue": "On the one hand, the high rent puts pressure on my budget; on the other, it removes the long commute that takes up so much of my time every day.",
+            "newValue": "On the one hand, the high rent puts pressure on my budget; on the other, the long commute that eats up a lot of my time every day falls away.",
+            "reason": "entfällt is intransitive; precise base"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/0/pattern/examples/0/base/en",
+            "oldValue": "On the one hand, the high rent puts pressure on my budget; on the other, it removes the long commute that takes up so much of my time every day.",
+            "newValue": "On the one hand, the high rent puts pressure on my budget; on the other, the long commute that eats up a lot of my time every day falls away.",
+            "reason": "coupled with dialogue/1 base"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/1/targetText",
+            "oldValue": "Ich tendiere zu einem Bahnabo, denn die Zeitersparnis mit dem Auto schrumpft durch Parkplatzsuche und Staus.",
+            "newValue": "Ich tendiere zu einem Bahnabo, denn die Zeitersparnis, die das Auto verspricht, schrumpft durch Parkplatzsuche und Staus.",
+            "reason": "IR-01: close the valid 'mit dem Auto schrumpft die Zeitersparnis' order; 17 tokens"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/1/base/en",
+            "oldValue": "I'm leaning towards a train pass, because the time saved by driving shrinks once parking searches and traffic jams are involved.",
+            "newValue": "I'm leaning towards a train pass, because the time saving the car promises shrinks once parking searches and traffic jams are involved.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/build/chunks",
+            "oldValue": [
+              "die Zeitersparnis",
+              "mit dem Auto",
+              "schrumpft",
+              "durch Parkplatzsuche",
+              "und Staus."
+            ],
+            "newValue": [
+              "die Zeitersparnis,",
+              "die das Auto",
+              "verspricht,",
+              "schrumpft durch Parkplatzsuche",
+              "und Staus."
+            ],
+            "reason": "IR-01; five chunks, focus 10 tokens, single grammatical order"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/build/distractors",
+            "oldValue": [
+              "wächst",
+              "ohne Parkplatzsuche"
+            ],
+            "newValue": [
+              "die der Zug verspricht,",
+              "wächst durch Parkplatzsuche"
+            ],
+            "reason": "content distractors that contradict the shown intent; distinct from chunks"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/recall/after",
+            "oldValue": " zu einem Bahnabo, denn die Zeitersparnis mit dem Auto schrumpft durch Parkplatzsuche und Staus.",
+            "newValue": " zu einem Bahnabo, denn die Zeitersparnis, die das Auto verspricht, schrumpft durch Parkplatzsuche und Staus.",
+            "reason": "recall reconstruction of edited you1"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/cloze/segments/1/text",
+            "oldValue": " kann ein Zug ausfallen, aber Staus ",
+            "newValue": " kann ein Zug ausfallen, aber Staus sind ",
+            "reason": "blank moved from copula to ebenfalls"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/cloze/segments/3/text",
+            "oldValue": " ebenfalls unberechenbar; für mich zählt die übliche Fahrtdauer statt des besten Einzelfalls.",
+            "newValue": " unberechenbar; für mich zählt die übliche Fahrtdauer statt des besten Einzelfalls.",
+            "reason": "blank moved from copula to ebenfalls"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/cloze/blanks/1",
+            "oldValue": {
+              "answer": "sind",
+              "acceptedAnswers": [
+                "sind"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "sein; present tense; the visible subject is Staus"
+              },
+              "choices": [
+                "sind",
+                "ist",
+                "seid",
+                "bist"
+              ]
+            },
+            "newValue": {
+              "answer": "ebenfalls",
+              "acceptedAnswers": [
+                "ebenfalls",
+                "auch"
+              ],
+              "kind": "lexical",
+              "choices": [
+                "ebenfalls",
+                "keineswegs",
+                "selten",
+                "angeblich"
+              ]
+            },
+            "reason": "copula blank is filler; ebenfalls is the concession hinge; only ebenfalls expresses the shown 'too'"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/5/targetText",
+            "oldValue": "Unterm Strich nehme ich das Bahnabo; für späte Termine verabrede ich rechtzeitig eine Fahrgemeinschaft.",
+            "newValue": "Unterm Strich nehme ich das Bahnabo; für späte Termine organisiere ich rechtzeitig eine Fahrgemeinschaft.",
+            "reason": "native collocation; 14 tokens"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/5/base/en",
+            "oldValue": "On balance, I'll get the train pass; for late appointments, I'll arrange a carpool in advance.",
+            "newValue": "On balance, I'll get the train pass; for late appointments, I'll organise a carpool in advance.",
+            "reason": "coupled base"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/1/synthesis/blanks/1",
+            "oldValue": {
+              "answer": "verabrede",
+              "acceptedAnswers": [
+                "verabrede"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "verabreden; present tense; the visible subject is ich"
+              },
+              "choices": [
+                "verabrede",
+                "verabredet",
+                "verabreden",
+                "verabredest"
+              ]
+            },
+            "newValue": {
+              "answer": "organisiere",
+              "acceptedAnswers": [
+                "organisiere"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "organisieren; present tense; the visible subject is ich"
+              },
+              "choices": [
+                "organisiere",
+                "organisiert",
+                "organisieren",
+                "organisierst"
+              ]
+            },
+            "reason": "coupled synthesis blank; segments unchanged and reconstruct"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/2/build/chunks",
+            "oldValue": [
+              "Da",
+              "konzentriertes Arbeiten",
+              "zu Hause",
+              "leichter fällt",
+              "als im Großraumbüro,"
+            ],
+            "newValue": [
+              "Da",
+              "konzentriertes Arbeiten zu Hause",
+              "leichter",
+              "fällt",
+              "als im Großraumbüro,"
+            ],
+            "reason": "IR-02: close the valid 'Da zu Hause konzentriertes Arbeiten' order; five chunks, focus 10 tokens"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/3/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Das stimmt, aber"
+            ],
+            "newValue": [
+              "Das stimmt, aber",
+              "Das stimmt aber"
+            ],
+            "reason": "accept comma-less typed frame"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/4/terms/2/base/en",
+            "oldValue": "advantage; preference in den Vorzug geben",
+            "newValue": "advantage; in jemandem oder etwas den Vorzug geben: to favour, to prefer",
+            "reason": "garbled gloss"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/5/build/chunks",
+            "oldValue": [
+              "zumal",
+              "die App",
+              "meine Ausgaben",
+              "erfasst",
+              "und keine zusätzlichen Gebühren",
+              "verlangt."
+            ],
+            "newValue": [
+              "zumal die App",
+              "meine Ausgaben",
+              "erfasst",
+              "und keine zusätzlichen Gebühren",
+              "verlangt."
+            ],
+            "reason": "IR-03 adapted: subject bound to the connector, five natural chunks, speak tokens zumal/erfasst/Gebühren remain in focus"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/6/build/chunks",
+            "oldValue": [
+              "während",
+              "der Kurs",
+              "mich zwingt,",
+              "spontan",
+              "auf andere Menschen",
+              "zu reagieren."
+            ],
+            "newValue": [
+              "während",
+              "der Kurs",
+              "mich zwingt,",
+              "spontan auf andere Menschen",
+              "zu reagieren."
+            ],
+            "reason": "IR-04: adverb position no longer free; five chunks"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/7/terms/1/targetText",
+            "oldValue": "Dennoch",
+            "newValue": "dennoch",
+            "reason": "lemma casing consistent with L5/L10; avoids duplicate TTS row"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/8/build/chunks",
+            "oldValue": [
+              "andererseits",
+              "wäre",
+              "die Entfernung",
+              "zu meinem vertrauten Umfeld",
+              "eine spürbare Einschränkung"
+            ],
+            "newValue": [
+              "andererseits",
+              "wäre die Entfernung",
+              "zu meinem vertrauten Umfeld",
+              "eine spürbare Einschränkung",
+              "im Alltag."
+            ],
+            "reason": "IR-05 adapted: verb bound to its subject, period fixes im Alltag last; voiced text unchanged; focus 12 tokens"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/8/build/frameSuffix",
+            "oldValue": " im Alltag.",
+            "newValue": "",
+            "reason": "im Alltag moved into chunks; reconstruction unchanged"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/8/build/distractors",
+            "oldValue": [
+              "die Nähe",
+              "eine deutliche Entlastung"
+            ],
+            "newValue": [
+              "wäre die Nähe",
+              "eine deutliche Entlastung"
+            ],
+            "reason": "distractor must compete with the new chunk 'wäre die Entfernung'; contradicts shown intent"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Das stimmt, aber"
+            ],
+            "newValue": [
+              "Das stimmt, aber",
+              "Das stimmt aber"
+            ],
+            "reason": "accept comma-less typed frame"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/9/dialogue/1/targetText",
+            "oldValue": "Da sichere Schulwege Vorrang haben, fällt meine Abwägung zugunsten des Radwegs aus, während zusätzliche Parkplätze den Verkehr vor dem Schulhaus erhöhen.",
+            "newValue": "Da sichere Schulwege Vorrang haben, fällt meine Abwägung zugunsten des Radwegs aus, während zusätzliche Parkplätze den Verkehr vor der Schule erhöhen.",
+            "reason": "regional neutrality (Schulhaus is southern/CH/AT); 21 tokens"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/9/build/frameSuffix",
+            "oldValue": " während zusätzliche Parkplätze den Verkehr vor dem Schulhaus erhöhen.",
+            "newValue": " während zusätzliche Parkplätze den Verkehr vor der Schule erhöhen.",
+            "reason": "coupled build reconstruction"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/9/recall/after",
+            "oldValue": " des Radwegs aus, während zusätzliche Parkplätze den Verkehr vor dem Schulhaus erhöhen.",
+            "newValue": " des Radwegs aus, während zusätzliche Parkplätze den Verkehr vor der Schule erhöhen.",
+            "reason": "coupled recall reconstruction"
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/9/pattern/examples/0/targetText",
+            "oldValue": "Da sichere Schulwege Vorrang haben, fällt meine Abwägung zugunsten des Radwegs aus, während zusätzliche Parkplätze den Verkehr vor dem Schulhaus erhöhen.",
+            "newValue": "Da sichere Schulwege Vorrang haben, fällt meine Abwägung zugunsten des Radwegs aus, während zusätzliche Parkplätze den Verkehr vor der Schule erhöhen.",
+            "reason": "pattern example must equal you1"
+          }
+        ],
+        "finalChecks": [
+          "Reconstruction after edits verified by hand: L2 prefix+chunks = new you1 (focus 10 tokens, chunks ≤3 tokens), L2 recall before+answer+after = new you1, L2 cloze segments+blanks = unchanged you2, L2 synthesis = new you3; L3 chunks join = unchanged you1 (focus 10); L6 chunks join = unchanged you1 (focus 11); L7 (focus 10); L9 prefix+chunks+'' = unchanged you1 (focus 12, max 12); L10 build/recall/pattern example equal the new you1.",
+          "No permutation of any edited chip set yields an unmarked, meaning-preserving alternative: L2 relative clause fixed after Zeitersparnis, 'und Staus.' final; L3/L6/L9 verb or subject bound, comma/period chunks final; L7 adverb grouped.",
+          "Chips ∪ distractors distinct after normalization in L2, L3, L6, L7, L9; each distractor is grammatical only with a meaning that contradicts the visible base.",
+          "Speak tokens untouched and still whole tokens with ≥2 in focus: L2 Zeitersparnis/schrumpft/Parkplatzsuche, L3 konzentriertes/leichter/Großraumbüro, L6 zumal/erfasst/Gebühren, L7 während/zwingt/reagieren, L9 andererseits/Entfernung/Einschränkung, L10 Schulwege/Abwägung/zugunsten.",
+          "Trophies, familyKeys, surfaces, turnIndexes and examples unchanged for all ten lessons; L2 surface Zeitersparnis still in turn 1; no term count changed (L2 'Ich tendiere zu', 'Zeitersparnis', 'Fahrgemeinschaft' still present).",
+          "Lengths after edits inside rail bounds (L2 you1 17, you3 14; L10 you1 21); no digits, double spaces or edge whitespace introduced; NFC plain text only.",
+          "Codex applies exactly these 27 pointer edits and re-runs validateGermanB2Draft with the same spec/ledger fingerprints; status stays draft, review flags false, verdict pending, reviewers empty, nativeStatus unreviewed; this report is review evidence outside the file.",
+          "Licensing recorded for the path spec notes: long-carrier introduction via pattern+term (L8), P1 B2-22 boundary = B1 rows + earlier P1 lessons, choice/build standard as defined in P1-AR-03, situation Du as instructional address.",
+          "No runtime, database, TTS, provider or activation action is authorized or implied by this arbitration."
+        ]
+      }
+    },
+    {
+      "rawEvidenceFile": "B2_GERMAN_P1_L9_REPAIR_RAW.json",
+      "rawEvidenceSha256": "ec461e7495fc8acfe60b492625a9a0f242500b54526d62cc4181dddf2879bc79",
+      "review": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "edits": [
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/8/build/framePrefix",
+            "oldValue": "Einerseits gewinne ich durch den Umzug Zeit, ",
+            "newValue": "Einerseits gewinne ich durch den Umzug Zeit, andererseits ",
+            "reason": "Move the connector into the fixed frame so the focus drops to 12 lexical tokens (wäre die Entfernung zu meinem vertrauten Umfeld eine spürbare Einschränkung im Alltag = 12); the einerseits/andererseits pair is already the pattern highlight and stays visible as frame, while Entfernung and Einschränkung keep ≥2 speakRequired tokens in the focus."
+          },
+          {
+            "file": "german-b2-p1.json",
+            "jsonPointer": "/lessons/8/build/chunks",
+            "oldValue": [
+              "andererseits",
+              "wäre die Entfernung",
+              "zu meinem vertrauten Umfeld",
+              "eine spürbare Einschränkung",
+              "im Alltag."
+            ],
+            "newValue": [
+              "wäre die Entfernung",
+              "zu meinem",
+              "vertrauten Umfeld",
+              "eine spürbare Einschränkung",
+              "im Alltag."
+            ],
+            "reason": "Keeps 5 chunks (each 1–4 tokens) after removing the connector by splitting the dative phrase into preposition+determiner and adjective+noun. 'wäre die Entfernung' binds the subject directly to the verb, so the predicative nominal 'eine spürbare Einschränkung' can no longer be fronted before the subject (the accepted predicate-fronting alternate is closed); 'im Alltag.' carries the full stop and is forced last; the only other reordering ('…Einschränkung zu meinem vertrauten Umfeld im Alltag') misattaches the PP and is not native. prefix+chunks.join(' ')+suffix equals the dialogue[1] turn exactly; distractors 'wäre die Nähe' and 'eine deutliche Entlastung' remain distinct from all chips and yield semantically wrong sentences."
+          }
+        ],
+        "checks": []
+      }
+    }
+  ],
+  "independentResolution": {
+    "verdict": "PASS",
+    "chains": [
+      {
+        "file": "B2_GERMAN_P1_FABLE_REVIEW_RAW.json",
+        "editCount": 27,
+        "allOldValuesMatched": true
+      },
+      {
+        "file": "B2_GERMAN_P1_L9_REPAIR_RAW.json",
+        "editCount": 2,
+        "allOldValuesMatched": true
+      }
+    ],
+    "orderedReplayExactlyEqualsFinalJson": true,
+    "unexpectedChanges": 0,
+    "rootFieldsUnchanged": true,
+    "changedLessons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+}

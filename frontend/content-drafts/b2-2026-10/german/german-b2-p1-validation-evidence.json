@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/german/german-b2-p1.json": "2e80dcbc015063d2baac21873de7146b0136ebcc83a6d69bdaafb3b14a12fbe3"
+  },
+  "scope": "Exact offline content and local TTS preparation only; not native-human certification or publication approval.",
+  "kind": "structuralValidation",
+  "validatorSha256": "d2eb15bc692a5191bfe00c2f8bb8fd52cbfed2be7e2a4112034d52d453263fa0",
+  "contractSha256": "fd1995825fcf6c1a2af74d31ea6ef59225b2862ea99b60a21a6b9d0153cb8bbb",
+  "command": "npx tsx ../../tmp/V4_EXPANSION_20261003/validate-reviewed-german-b2.mjs",
+  "workingDirectory": "orchestrator/frontend",
+  "validator": "validateGermanB2Draft",
+  "lessons": 10,
+  "turns": 60,
+  "pathSpecSha256": "8fca9baa36cab59663e50b6c827124c34cbfab109f75fccf798cda2a5aa5ffaa",
+  "ledgerSha256": "a9b4baebe7c771266a3553c172103cee1d0325d7aac097dfaa4eb924606914a6",
+  "confirmation": {
+    "verdict": "PASS",
+    "command": "./node_modules/.bin/tsx.cmd ../../tmp/V4_EXPANSION_20261003/validate-reviewed-german-b2.mjs",
+    "workingDirectory": "D:/CODING/ResonanceTEST/orchestrator/frontend",
+    "validator": "validateGermanB2Draft",
+    "lessons": 10,
+    "turns": 60,
+    "reportedSha256": "2e80dcbc015063d2baac21873de7146b0136ebcc83a6d69bdaafb3b14a12fbe3",
+    "invocationNote": "Direct node invocation initially failed because native Node could not resolve an extensionless TypeScript import. The existing local tsx runner then executed the actual validator successfully; no code or dependencies were changed."
+  }
+}
