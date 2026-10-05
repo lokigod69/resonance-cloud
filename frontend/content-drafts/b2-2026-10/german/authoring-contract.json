@@ -1,0 +1,887 @@
+{
+  "schemaVersion": "b2-authoring-contract-1",
+  "status": "design-draft",
+  "date": "2026-10-05",
+  "scope": "Completes the recovered B2 design (spine, rails, rules B2-01..23, rubric, drafting order, runtime list, TTS policy are kept and not repeated). Adds the authoring contract, field reference, exemplar, id policy, offline steps, contradiction fixes and the German B2 P1–P2 spec.",
+  "episodeContract": {
+    "turns": "dialogue has exactly 6 turns, index 0..5. 0 them opener (states the situation, contains the hook) · 1 you1 opening move (build target, recall target, speak turnIndex 1) · 2 them challenge (objection, counter-example, precision request, offer/refusal or constraint; challenge cue or ends with ?) · 3 you2 answering move (cloze target, speak 3) · 4 them steer (changes the task: bottom line, edge case, final condition, summary, audience) · 5 you3 closing move (synthesis target, speak 5)",
+    "moveSlots": "you1 ∈ path moveWhitelist (any whitelisted move, no subtraction); you2 ∈ {concede,rebut,clarify,explain,compare,counteroffer}; you3 ∈ {conclude,propose,summarize,counteroffer,relay,request}; the three you moves are pairwise distinct",
+    "registerPlan": "constant: all three you registers equal; shift: you1 = you2 ≠ you3, shiftAtTurn fixed 5, only episodeShape relay; interlocutor B speaks turn 4 only",
+    "lengths": "rail unit × lengthScale, rounded: them 6–20, you1 14–26, build focus span 7–12, you2 12–24, you3 10–22",
+    "joiners": {
+      "rule": "joiner is a per-language constant from the rail table; space-joined rails ' ' (U+0020); Japanese '' (empty)",
+      "frame": "build.framePrefix and build.frameSuffix carry their boundary whitespace themselves ('…teurer, '); chunks never carry edge whitespace; for ja both are empty-joined so no whitespace anywhere",
+      "reconstruct": {
+        "build": "NFC(framePrefix + chunks.join(joiner) + frameSuffix) === NFC(dialogue[1].targetText)",
+        "cloze": "segments.map(s => s.kind==='text' ? s.text : blanks[s.index].answer).join('') === dialogue[3].targetText; synthesis identical for dialogue[5]",
+        "recall": "before + answer + after === dialogue[1].targetText",
+        "alternate": "same three rules with alternates[g].text / alternates[g].chunks / alternates[g].blankAnswers substituted"
+      }
+    },
+    "authority": "any rule here supersedes the recovered rules where it names a rule number; otherwise recovered rules stand"
+  },
+  "fieldReference": {
+    "legend": {
+      "S": "string",
+      "N": "integer",
+      "Bo": "boolean",
+      "B": "base text object: {en:S} when targetLanguage is German, {de:S} when English, {de:S,en:S} otherwise; situation is always {de:S,en:S}",
+      "E[...]": "string restricted to the listed values",
+      "[T]": "array of T",
+      "T?": "optional"
+    },
+    "root": {
+      "schemaVersion": "N (1)",
+      "status": "E[draft,reviewed,frozen]",
+      "targetLanguage": "S (registry name)",
+      "targetLanguageCode": "S (languageCodeMap value)",
+      "authoredBaseLanguage": "S",
+      "level": "E[B2]",
+      "pathNumber": "N 1..10",
+      "slug": "S ASCII kebab, immutable after freeze",
+      "pathTitle": "B",
+      "pathFunction": "B",
+      "specRef": "{pathSpec:S path, pathSpecSha256:S, ledger:S path, ledgerSha256:S}",
+      "authoring": "{source:S model id, runId:S, date:S ISO}",
+      "pathId": "S? only after freeze",
+      "lessons": "[lesson] exactly 10; the validator accepts length 1 only with --fixture, emitting warning B2-FIXTURE-PARTIAL which cannot be acknowledged in a draft intended for freeze",
+      "freeze": "{frozenAt:S ISO, registrySha256:S, validatorVersion:S}? only after freeze",
+      "additionalKeys": "none: the zod mirror is strict at every object; authoring notes, self-checks and arbitration commentary live outside the draft file"
+    },
+    "lesson": {
+      "lessonNumber": "N 1..10",
+      "slug": "S ASCII, unique in language B2",
+      "lessonId": "S? only after freeze",
+      "title": "B",
+      "situation": "{de:S,en:S}",
+      "episodeShape": "E[challenge,precision,dispute,relay,copilot]",
+      "registerPlan": "{mode:E[constant,shift], registers:[S] 3 rail register values, shiftAtTurn:N? 5}",
+      "interlocutors": "[{id:S, role:B, voiceRole:E[A,B]}] 1, or 2 when relay",
+      "speakerGender": "E[neutral,marked]",
+      "canonicalGender": "E[f,m]? required when marked",
+      "sceneCaption": "B (contains dialogue[0].targetText verbatim)",
+      "dialogue": "[turn] 6",
+      "build": "build",
+      "cloze": "cloze",
+      "synthesis": "cloze (1–2 blanks)",
+      "recall": "recall",
+      "pattern": "pattern",
+      "terms": "[term] 8–10",
+      "speak": "[speakTarget] 3",
+      "trophy": "trophy",
+      "review": "review"
+    },
+    "turn": {
+      "speaker": "E[them,you]",
+      "targetText": "S NFC",
+      "base": "B",
+      "interlocutorId": "S? required on them",
+      "move": "E[compare,position,reason,concede,rebut,conclude,explain,clarify,summarize,hypothesize,propose,request,counteroffer,invite,relay]? required on you",
+      "register": "S? rail register value, required on you",
+      "alternates": "{f:{text:S, chunks:[S]?, blankAnswers:[S]?}, m:{...}}? only when marked and this you turn is flagged"
+    },
+    "build": {
+      "framePrefix": "S may be empty",
+      "chunks": "[S] 5–8, each 1–4 units",
+      "distractors": "[S] exactly 2",
+      "frameSuffix": "S may be empty"
+    },
+    "cloze": {
+      "segments": "[{kind:E[text],text:S} | {kind:E[blank],index:N}] text segments may be empty strings, blank indices 0..blanks-1 each once, in order",
+      "blanks": "[blank] 2–4 (synthesis 1–2)",
+      "moveBlankIndex": "N"
+    },
+    "blank": {
+      "answer": "S",
+      "acceptedAnswers": "[S] includes answer",
+      "kind": "E[connector,frame,form,lexical]",
+      "cue": "B? required iff kind form",
+      "choices": "[S]? exactly 4 distinct after rail normalization, exactly one accepted; at most one blank per cloze carries choices"
+    },
+    "recall": {
+      "before": "S",
+      "answer": "S 1–3 units",
+      "acceptedAnswers": "[S]",
+      "after": "S",
+      "fallbackChoices": "[S] 4"
+    },
+    "pattern": {
+      "moveType": "S one of the three you moves",
+      "label": "B",
+      "rule": "B one sentence, no metalanguage beyond the label",
+      "examples": "[{targetText:S, base:B, highlights:[S] contiguous substrings}] 2–3, ≥1 equals a you turn"
+    },
+    "term": {
+      "targetText": "S occurs verbatim (folded) in dialogue or a pattern example",
+      "lemma": "S? when targetText is inflected",
+      "kind": "E[connector,frame,noun,verb,adjective,adverb,phrase]",
+      "base": "B",
+      "acceptedAnswers": "[S]? includes targetText",
+      "reading": "S? required for Japanese"
+    },
+    "speakTarget": {
+      "turnIndex": "E[1,3,5] (0-based dialogue index)",
+      "requiredTokens": "[S] 2–4 distinct whole units of that turn",
+      "profile": "E[b2-long,b2-short]"
+    },
+    "trophy": {
+      "lemma": "S single unit, equals ledger entry",
+      "familyKey": "S",
+      "surface": "S whole unit of dialogue[turnIndex] (ja/ko substring)",
+      "turnIndex": "N 0..5",
+      "pos": "E[noun,verb,adjective,adverb,connector]",
+      "reading": "S? Japanese",
+      "example": "{targetText:S contains surface or lemma, base:B}",
+      "base": "B"
+    },
+    "review": {
+      "flags": "{argumentCoherent,challengeGenuine,steerGenuine,b2NotInflatedB1,registerNative,genderClaimVerified,distractorsNotAlsoCorrect,patternTruthful,baseTextsAccurate,ttsReadable,carriersStaged,noFiller: Bo}",
+      "verdict": "E[pending,pass,fix,reject]",
+      "failingCriteria": "[N]",
+      "reviewers": "[{role:E[validator,codex,fable,native-model,native-human],id:S,date:S}]",
+      "nativeStatus": "E[unreviewed,model-reviewed,human-reviewed] (model-reviewed only with a native-model reviewer row; human-reviewed only with a native-human reviewer row; verdict pending implies unreviewed)",
+      "acknowledgedWarnings": "[{code:S,reason:S}]"
+    }
+  },
+  "exemplar": {
+    "schemaVersion": 1,
+    "status": "draft",
+    "targetLanguage": "German",
+    "targetLanguageCode": "de-DE",
+    "authoredBaseLanguage": "English",
+    "level": "B2",
+    "pathNumber": 1,
+    "slug": "abwaegen",
+    "pathTitle": {
+      "en": "Weighing options"
+    },
+    "pathFunction": {
+      "en": "Compare two or three options and recommend one"
+    },
+    "specRef": {
+      "pathSpec": "specs/german/b2-path-spec.json",
+      "pathSpecSha256": "TBD",
+      "ledger": "specs/german/b2-trophy-ledger.json",
+      "ledgerSha256": "TBD"
+    },
+    "authoring": {
+      "source": "claude-fable-5-1",
+      "runId": "b2-de-p1-exemplar",
+      "date": "2026-10-05"
+    },
+    "lessons": [
+      {
+        "lessonNumber": 1,
+        "slug": "miete-gegen-pendelzeit",
+        "title": {
+          "en": "Rent versus commute"
+        },
+        "situation": {
+          "de": "Sie besichtigen eine teurere Wohnung im Zentrum. Der Makler vergleicht sie mit einer günstigeren am Stadtrand.",
+          "en": "You are viewing a pricier flat in the centre. The letting agent compares it with a cheaper one on the outskirts."
+        },
+        "episodeShape": "challenge",
+        "registerPlan": {
+          "mode": "constant",
+          "registers": [
+            "Sie",
+            "Sie",
+            "Sie"
+          ]
+        },
+        "interlocutors": [
+          {
+            "id": "makler",
+            "role": {
+              "en": "letting agent"
+            },
+            "voiceRole": "A"
+          }
+        ],
+        "speakerGender": "neutral",
+        "sceneCaption": {
+          "en": "The agent says: „Die Wohnung im Zentrum kostet zwar mehr, aber Sie sparen sich jeden Tag eine Stunde Pendeln.“ You weigh money against time."
+        },
+        "dialogue": [
+          {
+            "speaker": "them",
+            "interlocutorId": "makler",
+            "targetText": "Die Wohnung im Zentrum kostet zwar mehr, aber Sie sparen sich jeden Tag eine Stunde Pendeln.",
+            "base": {
+              "en": "The flat in the centre does cost more, but you save yourself an hour of commuting every day."
+            }
+          },
+          {
+            "speaker": "you",
+            "move": "compare",
+            "register": "Sie",
+            "targetText": "Einerseits ist die zentrale Wohnung teurer, andererseits spare ich wertvolle Zeit, die ich sonst im Zug verbringen würde.",
+            "base": {
+              "en": "On the one hand the central flat is dearer; on the other I save valuable time I would otherwise spend on the train."
+            }
+          },
+          {
+            "speaker": "them",
+            "interlocutorId": "makler",
+            "targetText": "Aber ist Ihnen die Zeit wirklich zweihundert Euro im Monat wert?",
+            "base": {
+              "en": "But is the time really worth two hundred euros a month to you?"
+            }
+          },
+          {
+            "speaker": "you",
+            "move": "concede",
+            "register": "Sie",
+            "targetText": "Zugegeben, der Aufpreis ist hoch, aber je länger ich pendle, desto weniger Energie bleibt mir für den Abend.",
+            "base": {
+              "en": "Granted, the extra cost is high, but the longer I commute, the less energy I have left for the evening."
+            }
+          },
+          {
+            "speaker": "them",
+            "interlocutorId": "makler",
+            "targetText": "Gut, und wie entscheiden Sie sich unterm Strich: nehmen oder weitersuchen?",
+            "base": {
+              "en": "Fine, and what is your bottom line: take it or keep looking?"
+            }
+          },
+          {
+            "speaker": "you",
+            "move": "conclude",
+            "register": "Sie",
+            "targetText": "Insgesamt überwiegt für mich der Zeitgewinn, deshalb nehme ich die Wohnung im Zentrum.",
+            "base": {
+              "en": "All in all the time saved outweighs the cost for me, so I will take the flat in the centre."
+            }
+          }
+        ],
+        "build": {
+          "framePrefix": "Einerseits ist die zentrale Wohnung teurer, ",
+          "chunks": [
+            "andererseits",
+            "spare ich",
+            "wertvolle Zeit,",
+            "die ich sonst",
+            "im Zug",
+            "verbringen würde."
+          ],
+          "distractors": [
+            "andernfalls",
+            "verbringe ich"
+          ],
+          "frameSuffix": ""
+        },
+        "cloze": {
+          "segments": [
+            {
+              "kind": "blank",
+              "index": 0
+            },
+            {
+              "kind": "text",
+              "text": ", der Aufpreis ist hoch, aber je länger ich "
+            },
+            {
+              "kind": "blank",
+              "index": 1
+            },
+            {
+              "kind": "text",
+              "text": ", "
+            },
+            {
+              "kind": "blank",
+              "index": 2
+            },
+            {
+              "kind": "text",
+              "text": " weniger Energie bleibt mir für den Abend."
+            }
+          ],
+          "blanks": [
+            {
+              "answer": "Zugegeben",
+              "acceptedAnswers": [
+                "Zugegeben"
+              ],
+              "kind": "frame"
+            },
+            {
+              "answer": "pendle",
+              "acceptedAnswers": [
+                "pendle"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "pendeln, ich, present"
+              }
+            },
+            {
+              "answer": "desto",
+              "acceptedAnswers": [
+                "desto"
+              ],
+              "kind": "connector",
+              "choices": [
+                "desto",
+                "deshalb",
+                "damit",
+                "sonst"
+              ]
+            }
+          ],
+          "moveBlankIndex": 0
+        },
+        "synthesis": {
+          "segments": [
+            {
+              "kind": "blank",
+              "index": 0
+            },
+            {
+              "kind": "text",
+              "text": " überwiegt für mich der Zeitgewinn, "
+            },
+            {
+              "kind": "blank",
+              "index": 1
+            },
+            {
+              "kind": "text",
+              "text": " nehme ich die Wohnung im Zentrum."
+            }
+          ],
+          "blanks": [
+            {
+              "answer": "Insgesamt",
+              "acceptedAnswers": [
+                "Insgesamt"
+              ],
+              "kind": "frame"
+            },
+            {
+              "answer": "deshalb",
+              "acceptedAnswers": [
+                "deshalb"
+              ],
+              "kind": "connector",
+              "choices": [
+                "deshalb",
+                "obwohl",
+                "sondern",
+                "damit"
+              ]
+            }
+          ],
+          "moveBlankIndex": 0
+        },
+        "recall": {
+          "before": "Einerseits ist die zentrale Wohnung teurer, ",
+          "answer": "andererseits",
+          "acceptedAnswers": [
+            "andererseits"
+          ],
+          "after": " spare ich wertvolle Zeit, die ich sonst im Zug verbringen würde.",
+          "fallbackChoices": [
+            "andererseits",
+            "einerseits",
+            "sondern",
+            "obwohl"
+          ]
+        },
+        "pattern": {
+          "moveType": "compare",
+          "label": {
+            "en": "Two sides"
+          },
+          "rule": {
+            "en": "Open the first side with einerseits and the second with andererseits; zwar … aber works the same way when you want to concede the first side."
+          },
+          "examples": [
+            {
+              "targetText": "Einerseits ist die zentrale Wohnung teurer, andererseits spare ich wertvolle Zeit, die ich sonst im Zug verbringen würde.",
+              "base": {
+                "en": "On the one hand the central flat is dearer; on the other I save valuable time I would otherwise spend on the train."
+              },
+              "highlights": [
+                "Einerseits",
+                "andererseits"
+              ]
+            },
+            {
+              "targetText": "Einerseits ist das Büro näher, andererseits ist die Miete dort höher.",
+              "base": {
+                "en": "On the one hand the office is closer; on the other the rent there is higher."
+              },
+              "highlights": [
+                "Einerseits",
+                "andererseits"
+              ]
+            },
+            {
+              "targetText": "Zwar ist der Weg kürzer, aber die Wohnung ist kleiner.",
+              "base": {
+                "en": "The journey is shorter, admittedly, but the flat is smaller."
+              },
+              "highlights": [
+                "Zwar",
+                "aber"
+              ]
+            }
+          ]
+        },
+        "terms": [
+          {
+            "targetText": "einerseits",
+            "kind": "connector",
+            "base": {
+              "en": "on the one hand"
+            }
+          },
+          {
+            "targetText": "andererseits",
+            "kind": "connector",
+            "base": {
+              "en": "on the other hand"
+            }
+          },
+          {
+            "targetText": "zugegeben",
+            "kind": "frame",
+            "base": {
+              "en": "granted, admittedly"
+            }
+          },
+          {
+            "targetText": "desto",
+            "kind": "connector",
+            "base": {
+              "en": "second half of je … desto: the more … the less"
+            }
+          },
+          {
+            "targetText": "insgesamt",
+            "kind": "connector",
+            "base": {
+              "en": "all in all"
+            }
+          },
+          {
+            "targetText": "der Aufpreis",
+            "kind": "noun",
+            "base": {
+              "en": "the extra cost, surcharge"
+            }
+          },
+          {
+            "targetText": "der Zeitgewinn",
+            "kind": "noun",
+            "base": {
+              "en": "the time saved"
+            }
+          },
+          {
+            "targetText": "überwiegt",
+            "lemma": "überwiegen",
+            "kind": "verb",
+            "base": {
+              "en": "outweighs"
+            }
+          },
+          {
+            "targetText": "wertvolle",
+            "lemma": "wertvoll",
+            "kind": "adjective",
+            "base": {
+              "en": "valuable"
+            }
+          },
+          {
+            "targetText": "sparen",
+            "kind": "verb",
+            "base": {
+              "en": "to save"
+            }
+          }
+        ],
+        "speak": [
+          {
+            "turnIndex": 1,
+            "requiredTokens": [
+              "andererseits",
+              "wertvolle",
+              "verbringen"
+            ],
+            "profile": "b2-long"
+          },
+          {
+            "turnIndex": 3,
+            "requiredTokens": [
+              "Zugegeben",
+              "desto",
+              "Energie"
+            ],
+            "profile": "b2-long"
+          },
+          {
+            "turnIndex": 5,
+            "requiredTokens": [
+              "Insgesamt",
+              "überwiegt",
+              "Zeitgewinn"
+            ],
+            "profile": "b2-short"
+          }
+        ],
+        "trophy": {
+          "lemma": "überwiegen",
+          "familyKey": "überwiegen",
+          "surface": "überwiegt",
+          "turnIndex": 5,
+          "pos": "verb",
+          "example": {
+            "targetText": "Für mich überwiegen die Vorteile der kurzen Wege.",
+            "base": {
+              "en": "For me the advantages of short distances outweigh the rest."
+            }
+          },
+          "base": {
+            "en": "to outweigh, to predominate"
+          }
+        },
+        "review": {
+          "flags": {
+            "argumentCoherent": false,
+            "challengeGenuine": false,
+            "steerGenuine": false,
+            "b2NotInflatedB1": false,
+            "registerNative": false,
+            "genderClaimVerified": false,
+            "distractorsNotAlsoCorrect": false,
+            "patternTruthful": false,
+            "baseTextsAccurate": false,
+            "ttsReadable": false,
+            "carriersStaged": false,
+            "noFiller": false
+          },
+          "verdict": "pending",
+          "failingCriteria": [],
+          "reviewers": [],
+          "nativeStatus": "unreviewed",
+          "acknowledgedWarnings": []
+        }
+      }
+    ]
+  },
+  "idPolicy": {
+    "draftFiles": "content/guided/drafts/<languageSlug>/b2/p<NN>-<slug>.json; the file carries no pathId or lessonId while status is draft or reviewed",
+    "pathId": "<languageSlug>-b2-practical-<pathNumber>; practical kept for continuity with the live B1 ids (ids are learner-invisible; a later rename would break audio keys and progress rows)",
+    "lessonId": "generated by a pure formatter formatGuidedLessonId(languageSlug, level, pathNumber, lessonNumber, lessonSlug) = `${languageSlug}-${level}-practical-${pathNumber}-${String((pathNumber-1)*10+lessonNumber).padStart(3,'0')}-${lessonSlug}` (e.g. german-b2-practical-2-011-rechnung-weicht-ab). The B1 factory is private and is not imported. The freeze script's test applies the same formatter with level b1 to every one of the 100 actual German B1 registry lessons and asserts byte equality with their frozen ids; any mismatch aborts the freeze. Frozen ids are never regenerated or changed",
+    "chunkTermIds": "c1..c8 in chunk order, t1..t10 in term order, assigned at compile, never authored",
+    "audioKeys": "<lessonId>/turn-<n>[.f|.m], <lessonId>/ex-<n>, <lessonId>/c<n>, <lessonId>/t<n>, <lessonId>/trophy; row key for dedupe = language + voiceRole + sha256(NFC text with its canonical spacing)",
+    "provenance": "root.authoring records the drafting model id and run id; review.reviewers records every reviewer row (roles only from the enum); freeze writes root.freeze = {frozenAt:S ISO, registrySha256:S, validatorVersion:S} and never adds a reviewer row",
+    "freeze": "only status reviewed, zero errors, zero unacknowledged warnings; writes pathId, lessonIds, root.freeze, status frozen and locks slug, pathNumber, every targetText and every id; later edits require a new lesson draft that supersedes by slug suffix -v2, never an in-place text change",
+    "existing": "frozen A1/A2/B1 ids and texts are never touched; the forbidden trophy set is computed from them, never edited"
+  },
+  "offlineImplementation": {
+    "steps": [
+      "1 scripts/export-trophy-corpus.ts: import GUIDED_LESSONS, emit specs/<slug>/forbidden-trophies.json per language = folded lemma, surface, familyKey of every active A1/A2/B1 trophy plus reviewed B1 drafts; record registrySha256",
+      "2 specs/german/b2-trophy-ledger.json: 100 rows {pathNumber, lessonNumber, lemma, familyKey, pos, reserve:[S]}; scripts/check-ledger.ts rejects any row in the forbidden set or duplicated familyKey and swaps in the first clean reserve, printing the swap",
+      "3 specs/german/b2-path-spec.json: per path {shapes, moveWhitelist, carriers:{move:[{text, fromLesson}]}, challengeCues, steerCues, registerDistribution, stopList, exclusiveCarriers}",
+      "4 scripts/validate-guided-draft-b2.ts: zod mirror of the field reference, rail table (unit, scale, joiner, registers, detectors, normalization), rules B2-01..23 as amended below; exits non-zero on error, prints warnings with codes",
+      "5 scripts/compile-guided-b2.ts: pure compile of a frozen file to the runtime shape, run twice and diffed in the test (B2-23)",
+      "6 fixtures: this exemplar plus one handwritten episode each for ja, ko, ceb, pl as schema fixtures; validator test asserts they pass and that twelve mutation fixtures fail with the expected codes",
+      "7 drafting: Codex drafts German P1 L1–L10 in one run, P2 in a second (cap 2–3 paths); validator + full read + adversarial rubric read + Fable arbitration; native accuracy remains model-reviewed until a native-human reviewer row exists",
+      "8 local TTS: runs for reviewed paths under the already-approved shared TTS cap, no new per-batch permission; dry-run cost estimate from the manifest, one live model call before the batch; stop and ask only if the estimate would exceed the shared cap; output stays local until integration"
+    ],
+    "notRequired": "no runtime, UI, server, database, Vercel or paid-API change for steps 1–7; no owner approval gate for drafts, re-drafts or local TTS of reviewed paths; owner decisions remain only on activation and on spend that would exceed the already-approved shared TTS cap"
+  },
+  "resolutions": {
+    "japaneseBoundaries": "Length is measured in letters (rail unit). Boundaries are not letters: every blank, chip and recall answer must start and end on a segmentation boundary that the author declares by the chunk list (build) or the segment list (cloze/synthesis/recall before/after). The validator checks only that no blank is letter-adjacent to another blank and that each chunk is 2–8 letters forming a bunsetsu-level unit; 'token boundary' in B2-10/12/15 reads 'unit boundary: token (space rails), eojeol (ko), declared segment (ja)'",
+    "germanTrophyMultiword": "Trophies are always one token (lemma, surface, familyKey). Two-part connectors (einerseits … andererseits, je … desto, zwar … aber) are never trophies; they are terms, each half a separate term when both must be learnable. The rail's 'aim zweiteilige Konnektoren' applies to terms and pattern highlights only; trophy.example may be a full sentence containing the single-token surface",
+    "genderAlternates": "B2-16 amended: marked lessons give alternates.f and alternates.m for every flagged you turn; the alternate whose key equals canonicalGender must equal the canonical surface (text, chunks, blank answers) and the other must differ; both reconstruct. canonicalGender alternates by lesson parity (f odd, m even) until a learner preference exists",
+    "koreanSpacing": "Spacing is not irrelevant. Canonical targetText carries standard 띄어쓰기 and is what TTS voices and what chunks join with ' '; only answer comparison is whitespace-stripped. A space inside an eojeol remains an error; a different valid spacing is accepted from the learner, never written back",
+    "browserFallback": "Browser speech is a degradation, not a publication guarantee. Activation of a path additionally requires an audio manifest coverage report: 100% of voiced rows present, or an explicit per-path acknowledgedWarning naming the missing rows and the reason. 'silent-safe' is removed from the TTS policy",
+    "uiLocales": "The product has twelve UI locales. Base texts are authored in de and en only (rail baseRule); the twelve base editions are generated from the reviewed draft by the existing base-edition loader before activation. The runtime item 'i18n keys ×3 locales' reads ×12; validation of generated editions is a separate check (every key present in all twelve)",
+    "b2BeforeB1": "A language's B2 may be drafted before its B1 is finished provided its ledger reserves B1 trophies first (B1 rows allocated and checked before any B2 row); recycling checks against B1 use the ledger rows, not live content; activation still waits for B1 active plus the twelve editions",
+    "nativeClaim": "review.nativeStatus is unreviewed until a native-model reviewer row exists, model-reviewed from then until a native-human reviewer row exists, for every language including German; no document or marketing text claims native certification",
+    "approvals": "Reversible drafts, re-drafts, validator runs and local TTS for reviewed paths need no owner question; owner decisions: activation per language, spend beyond the approved shared TTS cap, id-policy change"
+  },
+  "germanB2": {
+    "register": "Sie unless the interlocutor is a friend; neutral learner text throughout P1–P2 (no agent nouns about the speaker, no Partizip-als-Adjektiv about the speaker); every lesson speakerGender neutral",
+    "carriersStaged": {
+      "P1": {
+        "compare": [
+          "einerseits … andererseits (L1)",
+          "je … desto (L1)",
+          "zwar … aber (L2)",
+          "Komparativ + als (L3)",
+          "im Vergleich zu (L5)",
+          "während (L7)"
+        ],
+        "position": [
+          "ich tendiere zu (L2)",
+          "aus meiner Sicht (L4)"
+        ],
+        "reason": [
+          "da (L3)",
+          "zumal (L6)"
+        ],
+        "concede": [
+          "zugegeben (L1)",
+          "zwar … aber (L2)",
+          "das stimmt, aber (L4)"
+        ],
+        "rebut": [
+          "dennoch (L5)",
+          "das ändert nichts daran, dass (L8)"
+        ],
+        "conclude": [
+          "insgesamt (L1)",
+          "unterm Strich (L2)",
+          "deshalb empfehle ich (L3)",
+          "alles in allem (L6)"
+        ]
+      },
+      "P2": {
+        "explain": [
+          "da (L1)",
+          "sodass (L1)",
+          "deshalb (L1)",
+          "Passiv mit Modalverb (L2)",
+          "Nominalisierung eine Entscheidung treffen (L3)",
+          "infolge (L5)",
+          "dadurch, dass (L7)"
+        ],
+        "reason": [
+          "weil … nämlich (L2)",
+          "aufgrund (L4)"
+        ],
+        "clarify": [
+          "das heißt (L1)",
+          "genauer gesagt (L3)",
+          "um es kurz zu machen (L6)"
+        ],
+        "compare": [
+          "im Gegensatz zu (L4)"
+        ],
+        "summarize": [
+          "kurz gesagt (L2)",
+          "zusammengefasst (L5)"
+        ],
+        "conclude": [
+          "daraus folgt (L1)",
+          "letztlich (L4)"
+        ]
+      }
+    },
+    "P1": {
+      "slug": "abwaegen",
+      "lessons": [
+        {
+          "n": 1,
+          "slug": "miete-gegen-pendelzeit",
+          "them": "Makler",
+          "reg": "Sie",
+          "function": "Miete gegen Pendelzeit abwägen und sich entscheiden",
+          "trophy": "überwiegen",
+          "pos": "verb"
+        },
+        {
+          "n": 2,
+          "slug": "auto-oder-bahn",
+          "them": "Kollegin",
+          "reg": "Sie",
+          "function": "Auto gegen Bahn für den Arbeitsweg vergleichen",
+          "trophy": "Zeitersparnis",
+          "pos": "noun"
+        },
+        {
+          "n": 3,
+          "slug": "homeoffice-oder-buero",
+          "them": "Vorgesetzte",
+          "reg": "Sie",
+          "function": "Homeoffice gegen Präsenz abwägen und eine Regelung empfehlen",
+          "trophy": "Spielraum",
+          "pos": "noun"
+        },
+        {
+          "n": 4,
+          "slug": "kaufen-oder-leihen",
+          "them": "Verleihservice",
+          "reg": "Sie",
+          "function": "Kauf gegen Miete eines Geräts abwägen",
+          "trophy": "Verzicht",
+          "pos": "noun"
+        },
+        {
+          "n": 5,
+          "slug": "zwei-urlaubsplaene",
+          "them": "Freund",
+          "reg": "du",
+          "function": "Zwei Urlaubspläne gegeneinander abwägen",
+          "trophy": "Vorzug",
+          "pos": "noun"
+        },
+        {
+          "n": 6,
+          "slug": "bar-oder-app",
+          "them": "Ladeninhaberin",
+          "reg": "Sie",
+          "function": "Barzahlung gegen App-Zahlung vergleichen",
+          "trophy": "Mehrwert",
+          "pos": "noun"
+        },
+        {
+          "n": 7,
+          "slug": "kurs-oder-app",
+          "them": "Freundin",
+          "reg": "du",
+          "function": "Sprachkurs gegen Lern-App abwägen",
+          "trophy": "gegenüberstellen",
+          "pos": "verb"
+        },
+        {
+          "n": 8,
+          "slug": "zwei-jobangebote",
+          "them": "Mentor",
+          "reg": "Sie",
+          "function": "Zwei Stellenangebote vergleichen und eines wählen",
+          "trophy": "ausschlaggebend",
+          "pos": "adjective"
+        },
+        {
+          "n": 9,
+          "slug": "umziehen-oder-bleiben",
+          "them": "Nachbarin",
+          "reg": "Sie",
+          "function": "Stadtwechsel gegen Bleiben abwägen",
+          "trophy": "Einschränkung",
+          "pos": "noun"
+        },
+        {
+          "n": 10,
+          "slug": "eine-option-empfehlen",
+          "them": "Ausschuss",
+          "reg": "Sie",
+          "function": "Drei Optionen vergleichen und eine empfehlen",
+          "trophy": "Abwägung",
+          "pos": "noun",
+          "familyKey": "abwägen"
+        }
+      ]
+    },
+    "P2": {
+      "slug": "erklaeren-warum",
+      "lessons": [
+        {
+          "n": 1,
+          "slug": "rechnung-weicht-ab",
+          "them": "Steuerberaterin",
+          "reg": "Sie",
+          "function": "Erklären, warum eine Rechnung vom Angebot abweicht",
+          "trophy": "Abweichung",
+          "pos": "noun"
+        },
+        {
+          "n": 2,
+          "slug": "muelltrennung-erklaeren",
+          "them": "Neuzugezogener",
+          "reg": "Sie",
+          "function": "Die örtliche Mülltrennung Schritt für Schritt erklären",
+          "trophy": "aufschlüsseln",
+          "pos": "verb"
+        },
+        {
+          "n": 3,
+          "slug": "projekt-verzoegert",
+          "them": "Vorgesetzter",
+          "reg": "Sie",
+          "function": "Erklären, warum ein Projekt sich verzögert hat",
+          "trophy": "verzögern",
+          "pos": "verb"
+        },
+        {
+          "n": 4,
+          "slug": "bonusprogramm",
+          "them": "Freund",
+          "reg": "du",
+          "function": "Erklären, wie ein Bonusprogramm funktioniert",
+          "trophy": "nachvollziehen",
+          "pos": "verb"
+        },
+        {
+          "n": 5,
+          "slug": "anbieter-gewechselt",
+          "them": "Nachbar",
+          "reg": "Sie",
+          "function": "Begründen, warum man den Anbieter gewechselt hat",
+          "trophy": "Beweggrund",
+          "pos": "noun"
+        },
+        {
+          "n": 6,
+          "slug": "bussgeld-einspruch",
+          "them": "Kollegin",
+          "reg": "du",
+          "function": "Erklären, wie man gegen ein Bußgeld Einspruch einlegt",
+          "trophy": "Widerspruch",
+          "pos": "noun"
+        },
+        {
+          "n": 7,
+          "slug": "plan-gescheitert",
+          "them": "Freundin",
+          "reg": "du",
+          "function": "Erklären, warum ein Plan gescheitert ist",
+          "trophy": "Fehleinschätzung",
+          "pos": "noun"
+        },
+        {
+          "n": 8,
+          "slug": "terminvergabe",
+          "them": "Fachärztin",
+          "reg": "Sie",
+          "function": "Den Ablauf einer Terminvergabe erklären und präzisieren",
+          "trophy": "Abwicklung",
+          "pos": "noun"
+        },
+        {
+          "n": 9,
+          "slug": "leihrad-system",
+          "them": "Skeptiker",
+          "reg": "Sie",
+          "function": "Erklären, warum ein Leihradsystem sinnvoll ist",
+          "trophy": "Auswirkung",
+          "pos": "noun"
+        },
+        {
+          "n": 10,
+          "slug": "entscheidungskette",
+          "them": "Sachbearbeiter",
+          "reg": "Sie",
+          "function": "Eine Entscheidungskette nachzeichnen und begründen",
+          "trophy": "zurückführen",
+          "pos": "verb"
+        }
+      ]
+    },
+    "trophyLedgerStatus": {
+      "uniqueness": "20 lemmas distinct; familyKeys distinct (Abwägung keyed abwägen, no other abwägen family member used); none is an article, pronoun, Abtönungspartikel or auxiliary",
+      "forbiddenCheck": "VERIFIED 2026-10-05 against the 300 actual German A1/A2/B1 trophy surfaces supplied by root: 0 lemma collisions, 0 familyKey collisions for all 20 allocations (mechanical result []). Nearest neighbours reviewed and kept as distinct lemmas: Zeitersparnis vs forbidden Zeit (compound head), Vorzug/Verzicht vs Vorschlag, Abweichung vs none. No swap performed. Step 2 (check-ledger.ts) re-runs the same check against the live registry at freeze and remains binding",
+      "reserve": [
+        "Rentabilität",
+        "Gegenüberstellung",
+        "Aufwand",
+        "Auslöser",
+        "Zusammenhang",
+        "Voraussetzung",
+        "erheblich",
+        "beruhen"
+      ],
+      "likelyCollisions": "Auswirkung, Spielraum and the reserve rows Zusammenhang, Voraussetzung were checked against the 300 trophies: none present. Terms insgesamt and deshalb do appear as B1 trophies; they are recycled as terms/blanks only, never as B2 trophies"
+    }
+  },
+  "activation": "Not part of this response: runtime, UI, Supabase and Vercel changes stay in the recovered runtimeIntegrationChanges list, all still not started; progress persistence remains open and gates any B2 activation",
+  "exemplarSelfCheck": "Applies to exemplar (one-lesson fixture, not a path): them 16/11/11 tokens, you 18/18/13; focus span 12 tokens, 6 chunks + 2 distractors; cloze 3 blanks (frame, form with cue, connector with 4 choices), moveBlank 0 ∈ carriers[concede]; synthesis 2 blanks, moveBlank 0 ∈ carriers[conclude], deshalb recycled from B1; recall answer whole token with 4 choices of which only andererseits completes the construction; pattern example 1 equals you1; 10 terms; speak turn 1 has 3 tokens inside the span; trophy surface whole token of turn 5; no digits, no du-forms; neutral you turns"
+}
