@@ -101,7 +101,7 @@ export function validateB1Draft(value: unknown): B1Draft {
   }
   checkBases(draft, draft.targetLanguage)
   for (const [index, lesson] of draft.lessons.entries()) {
-    const label = `${draft.targetLanguage} P1 L${index + 1} ${lesson.slug}`
+    const label = `${draft.targetLanguage} P${draft.pathNumber} L${index + 1} ${lesson.slug}`
     const check = (condition: boolean, message: string) => expect(condition, `${label}: ${message}`)
     check(!slugs.has(lesson.slug), 'Duplicate slug'); slugs.add(lesson.slug)
     const youOne = lesson.dialogue[1].targetText
@@ -171,8 +171,9 @@ export function draftTtsLessons(draft: B1Draft) {
   const pathId = `${slug}-b1-practical-${draft.pathNumber}`
   return draft.lessons.map((lesson, index) => {
     const prefix = lesson.slug.split('-')[0]
+    const tierNumber = (draft.pathNumber - 1) * 10 + index + 1
     return {
-      id: `${pathId}-${String(index + 1).padStart(3, '0')}-${lesson.slug}`,
+      id: `${pathId}-${String(tierNumber).padStart(3, '0')}-${lesson.slug}`,
       pathId, lessonNumber: index + 1,
       vibeVariants: { bright: {
         corePhrase: { targetText: lesson.dialogue[1].targetText },

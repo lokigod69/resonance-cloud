@@ -59,6 +59,18 @@ for (const draft of drafts) {
   }
 }
 
+// Later draft paths must keep the shipped German tier-global ID convention.
+// Lesson numbers remain path-local because the player uses them for ordering.
+for (const pathNumber of [2, 10]) {
+  const projected = draftTtsLessons({ ...drafts[0], pathNumber })
+  const reference = GUIDED_LESSONS.filter(lesson => lesson.pathId === `german-b1-practical-${pathNumber}`)
+  assert.equal(reference.length, 10)
+  for (const [index, lesson] of projected.entries()) {
+    assert.equal(lesson.id.split('-')[4], reference[index].id.split('-')[4])
+    assert.equal(lesson.lessonNumber, reference[index].lessonNumber)
+  }
+}
+
 // These subject switches previously admitted the neighbour's person-form chip.
 // Keep explicit subjects: the cloze UI does not show the learner-answer gloss.
 const spanish = drafts.find(draft => draft.targetLanguage === 'Spanish')!

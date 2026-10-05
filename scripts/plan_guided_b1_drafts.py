@@ -54,24 +54,34 @@ def validate_audio_surfaces(lesson: dict) -> None:
         raise ValueError(f"{lesson.get('id')}: incomplete audio surfaces")
 
 
-def build_plan(snapshot: dict, *, model: str = "eleven_multilingual_v2") -> dict:
+def build_plan(snapshot: dict, *, model: str = "eleven_multilingual_v2", reviewed_scopes=None) -> dict:
     if model not in {"eleven_multilingual_v2", "eleven_v4"}:
         raise ValueError("Unsupported campaign model")
     settings = ({"stability": 0.5, "similarity_boost": 0.75}
                 if model == "eleven_v4" else dict(DEFAULT_VOICE_SETTINGS))
     model_label = "v4" if model == "eleven_v4" else "multiv2"
-    if snapshot.get("schemaVersion") != 1 or snapshot.get("status") != "draft":
-        raise ValueError("Expected a version 1 draft snapshot")
+    expected_version = 1 if reviewed_scopes is None else 2
+    if snapshot.get("schemaVersion") != expected_version or snapshot.get("status") != "draft":
+        raise ValueError("Expected a matching version draft snapshot")
     languages = snapshot.get("languages", [])
     selected = sorted(group.get("targetLanguage", "") for group in languages)
-    if not any(selected == sorted(scope) for scope in SUPPORTED_SCOPES):
-        raise ValueError("Expected exactly English, Spanish, and French or exactly Italian and Portuguese")
+    if reviewed_scopes is None:
+        if not any(selected == sorted(scope) for scope in SUPPORTED_SCOPES):
+            raise ValueError("Expected exactly English, Spanish, and French or exactly Italian and Portuguese")
+    else:
+        actual_scopes = [(g.get("targetLanguage"), g.get("pathNumber")) for g in languages]
+        if (not reviewed_scopes or actual_scopes != list(reviewed_scopes)
+                or len(set(actual_scopes)) != len(actual_scopes)
+                or any(target not in PROPOSALS or type(path) is not int or not 1 <= path <= 10
+                       for target, path in actual_scopes)):
+            raise ValueError("Explicit unique reviewed language/path scopes required")
     groups = []
     for group in languages:
         target = group["targetLanguage"]
         code, name, voice_id = PROPOSALS[target]
         slug = target.lower()
-        path_id = f"{slug}-b1-practical-1"
+        path_number = 1 if reviewed_scopes is None else group["pathNumber"]
+        path_id = f"{slug}-b1-practical-{path_number}"
         lessons = group["lessons"]
         if not re.fullmatch(r"[a-f0-9]{64}", group.get("sourceSha256", "")):
             raise ValueError(f"{target}: missing source fingerprint")
@@ -84,10 +94,15 @@ def build_plan(snapshot: dict, *, model: str = "eleven_multilingual_v2") -> dict
             raise ValueError(f"{target}: duplicate lesson IDs")
         if any(lesson["pathId"] != path_id or not lesson["id"].startswith(f"{path_id}-") for lesson in lessons):
             raise ValueError(f"{target}: unexpected draft scope")
+        if reviewed_scopes is not None:
+            for lesson in lessons:
+                ordinal = (path_number - 1) * 10 + lesson["lessonNumber"]
+                if not re.fullmatch(rf"{re.escape(path_id)}-{ordinal:03}-[a-z0-9]+(?:-[a-z0-9]+)*", lesson["id"]):
+                    raise ValueError(f"{target}: incorrect tier-global lesson ID")
         for lesson in lessons:
             validate_audio_surfaces(lesson)
         profile = VoiceProfile(
-            voice_profile_key=f"{slug}_b1_bright_p1_{model_label}_v1",
+            voice_profile_key=f"{slug}_b1_bright_p{path_number}_{model_label}_v1",
             target_language_code=code, vibe="bright", scope_path_id=path_id,
             provider_voice_id=voice_id, provider_model_id=model,
             output_format=DEFAULT_OUTPUT_FORMAT, voice_settings=dict(settings),

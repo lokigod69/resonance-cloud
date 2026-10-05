@@ -30,11 +30,15 @@ BATCHES = {
 
 def project_audio(draft):
     """Exact data projection used by frontend/scripts/lib/guidedB1Drafts.ts."""
-    path_id = f"{draft['targetLanguage'].lower()}-b1-practical-1"
+    path_number = draft["pathNumber"]
+    if type(path_number) is not int or not 1 <= path_number <= 10:
+        raise campaign.CampaignError("unsupported_source_path")
+    path_id = f"{draft['targetLanguage'].lower()}-b1-practical-{path_number}"
     projected = []
     for number, lesson in enumerate(draft["lessons"], 1):
         prefix = lesson["slug"].split("-")[0]
-        projected.append({"id": f"{path_id}-{number:03}-{lesson['slug']}",
+        tier_number = (path_number - 1) * 10 + number
+        projected.append({"id": f"{path_id}-{tier_number:03}-{lesson['slug']}",
             "pathId": path_id, "lessonNumber": number, "vibeVariants": {"bright": {
                 "corePhrase": {"targetText": lesson["dialogue"][1]["targetText"]},
                 "chunks": [{"id": f"{prefix}-{i}", "targetText": x["targetText"]}
