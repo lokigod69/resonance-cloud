@@ -1,5 +1,5 @@
 # Current State
-Last updated: 2026-10-03
+Last updated: 2026-10-05
 
 Current truth and next actions only. Deployment ids, check tallies and release evidence live in LOG.md and the notes; the full 2026-09-07 snapshot is [[archive/state-2026-09-07]].
 
@@ -16,7 +16,8 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Tooling: `AGENTS.md` owns shared rules and review policy; `frontend/README.md` maps skills and checks. `verify` and `test:local` cover frontend/offline contracts; ESLint blocks API default exports and Git enforces LF. Full Python baseline had 16 known September failures (`.venv/Scripts/python.exe -m pytest tests --ignore=tests/manual`).
 
 ## In progress
-- B1: `frontend/content-drafts/b1-2026-10/` has fifty reviewed P1 episodes (EN/ES/FR/IT/pt-BR) and 450 later outlines; no active courses or B2/C added. Fable arbitration and independent reviews passed. Local v4 files are complete for these drafts and EN/ES/FR A1/A2 Bright; README owns totals, evidence and the Opus handoff. The 400,000-credit allowance includes the 200,000 web promotion and remains largely unused. English uses Serafina. Receipts/audio: ignored `review-artifacts/guided-audio-20261003/`. Listening, runtime/catalog/twelve-base integration and production approval remain.
+- Guided expansion: fifty reviewed B1 P1 episodes (EN/ES/FR/IT/pt-BR) remain staged in `frontend/content-drafts/b1-2026-10/`. Another forty full EN/ES P2–P3 episodes are frozen in root `tmp/V4_EXPANSION_20261003/new-content/`, awaiting Fable arbitration of independent findings; P4–P5 drafting is underway. Fable is specifying B1 for the other six targets and B2 for all twelve. German already has 100 live B1 lessons; no B2 lessons are active. Do not count outlines as full lessons.
+- Audio: the reviewed all-source v2 refresh is running locally for eleven targets, including English Wistful/Sharp and German B1. It reuses the same 200,000-credit API ledger and existing cache files. All 32 voice pilots have positive receipts. Cebuano is held for native-voice access (`voices_write` missing); Polish A1 P2 is held for a lexical source-coordinate conflict. English uses Serafina. Exact execution inputs, receipts and audio stay in ignored `review-artifacts/guided-audio-20261003/`. The owner's 400,000 combined allowance includes the separate web promotion. Listening, profile path scopes, alias resolution, runtime/catalog/twelve-base integration and production approval remain.
 - agent-hygiene: September implementation and October navigation/docs pass done. Owner calls remain on BOARD; deferred work is in `investigations/project-audit-2026-09-25/IMPLEMENTATION_PLAN.md`.
 
 ## Known problems and limits
@@ -31,7 +32,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Platform follow-ups: CAPTCHA (needs client work), CSP still report-only, `SUNO_CALLBACK_BASE_URL` defaults to the dead resonanz.pro, full historical Supabase replay needs Docker.
 
 ## Next actions
-- B1: reuse the existing 200,000-credit API ledger and actual receipts. Prefer individual API files; later web-promotion cuts need alignment, waveform and listening checks. Resolve formatting aliases and prepare production rows before requesting publication approval. Revisit inactive-recall caveats before enabling that step.
+- Urgent audio: authenticated subscription read gives the next reset as 2026-10-06 12:27:32 Manila; the web promotion separately showed eight days left on October 5. Keep the active single-dispatch refresh running and queue reviewed new B1 batches afterward; do not reset the ledger, replay ambiguous requests or overwrite sealed inputs. Root scratch scripts own the current sealed fingerprints and Fable jobs. Review every new lesson before TTS. Later web cuts still need alignment, waveform and listening checks.
 - Owner: rotate the credentials pasted into April–May Codex prompts; the iPhone pass and TestFlight steps on protocol/BOARD.md; the six hardening decisions; PostHog credentials to switch analytics on; the Supabase outstanding-invoice warning.
 - Agents: after an owner OK, run the storage deletion; migrate the Gemini TTS and xAI Live models with a paid sample; the Today visual leftovers are the next product design scope (use `ui-critic-loop`).
 
