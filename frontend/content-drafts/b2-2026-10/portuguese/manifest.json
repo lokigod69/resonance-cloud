@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "portuguese-b2-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+      "sha256": "d7b11a0c1c4f132cbca3809b13972769a0029658e36f45e5f59c920498f70d62",
+      "targetLanguage": "Portuguese",
+      "pathNumber": 1,
+      "reviewedVoiceId": "7eUAxNOneHxqfyRS77mW",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/portuguese/specification.json",
+        "sha256": "fd8602a8ff9f678bcfd8f3dfb0767d5915ee148a358d6922715da746233fa4e4",
+        "referenceName": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-2026-10/portuguese-plan.json",
+        "sha256": "6a1cb711f1e561c88ed65a6407d51678c89754eda9e2c523638c7886aa007f1d"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+      "sha256": "32e5fc6c32c186490b7f026c755f46d1f8aaa34b28d349eadc33786bcb87e6dd",
+      "targetLanguage": "Portuguese",
+      "pathNumber": 2,
+      "reviewedVoiceId": "7eUAxNOneHxqfyRS77mW",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/portuguese/specification.json",
+        "sha256": "fd8602a8ff9f678bcfd8f3dfb0767d5915ee148a358d6922715da746233fa4e4",
+        "referenceName": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-2026-10/portuguese-plan.json",
+        "sha256": "6a1cb711f1e561c88ed65a6407d51678c89754eda9e2c523638c7886aa007f1d"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Portuguese": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b2-2026-10/portuguese/fable-evidence.json",
+    "sha256": "8f4162e7152f6f461d12166b3c9a4e70083b7985854aeaea8b51020c22dff356"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b2-2026-10/portuguese/independent-evidence.json",
+    "sha256": "30e5cfcba0a7d2091bf29d850e9f0368c0c65913892ea15c0d9a593c3d507f07"
+  }
+}

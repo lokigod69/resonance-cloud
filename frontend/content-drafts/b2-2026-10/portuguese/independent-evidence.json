@@ -1,0 +1,985 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/portuguese/p1.json": "d7b11a0c1c4f132cbca3809b13972769a0029658e36f45e5f59c920498f70d62",
+    "frontend/content-drafts/b2-2026-10/portuguese/p2.json": "32e5fc6c32c186490b7f026c755f46d1f8aaa34b28d349eadc33786bcb87e6dd"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/portuguese/specification.json": "fd8602a8ff9f678bcfd8f3dfb0767d5915ee148a358d6922715da746233fa4e4",
+    "frontend/content-drafts/b2-2026-10/latin-prerequisites.json": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+    "frontend/content-drafts/b1-2026-10/portuguese-plan.json": "6a1cb711f1e561c88ed65a6407d51678c89754eda9e2c523638c7886aa007f1d"
+  },
+  "sourceCanonicalizations": [
+    {
+      "oldName": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+      "oldSha256": "f49582ba71d7dd8a651818819459a388e9dba79e908a27719c12676799463894",
+      "newName": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V2.json",
+      "newSha256": "ab9b56404004eb7c2a4e960219ecb9c9e973a64ae846b6cc3efb8aae00044e1d",
+      "exactSpecEdits": 13,
+      "metadataOnly": "Computed specRef filename/hash after exact Fable specification edits."
+    },
+    {
+      "oldName": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V2.json",
+      "oldSha256": "ab9b56404004eb7c2a4e960219ecb9c9e973a64ae846b6cc3efb8aae00044e1d",
+      "newName": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json",
+      "newSha256": "fd8602a8ff9f678bcfd8f3dfb0767d5915ee148a358d6922715da746233fa4e4",
+      "exactSpecEdits": 1,
+      "metadataOnly": "Computed specRef filename/hash after exact Fable specification edits."
+    }
+  ],
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "PT-B2-C03",
+      "severity": "HIGH",
+      "scope": "publication/runtime answer acceptance",
+      "title": "Open recall requires an answer policy beyond the curated lists",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+          "jsonPointer": "/lessons/4/recall"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+          "jsonPointer": "/lessons/7/recall"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+          "jsonPointer": "/lessons/7/recall"
+        }
+      ],
+      "evidence": {
+        "resolvedConcreteExamples": [
+          {
+            "lesson": "P1L5",
+            "frame": "Prefiro a serra, que oferece a opção mais ___ para quem precisa descansar depois de meses sem uma pausa de verdade.",
+            "completion": "relaxante",
+            "status": "Present in final acceptedAnswers"
+          },
+          {
+            "lesson": "P1L8",
+            "frame": "O que pesa mais para mim é a ___ de um salário que permite planejar os próximos anos sem depender de vender participações.",
+            "completion": "previsibilidade",
+            "status": "Present in final acceptedAnswers"
+          }
+        ],
+        "finalLists": "All final authored accepted-answer lists personally reread and preserved. P2L8 retains precisa-se, necessita-se, se precisa and se necessita. These finite lists are not an exhaustive policy for unconstrained native input.",
+        "runtimeObserved": false
+      },
+      "why": "The two concrete missing variants are repaired, but unconstrained open recall can still admit other native completions. A hidden translation or requiredCarrier field does not constrain the visible task. Source lists and offline normalization do not prove actual runtime acceptance.",
+      "fix": "Before publication, verify that the displayed recall task provides a meaningful constraining cue or accommodates valid native completions without falsely marking them wrong. Preserve the exact authored lists and both clitic placements; verify NFC/spacing/case behavior and authored accent variants, keeping ç distinct. Do not claim a general Portuguese accent normalizer exists.",
+      "localSpokenBlocker": false,
+      "status": "open",
+      "publicationOnly": true,
+      "rereviewDisposition": "RETAIN. Concrete relaxante/previsibilidade omissions closed; runtime answer policy remains unverified."
+    },
+    {
+      "id": "PT-B2-C04",
+      "severity": "HIGH",
+      "scope": "publication/runtime exercise rendering",
+      "title": "The choice and form-cue contracts need real runtime verification",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+          "jsonPointer": "/lessons/*/cloze"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+          "jsonPointer": "/lessons/*/synthesis"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+          "jsonPointer": "/lessons/*/cloze"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+          "jsonPointer": "/lessons/*/synthesis"
+        }
+      ],
+      "evidence": {
+        "choiceSets": 60,
+        "clozeFormCues": 20,
+        "example": "P1L3 forem is determined by the visible ser / third-person plural / future-subjunctive cue. The fixed connector/frame options are required to make their blanks single-answer tasks.",
+        "runtimeObserved": false
+      },
+      "why": "The sources contain correct visible cues and fixed choices, but no Portuguese B2 renderer was reviewed or exercised. Hiding those cues changes what the learner can reasonably answer.",
+      "fix": "Implement and independently verify display of every supplied choice set and lexical/morphological cue, correct reconstruction and move placement, accepted variants and no answer leaks in the actual B2 flow.",
+      "localSpokenBlocker": false,
+      "status": "open",
+      "publicationOnly": true,
+      "rereviewDisposition": "RETAIN. All 60 actual choice sets and 20 actual form cues remain supplied and personally reviewed; no actual Portuguese B2 renderer was exercised."
+    },
+    {
+      "id": "PT-B2-C05",
+      "severity": "HIGH",
+      "scope": "publication/integration",
+      "title": "Runtime, editions, review metadata and audio remain unapproved",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json",
+          "jsonPointer": "/unresolvedDecisions"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+          "jsonPointer": "/status"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+          "jsonPointer": "/status"
+        }
+      ],
+      "evidence": {
+        "status": "draft",
+        "reviewFlags": "all twelve false on every lesson",
+        "nativeStatus": "unreviewed",
+        "reviewers": "empty",
+        "nativeGate": "The final genuine pt-BR native offline gate is now independently PASS: 60/60 tests, strict scoped TypeScript and scoped ESLint pass. Its semantic limitations remain explicit.",
+        "audio": "No voice, provider, receipt, generated audio, listening or manifest coverage reviewed.",
+        "editions": "Only de/en source bases reviewed; twelve generated editions not reviewed."
+      },
+      "why": "The offline gate and complete text review satisfy their scoped checks. They do not establish rendered B2 runtime behavior, edition coverage, review-metadata ownership, audio execution, listening or publication readiness.",
+      "fix": "Keep publication disabled until the real Portuguese B2 runtime passes independent review, the required review metadata is populated by its actual owners, all required base editions pass, and a separately reviewed audio pipeline plus coverage/listening checks complete. Preserve the independently reviewed native gate.",
+      "localSpokenBlocker": false,
+      "status": "open",
+      "publicationOnly": true,
+      "rereviewDisposition": "RETAIN with the native offline gate portion closed; all other integration and publication conditions remain."
+    }
+  ],
+  "scope": "Exact canonical spoken content for local TTS only; all publication findings retained. No native-human, listening or production approval.",
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "Independent Codex agent /root/spanish_b2_exact_execution_review",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "0b92eafece5f223ddf21ec280a6b9e157275425fee88798a8b7f7909a3168fc6",
+  "rawReview": {
+    "schemaVersion": 1,
+    "kind": "portuguese-b2-full-content-independent-rereview",
+    "reviewDate": "2026-10-06",
+    "reviewRound": 2,
+    "reviewer": "Independent Codex agent /root/spanish_b2_exact_execution_review",
+    "independence": {
+      "authoredTheseSources": false,
+      "authoredControllingSpec": false,
+      "humanNativeReviewClaimed": false,
+      "appReadOnly": true,
+      "sourceEdits": 0,
+      "paidCalls": 0,
+      "providerCalls": 0,
+      "databaseWrites": 0,
+      "onlyWrittenFile": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_INDEPENDENT_REVIEW.json"
+    },
+    "verdict": "REWORK",
+    "contentContractVerdict": "PASS",
+    "localTtsContentVerdict": "PASS",
+    "unresolvedLocalTtsBlockers": 0,
+    "unresolvedLocalTtsBlockerCount": 0,
+    "publicationVerdict": "REWORK",
+    "verdictScope": "Single final post-repair full-content rereview of the exact Portuguese B2 P1/P2 V3 draft bytes. Canonical spoken text has no outstanding local content blockers. Three full publication-only findings remain. This is neither paid execution approval nor publication approval.",
+    "reviewedSources": [
+      {
+        "file": "portuguese-b2-p1.json",
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+        "scratchPath": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/recording-ready-content/portuguese-b2-p1.json",
+        "sha256": "d7b11a0c1c4f132cbca3809b13972769a0029658e36f45e5f59c920498f70d62",
+        "lessons": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "file": "portuguese-b2-p2.json",
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+        "scratchPath": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/recording-ready-content/portuguese-b2-p2.json",
+        "sha256": "32e5fc6c32c186490b7f026c755f46d1f8aaa34b28d349eadc33786bcb87e6dd",
+        "lessons": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    ],
+    "reviewedAuthorities": [
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+        "sha256": "f49582ba71d7dd8a651818819459a388e9dba79e908a27719c12676799463894",
+        "scope": "Full controlling authority, all twenty lesson rows and trophy allocations"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_SPEC_RAW.json",
+        "sha256": "f82e4c94f0722561d49b01920833da84fda2e35e28a77c4f0f9912173de1c364",
+        "scope": "Genuine original specification provider envelope"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_SPEC_PRE_REPAIR.json",
+        "sha256": "c926f84cfaf732512f97a877c5fb554aae788c1a30a0934c7558b8709e80203c",
+        "scope": "One-brace syntax recovery output"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_SPEC_REPAIR_RAW.json",
+        "sha256": "4d8d4f31abc4514fea7c4831da95a2204d727c4ad705273b2cb376009eb35711",
+        "scope": "Forty-one exact specification repair patches"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_AUTHORING_CLARIFICATION_FABLE_RAW.json",
+        "sha256": "6417398f52edaad7ec3ee7cfdcff36eca555012fae8fed5d508ca50acfba3cff",
+        "scope": "Three exact specification clarification edits"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_FABLE_REVIEW_RAW.json",
+        "sha256": "f63bb69d5f58a20deeb7973541d4cfd6be608eb6bfc4eafe65dfe31d6ab863b2",
+        "scope": "Complete genuine full-content result, readThrough, arbitration, all twenty-four edits and final checks"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_LATIN_PREREQUISITES.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+        "scope": "Portuguese record compared to actual frozen imports and complete B1 reservation plan"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/portuguese-b2-p1.json",
+        "sha256": "b303b2876254f629813c08bb060bb55a56495c864e4680899eb67ae50fb8e86d",
+        "scope": "Frozen original, personally read in full"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/portuguese-b2-p2.json",
+        "sha256": "ed3c26fd3bfdd63bba6c30bc9ba6d11cada31c623e7de3ab3bc3cb44c956af28",
+        "scope": "Frozen original, personally read in full"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/portuguese-b2-p1-p2-author-report.json",
+        "sha256": "ff1d5fa07338d0c1abe8a833f6828d3fc12a19965140dd9a8d99fee07863b318",
+        "scope": "Author evidence, scope and holds; not independent approval"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/portuguese-b2-validate.mjs",
+        "sha256": "4f3a9ab344e7c4777a639b91a735dd384403b60293fe7e20d9fb0416ddb43b90",
+        "scope": "Read-only structural-check provenance; not a native gate"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V2.json",
+        "sha256": "ab9b56404004eb7c2a4e960219ecb9c9e973a64ae846b6cc3efb8aae00044e1d",
+        "scope": "Prior full authority, preserved"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json",
+        "sha256": "fd8602a8ff9f678bcfd8f3dfb0767d5915ee148a358d6922715da746233fa4e4",
+        "scope": "Final complete authority; only the exact authorized causal-Como clarification added"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_ARBITRATION_FABLE_STREAM.jsonl",
+        "sha256": "5502b1851a36e4db82a9aa41f81f1a16d0c92774d9b891ca78d45387c604d7ac",
+        "scope": "Genuine complete arbitration provider stream"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_ARBITRATION_FABLE_RECOVERED.json",
+        "sha256": "8608aa8bdcaed3581c0bd0801be6d5d65bb157e24739d3ba6a8389fffc853407",
+        "scope": "JSON recovered exactly from assistant text blocks in the stream"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_ARBITRATION_FABLE_REVIEWED_SOURCE_HASHES.json",
+        "sha256": "598d49380117d3484729cc98b2220992c0093af23a55e437bbbeddbe1b41cd73",
+        "scope": "All four prior arbitration inputs verified"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_CONTENT_GATE_REPAIR_FABLE_STREAM.jsonl",
+        "sha256": "3958350b81ede09a32369da20d99474ad0c9aaf0a00062afba11bfa9363acc4f",
+        "scope": "Genuine bounded content/gate repair stream"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_CONTENT_GATE_REPAIR_FABLE_RECOVERED.json",
+        "sha256": "de2054a82fd898f9ce42a37ba3b3ca2037f8cfe5acb4e93669a809e2496edc56",
+        "scope": "Complete repair JSON, matched to original stream and reparsed unchanged afterward"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_CONTENT_GATE_REPAIR_FABLE_SOURCE_HASHES.json",
+        "sha256": "066b3640cc58f1054da25cb5e9436ac349d72efd1adf621c11a37f2ed727444e",
+        "scope": "All seven bounded repair inputs verified"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_CONTENT_GATE_REPAIR_APPLIED_HASHES.json",
+        "sha256": "0f7fe7cab3fc8e9bb13cdbd41e3a545c9317e333d3c9f33ce39df327fc092a4f",
+        "scope": "Applied byte hashes independently confirmed"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_INDEPENDENT_REVIEW.json",
+        "sha256": "012274d12fbb9a34b1e093d72ebbad24e391a3ce17db14f7fd68990bb49f742e",
+        "scope": "Original complete independent content report, retained"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_GATE_INDEPENDENT_REVIEW.json",
+        "sha256": "53e74f5a588ab0514382483f45a2cbb551cbb0b4a43026039ed19b1b7fa394da",
+        "scope": "Initial complete gate report and linked C06 blocker, retained"
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/specification.json",
+        "sha256": "fd8602a8ff9f678bcfd8f3dfb0767d5915ee148a358d6922715da746233fa4e4",
+        "scope": "Staged app authority is byte-identical to final V3 scratch specification"
+      }
+    ],
+    "exactReplay": {
+      "verdict": "PASS",
+      "originalSpecificationChain": {
+        "verdict": "PASS",
+        "specification": "Inserted exactly one missing brace at offset 30233 before the unique mechanicalValidationRules delimiter; parsed equality with PRE_REPAIR; replayed forty-one repair patches and three clarification edits with every old value asserted; full result equals the controlling authoring spec and unchanged trophy ledger.",
+        "content": "Parsed genuine is_error:false claude-fable-5-1 result; applied all twenty-four pointer edits in memory with oldValue assertions and deep-copied newValue objects; full JSON equality with both final reviewed files; original provider envelope compared unchanged afterward.",
+        "edits": 24,
+        "extraOrMissingChanges": 0,
+        "rawQuirk": "One patch includes an extra key named ' newValue' with null; the exact named newValue field holds the intended renda text. No raw normalization or edit was performed."
+      },
+      "originalContentEdits": 24,
+      "arbitration": {
+        "sessionId": "8dd3a7cb-7038-407b-a219-96534f84a8eb",
+        "model": "claude-fable-5-1",
+        "isError": false,
+        "contentEdits": 40,
+        "specEdits": 13,
+        "inputHashCount": 4,
+        "method": "Parsed complete genuine assistant stream text into the recovered JSON; verified every bound input hash and oldValue; deep-copy replay in memory exactly matched preserved V2 encoded outputs after declared reference metadata repinning; raw provider JSON was reparsed and compared unchanged.",
+        "v2P1Sha256": "c5f35938d005df7d15a37de8d4fd07b6949f320b9d71cc873042fbdfc0e8ca77",
+        "v2P2Sha256": "162577c8c02b6bc6605c7499335c2dbc402ccc0532f679ddfefb3b442883a735",
+        "v2SpecSha256": "ab9b56404004eb7c2a4e960219ecb9c9e973a64ae846b6cc3efb8aae00044e1d"
+      },
+      "boundedRepair": {
+        "verdict": "PASS",
+        "counts": {
+          "contentEdits": 3,
+          "specEdits": 1,
+          "codeEdits": 7
+        },
+        "sourceHashesChecked": 7,
+        "rawStreamSha256": "3958350b81ede09a32369da20d99474ad0c9aaf0a00062afba11bfa9363acc4f",
+        "rawReviewSha256": "de2054a82fd898f9ce42a37ba3b3ca2037f8cfe5acb4e93669a809e2496edc56",
+        "sourceBindingsSha256": "066b3640cc58f1054da25cb5e9436ac349d72efd1adf621c11a37f2ed727444e",
+        "appliedHashesSha256": "0f7fe7cab3fc8e9bb13cdbd41e3a545c9317e333d3c9f33ce39df327fc092a4f",
+        "session": "9f8a39bc-e643-4edd-9f01-baf6baaef8ba",
+        "rawReviewUnchanged": true,
+        "fullEncodedFinalEquality": true,
+        "trophiesAndReviewFlagsUnchanged": true,
+        "oldCodeRecovery": "Exact bound bytes recovered from immutable original prompt sections and SHA256 checked; no unverified reconstruction.",
+        "model": "claude-fable-5-1",
+        "isError": false,
+        "method": "Independently parsed the complete stream, matched recovered review, checked all seven bound inputs and every oldValue, applied three content plus one spec JSON-pointer edits with deep copies and seven unique code replacements. Re-pinned only declared spec filenames/computed hashes, then compared full encoded outputs to scratch final and staged app bytes.",
+        "sourceHashFile": "B2_PORTUGUESE_CONTENT_GATE_REPAIR_FABLE_SOURCE_HASHES.json",
+        "extraOrMissingChanges": 0,
+        "fablePredictedTestCount": 61,
+        "actualExecutedTestCount": 60,
+        "arbitrationQualification": "Accept the exact authorized causal Como repair without adopting the raw report's broader claim that sentence-initial Porque is generally ungrammatical. No such blanket language rule is needed or endorsed."
+      }
+    },
+    "fullCoverage": {
+      "personallyReadEveryField": true,
+      "originalsFullyRead": true,
+      "finalObjectsReread": true,
+      "method": "Personally reread all final V3 root metadata and all twenty complete lesson objects in six untruncated batches. Every target/base turn, build part, choice, cue, accepted list, recall, pattern, term, speech requirement, trophy and review field was inspected. Repeated reconstruction text and exact duplicate pattern examples were initially displayed by asserted exact dialogue references; all actual cloze/synthesis segments and recall before/after fields were then read separately for every lesson. Original and V2 full reads were completed earlier in this same review.",
+      "counts": {
+        "paths": 2,
+        "lessons": 20,
+        "dialogueTurns": 120,
+        "learnerTurns": 60,
+        "terms": 191,
+        "speechTargets": 60,
+        "speechTokens": 180,
+        "patternExamples": 40,
+        "trophiesAndExamples": 20,
+        "buildChunks": 100,
+        "buildDistractors": 40,
+        "clozeBlanks": 40,
+        "synthesisBlanks": 20,
+        "recalls": 20,
+        "choiceSets": 60,
+        "formCues": 20
+      },
+      "choices": "Personally tested all four alternatives in each visible choice frame. No additional also-correct fallback/forced-choice option identified. Open recall remains a different task and has PT-B2-C03.",
+      "chipOrders": "Attempted alternate grammatical/semantic orders for every build, without counting capitalization or punctuation as the sole constraint. Verified the P1L4 que a compra repair removes Fable's concrete meaning-preserving inversion. No additional comparably natural same-context alternate identified; this is model semantic review, not exhaustive machine proof.",
+      "perLesson": [
+        {
+          "path": 1,
+          "lesson": 1,
+          "allFieldsRead": true,
+          "assessment": "All six turns make a coherent rent/time trade-off; forty-to-fifteen and the budget constraint agree.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 1,
+          "lesson": 2,
+          "allFieldsRead": true,
+          "assessment": "The nineteen-token por outro lado objection and both bases preserve the freedom concern. The bus-reading rebuttal and strike/rain reserve plan remain coherent.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 1,
+          "lesson": 3,
+          "allFieldsRead": true,
+          "assessment": "Newcomer support and common office days answer the manager's objection; se forem is a correct licensed incidental B1 form.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 1,
+          "lesson": 4,
+          "allFieldsRead": true,
+          "assessment": "Rental arithmetic is coherent (two hundred monthly, two thousand four hundred yearly); Fable binds que a compra into one chip and removes the clear postverbal-subject alternative.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 1,
+          "lesson": 5,
+          "allFieldsRead": true,
+          "assessment": "The final four mountain nights plus two beach nights cost six hundred eighty against seven hundred for seven beach nights. Ocupa quatro is understandable with diárias as antecedent. Final recall now explicitly accepts relaxante.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 1,
+          "lesson": 6,
+          "allFieldsRead": true,
+          "assessment": "The time costs of change and bank trips support the suggestion to keep both methods; consomem agrees with the coordinated activities.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 1,
+          "lesson": 7,
+          "allFieldsRead": true,
+          "assessment": "Travel objection leads to a schedule with agreed makeup sessions; combinada agrees with reposição, not the learner.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 1,
+          "lesson": 8,
+          "allFieldsRead": true,
+          "assessment": "Renda repair and its cloze/term/speech-token edits agree; salary stability and the written review proposal cohere. Final recall explicitly accepts previsibilidade.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 1,
+          "lesson": 9,
+          "allFieldsRead": true,
+          "assessment": "Como introduces the causal clause naturally; arriscado evaluates moving and alugado agrees with apartamento. Sem vender makes ownership/renting out clear.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 1,
+          "lesson": 10,
+          "allFieldsRead": true,
+          "assessment": "Garden/bike recommendation preserves a new resident vote. Portanto marks inference; the pending-vote meaning comes from the rest of the sentence.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 2,
+          "lesson": 1,
+          "allFieldsRead": true,
+          "assessment": "Third paid revision and written authorization answer the invoice query; clarify legitimately supplies identifying details rather than only repeating.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 2,
+          "lesson": 2,
+          "allFieldsRead": true,
+          "assessment": "Glass/paper and greasy-box rules are explicitly the fictional building notice's instructions; no universal municipal rule is asserted.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 2,
+          "lesson": 3,
+          "allFieldsRead": true,
+          "assessment": "The supplier warning and missing replacement tester form distinct causes; licença remains generic in Portuguese, with off-sick specificity supplied by the controlling scene.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 2,
+          "lesson": 4,
+          "allFieldsRead": true,
+          "assessment": "The points scheme stays inside the fictional leaflet; no incentive to buy extra is taught; indicative consequence and the conditional shopping restriction cohere.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 2,
+          "lesson": 5,
+          "allFieldsRead": true,
+          "assessment": "The comparison distinguishes observed outages from contract duration; the final recommendation is conditional on the neighbour's use.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 2,
+          "lesson": 6,
+          "allFieldsRead": true,
+          "assessment": "Passive agreement follows formulário/foto; the repaired sobra só a sua descrição is natural. Actual photo date is explicitly required.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 2,
+          "lesson": 7,
+          "allFieldsRead": true,
+          "assessment": "January travel explains failure despite ten listed volunteers; the new rota and assigned monthly responsibility answer the steer.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 2,
+          "lesson": 8,
+          "allFieldsRead": true,
+          "assessment": "Precisa-se de and se chega à are impersonal uses with prepositional complements, not synthetic passives; triage controls urgency and no slot is promised.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 2,
+          "lesson": 9,
+          "allFieldsRead": true,
+          "assessment": "The heat objection is answered with cooler hours and conditional uptake; the claimed bus benefit is qualified.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        },
+        {
+          "path": 2,
+          "lesson": 10,
+          "allFieldsRead": true,
+          "assessment": "The survey, hours and safety report produce the documented decision and are ordered April–May–June in the closing.",
+          "finalV3AllFieldsRead": true,
+          "recycleStatus": "PASS under full authorized V3 recurrence map"
+        }
+      ],
+      "termCountsByPath": [
+        [
+          9,
+          10,
+          10,
+          9,
+          9,
+          10,
+          8,
+          9,
+          10,
+          10
+        ],
+        [
+          10,
+          8,
+          10,
+          10,
+          10,
+          9,
+          10,
+          10,
+          10,
+          10
+        ]
+      ]
+    },
+    "frozenTrophyAudit": {
+      "verdict": "PASS",
+      "actualImportedA1A2Lessons": 200,
+      "actualImportedTrophyRows": 200,
+      "b1Reserved": 100,
+      "distinctForbidden": 299,
+      "duplicateFrozenLemma": "café",
+      "actualFrozenProjectionSha256": "ab81cff3930835f3e1819b1e3cfcf6c2eef5933fb29fe96af04717bc121a16ac",
+      "b1PlanPath": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b1-2026-10/portuguese-plan.json",
+      "b1PlanSha256": "6a1cb711f1e561c88ed65a6407d51678c89754eda9e2c523638c7886aa007f1d",
+      "allTwentyOrderedAllocationsUnchanged": true,
+      "exactCollisions": 0,
+      "derivationalEvasionIdentified": 0,
+      "semanticNotes": "Checked the named rejected derivations and permitted synonym neighbours in the authority; no trophy substitution or stem evasion. All twenty lemma/family/POS/surface/turn bindings retained."
+    },
+    "structuralChecks": {
+      "verdict": "PASS",
+      "method": "Actual native Portuguese gate, using full pinned LF source strings, parsed equality, actual Portuguese A1/A2 imports and all B1 reservations; no language spoof.",
+      "actualSuite": {
+        "tests": 60,
+        "passed": 60,
+        "failed": 0,
+        "skipped": 0
+      },
+      "strictScopedTypeScript": "PASS, zero diagnostics",
+      "scopedEslint": "PASS, zero errors",
+      "checked": [
+        "Twenty strict six-turn draft objects with real pt-BR identity and de/en bases",
+        "All native Unicode word lengths, focus/chip boundaries and frame-owned separators",
+        "Eighty exact build/cloze/synthesis/recall reconstructions, sequential blank indexes and correct move slots",
+        "All sixty normalized-distinct visible choice sets with exactly one listed accepted option; twenty explicit form cues",
+        "All one hundred eighty speech tokens whole-attested at the correct turn, profiles and focus coverage",
+        "All one hundred ninety-one term surfaces attested; term bounds8–10, pattern examples2–3, speech tokens2–4",
+        "Full299 forbidden set and unchanged ordered20 lemma/family/POS/surface/turn allocations",
+        "All review flags remain false, pending, unreviewed and without invented reviewers"
+      ],
+      "limitations": "This gate is an offline structural authority check, not a native morphology/semantic parser or rendered runtime proof. Meaning, register, gender, chip-order plausibility and choice validity were separately personally reviewed."
+    },
+    "arbitration": [
+      {
+        "id": "PT-B2-AUTH-SPEC-1",
+        "decision": "No learner-staging defect",
+        "reason": "The productive L1–3 set and the specification's own P1L1 answer license é verdade que; Fable explicitly confirms the firstProductiveUse entry is planning metadata rather than the gate."
+      },
+      {
+        "id": "PT-B2-P2L3-BASE-LEAVE",
+        "decision": "Provisional mismatch withdrawn as a blocker",
+        "reason": "The exact controlling P2L3 scene explicitly says the tester was off sick. The generic Portuguese licença and more specific de/en bases describe that stipulated scene; licença must not be taught as always meaning sick leave. The term's English base is generic leave."
+      },
+      {
+        "id": "FABLE-NONBLOCKING-NOTES",
+        "decision": "Recorded without requiring text edits",
+        "reason": "Modelo da demonstração and ocupa quatro are intelligible in the given contexts. P1L10's rule describes the whole qualified conclusion; the reservation is supplied by the final clause, not by portanto alone. P2L1's clarify move adds identifying evidence naturally."
+      }
+    ],
+    "resolvedFindings": [
+      {
+        "id": "PT-B2-C01",
+        "originalSeverity": "HIGH",
+        "status": "resolved",
+        "resolution": "31 attested terms were added with full de/en bases; ten remaining slots were explicitly narrowed/reallocated by the genuine 13-edit V2 spec arbitration. All final 191 terms and their actual lesson surfaces were personally read. No silent waiver and no trophy change.",
+        "details": [
+          "P1L2 trânsito belongs to the P2L9 term scene.",
+          "P1L4 tamanho is replaced by the attested sala pequena meaning; modelo restored.",
+          "P1L5 viagem/fim de semana are not claimed as terms; diárias expresses the actual stay.",
+          "P1L8 consigo is used in P1L3 you1; salário restored.",
+          "P1L9 aluguel is a P1L1 term; alugado agrees with apartamento; trem/voltar restored.",
+          "P2L1 orçamento is in dialogue and earlier P1 terms; revisões/horas restored within ten terms.",
+          "P2L2 uses attested saco rather than unattested semana.",
+          "P2L6 uses notice-specific prova rather than unattested comprovante; formulário restored.",
+          "P2L7 viagens recurs in you2; viajar is not an invented term, while gente/mutirão are restored."
+        ]
+      },
+      {
+        "id": "PT-B2-C02",
+        "originalSeverity": "MEDIUM",
+        "status": "resolved",
+        "resolution": "por isso is restored in P1L1 you3 and its full synthesis/de/en fields; por outro lado is restored in the P1L2 them objection. Four explicit bounded spec decisions reconcile the remaining recurrence map.",
+        "details": [
+          "P1L1 uses comparative mais, with full menor do que in P1L6.",
+          "P1L3 recycles porque; por isso is explicitly not required there.",
+          "P1L5 permits rather than requires a gente.",
+          "P1L7 uses nas semanas em casa / durante as viagens; enquanto remains productive in P1L5/P1L10."
+        ]
+      },
+      {
+        "id": "PT-B2-C06",
+        "originalSeverity": "HIGH",
+        "status": "resolved",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/lessons/1/dialogue/2"
+          }
+        ],
+        "before": "Por outro lado, o ônibus vive cheio, e você perde a liberdade de sair na hora que quiser. Isso não pesa?",
+        "after": "Por outro lado, o ônibus vive cheio, e você perde a liberdade de sair quando quiser. Isso não pesa?",
+        "oldTokenCount": 21,
+        "newTokenCount": 19,
+        "maximum": 20,
+        "resolution": "Genuine Fable shortened the temporal clause and separately edited both de/en bases. This is a them objection with no build/cloze/speech/pattern dependence. por outro lado and the freedom objection remain. The actual final gate passes; reinstating the original phrase fails specifically P1L2 turn2 length 21."
+      }
+    ],
+    "remainingPublicationFindings": [
+      {
+        "id": "PT-B2-C03",
+        "severity": "HIGH",
+        "scope": "publication/runtime answer acceptance",
+        "title": "Open recall requires an answer policy beyond the curated lists",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/lessons/4/recall"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/lessons/7/recall"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+            "jsonPointer": "/lessons/7/recall"
+          }
+        ],
+        "evidence": {
+          "resolvedConcreteExamples": [
+            {
+              "lesson": "P1L5",
+              "frame": "Prefiro a serra, que oferece a opção mais ___ para quem precisa descansar depois de meses sem uma pausa de verdade.",
+              "completion": "relaxante",
+              "status": "Present in final acceptedAnswers"
+            },
+            {
+              "lesson": "P1L8",
+              "frame": "O que pesa mais para mim é a ___ de um salário que permite planejar os próximos anos sem depender de vender participações.",
+              "completion": "previsibilidade",
+              "status": "Present in final acceptedAnswers"
+            }
+          ],
+          "finalLists": "All final authored accepted-answer lists personally reread and preserved. P2L8 retains precisa-se, necessita-se, se precisa and se necessita. These finite lists are not an exhaustive policy for unconstrained native input.",
+          "runtimeObserved": false
+        },
+        "why": "The two concrete missing variants are repaired, but unconstrained open recall can still admit other native completions. A hidden translation or requiredCarrier field does not constrain the visible task. Source lists and offline normalization do not prove actual runtime acceptance.",
+        "fix": "Before publication, verify that the displayed recall task provides a meaningful constraining cue or accommodates valid native completions without falsely marking them wrong. Preserve the exact authored lists and both clitic placements; verify NFC/spacing/case behavior and authored accent variants, keeping ç distinct. Do not claim a general Portuguese accent normalizer exists.",
+        "localSpokenBlocker": false,
+        "status": "open",
+        "publicationOnly": true,
+        "rereviewDisposition": "RETAIN. Concrete relaxante/previsibilidade omissions closed; runtime answer policy remains unverified."
+      },
+      {
+        "id": "PT-B2-C04",
+        "severity": "HIGH",
+        "scope": "publication/runtime exercise rendering",
+        "title": "The choice and form-cue contracts need real runtime verification",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/lessons/*/cloze"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/lessons/*/synthesis"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+            "jsonPointer": "/lessons/*/cloze"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+            "jsonPointer": "/lessons/*/synthesis"
+          }
+        ],
+        "evidence": {
+          "choiceSets": 60,
+          "clozeFormCues": 20,
+          "example": "P1L3 forem is determined by the visible ser / third-person plural / future-subjunctive cue. The fixed connector/frame options are required to make their blanks single-answer tasks.",
+          "runtimeObserved": false
+        },
+        "why": "The sources contain correct visible cues and fixed choices, but no Portuguese B2 renderer was reviewed or exercised. Hiding those cues changes what the learner can reasonably answer.",
+        "fix": "Implement and independently verify display of every supplied choice set and lexical/morphological cue, correct reconstruction and move placement, accepted variants and no answer leaks in the actual B2 flow.",
+        "localSpokenBlocker": false,
+        "status": "open",
+        "publicationOnly": true,
+        "rereviewDisposition": "RETAIN. All 60 actual choice sets and 20 actual form cues remain supplied and personally reviewed; no actual Portuguese B2 renderer was exercised."
+      },
+      {
+        "id": "PT-B2-C05",
+        "severity": "HIGH",
+        "scope": "publication/integration",
+        "title": "Runtime, editions, review metadata and audio remain unapproved",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json",
+            "jsonPointer": "/unresolvedDecisions"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/status"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+            "jsonPointer": "/status"
+          }
+        ],
+        "evidence": {
+          "status": "draft",
+          "reviewFlags": "all twelve false on every lesson",
+          "nativeStatus": "unreviewed",
+          "reviewers": "empty",
+          "nativeGate": "The final genuine pt-BR native offline gate is now independently PASS: 60/60 tests, strict scoped TypeScript and scoped ESLint pass. Its semantic limitations remain explicit.",
+          "audio": "No voice, provider, receipt, generated audio, listening or manifest coverage reviewed.",
+          "editions": "Only de/en source bases reviewed; twelve generated editions not reviewed."
+        },
+        "why": "The offline gate and complete text review satisfy their scoped checks. They do not establish rendered B2 runtime behavior, edition coverage, review-metadata ownership, audio execution, listening or publication readiness.",
+        "fix": "Keep publication disabled until the real Portuguese B2 runtime passes independent review, the required review metadata is populated by its actual owners, all required base editions pass, and a separately reviewed audio pipeline plus coverage/listening checks complete. Preserve the independently reviewed native gate.",
+        "localSpokenBlocker": false,
+        "status": "open",
+        "publicationOnly": true,
+        "rereviewDisposition": "RETAIN with the native offline gate portion closed; all other integration and publication conditions remain."
+      }
+    ],
+    "remainingPublicationFindingCount": 3,
+    "findings": [
+      {
+        "id": "PT-B2-C03",
+        "severity": "HIGH",
+        "scope": "publication/runtime answer acceptance",
+        "title": "Open recall requires an answer policy beyond the curated lists",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/lessons/4/recall"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/lessons/7/recall"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+            "jsonPointer": "/lessons/7/recall"
+          }
+        ],
+        "evidence": {
+          "resolvedConcreteExamples": [
+            {
+              "lesson": "P1L5",
+              "frame": "Prefiro a serra, que oferece a opção mais ___ para quem precisa descansar depois de meses sem uma pausa de verdade.",
+              "completion": "relaxante",
+              "status": "Present in final acceptedAnswers"
+            },
+            {
+              "lesson": "P1L8",
+              "frame": "O que pesa mais para mim é a ___ de um salário que permite planejar os próximos anos sem depender de vender participações.",
+              "completion": "previsibilidade",
+              "status": "Present in final acceptedAnswers"
+            }
+          ],
+          "finalLists": "All final authored accepted-answer lists personally reread and preserved. P2L8 retains precisa-se, necessita-se, se precisa and se necessita. These finite lists are not an exhaustive policy for unconstrained native input.",
+          "runtimeObserved": false
+        },
+        "why": "The two concrete missing variants are repaired, but unconstrained open recall can still admit other native completions. A hidden translation or requiredCarrier field does not constrain the visible task. Source lists and offline normalization do not prove actual runtime acceptance.",
+        "fix": "Before publication, verify that the displayed recall task provides a meaningful constraining cue or accommodates valid native completions without falsely marking them wrong. Preserve the exact authored lists and both clitic placements; verify NFC/spacing/case behavior and authored accent variants, keeping ç distinct. Do not claim a general Portuguese accent normalizer exists.",
+        "localSpokenBlocker": false,
+        "status": "open",
+        "publicationOnly": true,
+        "rereviewDisposition": "RETAIN. Concrete relaxante/previsibilidade omissions closed; runtime answer policy remains unverified."
+      },
+      {
+        "id": "PT-B2-C04",
+        "severity": "HIGH",
+        "scope": "publication/runtime exercise rendering",
+        "title": "The choice and form-cue contracts need real runtime verification",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/lessons/*/cloze"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/lessons/*/synthesis"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+            "jsonPointer": "/lessons/*/cloze"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+            "jsonPointer": "/lessons/*/synthesis"
+          }
+        ],
+        "evidence": {
+          "choiceSets": 60,
+          "clozeFormCues": 20,
+          "example": "P1L3 forem is determined by the visible ser / third-person plural / future-subjunctive cue. The fixed connector/frame options are required to make their blanks single-answer tasks.",
+          "runtimeObserved": false
+        },
+        "why": "The sources contain correct visible cues and fixed choices, but no Portuguese B2 renderer was reviewed or exercised. Hiding those cues changes what the learner can reasonably answer.",
+        "fix": "Implement and independently verify display of every supplied choice set and lexical/morphological cue, correct reconstruction and move placement, accepted variants and no answer leaks in the actual B2 flow.",
+        "localSpokenBlocker": false,
+        "status": "open",
+        "publicationOnly": true,
+        "rereviewDisposition": "RETAIN. All 60 actual choice sets and 20 actual form cues remain supplied and personally reviewed; no actual Portuguese B2 renderer was exercised."
+      },
+      {
+        "id": "PT-B2-C05",
+        "severity": "HIGH",
+        "scope": "publication/integration",
+        "title": "Runtime, editions, review metadata and audio remain unapproved",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json",
+            "jsonPointer": "/unresolvedDecisions"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+            "jsonPointer": "/status"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+            "jsonPointer": "/status"
+          }
+        ],
+        "evidence": {
+          "status": "draft",
+          "reviewFlags": "all twelve false on every lesson",
+          "nativeStatus": "unreviewed",
+          "reviewers": "empty",
+          "nativeGate": "The final genuine pt-BR native offline gate is now independently PASS: 60/60 tests, strict scoped TypeScript and scoped ESLint pass. Its semantic limitations remain explicit.",
+          "audio": "No voice, provider, receipt, generated audio, listening or manifest coverage reviewed.",
+          "editions": "Only de/en source bases reviewed; twelve generated editions not reviewed."
+        },
+        "why": "The offline gate and complete text review satisfy their scoped checks. They do not establish rendered B2 runtime behavior, edition coverage, review-metadata ownership, audio execution, listening or publication readiness.",
+        "fix": "Keep publication disabled until the real Portuguese B2 runtime passes independent review, the required review metadata is populated by its actual owners, all required base editions pass, and a separately reviewed audio pipeline plus coverage/listening checks complete. Preserve the independently reviewed native gate.",
+        "localSpokenBlocker": false,
+        "status": "open",
+        "publicationOnly": true,
+        "rereviewDisposition": "RETAIN with the native offline gate portion closed; all other integration and publication conditions remain."
+      }
+    ],
+    "preservedAuthorPublicationHolds": [
+      {
+        "id": "PT-B2-AUTH-PUB-1",
+        "scope": "all twenty lessons",
+        "reason": "Full Fable native content read and independent review are pending. Draft flags remain false and reviewer lists empty; source freeze is only an immutable author handoff.",
+        "currentStatus": "Fable and independent full model reads complete; source metadata stays pending; no human certification or publication claimed."
+      },
+      {
+        "id": "PT-B2-AUTH-PUB-2",
+        "scope": "all exercises",
+        "reason": "Runtime must display fixed choices for choice blanks and visible lexical/form cues for form blanks, and honor explicit accepted-answer lists. Curated recall synonyms are not an exhaustive open-world whitelist. Hidden base glosses and requiredCarrier are never treated as visible exact-answer cues.",
+        "currentStatus": "Open: C03/C04."
+      },
+      {
+        "id": "PT-B2-AUTH-PUB-3",
+        "scope": "integration",
+        "reason": "A genuine Portuguese offline gate, runtime input behavior, voice allocation/audio coverage and base editions still require implementation and review; no TTS readiness or publication approval is inferred from the scratch PASS.",
+        "currentStatus": "Native offline gate independently PASS. Runtime, editions, audio execution/coverage/listening remain open: C05."
+      }
+    ],
+    "preservation": {
+      "sourceFilesChanged": false,
+      "appFilesChanged": false,
+      "rawProviderFilesChanged": false,
+      "gitWrites": false,
+      "paidCalls": false,
+      "databaseWrites": false,
+      "publicationAuthorized": false,
+      "databaseCalls": false,
+      "providerCalls": false,
+      "sourceTrophiesAndAllocationsUnchanged": true,
+      "acceptedAnswerListsPreserved": true,
+      "writeScope": "This final content report and the separately requested final gate report only."
+    },
+    "limitations": [
+      "Independent AI language review; no human native-speaker certification claimed.",
+      "No Portuguese paid adapter, exact execution, provider GET/POST, voice identity, receipt, budget, audio or listening review in this task.",
+      "The actual B2 renderer and twelve generated base editions were not reviewed. Offline gate normalization is not a claim about runtime input behavior.",
+      "Full original finding objects remain preserved in the byte-bound initial report. Current C03/C04/C05 full objects retain their IDs, severity, reasons and required remedies while explicitly recording the repaired concrete variants and reviewed native gate.",
+      "The old scratch author validator is provenance only; its stale porque rule and malformed progressive regex do not define the final integrated gate."
+    ],
+    "conclusion": "PASS for exact canonical spoken content and content contract under genuine V3 authority; zero local spoken blockers. Publication remains REWORK with C03/C04/C05."
+  }
+}

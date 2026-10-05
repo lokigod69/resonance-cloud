@@ -1,0 +1,3969 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "explicar-como-e-por-que",
+  "pathTitle": {
+    "de": "Wie und warum etwas geschieht",
+    "en": "Explaining how and why"
+  },
+  "pathFunction": {
+    "de": "Ursachen und Abläufe erklären, Angaben präzisieren und die Folgen verständlich zusammenfassen.",
+    "en": "Explain causes and processes, clarify details and summarize their consequences."
+  },
+  "specRef": {
+    "pathSpec": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json",
+    "pathSpecSha256": "fd8602a8ff9f678bcfd8f3dfb0767d5915ee148a358d6922715da746233fa4e4",
+    "ledger": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json",
+    "ledgerSha256": "fd8602a8ff9f678bcfd8f3dfb0767d5915ee148a358d6922715da746233fa4e4"
+  },
+  "authoring": {
+    "source": "Codex native Brazilian Portuguese authoring; independent review pending",
+    "runId": "V4_EXPANSION_20261003-portuguese-b2",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "fatura-diferente-do-orcamento",
+      "title": {
+        "de": "Eine zusätzliche Rechnungsposition erklären",
+        "en": "Explaining an extra invoice charge"
+      },
+      "situation": {
+        "de": "Sie haben einen Gestaltungsauftrag abgeschlossen. Die Buchhalterin Ihres Kunden vergleicht Ihre Rechnung mit dem ursprünglichen Angebot.",
+        "en": "You have completed a design job. Your client’s accountant compares your invoice with the original quote."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "senhor",
+          "senhor",
+          "senhor"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutor",
+          "role": {
+            "de": "Buchhalterin",
+            "en": "accountant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Buchhalterin fragt: “A fatura ficou acima do orçamento aprovado. Pode explicar a diferença para eu conferir os documentos antes de pagar?”",
+        "en": "The accountant asks: “A fatura ficou acima do orçamento aprovado. Pode explicar a diferença para eu conferir os documentos antes de pagar?”"
+      },
+      "dialogue": [
+        {
+          "targetText": "A fatura ficou acima do orçamento aprovado. Pode explicar a diferença para eu conferir os documentos antes de pagar?",
+          "base": {
+            "de": "Die Rechnung liegt über dem genehmigten Angebot. Erklären Sie die Differenz, damit ich vor der Zahlung die Unterlagen prüfen kann?",
+            "en": "The invoice exceeds the approved quote. Can you explain the difference so I can check the documents before payment?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "A fatura ficou acima do orçamento já que a equipe pediu uma terceira rodada de revisões depois da aprovação do trabalho.",
+          "base": {
+            "de": "Die Rechnung ist höher, weil das Team nach der Freigabe der Arbeit eine dritte Überarbeitungsrunde verlangte.",
+            "en": "The invoice is higher because the team requested a third round of revisions after approving the work."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "senhor"
+        },
+        {
+          "targetText": "O orçamento incluía duas rodadas. Onde encontro a autorização dessa terceira, e qual parte do valor corresponde a ela?",
+          "base": {
+            "de": "Das Angebot enthielt zwei Runden. Wo finde ich die Genehmigung der dritten, und welcher Betrag entfällt darauf?",
+            "en": "The quote included two rounds. Where is the authorization for the third, and which part of the charge covers it?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Em outras palavras, a cobrança extra corresponde às horas da terceira rodada; a autorização está no e-mail de vinte de março.",
+          "base": {
+            "de": "Anders gesagt entspricht die Zusatzberechnung den Stunden der dritten Runde; die Genehmigung steht in der E-Mail vom zwanzigsten März.",
+            "en": "In other words, the extra charge covers the third round’s hours; the authorization is in the email of March twentieth."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "senhor"
+        },
+        {
+          "targetText": "Agora preciso de uma linha para o relatório, separando o serviço previsto do pedido adicional da equipe.",
+          "base": {
+            "de": "Jetzt brauche ich eine Berichtszeile, die die geplante Leistung vom zusätzlichen Teamauftrag trennt.",
+            "en": "Now I need one line for the report separating the planned service from the team’s additional request."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Em resumo: orçamento cumprido, com uma terceira rodada pedida por escrito e cobrada à parte, conforme a autorização da equipe.",
+          "base": {
+            "de": "Zusammengefasst: Angebot erfüllt, zuzüglich einer schriftlich beauftragten, separat berechneten dritten Runde gemäß der Genehmigung des Teams.",
+            "en": "In summary: the quote was fulfilled, with a third round requested in writing and billed separately under the team’s authorization."
+          },
+          "speaker": "you",
+          "move": "summarize",
+          "register": "senhor"
+        }
+      ],
+      "build": {
+        "framePrefix": "A fatura ficou acima do orçamento ",
+        "chunks": [
+          "já que",
+          "a equipe",
+          "pediu uma",
+          "terceira rodada",
+          "de revisões"
+        ],
+        "distractors": [
+          "as equipes",
+          "pediram uma"
+        ],
+        "frameSuffix": " depois da aprovação do trabalho."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", a cobrança extra "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " às horas da terceira rodada; a autorização está no e-mail de vinte de março."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Em outras palavras",
+            "acceptedAnswers": [
+              "Em outras palavras"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Em outras palavras",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          },
+          {
+            "answer": "corresponde",
+            "acceptedAnswers": [
+              "corresponde"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "corresponder: 3. Person Singular, Präsens Indikativ",
+              "en": "corresponder: third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": orçamento cumprido, com uma terceira rodada pedida por escrito e cobrada à parte, conforme a autorização da equipe."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Em resumo",
+            "acceptedAnswers": [
+              "Em resumo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Em resumo",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "A fatura ficou acima do orçamento ",
+        "answer": "já que",
+        "acceptedAnswers": [
+          "já que",
+          "ja que",
+          "porque",
+          "visto que",
+          "pois",
+          "uma vez que"
+        ],
+        "fallbackChoices": [
+          "já que",
+          "apesar de",
+          "em vez de",
+          "devido a"
+        ],
+        "after": " a equipe pediu uma terceira rodada de revisões depois da aprovação do trabalho."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen Zusatzbetrag auf seinen Grund zurückführen",
+          "en": "Linking an extra amount to its cause"
+        },
+        "rule": {
+          "de": "Já que leitet den Grund ein; die Erklärung nennt hier den zusätzlichen Auftrag, statt nur den höheren Betrag zu wiederholen.",
+          "en": "Já que introduces the reason; the explanation names the extra request rather than merely repeating the higher amount."
+        },
+        "examples": [
+          {
+            "targetText": "A fatura ficou acima do orçamento já que a equipe pediu uma terceira rodada de revisões depois da aprovação do trabalho.",
+            "base": {
+              "de": "Die Rechnung ist höher, weil das Team nach der Freigabe der Arbeit eine dritte Überarbeitungsrunde verlangte.",
+              "en": "The invoice is higher because the team requested a third round of revisions after approving the work."
+            },
+            "highlights": [
+              "já que",
+              "uma terceira rodada de revisões"
+            ]
+          },
+          {
+            "targetText": "O prazo mudou já que a equipe pediu novas imagens depois de aprovar a primeira versão.",
+            "base": {
+              "de": "Der Termin änderte sich, weil das Team nach Freigabe der ersten Fassung neue Bilder verlangte.",
+              "en": "The deadline changed because the team requested new images after approving the first version."
+            },
+            "highlights": [
+              "já que",
+              "pediu novas imagens"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "já que",
+          "kind": "connector",
+          "base": {
+            "de": "da / weil",
+            "en": "since / because"
+          }
+        },
+        {
+          "targetText": "em outras palavras",
+          "kind": "frame",
+          "base": {
+            "de": "anders gesagt",
+            "en": "in other words"
+          }
+        },
+        {
+          "targetText": "cobrança",
+          "kind": "noun",
+          "base": {
+            "de": "Berechnung / Zahlungsforderung",
+            "en": "charge / billing"
+          }
+        },
+        {
+          "targetText": "rodada",
+          "kind": "noun",
+          "base": {
+            "de": "Runde",
+            "en": "round"
+          }
+        },
+        {
+          "targetText": "autorização",
+          "kind": "noun",
+          "base": {
+            "de": "Genehmigung",
+            "en": "authorization"
+          }
+        },
+        {
+          "targetText": "fatura",
+          "kind": "noun",
+          "base": {
+            "de": "Rechnung",
+            "en": "invoice"
+          }
+        },
+        {
+          "targetText": "adicional",
+          "kind": "adjective",
+          "base": {
+            "de": "zusätzlich",
+            "en": "additional"
+          }
+        },
+        {
+          "targetText": "cumprido",
+          "kind": "verb",
+          "base": {
+            "de": "erfüllt",
+            "en": "fulfilled"
+          },
+          "lemma": "cumprir"
+        },
+        {
+          "targetText": "revisões",
+          "kind": "noun",
+          "base": {
+            "de": "Überarbeitungen",
+            "en": "revisions"
+          },
+          "lemma": "revisão"
+        },
+        {
+          "targetText": "horas",
+          "kind": "noun",
+          "base": {
+            "de": "Stunden",
+            "en": "hours"
+          },
+          "lemma": "hora"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "equipe",
+            "pediu",
+            "rodada"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "cobrança",
+            "corresponde",
+            "autorização"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "cumprido",
+            "cobrada",
+            "equipe"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "cobrança",
+        "familyKey": "cobr",
+        "surface": "cobrança",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "A cobrança extra cobre apenas o trabalho solicitado depois da aprovação do orçamento.",
+          "base": {
+            "de": "Die Zusatzberechnung deckt nur die nach Angebotsfreigabe beauftragte Arbeit.",
+            "en": "The extra charge covers only the work requested after the quote was approved."
+          }
+        },
+        "base": {
+          "de": "Berechnung / Zahlungsforderung",
+          "en": "charge / billing"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "rodada in you1 and you2 is the noun round, not a speaker participle."
+          },
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "cumprido in you3 agrees with orçamento; pedida and cobrada agree with terceira rodada, not the speaker."
+          },
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "escrito in you3 belongs to the phrase por escrito, not a speaker description."
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "como-funciona-a-coleta",
+      "title": {
+        "de": "Den Abfallplan des Hauses erklären",
+        "en": "Explaining the building’s waste schedule"
+      },
+      "situation": {
+        "de": "Eine neu eingezogene Person fragt nach der Abfallentsorgung. Sie lesen gemeinsam den fiktiven Aushang des Gebäudes Ipê.",
+        "en": "A newcomer asks about waste collection. You read the fictional Ipê building notice together."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "você",
+          "você",
+          "você"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutor",
+          "role": {
+            "de": "neue Person im Haus",
+            "en": "new resident"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die neue Person fragt: “Acabei de chegar e ainda não entendi este aviso do prédio Ipê. Como funciona a separação do lixo aqui?”",
+        "en": "The new resident asks: “Acabei de chegar e ainda não entendi este aviso do prédio Ipê. Como funciona a separação do lixo aqui?”"
+      },
+      "dialogue": [
+        {
+          "targetText": "Acabei de chegar e ainda não entendi este aviso do prédio Ipê. Como funciona a separação do lixo aqui?",
+          "base": {
+            "de": "Ich bin gerade eingezogen und verstehe diesen Ipê-Aushang noch nicht. Wie funktioniert hier die Mülltrennung?",
+            "en": "I have just moved in and do not yet understand this Ipê notice. How does waste sorting work here?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Pelo aviso, a coleta de terça recolhe vidro e papel, que são levados juntos; o lixo orgânico sai todos os dias.",
+          "base": {
+            "de": "Laut Aushang nimmt die Dienstagsabholung Glas und Papier gemeinsam mit; Bioabfall wird täglich abgeholt.",
+            "en": "According to the notice, Tuesday’s collection takes glass and paper together; organic waste goes out daily."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "você"
+        },
+        {
+          "targetText": "E esta caixa de pizza, que ficou cheia de gordura? Ela conta como papel ou vai para outro lugar?",
+          "base": {
+            "de": "Und dieser fettige Pizzakarton? Zählt er als Papier, oder gehört er woanders hin?",
+            "en": "What about this pizza box covered in grease? Does it count as paper, or go somewhere else?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Enquanto o papel limpo vai na terça, a embalagem engordurada vai no lixo comum, conforme a orientação específica deste aviso.",
+          "base": {
+            "de": "Sauberes Papier wird dienstags abgeholt; fettige Verpackungen kommen nach der besonderen Vorgabe dieses Aushangs in den Restmüll.",
+            "en": "While clean paper goes on Tuesday, greasy packaging goes in general waste under this notice’s specific instruction."
+          },
+          "speaker": "you",
+          "move": "compare",
+          "register": "você"
+        },
+        {
+          "targetText": "Mas se eu perder a coleta de terça, onde deixo o saco até a próxima, sem bloquear o corredor?",
+          "base": {
+            "de": "Wenn ich die Dienstagsabholung verpasse, wo bleibt der Sack bis zum nächsten Mal, ohne den Flur zu blockieren?",
+            "en": "But if I miss Tuesday’s collection, where do I keep the bag until next time without blocking the corridor?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "No fim das contas, separar em casa continua sendo o essencial; guarde o saco na sua área de serviço até terça.",
+          "base": {
+            "de": "Letztlich bleibt die Trennung zu Hause entscheidend; bewahre den Sack bis Dienstag in deinem Hauswirtschaftsbereich auf.",
+            "en": "Ultimately, sorting at home remains essential; keep the bag in your utility area until Tuesday."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "você"
+        }
+      ],
+      "build": {
+        "framePrefix": "Pelo aviso, ",
+        "chunks": [
+          "a coleta de terça",
+          "recolhe",
+          "vidro e papel,",
+          "que são",
+          "levados juntos;"
+        ],
+        "distractors": [
+          "recolhem",
+          "levado junto"
+        ],
+        "frameSuffix": " o lixo orgânico sai todos os dias."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " o papel limpo vai na terça, a embalagem "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " vai no lixo comum, conforme a orientação específica deste aviso."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Enquanto",
+            "acceptedAnswers": [
+              "Enquanto"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Enquanto",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          },
+          {
+            "answer": "engordurada",
+            "acceptedAnswers": [
+              "engordurada"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "engordurado: feminine Singularform, passend zu embalagem",
+              "en": "engordurado: feminine singular form agreeing with embalagem"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", separar em casa continua sendo o essencial; guarde o saco na sua área de serviço até terça."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "No fim das contas",
+            "acceptedAnswers": [
+              "No fim das contas"
+            ],
+            "kind": "frame",
+            "choices": [
+              "No fim das contas",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Pelo aviso, a coleta de terça ",
+        "answer": "recolhe",
+        "acceptedAnswers": [
+          "recolhe",
+          "reúne",
+          "reune",
+          "leva"
+        ],
+        "fallbackChoices": [
+          "recolhe",
+          "recolhem",
+          "recolher",
+          "recolhendo"
+        ],
+        "after": " vidro e papel, que são levados juntos; o lixo orgânico sai todos os dias."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Beschreiben, was mit Materialien passiert",
+          "en": "Describing what happens to materials"
+        },
+        "rule": {
+          "de": "São levados bildet eine passive Aussage: levados steht im männlichen Plural passend zu vidro e papel; die abholende Person bleibt ungenannt.",
+          "en": "São levados forms a passive statement: levados is masculine plural to agree with vidro e papel; the collector is not named."
+        },
+        "examples": [
+          {
+            "targetText": "Pelo aviso, a coleta de terça recolhe vidro e papel, que são levados juntos; o lixo orgânico sai todos os dias.",
+            "base": {
+              "de": "Laut Aushang nimmt die Dienstagsabholung Glas und Papier gemeinsam mit; Bioabfall wird täglich abgeholt.",
+              "en": "According to the notice, Tuesday’s collection takes glass and paper together; organic waste goes out daily."
+            },
+            "highlights": [
+              "são levados"
+            ]
+          },
+          {
+            "targetText": "Neste prédio, os materiais limpos são levados juntos, conforme a regra escrita no aviso da coleta.",
+            "base": {
+              "de": "In diesem Gebäude werden saubere Materialien gemäß der schriftlichen Abholregel gemeinsam mitgenommen.",
+              "en": "In this building, clean materials are taken together under the collection rule written in the notice."
+            },
+            "highlights": [
+              "são levados"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "enquanto",
+          "kind": "connector",
+          "base": {
+            "de": "während / wohingegen",
+            "en": "while / whereas"
+          }
+        },
+        {
+          "targetText": "no fim das contas",
+          "kind": "frame",
+          "base": {
+            "de": "letztlich",
+            "en": "ultimately"
+          }
+        },
+        {
+          "targetText": "coleta",
+          "kind": "noun",
+          "base": {
+            "de": "Abholung / Sammlung",
+            "en": "collection"
+          }
+        },
+        {
+          "targetText": "engordurada",
+          "kind": "adjective",
+          "base": {
+            "de": "fettig",
+            "en": "greasy"
+          },
+          "lemma": "engordurado"
+        },
+        {
+          "targetText": "embalagem",
+          "kind": "noun",
+          "base": {
+            "de": "Verpackung",
+            "en": "packaging"
+          }
+        },
+        {
+          "targetText": "orgânico",
+          "kind": "adjective",
+          "base": {
+            "de": "organisch / Bio-",
+            "en": "organic"
+          }
+        },
+        {
+          "targetText": "saco",
+          "kind": "noun",
+          "base": {
+            "de": "Sack / Beutel",
+            "en": "bag"
+          }
+        },
+        {
+          "targetText": "corredor",
+          "kind": "noun",
+          "base": {
+            "de": "Flur",
+            "en": "corridor"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "coleta",
+            "recolhe",
+            "levados"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "papel",
+            "embalagem",
+            "engordurada"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "separar",
+            "guarde",
+            "serviço"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "coleta",
+        "familyKey": "colet",
+        "surface": "coleta",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "A coleta deste prédio segue os dias e os materiais indicados no aviso da entrada.",
+          "base": {
+            "de": "Die Abholung in diesem Gebäude richtet sich nach den am Eingang ausgehängten Tagen und Materialien.",
+            "en": "Collection in this building follows the days and materials listed on the entrance notice."
+          }
+        },
+        "base": {
+          "de": "Abholung / Sammlung",
+          "en": "collection"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "engordurada in you2 agrees with embalagem, not the speaker."
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "por-que-o-projeto-atrasou",
+      "title": {
+        "de": "Die Projektverzögerung erklären",
+        "en": "Explaining the project delay"
+      },
+      "situation": {
+        "de": "Ihre Führungskraft fragt nach einer verspäteten Lieferung. Sie betrachten die Zeitleiste mit Bauteileingang und Testphase.",
+        "en": "Your manager asks about a late delivery. You review the timeline showing the arrival of parts and the testing phase."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "senhor",
+          "senhor",
+          "senhor"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutor",
+          "role": {
+            "de": "Führungskraft",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Führungskraft fragt: “A entrega saiu duas semanas depois do previsto. Pode reconstruir as causas, usando esta linha do tempo?”",
+        "en": "The manager asks: “A entrega saiu duas semanas depois do previsto. Pode reconstruir as causas, usando esta linha do tempo?”"
+      },
+      "dialogue": [
+        {
+          "targetText": "A entrega saiu duas semanas depois do previsto. Pode reconstruir as causas, usando esta linha do tempo?",
+          "base": {
+            "de": "Die Lieferung erfolgte zwei Wochen später als geplant. Rekonstruieren Sie die Ursachen anhand dieser Zeitleiste?",
+            "en": "The delivery went out two weeks late. Can you reconstruct the causes using this timeline?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Atrasamos duas semanas visto que as peças que precisávamos testar chegaram dez dias depois do combinado, e o único testador estava de licença.",
+          "base": {
+            "de": "Wir verspäteten uns um zwei Wochen, weil die zu testenden Teile zehn Tage zu spät kamen und die einzige Testperson krankgeschrieben war.",
+            "en": "We were two weeks late because the parts we needed to test arrived ten days late, and the only tester was on sick leave."
+          },
+          "speaker": "you",
+          "move": "reason",
+          "register": "senhor"
+        },
+        {
+          "targetText": "O fornecedor avisou antes sobre as peças. Por que a equipe não mudou o plano quando recebeu esse aviso?",
+          "base": {
+            "de": "Der Lieferant hatte die Teileverspätung angekündigt. Warum änderte das Team nach dem Hinweis seinen Plan nicht?",
+            "en": "The supplier warned us about the parts beforehand. Why didn’t the team change the plan when it received the warning?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "É verdade que o aviso chegou, mas o imprevisto foi a licença; sem outra pessoa para testar, nada podia ser liberado.",
+          "base": {
+            "de": "Der Hinweis kam tatsächlich, aber unvorhergesehen war die Krankmeldung; ohne eine weitere Testperson konnte nichts freigegeben werden.",
+            "en": "It is true that the warning arrived, but the unexpected event was the sick leave; without another tester, nothing could be released."
+          },
+          "speaker": "you",
+          "move": "concede",
+          "register": "senhor"
+        },
+        {
+          "targetText": "Então qual mudança concreta propõe para reduzir essa dependência antes da próxima entrega, sem prometer que nunca haverá atrasos?",
+          "base": {
+            "de": "Welche konkrete Änderung schlagen Sie vor, um die Abhängigkeit vor der nächsten Lieferung zu verringern, ohne Verspätungen völlig auszuschließen?",
+            "en": "What concrete change do you propose to reduce that dependence before the next delivery, without promising there will never be delays?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Sugiro treinar uma segunda pessoa para os testes e cadastrar um fornecedor reserva para as peças críticas antes da próxima entrega.",
+          "base": {
+            "de": "Ich schlage vor, vor der nächsten Lieferung eine zweite Testperson zu schulen und einen Ersatzlieferanten für kritische Teile zu registrieren.",
+            "en": "I suggest training a second tester and registering a backup supplier for critical parts before the next delivery."
+          },
+          "speaker": "you",
+          "move": "propose",
+          "register": "senhor"
+        }
+      ],
+      "build": {
+        "framePrefix": "Atrasamos duas semanas visto que ",
+        "chunks": [
+          "as peças que",
+          "precisávamos",
+          "testar",
+          "chegaram dez dias",
+          "depois do combinado,"
+        ],
+        "distractors": [
+          "chegou",
+          "precisava de testes"
+        ],
+        "frameSuffix": " e o único testador estava de licença."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " o aviso chegou, mas o imprevisto foi a licença; sem outra pessoa para testar, nada podia ser "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "É verdade que",
+            "acceptedAnswers": [
+              "É verdade que",
+              "E verdade que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "É verdade que",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          },
+          {
+            "answer": "liberado",
+            "acceptedAnswers": [
+              "liberado"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "liberar: Partizip maskulin Singular nach nada podia ser",
+              "en": "liberar: masculine singular past participle after nada podia ser"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " treinar uma segunda pessoa para os testes e cadastrar um fornecedor reserva para as peças críticas antes da próxima entrega."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Sugiro",
+            "acceptedAnswers": [
+              "Sugiro"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Sugiro",
+              "Apesar de",
+              "Devido a",
+              "Durante"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Atrasamos duas semanas ",
+        "answer": "visto que",
+        "acceptedAnswers": [
+          "visto que",
+          "já que",
+          "ja que",
+          "porque",
+          "pois",
+          "uma vez que"
+        ],
+        "fallbackChoices": [
+          "visto que",
+          "apesar de",
+          "em vez de",
+          "devido a"
+        ],
+        "after": " as peças que precisávamos testar chegaram dez dias depois do combinado, e o único testador estava de licença."
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Mehrere Ursachen nachvollziehbar verbinden",
+          "en": "Linking several causes clearly"
+        },
+        "rule": {
+          "de": "Visto que leitet eine begründende Aussage ein; hier werden verspätete Teile und fehlende Testkapazität als zwei Ursachen verbunden.",
+          "en": "Visto que introduces a reason; here late parts and unavailable testing capacity are linked as two causes."
+        },
+        "examples": [
+          {
+            "targetText": "Atrasamos duas semanas visto que as peças que precisávamos testar chegaram dez dias depois do combinado, e o único testador estava de licença.",
+            "base": {
+              "de": "Wir verspäteten uns um zwei Wochen, weil die zu testenden Teile zehn Tage zu spät kamen und die einzige Testperson krankgeschrieben war.",
+              "en": "We were two weeks late because the parts we needed to test arrived ten days late, and the only tester was on sick leave."
+            },
+            "highlights": [
+              "visto que"
+            ]
+          },
+          {
+            "targetText": "O teste ficou para depois visto que faltavam peças e ninguém podia substituir a pessoa responsável.",
+            "base": {
+              "de": "Der Test wurde verschoben, weil Teile fehlten und niemand die verantwortliche Person vertreten konnte.",
+              "en": "The test was postponed because parts were missing and nobody could replace the person responsible."
+            },
+            "highlights": [
+              "visto que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "visto que",
+          "kind": "connector",
+          "base": {
+            "de": "da / weil",
+            "en": "since / because"
+          }
+        },
+        {
+          "targetText": "é verdade que",
+          "kind": "frame",
+          "base": {
+            "de": "es stimmt, dass",
+            "en": "it is true that"
+          }
+        },
+        {
+          "targetText": "imprevisto",
+          "kind": "noun",
+          "base": {
+            "de": "unvorhergesehenes Ereignis",
+            "en": "unexpected event"
+          }
+        },
+        {
+          "targetText": "licença",
+          "kind": "noun",
+          "base": {
+            "de": "Freistellung / Krankschreibung",
+            "en": "leave"
+          }
+        },
+        {
+          "targetText": "fornecedor",
+          "kind": "noun",
+          "base": {
+            "de": "Lieferant",
+            "en": "supplier"
+          }
+        },
+        {
+          "targetText": "testador",
+          "kind": "noun",
+          "base": {
+            "de": "Testperson",
+            "en": "tester"
+          }
+        },
+        {
+          "targetText": "dependência",
+          "kind": "noun",
+          "base": {
+            "de": "Abhängigkeit",
+            "en": "dependence"
+          }
+        },
+        {
+          "targetText": "críticas",
+          "kind": "adjective",
+          "base": {
+            "de": "kritisch / entscheidend",
+            "en": "critical"
+          },
+          "lemma": "crítico"
+        },
+        {
+          "targetText": "combinado",
+          "kind": "noun",
+          "base": {
+            "de": "das Vereinbarte",
+            "en": "what was agreed"
+          }
+        },
+        {
+          "targetText": "peças",
+          "kind": "noun",
+          "base": {
+            "de": "Teile",
+            "en": "parts"
+          },
+          "lemma": "peça"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "peças",
+            "testar",
+            "chegaram"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "imprevisto",
+            "licença",
+            "liberado"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "treinar",
+            "cadastrar",
+            "críticas"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "imprevisto",
+        "familyKey": "imprevist",
+        "surface": "imprevisto",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "Um imprevisto na equipe revelou que o processo dependia de uma única pessoa.",
+          "base": {
+            "de": "Ein unerwartetes Ereignis im Team zeigte, dass der Ablauf von einer einzigen Person abhing.",
+            "en": "An unexpected event in the team revealed that the process depended on a single person."
+          }
+        },
+        "base": {
+          "de": "unvorhergesehenes Ereignis",
+          "en": "unexpected event"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "combinado in you1 is the substantivized agreement in depois do combinado, not a speaker description."
+          },
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "liberado in you2 belongs to the passive predicate of nada, meaning no item; it does not agree with the speaker."
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "como-funciona-o-clube-de-pontos",
+      "title": {
+        "de": "Ein Punktesystem einordnen",
+        "en": "Assessing a points scheme"
+      },
+      "situation": {
+        "de": "Ein Freund zeigt Ihnen das Merkblatt des fiktiven Clube Horizonte. Sie erklären das Punktesystem dieses Supermarkts.",
+        "en": "A friend shows you the leaflet for the fictional Clube Horizonte. You explain this supermarket’s points scheme."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "você",
+          "você",
+          "você"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutor",
+          "role": {
+            "de": "Freund",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Freund fragt: “Este folheto do Clube Horizonte fala em pontos e compras. Pode explicar o que acontece depois de acumular pontos?”",
+        "en": "Your friend asks: “Este folheto do Clube Horizonte fala em pontos e compras. Pode explicar o que acontece depois de acumular pontos?”"
+      },
+      "dialogue": [
+        {
+          "targetText": "Este folheto do Clube Horizonte fala em pontos e compras. Pode explicar o que acontece depois de acumular pontos?",
+          "base": {
+            "de": "Dieses Clube-Horizonte-Merkblatt spricht von Punkten und Einkäufen. Was passiert, nachdem man Punkte gesammelt hat?",
+            "en": "This Clube Horizonte leaflet mentions points and purchases. Can you explain what happens after you collect points?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Segundo o folheto, cada compra acumula pontos que você pode trocar depois de dez compras, de modo que a seguinte recebe desconto.",
+          "base": {
+            "de": "Laut Merkblatt sammelt jeder Einkauf Punkte, die du nach zehn Einkäufen einlösen kannst; dadurch wird der nächste Einkauf rabattiert.",
+            "en": "According to the leaflet, each purchase earns points you can redeem after ten purchases, so the next purchase receives a discount."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "você"
+        },
+        {
+          "targetText": "Mas isso parece uma maneira de me fazer gastar mais. Não acabo comprando coisas só para completar as dez compras?",
+          "base": {
+            "de": "Aber das soll mich doch zu mehr Ausgaben bringen. Kaufe ich am Ende nicht nur ein, um zehn Einkäufe zu erreichen?",
+            "en": "But that seems designed to make me spend more. Won’t I end up buying things just to reach ten purchases?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Ainda assim, só compensa se você mantém as compras habituais; aumentar a despesa para ganhar pontos pode consumir todo o desconto.",
+          "base": {
+            "de": "Trotzdem lohnt es sich nur bei den ohnehin üblichen Einkäufen; zusätzliche Ausgaben für Punkte können den ganzen Rabatt aufzehren.",
+            "en": "Even so, it only pays off if you keep to your usual shopping; spending more for points can consume the whole discount."
+          },
+          "speaker": "you",
+          "move": "rebut",
+          "register": "você"
+        },
+        {
+          "targetText": "Eu compro lá toda semana, sem mudar a lista. Então resuma: vale para mim e existe custo de cadastro?",
+          "base": {
+            "de": "Ich kaufe dort jede Woche mit unveränderter Liste. Kurz gesagt: Lohnt es sich für mich, und kostet die Anmeldung?",
+            "en": "I shop there weekly without changing my list. So, briefly: is it worthwhile for me, and is there a joining fee?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Em resumo, suas compras habituais já permitem aproveitar o desconto; pelo folheto, o cadastro é gratuito, sem necessidade de gastar mais.",
+          "base": {
+            "de": "Zusammengefasst reichen deine üblichen Einkäufe für den Rabatt; laut Merkblatt ist die Anmeldung kostenlos, Mehrkäufe sind nicht nötig.",
+            "en": "In summary, your usual shopping already lets you use the discount; according to the leaflet, joining is free, with no need to spend more."
+          },
+          "speaker": "you",
+          "move": "summarize",
+          "register": "você"
+        }
+      ],
+      "build": {
+        "framePrefix": "Segundo o folheto, ",
+        "chunks": [
+          "cada compra",
+          "acumula",
+          "pontos que",
+          "você pode",
+          "trocar"
+        ],
+        "distractors": [
+          "acumulam",
+          "podem trocar"
+        ],
+        "frameSuffix": " depois de dez compras, de modo que a seguinte recebe desconto."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", só compensa se você mantém as compras habituais; aumentar a despesa para ganhar pontos pode "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " todo o desconto."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Ainda assim",
+            "acceptedAnswers": [
+              "Ainda assim"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Ainda assim",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          },
+          {
+            "answer": "consumir",
+            "acceptedAnswers": [
+              "consumir"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "consumir: Infinitiv nach pode",
+              "en": "consumir: infinitive after pode"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", suas compras habituais já permitem aproveitar o desconto; pelo folheto, o cadastro é gratuito, sem necessidade de gastar mais."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Em resumo",
+            "acceptedAnswers": [
+              "Em resumo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Em resumo",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Segundo o folheto, cada compra ",
+        "answer": "acumula",
+        "acceptedAnswers": [
+          "acumula",
+          "gera",
+          "rende",
+          "dá",
+          "soma"
+        ],
+        "fallbackChoices": [
+          "acumula",
+          "acumulam",
+          "acumular",
+          "acumulando"
+        ],
+        "after": " pontos que você pode trocar depois de dez compras, de modo que a seguinte recebe desconto."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Die Folge eines Ablaufs nennen",
+          "en": "Stating the consequence of a process"
+        },
+        "rule": {
+          "de": "De modo que verbindet hier die beschriebene Punkteeinlösung mit ihrer Folge; recebe steht im Indikativ, weil die Regel des Merkblatts erklärt wird.",
+          "en": "De modo que links the described points redemption to its consequence; recebe is indicative because the sentence explains the leaflet’s rule."
+        },
+        "examples": [
+          {
+            "targetText": "Segundo o folheto, cada compra acumula pontos que você pode trocar depois de dez compras, de modo que a seguinte recebe desconto.",
+            "base": {
+              "de": "Laut Merkblatt sammelt jeder Einkauf Punkte, die du nach zehn Einkäufen einlösen kannst; dadurch wird der nächste Einkauf rabattiert.",
+              "en": "According to the leaflet, each purchase earns points you can redeem after ten purchases, so the next purchase receives a discount."
+            },
+            "highlights": [
+              "de modo que"
+            ]
+          },
+          {
+            "targetText": "Pelo folheto, o desconto entra na próxima compra, de modo que o valor aparece no recibo seguinte.",
+            "base": {
+              "de": "Laut Merkblatt gilt der Rabatt beim nächsten Einkauf, sodass sein Betrag auf dem nächsten Beleg erscheint.",
+              "en": "According to the leaflet, the discount applies to the next purchase, so its amount appears on the next receipt."
+            },
+            "highlights": [
+              "de modo que",
+              "aparece"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "de modo que",
+          "kind": "connector",
+          "base": {
+            "de": "sodass",
+            "en": "so that"
+          }
+        },
+        {
+          "targetText": "em resumo",
+          "kind": "frame",
+          "base": {
+            "de": "zusammengefasst",
+            "en": "in summary"
+          }
+        },
+        {
+          "targetText": "acumula",
+          "kind": "verb",
+          "base": {
+            "de": "sammelt an",
+            "en": "accumulates"
+          },
+          "lemma": "acumular"
+        },
+        {
+          "targetText": "folheto",
+          "kind": "noun",
+          "base": {
+            "de": "Merkblatt",
+            "en": "leaflet"
+          }
+        },
+        {
+          "targetText": "habituais",
+          "kind": "adjective",
+          "base": {
+            "de": "üblich",
+            "en": "usual"
+          },
+          "lemma": "habitual"
+        },
+        {
+          "targetText": "despesa",
+          "kind": "noun",
+          "base": {
+            "de": "Ausgabe",
+            "en": "expense"
+          }
+        },
+        {
+          "targetText": "desconto",
+          "kind": "noun",
+          "base": {
+            "de": "Rabatt",
+            "en": "discount"
+          }
+        },
+        {
+          "targetText": "gratuito",
+          "kind": "adjective",
+          "base": {
+            "de": "kostenlos",
+            "en": "free of charge"
+          }
+        },
+        {
+          "targetText": "cadastro",
+          "kind": "noun",
+          "base": {
+            "de": "Anmeldung / Registrierung",
+            "en": "registration"
+          }
+        },
+        {
+          "targetText": "trocar",
+          "kind": "verb",
+          "base": {
+            "de": "eintauschen",
+            "en": "redeem / exchange"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "compra",
+            "acumula",
+            "trocar"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "habituais",
+            "despesa",
+            "consumir"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "resumo",
+            "gratuito",
+            "necessidade"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "acumular",
+        "familyKey": "acumul",
+        "surface": "acumula",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Cada compra acumula pontos segundo as regras deste clube, sem exigir itens fora da lista habitual.",
+          "base": {
+            "de": "Jeder Einkauf sammelt nach den Clubregeln Punkte, ohne Waren außerhalb der üblichen Liste zu verlangen.",
+            "en": "Each purchase earns points under this club’s rules without requiring items beyond the usual shopping list."
+          }
+        },
+        "base": {
+          "de": "ansammeln",
+          "en": "accumulate"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "cada in you1 is an invariable determiner modifying compra, not a speaker participle."
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "por-que-troquei-de-operadora",
+      "title": {
+        "de": "Einen Anbieterwechsel begründen",
+        "en": "Explaining a provider switch"
+      },
+      "situation": {
+        "de": "Eine Nachbarin fragt nach Ihrem Wechsel des Internetanbieters. Sie vergleichen Ihre Erfahrungen und die Angaben Ihres neuen Vertrags.",
+        "en": "A neighbour asks about your change of internet provider. You compare your experiences and the terms of your new contract."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "você",
+          "você",
+          "você"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutor",
+          "role": {
+            "de": "Nachbarin",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihre Nachbarin fragt: “Vi que você trocou de operadora. Foi pelo preço ou aconteceu algum problema com a conexão de casa?”",
+        "en": "Your neighbour asks: “Vi que você trocou de operadora. Foi pelo preço ou aconteceu algum problema com a conexão de casa?”"
+      },
+      "dialogue": [
+        {
+          "targetText": "Vi que você trocou de operadora. Foi pelo preço ou aconteceu algum problema com a conexão de casa?",
+          "base": {
+            "de": "Ich habe gesehen, dass du den Anbieter gewechselt hast. Wegen des Preises oder wegen Problemen mit der Verbindung zu Hause?",
+            "en": "I noticed you changed providers. Was it the price, or did something happen with your home connection?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Troquei sobretudo pela queda do sinal que interrompia minhas tarefas profissionais à noite e pelo aumento do preço depois do primeiro ano.",
+          "base": {
+            "de": "Ich wechselte vor allem wegen der Signalausfälle, die abends meine beruflichen Aufgaben unterbrachen, und wegen der Preiserhöhung nach dem ersten Jahr.",
+            "en": "I switched mainly because of signal drops interrupting my work tasks in the evening and the price increase after the first year."
+          },
+          "speaker": "you",
+          "move": "reason",
+          "register": "você"
+        },
+        {
+          "targetText": "Mas a nova também recebe reclamações. Como sabe que não vai ter os mesmos problemas com outro contrato?",
+          "base": {
+            "de": "Aber über den neuen Anbieter gibt es auch Beschwerden. Woher weißt du, dass im neuen Vertrag nicht dieselben Probleme auftreten?",
+            "en": "But the new provider gets complaints too. How do you know you will not have the same problems under another contract?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Enquanto a antiga caía toda noite, a nova caiu uma vez em dois meses; neste contrato, o preço fica fixo durante um ano.",
+          "base": {
+            "de": "Während die alte Verbindung jeden Abend ausfiel, fiel die neue einmal in zwei Monaten aus; dieser Vertrag fixiert den Preis für ein Jahr.",
+            "en": "While the old connection dropped every night, the new one dropped once in two months; this contract fixes the price for a year."
+          },
+          "speaker": "you",
+          "move": "compare",
+          "register": "você"
+        },
+        {
+          "targetText": "Eu quase só uso a internet para ver filmes. Com essa diferença de preço, você acha que compensa para mim?",
+          "base": {
+            "de": "Ich nutze Internet fast nur für Filme. Lohnt sich der Wechsel bei diesem Preisunterschied deiner Meinung nach für mich?",
+            "en": "I mostly use the internet for films. With that price difference, do you think the switch is worthwhile for me?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "No fim das contas vale a pena para meu trabalho; para seus filmes, talvez não, se as interrupções não atrapalham tanto.",
+          "base": {
+            "de": "Für meine Arbeit lohnt es sich letztlich; für deine Filme vielleicht nicht, wenn die Unterbrechungen nicht so sehr stören.",
+            "en": "Ultimately it is worthwhile for my work; perhaps not for your films if the interruptions do not bother you as much."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "você"
+        }
+      ],
+      "build": {
+        "framePrefix": "Troquei sobretudo ",
+        "chunks": [
+          "pela queda",
+          "do sinal que",
+          "interrompia",
+          "minhas tarefas",
+          "profissionais"
+        ],
+        "distractors": [
+          "interrompiam",
+          "meu trabalho"
+        ],
+        "frameSuffix": " à noite e pelo aumento do preço depois do primeiro ano."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " a antiga caía toda noite, a nova "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " uma vez em dois meses; neste contrato, o preço fica fixo durante um ano."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Enquanto",
+            "acceptedAnswers": [
+              "Enquanto"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Enquanto",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          },
+          {
+            "answer": "caiu",
+            "acceptedAnswers": [
+              "caiu"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "cair: 3. Person Singular, einfaches Perfekt Indikativ",
+              "en": "cair: third-person singular, preterite indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "No fim das contas "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " para meu trabalho; para seus filmes, talvez não, se as interrupções não atrapalham tanto."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "vale a pena",
+            "acceptedAnswers": [
+              "vale a pena"
+            ],
+            "kind": "frame",
+            "choices": [
+              "vale a pena",
+              "apesar de",
+              "em vez de",
+              "devido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Troquei ",
+        "answer": "sobretudo",
+        "acceptedAnswers": [
+          "sobretudo",
+          "principalmente",
+          "especialmente"
+        ],
+        "fallbackChoices": [
+          "sobretudo",
+          "apesar",
+          "durante",
+          "enquanto"
+        ],
+        "after": " pela queda do sinal que interrompia minhas tarefas profissionais à noite e pelo aumento do preço depois do primeiro ano."
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Ursachen mit Nomen ausdrücken",
+          "en": "Expressing causes with nouns"
+        },
+        "rule": {
+          "de": "Pela queda und pelo aumento nennen Vorgänge als Nomen und verbinden sie mit der begründeten Handlung troquei.",
+          "en": "Pela queda and pelo aumento name processes as nouns and connect them to the action being explained, troquei."
+        },
+        "examples": [
+          {
+            "targetText": "Troquei sobretudo pela queda do sinal que interrompia minhas tarefas profissionais à noite e pelo aumento do preço depois do primeiro ano.",
+            "base": {
+              "de": "Ich wechselte vor allem wegen der Signalausfälle, die abends meine beruflichen Aufgaben unterbrachen, und wegen der Preiserhöhung nach dem ersten Jahr.",
+              "en": "I switched mainly because of signal drops interrupting my work tasks in the evening and the price increase after the first year."
+            },
+            "highlights": [
+              "pela queda",
+              "pelo aumento"
+            ]
+          },
+          {
+            "targetText": "Mudei de plano pela queda do sinal e pelo aumento da mensalidade, porque os dois afetavam meu trabalho.",
+            "base": {
+              "de": "Ich wechselte wegen des Signalausfalls und der höheren Monatsgebühr den Tarif, weil beides meine Arbeit beeinträchtigte.",
+              "en": "I changed plans due to signal drops and a higher monthly fee, as both affected my work."
+            },
+            "highlights": [
+              "pela queda",
+              "pelo aumento"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "enquanto",
+          "kind": "connector",
+          "base": {
+            "de": "während / wohingegen",
+            "en": "while / whereas"
+          }
+        },
+        {
+          "targetText": "vale a pena",
+          "kind": "frame",
+          "base": {
+            "de": "es lohnt sich",
+            "en": "it is worthwhile"
+          }
+        },
+        {
+          "targetText": "sobretudo",
+          "kind": "adverb",
+          "base": {
+            "de": "vor allem",
+            "en": "mainly"
+          }
+        },
+        {
+          "targetText": "queda",
+          "kind": "noun",
+          "base": {
+            "de": "Ausfall / Abfall",
+            "en": "drop / outage"
+          }
+        },
+        {
+          "targetText": "aumento",
+          "kind": "noun",
+          "base": {
+            "de": "Erhöhung",
+            "en": "increase"
+          }
+        },
+        {
+          "targetText": "sinal",
+          "kind": "noun",
+          "base": {
+            "de": "Signal",
+            "en": "signal"
+          }
+        },
+        {
+          "targetText": "mensalidade",
+          "kind": "noun",
+          "base": {
+            "de": "Monatsgebühr",
+            "en": "monthly fee"
+          }
+        },
+        {
+          "targetText": "interrompia",
+          "kind": "verb",
+          "base": {
+            "de": "unterbrach",
+            "en": "interrupted"
+          },
+          "lemma": "interromper"
+        },
+        {
+          "targetText": "talvez",
+          "kind": "adverb",
+          "base": {
+            "de": "vielleicht",
+            "en": "perhaps"
+          }
+        },
+        {
+          "targetText": "contrato",
+          "kind": "noun",
+          "base": {
+            "de": "Vertrag",
+            "en": "contract"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "queda",
+            "sinal",
+            "interrompia"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "antiga",
+            "caiu",
+            "fixo"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "pena",
+            "filmes",
+            "interrupções"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "sobretudo",
+        "familyKey": "sobretudo",
+        "surface": "sobretudo",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "A conexão importa sobretudo para quem depende dela durante o trabalho.",
+          "base": {
+            "de": "Die Verbindung ist vor allem für Menschen wichtig, die bei der Arbeit darauf angewiesen sind.",
+            "en": "The connection matters especially to people who depend on it for work."
+          }
+        },
+        "base": {
+          "de": "vor allem",
+          "en": "mainly"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "queda in you1 is the noun drop, not a speaker adjective."
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "como-recorrer-da-multa",
+      "title": {
+        "de": "Die Schritte auf einem Bescheid erklären",
+        "en": "Explaining the steps on a notice"
+      },
+      "situation": {
+        "de": "Ein Arbeitskontakt zeigt Ihnen einen fiktiven Parkbescheid. Sie erklären nur das dort beschriebene Verfahren, ohne allgemeine Rechtsregeln anzunehmen.",
+        "en": "A colleague shows you a fictional parking notice. You explain only the procedure described there, without assuming general legal rules."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "você",
+          "você",
+          "você"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutor",
+          "role": {
+            "de": "Arbeitskontakt",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Gegenüber fragt: “Recebi esta multa e quero entender o recurso descrito no aviso. Pode explicar os passos antes de eu começar?”",
+        "en": "Your colleague asks: “Recebi esta multa e quero entender o recurso descrito no aviso. Pode explicar os passos antes de eu começar?”"
+      },
+      "dialogue": [
+        {
+          "targetText": "Recebi esta multa e quero entender o recurso descrito no aviso. Pode explicar os passos antes de eu começar?",
+          "base": {
+            "de": "Ich habe diesen Bescheid bekommen und möchte den beschriebenen Einspruch verstehen. Erklärst du die Schritte, bevor ich beginne?",
+            "en": "I received this fine and want to understand the appeal described in the notice. Can you explain the steps before I start?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Segundo este aviso, o recurso exige um formulário que é preenchido no site; a foto da placa é anexada, e a resposta chega por e-mail.",
+          "base": {
+            "de": "Laut diesem Bescheid braucht der Einspruch ein online ausgefülltes Formular; das Schildfoto wird angehängt, und die Antwort kommt per E-Mail.",
+            "en": "According to this notice, the appeal requires a form completed online; the sign photo is attached, and the reply arrives by email."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "você"
+        },
+        {
+          "targetText": "Mas eu não fotografei a placa naquele dia. O aviso permite enviar o pedido apenas com minha descrição?",
+          "base": {
+            "de": "Aber ich habe das Schild damals nicht fotografiert. Darf ich laut Bescheid nur meine Beschreibung einreichen?",
+            "en": "But I did not photograph the sign that day. Does the notice allow a request based only on my description?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Em outras palavras, este aviso apresenta a foto como prova principal; sem ela, sobra só a sua descrição, sem garantia de aceitação.",
+          "base": {
+            "de": "Anders gesagt nennt dieser Bescheid das Foto als Hauptbeleg; ohne es bleibt nur deine Beschreibung, ohne Annahmegarantie.",
+            "en": "In other words, this notice presents the photo as the main evidence; without it, only your description remains, with no guarantee of acceptance."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "você"
+        },
+        {
+          "targetText": "A placa continua lá. Qual seria o primeiro passo agora, antes de preencher qualquer coisa no site?",
+          "base": {
+            "de": "Das Schild steht noch dort. Was wäre jetzt der erste Schritt, bevor ich online etwas ausfülle?",
+            "en": "The sign is still there. What would be the first step now, before filling anything in online?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Sugiro voltar hoje e fotografar a placa, indicando a data real da foto, antes de abrir o formulário do recurso.",
+          "base": {
+            "de": "Ich schlage vor, heute zurückzugehen, das Schild mit Angabe des tatsächlichen Fotodatums zu fotografieren und erst dann das Einspruchsformular zu öffnen.",
+            "en": "I suggest going back today and photographing the sign, giving the photo’s actual date, before opening the appeal form."
+          },
+          "speaker": "you",
+          "move": "propose",
+          "register": "você"
+        }
+      ],
+      "build": {
+        "framePrefix": "Segundo este aviso, ",
+        "chunks": [
+          "o recurso",
+          "exige",
+          "um formulário",
+          "que é",
+          "preenchido"
+        ],
+        "distractors": [
+          "exigem",
+          "preenchidas"
+        ],
+        "frameSuffix": " no site; a foto da placa é anexada, e a resposta chega por e-mail."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", este aviso "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " a foto como prova principal; sem ela, sobra só a sua descrição, sem garantia de aceitação."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Em outras palavras",
+            "acceptedAnswers": [
+              "Em outras palavras"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Em outras palavras",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          },
+          {
+            "answer": "apresenta",
+            "acceptedAnswers": [
+              "apresenta"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "apresentar: 3. Person Singular, Präsens Indikativ",
+              "en": "apresentar: third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " voltar hoje e fotografar a placa, indicando a data real da foto, antes de abrir o formulário do recurso."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Sugiro",
+            "acceptedAnswers": [
+              "Sugiro"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Sugiro",
+              "Apesar de",
+              "Devido a",
+              "Durante"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Segundo este aviso, o recurso ",
+        "answer": "exige",
+        "acceptedAnswers": [
+          "exige",
+          "requer",
+          "pede"
+        ],
+        "fallbackChoices": [
+          "exige",
+          "exigem",
+          "exigir",
+          "exigindo"
+        ],
+        "after": " um formulário que é preenchido no site; a foto da placa é anexada, e a resposta chega por e-mail."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Die einzelnen Bearbeitungsschritte beschreiben",
+          "en": "Describing individual processing steps"
+        },
+        "rule": {
+          "de": "É preenchido bezieht sich auf formulário, é anexada auf foto; die unterschiedlichen Endungen zeigen, zu welchem Nomen der jeweilige Schritt gehört.",
+          "en": "É preenchido refers to formulário and é anexada to foto; their different endings show which noun each step concerns."
+        },
+        "examples": [
+          {
+            "targetText": "Segundo este aviso, o recurso exige um formulário que é preenchido no site; a foto da placa é anexada, e a resposta chega por e-mail.",
+            "base": {
+              "de": "Laut diesem Bescheid braucht der Einspruch ein online ausgefülltes Formular; das Schildfoto wird angehängt, und die Antwort kommt per E-Mail.",
+              "en": "According to this notice, the appeal requires a form completed online; the sign photo is attached, and the reply arrives by email."
+            },
+            "highlights": [
+              "é preenchido",
+              "é anexada"
+            ]
+          },
+          {
+            "targetText": "Neste aviso, o formulário é enviado pelo site e a foto é anexada ao mesmo pedido.",
+            "base": {
+              "de": "In diesem Bescheid wird das Formular online abgeschickt und das Foto demselben Antrag beigefügt.",
+              "en": "In this notice, the form is submitted online and the photo is attached to the same request."
+            },
+            "highlights": [
+              "é enviado",
+              "é anexada"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "em outras palavras",
+          "kind": "frame",
+          "base": {
+            "de": "anders gesagt",
+            "en": "in other words"
+          }
+        },
+        {
+          "targetText": "segundo",
+          "kind": "frame",
+          "base": {
+            "de": "laut / gemäß",
+            "en": "according to"
+          }
+        },
+        {
+          "targetText": "recurso",
+          "kind": "noun",
+          "base": {
+            "de": "Einspruch / Rechtsbehelf",
+            "en": "appeal"
+          }
+        },
+        {
+          "targetText": "placa",
+          "kind": "noun",
+          "base": {
+            "de": "Schild",
+            "en": "sign"
+          }
+        },
+        {
+          "targetText": "preenchido",
+          "kind": "verb",
+          "base": {
+            "de": "ausgefüllt",
+            "en": "filled in"
+          },
+          "lemma": "preencher"
+        },
+        {
+          "targetText": "anexada",
+          "kind": "verb",
+          "base": {
+            "de": "beigefügt",
+            "en": "attached"
+          },
+          "lemma": "anexar"
+        },
+        {
+          "targetText": "aceitação",
+          "kind": "noun",
+          "base": {
+            "de": "Annahme / Anerkennung",
+            "en": "acceptance"
+          }
+        },
+        {
+          "targetText": "prova",
+          "kind": "noun",
+          "base": {
+            "de": "Beleg / Nachweis",
+            "en": "evidence"
+          }
+        },
+        {
+          "targetText": "formulário",
+          "kind": "noun",
+          "base": {
+            "de": "Formular",
+            "en": "form"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "recurso",
+            "formulário",
+            "preenchido"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "apresenta",
+            "prova",
+            "aceitação"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "fotografar",
+            "indicando",
+            "data"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "recurso",
+        "familyKey": "recurs",
+        "surface": "recurso",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "O recurso deste aviso depende dos documentos apresentados, sem promessa de uma decisão favorável.",
+          "base": {
+            "de": "Der Einspruch nach diesem Bescheid hängt von den eingereichten Unterlagen ab, ohne Zusage einer günstigen Entscheidung.",
+            "en": "The appeal described in this notice depends on the documents submitted, with no promise of a favourable decision."
+          }
+        },
+        "base": {
+          "de": "Einspruch / Rechtsbehelf",
+          "en": "appeal"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "preenchido in you1 agrees with formulário; anexada agrees with foto, not the speaker."
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "por-que-a-horta-falhou",
+      "title": {
+        "de": "Aus einer gescheiterten Gartenaktion lernen",
+        "en": "Learning from a failed community garden"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt, warum die Gemeinschaftsbeete an der Praça das Flores eingegangen sind. Sie besprechen die Organisation des Sommers.",
+        "en": "A friend asks why the community garden at Praça das Flores failed. You discuss how the summer work was organized."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "você",
+          "você",
+          "você"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutor",
+          "role": {
+            "de": "Freundin",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihre Freundin fragt: “Passei pela Praça das Flores e vi a horta seca. O que aconteceu com o projeto durante o verão?”",
+        "en": "Your friend asks: “Passei pela Praça das Flores e vi a horta seca. O que aconteceu com o projeto durante o verão?”"
+      },
+      "dialogue": [
+        {
+          "targetText": "Passei pela Praça das Flores e vi a horta seca. O que aconteceu com o projeto durante o verão?",
+          "base": {
+            "de": "Ich kam an der Praça das Flores vorbei und sah die vertrockneten Beete. Was ist im Sommer mit dem Projekt passiert?",
+            "en": "I passed Praça das Flores and saw the dry garden. What happened to the project over the summer?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "A horta falhou pela falta de rega que comprometeu o desenvolvimento das plantas no verão e pelo excesso de tarefas nas mãos de poucas pessoas.",
+          "base": {
+            "de": "Der Garten scheiterte an fehlender Bewässerung, die im Sommer das Pflanzenwachstum beeinträchtigte, und an zu vielen Aufgaben für zu wenige Personen.",
+            "en": "The garden failed because a lack of watering damaged plant growth in summer and too many tasks fell to too few people."
+          },
+          "speaker": "you",
+          "move": "reason",
+          "register": "você"
+        },
+        {
+          "targetText": "Mas havia dez voluntários na lista. Como o trabalho ficou concentrado em poucas pessoas com um grupo tão grande?",
+          "base": {
+            "de": "Aber zehn Freiwillige standen auf der Liste. Wie konzentrierte sich die Arbeit bei so vielen auf wenige Personen?",
+            "en": "But there were ten volunteers on the list. How did so few people end up doing the work with such a large group?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "É verdade que havia gente, mas subestimamos o impacto das viagens de janeiro: quase todos saíram juntos, e a lista não garantia presença.",
+          "base": {
+            "de": "Es gab tatsächlich genug Leute, aber wir unterschätzten die Auswirkungen der Januarreisen: Fast alle fuhren gleichzeitig weg; die Liste garantierte keine Anwesenheit.",
+            "en": "It is true that there were people, but we underestimated the effect of January travel: almost everyone left together, and the list did not guarantee attendance."
+          },
+          "speaker": "you",
+          "move": "concede",
+          "register": "você"
+        },
+        {
+          "targetText": "Vamos discutir uma nova tentativa no grupo. Pode resumir as condições mínimas para não repetir o mesmo problema?",
+          "base": {
+            "de": "Wir wollen im Kreis einen neuen Versuch besprechen. Fasst du die Mindestbedingungen zusammen, damit es nicht wieder so kommt?",
+            "en": "We are discussing another attempt with the group. Can you summarize the minimum conditions for avoiding the same problem?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Em resumo: escala de rega confirmada antes das férias e uma pessoa responsável por mês; sem isso, não vale recomeçar.",
+          "base": {
+            "de": "Zusammengefasst: vor den Ferien bestätigter Gießplan und monatlich eine verantwortliche Person; ohne das lohnt kein Neustart.",
+            "en": "In summary: a watering rota confirmed before the holidays and one responsible person each month; without that, restarting is not worthwhile."
+          },
+          "speaker": "you",
+          "move": "summarize",
+          "register": "você"
+        }
+      ],
+      "build": {
+        "framePrefix": "A horta falhou ",
+        "chunks": [
+          "pela falta",
+          "de rega que",
+          "comprometeu",
+          "o desenvolvimento",
+          "das plantas"
+        ],
+        "distractors": [
+          "comprometeram",
+          "pelas faltas"
+        ],
+        "frameSuffix": " no verão e pelo excesso de tarefas nas mãos de poucas pessoas."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " havia gente, mas "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " o impacto das viagens de janeiro: quase todos saíram juntos, e a lista não garantia presença."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "É verdade que",
+            "acceptedAnswers": [
+              "É verdade que",
+              "E verdade que"
+            ],
+            "kind": "frame",
+            "choices": [
+              "É verdade que",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          },
+          {
+            "answer": "subestimamos",
+            "acceptedAnswers": [
+              "subestimamos"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "subestimar: 1. Person Plural, einfaches Perfekt Indikativ",
+              "en": "subestimar: first-person plural, preterite indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": escala de rega confirmada antes das férias e uma pessoa responsável por mês; sem isso, não vale recomeçar."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Em resumo",
+            "acceptedAnswers": [
+              "Em resumo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Em resumo",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "A horta falhou pela ",
+        "answer": "falta",
+        "acceptedAnswers": [
+          "falta",
+          "ausência",
+          "ausencia",
+          "escassez"
+        ],
+        "fallbackChoices": [
+          "falta",
+          "faltar",
+          "faltando",
+          "faltam"
+        ],
+        "after": " de rega que comprometeu o desenvolvimento das plantas no verão e pelo excesso de tarefas nas mãos de poucas pessoas."
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Ein Scheitern mit konkreten Ursachen erklären",
+          "en": "Explaining failure through concrete causes"
+        },
+        "rule": {
+          "de": "Pela falta de und pelo excesso de nennen zwei Ursachen als Nomengruppen und zeigen, was fehlte und was zu viel war.",
+          "en": "Pela falta de and pelo excesso de name two causes as noun phrases, showing what was lacking and what was excessive."
+        },
+        "examples": [
+          {
+            "targetText": "A horta falhou pela falta de rega que comprometeu o desenvolvimento das plantas no verão e pelo excesso de tarefas nas mãos de poucas pessoas.",
+            "base": {
+              "de": "Der Garten scheiterte an fehlender Bewässerung, die im Sommer das Pflanzenwachstum beeinträchtigte, und an zu vielen Aufgaben für zu wenige Personen.",
+              "en": "The garden failed because a lack of watering damaged plant growth in summer and too many tasks fell to too few people."
+            },
+            "highlights": [
+              "pela falta de rega",
+              "pelo excesso de tarefas"
+            ]
+          },
+          {
+            "targetText": "O mutirão perdeu força pela falta de planejamento e pelo excesso de tarefas para um único sábado.",
+            "base": {
+              "de": "Die Gemeinschaftsaktion verlor durch fehlende Planung und zu viele Aufgaben für einen einzigen Samstag an Schwung.",
+              "en": "The community workday lost momentum through a lack of planning and too many tasks for a single Saturday."
+            },
+            "highlights": [
+              "pela falta de planejamento",
+              "pelo excesso de tarefas"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "é verdade que",
+          "kind": "frame",
+          "base": {
+            "de": "es stimmt, dass",
+            "en": "it is true that"
+          }
+        },
+        {
+          "targetText": "em resumo",
+          "kind": "frame",
+          "base": {
+            "de": "zusammengefasst",
+            "en": "in summary"
+          }
+        },
+        {
+          "targetText": "subestimamos",
+          "kind": "verb",
+          "base": {
+            "de": "wir unterschätzten",
+            "en": "we underestimated"
+          },
+          "lemma": "subestimar"
+        },
+        {
+          "targetText": "rega",
+          "kind": "noun",
+          "base": {
+            "de": "Bewässerung / Gießen",
+            "en": "watering"
+          }
+        },
+        {
+          "targetText": "escala",
+          "kind": "noun",
+          "base": {
+            "de": "Dienstplan / Einteilung",
+            "en": "rota"
+          }
+        },
+        {
+          "targetText": "excesso",
+          "kind": "noun",
+          "base": {
+            "de": "Übermaß",
+            "en": "excess"
+          }
+        },
+        {
+          "targetText": "presença",
+          "kind": "noun",
+          "base": {
+            "de": "Anwesenheit",
+            "en": "attendance"
+          }
+        },
+        {
+          "targetText": "planejamento",
+          "kind": "noun",
+          "base": {
+            "de": "Planung",
+            "en": "planning"
+          }
+        },
+        {
+          "targetText": "gente",
+          "kind": "noun",
+          "base": {
+            "de": "Leute",
+            "en": "people"
+          }
+        },
+        {
+          "targetText": "mutirão",
+          "kind": "noun",
+          "base": {
+            "de": "Gemeinschaftsaktion",
+            "en": "community workday"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "falta",
+            "rega",
+            "comprometeu"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "subestimamos",
+            "viagens",
+            "presença"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "escala",
+            "confirmada",
+            "responsável"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "subestimar",
+        "familyKey": "subestim",
+        "surface": "subestimamos",
+        "turnIndex": 3,
+        "pos": "verb",
+        "example": {
+          "targetText": "Subestimamos o efeito das férias e deixamos a horta sem uma escala de rega.",
+          "base": {
+            "de": "Wir unterschätzten die Ferienwirkung und ließen den Garten ohne Gießplan zurück.",
+            "en": "We underestimated the effect of the holidays and left the garden without a watering rota."
+          }
+        },
+        "base": {
+          "de": "unterschätzen",
+          "en": "underestimate"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "confirmada in you3 agrees with escala, not the speaker."
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "como-funciona-o-agendamento-na-clinica",
+      "title": {
+        "de": "Den Ablauf einer Praxis erklären",
+        "en": "Explaining a clinic’s booking process"
+      },
+      "situation": {
+        "de": "Sie helfen am Empfang der fiktiven Clínica do Bairro. Die Koordinatorin prüft anhand des Praxisplans, wie Sie den Buchungsablauf erklären.",
+        "en": "You volunteer at reception in the fictional Clínica do Bairro. The coordinator uses the clinic’s flowchart to check your explanation of booking."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "senhor",
+          "senhor",
+          "senhor"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutor",
+          "role": {
+            "de": "Praxiskoordinatorin",
+            "en": "clinic coordinator"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Koordinatorin fragt: “Neste fluxo da Clínica do Bairro, como explicaria o caminho do cadastro até a consulta para quem chega ao balcão?”",
+        "en": "The coordinator asks: “Neste fluxo da Clínica do Bairro, como explicaria o caminho do cadastro até a consulta para quem chega ao balcão?”"
+      },
+      "dialogue": [
+        {
+          "targetText": "Neste fluxo da Clínica do Bairro, como explicaria o caminho do cadastro até a consulta para quem chega ao balcão?",
+          "base": {
+            "de": "Wie würden Sie nach diesem Ablaufplan der Clínica do Bairro am Empfang den Weg von der Anmeldung zum Termin erklären?",
+            "en": "Using this Clínica do Bairro flowchart, how would you explain the path from registration to consultation to someone at reception?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Primeiro precisa-se de cadastro no balcão; a etapa seguinte é a triagem telefônica, e só depois se chega à marcação da consulta.",
+          "base": {
+            "de": "Zuerst ist die Anmeldung am Empfang nötig; als nächste Stufe folgt die telefonische Ersteinschätzung, erst danach die Terminvergabe.",
+            "en": "First registration at reception is needed; the next stage is telephone triage, and only then comes appointment booking."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "senhor"
+        },
+        {
+          "targetText": "E se a pessoa disser que é urgente? O que você pode explicar sem decidir algo fora da sua função?",
+          "base": {
+            "de": "Und wenn die Person sagt, es sei dringend? Was können Sie erklären, ohne außerhalb Ihrer Zuständigkeit zu entscheiden?",
+            "en": "And if the person says it is urgent? What can you explain without making a decision outside your role?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Em outras palavras, neste fluxo a urgência é avaliada na triagem; no balcão explico o caminho, sem prometer uma vaga.",
+          "base": {
+            "de": "Anders gesagt wird die Dringlichkeit nach diesem Ablauf in der Ersteinschätzung beurteilt; am Empfang erkläre ich den Weg, ohne einen Termin zuzusagen.",
+            "en": "In other words, this flow has urgency assessed at triage; at reception I explain the process without promising a slot."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "senhor"
+        },
+        {
+          "targetText": "E quando ninguém atende na triagem por telefone? O fluxo não mostra esse caso, mas a pessoa continua esperando.",
+          "base": {
+            "de": "Und wenn bei der telefonischen Ersteinschätzung niemand abnimmt? Dieser Fall fehlt im Plan, aber die Person wartet weiter.",
+            "en": "And when nobody answers the triage phone? The flowchart does not cover that case, but the person is still waiting."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "A senhora poderia confirmar comigo o encaminhamento nesse caso, para eu seguir a orientação da clínica sem inventar uma resposta?",
+          "base": {
+            "de": "Könnten Sie mit mir das Vorgehen in diesem Fall klären, damit ich den Praxisvorgaben folge, ohne eine Antwort zu erfinden?",
+            "en": "Could you confirm the next step with me in that case so I can follow the clinic’s guidance without inventing an answer?"
+          },
+          "speaker": "you",
+          "move": "request",
+          "register": "senhor"
+        }
+      ],
+      "build": {
+        "framePrefix": "Primeiro precisa-se de cadastro no balcão; a etapa seguinte é ",
+        "chunks": [
+          "a triagem telefônica,",
+          "e só",
+          "depois se chega",
+          "à marcação",
+          "da consulta."
+        ],
+        "distractors": [
+          "as triagens telefônicas",
+          "chegam à"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", neste fluxo a urgência é "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " na triagem; no balcão explico o caminho, sem prometer uma vaga."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Em outras palavras",
+            "acceptedAnswers": [
+              "Em outras palavras"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Em outras palavras",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          },
+          {
+            "answer": "avaliada",
+            "acceptedAnswers": [
+              "avaliada"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "avaliar: Partizip feminin Singular, passend zu urgência",
+              "en": "avaliar: feminine singular past participle agreeing with urgência"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A senhora "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " confirmar comigo o encaminhamento nesse caso, para eu seguir a orientação da clínica sem inventar uma resposta?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "poderia",
+            "acceptedAnswers": [
+              "poderia"
+            ],
+            "kind": "frame",
+            "choices": [
+              "poderia",
+              "apesar de",
+              "devido a",
+              "durante"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Primeiro ",
+        "answer": "precisa-se",
+        "acceptedAnswers": [
+          "precisa-se",
+          "necessita-se",
+          "se precisa",
+          "se necessita"
+        ],
+        "fallbackChoices": [
+          "precisa-se",
+          "precisam-se",
+          "precisando",
+          "precisar"
+        ],
+        "after": " de cadastro no balcão; a etapa seguinte é a triagem telefônica, e só depois se chega à marcação da consulta."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen Ablauf ohne festes Handlungssubjekt darstellen",
+          "en": "Describing a process without naming a subject"
+        },
+        "rule": {
+          "de": "Bei precisa-se de und se chega à bleibt die handelnde Person unbestimmt; cadastro und marcação stehen nach Präpositionen und sind keine grammatischen Subjekte.",
+          "en": "In precisa-se de and se chega à, the person acting is unspecified; cadastro and marcação follow prepositions and are not grammatical subjects."
+        },
+        "examples": [
+          {
+            "targetText": "Primeiro precisa-se de cadastro no balcão; a etapa seguinte é a triagem telefônica, e só depois se chega à marcação da consulta.",
+            "base": {
+              "de": "Zuerst ist die Anmeldung am Empfang nötig; als nächste Stufe folgt die telefonische Ersteinschätzung, erst danach die Terminvergabe.",
+              "en": "First registration at reception is needed; the next stage is telephone triage, and only then comes appointment booking."
+            },
+            "highlights": [
+              "precisa-se de",
+              "se chega à"
+            ]
+          },
+          {
+            "targetText": "Neste fluxo, precisa-se de cadastro antes da triagem; só depois se chega à escolha de um horário.",
+            "base": {
+              "de": "Nach diesem Ablauf ist vor der Ersteinschätzung eine Anmeldung nötig; erst danach kommt die Auswahl eines Termins.",
+              "en": "In this flow, registration is needed before triage; only then comes the choice of an appointment time."
+            },
+            "highlights": [
+              "precisa-se de",
+              "se chega à"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "em outras palavras",
+          "kind": "frame",
+          "base": {
+            "de": "anders gesagt",
+            "en": "in other words"
+          }
+        },
+        {
+          "targetText": "precisa-se de",
+          "kind": "frame",
+          "base": {
+            "de": "es wird benötigt",
+            "en": "one needs"
+          }
+        },
+        {
+          "targetText": "etapa",
+          "kind": "noun",
+          "base": {
+            "de": "Stufe / Schritt",
+            "en": "stage"
+          }
+        },
+        {
+          "targetText": "triagem",
+          "kind": "noun",
+          "base": {
+            "de": "Ersteinschätzung / Triage",
+            "en": "triage"
+          }
+        },
+        {
+          "targetText": "urgência",
+          "kind": "noun",
+          "base": {
+            "de": "Dringlichkeit",
+            "en": "urgency"
+          }
+        },
+        {
+          "targetText": "encaminhamento",
+          "kind": "noun",
+          "base": {
+            "de": "Weiterleitung / weiteres Vorgehen",
+            "en": "referral / next step"
+          }
+        },
+        {
+          "targetText": "marcação",
+          "kind": "noun",
+          "base": {
+            "de": "Terminvergabe",
+            "en": "booking"
+          }
+        },
+        {
+          "targetText": "avaliada",
+          "kind": "verb",
+          "base": {
+            "de": "beurteilt",
+            "en": "assessed"
+          },
+          "lemma": "avaliar"
+        },
+        {
+          "targetText": "cadastro",
+          "kind": "noun",
+          "base": {
+            "de": "Anmeldung",
+            "en": "registration"
+          }
+        },
+        {
+          "targetText": "consulta",
+          "kind": "noun",
+          "base": {
+            "de": "Sprechstundentermin / Konsultation",
+            "en": "consultation / appointment"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "etapa",
+            "triagem",
+            "telefônica"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "urgência",
+            "avaliada",
+            "prometer"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "confirmar",
+            "encaminhamento",
+            "orientação"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "etapa",
+        "familyKey": "etapa",
+        "surface": "etapa",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Cada etapa deste fluxo tem uma função; o balcão não substitui a avaliação da triagem.",
+          "base": {
+            "de": "Jeder Schritt dieses Ablaufs hat eine Funktion; der Empfang ersetzt die Triagebeurteilung nicht.",
+            "en": "Each stage of this flow has a role; reception does not replace the triage assessment."
+          }
+        },
+        "base": {
+          "de": "Stufe / Schritt",
+          "en": "stage"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "PT-NOUN-AGREEMENT",
+            "reason": "avaliada in you2 agrees with urgência, not the speaker."
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "por-que-as-bicicletas-importam",
+      "title": {
+        "de": "Den Nutzen von Leihrädern erklären",
+        "en": "Explaining the benefit of shared bikes"
+      },
+      "situation": {
+        "de": "Bei einer Viertelversammlung geht es um Leihfahrräder oder zusätzliche Parkplätze. Eine skeptische Person stellt den Nutzen für Menschen ohne Fahrrad infrage.",
+        "en": "A neighbourhood meeting discusses shared bikes or more parking. A skeptical neighbour questions the benefit for people who do not cycle."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "você",
+          "você",
+          "você"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutor",
+          "role": {
+            "de": "skeptischer Nachbar",
+            "en": "skeptical neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ihr Nachbar fragt: “Eu não ando de bicicleta. Por que apoiar bicicletas compartilhadas em vez de abrir mais vagas aqui no bairro?”",
+        "en": "Your neighbour asks: “Eu não ando de bicicleta. Por que apoiar bicicletas compartilhadas em vez de abrir mais vagas aqui no bairro?”"
+      },
+      "dialogue": [
+        {
+          "targetText": "Eu não ando de bicicleta. Por que apoiar bicicletas compartilhadas em vez de abrir mais vagas aqui no bairro?",
+          "base": {
+            "de": "Ich fahre nicht Rad. Warum soll ich Leihräder statt weiterer Parkplätze im Viertel unterstützen?",
+            "en": "I do not cycle. Why support shared bikes instead of adding parking here in the neighbourhood?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Em comparação com vagas que atraem carros, as bicicletas podem substituir viagens curtas, enquanto novos estacionamentos mantêm essas viagens nas ruas.",
+          "base": {
+            "de": "Im Vergleich zu Parkplätzen, die Autos anziehen, können Fahrräder Kurzfahrten ersetzen, während neue Parkanlagen diese Fahrten auf der Straße halten.",
+            "en": "Compared with parking spaces that attract cars, bicycles can replace short trips, while new parking keeps those trips on the roads."
+          },
+          "speaker": "you",
+          "move": "compare",
+          "register": "você"
+        },
+        {
+          "targetText": "Mas ninguém vai pedalar nesse calor. Como uma proposta dessas pode melhorar alguma coisa para quem continua no ônibus?",
+          "base": {
+            "de": "Aber bei der Hitze fährt doch niemand Rad. Wie kann das etwas für Menschen verbessern, die weiter Bus fahren?",
+            "en": "But nobody will cycle in this heat. How can such a proposal improve anything for people who keep taking the bus?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Nas horas frescas, trocar o carro pela bicicleta tem uma consequência: menos trânsito, de modo que o ônibus pode circular melhor.",
+          "base": {
+            "de": "Zu kühleren Zeiten hat der Wechsel vom Auto aufs Rad eine Folge: weniger Verkehr, sodass der Bus besser vorankommen kann.",
+            "en": "In cooler hours, switching from cars to bikes has a consequence: less traffic, so buses may move more freely."
+          },
+          "speaker": "you",
+          "move": "explain",
+          "register": "você"
+        },
+        {
+          "targetText": "Então diga o benefício para mim, sem prometer o mesmo resultado em qualquer rua ou horário do dia.",
+          "base": {
+            "de": "Dann nenne meinen Nutzen, ohne für jede Straße und Tageszeit dasselbe Ergebnis zu versprechen.",
+            "en": "Then state the benefit for me without promising the same result on every street or at every time."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "No fim das contas, menos carros podem aliviar o trajeto do ônibus, o que resulta em ganho de tempo quando há adesão.",
+          "base": {
+            "de": "Letztlich können weniger Autos die Busstrecke entlasten, was bei entsprechender Nutzung einen Zeitgewinn ergibt.",
+            "en": "Ultimately, fewer cars can ease the bus route, resulting in time savings when people take up the scheme."
+          },
+          "speaker": "you",
+          "move": "conclude",
+          "register": "você"
+        }
+      ],
+      "build": {
+        "framePrefix": "Em comparação com ",
+        "chunks": [
+          "vagas que",
+          "atraem carros,",
+          "as bicicletas",
+          "podem substituir",
+          "viagens curtas,"
+        ],
+        "distractors": [
+          "atrai carros",
+          "podemos substituir"
+        ],
+        "frameSuffix": " enquanto novos estacionamentos mantêm essas viagens nas ruas."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Nas horas frescas, trocar o carro pela bicicleta tem uma consequência: menos trânsito, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " o ônibus pode "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " melhor."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "de modo que",
+            "acceptedAnswers": [
+              "de modo que"
+            ],
+            "kind": "connector",
+            "choices": [
+              "de modo que",
+              "apesar de",
+              "em vez de",
+              "devido a"
+            ]
+          },
+          {
+            "answer": "circular",
+            "acceptedAnswers": [
+              "circular"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "circular: Infinitiv nach pode",
+              "en": "circular: infinitive after pode"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "No fim das contas, menos carros podem aliviar o trajeto do ônibus, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ganho de tempo quando há adesão."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "o que resulta em",
+            "acceptedAnswers": [
+              "o que resulta em"
+            ],
+            "kind": "frame",
+            "choices": [
+              "o que resulta em",
+              "apesar dos",
+              "em vez das",
+              "devido às"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Em comparação com vagas que atraem carros, as bicicletas podem ",
+        "answer": "substituir",
+        "acceptedAnswers": [
+          "substituir",
+          "evitar",
+          "reduzir"
+        ],
+        "fallbackChoices": [
+          "substituir",
+          "substitui",
+          "substituem",
+          "substituição"
+        ],
+        "after": " viagens curtas, enquanto novos estacionamentos mantêm essas viagens nas ruas."
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine mögliche Folge erklären",
+          "en": "Explaining a possible consequence"
+        },
+        "rule": {
+          "de": "De modo que verbindet Ursache und mögliche Folge; pode schränkt die Aussage ein, statt einen sicheren Verkehrseffekt zu versprechen.",
+          "en": "De modo que connects cause and possible effect; pode qualifies the claim instead of promising a certain traffic outcome."
+        },
+        "examples": [
+          {
+            "targetText": "Nas horas frescas, trocar o carro pela bicicleta tem uma consequência: menos trânsito, de modo que o ônibus pode circular melhor.",
+            "base": {
+              "de": "Zu kühleren Zeiten hat der Wechsel vom Auto aufs Rad eine Folge: weniger Verkehr, sodass der Bus besser vorankommen kann.",
+              "en": "In cooler hours, switching from cars to bikes has a consequence: less traffic, so buses may move more freely."
+            },
+            "highlights": [
+              "de modo que",
+              "pode circular"
+            ]
+          },
+          {
+            "targetText": "Algumas pessoas trocam o carro pela bicicleta, de modo que o ônibus pode encontrar menos trânsito naquele trecho.",
+            "base": {
+              "de": "Einige Menschen wechseln vom Auto aufs Rad, sodass der Bus auf diesem Abschnitt weniger Verkehr vorfinden kann.",
+              "en": "Some people switch from cars to bikes, so buses may encounter less traffic on that stretch."
+            },
+            "highlights": [
+              "de modo que",
+              "pode encontrar"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "de modo que",
+          "kind": "connector",
+          "base": {
+            "de": "sodass",
+            "en": "so that"
+          }
+        },
+        {
+          "targetText": "em comparação com",
+          "kind": "frame",
+          "base": {
+            "de": "im Vergleich zu",
+            "en": "compared with"
+          }
+        },
+        {
+          "targetText": "consequência",
+          "kind": "noun",
+          "base": {
+            "de": "Folge / Auswirkung",
+            "en": "consequence"
+          }
+        },
+        {
+          "targetText": "substituir",
+          "kind": "verb",
+          "base": {
+            "de": "ersetzen",
+            "en": "replace"
+          }
+        },
+        {
+          "targetText": "adesão",
+          "kind": "noun",
+          "base": {
+            "de": "Beteiligung / Nutzung",
+            "en": "uptake"
+          }
+        },
+        {
+          "targetText": "trajeto",
+          "kind": "noun",
+          "base": {
+            "de": "Strecke",
+            "en": "route"
+          }
+        },
+        {
+          "targetText": "trânsito",
+          "kind": "noun",
+          "base": {
+            "de": "Straßenverkehr",
+            "en": "traffic"
+          }
+        },
+        {
+          "targetText": "frescas",
+          "kind": "adjective",
+          "base": {
+            "de": "kühl",
+            "en": "cool"
+          },
+          "lemma": "fresco"
+        },
+        {
+          "targetText": "calor",
+          "kind": "noun",
+          "base": {
+            "de": "Hitze",
+            "en": "heat"
+          }
+        },
+        {
+          "targetText": "vagas",
+          "kind": "noun",
+          "base": {
+            "de": "Stellplätze / Parkplätze",
+            "en": "parking spaces"
+          },
+          "lemma": "vaga"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "vagas",
+            "atraem",
+            "substituir"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "consequência",
+            "circular",
+            "frescas"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "aliviar",
+            "resulta",
+            "adesão"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "consequência",
+        "familyKey": "consequ",
+        "surface": "consequência",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "A consequência depende da adesão: sem substituir viagens de carro, o projeto pode ter pouco efeito no trânsito.",
+          "base": {
+            "de": "Die Wirkung hängt von der Nutzung ab: Ohne ersetzte Autofahrten kann das Projekt wenig am Verkehr ändern.",
+            "en": "The consequence depends on uptake: without replacing car trips, the scheme may have little effect on traffic."
+          }
+        },
+        "base": {
+          "de": "Folge / Auswirkung",
+          "en": "consequence"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "cadeia-de-decisoes-da-feira",
+      "title": {
+        "de": "Die Entscheidung über einen Marktstandort erklären",
+        "en": "Explaining a market-site decision"
+      },
+      "situation": {
+        "de": "Als Vertretung eines Vereins erklären Sie im fiktiven Bezirksamt die Verlegung des Straßenmarkts von der Rua Norte auf den Platz. Die Unterlagen liegen vor.",
+        "en": "Representing an association, you explain at a fictional district office why the street fair moved from Rua Norte to the square. The records are available."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "senhor",
+          "senhor",
+          "senhor"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interlocutor",
+          "role": {
+            "de": "Sachbearbeiter im Bezirksamt",
+            "en": "district official"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Der Sachbearbeiter fragt: “A associação escolheu a praça em vez da Rua Norte. Pode explicar a decisão a partir destes documentos?”",
+        "en": "The official asks: “A associação escolheu a praça em vez da Rua Norte. Pode explicar a decisão a partir destes documentos?”"
+      },
+      "dialogue": [
+        {
+          "targetText": "A associação escolheu a praça em vez da Rua Norte. Pode explicar a decisão a partir destes documentos?",
+          "base": {
+            "de": "Der Verein wählte den Platz statt der Rua Norte. Erklären Sie die Entscheidung anhand dieser Unterlagen?",
+            "en": "The association chose the square instead of Rua Norte. Can you explain the decision using these documents?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "A mudança veio em decorrência da pesquisa que identificou o baixo movimento na rua aos domingos, visto que as lojas fechavam nesse dia.",
+          "base": {
+            "de": "Die Verlegung ergab sich aus der Umfrage, die sonntags wenig Betrieb in der Straße feststellte, weil die Geschäfte dann geschlossen waren.",
+            "en": "The move resulted from the survey that found little activity on the street on Sundays, since the shops closed that day."
+          },
+          "speaker": "you",
+          "move": "reason",
+          "register": "senhor"
+        },
+        {
+          "targetText": "Mas os lojistas apoiavam a feira na rua. Qual informação pesou mais do que esse apoio na decisão final?",
+          "base": {
+            "de": "Aber die Händler unterstützten den Straßenmarkt. Welche Information zählte bei der Endentscheidung mehr als diese Unterstützung?",
+            "en": "But shopkeepers supported the street fair. What information carried more weight than that support in the final decision?"
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Em outras palavras, a decisão decorre da pesquisa, dos horários e do laudo final, que apontou problemas de acesso para emergências na rua.",
+          "base": {
+            "de": "Anders gesagt folgt die Entscheidung aus Umfrage, Öffnungszeiten und Schlussgutachten, das Probleme beim Notfallzugang in der Straße aufzeigte.",
+            "en": "In other words, the decision follows from the survey, opening hours and final report identifying emergency-access problems on the street."
+          },
+          "speaker": "you",
+          "move": "clarify",
+          "register": "senhor"
+        },
+        {
+          "targetText": "Para o registro, preciso da sequência dos três documentos, com os meses, e do resultado que a associação adotou.",
+          "base": {
+            "de": "Für die Akte brauche ich die Reihenfolge der drei Dokumente mit Monaten und die vom Verein gewählte Lösung.",
+            "en": "For the record, I need the sequence of the three documents with their months and the outcome the association adopted."
+          },
+          "speaker": "them",
+          "interlocutorId": "interlocutor"
+        },
+        {
+          "targetText": "Em resumo: pesquisa em abril, horários confirmados em maio, laudo em junho; por isso a associação escolheu a praça.",
+          "base": {
+            "de": "Zusammengefasst: Umfrage im April, bestätigte Öffnungszeiten im Mai, Gutachten im Juni; deshalb wählte der Verein den Platz.",
+            "en": "In summary: survey in April, opening hours confirmed in May, report in June; that is why the association chose the square."
+          },
+          "speaker": "you",
+          "move": "summarize",
+          "register": "senhor"
+        }
+      ],
+      "build": {
+        "framePrefix": "A mudança veio ",
+        "chunks": [
+          "em decorrência da",
+          "pesquisa que",
+          "identificou",
+          "o baixo",
+          "movimento"
+        ],
+        "distractors": [
+          "identificaram",
+          "as pesquisas"
+        ],
+        "frameSuffix": " na rua aos domingos, visto que as lojas fechavam nesse dia."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", a decisão "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " da pesquisa, dos horários e do laudo final, que apontou problemas de acesso para emergências na rua."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Em outras palavras",
+            "acceptedAnswers": [
+              "Em outras palavras"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Em outras palavras",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          },
+          {
+            "answer": "decorre",
+            "acceptedAnswers": [
+              "decorre"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "decorrer: 3. Person Singular, Präsens Indikativ",
+              "en": "decorrer: third-person singular, present indicative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": pesquisa em abril, horários confirmados em maio, laudo em junho; por isso a associação escolheu a praça."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Em resumo",
+            "acceptedAnswers": [
+              "Em resumo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Em resumo",
+              "Apesar de",
+              "Em vez de",
+              "Devido a"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "A mudança veio em ",
+        "answer": "decorrência",
+        "acceptedAnswers": [
+          "decorrência",
+          "decorrencia",
+          "função",
+          "funçao",
+          "razão",
+          "razao",
+          "consequência",
+          "consequencia",
+          "virtude"
+        ],
+        "fallbackChoices": [
+          "decorrência",
+          "decorrer",
+          "decorrido",
+          "decorrendo"
+        ],
+        "after": " da pesquisa que identificou o baixo movimento na rua aos domingos, visto que as lojas fechavam nesse dia."
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Ergebnis und Ausgangsgrund verknüpfen",
+          "en": "Connecting an outcome with its underlying reason"
+        },
+        "rule": {
+          "de": "Em decorrência de nennt den ursächlichen Bezug mit einem Nomen; visto que ergänzt hier den Grund für die beobachtete geringe Belebung.",
+          "en": "Em decorrência de names the causal link with a noun; visto que adds the reason for the observed low activity."
+        },
+        "examples": [
+          {
+            "targetText": "A mudança veio em decorrência da pesquisa que identificou o baixo movimento na rua aos domingos, visto que as lojas fechavam nesse dia.",
+            "base": {
+              "de": "Die Verlegung ergab sich aus der Umfrage, die sonntags wenig Betrieb in der Straße feststellte, weil die Geschäfte dann geschlossen waren.",
+              "en": "The move resulted from the survey that found little activity on the street on Sundays, since the shops closed that day."
+            },
+            "highlights": [
+              "em decorrência da pesquisa",
+              "visto que"
+            ]
+          },
+          {
+            "targetText": "A feira mudou em decorrência do laudo, visto que a rua não oferecia acesso suficiente para veículos de emergência.",
+            "base": {
+              "de": "Der Markt wurde aufgrund des Gutachtens verlegt, weil die Straße keinen ausreichenden Zugang für Rettungsfahrzeuge bot.",
+              "en": "The fair moved as a result of the report because the street did not offer adequate emergency-vehicle access."
+            },
+            "highlights": [
+              "em decorrência do laudo",
+              "visto que"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "em decorrência",
+          "kind": "frame",
+          "base": {
+            "de": "infolge",
+            "en": "as a result"
+          }
+        },
+        {
+          "targetText": "visto que",
+          "kind": "connector",
+          "base": {
+            "de": "da / weil",
+            "en": "since / because"
+          }
+        },
+        {
+          "targetText": "decorre",
+          "kind": "verb",
+          "base": {
+            "de": "ergibt sich",
+            "en": "results"
+          },
+          "lemma": "decorrer"
+        },
+        {
+          "targetText": "laudo",
+          "kind": "noun",
+          "base": {
+            "de": "Gutachten",
+            "en": "report / expert assessment"
+          }
+        },
+        {
+          "targetText": "pesquisa",
+          "kind": "noun",
+          "base": {
+            "de": "Umfrage / Untersuchung",
+            "en": "survey"
+          }
+        },
+        {
+          "targetText": "lojistas",
+          "kind": "noun",
+          "base": {
+            "de": "Ladeninhaber",
+            "en": "shopkeepers"
+          },
+          "lemma": "lojista"
+        },
+        {
+          "targetText": "acesso",
+          "kind": "noun",
+          "base": {
+            "de": "Zugang / Zufahrt",
+            "en": "access"
+          }
+        },
+        {
+          "targetText": "emergências",
+          "kind": "noun",
+          "base": {
+            "de": "Notfälle",
+            "en": "emergencies"
+          },
+          "lemma": "emergência"
+        },
+        {
+          "targetText": "domingos",
+          "kind": "noun",
+          "base": {
+            "de": "Sonntage",
+            "en": "Sundays"
+          },
+          "lemma": "domingo"
+        },
+        {
+          "targetText": "horários",
+          "kind": "noun",
+          "base": {
+            "de": "Öffnungszeiten",
+            "en": "opening hours"
+          },
+          "lemma": "horário"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "pesquisa",
+            "identificou",
+            "movimento"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "decorre",
+            "laudo",
+            "acesso"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "resumo",
+            "confirmados",
+            "escolheu"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "decorrer",
+        "familyKey": "decorr",
+        "surface": "decorre",
+        "turnIndex": 3,
+        "pos": "verb",
+        "example": {
+          "targetText": "A escolha da praça decorre dos documentos reunidos pela associação, não de uma preferência sem justificativa.",
+          "base": {
+            "de": "Die Platzwahl ergibt sich aus den Vereinsunterlagen, nicht aus einer unbegründeten Vorliebe.",
+            "en": "The choice of the square follows from the association’s documents, not an unjustified preference."
+          }
+        },
+        "base": {
+          "de": "sich ergeben / resultieren",
+          "en": "result / follow"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

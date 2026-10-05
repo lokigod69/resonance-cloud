@@ -1,0 +1,922 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "Portuguese",
+  "code": "pt-BR",
+  "level": "B2",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": {
+    "railValues": [
+      "senhor",
+      "você"
+    ],
+    "enumAdaptation": "registerPlan.registers uses exactly the rail strings 'senhor' (formal: learner says o senhor/a senhora to officials, services, clients, managers) and 'você' (neutral: colleagues, friends, neighbors, mentors, newcomers; a gente allowed; informal markers pra/tá/né are P6 relay-only). pt-BR has no third informal enum; tu never appears; German 'Sie/du' never appears in pt drafts",
+    "policy": "senhor = learner says o senhor/a senhora to officials, services, clients, managers; você = colleagues, friends, neighbors, mentors, newcomers; a gente allowed inside você turns; pra/tá/né forbidden in P1/P2 (relay-only, P6)",
+    "stability": "mode constant in all 20 episodes, all three you registers equal; no shift, no relay",
+    "themTurns": "unconstrained register, but them never addresses the learner with a gendered noun or participle",
+    "instructionalNote": "senhor for a line manager (P1-3, P2-3) is a staging choice to practice the formal rail, not a claim about all Brazilian workplaces; formal speakers may contract, friends may not"
+  },
+  "genderSafety": {
+    "rule": "all 20 episodes speakerGender neutral, no alternates; every you turn avoids speaker-agreeing participles and adjectives",
+    "rewrites": "agradeço instead of obrigado/a; estou sem energia instead of cansado/a; fico com a opção instead of fico satisfeito/a; a mudança é arriscada agrees with the noun, mudar é arriscado with the infinitive, never with the speaker",
+    "detector": "warning on you-turn tokens ending -ado/-ada/-ido/-ida/-oso/-osa and on obrigado|obrigada|sozinho|sozinha|cansado|cansada; each warning needs an explicit acknowledgedWarning naming the agreeing noun"
+  },
+  "orthography": {
+    "standard": "Acordo Ortográfico 1990 forms (ideia, voo, para)",
+    "accents": "canonical text carries all accents; accent-stripped learner input is accepted only through explicitly authored acceptedAnswers entries per blank/recall (e.g. 'já que' + 'ja que'); no runtime normalization is claimed; if the rail later ships accent unification the authored variants become redundant, never wrong",
+    "errors": [
+      "European lexis list: autocarro, comboio, telemóvel, apanhar, pequeno-almoço, sumo, ecrã, rapariga, perceber (=understand), fixe",
+      "tu paradigm in you turns: tu, tens, és, estás, teu, tua, contigo",
+      "estar a + infinitivo",
+      "pra, tá, né in P1/P2",
+      "digits in any voiced text; amounts and times are spelled out (duzentos reais, quinze minutos)"
+    ]
+  },
+  "segmentation": {
+    "token": "maximal run of letters/digits with internal hyphen or apostrophe (recolhe-se = one token, de modo que = three)",
+    "chunkRules": [
+      "clitics and não stay inside the verb chunk: 'se separa', 'não compensa', 'recolhe-se'",
+      "two-part connectors split into halves only when the sentence has one coherent order",
+      "interchangeable adverbials (no centro / todos os dias) are merged into one chunk so no second coherent order exists",
+      "punctuation attached to its chunk; framePrefix/Suffix carry their boundary spaces"
+    ],
+    "uniqueness": "punctuation alone never licenses a unique order; native semantic review confirms exactly one coherent permutation; where two orders read naturally the chunking is changed, not acknowledged"
+  },
+  "acceptedInput": {
+    "normalization": "existing shared comparison only (German rail, assumed unchanged for pt): NFC, trim, collapse spaces, locale lowercase, strip terminal punctuation; no pt-specific normalization exists or is promised",
+    "authored": "acceptedAnswers list canonical + accent-stripped variant; cedilla kept (ç never stripped); clitic alternatives (separa-se / se separa) listed only when both are native in that register",
+    "later": "record in integration notes that pt-BR accent unification is a rail feature not yet implemented; drafts stay valid either way"
+  },
+  "carriersStaged": {
+    "convention": "lesson numbers are local 1–10 per path; productive sets are cumulative; path.staging and lesson.requiredCarrier use these exact strings; a carrier is staged no later than its first productive use; recognitionOnly items appear in them turns only; incidental B1 subjunctive forms are productive, not recognition-only",
+    "P1": {
+      "productive_L1_3": [
+        "por um lado … por outro lado",
+        "enquanto (contrast)",
+        "é verdade que …, mas/contudo",
+        "ainda assim",
+        "no fim das contas",
+        "em resumo",
+        "sugiro + infinitivo",
+        "em vez disso / em vez de",
+        "em outras palavras",
+        "o que pesa mais para mim é",
+        "B1 recycled: porque, por isso, mais/menos … do que, acho que, poderia, deveria, talvez, se + presente"
+      ],
+      "recognitionOnly_L1_3": [
+        "tanto … quanto",
+        "superlativo relativo",
+        "vale a pena + infinitivo"
+      ],
+      "productive_L4_7": [
+        "tanto … quanto",
+        "superlativo relativo",
+        "vale a pena + infinitivo"
+      ],
+      "recognitionOnly_L4_7": [
+        "em comparação com",
+        "levando tudo em conta"
+      ],
+      "productive_L8_10": [
+        "em comparação com",
+        "levando tudo em conta",
+        "a meu ver"
+      ],
+      "firstProductiveUse": {
+        "por um lado … por outro lado": "P1-1",
+        "no fim das contas": "P1-1",
+        "enquanto (contrast)": "P1-2",
+        "ainda assim": "P1-2",
+        "sugiro + infinitivo": "P1-2",
+        "é verdade que …, mas/contudo": "P1-3",
+        "em resumo": "P1-3",
+        "o que pesa mais para mim é": "P1-3",
+        "em vez disso / em vez de": "P1-4",
+        "vale a pena + infinitivo": "P1-4",
+        "superlativo relativo": "P1-5",
+        "tanto … quanto": "P1-6",
+        "em outras palavras": "P1-6",
+        "em comparação com": "P1-10",
+        "levando tudo em conta": "P1-10",
+        "a meu ver": "menu item, no required placement in P1"
+      },
+      "incidental": [
+        "futuro do subjuntivo inside fixed se/quando clauses (se forem P1-3, quando … chegar P1-4, se eu precisar P1-2) occurs productively as an incidental B1 form; must be correct; not a staged carrier; embora/mesmo que + subjuntivo stays P3"
+      ],
+      "notYet": [
+        "já que, visto que, de modo que (P2)",
+        "embora/mesmo que + subjuntivo (P3)",
+        "ou seja, resumindo, proponho que (P7/P8)"
+      ]
+    },
+    "P2": {
+      "productive_L1_3": [
+        "já que",
+        "visto que",
+        "passiva analítica",
+        "por isso (B1)",
+        "poderia + infinitivo (request, B1)",
+        "all P1 productive frames recycled (em outras palavras, em resumo, é verdade que …, mas/contudo, ainda assim, sugiro + infinitivo, no fim das contas, enquanto (contrast), vale a pena + infinitivo, em comparação com)"
+      ],
+      "recognitionOnly_L1_3": [
+        "de modo que",
+        "se indeterminado",
+        "nominalização"
+      ],
+      "productive_L4_7": [
+        "de modo que",
+        "nominalização",
+        "se indeterminado"
+      ],
+      "recognitionOnly_L4_7": [
+        "em decorrência de",
+        "o que resulta em"
+      ],
+      "productive_L8_10": [
+        "em decorrência de",
+        "o que resulta em"
+      ],
+      "firstProductiveUse": {
+        "já que": "P2-1",
+        "passiva analítica": "P2-2",
+        "visto que": "P2-3",
+        "de modo que": "P2-4",
+        "nominalização": "P2-5",
+        "se indeterminado": "P2-8",
+        "o que resulta em": "P2-9",
+        "em decorrência de": "P2-10"
+      },
+      "notYet": [
+        "ou seja, trata-se de (P8)",
+        "discurso indireto (P6)"
+      ]
+    }
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Pesar as opções",
+      "function": "compare advantages and disadvantages of two or three options and recommend one; shape challenge in all ten",
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede"
+      ],
+      "registerPolicy": "senhor: 1,3,4,6,10 (agent, manager, rental clerk, shop owner, committee); você: 2,5,7,8,9 (colleague, friend, friend, mentor, neighbor)",
+      "staging": [
+        {
+          "lessons": "1–3",
+          "productive": [
+            "por um lado … por outro lado",
+            "enquanto (contrast)",
+            "é verdade que …, mas/contudo",
+            "ainda assim",
+            "no fim das contas",
+            "em resumo",
+            "sugiro + infinitivo",
+            "em vez disso / em vez de",
+            "em outras palavras",
+            "o que pesa mais para mim é"
+          ],
+          "recognitionOnly": [
+            "tanto … quanto",
+            "superlativo relativo",
+            "vale a pena + infinitivo"
+          ]
+        },
+        {
+          "lessons": "4–7",
+          "cumulative": true,
+          "productive": [
+            "tanto … quanto",
+            "superlativo relativo",
+            "vale a pena + infinitivo"
+          ],
+          "recognitionOnly": [
+            "em comparação com",
+            "levando tudo em conta"
+          ]
+        },
+        {
+          "lessons": "8–10",
+          "cumulative": true,
+          "productive": [
+            "em comparação com",
+            "levando tudo em conta",
+            "a meu ver"
+          ],
+          "recognitionOnly": []
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "aluguel-ou-deslocamento",
+          "scene": "Viewing a dearer flat in Jardim Aurora, fifteen minutes from the office; the agent contrasts it with a cheaper one forty minutes away by bus.",
+          "interlocutor": "corretor de imóveis (A)",
+          "register": "senhor",
+          "openingMove": "compare — Por um lado o aluguel aqui é mais alto; por outro lado o deslocamento diário cai de quarenta minutos para quinze.",
+          "challenge": "agent: the rent gap is almost a month's salary a year — is the time worth that?",
+          "answerMove": "concede — É verdade que a diferença pesa no orçamento, mas … (energy left for the evening)",
+          "steer": "agent asks for the bottom line: take it or keep looking",
+          "closingMove": "conclude — No fim das contas o tempo ganho vale mais, por isso fico com o apartamento do centro.",
+          "trophyLemma": "deslocamento",
+          "trophySurface": "deslocamento (you1)",
+          "trophyFamilyKey": "desloc",
+          "pos": "noun",
+          "requiredCarrier": "por um lado … por outro lado",
+          "recycles": [
+            "B1 aluguel, orçamento, diferença as terms",
+            "B1 comparative mais (pago mais, pesa mais); the full … do que frame is recycled in P1-6 (menor do que)",
+            "B1 por isso"
+          ]
+        },
+        {
+          "number": 2,
+          "slug": "carro-ou-onibus",
+          "scene": "Colleague Lúcia offers to help you buy a car; you weigh owning a car against the new bus corridor to the office.",
+          "interlocutor": "colega (A)",
+          "register": "você",
+          "openingMove": "position — Para mim o ônibus faz mais sentido, enquanto o carro só compensa se eu precisar sair da cidade toda semana.",
+          "challenge": "colleague: the bus is packed and you lose the freedom to leave when you want",
+          "answerMove": "rebut — Ainda assim, ponderando custo e tempo, o ônibus sai na frente, porque no carro eu dirijo e no ônibus eu leio.",
+          "steer": "colleague: and on strike days or in heavy rain?",
+          "closingMove": "propose — Sugiro testar um mês só de ônibus e guardar o dinheiro do carro como reserva para esses dias.",
+          "trophyLemma": "ponderar",
+          "trophySurface": "ponderando (you2)",
+          "trophyFamilyKey": "ponder",
+          "pos": "verb",
+          "requiredCarrier": "enquanto (contrast)",
+          "recycles": [
+            "B1 se + presente",
+            "B1 ônibus, chuva as terms (trânsito not attested in this scene; it is a term in P2-9)",
+            "P1-1 por outro lado in them turn"
+          ]
+        },
+        {
+          "number": 3,
+          "slug": "remoto-ou-presencial",
+          "scene": "Your manager wants three office days a week; you argue for two, citing delivery and focus.",
+          "interlocutor": "gerente (A)",
+          "register": "senhor",
+          "openingMove": "reason — O que pesa mais para mim é a concentração: em casa entrego mais, porque as interrupções caem pela metade.",
+          "challenge": "manager: the team loses contact and the newcomers learn by watching",
+          "answerMove": "concede — É verdade que os novos aprendem olhando; contudo dois dias presenciais bastam se forem os mesmos para todos.",
+          "steer": "manager: summarize what you propose for the whole team",
+          "closingMove": "summarize — Em resumo: dois dias fixos juntos, três em casa, e uma revisão em três meses.",
+          "trophyLemma": "contudo",
+          "trophySurface": "contudo (you2)",
+          "trophyFamilyKey": "contudo",
+          "pos": "connector",
+          "requiredCarrier": "é verdade que …, mas/contudo",
+          "recycles": [
+            "B1 porque in you1; por isso is recycled in P1-1 you3 and not required here",
+            "B1 revisão, equipe, trabalho as terms",
+            "B1 se + futuro do subjuntivo (se forem) used productively in you2 as an incidental fixed form; not a staged carrier"
+          ]
+        },
+        {
+          "number": 4,
+          "slug": "comprar-ou-alugar-projetor",
+          "scene": "At a rental shop you run a course twice a month and weigh renting a projector each time against buying one.",
+          "interlocutor": "atendente da locadora (A)",
+          "register": "senhor",
+          "openingMove": "compare — Por um lado alugar sai mais barato agora; por outro lado, com duas aulas por mês, o investimento se paga em um ano.",
+          "challenge": "clerk: the model you want is outdated fast; renting always gives the newest",
+          "answerMove": "rebut — Ainda assim vale a pena comprar, porque a resolução de hoje basta para uma sala pequena.",
+          "steer": "clerk: final condition — only this model is in stock today",
+          "closingMove": "counteroffer — Em vez disso alugo este mês e compro quando o modelo novo chegar.",
+          "trophyLemma": "investimento",
+          "trophySurface": "investimento (you1)",
+          "trophyFamilyKey": "invest",
+          "pos": "noun",
+          "requiredCarrier": "vale a pena + infinitivo",
+          "recycles": [
+            "P1-1 por um lado … por outro lado",
+            "P1-2 ainda assim",
+            "B1 porque in you2 (já que deferred to P2; them turn may use it as recognition only)",
+            "B1 modelo as term (size is expressed as sala pequena; tamanho not a term)",
+            "futuro do subjuntivo incidental in you3 (quando … chegar)"
+          ]
+        },
+        {
+          "number": 5,
+          "slug": "praia-ou-serra",
+          "scene": "Friend Rafael pushes a beach week with the whole group; you prefer your mountain trail plan.",
+          "interlocutor": "amigo (A)",
+          "register": "você",
+          "openingMove": "position — Prefiro a serra, que é a opção mais tranquila e a única em que a gente descansa de verdade.",
+          "challenge": "friend: the coast is cheaper and everyone is already going",
+          "answerMove": "compare — Enquanto a praia reúne a turma, o roteiro na serra cabe no orçamento de quem não pode gastar tanto.",
+          "steer": "friend: decide — which one do we book?",
+          "closingMove": "conclude — No fim das contas fecho a serra, mas com um fim de semana de praia no final.",
+          "trophyLemma": "roteiro",
+          "trophySurface": "roteiro (you2)",
+          "trophyFamilyKey": "roteiro",
+          "pos": "noun",
+          "requiredCarrier": "superlativo relativo",
+          "recycles": [
+            "P1-2 enquanto",
+            "B1 orçamento as term (the stay is counted in diárias; viagem and fim de semana not attested)",
+            "a gente permitted in você turns, not required (quem precisa descansar keeps the superlative frame intact)"
+          ]
+        },
+        {
+          "number": 6,
+          "slug": "dinheiro-ou-aplicativo",
+          "scene": "The owner of Padaria Sol wants to stop accepting app payments because of the fee; as a regular who handles payments at work you weigh cash against app for her.",
+          "interlocutor": "dona da padaria (A)",
+          "register": "senhor",
+          "openingMove": "reason — A senhora perde menos do que imagina, porque a taxa do aplicativo é menor do que o custo do troco parado.",
+          "challenge": "owner: cash costs me nothing — where is the advantage?",
+          "answerMove": "clarify — Em outras palavras, tanto o troco quanto a ida ao banco também custam tempo e segurança.",
+          "steer": "owner: so what do you suggest for Saturday's rush?",
+          "closingMove": "propose — Sugiro manter os dois e cobrar sem desconto no aplicativo até ver o movimento real.",
+          "trophyLemma": "taxa",
+          "trophySurface": "taxa (you1)",
+          "trophyFamilyKey": "taxa",
+          "pos": "noun",
+          "requiredCarrier": "tanto … quanto",
+          "recycles": [
+            "em outras palavras: first productive use (staged 1–3)",
+            "B1 troco, caixa, desconto as terms"
+          ]
+        },
+        {
+          "number": 7,
+          "slug": "aula-ou-aplicativo",
+          "scene": "Friend Ana wants Spanish for a trip; you compare a weekly class with a language app.",
+          "interlocutor": "amiga (A)",
+          "register": "você",
+          "openingMove": "compare — Por um lado o aplicativo é o mais barato; por outro lado a aula é a mais eficaz, porque alguém corrige você.",
+          "challenge": "friend: I quit every class the moment I travel for work",
+          "answerMove": "concede — É verdade que a aula exige disciplina, mas o aplicativo exige ainda mais, porque ninguém cobra você.",
+          "steer": "friend: summarize — what would you do in my place?",
+          "closingMove": "summarize — Em resumo: aula enquanto você está na cidade, aplicativo nas viagens, nunca só um dos dois.",
+          "trophyLemma": "disciplina",
+          "trophySurface": "disciplina (you2)",
+          "trophyFamilyKey": "disciplin",
+          "pos": "noun",
+          "requiredCarrier": "superlativo relativo",
+          "recycles": [
+            "P1-1 por um lado/por outro lado",
+            "P1-3 é verdade que … mas",
+            "contrast carried by nas semanas em casa / durante as viagens; enquanto not required here (productive in P1-5, P1-10)"
+          ]
+        },
+        {
+          "number": 8,
+          "slug": "duas-propostas-de-emprego",
+          "scene": "Your mentor hears you out on two offers: a stable logistics firm with lower pay versus a startup with equity.",
+          "interlocutor": "mentor (A)",
+          "register": "você",
+          "openingMove": "position — O que pesa mais para mim é a estabilidade, porque com salário fixo consigo planejar os próximos anos.",
+          "challenge": "mentor: isn't stability with lower pay also a risk?",
+          "answerMove": "rebut — Ainda assim a startup pode fechar em um ano, e a empresa grande paga menos mas paga todo mês.",
+          "steer": "mentor: bottom line — which do you accept by Friday?",
+          "closingMove": "conclude — No fim das contas aceito a empresa grande e negocio uma revisão de salário em seis meses.",
+          "trophyLemma": "estabilidade",
+          "trophySurface": "estabilidade (you1)",
+          "trophyFamilyKey": "estabil",
+          "pos": "noun",
+          "requiredCarrier": "o que pesa mais para mim é",
+          "recycles": [
+            "P1-2 ainda assim",
+            "P1-3 revisão",
+            "B1 salário as term (consigo is used productively in P1-3 you1; here permite planejar)"
+          ]
+        },
+        {
+          "number": 9,
+          "slug": "mudar-ou-ficar",
+          "scene": "Neighbor Jorge asks whether you will take a job in another city or stay in the bairro where you have friends.",
+          "interlocutor": "vizinho (A)",
+          "register": "você",
+          "openingMove": "concede — É verdade que mudar agora é arriscado; ainda assim a proposta paga o dobro e a cidade tem o trabalho que eu quero.",
+          "challenge": "neighbor: and the friends here, the network you built?",
+          "answerMove": "explain — Explico: a rede não desaparece, porque a cidade fica a três horas de trem e eu volto todo mês.",
+          "steer": "neighbor: and if it goes wrong?",
+          "closingMove": "propose — Sugiro um ano de teste, com o apartamento daqui alugado e não vendido.",
+          "trophyLemma": "arriscado",
+          "trophySurface": "arriscado (you1, agrees with infinitive mudar, not speaker)",
+          "trophyFamilyKey": "risc",
+          "pos": "adjective",
+          "requiredCarrier": "ainda assim",
+          "recycles": [
+            "P1-3 é verdade que … mas",
+            "B1 trem, voltar as terms (aluguel is a term in P1-1; alugado here agrees with apartamento)",
+            "B1 causal link in you2 is sentence-initial Como (Como a cidade fica a três horas de trem, posso voltar todo mês), a Fable-authorized native replacement of Porque; porque itself is recycled in P1-3 you1 and P1-4 you2; the gate carrier phrase for P1-9 you2 is 'como a cidade fica'"
+          ]
+        },
+        {
+          "number": 10,
+          "slug": "recomendar-uma-opcao",
+          "scene": "The residents' committee of Edifício Bela Vista votes on the courtyard: bike racks, a garden or two parking spaces; you recommend one.",
+          "interlocutor": "síndico (A)",
+          "register": "senhor",
+          "openingMove": "compare — Em comparação com as vagas, o jardim serve tanto às famílias quanto aos idosos, enquanto as vagas servem a dois moradores.",
+          "challenge": "síndico: but the parking spaces were the majority's request",
+          "answerMove": "counteroffer — Em vez de escolher uma só, proponho jardim no fundo e bicicletário na entrada; as vagas ficam para a próxima reunião.",
+          "steer": "síndico: for the minutes, your final recommendation in one sentence",
+          "closingMove": "conclude — Levando tudo em conta, recomendo, portanto, o jardim com bicicletário.",
+          "trophyLemma": "portanto",
+          "trophySurface": "portanto (you3)",
+          "trophyFamilyKey": "portanto",
+          "pos": "connector",
+          "requiredCarrier": "levando tudo em conta",
+          "recycles": [
+            "P1-6 tanto … quanto",
+            "P1-2 enquanto",
+            "P1-4 em vez de",
+            "B1 reunião, moradores as terms"
+          ]
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Explicar como e por quê",
+      "function": "give a detailed explanation of causes, consequences or a process and sustain it under requests for precision; shape precision in all ten",
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "compare"
+      ],
+      "registerPolicy": "senhor: 1,3,8,10 (accountant, manager, clinic coordinator, official); você: 2,4,5,6,7,9 (newcomer, friend, neighbor, colleague, friend, skeptic)",
+      "staging": [
+        {
+          "lessons": "1–3",
+          "productive": [
+            "já que",
+            "visto que",
+            "passiva analítica",
+            "por isso (B1)",
+            "poderia + infinitivo (request, B1)",
+            "all P1 productive frames recycled (em outras palavras, em resumo, é verdade que …, mas/contudo, ainda assim, sugiro + infinitivo, no fim das contas, enquanto (contrast), vale a pena + infinitivo, em comparação com)"
+          ],
+          "recognitionOnly": [
+            "de modo que",
+            "se indeterminado",
+            "nominalização"
+          ]
+        },
+        {
+          "lessons": "4–7",
+          "cumulative": true,
+          "productive": [
+            "de modo que",
+            "nominalização",
+            "se indeterminado"
+          ],
+          "recognitionOnly": [
+            "em decorrência de",
+            "o que resulta em"
+          ]
+        },
+        {
+          "lessons": "8–10",
+          "cumulative": true,
+          "productive": [
+            "em decorrência de",
+            "o que resulta em"
+          ],
+          "recognitionOnly": []
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "fatura-diferente-do-orcamento",
+          "scene": "As a freelance designer you explain to the client's accountant why your invoice exceeds the quote: the client asked for a third round of revisions.",
+          "interlocutor": "contadora do cliente (A)",
+          "register": "senhor",
+          "openingMove": "explain — A fatura ficou acima do orçamento já que a equipe pediu uma terceira rodada de revisões depois da aprovação.",
+          "challenge": "accountant: the quote covered two rounds; where does a third come from?",
+          "answerMove": "clarify — Em outras palavras, a cobrança extra corresponde só às horas da terceira rodada, registradas no e-mail de vinte de março.",
+          "steer": "accountant: summarize it in one line for the report",
+          "closingMove": "summarize — Em resumo: orçamento cumprido, mais uma rodada pedida por escrito, cobrada à parte.",
+          "trophyLemma": "cobrança",
+          "trophySurface": "cobrança (you2)",
+          "trophyFamilyKey": "cobr",
+          "pos": "noun",
+          "requiredCarrier": "já que",
+          "recycles": [
+            "P1-6 em outras palavras",
+            "P1-3 em resumo",
+            "B1 revisão (surface revisões), horas as terms; orçamento recycled in dialogue (term in P1-1, P1-5)"
+          ]
+        },
+        {
+          "number": 2,
+          "slug": "como-funciona-a-coleta",
+          "scene": "A newcomer from abroad asks how your building handles waste; the building notice says recyclables Tuesday, organics daily.",
+          "interlocutor": "vizinho recém-chegado (A)",
+          "register": "você",
+          "openingMove": "explain — Segundo o aviso do prédio, a coleta seletiva passa às terças, por isso vidro e papel são recolhidos juntos e o resto vai todo dia.",
+          "challenge": "newcomer: and a food-stained pizza box — where does that go?",
+          "answerMove": "compare — Enquanto o papel limpo vai para a coleta de terça, a embalagem engordurada, pelo aviso do prédio, vai no lixo comum.",
+          "steer": "newcomer: and when I miss Tuesday?",
+          "closingMove": "conclude — No fim das contas o que importa é separar em casa; o saco espera uma semana na área de serviço.",
+          "trophyLemma": "coleta",
+          "trophySurface": "coleta (you1)",
+          "trophyFamilyKey": "colet",
+          "pos": "noun",
+          "requiredCarrier": "passiva analítica",
+          "recycles": [
+            "P1-2 enquanto",
+            "P1-1 no fim das contas",
+            "B1 embalagem, saco as terms (the bag is kept até terça; semana not attested)"
+          ]
+        },
+        {
+          "number": 3,
+          "slug": "por-que-o-projeto-atrasou",
+          "scene": "Your manager asks why the delivery slipped two weeks: the supplier's parts came late and the only tester was off sick.",
+          "interlocutor": "gerente (A)",
+          "register": "senhor",
+          "openingMove": "reason — Atrasamos duas semanas visto que as peças chegaram dez dias depois do combinado e o único testador ficou de licença.",
+          "challenge": "manager: the supplier warned in advance — why did nobody react?",
+          "answerMove": "concede — É verdade que o aviso chegou, mas o imprevisto maior foi a licença, porque sem testes nada é liberado.",
+          "steer": "manager: what do you propose so this does not repeat?",
+          "closingMove": "propose — Sugiro um segundo testador treinado e um fornecedor reserva para as peças críticas.",
+          "trophyLemma": "imprevisto",
+          "trophySurface": "imprevisto (you2)",
+          "trophyFamilyKey": "imprevist",
+          "pos": "noun",
+          "requiredCarrier": "visto que",
+          "recycles": [
+            "P1-3 é verdade que …, mas/contudo",
+            "P1-2 sugiro + infinitivo",
+            "P2-2 passiva analítica (é liberado)",
+            "B1 combinado, peça as terms"
+          ]
+        },
+        {
+          "number": 4,
+          "slug": "como-funciona-o-clube-de-pontos",
+          "scene": "A friend asks how the fictional Clube Horizonte supermarket scheme works, reading from the leaflet he holds: each purchase earns points, and after ten purchases they convert into a discount on the next one; the leaflet states that joining is free.",
+          "interlocutor": "amigo (A)",
+          "register": "você",
+          "openingMove": "explain — Cada compra acumula pontos no cadastro, de modo que depois de dez compras você troca por desconto na seguinte.",
+          "challenge": "friend: that is just a way to make me spend more",
+          "answerMove": "rebut — Ainda assim só compensa para quem já compra ali toda semana; quem muda de loja por causa dos pontos perde.",
+          "steer": "friend: so sum it up — worth it or not for me?",
+          "closingMove": "summarize — Em resumo: cliente fixo ganha, cliente ocasional não, e, segundo o folheto, o cadastro é gratuito.",
+          "trophyLemma": "acumular",
+          "trophySurface": "acumula (you1)",
+          "trophyFamilyKey": "acumul",
+          "pos": "verb",
+          "requiredCarrier": "de modo que",
+          "recycles": [
+            "P1-2 ainda assim",
+            "P1-3 em resumo",
+            "B1 cadastro, desconto, trocar as terms"
+          ]
+        },
+        {
+          "number": 5,
+          "slug": "por-que-troquei-de-operadora",
+          "scene": "Neighbor asks why you switched internet providers; your reason is the constant drop in signal and a price rise after the first year.",
+          "interlocutor": "vizinha (A)",
+          "register": "você",
+          "openingMove": "reason — Troquei sobretudo pela queda constante do sinal à noite e pelo aumento do preço depois do primeiro ano.",
+          "challenge": "neighbor: the new one has complaints too",
+          "answerMove": "compare — Enquanto a antiga caía toda noite, a nova caiu uma vez em dois meses, e o preço está fixo por contrato.",
+          "steer": "neighbor: bottom line — would it pay off for me too?",
+          "closingMove": "conclude — No fim das contas vale a pena para quem trabalha de casa; para quem só assiste a filmes, talvez não.",
+          "trophyLemma": "sobretudo",
+          "trophySurface": "sobretudo (you1)",
+          "trophyFamilyKey": "sobretudo",
+          "pos": "adverb",
+          "requiredCarrier": "nominalização",
+          "recycles": [
+            "P1-4 vale a pena",
+            "P1-2 enquanto",
+            "B1 talvez, contrato as terms"
+          ]
+        },
+        {
+          "number": 6,
+          "slug": "como-recorrer-da-multa",
+          "scene": "A colleague got a parking fine; the notice he holds lists three steps: online form, photo of the sign, reply by email. You explain the process from that notice only.",
+          "interlocutor": "colega (A)",
+          "register": "você",
+          "openingMove": "explain — Segundo o aviso, o recurso é feito pelo site: o formulário é preenchido, a foto da placa é anexada e a resposta chega por e-mail.",
+          "challenge": "colleague: and if I have no photo of the sign?",
+          "answerMove": "clarify — Em outras palavras, pelo aviso a foto é a prova principal; sem ela sobra só a sua descrição, e o aviso não garante nada.",
+          "steer": "colleague: what would you do first?",
+          "closingMove": "propose — Sugiro voltar lá hoje, fotografar a placa e só depois abrir o formulário.",
+          "trophyLemma": "recurso",
+          "trophySurface": "recurso (you1)",
+          "trophyFamilyKey": "recurs",
+          "pos": "noun",
+          "requiredCarrier": "passiva analítica",
+          "recycles": [
+            "P1-6 em outras palavras",
+            "P1-2 sugiro + infinitivo",
+            "P2-2 passiva analítica",
+            "B1 formulário, prova as terms (prova is the notice's evidence noun; comprovante not attested)"
+          ]
+        },
+        {
+          "number": 7,
+          "slug": "por-que-a-horta-falhou",
+          "scene": "A friend asks why the community garden on Praça das Flores failed: no watering in summer and too much work for too few hands.",
+          "interlocutor": "amiga (A)",
+          "register": "você",
+          "openingMove": "reason — A horta falhou pela falta de rega no verão e pelo excesso de trabalho nas mãos de poucas pessoas.",
+          "challenge": "friend: but you had ten volunteers",
+          "answerMove": "concede — É verdade que tinha gente, mas subestimamos o trabalho de janeiro, quando quase todos viajam.",
+          "steer": "friend: so, summing up for the group?",
+          "closingMove": "summarize — Em resumo: rega combinada por escala e um responsável por mês, ou não vale recomeçar.",
+          "trophyLemma": "subestimar",
+          "trophySurface": "subestimamos (you2)",
+          "trophyFamilyKey": "subestim",
+          "pos": "verb",
+          "requiredCarrier": "nominalização",
+          "recycles": [
+            "P1-3 é verdade que … mas",
+            "P1-3 em resumo",
+            "B1 gente, mutirão as terms (viagens recycled in you2 dialogue; viajar not a term)"
+          ]
+        },
+        {
+          "number": 8,
+          "slug": "como-funciona-o-agendamento-na-clinica",
+          "scene": "You volunteer at the reception of a fictional community clinic; the coordinator checks whether you can explain the booking flow (register, phone triage, scheduling) to patients.",
+          "interlocutor": "coordenadora da clínica (A)",
+          "register": "senhor",
+          "openingMove": "explain — Primeiro precisa-se de cadastro no balcão; a etapa seguinte é a triagem por telefone, e só depois se chega à marcação da consulta.",
+          "challenge": "coordinator: and if the patient says it is urgent?",
+          "answerMove": "clarify — Em outras palavras, a urgência é avaliada na triagem, não no balcão; eu explico o caminho e não prometo vaga.",
+          "steer": "coordinator: and when triage does not answer the phone?",
+          "closingMove": "request — A senhora poderia confirmar comigo qual é o passo nesse caso, para eu orientar sem inventar?",
+          "trophyLemma": "etapa",
+          "trophySurface": "etapa (you1)",
+          "trophyFamilyKey": "etapa",
+          "pos": "noun",
+          "requiredCarrier": "se indeterminado",
+          "recycles": [
+            "P1-6 em outras palavras",
+            "B1 poderia + infinitivo (request), cadastro, consulta as terms",
+            "P2-2 passiva analítica (é avaliada)",
+            "se indeterminado: first productive use (staged 4–7) — índice de indeterminação do sujeito on VTI verbs (precisa-se de, se chega à); passiva sintética with a grammatical subject (faz-se o cadastro, marca-se a consulta) deliberately avoided so the carrier is not confused with the passive"
+          ]
+        },
+        {
+          "number": 9,
+          "slug": "por-que-as-bicicletas-importam",
+          "scene": "At a bairro meeting a skeptical neighbor dismisses the bike-share proposal; you explain its consequences for people who never cycle.",
+          "interlocutor": "vizinho cético (A)",
+          "register": "você",
+          "openingMove": "compare — Em comparação com mais vagas, as bicicletas tiram carros curtos da rua, enquanto as vagas atraem mais carros.",
+          "challenge": "skeptic: nobody will cycle in this heat",
+          "answerMove": "explain — A consequência direta é menos carro de dois quilômetros, de modo que o ônibus anda e a rua fica mais calma até para você.",
+          "steer": "skeptic: in the end, what changes for someone who never cycles?",
+          "closingMove": "conclude — No fim das contas quem não pedala ganha ônibus mais rápido e rua mais segura, o que resulta em menos tempo perdido.",
+          "trophyLemma": "consequência",
+          "trophySurface": "consequência (you2)",
+          "trophyFamilyKey": "consequ",
+          "pos": "noun",
+          "requiredCarrier": "de modo que",
+          "recycles": [
+            "P1-10 em comparação com",
+            "P1-2 enquanto (contrast)",
+            "P2-4 de modo que",
+            "o que resulta em: first productive use (staged 8–10)",
+            "B1 calor, vaga as terms"
+          ]
+        },
+        {
+          "number": 10,
+          "slug": "cadeia-de-decisoes-da-feira",
+          "scene": "At the fictional district office you, as association representative, trace why the street fair moved from Rua Norte to the square: a survey, the shopkeepers' hours, then the safety report.",
+          "interlocutor": "funcionário da subprefeitura (A)",
+          "register": "senhor",
+          "openingMove": "reason — A mudança para a praça veio em decorrência da pesquisa com moradores e do fechamento das lojas aos domingos, visto que a rua ficava vazia.",
+          "challenge": "official: but the street had the shopkeepers' support",
+          "answerMove": "clarify — Em outras palavras, a decisão decorre de três passos: a pesquisa, o horário das lojas e, por último, o laudo de segurança.",
+          "steer": "official: for the record, summarize the sequence",
+          "closingMove": "summarize — Em resumo: pesquisa em abril, horário confirmado em maio, laudo em junho, praça escolhida.",
+          "trophyLemma": "decorrer",
+          "trophySurface": "decorre (you2)",
+          "trophyFamilyKey": "decorr",
+          "pos": "verb",
+          "requiredCarrier": "em decorrência de",
+          "recycles": [
+            "P2-3 visto que",
+            "P2-5 nominalização (a mudança, o fechamento)",
+            "em decorrência de: first productive use (staged 8–10)",
+            "P1-6 em outras palavras",
+            "P1-3 em resumo",
+            "B1 domingos, horário as terms"
+          ]
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "deslocamento",
+        "familyKey": "desloc",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "ponderar",
+        "familyKey": "ponder",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "contudo",
+        "familyKey": "contudo",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "investimento",
+        "familyKey": "invest",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "roteiro",
+        "familyKey": "roteiro",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "taxa",
+        "familyKey": "taxa",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "disciplina",
+        "familyKey": "disciplin",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "estabilidade",
+        "familyKey": "estabil",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "arriscado",
+        "familyKey": "risc",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "portanto",
+        "familyKey": "portanto",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "cobrança",
+        "familyKey": "cobr",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "coleta",
+        "familyKey": "colet",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "imprevisto",
+        "familyKey": "imprevist",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "acumular",
+        "familyKey": "acumul",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "sobretudo",
+        "familyKey": "sobretudo",
+        "pos": "adverb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "recurso",
+        "familyKey": "recurs",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "subestimar",
+        "familyKey": "subestim",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "etapa",
+        "familyKey": "etapa",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "consequência",
+        "familyKey": "consequ",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "decorrer",
+        "familyKey": "decorr",
+        "pos": "verb"
+      }
+    ],
+    "forbiddenCheck": "20 lemmas, 20 familyKeys, all distinct; none of the 20 lemmas appears in forbiddenTrophies (ab81cff3…) or the 100 reserved B1 rows (6a1cb711…); none is an inflection or affix-derivation of a listed item; checked against B1 reservations by ledger rows, not live content",
+    "nearFamilyDecisions": {
+      "accepted": [
+        "etapa vs forbidden fase: synonym, distinct lemma and family, not a derivation — kept; fase stays available as a term",
+        "cobrança vs conta/comprovante: distinct lemma (cobrar family) and distinct meaning (charge, billing) — kept",
+        "coleta vs retirada: distinct family (colet- vs retir-), different sense — kept",
+        "recurso vs reembolso/devolução: unrelated families — kept",
+        "disciplina vs hábito/rotina: synonym neighbors, distinct families — kept",
+        "estabilidade vs equilíbrio/tranquilo: distinct families — kept",
+        "deslocamento vs transporte/distância/trânsito: distinct family — kept",
+        "arriscado: familyKey risc; no risc- item in forbidden or reserved sets — kept",
+        "contudo and portanto: single-token connectors, neither in lists — kept"
+      ],
+      "rejected": [
+        "compensar/compensa (compensação forbidden) — used only as plain text, never trophy",
+        "economia/econômico (economizar forbidden)",
+        "convívio (convivência forbidden)",
+        "atrasar (atraso forbidden)",
+        "agendar (agendamento forbidden)",
+        "mudança (mudar forbidden)",
+        "escolher/opção (escolha, escolho forbidden; opção avoided as near-synonym evasion)",
+        "confiável (confiança forbidden)",
+        "organização (organizar forbidden)"
+      ]
+    }
+  },
+  "mechanicalValidationRules": [
+    "register: lessons with register senhor → you turns contain no você|te|teu|tua|contigo; lessons with você → you turns contain no 'o senhor'|'a senhora'; them turns exempt",
+    "forbidden forms in you turns: tu-paradigm tokens, 'estar a' + infinitive, pra|tá|né, European lexis list → error",
+    "digits anywhere in targetText, chunks, blanks, terms, examples → error (spelled-out numbers only)",
+    "lengths: them 6–20, you1 14–26, build focus 7–12, you2 12–24, you3 10–22 tokens; build 5–8 chunks of 1–4 tokens, exactly 2 distractors; reconstruction identities for build/cloze/synthesis/recall as in contract",
+    "acceptedAnswers: must include answer; accent-stripped variant present only if authored; validator never generates variants; choices exactly 4 distinct after normalization with exactly one member of acceptedAnswers",
+    "trophy: lemma single token, surface whole token of dialogue[turnIndex], lemma and familyKey absent from forbidden set and forbidden-family stem set; 20 unique lemmas and keys across P1+P2",
+    "stop-list: a blank or trophy may not be only o|a|os|as|de|em|se|me|que|não",
+    "carrier staging (planned gate, not yet implemented): each lesson's requiredCarrier string must equal one entry of a path.staging productive set whose lesson range covers that lesson (sets cumulative, local numbering 1–10 per path, strings as in carriersStaged); recognitionOnly items may appear in them turns only; whether the carrier is actually used and used correctly stays semantic",
+    "gender: warnings on -ado/-ada/-ido/-ida/-oso/-osa and obrigado/a, cansado/a in you turns; speakerGender neutral in all 20, so any unacknowledged hit blocks review",
+    "moves (planned gate): you1 ∈ path moveWhitelist (a you1-only list), you2 ∈ {concede,rebut,clarify,explain,compare,counteroffer}, you3 ∈ {conclude,propose,summarize,counteroffer,request}; the three moves pairwise distinct; registerPlan.mode constant; episodeShape challenge (P1) / precision (P2); whether a turn really performs its labelled move stays semantic",
+    "no rule claims to detect grammatical permutation uniqueness or synonym-correct distractors; those are semantic"
+  ],
+  "semanticReviewRules": [
+    "argument coherence across six turns; challenge genuinely objects or asks for precision; steer genuinely changes the task (bottom line, edge case, final condition, summary for record)",
+    "chip uniqueness: exactly one coherent order of the chunks; contrastive halves, adverbials and clitic placements checked by a native reviewer, not by punctuation",
+    "distractors and choices not also-correct: contudo/entretanto/porém, já que/visto que, de modo que/por isso are near-synonyms and never appear together as answer plus distractor",
+    "register naturalness: senhor turns stay formal without stiffness; você turns may use a gente and contractions of speech are an instructional choice, never a claim about all speakers",
+    "Brazilian neutrality: no regional markers (bah, oxente, tu), no European forms; subjuntivo only where it occurs incidentally (se forem) and must be correct",
+    "passiva and se indeterminado read natural in explanatory speech (process descriptions), not bureaucratic in friend turns",
+    "fictional notices stay internally consistent and are presented as the scene's own document (building notice, parking notice, clinic flow); no universal legal, municipal or medical claims, no deadlines, fine doubling or guaranteed urgent slots",
+    "them turns never gender the learner; you turns neutral as declared",
+    "base de/en texts accurate, idiomatic, not literal; pattern rule truthful for the examples given",
+    "trophy non-evasion confirmed semantically against the reserved B1 list (synonym neighbors documented above are allowed, derivations are not)",
+    "B2 not inflated B1: each you turn carries reasons, implications or negotiation, not only longer nouns"
+  ],
+  "unresolvedDecisions": [
+    "pt-BR offline validator gate does not exist; the German-only validator needs an independent Portuguese rail (register token lists, European lexis list, estar-a detector, gender warning list, accent-strip comparison) before any pt draft can be validated — implementer decision, outside this spec",
+    "pt-BR TTS voice pair (A/B) and the per-path audio manifest coverage report are unassigned; activation stays blocked until 100% voiced rows or an explicit acknowledgedWarning exists",
+    "twelve base editions are generated from de+en after review; no pt-specific blocker, but the generated-edition check must run before activation"
+  ]
+}

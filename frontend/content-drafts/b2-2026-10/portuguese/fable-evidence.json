@@ -1,0 +1,1569 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/portuguese/p1.json": "d7b11a0c1c4f132cbca3809b13972769a0029658e36f45e5f59c920498f70d62",
+    "frontend/content-drafts/b2-2026-10/portuguese/p2.json": "32e5fc6c32c186490b7f026c755f46d1f8aaa34b28d349eadc33786bcb87e6dd"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/portuguese/specification.json": "fd8602a8ff9f678bcfd8f3dfb0767d5915ee148a358d6922715da746233fa4e4",
+    "frontend/content-drafts/b2-2026-10/latin-prerequisites.json": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+    "frontend/content-drafts/b1-2026-10/portuguese-plan.json": "6a1cb711f1e561c88ed65a6407d51678c89754eda9e2c523638c7886aa007f1d"
+  },
+  "sourceCanonicalizations": [
+    {
+      "oldName": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+      "oldSha256": "f49582ba71d7dd8a651818819459a388e9dba79e908a27719c12676799463894",
+      "newName": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V2.json",
+      "newSha256": "ab9b56404004eb7c2a4e960219ecb9c9e973a64ae846b6cc3efb8aae00044e1d",
+      "exactSpecEdits": 13,
+      "metadataOnly": "Computed specRef filename/hash after exact Fable specification edits."
+    },
+    {
+      "oldName": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V2.json",
+      "oldSha256": "ab9b56404004eb7c2a4e960219ecb9c9e973a64ae846b6cc3efb8aae00044e1d",
+      "newName": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json",
+      "newSha256": "fd8602a8ff9f678bcfd8f3dfb0767d5915ee148a358d6922715da746233fa4e4",
+      "exactSpecEdits": 1,
+      "metadataOnly": "Computed specRef filename/hash after exact Fable specification edits."
+    }
+  ],
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "PT-B2-C03",
+      "severity": "HIGH",
+      "scope": "publication/runtime answer acceptance",
+      "title": "Open recall requires an answer policy beyond the curated lists",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+          "jsonPointer": "/lessons/4/recall"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+          "jsonPointer": "/lessons/7/recall"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+          "jsonPointer": "/lessons/7/recall"
+        }
+      ],
+      "evidence": {
+        "resolvedConcreteExamples": [
+          {
+            "lesson": "P1L5",
+            "frame": "Prefiro a serra, que oferece a opção mais ___ para quem precisa descansar depois de meses sem uma pausa de verdade.",
+            "completion": "relaxante",
+            "status": "Present in final acceptedAnswers"
+          },
+          {
+            "lesson": "P1L8",
+            "frame": "O que pesa mais para mim é a ___ de um salário que permite planejar os próximos anos sem depender de vender participações.",
+            "completion": "previsibilidade",
+            "status": "Present in final acceptedAnswers"
+          }
+        ],
+        "finalLists": "All final authored accepted-answer lists personally reread and preserved. P2L8 retains precisa-se, necessita-se, se precisa and se necessita. These finite lists are not an exhaustive policy for unconstrained native input.",
+        "runtimeObserved": false
+      },
+      "why": "The two concrete missing variants are repaired, but unconstrained open recall can still admit other native completions. A hidden translation or requiredCarrier field does not constrain the visible task. Source lists and offline normalization do not prove actual runtime acceptance.",
+      "fix": "Before publication, verify that the displayed recall task provides a meaningful constraining cue or accommodates valid native completions without falsely marking them wrong. Preserve the exact authored lists and both clitic placements; verify NFC/spacing/case behavior and authored accent variants, keeping ç distinct. Do not claim a general Portuguese accent normalizer exists.",
+      "localSpokenBlocker": false,
+      "status": "open",
+      "publicationOnly": true,
+      "rereviewDisposition": "RETAIN. Concrete relaxante/previsibilidade omissions closed; runtime answer policy remains unverified."
+    },
+    {
+      "id": "PT-B2-C04",
+      "severity": "HIGH",
+      "scope": "publication/runtime exercise rendering",
+      "title": "The choice and form-cue contracts need real runtime verification",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+          "jsonPointer": "/lessons/*/cloze"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+          "jsonPointer": "/lessons/*/synthesis"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+          "jsonPointer": "/lessons/*/cloze"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+          "jsonPointer": "/lessons/*/synthesis"
+        }
+      ],
+      "evidence": {
+        "choiceSets": 60,
+        "clozeFormCues": 20,
+        "example": "P1L3 forem is determined by the visible ser / third-person plural / future-subjunctive cue. The fixed connector/frame options are required to make their blanks single-answer tasks.",
+        "runtimeObserved": false
+      },
+      "why": "The sources contain correct visible cues and fixed choices, but no Portuguese B2 renderer was reviewed or exercised. Hiding those cues changes what the learner can reasonably answer.",
+      "fix": "Implement and independently verify display of every supplied choice set and lexical/morphological cue, correct reconstruction and move placement, accepted variants and no answer leaks in the actual B2 flow.",
+      "localSpokenBlocker": false,
+      "status": "open",
+      "publicationOnly": true,
+      "rereviewDisposition": "RETAIN. All 60 actual choice sets and 20 actual form cues remain supplied and personally reviewed; no actual Portuguese B2 renderer was exercised."
+    },
+    {
+      "id": "PT-B2-C05",
+      "severity": "HIGH",
+      "scope": "publication/integration",
+      "title": "Runtime, editions, review metadata and audio remain unapproved",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V3.json",
+          "jsonPointer": "/unresolvedDecisions"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p1.json",
+          "jsonPointer": "/status"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/portuguese/p2.json",
+          "jsonPointer": "/status"
+        }
+      ],
+      "evidence": {
+        "status": "draft",
+        "reviewFlags": "all twelve false on every lesson",
+        "nativeStatus": "unreviewed",
+        "reviewers": "empty",
+        "nativeGate": "The final genuine pt-BR native offline gate is now independently PASS: 60/60 tests, strict scoped TypeScript and scoped ESLint pass. Its semantic limitations remain explicit.",
+        "audio": "No voice, provider, receipt, generated audio, listening or manifest coverage reviewed.",
+        "editions": "Only de/en source bases reviewed; twelve generated editions not reviewed."
+      },
+      "why": "The offline gate and complete text review satisfy their scoped checks. They do not establish rendered B2 runtime behavior, edition coverage, review-metadata ownership, audio execution, listening or publication readiness.",
+      "fix": "Keep publication disabled until the real Portuguese B2 runtime passes independent review, the required review metadata is populated by its actual owners, all required base editions pass, and a separately reviewed audio pipeline plus coverage/listening checks complete. Preserve the independently reviewed native gate.",
+      "localSpokenBlocker": false,
+      "status": "open",
+      "publicationOnly": true,
+      "rereviewDisposition": "RETAIN with the native offline gate portion closed; all other integration and publication conditions remain."
+    }
+  ],
+  "scope": "Exact canonical spoken content for local TTS only; all publication findings retained. No native-human, listening or production approval.",
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 full twenty-lesson reads and exact arbitration"
+  },
+  "reviewChain": [
+    {
+      "batch": "B2_PORTUGUESE_P1_P2",
+      "rawProviderReviewSha256": "f63bb69d5f58a20deeb7973541d4cfd6be608eb6bfc4eafe65dfe31d6ab863b2",
+      "exactEdits": 24,
+      "exactSpecificationEdits": 0,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "portuguese-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "All six turns, build/cloze/synthesis/recall reconstructions, chunk permutations, choices in visible context, form cues, terms attestation, pattern truth, speak tokens, trophy surfaces (deslocamento,ponderando,contudo,investimento,roteiro,taxa,disciplina,estabilidade,arriscado,portanto all whole tokens of the stated turns), register rails (senhor 1,3,4,6,10; você 2,5,7,8,9), neutral you turns, carrier staging, no digits/tu/European lexis, captions quote them0 verbatim, acknowledgedWarnings cover every -ado/-ada/-ido/-ida hit in you turns",
+            "remainingConcerns": "L4 'modelo da demonstração' is intelligible but slightly odd; L5 you2 'ocupa quatro' with diárias antecedent is acceptable but 'leva quatro' would be more idiomatic; L10 pattern rule slightly overattributes the reservation to portanto rather than the clause; titles of L3/L7/L9/L10 disclosed argument or solution (fixed below); L4 chunking allowed a second grammatical order (fixed below); L9 sentence-initial causal 'Porque' nonstandard (fixed below); L8 'receita' for personal salary income unidiomatic (fixed below); native-model/native-human review still absent"
+          },
+          {
+            "file": "portuguese-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Same field-by-field read; precision shape in all ten; passiva analítica L2/L6, se indeterminado L8 (precisa-se de / se chega à, no synthetic passive), nominalização L5/L7, já que L1, visto que L3, de modo que L4/L9, o que resulta em L9, em decorrência de L10 all at or after first productive use; fictional notices (prédio Ipê, Clube Horizonte, parking aviso, Clínica do Bairro) stay scene-bound with no universal legal/medical claims; trophy surfaces cobrança,coleta,imprevisto,acumula,sobretudo,recurso,subestimamos,etapa,consequência,decorre whole tokens in stated turns; cloze choices tested in context (all distractors ungrammatical or incoherent); form cues visible and correct",
+            "remainingConcerns": "L1 you2 'Em outras palavras' answers with new facts rather than rephrasing (acceptable clarify); L6 you2 'sua descrição fica sozinha' unidiomatic (fixed below); several open recall blanks admitted valid unlisted native alternatives (accepted lists widened below); L8 recall allowed proclitic 'se precisa' (added); no B2 renderer exists so form-cue visibility remains an implementation requirement, not a verified fact"
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "INDEPENDENT FINDINGS: none supplied",
+            "decision": "noted",
+            "reason": "No independent review exists; nothing is invented or approved on its behalf; this read is Fable's own and does not satisfy the independent or native reviewer rows"
+          },
+          {
+            "finding": "PT-B2-AUTH-SPEC-1 (é verdade que in P1L1 before table entry P1-3)",
+            "decision": "accept",
+            "reason": "The spec's own P1L1 answerMove uses it and the cumulative productive L1–3 set licenses it; the firstProductiveUse table is a planning note, not a gate; no edit"
+          },
+          {
+            "finding": "PT-B2-AUTH-SPEC-2 (P1L1 forty/fifteen consistency; P2L8 triagem telefônica)",
+            "decision": "accept",
+            "reason": "P1L1 numbers consistent across them0/you1; P2L8 keeps the noun phrase in one chip and uses genuine indeterminate se on VTI verbs, matching the spec note; no edit"
+          },
+          {
+            "finding": "PT-B2-AUTH-SPEC-3 (detector false positives lado, sábado, entrada, cada)",
+            "decision": "accept",
+            "reason": "Each acknowledgment names the agreeing noun or lexical role as the spec requires; over-acknowledgments (escrito, idosos, queda, rodada) are harmless; acknowledgment is not native approval"
+          },
+          {
+            "finding": "PT-B2-AUTH-PUB-1/2/3 publication holds",
+            "decision": "accept and preserve",
+            "reason": "All flags false, reviewers empty, nativeStatus unreviewed; runtime must render fixed choices and form cues, honor accepted lists; no pt validator rail, TTS voices or base editions exist; these holds remain after the edits below"
+          },
+          {
+            "finding": "Author choiceRead claim that recall distractors use incompatible forms",
+            "decision": "adapt",
+            "reason": "True for fallbackChoices, but the open phase of several recall blanks (P1L1,L2,L10; P2L1,L3,L4,L8,L10) rejected valid native alternatives with no visible constraining cue; accepted lists widened rather than inventing cues"
+          },
+          {
+            "finding": "Author buildDesignRead for P1L4 (relative clause ends with equivale a)",
+            "decision": "reject",
+            "reason": "'o investimento que exige a compra equivale a um ano de aluguel' is a grammatical postverbal-subject permutation with the same meaning; rechunked so 'que a compra' is one chip"
+          },
+          {
+            "finding": "Validator 'spoiler' check (exact targetText containment only)",
+            "decision": "adapt",
+            "reason": "Mechanical check passes but titles of P1L3/L7/L9/L10 paraphrase the solution or argument; titles edited to the option pair"
+          }
+        ],
+        "edits": [
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/0/recall/acceptedAnswers",
+            "oldValue": [
+              "deslocamento",
+              "trajeto",
+              "percurso"
+            ],
+            "newValue": [
+              "deslocamento",
+              "trajeto",
+              "percurso",
+              "caminho"
+            ],
+            "reason": "open blank after 'o' also admits caminho; no visible cue selects the trophy"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/1/recall/acceptedAnswers",
+            "oldValue": [
+              "enquanto",
+              "ao passo que"
+            ],
+            "newValue": [
+              "enquanto",
+              "ao passo que",
+              "enquanto que",
+              "e"
+            ],
+            "reason": "'…faz mais sentido, e o carro só compensa se…' and colloquial 'enquanto que' are valid completions with no cue forcing the contrast connector"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/2/title",
+            "oldValue": {
+              "de": "Gemeinsame Bürotage begründen",
+              "en": "Making the case for shared office days"
+            },
+            "newValue": {
+              "de": "Homeoffice oder Büro",
+              "en": "Remote or in the office"
+            },
+            "reason": "title disclosed the closing proposal (shared fixed days)"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/3/build/chunks",
+            "oldValue": [
+              "o investimento que",
+              "a compra",
+              "exige",
+              "equivale a",
+              "um ano de aluguel."
+            ],
+            "newValue": [
+              "o investimento",
+              "que a compra",
+              "exige",
+              "equivale a",
+              "um ano de aluguel."
+            ],
+            "reason": "old grouping allowed 'o investimento que exige a compra equivale…', a grammatical meaning-preserving inversion; new grouping has one coherent order; reconstruction, focus, recall and speak tokens unchanged"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/6/title",
+            "oldValue": {
+              "de": "Sprachkurs und App kombinieren",
+              "en": "Combining a class and an app"
+            },
+            "newValue": {
+              "de": "Sprachkurs oder App",
+              "en": "Class or app"
+            },
+            "reason": "title disclosed the summary solution (combine both)"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/7/dialogue/3/targetText",
+            "oldValue": "Ainda assim, a startup pode fechar antes de dar retorno; a empresa grande paga menos, mas oferece uma receita mensal previsível.",
+            "newValue": "Ainda assim, a startup pode fechar antes de dar retorno; a empresa grande paga menos, mas oferece uma renda mensal previsível.",
+            "reason": "receita is business/government revenue; personal salary income is renda in pt-BR (trophy example and pattern example already use renda)"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/7/dialogue/3/base/de",
+            "oldValue": "Trotzdem kann das junge Unternehmen vor dem ersten Ertrag schließen; die große Firma zahlt weniger, bietet aber vorhersehbare monatliche Einnahmen.",
+            "newValue": "Trotzdem kann das junge Unternehmen vor dem ersten Ertrag schließen; die große Firma zahlt weniger, bietet aber ein vorhersehbares monatliches Einkommen.",
+            "reason": "align base with renda"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/7/cloze/segments/3/text",
+            "oldValue": " uma receita mensal previsível.",
+            " newValue": null,
+            "newValue": " uma renda mensal previsível.",
+            "reason": "cloze reconstruction of edited you2"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/7/terms/7",
+            "oldValue": {
+              "targetText": "receita",
+              "kind": "noun",
+              "base": {
+                "de": "Einnahmen",
+                "en": "income"
+              }
+            },
+            "newValue": {
+              "targetText": "renda",
+              "kind": "noun",
+              "base": {
+                "de": "Einkommen",
+                "en": "income"
+              }
+            },
+            "reason": "term must occur verbatim in edited dialogue"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/7/speak/1/requiredTokens",
+            "oldValue": [
+              "retorno",
+              "receita",
+              "previsível"
+            ],
+            "newValue": [
+              "retorno",
+              "renda",
+              "previsível"
+            ],
+            "reason": "speak token must be a whole token of edited turn 3"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/8/title",
+            "oldValue": {
+              "de": "Umziehen und Verbindungen erhalten",
+              "en": "Moving while keeping connections"
+            },
+            "newValue": {
+              "de": "Umziehen oder bleiben",
+              "en": "Moving or staying"
+            },
+            "reason": "title disclosed both the decision and the you2 answer"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/8/dialogue/3/targetText",
+            "oldValue": "Porque a cidade fica a três horas de trem, posso voltar todo mês; a distância muda os encontros, mas não apaga os vínculos.",
+            "newValue": "Como a cidade fica a três horas de trem, posso voltar todo mês; a distância muda os encontros, mas não apaga os vínculos.",
+            "reason": "sentence-initial causal porque is nonstandard pt-BR; como is the natural B1 causal opener (já que/visto que deferred to P2); bases 'Weil/Because' remain accurate"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/0",
+            "oldValue": {
+              "answer": "Porque",
+              "acceptedAnswers": [
+                "Porque"
+              ],
+              "kind": "connector",
+              "choices": [
+                "Porque",
+                "Apesar de",
+                "Em vez de",
+                "Devido a"
+              ]
+            },
+            "newValue": {
+              "answer": "Como",
+              "acceptedAnswers": [
+                "Como"
+              ],
+              "kind": "connector",
+              "choices": [
+                "Como",
+                "Apesar de",
+                "Em vez de",
+                "Devido a"
+              ]
+            },
+            "reason": "coupled cloze blank; distractors remain ungrammatical before 'a cidade fica'"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/9/title",
+            "oldValue": {
+              "de": "Den Hof für mehr Menschen nutzen",
+              "en": "Making the courtyard useful to more people"
+            },
+            "newValue": {
+              "de": "Eine Option für den Hof empfehlen",
+              "en": "Recommending an option for the courtyard"
+            },
+            "reason": "title paraphrased the garden argument before the challenge"
+          },
+          {
+            "file": "portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/9/recall/acceptedAnswers",
+            "oldValue": [
+              "comparação",
+              "comparaçao"
+            ],
+            "newValue": [
+              "comparação",
+              "comparaçao",
+              "contraste"
+            ],
+            "reason": "'Em contraste com duas vagas' is a valid native completion of the open blank"
+          },
+          {
+            "file": "portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/0/recall/acceptedAnswers",
+            "oldValue": [
+              "já que",
+              "ja que",
+              "porque",
+              "visto que",
+              "pois"
+            ],
+            "newValue": [
+              "já que",
+              "ja que",
+              "porque",
+              "visto que",
+              "pois",
+              "uma vez que"
+            ],
+            "reason": "valid taught causal connector in the same slot"
+          },
+          {
+            "file": "portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/2/recall/acceptedAnswers",
+            "oldValue": [
+              "visto que",
+              "já que",
+              "ja que",
+              "porque",
+              "pois"
+            ],
+            "newValue": [
+              "visto que",
+              "já que",
+              "ja que",
+              "porque",
+              "pois",
+              "uma vez que"
+            ],
+            "reason": "same as P2L1"
+          },
+          {
+            "file": "portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/3/recall/acceptedAnswers",
+            "oldValue": [
+              "acumula",
+              "gera",
+              "rende"
+            ],
+            "newValue": [
+              "acumula",
+              "gera",
+              "rende",
+              "dá",
+              "soma"
+            ],
+            "reason": "'cada compra dá/soma pontos' are the most common native phrasings; open blank has no cue forcing the trophy verb"
+          },
+          {
+            "file": "portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/5/dialogue/3/targetText",
+            "oldValue": "Em outras palavras, este aviso apresenta a foto como prova principal; sem ela, sua descrição fica sozinha, sem garantia de aceitação.",
+            "newValue": "Em outras palavras, este aviso apresenta a foto como prova principal; sem ela, sobra só a sua descrição, sem garantia de aceitação.",
+            "reason": "'descrição fica sozinha' is unidiomatic; spec wording 'sobra só a sua descrição' is natural; 22 tokens, speak tokens apresenta/prova/aceitação unchanged"
+          },
+          {
+            "file": "portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/5/dialogue/3/base/en",
+            "oldValue": "In other words, this notice presents the photo as the main evidence; without it, your description stands alone, with no guarantee of acceptance.",
+            "newValue": "In other words, this notice presents the photo as the main evidence; without it, only your description remains, with no guarantee of acceptance.",
+            "reason": "align with edited turn; de base already says 'bleibt nur deine Beschreibung'"
+          },
+          {
+            "file": "portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/5/cloze/segments/3/text",
+            "oldValue": " a foto como prova principal; sem ela, sua descrição fica sozinha, sem garantia de aceitação.",
+            "newValue": " a foto como prova principal; sem ela, sobra só a sua descrição, sem garantia de aceitação.",
+            "reason": "cloze reconstruction of edited you2"
+          },
+          {
+            "file": "portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/5/review/acknowledgedWarnings",
+            "oldValue": [
+              {
+                "code": "PT-NOUN-AGREEMENT",
+                "reason": "preenchido in you1 agrees with formulário; anexada agrees with foto, not the speaker."
+              },
+              {
+                "code": "PT-NOUN-AGREEMENT",
+                "reason": "sozinha in you2 agrees with descrição, not the speaker."
+              }
+            ],
+            "newValue": [
+              {
+                "code": "PT-NOUN-AGREEMENT",
+                "reason": "preenchido in you1 agrees with formulário; anexada agrees with foto, not the speaker."
+              }
+            ],
+            "reason": "sozinha no longer occurs; stale acknowledgment removed"
+          },
+          {
+            "file": "portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/7/recall/acceptedAnswers",
+            "oldValue": [
+              "precisa-se",
+              "necessita-se"
+            ],
+            "newValue": [
+              "precisa-se",
+              "necessita-se",
+              "se precisa",
+              "se necessita"
+            ],
+            "reason": "proclisis after the adverb Primeiro is native pt-BR in this register; both clitic placements listed per spec"
+          },
+          {
+            "file": "portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/9/recall/acceptedAnswers",
+            "oldValue": [
+              "decorrência",
+              "decorrencia"
+            ],
+            "newValue": [
+              "decorrência",
+              "decorrencia",
+              "função",
+              "funçao",
+              "razão",
+              "razao",
+              "consequência",
+              "consequencia",
+              "virtude"
+            ],
+            "reason": "'em função/razão/consequência/virtude da pesquisa' are all valid native completions of the open blank; carrier practice stays in build chip 'em decorrência da'"
+          }
+        ],
+        "finalChecks": {
+          "reconstruction": "P1L4 build, P1L8 cloze, P1L9 cloze and P2L6 cloze re-derived against edited targetText; all recall/synthesis untouched elsewhere; no choice list gains a second accepted member",
+          "trophies": "all 20 lemmas, familyKeys, surfaces and turnIndex values preserved; no frozen id or shipped text touched",
+          "lengths": "edited you2 turns P1L8 21, P1L9 23, P2L6 22 tokens within 12–24; P1L4 chips 2/3/1/2/4 tokens, 5 chunks, 2 distractors",
+          "register_gender": "edits add no você/senhor tokens, no gender-agreeing forms; P2L6 acknowledgedWarnings pruned accordingly",
+          "staging": "Como is B1; no deferred carrier introduced into any you turn",
+          "stillOpen": "review flags false, reviewers empty, nativeStatus unreviewed in all 20 lessons; no native-model or native-human row exists; no pt-BR validator rail, B2 renderer, TTS voice pair, audio coverage report or twelve base editions exist; accent-stripped input works only via authored lists; publication holds PT-B2-AUTH-PUB-1/2/3 remain; no provider/production authorization is given or implied",
+          "remainingNonblockingNotes": "P1L4 'modelo da demonstração', P1L5 'ocupa quatro', P1L10 pattern wording and P2L1 clarify move flagged for the native reviewer; not edited"
+        }
+      }
+    },
+    {
+      "batch": "B2_PORTUGUESE_P1_P2_ARBITRATION_FABLE",
+      "rawProviderReviewSha256": "5502b1851a36e4db82a9aa41f81f1a16d0c92774d9b891ca78d45387c604d7ac",
+      "exactEdits": 40,
+      "exactSpecificationEdits": 13,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Every field reread: metadata, six turns and de/en bases, build chunks/distractors, cloze/synthesis blanks, cues, choices, accepted variants, recall, pattern rules/examples, eight terms, speech tokens, trophies, review blocks. Twenty trophies/lemmas/families intact; senhor lessons 1,3,4,6,10 and você lessons 2,5,7,8,9 clean (no você/te in senhor you-turns, no o senhor in você lessons); all -ado/-ada hits acknowledged; challenge and steer genuine in all ten; them/you lengths within limits (P1L1 you3 after edit 21 tokens; P1L2 them2 after edit 20 tokens); build permutations re-attempted (contrast halves, adverbials, clitics) with no second coherent order; all 30 choice sets re-tested in visible frames with exactly one grammatical member; accent-stripped variants keep ç (concentraçao, comparaçao). Recycled-term map checked against surfaces: 14 required terms attested in dialogue or pattern examples and absent from terms; 8 required words appear on no Portuguese surface (trânsito, tamanho, viagem, fim de semana, consigo, aluguel in L9, plus frames por isso L3, a gente L5, enquanto L7).",
+            "remainingConcerns": "Open recall stays open-world (C03 runtime policy); renderer/gate/audio unverified (C04/C05)."
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Same full-field reread. Precision shape in all ten; fictional notices self-contained; passiva analítica agreement (levados, preenchido/anexada, liberado, avaliada) correct; se indeterminado in L8 is VTI impersonal, not synthetic passive; de modo que indicative use truthful; register senhor 1,3,8,10 / você 2,4,5,6,7,9 clean; 30 choice sets and 10 builds re-tested, no also-correct option or alternate order; distractor pairs never near-synonym of answer. Recycled-term map: 17 required terms attested and missing from terms; semana (L2), comprovante (L6), viajar (L7) absent from all surfaces; orçamento (L1) attested but the 10-term cap allows only two additions.",
+            "remainingConcerns": "P2L5 recall sobretudo could also take mais in colloquial speech; left unlisted as register-marginal. Runtime holds as in C03–C05."
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "PT-B2-AUTH-SPEC-1",
+            "decision": "accept",
+            "reason": "Productive L1–3 set licenses é verdade que in P1L1; firstProductiveUse is planning metadata."
+          },
+          {
+            "finding": "PT-B2-P2L3-BASE-LEAVE",
+            "decision": "accept",
+            "reason": "Generic licença with scene-specific de/en bases is correct; term base stays generic leave."
+          },
+          {
+            "finding": "FABLE-NONBLOCKING-NOTES",
+            "decision": "accept",
+            "reason": "Recorded; no text edits needed."
+          },
+          {
+            "finding": "PT-B2-C01",
+            "decision": "adapt",
+            "reason": "Genuine resolution: 31 of 41 slots filled with attested surfaces (dialogue or pattern examples, the same attestation standard the existing terms already use), every lesson staying at 9–10 terms, no useful term replaced. Ten slots are impossible without changing frozen dialogue or exceeding the 10-term cap: trânsito, tamanho, viagem, fim de semana, consigo, aluguel (L9), semana, comprovante, viajar are unattested; orçamento in P2L1 is attested but the cap is reached by revisões and horas. Those receive narrow spec corrections naming the actual attested substitute (prova, saco, modelo, salário, diárias) or the lesson where the word is already a term, so the recycling intent is preserved, not waived."
+          },
+          {
+            "finding": "PT-B2-C02",
+            "decision": "adapt",
+            "reason": "Two entries are restored in text with full coupling: por isso enters P1L1 you3 (synthesis segment, bases updated; speech tokens ganho/pesa/mantendo still attested) and por outro lado enters P1L2 them2 (no exercise coupling). mais … do que (P1L1), por isso (P1L3), a gente (P1L5) and enquanto (P1L7) cannot be inserted without rewriting sound, exercise-bound learner lines (build chunks, recall, pattern examples); each gets an explicit, narrow spec amendment pointing to where the form is actually recycled (P1-6 menor do que, P1-1 you3, P1-5/P1-10 enquanto). No frozen prior words changed."
+          },
+          {
+            "finding": "PT-B2-C03",
+            "decision": "adapt",
+            "reason": "The two concrete native completions are authored: relaxante (P1L5) and previsibilidade (P1L8). Other 18 recall lists re-tested in frame; no comparably common omission found. The runtime acceptance policy (cue display, NFC/case/spacing, no accent normalizer claim) remains an explicit hold; authored lists are not an exhaustive whitelist."
+          },
+          {
+            "finding": "PT-B2-C04",
+            "decision": "accept",
+            "reason": "Choice/cue display and reconstruction must be verified in the real pt-BR B2 renderer; no runtime change here; hold remains."
+          },
+          {
+            "finding": "PT-B2-C05",
+            "decision": "accept",
+            "reason": "Gate, runtime, twelve editions, voice pair, manifest coverage and listening remain unapproved; status draft, flags false, reviewers empty are preserved; this model review is neither human nor runtime certification."
+          },
+          {
+            "finding": "author-checker porque/regex limitation",
+            "decision": "accept",
+            "reason": "Provenance limitation only; Como edit at P1L9 stands as previously authorized."
+          }
+        ],
+        "edits": [
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/0/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "aluguel",
+              "kind": "noun",
+              "base": {
+                "de": "Miete",
+                "en": "rent"
+              }
+            },
+            "reason": "C01; attested you3 and pattern example 2"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/0/dialogue/5/targetText",
+            "oldValue": "No fim das contas, o tempo ganho pesa mais para mim; fico com este apartamento, mantendo o aluguel dentro do orçamento.",
+            "newValue": "No fim das contas, o tempo ganho pesa mais; por isso fico com este apartamento, mantendo o aluguel dentro do orçamento.",
+            "reason": "C02 restore B1 por isso; 21 tokens; speech tokens ganho/pesa/mantendo retained"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/0/dialogue/5/base/de",
+            "oldValue": "Letztlich zählt der Zeitgewinn für mich mehr; ich nehme diese Wohnung und halte die Miete innerhalb meines Budgets.",
+            "newValue": "Letztlich zählt der Zeitgewinn mehr; deshalb nehme ich diese Wohnung und halte die Miete innerhalb meines Budgets.",
+            "reason": "base parity with por isso"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/0/dialogue/5/base/en",
+            "oldValue": "Ultimately the time saved matters more to me; I choose this flat while keeping the rent within my budget.",
+            "newValue": "Ultimately the time saved matters more; so I choose this flat while keeping the rent within my budget.",
+            "reason": "base parity with por isso"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/0/synthesis/segments/1/text",
+            "oldValue": ", o tempo ganho pesa mais para mim; fico com este apartamento, mantendo o aluguel dentro do orçamento.",
+            "newValue": ", o tempo ganho pesa mais; por isso fico com este apartamento, mantendo o aluguel dentro do orçamento.",
+            "reason": "synthesis reconstruction identity with you3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/1/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "ônibus",
+              "kind": "noun",
+              "base": {
+                "de": "Bus",
+                "en": "bus"
+              }
+            },
+            "reason": "C01; attested all turns"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/1/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "chuva",
+              "kind": "noun",
+              "base": {
+                "de": "Regen",
+                "en": "rain"
+              }
+            },
+            "reason": "C01; attested them3 (chuva forte)"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/2/targetText",
+            "oldValue": "Mas o ônibus vive cheio, e você perde a liberdade de sair na hora que quiser. Isso não pesa?",
+            "newValue": "Por outro lado, o ônibus vive cheio, e você perde a liberdade de sair na hora que quiser. Isso não pesa?",
+            "reason": "C02 required P1-1 por outro lado in them turn; 20 tokens; no exercise coupling"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/2/base/de",
+            "oldValue": "Aber der Bus ist ständig voll, und du kannst nicht mehr jederzeit losfahren. Fällt das nicht ins Gewicht?",
+            "newValue": "Andererseits ist der Bus ständig voll, und du kannst nicht mehr jederzeit losfahren. Fällt das nicht ins Gewicht?",
+            "reason": "base parity"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/2/base/en",
+            "oldValue": "But the bus is always packed, and you lose the freedom to leave whenever you want. Doesn’t that matter?",
+            "newValue": "On the other hand, the bus is always packed, and you lose the freedom to leave whenever you want. Doesn’t that matter?",
+            "reason": "base parity"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/2/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "equipe",
+              "kind": "noun",
+              "base": {
+                "de": "Team",
+                "en": "team"
+              }
+            },
+            "reason": "C01; attested them2, them3, you3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/2/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "trabalho",
+              "kind": "noun",
+              "base": {
+                "de": "Arbeit",
+                "en": "work"
+              }
+            },
+            "reason": "C01; attested them1, them2"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/3/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "modelo",
+              "kind": "noun",
+              "base": {
+                "de": "Modell",
+                "en": "model"
+              }
+            },
+            "reason": "C01; attested them2, them3, you3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/4/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "orçamento",
+              "kind": "noun",
+              "base": {
+                "de": "Budget",
+                "en": "budget"
+              }
+            },
+            "reason": "C01; attested you3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/4/recall/acceptedAnswers",
+            "oldValue": [
+              "tranquila",
+              "calma",
+              "sossegada"
+            ],
+            "newValue": [
+              "tranquila",
+              "calma",
+              "sossegada",
+              "relaxante"
+            ],
+            "reason": "C03 valid native completion"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/5/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "caixa",
+              "kind": "noun",
+              "base": {
+                "de": "Kasse",
+                "en": "till"
+              }
+            },
+            "reason": "C01; attested pattern example 2 (conferir o caixa)"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/5/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "desconto",
+              "kind": "noun",
+              "base": {
+                "de": "Rabatt",
+                "en": "discount"
+              }
+            },
+            "reason": "C01; attested you3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/7/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "salário",
+              "kind": "noun",
+              "base": {
+                "de": "Gehalt",
+                "en": "salary"
+              }
+            },
+            "reason": "C01; attested you1, them3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/7/recall/acceptedAnswers",
+            "oldValue": [
+              "estabilidade",
+              "segurança"
+            ],
+            "newValue": [
+              "estabilidade",
+              "segurança",
+              "previsibilidade"
+            ],
+            "reason": "C03 valid native completion"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/8/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "trem",
+              "kind": "noun",
+              "base": {
+                "de": "Zug",
+                "en": "train"
+              }
+            },
+            "reason": "C01; attested you2"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/8/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "voltar",
+              "kind": "verb",
+              "base": {
+                "de": "zurückkommen",
+                "en": "come back"
+              }
+            },
+            "reason": "C01; attested you2, them3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/9/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "reunião",
+              "kind": "noun",
+              "base": {
+                "de": "Versammlung / Sitzung",
+                "en": "meeting"
+              }
+            },
+            "reason": "C01; attested them2"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/9/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "moradores",
+              "kind": "noun",
+              "base": {
+                "de": "Bewohner",
+                "en": "residents"
+              },
+              "lemma": "morador"
+            },
+            "reason": "C01; attested you1, them3, you3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/0/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "revisões",
+              "kind": "noun",
+              "base": {
+                "de": "Überarbeitungen",
+                "en": "revisions"
+              },
+              "lemma": "revisão"
+            },
+            "reason": "C01; attested you1"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/0/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "horas",
+              "kind": "noun",
+              "base": {
+                "de": "Stunden",
+                "en": "hours"
+              },
+              "lemma": "hora"
+            },
+            "reason": "C01; attested you2"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/2/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "combinado",
+              "kind": "noun",
+              "base": {
+                "de": "das Vereinbarte",
+                "en": "what was agreed"
+              }
+            },
+            "reason": "C01; attested you1 (depois do combinado)"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/2/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "peças",
+              "kind": "noun",
+              "base": {
+                "de": "Teile",
+                "en": "parts"
+              },
+              "lemma": "peça"
+            },
+            "reason": "C01; attested you1, them2, you3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/3/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "cadastro",
+              "kind": "noun",
+              "base": {
+                "de": "Anmeldung / Registrierung",
+                "en": "registration"
+              }
+            },
+            "reason": "C01; attested them3, you3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/3/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "trocar",
+              "kind": "verb",
+              "base": {
+                "de": "eintauschen",
+                "en": "redeem / exchange"
+              }
+            },
+            "reason": "C01; attested you1"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/4/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "talvez",
+              "kind": "adverb",
+              "base": {
+                "de": "vielleicht",
+                "en": "perhaps"
+              }
+            },
+            "reason": "C01; attested you3"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/4/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "contrato",
+              "kind": "noun",
+              "base": {
+                "de": "Vertrag",
+                "en": "contract"
+              }
+            },
+            "reason": "C01; attested them2, you2"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/5/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "formulário",
+              "kind": "noun",
+              "base": {
+                "de": "Formular",
+                "en": "form"
+              }
+            },
+            "reason": "C01; attested you1, you3, pattern example 2"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/6/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "gente",
+              "kind": "noun",
+              "base": {
+                "de": "Leute",
+                "en": "people"
+              }
+            },
+            "reason": "C01; attested you2"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/6/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "mutirão",
+              "kind": "noun",
+              "base": {
+                "de": "Gemeinschaftsaktion",
+                "en": "community workday"
+              }
+            },
+            "reason": "C01; attested pattern example 2"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/7/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "cadastro",
+              "kind": "noun",
+              "base": {
+                "de": "Anmeldung",
+                "en": "registration"
+              }
+            },
+            "reason": "C01; attested them1, you1"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/7/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "consulta",
+              "kind": "noun",
+              "base": {
+                "de": "Sprechstundentermin / Konsultation",
+                "en": "consultation / appointment"
+              }
+            },
+            "reason": "C01; attested them1, you1"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/8/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "calor",
+              "kind": "noun",
+              "base": {
+                "de": "Hitze",
+                "en": "heat"
+              }
+            },
+            "reason": "C01; attested them2"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/8/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "vagas",
+              "kind": "noun",
+              "base": {
+                "de": "Stellplätze / Parkplätze",
+                "en": "parking spaces"
+              },
+              "lemma": "vaga"
+            },
+            "reason": "C01; attested them1, you1"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/9/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "domingos",
+              "kind": "noun",
+              "base": {
+                "de": "Sonntage",
+                "en": "Sundays"
+              },
+              "lemma": "domingo"
+            },
+            "reason": "C01; attested you1"
+          },
+          {
+            "file": "reviewed-content/portuguese-b2-p2.json",
+            "jsonPointer": "/lessons/9/terms/9",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "horários",
+              "kind": "noun",
+              "base": {
+                "de": "Öffnungszeiten",
+                "en": "opening hours"
+              },
+              "lemma": "horário"
+            },
+            "reason": "C01; attested you2, you3"
+          }
+        ],
+        "specEdits": [
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/0/lessons/0/recycles/1",
+            "oldValue": "B1 mais … do que",
+            "newValue": "B1 comparative mais (pago mais, pesa mais); the full … do que frame is recycled in P1-6 (menor do que)",
+            "reason": "C02: you1/you3 are exercise-bound; frame attested elsewhere in path"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/0/lessons/1/recycles/1",
+            "oldValue": "B1 ônibus/trânsito/chuva as terms",
+            "newValue": "B1 ônibus, chuva as terms (trânsito not attested in this scene; it is a term in P2-9)",
+            "reason": "C01: trânsito on no surface"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/0/lessons/2/recycles/0",
+            "oldValue": "P1-1 por isso",
+            "newValue": "B1 porque in you1; por isso is recycled in P1-1 you3 and not required here",
+            "reason": "C02: inserting por isso would rewrite build-bound you1"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/0/lessons/3/recycles/3",
+            "oldValue": "B1 modelo, tamanho as terms",
+            "newValue": "B1 modelo as term (size is expressed as sala pequena; tamanho not a term)",
+            "reason": "C01: tamanho on no surface"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/0/lessons/4/recycles/1",
+            "oldValue": "B1 orçamento, viagem, fim de semana as terms",
+            "newValue": "B1 orçamento as term (the stay is counted in diárias; viagem and fim de semana not attested)",
+            "reason": "C01: two words on no surface"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/0/lessons/4/recycles/2",
+            "oldValue": "a gente in você turn",
+            "newValue": "a gente permitted in você turns, not required (quem precisa descansar keeps the superlative frame intact)",
+            "reason": "C02: insertion would alter build/recall/pattern-bound you1"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/0/lessons/6/recycles/2",
+            "oldValue": "P1-5 enquanto",
+            "newValue": "contrast carried by nas semanas em casa / durante as viagens; enquanto not required here (productive in P1-5, P1-10)",
+            "reason": "C02: temporal enquanto would not recycle the contrast carrier"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/0/lessons/7/recycles/2",
+            "oldValue": "B1 consigo, salário as terms",
+            "newValue": "B1 salário as term (consigo is used productively in P1-3 you1; here permite planejar)",
+            "reason": "C01: consigo on no P1-8 surface"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/0/lessons/8/recycles/1",
+            "oldValue": "B1 trem, voltar, aluguel as terms",
+            "newValue": "B1 trem, voltar as terms (aluguel is a term in P1-1; alugado here agrees with apartamento)",
+            "reason": "C01: aluguel on no P1-9 surface"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/1/lessons/0/recycles/2",
+            "oldValue": "B1 orçamento, revisão, horas as terms",
+            "newValue": "B1 revisão (surface revisões), horas as terms; orçamento recycled in dialogue (term in P1-1, P1-5)",
+            "reason": "C01: 10-term cap; orçamento already a term twice"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/1/lessons/1/recycles/2",
+            "oldValue": "B1 embalagem, semana as terms",
+            "newValue": "B1 embalagem, saco as terms (the bag is kept até terça; semana not attested)",
+            "reason": "C01: semana on no surface; saco already a term"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/1/lessons/5/recycles/3",
+            "oldValue": "B1 formulário, comprovante as terms",
+            "newValue": "B1 formulário, prova as terms (prova is the notice's evidence noun; comprovante not attested)",
+            "reason": "C01: comprovante on no surface; prova already a term"
+          },
+          {
+            "file": "B2_PORTUGUESE_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/1/lessons/6/recycles/2",
+            "oldValue": "B1 gente, viajar, mutirão as terms",
+            "newValue": "B1 gente, mutirão as terms (viagens recycled in you2 dialogue; viajar not a term)",
+            "reason": "C01: viajar on no surface"
+          }
+        ],
+        "finalChecks": {
+          "termCounts": "After edits: P1 L1 9, L2 10, L3 10, L4 9, L5 9, L6 10, L7 8, L8 9, L9 10, L10 10; P2 L1 10, L2 8, L3 10, L4 10, L5 10, L6 9, L7 10, L8 10, L9 10, L10 10; all within 8–10, all surfaces attested, no duplicate targetText inside a lesson",
+          "appendSemantics": "oldValue null on /terms/8 and /terms/9 means the index is absent before the edit (append); root must verify the array length equals that index before inserting",
+          "couplings": "P1L1 you3 change propagates to synthesis segment text and de/en bases; recall/build/cloze/pattern untouched; speech tokens ganho, pesa, mantendo attested. P1L2 them2 change has no exercise, pattern or speech coupling; sceneCaption quotes them1 only",
+          "limits": "P1L1 you3 21 tokens (10–22); P1L2 them2 20 tokens (6–20)",
+          "preserved": "20 trophies/lemmas/familyKeys/surfaces/turnIndexes unchanged; registers unchanged; speakerGender neutral, no new agreement hits; no digits; ç retained in all stripped variants; status draft, flags false, reviewers empty, nativeStatus unreviewed untouched",
+          "hashes": "Spec edits change the controlling spec; root recomputes pathSpecSha256/ledgerSha256 in both content files and the new spec filename/hash references; no hash invented here; rawreview immutable; root saves separate new copies",
+          "holds": "C03 runtime acceptance, C04 renderer/cue display, C05 gate/editions/audio/listening remain open; this output is model review, not human native or runtime certification; no runtime changes"
+        },
+        "limitations": [
+          "Model-native review; no human native-speaker sign-off.",
+          "Term attestation via pattern examples follows the existing authored convention; if the validator restricts attestation to dialogue, caixa (P1L6) and mutirão (P2L7) need dialogue-based substitutes.",
+          "Chip-order and choice exclusivity re-tests are semantic, not exhaustive machine proof.",
+          "Accepted recall lists are curated, not exhaustive; open-world acceptance stays a runtime decision."
+        ]
+      }
+    },
+    {
+      "batch": "B2_PORTUGUESE_CONTENT_GATE_REPAIR_FABLE",
+      "rawProviderReviewSha256": "3958350b81ede09a32369da20d99474ad0c9aaf0a00062afba11bfa9363acc4f",
+      "exactEdits": 3,
+      "exactSpecificationEdits": 1,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/final-reviewed-content/portuguese-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "All six turns, build/cloze/synthesis/recall reconstructions, terms (9,10,10,9,9,10,8,9,10,10), speech tokens attested whole on their turns, trophies/surfaces/turns, acknowledgedWarnings, register rails (senhor 1,3,4,6,10; você 2,5,7,8,9), no digits, no European/tu forms. Replayed token counts: P1L2 dialogue[2] = 21 native tokens (Por outro lado o ônibus vive cheio e você perde a liberdade de sair na hora que quiser Isso não pesa) – exceeds 20, my earlier 20 was wrong. Restored terms (aluguel, ônibus, chuva, equipe, trabalho, modelo, orçamento, caixa, desconto, salário, trem, voltar, reunião, moradores) and por isso in P1L1 you3, por outro lado in P1L2 them turn present and natural.",
+            "remainingConcerns": "P1L9 you2 uses sentence-initial causal Como (authorized); gate table still demands porque – fixed in code/spec below."
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/final-reviewed-content/portuguese-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Terms (10,8,10,10,10,9,10,10,10,10) all within 8–10; passives agree (levados, preenchido/anexada, avaliada, liberado); precisa-se de / se chega à are VTI indices; fictional notices stay scene-internal; all them turns within 6–20 tokens; restored terms (revisões, horas, combinado, peças, cadastro, trocar, talvez, contrato, formulário, gente, mutirão, consulta, calor, vagas, domingos, horários) attested.",
+            "remainingConcerns": "None new; chunk edge whitespace is not a content defect (all chunks trimmed) but the gate must enforce it."
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Register contract, gender safety, segmentation (chunks never carry edge whitespace via frame ownership), staging and firstProductiveUse, all 20 ledger rows, recycles prose per lesson; no speech-cardinality declaration anywhere (no narrower native 3-token bound is declared, so the authority 2–4 governs).",
+            "remainingConcerns": "P1-9 recycles still say 'B1 porque' – stale after the Como edit; corrected below."
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_INDEPENDENT_REVIEW.json + B2_PORTUGUESE_GATE_INDEPENDENT_REVIEW.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "All findings C01–C06, G01–G03, arbitration notes and preserved publication holds read in full against current V2 files.",
+            "remainingConcerns": "C01/C02 refer to pre-arbitration files; current files reflect the 40 content + 13 spec edits."
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedPortugueseB2Drafts.ts + test-guided-portuguese-b2-drafts.ts",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Schema bounds (terms.min(5), examples.min(2), requiredTokens.min(3), no maxima), CARRIERS P1L9 you2 'porque', chunk checks lack trim rule; test suite has no bound probes.",
+            "remainingConcerns": "PORTUGUESE_B2_AUTHORITY.specSha256 and both content specRef hashes must be re-pinned by root after the spec edit."
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "PT-B2-C06 (P1L2 dialogue[2] 21 tokens)",
+            "decision": "REPAIR",
+            "reason": "Independent count correct; shortened 'na hora que quiser' → 'quando quiser' (19 tokens), por outro lado intact, both bases updated, sound reply unchanged."
+          },
+          {
+            "finding": "PT-B2-G02 (hard-coded porque vs authorized Como)",
+            "decision": "REPAIR via spec clarification + gate table",
+            "reason": "Sentence-initial causal Como is native and Fable-authorized; reverting to 'Porque a cidade fica…' would be ungrammatical register. Gate carrier for P1L9 you2 becomes the narrow phrase 'como a cidade fica'; spec recycles entry corrected. Negative/positive probes added."
+          },
+          {
+            "finding": "PT-B2-G01 (collection bounds)",
+            "decision": "REPAIR to terms 8–10, examples 2–3, requiredTokens 2–4",
+            "reason": "The native V2 spec declares no speech cardinality; current content's uniform 3 tokens is an authoring choice, not a declared narrower bound, so the shared B2 authority governs. Edge-positive and reason-specific negative probes added."
+          },
+          {
+            "finding": "PT-B2-G03 (chunk edge whitespace)",
+            "decision": "REPAIR",
+            "reason": "Frame owns boundary whitespace per spec segmentation; added trim-equality rule for chunks and distractors plus both coupled space-transfer negatives."
+          },
+          {
+            "finding": "PT-B2-C01 (41 missing recycle terms)",
+            "decision": "RESOLVED by prior arbitration; retained decisions stand",
+            "reason": "31 terms restored in current files; remaining slots (trânsito, tamanho, viagem, fim de semana, consigo, semana, comprovante, viajar, aluguel in P1-9, orçamento in P2-1) were explicitly reallocated in the V2 recycles prose because the words are not attested in those scenes; no further edit."
+          },
+          {
+            "finding": "PT-B2-C02 (recurring frames)",
+            "decision": "RESOLVED by prior arbitration",
+            "reason": "por isso in P1L1 you3 and por outro lado in P1L2 them turn restored; P1L3 por isso, P1L5 a gente, P1L7 enquanto explicitly made non-required in V2 recycles; P1L1 full 'mais … do que' moved to P1-6."
+          },
+          {
+            "finding": "PT-B2-C03 (open recall policy)",
+            "decision": "RETAIN as publication hold",
+            "reason": "Authored lists preserved; runtime cue/acceptance behavior not verifiable here."
+          },
+          {
+            "finding": "PT-B2-C04 (choice/form-cue runtime)",
+            "decision": "RETAIN as publication hold",
+            "reason": "No renderer reviewed."
+          },
+          {
+            "finding": "PT-B2-C05 (native gate, editions, audio)",
+            "decision": "RETAIN as publication hold",
+            "reason": "Flags stay false, nativeStatus unreviewed, no voice/edition review."
+          },
+          {
+            "finding": "PT-B2-AUTH-SPEC-1, PT-B2-P2L3-BASE-LEAVE, FABLE-NONBLOCKING-NOTES",
+            "decision": "UPHELD",
+            "reason": "No text edits required; licença base stays generic 'leave'."
+          },
+          {
+            "finding": "PT-B2-AUTH-PUB-1/2/3",
+            "decision": "RETAIN open",
+            "reason": "Human native certification and runtime integration not claimed in this pass."
+          },
+          {
+            "finding": "Author validate.mjs hard-codes porque / malformed regex",
+            "decision": "OUT OF SCOPE",
+            "reason": "Provenance-only file in tmp; the app gate is the enforced rail."
+          }
+        ],
+        "edits": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/final-reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/2/targetText",
+            "oldValue": "Por outro lado, o ônibus vive cheio, e você perde a liberdade de sair na hora que quiser. Isso não pesa?",
+            "newValue": "Por outro lado, o ônibus vive cheio, e você perde a liberdade de sair quando quiser. Isso não pesa?",
+            "reason": "21→19 tokens; por outro lado kept; natural pt-BR."
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/final-reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/2/base/de",
+            "oldValue": "Andererseits ist der Bus ständig voll, und du kannst nicht mehr jederzeit losfahren. Fällt das nicht ins Gewicht?",
+            "newValue": "Andererseits ist der Bus ständig voll, und du kannst nicht mehr losfahren, wann du willst. Fällt das nicht ins Gewicht?",
+            "reason": "Coupled to shortened target."
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/final-reviewed-content/portuguese-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/2/base/en",
+            "oldValue": "On the other hand, the bus is always packed, and you lose the freedom to leave whenever you want. Doesn’t that matter?",
+            "newValue": "On the other hand, the bus is always packed, and you lose the freedom to leave when you want. Doesn’t that matter?",
+            "reason": "Coupled to shortened target."
+          }
+        ],
+        "specEdits": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/B2_PORTUGUESE_P1_P2_AUTHORING_SPEC_V2.json",
+            "jsonPointer": "/paths/0/lessons/8/recycles/2",
+            "oldValue": "B1 porque",
+            "newValue": "B1 causal link in you2 is sentence-initial Como (Como a cidade fica a três horas de trem, posso voltar todo mês), a Fable-authorized native replacement of Porque; porque itself is recycled in P1-3 you1 and P1-4 you2; the gate carrier phrase for P1-9 you2 is 'como a cidade fica'",
+            "reason": "Reconcile stale literal with authorized content; root recomputes spec sha and re-pins specRef in both content files and PORTUGUESE_B2_AUTHORITY."
+          }
+        ],
+        "codeEdits": [
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedPortugueseB2Drafts.ts",
+            "oldValue": "[['é verdade que','ainda assim'],['porque'],['sugiro']]",
+            "newValue": "[['é verdade que','ainda assim'],['como a cidade fica'],['sugiro']]",
+            "reason": "G02: bind P1L9 you2 to the authorized causal Como."
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedPortugueseB2Drafts.ts",
+            "oldValue": "examples:z.array(example).min(2)",
+            "newValue": "examples:z.array(example).min(2).max(3)",
+            "reason": "G01 authority 2–3."
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedPortugueseB2Drafts.ts",
+            "oldValue": "terms:z.array(term).min(5)",
+            "newValue": "terms:z.array(term).min(8).max(10)",
+            "reason": "G01 authority 8–10."
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedPortugueseB2Drafts.ts",
+            "oldValue": "requiredTokens:z.array(z.string().min(1)).min(3)",
+            "newValue": "requiredTokens:z.array(z.string().min(1)).min(2).max(4)",
+            "reason": "G01 authority 2–4; no narrower native declaration exists."
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedPortugueseB2Drafts.ts",
+            "oldValue": "  l.build.chunks.forEach(x=>{const w=tok(x).map(fold);",
+            "newValue": "  [...l.build.chunks,...l.build.distractors].forEach(x=>ck(x!==x.trim()?'chip edge whitespace: '+x:''));\n  l.build.chunks.forEach(x=>{const w=tok(x).map(fold);",
+            "reason": "G03: frame owns boundary whitespace."
+          },
+          {
+            "file": "orchestrator/frontend/scripts/test-guided-portuguese-b2-drafts.ts",
+            "oldValue": "test('authority: sha without bytes, mutated source, dummy earlier list, reordered trophies',()=>{",
+            "newValue": "test('bounds and carriers: edge-positive terms 8/10, examples 3, speech tokens 2/4, authorized P1L9 Como',()=>{\n const d=clone(p1 as PortugueseB2Draft);d.lessons[0].terms.push({targetText:'tempo',kind:'noun',base:{de:'Zeit',en:'time'}});d.lessons[0].pattern.examples.push({targetText:'Por um lado o ônibus é mais barato; por outro lado o carro dá mais liberdade.',base:{de:'Einerseits ist der Bus billiger; andererseits gibt das Auto mehr Freiheit.',en:'On one hand the bus is cheaper; on the other the car gives more freedom.'},highlights:['Por um lado','por outro lado']});d.lessons[0].speak[0].requiredTokens=['deslocamento','dura','quarenta','cai'];d.lessons[0].speak[2].requiredTokens=['ganho','pesa'];assert.equal(run(d).lessons[0].terms.length,10);\n const e=clone(p2 as PortugueseB2Draft);assert.equal(e.lessons[1].terms.length,8);assert.equal(run(e).pathNumber,2);\n const f=clone(p1 as PortugueseB2Draft);assert.ok(f.lessons[8].dialogue[3].targetText.startsWith('Como a cidade fica'));assert.equal(run(f).lessons[8].trophy.lemma,'arriscado');\n});\ntest('authority: sha without bytes, mutated source, dummy earlier list, reordered trophies',()=>{",
+            "reason": "Real positive controls at both bounds plus the actual final P1L9."
+          },
+          {
+            "file": "orchestrator/frontend/scripts/test-guided-portuguese-b2-drafts.ts",
+            "oldValue": " ['stop word trophy',1,d=>{d.lessons[0].recall.answer='o';d.lessons[0].recall.acceptedAnswers=['o']},/bare function answer/]",
+            "newValue": " ['stop word trophy',1,d=>{d.lessons[0].recall.answer='o';d.lessons[0].recall.acceptedAnswers=['o']},/bare function answer/],\n ['seven terms',2,d=>{d.lessons[1].terms.pop()},/at least 8 element/],\n ['eleven terms',1,d=>{d.lessons[1].terms.push({targetText:'cidade',kind:'noun',base:{de:'Stadt',en:'city'}})},/at most 10 element/],\n ['one pattern example',1,d=>{d.lessons[0].pattern.examples.pop()},/at least 2 element/],\n ['four pattern examples',1,d=>{const x=d.lessons[0].pattern.examples;x.push(clone(x[1]),clone(x[1]))},/at most 3 element/],\n ['one speech token',1,d=>{d.lessons[0].speak[2].requiredTokens=['ganho']},/at least 2 element/],\n ['five speech tokens',1,d=>{d.lessons[0].speak[0].requiredTokens=['deslocamento','dura','quarenta','cai','quinze']},/at most 4 element/],\n ['P1L9 causal Como removed with coupled cloze',1,d=>{const l=d.lessons[8];l.dialogue[3].targetText=l.dialogue[3].targetText.replace('Como a cidade','Quando a cidade');const b=l.cloze.blanks[0];b.answer='Quando';b.acceptedAnswers=['Quando'];b.choices=['Quando','Apesar de','Em vez de','Devido a']},/required carrier como a cidade fica/],\n ['chunk steals framePrefix trailing space',2,d=>{const b=d.lessons[0].build;b.framePrefix=b.framePrefix.slice(0,-1);b.chunks[0]=' '+b.chunks[0]},/chip edge whitespace/],\n ['chunk steals frameSuffix leading space',2,d=>{const b=d.lessons[0].build;b.frameSuffix=b.frameSuffix.slice(1);b.chunks[4]=b.chunks[4]+' '},/chip edge whitespace/],\n ['P1L2 them turn over twenty tokens',1,d=>{d.lessons[1].dialogue[2].targetText=d.lessons[1].dialogue[2].targetText.replace('quando quiser','na hora que quiser')},/turn2 length 21/]",
+            "reason": "Reason-specific negatives; each mutation is coupled so only the intended rule fires (reconstruction and boundaries stay intact)."
+          }
+        ],
+        "finalChecks": "After edits: P1L2 dialogue[2]=19 tokens; all 20 lessons satisfy terms 8–10, examples 2, speech 3 (within 2–4); every chunk/distractor already trimmed; CARRIERS P1L9 you2 'como a cidade fica' matches final text via fold+boundary phrase; expected suite 49→61 tests all PASS once root re-pins specSha256 (constant PORTUGUESE_B2_AUTHORITY.specSha256, both content specRef pathSpecSha256/ledgerSha256) to the new V2 spec hash and copies spec/content to frontend/content-drafts/b2-2026-10/portuguese. Strict TS: new fixtures typed via PortugueseB2Draft inference, no any. All source flags remain draft/pending/unreviewed; 20 trophies and allocations unchanged; 299-word evidence unchanged.",
+        "limitations": [
+          "No tools: token counts and gate behavior verified by hand replay, not executed; root must run tsc/eslint/node --test.",
+          "Root computes the new spec sha and re-pins it in the gate constant and both content specRef blocks; I do not invent hashes.",
+          "Independent AI native review; no human native certification, runtime, listening, edition or publication approval. C03/C04/C05 and AUTH-PUB-1/2/3 stay open.",
+          "tmp author validate.mjs still hard-codes porque; provenance only, not repaired here."
+        ]
+      }
+    }
+  ],
+  "approvalBasis": "All exact old/new values replayed with deep copies; complete raw reviews preserved and final source objects equal independently reviewed bytes."
+}
