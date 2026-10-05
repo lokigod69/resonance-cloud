@@ -1,0 +1,2130 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Aus meiner Sicht",
+    "en": "From my point of view"
+  },
+  "subtitle": {
+    "de": "Begründe deine Meinung und gehe auf andere Sichtweisen ein.",
+    "en": "Support your opinion and respond to other points of view."
+  },
+  "anchor": "Fable-staged Portuguese P2 (content approval only after Fable's read-through; no production approval): L1–3 acho que/na minha opinião/para mim with indicative and porque; L4–6 mas, mesmo assim and apesar de + noun/infinitive; L7–10 mas … também concession. Neutral Brazilian você with German du throughout. Concrete later objections stay hidden until turn 3. Two explicit-subject indicative form blanks per follow-up. No subjunctive, conditional requests, European usage or speaker-gender marking. Pending independent review.",
+  "lessons": [
+    {
+      "slug": "opiniao-sobre-domingos",
+      "title": {
+        "de": "Sonntags in die Bibliothek",
+        "en": "The library on Sundays"
+      },
+      "situation": {
+        "de": "Du besprichst mit einer Nachbarin die Öffnungszeiten der Stadtteilbibliothek.",
+        "en": "You discuss the neighborhood library's opening hours with a neighbor."
+      },
+      "pedagogicalGoal": "Mit na minha opinião eine Position formulieren und mit acho que plus Indikativ auf einen konkreten Einwand eingehen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "O que você acha de abrir a biblioteca aos domingos?",
+          "baseText": {
+            "de": "Was hältst du davon, die Bibliothek sonntags zu öffnen?",
+            "en": "What do you think about opening the library on Sundays?"
+          }
+        },
+        {
+          "targetText": "Na minha opinião, a biblioteca deve abrir aos domingos porque muita gente trabalha durante a semana.",
+          "baseText": {
+            "de": "Meiner Meinung nach sollte die Bibliothek sonntags öffnen, weil viele unter der Woche arbeiten.",
+            "en": "In my opinion, the library should open on Sundays because many people work during the week."
+          }
+        },
+        {
+          "targetText": "A equipe já trabalha no sábado. Não basta abrir nesse dia?",
+          "baseText": {
+            "de": "Das Team arbeitet schon samstags. Reicht es nicht, an diesem Tag zu öffnen?",
+            "en": "The staff already work on Saturdays. Isn't opening that day enough?"
+          }
+        },
+        {
+          "targetText": "Eu acho que o domingo ajuda quem trabalha também no sábado.",
+          "baseText": {
+            "de": "Ich finde, der Sonntag hilft denen, die auch samstags arbeiten.",
+            "en": "I think Sunday helps people who work on Saturdays too."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Na minha opinião; acho que",
+        "rule": {
+          "de": "Na minha opinião und acho que leiten eine persönliche Einschätzung mit dem Indikativ ein; porque nennt den Grund.",
+          "en": "Na minha opinião and acho que introduce a personal view using the indicative; porque adds the reason."
+        },
+        "examples": [
+          {
+            "targetText": "Na minha opinião, a biblioteca deve abrir aos domingos porque muita gente trabalha durante a semana.",
+            "baseText": {
+              "de": "Meiner Meinung nach sollte die Bibliothek sonntags öffnen, weil viele unter der Woche arbeiten.",
+              "en": "In my opinion, the library should open on Sundays because many people work during the week."
+            },
+            "highlight": "Na minha opinião"
+          },
+          {
+            "targetText": "Eu acho que o domingo ajuda quem trabalha também no sábado.",
+            "baseText": {
+              "de": "Ich finde, der Sonntag hilft denen, die auch samstags arbeiten.",
+              "en": "I think Sunday helps people who work on Saturdays too."
+            },
+            "highlight": "acho que o domingo ajuda"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "acho",
+          "cue": "achar (eu)",
+          "choices": [
+            "acha",
+            "acho",
+            "achamos",
+            "acham"
+          ]
+        },
+        " que o domingo ",
+        {
+          "kind": "form",
+          "answer": "ajuda",
+          "cue": "ajudar (o domingo)",
+          "choices": [
+            "ajudo",
+            "ajudamos",
+            "ajudam",
+            "ajuda"
+          ]
+        },
+        " quem trabalha também no sábado."
+      ],
+      "chunks": [
+        {
+          "targetText": "Na minha opinião,",
+          "baseText": {
+            "de": "Meiner Meinung nach",
+            "en": "In my opinion,"
+          }
+        },
+        {
+          "targetText": "a biblioteca deve abrir aos domingos",
+          "baseText": {
+            "de": "sollte die Bibliothek sonntags öffnen",
+            "en": "the library should open on Sundays"
+          }
+        },
+        {
+          "targetText": "porque muita gente",
+          "baseText": {
+            "de": "weil viele Menschen",
+            "en": "because many people"
+          }
+        },
+        {
+          "targetText": "trabalha durante a semana.",
+          "baseText": {
+            "de": "unter der Woche arbeiten.",
+            "en": "work during the week."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "opinião",
+          "baseText": {
+            "de": "Meinung",
+            "en": "opinion"
+          }
+        },
+        {
+          "targetText": "biblioteca",
+          "baseText": {
+            "de": "Bibliothek",
+            "en": "library"
+          }
+        },
+        {
+          "targetText": "aos domingos",
+          "baseText": {
+            "de": "sonntags",
+            "en": "on Sundays"
+          }
+        },
+        {
+          "targetText": "durante a semana",
+          "baseText": {
+            "de": "unter der Woche",
+            "en": "during the week"
+          }
+        },
+        {
+          "targetText": "equipe",
+          "baseText": {
+            "de": "Team",
+            "en": "staff; team"
+          }
+        },
+        {
+          "targetText": "basta",
+          "baseText": {
+            "de": "reicht aus",
+            "en": "is enough"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Na minha ",
+        "answer": "opinião",
+        "after": ", a biblioteca deve abrir aos domingos porque muita gente trabalha durante a semana.",
+        "fallbackChoices": [
+          "profissão",
+          "infância",
+          "opinião",
+          "cidade"
+        ]
+      },
+      "speakRequired": [
+        "opinião",
+        "biblioteca",
+        "domingos"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin fragt nach deiner Meinung: “O que você acha de abrir a biblioteca aos domingos?”",
+        "en": "A neighbor asks for your view: “O que você acha de abrir a biblioteca aos domingos?”"
+      },
+      "trophyWord": {
+        "word": "opinião",
+        "meaning": {
+          "de": "Meinung",
+          "en": "opinion"
+        },
+        "example": "Na minha opinião, a biblioteca deve abrir aos domingos porque muita gente trabalha durante a semana.",
+        "whyThisWord": {
+          "de": "Mit na minha opinião kennzeichnest du deine Sichtweise und schaffst Platz für eine Begründung.",
+          "en": "Na minha opinião marks a statement as your own view and makes room for a reason."
+        }
+      },
+      "distractors": [
+        "a biblioteca deve fechar aos domingos",
+        "trabalha durante a noite."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über die Öffnungszeiten der Bibliothek.",
+        "en": "A conversation about library opening hours."
+      },
+      "songMood": "thoughtful neighborhood conversation",
+      "visualNotes": "Two neighbors beside the library noticeboard; no staff schedule or later objection shown."
+    },
+    {
+      "slug": "vantagem-da-feira",
+      "title": {
+        "de": "Mehr als ein Preisschild",
+        "en": "More than a price tag"
+      },
+      "situation": {
+        "de": "Du erzählst einem Freund, warum du Obst auf dem Wochenmarkt kaufst.",
+        "en": "You tell a friend why you buy fruit at the neighborhood market."
+      },
+      "pedagogicalGoal": "Eine begründete Präferenz mit acho que und porque ausdrücken und ihre praktische Bedeutung erklären.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Por que você compra frutas na feira do bairro?",
+          "baseText": {
+            "de": "Warum kaufst du Obst auf dem Markt im Viertel?",
+            "en": "Why do you buy fruit at the neighborhood market?"
+          }
+        },
+        {
+          "targetText": "Acho que a vantagem da feira é conversar com quem vende antes de escolher.",
+          "baseText": {
+            "de": "Ich finde, der Vorteil des Marktes ist, vor der Auswahl mit den Verkäufern zu sprechen.",
+            "en": "I think the market's advantage is talking to the sellers before choosing."
+          }
+        },
+        {
+          "targetText": "No supermercado, as etiquetas já mostram o preço e a origem. Isso não basta?",
+          "baseText": {
+            "de": "Im Supermarkt stehen Preis und Herkunft schon auf den Schildern. Reicht das nicht?",
+            "en": "At the supermarket, the labels already show the price and origin. Isn't that enough?"
+          }
+        },
+        {
+          "targetText": "Eu prefiro conversar porque os vendedores conhecem bem as frutas.",
+          "baseText": {
+            "de": "Ich spreche lieber mit den Verkäufern, weil sie das Obst gut kennen.",
+            "en": "I prefer talking because the sellers know the fruit well."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Uma opinião com um motivo",
+        "rule": {
+          "de": "Nach acho que steht hier der Indikativ; mit porque erklärst du, worauf deine Meinung oder Vorliebe beruht.",
+          "en": "Use the indicative after acho que here; porque explains the basis of your opinion or preference."
+        },
+        "examples": [
+          {
+            "targetText": "Acho que a vantagem da feira é conversar com quem vende antes de escolher.",
+            "baseText": {
+              "de": "Ich finde, der Vorteil des Marktes ist, vor der Auswahl mit den Verkäufern zu sprechen.",
+              "en": "I think the market's advantage is talking to the sellers before choosing."
+            },
+            "highlight": "Acho que a vantagem da feira é"
+          },
+          {
+            "targetText": "Eu prefiro conversar porque os vendedores conhecem bem as frutas.",
+            "baseText": {
+              "de": "Ich spreche lieber mit den Verkäufern, weil sie das Obst gut kennen.",
+              "en": "I prefer talking because the sellers know the fruit well."
+            },
+            "highlight": "porque os vendedores conhecem"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "prefiro",
+          "cue": "preferir (eu)",
+          "choices": [
+            "preferem",
+            "preferimos",
+            "prefiro",
+            "prefere"
+          ]
+        },
+        " conversar porque os vendedores ",
+        {
+          "kind": "form",
+          "answer": "conhecem",
+          "cue": "conhecer (os vendedores)",
+          "choices": [
+            "conhecem",
+            "conheço",
+            "conhecemos",
+            "conhece"
+          ]
+        },
+        " bem as frutas."
+      ],
+      "chunks": [
+        {
+          "targetText": "Acho que a vantagem da feira",
+          "baseText": {
+            "de": "Ich finde, der Vorteil des Marktes",
+            "en": "I think the market's advantage"
+          }
+        },
+        {
+          "targetText": "é conversar",
+          "baseText": {
+            "de": "ist das Gespräch",
+            "en": "is talking"
+          }
+        },
+        {
+          "targetText": "com quem vende",
+          "baseText": {
+            "de": "mit den Verkäufern",
+            "en": "to the sellers"
+          }
+        },
+        {
+          "targetText": "antes de escolher.",
+          "baseText": {
+            "de": "vor der Auswahl.",
+            "en": "before choosing."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "vantagem",
+          "baseText": {
+            "de": "Vorteil",
+            "en": "advantage"
+          }
+        },
+        {
+          "targetText": "feira",
+          "baseText": {
+            "de": "Wochenmarkt",
+            "en": "street market"
+          }
+        },
+        {
+          "targetText": "escolher",
+          "baseText": {
+            "de": "auswählen",
+            "en": "to choose"
+          }
+        },
+        {
+          "targetText": "etiquetas",
+          "baseText": {
+            "de": "Etiketten; Schilder",
+            "en": "labels"
+          }
+        },
+        {
+          "targetText": "origem",
+          "baseText": {
+            "de": "Herkunft",
+            "en": "origin"
+          }
+        },
+        {
+          "targetText": "vendedores",
+          "baseText": {
+            "de": "Verkäufer",
+            "en": "sellers"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Acho que a ",
+        "answer": "vantagem",
+        "after": " da feira é conversar com quem vende antes de escolher.",
+        "fallbackChoices": [
+          "vantagem",
+          "história",
+          "regra",
+          "tradição"
+        ]
+      },
+      "speakRequired": [
+        "vantagem",
+        "feira",
+        "conversar"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund fragt dich nach deinem Einkauf: “Por que você compra frutas na feira do bairro?”",
+        "en": "A friend asks about your shopping: “Por que você compra frutas na feira do bairro?”"
+      },
+      "trophyWord": {
+        "word": "vantagem",
+        "meaning": {
+          "de": "Vorteil",
+          "en": "advantage"
+        },
+        "example": "Acho que a vantagem da feira é conversar com quem vende antes de escolher.",
+        "whyThisWord": {
+          "de": "Vantagem benennt einen konkreten Pluspunkt und hilft dir zu erklären, warum du eine Möglichkeit bevorzugst.",
+          "en": "Vantagem names a specific benefit and helps explain why you prefer one option."
+        }
+      },
+      "distractors": [
+        "é comparar os preços",
+        "com outros clientes"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch am Rand des Wochenmarktes.",
+        "en": "A conversation beside the street market."
+      },
+      "songMood": "curious lively market morning",
+      "visualNotes": "Fruit stalls and two friends talking; avoid showing supermarket labels before the objection."
+    },
+    {
+      "slug": "desvantagem-da-rua",
+      "title": {
+        "de": "An der belebten Straße",
+        "en": "On the busy street"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt dich nach dem Wohnen an einer belebten Straße.",
+        "en": "A friend asks about living on a busy street."
+      },
+      "pedagogicalGoal": "Mit para mim einen Nachteil bewerten und anschließend mit acho que plus Indikativ einen ausgleichenden Vorteil nennen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Como você avalia morar perto dessa rua movimentada?",
+          "baseText": {
+            "de": "Wie findest du es, in der Nähe dieser belebten Straße zu wohnen?",
+            "en": "How do you feel about living near this busy street?"
+          }
+        },
+        {
+          "targetText": "Para mim, o barulho é uma desvantagem porque atrapalha o descanso.",
+          "baseText": {
+            "de": "Für mich ist der Lärm ein Nachteil, weil er die Erholung stört.",
+            "en": "For me, the noise is a disadvantage because it disrupts my rest."
+          }
+        },
+        {
+          "targetText": "Então não vale a pena ficar, mesmo com seu trabalho tão perto?",
+          "baseText": {
+            "de": "Dann lohnt es sich nicht zu bleiben, obwohl deine Arbeit so nah ist?",
+            "en": "So it's not worth staying, even with your workplace so close?"
+          }
+        },
+        {
+          "targetText": "Eu acho que a proximidade compensa o barulho da rua.",
+          "baseText": {
+            "de": "Ich finde, die Nähe gleicht den Straßenlärm aus.",
+            "en": "I think the proximity makes up for the street noise."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Para mim… porque…",
+        "rule": {
+          "de": "Mit para mim bewertest du eine Situation aus deiner Sicht; porque begründet die Bewertung und acho que führt eine weitere Einschätzung ein.",
+          "en": "Para mim evaluates a situation from your perspective; porque gives the reason and acho que introduces a further judgment."
+        },
+        "examples": [
+          {
+            "targetText": "Para mim, o barulho é uma desvantagem porque atrapalha o descanso.",
+            "baseText": {
+              "de": "Für mich ist der Lärm ein Nachteil, weil er die Erholung stört.",
+              "en": "For me, the noise is a disadvantage because it disrupts my rest."
+            },
+            "highlight": "Para mim"
+          },
+          {
+            "targetText": "Eu acho que a proximidade compensa o barulho da rua.",
+            "baseText": {
+              "de": "Ich finde, die Nähe gleicht den Straßenlärm aus.",
+              "en": "I think the proximity makes up for the street noise."
+            },
+            "highlight": "acho que a proximidade compensa"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "acho",
+          "cue": "achar (eu)",
+          "choices": [
+            "achamos",
+            "acham",
+            "acha",
+            "acho"
+          ]
+        },
+        " que a proximidade ",
+        {
+          "kind": "form",
+          "answer": "compensa",
+          "cue": "compensar (a proximidade)",
+          "choices": [
+            "compensam",
+            "compensa",
+            "compenso",
+            "compensamos"
+          ]
+        },
+        " o barulho da rua."
+      ],
+      "chunks": [
+        {
+          "targetText": "Para mim,",
+          "baseText": {
+            "de": "Für mich",
+            "en": "For me,"
+          }
+        },
+        {
+          "targetText": "o barulho é uma desvantagem",
+          "baseText": {
+            "de": "ist der Lärm ein Nachteil",
+            "en": "the noise is a disadvantage"
+          }
+        },
+        {
+          "targetText": "porque atrapalha",
+          "baseText": {
+            "de": "weil er stört",
+            "en": "because it disrupts"
+          }
+        },
+        {
+          "targetText": "o descanso.",
+          "baseText": {
+            "de": "die Erholung.",
+            "en": "my rest."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "desvantagem",
+          "baseText": {
+            "de": "Nachteil",
+            "en": "disadvantage"
+          }
+        },
+        {
+          "targetText": "barulho",
+          "baseText": {
+            "de": "Lärm",
+            "en": "noise"
+          }
+        },
+        {
+          "targetText": "atrapalha",
+          "baseText": {
+            "de": "stört; behindert",
+            "en": "disrupts; gets in the way"
+          }
+        },
+        {
+          "targetText": "descanso",
+          "baseText": {
+            "de": "Erholung",
+            "en": "rest"
+          }
+        },
+        {
+          "targetText": "proximidade",
+          "baseText": {
+            "de": "Nähe",
+            "en": "proximity"
+          }
+        },
+        {
+          "targetText": "compensa",
+          "baseText": {
+            "de": "gleicht aus",
+            "en": "makes up for"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Para mim, o barulho é uma ",
+        "answer": "desvantagem",
+        "after": " porque atrapalha o descanso.",
+        "fallbackChoices": [
+          "lembrança",
+          "surpresa",
+          "desvantagem",
+          "novidade"
+        ]
+      },
+      "speakRequired": [
+        "barulho",
+        "desvantagem",
+        "descanso"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin fragt nach deiner Wohnungslage: “Como você avalia morar perto dessa rua movimentada?”",
+        "en": "A friend asks about your apartment's location: “Como você avalia morar perto dessa rua movimentada?”"
+      },
+      "trophyWord": {
+        "word": "desvantagem",
+        "meaning": {
+          "de": "Nachteil",
+          "en": "disadvantage"
+        },
+        "example": "Para mim, o barulho é uma desvantagem porque atrapalha o descanso.",
+        "whyThisWord": {
+          "de": "Desvantagem benennt einen Nachteil, ohne damit schon eine ganze Möglichkeit abzulehnen.",
+          "en": "Desvantagem names a drawback without necessarily rejecting the whole option."
+        }
+      },
+      "distractors": [
+        "o silêncio é uma vantagem",
+        "o trabalho."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über die Lage einer Wohnung.",
+        "en": "A conversation about an apartment's location."
+      },
+      "songMood": "reflective city afternoon",
+      "visualNotes": "Friends near an apartment window facing a busy street; do not depict the workplace or reveal its proximity."
+    },
+    {
+      "slug": "transito-perto-da-praca",
+      "title": {
+        "de": "Weniger Parkplätze",
+        "en": "Fewer parking spaces"
+      },
+      "situation": {
+        "de": "Du sprichst mit einem Nachbarn über weniger Parkplätze am Platz im Viertel.",
+        "en": "You talk with a neighbor about reducing parking spaces beside the neighborhood square."
+      },
+      "pedagogicalGoal": "Einen Einwand mit entendo anerkennen und die eigene Position mit mas um einen konkreten Vorschlag ergänzen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você apoia a proposta de reduzir as vagas perto da praça?",
+          "baseText": {
+            "de": "Unterstützt du den Vorschlag, die Parkplätze am Platz zu reduzieren?",
+            "en": "Do you support the proposal to reduce parking spaces near the square?"
+          }
+        },
+        {
+          "targetText": "Acho que reduzir as vagas ajuda a diminuir o trânsito perto da praça.",
+          "baseText": {
+            "de": "Ich denke, weniger Parkplätze helfen, den Verkehr am Platz zu verringern.",
+            "en": "I think reducing parking spaces helps decrease traffic near the square."
+          }
+        },
+        {
+          "targetText": "Mas os carros podem parar no meio da rua para buscar passageiros.",
+          "baseText": {
+            "de": "Aber die Autos könnten mitten auf der Straße halten, um Leute abzuholen.",
+            "en": "But cars might stop in the middle of the street to pick people up."
+          }
+        },
+        {
+          "targetText": "Eu entendo essa preocupação, mas defendo uma área de embarque.",
+          "baseText": {
+            "de": "Ich verstehe diese Sorge, aber ich bin für eine Zone zum Einsteigen.",
+            "en": "I understand that concern, but I support a designated pickup area."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Entendo…, mas…",
+        "rule": {
+          "de": "Mit entendo erkennst du einen Einwand an; mas leitet deine abweichende Position oder einen ergänzenden Vorschlag ein.",
+          "en": "Entendo acknowledges an objection; mas introduces your different position or an additional proposal."
+        },
+        "examples": [
+          {
+            "targetText": "Acho que reduzir as vagas ajuda a diminuir o trânsito perto da praça.",
+            "baseText": {
+              "de": "Ich denke, weniger Parkplätze helfen, den Verkehr am Platz zu verringern.",
+              "en": "I think reducing parking spaces helps decrease traffic near the square."
+            },
+            "highlight": "Acho que"
+          },
+          {
+            "targetText": "Eu entendo essa preocupação, mas defendo uma área de embarque.",
+            "baseText": {
+              "de": "Ich verstehe diese Sorge, aber ich bin für eine Zone zum Einsteigen.",
+              "en": "I understand that concern, but I support a designated pickup area."
+            },
+            "highlight": "entendo essa preocupação, mas defendo"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "entendo",
+          "cue": "entender (eu)",
+          "choices": [
+            "entende",
+            "entendo",
+            "entendem",
+            "entendemos"
+          ]
+        },
+        " essa preocupação, mas ",
+        {
+          "kind": "form",
+          "answer": "defendo",
+          "cue": "defender (eu)",
+          "choices": [
+            "defendemos",
+            "defendem",
+            "defendo",
+            "defende"
+          ]
+        },
+        " uma área de embarque."
+      ],
+      "chunks": [
+        {
+          "targetText": "Acho que reduzir as vagas",
+          "baseText": {
+            "de": "Ich denke, weniger Parkplätze",
+            "en": "I think reducing parking spaces"
+          }
+        },
+        {
+          "targetText": "ajuda a diminuir",
+          "baseText": {
+            "de": "helfen zu verringern",
+            "en": "helps decrease"
+          }
+        },
+        {
+          "targetText": "o trânsito",
+          "baseText": {
+            "de": "den Verkehr",
+            "en": "traffic"
+          }
+        },
+        {
+          "targetText": "perto da praça.",
+          "baseText": {
+            "de": "am Platz.",
+            "en": "near the square."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "trânsito",
+          "baseText": {
+            "de": "Verkehr",
+            "en": "traffic"
+          }
+        },
+        {
+          "targetText": "vagas",
+          "baseText": {
+            "de": "Parkplätze",
+            "en": "parking spaces"
+          }
+        },
+        {
+          "targetText": "reduzir",
+          "baseText": {
+            "de": "reduzieren",
+            "en": "to reduce"
+          }
+        },
+        {
+          "targetText": "praça",
+          "baseText": {
+            "de": "Platz",
+            "en": "square"
+          }
+        },
+        {
+          "targetText": "preocupação",
+          "baseText": {
+            "de": "Sorge",
+            "en": "concern"
+          }
+        },
+        {
+          "targetText": "área de embarque",
+          "baseText": {
+            "de": "Zone zum Einsteigen",
+            "en": "pickup area"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Acho que reduzir as vagas ajuda a diminuir o ",
+        "answer": "trânsito",
+        "after": " perto da praça.",
+        "fallbackChoices": [
+          "comércio",
+          "trânsito",
+          "espaço",
+          "barulho"
+        ]
+      },
+      "speakRequired": [
+        "reduzir",
+        "vagas",
+        "trânsito"
+      ],
+      "sceneCaption": {
+        "de": "Ein Nachbar spricht die Verkehrsplanung an: “Você apoia a proposta de reduzir as vagas perto da praça?”",
+        "en": "A neighbor brings up traffic planning: “Você apoia a proposta de reduzir as vagas perto da praça?”"
+      },
+      "trophyWord": {
+        "word": "trânsito",
+        "meaning": {
+          "de": "Verkehr",
+          "en": "traffic"
+        },
+        "example": "Acho que reduzir as vagas ajuda a diminuir o trânsito perto da praça.",
+        "whyThisWord": {
+          "de": "Trânsito bezeichnet den Verkehr und lässt sich mit diminuir oder melhorar verbinden, wenn du über dein Viertel sprichst.",
+          "en": "Trânsito means traffic and works with diminuir or melhorar when discussing your neighborhood."
+        }
+      },
+      "distractors": [
+        "Acho que aumentar as vagas",
+        "o comércio"
+      ],
+      "placeholderCaption": {
+        "de": "Nachbarn besprechen eine Änderung am Platz.",
+        "en": "Neighbors discuss a change beside the square."
+      },
+      "songMood": "measured civic discussion",
+      "visualNotes": "Two neighbors examining a simple square map with parking spaces; no stopped cars or pickup area shown."
+    },
+    {
+      "slug": "transporte-para-mais-gente",
+      "title": {
+        "de": "Mehr Platz im Bus",
+        "en": "Room for more people"
+      },
+      "situation": {
+        "de": "Du diskutierst mit einer Bekannten über Investitionen in den Nahverkehr.",
+        "en": "You discuss investment in public transportation with an acquaintance."
+      },
+      "pedagogicalGoal": "Mit apesar de einen Nachteil einräumen und mit mesmo assim an einer begründeten Position festhalten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você acha que vale a pena investir mais nos ônibus?",
+          "baseText": {
+            "de": "Findest du, dass es sich lohnt, mehr in Busse zu investieren?",
+            "en": "Do you think investing more in buses is worthwhile?"
+          }
+        },
+        {
+          "targetText": "Apesar da demora de algumas linhas, acho que melhorar o transporte público vale o investimento.",
+          "baseText": {
+            "de": "Trotz der langen Wartezeiten bei manchen Linien finde ich, dass besserer Nahverkehr die Investition wert ist.",
+            "en": "Despite the long waits on some routes, I think improving public transportation is worth the investment."
+          }
+        },
+        {
+          "targetText": "Mas uma faixa só para ônibus tira espaço dos carros.",
+          "baseText": {
+            "de": "Aber eine reine Busspur nimmt den Autos Platz weg.",
+            "en": "But a bus-only lane takes space away from cars."
+          }
+        },
+        {
+          "targetText": "Mesmo assim, os ônibus levam mais pessoas e ocupam menos espaço.",
+          "baseText": {
+            "de": "Trotzdem befördern Busse mehr Menschen und brauchen weniger Platz.",
+            "en": "Even so, buses carry more people and take up less space."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Apesar de; mesmo assim",
+        "rule": {
+          "de": "Apesar de mit einem Nomen räumt einen Nachteil ein; mesmo assim zeigt, dass dein anschließendes Argument trotzdem gilt.",
+          "en": "Apesar de followed by a noun acknowledges a drawback; mesmo assim shows that your next argument still holds."
+        },
+        "examples": [
+          {
+            "targetText": "Apesar da demora de algumas linhas, acho que melhorar o transporte público vale o investimento.",
+            "baseText": {
+              "de": "Trotz der langen Wartezeiten bei manchen Linien finde ich, dass besserer Nahverkehr die Investition wert ist.",
+              "en": "Despite the long waits on some routes, I think improving public transportation is worth the investment."
+            },
+            "highlight": "Apesar da demora"
+          },
+          {
+            "targetText": "Mesmo assim, os ônibus levam mais pessoas e ocupam menos espaço.",
+            "baseText": {
+              "de": "Trotzdem befördern Busse mehr Menschen und brauchen weniger Platz.",
+              "en": "Even so, buses carry more people and take up less space."
+            },
+            "highlight": "Mesmo assim"
+          }
+        ]
+      },
+      "cloze": [
+        "Mesmo assim, os ônibus ",
+        {
+          "kind": "form",
+          "answer": "levam",
+          "cue": "levar (os ônibus)",
+          "choices": [
+            "levo",
+            "leva",
+            "levam",
+            "levamos"
+          ]
+        },
+        " mais pessoas e ",
+        {
+          "kind": "form",
+          "answer": "ocupam",
+          "cue": "ocupar (os ônibus)",
+          "choices": [
+            "ocupam",
+            "ocupo",
+            "ocupamos",
+            "ocupa"
+          ]
+        },
+        " menos espaço."
+      ],
+      "chunks": [
+        {
+          "targetText": "Apesar da demora de algumas linhas,",
+          "baseText": {
+            "de": "Trotz der langen Wartezeiten bei manchen Linien",
+            "en": "Despite the long waits on some routes,"
+          }
+        },
+        {
+          "targetText": "acho que melhorar",
+          "baseText": {
+            "de": "finde ich, dass die Verbesserung",
+            "en": "I think improving"
+          }
+        },
+        {
+          "targetText": "o transporte público",
+          "baseText": {
+            "de": "des Nahverkehrs",
+            "en": "public transportation"
+          }
+        },
+        {
+          "targetText": "vale o investimento.",
+          "baseText": {
+            "de": "die Investition wert ist.",
+            "en": "is worth the investment."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "transporte público",
+          "baseText": {
+            "de": "öffentlicher Nahverkehr",
+            "en": "public transportation"
+          }
+        },
+        {
+          "targetText": "demora",
+          "baseText": {
+            "de": "lange Wartezeit; Verzögerung",
+            "en": "long wait; delay"
+          }
+        },
+        {
+          "targetText": "linhas",
+          "baseText": {
+            "de": "Linien",
+            "en": "routes"
+          }
+        },
+        {
+          "targetText": "investimento",
+          "baseText": {
+            "de": "Investition",
+            "en": "investment"
+          }
+        },
+        {
+          "targetText": "faixa",
+          "baseText": {
+            "de": "Fahrspur",
+            "en": "lane"
+          }
+        },
+        {
+          "targetText": "ocupam",
+          "baseText": {
+            "de": "nehmen ein; belegen",
+            "en": "occupy; take up"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Apesar da demora de algumas linhas, acho que melhorar o ",
+        "answer": "transporte",
+        "after": " público vale o investimento.",
+        "fallbackChoices": [
+          "espaço",
+          "ensino",
+          "atendimento",
+          "transporte"
+        ]
+      },
+      "speakRequired": [
+        "demora",
+        "transporte",
+        "investimento"
+      ],
+      "sceneCaption": {
+        "de": "Eine Bekannte fragt nach dem Busverkehr: “Você acha que vale a pena investir mais nos ônibus?”",
+        "en": "An acquaintance asks about bus services: “Você acha que vale a pena investir mais nos ônibus?”"
+      },
+      "trophyWord": {
+        "word": "transporte",
+        "meaning": {
+          "de": "Transport; Verkehr",
+          "en": "transportation"
+        },
+        "example": "Apesar da demora de algumas linhas, acho que melhorar o transporte público vale o investimento.",
+        "whyThisWord": {
+          "de": "Mit transporte público sprichst du über Busse, Bahnen und andere gemeinsam nutzbare Verkehrsmittel als Ganzes.",
+          "en": "Transporte público lets you discuss buses, trains and other public travel services as a whole."
+        }
+      },
+      "distractors": [
+        "o transporte particular",
+        "não vale o investimento."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Austausch über die Busverbindungen im Viertel.",
+        "en": "An exchange about local bus services."
+      },
+      "songMood": "steady urban optimism",
+      "visualNotes": "People talking beside a bus route map; the street layout and lane objection remain unseen."
+    },
+    {
+      "slug": "aluguel-compartilhado",
+      "title": {
+        "de": "Die Miete teilen",
+        "en": "Sharing the rent"
+      },
+      "situation": {
+        "de": "Du überlegst mit einem Freund, wie sich gemeinsames Wohnen auf die Kosten auswirkt.",
+        "en": "You discuss with a friend how sharing a home affects the cost."
+      },
+      "pedagogicalGoal": "Mit apesar de plus Infinitiv einen Nachteil einräumen und nach einem Einwand mit mesmo assim eine praktikable Position vertreten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "O que você acha de dividir um apartamento com outra pessoa?",
+          "baseText": {
+            "de": "Was hältst du davon, eine Wohnung mit jemandem zu teilen?",
+            "en": "What do you think about sharing an apartment with someone?"
+          }
+        },
+        {
+          "targetText": "Acho que dividir o aluguel ajuda a economizar, apesar de reduzir a privacidade.",
+          "baseText": {
+            "de": "Ich finde, die Miete zu teilen hilft beim Sparen, auch wenn es die Privatsphäre einschränkt.",
+            "en": "I think sharing the rent helps save money, despite reducing privacy."
+          }
+        },
+        {
+          "targetText": "E quando a outra pessoa recebe visitas à noite, bem na hora de dormir?",
+          "baseText": {
+            "de": "Und wenn die andere Person abends Besuch bekommt, genau zur Schlafenszeit?",
+            "en": "And what about when the other person has visitors at night, right at bedtime?"
+          }
+        },
+        {
+          "targetText": "Mesmo assim, eu economizo e posso combinar horários para visitas.",
+          "baseText": {
+            "de": "Trotzdem spare ich Geld und kann Besuchszeiten absprechen.",
+            "en": "Even so, I save money and can agree on visiting hours."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Apesar de + infinitivo",
+        "rule": {
+          "de": "Nach apesar de kann ein Infinitiv den eingeräumten Nachteil benennen; mesmo assim führt das Argument fort, das für deine Wahl spricht.",
+          "en": "After apesar de, an infinitive can name the drawback you acknowledge; mesmo assim continues the argument in favor of your choice."
+        },
+        "examples": [
+          {
+            "targetText": "Acho que dividir o aluguel ajuda a economizar, apesar de reduzir a privacidade.",
+            "baseText": {
+              "de": "Ich finde, die Miete zu teilen hilft beim Sparen, auch wenn es die Privatsphäre einschränkt.",
+              "en": "I think sharing the rent helps save money, despite reducing privacy."
+            },
+            "highlight": "apesar de reduzir a privacidade"
+          },
+          {
+            "targetText": "Mesmo assim, eu economizo e posso combinar horários para visitas.",
+            "baseText": {
+              "de": "Trotzdem spare ich Geld und kann Besuchszeiten absprechen.",
+              "en": "Even so, I save money and can agree on visiting hours."
+            },
+            "highlight": "Mesmo assim"
+          }
+        ]
+      },
+      "cloze": [
+        "Mesmo assim, eu ",
+        {
+          "kind": "form",
+          "answer": "economizo",
+          "cue": "economizar (eu)",
+          "choices": [
+            "economizam",
+            "economizo",
+            "economiza",
+            "economizamos"
+          ]
+        },
+        " e ",
+        {
+          "kind": "form",
+          "answer": "posso",
+          "cue": "poder (eu)",
+          "choices": [
+            "podemos",
+            "podem",
+            "pode",
+            "posso"
+          ]
+        },
+        " combinar horários para visitas."
+      ],
+      "chunks": [
+        {
+          "targetText": "Acho que dividir o aluguel",
+          "baseText": {
+            "de": "Ich finde, die Miete zu teilen",
+            "en": "I think sharing the rent"
+          }
+        },
+        {
+          "targetText": "ajuda a economizar,",
+          "baseText": {
+            "de": "hilft beim Sparen,",
+            "en": "helps save money,"
+          }
+        },
+        {
+          "targetText": "apesar de reduzir",
+          "baseText": {
+            "de": "auch wenn es einschränkt",
+            "en": "despite reducing"
+          }
+        },
+        {
+          "targetText": "a privacidade.",
+          "baseText": {
+            "de": "die Privatsphäre.",
+            "en": "privacy."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "aluguel",
+          "baseText": {
+            "de": "Miete",
+            "en": "rent"
+          }
+        },
+        {
+          "targetText": "dividir",
+          "baseText": {
+            "de": "teilen",
+            "en": "to share"
+          }
+        },
+        {
+          "targetText": "economizar",
+          "baseText": {
+            "de": "Geld sparen",
+            "en": "to save money"
+          }
+        },
+        {
+          "targetText": "privacidade",
+          "baseText": {
+            "de": "Privatsphäre",
+            "en": "privacy"
+          }
+        },
+        {
+          "targetText": "visitas",
+          "baseText": {
+            "de": "Besuch; Besuche",
+            "en": "visitors; visits"
+          }
+        },
+        {
+          "targetText": "combinar horários",
+          "baseText": {
+            "de": "Zeiten absprechen",
+            "en": "to agree on times"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Acho que dividir o ",
+        "answer": "aluguel",
+        "after": " ajuda a economizar, apesar de reduzir a privacidade.",
+        "fallbackChoices": [
+          "quarto",
+          "aluguel",
+          "carro",
+          "escritório"
+        ]
+      },
+      "speakRequired": [
+        "aluguel",
+        "economizar",
+        "privacidade"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund spricht über gemeinsames Wohnen: “O que você acha de dividir um apartamento com outra pessoa?”",
+        "en": "A friend brings up sharing a home: “O que você acha de dividir um apartamento com outra pessoa?”"
+      },
+      "trophyWord": {
+        "word": "aluguel",
+        "meaning": {
+          "de": "Miete",
+          "en": "rent"
+        },
+        "example": "Acho que dividir o aluguel ajuda a economizar, apesar de reduzir a privacidade.",
+        "whyThisWord": {
+          "de": "Aluguel ist die regelmäßige Miete; dividir o aluguel macht eine finanzielle Überlegung beim Zusammenwohnen konkret.",
+          "en": "Aluguel is the rent payment; dividir o aluguel makes a financial reason for sharing a home concrete."
+        }
+      },
+      "distractors": [
+        "ajuda a gastar mais,",
+        "a distância."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde besprechen das Teilen einer Wohnung.",
+        "en": "Two friends discuss sharing an apartment."
+      },
+      "songMood": "practical relaxed reflection",
+      "visualNotes": "Friends at a kitchen table looking at apartment costs; no visitors or evening scene."
+    },
+    {
+      "slug": "convivencia-no-salao",
+      "title": {
+        "de": "Der Saal für alle",
+        "en": "A room for everyone"
+      },
+      "situation": {
+        "de": "Du besprichst mit einer Nachbarin die Regeln für den Gemeinschaftssaal.",
+        "en": "You discuss rules for the shared function room with a neighbor."
+      },
+      "pedagogicalGoal": "Mit mas und também zwei berechtigte Interessen abwägen und nach einem Einwand eine weitere betroffene Gruppe berücksichtigen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você acha que o salão do prédio precisa de regras mais claras?",
+          "baseText": {
+            "de": "Findest du, dass der Gemeinschaftssaal im Haus klarere Regeln braucht?",
+            "en": "Do you think the building's function room needs clearer rules?"
+          }
+        },
+        {
+          "targetText": "Para mim, regras claras melhoram a convivência, mas o salão também precisa de horários flexíveis.",
+          "baseText": {
+            "de": "Für mich verbessern klare Regeln das Zusammenleben, aber der Saal braucht auch flexible Nutzungszeiten.",
+            "en": "For me, clear rules improve life together, but the room also needs flexible hours."
+          }
+        },
+        {
+          "targetText": "Alguns vizinhos pedem mais tempo para limpar depois da festa.",
+          "baseText": {
+            "de": "Einige Nachbarn möchten nach der Feier mehr Zeit zum Saubermachen.",
+            "en": "Some neighbors are asking for more time to clean up after a party."
+          }
+        },
+        {
+          "targetText": "Eu concordo, mas acho que a próxima reserva também merece respeito.",
+          "baseText": {
+            "de": "Ich stimme zu, aber ich finde, auch die nächste Reservierung verdient Rücksicht.",
+            "en": "I agree, but I think the next booking also deserves consideration."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mas… também…",
+        "rule": {
+          "de": "Mas leitet einen Gegenpunkt ein, und também zeigt, dass dieser neben dem ersten Anliegen ebenfalls zählt.",
+          "en": "Mas introduces a counterpoint, and também shows that it matters alongside the first concern."
+        },
+        "examples": [
+          {
+            "targetText": "Para mim, regras claras melhoram a convivência, mas o salão também precisa de horários flexíveis.",
+            "baseText": {
+              "de": "Für mich verbessern klare Regeln das Zusammenleben, aber der Saal braucht auch flexible Nutzungszeiten.",
+              "en": "For me, clear rules improve life together, but the room also needs flexible hours."
+            },
+            "highlight": "mas o salão também precisa"
+          },
+          {
+            "targetText": "Eu concordo, mas acho que a próxima reserva também merece respeito.",
+            "baseText": {
+              "de": "Ich stimme zu, aber ich finde, auch die nächste Reservierung verdient Rücksicht.",
+              "en": "I agree, but I think the next booking also deserves consideration."
+            },
+            "highlight": "mas acho que a próxima reserva também merece respeito"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "concordo",
+          "cue": "concordar (eu)",
+          "choices": [
+            "concorda",
+            "concordamos",
+            "concordo",
+            "concordam"
+          ]
+        },
+        ", mas ",
+        {
+          "kind": "form",
+          "answer": "acho",
+          "cue": "achar (eu)",
+          "choices": [
+            "acho",
+            "achamos",
+            "acha",
+            "acham"
+          ]
+        },
+        " que a próxima reserva também merece respeito."
+      ],
+      "chunks": [
+        {
+          "targetText": "Para mim,",
+          "baseText": {
+            "de": "Aus meiner Sicht",
+            "en": "For me,"
+          }
+        },
+        {
+          "targetText": "regras claras melhoram a convivência,",
+          "baseText": {
+            "de": "verbessern klare Regeln das Zusammenleben,",
+            "en": "clear rules improve life together,"
+          }
+        },
+        {
+          "targetText": "mas o salão também precisa",
+          "baseText": {
+            "de": "aber der Saal braucht auch",
+            "en": "but the room also needs"
+          }
+        },
+        {
+          "targetText": "de horários flexíveis.",
+          "baseText": {
+            "de": "flexible Nutzungszeiten.",
+            "en": "flexible hours."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "convivência",
+          "baseText": {
+            "de": "Zusammenleben",
+            "en": "living together"
+          }
+        },
+        {
+          "targetText": "regras claras",
+          "baseText": {
+            "de": "klare Regeln",
+            "en": "clear rules"
+          }
+        },
+        {
+          "targetText": "salão",
+          "baseText": {
+            "de": "Gemeinschaftssaal",
+            "en": "function room"
+          }
+        },
+        {
+          "targetText": "horários flexíveis",
+          "baseText": {
+            "de": "flexible Nutzungszeiten",
+            "en": "flexible hours"
+          }
+        },
+        {
+          "targetText": "reserva",
+          "baseText": {
+            "de": "Reservierung",
+            "en": "booking"
+          }
+        },
+        {
+          "targetText": "respeito",
+          "baseText": {
+            "de": "Respekt; Rücksicht",
+            "en": "respect; consideration"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Para mim, regras claras melhoram a ",
+        "answer": "convivência",
+        "after": ", mas o salão também precisa de horários flexíveis.",
+        "fallbackChoices": [
+          "limpeza",
+          "segurança",
+          "iluminação",
+          "convivência"
+        ]
+      },
+      "speakRequired": [
+        "regras",
+        "convivência",
+        "flexíveis"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin spricht die Saalregeln an: “Você acha que o salão do prédio precisa de regras mais claras?”",
+        "en": "A neighbor brings up the room's rules: “Você acha que o salão do prédio precisa de regras mais claras?”"
+      },
+      "trophyWord": {
+        "word": "convivência",
+        "meaning": {
+          "de": "Zusammenleben",
+          "en": "living together"
+        },
+        "example": "Para mim, regras claras melhoram a convivência, mas o salão também precisa de horários flexíveis.",
+        "whyThisWord": {
+          "de": "Convivência beschreibt das alltägliche Miteinander und ist nützlich, wenn du Regeln mit Rücksicht auf andere begründest.",
+          "en": "Convivência describes everyday life together and helps explain rules in terms of consideration for others."
+        }
+      },
+      "distractors": [
+        "regras claras pioram a convivência,",
+        "de preços mais baixos."
+      ],
+      "placeholderCaption": {
+        "de": "Nachbarn besprechen die Nutzung des Gemeinschaftssaals.",
+        "en": "Neighbors discuss use of their shared function room."
+      },
+      "songMood": "considerate communal planning",
+      "visualNotes": "Neighbors outside an empty shared hall; no cleanup scene or subsequent booking displayed."
+    },
+    {
+      "slug": "escolha-do-presencial",
+      "title": {
+        "de": "Der Weg zum Kurs",
+        "en": "The trip to class"
+      },
+      "situation": {
+        "de": "Du erklärst einem Freund, warum du einen Kurs vor Ort gewählt hast.",
+        "en": "You explain to a friend why you chose an in-person course."
+      },
+      "pedagogicalGoal": "Mit mas … também einen Nachteil gegen einen persönlichen Nutzen abwägen und die Begründung an eine neue Einschränkung anpassen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Por que você escolheu o curso presencial e não o curso pela internet?",
+          "baseText": {
+            "de": "Warum hast du den Kurs vor Ort gewählt und nicht den Onlinekurs?",
+            "en": "Why did you choose the in-person course instead of the online course?"
+          }
+        },
+        {
+          "targetText": "Defendo minha escolha do curso presencial: o trajeto é longo, mas as conversas também fazem diferença.",
+          "baseText": {
+            "de": "Ich stehe zu meiner Wahl des Präsenzkurses: Der Weg ist lang, aber auch die Gespräche machen einen Unterschied.",
+            "en": "I stand by my choice of an in-person course: the trip is long, but the conversations matter too."
+          }
+        },
+        {
+          "targetText": "O último ônibus sai logo depois da aula, antes das conversas no café.",
+          "baseText": {
+            "de": "Der letzte Bus fährt direkt nach dem Unterricht, noch vor den Gesprächen im Café.",
+            "en": "The last bus leaves right after class, before the conversations at the café."
+          }
+        },
+        {
+          "targetText": "Eu reconheço esse limite, mas também aproveito as conversas no intervalo.",
+          "baseText": {
+            "de": "Ich erkenne diese Einschränkung an, nutze aber auch die Gespräche in der Pause.",
+            "en": "I acknowledge that limit, but I also make the most of conversations during the break."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Reconhecer um limite e acrescentar um valor",
+        "rule": {
+          "de": "Mit mas … também fügst du einen ebenfalls wichtigen Gesichtspunkt hinzu, ohne die zuvor genannte Schwierigkeit abzustreiten.",
+          "en": "Use mas … também to add another important consideration without denying the difficulty you have acknowledged."
+        },
+        "examples": [
+          {
+            "targetText": "Defendo minha escolha do curso presencial: o trajeto é longo, mas as conversas também fazem diferença.",
+            "baseText": {
+              "de": "Ich stehe zu meiner Wahl des Präsenzkurses: Der Weg ist lang, aber auch die Gespräche machen einen Unterschied.",
+              "en": "I stand by my choice of an in-person course: the trip is long, but the conversations matter too."
+            },
+            "highlight": "mas as conversas também fazem diferença"
+          },
+          {
+            "targetText": "Eu reconheço esse limite, mas também aproveito as conversas no intervalo.",
+            "baseText": {
+              "de": "Ich erkenne diese Einschränkung an, nutze aber auch die Gespräche in der Pause.",
+              "en": "I acknowledge that limit, but I also make the most of conversations during the break."
+            },
+            "highlight": "mas também aproveito"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "reconheço",
+          "cue": "reconhecer (eu)",
+          "choices": [
+            "reconhecemos",
+            "reconhece",
+            "reconhecem",
+            "reconheço"
+          ]
+        },
+        " esse limite, mas também ",
+        {
+          "kind": "form",
+          "answer": "aproveito",
+          "cue": "aproveitar (eu)",
+          "choices": [
+            "aproveita",
+            "aproveito",
+            "aproveitamos",
+            "aproveitam"
+          ]
+        },
+        " as conversas no intervalo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Defendo minha escolha do curso presencial:",
+          "baseText": {
+            "de": "Ich stehe zu meiner Wahl des Präsenzkurses:",
+            "en": "I stand by my choice of an in-person course:"
+          }
+        },
+        {
+          "targetText": "o trajeto é longo,",
+          "baseText": {
+            "de": "Der Weg ist lang,",
+            "en": "the trip is long,"
+          }
+        },
+        {
+          "targetText": "mas as conversas também",
+          "baseText": {
+            "de": "aber auch die Gespräche",
+            "en": "but the conversations too"
+          }
+        },
+        {
+          "targetText": "fazem diferença.",
+          "baseText": {
+            "de": "machen einen Unterschied.",
+            "en": "make a difference."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "escolha",
+          "baseText": {
+            "de": "Wahl; Entscheidung",
+            "en": "choice"
+          }
+        },
+        {
+          "targetText": "presencial",
+          "baseText": {
+            "de": "vor Ort; in Präsenz",
+            "en": "in-person"
+          }
+        },
+        {
+          "targetText": "trajeto",
+          "baseText": {
+            "de": "Weg; Strecke",
+            "en": "trip; route"
+          }
+        },
+        {
+          "targetText": "fazem diferença",
+          "baseText": {
+            "de": "machen einen Unterschied",
+            "en": "make a difference"
+          }
+        },
+        {
+          "targetText": "reconheço",
+          "baseText": {
+            "de": "ich erkenne an",
+            "en": "I acknowledge"
+          }
+        },
+        {
+          "targetText": "intervalo",
+          "baseText": {
+            "de": "Pause",
+            "en": "break"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Defendo minha ",
+        "answer": "escolha",
+        "after": " do curso presencial: o trajeto é longo, mas as conversas também fazem diferença.",
+        "fallbackChoices": [
+          "escolha",
+          "avaliação",
+          "descrição",
+          "crítica"
+        ]
+      },
+      "speakRequired": [
+        "escolha",
+        "presencial",
+        "conversas"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund fragt nach deiner Kurswahl: “Por que você escolheu o curso presencial e não o curso pela internet?”",
+        "en": "A friend asks about your course choice: “Por que você escolheu o curso presencial e não o curso pela internet?”"
+      },
+      "trophyWord": {
+        "word": "escolha",
+        "meaning": {
+          "de": "Wahl; Entscheidung",
+          "en": "choice"
+        },
+        "example": "Defendo minha escolha do curso presencial: o trajeto é longo, mas as conversas também fazem diferença.",
+        "whyThisWord": {
+          "de": "Escolha benennt die getroffene Wahl; mit defender minha escolha erläuterst du, warum du dazu stehst.",
+          "en": "Escolha names the choice you made; defender minha escolha explains why you stand by it."
+        }
+      },
+      "distractors": [
+        "o trajeto é curto,",
+        "mas os exercícios também"
+      ],
+      "placeholderCaption": {
+        "de": "Freunde sprechen über einen Kurs vor Ort.",
+        "en": "Friends talk about an in-person course."
+      },
+      "songMood": "warm reflective classroom energy",
+      "visualNotes": "Friends beside the entrance to a classroom; no bus timetable or missed departure shown."
+    },
+    {
+      "slug": "costume-de-domingo",
+      "title": {
+        "de": "Sonntags zusammen essen",
+        "en": "Sunday lunch together"
+      },
+      "situation": {
+        "de": "Du erzählst einer Freundin von euren gemeinsamen Sonntagsessen.",
+        "en": "You tell a friend about your shared Sunday lunches."
+      },
+      "pedagogicalGoal": "Einen geschätzten Brauch mit mas … também relativieren und eine konkrete andere Verpflichtung in den Vorschlag aufnehmen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você gosta de reunir os amigos para almoçar aos domingos?",
+          "baseText": {
+            "de": "Triffst du dich sonntags gern mit Freunden zum Mittagessen?",
+            "en": "Do you enjoy getting friends together for lunch on Sundays?"
+          }
+        },
+        {
+          "targetText": "Gosto do costume de almoçar com amigos aos domingos, mas também respeito outros compromissos.",
+          "baseText": {
+            "de": "Ich mag den Brauch, sonntags mit Freunden zu essen, berücksichtige aber auch andere Verpflichtungen.",
+            "en": "I like the custom of having Sunday lunch with friends, but I also respect other commitments."
+          }
+        },
+        {
+          "targetText": "A Paula trabalha em dois domingos por mês e acha ruim perder os encontros.",
+          "baseText": {
+            "de": "Paula arbeitet an zwei Sonntagen im Monat und findet es schade, die Treffen zu verpassen.",
+            "en": "Paula works two Sundays a month and doesn't like missing the gatherings."
+          }
+        },
+        {
+          "targetText": "Eu entendo, mas também proponho alguns encontros durante a semana.",
+          "baseText": {
+            "de": "Ich verstehe das, schlage aber auch einige Treffen unter der Woche vor.",
+            "en": "I understand, but I also suggest some gatherings during the week."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Uma preferência com espaço para os outros",
+        "rule": {
+          "de": "Mas também verbindet deine Vorliebe mit einem weiteren Anliegen, das du bei deiner Meinung oder deinem Vorschlag berücksichtigst.",
+          "en": "Mas também connects your preference to another concern that you take into account in your opinion or proposal."
+        },
+        "examples": [
+          {
+            "targetText": "Gosto do costume de almoçar com amigos aos domingos, mas também respeito outros compromissos.",
+            "baseText": {
+              "de": "Ich mag den Brauch, sonntags mit Freunden zu essen, berücksichtige aber auch andere Verpflichtungen.",
+              "en": "I like the custom of having Sunday lunch with friends, but I also respect other commitments."
+            },
+            "highlight": "mas também respeito outros compromissos"
+          },
+          {
+            "targetText": "Eu entendo, mas também proponho alguns encontros durante a semana.",
+            "baseText": {
+              "de": "Ich verstehe das, schlage aber auch einige Treffen unter der Woche vor.",
+              "en": "I understand, but I also suggest some gatherings during the week."
+            },
+            "highlight": "mas também proponho"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "entendo",
+          "cue": "entender (eu)",
+          "choices": [
+            "entendo",
+            "entendem",
+            "entende",
+            "entendemos"
+          ]
+        },
+        ", mas também ",
+        {
+          "kind": "form",
+          "answer": "proponho",
+          "cue": "propor (eu)",
+          "choices": [
+            "propõem",
+            "propomos",
+            "proponho",
+            "propõe"
+          ]
+        },
+        " alguns encontros durante a semana."
+      ],
+      "chunks": [
+        {
+          "targetText": "Gosto do costume",
+          "baseText": {
+            "de": "Ich mag den Brauch",
+            "en": "I like the custom"
+          }
+        },
+        {
+          "targetText": "de almoçar com amigos aos domingos,",
+          "baseText": {
+            "de": "sonntags mit Freunden zu essen,",
+            "en": "of having Sunday lunch with friends,"
+          }
+        },
+        {
+          "targetText": "mas também respeito",
+          "baseText": {
+            "de": "berücksichtige aber auch",
+            "en": "but I also respect"
+          }
+        },
+        {
+          "targetText": "outros compromissos.",
+          "baseText": {
+            "de": "andere Verpflichtungen.",
+            "en": "other commitments."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "costume",
+          "baseText": {
+            "de": "Brauch; Gewohnheit",
+            "en": "custom; habit"
+          }
+        },
+        {
+          "targetText": "almoçar",
+          "baseText": {
+            "de": "zu Mittag essen",
+            "en": "to have lunch"
+          }
+        },
+        {
+          "targetText": "reunir",
+          "baseText": {
+            "de": "zusammenbringen",
+            "en": "to bring together"
+          }
+        },
+        {
+          "targetText": "compromissos",
+          "baseText": {
+            "de": "Verpflichtungen; Termine",
+            "en": "commitments"
+          }
+        },
+        {
+          "targetText": "encontros",
+          "baseText": {
+            "de": "Treffen",
+            "en": "gatherings"
+          }
+        },
+        {
+          "targetText": "proponho",
+          "baseText": {
+            "de": "ich schlage vor",
+            "en": "I suggest"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Gosto do ",
+        "answer": "costume",
+        "after": " de almoçar com amigos aos domingos, mas também respeito outros compromissos.",
+        "fallbackChoices": [
+          "horário",
+          "local",
+          "costume",
+          "convite"
+        ]
+      },
+      "speakRequired": [
+        "costume",
+        "almoçar",
+        "compromissos"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin spricht dich auf eure Essen an: “Você gosta de reunir os amigos para almoçar aos domingos?”",
+        "en": "A friend asks about your lunches: “Você gosta de reunir os amigos para almoçar aos domingos?”"
+      },
+      "trophyWord": {
+        "word": "costume",
+        "meaning": {
+          "de": "Brauch; Gewohnheit",
+          "en": "custom; habit"
+        },
+        "example": "Gosto do costume de almoçar com amigos aos domingos, mas também respeito outros compromissos.",
+        "whyThisWord": {
+          "de": "Costume de plus Infinitiv beschreibt etwas, das eine Person oder Gruppe regelmäßig tut.",
+          "en": "Costume de followed by an infinitive describes something a person or group does regularly."
+        }
+      },
+      "distractors": [
+        "de jantar com colegas às sextas,",
+        "outros gostos."
+      ],
+      "placeholderCaption": {
+        "de": "Freunde sprechen über ihre regelmäßigen Essen.",
+        "en": "Friends talk about their regular shared meals."
+      },
+      "songMood": "welcoming Sunday warmth",
+      "visualNotes": "Friends chatting at a lunch table; no work calendar or absent friend identified."
+    },
+    {
+      "slug": "equilibrio-na-praca",
+      "title": {
+        "de": "Ein Platz mit Rücksicht",
+        "en": "A square with consideration"
+      },
+      "situation": {
+        "de": "Du sprichst mit einem Nachbarn über Veranstaltungen auf dem Platz im Viertel.",
+        "en": "You talk with a neighbor about events in the neighborhood square."
+      },
+      "pedagogicalGoal": "Mit para mim und mas … também zwei Interessen zusammenführen und nach einem zeitlichen Einwand die eigene Empfehlung präzisieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Como você vê a ideia de ter mais atividades na praça?",
+          "baseText": {
+            "de": "Wie siehst du die Idee, mehr Aktivitäten auf dem Platz anzubieten?",
+            "en": "How do you feel about having more activities in the square?"
+          }
+        },
+        {
+          "targetText": "Para mim, o equilíbrio permite eventos na praça, mas também garante o descanso dos moradores.",
+          "baseText": {
+            "de": "Für mich ermöglicht ein gutes Gleichgewicht Veranstaltungen auf dem Platz und sichert zugleich die Ruhe der Anwohner.",
+            "en": "For me, a balance allows events in the square while also protecting residents' rest."
+          }
+        },
+        {
+          "targetText": "Alguns moradores dormem cedo e reclamam dos shows depois das oito.",
+          "baseText": {
+            "de": "Einige Anwohner schlafen früh und beschweren sich über Konzerte nach acht Uhr.",
+            "en": "Some residents go to bed early and complain about concerts after eight."
+          }
+        },
+        {
+          "targetText": "Eu concordo, mas também defendo apresentações mais cedo, sem som alto.",
+          "baseText": {
+            "de": "Ich stimme zu, bin aber auch für frühere Auftritte ohne laute Musik.",
+            "en": "I agree, but I also support earlier performances without loud sound."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Duas necessidades na mesma opinião",
+        "rule": {
+          "de": "Para mim markiert deine Einschätzung; mas também verbindet sie mit einem zweiten Anliegen, das du ebenfalls berücksichtigst.",
+          "en": "Para mim marks your judgment; mas também connects it to a second concern you also take into account."
+        },
+        "examples": [
+          {
+            "targetText": "Para mim, o equilíbrio permite eventos na praça, mas também garante o descanso dos moradores.",
+            "baseText": {
+              "de": "Für mich ermöglicht ein gutes Gleichgewicht Veranstaltungen auf dem Platz und sichert zugleich die Ruhe der Anwohner.",
+              "en": "For me, a balance allows events in the square while also protecting residents' rest."
+            },
+            "highlight": "mas também garante o descanso dos moradores"
+          },
+          {
+            "targetText": "Eu concordo, mas também defendo apresentações mais cedo, sem som alto.",
+            "baseText": {
+              "de": "Ich stimme zu, bin aber auch für frühere Auftritte ohne laute Musik.",
+              "en": "I agree, but I also support earlier performances without loud sound."
+            },
+            "highlight": "mas também defendo"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "concordo",
+          "cue": "concordar (eu)",
+          "choices": [
+            "concordamos",
+            "concorda",
+            "concordam",
+            "concordo"
+          ]
+        },
+        ", mas também ",
+        {
+          "kind": "form",
+          "answer": "defendo",
+          "cue": "defender (eu)",
+          "choices": [
+            "defende",
+            "defendo",
+            "defendem",
+            "defendemos"
+          ]
+        },
+        " apresentações mais cedo, sem som alto."
+      ],
+      "chunks": [
+        {
+          "targetText": "Para mim,",
+          "baseText": {
+            "de": "Aus meiner Sicht",
+            "en": "For me,"
+          }
+        },
+        {
+          "targetText": "o equilíbrio permite eventos na praça,",
+          "baseText": {
+            "de": "ermöglicht ein Gleichgewicht Veranstaltungen auf dem Platz,",
+            "en": "a balance allows events in the square,"
+          }
+        },
+        {
+          "targetText": "mas também garante",
+          "baseText": {
+            "de": "sichert aber auch",
+            "en": "but also protects"
+          }
+        },
+        {
+          "targetText": "o descanso dos moradores.",
+          "baseText": {
+            "de": "die Ruhe der Anwohner.",
+            "en": "residents' rest."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "equilíbrio",
+          "baseText": {
+            "de": "Gleichgewicht; Ausgewogenheit",
+            "en": "balance"
+          }
+        },
+        {
+          "targetText": "eventos",
+          "baseText": {
+            "de": "Veranstaltungen",
+            "en": "events"
+          }
+        },
+        {
+          "targetText": "garante",
+          "baseText": {
+            "de": "sichert; gewährleistet",
+            "en": "ensures; protects"
+          }
+        },
+        {
+          "targetText": "moradores",
+          "baseText": {
+            "de": "Anwohner",
+            "en": "residents"
+          }
+        },
+        {
+          "targetText": "apresentações",
+          "baseText": {
+            "de": "Auftritte",
+            "en": "performances"
+          }
+        },
+        {
+          "targetText": "som alto",
+          "baseText": {
+            "de": "lauter Ton; laute Musik",
+            "en": "loud sound; loud music"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Para mim, o ",
+        "answer": "equilíbrio",
+        "after": " permite eventos na praça, mas também garante o descanso dos moradores.",
+        "fallbackChoices": [
+          "regulamento",
+          "equilíbrio",
+          "horário",
+          "acordo"
+        ]
+      },
+      "speakRequired": [
+        "equilíbrio",
+        "eventos",
+        "descanso"
+      ],
+      "sceneCaption": {
+        "de": "Ein Nachbar fragt nach dem Programm auf dem Platz: “Como você vê a ideia de ter mais atividades na praça?”",
+        "en": "A neighbor asks about activities in the square: “Como você vê a ideia de ter mais atividades na praça?”"
+      },
+      "trophyWord": {
+        "word": "equilíbrio",
+        "meaning": {
+          "de": "Gleichgewicht; Ausgewogenheit",
+          "en": "balance"
+        },
+        "example": "Para mim, o equilíbrio permite eventos na praça, mas também garante o descanso dos moradores.",
+        "whyThisWord": {
+          "de": "Equilíbrio hilft dir, eine Lösung zu beschreiben, die mehrere unterschiedliche Bedürfnisse berücksichtigt.",
+          "en": "Equilíbrio helps you describe a solution that takes several different needs into account."
+        }
+      },
+      "distractors": [
+        "o equilíbrio impede eventos na praça,",
+        "o trabalho dos comerciantes."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über das Leben auf dem Stadtteilplatz.",
+        "en": "A conversation about life in the neighborhood square."
+      },
+      "songMood": "balanced hopeful neighborhood evening",
+      "visualNotes": "Neighbors beside a daytime community noticeboard in the square; no concert time or sleeping residents shown."
+    }
+  ]
+}

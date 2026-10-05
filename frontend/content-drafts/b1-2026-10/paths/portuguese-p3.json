@@ -1,0 +1,2130 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "baseLanguage": "German",
+  "pathNumber": 3,
+  "title": {
+    "de": "Andere Möglichkeiten",
+    "en": "Other possibilities"
+  },
+  "subtitle": {
+    "de": "Bitte höflich um etwas und passe deinen Vorschlag an neue Möglichkeiten an.",
+    "en": "Make polite requests and adjust your proposal when the options change."
+  },
+  "anchor": "Fable Portuguese P3 addendum tmp/V4_EXPANSION_20261003/B1_PORTUGUESE_P3_STAGING_ADDENDUM.json, SHA256 9241a3b49449d5a23b2799d1e6d508d1c696d44d78a4e54c8455a10db647055f, supersedes conflicting P3 staging only. L1 eu gostaria de; L2 tenho preferência por/eu preferia; L3 fixed você poderia request; L4 fixed eu deveria WH-question; L5 broader courtesy with possibilidade/podia; L6 a gente poderia; L7 productive a gente deveria advice and lexical condition; L8 first se + tiver; L9 se + for and noun-subject ajudaria; L10 recycles. L1–6 and L9–10 formal você/German Sie; L7–8 neutral você/German du. Two form blanks with literal subjects and cues; no competing courtesy synonyms, no regular future-subjunctive blanks, no speaker-gender agreement, no European usage. Pending independent review and Fable's complete read-through.",
+  "lessons": [
+    {
+      "slug": "gostaria-da-oficina",
+      "title": {
+        "de": "Ein Platz in der Kochwerkstatt",
+        "en": "A place in the cooking workshop"
+      },
+      "situation": {
+        "de": "Du erkundigst dich am Empfang eines Kulturzentrums nach einer Kochwerkstatt.",
+        "en": "You ask at a community center's reception desk about a cooking workshop."
+      },
+      "pedagogicalGoal": "Eu gostaria de plus Infinitiv als feste höfliche Wunschformel verwenden und den Wunsch an ein anderes Zeitangebot anpassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qual atividade do centro você procura?",
+          "baseText": {
+            "de": "Für welches Angebot des Zentrums interessieren Sie sich?",
+            "en": "Which activity at the center are you looking for?"
+          }
+        },
+        {
+          "targetText": "Eu gostaria de participar da oficina de culinária no primeiro horário.",
+          "baseText": {
+            "de": "Ich möchte gern am ersten Termin der Kochwerkstatt teilnehmen.",
+            "en": "I would like to join the cooking workshop in the first time slot."
+          }
+        },
+        {
+          "targetText": "O grupo das nove já está completo. Ainda há vagas às duas.",
+          "baseText": {
+            "de": "Die Gruppe um neun ist schon voll. Um zwei gibt es noch Plätze.",
+            "en": "The nine o'clock group is already full. There are still places at two."
+          }
+        },
+        {
+          "targetText": "Então eu gostaria de participar à tarde. Você faz minha inscrição agora?",
+          "baseText": {
+            "de": "Dann möchte ich gern nachmittags teilnehmen. Nehmen Sie meine Anmeldung jetzt vor?",
+            "en": "Then I would like to join in the afternoon. Can you register me now?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eu gostaria de + infinitivo",
+        "rule": {
+          "de": "Mit der festen Wendung eu gostaria de und einem Infinitiv äußerst du deinen Wunsch höflich.",
+          "en": "Use the fixed phrase eu gostaria de followed by an infinitive to express your wish politely."
+        },
+        "examples": [
+          {
+            "targetText": "Eu gostaria de participar da oficina de culinária no primeiro horário.",
+            "baseText": {
+              "de": "Ich möchte gern am ersten Termin der Kochwerkstatt teilnehmen.",
+              "en": "I would like to join the cooking workshop in the first time slot."
+            },
+            "highlight": "Eu gostaria de participar"
+          },
+          {
+            "targetText": "Eu gostaria de conhecer a programação da oficina.",
+            "baseText": {
+              "de": "Ich möchte gern das Programm der Werkstatt kennenlernen.",
+              "en": "I would like to see the workshop's program."
+            },
+            "highlight": "Eu gostaria de conhecer"
+          }
+        ]
+      },
+      "cloze": [
+        "Então eu ",
+        {
+          "kind": "form",
+          "answer": "gostaria",
+          "cue": "gostar (eu)",
+          "choices": [
+            "gostam",
+            "gostaria",
+            "gostou",
+            "gostamos"
+          ]
+        },
+        " de participar à tarde. Você ",
+        {
+          "kind": "form",
+          "answer": "faz",
+          "cue": "fazer (você)",
+          "choices": [
+            "faço",
+            "fazemos",
+            "fazem",
+            "faz"
+          ]
+        },
+        " minha inscrição agora?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Eu gostaria de participar",
+          "baseText": {
+            "de": "Ich möchte gern teilnehmen",
+            "en": "I would like to join"
+          }
+        },
+        {
+          "targetText": "da oficina",
+          "baseText": {
+            "de": "an der Werkstatt",
+            "en": "the workshop"
+          }
+        },
+        {
+          "targetText": "de culinária",
+          "baseText": {
+            "de": "zum Kochen",
+            "en": "on cooking"
+          }
+        },
+        {
+          "targetText": "no primeiro horário.",
+          "baseText": {
+            "de": "zum ersten Termin.",
+            "en": "in the first time slot."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "gostaria",
+          "baseText": {
+            "de": "ich möchte gern",
+            "en": "I would like"
+          }
+        },
+        {
+          "targetText": "participar",
+          "baseText": {
+            "de": "teilnehmen",
+            "en": "to take part"
+          }
+        },
+        {
+          "targetText": "oficina de culinária",
+          "baseText": {
+            "de": "Kochwerkstatt",
+            "en": "cooking workshop"
+          }
+        },
+        {
+          "targetText": "primeiro horário",
+          "baseText": {
+            "de": "erster Termin",
+            "en": "first time slot"
+          }
+        },
+        {
+          "targetText": "completo",
+          "baseText": {
+            "de": "voll; ausgebucht",
+            "en": "full; fully booked"
+          }
+        },
+        {
+          "targetText": "inscrição",
+          "baseText": {
+            "de": "Anmeldung",
+            "en": "registration"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Eu ",
+        "answer": "gostaria",
+        "after": " de participar da oficina de culinária no primeiro horário.",
+        "fallbackChoices": [
+          "gostam",
+          "gostou",
+          "gostaria",
+          "gostamos"
+        ]
+      },
+      "speakRequired": [
+        "gostaria",
+        "oficina",
+        "culinária"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang fragt eine Mitarbeiterin: “Qual atividade do centro você procura?”",
+        "en": "At reception, a staff member asks: “Qual atividade do centro você procura?”"
+      },
+      "trophyWord": {
+        "word": "gostaria",
+        "meaning": {
+          "de": "ich möchte gern",
+          "en": "I would like"
+        },
+        "example": "Eu gostaria de participar da oficina de culinária no primeiro horário.",
+        "whyThisWord": {
+          "de": "Eu gostaria de ist eine höfliche feste Wendung, mit der du einen Wunsch formulierst und anschließend die gewünschte Handlung nennst.",
+          "en": "Eu gostaria de is a polite fixed phrase for expressing a wish before naming the action you want to take."
+        }
+      },
+      "distractors": [
+        "Eu gostaria de sair",
+        "no último horário."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Anfrage zur Kochwerkstatt am Empfang.",
+        "en": "An inquiry about a cooking workshop at reception."
+      },
+      "songMood": "welcoming practical anticipation",
+      "visualNotes": "Community center reception and a cooking workshop poster without availability labels; the full morning group stays unrevealed."
+    },
+    {
+      "slug": "preferencia-por-silencio",
+      "title": {
+        "de": "Ein ruhigerer Tisch",
+        "en": "A quieter table"
+      },
+      "situation": {
+        "de": "Du bittest im Restaurant um einen passenden Tisch.",
+        "en": "You ask for a suitable table at a restaurant."
+      },
+      "pedagogicalGoal": "Mit tenho preferência por eine Vorliebe benennen und mit eu preferia höflich erläutern, wie eine angebotene Alternative davon abweicht.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você tem alguma preferência de mesa?",
+          "baseText": {
+            "de": "Haben Sie einen Wunsch, wo Sie sitzen möchten?",
+            "en": "Do you have a preference for where to sit?"
+          }
+        },
+        {
+          "targetText": "Tenho preferência por uma mesa longe da caixa de som, perto da janela.",
+          "baseText": {
+            "de": "Ich bevorzuge einen Tisch weit weg vom Lautsprecher, in der Nähe des Fensters.",
+            "en": "I prefer a table away from the speaker, near the window."
+          }
+        },
+        {
+          "targetText": "As mesas da janela já têm reserva. Temos uma mesa na varanda coberta.",
+          "baseText": {
+            "de": "Die Fenstertische sind schon reserviert. Wir haben einen Tisch auf der überdachten Terrasse.",
+            "en": "The window tables are already reserved. We have a table on the covered terrace."
+          }
+        },
+        {
+          "targetText": "Eu preferia uma mesa interna, mas aceito a varanda coberta.",
+          "baseText": {
+            "de": "Ich hätte lieber einen Tisch drinnen, nehme aber den auf der überdachten Terrasse.",
+            "en": "I would prefer an indoor table, but I'll take the covered terrace."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Tenho preferência por; eu preferia",
+        "rule": {
+          "de": "Tenho preferência por benennt deine Vorliebe; eu preferia klingt hier höflich und bezieht sich auf deinen jetzigen Wunsch.",
+          "en": "Tenho preferência por names your preference; eu preferia sounds polite here and refers to your current wish."
+        },
+        "examples": [
+          {
+            "targetText": "Tenho preferência por uma mesa longe da caixa de som, perto da janela.",
+            "baseText": {
+              "de": "Ich bevorzuge einen Tisch weit weg vom Lautsprecher, in der Nähe des Fensters.",
+              "en": "I prefer a table away from the speaker, near the window."
+            },
+            "highlight": "Tenho preferência por"
+          },
+          {
+            "targetText": "Eu preferia uma mesa interna, mas aceito a varanda coberta.",
+            "baseText": {
+              "de": "Ich hätte lieber einen Tisch drinnen, nehme aber den auf der überdachten Terrasse.",
+              "en": "I would prefer an indoor table, but I'll take the covered terrace."
+            },
+            "highlight": "Eu preferia"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "preferia",
+          "cue": "preferir (eu)",
+          "choices": [
+            "preferiam",
+            "preferimos",
+            "preferia",
+            "preferem"
+          ]
+        },
+        " uma mesa interna, mas ",
+        {
+          "kind": "form",
+          "answer": "aceito",
+          "cue": "aceitar (eu)",
+          "choices": [
+            "aceito",
+            "aceitam",
+            "aceita",
+            "aceitamos"
+          ]
+        },
+        " a varanda coberta."
+      ],
+      "chunks": [
+        {
+          "targetText": "Tenho preferência por",
+          "baseText": {
+            "de": "Ich bevorzuge",
+            "en": "I have a preference for"
+          }
+        },
+        {
+          "targetText": "uma mesa longe",
+          "baseText": {
+            "de": "einen Tisch weit weg",
+            "en": "a table far away"
+          }
+        },
+        {
+          "targetText": "da caixa de som,",
+          "baseText": {
+            "de": "vom Lautsprecher,",
+            "en": "from the speaker,"
+          }
+        },
+        {
+          "targetText": "perto da janela.",
+          "baseText": {
+            "de": "in der Nähe des Fensters.",
+            "en": "near the window."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "preferência",
+          "baseText": {
+            "de": "Vorliebe; Präferenz",
+            "en": "preference"
+          }
+        },
+        {
+          "targetText": "caixa de som",
+          "baseText": {
+            "de": "Lautsprecher",
+            "en": "speaker"
+          }
+        },
+        {
+          "targetText": "longe",
+          "baseText": {
+            "de": "weit weg",
+            "en": "far away"
+          }
+        },
+        {
+          "targetText": "janela",
+          "baseText": {
+            "de": "Fenster",
+            "en": "window"
+          }
+        },
+        {
+          "targetText": "mesa interna",
+          "baseText": {
+            "de": "Tisch drinnen",
+            "en": "indoor table"
+          }
+        },
+        {
+          "targetText": "varanda coberta",
+          "baseText": {
+            "de": "überdachte Terrasse",
+            "en": "covered terrace"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Tenho ",
+        "answer": "preferência",
+        "after": " por uma mesa longe da caixa de som, perto da janela.",
+        "fallbackChoices": [
+          "receio",
+          "preferência",
+          "pressa",
+          "respeito"
+        ]
+      },
+      "speakRequired": [
+        "preferência",
+        "mesa",
+        "janela"
+      ],
+      "sceneCaption": {
+        "de": "Im Restaurant fragt eine Mitarbeiterin: “Você tem alguma preferência de mesa?”",
+        "en": "At the restaurant, a staff member asks: “Você tem alguma preferência de mesa?”"
+      },
+      "trophyWord": {
+        "word": "preferência",
+        "meaning": {
+          "de": "Vorliebe; Präferenz",
+          "en": "preference"
+        },
+        "example": "Tenho preferência por uma mesa longe da caixa de som, perto da janela.",
+        "whyThisWord": {
+          "de": "Tenho preferência por nennt klar, welche Möglichkeit dir am liebsten ist, und lässt Raum für ein anderes Angebot.",
+          "en": "Tenho preferência por clearly states the option you favor while leaving room for an alternative."
+        }
+      },
+      "distractors": [
+        "da porta de entrada,",
+        "perto da cozinha."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über die Tischwahl im Restaurant.",
+        "en": "A conversation about choosing a restaurant table."
+      },
+      "songMood": "calm courteous restaurant exchange",
+      "visualNotes": "Restaurant entrance with a visible speaker and windows; terrace availability and reservation signs remain hidden."
+    },
+    {
+      "slug": "poderia-explicar-a-cobranca",
+      "title": {
+        "de": "Die Gebühr verstehen",
+        "en": "Understanding the charge"
+      },
+      "situation": {
+        "de": "Du besprichst eine Rechnung mit dem Kundenservice eines Lieferdienstes.",
+        "en": "You discuss an invoice with a delivery service's customer support."
+      },
+      "pedagogicalGoal": "Você poderia plus Infinitiv als feste höfliche Bitte verwenden und die noch unklare Position nach einer ersten Erklärung eingrenzen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qual é a sua dúvida sobre a cobrança?",
+          "baseText": {
+            "de": "Welche Frage haben Sie zu der Rechnung?",
+            "en": "What is your question about the charge?"
+          }
+        },
+        {
+          "targetText": "Você poderia me explicar essa cobrança, especialmente o valor da entrega?",
+          "baseText": {
+            "de": "Könnten Sie mir diese Rechnung erklären, besonders die Lieferkosten?",
+            "en": "Could you explain this charge to me, especially the delivery cost?"
+          }
+        },
+        {
+          "targetText": "O total inclui a entrega e uma taxa pelo agendamento.",
+          "baseText": {
+            "de": "Der Gesamtbetrag enthält die Lieferung und eine Gebühr für die Terminvereinbarung.",
+            "en": "The total includes delivery and a fee for scheduling it."
+          }
+        },
+        {
+          "targetText": "Você poderia detalhar essa taxa? Eu paguei a entrega antecipadamente.",
+          "baseText": {
+            "de": "Könnten Sie diese Gebühr genauer erläutern? Ich habe die Lieferung im Voraus bezahlt.",
+            "en": "Could you explain that fee in detail? I paid for delivery in advance."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Você poderia + infinitivo",
+        "rule": {
+          "de": "Die feste Frage você poderia plus Infinitiv macht eine Bitte höflich; mit você bleibt die Verbform poderia.",
+          "en": "The fixed question você poderia followed by an infinitive makes a request polite; with você, the verb form is poderia."
+        },
+        "examples": [
+          {
+            "targetText": "Você poderia me explicar essa cobrança, especialmente o valor da entrega?",
+            "baseText": {
+              "de": "Könnten Sie mir diese Rechnung erklären, besonders die Lieferkosten?",
+              "en": "Could you explain this charge to me, especially the delivery cost?"
+            },
+            "highlight": "Você poderia me explicar"
+          },
+          {
+            "targetText": "Você poderia detalhar essa taxa? Eu paguei a entrega antecipadamente.",
+            "baseText": {
+              "de": "Könnten Sie diese Gebühr genauer erläutern? Ich habe die Lieferung im Voraus bezahlt.",
+              "en": "Could you explain that fee in detail? I paid for delivery in advance."
+            },
+            "highlight": "Você poderia detalhar"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "poderia",
+          "cue": "poder (você)",
+          "choices": [
+            "podemos",
+            "podem",
+            "posso",
+            "poderia"
+          ]
+        },
+        " detalhar essa taxa? Eu ",
+        {
+          "kind": "form",
+          "answer": "paguei",
+          "cue": "pagar (eu)",
+          "choices": [
+            "pagou",
+            "paguei",
+            "pagaram",
+            "pagamos"
+          ]
+        },
+        " a entrega antecipadamente."
+      ],
+      "chunks": [
+        {
+          "targetText": "Você poderia me explicar",
+          "baseText": {
+            "de": "Könnten Sie mir erklären",
+            "en": "Could you explain to me"
+          }
+        },
+        {
+          "targetText": "essa cobrança,",
+          "baseText": {
+            "de": "diese Rechnung,",
+            "en": "this charge,"
+          }
+        },
+        {
+          "targetText": "especialmente o valor",
+          "baseText": {
+            "de": "besonders die Kosten",
+            "en": "especially the cost"
+          }
+        },
+        {
+          "targetText": "da entrega?",
+          "baseText": {
+            "de": "der Lieferung?",
+            "en": "of delivery?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "poderia",
+          "baseText": {
+            "de": "könnten Sie",
+            "en": "could you"
+          }
+        },
+        {
+          "targetText": "cobrança",
+          "baseText": {
+            "de": "Rechnung; berechneter Betrag",
+            "en": "charge; bill"
+          }
+        },
+        {
+          "targetText": "valor",
+          "baseText": {
+            "de": "Betrag",
+            "en": "amount"
+          }
+        },
+        {
+          "targetText": "taxa",
+          "baseText": {
+            "de": "Gebühr",
+            "en": "fee"
+          }
+        },
+        {
+          "targetText": "detalhar",
+          "baseText": {
+            "de": "genauer erläutern",
+            "en": "to explain in detail"
+          }
+        },
+        {
+          "targetText": "antecipadamente",
+          "baseText": {
+            "de": "im Voraus",
+            "en": "in advance"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Você ",
+        "answer": "poderia",
+        "after": " me explicar essa cobrança, especialmente o valor da entrega?",
+        "fallbackChoices": [
+          "podemos",
+          "poderia",
+          "posso",
+          "podem"
+        ]
+      },
+      "speakRequired": [
+        "poderia",
+        "cobrança",
+        "entrega"
+      ],
+      "sceneCaption": {
+        "de": "Der Kundenservice fragt: “Qual é a sua dúvida sobre a cobrança?”",
+        "en": "The customer service agent asks: “Qual é a sua dúvida sobre a cobrança?”"
+      },
+      "trophyWord": {
+        "word": "poderia",
+        "meaning": {
+          "de": "könnten Sie",
+          "en": "could you"
+        },
+        "example": "Você poderia me explicar essa cobrança, especialmente o valor da entrega?",
+        "whyThisWord": {
+          "de": "Mit você poderia leitest du eine höfliche Bitte ein, etwa um eine Erklärung oder eine genauere Auskunft.",
+          "en": "Você poderia introduces a polite request, such as asking for an explanation or more detail."
+        }
+      },
+      "distractors": [
+        "esse desconto,",
+        "da embalagem?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Nachfrage zu einer Lieferrechnung.",
+        "en": "An inquiry about a delivery invoice."
+      },
+      "songMood": "clear patient service conversation",
+      "visualNotes": "A customer holding an invoice at a service desk; keep individual fee lines unreadable until the later turn."
+    },
+    {
+      "slug": "deveria-comecar-por-onde",
+      "title": {
+        "de": "Der erste Schritt zum Kurs",
+        "en": "The first step toward the course"
+      },
+      "situation": {
+        "de": "Du fragst im Kursbüro nach der Reihenfolge der Anmeldung.",
+        "en": "You ask the course office about the order of enrollment steps."
+      },
+      "pedagogicalGoal": "Eu deveria in einer direkten Frage nach dem eigenen nächsten Schritt verwenden und nach einer neuen Dokumentanforderung eine überprüfbare Handlung anbieten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você precisa de orientação para entrar no curso de fotografia?",
+          "baseText": {
+            "de": "Brauchen Sie Hilfe bei der Anmeldung zum Fotokurs?",
+            "en": "Do you need guidance on joining the photography course?"
+          }
+        },
+        {
+          "targetText": "Qual etapa eu deveria fazer primeiro para entrar no curso de fotografia?",
+          "baseText": {
+            "de": "Welchen Schritt sollte ich zuerst erledigen, um am Fotokurs teilzunehmen?",
+            "en": "Which step should I take first to join the photography course?"
+          }
+        },
+        {
+          "targetText": "Primeiro, precisa entregar o comprovante de endereço; ele não está nos seus documentos.",
+          "baseText": {
+            "de": "Zuerst müssen Sie den Adressnachweis abgeben; er fehlt in Ihren Unterlagen.",
+            "en": "First, you need to submit proof of address; it isn't among your documents."
+          }
+        },
+        {
+          "targetText": "Eu consigo trazer uma cópia amanhã. Você poderia conferir depois?",
+          "baseText": {
+            "de": "Ich kann morgen eine Kopie mitbringen. Könnten Sie sie dann prüfen?",
+            "en": "I can bring a copy tomorrow. Could you check it then?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Qual etapa eu deveria fazer primeiro?",
+        "rule": {
+          "de": "In einer direkten Frage wie qual etapa eu deveria fazer primeiro fragst du höflich nach der Reihenfolge deiner eigenen Schritte.",
+          "en": "In a direct question such as qual etapa eu deveria fazer primeiro, you politely ask about the order of your own steps."
+        },
+        "examples": [
+          {
+            "targetText": "Qual etapa eu deveria fazer primeiro para entrar no curso de fotografia?",
+            "baseText": {
+              "de": "Welchen Schritt sollte ich zuerst erledigen, um am Fotokurs teilzunehmen?",
+              "en": "Which step should I take first to join the photography course?"
+            },
+            "highlight": "Qual etapa eu deveria fazer primeiro"
+          },
+          {
+            "targetText": "Qual documento eu deveria entregar primeiro?",
+            "baseText": {
+              "de": "Welches Dokument sollte ich zuerst abgeben?",
+              "en": "Which document should I submit first?"
+            },
+            "highlight": "eu deveria entregar primeiro"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "consigo",
+          "cue": "conseguir (eu)",
+          "choices": [
+            "conseguimos",
+            "consegue",
+            "consigo",
+            "conseguem"
+          ]
+        },
+        " trazer uma cópia amanhã. Você ",
+        {
+          "kind": "form",
+          "answer": "poderia",
+          "cue": "poder (você)",
+          "choices": [
+            "poderia",
+            "posso",
+            "podemos",
+            "podem"
+          ]
+        },
+        " conferir depois?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Qual etapa",
+          "baseText": {
+            "de": "Welchen Schritt",
+            "en": "Which step"
+          }
+        },
+        {
+          "targetText": "eu deveria fazer primeiro",
+          "baseText": {
+            "de": "sollte ich zuerst erledigen",
+            "en": "should I take first"
+          }
+        },
+        {
+          "targetText": "para entrar no curso",
+          "baseText": {
+            "de": "um an dem Kurs teilzunehmen",
+            "en": "to join the course"
+          }
+        },
+        {
+          "targetText": "de fotografia?",
+          "baseText": {
+            "de": "für Fotografie?",
+            "en": "in photography?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "deveria",
+          "baseText": {
+            "de": "sollte ich",
+            "en": "should I"
+          }
+        },
+        {
+          "targetText": "etapa",
+          "baseText": {
+            "de": "Schritt; Phase",
+            "en": "step; stage"
+          }
+        },
+        {
+          "targetText": "primeiro",
+          "baseText": {
+            "de": "zuerst",
+            "en": "first"
+          }
+        },
+        {
+          "targetText": "comprovante de endereço",
+          "baseText": {
+            "de": "Adressnachweis",
+            "en": "proof of address"
+          }
+        },
+        {
+          "targetText": "cópia",
+          "baseText": {
+            "de": "Kopie",
+            "en": "copy"
+          }
+        },
+        {
+          "targetText": "conferir",
+          "baseText": {
+            "de": "prüfen; kontrollieren",
+            "en": "to check"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Qual etapa eu ",
+        "answer": "deveria",
+        "after": " fazer primeiro para entrar no curso de fotografia?",
+        "fallbackChoices": [
+          "devem",
+          "devemos",
+          "deveria",
+          "deviam"
+        ]
+      },
+      "speakRequired": [
+        "etapa",
+        "deveria",
+        "primeiro"
+      ],
+      "sceneCaption": {
+        "de": "Im Kursbüro fragt ein Mitarbeiter: “Você precisa de orientação para entrar no curso de fotografia?”",
+        "en": "At the course office, a staff member asks: “Você precisa de orientação para entrar no curso de fotografia?”"
+      },
+      "trophyWord": {
+        "word": "deveria",
+        "meaning": {
+          "de": "sollte ich",
+          "en": "should I"
+        },
+        "example": "Qual etapa eu deveria fazer primeiro para entrar no curso de fotografia?",
+        "whyThisWord": {
+          "de": "Mit eu deveria in einer Frage nach dem ersten Schritt bittest du um Orientierung für dein eigenes Vorgehen.",
+          "en": "Eu deveria in a question about the first step asks for guidance on what you yourself should do."
+        }
+      },
+      "distractors": [
+        "eu deveria fazer depois",
+        "de desenho?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Frage zur Anmeldung im Kursbüro.",
+        "en": "A question about enrollment at the course office."
+      },
+      "songMood": "focused supportive beginning",
+      "visualNotes": "Course office counter and a photography brochure; do not display missing-document markings."
+    },
+    {
+      "slug": "possibilidade-de-visita",
+      "title": {
+        "de": "Ein anderer Besichtigungstermin",
+        "en": "Another viewing time"
+      },
+      "situation": {
+        "de": "Du fragst bei einer Immobilienvermittlung nach einem Besichtigungstermin.",
+        "en": "You ask an estate agent about arranging an apartment viewing."
+      },
+      "pedagogicalGoal": "Mit existe a possibilidade de nach einer Option fragen und podia plus Infinitiv als höfliche Bitte an die verfügbare Zeit anpassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você quer marcar uma visita ao apartamento?",
+          "baseText": {
+            "de": "Möchten Sie einen Termin zur Wohnungsbesichtigung vereinbaren?",
+            "en": "Would you like to schedule a visit to the apartment?"
+          }
+        },
+        {
+          "targetText": "Existe a possibilidade de visitar o apartamento no fim da tarde?",
+          "baseText": {
+            "de": "Besteht die Möglichkeit, die Wohnung am späten Nachmittag zu besichtigen?",
+            "en": "Is there a possibility of visiting the apartment in the late afternoon?"
+          }
+        },
+        {
+          "targetText": "Hoje só consigo mostrar às cinco, porque preciso sair às cinco e meia.",
+          "baseText": {
+            "de": "Heute kann ich die Wohnung nur um fünf zeigen, weil ich um halb sechs gehen muss.",
+            "en": "Today I can only show it at five because I need to leave at half past five."
+          }
+        },
+        {
+          "targetText": "Então eu consigo chegar às cinco. Você podia esperar na entrada?",
+          "baseText": {
+            "de": "Dann kann ich um fünf da sein. Könnten Sie am Eingang warten?",
+            "en": "Then I can arrive at five. Could you wait at the entrance?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Existe a possibilidade de; você podia",
+        "rule": {
+          "de": "Existe a possibilidade de fragt nach einer Option; você podia mit Infinitiv ist hier eine höfliche Bitte für den bevorstehenden Termin.",
+          "en": "Existe a possibilidade de asks about an option; você podia with an infinitive is a polite request here for the upcoming appointment."
+        },
+        "examples": [
+          {
+            "targetText": "Existe a possibilidade de visitar o apartamento no fim da tarde?",
+            "baseText": {
+              "de": "Besteht die Möglichkeit, die Wohnung am späten Nachmittag zu besichtigen?",
+              "en": "Is there a possibility of visiting the apartment in the late afternoon?"
+            },
+            "highlight": "Existe a possibilidade de visitar"
+          },
+          {
+            "targetText": "Então eu consigo chegar às cinco. Você podia esperar na entrada?",
+            "baseText": {
+              "de": "Dann kann ich um fünf da sein. Könnten Sie am Eingang warten?",
+              "en": "Then I can arrive at five. Could you wait at the entrance?"
+            },
+            "highlight": "Você podia esperar"
+          }
+        ]
+      },
+      "cloze": [
+        "Então eu ",
+        {
+          "kind": "form",
+          "answer": "consigo",
+          "cue": "conseguir (eu)",
+          "choices": [
+            "consegue",
+            "consigo",
+            "conseguem",
+            "conseguimos"
+          ]
+        },
+        " chegar às cinco. Você ",
+        {
+          "kind": "form",
+          "answer": "podia",
+          "cue": "poder (você)",
+          "choices": [
+            "podíamos",
+            "podem",
+            "podia",
+            "posso"
+          ]
+        },
+        " esperar na entrada?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Existe a possibilidade",
+          "baseText": {
+            "de": "Besteht die Möglichkeit",
+            "en": "Is there a possibility"
+          }
+        },
+        {
+          "targetText": "de visitar",
+          "baseText": {
+            "de": "zu besichtigen",
+            "en": "of visiting"
+          }
+        },
+        {
+          "targetText": "o apartamento",
+          "baseText": {
+            "de": "die Wohnung",
+            "en": "the apartment"
+          }
+        },
+        {
+          "targetText": "no fim da tarde?",
+          "baseText": {
+            "de": "am späten Nachmittag?",
+            "en": "in the late afternoon?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "possibilidade",
+          "baseText": {
+            "de": "Möglichkeit",
+            "en": "possibility"
+          }
+        },
+        {
+          "targetText": "visitar",
+          "baseText": {
+            "de": "besichtigen; besuchen",
+            "en": "to view; to visit"
+          }
+        },
+        {
+          "targetText": "apartamento",
+          "baseText": {
+            "de": "Wohnung",
+            "en": "apartment"
+          }
+        },
+        {
+          "targetText": "fim da tarde",
+          "baseText": {
+            "de": "später Nachmittag",
+            "en": "late afternoon"
+          }
+        },
+        {
+          "targetText": "entrada",
+          "baseText": {
+            "de": "Eingang",
+            "en": "entrance"
+          }
+        },
+        {
+          "targetText": "esperar",
+          "baseText": {
+            "de": "warten",
+            "en": "to wait"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Existe a ",
+        "answer": "possibilidade",
+        "after": " de visitar o apartamento no fim da tarde?",
+        "fallbackChoices": [
+          "obrigação",
+          "necessidade",
+          "possibilidade",
+          "dificuldade"
+        ]
+      },
+      "speakRequired": [
+        "possibilidade",
+        "apartamento",
+        "tarde"
+      ],
+      "sceneCaption": {
+        "de": "Eine Mitarbeiterin der Immobilienvermittlung fragt: “Você quer marcar uma visita ao apartamento?”",
+        "en": "An estate agent asks: “Você quer marcar uma visita ao apartamento?”"
+      },
+      "trophyWord": {
+        "word": "possibilidade",
+        "meaning": {
+          "de": "Möglichkeit",
+          "en": "possibility"
+        },
+        "example": "Existe a possibilidade de visitar o apartamento no fim da tarde?",
+        "whyThisWord": {
+          "de": "Existe a possibilidade de erfragt eine Option, ohne vorauszusetzen, dass die andere Person sie anbieten kann.",
+          "en": "Existe a possibilidade de asks about an option without assuming the other person can offer it."
+        }
+      },
+      "distractors": [
+        "de alugar",
+        "no início da manhã?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Terminwunsch für eine Wohnungsbesichtigung.",
+        "en": "A request for an apartment viewing time."
+      },
+      "songMood": "courteous light planning",
+      "visualNotes": "A viewing inquiry beside a property brochure; no agent departure time visible."
+    },
+    {
+      "slug": "oportunidade-aos-sabados",
+      "title": {
+        "de": "Samstags mithelfen",
+        "en": "Helping on Saturdays"
+      },
+      "situation": {
+        "de": "Du besprichst mit der Koordination ein ehrenamtliches Angebot im Viertel.",
+        "en": "You discuss a local volunteering opportunity with its coordinator."
+      },
+      "pedagogicalGoal": "Interesse ohne geschlechtsspezifische Form ausdrücken und mit a gente poderia plus Infinitiv einen gemeinsamen nächsten Schritt vorschlagen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qual atividade de voluntariado chamou sua atenção?",
+          "baseText": {
+            "de": "Welches ehrenamtliche Angebot hat Ihr Interesse geweckt?",
+            "en": "Which volunteering activity caught your attention?"
+          }
+        },
+        {
+          "targetText": "Tenho interesse nessa oportunidade de voluntariado, principalmente nas atividades aos sábados.",
+          "baseText": {
+            "de": "Ich habe Interesse an diesem Ehrenamt, besonders an den Aktivitäten samstags.",
+            "en": "I'm interested in this volunteering opportunity, especially the Saturday activities."
+          }
+        },
+        {
+          "targetText": "O compromisso é de três meses, com pelo menos um turno por semana.",
+          "baseText": {
+            "de": "Die Mitarbeit dauert drei Monate, mit mindestens einer Schicht pro Woche.",
+            "en": "The commitment is for three months, with at least one shift per week."
+          }
+        },
+        {
+          "targetText": "Eu consigo manter esse compromisso; a gente poderia combinar os sábados?",
+          "baseText": {
+            "de": "Ich kann diese Verpflichtung einhalten; könnten wir uns auf die Samstage einigen?",
+            "en": "I can maintain that commitment; could we agree on Saturdays?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A gente poderia combinar…",
+        "rule": {
+          "de": "A gente bedeutet wir, verwendet aber die Form poderia; damit schlägst du höflich etwas Gemeinsames vor.",
+          "en": "A gente means we but takes the form poderia; use it to politely propose something together."
+        },
+        "examples": [
+          {
+            "targetText": "Tenho interesse nessa oportunidade de voluntariado, principalmente nas atividades aos sábados.",
+            "baseText": {
+              "de": "Ich habe Interesse an diesem Ehrenamt, besonders an den Aktivitäten samstags.",
+              "en": "I'm interested in this volunteering opportunity, especially the Saturday activities."
+            },
+            "highlight": "Tenho interesse nessa oportunidade"
+          },
+          {
+            "targetText": "Eu consigo manter esse compromisso; a gente poderia combinar os sábados?",
+            "baseText": {
+              "de": "Ich kann diese Verpflichtung einhalten; könnten wir uns auf die Samstage einigen?",
+              "en": "I can maintain that commitment; could we agree on Saturdays?"
+            },
+            "highlight": "a gente poderia combinar"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "consigo",
+          "cue": "conseguir (eu)",
+          "choices": [
+            "conseguimos",
+            "conseguem",
+            "consigo",
+            "consegue"
+          ]
+        },
+        " manter esse compromisso; a gente ",
+        {
+          "kind": "form",
+          "answer": "poderia",
+          "cue": "poder (a gente)",
+          "choices": [
+            "podem",
+            "posso",
+            "podemos",
+            "poderia"
+          ]
+        },
+        " combinar os sábados?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Tenho interesse",
+          "baseText": {
+            "de": "Ich habe Interesse",
+            "en": "I'm interested"
+          }
+        },
+        {
+          "targetText": "nessa oportunidade de voluntariado,",
+          "baseText": {
+            "de": "an diesem Ehrenamt,",
+            "en": "in this volunteering opportunity,"
+          }
+        },
+        {
+          "targetText": "principalmente nas atividades",
+          "baseText": {
+            "de": "besonders an den Aktivitäten",
+            "en": "especially in the activities"
+          }
+        },
+        {
+          "targetText": "aos sábados.",
+          "baseText": {
+            "de": "samstags.",
+            "en": "on Saturdays."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "oportunidade",
+          "baseText": {
+            "de": "Gelegenheit; Möglichkeit",
+            "en": "opportunity"
+          }
+        },
+        {
+          "targetText": "voluntariado",
+          "baseText": {
+            "de": "ehrenamtliche Arbeit",
+            "en": "volunteering"
+          }
+        },
+        {
+          "targetText": "atividades",
+          "baseText": {
+            "de": "Aktivitäten",
+            "en": "activities"
+          }
+        },
+        {
+          "targetText": "compromisso",
+          "baseText": {
+            "de": "Verpflichtung; Zusage",
+            "en": "commitment"
+          }
+        },
+        {
+          "targetText": "por semana",
+          "baseText": {
+            "de": "pro Woche",
+            "en": "per week"
+          }
+        },
+        {
+          "targetText": "turno",
+          "baseText": {
+            "de": "Schicht",
+            "en": "shift"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Tenho interesse nessa ",
+        "answer": "oportunidade",
+        "after": " de voluntariado, principalmente nas atividades aos sábados.",
+        "fallbackChoices": [
+          "história",
+          "pesquisa",
+          "campanha",
+          "oportunidade"
+        ]
+      },
+      "speakRequired": [
+        "interesse",
+        "oportunidade",
+        "voluntariado"
+      ],
+      "sceneCaption": {
+        "de": "Die Koordinatorin fragt: “Qual atividade de voluntariado chamou sua atenção?”",
+        "en": "The coordinator asks: “Qual atividade de voluntariado chamou sua atenção?”"
+      },
+      "trophyWord": {
+        "word": "oportunidade",
+        "meaning": {
+          "de": "Gelegenheit; Möglichkeit",
+          "en": "opportunity"
+        },
+        "example": "Tenho interesse nessa oportunidade de voluntariado, principalmente nas atividades aos sábados.",
+        "whyThisWord": {
+          "de": "Oportunidade beschreibt eine konkrete Gelegenheit, etwas zu tun; tenho interesse zeigt deinen Wunsch, sie zu nutzen.",
+          "en": "Oportunidade describes a concrete chance to do something; tenho interesse shows you would like to take it."
+        }
+      },
+      "distractors": [
+        "nessa oportunidade de trabalho,",
+        "aos domingos."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über ehrenamtliche Mitarbeit.",
+        "en": "A conversation about volunteering."
+      },
+      "songMood": "warm purposeful collaboration",
+      "visualNotes": "A volunteer coordinator and visitor beside an activity brochure; duration and minimum-shift conditions stay hidden."
+    },
+    {
+      "slug": "condicao-para-a-caminhada",
+      "title": {
+        "de": "Ein anderer Wandertag",
+        "en": "A different walking day"
+      },
+      "situation": {
+        "de": "Du sprichst mit einem Freund aus der Wandergruppe über einen anderen Tag.",
+        "en": "You talk with a friend in your walking group about changing the day."
+      },
+      "pedagogicalGoal": "Eine Bedingung mit condição para plus Infinitiv erfragen und mit a gente deveria einen Rat für das gemeinsame Vorgehen geben.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você quer passar a caminhada para este sábado?",
+          "baseText": {
+            "de": "Möchtest du die Wanderung auf diesen Samstag verlegen?",
+            "en": "Do you want to move the walk to this Saturday?"
+          }
+        },
+        {
+          "targetText": "Qual é a condição para trocar o dia da caminhada do grupo?",
+          "baseText": {
+            "de": "Welche Bedingung gilt, um den Tag unserer Gruppenwanderung zu ändern?",
+            "en": "What is the condition for changing the day of the group walk?"
+          }
+        },
+        {
+          "targetText": "Só dá para trocar com uma semana de aviso; este sábado já está muito perto.",
+          "baseText": {
+            "de": "Eine Änderung geht nur mit einer Woche Vorlauf; dieser Samstag ist schon zu nah.",
+            "en": "We can only change it with a week's notice; this Saturday is already too close."
+          }
+        },
+        {
+          "targetText": "A gente deveria propor outro sábado. Eu aviso o grupo hoje.",
+          "baseText": {
+            "de": "Wir sollten einen anderen Samstag vorschlagen. Ich sage der Gruppe heute Bescheid.",
+            "en": "We should suggest another Saturday. I'll notify the group today."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Condição e conselho",
+        "rule": {
+          "de": "Condição para plus Infinitiv fragt nach einer Voraussetzung; a gente deveria plus Infinitiv gibt einen Rat, was wir als Gruppe tun sollten.",
+          "en": "Condição para followed by an infinitive asks about a requirement; a gente deveria with an infinitive advises what we should do as a group."
+        },
+        "examples": [
+          {
+            "targetText": "Qual é a condição para trocar o dia da caminhada do grupo?",
+            "baseText": {
+              "de": "Welche Bedingung gilt, um den Tag unserer Gruppenwanderung zu ändern?",
+              "en": "What is the condition for changing the day of the group walk?"
+            },
+            "highlight": "a condição para trocar"
+          },
+          {
+            "targetText": "A gente deveria propor outro sábado. Eu aviso o grupo hoje.",
+            "baseText": {
+              "de": "Wir sollten einen anderen Samstag vorschlagen. Ich sage der Gruppe heute Bescheid.",
+              "en": "We should suggest another Saturday. I'll notify the group today."
+            },
+            "highlight": "A gente deveria propor"
+          }
+        ]
+      },
+      "cloze": [
+        "A gente ",
+        {
+          "kind": "form",
+          "answer": "deveria",
+          "cue": "dever (a gente)",
+          "choices": [
+            "deveria",
+            "devem",
+            "devemos",
+            "devo"
+          ]
+        },
+        " propor outro sábado. Eu ",
+        {
+          "kind": "form",
+          "answer": "aviso",
+          "cue": "avisar (eu)",
+          "choices": [
+            "avisa",
+            "avisamos",
+            "aviso",
+            "avisam"
+          ]
+        },
+        " o grupo hoje."
+      ],
+      "chunks": [
+        {
+          "targetText": "Qual é a condição",
+          "baseText": {
+            "de": "Welche Bedingung gilt",
+            "en": "What is the condition"
+          }
+        },
+        {
+          "targetText": "para trocar o dia",
+          "baseText": {
+            "de": "um den Tag zu ändern",
+            "en": "for changing the day"
+          }
+        },
+        {
+          "targetText": "da caminhada",
+          "baseText": {
+            "de": "der Wanderung",
+            "en": "of the walk"
+          }
+        },
+        {
+          "targetText": "do grupo?",
+          "baseText": {
+            "de": "unserer Gruppe?",
+            "en": "of the group?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "condição",
+          "baseText": {
+            "de": "Bedingung; Voraussetzung",
+            "en": "condition; requirement"
+          }
+        },
+        {
+          "targetText": "trocar o dia",
+          "baseText": {
+            "de": "den Tag ändern",
+            "en": "to change the day"
+          }
+        },
+        {
+          "targetText": "caminhada",
+          "baseText": {
+            "de": "Wanderung; Spaziergang",
+            "en": "walk; hike"
+          }
+        },
+        {
+          "targetText": "aviso",
+          "baseText": {
+            "de": "Ankündigung; Vorankündigung",
+            "en": "notice"
+          }
+        },
+        {
+          "targetText": "propor",
+          "baseText": {
+            "de": "vorschlagen",
+            "en": "to propose"
+          }
+        },
+        {
+          "targetText": "outro sábado",
+          "baseText": {
+            "de": "ein anderer Samstag",
+            "en": "another Saturday"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Qual é a ",
+        "answer": "condição",
+        "after": " para trocar o dia da caminhada do grupo?",
+        "fallbackChoices": [
+          "razão",
+          "condição",
+          "vantagem",
+          "explicação"
+        ]
+      },
+      "speakRequired": [
+        "condição",
+        "caminhada",
+        "grupo"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund aus der Gruppe fragt: “Você quer passar a caminhada para este sábado?”",
+        "en": "A friend from the group asks: “Você quer passar a caminhada para este sábado?”"
+      },
+      "trophyWord": {
+        "word": "condição",
+        "meaning": {
+          "de": "Bedingung; Voraussetzung",
+          "en": "condition; requirement"
+        },
+        "example": "Qual é a condição para trocar o dia da caminhada do grupo?",
+        "whyThisWord": {
+          "de": "Mit condição fragst du, welche Voraussetzung erfüllt sein muss, damit eine Änderung möglich ist.",
+          "en": "Condição asks which requirement must be met for a change to be possible."
+        }
+      },
+      "distractors": [
+        "para trocar o local",
+        "do encontro?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über den Termin der Gruppenwanderung.",
+        "en": "A conversation about the date of the group walk."
+      },
+      "songMood": "friendly cooperative planning",
+      "visualNotes": "Two walking-group friends looking at a trail map; no notice deadline or rule sheet shown."
+    },
+    {
+      "slug": "acordo-sobre-a-sala",
+      "title": {
+        "de": "Den Raum teilen",
+        "en": "Sharing the room"
+      },
+      "situation": {
+        "de": "Du sprichst mit einer Nachbarin über die Nutzung eines gemeinsamen Raums.",
+        "en": "You talk with a neighbor about using a shared room."
+      },
+      "pedagogicalGoal": "Mit a gente poderia eine Vereinbarung vorschlagen und erstmals se plus tiver für eine mögliche zukünftige Situation verwenden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Como você quer organizar o uso da sala durante a semana?",
+          "baseText": {
+            "de": "Wie möchtest du die Raumnutzung unter der Woche organisieren?",
+            "en": "How would you like to organize use of the room during the week?"
+          }
+        },
+        {
+          "targetText": "A gente poderia fazer um acordo para dividir o uso da sala?",
+          "baseText": {
+            "de": "Könnten wir eine Vereinbarung treffen, um uns die Nutzung des Raums zu teilen?",
+            "en": "Could we make an agreement to share use of the room?"
+          }
+        },
+        {
+          "targetText": "Preciso da sala na quinta à tarde para conversar com a equipe.",
+          "baseText": {
+            "de": "Ich brauche den Raum am Donnerstagnachmittag für ein Gespräch mit dem Team.",
+            "en": "I need the room on Thursday afternoon to talk with the team."
+          }
+        },
+        {
+          "targetText": "Se você tiver reunião, eu posso usar a sala de manhã.",
+          "baseText": {
+            "de": "Wenn du eine Besprechung hast, kann ich den Raum vormittags nutzen.",
+            "en": "If you have a meeting, I can use the room in the morning."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Se você tiver…",
+        "rule": {
+          "de": "Für eine mögliche zukünftige Situation steht nach se hier tiver von ter; der anschließende Vorschlag kann im Präsens stehen.",
+          "en": "For a possible future situation, use tiver from ter after se here; the following proposal can use the present tense."
+        },
+        "examples": [
+          {
+            "targetText": "A gente poderia fazer um acordo para dividir o uso da sala?",
+            "baseText": {
+              "de": "Könnten wir eine Vereinbarung treffen, um uns die Nutzung des Raums zu teilen?",
+              "en": "Could we make an agreement to share use of the room?"
+            },
+            "highlight": "A gente poderia fazer um acordo"
+          },
+          {
+            "targetText": "Se você tiver reunião, eu posso usar a sala de manhã.",
+            "baseText": {
+              "de": "Wenn du eine Besprechung hast, kann ich den Raum vormittags nutzen.",
+              "en": "If you have a meeting, I can use the room in the morning."
+            },
+            "highlight": "Se você tiver reunião"
+          }
+        ]
+      },
+      "cloze": [
+        "Se você ",
+        {
+          "kind": "form",
+          "answer": "tiver",
+          "cue": "ter (você)",
+          "choices": [
+            "tiverem",
+            "tiver",
+            "temos",
+            "tenho"
+          ]
+        },
+        " reunião, eu ",
+        {
+          "kind": "form",
+          "answer": "posso",
+          "cue": "poder (eu)",
+          "choices": [
+            "pode",
+            "podemos",
+            "podem",
+            "posso"
+          ]
+        },
+        " usar a sala de manhã."
+      ],
+      "chunks": [
+        {
+          "targetText": "A gente poderia",
+          "baseText": {
+            "de": "Könnten wir",
+            "en": "Could we"
+          }
+        },
+        {
+          "targetText": "fazer um acordo",
+          "baseText": {
+            "de": "eine Vereinbarung treffen",
+            "en": "make an agreement"
+          }
+        },
+        {
+          "targetText": "para dividir",
+          "baseText": {
+            "de": "um zu teilen",
+            "en": "to share"
+          }
+        },
+        {
+          "targetText": "o uso da sala?",
+          "baseText": {
+            "de": "die Nutzung des Raums?",
+            "en": "use of the room?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "acordo",
+          "baseText": {
+            "de": "Vereinbarung",
+            "en": "agreement"
+          }
+        },
+        {
+          "targetText": "dividir o uso",
+          "baseText": {
+            "de": "die Nutzung teilen",
+            "en": "to share use"
+          }
+        },
+        {
+          "targetText": "sala",
+          "baseText": {
+            "de": "Raum",
+            "en": "room"
+          }
+        },
+        {
+          "targetText": "reunião",
+          "baseText": {
+            "de": "Besprechung",
+            "en": "meeting"
+          }
+        },
+        {
+          "targetText": "equipe",
+          "baseText": {
+            "de": "Team",
+            "en": "team"
+          }
+        },
+        {
+          "targetText": "de manhã",
+          "baseText": {
+            "de": "vormittags; morgens",
+            "en": "in the morning"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A gente poderia fazer um ",
+        "answer": "acordo",
+        "after": " para dividir o uso da sala?",
+        "fallbackChoices": [
+          "mapa",
+          "cartaz",
+          "acordo",
+          "sorteio"
+        ]
+      },
+      "speakRequired": [
+        "poderia",
+        "acordo",
+        "sala"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin fragt zur Raumnutzung: “Como você quer organizar o uso da sala durante a semana?”",
+        "en": "A neighbor asks about sharing the room: “Como você quer organizar o uso da sala durante a semana?”"
+      },
+      "trophyWord": {
+        "word": "acordo",
+        "meaning": {
+          "de": "Vereinbarung",
+          "en": "agreement"
+        },
+        "example": "A gente poderia fazer um acordo para dividir o uso da sala?",
+        "whyThisWord": {
+          "de": "Fazer um acordo bedeutet, gemeinsam eine Vereinbarung zu treffen, bei der beide Seiten ihre Bedürfnisse einbringen.",
+          "en": "Fazer um acordo means reaching an agreement together, with both sides contributing their needs."
+        }
+      },
+      "distractors": [
+        "fazer um sorteio",
+        "o custo da sala?"
+      ],
+      "placeholderCaption": {
+        "de": "Nachbarn planen die Nutzung eines gemeinsamen Raums.",
+        "en": "Neighbors plan how to use a shared room."
+      },
+      "songMood": "collaborative flexible rhythm",
+      "visualNotes": "Two neighbors in an empty shared room; no Thursday calendar or meeting group visible."
+    },
+    {
+      "slug": "alternativa-ao-barulho",
+      "title": {
+        "de": "Ein ruhigeres Zimmer",
+        "en": "A quieter room"
+      },
+      "situation": {
+        "de": "Du fragst am Empfang deiner Unterkunft nach einem ruhigeren Zimmer.",
+        "en": "You ask at your accommodation's reception desk about a quieter room."
+      },
+      "pedagogicalGoal": "Nach einer Alternative fragen und mit se plus for sowie einem ausdrücklichen Nomen als Subjekt von ajudaria erklären, welche Teilverbesserung hilft.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "O que você gostaria de mudar na sua acomodação?",
+          "baseText": {
+            "de": "Was möchten Sie an Ihrer Unterkunft ändern?",
+            "en": "What would you like to change about your accommodation?"
+          }
+        },
+        {
+          "targetText": "Existe alguma alternativa ao quarto perto da rua, com menos barulho?",
+          "baseText": {
+            "de": "Gibt es eine ruhigere Alternative zu dem Zimmer an der Straße?",
+            "en": "Is there an alternative to the room near the street, with less noise?"
+          }
+        },
+        {
+          "targetText": "Posso oferecer um quarto nos fundos, mas o banheiro é compartilhado.",
+          "baseText": {
+            "de": "Ich kann ein Zimmer nach hinten anbieten, aber das Bad wird gemeinsam genutzt.",
+            "en": "I can offer a room at the back, but the bathroom is shared."
+          }
+        },
+        {
+          "targetText": "Se o quarto for silencioso, a troca já ajudaria bastante.",
+          "baseText": {
+            "de": "Wenn das Zimmer ruhig ist, würde der Wechsel schon viel helfen.",
+            "en": "If the room is quiet, the switch would already help a lot."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Se for… já ajudaria",
+        "rule": {
+          "de": "Se o quarto for beschreibt eine mögliche Bedingung; a troca já ajudaria nennt mit ausdrücklichem Subjekt, was auch als Teillösung helfen würde.",
+          "en": "Se o quarto for describes a possible condition; a troca já ajudaria names, with an explicit subject, what would help even as a partial solution."
+        },
+        "examples": [
+          {
+            "targetText": "Existe alguma alternativa ao quarto perto da rua, com menos barulho?",
+            "baseText": {
+              "de": "Gibt es eine ruhigere Alternative zu dem Zimmer an der Straße?",
+              "en": "Is there an alternative to the room near the street, with less noise?"
+            },
+            "highlight": "Existe alguma alternativa"
+          },
+          {
+            "targetText": "Se o quarto for silencioso, a troca já ajudaria bastante.",
+            "baseText": {
+              "de": "Wenn das Zimmer ruhig ist, würde der Wechsel schon viel helfen.",
+              "en": "If the room is quiet, the switch would already help a lot."
+            },
+            "highlight": "Se o quarto for silencioso"
+          }
+        ]
+      },
+      "cloze": [
+        "Se o quarto ",
+        {
+          "kind": "form",
+          "answer": "for",
+          "cue": "ser (o quarto)",
+          "choices": [
+            "somos",
+            "são",
+            "for",
+            "forem"
+          ]
+        },
+        " silencioso, a troca já ",
+        {
+          "kind": "form",
+          "answer": "ajudaria",
+          "cue": "ajudar (a troca)",
+          "choices": [
+            "ajudaria",
+            "ajudamos",
+            "ajudo",
+            "ajudariam"
+          ]
+        },
+        " bastante."
+      ],
+      "chunks": [
+        {
+          "targetText": "Existe alguma alternativa",
+          "baseText": {
+            "de": "Gibt es eine Alternative",
+            "en": "Is there an alternative"
+          }
+        },
+        {
+          "targetText": "ao quarto",
+          "baseText": {
+            "de": "zu dem Zimmer",
+            "en": "to the room"
+          }
+        },
+        {
+          "targetText": "perto da rua,",
+          "baseText": {
+            "de": "an der Straße,",
+            "en": "near the street,"
+          }
+        },
+        {
+          "targetText": "com menos barulho?",
+          "baseText": {
+            "de": "mit weniger Lärm?",
+            "en": "with less noise?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "alternativa",
+          "baseText": {
+            "de": "Alternative",
+            "en": "alternative"
+          }
+        },
+        {
+          "targetText": "acomodação",
+          "baseText": {
+            "de": "Unterkunft",
+            "en": "accommodation"
+          }
+        },
+        {
+          "targetText": "barulho",
+          "baseText": {
+            "de": "Lärm",
+            "en": "noise"
+          }
+        },
+        {
+          "targetText": "nos fundos",
+          "baseText": {
+            "de": "nach hinten; im hinteren Teil",
+            "en": "at the back"
+          }
+        },
+        {
+          "targetText": "banheiro compartilhado",
+          "baseText": {
+            "de": "Gemeinschaftsbad",
+            "en": "shared bathroom"
+          }
+        },
+        {
+          "targetText": "troca",
+          "baseText": {
+            "de": "Wechsel; Tausch",
+            "en": "switch; change"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Existe alguma ",
+        "answer": "alternativa",
+        "after": " ao quarto perto da rua, com menos barulho?",
+        "fallbackChoices": [
+          "referência",
+          "alternativa",
+          "restrição",
+          "crítica"
+        ]
+      },
+      "speakRequired": [
+        "alternativa",
+        "quarto",
+        "barulho"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang fragt ein Mitarbeiter: “O que você gostaria de mudar na sua acomodação?”",
+        "en": "At reception, a staff member asks: “O que você gostaria de mudar na sua acomodação?”"
+      },
+      "trophyWord": {
+        "word": "alternativa",
+        "meaning": {
+          "de": "Alternative",
+          "en": "alternative"
+        },
+        "example": "Existe alguma alternativa ao quarto perto da rua, com menos barulho?",
+        "whyThisWord": {
+          "de": "Alternativa bezeichnet eine andere Möglichkeit; mit existe alguma alternativa fragst du offen nach einem passenden Ersatz.",
+          "en": "Alternativa names another option; existe alguma alternativa asks openly about a suitable replacement."
+        }
+      },
+      "distractors": [
+        "perto da piscina,",
+        "com mais espaço?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Zimmeranfrage am Empfang der Unterkunft.",
+        "en": "A room inquiry at the accommodation's reception desk."
+      },
+      "songMood": "patient hopeful adjustment",
+      "visualNotes": "Guest and receptionist discussing a street-facing room; do not depict a shared bathroom or back room before turn 3."
+    },
+    {
+      "slug": "prioridade-ao-mudar-de-turno",
+      "title": {
+        "de": "Früher mit dem Kurs fertig",
+        "en": "Finishing class earlier"
+      },
+      "situation": {
+        "de": "Du besprichst im Kursbüro den Wechsel in einen anderen Kurszeitraum.",
+        "en": "You discuss changing your class time with the course office."
+      },
+      "pedagogicalGoal": "Eine Priorität mit é plus Infinitiv nennen, eine bekannte Bedingung mit tiver ergänzen und die Präferenz nach einem neuen Platzangebot höflich ändern.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você quer mudar de turno? O que é mais importante?",
+          "baseText": {
+            "de": "Möchten Sie in einen anderen Kurszeitraum wechseln? Was ist am wichtigsten?",
+            "en": "Would you like to change your class time? What matters most?"
+          }
+        },
+        {
+          "targetText": "Minha prioridade é terminar cedo; prefiro a manhã, se a turma tiver vaga.",
+          "baseText": {
+            "de": "Meine Priorität ist, früh fertig zu sein; ich bevorzuge den Vormittag, wenn die Gruppe einen Platz hat.",
+            "en": "My priority is to finish early; I prefer the morning if the class has a place."
+          }
+        },
+        {
+          "targetText": "De manhã não há vagas. A turma das duas termina às quatro.",
+          "baseText": {
+            "de": "Vormittags gibt es keine Plätze. Der Kurs um zwei endet um vier.",
+            "en": "There are no places in the morning. The two o'clock class finishes at four."
+          }
+        },
+        {
+          "targetText": "Nesse caso, eu prefiro a tarde. Você poderia registrar a mudança?",
+          "baseText": {
+            "de": "In dem Fall bevorzuge ich den Nachmittag. Könnten Sie den Wechsel eintragen?",
+            "en": "In that case, I prefer the afternoon. Could you record the change?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Prioridade, condição e ajuste",
+        "rule": {
+          "de": "Verbinde deine Priorität mit einer Bedingung wie se a turma tiver vaga und passe den Wunsch anschließend mit den bekannten höflichen Formen an.",
+          "en": "Connect your priority to a condition such as se a turma tiver vaga, then adjust your wish using the polite forms you already know."
+        },
+        "examples": [
+          {
+            "targetText": "Minha prioridade é terminar cedo; prefiro a manhã, se a turma tiver vaga.",
+            "baseText": {
+              "de": "Meine Priorität ist, früh fertig zu sein; ich bevorzuge den Vormittag, wenn die Gruppe einen Platz hat.",
+              "en": "My priority is to finish early; I prefer the morning if the class has a place."
+            },
+            "highlight": "se a turma tiver vaga"
+          },
+          {
+            "targetText": "Nesse caso, eu prefiro a tarde. Você poderia registrar a mudança?",
+            "baseText": {
+              "de": "In dem Fall bevorzuge ich den Nachmittag. Könnten Sie den Wechsel eintragen?",
+              "en": "In that case, I prefer the afternoon. Could you record the change?"
+            },
+            "highlight": "Você poderia registrar a mudança"
+          }
+        ]
+      },
+      "cloze": [
+        "Nesse caso, eu ",
+        {
+          "kind": "form",
+          "answer": "prefiro",
+          "cue": "preferir (eu)",
+          "choices": [
+            "preferem",
+            "prefiro",
+            "prefere",
+            "preferimos"
+          ]
+        },
+        " a tarde. Você ",
+        {
+          "kind": "form",
+          "answer": "poderia",
+          "cue": "poder (você)",
+          "choices": [
+            "posso",
+            "podemos",
+            "poderia",
+            "podem"
+          ]
+        },
+        " registrar a mudança?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Minha prioridade é terminar cedo;",
+          "baseText": {
+            "de": "Meine Priorität ist, früh fertig zu sein;",
+            "en": "My priority is to finish early;"
+          }
+        },
+        {
+          "targetText": "prefiro a manhã,",
+          "baseText": {
+            "de": "ich bevorzuge den Vormittag,",
+            "en": "I prefer the morning,"
+          }
+        },
+        {
+          "targetText": "se a turma",
+          "baseText": {
+            "de": "wenn die Gruppe",
+            "en": "if the class"
+          }
+        },
+        {
+          "targetText": "tiver vaga.",
+          "baseText": {
+            "de": "einen Platz hat.",
+            "en": "has a place."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "prioridade",
+          "baseText": {
+            "de": "Priorität",
+            "en": "priority"
+          }
+        },
+        {
+          "targetText": "turno",
+          "baseText": {
+            "de": "Kurszeitraum; Tagesabschnitt",
+            "en": "class time; part of the day"
+          }
+        },
+        {
+          "targetText": "turma",
+          "baseText": {
+            "de": "Kursgruppe",
+            "en": "class; group"
+          }
+        },
+        {
+          "targetText": "vaga",
+          "baseText": {
+            "de": "freier Platz",
+            "en": "available place"
+          }
+        },
+        {
+          "targetText": "mudança",
+          "baseText": {
+            "de": "Änderung; Wechsel",
+            "en": "change"
+          }
+        },
+        {
+          "targetText": "terminar cedo",
+          "baseText": {
+            "de": "früh fertig sein",
+            "en": "to finish early"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Minha ",
+        "answer": "prioridade",
+        "after": " é terminar cedo; prefiro a manhã, se a turma tiver vaga.",
+        "fallbackChoices": [
+          "dificuldade",
+          "obrigação",
+          "prioridade",
+          "função"
+        ]
+      },
+      "speakRequired": [
+        "prioridade",
+        "manhã",
+        "turma"
+      ],
+      "sceneCaption": {
+        "de": "Im Kursbüro fragt eine Mitarbeiterin: “Você quer mudar de turno? O que é mais importante?”",
+        "en": "At the course office, a staff member asks: “Você quer mudar de turno? O que é mais importante?”"
+      },
+      "trophyWord": {
+        "word": "prioridade",
+        "meaning": {
+          "de": "Priorität",
+          "en": "priority"
+        },
+        "example": "Minha prioridade é terminar cedo; prefiro a manhã, se a turma tiver vaga.",
+        "whyThisWord": {
+          "de": "Minha prioridade é zeigt, was bei deiner Entscheidung am wichtigsten ist, auch wenn du die konkrete Wahl später ändern musst.",
+          "en": "Minha prioridade é states what matters most in your decision, even if you later need to change the specific option."
+        }
+      },
+      "distractors": [
+        "prefiro a noite,",
+        "não tiver vaga."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über den Wechsel der Kurszeit.",
+        "en": "A conversation about changing class times."
+      },
+      "songMood": "confident flexible resolution",
+      "visualNotes": "Course-office conversation beside a blank timetable; no vacancies or afternoon finishing time shown."
+    }
+  ]
+}

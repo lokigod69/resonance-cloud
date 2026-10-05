@@ -1,6 +1,6 @@
 # B1 expansion: English, Spanish, French, Italian and Portuguese
 
-October 5 continuation: 110 additional episodes have passed review for local recording: English and Spanish P2–P5, French P2 and Italian P2–P3. The staged total is 160. See [the later-path package](paths/README.md) for exact scope, evidence and publication holds. The original P1 milestone below remains its historical record.
+October 5 continuation: 130 additional episodes have passed review for local recording: English and Spanish P2–P5, French P2, Italian P2–P3 and Portuguese P2–P3. The staged Latin total is 180. See [the later-path package](paths/README.md) for exact scope, evidence and publication holds. Indonesian and Cebuano drafts have a separate native package. The original P1 milestone below remains its historical record.
 
 Prepared 2026-10-03. This is an authoring package, not a released course. The live app still has 100 A1 and 100 A2 lessons in each of twelve targets, plus 100 German B1 lessons. Eight targets are currently offered in the beta picker.
 

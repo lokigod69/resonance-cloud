@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 2,
+  "status": "reviewed-staged",
+  "level": "B1",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/portuguese-p2.json",
+      "sha256": "a609e4ee3a11cb5688b0980f38120a2059b8701b56ff330c3f30cfcc29ee740d",
+      "targetLanguage": "Portuguese",
+      "pathNumber": 2,
+      "reviewedVoiceId": "7eUAxNOneHxqfyRS77mW"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/portuguese-p3.json",
+      "sha256": "bc872232dc4cc133f6f3a506ea652a7ae28055ab88e56b6fe15ca99c26ce153b",
+      "targetLanguage": "Portuguese",
+      "pathNumber": 3,
+      "reviewedVoiceId": "7eUAxNOneHxqfyRS77mW"
+    }
+  ],
+  "reviewScope": "Local staging and recording only; not publication approval.",
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/portuguese-p2.json",
+      "reviewedScratchSha256": "a609e4ee3a11cb5688b0980f38120a2059b8701b56ff330c3f30cfcc29ee740d",
+      "stagedSha256": "a609e4ee3a11cb5688b0980f38120a2059b8701b56ff330c3f30cfcc29ee740d",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/portuguese-p3.json",
+      "reviewedScratchSha256": "bc872232dc4cc133f6f3a506ea652a7ae28055ab88e56b6fe15ca99c26ce153b",
+      "stagedSha256": "bc872232dc4cc133f6f3a506ea652a7ae28055ab88e56b6fe15ca99c26ce153b",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    }
+  ],
+  "fableReview": {
+    "model": "claude-fable-5-1",
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "evidenceSha256": "c09627357345eb083a36715c2cd8bfda721d530ce2193518a00b2a6832f12595",
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/portuguese-p2.json": "a609e4ee3a11cb5688b0980f38120a2059b8701b56ff330c3f30cfcc29ee740d",
+      "frontend/content-drafts/b1-2026-10/paths/portuguese-p3.json": "bc872232dc4cc133f6f3a506ea652a7ae28055ab88e56b6fe15ca99c26ce153b"
+    },
+    "approvalBasis": "Personal 20-lesson read; all 4 exact edits applied and mechanically validated; final independent re-review passed local staging/TTS."
+  },
+  "independentReview": {
+    "reviewer": "/root/latin_b2_gate_review",
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "evidenceSha256": "e37b696f32bfaa83204b773f4ce569995086175c0fe841ac9f439db5d58e7a11",
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/portuguese-p2.json": "a609e4ee3a11cb5688b0980f38120a2059b8701b56ff330c3f30cfcc29ee740d",
+      "frontend/content-drafts/b1-2026-10/paths/portuguese-p3.json": "bc872232dc4cc133f6f3a506ea652a7ae28055ab88e56b6fe15ca99c26ce153b"
+    },
+    "scope": "Zero unresolved local-TTS blockers only."
+  },
+  "unresolvedPublicationFindings": [],
+  "publicationStatus": "held",
+  "listeningStatus": "not-started"
+}

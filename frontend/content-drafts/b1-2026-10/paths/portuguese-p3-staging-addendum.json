@@ -1,0 +1,164 @@
+{
+  "status": "fable-staging-addendum",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "scope": "B1 P3",
+  "supersedes": [
+    {
+      "pointer": "SPEC.Portuguese.nativeGrammarScopeByPath.P3",
+      "oldValue": "L1-3 gostaria de, queria, eu preferia/prefiro; L4-6 poderia/podia, dava para, seria possível; L7-10 deveria/devia advice, se/quando + futuro do subjuntivo regular (abrir, mudar, chegar) plus tiver/puder/for/estiver/houver; no imperfeito do subjuntivo (se fosse), no preferiria",
+      "newValueField": "replacementNativeGrammarScopeP3"
+    },
+    {
+      "pointer": "SPEC.Portuguese.bannedPatternsForValidator.semantic[4]",
+      "oldValue": "subjunctive first at P7 L6; future subjunctive first at P3 L8; ia + infinitivo first at P1 L6",
+      "newValueField": "replacementSemanticStagingRule"
+    },
+    {
+      "pointer": "EXACT P3 MAP.anchor (wording only, trophies untouched)",
+      "oldValue": "Pedidos e preferências com gostaria, preferiria e poderia, seguidos de conselho com deveria.",
+      "newValue": "Pedidos e preferências com gostaria, eu preferia/tenho preferência e poderia, seguidos de conselho com deveria."
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "topic": "poderia at L3",
+      "decision": "poderia is licensed at L3 because it is the trophy, but only as the fixed request frame você poderia + infinitivo (3sg, você literal before any blank, cue poder (você)); it is not taught as productive condicional. The broader cortesia family (podia, dava para, seria possível, existe a possibilidade de) starts L5; plural meaning starts L6 only as a gente poderia. poderíamos is banned in the whole path so a gente and nós never form a blank pair."
+    },
+    {
+      "id": "D2",
+      "topic": "deveria at L4",
+      "decision": "deveria is licensed at L4 because it is the trophy, but only as the self-directed frame eu deveria + infinitivo inside a wh-question (qual etapa eu deveria fazer primeiro), eu literal before any blank, cue dever (eu). It is not advice yet. Advice to others and to the group (você deveria/devia, a gente deveria) starts L7, which is where the old L7-10 advice stage stays."
+    },
+    {
+      "id": "D3",
+      "topic": "futuro do subjuntivo start",
+      "decision": "se/quando + futuro do subjuntivo first appears at L8, not L7. Reason: L7 is already the lesson where deveria becomes productive advice, and the thirds rule licenses one new function per lesson; L7 therefore states conditions lexically (a condição é + infinitivo, só dá para trocar com aviso). L8 introduces regular verbs plus tiver/puder; L9 adds estiver/for/houver; L10 recycles."
+    },
+    {
+      "id": "D4",
+      "topic": "regular futuro do subjuntivo",
+      "decision": "A regular futuro do subjuntivo form (precisar, usar, chegar, mudar, abrir) is identical to the infinitive and is never a blank, recall, speech or trophy token. Only tiver, puder, estiver, for, houver may be blanked, and only with the subject literal before the blank and the cue infinitive (subject), or the tag mesma pessoa with all four choices in one person."
+    },
+    {
+      "id": "D5",
+      "topic": "condicional whitelist",
+      "decision": "Condicional forms allowed in P3 learner turns are exactly gostaria, poderia, deveria, seria (seria possível, seria melhor) and, from L9, 3sg ajudaria/resolveria with an explicit noun or infinitive subject (trocar de quarto já ajudaria). Everything else in condicional (faria, teria, daria, iria, poderíamos, deveríamos, preferiria) is banned in the path."
+    },
+    {
+      "id": "D6",
+      "topic": "politeness chips",
+      "decision": "One politeness form per blank. gostaria, queria, poderia, podia, deveria, devia, preferia, dava para and seria possível are never offered against each other as cloze choices; distractors must be syntactically impossible in context (wrong person with a stated subject, wrong tense marker, noun in a verb slot)."
+    },
+    {
+      "id": "D7",
+      "topic": "preferência at L2",
+      "decision": "Trophy preferência (noun) is realised as tenho preferência por + noun in turn 1; eu preferia (imperfeito de cortesia, 1sg, explicit eu) and prefiro remain licensed in the same lesson; preferiria stays banned path-wide as already recorded in mapFindings."
+    },
+    {
+      "id": "D8",
+      "topic": "future-time clauses before L8",
+      "decision": "To avoid forcing an unlicensed form, L1-7 learner turns contain no future-time quando/se clause at all; use depois, na semana que vem, a partir de segunda, no outro horário. quando/se + presente do indicativo with future meaning is banned in learner scope for the whole path."
+    },
+    {
+      "id": "D9",
+      "topic": "P2 untouched",
+      "decision": "P2 keeps its recorded scope: no subjunctive of any kind, acho que não instead of não acho que + subjuntivo; nothing in this addendum licenses anything in P2."
+    }
+  ],
+  "replacementNativeGrammarScopeP3": "L1 eu gostaria de + infinitivo (1sg, fixed request frame); L2 tenho preferência por + noun, eu preferia + noun/infinitivo (imperfeito de cortesia, 1sg with eu), prefiro; L3 você poderia + infinitivo as fixed request frame (3sg, você literal, cue poder (você)), not productive condicional; L4 eu deveria + infinitivo inside a wh-question (qual etapa eu deveria fazer primeiro), self-directed, not advice; L5 cortesia family broadens: podia + infinitivo, dava para + infinitivo, seria possível + infinitivo, existe/há a possibilidade de + infinitivo; L6 adds a gente poderia + infinitivo and tenho interesse em; L7 deveria/devia as productive advice with eu/você/a gente (explicit subject), conditions stated lexically (a condição é + infinitivo, só dá para … com + noun); L8 first se/quando + futuro do subjuntivo with regular verbs precisar, usar, chegar, mudar, abrir (form identical to the infinitive, never blanked) plus tiver/puder, main clause in presente or poderia; L9 adds estiver/for/houver and condicional 3sg ajudaria/resolveria/seria melhor with an explicit noun or infinitive subject; L10 recycles L1-L9 only. Path-wide bans: imperfeito do subjuntivo (se fosse, se pudesse), preferiria, poderíamos/deveríamos (plural meaning only via a gente + 3sg), presente do subjuntivo, any condicional outside gostaria, poderia, deveria, seria, ajudaria, resolveria, quando/se + presente with future meaning, and gostaria/queria/poderia/podia/deveria/devia/preferia as competing choices.",
+  "exactP3StagingByLesson": [
+    {
+      "lesson": 1,
+      "trophy": "gostaria",
+      "licensed": "eu gostaria de + infinitivo (gostaria de participar da oficina); presente do indicativo for facts (o primeiro grupo já está completo, ainda tem vaga no segundo); perfeito recycled from P1 (vi o cartaz, me inscrevi); adjustment: então pode ser o horário das sete, tudo bem, fico com o grupo de sábado",
+      "banned": "poderia, podia, deveria, queria or qualquer outro condicional, se/quando future-time clauses, subjuntivo, preferiria, tenho + particípio",
+      "teachingBoundary": "gostaria is a fixed 1sg request frame, not conjugated; it is the only condicional in the lesson."
+    },
+    {
+      "lesson": 2,
+      "trophy": "preferência",
+      "licensed": "tenho preferência por + noun (tenho preferência por uma mesa longe da caixa de som); eu preferia + noun/infinitivo as imperfeito de cortesia with eu literal, cue preferir (eu); prefiro + noun; longe de, perto de, mais tranquila; accepting the alternative: essa outra também serve, a mesa da varanda fica ótima; gostaria de recycled in turn 2 only",
+      "banned": "preferiria, poderia, podia, deveria, se/quando future-time clauses, subjuntivo, gostaria vs preferia or queria as choices in one blank",
+      "teachingBoundary": "preferia is 1sg politeness only, never contrasted with gostaria/queria in a cloze; no new condicional."
+    },
+    {
+      "lesson": 3,
+      "trophy": "poderia",
+      "licensed": "você poderia + infinitivo as request frame (você poderia me explicar essa cobrança com mais detalhe), 3sg with você literal before any blank, cue poder (você); proclitic me never blanked; perfeito for the charge (veio uma cobrança, cobraram um valor a mais, paguei); naming the unclear part lexically (essa parte do valor ainda não ficou clara, a taxa de entrega eu ainda não entendi); gostaria de and eu preferia recycled",
+      "banned": "podia, dava para, seria possível, poderíamos, deveria, se/quando future-time clauses, subjuntivo, poderia vs podia or pode as a blank pair, noun + que relative beyond a single lexical a parte que",
+      "teachingBoundary": "poderia is a narrow fixed frame (você poderia + infinitivo) and is not taught productively here; broader cortesia frames start L5 and plural meaning (a gente poderia) starts L6."
+    },
+    {
+      "lesson": 4,
+      "trophy": "deveria",
+      "licensed": "eu deveria + infinitivo inside a direct wh-question (qual etapa eu deveria fazer primeiro para entrar no curso), eu literal before any blank, cue dever (eu); você poderia + infinitivo recycled; sequence words primeiro, depois, só então, antes de + infinitivo; falta + noun (falta um documento, falta o comprovante); presente do indicativo for rules (a secretaria aceita, precisa entregar); gostaria de recycled",
+      "banned": "você deveria/devia advice, devia, deveríamos, teria que, tenho que or preciso as a competing choice against deveria, você sabe/pode me dizer wrappers (P5), se/quando future-time clauses, subjuntivo",
+      "teachingBoundary": "deveria is a fixed self-directed frame asking for the order of steps; it is not advice to the interlocutor and is the only new form; advice use starts L7."
+    },
+    {
+      "lesson": 5,
+      "trophy": "possibilidade",
+      "licensed": "existe/há a possibilidade de + infinitivo (existe a possibilidade de visitar o apartamento em outro horário); seria possível + infinitivo; podia + infinitivo as imperfeito de cortesia with explicit eu/você literal, cue poder (subject); dava para + infinitivo impersonal, never blanked; você poderia and gostaria de recycled; time expressions no fim da tarde, depois das seis, na quinta, mais cedo; adjustment: então eu consigo chegar às cinco, nesse caso fico com a quinta",
+      "banned": "daria para, poderíamos, deveria/devia advice, se/quando future-time clauses, subjuntivo, poderia vs podia vs seria possível vs dava para as choices in one blank",
+      "teachingBoundary": "the cortesia family broadens to podia, dava para and seria possível; each appears in its own slot, one politeness form per blank; still no se-conditionals."
+    },
+    {
+      "lesson": 6,
+      "trophy": "oportunidade",
+      "licensed": "tenho interesse em / me interessei pela oportunidade de voluntariado; a gente poderia + infinitivo with a gente literal before any blank, cue poder (a gente); consigo/não consigo + infinitivo for availability; duration vocabulary por três meses, no mínimo, pelo menos uma vez por semana, aos sábados; gostaria de, poderia, dava para, seria possível recycled; adjustment: então eu consigo começar em março, nesse caso fico com um turno por semana",
+      "banned": "poderíamos, nós poderíamos, estou interessado/a and any speaker participle, deveria/devia advice, se/quando future-time clauses, subjuntivo, a gente vs nós as a blank pair",
+      "teachingBoundary": "first plural-meaning condicional, realised only as a gente + poderia (3sg); nós forms stay banned so persons never compete; no se-clauses yet."
+    },
+    {
+      "lesson": 7,
+      "trophy": "condição",
+      "licensed": "qual é a condição para + infinitivo (qual é a condição para trocar o dia da caminhada); deveria/devia as productive advice with explicit eu/você/a gente (então eu deveria avisar antes, a gente devia combinar com o grupo), cue dever (subject); conditions stated lexically: a condição é avisar com antecedência, só dá para trocar com uma semana de aviso, a regra do grupo é + infinitivo/noun; presente do indicativo for rules (o grupo só aceita troca até quarta); poderia recycled; reformulation: então proponho a quinta, nesse caso aviso hoje mesmo",
+      "banned": "se/quando + futuro do subjuntivo (held to L8), quando/se + presente with future meaning, se fosse/pudesse, deveríamos, subjuntivo presente, deveria vs devia vs tenho que as choices in one blank",
+      "teachingBoundary": "deveria becomes productive advice across eu/você/a gente; conditions are expressed lexically so that this lesson adds one function only; the se-clause starts next lesson."
+    },
+    {
+      "lesson": 8,
+      "trophy": "acordo",
+      "licensed": "first se/quando + futuro do subjuntivo: regular verbs precisar, usar, chegar, mudar, abrir (form identical to the infinitive, never blanked, never a recall/speech token) plus tiver/puder (blankable only with subject literal before the blank and cue ter (subject)/poder (subject)); main clause in presente or poderia (se você precisar do espaço, me avisa; quando a gente tiver evento, a gente poderia avisar antes); a gente poderia/deveria recycled; fazer um acordo, combinar, revezar, dividir o uso, dias fixos; adjustment: então a quinta fica com você, nesse caso eu uso de manhã",
+      "banned": "se fosse, se pudesse, estiver/for/houver (held to L9), vier or any other irregular, quando/se + presente with future meaning, subjuntivo presente, two se/quando clauses in one learner turn, regular futuro do subjuntivo as a blank",
+      "teachingBoundary": "first futuro do subjuntivo, taught as a fixed regular frame plus two irregulars; conjugation is not drilled; exactly one se/quando clause per learner turn."
+    },
+    {
+      "lesson": 9,
+      "trophy": "alternativa",
+      "licensed": "existe alguma alternativa a + noun / para + noun (existe alguma alternativa ao quarto que fica perto da rua); se/quando + futuro do subjuntivo extended with estiver/for/houver (se houver outro quarto, quando estiver disponível, se for possível), subject literal or mesma pessoa tag for blanks; condicional 3sg with explicit noun or infinitive subject: trocar de quarto já ajudaria, uma janela nova já resolveria, seria melhor; eu preferia, poderia, deveria recycled; partial change vocabulary mudança parcial, só o quarto, pelo menos o barulho",
+      "banned": "se fosse, preferiria, ajudaria/resolveria without an explicit subject or in 1sg, ficaria/faria/teria and any other condicional, subjuntivo presente, estiver vs for vs houver as choices in one blank",
+      "teachingBoundary": "futuro do subjuntivo gains estiver/for/houver; condicional 3sg appears only with a stated noun or infinitive subject; no imperfeito do subjuntivo anywhere."
+    },
+    {
+      "lesson": 10,
+      "trophy": "prioridade",
+      "licensed": "minha prioridade é + infinitivo/noun (minha prioridade é um turno que termine cedo is banned; use minha prioridade é terminar cedo); recycle gostaria de, eu preferia, você poderia, eu deveria, seria possível, a gente poderia, se tiver vaga, quando abrir a turma (regular never blanked); vagas vocabulary: ainda tem vaga, lista de espera, turma da noite, turma da manhã; revision in turn 2: então prefiro a turma da noite, nesse caso fico com a lista de espera",
+      "banned": "any new form, se fosse, subjuntivo presente (termine, abra), preferiria, poderíamos, more than one se/quando clause per learner turn, more than one blank on an irregular futuro do subjuntivo in the cloze",
+      "teachingBoundary": "consolidation only; nothing new is introduced; the lesson shows the whole P3 family cooperating in one negotiation."
+    }
+  ],
+  "replacementSemanticStagingRule": "Reviewer-caught staging: presente do subjuntivo first at P7 L6 (para que + whitelist) and nowhere else outside P7, P9, P10; se/quando + futuro do subjuntivo first at P3 L8 with regular verbs plus tiver/puder, estiver/for/houver from P3 L9, never earlier in P3 and never in P2, P4, P5, P6, P8; poderia first at P3 L3 only as você poderia + infinitivo, broader cortesia frames (podia, dava para, seria possível) from P3 L5, a gente poderia from P3 L6, poderíamos never; deveria first at P3 L4 only as eu deveria + infinitivo in a wh-question, advice to others (você/a gente deveria, devia) from P3 L7; condicional 3sg ajudaria/resolveria with explicit noun or infinitive subject from P3 L9; ia + infinitivo first at P1 L6; a regular futuro do subjuntivo form, identical to the infinitive, is never a blank, recall, speech or trophy token; irregular tiver/puder/estiver/for/houver may be blanked only with the subject literal before the blank and the cue infinitive (subject), or with the tag mesma pessoa and all four choices in one person; quando/se + presente with future meaning is a reviewer reject in every path.",
+  "authorInstructions": [
+    "Keep every P3 trophy exactly as supplied and as a single word of learner turn 1 without apostrophe or hyphen; preferência enters as tenho preferência por, possibilidade as existe a possibilidade de, condição as qual é a condição para, acordo as fazer/propor um acordo, alternativa as existe alguma alternativa, prioridade as minha prioridade é.",
+    "Lock register per episode: service encounters (oficina, restaurante, cobrança, secretaria, imobiliária, voluntariado) default to formal with Sie and no te in learner turns; shared space (L8) and neighbours or group friends (L7, L9 if a host) may be neutral with du and a gente; o senhor/a senhora only in interlocutor turns, never blanked.",
+    "Every form blank in the follow-up uses cue infinitive (subject) and the subject literal must precede the blank in that follow-up: você before poderia/tiver/puder, eu before deveria/preferia, a gente before poderia/deveria; otherwise tag mesma pessoa with all four choices in one person.",
+    "Never place gostaria, queria, poderia, podia, deveria, devia, preferia, dava para or seria possível as alternatives to each other in one blank; distractors must be syntactically impossible (person clash with a stated subject, noun in a verb slot, wrong tense marker).",
+    "Never blank a regular futuro do subjuntivo (precisar, usar, chegar, mudar, abrir) and never use it as recall, speech or trophy token; blank only tiver/puder (L8) and estiver/for/houver (L9-10), at most one such blank per cloze.",
+    "In L1-7 write no future-time se/quando clause at all; use depois, na semana que vem, a partir de segunda, no outro horário; in L8-10 at most one se/quando clause per learner turn, main clause in presente or poderia.",
+    "Hold deveria to the eu deveria wh-question frame in L4-6 and open advice to others only at L7; hold poderia to the você poderia request frame in L3-4, add podia/dava para/seria possível at L5 and a gente poderia at L6.",
+    "Use only the condicional whitelist gostaria, poderia, deveria, seria plus 3sg ajudaria/resolveria from L9 with an explicit noun or infinitive subject; no preferiria, faria, teria, daria, iria, poderíamos, deveríamos anywhere in P3.",
+    "Gender safety: tenho interesse em, not estou interessado/a; recebi um convite, not fui convidado/a; agradeço, never obrigado/a in learner turns; interlocutor may keep a character-fixed obrigado/obrigada.",
+    "Brazilian lexicon and spelling only (ônibus, celular, banheiro, imóvel, caixa de som); desculpe never desculpa; all diacritics kept; de and en explanations everywhere, German du/Sie matching the locked register.",
+    "Do not write complete episodes or new trophies from this addendum; do not touch frozen P1 or the reviewed P2 scope; present each P3 episode for review against the exactP3StagingByLesson row for its lesson."
+  ],
+  "remainingLimitations": [
+    "Validator pt-future-subjunctive-irregular is path-scoped (except paths 3, 7, 9, 10); a lesson-level guard for P3 L1-7 does not exist in schemaEdits, so premature tiver/puder/estiver/for/houver in P3 L1-7 is reviewer-caught until the owner adds a lesson-scoped rule.",
+    "The condicional whitelist (gostaria, poderia, deveria, seria, ajudaria, resolveria) and the poderíamos/deveríamos/preferiria bans are semantic reviewer items, not regexes; the owner may choose to promote them to structural rules.",
+    "The L7 lexical treatment of conditions makes L7 slightly lighter than L8; this is deliberate to keep one new function per lesson, but the author may feel pressure to use se there and must resist it.",
+    "The anchor wording fix (preferiria to eu preferia/tenho preferência) is proposed here as a wording correction consistent with the recorded mapFinding; it is not an owner approval and should be mirrored in the P3 map by whoever owns that file.",
+    "This addendum stages grammar only; vocabulary density, scene wording and story beats remain the current author's work and are reviewed per episode."
+  ]
+}

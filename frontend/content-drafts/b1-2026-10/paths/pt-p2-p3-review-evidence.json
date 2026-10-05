@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local staging and recording only; not publication approval.",
+  "fable": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "portuguese-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All 10 episodes read field by field. Turn 1 lengths 11–16 words, follow-ups 9–11 words; chunks and recall reconstruct turn 1 byte-exact in every lesson; cloze reconstructs follow-up in every lesson; every form blank carries cue infinitive (subject) with the subject literal (Eu / o domingo / os vendedores / a proximidade / os ônibus) present in the literal text before the blank; all choice sets have exactly one person-compatible answer and no competing courtesy or connector synonyms; 10 distinct trophies (opinião, vantagem, desvantagem, trânsito, transporte, aluguel, convivência, escolha, costume, equilíbrio), each a single word of turn 1 and present in the trophy example; speech tokens are single accented words of turn 1; staging matches scope (L1–3 na minha opinião/acho que/para mim + indicativo + porque; L4 entendo…mas; L5–6 apesar de + noun/infinitivo and mesmo assim; L7–10 mas…também) with no subjunctive, no condicional, no quando/se future clauses in learner scope, no speaker adjectives, no tenho+particípio, Brazilian lexicon throughout; register neutral with German du in all four dialogue turns and no Ihnen; situation, title and sceneCaption never reveal the turn-3 objection or the learner reply; de/en explanations complete and coherent.",
+        "remainingConcerns": "L8 turn 1 'Defendo minha escolha do curso presencial:' is slightly stiff as an answer to 'Por que…?' but idiomatic for the opinion path; L10 'o equilíbrio permite eventos' is abstract but grammatical. The anchor's wording 'Fable's approved' overstates status and is corrected below."
+      },
+      {
+        "file": "portuguese-p3.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All 10 episodes read against exactP3StagingByLesson. Trophies gostaria, preferência, poderia, deveria, possibilidade, oportunidade, condição, acordo, alternativa, prioridade enter exactly via the mandated frames (eu gostaria de, tenho preferência por, você poderia, qual etapa eu deveria, existe a possibilidade de, tenho interesse nessa oportunidade, qual é a condição para, fazer um acordo, existe alguma alternativa, minha prioridade é). Condicional whitelist respected: only gostaria, poderia, deveria, podia (L5), ajudaria 3sg with subject 'a troca' (L9); no preferiria, poderíamos, deveríamos, se fosse, presente do subjuntivo anywhere. First se + tiver at L8, se + for at L9, one se clause per learner turn in L8–10, regular futuro do subjuntivo never blanked. Every form blank: cue infinitive (subject) with você/eu/a gente/o quarto/a troca literal before the blank; no gostaria/queria/poderia/podia/deveria/devia/pode competing in any choice set; e/é and esta/está never paired. Chunks and recall reconstruct turn 1 exactly in all lessons; cloze reconstructs follow-up in all lessons; turn lengths within limits; speech tokens valid; no te in formal learner turns; register locked per episode (L1–6, L9–10 formal/Sie; L7–8 neutral/du) with no du-forms in formal de and no Ihnen in neutral de; no speaker-gender agreement (tenho interesse, not estou interessado); Brazilian lexicon (banheiro, celular absent, caixa de som); no spoilers in title/situation/sceneCaption.",
+        "remainingConcerns": "L1 follow-up 'Você aceita inscrições?' is grammatical but unidiomatic for a learner at reception; corrected below to a concrete native request with coupled cloze and term. L4 interlocutor 'ele não está nos seus documentos' is acceptable BR ('entre os seus documentos' would be marginally better; not changed). L3 term gloss 'cobrança = Rechnung; berechneter Betrag' is a slight widening but acceptable."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "Independent review: none supplied",
+        "decision": "n/a",
+        "reason": "No findings exist to accept or reject; this JSON records Fable's own read only and invents no external findings."
+      },
+      {
+        "finding": "P2 anchor author flag: 'Fable's approved Portuguese P2 … Pending independent review and Fable's complete read-through'",
+        "decision": "adapt",
+        "reason": "The read-through has now happened and the content is approved for content only, but the anchor must not read as a production or owner approval; wording replaced exactly in edits."
+      },
+      {
+        "finding": "P3 anchor author flag: L1–6/L9–10 formal, L7–8 neutral; 'Pending independent review and Fable's complete read-through'",
+        "decision": "accept",
+        "reason": "Register split matches authorInstructions (service encounters formal, group friends L7 and shared space L8 neutral); every de turn matches the locked register; flag may stay until the independent review lands."
+      },
+      {
+        "finding": "P3 L5 you podia (imperfeito de cortesia) in follow-up alongside recycled existe a possibilidade",
+        "decision": "accept",
+        "reason": "Licensed at L5 with você literal before the blank and cue poder (você); poderia/pode/posso are not co-offered (posso is a person clash, podíamos/podem person clashes), so the blank is uniquely valid."
+      },
+      {
+        "finding": "P3 L6 a gente poderia as first plural-meaning condicional in a formal episode",
+        "decision": "accept",
+        "reason": "a gente + 3sg is licensed at L6 regardless of register; choices podem/posso/podemos are all impossible after 'a gente', and nós never appears."
+      },
+      {
+        "finding": "P3 L9 'Se o quarto for silencioso, a troca já ajudaria bastante'",
+        "decision": "accept",
+        "reason": "for and ajudaria both carry explicit noun subjects before the blank; é/fosse are not offered; matches L9 staging exactly."
+      },
+      {
+        "finding": "P3 L1 follow-up 'Você aceita inscrições?'",
+        "decision": "adapt",
+        "reason": "Native speakers at a reception desk ask for the concrete action ('Você faz minha inscrição agora?'); replaced with coupled cloze (cue fazer (você), uniquely valid faz) and singular term; turn 1, pattern, recall, trophy and scene are untouched."
+      }
+    ],
+    "edits": [
+      {
+        "file": "portuguese-p2.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "Fable's approved Portuguese P2: L1–3 acho que/na minha opinião/para mim with indicative and porque; L4–6 mas, mesmo assim and apesar de + noun/infinitive; L7–10 mas … também concession. Neutral Brazilian você with German du throughout. Concrete later objections stay hidden until turn 3. Two explicit-subject indicative form blanks per follow-up. No subjunctive, conditional requests, European usage or speaker-gender marking. Pending independent review and Fable's complete read-through.",
+        "newValue": "Fable-staged Portuguese P2 (content approval only after Fable's read-through; no production approval): L1–3 acho que/na minha opinião/para mim with indicative and porque; L4–6 mas, mesmo assim and apesar de + noun/infinitive; L7–10 mas … também concession. Neutral Brazilian você with German du throughout. Concrete later objections stay hidden until turn 3. Two explicit-subject indicative form blanks per follow-up. No subjunctive, conditional requests, European usage or speaker-gender marking. Pending independent review.",
+        "reason": "Anchor must not assert an approval status beyond content approval."
+      },
+      {
+        "file": "portuguese-p3.json",
+        "jsonPointer": "/lessons/0/dialogue/3",
+        "oldValue": {
+          "targetText": "Então eu gostaria de participar à tarde. Você aceita inscrições?",
+          "baseText": {
+            "de": "Dann möchte ich gern nachmittags teilnehmen. Nehmen Sie Anmeldungen entgegen?",
+            "en": "Then I would like to join in the afternoon. Do you take registrations?"
+          }
+        },
+        "newValue": {
+          "targetText": "Então eu gostaria de participar à tarde. Você faz minha inscrição agora?",
+          "baseText": {
+            "de": "Dann möchte ich gern nachmittags teilnehmen. Nehmen Sie meine Anmeldung jetzt vor?",
+            "en": "Then I would like to join in the afternoon. Can you register me now?"
+          }
+        },
+        "reason": "Native concrete request at a reception desk; 12 words; no new grammar (presente do indicativo, você 3sg)."
+      },
+      {
+        "file": "portuguese-p3.json",
+        "jsonPointer": "/lessons/0/cloze",
+        "oldValue": [
+          "Então eu ",
+          {
+            "kind": "form",
+            "answer": "gostaria",
+            "cue": "gostar (eu)",
+            "choices": [
+              "gostam",
+              "gostaria",
+              "gostou",
+              "gostamos"
+            ]
+          },
+          " de participar à tarde. Você ",
+          {
+            "kind": "form",
+            "answer": "aceita",
+            "cue": "aceitar (você)",
+            "choices": [
+              "aceito",
+              "aceitamos",
+              "aceitam",
+              "aceita"
+            ]
+          },
+          " inscrições?"
+        ],
+        "newValue": [
+          "Então eu ",
+          {
+            "kind": "form",
+            "answer": "gostaria",
+            "cue": "gostar (eu)",
+            "choices": [
+              "gostam",
+              "gostaria",
+              "gostou",
+              "gostamos"
+            ]
+          },
+          " de participar à tarde. Você ",
+          {
+            "kind": "form",
+            "answer": "faz",
+            "cue": "fazer (você)",
+            "choices": [
+              "faço",
+              "fazemos",
+              "fazem",
+              "faz"
+            ]
+          },
+          " minha inscrição agora?"
+        ],
+        "reason": "Coupled cloze reconstructs the new follow-up exactly; você literal precedes the blank; faço/fazemos/fazem are person clashes, so faz is uniquely valid."
+      },
+      {
+        "file": "portuguese-p3.json",
+        "jsonPointer": "/lessons/0/terms/5",
+        "oldValue": {
+          "targetText": "inscrições",
+          "baseText": {
+            "de": "Anmeldungen",
+            "en": "registrations"
+          }
+        },
+        "newValue": {
+          "targetText": "inscrição",
+          "baseText": {
+            "de": "Anmeldung",
+            "en": "registration"
+          }
+        },
+        "reason": "Term matches the form now spoken in the follow-up; terms remain six distinct items."
+      }
+    ],
+    "finalChecks": "After edits: P3 L1 follow-up = 12 words, cloze joins to 'Então eu gostaria de participar à tarde. Você faz minha inscrição agora?', chunks/recall/trophy/pattern/scene unchanged; P2 anchor edit is text only. Both files keep 10 distinct trophies matching the approved maps (P3 L2 preferência per mapFinding), all frozen P1 IDs/text untouched, validator regex bans (ter+particípio, speaker adjective, obrigado, tu, European spelling, estar a + infinitivo, presente do subjuntivo, path-3-excepted futuro do subjuntivo, missing accents, clitic tokens, register de du/Sie, formal te) pass by inspection. Content approval only for P2 and P3 drafts; no production approval, no app/runtime change, no DB write; no human native review is claimed; independent review still pending."
+  },
+  "independent": {
+    "schemaVersion": 1,
+    "reviewer": "/root/latin_b2_gate_review",
+    "reviewerKind": "independent-agent",
+    "authorOfReviewedContent": false,
+    "reviewDate": "2026-10-05",
+    "reviewRound": "First independent full-content review of the final Fable-edited files; rereview filename retained only for packaging compatibility.",
+    "verdict": "PASS",
+    "unresolvedLocalTtsBlockers": 0,
+    "remainingPublicationFindings": [],
+    "reviewedSources": {
+      "portuguese-p2.json": "a609e4ee3a11cb5688b0980f38120a2059b8701b56ff330c3f30cfcc29ee740d",
+      "portuguese-p3.json": "bc872232dc4cc133f6f3a506ea652a7ae28055ab88e56b6fe15ca99c26ce153b",
+      "B1_PORTUGUESE_P2_P3_FABLE_REVIEW_RAW.json": "c09627357345eb083a36715c2cd8bfda721d530ce2193518a00b2a6832f12595"
+    },
+    "sourceDirectory": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content",
+    "additionalBindings": {
+      "B1_PORTUGUESE_P2_P3_COMBINED_SPEC.json": "c6bddae5d112fdc2ba5b6e8c259f652f2c5ce2a53c5b5b26e79fd6e914d9195f",
+      "B1_PORTUGUESE_P3_STAGING_ADDENDUM.json": "9241a3b49449d5a23b2799d1e6d508d1c696d44d78a4e54c8455a10db647055f",
+      "new-content/portuguese-p2.json": "9bb13d914bc2be898dbf26efd322fb3bae321c8a4ab9acfaaa340a8aa43b7b64",
+      "new-content/portuguese-p3.json": "03930fd5f63e3170e7ee8bac010fddf75350ad3bf9be8337b413574d9aa6928a",
+      "orchestrator/frontend/scripts/lib/guidedB1Drafts.ts": "b04badcb7a3835e0faf352e7f9d09c2cd235052f5388dc42b3908f362b24e15e",
+      "orchestrator/frontend/src/components/today/ComplicationStep.tsx": "26dbba90f8d79bab3daa4a265481f4b58e85f337f2bc2e7af7ec5417f065f4d2",
+      "orchestrator/frontend/src/components/today/BuildPhraseStep.tsx": "3fa4b962b91045d88ade7a435c1d1e016ef6b53484e2d746ac40544329e16bb9",
+      "orchestrator/frontend/src/components/today/TypeRecallStep.tsx": "a0a738b243c005a51154dde621d8edcfb049f64a7e849241c3bce36b8312d218",
+      "orchestrator/frontend/content-drafts/b1-2026-10/portuguese-plan.json": "6a1cb711f1e561c88ed65a6407d51678c89754eda9e2c523638c7886aa007f1d"
+    },
+    "coverage": "full-content-all-fields",
+    "readThrough": {
+      "portuguese-p2.json": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "portuguese-p3.json": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "findings": [],
+    "checks": [
+      {
+        "check": "Independent full read",
+        "result": "PASS: personally read every root and lesson field, including all 80 dialogue turns, 80 chunks, 120 terms, 40 pattern examples, cloze choices/cues, recall, speech tokens, trophies, German/English bases, scene/placeholder captions and production notes. Fable's conclusions were evidence of its review, not substituted for this read."
+      },
+      {
+        "check": "Exact Fable edit replay",
+        "result": "PASS: genuine raw record identifies claude-fable-5-1 and contains four edits. Every oldValue matches the original source. Replaying P2 /anchor and P3 /lessons/0/dialogue/3, /lessons/0/cloze, /lessons/0/terms/5 produces complete objects identical to the final files; no unapproved changes. The new P3 L1 request and its coupled cloze/term are natural and coherent."
+      },
+      {
+        "check": "Portuguese, translations and episodes",
+        "result": "No issue: idiomatic pt-BR, retained diacritics, coherent German/English meanings, gender-neutral learner forms, consistent registers. Every later turn adds a relevant objection or constraint and the learner responds specifically. P2's occasionally formal opinion wording remains appropriate and comprehensible. Scenes do not prematurely reveal the later constraint."
+      },
+      {
+        "check": "Grammar progression",
+        "result": "No issue: P2 progresses from indicative opinions/reasons to concession and balanced contrasts. P3 respects the superseding staging: gostaria L1; preferência/eu preferia L2; fixed você poderia L3; self-directed eu deveria question L4; broader courtesy L5; a gente poderia L6; group advice L7; first future-subjunctive tiver L8; for and explicit-subject ajudaria L9; recycling L10. No early se/quando future clause, banned productive conditional, subjunctive-present import, regular future-subjunctive blank or speaker-gender marking found."
+      },
+      {
+        "check": "Exercises against actual UI",
+        "result": "No issue: all forty cloze blanks have a visible literal subject and matching infinitive(subject) cue; competing choices clash with that subject, and courtesy synonyms are not co-offered. Build uses the first-turn translation cue and exact chip order. I found no meaning-preserving native alternative using the supplied chips unchanged; meaning-changing distractors were assessed against the cue. Recall is explicitly memory reconstruction; the canonical target is unique in its stored options."
+      },
+      {
+        "check": "Actual structural gate and allocation",
+        "result": "PASS: invoked the existing read-only Portuguese helper against both reviewed-content files, importing actual validateB1Draft. Both final hashes match; twenty allocated trophies match the plan. All 100 plan trophies are unique with zero collisions against 199 frozen all-vibe trophy surfaces. Reconstruction, token counts, speech tokens, bases and structural Portuguese rules pass."
+      }
+    ],
+    "claimLimits": [
+      "Stored recall fallbackChoices are not rendered by current TypeRecallStep; it reveals the canonical answer. Some lexical alternatives form other grammatical statements, so this report does not claim grammar-only uniqueness for a hypothetical future multiple-choice recall screen.",
+      "Independent model content review is not native-human certification, audio listening, runtime integration proof or paid execution approval. Publication and production writes remain unauthorized. Existing workflow holds are not unresolved content defects."
+    ],
+    "publicationAuthorized": false,
+    "actions": "Read-only app/source inspection and offline validation only. No provider calls, database access, app edits or git mutations; wrote only this requested scratch report.",
+    "repositoryStatus": "Committed no · Pushed no · Live not yet · Checks: both actual B1 draft gates PASS; full independent content review PASS."
+  }
+}
