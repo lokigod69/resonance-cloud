@@ -1,0 +1,2226 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Polish",
+  "targetLanguageCode": "pl-PL",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Meine Meinung, mit einem Einwand",
+    "en": "My opinion, with a reservation"
+  },
+  "subtitle": {
+    "de": "Begründet urteilen, Gegensätze ausdrücken und eine Entscheidung anpassen",
+    "en": "Giving reasons, expressing contrasts and adjusting a decision"
+  },
+  "anchor": "Opinions, concessions and contrast with a colleague-friend: acknowledge new information and adjust a practical choice.",
+  "lessons": [
+    {
+      "slug": "moim-zdaniem-male-biura",
+      "title": {
+        "de": "Eine Meinung zum Büro",
+        "en": "An opinion about the office"
+      },
+      "situation": {
+        "de": "Ein befreundeter Kollege zeigt dir zwei Pläne für die neuen Büroräume.",
+        "en": "A colleague who is also a friend shows you two plans for the new office."
+      },
+      "pedagogicalGoal": "Mit moim zdaniem eine Meinung begründen und nach einer gegenteiligen Entscheidung eine praktische Anpassung nennen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Wolisz małe pokoje czy jedną wspólną salę?",
+          "baseText": {
+            "de": "Bevorzugst du kleine Räume oder einen gemeinsamen großen Raum?",
+            "en": "Do you prefer small rooms or one shared office?"
+          }
+        },
+        {
+          "targetText": "Moim zdaniem małe pokoje są dobre, bo łatwo się skupić.",
+          "baseText": {
+            "de": "Meiner Meinung nach sind kleine Räume gut, weil man sich leicht konzentrieren kann.",
+            "en": "In my opinion, small rooms are good because it is easy to concentrate."
+          }
+        },
+        {
+          "targetText": "Szef wybrał już wspólną salę, mimo hałasu.",
+          "baseText": {
+            "de": "Der Chef hat trotz des Lärms schon den gemeinsamen Raum gewählt.",
+            "en": "The boss has already chosen the shared office, despite the noise."
+          }
+        },
+        {
+          "targetText": "Chociaż wspólna sala jest głośna, cicha budka umożliwia rozmowy.",
+          "baseText": {
+            "de": "Obwohl der gemeinsame Raum laut ist, ermöglicht eine ruhige Kabine Gespräche.",
+            "en": "Although the shared office is noisy, a quiet booth makes conversations possible."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Meinung begründen",
+        "rule": {
+          "de": "Moim zdaniem kennzeichnet deine Sicht; bo verbindet sie mit einem konkreten Grund.",
+          "en": "Moim zdaniem marks your point of view; bo connects it to a concrete reason."
+        },
+        "examples": [
+          {
+            "targetText": "Moim zdaniem małe pokoje są dobre, bo łatwo się skupić.",
+            "baseText": {
+              "de": "Meiner Meinung nach sind kleine Räume gut, weil man sich leicht konzentrieren kann.",
+              "en": "In my opinion, small rooms are good because it is easy to concentrate."
+            },
+            "highlight": "Moim zdaniem"
+          },
+          {
+            "targetText": "Moim zdaniem ten plan jest dobry, bo każdy ma własne biurko.",
+            "baseText": {
+              "de": "Meiner Meinung nach ist der Plan gut, weil jeder einen eigenen Schreibtisch hat.",
+              "en": "In my opinion, this plan is good because everyone has their own desk."
+            },
+            "highlight": "Moim zdaniem"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Chociaż",
+          "choices": [
+            "Chociaż",
+            "Żeby",
+            "Albo",
+            "Zanim"
+          ]
+        },
+        " wspólna sala jest ",
+        {
+          "kind": "choice",
+          "answer": "głośna",
+          "choices": [
+            "głośna",
+            "cicha",
+            "pusta",
+            "bezludna"
+          ]
+        },
+        ", cicha budka umożliwia rozmowy."
+      ],
+      "chunks": [
+        {
+          "targetText": "Moim zdaniem",
+          "baseText": {
+            "de": "Meiner Meinung nach",
+            "en": "In my opinion"
+          }
+        },
+        {
+          "targetText": "małe pokoje są dobre,",
+          "baseText": {
+            "de": "sind kleine Räume gut,",
+            "en": "small rooms are good,"
+          }
+        },
+        {
+          "targetText": "bo łatwo",
+          "baseText": {
+            "de": "weil es leicht ist,",
+            "en": "because it is easy"
+          }
+        },
+        {
+          "targetText": "się skupić.",
+          "baseText": {
+            "de": "sich zu konzentrieren.",
+            "en": "to concentrate."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "moim zdaniem",
+          "baseText": {
+            "de": "meiner Meinung nach",
+            "en": "in my opinion"
+          }
+        },
+        {
+          "targetText": "małe pokoje",
+          "baseText": {
+            "de": "kleine Räume",
+            "en": "small rooms"
+          }
+        },
+        {
+          "targetText": "dobre",
+          "baseText": {
+            "de": "gut (Plural)",
+            "en": "good (plural)"
+          }
+        },
+        {
+          "targetText": "łatwo",
+          "baseText": {
+            "de": "leicht",
+            "en": "easily"
+          }
+        },
+        {
+          "targetText": "skupić",
+          "baseText": {
+            "de": "konzentrieren (mit się)",
+            "en": "concentrate (with się)"
+          }
+        },
+        {
+          "targetText": "głośna",
+          "baseText": {
+            "de": "laut (hier: sala)",
+            "en": "noisy (here: sala)"
+          }
+        },
+        {
+          "targetText": "budka",
+          "baseText": {
+            "de": "die Kabine",
+            "en": "booth"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Moim ",
+        "answer": "zdaniem",
+        "after": " małe pokoje są dobre, bo łatwo się skupić.",
+        "fallbackChoices": [
+          "zdaniem",
+          "krokiem",
+          "kubkiem",
+          "pociągiem"
+        ]
+      },
+      "speakRequired": [
+        "zdaniem",
+        "pokoje",
+        "skupić"
+      ],
+      "sceneCaption": {
+        "de": "Dein Kollege zeigt zwei Büropläne: „Wolisz małe pokoje czy jedną wspólną salę?”",
+        "en": "Your colleague shows you two office plans: „Wolisz małe pokoje czy jedną wspólną salę?”"
+      },
+      "trophyWord": {
+        "word": "zdaniem",
+        "meaning": {
+          "de": "in der Wendung moim zdaniem: meiner Meinung nach",
+          "en": "in moim zdaniem: in my opinion"
+        },
+        "example": "Moim zdaniem ten park jest dobry na spokojny spacer.",
+        "whyThisWord": {
+          "de": "Zdaniem bildet mit moim einen festen Rahmen für eine persönliche Einschätzung, ohne sie als Tatsache auszugeben.",
+          "en": "Zdaniem combines with moim to frame a personal judgment without presenting it as a fact."
+        }
+      },
+      "distractors": [
+        "duża sala jest dobra,",
+        "bo słychać rozmowy."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Grundrisse liegen neben einem Laptop auf dem Schreibtisch.",
+        "en": "Two floor plans lie beside a laptop on the desk."
+      },
+      "songMood": "a thoughtful office choice with room for compromise",
+      "visualNotes": "Two office layouts under discussion; no final boss decision or booth revealed."
+    },
+    {
+      "slug": "uwazam-ze-tramwaj-pomaga",
+      "title": {
+        "de": "Die neue Straßenbahn",
+        "en": "The new tram line"
+      },
+      "situation": {
+        "de": "Ein Freund möchte deine Meinung zur neuen Straßenbahnlinie hören.",
+        "en": "A friend wants your opinion on the new tram line."
+      },
+      "pedagogicalGoal": "Eine Einschätzung mit uważam, że formulieren und einen Nachteil für eine andere Person anerkennen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Co sądzisz o nowej linii tramwajowej?",
+          "baseText": {
+            "de": "Was hältst du von der neuen Straßenbahnlinie?",
+            "en": "What do you think of the new tram line?"
+          }
+        },
+        {
+          "targetText": "Uważam, że nowa linia pomaga, bo tramwaj dojeżdża pod sam dworzec.",
+          "baseText": {
+            "de": "Ich finde, die neue Linie hilft, weil die Straßenbahn direkt bis zum Bahnhof fährt.",
+            "en": "I think the new line helps because the tram goes right up to the station."
+          }
+        },
+        {
+          "targetText": "Ale ja jadę do pracy dłużej, bo zlikwidowali mój przystanek.",
+          "baseText": {
+            "de": "Aber ich brauche länger zur Arbeit, weil meine Haltestelle gestrichen wurde.",
+            "en": "But my commute takes longer because they removed my stop."
+          }
+        },
+        {
+          "targetText": "Chociaż trasa jest wygodna, brak twojego przystanku jest kłopotliwy.",
+          "baseText": {
+            "de": "Obwohl die Strecke praktisch ist, ist das Fehlen deiner Haltestelle problematisch.",
+            "en": "Although the route is convenient, losing your stop is troublesome."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ich finde, dass …",
+        "rule": {
+          "de": "Nach uważam steht że vor dem Inhalt deiner Meinung; bo kann anschließend ihren Grund nennen.",
+          "en": "Uważam is followed by że and the content of your opinion; bo can then give the reason."
+        },
+        "examples": [
+          {
+            "targetText": "Uważam, że nowa linia pomaga, bo tramwaj dojeżdża pod sam dworzec.",
+            "baseText": {
+              "de": "Ich finde, die neue Linie hilft, weil die Straßenbahn direkt bis zum Bahnhof fährt.",
+              "en": "I think the new line helps because the tram goes right up to the station."
+            },
+            "highlight": "Uważam, że"
+          },
+          {
+            "targetText": "Uważam, że ten przystanek jest potrzebny, bo szkoła jest blisko.",
+            "baseText": {
+              "de": "Ich finde, die Haltestelle ist nötig, weil die Schule in der Nähe ist.",
+              "en": "I think this stop is needed because the school is nearby."
+            },
+            "highlight": "Uważam, że"
+          }
+        ]
+      },
+      "cloze": [
+        "Chociaż trasa jest ",
+        {
+          "kind": "choice",
+          "answer": "wygodna",
+          "choices": [
+            "wygodna",
+            "bezużyteczna",
+            "zbędna",
+            "niepotrzebna"
+          ]
+        },
+        ", brak twojego przystanku jest ",
+        {
+          "kind": "choice",
+          "answer": "kłopotliwy",
+          "choices": [
+            "kłopotliwy",
+            "korzystny",
+            "obojętny",
+            "zabawny"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Uważam, że",
+          "baseText": {
+            "de": "Ich finde, dass",
+            "en": "I think that"
+          }
+        },
+        {
+          "targetText": "nowa linia pomaga,",
+          "baseText": {
+            "de": "die neue Linie hilft,",
+            "en": "the new line helps,"
+          }
+        },
+        {
+          "targetText": "bo tramwaj dojeżdża",
+          "baseText": {
+            "de": "weil die Straßenbahn fährt",
+            "en": "because the tram goes"
+          }
+        },
+        {
+          "targetText": "pod sam dworzec.",
+          "baseText": {
+            "de": "direkt bis zum Bahnhof.",
+            "en": "right up to the station."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "uważam",
+          "baseText": {
+            "de": "ich finde, ich bin der Meinung",
+            "en": "I think, I consider"
+          }
+        },
+        {
+          "targetText": "nowa linia",
+          "baseText": {
+            "de": "die neue Linie",
+            "en": "the new line"
+          }
+        },
+        {
+          "targetText": "pomaga",
+          "baseText": {
+            "de": "hilft",
+            "en": "helps"
+          }
+        },
+        {
+          "targetText": "dojeżdża",
+          "baseText": {
+            "de": "fährt bis zu einem Ziel",
+            "en": "goes all the way to a destination"
+          }
+        },
+        {
+          "targetText": "dworzec",
+          "baseText": {
+            "de": "der Bahnhof",
+            "en": "station"
+          }
+        },
+        {
+          "targetText": "brak",
+          "baseText": {
+            "de": "das Fehlen",
+            "en": "absence"
+          }
+        },
+        {
+          "targetText": "kłopotliwy",
+          "baseText": {
+            "de": "problematisch",
+            "en": "troublesome"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "Uważam",
+        "after": ", że nowa linia pomaga, bo tramwaj dojeżdża pod sam dworzec.",
+        "fallbackChoices": [
+          "Uważam",
+          "Słucham",
+          "Czekam",
+          "Płacę"
+        ]
+      },
+      "speakRequired": [
+        "uważam",
+        "linia",
+        "dworzec"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund zeigt auf den neuen Linienplan: „Co sądzisz o nowej linii tramwajowej?”",
+        "en": "Your friend points at the new route map: „Co sądzisz o nowej linii tramwajowej?”"
+      },
+      "trophyWord": {
+        "word": "uważam",
+        "meaning": {
+          "de": "ich finde, ich bin der Meinung",
+          "en": "I think, I consider"
+        },
+        "example": "Uważam, że wieczorny kurs jest dobry dla osób pracujących.",
+        "whyThisWord": {
+          "de": "Uważam, że leitet einen ganzen Meinungssatz ein, den du begründen oder durch ein Zugeständnis einschränken kannst.",
+          "en": "Uważam, że introduces a full statement of opinion that you can support or qualify with a concession."
+        }
+      },
+      "distractors": [
+        "stara linia pomaga,",
+        "daleko od dworca."
+      ],
+      "placeholderCaption": {
+        "de": "Ein neuer Straßenbahnplan hängt an der Haltestelle.",
+        "en": "A new tram route map hangs at the stop."
+      },
+      "songMood": "different daily journeys behind one public transport change",
+      "visualNotes": "Friends studying the new route map; no removed-stop notice visible in advance."
+    },
+    {
+      "slug": "chociaz-film-mial-slaby-final",
+      "title": {
+        "de": "Gut, mit einem Haken",
+        "en": "Good, with one flaw"
+      },
+      "situation": {
+        "de": "Ein befreundeter Kollege fragt nach dem Film, den du gestern gesehen hast.",
+        "en": "A colleague who is also a friend asks about the film you saw yesterday."
+      },
+      "pedagogicalGoal": "Mit chociaż eine positive Bewertung mit einem konkreten Einwand verbinden und auf eine Fortsetzung reagieren.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Jak ci się podobał wczorajszy film?",
+          "baseText": {
+            "de": "Wie hat dir der gestrige Film gefallen?",
+            "en": "How did you like yesterday's film?"
+          }
+        },
+        {
+          "targetText": "Film mi się podobał, chociaż zakończenie było przewidywalne i trochę za długie.",
+          "baseText": {
+            "de": "Der Film gefiel mir, obwohl das Ende vorhersehbar und etwas zu lang war.",
+            "en": "I liked the film, although the ending was predictable and a little too long."
+          }
+        },
+        {
+          "targetText": "Zapowiadają ciekawą drugą część, ale z tym samym scenarzystą.",
+          "baseText": {
+            "de": "Sie kündigen einen interessanten zweiten Teil an, aber mit demselben Drehbuchautor.",
+            "en": "They are announcing an interesting sequel, but with the same screenwriter."
+          }
+        },
+        {
+          "targetText": "Chociaż zapowiedź jest ciekawa, poczekam na recenzje kolejnej części.",
+          "baseText": {
+            "de": "Obwohl die Ankündigung interessant ist, warte ich auf die Kritiken zum nächsten Teil.",
+            "en": "Although the announcement is interesting, I will wait for reviews of the next part."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ein Einwand trotz Zustimmung",
+        "rule": {
+          "de": "Chociaż verbindet zwei Aussagen, die in einem Gegensatz stehen, ohne die Hauptaussage aufzuheben.",
+          "en": "Chociaż connects contrasting statements without cancelling the main point."
+        },
+        "examples": [
+          {
+            "targetText": "Film mi się podobał, chociaż zakończenie było przewidywalne i trochę za długie.",
+            "baseText": {
+              "de": "Der Film gefiel mir, obwohl das Ende vorhersehbar und etwas zu lang war.",
+              "en": "I liked the film, although the ending was predictable and a little too long."
+            },
+            "highlight": "chociaż zakończenie"
+          },
+          {
+            "targetText": "Chociaż zapowiedź jest ciekawa, poczekam na recenzje kolejnej części.",
+            "baseText": {
+              "de": "Obwohl die Ankündigung interessant ist, warte ich auf die Kritiken zum nächsten Teil.",
+              "en": "Although the announcement is interesting, I will wait for reviews of the next part."
+            },
+            "highlight": "Chociaż zapowiedź"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Chociaż",
+          "choices": [
+            "Chociaż",
+            "Żeby",
+            "Albo",
+            "Podczas"
+          ]
+        },
+        " zapowiedź jest ",
+        {
+          "kind": "choice",
+          "answer": "ciekawa",
+          "choices": [
+            "ciekawa",
+            "nudna",
+            "niezrozumiała",
+            "odpychająca"
+          ]
+        },
+        ", poczekam na recenzje kolejnej części."
+      ],
+      "chunks": [
+        {
+          "targetText": "Film mi się podobał,",
+          "baseText": {
+            "de": "Der Film gefiel mir,",
+            "en": "I liked the film,"
+          }
+        },
+        {
+          "targetText": "chociaż zakończenie",
+          "baseText": {
+            "de": "obwohl das Ende",
+            "en": "although the ending"
+          }
+        },
+        {
+          "targetText": "było przewidywalne",
+          "baseText": {
+            "de": "vorhersehbar war",
+            "en": "was predictable"
+          }
+        },
+        {
+          "targetText": "i trochę za długie.",
+          "baseText": {
+            "de": "und etwas zu lang.",
+            "en": "and a little too long."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "podobał",
+          "baseText": {
+            "de": "gefiel (hier: der Film)",
+            "en": "was liked (here: the film)"
+          }
+        },
+        {
+          "targetText": "chociaż",
+          "baseText": {
+            "de": "obwohl",
+            "en": "although"
+          }
+        },
+        {
+          "targetText": "zakończenie",
+          "baseText": {
+            "de": "das Ende",
+            "en": "ending"
+          }
+        },
+        {
+          "targetText": "przewidywalne",
+          "baseText": {
+            "de": "vorhersehbar",
+            "en": "predictable"
+          }
+        },
+        {
+          "targetText": "za długie",
+          "baseText": {
+            "de": "zu lang",
+            "en": "too long"
+          }
+        },
+        {
+          "targetText": "zapowiedź",
+          "baseText": {
+            "de": "die Ankündigung",
+            "en": "announcement"
+          }
+        },
+        {
+          "targetText": "recenzje",
+          "baseText": {
+            "de": "die Kritiken",
+            "en": "reviews"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Film mi się podobał, ",
+        "answer": "chociaż",
+        "after": " zakończenie było przewidywalne i trochę za długie.",
+        "fallbackChoices": [
+          "chociaż",
+          "podczas",
+          "mimo",
+          "wbrew"
+        ]
+      },
+      "speakRequired": [
+        "film",
+        "chociaż",
+        "zakończenie"
+      ],
+      "sceneCaption": {
+        "de": "Dein Kollege legt das Kinoprogramm auf den Tisch: „Jak ci się podobał wczorajszy film?”",
+        "en": "Your colleague puts the cinema listings on the table: „Jak ci się podobał wczorajszy film?”"
+      },
+      "trophyWord": {
+        "word": "chociaż",
+        "meaning": {
+          "de": "obwohl",
+          "en": "although"
+        },
+        "example": "Chociaż pada deszcz, spacer nadal sprawia mi przyjemność.",
+        "whyThisWord": {
+          "de": "Chociaż lässt eine Einräumung stehen, während du deine eigene Bewertung oder Entscheidung beibehältst.",
+          "en": "Chociaż allows you to concede a point while keeping your own judgment or decision."
+        }
+      },
+      "distractors": [
+        "bo zakończenie",
+        "było zaskakujące"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Kinoprogramm liegt neben der Kaffeetasse eines Kollegen.",
+        "en": "Cinema listings lie beside a colleague's coffee cup."
+      },
+      "songMood": "a friendly film discussion with a measured reservation",
+      "visualNotes": "Colleagues on a coffee break; only the first film is shown in the opening material."
+    },
+    {
+      "slug": "jednak-wole-centrum",
+      "title": {
+        "de": "Doch lieber im Zentrum",
+        "en": "Still, the city center"
+      },
+      "situation": {
+        "de": "Ein Freund fragt, ob du dir einen Umzug an den Stadtrand vorstellen kannst.",
+        "en": "A friend asks whether you can imagine moving to the suburbs."
+      },
+      "pedagogicalGoal": "Mit jednak eine gegensätzliche Präferenz ausdrücken und die Wohnungswahl an höhere Kosten anpassen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Myślisz czasem o przeprowadzce na przedmieścia?",
+          "baseText": {
+            "de": "Denkst du manchmal über einen Umzug an den Stadtrand nach?",
+            "en": "Do you ever think about moving to the suburbs?"
+          }
+        },
+        {
+          "targetText": "Na przedmieściach jest spokojnie, jednak wolę centrum, bo dojazd jest krótszy.",
+          "baseText": {
+            "de": "Am Stadtrand ist es ruhig, trotzdem bevorzuge ich das Zentrum, weil der Arbeitsweg kürzer ist.",
+            "en": "It is quiet in the suburbs, but I prefer the center because the commute is shorter."
+          }
+        },
+        {
+          "targetText": "Czynsze w centrum rosną. Tanie zostały tylko małe pokoje.",
+          "baseText": {
+            "de": "Die Mieten im Zentrum steigen. Günstig sind nur noch kleine Zimmer.",
+            "en": "Rents in the center are rising. Only small rooms are still cheap."
+          }
+        },
+        {
+          "targetText": "W takim razie wybiorę mniejszy pokój, ale bliżej pracy.",
+          "baseText": {
+            "de": "Dann nehme ich ein kleineres Zimmer, aber näher an der Arbeit.",
+            "en": "In that case I will choose a smaller room, but closer to work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Trotzdem eine andere Wahl",
+        "rule": {
+          "de": "Jednak setzt deiner ersten Aussage eine andere Gewichtung entgegen; krótszy vergleicht hier die Länge des Arbeitswegs.",
+          "en": "Jednak counters your first statement with a different priority; krótszy compares commute length here."
+        },
+        "examples": [
+          {
+            "targetText": "Na przedmieściach jest spokojnie, jednak wolę centrum, bo dojazd jest krótszy.",
+            "baseText": {
+              "de": "Am Stadtrand ist es ruhig, trotzdem bevorzuge ich das Zentrum, weil der Arbeitsweg kürzer ist.",
+              "en": "It is quiet in the suburbs, but I prefer the center because the commute is shorter."
+            },
+            "highlight": "jednak wolę centrum"
+          },
+          {
+            "targetText": "Ten pokój jest mały, jednak ma duże okno.",
+            "baseText": {
+              "de": "Das Zimmer ist klein, hat aber ein großes Fenster.",
+              "en": "The room is small, but it has a large window."
+            },
+            "highlight": "jednak ma"
+          }
+        ]
+      },
+      "cloze": [
+        "W takim razie wybiorę ",
+        {
+          "kind": "form",
+          "answer": "mniejszy",
+          "cue": "stopień wyższy",
+          "choices": [
+            "mniejszy",
+            "mniejsza",
+            "mniejsze",
+            "mniejsi"
+          ]
+        },
+        " pokój, ale ",
+        {
+          "kind": "form",
+          "answer": "bliżej",
+          "cue": "stopień wyższy",
+          "choices": [
+            "bliżej",
+            "bliższa",
+            "bliższe",
+            "bliżsi"
+          ]
+        },
+        " pracy."
+      ],
+      "chunks": [
+        {
+          "targetText": "Na przedmieściach",
+          "baseText": {
+            "de": "Am Stadtrand",
+            "en": "In the suburbs"
+          }
+        },
+        {
+          "targetText": "jest spokojnie,",
+          "baseText": {
+            "de": "ist es ruhig,",
+            "en": "it is quiet,"
+          }
+        },
+        {
+          "targetText": "jednak wolę centrum,",
+          "baseText": {
+            "de": "trotzdem bevorzuge ich das Zentrum,",
+            "en": "but I prefer the center,"
+          }
+        },
+        {
+          "targetText": "bo dojazd jest krótszy.",
+          "baseText": {
+            "de": "weil der Arbeitsweg kürzer ist.",
+            "en": "because the commute is shorter."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "przedmieściach",
+          "baseText": {
+            "de": "am Stadtrand (nach na)",
+            "en": "suburbs (after na)"
+          }
+        },
+        {
+          "targetText": "spokojnie",
+          "baseText": {
+            "de": "ruhig",
+            "en": "quiet"
+          }
+        },
+        {
+          "targetText": "jednak",
+          "baseText": {
+            "de": "trotzdem, jedoch",
+            "en": "however, still"
+          }
+        },
+        {
+          "targetText": "wolę",
+          "baseText": {
+            "de": "ich bevorzuge",
+            "en": "I prefer"
+          }
+        },
+        {
+          "targetText": "dojazd",
+          "baseText": {
+            "de": "der Arbeitsweg, die Anfahrt",
+            "en": "commute, journey there"
+          }
+        },
+        {
+          "targetText": "krótszy",
+          "baseText": {
+            "de": "kürzer",
+            "en": "shorter"
+          }
+        },
+        {
+          "targetText": "mniejszy",
+          "baseText": {
+            "de": "kleiner",
+            "en": "smaller"
+          }
+        },
+        {
+          "targetText": "bliżej",
+          "baseText": {
+            "de": "näher",
+            "en": "closer"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Na przedmieściach jest spokojnie, jednak wolę centrum, bo ",
+        "answer": "dojazd",
+        "after": " jest krótszy.",
+        "fallbackChoices": [
+          "dojazd",
+          "koszt",
+          "czynsz",
+          "komfort"
+        ]
+      },
+      "speakRequired": [
+        "jednak",
+        "centrum",
+        "krótszy"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund zeigt dir Wohnungen auf einer Stadtkarte: „Myślisz czasem o przeprowadzce na przedmieścia?”",
+        "en": "Your friend shows you flats on a city map: „Myślisz czasem o przeprowadzce na przedmieścia?”"
+      },
+      "trophyWord": {
+        "word": "jednak",
+        "meaning": {
+          "de": "trotzdem, jedoch",
+          "en": "however, still"
+        },
+        "example": "Autobus jest tani, jednak wolę pociąg.",
+        "whyThisWord": {
+          "de": "Jednak verschiebt die Gewichtung von einem anerkannten Vorteil zu der Eigenschaft, die deine Entscheidung bestimmt.",
+          "en": "Jednak shifts the focus from an acknowledged benefit to the feature that decides your choice."
+        }
+      },
+      "distractors": [
+        "jednak wolę przedmieścia,",
+        "bo czynsz jest niższy."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Stadtkarte zeigt Wohnungen im Zentrum und am Stadtrand.",
+        "en": "A city map shows flats in the center and suburbs."
+      },
+      "songMood": "a practical housing choice between calm and convenience",
+      "visualNotes": "Map and two housing areas; no rising rent figure revealed before the third turn."
+    },
+    {
+      "slug": "natomiast-salatki-w-bistro",
+      "title": {
+        "de": "Zwei Orte fürs Mittagessen",
+        "en": "Two lunch places"
+      },
+      "situation": {
+        "de": "Ein befreundeter Kollege überlegt mit dir, wo ihr zu Mittag essen könnt.",
+        "en": "A colleague who is also a friend discusses where you can have lunch."
+      },
+      "pedagogicalGoal": "Mit natomiast zwei Angebote gegenüberstellen und auf eine veränderte Öffnungszeit reagieren.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Co oferuje bar, a co to nowe bistro?",
+          "baseText": {
+            "de": "Was gibt es in der Bar und was in dem neuen Bistro?",
+            "en": "What does the lunch bar offer, and what about the new bistro?"
+          }
+        },
+        {
+          "targetText": "Bar ma domowe zupy, natomiast bistro oferuje świeże sałatki bez mięsa.",
+          "baseText": {
+            "de": "Die Bar hat hausgemachte Suppen, das Bistro dagegen bietet frische Salate ohne Fleisch.",
+            "en": "The lunch bar has homemade soups, while the bistro offers fresh salads without meat."
+          }
+        },
+        {
+          "targetText": "Bistro zamyka dziś o pierwszej. A zupa w barze kosztuje mniej.",
+          "baseText": {
+            "de": "Das Bistro schließt heute um eins. Und die Suppe in der Bar kostet weniger.",
+            "en": "The bistro closes at one today. And the soup at the lunch bar costs less."
+          }
+        },
+        {
+          "targetText": "Jednak wybiorę bar, bo jego zupa jest tańsza.",
+          "baseText": {
+            "de": "Ich wähle doch die Bar, weil die Suppe dort günstiger ist.",
+            "en": "I will choose the lunch bar after all, because its soup is cheaper."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Zwei Angebote gegenüberstellen",
+        "rule": {
+          "de": "Natomiast stellt ein zweites Angebot dem ersten gegenüber; beide Seiten behalten ihre eigenen Eigenschaften.",
+          "en": "Natomiast contrasts a second offer with the first; each side keeps its own features."
+        },
+        "examples": [
+          {
+            "targetText": "Bar ma domowe zupy, natomiast bistro oferuje świeże sałatki bez mięsa.",
+            "baseText": {
+              "de": "Die Bar hat hausgemachte Suppen, das Bistro dagegen bietet frische Salate ohne Fleisch.",
+              "en": "The lunch bar has homemade soups, while the bistro offers fresh salads without meat."
+            },
+            "highlight": "natomiast bistro"
+          },
+          {
+            "targetText": "Ja wolę zupę, natomiast mój kolega wybiera sałatkę.",
+            "baseText": {
+              "de": "Ich bevorzuge Suppe, mein Kollege dagegen nimmt Salat.",
+              "en": "I prefer soup, whereas my colleague chooses a salad."
+            },
+            "highlight": "natomiast mój kolega"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Jednak",
+          "choices": [
+            "Jednak",
+            "Żeby",
+            "Dopóki",
+            "Zanim"
+          ]
+        },
+        " wybiorę bar, bo jego zupa jest ",
+        {
+          "kind": "form",
+          "answer": "tańsza",
+          "cue": "stopień wyższy",
+          "choices": [
+            "tańsza",
+            "tańszy",
+            "tańsze",
+            "tańsi"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Bar ma domowe zupy,",
+          "baseText": {
+            "de": "Die Bar hat hausgemachte Suppen,",
+            "en": "The lunch bar has homemade soups,"
+          }
+        },
+        {
+          "targetText": "natomiast bistro",
+          "baseText": {
+            "de": "das Bistro dagegen",
+            "en": "while the bistro"
+          }
+        },
+        {
+          "targetText": "oferuje świeże sałatki",
+          "baseText": {
+            "de": "bietet frische Salate",
+            "en": "offers fresh salads"
+          }
+        },
+        {
+          "targetText": "bez mięsa.",
+          "baseText": {
+            "de": "ohne Fleisch.",
+            "en": "without meat."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "domowe",
+          "baseText": {
+            "de": "hausgemacht",
+            "en": "homemade"
+          }
+        },
+        {
+          "targetText": "zupy",
+          "baseText": {
+            "de": "die Suppen",
+            "en": "soups"
+          }
+        },
+        {
+          "targetText": "natomiast",
+          "baseText": {
+            "de": "dagegen, hingegen",
+            "en": "whereas, while"
+          }
+        },
+        {
+          "targetText": "oferuje",
+          "baseText": {
+            "de": "bietet an",
+            "en": "offers"
+          }
+        },
+        {
+          "targetText": "sałatki",
+          "baseText": {
+            "de": "die Salate",
+            "en": "salads"
+          }
+        },
+        {
+          "targetText": "bez mięsa",
+          "baseText": {
+            "de": "ohne Fleisch",
+            "en": "without meat"
+          }
+        },
+        {
+          "targetText": "wybiorę",
+          "baseText": {
+            "de": "ich werde wählen",
+            "en": "I will choose"
+          }
+        },
+        {
+          "targetText": "tańsza",
+          "baseText": {
+            "de": "günstiger (feminin)",
+            "en": "cheaper (feminine)"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Bar ma domowe zupy, ",
+        "answer": "natomiast",
+        "after": " bistro oferuje świeże sałatki bez mięsa.",
+        "fallbackChoices": [
+          "natomiast",
+          "podczas",
+          "mimo",
+          "wbrew"
+        ]
+      },
+      "speakRequired": [
+        "domowe",
+        "natomiast",
+        "sałatki"
+      ],
+      "sceneCaption": {
+        "de": "Dein Kollege zeigt auf zwei Speisekarten: „Co oferuje bar, a co to nowe bistro?”",
+        "en": "Your colleague points to two menus: „Co oferuje bar, a co to nowe bistro?”"
+      },
+      "trophyWord": {
+        "word": "natomiast",
+        "meaning": {
+          "de": "dagegen, hingegen",
+          "en": "whereas, while"
+        },
+        "example": "Ten sklep sprzedaje pieczywo, natomiast tamten ma świeże warzywa.",
+        "whyThisWord": {
+          "de": "Natomiast ordnet den Vergleich in zwei klar getrennte Seiten, ohne eine davon pauschal abzuwerten.",
+          "en": "Natomiast organizes a comparison into two clear sides without dismissing either one."
+        }
+      },
+      "distractors": [
+        "natomiast bar",
+        "oferuje gorące dania"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Speisekarten liegen auf einem Bürotisch.",
+        "en": "Two menus lie on an office desk."
+      },
+      "songMood": "a quick lunch comparison that changes with the clock",
+      "visualNotes": "Lunch menus without today's early closing notice."
+    },
+    {
+      "slug": "przynajmniej-silownia-otwarta",
+      "title": {
+        "de": "Immerhin lange geöffnet",
+        "en": "At least it stays open late"
+      },
+      "situation": {
+        "de": "Ein Freund beschwert sich über den Andrang in eurem gemeinsamen Fitnessstudio.",
+        "en": "A friend complains about how crowded your gym is."
+      },
+      "pedagogicalGoal": "Mit przynajmniej einen verbleibenden Vorteil nennen und einen konkreten Kompromiss anbieten.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Na siłowni znów tłok. Co w niej widzisz?",
+          "baseText": {
+            "de": "Im Fitnessstudio ist es schon wieder voll. Was findest du daran?",
+            "en": "The gym is crowded again. What do you see in it?"
+          }
+        },
+        {
+          "targetText": "Jest tłoczno, ale przynajmniej siłownia jest otwarta do późnego wieczora.",
+          "baseText": {
+            "de": "Es ist voll, aber immerhin ist das Fitnessstudio bis spätabends geöffnet.",
+            "en": "It is crowded, but at least the gym is open until late in the evening."
+          }
+        },
+        {
+          "targetText": "To mi nie wystarcza. Rezygnuję z karnetu.",
+          "baseText": {
+            "de": "Das reicht mir nicht. Ich kündige mein Abo.",
+            "en": "That is not enough for me. I am cancelling my membership."
+          }
+        },
+        {
+          "targetText": "Jednak wieczorem jest luźniej, więc zmienię porę treningu.",
+          "baseText": {
+            "de": "Abends ist es aber leerer, also ändere ich meine Trainingszeit.",
+            "en": "It is less crowded in the evening, though, so I will change my workout time."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Wenigstens ein Vorteil",
+        "rule": {
+          "de": "Przynajmniej hebt nach einem Einwand den Vorteil hervor, der trotzdem bestehen bleibt.",
+          "en": "Przynajmniej highlights the benefit that remains despite an objection."
+        },
+        "examples": [
+          {
+            "targetText": "Jest tłoczno, ale przynajmniej siłownia jest otwarta do późnego wieczora.",
+            "baseText": {
+              "de": "Es ist voll, aber immerhin ist das Fitnessstudio bis spätabends geöffnet.",
+              "en": "It is crowded, but at least the gym is open until late in the evening."
+            },
+            "highlight": "ale przynajmniej"
+          },
+          {
+            "targetText": "Sala jest mała, ale przynajmniej ma duże okna.",
+            "baseText": {
+              "de": "Der Raum ist klein, hat aber wenigstens große Fenster.",
+              "en": "The room is small, but at least it has large windows."
+            },
+            "highlight": "ale przynajmniej"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Jednak",
+          "choices": [
+            "Jednak",
+            "Żeby",
+            "Dopóki",
+            "Zanim"
+          ]
+        },
+        " wieczorem jest ",
+        {
+          "kind": "form",
+          "answer": "luźniej",
+          "cue": "stopień wyższy",
+          "choices": [
+            "luźniej",
+            "częściej",
+            "dłużej",
+            "niżej"
+          ]
+        },
+        ", więc zmienię porę treningu."
+      ],
+      "chunks": [
+        {
+          "targetText": "Jest tłoczno,",
+          "baseText": {
+            "de": "Es ist voll,",
+            "en": "It is crowded,"
+          }
+        },
+        {
+          "targetText": "ale przynajmniej",
+          "baseText": {
+            "de": "aber immerhin",
+            "en": "but at least"
+          }
+        },
+        {
+          "targetText": "siłownia jest otwarta",
+          "baseText": {
+            "de": "ist das Fitnessstudio geöffnet",
+            "en": "the gym is open"
+          }
+        },
+        {
+          "targetText": "do późnego wieczora.",
+          "baseText": {
+            "de": "bis spätabends.",
+            "en": "until late in the evening."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tłoczno",
+          "baseText": {
+            "de": "voll, überfüllt",
+            "en": "crowded"
+          }
+        },
+        {
+          "targetText": "przynajmniej",
+          "baseText": {
+            "de": "wenigstens, immerhin",
+            "en": "at least"
+          }
+        },
+        {
+          "targetText": "siłownia",
+          "baseText": {
+            "de": "das Fitnessstudio",
+            "en": "gym"
+          }
+        },
+        {
+          "targetText": "otwarta",
+          "baseText": {
+            "de": "geöffnet (feminin)",
+            "en": "open (feminine)"
+          }
+        },
+        {
+          "targetText": "wieczora",
+          "baseText": {
+            "de": "des Abends (nach do)",
+            "en": "evening (after do)"
+          }
+        },
+        {
+          "targetText": "luźniej",
+          "baseText": {
+            "de": "weniger voll",
+            "en": "less crowded"
+          }
+        },
+        {
+          "targetText": "porę treningu",
+          "baseText": {
+            "de": "die Trainingszeit",
+            "en": "workout time"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Jest tłoczno, ale przynajmniej ",
+        "answer": "siłownia",
+        "after": " jest otwarta do późnego wieczora.",
+        "fallbackChoices": [
+          "siłownia",
+          "lodówka",
+          "walizka",
+          "parasolka"
+        ]
+      },
+      "speakRequired": [
+        "tłoczno",
+        "przynajmniej",
+        "siłownia"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund zeigt auf den Eingang des Fitnessstudios: „Na siłowni znów tłok. Co w niej widzisz?”",
+        "en": "Your friend points at the gym entrance: „Na siłowni znów tłok. Co w niej widzisz?”"
+      },
+      "trophyWord": {
+        "word": "przynajmniej",
+        "meaning": {
+          "de": "wenigstens, immerhin",
+          "en": "at least"
+        },
+        "example": "Autobus jest pełny, ale przynajmniej jedzie bez przesiadek.",
+        "whyThisWord": {
+          "de": "Przynajmniej markiert einen begrenzten Vorteil, ohne das zuvor genannte Problem zu bestreiten.",
+          "en": "Przynajmniej marks a limited benefit without denying the problem just mentioned."
+        }
+      },
+      "distractors": [
+        "ale ta siłownia",
+        "tylko do południa."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sehen die vielen Sporttaschen am Eingang des Fitnessstudios.",
+        "en": "Two friends notice the many sports bags at the gym entrance."
+      },
+      "songMood": "finding a workable time in a crowded routine",
+      "visualNotes": "Gym entrance and busy lockers; no cancellation or quieter evening shown yet."
+    },
+    {
+      "slug": "warto-kurs-z-mala-grupa",
+      "title": {
+        "de": "Lohnt sich der Kurs?",
+        "en": "Is the course worth it?"
+      },
+      "situation": {
+        "de": "Ein befreundeter Kollege fragt, warum du einen Sprachkurs in einer kleinen Gruppe empfehlen würdest.",
+        "en": "A colleague who is also a friend asks why you would recommend a small-group language course."
+      },
+      "pedagogicalGoal": "Mit warto plus Infinitiv einen Nutzen nennen und ihn gegen einen höheren Preis abwägen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Czy ten kurs językowy ma sens?",
+          "baseText": {
+            "de": "Ist dieser Sprachkurs sinnvoll?",
+            "en": "Does this language course make sense?"
+          }
+        },
+        {
+          "targetText": "Warto wybrać ten kurs, bo mała grupa daje każdemu czas na rozmowę.",
+          "baseText": {
+            "de": "Es lohnt sich, diesen Kurs zu wählen, weil die kleine Gruppe jedem Zeit zum Sprechen gibt.",
+            "en": "It is worth choosing this course because the small group gives everyone time to speak."
+          }
+        },
+        {
+          "targetText": "Ale jest drogi: kosztuje dwa razy więcej niż zajęcia online.",
+          "baseText": {
+            "de": "Aber er ist teuer: Er kostet doppelt so viel wie der Onlineunterricht.",
+            "en": "But it is expensive: it costs twice as much as the online classes."
+          }
+        },
+        {
+          "targetText": "Owszem, kurs jest droższy, ale mała grupa to ważna zaleta.",
+          "baseText": {
+            "de": "Ja, der Kurs ist teurer, aber die kleine Gruppe ist ein wichtiger Vorteil.",
+            "en": "Yes, the course is more expensive, but the small group is an important advantage."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Es lohnt sich, etwas zu tun",
+        "rule": {
+          "de": "Nach warto folgt der Infinitiv; bo erklärt, welchen konkreten Nutzen die Handlung bringt.",
+          "en": "Warto is followed by an infinitive; bo explains the concrete benefit of the action."
+        },
+        "examples": [
+          {
+            "targetText": "Warto wybrać ten kurs, bo mała grupa daje każdemu czas na rozmowę.",
+            "baseText": {
+              "de": "Es lohnt sich, diesen Kurs zu wählen, weil die kleine Gruppe jedem Zeit zum Sprechen gibt.",
+              "en": "It is worth choosing this course because the small group gives everyone time to speak."
+            },
+            "highlight": "Warto wybrać"
+          },
+          {
+            "targetText": "Warto ćwiczyć codziennie, bo krótkie rozmowy dodają pewności.",
+            "baseText": {
+              "de": "Es lohnt sich, täglich zu üben, weil kurze Gespräche Sicherheit geben.",
+              "en": "It is worth practising every day because short conversations build confidence."
+            },
+            "highlight": "Warto ćwiczyć"
+          }
+        ]
+      },
+      "cloze": [
+        "Owszem, kurs jest ",
+        {
+          "kind": "form",
+          "answer": "droższy",
+          "cue": "stopień wyższy",
+          "choices": [
+            "droższy",
+            "droższa",
+            "droższe",
+            "drożsi"
+          ]
+        },
+        ", ale mała grupa to ",
+        {
+          "kind": "choice",
+          "answer": "ważna",
+          "choices": [
+            "ważna",
+            "zbędna",
+            "szkodliwa",
+            "uciążliwa"
+          ]
+        },
+        " zaleta."
+      ],
+      "chunks": [
+        {
+          "targetText": "Warto wybrać ten kurs,",
+          "baseText": {
+            "de": "Es lohnt sich, diesen Kurs zu wählen,",
+            "en": "It is worth choosing this course,"
+          }
+        },
+        {
+          "targetText": "bo mała grupa",
+          "baseText": {
+            "de": "weil die kleine Gruppe",
+            "en": "because the small group"
+          }
+        },
+        {
+          "targetText": "daje każdemu czas",
+          "baseText": {
+            "de": "jedem Zeit gibt",
+            "en": "gives everyone time"
+          }
+        },
+        {
+          "targetText": "na rozmowę.",
+          "baseText": {
+            "de": "zum Sprechen.",
+            "en": "to speak."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "warto",
+          "baseText": {
+            "de": "es lohnt sich",
+            "en": "it is worth it"
+          }
+        },
+        {
+          "targetText": "wybrać",
+          "baseText": {
+            "de": "wählen",
+            "en": "choose"
+          }
+        },
+        {
+          "targetText": "kurs",
+          "baseText": {
+            "de": "der Kurs",
+            "en": "course"
+          }
+        },
+        {
+          "targetText": "mała grupa",
+          "baseText": {
+            "de": "die kleine Gruppe",
+            "en": "small group"
+          }
+        },
+        {
+          "targetText": "każdemu",
+          "baseText": {
+            "de": "jedem",
+            "en": "to everyone"
+          }
+        },
+        {
+          "targetText": "rozmowę",
+          "baseText": {
+            "de": "das Gespräch (Akkusativ)",
+            "en": "conversation (accusative)"
+          }
+        },
+        {
+          "targetText": "droższy",
+          "baseText": {
+            "de": "teurer",
+            "en": "more expensive"
+          }
+        },
+        {
+          "targetText": "zaleta",
+          "baseText": {
+            "de": "der Vorteil",
+            "en": "advantage"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "Warto",
+        "after": " wybrać ten kurs, bo mała grupa daje każdemu czas na rozmowę.",
+        "fallbackChoices": [
+          "Warto",
+          "Zależy",
+          "Dotyczy",
+          "Pachnie"
+        ]
+      },
+      "speakRequired": [
+        "warto",
+        "kurs",
+        "grupa"
+      ],
+      "sceneCaption": {
+        "de": "Dein Kollege liest den Kursplan und fragt: „Czy ten kurs językowy ma sens?”",
+        "en": "Your colleague reads the course timetable and asks: „Czy ten kurs językowy ma sens?”"
+      },
+      "trophyWord": {
+        "word": "warto",
+        "meaning": {
+          "de": "es lohnt sich",
+          "en": "it is worth it"
+        },
+        "example": "Warto sprawdzić rozkład przed wyjściem z domu.",
+        "whyThisWord": {
+          "de": "Warto plus Infinitiv formuliert eine begründete Empfehlung, ohne einen Befehl oder eine persönliche Verpflichtung auszudrücken.",
+          "en": "Warto plus an infinitive makes a reasoned recommendation without giving an order or expressing a personal obligation."
+        }
+      },
+      "distractors": [
+        "bo duża sala",
+        "zabiera każdemu czas"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Kursplan zeigt wenige Plätze in einer Gesprächsgruppe.",
+        "en": "A course timetable shows a small conversation group."
+      },
+      "songMood": "weighing speaking time against a course fee",
+      "visualNotes": "Course timetable on a desk; price comparison remains hidden until the follow-up."
+    },
+    {
+      "slug": "szczerze-o-nowym-mieszkaniu",
+      "title": {
+        "de": "Eine ehrliche Einschätzung",
+        "en": "An honest assessment"
+      },
+      "situation": {
+        "de": "Ein Freund führt dich durch seine neue Wohnung und bittet dich um deine ehrliche Meinung.",
+        "en": "A friend shows you around his new flat and asks for your honest opinion."
+      },
+      "pedagogicalGoal": "Mit szczerze mówiąc offen bewerten und nach einer unveränderlichen Entscheidung einen hilfreichen Vorschlag machen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Powiedz szczerze, jak ci się podoba to mieszkanie?",
+          "baseText": {
+            "de": "Sag ehrlich, wie gefällt dir die Wohnung?",
+            "en": "Tell me honestly, how do you like this flat?"
+          }
+        },
+        {
+          "targetText": "Szczerze mówiąc, mieszkanie jest jasne, ale sypialnia wydaje mi się zbyt głośna.",
+          "baseText": {
+            "de": "Ehrlich gesagt ist die Wohnung hell, aber das Schlafzimmer kommt mir zu laut vor.",
+            "en": "Honestly, the flat is bright, but the bedroom seems too noisy to me."
+          }
+        },
+        {
+          "targetText": "Umowa już podpisana, więc odwrotu nie ma. To hałas ulicy.",
+          "baseText": {
+            "de": "Der Vertrag ist schon unterschrieben, also gibt es kein Zurück. Das ist der Straßenlärm.",
+            "en": "The lease is already signed, so there is no going back. That is the street noise."
+          }
+        },
+        {
+          "targetText": "Jednak grube zasłony są przydatne, bo trochę tłumią hałas.",
+          "baseText": {
+            "de": "Dicke Vorhänge sind aber hilfreich, weil sie den Lärm etwas dämpfen.",
+            "en": "Thick curtains are useful, though, because they reduce the noise a little."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Offen, aber nicht verletzend",
+        "rule": {
+          "de": "Szczerze mówiąc rahmt eine offene Einschätzung; ale kann einen konkreten Einwand an eine positive Eigenschaft anschließen.",
+          "en": "Szczerze mówiąc frames an honest judgment; ale can attach a specific reservation to a positive feature."
+        },
+        "examples": [
+          {
+            "targetText": "Szczerze mówiąc, mieszkanie jest jasne, ale sypialnia wydaje mi się zbyt głośna.",
+            "baseText": {
+              "de": "Ehrlich gesagt ist die Wohnung hell, aber das Schlafzimmer kommt mir zu laut vor.",
+              "en": "Honestly, the flat is bright, but the bedroom seems too noisy to me."
+            },
+            "highlight": "Szczerze mówiąc"
+          },
+          {
+            "targetText": "Szczerze mówiąc, podoba mi się kuchnia, ale brakuje tu stołu.",
+            "baseText": {
+              "de": "Ehrlich gesagt gefällt mir die Küche, aber hier fehlt ein Tisch.",
+              "en": "Honestly, I like the kitchen, but there is no table here."
+            },
+            "highlight": "Szczerze mówiąc"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Jednak",
+          "choices": [
+            "Jednak",
+            "Żeby",
+            "Dopóki",
+            "Zanim"
+          ]
+        },
+        " grube zasłony są ",
+        {
+          "kind": "choice",
+          "answer": "przydatne",
+          "choices": [
+            "przydatne",
+            "bezużyteczne",
+            "zbędne",
+            "niepotrzebne"
+          ]
+        },
+        ", bo trochę tłumią hałas."
+      ],
+      "chunks": [
+        {
+          "targetText": "Szczerze mówiąc,",
+          "baseText": {
+            "de": "Ehrlich gesagt,",
+            "en": "Honestly,"
+          }
+        },
+        {
+          "targetText": "mieszkanie jest jasne,",
+          "baseText": {
+            "de": "ist die Wohnung hell,",
+            "en": "the flat is bright,"
+          }
+        },
+        {
+          "targetText": "ale sypialnia",
+          "baseText": {
+            "de": "aber das Schlafzimmer",
+            "en": "but the bedroom"
+          }
+        },
+        {
+          "targetText": "wydaje mi się",
+          "baseText": {
+            "de": "kommt mir vor",
+            "en": "seems to me"
+          }
+        },
+        {
+          "targetText": "zbyt głośna.",
+          "baseText": {
+            "de": "zu laut.",
+            "en": "too noisy."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "szczerze",
+          "baseText": {
+            "de": "ehrlich",
+            "en": "honestly"
+          }
+        },
+        {
+          "targetText": "jasne",
+          "baseText": {
+            "de": "hell (hier: mieszkanie)",
+            "en": "bright (here: mieszkanie)"
+          }
+        },
+        {
+          "targetText": "sypialnia",
+          "baseText": {
+            "de": "das Schlafzimmer",
+            "en": "bedroom"
+          }
+        },
+        {
+          "targetText": "wydaje mi się",
+          "baseText": {
+            "de": "es kommt mir so vor",
+            "en": "it seems to me"
+          }
+        },
+        {
+          "targetText": "zbyt",
+          "baseText": {
+            "de": "zu, übermäßig",
+            "en": "too, excessively"
+          }
+        },
+        {
+          "targetText": "zasłony",
+          "baseText": {
+            "de": "die Vorhänge",
+            "en": "curtains"
+          }
+        },
+        {
+          "targetText": "tłumią",
+          "baseText": {
+            "de": "dämpfen",
+            "en": "muffle"
+          }
+        },
+        {
+          "targetText": "hałas",
+          "baseText": {
+            "de": "der Lärm",
+            "en": "noise"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "Szczerze",
+        "after": " mówiąc, mieszkanie jest jasne, ale sypialnia wydaje mi się zbyt głośna.",
+        "fallbackChoices": [
+          "Szczerze",
+          "Podczas",
+          "Mimo",
+          "Wbrew"
+        ]
+      },
+      "speakRequired": [
+        "szczerze",
+        "mieszkanie",
+        "sypialnia"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund bleibt im hellen Wohnzimmer stehen: „Powiedz szczerze, jak ci się podoba to mieszkanie?”",
+        "en": "Your friend pauses in the bright living room: „Powiedz szczerze, jak ci się podoba to mieszkanie?”"
+      },
+      "trophyWord": {
+        "word": "szczerze",
+        "meaning": {
+          "de": "ehrlich",
+          "en": "honestly"
+        },
+        "example": "Szczerze mówiąc, wolę spokojny wieczór w domu.",
+        "whyThisWord": {
+          "de": "Szczerze in der festen Wendung szczerze mówiąc kündigt eine persönliche, offene Bewertung an.",
+          "en": "Szczerze in the fixed phrase szczerze mówiąc introduces a personal, candid judgment."
+        }
+      },
+      "distractors": [
+        "mieszkanie jest ciemne,",
+        "całkiem spokojna."
+      ],
+      "placeholderCaption": {
+        "de": "Sonnenlicht fällt durch die Fenster eines neuen Wohnzimmers.",
+        "en": "Sunlight enters the windows of a new living room."
+      },
+      "songMood": "honesty followed by a practical kindness",
+      "visualNotes": "Bright living room during a viewing; no signed lease or curtains shown yet."
+    },
+    {
+      "slug": "owszem-zdalnie-ale-brakuje-rozmow",
+      "title": {
+        "de": "Ja, aber nicht ganz",
+        "en": "Yes, but only partly"
+      },
+      "situation": {
+        "de": "Ein befreundeter Kollege fragt, wie dir die Arbeit von zu Hause gefällt.",
+        "en": "A colleague who is also a friend asks how working from home suits you."
+      },
+      "pedagogicalGoal": "Mit owszem, ale eingeschränkt zustimmen und anschließend eine konkrete Alternative zu fünf Bürotagen nennen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Dobrze ci się pracuje z domu?",
+          "baseText": {
+            "de": "Arbeitest du gut von zu Hause aus?",
+            "en": "Does working from home suit you?"
+          }
+        },
+        {
+          "targetText": "Owszem, praca zdalna mi odpowiada, ale brakuje mi rozmów przy kawie.",
+          "baseText": {
+            "de": "Ja, die Arbeit von zu Hause liegt mir, aber mir fehlen die Gespräche beim Kaffee.",
+            "en": "Yes, remote work suits me, but I miss the conversations over coffee."
+          }
+        },
+        {
+          "targetText": "To może wrócimy do biura na pięć dni w tygodniu?",
+          "baseText": {
+            "de": "Dann kommen wir vielleicht wieder fünf Tage pro Woche ins Büro?",
+            "en": "Then perhaps we could return to the office five days a week?"
+          }
+        },
+        {
+          "targetText": "Dwa dni są lepsze, bo dojazdy są wtedy rzadsze.",
+          "baseText": {
+            "de": "Zwei Tage sind besser, weil man dann seltener pendeln muss.",
+            "en": "Two days are better because the commutes are then less frequent."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Zustimmen und einschränken",
+        "rule": {
+          "de": "Owszem bestätigt einen Punkt; ale schränkt die Zustimmung anschließend gezielt ein.",
+          "en": "Owszem confirms a point; ale then adds a specific limit to the agreement."
+        },
+        "examples": [
+          {
+            "targetText": "Owszem, praca zdalna mi odpowiada, ale brakuje mi rozmów przy kawie.",
+            "baseText": {
+              "de": "Ja, die Arbeit von zu Hause liegt mir, aber mir fehlen die Gespräche beim Kaffee.",
+              "en": "Yes, remote work suits me, but I miss the conversations over coffee."
+            },
+            "highlight": "Owszem, praca zdalna"
+          },
+          {
+            "targetText": "Owszem, biuro jest wygodne, ale dojazd zajmuje godzinę.",
+            "baseText": {
+              "de": "Ja, das Büro ist komfortabel, aber der Weg dauert eine Stunde.",
+              "en": "Yes, the office is comfortable, but the commute takes an hour."
+            },
+            "highlight": "Owszem, biuro"
+          }
+        ]
+      },
+      "cloze": [
+        "Dwa dni są ",
+        {
+          "kind": "form",
+          "answer": "lepsze",
+          "cue": "stopień wyższy",
+          "choices": [
+            "lepsze",
+            "lepszy",
+            "lepsza",
+            "lepsi"
+          ]
+        },
+        ", bo dojazdy są wtedy ",
+        {
+          "kind": "form",
+          "answer": "rzadsze",
+          "cue": "stopień wyższy",
+          "choices": [
+            "rzadsze",
+            "rzadszy",
+            "rzadsza",
+            "rzadsi"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Owszem, praca zdalna",
+          "baseText": {
+            "de": "Ja, die Arbeit von zu Hause",
+            "en": "Yes, remote work"
+          }
+        },
+        {
+          "targetText": "mi odpowiada,",
+          "baseText": {
+            "de": "liegt mir,",
+            "en": "suits me,"
+          }
+        },
+        {
+          "targetText": "ale brakuje mi",
+          "baseText": {
+            "de": "aber mir fehlen",
+            "en": "but I miss"
+          }
+        },
+        {
+          "targetText": "rozmów przy kawie.",
+          "baseText": {
+            "de": "die Gespräche beim Kaffee.",
+            "en": "the conversations over coffee."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "owszem",
+          "baseText": {
+            "de": "ja, gewiss (vor einer Einschränkung)",
+            "en": "yes, certainly (before a qualification)"
+          }
+        },
+        {
+          "targetText": "praca zdalna",
+          "baseText": {
+            "de": "die Arbeit von zu Hause",
+            "en": "remote work"
+          }
+        },
+        {
+          "targetText": "odpowiada",
+          "baseText": {
+            "de": "passt, liegt jemandem",
+            "en": "suits someone"
+          }
+        },
+        {
+          "targetText": "brakuje",
+          "baseText": {
+            "de": "es fehlt",
+            "en": "is missing"
+          }
+        },
+        {
+          "targetText": "rozmów",
+          "baseText": {
+            "de": "der Gespräche (Genitiv Plural)",
+            "en": "conversations (genitive plural)"
+          }
+        },
+        {
+          "targetText": "dojazdy",
+          "baseText": {
+            "de": "die Arbeitswege",
+            "en": "commutes"
+          }
+        },
+        {
+          "targetText": "rzadsze",
+          "baseText": {
+            "de": "seltener (Plural)",
+            "en": "less frequent (plural)"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Owszem, praca zdalna mi odpowiada, ale ",
+        "answer": "brakuje",
+        "after": " mi rozmów przy kawie.",
+        "fallbackChoices": [
+          "brakuje",
+          "smakuje",
+          "pasuje",
+          "kosztuje"
+        ]
+      },
+      "speakRequired": [
+        "owszem",
+        "praca",
+        "rozmów"
+      ],
+      "sceneCaption": {
+        "de": "Dein Kollege ruft dich in der Kaffeepause an: „Dobrze ci się pracuje z domu?”",
+        "en": "Your colleague calls during the coffee break: „Dobrze ci się pracuje z domu?”"
+      },
+      "trophyWord": {
+        "word": "owszem",
+        "meaning": {
+          "de": "ja, gewiss",
+          "en": "yes, certainly"
+        },
+        "example": "Owszem, mam wolny wieczór, ale potrzebuję odpoczynku.",
+        "whyThisWord": {
+          "de": "Owszem bestätigt ausdrücklich einen Teil des Vorschlags und lässt Raum für eine anschließende Einschränkung.",
+          "en": "Owszem explicitly confirms part of a proposal and leaves room for a qualification."
+        }
+      },
+      "distractors": [
+        "praca w biurze",
+        "rozmów przez telefon."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Laptop und eine Kaffeetasse stehen auf einem heimischen Schreibtisch.",
+        "en": "A laptop and a coffee cup sit on a desk at home."
+      },
+      "songMood": "keeping social contact without a daily commute",
+      "visualNotes": "Home desk and a friendly phone call; no proposed office schedule revealed."
+    },
+    {
+      "slug": "ostatecznie-wyjazd-nad-morze",
+      "title": {
+        "de": "Die Entscheidung steht",
+        "en": "A decision, finally"
+      },
+      "situation": {
+        "de": "Ein Freund fragt nach deiner Entscheidung für den gemeinsamen Kurzurlaub.",
+        "en": "A friend asks about your decision for your short holiday together."
+      },
+      "pedagogicalGoal": "Mit ostatecznie eine abgewogene Entscheidung abschließen und sie an eine Terminänderung anpassen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Podjąłeś już decyzję w sprawie naszego wyjazdu?",
+          "baseText": {
+            "de": "Hast du dich wegen unserer Reise schon entschieden?",
+            "en": "Have you made a decision about our trip yet?"
+          }
+        },
+        {
+          "targetText": "Ostatecznie wybieram wyjazd nad morze, bo potrzebuję ciszy po intensywnym tygodniu.",
+          "baseText": {
+            "de": "Letztlich entscheide ich mich für die Fahrt ans Meer, weil ich nach der anstrengenden Woche Ruhe brauche.",
+            "en": "Ultimately I am choosing a trip to the seaside because I need quiet after an intense week."
+          }
+        },
+        {
+          "targetText": "Wyjazd przesuwamy na przyszłą sobotę. Wtedy muszę pracować rano.",
+          "baseText": {
+            "de": "Wir verschieben die Reise auf nächsten Samstag. Da muss ich morgens arbeiten.",
+            "en": "We are moving the trip to next Saturday. I have to work that morning."
+          }
+        },
+        {
+          "targetText": "Jednak późniejszy pociąg jest dogodniejszy, więc pojedziemy po południu.",
+          "baseText": {
+            "de": "Ein späterer Zug ist dann aber günstiger gelegen, also fahren wir nachmittags.",
+            "en": "A later train is more convenient, though, so we will leave in the afternoon."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nach dem Abwägen entscheiden",
+        "rule": {
+          "de": "Ostatecznie signalisiert das Ergebnis des Abwägens; ein folgender Grund erklärt, was bei der Entscheidung den Ausschlag gab.",
+          "en": "Ostatecznie signals the outcome of weighing options; a following reason explains what decided the choice."
+        },
+        "examples": [
+          {
+            "targetText": "Ostatecznie wybieram wyjazd nad morze, bo potrzebuję ciszy po intensywnym tygodniu.",
+            "baseText": {
+              "de": "Letztlich entscheide ich mich für die Fahrt ans Meer, weil ich nach der anstrengenden Woche Ruhe brauche.",
+              "en": "Ultimately I am choosing a trip to the seaside because I need quiet after an intense week."
+            },
+            "highlight": "Ostatecznie wybieram"
+          },
+          {
+            "targetText": "Ostatecznie zostajemy w mieście, bo mamy tylko jeden wolny dzień.",
+            "baseText": {
+              "de": "Letztlich bleiben wir in der Stadt, weil wir nur einen freien Tag haben.",
+              "en": "Ultimately we are staying in town because we only have one day off."
+            },
+            "highlight": "Ostatecznie zostajemy"
+          }
+        ]
+      },
+      "cloze": [
+        "Jednak ",
+        {
+          "kind": "form",
+          "answer": "późniejszy",
+          "cue": "stopień wyższy",
+          "choices": [
+            "późniejszy",
+            "późniejsza",
+            "późniejsze",
+            "późniejsi"
+          ]
+        },
+        " pociąg jest ",
+        {
+          "kind": "form",
+          "answer": "dogodniejszy",
+          "cue": "stopień wyższy",
+          "choices": [
+            "dogodniejszy",
+            "dogodniejsza",
+            "dogodniejsze",
+            "dogodniejsi"
+          ]
+        },
+        ", więc pojedziemy po południu."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ostatecznie wybieram",
+          "baseText": {
+            "de": "Letztlich entscheide ich mich für",
+            "en": "Ultimately I am choosing"
+          }
+        },
+        {
+          "targetText": "wyjazd nad morze,",
+          "baseText": {
+            "de": "eine Reise ans Meer,",
+            "en": "a trip to the seaside,"
+          }
+        },
+        {
+          "targetText": "bo potrzebuję ciszy",
+          "baseText": {
+            "de": "weil ich Ruhe brauche",
+            "en": "because I need quiet"
+          }
+        },
+        {
+          "targetText": "po intensywnym tygodniu.",
+          "baseText": {
+            "de": "nach einer anstrengenden Woche.",
+            "en": "after an intense week."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ostatecznie",
+          "baseText": {
+            "de": "letztlich, am Ende",
+            "en": "ultimately, in the end"
+          }
+        },
+        {
+          "targetText": "wybieram",
+          "baseText": {
+            "de": "ich wähle",
+            "en": "I choose"
+          }
+        },
+        {
+          "targetText": "wyjazd",
+          "baseText": {
+            "de": "die Reise, die Fahrt",
+            "en": "trip"
+          }
+        },
+        {
+          "targetText": "morze",
+          "baseText": {
+            "de": "das Meer",
+            "en": "sea"
+          }
+        },
+        {
+          "targetText": "ciszy",
+          "baseText": {
+            "de": "Ruhe (nach potrzebować)",
+            "en": "quiet (after potrzebować)"
+          }
+        },
+        {
+          "targetText": "intensywnym",
+          "baseText": {
+            "de": "intensiv, anstrengend (hier nach po)",
+            "en": "intense (here after po)"
+          }
+        },
+        {
+          "targetText": "późniejszy",
+          "baseText": {
+            "de": "später",
+            "en": "later"
+          }
+        },
+        {
+          "targetText": "dogodniejszy",
+          "baseText": {
+            "de": "günstiger gelegen, passender",
+            "en": "more convenient"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ostatecznie wybieram wyjazd nad morze, bo ",
+        "answer": "potrzebuję",
+        "after": " ciszy po intensywnym tygodniu.",
+        "fallbackChoices": [
+          "potrzebuję",
+          "wybieram",
+          "oglądam",
+          "zamawiam"
+        ]
+      },
+      "speakRequired": [
+        "ostatecznie",
+        "wyjazd",
+        "ciszy"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund öffnet den Kalender und fragt: „Podjąłeś już decyzję w sprawie naszego wyjazdu?”",
+        "en": "Your friend opens the calendar and asks: „Podjąłeś już decyzję w sprawie naszego wyjazdu?”"
+      },
+      "trophyWord": {
+        "word": "ostatecznie",
+        "meaning": {
+          "de": "letztlich, am Ende",
+          "en": "ultimately, in the end"
+        },
+        "example": "Ostatecznie wybieramy spacer, bo pogoda się poprawiła.",
+        "whyThisWord": {
+          "de": "Ostatecznie führt vom Vergleich der Möglichkeiten zur Entscheidung, die nach dem Abwägen übrig bleibt.",
+          "en": "Ostatecznie moves from comparing options to the decision that remains after weighing them up."
+        }
+      },
+      "distractors": [
+        "wyjazd w góry,",
+        "bo szukam przygody"
+      ],
+      "placeholderCaption": {
+        "de": "Ein offener Kalender und eine Reisekarte liegen auf dem Tisch.",
+        "en": "An open calendar and a travel map lie on the table."
+      },
+      "songMood": "a settled holiday choice with one last adjustment",
+      "visualNotes": "Calendar without a highlighted new date; no train time visible before the complication."
+    }
+  ]
+}

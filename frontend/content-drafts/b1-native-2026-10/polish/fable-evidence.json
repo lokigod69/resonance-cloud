@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b1-native-2026-10/polish/p1.json": "5eb85502de1b68bdd53d8b32d2204c088849dbb4492886d7c9bed776a7db49db",
+    "frontend/content-drafts/b1-native-2026-10/polish/p2.json": "efbb0bf74e7f501b1346d875aabd2b8e52c1bb6b159c6537a4881bc66d49386d"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b1-native-2026-10/polish/specification.json": "b84386cf9e2abb2af43b646233e8af7e145565e21c86e06ed4932c953bc68be9"
+  },
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "PL-B1-PUB-01",
+      "severity": "HIGH",
+      "category": "publication-integration",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": true,
+      "title": "Polish B1 schema, runtime loading and reviewed alternative acceptance are not integrated",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+          "line": 15
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+          "line": 23
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessons.ts",
+          "line": 175
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guided-runtime/polish.ts",
+          "line": 4
+        }
+      ],
+      "evidence": "The actual shared B1 schema rejects Polish/pl-PL on both exact reviewed files and rejects acceptedTargetAlternatives on all eight P1 learner turns. GuidedDialogueTurn has no such field. A source search found no acceptedTargetAlternatives/acceptedPhrases consumer in frontend/src or frontend/scripts. The actual Polish runtime export contains 100 A1 plus 100 A2 lessons and zero B1 lessons. The author scratch validator is self-review evidence, not an independently approved app gate or runtime path.",
+      "impact": "These sources cannot be published by the current shared shape, and accepting the authored opposite-gender strings has no proven typed, build or speech implementation. A structural scratch PASS does not establish that the learner can use them.",
+      "requiredAction": "Implement and independently review a true Polish/pl-PL B1 gate with only the specified learner-turn acceptedTargetAlternatives extension; preserve canonical text and all frozen A1/A2 data. Bind a current acceptance/integration artifact to the final sources, carry the eight complete manually authored alternatives into the intended surfaces without suffix generation, and verify the actual B1 renderer and unchanged 0.65 threshold/15-second scaffold before publication.",
+      "verification": "Exact final-source gate tests plus real rendered Polish B1 fixtures and canonical/opposite-gender typed and spoken checks. Do not reuse the pre-Fable source hashes or infer acceptance from the fuzzy canonical scorer."
+    },
+    {
+      "id": "PL-B1-PUB-02",
+      "severity": "MEDIUM",
+      "category": "build-answer-ambiguity",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": true,
+      "title": "P1 L6 offers a grammatical alternative chip order that the current build check rejects",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/polish-p1.json",
+          "line": 1199,
+          "jsonPointer": "/lessons/5/chunks"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/BuildPhraseStep.tsx",
+          "line": 69
+        }
+      ],
+      "evidence": {
+        "canonical": "Gotowałam zupę, a tymczasem mój współlokator piekł chleb na kolację.",
+        "chips": [
+          "Gotowałam zupę,",
+          "a tymczasem",
+          "mój współlokator",
+          "piekł chleb",
+          "na kolację."
+        ],
+        "alternativeZeroBasedOrder": [
+          0,
+          1,
+          3,
+          2,
+          4
+        ],
+        "alternative": "Gotowałam zupę, a tymczasem piekł chleb mój współlokator na kolację.",
+        "linguisticAssessment": "The postposed subject gives marked information focus but remains grammatical Polish with the same two simultaneous activities, the same speakers and the same dinner purpose. No displayed spelling, punctuation or capitalisation is changed.",
+        "currentCheck": "nextPhrase === lesson.build.targetText"
+      },
+      "impact": "The learner can use every correct displayed chip to form a same-meaning sentence and still be marked wrong by exact string equality.",
+      "requiredAction": "Arbitrate and regroup the source chips, or explicitly implement reviewed build-order acceptance. A concrete four-chunk candidate is [Gotowałam zupę,] [a tymczasem mój współlokator] [piekł chleb] [na kolację.]; its longest chunk is four words and its join leaves canonical text unchanged. Review the corresponding bilingual chunk glosses. A speech-only alternative does not fix build scoring.",
+      "verification": "Exercise the current order and the reported alternative against the actual final build surface, or confirm the regrouped chips no longer offer that permutation. Recheck chunk counts/joins and any chunk-audio inventory after regrouping."
+    },
+    {
+      "id": "PL-B1-PUB-03",
+      "severity": "MEDIUM",
+      "category": "opposite-gender-dialogue-context",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": true,
+      "title": "Interlocutor turns still select the canonical learner gender outside the alternative mechanism",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/polish-p1.json",
+          "line": 246,
+          "lesson": 2
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/polish-p1.json",
+          "line": 263,
+          "lesson": 2
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/polish-p1.json",
+          "line": 476,
+          "lesson": 3
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/polish-p1.json",
+          "line": 914,
+          "lesson": 5
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/polish-p1.json",
+          "line": 1564,
+          "lesson": 8
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/polish-p2.json",
+          "line": 2014,
+          "lesson": 10
+        }
+      ],
+      "evidence": {
+        "femaleP1": [
+          "P1 L2 opener Co robiłaś po wyjściu z muzeum?",
+          "P1 L2 follow-up I kogo tam spotkałaś? Kogoś z pracy?",
+          "P1 L3 follow-up Ale pech! Jesteś cała mokra?",
+          "P1 L5 follow-up Zdążyłaś na pociąg? Drzwi były jeszcze otwarte?",
+          "P1 L8 opener Jak poznałaś nowego sąsiada?"
+        ],
+        "maleP2": [
+          "P2 L10 opener Podjąłeś już decyzję w sprawie naszego wyjazdu?"
+        ],
+        "alternativeScope": "The eight acceptedTargetAlternatives occur only on P1 dialogue[1]. Neither source metadata nor current renderer supplies paired interlocutor variants."
+      },
+      "impact": "The canonical odd-female/even-male recording is coherent. However, presenting a male learner alternative in P1 while the interlocutor addresses a woman leaves the full conversation inconsistent; the same concern applies to exposing gender-free P2 to an unrestricted learner under its male-addressed opener.",
+      "requiredAction": "Before claiming gender-flexible lesson acceptance, explicitly resolve the interlocutor context: author gender-neutral interlocutor lines with all caption/base/audio dependencies reviewed, or provide a reviewed complete episode variant/clear role-play policy that explains the canonical role and alternative practice. Do not suffix-generate unreviewed interlocutor lines. This is not a request to change the current canonical TTS under this review.",
+      "verification": "Render and perform the whole four-turn episode in each supported alternative mode, including captions, interlocutor audio and learner scoring. Preserve the female P1/male P2 canonical voice plan unless separately amended."
+    },
+    {
+      "id": "PL-B1-PUB-04",
+      "severity": "LOW",
+      "category": "base-translation-precision",
+      "status": "OPEN",
+      "blocksLocalTtsContent": false,
+      "blocksPublication": false,
+      "title": "P2 L10 German gloss uses location wording for a more convenient departure time",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/polish-p2.json",
+          "line": 2037,
+          "jsonPointer": "/lessons/9/dialogue/3/baseText/de"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/polish-p2.json",
+          "line": 2175,
+          "jsonPointer": "/lessons/9/terms/7"
+        }
+      ],
+      "evidence": {
+        "target": "Jednak późniejszy pociąg jest dogodniejszy, więc pojedziemy po południu.",
+        "de": "Ein späterer Zug ist dann aber günstiger gelegen, also fahren wir nachmittags.",
+        "term": "dogodniejszy → günstiger gelegen, passender"
+      },
+      "impact": "The target refers to a train whose timing fits better. Günstiger gelegen normally describes a location and is an awkward rendering here; the Polish sentence and English meaning are sound.",
+      "requiredAction": "Prefer, for example, Ein späterer Zug passt dann aber besser, also fahren wir nachmittags. Gloss dogodniejszy as passender / zeitlich günstiger in this context, or explicitly accept the current approximation.",
+      "verification": "Base-only review against the unchanged Polish closing. This correction requires no change to canonical Polish recording text."
+    }
+  ],
+  "sourceCanonicalization": {
+    "originalSpecificationSha256": "18994a3d5a635e8612b2999575281030371a20aa355fb7df4a24a2f34fb387ce",
+    "stagedSpecificationSha256": "b84386cf9e2abb2af43b646233e8af7e145565e21c86e06ed4932c953bc68be9",
+    "transformation": "Specification CRLF to LF only, exact forward/reverse equality. Lesson bytes unchanged."
+  },
+  "scope": "Exact canonical spoken content for local TTS only; four complete publication findings retained. No native-human, listening or production approval.",
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 full twenty-lesson review and exact edit replay"
+  },
+  "exactReplayEdits": 4,
+  "rawProviderReviewSha256": "de9f67835969e466ced2163525cc0a8a871569b997550955b4045061d1d6ff83",
+  "rawReview": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "polish-p1.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All 10 episodes read field by field: four-turn stories, chunk joins, cloze/recall reconstruction, speakRequired tokens, trophy anchoring (dialogue[1] + example), 8 complete feminine→masculine alternatives (irregular poszedłem/wyszedłem correct, trophy + 3 tokens + recall answer unchanged in each), pattern second examples, staging per range (najpierw/potem/kiedy 1-3; podczas/zanim/tymczasem 4-6; wreszcie/akurat/okazało się/w sumie 7-10, w sumie never blanked), no digits, friend register throughout, captions quote opener verbatim without later-turn leakage. Form blanks all have visible fixed-gender subjects; aspect distractors excluded by cue; L8 windę blank is a case contrast excluded grammatically (accepted under 'excluded grammatically').",
+        "remainingConcerns": "Interlocutor turns address the learner with 2sg feminine forms (robiłaś, spotkałaś, cała mokra, Zdążyłaś, poznałaś): consistent with the odd-path female voice, but these lock learner gender outside the acceptedTargetAlternatives mechanism; revisit when alternatives become runtime-integrated. Lesson titles name the learner-reply theme (Plötzlich Regen, Das Paket ist da, Das Handy ist zurück); accepted as trophy-theme labels, not complication spoilers. L7 opener already names the sweater, so the inside-the-parcel follow-up rests on the lavender detail only."
+      },
+      {
+        "file": "polish-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All 10 episodes read: Shape A adaptation present in every lesson; no speaker-gendered learner forms (only L10 opener Podjąłeś genders the male learner, matching the even-path voice); chociaż staged 1-3, jednak/natomiast 4-6, przynajmniej first produced and trophied in L6 only, warto/owszem/szczerze/ostatecznie 7-10; comparative form blanks have the agreeing noun visible; connector blanks use non-synonym distractors (no mimo że/choć); counting dwa dni/pięć dni correct; no pan/pani, no ponieważ, no digits; captions clean.",
+        "remainingConcerns": "L4 cloze bliżej lists bliższy, which is grammatical in 'mniejszy pokój, ale bliższy pracy' (fixed below). Jednak opens dialogue[3] in L5, L6, L8 and L10; acceptable recycling but monotonous. L6 opener 'Co w niej widzisz?' is colloquial friend-register recognition only; accepted. L6 luźniej blank is cue-satisfied by all four comparatives and resolved by scene; acceptable."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "Author: P1L5 split into two sentences with full masculine alternative",
+        "decision": "accept",
+        "reason": "Both sentences, chunks, recall, pattern second example and alternative are consistent; zanim + perfective staged."
+      },
+      {
+        "finding": "Author: P1L3 parasol/deszcz aspect clarification",
+        "decision": "accept",
+        "reason": "Cues niedokonany/dokonany uniquely select chronił/zmoczył; subjects visible before each blank."
+      },
+      {
+        "finding": "Author: P1L4 cable guess made explicit in dialogue[2]",
+        "decision": "accept",
+        "reason": "Constrains the kabel choice blank; but the situation text spoils the interruption and outcome, fixed below."
+      },
+      {
+        "finding": "Author: P1L8 rozmowa zeszła na windę continuation",
+        "decision": "accept",
+        "reason": "Idiomatic; windę blank is uniquely accusative after na, distractors excluded grammatically."
+      },
+      {
+        "finding": "Author: okazało się in P1L9 and w sumie in P1L10",
+        "decision": "accept",
+        "reason": "Matches 7-10 staging; w sumie is neither trophy nor blanked."
+      },
+      {
+        "finding": "Author: P2L6 przynajmniej rule kept in validator, not pedagogicalGoal",
+        "decision": "accept",
+        "reason": "Przynajmniej appears in no P2 learner turn before L6; L6 trophy/production correct."
+      },
+      {
+        "finding": "Author: P2L10 opener aligned with male addressee",
+        "decision": "accept",
+        "reason": "Consistent with even-path male voice; no learner alternative needed since learner lines are gender-neutral."
+      },
+      {
+        "finding": "Author manualChoiceReview P2L4: 'the adverbial location before pracy selects bliżej'",
+        "decision": "reject",
+        "reason": "Adjective comparative bliższy + genitive (pokój bliższy pracy) is grammatical Polish, so two choices fit; distractor replaced by gender/number-excluded comparatives."
+      },
+      {
+        "finding": "Author openFlags (review-pending, runtime-hold, unmeasured thresholds, publication-hold)",
+        "decision": "accept",
+        "reason": "Content-only approval after edits; no production, runtime or threshold change is granted here; no native human review claimed."
+      },
+      {
+        "finding": "Fable own: P1L4 situation reveals complication and outcome",
+        "decision": "accept (own finding)",
+        "reason": "Situation is displayed in scene; rewritten to a neutral framing."
+      },
+      {
+        "finding": "Fable own: P1L1 pattern rule de phrasing 'zostawiłam ihr folgendes abgeschlossenes Ereignis' is unnatural German",
+        "decision": "accept (own finding)",
+        "reason": "Mechanical gloss fix."
+      },
+      {
+        "finding": "Fable own: P1L10 chunk gloss 'mir das Handy zurückgab.' uses subordinate word order for a main-clause chunk",
+        "decision": "accept (own finding)",
+        "reason": "Mechanical gloss fix."
+      }
+    ],
+    "edits": [
+      {
+        "file": "polish-p1.json",
+        "jsonPointer": "/lessons/3/situation",
+        "oldValue": {
+          "de": "Eine Freundin fragt nach dem gestrigen Konzert. Du erzählst von einer Unterbrechung und davon, dass die Musik weiterging.",
+          "en": "A friend asks about yesterday's concert. Tell her about an interruption and how the music continued."
+        },
+        "newValue": {
+          "de": "Eine Freundin fragt nach dem gestrigen Konzert und möchte wissen, wie der Abend verlaufen ist.",
+          "en": "A friend asks about yesterday's concert and wants to know how the evening went."
+        },
+        "reason": "Situation is shown in the scene and must not reveal the complication (lights out) or the learner's reply (band kept playing)."
+      },
+      {
+        "file": "polish-p1.json",
+        "jsonPointer": "/lessons/0/pattern/rule/de",
+        "oldValue": "Najpierw und potem ordnen die Geschichte; zwiedzałam beschreibt die Tätigkeit, zostawiłam ihr folgendes abgeschlossenes Ereignis.",
+        "newValue": "Najpierw und potem ordnen die Geschichte; zwiedzałam beschreibt die Tätigkeit, zostawiłam das darauf folgende abgeschlossene Ereignis.",
+        "reason": "Natural German; 'ihr folgendes' is ungrammatical in this position."
+      },
+      {
+        "file": "polish-p1.json",
+        "jsonPointer": "/lessons/9/chunks/3/baseText/de",
+        "oldValue": "mir das Handy zurückgab.",
+        "newValue": "gab mir das Handy zurück.",
+        "reason": "Chunk gloss should read as main-clause German matching the Polish chunk 'oddał mi telefon.'"
+      },
+      {
+        "file": "polish-p2.json",
+        "jsonPointer": "/lessons/3/cloze/3/choices",
+        "oldValue": [
+          "bliżej",
+          "bliższy",
+          "bliższa",
+          "bliższe"
+        ],
+        "newValue": [
+          "bliżej",
+          "bliższa",
+          "bliższe",
+          "bliżsi"
+        ],
+        "reason": "'mniejszy pokój, ale bliższy pracy' is grammatical, so bliższy was a second valid answer; bliższa/bliższe/bliżsi are real comparatives excluded by agreement with masculine singular pokój, leaving bliżej unique."
+      }
+    ],
+    "finalChecks": "After edits: chunks, cloze and recall reconstruction untouched (edits touch no targetText); trophy allocations and all 20 trophies preserved; every cloze still has exactly 4 distinct choices with the answer once; no speaker-gendered answers/tokens/trophies; no digits in targetText; registers locked (P1/P2 friend, no pan/pani, no ponieważ); captions quote openers verbatim and reveal no later turn; pattern highlights contiguous and one example per lesson equals a learner turn; acceptedTargetAlternatives remain authoring-only data. Source hashes will change for both files; refresh the author report evidence after applying. This is content approval only: no production, recording, runtime integration or threshold change is authorized, and no native human review is claimed."
+  }
+}

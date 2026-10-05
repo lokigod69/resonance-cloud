@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "kind": "polish-b1-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/polish/p1.json",
+      "sha256": "5eb85502de1b68bdd53d8b32d2204c088849dbb4492886d7c9bed776a7db49db",
+      "targetLanguage": "Polish",
+      "pathNumber": 1,
+      "reviewedVoiceId": "d4Z5Fvjohw3zxGpV8XUV",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/polish/specification.json",
+        "sha256": "b84386cf9e2abb2af43b646233e8af7e145565e21c86e06ed4932c953bc68be9"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/polish/p2.json",
+      "sha256": "efbb0bf74e7f501b1346d875aabd2b8e52c1bb6b159c6537a4881bc66d49386d",
+      "targetLanguage": "Polish",
+      "pathNumber": 2,
+      "reviewedVoiceId": "4JO8nSrlCNlFYx6PlAhC",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/polish/specification.json",
+        "sha256": "b84386cf9e2abb2af43b646233e8af7e145565e21c86e06ed4932c953bc68be9"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Polish": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/polish/fable-evidence.json",
+    "sha256": "e0a19dba143e2e42196ea8d63a1658afd336eaba86f720b97450af4ab85b71d1"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/polish/independent-evidence.json",
+    "sha256": "7df2315828b9e1b36d7a01ee1e4a438ddb2def7459329aea711721d919828d5e"
+  }
+}

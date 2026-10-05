@@ -1,0 +1,2214 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Polish",
+  "targetLanguageCode": "pl-PL",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": {
+    "de": "Erzählen, was passiert ist",
+    "en": "Telling what happened"
+  },
+  "subtitle": {
+    "de": "Vergangene Ereignisse verbinden und auf interessierte Nachfragen eingehen",
+    "en": "Connecting past events and answering interested follow-up questions"
+  },
+  "anchor": "Connected past narration: background versus events, sequencing, parallel action, coincidence and a concluding evaluation.",
+  "lessons": [
+    {
+      "slug": "najpierw-zamek-potem-hostel",
+      "title": {
+        "de": "Die erste Station",
+        "en": "The first stop"
+      },
+      "situation": {
+        "de": "Zurück in eurer Wohnung erzählst du deiner Mitbewohnerin von deinem Ausflug nach Krakau.",
+        "en": "Back at your flat, tell your flatmate about your trip to Kraków."
+      },
+      "pedagogicalGoal": "Mit najpierw und potem zwei Stationen einer Reise verbinden und anschließend ein Detail der Unterkunft erzählen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Jak minął wyjazd do Krakowa?",
+          "baseText": {
+            "de": "Wie war die Reise nach Krakau?",
+            "en": "How was your trip to Kraków?"
+          }
+        },
+        {
+          "targetText": "Najpierw zwiedzałam zamek, a potem zostawiłam plecak w małym hostelu.",
+          "baseText": {
+            "de": "Zuerst habe ich mir das Schloss angesehen und dann meinen Rucksack in einem kleinen Hostel gelassen.",
+            "en": "First I explored the castle, and then I left my backpack at a small hostel."
+          },
+          "acceptedTargetAlternatives": [
+            "Najpierw zwiedzałem zamek, a potem zostawiłem plecak w małym hostelu."
+          ]
+        },
+        {
+          "targetText": "A jak było w hostelu? Kto pokazał ci kuchnię?",
+          "baseText": {
+            "de": "Und wie war es im Hostel? Wer hat dir die Küche gezeigt?",
+            "en": "And what was the hostel like? Who showed you the kitchen?"
+          }
+        },
+        {
+          "targetText": "Tam recepcjonista otworzył kuchnię i podał mi klucz do pokoju.",
+          "baseText": {
+            "de": "Dort hat der Rezeptionist die Küche aufgeschlossen und mir den Zimmerschlüssel gegeben.",
+            "en": "There the receptionist unlocked the kitchen and gave me the room key."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Erst der Hintergrund, dann das Ereignis",
+        "rule": {
+          "de": "Najpierw und potem ordnen die Geschichte; zwiedzałam beschreibt die Tätigkeit, zostawiłam das darauf folgende abgeschlossene Ereignis.",
+          "en": "Najpierw and potem order the story; zwiedzałam describes the activity, followed by the completed event zostawiłam."
+        },
+        "examples": [
+          {
+            "targetText": "Najpierw zwiedzałam zamek, a potem zostawiłam plecak w małym hostelu.",
+            "baseText": {
+              "de": "Zuerst habe ich mir das Schloss angesehen und dann meinen Rucksack in einem kleinen Hostel gelassen.",
+              "en": "First I explored the castle, and then I left my backpack at a small hostel."
+            },
+            "highlight": "Najpierw zwiedzałam"
+          },
+          {
+            "targetText": "Najpierw zwiedzałem zamek, a potem zostawiłem plecak w małym hostelu.",
+            "baseText": {
+              "de": "Zuerst habe ich mir das Schloss angesehen und dann meinen Rucksack in einem kleinen Hostel gelassen.",
+              "en": "First I explored the castle, and then I left my backpack at a small hostel."
+            },
+            "highlight": "Najpierw zwiedzałem"
+          }
+        ]
+      },
+      "cloze": [
+        "Tam recepcjonista ",
+        {
+          "kind": "form",
+          "answer": "otworzył",
+          "cue": "dokonany",
+          "choices": [
+            "otworzył",
+            "otwierał",
+            "otworzyła",
+            "otworzyło"
+          ]
+        },
+        " kuchnię i podał mi ",
+        {
+          "kind": "choice",
+          "answer": "klucz",
+          "choices": [
+            "klucz",
+            "talerz",
+            "notes",
+            "bilet"
+          ]
+        },
+        " do pokoju."
+      ],
+      "chunks": [
+        {
+          "targetText": "Najpierw zwiedzałam zamek,",
+          "baseText": {
+            "de": "Zuerst habe ich das Schloss besichtigt,",
+            "en": "First I explored the castle,"
+          }
+        },
+        {
+          "targetText": "a potem",
+          "baseText": {
+            "de": "und danach",
+            "en": "and then"
+          }
+        },
+        {
+          "targetText": "zostawiłam plecak",
+          "baseText": {
+            "de": "habe ich meinen Rucksack gelassen",
+            "en": "I left my backpack"
+          }
+        },
+        {
+          "targetText": "w małym hostelu.",
+          "baseText": {
+            "de": "in einem kleinen Hostel.",
+            "en": "at a small hostel."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "najpierw",
+          "baseText": {
+            "de": "zuerst",
+            "en": "first"
+          }
+        },
+        {
+          "targetText": "zwiedzałam",
+          "baseText": {
+            "de": "ich besichtigte (Frau; Mann: zwiedzałem)",
+            "en": "I explored (female; male: zwiedzałem)"
+          }
+        },
+        {
+          "targetText": "zamek",
+          "baseText": {
+            "de": "das Schloss",
+            "en": "castle"
+          }
+        },
+        {
+          "targetText": "plecak",
+          "baseText": {
+            "de": "der Rucksack",
+            "en": "backpack"
+          }
+        },
+        {
+          "targetText": "hostelu",
+          "baseText": {
+            "de": "im Hostel (nach w)",
+            "en": "hostel (after w)"
+          }
+        },
+        {
+          "targetText": "klucz",
+          "baseText": {
+            "de": "der Schlüssel",
+            "en": "key"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Najpierw zwiedzałam ",
+        "answer": "zamek",
+        "after": ", a potem zostawiłam plecak w małym hostelu.",
+        "fallbackChoices": [
+          "zamek",
+          "przepis",
+          "silnik",
+          "rachunek"
+        ]
+      },
+      "speakRequired": [
+        "najpierw",
+        "zamek",
+        "plecak"
+      ],
+      "sceneCaption": {
+        "de": "Deine Mitbewohnerin sieht deinen Reiserucksack und fragt: „Jak minął wyjazd do Krakowa?”",
+        "en": "Your flatmate notices your travel backpack and asks: „Jak minął wyjazd do Krakowa?”"
+      },
+      "trophyWord": {
+        "word": "najpierw",
+        "meaning": {
+          "de": "zuerst",
+          "en": "first"
+        },
+        "example": "Najpierw sprawdzę adres, a potem zamówię taksówkę.",
+        "whyThisWord": {
+          "de": "Najpierw eröffnet eine zeitlich geordnete Erzählung oder einen Plan; potem führt zum nächsten Schritt.",
+          "en": "Najpierw opens an ordered story or plan; potem carries it into the next step."
+        }
+      },
+      "distractors": [
+        "w dużym hotelu.",
+        "obejrzałam wystawę"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Reiserucksack steht neben dem Küchentisch in eurer Wohnung.",
+        "en": "A travel backpack stands beside the kitchen table in your flat."
+      },
+      "songMood": "curious homecoming after a Kraków trip",
+      "visualNotes": "Shared flat kitchen, unpacked backpack, flatmate listening; no hostel outcome shown."
+    },
+    {
+      "slug": "potem-spacer-nad-wisla",
+      "title": {
+        "de": "Nach dem Museumsbesuch",
+        "en": "After the museum"
+      },
+      "situation": {
+        "de": "Ein Freund fragt beim Anschauen deiner Krakauer Fotos nach dem nächsten Teil deines Tages.",
+        "en": "A friend looks through your Kraków photos and asks about the next part of your day."
+      },
+      "pedagogicalGoal": "Mit potem eine Erzählung fortsetzen und den nächsten Ort mit einem Grund verbinden.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Co robiłaś po wyjściu z muzeum?",
+          "baseText": {
+            "de": "Was hast du gemacht, nachdem du aus dem Museum gekommen bist?",
+            "en": "What did you do after leaving the museum?"
+          }
+        },
+        {
+          "targetText": "Potem poszłam nad Wisłę, bo po muzeum potrzebowałam świeżego powietrza.",
+          "baseText": {
+            "de": "Danach bin ich an die Weichsel gegangen, weil ich nach dem Museum frische Luft brauchte.",
+            "en": "Then I went down to the Vistula because I needed fresh air after the museum."
+          },
+          "acceptedTargetAlternatives": [
+            "Potem poszedłem nad Wisłę, bo po muzeum potrzebowałem świeżego powietrza."
+          ]
+        },
+        {
+          "targetText": "I kogo tam spotkałaś? Kogoś z pracy?",
+          "baseText": {
+            "de": "Und wen hast du dort getroffen? Jemanden von der Arbeit?",
+            "en": "And who did you meet there? Someone from work?"
+          }
+        },
+        {
+          "targetText": "Tam kolega z pracy pokazał mi swój nowy rower.",
+          "baseText": {
+            "de": "Dort hat mir ein Arbeitskollege sein neues Fahrrad gezeigt.",
+            "en": "There a colleague from work showed me his new bike."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Die Geschichte fortsetzen",
+        "rule": {
+          "de": "Potem führt zum nächsten Ereignis; nach dem abgeschlossenen poszłam erklärt bo den Hintergrund potrzebowałam.",
+          "en": "Potem introduces the next event; after completed poszłam, bo explains the background potrzebowałam."
+        },
+        "examples": [
+          {
+            "targetText": "Potem poszłam nad Wisłę, bo po muzeum potrzebowałam świeżego powietrza.",
+            "baseText": {
+              "de": "Danach bin ich an die Weichsel gegangen, weil ich nach dem Museum frische Luft brauchte.",
+              "en": "Then I went down to the Vistula because I needed fresh air after the museum."
+            },
+            "highlight": "poszłam"
+          },
+          {
+            "targetText": "Potem poszedłem nad Wisłę, bo po muzeum potrzebowałem świeżego powietrza.",
+            "baseText": {
+              "de": "Danach bin ich an die Weichsel gegangen, weil ich nach dem Museum frische Luft brauchte.",
+              "en": "Then I went down to the Vistula because I needed fresh air after the museum."
+            },
+            "highlight": "poszedłem"
+          }
+        ]
+      },
+      "cloze": [
+        "Tam kolega z ",
+        {
+          "kind": "choice",
+          "answer": "pracy",
+          "choices": [
+            "pracy",
+            "prania",
+            "picia",
+            "spania"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "pokazał",
+          "cue": "dokonany",
+          "choices": [
+            "pokazał",
+            "pokazywał",
+            "pokazała",
+            "pokazało"
+          ]
+        },
+        " mi swój nowy rower."
+      ],
+      "chunks": [
+        {
+          "targetText": "Potem poszłam",
+          "baseText": {
+            "de": "Danach bin ich gegangen",
+            "en": "Then I went"
+          }
+        },
+        {
+          "targetText": "nad Wisłę,",
+          "baseText": {
+            "de": "an die Weichsel,",
+            "en": "down to the Vistula,"
+          }
+        },
+        {
+          "targetText": "bo po muzeum",
+          "baseText": {
+            "de": "weil ich nach dem Museum",
+            "en": "because after the museum"
+          }
+        },
+        {
+          "targetText": "potrzebowałam świeżego powietrza.",
+          "baseText": {
+            "de": "frische Luft brauchte.",
+            "en": "I needed fresh air."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "potem",
+          "baseText": {
+            "de": "danach",
+            "en": "then"
+          }
+        },
+        {
+          "targetText": "poszłam",
+          "baseText": {
+            "de": "ich ging (Frau; Mann: poszedłem)",
+            "en": "I went (female; male: poszedłem)"
+          }
+        },
+        {
+          "targetText": "muzeum",
+          "baseText": {
+            "de": "das Museum",
+            "en": "museum"
+          }
+        },
+        {
+          "targetText": "świeżego powietrza",
+          "baseText": {
+            "de": "frische Luft (nach potrzebować)",
+            "en": "fresh air (after potrzebować)"
+          }
+        },
+        {
+          "targetText": "kolega",
+          "baseText": {
+            "de": "der Kollege",
+            "en": "male colleague"
+          }
+        },
+        {
+          "targetText": "rower",
+          "baseText": {
+            "de": "das Fahrrad",
+            "en": "bike"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "Potem",
+        "after": " poszłam nad Wisłę, bo po muzeum potrzebowałam świeżego powietrza.",
+        "fallbackChoices": [
+          "Potem",
+          "Podczas",
+          "Zanim",
+          "Chociaż"
+        ]
+      },
+      "speakRequired": [
+        "potem",
+        "muzeum",
+        "powietrza"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund blättert durch die Fotos und fragt: „Co robiłaś po wyjściu z muzeum?”",
+        "en": "Your friend scrolls through the photos and asks: „Co robiłaś po wyjściu z muzeum?”"
+      },
+      "trophyWord": {
+        "word": "potem",
+        "meaning": {
+          "de": "danach",
+          "en": "then"
+        },
+        "example": "Najpierw zjemy obiad, a potem pójdziemy nad rzekę.",
+        "whyThisWord": {
+          "de": "Potem knüpft an das vorherige Ereignis an, ohne Ort oder Person erneut erklären zu müssen.",
+          "en": "Potem links to the previous event without having to explain the place or person again."
+        }
+      },
+      "distractors": [
+        "do małej kawiarni,",
+        "potrzebowałam gorącej herbaty."
+      ],
+      "placeholderCaption": {
+        "de": "Fotos vom Museum und vom Weichselufer liegen auf einem Tisch.",
+        "en": "Photos of the museum and the Vistula riverbank lie on a table."
+      },
+      "songMood": "a riverside afternoon after a museum visit",
+      "visualNotes": "Friends looking at travel photos; riverbank visible in a photo, no colleague or bicycle revealed."
+    },
+    {
+      "slug": "nagle-deszcz-na-przystanku",
+      "title": {
+        "de": "Plötzlich Regen",
+        "en": "Sudden rain"
+      },
+      "situation": {
+        "de": "Du kommst verspätet ins Büro. Eine befreundete Kollegin möchte wissen, was unterwegs passiert ist.",
+        "en": "You arrive late at the office. A colleague who is also a friend asks what happened on the way."
+      },
+      "pedagogicalGoal": "Mit kiedy und nagle einen laufenden Hintergrund und ein plötzlich einsetzendes Ereignis verknüpfen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Skąd to spóźnienie? Rano było przecież słonecznie.",
+          "baseText": {
+            "de": "Warum die Verspätung? Heute Morgen war es doch sonnig.",
+            "en": "Why are you late? It was sunny this morning."
+          }
+        },
+        {
+          "targetText": "Czekałam na tramwaj, kiedy nagle zaczął padać bardzo silny deszcz.",
+          "baseText": {
+            "de": "Ich wartete auf die Straßenbahn, als es plötzlich sehr stark zu regnen begann.",
+            "en": "I was waiting for the tram when very heavy rain suddenly started."
+          },
+          "acceptedTargetAlternatives": [
+            "Czekałem na tramwaj, kiedy nagle zaczął padać bardzo silny deszcz."
+          ]
+        },
+        {
+          "targetText": "Ale pech! Jesteś cała mokra?",
+          "baseText": {
+            "de": "So ein Pech! Bist du ganz nass?",
+            "en": "What bad luck! Are you soaked?"
+          }
+        },
+        {
+          "targetText": "Nie, parasol chronił mnie, więc deszcz wcale mnie nie zmoczył.",
+          "baseText": {
+            "de": "Nein, der Schirm schützte mich, also hat mich der Regen überhaupt nicht nass gemacht.",
+            "en": "No, the umbrella protected me, so the rain did not get me wet at all."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Hintergrund und plötzliches Ereignis",
+        "rule": {
+          "de": "Czekałam beschreibt das laufende Warten; kiedy nagle zaczął markiert den plötzlichen Beginn des Regens.",
+          "en": "Czekałam describes waiting in progress; kiedy nagle zaczął marks the sudden onset of rain."
+        },
+        "examples": [
+          {
+            "targetText": "Czekałam na tramwaj, kiedy nagle zaczął padać bardzo silny deszcz.",
+            "baseText": {
+              "de": "Ich wartete auf die Straßenbahn, als es plötzlich sehr stark zu regnen begann.",
+              "en": "I was waiting for the tram when very heavy rain suddenly started."
+            },
+            "highlight": "Czekałam"
+          },
+          {
+            "targetText": "Czekałem na tramwaj, kiedy nagle zaczął padać bardzo silny deszcz.",
+            "baseText": {
+              "de": "Ich wartete auf die Straßenbahn, als es plötzlich sehr stark zu regnen begann.",
+              "en": "I was waiting for the tram when very heavy rain suddenly started."
+            },
+            "highlight": "Czekałem"
+          }
+        ]
+      },
+      "cloze": [
+        "Nie, parasol ",
+        {
+          "kind": "form",
+          "answer": "chronił",
+          "cue": "niedokonany",
+          "choices": [
+            "chronił",
+            "ochronił",
+            "chroniła",
+            "chroniło"
+          ]
+        },
+        " mnie, więc deszcz wcale mnie nie ",
+        {
+          "kind": "form",
+          "answer": "zmoczył",
+          "cue": "dokonany",
+          "choices": [
+            "zmoczył",
+            "moczył",
+            "zmoczyła",
+            "zmoczyło"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Czekałam na tramwaj,",
+          "baseText": {
+            "de": "Ich wartete auf die Straßenbahn,",
+            "en": "I was waiting for the tram,"
+          }
+        },
+        {
+          "targetText": "kiedy nagle",
+          "baseText": {
+            "de": "als plötzlich",
+            "en": "when suddenly"
+          }
+        },
+        {
+          "targetText": "zaczął padać",
+          "baseText": {
+            "de": "zu fallen begann",
+            "en": "began to fall"
+          }
+        },
+        {
+          "targetText": "bardzo silny deszcz.",
+          "baseText": {
+            "de": "sehr starker Regen.",
+            "en": "very heavy rain."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "czekałam",
+          "baseText": {
+            "de": "ich wartete (Frau; Mann: czekałem)",
+            "en": "I was waiting (female; male: czekałem)"
+          }
+        },
+        {
+          "targetText": "tramwaj",
+          "baseText": {
+            "de": "die Straßenbahn",
+            "en": "tram"
+          }
+        },
+        {
+          "targetText": "nagle",
+          "baseText": {
+            "de": "plötzlich",
+            "en": "suddenly"
+          }
+        },
+        {
+          "targetText": "deszcz",
+          "baseText": {
+            "de": "der Regen",
+            "en": "rain"
+          }
+        },
+        {
+          "targetText": "parasol",
+          "baseText": {
+            "de": "der Regenschirm",
+            "en": "umbrella"
+          }
+        },
+        {
+          "targetText": "zmoczył",
+          "baseText": {
+            "de": "machte nass (maskulines Subjekt)",
+            "en": "made someone wet (masculine subject)"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Czekałam na tramwaj, kiedy nagle zaczął padać bardzo silny ",
+        "answer": "deszcz",
+        "after": ".",
+        "fallbackChoices": [
+          "deszcz",
+          "wiatr",
+          "mróz",
+          "upał"
+        ]
+      },
+      "speakRequired": [
+        "tramwaj",
+        "nagle",
+        "deszcz"
+      ],
+      "sceneCaption": {
+        "de": "Deine Kollegin blickt vom sonnigen Fenster zur Uhr: „Skąd to spóźnienie? Rano było przecież słonecznie.”",
+        "en": "Your colleague looks from the sunny window to the clock: „Skąd to spóźnienie? Rano było przecież słonecznie.”"
+      },
+      "trophyWord": {
+        "word": "nagle",
+        "meaning": {
+          "de": "plötzlich",
+          "en": "suddenly"
+        },
+        "example": "Rozmowa trwała spokojnie, kiedy nagle zadzwonił telefon.",
+        "whyThisWord": {
+          "de": "Nagle hebt den unerwarteten Wechsel vom Hintergrund zum neuen Ereignis hervor.",
+          "en": "Nagle highlights an unexpected change from background activity to a new event."
+        }
+      },
+      "distractors": [
+        "bardzo silny wiatr.",
+        "wracałam pieszo"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kollegin wartet neben der Bürouhr auf deine Erklärung.",
+        "en": "A colleague waits beside the office clock for your explanation."
+      },
+      "songMood": "a sudden shower interrupting an ordinary commute",
+      "visualNotes": "Office doorway and clock; no umbrella success shown before the follow-up."
+    },
+    {
+      "slug": "podczas-koncertu-zgaslo-swiatlo",
+      "title": {
+        "de": "Mitten im Konzert",
+        "en": "During the concert"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt nach dem gestrigen Konzert und möchte wissen, wie der Abend verlaufen ist.",
+        "en": "A friend asks about yesterday's concert and wants to know how the evening went."
+      },
+      "pedagogicalGoal": "Mit podczas plus Genitiv ein Ereignis zeitlich einordnen und anschließend seine Lösung erzählen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Jak było na wczorajszym koncercie?",
+          "baseText": {
+            "de": "Wie war es auf dem gestrigen Konzert?",
+            "en": "What was yesterday's concert like?"
+          }
+        },
+        {
+          "targetText": "Podczas koncertu zgasło światło, ale zespół grał dalej bez mikrofonów.",
+          "baseText": {
+            "de": "Während des Konzerts ging das Licht aus, aber die Band spielte ohne Mikrofone weiter.",
+            "en": "During the concert the lights went out, but the band kept playing without microphones."
+          }
+        },
+        {
+          "targetText": "Pewnie problem z kablem? Jak to się skończyło?",
+          "baseText": {
+            "de": "Vermutlich ein Problem mit einem Kabel? Wie ging es aus?",
+            "en": "Probably a problem with a cable? How did it end?"
+          }
+        },
+        {
+          "targetText": "Potem technik naprawił kabel i mikrofony znowu działały.",
+          "baseText": {
+            "de": "Danach reparierte der Techniker das Kabel, und die Mikrofone funktionierten wieder.",
+            "en": "Then the technician repaired the cable and the microphones worked again."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Während eines Ereignisses",
+        "rule": {
+          "de": "Nach podczas steht ein Nomen im Genitiv; der anschließende Satz erzählt, was in diesem Zeitraum geschah.",
+          "en": "Podczas takes a noun in the genitive; the following clause tells what happened during that time."
+        },
+        "examples": [
+          {
+            "targetText": "Podczas koncertu zgasło światło, ale zespół grał dalej bez mikrofonów.",
+            "baseText": {
+              "de": "Während des Konzerts ging das Licht aus, aber die Band spielte ohne Mikrofone weiter.",
+              "en": "During the concert the lights went out, but the band kept playing without microphones."
+            },
+            "highlight": "Podczas koncertu"
+          },
+          {
+            "targetText": "Podczas spaceru zaczął padać deszcz.",
+            "baseText": {
+              "de": "Während des Spaziergangs begann es zu regnen.",
+              "en": "It started raining during the walk."
+            },
+            "highlight": "Podczas spaceru"
+          }
+        ]
+      },
+      "cloze": [
+        "Potem technik ",
+        {
+          "kind": "form",
+          "answer": "naprawił",
+          "cue": "dokonany",
+          "choices": [
+            "naprawił",
+            "naprawiał",
+            "naprawiła",
+            "naprawiło"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "kabel",
+          "choices": [
+            "kabel",
+            "parasol",
+            "portfel",
+            "talerz"
+          ]
+        },
+        " i mikrofony znowu działały."
+      ],
+      "chunks": [
+        {
+          "targetText": "Podczas koncertu",
+          "baseText": {
+            "de": "Während des Konzerts",
+            "en": "During the concert"
+          }
+        },
+        {
+          "targetText": "zgasło światło,",
+          "baseText": {
+            "de": "ging das Licht aus,",
+            "en": "the lights went out,"
+          }
+        },
+        {
+          "targetText": "ale zespół",
+          "baseText": {
+            "de": "aber die Band",
+            "en": "but the band"
+          }
+        },
+        {
+          "targetText": "grał dalej",
+          "baseText": {
+            "de": "spielte weiter",
+            "en": "kept playing"
+          }
+        },
+        {
+          "targetText": "bez mikrofonów.",
+          "baseText": {
+            "de": "ohne Mikrofone.",
+            "en": "without microphones."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "podczas",
+          "baseText": {
+            "de": "während (+ Genitiv)",
+            "en": "during (+ genitive)"
+          }
+        },
+        {
+          "targetText": "koncertu",
+          "baseText": {
+            "de": "des Konzerts",
+            "en": "concert (genitive)"
+          }
+        },
+        {
+          "targetText": "zgasło",
+          "baseText": {
+            "de": "ging aus (neutrales Subjekt)",
+            "en": "went out (neuter subject)"
+          }
+        },
+        {
+          "targetText": "światło",
+          "baseText": {
+            "de": "das Licht",
+            "en": "light"
+          }
+        },
+        {
+          "targetText": "zespół",
+          "baseText": {
+            "de": "die Band",
+            "en": "band"
+          }
+        },
+        {
+          "targetText": "mikrofonów",
+          "baseText": {
+            "de": "der Mikrofone",
+            "en": "microphones (genitive plural)"
+          }
+        },
+        {
+          "targetText": "kabel",
+          "baseText": {
+            "de": "das Kabel",
+            "en": "cable"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Podczas koncertu zgasło ",
+        "answer": "światło",
+        "after": ", ale zespół grał dalej bez mikrofonów.",
+        "fallbackChoices": [
+          "światło",
+          "miejsce",
+          "krzesło",
+          "pudło"
+        ]
+      },
+      "speakRequired": [
+        "podczas",
+        "koncertu",
+        "zespół"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin betrachtet dein Konzertticket und fragt: „Jak było na wczorajszym koncercie?”",
+        "en": "A friend looks at your concert ticket and asks: „Jak było na wczorajszym koncercie?”"
+      },
+      "trophyWord": {
+        "word": "podczas",
+        "meaning": {
+          "de": "während",
+          "en": "during"
+        },
+        "example": "Podczas spotkania ktoś zapukał do drzwi.",
+        "whyThisWord": {
+          "de": "Podczas plus Genitiv bildet einen kurzen zeitlichen Rahmen, bevor du das eigentliche Ereignis erzählst.",
+          "en": "Podczas plus the genitive creates a short time frame before you tell the main event."
+        }
+      },
+      "distractors": [
+        "po ostatniej piosence",
+        "zespół zrobił przerwę"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Konzertticket liegt zwischen zwei Tassen auf dem Tisch.",
+        "en": "A concert ticket lies between two cups on the table."
+      },
+      "songMood": "live music continuing through an unexpected interruption",
+      "visualNotes": "Friends at a table with a ticket; avoid showing damaged cable or repair."
+    },
+    {
+      "slug": "zanim-wyszlam-znalazlam-klucze",
+      "title": {
+        "de": "Vor dem Aufbruch",
+        "en": "Before leaving"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt nach deinem hektischen Morgen vor einer Zugfahrt.",
+        "en": "A friend asks about your hectic morning before a train journey."
+      },
+      "pedagogicalGoal": "Mit zanim zwei Ereignisse zeitlich zueinander ordnen und die Erzählung mit dem erreichten Zug fortsetzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Jak ci minął poranek przed wyjazdem?",
+          "baseText": {
+            "de": "Wie war dein Morgen vor der Abfahrt?",
+            "en": "How was your morning before the trip?"
+          }
+        },
+        {
+          "targetText": "Zanim wyszłam z domu, znalazłam klucze. Potem pobiegłam na dworzec.",
+          "baseText": {
+            "de": "Bevor ich das Haus verließ, fand ich meine Schlüssel. Dann rannte ich zum Bahnhof.",
+            "en": "Before I left home, I found my keys. Then I ran to the station."
+          },
+          "acceptedTargetAlternatives": [
+            "Zanim wyszedłem z domu, znalazłem klucze. Potem pobiegłem na dworzec."
+          ]
+        },
+        {
+          "targetText": "Zdążyłaś na pociąg? Drzwi były jeszcze otwarte?",
+          "baseText": {
+            "de": "Hast du den Zug geschafft? Waren die Türen noch offen?",
+            "en": "Did you catch the train? Were the doors still open?"
+          }
+        },
+        {
+          "targetText": "Tak, pociąg odjechał minutę po moim wejściu do wagonu.",
+          "baseText": {
+            "de": "Ja, der Zug fuhr eine Minute nach meinem Einsteigen ab.",
+            "en": "Yes, the train left a minute after I got into the carriage."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Bevor etwas geschah",
+        "rule": {
+          "de": "Zanim leitet das spätere Ereignis ein; im Hauptsatz steht, was davor geschah oder andauerte.",
+          "en": "Zanim introduces the later event; the main clause describes what happened or was happening beforehand."
+        },
+        "examples": [
+          {
+            "targetText": "Zanim wyszłam z domu, znalazłam klucze. Potem pobiegłam na dworzec.",
+            "baseText": {
+              "de": "Bevor ich das Haus verließ, fand ich meine Schlüssel. Dann rannte ich zum Bahnhof.",
+              "en": "Before I left home, I found my keys. Then I ran to the station."
+            },
+            "highlight": "Zanim wyszłam"
+          },
+          {
+            "targetText": "Zanim wyszedłem z domu, znalazłem klucze. Potem pobiegłem na dworzec.",
+            "baseText": {
+              "de": "Bevor ich das Haus verließ, fand ich meine Schlüssel. Dann rannte ich zum Bahnhof.",
+              "en": "Before I left home, I found my keys. Then I ran to the station."
+            },
+            "highlight": "Zanim wyszedłem"
+          }
+        ]
+      },
+      "cloze": [
+        "Tak, pociąg ",
+        {
+          "kind": "form",
+          "answer": "odjechał",
+          "cue": "dokonany",
+          "choices": [
+            "odjechał",
+            "odjeżdżał",
+            "odjechała",
+            "odjechało"
+          ]
+        },
+        " minutę po moim wejściu do ",
+        {
+          "kind": "choice",
+          "answer": "wagonu",
+          "choices": [
+            "wagonu",
+            "statku",
+            "autobusu",
+            "samolotu"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Zanim wyszłam z domu,",
+          "baseText": {
+            "de": "Bevor ich das Haus verließ,",
+            "en": "Before I left home,"
+          }
+        },
+        {
+          "targetText": "znalazłam klucze.",
+          "baseText": {
+            "de": "fand ich meine Schlüssel.",
+            "en": "I found my keys."
+          }
+        },
+        {
+          "targetText": "Potem pobiegłam",
+          "baseText": {
+            "de": "Dann rannte ich",
+            "en": "Then I ran"
+          }
+        },
+        {
+          "targetText": "na dworzec.",
+          "baseText": {
+            "de": "zum Bahnhof.",
+            "en": "to the station."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "zanim",
+          "baseText": {
+            "de": "bevor",
+            "en": "before"
+          }
+        },
+        {
+          "targetText": "wyszłam",
+          "baseText": {
+            "de": "ich ging hinaus (Frau; Mann: wyszedłem)",
+            "en": "I went out (female; male: wyszedłem)"
+          }
+        },
+        {
+          "targetText": "znalazłam",
+          "baseText": {
+            "de": "ich fand (Frau; Mann: znalazłem)",
+            "en": "I found (female; male: znalazłem)"
+          }
+        },
+        {
+          "targetText": "klucze",
+          "baseText": {
+            "de": "die Schlüssel (Akkusativ Plural)",
+            "en": "keys (accusative plural)"
+          }
+        },
+        {
+          "targetText": "dworzec",
+          "baseText": {
+            "de": "der Bahnhof",
+            "en": "station"
+          }
+        },
+        {
+          "targetText": "odjechał",
+          "baseText": {
+            "de": "fuhr ab (maskulines Subjekt)",
+            "en": "departed (masculine subject)"
+          }
+        },
+        {
+          "targetText": "wagonu",
+          "baseText": {
+            "de": "des Waggons",
+            "en": "carriage (genitive)"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "Zanim",
+        "after": " wyszłam z domu, znalazłam klucze. Potem pobiegłam na dworzec.",
+        "fallbackChoices": [
+          "Zanim",
+          "Podczas",
+          "Mimo",
+          "Wbrew"
+        ]
+      },
+      "speakRequired": [
+        "zanim",
+        "klucze",
+        "dworzec"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin sieht dich mit der Reisetasche und fragt: „Jak ci minął poranek przed wyjazdem?”",
+        "en": "Your friend sees your travel bag and asks: „Jak ci minął poranek przed wyjazdem?”"
+      },
+      "trophyWord": {
+        "word": "zanim",
+        "meaning": {
+          "de": "bevor",
+          "en": "before"
+        },
+        "example": "Zanim odjedzie autobus, kupię bilet.",
+        "whyThisWord": {
+          "de": "Zanim verknüpft zwei Ereignisse über ihre Reihenfolge; anders als podczas folgt ein vollständiger Satz.",
+          "en": "Zanim connects two events through their order; unlike podczas, it is followed by a full clause."
+        }
+      },
+      "distractors": [
+        "Potem pojechałam",
+        "przed wejściem do domu"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Reisetasche steht neben der Wohnungstür.",
+        "en": "A travel bag stands beside the flat door."
+      },
+      "songMood": "a rushed departure with a story to tell",
+      "visualNotes": "Home doorway and travel bag; do not show keys or train departure."
+    },
+    {
+      "slug": "tymczasem-chleb-na-kolacje",
+      "title": {
+        "de": "Währenddessen in der Küche",
+        "en": "Meanwhile in the kitchen"
+      },
+      "situation": {
+        "de": "Deine Mitbewohnerin fragt, wie die Vorbereitungen für euer Abendessen mit Gästen liefen.",
+        "en": "Your flatmate asks how preparations for dinner with guests went."
+      },
+      "pedagogicalGoal": "Mit tymczasem zwei gleichzeitig laufende Handlungen verbinden und die Reaktion der Gäste erzählen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Jak poszło gotowanie kolacji dla gości?",
+          "baseText": {
+            "de": "Wie lief das Kochen für eure Gäste?",
+            "en": "How did cooking dinner for your guests go?"
+          }
+        },
+        {
+          "targetText": "Gotowałam zupę, a tymczasem mój współlokator piekł chleb na kolację.",
+          "baseText": {
+            "de": "Ich kochte Suppe, während mein Mitbewohner Brot für das Abendessen backte.",
+            "en": "I was making soup, while my flatmate was baking bread for dinner."
+          },
+          "acceptedTargetAlternatives": [
+            "Gotowałem zupę, a tymczasem mój współlokator piekł chleb na kolację."
+          ]
+        },
+        {
+          "targetText": "A goście? Zostawili coś na talerzach?",
+          "baseText": {
+            "de": "Und die Gäste? Haben sie etwas auf den Tellern gelassen?",
+            "en": "And the guests? Did they leave anything on their plates?"
+          }
+        },
+        {
+          "targetText": "Na szczęście każdy gość zjadł zupę i kawałek chleba.",
+          "baseText": {
+            "de": "Zum Glück hat jeder Gast die Suppe und ein Stück Brot gegessen.",
+            "en": "Luckily, every guest ate the soup and a piece of bread."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Zwei Handlungen gleichzeitig",
+        "rule": {
+          "de": "Tymczasem wechselt zum parallel laufenden Teil der Geschichte; beide Hintergrundhandlungen stehen hier im unvollendeten Aspekt.",
+          "en": "Tymczasem switches to a parallel part of the story; both background activities here use the imperfective aspect."
+        },
+        "examples": [
+          {
+            "targetText": "Gotowałam zupę, a tymczasem mój współlokator piekł chleb na kolację.",
+            "baseText": {
+              "de": "Ich kochte Suppe, während mein Mitbewohner Brot für das Abendessen backte.",
+              "en": "I was making soup, while my flatmate was baking bread for dinner."
+            },
+            "highlight": "Gotowałam"
+          },
+          {
+            "targetText": "Gotowałem zupę, a tymczasem mój współlokator piekł chleb na kolację.",
+            "baseText": {
+              "de": "Ich kochte Suppe, während mein Mitbewohner Brot für das Abendessen backte.",
+              "en": "I was making soup, while my flatmate was baking bread for dinner."
+            },
+            "highlight": "Gotowałem"
+          }
+        ]
+      },
+      "cloze": [
+        "Na szczęście każdy gość ",
+        {
+          "kind": "form",
+          "answer": "zjadł",
+          "cue": "dokonany",
+          "choices": [
+            "zjadł",
+            "jadł",
+            "zjadła",
+            "zjadło"
+          ]
+        },
+        " zupę i ",
+        {
+          "kind": "choice",
+          "answer": "kawałek",
+          "choices": [
+            "kawałek",
+            "kroplę",
+            "szklankę",
+            "łyk"
+          ]
+        },
+        " chleba."
+      ],
+      "chunks": [
+        {
+          "targetText": "Gotowałam zupę,",
+          "baseText": {
+            "de": "Ich kochte Suppe,",
+            "en": "I was making soup,"
+          }
+        },
+        {
+          "targetText": "a tymczasem",
+          "baseText": {
+            "de": "währenddessen",
+            "en": "meanwhile"
+          }
+        },
+        {
+          "targetText": "mój współlokator",
+          "baseText": {
+            "de": "mein Mitbewohner",
+            "en": "my flatmate"
+          }
+        },
+        {
+          "targetText": "piekł chleb",
+          "baseText": {
+            "de": "backte Brot",
+            "en": "was baking bread"
+          }
+        },
+        {
+          "targetText": "na kolację.",
+          "baseText": {
+            "de": "für das Abendessen.",
+            "en": "for dinner."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "gotowałam",
+          "baseText": {
+            "de": "ich kochte (Frau; Mann: gotowałem)",
+            "en": "I was cooking (female; male: gotowałem)"
+          }
+        },
+        {
+          "targetText": "tymczasem",
+          "baseText": {
+            "de": "währenddessen",
+            "en": "meanwhile"
+          }
+        },
+        {
+          "targetText": "współlokator",
+          "baseText": {
+            "de": "der Mitbewohner",
+            "en": "male flatmate"
+          }
+        },
+        {
+          "targetText": "piekł",
+          "baseText": {
+            "de": "er backte",
+            "en": "he was baking"
+          }
+        },
+        {
+          "targetText": "chleb",
+          "baseText": {
+            "de": "das Brot",
+            "en": "bread"
+          }
+        },
+        {
+          "targetText": "gość",
+          "baseText": {
+            "de": "der Gast",
+            "en": "guest"
+          }
+        },
+        {
+          "targetText": "kawałek",
+          "baseText": {
+            "de": "das Stück",
+            "en": "piece"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Gotowałam zupę, a tymczasem mój współlokator piekł ",
+        "answer": "chleb",
+        "after": " na kolację.",
+        "fallbackChoices": [
+          "chleb",
+          "sok",
+          "lód",
+          "ocet"
+        ]
+      },
+      "speakRequired": [
+        "tymczasem",
+        "chleb",
+        "kolację"
+      ],
+      "sceneCaption": {
+        "de": "Deine Mitbewohnerin sieht die Töpfe auf dem Herd und fragt: „Jak poszło gotowanie kolacji dla gości?”",
+        "en": "Your flatmate looks at the pots on the stove and asks: „Jak poszło gotowanie kolacji dla gości?”"
+      },
+      "trophyWord": {
+        "word": "tymczasem",
+        "meaning": {
+          "de": "währenddessen",
+          "en": "meanwhile"
+        },
+        "example": "Ja szukam adresu, a tymczasem brat zamawia taksówkę.",
+        "whyThisWord": {
+          "de": "Tymczasem erlaubt einen Wechsel zwischen zwei gleichzeitig ablaufenden Strängen deiner Erzählung.",
+          "en": "Tymczasem lets you switch between two strands of a story happening at the same time."
+        }
+      },
+      "distractors": [
+        "mój dobry sąsiad",
+        "zamawiał pizzę"
+      ],
+      "placeholderCaption": {
+        "de": "In der gemeinsamen Küche stehen Töpfe und eine Backform.",
+        "en": "Pots and a baking tin sit in the shared kitchen."
+      },
+      "songMood": "two cooks sharing a busy kitchen",
+      "visualNotes": "Shared kitchen the morning after dinner, pots and bread tin; no guests' finished plates shown."
+    },
+    {
+      "slug": "wreszcie-paczka-od-babci",
+      "title": {
+        "de": "Das Paket ist da",
+        "en": "The parcel arrives"
+      },
+      "situation": {
+        "de": "Eine Freundin erkundigt sich nach dem lange erwarteten Paket mit einem Pullover von deiner Oma.",
+        "en": "A friend asks about the long-awaited parcel containing a sweater from your grandmother."
+      },
+      "pedagogicalGoal": "Mit wreszcie das Ende einer Wartezeit hervorheben und danach den Inhalt beschreiben.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Dotarła paczka ze swetrem od babci?",
+          "baseText": {
+            "de": "Ist das Paket mit dem Pullover von deiner Oma angekommen?",
+            "en": "Has the parcel with your grandmother's sweater arrived?"
+          }
+        },
+        {
+          "targetText": "Paczka wreszcie przyszła wczoraj, kiedy spokojnie pracowałam w domu.",
+          "baseText": {
+            "de": "Das Paket kam endlich gestern, als ich in Ruhe zu Hause arbeitete.",
+            "en": "The parcel finally arrived yesterday while I was working quietly at home."
+          },
+          "acceptedTargetAlternatives": [
+            "Paczka wreszcie przyszła wczoraj, kiedy spokojnie pracowałem w domu."
+          ]
+        },
+        {
+          "targetText": "I co było w środku? Babcia znowu dodała lawendę?",
+          "baseText": {
+            "de": "Und was war drin? Hat deine Oma wieder Lavendel dazugelegt?",
+            "en": "And what was inside? Did your grandmother add lavender again?"
+          }
+        },
+        {
+          "targetText": "W środku był wełniany sweter, a opakowanie pachniało lawendą.",
+          "baseText": {
+            "de": "Drin war ein Wollpullover und die Verpackung duftete nach Lavendel.",
+            "en": "Inside was a wool sweater, and the packaging smelled of lavender."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Das Warten endet",
+        "rule": {
+          "de": "Wreszcie stellt das erreichte Ergebnis heraus; kiedy kann dazu den laufenden Hintergrund nennen.",
+          "en": "Wreszcie highlights the long-awaited result; kiedy can add the background activity in progress."
+        },
+        "examples": [
+          {
+            "targetText": "Paczka wreszcie przyszła wczoraj, kiedy spokojnie pracowałam w domu.",
+            "baseText": {
+              "de": "Das Paket kam endlich gestern, als ich in Ruhe zu Hause arbeitete.",
+              "en": "The parcel finally arrived yesterday while I was working quietly at home."
+            },
+            "highlight": "pracowałam"
+          },
+          {
+            "targetText": "Paczka wreszcie przyszła wczoraj, kiedy spokojnie pracowałem w domu.",
+            "baseText": {
+              "de": "Das Paket kam endlich gestern, als ich in Ruhe zu Hause arbeitete.",
+              "en": "The parcel finally arrived yesterday while I was working quietly at home."
+            },
+            "highlight": "pracowałem"
+          }
+        ]
+      },
+      "cloze": [
+        "W środku był wełniany ",
+        {
+          "kind": "choice",
+          "answer": "sweter",
+          "choices": [
+            "sweter",
+            "czapka",
+            "kurtka",
+            "rękawiczki"
+          ]
+        },
+        ", a opakowanie ",
+        {
+          "kind": "form",
+          "answer": "pachniało",
+          "cue": "niedokonany",
+          "choices": [
+            "pachniało",
+            "pachniał",
+            "pachniała",
+            "zapachniało"
+          ]
+        },
+        " lawendą."
+      ],
+      "chunks": [
+        {
+          "targetText": "Paczka wreszcie przyszła",
+          "baseText": {
+            "de": "Das Paket kam endlich",
+            "en": "The parcel finally arrived"
+          }
+        },
+        {
+          "targetText": "wczoraj,",
+          "baseText": {
+            "de": "gestern,",
+            "en": "yesterday,"
+          }
+        },
+        {
+          "targetText": "kiedy spokojnie pracowałam",
+          "baseText": {
+            "de": "als ich in Ruhe arbeitete",
+            "en": "while I was working quietly"
+          }
+        },
+        {
+          "targetText": "w domu.",
+          "baseText": {
+            "de": "zu Hause.",
+            "en": "at home."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "paczka",
+          "baseText": {
+            "de": "das Paket",
+            "en": "parcel"
+          }
+        },
+        {
+          "targetText": "wreszcie",
+          "baseText": {
+            "de": "endlich",
+            "en": "finally"
+          }
+        },
+        {
+          "targetText": "przyszła",
+          "baseText": {
+            "de": "kam an (hier: das Paket)",
+            "en": "arrived (here: the parcel)"
+          }
+        },
+        {
+          "targetText": "spokojnie",
+          "baseText": {
+            "de": "in Ruhe",
+            "en": "quietly"
+          }
+        },
+        {
+          "targetText": "pracowałam",
+          "baseText": {
+            "de": "ich arbeitete (Frau; Mann: pracowałem)",
+            "en": "I was working (female; male: pracowałem)"
+          }
+        },
+        {
+          "targetText": "sweter",
+          "baseText": {
+            "de": "der Pullover",
+            "en": "sweater"
+          }
+        },
+        {
+          "targetText": "lawendą",
+          "baseText": {
+            "de": "nach Lavendel (nach pachnieć)",
+            "en": "of lavender (after pachnieć)"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Paczka ",
+        "answer": "wreszcie",
+        "after": " przyszła wczoraj, kiedy spokojnie pracowałam w domu.",
+        "fallbackChoices": [
+          "wreszcie",
+          "jutro",
+          "podczas",
+          "zanim"
+        ]
+      },
+      "speakRequired": [
+        "paczka",
+        "wreszcie",
+        "wczoraj"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin erinnert sich an das verspätete Paket und fragt: „Dotarła paczka ze swetrem od babci?”",
+        "en": "Your friend remembers the delayed parcel and asks: „Dotarła paczka ze swetrem od babci?”"
+      },
+      "trophyWord": {
+        "word": "wreszcie",
+        "meaning": {
+          "de": "endlich",
+          "en": "finally"
+        },
+        "example": "Po długim remoncie biblioteka wreszcie jest otwarta.",
+        "whyThisWord": {
+          "de": "Wreszcie verbindet das aktuelle Ergebnis mit einer vorherigen Wartezeit und macht die Erleichterung hörbar.",
+          "en": "Wreszcie connects the current result with an earlier wait and conveys relief."
+        }
+      },
+      "distractors": [
+        "podczas przerwy",
+        "czekałam na kuriera"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin zeigt auf eine alte Paketbenachrichtigung auf deinem Handy.",
+        "en": "A friend points to an old parcel notification on your phone."
+      },
+      "songMood": "relief when a familiar parcel finally arrives",
+      "visualNotes": "Friends and an old delivery notification; parcel contents stay unrevealed."
+    },
+    {
+      "slug": "akurat-sasiad-z-pudlem",
+      "title": {
+        "de": "Eine zufällige Begegnung",
+        "en": "A chance encounter"
+      },
+      "situation": {
+        "de": "Eine Freundin möchte wissen, wie du deinen neuen Nachbarn kennengelernt hast.",
+        "en": "A friend wants to know how you met your new neighbor."
+      },
+      "pedagogicalGoal": "Mit akurat das zufällige Zusammentreffen zweier Situationen markieren und das Gesprächsthema anschließen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Jak poznałaś nowego sąsiada?",
+          "baseText": {
+            "de": "Wie hast du deinen neuen Nachbarn kennengelernt?",
+            "en": "How did you meet your new neighbor?"
+          }
+        },
+        {
+          "targetText": "Akurat wracałam ze sklepu, kiedy nowy sąsiad wnosił ciężkie pudło.",
+          "baseText": {
+            "de": "Ich kam gerade vom Einkaufen zurück, als der neue Nachbar eine schwere Kiste hereintrug.",
+            "en": "I happened to be returning from the shop when the new neighbor was carrying in a heavy box."
+          },
+          "acceptedTargetAlternatives": [
+            "Akurat wracałem ze sklepu, kiedy nowy sąsiad wnosił ciężkie pudło."
+          ]
+        },
+        {
+          "targetText": "I o czym była rozmowa? O tej ciasnej windzie?",
+          "baseText": {
+            "de": "Und worum ging das Gespräch? Um diesen engen Aufzug?",
+            "en": "And what did you talk about? That cramped lift?"
+          }
+        },
+        {
+          "targetText": "Potem rozmowa zeszła na windę, bo pudło było za duże.",
+          "baseText": {
+            "de": "Dann kam das Gespräch auf den Aufzug, weil die Kiste zu groß war.",
+            "en": "Then the conversation turned to the lift because the box was too large."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Gerade in diesem Moment",
+        "rule": {
+          "de": "Akurat hebt das zeitliche Zusammentreffen hervor; die beiden unvollendeten Verben zeigen die laufenden Situationen.",
+          "en": "Akurat highlights the coincidence in timing; the two imperfective verbs describe the situations in progress."
+        },
+        "examples": [
+          {
+            "targetText": "Akurat wracałam ze sklepu, kiedy nowy sąsiad wnosił ciężkie pudło.",
+            "baseText": {
+              "de": "Ich kam gerade vom Einkaufen zurück, als der neue Nachbar eine schwere Kiste hereintrug.",
+              "en": "I happened to be returning from the shop when the new neighbor was carrying in a heavy box."
+            },
+            "highlight": "wracałam"
+          },
+          {
+            "targetText": "Akurat wracałem ze sklepu, kiedy nowy sąsiad wnosił ciężkie pudło.",
+            "baseText": {
+              "de": "Ich kam gerade vom Einkaufen zurück, als der neue Nachbar eine schwere Kiste hereintrug.",
+              "en": "I happened to be returning from the shop when the new neighbor was carrying in a heavy box."
+            },
+            "highlight": "wracałem"
+          }
+        ]
+      },
+      "cloze": [
+        "Potem rozmowa ",
+        {
+          "kind": "form",
+          "answer": "zeszła",
+          "cue": "dokonany",
+          "choices": [
+            "zeszła",
+            "schodziła",
+            "zszedł",
+            "zeszło"
+          ]
+        },
+        " na ",
+        {
+          "kind": "choice",
+          "answer": "windę",
+          "choices": [
+            "windę",
+            "winda",
+            "windzie",
+            "windą"
+          ]
+        },
+        ", bo pudło było za duże."
+      ],
+      "chunks": [
+        {
+          "targetText": "Akurat wracałam",
+          "baseText": {
+            "de": "Ich kam gerade zurück",
+            "en": "I happened to be returning"
+          }
+        },
+        {
+          "targetText": "ze sklepu,",
+          "baseText": {
+            "de": "vom Einkaufen,",
+            "en": "from the shop,"
+          }
+        },
+        {
+          "targetText": "kiedy nowy sąsiad",
+          "baseText": {
+            "de": "als der neue Nachbar",
+            "en": "when the new neighbor"
+          }
+        },
+        {
+          "targetText": "wnosił ciężkie pudło.",
+          "baseText": {
+            "de": "eine schwere Kiste hereintrug.",
+            "en": "was carrying in a heavy box."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "akurat",
+          "baseText": {
+            "de": "gerade, zufällig in diesem Moment",
+            "en": "just then, by coincidence"
+          }
+        },
+        {
+          "targetText": "wracałam",
+          "baseText": {
+            "de": "ich kam zurück (Frau; Mann: wracałem)",
+            "en": "I was returning (female; male: wracałem)"
+          }
+        },
+        {
+          "targetText": "sąsiad",
+          "baseText": {
+            "de": "der Nachbar",
+            "en": "male neighbor"
+          }
+        },
+        {
+          "targetText": "ciężkie",
+          "baseText": {
+            "de": "schwer (hier: pudło)",
+            "en": "heavy (here: pudło)"
+          }
+        },
+        {
+          "targetText": "pudło",
+          "baseText": {
+            "de": "die Kiste",
+            "en": "box"
+          }
+        },
+        {
+          "targetText": "windę",
+          "baseText": {
+            "de": "den Aufzug (Akkusativ)",
+            "en": "lift (accusative)"
+          }
+        },
+        {
+          "targetText": "zeszła",
+          "baseText": {
+            "de": "kam auf etwas (hier: das Gespräch)",
+            "en": "turned to a topic (here: the conversation)"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Akurat wracałam ze sklepu, kiedy nowy ",
+        "answer": "sąsiad",
+        "after": " wnosił ciężkie pudło.",
+        "fallbackChoices": [
+          "sąsiad",
+          "tramwaj",
+          "deszcz",
+          "czajnik"
+        ]
+      },
+      "speakRequired": [
+        "akurat",
+        "sąsiad",
+        "pudło"
+      ],
+      "sceneCaption": {
+        "de": "Im Treppenhaus fragt deine Freundin: „Jak poznałaś nowego sąsiada?”",
+        "en": "In the stairwell, your friend asks: „Jak poznałaś nowego sąsiada?”"
+      },
+      "trophyWord": {
+        "word": "akurat",
+        "meaning": {
+          "de": "gerade, ausgerechnet zu diesem Zeitpunkt",
+          "en": "just then, at that very moment"
+        },
+        "example": "Akurat gotuję obiad, więc oddzwonię później.",
+        "whyThisWord": {
+          "de": "Akurat verbindet ein Ereignis mit dem passenden oder zufälligen Moment im Hintergrund.",
+          "en": "Akurat connects an event with the relevant or coincidental moment in the background."
+        }
+      },
+      "distractors": [
+        "wracałam z pracy,",
+        "małą lekką torbę."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freundinnen bleiben im Treppenhaus kurz stehen.",
+        "en": "Two friends pause in the stairwell."
+      },
+      "songMood": "a small coincidence introducing a new neighbor",
+      "visualNotes": "Stairwell conversation only; no box or lift problem in the opening scene."
+    },
+    {
+      "slug": "niespodzianka-urodzinowy-tort",
+      "title": {
+        "de": "Die Überraschung zu Hause",
+        "en": "A surprise at home"
+      },
+      "situation": {
+        "de": "Am Tag nach deinem Geburtstag fragt eine Freundin, wie du gefeiert hast.",
+        "en": "The day after your birthday, a friend asks how you celebrated."
+      },
+      "pedagogicalGoal": "Eine Geschichte mit niespodzianka bewerten und mit okazało się, że den später erfahrenen Hintergrund erzählen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Jak minęły twoje urodziny?",
+          "baseText": {
+            "de": "Wie war dein Geburtstag?",
+            "en": "How was your birthday?"
+          }
+        },
+        {
+          "targetText": "To była niespodzianka: wróciłam do domu, a tam czekał urodzinowy tort.",
+          "baseText": {
+            "de": "Das war eine Überraschung: Ich kam nach Hause, und dort wartete eine Geburtstagstorte.",
+            "en": "It was a surprise: I came home, and a birthday cake was waiting there."
+          },
+          "acceptedTargetAlternatives": [
+            "To była niespodzianka: wróciłem do domu, a tam czekał urodzinowy tort."
+          ]
+        },
+        {
+          "targetText": "Skąd ten bukiet? Kto to wszystko przygotował?",
+          "baseText": {
+            "de": "Woher kommt der Blumenstrauß? Wer hat das alles vorbereitet?",
+            "en": "Where did that bouquet come from? Who organized all this?"
+          }
+        },
+        {
+          "targetText": "Okazało się, że siostra przygotowała tort, a sąsiad przyniósł kwiaty.",
+          "baseText": {
+            "de": "Es stellte sich heraus, dass meine Schwester die Torte vorbereitet und der Nachbar Blumen mitgebracht hatte.",
+            "en": "It turned out that my sister had prepared the cake and the neighbor had brought flowers."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Geschichte bewerten",
+        "rule": {
+          "de": "To była niespodzianka bewertet das Ereignis; była stimmt mit niespodzianka überein, nur wróciłam ändert sich mit dem Geschlecht der erzählenden Person.",
+          "en": "To była niespodzianka evaluates the event; była agrees with niespodzianka, while only wróciłam changes with the narrator's gender."
+        },
+        "examples": [
+          {
+            "targetText": "To była niespodzianka: wróciłam do domu, a tam czekał urodzinowy tort.",
+            "baseText": {
+              "de": "Das war eine Überraschung: Ich kam nach Hause, und dort wartete eine Geburtstagstorte.",
+              "en": "It was a surprise: I came home, and a birthday cake was waiting there."
+            },
+            "highlight": "wróciłam"
+          },
+          {
+            "targetText": "To była niespodzianka: wróciłem do domu, a tam czekał urodzinowy tort.",
+            "baseText": {
+              "de": "Das war eine Überraschung: Ich kam nach Hause, und dort wartete eine Geburtstagstorte.",
+              "en": "It was a surprise: I came home, and a birthday cake was waiting there."
+            },
+            "highlight": "wróciłem"
+          }
+        ]
+      },
+      "cloze": [
+        "Okazało się, że siostra ",
+        {
+          "kind": "form",
+          "answer": "przygotowała",
+          "cue": "dokonany",
+          "choices": [
+            "przygotowała",
+            "przygotowywała",
+            "przygotował",
+            "przygotowało"
+          ]
+        },
+        " tort, a sąsiad przyniósł ",
+        {
+          "kind": "choice",
+          "answer": "kwiaty",
+          "choices": [
+            "kwiaty",
+            "owoce",
+            "pierogi",
+            "książki"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "To była niespodzianka:",
+          "baseText": {
+            "de": "Das war eine Überraschung:",
+            "en": "It was a surprise:"
+          }
+        },
+        {
+          "targetText": "wróciłam do domu,",
+          "baseText": {
+            "de": "ich kam nach Hause,",
+            "en": "I came home,"
+          }
+        },
+        {
+          "targetText": "a tam czekał",
+          "baseText": {
+            "de": "und dort wartete",
+            "en": "and waiting there was"
+          }
+        },
+        {
+          "targetText": "urodzinowy tort.",
+          "baseText": {
+            "de": "eine Geburtstagstorte.",
+            "en": "a birthday cake."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "niespodzianka",
+          "baseText": {
+            "de": "die Überraschung",
+            "en": "surprise"
+          }
+        },
+        {
+          "targetText": "wróciłam",
+          "baseText": {
+            "de": "ich kam zurück (Frau; Mann: wróciłem)",
+            "en": "I returned (female; male: wróciłem)"
+          }
+        },
+        {
+          "targetText": "urodzinowy",
+          "baseText": {
+            "de": "Geburtstags-",
+            "en": "birthday"
+          }
+        },
+        {
+          "targetText": "tort",
+          "baseText": {
+            "de": "die Torte",
+            "en": "cake"
+          }
+        },
+        {
+          "targetText": "siostra",
+          "baseText": {
+            "de": "die Schwester",
+            "en": "sister"
+          }
+        },
+        {
+          "targetText": "okazało się",
+          "baseText": {
+            "de": "es stellte sich heraus",
+            "en": "it turned out"
+          }
+        },
+        {
+          "targetText": "kwiaty",
+          "baseText": {
+            "de": "die Blumen",
+            "en": "flowers"
+          }
+        }
+      ],
+      "recall": {
+        "before": "To była niespodzianka: wróciłam do domu, a tam czekał urodzinowy ",
+        "answer": "tort",
+        "after": ".",
+        "fallbackChoices": [
+          "tort",
+          "deszcz",
+          "mróz",
+          "tramwaj"
+        ]
+      },
+      "speakRequired": [
+        "niespodzianka",
+        "urodzinowy",
+        "tort"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin setzt sich zu dir und fragt: „Jak minęły twoje urodziny?”",
+        "en": "Your friend sits down with you and asks: „Jak minęły twoje urodziny?”"
+      },
+      "trophyWord": {
+        "word": "niespodzianka",
+        "meaning": {
+          "de": "die Überraschung",
+          "en": "surprise"
+        },
+        "example": "To miła niespodzianka, że masz dziś wolny wieczór.",
+        "whyThisWord": {
+          "de": "Niespodzianka bündelt mehrere Ereignisse zu einer Bewertung und bereitet die Erklärung nach to była vor.",
+          "en": "Niespodzianka turns several events into an evaluation and sets up the explanation after to była."
+        }
+      },
+      "distractors": [
+        "wróciłam do biura,",
+        "czekoladowe ciastka."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freundinnen sprechen am Küchentisch über den vergangenen Tag.",
+        "en": "Two friends talk at the kitchen table about the previous day."
+      },
+      "songMood": "a warm birthday story with a surprise at its center",
+      "visualNotes": "Conversation at a kitchen table; no cake, bouquet, or organizer revealed in the opener."
+    },
+    {
+      "slug": "historia-zgubionego-telefonu",
+      "title": {
+        "de": "Das Handy ist zurück",
+        "en": "The phone is back"
+      },
+      "situation": {
+        "de": "Ein Freund erinnert sich an dein verlorenes Handy und fragt, wie die Geschichte ausgegangen ist.",
+        "en": "A friend remembers your lost phone and asks how the story ended."
+      },
+      "pedagogicalGoal": "Mit w sumie eine abschließende Bewertung und mit historia eine zusammenhängende Erzählung bündeln.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "I jak skończyła się sprawa zgubionego telefonu?",
+          "baseText": {
+            "de": "Und wie ist die Sache mit dem verlorenen Handy ausgegangen?",
+            "en": "And how did the story of your lost phone end?"
+          }
+        },
+        {
+          "targetText": "W sumie ta historia dobrze się skończyła: uczciwy znalazca oddał mi telefon.",
+          "baseText": {
+            "de": "Alles in allem ging die Geschichte gut aus: Ein ehrlicher Finder gab mir das Handy zurück.",
+            "en": "All in all, the story ended well: an honest finder returned my phone."
+          }
+        },
+        {
+          "targetText": "I czego cię to nauczyło? Co zrobisz z kontaktami?",
+          "baseText": {
+            "de": "Und was hast du daraus gelernt? Was machst du mit deinen Kontakten?",
+            "en": "And what did it teach you? What will you do with your contacts?"
+          }
+        },
+        {
+          "targetText": "Teraz regularnie robię kopię kontaktów i pilnuję telefonu w autobusie.",
+          "baseText": {
+            "de": "Jetzt sichere ich regelmäßig meine Kontakte und passe im Bus auf mein Handy auf.",
+            "en": "Now I regularly back up my contacts and keep an eye on my phone on the bus."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine abschließende Bewertung",
+        "rule": {
+          "de": "W sumie fasst deine Bewertung zusammen; ta historia greift die zuvor erzählten Ereignisse als Ganzes auf.",
+          "en": "W sumie sums up your evaluation; ta historia refers back to the events as a whole."
+        },
+        "examples": [
+          {
+            "targetText": "W sumie ta historia dobrze się skończyła: uczciwy znalazca oddał mi telefon.",
+            "baseText": {
+              "de": "Alles in allem ging die Geschichte gut aus: Ein ehrlicher Finder gab mir das Handy zurück.",
+              "en": "All in all, the story ended well: an honest finder returned my phone."
+            },
+            "highlight": "W sumie"
+          },
+          {
+            "targetText": "Ta historia zaczęła się na dworcu, a skończyła w kawiarni.",
+            "baseText": {
+              "de": "Die Geschichte begann am Bahnhof und endete in einem Café.",
+              "en": "The story began at the station and ended in a café."
+            },
+            "highlight": "Ta historia"
+          }
+        ]
+      },
+      "cloze": [
+        "Teraz regularnie robię kopię ",
+        {
+          "kind": "choice",
+          "answer": "kontaktów",
+          "choices": [
+            "kontaktów",
+            "ciastek",
+            "butów",
+            "talerzy"
+          ]
+        },
+        " i pilnuję ",
+        {
+          "kind": "choice",
+          "answer": "telefonu",
+          "choices": [
+            "telefonu",
+            "chleba",
+            "czajnika",
+            "dywanu"
+          ]
+        },
+        " w autobusie."
+      ],
+      "chunks": [
+        {
+          "targetText": "W sumie ta historia",
+          "baseText": {
+            "de": "Alles in allem ging die Geschichte",
+            "en": "All in all, the story"
+          }
+        },
+        {
+          "targetText": "dobrze się skończyła:",
+          "baseText": {
+            "de": "gut aus:",
+            "en": "ended well:"
+          }
+        },
+        {
+          "targetText": "uczciwy znalazca",
+          "baseText": {
+            "de": "ein ehrlicher Finder",
+            "en": "an honest finder"
+          }
+        },
+        {
+          "targetText": "oddał mi telefon.",
+          "baseText": {
+            "de": "gab mir das Handy zurück.",
+            "en": "returned my phone."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "historia",
+          "baseText": {
+            "de": "die Geschichte",
+            "en": "story"
+          }
+        },
+        {
+          "targetText": "w sumie",
+          "baseText": {
+            "de": "alles in allem",
+            "en": "all in all"
+          }
+        },
+        {
+          "targetText": "uczciwy",
+          "baseText": {
+            "de": "ehrlich",
+            "en": "honest"
+          }
+        },
+        {
+          "targetText": "znalazca",
+          "baseText": {
+            "de": "der Finder",
+            "en": "finder"
+          }
+        },
+        {
+          "targetText": "oddał",
+          "baseText": {
+            "de": "gab zurück (maskulines Subjekt)",
+            "en": "returned (masculine subject)"
+          }
+        },
+        {
+          "targetText": "kopię",
+          "baseText": {
+            "de": "eine Kopie (Akkusativ)",
+            "en": "a copy (accusative)"
+          }
+        },
+        {
+          "targetText": "kontaktów",
+          "baseText": {
+            "de": "der Kontakte",
+            "en": "contacts (genitive plural)"
+          }
+        },
+        {
+          "targetText": "pilnuję",
+          "baseText": {
+            "de": "ich passe auf",
+            "en": "I keep an eye on"
+          }
+        }
+      ],
+      "recall": {
+        "before": "W sumie ta historia dobrze się skończyła: uczciwy ",
+        "answer": "znalazca",
+        "after": " oddał mi telefon.",
+        "fallbackChoices": [
+          "znalazca",
+          "czajnik",
+          "autobus",
+          "parasol"
+        ]
+      },
+      "speakRequired": [
+        "historia",
+        "znalazca",
+        "telefon"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund deutet auf dein Handy und fragt: „I jak skończyła się sprawa zgubionego telefonu?”",
+        "en": "Your friend points at your phone and asks: „I jak skończyła się sprawa zgubionego telefonu?”"
+      },
+      "trophyWord": {
+        "word": "historia",
+        "meaning": {
+          "de": "die Geschichte",
+          "en": "story"
+        },
+        "example": "Ta historia pokazuje, że pomoc czasem przychodzi od obcej osoby.",
+        "whyThisWord": {
+          "de": "Historia lässt dich von einzelnen Ereignissen zu einer Zusammenfassung und ihrer Bedeutung wechseln.",
+          "en": "Historia lets you move from individual events to a summary and what it means."
+        }
+      },
+      "distractors": [
+        "źle się skończyła:",
+        "znalazł mój portfel."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Handy liegt neben zwei Tassen auf einem Tisch.",
+        "en": "A phone lies beside two cups on a table."
+      },
+      "songMood": "a relieved ending with a useful lesson",
+      "visualNotes": "Phone on café table; no finder or backup action in opening image."
+    }
+  ]
+}

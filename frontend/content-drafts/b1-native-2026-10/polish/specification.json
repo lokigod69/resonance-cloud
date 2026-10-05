@@ -1,0 +1,856 @@
+{
+  "status": "architect-spec",
+  "targetLanguage": "Polish",
+  "targetLanguageCode": "pl-PL",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "baseLanguage": "German",
+  "registerPolicy": "Two registers, locked per path, no mid-path switch (continues A1/A2 split). FORMAL/IMPERSONAL SERVICE in P3, P5, P6, P9: proszę/czy można/czy mógłby pan/czy mogłaby pani, pan/pani only when the beat genders the interlocutor, trzeba/należy/wiadomo impersonals, no ty-forms, no imperatives to staff. FRIEND REGISTER (ty) in P1, P2, P4, P7, P8, P10: colloquial connectors no and wiesz are recognition-only in interlocutor turns; w sumie is recognition-only in P1 lessons 1-6 and elsewhere until P1 lessons 7-10, where it is productive as an evaluation marker (never a trophy, never blanked against a synonym), and afterwards recycled in P2, P8 and P10 learner turns; bo stays primary subordinator; ponieważ appears recognition-only in formal P5/P6 interlocutor turns and is never required, blanked or a trophy. Every beat was checked: all 60 friend-path beats keep a friend/flatmate/colleague-friend interlocutor in all four turns, all 40 formal-path beats keep a staff interlocutor; no local register exceptions exist. Learner never asserts staff decisions: in service paths the learner asks, proposes, or accepts-with-modification; staff decides.",
+  "genderSafety": "Canonical TTS voice per path continues the A1/A2 roster and is recorded in the external authoring plan, not as a spec root field: ODD paths female (P1, P3, P5, P7, P9), EVEN paths male (P2, P4, P6, P8, P10). SPEAKER-GENDERED means a token that would change if the learner's own gender changed: 1sg/2sg past (-łam/-łem, -łaś/-łeś), 1sg/2sg conditional (-łabym/-łbym, -łabyś/-łbyś, wolałabym/wolałbym, chciałabym/chciałbym) and predicate adjectives or participles referring to the speaker (zadowolona/zadowolony, zmęczona/zmęczony). 3rd-person past, conditional and participle forms that agree with a subject whose gender is fixed by a visible noun (pociąg odjechał, paczka wreszcie przyszła, gdyby to było możliwe, czajnik jest zepsuty, sprawa zostanie załatwiona) are NOT speaker-gendered: they may be blanked (cued by the visible subject), recalled, speak-required or trophied, and a gender-neutral learner blank still obeys that fixed-object agreement. Every canonical learner line containing a speaker-gendered form is written in the path voice gender AND ships one complete reviewed opposite-gender string of the whole line: same semantic content, every necessary agreement change applied together (verb, adjective, participle, e.g. byłam zadowolona / byłem zadowolony), never suffix guessing. The alternative contains the trophy and all three speakRequired tokens unchanged; it is stored in the optional acceptedTargetAlternatives field as authoring data and is explicitly not yet runtime-integrated; TTS plays the canonical only; chunks, cloze and recall stay keyed to the canonical text and no automatic alternate chunk matcher exists. Where the beat allows, prefer gender-free framing without evading the goal: perfective future, 3rd-person events (okazało się, udało się, zmieniło się), impersonals (trzeba, można, wiadomo), present-tense opinion verbs (uważam, moim zdaniem), infinitive requests (chciał(a)bym is kept only where the staging targets it). Recall answer, cloze answers, speakRequired tokens and trophies are never speaker-gendered forms. Pattern blocks whose rule is speaker-gendered show the opposite-gender form as a second example with identical content so both forms are visible without a new field.",
+  "orthography": "Polish diacritics ąćęłńóśźż stored NFC; Polish quotation marks „…” inside captions when quoting the opener (both de and en captions quote the Polish line verbatim). Spoken words are canonical for TTS: no digit appears in any targetText. Dates, years and times are written out in dialogue (w maju, piętnastego maja, w dwa tysiące dwudziestym piątym roku, o wpół do siódmej, o osiemnastej) and digits are used only in captions (15. Mai, 2025, 6:30, 18:00). Prices are words in dialogue (dwadzieścia złotych) and digits plus zł in captions; decimal comma in captions. Basic counting only: numerals 2-4 take nominative plural and 5+ genitive plural in plain nominative-position counts (dwa dni, pięć dni, trzy godziny, pięć godzin); oblique numeral syntax (po pięciu dniach, z dwoma) is not staged, blanked or speak-required. The validator flags digit tokens anywhere in targetText and speakRequired. Each cloze cue is one short single string label in German or Polish grammar terms (e.g. Vergangenheit, dokonany, imiesłów, stopień wyższy), present only on form blanks; there is no bilingual cue object.",
+  "segmentation": {
+    "youOne": "dialogue[1] (first learner reply) is the production target: 8-16 Polish words, one or two sentences, built from 4-7 ordered chunks that join with single ASCII space to exactly the targetText (punctuation stays inside chunks). Contains the trophy as an exact whole-word surface token and all three speech tokens. In speaker-gendered cases the accepted alternative is a complete reviewed opposite-gender string of the whole line with the same sentence count and semantic content and every necessary agreement change applied (verbs, adjectives, participles together, e.g. byłam zadowolona / byłem zadowolony); it is not chunk-validated, chunks stay keyed to the canonical text only, and the trophy plus all three speech tokens must occur unchanged in it.",
+    "youTwo": "dialogue[3] (second learner reply) is 6-12 words, reconstructed by 2-3 cloze blanks (maximum 3 spaced units per blank). Blank classes are form (3rd-person aspect/tense, adjective or participle agreement with a visible subject, conditional of 3rd person, future zostanie), connector (najpierw/potem/zanim/chociaż/jednak/jeśli/żeby/dopóki/odkąd) or choice (content word fitting the beat). Each path's clozeSchema is a menu constrained by that path's staging: a lesson uses 2-3 blanks drawn from the menu and never needs every class, and no blank may target a form staged in a later lesson range. Never blanks a bare article-like demonstrative, a pronoun alone, or a speaker-gendered form.",
+    "chunks": "Each chunk is 1-4 words at phrase level (connector, verb phrase, prepositional phrase, object phrase); 6-8 useful terms per lesson drawn from the two learner turns, each term glossed de+en, gendered terms glossed with the other form inside the gloss text (A2 practice).",
+    "speechTokens": "speakRequired has exactly three distinct lowercase whole-word tokens present in dialogue[1], diacritics preserved, punctuation stripped, no digits, no się alone, no clitic-attached forms (gdybym, żebym excluded; gdyby/żeby allowed), no speaker-gendered forms, each token at least 4 letters or a staged connector. The tokens also occur unchanged in every accepted alternative string.",
+    "trophyAnchoring": "Polish trophies are the exact surface form used in dialogue[1] and in trophyWord.example (same inflection, whole-word token match after punctuation strip, NFC + casefold); no stem or substring matching, no inflection substitution to dodge forbidden words. Preferred classes: adverbs, connectors, impersonals, 3rd-person present/future verbs, infinitives, nouns in nominative/accusative-identical shapes (masculine inanimate, neuter, -ość feminines, plurals). The whyThisWord field states the construction family the word unlocks.",
+    "acceptedInput": "Cloze and recall accept the exact answer only (NFC, casefold, trim punctuation); all four choices are grammatical Polish words and exactly one fits the visible meaning of dialogue[3] in its caption context (the others are excluded grammatically or by the stated scene, never merely by preference). Speech uses the existing pl-PL fuzzy check at the unchanged 0.65 threshold inside the established 15-second B1 recording window against the canonical phrase; scoring of the listed complete opposite-gender alternatives is an authoring-declared extension that is not yet runtime-integrated, with no blanket word dropping and no automatic gender substitution."
+  },
+  "knownTraps": [
+    "Speaker-gendered past and conditional in 1sg/2sg: every canonical gendered learner line needs a complete reviewed opposite-gender alternative; never blank, recall, speak-require or trophy such forms.",
+    "Aspect choice in narration: imperfective for background and habits (czekałam, chodziłam), perfective for completed events (przyjechał, kupiłam); cloze form blanks must offer one aspect that fits the connector (kiedy + perfective event, podczas gdy + imperfective) and avoid cases where both aspects are acceptable.",
+    "Conditional particle movement: gdybym/żebym attach the person ending to the conjunction; speech tokens use gdyby/żeby only in 3rd-person or infinitive contexts, never the fused 1sg forms.",
+    "Synonym pairs that make cloze ambiguous: chociaż/choć/mimo że, żeby/aby, jeśli/jeżeli, wreszcie/nareszcie/w końcu, potem/później/następnie, kiedyś/dawniej, natomiast/zaś; a blank on one member must not list another member as a distractor.",
+    "Relative pronoun agreement: który/która/które/którzy agree with the antecedent, oblique forms (którego, w którym, z którą) are recognition-only until P4 lessons 7-10.",
+    "Impersonal result forms: -no/-to (zrobiono), neuter participle predicates (jest załatwione) and zostanie + participle require participle agreement with the subject (zostanie naprawiony/naprawiona/naprawione); form blanks cue the subject noun.",
+    "Basic counting only: numerals 2-4 take nominative plural, 5+ genitive plural, in plain nominative-position counts (dwa dni vs pięć dni, trzy tygodnie vs pięć tygodni) in narration and plans paths; oblique numeral syntax is never staged, blanked or speak-required, and counts in dialogue are written as words.",
+    "Case after prepositions in staged chunks: podczas + genitive, zamiast + genitive, odkąd + clause, do + genitive (podobny do), żeby + infinitive only when subject is shared.",
+    "TTS and ASR confuse ś/sz, ź/ż and final -ę; speech tokens avoid minimal pairs that differ only in a nasal ending (e.g. do not require both kawę and kawe-like tokens).",
+    "Comparative with coraz requires the comparative adjective/adverb (coraz lepiej, coraz częściej); distractors must be real comparatives, not positives, to keep exactly one answer.",
+    "Formal address: pan/pani forms take 3rd-person verbs; learner lines never mix ty with pan/pani; caption genders the interlocutor before any pan/pani appears."
+  ],
+  "mechanicalValidationRules": [
+    "100 trophies, exactly one per lesson, unique under NFC + casefold against each other and the full A1/A2 forbiddenTrophies list and the frozen corpus; single word, lowercase, no hyphen, apostrophe, digit, proper name or speaker-gendered form (regex on 1sg/2sg endings -łam$|-łem$|-łaś$|-łeś$|-łabym$|-łbym$|-łabyś$|-łbyś$ plus a reviewed list of speaker-referring predicate adjectives). 3rd-person forms (-ł/-ła/-ło, -łby/-łaby/-łoby) and adjectives/participles agreeing with a fixed-gender subject noun (zepsuty, uszkodzony, rozsądne, załatwione, zostanie) are allowed trophies.",
+    "trophyWord.word appears as an exact whole-word token in dialogue[1].targetText and in trophyWord.example after punctuation strip; also present in every acceptedTargetAlternatives string of that turn.",
+    "dialogue is exactly four tuples with targetText and bilingual baseText de+en; dialogue[0] is the interlocutor opener quoted verbatim inside both caption locales; dialogue[1] has 8-16 words; dialogue[3] has 6-12 words; dialogue[2] is non-empty and differs from dialogue[0].",
+    "chunks: 4-7 entries joined by single ASCII space equal dialogue[1].targetText exactly; chunks are keyed to the canonical text only. In speaker-gendered lessons each acceptedTargetAlternatives string is checked separately: same sentence count, contains trophyWord.word and all three speakRequired tokens unchanged, differs from the canonical only in tokens that change with the speaker's gender and their agreeing words (verbs, adjectives, participles), and is never chunk-matched.",
+    "terms: 6-8 entries, each with de+en meaning, every term string occurs in dialogue[1] or dialogue[3].",
+    "cloze: 2-3 blank parts, each with exactly 4 choices, answer in choices exactly once, no duplicate choices under casefold, kind in form|connector|choice, cue present iff kind is form and then a single non-empty string label (German or Polish form label), non-blank parts plus answers reconstruct dialogue[3].targetText exactly; blank classes come from the path clozeSchema menu without requiring every class per lesson; answers never match the 1sg/2sg speaker-gendered regex or a bare pronoun list (ja, ty, on, ona, to, ten, ta); 3rd-person agreement answers are allowed only when the agreeing subject noun is visible in the non-blank parts.",
+    "recall: before + answer + after equals dialogue[1].targetText; answer is a content word or staged connector of at least 4 letters, not a pronoun, not a 1sg/2sg speaker-gendered form (3rd-person forms agreeing with a fixed-gender subject are allowed), and occurs unchanged in every acceptedTargetAlternatives string of that turn; fallbackChoices has 4 distinct entries including the answer.",
+    "speakRequired: exactly 3 distinct lowercase tokens, each a whole word of dialogue[1], none 1sg/2sg speaker-gendered (3rd-person agreement forms with a fixed-gender subject allowed), none numeric, none equal to się, no two tokens differing only in a final nasal vowel; all three occur unchanged in every acceptedTargetAlternatives string of dialogue[1].",
+    "pattern: label is a single string (German form label), rule is bilingual {de, en}, 2-3 examples each with targetText and a highlight that is a contiguous substring of its targetText, at least one example targetText equals dialogue[1] or dialogue[3] targetText; when the rule covers a speaker-gendered form, one further example carries the opposite-gender line with identical content.",
+    "pedagogicalGoal is a German string; dialogue is four tuples of targetText:string and baseText:{de,en}; trophyWord.example is a single Polish string; every base field has both de and en; speak language pl-PL; B1 threshold row equals 0.65 and maxRecordingSeconds equals the established B1 scaffold value 15 (not the historical A2 value 12); neither number and no runtime behaviour changes before measured pilot evidence.",
+    "Register lint: formal paths contain no ty-forms (masz, chcesz, możesz, wiesz) in learner turns; friend paths contain no pan/pani; ponieważ appears only in dialogue[0]/dialogue[2] of P5/P6.",
+    "Staging lint: each path declares productive forms per lesson range; a lesson may not contain a productive form from a later range of its own path; recycled forms must be declared in recycles.",
+    "Canonical voice lint (authoring-side, not runtime): the path gender is read from the external authoring plan (odd paths female, even paths male; no canonicalVoice root field) and must match every 1sg/2sg speaker-gendered form in canonical learner lines; each such line carries exactly one non-empty acceptedTargetAlternatives entry that is a complete reviewed opposite-gender string with the same semantic content, all necessary agreement changes applied together, and the trophy plus all speakRequired tokens unchanged; lines without speaker-gendered forms carry no alternative."
+  ],
+  "semanticReviewRules": [
+    "Caption quotes only the opener and never hints the complication or the negotiation outcome; captions describe scene and interlocutor gender when pan/pani will be needed.",
+    "Second interlocutor turn is a meaningful new move (complication, interested question, or counter-offer), not a paraphrase or a yes/no echo.",
+    "Shape A: learner's second turn resolves or adapts to the complication; Shape B: learner's two turns read as connected discourse (second continues the first with a connector or anaphora); Shape C: learner's second turn accepts with a stated modification and leaves the decision to the staff.",
+    "Cloze distractors are real Polish words, grammatically or contextually excluded in that slot; verify no synonym pair (see knownTraps) lets two choices fit; different-meaning grammatical builds are allowed as distractors.",
+    "Aspect in narration is checked for naturalness by a native reader: background imperfective, event perfective, no English-calqued progressive paraphrases.",
+    "Trophy is used in its natural slot in both dialogue[1] and the example; the example differs from dialogue[1] in context and is also B1-register coherent.",
+    "Opposite-gender alternatives are complete, idiomatic and otherwise identical; adjectives, participles and verbs all switch together (e.g. byłam zadowolona / byłem zadowolony).",
+    "Formal paths: learner proposes or asks; staff grants, offers or declines. No learner line claims an action only staff may decide (refund approved, slot booked).",
+    "Register-coherent vocabulary: friend paths may use colloquial discourse markers; formal paths avoid them; no stiff officialese in friend paths.",
+    "German base text is primary and natural German (not word-for-word Polish), English base aligned to the same meaning; both carry the same information as the Polish line.",
+    "Recycled A2 chunks (poproszę + accusative, potrzebuję + genitive, instrumental transport, locative places, perfective future, bo) are reused unchanged, never re-taught as new."
+  ],
+  "requiredSchemaExtensions": [
+    "No change to existing shapes: pattern keeps label:string and rule:{de,en}; cloze keeps cue?:string present only on form blanks; dialogue stays four tuples of {targetText:string, baseText:{de,en}}; trophyWord.example stays a string; pedagogicalGoal stays a German string.",
+    "Optional, precisely placed extension (data only, explicitly not yet runtime-integrated): learner dialogue tuples at indices 1 and 3 may carry acceptedTargetAlternatives: string[] with exactly one complete reviewed opposite-gender targetText when the canonical line contains a speaker-gendered form, otherwise the field is absent; baseText is shared; chunks, cloze and recall stay keyed to the canonical text; current renderers ignore the field.",
+    "Optional mirror on speakTarget: acceptedPhrases: string[] equal to acceptedTargetAlternatives of dialogue[1]; requiredTokens must occur in every listed phrase; the field is authored now and scored only after a separate runtime change keeps the unchanged 0.65 threshold and 15-second window and takes the best score across canonical and alternatives.",
+    "Canonical voice metadata (gender f/m per path, roster voice id) lives in the external authoring plan used by the authoring-side voice lint; no canonicalVoice root field is added to the spec or lesson files; B1 continues the A1/A2 roster alternation odd female / even male.",
+    "speechConfiguration B1 rows for pl-PL use the established B1 scaffold values (threshold 0.65, maxRecordingSeconds 15) and are recorded as inherited-not-measured until the pilot; no numeric or runtime change before measured evidence."
+  ],
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Opowiadam, co się stało",
+      "anchor": "Connected past narration for an interested friend: background versus events, sequencing connectors, small evaluations.",
+      "register": "friend (ty); canonical voice female",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "najpierw/potem sequencing; imperfective background + perfective event in one story; kiedy + perfective; 1sg past in path gender with alternatives",
+          "recognitionOnly": "3rd-person plural past; wtedy; okazało się"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "podczas + genitive; zanim + perfective; tymczasem for parallel strands; three-event sequences; 3rd-person past of things (pociąg odjechał, deszcz padał)",
+          "recognitionOnly": "podczas gdy + clause; gdy as kiedy variant"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "wreszcie, akurat, okazało się że, w sumie evaluation; story summary with nominative nouns (niespodzianka, historia); reported outcome",
+          "recognitionOnly": "participle-like adverbials (wracając); dopiero + time"
+        }
+      ],
+      "clozeSchema": "form blanks on 3rd-person aspect pairs cued dokonany/niedokonany (odjechał vs odjeżdżał), connector blanks on najpierw/potem/zanim/podczas/wreszcie (never two synonyms listed), choice blanks on story nouns; no 1sg past blanks",
+      "recycles": "A2 time expressions (wczoraj, w sobotę, o ósmej), A2 past from A2 P3/P9 with the gender rule, A2 bo, perfective future for planned next steps",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "najpierw",
+          "beat": "Flatmate asks how your Kraków trip went; you sequence the first stop; follow-up asks about the hostel."
+        },
+        {
+          "number": 2,
+          "trophy": "potem",
+          "beat": "Friend asks what you did after the museum; you continue the sequence; follow-up asks who you met."
+        },
+        {
+          "number": 3,
+          "trophy": "nagle",
+          "beat": "Colleague asks why you were late; sudden rain story; follow-up asks whether you got soaked."
+        },
+        {
+          "number": 4,
+          "trophy": "podczas",
+          "beat": "Friend asks about the concert; something happened during it; follow-up asks how it ended."
+        },
+        {
+          "number": 5,
+          "trophy": "zanim",
+          "beat": "Friend asks about your morning; what happened before leaving; follow-up asks if you caught the train."
+        },
+        {
+          "number": 6,
+          "trophy": "tymczasem",
+          "beat": "Flatmate asks about the dinner you cooked; two things happened at once; follow-up asks about the guests."
+        },
+        {
+          "number": 7,
+          "trophy": "wreszcie",
+          "beat": "Friend asks whether the parcel arrived; the long wait ended; follow-up asks what was inside."
+        },
+        {
+          "number": 8,
+          "trophy": "akurat",
+          "beat": "Friend asks how you met the neighbor; coincidence story; follow-up asks what you talked about."
+        },
+        {
+          "number": 9,
+          "trophy": "niespodzianka",
+          "beat": "Friend asks about your birthday; surprise party story; follow-up asks who organized it."
+        },
+        {
+          "number": 10,
+          "trophy": "historia",
+          "beat": "Friend asks about your lost phone; you sum up the whole story; follow-up asks what you learned."
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Moim zdaniem, chociaż...",
+      "anchor": "Giving an opinion and conceding a point with a colleague-friend, then adjusting when a fact complicates it.",
+      "register": "friend (ty), colleague tone; canonical voice male",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "moim zdaniem, uważam że, wydaje mi się że; opinion + bo reason; chociaż introducing a concession clause",
+          "recognitionOnly": "według mnie; mimo że"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "jednak and natomiast as contrast connectors; z jednej strony... z drugiej strony; przynajmniej as the concessive-upside marker closing a contrast (productive from lesson 6, where it is the trophy); comparative adjectives/adverbs in judgments",
+          "recognitionOnly": "choć; za to"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "warto + infinitive, szczerze mówiąc, owszem ale, ostatecznie conclusions; conceding then deciding (przynajmniej reused from lessons 4-6)",
+          "recognitionOnly": "mimo wszystko; co prawda"
+        }
+      ],
+      "clozeSchema": "connector blanks on chociaż/jednak/natomiast/przynajmniej with non-synonym distractors (bo, więc, albo), przynajmniej blanked only from lesson 6 onward, form blanks on comparative forms cued stopień wyższy, choice blanks on evaluative adjectives",
+      "recycles": "A2 comparatives (tańsze, lepiej as recognition), A2 bo, A2 preferences (wolę); P1 sequencing adverbs as recognition",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "zdaniem",
+          "beat": "Colleague asks which office layout is better; you give your view; then the boss already chose otherwise."
+        },
+        {
+          "number": 2,
+          "trophy": "uważam",
+          "beat": "Friend asks if the new tram line helps; you judge it; then they cite a worse commute."
+        },
+        {
+          "number": 3,
+          "trophy": "chociaż",
+          "beat": "Colleague asks whether the film was good; you concede a flaw; then they announce a sequel."
+        },
+        {
+          "number": 4,
+          "trophy": "jednak",
+          "beat": "Friend asks if you would move to the suburbs; you concede but prefer; then rents are rising."
+        },
+        {
+          "number": 5,
+          "trophy": "natomiast",
+          "beat": "Colleague asks about two lunch places; you contrast them; then one closes early today."
+        },
+        {
+          "number": 6,
+          "trophy": "przynajmniej",
+          "beat": "Friend complains the gym is crowded; you find an upside; then they threaten to quit."
+        },
+        {
+          "number": 7,
+          "trophy": "warto",
+          "beat": "Colleague asks if a language course is worth it; you say why; then they mention the price."
+        },
+        {
+          "number": 8,
+          "trophy": "szczerze",
+          "beat": "Friend asks your honest view of their flat; you answer frankly; then they already signed the lease."
+        },
+        {
+          "number": 9,
+          "trophy": "owszem",
+          "beat": "Colleague asks if remote work suits you; you agree partly; then they propose five office days."
+        },
+        {
+          "number": 10,
+          "trophy": "ostatecznie",
+          "beat": "Friend asks whether you decided on the trip; you weigh and conclude; then they move the dates."
+        }
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Czy byłoby możliwe...",
+      "anchor": "Soft requests and hypotheticals at counters: conditional politeness, alternatives, accepting a modified offer.",
+      "register": "formal service; canonical voice female",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "chciał(a)bym + infinitive with alternatives; czy jest możliwość + infinitive/genitive; czy mógłby pan / mogłaby pani; zamiast + genitive; ewentualnie as softener",
+          "recognitionOnly": "wolał(a)bym; byłoby mi"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "gdyby + 3rd-person conditional (gdyby to było możliwe); to zależy od + genitive; czy przypadkiem; conditional of być (byłby/byłaby/byłoby) with 3rd-person subjects",
+          "recognitionOnly": "gdybym/gdybyśmy fused forms; w razie + genitive"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "wyjątkowo, czy jest szansa że/żeby, czy przysługuje zniżka, uprzejmie proszę; accept-with-modification formulas (w porządku, ale czy można...)",
+          "recognitionOnly": "czy dałoby się; o ile to możliwe"
+        }
+      ],
+      "clozeSchema": "form blanks on 3rd-person conditional (byłoby/mógłby/mogłaby cued tryb warunkowy), connector blanks on gdyby/zamiast/czy, choice blanks on service nouns; chciałabym/chciałbym is never blanked",
+      "recycles": "A2 poproszę + accusative, czy można/czy mogę, A2 prices and times, A2 P5 service vocabulary (termin, rezerwacja as recognition)",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "możliwość",
+          "beat": "Hotel clerk offers a standard room; you ask about late checkout; clerk offers it for a fee."
+        },
+        {
+          "number": 2,
+          "trophy": "zamiast",
+          "beat": "Café staff says the cake is sold out; you request a substitute; staff suggests another one."
+        },
+        {
+          "number": 3,
+          "trophy": "ewentualnie",
+          "beat": "Pharmacist says the brand is out; you ask for alternatives; pharmacist offers a generic."
+        },
+        {
+          "number": 4,
+          "trophy": "gdyby",
+          "beat": "Rental agent asks for dates; you ask what if plans change; agent offers flexible booking."
+        },
+        {
+          "number": 5,
+          "trophy": "zależy",
+          "beat": "Clerk asks which delivery speed; you say it depends on price; clerk quotes two prices."
+        },
+        {
+          "number": 6,
+          "trophy": "przypadkiem",
+          "beat": "Bakery staff asks what you need; you ask if they happen to have rye; they offer tomorrow's batch."
+        },
+        {
+          "number": 7,
+          "trophy": "wyjątkowo",
+          "beat": "Librarian says the loan ended; you ask for an exceptional extension; librarian offers two days."
+        },
+        {
+          "number": 8,
+          "trophy": "szansa",
+          "beat": "Box office says sold out; you ask about a chance of returns; staff suggests the waiting list."
+        },
+        {
+          "number": 9,
+          "trophy": "zniżka",
+          "beat": "Museum cashier states the price; you ask about a student discount; cashier asks for ID."
+        },
+        {
+          "number": 10,
+          "trophy": "uprzejmie",
+          "beat": "Clinic receptionist offers a late slot; you politely ask for morning; receptionist offers next week."
+        }
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "Ten, który...",
+      "anchor": "Describing things and people with relative clauses and comparisons, then adapting when the description does not match.",
+      "register": "friend (ty); canonical voice male",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "noun + który/która/które nominative relative clauses; colour/material adjective agreement in nominative/accusative; plecak/okulary descriptions",
+          "recognitionOnly": "którzy for people plural; oblique który forms"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "wygląda jak + nominative; podobny do + genitive; comparisons of kształt/rozmiar with większy/mniejszy; material adjectives (skórzany)",
+          "recognitionOnly": "taki sam jak; w porównaniu do"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "descriptions of people (sąsiad, który mieszka...); ulubiony + noun with relative clause; ten sam / ta sama; chained two-clause descriptions",
+          "recognitionOnly": "w którym / z którą / którego oblique relatives; o którym mówiłeś"
+        }
+      ],
+      "clozeSchema": "form blanks on relative pronoun agreement (który/która/które cued zaimek względny) and adjective agreement, choice blanks on description nouns/adjectives, connector blanks on jak/do/czy; distractors differ in gender or case, never near-synonyms",
+      "recycles": "A2 colours (granatowy as recognition), A2 demonstratives (ten, ta, tamto as recognition), A2 szukam + genitive, P2 comparatives",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "plecak",
+          "beat": "Friend asks what you lost; you describe the backpack; then they found a similar one."
+        },
+        {
+          "number": 2,
+          "trophy": "okulary",
+          "beat": "Flatmate asks which glasses are yours; you describe them; then they show a broken pair."
+        },
+        {
+          "number": 3,
+          "trophy": "kolor",
+          "beat": "Friend asks which jacket to bring; you give colour and detail; then both jackets look alike."
+        },
+        {
+          "number": 4,
+          "trophy": "wygląda",
+          "beat": "Friend asks about your new colleague; you describe looks; then they recognize an old classmate."
+        },
+        {
+          "number": 5,
+          "trophy": "podobny",
+          "beat": "Friend asks about the café you mentioned; you compare it; then it has moved away."
+        },
+        {
+          "number": 6,
+          "trophy": "skórzany",
+          "beat": "Friend in the shop asks which bag; you describe the leather one; then it costs double."
+        },
+        {
+          "number": 7,
+          "trophy": "kształt",
+          "beat": "Friend asks what the lamp looked like; you describe shape; then the catalog shows another model."
+        },
+        {
+          "number": 8,
+          "trophy": "rozmiar",
+          "beat": "Friend asks which size you take; you describe the fit; then that size is sold out."
+        },
+        {
+          "number": 9,
+          "trophy": "sąsiad",
+          "beat": "Friend asks who waved at you; you describe the neighbor; then the neighbor is moving out."
+        },
+        {
+          "number": 10,
+          "trophy": "ulubiony",
+          "beat": "Friend asks about your favourite spot; you describe it with a clause; then it closes for renovation."
+        }
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Chciałabym się dowiedzieć",
+      "anchor": "Indirect inquiries at service points: embedded czy/question-word clauses, impersonal wiadomo, asking about fees, hours and terms.",
+      "register": "formal service; canonical voice female",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "chciał(a)bym się dowiedzieć + czy/gdzie/o której clause (with alternatives); nie wiem, czy; czy wiadomo + clause; dokładnie as precision adverb",
+          "recognitionOnly": "ponieważ in staff turns; czy mógłby pan powiedzieć"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "chciał(a)bym zapytać o + accusative; czy jest opłata za + accusative; czy obowiązuje + nominative; embedded ile/jak długo questions",
+          "recognitionOnly": "w jakich godzinach; czy przysługuje"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "czy biuro jest czynne w + accusative days; proszę sprawdzić, czy...; jakie są warunki + genitive; czy można wcześniej + infinitive; two-clause inquiries",
+          "recognitionOnly": "czy istnieje możliwość; w przypadku gdy"
+        }
+      ],
+      "clozeSchema": "connector blanks on czy/gdzie/kiedy/ile inside embedded clauses (distractors: że, bo, żeby), form blanks on 3rd-person present (obowiązuje/jest/kosztuje cued czas teraźniejszy) or neuter adjective agreement (czynne), choice blanks on service nouns",
+      "recycles": "A2 question words (kiedy, ile, skąd as recognition), A2 time/opening vocabulary, P3 conditional request frame, P2 opinion verbs as recognition",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "dowiedzieć",
+          "beat": "Info desk asks how to help; you want to find out about trains; clerk asks the destination."
+        },
+        {
+          "number": 2,
+          "trophy": "wiadomo",
+          "beat": "Clinic staff asks why you call; you ask whether results are known; staff asks the date."
+        },
+        {
+          "number": 3,
+          "trophy": "dokładnie",
+          "beat": "Clerk offers a leaflet; you ask exactly when the office opens; clerk asks which service."
+        },
+        {
+          "number": 4,
+          "trophy": "zapytać",
+          "beat": "Landlord's assistant asks the reason; you want to ask about heating costs; assistant asks flat size."
+        },
+        {
+          "number": 5,
+          "trophy": "opłata",
+          "beat": "Bank advisor asks what you need; you ask whether a fee applies; advisor asks account type."
+        },
+        {
+          "number": 6,
+          "trophy": "obowiązuje",
+          "beat": "Pool staff greets you; you ask if the discount applies on weekends; staff asks for your card."
+        },
+        {
+          "number": 7,
+          "trophy": "czynne",
+          "beat": "Phone agent answers; you ask whether the office is open Saturdays; agent asks which office."
+        },
+        {
+          "number": 8,
+          "trophy": "sprawdzić",
+          "beat": "Post clerk asks how to help; you ask them to check a tracking status; clerk asks the number."
+        },
+        {
+          "number": 9,
+          "trophy": "warunki",
+          "beat": "Gym staff hands you a contract; you ask about cancellation terms; staff asks the contract length."
+        },
+        {
+          "number": 10,
+          "trophy": "wcześniej",
+          "beat": "Hotel clerk confirms arrival; you ask whether earlier check-in is possible; clerk asks flight time."
+        }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "Co trzeba zrobić?",
+      "anchor": "Processes and results at offices: impersonal obligation, step sequences, neuter result participles, zostanie + participle, accepting a modified procedure.",
+      "register": "formal service; canonical voice male",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "trzeba + infinitive; należy + infinitive; krok po kroku sequencing with najpierw/potem (recycled); formularz, wypełnić, złożyć",
+          "recognitionOnly": "-no/-to impersonal past (wypełniono); powinno się"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "gdzie podpisać; czy można dostać potwierdzenie; kiedy zostanie + participle (3rd-person future result, agreement cued); jest już + neuter participle",
+          "recognitionOnly": "zostało + participle past passive; w ciągu + genitive time"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "czy wszystko jest załatwione; sprawa jest + adjective; recap with krok sequences; listing dokument/dokumenty with mam/przyniosłem alternatives; accepting a substitute step (w porządku, w takim razie...)",
+          "recognitionOnly": "zostaną + participle plural; po złożeniu wniosku"
+        }
+      ],
+      "clozeSchema": "form blanks on participle agreement (załatwione/naprawiony/podpisana cued imiesłów) and zostanie/zostaną, connector blanks on najpierw/potem/zanim in procedures, choice blanks on office nouns; never blank trzeba vs należy against each other",
+      "recycles": "A2 kartą/gotówką payment instrumentals, A2 numer, A2 proszę, P1 sequencing connectors, P5 embedded czy-questions",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "trzeba",
+          "beat": "Office clerk asks your matter; you ask what is needed for registration; clerk requests two documents."
+        },
+        {
+          "number": 2,
+          "trophy": "należy",
+          "beat": "Bank clerk explains the new card; you confirm what one should do; clerk corrects the order."
+        },
+        {
+          "number": 3,
+          "trophy": "formularz",
+          "beat": "Clerk hands you a form; you ask how to fill it in; clerk asks for a second copy."
+        },
+        {
+          "number": 4,
+          "trophy": "podpisać",
+          "beat": "Courier asks for a signature; you ask where to sign; courier also needs your ID."
+        },
+        {
+          "number": 5,
+          "trophy": "potwierdzenie",
+          "beat": "Clerk says payment is done; you ask for confirmation; clerk offers email instead of paper."
+        },
+        {
+          "number": 6,
+          "trophy": "zostanie",
+          "beat": "Repair desk takes your laptop; you ask when it will be repaired; staff proposes a later date."
+        },
+        {
+          "number": 7,
+          "trophy": "załatwione",
+          "beat": "Clerk says the matter is handled; you check what is done; clerk notes one missing stamp."
+        },
+        {
+          "number": 8,
+          "trophy": "sprawa",
+          "beat": "Office assistant asks your case; you summarize the matter; assistant redirects you to another window."
+        },
+        {
+          "number": 9,
+          "trophy": "krok",
+          "beat": "Advisor explains the process; you recap it step by step; advisor adds a step you skipped."
+        },
+        {
+          "number": 10,
+          "trophy": "dokument",
+          "beat": "Clerk asks for your documents; you list what you brought; clerk accepts a scan instead."
+        }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Żeby zdążyć na wszystko",
+      "anchor": "Purpose, plans and conditions with a friend: żeby + infinitive, jeśli + future, imperfective future, waiting until a condition holds.",
+      "register": "friend (ty); canonical voice female",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "zamierzam / mam zamiar + infinitive; żeby + infinitive (same subject); mój cel to + infinitive; perfective future for the plan",
+          "recognitionOnly": "aby; planuję"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "jeśli + perfective future, main clause future; będę + infinitive imperfective future (gender-free, staged here as new); oszczędzać na + accusative; wakacje plans with weather condition",
+          "recognitionOnly": "jeżeli; będę + -ł participle (gendered, never produced)"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "żeby + past form with different subject (żeby znajomi przyszli, alternatives where 1sg); przygotować się do + genitive; chyba hedging; kurs plans; dopóki nie + perfective future",
+          "recognitionOnly": "o ile; zanim with future; póki"
+        }
+      ],
+      "clozeSchema": "connector blanks on żeby/jeśli/dopóki (distractors bo, że, kiedy; never aby or jeżeli alongside), form blanks on future forms (będę + infinitive vs perfective future cued czas przyszły) and 3rd-person żeby clause past (żeby przyszli cued), choice blanks on plan nouns",
+      "recycles": "A2 perfective future (spotkam się, kupię), A2 days/months, P1 sequencing, P2 warto + infinitive",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "zamierzam",
+          "beat": "Friend asks about summer; you state your intention; follow-up asks how you will afford it."
+        },
+        {
+          "number": 2,
+          "trophy": "żeby",
+          "beat": "Friend asks why you wake so early; you give the purpose; follow-up asks if it works."
+        },
+        {
+          "number": 3,
+          "trophy": "cel",
+          "beat": "Friend asks about your running; you name the goal; follow-up asks about a race date."
+        },
+        {
+          "number": 4,
+          "trophy": "jeśli",
+          "beat": "Friend asks about Saturday; you give a conditional plan; follow-up asks for a backup."
+        },
+        {
+          "number": 5,
+          "trophy": "oszczędzać",
+          "beat": "Friend asks why you skip cafés; you explain saving; follow-up asks for how long."
+        },
+        {
+          "number": 6,
+          "trophy": "wakacje",
+          "beat": "Friend asks about holidays; you tie the plan to weather; follow-up asks who is coming."
+        },
+        {
+          "number": 7,
+          "trophy": "przygotować",
+          "beat": "Friend asks about the exam; you explain preparation purpose; follow-up asks when results come."
+        },
+        {
+          "number": 8,
+          "trophy": "chyba",
+          "beat": "Friend asks whether you will move; you hedge a plan; follow-up asks what decides it."
+        },
+        {
+          "number": 9,
+          "trophy": "kurs",
+          "beat": "Friend asks about your evenings; you describe the course plan; follow-up asks if it is online."
+        },
+        {
+          "number": 10,
+          "trophy": "dopóki",
+          "beat": "Friend asks when you will decide; you wait until a condition; follow-up asks the deadline."
+        }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Kiedyś tak, teraz inaczej",
+      "anchor": "Past habits versus the present: imperfective habitual past, frequency adverbs, coraz + comparative, odkąd clauses, with a friendly complication.",
+      "register": "friend (ty); canonical voice male",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "kiedyś/dawniej + imperfective past habitual (jeździłem/jeździłam with alternatives); a teraz + present; codziennie, co tydzień frequency; 3rd-person habitual of places (było, stało)",
+          "recognitionOnly": "zwykle in past; bywało"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "często/rzadko contrast then-now; już nie + present; nadal + present; coraz + comparative adverb/adjective (coraz lepiej, coraz rzadziej)",
+          "recognitionOnly": "z czasem; im... tym"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "wtedy versus teraz framing; odkąd + perfective past (odkąd zmieniłem pracę, alternatives); zdrowo/zdrowiej; przedtem... a teraz; gender-free zmieniło się / poprawiło się summaries",
+          "recognitionOnly": "od tamtej pory; przywyknąć do"
+        }
+      ],
+      "clozeSchema": "connector blanks on odkąd/kiedyś/przedtem/wtedy with non-synonym distractors (dopóki, zanim, teraz), form blanks on comparative after coraz (cued stopień wyższy) and 3rd-person imperfective past of things (było/stało cued niedokonany), choice blanks on habit nouns; never blank kiedyś against dawniej",
+      "recycles": "A2 present-tense routines (pracuję, mieszkam as recognition), A2 past rule, P1 narration aspect, P2 comparatives, P7 future for resolutions",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "kiedyś",
+          "beat": "Friend asks if you still cycle; you contrast then and now; then they invite you to ride."
+        },
+        {
+          "number": 2,
+          "trophy": "dawniej",
+          "beat": "Friend asks about your old neighbourhood; you describe how it used to be; then it's being rebuilt."
+        },
+        {
+          "number": 3,
+          "trophy": "codziennie",
+          "beat": "Friend asks about your routine; daily habit then versus now; then they suggest a change."
+        },
+        {
+          "number": 4,
+          "trophy": "często",
+          "beat": "Friend asks if you see old friends; you contrast frequency; then one friend is visiting."
+        },
+        {
+          "number": 5,
+          "trophy": "rzadko",
+          "beat": "Friend asks about cooking; you rarely cook now; then they propose cooking together."
+        },
+        {
+          "number": 6,
+          "trophy": "coraz",
+          "beat": "Friend asks how Polish is going; you report steady progress; then they quiz you."
+        },
+        {
+          "number": 7,
+          "trophy": "wtedy",
+          "beat": "Friend asks about your first job; back then versus now; then your old boss calls."
+        },
+        {
+          "number": 8,
+          "trophy": "odkąd",
+          "beat": "Friend asks why you look rested; since you changed a habit; then they doubt it."
+        },
+        {
+          "number": 9,
+          "trophy": "zdrowo",
+          "beat": "Friend asks about your diet; you eat healthier now; then they order pizza."
+        },
+        {
+          "number": 10,
+          "trophy": "przedtem",
+          "beat": "Friend asks about your mornings; before versus now; then the work schedule changes."
+        }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Reklamacja z rozwiązaniem",
+      "anchor": "Complaint and resolution capstone: narrate the problem, propose and accept a modified remedy politely; recycles narration, conditional, result participles and concession.",
+      "register": "formal service; canonical voice female",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "problem narration in 3rd person (czajnik jest zepsuty, telefon był uszkodzony, przestał działać) plus 1sg purchase past with alternatives; chciał(a)bym zwrot / zwrot pieniędzy; recycled najpierw/potem",
+          "recognitionOnly": "gwarancja, paragon references; nie działa od"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "czy możliwa jest wymiana na + accusative; co może pan/pani zaproponować; jakie rozwiązanie; conditional byłoby/mógłby in proposals (recycled from P3)",
+          "recognitionOnly": "zostało uszkodzone (P6 recycle); w ramach gwarancji"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "ponownie + perfective past 3rd person; to rozsądne/rozsądna propozycja; kompromis proposals (pół zwrotu, ale...); rozumiem, ale czy można...; accept-with-modification closing",
+          "recognitionOnly": "mimo wszystko; w drodze wyjątku"
+        }
+      ],
+      "clozeSchema": "form blanks on 3rd-person past/participle agreement (był uszkodzony, przestała działać cued rodzaj) and 3rd-person conditional, connector blanks on ale/chociaż/więc/jeśli (one concession member only), choice blanks on remedy nouns (zwrot, wymiana, kompromis)",
+      "recycles": "P1 narration connectors and aspect, P2 chociaż/jednak, P3 conditional requests and zamiast, P6 participles and zostanie, A2 paragon/kartą/termin as recognition",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "zepsuty",
+          "beat": "Shop staff asks the problem; you narrate the broken kettle; staff proposes a repair first."
+        },
+        {
+          "number": 2,
+          "trophy": "uszkodzony",
+          "beat": "Courier desk asks about the delivery; the phone arrived damaged; desk offers a partial refund."
+        },
+        {
+          "number": 3,
+          "trophy": "zwrot",
+          "beat": "Online shop agent asks your request; you ask for a refund; agent offers a voucher."
+        },
+        {
+          "number": 4,
+          "trophy": "wymiana",
+          "beat": "Store clerk asks what you want; you ask for an exchange; clerk offers a different colour."
+        },
+        {
+          "number": 5,
+          "trophy": "zaproponować",
+          "beat": "Hotel manager apologizes for the noise; you ask what they propose; manager offers a room change."
+        },
+        {
+          "number": 6,
+          "trophy": "rozwiązanie",
+          "beat": "Landlord asks about the heating; you ask for a solution; landlord offers a repair date."
+        },
+        {
+          "number": 7,
+          "trophy": "ponownie",
+          "beat": "Service desk asks about the laptop; it failed again; desk offers a replacement unit."
+        },
+        {
+          "number": 8,
+          "trophy": "rozsądne",
+          "beat": "Agent proposes a voucher; you call it reasonable with one condition; agent agrees partly."
+        },
+        {
+          "number": 9,
+          "trophy": "kompromis",
+          "beat": "Manager offers half the refund; you propose a compromise; manager adds free delivery."
+        },
+        {
+          "number": 10,
+          "trophy": "rozumiem",
+          "beat": "Clerk explains the policy; you show understanding and request one change; clerk accepts it."
+        }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Mój rok i co dalej",
+      "anchor": "Year-in-review capstone with a friend: narrate the year, contrast then and now, state plans with purposes and conditions.",
+      "register": "friend (ty); canonical voice male",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "to był + adjective + rok; na początku + genitive; past narration with najpierw/potem (recycled) and alternatives; doświadczenie summaries (zdobyłem/zdobyłam with alternatives, nauczyłem się variants)",
+          "recognitionOnly": "w ciągu roku; udało mi się"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "największa zmiana to...; kiedyś... a teraz (recycled P8); wyzwanie było + adjective; zwłaszcza for emphasis; evaluative concession (chociaż, jednak recycled)",
+          "recognitionOnly": "co ciekawe; pod koniec roku"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "moje marzenie to + infinitive; w przyszłości + będę + infinitive and perfective future; jeśli/żeby/dopóki plans (recycled P7); ogólnie verdicts; nareszcie + perfective future celebration",
+          "recognitionOnly": "oby; mam nadzieję, że"
+        }
+      ],
+      "clozeSchema": "connector blanks on zwłaszcza/jeśli/żeby/dopóki/chociaż (one synonym member each), form blanks on future forms (będę + infinitive vs perfective cued czas przyszły) and 3rd-person past of events, choice blanks on review nouns; no 1sg past blanks",
+      "recycles": "P1 narration, P2 concession, P7 purpose and conditions, P8 then-now, A2 months and perfective future, A2 wczoraj/jutro frame as recognition",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "rok",
+          "beat": "Friend asks how your year was; you give a summary; follow-up asks the best moment."
+        },
+        {
+          "number": 2,
+          "trophy": "początek",
+          "beat": "Friend asks about January; the beginning was hard; follow-up asks what changed later."
+        },
+        {
+          "number": 3,
+          "trophy": "doświadczenie",
+          "beat": "Friend asks about the new job; you name the experience gained; follow-up asks if you'd stay."
+        },
+        {
+          "number": 4,
+          "trophy": "zmiana",
+          "beat": "Friend asks what changed most; one big change; follow-up asks whether it was planned."
+        },
+        {
+          "number": 5,
+          "trophy": "wyzwanie",
+          "beat": "Friend asks what was hardest; you name the challenge; follow-up asks how you coped."
+        },
+        {
+          "number": 6,
+          "trophy": "zwłaszcza",
+          "beat": "Friend asks what you liked; you emphasize one thing; follow-up asks why that one."
+        },
+        {
+          "number": 7,
+          "trophy": "marzenie",
+          "beat": "Friend asks about dreams; you state one and a plan; follow-up asks the first step."
+        },
+        {
+          "number": 8,
+          "trophy": "przyszłość",
+          "beat": "Friend asks about next year; you describe future plans; follow-up asks about the conditions."
+        },
+        {
+          "number": 9,
+          "trophy": "ogólnie",
+          "beat": "Friend asks for an overall verdict; you evaluate generally; follow-up asks what you'd change."
+        },
+        {
+          "number": 10,
+          "trophy": "nareszcie",
+          "beat": "Friend asks about tonight; you finally celebrate; follow-up asks where you'll go."
+        }
+      ]
+    }
+  ],
+  "unresolvedDecisions": [
+    "maxRecordingSeconds for B1 first replies of 8-16 words stays at the established B1 scaffold value 15 (the historical A2 value 12 is not reused); measure clip durations in the pilot before any change to the window or the 0.65 threshold.",
+    "Exact roster voice names for B1 paths (continuing Marta/Wojech/Maria/Rysard alternation) are an audio-ops decision; the spec only fixes odd-female/even-male.",
+    "Whether full-line typed input of accepted opposite-gender alternatives should be exposed in the UI or only used by the speech scorer."
+  ]
+}
