@@ -1,0 +1,3849 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Indonesian",
+  "targetLanguageCode": "id-ID",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "bagaimana-dan-mengapa",
+  "pathTitle": {
+    "de": "Wie und warum",
+    "en": "How and why"
+  },
+  "pathFunction": {
+    "de": "Ursachen, Folgen und Abläufe erklären und auf genaue Nachfragen eingehen.",
+    "en": "Explain causes, consequences and processes under requests for precision."
+  },
+  "specRef": {
+    "pathSpec": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V3.json",
+    "pathSpecSha256": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5",
+    "ledger": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V3.json",
+    "ledgerSha256": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5"
+  },
+  "authoring": {
+    "source": "Codex GPT-6",
+    "runId": "indonesian-b2-p1-p2-author-20261006",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "selisih-tagihan",
+      "title": {
+        "de": "Warum die Rechnung höher ist",
+        "en": "Why the invoice is higher"
+      },
+      "situation": {
+        "de": "Die Buchhaltung fragt nach der Differenz zwischen dem Angebot und einer Lieferantenrechnung.",
+        "en": "The accountant asks about the difference between a quote and a supplier's invoice."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus der Buchhaltung",
+            "en": "accountant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Aus der Buchhaltung kommt die Frage: „Tagihan dari vendor ini lebih besar dari penawaran awal. Anda bisa jelaskan kenapa?“",
+        "en": "The accountant asks: “Tagihan dari vendor ini lebih besar dari penawaran awal. Anda bisa jelaskan kenapa?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tagihan dari vendor ini lebih besar dari penawaran awal. Anda bisa jelaskan kenapa?",
+          "base": {
+            "de": "Diese Lieferantenrechnung ist höher als das ursprüngliche Angebot. Können Sie erklären, warum?",
+            "en": "This supplier's invoice is higher than the original quote. Can you explain why?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "formal",
+          "targetText": "Selisih itu muncul karena jumlah kursi ditambah setelah penawaran dibuat, dan ongkos kirimnya dihitung terpisah.",
+          "base": {
+            "de": "Die Differenz entsteht, weil die Stuhlzahl nach Erstellung des Angebots erhöht wurde und die Versandkosten gesondert berechnet werden.",
+            "en": "The difference arises because the number of chairs was increased after the quote was prepared, and the delivery cost is charged separately."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tapi di penawaran tertulis bahwa ongkos kirim sudah termasuk. Jadi yang mana yang benar?",
+          "base": {
+            "de": "Aber im Angebot steht, dass die Versandkosten schon enthalten sind. Was stimmt denn nun?",
+            "en": "But the quote says delivery is already included. Which is correct?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "formal",
+          "targetText": "Maksud saya, pengiriman pertama memang termasuk; yang dihitung terpisah hanya pengiriman kedua untuk kursi tambahan.",
+          "base": {
+            "de": "Ich meine: Die erste Lieferung ist tatsächlich enthalten; gesondert berechnet wird nur die zweite Lieferung für die zusätzlichen Stühle.",
+            "en": "I mean, the first delivery is indeed included; only the second delivery for the additional chairs is charged separately."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Baik. Untuk laporan, tolong ringkas dalam satu kalimat apa saja yang membentuk selisih itu.",
+          "base": {
+            "de": "Gut. Fassen Sie bitte für den Bericht in einem Satz zusammen, woraus die Differenz besteht.",
+            "en": "Fine. For the report, please sum up in one sentence what makes up the difference."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "formal",
+          "targetText": "Singkatnya, selisih itu terdiri dari dua puluh kursi tambahan dan satu pengiriman kedua, tanpa perubahan harga satuan.",
+          "base": {
+            "de": "Kurz gesagt besteht die Differenz aus zwanzig zusätzlichen Stühlen und einer zweiten Lieferung, ohne Änderung des Stückpreises.",
+            "en": "In brief, the difference consists of twenty extra chairs and a second delivery, with no change to the unit price."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Selisih itu muncul ",
+        "chunks": [
+          "karena",
+          "jumlah kursi ditambah",
+          "setelah penawaran dibuat,",
+          "dan ongkos kirimnya",
+          "dihitung terpisah."
+        ],
+        "distractors": [
+          "jumlah kursi dikurangi",
+          "dihitung bersama."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", pengiriman pertama memang termasuk; yang dihitung terpisah "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " pengiriman kedua untuk kursi tambahan."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Maksud saya",
+            "acceptedAnswers": [
+              "Maksud saya"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "hanya",
+            "acceptedAnswers": [
+              "hanya"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", selisih itu terdiri dari dua puluh kursi tambahan dan satu pengiriman kedua, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " perubahan harga satuan."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Singkatnya",
+            "acceptedAnswers": [
+              "Singkatnya",
+              "Ringkasnya"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "tanpa",
+            "acceptedAnswers": [
+              "tanpa"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "Selisih",
+        "acceptedAnswers": [
+          "Selisih"
+        ],
+        "after": " itu muncul karena jumlah kursi ditambah setelah penawaran dibuat, dan ongkos kirimnya dihitung terpisah.",
+        "fallbackChoices": [
+          "Selisih",
+          "Diskon",
+          "Bonus",
+          "Laba"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Ursachen präzise erläutern",
+          "en": "Explaining causes precisely"
+        },
+        "rule": {
+          "de": "Mit muncul karena benennst du die Ursache einer Differenz und ergänzt weitere Kosten mit dan.",
+          "en": "Use muncul karena to state what causes a difference, then add other costs with dan."
+        },
+        "examples": [
+          {
+            "targetText": "Selisih itu muncul karena jumlah kursi ditambah setelah penawaran dibuat, dan ongkos kirimnya dihitung terpisah.",
+            "base": {
+              "de": "Die Differenz entsteht, weil die Stuhlzahl nach Erstellung des Angebots erhöht wurde und die Versandkosten gesondert berechnet werden.",
+              "en": "The difference arises because the number of chairs was increased after the quote was prepared, and the delivery cost is charged separately."
+            },
+            "highlights": [
+              "muncul karena"
+            ]
+          },
+          {
+            "targetText": "Selisih biaya muncul karena kursi ditambah, bukan karena harga satuan berubah.",
+            "base": {
+              "de": "Die Kostendifferenz entsteht, weil zusätzliche Stühle dazukommen, nicht weil sich der Stückpreis ändert.",
+              "en": "The cost difference arises because chairs are added, not because the unit price changes."
+            },
+            "highlights": [
+              "muncul karena"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "muncul karena",
+          "kind": "frame",
+          "base": {
+            "de": "entsteht, weil",
+            "en": "arises because"
+          }
+        },
+        {
+          "targetText": "maksud saya",
+          "kind": "frame",
+          "base": {
+            "de": "ich meine",
+            "en": "I mean"
+          }
+        },
+        {
+          "targetText": "singkatnya",
+          "lemma": "singkat",
+          "kind": "frame",
+          "base": {
+            "de": "kurz gesagt",
+            "en": "in brief"
+          }
+        },
+        {
+          "targetText": "selisih",
+          "kind": "noun",
+          "base": {
+            "de": "Differenz",
+            "en": "difference"
+          }
+        },
+        {
+          "targetText": "penawaran",
+          "kind": "noun",
+          "base": {
+            "de": "Angebot; Kostenvoranschlag",
+            "en": "quote"
+          }
+        },
+        {
+          "targetText": "pengiriman",
+          "kind": "noun",
+          "base": {
+            "de": "Lieferung",
+            "en": "delivery"
+          }
+        },
+        {
+          "targetText": "dihitung",
+          "lemma": "menghitung",
+          "kind": "verb",
+          "base": {
+            "de": "berechnet werden",
+            "en": "be calculated"
+          }
+        },
+        {
+          "targetText": "harga satuan",
+          "kind": "noun",
+          "base": {
+            "de": "Stückpreis",
+            "en": "unit price"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "karena",
+            "kursi",
+            "terpisah"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "pengiriman",
+            "hanya",
+            "tambahan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Singkatnya",
+            "selisih",
+            "satuan"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "selisih",
+        "familyKey": "selisih",
+        "surface": "Selisih",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Selisih tagihan berasal dari pengiriman kedua.",
+          "base": {
+            "de": "Die Rechnungsdifferenz stammt von der zweiten Lieferung.",
+            "en": "The invoice difference comes from the second delivery."
+          }
+        },
+        "base": {
+          "de": "Differenz",
+          "en": "difference"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "cara-memilah-sampah",
+      "title": {
+        "de": "Die Tonnen im Wohnkomplex",
+        "en": "Bins in the housing complex"
+      },
+      "situation": {
+        "de": "Du erklärst einer neu eingezogenen Person die Müllsammlung in diesem fiktiven Wohnkomplex.",
+        "en": "You explain the waste collection rules of this fictional housing complex to a new neighbour."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Neue Person in der Nachbarschaft",
+            "en": "new neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die neu eingezogene Person fragt: „Aku baru pindah ke sini. Sampah di kompleks ini diambil kapan, dan harus dipisah tidak?“",
+        "en": "Your new neighbour asks: “Aku baru pindah ke sini. Sampah di kompleks ini diambil kapan, dan harus dipisah tidak?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Aku baru pindah ke sini. Sampah di kompleks ini diambil kapan, dan harus dipisah tidak?",
+          "base": {
+            "de": "Ich bin gerade hierhergezogen. Wann wird der Müll in diesem Komplex abgeholt, und muss er getrennt werden?",
+            "en": "I have just moved here. When is rubbish collected in this complex, and does it need sorting?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "neutral",
+          "targetText": "Harus dipilah dulu: sampah dapur masuk tong hijau, plastik dan kertas tong kuning, lalu diambil hari Senin dan Kamis.",
+          "base": {
+            "de": "Er muss zuerst sortiert werden: Küchenabfälle in die grüne Tonne, Plastik und Papier in die gelbe; abgeholt wird montags und donnerstags.",
+            "en": "It must be sorted first: kitchen waste goes in the green bin, plastic and paper in the yellow one, then collection is on Monday and Thursday."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau aku malas memilah dan campur saja, memangnya kenapa? Siapa yang tahu?",
+          "base": {
+            "de": "Was passiert denn, wenn ich zu bequem zum Trennen bin und alles mische? Wer merkt das?",
+            "en": "What happens if I cannot be bothered sorting and mix everything? Who would know?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "neutral",
+          "targetText": "Petugas tahu: menurut aturan di kompleks ini, tong yang campur tidak diangkut, jadi sampahmu tertahan sampai kamu pilah ulang.",
+          "base": {
+            "de": "Die Abholkräfte merken es: Nach den Regeln dieses Komplexes werden gemischte Tonnen nicht abgeholt, also bleibt dein Müll liegen, bis du ihn neu sortierst.",
+            "en": "The collection staff know: under this complex's rules, mixed bins are not collected, so your rubbish stays until you sort it again."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Terus kalau botol kaca atau baterai, masuk tong yang mana?",
+          "base": {
+            "de": "Und in welche Tonne kommen Glasflaschen oder Batterien?",
+            "en": "Then which bin do glass bottles or batteries go in?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "neutral",
+          "targetText": "Menurut pengumuman kompleks, kaca dan baterai tidak masuk tong mana pun; kumpulkan dulu, nanti kita antar ke pos pengumpulan di ujung kompleks.",
+          "base": {
+            "de": "Laut dem Aushang des Komplexes gehören Glas und Batterien in keine der Tonnen; sammle sie erst, später bringen wir sie zur Sammelstelle am Ende des Komplexes.",
+            "en": "According to the complex notice, glass and batteries go in neither bin; collect them first, and later we take them to the collection point at the end of the complex."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Harus dipilah dulu: sampah dapur masuk tong hijau, ",
+        "chunks": [
+          "plastik dan kertas",
+          "tong kuning,",
+          "lalu diambil",
+          "hari Senin",
+          "dan Kamis."
+        ],
+        "distractors": [
+          "lalu dibakar",
+          "sebelum Kamis."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Petugas tahu: "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " di kompleks ini, tong yang campur "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", jadi sampahmu tertahan sampai kamu pilah ulang."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "menurut aturan",
+            "acceptedAnswers": [
+              "menurut aturan",
+              "sesuai aturan"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "tidak diangkut",
+            "acceptedAnswers": [
+              "tidak diangkut"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "angkut – verneinter passiver Ablauf",
+              "en": "angkut — a negated passive step"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " kompleks, kaca dan baterai tidak masuk tong mana pun; kumpulkan dulu, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " kita antar ke pos pengumpulan di ujung kompleks."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Menurut pengumuman",
+            "acceptedAnswers": [
+              "Menurut pengumuman"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "nanti",
+            "acceptedAnswers": [
+              "nanti"
+            ],
+            "kind": "lexical",
+            "choices": [
+              "nanti",
+              "tadi",
+              "kemarin",
+              "dulu"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Harus ",
+        "answer": "dipilah",
+        "acceptedAnswers": [
+          "dipilah"
+        ],
+        "after": " dulu: sampah dapur masuk tong hijau, plastik dan kertas tong kuning, lalu diambil hari Senin dan Kamis.",
+        "fallbackChoices": [
+          "dipilah",
+          "dibakar",
+          "ditimbang",
+          "dijual"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen Ablauf aus Sicht der Dinge beschreiben",
+          "en": "Describing what happens to things"
+        },
+        "rule": {
+          "de": "Mit dipilah steht der sortierte Abfall im Mittelpunkt, während memilah die Handlung der sortierenden Person benennt.",
+          "en": "Use dipilah to focus on the waste being sorted, and memilah to name the action of the person sorting it."
+        },
+        "examples": [
+          {
+            "targetText": "Harus dipilah dulu: sampah dapur masuk tong hijau, plastik dan kertas tong kuning, lalu diambil hari Senin dan Kamis.",
+            "base": {
+              "de": "Er muss zuerst sortiert werden: Küchenabfälle in die grüne Tonne, Plastik und Papier in die gelbe; abgeholt wird montags und donnerstags.",
+              "en": "It must be sorted first: kitchen waste goes in the green bin, plastic and paper in the yellow one, then collection is on Monday and Thursday."
+            },
+            "highlights": [
+              "dipilah"
+            ]
+          },
+          {
+            "targetText": "Kita memilah sampah dulu, lalu petugas mengangkut tong sesuai jadwal.",
+            "base": {
+              "de": "Wir sortieren zuerst den Müll, dann holen die Abholkräfte die Tonnen nach Plan ab.",
+              "en": "We sort the waste first, then the collection staff take the bins according to the schedule."
+            },
+            "highlights": [
+              "memilah",
+              "lalu"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "menurut aturan",
+          "kind": "frame",
+          "base": {
+            "de": "nach den Regeln",
+            "en": "under the rules"
+          }
+        },
+        {
+          "targetText": "jadi",
+          "kind": "connector",
+          "base": {
+            "de": "also",
+            "en": "so"
+          }
+        },
+        {
+          "targetText": "dipilah",
+          "lemma": "memilah",
+          "kind": "verb",
+          "base": {
+            "de": "sortiert werden",
+            "en": "be sorted"
+          }
+        },
+        {
+          "targetText": "tong hijau",
+          "kind": "noun",
+          "base": {
+            "de": "grüne Tonne",
+            "en": "green bin"
+          }
+        },
+        {
+          "targetText": "tong kuning",
+          "kind": "noun",
+          "base": {
+            "de": "gelbe Tonne",
+            "en": "yellow bin"
+          }
+        },
+        {
+          "targetText": "diangkut",
+          "lemma": "mengangkut",
+          "kind": "verb",
+          "base": {
+            "de": "abgeholt werden",
+            "en": "be collected"
+          }
+        },
+        {
+          "targetText": "baterai",
+          "kind": "noun",
+          "base": {
+            "de": "Batterie",
+            "en": "battery"
+          }
+        },
+        {
+          "targetText": "pos pengumpulan",
+          "kind": "noun",
+          "base": {
+            "de": "Sammelstelle",
+            "en": "collection point"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "dipilah",
+            "kuning",
+            "Senin"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "aturan",
+            "diangkut",
+            "ulang"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "pengumuman",
+            "baterai",
+            "pengumpulan"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "memilah",
+        "familyKey": "pilah",
+        "surface": "dipilah",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Kita memilah sampah sesuai pengumuman kompleks.",
+          "base": {
+            "de": "Wir trennen den Müll nach dem Aushang des Wohnkomplexes.",
+            "en": "We sort the waste according to the housing complex notice."
+          }
+        },
+        "base": {
+          "de": "sortieren; trennen",
+          "en": "sort; separate"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "proyek-terlambat",
+      "title": {
+        "de": "Warum das Projekt zurückliegt",
+        "en": "Why the project is behind"
+      },
+      "situation": {
+        "de": "Die Projektleitung möchte verstehen, warum die Montage zwei Wochen hinter dem Plan liegt.",
+        "en": "The project manager wants to understand why installation is two weeks behind schedule."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Projektleitung",
+            "en": "project manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Projektleitung verlangt eine Erklärung: „Proyek ini mundur dua minggu dari jadwal. Saya perlu tahu persisnya apa yang terjadi.“",
+        "en": "The project manager asks for an explanation: “Proyek ini mundur dua minggu dari jadwal. Saya perlu tahu persisnya apa yang terjadi.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Proyek ini mundur dua minggu dari jadwal. Saya perlu tahu persisnya apa yang terjadi.",
+          "base": {
+            "de": "Das Projekt liegt zwei Wochen hinter dem Zeitplan. Ich muss genau wissen, was passiert ist.",
+            "en": "This project is two weeks behind schedule. I need to know exactly what happened."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "formal",
+          "targetText": "Pemasok mengirim bahan terlambat sepuluh hari, sehingga tim pemasangan tidak bisa mulai sesuai rencana.",
+          "base": {
+            "de": "Der Lieferant hat das Material zehn Tage zu spät geliefert, sodass das Montageteam nicht wie geplant beginnen konnte.",
+            "en": "The supplier delivered the materials ten days late, so the installation team could not start as planned."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Sepuluh hari, bukan dua minggu. Empat hari sisanya dari mana?",
+          "base": {
+            "de": "Zehn Tage, nicht zwei Wochen. Woher kommen die übrigen vier Tage?",
+            "en": "Ten days, not two weeks. Where do the other four days come from?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "formal",
+          "targetText": "Empat hari itu karena dua teknisi kami sakit berturut-turut, sehingga pekerjaan yang biasanya paralel harus dikerjakan bergantian.",
+          "base": {
+            "de": "Die vier Tage kamen zustande, weil zwei unserer Techniker nacheinander krank waren, sodass sonst parallele Arbeiten nacheinander erledigt werden mussten.",
+            "en": "Those four days came about because two of our technicians were ill one after the other, so work normally done in parallel had to be done in turn."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau pemasok yang sama dipakai lagi tahun depan, apa yang Anda ubah?",
+          "base": {
+            "de": "Wenn nächstes Jahr wieder derselbe Lieferant eingesetzt wird, was ändern Sie?",
+            "en": "If the same supplier is used again next year, what do you change?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "formal",
+          "targetText": "Saya usulkan pesan bahan sebulan lebih awal dan masukkan denda keterlambatan ke dalam kontrak pemasok.",
+          "base": {
+            "de": "Ich schlage vor, das Material einen Monat früher zu bestellen und eine Vertragsstrafe für Verspätungen in den Lieferantenvertrag aufzunehmen.",
+            "en": "I suggest ordering materials a month earlier and adding a late-delivery penalty to the supplier contract."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Pemasok mengirim bahan ",
+        "chunks": [
+          "terlambat sepuluh hari,",
+          "sehingga",
+          "tim pemasangan",
+          "tidak bisa mulai",
+          "sesuai rencana."
+        ],
+        "distractors": [
+          "lebih cepat,",
+          "tanpa rencana."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Empat hari itu "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " dua teknisi kami sakit berturut-turut, sehingga pekerjaan yang biasanya paralel harus dikerjakan "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "karena",
+            "acceptedAnswers": [
+              "karena",
+              "sebab"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "bergantian",
+            "acceptedAnswers": [
+              "bergantian",
+              "bergiliran"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " pesan bahan sebulan "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " dan masukkan denda keterlambatan ke dalam kontrak pemasok."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Saya usulkan",
+            "acceptedAnswers": [
+              "Saya usulkan",
+              "Saya mengusulkan",
+              "Saya sarankan"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "lebih awal",
+            "acceptedAnswers": [
+              "lebih awal"
+            ],
+            "kind": "lexical",
+            "choices": [
+              "lebih awal",
+              "lebih lambat",
+              "lebih mahal",
+              "lebih sedikit"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Pemasok mengirim bahan terlambat sepuluh hari, ",
+        "answer": "sehingga",
+        "acceptedAnswers": [
+          "sehingga"
+        ],
+        "after": " tim pemasangan tidak bisa mulai sesuai rencana.",
+        "fallbackChoices": [
+          "sehingga",
+          "meskipun",
+          "sebelum",
+          "asalkan"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Die Folge eines Problems erklären",
+          "en": "Explaining the consequence of a problem"
+        },
+        "rule": {
+          "de": "Mit sehingga verbindest du eine Ursache mit der Folge, die daraus für den Ablauf entsteht.",
+          "en": "Use sehingga to connect a cause with its consequence for the process."
+        },
+        "examples": [
+          {
+            "targetText": "Pemasok mengirim bahan terlambat sepuluh hari, sehingga tim pemasangan tidak bisa mulai sesuai rencana.",
+            "base": {
+              "de": "Der Lieferant hat das Material zehn Tage zu spät geliefert, sodass das Montageteam nicht wie geplant beginnen konnte.",
+              "en": "The supplier delivered the materials ten days late, so the installation team could not start as planned."
+            },
+            "highlights": [
+              "sehingga"
+            ]
+          },
+          {
+            "targetText": "Bahan datang terlambat, sehingga pemasangan harus menunggu.",
+            "base": {
+              "de": "Das Material kommt zu spät, sodass die Montage warten muss.",
+              "en": "The materials arrive late, so installation has to wait."
+            },
+            "highlights": [
+              "sehingga"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "sehingga",
+          "kind": "connector",
+          "base": {
+            "de": "sodass",
+            "en": "so that; consequently"
+          }
+        },
+        {
+          "targetText": "saya usulkan",
+          "kind": "frame",
+          "base": {
+            "de": "ich schlage vor",
+            "en": "I suggest"
+          }
+        },
+        {
+          "targetText": "pemasok",
+          "kind": "noun",
+          "base": {
+            "de": "Lieferant",
+            "en": "supplier"
+          }
+        },
+        {
+          "targetText": "pemasangan",
+          "kind": "noun",
+          "base": {
+            "de": "Montage",
+            "en": "installation"
+          }
+        },
+        {
+          "targetText": "sisanya",
+          "lemma": "sisa",
+          "kind": "noun",
+          "base": {
+            "de": "der Rest",
+            "en": "the remainder"
+          }
+        },
+        {
+          "targetText": "paralel",
+          "kind": "adverb",
+          "base": {
+            "de": "parallel",
+            "en": "in parallel"
+          }
+        },
+        {
+          "targetText": "dikerjakan",
+          "lemma": "mengerjakan",
+          "kind": "verb",
+          "base": {
+            "de": "ausgeführt werden",
+            "en": "be carried out"
+          }
+        },
+        {
+          "targetText": "bergantian",
+          "kind": "adverb",
+          "base": {
+            "de": "abwechselnd; nacheinander",
+            "en": "in sequence"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "sehingga",
+            "pemasangan",
+            "mulai"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "teknisi",
+            "pekerjaan",
+            "bergantian"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "usulkan",
+            "awal",
+            "kontrak"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "sehingga",
+        "familyKey": "sehingga",
+        "surface": "sehingga",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Dua teknisi sakit, sehingga pekerjaan harus dibagi ulang.",
+          "base": {
+            "de": "Zwei Techniker sind krank, sodass die Arbeit neu aufgeteilt werden muss.",
+            "en": "Two technicians are ill, so the work has to be reassigned."
+          }
+        },
+        "base": {
+          "de": "sodass; daher",
+          "en": "so; consequently"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "cara-kerja-poin-kafe",
+      "title": {
+        "de": "Eine Stempelkarte verstehen",
+        "en": "Understanding a stamp card"
+      },
+      "situation": {
+        "de": "Du erklärst die drei Belohnungsstufen eines fiktiven Caféprogramms.",
+        "en": "You explain the three reward levels of a fictional cafe scheme."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Café fragt dein Gegenüber: „Kartu poin kafe ini cara kerjanya bagaimana? Aku tiap kali diminta tempel stiker.“",
+        "en": "At the cafe, your friend asks: “Kartu poin kafe ini cara kerjanya bagaimana? Aku tiap kali diminta tempel stiker.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kartu poin kafe ini cara kerjanya bagaimana? Aku tiap kali diminta tempel stiker.",
+          "base": {
+            "de": "Wie funktioniert diese Cafékarte? Ich soll jedes Mal einen Aufkleber daraufkleben.",
+            "en": "How does this cafe points card work? Every time I am asked to add a sticker."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "neutral",
+          "targetText": "Ada tiga tahap: sepuluh stiker dapat satu kopi gratis, dua puluh dapat potongan setengah harga selama seminggu, lima puluh jadi anggota tetap.",
+          "base": {
+            "de": "Es gibt drei Stufen: Zehn Aufkleber bringen einen Gratiskaffee, zwanzig eine Woche lang halben Preis, fünfzig eine dauerhafte Mitgliedschaft.",
+            "en": "There are three stages: ten stickers get one free coffee, twenty get half price for a week, and fifty make you a permanent member."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tapi kemarin stikerku sudah sebelas dan tetap bayar penuh. Jadi aturannya bohong?",
+          "base": {
+            "de": "Aber gestern hatte ich schon elf Aufkleber und musste trotzdem voll bezahlen. Ist die Regel also eine Lüge?",
+            "en": "But yesterday I already had eleven stickers and still paid full price. So is the rule a lie?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "neutral",
+          "targetText": "Bukan bohong; kopinya baru gratis kalau kamu tunjukkan kartu sebelum bayar, kalau tidak, poinnya cuma tercatat.",
+          "base": {
+            "de": "Keine Lüge: Der Kaffee ist erst gratis, wenn du die Karte vor dem Bezahlen zeigst; sonst werden die Punkte nur vermerkt.",
+            "en": "It is not a lie: the coffee is only free if you show the card before paying; otherwise the points are merely recorded."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau kartunya hilang, poinnya hangus semua? Jelaskan singkat saja.",
+          "base": {
+            "de": "Wenn die Karte verloren geht, verfallen dann alle Punkte? Erklär es kurz.",
+            "en": "If the card gets lost, do all the points disappear? Explain briefly."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "neutral",
+          "targetText": "Singkatnya: poin tersimpan di nomor teleponmu, jadi kartu hilang tidak masalah, asalkan nomormu terdaftar sejak awal.",
+          "base": {
+            "de": "Kurz gesagt: Die Punkte sind unter deiner Telefonnummer gespeichert, also ist eine verlorene Karte kein Problem, sofern deine Nummer von Anfang an registriert ist.",
+            "en": "In brief: the points are saved under your phone number, so a lost card is no problem provided your number is registered from the start."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Ada tiga tahap: ",
+        "chunks": [
+          "sepuluh stiker",
+          "dapat satu kopi gratis,",
+          "dua puluh",
+          "dapat potongan",
+          "setengah harga"
+        ],
+        "distractors": [
+          "dua kopi gratis,",
+          "tanpa potongan"
+        ],
+        "frameSuffix": " selama seminggu, lima puluh jadi anggota tetap."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " bohong; kopinya baru gratis kalau kamu tunjukkan kartu sebelum bayar, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", poinnya cuma tercatat."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Bukan",
+            "acceptedAnswers": [
+              "Bukan"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "kalau tidak",
+            "acceptedAnswers": [
+              "kalau tidak",
+              "jika tidak"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": poin tersimpan di nomor teleponmu, jadi kartu hilang tidak masalah, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " nomormu terdaftar sejak awal."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Singkatnya",
+            "acceptedAnswers": [
+              "Singkatnya",
+              "Ringkasnya"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "asalkan",
+            "acceptedAnswers": [
+              "asalkan"
+            ],
+            "kind": "connector",
+            "choices": [
+              "asalkan",
+              "walaupun",
+              "sebelum",
+              "supaya"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ada tiga ",
+        "answer": "tahap",
+        "acceptedAnswers": [
+          "tahap"
+        ],
+        "after": ": sepuluh stiker dapat satu kopi gratis, dua puluh dapat potongan setengah harga selama seminggu, lima puluh jadi anggota tetap.",
+        "fallbackChoices": [
+          "tahap",
+          "cabang",
+          "alamat",
+          "pegawai"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Stufen mit ihren Bedingungen erklären",
+          "en": "Explaining stages and conditions"
+        },
+        "rule": {
+          "de": "Mit tahap gliederst du eine Erklärung und nennst zu jeder Stufe die konkrete Belohnung.",
+          "en": "Use tahap to organize an explanation and state the specific reward at each stage."
+        },
+        "examples": [
+          {
+            "targetText": "Ada tiga tahap: sepuluh stiker dapat satu kopi gratis, dua puluh dapat potongan setengah harga selama seminggu, lima puluh jadi anggota tetap.",
+            "base": {
+              "de": "Es gibt drei Stufen: Zehn Aufkleber bringen einen Gratiskaffee, zwanzig eine Woche lang halben Preis, fünfzig eine dauerhafte Mitgliedschaft.",
+              "en": "There are three stages: ten stickers get one free coffee, twenty get half price for a week, and fifty make you a permanent member."
+            },
+            "highlights": [
+              "tahap"
+            ]
+          },
+          {
+            "targetText": "Tahap pertama memberi kopi gratis, lalu tahap berikutnya memberi potongan harga.",
+            "base": {
+              "de": "Die erste Stufe bringt Gratiskaffee, dann bringt die nächste einen Preisnachlass.",
+              "en": "The first stage gives free coffee, then the next stage gives a discount."
+            },
+            "highlights": [
+              "Tahap",
+              "lalu"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "kalau tidak",
+          "kind": "connector",
+          "base": {
+            "de": "sonst; wenn nicht",
+            "en": "otherwise"
+          }
+        },
+        {
+          "targetText": "asalkan",
+          "kind": "connector",
+          "base": {
+            "de": "sofern",
+            "en": "provided that"
+          }
+        },
+        {
+          "targetText": "tahap",
+          "kind": "noun",
+          "base": {
+            "de": "Stufe",
+            "en": "stage"
+          }
+        },
+        {
+          "targetText": "stiker",
+          "kind": "noun",
+          "base": {
+            "de": "Aufkleber",
+            "en": "sticker"
+          }
+        },
+        {
+          "targetText": "potongan",
+          "kind": "noun",
+          "base": {
+            "de": "Preisnachlass",
+            "en": "discount"
+          }
+        },
+        {
+          "targetText": "anggota tetap",
+          "kind": "noun",
+          "base": {
+            "de": "dauerhaftes Mitglied",
+            "en": "permanent member"
+          }
+        },
+        {
+          "targetText": "tercatat",
+          "lemma": "mencatat",
+          "kind": "verb",
+          "base": {
+            "de": "vermerkt",
+            "en": "recorded"
+          }
+        },
+        {
+          "targetText": "terdaftar",
+          "lemma": "mendaftar",
+          "kind": "verb",
+          "base": {
+            "de": "registriert",
+            "en": "registered"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "stiker",
+            "kopi",
+            "potongan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "tunjukkan",
+            "sebelum",
+            "tercatat"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Singkatnya",
+            "tersimpan",
+            "terdaftar"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "tahap",
+        "familyKey": "tahap",
+        "surface": "tahap",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Setiap tahap memberi manfaat yang berbeda.",
+          "base": {
+            "de": "Jede Stufe bietet einen anderen Vorteil.",
+            "en": "Each stage offers a different benefit."
+          }
+        },
+        "base": {
+          "de": "Stufe; Phase",
+          "en": "stage"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "alasan-ganti-internet",
+      "title": {
+        "de": "Mehr als nur der Preis",
+        "en": "More than just price"
+      },
+      "situation": {
+        "de": "Eine Person aus der Nachbarschaft fragt nach deinem Wechsel des Internetanbieters.",
+        "en": "A neighbour asks why you changed internet providers."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In der Nachbarschaft lautet die Frage: „Kenapa kamu ganti provider internet? Yang lama kan sudah lima tahun.“",
+        "en": "Your neighbour asks: “Kenapa kamu ganti provider internet? Yang lama kan sudah lima tahun.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kenapa kamu ganti provider internet? Yang lama kan sudah lima tahun.",
+          "base": {
+            "de": "Warum wechselst du den Internetanbieter? Beim alten bist du doch schon fünf Jahre.",
+            "en": "Why are you changing internet provider? You have been with the old one for five years."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "neutral",
+          "targetText": "Alasan utamanya bukan harga, tapi jaringannya sering putus tiap sore, padahal aku butuh koneksi stabil untuk rapat daring.",
+          "base": {
+            "de": "Der Hauptgrund ist nicht der Preis, sondern dass die Verbindung jeden Nachmittag abbricht, obwohl ich eine stabile Verbindung für Onlinebesprechungen brauche.",
+            "en": "The main reason is not the price, but the connection keeps dropping every afternoon, even though I need a stable connection for online meetings."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tiap sore? Di rumahku lancar saja. Mungkin modemmu yang rusak, bukan providernya.",
+          "base": {
+            "de": "Jeden Nachmittag? Bei mir zu Hause läuft sie einwandfrei. Vielleicht ist dein Modem kaputt, nicht der Anbieter schuld.",
+            "en": "Every afternoon? It works fine at my house. Perhaps your modem is faulty, rather than the provider."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "neutral",
+          "targetText": "Modemnya sudah diganti dua kali, hasilnya sama; teknisi mereka sendiri mengaku kabel di blok kita sudah tua.",
+          "base": {
+            "de": "Das Modem ist schon zweimal ausgetauscht worden, mit demselben Ergebnis; die eigenen Techniker geben zu, dass das Kabel in unserem Block schon alt ist.",
+            "en": "The modem has already been replaced twice, with the same result; their own technicians admit that the cable in our block is old."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau aku mau ikut pindah, apa yang harus kuperhatikan dulu?",
+          "base": {
+            "de": "Wenn ich auch wechseln möchte, worauf muss ich zuerst achten?",
+            "en": "If I want to switch too, what should I check first?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "neutral",
+          "targetText": "Cek dulu apakah kabel barunya sudah sampai blok kita; kalau belum, tunggu, supaya tidak bayar dua langganan sekaligus.",
+          "base": {
+            "de": "Prüfe zuerst, ob das neue Kabel unseren Block schon erreicht; falls nicht, warte, damit du nicht zwei Abos gleichzeitig bezahlst.",
+            "en": "First check whether the new cable already reaches our block; if not, wait so you do not pay for two subscriptions at once."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Alasan utamanya bukan harga, ",
+        "chunks": [
+          "tapi jaringannya",
+          "sering putus tiap sore,",
+          "padahal",
+          "aku butuh",
+          "koneksi stabil"
+        ],
+        "distractors": [
+          "selalu lancar tiap sore,",
+          "aku punya"
+        ],
+        "frameSuffix": " untuk rapat daring."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Modemnya sudah diganti dua kali, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "; teknisi mereka sendiri "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " kabel di blok kita sudah tua."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "hasilnya sama",
+            "acceptedAnswers": [
+              "hasilnya sama",
+              "hasilnya tetap sama"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "mengaku",
+            "acceptedAnswers": [
+              "mengaku",
+              "mengakui"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "aku – eine Tatsache zugeben",
+              "en": "aku — admit a fact"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " apakah kabel barunya sudah sampai blok kita; kalau belum, tunggu, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tidak bayar dua langganan sekaligus."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Cek dulu",
+            "acceptedAnswers": [
+              "Cek dulu",
+              "Periksa dulu"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "supaya",
+            "acceptedAnswers": [
+              "supaya",
+              "agar"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Alasan utamanya bukan ",
+        "answer": "harga",
+        "acceptedAnswers": [
+          "harga"
+        ],
+        "after": ", tapi jaringannya sering putus tiap sore, padahal aku butuh koneksi stabil untuk rapat daring.",
+        "fallbackChoices": [
+          "harga",
+          "stabil",
+          "tempat",
+          "jaringan"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Einen tatsächlichen Grund abgrenzen",
+          "en": "Distinguishing the real reason"
+        },
+        "rule": {
+          "de": "Mit bukan … tapi grenzt du den tatsächlichen Grund von einem vermuteten ab und mit padahal zeigst du den Widerspruch.",
+          "en": "Use bukan … tapi to distinguish the real reason from an assumed one, and padahal to show the conflict."
+        },
+        "examples": [
+          {
+            "targetText": "Alasan utamanya bukan harga, tapi jaringannya sering putus tiap sore, padahal aku butuh koneksi stabil untuk rapat daring.",
+            "base": {
+              "de": "Der Hauptgrund ist nicht der Preis, sondern dass die Verbindung jeden Nachmittag abbricht, obwohl ich eine stabile Verbindung für Onlinebesprechungen brauche.",
+              "en": "The main reason is not the price, but the connection keeps dropping every afternoon, even though I need a stable connection for online meetings."
+            },
+            "highlights": [
+              "bukan",
+              "tapi",
+              "padahal"
+            ]
+          },
+          {
+            "targetText": "Alasannya bukan promo, tapi jaringan lama sering putus padahal kami perlu rapat daring.",
+            "base": {
+              "de": "Der Grund ist kein Sonderangebot, sondern die alte Verbindung bricht oft ab, obwohl wir Onlinebesprechungen brauchen.",
+              "en": "The reason is not a promotion, but the old connection often drops even though we need online meetings."
+            },
+            "highlights": [
+              "bukan",
+              "tapi",
+              "padahal"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "bukan harga",
+          "kind": "frame",
+          "base": {
+            "de": "nicht der Preis",
+            "en": "not the price"
+          }
+        },
+        {
+          "targetText": "padahal",
+          "kind": "connector",
+          "base": {
+            "de": "obwohl doch",
+            "en": "even though"
+          }
+        },
+        {
+          "targetText": "alasan",
+          "kind": "noun",
+          "base": {
+            "de": "Grund",
+            "en": "reason"
+          }
+        },
+        {
+          "targetText": "jaringannya",
+          "lemma": "jaringan",
+          "kind": "noun",
+          "base": {
+            "de": "die Verbindung; das Netz",
+            "en": "the network"
+          }
+        },
+        {
+          "targetText": "koneksi stabil",
+          "kind": "noun",
+          "base": {
+            "de": "stabile Verbindung",
+            "en": "stable connection"
+          }
+        },
+        {
+          "targetText": "modemnya",
+          "lemma": "modem",
+          "kind": "noun",
+          "base": {
+            "de": "das Modem",
+            "en": "the modem"
+          }
+        },
+        {
+          "targetText": "diganti",
+          "lemma": "mengganti",
+          "kind": "verb",
+          "base": {
+            "de": "ausgetauscht werden",
+            "en": "be replaced"
+          }
+        },
+        {
+          "targetText": "langganan",
+          "kind": "noun",
+          "base": {
+            "de": "Abonnement",
+            "en": "subscription"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "putus",
+            "padahal",
+            "koneksi"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "diganti",
+            "hasilnya",
+            "kabel"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Cek",
+            "tunggu",
+            "langganan"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "alasan",
+        "familyKey": "alasan",
+        "surface": "Alasan",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Alasan kami pindah bukan harga, tapi koneksi yang sering putus.",
+          "base": {
+            "de": "Unser Grund für den Wechsel ist nicht der Preis, sondern die häufig ausfallende Verbindung.",
+            "en": "Our reason for switching is not the price but the connection that often drops."
+          }
+        },
+        "base": {
+          "de": "Grund",
+          "en": "reason"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "mengajukan-keberatan-denda",
+      "title": {
+        "de": "Einspruch gegen eine Geldbuße",
+        "en": "Appealing a fine"
+      },
+      "situation": {
+        "de": "Im fiktiven Büroverein gibt es eine Regel für Einsprüche gegen Rückgabegeldbußen; du erklärst einer Person aus deinem Team den Ablauf.",
+        "en": "A fictional office cooperative has a rule for appealing late-return fines; you explain it to a colleague."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus deinem Arbeitsteam",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Büro beginnt das Gespräch: „Aku kena denda dari koperasi kantor karena terlambat kembalikan proyektor. Bisa dibatalkan, tidak?“",
+        "en": "At the office, your colleague says: “Aku kena denda dari koperasi kantor karena terlambat kembalikan proyektor. Bisa dibatalkan, tidak?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Aku kena denda dari koperasi kantor karena terlambat kembalikan proyektor. Bisa dibatalkan, tidak?",
+          "base": {
+            "de": "Ich bekomme vom Büroverein eine Geldbuße, weil ich den Projektor zu spät zurückgebe. Lässt sich das aufheben?",
+            "en": "The office cooperative fines me for returning the projector late. Can it be cancelled?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "neutral",
+          "targetText": "Bisa dicoba: menurut aturan koperasi, dalam tujuh hari kamu mengajukan keberatan tertulis ke sekretaris, dengan alasan kenapa terlambat.",
+          "base": {
+            "de": "Einen Versuch ist es wert: Laut Vereinsregel reichst du innerhalb von sieben Tagen schriftlich Einspruch beim Sekretariat ein und erklärst die Verspätung.",
+            "en": "It is worth trying: under the cooperative's rule, you submit a written appeal to the secretary within seven days, explaining why you are late."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Alasannya apa? Waktu itu aku cuma lupa, tidak ada alasan khusus.",
+          "base": {
+            "de": "Welchen Grund? Damals habe ich es einfach vergessen; es gab keinen besonderen Anlass.",
+            "en": "What reason? At the time I simply forgot; there was no special reason."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "neutral",
+          "targetText": "Maksudku, kalau cuma lupa, tulis apa adanya dan minta keringanan; yang menentukan tetap pengurus, jadi hasilnya tidak otomatis.",
+          "base": {
+            "de": "Ich meine: Wenn du es nur vergisst, schreib genau das und bitte um Nachsicht; entscheiden muss weiter der Vorstand, der Ausgang ist also nicht automatisch klar.",
+            "en": "I mean, if it is simply forgetfulness, write it as it is and ask for leniency; the committee still decides, so the result is not automatic."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau ditolak, apa langkah terakhirnya? Aku malas ribut.",
+          "base": {
+            "de": "Wenn es abgelehnt wird, was ist der letzte Schritt? Ich möchte keinen Streit.",
+            "en": "If it is rejected, what is the final step? I do not want an argument."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "neutral",
+          "targetText": "Langkah terakhir bayar saja dendanya, tapi tanya apakah boleh dicicil dua bulan; menurut rekan di koperasi, itu pernah disetujui.",
+          "base": {
+            "de": "Als letzten Schritt zahlst du die Geldbuße, fragst aber, ob du sie über zwei Monate in Raten zahlen darfst; laut einer Person im Verein ist das schon einmal genehmigt worden.",
+            "en": "The final step is to pay the fine, but ask whether you can pay in instalments over two months; according to a colleague at the cooperative, that has been approved before."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Bisa dicoba: menurut aturan koperasi, dalam tujuh hari ",
+        "chunks": [
+          "kamu mengajukan",
+          "keberatan tertulis",
+          "ke sekretaris,",
+          "dengan alasan",
+          "kenapa terlambat."
+        ],
+        "distractors": [
+          "keberatan lisan",
+          "kamu menolak"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", kalau cuma lupa, tulis "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " dan minta keringanan; yang menentukan tetap pengurus, jadi hasilnya tidak otomatis."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Maksudku",
+            "acceptedAnswers": [
+              "Maksudku",
+              "Maksud saya"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "apa adanya",
+            "acceptedAnswers": [
+              "apa adanya"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " bayar saja dendanya, tapi tanya "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " boleh dicicil dua bulan; menurut rekan di koperasi, itu pernah disetujui."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Langkah terakhir",
+            "acceptedAnswers": [
+              "Langkah terakhir"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "apakah",
+            "acceptedAnswers": [
+              "apakah"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Bisa dicoba: menurut aturan koperasi, dalam tujuh hari kamu ",
+        "answer": "mengajukan",
+        "acceptedAnswers": [
+          "mengajukan"
+        ],
+        "after": " keberatan tertulis ke sekretaris, dengan alasan kenapa terlambat.",
+        "fallbackChoices": [
+          "mengajukan",
+          "mengabaikan",
+          "menolak",
+          "membatalkan"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen Ablauf ohne Erfolgsgarantie erklären",
+          "en": "Explaining a process without guaranteeing success"
+        },
+        "rule": {
+          "de": "Mit mengajukan keberatan beschreibst du das Einreichen eines Einspruchs, während bisa dicoba offenlässt, ob er Erfolg hat.",
+          "en": "Use mengajukan keberatan to describe submitting an appeal, while bisa dicoba leaves its success open."
+        },
+        "examples": [
+          {
+            "targetText": "Bisa dicoba: menurut aturan koperasi, dalam tujuh hari kamu mengajukan keberatan tertulis ke sekretaris, dengan alasan kenapa terlambat.",
+            "base": {
+              "de": "Einen Versuch ist es wert: Laut Vereinsregel reichst du innerhalb von sieben Tagen schriftlich Einspruch beim Sekretariat ein und erklärst die Verspätung.",
+              "en": "It is worth trying: under the cooperative's rule, you submit a written appeal to the secretary within seven days, explaining why you are late."
+            },
+            "highlights": [
+              "Bisa dicoba",
+              "mengajukan keberatan"
+            ]
+          },
+          {
+            "targetText": "Kamu bisa mengajukan keberatan, tapi pengurus tetap menentukan hasilnya.",
+            "base": {
+              "de": "Du kannst Einspruch einreichen, aber der Vorstand entscheidet weiterhin über den Ausgang.",
+              "en": "You can submit an appeal, but the committee still decides the outcome."
+            },
+            "highlights": [
+              "mengajukan keberatan",
+              "tapi"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "bisa dicoba",
+          "kind": "frame",
+          "base": {
+            "de": "einen Versuch wert",
+            "en": "worth trying"
+          }
+        },
+        {
+          "targetText": "menurut aturan",
+          "kind": "frame",
+          "base": {
+            "de": "laut den Regeln",
+            "en": "under the rules"
+          }
+        },
+        {
+          "targetText": "mengajukan",
+          "kind": "verb",
+          "base": {
+            "de": "einreichen; vorbringen",
+            "en": "submit"
+          }
+        },
+        {
+          "targetText": "keberatan tertulis",
+          "kind": "noun",
+          "base": {
+            "de": "schriftlicher Einspruch",
+            "en": "written appeal"
+          }
+        },
+        {
+          "targetText": "apa adanya",
+          "lemma": "apa adanya",
+          "kind": "phrase",
+          "base": {
+            "de": "wahrheitsgemäß, wie es ist",
+            "en": "as it is; truthfully"
+          }
+        },
+        {
+          "targetText": "keringanan",
+          "kind": "noun",
+          "base": {
+            "de": "Nachsicht; Ermäßigung",
+            "en": "leniency"
+          }
+        },
+        {
+          "targetText": "pengurus",
+          "kind": "noun",
+          "base": {
+            "de": "Vorstand; Verwaltung",
+            "en": "committee"
+          }
+        },
+        {
+          "targetText": "dicicil",
+          "lemma": "mencicil",
+          "kind": "verb",
+          "base": {
+            "de": "in Raten bezahlt werden",
+            "en": "be paid in instalments"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "mengajukan",
+            "keberatan",
+            "sekretaris"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "tulis",
+            "keringanan",
+            "pengurus"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "terakhir",
+            "dicicil",
+            "disetujui"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "mengajukan",
+        "familyKey": "aju",
+        "surface": "mengajukan",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Kamu mengajukan permintaan, lalu pengurus mempertimbangkannya.",
+          "base": {
+            "de": "Du reichst einen Antrag ein, dann prüft ihn der Vorstand.",
+            "en": "You submit a request, then the committee considers it."
+          }
+        },
+        "base": {
+          "de": "einreichen; vorbringen",
+          "en": "submit"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "rencana-kedai-batal",
+      "title": {
+        "de": "Ein gescheiterter Caféplan",
+        "en": "A cafe plan that falls through"
+      },
+      "situation": {
+        "de": "Eine befreundete Person fragt nach eurem aufgegebenen Caféplan, obwohl ihr bereits ein Ladenlokal gemietet habt.",
+        "en": "A friend asks about your abandoned cafe plan, despite your already renting premises."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Gegenüber fragt nach dem Plan: „Rencana buka kedai kopi kalian batal, ya? Padahal sudah sewa tempat.“",
+        "en": "Your friend asks about the plan: “Rencana buka kedai kopi kalian batal, ya? Padahal sudah sewa tempat.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Rencana buka kedai kopi kalian batal, ya? Padahal sudah sewa tempat.",
+          "base": {
+            "de": "Euer Plan, ein Café zu eröffnen, fällt also aus? Dabei habt ihr schon Räume gemietet.",
+            "en": "So your plan to open a cafe is off? Even though you have already rented a place."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "neutral",
+          "targetText": "Kami baru menyadari bahwa sewa tempat itu belum termasuk listrik dan air, sehingga modal kami habis sebelum buka.",
+          "base": {
+            "de": "Wir haben erst zu spät gemerkt, dass Strom und Wasser nicht in der Raummiete enthalten sind, sodass unser Kapital schon vor der Eröffnung aufgebraucht war.",
+            "en": "We only realized later that the rent did not include electricity and water, so our capital ran out before we could open."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Masa tidak dicek dulu sebelum tanda tangan? Itu kan hal dasar.",
+          "base": {
+            "de": "Habt ihr das wirklich nicht vor dem Unterschreiben geprüft? Das ist doch grundlegend.",
+            "en": "You really did not check before signing? That is a basic point."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "neutral",
+          "targetText": "Benar, itu salah kami; kontraknya kami baca cepat karena takut tempatnya diambil orang lain.",
+          "base": {
+            "de": "Stimmt, das war unser Fehler; wir haben den Vertrag zu schnell gelesen, weil wir Angst hatten, dass jemand anderes die Räume nimmt.",
+            "en": "True, that was our mistake; we read the contract too quickly because we were afraid someone else would take the premises."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau mau coba lagi tahun depan, apa yang paling penting diubah?",
+          "base": {
+            "de": "Wenn ihr es nächstes Jahr wieder versuchen wollt, was muss sich vor allem ändern?",
+            "en": "If you want to try again next year, what is the most important change?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "neutral",
+          "targetText": "Yang paling penting: tiap biaya tetap dihitung dulu sebelum tanda tangan, dan simpan modal cadangan untuk tiga bulan pertama.",
+          "base": {
+            "de": "Am wichtigsten: Vor dem Unterschreiben jede Fixkostenposition berechnen und für die ersten drei Monate Reservekapital zurücklegen.",
+            "en": "Most importantly: calculate every fixed cost before signing and keep reserve capital for the first three months."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Kami baru menyadari bahwa ",
+        "chunks": [
+          "sewa tempat itu",
+          "belum termasuk",
+          "listrik dan air,",
+          "sehingga",
+          "modal kami habis"
+        ],
+        "distractors": [
+          "sudah termasuk",
+          "listrik dan telepon,"
+        ],
+        "frameSuffix": " sebelum buka."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", itu salah kami; kontraknya kami baca cepat "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " takut tempatnya diambil orang lain."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Benar",
+            "acceptedAnswers": [
+              "Benar",
+              "Betul"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "karena",
+            "acceptedAnswers": [
+              "karena",
+              "sebab"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": tiap biaya tetap dihitung dulu "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tanda tangan, dan simpan modal cadangan untuk tiga bulan pertama."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Yang paling penting",
+            "acceptedAnswers": [
+              "Yang paling penting",
+              "Yang terpenting"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "sebelum",
+            "acceptedAnswers": [
+              "sebelum"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Kami baru ",
+        "answer": "menyadari",
+        "acceptedAnswers": [
+          "menyadari"
+        ],
+        "after": " bahwa sewa tempat itu belum termasuk listrik dan air, sehingga modal kami habis sebelum buka.",
+        "fallbackChoices": [
+          "menyadari",
+          "menutupi",
+          "menyangkal",
+          "menyewa"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine unerwartete Ursache erklären",
+          "en": "Explaining an unexpected cause"
+        },
+        "rule": {
+          "de": "Mit baru menyadari bahwa führst du eine späte Erkenntnis ein und mit sehingga ihre Folge.",
+          "en": "Use baru menyadari bahwa to introduce a late realization and sehingga to give its consequence."
+        },
+        "examples": [
+          {
+            "targetText": "Kami baru menyadari bahwa sewa tempat itu belum termasuk listrik dan air, sehingga modal kami habis sebelum buka.",
+            "base": {
+              "de": "Wir haben erst zu spät gemerkt, dass Strom und Wasser nicht in der Raummiete enthalten sind, sodass unser Kapital schon vor der Eröffnung aufgebraucht war.",
+              "en": "We only realized later that the rent did not include electricity and water, so our capital ran out before we could open."
+            },
+            "highlights": [
+              "baru menyadari bahwa",
+              "sehingga"
+            ]
+          },
+          {
+            "targetText": "Kami baru menyadari bahwa listrik dibayar terpisah, sehingga modal cadangan harus ditambah.",
+            "base": {
+              "de": "Wir merken erst jetzt, dass Strom gesondert bezahlt wird, sodass das Reservekapital aufgestockt werden muss.",
+              "en": "We only now realize that electricity is paid separately, so reserve capital has to be increased."
+            },
+            "highlights": [
+              "baru menyadari bahwa",
+              "sehingga"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "menyadari bahwa",
+          "kind": "frame",
+          "base": {
+            "de": "erkennen, dass",
+            "en": "realize that"
+          }
+        },
+        {
+          "targetText": "sehingga",
+          "kind": "connector",
+          "base": {
+            "de": "sodass",
+            "en": "so; consequently"
+          }
+        },
+        {
+          "targetText": "modal",
+          "kind": "noun",
+          "base": {
+            "de": "Kapital",
+            "en": "capital"
+          }
+        },
+        {
+          "targetText": "listrik",
+          "kind": "noun",
+          "base": {
+            "de": "Strom",
+            "en": "electricity"
+          }
+        },
+        {
+          "targetText": "tanda tangan",
+          "kind": "noun",
+          "base": {
+            "de": "Unterschrift",
+            "en": "signature"
+          }
+        },
+        {
+          "targetText": "biaya tetap",
+          "kind": "noun",
+          "base": {
+            "de": "Fixkosten",
+            "en": "fixed costs"
+          }
+        },
+        {
+          "targetText": "cadangan",
+          "kind": "noun",
+          "base": {
+            "de": "Reserve",
+            "en": "reserve"
+          }
+        },
+        {
+          "targetText": "dihitung",
+          "lemma": "menghitung",
+          "kind": "verb",
+          "base": {
+            "de": "berechnet werden",
+            "en": "be calculated"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "termasuk",
+            "listrik",
+            "modal"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Benar",
+            "kontraknya",
+            "takut"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "dihitung",
+            "simpan",
+            "cadangan"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "menyadari",
+        "familyKey": "sadar",
+        "surface": "menyadari",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Kami baru menyadari bahwa biaya tetapnya lebih besar.",
+          "base": {
+            "de": "Wir erkennen erst jetzt, dass die Fixkosten höher sind.",
+            "en": "We only now realize that the fixed costs are higher."
+          }
+        },
+        "base": {
+          "de": "erkennen; sich bewusst werden",
+          "en": "realize"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "alur-pendaftaran-pasien",
+      "title": {
+        "de": "Der Anmeldeablauf der Klinik",
+        "en": "The clinic's registration process"
+      },
+      "situation": {
+        "de": "Bei einer Schulung erklärst du den fiktiven Anmeldeablauf dieser Klinik.",
+        "en": "At a training session, you explain this clinic's fictional registration process."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person, die die Schulung leitet",
+            "en": "health trainer"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Schulung lautet die Frage: „Saya ingin memahami alur pendaftaran di klinik ini. Pasien baru harus mulai dari mana?“",
+        "en": "During training, the trainer asks: “Saya ingin memahami alur pendaftaran di klinik ini. Pasien baru harus mulai dari mana?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Saya ingin memahami alur pendaftaran di klinik ini. Pasien baru harus mulai dari mana?",
+          "base": {
+            "de": "Ich möchte den Anmeldeablauf dieser Klinik verstehen. Wo beginnen neue Patienten?",
+            "en": "I want to understand registration at this clinic. Where do new patients start?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "formal",
+          "targetText": "Di klinik ini, pasien baru didaftarkan lewat formulir di meja depan, lalu diberi nomor antrean berdasarkan urutan kedatangan, bukan berdasarkan keluhan.",
+          "base": {
+            "de": "In dieser Klinik werden neue Patienten mit einem Formular am Empfang angemeldet und erhalten dann eine Wartenummer nach Ankunft, nicht nach Beschwerden.",
+            "en": "At this clinic, new patients are registered using a form at the front desk, then given a queue number based on arrival order, not on their complaint."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Berarti pasien darurat juga harus antre? Itu berbahaya.",
+          "base": {
+            "de": "Also müssen Notfälle auch warten? Das ist gefährlich.",
+            "en": "So emergency patients also have to queue? That is dangerous."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "formal",
+          "targetText": "Tidak; yang dimaksud urutan kedatangan itu untuk pasien biasa, sedangkan pasien darurat di sini langsung dibawa ke ruang tindakan oleh perawat jaga.",
+          "base": {
+            "de": "Nein; mit Ankunftsreihenfolge sind reguläre Patienten gemeint, während Notfälle hier direkt von der diensthabenden Pflegekraft in den Behandlungsraum gebracht werden.",
+            "en": "No; arrival order means routine patients, whereas emergency patients here are taken straight to the treatment room by the nurse on duty."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau saya harus menulis alurnya untuk pelatihan, dalam dua kalimat, bagaimana?",
+          "base": {
+            "de": "Wenn ich den Ablauf für die Schulung in zwei Sätzen aufschreiben soll, wie lautet er?",
+            "en": "If I need to write the process in two sentences for training, how would it go?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "formal",
+          "targetText": "Pasien biasa: daftar di depan, antre berdasarkan kedatangan, dipanggil ke poli. Pasien darurat: langsung ke ruang tindakan, administrasinya diurus belakangan.",
+          "base": {
+            "de": "Reguläre Patienten: vorn anmelden, nach Ankunft warten, Aufruf in die Sprechstunde. Notfälle: direkt in den Behandlungsraum, Verwaltung später.",
+            "en": "Routine patients: register at the front, queue by arrival order, then be called to the outpatient clinic. Emergency patients: straight to the treatment room, with administration handled later."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Di klinik ini, pasien baru didaftarkan lewat formulir di meja depan, ",
+        "chunks": [
+          "lalu diberi",
+          "nomor antrean",
+          "berdasarkan",
+          "urutan kedatangan,",
+          "bukan berdasarkan keluhan."
+        ],
+        "distractors": [
+          "nomor kamar",
+          "lalu dibawa"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Tidak; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " urutan kedatangan itu untuk pasien biasa, sedangkan pasien darurat di sini langsung "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ke ruang tindakan oleh perawat jaga."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "yang dimaksud",
+            "acceptedAnswers": [
+              "yang dimaksud"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "dibawa",
+            "acceptedAnswers": [
+              "dibawa"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "bawa – passiv: von der Pflegekraft gebracht",
+              "en": "bawa — passive: taken by the nurse"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": daftar di depan, antre berdasarkan kedatangan, dipanggil ke poli. "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ": langsung ke ruang tindakan, administrasinya diurus belakangan."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Pasien biasa",
+            "acceptedAnswers": [
+              "Pasien biasa"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "Pasien darurat",
+            "acceptedAnswers": [
+              "Pasien darurat"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Di klinik ini, pasien baru didaftarkan lewat formulir di meja depan, lalu diberi nomor antrean berdasarkan urutan ",
+        "answer": "kedatangan",
+        "acceptedAnswers": [
+          "kedatangan"
+        ],
+        "after": ", bukan berdasarkan keluhan.",
+        "fallbackChoices": [
+          "kedatangan",
+          "keluhan",
+          "antrean",
+          "formulir"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Ein Kriterium und seine Grenze erklären",
+          "en": "Explaining a criterion and its limit"
+        },
+        "rule": {
+          "de": "Mit berdasarkan nennst du das Kriterium eines Ablaufs und kannst mit bukan berdasarkan ein anderes ausdrücklich ausschließen.",
+          "en": "Use berdasarkan to name the criterion for a process and bukan berdasarkan to explicitly exclude another."
+        },
+        "examples": [
+          {
+            "targetText": "Di klinik ini, pasien baru didaftarkan lewat formulir di meja depan, lalu diberi nomor antrean berdasarkan urutan kedatangan, bukan berdasarkan keluhan.",
+            "base": {
+              "de": "In dieser Klinik werden neue Patienten mit einem Formular am Empfang angemeldet und erhalten dann eine Wartenummer nach Ankunft, nicht nach Beschwerden.",
+              "en": "At this clinic, new patients are registered using a form at the front desk, then given a queue number based on arrival order, not on their complaint."
+            },
+            "highlights": [
+              "berdasarkan",
+              "bukan berdasarkan"
+            ]
+          },
+          {
+            "targetText": "Di klinik ini, nomor diberikan berdasarkan kedatangan untuk pasien biasa saja.",
+            "base": {
+              "de": "In dieser Klinik werden nur bei regulären Patienten Nummern nach Ankunft vergeben.",
+              "en": "At this clinic, numbers are assigned by arrival order for routine patients only."
+            },
+            "highlights": [
+              "berdasarkan"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "berdasarkan",
+          "kind": "connector",
+          "base": {
+            "de": "auf Grundlage von",
+            "en": "based on"
+          }
+        },
+        {
+          "targetText": "yang dimaksud",
+          "kind": "frame",
+          "base": {
+            "de": "gemeint ist",
+            "en": "what is meant"
+          }
+        },
+        {
+          "targetText": "formulir",
+          "kind": "noun",
+          "base": {
+            "de": "Formular",
+            "en": "form"
+          }
+        },
+        {
+          "targetText": "nomor antrean",
+          "kind": "noun",
+          "base": {
+            "de": "Wartenummer",
+            "en": "queue number"
+          }
+        },
+        {
+          "targetText": "kedatangan",
+          "kind": "noun",
+          "base": {
+            "de": "Ankunft",
+            "en": "arrival"
+          }
+        },
+        {
+          "targetText": "pasien darurat",
+          "kind": "noun",
+          "base": {
+            "de": "Notfallpatient",
+            "en": "emergency patient"
+          }
+        },
+        {
+          "targetText": "ruang tindakan",
+          "kind": "noun",
+          "base": {
+            "de": "Behandlungsraum",
+            "en": "treatment room"
+          }
+        },
+        {
+          "targetText": "perawat jaga",
+          "kind": "noun",
+          "base": {
+            "de": "diensthabende Pflegekraft",
+            "en": "nurse on duty"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "berdasarkan",
+            "kedatangan",
+            "keluhan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "dimaksud",
+            "darurat",
+            "perawat"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "biasa",
+            "darurat",
+            "belakangan"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "berdasarkan",
+        "familyKey": "dasar",
+        "surface": "berdasarkan",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Nomor antrean di klinik ini diberikan berdasarkan kedatangan pasien biasa.",
+          "base": {
+            "de": "Wartenummern werden in dieser Klinik nach der Ankunft regulärer Patienten vergeben.",
+            "en": "Queue numbers at this clinic are assigned based on routine patients' arrival."
+          }
+        },
+        "base": {
+          "de": "auf Grundlage von",
+          "en": "based on"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "dampak-sepeda-kampus",
+      "title": {
+        "de": "Was der Campusbericht tatsächlich zeigt",
+        "en": "What the campus report shows"
+      },
+      "situation": {
+        "de": "Du sprichst mit einer skeptischen Person aus der Nachbarschaft über einen fiktiven Campusbericht zum Fahrradprojekt.",
+        "en": "You discuss a fictional campus report on a bicycle scheme with a sceptical neighbour."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Skeptische Person aus der Nachbarschaft",
+            "en": "sceptical neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Gegenüber bezweifelt den Nutzen: „Sepeda kampus itu buang-buang uang. Siapa yang mau naik sepeda di panas begini?“",
+        "en": "Your neighbour questions the benefit: “Sepeda kampus itu buang-buang uang. Siapa yang mau naik sepeda di panas begini?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Sepeda kampus itu buang-buang uang. Siapa yang mau naik sepeda di panas begini?",
+          "base": {
+            "de": "Diese Campusräder sind Geldverschwendung. Wer fährt bei dieser Hitze schon Fahrrad?",
+            "en": "Those campus bikes are a waste of money. Who wants to cycle in this heat?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "neutral",
+          "targetText": "Dampaknya sudah terlihat di laporan kampus: parkir motor berkurang separuh, dan mahasiswa yang kosnya jauh sampai lebih cepat.",
+          "base": {
+            "de": "Die Wirkung ist bereits im Campusbericht sichtbar: Es parken halb so viele Motorräder, und Studierende mit weit entfernten Unterkünften kommen schneller an.",
+            "en": "The impact is already visible in the campus report: motorcycle parking is down by half, and students whose lodgings are far away arrive faster."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Berkurang separuh menurut siapa? Jangan-jangan cuma karena sekarang libur semester.",
+          "base": {
+            "de": "Halb so viele laut wem? Vielleicht liegt es bloß an den Semesterferien.",
+            "en": "Down by half according to whom? Perhaps it is only because of the semester break."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "neutral",
+          "targetText": "Angkanya dari laporan satpam yang menghitung motor tiap pagi selama dua bulan kuliah aktif, jadi bukan karena libur semester.",
+          "base": {
+            "de": "Die Zahlen stammen aus dem Bericht des Wachdienstes, der zwei Monate im laufenden Semester jeden Morgen Motorräder zählt, also liegt es nicht an den Ferien.",
+            "en": "The figures come from the guards' report, counting motorcycles each morning for two months of active teaching, so it is not due to the semester break."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Oke, anggap aku percaya. Lalu akibatnya untuk kampung di sekitar kampus apa?",
+          "base": {
+            "de": "Gut, nehmen wir an, ich glaube dir. Welche Folgen hat das dann für das Viertel um den Campus?",
+            "en": "Fine, suppose I believe you. What are the effects on the neighbourhood around the campus?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "neutral",
+          "targetText": "Akibatnya, kata laporan itu, warung di sekitar lebih ramai sejak pesepeda berhenti, dan jalan kampung terasa lebih aman, mungkin karena motor berkurang.",
+          "base": {
+            "de": "Die Folge ist laut diesem Bericht, dass die Warung mehr Besuch bekommen, seit Radfahrende dort halten, und sich die Straßen sicherer anfühlen, vielleicht wegen der geringeren Zahl an Motorrädern.",
+            "en": "As a result, the report says, nearby stalls are busier since cyclists began stopping there, and the neighbourhood streets feel safer, perhaps because there are fewer motorcycles."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Dampaknya sudah terlihat di laporan kampus: ",
+        "chunks": [
+          "parkir motor",
+          "berkurang separuh,",
+          "dan mahasiswa",
+          "yang kosnya jauh",
+          "sampai lebih cepat."
+        ],
+        "distractors": [
+          "sampai lebih lambat.",
+          "bertambah banyak,"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Angkanya dari laporan satpam yang menghitung motor tiap pagi "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " dua bulan kuliah aktif, jadi "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " libur semester."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "selama",
+            "acceptedAnswers": [
+              "selama",
+              "sepanjang"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "bukan karena",
+            "acceptedAnswers": [
+              "bukan karena"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", kata laporan itu, warung di sekitar lebih ramai sejak pesepeda berhenti, dan jalan kampung terasa lebih aman, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " karena motor berkurang."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Akibatnya",
+            "acceptedAnswers": [
+              "Akibatnya",
+              "Dampaknya"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "mungkin",
+            "acceptedAnswers": [
+              "mungkin",
+              "barangkali"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "Dampaknya",
+        "acceptedAnswers": [
+          "Dampaknya"
+        ],
+        "after": " sudah terlihat di laporan kampus: parkir motor berkurang separuh, dan mahasiswa yang kosnya jauh sampai lebih cepat.",
+        "fallbackChoices": [
+          "Dampaknya",
+          "Tujuannya",
+          "Biayanya",
+          "Syaratnya"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Beobachtung und Ursache unterscheiden",
+          "en": "Distinguishing observation from cause"
+        },
+        "rule": {
+          "de": "Mit dampaknya benennst du beobachtete Wirkungen und gibst die Quelle an, bevor du eine mögliche Ursache vorsichtig einordnest.",
+          "en": "Use dampaknya to name observed effects and give their source before cautiously suggesting a possible cause."
+        },
+        "examples": [
+          {
+            "targetText": "Dampaknya sudah terlihat di laporan kampus: parkir motor berkurang separuh, dan mahasiswa yang kosnya jauh sampai lebih cepat.",
+            "base": {
+              "de": "Die Wirkung ist bereits im Campusbericht sichtbar: Es parken halb so viele Motorräder, und Studierende mit weit entfernten Unterkünften kommen schneller an.",
+              "en": "The impact is already visible in the campus report: motorcycle parking is down by half, and students whose lodgings are far away arrive faster."
+            },
+            "highlights": [
+              "Dampaknya"
+            ]
+          },
+          {
+            "targetText": "Dampaknya terlihat di laporan: parkir motor berkurang, tapi penyebabnya masih perlu diperiksa.",
+            "base": {
+              "de": "Die Wirkung zeigt sich im Bericht: Weniger Motorräder parken dort, aber die Ursache muss noch geprüft werden.",
+              "en": "The impact is visible in the report: motorcycle parking decreases, but the cause still needs checking."
+            },
+            "highlights": [
+              "Dampaknya"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "jadi",
+          "kind": "connector",
+          "base": {
+            "de": "also",
+            "en": "so"
+          }
+        },
+        {
+          "targetText": "akibatnya",
+          "lemma": "akibat",
+          "kind": "frame",
+          "base": {
+            "de": "infolgedessen",
+            "en": "as a result"
+          }
+        },
+        {
+          "targetText": "dampaknya",
+          "lemma": "dampak",
+          "kind": "noun",
+          "base": {
+            "de": "die Wirkung davon",
+            "en": "its impact"
+          }
+        },
+        {
+          "targetText": "laporan kampus",
+          "kind": "noun",
+          "base": {
+            "de": "Campusbericht",
+            "en": "campus report"
+          }
+        },
+        {
+          "targetText": "berkurang",
+          "kind": "verb",
+          "base": {
+            "de": "weniger werden",
+            "en": "decrease"
+          }
+        },
+        {
+          "targetText": "kuliah aktif",
+          "kind": "noun",
+          "base": {
+            "de": "laufender Lehrbetrieb",
+            "en": "active teaching"
+          }
+        },
+        {
+          "targetText": "pesepeda",
+          "kind": "noun",
+          "base": {
+            "de": "Radfahrende",
+            "en": "cyclists"
+          }
+        },
+        {
+          "targetText": "terasa",
+          "lemma": "merasa",
+          "kind": "verb",
+          "base": {
+            "de": "sich anfühlen",
+            "en": "feel"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "parkir",
+            "separuh",
+            "mahasiswa"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "laporan",
+            "menghitung",
+            "semester"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "laporan",
+            "pesepeda",
+            "mungkin"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "dampak",
+        "familyKey": "dampak",
+        "surface": "Dampaknya",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Dampak perubahan itu masih perlu diteliti.",
+          "base": {
+            "de": "Die Wirkung dieser Änderung muss noch untersucht werden.",
+            "en": "The impact of that change still needs study."
+          }
+        },
+        "base": {
+          "de": "Wirkung; Auswirkung",
+          "en": "impact"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "rantai-keputusan-pasar",
+      "title": {
+        "de": "Von der Beschwerde zum Beschluss",
+        "en": "From complaint to decision"
+      },
+      "situation": {
+        "de": "Du erläuterst der örtlichen Verwaltung die Entscheidungskette hinter der Verlegung eines fiktiven Nachtmarkts.",
+        "en": "You explain to a local official the decision chain behind relocating a fictional neighbourhood night market."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus der örtlichen Verwaltung",
+            "en": "local official"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Verwaltung fragt nach: „Kelurahan menerima keluhan soal pemindahan pasar malam warga. Keputusan itu diambil siapa, dan kapan?“",
+        "en": "The local official asks: “Kelurahan menerima keluhan soal pemindahan pasar malam warga. Keputusan itu diambil siapa, dan kapan?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kelurahan menerima keluhan soal pemindahan pasar malam warga. Keputusan itu diambil siapa, dan kapan?",
+          "base": {
+            "de": "Die Verwaltung hat Beschwerden über die Verlegung des Nachtmarkts erhalten. Wer hat diese Entscheidung getroffen, und wann?",
+            "en": "The local office has received complaints about relocating the residents' night market. Who took that decision, and when?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "formal",
+          "targetText": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan pemilik rumah di jalan lama soal sampah dan suara.",
+          "base": {
+            "de": "Die Entscheidung wurde in der Bewohnerversammlung im Mai getroffen, nach zwei Beschwerden von Hauseigentümern an der alten Straße über Müll und Lärm.",
+            "en": "The decision was taken at the residents' meeting in May, after two complaints from homeowners on the old street about rubbish and noise."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tapi pedagang bilang mereka tidak pernah diundang ke rapat itu.",
+          "base": {
+            "de": "Aber die Händler sagen, sie seien nie zu der Versammlung eingeladen worden.",
+            "en": "But the traders say they were never invited to that meeting."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "formal",
+          "targetText": "Mereka diundang lewat ketua paguyuban pedagang; yang tidak sampai adalah undangan ke pedagang yang bukan anggota paguyuban.",
+          "base": {
+            "de": "Sie wurden über den Vorsitz der Händlervereinigung eingeladen; nicht angekommen ist die Einladung bei den Händlern, die keine Mitglieder der Vereinigung sind.",
+            "en": "They were invited through the traders' association chair; what did not arrive was the invitation to traders who are not association members."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Untuk laporan saya, tolong urutkan rantainya dari keluhan pertama sampai pasar pindah.",
+          "base": {
+            "de": "Ordnen Sie bitte für meinen Bericht die Schritte von der ersten Beschwerde bis zum Umzug des Markts.",
+            "en": "For my report, please put the chain in order from the first complaint to the market's move."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "formal",
+          "targetText": "Urutannya: keluhan warga Maret, peninjauan oleh ketua RT April, rapat warga dan pemungutan suara Mei, pasar pindah awal Juni.",
+          "base": {
+            "de": "Die Reihenfolge: Beschwerden der Bewohner im März, Besichtigung durch die Nachbarschaftsleitung im April, Versammlung und Abstimmung im Mai, Umzug Anfang Juni.",
+            "en": "The order is: residents' complaints in March, inspection by the neighbourhood chair in April, a residents' meeting and vote in May, and the market's move in early June."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah ",
+        "chunks": [
+          "dua kali keluhan",
+          "pemilik rumah",
+          "di jalan lama",
+          "soal sampah",
+          "dan suara."
+        ],
+        "distractors": [
+          "di jalan baru",
+          "dan harga."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Mereka diundang lewat ketua paguyuban pedagang; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " adalah undangan ke pedagang yang bukan "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "yang tidak sampai",
+            "acceptedAnswers": [
+              "yang tidak sampai",
+              "yang tidak tersampaikan"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "anggota paguyuban",
+            "acceptedAnswers": [
+              "anggota paguyuban"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": keluhan warga Maret, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " oleh ketua RT April, rapat warga dan pemungutan suara Mei, pasar pindah awal Juni."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Urutannya",
+            "acceptedAnswers": [
+              "Urutannya"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "peninjauan",
+            "acceptedAnswers": [
+              "peninjauan"
+            ],
+            "kind": "lexical",
+            "choices": [
+              "peninjauan",
+              "pemungutan",
+              "pemindahan",
+              "penjualan"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "Keputusan",
+        "acceptedAnswers": [
+          "Keputusan"
+        ],
+        "after": " itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan pemilik rumah di jalan lama soal sampah dan suara.",
+        "fallbackChoices": [
+          "Keputusan",
+          "Penjualan",
+          "Pembayaran",
+          "Pengiriman"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen Beschluss zeitlich einordnen",
+          "en": "Placing a decision in a sequence"
+        },
+        "rule": {
+          "de": "Mit keputusan itu diambil benennst du den Beschluss und ordnest ihn mit setelah in die vorherigen Ereignisse ein.",
+          "en": "Use keputusan itu diambil to identify a decision and setelah to place it after the preceding events."
+        },
+        "examples": [
+          {
+            "targetText": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan pemilik rumah di jalan lama soal sampah dan suara.",
+            "base": {
+              "de": "Die Entscheidung wurde in der Bewohnerversammlung im Mai getroffen, nach zwei Beschwerden von Hauseigentümern an der alten Straße über Müll und Lärm.",
+              "en": "The decision was taken at the residents' meeting in May, after two complaints from homeowners on the old street about rubbish and noise."
+            },
+            "highlights": [
+              "Keputusan itu diambil",
+              "setelah"
+            ]
+          },
+          {
+            "targetText": "Keputusan itu diambil setelah warga membahas keluhan dalam rapat.",
+            "base": {
+              "de": "Die Entscheidung fällt, nachdem die Bewohner die Beschwerden in einer Versammlung besprechen.",
+              "en": "The decision is made after residents discuss the complaints at a meeting."
+            },
+            "highlights": [
+              "Keputusan itu diambil",
+              "setelah"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "setelah",
+          "kind": "connector",
+          "base": {
+            "de": "nachdem; nach",
+            "en": "after"
+          }
+        },
+        {
+          "targetText": "urutannya",
+          "lemma": "urutan",
+          "kind": "frame",
+          "base": {
+            "de": "die Reihenfolge ist",
+            "en": "the order is"
+          }
+        },
+        {
+          "targetText": "keputusan",
+          "kind": "noun",
+          "base": {
+            "de": "Entscheidung; Beschluss",
+            "en": "decision"
+          }
+        },
+        {
+          "targetText": "diambil",
+          "lemma": "mengambil",
+          "kind": "verb",
+          "base": {
+            "de": "getroffen werden",
+            "en": "be made"
+          }
+        },
+        {
+          "targetText": "pemilik rumah",
+          "kind": "noun",
+          "base": {
+            "de": "Hauseigentümer",
+            "en": "homeowners"
+          }
+        },
+        {
+          "targetText": "paguyuban",
+          "kind": "noun",
+          "base": {
+            "de": "örtlicher Zusammenschluss",
+            "en": "local association"
+          }
+        },
+        {
+          "targetText": "peninjauan",
+          "kind": "noun",
+          "base": {
+            "de": "Besichtigung; Prüfung",
+            "en": "inspection"
+          }
+        },
+        {
+          "targetText": "pemungutan suara",
+          "kind": "noun",
+          "base": {
+            "de": "Abstimmung",
+            "en": "vote"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "keluhan",
+            "pemilik",
+            "sampah"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "diundang",
+            "pedagang",
+            "paguyuban"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Urutannya",
+            "peninjauan",
+            "pemungutan"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "keputusan",
+        "familyKey": "putus",
+        "surface": "Keputusan",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Keputusan rapat harus disampaikan kepada semua pedagang.",
+          "base": {
+            "de": "Der Versammlungsbeschluss muss allen Händlern mitgeteilt werden.",
+            "en": "The meeting's decision must be communicated to all traders."
+          }
+        },
+        "base": {
+          "de": "Entscheidung; Beschluss",
+          "en": "decision"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

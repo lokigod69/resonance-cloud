@@ -1,0 +1,850 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "Indonesian",
+  "code": "id-ID",
+  "level": "B2",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": "Three rail registers; only formal and neutral are used (no relay shape in P1/P2, so informal never appears in a learner turn). registerPlan is constant per lesson. formal (letting agent, manager, rental service, shop owner, mentor, committee, accountant, project manager, health trainer, official): learner uses saya, Anda, kita for joint proposals, tolong; canonical contrast is tetapi; kamu/-mu/aku/-ku banned. neutral (colleague, friend, neighbour, newcomer): learner uses aku/saya and kamu/-mu, utamaku-style clitics allowed; tapi is canonical. Both registers are standard spoken Indonesian, not written formal prose: clipped base verbs that natives use in speech (hitung, cek, bayar, pegang, pesan, usulkan) are allowed in learner lines of either register, and formal learner lines affix the main predicate where a native would (menyarankan, dibuktikan, mengajukan); the formal/neutral split is carried by pronouns, clitics and the tetapi/tapi contrast, not by a ban on clipped forms. Banned in every learner line: gue, lu, nggak, gak, aja, udah, banget, dong, sih, kok, mending, gimana, Malay (awak, sila, tandas, macam mana, boleh tak). Interlocutor lines follow the same register as the lesson and never use the colloquial list; a them line in a formal lesson may open with Tapi, which is standard spoken usage, while learner formal lines keep tetapi. Address terms: routine decision for these 20 lessons is zero Pak/Bu/Mbak/Mas in any turn; a reviewed per-lesson variant may add one to a learner formal line. Move slots: you1 from the path whitelist, you2 from {concede,rebut,clarify,explain,compare,counteroffer}, you3 from {conclude,propose,summarize,counteroffer,relay,request}, pairwise distinct. Each lesson lists them0 and you1 under openingMove, them2 under challenge, you2 under answerMove, them4 under steer, you3 under closingMove.",
+  "genderSafety": "No grammatical gender. speakerGender neutral for all 20 lessons; no alternates. The only gender-coded items (Pak/Bu/Mbak/Mas/Bapak/Ibu) are absent from every canonical turn, blank, chip, recall answer and trophy; interlocutors address the learner with Anda or kamu or omit, never with a gendered term, so no turn asserts learner gender. Role captions may name the interlocutor's role (agen properti, perawat jaga); a base-locale caption may use a gendered word for the interlocutor only (die Agentin, der Mentor) and never refers to the learner with a gendered noun, pronoun or ending, so no caption assigns learner gender either.",
+  "orthography": "PUEBI, Latin, NFC, no diacritics. Preposition di spaced, prefix di- attached (detector), Anda capitalised, proper nouns and day/month names capitalised (Lombok, Selasa, Mei). Numbers as words in all voiced text (dua puluh, tujuh juta); digits only in situation/caption. Abbreviation RT is allowed in P2 L10 as one uppercase token read letter-wise by TTS. Hyphenated reduplications (dua-duanya, berturut-turut, kedua-duanya, buang-buang, jangan-jangan) are single tokens, never blank, chip or trophy. Loanwords Indonesians use (aplikasi, provider, modem, proyektor, paralel, promo, opsi, koneksi, daring, kompleks, satpam, ojek) get per-lesson-id exemptions. KBBI spellings fixed: risiko, antrean, kompleks, praktik.",
+  "segmentation": "Shared rail: unit = token (maximal run of letters with internal hyphen or apostrophe), joiner single space. them 6-20, you1 14-26, you2 12-24, you3 10-22 tokens. build: framePrefix + chunks.join(' ') + frameSuffix === dialogue[1].targetText byte for byte; the chips cover the clause that carries the lesson's move, normally the carrier clause of about seven to twelve tokens, and the rest of the turn is held in framePrefix/frameSuffix; 5-8 chunks of 1-4 tokens, punctuation attached, affixed words, -nya/-mu/-ku and hyphenated reduplications intact, pun stays with its host chunk; a single-token chunk only for a clause-level connector or clause-head frame standing at a clause head (tetapi/tapi, jadi, karena, sehingga, padahal, apalagi, or the per-lesson carriers listed in the build rule); a lexical trophy inside a clause is never a singleton; every other function word, including a conjunction, travels with the phrase it introduces. Example P1 L1: framePrefix 'Yang di pinggir kota jelas lebih hemat, ' + [sedangkan][yang dekat kantor][menghemat waktu saya][hampir dua jam][per hari.] (five chunks, twelve tokens, carrier first). Cloze on dialogue[3], synthesis on dialogue[5]: text segments plus blank answers concatenate to the turn; blank 1-3 units; never a lone pronoun, yang, itu/ini, address term or number. Recall reconstructs you1 with a content word or carrier as answer. Trophy surface is one whole unit of its turn; lemma is the KBBI dictionary form.",
+  "acceptedInput": "Rail normalisation only (NFC, trim, collapse spaces, locale lowercase, strip terminal punctuation); nothing beyond this exists at runtime for id-ID today, and no id-ID normaliser, synonym table or automatic variant generation is implemented or promised by this spec. Beyond that solely authored acceptedAnswers per blank and per recall, written into the draft at full-content authoring and hand-reviewed: tapi for tetapi only in neutral lessons; saya for aku and aku for saya in neutral lessons when the whole line is otherwise identical; setiap/tiap; jadi/berarti where reviewed. Never accepted: stance particles, colloquial list, Malay, rule-generated pronoun or address swaps, token-ignoring matches. Grammatical equivalence of a variant, soundness of a causal claim and productive staging are semantic review judgments; the validator only checks shape (list contains the answer, choices distinct, exactly one accepted). Chip permutation and second-valid-choice checks belong to full-content review.",
+  "carriersStaged": {
+    "P1": "L1-3 productive: sedangkan clause contrast; lebih X daripada Y; memang ... tetapi (recycled B1 P2); kelebihan/kekurangan nominals; apalagi kalau; agentless di- in evaluations (dihitung, dibuktikan; recycled B1 P6); conclusion frame jadi/karena bagi saya; counteroffer frame kalau begitu, kita .... Recognition: kalau Anda jadi saya; kalaupun; terjangkau. L4-7 productive: jangka pendek/panjang; kalau ... berarti consequence; conditional acceptance kalau ..., saya ambil; cleft bukan X yang ..., tapi Y; gabungkan/compromise counteroffer; justru itu. Recognition: ter- ability (terjangkau); kalau diringkas. L8-10 productive: kalaupun concession; ter- ability (terjangkau); di- with oleh in recommendations; notice-style summary with dibagi/dipegang/ditinjau. Recognition: sebaliknya.",
+    "P2": "L1-3 productive: karena/sehingga causal chain; X muncul karena; maksud saya clarification; singkatnya summary; agentless di- for process steps (dipilah, diangkut, dikerjakan); lalu sequencing recycled B1 P1. Recognition: yang dimaksud; oleh karena itu. L4-6 productive: tahap enumeration with numerals in words; kalau tidak consequence; padahal; benar, itu ... concession frame; asalkan recycled B1 P7; mengajukan + nominal. Recognition: di- with oleh; akibatnya. L7-10 productive: menyadari bahwa; berdasarkan; di- with oleh; akibatnya; yang dimaksud; two-part colon summaries; sedangkan recycled from P1. Recognition: ia mengatakan bahwa (relay, later path)."
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Menimbang Pilihan",
+      "function": "compare advantages and disadvantages of two or three options and give a qualified recommendation",
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "registerPolicy": "formal in L1,L3,L4,L6,L8,L10; neutral in L2,L5,L7,L9; constant within each lesson",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "sedangkan; lebih ... daripada; memang ... tetapi; kelebihan nominal; apalagi kalau; agentless di-; jadi/karena bagi saya; kalau begitu, kita",
+          "recognitionOnly": "kalau Anda jadi saya; kalaupun; terjangkau"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "jangka pendek/panjang; kalau ... berarti; kalau ..., saya ambil; bukan X yang ..., tapi Y; gabungkan; justru itu",
+          "recognitionOnly": "ter- ability; kalau diringkas"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "kalaupun; terjangkau; di- with oleh; dibagi/dipegang/ditinjau notice summary",
+          "recognitionOnly": "sebaliknya"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "sewa-dekat-atau-jauh",
+          "scene": "Letting agent shows two flats: near the office at seven million, outskirts at four million",
+          "interlocutor": "agen properti",
+          "register": "formal",
+          "openingMove": {
+            "them": "Yang dekat kantor sewanya tujuh juta sebulan, yang di pinggir kota empat juta. Anda cenderung ke mana?",
+            "you": "Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor menghemat waktu saya hampir dua jam per hari.",
+            "move": "compare"
+          },
+          "challenge": "Tapi beda tiga juta itu besar. Dalam setahun Anda kehilangan tiga puluh enam juta.",
+          "answerMove": {
+            "you": "Memang mahal, tetapi ongkos transportasi dan tenaga yang habis di jalan juga harus dihitung.",
+            "move": "concede"
+          },
+          "steer": "Kalau begitu, kalau harus pilih hari ini, Anda ambil yang mana?",
+          "closingMove": {
+            "you": "Saya ambil yang dekat kantor, karena bagi saya waktu dan tenaga lebih berharga dari uang tiga juta itu.",
+            "move": "conclude"
+          },
+          "trophyLemma": "sedangkan",
+          "trophySurface": "sedangkan",
+          "trophyFamilyKey": "sedangkan",
+          "pos": "connector",
+          "requiredCarrier": "sedangkan",
+          "recycles": "B1 P2 memang...tetapi; A2 lebih; B1 P6 di-"
+        },
+        {
+          "number": 2,
+          "slug": "mobil-atau-kereta",
+          "scene": "Colleague considers driving instead of the train now that petrol is cheap",
+          "interlocutor": "rekan kerja",
+          "register": "neutral",
+          "openingMove": {
+            "them": "Kamu tiap hari naik kereta, kan? Aku berpikir mau pakai mobil saja, bensin sedang murah.",
+            "you": "Naik kereta memang lebih murah dan lebih santai daripada menyetir, apalagi kalau kamu hitung parkir dan macet tiap pagi.",
+            "move": "compare"
+          },
+          "challenge": "Tapi kereta sering penuh, dan aku sering pulang malam waktu kereta sudah jarang.",
+          "answerMove": {
+            "you": "Kalau pulang malam dan kereta sudah jarang, kamu bisa pesan ojek daring dari kantor; hitung sebulan, itu masih lebih murah daripada bensin dan parkir.",
+            "move": "rebut"
+          },
+          "steer": "Oke, kalau kamu jadi aku, dengan anak kecil yang harus dijemput tiap sore, kamu pilih apa?",
+          "closingMove": {
+            "you": "Kalau anaknya harus dijemput tiap sore, aku pilih mobil untuk hari kerja dan kereta untuk ke pusat kota di akhir pekan.",
+            "move": "conclude"
+          },
+          "trophyLemma": "daripada",
+          "trophySurface": "daripada",
+          "trophyFamilyKey": "daripada",
+          "pos": "connector",
+          "requiredCarrier": "lebih ... daripada",
+          "recycles": "P1 L1 sedangkan logic; A2 lebih; B1 P1 time anchors"
+        },
+        {
+          "number": 3,
+          "slug": "kerja-dari-rumah",
+          "scene": "Manager lets the team choose remote or on-site work from next month",
+          "interlocutor": "manajer",
+          "register": "formal",
+          "openingMove": {
+            "them": "Mulai bulan depan tim boleh memilih: kerja dari rumah atau di kantor. Anda sendiri lebih condong ke mana?",
+            "you": "Saya lebih condong kerja dari rumah tiga hari seminggu; kelebihannya, saya bisa fokus mengerjakan laporan tanpa gangguan rapat mendadak.",
+            "move": "position"
+          },
+          "challenge": "Tapi koordinasi tim jadi lambat kalau separuh orang tidak ada di kantor. Bagaimana?",
+          "answerMove": {
+            "you": "Kalau begitu, kita tetapkan hari Selasa dan Kamis sebagai hari semua orang di kantor untuk rapat.",
+            "move": "counteroffer"
+          },
+          "steer": "Kalau direktur tetap minta lima hari di kantor, apa argumen utama Anda?",
+          "closingMove": {
+            "you": "Argumen utama saya: hasil kerja tim naik sejak kerja dari rumah, dan itu bisa dibuktikan dengan laporan bulanan.",
+            "move": "conclude"
+          },
+          "trophyLemma": "kelebihan",
+          "trophySurface": "kelebihannya",
+          "trophyFamilyKey": "lebih",
+          "pos": "noun",
+          "requiredCarrier": "kelebihan nominal with -nya anchor",
+          "recycles": "B1 P8 sejak; B1 P6 di-; B1 P1 mendadak"
+        },
+        {
+          "number": 4,
+          "slug": "beli-atau-sewa-alat",
+          "scene": "Rental shop offers to rent or sell a camera for a three-month project",
+          "interlocutor": "petugas penyewaan",
+          "register": "formal",
+          "openingMove": {
+            "them": "Untuk proyek tiga bulan, Anda mau sewa kamera ini atau beli sekalian? Harga belinya dua puluh juta.",
+            "you": "Untuk jangka pendek sewa lebih masuk akal, karena tiga bulan sewa belum sampai setengah harga beli.",
+            "move": "reason"
+          },
+          "challenge": "Tapi kalau proyeknya diperpanjang jadi setahun, biaya sewa akan melebihi harga beli.",
+          "answerMove": {
+            "you": "Kalau diperpanjang, saya bandingkan lagi; beli berarti saya juga menanggung perawatan dan harga jualnya turun.",
+            "move": "compare"
+          },
+          "steer": "Kami ada opsi sewa-beli: cicil dua belas bulan, alat jadi milik Anda. Bagaimana?",
+          "closingMove": {
+            "you": "Kalau begitu, tolong kirim rincian cicilannya; kalau totalnya tidak jauh dari harga beli, saya ambil opsi itu.",
+            "move": "request"
+          },
+          "trophyLemma": "jangka",
+          "trophySurface": "jangka",
+          "trophyFamilyKey": "jangka",
+          "pos": "noun",
+          "requiredCarrier": "jangka pendek/panjang",
+          "recycles": "B1 P3 tolong; B1 P7 kalau; A2 setengah"
+        },
+        {
+          "number": 5,
+          "slug": "liburan-dua-rencana",
+          "scene": "Friend hesitates between Lombok and Bromo for the holiday",
+          "interlocutor": "teman",
+          "register": "neutral",
+          "openingMove": {
+            "them": "Liburan nanti kita ke Lombok atau ke Bromo? Aku bingung, dua-duanya menarik.",
+            "you": "Pertimbangan utamaku ongkos: tiket ke Lombok dua kali lebih mahal, sedangkan Bromo bisa naik kereta.",
+            "move": "compare"
+          },
+          "challenge": "Tapi di Bromo cuma dua hari sudah habis; di Lombok kita bisa seminggu.",
+          "answerMove": {
+            "you": "Betul, Bromo pendek; tapi justru itu, kita bisa simpan cuti untuk liburan lain tahun ini.",
+            "move": "concede"
+          },
+          "steer": "Kalau tiket Lombok tiba-tiba promo setengah harga, kamu masih pilih Bromo?",
+          "closingMove": {
+            "you": "Kalau promonya nyata, kita ambil Lombok sekarang dan Bromo kita jadwalkan untuk akhir tahun.",
+            "move": "propose"
+          },
+          "trophyLemma": "pertimbangan",
+          "trophySurface": "Pertimbangan",
+          "trophyFamilyKey": "timbang",
+          "pos": "noun",
+          "requiredCarrier": "pertimbangan utama + sedangkan",
+          "recycles": "P1 L1 sedangkan; B1 P7 kalau; B1 P2 memang"
+        },
+        {
+          "number": 6,
+          "slug": "tunai-atau-aplikasi",
+          "scene": "Small warung owner asks whether to accept app payments",
+          "interlocutor": "pemilik warung",
+          "register": "formal",
+          "openingMove": {
+            "them": "Pelanggan banyak yang minta bayar lewat aplikasi, tapi saya takut ribet. Menurut Anda, perlu tidak?",
+            "you": "Tunai memang sederhana, tetapi risiko uang hilang dan salah kembalian lebih besar daripada repotnya memasang aplikasi.",
+            "move": "compare"
+          },
+          "challenge": "Tapi aplikasi potong biaya tiap transaksi, dan kalau sinyal mati, pembeli tidak bisa bayar.",
+          "answerMove": {
+            "you": "Kalau potongannya di bawah satu persen, itu kecil dibanding penjualan yang hilang; tadi saya lihat dua pembeli muda pergi karena tidak bawa tunai.",
+            "move": "rebut"
+          },
+          "steer": "Jadi kalau diringkas, apa yang sebaiknya saya lakukan untuk warung sekecil ini?",
+          "closingMove": {
+            "you": "Terima kedua-duanya: tunai tetap jalan, aplikasi sebagai pilihan tambahan, jadi tidak ada pembeli yang Anda tolak.",
+            "move": "conclude"
+          },
+          "trophyLemma": "risiko",
+          "trophySurface": "risiko",
+          "trophyFamilyKey": "risiko",
+          "pos": "noun",
+          "requiredCarrier": "memang ... tetapi + daripada",
+          "recycles": "P1 L2 daripada; B1 P2 memang; A2 kembalian"
+        },
+        {
+          "number": 7,
+          "slug": "kelas-atau-aplikasi",
+          "scene": "Friend wants to learn Japanese: class or app",
+          "interlocutor": "teman",
+          "register": "neutral",
+          "openingMove": {
+            "them": "Aku mau belajar bahasa Jepang. Lebih baik ikut kelas atau cukup pakai aplikasi?",
+            "you": "Kalau kamu cukup mandiri, aplikasi bisa jalan; tapi kelas memaksa kamu bicara, dan itu yang paling sulit dilatih sendiri.",
+            "move": "position"
+          },
+          "challenge": "Masalahnya kelas mahal dan jadwalnya malam, padahal aku sering lembur.",
+          "answerMove": {
+            "you": "Kalau begitu, gabungkan: aplikasi untuk kosakata tiap hari, dan kelas percakapan dua minggu sekali di akhir pekan.",
+            "move": "counteroffer"
+          },
+          "steer": "Kalau setelah tiga bulan aku masih tidak berani bicara, berarti aplikasinya gagal, kan?",
+          "closingMove": {
+            "you": "Bukan aplikasinya yang gagal, tapi caranya; kalau begitu baru pindah ke kelas penuh dan kurangi aplikasi.",
+            "move": "conclude"
+          },
+          "trophyLemma": "mandiri",
+          "trophySurface": "mandiri",
+          "trophyFamilyKey": "mandiri",
+          "pos": "adjective",
+          "requiredCarrier": "kalau ... cukup + adjective condition; bukan X yang ..., tapi Y",
+          "recycles": "B1 P6 gagal; B1 P10 kursus context; B1 P7 kalau"
+        },
+        {
+          "number": 8,
+          "slug": "dua-tawaran-kerja",
+          "scene": "Mentor discusses a safe corporate offer versus a start-up offer",
+          "interlocutor": "mentor",
+          "register": "formal",
+          "openingMove": {
+            "them": "Jadi Anda dapat dua tawaran: gaji besar di perusahaan lama, atau gaji kecil di perusahaan rintisan. Sudah dipikirkan?",
+            "you": "Tawaran pertama aman dan gajinya jelas, sedangkan tawaran kedua lebih berisiko tetapi tanggung jawabnya jauh lebih luas.",
+            "move": "compare"
+          },
+          "challenge": "Rintisan ini baru dua tahun berjalan dan masih merugi, kata teman saya di sana. Anda siap kalau tutup?",
+          "answerMove": {
+            "you": "Saya tahu risikonya; tetapi kalaupun tutup, pengalaman memimpin tim kecil itu mungkin lebih berharga bagi perusahaan lain daripada dua tahun di posisi lama.",
+            "move": "concede"
+          },
+          "steer": "Kalau Anda punya cicilan rumah, apakah jawabannya tetap sama?",
+          "closingMove": {
+            "you": "Kalau ada cicilan, saya ambil yang aman dulu dua tahun, sambil menabung, lalu pindah ke rintisan saat lebih siap.",
+            "move": "conclude"
+          },
+          "trophyLemma": "tawaran",
+          "trophySurface": "Tawaran",
+          "trophyFamilyKey": "tawar",
+          "pos": "noun",
+          "requiredCarrier": "sedangkan + kalaupun",
+          "recycles": "P1 L6 risiko; B1 P10 menabung; B1 P1 sambil"
+        },
+        {
+          "number": 9,
+          "slug": "pindah-atau-menetap",
+          "scene": "Neighbour hears about a job offer in Surabaya",
+          "interlocutor": "tetangga",
+          "register": "neutral",
+          "openingMove": {
+            "them": "Katanya kamu dapat kerja di Surabaya? Jadi pindah, atau tetap di sini?",
+            "you": "Sebenarnya aku ingin menetap di sini; sudah punya teman dan tempat kerja dekat, apalagi sewa rumah masih terjangkau.",
+            "move": "position"
+          },
+          "challenge": "Tapi gaji di Surabaya hampir dua kali lipat. Masa ditolak?",
+          "answerMove": {
+            "you": "Gajinya besar, tapi sewa dan ongkos hidup di sana juga naik, jadi beda bersihnya tidak sebesar kelihatannya.",
+            "move": "explain"
+          },
+          "steer": "Kalau mereka tawarkan rumah dinas, kamu masih tolak?",
+          "closingMove": {
+            "you": "Kalau ada rumah dinas, aku coba setahun dulu tanpa putus kontrak sewa di sini, supaya masih bisa kembali.",
+            "move": "propose"
+          },
+          "trophyLemma": "menetap",
+          "trophySurface": "menetap",
+          "trophyFamilyKey": "tetap",
+          "pos": "verb",
+          "requiredCarrier": "menetap + terjangkau (ter- ability productive)",
+          "recycles": "B1 P2 sebenarnya; B1 P7 supaya; A2 sewa"
+        },
+        {
+          "number": 10,
+          "slug": "usulan-rapat-warga",
+          "scene": "Neighbourhood meeting must choose between rotating parking and an evening ban in the alley (fictional RT rule)",
+          "interlocutor": "ketua RT",
+          "register": "formal",
+          "openingMove": {
+            "them": "Rapat warga harus memilih: parkir bergiliran, atau larangan parkir di gang mulai jam tujuh malam. Pendapat Anda?",
+            "you": "Saya menyarankan parkir bergiliran, karena larangan malam hanya memindahkan masalah ke jalan besar dan membuat warga marah.",
+            "move": "position"
+          },
+          "challenge": "Bergiliran susah diawasi. Siapa yang mau mencatat tiap minggu?",
+          "answerMove": {
+            "you": "Pengawasan bisa dibagi: tiap blok pegang jadwalnya sendiri, dan pelanggar diingatkan oleh ketua blok, bukan oleh satpam.",
+            "move": "counteroffer"
+          },
+          "steer": "Baik. Kalau rapat minta satu kalimat untuk ditulis di pengumuman, bunyinya apa?",
+          "closingMove": {
+            "you": "Mulai bulan depan, parkir di gang dibagi bergiliran per blok; jadwal dipegang ketua blok, dan aturannya ditinjau tiga bulan lagi.",
+            "move": "summarize"
+          },
+          "trophyLemma": "menyarankan",
+          "trophySurface": "menyarankan",
+          "trophyFamilyKey": "saran",
+          "pos": "verb",
+          "requiredCarrier": "saya menyarankan ... karena; di- with oleh",
+          "recycles": "B1 P6 di- with oleh; B1 P2 pendapat; A2 jadwal"
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Bagaimana dan Mengapa",
+      "function": "explain causes, consequences and processes in detail and hold the explanation under requests for precision",
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "registerPolicy": "formal in L1,L3,L8,L10; neutral in L2,L4,L5,L6,L7,L9; constant within each lesson",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "karena/sehingga chain; X muncul karena; maksud saya; singkatnya; agentless di- process steps; lalu",
+          "recognitionOnly": "yang dimaksud; oleh karena itu"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "tahap enumeration; kalau tidak; padahal; benar, itu ... concession; mengajukan + nominal; asalkan",
+          "recognitionOnly": "di- with oleh; akibatnya"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "menyadari bahwa; berdasarkan; di- with oleh; akibatnya; yang dimaksud; colon summaries; sedangkan recycled",
+          "recognitionOnly": "ia mengatakan bahwa"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "selisih-tagihan",
+          "scene": "Company accountant asks why a vendor invoice exceeds the quote the learner approved",
+          "interlocutor": "akuntan",
+          "register": "formal",
+          "openingMove": {
+            "them": "Tagihan dari vendor ini lebih besar dari penawaran awal. Anda bisa jelaskan kenapa?",
+            "you": "Selisih itu muncul karena jumlah kursi ditambah setelah penawaran dibuat, dan ongkos kirimnya dihitung terpisah.",
+            "move": "explain"
+          },
+          "challenge": "Tapi di penawaran tertulis bahwa ongkos kirim sudah termasuk. Jadi yang mana yang benar?",
+          "answerMove": {
+            "you": "Maksud saya, pengiriman pertama memang termasuk; yang dihitung terpisah hanya pengiriman kedua untuk kursi tambahan.",
+            "move": "clarify"
+          },
+          "steer": "Baik. Untuk laporan, tolong ringkas dalam satu kalimat apa saja yang membentuk selisih itu.",
+          "closingMove": {
+            "you": "Singkatnya, selisih itu terdiri dari dua puluh kursi tambahan dan satu pengiriman kedua, tanpa perubahan harga satuan.",
+            "move": "summarize"
+          },
+          "trophyLemma": "selisih",
+          "trophySurface": "Selisih",
+          "trophyFamilyKey": "selisih",
+          "pos": "noun",
+          "requiredCarrier": "selisih muncul karena; agentless di-",
+          "recycles": "B1 P6 dikirim/diproses; B1 P3 tambahan; A2 karena"
+        },
+        {
+          "number": 2,
+          "slug": "cara-memilah-sampah",
+          "scene": "Newcomer asks how waste collection works in this housing complex (fictional complex rule)",
+          "interlocutor": "tetangga baru",
+          "register": "neutral",
+          "openingMove": {
+            "them": "Aku baru pindah ke sini. Sampah di kompleks ini diambil kapan, dan harus dipisah tidak?",
+            "you": "Harus dipilah dulu: sampah dapur masuk tong hijau, plastik dan kertas tong kuning, lalu diambil hari Senin dan Kamis.",
+            "move": "explain"
+          },
+          "challenge": "Kalau aku malas memilah dan campur saja, memangnya kenapa? Siapa yang tahu?",
+          "answerMove": {
+            "you": "Petugas tahu: menurut aturan di kompleks ini, tong yang campur tidak diangkut, jadi sampahmu tertahan sampai kamu pilah ulang.",
+            "move": "rebut"
+          },
+          "steer": "Terus kalau botol kaca atau baterai, masuk tong yang mana?",
+          "closingMove": {
+            "you": "Menurut pengumuman kompleks, kaca dan baterai tidak masuk tong mana pun; kumpulkan dulu, nanti kita antar ke pos pengumpulan di ujung kompleks.",
+            "move": "propose"
+          },
+          "trophyLemma": "memilah",
+          "trophySurface": "dipilah",
+          "trophyFamilyKey": "pilah",
+          "pos": "verb",
+          "requiredCarrier": "di- process step (voice: passive step, active memilah in them line and pattern example)",
+          "recycles": "B1 P1 lalu; B1 P6 di-; A1 hari names"
+        },
+        {
+          "number": 3,
+          "slug": "proyek-terlambat",
+          "scene": "Project manager wants the exact reason the installation slipped two weeks",
+          "interlocutor": "manajer proyek",
+          "register": "formal",
+          "openingMove": {
+            "them": "Proyek ini mundur dua minggu dari jadwal. Saya perlu tahu persisnya apa yang terjadi.",
+            "you": "Pemasok mengirim bahan terlambat sepuluh hari, sehingga tim pemasangan tidak bisa mulai sesuai rencana.",
+            "move": "explain"
+          },
+          "challenge": "Sepuluh hari, bukan dua minggu. Empat hari sisanya dari mana?",
+          "answerMove": {
+            "you": "Empat hari itu karena dua teknisi kami sakit berturut-turut, sehingga pekerjaan yang biasanya paralel harus dikerjakan bergantian.",
+            "move": "clarify"
+          },
+          "steer": "Kalau pemasok yang sama dipakai lagi tahun depan, apa yang Anda ubah?",
+          "closingMove": {
+            "you": "Saya usulkan pesan bahan sebulan lebih awal dan masukkan denda keterlambatan ke dalam kontrak pemasok.",
+            "move": "propose"
+          },
+          "trophyLemma": "sehingga",
+          "trophySurface": "sehingga",
+          "trophyFamilyKey": "sehingga",
+          "pos": "connector",
+          "requiredCarrier": "sehingga consequence",
+          "recycles": "B1 P10 tahun depan; B1 P6 dikerjakan pattern; A2 terlambat"
+        },
+        {
+          "number": 4,
+          "slug": "cara-kerja-poin-kafe",
+          "scene": "Friend does not understand the cafe sticker card (fictional loyalty scheme)",
+          "interlocutor": "teman",
+          "register": "neutral",
+          "openingMove": {
+            "them": "Kartu poin kafe ini cara kerjanya bagaimana? Aku tiap kali diminta tempel stiker.",
+            "you": "Ada tiga tahap: sepuluh stiker dapat satu kopi gratis, dua puluh dapat potongan setengah harga selama seminggu, lima puluh jadi anggota tetap.",
+            "move": "explain"
+          },
+          "challenge": "Tapi kemarin stikerku sudah sebelas dan tetap bayar penuh. Jadi aturannya bohong?",
+          "answerMove": {
+            "you": "Bukan bohong; kopinya baru gratis kalau kamu tunjukkan kartu sebelum bayar, kalau tidak, poinnya cuma tercatat.",
+            "move": "clarify"
+          },
+          "steer": "Kalau kartunya hilang, poinnya hangus semua? Jelaskan singkat saja.",
+          "closingMove": {
+            "you": "Singkatnya: poin tersimpan di nomor teleponmu, jadi kartu hilang tidak masalah, asalkan nomormu terdaftar sejak awal.",
+            "move": "summarize"
+          },
+          "trophyLemma": "tahap",
+          "trophySurface": "tahap",
+          "trophyFamilyKey": "tahap",
+          "pos": "noun",
+          "requiredCarrier": "tahap enumeration; kalau tidak",
+          "recycles": "B1 P7 asalkan; B1 P4 ter- result (tercatat, tersimpan); A1 kopi"
+        },
+        {
+          "number": 5,
+          "slug": "alasan-ganti-internet",
+          "scene": "Neighbour asks why the learner switched internet provider",
+          "interlocutor": "tetangga",
+          "register": "neutral",
+          "openingMove": {
+            "them": "Kenapa kamu ganti provider internet? Yang lama kan sudah lima tahun.",
+            "you": "Alasan utamanya bukan harga, tapi jaringannya sering putus tiap sore, padahal aku butuh koneksi stabil untuk rapat daring.",
+            "move": "reason"
+          },
+          "challenge": "Tiap sore? Di rumahku lancar saja. Mungkin modemmu yang rusak, bukan providernya.",
+          "answerMove": {
+            "you": "Modemnya sudah diganti dua kali, hasilnya sama; teknisi mereka sendiri mengaku kabel di blok kita sudah tua.",
+            "move": "rebut"
+          },
+          "steer": "Kalau aku mau ikut pindah, apa yang harus kuperhatikan dulu?",
+          "closingMove": {
+            "you": "Cek dulu apakah kabel barunya sudah sampai blok kita; kalau belum, tunggu, supaya tidak bayar dua langganan sekaligus.",
+            "move": "propose"
+          },
+          "trophyLemma": "alasan",
+          "trophySurface": "Alasan",
+          "trophyFamilyKey": "alasan",
+          "pos": "noun",
+          "requiredCarrier": "alasan utamanya bukan X, tapi Y; padahal",
+          "recycles": "B1 P5 apakah; B1 P6 hasil/diganti; B1 P7 supaya"
+        },
+        {
+          "number": 6,
+          "slug": "mengajukan-keberatan-denda",
+          "scene": "Colleague got a late-return fine from the office cooperative (fictional cooperative rule)",
+          "interlocutor": "rekan kerja",
+          "register": "neutral",
+          "openingMove": {
+            "them": "Aku kena denda dari koperasi kantor karena terlambat kembalikan proyektor. Bisa dibatalkan, tidak?",
+            "you": "Bisa dicoba: menurut aturan koperasi, dalam tujuh hari kamu mengajukan keberatan tertulis ke sekretaris, dengan alasan kenapa terlambat.",
+            "move": "explain"
+          },
+          "challenge": "Alasannya apa? Waktu itu aku cuma lupa, tidak ada alasan khusus.",
+          "answerMove": {
+            "you": "Maksudku, kalau cuma lupa, tulis apa adanya dan minta keringanan; yang menentukan tetap pengurus, jadi hasilnya tidak otomatis.",
+            "move": "clarify"
+          },
+          "steer": "Kalau ditolak, apa langkah terakhirnya? Aku malas ribut.",
+          "closingMove": {
+            "you": "Langkah terakhir bayar saja dendanya, tapi tanya apakah boleh dicicil dua bulan; menurut rekan di koperasi, itu pernah disetujui.",
+            "move": "conclude"
+          },
+          "trophyLemma": "mengajukan",
+          "trophySurface": "mengajukan",
+          "trophyFamilyKey": "aju",
+          "pos": "verb",
+          "requiredCarrier": "mengajukan + nominal; dalam + duration",
+          "recycles": "B1 P3 keberatan/membatalkan; B1 P6 ditolak/disetujui; P2 L5 alasan"
+        },
+        {
+          "number": 7,
+          "slug": "rencana-kedai-batal",
+          "scene": "Friend asks why the cafe plan collapsed after the place was rented",
+          "interlocutor": "teman",
+          "register": "neutral",
+          "openingMove": {
+            "them": "Rencana buka kedai kopi kalian batal, ya? Padahal sudah sewa tempat.",
+            "you": "Kami baru menyadari bahwa sewa tempat itu belum termasuk listrik dan air, sehingga modal kami habis sebelum buka.",
+            "move": "explain"
+          },
+          "challenge": "Masa tidak dicek dulu sebelum tanda tangan? Itu kan hal dasar.",
+          "answerMove": {
+            "you": "Benar, itu salah kami; kontraknya kami baca cepat karena takut tempatnya diambil orang lain.",
+            "move": "concede"
+          },
+          "steer": "Kalau mau coba lagi tahun depan, apa yang paling penting diubah?",
+          "closingMove": {
+            "you": "Yang paling penting: tiap biaya tetap dihitung dulu sebelum tanda tangan, dan simpan modal cadangan untuk tiga bulan pertama.",
+            "move": "conclude"
+          },
+          "trophyLemma": "menyadari",
+          "trophySurface": "menyadari",
+          "trophyFamilyKey": "sadar",
+          "pos": "verb",
+          "requiredCarrier": "menyadari bahwa + sehingga",
+          "recycles": "P2 L3 sehingga; B1 P9 benar concession; B1 P5 biaya"
+        },
+        {
+          "number": 8,
+          "slug": "alur-pendaftaran-pasien",
+          "scene": "Visiting health trainer asks the clinic volunteer to explain patient intake (fictional clinic flow)",
+          "interlocutor": "pelatih kesehatan",
+          "register": "formal",
+          "openingMove": {
+            "them": "Saya ingin memahami alur pendaftaran di klinik ini. Pasien baru harus mulai dari mana?",
+            "you": "Di klinik ini, pasien baru didaftarkan lewat formulir di meja depan, lalu diberi nomor antrean berdasarkan urutan kedatangan, bukan berdasarkan keluhan.",
+            "move": "explain"
+          },
+          "challenge": "Berarti pasien darurat juga harus antre? Itu berbahaya.",
+          "answerMove": {
+            "you": "Tidak; yang dimaksud urutan kedatangan itu untuk pasien biasa, sedangkan pasien darurat di sini langsung dibawa ke ruang tindakan oleh perawat jaga.",
+            "move": "clarify"
+          },
+          "steer": "Kalau saya harus menulis alurnya untuk pelatihan, dalam dua kalimat, bagaimana?",
+          "closingMove": {
+            "you": "Pasien biasa: daftar di depan, antre berdasarkan kedatangan, dipanggil ke poli. Pasien darurat: langsung ke ruang tindakan, administrasinya diurus belakangan.",
+            "move": "summarize"
+          },
+          "trophyLemma": "berdasarkan",
+          "trophySurface": "berdasarkan",
+          "trophyFamilyKey": "dasar",
+          "pos": "connector",
+          "requiredCarrier": "berdasarkan; di- with oleh",
+          "recycles": "P1 L1 sedangkan; B1 P5 antre/mendaftar; B1 P6 di-"
+        },
+        {
+          "number": 9,
+          "slug": "dampak-sepeda-kampus",
+          "scene": "Sceptical neighbour calls the campus bike scheme a waste (fictional scheme)",
+          "interlocutor": "tetangga skeptis",
+          "register": "neutral",
+          "openingMove": {
+            "them": "Sepeda kampus itu buang-buang uang. Siapa yang mau naik sepeda di panas begini?",
+            "you": "Dampaknya sudah terlihat di laporan kampus: parkir motor berkurang separuh, dan mahasiswa yang kosnya jauh sampai lebih cepat.",
+            "move": "reason"
+          },
+          "challenge": "Berkurang separuh menurut siapa? Jangan-jangan cuma karena sekarang libur semester.",
+          "answerMove": {
+            "you": "Angkanya dari laporan satpam yang menghitung motor tiap pagi selama dua bulan kuliah aktif, jadi bukan karena libur semester.",
+            "move": "rebut"
+          },
+          "steer": "Oke, anggap aku percaya. Lalu akibatnya untuk kampung di sekitar kampus apa?",
+          "closingMove": {
+            "you": "Akibatnya, kata laporan itu, warung di sekitar lebih ramai sejak pesepeda berhenti, dan jalan kampung terasa lebih aman, mungkin karena motor berkurang.",
+            "move": "conclude"
+          },
+          "trophyLemma": "dampak",
+          "trophySurface": "Dampaknya",
+          "trophyFamilyKey": "dampak",
+          "pos": "noun",
+          "requiredCarrier": "dampak + -nya anchor; akibatnya",
+          "recycles": "B1 P10 selama; B1 P7 libur; A2 lebih"
+        },
+        {
+          "number": 10,
+          "slug": "rantai-keputusan-pasar",
+          "scene": "Kelurahan official traces who decided to move the residents night market (fictional neighbourhood decision)",
+          "interlocutor": "petugas kelurahan",
+          "register": "formal",
+          "openingMove": {
+            "them": "Kelurahan menerima keluhan soal pemindahan pasar malam warga. Keputusan itu diambil siapa, dan kapan?",
+            "you": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan pemilik rumah di jalan lama soal sampah dan suara.",
+            "move": "explain"
+          },
+          "challenge": "Tapi pedagang bilang mereka tidak pernah diundang ke rapat itu.",
+          "answerMove": {
+            "you": "Mereka diundang lewat ketua paguyuban pedagang; yang tidak sampai adalah undangan ke pedagang yang bukan anggota paguyuban.",
+            "move": "clarify"
+          },
+          "steer": "Untuk laporan saya, tolong urutkan rantainya dari keluhan pertama sampai pasar pindah.",
+          "closingMove": {
+            "you": "Urutannya: keluhan warga Maret, peninjauan oleh ketua RT April, rapat warga dan pemungutan suara Mei, pasar pindah awal Juni.",
+            "move": "summarize"
+          },
+          "trophyLemma": "keputusan",
+          "trophySurface": "Keputusan",
+          "trophyFamilyKey": "putus",
+          "pos": "noun",
+          "requiredCarrier": "keputusan diambil ... setelah; colon chain summary with oleh",
+          "recycles": "B1 P9 keluhan; B1 P4 pemilik; P2 L1 singkatnya pattern"
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "sedangkan",
+        "familyKey": "sedangkan",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "daripada",
+        "familyKey": "daripada",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "kelebihan",
+        "familyKey": "lebih",
+        "pos": "noun",
+        "surfaceAnchor": "kelebihannya"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "jangka",
+        "familyKey": "jangka",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "pertimbangan",
+        "familyKey": "timbang",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "risiko",
+        "familyKey": "risiko",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "mandiri",
+        "familyKey": "mandiri",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "tawaran",
+        "familyKey": "tawar",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "menetap",
+        "familyKey": "tetap",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "menyarankan",
+        "familyKey": "saran",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "selisih",
+        "familyKey": "selisih",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "memilah",
+        "familyKey": "pilah",
+        "pos": "verb",
+        "surfaceAnchor": "dipilah"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "sehingga",
+        "familyKey": "sehingga",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "tahap",
+        "familyKey": "tahap",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "alasan",
+        "familyKey": "alasan",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "mengajukan",
+        "familyKey": "aju",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "menyadari",
+        "familyKey": "sadar",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "berdasarkan",
+        "familyKey": "dasar",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "dampak",
+        "familyKey": "dampak",
+        "pos": "noun",
+        "surfaceAnchor": "Dampaknya"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "keputusan",
+        "familyKey": "putus",
+        "pos": "noun"
+      }
+    ],
+    "forbiddenCheck": "All 20 lemmas and all 20 familyKeys were compared under NFC + casefold against the supplied forbiddenTrophies array (frozen A1/A2 plus the 100 reserved B1 allocations, allocation sha 35aea868...) and against each other: zero collisions, 20 unique lemmas, 20 unique familyKeys. The B1 reservation is untouched; B2 rows are appended after the 100 B1 rows in the ledger. Surfaces not casefold-identical to the lemma (kelebihannya, dipilah, Dampaknya) anchor to their lemma by the explicit surfaceAnchor column on their own row, never by substring rule; sentence-initial capitals (Pertimbangan, Tawaran, Selisih, Alasan, Keputusan) match under casefold and carry no anchor, and no B1 row carries the column.",
+    "nearFamilyDecisions": [
+      "menetap vs reserved B1 tinggal: different root (tetap), distinct meaning settle permanently; tinggal stays bare elsewhere.",
+      "menyarankan vs reserved rekomendasi: different root (saran), native verb of advising; rekomendasi never appears in P1 L10.",
+      "memilah vs reserved pilihan: roots pilah (sort) and pilih (choose) are different lexemes; pilih-family words appear only as plain vocabulary.",
+      "kelebihan vs recycled lebih: lebih is not a frozen trophy; kelebihan is a lexicalised nominal (advantage), familyKey lebih reserved by this row so no later kekurangan-style sibling may be a trophy without a new decision; kekurangan is not a trophy (kurang is reserved B1).",
+      "risiko (L6) and berisiko (L8 you1): same family; only risiko is the trophy, berisiko is vocabulary.",
+      "selisih vs beda: beda is vocabulary in P1 L1/L9 them and you lines; selisih is the trophy only in P2 L1.",
+      "keputusan vs memutuskan: them lines avoid memutuskan; family putus reserved once.",
+      "sadar vs menyadari: P1 L8 you2 was rewritten to saya tahu so sadar appears first as the L7 trophy.",
+      "alasan: familyKey is the lexicalised word, not the etymological root alas.",
+      "dipilah surface for lemma memilah is the staged passive voice step; the pattern example and them line supply the active memilah so learners see both voices."
+    ]
+  },
+  "mechanicalValidationRules": [
+    "Exactly 2 paths × 10 lessons, episodeShape challenge (P1) and precision (P2); dialogue length 6 with speaker order them/you/them/you/them/you; them2 contains ? or a challenge cue; them4 differs from them2 in task.",
+    "Token bounds: them 6-20, you1 14-26, you2 12-24, you3 10-22; token = maximal run of letters with internal hyphen; digits anywhere in targetText, pattern examples or trophy example are errors.",
+    "Moves: you1 in path whitelist; you2 in {concede,rebut,clarify,explain,compare,counteroffer}; you3 in {conclude,propose,summarize,counteroffer,relay,request}; three you moves pairwise distinct; relay not used in P1/P2.",
+    "Register: lesson register value in {formal,neutral}; formal learner lines must not contain kamu, aku, -mu, -ku, kalian; neutral learner lines must not contain Anda; banned list (gue, lu, nggak, gak, aja, udah, banget, dong, sih, kok, mending, gimana, awak, sila, tandas, macam) is an error in every turn.",
+    "Trophy: lemma matches ^[a-z]+$, equals ledger row, familyKey equals ledger row; surface is one whole unit of dialogue[turnIndex] and casefold(surface) equals lemma or the authored anchor in the ledger row (surface with -nya or dipilah for memilah); trophy.example.targetText contains surface or lemma as a whole unit.",
+    "Staged-form gate (whole-token check only): the validator config lists one or two whole-unit tokens per staged form (sedangkan, daripada, kalaupun, terjangkau, sehingga, padahal, berdasarkan, akibatnya, sebaliknya, menyadari, mengajukan, dimaksud); a listed token may not appear in a learner line before the lesson where its form becomes productive, and a recognitionOnly token appears only in them lines or in a pattern example that is not the required learner-turn example; the pattern example that equals a you turn is productive exposure and may contain only forms productive at that lesson; multi-word frames (kalau ... berarti, bukan X yang ..., tapi Y, benar, itu ...) and P1 forms recycled into P2 are semantic review items, not regex.",
+    "Build: 5-8 chunks, each 1-4 tokens, 7-12 focus tokens, no edge whitespace, NFC(framePrefix + chunks.join(' ') + frameSuffix) === NFC(dialogue[1].targetText), and both frame edges fall on whole-token boundaries; exactly 2 distractors, each a plausible 1-4 token string absent as a whole phrase from the line; a single-token chunk only for a clause-level connector or clause-head frame standing at a clause head: the config list (tetapi, tapi, jadi, karena, sehingga, padahal, apalagi) plus the per-lesson carriers sedangkan (P1 L1, L5, L8), daripada (P1 L6), kelebihannya (P1 L3), berdasarkan (P2 L8); a verb, noun or other lexical word inside a clause (menetap, mengajukan, Dampaknya) is never a singleton, and a conjunction always travels with the phrase it introduces; a chunk never splits a hyphenated token. This sentence reconciles the segmentation paragraph's 'lesson carrier' wording: lexical trophies are not singleton carriers.",
+    "Cloze on dialogue[3] with 2-4 blanks, synthesis on dialogue[5] with 1-2 blanks: segment concatenation equals the turn; blank 1-3 units; blank never in {saya,aku,kamu,anda,kita,kami,mereka,dia,itu,ini,yang,pun,kan}; acceptedAnswers includes answer; at most one blank carries 4 distinct normalised choices with exactly one accepted.",
+    "Recall: before + answer + after === dialogue[1].targetText; answer 1-3 units, content word or carrier; 4 fallbackChoices distinct.",
+    "Speak targets at turn indices 1,3,5 with 2-4 required tokens each, whole units of that turn, none from the pronoun/address stop-list.",
+    "Terms 8-10 per lesson, each targetText found casefolded in the dialogue or a pattern example; lemma field required when targetText carries -nya/-mu/-ku or is a di-/ter- form of a me- lemma.",
+    "Orthography detectors: di + verb attached vs di + place spaced; Anda capitalised; walaupun/meskipun with tetapi/tapi/namun in one sentence is an error; loanword tokens outside the per-lesson exemption list warn.",
+    "sceneCaption in de and en contains dialogue[0].targetText verbatim; every base object carries de and en; pattern.rule one sentence; 2-3 examples with contiguous highlights, at least one equal to a you turn."
+  ],
+  "semanticReviewRules": [
+    "them2 is a genuine challenge (new cost, counter-example, precision demand or false assumption), not an acknowledgement; them4 changes the constraint or audience (bottom line, edge case, one-sentence summary, newcomer notice).",
+    "you1 performs the whitelisted move in native argument form: P1 states both sides before weighing; P2 names cause and effect or steps, not a bare fact.",
+    "Qualified recommendation (P1) is conditional or scoped (kalau ada anak kecil, untuk jangka pendek), never a bare preference; P2 closing summaries are complete and consistent with you1/you2 details (numbers, order, agents).",
+    "Concessions are real conflicts (price vs time, safety vs pay); pseudo-concessions and walaupun ... tapi calques rejected.",
+    "Voice: di- used only where the patient is topical; me- where the agent matters; oleh only with an expressed agent; reviewer checks every di-/me- choice for naturalness.",
+    "Register weight: formal learner lines keep tetapi and affix the main predicate where a native would (menyarankan, dibuktikan, mengajukan); clipped spoken-standard base verbs (hitung, cek, bayar, pegang, pesan, usulkan) are acceptable in either register and are not a register fault; neutral lines use tapi; a them line in a formal lesson may open with Tapi; the reviewer rejects Jakartan morphology, Malay and written-only forms (telah, sekiranya) in learner speech.",
+    "Base parity: de and en carry identical stance, scope and aspect; German Konjunktiv II only for kalau/kalaupun/seandainya clauses; Indonesian present stays present unless a marker licences past/future.",
+    "Distractors and fallbackChoices are grammatical-looking but wrong in logic (karena for sehingga, walaupun for sedangkan, belum for sudah) and never a second valid reading; chip permutations that also read naturally are listed as authored variants or the chunking is changed.",
+    "Fictional notices (RT parking, complex bins, cafe points, cooperative fine, clinic flow, campus bikes, market move) stay scene-specific; no line states a universal legal, medical, municipal or financial rule.",
+    "Trophy carries the communicative weight of its turn; -nya anchored surfaces (kelebihannya, Dampaknya) are checked for the meaning being the lemma, not a different sense.",
+    "Recycling honoured: each you2 or you3 reuses at least one form named in recycles; B1 recycles are checked against the ledger rows, not live B1 content.",
+    "TTS readability: RT read letter-wise, hyphenated reduplications read as one word, no digits; proper nouns pronounced natively."
+  ],
+  "requiredSchemaExtensions": [
+    "Pending, not yet implemented: register id-ID in every B2 enumeration used by lesson bodies, pickers and formatGuidedLessonId (slug indonesian, level b2); no new episode fields and no change to the strict zod mirror. Until this lands no id-ID B2 lesson id resolves and no picker lists the level.",
+    "Pending, not yet implemented: validator config for id-ID B2 (external, not app schema): banned colloquial list, formal/neutral pronoun lists, loanword exemptions keyed by lesson slug, trophy anchor table {surface→lemma} for the three surfaces not casefold-identical to their lemma (kelebihannya, dipilah, Dampaknya), staged-token table per path, clause-level connector list for single-token chunks, walaupun/tetapi co-occurrence detector, di-preposition detector. Everything in this list is a token or shape check; no detector classifies grammatical equivalence, causation or productive use.",
+    "Ledger (pending validator support): B2 rows appended after the 100 B1 rows with columns pathNumber, lessonNumber, lemma, familyKey, pos and the optional surfaceAnchor, present only on rows whose dialogue surface is not casefold-identical to the lemma (P1 L3 kelebihannya, P2 L2 dipilah, P2 L9 Dampaknya) and absent on every B1 row and every other B2 row; the validator reads surfaceAnchor when present and otherwise requires casefold(surface) === lemma; familyKey uniqueness checked over B1 + B2 rows and forbidden list under NFC + casefold.",
+    "No gender alternates, no reading field and no ja/ko boundary logic needed for id-ID; speakerGender fixed neutral for these 20 lessons."
+  ],
+  "unresolvedDecisions": [
+    "Resolved: P1 L3 and P2 L9 keep the -nya anchored surfaces (kelebihannya, Dampaknya) as the attested natural form with explicit surfaceAnchor rows; if native-model review rewords either line, the anchor row changes with it.",
+    "Resolved: provider stays in the P2 L5 canonical line with a per-lesson exemption because it is the spoken norm; penyedia is not an accepted variant.",
+    "Recording window for 22-26 token you1 lines remains the inherited id-ID setting until pilot data; not set here.",
+    "Whether neutral lessons should also accept setiap/tiap and jadi/berarti variants beyond the blank-level lists; decided per lesson at full-content review.",
+    "Full lessons, the new B2 gate, Fable full read, independent native review, base editions and TTS all remain pending."
+  ]
+}

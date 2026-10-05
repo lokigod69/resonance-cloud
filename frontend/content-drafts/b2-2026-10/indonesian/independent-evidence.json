@@ -1,0 +1,1442 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/indonesian/p1.json": "fc369f4c2753debb70c7e4d4c13eb81f3a8f6d696992cce5f49f72f6e4ba52db",
+    "frontend/content-drafts/b2-2026-10/indonesian/p2.json": "f816ea473d908b2ed5578923911705e8f28a12475d83ce3bb91df71b398d496e"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/indonesian/specification.json": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5",
+    "frontend/content-drafts/b2-2026-10/native-prerequisites.json": "6685bba9897ddd1c1f72308204dd6c056108f32aea332e2ee9a1402cf4e74f2e",
+    "frontend/content-drafts/b1-native-2026-10/indonesian/specification.json": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef"
+  },
+  "sourceCanonicalizations": [
+    {
+      "oldName": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC.json",
+      "oldSha256": "88f1a044263c8755ba05ca4798eecc204605ceb5631520589fc239c7e79745b0",
+      "newName": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json",
+      "newSha256": "7f4d028f8577f7c4e9f734f64b43fd67194edb63df073572f664a4242f0320fa",
+      "exactSpecEdits": 2,
+      "metadataOnly": "Computed specRef filename/hash after exact Fable specification edits."
+    },
+    {
+      "oldName": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json",
+      "oldSha256": "7f4d028f8577f7c4e9f734f64b43fd67194edb63df073572f664a4242f0320fa",
+      "newName": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V3.json",
+      "newSha256": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5",
+      "exactSpecEdits": 6,
+      "metadataOnly": "Computed specRef filename/hash after exact Fable specification edits."
+    }
+  ],
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "ID-B2-PUB-02",
+      "severity": "HIGH",
+      "scope": "publication-exercise-acceptance",
+      "status": "open-partial",
+      "title": "P1 L1 still admits a natural alternative order after the per hari repair",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+          "line": 126,
+          "jsonPointer": "/lessons/0/build/chunks"
+        }
+      ],
+      "evidence": [
+        "The new canonical chips are [sedangkan] [yang dekat kantor] [menghemat waktu saya] [hampir dua jam] [per hari.].",
+        "Zero-based order [0,1,4,2,3], disregarding punctuation as required, gives: Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor per hari menghemat waktu saya hampir dua jam.",
+        "Per hari can precede the predicate as a rate/frequency adjunct and preserves the same commute-saving claim. Its period cannot be the sole reason to reject that otherwise natural order.",
+        "The structural native gate correctly checks only canonical reconstruction; it does not claim to prove permutation uniqueness. No alternate-order field or runtime acceptance was demonstrated."
+      ],
+      "arbitration": "Fable classified the prior finding FIX because per hari binds duration. This independent rereview does not consider that sufficient proof of unique order. The P2 L2 first-clause swap and P2 L6 time-fronting examples from the initial finding are eliminated by the new fixed prefixes; no claim of exhaustive permutation proof is made for those or the other builds.",
+      "requiredFix": "Before publication, support and test the natural authored order above, or obtain a native-reviewed regrouping/visible target cue that makes the exercise uniquely answerable. Do not alter canonical audio merely to silence the structural gate.",
+      "canonicalSpokenChangeRequired": false
+    },
+    {
+      "id": "ID-B2-PUB-04",
+      "severity": "MEDIUM",
+      "scope": "publication-input-acceptance",
+      "status": "open-disputed",
+      "title": "Jika begitu remains an explicit unresolved acceptance disagreement",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+          "line": 930,
+          "jsonPointer": "/lessons/2/cloze/blanks/0/acceptedAnswers"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+          "line": 2473,
+          "jsonPointer": "/lessons/6/cloze/blanks/0/acceptedAnswers"
+        }
+      ],
+      "evidence": [
+        "The exact displayed frames are ___, kita tetapkan hari Selasa dan Kamis sebagai hari semua orang di kantor untuk rapat. and ___, gabungkan: aplikasi untuk kosakata tiap hari, dan kelas percakapan dua minggu sekali di akhir pekan.",
+        "Both authored lists accept only Kalau begitu. The initial review identified Jika begitu as a grammatical alternative in these contexts.",
+        "Fable explicitly marked this finding PARTIAL and rejected Jika begitu as not natural spoken Indonesian for the fixed frame. The final artifacts preserve that decision; the review does not conceal the disagreement or fabricate extra accepted answers.",
+        "Ten other requested variant additions were applied exactly and personally reread in their complete frames. Acceptance is bounded; neither the gate nor this report claims exhaustive synonym coverage."
+      ],
+      "requiredFix": "Keep a publication acceptance decision for these exact frames open to qualified native review or a visible carrier-specific instruction. Demonstrate the final decision in the actual input UI; hidden base glosses and spec requiredCarrier metadata cannot supply the visible constraint.",
+      "canonicalSpokenChangeRequired": false
+    },
+    {
+      "id": "ID-B2-PUB-08",
+      "severity": "HIGH",
+      "scope": "publication-runtime",
+      "status": "open",
+      "title": "Native B2 delivery, answer handling and audio timing still need runtime evidence",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessonsAuthoring.ts",
+          "line": 440,
+          "jsonPointer": null
+        }
+      ],
+      "evidence": [
+        "GuidedLessonLevel still reads A1 | A2 | B1 at line 440. The repaired native id-ID B2 structural gate is now independently PASS, which closes the gate portion of the earlier hold.",
+        "This review supplies no B2 renderer or picker/id activation demonstration, no rendering evidence that form cues are visible, and no execution proof of authored acceptedAnswers or alternate chip order handling.",
+        "Both de/en source bases were fully reviewed. No twelve-base-edition coverage, production audio completeness, generated-audio listening, or long-utterance recording-window evidence was supplied to this content/gate rereview.",
+        "Fable explicitly retains the runtime/picker/base-edition/audio/recording-window hold and states that its native arbitration is model based, not human-native certification."
+      ],
+      "requiredFix": "Keep publication disabled until the B2 runtime, visible cues and authored answer acceptance are integrated and tested, picker/id and base-edition coverage are complete, and native audio/recording timing has been checked. Follow the separately reviewed export and execution process for any paid work.",
+      "canonicalSpokenChangeRequired": false
+    }
+  ],
+  "scope": "Exact canonical spoken content for local TTS only; all publication findings retained. No native-human, listening or production approval.",
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "/root/german_b2_p2_author",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "ed593ca6ded9d0fbb9be8ad0a7e7a59fe9f6b037021fada535616a1f1f5b3019",
+  "rawReview": {
+    "kind": "indonesian-b2-recording-scope-addendum",
+    "schemaVersion": 1,
+    "date": "2026-10-06",
+    "purpose": "Lossless serialization addendum for the existing reviewed recorder, not a new review or approval. The frozen original report remains unchanged.",
+    "originalReport": {
+      "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_INDEPENDENT_REREVIEW.json",
+      "sha256": "427b30c5911c7dfd5593c9f4857c975ecf3d23e0ec2bf3f3e6decd9980c31c2c"
+    },
+    "reviewer": {
+      "id": "/root/german_b2_p2_author",
+      "role": "independent-agent",
+      "authorOfReviewedContent": false,
+      "authorOfNativeGate": false,
+      "nativeHuman": false
+    },
+    "authorOfReviewedContent": false,
+    "authorOfNativeGate": false,
+    "localTtsContentVerdict": "PASS",
+    "unresolvedLocalTtsBlockers": [],
+    "publicationVerdict": "REWORK",
+    "remainingPublicationFindings": [
+      {
+        "id": "ID-B2-PUB-02",
+        "severity": "HIGH",
+        "scope": "publication-exercise-acceptance",
+        "status": "open-partial",
+        "title": "P1 L1 still admits a natural alternative order after the per hari repair",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+            "line": 126,
+            "jsonPointer": "/lessons/0/build/chunks"
+          }
+        ],
+        "evidence": [
+          "The new canonical chips are [sedangkan] [yang dekat kantor] [menghemat waktu saya] [hampir dua jam] [per hari.].",
+          "Zero-based order [0,1,4,2,3], disregarding punctuation as required, gives: Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor per hari menghemat waktu saya hampir dua jam.",
+          "Per hari can precede the predicate as a rate/frequency adjunct and preserves the same commute-saving claim. Its period cannot be the sole reason to reject that otherwise natural order.",
+          "The structural native gate correctly checks only canonical reconstruction; it does not claim to prove permutation uniqueness. No alternate-order field or runtime acceptance was demonstrated."
+        ],
+        "arbitration": "Fable classified the prior finding FIX because per hari binds duration. This independent rereview does not consider that sufficient proof of unique order. The P2 L2 first-clause swap and P2 L6 time-fronting examples from the initial finding are eliminated by the new fixed prefixes; no claim of exhaustive permutation proof is made for those or the other builds.",
+        "requiredFix": "Before publication, support and test the natural authored order above, or obtain a native-reviewed regrouping/visible target cue that makes the exercise uniquely answerable. Do not alter canonical audio merely to silence the structural gate.",
+        "canonicalSpokenChangeRequired": false
+      },
+      {
+        "id": "ID-B2-PUB-04",
+        "severity": "MEDIUM",
+        "scope": "publication-input-acceptance",
+        "status": "open-disputed",
+        "title": "Jika begitu remains an explicit unresolved acceptance disagreement",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+            "line": 930,
+            "jsonPointer": "/lessons/2/cloze/blanks/0/acceptedAnswers"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+            "line": 2473,
+            "jsonPointer": "/lessons/6/cloze/blanks/0/acceptedAnswers"
+          }
+        ],
+        "evidence": [
+          "The exact displayed frames are ___, kita tetapkan hari Selasa dan Kamis sebagai hari semua orang di kantor untuk rapat. and ___, gabungkan: aplikasi untuk kosakata tiap hari, dan kelas percakapan dua minggu sekali di akhir pekan.",
+          "Both authored lists accept only Kalau begitu. The initial review identified Jika begitu as a grammatical alternative in these contexts.",
+          "Fable explicitly marked this finding PARTIAL and rejected Jika begitu as not natural spoken Indonesian for the fixed frame. The final artifacts preserve that decision; the review does not conceal the disagreement or fabricate extra accepted answers.",
+          "Ten other requested variant additions were applied exactly and personally reread in their complete frames. Acceptance is bounded; neither the gate nor this report claims exhaustive synonym coverage."
+        ],
+        "requiredFix": "Keep a publication acceptance decision for these exact frames open to qualified native review or a visible carrier-specific instruction. Demonstrate the final decision in the actual input UI; hidden base glosses and spec requiredCarrier metadata cannot supply the visible constraint.",
+        "canonicalSpokenChangeRequired": false
+      },
+      {
+        "id": "ID-B2-PUB-08",
+        "severity": "HIGH",
+        "scope": "publication-runtime",
+        "status": "open",
+        "title": "Native B2 delivery, answer handling and audio timing still need runtime evidence",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessonsAuthoring.ts",
+            "line": 440,
+            "jsonPointer": null
+          }
+        ],
+        "evidence": [
+          "GuidedLessonLevel still reads A1 | A2 | B1 at line 440. The repaired native id-ID B2 structural gate is now independently PASS, which closes the gate portion of the earlier hold.",
+          "This review supplies no B2 renderer or picker/id activation demonstration, no rendering evidence that form cues are visible, and no execution proof of authored acceptedAnswers or alternate chip order handling.",
+          "Both de/en source bases were fully reviewed. No twelve-base-edition coverage, production audio completeness, generated-audio listening, or long-utterance recording-window evidence was supplied to this content/gate rereview.",
+          "Fable explicitly retains the runtime/picker/base-edition/audio/recording-window hold and states that its native arbitration is model based, not human-native certification."
+        ],
+        "requiredFix": "Keep publication disabled until the B2 runtime, visible cues and authored answer acceptance are integrated and tested, picker/id and base-edition coverage are complete, and native audio/recording timing has been checked. Follow the separately reviewed export and execution process for any paid work.",
+        "canonicalSpokenChangeRequired": false
+      }
+    ],
+    "reviewedSources": {
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json": "fc369f4c2753debb70c7e4d4c13eb81f3a8f6d696992cce5f49f72f6e4ba52db",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p2.json": "f816ea473d908b2ed5578923911705e8f28a12475d83ce3bb91df71b398d496e"
+    },
+    "scope": {
+      "verdict": "PASS",
+      "blockingFindings": 0,
+      "highFindings": 0,
+      "scope": "Canonical spoken text only in the exact staged hashes, including dialogue, pattern examples, vocabulary surfaces and trophy examples.",
+      "rationale": "All twenty final lesson objects were personally reread field by field after the exact repair replay. No remaining canonical spoken-content defect requiring a text change was found; formal/neutral register, speaker neutrality, staged moves, scene-specific policies and challenge/steer continuity remain coherent.",
+      "paidExecutionApproved": false,
+      "publicationApproved": false,
+      "audioListened": false
+    },
+    "sourceReadCoverage": [
+      {
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+        "sha256": "fc369f4c2753debb70c7e4d4c13eb81f3a8f6d696992cce5f49f72f6e4ba52db",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "allFinalFieldsPersonallyRead": true,
+        "stringLeaves": 1742,
+        "coverage": [
+          "Root metadata, path titles/functions and evidence references",
+          "All six turns, roles, moves, registers and de/en translations",
+          "Title, situation, interlocutor role, scene caption and neutral-speaker metadata",
+          "Every build frame, chip and distractor",
+          "Every cloze/synthesis segment, answer, accepted answer, form cue and fixed choice",
+          "Every recall frame, answer, accepted answer and fallback choice",
+          "Every pattern label, rule, example, base and highlight",
+          "Every term surface, optional lemma, kind and base",
+          "All three speech targets and required tokens",
+          "Trophy lemma/family/surface/turn/example/base",
+          "All pending review flags and empty reviewer/native-approval claims"
+        ]
+      },
+      {
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p2.json",
+        "sha256": "f816ea473d908b2ed5578923911705e8f28a12475d83ce3bb91df71b398d496e",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "allFinalFieldsPersonallyRead": true,
+        "stringLeaves": 1721,
+        "coverage": [
+          "Root metadata, path titles/functions and evidence references",
+          "All six turns, roles, moves, registers and de/en translations",
+          "Title, situation, interlocutor role, scene caption and neutral-speaker metadata",
+          "Every build frame, chip and distractor",
+          "Every cloze/synthesis segment, answer, accepted answer, form cue and fixed choice",
+          "Every recall frame, answer, accepted answer and fallback choice",
+          "Every pattern label, rule, example, base and highlight",
+          "Every term surface, optional lemma, kind and base",
+          "All three speech targets and required tokens",
+          "Trophy lemma/family/surface/turn/example/base",
+          "All pending review flags and empty reviewer/native-approval claims"
+        ]
+      }
+    ],
+    "limits": [
+      "Model-based independent review; not certification by a native human.",
+      "Structural validation does not prove every possible chip permutation or every possible synonym. The concrete open cases above are retained.",
+      "No app/source edits, provider/DB calls, paid work or ledger writes performed.",
+      "No broad application verification or adapter review was requested or performed in this rereview.",
+      "Existing initial reports, raw evidence and frozen sources remain immutable."
+    ]
+  },
+  "originalFullReviewSha256": "427b30c5911c7dfd5593c9f4857c975ecf3d23e0ec2bf3f3e6decd9980c31c2c",
+  "originalFullReview": {
+    "kind": "indonesian-b2-independent-content-rereview",
+    "schemaVersion": 1,
+    "date": "2026-10-06",
+    "round": "single post-fix rereview",
+    "reviewer": {
+      "id": "/root/german_b2_p2_author",
+      "role": "independent-agent",
+      "authorOfReviewedContent": false,
+      "authorOfNativeGate": false,
+      "nativeHuman": false
+    },
+    "scope": {
+      "targetLanguage": "Indonesian",
+      "targetLanguageCode": "id-ID",
+      "level": "B2",
+      "paths": [
+        1,
+        2
+      ],
+      "baseLocales": [
+        "de",
+        "en"
+      ],
+      "readOnly": true,
+      "permittedWrites": [
+        "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_INDEPENDENT_REREVIEW.json",
+        "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_GATE_INDEPENDENT_REREVIEW.json"
+      ],
+      "excluded": [
+        "Paid/adapter execution approval",
+        "Provider or database calls",
+        "Production activation",
+        "Human-native certification",
+        "Audio listening or UI rendering"
+      ]
+    },
+    "verdict": "REWORK",
+    "localTtsContentVerdict": {
+      "verdict": "PASS",
+      "blockingFindings": 0,
+      "highFindings": 0,
+      "scope": "Canonical spoken text only in the exact staged hashes, including dialogue, pattern examples, vocabulary surfaces and trophy examples.",
+      "rationale": "All twenty final lesson objects were personally reread field by field after the exact repair replay. No remaining canonical spoken-content defect requiring a text change was found; formal/neutral register, speaker neutrality, staged moves, scene-specific policies and challenge/steer continuity remain coherent.",
+      "paidExecutionApproved": false,
+      "publicationApproved": false,
+      "audioListened": false
+    },
+    "publicationVerdict": {
+      "verdict": "REWORK",
+      "counts": {
+        "BLOCKER": 0,
+        "HIGH": 2,
+        "MEDIUM": 1,
+        "LOW": 0
+      },
+      "findings": [
+        "ID-B2-PUB-02",
+        "ID-B2-PUB-04",
+        "ID-B2-PUB-08"
+      ],
+      "activationApproved": false
+    },
+    "readThrough": [
+      {
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+        "sha256": "fc369f4c2753debb70c7e4d4c13eb81f3a8f6d696992cce5f49f72f6e4ba52db",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "allFinalFieldsPersonallyRead": true,
+        "stringLeaves": 1742,
+        "coverage": [
+          "Root metadata, path titles/functions and evidence references",
+          "All six turns, roles, moves, registers and de/en translations",
+          "Title, situation, interlocutor role, scene caption and neutral-speaker metadata",
+          "Every build frame, chip and distractor",
+          "Every cloze/synthesis segment, answer, accepted answer, form cue and fixed choice",
+          "Every recall frame, answer, accepted answer and fallback choice",
+          "Every pattern label, rule, example, base and highlight",
+          "Every term surface, optional lemma, kind and base",
+          "All three speech targets and required tokens",
+          "Trophy lemma/family/surface/turn/example/base",
+          "All pending review flags and empty reviewer/native-approval claims"
+        ]
+      },
+      {
+        "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p2.json",
+        "sha256": "f816ea473d908b2ed5578923911705e8f28a12475d83ce3bb91df71b398d496e",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "allFinalFieldsPersonallyRead": true,
+        "stringLeaves": 1721,
+        "coverage": [
+          "Root metadata, path titles/functions and evidence references",
+          "All six turns, roles, moves, registers and de/en translations",
+          "Title, situation, interlocutor role, scene caption and neutral-speaker metadata",
+          "Every build frame, chip and distractor",
+          "Every cloze/synthesis segment, answer, accepted answer, form cue and fixed choice",
+          "Every recall frame, answer, accepted answer and fallback choice",
+          "Every pattern label, rule, example, base and highlight",
+          "Every term surface, optional lemma, kind and base",
+          "All three speech targets and required tokens",
+          "Trophy lemma/family/surface/turn/example/base",
+          "All pending review flags and empty reviewer/native-approval claims"
+        ]
+      }
+    ],
+    "counts": {
+      "lessons": 20,
+      "dialogueTurns": 120,
+      "learnerSpeechTargets": 60,
+      "requiredTokens": 180,
+      "terms": 161,
+      "patternExamples": 40,
+      "trophies": 20,
+      "buildChunks": 103,
+      "buildDistractors": 40,
+      "clozeBlanks": 40,
+      "synthesisBlanks": 40,
+      "forcedChoiceBlanks": 9,
+      "recallAnswers": 20,
+      "recallChoices": 80,
+      "allExerciseReconstructionJoins": 80,
+      "finalStringLeaves": 3463
+    },
+    "sourceHashes": {
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json": "fc369f4c2753debb70c7e4d4c13eb81f3a8f6d696992cce5f49f72f6e4ba52db",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p2.json": "f816ea473d908b2ed5578923911705e8f28a12475d83ce3bb91df71b398d496e",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/specification.json": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/native-prerequisites.json": "6685bba9897ddd1c1f72308204dd6c056108f32aea332e2ee9a1402cf4e74f2e",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b1-native-2026-10/indonesian/specification.json": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts": "21eafcff9d85d9bc21018750e0c96e55f07a290bd8f089dc2817c4757dc95a28",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/test-guided-indonesian-b2-drafts.ts": "dd27d8dcc20d00847dc32da0a7bcf7c2c3f51511c7427e816dc6f536b3af03a2",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedLatinB2Drafts.ts": "374fdad69e9468aee8429c08ac7f0c28d9401e1021874edb54943e023b5c0503",
+      "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedB2Drafts.ts": "d2eb15bc692a5191bfe00c2f8bb8fd52cbfed2be7e2a4112034d52d453263fa0",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/tsconfig-indonesian-b2-check.json": "9317bb78f40be7fab89de6e68591f01254dffaae28e6b5f41b04e1cf3dae7825",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_CONTENT_GATE_REPAIR_FABLE_STREAM.jsonl": "db44caa88cacfc75671700319f305fa6796905d6c5f15887cbb61ded4c53f2de",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_CONTENT_GATE_REPAIR_FABLE_RECOVERED.json": "e6386b0b134413d98cca09c5b618acc106050239cdc922486cd76c4a686fa8d1",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_CONTENT_GATE_REPAIR_FABLE_SOURCE_HASHES.json": "e8cd4578532158962f263f3fb3ed6c6675115835594c8d4772ef3eb5908c3374",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_CONTENT_GATE_REPAIR_APPLIED_HASHES.json": "600455df1be36676ce3d84a16a10b4cbdcee037cb7543e16a41ee0e0101c4017",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json": "7f4d028f8577f7c4e9f734f64b43fd67194edb63df073572f664a4242f0320fa",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V3.json": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_INDEPENDENT_REVIEW.json": "5ee2615a87f309da4c8aab796adce2d6ac6f2b0c6b68301d6ad11489091e63fd",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_GATE_INDEPENDENT_REVIEW.json": "bb5f90df0354b3b6a3887934d0fffc7fe191cd08b0bbb0a16c31513399a1a2f8",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/indonesian-b2-p1.json": "77ef9fdeca37978cf074ff209669c5aafcd14d62037cdb6aced6a01a98a9692a",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/new-content/indonesian-b2-p2.json": "7ce52d1e5a036e679a0955138fa05b82775ab17686a461c12f490a255192ffb4",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json": "5dcfad1d3d157c4eea2f156bd4c5acbbacbc16df0834e0a55fdbd5542c346965",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json": "f2d2b43cfa81d47a4047bda7e1a5501a97cc629f051cc5f1416f1d9e98139eaa",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/recording-ready-content/indonesian-b2-p1.json": "fc369f4c2753debb70c7e4d4c13eb81f3a8f6d696992cce5f49f72f6e4ba52db",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/recording-ready-content/indonesian-b2-p2.json": "f816ea473d908b2ed5578923911705e8f28a12475d83ce3bb91df71b398d496e",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/indonesian-b2-gate-final/guidedIndonesianB2Drafts.ts": "21eafcff9d85d9bc21018750e0c96e55f07a290bd8f089dc2817c4757dc95a28",
+      "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/indonesian-b2-gate-final/test-guided-indonesian-b2-drafts.ts": "75707a1d6c17b71fa716c2e552f3d90924fde5a7e17cbe5dd25b0a4304e5996e"
+    },
+    "provenance": {
+      "verdict": "PASS",
+      "previousIndependentReview": {
+        "verdict": "PASS",
+        "originalRawResultEqualsPreservedPreRepair": true,
+        "repairEditsReplayed": 34,
+        "focusClarificationEditsReplayed": 1,
+        "chunkClarificationEdits": 0,
+        "fullReadEditsReplayed": 80,
+        "fullReadIncludesCanonicalSpecEdits": 2,
+        "exactReplay": true,
+        "method": "Parsed genuine Fable result envelopes with success, is_error false and claude-fable-5-1 modelUsage. Applied every exact old/new edit in memory with old-value equality checks, explicit absent/null additions and RFC6901 '-' array append. Compared deep equality with final V2 authority and both final lesson documents after the explicitly documented computed specRef filename/hash update. No raw output was rewritten.",
+        "reviewCoverageVerified": "Both genuine Fable readThrough entries contain the explicit lesson array 1 through 10.",
+        "checkerDelta": "Only the V2 specification filename/hash and three Fable-proposed singleton allowlist entries differ from the original checker; this is provenance, not semantic authority or gate approval."
+      },
+      "previousAuthorityAndOriginalSnapshotsUnchanged": true,
+      "finalRepair": {
+        "genuineAssistantTextBlocks": 2,
+        "concatenatedTextParsesAsCompleteJson": true,
+        "recoveredObjectEqualsConcatenatedRawExactly": true,
+        "rawStopReason": "end_turn",
+        "rawIsError": false,
+        "contentEdits": 51,
+        "specEdits": 6,
+        "codeEdits": 23,
+        "allOldValuesMatch": true,
+        "codeOldValueOccurrenceCount": 1,
+        "fullObjectsAndCodeReplayExactly": true,
+        "metadataOnlyAfterReplay": "Computed V3 filename/SHA in both specRef entries and native-gate authority.",
+        "appTestDelta": "Only documented B1 number field, three union narrowing assertions, V3 labels/header, exact singleton mutation splice, and bounded spaced-di test anchor hitung."
+      }
+    },
+    "frozenAndAllocationAudit": {
+      "frozen": 200,
+      "reserved": 100,
+      "distinct": 300,
+      "frozenHash": "c3d1594c493feaaf9bff746bcfa8c75dcb6b1371081dcd0b02939a6d11722007",
+      "b1Sha": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef",
+      "b1RecoveredSha": "35aea8685aac608d5f45380ab8b174d02769add26455330afe16f5d11fee92e2",
+      "verified": {
+        "result": "PASS",
+        "value": [
+          20,
+          300
+        ]
+      }
+    },
+    "structuralGate": {
+      "verdict": "PASS",
+      "realPaths": [
+        {
+          "result": "PASS",
+          "value": 1
+        },
+        {
+          "result": "PASS",
+          "value": 2
+        }
+      ],
+      "warnings": [
+        [],
+        []
+      ],
+      "report": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_INDONESIAN_GATE_INDEPENDENT_REREVIEW.json"
+    },
+    "checksActuallyRun": [
+      {
+        "command": "node --import tsx scripts/test-guided-indonesian-b2-drafts.ts",
+        "cwd": "D:/CODING/ResonanceTEST/orchestrator/frontend/",
+        "exitCode": 0,
+        "result": "55/55 PASS, including both unmodified real path positives and actual frozen/reserved authority checks."
+      },
+      {
+        "command": "node node_modules/typescript/bin/tsc -p ../../tmp/V4_EXPANSION_20261003/tsconfig-indonesian-b2-check.json --noEmit",
+        "cwd": "D:/CODING/ResonanceTEST/orchestrator/frontend/",
+        "exitCode": 0,
+        "result": "Scoped strict TypeScript PASS."
+      },
+      {
+        "command": "node node_modules/eslint/bin/eslint.js scripts/lib/guidedIndonesianB2Drafts.ts scripts/test-guided-indonesian-b2-drafts.ts",
+        "cwd": "D:/CODING/ResonanceTEST/orchestrator/frontend/",
+        "exitCode": 0,
+        "result": "ESLint PASS, no errors or warnings."
+      },
+      {
+        "command": "In-memory independent Python exact old/new replay and genuine assistant-text concatenation.",
+        "exitCode": 0,
+        "result": "51 content + 6 spec + 23 code edits: every old value matched uniquely; full resulting objects/code equal the final staged artifacts after declared computed metadata updates."
+      },
+      {
+        "command": "In-memory Node native gate import and actual GUIDED_LESSONS authoring import via captureValidator(write:false).",
+        "exitCode": 0,
+        "result": "Both actual final paths PASS; 200 frozen + 100 reserved = 300 distinct; 20 final allocation rows; 21 independent negative mutations rejected, including additional prefix boundary and both base rule tests."
+      }
+    ],
+    "lessonAssessment": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "register": "formal",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Near/offices versus outskirts: recurring rent, commute cost and energy are weighed; annual-cost challenge and final choice differ.",
+        "publicationFindings": [
+          "ID-B2-PUB-02"
+        ],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 1,
+          "slug": "sewa-dekat-atau-jauh",
+          "register": "formal",
+          "turnTokens": [
+            17,
+            19,
+            14,
+            14,
+            11,
+            18
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            1,
+            3,
+            3,
+            3,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "register": "neutral",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Train versus car: late journeys receive a transport alternative; the child-pickup steer changes the recommendation.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 2,
+          "slug": "mobil-atau-kereta",
+          "register": "neutral",
+          "turnTokens": [
+            15,
+            19,
+            13,
+            24,
+            16,
+            21
+          ],
+          "focusTokens": 9,
+          "chipTokens": [
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "register": "formal",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Remote work: focus on reports, coordination objection, shared office days, and an evidence-based final argument.",
+        "publicationFindings": [
+          "ID-B2-PUB-04"
+        ],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 3,
+          "slug": "kerja-dari-rumah",
+          "register": "formal",
+          "turnTokens": [
+            18,
+            19,
+            13,
+            16,
+            12,
+            18
+          ],
+          "focusTokens": 10,
+          "chipTokens": [
+            1,
+            3,
+            2,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "register": "formal",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Three-month rental: short-term cost, annual-extension objection, maintenance/resale comparison and rent-to-own request.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 4,
+          "slug": "beli-atau-sewa-alat",
+          "register": "formal",
+          "turnTokens": [
+            17,
+            16,
+            12,
+            15,
+            13,
+            17
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            3,
+            1,
+            3,
+            2,
+            3
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "register": "neutral",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Holiday cost versus available days; a genuine fare promotion changes the proposed destination and timing.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 5,
+          "slug": "liburan-dua-rencana",
+          "register": "neutral",
+          "turnTokens": [
+            12,
+            15,
+            13,
+            15,
+            11,
+            14
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            3,
+            2,
+            2,
+            1,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "register": "formal",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Cash/app trade-off: transaction fee and connectivity objection; observed lost custom; both options retained.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 6,
+          "slug": "tunai-atau-aplikasi",
+          "register": "formal",
+          "turnTokens": [
+            15,
+            16,
+            14,
+            23,
+            12,
+            16
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            3,
+            3,
+            2,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "register": "neutral",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "App versus class: independent study and speaking practice; overtime objection; combined plan and conditional escalation.",
+        "publicationFindings": [
+          "ID-B2-PUB-04"
+        ],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 7,
+          "slug": "kelas-atau-aplikasi",
+          "register": "neutral",
+          "turnTokens": [
+            13,
+            19,
+            10,
+            17,
+            13,
+            16
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            1,
+            2,
+            2,
+            3,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "register": "formal",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Job offers: salary/security versus responsibility; specific start-up risk conceded; mortgage condition changes the choice.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 8,
+          "slug": "dua-tawaran-kerja",
+          "register": "formal",
+          "turnTokens": [
+            18,
+            17,
+            18,
+            23,
+            9,
+            19
+          ],
+          "focusTokens": 11,
+          "chipTokens": [
+            1,
+            2,
+            2,
+            1,
+            2,
+            3
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "register": "neutral",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Moving versus staying: salary versus net costs; supplied housing changes the plan to a rental-preserving trial year.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 9,
+          "slug": "pindah-atau-menetap",
+          "register": "neutral",
+          "turnTokens": [
+            12,
+            18,
+            10,
+            17,
+            8,
+            18
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            3,
+            4,
+            1,
+            2,
+            2
+          ],
+          "terms": 9,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "register": "formal",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Parking proposals: street displacement weighed; monitoring responsibility distributed; time-bound notice summarized.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 10,
+          "slug": "usulan-rapat-warga",
+          "register": "formal",
+          "turnTokens": [
+            17,
+            17,
+            9,
+            17,
+            12,
+            20
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            2,
+            3,
+            3,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "register": "formal",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Invoice discrepancy: added chairs and separate shipping; included-delivery objection answered by shipment distinction.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 1,
+          "slug": "selisih-tagihan",
+          "register": "formal",
+          "turnTokens": [
+            13,
+            15,
+            14,
+            15,
+            14,
+            17
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            1,
+            3,
+            3,
+            3,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "register": "neutral",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Local bin rules: sorting, refusal of mixed bins and separate glass/battery collection remain explicitly scene-specific.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 2,
+          "slug": "cara-memilah-sampah",
+          "register": "neutral",
+          "turnTokens": [
+            15,
+            19,
+            12,
+            19,
+            10,
+            22
+          ],
+          "focusTokens": 11,
+          "chipTokens": [
+            3,
+            2,
+            2,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "register": "formal",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Delay: ten supplier days plus four staffing days account for two weeks; next-year mitigation follows.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 3,
+          "slug": "proyek-terlambat",
+          "register": "formal",
+          "turnTokens": [
+            14,
+            14,
+            10,
+            17,
+            12,
+            15
+          ],
+          "focusTokens": 11,
+          "chipTokens": [
+            3,
+            1,
+            2,
+            3,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "register": "neutral",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Fictional reward ladder: presentation-before-payment condition and lost-card phone linkage resolve distinct questions.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 4,
+          "slug": "cara-kerja-poin-kafe",
+          "register": "neutral",
+          "turnTokens": [
+            13,
+            22,
+            12,
+            16,
+            9,
+            16
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            2,
+            4,
+            2,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "register": "neutral",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Internet change: stability rather than price; modem counterexample answered with replacement evidence; coverage check follows.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 5,
+          "slug": "alasan-ganti-internet",
+          "register": "neutral",
+          "turnTokens": [
+            11,
+            18,
+            12,
+            17,
+            10,
+            18
+          ],
+          "focusTokens": 11,
+          "chipTokens": [
+            2,
+            4,
+            1,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "register": "neutral",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Cooperative fine: local seven-day written process, honest leniency request, discretionary decision and reported instalment precedent.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 6,
+          "slug": "mengajukan-keberatan-denda",
+          "register": "neutral",
+          "turnTokens": [
+            13,
+            18,
+            11,
+            18,
+            8,
+            19
+          ],
+          "focusTokens": 10,
+          "chipTokens": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "register": "neutral",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Cancelled cafe: omitted utilities and exhausted capital; rushed contract reading conceded; future budgeting addresses the mistake.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 7,
+          "slug": "rencana-kedai-batal",
+          "register": "neutral",
+          "turnTokens": [
+            11,
+            18,
+            11,
+            14,
+            11,
+            19
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            3,
+            2,
+            3,
+            1,
+            3
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "register": "formal",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Clinic flow: local routine queue rule is clarified for emergencies; the final two-part procedure preserves that distinction.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 8,
+          "slug": "alur-pendaftaran-pasien",
+          "register": "formal",
+          "turnTokens": [
+            14,
+            21,
+            8,
+            22,
+            11,
+            20
+          ],
+          "focusTokens": 10,
+          "chipTokens": [
+            2,
+            2,
+            1,
+            2,
+            3
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "register": "neutral",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Campus bicycle report: source-qualified observed effects; active-term counting answers the holiday challenge; village effect stays hedged.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 9,
+          "slug": "dampak-sepeda-kampus",
+          "register": "neutral",
+          "turnTokens": [
+            13,
+            18,
+            10,
+            19,
+            12,
+            22
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            2,
+            2,
+            2,
+            3,
+            3
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "register": "formal",
+        "canonicalSpokenVerdict": "PASS",
+        "nativeHumanCertification": false,
+        "episodeRead": "Market decision: May meeting, missed nonmembers and March-to-June sequence remain consistent after removing dari.",
+        "publicationFindings": [],
+        "allFinalFieldsReread": true,
+        "counts": {
+          "lesson": 10,
+          "slug": "rantai-keputusan-pasar",
+          "register": "formal",
+          "turnTokens": [
+            14,
+            21,
+            10,
+            17,
+            12,
+            19
+          ],
+          "focusTokens": 12,
+          "chipTokens": [
+            3,
+            2,
+            3,
+            2,
+            2
+          ],
+          "terms": 8,
+          "blankCounts": [
+            2,
+            2
+          ]
+        }
+      }
+    ],
+    "priorHoldsDisposition": [
+      {
+        "id": "ID-B2-PUB-01",
+        "status": "closed",
+        "evidence": "P2 L5 focus 11, chips [2,4,1,2,2]; P2 L9 focus 12, chips [2,2,2,3,3]. All fit the unchanged 1–4 chip and 7–12 focus limits. Fable’s ≤3 handcount for P2 L5 was incorrect, but it does not breach the actual ≤4 rule."
+      },
+      {
+        "id": "ID-B2-PUB-02",
+        "status": "partially-open",
+        "evidence": "Fable classified the prior finding FIX because per hari binds duration. This independent rereview does not consider that sufficient proof of unique order. The P2 L2 first-clause swap and P2 L6 time-fronting examples from the initial finding are eliminated by the new fixed prefixes; no claim of exhaustive permutation proof is made for those or the other builds."
+      },
+      {
+        "id": "ID-B2-PUB-03",
+        "status": "closed",
+        "evidence": "Six exact specification edits reconcile the singleton rule; lexical menetap/mengajukan/Dampaknya are grouped; the P1 L9 coordinated noun phrase keeps dan attached."
+      },
+      {
+        "id": "ID-B2-PUB-04",
+        "status": "partially-open",
+        "evidence": "Ten exact accepted-answer additions closed; two Jika begitu locations remain disputed as recorded."
+      },
+      {
+        "id": "ID-B2-PUB-05",
+        "status": "closed-for-identified-choices",
+        "evidence": "The identified second-valid choices were replaced and the final recalled sentences and options personally reread. This is a contextual semantic assessment, not a general synonym algorithm."
+      },
+      {
+        "id": "ID-B2-PUB-06",
+        "status": "closed-for-identified-distractors",
+        "evidence": "The exact originally identified detail distractors were replaced with contrasting predicates/relations and reread in context; no hidden de/en gloss was treated as a learner-visible cue. Final rendering remains under PUB-08."
+      },
+      {
+        "id": "ID-B2-PUB-07",
+        "status": "closed",
+        "evidence": "P2 L7 dialogue[1].base.en and pattern.examples[0].base.en now both say before we could open."
+      },
+      {
+        "id": "ID-B2-PUB-08",
+        "status": "partially-open",
+        "evidence": "Native gate engineering PASS is now available; all other runtime/publication limits retained."
+      }
+    ],
+    "publicationFindings": [
+      {
+        "id": "ID-B2-PUB-02",
+        "severity": "HIGH",
+        "scope": "publication-exercise-acceptance",
+        "status": "open-partial",
+        "title": "P1 L1 still admits a natural alternative order after the per hari repair",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+            "line": 126,
+            "jsonPointer": "/lessons/0/build/chunks"
+          }
+        ],
+        "evidence": [
+          "The new canonical chips are [sedangkan] [yang dekat kantor] [menghemat waktu saya] [hampir dua jam] [per hari.].",
+          "Zero-based order [0,1,4,2,3], disregarding punctuation as required, gives: Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor per hari menghemat waktu saya hampir dua jam.",
+          "Per hari can precede the predicate as a rate/frequency adjunct and preserves the same commute-saving claim. Its period cannot be the sole reason to reject that otherwise natural order.",
+          "The structural native gate correctly checks only canonical reconstruction; it does not claim to prove permutation uniqueness. No alternate-order field or runtime acceptance was demonstrated."
+        ],
+        "arbitration": "Fable classified the prior finding FIX because per hari binds duration. This independent rereview does not consider that sufficient proof of unique order. The P2 L2 first-clause swap and P2 L6 time-fronting examples from the initial finding are eliminated by the new fixed prefixes; no claim of exhaustive permutation proof is made for those or the other builds.",
+        "requiredFix": "Before publication, support and test the natural authored order above, or obtain a native-reviewed regrouping/visible target cue that makes the exercise uniquely answerable. Do not alter canonical audio merely to silence the structural gate.",
+        "canonicalSpokenChangeRequired": false
+      },
+      {
+        "id": "ID-B2-PUB-04",
+        "severity": "MEDIUM",
+        "scope": "publication-input-acceptance",
+        "status": "open-disputed",
+        "title": "Jika begitu remains an explicit unresolved acceptance disagreement",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+            "line": 930,
+            "jsonPointer": "/lessons/2/cloze/blanks/0/acceptedAnswers"
+          },
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+            "line": 2473,
+            "jsonPointer": "/lessons/6/cloze/blanks/0/acceptedAnswers"
+          }
+        ],
+        "evidence": [
+          "The exact displayed frames are ___, kita tetapkan hari Selasa dan Kamis sebagai hari semua orang di kantor untuk rapat. and ___, gabungkan: aplikasi untuk kosakata tiap hari, dan kelas percakapan dua minggu sekali di akhir pekan.",
+          "Both authored lists accept only Kalau begitu. The initial review identified Jika begitu as a grammatical alternative in these contexts.",
+          "Fable explicitly marked this finding PARTIAL and rejected Jika begitu as not natural spoken Indonesian for the fixed frame. The final artifacts preserve that decision; the review does not conceal the disagreement or fabricate extra accepted answers.",
+          "Ten other requested variant additions were applied exactly and personally reread in their complete frames. Acceptance is bounded; neither the gate nor this report claims exhaustive synonym coverage."
+        ],
+        "requiredFix": "Keep a publication acceptance decision for these exact frames open to qualified native review or a visible carrier-specific instruction. Demonstrate the final decision in the actual input UI; hidden base glosses and spec requiredCarrier metadata cannot supply the visible constraint.",
+        "canonicalSpokenChangeRequired": false
+      },
+      {
+        "id": "ID-B2-PUB-08",
+        "severity": "HIGH",
+        "scope": "publication-runtime",
+        "status": "open",
+        "title": "Native B2 delivery, answer handling and audio timing still need runtime evidence",
+        "locations": [
+          {
+            "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessonsAuthoring.ts",
+            "line": 440,
+            "jsonPointer": null
+          }
+        ],
+        "evidence": [
+          "GuidedLessonLevel still reads A1 | A2 | B1 at line 440. The repaired native id-ID B2 structural gate is now independently PASS, which closes the gate portion of the earlier hold.",
+          "This review supplies no B2 renderer or picker/id activation demonstration, no rendering evidence that form cues are visible, and no execution proof of authored acceptedAnswers or alternate chip order handling.",
+          "Both de/en source bases were fully reviewed. No twelve-base-edition coverage, production audio completeness, generated-audio listening, or long-utterance recording-window evidence was supplied to this content/gate rereview.",
+          "Fable explicitly retains the runtime/picker/base-edition/audio/recording-window hold and states that its native arbitration is model based, not human-native certification."
+        ],
+        "requiredFix": "Keep publication disabled until the B2 runtime, visible cues and authored answer acceptance are integrated and tested, picker/id and base-edition coverage are complete, and native audio/recording timing has been checked. Follow the separately reviewed export and execution process for any paid work.",
+        "canonicalSpokenChangeRequired": false
+      }
+    ],
+    "positiveFindings": [
+      "True Indonesian/id-ID identity and V3 bindings preserved; no Latin relabeling.",
+      "All 80 build/cloze/synthesis/recall canonical joins pass on the actual final files.",
+      "120 dialogue turns, 60 speech rows, 180 exact required tokens, 161 terms, 40 pattern examples and 20 trophies.",
+      "No frozen or reserved trophy collision; all 20 lemma/family/surface allocations verified.",
+      "All source review flags remain false, verdict pending, reviewers empty and nativeStatus unreviewed.",
+      "P1 L9 retained a rental contract throughout; no owned-house inconsistency remains.",
+      "No generic legal, clinic or recycling guarantee introduced: the relevant episodes explicitly identify fictional/local rules."
+    ],
+    "limitations": [
+      "Model-based independent review; not certification by a native human.",
+      "Structural validation does not prove every possible chip permutation or every possible synonym. The concrete open cases above are retained.",
+      "No app/source edits, provider/DB calls, paid work or ledger writes performed.",
+      "No broad application verification or adapter review was requested or performed in this rereview.",
+      "Existing initial reports, raw evidence and frozen sources remain immutable."
+    ],
+    "canonicalLocalTtsContentVerdict": {
+      "verdict": "PASS",
+      "blockingFindings": 0,
+      "highFindings": 0,
+      "scope": "Canonical spoken text only in the exact staged hashes, including dialogue, pattern examples, vocabulary surfaces and trophy examples.",
+      "rationale": "All twenty final lesson objects were personally reread field by field after the exact repair replay. No remaining canonical spoken-content defect requiring a text change was found; formal/neutral register, speaker neutrality, staged moves, scene-specific policies and challenge/steer continuity remain coherent.",
+      "paidExecutionApproved": false,
+      "publicationApproved": false,
+      "audioListened": false
+    }
+  }
+}

@@ -1,0 +1,2328 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/indonesian/p1.json": "fc369f4c2753debb70c7e4d4c13eb81f3a8f6d696992cce5f49f72f6e4ba52db",
+    "frontend/content-drafts/b2-2026-10/indonesian/p2.json": "f816ea473d908b2ed5578923911705e8f28a12475d83ce3bb91df71b398d496e"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/indonesian/specification.json": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5",
+    "frontend/content-drafts/b2-2026-10/native-prerequisites.json": "6685bba9897ddd1c1f72308204dd6c056108f32aea332e2ee9a1402cf4e74f2e",
+    "frontend/content-drafts/b1-native-2026-10/indonesian/specification.json": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef"
+  },
+  "sourceCanonicalizations": [
+    {
+      "oldName": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC.json",
+      "oldSha256": "88f1a044263c8755ba05ca4798eecc204605ceb5631520589fc239c7e79745b0",
+      "newName": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json",
+      "newSha256": "7f4d028f8577f7c4e9f734f64b43fd67194edb63df073572f664a4242f0320fa",
+      "exactSpecEdits": 2,
+      "metadataOnly": "Computed specRef filename/hash after exact Fable specification edits."
+    },
+    {
+      "oldName": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json",
+      "oldSha256": "7f4d028f8577f7c4e9f734f64b43fd67194edb63df073572f664a4242f0320fa",
+      "newName": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V3.json",
+      "newSha256": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5",
+      "exactSpecEdits": 6,
+      "metadataOnly": "Computed specRef filename/hash after exact Fable specification edits."
+    }
+  ],
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "ID-B2-PUB-02",
+      "severity": "HIGH",
+      "scope": "publication-exercise-acceptance",
+      "status": "open-partial",
+      "title": "P1 L1 still admits a natural alternative order after the per hari repair",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+          "line": 126,
+          "jsonPointer": "/lessons/0/build/chunks"
+        }
+      ],
+      "evidence": [
+        "The new canonical chips are [sedangkan] [yang dekat kantor] [menghemat waktu saya] [hampir dua jam] [per hari.].",
+        "Zero-based order [0,1,4,2,3], disregarding punctuation as required, gives: Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor per hari menghemat waktu saya hampir dua jam.",
+        "Per hari can precede the predicate as a rate/frequency adjunct and preserves the same commute-saving claim. Its period cannot be the sole reason to reject that otherwise natural order.",
+        "The structural native gate correctly checks only canonical reconstruction; it does not claim to prove permutation uniqueness. No alternate-order field or runtime acceptance was demonstrated."
+      ],
+      "arbitration": "Fable classified the prior finding FIX because per hari binds duration. This independent rereview does not consider that sufficient proof of unique order. The P2 L2 first-clause swap and P2 L6 time-fronting examples from the initial finding are eliminated by the new fixed prefixes; no claim of exhaustive permutation proof is made for those or the other builds.",
+      "requiredFix": "Before publication, support and test the natural authored order above, or obtain a native-reviewed regrouping/visible target cue that makes the exercise uniquely answerable. Do not alter canonical audio merely to silence the structural gate.",
+      "canonicalSpokenChangeRequired": false
+    },
+    {
+      "id": "ID-B2-PUB-04",
+      "severity": "MEDIUM",
+      "scope": "publication-input-acceptance",
+      "status": "open-disputed",
+      "title": "Jika begitu remains an explicit unresolved acceptance disagreement",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+          "line": 930,
+          "jsonPointer": "/lessons/2/cloze/blanks/0/acceptedAnswers"
+        },
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+          "line": 2473,
+          "jsonPointer": "/lessons/6/cloze/blanks/0/acceptedAnswers"
+        }
+      ],
+      "evidence": [
+        "The exact displayed frames are ___, kita tetapkan hari Selasa dan Kamis sebagai hari semua orang di kantor untuk rapat. and ___, gabungkan: aplikasi untuk kosakata tiap hari, dan kelas percakapan dua minggu sekali di akhir pekan.",
+        "Both authored lists accept only Kalau begitu. The initial review identified Jika begitu as a grammatical alternative in these contexts.",
+        "Fable explicitly marked this finding PARTIAL and rejected Jika begitu as not natural spoken Indonesian for the fixed frame. The final artifacts preserve that decision; the review does not conceal the disagreement or fabricate extra accepted answers.",
+        "Ten other requested variant additions were applied exactly and personally reread in their complete frames. Acceptance is bounded; neither the gate nor this report claims exhaustive synonym coverage."
+      ],
+      "requiredFix": "Keep a publication acceptance decision for these exact frames open to qualified native review or a visible carrier-specific instruction. Demonstrate the final decision in the actual input UI; hidden base glosses and spec requiredCarrier metadata cannot supply the visible constraint.",
+      "canonicalSpokenChangeRequired": false
+    },
+    {
+      "id": "ID-B2-PUB-08",
+      "severity": "HIGH",
+      "scope": "publication-runtime",
+      "status": "open",
+      "title": "Native B2 delivery, answer handling and audio timing still need runtime evidence",
+      "locations": [
+        {
+          "file": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/data/guidedLessonsAuthoring.ts",
+          "line": 440,
+          "jsonPointer": null
+        }
+      ],
+      "evidence": [
+        "GuidedLessonLevel still reads A1 | A2 | B1 at line 440. The repaired native id-ID B2 structural gate is now independently PASS, which closes the gate portion of the earlier hold.",
+        "This review supplies no B2 renderer or picker/id activation demonstration, no rendering evidence that form cues are visible, and no execution proof of authored acceptedAnswers or alternate chip order handling.",
+        "Both de/en source bases were fully reviewed. No twelve-base-edition coverage, production audio completeness, generated-audio listening, or long-utterance recording-window evidence was supplied to this content/gate rereview.",
+        "Fable explicitly retains the runtime/picker/base-edition/audio/recording-window hold and states that its native arbitration is model based, not human-native certification."
+      ],
+      "requiredFix": "Keep publication disabled until the B2 runtime, visible cues and authored answer acceptance are integrated and tested, picker/id and base-edition coverage are complete, and native audio/recording timing has been checked. Follow the separately reviewed export and execution process for any paid work.",
+      "canonicalSpokenChangeRequired": false
+    }
+  ],
+  "scope": "Exact canonical spoken content for local TTS only; all publication findings retained. No native-human, listening or production approval.",
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 full twenty-lesson reads and exact arbitration"
+  },
+  "reviewChain": [
+    {
+      "batch": "B2_INDONESIAN_P1_P2",
+      "rawProviderReviewSha256": "dbeecff312a26f6293c4831996b8debbaf402727575578a80a0db84c81a01364",
+      "exactEdits": 80,
+      "exactSpecificationEdits": 2,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "indonesian-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "All 60 turns, bases, titles, situations, captions, builds, cloze/synthesis segments+blanks+cues, recalls, patterns, terms, speak targets, trophies, review blocks read. Canonical lines natural spoken standard Indonesian, registers hold (no kamu/aku in formal, no Anda in neutral, no banned particles, zero Pak/Bu), them2 genuine challenge and them4 genuine steer in every lesson, moves distinct, staging honoured (kalaupun/terjangkau only L8-9, justru itu/gabungkan/berarti L4-7), trophies match ledger with correct anchors, no digits, reduplications intact, RT absent. Defects: P1 L9 continuity (rented vs owned house), P1 L9 chip swap of two coordinate reasons, open blanks that reject valid taught synonyms (Jika, diperhitungkan, menetapkan, mohon, Benar/Betul, opsi tambahan, sembari, agar), P1 L8 cloze blank mungkin has several equally valid fillers, P1 L2/L6/L7 titles disclose steer or conclusion, P1 L2 memang rendered zwar in de but dropped in en, P1 L5 distractor lebih murah yields a second grammatical sentence.",
+            "remainingConcerns": "nativeStatus stays unreviewed; P1 L1 chip uniqueness rests on the terminal-period chip being visible as a constraint; no B2 renderer exists so form cues are assumed visible; recording window for long you1 lines untested."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "All fields read as for P1. Causal chains, process steps and summaries consistent with you1/you2 (numbers, months, agents); fictional notices stay scene-situated (menurut aturan di kompleks ini, di klinik ini, laporan kampus); di-/oleh usage natural; padahal/mengajukan/menyadari/berdasarkan/akibatnya/yang dimaksud appear only from their productive lessons; RT read letter-wise only in L10 you3. Defects: P2 L9 locative chip can front (valid permutation), P2 L6 menurut aturan koperasi chip can move mid-sentence, P2 L4 chip splits satu kopi gratis, P2 L5 tiap sore, chip can move, P2 L10 chip keluhan dari strands a preposition, P2 L3/L7/L10 (and L1 you1) de/en bases narrate past events in present where context licenses past, titles of L3/L6/L8 disclose challenge or solution, open blanks reject sebab/bergiliran/mengakui/Periksa dulu/jika tidak/Ringkasnya/sepanjang/barangkali, L7 recall distractor mengumumkan is grammatical, L8 distractor urutan nama yields a valid sentence.",
+            "remainingConcerns": "nativeStatus unreviewed; lalu/baru alternatives for P2 L2 nanti now constrained by choices; P2 L10 you1 canonical shortened by one token (dari) which must be mirrored in the controlling spec."
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "ID-B2-AUTH-01 P1 L1 chip order (hampir dua jam / setiap hari.)",
+            "decision": "accept-as-resolved",
+            "reason": "The chip setiap hari. carries the terminal period and is visibly constrained to close the sentence; the swapped order yields a mid-sentence period, so strict order rejects only an invalid string. No edit."
+          },
+          {
+            "finding": "ID-B2-AUTH-02 P1 L4 chip order (belum sampai / tiga bulan sewa)",
+            "decision": "reject-hold",
+            "reason": "karena belum sampai tiga bulan sewa setengah harga beli. is not meaning-preserving: belum sampai tiga bulan sewa reads as a duration (not yet three months of rent) and setengah harga beli dangles. Arbitration hold closed; no edit."
+          },
+          {
+            "finding": "ID-B2-AUTH-03 P1 L9 chip order (two coordinate reasons)",
+            "decision": "accept",
+            "reason": "Swap is grammatical and meaning-preserving. Regrouped within schema: prefix Sebenarnya, chunks aku ingin / menetap (lesson carrier singleton) / di sini; / sudah punya teman, / tempat kerja dekat, dan; the dan-final chip locks the list order (12 focus tokens, 5 chunks)."
+          },
+          {
+            "finding": "ID-B2-AUTH-04 P2 L9 locative fronting",
+            "decision": "accept",
+            "reason": "di depan perpustakaan parkir motor berkurang separuh is natural. Regrouped: focus moved to the carrier clause with Dampaknya as carrier singleton and parkir motor di depan perpustakaan as one 4-token chip; the list clause goes to frameSuffix."
+          },
+          {
+            "finding": "ID-B2-AUTH-05 P1 L9 continuity (sewa rumah terjangkau vs jual rumah)",
+            "decision": "accept",
+            "reason": "Contradiction is real. you3 edited to tanpa putus kontrak sewa di sini (18 tokens); base, synthesis segment, speak tokens, a new term and the controlling spec line are updated in lockstep."
+          },
+          {
+            "finding": "Independent findings: none supplied",
+            "decision": "noted",
+            "reason": "No independent or native approval exists or is implied; review blocks stay pending/unreviewed."
+          }
+        ],
+        "edits": [
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "dihitung"
+            ],
+            "newValue": [
+              "dihitung",
+              "diperhitungkan"
+            ],
+            "reason": "Cue hitung also yields diperhitungkan, the more idiomatic passive here."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/synthesis/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "lebih berharga"
+            ],
+            "newValue": [
+              "lebih berharga",
+              "lebih penting"
+            ],
+            "reason": "Open lexical blank; lebih penting is a valid taught synonym."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/1/title",
+            "oldValue": {
+              "de": "Pendeln und Abholen",
+              "en": "Commuting and pickup"
+            },
+            "newValue": {
+              "de": "Zug oder Auto",
+              "en": "Train or car"
+            },
+            "reason": "Title disclosed the them4 steer (child pickup)."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/1/base",
+            "oldValue": {
+              "de": "Zugfahren ist zwar günstiger und entspannter als selbst zu fahren, besonders wenn du Parken und Staus jeden Morgen mitrechnest.",
+              "en": "Taking the train is cheaper and more relaxing than driving, especially if you count parking and traffic every morning."
+            },
+            "newValue": {
+              "de": "Zugfahren ist wirklich günstiger und entspannter als selbst zu fahren, besonders wenn du Parken und Staus jeden Morgen mitrechnest.",
+              "en": "Taking the train really is cheaper and more relaxing than driving, especially if you count parking and traffic every morning."
+            },
+            "reason": "memang here is affirmative (no tetapi follows); de zwar implied a concession en omitted; parity restored."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/1/pattern/examples/0/base",
+            "oldValue": {
+              "de": "Zugfahren ist zwar günstiger und entspannter als selbst zu fahren, besonders wenn du Parken und Staus jeden Morgen mitrechnest.",
+              "en": "Taking the train is cheaper and more relaxing than driving, especially if you count parking and traffic every morning."
+            },
+            "newValue": {
+              "de": "Zugfahren ist wirklich günstiger und entspannter als selbst zu fahren, besonders wenn du Parken und Staus jeden Morgen mitrechnest.",
+              "en": "Taking the train really is cheaper and more relaxing than driving, especially if you count parking and traffic every morning."
+            },
+            "reason": "Coupled with dialogue[1].base."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/1/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Kalau"
+            ],
+            "newValue": [
+              "Kalau",
+              "Jika"
+            ],
+            "reason": "Open connector blank; Jika is a valid standard variant."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/1/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "lebih murah"
+            ],
+            "newValue": [
+              "lebih murah",
+              "lebih hemat"
+            ],
+            "reason": "Open lexical blank; lebih hemat taught in L1."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/1/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Kalau"
+            ],
+            "newValue": [
+              "Kalau",
+              "Jika"
+            ],
+            "reason": "As above."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/1/synthesis/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "hari kerja",
+              "hari libur",
+              "akhir pekan",
+              "tiap malam"
+            ],
+            "reason": "hari biasa would also fit an open blank; choices constrain, only hari kerja coheres with the weekend contrast."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/2/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "tetapkan"
+            ],
+            "newValue": [
+              "tetapkan",
+              "menetapkan"
+            ],
+            "reason": "Cue tetap does not exclude the affixed form kita menetapkan."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/3/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Kalau"
+            ],
+            "newValue": [
+              "Kalau",
+              "Jika"
+            ],
+            "reason": "Formal lesson; Jika equally expected."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/3/synthesis/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "tolong"
+            ],
+            "newValue": [
+              "tolong",
+              "mohon"
+            ],
+            "reason": "mohon kirim is a valid formal request frame."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/4/build/distractors",
+            "oldValue": [
+              "lebih murah,",
+              "naik kapal."
+            ],
+            "newValue": [
+              "dua hari",
+              "naik kapal."
+            ],
+            "reason": "lebih murah, produced a second grammatical sentence; dua hari is wrong in logic."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/4/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Betul"
+            ],
+            "newValue": [
+              "Betul",
+              "Benar"
+            ],
+            "reason": "Benar is the staged concession frame and equally valid here."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/4/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Kalau"
+            ],
+            "newValue": [
+              "Kalau",
+              "Jika"
+            ],
+            "reason": "As above."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/4/synthesis/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "akhir tahun",
+              "tahun lalu",
+              "bulan lalu",
+              "kemarin"
+            ],
+            "reason": "tahun depan would also fit; choices constrain, the three past distractors cannot be scheduled."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/5/title",
+            "oldValue": {
+              "de": "Bargeld und App ergänzen sich",
+              "en": "Cash and an app together"
+            },
+            "newValue": {
+              "de": "Bezahlen im Warung",
+              "en": "Paying at the warung"
+            },
+            "reason": "Title disclosed the conclusion (accept both)."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/5/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Kalau"
+            ],
+            "newValue": [
+              "Kalau",
+              "Jika"
+            ],
+            "reason": "As above."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/5/cloze/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "penjualan",
+              "potongan",
+              "sinyal",
+              "aplikasi"
+            ],
+            "reason": "pelanggan yang hilang would also fit an open blank; choices constrain with one coherent answer."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/5/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "pilihan tambahan"
+            ],
+            "newValue": [
+              "pilihan tambahan",
+              "opsi tambahan"
+            ],
+            "reason": "opsi is an exempted loanword used in L4; valid synonym."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/5/synthesis/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "jadi",
+              "tetapi",
+              "padahal",
+              "sebelum"
+            ],
+            "reason": "sehingga/supaya would also fit the open blank; choices constrain, only jadi is logical."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/6/title",
+            "oldValue": {
+              "de": "Allein lernen und sprechen üben",
+              "en": "Independent study and speaking"
+            },
+            "newValue": {
+              "de": "Kurs oder App",
+              "en": "Class or app"
+            },
+            "reason": "Title previewed the compromise."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/7/cloze/segments",
+            "oldValue": [
+              {
+                "kind": "text",
+                "text": "Saya tahu risikonya; tetapi "
+              },
+              {
+                "kind": "blank",
+                "index": 0
+              },
+              {
+                "kind": "text",
+                "text": " tutup, pengalaman memimpin tim kecil itu "
+              },
+              {
+                "kind": "blank",
+                "index": 1
+              },
+              {
+                "kind": "text",
+                "text": " lebih berharga bagi perusahaan lain daripada dua tahun di posisi lama."
+              }
+            ],
+            "newValue": [
+              {
+                "kind": "text",
+                "text": "Saya tahu risikonya; tetapi "
+              },
+              {
+                "kind": "blank",
+                "index": 0
+              },
+              {
+                "kind": "text",
+                "text": " tutup, pengalaman memimpin tim kecil itu mungkin lebih berharga bagi perusahaan lain "
+              },
+              {
+                "kind": "blank",
+                "index": 1
+              },
+              {
+                "kind": "text",
+                "text": " dua tahun di posisi lama."
+              }
+            ],
+            "reason": "mungkin had equally valid fillers (pasti, tentu, akan); second blank moved to the recycled comparison connector."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/7/cloze/blanks",
+            "oldValue": [
+              {
+                "answer": "kalaupun",
+                "acceptedAnswers": [
+                  "kalaupun"
+                ],
+                "kind": "connector"
+              },
+              {
+                "answer": "mungkin",
+                "acceptedAnswers": [
+                  "mungkin"
+                ],
+                "kind": "lexical"
+              }
+            ],
+            "newValue": [
+              {
+                "answer": "kalaupun",
+                "acceptedAnswers": [
+                  "kalaupun"
+                ],
+                "kind": "connector",
+                "choices": [
+                  "kalaupun",
+                  "asalkan",
+                  "supaya",
+                  "karena"
+                ]
+              },
+              {
+                "answer": "daripada",
+                "acceptedAnswers": [
+                  "daripada",
+                  "dibanding",
+                  "dibandingkan"
+                ],
+                "kind": "connector"
+              }
+            ],
+            "reason": "kalaupun open blank would accept plain kalau; choices constrain. daripada blank accepts valid comparison variants."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/7/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Kalau"
+            ],
+            "newValue": [
+              "Kalau",
+              "Jika"
+            ],
+            "reason": "As above."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/7/synthesis/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "sambil"
+            ],
+            "newValue": [
+              "sambil",
+              "sembari"
+            ],
+            "reason": "sembari is a valid synonym."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/dialogue/5/targetText",
+            "oldValue": "Kalau ada rumah dinas, aku coba setahun dulu tanpa jual rumah di sini, supaya masih bisa kembali.",
+            "newValue": "Kalau ada rumah dinas, aku coba setahun dulu tanpa putus kontrak sewa di sini, supaya masih bisa kembali.",
+            "reason": "you1 says the learner rents; owning a house to sell contradicted it (AUTH-05). 18 tokens."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/dialogue/5/base",
+            "oldValue": {
+              "de": "Wenn es eine Dienstwohnung gibt, probiere ich es erst ein Jahr, ohne mein Haus hier zu verkaufen, damit ich zurückkommen kann.",
+              "en": "If accommodation is provided, I try it for a year without selling my house here, so I can still return."
+            },
+            "newValue": {
+              "de": "Wenn es eine Dienstwohnung gibt, probiere ich es erst ein Jahr, ohne meinen Mietvertrag hier zu kündigen, damit ich zurückkommen kann.",
+              "en": "If accommodation is provided, I try it for a year without ending my rental contract here, so I can still return."
+            },
+            "reason": "Coupled base."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/synthesis/segments/2/text",
+            "oldValue": " ada rumah dinas, aku coba setahun dulu tanpa jual rumah di sini, ",
+            "newValue": " ada rumah dinas, aku coba setahun dulu tanpa putus kontrak sewa di sini, ",
+            "reason": "Coupled synthesis reconstruction."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Kalau"
+            ],
+            "newValue": [
+              "Kalau",
+              "Jika"
+            ],
+            "reason": "As above."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/synthesis/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "supaya"
+            ],
+            "newValue": [
+              "supaya",
+              "agar"
+            ],
+            "reason": "agar is a valid purpose connector."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/speak/2/requiredTokens",
+            "oldValue": [
+              "dinas",
+              "jual",
+              "kembali"
+            ],
+            "newValue": [
+              "dinas",
+              "kontrak",
+              "kembali"
+            ],
+            "reason": "jual no longer in turn 5."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/terms/-",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "kontrak sewa",
+              "kind": "noun",
+              "base": {
+                "de": "Mietvertrag",
+                "en": "rental contract"
+              }
+            },
+            "reason": "New content word in you3 needs a term (9 terms)."
+          },
+          {
+            "file": "indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/build",
+            "oldValue": {
+              "framePrefix": "",
+              "chunks": [
+                "Sebenarnya aku",
+                "ingin menetap",
+                "di sini;",
+                "sudah punya teman,",
+                "tempat kerja dekat,"
+              ],
+              "distractors": [
+                "ingin pindah",
+                "tempat kerja jauh,"
+              ],
+              "frameSuffix": " dan sewa rumah masih terjangkau."
+            },
+            "newValue": {
+              "framePrefix": "Sebenarnya ",
+              "chunks": [
+                "aku ingin",
+                "menetap",
+                "di sini;",
+                "sudah punya teman,",
+                "tempat kerja dekat, dan"
+              ],
+              "distractors": [
+                "pindah ke sana",
+                "tempat kerja jauh, dan"
+              ],
+              "frameSuffix": " sewa rumah masih terjangkau."
+            },
+            "reason": "AUTH-03: dan-final chip locks list order; menetap is the lesson carrier singleton; 12 focus tokens; reconstruction verified."
+          },
+          {
+            "file": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/0/lessons/8/closingMove/you",
+            "oldValue": "Kalau ada rumah dinas, aku coba setahun dulu tanpa jual rumah di sini, supaya masih bisa kembali.",
+            "newValue": "Kalau ada rumah dinas, aku coba setahun dulu tanpa putus kontrak sewa di sini, supaya masih bisa kembali.",
+            "reason": "Controlling canonical line must match the draft (checker CANONICAL_BEAT_AUTHORITY)."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/0/dialogue/1/base",
+            "oldValue": {
+              "de": "Die Differenz entsteht, weil nach der Erstellung des Angebots zusätzliche Stühle dazukommen und die Versandkosten gesondert berechnet werden.",
+              "en": "The difference arises because chairs are added after the quote is prepared, and delivery is charged separately."
+            },
+            "newValue": {
+              "de": "Die Differenz entsteht, weil die Stuhlzahl nach Erstellung des Angebots erhöht wurde und die Versandkosten gesondert berechnet werden.",
+              "en": "The difference arises because the number of chairs was increased after the quote was prepared, and the delivery cost is charged separately."
+            },
+            "reason": "jumlah kursi ditambah setelah penawaran dibuat is a completed step in an invoice already received; present reading was unnatural."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/0/pattern/examples/0/base",
+            "oldValue": {
+              "de": "Die Differenz entsteht, weil nach der Erstellung des Angebots zusätzliche Stühle dazukommen und die Versandkosten gesondert berechnet werden.",
+              "en": "The difference arises because chairs are added after the quote is prepared, and delivery is charged separately."
+            },
+            "newValue": {
+              "de": "Die Differenz entsteht, weil die Stuhlzahl nach Erstellung des Angebots erhöht wurde und die Versandkosten gesondert berechnet werden.",
+              "en": "The difference arises because the number of chairs was increased after the quote was prepared, and the delivery cost is charged separately."
+            },
+            "reason": "Coupled."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/0/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Singkatnya"
+            ],
+            "newValue": [
+              "Singkatnya",
+              "Ringkasnya"
+            ],
+            "reason": "Steer says ringkas; Ringkasnya is a valid frame."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/1/synthesis/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "nanti",
+              "tadi",
+              "kemarin",
+              "dulu"
+            ],
+            "reason": "lalu/baru would also fit an open blank; choices constrain, past adverbs cannot follow kumpulkan dulu."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/2/title",
+            "oldValue": {
+              "de": "Vier Tage bleiben zu erklären",
+              "en": "Four days still to explain"
+            },
+            "newValue": {
+              "de": "Warum das Projekt zurückliegt",
+              "en": "Why the project is behind"
+            },
+            "reason": "Title disclosed the them2 precision challenge."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/2/dialogue/0/base",
+            "oldValue": {
+              "de": "Das Projekt liegt zwei Wochen hinter dem Zeitplan. Ich muss genau wissen, was passiert.",
+              "en": "This project is two weeks behind schedule. I need to know exactly what is happening."
+            },
+            "newValue": {
+              "de": "Das Projekt liegt zwei Wochen hinter dem Zeitplan. Ich muss genau wissen, was passiert ist.",
+              "en": "This project is two weeks behind schedule. I need to know exactly what happened."
+            },
+            "reason": "apa yang terjadi here asks about the completed slip."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/2/dialogue/1/base",
+            "oldValue": {
+              "de": "Der Lieferant schickt das Material zehn Tage zu spät, sodass das Montageteam nicht wie geplant beginnen kann.",
+              "en": "The supplier sends the materials ten days late, so the installation team cannot start as planned."
+            },
+            "newValue": {
+              "de": "Der Lieferant hat das Material zehn Tage zu spät geliefert, sodass das Montageteam nicht wie geplant beginnen konnte.",
+              "en": "The supplier delivered the materials ten days late, so the installation team could not start as planned."
+            },
+            "reason": "Context (mundur dua minggu) licenses past; present narration was unnatural."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/2/pattern/examples/0/base",
+            "oldValue": {
+              "de": "Der Lieferant schickt das Material zehn Tage zu spät, sodass das Montageteam nicht wie geplant beginnen kann.",
+              "en": "The supplier sends the materials ten days late, so the installation team cannot start as planned."
+            },
+            "newValue": {
+              "de": "Der Lieferant hat das Material zehn Tage zu spät geliefert, sodass das Montageteam nicht wie geplant beginnen konnte.",
+              "en": "The supplier delivered the materials ten days late, so the installation team could not start as planned."
+            },
+            "reason": "Coupled."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/2/dialogue/3/base",
+            "oldValue": {
+              "de": "Die vier Tage entstehen, weil zwei unserer Techniker nacheinander krank sind, sodass sonst parallele Arbeiten nacheinander ausgeführt werden müssen.",
+              "en": "Those four days are because two of our technicians are ill in succession, so work normally done in parallel has to be done in sequence."
+            },
+            "newValue": {
+              "de": "Die vier Tage kamen zustande, weil zwei unserer Techniker nacheinander krank waren, sodass sonst parallele Arbeiten nacheinander erledigt werden mussten.",
+              "en": "Those four days came about because two of our technicians were ill one after the other, so work normally done in parallel had to be done in turn."
+            },
+            "reason": "Same past licensing."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/2/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "karena"
+            ],
+            "newValue": [
+              "karena",
+              "sebab"
+            ],
+            "reason": "sebab is a valid causal connector."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/2/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "bergantian"
+            ],
+            "newValue": [
+              "bergantian",
+              "bergiliran"
+            ],
+            "reason": "bergiliran (taught P1 L10) is a valid synonym."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/2/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Saya usulkan"
+            ],
+            "newValue": [
+              "Saya usulkan",
+              "Saya mengusulkan",
+              "Saya sarankan"
+            ],
+            "reason": "Affixed and sarankan variants are valid formal proposals."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/2/synthesis/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "lebih awal",
+              "lebih lambat",
+              "lebih mahal",
+              "lebih sedikit"
+            ],
+            "reason": "sebelumnya/lebih dulu would fit an open blank; choices constrain."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/3/build",
+            "oldValue": {
+              "framePrefix": "Ada tiga tahap: ",
+              "chunks": [
+                "sepuluh stiker",
+                "dapat satu",
+                "kopi gratis,",
+                "dua puluh",
+                "dapat potongan"
+              ],
+              "distractors": [
+                "kopi mahal,",
+                "tanpa potongan"
+              ],
+              "frameSuffix": " setengah harga selama seminggu, lima puluh jadi anggota tetap."
+            },
+            "newValue": {
+              "framePrefix": "Ada tiga tahap: ",
+              "chunks": [
+                "sepuluh stiker",
+                "dapat satu kopi gratis,",
+                "dua puluh",
+                "dapat potongan",
+                "setengah harga"
+              ],
+              "distractors": [
+                "dua kopi gratis,",
+                "tanpa potongan"
+              ],
+              "frameSuffix": " selama seminggu, lima puluh jadi anggota tetap."
+            },
+            "reason": "satu kopi gratis no longer split; 12 focus tokens; reconstruction verified; speak tokens still inside focus."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/3/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "kalau tidak"
+            ],
+            "newValue": [
+              "kalau tidak",
+              "jika tidak"
+            ],
+            "reason": "Valid variant."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/3/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Singkatnya"
+            ],
+            "newValue": [
+              "Singkatnya",
+              "Ringkasnya"
+            ],
+            "reason": "As P2 L1."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/3/synthesis/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "asalkan",
+              "walaupun",
+              "sebelum",
+              "supaya"
+            ],
+            "reason": "asal/selama would also fit an open blank; choices constrain."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/4/build",
+            "oldValue": {
+              "framePrefix": "Alasan utamanya bukan harga, ",
+              "chunks": [
+                "tapi",
+                "jaringannya sering putus",
+                "tiap sore,",
+                "padahal",
+                "aku butuh",
+                "koneksi stabil"
+              ],
+              "distractors": [
+                "jaringannya selalu lancar",
+                "tiap pagi,"
+              ],
+              "frameSuffix": " untuk rapat daring."
+            },
+            "newValue": {
+              "framePrefix": "Alasan utamanya bukan harga, ",
+              "chunks": [
+                "tapi",
+                "jaringannya sering putus tiap sore,",
+                "padahal",
+                "aku butuh",
+                "koneksi stabil"
+              ],
+              "distractors": [
+                "jaringannya selalu lancar",
+                "aku punya"
+              ],
+              "frameSuffix": " untuk rapat daring."
+            },
+            "reason": "tiap sore, could front naturally; merged into a 4-token chip; 11 focus tokens; reconstruction verified."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/4/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "mengaku"
+            ],
+            "newValue": [
+              "mengaku",
+              "mengakui"
+            ],
+            "reason": "Cue aku also yields mengakui."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/4/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Cek dulu"
+            ],
+            "newValue": [
+              "Cek dulu",
+              "Periksa dulu"
+            ],
+            "reason": "Valid synonym."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/4/synthesis/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "supaya"
+            ],
+            "newValue": [
+              "supaya",
+              "agar"
+            ],
+            "reason": "Valid purpose connector."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/5/title",
+            "oldValue": {
+              "de": "Eine ehrliche Bitte um Nachsicht",
+              "en": "An honest request for leniency"
+            },
+            "newValue": {
+              "de": "Einspruch gegen eine Geldbuße",
+              "en": "Appealing a fine"
+            },
+            "reason": "Title disclosed the you2 solution."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/5/build",
+            "oldValue": {
+              "framePrefix": "Bisa dicoba: ",
+              "chunks": [
+                "menurut aturan koperasi,",
+                "kamu mengajukan",
+                "keberatan tertulis",
+                "ke sekretaris",
+                "dalam tujuh hari,"
+              ],
+              "distractors": [
+                "keberatan lisan",
+                "dalam tujuh bulan,"
+              ],
+              "frameSuffix": " dengan alasan kenapa terlambat."
+            },
+            "newValue": {
+              "framePrefix": "Bisa dicoba: menurut aturan koperasi, kamu ",
+              "chunks": [
+                "mengajukan",
+                "keberatan tertulis",
+                "ke sekretaris",
+                "dalam tujuh hari,",
+                "dengan alasan kenapa terlambat."
+              ],
+              "distractors": [
+                "keberatan lisan",
+                "dalam tujuh bulan,"
+              ],
+              "frameSuffix": ""
+            },
+            "reason": "menurut aturan koperasi, could move mid-sentence as a parenthetical; fixed into the prefix; mengajukan is the lesson carrier singleton; 12 focus tokens; reconstruction verified."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/6/dialogue/1/base",
+            "oldValue": {
+              "de": "Wir merken erst jetzt, dass Strom und Wasser nicht in der Raummiete enthalten sind, sodass unser Kapital schon vor der Eröffnung aufgebraucht ist.",
+              "en": "We only now realize that the rent excludes electricity and water, so our capital runs out before we open."
+            },
+            "newValue": {
+              "de": "Wir haben erst zu spät gemerkt, dass Strom und Wasser nicht in der Raummiete enthalten sind, sodass unser Kapital schon vor der Eröffnung aufgebraucht war.",
+              "en": "We only realized later that the rent did not include electricity and water, so our capital ran out before we opened."
+            },
+            "reason": "Plan is already cancelled (batal); past licensed."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/6/pattern/examples/0/base",
+            "oldValue": {
+              "de": "Wir merken erst jetzt, dass Strom und Wasser nicht in der Raummiete enthalten sind, sodass unser Kapital schon vor der Eröffnung aufgebraucht ist.",
+              "en": "We only now realize that the rent excludes electricity and water, so our capital runs out before we open."
+            },
+            "newValue": {
+              "de": "Wir haben erst zu spät gemerkt, dass Strom und Wasser nicht in der Raummiete enthalten sind, sodass unser Kapital schon vor der Eröffnung aufgebraucht war.",
+              "en": "We only realized later that the rent did not include electricity and water, so our capital ran out before we opened."
+            },
+            "reason": "Coupled."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/6/dialogue/3/base",
+            "oldValue": {
+              "de": "Stimmt, das ist unser Fehler; wir lesen den Vertrag zu hastig, weil wir fürchten, dass jemand anderes die Räume nimmt.",
+              "en": "True, that is our mistake; we read the contract too quickly because we fear someone else taking the premises."
+            },
+            "newValue": {
+              "de": "Stimmt, das war unser Fehler; wir haben den Vertrag zu schnell gelesen, weil wir Angst hatten, dass jemand anderes die Räume nimmt.",
+              "en": "True, that was our mistake; we read the contract too quickly because we were afraid someone else would take the premises."
+            },
+            "reason": "Same past licensing."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/6/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Benar"
+            ],
+            "newValue": [
+              "Benar",
+              "Betul"
+            ],
+            "reason": "Valid concession frame variant."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/6/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "karena"
+            ],
+            "newValue": [
+              "karena",
+              "sebab"
+            ],
+            "reason": "Valid causal connector."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/6/recall/fallbackChoices",
+            "oldValue": [
+              "menyadari",
+              "menutupi",
+              "menyangkal",
+              "mengumumkan"
+            ],
+            "newValue": [
+              "menyadari",
+              "menutupi",
+              "menyangkal",
+              "menyewa"
+            ],
+            "reason": "Kami baru mengumumkan bahwa ... was grammatical; menyewa bahwa is not."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/7/title",
+            "oldValue": {
+              "de": "Reguläre Anmeldung und Notfälle",
+              "en": "Routine registration and emergencies"
+            },
+            "newValue": {
+              "de": "Der Anmeldeablauf der Klinik",
+              "en": "The clinic's registration process"
+            },
+            "reason": "Title disclosed the emergency challenge."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/7/build/distractors",
+            "oldValue": [
+              "nomor kamar",
+              "urutan nama,"
+            ],
+            "newValue": [
+              "nomor kamar",
+              "lalu dibawa"
+            ],
+            "reason": "urutan nama, produced a second valid sentence."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/build",
+            "oldValue": {
+              "framePrefix": "Dampaknya sudah terlihat di laporan kampus: ",
+              "chunks": [
+                "parkir motor",
+                "di depan perpustakaan",
+                "berkurang separuh,",
+                "dan mahasiswa",
+                "dari kos jauh"
+              ],
+              "distractors": [
+                "bertambah banyak,",
+                "dari kos dekat"
+              ],
+              "frameSuffix": " sampai lebih cepat."
+            },
+            "newValue": {
+              "framePrefix": "",
+              "chunks": [
+                "Dampaknya",
+                "sudah terlihat",
+                "di laporan kampus:",
+                "parkir motor di depan perpustakaan",
+                "berkurang separuh,"
+              ],
+              "distractors": [
+                "belum terlihat",
+                "bertambah banyak,"
+              ],
+              "frameSuffix": " dan mahasiswa dari kos jauh sampai lebih cepat."
+            },
+            "reason": "AUTH-04: locative can front; chip now contains head+locative (4 tokens); Dampaknya is the lesson carrier singleton, capital and colon lock order; 12 focus tokens; reconstruction verified; speak tokens parkir/perpustakaan/separuh inside focus."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "selama"
+            ],
+            "newValue": [
+              "selama",
+              "sepanjang"
+            ],
+            "reason": "Valid duration variant."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/synthesis/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "mungkin"
+            ],
+            "newValue": [
+              "mungkin",
+              "barangkali"
+            ],
+            "reason": "Valid hedge synonym."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/dialogue/0/base",
+            "oldValue": {
+              "de": "Die Verwaltung erhält Beschwerden über die Verlegung des Nachtmarkts. Wer trifft die Entscheidung und wann?",
+              "en": "The local office receives complaints about relocating the residents' night market. Who makes that decision, and when?"
+            },
+            "newValue": {
+              "de": "Die Verwaltung hat Beschwerden über die Verlegung des Nachtmarkts erhalten. Wer hat diese Entscheidung getroffen, und wann?",
+              "en": "The local office has received complaints about relocating the residents' night market. Who took that decision, and when?"
+            },
+            "reason": "The market has already moved (awal Juni); past licensed."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/dialogue/1/targetText",
+            "oldValue": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan dari pemilik rumah di jalan lama soal sampah dan suara.",
+            "newValue": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan pemilik rumah di jalan lama soal sampah dan suara.",
+            "reason": "Chip keluhan dari stranded a preposition; keluhan pemilik rumah is a tight natural NP (parallel to keluhan warga in you3); 21 tokens."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/dialogue/1/base",
+            "oldValue": {
+              "de": "Die Entscheidung fällt bei einer Versammlung im Mai, nach zwei Beschwerden von Hauseigentümern an der alten Straße über Müll und Lärm.",
+              "en": "The decision is made at the residents' meeting in May, after two complaints from homeowners on the old street about rubbish and noise."
+            },
+            "newValue": {
+              "de": "Die Entscheidung wurde in der Bewohnerversammlung im Mai getroffen, nach zwei Beschwerden von Hauseigentümern an der alten Straße über Müll und Lärm.",
+              "en": "The decision was taken at the residents' meeting in May, after two complaints from homeowners on the old street about rubbish and noise."
+            },
+            "reason": "Past licensed by bulan Mei in a completed chain."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/dialogue/2/base",
+            "oldValue": {
+              "de": "Aber die Händler sagen, dass sie nie zu der Versammlung eingeladen werden.",
+              "en": "But the traders say they are never invited to that meeting."
+            },
+            "newValue": {
+              "de": "Aber die Händler sagen, sie seien nie zu der Versammlung eingeladen worden.",
+              "en": "But the traders say they were never invited to that meeting."
+            },
+            "reason": "rapat itu is a specific past meeting."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/dialogue/3/base",
+            "oldValue": {
+              "de": "Sie werden über die Leitung der Händlervereinigung eingeladen; die Einladung erreicht die Händler nicht, die keine Mitglieder sind.",
+              "en": "They are invited through the traders' association chair; the invitation does not reach traders who are not association members."
+            },
+            "newValue": {
+              "de": "Sie wurden über den Vorsitz der Händlervereinigung eingeladen; nicht angekommen ist die Einladung bei den Händlern, die keine Mitglieder der Vereinigung sind.",
+              "en": "They were invited through the traders' association chair; what did not arrive was the invitation to traders who are not association members."
+            },
+            "reason": "Past licensing plus the cleft yang tidak sampai adalah rendered."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/build",
+            "oldValue": {
+              "framePrefix": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah dua kali ",
+              "chunks": [
+                "keluhan dari",
+                "pemilik rumah",
+                "di jalan lama",
+                "soal sampah",
+                "dan suara."
+              ],
+              "distractors": [
+                "di jalan baru",
+                "dan harga."
+              ],
+              "frameSuffix": ""
+            },
+            "newValue": {
+              "framePrefix": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah ",
+              "chunks": [
+                "dua kali keluhan",
+                "pemilik rumah",
+                "di jalan lama",
+                "soal sampah",
+                "dan suara."
+              ],
+              "distractors": [
+                "di jalan baru",
+                "dan harga."
+              ],
+              "frameSuffix": ""
+            },
+            "reason": "Coupled with the canonical edit; 12 focus tokens; reconstruction verified."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/recall/after",
+            "oldValue": " itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan dari pemilik rumah di jalan lama soal sampah dan suara.",
+            "newValue": " itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan pemilik rumah di jalan lama soal sampah dan suara.",
+            "reason": "Coupled recall reconstruction."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/pattern/examples/0/targetText",
+            "oldValue": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan dari pemilik rumah di jalan lama soal sampah dan suara.",
+            "newValue": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan pemilik rumah di jalan lama soal sampah dan suara.",
+            "reason": "Example must equal you1."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/pattern/examples/0/base",
+            "oldValue": {
+              "de": "Die Entscheidung fällt bei einer Versammlung im Mai, nach zwei Beschwerden von Hauseigentümern an der alten Straße über Müll und Lärm.",
+              "en": "The decision is made at the residents' meeting in May, after two complaints from homeowners on the old street about rubbish and noise."
+            },
+            "newValue": {
+              "de": "Die Entscheidung wurde in der Bewohnerversammlung im Mai getroffen, nach zwei Beschwerden von Hauseigentümern an der alten Straße über Müll und Lärm.",
+              "en": "The decision was taken at the residents' meeting in May, after two complaints from homeowners on the old street about rubbish and noise."
+            },
+            "reason": "Coupled."
+          },
+          {
+            "file": "indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/synthesis/blanks/1/choices",
+            "oldValue": null,
+            "newValue": [
+              "peninjauan",
+              "pemungutan",
+              "pemindahan",
+              "penjualan"
+            ],
+            "reason": "pemeriksaan would also fit an open blank; choices constrain, the three distractors contradict the chain."
+          },
+          {
+            "file": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC.json",
+            "jsonPointer": "/paths/1/lessons/9/openingMove/you",
+            "oldValue": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan dari pemilik rumah di jalan lama soal sampah dan suara.",
+            "newValue": "Keputusan itu diambil dalam rapat warga bulan Mei, setelah dua kali keluhan pemilik rumah di jalan lama soal sampah dan suara.",
+            "reason": "Controlling canonical line must match the draft."
+          }
+        ],
+        "finalChecks": {
+          "reconstruction": "Every edited build, cloze, synthesis and recall re-concatenates byte for byte to its turn; all edited focus spans are 11-12 tokens with 5 chunks of 1-4 tokens; no chip splits a hyphenated token; each cloze/synthesis keeps at most one choices blank with exactly one accepted value; all acceptedAnswers lists contain their answer and are distinct after normalisation.",
+          "checkerCoupling": "check-indonesian-b2.py must add LESSON_SINGLE_CARRIERS (1,9):{'menetap'}, (2,6):{'mengajukan'}, (2,9):{'dampaknya'} (singleton = lesson carrier per spec), and the two spec canonical edits must land before CANONICAL_BEAT_AUTHORITY passes; recompute the spec sha256 and write it into specRef.pathSpecSha256/ledgerSha256 of both draft files and EXPECTED_SPEC in the checker; distractor plausibility for P1 L9 pindah ke sana and P2 L5 aku punya is scene-wrong, not grammar-wrong, by design.",
+          "trophies": "All 20 lemmas, familyKeys, surfaces and anchors untouched; P1 L9 menetap, P2 L6 mengajukan and P2 L9 Dampaknya remain whole units of turn 1.",
+          "holds": "nativeStatus stays unreviewed and every review.verdict pending with twelve false flags; this read is a Fable arbitration, not native-model or human review; independent review still owed after these edits; no id-ID B2 renderer, validator config, picker/id support, accepted-input runtime, base editions or TTS exist, and no production, provider or spend authorization is given or implied.",
+          "residual": "Present-tense narration remains in other P2 bases where no marker licenses past (judged acceptable); P1 L1 chip uniqueness depends on the period chip being visible; recording window for 22-26 token you1 lines untested."
+        }
+      }
+    },
+    {
+      "batch": "B2_INDONESIAN_CONTENT_GATE_REPAIR_FABLE",
+      "rawProviderReviewSha256": "db44caa88cacfc75671700319f305fa6796905d6c5f15887cbb61ded4c53f2de",
+      "exactEdits": 51,
+      "exactSpecificationEdits": 6,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "All six turns, bases, build/cloze/synthesis/recall joins, terms, speak, trophies, flags reread; canonical speech PASS retained; P1L1 adjunct order and P1L9 lexical singleton/stranded dan repaired by minimal canonical edits with all coupled fields.",
+            "remainingConcerns": "P1L3 kelebihannya stays a clause-head frame singleton under the reconciled rule; native-human, listening and runtime holds stay open."
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Same full coupled read; P2L5 chip, P2L9 chip/focus and locative fronting, P2L6 time/destination freedom, P2L2 clause swap repaired; accepted answers, recall choices, distractors and English aspect fixed.",
+            "remainingConcerns": "Reviewed-content distractor truth and accepted-answer completeness remain human semantic judgments; no runtime acceptance exists yet."
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "ID-B2-PUB-01",
+            "decision": "FIX",
+            "reason": "P2L5 rechunked 5×≤3 tokens, 11 focus; P2L9 canonical tightened (parkir motor berkurang separuh; mahasiswa yang kosnya jauh) so 5 chunks ≤4, 12 focus, order locked."
+          },
+          {
+            "finding": "ID-B2-PUB-02",
+            "decision": "FIX",
+            "reason": "P1L1 per hari binds duration; P2L2 first assignment moved into framePrefix; P2L6 dalam tujuh hari fronted into framePrefix. No punctuation-only argument used."
+          },
+          {
+            "finding": "ID-B2-PUB-03",
+            "decision": "FIX",
+            "reason": "Spec reconciled: singleton only for clause-level connector or clause-head frame (per-lesson list); menetap/mengajukan/Dampaknya regrouped; stranded dan removed; checker carrier table narrowed."
+          },
+          {
+            "finding": "ID-B2-PUB-04",
+            "decision": "PARTIAL",
+            "reason": "Added sebab bagi saya, tetapi, sehingga, dapat dibagi, sesuai aturan, hasilnya tetap sama, Maksud saya, Yang terpenting, Dampaknya, yang tidak tersampaikan. Rejected Jika begitu: not natural spoken Indonesian for the fixed frame."
+          },
+          {
+            "finding": "ID-B2-PUB-05",
+            "decision": "FIX",
+            "reason": "Competing recall choices replaced with incoherent completions (tinggi; stabil/jaringan; antrean/formulir)."
+          },
+          {
+            "finding": "ID-B2-PUB-06",
+            "decision": "FIX",
+            "reason": "Distractors now contradict the move or displayed facts (membuang waktu saya; jumlah kursi dikurangi; lalu dibakar/sebelum Kamis; sampai lebih lambat)."
+          },
+          {
+            "finding": "ID-B2-PUB-07",
+            "decision": "FIX",
+            "reason": "before we could open in both coupled English bases."
+          },
+          {
+            "finding": "ID-B2-PUB-08",
+            "decision": "RETAIN",
+            "reason": "Runtime/picker/base-edition/audio/recording-window holds unchanged; no activation or paid approval."
+          },
+          {
+            "finding": "ID-B2-GATE-01",
+            "decision": "FIX",
+            "reason": "FRAME_BOUNDARY on both frame edges."
+          },
+          {
+            "finding": "ID-B2-GATE-02",
+            "decision": "FIX",
+            "reason": "whole() lookarounds include apostrophe."
+          },
+          {
+            "finding": "ID-B2-GATE-03",
+            "decision": "FIX",
+            "reason": "Tests use actual GUIDED_LESSONS A1/A2 rows, vibeVariants trophy words, recomputed corpus fingerprint, ordered B1 paths[].lessons[].trophy, no any, misleading test renamed, new negatives."
+          },
+          {
+            "finding": "ID-B2-GATE-04",
+            "decision": "FIX",
+            "reason": "Bounded reviewed TERM_LEMMAS table (clitics + di-/ter- + clipped -kan surfaces) requires exact lemma; no morphology parser."
+          },
+          {
+            "finding": "ID-B2-GATE-05",
+            "decision": "FIX",
+            "reason": "DISTRACTOR_PRESENT whole-phrase check against you1."
+          },
+          {
+            "finding": "ID-B2-GATE-06",
+            "decision": "FIX",
+            "reason": "spoken() hygiene applied to every accepted answer and choice; synonym equivalence stays human."
+          },
+          {
+            "finding": "ID-B2-GATE-07",
+            "decision": "FIX",
+            "reason": "Bounded di-place/di-verb detector, full Anda casing, slug-keyed LOANWORD warning."
+          },
+          {
+            "finding": "ID-B2-GATE-08",
+            "decision": "FIX",
+            "reason": "RULE_SENTENCE one-terminator check both bases."
+          },
+          {
+            "finding": "ID-B2-AUTH-01",
+            "decision": "CLOSED",
+            "reason": "Resolved by P1L1 per hari."
+          },
+          {
+            "finding": "ID-B2-AUTH-02",
+            "decision": "CLOSED",
+            "reason": "Agree with reviewer."
+          },
+          {
+            "finding": "ID-B2-AUTH-03",
+            "decision": "CLOSED",
+            "reason": "P1L9 coordinated NP + apalagi locks order without stranding."
+          },
+          {
+            "finding": "ID-B2-AUTH-04",
+            "decision": "CLOSED",
+            "reason": "P2L9 locative PP removed from chip span."
+          },
+          {
+            "finding": "ID-B2-AUTH-05 / P2L7 aspect / title spoilers",
+            "decision": "CLOSED",
+            "reason": "Rental-contract coherence kept; English aspect fixed; titles reread."
+          }
+        ],
+        "edits": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/dialogue/1/targetText",
+            "oldValue": "Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor menghemat waktu saya hampir dua jam setiap hari.",
+            "newValue": "Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor menghemat waktu saya hampir dua jam per hari.",
+            "reason": "per hari binds to dua jam; blocks adjunct swap"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/dialogue/1/base/de",
+            "oldValue": "Die am Stadtrand ist deutlich günstiger, während mir die nahe dem Büro jeden Tag fast zwei Stunden spart.",
+            "newValue": "Die am Stadtrand ist deutlich günstiger, während mir die nahe dem Büro fast zwei Stunden pro Tag spart.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/dialogue/1/base/en",
+            "oldValue": "The one on the outskirts clearly costs less, whereas the one near the office saves me almost two hours every day.",
+            "newValue": "The one on the outskirts clearly costs less, whereas the one near the office saves me almost two hours a day.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/build/chunks",
+            "oldValue": [
+              "sedangkan",
+              "yang dekat kantor",
+              "menghemat waktu saya",
+              "hampir dua jam",
+              "setiap hari."
+            ],
+            "newValue": [
+              "sedangkan",
+              "yang dekat kantor",
+              "menghemat waktu saya",
+              "hampir dua jam",
+              "per hari."
+            ],
+            "reason": "reconstruction"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/build/distractors",
+            "oldValue": [
+              "yang jauh sekali",
+              "setiap minggu."
+            ],
+            "newValue": [
+              "yang jauh sekali",
+              "membuang waktu saya"
+            ],
+            "reason": "PUB-06: contradicts the advantage"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/recall/after",
+            "oldValue": " yang dekat kantor menghemat waktu saya hampir dua jam setiap hari.",
+            "newValue": " yang dekat kantor menghemat waktu saya hampir dua jam per hari.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/pattern/examples/0/targetText",
+            "oldValue": "Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor menghemat waktu saya hampir dua jam setiap hari.",
+            "newValue": "Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor menghemat waktu saya hampir dua jam per hari.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/pattern/examples/0/base/de",
+            "oldValue": "Die am Stadtrand ist deutlich günstiger, während mir die nahe dem Büro jeden Tag fast zwei Stunden spart.",
+            "newValue": "Die am Stadtrand ist deutlich günstiger, während mir die nahe dem Büro fast zwei Stunden pro Tag spart.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/pattern/examples/0/base/en",
+            "oldValue": "The one on the outskirts clearly costs less, whereas the one near the office saves me almost two hours every day.",
+            "newValue": "The one on the outskirts clearly costs less, whereas the one near the office saves me almost two hours a day.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/0/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "karena bagi saya"
+            ],
+            "newValue": [
+              "karena bagi saya",
+              "sebab bagi saya"
+            ],
+            "reason": "PUB-04"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/6/recall/fallbackChoices",
+            "oldValue": [
+              "mandiri",
+              "sibuk",
+              "lelah",
+              "cemas"
+            ],
+            "newValue": [
+              "mandiri",
+              "tinggi",
+              "lelah",
+              "cemas"
+            ],
+            "reason": "PUB-05"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/dialogue/1/targetText",
+            "oldValue": "Sebenarnya aku ingin menetap di sini; sudah punya teman, tempat kerja dekat, dan sewa rumah masih terjangkau.",
+            "newValue": "Sebenarnya aku ingin menetap di sini; sudah punya teman dan tempat kerja dekat, apalagi sewa rumah masih terjangkau.",
+            "reason": "coordinated NP + apalagi lock chip order natively"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/dialogue/1/base/de",
+            "oldValue": "Eigentlich möchte ich hier bleiben; ich habe schon Freunde, der Arbeitsplatz ist nah und die Miete noch bezahlbar.",
+            "newValue": "Eigentlich möchte ich hier bleiben; ich habe schon Freunde und einen nahen Arbeitsplatz, zumal die Miete noch bezahlbar ist.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/dialogue/1/base/en",
+            "oldValue": "Actually, I want to settle here; I already have friends, work is close and the rent is still affordable.",
+            "newValue": "Actually, I want to settle here; I already have friends and a nearby workplace, especially as the rent is still affordable.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/build",
+            "oldValue": {
+              "framePrefix": "Sebenarnya ",
+              "chunks": [
+                "aku ingin",
+                "menetap",
+                "di sini;",
+                "sudah punya teman,",
+                "tempat kerja dekat, dan"
+              ],
+              "distractors": [
+                "pindah ke sana",
+                "tempat kerja jauh, dan"
+              ],
+              "frameSuffix": " sewa rumah masih terjangkau."
+            },
+            "newValue": {
+              "framePrefix": "Sebenarnya aku ingin menetap di sini; ",
+              "chunks": [
+                "sudah punya teman",
+                "dan tempat kerja dekat,",
+                "apalagi",
+                "sewa rumah",
+                "masih terjangkau."
+              ],
+              "distractors": [
+                "pindah ke sana",
+                "dan tempat kerja jauh,"
+              ],
+              "frameSuffix": ""
+            },
+            "reason": "5 chunks, 12 focus, connector-only singleton"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/recall/after",
+            "oldValue": " di sini; sudah punya teman, tempat kerja dekat, dan sewa rumah masih terjangkau.",
+            "newValue": " di sini; sudah punya teman dan tempat kerja dekat, apalagi sewa rumah masih terjangkau.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/pattern/examples/0/targetText",
+            "oldValue": "Sebenarnya aku ingin menetap di sini; sudah punya teman, tempat kerja dekat, dan sewa rumah masih terjangkau.",
+            "newValue": "Sebenarnya aku ingin menetap di sini; sudah punya teman dan tempat kerja dekat, apalagi sewa rumah masih terjangkau.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/pattern/examples/0/base/de",
+            "oldValue": "Eigentlich möchte ich hier bleiben; ich habe schon Freunde, der Arbeitsplatz ist nah und die Miete noch bezahlbar.",
+            "newValue": "Eigentlich möchte ich hier bleiben; ich habe schon Freunde und einen nahen Arbeitsplatz, zumal die Miete noch bezahlbar ist.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/pattern/examples/0/base/en",
+            "oldValue": "Actually, I want to settle here; I already have friends, work is close and the rent is still affordable.",
+            "newValue": "Actually, I want to settle here; I already have friends and a nearby workplace, especially as the rent is still affordable.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "tapi"
+            ],
+            "newValue": [
+              "tapi",
+              "tetapi"
+            ],
+            "reason": "PUB-04"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/8/cloze/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "jadi"
+            ],
+            "newValue": [
+              "jadi",
+              "sehingga"
+            ],
+            "reason": "PUB-04"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p1.json",
+            "jsonPointer": "/lessons/9/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Pengawasan bisa dibagi"
+            ],
+            "newValue": [
+              "Pengawasan bisa dibagi",
+              "Pengawasan dapat dibagi"
+            ],
+            "reason": "PUB-04"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/0/build/distractors",
+            "oldValue": [
+              "jumlah meja ditambah",
+              "dihitung bersama."
+            ],
+            "newValue": [
+              "jumlah kursi dikurangi",
+              "dihitung bersama."
+            ],
+            "reason": "PUB-06: fewer chairs cannot raise the invoice"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/1/build",
+            "oldValue": {
+              "framePrefix": "Harus dipilah dulu: ",
+              "chunks": [
+                "sampah dapur",
+                "masuk tong hijau,",
+                "plastik dan kertas",
+                "tong kuning,",
+                "lalu diambil"
+              ],
+              "distractors": [
+                "masuk tong merah,",
+                "plastik dan kaca"
+              ],
+              "frameSuffix": " hari Senin dan Kamis."
+            },
+            "newValue": {
+              "framePrefix": "Harus dipilah dulu: sampah dapur masuk tong hijau, ",
+              "chunks": [
+                "plastik dan kertas",
+                "tong kuning,",
+                "lalu diambil",
+                "hari Senin",
+                "dan Kamis."
+              ],
+              "distractors": [
+                "lalu dibakar",
+                "sebelum Kamis."
+              ],
+              "frameSuffix": ""
+            },
+            "reason": "PUB-02/06: clause swap and red-bin alternative removed; 11 focus"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/1/speak/0/requiredTokens",
+            "oldValue": [
+              "sampah",
+              "hijau",
+              "kuning"
+            ],
+            "newValue": [
+              "dipilah",
+              "kuning",
+              "Senin"
+            ],
+            "reason": "SPEAK_FOCUS coupling"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/1/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "menurut aturan"
+            ],
+            "newValue": [
+              "menurut aturan",
+              "sesuai aturan"
+            ],
+            "reason": "PUB-04"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/4/build/chunks",
+            "oldValue": [
+              "tapi",
+              "jaringannya sering putus tiap sore,",
+              "padahal",
+              "aku butuh",
+              "koneksi stabil"
+            ],
+            "newValue": [
+              "tapi jaringannya",
+              "sering putus tiap sore,",
+              "padahal",
+              "aku butuh",
+              "koneksi stabil"
+            ],
+            "reason": "PUB-01: ≤4 tokens, locked order, 11 focus"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/4/build/distractors",
+            "oldValue": [
+              "jaringannya selalu lancar",
+              "aku punya"
+            ],
+            "newValue": [
+              "selalu lancar tiap sore,",
+              "aku punya"
+            ],
+            "reason": "parallel, contradicts reason"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/4/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "hasilnya sama"
+            ],
+            "newValue": [
+              "hasilnya sama",
+              "hasilnya tetap sama"
+            ],
+            "reason": "PUB-04"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/4/recall/fallbackChoices",
+            "oldValue": [
+              "harga",
+              "waktu",
+              "tempat",
+              "nama"
+            ],
+            "newValue": [
+              "harga",
+              "stabil",
+              "tempat",
+              "jaringan"
+            ],
+            "reason": "PUB-05"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/5/dialogue/1/targetText",
+            "oldValue": "Bisa dicoba: menurut aturan koperasi, kamu mengajukan keberatan tertulis ke sekretaris dalam tujuh hari, dengan alasan kenapa terlambat.",
+            "newValue": "Bisa dicoba: menurut aturan koperasi, dalam tujuh hari kamu mengajukan keberatan tertulis ke sekretaris, dengan alasan kenapa terlambat.",
+            "reason": "fronted deadline removes time/destination freedom; meaning identical, bases unchanged"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/5/build",
+            "oldValue": {
+              "framePrefix": "Bisa dicoba: menurut aturan koperasi, kamu ",
+              "chunks": [
+                "mengajukan",
+                "keberatan tertulis",
+                "ke sekretaris",
+                "dalam tujuh hari,",
+                "dengan alasan kenapa terlambat."
+              ],
+              "distractors": [
+                "keberatan lisan",
+                "dalam tujuh bulan,"
+              ],
+              "frameSuffix": ""
+            },
+            "newValue": {
+              "framePrefix": "Bisa dicoba: menurut aturan koperasi, dalam tujuh hari ",
+              "chunks": [
+                "kamu mengajukan",
+                "keberatan tertulis",
+                "ke sekretaris,",
+                "dengan alasan",
+                "kenapa terlambat."
+              ],
+              "distractors": [
+                "keberatan lisan",
+                "kamu menolak"
+              ],
+              "frameSuffix": ""
+            },
+            "reason": "no lexical singleton; 10 focus"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/5/recall/before",
+            "oldValue": "Bisa dicoba: menurut aturan koperasi, kamu ",
+            "newValue": "Bisa dicoba: menurut aturan koperasi, dalam tujuh hari kamu ",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/5/recall/after",
+            "oldValue": " keberatan tertulis ke sekretaris dalam tujuh hari, dengan alasan kenapa terlambat.",
+            "newValue": " keberatan tertulis ke sekretaris, dengan alasan kenapa terlambat.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/5/pattern/examples/0/targetText",
+            "oldValue": "Bisa dicoba: menurut aturan koperasi, kamu mengajukan keberatan tertulis ke sekretaris dalam tujuh hari, dengan alasan kenapa terlambat.",
+            "newValue": "Bisa dicoba: menurut aturan koperasi, dalam tujuh hari kamu mengajukan keberatan tertulis ke sekretaris, dengan alasan kenapa terlambat.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/5/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Maksudku"
+            ],
+            "newValue": [
+              "Maksudku",
+              "Maksud saya"
+            ],
+            "reason": "PUB-04 neutral saya"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/6/dialogue/1/base/en",
+            "oldValue": "We only realized later that the rent did not include electricity and water, so our capital ran out before we opened.",
+            "newValue": "We only realized later that the rent did not include electricity and water, so our capital ran out before we could open.",
+            "reason": "PUB-07"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/6/pattern/examples/0/base/en",
+            "oldValue": "We only realized later that the rent did not include electricity and water, so our capital ran out before we opened.",
+            "newValue": "We only realized later that the rent did not include electricity and water, so our capital ran out before we could open.",
+            "reason": "PUB-07"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/6/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Yang paling penting"
+            ],
+            "newValue": [
+              "Yang paling penting",
+              "Yang terpenting"
+            ],
+            "reason": "PUB-04"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/7/recall/fallbackChoices",
+            "oldValue": [
+              "kedatangan",
+              "keluhan",
+              "nama",
+              "pekerjaan"
+            ],
+            "newValue": [
+              "kedatangan",
+              "keluhan",
+              "antrean",
+              "formulir"
+            ],
+            "reason": "PUB-05"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/dialogue/1/targetText",
+            "oldValue": "Dampaknya sudah terlihat di laporan kampus: parkir motor di depan perpustakaan berkurang separuh, dan mahasiswa dari kos jauh sampai lebih cepat.",
+            "newValue": "Dampaknya sudah terlihat di laporan kampus: parkir motor berkurang separuh, dan mahasiswa yang kosnya jauh sampai lebih cepat.",
+            "reason": "removes frontable locative; relative clause locks order; 18 tokens"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/dialogue/1/base/de",
+            "oldValue": "Die Wirkung ist bereits im Campusbericht sichtbar: Vor der Bibliothek parken halb so viele Motorräder, und Studierende aus weiter entfernten Unterkünften kommen schneller an.",
+            "newValue": "Die Wirkung ist bereits im Campusbericht sichtbar: Es parken halb so viele Motorräder, und Studierende mit weit entfernten Unterkünften kommen schneller an.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/dialogue/1/base/en",
+            "oldValue": "The impact is already visible in the campus report: motorcycle parking outside the library is down by half, and students from distant lodgings arrive faster.",
+            "newValue": "The impact is already visible in the campus report: motorcycle parking is down by half, and students whose lodgings are far away arrive faster.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/build",
+            "oldValue": {
+              "framePrefix": "",
+              "chunks": [
+                "Dampaknya",
+                "sudah terlihat",
+                "di laporan kampus:",
+                "parkir motor di depan perpustakaan",
+                "berkurang separuh,"
+              ],
+              "distractors": [
+                "belum terlihat",
+                "bertambah banyak,"
+              ],
+              "frameSuffix": " dan mahasiswa dari kos jauh sampai lebih cepat."
+            },
+            "newValue": {
+              "framePrefix": "Dampaknya sudah terlihat di laporan kampus: ",
+              "chunks": [
+                "parkir motor",
+                "berkurang separuh,",
+                "dan mahasiswa",
+                "yang kosnya jauh",
+                "sampai lebih cepat."
+              ],
+              "distractors": [
+                "sampai lebih lambat.",
+                "bertambah banyak,"
+              ],
+              "frameSuffix": ""
+            },
+            "reason": "5 chunks ≤4, 12 focus, no lexical singleton"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/recall/after",
+            "oldValue": " sudah terlihat di laporan kampus: parkir motor di depan perpustakaan berkurang separuh, dan mahasiswa dari kos jauh sampai lebih cepat.",
+            "newValue": " sudah terlihat di laporan kampus: parkir motor berkurang separuh, dan mahasiswa yang kosnya jauh sampai lebih cepat.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/pattern/examples/0/targetText",
+            "oldValue": "Dampaknya sudah terlihat di laporan kampus: parkir motor di depan perpustakaan berkurang separuh, dan mahasiswa dari kos jauh sampai lebih cepat.",
+            "newValue": "Dampaknya sudah terlihat di laporan kampus: parkir motor berkurang separuh, dan mahasiswa yang kosnya jauh sampai lebih cepat.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/pattern/examples/0/base/de",
+            "oldValue": "Die Wirkung ist bereits im Campusbericht sichtbar: Vor der Bibliothek parken halb so viele Motorräder, und Studierende aus weiter entfernten Unterkünften kommen schneller an.",
+            "newValue": "Die Wirkung ist bereits im Campusbericht sichtbar: Es parken halb so viele Motorräder, und Studierende mit weit entfernten Unterkünften kommen schneller an.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/pattern/examples/0/base/en",
+            "oldValue": "The impact is already visible in the campus report: motorcycle parking outside the library is down by half, and students from distant lodgings arrive faster.",
+            "newValue": "The impact is already visible in the campus report: motorcycle parking is down by half, and students whose lodgings are far away arrive faster.",
+            "reason": "coupled"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/speak/0/requiredTokens",
+            "oldValue": [
+              "parkir",
+              "perpustakaan",
+              "separuh"
+            ],
+            "newValue": [
+              "parkir",
+              "separuh",
+              "mahasiswa"
+            ],
+            "reason": "perpustakaan removed; focus coupling"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/8/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Akibatnya"
+            ],
+            "newValue": [
+              "Akibatnya",
+              "Dampaknya"
+            ],
+            "reason": "PUB-04"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/reviewed-content/indonesian-b2-p2.json",
+            "jsonPointer": "/lessons/9/cloze/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "yang tidak sampai"
+            ],
+            "newValue": [
+              "yang tidak sampai",
+              "yang tidak tersampaikan"
+            ],
+            "reason": "PUB-04"
+          }
+        ],
+        "specEdits": [
+          {
+            "file": "tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json",
+            "jsonPointer": "/paths/0/lessons/0/openingMove/you",
+            "oldValue": "Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor menghemat waktu saya hampir dua jam setiap hari.",
+            "newValue": "Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor menghemat waktu saya hampir dua jam per hari.",
+            "reason": "canonical parity"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json",
+            "jsonPointer": "/paths/0/lessons/8/openingMove/you",
+            "oldValue": "Sebenarnya aku ingin menetap di sini; sudah punya teman, tempat kerja dekat, dan sewa rumah masih terjangkau.",
+            "newValue": "Sebenarnya aku ingin menetap di sini; sudah punya teman dan tempat kerja dekat, apalagi sewa rumah masih terjangkau.",
+            "reason": "canonical parity"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json",
+            "jsonPointer": "/paths/1/lessons/5/openingMove/you",
+            "oldValue": "Bisa dicoba: menurut aturan koperasi, kamu mengajukan keberatan tertulis ke sekretaris dalam tujuh hari, dengan alasan kenapa terlambat.",
+            "newValue": "Bisa dicoba: menurut aturan koperasi, dalam tujuh hari kamu mengajukan keberatan tertulis ke sekretaris, dengan alasan kenapa terlambat.",
+            "reason": "canonical parity"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json",
+            "jsonPointer": "/paths/1/lessons/8/openingMove/you",
+            "oldValue": "Dampaknya sudah terlihat di laporan kampus: parkir motor di depan perpustakaan berkurang separuh, dan mahasiswa dari kos jauh sampai lebih cepat.",
+            "newValue": "Dampaknya sudah terlihat di laporan kampus: parkir motor berkurang separuh, dan mahasiswa yang kosnya jauh sampai lebih cepat.",
+            "reason": "canonical parity"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json",
+            "jsonPointer": "/mechanicalValidationRules/6",
+            "oldValue": "Build: 5-8 chunks, each 1-4 tokens, no edge whitespace, NFC(framePrefix + chunks.join(' ') + frameSuffix) === NFC(dialogue[1].targetText); exactly 2 distractors, each a plausible 1-4 token string absent from the line; a single-token chunk only when it equals the lesson carrier or a clause-level connector from the validator config list (tetapi, tapi, jadi, karena, sehingga, padahal, apalagi); a chunk never splits a hyphenated token.",
+            "newValue": "Build: 5-8 chunks, each 1-4 tokens, 7-12 focus tokens, no edge whitespace, NFC(framePrefix + chunks.join(' ') + frameSuffix) === NFC(dialogue[1].targetText), and both frame edges fall on whole-token boundaries; exactly 2 distractors, each a plausible 1-4 token string absent as a whole phrase from the line; a single-token chunk only for a clause-level connector or clause-head frame standing at a clause head: the config list (tetapi, tapi, jadi, karena, sehingga, padahal, apalagi) plus the per-lesson carriers sedangkan (P1 L1, L5, L8), daripada (P1 L6), kelebihannya (P1 L3), berdasarkan (P2 L8); a verb, noun or other lexical word inside a clause (menetap, mengajukan, Dampaknya) is never a singleton, and a conjunction always travels with the phrase it introduces; a chunk never splits a hyphenated token. This sentence reconciles the segmentation paragraph's 'lesson carrier' wording: lexical trophies are not singleton carriers.",
+            "reason": "PUB-03 reconciliation, GATE-01/05"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V2.json",
+            "jsonPointer": "/segmentation",
+            "oldValue": "Shared rail: unit = token (maximal run of letters with internal hyphen or apostrophe), joiner single space. them 6-20, you1 14-26, you2 12-24, you3 10-22 tokens. build: framePrefix + chunks.join(' ') + frameSuffix === dialogue[1].targetText byte for byte; the chips cover the clause that carries the lesson's move, normally the carrier clause of about seven to twelve tokens, and the rest of the turn is held in framePrefix/frameSuffix; 5-8 chunks of 1-4 tokens, punctuation attached, affixed words, -nya/-mu/-ku and hyphenated reduplications intact, pun stays with its host chunk; a single-token chunk only for a clause-level connector standing at a clause head (the lesson carrier or tetapi/tapi, jadi, karena, sehingga, padahal, apalagi); every other function word travels with its phrase. Example P1 L1: framePrefix 'Yang di pinggir kota jelas lebih hemat, ' + [sedangkan][yang dekat kantor][menghemat waktu saya][hampir dua jam][setiap hari.] (five chunks, twelve tokens, carrier first). Cloze on dialogue[3], synthesis on dialogue[5]: text segments plus blank answers concatenate to the turn; blank 1-3 units; never a lone pronoun, yang, itu/ini, address term or number. Recall reconstructs you1 with a content word or carrier as answer. Trophy surface is one whole unit of its turn; lemma is the KBBI dictionary form.",
+            "newValue": "Shared rail: unit = token (maximal run of letters with internal hyphen or apostrophe), joiner single space. them 6-20, you1 14-26, you2 12-24, you3 10-22 tokens. build: framePrefix + chunks.join(' ') + frameSuffix === dialogue[1].targetText byte for byte; the chips cover the clause that carries the lesson's move, normally the carrier clause of about seven to twelve tokens, and the rest of the turn is held in framePrefix/frameSuffix; 5-8 chunks of 1-4 tokens, punctuation attached, affixed words, -nya/-mu/-ku and hyphenated reduplications intact, pun stays with its host chunk; a single-token chunk only for a clause-level connector or clause-head frame standing at a clause head (tetapi/tapi, jadi, karena, sehingga, padahal, apalagi, or the per-lesson carriers listed in the build rule); a lexical trophy inside a clause is never a singleton; every other function word, including a conjunction, travels with the phrase it introduces. Example P1 L1: framePrefix 'Yang di pinggir kota jelas lebih hemat, ' + [sedangkan][yang dekat kantor][menghemat waktu saya][hampir dua jam][per hari.] (five chunks, twelve tokens, carrier first). Cloze on dialogue[3], synthesis on dialogue[5]: text segments plus blank answers concatenate to the turn; blank 1-3 units; never a lone pronoun, yang, itu/ini, address term or number. Recall reconstructs you1 with a content word or carrier as answer. Trophy surface is one whole unit of its turn; lemma is the KBBI dictionary form.",
+            "reason": "PUB-03 reconciliation; example parity"
+          }
+        ],
+        "codeEdits": [
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "  new RegExp('(?<![\\\\p{L}\\\\p{N}_-])' + escapeRe(nfc(value).toLowerCase()) + '(?![\\\\p{L}\\\\p{N}_-])', 'u').test(nfc(text).toLowerCase());",
+            "newValue": "  new RegExp(\"(?<![\\\\p{L}\\\\p{N}_'-])\" + escapeRe(nfc(value).toLowerCase()) + \"(?![\\\\p{L}\\\\p{N}_'-])\", 'u').test(nfc(text).toLowerCase());",
+            "reason": "GATE-02 apostrophe boundary"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "  '1-1': ['sedangkan'], '1-3': ['kelebihannya'], '1-5': ['sedangkan'], '1-6': ['daripada'], '1-8': ['sedangkan'], '2-8': ['berdasarkan'],\n};",
+            "newValue": "  '1-1': ['sedangkan'], '1-3': ['kelebihannya'], '1-5': ['sedangkan'], '1-6': ['daripada'], '1-8': ['sedangkan'], '2-8': ['berdasarkan'],\n};\n// Bounded reviewed orthography tables (spec detectors); no morphology inference.\nconst DI_PLACES = 'sini sana situ depan belakang dalam luar atas bawah samping rumah kantor kota jalan gang blok klinik kompleks kampus laporan pengumuman sekitar ujung meja akhir posisi nomor penawaran pinggir pusat stasiun perpustakaan'.split(' ');\nconst DI_VERBS = 'hitung jemput buktikan perpanjang latih ingatkan pegang tinjau bagi pilah angkut kerjakan ganti cicil ambil tambah buat bawa undang pakai pikirkan tolak cek ringkas awasi panggil urus daftarkan beri setujui batalkan pisah maksud minta antar'.split(' ');\nconst DI_ATTACHED_PLACE = new RegExp('\\\\bdi(?:' + DI_PLACES.join('|') + ')\\\\b', 'i');\nconst DI_SPACED_VERB = new RegExp('\\\\bdi (?:' + DI_VERBS.join('|') + ')\\\\b', 'i');\nconst LOANWORDS = new Set('aplikasi provider modem proyektor paralel promo opsi koneksi daring kompleks satpam ojek'.split(' '));\nconst LOANWORD_EXEMPTIONS: Readonly<Record<string, readonly string[]>> = {\n  'mobil-atau-kereta': ['ojek', 'daring'], 'beli-atau-sewa-alat': ['opsi'], 'liburan-dua-rencana': ['promo'], 'tunai-atau-aplikasi': ['aplikasi', 'opsi'],\n  'kelas-atau-aplikasi': ['aplikasi'], 'usulan-rapat-warga': ['satpam'], 'cara-memilah-sampah': ['kompleks'], 'proyek-terlambat': ['paralel'],\n  'alasan-ganti-internet': ['provider', 'modem', 'koneksi', 'daring'], 'mengajukan-keberatan-denda': ['proyektor'], 'dampak-sepeda-kampus': ['satpam'],\n};",
+            "reason": "GATE-07 bounded detectors"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "const CLITIC_LEMMAS: Readonly<Record<string, string>> = {\n  kelebihannya: 'kelebihan', cicilannya: 'cicilan', potongannya: 'potongan', 'tanggung jawabnya': 'tanggung jawab', 'beda bersihnya': 'beda bersih',\n  sebenarnya: 'sebenarnya', singkatnya: 'singkat', sisanya: 'sisa', jaringannya: 'jaringan', modemnya: 'modem', 'apa adanya': 'apa adanya',\n  akibatnya: 'akibat', dampaknya: 'dampak', urutannya: 'urutan',\n};",
+            "newValue": "// Reviewed surface-to-lemma table for this batch (clitics, di-/ter- and clipped -kan surfaces); every listed surface must carry exactly this lemma.\nconst TERM_LEMMAS: Readonly<Record<string, string>> = {\n  kelebihannya: 'kelebihan', cicilannya: 'cicilan', potongannya: 'potongan', 'tanggung jawabnya': 'tanggung jawab', 'beda bersihnya': 'beda bersih',\n  sebenarnya: 'sebenarnya', singkatnya: 'singkat', sisanya: 'sisa', jaringannya: 'jaringan', modemnya: 'modem', 'apa adanya': 'apa adanya',\n  akibatnya: 'akibat', dampaknya: 'dampak', urutannya: 'urutan',\n  dihitung: 'menghitung', dijemput: 'menjemput', dibuktikan: 'membuktikan', diperpanjang: 'memperpanjang', dilatih: 'melatih', diingatkan: 'mengingatkan',\n  dipegang: 'memegang', ditinjau: 'meninjau', dipilah: 'memilah', diangkut: 'mengangkut', dikerjakan: 'mengerjakan', diganti: 'mengganti', dicicil: 'mencicil',\n  diambil: 'mengambil', terjangkau: 'menjangkau', tercatat: 'mencatat', terdaftar: 'mendaftar', terasa: 'merasa', berisiko: 'risiko',\n  jadwalkan: 'menjadwalkan', gabungkan: 'menggabungkan',\n};",
+            "reason": "GATE-04 bounded lemma attestation"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "    const expectedLemma = CLITIC_LEMMAS[term.targetText.toLowerCase()];",
+            "newValue": "    const expectedLemma = TERM_LEMMAS[term.targetText.toLowerCase()];",
+            "reason": "rename"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "  demand(!/\\banda\\b/.test(value), 'ANDA_CAPITALIZATION', value);",
+            "newValue": "  for (const m of value.match(/\\b[Aa][Nn][Dd][Aa]\\b/g) ?? []) demand(m === 'Anda', 'ANDA_CAPITALIZATION', value);\n  demand(!DI_ATTACHED_PLACE.test(value) && !DI_SPACED_VERB.test(value), 'DI_PREPOSITION', value);",
+            "reason": "GATE-07"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "  demand(values.length > 0, 'ACCEPTED_SHAPE');\n  demand(values.includes(answer)",
+            "newValue": "  demand(values.length > 0, 'ACCEPTED_SHAPE');\n  for (const v of values) spoken(v);\n  demand(values.includes(answer)",
+            "reason": "GATE-06 hygiene"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "  demand(values.length === 4 && new Set(values.map(norm)).size === 4, 'CHOICE_DISTINCT', answer);",
+            "newValue": "  demand(values.length === 4 && new Set(values.map(norm)).size === 4, 'CHOICE_DISTINCT', answer);\n  for (const v of values) spoken(v);",
+            "reason": "GATE-06 hygiene"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "  demand(build.framePrefix + chunks.join(' ') + build.frameSuffix === canonical[1], 'BUILD_RECONSTRUCTION', lesson.slug);",
+            "newValue": "  demand(build.framePrefix + chunks.join(' ') + build.frameSuffix === canonical[1], 'BUILD_RECONSTRUCTION', lesson.slug);\n  demand((build.framePrefix === '' || !boundaryChar(build.framePrefix[build.framePrefix.length - 1])) && (build.frameSuffix === '' || !boundaryChar(build.frameSuffix[0])), 'FRAME_BOUNDARY', lesson.slug);\n  demand(!build.distractors.some((d) => whole(norm(d), canonical[1])), 'DISTRACTOR_PRESENT', lesson.slug);",
+            "reason": "GATE-01/05"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "  baseText(pattern.rule);\n",
+            "newValue": "  baseText(pattern.rule);\n  for (const r of [pattern.rule.de, pattern.rule.en]) demand(/[.!?]$/.test(r) && (r.match(/[.!?](?=\\s|$)/g) ?? []).length === 1, 'RULE_SENTENCE', r);\n",
+            "reason": "GATE-08"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "  code: 'RECOGNITION_ONLY_PATTERN' | 'TERM_OVERLAP';",
+            "newValue": "  code: 'RECOGNITION_ONLY_PATTERN' | 'TERM_OVERLAP' | 'LOANWORD';",
+            "reason": "GATE-07"
+          },
+          {
+            "file": "orchestrator/frontend/scripts/lib/guidedIndonesianB2Drafts.ts",
+            "oldValue": "  for (const lesson of draft.lessons) {\n    const youTurns = lesson.dialogue.filter((t) => t.speaker === 'you').map((t) => t.targetText);",
+            "newValue": "  for (const lesson of draft.lessons) {\n    const exempt = new Set(LOANWORD_EXEMPTIONS[lesson.slug] ?? []);\n    const loan = [...new Set(lesson.dialogue.flatMap((t) => words(t.targetText)).filter((w) => LOANWORDS.has(w) && !exempt.has(w)))].sort();\n    if (loan.length > 0) warnings.push({ code: 'LOANWORD', pathNumber: draft.pathNumber, lessons: [lesson.lessonNumber], tokens: loan, meaning: 'Loanword outside the per-lesson exemption list; native review decides.' });\n    const youTurns = lesson.dialogue.filter((t) => t.speaker === 'you').map((t) => t.targetText);",
+            "reason": "GATE-07 warning"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "  verifyIndonesianB2Evidence,\n  type IndonesianB2Evidence,\n} from './lib/guidedIndonesianB2Drafts';",
+            "newValue": "  verifyIndonesianB2Evidence,\n  type IndonesianB2Allocation,\n  type IndonesianB2Draft,\n  type IndonesianB2Evidence,\n} from './lib/guidedIndonesianB2Drafts';",
+            "reason": "typed fixtures"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "const p1 = JSON.parse(read('content-drafts/b2-2026-10/indonesian/p1.json')) as Record<string, any>;\nconst p2 = JSON.parse(read('content-drafts/b2-2026-10/indonesian/p2.json')) as Record<string, any>;\nconst spec = JSON.parse(specSrc) as any;\nconst prereq = JSON.parse(prereqSrc) as any[];\nconst b1 = JSON.parse(b1Src) as any;\n\n// Independent reconstruction of the 300 earlier trophies: 200 frozen A1/A2 Indonesian lessons\n// from the live authoring corpus plus the 100 reserved B1 allocations from the B1 spec.\nfunction frozenIndonesianLemmas(): string[] {\n  const all = (Array.isArray(GUIDED_LESSONS) ? GUIDED_LESSONS : Object.values(GUIDED_LESSONS as object)) as any[];\n  return all\n    .filter((l) => l?.targetLanguageCode === A.code || l?.languageCode === A.code || l?.targetLanguage === A.targetLanguage)\n    .map((l) => l?.trophy?.lemma ?? l?.trophyLemma)\n    .filter((s): s is string => typeof s === 'string');\n}\nfunction reservedB1Lemmas(): string[] {\n  const rows = b1?.trophyLedger?.rows ?? b1?.allocations ?? b1?.ledger?.rows;\n  assert.ok(Array.isArray(rows), 'B1 spec exposes a ledger/allocation row array');\n  return rows.map((r: any) => r.lemma).filter((s: unknown): s is string => typeof s === 'string');\n}",
+            "newValue": "// Literal types widened so mutation tests can assign wrong values without any.\ntype Loosen<T> = T extends readonly (infer U)[] ? Loosen<U>[] : T extends object ? { -readonly [K in keyof T]: Loosen<T[K]> } : T extends boolean ? boolean : T extends string ? string : T extends number ? number : T;\ntype Draft = Loosen<IndonesianB2Draft>;\ninterface SpecShape { trophyLedger: { rows: IndonesianB2Allocation[] } }\ninterface PrereqEntry { targetLanguage: string; b1Specification: string; b1AllocationSha256: string; forbiddenTrophies: string[] }\ninterface B1Shape { paths: { pathNumber: number; lessons: { lessonNumber: number; trophy: string }[] }[] }\ninterface FrozenLesson { targetLanguage: string; level: string; vibeVariants: Record<string, { trophyWord: { word: string } }> }\nconst p1 = JSON.parse(read('content-drafts/b2-2026-10/indonesian/p1.json')) as Draft;\nconst p2 = JSON.parse(read('content-drafts/b2-2026-10/indonesian/p2.json')) as Draft;\nconst spec = JSON.parse(specSrc) as SpecShape;\nconst prereq = JSON.parse(prereqSrc) as PrereqEntry[];\nconst b1 = JSON.parse(b1Src) as B1Shape;\nconst entry = (): PrereqEntry => {\n  const e = prereq.find((x) => x.targetLanguage === A.targetLanguage);\n  assert.ok(e, 'Indonesian prerequisite entry');\n  return e;\n};\n\n// Independent reconstruction of the 300 earlier trophies: the actual 200 frozen A1/A2 Indonesian\n// rows of GUIDED_LESSONS (fingerprinted) plus the 100 ordered B1 reservations.\nconst frozenRows: FrozenLesson[] = (GUIDED_LESSONS as unknown as FrozenLesson[]).filter((l) => l.targetLanguage === A.targetLanguage && (l.level === 'A1' || l.level === 'A2'));\nfunction frozenIndonesianLemmas(): string[] {\n  return frozenRows.map((l) => {\n    const ws = new Set(Object.values(l.vibeVariants).map((v) => v.trophyWord.word));\n    assert.equal(ws.size, 1, 'one trophy word per frozen lesson');\n    return [...ws][0];\n  });\n}\nfunction reservedB1Lemmas(): string[] {\n  assert.equal(b1.paths.length, 10);\n  return b1.paths.flatMap((p, i) => {\n    assert.equal(p.pathNumber, i + 1);\n    assert.equal(p.lessons.length, 10);\n    return p.lessons.map((l, n) => {\n      assert.equal(l.lessonNumber, n + 1);\n      assert.equal(typeof l.trophy, 'string');\n      return l.trophy;\n    });\n  });\n}",
+            "reason": "GATE-03 real authority shapes, no any"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "  const entry = prereq.find((e) => e.targetLanguage === A.targetLanguage);\n  assert.equal(entry.b1AllocationSha256, A.b1SpecificationCrlfSha256);\n  assert.equal(entry.b1Specification, A.b1SpecificationFile);\n});",
+            "newValue": "  assert.equal(entry().b1AllocationSha256, A.b1SpecificationCrlfSha256);\n  assert.equal(entry().b1Specification, A.b1SpecificationFile);\n});\ntest('fixture: the actual 200 frozen Indonesian A1/A2 rows recompute the pinned corpus fingerprint', () => {\n  assert.equal(frozenRows.length, A.frozenLessonCount);\n  assert.equal(sha(JSON.stringify(frozenRows)), A.frozenCorpusSha256);\n});",
+            "reason": "GATE-03 independent fingerprint"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "  assert.equal(sorted.length, A.earlierTrophyCount);\n  const entry = prereq.find((e) => e.targetLanguage === A.targetLanguage);\n  assert.deepEqual(sorted, entry.forbiddenTrophies);",
+            "newValue": "  assert.equal(sorted.length, A.earlierTrophyCount);\n  assert.deepEqual(sorted, entry().forbiddenTrophies);",
+            "reason": "typed"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "  (e.specification as any).trophyLedger.rows[0].lemma = 'sedang';",
+            "newValue": "  (e.specification as SpecShape).trophyLedger.rows[0].lemma = 'sedang';",
+            "reason": "no any"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "  e.trophies = (e.trophies as any[]).slice(0, 19);",
+            "newValue": "  e.trophies = [...e.trophies].slice(0, 19);",
+            "reason": "no any"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "const l1 = (d: any) => d.lessons[0];",
+            "newValue": "const l1 = (d: Draft) => d.lessons[0];\nconst run = (d: Draft) => validateIndonesianB2Draft(d, evidence());",
+            "reason": "typed anchor"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "  cz.segments[5].index = 2;",
+            "newValue": "  (cz.segments[5] as { index: number }).index = 2;",
+            "reason": "union narrowing"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "test('draft: stop-word blank fails BLANK_STOP', () => {",
+            "newValue": "test('draft: a third synthesis blank fails BLANK_COUNT', () => {",
+            "reason": "GATE-03 misleading name"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "test('draft: trophy lemma off the ledger row fails TROPHY_ALLOCATION', () => {",
+            "newValue": "test('draft: frame edge cut inside a token fails FRAME_BOUNDARY', () => {\n  const d = clone(p1);\n  l1(d).build.chunks[4] = 'per ha';\n  l1(d).build.frameSuffix = 'ri.';\n  expectCode(() => run(d), 'FRAME_BOUNDARY');\n});\ntest('draft: trophy example apostrophe fragment fails TROPHY_EXAMPLE', () => {\n  const d = clone(p1);\n  l1(d).trophy.example.targetText = \"Mobil itu murah, sedangkan'lain mahal.\";\n  expectCode(() => run(d), 'TROPHY_EXAMPLE');\n});\ntest('draft: punctuation-separated trophy example still attests (positive)', () => {\n  const d = clone(p1);\n  l1(d).trophy.example.targetText = 'Bus murah; sedangkan, kereta cepat.';\n  assert.equal(run(d).lessons[0].trophy.lemma, 'sedangkan');\n});\ntest('draft: missing di-form term lemma fails TERM_LEMMA', () => {\n  const d = clone(p1);\n  delete l1(d).terms[6].lemma;\n  expectCode(() => run(d), 'TERM_LEMMA');\n});\ntest('draft: wrong di-form term lemma fails TERM_LEMMA', () => {\n  const d = clone(p1);\n  l1(d).terms[6].lemma = 'zzzinvented';\n  expectCode(() => run(d), 'TERM_LEMMA');\n});\ntest('draft: distractor phrase present in the learner line fails DISTRACTOR_PRESENT', () => {\n  const d = clone(p1);\n  l1(d).build.distractors[0] = 'yang dekat';\n  expectCode(() => run(d), 'DISTRACTOR_PRESENT');\n});\ntest('draft: empty accepted answer fails SPOKEN_HYGIENE', () => {\n  const d = clone(p1);\n  l1(d).cloze.blanks[1].acceptedAnswers.push('');\n  expectCode(() => run(d), 'SPOKEN_HYGIENE');\n});\ntest('draft: gendered accepted answer fails GENDER_ADDRESS', () => {\n  const d = clone(p1);\n  l1(d).cloze.blanks[1].acceptedAnswers.push('Pak');\n  expectCode(() => run(d), 'GENDER_ADDRESS');\n});\ntest('draft: non-Latin recall choice fails SPOKEN_SCRIPT', () => {\n  const d = clone(p1);\n  l1(d).recall.fallbackChoices[3] = '\\u4e2d';\n  expectCode(() => run(d), 'SPOKEN_SCRIPT');\n});\ntest('draft: spaced di- verb fails DI_PREPOSITION', () => {\n  const d = clone(p1);\n  l1(d).trophy.example.targetText = 'Rumah itu di jual, sedangkan rumah ini disewa.';\n  expectCode(() => run(d), 'DI_PREPOSITION');\n});\ntest('draft: attached di + place fails DI_PREPOSITION', () => {\n  const d = clone(p1);\n  l1(d).trophy.example.targetText = 'Rumah itu dikota, sedangkan rumah ini di desa.';\n  expectCode(() => run(d), 'DI_PREPOSITION');\n});\ntest('draft: uppercase ANDA fails ANDA_CAPITALIZATION', () => {\n  const d = clone(p1);\n  l1(d).trophy.example.targetText = 'Rumah ANDA murah, sedangkan rumah ini mahal.';\n  expectCode(() => run(d), 'ANDA_CAPITALIZATION');\n});\ntest('draft: two-sentence pattern rule fails RULE_SENTENCE', () => {\n  const d = clone(p1);\n  l1(d).pattern.rule.en += ' This is a second sentence.';\n  expectCode(() => run(d), 'RULE_SENTENCE');\n});\ntest('draft: trophy lemma off the ledger row fails TROPHY_ALLOCATION', () => {",
+            "reason": "GATE-01/02/04/05/06/07/08 negatives plus positive control"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "  const w = collectIndonesianB2Warnings(d as any).filter((x) => x.code === 'RECOGNITION_ONLY_PATTERN');",
+            "newValue": "  const w = collectIndonesianB2Warnings(d as unknown as IndonesianB2Draft).filter((x) => x.code === 'RECOGNITION_ONLY_PATTERN');",
+            "reason": "no any"
+          },
+          {
+            "file": "tmp/V4_EXPANSION_20261003/indonesian-b2-gate/test-guided-indonesian-b2-drafts.ts",
+            "oldValue": "  assert.equal(collectIndonesianB2Warnings(clone(p1) as any).filter((x) => x.code === 'RECOGNITION_ONLY_PATTERN').length, 0);\n});",
+            "newValue": "  assert.equal(collectIndonesianB2Warnings(clone(p1) as unknown as IndonesianB2Draft).filter((x) => x.code === 'RECOGNITION_ONLY_PATTERN').length, 0);\n});\ntest('warnings: exempted loanwords emit no LOANWORD, an unexempted one does', () => {\n  assert.equal(collectIndonesianB2Warnings(clone(p2) as unknown as IndonesianB2Draft).filter((x) => x.code === 'LOANWORD').length, 0);\n  const d = clone(p1);\n  l1(d).dialogue[0].targetText += ' Modem?';\n  const w = collectIndonesianB2Warnings(d as unknown as IndonesianB2Draft).filter((x) => x.code === 'LOANWORD');\n  assert.deepEqual(w.map((x) => x.tokens), [['modem']]);\n});",
+            "reason": "GATE-07 warning coverage"
+          }
+        ],
+        "finalChecks": "Root must: verify every old value/hash before applying; recompute V2 spec filename/hash metadata and specRef bindings and INDONESIAN_B2_AUTHORITY sha only mechanically; rerun scratch checker, app gate on both paths (expected PASS with 1-1/1-3/1-5/1-6/1-8/2-8 carrier table unchanged, SINGLE_CHIP no longer hit), tsc scoped + eslint on gate and tests, node:test suite (two full-path positives now expected green); confirm 80 joins, 1-4 chip, 7-12 focus, FRAME_BOUNDARY, DISTRACTOR_PRESENT; keep all source flags draft/pending; preserve raw stream.",
+        "limitations": [
+          "Model-based native arbitration, not human-native certification; no audio listened to.",
+          "Accepted-answer additions are bounded authored variants, not synonym coverage; no runtime acceptance exists yet (PUB-08 retained).",
+          "Loanword/di-preposition/lemma tables are bounded reviewed lists for this batch; no morphology parser.",
+          "The 'dan' chunk in P2L2 (dan Kamis.) carries its coordinated noun; no conjunction is stranded.",
+          "Test old values are quoted from the attached proposal; root verifies uniqueness before replacement."
+        ]
+      }
+    }
+  ],
+  "approvalBasis": "All exact old/new values replayed with deep copies; complete raw reviews preserved and final source objects equal independently reviewed bytes."
+}

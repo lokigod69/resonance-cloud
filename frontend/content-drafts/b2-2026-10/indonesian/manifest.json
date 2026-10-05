@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "indonesian-b2-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b2-2026-10/indonesian/p1.json",
+      "sha256": "fc369f4c2753debb70c7e4d4c13eb81f3a8f6d696992cce5f49f72f6e4ba52db",
+      "targetLanguage": "Indonesian",
+      "pathNumber": 1,
+      "reviewedVoiceId": "gjhfBUoH6DHh0DG1X4u0",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/indonesian/specification.json",
+        "sha256": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5",
+        "referenceName": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V3.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/native-prerequisites.json",
+        "sha256": "6685bba9897ddd1c1f72308204dd6c056108f32aea332e2ee9a1402cf4e74f2e"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-native-2026-10/indonesian/specification.json",
+        "sha256": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/indonesian/p2.json",
+      "sha256": "f816ea473d908b2ed5578923911705e8f28a12475d83ce3bb91df71b398d496e",
+      "targetLanguage": "Indonesian",
+      "pathNumber": 2,
+      "reviewedVoiceId": "gjhfBUoH6DHh0DG1X4u0",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/indonesian/specification.json",
+        "sha256": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5",
+        "referenceName": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V3.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/native-prerequisites.json",
+        "sha256": "6685bba9897ddd1c1f72308204dd6c056108f32aea332e2ee9a1402cf4e74f2e"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-native-2026-10/indonesian/specification.json",
+        "sha256": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Indonesian": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b2-2026-10/indonesian/fable-evidence.json",
+    "sha256": "053538320d789246981f6f8c52ce37c205aebabf11964cdc3352b0548e388ad8"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b2-2026-10/indonesian/independent-evidence.json",
+    "sha256": "89a066c164759a4c5ccfc2529c4334e6e519c5109ed5286cc189dc3b5311a14a"
+  }
+}

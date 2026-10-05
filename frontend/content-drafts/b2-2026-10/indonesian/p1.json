@@ -1,0 +1,3884 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Indonesian",
+  "targetLanguageCode": "id-ID",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 1,
+  "slug": "menimbang-pilihan",
+  "pathTitle": {
+    "de": "Möglichkeiten abwägen",
+    "en": "Weighing options"
+  },
+  "pathFunction": {
+    "de": "Möglichkeiten vergleichen und eine bedingte Empfehlung begründen.",
+    "en": "Compare options and justify a qualified recommendation."
+  },
+  "specRef": {
+    "pathSpec": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V3.json",
+    "pathSpecSha256": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5",
+    "ledger": "B2_INDONESIAN_P1_P2_AUTHORING_SPEC_V3.json",
+    "ledgerSha256": "0206c8a515a33a7727fb20032e97ef0bb839536a2046a5dd8680af32c89694f5"
+  },
+  "authoring": {
+    "source": "Codex GPT-6",
+    "runId": "indonesian-b2-p1-p2-author-20261006",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "sewa-dekat-atau-jauh",
+      "title": {
+        "de": "Miete oder Pendelzeit",
+        "en": "Rent or commuting time"
+      },
+      "situation": {
+        "de": "Du besichtigst zwei Wohnungen: eine nahe dem Büro und eine am Stadtrand.",
+        "en": "You view two flats: one near the office and one on the outskirts."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Immobilienvermittlung",
+            "en": "letting agent"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Besichtigung heißt es: „Yang dekat kantor sewanya tujuh juta sebulan, yang di pinggir kota empat juta. Anda cenderung ke mana?“",
+        "en": "During the viewing, the agent says: “Yang dekat kantor sewanya tujuh juta sebulan, yang di pinggir kota empat juta. Anda cenderung ke mana?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Yang dekat kantor sewanya tujuh juta sebulan, yang di pinggir kota empat juta. Anda cenderung ke mana?",
+          "base": {
+            "de": "Die Wohnung nahe dem Büro kostet sieben Millionen im Monat, die am Stadtrand vier Millionen. Wozu tendieren Sie?",
+            "en": "The one near the office costs seven million a month, the one on the outskirts four million. Which way are you leaning?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "formal",
+          "targetText": "Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor menghemat waktu saya hampir dua jam per hari.",
+          "base": {
+            "de": "Die am Stadtrand ist deutlich günstiger, während mir die nahe dem Büro fast zwei Stunden pro Tag spart.",
+            "en": "The one on the outskirts clearly costs less, whereas the one near the office saves me almost two hours a day."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tapi beda tiga juta itu besar. Dalam setahun Anda kehilangan tiga puluh enam juta.",
+          "base": {
+            "de": "Aber drei Millionen Unterschied sind viel. In einem Jahr verlieren Sie sechsunddreißig Millionen.",
+            "en": "But a difference of three million is a lot. In a year you lose thirty-six million."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "formal",
+          "targetText": "Memang mahal, tetapi ongkos transportasi dan tenaga yang habis di jalan juga harus dihitung.",
+          "base": {
+            "de": "Es ist zwar teuer, aber auch die Fahrtkosten und die unterwegs verbrauchte Energie müssen berücksichtigt werden.",
+            "en": "It is expensive, admittedly, but the transport costs and the energy spent travelling also have to be counted."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau begitu, kalau harus pilih hari ini, Anda ambil yang mana?",
+          "base": {
+            "de": "Wenn Sie sich also heute entscheiden müssen, welche nehmen Sie?",
+            "en": "So, if you have to choose today, which one do you take?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "formal",
+          "targetText": "Saya ambil yang dekat kantor, karena bagi saya waktu dan tenaga lebih berharga dari uang tiga juta itu.",
+          "base": {
+            "de": "Ich nehme die nahe dem Büro, denn für mich sind Zeit und Energie mehr wert als diese drei Millionen.",
+            "en": "I choose the one near the office, because to me time and energy are worth more than those three million."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Yang di pinggir kota jelas lebih hemat, ",
+        "chunks": [
+          "sedangkan",
+          "yang dekat kantor",
+          "menghemat waktu saya",
+          "hampir dua jam",
+          "per hari."
+        ],
+        "distractors": [
+          "yang jauh sekali",
+          "membuang waktu saya"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " mahal, tetapi ongkos transportasi dan tenaga yang habis di jalan juga harus "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Memang",
+            "acceptedAnswers": [
+              "Memang"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "dihitung",
+            "acceptedAnswers": [
+              "dihitung",
+              "diperhitungkan"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "hitung – was berücksichtigt werden muss",
+              "en": "hitung — what has to be counted"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Saya ambil yang dekat kantor, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " waktu dan tenaga "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " dari uang tiga juta itu."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "karena bagi saya",
+            "acceptedAnswers": [
+              "karena bagi saya",
+              "sebab bagi saya"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "lebih berharga",
+            "acceptedAnswers": [
+              "lebih berharga",
+              "lebih penting"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Yang di pinggir kota jelas lebih hemat, ",
+        "answer": "sedangkan",
+        "acceptedAnswers": [
+          "sedangkan"
+        ],
+        "after": " yang dekat kantor menghemat waktu saya hampir dua jam per hari.",
+        "fallbackChoices": [
+          "sedangkan",
+          "sebelum",
+          "setelah",
+          "supaya"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Zwei Vorteile gegenüberstellen",
+          "en": "Contrasting two advantages"
+        },
+        "rule": {
+          "de": "Mit sedangkan stellst du den Vorteil einer Möglichkeit dem Vorteil einer anderen gegenüber.",
+          "en": "Use sedangkan to contrast the advantage of one option with the advantage of another."
+        },
+        "examples": [
+          {
+            "targetText": "Yang di pinggir kota jelas lebih hemat, sedangkan yang dekat kantor menghemat waktu saya hampir dua jam per hari.",
+            "base": {
+              "de": "Die am Stadtrand ist deutlich günstiger, während mir die nahe dem Büro fast zwei Stunden pro Tag spart.",
+              "en": "The one on the outskirts clearly costs less, whereas the one near the office saves me almost two hours a day."
+            },
+            "highlights": [
+              "sedangkan"
+            ]
+          },
+          {
+            "targetText": "Rumah ini lebih luas, sedangkan yang dekat stasiun menghemat waktu perjalanan.",
+            "base": {
+              "de": "Dieses Haus ist geräumiger, während das nahe dem Bahnhof Fahrzeit spart.",
+              "en": "This house is more spacious, whereas the one near the station saves travelling time."
+            },
+            "highlights": [
+              "sedangkan"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "sedangkan",
+          "kind": "connector",
+          "base": {
+            "de": "während dagegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "memang",
+          "kind": "frame",
+          "base": {
+            "de": "zwar; zugegeben",
+            "en": "admittedly"
+          }
+        },
+        {
+          "targetText": "tetapi",
+          "kind": "connector",
+          "base": {
+            "de": "aber",
+            "en": "but"
+          }
+        },
+        {
+          "targetText": "pinggir kota",
+          "kind": "noun",
+          "base": {
+            "de": "Stadtrand",
+            "en": "outskirts"
+          }
+        },
+        {
+          "targetText": "ongkos transportasi",
+          "kind": "noun",
+          "base": {
+            "de": "Fahrtkosten",
+            "en": "transport costs"
+          }
+        },
+        {
+          "targetText": "tenaga",
+          "kind": "noun",
+          "base": {
+            "de": "Energie; Kraft",
+            "en": "energy"
+          }
+        },
+        {
+          "targetText": "dihitung",
+          "lemma": "menghitung",
+          "kind": "verb",
+          "base": {
+            "de": "berücksichtigt werden",
+            "en": "be counted"
+          }
+        },
+        {
+          "targetText": "lebih berharga",
+          "kind": "adjective",
+          "base": {
+            "de": "wertvoller",
+            "en": "more valuable"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "sedangkan",
+            "menghemat",
+            "waktu"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "ongkos",
+            "tenaga",
+            "dihitung"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "dekat",
+            "berharga",
+            "uang"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "sedangkan",
+        "familyKey": "sedangkan",
+        "surface": "sedangkan",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Bus lebih murah, sedangkan kereta lebih cepat.",
+          "base": {
+            "de": "Der Bus ist günstiger, während der Zug schneller ist.",
+            "en": "The bus is cheaper, whereas the train is faster."
+          }
+        },
+        "base": {
+          "de": "während dagegen",
+          "en": "whereas"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "mobil-atau-kereta",
+      "title": {
+        "de": "Zug oder Auto",
+        "en": "Train or car"
+      },
+      "situation": {
+        "de": "Bei der Arbeit vergleicht ihr das tägliche Zugfahren mit dem Auto.",
+        "en": "At work, you compare taking the train every day with driving."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus deinem Arbeitsteam",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Büro beginnt das Gespräch so: „Kamu tiap hari naik kereta, kan? Aku berpikir mau pakai mobil saja, bensin sedang murah.“",
+        "en": "At the office, your colleague starts: “Kamu tiap hari naik kereta, kan? Aku berpikir mau pakai mobil saja, bensin sedang murah.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kamu tiap hari naik kereta, kan? Aku berpikir mau pakai mobil saja, bensin sedang murah.",
+          "base": {
+            "de": "Du fährst doch jeden Tag mit dem Zug? Ich überlege, das Auto zu nehmen; Benzin ist gerade günstig.",
+            "en": "You take the train every day, right? I am thinking of using the car; petrol is cheap at the moment."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "neutral",
+          "targetText": "Naik kereta memang lebih murah dan lebih santai daripada menyetir, apalagi kalau kamu hitung parkir dan macet tiap pagi.",
+          "base": {
+            "de": "Zugfahren ist wirklich günstiger und entspannter als selbst zu fahren, besonders wenn du Parken und Staus jeden Morgen mitrechnest.",
+            "en": "Taking the train really is cheaper and more relaxing than driving, especially if you count parking and traffic every morning."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tapi kereta sering penuh, dan aku sering pulang malam waktu kereta sudah jarang.",
+          "base": {
+            "de": "Aber der Zug ist oft voll, und ich fahre oft spät nach Hause, wenn kaum noch Züge fahren.",
+            "en": "But the train is often packed, and I often go home late when trains are infrequent."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "neutral",
+          "targetText": "Kalau pulang malam dan kereta sudah jarang, kamu bisa pesan ojek daring dari kantor; hitung sebulan, itu masih lebih murah daripada bensin dan parkir.",
+          "base": {
+            "de": "Wenn du spät heimfährst und kaum noch Züge fahren, kannst du vom Büro aus ein Motorradtaxi per App bestellen; auf den Monat gerechnet ist das noch günstiger als Benzin und Parken.",
+            "en": "If you go home late and trains are infrequent, you can book a motorcycle taxi from the office; over a month, that is still cheaper than petrol and parking."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Oke, kalau kamu jadi aku, dengan anak kecil yang harus dijemput tiap sore, kamu pilih apa?",
+          "base": {
+            "de": "Wenn du an meiner Stelle wärst und jeden Nachmittag ein kleines Kind abholen müsstest, was würdest du wählen?",
+            "en": "If you were me, with a small child to pick up every afternoon, what would you choose?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "neutral",
+          "targetText": "Kalau anaknya harus dijemput tiap sore, aku pilih mobil untuk hari kerja dan kereta untuk ke pusat kota di akhir pekan.",
+          "base": {
+            "de": "Wenn das Kind jeden Nachmittag abgeholt werden muss, wähle ich für die Arbeitstage das Auto und für Fahrten ins Zentrum am Wochenende den Zug.",
+            "en": "If the child needs picking up every afternoon, I choose the car for weekdays and the train for trips into the city centre at weekends."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Naik kereta memang lebih murah dan lebih santai daripada menyetir, ",
+        "chunks": [
+          "apalagi",
+          "kalau kamu",
+          "hitung parkir",
+          "dan macet",
+          "tiap pagi."
+        ],
+        "distractors": [
+          "tanpa parkir",
+          "tiap malam."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " pulang malam dan kereta sudah jarang, kamu bisa pesan ojek daring dari kantor; hitung sebulan, itu masih "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " daripada bensin dan parkir."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kalau",
+            "acceptedAnswers": [
+              "Kalau",
+              "Jika"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "lebih murah",
+            "acceptedAnswers": [
+              "lebih murah",
+              "lebih hemat"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " anaknya harus dijemput tiap sore, aku pilih mobil untuk "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " dan kereta untuk ke pusat kota di akhir pekan."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kalau",
+            "acceptedAnswers": [
+              "Kalau",
+              "Jika"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "hari kerja",
+            "acceptedAnswers": [
+              "hari kerja"
+            ],
+            "kind": "lexical",
+            "choices": [
+              "hari kerja",
+              "hari libur",
+              "akhir pekan",
+              "tiap malam"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Naik kereta memang lebih murah dan lebih santai ",
+        "answer": "daripada",
+        "acceptedAnswers": [
+          "daripada"
+        ],
+        "after": " menyetir, apalagi kalau kamu hitung parkir dan macet tiap pagi.",
+        "fallbackChoices": [
+          "daripada",
+          "sebelum",
+          "sesudah",
+          "selama"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Einen Vergleich begründen",
+          "en": "Supporting a comparison"
+        },
+        "rule": {
+          "de": "Mit lebih … daripada vergleichst du zwei Möglichkeiten und mit apalagi kalau ergänzt du einen besonders wichtigen Umstand.",
+          "en": "Use lebih … daripada to compare two options and apalagi kalau to add a particularly relevant circumstance."
+        },
+        "examples": [
+          {
+            "targetText": "Naik kereta memang lebih murah dan lebih santai daripada menyetir, apalagi kalau kamu hitung parkir dan macet tiap pagi.",
+            "base": {
+              "de": "Zugfahren ist wirklich günstiger und entspannter als selbst zu fahren, besonders wenn du Parken und Staus jeden Morgen mitrechnest.",
+              "en": "Taking the train really is cheaper and more relaxing than driving, especially if you count parking and traffic every morning."
+            },
+            "highlights": [
+              "daripada",
+              "apalagi kalau"
+            ]
+          },
+          {
+            "targetText": "Kereta lebih praktis daripada mobil, apalagi kalau jalan ke kantor macet.",
+            "base": {
+              "de": "Der Zug ist praktischer als das Auto, besonders wenn die Straße zum Büro verstopft ist.",
+              "en": "The train is more practical than the car, especially if the road to the office is congested."
+            },
+            "highlights": [
+              "daripada",
+              "apalagi kalau"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "daripada",
+          "kind": "connector",
+          "base": {
+            "de": "als beim Vergleich",
+            "en": "than"
+          }
+        },
+        {
+          "targetText": "apalagi kalau",
+          "kind": "frame",
+          "base": {
+            "de": "besonders wenn",
+            "en": "especially if"
+          }
+        },
+        {
+          "targetText": "menyetir",
+          "kind": "verb",
+          "base": {
+            "de": "Auto fahren",
+            "en": "drive"
+          }
+        },
+        {
+          "targetText": "parkir",
+          "kind": "noun",
+          "base": {
+            "de": "Parken",
+            "en": "parking"
+          }
+        },
+        {
+          "targetText": "macet",
+          "kind": "adjective",
+          "base": {
+            "de": "verstopft; im Stau",
+            "en": "congested"
+          }
+        },
+        {
+          "targetText": "ojek daring",
+          "kind": "noun",
+          "base": {
+            "de": "Motorradtaxi per App",
+            "en": "app-booked motorcycle taxi"
+          }
+        },
+        {
+          "targetText": "dijemput",
+          "lemma": "menjemput",
+          "kind": "verb",
+          "base": {
+            "de": "abgeholt werden",
+            "en": "be picked up"
+          }
+        },
+        {
+          "targetText": "akhir pekan",
+          "kind": "noun",
+          "base": {
+            "de": "Wochenende",
+            "en": "weekend"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "apalagi",
+            "parkir",
+            "macet"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "ojek",
+            "kantor",
+            "murah"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "dijemput",
+            "mobil",
+            "kereta"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "daripada",
+        "familyKey": "daripada",
+        "surface": "daripada",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Naik kereta lebih santai daripada menyetir sendiri.",
+          "base": {
+            "de": "Mit dem Zug zu fahren ist entspannter, als selbst Auto zu fahren.",
+            "en": "Taking the train is more relaxing than driving yourself."
+          }
+        },
+        "base": {
+          "de": "als beim Vergleich",
+          "en": "than"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "kerja-dari-rumah",
+      "title": {
+        "de": "Zeit für konzentrierte Arbeit",
+        "en": "Time to focus"
+      },
+      "situation": {
+        "de": "Dein Team darf zwischen Arbeit zu Hause und im Büro wählen; du legst deine Position dar.",
+        "en": "Your team can choose between working from home and at the office; you explain your position."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Teamleitung",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Teamleitung fragt: „Mulai bulan depan tim boleh memilih: kerja dari rumah atau di kantor. Anda sendiri lebih condong ke mana?“",
+        "en": "Your manager asks: “Mulai bulan depan tim boleh memilih: kerja dari rumah atau di kantor. Anda sendiri lebih condong ke mana?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Mulai bulan depan tim boleh memilih: kerja dari rumah atau di kantor. Anda sendiri lebih condong ke mana?",
+          "base": {
+            "de": "Ab nächsten Monat kann das Team wählen: zu Hause oder im Büro arbeiten. Wozu tendieren Sie persönlich?",
+            "en": "Starting next month, the team can choose: work from home or at the office. Which way do you personally lean?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "formal",
+          "targetText": "Saya lebih condong kerja dari rumah tiga hari seminggu; kelebihannya, saya bisa fokus mengerjakan laporan tanpa gangguan rapat mendadak.",
+          "base": {
+            "de": "Ich tendiere zu drei Tagen pro Woche zu Hause; der Vorteil ist, dass ich mich ohne Störungen durch spontane Besprechungen auf Berichte konzentrieren kann.",
+            "en": "I lean towards working from home three days a week; the advantage is that I can focus on reports without interruptions from sudden meetings."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tapi koordinasi tim jadi lambat kalau separuh orang tidak ada di kantor. Bagaimana?",
+          "base": {
+            "de": "Aber die Abstimmung im Team wird langsam, wenn die Hälfte nicht im Büro ist. Wie lösen wir das?",
+            "en": "But team coordination slows down if half the people are not at the office. What about that?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "counteroffer",
+          "register": "formal",
+          "targetText": "Kalau begitu, kita tetapkan hari Selasa dan Kamis sebagai hari semua orang di kantor untuk rapat.",
+          "base": {
+            "de": "Dann legen wir Dienstag und Donnerstag als Tage fest, an denen alle für Besprechungen im Büro sind.",
+            "en": "In that case, let us make Tuesday and Thursday the days when everyone is in the office for meetings."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau direktur tetap minta lima hari di kantor, apa argumen utama Anda?",
+          "base": {
+            "de": "Wenn die Geschäftsleitung weiter fünf Bürotage verlangt, was ist Ihr Hauptargument?",
+            "en": "If the director still insists on five days in the office, what is your main argument?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "formal",
+          "targetText": "Argumen utama saya: hasil kerja tim naik sejak kerja dari rumah, dan itu bisa dibuktikan dengan laporan bulanan.",
+          "base": {
+            "de": "Mein Hauptargument: Die Leistung des Teams ist seit der Arbeit von zu Hause höher, und die Monatsberichte können das belegen.",
+            "en": "My main argument: team output is higher since the move to working from home, and the monthly reports can demonstrate that."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Saya lebih condong kerja dari rumah tiga hari seminggu; ",
+        "chunks": [
+          "kelebihannya,",
+          "saya bisa fokus",
+          "mengerjakan laporan",
+          "tanpa gangguan",
+          "rapat mendadak."
+        ],
+        "distractors": [
+          "dengan gangguan",
+          "rapat rutin."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", kita "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " hari Selasa dan Kamis sebagai hari semua orang di kantor untuk rapat."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kalau begitu",
+            "acceptedAnswers": [
+              "Kalau begitu"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "tetapkan",
+            "acceptedAnswers": [
+              "tetapkan",
+              "menetapkan"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "tetap – gemeinsam verbindlich festlegen",
+              "en": "tetap — jointly establish a fixed arrangement"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " saya: hasil kerja tim naik sejak kerja dari rumah, dan itu bisa "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " dengan laporan bulanan."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Argumen utama",
+            "acceptedAnswers": [
+              "Argumen utama"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "dibuktikan",
+            "acceptedAnswers": [
+              "dibuktikan"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "bukti – passiv: mit Berichten belegen",
+              "en": "bukti — passive: demonstrate with reports"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Saya lebih condong kerja dari rumah tiga hari seminggu; ",
+        "answer": "kelebihannya",
+        "acceptedAnswers": [
+          "kelebihannya"
+        ],
+        "after": ", saya bisa fokus mengerjakan laporan tanpa gangguan rapat mendadak.",
+        "fallbackChoices": [
+          "kelebihannya",
+          "kekurangannya",
+          "biayanya",
+          "syaratnya"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine Position durch einen Vorteil begründen",
+          "en": "Supporting a position with an advantage"
+        },
+        "rule": {
+          "de": "Mit kelebihannya leitest du den konkreten Vorteil ein, der deine bevorzugte Möglichkeit begründet.",
+          "en": "Use kelebihannya to introduce the concrete advantage supporting your preferred option."
+        },
+        "examples": [
+          {
+            "targetText": "Saya lebih condong kerja dari rumah tiga hari seminggu; kelebihannya, saya bisa fokus mengerjakan laporan tanpa gangguan rapat mendadak.",
+            "base": {
+              "de": "Ich tendiere zu drei Tagen pro Woche zu Hause; der Vorteil ist, dass ich mich ohne Störungen durch spontane Besprechungen auf Berichte konzentrieren kann.",
+              "en": "I lean towards working from home three days a week; the advantage is that I can focus on reports without interruptions from sudden meetings."
+            },
+            "highlights": [
+              "kelebihannya"
+            ]
+          },
+          {
+            "targetText": "Saya memilih kerja dari rumah; kelebihannya, laporan selesai tanpa gangguan rapat.",
+            "base": {
+              "de": "Ich entscheide mich für Arbeit zu Hause; der Vorteil ist, dass Berichte ohne Störungen durch Besprechungen fertig werden.",
+              "en": "I choose to work from home; the advantage is that reports get finished without interruptions from meetings."
+            },
+            "highlights": [
+              "kelebihannya"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "lebih condong",
+          "kind": "frame",
+          "base": {
+            "de": "eher tendieren zu",
+            "en": "lean more towards"
+          }
+        },
+        {
+          "targetText": "kalau begitu",
+          "kind": "frame",
+          "base": {
+            "de": "in dem Fall",
+            "en": "in that case"
+          }
+        },
+        {
+          "targetText": "kelebihannya",
+          "lemma": "kelebihan",
+          "kind": "noun",
+          "base": {
+            "de": "der Vorteil davon",
+            "en": "its advantage"
+          }
+        },
+        {
+          "targetText": "fokus",
+          "kind": "verb",
+          "base": {
+            "de": "sich konzentrieren",
+            "en": "focus"
+          }
+        },
+        {
+          "targetText": "gangguan",
+          "kind": "noun",
+          "base": {
+            "de": "Störung",
+            "en": "interruption"
+          }
+        },
+        {
+          "targetText": "rapat mendadak",
+          "kind": "noun",
+          "base": {
+            "de": "spontane Besprechung",
+            "en": "sudden meeting"
+          }
+        },
+        {
+          "targetText": "koordinasi",
+          "kind": "noun",
+          "base": {
+            "de": "Abstimmung",
+            "en": "coordination"
+          }
+        },
+        {
+          "targetText": "dibuktikan",
+          "lemma": "membuktikan",
+          "kind": "verb",
+          "base": {
+            "de": "belegt werden",
+            "en": "be demonstrated"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "kelebihannya",
+            "fokus",
+            "laporan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "tetapkan",
+            "Selasa",
+            "Kamis"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Argumen",
+            "hasil",
+            "dibuktikan"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "kelebihan",
+        "familyKey": "lebih",
+        "surface": "kelebihannya",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Kelebihan kerja dari rumah adalah waktu untuk fokus.",
+          "base": {
+            "de": "Ein Vorteil der Arbeit zu Hause ist Zeit zum konzentrierten Arbeiten.",
+            "en": "An advantage of working from home is time to focus."
+          }
+        },
+        "base": {
+          "de": "Vorteil",
+          "en": "advantage"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "beli-atau-sewa-alat",
+      "title": {
+        "de": "Für drei Monate mieten",
+        "en": "Renting for three months"
+      },
+      "situation": {
+        "de": "Du brauchst für ein dreimonatiges Projekt eine Kamera und vergleichst Miete und Kauf.",
+        "en": "You need a camera for a three-month project and compare renting with buying."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person beim Geräteverleih",
+            "en": "rental service employee"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Beim Verleih lautet die Frage: „Untuk proyek tiga bulan, Anda mau sewa kamera ini atau beli sekalian? Harga belinya dua puluh juta.“",
+        "en": "At the rental desk, the employee asks: “Untuk proyek tiga bulan, Anda mau sewa kamera ini atau beli sekalian? Harga belinya dua puluh juta.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Untuk proyek tiga bulan, Anda mau sewa kamera ini atau beli sekalian? Harga belinya dua puluh juta.",
+          "base": {
+            "de": "Möchten Sie die Kamera für das dreimonatige Projekt mieten oder gleich kaufen? Sie kostet zwanzig Millionen.",
+            "en": "For the three-month project, do you want to rent this camera or buy it outright? The purchase price is twenty million."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "formal",
+          "targetText": "Untuk jangka pendek sewa lebih masuk akal, karena tiga bulan sewa belum sampai setengah harga beli.",
+          "base": {
+            "de": "Kurzfristig ist Mieten sinnvoller, denn drei Monate Miete erreichen noch nicht die Hälfte des Kaufpreises.",
+            "en": "For the short term, renting makes more sense, because three months' rent does not even reach half the purchase price."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tapi kalau proyeknya diperpanjang jadi setahun, biaya sewa akan melebihi harga beli.",
+          "base": {
+            "de": "Aber wenn das Projekt auf ein Jahr verlängert wird, werden die Mietkosten den Kaufpreis übersteigen.",
+            "en": "But if the project is extended to a year, the rental cost will exceed the purchase price."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "formal",
+          "targetText": "Kalau diperpanjang, saya bandingkan lagi; beli berarti saya juga menanggung perawatan dan harga jualnya turun.",
+          "base": {
+            "de": "Bei einer Verlängerung vergleiche ich noch einmal; Kaufen bedeutet, dass ich auch die Wartung trage und der Wiederverkaufswert sinkt.",
+            "en": "If it is extended, I compare again; buying means I also bear the maintenance cost and the resale value falls."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kami ada opsi sewa-beli: cicil dua belas bulan, alat jadi milik Anda. Bagaimana?",
+          "base": {
+            "de": "Wir bieten Mietkauf an: zwölf Monatsraten, dann gehört Ihnen das Gerät. Was meinen Sie?",
+            "en": "We offer rent-to-own: twelve monthly instalments, then the equipment belongs to you. What do you think?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "request",
+          "register": "formal",
+          "targetText": "Kalau begitu, tolong kirim rincian cicilannya; kalau totalnya tidak jauh dari harga beli, saya ambil opsi itu.",
+          "base": {
+            "de": "Dann schicken Sie mir bitte die Einzelheiten zu den Raten; wenn der Gesamtbetrag nicht weit vom Kaufpreis entfernt ist, nehme ich diese Möglichkeit.",
+            "en": "In that case, please send me the instalment details; if the total is close to the purchase price, I take that option."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Untuk jangka pendek sewa ",
+        "chunks": [
+          "lebih masuk akal,",
+          "karena",
+          "tiga bulan sewa",
+          "belum sampai",
+          "setengah harga beli."
+        ],
+        "distractors": [
+          "tiga tahun sewa",
+          "setengah harga jual."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " diperpanjang, saya bandingkan lagi; beli berarti saya juga "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " perawatan dan harga jualnya turun."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kalau",
+            "acceptedAnswers": [
+              "Kalau",
+              "Jika"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "menanggung",
+            "acceptedAnswers": [
+              "menanggung"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "tanggung – Verantwortung oder Kosten tragen",
+              "en": "tanggung — bear responsibility or costs"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " kirim rincian cicilannya; kalau totalnya tidak jauh dari harga beli, saya ambil opsi itu."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kalau begitu",
+            "acceptedAnswers": [
+              "Kalau begitu"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "tolong",
+            "acceptedAnswers": [
+              "tolong",
+              "mohon"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Untuk jangka ",
+        "answer": "pendek",
+        "acceptedAnswers": [
+          "pendek"
+        ],
+        "after": " sewa lebih masuk akal, karena tiga bulan sewa belum sampai setengah harga beli.",
+        "fallbackChoices": [
+          "pendek",
+          "panjang",
+          "tetap",
+          "penuh"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "de": "Den Zeitraum in die Entscheidung einbeziehen",
+          "en": "Making the time horizon count"
+        },
+        "rule": {
+          "de": "Mit untuk jangka pendek begrenzt du deine Empfehlung auf einen kurzen Zeitraum und begründest sie anschließend mit karena.",
+          "en": "Use untuk jangka pendek to limit your recommendation to a short period, then give the reason with karena."
+        },
+        "examples": [
+          {
+            "targetText": "Untuk jangka pendek sewa lebih masuk akal, karena tiga bulan sewa belum sampai setengah harga beli.",
+            "base": {
+              "de": "Kurzfristig ist Mieten sinnvoller, denn drei Monate Miete erreichen noch nicht die Hälfte des Kaufpreises.",
+              "en": "For the short term, renting makes more sense, because three months' rent does not even reach half the purchase price."
+            },
+            "highlights": [
+              "Untuk jangka pendek",
+              "karena"
+            ]
+          },
+          {
+            "targetText": "Untuk jangka pendek, menyewa alat lebih hemat karena biaya perawatan tetap ditanggung pemilik.",
+            "base": {
+              "de": "Kurzfristig ist das Mieten des Geräts günstiger, weil die Wartungskosten weiter beim Eigentümer liegen.",
+              "en": "For the short term, renting the equipment costs less because the owner still bears the maintenance cost."
+            },
+            "highlights": [
+              "Untuk jangka pendek",
+              "karena"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "untuk jangka pendek",
+          "kind": "frame",
+          "base": {
+            "de": "auf kurze Sicht",
+            "en": "for the short term"
+          }
+        },
+        {
+          "targetText": "karena",
+          "kind": "connector",
+          "base": {
+            "de": "weil",
+            "en": "because"
+          }
+        },
+        {
+          "targetText": "masuk akal",
+          "kind": "adjective",
+          "base": {
+            "de": "sinnvoll",
+            "en": "sensible"
+          }
+        },
+        {
+          "targetText": "harga beli",
+          "kind": "noun",
+          "base": {
+            "de": "Kaufpreis",
+            "en": "purchase price"
+          }
+        },
+        {
+          "targetText": "diperpanjang",
+          "lemma": "memperpanjang",
+          "kind": "verb",
+          "base": {
+            "de": "verlängert werden",
+            "en": "be extended"
+          }
+        },
+        {
+          "targetText": "menanggung",
+          "kind": "verb",
+          "base": {
+            "de": "tragen; übernehmen",
+            "en": "bear"
+          }
+        },
+        {
+          "targetText": "perawatan",
+          "kind": "noun",
+          "base": {
+            "de": "Wartung",
+            "en": "maintenance"
+          }
+        },
+        {
+          "targetText": "cicilannya",
+          "lemma": "cicilan",
+          "kind": "noun",
+          "base": {
+            "de": "die Ratenzahlungen",
+            "en": "the instalments"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "karena",
+            "sewa",
+            "harga"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "bandingkan",
+            "menanggung",
+            "perawatan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "kirim",
+            "rincian",
+            "opsi"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "jangka",
+        "familyKey": "jangka",
+        "surface": "jangka",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Untuk jangka pendek, sewa kamera lebih masuk akal.",
+          "base": {
+            "de": "Für einen kurzen Zeitraum ist das Mieten einer Kamera sinnvoller.",
+            "en": "For the short term, renting a camera makes more sense."
+          }
+        },
+        "base": {
+          "de": "Zeitraum; Frist",
+          "en": "period; term"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "liburan-dua-rencana",
+      "title": {
+        "de": "Zwei Urlaubspläne",
+        "en": "Two holiday plans"
+      },
+      "situation": {
+        "de": "Du besprichst mit einer befreundeten Person, ob ihr nach Lombok oder zum Bromo reist.",
+        "en": "You discuss with a friend whether to travel to Lombok or Bromo."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Urlaubsplanung beginnt mit: „Liburan nanti kita ke Lombok atau ke Bromo? Aku bingung, dua-duanya menarik.“",
+        "en": "Your holiday planning starts with: “Liburan nanti kita ke Lombok atau ke Bromo? Aku bingung, dua-duanya menarik.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Liburan nanti kita ke Lombok atau ke Bromo? Aku bingung, dua-duanya menarik.",
+          "base": {
+            "de": "Fahren wir im Urlaub nach Lombok oder zum Bromo? Ich bin unschlüssig, beides ist reizvoll.",
+            "en": "Shall we go to Lombok or Bromo on holiday? I cannot decide; both are appealing."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "neutral",
+          "targetText": "Pertimbangan utamaku ongkos: tiket ke Lombok dua kali lebih mahal, sedangkan Bromo bisa naik kereta.",
+          "base": {
+            "de": "Meine wichtigste Überlegung sind die Kosten: Tickets nach Lombok sind doppelt so teuer, während man zum Bromo mit dem Zug fahren kann.",
+            "en": "My main consideration is the cost: tickets to Lombok are twice as expensive, whereas we can take the train to Bromo."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tapi di Bromo cuma dua hari sudah habis; di Lombok kita bisa seminggu.",
+          "base": {
+            "de": "Aber mit Bromo sind wir in zwei Tagen durch; auf Lombok können wir eine Woche bleiben.",
+            "en": "But Bromo only fills two days; in Lombok we can stay for a week."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "neutral",
+          "targetText": "Betul, Bromo pendek; tapi justru itu, kita bisa simpan cuti untuk liburan lain tahun ini.",
+          "base": {
+            "de": "Stimmt, Bromo ist kurz; aber genau deshalb können wir Urlaubstage für eine weitere Reise dieses Jahr sparen.",
+            "en": "True, Bromo is a short trip; but that is precisely why we can save leave for another holiday this year."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau tiket Lombok tiba-tiba promo setengah harga, kamu masih pilih Bromo?",
+          "base": {
+            "de": "Wenn es plötzlich Lombok-Tickets zum halben Preis gibt, wählst du dann immer noch Bromo?",
+            "en": "If Lombok tickets suddenly go on sale at half price, do you still choose Bromo?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "neutral",
+          "targetText": "Kalau promonya nyata, kita ambil Lombok sekarang dan Bromo kita jadwalkan untuk akhir tahun.",
+          "base": {
+            "de": "Wenn das Angebot echt ist, nehmen wir jetzt Lombok und planen Bromo für das Jahresende.",
+            "en": "If the offer is real, we choose Lombok now and schedule Bromo for the end of the year."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Pertimbangan utamaku ongkos: ",
+        "chunks": [
+          "tiket ke Lombok",
+          "dua kali",
+          "lebih mahal,",
+          "sedangkan",
+          "Bromo bisa",
+          "naik kereta."
+        ],
+        "distractors": [
+          "dua hari",
+          "naik kapal."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", Bromo pendek; tapi "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", kita bisa simpan cuti untuk liburan lain tahun ini."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Betul",
+            "acceptedAnswers": [
+              "Betul",
+              "Benar"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "justru itu",
+            "acceptedAnswers": [
+              "justru itu"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " promonya nyata, kita ambil Lombok sekarang dan Bromo kita jadwalkan untuk "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kalau",
+            "acceptedAnswers": [
+              "Kalau",
+              "Jika"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "akhir tahun",
+            "acceptedAnswers": [
+              "akhir tahun"
+            ],
+            "kind": "lexical",
+            "choices": [
+              "akhir tahun",
+              "tahun lalu",
+              "bulan lalu",
+              "kemarin"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Pertimbangan utamaku ",
+        "answer": "ongkos",
+        "acceptedAnswers": [
+          "ongkos"
+        ],
+        "after": ": tiket ke Lombok dua kali lebih mahal, sedangkan Bromo bisa naik kereta.",
+        "fallbackChoices": [
+          "ongkos",
+          "cuaca",
+          "makanan",
+          "penginapan"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Ein entscheidendes Kriterium nennen",
+          "en": "Naming the deciding factor"
+        },
+        "rule": {
+          "de": "Mit pertimbangan utama nennst du dein wichtigstes Kriterium und stellst mit sedangkan die Möglichkeiten gegenüber.",
+          "en": "Use pertimbangan utama to name your main criterion and sedangkan to contrast the options."
+        },
+        "examples": [
+          {
+            "targetText": "Pertimbangan utamaku ongkos: tiket ke Lombok dua kali lebih mahal, sedangkan Bromo bisa naik kereta.",
+            "base": {
+              "de": "Meine wichtigste Überlegung sind die Kosten: Tickets nach Lombok sind doppelt so teuer, während man zum Bromo mit dem Zug fahren kann.",
+              "en": "My main consideration is the cost: tickets to Lombok are twice as expensive, whereas we can take the train to Bromo."
+            },
+            "highlights": [
+              "Pertimbangan utamaku",
+              "sedangkan"
+            ]
+          },
+          {
+            "targetText": "Pertimbangan utama kami waktu: Bromo cukup dua hari, sedangkan Lombok perlu lebih lama.",
+            "base": {
+              "de": "Unsere wichtigste Überlegung ist die Zeit: Für Bromo genügen zwei Tage, während Lombok mehr Zeit braucht.",
+              "en": "Our main consideration is time: Bromo takes just two days, whereas Lombok needs longer."
+            },
+            "highlights": [
+              "Pertimbangan utama",
+              "sedangkan"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "pertimbangan",
+          "kind": "noun",
+          "base": {
+            "de": "Überlegung; Kriterium",
+            "en": "consideration"
+          }
+        },
+        {
+          "targetText": "sedangkan",
+          "kind": "connector",
+          "base": {
+            "de": "während dagegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "justru itu",
+          "kind": "frame",
+          "base": {
+            "de": "genau deshalb",
+            "en": "precisely for that reason"
+          }
+        },
+        {
+          "targetText": "ongkos",
+          "kind": "noun",
+          "base": {
+            "de": "Kosten",
+            "en": "cost"
+          }
+        },
+        {
+          "targetText": "cuti",
+          "kind": "noun",
+          "base": {
+            "de": "Urlaubstage",
+            "en": "leave"
+          }
+        },
+        {
+          "targetText": "promo",
+          "kind": "noun",
+          "base": {
+            "de": "Sonderangebot",
+            "en": "promotion"
+          }
+        },
+        {
+          "targetText": "setengah harga",
+          "kind": "phrase",
+          "base": {
+            "de": "zum halben Preis",
+            "en": "half price"
+          }
+        },
+        {
+          "targetText": "jadwalkan",
+          "lemma": "menjadwalkan",
+          "kind": "verb",
+          "base": {
+            "de": "einplanen",
+            "en": "schedule"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Lombok",
+            "mahal",
+            "sedangkan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Betul",
+            "simpan",
+            "cuti"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "nyata",
+            "jadwalkan",
+            "akhir"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "pertimbangan",
+        "familyKey": "timbang",
+        "surface": "Pertimbangan",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Pertimbangan utama kami bukan harga, tapi waktu perjalanan.",
+          "base": {
+            "de": "Unsere wichtigste Überlegung ist nicht der Preis, sondern die Reisezeit.",
+            "en": "Our main consideration is not the price but the travelling time."
+          }
+        },
+        "base": {
+          "de": "Überlegung; Kriterium",
+          "en": "consideration"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "tunai-atau-aplikasi",
+      "title": {
+        "de": "Bezahlen im Warung",
+        "en": "Paying at the warung"
+      },
+      "situation": {
+        "de": "In einem kleinen Warung fragt die Person hinter dem Tresen nach Zahlungen per App.",
+        "en": "At a small warung, the owner asks you about accepting app payments."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person, die den Warung führt",
+            "en": "warung owner"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Am Tresen heißt es: „Pelanggan banyak yang minta bayar lewat aplikasi, tapi saya takut ribet. Menurut Anda, perlu tidak?“",
+        "en": "At the counter, the owner says: “Pelanggan banyak yang minta bayar lewat aplikasi, tapi saya takut ribet. Menurut Anda, perlu tidak?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Pelanggan banyak yang minta bayar lewat aplikasi, tapi saya takut ribet. Menurut Anda, perlu tidak?",
+          "base": {
+            "de": "Viele Kunden möchten per App bezahlen, aber ich fürchte den Aufwand. Finden Sie das nötig?",
+            "en": "Many customers ask to pay through an app, but I worry about the hassle. Do you think it is necessary?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "formal",
+          "targetText": "Tunai memang sederhana, tetapi risiko uang hilang dan salah kembalian lebih besar daripada repotnya memasang aplikasi.",
+          "base": {
+            "de": "Bargeld ist zwar einfach, aber das Risiko von Verlust und falschem Wechselgeld ist größer als der Aufwand, eine App einzurichten.",
+            "en": "Cash is simple, admittedly, but the risk of losing money and giving wrong change is greater than the trouble of installing an app."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tapi aplikasi potong biaya tiap transaksi, dan kalau sinyal mati, pembeli tidak bisa bayar.",
+          "base": {
+            "de": "Aber die App zieht bei jeder Zahlung Gebühren ab, und ohne Signal können die Kunden nicht bezahlen.",
+            "en": "But the app deducts a fee on each transaction, and customers cannot pay if the signal is down."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "formal",
+          "targetText": "Kalau potongannya di bawah satu persen, itu kecil dibanding penjualan yang hilang; tadi saya lihat dua pembeli muda pergi karena tidak bawa tunai.",
+          "base": {
+            "de": "Wenn der Abzug unter einem Prozent liegt, ist das wenig im Vergleich zu entgangenen Verkäufen; vorhin habe ich zwei junge Kunden ohne Bargeld gehen sehen.",
+            "en": "If the fee is below one percent, it is small compared with lost sales; earlier I saw two young customers leave because they had no cash."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Jadi kalau diringkas, apa yang sebaiknya saya lakukan untuk warung sekecil ini?",
+          "base": {
+            "de": "Kurz gesagt, was sollte ich also für einen so kleinen Warung tun?",
+            "en": "So, in brief, what should I do for a warung this small?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "formal",
+          "targetText": "Terima kedua-duanya: tunai tetap jalan, aplikasi sebagai pilihan tambahan, jadi tidak ada pembeli yang Anda tolak.",
+          "base": {
+            "de": "Akzeptieren Sie beides: Bargeld bleibt, die App ist eine zusätzliche Möglichkeit, damit Sie niemanden abweisen müssen.",
+            "en": "Accept both: keep cash running and add the app as another option, so you do not turn any customers away."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Tunai memang sederhana, tetapi ",
+        "chunks": [
+          "risiko uang hilang",
+          "dan salah kembalian",
+          "lebih besar",
+          "daripada repotnya",
+          "memasang aplikasi."
+        ],
+        "distractors": [
+          "lebih kecil",
+          "menutup aplikasi."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " potongannya di bawah satu persen, itu kecil dibanding "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " yang hilang; tadi saya lihat dua pembeli muda pergi karena tidak bawa tunai."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kalau",
+            "acceptedAnswers": [
+              "Kalau",
+              "Jika"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "penjualan",
+            "acceptedAnswers": [
+              "penjualan"
+            ],
+            "kind": "lexical",
+            "choices": [
+              "penjualan",
+              "potongan",
+              "sinyal",
+              "aplikasi"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Terima kedua-duanya: tunai tetap jalan, aplikasi sebagai "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tidak ada pembeli yang Anda tolak."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "pilihan tambahan",
+            "acceptedAnswers": [
+              "pilihan tambahan",
+              "opsi tambahan"
+            ],
+            "kind": "lexical"
+          },
+          {
+            "answer": "jadi",
+            "acceptedAnswers": [
+              "jadi"
+            ],
+            "kind": "connector",
+            "choices": [
+              "jadi",
+              "tetapi",
+              "padahal",
+              "sebelum"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "recall": {
+        "before": "Tunai memang sederhana, tetapi ",
+        "answer": "risiko",
+        "acceptedAnswers": [
+          "risiko"
+        ],
+        "after": " uang hilang dan salah kembalian lebih besar daripada repotnya memasang aplikasi.",
+        "fallbackChoices": [
+          "risiko",
+          "jadwal",
+          "jumlah",
+          "tempat"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Aufwand gegen Risiko abwägen",
+          "en": "Weighing effort against risk"
+        },
+        "rule": {
+          "de": "Mit memang … tetapi erkennst du einen Vorteil an und stellst ihm einen wichtigeren Nachteil gegenüber.",
+          "en": "Use memang … tetapi to acknowledge an advantage before presenting a more important drawback."
+        },
+        "examples": [
+          {
+            "targetText": "Tunai memang sederhana, tetapi risiko uang hilang dan salah kembalian lebih besar daripada repotnya memasang aplikasi.",
+            "base": {
+              "de": "Bargeld ist zwar einfach, aber das Risiko von Verlust und falschem Wechselgeld ist größer als der Aufwand, eine App einzurichten.",
+              "en": "Cash is simple, admittedly, but the risk of losing money and giving wrong change is greater than the trouble of installing an app."
+            },
+            "highlights": [
+              "memang",
+              "tetapi"
+            ]
+          },
+          {
+            "targetText": "Tunai memang praktis, tetapi risiko salah kembalian tetap ada.",
+            "base": {
+              "de": "Bargeld ist zwar praktisch, aber das Risiko von falschem Wechselgeld bleibt.",
+              "en": "Cash is convenient, admittedly, but the risk of wrong change remains."
+            },
+            "highlights": [
+              "memang",
+              "tetapi"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "memang",
+          "kind": "frame",
+          "base": {
+            "de": "zwar; zugegeben",
+            "en": "admittedly"
+          }
+        },
+        {
+          "targetText": "tetapi",
+          "kind": "connector",
+          "base": {
+            "de": "aber",
+            "en": "but"
+          }
+        },
+        {
+          "targetText": "risiko",
+          "kind": "noun",
+          "base": {
+            "de": "Risiko",
+            "en": "risk"
+          }
+        },
+        {
+          "targetText": "kembalian",
+          "kind": "noun",
+          "base": {
+            "de": "Wechselgeld",
+            "en": "change"
+          }
+        },
+        {
+          "targetText": "memasang",
+          "kind": "verb",
+          "base": {
+            "de": "einrichten; installieren",
+            "en": "install"
+          }
+        },
+        {
+          "targetText": "potongannya",
+          "lemma": "potongan",
+          "kind": "noun",
+          "base": {
+            "de": "der Abzug",
+            "en": "the fee deducted"
+          }
+        },
+        {
+          "targetText": "penjualan",
+          "kind": "noun",
+          "base": {
+            "de": "Verkäufe",
+            "en": "sales"
+          }
+        },
+        {
+          "targetText": "tunai",
+          "kind": "adjective",
+          "base": {
+            "de": "bar",
+            "en": "cash"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "risiko",
+            "kembalian",
+            "memasang"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "potongannya",
+            "penjualan",
+            "tunai"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Terima",
+            "tambahan",
+            "tolak"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "risiko",
+        "familyKey": "risiko",
+        "surface": "risiko",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Risiko salah kembalian tetap perlu dihitung.",
+          "base": {
+            "de": "Das Risiko von falschem Wechselgeld muss weiterhin berücksichtigt werden.",
+            "en": "The risk of giving wrong change still needs to be considered."
+          }
+        },
+        "base": {
+          "de": "Risiko",
+          "en": "risk"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "kelas-atau-aplikasi",
+      "title": {
+        "de": "Kurs oder App",
+        "en": "Class or app"
+      },
+      "situation": {
+        "de": "Eine befreundete Person möchte Japanisch lernen und vergleicht Kurs und App.",
+        "en": "A friend wants to learn Japanese and compares a class with an app."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Gegenüber fragt: „Aku mau belajar bahasa Jepang. Lebih baik ikut kelas atau cukup pakai aplikasi?“",
+        "en": "Your friend asks: “Aku mau belajar bahasa Jepang. Lebih baik ikut kelas atau cukup pakai aplikasi?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Aku mau belajar bahasa Jepang. Lebih baik ikut kelas atau cukup pakai aplikasi?",
+          "base": {
+            "de": "Ich möchte Japanisch lernen. Ist ein Kurs besser, oder reicht eine App?",
+            "en": "I want to learn Japanese. Is a class better, or is an app enough?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "neutral",
+          "targetText": "Kalau kamu cukup mandiri, aplikasi bisa jalan; tapi kelas memaksa kamu bicara, dan itu yang paling sulit dilatih sendiri.",
+          "base": {
+            "de": "Wenn du selbstständig genug bist, kann eine App funktionieren; aber ein Kurs zwingt dich zum Sprechen, und das lässt sich allein am schwersten üben.",
+            "en": "If you are independent enough, an app can work; but a class makes you speak, and that is the hardest thing to practise alone."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Masalahnya kelas mahal dan jadwalnya malam, padahal aku sering lembur.",
+          "base": {
+            "de": "Das Problem ist: Kurse sind teuer und abends, obwohl ich oft Überstunden mache.",
+            "en": "The problem is that classes are expensive and held in the evening, when I often work overtime."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "counteroffer",
+          "register": "neutral",
+          "targetText": "Kalau begitu, gabungkan: aplikasi untuk kosakata tiap hari, dan kelas percakapan dua minggu sekali di akhir pekan.",
+          "base": {
+            "de": "Dann kombiniere beides: die App täglich für Wortschatz und alle zwei Wochen am Wochenende einen Konversationskurs.",
+            "en": "In that case, combine them: the app for vocabulary every day, and a conversation class every other weekend."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau setelah tiga bulan aku masih tidak berani bicara, berarti aplikasinya gagal, kan?",
+          "base": {
+            "de": "Wenn ich nach drei Monaten immer noch nicht zu sprechen wage, versagt die App also, oder?",
+            "en": "If after three months I still do not dare to speak, that means the app is a failure, right?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "neutral",
+          "targetText": "Bukan aplikasinya yang gagal, tapi caranya; kalau begitu baru pindah ke kelas penuh dan kurangi aplikasi.",
+          "base": {
+            "de": "Nicht die App versagt, sondern die Methode; dann wechsle zu einem vollständigen Kurs und nutze die App weniger.",
+            "en": "It is not the app that fails but the approach; in that case, switch to a full course and reduce the app."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Kalau kamu cukup mandiri, aplikasi bisa jalan; ",
+        "chunks": [
+          "tapi",
+          "kelas memaksa",
+          "kamu bicara,",
+          "dan itu yang",
+          "paling sulit",
+          "dilatih sendiri."
+        ],
+        "distractors": [
+          "kamu membaca,",
+          "paling mudah"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ": aplikasi untuk kosakata tiap hari, dan kelas percakapan dua minggu sekali di akhir pekan."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kalau begitu",
+            "acceptedAnswers": [
+              "Kalau begitu"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "gabungkan",
+            "acceptedAnswers": [
+              "gabungkan"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "gabung – als Vorschlag an dein Gegenüber",
+              "en": "gabung — as a suggestion to your friend"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " aplikasinya yang gagal, tapi caranya; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " baru pindah ke kelas penuh dan kurangi aplikasi."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Bukan",
+            "acceptedAnswers": [
+              "Bukan"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "kalau begitu",
+            "acceptedAnswers": [
+              "kalau begitu"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Kalau kamu cukup ",
+        "answer": "mandiri",
+        "acceptedAnswers": [
+          "mandiri"
+        ],
+        "after": ", aplikasi bisa jalan; tapi kelas memaksa kamu bicara, dan itu yang paling sulit dilatih sendiri.",
+        "fallbackChoices": [
+          "mandiri",
+          "tinggi",
+          "lelah",
+          "cemas"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine Empfehlung an eine Bedingung knüpfen",
+          "en": "Making a conditional recommendation"
+        },
+        "rule": {
+          "de": "Mit kalau prüfst du, für wen eine Möglichkeit passt, und mit tapi benennst du ihre Grenze.",
+          "en": "Use kalau to say who an option suits, then tapi to identify its limitation."
+        },
+        "examples": [
+          {
+            "targetText": "Kalau kamu cukup mandiri, aplikasi bisa jalan; tapi kelas memaksa kamu bicara, dan itu yang paling sulit dilatih sendiri.",
+            "base": {
+              "de": "Wenn du selbstständig genug bist, kann eine App funktionieren; aber ein Kurs zwingt dich zum Sprechen, und das lässt sich allein am schwersten üben.",
+              "en": "If you are independent enough, an app can work; but a class makes you speak, and that is the hardest thing to practise alone."
+            },
+            "highlights": [
+              "Kalau",
+              "tapi"
+            ]
+          },
+          {
+            "targetText": "Kalau kamu belajar mandiri, aplikasi membantu; tapi percakapan tetap perlu dilatih bersama orang lain.",
+            "base": {
+              "de": "Wenn du selbstständig lernst, hilft eine App; aber Gespräche muss man weiterhin mit anderen üben.",
+              "en": "If you study independently, an app helps; but conversation still needs practice with other people."
+            },
+            "highlights": [
+              "Kalau",
+              "tapi"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "kalau begitu",
+          "kind": "frame",
+          "base": {
+            "de": "in dem Fall",
+            "en": "in that case"
+          }
+        },
+        {
+          "targetText": "tapi",
+          "kind": "connector",
+          "base": {
+            "de": "aber",
+            "en": "but"
+          }
+        },
+        {
+          "targetText": "mandiri",
+          "kind": "adjective",
+          "base": {
+            "de": "selbstständig",
+            "en": "independent"
+          }
+        },
+        {
+          "targetText": "memaksa",
+          "kind": "verb",
+          "base": {
+            "de": "zwingen",
+            "en": "make someone; force"
+          }
+        },
+        {
+          "targetText": "dilatih",
+          "lemma": "melatih",
+          "kind": "verb",
+          "base": {
+            "de": "geübt werden",
+            "en": "be practised"
+          }
+        },
+        {
+          "targetText": "lembur",
+          "kind": "verb",
+          "base": {
+            "de": "Überstunden machen",
+            "en": "work overtime"
+          }
+        },
+        {
+          "targetText": "gabungkan",
+          "lemma": "menggabungkan",
+          "kind": "verb",
+          "base": {
+            "de": "kombinieren",
+            "en": "combine"
+          }
+        },
+        {
+          "targetText": "percakapan",
+          "kind": "noun",
+          "base": {
+            "de": "Gespräch; Konversation",
+            "en": "conversation"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "tapi",
+            "memaksa",
+            "dilatih"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "gabungkan",
+            "kosakata",
+            "percakapan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "gagal",
+            "pindah",
+            "kurangi"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "mandiri",
+        "familyKey": "mandiri",
+        "surface": "mandiri",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Belajar mandiri tetap perlu waktu untuk berlatih bicara.",
+          "base": {
+            "de": "Auch selbstständiges Lernen braucht Zeit zum Sprechenüben.",
+            "en": "Independent study still needs time for speaking practice."
+          }
+        },
+        "base": {
+          "de": "selbstständig",
+          "en": "independent"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "dua-tawaran-kerja",
+      "title": {
+        "de": "Sicherheit oder Verantwortung",
+        "en": "Security or responsibility"
+      },
+      "situation": {
+        "de": "Du vergleichst im Mentoring zwei Stellenangebote mit unterschiedlichem Gehalt und Risiko.",
+        "en": "In a mentoring conversation, you compare two job offers with different pay and risk."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Mentoringperson",
+            "en": "mentor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Mentoringgespräch hörst du: „Jadi Anda dapat dua tawaran: gaji besar di perusahaan lama, atau gaji kecil di perusahaan rintisan. Sudah dipikirkan?“",
+        "en": "During the mentoring conversation, you hear: “Jadi Anda dapat dua tawaran: gaji besar di perusahaan lama, atau gaji kecil di perusahaan rintisan. Sudah dipikirkan?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Jadi Anda dapat dua tawaran: gaji besar di perusahaan lama, atau gaji kecil di perusahaan rintisan. Sudah dipikirkan?",
+          "base": {
+            "de": "Sie haben also zwei Angebote: hohes Gehalt beim bestehenden Unternehmen oder weniger Gehalt bei einem Start-up. Haben Sie darüber nachgedacht?",
+            "en": "So you have two offers: high pay at the established company or lower pay at a start-up. Have you thought it through?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "formal",
+          "targetText": "Tawaran pertama aman dan gajinya jelas, sedangkan tawaran kedua lebih berisiko tetapi tanggung jawabnya jauh lebih luas.",
+          "base": {
+            "de": "Das erste Angebot ist sicher und das Gehalt klar, während das zweite riskanter ist, aber deutlich mehr Verantwortung bietet.",
+            "en": "The first offer is secure and the salary is clear, whereas the second carries more risk but much broader responsibility."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Rintisan ini baru dua tahun berjalan dan masih merugi, kata teman saya di sana. Anda siap kalau tutup?",
+          "base": {
+            "de": "Dieses Start-up besteht erst seit zwei Jahren und macht noch Verluste, sagt eine Person, die ich dort kenne. Sind Sie auf eine Schließung vorbereitet?",
+            "en": "This start-up has only been running for two years and is still losing money, according to a friend there. Are you prepared if it closes?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "formal",
+          "targetText": "Saya tahu risikonya; tetapi kalaupun tutup, pengalaman memimpin tim kecil itu mungkin lebih berharga bagi perusahaan lain daripada dua tahun di posisi lama.",
+          "base": {
+            "de": "Ich kenne das Risiko; aber selbst wenn es schließt, ist die Erfahrung als Leitung eines kleinen Teams für andere Firmen vielleicht wertvoller als zwei Jahre in der alten Position.",
+            "en": "I know the risk; but even if it closes, the experience of leading a small team may be more valuable to other companies than two years in my old position."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau Anda punya cicilan rumah, apakah jawabannya tetap sama?",
+          "base": {
+            "de": "Wenn Sie ein Haus abzahlen, bleibt Ihre Antwort dann dieselbe?",
+            "en": "If you have mortgage payments, is your answer still the same?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "formal",
+          "targetText": "Kalau ada cicilan, saya ambil yang aman dulu dua tahun, sambil menabung, lalu pindah ke rintisan saat lebih siap.",
+          "base": {
+            "de": "Wenn ich Raten zahlen muss, nehme ich zunächst zwei Jahre die sichere Stelle, spare nebenbei und wechsle zum Start-up, sobald ich besser vorbereitet bin.",
+            "en": "If I have instalments to pay, I take the secure option for two years while saving, then move to a start-up when I am better prepared."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Tawaran pertama aman dan gajinya jelas, ",
+        "chunks": [
+          "sedangkan",
+          "tawaran kedua",
+          "lebih berisiko",
+          "tetapi",
+          "tanggung jawabnya",
+          "jauh lebih luas."
+        ],
+        "distractors": [
+          "tawaran ketiga",
+          "jauh lebih sempit."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Saya tahu risikonya; tetapi "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " tutup, pengalaman memimpin tim kecil itu mungkin lebih berharga bagi perusahaan lain "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " dua tahun di posisi lama."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "kalaupun",
+            "acceptedAnswers": [
+              "kalaupun"
+            ],
+            "kind": "connector",
+            "choices": [
+              "kalaupun",
+              "asalkan",
+              "supaya",
+              "karena"
+            ]
+          },
+          {
+            "answer": "daripada",
+            "acceptedAnswers": [
+              "daripada",
+              "dibanding",
+              "dibandingkan"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ada cicilan, saya ambil yang aman dulu dua tahun, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " menabung, lalu pindah ke rintisan saat lebih siap."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kalau",
+            "acceptedAnswers": [
+              "Kalau",
+              "Jika"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "sambil",
+            "acceptedAnswers": [
+              "sambil",
+              "sembari"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Tawaran pertama aman dan gajinya jelas, sedangkan tawaran kedua lebih ",
+        "answer": "berisiko",
+        "acceptedAnswers": [
+          "berisiko"
+        ],
+        "after": " tetapi tanggung jawabnya jauh lebih luas.",
+        "fallbackChoices": [
+          "berisiko",
+          "ringan",
+          "dekat",
+          "murah"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Ein Risiko anerkennen",
+          "en": "Acknowledging a risk"
+        },
+        "rule": {
+          "de": "Mit sedangkan vergleichst du die Angebote, und mit kalaupun kannst du später erklären, was selbst im ungünstigen Fall dafür spricht.",
+          "en": "Use sedangkan to compare the offers, then kalaupun to explain what could still count in favour even in the unfavourable case."
+        },
+        "examples": [
+          {
+            "targetText": "Tawaran pertama aman dan gajinya jelas, sedangkan tawaran kedua lebih berisiko tetapi tanggung jawabnya jauh lebih luas.",
+            "base": {
+              "de": "Das erste Angebot ist sicher und das Gehalt klar, während das zweite riskanter ist, aber deutlich mehr Verantwortung bietet.",
+              "en": "The first offer is secure and the salary is clear, whereas the second carries more risk but much broader responsibility."
+            },
+            "highlights": [
+              "sedangkan",
+              "tetapi"
+            ]
+          },
+          {
+            "targetText": "Tawaran ini memberi pengalaman, sedangkan tawaran lama memberi gaji lebih besar.",
+            "base": {
+              "de": "Dieses Angebot bietet Erfahrung, während das alte ein höheres Gehalt bietet.",
+              "en": "This offer provides experience, whereas the previous one provides higher pay."
+            },
+            "highlights": [
+              "sedangkan"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "sedangkan",
+          "kind": "connector",
+          "base": {
+            "de": "während dagegen",
+            "en": "whereas"
+          }
+        },
+        {
+          "targetText": "kalaupun",
+          "kind": "connector",
+          "base": {
+            "de": "selbst wenn",
+            "en": "even if"
+          }
+        },
+        {
+          "targetText": "tawaran",
+          "kind": "noun",
+          "base": {
+            "de": "Angebot",
+            "en": "offer"
+          }
+        },
+        {
+          "targetText": "berisiko",
+          "lemma": "risiko",
+          "kind": "adjective",
+          "base": {
+            "de": "riskant",
+            "en": "risky"
+          }
+        },
+        {
+          "targetText": "tanggung jawabnya",
+          "lemma": "tanggung jawab",
+          "kind": "noun",
+          "base": {
+            "de": "die damit verbundene Verantwortung",
+            "en": "its responsibilities"
+          }
+        },
+        {
+          "targetText": "merugi",
+          "kind": "verb",
+          "base": {
+            "de": "Verluste machen",
+            "en": "lose money"
+          }
+        },
+        {
+          "targetText": "memimpin",
+          "kind": "verb",
+          "base": {
+            "de": "leiten",
+            "en": "lead"
+          }
+        },
+        {
+          "targetText": "menabung",
+          "kind": "verb",
+          "base": {
+            "de": "sparen",
+            "en": "save money"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "sedangkan",
+            "berisiko",
+            "luas"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "kalaupun",
+            "pengalaman",
+            "mungkin"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "cicilan",
+            "menabung",
+            "siap"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "tawaran",
+        "familyKey": "tawar",
+        "surface": "Tawaran",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Tawaran kedua memberi tanggung jawab lebih luas.",
+          "base": {
+            "de": "Das zweite Angebot bietet mehr Verantwortung.",
+            "en": "The second offer provides broader responsibility."
+          }
+        },
+        "base": {
+          "de": "Angebot",
+          "en": "offer"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "pindah-atau-menetap",
+      "title": {
+        "de": "Bleiben oder umziehen",
+        "en": "Staying or moving"
+      },
+      "situation": {
+        "de": "In der Nachbarschaft geht es um ein Stellenangebot in Surabaya und deine Gründe zu bleiben.",
+        "en": "You talk with a neighbour about a job offer in Surabaya and your reasons for staying."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In der Nachbarschaft wirst du gefragt: „Katanya kamu dapat kerja di Surabaya? Jadi pindah, atau tetap di sini?“",
+        "en": "Your neighbour asks: “Katanya kamu dapat kerja di Surabaya? Jadi pindah, atau tetap di sini?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Katanya kamu dapat kerja di Surabaya? Jadi pindah, atau tetap di sini?",
+          "base": {
+            "de": "Du hast wohl eine Stelle in Surabaya? Ziehst du also um oder bleibst du hier?",
+            "en": "Apparently you have a job in Surabaya? Are you moving or staying here?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "neutral",
+          "targetText": "Sebenarnya aku ingin menetap di sini; sudah punya teman dan tempat kerja dekat, apalagi sewa rumah masih terjangkau.",
+          "base": {
+            "de": "Eigentlich möchte ich hier bleiben; ich habe schon Freunde und einen nahen Arbeitsplatz, zumal die Miete noch bezahlbar ist.",
+            "en": "Actually, I want to settle here; I already have friends and a nearby workplace, especially as the rent is still affordable."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Tapi gaji di Surabaya hampir dua kali lipat. Masa ditolak?",
+          "base": {
+            "de": "Aber das Gehalt in Surabaya ist fast doppelt so hoch. Willst du das wirklich ablehnen?",
+            "en": "But the salary in Surabaya is almost twice as high. Can you really turn it down?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "neutral",
+          "targetText": "Gajinya besar, tapi sewa dan ongkos hidup di sana juga naik, jadi beda bersihnya tidak sebesar kelihatannya.",
+          "base": {
+            "de": "Das Gehalt ist hoch, aber auch Miete und Lebenshaltungskosten steigen dort, also ist der Nettounterschied kleiner, als er aussieht.",
+            "en": "The salary is high, but rent and living costs there rise too, so the net difference is smaller than it looks."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Kalau mereka tawarkan rumah dinas, kamu masih tolak?",
+          "base": {
+            "de": "Wenn sie eine Dienstwohnung anbieten, lehnst du dann immer noch ab?",
+            "en": "If they offer accommodation, do you still turn it down?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "neutral",
+          "targetText": "Kalau ada rumah dinas, aku coba setahun dulu tanpa putus kontrak sewa di sini, supaya masih bisa kembali.",
+          "base": {
+            "de": "Wenn es eine Dienstwohnung gibt, probiere ich es erst ein Jahr, ohne meinen Mietvertrag hier zu kündigen, damit ich zurückkommen kann.",
+            "en": "If accommodation is provided, I try it for a year without ending my rental contract here, so I can still return."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Sebenarnya aku ingin menetap di sini; ",
+        "chunks": [
+          "sudah punya teman",
+          "dan tempat kerja dekat,",
+          "apalagi",
+          "sewa rumah",
+          "masih terjangkau."
+        ],
+        "distractors": [
+          "pindah ke sana",
+          "dan tempat kerja jauh,"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Gajinya besar, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " sewa dan ongkos hidup di sana juga naik, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " beda bersihnya tidak sebesar kelihatannya."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "tapi",
+            "acceptedAnswers": [
+              "tapi",
+              "tetapi"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "jadi",
+            "acceptedAnswers": [
+              "jadi",
+              "sehingga"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ada rumah dinas, aku coba setahun dulu tanpa putus kontrak sewa di sini, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " masih bisa kembali."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kalau",
+            "acceptedAnswers": [
+              "Kalau",
+              "Jika"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "supaya",
+            "acceptedAnswers": [
+              "supaya",
+              "agar"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Sebenarnya aku ingin ",
+        "answer": "menetap",
+        "acceptedAnswers": [
+          "menetap"
+        ],
+        "after": " di sini; sudah punya teman dan tempat kerja dekat, apalagi sewa rumah masih terjangkau.",
+        "fallbackChoices": [
+          "menetap",
+          "berlibur",
+          "berbelanja",
+          "berobat"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine Position mit Bedingungen verbinden",
+          "en": "Linking a position to conditions"
+        },
+        "rule": {
+          "de": "Mit sebenarnya nennst du deine eigentliche Position und ergänzt die Umstände, die dafür sprechen.",
+          "en": "Use sebenarnya to state your actual position, then add the circumstances that support it."
+        },
+        "examples": [
+          {
+            "targetText": "Sebenarnya aku ingin menetap di sini; sudah punya teman dan tempat kerja dekat, apalagi sewa rumah masih terjangkau.",
+            "base": {
+              "de": "Eigentlich möchte ich hier bleiben; ich habe schon Freunde und einen nahen Arbeitsplatz, zumal die Miete noch bezahlbar ist.",
+              "en": "Actually, I want to settle here; I already have friends and a nearby workplace, especially as the rent is still affordable."
+            },
+            "highlights": [
+              "Sebenarnya"
+            ]
+          },
+          {
+            "targetText": "Sebenarnya aku ingin menetap, karena sewa di sini masih terjangkau.",
+            "base": {
+              "de": "Eigentlich möchte ich hier bleiben, weil die Miete hier noch bezahlbar ist.",
+              "en": "Actually, I want to settle here because the rent is still affordable."
+            },
+            "highlights": [
+              "Sebenarnya",
+              "karena"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "sebenarnya",
+          "lemma": "sebenarnya",
+          "kind": "frame",
+          "base": {
+            "de": "eigentlich",
+            "en": "actually"
+          }
+        },
+        {
+          "targetText": "jadi",
+          "kind": "connector",
+          "base": {
+            "de": "also",
+            "en": "so"
+          }
+        },
+        {
+          "targetText": "menetap",
+          "kind": "verb",
+          "base": {
+            "de": "sich dauerhaft niederlassen",
+            "en": "settle"
+          }
+        },
+        {
+          "targetText": "terjangkau",
+          "lemma": "menjangkau",
+          "kind": "adjective",
+          "base": {
+            "de": "bezahlbar",
+            "en": "affordable"
+          }
+        },
+        {
+          "targetText": "ongkos hidup",
+          "kind": "noun",
+          "base": {
+            "de": "Lebenshaltungskosten",
+            "en": "living costs"
+          }
+        },
+        {
+          "targetText": "beda bersihnya",
+          "lemma": "beda bersih",
+          "kind": "noun",
+          "base": {
+            "de": "der Nettounterschied",
+            "en": "the net difference"
+          }
+        },
+        {
+          "targetText": "rumah dinas",
+          "kind": "noun",
+          "base": {
+            "de": "Dienstwohnung",
+            "en": "employer-provided accommodation"
+          }
+        },
+        {
+          "targetText": "kembali",
+          "kind": "verb",
+          "base": {
+            "de": "zurückkommen",
+            "en": "return"
+          }
+        },
+        {
+          "targetText": "kontrak sewa",
+          "kind": "noun",
+          "base": {
+            "de": "Mietvertrag",
+            "en": "rental contract"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "menetap",
+            "teman",
+            "dekat"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "gajinya",
+            "ongkos",
+            "bersihnya"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "dinas",
+            "kontrak",
+            "kembali"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "menetap",
+        "familyKey": "tetap",
+        "surface": "menetap",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Aku ingin menetap di kota yang biaya hidupnya terjangkau.",
+          "base": {
+            "de": "Ich möchte mich in einer Stadt mit bezahlbaren Lebenshaltungskosten niederlassen.",
+            "en": "I want to settle in a city with affordable living costs."
+          }
+        },
+        "base": {
+          "de": "sich dauerhaft niederlassen",
+          "en": "settle"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "usulan-rapat-warga",
+      "title": {
+        "de": "Eine Parkregel empfehlen",
+        "en": "Recommending a parking rule"
+      },
+      "situation": {
+        "de": "In einer fiktiven Nachbarschaftssitzung vergleicht ihr wechselnde Parkplätze mit einem abendlichen Parkverbot in der Gasse.",
+        "en": "At a fictional neighbourhood meeting, you compare rotating parking with an evening parking ban in the alley."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Leitung der Nachbarschaftsgruppe",
+            "en": "neighbourhood chair"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Sitzungsleitung eröffnet die Diskussion: „Rapat warga harus memilih: parkir bergiliran, atau larangan parkir di gang mulai jam tujuh malam. Pendapat Anda?“",
+        "en": "The chair opens the discussion: “Rapat warga harus memilih: parkir bergiliran, atau larangan parkir di gang mulai jam tujuh malam. Pendapat Anda?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Rapat warga harus memilih: parkir bergiliran, atau larangan parkir di gang mulai jam tujuh malam. Pendapat Anda?",
+          "base": {
+            "de": "Die Nachbarschaftssitzung muss wählen: wechselndes Parken oder ein Parkverbot in der Gasse ab sieben Uhr abends. Was meinen Sie?",
+            "en": "The residents' meeting must choose: rotating parking or no parking in the alley from seven in the evening. What is your view?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "formal",
+          "targetText": "Saya menyarankan parkir bergiliran, karena larangan malam hanya memindahkan masalah ke jalan besar dan membuat warga marah.",
+          "base": {
+            "de": "Ich empfehle wechselndes Parken, denn ein abendliches Verbot verlagert das Problem nur auf die Hauptstraße und verärgert die Bewohner.",
+            "en": "I recommend rotating parking, because an evening ban only moves the problem to the main road and angers residents."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Bergiliran susah diawasi. Siapa yang mau mencatat tiap minggu?",
+          "base": {
+            "de": "Wechselndes Parken ist schwer zu überwachen. Wer möchte jede Woche Buch führen?",
+            "en": "Rotating parking is hard to monitor. Who wants to keep records every week?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "counteroffer",
+          "register": "formal",
+          "targetText": "Pengawasan bisa dibagi: tiap blok pegang jadwalnya sendiri, dan pelanggar diingatkan oleh ketua blok, bukan oleh satpam.",
+          "base": {
+            "de": "Die Kontrolle lässt sich aufteilen: Jeder Block verwaltet seinen eigenen Plan, und die Blockleitung erinnert an Verstöße, nicht der Wachdienst.",
+            "en": "Monitoring can be shared: each block keeps its own schedule, and its chair reminds offenders, rather than the security guard."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "a",
+          "targetText": "Baik. Kalau rapat minta satu kalimat untuk ditulis di pengumuman, bunyinya apa?",
+          "base": {
+            "de": "Gut. Wenn die Sitzung einen Satz für den Aushang verlangt, wie lautet er?",
+            "en": "Fine. If the meeting asks for a sentence for the notice, what does it say?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "formal",
+          "targetText": "Mulai bulan depan, parkir di gang dibagi bergiliran per blok; jadwal dipegang ketua blok, dan aturannya ditinjau tiga bulan lagi.",
+          "base": {
+            "de": "Ab nächsten Monat wird das Parken in der Gasse nach Blöcken abgewechselt; die Blockleitung führt den Plan, und die Regel wird in drei Monaten überprüft.",
+            "en": "Starting next month, parking in the alley rotates by block; the block chair keeps the schedule, and the rule is reviewed in three months."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Saya menyarankan parkir bergiliran, karena ",
+        "chunks": [
+          "larangan malam",
+          "hanya memindahkan masalah",
+          "ke jalan besar",
+          "dan membuat",
+          "warga marah."
+        ],
+        "distractors": [
+          "ke jalan kecil",
+          "warga tenang."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": tiap blok pegang jadwalnya sendiri, dan pelanggar "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " oleh ketua blok, bukan oleh satpam."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Pengawasan bisa dibagi",
+            "acceptedAnswers": [
+              "Pengawasan bisa dibagi",
+              "Pengawasan dapat dibagi"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "diingatkan",
+            "acceptedAnswers": [
+              "diingatkan"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "ingatkan – passiv: an den Verstoß erinnert werden",
+              "en": "ingatkan — passive: be reminded about the offence"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": ""
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " bulan depan, parkir di gang dibagi bergiliran per blok; jadwal dipegang ketua blok, dan aturannya "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tiga bulan lagi."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mulai",
+            "acceptedAnswers": [
+              "Mulai"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "ditinjau",
+            "acceptedAnswers": [
+              "ditinjau"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "tinjau – passiv: die Regel überprüfen",
+              "en": "tinjau — passive: review the rule"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Saya ",
+        "answer": "menyarankan",
+        "acceptedAnswers": [
+          "menyarankan"
+        ],
+        "after": " parkir bergiliran, karena larangan malam hanya memindahkan masalah ke jalan besar dan membuat warga marah.",
+        "fallbackChoices": [
+          "menyarankan",
+          "melarang",
+          "menolak",
+          "menunda"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine Empfehlung begründen",
+          "en": "Justifying a recommendation"
+        },
+        "rule": {
+          "de": "Mit saya menyarankan formulierst du eine Empfehlung und begründest sie mit karena.",
+          "en": "Use saya menyarankan to make a recommendation and karena to give the reason."
+        },
+        "examples": [
+          {
+            "targetText": "Saya menyarankan parkir bergiliran, karena larangan malam hanya memindahkan masalah ke jalan besar dan membuat warga marah.",
+            "base": {
+              "de": "Ich empfehle wechselndes Parken, denn ein abendliches Verbot verlagert das Problem nur auf die Hauptstraße und verärgert die Bewohner.",
+              "en": "I recommend rotating parking, because an evening ban only moves the problem to the main road and angers residents."
+            },
+            "highlights": [
+              "Saya menyarankan",
+              "karena"
+            ]
+          },
+          {
+            "targetText": "Saya menyarankan jadwal bergiliran karena ruang parkir di gang terbatas.",
+            "base": {
+              "de": "Ich empfehle einen wechselnden Plan, weil die Parkfläche in der Gasse begrenzt ist.",
+              "en": "I recommend a rotating schedule because parking space in the alley is limited."
+            },
+            "highlights": [
+              "Saya menyarankan",
+              "karena"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "saya menyarankan",
+          "kind": "frame",
+          "base": {
+            "de": "ich empfehle",
+            "en": "I recommend"
+          }
+        },
+        {
+          "targetText": "karena",
+          "kind": "connector",
+          "base": {
+            "de": "weil",
+            "en": "because"
+          }
+        },
+        {
+          "targetText": "bergiliran",
+          "kind": "adverb",
+          "base": {
+            "de": "abwechselnd",
+            "en": "in rotation"
+          }
+        },
+        {
+          "targetText": "larangan",
+          "kind": "noun",
+          "base": {
+            "de": "Verbot",
+            "en": "ban"
+          }
+        },
+        {
+          "targetText": "pengawasan",
+          "kind": "noun",
+          "base": {
+            "de": "Kontrolle; Überwachung",
+            "en": "monitoring"
+          }
+        },
+        {
+          "targetText": "diingatkan",
+          "lemma": "mengingatkan",
+          "kind": "verb",
+          "base": {
+            "de": "erinnert werden",
+            "en": "be reminded"
+          }
+        },
+        {
+          "targetText": "dipegang",
+          "lemma": "memegang",
+          "kind": "verb",
+          "base": {
+            "de": "verwaltet werden",
+            "en": "be kept"
+          }
+        },
+        {
+          "targetText": "ditinjau",
+          "lemma": "meninjau",
+          "kind": "verb",
+          "base": {
+            "de": "überprüft werden",
+            "en": "be reviewed"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "larangan",
+            "memindahkan",
+            "warga"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Pengawasan",
+            "dibagi",
+            "diingatkan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "dibagi",
+            "jadwal",
+            "ditinjau"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "menyarankan",
+        "familyKey": "saran",
+        "surface": "menyarankan",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Saya menyarankan aturan yang bisa dijalankan setiap blok.",
+          "base": {
+            "de": "Ich empfehle eine Regel, die jeder Block umsetzen kann.",
+            "en": "I recommend a rule that each block can carry out."
+          }
+        },
+        "base": {
+          "de": "empfehlen",
+          "en": "recommend"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}
